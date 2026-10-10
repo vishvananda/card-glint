@@ -69,7 +69,10 @@ export function engravings(ctx: Ctx, theme: Theme, monochrome = false) {
   ]);
   for (const y of [198, 264, 330]) {
     ctx.beginPath();
-    ctx.arc(72, y, 19, 0, Math.PI * 2);
+    ctx.arc(72, y, 25, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(72, y, 21, 0, Math.PI * 2);
     ctx.stroke();
   }
   emblem(ctx, 360, 940, 15);
@@ -124,8 +127,16 @@ export function frame(ctx: Ctx, card: ShowcaseCard) {
   veil.addColorStop(1, style.ink);
   ctx.fillStyle = veil;
   ctx.fillRect(0, 430, 720, 570);
-  ctx.fillStyle = style.ink + 'e8';
-  ctx.fillRect(20, 168, 104, 197);
+  // Separate medallions keep the illustration visible between the stats.
+  for (const y of [198, 264, 330]) {
+    const enamel = ctx.createRadialGradient(64, y - 9, 0, 72, y, 25);
+    enamel.addColorStop(0, style.ink + 'd9');
+    enamel.addColorStop(1, style.ink);
+    ctx.fillStyle = enamel;
+    ctx.beginPath();
+    ctx.arc(72, y, 25, 0, Math.PI * 2);
+    ctx.fill();
+  }
   engravings(ctx, card.theme);
   ctx.textAlign = 'center';
   ctx.fillStyle = style.metal;

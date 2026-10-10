@@ -15,7 +15,9 @@
     "preview": "vite preview --host 127.0.0.1 --port 4283",
     "test:package": "node tests/package.mjs",
     "art": "node scripts/generate-showcase-art.mjs",
-    "test:showcase": "node tests/showcase.mjs"
+    "test:showcase": "node tests/showcase.mjs",
+    "package:release": "node scripts/package-release.mjs",
+    "test:release": "node tests/release.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

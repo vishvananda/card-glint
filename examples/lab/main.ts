@@ -21,34 +21,34 @@ let overlap = false,
   lastStats = 0;
 const faces = [
   {
-    name: 'Astral Compass',
-    subtitle: 'Instrument · Navigation',
+    name: 'Starfall Seer',
+    subtitle: 'Wayfinder · Celestial',
     theme: 'orbit' as const,
     charge: 3,
     serial: '001 / ∞',
-    illustration: './art/orbit.svg',
+    illustration: './art/orbit.webp',
     rules:
-      'Chart a path through the unknown.\nAt dawn, store one light. Release three to reveal a distant horizon.',
+      'She charts the roads between stars.\nAt dawn, gather one light. Spend three to open a path beyond the horizon.',
   },
   {
-    name: 'Tidal Engine',
-    subtitle: 'Relic · Resonance',
+    name: 'Tidebound Wyrm',
+    subtitle: 'Leviathan · Tempest',
     theme: 'tide' as const,
     charge: 5,
     serial: '002 / ∞',
-    illustration: './art/tide.svg',
+    illustration: './art/tide.webp',
     rules:
-      'Turn the current in your favor.\nStore the strength of a rising tide. Release it to awaken a sleeping vessel.',
+      'The deep remembers its sovereign.\nWhen the tide rises, awaken a relic. Its next echo resounds twice.',
   },
   {
-    name: 'Ember Orchard',
-    subtitle: 'Sanctuary · Renewal',
+    name: 'Cinderbloom',
+    subtitle: 'Ancient · Renewal',
     theme: 'garden' as const,
     charge: 2,
     serial: '003 / ∞',
-    illustration: './art/garden.svg',
+    illustration: './art/garden.webp',
     rules:
-      'Where the last ember takes root.\nAt dusk, plant a spark. Each dawn, a new branch remembers the sun.',
+      'Even the ashes remember spring.\nAt dusk, plant a spark. At dawn, restore a fallen companion to your grove.',
   },
 ];
 const documents: CardDocument[] = faces.map((face, i) => ({
@@ -223,7 +223,7 @@ const ready = (async () => {
   return renderer;
 })();
 $('disclaimer').textContent =
-  'Original illustrations, frames and symbols · MIT OR Apache-2.0 · No external artwork or fonts loaded.';
+  'Original AI-generated illustrations and code-drawn frames · MIT OR Apache-2.0 · No external game artwork or fonts loaded.';
 Object.assign(window, {
   lab: {
     ready,

@@ -1,6 +1,7 @@
 # card-glint
 
 [![CI](https://github.com/vishvananda/card-glint/actions/workflows/check.yml/badge.svg)](https://github.com/vishvananda/card-glint/actions/workflows/check.yml)
+[![Release](https://img.shields.io/github/v/release/vishvananda/card-glint)](https://github.com/vishvananda/card-glint/releases/latest)
 [![Rust 1.98](https://img.shields.io/badge/Rust-1.98-934b32)](rust-toolchain.toml)
 [![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)](NOTICE.md)
 
@@ -15,10 +16,11 @@ Your game supplies the artwork, frame geometry, typography and hit regions.
 [Hardware and cache measurements](docs/performance.md)
 
 **No internal art assets are used or distributed in this repository.** The
-showcase illustrations, frames and symbols are original procedural designs.
-Their [SVG sources](games/showcase/art) and [generator](scripts/generate-showcase-art.mjs)
-are included under the repository's license. No external fonts or artwork are
-loaded by the showcase. External game-art references are kept separately under
+showcase uses original AI-generated fantasy illustrations and code-drawn frames
+and symbols. The [artwork, prompts and provenance](games/showcase/art/README.md)
+are included under the repository's license, alongside small procedural SVG
+alternatives and their [generator](scripts/generate-showcase-art.mjs).
+No external fonts or artwork are loaded by the showcase. External game-art references are kept separately under
 [references/magic](references/magic/README.md), with source links and attribution.
 
 ## What it does
@@ -49,7 +51,8 @@ npm run preview
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
 Move over the cards to sweep the light; use **Inside the renderer** for metrics
-and cache tests. `npm run art` regenerates the three SVG illustrations.
+and cache tests. `npm run art` regenerates the optional SVG alternatives; it does
+not overwrite the generated fantasy illustrations.
 
 ```sh
 npm run check                  # rustfmt, strict Clippy, Rust tests, TS, formatting, boundaries
@@ -70,8 +73,23 @@ with no application server or external asset host required.
 
 ## Use it in an application
 
-Build the library, run `npm pack`, then install that archive in your application.
-The root export is game-neutral; the original showcase pack is optional.
+[Download a release](https://github.com/vishvananda/card-glint/releases/latest), or
+install the prebuilt package directly:
+
+```sh
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.1.0/card-glint-0.1.0.tgz
+```
+
+The package includes JavaScript, WASM and TypeScript declarations; no Rust build
+is needed to consume it. The root export is game-neutral; the original showcase
+pack is optional. For a plain HTML page, download the browser ZIP, extract it,
+serve the directory over HTTP and open `index.html`. It includes a working example
+with local artwork. Keep the WASM and its matching JavaScript files together.
+Release checksums and source/toolchain metadata accompany both archives.
+
+To package a source checkout yourself, build it and run `npm run package:release`.
+CI tests the extracted browser ZIP as well as an independent npm consumer; pushing
+a matching `vX.Y.Z` tag publishes those checked artifacts to GitHub Releases.
 
 ```ts
 import { createRenderer, IDENTITY } from 'card-glint';
@@ -85,13 +103,13 @@ renderer.upsertCards([
     revision: 1,
     recipe: showcase.describe(
       {
-        name: 'Astral Compass',
-        subtitle: 'Instrument',
+        name: 'Starfall Seer',
+        subtitle: 'Wayfinder',
         theme: 'orbit',
         charge: 3,
         serial: '001',
-        illustration: '/art/orbit.svg',
-        rules: 'Chart a path through the unknown.',
+        illustration: '/art/orbit.webp',
+        rules: 'She charts the roads between stars.',
       },
       'inspect',
     ),
@@ -112,7 +130,7 @@ renderer.render({ viewProjection: IDENTITY, pointer: [0.5, 0.5] });
 renderer.dispose();
 ```
 
-Copy the chosen SVG into your application's public asset directory. Serve WASM
+Copy the chosen illustration into your application's public asset directory. Serve WASM
 as `application/wasm`. The host owns canvas sizing, transforms, animation,
 accessibility and editor controls. Use native aspect ratios when mapping card
 quads to screen pixels; [the lab layout](examples/lab/layout.ts) shows how.

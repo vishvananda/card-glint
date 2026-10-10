@@ -35,7 +35,7 @@ try {
         externalRequests: external,
         errors,
         localRequests: requests.map((s) => new URL(s).pathname),
-        art: 'Original procedural SVG; repository licensed',
+        art: 'Original AI-generated fantasy WebP; prompts and provenance included; repository licensed',
         fonts: 'System fonts; no font download',
       },
       null,
