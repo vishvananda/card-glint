@@ -6,7 +6,14 @@ const scopeId = 'showcase-art-scope';
 export function withArtworkCoverage(document: CardDocument, artworkOnly: boolean): CardDocument {
   const { size } = document.recipe.color;
   const windows = document.recipe.artWindows;
-  const layers = (document.layers ?? []).filter((layer) => layer.id !== scopeId);
+  const layers = (document.layers ?? [])
+    .filter((layer) => layer.id !== scopeId)
+    .map(
+      (layer): CardLayer =>
+        layer.id === 'showcase-frame'
+          ? { ...layer, stage: artworkOnly ? 'over-finish' : 'under-finish' }
+          : layer,
+    );
   if (artworkOnly) {
     const coverage: CardLayer = {
       id: scopeId,

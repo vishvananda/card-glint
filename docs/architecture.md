@@ -205,3 +205,10 @@ The first artwork-only toggle prepares coverage/transparent-overlay textures;
 subsequent toggles reuse them while resident. Neither changing area nor changing
 outline amplitude rebuilds faces or edges.
 See [optical references and approximations](optical-surfaces.md).
+
+The original showcase's `showcaseDocument` helper keeps the illustration and
+printed frame separate. Artwork-only mode moves that frame layer above the
+finish, so refraction samples clean artwork and cannot drag a second copy of a
+symbol into view. Full-card mode places printing below the finish. The first
+scope change prepares another cached color/overlay set; warm toggles reuse both.
+The older single-raster `showcase.describe` API remains available.

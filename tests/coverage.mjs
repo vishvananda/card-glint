@@ -23,7 +23,7 @@ try {
       const image = async (finish) => {
         const blob = await r.exportCard(card.id, {
           revision: card.revision,
-          width: 360,
+          width: 720,
           finish,
           time: 2,
         });
@@ -36,10 +36,30 @@ try {
       };
       const base = await image('regular'),
         results = {};
+      const frame = card.layers.find((l) => l.id === 'showcase-frame');
+      const raw = await frame.raster.paint();
+      const fc = window.lab.api.canvas([base.width, base.height]),
+        fctx = fc.getContext('2d');
+      fctx.drawImage(raw, 0, 0, fc.width, fc.height);
+      raw.width = raw.height = 0;
+      const alpha = fctx.getImageData(0, 0, fc.width, fc.height).data;
+      const protectedPixels = [];
+      // Fully opaque frame ink, inside the illustration; ignore translucent enamel
+      // and antialiased glyph edges where the refracted art legitimately shows through.
+      for (let y = 60; y < 400; y++)
+        for (let x = 10; x < fc.width - 10; x++) {
+          const i = (y * fc.width + x) * 4;
+          if (
+            [i, i - 4, i + 4, i - fc.width * 4, i + fc.width * 4].every((j) => alpha[j + 3] === 255)
+          )
+            protectedPixels.push(i);
+        }
+      if (protectedPixels.length < 10) throw Error('Missing opaque frame test samples');
       for (const finish of ['rain', 'heat', 'pool', 'etched', 'cold', 'opal', 'prismatic']) {
         const actual = await image(finish);
         let inside = 0,
-          outside = 0;
+          outside = 0,
+          protectedInk = 0;
         for (let y = 8; y < base.height - 8; y++)
           for (let x = 8; x < base.width - 8; x++) {
             const i = (y * base.width + x) * 4;
@@ -66,7 +86,11 @@ try {
               else outside++;
             }
           }
-        results[finish] = { inside, outside };
+        for (const i of protectedPixels) {
+          if ([0, 1, 2].some((c) => Math.abs(base.data[i + c] - actual.data[i + c]) > 2))
+            protectedInk++;
+        }
+        results[finish] = { inside, outside, protectedInk };
       }
       return { results, metrics: r.metrics };
     });
@@ -77,9 +101,10 @@ try {
   for (const [finish, pixels] of Object.entries(art.results)) {
     assert.ok(pixels.inside > 100, finish + ' missing from artwork');
     assert.equal(pixels.outside, 0, finish + ' changed the frame/text in artwork-only mode');
+    assert.equal(pixels.protectedInk, 0, finish + ' changed an overlaid frame/symbol');
     assert.ok(full.results[finish].outside > 100, finish + ' full-card mode missing');
   }
-  for (const key of ['compositions', 'maskBuilds', 'edgeBuilds']) {
+  for (const key of ['maskBuilds', 'edgeBuilds']) {
     assert.equal(art.metrics[key], full.metrics[key], key + ' rebuilt when changing effect area');
   }
   await toggle('layer');

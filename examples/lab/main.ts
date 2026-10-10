@@ -8,7 +8,7 @@ import {
   type Finish,
   type Instance,
 } from '@card-glint/browser';
-import { showcase } from '../../games/showcase/src/index.js';
+import { showcase, showcaseDocument } from '../../games/showcase/src/index.js';
 import { layoutCards, sceneSize } from './layout.js';
 import { benchmarkCaches } from './cache-benchmark.js';
 import { ShowcaseMotion } from './motion.js';
@@ -74,11 +74,7 @@ const faces = [
       'Even the ashes remember spring.\nAt dusk, plant a spark. At dawn, restore a fallen companion to your grove.',
   },
 ];
-const documents: CardDocument[] = faces.map((face, i) => ({
-  id: i + 1,
-  revision: 1,
-  recipe: showcase.describe(face, 'inspect'),
-}));
+const documents: CardDocument[] = faces.map((face, i) => showcaseDocument(i + 1, face));
 let viewWidth = 1200,
   viewHeight = 750;
 function instances(time = 0) {
