@@ -76,6 +76,14 @@ button {
 button:hover {
   border-color: #c4ae8a;
 }
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+#scope[aria-pressed='true'] {
+  border-color: #c4ae8a;
+  background: #33312d;
+}
 button:focus-visible,
 select:focus-visible {
   outline: 2px solid #dbbe81;

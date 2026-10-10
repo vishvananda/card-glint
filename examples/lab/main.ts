@@ -12,6 +12,7 @@ import { layoutCards, sceneSize } from './layout.js';
 import { benchmarkCaches } from './cache-benchmark.js';
 import { ShowcaseMotion } from './motion.js';
 import { ShowcaseInput } from './input.js';
+import { withArtworkCoverage } from './coverage.js';
 import * as api from '@card-glint/browser';
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const surface = $<HTMLCanvasElement>('scene'),
@@ -194,6 +195,33 @@ const ready = (async () => {
     dirty = true;
     overlap = !overlap;
   };
+  async function updateCards(next: CardDocument[]) {
+    const controls = ['scope', 'layer', 'export'].map((id) => $<HTMLButtonElement>(id));
+    controls.forEach((button) => {
+      button.disabled = true;
+    });
+    try {
+      renderer.upsertCards(next);
+      await Promise.all(next.map((card) => renderer.ready(card.id, card.revision)));
+      for (const card of next) documents[documents.findIndex((d) => d.id === card.id)] = card;
+      dirty = true;
+    } finally {
+      controls.forEach((button) => {
+        button.disabled = false;
+      });
+    }
+  }
+  $('scope').onclick = async () => {
+    const button = $('scope');
+    const artworkOnly = button.getAttribute('aria-pressed') !== 'true';
+    try {
+      await updateCards(documents.map((card) => withArtworkCoverage(card, artworkOnly)));
+      button.setAttribute('aria-pressed', String(artworkOnly));
+      button.textContent = artworkOnly ? 'Effect: Artwork only' : 'Effect: Full card';
+    } catch (error) {
+      status.textContent = String(error);
+    }
+  };
   $('layer').onclick = async () => {
     overlay = !overlay;
     const raster = {
@@ -210,22 +238,24 @@ const ready = (async () => {
         return c;
       },
     };
-    const layers: CardLayer[] = overlay
-      ? [
-          {
-            id: 'badge',
-            order: 0,
-            stage: 'over-finish',
-            raster,
-            finishCoverage: { exclude: raster },
-          },
-        ]
-      : [];
+    const layers: CardLayer[] = (documents[0]!.layers ?? []).filter(
+      (layer) => layer.id !== 'badge',
+    );
+    if (overlay)
+      layers.push({
+        id: 'badge',
+        order: 0,
+        stage: 'over-finish',
+        raster,
+        finishCoverage: { exclude: raster },
+      });
     const next = { ...documents[0]!, revision: documents[0]!.revision + 1, layers };
-    documents[0] = next;
-    renderer.upsertCards([next]);
-    await renderer.ready(next.id, next.revision);
-    dirty = true;
+    try {
+      await updateCards([next]);
+    } catch (error) {
+      overlay = !overlay;
+      status.textContent = String(error);
+    }
   };
   $('cache').onclick = async () => {
     paused = true;

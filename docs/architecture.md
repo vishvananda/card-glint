@@ -151,11 +151,14 @@ v0.1.0. Transient JavaScript state and the staging buffer scale with visible
 instances; texture budgets and cache keys are unchanged. Surface programs compile
 once per context. The original finishes skip the new optical shader branches.
 
-Rain evaluates nine nearby procedural droplets per fragment and samples the
-cached face at three wavelength offsets for chromatic dispersion. Tilt changes
-the lenses and highlights. Heat and pool reflections also follow the surface
-normal, so their response remains visible at a fixed animation time. Pool water combines
-two nine-cell caustic fields and four bounded analytic ripple waves. These costs
+Rain evaluates two neighborhoods of nine potential drops per fragment: fine
+beads and draining drops with clear trails. Rain and heat each use a five-tap
+linear-light filter on the existing face texture. This adds sampling work, but
+no cached blur image or intermediate render target. Tilt changes the lenses and
+highlights. Heat and pool reflections also follow the surface normal, so their
+response remains visible at a fixed animation time. Pool water evaluates six
+traveling waves twice for slopes and approximate light-footprint convergence,
+plus four bounded ripple waves. These costs
 scale primarily with shaded pixel count and overdraw, even when many instances
 share one prepared face. The pixel tests verify animation, fixed-time repeatability,
 localized impulses, coverage masks and unchanged preparation/upload counters.
@@ -165,3 +168,11 @@ These are stylized refraction prototypes rather than a fluid simulation. Rain
 does not physically merge droplets; pool water does not conserve volume. Heat
 warps sampled ink, not mesh geometry, so picking and surrounding objects keep
 their original shape. Slosh/ripple history is transient and not serialized.
+
+The showcase's area toggle uses existing `finishCoverageBase` and layer coverage
+masks from the game pack's art windows. It does not add a renderer-wide mode or
+change another instance's material. The first artwork-only toggle prepares
+coverage/transparent-overlay textures, shared when geometry matches; subsequent
+toggles reuse them while resident. Face composition, artwork decoding and edge
+generation stay cached. Existing exclusions and over-finish layers still win.
+See [optical references and approximations](optical-surfaces.md).

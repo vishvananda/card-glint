@@ -48,6 +48,8 @@ jobs:
       - run: npm run test:showcase
       - run: npm run test:surfaces
       - run: npm run test:touch
+      - run: npm run test:coverage
+      - run: npm run test:optics
       - run: npm run package:release
       - run: npm run test:release
       - run: npm run test:cdn-publish

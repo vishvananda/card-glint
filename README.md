@@ -54,7 +54,8 @@ Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local
 Hover or drag on the cards to tilt them and disturb the water. On touchscreens,
 swipe beside or between cards to scroll the page. They drift gently when
 unattended; **Pause motion** freezes animation. Reduced-motion preferences are
-respected. Use **Inside the renderer** for metrics
+respected. **Effect: Full card / Artwork only** switches coverage for every
+treatment; saved PNGs use the same setting. Use **Inside the renderer** for metrics
 and cache tests. `npm run art` regenerates the optional SVG alternatives; it does
 not overwrite the generated fantasy illustrations.
 
@@ -65,6 +66,8 @@ npm run test:browser           # preview server must be running
 npm run test:showcase          # local-only asset check and README screenshot
 npm run test:surfaces          # animation, local ripples/slosh, masks and cache reuse
 npm run test:touch             # native touch gestures, tilt and page scrolling
+npm run test:coverage          # artwork-only/full-card masks, exports and cache reuse
+npm run test:optics            # caustic motion measured across successive frames
 npm run test:package           # independent packed-library consumer
 ```
 
@@ -193,15 +196,18 @@ tilt, a smooth pointer handoff and the idle orbit. Pointer coordinates for
 canvas-space foil-light control.
 
 These are procedural optical treatments, not a fluid solver. Heat refracts the
-printed face inside the card silhouette. Rain adds deterministic seeded arrivals,
-lenses with color dispersion and sliding drops. All three respond to card tilt
-through reflections and distortion. Pool water adds moving caustics, refraction and up to
+printed face in horizontal bands with slight blur. Rain adds small refractive
+beads and draining drops over lightly fogged glass. Cleared trails suppress the
+fog and smaller beads. All three respond to card tilt through reflections and
+distortion. Pool water derives traveling caustics from wave curvature, with refraction and up to
 four recent ripple impulses per instance. Under-finish content participates;
 over-finish content stays undistorted. Existing finish exclusion masks apply.
 
 Animation changes uniforms and instance buffers, without rebuilding card
 textures or masks. It does increase fragment-shader work. See
 [surface costs and limits](docs/architecture.md#animated-optical-surfaces).
+The [optical treatment notes](docs/optical-surfaces.md) explain the references,
+approximations and artwork-only coverage.
 `exportCard(..., { time })` captures a still at a chosen time without disturbing
 the live motion state; export does not replay the live ripple/slosh history.
 
