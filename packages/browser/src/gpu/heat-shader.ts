@@ -7,7 +7,7 @@ vec3 heatHaze(vec2 uv,vec3 normal){
  float ribbon=sin(uv.y*90.-t*3.1+air*4.+uv.x*1.5);
  vec2 displacement=vec2(ribbon*.0036+(fine-.5)*.0045,(air-.5)*.00065);
  displacement.x+=normal.x*(air-.5)*.01;
- vec2 radius=vec2(.0016+fine*.0008,.0004/aspect);
+ vec2 radius=vec2(.0028+fine*.0012,.0008/aspect);
  vec3 ink=softenedInk(uv+displacement,radius);
  float reflection=surfaceReflection(uv+displacement,normal,24.);
  return ink*vec3(1.01,1.,.99)+vec3(1.,.87,.70)*reflection*.065;

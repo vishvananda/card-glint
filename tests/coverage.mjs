@@ -49,10 +49,7 @@ try {
       for (let y = 60; y < 400; y++)
         for (let x = 10; x < fc.width - 10; x++) {
           const i = (y * fc.width + x) * 4;
-          if (
-            [i, i - 4, i + 4, i - fc.width * 4, i + fc.width * 4].every((j) => alpha[j + 3] === 255)
-          )
-            protectedPixels.push(i);
+          if (alpha[i + 3] === 255) protectedPixels.push(i);
         }
       if (protectedPixels.length < 10) throw Error('Missing opaque frame test samples');
       for (const finish of ['rain', 'heat', 'pool', 'etched', 'cold', 'opal', 'prismatic']) {

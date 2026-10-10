@@ -45,7 +45,7 @@ Node 22+, the pinned Rust toolchain, and wasm-bindgen-cli are required.
 ```sh
 npm ci
 rustup show
-cargo install wasm-bindgen-cli --version 0.2.327 --locked
+cargo install wasm-bindgen-cli --version 0.2.427 --locked
 npm run build
 npm run preview
 ```
@@ -88,7 +88,7 @@ with no application server or external asset host required.
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.3/card-glint-0.2.3.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.4/card-glint-0.2.4.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -109,7 +109,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.3/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.4/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
