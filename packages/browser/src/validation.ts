@@ -1,4 +1,4 @@
-import type { CardDocument, Instance, Raster, Rect, SceneLayer } from './types.js';
+import type { CardDocument, Frame, Instance, Raster, Rect, SceneLayer } from './types.js';
 export function uint32(value: number) {
   return Number.isInteger(value) && value >= 0 && value <= 0xffffffff;
 }
@@ -74,7 +74,11 @@ export function validateInstance(item: Instance) {
     throw Error('Invalid instance identity or transform');
   if (!Number.isInteger(item.order ?? 0) || Math.abs(item.order ?? 0) > 2147483647)
     throw Error('Invalid instance order');
-  if (!['regular', 'etched', 'prismatic', 'cold', 'opal'].includes(item.finish ?? 'regular'))
+  if (
+    !['regular', 'etched', 'prismatic', 'cold', 'opal', 'rain', 'heat', 'pool'].includes(
+      item.finish ?? 'regular',
+    )
+  )
     throw Error('Unknown finish');
   if (
     item.normal &&
@@ -83,6 +87,17 @@ export function validateInstance(item: Instance) {
       Math.hypot(...item.normal) < 1e-8)
   )
     throw Error('Invalid surface normal');
+}
+export function validateFrame(frame: Frame) {
+  if (!Number.isFinite(frame.time ?? 0) || (frame.time ?? 0) < 0)
+    throw Error('Frame time must be finite, nonnegative seconds');
+  if (
+    frame.hover &&
+    (!uint32(frame.hover.instance) ||
+      frame.hover.uv.length !== 2 ||
+      frame.hover.uv.some((n) => !Number.isFinite(n) || n < 0 || n > 1))
+  )
+    throw Error('Invalid card-local hover');
 }
 export function validateSceneLayer(layer: SceneLayer) {
   raster(layer.raster);

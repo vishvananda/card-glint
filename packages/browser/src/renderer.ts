@@ -1,4 +1,9 @@
-import { validateDocument, validateInstance, validateSceneLayer } from './validation.js';
+import {
+  validateDocument,
+  validateFrame,
+  validateInstance,
+  validateSceneLayer,
+} from './validation.js';
 import init, { SceneCore } from '../generated/renderer.js';
 import { AssetStore } from './assets.js';
 import { Device, type Material } from './gpu/device.js';
@@ -222,6 +227,7 @@ export class Renderer {
   }
   render(frame: Frame): Metrics {
     this.assertLive();
+    validateFrame(frame);
     if (this.lost) return this.metrics;
     const start = performance.now(),
       order = this.scene.plan(frame.viewProjection),
@@ -293,6 +299,7 @@ export class Renderer {
         this.sceneLayers.filter((l) => l.stage === stage).forEach(layer);
     } finally {
       for (const lease of leases) lease.release();
+      this.device.end();
     }
     this.frameMs = performance.now() - start;
     return this.metrics;
@@ -389,6 +396,7 @@ export class Renderer {
     this.sceneLayerFailure = false;
     this.failed = new WeakSet();
     this.instances = [];
+    this.device.resetMotion();
     this.scene.update(new Uint32Array(), new Float32Array(), new Int32Array());
     this.textures.store.clear();
     this.assets.clear();
@@ -433,6 +441,8 @@ export class Renderer {
       width: number;
       finish?: Instance['finish'];
       pointer?: readonly [number, number];
+      /** Surface snapshot time in seconds; does not change the live simulation. */
+      time?: number;
     },
   ): Promise<Blob> {
     await this.ready(id, options.revision);
@@ -446,6 +456,7 @@ export class Renderer {
     if (!Number.isInteger(options.width) || options.width < 1 || options.width > 2048)
       throw RangeError('Invalid export size');
     let promise: Promise<Blob>;
+    const restoreMotion = this.device.isolateMotion();
     try {
       canvas.width = options.width;
       canvas.height = Math.round(
@@ -460,7 +471,11 @@ export class Renderer {
           transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
         },
       ]);
-      this.render({ viewProjection: IDENTITY, pointer: options.pointer });
+      this.render({
+        viewProjection: IDENTITY,
+        pointer: options.pointer,
+        time: options.time ?? oldFrame?.time,
+      });
       promise = new Promise((resolve, reject) =>
         canvas.toBlob(
           (blob) => (blob ? resolve(blob) : reject(Error('Export failed'))),
@@ -468,6 +483,7 @@ export class Renderer {
         ),
       );
     } finally {
+      restoreMotion();
       canvas.width = oldSize[0]!;
       canvas.height = oldSize[1]!;
       this.sceneLayers = oldLayers;

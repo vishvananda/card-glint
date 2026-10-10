@@ -1,5 +1,10 @@
 name: CI
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -41,8 +46,10 @@ jobs:
           exit 1
       - run: npm run test:browser
       - run: npm run test:showcase
+      - run: npm run test:surfaces
       - run: npm run package:release
       - run: npm run test:release
+      - run: npm run test:cdn-publish
       - uses: actions/upload-artifact@v4
         if: startsWith(github.ref, 'refs/tags/v')
         with:
@@ -94,6 +101,11 @@ jobs:
         with:
           name: release-packages
           path: release-packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Publish immutable CDN tree
+        run: node scripts/publish-cdn.mjs release-packages
       - name: Publish checked packages
         env:
           GH_TOKEN: ${{ github.token }}

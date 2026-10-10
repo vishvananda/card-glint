@@ -2,7 +2,9 @@ import { program, texture } from './etcher.js';
 import { vertex, fragment, imageFragment } from './shaders.js';
 import type { Texture } from './textures.js';
 import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
-const kinds = { regular: 0, etched: 1, prismatic: 2, cold: 3, opal: 4 };
+import { SurfaceMotion } from '../surface-motion.js';
+const kinds = { regular: 0, etched: 1, prismatic: 2, cold: 3, opal: 4, rain: 5, heat: 6, pool: 7 };
+const stride = 40;
 export interface Material {
   face: Texture;
   mask: Texture;
@@ -21,6 +23,7 @@ export class Device {
   private disposed = false;
   private instanceCapacity = 0;
   private staging = new Float32Array();
+  private motion = new SurfaceMotion();
   draws = 0;
   constructor(readonly canvas: HTMLCanvasElement) {
     const gl = canvas.getContext('webgl2', {
@@ -51,18 +54,24 @@ export class Device {
     gl.bindBuffer(gl.ARRAY_BUFFER, this.instances);
     for (let i = 0; i < 4; i++) {
       gl.enableVertexAttribArray(1 + i);
-      gl.vertexAttribPointer(1 + i, 4, gl.FLOAT, false, 80, i * 16);
+      gl.vertexAttribPointer(1 + i, 4, gl.FLOAT, false, stride * 4, i * 16);
       gl.vertexAttribDivisor(1 + i, 1);
     }
     gl.enableVertexAttribArray(5);
-    gl.vertexAttribPointer(5, 3, gl.FLOAT, false, 80, 64);
+    gl.vertexAttribPointer(5, 3, gl.FLOAT, false, stride * 4, 64);
     gl.vertexAttribDivisor(5, 1);
     gl.enableVertexAttribArray(6);
-    gl.vertexAttribPointer(6, 1, gl.FLOAT, false, 80, 76);
+    gl.vertexAttribPointer(6, 1, gl.FLOAT, false, stride * 4, 76);
     gl.vertexAttribDivisor(6, 1);
+    for (let i = 7; i <= 11; i++) {
+      gl.enableVertexAttribArray(i);
+      gl.vertexAttribPointer(i, 4, gl.FLOAT, false, stride * 4, 80 + (i - 7) * 16);
+      gl.vertexAttribDivisor(i, 1);
+    }
     gl.bindVertexArray(null);
   }
   begin(frame: Frame) {
+    this.motion.begin();
     const gl = this.gl;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.viewport(0, 0, this.canvas.width, this.canvas.height);
@@ -80,13 +89,17 @@ export class Device {
     gl.useProgram(shader);
     gl.bindVertexArray(this.vao);
     gl.bindBuffer(gl.ARRAY_BUFFER, this.instances);
-    const length = list.length * 20;
+    const length = list.length * stride;
     if (this.staging.length < length) this.staging = new Float32Array(length);
     const values = this.staging;
     list.forEach((item, i) => {
-      values.set(item.transform, i * 20);
-      values.set(item.normal ?? [0, 0, 1], i * 20 + 16);
-      values[i * 20 + 19] = kinds[item.finish ?? 'regular'];
+      const start = i * stride;
+      values.set(item.transform, start);
+      values.set(item.normal ?? [0, 0, 1], start + 16);
+      values[start + 19] = kinds[item.finish ?? 'regular'];
+      const surface = this.motion.sample(item, frame);
+      if (surface) values.set(surface, start + 20);
+      else values.fill(0, start + 20, start + stride);
     });
     if (this.instanceCapacity < length) {
       this.instanceCapacity = length;
@@ -130,6 +143,7 @@ export class Device {
     gl.uniform1f(gl.getUniformLocation(p, 'hasMask'), 1);
     gl.uniform1f(gl.getUniformLocation(p, 'satinCompact'), 1);
     gl.uniform1f(gl.getUniformLocation(p, 'satinHoverGain'), 0);
+    gl.uniform1f(gl.getUniformLocation(p, 'surfaceTime'), frame.time ?? 0);
     gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, list.length);
     this.draws++;
   }
@@ -156,6 +170,7 @@ export class Device {
   dispose() {
     if (this.disposed) return;
     this.disposed = true;
+    this.motion.clear();
     const gl = this.gl;
     gl.deleteProgram(this.foil);
     gl.deleteProgram(this.image);
@@ -163,5 +178,18 @@ export class Device {
     gl.deleteBuffer(this.quad);
     gl.deleteBuffer(this.instances);
     gl.deleteTexture(this.blank);
+  }
+  end() {
+    this.motion.end();
+  }
+  resetMotion() {
+    this.motion.clear();
+  }
+  isolateMotion() {
+    const previous = this.motion;
+    this.motion = new SurfaceMotion();
+    return () => {
+      this.motion = previous;
+    };
   }
 }

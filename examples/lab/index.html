@@ -19,6 +19,10 @@
           >Finish
           <select id="finish">
             <option value="mixed">The collection</option>
+            <option value="surfaces" selected>Living surfaces</option>
+            <option value="rain">Raindrops on glass</option>
+            <option value="heat">Heat shimmer</option>
+            <option value="pool">Pool water</option>
             <option value="etched">Etched</option>
             <option value="cold">Cold foil</option>
             <option value="opal">Opal</option>
@@ -37,6 +41,7 @@
         >
         <button id="overlap">Overlap</button><button id="layer">Overlay + mask</button
         ><button id="export">Save image</button>
+        <button id="motion" aria-pressed="true">Pause motion</button>
       </nav>
       <p id="status" role="status">Preparing the original collection…</p>
       <div id="scene-wrap">
@@ -48,9 +53,9 @@
         ></canvas>
       </div>
       <div class="captions">
-        <span>01 / STARFALL SEER <i>Etched silver</i></span
-        ><span>02 / TIDEBOUND WYRM <i>Cold foil</i></span
-        ><span>03 / CINDERBLOOM <i>Opal embossing</i></span>
+        <span>01 / STARFALL SEER <i>Raindrops on glass</i></span
+        ><span>02 / TIDEBOUND WYRM <i>Heat shimmer</i></span
+        ><span>03 / CINDERBLOOM <i>Pool water</i></span>
       </div>
       <details>
         <summary>Inside the renderer</summary>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>card-glint · CDN example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #151827;
+      color: #eee1cc;
+      font: 16px system-ui;
+      text-align: center;
+    }
+    canvas {
+      display: block;
+      width: min(80vw, 360px);
+      height: auto;
+      margin: 20px auto;
+    }
+  </style>
+  <h1>One HTML file. No build step.</h1>
+  <p id="status">Loading card-glint from jsDelivr…</p>
+  <canvas
+    id="card"
+    width="720"
+    height="1000"
+    aria-label="Original fantasy card beneath rippling water"
+  ></canvas>
+  <script type="module">
+    const base = 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.0/';
+    window.exampleReady = (async () => {
+      const { createRenderer, IDENTITY } = await import(base + 'browser.js');
+      const { showcase } = await import(base + 'showcase.js');
+      const canvas = document.querySelector('canvas');
+      const renderer = await createRenderer({ canvas, wasmUrl: base + 'renderer_bg.wasm' });
+      renderer.upsertCards([
+        {
+          id: 1,
+          revision: 1,
+          recipe: showcase.describe(
+            {
+              name: 'Tidebound Wyrm',
+              subtitle: 'Leviathan · Tempest',
+              theme: 'tide',
+              charge: 5,
+              serial: '002',
+              illustration: base + 'art/tide.webp',
+              rules: 'The deep remembers its sovereign.\nWhen the tide rises, awaken a relic.',
+            },
+            'inspect',
+          ),
+        },
+      ]);
+      await renderer.ready(1, 1);
+      renderer.updateScene([
+        {
+          id: 1,
+          card: 1,
+          finish: 'pool',
+          transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
+        },
+      ]);
+      let hover, frame;
+      canvas.onpointermove = (event) => {
+        const bounds = canvas.getBoundingClientRect();
+        const hit = renderer.hitTest(event.clientX - bounds.left, event.clientY - bounds.top);
+        hover = hit ? { instance: hit.instance, uv: hit.uv } : undefined;
+      };
+      canvas.onpointerleave = () => {
+        hover = undefined;
+      };
+      canvas.onpointercancel = canvas.onpointerleave;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function draw(ms) {
+        renderer.render({
+          viewProjection: IDENTITY,
+          time: reduced ? 2 : ms / 1000,
+          hover: reduced ? undefined : hover,
+        });
+        frame = requestAnimationFrame(draw);
+      }
+      frame = requestAnimationFrame(draw);
+      window.addEventListener(
+        'pagehide',
+        () => {
+          cancelAnimationFrame(frame);
+          renderer.dispose();
+        },
+        { once: true },
+      );
+      document.querySelector('#status').textContent = 'Ready. Move over the card for ripples.';
+      return renderer;
+    })();
+    window.exampleReady.catch((error) => {
+      document.querySelector('#status').textContent = error.message;
+    });
+  </script>
+</html>

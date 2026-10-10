@@ -1,7 +1,15 @@
 /** Public game-neutral contract. Inputs use normalized top-left card coordinates. */
 export type Rect = readonly [number, number, number, number];
 export type Size = readonly [number, number];
-export type Finish = 'regular' | 'etched' | 'prismatic' | 'cold' | 'opal';
+export type Finish =
+  | 'regular'
+  | 'etched'
+  | 'prismatic'
+  | 'cold'
+  | 'opal'
+  | 'rain'
+  | 'heat'
+  | 'pool';
 export type Tier = 'table' | 'inspect';
 export interface Lease<T> {
   value: T;
@@ -100,6 +108,10 @@ export interface Budgets {
 export interface Frame {
   viewProjection: Float32Array;
   pointer?: readonly [number, number];
+  /** Host-owned elapsed seconds. Omit (or keep fixed) for a still surface. */
+  time?: number;
+  /** Actual hit, in top-left card UVs. Only this instance receives ripple impulses. */
+  hover?: { instance: number; uv: readonly [number, number] };
   clear?: readonly [number, number, number, number];
 }
 export interface CacheStats {

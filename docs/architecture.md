@@ -126,3 +126,39 @@ The renderer does not claim pixel identity with Canvas2D mask resampling.
 Integer edge detection is byte-exact; GPU composition of the final mask can
 differ at thin edges, especially under Opal highlights. Physical Safari/M1
 acceptance remains necessary in addition to Chromium software-GPU checks.
+
+## Animated optical surfaces
+
+`rain`, `heat` and `pool` shade the already prepared face in its existing depth
+pass. They keep the rounded silhouette and depth surface unchanged. Refraction
+samples are clamped to the card; finish-excluded pixels mix back to the original
+unwarped face, and over-finish overlays sample at the original UV. Thus an overlay
+does not get pulled underneath a droplet or water wave.
+
+Time is explicit, nonnegative elapsed seconds. The host schedules draws and owns
+reduced-motion/visibility policy. The browser adapter holds a damped spring and
+a ring of four ripple impulses per visible animated instance. It derives slosh
+from changes in the instance transform and normal, and creates throttled impulses
+only for `Frame.hover.instance`. Stable instance IDs keep independent seeds.
+Removing/culling an instance drops its transient state; rewinding time, a gap
+over half a second, context recreation or an epoch reset clears that history.
+Moving the camera alone does not inject slosh. Export uses an isolated state.
+
+There are no extra simulation textures, image decodes, mask builds, framebuffer
+passes or readbacks for these treatments. Animation uploads a 160-byte instance
+record (matrix, normal, finish, spring/seed and four ripples), up from 80 bytes in
+v0.1.0. Transient JavaScript state and the staging buffer scale with visible
+instances; texture budgets and cache keys are unchanged. Surface programs compile
+once per context. The original finishes skip the new optical shader branches.
+
+Rain evaluates nine nearby procedural droplets per fragment; pool water combines
+two nine-cell caustic fields and four bounded analytic ripple waves. These costs
+scale primarily with shaded pixel count and overdraw, even when many instances
+share one prepared face. The pixel tests verify animation, fixed-time repeatability,
+localized impulses, coverage masks and unchanged preparation/upload counters.
+They use Chromium software rendering, not hardware GPU timings or mobile FPS.
+
+These are stylized refraction prototypes rather than a fluid simulation. Rain
+does not physically merge droplets; pool water does not conserve volume. Heat
+warps sampled ink, not mesh geometry, so picking and surrounding objects keep
+their original shape. Slosh/ripple history is transient and not serialized.

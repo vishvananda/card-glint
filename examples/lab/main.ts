@@ -10,6 +10,7 @@ import {
 import { showcase } from '../../games/showcase/src/index.js';
 import { layoutCards, sceneSize } from './layout.js';
 import { benchmarkCaches } from './cache-benchmark.js';
+import { ShowcaseMotion } from './motion.js';
 import * as api from '@card-glint/browser';
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const surface = $<HTMLCanvasElement>('scene'),
@@ -19,6 +20,20 @@ let overlap = false,
   paused = false,
   disposed = false,
   lastStats = 0;
+const motion = new ShowcaseMotion();
+let motionEnabled = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+let effectTime = 2,
+  lastTime = 0;
+let dirty = true,
+  visible = true;
+let hover: { instance: number; uv: readonly [number, number] } | undefined;
+let poses: ReadonlyMap<number, { x: number; y: number }> | undefined;
+function chosenFinish(index: number): Finish {
+  const value = $<HTMLSelectElement>('finish').value;
+  if (value === 'mixed') return (['etched', 'cold', 'opal'] as const)[index % 3]!;
+  if (value === 'surfaces') return (['rain', 'heat', 'pool'] as const)[index % 3]!;
+  return value as Finish;
+}
 const faces = [
   {
     name: 'Starfall Seer',
@@ -64,20 +79,17 @@ function instances(time = 0) {
     viewWidth,
     viewHeight,
     Number($<HTMLSelectElement>('count').value),
-    ($<HTMLSelectElement>('finish').value === 'mixed'
-      ? 'etched'
-      : $<HTMLSelectElement>('finish').value) as Finish,
+    chosenFinish(0),
     overlap,
     time,
+    poses,
   ).map((instance, i) => ({
     ...instance,
-    finish:
-      $<HTMLSelectElement>('finish').value === 'mixed'
-        ? (['etched', 'cold', 'opal'] as const)[i % 3]
-        : instance.finish,
+    finish: chosenFinish(i),
   }));
 }
 function resize() {
+  dirty = true;
   const count = Number($<HTMLSelectElement>('count').value);
   const size = sceneSize(surface.parentElement!.clientWidth, count);
   viewWidth = size.width;
@@ -103,22 +115,75 @@ const ready = (async () => {
   resize();
   renderer.upsertCards(documents);
   await Promise.all(documents.map((d) => renderer.ready(d.id, d.revision)));
-  status.textContent = 'Ready. Move over the canvas to sweep the foil light.';
+  status.textContent = 'Move over a card to tilt it. Try raindrops, heat shimmer or pool water.';
   let pointer: [number, number] = [0.5, 0.5];
+  let cursor: [number, number] | undefined;
   surface.onpointermove = (e) => {
+    dirty = true;
     const r = surface.getBoundingClientRect();
+    cursor = [e.clientX, e.clientY];
     pointer = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
     const hit = renderer.hitTest(e.clientX - r.left, e.clientY - r.top);
+    hover = hit ? { instance: hit.instance, uv: hit.uv } : undefined;
     $('hit').textContent = hit
       ? `Instance ${hit.instance} · ${hit.part ?? 'card'} · ${hit.uv.map((v) => v.toFixed(2)).join(', ')}`
       : '';
   };
+  const leave = () => {
+    dirty = true;
+    cursor = undefined;
+    hover = undefined;
+    pointer = [0.5, 0.5];
+  };
+  surface.onpointerleave = leave;
+  surface.onpointercancel = leave;
+  $('motion').setAttribute('aria-pressed', String(motionEnabled));
+  $('motion').onclick = () => {
+    dirty = true;
+    motionEnabled = !motionEnabled;
+    $('motion').setAttribute('aria-pressed', String(motionEnabled));
+    $('motion').textContent = motionEnabled ? 'Pause motion' : 'Resume motion';
+  };
+  $<HTMLSelectElement>('finish').onchange = () => {
+    dirty = true;
+    const names: Record<Finish, string> = {
+      regular: 'Uncoated',
+      etched: 'Etched silver',
+      cold: 'Cold foil',
+      opal: 'Opal embossing',
+      prismatic: 'Prismatic',
+      rain: 'Raindrops on glass',
+      heat: 'Heat shimmer',
+      pool: 'Pool water',
+    };
+    document.querySelectorAll('.captions i').forEach((node, i) => {
+      node.textContent = names[chosenFinish(i)];
+    });
+  };
+  if (!motionEnabled) $('motion').textContent = 'Resume motion';
   function draw(time: number) {
     if (disposed) return;
     requestAnimationFrame(draw);
-    if (paused) return;
-    renderer.updateScene(instances(time));
-    const metrics = renderer.render({ viewProjection: IDENTITY, pointer });
+    const dt = Math.min(0.05, Math.max(0, (time - lastTime) / 1000));
+    lastTime = time;
+    if (paused || document.hidden || !visible || (!motionEnabled && !dirty)) return;
+    dirty = false;
+    if (cursor) {
+      const rect = surface.getBoundingClientRect();
+      const hit = renderer.hitTest(cursor[0] - rect.left, cursor[1] - rect.top);
+      hover = hit ? { instance: hit.instance, uv: hit.uv } : undefined;
+    }
+    if (motionEnabled) {
+      effectTime += dt;
+      poses = motion.sample(effectTime, dt, hover);
+    }
+    renderer.updateScene(instances());
+    const metrics = renderer.render({
+      viewProjection: IDENTITY,
+      pointer,
+      time: effectTime,
+      hover: motionEnabled ? hover : undefined,
+    });
     if (time - lastStats > 500) {
       $('stats').textContent = JSON.stringify(metrics, null, 2);
       lastStats = time;
@@ -128,11 +193,17 @@ const ready = (async () => {
   const resizeObserver = new ResizeObserver(() => {
     resize();
     renderer.updateScene(instances());
-    renderer.render({ viewProjection: IDENTITY, pointer });
+    renderer.render({ viewProjection: IDENTITY, pointer, time: effectTime });
   });
   resizeObserver.observe(surface.parentElement!);
+  const visibilityObserver = new IntersectionObserver(([entry]) => {
+    visible = entry!.isIntersecting;
+    dirty = true;
+  });
+  visibilityObserver.observe(surface);
   $<HTMLSelectElement>('count').onchange = resize;
   $('overlap').onclick = () => {
+    dirty = true;
     overlap = !overlap;
   };
   $('layer').onclick = async () => {
@@ -166,6 +237,7 @@ const ready = (async () => {
     documents[0] = next;
     renderer.upsertCards([next]);
     await renderer.ready(next.id, next.revision);
+    dirty = true;
   };
   $('cache').onclick = async () => {
     paused = true;
@@ -196,9 +268,8 @@ const ready = (async () => {
     const blob = await renderer.exportCard(1, {
       revision: documents[0]!.revision,
       width: 732,
-      finish: ($<HTMLSelectElement>('finish').value === 'mixed'
-        ? 'etched'
-        : $<HTMLSelectElement>('finish').value) as Finish,
+      finish: chosenFinish(0),
+      time: effectTime,
     });
     const url = URL.createObjectURL(blob),
       link = document.createElement('a');
@@ -214,6 +285,7 @@ const ready = (async () => {
     () => {
       disposed = true;
       resizeObserver.disconnect();
+      visibilityObserver.disconnect();
       renderer.dispose();
     },
     { once: true },
@@ -234,6 +306,8 @@ Object.assign(window, {
     benchmarkCaches,
     layoutCards,
     sceneSize,
+    instances,
+    motionState: () => ({ time: effectTime, hover, motionEnabled }),
     pause: (value = true) => {
       paused = value;
     },

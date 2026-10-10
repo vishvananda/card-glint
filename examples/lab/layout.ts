@@ -1,4 +1,5 @@
 import type { CardDocument, Instance, Finish } from '@card-glint/browser';
+import { tiltedQuad } from './motion.js';
 
 export function sceneSize(width: number, count: number) {
   const columns = count === 3 ? (width < 600 ? 1 : 3) : 1;
@@ -41,6 +42,7 @@ export function layoutCards(
   finish: Finish,
   overlap: boolean,
   time = 0,
+  poses?: ReadonlyMap<number, { x: number; y: number }>,
 ): Instance[] {
   const cols =
       count === 3 ? (width < 600 ? 1 : 3) : Math.ceil(Math.sqrt((count * width) / height / 0.718)),
@@ -61,19 +63,24 @@ export function layoutCards(
     const w = (2 * pixelWidth) / width,
       h = (2 * pixelHeight) / height;
     const stack = overlap && count === 3;
+    const left = stack ? -w / 2 + (i - 1) * w * 0.25 : (2 * x) / width - 1;
+    const top = stack ? h / 2 + (1 - i) * h * 0.1 : 1 - (2 * y) / height;
+    const depth = stack ? i * 0.08 : 0;
+    const pose = count === 3 ? poses?.get(i + 1) : undefined;
     return {
       id: i + 1,
       card: d.id,
       finish,
       transform: transform(
-        stack ? -w / 2 + (i - 1) * w * 0.25 : (2 * x) / width - 1,
-        stack ? h / 2 + (1 - i) * h * 0.1 : 1 - (2 * y) / height,
+        left,
+        top,
         w,
         h,
-        stack ? i * 0.08 : 0,
+        depth,
         count === 3 ? 0.08 * Math.sin(time / 2500 + i) : 0,
       ),
       normal: [0.1 * Math.sin(time / 2500 + i), 0.06, 1],
+      ...(pose ? tiltedQuad(left, top, w, h, depth, width, height, pose) : {}),
     };
   });
 }

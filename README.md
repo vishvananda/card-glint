@@ -9,7 +9,7 @@ A small, game-neutral card renderer. Rust/WASM manages caches, scene planning,
 picking and pixel kernels. WebGL2 adds reusable etching, embossing and foil.
 Your game supplies the artwork, frame geometry, typography and hit regions.
 
-[![Three original card designs rendered with etching, cold foil and Opal embossing](docs/images/showcase.png)](https://vishvananda.github.io/card-glint/)
+[![Three original fantasy cards with raindrops, heat shimmer and pool water treatments](docs/images/showcase.png)](https://vishvananda.github.io/card-glint/)
 
 [Try the interactive showcase](https://vishvananda.github.io/card-glint/) ·
 [Architecture and layering](docs/architecture.md) ·
@@ -25,7 +25,8 @@ No external fonts or artwork are loaded by the showcase. External game-art refer
 
 ## What it does
 
-- Five finishes: regular, etched, prismatic, cold foil and Opal embossing.
+- Eight finishes: regular, etched, prismatic, cold foil, Opal embossing,
+  raindrops on glass, heat shimmer and pool water with caustics.
 - Independent face, artwork-edge, mask, decoded-image and overlay caches.
 - Explicit layers above/below foil, foil exclusion masks and etch contributions.
 - One depth surface for each card and its foil, including overlapping cards.
@@ -50,7 +51,9 @@ npm run preview
 ```
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
-Move over the cards to sweep the light; use **Inside the renderer** for metrics
+Move over the cards to tilt them and disturb the water. They drift gently when
+unattended; **Pause motion** freezes animation. Reduced-motion preferences are
+respected. Use **Inside the renderer** for metrics
 and cache tests. `npm run art` regenerates the optional SVG alternatives; it does
 not overwrite the generated fantasy illustrations.
 
@@ -59,6 +62,7 @@ npm run check                  # rustfmt, strict Clippy, Rust tests, TS, formatt
 npx playwright install chromium
 npm run test:browser           # preview server must be running
 npm run test:showcase          # local-only asset check and README screenshot
+npm run test:surfaces          # animation, local ripples/slosh, masks and cache reuse
 npm run test:package           # independent packed-library consumer
 ```
 
@@ -77,7 +81,7 @@ with no application server or external asset host required.
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.1.0/card-glint-0.1.0.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.0/card-glint-0.2.0.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -90,6 +94,31 @@ Release checksums and source/toolchain metadata accompany both archives.
 To package a source checkout yourself, build it and run `npm run package:release`.
 CI tests the extracted browser ZIP as well as an independent npm consumer; pushing
 a matching `vX.Y.Z` tag publishes those checked artifacts to GitHub Releases.
+
+For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
+
+```html
+<script type="module">
+  import {
+    createRenderer,
+    IDENTITY,
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.0/browser.js';
+
+  const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
+  // Supply your own game pack/card recipes, then render as below.
+</script>
+```
+
+The default WASM URL resolves beside its JavaScript wrapper on the CDN. The
+optional example pack is `showcase.js`, and its illustrations live under `art/`
+at the same versioned base URL. [Open the working CDN example](https://vishvananda.github.io/card-glint/cdn/)
+or copy [its single HTML file](examples/cdn/index.html). There is no npm account,
+bundler or Rust toolchain requirement for consumers.
+
+CI publishes a separate, immutable `cdn-vX.Y.Z` artifact tree from the checked
+browser ZIP. Source tags and the source branch stay free of generated bundles.
+Always pin the exact CDN tag; keep the JS chunks and WASM from the same build.
+See [jsDelivr's GitHub delivery and caching documentation](https://github.com/jsdelivr/jsdelivr#github).
 
 ```ts
 import { createRenderer, IDENTITY } from 'card-glint';
@@ -139,6 +168,39 @@ Implement `GamePack<T>` to adapt another game's presentation data. A pack return
 immutable `FaceRecipe` rasters, artwork placement, masks and semantic hit regions.
 See [the original example pack](games/showcase/src/index.ts). Applications can
 consume the renderer without a frontend framework or a game-engine checkout.
+
+## Animated surfaces and interaction
+
+Set an instance's `finish` to `rain`, `heat` or `pool`, and pass elapsed **seconds**
+as `Frame.time`. An omitted or fixed time gives a still image. Feed the actual
+result of `renderer.hitTest(x, y)` into `Frame.hover` for card-local ripples:
+
+```ts
+renderer.render({
+  viewProjection: IDENTITY,
+  time: elapsedSeconds,
+  hover: hit ? { instance: hit.instance, uv: hit.uv } : undefined,
+});
+```
+
+Update each instance's transform and surface normal together when it tilts.
+The renderer derives damped slosh from changes in the transform and normal.
+The [showcase motion controller](examples/lab/motion.ts) demonstrates perspective
+tilt, a smooth pointer handoff and the idle orbit. Pointer coordinates for
+`Frame.hover` use the top-left card origin; `Frame.pointer` remains the normalized
+canvas-space foil-light control.
+
+These are procedural optical treatments, not a fluid solver. Heat refracts the
+printed face inside the card silhouette. Rain adds deterministic seeded arrivals,
+lenses and sliding drops. Pool water adds moving caustics, refraction and up to
+four recent ripple impulses per instance. Under-finish content participates;
+over-finish content stays undistorted. Existing finish exclusion masks apply.
+
+Animation changes uniforms and instance buffers, without rebuilding card
+textures or masks. It does increase fragment-shader work. See
+[surface costs and limits](docs/architecture.md#animated-optical-surfaces).
+`exportCard(..., { time })` captures a still at a chosen time without disturbing
+the live motion state; export does not replay the live ripple/slosh history.
 
 ## Sources and fan-content notice
 
