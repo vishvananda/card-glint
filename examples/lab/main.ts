@@ -11,6 +11,7 @@ import { showcase } from '../../games/showcase/src/index.js';
 import { layoutCards, sceneSize } from './layout.js';
 import { benchmarkCaches } from './cache-benchmark.js';
 import { ShowcaseMotion } from './motion.js';
+import { ShowcaseInput } from './input.js';
 import * as api from '@card-glint/browser';
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const surface = $<HTMLCanvasElement>('scene'),
@@ -115,28 +116,19 @@ const ready = (async () => {
   resize();
   renderer.upsertCards(documents);
   await Promise.all(documents.map((d) => renderer.ready(d.id, d.revision)));
-  status.textContent = 'Move over a card to tilt it. Try raindrops, heat shimmer or pool water.';
-  let pointer: [number, number] = [0.5, 0.5];
-  let cursor: [number, number] | undefined;
-  surface.onpointermove = (e) => {
-    dirty = true;
-    const r = surface.getBoundingClientRect();
-    cursor = [e.clientX, e.clientY];
-    pointer = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
-    const hit = renderer.hitTest(e.clientX - r.left, e.clientY - r.top);
-    hover = hit ? { instance: hit.instance, uv: hit.uv } : undefined;
-    $('hit').textContent = hit
-      ? `Instance ${hit.instance} · ${hit.part ?? 'card'} · ${hit.uv.map((v) => v.toFixed(2)).join(', ')}`
-      : '';
-  };
-  const leave = () => {
-    dirty = true;
-    cursor = undefined;
-    hover = undefined;
-    pointer = [0.5, 0.5];
-  };
-  surface.onpointerleave = leave;
-  surface.onpointercancel = leave;
+  status.textContent = 'Hover or drag a card to tilt it. Swipe beside or between cards to scroll.';
+  const input = new ShowcaseInput(
+    surface,
+    (x, y) => renderer.hitTest(x, y),
+    () => {
+      dirty = true;
+      const hit = input.hover;
+      hover = hit;
+      $('hit').textContent = hit
+        ? `Instance ${hit.instance} · ${hit.part ?? 'card'} · ${hit.uv.map((v) => v.toFixed(2)).join(', ')}`
+        : '';
+    },
+  );
   $('motion').setAttribute('aria-pressed', String(motionEnabled));
   $('motion').onclick = () => {
     dirty = true;
@@ -168,11 +160,7 @@ const ready = (async () => {
     lastTime = time;
     if (paused || document.hidden || !visible || (!motionEnabled && !dirty)) return;
     dirty = false;
-    if (cursor) {
-      const rect = surface.getBoundingClientRect();
-      const hit = renderer.hitTest(cursor[0] - rect.left, cursor[1] - rect.top);
-      hover = hit ? { instance: hit.instance, uv: hit.uv } : undefined;
-    }
+    hover = input.sample();
     if (motionEnabled) {
       effectTime += dt;
       poses = motion.sample(effectTime, dt, hover);
@@ -180,7 +168,7 @@ const ready = (async () => {
     renderer.updateScene(instances());
     const metrics = renderer.render({
       viewProjection: IDENTITY,
-      pointer,
+      pointer: input.pointer,
       time: effectTime,
       hover: motionEnabled ? hover : undefined,
     });
@@ -193,7 +181,7 @@ const ready = (async () => {
   const resizeObserver = new ResizeObserver(() => {
     resize();
     renderer.updateScene(instances());
-    renderer.render({ viewProjection: IDENTITY, pointer, time: effectTime });
+    renderer.render({ viewProjection: IDENTITY, pointer: input.pointer, time: effectTime });
   });
   resizeObserver.observe(surface.parentElement!);
   const visibilityObserver = new IntersectionObserver(([entry]) => {
@@ -286,6 +274,7 @@ const ready = (async () => {
       disposed = true;
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
+      input.dispose();
       renderer.dispose();
     },
     { once: true },

@@ -11,9 +11,16 @@ float surfaceNoise(vec2 p){
  mix(surfaceHash(i+vec2(0.,1.)),surfaceHash(i+vec2(1.,1.)),f.x),f.y);
 }
 vec3 refractedInk(vec2 uv){return previewInk(texture(face,clamp(uv,vec2(.002),vec2(.998))).rgb);}
+float surfaceReflection(vec2 uv,vec3 normal,float sharpness){
+ vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
+ vec3 lamp=normalize(vec3(-.24,.32,1.));
+ return pow(max(0.,dot(reflect(-view,normal),lamp)),sharpness);
+}
 vec3 rainGlass(vec2 uv,vec3 normal){
- vec2 metric=vec2(1.,aspect), p=uv*metric*9.;
+ // Fewer, larger lenses leave enough pixels for visible chromatic dispersion.
+ vec2 metric=vec2(1.,aspect), p=uv*metric*5.;
  vec2 cell=floor(p), bend=vec2(0.);float light=0.,shade=0.;
+ vec2 lamp=normalize(vec2(-.7,.8)-normal.xy*3.);
  float t=surfaceTime;
  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
   vec2 id=cell+vec2(float(x),float(y));
@@ -23,30 +30,34 @@ vec3 rainGlass(vec2 uv,vec3 normal){
   float fade=smoothstep(0.,.18,age)*(1.-smoothstep(cycle*.65,cycle,age));
   vec2 center=id+.2+rnd*.6;
   center.y-=max(0.,age-2.5)*max(0.,age-2.5)*.007*(.3+seed);
-  vec2 q=(p-center)/(.15+.19*rnd.x);
+  vec2 q=(p-center)/(.18+.23*rnd.x);
   q.x+=q.y*(normal.x*.3+surfaceInfo.x);
   q.y/=1.+max(0.,age-2.5)*.055;
   float r=length(q),body=1.-smoothstep(.72,1.,r);
-  vec2 lens=q*body*fade;
-  bend+=lens*(.014+.009*rnd.x)/metric;
+  vec2 lens=(q+normal.xy*.7)*body*fade;
+  bend+=lens*(.026+.015*rnd.x)/metric;
   float rim=exp(-pow((r-.84)*18.,2.))*fade;
-  light+=rim*max(0.,dot(normalize(q+vec2(.0001)),normalize(vec2(-.7,.8))))*.34;
-  light+=exp(-dot(q-vec2(-.28,.36),q-vec2(-.28,.36))*55.)*fade*.38;
-  shade+=rim*max(0.,dot(normalize(q+vec2(.0001)),vec2(.55,-.55)))*.24;
+  light+=rim*max(0.,dot(normalize(q+vec2(.0001)),lamp))*.38;
+  vec2 glint=q-lamp*.42;
+  light+=exp(-dot(glint,glint)*55.)*fade*.48;
+  shade+=rim*max(0.,dot(normalize(q+vec2(.0001)),-lamp))*.20;
  }
- vec3 ink=refractedInk(uv+bend);
- return ink*(1.-shade)+vec3(.76,.90,1.)*light;
+ // Three wavelengths sample the same cached face; no extra textures or passes.
+ vec3 ink=vec3(refractedInk(uv+bend*1.28).r,refractedInk(uv+bend).g,refractedInk(uv+bend*.72).b);
+ float reflection=surfaceReflection(uv,normal,28.);
+ return ink*(1.-shade)+vec3(.76,.90,1.)*(light*(.65+reflection*.7)+reflection*.045);
 }
-vec3 heatHaze(vec2 uv){
+vec3 heatHaze(vec2 uv,vec3 normal){
  float t=surfaceTime, seed=surfaceInfo.z*29.;
- vec2 p=uv*vec2(3.2,4.4);
+ vec2 p=uv*vec2(3.2,4.4)+normal.xy*.65;
  float a=surfaceNoise(p+vec2(seed,t*.45));
  float b=surfaceNoise(p*1.8+vec2(-t*.19,seed+t*.7));
  vec2 curl=vec2(sin(uv.y*32.+a*7.+t*2.4),cos(uv.x*21.+b*6.-t*1.7));
- vec2 displacement=(curl*.0055+vec2(a-.5,b-.5)*.021)*(.6+uv.y*.4);
+ vec2 displacement=(curl*.0055+vec2(a-.5,b-.5)*.021+normal.xy*(a-.5)*.025)*(.6+uv.y*.4);
  vec3 ink=refractedInk(uv+displacement);
  float glow=pow(max(0.,sin(uv.y*12.+a*5.-t*.9)),8.)*.032;
- return ink*vec3(1.018,1.,.98)+vec3(1.,.54,.18)*glow;
+ float reflection=surfaceReflection(uv+displacement*2.,normal,24.);
+ return ink*vec3(1.018,1.,.98)+vec3(1.,.54,.18)*glow+vec3(1.,.86,.65)*reflection*.13;
 }
 vec2 rippleSlope(vec2 p,vec4 r){
  float age=surfaceTime-r.z;
@@ -78,12 +89,13 @@ vec3 poolWater(vec2 uv,vec3 normal){
  float caustics=causticCell(p*6.4+flow+slope*4.+slosh*3.+seed,t);
  caustics+=causticCell(p*8.7-flow*.7-slope*3.+vec2(t*.06,-t*.045),-t)*.28;
  vec3 ink=refractedInk(under)*vec3(.80,.95,.99);
- float reflection=pow(max(0.,dot(normalize(vec3(-slope*3.,1.)),normalize(vec3(-.38,.46,1.)))),36.);
- return ink*(.94+caustics*.40)+vec3(.28,.83,.91)*caustics*.17+vec3(.75,.94,1.)*reflection*.065;
+ vec3 waterNormal=normalize(normal+vec3(-slope*1.8,0.));
+ float reflection=surfaceReflection(uv,waterNormal,36.);
+ return ink*(.94+caustics*.40)+vec3(.28,.83,.91)*caustics*.17+vec3(.75,.94,1.)*reflection*.16;
 }
 vec3 animatedSurface(vec2 uv,vec3 normal){
  if(previewKind==5.)return rainGlass(uv,normal);
- if(previewKind==6.)return heatHaze(uv);
+ if(previewKind==6.)return heatHaze(uv,normal);
  return poolWater(uv,normal);
 }
 `;

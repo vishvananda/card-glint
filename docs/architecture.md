@@ -151,7 +151,10 @@ v0.1.0. Transient JavaScript state and the staging buffer scale with visible
 instances; texture budgets and cache keys are unchanged. Surface programs compile
 once per context. The original finishes skip the new optical shader branches.
 
-Rain evaluates nine nearby procedural droplets per fragment; pool water combines
+Rain evaluates nine nearby procedural droplets per fragment and samples the
+cached face at three wavelength offsets for chromatic dispersion. Tilt changes
+the lenses and highlights. Heat and pool reflections also follow the surface
+normal, so their response remains visible at a fixed animation time. Pool water combines
 two nine-cell caustic fields and four bounded analytic ripple waves. These costs
 scale primarily with shaded pixel count and overdraw, even when many instances
 share one prepared face. The pixel tests verify animation, fixed-time repeatability,

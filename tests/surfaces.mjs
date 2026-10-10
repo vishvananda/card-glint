@@ -105,9 +105,13 @@ try {
         const a = render(1),
           still = render(1),
           b = render(2);
+        // Hold time, pointer and geometry fixed: only this card's normal tilts.
+        r.updateScene(scene(finish, [0.18, -0.12, 1]));
+        const tilted = render(2);
         finishes[finish] = {
           changed: diff(a, b),
           fixedTimeDiff: diff(a, still),
+          tilt: { left: diff(b, tilted, 0, 256), right: diff(b, tilted, 256, 512) },
           badge: pixel(b, 128, 192),
           dry: pixel(b, 40, 320),
           regularDry: pixel(regular, 40, 320),
@@ -158,6 +162,8 @@ try {
   for (const [finish, result] of Object.entries(report.finishes)) {
     assert.ok(result.changed > 500, finish + ' did not animate');
     assert.equal(result.fixedTimeDiff, 0, finish + ' changed with a fixed clock');
+    assert.ok(result.tilt.left > 500, finish + ' did not respond to tilt at a fixed time');
+    assert.equal(result.tilt.right, 0, finish + ' tilt affected another card');
     assert.deepEqual(result.badge, [0, 255, 0, 255], finish + ' warped an over-finish badge');
     assert.deepEqual(result.dry, result.regularDry, finish + ' ignored the exclusion mask');
     assert.equal(result.corner[3], 0, finish + ' escaped the card silhouette');

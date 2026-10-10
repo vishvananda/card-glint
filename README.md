@@ -51,7 +51,8 @@ npm run preview
 ```
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
-Move over the cards to tilt them and disturb the water. They drift gently when
+Hover or drag on the cards to tilt them and disturb the water. On touchscreens,
+swipe beside or between cards to scroll the page. They drift gently when
 unattended; **Pause motion** freezes animation. Reduced-motion preferences are
 respected. Use **Inside the renderer** for metrics
 and cache tests. `npm run art` regenerates the optional SVG alternatives; it does
@@ -63,6 +64,7 @@ npx playwright install chromium
 npm run test:browser           # preview server must be running
 npm run test:showcase          # local-only asset check and README screenshot
 npm run test:surfaces          # animation, local ripples/slosh, masks and cache reuse
+npm run test:touch             # native touch gestures, tilt and page scrolling
 npm run test:package           # independent packed-library consumer
 ```
 
@@ -192,7 +194,8 @@ canvas-space foil-light control.
 
 These are procedural optical treatments, not a fluid solver. Heat refracts the
 printed face inside the card silhouette. Rain adds deterministic seeded arrivals,
-lenses and sliding drops. Pool water adds moving caustics, refraction and up to
+lenses with color dispersion and sliding drops. All three respond to card tilt
+through reflections and distortion. Pool water adds moving caustics, refraction and up to
 four recent ripple impulses per instance. Under-finish content participates;
 over-finish content stays undistorted. Existing finish exclusion masks apply.
 
