@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-10",
+  "hardware": "Apple M1 (user reported)",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "source": "User-supplied cache lifecycle report; private source link omitted",
+  "power_mode": "not recorded",
+  "concurrent_model_inference": "not recorded",
+  "size": [
+    512,
+    341
+  ],
+  "paths": {
+    "rust": {
+      "contextAndProgramSetupMs": 2.800000011920929,
+      "coldMaskCompletedMedianMs": 2.7999999821186066,
+      "samples": 5,
+      "hot": {
+        "requests": 10000,
+        "lookupAndLeaseMs": 1.300000011920929,
+        "microsecondsPerHit": 0.1300000011920929,
+        "edgeBuilds": 0,
+        "uploads": 0,
+        "evictions": 0,
+        "hits": 10000,
+        "misses": 0,
+        "bytes": 174592
+      },
+      "fitted": {
+        "requests": 800,
+        "lookupAndLeaseMs": 0.19999998807907104,
+        "edgeBuilds": 0,
+        "uploads": 0,
+        "evictions": 0,
+        "hits": 800,
+        "misses": 0,
+        "bytes": 1396736
+      },
+      "pressure": {
+        "requests": 24,
+        "budgetBytes": 698368,
+        "elapsedMs": 180.5,
+        "edges": 24,
+        "uploads": 24,
+        "readbacks": 24,
+        "hits": 0,
+        "misses": 24,
+        "admissions": 24,
+        "evictions": 20,
+        "bytes": 698368,
+        "peakBytes": 698368,
+        "rejected": 0
+      },
+      "residentMaskBytes": 174592,
+      "scratchBytes": 0
+    },
+    "gpu": {
+      "contextAndProgramSetupMs": 2.800000011920929,
+      "coldMaskCompletedMedianMs": 1.800000011920929,
+      "samples": 5,
+      "hot": {
+        "requests": 10000,
+        "lookupAndLeaseMs": 1.199999988079071,
+        "microsecondsPerHit": 0.1199999988079071,
+        "edgeBuilds": 0,
+        "uploads": 0,
+        "evictions": 0,
+        "hits": 10000,
+        "misses": 0,
+        "bytes": 174592
+      },
+      "fitted": {
+        "requests": 800,
+        "lookupAndLeaseMs": 0.09999999403953552,
+        "edgeBuilds": 0,
+        "uploads": 0,
+        "evictions": 0,
+        "hits": 800,
+        "misses": 0,
+        "bytes": 1396736
+      },
+      "pressure": {
+        "requests": 24,
+        "budgetBytes": 698368,
+        "elapsedMs": 152.5,
+        "edges": 24,
+        "uploads": 24,
+        "readbacks": 24,
+        "hits": 0,
+        "misses": 24,
+        "admissions": 24,
+        "evictions": 20,
+        "bytes": 698368,
+        "peakBytes": 698368,
+        "rejected": 0
+      },
+      "residentMaskBytes": 174592,
+      "scratchBytes": 1222144
+    }
+  },
+  "persistence": {
+    "available": true,
+    "rawBytes": 174592,
+    "compressedBytes": 96964,
+    "gzipMs": 4.0999999940395355,
+    "writeMs": 0.7000000178813934,
+    "readDecodeMedianMs": 0.6000000238418579,
+    "snapshotReadbackMs": 0.7000000178813934,
+    "uploadCompletedMedianMs": 1.4000000059604645,
+    "rebuildFromDecodedArtCompletedMedianMs": 2,
+    "breakEvenRestores": null,
+    "note": "Null means cached restore was slower than rebuilding here. Hot CacheStorage reads, not OS-cold disk or fresh network; optional persistence is not enabled in the renderer."
+  },
+  "byte_exact": true,
+  "methodology": "Both backends use the same Rust LRU and R8 texture budget. Miss/pressure/restore timings include full mask readback to force completion; hit batches contain no GL work. Eight recipe keys vary threshold on the same decoded source. Network, fonts, face composition and full-scene draw time are excluded. Shader/context setup is separate. Pressure includes yielding between requests. These are mask-resource measurements, not VRAM telemetry or large-scene FPS.",
+  "full_face_reuse": {
+    "elapsed_ms": 0.19999998807907104,
+    "additional_compositions": 0,
+    "additional_masks": 0,
+    "additional_edges": 0,
+    "additional_uploads": 0,
+    "resident_gpu_payload_bytes": 27579456,
+    "note": "Single ready() reuse observation, not a scene timing run. Pending-job cleanup was still visible in the immediate metrics snapshot."
+  }
+}

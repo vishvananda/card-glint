@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>card-glint · original showcase</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <span class="eyebrow">LIGHT, LAYERS & A LITTLE ALCHEMY</span>
+          <h1>card-glint<span>✧</span></h1>
+        </div>
+        <p>A small renderer.<br />A different kind of card.</p>
+      </header>
+      <nav aria-label="Rendering controls">
+        <label
+          >Finish
+          <select id="finish">
+            <option value="mixed">The collection</option>
+            <option value="etched">Etched</option>
+            <option value="cold">Cold foil</option>
+            <option value="opal">Opal</option>
+            <option value="prismatic">Prismatic</option>
+            <option value="regular">Uncoated</option>
+          </select></label
+        >
+        <label
+          >Cards
+          <select id="count">
+            <option>3</option>
+            <option>100</option>
+            <option>500</option>
+            <option>2000</option>
+          </select></label
+        >
+        <button id="overlap">Overlap</button><button id="layer">Overlay + mask</button
+        ><button id="export">Save image</button>
+      </nav>
+      <p id="status" role="status">Preparing the original collection…</p>
+      <div id="scene-wrap">
+        <canvas
+          id="scene"
+          width="1200"
+          height="750"
+          aria-label="Three original fantasy cards with interactive foil finishes"
+        ></canvas>
+      </div>
+      <div class="captions">
+        <span>01 / ASTRAL COMPASS <i>Etched silver</i></span
+        ><span>02 / TIDAL ENGINE <i>Cold foil</i></span
+        ><span>03 / EMBER ORCHARD <i>Opal embossing</i></span>
+      </div>
+      <details>
+        <summary>Inside the renderer</summary>
+        <p>
+          One Rust/WASM core and one WebGL2 context. Original procedural illustrations,
+          independently defined frames, and cached foil masks. Move across the cards to change the
+          light.
+        </p>
+        <p id="hit"></p>
+        <pre id="stats"></pre>
+        <button id="cache">Measure cache lifecycle</button><button id="copy">Copy report</button>
+        <pre id="report"></pre>
+        <p>
+          Completed mask timings include synchronization by readback; hit batches perform no GL
+          work. These measurements exclude full-scene GPU time. Repeated card instances share three
+          prepared faces.
+        </p>
+      </details>
+      <footer id="disclaimer"></footer>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

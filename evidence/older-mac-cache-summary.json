@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-10",
+  "hardware": "Older Mac (user description; chip not recorded)",
+  "browser": "Chrome 155 on macOS",
+  "power_mode": "not recorded",
+  "concurrent_model_inference": "not recorded",
+  "source": "User-supplied report in conversation",
+  "size": [
+    512,
+    341
+  ],
+  "paths": {
+    "rust": {
+      "cold_ms": 11.8,
+      "setup_ms": 10,
+      "hot_10000_ms": 5,
+      "hot_us_per_hit": 0.5,
+      "fitted_800_ms": 0.6,
+      "pressure_24_ms": 382.1,
+      "scratch_bytes": 0
+    },
+    "gpu": {
+      "cold_ms": 10.7,
+      "setup_ms": 7.9,
+      "hot_10000_ms": 3.8,
+      "hot_us_per_hit": 0.38,
+      "fitted_800_ms": 0.5,
+      "pressure_24_ms": 516.6,
+      "scratch_bytes": 1222144
+    }
+  },
+  "both_backends": {
+    "cold_samples": 5,
+    "hot_rebuilds": 0,
+    "hot_uploads": 0,
+    "fitted_rebuilds": 0,
+    "pressure_rebuilds": 24,
+    "pressure_evictions": 20,
+    "pressure_resident_bytes": 698368,
+    "resident_mask_bytes": 174592
+  },
+  "persistence": {
+    "snapshot_ms": 3.2,
+    "gzip_ms": 9.8,
+    "write_ms": 2.5,
+    "read_decode_ms": 2,
+    "upload_completed_ms": 4.6,
+    "rebuild_completed_ms": 6.3,
+    "break_even_restores": null
+  },
+  "byte_exact": true,
+  "full_face_reuse": {
+    "elapsed_ms": 0.4,
+    "additional_compositions": 0,
+    "additional_masks": 0,
+    "additional_edges": 0,
+    "additional_uploads": 0,
+    "resident_gpu_payload_bytes": 23671152
+  },
+  "scope": "Completed mask timings include readback. Pressure includes yielding. Scene draw/GPU completion not timed by full-face reuse."
+}

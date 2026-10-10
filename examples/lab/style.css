@@ -1,0 +1,162 @@
+:root {
+  font:
+    15px/1.6 system-ui,
+    sans-serif;
+  color: #c9c7cb;
+  background: #12151b;
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 1400px;
+  margin: auto;
+  padding: 42px 32px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+header p {
+  font-size: 17px;
+  color: #969baf;
+  text-align: right;
+  line-height: 1.6;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #b9a17b;
+}
+h1 {
+  font:
+    500 52px/1.2 Georgia,
+    serif;
+  letter-spacing: -2px;
+  margin: 12px 0;
+  color: #eee1c7;
+}
+h1 span {
+  font-size: 36px;
+  margin-left: 16px;
+  color: #bdaa8b;
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a4abb8;
+}
+button,
+select {
+  font: inherit;
+  padding: 9px 13px;
+  border: 1px solid #474651;
+  border-radius: 6px;
+  background: #1b202a;
+  color: #e3d9c7;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  border-color: #c4ae8a;
+}
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid #dbbe81;
+  outline-offset: 3px;
+}
+#scene-wrap {
+  width: 100%;
+  margin-top: 8px;
+}
+#scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: radial-gradient(ellipse at 50% 40%, #33303d, #12151b 74%);
+  touch-action: pan-y;
+}
+#status {
+  font-size: 12px;
+  color: #949aaa;
+  margin: 20px 0 0;
+  min-height: 20px;
+}
+.captions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #d1bea0;
+  margin: 8px 0 35px;
+}
+.captions i {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  color: #838b9d;
+  margin-top: 8px;
+}
+details {
+  border-top: 1px solid #30333e;
+  padding-top: 20px;
+  font-size: 13px;
+  max-width: 100%;
+}
+summary {
+  cursor: pointer;
+  color: #ada38f;
+}
+pre {
+  font: 12px/1.5 monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+footer {
+  font-size: 11px;
+  margin-top: 24px;
+  color: #747e90;
+}
+@media (max-width: 600px) {
+  main {
+    padding: 24px 14px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  header p {
+    display: none;
+  }
+  nav {
+    gap: 8px;
+  }
+  .captions {
+    display: none;
+  }
+  .eyebrow {
+    font-size: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}

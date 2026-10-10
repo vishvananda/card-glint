@@ -1,0 +1,128 @@
+/** Public game-neutral contract. Inputs use normalized top-left card coordinates. */
+export type Rect = readonly [number, number, number, number];
+export type Size = readonly [number, number];
+export type Finish = 'regular' | 'etched' | 'prismatic' | 'cold' | 'opal';
+export type Tier = 'table' | 'inspect';
+export interface Lease<T> {
+  value: T;
+  release(): void;
+}
+export interface AssetRequest {
+  url: string;
+  width?: number;
+  revision?: string;
+}
+export interface RasterHost {
+  images(
+    requests: readonly AssetRequest[],
+    signal: AbortSignal,
+  ): Promise<Lease<ReadonlyMap<string, ImageBitmap>>>;
+}
+export interface Raster {
+  /** Immutable content identity, including all dependencies and recipe version. */
+  key: string;
+  size: Size;
+  paint(
+    host: RasterHost,
+    signal: AbortSignal,
+    underArt?: HTMLCanvasElement,
+  ): Promise<HTMLCanvasElement>;
+}
+export interface EdgeSource {
+  /** Same image/threshold can be reused across faces, crops and finishes. */
+  key: string;
+  asset: AssetRequest;
+  crop: Rect;
+  rotation?: -90 | 0 | 90;
+  destination: Rect;
+  clip: Rect;
+  threshold: number;
+  /** Imported edge masks skip the detector. Alpha is extracted to linear R8. */
+  importedMask?: AssetRequest;
+}
+export interface FaceRecipe {
+  pack: string;
+  color: Raster;
+  stamp?: Raster;
+  edges: readonly EdgeSource[];
+  artWindows: readonly Rect[];
+  cornerRadius: number;
+  finishCoverageBase?: number;
+  regions: readonly { id: string; rect: Rect }[];
+}
+export interface GamePack<T> {
+  readonly id: string;
+  describe(input: T, tier: Tier): FaceRecipe;
+  dispose?(): void;
+}
+export type LayerStage = 'under-art' | 'printed-content' | 'under-finish' | 'over-finish';
+export interface CardLayer {
+  id: string;
+  order: number;
+  stage: LayerStage;
+  raster: Raster;
+  clip?: Rect;
+  contributesToEtch?: boolean;
+  finishCoverage?: { add?: Raster; exclude?: Raster };
+  etchCoverage?: { add?: Raster; exclude?: Raster };
+}
+export interface CardDocument {
+  id: number;
+  revision: number;
+  recipe: FaceRecipe;
+  layers?: readonly CardLayer[];
+}
+export interface Instance {
+  id: number;
+  card: number;
+  /** Column-major local unit quad → world matrix. Local y increases downward. */
+  transform: readonly number[];
+  order?: number;
+  finish?: Finish;
+  /** World-space unit normal; defaults to +Z. */
+  normal?: readonly [number, number, number];
+}
+export interface SceneLayer {
+  id: string;
+  raster: Raster;
+  transform: readonly number[];
+  order: number;
+  stage: 'world-under-cards' | 'world-interleaved' | 'scene-overlay' | 'hud';
+  depth: 'test-write' | 'test-readonly' | 'ignore';
+}
+export interface Budgets {
+  gpuBytes: number;
+  cpuBytes: number;
+  /** Reserved separately from resident textures for etching and temporary uploads. */
+  scratchBytes: number;
+  preparationConcurrency: number;
+}
+export interface Frame {
+  viewProjection: Float32Array;
+  pointer?: readonly [number, number];
+  clear?: readonly [number, number, number, number];
+}
+export interface CacheStats {
+  hits: number;
+  misses: number;
+  admissions: number;
+  evictions: number;
+  bytes: number;
+  peakBytes: number;
+  rejected: number;
+}
+export interface Metrics {
+  compositions: number;
+  maskBuilds: number;
+  edgeBuilds: number;
+  uploads: number;
+  readbacks: number;
+  draws: number;
+  visible: number;
+  pending: number;
+  gpu: CacheStats;
+  cpu: CacheStats;
+  scratchBytes: number;
+  cpuFrameMs: number;
+}
+export const IDENTITY = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);

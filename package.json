@@ -1,0 +1,53 @@
+{
+  "name": "card-glint",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/browser"
+  ],
+  "scripts": {
+    "build:wasm": "node scripts/build-wasm.mjs",
+    "build": "npm run build:wasm && node scripts/build.mjs",
+    "check": "cargo fmt --all --check && cargo clippy --workspace --all-targets -- -D warnings && cargo test --workspace && tsc --noEmit && prettier --check . && node scripts/check-boundaries.mjs",
+    "format": "cargo fmt --all && prettier --write .",
+    "test:browser": "node tests/browser.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4283",
+    "test:package": "node tests/package.mjs",
+    "art": "node scripts/generate-showcase-art.mjs",
+    "test:showcase": "node tests/showcase.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "playwright": "1.60.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "vite": "7.3.6"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/packages/browser/src/index.d.ts",
+      "import": "./dist/lib/browser.js"
+    },
+    "./renderer.wasm": "./dist/lib/renderer_bg.wasm",
+    "./showcase": {
+      "types": "./dist/types/games/showcase/src/index.d.ts",
+      "import": "./dist/lib/showcase.js"
+    }
+  },
+  "files": [
+    "dist/lib",
+    "dist/types",
+    "games/*/assets.json",
+    "README.md",
+    "LICENSE*",
+    "NOTICE*",
+    "games/showcase/art"
+  ],
+  "license": "MIT OR Apache-2.0",
+  "description": "Game-neutral browser card rendering with a Rust/WASM core, cached GPU etching, and isolated game packs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vishvananda/card-glint.git"
+  }
+}

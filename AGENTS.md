@@ -1,0 +1,21 @@
+# card-glint
+
+Read README.md and docs/architecture.md before changing ownership or interfaces.
+The Rust core and browser backend must not import a game pack, host application,
+UI framework, or engine model. Game packs own asset URLs, frame geometry,
+typography, vocabulary, and semantic hit regions. Keep packs independent.
+
+Use the pinned Rust toolchain, edition 2024, workspace lints, safe typed boundaries,
+and exhaustive error handling. Unsafe code is forbidden. Run strict Clippy and
+rustfmt. Keep modules small; numerical lint exceptions need local reasons.
+
+Run npm run check, npm run build, npm run test:package, npm run test:browser, and
+npm run test:showcase for renderer changes. Browser tests need npm run preview.
+No per-frame decoding, font loading, shader compilation, or mask readback.
+Document benchmark scope: CPU submission time is not GPU completion time.
+Never silently use another game's painter or publish partial face revisions.
+
+The public showcase must load only original repository assets. External art
+reference metadata belongs in references/ with attribution; do not copy those
+assets into the showcase or README images. Do not add private host paths or
+internal project names. Preserve the fan notice and source links in README.md.
