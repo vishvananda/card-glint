@@ -8,9 +8,9 @@ A small, game-neutral card renderer. Rust/WASM manages caches, scene planning,
 picking and pixel kernels. WebGL2 adds reusable etching, embossing and foil.
 Your game supplies the artwork, frame geometry, typography and hit regions.
 
-![Three original card designs rendered with etching, cold foil and Opal embossing](docs/images/showcase.png)
+[![Three original card designs rendered with etching, cold foil and Opal embossing](docs/images/showcase.png)](https://vishvananda.github.io/card-glint/)
 
-[Try the interactive showcase](https://tetrarchs.com/card-glint/) ·
+[Try the interactive showcase](https://vishvananda.github.io/card-glint/) ·
 [Architecture and layering](docs/architecture.md) ·
 [Hardware and cache measurements](docs/performance.md)
 
@@ -62,6 +62,11 @@ npm run test:package           # independent packed-library consumer
 CI runs these checks and uploads browser evidence. `npm run format` applies
 rustfmt and Prettier. Native and WASM Clippy run with warnings denied; unsafe
 Rust is forbidden.
+
+The showcase is hosted on GitHub Pages. After checks pass on `main`, the same
+workflow publishes `dist/lab`; pull requests only run checks. The README preview
+links to the interactive page. All artwork and WASM are served from that site,
+with no application server or external asset host required.
 
 ## Use it in an application
 
