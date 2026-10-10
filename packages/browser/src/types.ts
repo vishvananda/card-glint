@@ -87,6 +87,10 @@ export interface Instance {
   transform: readonly number[];
   order?: number;
   finish?: Finish;
+  /** Optional whole-card silhouette warp. Amount is local card width, 0–0.02.
+   * Card layers/masks follow it; world/scene/HUD layers keep their own geometry.
+   * Leave unset for artwork-only finishes or a fixed silhouette. */
+  deformation?: { kind: 'heat'; amount: number };
   /** World-space unit normal; defaults to +Z. */
   normal?: readonly [number, number, number];
 }
@@ -136,5 +140,9 @@ export interface Metrics {
   cpu: CacheStats;
   scratchBytes: number;
   cpuFrameMs: number;
+  /** Cumulative shared caustic light-map renders; fixed time reuses the last map. */
+  surfacePasses: number;
+  /** Fixed optical target and mesh allocation, separate from asset-cache budgets. */
+  surfaceBytes: number;
 }
 export const IDENTITY = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);

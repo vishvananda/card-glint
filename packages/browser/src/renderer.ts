@@ -10,6 +10,7 @@ import { Device, type Material } from './gpu/device.js';
 import { TextureStore, type Texture } from './gpu/textures.js';
 import { Preparer, type Prepared } from './prepare.js';
 import { paintRaster, closeRaster, layersOf } from './raster.js';
+import { surfaceSeed, validateDeformation, exportScale } from './deformation.js';
 import {
   IDENTITY,
   type Budgets,
@@ -62,6 +63,7 @@ export class Renderer {
   private lastFrame: Frame | undefined;
   private frameMs = 0;
   private visible = 0;
+  private shapeData = new Float32Array();
   readonly budgets: Budgets;
   constructor(private options: RendererOptions) {
     this.budgets = {
@@ -124,6 +126,7 @@ export class Renderer {
       ...item,
       transform: [...item.transform],
       normal: item.normal ? ([...item.normal] as [number, number, number]) : undefined,
+      deformation: item.deformation ? { ...item.deformation } : undefined,
     }));
     for (const item of snapshot) {
       validateInstance(item);
@@ -135,6 +138,21 @@ export class Renderer {
       Int32Array.from(snapshot, (i) => i.order ?? 0),
     );
     this.instances = snapshot;
+  }
+  private plan(frame: Frame) {
+    if (this.shapeData.length !== this.instances.length * 4)
+      this.shapeData = new Float32Array(this.instances.length * 4);
+    this.instances.forEach((item, index) => {
+      // Keep clipping tied to the published face, even during a pending revision.
+      const recipe = (this.prepared.get(item.card)?.document ?? this.documents.get(item.card)!)
+        .recipe;
+      const offset = index * 4;
+      this.shapeData[offset] = recipe.color.size[1] / recipe.color.size[0];
+      this.shapeData[offset + 1] = recipe.cornerRadius;
+      this.shapeData[offset + 2] = item.deformation?.amount ?? 0;
+      this.shapeData[offset + 3] = surfaceSeed(item.id);
+    });
+    return this.scene.plan_shaped(frame.viewProjection, this.shapeData, frame.time ?? 0);
   }
   ready(id: number, revision: number, signal?: AbortSignal): Promise<void> {
     this.assertLive();
@@ -230,7 +248,7 @@ export class Renderer {
     validateFrame(frame);
     if (this.lost) return this.metrics;
     const start = performance.now(),
-      order = this.scene.plan(frame.viewProjection),
+      order = this.plan(frame),
       leases: Lease<Texture>[] = [];
     this.lastFrame = frame;
     this.device.begin(frame);
@@ -382,6 +400,8 @@ export class Renderer {
       cpu: this.assets.store.stats,
       scratchBytes: this.textures.scratchBytes,
       cpuFrameMs: this.frameMs,
+      surfacePasses: this.device.surfacePasses,
+      surfaceBytes: this.device.surfaceBytes,
     };
   }
   resetEpoch(epoch: number) {
@@ -443,8 +463,13 @@ export class Renderer {
       pointer?: readonly [number, number];
       /** Surface snapshot time in seconds; does not change the live simulation. */
       time?: number;
+      /** Optional silhouette warp; fits within the PNG with transparent margins. */
+      deformation?: Instance['deformation'];
+      /** Stable surface seed identity. Supply the live instance ID to match its phase. */
+      instanceId?: number;
     },
   ): Promise<Blob> {
+    validateDeformation(options.deformation);
     await this.ready(id, options.revision);
     const document = this.documents.get(id)!;
     if (document.revision !== options.revision) throw Error('Export revision changed');
@@ -456,6 +481,7 @@ export class Renderer {
     if (!Number.isInteger(options.width) || options.width < 1 || options.width > 2048)
       throw RangeError('Invalid export size');
     let promise: Promise<Blob>;
+    const scale = exportScale(options.deformation, options.width);
     const restoreMotion = this.device.isolateMotion();
     try {
       canvas.width = options.width;
@@ -465,10 +491,11 @@ export class Renderer {
       this.sceneLayers = [];
       this.updateScene([
         {
-          id: 0,
+          id: options.instanceId ?? 0,
           card: id,
           finish: options.finish,
-          transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
+          deformation: options.deformation,
+          transform: [2 * scale, 0, 0, 0, 0, -2 * scale, 0, 0, 0, 0, 1, 0, -scale, scale, 0, 1],
         },
       ]);
       this.render({

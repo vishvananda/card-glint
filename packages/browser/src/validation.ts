@@ -1,4 +1,5 @@
 import type { CardDocument, Frame, Instance, Raster, Rect, SceneLayer } from './types.js';
+import { validateDeformation } from './deformation.js';
 export function uint32(value: number) {
   return Number.isInteger(value) && value >= 0 && value <= 0xffffffff;
 }
@@ -65,6 +66,7 @@ export function validateDocument(document: CardDocument) {
   }
 }
 export function validateInstance(item: Instance) {
+  validateDeformation(item.deformation);
   if (
     !uint32(item.id) ||
     !uint32(item.card) ||

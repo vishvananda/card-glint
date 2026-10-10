@@ -1,5 +1,6 @@
 import { FOIL_PREVIEW_GLSL } from './foil-preview-shader.js';
 import { SURFACE_GLSL } from './surface-shader.js';
+import { DEFORMATION_GLSL } from './deformation-shader.js';
 export const vertex = `#version 300 es
 layout(location=0) in vec2 position;
 layout(location=1) in mat4 model;
@@ -11,9 +12,12 @@ layout(location=10) in vec4 instanceRipple2;layout(location=11) in vec4 instance
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
-void main(){v_uv=position;v_normal=instanceNormal;previewKind=instanceFinish;
+void main(){
+vec2 pad=instanceSurface.w*vec2(1.,.18);
+vec2 local=position*(1.+2.*pad)-pad;
+v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
-gl_Position=viewProjection*model*vec4(position,0.,1.);}`;
+gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
 const foil = FOIL_PREVIEW_GLSL.replace(
   'uniform float previewKind;',
   'flat in float previewKind;',
@@ -29,8 +33,10 @@ out vec4 out_color;
 float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,uv).r*hasMask,c.b)*(1.-c.a);}
 ${foil}
 ${SURFACE_GLSL}
+${DEFORMATION_GLSL}
 void main(){
- vec2 uv=vec2(v_uv.x,1.-v_uv.y);
+ vec2 source=cardSource(v_uv,surfaceTime,surfaceInfo.wz);
+ vec2 uv=vec2(source.x,1.-source.y);
  vec2 corner=abs((uv-.5)*vec2(1.,aspect))-(vec2(.5,aspect*.5)-cornerRadius);
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));

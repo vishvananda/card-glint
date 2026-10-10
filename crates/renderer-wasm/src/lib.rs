@@ -80,6 +80,24 @@ impl SceneCore {
             )
             .map_err(error)
     }
+    /// # Errors
+    /// Refuses malformed cameras, shape parameters or animation times.
+    pub fn plan_shaped(
+        &mut self,
+        camera: &[f32],
+        shapes: &[f32],
+        time: f32,
+    ) -> Result<Vec<u32>, JsValue> {
+        self.scene
+            .plan_shaped(
+                camera
+                    .try_into()
+                    .map_err(|_| error("Camera needs 16 floats"))?,
+                shapes,
+                time,
+            )
+            .map_err(error)
+    }
     #[must_use]
     pub fn hit(&self, x: f32, y: f32) -> Vec<f64> {
         self.scene.hit([x, y]).map_or_else(Vec::new, |(id, uv)| {

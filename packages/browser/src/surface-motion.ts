@@ -1,4 +1,5 @@
 import type { Frame, Instance } from './types.js';
+import { surfaceSeed } from './deformation.js';
 
 interface State {
   time: number;
@@ -33,7 +34,7 @@ export class SurfaceMotion {
     let state = this.states.get(item.id);
     if (!state || time < state.time || time - state.time > 0.5) {
       const data = new Float32Array(20);
-      data[2] = ((Math.imul(item.id + 1, 1597334677) >>> 0) % 65536) / 65536;
+      data[2] = surfaceSeed(item.id);
       for (let i = 0; i < 4; i++) data[6 + i * 4] = -100;
       state = {
         time,

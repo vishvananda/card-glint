@@ -129,50 +129,79 @@ acceptance remains necessary in addition to Chromium software-GPU checks.
 
 ## Animated optical surfaces
 
-`rain`, `heat` and `pool` shade the already prepared face in its existing depth
-pass. They keep the rounded silhouette and depth surface unchanged. Refraction
-samples are clamped to the card; finish-excluded pixels mix back to the original
-unwarped face, and over-finish overlays sample at the original UV. Thus an overlay
-does not get pulled underneath a droplet or water wave.
+`rain`, `heat` and `pool` shade the prepared face in its existing depth pass.
+Refraction is clamped to the card, or to its art window in artwork-only mode.
+Finish-excluded pixels keep the original ink; over-finish overlays do not get
+pulled underneath droplets or water waves. Rain and pool shift the underlying
+image with tilt to suggest its distance behind the front surface.
 
-Time is explicit, nonnegative elapsed seconds. The host schedules draws and owns
-reduced-motion/visibility policy. The browser adapter holds a damped spring and
-a ring of four ripple impulses per visible animated instance. It derives slosh
-from changes in the instance transform and normal, and creates throttled impulses
-only for `Frame.hover.instance`. Stable instance IDs keep independent seeds.
-Removing/culling an instance drops its transient state; rewinding time, a gap
-over half a second, context recreation or an epoch reset clears that history.
-Moving the camera alone does not inject slosh. Export uses an isolated state.
+Time is explicit, nonnegative elapsed seconds. The host owns scheduling and
+reduced-motion/visibility policy. The adapter holds a damped spring and four
+ripple impulses per visible animated instance. Slosh follows changes in the
+instance transform and normal. Only `Frame.hover.instance` receives impulses.
+Stable instance IDs seed independent offsets in the shared fields. Culling drops
+transient state; rewinding time, a gap over half a second, context recreation or
+an epoch reset clears that history. Camera motion alone does not inject slosh.
+Export isolates the motion state.
 
-There are no extra simulation textures, image decodes, mask builds, framebuffer
-passes or readbacks for these treatments. Animation uploads a 160-byte instance
-record (matrix, normal, finish, spring/seed and four ripples), up from 80 bytes in
-v0.1.0. Transient JavaScript state and the staging buffer scale with visible
-instances; texture budgets and cache keys are unchanged. Surface programs compile
-once per context. The original finishes skip the new optical shader branches.
+Card preparation, decoding, etching and texture uploads remain cached. Animation
+uploads a 160-byte instance record; silhouette amplitude occupies a previously
+unused float. Rain evaluates eighteen candidate drops; rain and heat use five
+face samples for softening. Pool evaluates six surface waves and four bounded
+ripples, then samples the face and a **separate projected-light map** (five taps
+to soften mesh boundaries and narrow ray folds). Programs
+compile once per context. The original finishes skip the optical branches.
 
-Rain evaluates two neighborhoods of nine potential drops per fragment: fine
-beads and draining drops with clear trails. Rain and heat each use a five-tap
-linear-light filter on the existing face texture. This adds sampling work, but
-no cached blur image or intermediate render target. Tilt changes the lenses and
-highlights. Heat and pool reflections also follow the surface normal, so their
-response remains visible at a fixed animation time. Pool water evaluates six
-traveling waves twice for slopes and approximate light-footprint convergence,
-plus four bounded ripple waves. These costs
-scale primarily with shaded pixel count and overdraw, even when many instances
-share one prepared face. The pixel tests verify animation, fixed-time repeatability,
-localized impulses, coverage masks and unchanged preparation/upload counters.
-They use Chromium software rendering, not hardware GPU timings or mobile FPS.
+The pool light pass refracts a 192×192-cell mesh through the shared height field
+onto a 512×512 R8 receiving plane. Source-to-destination footprint area determines
+irradiance; additive blending accumulates folded rays. Floor ink is illuminated
+in linear light, with ambient fill plus focused/diverging sunlight. A separate
+water-surface normal supplies Fresnel reflection and highlights. This avoids
+painting cell outlines over the face. The field is periodic and advected, with
+per-instance offsets; there is no per-card light-map allocation.
 
-These are stylized refraction prototypes rather than a fluid simulation. Rain
-does not physically merge droplets; pool water does not conserve volume. Heat
-warps sampled ink, not mesh geometry, so picking and surrounding objects keep
-their original shape. Slosh/ripple history is transient and not serialized.
+One light pass runs at the first visible pool draw for a new time. Later pool
+materials/instances reuse it; an unchanged time skips it entirely. No visible
+pool cards means no light pass. `surfacePasses` reports its cumulative count;
+`draws` continues to count card and scene-layer submissions. `surfaceBytes`
+reports the fixed **704,512 bytes** for the R8 map and index buffer per context,
+separate from the CPU/GPU asset-cache budgets and etching scratch. This bounded
+allocation is created with the context and released with it. It adds no texture
+uploads/readbacks during animation. GPU fragment cost still grows with area and
+overdraw, while the shared light pass has a fixed cost. Browser pixel tests use
+software rendering; CPU submission timings are not hardware GPU completion/FPS.
 
-The showcase's area toggle uses existing `finishCoverageBase` and layer coverage
-masks from the game pack's art windows. It does not add a renderer-wide mode or
-change another instance's material. The first artwork-only toggle prepares
-coverage/transparent-overlay textures, shared when geometry matches; subsequent
-toggles reuse them while resident. Face composition, artwork decoding and edge
-generation stay cached. Existing exclusions and over-finish layers still win.
+The water is an approximation: one flat receiving floor and one directional
+light, capped 8× intensity in an 8-bit map, no volume conservation or submerged
+occluders. Ripple/slosh changes refract the floor map and surface reflections;
+it does not retrace the shared sunlight for each local ripple. Parallax depth
+is visually compressed. Rain does not physically merge droplets.
+
+### Optional moving silhouette
+
+`Instance.deformation` opts into a bounded horizontal heat warp (0–0.02 local
+card width). The vertex shader expands its raster quad conservatively. The
+fragment shader inverse-warps coordinates **before** rounded clipping and all
+face/layer/coverage lookups. Discarded pixels reveal the background or cards
+behind. It remains one planar depth surface, not a bent 3D mesh.
+
+Rust receives four shape floats per instance: published face aspect, corner
+radius, amplitude and seed. Planning culls expanded bounds; picking uses the
+same inverse map and rounded distance at the last rendered time, falling through
+to a card behind on rejected pixels. Semantic regions receive source UVs.
+Cross-backend pixel tests enforce shader/Rust agreement, including perspective.
+The published face's shape stays active while a replacement revision prepares.
+Invalid shape/frame data is rejected before replacing the last plan.
+
+Card-local layers and exclusion masks follow this geometric mapping together;
+a sharp over-finish badge moves with its card. World/interleaved/scene/HUD layers
+keep independent geometry and established depth ordering. Export fits the whole
+conservative envelope into the requested PNG with a small transparent guard.
+It preserves aspect ratio and restores the live frame and motion state.
+
+The showcase enables outline deformation only for Full card heat. Its area
+toggle otherwise uses existing `finishCoverageBase` and pack `artWindows` masks.
+The first artwork-only toggle prepares coverage/transparent-overlay textures;
+subsequent toggles reuse them while resident. Neither changing area nor changing
+outline amplitude rebuilds faces or edges.
 See [optical references and approximations](optical-surfaces.md).

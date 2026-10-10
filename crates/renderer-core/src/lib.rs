@@ -2,6 +2,7 @@
 //! Browser code owns fonts, decoded images and GPU handles; no game vocabulary
 //! or network/runtime dependencies belong in this crate.
 pub mod cache;
+pub mod deformation;
 pub mod etching;
 pub mod graph;
 pub mod scene;

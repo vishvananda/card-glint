@@ -6,6 +6,7 @@ import {
   type CardDocument,
   type CardLayer,
   type Finish,
+  type Instance,
 } from '@card-glint/browser';
 import { showcase } from '../../games/showcase/src/index.js';
 import { layoutCards, sceneSize } from './layout.js';
@@ -30,6 +31,11 @@ let dirty = true,
   visible = true;
 let hover: { instance: number; uv: readonly [number, number] } | undefined;
 let poses: ReadonlyMap<number, { x: number; y: number }> | undefined;
+function deformation(finish: Finish): Instance['deformation'] {
+  return finish === 'heat' && $('scope').getAttribute('aria-pressed') !== 'true'
+    ? { kind: 'heat', amount: 0.012 }
+    : undefined;
+}
 function chosenFinish(index: number): Finish {
   const value = $<HTMLSelectElement>('finish').value;
   if (value === 'mixed') return (['etched', 'cold', 'opal'] as const)[index % 3]!;
@@ -88,6 +94,7 @@ function instances(time = 0) {
   ).map((instance, i) => ({
     ...instance,
     finish: chosenFinish(i),
+    deformation: deformation(chosenFinish(i)),
   }));
 }
 function resize() {
@@ -287,6 +294,8 @@ const ready = (async () => {
       revision: documents[0]!.revision,
       width: 732,
       finish: chosenFinish(0),
+      deformation: deformation(chosenFinish(0)),
+      instanceId: 1,
       time: effectTime,
     });
     const url = URL.createObjectURL(blob),

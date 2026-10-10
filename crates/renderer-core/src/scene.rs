@@ -1,14 +1,9 @@
 //! Packed scene planning. Coordinates are homogeneous clip coordinates after
 //! multiplying the caller's view-projection with each instance transform.
+use crate::deformation::Shape;
 use std::collections::BTreeSet;
 
 pub type Matrix = [f32; 16];
-const CORNERS: [[f32; 4]; 4] = [
-    [0., 0., 0., 1.],
-    [1., 0., 0., 1.],
-    [0., 1., 0., 1.],
-    [1., 1., 0., 1.],
-];
 
 #[derive(Default)]
 pub struct Scene {
@@ -17,6 +12,8 @@ pub struct Scene {
     orders: Vec<i32>,
     clips: Vec<[[f32; 4]; 4]>,
     visible: Vec<usize>,
+    shapes: Vec<Shape>,
+    time: f32,
 }
 
 fn transform(m: &Matrix, v: [f32; 4]) -> [f32; 4] {
@@ -59,14 +56,40 @@ impl Scene {
     /// # Errors
     /// Refuses a non-finite camera transform.
     pub fn plan(&mut self, camera: &Matrix) -> Result<Vec<u32>, &'static str> {
-        if camera.iter().any(|v| !v.is_finite()) {
-            return Err("Invalid camera matrix");
+        self.plan_shaped(camera, &[1., 0., 0., 0.].repeat(self.ids.len()), 0.)
+    }
+
+    /// Plan expanded silhouettes and retain their mapping for picking this frame.
+    /// Shapes contain four floats per instance: aspect, radius, amplitude, seed.
+    /// # Errors
+    /// Refuses invalid cameras, times or shape data without replacing the last plan.
+    pub fn plan_shaped(
+        &mut self,
+        camera: &Matrix,
+        shapes: &[f32],
+        time: f32,
+    ) -> Result<Vec<u32>, &'static str> {
+        if camera.iter().any(|v| !v.is_finite())
+            || !time.is_finite()
+            || time < 0.
+            || shapes.len() != self.ids.len() * 4
+        {
+            return Err("Invalid camera, time or packed shapes");
         }
+        let shapes = shapes
+            .as_chunks::<4>()
+            .0
+            .iter()
+            .map(|values| Shape::decode(values))
+            .collect::<Result<Vec<_>, _>>()?;
         self.clips = self
             .transforms
             .iter()
-            .map(|m| CORNERS.map(|p| transform(camera, transform(m, p))))
+            .zip(&shapes)
+            .map(|(m, shape)| shape.corners().map(|p| transform(camera, transform(m, p))))
             .collect();
+        self.shapes = shapes;
+        self.time = time;
         self.visible = self
             .clips
             .iter()
@@ -94,6 +117,8 @@ impl Scene {
         let mut selected = None;
         let mut best = f32::INFINITY;
         for &i in &self.visible {
+            let shape = self.shapes[i];
+            let corners = shape.corners();
             for indices in [[0, 1, 2], [2, 1, 3]] {
                 let clip = indices.map(|index| self.clips[i][index]);
                 if clip.iter().any(|p| p[3] <= 0.) {
@@ -110,10 +135,14 @@ impl Scene {
                 let reciprocal: f32 = (0..3).map(|j| weights[j] / clip[j][3]).sum();
                 let uv = std::array::from_fn(|axis| {
                     (0..3)
-                        .map(|j| weights[j] * CORNERS[indices[j]][axis] / clip[j][3])
+                        .map(|j| weights[j] * corners[indices[j]][axis] / clip[j][3])
                         .sum::<f32>()
                         / reciprocal
                 });
+                let uv = shape.source(uv, self.time);
+                if !shape.contains(uv) {
+                    continue;
+                }
                 best = depth;
                 selected = Some((self.ids[i], uv));
             }
@@ -170,5 +199,30 @@ mod tests {
                 .is_err()
         );
         assert_eq!(scene.plan(&IDENTITY).unwrap(), vec![0]);
+    }
+    #[test]
+    fn expanded_envelope_and_clipped_pick_fallthrough() {
+        let mut scene = Scene::default();
+        let mut front = IDENTITY;
+        front[14] = -0.5;
+        scene
+            .update(&[1, 2], &[IDENTITY, front].concat(), &[0, 0])
+            .unwrap();
+        let shapes = [1., 0., 0., 0., 1., 0.1, 0.02, 0.25];
+        scene.plan_shaped(&IDENTITY, &shapes, 2.).unwrap();
+        assert_eq!(scene.hit([0.001, 0.001]).unwrap().0, 1);
+        assert_eq!(scene.hit([0.5, 0.5]).unwrap().0, 2);
+        assert!(scene.plan_shaped(&IDENTITY, &[f32::NAN; 8], 2.).is_err());
+        assert_eq!(scene.hit([0.5, 0.5]).unwrap().0, 2);
+        let mut offscreen = IDENTITY;
+        offscreen[12] = 1.01;
+        scene.update(&[1], &offscreen, &[0]).unwrap();
+        assert!(scene.plan(&IDENTITY).unwrap().is_empty());
+        assert_eq!(
+            scene
+                .plan_shaped(&IDENTITY, &[1., 0., 0.02, 0.], 0.)
+                .unwrap(),
+            vec![0]
+        );
     }
 }

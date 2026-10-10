@@ -45,7 +45,7 @@ Node 22+, the pinned Rust toolchain, and wasm-bindgen-cli are required.
 ```sh
 npm ci
 rustup show
-cargo install wasm-bindgen-cli --version 0.2.127 --locked
+cargo install wasm-bindgen-cli --version 0.2.227 --locked
 npm run build
 npm run preview
 ```
@@ -68,6 +68,8 @@ npm run test:surfaces          # animation, local ripples/slosh, masks and cache
 npm run test:touch             # native touch gestures, tilt and page scrolling
 npm run test:coverage          # artwork-only/full-card masks, exports and cache reuse
 npm run test:optics            # caustic motion measured across successive frames
+npm run test:deformation       # animated silhouette, Rust picking, overlap and export
+npm run test:parallax          # recessed ink, floor illumination and shared light-map reuse
 npm run test:package           # independent packed-library consumer
 ```
 
@@ -86,7 +88,7 @@ with no application server or external asset host required.
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.1/card-glint-0.2.1.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.2/card-glint-0.2.2.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -107,7 +109,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.1/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.2/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -196,20 +198,29 @@ tilt, a smooth pointer handoff and the idle orbit. Pointer coordinates for
 canvas-space foil-light control.
 
 These are procedural optical treatments, not a fluid solver. Heat refracts the
-printed face in horizontal bands with slight blur. Rain adds small refractive
-beads and draining drops over lightly fogged glass. Cleared trails suppress the
-fog and smaller beads. All three respond to card tilt through reflections and
-distortion. Pool water derives traveling caustics from wave curvature, with refraction and up to
-four recent ripple impulses per instance. Under-finish content participates;
-over-finish content stays undistorted. Existing finish exclusion masks apply.
+printed face in horizontal bands with slight blur. Rain adds small lenses and
+draining drops over lightly fogged glass. Rain and pool place the image behind
+the surface, giving it parallax as the card tilts. Pool projects refracted light
+onto a separate floor map: concentrated rays brighten it and diverging rays dim
+it. Surface waves, reflections and pointer ripples sit above that lit floor.
+Under-finish content participates; over-finish content stays clear of these
+optical distortions. Existing finish exclusion masks apply.
 
-Animation changes uniforms and instance buffers, without rebuilding card
-textures or masks. It does increase fragment-shader work. See
-[surface costs and limits](docs/architecture.md#animated-optical-surfaces).
-The [optical treatment notes](docs/optical-surfaces.md) explain the references,
-approximations and artwork-only coverage.
-`exportCard(..., { time })` captures a still at a chosen time without disturbing
-the live motion state; export does not replay the live ripple/slosh history.
+For a heat-warped **outline**, set `deformation: { kind: 'heat', amount: 0.012 }`
+on the instance (maximum `0.02` of card width). Rounded clipping, card layers,
+masks and Rust picking follow the same inverse warp. World/scene/HUD layers
+keep their own transforms. The showcase enables this only for Full card heat;
+Artwork only keeps the frame fixed. Leave `deformation` unset for the original
+fixed silhouette with any finish.
+
+Animation reuses card textures and masks. Pool adds one shared light-map pass
+when time changes, regardless of card count; fixed-time renders reuse it.
+See [surface costs and limits](docs/architecture.md#animated-optical-surfaces)
+and [optical treatment notes](docs/optical-surfaces.md).
+`exportCard(..., { time, deformation, instanceId })` captures a still using the
+chosen outline and surface seed. Warped exports fit the whole envelope into the
+requested dimensions, preserving aspect ratio with transparent margins. Export
+does not replay live ripple/slosh history or disturb the live motion state.
 
 ## Sources and fan-content notice
 

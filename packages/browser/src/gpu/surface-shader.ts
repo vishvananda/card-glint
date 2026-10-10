@@ -16,13 +16,33 @@ float surfaceNoise(vec2 p){
 }
 vec3 surfaceInk(vec2 uv){return texture(face,clamp(uv,vec2(.002),vec2(.998))).rgb;}
 vec3 refractedInk(vec2 uv){return previewInk(surfaceInk(uv));}
+// A recessed image moves behind the front surface as the card tilts. The
+// lateral view ray is reduced by the medium's refractive index before projection.
+vec2 surfaceParallax(vec2 uv,vec3 normal,float depth,float index){
+ vec2 ray=-normal.xy/index;
+ return uv+ray/sqrt(max(.1,1.-dot(ray,ray)))*vec2(depth,depth/aspect);
+}
+// In artwork-only mode, clamp to this art window so moving ink cannot pull the
+// printed frame into the illustration. No overscan image or extra texture needed.
+vec4 surfaceWindow(vec2 uv){
+ if(finishBase<.5)for(int i=0;i<8;i++){
+  vec4 b=artBounds[i];
+  if(b.z>b.x && b.w>b.y && all(greaterThanEqual(uv,b.xy)) && all(lessThanEqual(uv,b.zw))){
+   vec2 inset=min(.5/vec2(textureSize(face,0)),(b.zw-b.xy)*.25);
+   return b+vec4(inset,-inset);
+  }
+ }
+ return vec4(.002,.002,.998,.998);
+}
+vec3 windowInk(vec2 uv,vec4 bounds){return texture(face,clamp(uv,bounds.xy,bounds.zw)).rgb;}
 // Small, linear-light cross filter. Radius can be anisotropic; no blur texture.
-vec3 softenedInk(vec2 uv,vec2 radius){
- vec3 ink=surfaceInk(uv)*.4;
- ink+=(surfaceInk(uv+vec2(radius.x,0.))+surfaceInk(uv-vec2(radius.x,0.)))*.15;
- ink+=(surfaceInk(uv+vec2(0.,radius.y))+surfaceInk(uv-vec2(0.,radius.y)))*.15;
+vec3 softenedInk(vec2 uv,vec2 radius,vec4 bounds){
+ vec3 ink=windowInk(uv,bounds)*.4;
+ ink+=(windowInk(uv+vec2(radius.x,0.),bounds)+windowInk(uv-vec2(radius.x,0.),bounds))*.15;
+ ink+=(windowInk(uv+vec2(0.,radius.y),bounds)+windowInk(uv-vec2(0.,radius.y),bounds))*.15;
  return previewInk(ink);
 }
+vec3 softenedInk(vec2 uv,vec2 radius){return softenedInk(uv,radius,vec4(.002,.002,.998,.998));}
 float surfaceReflection(vec2 uv,vec3 normal,float sharpness){
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  vec3 lamp=normalize(vec3(-.24,.32,1.));

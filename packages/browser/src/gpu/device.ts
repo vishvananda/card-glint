@@ -3,6 +3,8 @@ import { vertex, fragment, imageFragment } from './shaders.js';
 import type { Texture } from './textures.js';
 import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
 import { SurfaceMotion } from '../surface-motion.js';
+import { surfaceSeed } from '../deformation.js';
+import { Caustics } from './caustics.js';
 const kinds = { regular: 0, etched: 1, prismatic: 2, cold: 3, opal: 4, rain: 5, heat: 6, pool: 7 };
 const stride = 40;
 export interface Material {
@@ -24,6 +26,7 @@ export class Device {
   private instanceCapacity = 0;
   private staging = new Float32Array();
   private motion = new SurfaceMotion();
+  private caustics: Caustics;
   draws = 0;
   constructor(readonly canvas: HTMLCanvasElement) {
     const gl = canvas.getContext('webgl2', {
@@ -34,6 +37,7 @@ export class Device {
     });
     if (!gl) throw Error('WebGL2 is required');
     this.gl = gl;
+    this.caustics = new Caustics(gl);
     this.foil = program(gl, fragment, vertex)!;
     this.image = program(gl, imageFragment, vertex)!;
     this.vao = gl.createVertexArray()!;
@@ -100,6 +104,8 @@ export class Device {
       const surface = this.motion.sample(item, frame);
       if (surface) values.set(surface, start + 20);
       else values.fill(0, start + 20, start + stride);
+      values[start + 22] = surfaceSeed(item.id);
+      values[start + 23] = item.deformation?.amount ?? 0;
     });
     if (this.instanceCapacity < length) {
       this.instanceCapacity = length;
@@ -115,6 +121,7 @@ export class Device {
   draw(material: Material, frame: Frame, list: readonly Instance[]) {
     const gl = this.gl,
       p = this.foil;
+    if (list.some((item) => item.finish === 'pool')) this.caustics.prepare(frame.time ?? 0);
     this.bind(p, frame, list);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
@@ -125,6 +132,7 @@ export class Device {
       ['mask', material.mask.texture],
       ['overlay', material.overlay?.texture ?? this.blank],
       ['coverage', material.coverage?.texture ?? this.blank],
+      ['caustics', this.caustics.map],
     ] as const;
     bindings.forEach(([name, t], i) => {
       gl.activeTexture(gl.TEXTURE0 + i);
@@ -178,6 +186,13 @@ export class Device {
     gl.deleteBuffer(this.quad);
     gl.deleteBuffer(this.instances);
     gl.deleteTexture(this.blank);
+    this.caustics.dispose();
+  }
+  get surfacePasses() {
+    return this.caustics.passes;
+  }
+  get surfaceBytes() {
+    return this.caustics.bytes;
   }
   end() {
     this.motion.end();
