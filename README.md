@@ -9,7 +9,7 @@ A small, game-neutral card renderer. Rust/WASM manages caches, scene planning,
 picking and pixel kernels. WebGL2 adds reusable etching, embossing and foil.
 Your game supplies the artwork, frame geometry, typography and hit regions.
 
-[![Three original fantasy cards with raindrops, heat shimmer and pool water treatments](docs/images/showcase.png)](https://vishvananda.github.io/card-glint/)
+[![Three original fantasy cards with etched, cold foil and opal finishes](docs/images/showcase.png)](https://vishvananda.github.io/card-glint/)
 
 [Try the interactive showcase](https://vishvananda.github.io/card-glint/) ·
 [Architecture and layering](docs/architecture.md) ·
@@ -51,7 +51,10 @@ npm run preview
 ```
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
-Hover or drag on the cards to tilt them and disturb the water. On touchscreens,
+The collection opens with etched, cold foil and opal finishes; animated living
+surfaces are available in the **Finish** selector.
+Hover or drag on a card to tilt it and disturb its water; neighboring cards keep
+their independent idle motion and reflections. On touchscreens,
 swipe beside or between cards to scroll the page. They drift gently when
 unattended; **Pause motion** freezes animation. Reduced-motion preferences are
 respected. **Effect: Full card / Artwork only** switches coverage for every
@@ -66,6 +69,7 @@ npm run test:browser           # preview server must be running
 npm run test:showcase          # local-only asset check and README screenshot
 npm run test:surfaces          # animation, local ripples/slosh, masks and cache reuse
 npm run test:touch             # native touch gestures, tilt and page scrolling
+npm run test:hover-isolation   # pointer affects one card; neighbors retain idle reflections
 npm run test:coverage          # artwork-only/full-card masks, exports and cache reuse
 npm run test:optics            # caustic motion measured across successive frames
 npm run test:deformation       # animated silhouette, Rust picking, overlap and export

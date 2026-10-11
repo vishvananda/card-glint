@@ -26,6 +26,12 @@ try {
   });
   assert.deepEqual(external, [], 'Showcase fetched external assets');
   assert.deepEqual(errors, []);
+  assert.equal(await page.locator('#finish').inputValue(), 'mixed');
+  assert.deepEqual(
+    await page.evaluate(() => window.lab.instances().map((instance) => instance.finish)),
+    ['etched', 'cold', 'opal'],
+    'Showcase opens with classic foils',
+  );
   await mkdir('docs/images', { recursive: true });
   await page.locator('#scene').screenshot({ path: 'docs/images/showcase.png' });
   await writeFile(

@@ -172,7 +172,8 @@ const ready = (async () => {
     renderer.updateScene(instances());
     const metrics = renderer.render({
       viewProjection: IDENTITY,
-      pointer: input.pointer,
+      // Frame.pointer moves the light for the whole scene. Keep it neutral:
+      // each card's normal already follows its own hover or idle motion.
       time: effectTime,
       hover: motionEnabled ? hover : undefined,
     });
@@ -185,7 +186,7 @@ const ready = (async () => {
   const resizeObserver = new ResizeObserver(() => {
     resize();
     renderer.updateScene(instances());
-    renderer.render({ viewProjection: IDENTITY, pointer: input.pointer, time: effectTime });
+    renderer.render({ viewProjection: IDENTITY, time: effectTime });
   });
   resizeObserver.observe(surface.parentElement!);
   const visibilityObserver = new IntersectionObserver(([entry]) => {

@@ -18,8 +18,8 @@
         <label
           >Finish
           <select id="finish">
-            <option value="mixed">The collection</option>
-            <option value="surfaces" selected>Living surfaces</option>
+            <option value="mixed" selected>Classic foils</option>
+            <option value="surfaces">Living surfaces</option>
             <option value="rain">Rainlit window</option>
             <option value="heat">Heat shimmer</option>
             <option value="pool">Liquid prism</option>
@@ -54,16 +54,16 @@
         ></canvas>
       </div>
       <div class="captions">
-        <span>01 / STARFALL SEER <i>Rainlit window</i></span
-        ><span>02 / TIDEBOUND WYRM <i>Heat shimmer</i></span
-        ><span>03 / CINDERBLOOM <i>Liquid prism</i></span>
+        <span>01 / STARFALL SEER <i>Etched silver</i></span
+        ><span>02 / TIDEBOUND WYRM <i>Cold foil</i></span
+        ><span>03 / CINDERBLOOM <i>Opal embossing</i></span>
       </div>
       <details>
         <summary>Inside the renderer</summary>
         <p>
           One Rust/WASM core and one WebGL2 context. Original AI-generated fantasy illustrations,
-          independently defined frames, and cached foil masks. Move across the cards to change the
-          light.
+          independently defined frames, and cached foil masks. Tilt a card to change its
+          reflections.
         </p>
         <p id="hit"></p>
         <pre id="stats"></pre>

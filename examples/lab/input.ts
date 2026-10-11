@@ -2,7 +2,6 @@ type Hit = { instance: number; uv: readonly [number, number]; part?: string | nu
 
 /** Host input policy: drag a card to tilt; swipe empty canvas to scroll the page. */
 export class ShowcaseInput {
-  pointer: [number, number] = [0.5, 0.5];
   hover: Hit | undefined;
   private cursor: [number, number] | undefined;
   private touch: { id: number; instance: number } | undefined;
@@ -73,12 +72,7 @@ export class ShowcaseInput {
   }
 
   private move(x: number, y: number) {
-    const rect = this.surface.getBoundingClientRect();
     this.cursor = [x, y];
-    this.pointer = [
-      Math.max(0, Math.min(1, (x - rect.left) / rect.width)),
-      Math.max(0, Math.min(1, (y - rect.top) / rect.height)),
-    ];
     this.sample();
     this.changed();
   }
@@ -96,7 +90,6 @@ export class ShowcaseInput {
     this.cursor = undefined;
     this.touch = undefined;
     this.hover = undefined;
-    this.pointer = [0.5, 0.5];
     this.changed();
   }
 
