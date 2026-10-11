@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Magic rendering accuracy</title>
+    <link rel="stylesheet" href="report.css" />
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">CARD-GLINT · LOCAL REFERENCE REPORT</p>
+      <h1 id="title">Magic rendering accuracy</h1>
+      <p id="scope"></p>
+      <div id="summary" class="summary"></div>
+      <p class="note">
+        Scores measure structural resemblance, not the percentage of cards rendered correctly. Text
+        edges use a one-pixel tolerance at 488 × 680. Unverified Oracle wording can differ from the
+        print. Alignment uses frozen frame/set profiles; no individual scan is fitted.
+      </p>
+      <nav aria-label="Report sections">
+        <button data-tab="cards" class="active">Cards</button>
+        <button data-tab="assets">Asset improvement list</button>
+        <button data-tab="excluded">Excluded treatments</button>
+        <a href="metrics.json">JSON</a><a href="metrics.csv">CSV</a>
+      </nav>
+    </header>
+    <main>
+      <section id="cards">
+        <div class="filters">
+          <label
+            >Find a card<input id="search" type="search" placeholder="Name or collector number"
+          /></label>
+          <label
+            >Show<select id="filter">
+              <option value="all">All ordinary printings</option>
+              <option value="reviewed">Reviewed wording</option>
+              <option value="held-out">Held-out cards</option>
+              <option value="uncertain">Alignment uncertain</option>
+              <option value="failed">Failed captures / overflow</option>
+            </select></label
+          >
+          <label
+            >Sort<select id="sort">
+              <option value="worst">Lowest text agreement</option>
+              <option value="best">Highest text agreement</option>
+              <option value="number">Collector number</option>
+            </select></label
+          >
+          <label
+            >Raster tier<select id="tier">
+              <option value="inspect">Inspect</option>
+              <option value="table">Table</option>
+            </select></label
+          >
+        </div>
+        <div class="workspace">
+          <div class="card-list">
+            <p id="count"></p>
+            <div id="list"></div>
+          </div>
+          <article id="detail"></article>
+        </div>
+      </section>
+      <section id="assets" hidden>
+        <h2>Assets to inspect</h2>
+        <p>
+          Existing frame assets are unchanged. These are associations with residual structural
+          error, not proof that the source asset is wrong. Inspect examples to distinguish geometry,
+          source art, and scan variation. There is no RGB color penalty; extreme changes that erase
+          ink contrast can still affect edges. Frame sides, type borders, stats borders, mana and
+          set symbols are measured; artwork, crown details and paper textures need separate
+          coverage.
+        </p>
+        <div id="asset-list"></div>
+      </section>
+      <section id="excluded" hidden>
+        <h2>Excluded treatments</h2>
+        <p>
+          These printings remain in the inventory but not the ordinary-printing score denominator.
+        </p>
+        <div id="exclusions"></div>
+      </section>
+    </main>
+    <script src="report-data.js"></script>
+    <script src="report.js"></script>
+  </body>
+</html>

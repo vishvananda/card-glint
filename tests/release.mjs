@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import os from 'node:os';
 import { chromium } from 'playwright';
+import { syntheticFontCss } from './magic-fonts.mjs';
 const manifest = JSON.parse(await readFile('dist/releases/release.json', 'utf8'));
 for (const file of manifest.files) {
   const data = await readFile(path.join('dist/releases', file.name));
@@ -40,7 +41,9 @@ const server = createServer(async (req, res) => {
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 let browser;
 try {
-  browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+  browser = await chromium.launch({
+    args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+  });
   const page = await browser.newPage();
   const origin = `http://127.0.0.1:${server.address().port}`,
     errors = [],
@@ -72,6 +75,9 @@ try {
     'Release hashes and extracted browser archive passed: JS, WASM and original art work under a nested URL without a bundler.',
   );
   const magicPage = await browser.newPage();
+  await magicPage.route('**/magic.css', (route) =>
+    route.fulfill({ contentType: 'text/css', body: syntheticFontCss }),
+  );
   await magicPage.route('https://**/*', (route) => {
     const font = /\.(?:ttf|woff2?)(?:\?|$)/.test(route.request().url());
     return route.fulfill({

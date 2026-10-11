@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 const url = process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/';
 const browser = await chromium.launch({
   headless: true,
-  args: ['--no-sandbox', '--enable-unsafe-swiftshader'],
+  // Force the software backend: allowing fallback alone still selects flaky host drivers.
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
 });
 try {
   const page = await browser.newPage({

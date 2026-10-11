@@ -2,6 +2,16 @@ import type { CardProfileInput } from './profile.js';
 
 export type CardBorderColor = 'black' | 'white' | 'silver';
 
+export interface RulesRun {
+  /** Plain text with optional {mana} symbols. Style is explicit, not inferred from punctuation. */
+  text: string;
+  italic?: boolean;
+}
+export interface RulesParagraph {
+  role: 'rules' | 'flavor';
+  runs: readonly RulesRun[];
+}
+
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
@@ -14,6 +24,8 @@ export interface RenderedCardInput extends CardProfileInput {
   illustrationCrop?: FaceRect;
   manaSymbols?: string[];
   rulesText?: string;
+  /** Ordinary-face printing. When present this replaces rulesText for layout and painting. */
+  rulesParagraphs?: readonly RulesParagraph[];
   illustration?: string | null;
   etchedIllustration?: string | null;
   credit?: string | null;
@@ -75,7 +87,7 @@ export const FACE_RECTS = {
 
 /** Reference-pixel typography and insets; CSS receives the equivalent card-width units. */
 export const FACE_TEXT = {
-  titleFont: 0.04724 * FACE_WIDTH,
+  titleFont: 24,
   titleTracking: 0.00054 * FACE_WIDTH,
   titleGap: 0.02362 * FACE_WIDTH,
   plateLeft: 0.02362 * FACE_WIDTH,

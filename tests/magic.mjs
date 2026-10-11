@@ -110,7 +110,8 @@ const server = createServer(async (req, res) => {
   }
 });
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
-const browser = await chromium.launch({ args: ['--no-sandbox'] });
+// This checks Canvas contracts; GPU completion/readback is covered by browser tests.
+const browser = await chromium.launch({ args: ['--no-sandbox', '--disable-gpu'] });
 try {
   const page = await browser.newPage();
   // No external art/font downloads in CI. Geometry and painting use original
@@ -119,10 +120,66 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const result = await page.evaluate(async (fixtures) => {
     const { magic, opticalDocument } = await import('/magic.js');
+    const { loadCanvasFonts, layoutRules } = await import('/magic-presentation.js');
+    let missingFontsRejected = false;
+    try {
+      await loadCanvasFonts();
+    } catch {
+      missingFontsRejected = true;
+    }
+    if (!missingFontsRejected) throw Error('Missing font stylesheet was silently accepted');
+    // Original test content, using local system outlines; no third-party fonts in CI.
+    const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
+    for (const [family, style, weight] of [
+      ['Beleren', 'normal', '400 700'],
+      ['MPlantin', 'normal', '400'],
+      ['MPlantin', 'italic', '400'],
+      ['Relay', 'normal', '400'],
+      ['Artist Credit', 'normal', '400'],
+    ])
+      document.fonts.add(
+        await new FontFace('CardRenderer MTG ' + family, local, { style, weight }).load(),
+      );
+    await loadCanvasFonts(); // A failed attempt must be retryable after CSS/FontFaces arrive.
     const bitmap = document.createElement('canvas');
     bitmap.width = 64;
     bitmap.height = 64;
     const ctx = bitmap.getContext('2d');
+    const paragraphs = [
+      {
+        role: 'rules',
+        runs: [{ text: 'Draw a card. ' }, { text: '(Then choose a card.)', italic: true }],
+      },
+      { role: 'flavor', runs: [{ text: 'An original quotation for this test.', italic: true }] },
+    ];
+    ctx.textBaseline = 'middle';
+    const measured = layoutRules(ctx, paragraphs, { x: 0, y: 0, width: 180, height: 105 });
+    ctx.textBaseline = 'alphabetic';
+    const repeated = layoutRules(ctx, paragraphs, { x: 0, y: 0, width: 180, height: 105 });
+    if (JSON.stringify(measured) !== JSON.stringify(repeated))
+      throw Error('Layout depends on caller baseline');
+    if (
+      measured.overflow ||
+      measured.size >= 24 ||
+      measured.separators.length !== 1 ||
+      !measured.lines.some((l) => l.runs.some((r) => r.italic))
+    )
+      throw Error('Measured styled layout failed');
+    const impossible = layoutRules(ctx, [{ role: 'rules', runs: [{ text: 'W'.repeat(100) }] }], {
+      x: 0,
+      y: 0,
+      width: 100,
+      height: 60,
+    });
+    if (!impossible.overflow) throw Error('Oversize word was silently clipped');
+    const symbols = layoutRules(ctx, [{ role: 'rules', runs: [{ text: '{T}: Add {W}{U}.' }] }], {
+      x: 0,
+      y: 0,
+      width: 90,
+      height: 100,
+    });
+    if (symbols.lines.flatMap((l) => l.runs).filter((r) => r.symbol).length !== 3)
+      throw Error('Inline symbols lost while wrapping');
     ctx.fillStyle = '#164d65';
     ctx.fillRect(0, 0, 64, 64);
     let leases = 0,
@@ -142,7 +199,10 @@ try {
         if (
           !canvas.getContext('2d').getImageData(canvas.width / 2, canvas.height / 2, 1, 1).data[3]
         )
-          throw Error('Blank painted face');
+          throw Error(
+            `Blank painted face: ${face.name} / ${face.frameStyle ?? face.layout ?? face.typeLine} / ${tier}`,
+          );
+        canvas.width = canvas.height = 0;
       }
     const { composeCardTexture, cardTextureKey, faceSetSymbol } = await import(
       '/magic-presentation.js'
@@ -155,6 +215,15 @@ try {
     };
     if (faceSetSymbol(custom) !== 'test:symbol') throw Error('Custom symbol ignored');
     const input = { face: custom, printingId: null, printedImage: null, layer: 'etching' };
+    const styledInput = {
+      ...input,
+      layer: 'face',
+      face: { ...custom, rulesParagraphs: paragraphs },
+    };
+    const styledChange = structuredClone(styledInput);
+    styledChange.face.rulesParagraphs[0].runs[0].italic = true;
+    if (cardTextureKey(styledInput, 'inspect') === cardTextureKey(styledChange, 'inspect'))
+      throw Error('Rules style absent from cache identity');
     if (
       cardTextureKey(input, 'table') ===
       cardTextureKey({ ...input, face: { ...custom, setSymbol: 'test:other' } }, 'table')
@@ -179,7 +248,10 @@ try {
       },
     });
     const alpha = mask.getContext('2d').getImageData(122, 110, 1, 1).data[3];
-    if (!alpha || masks !== 1 || disposed !== 2) throw Error('Missing mask or leaked image lease');
+    if (!alpha || masks !== 1 || disposed !== 2)
+      throw Error(
+        `Missing mask or leaked image lease: ${JSON.stringify({ alpha, masks, disposed })}`,
+      );
     const empty = await composeCardTexture(
       { ...input, face: { ...custom, setCode: undefined } },
       'table',

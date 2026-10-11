@@ -1,5 +1,5 @@
 import { manaSymbolAsset } from './assets.js';
-import { FACE_TEXT, symbolTextParts } from './face-layout.js';
+import { FACE_TEXT, symbolTextParts, type FaceRect } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 
 interface Token {
@@ -132,6 +132,28 @@ export function ellipsizedText(
   return letters.length || context.measureText('…').width <= width ? `${letters.join('')}…` : '';
 }
 
+/** Preserve the complete printed line. Reduce size first, then fit the remaining width. */
+export function paintFittedText(
+  context: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  width: number,
+  size: number,
+  bold = false,
+) {
+  if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
+  context.save();
+  context.font = `${bold ? 'bold ' : ''}${size}px "CardRenderer MTG Beleren", Georgia`;
+  const measured = context.measureText(text).width;
+  if (measured > width) {
+    size = Math.max(size * 0.78, (size * width) / measured);
+    context.font = `${bold ? 'bold ' : ''}${size}px "CardRenderer MTG Beleren", Georgia`;
+  }
+  context.fillText(text, x, y, width);
+  context.restore();
+}
+
 /** Recolor monochrome set vectors without relying on Canvas2D filter support. */
 export function paintSetSymbol(
   context: CanvasRenderingContext2D,
@@ -142,7 +164,14 @@ export function paintSetSymbol(
   y: number,
   w: number,
   h: number,
+  crop: FaceRect = [0, 0, 1, 1],
 ) {
+  const source = [
+    crop[0] * image.width,
+    crop[1] * image.height,
+    crop[2] * image.width,
+    crop[3] * image.height,
+  ] as const;
   const ink = (
     {
       uncommon: '#aaaeb2',
@@ -153,14 +182,14 @@ export function paintSetSymbol(
     } as Record<string, string>
   )[rarity ?? 'common'];
   if (!ink || ['forge', 'glint'].includes(code?.toLowerCase() ?? '')) {
-    context.drawImage(image, x, y, w, h);
+    context.drawImage(image, ...source, x, y, w, h);
     return;
   }
   const layer = document.createElement('canvas');
   layer.width = Math.max(1, Math.ceil(w * 2));
   layer.height = Math.max(1, Math.ceil(h * 2));
   const c = layer.getContext('2d')!;
-  c.drawImage(image, 0, 0, layer.width, layer.height);
+  c.drawImage(image, ...source, 0, 0, layer.width, layer.height);
   c.globalCompositeOperation = 'source-in';
   c.fillStyle = ink;
   c.fillRect(0, 0, layer.width, layer.height);

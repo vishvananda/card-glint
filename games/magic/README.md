@@ -91,6 +91,39 @@ The library owns caching and graphics resources. Painting happens during recipe
 preparation; pointer movement and finish changes should reuse prepared assets.
 The original showcase remains independent of this optional pack and its assets.
 
+## Rendering accuracy
+
+The [M21 accuracy pipeline](accuracy-plan.md) covers all 297 ordinary M21 printings,
+with a local Scryfall PNG/art cache, frozen frame/set alignment, per-card structural
+metrics, and an asset improvement list. Existing frame assets are retained.
+
+```sh
+npm run magic:reference:fetch
+npm run magic:reference:render
+npm run magic:reference:compare
+npm run magic:reference:report
+```
+
+Open `test-results/magic-accuracy/m21/current/report.html`. Only raster capture
+requires Playwright Chromium; comparison and report generation run in Node and
+reuse cached results. Downloaded art/scans stay local and out of the showcase.
+Scores distinguish reviewed printed wording from unverified Oracle text.
+
+For ordinary modern faces, `rulesParagraphs` optionally replaces `rulesText`:
+
+```ts
+face.rulesParagraphs = [
+  { role: 'rules', runs: [{ text: 'Draw a card.' }] },
+  { role: 'flavor', runs: [{ text: 'An original quotation.', italic: true }] },
+];
+```
+
+Runs support `{mana}` notation and explicit italic styles. The painter measures
+wrapping and font size, draws the flavor separator, and rejects unresolved text
+overflow. Other layouts still use their existing `rulesText` painters. Font
+preparation now rejects missing CSS or failed font loads and can retry after they
+become available; load `card-glint/magic/fonts.css` before preparing cards.
+
 ## Existing scene or DOM editor
 
 Use `card-glint/magic/presentation` for the shared geometry and raster painter.

@@ -18,6 +18,14 @@
     "media:showcase": "node scripts/showcase-media.mjs",
     "test:showcase": "node tests/showcase.mjs",
     "test:magic": "node tests/magic.mjs",
+    "test:magic-accuracy": "node tests/magic-accuracy.mjs && node tests/magic-cache.mjs",
+    "magic:reference:fetch": "node games/magic/tools/accuracy/fetch.mjs",
+    "magic:reference:render": "node games/magic/tools/accuracy/render.mjs",
+    "magic:reference:calibrate": "node games/magic/tools/accuracy/calibrate.mjs",
+    "magic:reference:compare": "node games/magic/tools/accuracy/compare.mjs",
+    "magic:reference:report": "node games/magic/tools/accuracy/report.mjs",
+    "magic:reference:validate": "node games/magic/tools/accuracy/validate.mjs",
+    "magic:reference:delta": "node games/magic/tools/accuracy/delta.mjs",
     "package:release": "node scripts/package-release.mjs",
     "test:release": "node tests/release.mjs",
     "test:surfaces": "node tests/surfaces.mjs",
@@ -34,6 +42,7 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "playwright": "1.60.0",
+    "pngjs": "7.0.0",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
     "vite": "7.3.6"

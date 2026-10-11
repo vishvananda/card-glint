@@ -7,6 +7,8 @@ export * from './presentation/canvas-etching.js';
 export * from './presentation/canvas-face.js';
 export * from './presentation/canvas-status.js';
 export * from './presentation/canvas-text.js';
+export * from './presentation/rules-layout.js';
+export * from './presentation/rules-paint.js';
 export * from './presentation/extra-rule-paint.js';
 export * from './presentation/extra-rules.js';
 export * from './presentation/face-layout.js';

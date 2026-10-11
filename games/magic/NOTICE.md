@@ -21,5 +21,11 @@ External materials retain their own licenses and rights restrictions. Keyrune's
 SVG sources are GPL-3.0. These references do not grant permission to redistribute
 the assets. The generic renderer and original showcase do not load this pack.
 
+The modern MPlantin italic face also uses CardConjurer's pinned
+[`fonts/mplantin-i.ttf`](https://github.com/Investigamer/cardconjurer/blob/2fcddba8966156d484cedf54d8214996748dd5e1/fonts/mplantin-i.ttf).
+The accuracy tools download [Scryfall references](https://scryfall.com/docs/api/images)
+into an ignored local cache. Card scans and art crops retain their original
+rights and are not included in releases, the public showcase, or CI evidence.
+
 The `GLINT` gem and `FORGE` spark/anvil symbols are original procedural symbols
 for locally authored cards, not official set identities.

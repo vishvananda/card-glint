@@ -13,7 +13,6 @@ import {
   FACE_RECTS,
   FACE_TEXT,
   FACE_WIDTH,
-  rulesFontSize,
   type FaceRect,
   type RenderedCardInput,
 } from './face-layout.js';
@@ -25,7 +24,9 @@ import {
   loadCanvasImages,
   type CanvasImages,
 } from './canvas-assets.js';
-import { ellipsizedText, paintMana, paintRules, paintSetSymbol } from './canvas-text.js';
+import { paintFittedText, paintMana, paintSetSymbol } from './canvas-text.js';
+import { ordinaryTextLayout, paintRulesLayout } from './rules-paint.js';
+export { ordinaryTextLayout } from './rules-paint.js';
 import { paintEtchingMask, type EtchingResolver } from './canvas-etching.js';
 import { fullResolutionScan } from '../scan-url.js';
 import type { AbilityEmblem } from '../emblems.js';
@@ -87,7 +88,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v5',
+    'canvas-face-v6',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -134,6 +135,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.manaSymbols ?? [],
         face.typeLine ?? '',
         face.rulesText ?? '',
+        face.rulesParagraphs ?? null,
         face.illustration ?? null,
         face.illustrationCrop ?? null,
         extraRuleKey(face),
@@ -207,10 +209,8 @@ export async function composeCardTexture(
     if (input.printedImage) {
       const imageUrl =
         tier === 'inspect' ? fullResolutionScan(input.printedImage) : input.printedImage;
-      const [loaded] = await Promise.all([
-        loadImages(plateUrl ? [imageUrl, plateUrl] : [imageUrl], signal),
-        plateUrl ? (hooks?.loadFonts ?? loadCanvasFonts)() : Promise.resolve(),
-      ]);
+      if (plateUrl) await (hooks?.loadFonts ?? loadCanvasFonts)();
+      const loaded = await loadImages(plateUrl ? [imageUrl, plateUrl] : [imageUrl], signal);
       try {
         const image = loaded.images.get(imageUrl);
         if (image && !signal.aborted) {
@@ -230,11 +230,12 @@ export async function composeCardTexture(
         loaded.dispose();
       }
     }
-    const [loaded] = await Promise.all([
-      loadImages(canvasAssetUrls(input.face), signal),
+    await Promise.all([
       (hooks?.loadFonts ?? loadCanvasFonts)(),
       isRetro(input.face) ? (hooks?.loadRetroFont ?? loadRetroFont)() : Promise.resolve(),
     ]);
+    signal.throwIfAborted();
+    const loaded = await loadImages(canvasAssetUrls(input.face), signal);
     try {
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
@@ -445,7 +446,7 @@ export function paintAssembledFace(
   context.textBaseline = 'middle';
   context.textAlign = 'left';
   const [tx, ty, tw, th] = px(rects.title),
-    textX = tx + FACE_TEXT.plateLeft;
+    textX = tx + FACE_TEXT.plateLeft + (kind === 'normal' ? 1 : 0);
   const textScale = splitTextScale(face);
   const mana = face.manaSymbols ?? [],
     manaSize = FACE_TEXT.manaSize * textScale;
@@ -454,10 +455,14 @@ export function paintAssembledFace(
     manaX = plateEnd - manaWidth;
   context.font = `bold ${FACE_TEXT.titleFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
   context.letterSpacing = `${FACE_TEXT.titleTracking}px`;
-  context.fillText(
-    ellipsizedText(context, face.name, manaX - textX - (mana.length ? FACE_TEXT.titleGap : 0)),
+  paintFittedText(
+    context,
+    face.name,
     textX,
-    ty + th / 2,
+    ty + th / 2 + (kind === 'normal' ? 1 : 0),
+    manaX - textX - (mana.length ? FACE_TEXT.titleGap : 0),
+    FACE_TEXT.titleFont * textScale,
+    true,
   );
   context.letterSpacing = '0px';
   mana.forEach((symbol, index) =>
@@ -472,46 +477,52 @@ export function paintAssembledFace(
     ),
   );
   const setIcon = images.get(faceSetSymbol(face) ?? '');
+  // Keyrune M21's 32-square viewport contains a wide glyph at y=9.33..22.67.
+  // This pack-owned crop uses the existing vector; custom symbols keep their viewport.
+  const setCrop: FaceRect =
+    !face.setSymbol && face.setCode?.toLowerCase() === 'm21'
+      ? [0, 9.33 / 32, 1, 13.34 / 32]
+      : [0, 0, 1, 1];
   const [, typeY, , typeH] = px(rects.type),
-    typeCenter = typeY + typeH / 2 + FACE_TEXT.typeLift / 2;
+    typeCenter = typeY + typeH / 2 + FACE_TEXT.typeLift / 2 + (kind === 'normal' ? 2 : 0);
   const setWidth = setIcon
-    ? Math.min(FACE_TEXT.setMaxWidth, (FACE_TEXT.setHeight * setIcon.width) / setIcon.height)
+    ? Math.min(
+        FACE_TEXT.setMaxWidth,
+        (FACE_TEXT.setHeight * setIcon.width * setCrop[2]) / (setIcon.height * setCrop[3]),
+      )
     : 0;
   const typeWidth =
     plateEnd - textX - (setIcon ? setWidth + FACE_TEXT.setMargin + FACE_TEXT.typeGap : 0);
   context.font = `${FACE_TEXT.typeFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
-  context.fillText(ellipsizedText(context, face.typeLine ?? '', typeWidth), textX, typeCenter);
+  paintFittedText(
+    context,
+    face.typeLine ?? '',
+    textX,
+    typeCenter,
+    typeWidth,
+    FACE_TEXT.typeFont * textScale,
+  );
   if (setIcon) {
-    const scale = Math.min(setWidth / setIcon.width, FACE_TEXT.setHeight / setIcon.height);
+    const scale = Math.min(
+      setWidth / (setIcon.width * setCrop[2]),
+      FACE_TEXT.setHeight / (setIcon.height * setCrop[3]),
+    );
     paintSetSymbol(
       context,
       setIcon,
       face.setCode,
       face.rarity,
       plateEnd - FACE_TEXT.setMargin - setWidth,
-      typeCenter - (setIcon.height * scale) / 2,
-      setIcon.width * scale,
-      setIcon.height * scale,
+      typeCenter - (setIcon.height * setCrop[3] * scale) / 2,
+      setIcon.width * setCrop[2] * scale,
+      setIcon.height * setCrop[3] * scale,
+      setCrop,
     );
   }
   if (hasExtraRules(face)) paintExtraRules(context, face, images);
   else if (kind !== 'normal') paintSpecialRules(context, face, images);
   else {
-    const [rx, ry, rw, rh] = px(rects.rules);
-    context.save();
-    context.beginPath();
-    context.rect(rx, ry, rw, rh);
-    context.clip();
-    paintRules(
-      context,
-      face.rulesText ?? '',
-      rx + FACE_TEXT.rulesPaddingX,
-      ry + FACE_TEXT.rulesPaddingY,
-      rw - 2 * FACE_TEXT.rulesPaddingX,
-      rulesFontSize(face.rulesText ?? '') * textScale,
-      images,
-    );
-    context.restore();
+    paintRulesLayout(context, ordinaryTextLayout(context, face, height, textScale), images);
   }
   const stats = faceStats(face);
   if (stats && kind !== 'leveler') {
@@ -527,7 +538,7 @@ export function paintAssembledFace(
       sy +
         (kind.startsWith('planeswalker')
           ? (rects.stats[3] * FACE_HEIGHT) / 2
-          : FACE_TEXT.statsLine / 2),
+          : FACE_TEXT.statsLine / 2 + (kind === 'normal' ? 2 : 0)),
       sw,
     );
   }

@@ -156,18 +156,35 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
     ...symbolTextParts(face.rulesText ?? '').flatMap((part) =>
       part.symbol ? [manaSymbolAsset(part.symbol)] : [],
     ),
+    ...(face.rulesParagraphs ?? []).flatMap((paragraph) =>
+      paragraph.runs.flatMap((run) =>
+        symbolTextParts(run.text).flatMap((part) =>
+          part.symbol ? [manaSymbolAsset(part.symbol)] : [],
+        ),
+      ),
+    ),
   ];
 }
 
 let fonts: Promise<void> | null = null;
 export function loadCanvasFonts(): Promise<void> {
   // The same @font-face declarations as RenderedCardFace; no second font registry.
-  return (fonts ??= Promise.allSettled([
+  return (fonts ??= Promise.all([
     document.fonts.load('24px "CardRenderer MTG Beleren"'),
     document.fonts.load('700 24px "CardRenderer MTG Beleren"'),
     document.fonts.load('24px "CardRenderer MTG MPlantin"'),
     document.fonts.load('italic 24px "CardRenderer MTG MPlantin"'),
     document.fonts.load('14px "CardRenderer MTG Relay"'),
     document.fonts.load('14px "CardRenderer MTG Artist Credit"'),
-  ]).then(() => undefined));
+  ])
+    .then((matches) => {
+      if (matches.some((faces) => !faces.length || faces.some((face) => face.status !== 'loaded')))
+        throw Error(
+          'Magic fonts are unavailable. Load card-glint/magic/fonts.css before preparing cards.',
+        );
+    })
+    .catch((error: unknown) => {
+      fonts = null;
+      throw error;
+    }));
 }
