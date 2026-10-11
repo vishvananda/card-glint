@@ -49,7 +49,10 @@ void main(){
  // satin response as the conventional finishes supplies an optional reflection.
  vec3 printing=top.rgb;
  if(overlayFoil.y>0. && top.a>0.) {
-   vec3 reflected=previewLinear(satin(uv,previewInk(printing),normalize(v_normal),view,overlayFoil.x,0.));
+   // Gold printing is metallic even without an etch mask. The zero-metal
+   // satin branch deliberately mutes its strip and made this foil nearly flat.
+   float metal=overlayFoil.x==1. ? .35 : 0.;
+   vec3 reflected=previewLinear(satin(uv,previewInk(printing),normalize(v_normal),view,overlayFoil.x,metal));
    printing=mix(printing,reflected,overlayFoil.y);
  }
  out_color=vec4(previewInk(mix(under,printing,top.a)),1.);
