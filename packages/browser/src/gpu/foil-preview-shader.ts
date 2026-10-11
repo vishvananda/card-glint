@@ -1,8 +1,27 @@
+import { LIQUID_FOIL_GLSL } from './liquid-foil-shader.js';
 import { FOIL_REFLECTION_GLSL } from './foil-reflection-shader.js';
 
 // Shared by the DOM motion fixture and the 3D card face pass. Preview finishes
 // are presentation settings, not inventory finish identifiers.
-export const FOIL_PREVIEW_GLSL = `
+export function foilShader(
+  options: { artWindows?: 'array' | 'pair'; liquid?: boolean } = {},
+): string {
+  const artWindow =
+    options.artWindows === 'pair'
+      ? `float artWindow(vec2 uv) {
+    float first=step(artBounds.x,uv.x)*step(uv.x,artBounds.z)*step(artBounds.y,uv.y)*step(uv.y,artBounds.w);
+    float second=step(artBounds2.x,uv.x)*step(uv.x,artBounds2.z)*step(artBounds2.y,uv.y)*step(uv.y,artBounds2.w);
+    return max(first,second);
+  }`
+      : `float artWindow(vec2 uv) {
+  float coverage=0.;
+  for(int i=0;i<8;i++){
+    vec4 bounds=artBounds[i];
+    coverage=max(coverage,step(bounds.x,uv.x)*step(uv.x,bounds.z)*step(bounds.y,uv.y)*step(uv.y,bounds.w));
+  }
+  return coverage;
+}`;
+  return `
 uniform float previewKind;
 uniform sampler2D wave;
 uniform float hasWave;
@@ -11,14 +30,7 @@ uniform float hasWave;
 vec3 previewInk(vec3 c) { return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c)); }
 vec3 previewLinear(vec3 c) { return mix(c/12.92,pow(max((c+.055)/1.055,vec3(0.)),vec3(2.4)),step(vec3(.04045),c)); }
 ${FOIL_REFLECTION_GLSL}
-float artWindow(vec2 uv) {
-  float coverage=0.;
-  for(int i=0;i<8;i++){
-    vec4 bounds=artBounds[i];
-    coverage=max(coverage,step(bounds.x,uv.x)*step(uv.x,bounds.z)*step(bounds.y,uv.y)*step(uv.y,bounds.w));
-  }
-  return coverage;
-}
+${artWindow}
 // Gameplay mask alpha is stored unchanged in a linear R8 red channel.
 float contour(vec2 uv) { return texture2D(mask,uv).r*hasMask*artWindow(uv); }
 vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
@@ -53,5 +65,8 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     return mix(base,satin(uv,base,normal,view,4.,0.),.75)+vec3(.52,.97,.74)*highlight*stamp*.28;
   }
 
+${options.liquid ? LIQUID_FOIL_GLSL : ''}
   return base;
 }`;
+}
+export const FOIL_PREVIEW_GLSL = foilShader();

@@ -90,3 +90,10 @@ These are TypeScript definitions, not a complete declarative frame schema.
 The library owns caching and graphics resources. Painting happens during recipe
 preparation; pointer movement and finish changes should reuse prepared assets.
 The original showcase remains independent of this optional pack and its assets.
+
+## Existing scene or DOM editor
+
+Use `card-glint/magic/presentation` for the shared geometry and raster painter.
+The [host integration contract](../../docs/host-integration.md) documents image
+leases, custom set symbols, cached masks and shader integration without creating
+another graphics context.

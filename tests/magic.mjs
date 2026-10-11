@@ -144,6 +144,65 @@ try {
         )
           throw Error('Blank painted face');
       }
+    const { composeCardTexture, cardTextureKey, faceSetSymbol } = await import(
+      '/magic-presentation.js'
+    );
+    const custom = {
+      ...fixtures[0],
+      setCode: 'CUSTOM',
+      setSymbol: 'test:symbol',
+      illustration: 'test:art',
+    };
+    if (faceSetSymbol(custom) !== 'test:symbol') throw Error('Custom symbol ignored');
+    const input = { face: custom, printingId: null, printedImage: null, layer: 'etching' };
+    if (
+      cardTextureKey(input, 'table') ===
+      cardTextureKey({ ...input, face: { ...custom, setSymbol: 'test:other' } }, 'table')
+    )
+      throw Error('Symbol absent from cache identity');
+    let masks = 0,
+      disposed = 0;
+    const controller = new AbortController();
+    const loadImages = async (urls) => ({
+      images: new Map(urls.map((url) => [url, bitmap])),
+      dispose() {
+        disposed++;
+      },
+    });
+    const mask = await composeCardTexture(input, 'table', controller.signal, {
+      loadImages,
+      resolveEtching: async (face, id, signal, threshold) => {
+        if (face !== custom || id !== null || signal !== controller.signal)
+          throw Error('Mask resolution context lost');
+        masks++;
+        return 'test:mask';
+      },
+    });
+    const alpha = mask.getContext('2d').getImageData(122, 110, 1, 1).data[3];
+    if (!alpha || masks !== 1 || disposed !== 2) throw Error('Missing mask or leaked image lease');
+    const empty = await composeCardTexture(
+      { ...input, face: { ...custom, setCode: undefined } },
+      'table',
+      controller.signal,
+      { loadImages, resolveEtching: async () => null },
+    );
+    if (empty.getContext('2d').getImageData(122, 110, 1, 1).data[3])
+      throw Error('Absent mask paints art');
+    const scan = 'https://cards.scryfall.io/normal/front/a/b/abcd.jpg';
+    const requested = [];
+    await composeCardTexture(
+      { face: fixtures[0], printingId: 'abcd', printedImage: scan },
+      'inspect',
+      controller.signal,
+      {
+        loadImages: async (urls) => {
+          requested.push(...urls);
+          return { images: new Map(urls.map((url) => [url, bitmap])), dispose() {} };
+        },
+      },
+    );
+    if (requested[0] !== 'https://cards.scryfall.io/png/front/a/b/abcd.png')
+      throw Error('Inspection scan is not lossless');
     const optical = opticalDocument(1, 1, fixtures[0], 'silver');
     return {
       sizes,

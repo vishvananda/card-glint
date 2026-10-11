@@ -8,7 +8,7 @@ import {
   type FaceRect,
 } from './face-layout.js';
 import { normalizeColors } from './profile.js';
-import { manaSymbolAsset, setSymbolAsset } from './assets.js';
+import { manaSymbolAsset, faceSetSymbol } from './assets.js';
 export const RETRO_ROOT = manifest.RETRO_ROOT;
 export const RETRO_FONT = `${RETRO_ROOT}/fonts/goudy-medieval.ttf`;
 const oldSets = new Set(
@@ -125,9 +125,7 @@ export function retroBasicSymbol(face: RenderedCardInput) {
 export const RETRO_WHITE = '#eeedeb';
 export function retroSetSymbol(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase() ?? '';
-  return ['lea', 'leb', '2ed', '3ed', '4ed', '5ed'].includes(set)
-    ? null
-    : setSymbolAsset(set, face.rarity);
+  return ['lea', 'leb', '2ed', '3ed', '4ed', '5ed'].includes(set) ? null : faceSetSymbol(face);
 }
 export function retroRulesSize(face: RenderedCardInput) {
   const n = (face.rulesText ?? '').length;

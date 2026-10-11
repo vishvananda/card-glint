@@ -1,3 +1,4 @@
+import type { RenderedCardInput } from './face-layout.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { SingleFrame } from './special-frames.js';
 import type { CardProfile } from './profile.js';
@@ -81,4 +82,9 @@ export function componentAsset(group: string, name: string): string {
           : group;
   const extension = group === 'symbols' ? 'svg' : 'webp';
   return `${RENDERER_COMPONENT_ROOT}/img/${directory}/${encodeURIComponent(name)}.${extension}`;
+}
+
+/** Explicit symbols support custom sets without changing their printed names. */
+export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): string | null {
+  return face.setSymbol ?? setSymbolAsset(face.setCode ?? '', rarity);
 }

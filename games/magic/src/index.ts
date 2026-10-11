@@ -85,6 +85,7 @@ export const mtg: GamePack<RenderedCardInput> = {
           children.map((child) => [
             faceRects(child.face).stamp,
             child.face.setCode,
+            child.face.setSymbol ?? null,
             child.panel
               ? [
                   child.panel.x,

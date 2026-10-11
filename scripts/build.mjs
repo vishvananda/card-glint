@@ -15,6 +15,9 @@ await build({
         browser: 'packages/browser/src/index.ts',
         showcase: 'games/showcase/src/index.ts',
         magic: 'games/magic/src/index.ts',
+        'magic-presentation': 'games/magic/src/presentation.ts',
+        kernels: 'packages/browser/src/kernels.ts',
+        finish: 'packages/browser/src/finish.ts',
       },
       formats: ['es'],
       fileName: (_, name) => `${name}.js`,
@@ -25,6 +28,7 @@ await build({
 });
 await mkdir('dist/lib', { recursive: true });
 await cp('packages/browser/generated/renderer_bg.wasm', 'dist/lib/renderer_bg.wasm');
+await cp('packages/browser/generated/pixels_bg.wasm', 'dist/lib/pixels_bg.wasm');
 await cp('games/magic/fonts.css', 'dist/lib/magic.css');
 execFileSync('npx', ['tsc', '--project', 'tsconfig.build.json'], { stdio: 'inherit' });
 await build({
@@ -41,6 +45,11 @@ await mkdir('dist/types/packages/browser/generated', { recursive: true });
 await cp(
   'packages/browser/generated/renderer.d.ts',
   'dist/types/packages/browser/generated/renderer.d.ts',
+);
+
+await cp(
+  'packages/browser/generated/pixels.d.ts',
+  'dist/types/packages/browser/generated/pixels.d.ts',
 );
 
 await cp('games/showcase/assets.json', 'dist/types/games/showcase/assets.json');

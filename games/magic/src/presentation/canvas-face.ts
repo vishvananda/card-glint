@@ -17,7 +17,7 @@ import {
   type FaceRect,
   type RenderedCardInput,
 } from './face-layout.js';
-import { profileAssets, RENDERER_COMPONENT_ROOT, setSymbolAsset } from './assets.js';
+import { profileAssets, RENDERER_COMPONENT_ROOT, faceSetSymbol } from './assets.js';
 import { resolveCardProfile } from './profile.js';
 import {
   canvasAssetUrls,
@@ -26,7 +26,7 @@ import {
   type CanvasImages,
 } from './canvas-assets.js';
 import { ellipsizedText, paintMana, paintRules, paintSetSymbol } from './canvas-text.js';
-import { paintEtchingMask } from './canvas-etching.js';
+import { paintEtchingMask, type EtchingResolver } from './canvas-etching.js';
 import { fullResolutionScan } from '../scan-url.js';
 import type { AbilityEmblem } from '../emblems.js';
 import { paintCardStatus } from './canvas-status.js';
@@ -124,6 +124,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.etchedIllustration ?? null,
         face.illustrationCrop ?? null,
         face.setCode ?? null,
+        face.setSymbol ?? null,
         faceRects(face),
       ]
     : [
@@ -138,6 +139,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         extraRuleKey(face),
         face.artist ?? null,
         face.setCode ?? null,
+        face.setSymbol ?? null,
         face.rarity ?? 'common',
         face.power ?? null,
         face.toughness ?? null,
@@ -162,6 +164,9 @@ export async function composeCardTexture(
     beforePaint?: () => Promise<void>;
     cpuPixels?: boolean;
     loadImages?: typeof loadCanvasImages;
+    resolveEtching?: EtchingResolver;
+    loadFonts?: () => Promise<void>;
+    loadRetroFont?: () => Promise<void>;
     underArt?: HTMLCanvasElement;
   },
 ): Promise<HTMLCanvasElement> {
@@ -189,6 +194,7 @@ export async function composeCardTexture(
         input.etchThreshold,
         hooks?.beforePaint,
         loadImages,
+        hooks?.resolveEtching,
       );
       return canvas;
     }
@@ -203,7 +209,7 @@ export async function composeCardTexture(
         tier === 'inspect' ? fullResolutionScan(input.printedImage) : input.printedImage;
       const [loaded] = await Promise.all([
         loadImages(plateUrl ? [imageUrl, plateUrl] : [imageUrl], signal),
-        plateUrl ? loadCanvasFonts() : Promise.resolve(),
+        plateUrl ? (hooks?.loadFonts ?? loadCanvasFonts)() : Promise.resolve(),
       ]);
       try {
         const image = loaded.images.get(imageUrl);
@@ -226,8 +232,8 @@ export async function composeCardTexture(
     }
     const [loaded] = await Promise.all([
       loadImages(canvasAssetUrls(input.face), signal),
-      loadCanvasFonts(),
-      isRetro(input.face) ? loadRetroFont() : Promise.resolve(),
+      (hooks?.loadFonts ?? loadCanvasFonts)(),
+      isRetro(input.face) ? (hooks?.loadRetroFont ?? loadRetroFont)() : Promise.resolve(),
     ]);
     try {
       await hooks?.beforePaint?.();
@@ -465,7 +471,7 @@ export function paintAssembledFace(
       true,
     ),
   );
-  const setIcon = images.get(setSymbolAsset(face.setCode ?? '', face.rarity) ?? '');
+  const setIcon = images.get(faceSetSymbol(face) ?? '');
   const [, typeY, , typeH] = px(rects.type),
     typeCenter = typeY + typeH / 2 + FACE_TEXT.typeLift / 2;
   const setWidth = setIcon

@@ -10,6 +10,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 renderer-core.workspace = true
+pixel-kernels = { path = "../pixel-kernels" }
 wasm-bindgen.workspace = true
 serde_json.workspace = true
 

@@ -7,7 +7,7 @@ import {
   manaSymbolAsset,
   profileAssets,
   RENDERER_COMPONENT_ROOT,
-  setSymbolAsset,
+  faceSetSymbol,
 } from './assets.js';
 import { resolveCardProfile } from './profile.js';
 import { symbolTextParts, type RenderedCardInput } from './face-layout.js';
@@ -151,7 +151,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
         )),
     profile.legendary ? assets.crown : null,
     face.illustration,
-    setSymbolAsset(face.setCode ?? '', face.rarity),
+    faceSetSymbol(face),
     ...(face.manaSymbols ?? []).map(manaSymbolAsset),
     ...symbolTextParts(face.rulesText ?? '').flatMap((part) =>
       part.symbol ? [manaSymbolAsset(part.symbol)] : [],

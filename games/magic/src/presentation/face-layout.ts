@@ -22,6 +22,8 @@ export interface RenderedCardInput extends CardProfileInput {
   toughness?: string | number | null;
   loyalty?: string | number | null;
   setCode?: string | null;
+  /** Optional host-owned symbol URL; setCode remains the printed label. */
+  setSymbol?: string | null;
   rarity?: 'common' | 'uncommon' | 'rare' | 'mythic' | 'special' | 'bonus';
 }
 

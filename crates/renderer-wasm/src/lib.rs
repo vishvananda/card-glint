@@ -1,6 +1,7 @@
 //! Checked browser ABI. JSON is restricted to cold policy/diagnostic calls;
 //! scene matrices and pixels cross as packed numeric buffers.
-use renderer_core::{cache::Cache, etching::Etcher, graph, scene::Scene};
+pub use pixel_kernels::PixelKernels;
+use renderer_core::{cache::Cache, graph, scene::Scene};
 use wasm_bindgen::prelude::*;
 
 fn error(message: impl std::fmt::Display) -> JsValue {
@@ -103,37 +104,6 @@ impl SceneCore {
         self.scene.hit([x, y]).map_or_else(Vec::new, |(id, uv)| {
             vec![f64::from(id), f64::from(uv[0]), f64::from(uv[1])]
         })
-    }
-}
-
-#[wasm_bindgen]
-#[derive(Default)]
-pub struct PixelKernels {
-    etcher: Etcher,
-}
-#[wasm_bindgen]
-impl PixelKernels {
-    #[wasm_bindgen(constructor)]
-    #[must_use]
-    pub fn new() -> Self {
-        Self::default()
-    }
-    /// # Errors
-    /// Rejects invalid dimensions, thresholds and buffer lengths.
-    pub fn etch(
-        &mut self,
-        width: u32,
-        height: u32,
-        rgba: &[u8],
-        threshold: u32,
-    ) -> Result<Vec<u8>, JsValue> {
-        self.etcher
-            .run(
-                [width as usize, height as usize],
-                rgba,
-                u8::try_from(threshold).map_err(error)?,
-            )
-            .map_err(error)
     }
 }
 

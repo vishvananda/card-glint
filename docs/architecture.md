@@ -22,7 +22,7 @@ Keep the application/editor in its own project. Its adapter translates visible
 presentation data to the chosen pack and owns event handling, model generation,
 validation, selection, and authoring. The renderer does not receive private
 engine state. Existing Three.js scenes should use an explicit integration
-adapter; they must not borrow this renderer's live context or private textures.
+adapter through the [public host interfaces](host-integration.md); they must not borrow this renderer's live context or private textures.
 
 ## Layers and masks
 

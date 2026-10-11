@@ -1,6 +1,6 @@
 {
   "name": "card-glint",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -28,7 +28,8 @@
     "test:cdn-publish": "node tests/cdn-publish.mjs",
     "test:deformation": "node tests/deformation.mjs",
     "test:parallax": "node tests/parallax.mjs",
-    "test:overlay-foil": "node tests/overlay-foil.mjs"
+    "test:overlay-foil": "node tests/overlay-foil.mjs",
+    "test:kernels": "node tests/kernels.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -51,7 +52,20 @@
       "types": "./dist/types/games/magic/src/index.d.ts",
       "import": "./dist/lib/magic.js"
     },
-    "./magic/fonts.css": "./dist/lib/magic.css"
+    "./magic/fonts.css": "./dist/lib/magic.css",
+    "./kernels": {
+      "types": "./dist/types/packages/browser/src/kernels.d.ts",
+      "import": "./dist/lib/kernels.js"
+    },
+    "./finish": {
+      "types": "./dist/types/packages/browser/src/finish.d.ts",
+      "import": "./dist/lib/finish.js"
+    },
+    "./magic/presentation": {
+      "types": "./dist/types/games/magic/src/presentation.d.ts",
+      "import": "./dist/lib/magic-presentation.js"
+    },
+    "./pixels.wasm": "./dist/lib/pixels_bg.wasm"
   },
   "files": [
     "dist/lib",

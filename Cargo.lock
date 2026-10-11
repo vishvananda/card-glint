@@ -33,6 +33,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 
 [[package]]
+name = "pixel-kernels"
+version = "0.1.0"
+dependencies = [
+ "renderer-core",
+ "wasm-bindgen",
+]
+
+[[package]]
 name = "proc-macro2"
 version = "1.0.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -61,6 +69,7 @@ dependencies = [
 name = "renderer-wasm"
 version = "0.1.0"
 dependencies = [
+ "pixel-kernels",
  "renderer-core",
  "serde_json",
  "wasm-bindgen",
