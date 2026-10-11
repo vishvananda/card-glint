@@ -9,7 +9,10 @@ A small, game-neutral card renderer. Rust/WASM manages caches, scene planning,
 picking and pixel kernels. WebGL2 adds reusable etching, embossing and foil.
 Your game supplies the artwork, frame geometry, typography and hit regions.
 
-[![Three original fantasy cards with etched, cold foil and opal finishes](docs/images/showcase.png)](https://vishvananda.github.io/card-glint/)
+[![Animated tilt of three original fantasy cards with etched, cold foil and opal finishes](docs/images/showcase.gif)](https://vishvananda.github.io/card-glint/)
+
+[Watch / download the MP4](https://vishvananda.github.io/card-glint/media/showcase.mp4) ·
+[Static preview](docs/images/showcase.png)
 
 [Try the interactive showcase](https://vishvananda.github.io/card-glint/) ·
 [Architecture and layering](docs/architecture.md) ·
@@ -85,6 +88,8 @@ The showcase is hosted on GitHub Pages. After checks pass on `main`, the same
 workflow publishes `dist/lab`; pull requests only run checks. The README preview
 links to the interactive page. All artwork and WASM are served from that site,
 with no application server or external asset host required.
+The README's eight-second GIF and MP4 are captured from the same renderer;
+[media reproduction instructions](docs/images/README.md) include the capture script.
 
 ## Use it in an application
 

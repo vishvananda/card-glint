@@ -44,3 +44,5 @@ await cp(
 await cp('games/showcase/assets.json', 'dist/types/games/showcase/assets.json');
 await cp('games/showcase/art', 'dist/lab/art', { recursive: true });
 await cp('examples/cdn', 'dist/lab/cdn', { recursive: true });
+await mkdir('dist/lab/media', { recursive: true });
+await cp('docs/images/showcase.mp4', 'dist/lab/media/showcase.mp4');
