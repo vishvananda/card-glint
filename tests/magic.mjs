@@ -172,6 +172,34 @@ try {
       height: 60,
     });
     if (!impossible.overflow) throw Error('Oversize word was silently clipped');
+    const exclusion = [0, 70, 180, 30];
+    const unobstructed = layoutRules(
+      ctx,
+      [{ role: 'rules', runs: [{ text: 'Original test rules text.' }] }],
+      {
+        x: 0,
+        y: 0,
+        width: 180,
+        height: 100,
+      },
+    );
+    const obstructed = layoutRules(
+      ctx,
+      [{ role: 'rules', runs: [{ text: 'Original test rules text.' }] }],
+      {
+        x: 0,
+        y: 0,
+        width: 180,
+        height: 100,
+        exclusions: [exclusion],
+      },
+    );
+    if (
+      obstructed.overflow ||
+      obstructed.size >= unobstructed.size ||
+      obstructed.lines.some((line) => line.inkBounds[1] + line.inkBounds[3] > exclusion[1])
+    )
+      throw Error('Text intersects its reserved power/toughness area');
     const symbols = layoutRules(ctx, [{ role: 'rules', runs: [{ text: '{T}: Add {W}{U}.' }] }], {
       x: 0,
       y: 0,

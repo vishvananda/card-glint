@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 const url = process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/';
 const browser = await chromium.launch({
   headless: true,
-  args: ['--no-sandbox', '--enable-unsafe-swiftshader'],
+  // Match the showcase test's deterministic software backend.
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
 });
 const page = await browser.newPage({ viewport: { width: 1400, height: 1250 } }),
   errors = [],

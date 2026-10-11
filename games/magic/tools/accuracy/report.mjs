@@ -5,6 +5,14 @@ import { atomicWrite, options, outputRoot, readJson } from './common.mjs';
 const opts = options(),
   runRoot = path.join(outputRoot, opts.set, opts.run);
 const report = await readJson(path.join(runRoot, 'metrics.json'));
+try {
+  const typography = await readJson(path.join(runRoot, 'typography.json'));
+  for (const key of ['referenceIdentity', 'alignmentHash', 'rendererHash', 'browser'])
+    if (typography[key] !== report[key]) throw Error(`Stale typography report: ${key}`);
+  report.typography = typography;
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
 await atomicWrite(
   path.join(runRoot, 'report-data.js'),
   'window.MAGIC_ACCURACY = ' + JSON.stringify(report).replaceAll('<', '\\u003c') + ';\n',

@@ -10,24 +10,37 @@ export function ordinaryTextLayout(
   height = FACE_HEIGHT,
   scale = 1,
 ): RulesLayout {
-  const [x, y, width, h] = faceRects(face).rules;
+  const rects = faceRects(face);
+  const [x, y, width, h] = rects.rules;
   const paragraphs =
     face.rulesParagraphs ??
     (face.rulesText ?? '')
       .split('\n')
       .filter(Boolean)
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
-  const statsInset = face.power != null && face.toughness != null ? 8 : 0;
   return layoutRules(
     context,
     paragraphs,
     {
       x: x * FACE_WIDTH + 3.5,
-      y: y * height + 5,
-      width: width * FACE_WIDTH - 13,
-      height: h * height - 12 - statsInset,
+      y: y * height + 7,
+      width: width * FACE_WIDTH - 9.5,
+      height: h * height - 8,
+      // Fit actual line ink around the existing power/toughness plate. Short
+      // final lines can use the lower left area without being painted over.
+      exclusions:
+        face.power != null && face.toughness != null
+          ? [
+              [
+                rects.stats[0] * FACE_WIDTH - 2,
+                rects.stats[1] * height - 2,
+                rects.stats[2] * FACE_WIDTH + 4,
+                rects.stats[3] * height + 4,
+              ],
+            ]
+          : [],
     },
-    24 * scale,
+    24.5 * scale,
     15 * scale,
   );
 }
@@ -59,13 +72,13 @@ export function paintRulesLayout(
         paintMana(
           context,
           run.text,
-          x + layout.size * 0.025,
-          line.baseline - layout.size * 0.72,
-          layout.size * 0.8,
+          x + run.size * 0.025,
+          line.baseline - run.size * 0.72,
+          run.size * 0.8,
           images,
         );
       else {
-        context.font = rulesFont(layout.size, run.italic);
+        context.font = rulesFont(run.size, run.italic);
         context.fillText(run.text, x, line.baseline);
       }
       x += run.width;

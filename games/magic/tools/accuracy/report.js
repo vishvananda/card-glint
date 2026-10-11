@@ -134,6 +134,18 @@ function drawDetail() {
   source.rel = 'noreferrer';
   controls.append(toggle, source);
   target.append(controls);
+  const typography = report.typography?.results.find((card) => card.id === r.id);
+  if (typography?.status === 'measured')
+    target.append(
+      element(
+        'p',
+        `Reviewed line layout · soft-wrap F1 ${fixed(typography.softBreakF1)} · ` +
+          `${typography.actualLines}/${typography.expectedLines} lines · ` +
+          `block-edge error ${fixed(typography.blockEdgeMae)}px · ` +
+          `matched-line top error ${fixed(typography.matchedLineTopMae)}px ` +
+          `(${typography.matchedLines} identical lines, inspect tier).`,
+      ),
+    );
   const rows = r.comparisons[$('tier').value].regions.map((v) => [
     v.id,
     percent(v.edgeF1?.[1]),

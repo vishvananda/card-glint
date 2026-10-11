@@ -166,6 +166,50 @@ security stamps, and existing special-layout typography remain visible limitatio
 
 ## Changes and next passes
 
+The second typography pass is recorded in
+[typography-measurement.json](fixtures/accuracy/m21/typography-measurement.json).
+It retains the font sources and frame assets, measures actual glyph extents for
+vertical centering, separates line/paragraph/flavor gaps, and fits text around the
+power/toughness plate. A short final line in a long flavor passage can trigger a
+small size reduction. The maximum body size is 24.5 reference pixels. No printing
+IDs, scan coordinates, or set-specific text adjustments enter the painter.
+
+[typography.json](fixtures/accuracy/m21/typography.json) records reviewed line
+breaks and approximate ink bounds for 24 cards. Run the browser-free measurement
+after comparison, before generating the report:
+
+```sh
+npm run magic:reference:typography -- --run typography
+npm run magic:reference:report -- --run typography
+```
+
+Soft-wrap F1 excludes paragraph breaks supplied in the input. Block-edge and
+matched-line errors use canonical pixels; scan-bound measurements have about two
+pixels of uncertainty. Matched-line errors only compare identical line text, so
+their counts accompany the score. OCR assisted initial transcription; it is not
+needed to run any comparison. The targets never force renderer line breaks.
+
+With alignment unchanged, the eight M21 holdouts improved from 0.345 to 0.614
+median body edge F1, 0.662 to 0.772 mean soft-wrap F1, and 6.5 to 3 pixels median
+block-edge error. Exact wrapping improved from two to four holdouts. All 297
+printings rendered, with zero ordinary-text overflow or stats-plate collisions.
+Chromatic Orrery remains an edge-score regression; Teferi's Tutelage regresses
+at table size and still has incorrect dense-flavor wrapping. The original frame
+asset review list remains applicable.
+
+M20 is the next transfer test. Freeze this renderer before viewing M20 results.
+Use the same alignment transforms first, with explicit M21 provenance, and no
+M20 typography tuning. Select 24 evaluation cards from metadata alone: three
+text-length quantiles in each of white, blue, black, red, green, multicolor,
+colorless nonland, and land. Exclude names present in the M21 corpus from this
+reviewed cohort. Compare both the previous and frozen renderer against identical
+reviewed inputs. All other ordinary M20 printings stay in the diagnostic report.
+
+The internal `planeswalker-large` name means a taller rules area for more than
+three ability rows, not an oversized card. M21's four entries are four ordinary
+art printings of Teferi, Master of Time. This existing row-count heuristic and its
+uncalibrated frame profile remain separate from ordinary-face typography.
+
 The first complete [measurement](fixtures/accuracy/m21/measurement.json) recorded
 297/297 successful comparisons, 20 alignment flags and zero measured ordinary-text
 overflows. Comparison took 71.3 seconds cold and 1.8 seconds with all 297 results

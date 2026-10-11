@@ -108,6 +108,11 @@ Open `test-results/magic-accuracy/m21/current/report.html`. Only raster capture
 requires Playwright Chromium; comparison and report generation run in Node and
 reuse cached results. Downloaded art/scans stay local and out of the showcase.
 Scores distinguish reviewed printed wording from unverified Oracle text.
+For the reviewed line-break/spacing fixtures, run `magic:reference:typography`
+after comparison and before report generation. Its soft-wrap score excludes
+forced paragraph breaks; geometry errors are in reference pixels. See the
+[typography measurement](fixtures/accuracy/m21/typography-measurement.json) for
+the frozen M21 calibration and holdout results.
 
 For ordinary modern faces, `rulesParagraphs` optionally replaces `rulesText`:
 

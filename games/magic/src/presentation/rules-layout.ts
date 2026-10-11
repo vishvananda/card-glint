@@ -5,12 +5,18 @@ export interface MeasuredRun {
   italic: boolean;
   symbol: boolean;
   width: number;
+  size: number;
+  ascent: number;
+  descent: number;
+  inkLeft: number;
+  inkRight: number;
 }
 export interface RulesLine {
   runs: MeasuredRun[];
   width: number;
   baseline: number;
   role: RulesParagraph['role'];
+  inkBounds: readonly [number, number, number, number];
 }
 export interface RulesLayout {
   size: number;
@@ -24,6 +30,18 @@ export interface RulesLayout {
 }
 export const rulesFont = (size: number, italic = false) =>
   `${italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`;
+
+export interface RulesTypography {
+  leading: number;
+  paragraphGap: number;
+  flavorGap: number;
+}
+/** Shared ordinary-frame policy. Calibration fixtures never enter the painter. */
+export const RULES_TYPOGRAPHY: Readonly<RulesTypography> = {
+  leading: 1,
+  paragraphGap: 0.45,
+  flavorGap: 0.9,
+};
 
 interface Piece {
   text: string;
@@ -76,7 +94,16 @@ function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: numbe
   }
   return merged.map((piece) => {
     context.font = rulesFont(size, piece.italic);
-    return { ...piece, width: piece.symbol ? size * 0.88 : context.measureText(piece.text).width };
+    const metrics = context.measureText(piece.text);
+    return {
+      ...piece,
+      size,
+      width: piece.symbol ? size * 0.88 : metrics.width,
+      ascent: piece.symbol ? size * 0.72 : metrics.actualBoundingBoxAscent,
+      descent: piece.symbol ? size * 0.08 : metrics.actualBoundingBoxDescent,
+      inkLeft: piece.symbol ? size * 0.025 : -metrics.actualBoundingBoxLeft,
+      inkRight: piece.symbol ? size * 0.825 : metrics.actualBoundingBoxRight,
+    };
   });
 }
 
@@ -112,9 +139,16 @@ function wrap(
 export function layoutRules(
   context: CanvasRenderingContext2D,
   paragraphs: readonly RulesParagraph[],
-  bounds: { x: number; y: number; width: number; height: number },
+  bounds: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    exclusions?: readonly (readonly [number, number, number, number])[];
+  },
   maximumSize = 24,
   minimumSize = 15,
+  typography: RulesTypography = RULES_TYPOGRAPHY,
 ): RulesLayout {
   context.save();
   context.letterSpacing = '0px';
@@ -124,48 +158,100 @@ export function layoutRules(
     let layout: RulesLayout;
     let size = maximumSize;
     do {
-      context.font = rulesFont(size);
-      const ink = context.measureText('Mg');
-      const ascent = ink.actualBoundingBoxAscent,
-        descent = ink.actualBoundingBoxDescent;
       const lines: RulesLine[] = [],
         separators: number[] = [];
-      let top = 0,
+      let baseline = 0,
         previous: RulesParagraph['role'] | undefined;
       for (const paragraph of paragraphs) {
-        const rows = wrap(context, paragraph.runs, bounds.width, size);
+        let paragraphSize = size;
+        let rows = wrap(context, paragraph.runs, bounds.width, paragraphSize);
+        // Avoid a short orphan line in long flavor passages when a small size
+        // reduction can remove it. Two-line quotations keep their intended cadence.
+        if (
+          paragraph.role === 'flavor' &&
+          rows.length > 2 &&
+          rows.at(-1)!.reduce((n, run) => n + run.width, 0) < bounds.width * 0.3
+        ) {
+          for (
+            let trialSize = paragraphSize - 0.25;
+            trialSize >= paragraphSize * 0.94;
+            trialSize -= 0.25
+          ) {
+            const trial = wrap(context, paragraph.runs, bounds.width, trialSize);
+            if (trial.length < rows.length) {
+              paragraphSize = trialSize;
+              rows = trial;
+              break;
+            }
+          }
+        }
         if (!rows.length) continue;
         if (previous) {
           if (previous === 'rules' && paragraph.role === 'flavor') {
-            top += size * 0.28;
-            separators.push(top);
-            top += size * 0.4;
-          } else if (previous !== 'flavor' || paragraph.role !== 'flavor') top += size * 0.25;
-          else top += size * 0.04;
+            baseline += size * typography.flavorGap;
+            separators.push(baseline - (size * typography.flavorGap) / 2 - size * 0.25);
+          } else if (previous !== 'flavor' || paragraph.role !== 'flavor')
+            baseline += size * typography.paragraphGap;
         }
-        for (const [i, runs] of rows.entries()) {
+        for (const runs of rows) {
+          const ascent = Math.max(0, ...runs.map((run) => run.ascent));
+          const descent = Math.max(0, ...runs.map((run) => run.descent));
+          const width = runs.reduce((n, r) => n + r.width, 0);
+          let cursor = 0,
+            left = Infinity,
+            right = -Infinity;
+          for (const run of runs) {
+            left = Math.min(left, cursor + run.inkLeft);
+            right = Math.max(right, cursor + run.inkRight);
+            cursor += run.width;
+          }
           lines.push({
             runs,
             role: paragraph.role,
-            baseline: top + ascent,
-            width: runs.reduce((n, r) => n + r.width, 0),
+            baseline,
+            width,
+            inkBounds: [
+              bounds.x + (runs.length ? left : 0),
+              baseline - ascent,
+              runs.length ? right - left : 0,
+              ascent + descent,
+            ],
           });
-          top += i === rows.length - 1 ? ascent + descent : size * 1.04;
+          baseline += paragraphSize * typography.leading;
         }
         previous = paragraph.role;
       }
-      const offset = Math.max(0, (bounds.height - top) / 2);
+      const inkTop = lines[0]?.inkBounds[1] ?? 0;
+      const last = lines.at(-1)?.inkBounds;
+      const inkHeight = last ? last[1] + last[3] - inkTop : 0;
+      const offset = bounds.y + Math.max(0, (bounds.height - inkHeight) / 2) - inkTop;
       layout = {
         size,
         x: bounds.x,
-        top: bounds.y + offset,
+        top: inkTop + offset,
         width: bounds.width,
-        height: top,
+        height: inkHeight,
         overflow:
-          top > bounds.height + 0.01 || lines.some((line) => line.width > bounds.width + 0.01),
-        lines: lines.map((line) => ({ ...line, baseline: line.baseline + bounds.y + offset })),
-        separators: separators.map((y) => y + bounds.y + offset),
+          inkHeight > bounds.height + 0.01 ||
+          lines.some((line) => line.width > bounds.width + 0.01),
+        lines: lines.map((line) => ({
+          ...line,
+          baseline: line.baseline + offset,
+          inkBounds: [
+            line.inkBounds[0],
+            line.inkBounds[1] + offset,
+            line.inkBounds[2],
+            line.inkBounds[3],
+          ],
+        })),
+        separators: separators.map((y) => y + offset),
       };
+      layout.overflow ||= layout.lines.some((line) =>
+        bounds.exclusions?.some(([x, y, w, h]) => {
+          const [left, top, width, height] = line.inkBounds;
+          return left < x + w && left + width > x && top < y + h && top + height > y;
+        }),
+      );
       if (!layout.overflow || size <= minimumSize) break;
       size = Math.max(minimumSize, size - 0.25);
     } while (true);
