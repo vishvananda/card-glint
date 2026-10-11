@@ -56,6 +56,9 @@ export interface FaceRecipe {
   artWindows: readonly Rect[];
   cornerRadius: number;
   finishCoverageBase?: number;
+  /** Optional satin reflection on the combined over-finish printing. It never
+   * refracts, blurs or etches those layers. Omit to keep overlays unshaded. */
+  overlayFoil?: { tone: 'gold' | 'silver' | 'prismatic'; strength: number };
   regions: readonly { id: string; rect: Rect }[];
 }
 export interface GamePack<T> {

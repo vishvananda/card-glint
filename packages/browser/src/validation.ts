@@ -30,6 +30,16 @@ export function validateDocument(document: CardDocument) {
     throw Error('Invalid corner radius');
   const base = recipe.finishCoverageBase ?? 1;
   if (!Number.isFinite(base) || base < 0 || base > 1) throw Error('Invalid base coverage');
+  if (recipe.overlayFoil) {
+    const { tone, strength } = recipe.overlayFoil;
+    if (
+      !['gold', 'silver', 'prismatic'].includes(tone) ||
+      !Number.isFinite(strength) ||
+      strength < 0 ||
+      strength > 1
+    )
+      throw Error('Invalid overlay foil');
+  }
   recipe.artWindows.forEach(rect);
   recipe.regions.forEach((region) => rect(region.rect));
   for (const edge of recipe.edges) {

@@ -26,6 +26,7 @@ export const fragment = `#version 300 es
 precision highp float;
 in vec2 v_uv;in vec3 v_normal;
 uniform sampler2D face;uniform sampler2D mask;uniform sampler2D overlay;uniform sampler2D coverage;
+uniform vec2 overlayFoil;
 uniform vec2 pointer;uniform vec4 artBounds[8];
 uniform float hasMask;uniform float cornerRadius;uniform float aspect;uniform float finishBase;
 out vec4 out_color;
@@ -44,7 +45,14 @@ void main(){
  vec3 base=texture(face,uv).rgb;
  vec4 c=texture(coverage,uv),top=texture(overlay,uv);
  vec3 under=mix(base,shaded,max(finishBase,c.r)*(1.-c.g));
- out_color=vec4(previewInk(mix(under,top.rgb,top.a)),1.);
+ // Printing stays at the original UV, above all optical effects. The same
+ // satin response as the conventional finishes supplies an optional reflection.
+ vec3 printing=top.rgb;
+ if(overlayFoil.y>0. && top.a>0.) {
+   vec3 reflected=previewLinear(satin(uv,previewInk(printing),normalize(v_normal),view,overlayFoil.x,0.));
+   printing=mix(printing,reflected,overlayFoil.y);
+ }
+ out_color=vec4(previewInk(mix(under,printing,top.a)),1.);
 }`;
 export const imageFragment = `#version 300 es
 precision highp float;in vec2 v_uv;uniform sampler2D face;out vec4 out_color;

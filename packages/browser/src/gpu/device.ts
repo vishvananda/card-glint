@@ -144,6 +144,12 @@ export class Device {
     windows.forEach((rect, i) => bounds.set(rect, i * 4));
     gl.uniform4fv(gl.getUniformLocation(p, 'artBounds[0]'), bounds);
     gl.uniform1f(gl.getUniformLocation(p, 'finishBase'), material.recipe.finishCoverageBase ?? 1);
+    const overlayFoil = material.recipe.overlayFoil;
+    gl.uniform2f(
+      gl.getUniformLocation(p, 'overlayFoil'),
+      overlayFoil ? { gold: 1, silver: 3, prismatic: 2 }[overlayFoil.tone] : 0,
+      overlayFoil?.strength ?? 0,
+    );
     gl.uniform1f(gl.getUniformLocation(p, 'cornerRadius'), material.recipe.cornerRadius);
     gl.uniform1f(gl.getUniformLocation(p, 'aspect'), material.face.height / material.face.width);
     const pointer = frame.pointer ?? [0.5, 0.5];

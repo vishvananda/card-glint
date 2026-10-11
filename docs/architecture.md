@@ -212,3 +212,17 @@ finish, so refraction samples clean artwork and cannot drag a second copy of a
 symbol into view. Full-card mode places printing below the finish. The first
 scope change prepares another cached color/overlay set; warm toggles reuse both.
 The older single-raster `showcase.describe` API remains available.
+
+### Reflections on sharp printing
+
+A pack can put its clean artwork in `recipe.color` and its transparent printed
+frame in `over-finish` layers. Optical finishes then sample only the illustration.
+`FaceRecipe.overlayFoil` optionally adds a gold, silver or prismatic satin
+reflection (strength 0–1) to that combined printing, at the original UV. It
+never distorts text or symbols. Omit it for unshaded overlays; it applies to all
+over-finish layers in that document. Put unshaded HUD elements in scene layers.
+
+This is a pair of material uniforms, evaluated in the existing depth pass.
+Changing tone/strength reuses the prepared textures; batching distinguishes the
+uniform values. Exports and context restoration use the same recipe. Hosts still
+supply time, animation scheduling and reduced-motion policy.

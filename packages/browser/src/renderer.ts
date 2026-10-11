@@ -304,6 +304,8 @@ export class Renderer {
             material.coverage !== current.coverage ||
             material.recipe.cornerRadius !== current.recipe.cornerRadius ||
             material.recipe.finishCoverageBase !== current.recipe.finishCoverageBase ||
+            material.recipe.overlayFoil?.tone !== current.recipe.overlayFoil?.tone ||
+            material.recipe.overlayFoil?.strength !== current.recipe.overlayFoil?.strength ||
             JSON.stringify(material.recipe.artWindows) !==
               JSON.stringify(current.recipe.artWindows))
         ) {
