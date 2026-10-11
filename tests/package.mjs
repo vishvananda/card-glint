@@ -29,7 +29,12 @@ try {
     `
 import { createRenderer, IDENTITY, type CardDocument } from 'card-glint';
 import { showcase } from 'card-glint/showcase';
+import { magic, opticalDocument, type MagicCard } from 'card-glint/magic';
+import 'card-glint/magic/fonts.css';
 import wasmUrl from 'card-glint/renderer.wasm?url';
+const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2'};
+export const magicRecipe = magic.describe(face,'inspect');
+export const opticalRecipe = opticalDocument(2,1,face,'silver');
 export async function example(canvas: HTMLCanvasElement) {
   const renderer = await createRenderer({ canvas, wasmUrl });
   const cards: CardDocument[] = [{id:1,revision:1,recipe:showcase.describe({name:'Compass',subtitle:'Instrument',theme:'orbit',charge:3,serial:'001',illustration:'/art/orbit.svg',rules:'Find a path.'},'table')}];

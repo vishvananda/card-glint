@@ -12,12 +12,7 @@ provenance and optimized WebP files are in [`games/showcase/art`](games/showcase
 The optional geometric SVG alternatives are generated entirely by
 [`scripts/generate-showcase-art.mjs`](scripts/generate-showcase-art.mjs).
 
-[`references/magic`](references/magic/README.md) contains links and metadata for
-external art/frame/font resources. These are not loaded by the showcase and are
-not relicensed by the renderer's code license. Consult their source repositories
-and the rights holders before using them in your own game pack.
-
-card-glint is unofficial Fan Content permitted under the
-[Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy).
-Not approved/endorsed by Wizards. Portions of the materials referenced are
-property of Wizards of the Coast. ©Wizards of the Coast LLC.
+The optional [`games/magic`](games/magic/README.md) pack contains drawing code
+and external frame/font/symbol references. Its [source and fan-content notices](games/magic/NOTICE.md)
+apply to that pack. Referenced assets are not bundled, loaded by the original
+showcase, or relicensed under this repository's code license.

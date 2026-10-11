@@ -1,6 +1,6 @@
 {
   "name": "card-glint",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -17,6 +17,7 @@
     "art": "node scripts/generate-showcase-art.mjs",
     "media:showcase": "node scripts/showcase-media.mjs",
     "test:showcase": "node tests/showcase.mjs",
+    "test:magic": "node tests/magic.mjs",
     "package:release": "node scripts/package-release.mjs",
     "test:release": "node tests/release.mjs",
     "test:surfaces": "node tests/surfaces.mjs",
@@ -45,7 +46,12 @@
     "./showcase": {
       "types": "./dist/types/games/showcase/src/index.d.ts",
       "import": "./dist/lib/showcase.js"
-    }
+    },
+    "./magic": {
+      "types": "./dist/types/games/magic/src/index.d.ts",
+      "import": "./dist/lib/magic.js"
+    },
+    "./magic/fonts.css": "./dist/lib/magic.css"
   },
   "files": [
     "dist/lib",
@@ -54,7 +60,10 @@
     "README.md",
     "LICENSE*",
     "NOTICE*",
-    "games/showcase/art"
+    "games/showcase/art",
+    "games/magic/README.md",
+    "games/magic/NOTICE.md",
+    "references/magic"
   ],
   "license": "MIT OR Apache-2.0",
   "description": "Game-neutral browser card rendering with a Rust/WASM core, cached GPU etching, and isolated game packs",

@@ -22,6 +22,7 @@ const types = {
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
   '.html': 'text/html',
+  '.css': 'text/css',
 };
 const server = createServer(async (req, res) => {
   try {
@@ -69,6 +70,31 @@ try {
   );
   console.log(
     'Release hashes and extracted browser archive passed: JS, WASM and original art work under a nested URL without a bundler.',
+  );
+  const magicPage = await browser.newPage();
+  await magicPage.route('https://**/*', (route) => {
+    const font = /\.(?:ttf|woff2?)(?:\?|$)/.test(route.request().url());
+    return route.fulfill({
+      status: font ? 404 : 200,
+      contentType: font ? 'text/plain' : 'image/svg+xml',
+      body: font
+        ? ''
+        : '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="64" height="64" fill="#526675" fill-opacity=".1"/></svg>',
+    });
+  });
+  await magicPage.goto(origin + '/library/magic.html');
+  await magicPage.waitForFunction(
+    () => document.querySelector('#status').textContent.startsWith('Ready.'),
+    null,
+    { timeout: 30000 },
+  );
+  await magicPage.locator('#finish').selectOption('opal');
+  assert.ok(
+    await magicPage.locator('#card').evaluate((canvas) => canvas.toDataURL().length > 10000),
+  );
+  await magicPage.close();
+  console.log(
+    'Optional Magic browser example renders and changes finish with synthetic external-frame fixtures.',
   );
 } finally {
   await browser?.close();

@@ -23,8 +23,9 @@ showcase uses original AI-generated fantasy illustrations and code-drawn frames
 and symbols. The [artwork, prompts and provenance](games/showcase/art/README.md)
 are included under the repository's license, alongside small procedural SVG
 alternatives and their [generator](scripts/generate-showcase-art.mjs).
-No external fonts or artwork are loaded by the showcase. External game-art references are kept separately under
-[references/magic](references/magic/README.md), with source links and attribution.
+No external fonts or artwork are loaded by the showcase. The optional
+[Magic drawing pack](games/magic/README.md) contains frame definitions, external
+asset references, its fan-content notice, and a guide for contributing fixes.
 
 ## What it does
 
@@ -97,7 +98,7 @@ The README's eight-second GIF and MP4 are captured from the same renderer;
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.7/card-glint-0.2.7.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.8/card-glint-0.2.8.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -118,7 +119,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.7/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.8/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -232,16 +233,10 @@ chosen outline and surface seed. Warped exports fit the whole envelope into the
 requested dimensions, preserving aspect ratio with transparent margins. Export
 does not replay live ripple/slosh history or disturb the live motion state.
 
-## Sources and fan-content notice
+## Contributing game packs
 
-External reference metadata links to
-[wingedsheep/mtg-card-renderer](https://github.com/wingedsheep/mtg-card-renderer),
-[Investigamer/cardconjurer](https://github.com/Investigamer/cardconjurer), and
-[Andrew Gioia's Keyrune](https://github.com/andrewgioia/keyrune).
-Their assets retain their own rights and licenses and are **not bundled** with
-this renderer or used in the README images. See [NOTICE.md](NOTICE.md).
-
-card-glint is unofficial Fan Content permitted under the
-[Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy).
-Not approved/endorsed by Wizards. Portions of the materials referenced are
-property of Wizards of the Coast. ©Wizards of the Coast LLC.
+Frame fixes and new card layouts are welcome. The [Magic pack guide](games/magic/README.md)
+maps asset selection, geometry, text layout, and composition to their source files.
+Use `card-glint/magic` and `card-glint/magic/fonts.css` to consume that pack;
+the core import remains independent of it. [Sources and notices](NOTICE.md)
+describe the separation between repository code and external game assets.

@@ -18,6 +18,10 @@ const browser = path.join(output, folder);
 await cp('dist/lib', browser, { recursive: true });
 await cp('games/showcase/art', path.join(browser, 'art'), { recursive: true });
 await cp('examples/standalone', browser, { recursive: true });
+await mkdir(path.join(browser, 'magic'), { recursive: true });
+for (const name of ['README.md', 'NOTICE.md', 'assets.json']) {
+  await cp(path.join('games/magic', name), path.join(browser, 'magic', name));
+}
 for (const name of ['LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE.md']) {
   await cp(name, path.join(browser, name));
 }

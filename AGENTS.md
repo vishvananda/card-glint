@@ -16,6 +16,7 @@ Document benchmark scope: CPU submission time is not GPU completion time.
 Never silently use another game's painter or publish partial face revisions.
 
 The public showcase must load only original repository assets. External art
-reference metadata belongs in references/ with attribution; do not copy those
+reference metadata belongs in its game pack with attribution; do not copy those
 assets into the showcase or README images. Do not add private host paths or
-internal project names. Preserve the fan notice and source links in README.md.
+internal project names. Keep the Magic pack's fan notice and source links in
+games/magic/. The root README describes the game-neutral library.

@@ -1,0 +1,136 @@
+import type { RenderedCardInput } from './face-layout.js';
+import type { CanvasImages } from './canvas-assets.js';
+import {
+  retroRects,
+  retroFrameAsset,
+  retroBorder,
+  retroBorderMask,
+  retroInk,
+  retroSetSymbol,
+  retroRulesSize,
+  retroPx,
+  retroFrameFilter,
+  retroFamily,
+  retroBasicSymbol,
+  retroStock,
+} from './retro-frame.js';
+import { paintIllustration, type PaintLayer } from './illustration-paint.js';
+import { paintMana, paintRules, rulesLines, paintSetSymbol } from './canvas-text.js';
+export function paintRetroFace(
+  c: CanvasRenderingContext2D,
+  face: RenderedCardInput,
+  images: CanvasImages,
+  underArt?: HTMLCanvasElement,
+  layer?: PaintLayer,
+) {
+  const rect = retroRects(face);
+  if (layer === 'artwork') {
+    paintIllustration(c, face, images, retroPx(rect.art), layer);
+    return;
+  }
+  c.fillStyle = retroStock(face);
+  c.fillRect(0, 0, 488, 680);
+  c.fillStyle = '#686050';
+  c.fillRect(24.4, 27.2, 439.2, 625.6);
+  c.fillStyle = '#e5dec5';
+  c.fillRect(...retroPx(rect.rules));
+  c.fillStyle = '#746b58';
+  c.fillRect(...retroPx(rect.art));
+  if (underArt) c.drawImage(underArt, 0, 0, 488, 680);
+  paintIllustration(c, face, images, retroPx(rect.art), layer);
+  const frame = images.get(retroFrameAsset(face));
+  if (frame) {
+    c.save();
+    c.filter = retroFrameFilter(face);
+    c.drawImage(frame, ...retroPx(rect.frame));
+    c.restore();
+  }
+  if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {
+    const mask = images.get(retroBorderMask(face));
+    if (mask) {
+      const layer = document.createElement('canvas');
+      layer.width = 732;
+      layer.height = 1020;
+      const ctx = layer.getContext('2d')!;
+      ctx.drawImage(mask, 0, 0, 732, 1020);
+      ctx.globalCompositeOperation = 'source-in';
+      ctx.fillStyle = retroStock(face);
+      ctx.fillRect(0, 0, 732, 1020);
+      c.drawImage(layer, ...retroPx(rect.frame));
+      layer.width = layer.height = 0;
+    }
+  }
+  c.fillStyle = retroInk(face);
+  c.textBaseline = 'middle';
+  c.textAlign = 'left';
+  c.letterSpacing = '0px';
+  const [x, y, w, h] = retroPx(rect.title),
+    cost = face.manaSymbols ?? [],
+    size = 23.4,
+    gap = 1.7,
+    costW = cost.length * (size + gap);
+  c.shadowColor = '#000b';
+  c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
+  c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
+  c.fillText(face.name, x, y + h / 2, Math.max(1, w - costW - 5));
+  cost.forEach((s, i) =>
+    paintMana(c, s, x + w - costW + i * (size + gap), y + h / 2 - size / 2, size, images, true),
+  );
+  const [tx, ty, tw, th] = retroPx(rect.type),
+    icon = images.get(retroSetSymbol(face) ?? '');
+  c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
+  c.fillText(face.typeLine ?? '', tx, ty + th / 2, tw - (icon ? 48 : 0));
+  if (icon) {
+    const scale = Math.min(44 / icon.width, 23.4 / icon.height);
+    paintSetSymbol(
+      c,
+      icon,
+      face.setCode,
+      face.rarity,
+      tx + tw - icon.width * scale,
+      ty + th / 2 - (icon.height * scale) / 2,
+      icon.width * scale,
+      icon.height * scale,
+    );
+  }
+  c.shadowColor = 'transparent';
+  const [rx, ry, rw, rh] = retroPx(rect.rules),
+    text = face.rulesText ?? '',
+    font = retroRulesSize(face);
+  c.font = `${font}px "CardRenderer MTG MPlantin", Georgia`;
+  c.fillStyle = '#17140f';
+  const basic = images.get(retroBasicSymbol(face) ?? '');
+  const lines = rulesLines(c, text, rw, font),
+    height = lines.length * font + (text.split('\n').length - 1) * 3.84;
+  c.save();
+  c.beginPath();
+  c.rect(rx, ry, rw, rh);
+  c.clip();
+  if (basic) {
+    const scale = Math.min((rw * 0.4) / basic.width, (rh * 0.75) / basic.height);
+    c.drawImage(
+      basic,
+      rx + (rw - basic.width * scale) / 2,
+      ry + (rh - basic.height * scale) / 2,
+      basic.width * scale,
+      basic.height * scale,
+    );
+  } else paintRules(c, text, rx, ry + Math.max(0, (rh - height) / 2), rw, font, images);
+  c.restore();
+  c.shadowColor = '#000b';
+  c.fillStyle = retroInk(face);
+  c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
+  c.textBaseline = 'middle';
+  if (face.power != null && face.toughness != null) {
+    const [sx, sy, sw, sh] = retroPx(rect.stats);
+    c.textAlign = 'center';
+    c.fillText(`${face.power}/${face.toughness}`, sx + sw / 2, sy + sh / 2, sw);
+  }
+  if (face.artist) {
+    const [fx, fy, fw, fh] = retroPx(rect.footer);
+    c.textAlign = 'center';
+    c.font = '15.6px "CardRenderer MTG MPlantin", Georgia';
+    c.fillText(`Illus. ${face.artist}`, fx + fw / 2, fy + fh / 2, fw);
+  }
+  c.shadowColor = 'transparent';
+}

@@ -46,6 +46,7 @@ jobs:
           exit 1
       - run: npm run test:browser
       - run: npm run test:showcase
+      - run: npm run test:magic
       - run: npm run test:surfaces
       - run: npm run test:touch
       - run: npm run test:hover-isolation
