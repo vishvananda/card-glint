@@ -88,7 +88,7 @@ with no application server or external asset host required.
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.6/card-glint-0.2.6.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.7/card-glint-0.2.7.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -109,7 +109,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.6/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.7/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -199,8 +199,9 @@ canvas-space foil-light control.
 
 These are procedural optical treatments, not a fluid solver. Heat refracts the
 printed face in horizontal bands with slight blur. Rain adds small lenses and
-draining drops over lightly fogged glass. Rain and pool place the image behind
-the surface, giving it parallax as the card tilts. Pool projects refracted light
+draining drops over lightly fogged glass. Rain counter-projects the image around the card center, so the scene stays
+approximately in place behind the turning window. Pool keeps the artwork painted
+on the card’s floor while damped water modes lag, rebound and settle. It projects refracted light
 onto a separate floor map: concentrated rays brighten it and diverging rays dim
 it. Surface waves, reflections and pointer ripples sit above that lit floor.
 Under-finish content participates; over-finish content stays clear of these

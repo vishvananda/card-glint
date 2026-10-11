@@ -1,6 +1,6 @@
 import { WATER_WAVES_GLSL } from './water-waves.js';
 
-/** A moving water surface above a separately illuminated, recessed card face. */
+/** A shallow basin: fixed printed floor, inertial water and separate illumination. */
 export const POOL_GLSL = `
 uniform sampler2D caustics;
 ${WATER_WAVES_GLSL}
@@ -22,18 +22,26 @@ vec2 rippleSlope(vec2 p,vec4 r){
 }
 vec3 poolWater(vec2 uv,vec3 normal){
  vec2 metric=vec2(1.,aspect),slosh=surfaceInfo.xy;
+ vec4 bounds=surfaceWindow(uv);
+ vec2 extent=max((bounds.zw-bounds.xy)*metric,vec2(.01));
+ vec2 basin=clamp((uv-bounds.xy)/(bounds.zw-bounds.xy),0.,1.);
+ // The two lowest basin modes pile water against opposite walls and rebound.
+ // Slosh is the host-motion-driven damped spring, not a sliding floor texture.
+ vec2 phase=basin*3.14159265359;
+ float swell=.20*dot(slosh,cos(phase));
+ vec2 basinSlope=-.20*3.14159265359*slosh*sin(phase)/extent;
  vec2 origin=vec2(surfaceInfo.z,surfaceInfo.z*.618)*waterPeriod;
- vec2 p=uv*metric+origin+slosh*.20;
+ vec2 drift=slosh*.35;
+ vec2 p=uv*metric+origin+drift;
  vec3 wave=waterField(p,surfaceTime);
- vec2 slope=wave.xy;
- slope+=vec2(sin(p.y*5.+surfaceTime*1.4),cos(p.x*6.-surfaceTime*1.3))*length(slosh)*1.8+slosh*.4;
+ vec2 slope=wave.xy+basinSlope;
  slope+=rippleSlope(uv,ripple0)+rippleSlope(uv,ripple1)+rippleSlope(uv,ripple2)+rippleSlope(uv,ripple3);
- // Floor ink and its illumination share a ray intersection. Ripples and glints
- // live above them; tilting reveals the distance between these optical layers.
- vec2 floorUv=surfaceParallax(uv,normal,.16,1.333)+slope*vec2(.055,.055/aspect);
- vec2 floorPoint=floorUv*metric+origin+slosh*.20;
+ // Artwork is painted on the basin floor and moves with the card. Only local
+ // water refraction bends it; changing the card's angle does not pan the image.
+ vec2 floorUv=uv+slope*vec2(.035,.035/aspect)*clamp(1.+swell*3.,.6,1.4);
+ vec2 floorPoint=floorUv*metric+origin+drift;
  float flux=floorIrradiance(floorPoint/waterPeriod);
- vec3 ink=windowInk(floorUv,surfaceWindow(uv));
+ vec3 ink=windowInk(floorUv,bounds);
  // Apply irradiance in linear light: divergence dims the floor, focused rays
  // brighten it. Ambient light preserves readability in the darkest troughs.
  vec3 floorLight=ink*vec3(.78,.94,1.)*(.28+.72*flux);

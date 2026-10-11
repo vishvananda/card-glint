@@ -132,8 +132,8 @@ acceptance remains necessary in addition to Chromium software-GPU checks.
 `rain`, `heat` and `pool` shade the prepared face in its existing depth pass.
 Refraction is clamped to the card, or to its art window in artwork-only mode.
 Finish-excluded pixels keep the original ink; over-finish overlays do not get
-pulled underneath droplets or water waves. Rain and pool shift the underlying
-image with tilt to suggest its distance behind the front surface.
+pulled underneath droplets or water waves. Rain counter-projects a near-stationary scene behind a turning pane; pool keeps
+its printed floor attached to the card. Neither adds a uniform image pan.
 
 Time is explicit, nonnegative elapsed seconds. The host owns scheduling and
 reduced-motion/visibility policy. The adapter holds a damped spring and four
@@ -174,8 +174,10 @@ software rendering; CPU submission timings are not hardware GPU completion/FPS.
 The water is an approximation: one flat receiving floor and one directional
 light, capped 8× intensity in an 8-bit map, no volume conservation or submerged
 occluders. Ripple/slosh changes refract the floor map and surface reflections;
-it does not retrace the shared sunlight for each local ripple. Parallax depth
-is visually compressed. Rain does not physically merge droplets.
+it does not retrace the shared sunlight for each local ripple. Rain scene stabilization uses the surface normal and a fixed perspective
+distance of 3.5 card widths; arbitrary host cameras and card translations are
+not tracked. Basin slosh uses two low-frequency wall-to-wall height modes from
+the existing damped spring. Rain does not physically merge droplets.
 
 ### Optional moving silhouette
 

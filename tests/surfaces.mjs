@@ -133,6 +133,13 @@ try {
       render(10.05);
       const moving = render(10.2);
       const slosh = { left: diff(resting, moving, 0, 256), right: diff(resting, moving, 256, 512) };
+      // After the card stops, its transient water motion should settle back to
+      // the same traveling field as a fresh, still instance at the same time.
+      for (let step = 1; step <= 80; step++) render(10.2 + step * 0.05);
+      const settled = pixels();
+      render(0);
+      const still = render(14.2);
+      const residual = diff(settled, still, 0, 256);
       let rejected = 0;
       for (const frame of [{ time: NaN }, { time: -1 }, { hover: { instance: 1, uv: [2, 0] } }]) {
         try {
@@ -149,6 +156,7 @@ try {
         finishes,
         localized,
         slosh,
+        residual,
         rejected,
         exported,
         before,
@@ -172,6 +180,10 @@ try {
   assert.equal(report.localized.right, 0, 'Ripple leaked onto another instance');
   assert.ok(report.slosh.left > 200, 'Motion did not leave damped slosh');
   assert.equal(report.slosh.right, 0, 'Slosh leaked onto another instance');
+  assert.ok(
+    report.residual < report.slosh.left * 0.1,
+    'Water did not settle after movement stopped',
+  );
   for (const key of ['compositions', 'maskBuilds', 'edgeBuilds', 'uploads', 'readbacks'])
     assert.equal(report.before[key], report.after[key], key + ' changed during surface animation');
   assert.equal(report.rejected, 3);

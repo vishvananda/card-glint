@@ -148,9 +148,9 @@ const ready = (async () => {
       cold: 'Cold foil',
       opal: 'Opal embossing',
       prismatic: 'Prismatic',
-      rain: 'Raindrops on glass',
+      rain: 'Rainlit window',
       heat: 'Heat shimmer',
-      pool: 'Pool water',
+      pool: 'Liquid prism',
     };
     document.querySelectorAll('.captions i').forEach((node, i) => {
       node.textContent = names[chosenFinish(i)];

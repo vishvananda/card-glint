@@ -3,7 +3,7 @@
 The effects reuse the prepared card face and keep its layer/depth ordering.
 Each treatment has a small shader module under `packages/browser/src/gpu`.
 
-## Rain on glass
+## Rainlit window
 
 [Lucas Bebber's rain experiments](https://tympanus.net/codrops/2015/11/04/rain-water-effect-experiments/)
 separate a soft background from sharp refractive drops, with larger drops
@@ -13,9 +13,12 @@ model; their code and image assets are not bundled.
 
 Our analytic approximation uses small cap gradients, seeded births, draining
 drops and clear tracks. Condensation lightly softens the image, while lenses
-and tracks remain sharp. The image sits behind the glass: tilt moves it relative
-to the drops and their highlights. It does not conserve water volume or simulate
-collision-driven merging.
+and tracks remain sharp. The scene is counter-projected around the card center
+so it stays nearly still behind the turning glass, rather than translating the whole image sideways.
+Drops and highlights remain on the pane. This uses the supplied surface normal
+and an approximate 3.5-card-width camera distance, not a world-space portal;
+translation and arbitrary host cameras are not compensated. It does not conserve
+water volume or simulate collision-driven merging.
 
 ## Heat
 
@@ -30,7 +33,7 @@ same mapping. Card-local masks and overlays follow; scene overlays remain
 independent. Full-card heat uses this in the showcase; artwork-only does not.
 PNG export includes transparent margins around the complete warped outline.
 
-## Pool: surface and receiving floor
+## Liquid prism: surface and painted floor
 
 [GPU Gems: Rendering Water Caustics](https://developer.nvidia.com/gpugems/gpugems/part-i-natural-effects/chapter-2-rendering-water-caustics)
 describes wave-derived caustics. [Evan Wallace's explanation](https://medium.com/@evanwallace/rendering-realtime-caustics-in-webgl-2a99a29a0b2c)
@@ -49,11 +52,14 @@ A second, card-shading pass looks through the water to a recessed floor. Artwork
 and the caustic illumination share the viewing-ray displacement. Lighting is
 applied in linear light, with modest ambient fill and water attenuation. Surface
 normals create reflections and Fresnel highlights above the floor; hover ripples
-and slosh affect this viewing/reflection layer. Tilting gives the floor parallax.
+and slosh affect this viewing/reflection layer. The illustration stays attached
+to the basin floor, with no tilt-driven image translation. Two wall-to-wall
+height modes accumulate water on opposing sides as the existing damped spring
+responds to movement. Their slopes and varying depth bend the view; the water
+and light field lag, rebound and settle after the card stops.
 
-This is a single-floor, single-light approximation. Parallax depth is visually
-compressed. There are no underwater occluders or volume simulation. Local
-ripples warp the shared floor illumination; they do not each rebuild sunlight
+This is a single-floor, single-light approximation. There are no underwater
+occluders or volume simulation. Local ripples warp the shared floor illumination; they do not each rebuild sunlight
 projections. The periodic field is continuously transported; per-instance
 sampling offsets avoid identical patterns on neighboring cards.
 
@@ -71,7 +77,7 @@ and heat use five face samples. Pool adds one shared light pass per changed time
 regardless of visible card count; fixed-time redraws reuse it. Its fixed map/index
 allocation is 704,512 bytes, reported separately as `surfaceBytes`.
 
-CI checks silhouette pixels against Rust picking, overlap, masks, exports, moving
-image features behind the optical surface, light/dark floor contrast, traveling
-caustics and cache/pass reuse. These are software-rendered correctness tests,
+CI checks silhouette pixels against Rust picking, overlap, masks, exports,
+anchored window scenes, card-attached painted floors, light/dark floor contrast,
+traveling caustics and cache/pass reuse. These are software-rendered correctness tests,
 not hardware FPS or proof of physical accuracy.

@@ -13,7 +13,7 @@ try {
     const api = window.lab.api,
       c = api.canvas([400, 600]);
     const r = await api.createRenderer({ canvas: c });
-    const raster = (key, color, mark = false) => ({
+    const raster = (key, color, mark = false, offset = false) => ({
       key,
       size: [200, 300],
       async paint() {
@@ -23,7 +23,8 @@ try {
         ctx.fillRect(0, 0, 200, 300);
         if (mark) {
           ctx.fillStyle = '#f00';
-          ctx.fillRect(97, 0, 6, 300);
+          if (offset) ctx.fillRect(133, 100, 14, 100);
+          else ctx.fillRect(97, 0, 6, 300);
         }
         return c;
       },
@@ -40,8 +41,9 @@ try {
       { id: 1, revision: 1, recipe: recipe(raster('depth-marker', '#222', true)) },
       { id: 2, revision: 1, recipe: recipe(raster('gray-2', '#555')) },
       { id: 3, revision: 1, recipe: recipe(raster('gray-3', '#777')) },
+      { id: 4, revision: 1, recipe: recipe(raster('offset-marker', '#222', true, true)) },
     ]);
-    await Promise.all([1, 2, 3].map((id) => r.ready(id, 1)));
+    await Promise.all([1, 2, 3, 4].map((id) => r.ready(id, 1)));
     const gl = c.getContext('webgl2'),
       transform = [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1];
     const pixels = () => {
@@ -73,6 +75,23 @@ try {
         }
         parallax[finish] = centers;
       }
+      // A real turning pane, not just a lighting-normal change. Track a scene
+      // feature away from the pivot: rain keeps it approximately fixed on screen,
+      // while a pool's painted bottom follows the same movement as regular ink.
+      const anchored = {};
+      for (const finish of ['regular', 'rain', 'pool']) {
+        const centers = [];
+        for (const angle of [-0.5, 0, 0.5]) {
+          const s = Math.sin(angle),
+            c = Math.cos(angle),
+            w = s / 3.5;
+          const turn = [1.6 * c, 0, 0, w, 0, -1.6, 0, 0, 0, 0, 1, 0, -0.8 * c, 0.8, 0, 1 - w / 2];
+          r.updateScene([{ id: 1, card: 4, finish, normal: [s, 0, c], transform: turn }]);
+          frame(2);
+          centers.push(centroid(pixels()));
+        }
+        anchored[finish] = centers;
+      }
       r.updateScene([{ id: 1, card: 2, finish: 'pool', transform }]);
       frame(2);
       const data = pixels(),
@@ -102,7 +121,7 @@ try {
       const cached = r.metrics;
       frame(4);
       const next = r.metrics;
-      return { parallax, intensity, before, moved, cached, next, glError: gl.getError() };
+      return { parallax, anchored, intensity, before, moved, cached, next, glError: gl.getError() };
     } finally {
       r.dispose();
     }
@@ -111,10 +130,16 @@ try {
   for (const centers of Object.values(report.parallax)) {
     assert.ok(centers.every(Number.isFinite));
     assert.ok(
-      centers[1] > centers[0] + 5 && centers[2] > centers[1] + 5,
-      'Floor did not move behind the surface with tilt',
+      Math.max(...centers) - Math.min(...centers) < 3,
+      'Tilt panned the whole illustration',
     );
   }
+  const { regular, rain, pool } = report.anchored;
+  const travel = (centers) => Math.max(...centers.map((x) => Math.abs(x - centers[1])));
+  assert.ok(travel(regular) > 6, 'Test pose did not move the printed feature');
+  assert.ok(travel(rain) < travel(regular) * 0.45, 'Window scene followed the turning glass');
+  for (let i = 0; i < 3; i++)
+    assert.ok(Math.abs(pool[i] - regular[i]) < 3, 'Pool floor detached from its card');
   assert.ok(report.intensity.p10 < 80, 'Missing diverging/darker floor light');
   assert.ok(report.intensity.p90 > 95, 'Missing focused/brighter floor light');
   assert.ok(report.intensity.p99 > 120, 'Missing concentrated caustic bands');

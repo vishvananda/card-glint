@@ -51,7 +51,7 @@ vec3 rainGlass(vec2 uv,vec3 normal){
  float clear=max(wet.z,wet.w*.8);
  // Sharp lenses and wiped tracks sit over a softly fogged, still readable face.
  vec2 radius=vec2(.0032,.0032/aspect)*(1.-clear);
- vec2 behind=surfaceParallax(uv,normal,.10,1.5);
+ vec2 behind=windowSceneUv(uv,normal);
  vec3 ink=softenedInk(behind+bend,radius,surfaceWindow(uv));
  float fog=(.060+.025*surfaceNoise(uv*vec2(3.,4.)+surfaceInfo.z*11.))*(1.-clear);
  ink=mix(ink,vec3(.72,.77,.79),fog);

@@ -16,11 +16,15 @@ float surfaceNoise(vec2 p){
 }
 vec3 surfaceInk(vec2 uv){return texture(face,clamp(uv,vec2(.002),vec2(.998))).rgb;}
 vec3 refractedInk(vec2 uv){return previewInk(surfaceInk(uv));}
-// A recessed image moves behind the front surface as the card tilts. The
-// lateral view ray is reduced by the medium's refractive index before projection.
-vec2 surfaceParallax(vec2 uv,vec3 normal,float depth,float index){
- vec2 ray=-normal.xy/index;
- return uv+ray/sqrt(max(.1,1.-dot(ray,ray)))*vec2(depth,depth/aspect);
+// Project the turning pane onto a nearly stationary, front-facing scene.
+// Shortest-arc rotation from +Z to the normal, with a restrained perspective
+// distance in card widths. The center stays anchored: no uniform image pan.
+// This is an approximation for host-owned cameras, not a world-space portal.
+vec2 windowSceneUv(vec2 uv,vec3 normal){
+ vec2 metric=vec2(1.,aspect),p=(uv-.5)*metric;
+ vec2 projected=p-normal.xy*dot(normal.xy,p)/max(.25,1.+normal.z);
+ projected/=max(.65,1.+dot(normal.xy,p)/3.5);
+ return .5+mix(p,projected,.9)/metric;
 }
 // In artwork-only mode, clamp to this art window so moving ink cannot pull the
 // printed frame into the illustration. No overscan image or extra texture needed.
