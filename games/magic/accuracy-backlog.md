@@ -72,8 +72,9 @@ remain unchanged.
 - Revised Serendib Efreet (`35415199-0f1d-4398-a48f-f78697a51105`): its reviewed
   scan has a green frame with a blue mana cost. The exact-printing annotation now
   selects the existing `old/fourth/g.png` through `frameColors`, preserving blue
-  card colors and cost. Its large centered rules continuation, weak title strokes
-  and header mana still need work. The scan hash begins `d4df515ddc0674a4`.
+  card colors and cost. Its large rules continuation now matches the printed
+  line endings; weak title strokes and header mana still need work. The scan
+  hash begins `d4df515ddc0674a4`.
 
 The full stats study retains Fourth/Fifth Edition placement and rejects Revised's
 transfer. Revised's old output is restored byte-for-byte across all 306 cards.
@@ -193,3 +194,14 @@ then corrects Serendib's printed palette/type only. Field-specific scan reviews
 do not certify body wording, and these source corrections are not renderer gains.
 Type-line geometry/ink, header mana and the larger centered body classes remain
 the next rendering studies after source validation.
+
+The `revised-large` study now covers 25 larger centered passages, including
+Animate Wall, Serendib Efreet, Sacrifice and Sengir Vampire. Production matches
+the frozen prototype at both sizes; all 281 other Revised faces are unchanged.
+24 changed cards gain edge F1 at both sizes; Disrupting Scepter regresses and
+still has four lines instead of its printed five. That card needs a shared
+line-breaking/size study, not a fitted card offset. Web, Reverse Damage, Karma
+and Lifeforce also retain different line endings. Deathgrip adds a confirmed
+source omission: the colon after its two black mana symbols. Correct its input
+separately before refining typography. Of 25 changed bodies, 24 match the printed
+line count and 19 match every line ending; stroke weight still differs.

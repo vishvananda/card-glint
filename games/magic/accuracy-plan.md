@@ -1239,3 +1239,45 @@ and links to every card's scores. Main comparisons for Earthbind, Gaea's Liege
 and Prodigal Sorcerer now pass the corrected type to both renderers. Their body
 review proofs still verify identical rules wording/style and the same scan;
 reviewing a type line does not certify unrelated text.
+
+### Revised large rules passages
+
+`revised-large` extends the existing 27.5px centered style beyond the former
+100-character cutoff. A plain rules passage must fit in at most five lines at
+that size; a short keyword heading stays left-aligned above a centered second
+paragraph. Explicit alignment, styling and hard breaks retain their existing
+policy. The 348px width and 30.25px baseline spacing are shared across the set;
+there is no name-based routing or scan offset. Inputs, fonts and assets are
+unchanged from `revised-frame`.
+
+Candidate `393021b` was frozen before ten reserved images were opened for this
+study. All eight applicable cards improve at both tiers; both controls remain
+unchanged. Six of the eight match every printed line ending; Web and Reverse
+Damage still wrap differently. Some cards appeared in earlier work, so this is
+a reservation for this study rather than a claim of first exposure. The three
+development positives also match every line; a 27px candidate was rejected
+because it incorrectly enlarged both development controls.
+
+The complete 306-card capture changes 25 bodies and preserves the other 281
+full PNG pairs and layouts. All changes stay in the body region. Production
+matches all 30 frozen development/reserved images, and 56 representatives from
+M21/MIR/TMP/4ED/5ED remain byte-identical. Every changed scan was then inspected;
+24/25 match printed line counts and 19 match all word-line targets. Disrupting
+Scepter has four lines instead of five and regresses in edge F1 at both tiers.
+This remains an intermediate improvement, with that failure explicitly retained.
+
+Inspect body F1 rises from median .258 to .569 across the 25 changed cards:
+24 gains and one regression greater than .02. Table results have the same counts
+and median .256 to .559. Deathgrip's source omits an activation colon; it is
+excluded from the no-known-content-error subset. The measurement retains Census
+and edge-distance pairs as well as F1. These are structural diagnostics, not an
+accuracy percentage or a certification of glyph shape. Font strokes remain
+heavier than the scans.
+
+Check/build, strict native/WASM Clippy, package, browser, showcase, Magic and
+accuracy tests pass. The synthetic-font Magic test checks heading/continuation
+alignment; real-font capture parity supplies exact raster/line evidence. The
+local `3ed/large-body-review/index.html` shows all changed cards and four controls,
+including the regression; `3ed/revised-large/report.html` contains every card's
+metrics. Frozen plans, transfer results, corpus targets, image checks and line
+reviews are recorded in the `3ed/large-body-*` fixtures.

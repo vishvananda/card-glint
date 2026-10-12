@@ -365,6 +365,27 @@ try {
       if (retroTextLayout(ctx, { ...shortRevised, rulesParagraphs: paragraphs }).size !== 22.5)
         throw Error('Revised automatic centering overrode a different paragraph policy');
     }
+    const flyingPassage = [
+      { role: 'rules', runs: [{ text: 'Flying' }] },
+      {
+        role: 'rules',
+        runs: [{ text: 'Serendib Efreet does 1 damage to you during your upkeep.' }],
+      },
+    ];
+    const largeRevised = retroTextLayout(ctx, { ...shortRevised, rulesParagraphs: flyingPassage });
+    if (
+      largeRevised.size !== 27.5 ||
+      largeRevised.lines.length < 3 ||
+      largeRevised.lines[0].x !== 70 ||
+      largeRevised.lines.slice(1).some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01)
+    )
+      throw Error('Revised keyword heading and large centered continuation lost their alignment');
+    const explicitFlying = retroTextLayout(ctx, {
+      ...shortRevised,
+      rulesParagraphs: flyingPassage.map((p) => ({ ...p, align: 'left' })),
+    });
+    if (explicitFlying.size !== 22.5 || explicitFlying.lines.some((line) => line.x !== 70))
+      throw Error('Automatic Revised large type overrode explicit host alignment');
     const retro = retroTextLayout(ctx, {
       ...fixtures[3],
       rulesParagraphs: [

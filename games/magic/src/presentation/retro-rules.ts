@@ -3,6 +3,7 @@ import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
 import { retroBasicSymbol, retroFamily, retroPx, retroRects } from './retro-frame.js';
 import { resolveFrameColors } from './profile.js';
+import { revisedLargeRules } from './revised-large-rules.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -26,6 +27,10 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
       .filter(Boolean)
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
   const set = face.setCode?.toLowerCase();
+  if (set === '3ed' && retroFamily(face) === 'fourth') {
+    const large = revisedLargeRules(context, paragraphs, y, height);
+    if (large) return large;
+  }
   const paragraph = paragraphs.length === 1 ? paragraphs[0] : undefined;
   const plain = paragraph?.runs.length === 1 ? paragraph.runs[0] : undefined;
   // Short Revised/Fourth passages use larger, centered and balanced lines.
