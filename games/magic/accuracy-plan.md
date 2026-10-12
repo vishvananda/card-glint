@@ -71,8 +71,9 @@ The [source manifest](fixtures/accuracy/printing-text-sources.json) records the
 upstream URLs, checksums, snapshot identities and missing printing IDs. These
 counts measure source coverage, not agreement with the scans. Alpha and Unlimited
 each have 16 missing entries: 15 with no Oracle rules and one with Oracle rules.
-Neither case certifies an empty printed rules box. Their reserved scans remain
-unviewed; capture the new wording under a new run name before geometry work.
+Neither case certifies an empty printed rules box. The source import preceded
+reserved-image review; the subsequent early-lettering study used separate runs
+and inspected only its declared title and credit crops.
 
 Source errors still need reviewed overrides: Fourth Edition Deathgrip's
 `originalText` omits the colon after its two black mana symbols. Its scan and
@@ -1427,3 +1428,15 @@ and pixel invariants. This is CPU workload timing, not GPU completion time.
 The local `early-lettering/validation/index.html` preserves the rejected title
 experiment as well as the accepted credit candidate. `main-review/index.html`
 shows the production credit change against actual main with identical inputs.
+
+Six [printing-field corrections](fixtures/accuracy/early-printing-field-review.json)
+are captured separately in `early-printing-fields`: three Alpha artist credits,
+Alpha Jade Statue's 3/6, and the printed X/X on Alpha Plague Rats and Unlimited
+Keldon Warlord. The [source-only audit](fixtures/accuracy/early-printing-field-measurement.json)
+verifies the same renderer, frame assets and body layout, checks all 3,582 image
+files, and confirms identical full PNGs for the other 591 cards at both sizes.
+The local `early-printing-fields/index.html` shows all six corrected footers.
+Correcting Plague Rats to X/X lowers overlap at both sizes because its remaining
+glyph treatment differs from the scan. Source correctness takes precedence over
+that score; these deltas are excluded from renderer gains. The original credit
+trial inputs and measurements remain frozen.

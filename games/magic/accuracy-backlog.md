@@ -246,3 +246,11 @@ above .02. Dingus Egg regresses at both sizes; Keldon Warlord, Lightning Bolt
 and Wall of Fire regress at table size. All four were inspected at both tiers
 and remain in `3ed/mana-corpus-review.json`. The low blue-card crops also show a
 taller/narrower historic droplet than `U.svg`. No card-specific shifts were added.
+
+Alpha/Unlimited artist and stat source corrections are recorded separately in
+`early-printing-field-review.json`. The printed X/X on Alpha Plague Rats and
+Unlimited Keldon Warlord still needs the historical glyph shape and light/dark
+ink treatment. Both now use the correct letters, but overlap can fall relative
+to the incorrect stars. Alpha Jade Statue now includes the printed 3/6; its
+stat treatment also remains uncalibrated. Do not tune placement against the old
+incorrect fields or count these input corrections as typography improvements.
