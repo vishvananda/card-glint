@@ -1,0 +1,2419 @@
+{
+  "schemaVersion": 1,
+  "baselineHash": "48a1fb9eb39f672401c1629978f84f92e3e644174c8e48136fb06a550fcb12f1",
+  "captureHash": "5c3de802268912e4b69cdff460fb30c6fb4f7c8cb3f902daf9153bd17bfedce2",
+  "rendererHash": "3cea63b56d37a9aa9e147c35ad3007d0fc60f00955cc5e7d49e99d4e30579bf0",
+  "studyHash": "6e5293c9a68330589880d97d216c0c0d6bdc67d878e2108acc3239192e93e622",
+  "methods": {
+    "scan-translation": "0913e25ab70bdeba9e22eeaaefe2ef2d1657bb8bb4139174a35fa23a711fc162",
+    "pixels": "3c4f9b614c2eb69a7656d5bbf5462a031fcaca15c45016cfa82daa1e0e2e1d33",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+  },
+  "profileHash": "54e4053e1889287c2071bbb4ca46274424018035941e3065b8291a448cbc9589",
+  "scope": "Normal-frame title size 24→26, identical fonts/tracking/placement and body. Complete available title space excludes mana. Raw and frozen-frame-normalized scores at both tiers; all native pixels outside title unchanged. Symbol-study validation cohorts are additional typography checks, not unseen scans.",
+  "summary": {
+    "validation": {
+      "cards": 21,
+      "inspect-raw": {
+        "before": 0.37834002777882053,
+        "after": 0.5550757027522801,
+        "gains": 21,
+        "regressions": 0
+      },
+      "inspect-normalized": {
+        "before": 0.42399398368116986,
+        "after": 0.62248793809335,
+        "gains": 21,
+        "regressions": 0
+      },
+      "table-raw": {
+        "before": 0.38758850901578884,
+        "after": 0.49979651770295985,
+        "gains": 21,
+        "regressions": 0
+      },
+      "table-normalized": {
+        "before": 0.3920082584748751,
+        "after": 0.5593082065512791,
+        "gains": 21,
+        "regressions": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "7a8313a1-af64-4ffb-9110-e70d297b9343",
+      "number": "4",
+      "name": "Battle Mastery",
+      "cohort": "validation",
+      "referenceHash": "51872103638953a5bc89a22e65ffb6c672b221294ba44219526977c8abc70c89",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.15413122488013187,
+            "residual": 0.7130493001624814,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.5589180752823495,
+                "spread": 0.0679435260572987
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.8671805250426132,
+                "spread": 0.29911993948439886
+              }
+            ]
+          },
+          "y": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.624107314346574,
+                "spread": 6.503370691944838
+              },
+              {
+                "group": "artBottom",
+                "count": 0,
+                "offset": null,
+                "spread": null
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.15413122488013187,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3745315993324307,
+              "meanDistance": 3.650223058230795,
+              "censusSimilarity": 0.4281800521360851
+            },
+            "normalized": {
+              "edgeF1": 0.3719666004687261,
+              "meanDistance": 3.6609618651320615,
+              "censusSimilarity": 0.4260224538893344
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5283358262212707,
+              "meanDistance": 2.9061671867994923,
+              "censusSimilarity": 0.5749912829793946
+            },
+            "normalized": {
+              "edgeF1": 0.535115212055745,
+              "meanDistance": 2.9019374304645633,
+              "censusSimilarity": 0.5810779203421546
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.36815523657628924,
+              "meanDistance": 5.234617427966087,
+              "censusSimilarity": 0.5223404785229216
+            },
+            "normalized": {
+              "edgeF1": 0.3737549496746734,
+              "meanDistance": 5.2292282407337,
+              "censusSimilarity": 0.5211507618283882
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4748689485044712,
+              "meanDistance": 4.393500722244171,
+              "censusSimilarity": 0.6193235592010228
+            },
+            "normalized": {
+              "edgeF1": 0.4814321207035557,
+              "meanDistance": 4.357083970095332,
+              "censusSimilarity": 0.623546511627907
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "04f9c2cc-2516-43d5-a7dc-27509f402077",
+      "number": "11",
+      "name": "Ephemeral Shields",
+      "cohort": "validation",
+      "referenceHash": "8c54e7dc5e9ab0af6f66cc14201f624a21e417aa21a49579f2defe07ee7dfe79",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.13219464034664874,
+            "residual": 0.7813867827797534,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6491921424331046,
+                "spread": 0.03926300286725848
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.9135814231264021,
+                "spread": 0.0435043632476777
+              }
+            ]
+          },
+          "y": {
+            "status": "out-of-bounds",
+            "proposed": -4.610009901853154,
+            "residual": 3.517665671579074,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -8.127675573432228,
+                "spread": 0.0411326700688619
+              },
+              {
+                "group": "artBottom",
+                "count": 2,
+                "offset": -1.0923442302740796,
+                "spread": 0.002623032210067322
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.13219464034664874,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3792786922004302,
+              "meanDistance": 3.3040819135960704,
+              "censusSimilarity": 0.444366342774447
+            },
+            "normalized": {
+              "edgeF1": 0.3827778284877104,
+              "meanDistance": 3.2979295475520702,
+              "censusSimilarity": 0.44292048803327
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.557968415092214,
+              "meanDistance": 2.7065872142355456,
+              "censusSimilarity": 0.5805664668182758
+            },
+            "normalized": {
+              "edgeF1": 0.5693067657035876,
+              "meanDistance": 2.7017739163200787,
+              "censusSimilarity": 0.5880635655071745
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.38758850901578884,
+              "meanDistance": 3.7489222284312063,
+              "censusSimilarity": 0.512907449521053
+            },
+            "normalized": {
+              "edgeF1": 0.3920082584748751,
+              "meanDistance": 3.7442082682588866,
+              "censusSimilarity": 0.510369329918202
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4983174173343725,
+              "meanDistance": 2.966168794661184,
+              "censusSimilarity": 0.5979326028530081
+            },
+            "normalized": {
+              "edgeF1": 0.5079194720469073,
+              "meanDistance": 2.950785309331952,
+              "censusSimilarity": 0.6055385717039853
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "7b44eb0d-5a3a-4624-aee4-11d6978fb4b0",
+      "number": "15",
+      "name": "Hushwing Gryff",
+      "cohort": "validation",
+      "referenceHash": "74b0aaa7f12544f777ca44abd8751fedfecf353853425de8bab3b8e64832847b",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.031113059326170145,
+            "residual": 0.7372692075666158,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.7061561482404457,
+                "spread": 0.04492939000143892
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.768382266892786,
+                "spread": 0.19790766880515775
+              }
+            ]
+          },
+          "y": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -8.03056998148935,
+                "spread": 0.15932832362852878
+              },
+              {
+                "group": "artBottom",
+                "count": 0,
+                "offset": null,
+                "spread": null
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.031113059326170145,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.38415495346585343,
+              "meanDistance": 3.5547116814708692,
+              "censusSimilarity": 0.46409135235458804
+            },
+            "normalized": {
+              "edgeF1": 0.3823962155215764,
+              "meanDistance": 3.5583971204992686,
+              "censusSimilarity": 0.46238126587040346
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.60536528120722,
+              "meanDistance": 2.6515810507904725,
+              "censusSimilarity": 0.6642863883733366
+            },
+            "normalized": {
+              "edgeF1": 0.6040106244587216,
+              "meanDistance": 2.6543974189413584,
+              "censusSimilarity": 0.6657105238408727
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3658310258561174,
+              "meanDistance": 4.710634639561029,
+              "censusSimilarity": 0.5339582874579257
+            },
+            "normalized": {
+              "edgeF1": 0.3635381968251359,
+              "meanDistance": 4.708371354691079,
+              "censusSimilarity": 0.532148343208251
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5450189282409356,
+              "meanDistance": 3.6254340293084666,
+              "censusSimilarity": 0.6778602661297933
+            },
+            "normalized": {
+              "edgeF1": 0.546127940096376,
+              "meanDistance": 3.622055729819141,
+              "censusSimilarity": 0.6785322423900436
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "eafd2e27-01d0-4894-886e-2b8776904ab9",
+      "number": "45",
+      "name": "Amphin Pathmage",
+      "cohort": "validation",
+      "referenceHash": "3d22954b8685095644fc2a32e1c1cf15e8ef2e5a833631d2abef15f6e3dbd346",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.12845511576781554,
+            "residual": 0.793716732535847,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6652616167680314,
+                "spread": 0.045962239600552124
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.9221718483036625,
+                "spread": 0.1136123969101277
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.0916096877411263,
+            "residual": 0.41150623468170977,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.503115922422836,
+                "spread": 0.17047469623592804
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -0.6801034530594166,
+                "spread": 0.1743906280430565
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.12845511576781554,
+          "ty": -1.0916096877411263,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.41757677171675367,
+              "meanDistance": 7.648020858113126,
+              "censusSimilarity": 0.48454601866888475
+            },
+            "normalized": {
+              "edgeF1": 0.49685453357443515,
+              "meanDistance": 5.22849550888016,
+              "censusSimilarity": 0.5306815970298957
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.611144242957467,
+              "meanDistance": 5.931965216277364,
+              "censusSimilarity": 0.6434427852814196
+            },
+            "normalized": {
+              "edgeF1": 0.7905094214065566,
+              "meanDistance": 3.6802365692289785,
+              "censusSimilarity": 0.7746223745864459
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.41125778956786535,
+              "meanDistance": 7.727887468952478,
+              "censusSimilarity": 0.5017229769873648
+            },
+            "normalized": {
+              "edgeF1": 0.48093116679113124,
+              "meanDistance": 5.299117185830056,
+              "censusSimilarity": 0.5396487971376817
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5492093232790175,
+              "meanDistance": 6.036260712349829,
+              "censusSimilarity": 0.6121915475105953
+            },
+            "normalized": {
+              "edgeF1": 0.7118452723810278,
+              "meanDistance": 3.81890941028839,
+              "censusSimilarity": 0.7146963277893381
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "13cf5b23-9427-4313-8af8-abf2f3800948",
+      "number": "46",
+      "name": "Chasm Skulker",
+      "cohort": "validation",
+      "referenceHash": "7057fbc339382a0ec6a7d1706895179abb55ad771bfd51b09487f848f04173ad",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.000974515372485385,
+            "residual": 0.7248313100828394,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.723856794710354,
+                "spread": 0.2166780894347724
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.7258058254553248,
+                "spread": 0.03864741136663952
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.420959943271697,
+            "residual": 0.3259141584358929,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.74687410170759,
+                "spread": 0.06872568996585926
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.0950457848358042,
+                "spread": 0.027824308520280283
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.000974515372485385,
+          "ty": -1.420959943271697,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.401063761523489,
+              "meanDistance": 11.650278984749194,
+              "censusSimilarity": 0.4370290120604776
+            },
+            "normalized": {
+              "edgeF1": 0.5270676295398239,
+              "meanDistance": 10.154050839095975,
+              "censusSimilarity": 0.5610941704035874
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5721138038411697,
+              "meanDistance": 9.872591251508814,
+              "censusSimilarity": 0.5912183153567958
+            },
+            "normalized": {
+              "edgeF1": 0.8018130183158633,
+              "meanDistance": 8.219479567060372,
+              "censusSimilarity": 0.8211479820627803
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.40057994869684604,
+              "meanDistance": 11.701540666040565,
+              "censusSimilarity": 0.46632784743575445
+            },
+            "normalized": {
+              "edgeF1": 0.5258226014223574,
+              "meanDistance": 10.214540066509446,
+              "censusSimilarity": 0.5805201793721974
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5067374768613947,
+              "meanDistance": 9.97275811360928,
+              "censusSimilarity": 0.5637197890611308
+            },
+            "normalized": {
+              "edgeF1": 0.7036742170711945,
+              "meanDistance": 8.355345497448488,
+              "censusSimilarity": 0.7553901345291479
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "dbcc571a-6d9c-4408-a352-ff96f9472b44",
+      "number": "51",
+      "name": "Dissipate",
+      "cohort": "validation",
+      "referenceHash": "d8cd5b5e76d9245fba2d79ef2a36ce5dab91d23c5b8c26735b2a6a66502b9a2e",
+      "rect": [38, 33, 329, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "inconsistent-geometry",
+            "proposed": 0.04949665539188963,
+            "residual": 0.823083230614289,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.7735865752223994,
+                "spread": 0.0822498202841615
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.8725798860061786,
+                "spread": 0.07896194744904506
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.328936237433254,
+            "residual": 0.23524869272813476,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.5641849301613888,
+                "spread": 0.0762936142627808
+              },
+              {
+                "group": "artBottom",
+                "count": 2,
+                "offset": -1.0936875447051193,
+                "spread": 0.01906376426859424
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0,
+          "ty": -1.328936237433254,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3451918416967168,
+              "meanDistance": 20.94790457668344,
+              "censusSimilarity": 0.4691668708104136
+            },
+            "normalized": {
+              "edgeF1": 0.42641712012884014,
+              "meanDistance": 19.29888538559136,
+              "censusSimilarity": 0.5549906703804862
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5543319591072936,
+              "meanDistance": 19.22424015278324,
+              "censusSimilarity": 0.6332761730842037
+            },
+            "normalized": {
+              "edgeF1": 0.7744873776403917,
+              "meanDistance": 17.4689773494173,
+              "censusSimilarity": 0.8589199275264339
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3197140592460577,
+              "meanDistance": 21.0758330279702,
+              "censusSimilarity": 0.4990535153553215
+            },
+            "normalized": {
+              "edgeF1": 0.3912322495120603,
+              "meanDistance": 19.450460423091325,
+              "censusSimilarity": 0.5699721463533357
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4846806043800706,
+              "meanDistance": 19.300116031583052,
+              "censusSimilarity": 0.608378059372425
+            },
+            "normalized": {
+              "edgeF1": 0.6756109928496016,
+              "meanDistance": 17.58311246151951,
+              "censusSimilarity": 0.7796587252224235
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "32efcfad-818c-4485-9022-cf94403f370b",
+      "number": "86",
+      "name": "Black Cat",
+      "cohort": "validation",
+      "referenceHash": "2f3bdd6f626df0b0215865df3343c6df578f07ed4ab29bcc2de669d71ed896bb",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.1645682306987073,
+            "residual": 0.7074476107808909,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.8720158414795982,
+                "spread": 0.1439244888301907
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.5428793800821836,
+                "spread": 0.334312236189362
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -0.3949166709199474,
+            "residual": 0.6098597679048297,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.004776438824777,
+                "spread": 0.14586822509005515
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": 0.21494309698488223,
+                "spread": 0.15355156700201178
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.1645682306987073,
+          "ty": -0.3949166709199474,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3609624424070368,
+              "meanDistance": 3.55805392504776,
+              "censusSimilarity": 0.5022017761814559
+            },
+            "normalized": {
+              "edgeF1": 0.394745084324987,
+              "meanDistance": 3.2419598929252453,
+              "censusSimilarity": 0.532552563629657
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5400801238133106,
+              "meanDistance": 3.070573676611511,
+              "censusSimilarity": 0.7088981278752244
+            },
+            "normalized": {
+              "edgeF1": 0.5817686903374185,
+              "meanDistance": 2.8283261821394876,
+              "censusSimilarity": 0.7508991147178163
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3532794323059512,
+              "meanDistance": 5.896607753085348,
+              "censusSimilarity": 0.5322394154837757
+            },
+            "normalized": {
+              "edgeF1": 0.3666842793181123,
+              "meanDistance": 5.978127123785457,
+              "censusSimilarity": 0.5703384360014755
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4894557777509534,
+              "meanDistance": 5.438526179284229,
+              "censusSimilarity": 0.6758345838766021
+            },
+            "normalized": {
+              "edgeF1": 0.5042014649664011,
+              "meanDistance": 5.529119964785125,
+              "censusSimilarity": 0.7216663592770195
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "81ddf81d-1746-41a7-951c-0bd68954505d",
+      "number": "89",
+      "name": "Caustic Tar",
+      "cohort": "validation",
+      "referenceHash": "bb4a12b0c19984a3be18a19f87f7f3de1e8e85f7d2992c390155dd9bc6cc7845",
+      "rect": [38, 33, 329, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6470034090273167,
+                "spread": 3.096096075077284
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 1.0092066096221401,
+                "spread": 0.36714764669000033
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -0.8324364302822858,
+            "residual": 0.22301708465496972,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.0554535149372555,
+                "spread": 0.13934270782772273
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -0.609419345627316,
+                "spread": 0.1311898510545575
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0,
+          "ty": -0.8324364302822858,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.32597222509675683,
+              "meanDistance": 3.416038260251006,
+              "censusSimilarity": 0.5057647796837483
+            },
+            "normalized": {
+              "edgeF1": 0.3713418833319032,
+              "meanDistance": 3.148546716089373,
+              "censusSimilarity": 0.5652550610709607
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5002552388583392,
+              "meanDistance": 2.8756671612044338,
+              "censusSimilarity": 0.6606675463453676
+            },
+            "normalized": {
+              "edgeF1": 0.5952477854449852,
+              "meanDistance": 2.586446446201926,
+              "censusSimilarity": 0.7608300579011876
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.31152302455999276,
+              "meanDistance": 6.153371086360174,
+              "censusSimilarity": 0.5362651149711221
+            },
+            "normalized": {
+              "edgeF1": 0.35200208131311933,
+              "meanDistance": 5.973929636912338,
+              "censusSimilarity": 0.5912472000338109
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4499233407481588,
+              "meanDistance": 5.645773920130128,
+              "censusSimilarity": 0.635142443055225
+            },
+            "normalized": {
+              "edgeF1": 0.5136770711978083,
+              "meanDistance": 5.371971821881694,
+              "censusSimilarity": 0.7280546046236422
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "f6f2c2f6-d07f-42af-9944-70d3dac8348c",
+      "number": "100",
+      "name": "In Garruk's Wake",
+      "cohort": "validation",
+      "referenceHash": "74872939ec576ce0cfeeee1d0a4c49d1b752a1c406b9905981a7df6b3af6b75d",
+      "rect": [38, 33, 329, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6088965285936894,
+                "spread": 2.619773027504401
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.6773139364850636,
+                "spread": 0.46217629632116086
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.3656927887992651,
+            "residual": 0.36731540868299817,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.7330081974822633,
+                "spread": 0.04845308166272844
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -0.998377380116267,
+                "spread": 0.01873057614687923
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0,
+          "ty": -1.3656927887992651,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.35322725139712463,
+              "meanDistance": 3.385667113854053,
+              "censusSimilarity": 0.49049793433355077
+            },
+            "normalized": {
+              "edgeF1": 0.4394222701155545,
+              "meanDistance": 2.694238331428335,
+              "censusSimilarity": 0.5545424481504229
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5531902259434103,
+              "meanDistance": 2.7638284377129176,
+              "censusSimilarity": 0.645879539030224
+            },
+            "normalized": {
+              "edgeF1": 0.7824804249177895,
+              "meanDistance": 1.7864522080772307,
+              "censusSimilarity": 0.8085541959969135
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3520208430309464,
+              "meanDistance": 5.37852443919024,
+              "censusSimilarity": 0.5129086033195622
+            },
+            "normalized": {
+              "edgeF1": 0.4259941437612166,
+              "meanDistance": 4.485982171398563,
+              "censusSimilarity": 0.5686682099494497
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4989431665464365,
+              "meanDistance": 4.427106311816807,
+              "censusSimilarity": 0.6322968761324925
+            },
+            "normalized": {
+              "edgeF1": 0.6867294562834575,
+              "meanDistance": 3.4238903621916092,
+              "censusSimilarity": 0.7751531471945323
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "f5dacedc-f532-43b3-a783-e1dc7ccea53b",
+      "number": "128",
+      "name": "Altac Bloodseeker",
+      "cohort": "validation",
+      "referenceHash": "32389809adee590173d5efc2329c400428361b30c8c3c0d7966093d4813ea900",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.13016337661257538,
+            "residual": 0.7869278249637439,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.9170912015763193,
+                "spread": 0.08500919970337861
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.6567644483511685,
+                "spread": 0.13726823356950035
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.4469997472916702,
+            "residual": 0.31316561032491563,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.7601653576165859,
+                "spread": 0.018372014989679997
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.1338341369667546,
+                "spread": 0.02370947629344755
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.13016337661257538,
+          "ty": -1.4469997472916702,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.43476057765391435,
+              "meanDistance": 10.077621086060283,
+              "censusSimilarity": 0.47071571612761637
+            },
+            "normalized": {
+              "edgeF1": 0.5233907843826944,
+              "meanDistance": 9.79222252498986,
+              "censusSimilarity": 0.5775015160703456
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5578650941178985,
+              "meanDistance": 8.225227520493224,
+              "censusSimilarity": 0.5771404273996653
+            },
+            "normalized": {
+              "edgeF1": 0.7645357441816659,
+              "meanDistance": 7.70974686107312,
+              "censusSimilarity": 0.7718162522741056
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.4466004427024339,
+              "meanDistance": 10.142503220211754,
+              "censusSimilarity": 0.5009189915781966
+            },
+            "normalized": {
+              "edgeF1": 0.5281311989083604,
+              "meanDistance": 9.837196838356618,
+              "censusSimilarity": 0.6027895694360218
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5009953078344945,
+              "meanDistance": 8.356070706931998,
+              "censusSimilarity": 0.5652346857597454
+            },
+            "normalized": {
+              "edgeF1": 0.6807951987997,
+              "meanDistance": 7.861320843364386,
+              "censusSimilarity": 0.7332929047907822
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "12e29b2b-5fe3-4dee-b247-10cd139fe2d0",
+      "number": "131",
+      "name": "Borderland Marauder",
+      "cohort": "validation",
+      "referenceHash": "704b55566ef5744e0985fef15f75cdbe962b4128df457f6bd6f7743c42caa39e",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.022652756717205236,
+            "residual": 0.798560727279833,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.8212134839970382,
+                "spread": 0.0910417519523321
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.7759079705626277,
+                "spread": 0.19489832816344688
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -0.7074071847204664,
+            "residual": 0.37684129772353003,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.0842484824439964,
+                "spread": 0.08292832245055592
+              },
+              {
+                "group": "artBottom",
+                "count": 2,
+                "offset": -0.33056588699693634,
+                "spread": 0.004521836320833472
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.022652756717205236,
+          "ty": -0.7074071847204664,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.4806028398239642,
+              "meanDistance": 6.485790693418175,
+              "censusSimilarity": 0.5210672504295836
+            },
+            "normalized": {
+              "edgeF1": 0.5320382802456793,
+              "meanDistance": 6.827979511168714,
+              "censusSimilarity": 0.5686943711251611
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.59240084662936,
+              "meanDistance": 4.855600172382221,
+              "censusSimilarity": 0.5959089518160205
+            },
+            "normalized": {
+              "edgeF1": 0.6717101406799532,
+              "meanDistance": 4.966801176993842,
+              "censusSimilarity": 0.6701123319624332
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.47238502077867806,
+              "meanDistance": 6.625097744233549,
+              "censusSimilarity": 0.5421345008591671
+            },
+            "normalized": {
+              "edgeF1": 0.5183037371362789,
+              "meanDistance": 6.935623021433839,
+              "censusSimilarity": 0.5831440672764103
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5332399031902696,
+              "meanDistance": 5.014435529387467,
+              "censusSimilarity": 0.5801261681143045
+            },
+            "normalized": {
+              "edgeF1": 0.6080471764537468,
+              "meanDistance": 5.085890818765389,
+              "censusSimilarity": 0.6454361303787367
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "2058a7eb-0f78-46a4-bea5-afdfe920264f",
+      "number": "133",
+      "name": "Burning Anger",
+      "cohort": "validation",
+      "referenceHash": "052202f76efc2437c5c66f9a4588f398cf7ee8102bf2a3d70a0c35e8619023f1",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.1689338581208748,
+            "residual": 0.6572801337023524,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.8262139918232272,
+                "spread": 0.08385514417179252
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.4883462755814776,
+                "spread": 0.0507264035407502
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.3387326797397705,
+            "residual": 0.24269131763831098,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.5814239973780815,
+                "spread": 0.11852467845672265
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.0960413621014595,
+                "spread": 0.3933694278334201
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.1689338581208748,
+          "ty": -1.3387326797397705,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.36424302451259144,
+              "meanDistance": 16.024055175672196,
+              "censusSimilarity": 0.45802545490055663
+            },
+            "normalized": {
+              "edgeF1": 0.44378690119042724,
+              "meanDistance": 16.739775749673374,
+              "censusSimilarity": 0.5353688401839356
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5336128608231349,
+              "meanDistance": 13.897896228021027,
+              "censusSimilarity": 0.5948699586601999
+            },
+            "normalized": {
+              "edgeF1": 0.6728209199130507,
+              "meanDistance": 14.332373218323328,
+              "censusSimilarity": 0.7463309783470463
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3642760937972953,
+              "meanDistance": 16.130285122399744,
+              "censusSimilarity": 0.4908043357963608
+            },
+            "normalized": {
+              "edgeF1": 0.4448303499866417,
+              "meanDistance": 16.81574986091932,
+              "censusSimilarity": 0.5647210134075653
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4768911610401141,
+              "meanDistance": 14.058437315481598,
+              "censusSimilarity": 0.5806614368021874
+            },
+            "normalized": {
+              "edgeF1": 0.6019698386719664,
+              "meanDistance": 14.472875973599313,
+              "censusSimilarity": 0.7090153103472577
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "b49270b2-ba15-4268-adb3-16d09c09adee",
+      "number": "169",
+      "name": "Back to Nature",
+      "cohort": "validation",
+      "referenceHash": "92c4e39a95e53460f64d6715c60510eb3b3e1dac5dd551abac22d6b8c3880f69",
+      "rect": [38, 33, 354, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.2206512491204684,
+            "residual": 0.6692173377594521,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.8898685868799205,
+                "spread": 0.012361463088609526
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.44856608863898373,
+                "spread": 0.02131160991058323
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.3770449193237155,
+            "residual": 0.2605672881615888,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.6376122074853043,
+                "spread": 0.14685668436769106
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.1164776311621267,
+                "spread": 0.18721528446940283
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.2206512491204684,
+          "ty": -1.3770449193237155,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.39688249400479625,
+              "meanDistance": 5.919420287917307,
+              "censusSimilarity": 0.46627283037391876
+            },
+            "normalized": {
+              "edgeF1": 0.4706360045771658,
+              "meanDistance": 5.712371863296884,
+              "censusSimilarity": 0.5590489945561604
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.6228887124706626,
+              "meanDistance": 4.772362706192516,
+              "censusSimilarity": 0.6686189210691131
+            },
+            "normalized": {
+              "edgeF1": 0.7774423351570088,
+              "meanDistance": 4.435077396882439,
+              "censusSimilarity": 0.8613302225678628
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3967297432157525,
+              "meanDistance": 17.136230016898992,
+              "censusSimilarity": 0.49586133351388867
+            },
+            "normalized": {
+              "edgeF1": 0.4557804398493762,
+              "meanDistance": 18.894366222099862,
+              "censusSimilarity": 0.5786579268970115
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5333210470542549,
+              "meanDistance": 14.653211541300562,
+              "censusSimilarity": 0.6259457995497402
+            },
+            "normalized": {
+              "edgeF1": 0.702513221731719,
+              "meanDistance": 16.028924488056727,
+              "censusSimilarity": 0.7940784357293634
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "90341fb4-ac97-43ff-ae2d-0fe5995e7fd7",
+      "number": "171",
+      "name": "Charging Rhino",
+      "cohort": "validation",
+      "referenceHash": "d66438b6020383ac8d479c40d2396e051335db6de3dd78b81baac9ac3af6765c",
+      "rect": [38, 33, 329, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.0927610746248444,
+            "residual": 0.535958722410852,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6287197970356964,
+                "spread": 0.23952378407242847
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.44319764778600756,
+                "spread": 0.05792898721358597
+              }
+            ]
+          },
+          "y": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.58877250870502,
+                "spread": 0.3126913883237421
+              },
+              {
+                "group": "artBottom",
+                "count": 2,
+                "offset": 2.2516283903744636,
+                "spread": 2.44387390761122
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.0927610746248444,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.38329126989621554,
+              "meanDistance": 4.70870057613908,
+              "censusSimilarity": 0.45575134235801257
+            },
+            "normalized": {
+              "edgeF1": 0.38422899607789174,
+              "meanDistance": 4.781921979110103,
+              "censusSimilarity": 0.4556594891730191
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.6278682411435674,
+              "meanDistance": 3.5671466870398363,
+              "censusSimilarity": 0.6387506617257809
+            },
+            "normalized": {
+              "edgeF1": 0.62248793809335,
+              "meanDistance": 3.6448126432603365,
+              "censusSimilarity": 0.6343122665289884
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3899569867664266,
+              "meanDistance": 10.535678224340321,
+              "censusSimilarity": 0.46939423731377145
+            },
+            "normalized": {
+              "edgeF1": 0.3902244802600839,
+              "meanDistance": 10.639133962681052,
+              "censusSimilarity": 0.4695842317854648
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5663934976415526,
+              "meanDistance": 8.677547522985991,
+              "censusSimilarity": 0.604961052711185
+            },
+            "normalized": {
+              "edgeF1": 0.5593082065512791,
+              "meanDistance": 8.767341787196997,
+              "censusSimilarity": 0.6007683663862484
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "659eb716-bf21-4c0f-9a9a-906236ef536c",
+      "number": "176",
+      "name": "Genesis Hydra",
+      "cohort": "validation",
+      "referenceHash": "f0bc42340a8450e84105c87a1ad8f35d0af525757377f5f6832c808fc6cff849",
+      "rect": [38, 33, 329, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.01696982428249605,
+            "residual": 0.6785799670903838,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6955497913728799,
+                "spread": 0.09266621693783961
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.6616101428078878,
+                "spread": 0.07747898747555837
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.3057471759060917,
+            "residual": 0.2328726413980604,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.538619817304152,
+                "spread": 0.01280202994847457
+              },
+              {
+                "group": "artBottom",
+                "count": 2,
+                "offset": -1.0728745345080313,
+                "spread": 0.009592482965132376
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.01696982428249605,
+          "ty": -1.3057471759060917,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3916932099794308,
+              "meanDistance": 5.904614578537258,
+              "censusSimilarity": 0.5301290667357613
+            },
+            "normalized": {
+              "edgeF1": 0.4689107119075722,
+              "meanDistance": 5.354035277800598,
+              "censusSimilarity": 0.5891234160088088
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5550757027522801,
+              "meanDistance": 4.771447068085643,
+              "censusSimilarity": 0.6457547246198442
+            },
+            "normalized": {
+              "edgeF1": 0.7387675992907109,
+              "meanDistance": 4.269220243469997,
+              "censusSimilarity": 0.8082974077599239
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.39712206062333233,
+              "meanDistance": 15.215468629116723,
+              "censusSimilarity": 0.5431490988000194
+            },
+            "normalized": {
+              "edgeF1": 0.4605818387971605,
+              "meanDistance": 16.145796411521655,
+              "censusSimilarity": 0.5988279864882519
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5098597203204822,
+              "meanDistance": 13.069764873293524,
+              "censusSimilarity": 0.6175446551472851
+            },
+            "normalized": {
+              "edgeF1": 0.6516366795013766,
+              "meanDistance": 13.87635216536774,
+              "censusSimilarity": 0.7527574044006494
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "6f38e70c-51ca-419a-b99d-a603a7f39290",
+      "number": "216",
+      "name": "Gargoyle Sentinel",
+      "cohort": "validation",
+      "referenceHash": "2c1bb4630364c8231d1ee70f48b3478da4f18bbaf038a87922100f5f5e247cf2",
+      "rect": [38, 33, 379, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.08722154782876146,
+            "residual": 0.6364762560819202,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.5492547082531587,
+                "spread": 0.048131045329558475
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.7236978039106816,
+                "spread": 0.1992692256707187
+              }
+            ]
+          },
+          "y": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -8.158509485261703,
+                "spread": 6.628564582239463
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.1702682800883508,
+                "spread": 0.04690027164366484
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.08722154782876146,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.36722891566265053,
+              "meanDistance": 3.7801305189977015,
+              "censusSimilarity": 0.46984808148236445
+            },
+            "normalized": {
+              "edgeF1": 0.36484020181913823,
+              "meanDistance": 3.7637598552128066,
+              "censusSimilarity": 0.46852305046630066
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.49593872099731207,
+              "meanDistance": 2.937913126201053,
+              "censusSimilarity": 0.5654891988185587
+            },
+            "normalized": {
+              "edgeF1": 0.500615731823447,
+              "meanDistance": 2.9118545853861373,
+              "censusSimilarity": 0.5722468417223361
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.39512019008757127,
+              "meanDistance": 3.997240847241398,
+              "censusSimilarity": 0.49062926318856703
+            },
+            "normalized": {
+              "edgeF1": 0.391464245432625,
+              "meanDistance": 3.9894119623488407,
+              "censusSimilarity": 0.4889873668893445
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4516823190596967,
+              "meanDistance": 3.2577372303197216,
+              "censusSimilarity": 0.5334498880809526
+            },
+            "normalized": {
+              "edgeF1": 0.4583776806779589,
+              "meanDistance": 3.2398862201541645,
+              "censusSimilarity": 0.5398505192142338
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "53498863-2e69-4b98-b0f0-7ae13dc1033e",
+      "number": "217",
+      "name": "Grindclock",
+      "cohort": "validation",
+      "referenceHash": "319dad113f7429db7726a732336cc98415b7b4e2b336c27650bd3a855e499898",
+      "rect": [38, 33, 379, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.05329842518968597,
+            "residual": 0.6809163175093058,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.7342147426989918,
+                "spread": 0.0590855137680073
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.6276178923196198,
+                "spread": 0.11043943510873078
+              }
+            ]
+          },
+          "y": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -8.088218756456214,
+                "spread": 6.466678390433955
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.2174405300459057,
+                "spread": 0.10983406468437806
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.05329842518968597,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.31390134529147984,
+              "meanDistance": 4.093567892621036,
+              "censusSimilarity": 0.48596222562531904
+            },
+            "normalized": {
+              "edgeF1": 0.3149100257069408,
+              "meanDistance": 4.068230231200676,
+              "censusSimilarity": 0.4870266280588202
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5230886565390517,
+              "meanDistance": 3.3680028280660355,
+              "censusSimilarity": 0.6611838995708317
+            },
+            "normalized": {
+              "edgeF1": 0.5234108444190829,
+              "meanDistance": 3.3522669844636717,
+              "censusSimilarity": 0.6609322659399307
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3279397099731091,
+              "meanDistance": 5.45673215077008,
+              "censusSimilarity": 0.49560433327661507
+            },
+            "normalized": {
+              "edgeF1": 0.3305087621344998,
+              "meanDistance": 5.568428459437018,
+              "censusSimilarity": 0.49671644050795816
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.49979651770295985,
+              "meanDistance": 4.69327665911276,
+              "censusSimilarity": 0.6307072769553627
+            },
+            "normalized": {
+              "edgeF1": 0.5002611062416386,
+              "meanDistance": 4.799864057731513,
+              "censusSimilarity": 0.6305191241317966
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "ee98e86c-ac16-4159-8982-ed14d282811a",
+      "number": "223",
+      "name": "Ornithopter",
+      "cohort": "validation",
+      "referenceHash": "9684902e7835cd4aaa02fd25808dd88a8416b5e2a32f9d45af0478b5882f8aa6",
+      "rect": [38, 33, 379, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.037566434841323826,
+            "residual": 0.5964802975986458,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.558913862757322,
+                "spread": 0.04467212724996372
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.6340467324399697,
+                "spread": 0.08977597183701391
+              }
+            ]
+          },
+          "y": {
+            "status": "out-of-bounds",
+            "proposed": -4.560983832736532,
+            "residual": 3.608249440581467,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -8.169233273318,
+                "spread": 0.0571349204132332
+              },
+              {
+                "group": "artBottom",
+                "count": 2,
+                "offset": -0.9527343921550653,
+                "spread": 0.12325200407664738
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.037566434841323826,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3349205287781977,
+              "meanDistance": 4.077006899580617,
+              "censusSimilarity": 0.49204713877742834
+            },
+            "normalized": {
+              "edgeF1": 0.33440013679732505,
+              "meanDistance": 4.064175175531203,
+              "censusSimilarity": 0.4920337056350481
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5249251325864251,
+              "meanDistance": 3.3564361902441773,
+              "censusSimilarity": 0.6703177529552109
+            },
+            "normalized": {
+              "edgeF1": 0.5249251325864251,
+              "meanDistance": 3.336665656072857,
+              "censusSimilarity": 0.6702333050648671
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.36424713949421234,
+              "meanDistance": 5.227604514335571,
+              "censusSimilarity": 0.5036149369193508
+            },
+            "normalized": {
+              "edgeF1": 0.3651039159248978,
+              "meanDistance": 5.224415951895483,
+              "censusSimilarity": 0.503906461449631
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5099639208281349,
+              "meanDistance": 4.540220189209212,
+              "censusSimilarity": 0.6447962983045946
+            },
+            "normalized": {
+              "edgeF1": 0.5105123707626477,
+              "meanDistance": 4.533793194753246,
+              "censusSimilarity": 0.6442503744068133
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "9a5f1810-a852-454f-b1d6-eb40ea4e0148",
+      "number": "224",
+      "name": "Perilous Vault",
+      "cohort": "validation",
+      "referenceHash": "3fd81dc05e6183f9627f9e0cf35cb5af245223ec0c9a21eaf5d27d96a67200b5",
+      "rect": [38, 33, 379, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": 0.08149816044053004,
+            "residual": 0.6807337172462287,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.5992355568056986,
+                "spread": 0.0057800543721029385
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.7622318776867587,
+                "spread": 0.22848644325125633
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.3913670760493417,
+            "residual": 0.24222535145685953,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.6335924275062013,
+                "spread": 0.02218219413836664
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.1491417245924822,
+                "spread": 0.01850032505200261
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": 0.08149816044053004,
+          "ty": -1.3913670760493417,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.3733027033679288,
+              "meanDistance": 4.061733990113361,
+              "censusSimilarity": 0.4914770786363326
+            },
+            "normalized": {
+              "edgeF1": 0.42399398368116986,
+              "meanDistance": 3.5193018669984193,
+              "censusSimilarity": 0.6042849912838104
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4972939647707921,
+              "meanDistance": 3.550685362211115,
+              "censusSimilarity": 0.5882694541231127
+            },
+            "normalized": {
+              "edgeF1": 0.5963713611480917,
+              "meanDistance": 3.0236631049771643,
+              "censusSimilarity": 0.7766968453016926
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.39446609927788134,
+              "meanDistance": 4.850663989933311,
+              "censusSimilarity": 0.5122122019539523
+            },
+            "normalized": {
+              "edgeF1": 0.4138591173442009,
+              "meanDistance": 5.3360386598967295,
+              "censusSimilarity": 0.6072091323173817
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.463599339364138,
+              "meanDistance": 4.273490912376868,
+              "censusSimilarity": 0.5705404112864658
+            },
+            "normalized": {
+              "edgeF1": 0.5567958973618159,
+              "meanDistance": 4.559811675627693,
+              "censusSimilarity": 0.7308853024424076
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "aa9ad0c9-77a7-4d18-9707-1e5e3d4cf7e8",
+      "number": "241",
+      "name": "Caves of Koilos",
+      "cohort": "validation",
+      "referenceHash": "07c5e111711db70456c3d8d4bdec3e7880acead54ed924d1eeae9ab98f0f59bf",
+      "rect": [38, 33, 414, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.05823920638188618,
+            "residual": 0.6841295577926463,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.7423687641745325,
+                "spread": 0.14888629518276986
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.6258903514107601,
+                "spread": 0.05414876766491261
+              }
+            ]
+          },
+          "y": {
+            "status": "insufficient-landmarks",
+            "proposed": null,
+            "residual": null,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.1057144659766038,
+                "spread": 6.93504599529858
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -0.3685158786235547,
+                "spread": 0.1641387468903872
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.05823920638188618,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.37834002777882053,
+              "meanDistance": 18.2199032141935,
+              "censusSimilarity": 0.5270601951279377
+            },
+            "normalized": {
+              "edgeF1": 0.3787525494580821,
+              "meanDistance": 18.16095182173474,
+              "censusSimilarity": 0.5295488341432755
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5699887380188908,
+              "meanDistance": 15.94796471333508,
+              "censusSimilarity": 0.659415843406762
+            },
+            "normalized": {
+              "edgeF1": 0.5660617637695002,
+              "meanDistance": 15.914039555839967,
+              "censusSimilarity": 0.6558844721068203
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.37987247695244286,
+              "meanDistance": 18.291397446138323,
+              "censusSimilarity": 0.5482297355341474
+            },
+            "normalized": {
+              "edgeF1": 0.379510058403634,
+              "meanDistance": 18.237229869488573,
+              "censusSimilarity": 0.5516395578789226
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4901698346642672,
+              "meanDistance": 16.054133226922193,
+              "censusSimilarity": 0.6346873657728416
+            },
+            "normalized": {
+              "edgeF1": 0.4866332338274656,
+              "meanDistance": 16.018456698483284,
+              "censusSimilarity": 0.6318928116999586
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    },
+    {
+      "id": "8090e148-2550-4156-89e3-052abda9f0e7",
+      "number": "245",
+      "name": "Radiant Fountain",
+      "cohort": "validation",
+      "referenceHash": "2ec7977799642fb616520e0ae04a2e1ba47176f740b85aa41c7a6b2fb485a983",
+      "rect": [38, 33, 414, 32],
+      "registration": {
+        "version": "normal-scan-translation-v1",
+        "axes": {
+          "x": {
+            "status": "accepted",
+            "proposed": -0.08274852096951868,
+            "residual": 0.6089934552484255,
+            "groups": [
+              {
+                "group": "outerLeft",
+                "count": 3,
+                "offset": -0.6917419762179442,
+                "spread": 0.1404438069706302
+              },
+              {
+                "group": "outerRight",
+                "count": 3,
+                "offset": 0.5262449342789068,
+                "spread": 0.054764037514814845
+              }
+            ]
+          },
+          "y": {
+            "status": "accepted",
+            "proposed": -1.2480743637316962,
+            "residual": 0.23591382052820364,
+            "groups": [
+              {
+                "group": "artTop",
+                "count": 3,
+                "offset": -1.4839881842598999,
+                "spread": 0.48806020776025605
+              },
+              {
+                "group": "artBottom",
+                "count": 3,
+                "offset": -1.0121605432034926,
+                "spread": 0.5325780146526995
+              }
+            ]
+          }
+        },
+        "transform": {
+          "tx": -0.08274852096951868,
+          "ty": -1.2480743637316962,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "scores": {
+        "inspect": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.4143965910820271,
+              "meanDistance": 12.341677366049478,
+              "censusSimilarity": 0.4779528332327895
+            },
+            "normalized": {
+              "edgeF1": 0.43502961326652745,
+              "meanDistance": 16.203197277968595,
+              "censusSimilarity": 0.5357547897355249
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.6575877627379774,
+              "meanDistance": 10.208943954232675,
+              "censusSimilarity": 0.676987612059653
+            },
+            "normalized": {
+              "edgeF1": 0.7307150122231938,
+              "meanDistance": 13.699800495960739,
+              "censusSimilarity": 0.7909754880464532
+            }
+          },
+          "unchangedOutsideTitle": true
+        },
+        "table": {
+          "before": {
+            "raw": {
+              "edgeF1": 0.4087149267448775,
+              "meanDistance": 12.369354506938215,
+              "censusSimilarity": 0.4990389876401184
+            },
+            "normalized": {
+              "edgeF1": 0.4296762676914013,
+              "meanDistance": 16.24355266982499,
+              "censusSimilarity": 0.5441774659388184
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.6028964777400322,
+              "meanDistance": 10.285490530969557,
+              "censusSimilarity": 0.6484378288135355
+            },
+            "normalized": {
+              "edgeF1": 0.6908539350739303,
+              "meanDistance": 13.714160958320692,
+              "censusSimilarity": 0.7541848754744371
+            }
+          },
+          "unchangedOutsideTitle": true
+        }
+      }
+    }
+  ]
+}

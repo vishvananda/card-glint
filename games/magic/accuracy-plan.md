@@ -2265,3 +2265,60 @@ normalization is the next measurement pass; it must use independent frame
 landmarks, retain raw scores, and reject inconsistent geometry rather than
 fitting individual text or symbols. Bolas's Citadel's title width and rules
 typography require separate study.
+
+## Frame translation and ordinary title size
+
+The translation pass freezes a baseline frame template before comparing any
+typography candidates. It measures three strips at each art edge and three
+at each opposing outer rail. The first strong paper-to-border transition
+avoids following a dark feature in the illustration. It accepts only a
+translation within 4px, with at least two usable strips per edge and at most
+.8px disagreement within/across edges. Each uncertain axis remains at zero.
+No scale, rotation, text, mana or set-symbol fit is performed. The lower rules
+edge remains a diagnostic because stamped and unstamped frames differ there.
+
+The frozen [WAR](fixtures/accuracy/scan-normalization-war-profile.json) and
+[M15](fixtures/accuracy/scan-normalization-m15-profile.json) templates currently
+support nonlegendary normal modern frames. The CPU pass records raw and
+normalized scores for 485 such printings; the other 73 retain explicit
+unsupported status. Accepted y corrections cover 135/215 WAR and 181/270 M15
+cards; x coverage is 67/215 and 210/270. These are independent per-axis
+confidence decisions, not a claim that every scan is fully registered.
+
+Charity Extractor receives a -1.46px y correction and Dreadhorde Invasion
+-1.03px. Their symbol F1 changes .862→.955 and .793→.822 without moving our
+symbols. Dreadhorde's rules score declines after alignment, exposing a distinct
+body-layout problem. Do not choose registration by whichever text score wins.
+Bolas's Citadel keeps its raw scan until crowned-frame registration is validated.
+Older frozen studies remain unchanged. Run
+`node games/magic/tools/accuracy/scan-normalization-audit.mjs war` (or m15).
+The report retains each anchor, rejected axis and method/capture hash.
+
+The ordinary Canvas title now uses 26px instead of 24px, preserving its font,
+tracking, position and width-fitting policy. Special-layout title sizes remain
+24px. Ten WAR development cards and 50 additional WAR/M15 cards improve title
+edge overlap at both raster tiers, with raw and normalized references. All
+native pixels outside the title region remain identical. Full available name
+width is measured, excluding mana. The [WAR](fixtures/accuracy/normal-title-war-measurement.json)
+and [M15](fixtures/accuracy/normal-title-m15-measurement.json) reports retain
+each result; these reused symbol cohorts are additional typography checks,
+not unseen scans. Transfer to other frame eras still needs measurement.
+Run `node games/magic/tools/accuracy/normal-title-study.mjs war capture` once
+for the cached rasters, then omit `capture` for CPU-only comparisons.
+
+### Dense-body experiment remains unaccepted
+
+Citadel's 1% smaller body trial restores the scan's line breaks. Tighter
+paragraph gaps and a small upward preference then improve its measured body
+overlap much more than widening the box alone. These are distinct from line
+leading, which stays unchanged in the strongest shared trial. Short cards
+must retain their existing layout.
+
+The same density-conditioned trial was checked on 23 additional cards and
+regresses on seven, including God-Eternal Oketra, God-Eternal Bontu, Blindblast,
+Planewide Celebration, Roalesk, Genesis Hydra and Grindclock. The
+[experiment record](fixtures/accuracy/normal-dense-text-experiment.json) and
+frozen candidate template retain the results. Do not promote that rule yet.
+Next separate actual line widths, paragraph baselines and bottom/stat clearance;
+test margin changes without changing the font size. The local comparison's
+“Dense-text trial” remains an explicitly experimental view.

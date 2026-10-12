@@ -104,6 +104,7 @@ export const FACE_RECTS = {
 /** Reference-pixel typography and insets; CSS receives the equivalent card-width units. */
 export const FACE_TEXT = {
   titleFont: 24,
+  normalTitleFont: 26,
   titleTracking: 0.00054 * FACE_WIDTH,
   titleGap: 0.02362 * FACE_WIDTH,
   plateLeft: 0.02362 * FACE_WIDTH,

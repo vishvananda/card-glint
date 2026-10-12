@@ -368,10 +368,10 @@ at both tiers; this does not certify every symbol or every card in those sets.
   accepted both. Rules-top scores remain mixed (M21 inspect median .942 → .892,
   M20 .892 → .926); investigate border shape and shared scan alignment before
   another shift. See `normal-border-*-measurement.json`.
-- Next: black outlines, white components, negative space and gradients for
-  non-shield symbols. Begin with M15 and WAR, retaining the existing pinned
-  assets. Separate stencil holes from intentional white ink; do not assume
-  every symbol has the same topology as the core-set shields.
+- M15 and WAR provide the first non-shield treatments. Extend black outlines,
+  white components, negative space and gradients to other symbol families,
+  retaining the pinned assets. Separate stencil holes from intentional white
+  ink; do not assume every symbol has the core-set shield topology.
 
 ## M15 / WAR symbol follow-up
 
@@ -381,10 +381,10 @@ at both tiers; this does not certify every symbol or every card in those sets.
   All 50 originally reserved normal cards improve edge overlap at both tiers
   after the first topology pass. The subsequent rim/lift pass improves the
   median on 20 newly reserved cards but retains three black-card regressions.
-- Examine WAR Bolas's Citadel #79, Charity Extractor #81 and Dreadhorde Invasion
-  #86 using independent frame landmarks. Their shared pattern could reflect
-  plate geometry or scan alignment; current scores do not distinguish those
-  causes. No individual offsets were introduced.
+- Independent frame landmarks support upward scan translations of 1.46px for
+  Charity Extractor and 1.03px for Dreadhorde Invasion. Their horizontal axes
+  remain uncertain. Bolas's Citadel still needs crowned-frame registration.
+  Renderer component positions remain shared; retain the earlier raw reports.
 - Add distinct foreground, outer-rim and interior-ink targets. A contextual
   crop can hide a weak white border behind a strong type-plate edge; evaluate
   common white rims separately from colored-rarity black outlines. Preserve
@@ -400,12 +400,17 @@ at both tiers; this does not certify every symbol or every card in those sets.
   regressions, #98 contrast regression and #217 table Census regression visible.
   Extend treatments to further symbol families; existing set-specific backing
   contours must not be used indiscriminately for other SVGs or custom artwork.
-- Add bounded translation-only scan normalization using independent frame
-  landmarks, with confidence rejection and raw/normalized scores side by side.
-  Visual review confirmed whole-scan vertical shifts on Charity Extractor and
-  Dreadhorde Invasion. Do not optimize individual components or renderer geometry
-  against each scan. Investigate Bolas's Citadel title width and body leading
-  separately after registration.
 - Repair study annotation inheritance before new typography captures: the full
   symbol study did not inherit M15's six reviewed original planeswalker type
   lines. Symbol comparisons remain controlled; printing typography is uncertified.
+- Normal modern title size is now 26px; all 60 measured WAR/M15 titles improve
+  at both tiers. Validate the remaining frame eras before claiming transfer.
+- Translation-only scan normalization now measures 485 nonlegendary ordinary
+  WAR/M15 scans against frozen frame templates, retaining raw scores and
+  uncertain axes. Add crowned/special/old-border templates next. Curved frame
+  ends and lower rules edges need independent validation; do not align on text.
+- Keep the dense-body policy experimental: 1% headroom, tighter paragraph gaps
+  and a slight upward preference help Citadel but regress on seven of 23
+  additional dense cards. Review those failures and isolate margin/fitter
+  effects before shipping a text-length rule. The local overlay has raw/aligned,
+  red/green and before/current/trial controls for this inspection.

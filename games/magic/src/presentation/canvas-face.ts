@@ -100,7 +100,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v53',
+    'canvas-face-v54',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -516,7 +516,9 @@ export function paintAssembledFace(
   const manaWidth = mana.length * manaSize + Math.max(0, mana.length - 1) * FACE_TEXT.manaGap;
   const plateEnd = tx + tw - FACE_TEXT.plateRight,
     manaX = plateEnd - manaWidth;
-  context.font = `bold ${FACE_TEXT.titleFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
+  const titleSize =
+    (kind === 'normal' && !panel ? FACE_TEXT.normalTitleFont : FACE_TEXT.titleFont) * textScale;
+  context.font = `bold ${titleSize}px "CardRenderer MTG Beleren", Georgia`;
   context.letterSpacing = `${FACE_TEXT.titleTracking}px`;
   paintFittedText(
     context,
@@ -524,7 +526,7 @@ export function paintAssembledFace(
     textX,
     ty + th / 2 + (kind === 'normal' ? 1 : 0),
     manaX - textX - (mana.length ? FACE_TEXT.titleGap : 0),
-    FACE_TEXT.titleFont * textScale,
+    titleSize,
     true,
   );
   context.letterSpacing = '0px';
