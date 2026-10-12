@@ -10,6 +10,7 @@ import {
   cardStock,
   faceStats,
   FACE_HEIGHT,
+  FACE_CORNER_RADIUS,
   FACE_RECTS,
   FACE_TEXT,
   FACE_WIDTH,
@@ -89,7 +90,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v8',
+    'canvas-face-v9',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -141,6 +142,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.illustrationCrop ?? null,
         extraRuleKey(face),
         face.artist ?? null,
+        face.legalText === undefined ? ['default'] : face.legalText,
         face.setCode ?? null,
         face.setSymbol ?? null,
         face.rarity ?? 'common',
@@ -201,6 +203,9 @@ export async function composeCardTexture(
       );
       return canvas;
     }
+    context.beginPath();
+    context.roundRect(0, 0, FACE_WIDTH, FACE_HEIGHT, FACE_CORNER_RADIUS * FACE_WIDTH);
+    context.clip();
     context.fillStyle = '#090806';
     context.fillRect(0, 0, FACE_WIDTH, FACE_HEIGHT);
     const plateUrl =

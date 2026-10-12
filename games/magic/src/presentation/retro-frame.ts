@@ -9,6 +9,7 @@ import {
 } from './face-layout.js';
 import { normalizeColors } from './profile.js';
 import { manaSymbolAsset, faceSetSymbol } from './assets.js';
+export const RETRO_SYMBOL_FONT = manifest.RETRO_SYMBOL_FONT;
 export const RETRO_ROOT = manifest.RETRO_ROOT;
 export const RETRO_FONT = `${RETRO_ROOT}/fonts/goudy-medieval.ttf`;
 const oldSets = new Set(

@@ -11,7 +11,7 @@ import { canvasAssetWidth } from './presentation/canvas-assets.js';
 import { faceRects } from './presentation/special-frames.js';
 import { visibleArt } from './presentation/art-apertures.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
-import type { RenderedCardInput } from './presentation/face-layout.js';
+import { FACE_CORNER_RADIUS, type RenderedCardInput } from './presentation/face-layout.js';
 export type { RenderedCardInput as MtgCard } from './presentation/face-layout.js';
 export { setSymbolAsset, manaSymbolAsset, profileAssets } from './presentation/assets.js';
 export { FACE_RECTS, FACE_TEXT } from './presentation/face-layout.js';
@@ -107,7 +107,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       artWindows: children.map((child) =>
         child.panel ? panelRect(child.panel, visibleArt(child.face)) : visibleArt(child.face),
       ),
-      cornerRadius: 0.058,
+      cornerRadius: FACE_CORNER_RADIUS,
       regions: Object.entries(faceRects(face)).map(([id, rect]) => ({
         id,
         rect,

@@ -32,6 +32,8 @@ export interface RenderedCardInput extends CardProfileInput {
   etchedIllustration?: string | null;
   credit?: string | null;
   artist?: string | null;
+  /** Explicit printed legal line; null suppresses a known set's default. */
+  legalText?: string | null;
   power?: string | number | null;
   toughness?: string | number | null;
   loyalty?: string | number | null;
@@ -56,6 +58,8 @@ export function faceStats(face: RenderedCardInput): { text: string; label: strin
 export type FaceRect = readonly [number, number, number, number];
 export const FACE_WIDTH = 488;
 export const FACE_HEIGHT = 680;
+/** Shared by the Canvas silhouette and the GPU recipe, in card widths. */
+export const FACE_CORNER_RADIUS = 0.058;
 /** Stock is independent of the colored frame; an explicit workshop choice wins. */
 export function cardStock(
   setCode?: string | null,

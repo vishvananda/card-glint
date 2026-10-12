@@ -11,7 +11,7 @@ export async function fetchComponents(entries, opts) {
     const { canvasAssetUrls } = await server.ssrLoadModule(
       '/games/magic/src/presentation/canvas-assets.ts',
     );
-    const { isRetro, RETRO_FONT } = await server.ssrLoadModule(
+    const { isRetro, RETRO_FONT, RETRO_SYMBOL_FONT } = await server.ssrLoadModule(
       '/games/magic/src/presentation/retro-frame.ts',
     );
     const css = await readFile(path.join(root, 'games/magic/fonts.css'), 'utf8');
@@ -19,7 +19,9 @@ export async function fetchComponents(entries, opts) {
       ...new Set(
         [
           ...[...css.matchAll(/url\('([^']+)'\)/g)].map((m) => m[1]),
-          ...(entries.some((e) => !e.issue && isRetro(presentation(e).face)) ? [RETRO_FONT] : []),
+          ...(entries.some((e) => !e.issue && isRetro(presentation(e).face))
+            ? [RETRO_FONT, RETRO_SYMBOL_FONT]
+            : []),
           ...entries.filter((e) => !e.issue).flatMap((e) => canvasAssetUrls(presentation(e).face)),
         ].filter((url) => url?.startsWith('https://')),
       ),

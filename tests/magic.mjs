@@ -42,6 +42,14 @@ const fixtures = [
   { ...creature, frameStyle: 'retro', setCode: '4ED' },
   { ...creature, frameStyle: 'retro', setCode: '7ED' },
   {
+    ...creature,
+    frameStyle: 'retro',
+    setCode: 'MIR',
+    artist: 'Example Artist',
+    rulesText: '{T}: Draw a card.',
+  },
+  { ...creature, frameStyle: 'retro', setCode: 'TMP', artist: 'Example Artist' },
+  {
     name: 'Example Chronicle',
     typeLine: 'Enchantment — Saga',
     colors: ['G'],
@@ -133,6 +141,8 @@ try {
     // Original test content, using local system outlines; no third-party fonts in CI.
     const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
     for (const [family, style, weight] of [
+      ['Goudy', 'normal', '400'],
+      ['Historic Symbols', 'normal', '400'],
       ['Beleren', 'normal', '400 700'],
       ['MPlantin', 'normal', '400'],
       ['MPlantin', 'italic', '400'],
@@ -242,6 +252,8 @@ try {
         const recipe = magic.describe(face, tier);
         const canvas = await recipe.color.paint(host, new AbortController().signal);
         sizes.push([canvas.width, canvas.height]);
+        if (canvas.getContext('2d').getImageData(0, 0, 1, 1).data[3] !== 0)
+          throw Error('Canvas silhouette has square corners');
         if (
           !canvas.getContext('2d').getImageData(canvas.width / 2, canvas.height / 2, 1, 1).data[3]
         )
@@ -266,6 +278,11 @@ try {
       layer: 'face',
       face: { ...custom, rulesParagraphs: paragraphs },
     };
+    if (
+      cardTextureKey(styledInput, 'inspect') ===
+      cardTextureKey({ ...styledInput, face: { ...styledInput.face, legalText: null } }, 'inspect')
+    )
+      throw Error('Default and suppressed legal text share a cache identity');
     const styledChange = structuredClone(styledInput);
     styledChange.face.rulesParagraphs[0].runs[0].italic = true;
     if (cardTextureKey(styledInput, 'inspect') === cardTextureKey(styledChange, 'inspect'))

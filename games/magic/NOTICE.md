@@ -15,6 +15,7 @@ optional font stylesheet requests the referenced URLs.
 | ----------------------- | --------------------------------------------------------------------------------- | ------------------------------------------ |
 | Modern frames and fonts | [wingedsheep/mtg-card-renderer](https://github.com/wingedsheep/mtg-card-renderer) | `b52888cda57a99b5b7dd47bc4fdfae47383a93f9` |
 | Retro frames and fonts  | [Investigamer/cardconjurer](https://github.com/Investigamer/cardconjurer)         | `2fcddba8966156d484cedf54d8214996748dd5e1` |
+| Historic tap glyph font | [Andrew Gioia’s Mana](https://github.com/andrewgioia/mana)                        | `6ca9e696d3bda2519dcf3eebd96598f84ad9ddd8` |
 | Set symbol vectors      | [Andrew Gioia's Keyrune](https://github.com/andrewgioia/keyrune)                  | `256add455a043462f7b2bfa224ca71bfc66b62ab` |
 
 External materials retain their own licenses and rights restrictions. Keyrune's
@@ -29,3 +30,7 @@ rights and are not included in releases, the public showcase, or CI evidence.
 
 The `GLINT` gem and `FORGE` spark/anvil symbols are original procedural symbols
 for locally authored cards, not official set identities.
+
+Mirage/Tempest use Mana’s `tap-4ed` glyph (U+EA31), the tilted-card mark,
+from the pinned external font. The earlier diagonal-T `tap-alt` glyph is
+not the same symbol. See the [Mana icon reference](https://mana.andrewgioia.com/icons.html).

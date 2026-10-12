@@ -17,6 +17,12 @@ import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintSetSymbol } from './canvas-text.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
+import {
+  retroPrintDetails,
+  paintHistoricMana,
+  paintOutlinedRetroSet,
+  paintRetroCredits,
+} from './retro-details.js';
 export function paintRetroFace(
   c: CanvasRenderingContext2D,
   face: RenderedCardInput,
@@ -24,7 +30,8 @@ export function paintRetroFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
-  const rect = retroRects(face);
+  const rect = retroRects(face),
+    details = retroPrintDetails(face);
   if (layer === 'artwork') {
     paintIllustration(c, face, images, retroPx(rect.art), layer);
     return;
@@ -67,15 +74,24 @@ export function paintRetroFace(
   c.letterSpacing = '0px';
   const [x, y, w, h] = retroPx(rect.title),
     cost = face.manaSymbols ?? [],
-    size = 23.4,
-    gap = 1.7,
-    costW = cost.length * (size + gap);
+    size = details?.manaSize ?? 23.4,
+    gap = details?.manaGap ?? 1.7,
+    costW = cost.length * (size + gap),
+    costX = details ? details.manaRight - costW + gap : x + w - costW;
   c.shadowColor = '#000b';
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
   c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
-  c.fillText(face.name, x, y + h / 2, Math.max(1, w - costW - 5));
+  c.fillText(face.name, x, y + h / 2, Math.max(1, cost.length ? costX - x - 5 : w - 5));
   cost.forEach((s, i) =>
-    paintMana(c, s, x + w - costW + i * (size + gap), y + h / 2 - size / 2, size, images, true),
+    paintMana(
+      c,
+      s,
+      costX + i * (size + gap),
+      details?.manaTop ?? y + h / 2 - size / 2,
+      size,
+      images,
+      !details,
+    ),
   );
   const [tx, ty, tw, th] = retroPx(rect.type),
     icon = images.get(retroSetSymbol(face) ?? '');
@@ -83,16 +99,27 @@ export function paintRetroFace(
   c.fillText(face.typeLine ?? '', tx, ty + th / 2, tw - (icon ? 48 : 0));
   if (icon) {
     const scale = Math.min(44 / icon.width, 23.4 / icon.height);
-    paintSetSymbol(
-      c,
-      icon,
-      face.setCode,
-      face.rarity,
-      tx + tw - icon.width * scale,
-      ty + th / 2 - (icon.height * scale) / 2,
-      icon.width * scale,
-      icon.height * scale,
-    );
+    if (details)
+      paintOutlinedRetroSet(
+        c,
+        icon,
+        details.setRight - icon.width * scale,
+        details.setCenterY - (icon.height * scale) / 2,
+        icon.width * scale,
+        icon.height * scale,
+        details.setOutline,
+      );
+    else
+      paintSetSymbol(
+        c,
+        icon,
+        face.setCode,
+        face.rarity,
+        tx + tw - icon.width * scale,
+        ty + th / 2 - (icon.height * scale) / 2,
+        icon.width * scale,
+        icon.height * scale,
+      );
   }
   c.shadowColor = 'transparent';
   const [rx, ry, rw, rh] = retroPx(rect.rules);
@@ -109,9 +136,10 @@ export function paintRetroFace(
     );
   } else {
     const layout = retroTextLayout(c, face);
-    if (layout) paintRulesLayout(c, layout, images);
+    if (layout) paintRulesLayout(c, layout, images, details ? paintHistoricMana : paintMana);
   }
-  c.shadowColor = '#000b';
+  c.shadowColor = details ? '#000' : '#000b';
+  if (details) c.shadowOffsetX = c.shadowOffsetY = 1.5 * c.getTransform().a;
   c.fillStyle = retroInk(face);
   c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
   c.textBaseline = 'middle';
@@ -120,7 +148,8 @@ export function paintRetroFace(
     c.textAlign = 'center';
     c.fillText(`${face.power}/${face.toughness}`, sx + sw / 2, sy + sh / 2, sw);
   }
-  if (face.artist) {
+  if (details) paintRetroCredits(c, face, details);
+  else if (face.artist) {
     const [fx, fy, fw, fh] = retroPx(rect.footer);
     c.textAlign = 'center';
     c.font = '15.6px "CardRenderer MTG MPlantin", Georgia';

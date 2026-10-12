@@ -49,6 +49,7 @@ export function paintRulesLayout(
   context: CanvasRenderingContext2D,
   layout: RulesLayout,
   images: CanvasImages,
+  paintSymbol: typeof paintMana = paintMana,
 ) {
   if (layout.overflow) throw Error('Magic rules text does not fit the available area.');
   context.save();
@@ -69,7 +70,7 @@ export function paintRulesLayout(
     let x = line.x ?? layout.x;
     for (const run of line.runs) {
       if (run.symbol)
-        paintMana(
+        paintSymbol(
           context,
           run.text,
           x + run.size * 0.025,

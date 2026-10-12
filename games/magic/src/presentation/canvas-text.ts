@@ -58,6 +58,9 @@ export function paintMana(
 ) {
   const image = images.get(manaSymbolAsset(symbol) ?? '');
   context.save();
+  // A title's shadow must not leak into a shadow-free inline or historical symbol.
+  context.shadowColor = 'transparent';
+  context.shadowOffsetX = context.shadowOffsetY = 0;
   // These are the shared --m-* token defaults, also used behind loaded DOM glyphs.
   const colors: Record<string, string> = {
     W: '#efe7cb',
