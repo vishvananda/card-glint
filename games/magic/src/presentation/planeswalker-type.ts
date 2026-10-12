@@ -15,8 +15,8 @@ export function paintPlaneswalkerType(
   ];
   const outline = new Path2D();
   outline.moveTo(x + 14, y);
-  outline.lineTo(x + w - 10, y);
-  outline.quadraticCurveTo(x + w, y, x + w, y + 10);
+  outline.lineTo(x + w - 14, y);
+  outline.quadraticCurveTo(x + w, y, x + w, y + 14);
   outline.lineTo(x + w, y + h - 7);
   outline.quadraticCurveTo(x + w, y + h, x + w - 7, y + h);
   outline.lineTo(x + 9, y + h);
@@ -27,9 +27,9 @@ export function paintPlaneswalkerType(
   context.save();
   const scale = context.getTransform().a;
   context.shadowColor = '#0009';
-  context.shadowBlur = 1.2 * scale;
-  context.shadowOffsetX = -0.5 * scale;
-  context.shadowOffsetY = 1.7 * scale;
+  context.shadowBlur = 1.4 * scale;
+  context.shadowOffsetX = -1.2 * scale;
+  context.shadowOffsetY = 2 * scale;
   context.fillStyle = '#191816';
   context.fill(outline);
   context.shadowColor = 'transparent';
@@ -43,7 +43,7 @@ export function paintPlaneswalkerType(
     20 * sourceScale,
     image.height - (h - 4) * sourceScale,
     image.width - 40 * sourceScale,
-    (h - 8) * sourceScale,
+    (h - 12) * sourceScale,
     x - 2,
     y,
     w + 2,

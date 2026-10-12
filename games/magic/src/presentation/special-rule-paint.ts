@@ -36,9 +36,24 @@ export function specialPaperColor(face: RenderedCardInput): string {
 }
 /** Paper belongs below the frame's own outline, not across its inside edge. */
 export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: RenderedCardInput) {
-  const [x, y, w, h] = faceRects(face).rules;
+  // Match the existing aperture in reference pixels. A rectangular underlay
+  // leaks through the type opening and beyond the curved lower frame corners.
+  const top = faceFrame(face) === 'planeswalker-large' ? 382 : 429;
+  context.save();
+  context.beginPath();
+  context.moveTo(66, top);
+  context.lineTo(448, top);
+  context.quadraticCurveTo(456, top, 456, top + 8);
+  context.lineTo(456, 613);
+  context.bezierCurveTo(456, 623, 420, 629, 257, 629);
+  context.bezierCurveTo(94, 629, 58, 623, 58, 613);
+  context.lineTo(58, top + 8);
+  context.quadraticCurveTo(58, top, 66, top);
+  context.closePath();
+  context.clip();
   context.fillStyle = specialPaperColor(face);
-  context.fillRect(x * FACE_WIDTH + 36, y * FACE_HEIGHT, w * FACE_WIDTH - 36, h * FACE_HEIGHT);
+  context.fillRect(58, top, 398, 629 - top);
+  context.restore();
 }
 
 function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center: number) {

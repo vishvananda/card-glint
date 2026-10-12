@@ -21,14 +21,16 @@ function abilityRuns(face: RenderedCardInput, text: string, index: number) {
  * Reserve the curved lower panel/loyalty plate; static text has no badge indent. */
 export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: RenderedCardInput) {
   const large = faceFrame(face) === 'planeswalker-large';
+  const abilities = specialRules(face),
+    sparse = !large && abilities.length < 3;
   const rect = faceRects(face).rules;
   const x = rect[0] * FACE_WIDTH,
     y = rect[1] * FACE_HEIGHT,
     width = rect[2] * FACE_WIDTH,
-    height = rect[3] * FACE_HEIGHT - (large ? 24 : 16),
-    topInset = large ? 8 : 0;
+    height = rect[3] * FACE_HEIGHT - (large ? 24 : sparse ? 4 : 16),
+    topInset = large ? 8 : sparse ? 3 : 0;
   const typography = large ? { ...RULES_TYPOGRAPHY, leading: 0.9 } : RULES_TYPOGRAPHY;
-  const rows = specialRules(face).map((row, index) => ({
+  const rows = abilities.map((row, index) => ({
     ...row,
     runs: abilityRuns(face, row.text, index),
     left: row.badges.length ? 67 : 45,
@@ -44,7 +46,7 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
         typography,
       ),
     );
-  let font = large ? 18 : 19,
+  let font = large ? 17.5 : sparse ? 24 : 19,
     measured = measure(font);
   const minimum = () => measured.map((layout) => Math.max(34, layout.height + 16));
   const fixedRowsFit = () => {

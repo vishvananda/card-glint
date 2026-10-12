@@ -158,7 +158,8 @@ Use paragraph `align: 'right'` for a printed flavor attribution. Other layouts
 still use their `rulesText` as the source. Planeswalker rows now measure loaded
 font outlines, preserve italic runs from matching `rulesParagraphs`, and report
 overflow rather than clipping. Passive paragraphs have no loyalty-badge indent;
-ordinary and taller panels retain separate shared row policies. The public
+two-row panels allow larger text, and four-row panels keep room for short static
+abilities with tighter leading. Paper is clipped below the existing frame outline. The public
 `planeswalkerRuleRows` helper exposes the same layout used by the canvas painter.
 Font
 preparation now rejects missing CSS or failed font loads and can retry after they

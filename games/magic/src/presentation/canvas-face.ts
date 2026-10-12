@@ -91,7 +91,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v36',
+    'canvas-face-v37',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -534,7 +534,7 @@ export function paintAssembledFace(
   paintFittedText(
     context,
     face.typeLine ?? '',
-    textX,
+    textX + (planeswalker ? 1.5 : 0),
     typeCenter,
     typeWidth,
     FACE_TEXT.typeFont * textScale,
@@ -549,7 +549,7 @@ export function paintAssembledFace(
       setIcon,
       face.setCode,
       face.rarity,
-      plateEnd - FACE_TEXT.setMargin - setWidth,
+      plateEnd - FACE_TEXT.setMargin - setWidth + (planeswalker ? 1.5 : 0),
       typeCenter - (setIcon.height * setCrop[3] * scale) / 2,
       setIcon.width * setCrop[2] * scale,
       setIcon.height * setCrop[3] * scale,

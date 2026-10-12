@@ -96,7 +96,12 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       frame: [0.04724, 0.02655, 0.91339, 0.89989],
       art: [0.06299, 0.09224, 0.86614, (large ? 0.49044 : 0.55793) - 0.09224],
       title: [0.05669, 0.03375, 0.88662, 0.05737],
-      type: [0.05669, (large ? 0.49044 : 0.55793) + 1 / FACE_HEIGHT, 0.88662, 0.05737],
+      type: [
+        0.05669 + 1.5 / FACE_WIDTH,
+        (large ? 0.49044 : 0.55793) + 3 / FACE_HEIGHT,
+        0.88662,
+        0.05737,
+      ],
       rules,
       stats: [0.792 + 1 / FACE_WIDTH, 0.881 - 3 / FACE_HEIGHT, 0.16, 0.069],
       stamp: [
