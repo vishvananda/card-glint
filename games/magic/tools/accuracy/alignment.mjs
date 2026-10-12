@@ -1,6 +1,7 @@
 import { blur } from './edges.mjs';
 import { luminance, WIDTH, HEIGHT } from './pixels.mjs';
 import { median } from './metrics.mjs';
+import { BOUNDARY_VERSION, measureWhiteFrame, boundaryDifference } from './frame-boundaries.mjs';
 
 export const IDENTITY = { tx: 0, ty: 0, scale: 1, rotation: 0 };
 export const ALIGNMENT_VERSION = 'fixed-frame-v2';
@@ -139,15 +140,35 @@ function leastSquares(rows) {
   return m.map((row) => row[4]);
 }
 
-export function alignmentDiagnostic(reference, rendered, family) {
+export function alignmentDiagnostic(reference, rendered, family, face = {}) {
   const a = measureLandmarks(reference, family),
     b = measureLandmarks(rendered, family);
   const residuals = a.flatMap((p, i) =>
     p.strength > 8 && b[i].strength > 8 ? [Math.abs(p.detected - b[i].detected)] : [],
   );
-  return {
+  const legacy = {
     medianResidualPx: median(residuals),
     measuredLandmarks: residuals.length,
     uncertain: residuals.length < 8 || median(residuals) > 3,
+  };
+  // Validated on Revised only. Other sets/families retain their frozen method.
+  // Outer registration and internal plate geometry are different questions:
+  // a confidently located frame can still be the wrong size or shape.
+  if (family !== 'retro-fourth' || face.setCode !== '3ed' || face.borderColor !== 'white')
+    return legacy;
+  const boundaries = boundaryDifference(measureWhiteFrame(reference), measureWhiteFrame(rendered));
+  const uncertain =
+    !boundaries.coherent ||
+    boundaries.medianResidualPx > 3 ||
+    boundaries.centerDelta.some((value) => Math.abs(value) > 3);
+  return {
+    method: BOUNDARY_VERSION,
+    medianResidualPx: boundaries.medianResidualPx,
+    measuredLandmarks: Object.values(boundaries.sides).reduce((n, side) => n + side.count, 0),
+    uncertain,
+    geometryMismatch:
+      boundaries.complete && boundaries.sizeDelta.some((value) => Math.abs(value) > 3),
+    boundaries,
+    legacy,
   };
 }

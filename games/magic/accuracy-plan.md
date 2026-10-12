@@ -77,6 +77,53 @@ improvement claims use reviewed printed wording and confident alignment only.
 The initial baseline already used the repaired italic source so captures could
 pass font preflight; its old painter still rendered rules/flavor as plain text.
 
+### Revised frame registration
+
+Revised's old dark-ridge detector often matched different inner/outer bevels in
+the two images. The replacement measures the first strong transition from white
+paper to the outer printed frame at twelve fixed strips. It diagnoses positions
+without fitting or applying any per-card transform. It is enabled only for
+Revised white-border `retro-fourth` cards; other sets and families retain their
+existing method. Synthetic shifts, brightness changes, grain, competing bevels,
+missing boundaries and frame-size changes exercise the distinction between a
+registration failure and a confidently measured shape mismatch.
+
+Six development cards and six newly reserved examples validate the detector.
+The reserved cohort was selected by metadata, before examining its images. The
+entire corpus had been captured and scored previously, so this is not an untouched
+set. Every reserved boundary overlay was visually checked. Across all 281 cards
+in this family, the outer boundary is coherent; 176 previously had ridge-based
+warnings. The remaining 25 cards use other frame families and retain warnings.
+
+The frozen alignment stays at identity. A proposed similarity transform improves
+outer residual by only about 0.23px but regresses the internal-frame score on four
+of six development cards and five of six reserved cards. The render's outer
+rectangle is about 1.09px narrower and 4.30px taller than the scan median. That
+shape difference is reported separately as a frame-size flag, not hidden by
+alignment. Raw region scores are unchanged by the diagnostic replacement.
+
+`registration-verified` refreshes all 306 Revised printings using the current
+painter and cached printing text: 290 source-backed rules texts, 16 explicit
+unverified fallbacks, no capture failures or reported text overflow. This is a
+new absolute baseline; changed wording must not be counted as a typography gain.
+The report has a frame-size filter, measured center/size differences and optional
+pink boundary guides. JSON and CSV retain those measurements and the original
+ridge diagnostics remain in JSON.
+
+Reproduce the fixed diagnostic study without a browser:
+
+```sh
+node games/magic/tools/accuracy/frame-registration.mjs development
+node games/magic/tools/accuracy/frame-registration.mjs validation
+node games/magic/tools/accuracy/frame-registration.mjs corpus
+```
+
+The study checks the frozen capture, image bytes and detector hash. Its source
+capture contains older Oracle text; only frame pixels enter its decision. See
+the [selection plan](fixtures/accuracy/3ed/frame-registration-plan.json),
+[frozen candidate](fixtures/accuracy/3ed/frame-registration-candidate.json) and
+[validation and corpus measurements](fixtures/accuracy/3ed/frame-registration-measurement.json).
+
 ## Printed wording and text insets
 
 The `text-insets` round captures and measures all **1,078** ordinary printings in

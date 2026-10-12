@@ -17,6 +17,7 @@ export function summarize(results) {
     printingReference: measured.filter((r) => r.contentStatus === 'printing-reference').length,
     oracleUnverified: measured.filter((r) => r.contentStatus === 'oracle-unverified').length,
     alignmentUncertain: measured.filter((r) => r.alignment.uncertain).length,
+    frameGeometryMismatch: measured.filter((r) => r.alignment.geometryMismatch).length,
     clipped: measured.filter((r) => r.clipping).length,
     layoutMeasured: measured.filter((r) => r.layout != null).length,
     tiers: {},
@@ -80,6 +81,7 @@ export function assetBacklog(results) {
             name: result.name,
             family: result.alignment.family,
             alignmentUncertain: result.alignment.uncertain,
+            frameGeometryMismatch: Boolean(result.alignment.geometryMismatch),
             scores: [],
             distances: [],
           });
@@ -102,14 +104,17 @@ export function assetBacklog(results) {
         role: group.role,
         cardCount: cards.length,
         confidentCount: confident.length,
+        frameGeometryMismatchCount: cards.filter((c) => c.frameGeometryMismatch).length,
         medianEdgeF1: median(confident.map((c) => c.score)),
         allCardMedianEdgeF1: median(cards.map((c) => c.score)),
         status:
-          confident.length >= 3 && median(confident.map((c) => c.score)) < 0.6
-            ? 'review-asset-or-placement'
-            : confident.length < 3
-              ? 'insufficient-confident-evidence'
-              : 'monitor',
+          group.role === 'frame' && confident.filter((c) => c.frameGeometryMismatch).length >= 3
+            ? 'review-frame-geometry'
+            : confident.length >= 3 && median(confident.map((c) => c.score)) < 0.6
+              ? 'review-asset-or-placement'
+              : confident.length < 3
+                ? 'insufficient-confident-evidence'
+                : 'monitor',
         examples: cards.sort((a, b) => a.score - b.score).slice(0, 8),
         families: [...new Set(cards.map((c) => c.family))],
         caveat:

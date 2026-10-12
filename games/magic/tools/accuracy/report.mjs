@@ -28,6 +28,12 @@ const lines = [
     'category',
     'content_status',
     'alignment_uncertain',
+    'alignment_method',
+    'frame_geometry_mismatch',
+    'frame_center_dx',
+    'frame_center_dy',
+    'frame_width_delta',
+    'frame_height_delta',
     'overflow',
     'tier',
     'region',
@@ -49,6 +55,10 @@ for (const result of report.results) {
     result.category,
     result.contentStatus,
     result.alignment?.uncertain,
+    result.alignment?.method ?? (result.alignment ? 'legacy-ridge' : ''),
+    result.alignment?.geometryMismatch,
+    ...(result.alignment?.boundaries?.centerDelta ?? [null, null]),
+    ...(result.alignment?.boundaries?.sizeDelta ?? [null, null]),
     result.clipping,
   ];
   if (result.issue) lines.push([...base, '', '', 'failed', '', '', '', '', '', '', result.issue]);

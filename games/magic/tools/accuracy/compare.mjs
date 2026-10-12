@@ -39,7 +39,7 @@ let next = 0,
   cacheHits = 0;
 const metricSource = await sourceHash(
   new URL('.', import.meta.url),
-  /^(?:compare(?:-worker)?|common|summary|alignment|pixels|edges|metrics|regions)\.mjs$/,
+  /^(?:compare(?:-worker)?|common|summary|alignment|frame-boundaries|pixels|edges|metrics|regions)\.mjs$/,
 );
 const started = performance.now();
 try {

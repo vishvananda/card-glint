@@ -159,6 +159,14 @@ Open `test-results/magic-accuracy/tmp/retro-type/examples.html`. It includes ful
 cards, enlarged text boxes, measured gains and specific visual review questions.
 The page and downloaded images remain local.
 
+The Revised `registration-verified` run measures all 306 printings with cached
+printing text. A validated outer-frame detector separates scan registration from
+frame-size mismatches: 281 fourth-family cards have coherent boundaries, while
+25 lands retain alignment warnings. The alignment transform remains unchanged.
+The report includes optional frame guides and center/size differences in JSON
+and CSV. See the [Revised registration study](accuracy-plan.md#revised-frame-registration)
+and [validation measurements](fixtures/accuracy/3ed/frame-registration-measurement.json).
+
 ## Existing scene or DOM editor
 
 Use `card-glint/magic/presentation` for the shared geometry and raster painter.

@@ -93,7 +93,7 @@ parentPort.on('message', async ({ index, result, runRoot, profile, metricSource 
         missingInk: measured.filter((r) => r.status === 'missing-ink').map((r) => r.id),
       };
       if (tier === 'inspect') {
-        diagnostic = alignmentDiagnostic(reference, rendered, family);
+        diagnostic = alignmentDiagnostic(reference, rendered, family, result.face);
         await savePng(path.join(runRoot, `cards/${result.id}.normalized.png`), rendered);
       }
     }

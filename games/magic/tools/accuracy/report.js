@@ -9,7 +9,8 @@ const element = (tag, text, className) => {
   return e;
 };
 let selected = report.results.find((r) => !r.issue)?.id,
-  edgeView = false;
+  edgeView = false,
+  frameGuides = false;
 $('title').textContent = `${report.set.toUpperCase()} · Rendering accuracy`;
 $('scope').textContent =
   `${report.run} · ${report.eligibleCount} ordinary printings of ${report.totalPrintings} · Chromium ${report.browser} · ${report.elapsedSeconds.toFixed(1)}s in Node (${report.cacheHits} cached cards)`;
@@ -18,6 +19,7 @@ for (const [value, label] of [
   [percent(report.summary.tiers.inspect.text.median), 'MEDIAN TEXT EDGE AGREEMENT'],
   [report.summary.scanReviewed, 'REVIEWED BODY TEXTS'],
   [report.summary.alignmentUncertain, 'ALIGNMENT FLAGS'],
+  [report.summary.frameGeometryMismatch ?? 0, 'FRAME SIZE FLAGS'],
   [report.summary.failed, 'FAILED'],
 ]) {
   const stat = element('div', null, 'stat');
@@ -56,6 +58,7 @@ function drawList() {
         (filter === 'reviewed' && r.contentStatus === 'scan-reviewed') ||
         (filter === 'held-out' && r.cohort === 'held-out') ||
         (filter === 'uncertain' && r.alignment?.uncertain) ||
+        (filter === 'frame-geometry' && r.alignment?.geometryMismatch) ||
         (filter === 'failed' && (r.issue || r.clipping))),
   );
   results.sort((a, b) =>
@@ -92,6 +95,7 @@ function drawDetail() {
     r.cohort,
     r.alignment?.family,
     r.alignment?.uncertain ? 'Alignment uncertain' : null,
+    r.alignment?.geometryMismatch ? 'Frame size mismatch' : null,
     r.clipping ? 'Text overflow' : null,
     r.layout == null && !r.issue ? 'Layout/overflow unmeasured' : null,
   ].filter(Boolean))
@@ -99,7 +103,8 @@ function drawDetail() {
       element(
         'span',
         label,
-        'badge' + (/unverified|uncertain|overflow|unmeasured/.test(label) ? ' warning' : ''),
+        'badge' +
+          (/unverified|uncertain|overflow|unmeasured|mismatch/.test(label) ? ' warning' : ''),
       ),
     );
   target.append(badges);
@@ -121,12 +126,34 @@ function drawDetail() {
           : r.previews.rendered,
     ],
   ];
-  for (const [caption, src] of pair) {
+  for (const [index, [caption, src]] of pair.entries()) {
     const figure = element('figure'),
       img = element('img');
     img.src = src;
     img.alt = `${r.name}: ${caption}`;
-    figure.append(element('figcaption', caption), img);
+    const picture = element('div', null, 'picture');
+    picture.append(img);
+    if (frameGuides && r.alignment?.boundaries?.complete) {
+      const sides = r.alignment.boundaries.sides;
+      const key = index === 0 ? 'reference' : 'rendered';
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 488 680');
+      svg.setAttribute('aria-label', 'Detected outer printed frame');
+      const rect = document.createElementNS(svg.namespaceURI, 'rect');
+      for (const [name, value] of Object.entries({
+        x: sides.left[key],
+        y: sides.top[key],
+        width: sides.right[key] - sides.left[key],
+        height: sides.bottom[key] - sides.top[key],
+        fill: 'none',
+        stroke: '#ff28b4',
+        'stroke-width': 1.5,
+      }))
+        rect.setAttribute(name, value);
+      svg.append(rect);
+      picture.append(svg);
+    }
+    figure.append(element('figcaption', caption), picture);
     images.append(figure);
   }
   target.append(images);
@@ -134,6 +161,7 @@ function drawDetail() {
     toggle = element('button', edgeView ? 'Show rendering' : 'Show edge disagreement');
   toggle.addEventListener('click', () => {
     edgeView = !edgeView;
+    frameGuides = false;
     drawDetail();
   });
   const source = element('a', 'Scryfall source');
@@ -141,7 +169,28 @@ function drawDetail() {
   source.target = '_blank';
   source.rel = 'noreferrer';
   controls.append(toggle, source);
+  if (r.alignment?.boundaries?.complete) {
+    const guide = element('button', frameGuides ? 'Hide frame guides' : 'Show frame guides');
+    guide.addEventListener('click', () => {
+      frameGuides = !frameGuides;
+      edgeView = false;
+      drawDetail();
+    });
+    controls.append(guide);
+  }
   target.append(controls);
+  if (r.alignment?.boundaries?.complete) {
+    const boundary = r.alignment.boundaries;
+    target.append(
+      element(
+        'p',
+        `Outer frame: render center differs by (${fixed(boundary.centerDelta[0])}, ${fixed(boundary.centerDelta[1])})px; ` +
+          `width/height differ by (${fixed(boundary.sizeDelta[0])}, ${fixed(boundary.sizeDelta[1])})px. ` +
+          'Pink guides show the detected rectangle. These measurements do not move either image.',
+        'note',
+      ),
+    );
+  }
   const typography = report.typography?.results.find((card) => card.id === r.id);
   if (typography?.status === 'measured')
     target.append(
