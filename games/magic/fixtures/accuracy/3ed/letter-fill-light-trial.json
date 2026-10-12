@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "rendererHash": "5e40956ce8e445f24b6e04bb022ee09d1e4da3bd9566fb865dccecbbcd5edd89",
+  "experimentHash": "0c5b42628128fcf128ea0c765b5747169e09fe4d3a7433348e2ae76ecb805018",
+  "metricHash": "2bb27aebcf71914a1d80891c819b33e500c86dad2064c31d8599da6c7c50c5b2",
+  "trialHash": "1c3372e48461a6e989442fc99f4ce78ce28755cda1de38054d57cf8434fc7a93",
+  "candidates": [
+    {
+      "id": "control"
+    },
+    {
+      "id": "fill-0.25",
+      "fill": 0.25
+    },
+    {
+      "id": "fill-0.5",
+      "fill": 0.5
+    },
+    {
+      "id": "fill-0.75",
+      "fill": 0.75
+    },
+    {
+      "id": "fill-1",
+      "fill": 1
+    }
+  ],
+  "summary": [
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.4627214262097036,
+      "medianContrast": 0.012205156227026587,
+      "medianCensus": 0.4825000054227428,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.430451044380439,
+      "medianContrast": 0.08115344589837908,
+      "medianCensus": 0.504876051187518,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.38557993715602035,
+      "medianContrast": 0.25487010645850716,
+      "medianCensus": 0.5839085673563486,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5443342108136545,
+      "medianContrast": 0.36214397508771945,
+      "medianCensus": 0.5985540577247856,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.4081678504909182,
+      "medianContrast": 0.16957968265049675,
+      "medianCensus": 0.5492084558644916,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.354080484488287,
+      "medianContrast": 0.23716490546277666,
+      "medianCensus": 0.5803327059716712,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.25",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.4555267891080316,
+      "medianContrast": 0.031043402406981235,
+      "medianCensus": 0.48592479891146895,
+      "medianDelta": 0.0032373192465046663,
+      "gains": ["Animate Dead"],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.25",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.4420240065443023,
+      "medianContrast": 0.07229576873297287,
+      "medianCensus": 0.5044670404426749,
+      "medianDelta": 0.011572962163863276,
+      "gains": ["Animate Dead", "Serendib Efreet"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.25",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.38556556763040073,
+      "medianContrast": 0.29255762014509173,
+      "medianCensus": 0.5805288926748542,
+      "medianDelta": 0.0012879477873261602,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.25",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5395131552930634,
+      "medianContrast": 0.36679005892677224,
+      "medianCensus": 0.5930718344299168,
+      "medianDelta": -0.0010419664556061692,
+      "gains": [],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.25",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.425878653119766,
+      "medianContrast": 0.1856688565531923,
+      "medianCensus": 0.5547254225840494,
+      "medianDelta": 0.01171733551870452,
+      "gains": ["Serendib Efreet"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.25",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.35231580557634196,
+      "medianContrast": 0.23979093418951117,
+      "medianCensus": 0.5772854640192554,
+      "medianDelta": 0.000031639116886611474,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.5",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.4464372585442332,
+      "medianContrast": 0.04763225998987631,
+      "medianCensus": 0.4989455015429432,
+      "medianDelta": 0.0031081722867456474,
+      "gains": ["Animate Dead"],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.5",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.44822046164936236,
+      "medianContrast": 0.09087600834672094,
+      "medianCensus": 0.5179366083952931,
+      "medianDelta": 0.017769417268923338,
+      "gains": ["Animate Dead", "Serendib Efreet", "Living Wall"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.5",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.39137909390085707,
+      "medianContrast": 0.3295064041604163,
+      "medianCensus": 0.5773814557691777,
+      "medianDelta": 0.0019176198667525401,
+      "gains": ["Serendib Efreet"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.5",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5341361032427394,
+      "medianContrast": 0.3459820144609493,
+      "medianCensus": 0.592998081862166,
+      "medianDelta": -0.0002813035579484757,
+      "gains": ["Animate Dead"],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.5",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.43770381917627454,
+      "medianContrast": 0.17116354663505856,
+      "medianCensus": 0.5625964447302245,
+      "medianDelta": 0.027535279139232538,
+      "gains": ["Sacrifice", "Animate Dead", "Serendib Efreet", "Living Wall"],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.5",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.35042209758496323,
+      "medianContrast": 0.2599079983065504,
+      "medianCensus": 0.5734811047466639,
+      "medianDelta": -0.001438455754294743,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.75",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.43946668448430115,
+      "medianContrast": 0.057956586056811636,
+      "medianCensus": 0.508397752062654,
+      "medianDelta": -0.0024877744247108757,
+      "gains": ["Animate Dead"],
+      "regressions": ["Benalish Hero", "Earthbind"]
+    },
+    {
+      "candidate": "fill-0.75",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.44977259496021427,
+      "medianContrast": 0.12134035922831336,
+      "medianCensus": 0.5308966347434151,
+      "medianDelta": 0.020533049658628788,
+      "gains": ["Sacrifice", "Animate Dead", "Serendib Efreet", "Living Wall"],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.75",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.3881430640841629,
+      "medianContrast": 0.35556117309478524,
+      "medianCensus": 0.5729782445558672,
+      "medianDelta": -0.0027555125000897907,
+      "gains": ["Serendib Efreet"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-0.75",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5276185708507302,
+      "medianContrast": 0.3051958293893287,
+      "medianCensus": 0.5921835339863082,
+      "medianDelta": -0.0028779939179684466,
+      "gains": ["Animate Dead"],
+      "regressions": ["Benalish Hero", "Earthbind"]
+    },
+    {
+      "candidate": "fill-0.75",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.44966045034112356,
+      "medianContrast": 0.15482329565708688,
+      "medianCensus": 0.5690448199938687,
+      "medianDelta": 0.030058647565945895,
+      "gains": ["Sacrifice", "Animate Dead", "Serendib Efreet", "Living Wall"],
+      "regressions": ["Earthbind"]
+    },
+    {
+      "candidate": "fill-0.75",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.35658611133336826,
+      "medianContrast": 0.28807410759070373,
+      "medianCensus": 0.5695780239750927,
+      "medianDelta": -0.006975270782397153,
+      "gains": ["Serendib Efreet"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-1",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.4310476359859914,
+      "medianContrast": 0.06475855408302854,
+      "medianCensus": 0.5170091003155388,
+      "medianDelta": -0.0031404385430598425,
+      "gains": ["Animate Dead"],
+      "regressions": ["Benalish Hero", "Earthbind"]
+    },
+    {
+      "candidate": "fill-1",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.44925455284666005,
+      "medianContrast": 0.1448193674824314,
+      "medianCensus": 0.5429154264951948,
+      "medianDelta": 0.02003628908805244,
+      "gains": ["Sacrifice", "Animate Dead", "Serendib Efreet", "Living Wall"],
+      "regressions": ["Water Elemental", "Earthbind"]
+    },
+    {
+      "candidate": "fill-1",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.3847461487144044,
+      "medianContrast": 0.3733394072707482,
+      "medianCensus": 0.5702135117617213,
+      "medianDelta": -0.006268465579997884,
+      "gains": ["Serendib Efreet"],
+      "regressions": []
+    },
+    {
+      "candidate": "fill-1",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5185602524292365,
+      "medianContrast": 0.26626663987287336,
+      "medianCensus": 0.5919121710890175,
+      "medianDelta": -0.009419501607307923,
+      "gains": ["Animate Dead"],
+      "regressions": ["Benalish Hero", "Water Elemental", "Earthbind"]
+    },
+    {
+      "candidate": "fill-1",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.45670830740432744,
+      "medianContrast": 0.1750985222476492,
+      "medianCensus": 0.5742488220508996,
+      "medianDelta": 0.035066956980175035,
+      "gains": ["Sacrifice", "Animate Dead", "Serendib Efreet", "Living Wall"],
+      "regressions": ["Benalish Hero", "Water Elemental", "Earthbind"]
+    },
+    {
+      "candidate": "fill-1",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.352021521927748,
+      "medianContrast": 0.3092181545186202,
+      "medianCensus": 0.5658583726805307,
+      "medianDelta": -0.011989970690650581,
+      "gains": ["Serendib Efreet"],
+      "regressions": []
+    }
+  ],
+  "decision": "Light fill reduces broken strokes but becomes too solid/heavy on colored frames and fails the paired-title F1 gate. No candidate adopted and no reserved crop opened. Test a neutral interior next: it can lighten dark plates and darken light plates without choosing per-color opacity."
+}
