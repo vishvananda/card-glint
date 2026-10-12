@@ -1,0 +1,1427 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "460c265",
+  "sourceRun": "early-printing-fields",
+  "baselineRendererHash": "a704fb07f8b057318ad302e6e60a7d2042087c8ca4f886fb0b17e52cf060e294",
+  "scope": "Alpha development, Alpha reserved validation and Unlimited set transfer. Header costs only, unchanged title fitting and body. Retain existing frame, SVG and font assets. One shared cost geometry; no per-scan registration.",
+  "registration": {
+    "tx": 0,
+    "ty": 0,
+    "scale": 1,
+    "rotation": 0,
+    "note": "Retain shared identity from early-frame-review.json. Alpha outer-frame ambiguity remains; these are component diagnostics."
+  },
+  "reservation": "Selection uses names and mana metadata, not image scores. No reserved mana crops are opened or measured until the candidate is committed. Earlier whole-set captures do not certify these fields.",
+  "sets": [
+    {
+      "code": "lea",
+      "captureHash": "f17f6f24c94d8e9a525adee9bf90c87ddcf9afd08c23c6dfe473abe7d8aa18f2",
+      "snapshotIdentity": "1be2915df1bcb3568076c6a15a8521717a244db4b1596eb15c16218d2c98328a",
+      "development": [
+        {
+          "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+          "name": "Disenchant",
+          "number": "18",
+          "inputHash": "1a5cb809297ebfc628f2cacb44139aa01f02dafe4953df2056f12d97e616d975",
+          "referenceHash": "6bd82c6bf5f5e31b98055f7d11c43130a0f8ac6afe6c64392fa7c842bab6ff74",
+          "face": {
+            "name": "Disenchant",
+            "typeLine": "Instant",
+            "colors": ["W"],
+            "manaSymbols": ["1", "W"],
+            "rulesText": "Target enchantment or artifact must be discarded.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Target enchantment or artifact must be discarded.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/940dda2c8e64c5b345adc6ad558dfed0cc062faa6293d3b31aad51be092184fb",
+            "artist": "Amy Weber",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+          "name": "White Knight",
+          "number": "43",
+          "inputHash": "39f7058f11279ead0500e422ed91886e551c2f0f6a3d62ecd0dad0574c926075",
+          "referenceHash": "31d9d85a00d280fdb97d5a0e3712b8066023440e88b9983106e47d0c2292b6d3",
+          "face": {
+            "name": "White Knight",
+            "typeLine": "Creature — Human Knight",
+            "colors": ["W"],
+            "manaSymbols": ["W", "W"],
+            "rulesText": "Protection from black, first strike\nOut of the blackness and stench of the engulfing swamp emerged a shimmering figure. Only the splattered armor and ichor-stained sword hinted at the unfathomable evil the knight had just laid waste.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Protection from black, first strike",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Out of the blackness and stench of the engulfing swamp emerged a shimmering figure. Only the splattered armor and ichor-stained sword hinted at the unfathomable evil the knight had just laid waste.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/f98cb8c4c103c0f753deec5ab8cce22e8f81b54075506223bacea644f2c7f1da",
+            "artist": "Daniel Gelon",
+            "power": "2",
+            "toughness": "2",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "70e7ddf2-5604-41e7-bb9d-ddd03d3e9d0b",
+          "name": "Ancestral Recall",
+          "number": "47",
+          "inputHash": "5dbf8e5fb8488780e4d3c4aac01f098ff404a29e8b5709f10d06f2981bbd1150",
+          "referenceHash": "3a17a54aa837eb95ebf2fd79325411f0206fa81509f8b3df743846129036bc1a",
+          "face": {
+            "name": "Ancestral Recall",
+            "typeLine": "Instant",
+            "colors": ["U"],
+            "manaSymbols": ["U"],
+            "rulesText": "Draw 3 cards or force opponent to draw 3 cards.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Draw 3 cards or force opponent to draw 3 cards.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/aa2cccdd5621c4d569936f68110a58b5a7579ee47ca09211af8c3e1936610445",
+            "artist": "Mark Poole",
+            "setCode": "lea",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "8de940d6-98c0-46a9-b5fd-e2b0899ea19e",
+          "name": "Water Elemental",
+          "number": "91",
+          "inputHash": "2b29f8308e6edb29bdbbfae5730de7fcd1100236ebb6655a7a3111ac5ad246ee",
+          "referenceHash": "bb95bf474232670c455d0184a2e778766607a262a9e9cc358559d50558ac0ba1",
+          "face": {
+            "name": "Water Elemental",
+            "typeLine": "Creature — Elemental",
+            "colors": ["U"],
+            "manaSymbols": ["3", "U", "U"],
+            "rulesText": "Unpredictable as the sea itself, Water Elementals shift without warning from tranquility to tempest. Capricious and fickle, they flow restlessly from one shape to another, expressing their moods with their physical forms.",
+            "rulesParagraphs": [
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Unpredictable as the sea itself, Water Elementals shift without warning from tranquility to tempest. Capricious and fickle, they flow restlessly from one shape to another, expressing their moods with their physical forms.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/027d7bd96212d47c6d0c6d66a3e33719665a61db54f3fcd97201d577ae141f78",
+            "artist": "Jeff A. Menges",
+            "power": "5",
+            "toughness": "4",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "ebb6664d-23ca-456e-9916-afcd6f26aa7f",
+          "name": "Dark Ritual",
+          "number": "98",
+          "inputHash": "8fd00917439cd686657dd4bb55f0bac7d0397c9c27053b13056060d33286d67e",
+          "referenceHash": "6dd7d685692ebfd0ce1acb7b1521c4209d8606bc36f9a92dcc3fb7b0396fe8fa",
+          "face": {
+            "name": "Dark Ritual",
+            "typeLine": "Instant",
+            "colors": ["B"],
+            "manaSymbols": ["B"],
+            "rulesText": "Add 3 black mana to your mana pool.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Add 3 black mana to your mana pool.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/aa0449f52a833bf73ba64387e3a9d318e7beeae5b9a6365fb6955fdcea189148",
+            "artist": "Sandra Everingham",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "59590768-fa96-4869-8763-9d5ab6ac22ad",
+          "name": "Royal Assassin",
+          "number": "123",
+          "inputHash": "a9b5ffcf2a6e22ec3a814bc8baa97cfb86cd74a9e1b6823d9b1b0a7a6d15f51f",
+          "referenceHash": "5d939ba507d260d5281a948c7677560f7b806d021f40c1f9486fe76433e9ca48",
+          "face": {
+            "name": "Royal Assassin",
+            "typeLine": "Creature — Human Assassin",
+            "colors": ["B"],
+            "manaSymbols": ["1", "B", "B"],
+            "rulesText": "Tap to destroy any tapped creature.\nTrained in the arts of stealth, the royal assassins choose their victims carefully, relying on timing and precision rather than brute force.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Tap to destroy any tapped creature.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Trained in the arts of stealth, the royal assassins choose their victims carefully, relying on timing and precision rather than brute force.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/e2cbf023232702223dde12894200843b199c2e03ad836590683b0b93033e3aab",
+            "artist": "Tom Wänerstrand",
+            "power": "1",
+            "toughness": "1",
+            "setCode": "lea",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "d573ef03-4730-45aa-93dd-e45ac1dbaf4a",
+          "name": "Lightning Bolt",
+          "number": "161",
+          "inputHash": "cda6ed77d63b68f0c2965bada15b0de5e6e40b7e373d8d9b9dc1594c37579d94",
+          "referenceHash": "b47c28eeefc228ffa9ca74eade76db071e09cf6e68829ceab88131db482c15f2",
+          "face": {
+            "name": "Lightning Bolt",
+            "typeLine": "Instant",
+            "colors": ["R"],
+            "manaSymbols": ["R"],
+            "rulesText": "Lightning Bolt does 3 damage to one target.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Lightning Bolt does 3 damage to one target.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/a777fad44cb8d49ca429da758831f2889e5c3c8c15723fca5aca646da7ef095d",
+            "artist": "Christopher Rush",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "fefbf149-f988-4f8b-9f53-56f5878116a6",
+          "name": "Shivan Dragon",
+          "number": "174",
+          "inputHash": "343c93cfc1d1356c488a39f50449343358fb93733e03d4a232ea13435d4bb204",
+          "referenceHash": "1eacbef70519988735adf1f2fca39a65fa25c56177828107446cbf0d3a68e83e",
+          "face": {
+            "name": "Shivan Dragon",
+            "typeLine": "Creature — Dragon",
+            "colors": ["R"],
+            "manaSymbols": ["4", "R", "R"],
+            "rulesText": "Flying, {R} +1/+0 until end of turn.\nWhile it's true most Dragons are cruel, the Shivan Dragon seems to take particular glee in the misery of others, often tormenting its victims much like a cat plays with a mouse before delivering the final blow.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying, {R} +1/+0 until end of turn.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "While it's true most Dragons are cruel, the Shivan Dragon seems to take particular glee in the misery of others, often tormenting its victims much like a cat plays with a mouse before delivering the final blow.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/5eca9ed540aec52cb4ff25f831e47e805cca754d927a01efe29957d730e15265",
+            "artist": "Melissa A. Benson",
+            "power": "5",
+            "toughness": "5",
+            "setCode": "lea",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "d4f1cc9e-4f99-4c26-ac1b-8ef069fa8ceb",
+          "name": "Llanowar Elves",
+          "number": "210",
+          "inputHash": "6c2e30f2fe378e9396475a08bf5412467e896576697ce98421fca080efed71d8",
+          "referenceHash": "9ea0f32898c5ab0fc0c91a959e4543e19cdf411cd9de3b212618eaf18d70cf3c",
+          "face": {
+            "name": "Llanowar Elves",
+            "typeLine": "Creature — Elf Druid",
+            "colors": ["G"],
+            "manaSymbols": ["G"],
+            "rulesText": "Tap to add 1 green mana to your mana pool. This tap can be played as an interrupt.\nWhenever the Llanowar Elves gather the fruits of their forest, they leave one plant of each type untouched, considering that nature's portion.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Tap to add 1 green mana to your mana pool. This tap can be played as an interrupt.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Whenever the Llanowar Elves gather the fruits of their forest, they leave one plant of each type untouched, considering that nature's portion.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/7a056802e35b2fea42e3ef19718dd0faddeffe6f28e3ea3831c4364c95051586",
+            "artist": "Anson Maddocks",
+            "power": "1",
+            "toughness": "1",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "21551cb6-3a53-42dd-9bbd-4bc56304d6d3",
+          "name": "Force of Nature",
+          "number": "194",
+          "inputHash": "55aa51772bd71aa15c4a493c0ec13ccb0641a0da12c1e81b792301bb1f68f29e",
+          "referenceHash": "f9990bb4ee3baaa9b7e0f137d71b805a99d234acfab05b9a938b9b57ad92bb28",
+          "face": {
+            "name": "Force of Nature",
+            "typeLine": "Creature — Elemental",
+            "colors": ["G"],
+            "manaSymbols": ["2", "G", "G", "G", "G"],
+            "rulesText": "Trample\nYou must pay {G}{G}{G}{G} during upkeep or Force of Nature does 8 damage to you. You may still attack with Force of Nature even if you failed to pay the upkeep.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Trample",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "You must pay {G}{G}{G}{G} during upkeep or Force of Nature does 8 damage to you. You may still attack with Force of Nature even if you failed to pay the upkeep.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/17d634d68e223f0a90a56f6c687532a921cba036fb795aa1fa6c2c80aa62fc55",
+            "artist": "Douglas Shuler",
+            "power": "8",
+            "toughness": "8",
+            "setCode": "lea",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "b0faa7f2-b547-42c4-a810-839da50dadfe",
+          "name": "Black Lotus",
+          "number": "232",
+          "inputHash": "1ee4f971bcb68e547dbe5479a892618c116410dfd4367c2085529f45dcea99c1",
+          "referenceHash": "3f9ac386a0b1bc74a0298ba1580f257dab6035c8cf47c7b228332fe7af0233ec",
+          "face": {
+            "name": "Black Lotus",
+            "typeLine": "Artifact",
+            "colors": [],
+            "manaSymbols": ["0"],
+            "rulesText": "Adds 3 mana of any single color of your choice to your mana pool, then is discarded. Tapping this artifact can be played as an interrupt.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Adds 3 mana of any single color of your choice to your mana pool, then is discarded. Tapping this artifact can be played as an interrupt.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/1e0dc0803c53a2d2bfb56a7c455141289bf7195736843571651a28d1081d1620",
+            "artist": "Christopher Rush",
+            "setCode": "lea",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "b7623c00-144b-4a8f-9c6c-f5e9e4f65ece",
+          "name": "Fireball",
+          "number": "149",
+          "inputHash": "b53661d60bae253a21deb60ef1654e045a049e4a44677f0536a6140fa3b1ec0e",
+          "referenceHash": "6e1dc8ae1eb47aed3c90086f21dd9a339a4df8fd1d4209b01a82e08ab183b4d9",
+          "face": {
+            "name": "Fireball",
+            "typeLine": "Sorcery",
+            "colors": ["R"],
+            "manaSymbols": ["X", "R"],
+            "rulesText": "Fireball does X damage total, divided evenly (round down) among any number of targets. Pay 1 extra mana for each target beyond the first.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Fireball does X damage total, divided evenly ",
+                    "italic": false
+                  },
+                  {
+                    "text": "(round down)",
+                    "italic": true
+                  },
+                  {
+                    "text": " among any number of targets. Pay 1 extra mana for each target beyond the first.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/63eb599a2a68741852ef2f25d16413356f138214541c3ce436b9f772800a10be",
+            "artist": "Mark Tedin",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        }
+      ],
+      "reserved": [
+        {
+          "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+          "name": "Benalish Hero",
+          "number": "4",
+          "inputHash": "b1cb2ae618e5962b22cc14b62560ad374f2f49b6cdd7ef0e165c6242d545c15c",
+          "referenceHash": "6e5de4ef1b34ef601791e962bbfc90f8e57833953295e131cac04347f61cee98",
+          "face": {
+            "name": "Benalish Hero",
+            "typeLine": "Creature — Human Soldier",
+            "colors": ["W"],
+            "manaSymbols": ["W"],
+            "rulesText": "Bands\nBenalia has a complex caste system that changes with the lunar year. No matter what the season, the only caste that cannot be attained by either heredity or money is that of the hero.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Bands",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Benalia has a complex caste system that changes with the lunar year. No matter what the season, the only caste that cannot be attained by either heredity or money is that of the hero.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/de6826df6225109852e68fb7576f34af8bf6635d94299247bf9e14e0f40961ca",
+            "artist": "Douglas Shuler",
+            "power": "1",
+            "toughness": "1",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+          "name": "Serra Angel",
+          "number": "39",
+          "inputHash": "12b3cfad63bd3891e63d8ebcad8133ed77f5176d8407615e10718e5ccfafea79",
+          "referenceHash": "08fd162ebb84008e27072894b6ba2d65b75ecedf6fa3da96b58076275445961a",
+          "face": {
+            "name": "Serra Angel",
+            "typeLine": "Creature — Angel",
+            "colors": ["W"],
+            "manaSymbols": ["3", "W", "W"],
+            "rulesText": "Flying\nDoes not tap when attacking.\nBorn with wings of light and a sword of faith, this heavenly incarnation embodies both fury and purity.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Does not tap when attacking.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Born with wings of light and a sword of faith, this heavenly incarnation embodies both fury and purity.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/c7d3535c7ef8f40e653e363521e10cc532161294bc922490e8096837130b509f",
+            "artist": "Douglas Shuler",
+            "power": "4",
+            "toughness": "4",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "0df55e3f-14de-46ef-b6b1-616618724d9e",
+          "name": "Counterspell",
+          "number": "54",
+          "inputHash": "ab083e581bf9b14c10c1c3005685deaa6d88b4a3fd2c74fabda89eda644862a3",
+          "referenceHash": "a6d76ed9b1dc229344c00731832fb1c8a789f25bcab21778ef9cc8f906e955f2",
+          "face": {
+            "name": "Counterspell",
+            "typeLine": "Instant",
+            "colors": ["U"],
+            "manaSymbols": ["U", "U"],
+            "rulesText": "Counters target spell as it is being cast.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Counters target spell as it is being cast.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/41bc18b5f2f8d952b5b659d7eff886190b6bc21279f2e1a4f0c161d32acafd66",
+            "artist": "Mark Poole",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "69c3b2a3-0daa-4d42-832d-fcdfda6555ea",
+          "name": "Air Elemental",
+          "number": "46",
+          "inputHash": "9391af26c788ee048411c16fe26a776592202cb1e99337cb6783cf6bc3ce85b2",
+          "referenceHash": "9446e3aa061d30343d402cf223777043905bae3718064f239f4a8f23bea9a64c",
+          "face": {
+            "name": "Air Elemental",
+            "typeLine": "Creature — Elemental",
+            "colors": ["U"],
+            "manaSymbols": ["3", "U", "U"],
+            "rulesText": "Flying\nThese spirits of the air are winsome and wild, and cannot be truly contained. Only marginally intelligent, they often substitute whimsy for strategy, delighting in mischief and mayhem.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "These spirits of the air are winsome and wild, and cannot be truly contained. Only marginally intelligent, they often substitute whimsy for strategy, delighting in mischief and mayhem.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/946b904e26271b13ecd48434b64373cacf28fb4d1eede75ce179be2099a85d11",
+            "artist": "Richard Thomas",
+            "power": "4",
+            "toughness": "4",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "23614289-0d73-4747-a849-5cb67cc97d6a",
+          "name": "Drudge Skeletons",
+          "number": "106",
+          "inputHash": "aed14871ec41897810d3ba3a71674018aadbdaf88e0c6465e63e65ceabb74852",
+          "referenceHash": "9a598fd6b11453100b209340f31a3f8056b4da188d51984cc4acd8f9c2295892",
+          "face": {
+            "name": "Drudge Skeletons",
+            "typeLine": "Creature — Skeleton",
+            "colors": ["B"],
+            "manaSymbols": ["1", "B"],
+            "rulesText": "{B} Regenerates\nBones scattered around us joined to form misshapen bodies. We struck at them repeatedly—they fell, but soon formed again, with the same mocking look on their faceless skulls.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "{B} Regenerates",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Bones scattered around us joined to form misshapen bodies. We struck at them repeatedly—they fell, but soon formed again, with the same mocking look on their faceless skulls.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/014fcf698bc9ecdc8930974911a3a6871d36074a827c27460c7c9518a5b5756d",
+            "artist": "Sandra Everingham",
+            "power": "1",
+            "toughness": "1",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "67ec17e1-174b-4d07-a27f-91a333c4b2fb",
+          "name": "Howl from Beyond",
+          "number": "111",
+          "inputHash": "744061877177838b257041af1919ab8dfa216c3fb4d8f2e257a1b0b1eaf4b5cb",
+          "referenceHash": "3b6f6146fe22d9f5a3905c582af5e1e19a0df5c0c8cf05781c115f402d72b604",
+          "face": {
+            "name": "Howl from Beyond",
+            "typeLine": "Instant",
+            "colors": ["B"],
+            "manaSymbols": ["X", "B"],
+            "rulesText": "Target creature gains +X/+0 until end of turn.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Target creature gains +X/+0 until end of turn.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/3ce8037a53a2b2ccd11d5c1f3b253d23332ed2fa1e8ef66ea8fbfefa7fbeed64",
+            "artist": "Mark Poole",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "57ff74cb-a2ed-4123-ac42-f72f9820049e",
+          "name": "Stone Rain",
+          "number": "177",
+          "inputHash": "abac238730cf5f480de295c8772584f9b45ebf6dea2f1139c1be072dd75020d1",
+          "referenceHash": "c29379ae1540b976fb5dabf9074dee5ae57ff666450ab27b959c3daaf30d11ed",
+          "face": {
+            "name": "Stone Rain",
+            "typeLine": "Sorcery",
+            "colors": ["R"],
+            "manaSymbols": ["2", "R"],
+            "rulesText": "Destroys any one land.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Destroys any one land.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/690968582c7f8445fbebdf1404b37c0a4419ac7b961b7f9461c440211cb27642",
+            "artist": "Daniel Gelon",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "6bbf1eab-bc32-4835-b566-8634b1fe81b0",
+          "name": "Dragon Whelp",
+          "number": "141",
+          "inputHash": "a69231d55157673239b7d24abfb7126f68c9f237dc4b94695a61276533139c12",
+          "referenceHash": "80b7af3d28c744a6d208aea61f3eb27cf33391fd1bf146a4c40a923587bf96c8",
+          "face": {
+            "name": "Dragon Whelp",
+            "typeLine": "Creature — Dragon",
+            "colors": ["R"],
+            "manaSymbols": ["2", "R", "R"],
+            "rulesText": "Flying\n{R} +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.\n\"O to be a dragon . . . of silkworm size or immense . . .\"\n—Marianne Moore, \"O to Be a Dragon\"",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "{R} +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "\"O to be a dragon . . . of silkworm size or immense . . .\"",
+                    "italic": true
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "—Marianne Moore, \"O to Be a Dragon\"",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/5639f257df7a85a3017155b6557b3f9a3cf17fa60869de819bf72f780720417b",
+            "artist": "Amy Weber",
+            "power": "2",
+            "toughness": "3",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "367dbefe-3366-408e-9fcf-7dc00f8cc201",
+          "name": "Giant Growth",
+          "number": "197",
+          "inputHash": "f5584dc6a9a34689065c87e214fffba7f1a9ff7aef6f4fd9ae6fd3943445e5d6",
+          "referenceHash": "969032b90784c72d5a3850e29fa34a8fcc4e7947131bf9fb8113905a6e52e821",
+          "face": {
+            "name": "Giant Growth",
+            "typeLine": "Instant",
+            "colors": ["G"],
+            "manaSymbols": ["G"],
+            "rulesText": "Target creature gains +3/+3 until end of turn.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Target creature gains +3/+3 until end of turn.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/3098580184556fbb5083a413602584069d2dc32ee73656c507b53975ca55cf67",
+            "artist": "Sandra Everingham",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "bfed1a95-bd67-4e16-a781-81866028af2f",
+          "name": "Craw Wurm",
+          "number": "190",
+          "inputHash": "85a846a7a92b92dc6c5f1ed6581a0b221689497a70c98331fa8489b02bc42233",
+          "referenceHash": "83a1bd8121fab037d7ee0d95a9535c735cf1154e6630548587bda0bfe2ae2d94",
+          "face": {
+            "name": "Craw Wurm",
+            "typeLine": "Creature — Wurm",
+            "colors": ["G"],
+            "manaSymbols": ["4", "G", "G"],
+            "rulesText": "The most terrifying thing about the Craw Wurm is probably the horrible crashing sound it makes as it speeds through the forest. This noise is so loud it echoes through the trees and seems to come from all directions at once.",
+            "rulesParagraphs": [
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "The most terrifying thing about the Craw Wurm is probably the horrible crashing sound it makes as it speeds through the forest. This noise is so loud it echoes through the trees and seems to come from all directions at once.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/ed0354515e144f10bdc98c24c0d064304924d3415dcc5cc05e59040d2fa4e817",
+            "artist": "Daniel Gelon",
+            "power": "6",
+            "toughness": "4",
+            "setCode": "lea",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "c4300d24-1cae-4dd5-be7e-38cc677cf5bd",
+          "name": "Sol Ring",
+          "number": "269",
+          "inputHash": "e81dea190ec4be305ed51a54c546b3d0e48bb451b30add69e4edba57a0c5d305",
+          "referenceHash": "f59b58072fdd28211818e0d9c9ede25adf93480ab0f3f6a812699d7c5271c395",
+          "face": {
+            "name": "Sol Ring",
+            "typeLine": "Artifact",
+            "colors": [],
+            "manaSymbols": ["1"],
+            "rulesText": "Add 2 colorless mana to your mana pool. Tapping this artifact can be played as an interrupt.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Add 2 colorless mana to your mana pool. Tapping this artifact can be played as an interrupt.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/8a45fe538045f79ca697ae62db747a864933e62e78af28005c8ee49f80774537",
+            "artist": "Mark Tedin",
+            "setCode": "lea",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        },
+        {
+          "id": "cac8c421-5b92-481d-b2de-560c0231ab58",
+          "name": "Jayemdae Tome",
+          "number": "254",
+          "inputHash": "f586052b84774eb88f2ff5f37b821fa4255bd9adbe55d1bfe8af03c770a7e3ae",
+          "referenceHash": "7f29a589339604b0350471c37ba9647f8106f659d813a2688f303f2bcb2c81b2",
+          "face": {
+            "name": "Jayemdae Tome",
+            "typeLine": "Artifact — Book",
+            "colors": [],
+            "manaSymbols": ["4"],
+            "rulesText": "{4}: You may draw one extra card.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "{4}: You may draw one extra card.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/c5b521140de21adf7e7194501c6298a2665e7cad580716c99e7735ac928f9846",
+            "artist": "Mark Tedin",
+            "setCode": "lea",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "black"
+          }
+        }
+      ]
+    },
+    {
+      "code": "2ed",
+      "captureHash": "d47bc41c174cf32da7878cfc524ff97ce1bb5f2ebc438b58c386ee7f5357e050",
+      "snapshotIdentity": "72fc0d5e553e3a3a598f123f2bda14894bee38e8c60c9bf1e005c52ab7b9935d",
+      "development": [],
+      "reserved": [
+        {
+          "id": "9404e779-2065-4c4f-95d1-6997c7fea156",
+          "name": "Benalish Hero",
+          "number": "4",
+          "inputHash": "76c0ab0b60e8f7de485f3b2139c11b4d082e449caf915e077ec66096cec4ac8a",
+          "referenceHash": "225f9e281adb4c2108419421f9682d33bcd3592ca9c57f63f9b311c363530aa6",
+          "face": {
+            "name": "Benalish Hero",
+            "typeLine": "Creature — Human Soldier",
+            "colors": ["W"],
+            "manaSymbols": ["W"],
+            "rulesText": "Bands\nBenalia has a complex caste system that changes with the lunar year. No matter what the season, the only caste that cannot be attained by either heredity or money is that of the hero.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Bands",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Benalia has a complex caste system that changes with the lunar year. No matter what the season, the only caste that cannot be attained by either heredity or money is that of the hero.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/c2d4a115dd552edcc47b9554edb5deae07883fb8d7bcf5de083133d34b0bf7ee",
+            "artist": "Douglas Shuler",
+            "power": "1",
+            "toughness": "1",
+            "setCode": "2ed",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "1941cf19-b1f6-4148-a1de-6d03531f2f1c",
+          "name": "Serra Angel",
+          "number": "40",
+          "inputHash": "fac29cda89a3565addb980065a80907c51152f9d39a59d8f44ded7c40f06624b",
+          "referenceHash": "bc24665f390b3d00037fbe994179985ab65ff96e44a7d9a1d1ce042ecf371417",
+          "face": {
+            "name": "Serra Angel",
+            "typeLine": "Creature — Angel",
+            "colors": ["W"],
+            "manaSymbols": ["3", "W", "W"],
+            "rulesText": "Flying\nDoes not tap when attacking.\nBorn with wings of light and a sword of faith, this heavenly incarnation embodies both fury and purity.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Does not tap when attacking.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Born with wings of light and a sword of faith, this heavenly incarnation embodies both fury and purity.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/0f15e378dee0c96e0967946cf64c66673d0924082746184385f39d615959acb3",
+            "artist": "Douglas Shuler",
+            "power": "4",
+            "toughness": "4",
+            "setCode": "2ed",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "7c666b4b-c4ff-40ca-9d16-c76aafebaa83",
+          "name": "Counterspell",
+          "number": "55",
+          "inputHash": "32707d23841fa1eb4b673769d3d8161e8683e68509464065c07001ef78cab00e",
+          "referenceHash": "1fe5612231183dbdd00c5b6f75fc317a30ff1f666126f8978d6b0360df600ce3",
+          "face": {
+            "name": "Counterspell",
+            "typeLine": "Instant",
+            "colors": ["U"],
+            "manaSymbols": ["U", "U"],
+            "rulesText": "Counters target spell as it is being cast.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Counters target spell as it is being cast.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/9d0fd21d717e0709e1569322865addcb6e655e0713c26fadfa8fd1cbf0f3e433",
+            "artist": "Mark Poole",
+            "setCode": "2ed",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "ef5b8140-a157-4c20-a428-fa7250ab34e1",
+          "name": "Air Elemental",
+          "number": "47",
+          "inputHash": "1820b7be9f5d61195a1085eabc43a3e860204bc73d5994e99487704168b3a2c8",
+          "referenceHash": "324c3c4d99962779b4bd6056c6cb2571e60d0868a5edb4396ed6600bd24c17e0",
+          "face": {
+            "name": "Air Elemental",
+            "typeLine": "Creature — Elemental",
+            "colors": ["U"],
+            "manaSymbols": ["3", "U", "U"],
+            "rulesText": "Flying\nThese spirits of the air are winsome and wild, and cannot be truly contained. Only marginally intelligent, they often substitute whimsy for strategy, delighting in mischief and mayhem.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "These spirits of the air are winsome and wild, and cannot be truly contained. Only marginally intelligent, they often substitute whimsy for strategy, delighting in mischief and mayhem.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/bd15f70b683fd59c994ee92a70de88f67fdcd12ec68eede65e3391a51a84f06b",
+            "artist": "Richard Thomas",
+            "power": "4",
+            "toughness": "4",
+            "setCode": "2ed",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "4eb88d79-048b-4f7c-9ca0-4d9066af805e",
+          "name": "Drudge Skeletons",
+          "number": "107",
+          "inputHash": "492381b5bc8bec29ac9b3bb551d06bed6bf607000e5c31113a403b4109940448",
+          "referenceHash": "5f1ccc449f9edb6c45a91262256dc28dc7000208cad1c2143e1fed2953957c38",
+          "face": {
+            "name": "Drudge Skeletons",
+            "typeLine": "Creature — Skeleton",
+            "colors": ["B"],
+            "manaSymbols": ["1", "B"],
+            "rulesText": "{B} Regenerates\nBones scattered around us joined to form misshapen bodies. We struck at them repeatedly—they fell, but soon formed again, with the same mocking look on their faceless skulls.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "{B} Regenerates",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "Bones scattered around us joined to form misshapen bodies. We struck at them repeatedly—they fell, but soon formed again, with the same mocking look on their faceless skulls.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/fe6d39ccab289f4722e3d29904a568dee0c9436df3b2ffd8cf96a3fb57378212",
+            "artist": "Sandra Everingham",
+            "power": "1",
+            "toughness": "1",
+            "setCode": "2ed",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "78694fa9-85dc-4671-87e9-a2bccdc9fcce",
+          "name": "Howl from Beyond",
+          "number": "112",
+          "inputHash": "2153dd7f5895763eaffd364d31c6a58cb3c22f7a55b6fe825bc37ef5808a0a39",
+          "referenceHash": "cbc8929d1a50f15a6b912ee94e5521276caaa2d40e77379b2ad010c4add319e6",
+          "face": {
+            "name": "Howl from Beyond",
+            "typeLine": "Instant",
+            "colors": ["B"],
+            "manaSymbols": ["X", "B"],
+            "rulesText": "Target creature gains +X/+0 until end of turn.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Target creature gains +X/+0 until end of turn.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/88da15bb64f293fa20c60858fd2b7839d2f59da9bfbd788e2d37f78d36c7eb24",
+            "artist": "Mark Poole",
+            "setCode": "2ed",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "cdb490bb-43fe-49ab-a094-438585677801",
+          "name": "Stone Rain",
+          "number": "178",
+          "inputHash": "32cc296dca809a37600a86080f94ae3eaba8cbc1b08a7a740e4a07ad26d99874",
+          "referenceHash": "d3aa4297bf767f288619c3f9ca5988576c798a9dbfd69364bd51bf7b81a533f7",
+          "face": {
+            "name": "Stone Rain",
+            "typeLine": "Sorcery",
+            "colors": ["R"],
+            "manaSymbols": ["2", "R"],
+            "rulesText": "Destroys any one land.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Destroys any one land.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/02700e787dcf02cb3d4c0944dab4e1d4d917e9a7eaa860c0b9aa0bc11653e530",
+            "artist": "Daniel Gelon",
+            "setCode": "2ed",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "7ad8ab3d-8a77-4fd3-8d5a-ac1e8a09e3bc",
+          "name": "Dragon Whelp",
+          "number": "142",
+          "inputHash": "16dadf3cbf68d5f073f90983933dc0e728d40abb014e759fc18f3cc749db5273",
+          "referenceHash": "a8b900fc0769b2d9115e75826497ad7b9c10898fa86b97c4ca9f36b01c5cb612",
+          "face": {
+            "name": "Dragon Whelp",
+            "typeLine": "Creature — Dragon",
+            "colors": ["R"],
+            "manaSymbols": ["2", "R", "R"],
+            "rulesText": "Flying\n{R} +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.\n\"O to be a dragon . . . of silkworm size or immense . . .\"\n—Marianne Moore, \"O to Be a Dragon\"",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Flying",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "{R} +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "\"O to be a dragon . . . of silkworm size or immense . . .\"",
+                    "italic": true
+                  }
+                ]
+              },
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "—Marianne Moore, \"O to Be a Dragon\"",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/ad332f9789ed695efdbbb20e6b23158c01ead20acd54bd2879700e72d1cd99d1",
+            "artist": "Amy Weber",
+            "power": "2",
+            "toughness": "3",
+            "setCode": "2ed",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "211ba440-1c29-403a-8dd7-aa5792d20a1a",
+          "name": "Giant Growth",
+          "number": "198",
+          "inputHash": "361b307047c4fdb015325c29b574369a9a9474ce9fab58c4f84cf0f9c1d4691b",
+          "referenceHash": "d14e941bbdfbe769506d52d84cfec9ae9058e76af5799044c5d770d5e89e1f9b",
+          "face": {
+            "name": "Giant Growth",
+            "typeLine": "Instant",
+            "colors": ["G"],
+            "manaSymbols": ["G"],
+            "rulesText": "Target creature gains +3/+3 until end of turn.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Target creature gains +3/+3 until end of turn.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/e4fd0a9b9b28937263683a8c4556877cd7601da9c0b6c277de2339d6126f40f0",
+            "artist": "Sandra Everingham",
+            "setCode": "2ed",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "a5bbaf11-6bf1-42a1-a8be-66bc47485a6c",
+          "name": "Craw Wurm",
+          "number": "191",
+          "inputHash": "6b6411d91a54c67f3b2267bb0a95cf7d1aeb2da2c2e7950be345944631b9831d",
+          "referenceHash": "02995039b337efc83d734f9579e659445f3c615e3c82fcdb71df863e085a0f49",
+          "face": {
+            "name": "Craw Wurm",
+            "typeLine": "Creature — Wurm",
+            "colors": ["G"],
+            "manaSymbols": ["4", "G", "G"],
+            "rulesText": "The most terrifying thing about the Craw Wurm is probably the horrible crashing sound it makes as it speeds through the forest. This noise is so loud it echoes through the trees and seems to come from all directions at once.",
+            "rulesParagraphs": [
+              {
+                "role": "flavor",
+                "runs": [
+                  {
+                    "text": "The most terrifying thing about the Craw Wurm is probably the horrible crashing sound it makes as it speeds through the forest. This noise is so loud it echoes through the trees and seems to come from all directions at once.",
+                    "italic": true
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/8e9ff6c806a0f3cb157a0d548ea151173d9313951f8db85ff1ef43a506241c66",
+            "artist": "Daniel Gelon",
+            "power": "6",
+            "toughness": "4",
+            "setCode": "2ed",
+            "rarity": "common",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "e07f656c-97b5-4147-821a-edbb49f34e19",
+          "name": "Sol Ring",
+          "number": "270",
+          "inputHash": "c92a76d42d925e8c0e5320594a7e25cca20af3211ec4ff97c4685cd7ccd6f84d",
+          "referenceHash": "68241faa9c986f2349401bd53c36725ed652c65bffc3b7b0ae73b58c1e502f2a",
+          "face": {
+            "name": "Sol Ring",
+            "typeLine": "Artifact",
+            "colors": [],
+            "manaSymbols": ["1"],
+            "rulesText": "Add 2 colorless mana to your mana pool. Tapping this artifact can be played as an interrupt.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Add 2 colorless mana to your mana pool. Tapping this artifact can be played as an interrupt.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/3befd07cd0c160a828609f285d5288fd6a319d7a75a9456f95383af1d09e9602",
+            "artist": "Mark Tedin",
+            "setCode": "2ed",
+            "rarity": "uncommon",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "e470c00b-57ac-48d4-b1e6-74b74872e620",
+          "name": "Jayemdae Tome",
+          "number": "255",
+          "inputHash": "4f2e9204accedfbd189fa022cfedce0ea77a60e76253e5dead64df0a2852140e",
+          "referenceHash": "67152e791f81338cdbe4b6d8c69791a85630a11868637e63a6a81efd7af91d8c",
+          "face": {
+            "name": "Jayemdae Tome",
+            "typeLine": "Artifact — Book",
+            "colors": [],
+            "manaSymbols": ["4"],
+            "rulesText": "{4}: You may draw one extra card.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "{4}: You may draw one extra card.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/0e427e9ecfe3a50a03538efc1d736156bd06e1ffbded519eae641d8e0ae8a7ad",
+            "artist": "Mark Tedin",
+            "setCode": "2ed",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        },
+        {
+          "id": "247a2ba4-aa5d-4970-b886-90196f684f80",
+          "name": "Force of Nature",
+          "number": "195",
+          "inputHash": "781c7d0f54e1fa83f4f8cd9acdd22117792d47f168ef9569632b8c0b21c27bc4",
+          "referenceHash": "46834d1565854660acff85eeb096a0d0b8d3730f057cf7983fbd9c9104d1e33c",
+          "face": {
+            "name": "Force of Nature",
+            "typeLine": "Creature — Elemental",
+            "colors": ["G"],
+            "manaSymbols": ["2", "G", "G", "G", "G"],
+            "rulesText": "Trample\nYou must pay {G}{G}{G}{G} during upkeep or Force of Nature does 8 damage to you. You may still attack with Force of Nature even if you failed to pay the upkeep.",
+            "rulesParagraphs": [
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "Trample",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "role": "rules",
+                "runs": [
+                  {
+                    "text": "You must pay {G}{G}{G}{G} during upkeep or Force of Nature does 8 damage to you. You may still attack with Force of Nature even if you failed to pay the upkeep.",
+                    "italic": false
+                  }
+                ]
+              }
+            ],
+            "illustration": "/__accuracy/object/f4170b8c572efa76da96f44ec4f9b0a8f0f671cfa10f71c6e7092c9ec785b94d",
+            "artist": "Douglas Shuler",
+            "power": "8",
+            "toughness": "8",
+            "setCode": "2ed",
+            "rarity": "rare",
+            "frameStyle": "retro",
+            "borderColor": "white"
+          }
+        }
+      ]
+    }
+  ],
+  "gate": "Correct printed symbols and disc presence, same inputs and unrelated pixels; positive median row F1 gain at both tiers in each set, at least 90% nonregressing within .02, and direct review of every reserved crop. Any larger regression needs an identified asset/source/measurement issue supported by visible evidence. Failed geometry transfer remains rejected, without tuning reserved cards.",
+  "candidateDesign": "Inspect development costs first, then bound a grid of common rightmost center, vertical center and pitch. Test the existing original sun glyph and retained SVGs without shadows. Fixed nominal region windows are declared before measurement."
+}
