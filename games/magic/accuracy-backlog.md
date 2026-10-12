@@ -295,7 +295,7 @@ modern Oracle subtypes.
 
 ## Planeswalker component follow-up
 
-The latest [70-card review](fixtures/accuracy/planeswalker-reviewed-components-plan.json)
+The latest [70-card review](fixtures/accuracy/planeswalker-type-shadow-plan.json)
 retains the existing assets. Paper clipping, colon identity, badge dimensions and
 row spacing are implemented; type-strip shape/position is still under review.
 

@@ -29,7 +29,7 @@ export function paintPlaneswalkerType(
   context.shadowColor = '#0009';
   context.shadowBlur = 1.4 * scale;
   context.shadowOffsetX = -1.2 * scale;
-  context.shadowOffsetY = 2 * scale;
+  context.shadowOffsetY = 2.5 * scale;
   context.fillStyle = '#191816';
   context.fill(outline);
   context.shadowColor = 'transparent';

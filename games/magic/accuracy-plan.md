@@ -1857,4 +1857,16 @@ overflow. The [M21/M20 follow-up](fixtures/accuracy/walker-type-lowered-developm
 and [M15/WAR follow-up](fixtures/accuracy/walker-type-lowered-set-transfer-measurement.json)
 retain the unchanged baseline and registration. Inspect type-strip F1 is now
 .466 and .465 respectively; the type/registration review flag remains open.
-The local comparison displays this latest version.
+
+The next [fractional-shadow follow-up](fixtures/accuracy/planeswalker-type-shadow-plan.json)
+adds another 1px downward shift and extends the downward shadow offset from 2px
+to 2.5px. Canvas preserves fractional offsets at each raster density. All 70
+captures retain identical inputs and ability layouts, with no measured overflow.
+Compared with the preceding follow-up, inspect type-strip F1 changes .466 → .460
+for M21/M20 and .465 → .472 for M15/WAR; table-tier F1 improves .440 → .453 and
+.433 → .460 respectively. The [development report](fixtures/accuracy/walker-type-shadow-development-measurement.json)
+and [transfer confirmation](fixtures/accuracy/walker-type-shadow-set-transfer-measurement.json)
+retain raw and registered scores. Individual results remain mixed: Ugin's
+registered type F1 improves .434 → .514 while Chandra's declines .453 → .386.
+Keep the independent outline/ink and registration review open. The local
+comparison displays this latest version.
