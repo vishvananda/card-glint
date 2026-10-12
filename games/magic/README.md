@@ -240,7 +240,20 @@ const visible = withCardWording(
 const recipe = magic.describe(visible, 'inspect');
 ```
 
-The optional fourth argument chooses `rulesAlignment: 'left' | 'original' | 'oracle'`.
+The optional fourth argument also accepts `symbolStyle: 'original' | 'modern'`.
+For example, `withCardWording(face, wordings, 'oracle', { symbolStyle: 'original' })`
+keeps Oracle wording and types while using the printing's supported historical
+symbols. It covers both header mana and inline symbols. Omission defaults to
+modern symbols with Oracle wording and original symbols with original wording.
+This choice is independent of centering. Before Revised, tapping was written
+out; Oracle `{T}` tokens on those printings use Revised's tilted T as the
+earliest-symbol fallback. Original written-out wording is unchanged. Revised
+uses the tilted T and Fourth through Seventh use the tilted-card mark where
+that era is supported.
+[Wizards' history of the tap symbol](https://magic.wizards.com/en/news/making-magic/25-random-things-about-magic-2009-02-16)
+describes those transitions.
+
+The fourth argument chooses `rulesAlignment: 'left' | 'original' | 'oracle'`.
 `left` forces left alignment. The other choices determine automatic centering
 from that wording, independently of which wording is displayed. The default is
 the displayed mode; requesting a missing alignment source throws. Explicit
@@ -261,7 +274,8 @@ The reference affects layout only; its words are never painted.
 
 The helper selects one face; apply it to each supplied child of a split card.
 Flat presentation inputs still work. Their optional `wordingMode` controls
-historical/modern symbols; omission preserves the existing set-based policy.
+the default symbol era; an explicit `symbolStyle` overrides it. Omitting both
+preserves the existing set-based policy.
 Oracle mode also disables automatic historical basic-land vocabulary and Fourth
 Edition stat notation. Modes are included in raster cache identity. The helper
 does not fetch or certify printing data, and never guesses historical subtypes

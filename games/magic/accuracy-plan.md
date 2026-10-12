@@ -1576,3 +1576,26 @@ them. Preserve geometry scores independently of color matching.
    Evaluate different supported ability counts separately; keep unsupported
    layouts and frame-asset defects explicit rather than masking them with text
    offsets.
+
+### Wording-independent symbols and preview coverage
+
+`symbolStyle` now selects original or modern glyphs independently of wording
+and centering. It applies to both mana costs and inline symbols, and participates
+in the raster cache key. Original-symbol Oracle text on Alpha, Beta, Unlimited,
+Arabian Nights and Antiquities uses Revised's tilted T when Oracle introduces a
+`{T}` token; original written-out tapping instructions are retained as text.
+The local review browser exposes this option without changing its original column.
+API, raster-region, package, browser, showcase and accuracy checks pass.
+
+The local browser now previews normal 2003-frame cards, including white-border
+9ED and black-border DDK/DPA, through the existing modern assets. Those previews
+are explicitly unvalidated; the accuracy corpus still excludes this frame until
+its geometry and assets receive their own study. BRB's pinned Keyrune SVG exists
+and decodes after a successful fetch. A local-browser fallback fetches and caches
+the official Scryfall set SVG if the pinned asset fails, with visible provenance.
+No browser code or downloaded assets are included in the package or showcase.
+
+Unlimited Samite Healer is another counterexample to trusting MTGJSON's
+`originalType`: the source says Creature – Human Cleric while the scan says
+Summon Cleric. A hash-bound partial type review corrects this printing without
+certifying its body wording. Do not infer historical subtypes from Oracle types.

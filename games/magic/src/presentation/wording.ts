@@ -29,7 +29,10 @@ export function withCardWording(
   face: RenderedCardInput,
   wordings: { oracle: CardWording; original?: CardWording },
   mode: 'oracle' | 'original' = 'oracle',
-  options: { rulesAlignment?: WordingAlignment } = {},
+  options: {
+    rulesAlignment?: WordingAlignment;
+    symbolStyle?: RenderedCardInput['symbolStyle'];
+  } = {},
 ): RenderedCardInput {
   const selected = wordings[mode];
   if (!selected) throw Error(`Missing ${mode} printing wording`);
@@ -53,5 +56,6 @@ export function withCardWording(
     creature: face.creature ?? profile.creature,
     legendary: face.legendary ?? profile.legendary,
     wordingMode: mode,
+    symbolStyle: options.symbolStyle ?? (mode === 'oracle' ? 'modern' : 'original'),
   };
 }

@@ -81,6 +81,23 @@ export const paintFourthMana: typeof paintMana = (c, symbol, x, y, size, images)
   paintHistoricMana(c, symbol, x, y, size, images);
 };
 
+/** Explicit original-symbol selection follows printing era. Early printings
+ * spelled out tapping; Oracle {T} tokens use the earliest glyph (Revised).
+ * See Wizards' "25 Random Things About Magic", item 16 (2009-02-16).
+ */
+const historicTapSets = new Set(
+  '5ed 6ed 7ed ice hml all chr mir vis wth tmp sth exo usg ulg uds mmq nem pcy inv pls apc ody tor jud ons lgn scg brb btd ath dkm s99 s00 por po2 ptk'.split(
+    ' ',
+  ),
+);
+export function originalRulesSymbols(setCode?: string | null): typeof paintMana {
+  const set = setCode?.toLowerCase() ?? '';
+  if (['3ed', 'leg', 'drk', 'fem'].includes(set)) return paintRevisedMana;
+  if (['lea', 'leb', '2ed', 'arn', 'atq'].includes(set)) return paintRevisedMana;
+  if (set === '4ed') return paintFourthMana;
+  return historicTapSets.has(set) ? paintHistoricMana : paintMana;
+}
+
 function paintTap(
   c: CanvasRenderingContext2D,
   x: number,

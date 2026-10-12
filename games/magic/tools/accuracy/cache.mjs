@@ -13,9 +13,14 @@ function checkUrl(url) {
     parsed.protocol !== 'https:' ||
     parsed.username ||
     parsed.password ||
-    !['api.scryfall.com', 'cards.scryfall.io', 'cdn.jsdelivr.net', 'mtgjson.com'].includes(
-      parsed.hostname,
-    ) ||
+    ![
+      'api.scryfall.com',
+      'cards.scryfall.io',
+      'svgs.scryfall.io',
+      'cdn.jsdelivr.net',
+      'mtgjson.com',
+    ].includes(parsed.hostname) ||
+    (parsed.hostname === 'svgs.scryfall.io' && !/^\/sets\/[a-z0-9]+\.svg$/.test(parsed.pathname)) ||
     (parsed.hostname === 'mtgjson.com' && !/^\/api\/v5\/[A-Z0-9]+\.json$/.test(parsed.pathname))
   )
     throw Error(`Unapproved accuracy asset host: ${url}`);

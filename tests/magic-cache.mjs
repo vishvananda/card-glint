@@ -23,6 +23,10 @@ try {
   assert.equal(requests, 1, 'Offline replay must not fetch');
   await assert.rejects(cachedFetch(url + '?missing', { offline: true }), /Offline cache miss/);
   assert.throws(() => cachedFetch('https://untrusted.example/image.png'), /host/);
+  const symbol = await cachedFetch('https://svgs.scryfall.io/sets/brb.svg?version=1');
+  assert.equal((await readObject(symbol)).toString(), 'original synthetic bytes');
+  assert.throws(() => cachedFetch('https://svgs.scryfall.io/unexpected.svg'), /host/);
+  assert.throws(() => cachedFetch('https://svgs.scryfall.io/sets/../unexpected.svg'), /host/);
   globalThis.fetch = async () =>
     new Response('<html>Error</html>', { headers: { 'Content-Type': 'text/html' } });
   await assert.rejects(cachedFetch(url, { refresh: true }), /Invalid asset response/);

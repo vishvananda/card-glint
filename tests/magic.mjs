@@ -91,6 +91,21 @@ assert.notEqual(
   magic.describe(oracleWording, 'inspect').color.key,
   'Alignment reference must invalidate the raster cache',
 );
+const oracleHistoric = withCardWording(originalFace, wordings, 'oracle', {
+  symbolStyle: 'original',
+});
+assert.equal(oracleHistoric.rulesText, wordings.oracle.rulesText);
+assert.equal(oracleHistoric.typeLine, wordings.oracle.typeLine);
+assert.equal(oracleHistoric.wordingMode, 'oracle');
+assert.equal(oracleHistoric.symbolStyle, 'original');
+assert.equal(oracleWording.symbolStyle, 'modern');
+assert.equal(originalWording.symbolStyle, 'original');
+assert.deepEqual(faceRects(oracleHistoric), faceRects(oracleWording));
+assert.notEqual(
+  magic.describe(oracleHistoric, 'inspect').color.key,
+  magic.describe(oracleWording, 'inspect').color.key,
+  'Changing symbol style without changing Oracle text must invalidate the face',
+);
 assert.equal(faceFrame(walker), 'planeswalker');
 assert.equal(
   faceFrame({ ...walker, rulesText: walker.rulesText + '\n0: Scry 1.' }),
@@ -666,6 +681,51 @@ try {
         disposed++;
       },
     });
+    const symbolFace = {
+      ...fixtures[3],
+      setCode: '3ed',
+      manaSymbols: ['W'],
+      rulesParagraphs: undefined,
+      rulesText: '{T}: Add {W}.',
+      wordingMode: 'oracle',
+      symbolStyle: 'modern',
+    };
+    const historicalFace = { ...symbolFace, symbolStyle: 'original' };
+    if (
+      JSON.stringify(retroTextLayout(ctx, symbolFace)) !==
+      JSON.stringify(retroTextLayout(ctx, historicalFace))
+    )
+      throw Error('Symbol selection changed Oracle text layout');
+    const symbolRasters = [];
+    for (const face of [symbolFace, historicalFace]) {
+      const canvas = await composeCardTexture(
+        { face, printingId: null, printedImage: null },
+        'inspect',
+        controller.signal,
+        { loadImages },
+      );
+      symbolRasters.push(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height));
+      canvas.width = canvas.height = 0;
+    }
+    const changedIn = ([x, y, w, h]) => {
+      for (let yy = Math.floor(y * 1.5); yy < Math.ceil((y + h) * 1.5); yy++)
+        for (let xx = Math.floor(x * 1.5); xx < Math.ceil((x + w) * 1.5); xx++) {
+          const n = (yy * symbolRasters[0].width + xx) * 4;
+          if (
+            [0, 1, 2, 3].some((k) => symbolRasters[0].data[n + k] !== symbolRasters[1].data[n + k])
+          )
+            return true;
+        }
+      return false;
+    };
+    if (
+      !changedIn([415, 26, 38, 40]) ||
+      !changedIn([65, 410, 355, 190]) ||
+      changedIn([35, 85, 380, 310])
+    )
+      throw Error(
+        'Historic symbol choice must change header and inline glyphs, retaining the frame and art',
+      );
     const beforeFailure = disposed;
     let rejectedOverflow = false;
     try {

@@ -32,7 +32,7 @@ import {
   retroStatsText,
   paintHistoricMana,
   paintRevisedMana,
-  paintFourthMana,
+  originalRulesSymbols,
   paintOutlinedRetroSet,
   paintRetroCredits,
 } from './retro-details.js';
@@ -103,13 +103,18 @@ export function paintRetroFace(
     );
   if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
-  const oracle = face.wordingMode === 'oracle';
+  const modernSymbols =
+    face.symbolStyle === 'modern' ||
+    (face.symbolStyle === undefined && face.wordingMode === 'oracle');
+  const originalSymbols =
+    face.symbolStyle === 'original' ||
+    (face.symbolStyle === undefined && face.wordingMode === 'original');
   const originalSun =
-    face.wordingMode === 'original' &&
+    originalSymbols &&
     ['lea', 'leb', '2ed', '3ed', '4ed'].includes(face.setCode?.toLowerCase() ?? '');
-  if (revised) paintRevisedCost(c, cost, images, oracle);
+  if (revised) paintRevisedCost(c, cost, images, modernSymbols);
   else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
-    paintEarlyCost(c, cost, images, oracle);
+    paintEarlyCost(c, cost, images, modernSymbols);
   else
     cost.forEach((s, i) =>
       (originalSun ? paintEarlyMana : paintMana)(
@@ -175,14 +180,12 @@ export function paintRetroFace(
         c,
         layout,
         images,
-        oracle
+        modernSymbols
           ? paintMana
-          : face.setCode?.toLowerCase() === '3ed'
-            ? paintRevisedMana
-            : originalSun
-              ? face.setCode?.toLowerCase() === '4ed'
-                ? paintFourthMana
-                : paintEarlyMana
+          : originalSymbols
+            ? originalRulesSymbols(face.setCode)
+            : face.setCode?.toLowerCase() === '3ed'
+              ? paintRevisedMana
               : details
                 ? paintHistoricMana
                 : paintMana,

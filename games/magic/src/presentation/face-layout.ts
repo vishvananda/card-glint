@@ -35,6 +35,9 @@ export interface RenderedCardInput extends CardProfileInput {
    * and disables automatic historical vocabulary in Oracle mode. Omitted keeps
    * the legacy set-based symbol policy. */
   wordingMode?: 'original' | 'oracle';
+  /** Select glyph era independently of wording; omitted follows wordingMode
+   * (or the legacy set policy when neither choice is supplied). */
+  symbolStyle?: 'original' | 'modern';
   illustration?: string | null;
   etchedIllustration?: string | null;
   credit?: string | null;
