@@ -52,6 +52,7 @@ export function paintRulesLayout(
   layout: RulesLayout,
   images: CanvasImages,
   paintSymbol: typeof paintMana = paintMana,
+  inkInsetEm = 0,
 ) {
   if (layout.overflow) throw Error('Magic rules text does not fit the available area.');
   context.save();
@@ -68,6 +69,22 @@ export function paintRulesLayout(
     context.fillRect(layout.x, y, layout.width, 0.6);
   }
   context.fillStyle = '#17140f';
+  // Optical weight adjustment belongs to face composition, never the draw loop.
+  // Remove a narrow outline from a separate text layer so frame texture survives.
+  const layer = inkInsetEm > 0 ? document.createElement('canvas') : null;
+  if (layer) {
+    layer.width = context.canvas.width;
+    layer.height = context.canvas.height;
+  }
+  const ink = layer ? layer.getContext('2d') : context;
+  if (!ink) throw Error('Missing rules text context');
+  if (layer) {
+    ink.setTransform(context.getTransform());
+    ink.textAlign = 'left';
+    ink.textBaseline = 'alphabetic';
+    ink.letterSpacing = '0px';
+    ink.fillStyle = '#17140f';
+  }
   for (const line of layout.lines) {
     let x = line.x ?? layout.x;
     for (const run of line.runs) {
@@ -81,11 +98,29 @@ export function paintRulesLayout(
           images,
         );
       else {
-        context.font = rulesFont(run.size, run.italic);
-        context.fillText(run.text, x, line.baseline);
+        ink.font = rulesFont(run.size, run.italic);
+        ink.fillText(run.text, x, line.baseline);
       }
       x += run.width;
     }
+  }
+  if (layer) {
+    ink.globalCompositeOperation = 'destination-out';
+    ink.lineJoin = 'round';
+    for (const line of layout.lines) {
+      let x = line.x ?? layout.x;
+      for (const run of line.runs) {
+        if (!run.symbol) {
+          ink.font = rulesFont(run.size, run.italic);
+          ink.lineWidth = run.size * inkInsetEm * 2;
+          ink.strokeText(run.text, x, line.baseline);
+        }
+        x += run.width;
+      }
+    }
+    context.resetTransform();
+    context.drawImage(layer, 0, 0);
+    layer.width = layer.height = 0;
   }
   context.restore();
 }

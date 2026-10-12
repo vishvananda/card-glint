@@ -38,6 +38,9 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   // complete text; retain the historical minimum for original comparisons.
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   const set = face.setCode?.toLowerCase();
+  // Alpha's printed ink stays inside the panel even when Oracle adds reminders.
+  // Keep the established optical center; shrink only blocks crossing this inset.
+  const verticalLimits = set === 'lea' ? ([428, 590] as const) : undefined;
   const early = ['lea', 'leb', '2ed'].includes(set ?? '');
   const revisedStyle = early || (set === '3ed' && retroFamily(face) === 'fourth');
   if (revisedStyle && !forcedLeft) {
@@ -49,6 +52,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
       height,
       early ? 32.5 : 27.5,
       minimum,
+      verticalLimits,
     );
     if (large) return large;
   }
@@ -95,6 +99,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
       // Insets belong to the frame, not paragraph count or italic styling.
       width: revisedStyle ? 346 : fourthBlock || centered ? 344 : width + (whiteExpansion ? 10 : 0),
       height: height - 8,
+      verticalLimits,
     },
     basic ? 24 : centered ? 25 : 22.5,
     minimum,
@@ -120,7 +125,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   return layoutRules(
     context,
     paragraphs,
-    { x: 70, y: y + 4, width: 346, height: height + 8 },
+    { x: 70, y: y + 4, width: 346, height: height + 8, verticalLimits },
     15.5,
     minimum,
     {

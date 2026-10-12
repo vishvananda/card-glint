@@ -189,6 +189,7 @@ export function paintRetroFace(
               : details
                 ? paintHistoricMana
                 : paintMana,
+        face.setCode?.toLowerCase() === 'lea' ? 0.012 : 0,
       );
   }
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';

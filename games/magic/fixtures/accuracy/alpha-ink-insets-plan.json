@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "rendererHash": "9ec9f8939bd205c366f4af95701d276ebacab7c821a7e0a52f0576693fd0e30e",
+  "sets": ["lea"],
+  "run": "alpha-ink-insets",
+  "baselines": {
+    "lea": "early-centered-corpus"
+  },
+  "reportName": "alpha-ink-insets-measurement.json",
+  "scope": "Alpha only. Freeze the shared optical inset at .012em, after comparing 0/.008/.012/.016 on eight development names; preserve source text and enforce ink within 428..590. No per-scan geometry or font weighting. Original Northern Paladin input changed and is excluded from paired scores.",
+  "alignment": {
+    "scope": "shared identity registration",
+    "perScan": false
+  },
+  "visualReview": {
+    "candidate": 0.012,
+    "reason": "Reduces the visibly heavy regular and italic strokes while retaining small counters and punctuation. Structural edge scores are nearly unchanged and are not evidence of corrected stroke weight.",
+    "fontAssetLimitation": "The existing static MPlantin outlines still differ from the scans; optical thinning is an approximation, not a replacement font."
+  }
+}

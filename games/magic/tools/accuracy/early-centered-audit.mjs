@@ -8,8 +8,12 @@ import { readJson, writeJson, outputRoot, fixtureRoot, hash } from './common.mjs
 
 // This audit consumes frozen captures; it neither renders nor registers a scan.
 const set = process.argv[2];
-const planFile = path.join(fixtureRoot, 'early-centered-corpus-plan.json');
+const planName = process.argv[3] ?? 'early-centered-corpus-plan.json';
+assert.match(planName, /^[a-z0-9-]+\.json$/);
+const planFile = path.join(fixtureRoot, planName);
 const plan = await readJson(planFile);
+const reportName = plan.reportName ?? 'early-centered-corpus-measurement.json';
+assert.match(reportName, /^[a-z0-9-]+\.json$/);
 assert.ok(plan.sets.includes(set), 'Expected an early-set code from the frozen plan');
 const base = path.join(outputRoot, set);
 const loadCapture = async (run) => {
@@ -159,7 +163,7 @@ const report = {
   },
   rows,
 };
-await writeJson(path.join(fixtureRoot, set, 'early-centered-corpus-measurement.json'), report);
+await writeJson(path.join(fixtureRoot, set, reportName), report);
 console.log(
   JSON.stringify(
     {

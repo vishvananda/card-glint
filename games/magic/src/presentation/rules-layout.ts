@@ -46,6 +46,8 @@ export function layoutRules(
     y: number;
     width: number;
     height: number;
+    /** Absolute ink limits can tighten a panel without moving its optical center. */
+    verticalLimits?: readonly [number, number];
     exclusions?: readonly (readonly [number, number, number, number])[];
   },
   maximumSize = 24,
@@ -149,10 +151,15 @@ export function layoutRules(
       const last = lines.at(-1)?.inkBounds;
       const inkHeight = last ? last[1] + last[3] - inkTop : 0;
       const spareHeight = Math.max(0, bounds.height - inkHeight);
-      const offset =
+      const preferredTop =
         bounds.y +
-        Math.max(0, Math.min(spareHeight, spareHeight / 2 + (typography.centerOffset ?? 0))) -
-        inkTop;
+        Math.max(0, Math.min(spareHeight, spareHeight / 2 + (typography.centerOffset ?? 0)));
+      const topLimit = Math.max(bounds.y, bounds.verticalLimits?.[0] ?? bounds.y);
+      const bottomLimit = Math.min(
+        bounds.y + bounds.height,
+        bounds.verticalLimits?.[1] ?? bounds.y + bounds.height,
+      );
+      const offset = Math.max(topLimit, Math.min(bottomLimit - inkHeight, preferredTop)) - inkTop;
       layout = {
         size,
         x: bounds.x,
@@ -160,7 +167,7 @@ export function layoutRules(
         width: bounds.width,
         height: inkHeight,
         overflow:
-          inkHeight > bounds.height + 0.01 ||
+          inkHeight > bottomLimit - topLimit + 0.01 ||
           lines.some((line) => line.width > bounds.width + 0.01),
         lines: lines.map((line) => ({
           ...line,

@@ -19,6 +19,7 @@ export function revisedLargeRules(
   height: number,
   size: number,
   minimum: number,
+  verticalLimits?: readonly [number, number],
 ) {
   const eligible = (p: RulesParagraph) =>
     p.role === 'rules' && p.runs.length > 0 && !textOf(p).includes('\n') && p.align === undefined;
@@ -49,5 +50,12 @@ export function revisedLargeRules(
   };
   const trial = layoutRules(context, align(reference), bounds, size, size, typography);
   if (trial.overflow || trial.lines.length > 5) return null;
-  return layoutRules(context, align(paragraphs), bounds, size, minimum, typography);
+  return layoutRules(
+    context,
+    align(paragraphs),
+    { ...bounds, verticalLimits },
+    size,
+    minimum,
+    typography,
+  );
 }

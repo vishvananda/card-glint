@@ -1622,3 +1622,28 @@ the three sets, and most remaining original text is imported rather than
 scan-reviewed. Independent OCR line-geometry checks remain pending. The capture
 renderer predates the independent-symbol option and the subsequent Alpha inset
 and weight investigation; its hashes preserve that boundary.
+
+### Alpha ink weight and minimum panel inset
+
+Alpha now constrains body ink to canonical y=428..590, preserving the existing
+optical center wherever the text already fits. This also applies to the dense
+fallback; complete Oracle reminders and flavor text shrink instead of occupying
+the panel margins. Benalish Hero fits at 13.5px with its full Oracle reminder and
+flavor passage. All 295 original-input Alpha cards render at both tiers with no
+fit failures or overflow reports.
+
+A .012em outline inset reduces the visible weight of the existing static MPlantin
+font on Alpha. Text is composed on a temporary transparent layer so thinning
+cannot erase frame texture or alter mana glyphs. It requires no pixel readback
+and runs only during cached face composition. Eight development examples were
+compared at 0/.008/.012/.016em. Structural edge scores barely respond to this
+small weight change; the choice rests on visual review and remains an optical
+approximation. The font asset still needs review for shape and weight fidelity.
+
+The frozen [plan](fixtures/accuracy/alpha-ink-insets-plan.json) and
+[per-card audit](fixtures/accuracy/lea/alpha-ink-insets-measurement.json) retain
+both tiers, declines, input hashes and limitations. Northern Paladin's corrected
+flavor attribution/type changes its input, so it is excluded from paired scores.
+Check, strict native/WASM Clippy, build, Magic, package, browser, showcase and
+accuracy tests pass. The local browser keeps option changes in the existing
+feed and pins the search header while scrolling; that browser remains local.

@@ -535,6 +535,26 @@ try {
         normalizeWords(pegasus.rulesParagraphs.flatMap((p) => p.runs.map((r) => r.text)).join(' '))
     )
       throw Error('Long Oracle reminder failed to fit or lost text');
+    const alphaDense = {
+      ...pegasus,
+      setCode: 'lea',
+      name: 'Dense Alpha wording',
+    };
+    const alphaDenseLayout = retroTextLayout(ctx, alphaDense);
+    if (
+      alphaDenseLayout.overflow ||
+      alphaDenseLayout.lines.some((line) => {
+        const [, top, , height] = line.inkBounds;
+        return top < 428 - 0.01 || top + height > 590 + 0.01;
+      }) ||
+      normalizeWords(
+        alphaDenseLayout.lines.map((l) => l.runs.map((r) => r.text).join('')).join(' '),
+      ) !==
+        normalizeWords(
+          alphaDense.rulesParagraphs.flatMap((p) => p.runs.map((r) => r.text)).join(' '),
+        )
+    )
+      throw Error('Dense Alpha wording crossed the panel inset or lost reminder/flavor text');
     const flyingPassage = [
       { role: 'rules', runs: [{ text: 'Flying' }] },
       {
