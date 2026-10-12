@@ -14,6 +14,7 @@ import {
   referenceIdentity,
   root,
   sourceHash,
+  studyFile,
   writeJson,
 } from './common.mjs';
 import { openBrowser } from './browser.mjs';
@@ -23,11 +24,11 @@ const opts = options();
 const snapshot = await readJson(path.join(cacheRoot, 'sets', opts.set + '.json'));
 let annotations = {};
 try {
-  annotations = (await readJson(path.join(fixtureRoot, opts.set, 'annotations.json'))).cards;
+  annotations = (await readJson(studyFile(opts, 'annotations'))).cards;
 } catch (error) {
   if (error.code !== 'ENOENT') throw error;
 }
-const cohorts = await readJson(path.join(fixtureRoot, opts.set, 'cohorts.json'));
+const cohorts = await readJson(studyFile(opts, 'cohorts'));
 const selected =
   opts.cohort === 'all'
     ? snapshot.entries
@@ -140,6 +141,13 @@ try {
             };
             if (tier === 'inspect' && api.ordinaryTextLayout && output.frame === 'normal')
               output.layout = api.ordinaryTextLayout(canvas.getContext('2d'), face);
+            if (tier === 'inspect' && oldBorder) {
+              const layout =
+                api.retroTextLayout ??
+                (await import('/games/magic/tools/accuracy/legacy-retro-layout.mjs'))
+                  .legacyRetroLayout;
+              output.layout = layout(canvas.getContext('2d'), face);
+            }
             canvas.width = canvas.height = 0;
           }
           return output;
@@ -190,6 +198,8 @@ try {
     schemaVersion: 1,
     set: opts.set,
     run: opts.run,
+    study: opts.study ?? null,
+    cohortHash: hash(JSON.stringify(cohorts)),
     createdAt: new Date().toISOString(),
     source,
     sourceDiffHash: hash(diff),

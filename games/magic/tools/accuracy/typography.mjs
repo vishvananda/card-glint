@@ -9,20 +9,21 @@ import {
   writeJson,
   hash,
   sourceHash,
+  studyFile,
 } from './common.mjs';
 import { normalize } from './pixels.mjs';
 import { typographyMetrics } from './typography-metrics.mjs';
 import { median } from './metrics.mjs';
 
 const opts = options();
-const fixtures = await readJson(path.join(fixtureRoot, opts.set, 'typography.json'));
+const fixtures = await readJson(studyFile(opts, 'typography'));
 const runRoot = path.join(outputRoot, opts.set, opts.run);
 const report = await readJson(path.join(runRoot, 'metrics.json'));
 const results = [];
 for (const card of report.results) {
   const target = fixtures.cards[card.id];
   if (!target) continue;
-  if (target.referenceHash !== card.images?.reference.sha256)
+  if (target.referenceHash !== card.images?.reference?.sha256 && !card.issue)
     throw Error(`Stale typography reference for ${card.name}`);
   if (card.issue || !card.layout) {
     results.push({ id: card.id, name: card.name, status: 'unavailable', issue: card.issue });

@@ -8,6 +8,7 @@ import {
   readJson,
   referenceIdentity,
   sourceHash,
+  studyFile,
   writeJson,
 } from './common.mjs';
 import { METRIC_VERSION } from './metrics.mjs';
@@ -25,7 +26,11 @@ if (profile.sourceSnapshot !== capture.snapshotIdentity)
 const referenceHash = capture.referenceIdentity ?? referenceIdentity(capture.results);
 if (profile.referenceIdentity !== referenceHash)
   throw Error('Alignment reference checksums differ; recalibrate explicitly.');
-const cohorts = await readJson(path.join(fixtureRoot, opts.set, 'cohorts.json'));
+const cohorts = await readJson(studyFile(opts, 'cohorts'));
+if (capture.study !== undefined && capture.study !== (opts.study ?? null))
+  throw Error('Capture belongs to a different study');
+if (capture.cohortHash && capture.cohortHash !== hash(JSON.stringify(cohorts)))
+  throw Error('Capture cohorts changed');
 const source = opts.limit ? capture.results.slice(0, opts.limit) : capture.results;
 const results = new Array(source.length),
   workers = [];
@@ -78,6 +83,7 @@ const report = {
   metricVersion: METRIC_VERSION,
   set: opts.set,
   run: opts.run,
+  study: opts.study ?? null,
   createdAt: new Date().toISOString(),
   snapshotIdentity: capture.snapshotIdentity,
   referenceIdentity: referenceHash,

@@ -1,9 +1,9 @@
 import path from 'node:path';
-import { options, outputRoot, fixtureRoot, readJson, writeJson, hash } from './common.mjs';
+import { options, outputRoot, studyFile, readJson, writeJson, hash } from './common.mjs';
 import { median, quantile } from './metrics.mjs';
 
 const opts = options();
-const plan = await readJson(path.join(fixtureRoot, opts.set, 'transfer-plan.json'));
+const plan = await readJson(studyFile(opts, 'transfer-plan'));
 const sourceRoot = path.join(outputRoot, plan.sourceSet);
 const targetRoot = path.join(outputRoot, opts.set);
 const load = async (root, run) => ({

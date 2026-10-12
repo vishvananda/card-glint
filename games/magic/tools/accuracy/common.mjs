@@ -11,6 +11,8 @@ export const outputRoot = path.join(root, 'test-results/magic-accuracy');
 export const fixtureRoot = path.join(root, 'games/magic/fixtures/accuracy');
 export const hash = (value) => createHash('sha256').update(value).digest('hex');
 export const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'));
+export const studyFile = (opts, name) =>
+  path.join(fixtureRoot, opts.set, `${name}${opts.study ? '-' + opts.study : ''}.json`);
 export const referenceIdentity = (entries) =>
   hash(
     JSON.stringify(
@@ -38,6 +40,7 @@ export function options(args = process.argv.slice(2)) {
     run: 'current',
     baseline: 'baseline-reviewed',
     cohort: 'all',
+    study: undefined,
     limit: undefined,
     refresh: false,
     offline: false,
@@ -53,6 +56,8 @@ export function options(args = process.argv.slice(2)) {
   }
   for (const key of ['set', 'run', 'baseline'])
     if (!/^[a-z0-9][a-z0-9_-]{0,50}$/.test(result[key])) throw Error(`Invalid ${key}`);
+  if (result.study !== undefined && !/^[a-z0-9][a-z0-9_-]{0,50}$/.test(result.study))
+    throw Error('Invalid study');
   if (result.limit !== undefined && (!Number.isInteger(result.limit) || result.limit < 1))
     throw Error('Limit must be a positive integer');
   if (result.refresh && result.offline) throw Error('Refresh and offline are mutually exclusive');
