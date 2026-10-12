@@ -203,9 +203,6 @@ export async function composeCardTexture(
       );
       return canvas;
     }
-    context.beginPath();
-    context.roundRect(0, 0, FACE_WIDTH, FACE_HEIGHT, FACE_CORNER_RADIUS * FACE_WIDTH);
-    context.clip();
     context.fillStyle = '#090806';
     context.fillRect(0, 0, FACE_WIDTH, FACE_HEIGHT);
     const plateUrl =
@@ -230,6 +227,7 @@ export async function composeCardTexture(
             plateUrl ? loaded.images.get(plateUrl) : undefined,
             input.statusLayout === 'inspect' || tier === 'inspect',
           );
+          roundCanvasSilhouette(context);
           return canvas;
         }
       } finally {
@@ -261,6 +259,7 @@ export async function composeCardTexture(
         plateUrl ? loaded.images.get(plateUrl) : undefined,
         input.statusLayout === 'inspect' || tier === 'inspect',
       );
+      roundCanvasSilhouette(context);
       return canvas;
     } finally {
       loaded.dispose();
@@ -269,6 +268,28 @@ export async function composeCardTexture(
     canvas.width = canvas.height = 0;
     throw error;
   }
+}
+
+/** Apply the silhouette after painting so a complex clip cannot alter interior antialiasing. */
+function roundCanvasSilhouette(context: CanvasRenderingContext2D) {
+  context.save();
+  context.setTransform(
+    context.canvas.width / FACE_WIDTH,
+    0,
+    0,
+    context.canvas.height / FACE_HEIGHT,
+    0,
+    0,
+  );
+  context.globalCompositeOperation = 'destination-in';
+  context.globalAlpha = 1;
+  context.shadowColor = 'transparent';
+  context.filter = 'none';
+  context.fillStyle = '#000';
+  context.beginPath();
+  context.roundRect(0, 0, FACE_WIDTH, FACE_HEIGHT, FACE_CORNER_RADIUS * FACE_WIDTH);
+  context.fill();
+  context.restore();
 }
 
 export function paintAssembledFace(

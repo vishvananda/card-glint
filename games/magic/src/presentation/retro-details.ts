@@ -6,8 +6,8 @@ export function retroPrintDetails(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   if (set !== 'mir' && set !== 'tmp') return null;
   return {
-    manaRight: 450,
-    manaTop: 33,
+    manaRight: 448,
+    manaTop: 33.5,
     manaSize: 23.4,
     manaGap: 1.7,
     setRight: 434,
