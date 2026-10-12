@@ -14,6 +14,10 @@ const sourceBefore = await load(sourceRoot, plan.sourceBaselineRun ?? 'current')
 const sourceAfter = await load(sourceRoot, plan.sourceRun ?? 'typography');
 const targetBefore = await load(targetRoot, opts.baseline);
 const targetAfter = await load(targetRoot, opts.run);
+if (plan.frozenRendererHash && targetAfter.structural.rendererHash !== plan.frozenRendererHash)
+  throw Error('Renderer changed after the typography policy freeze');
+if (plan.baselineRendererHash && targetBefore.structural.rendererHash !== plan.baselineRendererHash)
+  throw Error('Baseline renderer differs from the study plan');
 for (const key of ['rendererHash', 'fontStylesheetHash', 'browser', 'metricSource']) {
   if (
     sourceBefore.structural[key] !== targetBefore.structural[key] ||

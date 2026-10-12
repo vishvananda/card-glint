@@ -37,9 +37,14 @@ const fixture = async (set, file) =>
       'utf8',
     ),
   );
-for (const set of ['m21', 'm20']) {
-  const targets = await fixture(set, 'typography');
-  const annotations = await fixture(set, 'annotations');
+for (const [set, suffix] of [
+  ['m21', ''],
+  ['m20', ''],
+  ['mir', '-retro-type'],
+  ['tmp', '-retro-type'],
+]) {
+  const targets = await fixture(set, 'typography' + suffix);
+  const annotations = await fixture(set, 'annotations' + suffix);
   const corpus = await fixture(set, 'corpus');
   for (const [id, target] of Object.entries(targets.cards)) {
     const annotation = annotations.cards[id];
@@ -64,6 +69,8 @@ for (const set of ['m21', 'm20']) {
           y + h <= 680,
       );
   }
+  if (targets.alignmentHash)
+    assert.equal(targets.alignmentHash, hash(JSON.stringify(await fixture(set, 'alignment'))));
 }
 const m21Names = new Set((await fixture('m21', 'corpus')).entries.map((c) => c.name));
 const transfer = await fixture('m20', 'cohorts');
@@ -107,6 +114,21 @@ const mirNames = new Set((await fixture('mir', 'corpus')).entries.map((c) => c.n
 const tmpCohort = await fixture('tmp', 'cohorts');
 assert.equal(tmpCohort.calibration.length, 0);
 assert.ok(tmpCohort.selection.every((c) => !mirNames.has(c.name)));
+for (const set of ['mir', 'tmp']) {
+  const old = await fixture(set, 'cohorts');
+  const study = await fixture(set, 'cohorts-retro-type');
+  const corpus = await fixture(set, 'corpus');
+  const targets = await fixture(set, 'typography-retro-type');
+  assert.equal(study.heldOut.length, 8);
+  assert.ok(
+    study.heldOut.every((n) => !old.selection.some((c) => c.collectorNumber === n)),
+    'Fresh holdout was previously reviewed',
+  );
+  assert.equal(study.calibration.length, set === 'mir' ? 16 : 0);
+  for (const n of [...study.calibration, ...study.heldOut])
+    assert.ok(targets.cards[corpus.entries.find((c) => c.collectorNumber === n).id]);
+  if (set === 'tmp') assert.ok(study.selection.every((c) => !mirNames.has(c.name)));
+}
 console.log(
   'Typography metrics distinguish soft wrapping, forced paragraphs, content mismatch and line count.',
 );

@@ -83,7 +83,7 @@ export function typographyMetrics(target, card, image) {
   const bounds = renderedLineBounds(
     image,
     card.layout,
-    card.frame?.startsWith('retro-') ? [59, 413, 373, 188] : undefined,
+    card.frame?.startsWith('retro-') ? [59, 403, 373, 198] : undefined,
   );
   const expectedBounds = target.lines.map((l) => l.inkBounds);
   const used = new Set();
