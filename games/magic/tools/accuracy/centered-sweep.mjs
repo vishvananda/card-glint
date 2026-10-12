@@ -32,7 +32,15 @@ if (widthTrial && set !== '4ed') throw Error('The width trial is reserved for Fo
 const widthPlan = widthTrial
   ? await readJson(path.join(fixtureRoot, '4ed/centered-width-plan.json'))
   : null;
+const refined = process.argv[4] === 'refined';
+if (process.argv[4] && (!refined || !widthTrial)) throw Error('Unknown trial revision');
+const selectionPlan = refined ? widthPlan.refinement : widthPlan;
 const targets = (await readJson(path.join(fixtureRoot, '4ed/centered-text-targets.json'))).cards;
+if (refined)
+  Object.assign(
+    targets,
+    (await readJson(path.join(fixtureRoot, '4ed/centered-width-targets.json'))).cards,
+  );
 if (widthTrial && !transfer)
   for (const card of (
     await readJson(path.join(fixtureRoot, 'centered-transfer-review.json'))
@@ -46,15 +54,19 @@ const base = path.join(
 const out = path.join(
   outputRoot,
   set,
-  widthTrial ? `centered-${mode}` : transfer ? 'centered-transfer' : 'centered-study',
+  widthTrial
+    ? `centered-${mode}${refined ? '-refined' : ''}`
+    : transfer
+      ? 'centered-transfer'
+      : 'centered-study',
 );
 const capture = await readJson(path.join(base, 'metrics.json'));
 const snapshot = await readJson(path.join(cacheRoot, 'sets', `${set}.json`));
 const original = await readPrintingText(snapshot);
-const selected = widthPlan
+const selected = selectionPlan
   ? transfer
-    ? widthPlan.heldOut
-    : widthPlan.development
+    ? selectionPlan.heldOut
+    : selectionPlan.development
   : transfer
     ? plan.reserved[set].cards
     : plan.development;
@@ -78,7 +90,9 @@ const cards = selected.map((t) => {
   }
   return value;
 });
-const frozen = widthPlan?.frozenCandidate ?? plan.frozenCandidate;
+const frozen = refined
+  ? selectionPlan.candidate
+  : (widthPlan?.frozenCandidate ?? plan.frozenCandidate);
 const candidates =
   transfer || widthTrial
     ? [
@@ -247,6 +261,7 @@ await writeJson(path.join(out, 'sweep.json'), {
   set,
   transfer,
   mode,
+  refined,
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
   experimentHash: await sourceHash(new URL('.', import.meta.url), /^centered.*\.mjs$/),
   alignmentHash: capture.alignmentHash,

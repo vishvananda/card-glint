@@ -1,0 +1,863 @@
+{
+  "schemaVersion": 1,
+  "reservationCommit": "d8de96d",
+  "candidateFreezeCommit": "187cfdb",
+  "rendererHash": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+  "experimentHash": "22b12a6b2327dbb8cfe8671e111703bbc6158c8523280c5cb0f3f311fea75d94",
+  "alignmentHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+  "summary": [
+    {
+      "id": "s25-w340-y406.556",
+      "size": 25,
+      "width": 340,
+      "y": 406.556,
+      "medianF1": 0.648828214161655,
+      "gains": 11,
+      "regressions": []
+    },
+    {
+      "id": "control",
+      "medianF1": 0.34144368934674346,
+      "gains": 0,
+      "regressions": []
+    }
+  ],
+  "decision": "340px candidate rejected: Fear acquires a fourth line despite 11 gains over .02 and no numerical regression over .02. All 12 now exposed development evidence.",
+  "results": [
+    {
+      "id": "e9c54ffe-2479-4178-a5dc-dca7b564efce",
+      "name": "Death Ward",
+      "number": "21",
+      "inputHash": "38c4c0dca29f2127704d2b8fd5278682834347fd36519a5cc9c82b557880d896",
+      "face": {
+        "name": "Death Ward",
+        "typeLine": "Instant",
+        "colors": ["W"],
+        "manaSymbols": ["W"],
+        "rulesText": "Regenerate target creature.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Regenerate target creature.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/e9b670009794cec90a00fbf02f0aee7cf52e8bcb11b7b41860808710ffa1642b",
+        "artist": "Mark Poole",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "d7e4dd34c35c46e8af99cd4241811b18aec7c539fc6e762f1826eeeea09a935d",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.579264921501145,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 1,
+            "actualLines": 1,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "21.control.png",
+          "sha256": "c3c2b25456fde772cfbbca51c6ed4980d1393131007a8d1a3ba475f0a06db51d",
+          "size": 22.5,
+          "lines": ["Regenerate target creature."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.6324317550328277,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 1,
+            "actualLines": 1,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "21.s25-w340-y406.556.png",
+          "sha256": "8b1447e48b3033fa6a7a00133b47c2bdfcfb953cfeb7fbb1659d7e21a88c1392",
+          "size": 25,
+          "lines": ["Regenerate target creature."]
+        }
+      ]
+    },
+    {
+      "id": "afd08b3b-196e-43a5-9318-9dae9edc6d12",
+      "name": "Healing Salve",
+      "number": "28",
+      "inputHash": "fefa8ac66d8c8015111c68090bedf38d558209f4d398f40f813cee2cb456fe38",
+      "face": {
+        "name": "Healing Salve",
+        "typeLine": "Instant",
+        "colors": ["W"],
+        "manaSymbols": ["W"],
+        "rulesText": "Give target player 3 life, or prevent up to 3 damage to any creature or player.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Give target player 3 life, or prevent up to 3 damage to any creature or player.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/9de153f1e2463f9532488d2228d6db787e7b033114ebba4668a1a8ceb9e138da",
+        "artist": "Dan Frazier",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "434d7f6c63320e0b39c95fb63517345e377b18eafe9760ba50b816ef4a1c5088",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.5714821576329641,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "28.control.png",
+          "sha256": "00b6841b4b009919a8d0423e78a81d4826fda4b3ecd9ba6715a77416a9195659",
+          "size": 22.5,
+          "lines": [
+            "Give target player 3 life, or prevent",
+            "up to 3 damage to any creature or",
+            "player."
+          ]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.74056365593539,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "28.s25-w340-y406.556.png",
+          "sha256": "be25c10e62a38428124b9ba4814b374219c6c7ff6316acb3efe679c8bab50d45",
+          "size": 25,
+          "lines": [
+            "Give target player 3 life,",
+            "or prevent up to 3 damage",
+            "to any creature or player."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f512addb-5888-49f3-985b-53cc11831e5e",
+      "name": "Giant Tortoise",
+      "number": "76",
+      "inputHash": "626fdfefd19c03fefb6f820edec65f4624af6cf548d90dcc38a7274f2a599190",
+      "face": {
+        "name": "Giant Tortoise",
+        "typeLine": "Creature — Turtle",
+        "colors": ["U"],
+        "manaSymbols": ["1", "U"],
+        "rulesText": "Giant Tortoise gets +0/+3 while untapped.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Giant Tortoise gets +0/+3 while untapped.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/9ce98890ac4eb31ad5cfd747a6f1b4a0f15fb743885edcb94fa0ec7360d8dc93",
+        "artist": "Kaja Foglio",
+        "power": "1",
+        "toughness": "1",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "606ca4bc8faf2afa18812ce2afc703cb7fde39dd5c83e34ad628b94ca0f543a0",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.35712500576306483,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "76.control.png",
+          "sha256": "896409179d26ec6668a73cc76fd7930d02042c708b12726aa2c0d68e9e533203",
+          "size": 22.5,
+          "lines": ["Giant Tortoise gets +0/+3 while", "untapped."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.7239643841898609,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "76.s25-w340-y406.556.png",
+          "sha256": "a5c44181e49ea2586e1932a224be6cdf44ac71d39a444793942cab3d6f0f033c",
+          "size": 25,
+          "lines": ["Giant Tortoise gets", "+0/+3 while untapped."]
+        }
+      ]
+    },
+    {
+      "id": "f3d29fed-248d-4547-9455-3d69b1f2787d",
+      "name": "Stasis",
+      "number": "104",
+      "inputHash": "f11ee8dd90202c559bfca17fa95d7488cb2883cf418345b9306c598099ee5492",
+      "face": {
+        "name": "Stasis",
+        "typeLine": "Enchantment",
+        "colors": ["U"],
+        "manaSymbols": ["1", "U"],
+        "rulesText": "Players do not get an untap phase. During your upkeep, pay {U} or destroy Stasis.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Players do not get an untap phase. During your upkeep, pay {U} or destroy Stasis.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/d16c3538d2a772e5faecf318482426f8018b8113fdcf80a2e54bc06fbd649b0b",
+        "artist": "Fay Jones",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "5c3958029a1cceb2145ae18adbd02e4e0a2b903b4c541b05da6e1e892f606c7c",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.3257623729304221,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "104.control.png",
+          "sha256": "c1866f5b42afa3ad8774f31ac4df2ae2fdf4b917a82eb2b8a83c7c23f83a75d2",
+          "size": 22.5,
+          "lines": [
+            "Players do not get an untap phase.",
+            "During your upkeep, pay {U} or",
+            "destroy Stasis."
+          ]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.6652246732904825,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "104.s25-w340-y406.556.png",
+          "sha256": "dab8ef6cfe4f0ab91dd6940dd2e99633ba503400ed256cd39b5508a8342bb134",
+          "size": 25,
+          "lines": [
+            "Players do not get an untap",
+            "phase. During your upkeep,",
+            "pay {U} or destroy Stasis."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5cbca45f-7b08-408b-9445-e3f2b9563f1b",
+      "name": "Evil Presence",
+      "number": "136",
+      "inputHash": "8685f1c996fea0b0cf5a679da7c0195b8594e0d4994b43ec504630beff20180e",
+      "face": {
+        "name": "Evil Presence",
+        "typeLine": "Enchantment — Aura",
+        "colors": ["B"],
+        "manaSymbols": ["B"],
+        "rulesText": "Target land becomes a basic swamp.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Target land becomes a basic swamp.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/40acadddc252484091c8a814094a399e2abc858063efb2355673047cc8960106",
+        "artist": "Sandra Everingham",
+        "setCode": "4ed",
+        "rarity": "uncommon",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "a6ef8a7236495b74c9298757a4e3399d1f754f656917af22f3587c279736831b",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.41549164298981417,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 1,
+            "lineCountError": -1,
+            "exactWrapping": false
+          },
+          "file": "136.control.png",
+          "sha256": "f0207e5692dc76210cdebff471f156ab6ea3be905a0b450466e8c2d0f828d073",
+          "size": 22.5,
+          "lines": ["Target land becomes a basic swamp."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.7175997416032106,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "136.s25-w340-y406.556.png",
+          "sha256": "a3cb5b66bd7a7f238cd44223928277aa4e5a210bef1d7193b450bd5a81f96f92",
+          "size": 25,
+          "lines": ["Target land becomes", "a basic swamp."]
+        }
+      ]
+    },
+    {
+      "id": "126c1b02-01bd-4b70-9293-a89173b4cd32",
+      "name": "Fear",
+      "number": "137",
+      "inputHash": "a9131159931f1069a33f4ed4cef1e8cf2aecc0561be079a99d530c9361e28be5",
+      "face": {
+        "name": "Fear",
+        "typeLine": "Enchantment — Aura",
+        "colors": ["B"],
+        "manaSymbols": ["B", "B"],
+        "rulesText": "Target creature cannot be blocked except by black creatures and artifact creatures.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Target creature cannot be blocked except by black creatures and artifact creatures.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/5d7b0d43f22742325b1d48af0a050399d0da44d26c8a9251118f914cdee43a72",
+        "artist": "Mark Poole",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "c1a0ef2311fa7d6ddd5367ea84337077d715c50253d673a9defc4b24522514b8",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.3135470813211595,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "137.control.png",
+          "sha256": "aac13c5d7c1c9370ed73bfec63033aa6a711ec191371ae04aebd509cb92f9c0f",
+          "size": 22.5,
+          "lines": [
+            "Target creature cannot be blocked",
+            "except by black creatures and artifact",
+            "creatures."
+          ]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.2962383474948546,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 4,
+            "lineCountError": 1,
+            "exactWrapping": false
+          },
+          "file": "137.s25-w340-y406.556.png",
+          "sha256": "9140bcac0bce4eb7e27a8b7202dce71e9a493c1063394f56f4ef48f1723dbc4e",
+          "size": 25,
+          "lines": [
+            "Target creature cannot",
+            "be blocked except by",
+            "black creatures and",
+            "artifact creatures."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bbd44196-aa28-4143-872d-592c6fc175a9",
+      "name": "Shatter",
+      "number": "219",
+      "inputHash": "936880469051b0468e12271bc8d202ea0c42f14289be1f277be063e70549eeab",
+      "face": {
+        "name": "Shatter",
+        "typeLine": "Instant",
+        "colors": ["R"],
+        "manaSymbols": ["1", "R"],
+        "rulesText": "Destroy target artifact.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Destroy target artifact.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/37150f0e46dda9983bc3960e443658482bd2e5e61552614f46418655129e398e",
+        "artist": "Amy Weber",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "f63856bdbff8e3e653b90dd3fcf246a320696de553e2039c37fb9055f0f87b2a",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.2519253709977573,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 1,
+            "actualLines": 1,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "219.control.png",
+          "sha256": "a3bf45a8f9b6cab709db05c4c1e942b8467ac4b4823303953dbcb4368dd77c14",
+          "size": 22.5,
+          "lines": ["Destroy target artifact."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.5597664463234961,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 1,
+            "actualLines": 1,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "219.s25-w340-y406.556.png",
+          "sha256": "0cce4ede1569ab7fe91d602b1200534ce117155da6e03d094a015cb3d810be47",
+          "size": 25,
+          "lines": ["Destroy target artifact."]
+        }
+      ]
+    },
+    {
+      "id": "19ec03ce-a8a3-42c3-a895-21cce1657411",
+      "name": "Earthquake",
+      "number": "189",
+      "inputHash": "d9a67d3b0e9a607dd9d5e6d26349f366328c7e4e0dce633b90dff272cd0e9d51",
+      "face": {
+        "name": "Earthquake",
+        "typeLine": "Sorcery",
+        "colors": ["R"],
+        "manaSymbols": ["X", "R"],
+        "rulesText": "Earthquake deals X damage to each player and each creature without flying.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Earthquake deals X damage to each player and each creature without flying.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/beb1eb6de5c79d31e4b6428d9e44838d5f01867101da38387164e7d5e4b4c412",
+        "artist": "Dan Frazier",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "6b00ee4b23bf34c39c9260250b4629a15159c5c739bc1af83a8511966c40be8e",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.18533399960854507,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "189.control.png",
+          "sha256": "5f291979af557d7f97fd95f7f80b9f271f6ee9bb53686572297b86bdb6752129",
+          "size": 22.5,
+          "lines": [
+            "Earthquake deals X damage to each",
+            "player and each creature without",
+            "flying."
+          ]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.6869751694576278,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "189.s25-w340-y406.556.png",
+          "sha256": "0507f40f7477940423fd927a8a5e10dfbaf428fbf6404572ad338a0467764bf6",
+          "size": 25,
+          "lines": [
+            "Earthquake deals X damage",
+            "to each player and each",
+            "creature without flying."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1959de7-e945-438c-a90a-158e21c4d5bf",
+      "name": "Fog",
+      "number": "244",
+      "inputHash": "7cd06351a18c96899ff9a3e31f8cf6bc510486919de0ef3b56d6686c9db23207",
+      "face": {
+        "name": "Fog",
+        "typeLine": "Instant",
+        "colors": ["G"],
+        "manaSymbols": ["G"],
+        "rulesText": "No creatures deal damage in combat this turn.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "No creatures deal damage in combat this turn.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/3201d6898b613a4bc770e784bf87b6b170183e2031cfc24611fc4a5cc5842e3f",
+        "artist": "Jesper Myrfors",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "d7e0adeb026d4159be4e7b30b81ce5ee2dc5ad87c5bb77562f3355504f1122a0",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.42906859366085,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "244.control.png",
+          "sha256": "7ab96a4287babb7f813255f6f681201d5de7d407d43db1e7e520cf5b7d908c23",
+          "size": 22.5,
+          "lines": ["No creatures deal damage in combat", "this turn."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.6888032101927464,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "244.s25-w340-y406.556.png",
+          "sha256": "782dad93bce00d545d28271d05dd3b5539377d4a9ac8799718c8d9263482f2e6",
+          "size": 25,
+          "lines": ["No creatures deal damage", "in combat this turn."]
+        }
+      ]
+    },
+    {
+      "id": "e1ca1cc3-e588-4ef7-b846-d5dba3c875a0",
+      "name": "Lifeforce",
+      "number": "257",
+      "inputHash": "3e364258f18d035ed49c198b5afd3f71b0479d377503b50a03d8309765a35b0b",
+      "face": {
+        "name": "Lifeforce",
+        "typeLine": "Enchantment",
+        "colors": ["G"],
+        "manaSymbols": ["G", "G"],
+        "rulesText": "{G}{G}: Counter target black spell. Play this ability as an interrupt.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "{G}{G}: Counter target black spell. Play this ability as an interrupt.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/f500b51b2d6badbbe6f208c180b2f686e231d8526140e212da19ba1d72033a96",
+        "artist": "Dameon Willich",
+        "setCode": "4ed",
+        "rarity": "uncommon",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "bb0b674bfb02c954cab0bf8f92ef54f6895d170feadc157cb4e087299bd4bcf0",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.5060038546704271,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 2,
+            "lineCountError": -1,
+            "exactWrapping": false
+          },
+          "file": "257.control.png",
+          "sha256": "4a345b0c872baef6e25140839b86f20c6c23f4a7dded28cf7d8f54335cc39885",
+          "size": 22.5,
+          "lines": ["{G}{G}: Counter target black spell. Play", "this ability as an interrupt."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.5591597676010036,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "257.s25-w340-y406.556.png",
+          "sha256": "c250ca4adc7513b982eb6ad185ca54dd85a30092120db73c532006276583c6e8",
+          "size": 25,
+          "lines": ["{G}{G}: Counter target", "black spell. Play this", "ability as an interrupt."]
+        }
+      ]
+    },
+    {
+      "id": "673c0a08-1aaf-4976-8eea-c93a9f9486fa",
+      "name": "Helm of Chatzuk",
+      "number": "324",
+      "inputHash": "5016c126c7e8ea9b286e0a3380e1681aa4a86b8d00ebfab944b88b54bb7b1500",
+      "face": {
+        "name": "Helm of Chatzuk",
+        "typeLine": "Artifact",
+        "colors": [],
+        "manaSymbols": ["1"],
+        "rulesText": "{1}, {T}: Target creature gains banding until end of turn.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "{1}, {T}: Target creature gains banding until end of turn.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/1f0417c277a7ff8f7d39a146dea20640eb61f7a531feaad3994361fc55dadce7",
+        "artist": "Mark Tedin",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "62a37ef702361bf95b00edf2272b1861d9a67106c68c3c70fd6015682c163253",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.3043624070265506,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "324.control.png",
+          "sha256": "cb0a66e97c180911ef79c485de313cbe161e056de70928f0bd0851fb4a57db65",
+          "size": 22.5,
+          "lines": ["{1}, {T}: Target creature gains banding", "until end of turn."]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.6022000830032138,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "324.s25-w340-y406.556.png",
+          "sha256": "aff39daa912c0726b57b2dd976d64ac9432b812d8e00b17bee9980ce12eb5000",
+          "size": 25,
+          "lines": ["{1}, {T}: Target creature gains", "banding until end of turn."]
+        }
+      ]
+    },
+    {
+      "id": "f9d01a2e-2687-4b37-aed6-63202cd81231",
+      "name": "The Hive",
+      "number": "351",
+      "inputHash": "9b15de3beeb617e974e07805caefaae8e6be5b85222cb0bcc020dffe34943589",
+      "face": {
+        "name": "The Hive",
+        "typeLine": "Artifact",
+        "colors": [],
+        "manaSymbols": ["5"],
+        "rulesText": "5, {T}: Put a Wasp token into play. Treat this token as a 1/1 artifact creature with flying.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "5, {T}: Put a Wasp token into play. Treat this token as a 1/1 artifact creature with flying.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/33bcd9d1b6620f396c176add4f0300f9f98472f747ce884a34439ce2510c7fb3",
+        "artist": "Sandra Everingham",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "6189e3d9179479a8e70f59eed07e82cd017ec4d897325e7984e6ecaf624a7b4e",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.2951926634276376,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "351.control.png",
+          "sha256": "fb528e48174921cd48a3f4ded54633dc04a5b8a47eda7bea78a985efd0f754d8",
+          "size": 22.5,
+          "lines": [
+            "5, {T}: Put a Wasp token into play.",
+            "Treat this token as a 1/1 artifact",
+            "creature with flying."
+          ]
+        },
+        {
+          "id": "s25-w340-y406.556",
+          "edgeF1": 0.5367911651569673,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "351.s25-w340-y406.556.png",
+          "sha256": "7898ad5931ca6f688341c2f0586940f6dfac1ee58d96e270ab14373ecf46de47",
+          "size": 25,
+          "lines": [
+            "5, {T}: Put a Wasp token into",
+            "play. Treat this token as a 1/1",
+            "artifact creature with flying."
+          ]
+        }
+      ]
+    }
+  ]
+}
