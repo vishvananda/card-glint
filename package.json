@@ -18,7 +18,7 @@
     "media:showcase": "node scripts/showcase-media.mjs",
     "test:showcase": "node tests/showcase.mjs",
     "test:magic": "node tests/magic.mjs",
-    "test:magic-accuracy": "node tests/magic-accuracy.mjs && node tests/magic-cache.mjs && node tests/magic-typography.mjs",
+    "test:magic-accuracy": "node tests/magic-accuracy.mjs && node tests/magic-cache.mjs && node tests/magic-typography.mjs && node tests/magic-components.mjs",
     "magic:reference:fetch": "node games/magic/tools/accuracy/fetch.mjs",
     "magic:reference:render": "node games/magic/tools/accuracy/render.mjs",
     "magic:reference:calibrate": "node games/magic/tools/accuracy/calibrate.mjs",
@@ -41,7 +41,8 @@
     "test:overlay-foil": "node tests/overlay-foil.mjs",
     "test:kernels": "node tests/kernels.mjs",
     "magic:reference:survey": "node games/magic/tools/accuracy/survey.mjs",
-    "magic:reference:examples": "node games/magic/tools/accuracy/examples.mjs"
+    "magic:reference:examples": "node games/magic/tools/accuracy/examples.mjs",
+    "magic:reference:details": "node games/magic/tools/accuracy/details.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

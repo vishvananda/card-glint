@@ -1,0 +1,2688 @@
+{
+  "schemaVersion": 1,
+  "scope": "printed-details-development",
+  "baselineCommit": "40a3bbd",
+  "rendererCommit": "ff29ccd",
+  "rendererHashes": [
+    "72fa9cd17489763b0dd8752fb4ea103a710535762863a91ee7592477476584ee",
+    "53e4df745083c35839c8876f8ba904a3a2e7f57aa415004eb2648c68b0830840"
+  ],
+  "browser": "148.0.7778.96",
+  "metricSource": "5db61886bb9150b6ffbb2462bf2371119454875345bcc8ff0b9828928da9275a",
+  "fontStylesheetHash": "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12",
+  "note": "40 previously reviewed cards. Component scores exclude three existing Mirage alignment flags. No fresh holdouts. Full-set diagnostics recorded separately. F1 is not percent accuracy.",
+  "timingScope": "CPU decoding, fixed-region offset/landmark analysis and overlay encoding; no Chromium or GPU work. Concurrent with full-set comparisons, not isolated benchmarks.",
+  "modernParity": {
+    "cards": 8,
+    "tiers": 2,
+    "rendererHashes": [
+      "72fa9cd17489763b0dd8752fb4ea103a710535762863a91ee7592477476584ee",
+      "53e4df745083c35839c8876f8ba904a3a2e7f57aa415004eb2648c68b0830840"
+    ],
+    "changedInterior": 0,
+    "changedCorners": 15776
+  },
+  "sets": [
+    {
+      "set": "mir",
+      "attempted": 24,
+      "eligible": 350,
+      "alignmentExcluded": 3,
+      "referenceIdentity": "e6563892a1eab6cd9d4d1404a465ac08cc85c59bbe417613163ef70c78136829",
+      "alignmentHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
+      "annotationHash": "4a5c25b2d0fd38ac01e0a73c05a1f50d2a316b8182faf0f5d746d468e7eb3cb4",
+      "diagnosticSource": "0db25aec38a20b7a52b1698ec8734ba83ace3c16613cdef0c993514dc1f1697a",
+      "detailsHash": "17f2df3ddfa2a190f700f0ad6257607ef2fe72ef51455a68f1459af1af1d8c15",
+      "seconds": 15.697653807,
+      "summary": {
+        "mana": {
+          "count": 21,
+          "before": 0.4948051229783434,
+          "after": 0.7858107647179208,
+          "improved": 21,
+          "regressed": 0,
+          "afterFlags": {
+            "close": 21
+          },
+          "beforeOffset": [1, 0],
+          "afterOffset": [0, 0]
+        },
+        "set-outline": {
+          "count": 21,
+          "before": 0.4373018160853272,
+          "after": 0.728706236744229,
+          "improved": 18,
+          "regressed": 2,
+          "afterFlags": {
+            "ambiguous": 3,
+            "placement": 2,
+            "shape-or-content": 2,
+            "close": 14
+          },
+          "beforeOffset": [-1, 0],
+          "afterOffset": [1, 0]
+        },
+        "artist": {
+          "count": 21,
+          "before": 0.2833607907742998,
+          "after": 0.5886328125885829,
+          "improved": 21,
+          "regressed": 0,
+          "afterFlags": {
+            "shape-or-content": 6,
+            "ambiguous": 13,
+            "placement": 2
+          },
+          "beforeOffset": [-1, -1],
+          "afterOffset": [-1, -1]
+        },
+        "copyright": {
+          "count": 21,
+          "before": 0.1982772067871813,
+          "after": 0.8148614168310573,
+          "improved": 20,
+          "regressed": 1,
+          "afterFlags": {
+            "close": 6,
+            "ambiguous": 15
+          },
+          "beforeOffset": [1, 1],
+          "afterOffset": [1, -1]
+        },
+        "stats": {
+          "count": 11,
+          "before": 0.5784789888081089,
+          "after": 0.5810767009458704,
+          "improved": 4,
+          "regressed": 1,
+          "afterFlags": {
+            "ambiguous": 3,
+            "shape-or-content": 1,
+            "placement": 6,
+            "close": 1
+          },
+          "beforeOffset": [-2, 1],
+          "afterOffset": [-2, 1]
+        },
+        "tap-layout-window": {
+          "count": 2,
+          "before": 0.45906709178128435,
+          "after": 0.5086274896470124,
+          "improved": 2,
+          "regressed": 0,
+          "afterFlags": {
+            "shape-or-content": 1,
+            "placement": 1
+          },
+          "beforeOffset": [1.5, 1],
+          "afterOffset": [1.5, 1]
+        }
+      },
+      "circleSummary": {
+        "confidentTriples": 11,
+        "unmeasuredOrUncertain": 10,
+        "medianDistanceBefore": 4.47213595499958,
+        "medianDistanceAfter": 0.5,
+        "note": "Rightmost disc only. White sun glyphs, textured backgrounds and boundary optima often fail confidence; retain them for visual review."
+      },
+      "reviewedCards": [
+        {
+          "id": "4644694d-52e6-4d00-8cad-748899eeea84",
+          "name": "Afterlife",
+          "alignmentUncertain": false,
+          "inputHash": "2c5313eff3ca1b181bd25ca3cffcdaa2ba26df06cc0ebf3e1c5089f1ca1ef4ac"
+        },
+        {
+          "id": "b0125f79-ff68-4fb9-b309-8d277259f323",
+          "name": "Mangara's Blessing",
+          "alignmentUncertain": false,
+          "inputHash": "1261ab7d917309cb3a0a65deb7d77d14511dc7ddcde907968fb3940781b4c394"
+        },
+        {
+          "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+          "name": "Mtenda Herder",
+          "alignmentUncertain": false,
+          "inputHash": "2f8d0245708e2be5fd76369b38776f59c95fd0bb4d6f51070d2cf7b458bc7425"
+        },
+        {
+          "id": "4a9304e1-f403-404d-9fe9-169da75e0d62",
+          "name": "Shaper Guildmage",
+          "alignmentUncertain": false,
+          "inputHash": "e9d90e555c0980eb6ae6570efec3ebf05280bcc54457c181c95851c09f322c6e"
+        },
+        {
+          "id": "b8a7c22e-fe96-4960-96d4-ee85abec3281",
+          "name": "Suq'Ata Firewalker",
+          "alignmentUncertain": false,
+          "inputHash": "1895c2cfcc251db7eb6a321efbb229481c223c835b7f07b14ae16269f6c72238"
+        },
+        {
+          "id": "048f2368-0e2f-4197-b977-353d38b38ccc",
+          "name": "Teferi's Imp",
+          "alignmentUncertain": false,
+          "inputHash": "77498181d4942936533470987ba743da439df72ad02458e6caf4451af16423cd"
+        },
+        {
+          "id": "c9dbfc7c-164d-47b8-8f05-987864fca89b",
+          "name": "Forsaken Wastes",
+          "alignmentUncertain": false,
+          "inputHash": "759ce7a6836d7d3c331c7f1f271d6444241fdaefd636ee865106634c085f6a0b"
+        },
+        {
+          "id": "dde6d3d1-75db-445f-9f17-632ee0292211",
+          "name": "Wall of Corpses",
+          "alignmentUncertain": false,
+          "inputHash": "b7eb98898d9f0dd8f479433ecf0696e1341abafcb478513f4506c8ed570c57b4"
+        },
+        {
+          "id": "ab85551f-c9cc-409c-9fb5-a45de695e521",
+          "name": "Zombie Mob",
+          "alignmentUncertain": false,
+          "inputHash": "717546fefb05661d3fa5fd51b69ad8f0a44e5fcc268ca3eef22c291646f9e38d"
+        },
+        {
+          "id": "9047d292-8f5c-4a6b-b74e-c8dbf3e0ab24",
+          "name": "Ekundu Cyclops",
+          "alignmentUncertain": false,
+          "inputHash": "f0391934e2f936e2d58eba4b3cd808783f9175db341a5d06b90604529a336dbf"
+        },
+        {
+          "id": "c9e8c9f5-61dd-4dcc-bd40-8f366374ea18",
+          "name": "Emberwilde Djinn",
+          "alignmentUncertain": false,
+          "inputHash": "4106b730f22373dd7910d8db9ef6c098c894cdff2e08c9de734558a09ccbfca9"
+        },
+        {
+          "id": "4947cbf9-69dc-44e3-a22e-a6129f331f3c",
+          "name": "Viashino Warrior",
+          "alignmentUncertain": false,
+          "inputHash": "2f1347e0d36bd55e3aa1999d778985e60a3c983345d4ac31f57d41441dd3dc46"
+        },
+        {
+          "id": "c495e1f3-0845-4556-83e6-de8b9d518d1d",
+          "name": "Afiya Grove",
+          "alignmentUncertain": false,
+          "inputHash": "1f31aa152d005dc9c4a7f8ea2a3262810fd5c0c027418dc10d0b4f6cb2348153"
+        },
+        {
+          "id": "1482c390-69cf-484e-a06c-8d63f770c7de",
+          "name": "Fallow Earth",
+          "alignmentUncertain": false,
+          "inputHash": "fd4eda00416f1348794fcc2430d2ecfa59073748ea2e637257536a8c1922ae75"
+        },
+        {
+          "id": "26724a51-87dd-4159-b012-71598e4cf5eb",
+          "name": "Roots of Life",
+          "alignmentUncertain": false,
+          "inputHash": "ecd7ee236b8d3b3af8605c379a8bc76f596bb07c52e872c3728a66a9805528c0"
+        },
+        {
+          "id": "711f4cff-0256-44b2-a2fe-1cae6e9edb2b",
+          "name": "Energy Bolt",
+          "alignmentUncertain": false,
+          "inputHash": "f171d418a21cbc15ae55943ce4a3e6c11c46a2c543b3b7bfe4f7b28600f97428"
+        },
+        {
+          "id": "a69dc4ac-7354-465e-b859-d8556f3b1498",
+          "name": "Grim Feast",
+          "alignmentUncertain": false,
+          "inputHash": "88032fae9d8da021b51a95b11665a65833b8474f5bcc38d3d4c86d90aa8b63a1"
+        },
+        {
+          "id": "c69ba095-dd78-4999-87a9-63f7165846e4",
+          "name": "Wellspring",
+          "alignmentUncertain": false,
+          "inputHash": "65a3fd9a3eed4ae45e9c1b9d6069d35d7f93df66a9d7cbb2ca84228e37671d55"
+        },
+        {
+          "id": "dc9afb9e-eab3-4969-9a44-2c01bf730e68",
+          "name": "Lead Golem",
+          "alignmentUncertain": false,
+          "inputHash": "0d00270b66528e9e17c4d3c685ada72bbd8af4020e3c2b941a39efaecf989f90"
+        },
+        {
+          "id": "63bacc32-d6ba-420c-9b49-299c08e5fb39",
+          "name": "Lion's Eye Diamond",
+          "alignmentUncertain": false,
+          "inputHash": "7dd0804fb3e59d5891d2252e212511f6371bba53f1b16a3dd6128857ce533848"
+        },
+        {
+          "id": "84e4a955-ce9a-4386-b6ac-c00fd25de882",
+          "name": "Sand Golem",
+          "alignmentUncertain": false,
+          "inputHash": "a4fd3fff39a66a18a07c32502b313235a0eeeddb300e8d1ed430ca3c051dc1c2"
+        },
+        {
+          "id": "7a78abdb-d1ac-49cb-a74b-9de21c06364a",
+          "name": "Bad River",
+          "alignmentUncertain": true,
+          "inputHash": "24622e85471262f277ee682ab465c6009718d16512df93f3a461d0814e17dcbc"
+        },
+        {
+          "id": "65f5efac-ef98-4be2-abcc-1aa38bf66b06",
+          "name": "Grasslands",
+          "alignmentUncertain": true,
+          "inputHash": "f56dd6e7186ac9283e1a84eb665f6afdf6c7a7acfdaa9568ec68cb7c77e3089c"
+        },
+        {
+          "id": "1e21c347-7aaf-42ae-abf3-f1283c5b54e6",
+          "name": "Rocky Tar Pit",
+          "alignmentUncertain": true,
+          "inputHash": "a4633ed24a7b94eb5940a9a07c656120793ab04825f50ebd3d6b6754332441a2"
+        }
+      ],
+      "regressions": [
+        {
+          "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+          "name": "Mtenda Herder",
+          "region": "stats",
+          "before": 0.48449891852919974,
+          "after": 0.4232113117591353,
+          "flag": "ambiguous"
+        },
+        {
+          "id": "4a9304e1-f403-404d-9fe9-169da75e0d62",
+          "name": "Shaper Guildmage",
+          "region": "set-outline",
+          "before": 0.5869161960509502,
+          "after": 0.5451554107456811,
+          "flag": "placement"
+        },
+        {
+          "id": "048f2368-0e2f-4197-b977-353d38b38ccc",
+          "name": "Teferi's Imp",
+          "region": "set-outline",
+          "before": 0.617169373549884,
+          "after": 0.5615632213804987,
+          "flag": "shape-or-content"
+        },
+        {
+          "id": "c69ba095-dd78-4999-87a9-63f7165846e4",
+          "name": "Wellspring",
+          "region": "copyright",
+          "before": 0.32143701252658946,
+          "after": 0.2292684304147726,
+          "flag": "ambiguous"
+        }
+      ],
+      "examples": [
+        {
+          "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+          "name": "Mtenda Herder",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.4592414378714973,
+              "after": 0.8975245470889227
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.41050070950739914,
+              "after": 0.7041724818326195
+            },
+            {
+              "id": "stats",
+              "before": 0.4950715846750814,
+              "after": 0.4288332315210751
+            },
+            {
+              "id": "footer",
+              "before": 0.2540040841044469,
+              "after": 0.5855756580419392
+            }
+          ]
+        },
+        {
+          "id": "4a9304e1-f403-404d-9fe9-169da75e0d62",
+          "name": "Shaper Guildmage",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.37331215250198574,
+              "after": 0.6331658291457287
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.46539057424159125,
+              "after": 0.40147722202944536
+            },
+            {
+              "id": "stats",
+              "before": 0.3792376260433465,
+              "after": 0.4289036158586211
+            },
+            {
+              "id": "footer",
+              "before": 0.28359667270599,
+              "after": 0.6225959540009756
+            }
+          ]
+        },
+        {
+          "id": "b8a7c22e-fe96-4960-96d4-ee85abec3281",
+          "name": "Suq'Ata Firewalker",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.43760728218465533,
+              "after": 0.782329261157732
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.27761545175122376,
+              "after": 0.3615501759176601
+            },
+            {
+              "id": "stats",
+              "before": 0.4207450693937181,
+              "after": 0.4467878451505481
+            },
+            {
+              "id": "footer",
+              "before": 0.3056399633112244,
+              "after": 0.6252538131248573
+            }
+          ]
+        },
+        {
+          "id": "4947cbf9-69dc-44e3-a22e-a6129f331f3c",
+          "name": "Viashino Warrior",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.3784867268562188,
+              "after": 0.7721067315732393
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.4744897959183674,
+              "after": 0.7074142788428502
+            },
+            {
+              "id": "stats",
+              "before": 0.6102129440694815,
+              "after": 0.6274480378179634
+            },
+            {
+              "id": "footer",
+              "before": 0.17172333017793254,
+              "after": 0.6529665434848325
+            }
+          ]
+        },
+        {
+          "id": "dc9afb9e-eab3-4969-9a44-2c01bf730e68",
+          "name": "Lead Golem",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.3724137931034483,
+              "after": 0.8398683029033223
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.45062077509358756,
+              "after": 0.6327050433010698
+            },
+            {
+              "id": "stats",
+              "before": 0.6477010956082031,
+              "after": 0.6507533558579126
+            },
+            {
+              "id": "footer",
+              "before": 0.19443939534452379,
+              "after": 0.7016953010060176
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "set": "tmp",
+      "attempted": 16,
+      "eligible": 350,
+      "alignmentExcluded": 0,
+      "referenceIdentity": "5e46265bb3807f17f855c69271c9b1a59aaa9e7f785b2d7b86e110674b4d70cb",
+      "alignmentHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
+      "annotationHash": "7700cfc8e96f5301f67f92fd49af5847ebcffaaddfef54e466c4ec180fa0780d",
+      "diagnosticSource": "0db25aec38a20b7a52b1698ec8734ba83ace3c16613cdef0c993514dc1f1697a",
+      "detailsHash": "850e622a1441532f15676d905547bdb8368c9ba5ddf41fe7e8bcefc9f27dc2a7",
+      "seconds": 11.447158132999999,
+      "summary": {
+        "mana": {
+          "count": 14,
+          "before": 0.5011446980965037,
+          "after": 0.7806168462232018,
+          "improved": 14,
+          "regressed": 0,
+          "afterFlags": {
+            "close": 13,
+            "shape-or-content": 1
+          },
+          "beforeOffset": [1, 0],
+          "afterOffset": [0, 0]
+        },
+        "set-outline": {
+          "count": 16,
+          "before": 0.44101441424781007,
+          "after": 0.7697428114662097,
+          "improved": 16,
+          "regressed": 0,
+          "afterFlags": {
+            "shape-or-content": 1,
+            "close": 12,
+            "ambiguous": 1,
+            "placement": 2
+          },
+          "beforeOffset": [-1, -1],
+          "afterOffset": [-1, 0]
+        },
+        "artist": {
+          "count": 16,
+          "before": 0.25873780711706285,
+          "after": 0.5797226143777232,
+          "improved": 16,
+          "regressed": 0,
+          "afterFlags": {
+            "shape-or-content": 4,
+            "placement": 2,
+            "ambiguous": 9,
+            "close": 1
+          },
+          "beforeOffset": [-1.5, -1],
+          "afterOffset": [-2, -1]
+        },
+        "copyright": {
+          "count": 16,
+          "before": 0.20140056373647564,
+          "after": 0.7262749573555871,
+          "improved": 16,
+          "regressed": 0,
+          "afterFlags": {
+            "close": 12,
+            "ambiguous": 4
+          },
+          "beforeOffset": [-2, 1],
+          "afterOffset": [0, 0]
+        },
+        "stats": {
+          "count": 9,
+          "before": 0.5185988168612754,
+          "after": 0.5786452353616532,
+          "improved": 2,
+          "regressed": 1,
+          "afterFlags": {
+            "shape-or-content": 1,
+            "close": 3,
+            "placement": 5
+          },
+          "beforeOffset": [-2, 1],
+          "afterOffset": [-2, 1]
+        },
+        "tap-layout-window": {
+          "count": 5,
+          "before": 0.44799999999999995,
+          "after": 0.5032618825722274,
+          "improved": 4,
+          "regressed": 0,
+          "afterFlags": {
+            "close": 1,
+            "placement": 4
+          },
+          "beforeOffset": [2, -3],
+          "afterOffset": [2, -3]
+        }
+      },
+      "circleSummary": {
+        "confidentTriples": 6,
+        "unmeasuredOrUncertain": 8,
+        "medianDistanceBefore": 4.924428900898052,
+        "medianDistanceAfter": 0.75,
+        "note": "Rightmost disc only. White sun glyphs, textured backgrounds and boundary optima often fail confidence; retain them for visual review."
+      },
+      "reviewedCards": [
+        {
+          "id": "c275aba7-cac6-48e8-b12c-6bd77a5c38fe",
+          "name": "Armor Sliver",
+          "alignmentUncertain": false,
+          "inputHash": "18073614fff2f3aa9f30fa8f578b9cedb3d8be3787f43671ba90279d8a5121c1"
+        },
+        {
+          "id": "2c8e174c-7abb-4a93-aa1d-8c2a2e815ba6",
+          "name": "Safeguard",
+          "alignmentUncertain": false,
+          "inputHash": "74f55eb446fabf7b2a574885598c9b11d427138e37715847cbf1d9a1f42b3dd4"
+        },
+        {
+          "id": "734be7fa-0998-4771-9b97-4989b3fc1471",
+          "name": "Steal Enchantment",
+          "alignmentUncertain": false,
+          "inputHash": "e8bd5d0170d0024fb34accc12d65982e4d03fe58930c73bff48a3d187750cbc7"
+        },
+        {
+          "id": "9e7b5b00-9d14-4090-b8c3-28b70375571e",
+          "name": "Thalakos Mistfolk",
+          "alignmentUncertain": false,
+          "inputHash": "3efe66e4bb179fbcff842976cd9092d272b137c7c481db3f54d52be3917697a1"
+        },
+        {
+          "id": "4eb883b7-da6a-45c3-9dde-61334a0ddcae",
+          "name": "Darkling Stalker",
+          "alignmentUncertain": false,
+          "inputHash": "aed1dcb59c00b2d13ce36874db5bf532190e4f6159687848c8a05d4c809cb081"
+        },
+        {
+          "id": "eed2c97b-f003-436c-9faa-5518aba42fc1",
+          "name": "Skyshroud Vampire",
+          "alignmentUncertain": false,
+          "inputHash": "86705a02427e1556710c080e745524790e4886d1907bd7e2479e72b27f431e18"
+        },
+        {
+          "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+          "name": "Mogg Conscripts",
+          "alignmentUncertain": false,
+          "inputHash": "6bb71cddfa240753f781dd5ae608bbe333e17fa8a66da0a535bb8df2feb5a068"
+        },
+        {
+          "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+          "name": "Searing Touch",
+          "alignmentUncertain": false,
+          "inputHash": "44e1ab1139166a1cd887503f6d01705feecb88875fac187d8c5b186c03ef152e"
+        },
+        {
+          "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+          "name": "Krakilin",
+          "alignmentUncertain": false,
+          "inputHash": "e857b72738636657a9bb31d6be66ae2a9869fa4d3d929bb18d53b3ab51daa49f"
+        },
+        {
+          "id": "b4bb98ba-d599-4597-911c-2b472fa8817c",
+          "name": "Seeker of Skybreak",
+          "alignmentUncertain": false,
+          "inputHash": "846530ca98c380169faead24b2fc8adbd6a31bef012dfd95658e3251df4fb446"
+        },
+        {
+          "id": "9c1624f7-8275-46d3-ab7e-7b162e27593f",
+          "name": "Selenia, Dark Angel",
+          "alignmentUncertain": false,
+          "inputHash": "64d76fce60a79cf2d7137fa190570f4d630f2e97059d09043d3a10828391c92f"
+        },
+        {
+          "id": "be535a4a-c00d-4c58-a663-a3419a54da51",
+          "name": "Vhati il-Dal",
+          "alignmentUncertain": false,
+          "inputHash": "1f62fa2d4ab9de4b2a4217acd5e8a3b9a0eea64bf85b023ff1de66952dc39e2f"
+        },
+        {
+          "id": "4f2da99f-3c53-4980-97d6-2158c765aac0",
+          "name": "Altar of Dementia",
+          "alignmentUncertain": false,
+          "inputHash": "c94e7fa10dd11e0fb1a6b9e0772ab42aca14fe41569572f7a9d3b0e9ae59f9d9"
+        },
+        {
+          "id": "f4459187-de64-456f-bb66-56dea40d5c3e",
+          "name": "Grindstone",
+          "alignmentUncertain": false,
+          "inputHash": "583eca8e57515be75d887e21289a333b5eb40be6461a29e6d74f638da9e1d677"
+        },
+        {
+          "id": "224cb63f-9af0-4b00-ba0b-0b604abf20c8",
+          "name": "Salt Flats",
+          "alignmentUncertain": false,
+          "inputHash": "a5a63ca854773a33e7fcb75822004c1700db99f1fa322f3190509b7857488205"
+        },
+        {
+          "id": "b4d3d349-5c23-43a9-b25e-0e1a35b84673",
+          "name": "Stalking Stones",
+          "alignmentUncertain": false,
+          "inputHash": "5a3c78ef667a2f4309fe45c46ad2b21f0d4ce6ba7a065a984b1344113e13901e"
+        }
+      ],
+      "regressions": [
+        {
+          "id": "c275aba7-cac6-48e8-b12c-6bd77a5c38fe",
+          "name": "Armor Sliver",
+          "region": "stats",
+          "before": 0.510988227465023,
+          "after": 0.4703937350445943,
+          "flag": "shape-or-content"
+        }
+      ],
+      "examples": [
+        {
+          "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+          "name": "Mogg Conscripts",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.3061809250920999,
+              "after": 0.7327827865747406
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.5174112873172954,
+              "after": 0.665284721375442
+            },
+            {
+              "id": "stats",
+              "before": 0.5940174176448316,
+              "after": 0.592663999614402
+            },
+            {
+              "id": "footer",
+              "before": 0.09153318077803203,
+              "after": 0.5131380715221585
+            }
+          ]
+        },
+        {
+          "id": "4f2da99f-3c53-4980-97d6-2158c765aac0",
+          "name": "Altar of Dementia",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.32727272727272727,
+              "after": 0.8133402432704325
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.3882679979576785,
+              "after": 0.6121704289342824
+            },
+            {
+              "id": "stats",
+              "before": null,
+              "after": null
+            },
+            {
+              "id": "footer",
+              "before": 0.20581089045791887,
+              "after": 0.666503080232311
+            }
+          ]
+        },
+        {
+          "id": "f4459187-de64-456f-bb66-56dea40d5c3e",
+          "name": "Grindstone",
+          "regions": [
+            {
+              "id": "mana",
+              "before": 0.29815428300993846,
+              "after": 0.837653127014829
+            },
+            {
+              "id": "set-symbol",
+              "before": 0.5208454527826255,
+              "after": 0.7388059701492536
+            },
+            {
+              "id": "stats",
+              "before": null,
+              "after": null
+            },
+            {
+              "id": "footer",
+              "before": 0.17159109140498519,
+              "after": 0.697622403994237
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fullSets": [
+    {
+      "set": "mir",
+      "run": "retro-details-all",
+      "rendererHash": "53e4df745083c35839c8876f8ba904a3a2e7f57aa415004eb2648c68b0830840",
+      "totalPrintings": 350,
+      "eligibleCount": 350,
+      "complete": true,
+      "summary": {
+        "attempted": 350,
+        "measured": 350,
+        "failed": 0,
+        "scanReviewed": 24,
+        "oracleUnverified": 326,
+        "alignmentUncertain": 11,
+        "clipped": 0,
+        "layoutMeasured": 330,
+        "tiers": {
+          "inspect": {
+            "text": {
+              "count": 350,
+              "median": 0.48806438370016225,
+              "p10": 0.42561441657437826,
+              "p90": 0.545748603126174,
+              "mean": 0.48587550289196607
+            },
+            "regions": {
+              "title": {
+                "count": 350,
+                "median": 0.5925576750308333,
+                "p10": 0.46119129260009967,
+                "p90": 0.7437380764178033,
+                "mean": 0.6004382572514434
+              },
+              "type": {
+                "count": 350,
+                "median": 0.4798129480335698,
+                "p10": 0.4113027012148601,
+                "p90": 0.5929866354557748,
+                "mean": 0.4926760396682399
+              },
+              "body": {
+                "count": 350,
+                "median": 0.3457802012204031,
+                "p10": 0.1838078634077713,
+                "p90": 0.4975351175183744,
+                "mean": 0.34696240500238495
+              },
+              "footer": {
+                "count": 350,
+                "median": 0.6376266544245937,
+                "p10": 0.5455532110815777,
+                "p90": 0.7146398106252989,
+                "mean": 0.6330282785943755
+              },
+              "frame-left": {
+                "count": 350,
+                "median": 0.8145865235238439,
+                "p10": 0.7016524660512866,
+                "p90": 0.8951714605114319,
+                "mean": 0.800491114583334
+              },
+              "frame-right": {
+                "count": 350,
+                "median": 0.40805129104318594,
+                "p10": 0.16792694478075515,
+                "p90": 0.5013766478684579,
+                "mean": 0.3780914687475293
+              },
+              "type-border": {
+                "count": 350,
+                "median": 0.9945054945054945,
+                "p10": 0.7204215730317467,
+                "p90": 1,
+                "mean": 0.9056140293602938
+              },
+              "set-symbol": {
+                "count": 350,
+                "median": 0.6113995444178884,
+                "p10": 0.38149839667025925,
+                "p90": 0.7515239266190124,
+                "mean": 0.5852760253776939
+              },
+              "mana": {
+                "count": 323,
+                "median": 0.8209275638373447,
+                "p10": 0.7053839196410725,
+                "p90": 0.8964364582270403,
+                "mean": 0.8108715021305875
+              },
+              "stats": {
+                "count": 153,
+                "median": 0.5297433135882248,
+                "p10": 0.4385874890949986,
+                "p90": 0.6230069582521497,
+                "mean": 0.5302384366090883
+              }
+            },
+            "reviewedBody": {
+              "count": 21,
+              "median": 0.454345393234902,
+              "p10": 0.32914253709814284,
+              "p90": 0.5467015772704038,
+              "mean": 0.43470409096656876
+            }
+          },
+          "table": {
+            "text": {
+              "count": 350,
+              "median": 0.47028074683892507,
+              "p10": 0.4066757366881653,
+              "p90": 0.5215985149847503,
+              "mean": 0.46706313940259975
+            },
+            "regions": {
+              "title": {
+                "count": 350,
+                "median": 0.5361969483879323,
+                "p10": 0.45325380304621404,
+                "p90": 0.6658810037555573,
+                "mean": 0.5498059725712309
+              },
+              "type": {
+                "count": 350,
+                "median": 0.46808304340279605,
+                "p10": 0.3907738287413046,
+                "p90": 0.5749647844540547,
+                "mean": 0.4769776874011608
+              },
+              "body": {
+                "count": 350,
+                "median": 0.34220116130036704,
+                "p10": 0.18459719307904707,
+                "p90": 0.4885549510592346,
+                "mean": 0.3414524253222316
+              },
+              "footer": {
+                "count": 350,
+                "median": 0.592096768155578,
+                "p10": 0.489390328048081,
+                "p90": 0.651591269368012,
+                "mean": 0.5800594137841785
+              },
+              "frame-left": {
+                "count": 350,
+                "median": 0.8136809435033959,
+                "p10": 0.6641706258136704,
+                "p90": 0.8951451205905375,
+                "mean": 0.790055377890669
+              },
+              "frame-right": {
+                "count": 350,
+                "median": 0.3261645289725098,
+                "p10": 0.11636729581739698,
+                "p90": 0.5058709675618415,
+                "mean": 0.31915244009988925
+              },
+              "type-border": {
+                "count": 350,
+                "median": 0.9959404600811907,
+                "p10": 0.573848462198676,
+                "p90": 1,
+                "mean": 0.8657372304538627
+              },
+              "set-symbol": {
+                "count": 350,
+                "median": 0.569674657969041,
+                "p10": 0.37027483843193437,
+                "p90": 0.7625226788571522,
+                "mean": 0.5653723640962659
+              },
+              "mana": {
+                "count": 323,
+                "median": 0.7772140024730312,
+                "p10": 0.6596514514874763,
+                "p90": 0.8558473464613102,
+                "mean": 0.7690560001232484
+              },
+              "stats": {
+                "count": 153,
+                "median": 0.5538213751581853,
+                "p10": 0.46439958177500307,
+                "p90": 0.6455199118948443,
+                "mean": 0.5506555759858511
+              }
+            },
+            "reviewedBody": {
+              "count": 21,
+              "median": 0.4445737024070973,
+              "p10": 0.3241274155727795,
+              "p90": 0.5249760729541089,
+              "mean": 0.4234722830855537
+            }
+          }
+        }
+      },
+      "pairedInputChanges": 0,
+      "layoutChanges": 0,
+      "confidentInspectRegionPairs": {
+        "mana": {
+          "count": 319,
+          "before": 0.4209935672631811,
+          "after": 0.8194516295913089,
+          "improved": 319,
+          "regressed": 0
+        },
+        "set-symbol": {
+          "count": 339,
+          "before": 0.41361256544502617,
+          "after": 0.6163242642976124,
+          "improved": 271,
+          "regressed": 52
+        },
+        "stats": {
+          "count": 149,
+          "before": 0.5335198753822189,
+          "after": 0.5300385950433284,
+          "improved": 27,
+          "regressed": 17
+        },
+        "footer": {
+          "count": 339,
+          "before": 0.22578389590503015,
+          "after": 0.6445557058764266,
+          "improved": 339,
+          "regressed": 0
+        },
+        "body": {
+          "count": 339,
+          "before": 0.35520684736091296,
+          "after": 0.35520684736091296,
+          "improved": 0,
+          "regressed": 0
+        }
+      },
+      "comparisonSeconds": 164.48167368400001,
+      "cacheHits": 0,
+      "assetGroups": [
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+          "role": "frame",
+          "cardCount": 8,
+          "confidentCount": 1,
+          "medianEdgeF1": 0.3591227042752243,
+          "allCardMedianEdgeF1": 0.5438972371444218,
+          "status": "insufficient-confident-evidence",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Wellspring",
+            "Flood Plain",
+            "Bad River",
+            "Teferi's Isle",
+            "Crystal Vein",
+            "Grasslands",
+            "Rocky Tar Pit",
+            "Mountain Valley"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+          "role": "frame",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 0.44402337273276804,
+          "allCardMedianEdgeF1": 0.44402337273276804,
+          "status": "review-asset-or-placement",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Abyssal Hunter",
+            "Withering Boon",
+            "Shallow Grave",
+            "Tombstone Stairwell",
+            "Dark Ritual",
+            "Dirtwater Wraith",
+            "Forbidden Crypt",
+            "Grave Servitude"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/gl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.48718253664084055,
+          "allCardMedianEdgeF1": 0.48718253664084055,
+          "status": "review-asset-or-placement",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Forest", "Forest", "Forest", "Forest"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+          "role": "frame",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 0.5578328058296775,
+          "allCardMedianEdgeF1": 0.5578328058296775,
+          "status": "review-asset-or-placement",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Cycle of Life",
+            "Roots of Life",
+            "Granger Guildmage",
+            "Uktabi Wildcats",
+            "Femeref Archers",
+            "Fog",
+            "Canopy Dragon",
+            "Fallow Earth"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+          "role": "frame",
+          "cardCount": 33,
+          "confidentCount": 33,
+          "medianEdgeF1": 0.6022851218652203,
+          "allCardMedianEdgeF1": 0.6022851218652203,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Cursed Totem",
+            "Acidic Dagger",
+            "Amulet of Unmaking",
+            "Phyrexian Dreadnought",
+            "Grinning Totem",
+            "Paupers' Cage",
+            "Horrible Hordes",
+            "Crystal Golem"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/ul.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6152158413862407,
+          "allCardMedianEdgeF1": 0.6152158413862407,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Island", "Island", "Island", "Island"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg/mir.svg",
+          "role": "setSymbol",
+          "cardCount": 350,
+          "confidentCount": 339,
+          "medianEdgeF1": 0.6163242642976124,
+          "allCardMedianEdgeF1": 0.6113995444178884,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Mystical Tutor",
+            "Taniwha",
+            "Coral Fighters",
+            "Frenetic Efreet",
+            "Merfolk Seer",
+            "Political Trickery",
+            "Prismatic Lace",
+            "Psychic Transfer"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+          "role": "frame",
+          "cardCount": 51,
+          "confidentCount": 47,
+          "medianEdgeF1": 0.6230166907950127,
+          "allCardMedianEdgeF1": 0.6245842941736963,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Sunweb",
+            "Femeref Knight",
+            "Healing Salve",
+            "Celestial Dawn",
+            "Enlightened Tutor",
+            "Jabari's Influence",
+            "Soul Echo",
+            "Disenchant"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+          "role": "frame",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 0.630521246066202,
+          "allCardMedianEdgeF1": 0.630521246066202,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Zirilan of the Claw",
+            "Dwarven Miner",
+            "Illicit Auction",
+            "Stone Rain",
+            "Goblin Soothsayer",
+            "Crimson Roc",
+            "Burning Shield Askari",
+            "Hivis of the Scale"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/m.png",
+          "role": "frame",
+          "cardCount": 34,
+          "confidentCount": 34,
+          "medianEdgeF1": 0.634872847015409,
+          "allCardMedianEdgeF1": 0.634872847015409,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Unfulfilled Desires",
+            "Shauku's Minion",
+            "Savage Twister",
+            "Reflect Damage",
+            "Malignant Growth",
+            "Leering Gargoyle",
+            "Reparations",
+            "Jungle Troll"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/rl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6381997603789913,
+          "allCardMedianEdgeF1": 0.6381997603789913,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Mountain", "Mountain", "Mountain", "Mountain"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/bl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6421225468637215,
+          "allCardMedianEdgeF1": 0.6421225468637215,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Swamp", "Swamp", "Swamp", "Swamp"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+          "role": "frame",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 0.6659234284777193,
+          "allCardMedianEdgeF1": 0.6659234284777193,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Cloak of Invisibility",
+            "Coral Fighters",
+            "Mind Harness",
+            "Bay Falcon",
+            "Thirst",
+            "Sapphire Charm",
+            "Boomerang",
+            "Cerulean Wyvern"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/wl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6707987792019943,
+          "allCardMedianEdgeF1": 0.6707987792019943,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Plains", "Plains", "Plains", "Plains"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/wl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6881590151404702,
+          "allCardMedianEdgeF1": 0.6881590151404702,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Plains", "Plains", "Plains", "Plains"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/bl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7028500128010492,
+          "allCardMedianEdgeF1": 0.7028500128010492,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Swamp", "Swamp", "Swamp", "Swamp"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/U.svg",
+          "role": "mana",
+          "cardCount": 65,
+          "confidentCount": 65,
+          "medianEdgeF1": 0.7107003581863303,
+          "allCardMedianEdgeF1": 0.7107003581863303,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Cerulean Wyvern",
+            "Sapphire Charm",
+            "Shaper Guildmage",
+            "Mystical Tutor",
+            "Cloak of Invisibility",
+            "Mind Bend",
+            "Prismatic Lace",
+            "Reality Ripple"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/X.svg",
+          "role": "mana",
+          "cardCount": 14,
+          "confidentCount": 14,
+          "medianEdgeF1": 0.7331162870315109,
+          "allCardMedianEdgeF1": 0.7331162870315109,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Energy Bolt",
+            "Prismatic Boon",
+            "Drain Life",
+            "Power Sink",
+            "Volcanic Geyser",
+            "Sealed Fate",
+            "Kaervek's Purge",
+            "Savage Twister"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/6.svg",
+          "role": "mana",
+          "cardCount": 3,
+          "confidentCount": 3,
+          "medianEdgeF1": 0.746428808166512,
+          "allCardMedianEdgeF1": 0.746428808166512,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Crimson Hellkite", "Spirit of the Night", "Crash of Rhinos"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/ul.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.760233091087483,
+          "allCardMedianEdgeF1": 0.760233091087483,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Island", "Island", "Island", "Island"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/R.svg",
+          "role": "mana",
+          "cardCount": 65,
+          "confidentCount": 65,
+          "medianEdgeF1": 0.7721067315732393,
+          "allCardMedianEdgeF1": 0.7721067315732393,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Energy Bolt",
+            "Frenetic Efreet",
+            "Cinder Cloud",
+            "Volcanic Geyser",
+            "Chaos Charm",
+            "Crimson Hellkite",
+            "Ekundu Cyclops",
+            "Kaervek's Purge"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/2.svg",
+          "role": "mana",
+          "cardCount": 85,
+          "confidentCount": 85,
+          "medianEdgeF1": 0.8082568367074116,
+          "allCardMedianEdgeF1": 0.8082568367074116,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Harmattan Efreet",
+            "Ancestral Memories",
+            "Benthic Djinn",
+            "Harbor Guardian",
+            "Teferi's Imp",
+            "Dream Fighter",
+            "Teferi's Drake",
+            "Thirst"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/4.svg",
+          "role": "mana",
+          "cardCount": 23,
+          "confidentCount": 23,
+          "medianEdgeF1": 0.8084578928180824,
+          "allCardMedianEdgeF1": 0.8084578928180824,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Cerulean Wyvern",
+            "Psychic Transfer",
+            "Sandbar Crocodile",
+            "Mist Dragon",
+            "Rock Basilisk",
+            "Volcanic Dragon",
+            "Crimson Roc",
+            "Telim'Tor"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/3.svg",
+          "role": "mana",
+          "cardCount": 66,
+          "confidentCount": 64,
+          "medianEdgeF1": 0.8195904727312312,
+          "allCardMedianEdgeF1": 0.8241248032764632,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Cinder Cloud",
+            "Kukemssa Serpent",
+            "Polymorph",
+            "Floodgate",
+            "Ether Well",
+            "Ray of Command",
+            "Kukemssa Pirates",
+            "Ekundu Cyclops"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/5.svg",
+          "role": "mana",
+          "cardCount": 7,
+          "confidentCount": 7,
+          "medianEdgeF1": 0.81959422409066,
+          "allCardMedianEdgeF1": 0.81959422409066,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Shauku, Endbringer",
+            "Mangara's Tome",
+            "Igneous Golem",
+            "Amulet of Unmaking",
+            "Lead Golem",
+            "Basalt Golem",
+            "Sand Golem"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/B.svg",
+          "role": "mana",
+          "cardCount": 65,
+          "confidentCount": 65,
+          "medianEdgeF1": 0.827931103986735,
+          "allCardMedianEdgeF1": 0.827931103986735,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Drain Life",
+            "Benthic Djinn",
+            "Sealed Fate",
+            "Kaervek's Purge",
+            "Haunting Apparition",
+            "Spatial Binding",
+            "Feral Shadow",
+            "Shauku, Endbringer"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/9.svg",
+          "role": "mana",
+          "cardCount": 1,
+          "confidentCount": 1,
+          "medianEdgeF1": 0.8385884801017311,
+          "allCardMedianEdgeF1": 0.8385884801017311,
+          "status": "insufficient-confident-evidence",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Teeka's Dragon"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/1.svg",
+          "role": "mana",
+          "cardCount": 86,
+          "confidentCount": 84,
+          "medianEdgeF1": 0.8398387784497179,
+          "allCardMedianEdgeF1": 0.843592693566594,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Reality Ripple",
+            "Meddle",
+            "Soar",
+            "Coral Fighters",
+            "Frenetic Efreet",
+            "Drain Life",
+            "Bay Falcon",
+            "Teferi's Curse"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/0.svg",
+          "role": "mana",
+          "cardCount": 1,
+          "confidentCount": 1,
+          "medianEdgeF1": 0.8441558441558441,
+          "allCardMedianEdgeF1": 0.8441558441558441,
+          "status": "insufficient-confident-evidence",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Lion's Eye Diamond"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/W.svg",
+          "role": "mana",
+          "cardCount": 65,
+          "confidentCount": 61,
+          "medianEdgeF1": 0.8723290430185354,
+          "allCardMedianEdgeF1": 0.8759639581134833,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Energy Bolt",
+            "Prismatic Boon",
+            "Harbor Guardian",
+            "Reflect Damage",
+            "Leering Gargoyle",
+            "Circle of Despair",
+            "Hazerider Drake",
+            "Reparations"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+          "role": "boxes",
+          "cardCount": 51,
+          "confidentCount": 47,
+          "medianEdgeF1": 0.8782742681047766,
+          "allCardMedianEdgeF1": 0.8369408369408369,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Ekundu Griffin",
+            "Ethereal Champion",
+            "Femeref Healer",
+            "Femeref Knight",
+            "Mangara's Blessing",
+            "Mangara's Equity",
+            "Mtenda Griffin",
+            "Ritual of Steel"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/rl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.8844475593707053,
+          "allCardMedianEdgeF1": 0.8844475593707053,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Mountain", "Mountain", "Mountain", "Mountain"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/G.svg",
+          "role": "mana",
+          "cardCount": 65,
+          "confidentCount": 65,
+          "medianEdgeF1": 0.8882929690773487,
+          "allCardMedianEdgeF1": 0.8882929690773487,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Windreaper Falcon",
+            "Sawback Manticore",
+            "Rock Basilisk",
+            "Malignant Growth",
+            "Savage Twister",
+            "Vitalizing Cascade",
+            "Unseen Walker",
+            "Warping Wurm"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+          "role": "boxes",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 0.905843376020313,
+          "allCardMedianEdgeF1": 0.905843376020313,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Crimson Hellkite",
+            "Torrent of Lava",
+            "Stone Rain",
+            "Emberwilde Djinn",
+            "Viashino Warrior",
+            "Crimson Roc",
+            "Kaervek's Torch",
+            "Goblin Soothsayer"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+          "role": "boxes",
+          "cardCount": 8,
+          "confidentCount": 1,
+          "medianEdgeF1": 0.9069069069069069,
+          "allCardMedianEdgeF1": 0.8639800424322529,
+          "status": "insufficient-confident-evidence",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Bad River",
+            "Grasslands",
+            "Teferi's Isle",
+            "Crystal Vein",
+            "Mountain Valley",
+            "Wellspring",
+            "Flood Plain",
+            "Rocky Tar Pit"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/m.png",
+          "role": "boxes",
+          "cardCount": 34,
+          "confidentCount": 34,
+          "medianEdgeF1": 0.935813953488372,
+          "allCardMedianEdgeF1": 0.935813953488372,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Leering Gargoyle",
+            "Sealed Fate",
+            "Jungle Troll",
+            "Prismatic Boon",
+            "Windreaper Falcon",
+            "Harbor Guardian",
+            "Spatial Binding",
+            "Hazerider Drake"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+          "role": "boxes",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 0.9932705248990579,
+          "allCardMedianEdgeF1": 0.9932705248990579,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Carrion",
+            "Tombstone Stairwell",
+            "Enfeeblement",
+            "Binding Agony",
+            "Shadow Guildmage",
+            "Bone Harvest",
+            "Infernal Contract",
+            "Soulshriek"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/gl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.9938552160001808,
+          "allCardMedianEdgeF1": 0.9938552160001808,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Forest", "Forest", "Forest", "Forest"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+          "role": "boxes",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Shimmer",
+            "Ancestral Memories",
+            "Azimaet Drake",
+            "Bay Falcon",
+            "Bazaar of Wonders",
+            "Boomerang",
+            "Cerulean Wyvern",
+            "Cloak of Invisibility"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+          "role": "boxes",
+          "cardCount": 51,
+          "confidentCount": 51,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Foratog",
+            "Afiya Grove",
+            "Armor of Thorns",
+            "Barbed Foliage",
+            "Brushwagg",
+            "Canopy Dragon",
+            "Crash of Rhinos",
+            "Cycle of Life"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+          "role": "boxes",
+          "cardCount": 33,
+          "confidentCount": 33,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Lion's Eye Diamond",
+            "Ersatz Gnomes",
+            "Cursed Totem",
+            "Acidic Dagger",
+            "Amber Prison",
+            "Amulet of Unmaking",
+            "Basalt Golem",
+            "Bone Mask"
+          ]
+        }
+      ],
+      "warmComparison": {
+        "seconds": 3.368603808,
+        "cacheHits": 350
+      }
+    },
+    {
+      "set": "tmp",
+      "run": "retro-details-all",
+      "rendererHash": "53e4df745083c35839c8876f8ba904a3a2e7f57aa415004eb2648c68b0830840",
+      "totalPrintings": 350,
+      "eligibleCount": 350,
+      "complete": true,
+      "summary": {
+        "attempted": 350,
+        "measured": 350,
+        "failed": 0,
+        "scanReviewed": 16,
+        "oracleUnverified": 334,
+        "alignmentUncertain": 0,
+        "clipped": 0,
+        "layoutMeasured": 330,
+        "tiers": {
+          "inspect": {
+            "text": {
+              "count": 350,
+              "median": 0.5214905046409739,
+              "p10": 0.44728888359353586,
+              "p90": 0.5961819864075371,
+              "mean": 0.5198225368036968
+            },
+            "regions": {
+              "title": {
+                "count": 350,
+                "median": 0.6198662325247041,
+                "p10": 0.49731809197219146,
+                "p90": 0.7663860837429104,
+                "mean": 0.6272490752432633
+              },
+              "type": {
+                "count": 350,
+                "median": 0.5477872686162581,
+                "p10": 0.45768054698569915,
+                "p90": 0.721519779678374,
+                "mean": 0.5689461777161656
+              },
+              "body": {
+                "count": 350,
+                "median": 0.36046571013912687,
+                "p10": 0.17124937480538518,
+                "p90": 0.5165293510241128,
+                "mean": 0.3497602374555446
+              },
+              "footer": {
+                "count": 350,
+                "median": 0.6027402349486368,
+                "p10": 0.5007048713216915,
+                "p90": 0.6906017032305586,
+                "mean": 0.5993327332657866
+              },
+              "frame-left": {
+                "count": 350,
+                "median": 0.8165136712213599,
+                "p10": 0.6354187575092505,
+                "p90": 0.903816796945379,
+                "mean": 0.7915254203264741
+              },
+              "frame-right": {
+                "count": 350,
+                "median": 0.41715165193622394,
+                "p10": 0.1460442204147096,
+                "p90": 0.5170157724479465,
+                "mean": 0.38659467829883476
+              },
+              "type-border": {
+                "count": 350,
+                "median": 1,
+                "p10": 0.8203952269444273,
+                "p90": 1,
+                "mean": 0.9226958947381083
+              },
+              "set-symbol": {
+                "count": 350,
+                "median": 0.6074955582629331,
+                "p10": 0.3969714725286614,
+                "p90": 0.7198815817962623,
+                "mean": 0.5813830385756764
+              },
+              "mana": {
+                "count": 314,
+                "median": 0.8258232745629612,
+                "p10": 0.6924565563253697,
+                "p90": 0.8875818976128313,
+                "mean": 0.8050782651868137
+              },
+              "stats": {
+                "count": 155,
+                "median": 0.5324147973900137,
+                "p10": 0.46829443586047126,
+                "p90": 0.6270768821125002,
+                "mean": 0.5428199749450463
+              }
+            },
+            "reviewedBody": {
+              "count": 16,
+              "median": 0.4670483685014954,
+              "p10": 0.1814321506865197,
+              "p90": 0.567160774497599,
+              "mean": 0.42283778231822355
+            }
+          },
+          "table": {
+            "text": {
+              "count": 350,
+              "median": 0.4904550357318228,
+              "p10": 0.41821823085926063,
+              "p90": 0.5603376873007644,
+              "mean": 0.48998142905882164
+            },
+            "regions": {
+              "title": {
+                "count": 350,
+                "median": 0.5438042569486409,
+                "p10": 0.43767892323429086,
+                "p90": 0.6661405687409694,
+                "mean": 0.5494217426219037
+              },
+              "type": {
+                "count": 350,
+                "median": 0.5136891997701065,
+                "p10": 0.41723132578752375,
+                "p90": 0.7015358483731149,
+                "mean": 0.5401280710581267
+              },
+              "body": {
+                "count": 350,
+                "median": 0.3598330118178594,
+                "p10": 0.1646424142524046,
+                "p90": 0.5013949969211722,
+                "mean": 0.34600503184331166
+              },
+              "footer": {
+                "count": 350,
+                "median": 0.5748940822677949,
+                "p10": 0.45534979071139814,
+                "p90": 0.6535518280428457,
+                "mean": 0.563529364319555
+              },
+              "frame-left": {
+                "count": 350,
+                "median": 0.8225986121312157,
+                "p10": 0.6774080168695267,
+                "p90": 0.9001027222187077,
+                "mean": 0.8078429237281873
+              },
+              "frame-right": {
+                "count": 350,
+                "median": 0.29495362620232124,
+                "p10": 0.07407122504462256,
+                "p90": 0.4931892819572228,
+                "mean": 0.2958382150174316
+              },
+              "type-border": {
+                "count": 350,
+                "median": 0.9972640167677221,
+                "p10": 0.6143344709897611,
+                "p90": 1,
+                "mean": 0.8826286599413058
+              },
+              "set-symbol": {
+                "count": 350,
+                "median": 0.5722764570092957,
+                "p10": 0.4159017454079449,
+                "p90": 0.7006784350106173,
+                "mean": 0.5651045960462169
+              },
+              "mana": {
+                "count": 314,
+                "median": 0.7763063318949817,
+                "p10": 0.6474132282447795,
+                "p90": 0.8417168237942396,
+                "mean": 0.7577904036625331
+              },
+              "stats": {
+                "count": 155,
+                "median": 0.5708804910799924,
+                "p10": 0.49689308092731643,
+                "p90": 0.6651736611934869,
+                "mean": 0.5735304181543112
+              }
+            },
+            "reviewedBody": {
+              "count": 16,
+              "median": 0.45987444433498376,
+              "p10": 0.16645994569537753,
+              "p90": 0.5571906697593749,
+              "mean": 0.4163760570910713
+            }
+          }
+        }
+      },
+      "pairedInputChanges": 0,
+      "layoutChanges": 0,
+      "confidentInspectRegionPairs": {
+        "mana": {
+          "count": 314,
+          "before": 0.4107830620038754,
+          "after": 0.8258232745629612,
+          "improved": 314,
+          "regressed": 0
+        },
+        "set-symbol": {
+          "count": 350,
+          "before": 0.40944698959580184,
+          "after": 0.6074955582629331,
+          "improved": 344,
+          "regressed": 1
+        },
+        "stats": {
+          "count": 155,
+          "before": 0.5316355998949857,
+          "after": 0.5324147973900137,
+          "improved": 22,
+          "regressed": 20
+        },
+        "footer": {
+          "count": 350,
+          "before": 0.23284425152396268,
+          "after": 0.6027402349486368,
+          "improved": 350,
+          "regressed": 0
+        },
+        "body": {
+          "count": 350,
+          "before": 0.36046571013912687,
+          "after": 0.36046571013912687,
+          "improved": 0,
+          "regressed": 0
+        }
+      },
+      "comparisonSeconds": 163.671834264,
+      "cacheHits": 0,
+      "assetGroups": [
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+          "role": "frame",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.40786879367792384,
+          "allCardMedianEdgeF1": 0.40786879367792384,
+          "status": "review-asset-or-placement",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Imps' Taunt",
+            "Death Pits of Rath",
+            "Abandon Hope",
+            "Minion of the Wastes",
+            "Perish",
+            "Coercion",
+            "Dark Ritual",
+            "Reckless Spite"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/gl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.5283723002529217,
+          "allCardMedianEdgeF1": 0.5283723002529217,
+          "status": "review-asset-or-placement",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Forest", "Forest", "Forest", "Forest"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+          "role": "frame",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.599008974956229,
+          "allCardMedianEdgeF1": 0.599008974956229,
+          "status": "review-asset-or-placement",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Needle Storm",
+            "Mongrel Pack",
+            "Charging Rhino",
+            "Harrow",
+            "Muscle Sliver",
+            "Crazed Armodon",
+            "Apes of Rath",
+            "Dirtcowl Wurm"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+          "role": "frame",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.6072812969522343,
+          "allCardMedianEdgeF1": 0.6072812969522343,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Mogg Conscripts",
+            "Mogg Squad",
+            "Enraging Licid",
+            "Sandstone Warrior",
+            "Sudden Impact",
+            "Tooth and Claw",
+            "Lightning Elemental",
+            "Lightning Blast"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg/tmp.svg",
+          "role": "setSymbol",
+          "cardCount": 350,
+          "confidentCount": 350,
+          "medianEdgeF1": 0.6074955582629331,
+          "allCardMedianEdgeF1": 0.6074955582629331,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Wind Dancer",
+            "Vhati il-Dal",
+            "Rootwater Diver",
+            "Mnemonic Sliver",
+            "Legacy's Allure",
+            "Wind Drake",
+            "Stinging Licid",
+            "Wood Sage"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+          "role": "frame",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.6221350895710479,
+          "allCardMedianEdgeF1": 0.6221350895710479,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Sacred Guide",
+            "Flickering Ward",
+            "Oracle en-Vec",
+            "Circle of Protection: Red",
+            "Staunch Defenders",
+            "Spirit Mirror",
+            "Master Decoy",
+            "Orim, Samite Healer"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+          "role": "frame",
+          "cardCount": 39,
+          "confidentCount": 39,
+          "medianEdgeF1": 0.6245983543564932,
+          "allCardMedianEdgeF1": 0.6245983543564932,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Scroll Rack",
+            "Scalding Tongs",
+            "Thumbscrews",
+            "Ruby Medallion",
+            "Phyrexian Grimoire",
+            "Mogg Cannon",
+            "Phyrexian Splicer",
+            "Energizer"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/m.png",
+          "role": "frame",
+          "cardCount": 10,
+          "confidentCount": 10,
+          "medianEdgeF1": 0.6263884702212066,
+          "allCardMedianEdgeF1": 0.6263884702212066,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Selenia, Dark Angel",
+            "Ranger en-Vec",
+            "Sky Spirit",
+            "Spontaneous Combustion",
+            "Dracoplasm",
+            "Soltari Guerrillas",
+            "Wood Sage",
+            "Vhati il-Dal"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+          "role": "frame",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.6484885358343668,
+          "allCardMedianEdgeF1": 0.6484885358343668,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Stinging Licid",
+            "Capsize",
+            "Giant Crab",
+            "Benthic Behemoth",
+            "Spell Blast",
+            "Insight",
+            "Counterspell",
+            "Horned Turtle"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/ul.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6877369634228592,
+          "allCardMedianEdgeF1": 0.6877369634228592,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Island", "Island", "Island", "Island"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+          "role": "frame",
+          "cardCount": 16,
+          "confidentCount": 16,
+          "medianEdgeF1": 0.6918450069692963,
+          "allCardMedianEdgeF1": 0.6918450069692963,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Wasteland",
+            "Reflecting Pool",
+            "Vec Townships",
+            "Caldera Lake",
+            "Stalking Stones",
+            "Scabland",
+            "Mogg Hollows",
+            "Rootwater Depths"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/wl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.6954000886620351,
+          "allCardMedianEdgeF1": 0.6954000886620351,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Plains", "Plains", "Plains", "Plains"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/U.svg",
+          "role": "mana",
+          "cardCount": 57,
+          "confidentCount": 57,
+          "medianEdgeF1": 0.6981519507186857,
+          "allCardMedianEdgeF1": 0.6981519507186857,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Wood Sage",
+            "Whim of Volrath",
+            "Shadow Rift",
+            "Benthic Behemoth",
+            "Rootwater Diver",
+            "Power Sink",
+            "Shimmering Wings",
+            "Spell Blast"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/rl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7064759998899431,
+          "allCardMedianEdgeF1": 0.7064759998899431,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Mountain", "Mountain", "Mountain", "Mountain"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/rl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7115724176020148,
+          "allCardMedianEdgeF1": 0.7115724176020148,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Mountain", "Mountain", "Mountain", "Mountain"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/X.svg",
+          "role": "mana",
+          "cardCount": 9,
+          "confidentCount": 9,
+          "medianEdgeF1": 0.7169117647058824,
+          "allCardMedianEdgeF1": 0.7169117647058824,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Power Sink",
+            "Spell Blast",
+            "Ertai's Meddling",
+            "Rolling Thunder",
+            "Scorched Earth",
+            "Abandon Hope",
+            "Krakilin",
+            "Endless Scream"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/bl.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7172594666185033,
+          "allCardMedianEdgeF1": 0.7172594666185033,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Swamp", "Swamp", "Swamp", "Swamp"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/bl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7444138699758309,
+          "allCardMedianEdgeF1": 0.7444138699758309,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Swamp", "Swamp", "Swamp", "Swamp"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/wl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7570798481825993,
+          "allCardMedianEdgeF1": 0.7570798481825993,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Plains", "Plains", "Plains", "Plains"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/R.svg",
+          "role": "mana",
+          "cardCount": 57,
+          "confidentCount": 57,
+          "medianEdgeF1": 0.7642008871083131,
+          "allCardMedianEdgeF1": 0.7642008871083131,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Soltari Guerrillas",
+            "Rolling Thunder",
+            "Magmasaur",
+            "Furnace of Rath",
+            "Chaotic Goo",
+            "Mogg Squad",
+            "Segmented Wurm",
+            "Apocalypse"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/ul.png",
+          "role": "frame",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.7790202482695827,
+          "allCardMedianEdgeF1": 0.7790202482695827,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Island", "Island", "Island", "Island"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/5.svg",
+          "role": "mana",
+          "cardCount": 3,
+          "confidentCount": 3,
+          "medianEdgeF1": 0.7905846749560624,
+          "allCardMedianEdgeF1": 0.7905846749560624,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Benthic Behemoth", "Verdant Force", "Rootbreaker Wurm"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/3.svg",
+          "role": "mana",
+          "cardCount": 57,
+          "confidentCount": 57,
+          "medianEdgeF1": 0.8083375332997336,
+          "allCardMedianEdgeF1": 0.8083375332997336,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Unstable Shapeshifter",
+            "Tradewind Rider",
+            "Duplicity",
+            "Time Warp",
+            "Magmasaur",
+            "Escaped Shapeshifter",
+            "Segmented Wurm",
+            "Selenia, Dark Angel"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+          "role": "boxes",
+          "cardCount": 16,
+          "confidentCount": 16,
+          "medianEdgeF1": 0.8166724718448857,
+          "allCardMedianEdgeF1": 0.8166724718448857,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Ghost Town",
+            "Thalakos Lowlands",
+            "Ancient Tomb",
+            "Vec Townships",
+            "Salt Flats",
+            "Maze of Shadows",
+            "Rootwater Depths",
+            "Skyshroud Forest"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/4.svg",
+          "role": "mana",
+          "cardCount": 17,
+          "confidentCount": 17,
+          "medianEdgeF1": 0.826720591311624,
+          "allCardMedianEdgeF1": 0.826720591311624,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Giant Crab",
+            "Precognition",
+            "Sea Monster",
+            "Energizer",
+            "Dirtcowl Wurm",
+            "Fool's Tome",
+            "Bellowing Fiend",
+            "Renegade Warlord"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/2.svg",
+          "role": "mana",
+          "cardCount": 91,
+          "confidentCount": 91,
+          "medianEdgeF1": 0.8288192559568497,
+          "allCardMedianEdgeF1": 0.8288192559568497,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Soltari Guerrillas",
+            "Mnemonic Sliver",
+            "Wind Drake",
+            "Dream Cache",
+            "Propaganda",
+            "Chaotic Goo",
+            "Twitch",
+            "Horned Turtle"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/1.svg",
+          "role": "mana",
+          "cardCount": 87,
+          "confidentCount": 87,
+          "medianEdgeF1": 0.8335581214294331,
+          "allCardMedianEdgeF1": 0.8335581214294331,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Ranger en-Vec",
+            "Sky Spirit",
+            "Winged Sliver",
+            "Mana Severance",
+            "Furnace of Rath",
+            "Capsize",
+            "Wind Dancer",
+            "Mogg Squad"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/gl.png",
+          "role": "boxes",
+          "cardCount": 4,
+          "confidentCount": 4,
+          "medianEdgeF1": 0.8425268373245252,
+          "allCardMedianEdgeF1": 0.8425268373245252,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Forest", "Forest", "Forest", "Forest"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/6.svg",
+          "role": "mana",
+          "cardCount": 3,
+          "confidentCount": 3,
+          "medianEdgeF1": 0.845340574267722,
+          "allCardMedianEdgeF1": 0.845340574267722,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Flowstone Sculpture", "Booby Trap", "Phyrexian Hulk"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/B.svg",
+          "role": "mana",
+          "cardCount": 57,
+          "confidentCount": 57,
+          "medianEdgeF1": 0.8469667150218214,
+          "allCardMedianEdgeF1": 0.8469667150218214,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Selenia, Dark Angel",
+            "Sadistic Glee",
+            "Minion of the Wastes",
+            "Vhati il-Dal",
+            "Lobotomy",
+            "Darkling Stalker",
+            "Commander Greven il-Vec",
+            "Imps' Taunt"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/W.svg",
+          "role": "mana",
+          "cardCount": 57,
+          "confidentCount": 57,
+          "medianEdgeF1": 0.8577098087515824,
+          "allCardMedianEdgeF1": 0.8577098087515824,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Soltari Guerrillas",
+            "Ranger en-Vec",
+            "Sky Spirit",
+            "Selenia, Dark Angel",
+            "Serene Offering",
+            "Talon Sliver",
+            "Orim, Samite Healer",
+            "Advance Scout"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/0.svg",
+          "role": "mana",
+          "cardCount": 1,
+          "confidentCount": 1,
+          "medianEdgeF1": 0.8630842083590693,
+          "allCardMedianEdgeF1": 0.8630842083590693,
+          "status": "insufficient-confident-evidence",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": ["Lotus Petal"]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/G.svg",
+          "role": "mana",
+          "cardCount": 57,
+          "confidentCount": 57,
+          "medianEdgeF1": 0.8830561109456758,
+          "allCardMedianEdgeF1": 0.8830561109456758,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Wood Sage",
+            "Ranger en-Vec",
+            "Segmented Wurm",
+            "Vhati il-Dal",
+            "Verdant Force",
+            "Natural Spring",
+            "Heartwood Giant",
+            "Trained Armodon"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+          "role": "boxes",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.9482508119540989,
+          "allCardMedianEdgeF1": 0.9482508119540989,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Goblin Bombardment",
+            "Havoc",
+            "Lightning Elemental",
+            "Sandstone Warrior",
+            "Crown of Flames",
+            "Stone Rain",
+            "Mogg Raider",
+            "Fireslinger"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/m.png",
+          "role": "boxes",
+          "cardCount": 10,
+          "confidentCount": 10,
+          "medianEdgeF1": 0.9817371133040518,
+          "allCardMedianEdgeF1": 0.9817371133040518,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Ranger en-Vec",
+            "Vhati il-Dal",
+            "Sky Spirit",
+            "Dracoplasm",
+            "Lobotomy",
+            "Selenia, Dark Angel",
+            "Soltari Guerrillas",
+            "Spontaneous Combustion"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+          "role": "boxes",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 0.9945317762883067,
+          "allCardMedianEdgeF1": 0.9945317762883067,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Clot Sliver",
+            "Reanimate",
+            "Death Pits of Rath",
+            "Minion of the Wastes",
+            "Imps' Taunt",
+            "Knight of Dusk",
+            "Corpse Dance",
+            "Dark Ritual"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+          "role": "boxes",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Armored Pegasus",
+            "Gallantry",
+            "Soltari Trooper",
+            "Soltari Priest",
+            "Quickening Licid",
+            "Mounted Archers",
+            "Master Decoy",
+            "Avenging Angel"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+          "role": "boxes",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Sea Monster",
+            "Benthic Behemoth",
+            "Capsize",
+            "Chill",
+            "Counterspell",
+            "Dismiss",
+            "Dream Cache",
+            "Duplicity"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+          "role": "boxes",
+          "cardCount": 53,
+          "confidentCount": 53,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Aluren",
+            "Apes of Rath",
+            "Bayou Dragonfly",
+            "Broken Fall",
+            "Canopy Spider",
+            "Charging Rhino",
+            "Choke",
+            "Crazed Armodon"
+          ]
+        },
+        {
+          "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+          "role": "boxes",
+          "cardCount": 39,
+          "confidentCount": 39,
+          "medianEdgeF1": 1,
+          "allCardMedianEdgeF1": 1,
+          "status": "monitor",
+          "families": ["retro-seventh"],
+          "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets.",
+          "exampleNames": [
+            "Manakin",
+            "Altar of Dementia",
+            "Booby Trap",
+            "Bottle Gnomes",
+            "Coiled Tinviper",
+            "Cold Storage",
+            "Cursed Scroll",
+            "Echo Chamber"
+          ]
+        }
+      ],
+      "warmComparison": {
+        "seconds": 3.372909314,
+        "cacheHits": 350
+      }
+    }
+  ]
+}

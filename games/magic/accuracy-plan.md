@@ -534,3 +534,93 @@ and displays explicit review candidates alongside them. It is a curated review
 page, not an overall accuracy claim. Full per-card metrics and the asset backlog
 remain available in each set report. Only capture uses Chromium; comparisons,
 typography metrics and page generation run in Node against cached pixels.
+
+## Printed details: Mirage and Tempest
+
+The detail pass responds to direct visual review of the earlier example page.
+The current policy is frozen at `ff29ccd`: costs move right/up and lose their
+shadows; MIR/TMP set symbols use black ink with white outlines and reviewed
+footprints; stats have a lower-right shadow; artist credits are larger, left
+aligned and higher; legal lines use the set's year and observed frame-dependent
+ink polarity. The tap mark is Mana's tilted-card `tap-4ed` glyph, not the diagonal
+T or modern hook. Existing frame and illustration assets remain unchanged.
+An explicit `legalText` input can override the known legal line, and `null`
+suppresses it. Missing required historical fonts now reject composition.
+
+Canvas captures now use the same 0.058-card-width corner radius as the GPU recipe.
+The silhouette is applied after painting to preserve interior antialiasing. Eight
+modern M21 holdouts are byte-identical inside the corners at both tiers. This
+corrects the formerly square raw previews; a scan-derived radius measurement
+remains separate work.
+
+[The detail measurement](fixtures/accuracy/tmp/details-measurement.json) compares
+40 previously reviewed development cards with `40a3bbd`. Three existing Mirage
+alignment flags remain visible but are excluded from the component aggregates.
+These are not fresh holdouts and not a new independent transfer claim.
+
+| Median fixed component F1 | Mirage             | Tempest            |
+| ------------------------- | ------------------ | ------------------ |
+| Mana cost                 | 0.495 → 0.786 (21) | 0.501 → 0.781 (14) |
+| Light set-symbol outline  | 0.437 → 0.729 (21) | 0.441 → 0.770 (16) |
+| Artist credit             | 0.283 → 0.589 (21) | 0.259 → 0.580 (16) |
+| Copyright band            | 0.198 → 0.815 (21) | 0.201 → 0.726 (16) |
+| Light stats ink           | 0.578 → 0.581 (11) | 0.519 → 0.579 (9)  |
+
+Counts are in parentheses. These windows/polarities differ from the earlier broad
+regions, so their scores must not be substituted into older measurements. All
+35 confidently aligned costs and 37 artist credits improve by more than 0.02.
+The copyright baseline score includes texture despite the line being absent;
+F1 alone does not prove content presence. Stats and symbol regressions remain
+listed per card rather than disappearing into an average.
+
+All 700 ordinary printings have also been recaptured and scored at both tiers,
+with zero failures, unchanged per-card inputs and unchanged body-layout geometry.
+Forty bodies have reviewed printed wording; 660 remain Oracle diagnostics. Across
+confident scans, all 633 mana-bearing cards improve by more than 0.02 in the
+original broad mana ROI: median F1 rises 0.421 → 0.819 for Mirage and
+0.411 → 0.826 for Tempest. Every confident footer improves (339 MIR, 350 TMP).
+The broad set-symbol region improves on 271 MIR and 344 TMP cards but regresses
+on 52 MIR and one TMP card. Some are texture/polarity interactions; they remain
+review flags, not automatically excused failures. Aggregate light-ink stats
+scores are nearly flat, so this metric does not validate the new dark shadow.
+Eleven Mirage scans retain their existing alignment flags; Tempest has none.
+Cold browser-free comparisons took 164.5s / 163.7s while running concurrently;
+these are CPU file/metric workloads, not isolated benchmarks or GPU timings.
+Warm repeats took 3.37s per set with all 350 comparison-cache hits, including
+capture checksum verification.
+
+A bounded component-translation diagnostic reports suggested offsets and shape
+residuals without moving either image. It also flags ambiguous peaks and search
+boundaries. In this pass it sometimes preferred a shared frame line over the
+misplaced mana. The additional independent radial disc measurement detected that
+failure: median rightmost-symbol center error fell from 4.47 to 0.50 canonical px
+on 11 confident Mirage triples, and 4.92 to 0.75px on six Tempest triples. The other
+18 cost examples did not pass its confidence gate. White sun glyphs and shadows
+are notable failure cases, not quietly discarded successes.
+
+The updated page includes the original seven cards plus Shaper Guildmage for tap
+review. It has full-card, header, set, footer, rules and corner views, and per-card
+edge overlays and offset flags. Regenerate the 40-card development comparison:
+
+```sh
+# Run for each of mir and tmp, preserving retro-type as the old capture:
+npm run magic:reference:render -- --set mir --study retro-details --cohort calibration --run retro-details
+npm run magic:reference:compare -- --set mir --study retro-details --run retro-details
+npm run magic:reference:details -- --set mir --baseline retro-type --run retro-details
+# Run tmp last to include both finished sets in its page:
+npm run magic:reference:details -- --set tmp --baseline retro-type --run retro-details
+```
+
+Open `test-results/magic-accuracy/tmp/retro-details/details.html`. Downloads and
+reference images remain local. The full-set capture uses `--cohort all --run
+retro-details-all`; compare/report that run for every printing's current scores
+and the asset backlog. Chromium is required only for capture, not the component
+searches, landmark detection, comparison or HTML generation.
+
+The [component review plan](component-review-plan.md) specifies the next detection
+work: independent expected-content targets, foreground isolation, topology and
+shadow/outline measurements, deliberate failure cases, calibrated review gates,
+and required agent inspection of enlarged image crops. The
+[working accuracy backlog](accuracy-backlog.md) separates assets from geometry,
+unsupported layouts from unmeasured painter branches, and known historical
+presentation gaps. Broad frame coverage remains ongoing.

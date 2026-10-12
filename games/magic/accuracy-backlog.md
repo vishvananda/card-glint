@@ -1,0 +1,42 @@
+# Rendering accuracy review queue
+
+This is a working queue from the measured M21, M20, Mirage and Tempest sets, not
+an assertion that every supported frame has been evaluated. Special treatments
+remain outside the current study. Keep the original frame assets in use while
+tracking the problems below. The local all-card reports contain asset URLs,
+example UUIDs, alignment flags and scores for each affected group.
+
+## Assets needing visual review
+
+| Asset group                                             | Observed problem                                                                                                                                                   | Examples / next evidence                                                                                                     |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| Seventh-family artifact frame (`seventh/regular/a.png`) | Mirage's printed dark reddish texture differs strongly from the brown plate; text-box pattern is also conspicuous.                                                 | Lead Golem, Grindstone, Altar of Dementia; inspect both sets before choosing an era-specific replacement.                    |
+| Other seventh-family colored plates                     | Texture, art borders and right rail differ from the older scans. Color-insensitive scores intentionally understate some visible color differences.                 | Blue Shaper Guildmage and red Viashino Warrior; keep texture/geometry and color observations separate.                       |
+| Historic set symbols (`mir.svg`, `tmp.svg`)             | White outlines and monochrome treatment are now painted, but palm leaves/trunk and cloud/bolt contours still differ from the scans.                                | Compare tight crops across all colors; frame ridges can contaminate whole-window scores.                                     |
+| Mana glyphs and historic tap font                       | Mana placement is corrected and the tilted-card tap variant is selected. Printed stroke weight, circle and internal glyph shapes still deserve independent review. | White sun is a known difficult landmark case; Shaper Guildmage and Grindstone expose tap details.                            |
+| Goudy / MPlantin font sources                           | Weight and width remain visibly different on some old-border titles, body text and credits. A better wrap score does not guarantee the same glyph outlines.        | Mtenda Herder, Mogg Conscripts, Lead Golem, Suq'Ata Firewalker; fit shared typography before considering a font replacement. |
+| Modern frame plates, type/stats borders and stamps      | Existing full-set asset associations need component inspection before assigning the error to an asset or placement.                                                | M21/M20 `asset-backlog.json`; do not replace a plate on an aggregate score alone.                                            |
+
+Frame sources and pinned revisions are listed in [NOTICE.md](NOTICE.md) and
+[assets.json](assets.json). The historical tap uses a pinned external font; no
+third-party binary was added to the repository. Original illustrations are not
+identified as bad assets by this pass: Scryfall art crops and full scans can
+have different color/scan processing, which must not become a geometry penalty.
+
+## Implementation and coverage gaps
+
+| Area                                                   | Current state                                                                                                                                                     | Next action                                                                                                                                                                     |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Old-border basic lands                                 | Painter uses the later large-symbol body, which is wrong for the early printings in the measured sets.                                                            | Add the historical text presentation and printed wording; evaluate all 40 MIR/TMP basics.                                                                                       |
+| Old-border ABU, fourth and Legends multicolor families | Painter branches exist; current old-border accuracy evidence covers only the seventh-family plate used for MIR/TMP.                                               | Choose ordinary sets and freeze reference/cohort/geometry review before transferring the detail policy.                                                                         |
+| Modern planeswalkers                                   | Both normal and taller rules-panel branches are captured in M21/M20. “Large” means the rules panel for more than three parsed rows, not oversized physical cards. | Replace estimated row sizing with measured text and independently reviewed badge/loyalty regions.                                                                               |
+| Saga, Class and leveler                                | Painter branches exist; the current reference adapter accepts only `normal` Scryfall layout and lacks dedicated region metrics.                                   | Add explicit eligible layouts and asset routing, then independent windows and cross-set examples. Do not call these unsupported renderers merely because evaluation is missing. |
+| Adventure, split and aftermath                         | Composition code exists, but multi-face reference/art selection and paired per-panel evaluation are missing from this pipeline.                                   | Preserve printing identity and face ordering; add per-face art/cache records and panel metrics.                                                                                 |
+| Transform, modal double-faced, meld, flip and Battle   | No verified dedicated rendering/evaluation contract in this pass. Unknown layouts can currently fall through to an ordinary frame.                                | Inventory routing and implement explicit support or a reported unsupported result; do not silently claim ordinary-frame output is correct.                                      |
+| 2003-era modern and future frames                      | Reference policy currently accepts only Scryfall frame values `1993`, `1997`, `2015`.                                                                             | Distinguish unsupported frame geometry from unsupported image/reference metadata; add families deliberately.                                                                    |
+| Footer metadata and printed wording outside MIR/TMP    | Set-specific legal defaults are currently limited to the reviewed two sets; most cached bodies still use Oracle text.                                             | Add printing metadata and reviewed text coverage without per-card geometric tuning.                                                                                             |
+
+Before expanding, follow the [component review plan](component-review-plan.md):
+independent component targets, multiple structural measurements, visual crop
+inspection, shared geometry, frozen transfer cohorts, and complete denominators.
+Unsupported cards must remain in coverage reports with an explicit reason.

@@ -162,3 +162,11 @@ Use `card-glint/magic/presentation` for the shared geometry and raster painter.
 The [host integration contract](../../docs/host-integration.md) documents image
 leases, custom set symbols, cached masks and shader integration without creating
 another graphics context.
+
+The [printed-detail study](fixtures/accuracy/tmp/details-measurement.json) follows
+up the old-border visual review with corrected cost placement, symbol outlines,
+credits, copyright, tap glyph and Canvas corners. Its local scan/previous/current
+page is `test-results/magic-accuracy/tmp/retro-details/details.html`, generated
+with `magic:reference:details`. See the [component review plan](component-review-plan.md)
+for detecting missing content, displacement and wrong shapes, and the
+[working backlog](accuracy-backlog.md) for assets and frame-coverage gaps.
