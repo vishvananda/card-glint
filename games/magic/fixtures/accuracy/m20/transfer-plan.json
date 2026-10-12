@@ -10,5 +10,8 @@
   "alignment": "Reuse the frozen M21 transforms, including identity for ordinary frames. Preserve per-card residual flags without fitting per-scan transforms.",
   "selection": "cohorts.json; 24 cards with names absent from M21; full ordinary printing corpus retained for diagnostics.",
   "acceptance": "Report paired before/after body edge F1, soft-wrap agreement and text-block errors on reviewed identical inputs; report confidence, coverage and regressions. Compare absolute levels with M21, without retuning to M20.",
-  "limitations": "A second core set tests transfer within this frame/era, not across all Magic layouts or eras."
+  "limitations": "A second core set tests transfer within this frame/era, not across all Magic layouts or eras.",
+  "sourceBaselineRun": "checkpoint-before",
+  "sourceRun": "typography",
+  "baselineProvenance": "The original M21 capture predates the aabf689 checkpoint and has a different source fingerprint. Recapture the same eight held-out inputs from aabf689 to enforce identical before-renderer bytes across sets; compare image hashes with the earlier capture."
 }

@@ -197,13 +197,72 @@ Chromatic Orrery remains an edge-score regression; Teferi's Tutelage regresses
 at table size and still has incorrect dense-flavor wrapping. The original frame
 asset review list remains applicable.
 
-M20 is the next transfer test. Freeze this renderer before viewing M20 results.
-Use the same alignment transforms first, with explicit M21 provenance, and no
-M20 typography tuning. Select 24 evaluation cards from metadata alone: three
+M20 was reserved as the transfer test before viewing its results. The renderer
+and alignment transforms were frozen with explicit M21 provenance and no M20
+typography tuning. The 24 evaluation cards were selected from metadata alone: three
 text-length quantiles in each of white, blue, black, red, green, multicolor,
-colorless nonland, and land. Exclude names present in the M21 corpus from this
-reviewed cohort. Compare both the previous and frozen renderer against identical
-reviewed inputs. All other ordinary M20 printings stay in the diagnostic report.
+colorless nonland, and land. Names present in the M21 corpus were excluded from
+this reviewed cohort. Both renderer versions used identical reviewed inputs.
+All other ordinary M20 printings stay in the diagnostic report.
+
+### M20 transfer results
+
+The [frozen plan](fixtures/accuracy/m20/transfer-plan.json) and
+[transfer measurement](fixtures/accuracy/m20/transfer-measurement.json) record
+343 ordinary M20 printings: 311 ordinary nonbasic/non-planeswalkers, 20 basics,
+and 12 planeswalkers. One promotional treatment is excluded. Both versions
+rendered all 343 without failures; 331 ordinary text layouts passed fit checks.
+The two sets now cover 640 printings, with 48 reviewed body texts. The remaining
+592 Oracle bodies have diagnostic scores only.
+
+| Reviewed evaluation metric   | M21 holdouts (8) | M20 transfer (23) |
+| ---------------------------- | ---------------- | ----------------- |
+| Median body edge F1, inspect | 0.345 → 0.614    | 0.349 → 0.486     |
+| Median body edge F1, table   | 0.329 → 0.594    | 0.340 → 0.478     |
+| Mean soft-wrap F1            | 0.662 → 0.772    | 0.773 → 0.719     |
+| Exact wrapping               | 2 → 4            | 11 → 11           |
+| Median block-edge error      | 6.5 → 3px        | 7 → 3px           |
+
+The spacing gains transfer, but wrapping does not consistently improve. M20 has
+16 body-edge improvements and five regressions above the 0.02 review threshold.
+Bag of Holding, Gargos, Brought Back, Empyrean Eagle, and Nightpack Ambusher are
+flagged. Kaalia and Fencing Ace also lose soft-wrap agreement. Empyrean Eagle
+specifically exposes the flavor-orphan heuristic: its printing keeps the short
+last line that our heuristic removes. Keep this result as evidence for the next
+iteration; no M20-specific typography adjustments followed evaluation.
+
+Bone Splinters is the 24th reviewed card. Its 3.5px frame-landmark residual exceeds
+the existing confidence limit, so it stays visible in the report but outside
+the aggregate above. M20 has 29 alignment flags in total. The median residual is
+2px for normal frames and 1px for legendary frames in both sets. These observations
+support retaining the shared ordinary-frame alignment for this comparison; they
+do not eliminate individual scan uncertainty. No M20 or per-scan transform was fit.
+
+Land boxes, loyalty plates, and the black frame are flagged in both sets. M20's
+set symbol and blue-mana region add review associations. Placement and region
+selection must be checked before replacing any source asset. Assets are unchanged.
+
+The transfer command verifies matching renderer, font, browser, metric and
+alignment fingerprints before combining results. The M21 holdouts were recaptured
+from the committed baseline; their PNGs at both tiers are byte-identical to the
+earlier working-tree captures. This resolves the differing source fingerprints
+without assuming that source changes were harmless.
+
+```sh
+npm run magic:reference:fetch -- --set m20
+npm run magic:reference:render -- --set m20 --run typography
+npm run magic:reference:compare -- --set m20 --run typography
+npm run magic:reference:typography -- --set m20 --run typography
+npm run magic:reference:report -- --set m20 --run typography
+# Requires both archived renderer runs and M21 runs named in transfer-plan.json:
+npm run magic:reference:transfer -- --set m20 --baseline before --run typography
+```
+
+Open `test-results/magic-accuracy/m20/typography/report.html` for all-card results,
+or inspect `transfer.json` beside it. A warm comparison of all 343 cards at both
+tiers took 2.2 seconds, including checksum verification, without Chromium.
+Download and raster capture are excluded. The paired-card bootstrap intervals
+describe the selected cohorts, not a population-wide accuracy guarantee.
 
 The internal `planeswalker-large` name means a taller rules area for more than
 three ability rows, not an oversized card. M21's four entries are four ordinary
@@ -250,15 +309,17 @@ need additional regions before their assets can be ranked responsibly.
 
 Next passes should:
 
-1. Review the remaining printed text and annotate expected line/block geometry.
-   Investigate reported regressions before adjusting the shared typography policy.
-2. Improve remaining glyph metrics, flavor attribution and short/dense rules on
-   calibration cards; evaluate held-out cards without fitting per-card coordinates.
+1. Investigate wrapping and font-size selection across both sets, including the
+   flavor-orphan regression. Reserve a fresh evaluation cohort before using M20
+   examples for tuning; these observed examples cannot serve as an untouched test
+   of a policy derived from them.
+2. Review remaining printed text and line geometry; improve glyph metrics and
+   dense rules without fitting per-card coordinates.
 3. Add proper basic-land symbol layout, complete printing-footer inputs, security
    stamp coverage and separate planeswalker typography acceptance.
 4. Review the asset backlog with paired examples. Keep source-asset replacements
    separate from typography changes so their effects can be measured.
-5. Add a second ordinary set, then bulk ingestion and aggregation across sets.
+5. Add another frame/era and bulk ingestion and aggregation across sets.
    Keep per-frame defaults and use set overrides only when cohort evidence supports
    them. Inventory unsupported layouts and low-quality references explicitly.
 6. Validate WebGL compositing and Safari captures separately. A future native

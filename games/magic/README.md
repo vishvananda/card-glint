@@ -93,7 +93,7 @@ The original showcase remains independent of this optional pack and its assets.
 
 ## Rendering accuracy
 
-The [M21 accuracy pipeline](accuracy-plan.md) covers all 297 ordinary M21 printings,
+The [accuracy pipeline](accuracy-plan.md) covers 297 ordinary M21 and 343 M20 printings,
 with a local Scryfall PNG/art cache, frozen frame/set alignment, per-card structural
 metrics, and an asset improvement list. Existing frame assets are retained.
 
@@ -108,6 +108,10 @@ Open `test-results/magic-accuracy/m21/current/report.html`. Only raster capture
 requires Playwright Chromium; comparison and report generation run in Node and
 reuse cached results. Downloaded art/scans stay local and out of the showcase.
 Scores distinguish reviewed printed wording from unverified Oracle text.
+The [M20 transfer test](fixtures/accuracy/m20/transfer-measurement.json) keeps
+M21's typography and alignment fixed. Vertical spacing improves on the new set,
+while wrapping remains a review issue. Use `--set m20 --run typography` on the
+reference commands to reproduce that set's current renderer report.
 For the reviewed line-break/spacing fixtures, run `magic:reference:typography`
 after comparison and before report generation. Its soft-wrap score excludes
 forced paragraph breaks; geometry errors are in reference pixels. See the

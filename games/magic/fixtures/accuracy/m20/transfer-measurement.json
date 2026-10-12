@@ -1,0 +1,1107 @@
+{
+  "schemaVersion": 1,
+  "sourceSet": "m21",
+  "targetSet": "m20",
+  "plan": {
+    "schemaVersion": 1,
+    "sourceSet": "m21",
+    "set": "m20",
+    "frozenRendererCommit": "cbb7fe3",
+    "baselineRendererCommit": "aabf689",
+    "frozenAt": "2026-10-12T00:00:45.218Z",
+    "typographyTuning": false,
+    "setAlignmentFitting": false,
+    "alignment": "Reuse the frozen M21 transforms, including identity for ordinary frames. Preserve per-card residual flags without fitting per-scan transforms.",
+    "selection": "cohorts.json; 24 cards with names absent from M21; full ordinary printing corpus retained for diagnostics.",
+    "acceptance": "Report paired before/after body edge F1, soft-wrap agreement and text-block errors on reviewed identical inputs; report confidence, coverage and regressions. Compare absolute levels with M21, without retuning to M20.",
+    "limitations": "A second core set tests transfer within this frame/era, not across all Magic layouts or eras.",
+    "sourceBaselineRun": "checkpoint-before",
+    "sourceRun": "typography",
+    "baselineProvenance": "The original M21 capture predates the aabf689 checkpoint and has a different source fingerprint. Recapture the same eight held-out inputs from aabf689 to enforce identical before-renderer bytes across sets; compare image hashes with the earlier capture."
+  },
+  "frozenRendererHash": "485705f6b13bee737a1a0e24c64a63b3f9b1cbf5cc804ef1ad52f53de2d6d67c",
+  "baselineRendererHash": "d111c70ce42707510ad852eff47189aa4376ee17975836a601add8eb6fa8e463",
+  "browser": "148.0.7778.96",
+  "metricSource": "ed52ca5d4c75f7237bac1a11a5e012b8f4f87f26a09ed274ba72d683df2ba73f",
+  "note": "Same before/after renderers, fonts, inputs, metrics and shared alignment transforms. Reviewed, confidently aligned holdouts only. F1 is structural similarity, not accuracy percentage. Bootstrap intervals describe the selected cards; ±0.02 F1 and 2px geometry are review thresholds, not acceptance gates.",
+  "sourceHoldout": {
+    "attempted": 8,
+    "paired": 8,
+    "excluded": [],
+    "inspectBody": {
+      "beforeMedian": 0.3448315614917953,
+      "afterMedian": 0.6138879809087439,
+      "beforeMean": 0.3533182251475994,
+      "afterMean": 0.5943385540173515,
+      "medianPairedDelta": 0.2291544922572192,
+      "pairedDeltaBootstrap95": [0.046362829589551624, 0.42395104808120077],
+      "improved": 7,
+      "regressed": 0
+    },
+    "tableBody": {
+      "beforeMedian": 0.32893560317856985,
+      "afterMedian": 0.5942492208402637,
+      "beforeMean": 0.3462089123775429,
+      "afterMean": 0.5827543708274419,
+      "medianPairedDelta": 0.24189786318248796,
+      "pairedDeltaBootstrap95": [0.056155527009808415, 0.4181435551930654],
+      "improved": 7,
+      "regressed": 1
+    },
+    "softBreakF1": {
+      "beforeMedian": 0.625,
+      "afterMedian": 0.9,
+      "beforeMean": 0.6618055555555555,
+      "afterMean": 0.7715277777777777,
+      "medianPairedDelta": 0,
+      "pairedDeltaBootstrap95": [0, 0.3],
+      "improved": 2,
+      "regressed": 1
+    },
+    "blockEdgeMae": {
+      "beforeMedian": 6.5,
+      "afterMedian": 3,
+      "beforeMean": 6.6875,
+      "afterMean": 4.1875,
+      "medianPairedDelta": -3.75,
+      "pairedDeltaBootstrap95": [-6.5, 0],
+      "improved": 5,
+      "regressed": 1
+    },
+    "exactWrapping": [2, 4],
+    "cards": [
+      {
+        "id": "e70b7a73-484e-48f1-944c-3d38866cdc20",
+        "name": "Nine Lives",
+        "inspect": [0.36652738599895707, 0.6095506994361022],
+        "table": [0.3561059884775785, 0.6212824610606559],
+        "softBreakF1": [0.5, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [4, 4]
+      },
+      {
+        "id": "c26450d4-125f-423d-b074-3c959460c242",
+        "name": "Teferi's Tutelage",
+        "inspect": [0.30855778908356674, 0.2974266426808972],
+        "table": [0.30176521787956123, 0.27558174099137334],
+        "softBreakF1": [0.4444444444444444, 0.2222222222222222],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [7.5, 13.5]
+      },
+      {
+        "id": "ed875705-b7b6-4464-b16f-61629ffed04f",
+        "name": "Chandra's Incinerator",
+        "inspect": [0.32313573698463344, 0.8039986953595811],
+        "table": [0.29201703765399856, 0.7973181420975618],
+        "softBreakF1": [0.4, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [8.5, 1]
+      },
+      {
+        "id": "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+        "name": "Double Vision",
+        "inspect": [0.4126213857267747, 0.627907056804068],
+        "table": [0.40063416507366784, 0.6192534188555664],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [5, 1]
+      },
+      {
+        "id": "432ecd5f-966f-4403-a973-51e175a524a0",
+        "name": "Terror of the Peaks",
+        "inspect": [0.18228750616258463, 0.6162790261264585],
+        "table": [0.17530856806342848, 0.5934521232564939],
+        "softBreakF1": [0.4, 0.4],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [9.5, 5]
+      },
+      {
+        "id": "8059c52b-5d25-4052-b48a-e9e219a7a546",
+        "name": "Colossal Dreadmaw",
+        "inspect": [0.24445779790357539, 0.6114969356910291],
+        "table": [0.24376380011448984, 0.5900536506023344],
+        "softBreakF1": [0.75, 0.75],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [8.5, 2]
+      },
+      {
+        "id": "d313d051-7295-4884-8cbf-f2f835fd45f4",
+        "name": "Fabled Passage",
+        "inspect": [0.46465296367636344, 0.617381310806784],
+        "table": [0.4861849374359124, 0.5950463184240333],
+        "softBreakF1": [0.8, 0.8],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [5.5, 2]
+      },
+      {
+        "id": "feb3d45c-a28c-49d2-ab79-53ab42c7fdfd",
+        "name": "Scoured Barrens",
+        "inspect": [0.5243052356443402, 0.5706680652338918],
+        "table": [0.5138915843217066, 0.570047111331515],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [5, 5]
+      }
+    ]
+  },
+  "targetHoldout": {
+    "attempted": 24,
+    "paired": 23,
+    "excluded": [
+      {
+        "id": "7e75a7e9-902a-4733-8cd4-767247174a4c",
+        "name": "Bone Splinters",
+        "reason": "alignment-uncertain"
+      }
+    ],
+    "inspectBody": {
+      "beforeMedian": 0.3491821786899506,
+      "afterMedian": 0.486478724735431,
+      "beforeMean": 0.34977828229164604,
+      "afterMean": 0.4846985225436084,
+      "medianPairedDelta": 0.10905886761769235,
+      "pairedDeltaBootstrap95": [0.022751361660707015, 0.2642029498777729],
+      "improved": 16,
+      "regressed": 5
+    },
+    "tableBody": {
+      "beforeMedian": 0.3395437473403764,
+      "afterMedian": 0.47768174104961025,
+      "beforeMean": 0.34303397670443947,
+      "afterMean": 0.47245668125588147,
+      "medianPairedDelta": 0.0987634935562472,
+      "pairedDeltaBootstrap95": [0.04235329489221118, 0.24016429515399973],
+      "improved": 16,
+      "regressed": 5
+    },
+    "softBreakF1": {
+      "beforeMedian": 0.75,
+      "afterMedian": 0.8571428571428571,
+      "beforeMean": 0.772670807453416,
+      "afterMean": 0.7191511387163562,
+      "medianPairedDelta": 0,
+      "pairedDeltaBootstrap95": [0, 0],
+      "improved": 4,
+      "regressed": 4
+    },
+    "blockEdgeMae": {
+      "beforeMedian": 7,
+      "afterMedian": 3,
+      "beforeMean": 7.086956521739131,
+      "afterMean": 4.739130434782608,
+      "medianPairedDelta": -2,
+      "pairedDeltaBootstrap95": [-4, -1],
+      "improved": 10,
+      "regressed": 3
+    },
+    "exactWrapping": [11, 11],
+    "cards": [
+      {
+        "id": "aecdc315-95e5-450c-bedc-998eea46cf8c",
+        "name": "Brought Back",
+        "inspect": [0.4931365393712654, 0.4126846400786063],
+        "table": [0.472027087852612, 0.4072930910722749],
+        "softBreakF1": [0.75, 0.75],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [3.5, 8]
+      },
+      {
+        "id": "53f54b57-9516-424a-86a3-54843efadb0c",
+        "name": "Fencing Ace",
+        "inspect": [0.258822144363231, 0.5230250942410039],
+        "table": [0.25080239143263244, 0.4992762713412017],
+        "softBreakF1": [0.6666666666666666, 0.3333333333333333],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [8, 3]
+      },
+      {
+        "id": "764a7a53-314e-4b1f-aa33-0f312d06df71",
+        "name": "Raise the Alarm",
+        "inspect": [0.34397841825395775, 0.4530372858716501],
+        "table": [0.3395437473403764, 0.4383072408966236],
+        "softBreakF1": [0.5, 0.5],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [3.5, 1.5]
+      },
+      {
+        "id": "cc6686e6-4535-49be-b0b3-e76464656cd2",
+        "name": "Agent of Treachery",
+        "inspect": [0.36862220982657157, 0.6596780088674845],
+        "table": [0.3747944005362656, 0.6604480916240395],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [7, 2.5]
+      },
+      {
+        "id": "29b70152-1d7b-45c4-8c85-011d2338e0a8",
+        "name": "Leyline of Anticipation",
+        "inspect": [0.4513919664642276, 0.4741433281249346],
+        "table": [0.4353284461573991, 0.47768174104961025],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [4, 3]
+      },
+      {
+        "id": "31e22edb-a815-413d-b62d-f32f8932b6e6",
+        "name": "Unholy Indenture",
+        "inspect": [0.42193287273843005, 0.4785664036168773],
+        "table": [0.41734176411354335, 0.4767880992307144],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [4.5, 1]
+      },
+      {
+        "id": "54fbbf39-cd52-474a-908e-b7a78cb5eb5b",
+        "name": "Goblin Bird-Grabber",
+        "inspect": [0.3014478824588396, 0.5713227906933656],
+        "table": [0.30228993079044925, 0.5597118326566871],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [10, 2]
+      },
+      {
+        "id": "884c47fa-7060-48da-995c-e4037640a208",
+        "name": "Keldon Raider",
+        "inspect": [0.29573922503289257, 0.5246583186368139],
+        "table": [0.2982169448409861, 0.5144752959838992],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [10, 2.5]
+      },
+      {
+        "id": "289b649b-c93a-44ad-bdd6-866f8b2f1bc2",
+        "name": "Thunderkin Awakener",
+        "inspect": [0.2532948325433652, 0.5432932872623236],
+        "table": [0.25838336155173686, 0.4985476567057366],
+        "softBreakF1": [0.5, 0.5],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [9, 7]
+      },
+      {
+        "id": "4e446e90-6e31-43ed-bcb1-a01422b503c0",
+        "name": "Gargos, Vicious Watcher",
+        "inspect": [0.3735250939185125, 0.23342412744647414],
+        "table": [0.3798076407665323, 0.2323006288291136],
+        "softBreakF1": [0.5714285714285714, 0.8571428571428571],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [17, 18.5]
+      },
+      {
+        "id": "2c9b1f70-9861-4c66-a52f-c40002679e75",
+        "name": "Nightpack Ambusher",
+        "inspect": [0.42064182633374475, 0.3911462067220512],
+        "table": [0.43088284158629386, 0.3704841919045172],
+        "softBreakF1": [0.6666666666666666, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [6, 3.5]
+      },
+      {
+        "id": "8b45117b-8369-48fc-8e5d-8986e662d123",
+        "name": "Corpse Knight",
+        "inspect": [0.24968081157871128, 0.8099346801523281],
+        "table": [0.25055063844510217, 0.7719258203130811],
+        "softBreakF1": [0.75, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [11, 3]
+      },
+      {
+        "id": "ac555709-c7cc-4c64-8a6f-8fe2bc149fcd",
+        "name": "Empyrean Eagle",
+        "inspect": [0.24075395984187117, 0.1635155963572736],
+        "table": [0.23336686986828664, 0.16898438351095196],
+        "softBreakF1": [1, 0.4],
+        "exactWrapping": [true, false],
+        "blockEdgeMae": [7, 12]
+      },
+      {
+        "id": "1f400655-f495-4b21-ab9e-57fe4d845d45",
+        "name": "Kaalia, Zenith Seeker",
+        "inspect": [0.31045921329063614, 0.48809893115116504],
+        "table": [0.3133452979549792, 0.4574035900098376],
+        "softBreakF1": [1, 0.16666666666666666],
+        "exactWrapping": [true, false],
+        "blockEdgeMae": [8, 8]
+      },
+      {
+        "id": "49283832-54f2-4619-b4a9-750493c93292",
+        "name": "Bag of Holding",
+        "inspect": [0.5208505003225888, 0.3183835074066489],
+        "table": [0.4718033375248268, 0.3267247783029648],
+        "softBreakF1": [1, 0.3333333333333333],
+        "exactWrapping": [true, false],
+        "blockEdgeMae": [4.5, 3]
+      },
+      {
+        "id": "0a135e09-b534-4836-9a10-3a9a4a9f8c53",
+        "name": "Grafdigger's Cage",
+        "inspect": [0.4242416628737329, 0.4383588770601069],
+        "table": [0.42039149663392744, 0.426331718653633],
+        "softBreakF1": [0.6666666666666666, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [3.5, 4]
+      },
+      {
+        "id": "6ed61426-e652-4b48-b936-8be9b6b57731",
+        "name": "Steel Overseer",
+        "inspect": [0.22407139630498438, 0.48594744659683],
+        "table": [0.21700920932394668, 0.46731887968179386],
+        "softBreakF1": [0.3333333333333333, 0.3333333333333333],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [10, 1.5]
+      },
+      {
+        "id": "fde9e9cb-68ab-4856-8ad6-30f66666dd93",
+        "name": "Cryptic Caves",
+        "inspect": [0.31164702491077834, 0.6611328648098859],
+        "table": [0.3132527298223014, 0.6263617989430593],
+        "softBreakF1": [0.6666666666666666, 0.6666666666666666],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [5.5, 3.5]
+      },
+      {
+        "id": "470ca3f4-29aa-4c4c-8ff2-8cdd70c69943",
+        "name": "Field of the Dead",
+        "inspect": [0.3491821786899506, 0.34851863698009117],
+        "table": [0.3325325995612842, 0.3343993884452177],
+        "softBreakF1": [0.2, 0.2],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [6, 8.5]
+      },
+      {
+        "id": "0e013033-3995-4ba8-b0c3-0614c79aaaab",
+        "name": "Lotus Field",
+        "inspect": [0.3821247963871987, 0.486478724735431],
+        "table": [0.3874223341633548, 0.4802356551984235],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [6.5, 6]
+      },
+      {
+        "id": "11cbdf06-f6b5-4bd8-80bf-6d7e57649684",
+        "name": "Phantom Warrior",
+        "inspect": [0.22984853101561456, 0.6150241077559169],
+        "table": [0.2151434424092193, 0.613699883238012],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [8, 1.5]
+      },
+      {
+        "id": "7debd8f7-2f34-4fdd-8eb6-fa8f9d2a60e8",
+        "name": "Disentomb",
+        "inspect": [0.4287999438216964, 0.49785650876674686],
+        "table": [0.395821507384879, 0.4901106578713074],
+        "softBreakF1": [0.5, 0.5],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [3.5, 2.5]
+      },
+      {
+        "id": "4e68b3bd-996e-4383-b134-f529bcb768de",
+        "name": "Aggressive Mammoth",
+        "inspect": [0.3907074623650568, 0.5698366451689861],
+        "table": [0.3797234441411727, 0.5676929734225743],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [7, 3]
+      }
+    ]
+  },
+  "coverage": {
+    "m21": {
+      "eligible": 297,
+      "measured": 297,
+      "failed": 0,
+      "reviewed": 24,
+      "unverified": 273,
+      "alignmentFlags": 20,
+      "overflow": 0,
+      "diagnosticMedianTextF1": 0.64157126372036,
+      "frameFamilies": {
+        "planeswalker": {
+          "count": 10,
+          "uncertain": 0,
+          "medianLandmarkResidual": 2
+        },
+        "modern-normal": {
+          "count": 265,
+          "uncertain": 16,
+          "medianLandmarkResidual": 2
+        },
+        "modern-legendary": {
+          "count": 18,
+          "uncertain": 0,
+          "medianLandmarkResidual": 1
+        },
+        "planeswalker-large": {
+          "count": 4,
+          "uncertain": 4,
+          "medianLandmarkResidual": 1
+        }
+      }
+    },
+    "m20": {
+      "eligible": 343,
+      "measured": 343,
+      "failed": 0,
+      "reviewed": 24,
+      "unverified": 319,
+      "alignmentFlags": 29,
+      "overflow": 0,
+      "diagnosticMedianTextF1": 0.5469656948582229,
+      "frameFamilies": {
+        "modern-normal": {
+          "count": 319,
+          "uncertain": 26,
+          "medianLandmarkResidual": 2
+        },
+        "planeswalker": {
+          "count": 11,
+          "uncertain": 2,
+          "medianLandmarkResidual": 2.5
+        },
+        "modern-legendary": {
+          "count": 12,
+          "uncertain": 0,
+          "medianLandmarkResidual": 1
+        },
+        "planeswalker-large": {
+          "count": 1,
+          "uncertain": 1,
+          "medianLandmarkResidual": 2
+        }
+      }
+    }
+  },
+  "assetReview": [
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/planeswalker/Loyalty.webp",
+      "role": "pt",
+      "cardCount": 12,
+      "confidentCount": 9,
+      "medianEdgeF1": 0.20253164556962025,
+      "allCardMedianEdgeF1": 0.18391045088398367,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "f7ead409-3bce-47c8-ace7-498c38522369",
+          "name": "Vivien, Nature's Avenger",
+          "family": "planeswalker",
+          "alignmentUncertain": false,
+          "scores": [0],
+          "distances": [6.362969840566317],
+          "score": 0,
+          "meanDistance": 6.362969840566317
+        },
+        {
+          "id": "79883468-a37c-4894-8d05-6a4d150b7d59",
+          "name": "Ajani, Strength of the Pride",
+          "family": "planeswalker",
+          "alignmentUncertain": false,
+          "scores": [0.03636363636363637],
+          "distances": [5.580759263567386],
+          "score": 0.03636363636363637,
+          "meanDistance": 5.580759263567386
+        },
+        {
+          "id": "d678cf4c-60e3-40a1-a9cc-b0bd157bcf36",
+          "name": "Chandra, Novice Pyromancer",
+          "family": "planeswalker",
+          "alignmentUncertain": true,
+          "scores": [0.10526315789473685],
+          "distances": [5.504884809179379],
+          "score": 0.10526315789473685,
+          "meanDistance": 5.504884809179379
+        },
+        {
+          "id": "592c5e27-c538-425e-b41f-1d6708428853",
+          "name": "Vivien, Arkbow Ranger",
+          "family": "planeswalker",
+          "alignmentUncertain": false,
+          "scores": [0.13043478260869568],
+          "distances": [4.816496625045936],
+          "score": 0.13043478260869568,
+          "meanDistance": 4.816496625045936
+        },
+        {
+          "id": "dba41e5f-66b8-4459-8a07-bbe893216f1e",
+          "name": "Ajani, Inspiring Leader",
+          "family": "planeswalker",
+          "alignmentUncertain": true,
+          "scores": [0.14760147601476015],
+          "distances": [4.914940029482157],
+          "score": 0.14760147601476015,
+          "meanDistance": 4.914940029482157
+        },
+        {
+          "id": "bf20ea7b-e480-4b0e-b080-888f24d3c08d",
+          "name": "Sorin, Vampire Lord",
+          "family": "planeswalker",
+          "alignmentUncertain": false,
+          "scores": [0.16528925619834708],
+          "distances": [3.757760524749756],
+          "score": 0.16528925619834708,
+          "meanDistance": 3.757760524749756
+        },
+        {
+          "id": "0240f9eb-e1b2-4b41-94b0-b00ad2850825",
+          "name": "Mu Yanling, Sky Dancer",
+          "family": "planeswalker",
+          "alignmentUncertain": false,
+          "scores": [0.20253164556962025],
+          "distances": [3.6265472801216756],
+          "score": 0.20253164556962025,
+          "meanDistance": 3.6265472801216756
+        },
+        {
+          "id": "9f764be3-dd3f-44b1-a4a6-807d1387590b",
+          "name": "Sorin, Imperious Bloodlord",
+          "family": "planeswalker",
+          "alignmentUncertain": false,
+          "scores": [0.26229508196721313],
+          "distances": [3.7671656400094298],
+          "score": 0.26229508196721313,
+          "meanDistance": 3.7671656400094298
+        }
+      ],
+      "families": ["planeswalker", "planeswalker-large"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/boxes/Land.webp",
+      "role": "boxes",
+      "cardCount": 39,
+      "confidentCount": 34,
+      "medianEdgeF1": 0.2271714922048998,
+      "allCardMedianEdgeF1": 0.2271714922048998,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "73fb4a34-c11e-45e9-a986-43c0a0ae5424",
+          "name": "Plains",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.1867881548974943],
+          "distances": [19.96085919207664],
+          "score": 0.1867881548974943,
+          "meanDistance": 19.96085919207664
+        },
+        {
+          "id": "43e7e6ec-9bfe-4062-a538-2a748d2eed1f",
+          "name": "Forest",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.1904761904761905],
+          "distances": [20.459223413975316],
+          "score": 0.1904761904761905,
+          "meanDistance": 20.459223413975316
+        },
+        {
+          "id": "9b7ec5a3-3c40-4090-b9e3-11fb5b06fb8f",
+          "name": "Bloodfell Caves",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.19090909090909092],
+          "distances": [20.491921960672826],
+          "score": 0.19090909090909092,
+          "meanDistance": 20.491921960672826
+        },
+        {
+          "id": "9b6b7a1d-943b-43f8-a70b-1a3a205476cf",
+          "name": "Jungle Hollow",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.19090909090909092],
+          "distances": [20.505603372301888],
+          "score": 0.19090909090909092,
+          "meanDistance": 20.505603372301888
+        },
+        {
+          "id": "00f8ec3c-d2cb-477c-a7e8-ff497df646d6",
+          "name": "Temple of Epiphany",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.19090909090909092],
+          "distances": [20.505603372301888],
+          "score": 0.19090909090909092,
+          "meanDistance": 20.505603372301888
+        },
+        {
+          "id": "0c284acd-4407-42ad-9f4c-359041223609",
+          "name": "Temple of Mystery",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.19090909090909092],
+          "distances": [20.505603372301888],
+          "score": 0.19090909090909092,
+          "meanDistance": 20.505603372301888
+        },
+        {
+          "id": "f3448b8b-8baf-492a-a1d6-4bb676c43cab",
+          "name": "Island",
+          "family": "modern-normal",
+          "alignmentUncertain": true,
+          "scores": [0.19090909090909092],
+          "distances": [20.505603372301888],
+          "score": 0.19090909090909092,
+          "meanDistance": 20.505603372301888
+        },
+        {
+          "id": "a9023215-035f-4f12-9f75-04b995b5d24a",
+          "name": "Swamp",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.19090909090909092],
+          "distances": [20.505603372301888],
+          "score": 0.19090909090909092,
+          "meanDistance": 20.505603372301888
+        }
+      ],
+      "families": ["modern-normal"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg/m20.svg",
+      "role": "setSymbol",
+      "cardCount": 343,
+      "confidentCount": 314,
+      "medianEdgeF1": 0.4318419938830058,
+      "allCardMedianEdgeF1": 0.4313962643055191,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "8b45117b-8369-48fc-8e5d-8986e662d123",
+          "name": "Corpse Knight",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.23333765560165973],
+          "distances": [7.634459997669825],
+          "score": 0.23333765560165973,
+          "meanDistance": 7.634459997669825
+        },
+        {
+          "id": "5f305027-dfd2-4b17-a6af-6b0576389623",
+          "name": "Tomebound Lich",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.23490148257493101],
+          "distances": [7.329340219339711],
+          "score": 0.23490148257493101,
+          "meanDistance": 7.329340219339711
+        },
+        {
+          "id": "549634d8-1c33-401b-841d-a79ef4374dd1",
+          "name": "Skyknight Vanguard",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.2379911929812767],
+          "distances": [7.588099642639216],
+          "score": 0.2379911929812767,
+          "meanDistance": 7.588099642639216
+        },
+        {
+          "id": "0aba1c64-c552-4aeb-b669-da885c8c75b2",
+          "name": "Ogre Siegebreaker",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.24025411492925214],
+          "distances": [7.202347604391423],
+          "score": 0.24025411492925214,
+          "meanDistance": 7.202347604391423
+        },
+        {
+          "id": "ac555709-c7cc-4c64-8a6f-8fe2bc149fcd",
+          "name": "Empyrean Eagle",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.24363012630594105],
+          "distances": [7.393989800312047],
+          "score": 0.24363012630594105,
+          "meanDistance": 7.393989800312047
+        },
+        {
+          "id": "edec85ce-7daa-48c2-b25d-b22941e01e73",
+          "name": "Ironroot Warlord",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.244],
+          "distances": [7.65580827845715],
+          "score": 0.244,
+          "meanDistance": 7.65580827845715
+        },
+        {
+          "id": "43c6db4e-cc37-4473-b0f5-48d8a0b82f33",
+          "name": "Lightning Stormkin",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.252269469660774],
+          "distances": [7.173836534231186],
+          "score": 0.252269469660774,
+          "meanDistance": 7.173836534231186
+        },
+        {
+          "id": "bd43d44b-de27-4139-9cb8-b1f4c04fb87e",
+          "name": "Blightbeetle",
+          "family": "modern-normal",
+          "alignmentUncertain": true,
+          "scores": [0.2539206920716236],
+          "distances": [4.443444235274132],
+          "score": 0.2539206920716236,
+          "meanDistance": 4.443444235274132
+        }
+      ],
+      "families": ["modern-normal", "planeswalker", "planeswalker-large", "modern-legendary"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/U.svg",
+      "role": "mana",
+      "cardCount": 56,
+      "confidentCount": 53,
+      "medianEdgeF1": 0.5393148450244698,
+      "allCardMedianEdgeF1": 0.5354233808687272,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "28aa0337-94bd-4274-b2ee-6f43747c77b3",
+          "name": "Faerie Miscreant",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.12593016599885518],
+          "distances": [3.341518448745937],
+          "score": 0.12593016599885518,
+          "meanDistance": 3.341518448745937
+        },
+        {
+          "id": "e16c9f3a-534b-42d4-9765-8d1cb15375aa",
+          "name": "Hard Cover",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.21428571428571427],
+          "distances": [2.92802016411488],
+          "score": 0.21428571428571427,
+          "meanDistance": 2.92802016411488
+        },
+        {
+          "id": "67483891-36d1-46f2-8b4f-b8b7bd54bdcc",
+          "name": "Spectral Sailor",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.25037436358191073],
+          "distances": [2.774630023285141],
+          "score": 0.25037436358191073,
+          "meanDistance": 2.774630023285141
+        },
+        {
+          "id": "1421115b-9a98-4ab2-bcb2-7d8899ce12db",
+          "name": "Tale's End",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.2842377260981912],
+          "distances": [2.776510704599258],
+          "score": 0.2842377260981912,
+          "meanDistance": 2.776510704599258
+        },
+        {
+          "id": "b11f9e7d-3f56-4e28-9908-157735f6dfa9",
+          "name": "Cerulean Drake",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.3386713661788369],
+          "distances": [2.7501204570619073],
+          "score": 0.3386713661788369,
+          "meanDistance": 2.7501204570619073
+        },
+        {
+          "id": "a5356b11-e505-4838-aecb-327689eeead1",
+          "name": "Cavalier of Gales",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.3452330953380932],
+          "distances": [2.6429698890474334],
+          "score": 0.3452330953380932,
+          "meanDistance": 2.6429698890474334
+        },
+        {
+          "id": "cc6686e6-4535-49be-b0b3-e76464656cd2",
+          "name": "Agent of Treachery",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.3631332291899129],
+          "distances": [2.526728823934449],
+          "score": 0.3631332291899129,
+          "meanDistance": 2.526728823934449
+        },
+        {
+          "id": "7a960516-3864-4a7a-8117-d25dec0dd665",
+          "name": "Unsummon",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.37558896118465335],
+          "distances": [2.0139723706277666],
+          "score": 0.37558896118465335,
+          "meanDistance": 2.0139723706277666
+        }
+      ],
+      "families": ["modern-normal", "modern-legendary", "planeswalker"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/frames/B.webp",
+      "role": "frame",
+      "cardCount": 52,
+      "confidentCount": 36,
+      "medianEdgeF1": 0.5568412943213827,
+      "allCardMedianEdgeF1": 0.5536758513952182,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "18069340-a698-4f75-82cc-cc94fcf82184",
+          "name": "Disfigure",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.3264753922555311, 0.5318818040435459],
+          "distances": [2.2671891571645473, 1.5905330264060105],
+          "score": 0.4291785981495385,
+          "meanDistance": 1.9288610917852789
+        },
+        {
+          "id": "37cbe5f2-5b6b-41de-9586-c7cc83464cf2",
+          "name": "Gorging Vulture",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.41238230578453366, 0.5213124625353626],
+          "distances": [1.821924059132658, 1.6809034326341077],
+          "score": 0.4668473841599481,
+          "meanDistance": 1.751413745883383
+        },
+        {
+          "id": "445e41d8-317d-46ce-b858-54df716e0214",
+          "name": "Bartizan Bats",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.5235970250169033, 0.4287626862448715],
+          "distances": [1.6650985245140277, 1.917131324633956],
+          "score": 0.4761798556308874,
+          "meanDistance": 1.791114924573992
+        },
+        {
+          "id": "5c926d38-a741-47a9-8961-f5bcf2909939",
+          "name": "Dark Remedy",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.48783744092280584, 0.4645643916962985],
+          "distances": [1.8465806248015566, 1.8234758179813733],
+          "score": 0.4762009163095522,
+          "meanDistance": 1.835028221391465
+        },
+        {
+          "id": "7debd8f7-2f34-4fdd-8eb6-fa8f9d2a60e8",
+          "name": "Disentomb",
+          "family": "modern-normal",
+          "alignmentUncertain": false,
+          "scores": [0.4937813982696065, 0.47366591961996396],
+          "distances": [1.6964167506731709, 1.8745654757730104],
+          "score": 0.4837236589447852,
+          "meanDistance": 1.7854911132230906
+        },
+        {
+          "id": "bfbc0f7c-546f-4525-bb58-c99ab9b017d5",
+          "name": "Undead Servant",
+          "family": "modern-normal",
+          "alignmentUncertain": true,
+          "scores": [0.5217067955749743, 0.45113938655812313],
+          "distances": [1.5660539091580956, 1.8660665347713004],
+          "score": 0.48642309106654874,
+          "meanDistance": 1.7160602219646979
+        },
+        {
+          "id": "0fb714a0-e61b-4ccf-8de6-3a6bf87c8315",
+          "name": "Gravedigger",
+          "family": "modern-normal",
+          "alignmentUncertain": true,
+          "scores": [0.47849452321794417, 0.49854575599612205],
+          "distances": [1.6415307464777116, 1.7522517194016454],
+          "score": 0.4885201396070331,
+          "meanDistance": 1.6968912329396786
+        },
+        {
+          "id": "bd43d44b-de27-4139-9cb8-b1f4c04fb87e",
+          "name": "Blightbeetle",
+          "family": "modern-normal",
+          "alignmentUncertain": true,
+          "scores": [0.47717271727172716, 0.5034574269268147],
+          "distances": [1.6741084699670605, 1.7228136261229414],
+          "score": 0.49031507209927094,
+          "meanDistance": 1.6984610480450009
+        }
+      ],
+      "families": ["modern-normal", "modern-legendary"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    }
+  ],
+  "measuredAt": "2026-10-12T00:17:04.173Z",
+  "referenceIdentity": "0b14203ebce8cfae410e4b96549b6d38af8923ed9923b59d5caa9eb94286d491",
+  "alignmentHash": "957900cf19d29f4116b65280551da38368ed9fc7b7e83654d0d046cbb52bc35c",
+  "typographyFixtureHash": "6a5ce5d4a77ffbee73c66c7163972e45cc26a86b09c150574b9e31b207bda002",
+  "typographyMetricSource": "c69bc2f887c48f3e55cbd7507955990116bcdebb1d9a6d9bc812caf153cffc57",
+  "conclusion": "Partial transfer: body-edge agreement and vertical geometry improve, but mean soft-wrap F1 decreases and exact wrapping does not improve. Absolute M20 scores remain below the M21 holdout scores. No M20 typography or alignment tuning followed evaluation.",
+  "lineGeometry": {
+    "before": {
+      "count": 23,
+      "excluded": 1,
+      "exactWrapping": 11,
+      "meanSoftBreakF1": 0.772670807453416,
+      "medianAbsoluteLineCountError": 0,
+      "medianBlockEdgeMae": 7,
+      "medianMatchedLineTopMae": 6.571428571428571,
+      "medianMatchedLineWidthMae": 6.333333333333333
+    },
+    "after": {
+      "count": 23,
+      "excluded": 1,
+      "exactWrapping": 11,
+      "meanSoftBreakF1": 0.7191511387163562,
+      "medianAbsoluteLineCountError": 0,
+      "medianBlockEdgeMae": 3,
+      "medianMatchedLineTopMae": 3,
+      "medianMatchedLineWidthMae": 5.666666666666667
+    }
+  },
+  "baselineReproduction": {
+    "source": "0078a86d12ff2c9c0e6c095879fc3ca0f6b8a588358b2bd3633933a59f706b25",
+    "checkpoint": "d111c70ce42707510ad852eff47189aa4376ee17975836a601add8eb6fa8e463",
+    "pairs": [
+      {
+        "name": "Nine Lives",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Teferi's Tutelage",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Chandra's Incinerator",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Double Vision",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Terror of the Peaks",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Colossal Dreadmaw",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Fabled Passage",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      },
+      {
+        "name": "Scoured Barrens",
+        "inputIdentical": true,
+        "inspectIdentical": true,
+        "tableIdentical": true
+      }
+    ]
+  },
+  "review": {
+    "bodyRegressions": [
+      {
+        "id": "49283832-54f2-4619-b4a9-750493c93292",
+        "name": "Bag of Holding",
+        "before": 0.5208505003225888,
+        "after": 0.3183835074066489,
+        "delta": -0.20246699291593995
+      },
+      {
+        "id": "4e446e90-6e31-43ed-bcb1-a01422b503c0",
+        "name": "Gargos, Vicious Watcher",
+        "before": 0.3735250939185125,
+        "after": 0.23342412744647414,
+        "delta": -0.14010096647203837
+      },
+      {
+        "id": "aecdc315-95e5-450c-bedc-998eea46cf8c",
+        "name": "Brought Back",
+        "before": 0.4931365393712654,
+        "after": 0.4126846400786063,
+        "delta": -0.08045189929265911
+      },
+      {
+        "id": "ac555709-c7cc-4c64-8a6f-8fe2bc149fcd",
+        "name": "Empyrean Eagle",
+        "before": 0.24075395984187117,
+        "after": 0.1635155963572736,
+        "delta": -0.07723836348459756
+      },
+      {
+        "id": "2c9b1f70-9861-4c66-a52f-c40002679e75",
+        "name": "Nightpack Ambusher",
+        "before": 0.42064182633374475,
+        "after": 0.3911462067220512,
+        "delta": -0.029495619611693558
+      }
+    ],
+    "wrappingRegressions": [
+      {
+        "name": "Fencing Ace",
+        "before": 0.6666666666666666,
+        "after": 0.3333333333333333
+      },
+      {
+        "name": "Empyrean Eagle",
+        "before": 1,
+        "after": 0.4
+      },
+      {
+        "name": "Kaalia, Zenith Seeker",
+        "before": 1,
+        "after": 0.16666666666666666
+      },
+      {
+        "name": "Bag of Holding",
+        "before": 1,
+        "after": 0.3333333333333333
+      }
+    ],
+    "interpretation": [
+      "Empyrean Eagle exposes the flavor-orphan heuristic: it removes a short line that the printing keeps.",
+      "Gargos still needs a smaller font to match its six-line printing; the frozen fit produces seven lines.",
+      "Bag of Holding and Kaalia show that fitting height alone does not preserve printed line breaks.",
+      "Shared ordinary-frame landmark residuals remain 2px (normal) and 1px (legendary) in both sets; no set-specific or scan-specific alignment adjustment was introduced.",
+      "Asset flags remain associations: land boxes, loyalty plate and black frame recur across sets; the M20 set symbol and blue mana region also need review."
+    ]
+  },
+  "performance": {
+    "warmComparisonSeconds": 2.1875046789999995,
+    "warmCacheHits": 343,
+    "scope": "343 cards, both tiers; browser-free Node comparison with capture checksum validation. Excludes download and raster capture."
+  },
+  "validation": [
+    "npm run check",
+    "npm run test:magic-accuracy",
+    "All renderer checks recorded with the frozen M21 typography checkpoint; M20 adds evaluation data and browser-free tooling only."
+  ],
+  "limitations": [
+    "24 M20 printings have reviewed body text; 319 use unreviewed Oracle text. One reviewed scan is alignment-uncertain and stays visible outside aggregate scores.",
+    "343/343 M20 and 297/297 M21 ordinary printings have structural metrics; 640 total. This does not establish accuracy for every Magic card.",
+    "Only ordinary-frame text has measured fit checks. Planeswalker typography, basic-land symbols, printing footer and security stamps remain incomplete.",
+    "Bootstrap intervals describe these small selected cohorts; they are not population accuracy estimates."
+  ]
+}
