@@ -20,9 +20,11 @@ import {
 import { openBrowser } from './browser.mjs';
 import { presentation } from './adapter.mjs';
 import { compatibleCapture, reusableFace } from './capture-cache.mjs';
+import { readPrintingText } from './printing-text.mjs';
 
 const opts = options();
 const snapshot = await readJson(path.join(cacheRoot, 'sets', opts.set + '.json'));
+const printingText = await readPrintingText(snapshot);
 let annotations = {};
 try {
   annotations = (await readJson(studyFile(opts, 'annotations'))).cards;
@@ -89,7 +91,7 @@ try {
     entries.some((e) => presentation(e).face.frameStyle === 'retro'),
   );
   for (const entry of entries) {
-    const input = presentation(entry, annotations);
+    const input = presentation(entry, annotations, printingText?.cards);
     const result = {
       id: entry.id,
       name: entry.card.name,
@@ -97,6 +99,7 @@ try {
       category: entry.category,
       source: entry.card.scryfall_uri,
       contentStatus: input.contentStatus,
+      printingTextSource: printingText?.cards[entry.id] ? printingText.source.sha256 : null,
       cohort: input.cohort,
       inputHash: hash(JSON.stringify(input.face)),
       face: input.face,
@@ -256,6 +259,7 @@ try {
     snapshotIdentity: snapshot.identity,
     referenceIdentity: referenceIdentity(snapshot.entries),
     annotationHash: hash(JSON.stringify(annotations)),
+    printingTextSource: printingText?.source ?? null,
     eligibleCount: snapshot.eligibleCount,
     totalPrintings: snapshot.totalPrintings,
     excluded: snapshot.excluded,

@@ -1,9 +1,11 @@
-export function presentation(entry, annotations = {}) {
+export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
   const annotation = annotations[card.id] ?? {};
   if (annotation.reviewed && annotation.referenceHash !== entry.reference?.sha256)
     throw Error(`Reviewed text is stale for ${card.name}; review it against the new reference.`);
-  const rules = annotation.rulesText ?? card.printed_text ?? card.oracle_text ?? '';
+  const original = printingText[card.id];
+  const rules =
+    annotation.rulesText ?? original?.originalText ?? card.printed_text ?? card.oracle_text ?? '';
   const flavor = annotation.flavorText ?? card.flavor_text ?? '';
   const rulesText = [rules, flavor].filter(Boolean).join('\n');
   const rulesParagraphs = annotation.paragraphs ?? [
@@ -42,7 +44,11 @@ export function presentation(entry, annotations = {}) {
   };
   return {
     face,
-    contentStatus: annotation.reviewed ? 'scan-reviewed' : 'oracle-unverified',
+    contentStatus: annotation.reviewed
+      ? 'scan-reviewed'
+      : original || card.printed_text != null
+        ? 'printing-reference'
+        : 'oracle-unverified',
     cohort: annotation.cohort ?? 'corpus',
     annotation,
   };

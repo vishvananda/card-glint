@@ -14,7 +14,8 @@ export function summarize(results) {
     measured: measured.length,
     failed: results.length - measured.length,
     scanReviewed: measured.filter((r) => r.contentStatus === 'scan-reviewed').length,
-    oracleUnverified: measured.filter((r) => r.contentStatus !== 'scan-reviewed').length,
+    printingReference: measured.filter((r) => r.contentStatus === 'printing-reference').length,
+    oracleUnverified: measured.filter((r) => r.contentStatus === 'oracle-unverified').length,
     alignmentUncertain: measured.filter((r) => r.alignment.uncertain).length,
     clipped: measured.filter((r) => r.clipping).length,
     layoutMeasured: measured.filter((r) => r.layout != null).length,
@@ -40,6 +41,15 @@ export function summarize(results) {
       reviewedBody: distribution(
         measured
           .filter((r) => r.contentStatus === 'scan-reviewed' && !r.alignment.uncertain)
+          .flatMap((r) =>
+            r.comparisons[tier].regions
+              .filter((region) => region.id === 'body' && region.edgeF1)
+              .map((region) => region.edgeF1[1]),
+          ),
+      ),
+      printingReferenceBody: distribution(
+        measured
+          .filter((r) => r.contentStatus === 'printing-reference' && !r.alignment.uncertain)
           .flatMap((r) =>
             r.comparisons[tier].regions
               .filter((region) => region.id === 'body' && region.edgeF1)

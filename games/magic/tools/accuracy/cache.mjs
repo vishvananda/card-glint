@@ -13,7 +13,10 @@ function checkUrl(url) {
     parsed.protocol !== 'https:' ||
     parsed.username ||
     parsed.password ||
-    !['api.scryfall.com', 'cards.scryfall.io', 'cdn.jsdelivr.net'].includes(parsed.hostname)
+    !['api.scryfall.com', 'cards.scryfall.io', 'cdn.jsdelivr.net', 'mtgjson.com'].includes(
+      parsed.hostname,
+    ) ||
+    (parsed.hostname === 'mtgjson.com' && !/^\/api\/v5\/[A-Z0-9]+\.json$/.test(parsed.pathname))
   )
     throw Error(`Unapproved accuracy asset host: ${url}`);
   return parsed;
@@ -86,7 +89,7 @@ async function fetchObject(url, { offline, refresh }) {
     const bytes = Buffer.from(await response.arrayBuffer());
     const mime = response.headers.get('content-type')?.split(';')[0] ?? '';
     if (!bytes.length || mime.includes('text/html')) throw Error(`Invalid asset response: ${url}`);
-    if (api) JSON.parse(bytes.toString('utf8'));
+    if (api || new URL(url).hostname === 'mtgjson.com') JSON.parse(bytes.toString('utf8'));
     const asset = {
       url,
       sha256: hash(bytes),

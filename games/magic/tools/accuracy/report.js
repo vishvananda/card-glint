@@ -84,7 +84,11 @@ function drawDetail() {
   target.append(element('h2', r.name));
   const badges = element('div', null, 'badges');
   for (const label of [
-    r.contentStatus === 'scan-reviewed' ? 'Body wording reviewed' : 'Oracle wording unverified',
+    r.contentStatus === 'scan-reviewed'
+      ? 'Body wording reviewed'
+      : r.contentStatus === 'printing-reference'
+        ? 'Printing text source; scan styling unverified'
+        : 'Oracle wording unverified',
     r.cohort,
     r.alignment?.family,
     r.alignment?.uncertain ? 'Alignment uncertain' : null,

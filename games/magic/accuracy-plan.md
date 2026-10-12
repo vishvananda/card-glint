@@ -22,6 +22,7 @@ with `pngjs`, without a browser, Python, OpenCV, or GPU.
 npm ci
 npx playwright install chromium
 npm run magic:reference:fetch -- --set m21
+npm run magic:reference:text -- --set m21
 npm run magic:reference:render -- --set m21 --run current
 npm run magic:reference:compare -- --set m21 --run current
 npm run magic:reference:report -- --set m21 --run current
@@ -41,6 +42,17 @@ uncached requests. `render --cohort calibration` provides a quick development
 capture; `--limit N` produces an explicitly incomplete run. A fetch with `--limit`
 writes a separate sample snapshot and does not replace the complete set snapshot.
 Use a different `--run` name to preserve before/after captures.
+
+`magic:reference:text` caches MTGJSON's set-specific `originalText`, matched by
+Scryfall printing UUID and verified against set, number and name. Capture reads
+that local cache without downloading. Scan-reviewed annotations take precedence.
+Reports distinguish `scan-reviewed`, `printing-reference` and `oracle-unverified`;
+downloaded wording is not a certification of typography or paragraph styling.
+Legacy `ocT` tap codes are converted to `{T}`; the raw source remains available.
+Missing original text remains explicit, and Oracle fallbacks do not enter the
+reviewed-body aggregate. `originalType` is retained for audit but is not applied:
+Fourth Edition Angry Mob has a modern type in that field despite its printed
+“Summon Mob” type. MTGJSON supplies its correct original rules wording.
 
 Comparison uses two Node workers. Repeating comparison reuses per-card results
 when image checksums, input, alignment, and comparison source are unchanged. It

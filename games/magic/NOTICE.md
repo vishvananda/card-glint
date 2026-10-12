@@ -28,6 +28,12 @@ The accuracy tools download [Scryfall references](https://scryfall.com/docs/api/
 into an ignored local cache. Card scans and art crops retain their original
 rights and are not included in releases, the public showcase, or CI evidence.
 
+The accuracy tools also cache [MTGJSON set data](https://mtgjson.com/downloads/all-sets/)
+for printing-specific `originalText`, joined by Scryfall printing ID. Downloaded
+data stays local; source checksums and provenance are recorded in study reports.
+Scan-reviewed corrections take precedence. The optional `originalType` field is
+not automatically applied because it contains modernized types in some old sets.
+
 The `GLINT` gem and `FORGE` spark/anvil symbols are original procedural symbols
 for locally authored cards, not official set identities.
 
