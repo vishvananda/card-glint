@@ -24,3 +24,4 @@ export * from './presentation/set-symbols.js';
 export * from './presentation/special-frames.js';
 export * from './presentation/special-rule-paint.js';
 export * from './presentation/split-layout.js';
+export * from './presentation/wording.js';

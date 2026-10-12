@@ -28,6 +28,10 @@ export interface RenderedCardInput extends CardProfileInput {
   rulesText?: string;
   /** Ordinary-face printing. When present this replaces rulesText for layout and painting. */
   rulesParagraphs?: readonly RulesParagraph[];
+  /** Wording is supplied by the host. This selects historical vs modern symbols
+   * and disables automatic historical vocabulary in Oracle mode. Omitted keeps
+   * the legacy set-based symbol policy. */
+  wordingMode?: 'original' | 'oracle';
   illustration?: string | null;
   etchedIllustration?: string | null;
   credit?: string | null;

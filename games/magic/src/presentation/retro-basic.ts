@@ -36,6 +36,7 @@ export function retroBasicPrinting(face: RenderedCardInput): {
   typeLine: string;
   paragraphs: readonly RulesParagraph[];
 } | null {
+  if (face.wordingMode === 'oracle') return null;
   if (!['mir', 'tmp'].includes(face.setCode?.toLowerCase() ?? '')) return null;
   const subtype = /^Basic Land — (Plains|Island|Swamp|Mountain|Forest)$/.exec(
     face.typeLine ?? '',

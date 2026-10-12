@@ -16,7 +16,7 @@ import {
 } from './retro-frame.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintSetSymbol } from './canvas-text.js';
-import { paintEarlyCost, paintRevisedCost } from './historic-cost.js';
+import { paintEarlyCost, paintRevisedCost, paintEarlyMana } from './historic-cost.js';
 import { usesEarlyCredits, paintEarlyCredits } from './early-credits.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
@@ -32,6 +32,7 @@ import {
   retroStatsText,
   paintHistoricMana,
   paintRevisedMana,
+  paintFourthMana,
   paintOutlinedRetroSet,
   paintRetroCredits,
 } from './retro-details.js';
@@ -102,12 +103,16 @@ export function paintRetroFace(
     );
   if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
-  if (revised) paintRevisedCost(c, cost, images);
+  const oracle = face.wordingMode === 'oracle';
+  const originalSun =
+    face.wordingMode === 'original' &&
+    ['lea', 'leb', '2ed', '3ed', '4ed'].includes(face.setCode?.toLowerCase() ?? '');
+  if (revised) paintRevisedCost(c, cost, images, oracle);
   else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
-    paintEarlyCost(c, cost, images);
+    paintEarlyCost(c, cost, images, oracle);
   else
     cost.forEach((s, i) =>
-      paintMana(
+      (originalSun ? paintEarlyMana : paintMana)(
         c,
         s,
         costX + i * (size + gap),
@@ -170,11 +175,17 @@ export function paintRetroFace(
         c,
         layout,
         images,
-        face.setCode?.toLowerCase() === '3ed'
-          ? paintRevisedMana
-          : details
-            ? paintHistoricMana
-            : paintMana,
+        oracle
+          ? paintMana
+          : face.setCode?.toLowerCase() === '3ed'
+            ? paintRevisedMana
+            : originalSun
+              ? face.setCode?.toLowerCase() === '4ed'
+                ? paintFourthMana
+                : paintEarlyMana
+              : details
+                ? paintHistoricMana
+                : paintMana,
       );
   }
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';

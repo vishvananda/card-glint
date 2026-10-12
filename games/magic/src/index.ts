@@ -15,6 +15,7 @@ import { FACE_CORNER_RADIUS, type RenderedCardInput } from './presentation/face-
 export type { RenderedCardInput as MtgCard } from './presentation/face-layout.js';
 export { setSymbolAsset, manaSymbolAsset, profileAssets } from './presentation/assets.js';
 export { FACE_RECTS, FACE_TEXT } from './presentation/face-layout.js';
+export { withCardWording, type CardWording } from './presentation/wording.js';
 
 function loader(host: RasterHost) {
   return async (urls: readonly (string | null | undefined)[], signal: AbortSignal) => {

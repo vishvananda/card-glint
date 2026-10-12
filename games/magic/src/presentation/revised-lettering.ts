@@ -33,7 +33,7 @@ export function paintRevisedStats(c: CanvasRenderingContext2D, text: string, y: 
 
 export function paintRevisedCredits(c: CanvasRenderingContext2D, artist: string) {
   c.save();
-  c.font = '22px "CardRenderer MTG Goudy", Georgia';
+  c.font = '22px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   paintRetroGrayText(c, `Illus. © ${artist}`, 50, 642, 338, 1.25);

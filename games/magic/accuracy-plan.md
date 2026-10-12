@@ -1477,3 +1477,47 @@ identical PNGs at both sizes. The two Node audits each took about 92 seconds whi
 running concurrently, including decoding and invariants; this is CPU workload
 time, not renderer submission or GPU completion time. Local comparisons are in
 `early-mana/lea-validation/index.html` and `early-mana/2ed-validation/index.html`.
+
+### User-reviewed sun discs and filled lettering
+
+The previous mana and lettering acceptance missed two visible properties: the
+original white sun retains a pale circular background, and early/Revised title
+and credit ink has a solid gray interior with a lower-right shadow. Paired edge
+F1 can remain high when both are wrong. User review supersedes those earlier
+style conclusions; their original measurements remain reproducible.
+
+`printing-style-plan.json` records the selected development examples and the
+Beta credit transfer before its crops were opened. The first candidate used the
+title font for credits. `printing-style-goudy-measurement.json` retains that
+candidate; its narrower letterforms were rejected. The existing MPlantin credit
+font scores higher than that candidate for every sampled credit and has closer
+word widths. The final treatment retains its geometry, fills the letters gray,
+and paints a lower-right shadow. Beta's six credits improve over its previous
+small centered fallback; because their crops informed the font decision, the
+final font comparison is development evidence, not a fresh holdout claim.
+
+`printing-style-measurement.json` measures 16 selected cards at both raster tiers
+with identical source inputs and identity frame alignment. Alpha Cockatrice's
+credit remains an edge-F1 regression. Revised title scores are mixed. Restoring
+Disenchant's white disc has almost no effect on the whole-row score, despite
+correcting a visible omission. Neither score is a percent-accuracy claim.
+The local crop report retains scan / prior branch / corrected branch views.
+
+The next detector pass should evaluate component anatomy explicitly:
+
+1. Separate a mana symbol's outer disc from its interior glyph. Compare radial
+   boundary support and disc coverage after local contrast normalization; retain
+   a missing-disc flag even when the black glyph's edge match is high.
+2. Compare letter interiors as well as both edge polarities. Use isolated
+   renderer glyph masks and signed local-contrast residuals to distinguish solid
+   ink, outlined ink and shadows. Broad textured windows cannot certify fill.
+3. Keep the existing shared-set/frame alignment, then search bounded component
+   offsets on development cards and freeze the policy before transfer. Do not
+   optimize each scan or fit color/saturation to inflate a score.
+4. Include source identity and symbol-era checks before geometry scoring.
+   Original type, rules and symbols are independent provenance fields. Review
+   mismatches in magnified scan/render crops, including examples where shape
+   corrections leave aggregate scores unchanged.
+
+These diagnostics run on cached PNGs in Node. Chromium remains a raster/font
+capture step, never a requirement for scoring or searching local comparisons.

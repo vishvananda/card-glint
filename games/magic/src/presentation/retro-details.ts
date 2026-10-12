@@ -1,5 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
+import { paintEarlyMana } from './historic-cost.js';
 import { resolveFrameColors } from './profile.js';
 
 /** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
@@ -14,7 +15,9 @@ export function retroStatsPlacement(face: RenderedCardInput) {
 export function retroStatsText(face: RenderedCardInput): string {
   const toughness = String(face.toughness ?? '');
   const printed =
-    face.setCode?.toLowerCase() === '4ed' && /^\d+-\*$/.test(toughness)
+    face.wordingMode !== 'oracle' &&
+    face.setCode?.toLowerCase() === '4ed' &&
+    /^\d+-\*$/.test(toughness)
       ? `(${toughness})`
       : toughness;
   return `${face.power ?? ''}/${printed}`;
@@ -69,8 +72,13 @@ export const paintHistoricMana: typeof paintMana = (c, symbol, x, y, size, image
 
 /** Revised prints a diagonal T inside the same pale disc, not the later card mark. */
 export const paintRevisedMana: typeof paintMana = (c, symbol, x, y, size, images) => {
-  if (symbol !== 'T') return paintMana(c, symbol, x, y, size, images);
+  if (symbol !== 'T') return paintEarlyMana(c, symbol, x, y, size, images);
   paintTap(c, x, y, size, '\ue61c', 0.8);
+};
+
+export const paintFourthMana: typeof paintMana = (c, symbol, x, y, size, images) => {
+  if (symbol !== 'T') return paintEarlyMana(c, symbol, x, y, size, images);
+  paintHistoricMana(c, symbol, x, y, size, images);
 };
 
 function paintTap(

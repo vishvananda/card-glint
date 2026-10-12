@@ -138,6 +138,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.typeLine ?? '',
         face.rulesText ?? '',
         face.rulesParagraphs ?? null,
+        face.wordingMode ?? null,
         face.illustration ?? null,
         face.illustrationCrop ?? null,
         extraRuleKey(face),

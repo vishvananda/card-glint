@@ -217,3 +217,35 @@ scan/previous/current page with
 `magic:reference:details -- --set 4ed --baseline fourth-details-before-all --run fourth-details-all`.
 It includes maximum-overlap and minimum-distance offset searches, independent
 whole-row mana measurements, and links to the earlier Mirage/Tempest comparisons.
+
+### Original printing and Oracle wording
+
+`withCardWording(face, { oracle, original }, mode)` keeps the selected printing's
+frame, art and typography while choosing supplied wording and symbol style. The
+mode defaults to `oracle`; requesting an absent `original` throws. Each wording
+requires `typeLine` and `rulesText`, with optional styled `rulesParagraphs`, mana
+cost and stats. Missing paragraph overrides are cleared when switching modes.
+
+```ts
+import { withCardWording, magic } from 'card-glint/magic';
+const visible = withCardWording(
+  face,
+  {
+    oracle: { typeLine: 'Creature — Elemental', rulesText: currentRules },
+    original: { typeLine: 'Summon Force', rulesText: printedRules },
+  },
+  'original',
+);
+const recipe = magic.describe(visible, 'inspect');
+```
+
+The helper selects one face; apply it to each supplied child of a split card.
+Flat presentation inputs still work. Their optional `wordingMode` controls
+historical/modern symbols; omission preserves the existing set-based policy.
+Oracle mode also disables automatic historical basic-land vocabulary and Fourth
+Edition stat notation. Modes are included in raster cache identity. The helper
+does not fetch or certify printing data, and never guesses historical subtypes
+from Oracle types. Hosts should retain field-level provenance: MTGJSON's
+`originalType` is modernized for some early printings, including Revised Force
+of Nature and Unlimited Howling Mine. The accuracy fixtures contain scan-hashed
+corrections for those two examples.

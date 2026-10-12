@@ -3,7 +3,14 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
-import { magic, faceFrame, faceRects, resolveCardProfile, retroFamily } from '../dist/lib/magic.js';
+import {
+  magic,
+  faceFrame,
+  faceRects,
+  resolveCardProfile,
+  retroFamily,
+  withCardWording,
+} from '../dist/lib/magic.js';
 
 const creature = {
   name: 'Example Adept',
@@ -22,6 +29,41 @@ const walker = {
   rulesText:
     '+1: Draw a card.\n−2: Return target creature to its owner’s hand.\n−7: Draw seven cards.',
 };
+const originalFace = {
+  ...creature,
+  setCode: '3ed',
+  rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Obsolete annotated wording.' }] }],
+};
+const wordings = {
+  oracle: { typeLine: 'Creature — Elemental', rulesText: 'Modern wording with {T}.' },
+  original: { typeLine: 'Summon Force', rulesText: 'Printed wording with {T}.' },
+};
+const originalInput = JSON.stringify(originalFace);
+const originalWording = withCardWording(originalFace, wordings, 'original');
+const oracleWording = withCardWording(originalFace, wordings);
+assert.equal(originalWording.typeLine, 'Summon Force');
+assert.equal(
+  originalWording.creature,
+  true,
+  'Historical labels must retain creature frame semantics',
+);
+assert.equal(oracleWording.wordingMode, 'oracle', 'New wording selection defaults to Oracle');
+assert.equal(
+  oracleWording.rulesParagraphs,
+  undefined,
+  'Original paragraph runs must not override Oracle',
+);
+assert.equal(JSON.stringify(originalFace), originalInput, 'Selection must not mutate host data');
+assert.deepEqual(faceRects(originalWording), faceRects(oracleWording));
+assert.notEqual(
+  magic.describe({ ...originalWording, wordingMode: 'original' }, 'inspect').color.key,
+  magic.describe({ ...originalWording, wordingMode: 'oracle' }, 'inspect').color.key,
+  'Symbol-only mode changes must invalidate the raster cache',
+);
+assert.throws(
+  () => withCardWording(originalFace, { oracle: wordings.oracle }, 'original'),
+  /Missing original/,
+);
 assert.equal(faceFrame(walker), 'planeswalker');
 assert.equal(
   faceFrame({ ...walker, rulesText: walker.rulesText + '\n0: Scry 1.' }),
