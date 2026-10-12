@@ -20,6 +20,7 @@ import { readPng, normalize, cropGray, savePng } from './pixels.mjs';
 import { compareRegion } from './metrics.mjs';
 import { regions } from './regions.mjs';
 import { mainPage } from './main-page.mjs';
+import { normalizedText } from './typography-metrics.mjs';
 
 const mainRoot = await realpath(path.resolve(process.argv[2] ?? ''));
 if (!process.argv[2] || mainRoot === root) throw Error('Supply an isolated main checkout');
@@ -40,6 +41,20 @@ assert.equal(
 );
 const out = path.join(outputRoot, 'main-review');
 const selections = [
+  [
+    '3ed',
+    'revised-long',
+    '75',
+    'Shared body inset, narrower width and removal of the rules/flavor gap restore all six printed lines. Font weight remains heavier. This is an intermediate branch change: full-set regressions remain listed in the body review.',
+    ['body'],
+  ],
+  [
+    '3ed',
+    'revised-long',
+    '144',
+    'Shared text bounds restore all five printed lines and move the body upward. The existing diagonal tap mark is retained. No card-specific coordinates or scan transforms.',
+    ['body'],
+  ],
   [
     '3ed',
     'revised-centered-final',
@@ -159,9 +174,25 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     const capture = await readJson(path.join(outputRoot, set, run, 'capture.json'));
     const card = capture.results.find((c) => c.collectorNumber === number);
     assert.ok(card && !card.issue);
-    assert.equal(
-      card.contentStatus,
-      'scan-reviewed',
+    let contentReview = null;
+    if (card.contentStatus !== 'scan-reviewed' && set === '3ed' && run === 'revised-long') {
+      const reviewFile = path.join(fixtureRoot, '3ed/long-body-targets.json');
+      const reviewed = await readJson(reviewFile);
+      const plan = await readJson(path.join(fixtureRoot, '3ed/long-body-plan.json'));
+      const target = reviewed.cards.find((c) => c.id === card.id);
+      const input = [...plan.development, ...plan.reserved].find((c) => c.id === card.id);
+      assert.ok(target && input);
+      assert.equal(target.warning, null, 'Unresolved source/style review');
+      assert.equal(target.referenceHash, card.images.reference.sha256);
+      assert.equal(input.inputHash, card.inputHash);
+      assert.equal(normalizedText(target.lines.join('')), normalizedText(card.face.rulesText));
+      contentReview = {
+        file: '3ed/long-body-targets.json',
+        sha256: hash(await readFile(reviewFile)),
+      };
+    }
+    assert.ok(
+      card.contentStatus === 'scan-reviewed' || contentReview,
       'Comparison examples require printed wording',
     );
     assert.equal(hash(JSON.stringify(card.face)), card.inputHash);
@@ -174,6 +205,7 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     entries.push({
       set,
       card,
+      contentReview,
       note,
       metricRegions,
       aligned,
@@ -285,7 +317,10 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       inputHash: entry.card.inputHash,
       referenceHash: entry.card.images.reference.sha256,
       alignment: entry.alignment,
-      contentStatus: entry.card.contentStatus,
+      contentStatus: entry.contentReview ? 'scan-reviewed' : entry.card.contentStatus,
+      ...(entry.contentReview
+        ? { captureContentStatus: entry.card.contentStatus, contentReview: entry.contentReview }
+        : {}),
       face: entry.card.face,
       reviewCase: ['Mtenda Herder', 'Righteousness', 'Sol Ring'].includes(entry.card.name),
       note: entry.note,

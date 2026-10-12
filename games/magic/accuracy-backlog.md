@@ -124,3 +124,28 @@ The new crop review also finds roughly 5.5px of leftward body displacement on
 five colored cards, and excessive paragraph/flavor gaps on several long texts.
 Next: validate shared Revised body insets and gaps against printed wording;
 do not compensate with per-card tap offsets.
+
+Revised's intermediate `revised-long` change moves long/multiparagraph bodies to
+x 70, width 346, removes extra paragraph/flavor gaps, and shifts the optical center
+up 10px while keeping ink inside the physical panel. Across 198 changed faces,
+inspect body F1 rises from median .324 to .587; 154 gain more than .02 and 22
+regress. Table has 158 gains and 18 regressions. The 23 distinct regressions are
+retained in `3ed/long-body-measurement.json` and shown in the local body review;
+this is not completion of Revised typography. All 108 other faces are unchanged.
+
+The 12 reserved cards all improve, but only seven match every printed line.
+Drudge Skeletons and Dragon Whelp have missing activation colons in source data.
+Dragon Whelp's flavor starts on the same line as the final rules sentence;
+Fireball's parenthesis is upright, unlike the adapter's reminder heuristic.
+Hypnotic Specter, Giant Spider and Library of Leng retain wrapping differences.
+Do not tune geometry to compensate for those source/style errors.
+
+Next work is the missing size/alignment classes: Animate Wall, Sacrifice,
+Volcanic Eruption and Sengir Vampire use large centered passages; Clone,
+Gaea's Liege, Earthbind and The Hive use substantially smaller printing. The
+largest score regressions are Gaea's Liege, Earthbind, The Hive and Sorceress
+Queen. Lord of Atlantis has a taller printed flavor block. Wall of Ice is a
+particularly clear Oracle fallback error: its scan has only flavor, whereas the
+input adds a modern defender/reminder line. Keep it outside source-backed
+aggregates and correct its input independently. Existing font stroke weight and
+plate texture differences remain asset work, not reasons to fit individual scans.

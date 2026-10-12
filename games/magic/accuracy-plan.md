@@ -1055,3 +1055,41 @@ Unlimited's 302 printings are cached for the early-frame follow-up. Its cohorts
 were selected before viewing its scans. Basic-land names repeat; Keldon Warlord
 was subsequently viewed in Fifth Edition and is also excluded from any fresh-name
 subtotal. These exposures are recorded in its cohort fixture.
+
+### Revised long-body placement (intermediate)
+
+The long-body study starts at `revised-symbols` and freezes 11 development and 12
+reserved body examples in `3ed/long-body-plan.json`. Full-set metrics already
+existed; reserved means new body-image review after candidate freeze, not an
+untouched dataset. The frozen trial checks complete control-PNG equality, then
+varies shared bounds, size, leading and paragraph gaps. A width refinement
+resolves wrapping thresholds; a minimum top position prevents optical centering
+from moving dense type into the frame. No scan is fitted independently.
+
+`revised-long.mjs development clamped` and `validation` reproduce the final trial
+only on the baseline renderer. The candidate was committed before reserved scans
+were viewed. `revised-long-review.mjs` audits independent line targets offline
+and creates a private scan/before/new page, including all full-set regressions.
+The source data, fonts, frame assets and alignment profile are unchanged.
+
+The shared x70/width346 layout, zero paragraph/flavor gaps and bounded -10 px
+optical shift improve all 12 reserved image scores. Seven match every line; two
+have content errors and three have remaining wrapping differences. Fireball
+also has a styling error despite exact word wrapping. Development has nine of 11
+exact line patterns, versus one before; Animate Wall and Clone remain failures.
+
+The complete run captures 306 cards at both tiers with zero failures or clipping.
+198 faces change only within the body; 108 are byte-identical. All 46 frozen trial
+PNGs match production, and 56 representatives from M21/MIR/TMP/4ED/5ED retain
+both PNGs. These are preservation checks, not complete accuracy claims for the
+other sets. Existing 32 reviewed short-body targets remain unchanged.
+
+The full corpus reveals 22 inspect and 18 table regressions (23 distinct cards),
+despite median body F1 rising from .324 to .587 at inspect size. The branch
+retains this as an intermediate improvement while the size/alignment classes
+are resolved; it is not a final calibration. Complete denominators, per-card
+scores and regressions are in `3ed/long-body-measurement.json`. 16 Oracle inputs
+are included only in the all-changed diagnostic aggregate; 182 changed inputs
+have printing-source text and confident alignment. Source fields still require
+scan review. Comparison uses offline Node workers; its elapsed time is neither
+renderer CPU submission time nor GPU completion time.

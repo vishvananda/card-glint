@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "mainCommit": "0b0d408d9dcbba6e3188d5d9f309dd1340347526",
-  "branchCommit": "cc11967e5b90cc5dc9393944affc845206d00a29",
+  "branchCommit": "b5308fd8829c043e1a64a8edc35a453bc6d258ee",
   "rendererHashes": [
     "48093a204cb7594234715c4bcb3719054861aa05bf32f6a036e93ced5cac3530",
-    "bc857ffd7ae5a535e383018372b13d2ea6cce83242a256361165136024276481"
+    "d92bd32e88bf3b815367df238c2ffd70263050f4a2a8991ddf9edd55e3d8715c"
   ],
   "fontHashes": [
     "3493fd86c163fea26861cca7a28ac397aa8fbee4e7fa1599f556987ff9178ce2",
@@ -13,6 +13,234 @@
   "metricSource": "e2f7654387f33a23e32ba96f4b60eed7ceaf4b41e105faed2ccb5ea95961eccf",
   "note": "Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
   "examples": [
+    {
+      "set": "3ed",
+      "id": "20f1411b-a5ad-4d49-915b-ad8a21d51342",
+      "name": "Prodigal Sorcerer",
+      "number": "75",
+      "source": "https://scryfall.com/card/3ed/75/prodigal-sorcerer?utm_source=api",
+      "inputHash": "9b752b9ea902166af97f256b8291dca3f1379c7b2391b09fdbdcc5a7fd93fb46",
+      "referenceHash": "54e37a4953877c9a88248e9c812c9ef6246206411699ee6c7344ea7e1c546c3e",
+      "alignment": {
+        "profileHash": "1658627923a46b163fe231d111176d73c7548dfa74741a5ba71cc88ef029579f",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "contentStatus": "scan-reviewed",
+      "captureContentStatus": "printing-reference",
+      "contentReview": {
+        "file": "3ed/long-body-targets.json",
+        "sha256": "c8a07591a84f62b5741a38f582070df4bbc8e33adeff939c9ad8067484540a19"
+      },
+      "reviewCase": false,
+      "note": "Shared body inset, narrower width and removal of the rules/flavor gap restore all six printed lines. Font weight remains heavier. This is an intermediate branch change: full-set regressions remain listed in the body review.",
+      "captures": {
+        "main": {
+          "sha256": "a090c9c670907957a7d0c93052765d48c57f6b0e0ef5dd89e322c174d3ef6065",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "2d445d3ad86058e4c32c24b132e9559425bb8ee5da2e375e35057f4fbbc342e6",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.26453632345563616, 0.6430284936085179]
+        }
+      ]
+    },
+    {
+      "set": "3ed",
+      "id": "6caeadf8-1b40-497d-be7c-667fbb98f848",
+      "name": "Dwarven Warriors",
+      "number": "144",
+      "source": "https://scryfall.com/card/3ed/144/dwarven-warriors?utm_source=api",
+      "inputHash": "8e8f344e87bdb6e20ef20adf87eff1d356c2cfe24680096b634dcea431c006a7",
+      "referenceHash": "b68c31548f931663364088ccbdcfdc20d03001b7e5ce0db464d52725637b3e3b",
+      "alignment": {
+        "profileHash": "1658627923a46b163fe231d111176d73c7548dfa74741a5ba71cc88ef029579f",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "contentStatus": "scan-reviewed",
+      "captureContentStatus": "printing-reference",
+      "contentReview": {
+        "file": "3ed/long-body-targets.json",
+        "sha256": "c8a07591a84f62b5741a38f582070df4bbc8e33adeff939c9ad8067484540a19"
+      },
+      "reviewCase": false,
+      "note": "Shared text bounds restore all five printed lines and move the body upward. The existing diagonal tap mark is retained. No card-specific coordinates or scan transforms.",
+      "captures": {
+        "main": {
+          "sha256": "f0e60b79ceb382004e6323e4f90373da3713a667d0f9569a48e24f49baf85071",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "d3c16129fb26feba590bc51b67fd43cf877cd2cd2715d251c4219f22860f38a7",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.24812201001523207, 0.7103760404381029]
+        }
+      ]
+    },
     {
       "set": "3ed",
       "id": "7b23de17-d867-41f8-b965-9b3eb00db701",
