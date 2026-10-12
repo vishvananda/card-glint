@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "candidate": "scale0.8-dy0",
   "experimentHash": "e8de1751289f038cedfc043124e05cada1e80a0d4306829f3836046cbaa2827f",
+  "auditSourceHash": "91146f03871d0aada3eeec1d9dcb15af7087de8a18d4831694dc766f950a707c",
   "rendererHash": "7c9078ddfd0fc5d4a8a939784e4cbd034256e4daced629dc2929ba38b2a305bf",
   "captureHash": "8e94b86da88be05696d7708c9ba24c32ad88c100dd4fd81665a6cb64d8fe1ce5",
   "note": "Seven reserved taps visually verify the diagonal-T identity; Atog has no tap and its complete PNG is unchanged at both tiers. Fixed-window F1 keeps global alignment. The separately labeled atMatchedCenters crop uses the independent scan window and the known rendered disc center, with no scaling or fitting; it diagnoses shape only, never substitutes for placement scores or changes the renderer. Long-body typography remains inaccurate on several examples.",
@@ -348,7 +349,7 @@
     "notes": [
       "All seven reserved scans use the diagonal T, including white/blue/black/red/green and artifact bodies.",
       "Royal Assassin remains a shape-score review case: the glyph identity is now correct, but the fixed-center heuristic score decreases. Do not hide or refit this result.",
-      "Five colored examples put the rendered tap center about5.5px left of the independent scan window center. Prodigal Sorcerer, Dwarven Warriors and Aladdin’s Lamp also expose vertical body placement errors; glyph changes do not correct those."
+      "Five colored examples put the rendered tap center about 5.5px left of the independent scan window center. Prodigal Sorcerer, Dwarven Warriors and Aladdin’s Lamp also expose vertical body placement errors; glyph changes do not correct those."
     ]
   }
 }

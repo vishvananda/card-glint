@@ -174,6 +174,8 @@ improve at both tiers; 223 other faces retain their pixels. All 32 reviewed
 line-ending targets match. Three source punctuation corrections are measured
 separately. See the [typography study](accuracy-plan.md#revised-short-body-typography)
 for the full-set check that caught wrapping errors missed by the initial holdouts.
+Revised inline tap symbols now use the diagonal-T glyph from the existing
+historical-symbol font; later old-border sets keep their tilted-card mark.
 
 ## Existing scene or DOM editor
 

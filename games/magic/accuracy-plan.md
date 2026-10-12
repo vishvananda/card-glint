@@ -276,6 +276,52 @@ pixels. Sol Ring flags the wrong historic tap shape even though its wrapping
 matches. Font weight, historical numeric symbols, original type lines, outlined
 headers/stats and credits remain separate work; existing frame plates are retained.
 
+### Revised inline tap symbols
+
+`inline-symbols-plan.json` reserves eight printings before viewing their scans:
+seven taps across all five colors and artifacts, plus a numeric-only control.
+Four previously reviewed artifacts supply development evidence. Enlarged scans
+reject the earlier assumption that generic numbers should lose their circles;
+the pale numeric discs remain unchanged. The existing pinned Mana font contains
+the correct diagonal-T glyph, U+E61C, distinct from the later tilted-card mark.
+
+Three independent tap windows compare glyph size and vertical offset at both
+tiers. A font size of .8 times the disc diameter, centered with no offset, gives
+the best mean edge F1 and symmetric distance. Mean tap F1 rises from .603 to
+.791 at inspection size and .621 to .740 at table size. Whole-body F1 barely
+moves because the symbol occupies so little of the region. The candidate is
+frozen before inspecting the reserved images; no scan transform changes.
+
+All seven reserved glyph identities match, and Atog's numeric-only rendering
+stays identical. Separate center-matched crops diagnose shape without changing
+the displayed full-body alignment. Six improve at both tiers; Royal Assassin
+regresses and remains explicitly flagged. These diagnostics are not replacement
+placement scores: five colored bodies start about 5.5px too far left, and several
+long passages have incorrect vertical gaps. Neither issue is hidden by shifting
+the actual card or supplying a scan-specific symbol offset.
+
+The final `revised-symbols` run measures all 306 cards at both tiers with no
+failures or clipping. All inputs and layout metadata are unchanged; 59 cards
+change only within padded tap discs, and 247 retain identical PNGs. Body F1
+changes remain between -.003 and +.005, with no >.02 regression. All 32 reviewed
+line-ending targets remain exact. Production matches all 24 frozen development
+and validation PNGs; 56 representatives of other set policies, including named
+historic-tap examples, remain identical at both tiers. Required checks pass.
+
+The offline `revised-symbols-review.mjs` tool builds a self-contained local page
+at `3ed/inline-symbols-validation/index.html`, with full-body crops, isolated
+glyphs, fixed-window scores, shape scores and retained failures. It uses cached
+PNGs in Node without launching a browser. `revised-symbols-parity.mjs` checks
+the complete Revised pixel boundary and other-policy preservation. The full
+Node comparison took 84.3 seconds; this is offline image-scoring time, not CPU
+submission or GPU completion time.
+
+- [Frozen glyph candidate](fixtures/accuracy/3ed/inline-symbols-candidate.json)
+- [Independent reserved tap targets](fixtures/accuracy/3ed/inline-symbols-targets.json)
+- [Transfer review and failed score](fixtures/accuracy/3ed/inline-symbols-transfer.json)
+- [Complete-set measurements](fixtures/accuracy/3ed/inline-symbols-measurement.json)
+- [Pixel scope and preservation checks](fixtures/accuracy/3ed/inline-symbols-capture-check.json)
+
 ## References and cache
 
 [corpus.json](fixtures/accuracy/m21/corpus.json) records the exact printing UUIDs,

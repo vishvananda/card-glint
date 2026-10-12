@@ -63,9 +63,9 @@ const selections = [
   ],
   [
     '3ed',
-    'revised-centered-final',
+    'revised-symbols',
     '274',
-    'Review case: all three printed lines match, but Revised uses a different tap mark. The existing tap glyph remains flagged separately from placement and word wrapping.',
+    'The diagonal-T tap mark now matches Revised’s symbol identity using the existing font. All three printed lines match. Font stroke weight and the exact symbol outline remain useful review details.',
     ['body'],
   ],
   [
