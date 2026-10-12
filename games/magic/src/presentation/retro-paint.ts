@@ -16,7 +16,7 @@ import {
 } from './retro-frame.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintSetSymbol } from './canvas-text.js';
-import { paintRevisedCost } from './revised-mana.js';
+import { paintEarlyCost, paintRevisedCost } from './historic-cost.js';
 import { usesEarlyCredits, paintEarlyCredits } from './early-credits.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
@@ -103,6 +103,8 @@ export function paintRetroFace(
   if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
   if (revised) paintRevisedCost(c, cost, images);
+  else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
+    paintEarlyCost(c, cost, images);
   else
     cost.forEach((s, i) =>
       paintMana(

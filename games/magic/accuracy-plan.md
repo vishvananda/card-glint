@@ -1440,3 +1440,40 @@ Correcting Plague Rats to X/X lowers overlap at both sizes because its remaining
 glyph treatment differs from the scan. Source correctness takes precedence over
 that score; these deltas are excluded from renderer gains. The original credit
 trial inputs and measurements remain frozen.
+
+## Alpha mana and Unlimited transfer
+
+The [mana study](fixtures/accuracy/early-mana-plan.json) trains on twelve Alpha
+costs and reserves twelve Alpha plus thirteen Unlimited costs. The candidate
+was committed before validation: rightmost center (432, 46), pitch 27, diameter
+23.9, and the existing historic font's original sun at 20.5px. It removes the
+cost shadow while retaining the existing frame and other SVG assets. Two rounds
+of half-pixel neighbors followed the initial shared grid; no per-scan fitting
+or whole-frame registration change was made.
+
+All reserved Alpha costs improve at both sizes. All reserved Unlimited costs
+improve at inspect size; Sol Ring loses .031 at table size and remains explicitly
+flagged. The [transfer review](fixtures/accuracy/early-mana-transfer.json) records
+every crop, score and the independent disc-center diagnostic.
+
+| Set / tier          | Changed costs | Median F1 before → after | Gains > .02 | Regressions > .02 |
+| ------------------- | ------------- | ------------------------ | ----------- | ----------------- |
+| Alpha / inspect     | 276           | .518 → .811              | 275         | 0                 |
+| Alpha / table       | 276           | .503 → .770              | 273         | 1                 |
+| Unlimited / inspect | 277           | .516 → .746              | 263         | 5                 |
+| Unlimited / table   | 277           | .485 → .711              | 262         | 7                 |
+
+The full-corpus audit found limitations missed by the small reserved cohort:
+several single red costs in Unlimited need a farther-right position, especially
+Lightning Bolt. Alpha Cyclopean Tomb has no printed cost, so its Oracle {4}
+is a source mismatch. All eight regression strips are inspected and recorded in
+[the corpus review](fixtures/accuracy/early-mana-corpus-review.json). Keep these
+failures visible; do not certify the transferred geometry for every card.
+
+All 74 frozen prototype PNGs match production exactly, 44 cards with no supplied
+cost retain identical full PNGs, and pixels outside the mana envelope are
+unchanged across all 597 cards. A further 64 cards from six other policies retain
+identical PNGs at both sizes. The two Node audits each took about 92 seconds while
+running concurrently, including decoding and invariants; this is CPU workload
+time, not renderer submission or GPU completion time. Local comparisons are in
+`early-mana/lea-validation/index.html` and `early-mana/2ed-validation/index.html`.

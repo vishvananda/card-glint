@@ -7,10 +7,46 @@ export function paintRevisedCost(
   symbols: readonly string[],
   images: CanvasImages,
 ) {
+  paintCost(c, symbols, images, {
+    right: 435,
+    centerY: 44.5,
+    pitch: 27,
+    size: 23.4,
+    whiteSize: 21,
+  });
+}
+
+/** Alpha calibration validated on reserved Alpha and Unlimited costs. */
+export function paintEarlyCost(
+  c: CanvasRenderingContext2D,
+  symbols: readonly string[],
+  images: CanvasImages,
+) {
+  paintCost(c, symbols, images, {
+    right: 432,
+    centerY: 46,
+    pitch: 27,
+    size: 23.9,
+    whiteSize: 20.5,
+  });
+}
+
+function paintCost(
+  c: CanvasRenderingContext2D,
+  symbols: readonly string[],
+  images: CanvasImages,
+  geometry: Readonly<{
+    right: number;
+    centerY: number;
+    pitch: number;
+    size: number;
+    whiteSize: number;
+  }>,
+) {
   symbols.forEach((symbol, index) => {
-    const size = 23.4;
-    const x = 435 - (symbols.length - 1 - index) * 27 - size / 2;
-    const y = 44.5 - size / 2;
+    const { size } = geometry;
+    const x = geometry.right - (symbols.length - 1 - index) * geometry.pitch - size / 2;
+    const y = geometry.centerY - size / 2;
     if (symbol !== 'W') {
       paintMana(c, symbol, x, y, size, images, false);
       return;
@@ -28,7 +64,7 @@ export function paintRevisedCost(
     const m = c.measureText(glyph);
     const width = m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
     const height = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
-    const scale = 21 / Math.max(width, height);
+    const scale = geometry.whiteSize / Math.max(width, height);
     c.translate(x + size / 2, y + size / 2);
     c.scale(scale, scale);
     c.fillText(

@@ -254,3 +254,20 @@ ink treatment. Both now use the correct letters, but overlap can fall relative
 to the incorrect stars. Alpha Jade Statue now includes the printed 3/6; its
 stat treatment also remains uncalibrated. Do not tune placement against the old
 incorrect fields or count these input corrections as typography improvements.
+
+Alpha/Unlimited mana now uses the original sun and shared measured placement.
+`early-mana-corpus-review.json` records the remaining failures: Unlimited single
+red costs are farther right than the Alpha-derived policy, and Wild Growth/Sol
+Ring regress at table size. Recalibrate Unlimited with a broader cost cohort;
+do not repair individual scans with individual offsets. Alpha Cyclopean Tomb's
+absent printed cost needs a source override in original-printing mode. Exact
+SVG URLs and checksums for the remaining contours accompany the review.
+
+User review identifies two immediate typography corrections: illustrator text
+should use the title face with gray fill and a shadow, not transparent interiors
+and paired highlight edges; Unlimited Howling Mine needs larger centered body
+text and its printed Continuous Artifact type. Add explicit Oracle/original
+wording and symbol selection, with original type-line provenance and missing
+field diagnostics. Revised's original creature types must retain Summon; early
+artifacts may be Mono, Poly or Continuous. Do not infer historical subtypes from
+modern Oracle subtypes.
