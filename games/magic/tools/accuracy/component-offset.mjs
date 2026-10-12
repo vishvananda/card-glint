@@ -4,7 +4,15 @@ import { inkEdges, distances } from './edges.mjs';
  * dx/dy describes moving rendered ink toward the reference in canonical pixels.
  * Both directions retain all edges; shifting ink out of the crop is penalized.
  */
-export function componentOffset(reference, rendered, width, height, lightInk = false, radius = 10) {
+export function componentOffset(
+  reference,
+  rendered,
+  width,
+  height,
+  lightInk = false,
+  radius = 10,
+  { includeSurface = false } = {},
+) {
   if (
     reference.length !== width * height ||
     rendered.length !== reference.length ||
@@ -117,5 +125,6 @@ export function componentOffset(reference, rendered, width, height, lightInk = f
     },
     objectiveDisagreementPx,
     search: { radius, step: 1, evaluatedOffsets: candidates.length },
+    ...(includeSurface ? { surface: candidates } : {}),
   };
 }

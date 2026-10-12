@@ -55,6 +55,22 @@ assert.deepEqual([competing.overlapPeak.dx, competing.overlapPeak.dy], [-7, 6]);
 assert.ok(competing.overlapPeak.edgeF1 > competing.diagnosticEdgeF1 + 0.3);
 assert.ok(competing.objectiveDisagreementPx > 5);
 assert.equal(competing.status, 'ambiguous');
+const { sharedOffset } = await import('../games/magic/tools/accuracy/shared-offset.mjs');
+const cohort = [shape(3, -2), shape(3, -2), shape(5, -2)].map((b) =>
+  componentOffset(a, b, width, height, false, 10, { includeSurface: true }),
+);
+const shared = sharedOffset(cohort);
+assert.deepEqual([shared.candidate.dx, shared.candidate.dy], [-3, 2]);
+assert.equal(shared.count, 3);
+assert.equal(shared.candidate.improved, 3);
+assert.equal(shared.candidate.regressed, 0);
+assert.equal(shared.candidates.length, 441);
+assert.throws(() => sharedOffset(cohort.slice(0, 2)), /three/);
+assert.throws(
+  () =>
+    sharedOffset([...cohort.slice(0, 2), { ...cohort[2], surface: cohort[2].surface.slice(1) }]),
+  /Incompatible/,
+);
 console.log(
   'Component diagnostics: displacement, contrast, missing ink, search limits, competing peaks and wrong shape passed',
 );
