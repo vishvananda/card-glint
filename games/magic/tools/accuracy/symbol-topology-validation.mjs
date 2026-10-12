@@ -7,15 +7,16 @@ import { compareLettering } from './lettering-metrics.mjs';
 import { letteringContrast } from './lettering-contrast.mjs';
 import { median } from './metrics.mjs';
 
-const [set, phase = 'reserved'] = process.argv.slice(2);
+const [set, phase = 'reserved', planName = 'set-symbol-topology-plan'] = process.argv.slice(2);
 assert.ok(['m15', 'war'].includes(set));
+assert.match(planName, /^[a-z0-9-]+$/);
 assert.ok(['development', 'reserved', 'walkers'].includes(phase));
-const planBytes = await readFile(`${fixtureRoot}/set-symbol-topology-plan.json`),
+const planBytes = await readFile(`${fixtureRoot}/${planName}.json`),
   plan = JSON.parse(planBytes),
   prefix = `symbol-topology${phase === 'development' ? '' : '-' + phase}`,
   captures = {};
 for (const stage of ['before', 'after']) {
-  const run = `${prefix}-${stage}`,
+  const run = plan.runs?.[phase]?.[stage] ?? `${prefix}-${stage}`,
     bytes = await readFile(`${outputRoot}/${set}/${run}/capture.json`),
     data = JSON.parse(bytes);
   assert.equal(
@@ -157,26 +158,29 @@ const methods = Object.fromEntries(
     ].map(async (name) => [name, hash(await readFile(new URL(`./${name}.mjs`, import.meta.url)))]),
   ),
 );
-await writeJson(`${fixtureRoot}/set-symbol-topology-${set}-${phase}-validation.json`, {
-  schemaVersion: 1,
-  set,
-  phase,
-  scope:
-    'Paired identical-input captures; fixed scan normalization, no per-card fitting. All pixels outside symbol windows and all text layouts must remain identical. Normal symbol windows reduce surrounding frame ink; planeswalker context windows may contain frame ink. Component metrics are not whole-card accuracy percentages.',
-  planHash: hash(planBytes),
-  studyHash: hash(await readFile(new URL(import.meta.url))),
-  methods,
-  captures: Object.fromEntries(
-    Object.entries(captures).map(([k, v]) => [
-      k,
-      { run: v.run, hash: v.hash, rendererHash: v.data.rendererHash },
-    ]),
-  ),
-  summary,
-  rows,
-  timing: {
-    milliseconds: performance.now() - start,
-    scope: 'CPU decoding, pixel invariants and structural diagnostics. No Chromium or GPU work.',
+await writeJson(
+  `${fixtureRoot}/${plan.reportPrefix ?? 'set-symbol-topology'}-${set}-${phase}-validation.json`,
+  {
+    schemaVersion: 1,
+    set,
+    phase,
+    scope:
+      'Paired identical-input captures; fixed scan normalization, no per-card fitting. All pixels outside symbol windows and all text layouts must remain identical. Normal symbol windows reduce surrounding frame ink; planeswalker context windows may contain frame ink. Component metrics are not whole-card accuracy percentages.',
+    planHash: hash(planBytes),
+    studyHash: hash(await readFile(new URL(import.meta.url))),
+    methods,
+    captures: Object.fromEntries(
+      Object.entries(captures).map(([k, v]) => [
+        k,
+        { run: v.run, hash: v.hash, rendererHash: v.data.rendererHash },
+      ]),
+    ),
+    summary,
+    rows,
+    timing: {
+      milliseconds: performance.now() - start,
+      scope: 'CPU decoding, pixel invariants and structural diagnostics. No Chromium or GPU work.',
+    },
   },
-});
+);
 console.log(JSON.stringify({ set, phase, cards: rows.length, summary }, null, 2));

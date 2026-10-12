@@ -36,6 +36,17 @@ const plan = await readJson(`${fixtureRoot}/set-symbol-topology-plan.json`),
     ...(set === 'm15'
       ? [0, -1].map((dy) => ({ id: `s92-r12-x2-y${dy}`, scale: 0.92, rim: 1.2, dx: 2, dy }))
       : []),
+    ...(set === 'war'
+      ? [1.2, 2, 2.8].flatMap((commonRim) =>
+          [0, -1, -2].map((dy) => ({
+            id: `s85-r12-w${commonRim * 10}-y${dy}`,
+            scale: 0.85,
+            rim: 1.2,
+            commonRim,
+            dy,
+          })),
+        )
+      : []),
   ],
   out = `${outputRoot}/${set}/symbol-topology-candidates`,
   rows = [];
@@ -64,10 +75,12 @@ for (const v of variants) {
           `else paintShapedSetSymbol(context, setIcon, '${set}', face.rarity, ...symbolBounds, setCrop);`,
         );
   assert.ok(v.id === 'control' || face.includes(`else paintShapedSetSymbol`));
-  const painter = symbolSource.replace(
+  let painter = symbolSource.replace(
     '[1, 0, 0, 1]; // candidate geometry',
     `[${v.scale}, ${v.dx ?? 0}, ${v.dy ?? 0}, ${v.rim}]; // candidate geometry`,
   );
+  if (v.commonRim)
+    painter = painter.replace('c.lineWidth = rim;', `c.lineWidth = common ? ${v.commonRim} : rim;`);
   assert.ok(v.id === 'control' || painter !== symbolSource);
   await writeFile(`${directory}/topology-${set}-${v.id}.ts`, painter);
   await writeFile(`${directory}/face-topology-${set}-${v.id}.ts`, face);

@@ -27,7 +27,7 @@ export function paintShapedSetSymbol(
   const [growth, dx, dy, rim]: readonly [number, number, number, number] = normal
     ? code === 'm15'
       ? [0.92, 2, -1, 0.7]
-      : [0.85, 0, 0, 1.2]
+      : [0.85, 0, -1, 1.2]
     : [1, 0, 0, code === 'm15' ? 0.7 : 1.2];
   x += dx - (width * (growth - 1)) / 2;
   y += dy - (height * (growth - 1)) / 2;
@@ -82,7 +82,7 @@ export function paintShapedSetSymbol(
   c.fillStyle = common ? '#f8f8f5' : '#111111';
   c.fill(back);
   c.strokeStyle = c.fillStyle;
-  c.lineWidth = rim;
+  c.lineWidth = code === 'war' && common ? 2 : rim;
   c.lineJoin = 'round';
   c.stroke(back);
   context.drawImage(
