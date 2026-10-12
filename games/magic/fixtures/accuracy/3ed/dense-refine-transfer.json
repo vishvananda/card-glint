@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "decision": "reject-character-count-classifier",
+  "experimentHash": "c5bd22052e4b8c0b5b3424e37bb62de6d89b5c17c7c6c1f38c0ab006a464de95",
+  "summary": [
+    {
+      "id": "s15.5-l1.25-y4-h8-o-18",
+      "size": 15.5,
+      "leading": 1.25,
+      "y": 4,
+      "height": 8,
+      "centerOffset": -18,
+      "minimumCharacters": 260,
+      "tier": "inspect",
+      "medianF1": 0.6378577116707795,
+      "medianDelta": 0,
+      "medianDistance": 1.544907711087116,
+      "gains": ["Living Wall", "Sedge Troll"],
+      "regressions": ["Copy Artifact", "Mons's Goblin Raiders"],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "s15.5-l1.25-y4-h8-o-18",
+      "size": 15.5,
+      "leading": 1.25,
+      "y": 4,
+      "height": 8,
+      "centerOffset": -18,
+      "minimumCharacters": 260,
+      "tier": "table",
+      "medianF1": 0.6184940556580067,
+      "medianDelta": 0,
+      "medianDistance": 1.7032009842954787,
+      "gains": ["Living Wall", "Sedge Troll"],
+      "regressions": ["Copy Artifact", "Mons's Goblin Raiders"],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "table",
+      "medianF1": 0.5872437054755699,
+      "medianDelta": 0,
+      "medianDistance": 1.6397145189281432,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.5799939751397365,
+      "medianDelta": 0,
+      "medianDistance": 1.544907711087116,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    }
+  ],
+  "results": [
+    {
+      "id": "0d42f473-3e3f-4441-b7ee-6819a3a8f52e",
+      "name": "Copy Artifact",
+      "number": "53",
+      "inputHash": "f43676bdf18a4d6f9f99c13d19c68290431b4e216d397e83e0a03d38ea7d39a1",
+      "referenceHash": "a10904127bb4225cd5c3490d2ff73273155f6ff4548010ee8239b004c87f1ec8",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "53.inspect.control.png",
+          "sha256": "3d05c73900109ebcf630c105d44e6301ca182c4de8ec5104bcf9554d126095d5",
+          "edgeF1": 0.5179467300774947,
+          "meanDistance": 1.7949012676662943,
+          "censusSimilarity": 0.5096880434615325,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "53.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "033797d8d3a219c42a8a22a77e4608effebbce3df07cab2d40034b25368f732e",
+          "edgeF1": 0.24237931371657873,
+          "meanDistance": 4.283244882243104,
+          "censusSimilarity": 0.4949997691490835,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 6
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "53.table.control.png",
+          "sha256": "38507bfee0bec3e56017a67f436fe5e7670a162604f2d146b9f12c12410eb425",
+          "edgeF1": 0.5126252973947807,
+          "meanDistance": 1.89168520075517,
+          "censusSimilarity": 0.5234652261569478,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "53.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "0750198ef6e7552bad3d30fbf3a5d7210afa0ddddb393d02b7db71973b824e6a",
+          "edgeF1": 0.2260126118363259,
+          "meanDistance": 5.067771467415843,
+          "censusSimilarity": 0.49522138602890253,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "id": "e82a9dd8-653a-4410-b78f-303aaf69d11e",
+      "name": "Personal Incarnation",
+      "number": "31",
+      "inputHash": "85de6b43beaa5c03cae37777d1c5552e89d5230ce36b86712fb59511e41c88d9",
+      "referenceHash": "f805423e8a7f6a10879d7cd90285af24db6b23a9eabc0bd7fd7218181792535f",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "31.inspect.control.png",
+          "sha256": "5afd2eb667bb2d000ee567517b8ddcbce9e98bddd80d076a5704e9226f5631fe",
+          "edgeF1": 0.5151320927124804,
+          "meanDistance": 1.6925611289585332,
+          "censusSimilarity": 0.5321994085511826,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "31.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "5afd2eb667bb2d000ee567517b8ddcbce9e98bddd80d076a5704e9226f5631fe",
+          "edgeF1": 0.5151320927124804,
+          "meanDistance": 1.6925611289585332,
+          "censusSimilarity": 0.5321994085511826,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "31.table.control.png",
+          "sha256": "b72730bd65cae1d52951506f0a746078c4de3dce18fdb3963639179c91292ffa",
+          "edgeF1": 0.4888969822983886,
+          "meanDistance": 1.9089266109838667,
+          "censusSimilarity": 0.5337179541155344,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "31.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "b72730bd65cae1d52951506f0a746078c4de3dce18fdb3963639179c91292ffa",
+          "edgeF1": 0.4888969822983886,
+          "meanDistance": 1.9089266109838667,
+          "censusSimilarity": 0.5337179541155344,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "516858c9-7679-4a65-a787-36a2cf175ede",
+      "name": "Living Wall",
+      "number": "262",
+      "inputHash": "796bb0758a81e63d828bc8889937840aa6a1e6e012ead874be2cc125df1e524b",
+      "referenceHash": "0689a18083356522396512857320ed478b84f9dd0af12e6fa47fe7b3891658a2",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "262.inspect.control.png",
+          "sha256": "3692f16e0d578516e436868966b106db4ba630822198cdf42b01a7d1e4819011",
+          "edgeF1": 0.2834484918011766,
+          "meanDistance": 4.567465399339342,
+          "censusSimilarity": 0.4897093230757029,
+          "wrapping": null,
+          "size": 21.75,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "262.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "ee1e7c8c5e89e909ca3b3db8fcfad333f4a9f12301b4e33980ec850fc062b18c",
+          "edgeF1": 0.6336742031395808,
+          "meanDistance": 1.7182829738564132,
+          "censusSimilarity": 0.5523909607464352,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 6
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "262.table.control.png",
+          "sha256": "b1a22d62633b0d2dc060b9aaeb8c4fe735c1a749fb3b461de67bb953299ed261",
+          "edgeF1": 0.26831478140732523,
+          "meanDistance": 4.73225293516503,
+          "censusSimilarity": 0.476518108532226,
+          "wrapping": null,
+          "size": 21.75,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "262.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "3dbab7fccb56edd0a51251af1cfc9b4f8da3c2bea2c9753af8aebc8538071c69",
+          "edgeF1": 0.5751259977596542,
+          "meanDistance": 2.0450792551227015,
+          "censusSimilarity": 0.5849398648304148,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "id": "485d3707-59ce-4350-9ec8-9df232f88c04",
+      "name": "Sedge Troll",
+      "number": "174",
+      "inputHash": "30388532804322a3e5d3541d3c8ae93c342574d1f55db25b7633b0f918f8a3da",
+      "referenceHash": "f2933248ec4df7b908ca1180bb58487ba3121fbc7f04c2095c22ffa82b7dc0c3",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "174.inspect.control.png",
+          "sha256": "f1f4ccfd39e337a79f15919794da5dda5edf8ab1156fe29aef460b5f5ba25181",
+          "edgeF1": 0.25101035270103494,
+          "meanDistance": 3.4701990986696787,
+          "censusSimilarity": 0.4675816953504723,
+          "wrapping": null,
+          "size": 20.25,
+          "lines": 9
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "174.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "99bf6d50faa45ec6c52d54c56b935aa5a12292df6bbbf6d0de7661ace8cbbef0",
+          "edgeF1": 0.7514731383757224,
+          "meanDistance": 1.2640230448866865,
+          "censusSimilarity": 0.6095527771833827,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 7
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "174.table.control.png",
+          "sha256": "9d4cfcd108e4fa5a3afcd5c06e62429ca636bb30a717a13cdb9fe06878c52a9f",
+          "edgeF1": 0.2258686134857227,
+          "meanDistance": 3.648244041930881,
+          "censusSimilarity": 0.44338642130040046,
+          "wrapping": null,
+          "size": 20.25,
+          "lines": 9
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "174.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "3a3ef80e21ec69ce28f9eb14fac07a78effdc0fcf85508255351fb32084e2df2",
+          "edgeF1": 0.6867429236162579,
+          "meanDistance": 1.497475357607091,
+          "censusSimilarity": 0.6324397028704185,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "id": "9f521a52-f4e3-4043-9db3-a3c89afce3b9",
+      "name": "Power Surge",
+      "number": "170",
+      "inputHash": "d299ddf6889953b9ea36cdff0cb311a548a60ea255256be4399f129f5a9ab24e",
+      "referenceHash": "57ebfa88f43a6839d9ee1558afb0e741affc77d62b8cb6fc63cb3cca75ab6994",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "170.inspect.control.png",
+          "sha256": "37fe22a4da6b0c5fc6b919888fe0b83a18974c899fe3404cefef3071ad1022cc",
+          "edgeF1": 0.7091034422153689,
+          "meanDistance": 1.1448387231060826,
+          "censusSimilarity": 0.6525822510515954,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "170.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "37fe22a4da6b0c5fc6b919888fe0b83a18974c899fe3404cefef3071ad1022cc",
+          "edgeF1": 0.7091034422153689,
+          "meanDistance": 1.1448387231060826,
+          "censusSimilarity": 0.6525822510515954,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "170.table.control.png",
+          "sha256": "c8d030842e9aa0678487095f0673190211cfe9ce9af91b22b2a3834f4af13ca1",
+          "edgeF1": 0.6822185260566479,
+          "meanDistance": 1.214338120253723,
+          "censusSimilarity": 0.6595486283229708,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "170.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "c8d030842e9aa0678487095f0673190211cfe9ce9af91b22b2a3834f4af13ca1",
+          "edgeF1": 0.6822185260566479,
+          "meanDistance": 1.214338120253723,
+          "censusSimilarity": 0.6595486283229708,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "c022abd7-bb1a-4f61-b4e1-6b802d337484",
+      "name": "Titania's Song",
+      "number": "220",
+      "inputHash": "6e5d7ce167ed46d5e9eeda74b3566a7ec953c7ff151e8988f3d6692d31fecae4",
+      "referenceHash": "0d77657f624b128f8b57515e1efc8b8599c8d8c23dcfdb37b8d424d956f41edc",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "220.inspect.control.png",
+          "sha256": "86cc10e0665e20cdfe9dcb777f9c3782b3f76352a57891070bf5c9eaf78385ff",
+          "edgeF1": 0.7362764948895512,
+          "meanDistance": 1.1118512418852622,
+          "censusSimilarity": 0.6846308447910983,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "220.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "86cc10e0665e20cdfe9dcb777f9c3782b3f76352a57891070bf5c9eaf78385ff",
+          "edgeF1": 0.7362764948895512,
+          "meanDistance": 1.1118512418852622,
+          "censusSimilarity": 0.6846308447910983,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "220.table.control.png",
+          "sha256": "8dfe9c58e5195abadf7380228c93d6e6cdfb7e599bd64f28e47ea200411e7038",
+          "edgeF1": 0.7229193518110236,
+          "meanDistance": 1.183545944826827,
+          "censusSimilarity": 0.6875609649431375,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "220.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "8dfe9c58e5195abadf7380228c93d6e6cdfb7e599bd64f28e47ea200411e7038",
+          "edgeF1": 0.7229193518110236,
+          "meanDistance": 1.183545944826827,
+          "censusSimilarity": 0.6875609649431375,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "47e21390-c661-4717-bbb9-71eb63c6f01e",
+      "name": "Plague Rats",
+      "number": "123",
+      "inputHash": "392b4e09827c03f3ae9f716aa3013ec603cc5749193d9a2a30f3cdc802447cd5",
+      "referenceHash": "70275a1716d0f56bff6b9755389edcc884b09defb1b13509cd8fab90a3039a56",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "123.inspect.control.png",
+          "sha256": "4ae3637f07b5dc1cfc0a7b979f8b0fefcac01ebb0b11d2e936856558a528c570",
+          "edgeF1": 0.6420412202019783,
+          "meanDistance": 1.3972542932156988,
+          "censusSimilarity": 0.5925546368282433,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "123.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "4ae3637f07b5dc1cfc0a7b979f8b0fefcac01ebb0b11d2e936856558a528c570",
+          "edgeF1": 0.6420412202019783,
+          "meanDistance": 1.3972542932156988,
+          "censusSimilarity": 0.5925546368282433,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "123.table.control.png",
+          "sha256": "9e4e62ac713dc044a426d42a603e2d9e47780afe9ad0dba612a620e419242a0e",
+          "edgeF1": 0.6618621135563592,
+          "meanDistance": 1.3877438371011164,
+          "censusSimilarity": 0.6343897399263608,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "123.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "9e4e62ac713dc044a426d42a603e2d9e47780afe9ad0dba612a620e419242a0e",
+          "edgeF1": 0.6618621135563592,
+          "meanDistance": 1.3877438371011164,
+          "censusSimilarity": 0.6343897399263608,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "6e81e219-c840-4844-be87-0449ab0fa645",
+      "name": "Mons's Goblin Raiders",
+      "number": "167",
+      "inputHash": "a4d584d4fa5ae3288ad872d61f89dfd2e5bb2c7c05d477790e6d0738ea477a71",
+      "referenceHash": "2fa6f8c55fd3ed91fae25131043ccad8a1a7750394bc228a5ad4c3f6829828e6",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "167.inspect.control.png",
+          "sha256": "d11e7231ab43318b06149df2ea50087cc4b4216c961cf67f17e795bac1ca4282",
+          "edgeF1": 0.7736514371617991,
+          "meanDistance": 0.9624269226807112,
+          "censusSimilarity": 0.666282490562298,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 7
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "inspect",
+          "file": "167.inspect.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "533a84f3cb342518c9cc054e9bcd397931fe9daeb564cab6053dd33a7ddbf5ae",
+          "edgeF1": 0.42073159153602535,
+          "meanDistance": 3.407881168984809,
+          "censusSimilarity": 0.516235416754605,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 5
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "167.table.control.png",
+          "sha256": "fb0fb401b0bcf47ee4ca3cd5bd8e7e0d63147736dc3d43e6121b42838e8d7218",
+          "edgeF1": 0.7479861559140738,
+          "meanDistance": 1.023075641306771,
+          "censusSimilarity": 0.6792135645975602,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 7
+        },
+        {
+          "candidate": "s15.5-l1.25-y4-h8-o-18",
+          "tier": "table",
+          "file": "167.table.s15.5-l1.25-y4-h8-o-18.png",
+          "sha256": "c48b18e89ca560e9cbf78ed8843776a156fc63b95a80e889d477bd9fe7517832",
+          "edgeF1": 0.3784272107344489,
+          "meanDistance": 4.8619124782966185,
+          "censusSimilarity": 0.5251491588195026,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Living Wall and Sedge Troll improve; Copy Artifact and Mons’s Goblin Raiders regress because their printings use regular-sized type. All four unaffected controls retain exact PNGs.",
+    "No production adoption. Replace the character-count classifier with measured regular-font fit; retain the already frozen small typography parameters."
+  ]
+}
