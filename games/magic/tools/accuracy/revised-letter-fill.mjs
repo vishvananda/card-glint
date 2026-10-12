@@ -20,7 +20,7 @@ import {
 } from './common.mjs';
 
 const phase = process.argv[2] ?? 'development',
-  stage = process.argv[3] ?? 'style';
+  stage = process.argv[3] ?? 'neutral';
 assert.ok(['development', 'validation'].includes(phase));
 const fixture = path.join(fixtureRoot, '3ed');
 const plan = await readJson(path.join(fixture, 'letter-fill-plan.json'));
@@ -42,9 +42,12 @@ if (frozen) {
   assert.equal(metricHash, frozen.metricHash);
   assert.equal(hash(await readFile(path.join(fixture, 'letter-fill-plan.json'))), frozen.planHash);
 }
-const candidates = [{ id: 'control' }, ...(frozen ? [frozen.candidate] : plan.candidates)];
+const candidates = [
+  { id: 'control' },
+  ...(frozen ? [frozen.candidate] : (plan.stageCandidates?.[stage] ?? plan.candidates)),
+];
 const selected = phase === 'validation' ? plan.reserved : plan.development;
-const out = path.join(outputRoot, '3ed', `letter-fill-${phase}`);
+const out = path.join(outputRoot, '3ed', `letter-fill-${phase}${frozen ? '' : `-${stage}`}`);
 const session = await openBrowser(await readJson(path.join(cacheRoot, 'sets/3ed.json')));
 const results = [];
 try {
@@ -116,7 +119,7 @@ try {
                   this.save();
                   this.setTransform(mask.matrix);
                   this.globalAlpha *= candidate.fill;
-                  this.fillStyle = '#f2eee3';
+                  this.fillStyle = candidate.color ?? '#f2eee3';
                   native.call(this, mask.text, mask.x, mask.y, mask.maxWidth);
                   this.restore();
                 }

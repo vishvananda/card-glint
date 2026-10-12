@@ -735,5 +735,67 @@
     }
   ],
   "scope": "Revised nonland title/credits/stats ink only; every font, coordinate, size, paragraph, existing asset and scan alignment stays fixed. Reserved lettering crops not opened in this study before candidate freeze. Earlier full-corpus diagnostics are not untouched validation.",
-  "gate": "Require visible stroke continuity improvement plus nonregressing median local-contrast correlation and paired light/dark F1 at both tiers; retain individual and color-group regressions. Do not choose opacity per card."
+  "gate": "Require visible stroke continuity improvement plus nonregressing median local-contrast correlation and paired light/dark F1 at both tiers; retain individual and color-group regressions. Do not choose opacity per card.",
+  "stageCandidates": {
+    "light": [
+      {
+        "id": "fill-0.25",
+        "fill": 0.25
+      },
+      {
+        "id": "fill-0.5",
+        "fill": 0.5
+      },
+      {
+        "id": "fill-0.75",
+        "fill": 0.75
+      },
+      {
+        "id": "fill-1",
+        "fill": 1
+      }
+    ],
+    "neutral": [
+      {
+        "id": "gray96-a0.5",
+        "fill": 0.5,
+        "color": "rgb(96,96,96)"
+      },
+      {
+        "id": "gray96-a1",
+        "fill": 1,
+        "color": "rgb(96,96,96)"
+      },
+      {
+        "id": "gray128-a0.5",
+        "fill": 0.5,
+        "color": "rgb(128,128,128)"
+      },
+      {
+        "id": "gray128-a1",
+        "fill": 1,
+        "color": "rgb(128,128,128)"
+      },
+      {
+        "id": "gray160-a0.5",
+        "fill": 0.5,
+        "color": "rgb(160,160,160)"
+      },
+      {
+        "id": "gray160-a1",
+        "fill": 1,
+        "color": "rgb(160,160,160)"
+      },
+      {
+        "id": "gray192-a0.5",
+        "fill": 0.5,
+        "color": "rgb(192,192,192)"
+      },
+      {
+        "id": "gray192-a1",
+        "fill": 1,
+        "color": "rgb(192,192,192)"
+      }
+    ]
+  }
 }

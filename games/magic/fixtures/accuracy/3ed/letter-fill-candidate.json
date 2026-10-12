@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "baselineRendererHash": "5e40956ce8e445f24b6e04bb022ee09d1e4da3bd9566fb865dccecbbcd5edd89",
+  "experimentHash": "0af364c6296fb033f40d96d4ac4cf01f2d4249221711a8bc8e54838dc0621fe8",
+  "metricHash": "2bb27aebcf71914a1d80891c819b33e500c86dad2064c31d8599da6c7c50c5b2",
+  "planHash": "6f36c2afb1d543c7dbf9f006620072e8aeadd5da59b3addd1fe9d373eb95d21f",
+  "developmentTrialHash": "0d27dca303b8cca95ecad1d7fd9c066f1c6a124a6528924b425f4545a60135b7",
+  "candidate": {
+    "id": "gray96-a1",
+    "fill": 1,
+    "color": "rgb(96,96,96)"
+  },
+  "developmentSummary": [
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.4627214262097036,
+      "medianContrast": 0.012205156227026587,
+      "medianCensus": 0.4825000054227428,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.430451044380439,
+      "medianContrast": 0.08115344589837908,
+      "medianCensus": 0.504876051187518,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.38557993715602035,
+      "medianContrast": 0.25487010645850716,
+      "medianCensus": 0.5839085673563486,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5443342108136545,
+      "medianContrast": 0.36214397508771945,
+      "medianCensus": 0.5985540577247856,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.4081678504909182,
+      "medianContrast": 0.16957968265049675,
+      "medianCensus": 0.5492084558644916,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.354080484488287,
+      "medianContrast": 0.23716490546277666,
+      "medianCensus": 0.5803327059716712,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "gray96-a1",
+      "tier": "inspect",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.4788862736532499,
+      "medianContrast": 0.029003579976315655,
+      "medianCensus": 0.5040822369539739,
+      "medianDelta": 0.007112879398667504,
+      "gains": ["Animate Dead", "Benalish Hero"],
+      "regressions": []
+    },
+    {
+      "candidate": "gray96-a1",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.4403922205325321,
+      "medianContrast": 0.0906146493124807,
+      "medianCensus": 0.5065263604389216,
+      "medianDelta": 0.00966153668749209,
+      "gains": ["Animate Dead"],
+      "regressions": []
+    },
+    {
+      "candidate": "gray96-a1",
+      "tier": "inspect",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.39219214184811774,
+      "medianContrast": 0.26549851260377794,
+      "medianCensus": 0.598968726588098,
+      "medianDelta": 0.003242664152804331,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "gray96-a1",
+      "tier": "table",
+      "region": "title",
+      "count": 7,
+      "medianF1": 0.5496619133101044,
+      "medianContrast": 0.3675485109785173,
+      "medianCensus": 0.6005245862348075,
+      "medianDelta": 0.005327702496449871,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "gray96-a1",
+      "tier": "table",
+      "region": "footer",
+      "count": 7,
+      "medianF1": 0.42058971027654457,
+      "medianContrast": 0.21215292699773264,
+      "medianCensus": 0.5494770646730895,
+      "medianDelta": 0.007815025974080514,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "gray96-a1",
+      "tier": "table",
+      "region": "stats",
+      "count": 4,
+      "medianF1": 0.3670562732856855,
+      "medianContrast": 0.2475533207380529,
+      "medianCensus": 0.5919967393005081,
+      "medianDelta": 0.004266682902326652,
+      "gains": [],
+      "regressions": []
+    }
+  ],
+  "decision": "Fixed neutral gray96 interior restores continuity without the overly bright/heavy light-fill result. Across seven development cards all component/tier medians improve in paired F1 and local contrast; no >.02 F1 regressions. Neutral128 has a table-title regression; choose96 before reserved crops. Geometry/fonts/edges unchanged. Exact Goudy outline and width differences remain.",
+  "validationGate": "Require visible stroke continuity improvement plus nonregressing median local-contrast correlation and paired light/dark F1 at both tiers; retain individual and color-group regressions. Do not choose opacity per card."
+}
