@@ -62,6 +62,8 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   const plain = paragraph?.runs.length === 1 ? paragraph.runs[0] : undefined;
   // Fourth's short rules/flavor blocks are centered too. Measure the entire
   // passage, including attribution lines; longer passages retain their inset.
+  // Five lines alone over-centers dense blocks. The Fourth-only length gate
+  // separates the reviewed long blocks; Fifth uses a different paragraph policy.
   if (
     !forcedLeft &&
     set === '4ed' &&
@@ -83,6 +85,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
         flavorGap: 0,
         balanceLines: true,
       },
+      150,
     );
     if (short) return short;
   }

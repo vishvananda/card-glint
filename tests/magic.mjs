@@ -446,6 +446,33 @@ try {
     });
     if (longFourth.lines.some((line) => line.x !== longFourth.x))
       throw Error('Fourth long flavor passage was incorrectly centered');
+    const sisters = {
+      ...shortFourth,
+      rulesParagraphs: [
+        {
+          role: 'rules',
+          runs: [{ text: '{T}: Add {R} to your mana pool. Play this ability as an interrupt.' }],
+        },
+        {
+          role: 'flavor',
+          runs: [
+            {
+              text: 'We are many wicks sharing a common tallow; we feed the skies with the ashes of our prey.',
+              italic: true,
+            },
+          ],
+        },
+      ],
+    };
+    const sistersLayout = retroTextLayout(ctx, sisters);
+    if (sistersLayout.lines.some((line) => line.x !== sistersLayout.x))
+      throw Error('Dense Fourth flavor block was centered solely because it fit five lines');
+    const shortReference = retroTextLayout(ctx, {
+      ...sisters,
+      rulesAlignment: { mode: 'auto', reference: paladinParagraphs },
+    });
+    if (shortReference.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01))
+      throw Error('Fourth character boundary ignored the chosen alignment reference');
     const { ordinaryTextLayout } = await import('/magic-presentation.js');
     const wrath = {
       name: 'Wrath of God',
