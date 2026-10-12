@@ -1625,10 +1625,10 @@ and weight investigation; its hashes preserve that boundary.
 
 ### Alpha ink weight and minimum panel inset
 
-Alpha now constrains body ink to canonical y=428..590, preserving the existing
-optical center wherever the text already fits. This also applies to the dense
-fallback; complete Oracle reminders and flavor text shrink instead of occupying
-the panel margins. Benalish Hero fits at 13.5px with its full Oracle reminder and
+Alpha Oracle wording now constrains body ink to canonical y=428..590, preserving
+the existing optical center wherever the text already fits. This also applies
+to the dense Oracle fallback; complete reminders and flavor text shrink instead
+of occupying the panel margins. Original printing text retains its prior margins. Benalish Hero fits at 13.5px with its full Oracle reminder and
 flavor passage. All 295 original-input Alpha cards render at both tiers with no
 fit failures or overflow reports.
 
@@ -1642,8 +1642,80 @@ approximation. The font asset still needs review for shape and weight fidelity.
 
 The frozen [plan](fixtures/accuracy/alpha-ink-insets-plan.json) and
 [per-card audit](fixtures/accuracy/lea/alpha-ink-insets-measurement.json) retain
-both tiers, declines, input hashes and limitations. Northern Paladin's corrected
+the rejected trial: applying the inset to original text reduced paired inspect
+body F1 from .485 to .427, with 94 declines over .02. Visual review of Gaea's
+Liege, Ironroot Treefolk and Shivan Dragon confirmed that the scan typography
+uses tight margins. The retained policy therefore limits the inset to Oracle
+wording; its [plan](fixtures/accuracy/alpha-ink-retained-plan.json) and
+[measurements](fixtures/accuracy/lea/alpha-ink-retained-measurement.json) preserve
+the follow-up evidence. Northern Paladin's corrected
 flavor attribution/type changes its input, so it is excluded from paired scores.
 Check, strict native/WASM Clippy, build, Magic, package, browser, showcase and
 accuracy tests pass. The local browser keeps option changes in the existing
 feed and pins the search header while scrolling; that browser remains local.
+
+The retained Alpha run renders all 295 cards with no failures or overflow. All
+294 unchanged-input original layouts are byte-identical to the earlier layout
+records. Body F1 is .485 → .482 at inspect and .473 → .471 at table, with zero
+changes over .02 in either direction. The slight score decline is retained
+alongside the visual weight correction; these edge metrics do not establish
+correct font shape or stroke weight.
+
+### Fourth and later core-set centering
+
+Fourth Edition now also centers short rules/flavor blocks that fit within five
+measured lines at the printed size, including attribution lines. Northern Paladin
+uses this path; longer Black Knight, Serra Angel and Pearled Unicorn passages
+remain left aligned. Explicit host alignment wins, and classification uses the
+chosen original/Oracle reference independently of the visible wording.
+
+Tenth Edition and M10–M14 use centered balanced lines for short rules-only blocks
+(up to three measured lines). Eighth/Ninth Wrath of God scans are left aligned,
+so the policy is set-scoped instead of inferred from the 2003 frame. The
+[visual survey](fixtures/accuracy/centering-era-review.json) records scan hashes,
+wording and sources. Later M15/Origins/M19 samples have flavor or longer text;
+they do not establish when centering disappeared. Other sets and the precise
+length boundary remain review work. Post-audit inspection of the 17 newly centered
+Fourth flavor blocks found 16 centered scans and one exception, Sisters of the
+Flame. Its five measured lines qualify but the scan is left aligned. This is
+flagged for shared threshold review; no card-name/tap-symbol exception was added.
+The 2003 geometry remains an explicitly
+unvalidated preview and is excluded from validated corpus accuracy claims.
+
+The [Fourth corpus report](fixtures/accuracy/4ed/centering-flavor-measurement.json)
+covers all 378 cards without render failures or overflow. Against the older
+`text-insets` baseline, 376 unchanged-input pairs move from .534 → .590 inspect
+body F1 and .499 → .558 table F1, with 107 gains and two declines over .02 at
+both tiers. These are cumulative changes since that baseline. Sisters of the
+Flame (−.262 inspect) and Deathgrip (−.064) are explicit review flags; Northern
+Paladin and the other changed-source input are excluded from paired aggregates.
+The newly centered flavor subset has 16 comparable inputs: inspect .435 → .588,
+table .394 → .560, with 15 gains and one decline over .02 at both tiers.
+
+On the single Tenth Edition Wrath development example, a fixed body crop and
+identity registration give edge F1 .204 → .337 and p95 edge distance 49.1 → 7.2px
+when switching from forced-left to automatic centering with identical words and
+assets. [The diagnostic](fixtures/accuracy/tenth-wrath-centering-measurement.json)
+records raster hashes and scope. This is neither a held-out test nor a
+whole-card/2003-frame validation.
+
+Fourth Edition now uses the newer white sun in both costs and inline text while
+retaining its historical tilted-card tap symbol when original symbols are chosen.
+Raster tests check that Fourth's white header glyph remains identical when
+switching symbol modes, while its inline tap changes; Revised changes both.
+
+### Northern Paladin source correction
+
+The [13-printing audit](fixtures/accuracy/northern-paladin-flavor-review.json)
+finds the missing flavor attribution newline in LEA, LEB, 2ED, CED, CEI, 3ED, SUM
+and retro 30A #326. Both Scryfall and MTGJSON have the defect; switching providers
+would not repair it. Hash-bound partial corrections restore the break locally
+without claiming that the original rules wording has been scan-certified.
+Original and Oracle previews share the printing's corrected flavor.
+
+[MTGJSON PR #1748](https://github.com/mtgjson/mtgjson/pull/1748) supplies the eight
+UUID-specific flavor overrides. MTGJSON imports Scryfall bulk card data, maps
+`flavor_text` to `flavorText`, and applies manual overrides later. The same report
+was submitted to Scryfall's official card-issue form, which confirmed receipt;
+both upstream corrections are pending review. No general flavor-source migration
+is implied.

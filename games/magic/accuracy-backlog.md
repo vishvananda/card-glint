@@ -271,3 +271,25 @@ wording and symbol selection, with original type-line provenance and missing
 field diagnostics. Revised's original creature types must retain Summon; early
 artifacts may be Mono, Poly or Continuous. Do not infer historical subtypes from
 modern Oracle subtypes.
+
+## Follow-up from the centering/source audit
+
+- Review the Fourth five-line threshold against Sisters of the Flame. It is the
+  one left-aligned scan among 17 newly centered flavor-block predictions; the
+  other 16 agree with scan alignment. Use reserved examples before adjusting
+  a shared threshold.
+- Review Fourth Deathgrip’s cumulative body regression against the earlier
+  text-insets capture (−.064 inspect F1), separately from the new flavor rule.
+- Establish the later core-set cutoff with short, flavor-free controls. Centered
+  examples are confirmed through M14; longer or flavor-bearing M15/Origins/M19
+  examples cannot identify the transition. Normal 2003 frame geometry still
+  needs a validated adapter.
+- Repair original type coverage: the preview correctly labels unverified source
+  data, but Alpha Benalish Hero still receives a modernized MTGJSON originalType.
+  Its scan says “Summon Hero.” Keep this separate from Oracle type semantics.
+- Review Fourth original punctuation: Brothers of Fire and Wall of Brambles
+  lack activation colons in MTGJSON originalText. These source mismatches must
+  not be treated as geometric defects.
+- Follow [MTGJSON PR #1748](https://github.com/mtgjson/mtgjson/pull/1748) and the
+  corresponding Scryfall submission for Northern Paladin's eight missing flavor
+  attribution breaks. Both upstream changes are pending review.
