@@ -80,6 +80,17 @@ export function typographyMetrics(target, card, image) {
     paragraphs,
   );
   if (result.status !== 'measured') return result;
+  if (target.lines.every((line) => !line.inkBounds))
+    return {
+      ...result,
+      matchedLines: 0,
+      blockEdgeMae: null,
+      matchedLineTopMae: null,
+      matchedLineWidthMae: null,
+      lines: actual.map((text) => ({ text, inkBounds: null })),
+    };
+  if (target.lines.some((line) => !line.inkBounds))
+    throw Error('Typography targets must provide either every ink box or only line text');
   const bounds = renderedLineBounds(
     image,
     card.layout,

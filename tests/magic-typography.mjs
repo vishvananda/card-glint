@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { normalizedText, wrapping } from '../games/magic/tools/accuracy/typography-metrics.mjs';
+import {
+  normalizedText,
+  wrapping,
+  typographyMetrics,
+} from '../games/magic/tools/accuracy/typography-metrics.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 
@@ -30,6 +34,16 @@ const extra = wrapping(['A bright morning.'], ['A bright', 'morning.'], ['A brig
 assert.equal(extra.softBreakF1, 0);
 assert.equal(extra.lineCountError, 1);
 assert.equal(wrapping(paragraphs, paragraphs, paragraphs).softBreakF1, 1);
+const lineOnly = typographyMetrics(
+  { lines: [{ text: 'A bright morning.' }] },
+  {
+    face: { rulesParagraphs: [{ runs: [{ text: 'A bright morning.' }] }] },
+    layout: { lines: [{ runs: [{ text: 'A bright' }] }, { runs: [{ text: 'morning.' }] }] },
+  },
+);
+assert.equal(lineOnly.lineCountError, 1);
+assert.equal(lineOnly.exactWrapping, false);
+assert.equal(lineOnly.blockEdgeMae, null, 'Line text alone cannot certify geometric alignment');
 const fixture = async (set, file) =>
   JSON.parse(
     await readFile(

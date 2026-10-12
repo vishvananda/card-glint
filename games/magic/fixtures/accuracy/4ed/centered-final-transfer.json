@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "freezeCommit": "3cfb131",
+  "rendererHash": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+  "experimentHash": "30a4f6084d902ba6921fa53ece5c9a2e763d278e580e12032868823be666ea6f",
+  "alignmentHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+  "summary": [
+    {
+      "id": "s25-w344-y406.556",
+      "size": 25,
+      "width": 344,
+      "y": 406.556,
+      "medianF1": 0.6388368235100582,
+      "gains": 6,
+      "regressions": []
+    },
+    {
+      "id": "control",
+      "medianF1": 0.3442687860044198,
+      "gains": 0,
+      "regressions": []
+    }
+  ],
+  "decision": "Adopt shared 344px width, size25, y406.556 and balanced centering for plain short Fourth Edition rules paragraphs. All six fresh examples improve and preserve printed line counts. Two soft-break mismatches remain (Righteousness, Phantasmal Terrain); Regeneration source omits a colon and is not certified as matching content in these frozen scores. No per-card geometry.",
+  "results": [
+    {
+      "id": "3fccc7f2-b317-40c4-9b55-658d67dca843",
+      "name": "Righteousness",
+      "number": "46",
+      "inputHash": "fc4e0e9104bfcad47624621bc832a8447a69d196ca7ea04ac321d94e23cc5a18",
+      "face": {
+        "name": "Righteousness",
+        "typeLine": "Instant",
+        "colors": ["W"],
+        "manaSymbols": ["W"],
+        "rulesText": "Target blocking creature gets +7/+7 until end of turn.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Target blocking creature gets +7/+7 until end of turn.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/87b32afb2a9c5d714407ab779e93198d365961db02c26a6d84cbfb2135b20b3e",
+        "artist": "Douglas Shuler",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "8a732997f99f2ffa444ed0ea0ffc821dc0f34eec007ed8cffb2e9326961c6a84",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.5632474382314314,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "46.control.png",
+          "sha256": "39295a9a7a314e1eff2d0cdb20e53b5520af659bed2220ffb45a60524017c6c1",
+          "size": 22.5,
+          "lines": ["Target blocking creature gets +7/+7", "until end of turn."]
+        },
+        {
+          "id": "s25-w344-y406.556",
+          "edgeF1": 0.6330605485534936,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "46.s25-w344-y406.556.png",
+          "sha256": "aef374581d405892f21465214cead50ea38ae6bfacd4151d455d8704c24f89f3",
+          "size": 25,
+          "lines": ["Target blocking creature", "gets +7/+7 until end of turn."]
+        }
+      ]
+    },
+    {
+      "id": "0d7b3b65-e1f9-4a0d-95a6-42c2c4a358e5",
+      "name": "Phantasmal Terrain",
+      "number": "89",
+      "inputHash": "c6daa2fc016aa4bc99d176c3166829561d06769e95b77cc0888136ab851eea26",
+      "face": {
+        "name": "Phantasmal Terrain",
+        "typeLine": "Enchantment — Aura",
+        "colors": ["U"],
+        "manaSymbols": ["U", "U"],
+        "rulesText": "Target land becomes any basic land type of your choice.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Target land becomes any basic land type of your choice.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/8637284b73e220c2db390d7abf6ea57ab1c91532a2e14567d6ae9403ef4bc255",
+        "artist": "Dameon Willich",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "11e5795d4902b18fa7dbf50b3f8dbe100da4fef0b5ab2ff77b5de9def44098d4",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.27104268260763453,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "89.control.png",
+          "sha256": "e1c2499ce1ddc47ed6df7097f1924f60d21ae3c9d73e21637435514263451af9",
+          "size": 22.5,
+          "lines": ["Target land becomes any basic land", "type of your choice."]
+        },
+        {
+          "id": "s25-w344-y406.556",
+          "edgeF1": 0.5202188629959458,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "89.s25-w344-y406.556.png",
+          "sha256": "0b858a18d8b77ccc065a27bbd0f67c53ae9bd54a47963c49d0e98be6ca8b3dfa",
+          "size": 25,
+          "lines": ["Target land becomes any", "basic land type of your choice."]
+        }
+      ]
+    },
+    {
+      "id": "2096e54e-1a55-4fd7-8415-a6f2fdb2a536",
+      "name": "Raise Dead",
+      "number": "156",
+      "inputHash": "61d472e61fb260c5f84ceb288bec5eba88c49d89da3e38ae051232b8fb65a958",
+      "face": {
+        "name": "Raise Dead",
+        "typeLine": "Sorcery",
+        "colors": ["B"],
+        "manaSymbols": ["B"],
+        "rulesText": "Take target creature from your graveyard and put it into your hand.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "Take target creature from your graveyard and put it into your hand.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/81c53178f47ba2ac092ff109411e51a1bf1e3dee7db5dcc3d7ebc561004585ad",
+        "artist": "Jeff A. Menges",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "e065da3201fe3001afa6f1a2bc984b6f4289aacaa089b2de3b396a840c6c4523",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.417494889401205,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 2,
+            "lineCountError": -1,
+            "exactWrapping": false
+          },
+          "file": "156.control.png",
+          "sha256": "e414745ae282b76b849ca86358a312b52109869f6b4efd0c3e516b3a6031712b",
+          "size": 22.5,
+          "lines": ["Take target creature from your", "graveyard and put it into your hand."]
+        },
+        {
+          "id": "s25-w344-y406.556",
+          "edgeF1": 0.6845080445225971,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "156.s25-w344-y406.556.png",
+          "sha256": "a60c9edf8587a53da4a2b8375d0cc90029e56cd6d23bc43aa2228016403e5558",
+          "size": 25,
+          "lines": ["Take target creature", "from your graveyard and", "put it into your hand."]
+        }
+      ]
+    },
+    {
+      "id": "c1c0ab2b-04bf-4cba-8efa-3d1d0ab4f50d",
+      "name": "Hurr Jackal",
+      "number": "203",
+      "inputHash": "cc383bf85f56a0abebbe733f60cbd6079145c7e64a85aad4968c8c553148bc92",
+      "face": {
+        "name": "Hurr Jackal",
+        "typeLine": "Creature — Jackal",
+        "colors": ["R"],
+        "manaSymbols": ["R"],
+        "rulesText": "{T}: Target creature cannot regenerate this turn.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "{T}: Target creature cannot regenerate this turn.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/e34771b23004fe12ebb2f3ddcbcbb8f704c4fad812cacf55061d5b636d807d28",
+        "artist": "Drew Tucker",
+        "power": "1",
+        "toughness": "1",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "313d288da1263a9c1f2605c5f744e1a0036c0d952feebcbd92d64fe58313e09c",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.1989429591186162,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "203.control.png",
+          "sha256": "8c5601f43b7e2f57e59594c34dd1bfccd8327ec6bc9c928af08e510f281c8ee2",
+          "size": 22.5,
+          "lines": ["{T}: Target creature cannot", "regenerate this turn."]
+        },
+        {
+          "id": "s25-w344-y406.556",
+          "edgeF1": 0.60247481093018,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "203.s25-w344-y406.556.png",
+          "sha256": "cb09242fe2dedffac5cee75494be174e1ca2038adaa3ad656256c75f4a3aa369",
+          "size": 25,
+          "lines": ["{T}: Target creature cannot", "regenerate this turn."]
+        }
+      ]
+    },
+    {
+      "id": "5697b2e7-25c5-4ae0-a9ac-48cbc6a94c15",
+      "name": "Regeneration",
+      "number": "268",
+      "inputHash": "986858f1e4f159e8bbd39c0d76353e6bfdded8aaf6907b990be4e36ca2614c34",
+      "face": {
+        "name": "Regeneration",
+        "typeLine": "Enchantment — Aura",
+        "colors": ["G"],
+        "manaSymbols": ["1", "G"],
+        "rulesText": "{G} Regenerate target creature Regeneration enchants.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "{G} Regenerate target creature Regeneration enchants.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/3e033e082dddeaa3ff86081d95a66d1bac7c576f6ea18ed5de644e6c8fd87abf",
+        "artist": "Quinton Hoover",
+        "setCode": "4ed",
+        "rarity": "common",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "607b2ac5c164961c52e228ea2f2b80c95082b667138dcc2251f4a83b87991df2",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.489383388523112,
+          "wrapping": {
+            "status": "content-mismatch"
+          },
+          "file": "268.control.png",
+          "sha256": "7290d6ec021eb84646dbd179eadb5e7abb5073888ee78b028b099e77daadde18",
+          "size": 22.5,
+          "lines": ["{G} Regenerate target creature", "Regeneration enchants."]
+        },
+        {
+          "id": "s25-w344-y406.556",
+          "edgeF1": 0.6739349476121571,
+          "wrapping": {
+            "status": "content-mismatch"
+          },
+          "file": "268.s25-w344-y406.556.png",
+          "sha256": "97cca055b7cb150f6e76b427e0ccf3263c51177ba37f7549bce995f8850297bf",
+          "size": 25,
+          "lines": ["{G} Regenerate target creature", "Regeneration enchants."]
+        }
+      ]
+    },
+    {
+      "id": "6a225462-947c-49d7-81b2-91f875664dca",
+      "name": "Sunglasses of Urza",
+      "number": "347",
+      "inputHash": "5e95c3bc02500b18b731ba226c7cff1ecfa1151244ff9a6a0db649077266e96d",
+      "face": {
+        "name": "Sunglasses of Urza",
+        "typeLine": "Artifact",
+        "colors": [],
+        "manaSymbols": ["3"],
+        "rulesText": "You may use white mana in your mana pool as either white or red mana.",
+        "rulesParagraphs": [
+          {
+            "role": "rules",
+            "runs": [
+              {
+                "text": "You may use white mana in your mana pool as either white or red mana.",
+                "italic": false
+              }
+            ]
+          }
+        ],
+        "illustration": "/__accuracy/object/417610900a56a0d32ca1110e33f6d46645b83669c435bd6e2067f451c382dbca",
+        "artist": "Dan Frazier",
+        "setCode": "4ed",
+        "rarity": "rare",
+        "frameStyle": "retro",
+        "borderColor": "white"
+      },
+      "referenceHash": "dec0aebaa4cb747f5d34cca780155c7bd0ab19939165e9b1babdcfacd5543e9a",
+      "alignmentUncertain": false,
+      "scores": [
+        {
+          "id": "control",
+          "edgeF1": 0.23969303654040647,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "file": "347.control.png",
+          "sha256": "9e36f48f19c3033531dbfd93b5eda6600a54e635d4d071b09e6a4c2942f15d5a",
+          "size": 22.5,
+          "lines": ["You may use white mana in your", "mana pool as either white or red", "mana."]
+        },
+        {
+          "id": "s25-w344-y406.556",
+          "edgeF1": 0.6446130984666228,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "file": "347.s25-w344-y406.556.png",
+          "sha256": "307be909b6d57ff910306b9eae625deb8624b57db8b1aa56f9214206a89e656c",
+          "size": 25,
+          "lines": ["You may use white mana", "in your mana pool as", "either white or red mana."]
+        }
+      ]
+    }
+  ]
+}

@@ -235,6 +235,67 @@ try {
     });
     if (symbols.lines.flatMap((l) => l.runs).filter((r) => r.symbol).length !== 3)
       throw Error('Inline symbols lost while wrapping');
+    const balancedStyle = { leading: 1, paragraphGap: 0, flavorGap: 0, balanceLines: true };
+    ctx.font = '24px "CardRenderer MTG MPlantin", Georgia';
+    const balanceBox = {
+      x: 0,
+      y: 0,
+      width: ctx.measureText('word word word word word').width + 0.1,
+      height: 200,
+    };
+    const balanceText = [{ role: 'rules', runs: [{ text: 'word word word word word word word' }] }];
+    const greedyLines = layoutRules(ctx, balanceText, balanceBox, 24, 24);
+    const balancedLines = layoutRules(ctx, balanceText, balanceBox, 24, 24, balancedStyle);
+    const raggedness = (layout) =>
+      layout.lines.reduce((sum, line) => sum + (balanceBox.width - line.width) ** 2, 0);
+    if (
+      balancedLines.lines.length !== greedyLines.lines.length ||
+      raggedness(balancedLines) >= raggedness(greedyLines)
+    )
+      throw Error('Balanced wrapping must reduce raggedness without adding a line');
+    const styledBalance = layoutRules(
+      ctx,
+      [
+        {
+          role: 'rules',
+          runs: [
+            { text: 'An original ' },
+            { text: 'italic passage ', italic: true },
+            { text: 'with {T} and another word.\n\nA final line.' },
+          ],
+        },
+      ],
+      { x: 0, y: 0, width: 190, height: 300 },
+      24,
+      24,
+      balancedStyle,
+    );
+    const styledRuns = styledBalance.lines.flatMap((line) => line.runs);
+    if (
+      styledBalance.overflow ||
+      !styledRuns.some((r) => r.italic) ||
+      styledRuns.filter((r) => r.symbol).length !== 1 ||
+      !styledBalance.lines.some((line) => line.runs.length === 0) ||
+      styledBalance.lines
+        .at(-1)
+        .runs.map((r) => r.text)
+        .join('') !== 'A final line.'
+    )
+      throw Error('Balancing lost styling, an inline symbol or an explicit line break');
+    const shortFourth = { ...fixtures[4], rulesText: 'An original short passage.' };
+    const centeredFourth = retroTextLayout(ctx, shortFourth);
+    if (
+      centeredFourth.size !== 25 ||
+      centeredFourth.width !== 344 ||
+      centeredFourth.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01)
+    )
+      throw Error('Short Fourth Edition text is not centered in its shared bounds');
+    const explicitLeft = retroTextLayout(ctx, {
+      ...shortFourth,
+      rulesParagraphs: [{ role: 'rules', align: 'left', runs: [{ text: shortFourth.rulesText }] }],
+    });
+    if (explicitLeft.size !== 22.5 || explicitLeft.lines.some((line) => line.x !== explicitLeft.x))
+      throw Error('Historical centering overrode explicit host alignment');
     const retro = retroTextLayout(ctx, {
       ...fixtures[3],
       rulesParagraphs: [

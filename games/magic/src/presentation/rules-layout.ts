@@ -1,16 +1,7 @@
-import { symbolTextParts, type RulesParagraph, type RulesRun } from './face-layout.js';
+import type { RulesParagraph } from './face-layout.js';
+import { wrapRules, type MeasuredRun } from './rules-wrap.js';
+export { rulesFont, type MeasuredRun } from './rules-wrap.js';
 
-export interface MeasuredRun {
-  text: string;
-  italic: boolean;
-  symbol: boolean;
-  width: number;
-  size: number;
-  ascent: number;
-  descent: number;
-  inkLeft: number;
-  inkRight: number;
-}
 export interface RulesLine {
   x?: number;
   runs: MeasuredRun[];
@@ -29,15 +20,13 @@ export interface RulesLayout {
   lines: RulesLine[];
   separators: number[];
 }
-export const rulesFont = (size: number, italic = false) =>
-  `${italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`;
-
 export interface RulesTypography {
   leading: number;
   paragraphGap: number;
   flavorGap: number;
   flavorOrphans?: boolean;
   flavorSeparator?: boolean;
+  balanceLines?: boolean;
 }
 /** Shared ordinary-frame policy. Calibration fixtures never enter the painter. */
 export const RULES_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -45,98 +34,6 @@ export const RULES_TYPOGRAPHY: Readonly<RulesTypography> = {
   paragraphGap: 0.45,
   flavorGap: 0.9,
 };
-
-interface Piece {
-  text: string;
-  italic: boolean;
-  symbol: boolean;
-}
-interface Word {
-  pieces: Piece[];
-  space: boolean;
-  newline?: boolean;
-}
-
-function words(runs: readonly RulesRun[]): Word[] {
-  const output: Word[] = [];
-  let pieces: Piece[] = [],
-    space = false;
-  const flush = () => {
-    if (pieces.length) {
-      output.push({ pieces, space });
-      pieces = [];
-      space = false;
-    }
-  };
-  for (const run of runs)
-    for (const part of symbolTextParts(run.text)) {
-      if (part.symbol) pieces.push({ text: part.symbol, symbol: true, italic: false });
-      else
-        for (const text of part.value.split(/(\n|[^\S\n]+)/).filter(Boolean)) {
-          if (/^\s+$/.test(text)) {
-            flush();
-            if (text === '\n') {
-              output.push({ pieces: [], space: false, newline: true });
-              space = false;
-            } else space = true;
-          } else pieces.push({ text, symbol: false, italic: Boolean(run.italic) });
-        }
-    }
-  flush();
-  return output;
-}
-
-/** Measure the same contiguous style runs that Canvas paints, retaining shaping/kerning. */
-function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: number): MeasuredRun[] {
-  const merged: Piece[] = [];
-  for (const piece of pieces) {
-    const last = merged.at(-1);
-    if (last && !last.symbol && !piece.symbol && last.italic === piece.italic)
-      last.text += piece.text;
-    else merged.push({ ...piece });
-  }
-  return merged.map((piece) => {
-    context.font = rulesFont(size, piece.italic);
-    const metrics = context.measureText(piece.text);
-    return {
-      ...piece,
-      size,
-      width: piece.symbol ? size * 0.88 : metrics.width,
-      ascent: piece.symbol ? size * 0.72 : metrics.actualBoundingBoxAscent,
-      descent: piece.symbol ? size * 0.08 : metrics.actualBoundingBoxDescent,
-      inkLeft: piece.symbol ? size * 0.025 : -metrics.actualBoundingBoxLeft,
-      inkRight: piece.symbol ? size * 0.825 : metrics.actualBoundingBoxRight,
-    };
-  });
-}
-
-function wrap(
-  context: CanvasRenderingContext2D,
-  runs: readonly RulesRun[],
-  width: number,
-  size: number,
-) {
-  const output: MeasuredRun[][] = [];
-  let current: Piece[] = [];
-  for (const word of words(runs)) {
-    if (word.newline) {
-      output.push(measure(context, current, size));
-      current = [];
-      continue;
-    }
-    const gap: Piece[] =
-      current.length && word.space
-        ? [{ text: ' ', italic: word.pieces[0]?.italic ?? false, symbol: false }]
-        : [];
-    const trial = measure(context, [...current, ...gap, ...word.pieces], size);
-    if (current.length && trial.reduce((n, r) => n + r.width, 0) > width) {
-      output.push(measure(context, current, size));
-      current = [...word.pieces];
-    } else current.push(...gap, ...word.pieces);
-  }
-  if (current.length) output.push(measure(context, current, size));
-  return output;
-}
 
 /** Pure measured layout in reference pixels. Oversize words/blocks remain explicit errors. */
 export function layoutRules(
@@ -167,7 +64,13 @@ export function layoutRules(
         previous: RulesParagraph['role'] | undefined;
       for (const paragraph of paragraphs) {
         let paragraphSize = size;
-        let rows = wrap(context, paragraph.runs, bounds.width, paragraphSize);
+        let rows = wrapRules(
+          context,
+          paragraph.runs,
+          bounds.width,
+          paragraphSize,
+          typography.balanceLines,
+        );
         // Avoid a short orphan line in long flavor passages when a small size
         // reduction can remove it. Two-line quotations keep their intended cadence.
         if (
@@ -181,7 +84,13 @@ export function layoutRules(
             trialSize >= paragraphSize * 0.94;
             trialSize -= 0.25
           ) {
-            const trial = wrap(context, paragraph.runs, bounds.width, trialSize);
+            const trial = wrapRules(
+              context,
+              paragraph.runs,
+              bounds.width,
+              trialSize,
+              typography.balanceLines,
+            );
             if (trial.length < rows.length) {
               paragraphSize = trialSize;
               rows = trial;
