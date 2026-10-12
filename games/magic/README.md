@@ -170,3 +170,11 @@ page is `test-results/magic-accuracy/tmp/retro-details/details.html`, generated
 with `magic:reference:details`. See the [component review plan](component-review-plan.md)
 for detecting missing content, displacement and wrong shapes, and the
 [working backlog](accuracy-backlog.md) for assets and frame-coverage gaps.
+
+Historical Mirage/Tempest basic lands now retain their semantic subtype while
+printing “Land” and a centered mana sentence. All 40 basics improve, including
+35 reserved printings; 660 nonbasic cards and eight modern holdouts remain
+pixel-identical. See the [basic-land transfer results](fixtures/accuracy/tmp/transfer-measurement-retro-basics.json).
+`magic:reference:basics -- --set tmp --study retro-basics --baseline retro-details-all --run retro-basics`
+generates the local `tmp/retro-basics/basics.html` comparison after capture and
+scoring. Paragraph alignment also accepts `center` for explicit printed layouts.

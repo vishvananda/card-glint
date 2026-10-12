@@ -624,3 +624,52 @@ and required agent inspection of enlarged image crops. The
 [working accuracy backlog](accuracy-backlog.md) separates assets from geometry,
 unsupported layouts from unmeasured painter branches, and known historical
 presentation gaps. Broad frame coverage remains ongoing.
+
+## Historical basic-land presentation
+
+The `retro-basics` policy was frozen at `3e40b7f` after measuring five Mirage
+basic lands, one of each color. The other 15 Mirage and all 20 Tempest printings
+were reserved. Every cached scan was then visually checked for the “Land” type
+line and centered “{T}: Add {color} to your mana pool.” wording. Semantic subtype
+metadata remains intact for frame selection; explicit paragraph overrides still
+win. No per-card geometry was introduced.
+
+[The transfer measurement](fixtures/accuracy/tmp/transfer-measurement-retro-basics.json)
+pairs all 700 cards against `retro-details-all`, with identical face inputs and
+frozen alignment. This corrects historical content and layout, not typography
+alone. All 40 basic-land bodies and type lines improve by more than 0.02 at both
+tiers, with no alignment exclusions among the basics. Median inspect body F1:
+
+| Group              | Cards | Before | After |
+| ------------------ | ----- | ------ | ----- |
+| Mirage development | 5     | 0.263  | 0.915 |
+| Mirage reserved    | 15    | 0.261  | 0.933 |
+| Tempest reserved   | 20    | 0.233  | 0.776 |
+
+All 660 nonbasic images and eight M21 holdouts are byte-identical at both tiers.
+The report also checks the actual rendered sentence, single-line centering,
+overflow, reference checksums and renderer identities. The all-card comparison
+contains 80 reviewed bodies/printing targets and 620 Oracle diagnostics. Eleven
+existing Mirage alignment flags remain on nonbasic cards; Tempest has none.
+Cold comparisons took 129.9s / 128.9s concurrently. These are CPU file/metric
+workloads, not isolated benchmarks or GPU-completion measurements.
+
+The transfer gap remains visible: Tempest has lower edge agreement, despite
+matching content and line placement. Enlarged crops show differences in glyph
+weight, tap/mana contours and background texture. These holdouts were not used to
+retune the frozen policy. Existing basic-land plates are visibly cloudier than
+the flatter printed texture and remain asset-review candidates.
+
+```sh
+# Repeat capture/compare/report for --set tmp:
+npm run magic:reference:render -- --set mir --study retro-basics --run retro-basics --offline
+npm run magic:reference:compare -- --set mir --study retro-basics --run retro-basics
+npm run magic:reference:report -- --set mir --run retro-basics
+npm run magic:reference:render -- --set m21 --cohort held-out --run retro-basics-parity --offline
+npm run magic:reference:basics -- --set tmp --study retro-basics --baseline retro-details-all --run retro-basics
+```
+
+The last command generates `test-results/magic-accuracy/tmp/retro-basics/basics.html`
+without a browser. It shows six reserved scan/previous/current examples with
+full-card, type, body and footer crops, and links every card's scores. The prior
+printed-detail page remains linked. Reference/art images stay local.

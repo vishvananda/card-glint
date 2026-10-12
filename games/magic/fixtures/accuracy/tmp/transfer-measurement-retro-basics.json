@@ -1,0 +1,1218 @@
+{
+  "schemaVersion": 1,
+  "study": "retro-basics",
+  "baseline": "retro-details-all",
+  "run": "retro-basics",
+  "rendererHashes": [
+    "53e4df745083c35839c8876f8ba904a3a2e7f57aa415004eb2648c68b0830840",
+    "7c408352113abf0abe486a8bc1f7b0828eb5a2880422d1d4eecc2622ec123e7c"
+  ],
+  "frozenRendererCommit": "3e40b7f",
+  "modernParity": {
+    "cards": 8,
+    "tiers": 2,
+    "identical": true
+  },
+  "scoreMeaning": "Boundary F1 at one canonical pixel, not percent accuracy. Historical content and layout correction with identical semantic inputs. Fixed frame-family alignment; no per-scan fit. Alignment exclusions remain in results.",
+  "sets": [
+    {
+      "set": "mir",
+      "attempted": 350,
+      "basics": 20,
+      "unchangedNonbasics": 330,
+      "alignmentExcluded": 0,
+      "referenceIdentity": "e6563892a1eab6cd9d4d1404a465ac08cc85c59bbe417613163ef70c78136829",
+      "alignmentHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
+      "metricSource": "5db61886bb9150b6ffbb2462bf2371119454875345bcc8ff0b9828928da9275a",
+      "browser": "148.0.7778.96",
+      "seconds": 129.864354408,
+      "cacheHits": 0,
+      "summary": {
+        "calibration": {
+          "inspect": {
+            "body": {
+              "count": 5,
+              "before": 0.26349125918419053,
+              "after": 0.9147563567330551,
+              "improved": 5,
+              "regressed": 0
+            },
+            "type": {
+              "count": 5,
+              "before": 0.49232475030886685,
+              "after": 0.6286507306655144,
+              "improved": 5,
+              "regressed": 0
+            }
+          },
+          "table": {
+            "body": {
+              "count": 5,
+              "before": 0.3000445027584037,
+              "after": 0.9382851373000591,
+              "improved": 5,
+              "regressed": 0
+            },
+            "type": {
+              "count": 5,
+              "before": 0.4568095123962578,
+              "after": 0.6152005529502561,
+              "improved": 5,
+              "regressed": 0
+            }
+          }
+        },
+        "held-out": {
+          "inspect": {
+            "body": {
+              "count": 15,
+              "before": 0.2613491726771319,
+              "after": 0.9331903559445156,
+              "improved": 15,
+              "regressed": 0
+            },
+            "type": {
+              "count": 15,
+              "before": 0.47936860477708154,
+              "after": 0.6620113213049992,
+              "improved": 15,
+              "regressed": 0
+            }
+          },
+          "table": {
+            "body": {
+              "count": 15,
+              "before": 0.33052312361002845,
+              "after": 0.9510410336244286,
+              "improved": 15,
+              "regressed": 0
+            },
+            "type": {
+              "count": 15,
+              "before": 0.4550610189136701,
+              "after": 0.6242073957690365,
+              "improved": 15,
+              "regressed": 0
+            }
+          }
+        },
+        "all": {
+          "inspect": {
+            "body": {
+              "count": 20,
+              "before": 0.2624202159306612,
+              "after": 0.9239733563387853,
+              "improved": 20,
+              "regressed": 0
+            },
+            "type": {
+              "count": 20,
+              "before": 0.48584667754297417,
+              "after": 0.6287584405081332,
+              "improved": 20,
+              "regressed": 0
+            }
+          },
+          "table": {
+            "body": {
+              "count": 20,
+              "before": 0.32750554479492006,
+              "after": 0.9487311273830393,
+              "improved": 20,
+              "regressed": 0
+            },
+            "type": {
+              "count": 20,
+              "before": 0.45593526565496395,
+              "after": 0.6169916070898388,
+              "improved": 20,
+              "regressed": 0
+            }
+          }
+        }
+      },
+      "results": [
+        {
+          "id": "888f32ad-3bdd-4c46-b3f0-522ac9763591",
+          "name": "Plains",
+          "collectorNumber": "331",
+          "cohort": "calibration",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.23016439610648576, 0.8322225186333138],
+              "type": [0.5226315343077663, 0.6288661503507521]
+            },
+            "table": {
+              "body": [0.26408065026495403, 0.8371422906238455],
+              "type": [0.5052333035665288, 0.6152005529502561]
+            }
+          }
+        },
+        {
+          "id": "b078ef66-a83b-4e12-bcba-838bc3809322",
+          "name": "Plains",
+          "collectorNumber": "332",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.23076923076923075, 0.8361013038496082],
+              "type": [0.5853700705231468, 0.7000685977986343]
+            },
+            "table": {
+              "body": [0.2651380202856125, 0.8444835840174162],
+              "type": [0.5638677053999054, 0.6991783349577028]
+            }
+          }
+        },
+        {
+          "id": "ac15978d-41e6-4eaa-9456-0de3b912d437",
+          "name": "Plains",
+          "collectorNumber": "333",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.22827470862203836, 0.8375657610176499],
+              "type": [0.5544448543567322, 0.6700538573989147]
+            },
+            "table": {
+              "body": [0.26167102670745246, 0.8481684335604612],
+              "type": [0.5445724782799626, 0.664679068095127]
+            }
+          }
+        },
+        {
+          "id": "81bbbf38-5d1a-4013-aff9-6167709897f0",
+          "name": "Plains",
+          "collectorNumber": "334",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2356749418338168, 0.835082235279733],
+              "type": [0.556019005476769, 0.6708507257124695]
+            },
+            "table": {
+              "body": [0.265455550183049, 0.8459574563045996],
+              "type": [0.5471700008330739, 0.6705954960493872]
+            }
+          }
+        },
+        {
+          "id": "df84bf1b-8698-4c3e-baa9-926f0efc6a12",
+          "name": "Island",
+          "collectorNumber": "335",
+          "cohort": "calibration",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.31358173124147876, 0.944767441860465],
+              "type": [0.5017909804336295, 0.6712810354470382]
+            },
+            "table": {
+              "body": [0.3628926352747454, 0.9603047737158152],
+              "type": [0.46666247458550797, 0.6510794922635903]
+            }
+          }
+        },
+        {
+          "id": "776912e7-fa16-4d71-b830-0a5d35f38297",
+          "name": "Island",
+          "collectorNumber": "336",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.03954394875171124, 0.7169999970286998],
+              "type": [0.4669314155492821, 0.6132436804985487]
+            },
+            "table": {
+              "body": [0.040109389243391066, 0.6814514608006301],
+              "type": [0.4550610189136701, 0.6036781445525389]
+            }
+          }
+        },
+        {
+          "id": "1e571f07-167f-4a7d-8f98-0c98d7d15e81",
+          "name": "Island",
+          "collectorNumber": "337",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.31583751711547237, 0.9429179542479149],
+              "type": [0.5161165813629035, 0.713216957605985]
+            },
+            "table": {
+              "body": [0.3663569586337, 0.9561186558654088],
+              "type": [0.49303052873605757, 0.6791048810816921]
+            }
+          }
+        },
+        {
+          "id": "a39fc1e0-caf0-4cfa-bbf2-fea7ca32c00d",
+          "name": "Island",
+          "collectorNumber": "338",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.3148235043329403, 0.9350991974983216],
+              "type": [0.46933597214920814, 0.602600095650809]
+            },
+            "table": {
+              "body": [0.36462093862815886, 0.9560846621333665],
+              "type": [0.44642605901321974, 0.5835608730907346]
+            }
+          }
+        },
+        {
+          "id": "f2d28477-8be1-4caf-8185-64f47905ccb1",
+          "name": "Swamp",
+          "collectorNumber": "339",
+          "cohort": "calibration",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.12393392365018017, 0.8505170513343185],
+              "type": [0.49232475030886685, 0.6286507306655144]
+            },
+            "table": {
+              "body": [0.3000445027584037, 0.9382851373000591],
+              "type": [0.4568095123962578, 0.6187826612294215]
+            }
+          }
+        },
+        {
+          "id": "2c4be2d6-d168-4e67-8d75-a04f637b56dd",
+          "name": "Swamp",
+          "collectorNumber": "340",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.14487395036148726, 0.8326223514053753],
+              "type": [0.540845474086458, 0.7159808355348588]
+            },
+            "table": {
+              "body": [0.32448796597981167, 0.9322735578763279],
+              "type": [0.495726370032236, 0.6898604558901406]
+            }
+          }
+        },
+        {
+          "id": "65181db5-3fc5-497b-ba61-385efdf740ed",
+          "name": "Swamp",
+          "collectorNumber": "341",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.13806854794587167, 0.8575038453087234],
+              "type": [0.5210024571300591, 0.6748885401736904]
+            },
+            "table": {
+              "body": [0.3167234047181406, 0.9464212211416501],
+              "type": [0.47606237162426773, 0.6523455517534961]
+            }
+          }
+        },
+        {
+          "id": "5083de34-d127-45df-9252-ff09b5cf8b47",
+          "name": "Swamp",
+          "collectorNumber": "342",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.1364744110479285, 0.8537811773351467],
+              "type": [0.5041931927120948, 0.6620113213049992]
+            },
+            "table": {
+              "body": [0.315374486082318, 0.943809518642274],
+              "type": [0.46587755643986584, 0.6259354323707788]
+            }
+          }
+        },
+        {
+          "id": "97004cdc-0baf-415d-8e87-7f36667c4628",
+          "name": "Mountain",
+          "collectorNumber": "343",
+          "cohort": "calibration",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2770009322146757, 0.9147563567330551],
+              "type": [0.4401078054764803, 0.600817841140135]
+            },
+            "table": {
+              "body": [0.27657578734917315, 0.913668142624097],
+              "type": [0.4104308098785366, 0.5841156095015428]
+            }
+          }
+        },
+        {
+          "id": "207a468f-79c3-486e-ac5a-4516361b7b4d",
+          "name": "Mountain",
+          "collectorNumber": "344",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.3362672371438831, 0.9715218635505567],
+              "type": [0.4440619104570224, 0.5851943092371868]
+            },
+            "table": {
+              "body": [0.3361923566909543, 0.9679085412126608],
+              "type": [0.4161849710982659, 0.5733523634524339]
+            }
+          }
+        },
+        {
+          "id": "681b9c8a-6140-4086-bc72-37f0058a8e9f",
+          "name": "Mountain",
+          "collectorNumber": "345",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.33650736018526106, 0.963770551522458],
+              "type": [0.47936860477708154, 0.6773049220980972]
+            },
+            "table": {
+              "body": [0.3371695448278518, 0.9552065636265694],
+              "type": [0.44788350208184147, 0.6242073957690365]
+            }
+          }
+        },
+        {
+          "id": "1cef9230-34fa-496f-8835-5dfaac627f70",
+          "name": "Mountain",
+          "collectorNumber": "346",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.3375797696792525, 0.951318953200683],
+              "type": [0.4442885620005438, 0.5793891639603188]
+            },
+            "table": {
+              "body": [0.33861083068002384, 0.9510410336244286],
+              "type": [0.4205468694618673, 0.5730578294095864]
+            }
+          }
+        },
+        {
+          "id": "a0ae7a81-9a61-4112-af22-369c525b2eb1",
+          "name": "Forest",
+          "collectorNumber": "347",
+          "cohort": "calibration",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.26349125918419053, 0.9364135026445461],
+              "type": [0.4284227197426648, 0.5778790168925032]
+            },
+            "table": {
+              "body": [0.33397559409120103, 0.9633553682455315],
+              "type": [0.4022046665441852, 0.5637177780467142]
+            }
+          }
+        },
+        {
+          "id": "bb6b3f80-20bf-4693-b106-cfb31a3d7f83",
+          "name": "Forest",
+          "collectorNumber": "348",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2613491726771319, 0.9430840429097584],
+              "type": [0.4632088223819329, 0.604662520156646]
+            },
+            "table": {
+              "body": [0.33052312361002845, 0.960695690330862],
+              "type": [0.44398531189473867, 0.5807384013256414]
+            }
+          }
+        },
+        {
+          "id": "d8a67bf6-818b-4afe-af15-3d955dc5e884",
+          "name": "Forest",
+          "collectorNumber": "349",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.26421221825297314, 0.9335678799299704],
+              "type": [0.4308416685884001, 0.549622498943949]
+            },
+            "table": {
+              "body": [0.3338755366821955, 0.9597302776159626],
+              "type": [0.4058303647564173, 0.539780599267975]
+            }
+          }
+        },
+        {
+          "id": "95dfef30-acca-4b15-a05e-d33289055218",
+          "name": "Forest",
+          "collectorNumber": "350",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2661478410158401, 0.9331903559445156],
+              "type": [0.4673012733341575, 0.604027716641625]
+            },
+            "table": {
+              "body": [0.33479577181000014, 0.9517854034845631],
+              "type": [0.44181625766982346, 0.59076452484963]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "set": "tmp",
+      "attempted": 350,
+      "basics": 20,
+      "unchangedNonbasics": 330,
+      "alignmentExcluded": 0,
+      "referenceIdentity": "5e46265bb3807f17f855c69271c9b1a59aaa9e7f785b2d7b86e110674b4d70cb",
+      "alignmentHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
+      "metricSource": "5db61886bb9150b6ffbb2462bf2371119454875345bcc8ff0b9828928da9275a",
+      "browser": "148.0.7778.96",
+      "seconds": 128.884183827,
+      "cacheHits": 0,
+      "summary": {
+        "calibration": {
+          "inspect": {
+            "body": {
+              "count": 0,
+              "before": null,
+              "after": null,
+              "improved": 0,
+              "regressed": 0
+            },
+            "type": {
+              "count": 0,
+              "before": null,
+              "after": null,
+              "improved": 0,
+              "regressed": 0
+            }
+          },
+          "table": {
+            "body": {
+              "count": 0,
+              "before": null,
+              "after": null,
+              "improved": 0,
+              "regressed": 0
+            },
+            "type": {
+              "count": 0,
+              "before": null,
+              "after": null,
+              "improved": 0,
+              "regressed": 0
+            }
+          }
+        },
+        "held-out": {
+          "inspect": {
+            "body": {
+              "count": 20,
+              "before": 0.23304069304796876,
+              "after": 0.7762790963685517,
+              "improved": 20,
+              "regressed": 0
+            },
+            "type": {
+              "count": 20,
+              "before": 0.506960748879665,
+              "after": 0.7161993860429643,
+              "improved": 20,
+              "regressed": 0
+            }
+          },
+          "table": {
+            "body": {
+              "count": 20,
+              "before": 0.29617719321365726,
+              "after": 0.7941401717514722,
+              "improved": 20,
+              "regressed": 0
+            },
+            "type": {
+              "count": 20,
+              "before": 0.46649334493639394,
+              "after": 0.6894349378463198,
+              "improved": 20,
+              "regressed": 0
+            }
+          }
+        },
+        "all": {
+          "inspect": {
+            "body": {
+              "count": 20,
+              "before": 0.23304069304796876,
+              "after": 0.7762790963685517,
+              "improved": 20,
+              "regressed": 0
+            },
+            "type": {
+              "count": 20,
+              "before": 0.506960748879665,
+              "after": 0.7161993860429643,
+              "improved": 20,
+              "regressed": 0
+            }
+          },
+          "table": {
+            "body": {
+              "count": 20,
+              "before": 0.29617719321365726,
+              "after": 0.7941401717514722,
+              "improved": 20,
+              "regressed": 0
+            },
+            "type": {
+              "count": 20,
+              "before": 0.46649334493639394,
+              "after": 0.6894349378463198,
+              "improved": 20,
+              "regressed": 0
+            }
+          }
+        }
+      },
+      "results": [
+        {
+          "id": "62e339a9-3f9b-401e-a459-dc3affc9a114",
+          "name": "Plains",
+          "collectorNumber": "331",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2717976620279153, 0.8663321671399764],
+              "type": [0.5671406031388091, 0.7526747571391156]
+            },
+            "table": {
+              "body": [0.30632558758579437, 0.8718443398239151],
+              "type": [0.5566174730117527, 0.723735570109249]
+            }
+          }
+        },
+        {
+          "id": "da37f78a-a0a6-4ca3-921c-4bc2c17ccda6",
+          "name": "Plains",
+          "collectorNumber": "332",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2318671419438579, 0.7811911412640298],
+              "type": [0.5815354236276516, 0.6967552782835135]
+            },
+            "table": {
+              "body": [0.26313062588605035, 0.7895946552325871],
+              "type": [0.5574083321443858, 0.6871061324723337]
+            }
+          }
+        },
+        {
+          "id": "3bd35bef-1702-4b3d-b149-8761c5cc5ed9",
+          "name": "Plains",
+          "collectorNumber": "333",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.22990898247260602, 0.7246109860891988],
+              "type": [0.5764900065923281, 0.7024438352227731]
+            },
+            "table": {
+              "body": [0.26261317313881144, 0.7503550003621781],
+              "type": [0.554713745132098, 0.6917637432203061]
+            }
+          }
+        },
+        {
+          "id": "c7f7baf6-de14-40f8-871f-dda889672608",
+          "name": "Plains",
+          "collectorNumber": "334",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {W} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.23716381418092908, 0.7992412266835284],
+              "type": [0.5957534810987435, 0.7248052274440814]
+            },
+            "table": {
+              "body": [0.26900481598919523, 0.7945435050059235],
+              "type": [0.5789993232056894, 0.7185546278428]
+            }
+          }
+        },
+        {
+          "id": "22578bc8-10c6-4598-82bc-70e970a8f518",
+          "name": "Island",
+          "collectorNumber": "335",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.05393699607349459, 0.5751161759634805],
+              "type": [0.4470675336830268, 0.6136131212149425]
+            },
+            "table": {
+              "body": [0.05662262050857616, 0.5647383229002166],
+              "type": [0.43649236426503474, 0.5874433424583764]
+            }
+          }
+        },
+        {
+          "id": "3f891c3f-82e2-4f9d-ae4b-443fce0bdd71",
+          "name": "Island",
+          "collectorNumber": "336",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.3125064760128484, 0.8914168146452849],
+              "type": [0.5101967741046977, 0.7538410409796253]
+            },
+            "table": {
+              "body": [0.3605533244087461, 0.9035638537971623],
+              "type": [0.47182134436616674, 0.6931002103447597]
+            }
+          }
+        },
+        {
+          "id": "b38e48ff-17c8-470c-ba8b-966da1777e77",
+          "name": "Island",
+          "collectorNumber": "337",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.31116595262000196, 0.8384545807268112],
+              "type": [0.5248081076418583, 0.7426730966218605]
+            },
+            "table": {
+              "body": [0.3591126992269728, 0.8655598000080179],
+              "type": [0.49313851641546996, 0.6980142483622381]
+            }
+          }
+        },
+        {
+          "id": "5e6e59d7-5038-46b4-9f60-3d9d0cbf0a4e",
+          "name": "Island",
+          "collectorNumber": "338",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {U} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.11490077316472656, 0.6092919850648395],
+              "type": [0.4992968953931913, 0.6774436916000222]
+            },
+            "table": {
+              "body": [0.14620650899404, 0.635117417326521],
+              "type": [0.465337668789771, 0.6528567380675344]
+            }
+          }
+        },
+        {
+          "id": "5912d2aa-fe91-4cea-9c7a-6dca745f8560",
+          "name": "Swamp",
+          "collectorNumber": "339",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.12519665219306528, 0.6173774052599106],
+              "type": [0.5029197534707092, 0.7141211702372725]
+            },
+            "table": {
+              "body": [0.285133281520109, 0.7304445123155424],
+              "type": [0.46042039641263993, 0.6699956270461288]
+            }
+          }
+        },
+        {
+          "id": "000366c8-7a43-49d7-a103-ac5bd7efd9aa",
+          "name": "Swamp",
+          "collectorNumber": "340",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.1330197456136578, 0.7329175301041706],
+              "type": [0.5570716672539233, 0.7675922928749953]
+            },
+            "table": {
+              "body": [0.2989152945272497, 0.8286319486245153],
+              "type": [0.5047758504167605, 0.7256905174797055]
+            }
+          }
+        },
+        {
+          "id": "c96dbfea-3b79-4e5b-a356-3c04d1e78e83",
+          "name": "Swamp",
+          "collectorNumber": "341",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.1431578947368421, 0.6684952438207243],
+              "type": [0.5071211218976547, 0.6601406918506623]
+            },
+            "table": {
+              "body": [0.29820200706188443, 0.767253615458429],
+              "type": [0.4581314619436572, 0.6324857656216053]
+            }
+          }
+        },
+        {
+          "id": "9330376c-0242-4e28-b535-26c84b43c3e6",
+          "name": "Swamp",
+          "collectorNumber": "342",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {B} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.1466514090307988, 0.6645617295288309],
+              "type": [0.5785448984050688, 0.8320137461675818]
+            },
+            "table": {
+              "body": [0.3204844211489663, 0.7957554482978058],
+              "type": [0.5140924464487036, 0.7854960256658808]
+            }
+          }
+        },
+        {
+          "id": "9d6dc341-89dc-4e99-baa2-ad0ae59f0e94",
+          "name": "Mountain",
+          "collectorNumber": "343",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.33098814229249013, 0.8228414172686619],
+              "type": [0.4895361428476719, 0.756958816640195]
+            },
+            "table": {
+              "body": [0.33795159018702303, 0.8145931186168134],
+              "type": [0.46146736999711646, 0.710712300484396]
+            }
+          }
+        },
+        {
+          "id": "676fb0ed-5a19-4fde-b2c4-f46c7e0915f8",
+          "name": "Mountain",
+          "collectorNumber": "344",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.33790328914642764, 0.7748188218418391],
+              "type": [0.5094479469136125, 0.8096646388016042]
+            },
+            "table": {
+              "body": [0.34214538558391366, 0.7905142135711865],
+              "type": [0.46506846892212167, 0.7538529282254514]
+            }
+          }
+        },
+        {
+          "id": "9515ced4-b679-48f0-bf62-8b7baef5e1c2",
+          "name": "Mountain",
+          "collectorNumber": "345",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2874784727181081, 0.9042607119183755],
+              "type": [0.4976164068191964, 0.7182776018486562]
+            },
+            "table": {
+              "body": [0.2874550513259276, 0.887883008356546],
+              "type": [0.4676490210830169, 0.67894698597573]
+            }
+          }
+        },
+        {
+          "id": "23e043bf-a6d7-4778-8460-13bdf38b7d39",
+          "name": "Mountain",
+          "collectorNumber": "346",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {R} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.3326469945644618, 0.7777393708952643],
+              "type": [0.5068003758616755, 0.7268418687932313]
+            },
+            "table": {
+              "body": [0.3400131215718328, 0.7937368384970208],
+              "type": [0.4719630178027945, 0.6996737535012211]
+            }
+          }
+        },
+        {
+          "id": "36b3ffbd-3f3e-4fca-80c2-94f9fdc198a5",
+          "name": "Forest",
+          "collectorNumber": "347",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2342142441520796, 0.7060691786300092],
+              "type": [0.4558801744986326, 0.5885872046259863]
+            },
+            "table": {
+              "body": [0.2941523793654301, 0.7487082364626437],
+              "type": [0.42501370320059106, 0.5732755025439987]
+            }
+          }
+        },
+        {
+          "id": "72bac71a-c326-4640-bdf8-43682f59060b",
+          "name": "Forest",
+          "collectorNumber": "348",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2638676783102643, 0.8716457908261867],
+              "type": [0.4601480107551538, 0.6358737469032169]
+            },
+            "table": {
+              "body": [0.3292809614551215, 0.8953827902134218],
+              "type": [0.437190107300192, 0.6070399457596474]
+            }
+          }
+        },
+        {
+          "id": "6b667225-a808-43e9-955e-6c4e7ecd53f2",
+          "name": "Forest",
+          "collectorNumber": "349",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.16415233173623048, 0.746346318080388],
+              "type": [0.45160014045430036, 0.5678046767943183]
+            },
+            "table": {
+              "body": [0.22554544664329385, 0.7501349270622065],
+              "type": [0.4320860116314662, 0.5717098296269487]
+            }
+          }
+        },
+        {
+          "id": "32411c3a-da2b-4316-9848-971e90951303",
+          "name": "Forest",
+          "collectorNumber": "350",
+          "cohort": "held-out",
+          "alignmentUncertain": false,
+          "expectedPrinting": {
+            "typeLine": "Land",
+            "rulesText": "{T}: Add {G} to your mana pool."
+          },
+          "inkBounds": [
+            88.20406005859374, 491.72800009918217, 310.1758734130859, 21.887999801635743
+          ],
+          "scores": {
+            "inspect": {
+              "body": [0.2151793160967473, 0.8636955973351282],
+              "type": [0.48742134737972886, 0.6216423772217469]
+            },
+            "table": {
+              "body": [0.2773006134969325, 0.8681768027519958],
+              "type": [0.45664467483506127, 0.6086624996580681]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "timingScope": "Concurrent CPU PNG decoding/comparison/cache work, not isolated timing or GPU completion. Chromium used only for capture."
+}
