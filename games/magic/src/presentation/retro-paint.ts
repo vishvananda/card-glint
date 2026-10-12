@@ -16,6 +16,7 @@ import {
 } from './retro-frame.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintSetSymbol } from './canvas-text.js';
+import { paintRevisedCost } from './revised-mana.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
 import {
@@ -100,17 +101,19 @@ export function paintRetroFace(
     );
   if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
-  cost.forEach((s, i) =>
-    paintMana(
-      c,
-      s,
-      costX + i * (size + gap),
-      details?.manaTop ?? y + h / 2 - size / 2,
-      size,
-      images,
-      !details,
-    ),
-  );
+  if (revised) paintRevisedCost(c, cost, images);
+  else
+    cost.forEach((s, i) =>
+      paintMana(
+        c,
+        s,
+        costX + i * (size + gap),
+        details?.manaTop ?? y + h / 2 - size / 2,
+        size,
+        images,
+        !details,
+      ),
+    );
   const [tx, ty, tw, th] = retroPx(rect.type),
     icon = images.get(retroSetSymbol(face) ?? '');
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';

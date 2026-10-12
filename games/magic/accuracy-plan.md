@@ -1317,3 +1317,48 @@ searches remain diagnostic; no card or scan is repositioned. Preserve the failed
 candidate decision and freeze a new window/shape study before using fresh
 reserved cards. The image-inspection and validation steps are in
 `component-review-plan.md`.
+
+### Revised header mana
+
+The header study restores Mana's cached `w-original` sun (U+E997), omits its
+modern disc, removes cost shadows, and uses a shared rightmost center x=435,
+y=44.5 and 27px pitch. Other SVGs retain their 23.4px diameter. Title fitting,
+inline symbols, inputs and frame assets remain unchanged. This policy applies
+only to Revised nonlands; it does not extrapolate placement to another set.
+
+Twelve development cards cover every color, repeated symbols, X and two-digit
+costs. A 45-point shared geometry grid includes an expanded horizontal range to
+bracket the first boundary winner. Candidate `d985c61` was committed before 13
+reserved mana rows were measured and inspected. All 13 gain more than .02 at
+both tiers, including the five-symbol Force of Nature cost. Median dark-ink F1
+rises .533 to .765 at inspection size and .462 to .721 at table size. Local
+contrast and Census medians also improve. The cards were seen in earlier studies;
+this is a reservation of their mana components, not first exposure.
+
+The full 306-card capture changes all 281 nonland mana rows. The other 25 PNG
+pairs, every body layout, input and frame asset remain identical. No changed
+pixels lie outside the mana rows; silhouette alpha is unchanged. All 50 frozen
+prototype images match production. Another 56 M21/MIR/TMP/4ED/5ED representatives
+remain identical at both sizes. These preservation checks are not cross-set
+accuracy validation.
+
+Across the 281 changed rows, inspect F1 median rises .486 to .760 with 276 gains
+and one regression greater than .02. Table median rises .462 to .728 with 275
+gains and four regressions. Dingus Egg regresses at both sizes; Keldon Warlord,
+Lightning Bolt and Wall of Fire regress only at table size. Every regression
+was inspected at both sizes. Dingus Egg retains a visible horizontal residual;
+red glyph/disc contrast and rasterization remain diagnostic questions. No
+per-card offsets were added. The broad structural-v2 window and tighter frozen
+study window disagree on Keldon Warlord's inspect delta; both are preserved.
+
+`mana-plan.json`, `mana-candidate.json`, `mana-transfer.json`,
+`mana-measurement.json` and `mana-corpus-review.json` retain the evidence and exact
+source identities. Existing skull, tree, flame, droplet and numeral contours
+remain in the asset review queue. The local `3ed/mana-validation/index.html`
+shows the reserved rows; `3ed/revised-mana/report.html` contains all cards.
+The Node full-card comparison took 84.9 seconds, including decoding and both
+sizes; this is not renderer submission time or GPU completion time.
+
+Check/build, strict native/WASM Clippy, package/browser/showcase, Magic and
+accuracy tests pass. The comparison against main includes reviewed mana examples
+without promoting their unreviewed body typography to scan-reviewed status.

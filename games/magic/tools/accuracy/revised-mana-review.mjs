@@ -21,6 +21,19 @@ const escape = (t) =>
     /[&<>"']/g,
     (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
   );
+let corpusNote = '';
+if (phase === 'validation') {
+  try {
+    const audit = await readJson(path.join(fixtureRoot, '3ed/mana-measurement.json'));
+    assert.equal(
+      audit.candidateHash,
+      hash(await readFile(path.join(fixtureRoot, '3ed/mana-candidate.json'))),
+    );
+    corpusNote = `<p><strong>Adopted in the renderer.</strong> Production matches all ${audit.prototypeMatches} frozen images. Across ${audit.summary.inspect.count} changed rows, ${audit.summary.inspect.gains} improve at inspect size and ${audit.summary.table.gains} at table size. ${audit.identical} land cards are unchanged.</p><p>Flagged regressions: Dingus Egg at both sizes; Keldon Warlord, Lightning Bolt and Wall of Fire at table size. <a href="../revised-mana/corpus-regressions.png">Inspect / table regression crops, in that order: Keldon Warlord, Lightning Bolt, Wall of Fire, Dingus Egg</a> · <a href="../revised-mana/report.html">All 306 card scores</a></p>`;
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+}
 const articles = [],
   sheets = [];
 for (const [index, r] of trial.results.entries()) {
@@ -65,6 +78,6 @@ for (const [i, sheet] of sheets.entries())
   await atomicWrite(path.join(out, `review-${i + 1}.png`), PNG.sync.write(sheet));
 await atomicWrite(
   path.join(out, 'index.html'),
-  `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Revised mana: ${phase}</title><style>body{background:#1c2024;color:#e4e8ea;font:16px/1.5 system-ui;margin:30px auto;max-width:1100px;padding:0 20px}a{color:#b4d6dd}article{border-top:1px solid #52606a;padding:16px 0}img{width:100%}.labels,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.labels{margin-bottom:8px}.cards img{min-width:0}summary{cursor:pointer}</style><h1>Revised mana: ${phase}</h1><p>Same source inputs, frame assets and fixed family registration. The candidate uses the existing historic font's original white sun, removes header shadows, and applies one shared row position and pitch. Numeric discs and other symbol assets remain. Titles and inline rules symbols are unchanged.</p><p>Candidate ${escape(candidate)}. ${phase === 'validation' ? 'Frozen before opening these 13 mana crops; cards were seen in earlier body/lettering studies.' : 'Development examples used to choose the policy; not held-out evidence.'} Scores remain diagnostics of alignment and shape, not percentages of accuracy.</p><p><a href="../../main-review/index.html">Full comparisons versus main</a></p>${articles.join('')}<p>Local fan study. Magic imagery © Wizards of the Coast; cached scans through Scryfall.</p></html>`,
+  `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Revised mana: ${phase}</title><style>body{background:#1c2024;color:#e4e8ea;font:16px/1.5 system-ui;margin:30px auto;max-width:1100px;padding:0 20px}a{color:#b4d6dd}article{border-top:1px solid #52606a;padding:16px 0}img{width:100%}.labels,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.labels{margin-bottom:8px}.cards img{min-width:0}summary{cursor:pointer}</style><h1>Revised mana: ${phase}</h1>${corpusNote}<p>Same source inputs, frame assets and fixed family registration. The candidate uses the existing historic font's original white sun, removes header shadows, and applies one shared row position and pitch. Numeric discs and other symbol assets remain. Titles and inline rules symbols are unchanged.</p><p>Candidate ${escape(candidate)}. ${phase === 'validation' ? 'Frozen before opening these 13 mana crops; cards were seen in earlier body/lettering studies.' : 'Development examples used to choose the policy; not held-out evidence.'} Scores remain diagnostics of alignment and shape, not percentages of accuracy.</p><p><a href="../../main-review/index.html">Full comparisons versus main</a></p>${articles.join('')}<p>Local fan study. Magic imagery © Wizards of the Coast; cached scans through Scryfall.</p></html>`,
 );
 console.log(`Wrote ${trial.results.length} mana comparisons: ${out}`);

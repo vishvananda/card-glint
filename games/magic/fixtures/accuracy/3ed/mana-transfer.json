@@ -1,0 +1,2076 @@
+{
+  "schemaVersion": 1,
+  "candidateCommit": "d985c61",
+  "candidateHash": "9792560eb8ce49bd3156f8eb6d3940c2fb40281f84415369ae1dae328ed6a710",
+  "trialHash": "b24ceebe51f9a335d057ab18ddda827fc2df5bd227c2717c30ec04db2b5ce36c",
+  "summary": [
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "count": 13,
+      "medianF1": 0.5333604970968728,
+      "medianContrast": 0.22014620883765218,
+      "medianCensus": 0.5486484181802678,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "count": 13,
+      "medianF1": 0.4622770007640943,
+      "medianContrast": 0.26379669448871784,
+      "medianCensus": 0.5604506716741298,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "x435-y44.5-p27",
+      "tier": "inspect",
+      "count": 13,
+      "medianF1": 0.7645187146292293,
+      "medianContrast": 0.7420521297963191,
+      "medianCensus": 0.7680014808416117,
+      "medianDelta": 0.24328714833107512,
+      "gains": [
+        "Disenchant",
+        "Savannah Lions",
+        "Sea Serpent",
+        "Terror",
+        "Sengir Vampire",
+        "Dwarven Warriors",
+        "Earth Elemental",
+        "Llanowar Elves",
+        "Craw Wurm",
+        "Sol Ring",
+        "Howl from Beyond",
+        "Force of Nature",
+        "Obsianus Golem"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "x435-y44.5-p27",
+      "tier": "table",
+      "count": 13,
+      "medianF1": 0.7208420807091206,
+      "medianContrast": 0.6886813363796004,
+      "medianCensus": 0.7763312149071389,
+      "medianDelta": 0.2425164488973297,
+      "gains": [
+        "Disenchant",
+        "Savannah Lions",
+        "Sea Serpent",
+        "Terror",
+        "Sengir Vampire",
+        "Dwarven Warriors",
+        "Earth Elemental",
+        "Llanowar Elves",
+        "Craw Wurm",
+        "Sol Ring",
+        "Howl from Beyond",
+        "Force of Nature",
+        "Obsianus Golem"
+      ],
+      "regressions": []
+    }
+  ],
+  "results": [
+    {
+      "id": "41859c6f-1017-42ae-9061-050fe0db9731",
+      "name": "Disenchant",
+      "number": "17",
+      "inputHash": "4d7daadaea17d7910d4e6401f5ec643caedf647173e0511f97a3304be28b06ea",
+      "referenceHash": "40ea274352c5ad768ffe9bbe940226505136d09e1910d7d67ec204f2db98c690",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "17.inspect.control.png",
+          "sha256": "ea2e9a6a2175086e06372ea6cb255e0efc1eac771544dc3cc63b3ebcf48e2c94",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.5535727591088592,
+              "meanDistance": 2.0064583051208387,
+              "censusSimilarity": 0.5997279704653649,
+              "contrastCorrelation": 0.35803108709512294
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.48701183954762317,
+              "meanDistance": 2.3117320297122643,
+              "censusSimilarity": 0.6791762013729977,
+              "contrastCorrelation": 0.40003765105486855
+            },
+            {
+              "id": "symbol-1-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5877388930255647,
+              "meanDistance": 1.5763520162356528,
+              "censusSimilarity": 0.5285714285714286,
+              "contrastCorrelation": 0.2807664839486132
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "17.inspect.x435-y44.5-p27.png",
+          "sha256": "4d6d4500056c38bac50b350175bb3f62edf393bbbbaf5ae489a1be9c572c6b1a",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.8308567066349027,
+              "meanDistance": 0.8842435488201847,
+              "censusSimilarity": 0.7583794812008161,
+              "contrastCorrelation": 0.7804947600139874
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7512690355329947,
+              "meanDistance": 1.4969196033948236,
+              "censusSimilarity": 0.8032036613272311,
+              "contrastCorrelation": 0.7838095152704465
+            },
+            {
+              "id": "symbol-1-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.8222591362126246,
+              "meanDistance": 0.695624309802213,
+              "censusSimilarity": 0.7191029900332226,
+              "contrastCorrelation": 0.7766350199553042
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "17.table.control.png",
+          "sha256": "23f0126aa74d4a2ffed0e6cfd2b82c0a56002ad576607f65d97e4d8b182be8f5",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.43219030901001787,
+              "meanDistance": 2.5948384522275054,
+              "censusSimilarity": 0.6213931798309531,
+              "contrastCorrelation": 0.3646219122149697
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.4013377926421405,
+              "meanDistance": 2.8282378195073887,
+              "censusSimilarity": 0.6867276887871854,
+              "contrastCorrelation": 0.4126313258563365
+            },
+            {
+              "id": "symbol-1-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.47068855254743125,
+              "meanDistance": 2.0517519180312123,
+              "censusSimilarity": 0.5629568106312293,
+              "contrastCorrelation": 0.3018349707393996
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "17.table.x435-y44.5-p27.png",
+          "sha256": "5b5e13acbd4d02abe7feabdc8d388c2a6f5ca6e55f1b5a3e5c92debfee63eb58",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.8311688311688311,
+              "meanDistance": 0.9218704619051918,
+              "censusSimilarity": 0.7467210725735937,
+              "contrastCorrelation": 0.7111680557458956
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7691844718627747,
+              "meanDistance": 1.3635069807324298,
+              "censusSimilarity": 0.8036613272311213,
+              "contrastCorrelation": 0.7568002025136127
+            },
+            {
+              "id": "symbol-1-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7900736406738625,
+              "meanDistance": 0.8558330003059271,
+              "censusSimilarity": 0.7033222591362126,
+              "contrastCorrelation": 0.6818685561313212
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ad41b1aa-1482-4d71-990b-031b30685cb1",
+      "name": "Savannah Lions",
+      "number": "39",
+      "inputHash": "63597f041e988e97db5ab55ea53c64a4bc765fc862a82ea9646aba419284d5b6",
+      "referenceHash": "a5f11b675cc4baca4f8bcfde45ecd890738133e01d9f83e21616f4c3cbc05ad1",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "39.inspect.control.png",
+          "sha256": "0a21530f54862292fc660473adfb7dcf770f74d9a8d599546271ffb116fb0fb6",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.5846093826197212,
+              "meanDistance": 1.8852089428152536,
+              "censusSimilarity": 0.5461505127834754,
+              "contrastCorrelation": 0.28903957289603793
+            },
+            {
+              "id": "symbol-0-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.6262112787926927,
+              "meanDistance": 1.5474172231753667,
+              "censusSimilarity": 0.5415565345080764,
+              "contrastCorrelation": 0.29374824749543127
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "39.inspect.x435-y44.5-p27.png",
+          "sha256": "e34326c1a37e829c19710c8a55918ddeefa065e1f55bc612b186eb351d098221",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.8436776620370371,
+              "meanDistance": 0.723374086432159,
+              "censusSimilarity": 0.7164524050267225,
+              "contrastCorrelation": 0.7420521297963191
+            },
+            {
+              "id": "symbol-0-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.834027832376759,
+              "meanDistance": 0.7165456365249196,
+              "censusSimilarity": 0.7126284875183554,
+              "contrastCorrelation": 0.7475653323367676
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "39.table.control.png",
+          "sha256": "91697a9ba285f2f9440e4c16e1e506f07bbbd0d4f460d40d829b0a265f38104a",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.4532839962997225,
+              "meanDistance": 2.1574334295363062,
+              "censusSimilarity": 0.5604506716741298,
+              "contrastCorrelation": 0.2930898242221507
+            },
+            {
+              "id": "symbol-0-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.46466602129719264,
+              "meanDistance": 1.984147120475769,
+              "censusSimilarity": 0.5596182085168869,
+              "contrastCorrelation": 0.300925124055257
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "39.table.x435-y44.5-p27.png",
+          "sha256": "277a93c047025586b655183463c39c0503b69a2e18b64625771a823d1fb1e7ed",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.7860262008733625,
+              "meanDistance": 0.8636052690002076,
+              "censusSimilarity": 0.6946410515672397,
+              "contrastCorrelation": 0.6459545458227982
+            },
+            {
+              "id": "symbol-0-W",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7836961556276054,
+              "meanDistance": 0.8701560438546267,
+              "censusSimilarity": 0.6916299559471366,
+              "contrastCorrelation": 0.6539080277889933
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4a05cbae-a0a1-452b-a9d1-a29478e705cd",
+      "name": "Sea Serpent",
+      "number": "78",
+      "inputHash": "847d93f3b4ed8ff3732fe4fabc51042d188e4cb984ce171bf7dd90fdfcb223c4",
+      "referenceHash": "1c6af3adfbbdb3b8a194b10ef3b2be4b32fdb01df416c090d9386282e443dd34",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "78.inspect.control.png",
+          "sha256": "12adf53dc129e473aa4654504b401fa4f63ee86b124b002db2c1adc0c5ecb6c0",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.43272727272727274,
+              "meanDistance": 1.9339984533530084,
+              "censusSimilarity": 0.45171810372255805,
+              "contrastCorrelation": -0.07552032400412396
+            },
+            {
+              "id": "symbol-0-5",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.4831069313827935,
+              "meanDistance": 1.6522337636287336,
+              "censusSimilarity": 0.4465062336909249,
+              "contrastCorrelation": -0.038513078348217655
+            },
+            {
+              "id": "symbol-1-U",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.36877497319949326,
+              "meanDistance": 2.1812633525056713,
+              "censusSimilarity": 0.4676697116245746,
+              "contrastCorrelation": -0.09704948367252877
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "78.inspect.x435-y44.5-p27.png",
+          "sha256": "646f0d4b346ec2a36997bdcd8edd3ce0b547481fdcc8f260b79b1329d1e9fceb",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.5551164267295556,
+              "meanDistance": 1.5067759457023402,
+              "censusSimilarity": 0.6863665287941457,
+              "contrastCorrelation": 0.5773301323822031
+            },
+            {
+              "id": "symbol-0-5",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6217592412640416,
+              "meanDistance": 1.1971675967383004,
+              "censusSimilarity": 0.610466801971586,
+              "contrastCorrelation": 0.427066699636071
+            },
+            {
+              "id": "symbol-1-U",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.540192926045016,
+              "meanDistance": 1.584116475584729,
+              "censusSimilarity": 0.7813003761418592,
+              "contrastCorrelation": 0.6472973807588751
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "78.table.control.png",
+          "sha256": "743f37a1dc07134fa085d2a630170d2c75dad4f943d72c7df4571c6072649ccb",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.4248194238969628,
+              "meanDistance": 2.065986500936834,
+              "censusSimilarity": 0.47136493795736556,
+              "contrastCorrelation": -0.05628535855258093
+            },
+            {
+              "id": "symbol-0-5",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.48251748251748255,
+              "meanDistance": 1.726554729023633,
+              "censusSimilarity": 0.4699913018266164,
+              "contrastCorrelation": 0.04199222695119324
+            },
+            {
+              "id": "symbol-1-U",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.2895927601809955,
+              "meanDistance": 2.4231936199235466,
+              "censusSimilarity": 0.48235715565108367,
+              "contrastCorrelation": -0.10291356778538475
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "78.table.x435-y44.5-p27.png",
+          "sha256": "625f5d9850518a6e66a28614dcdb9c963d571e9c68532bd42b571da34bfa3bb7",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.5503159127996986,
+              "meanDistance": 1.4794762272702267,
+              "censusSimilarity": 0.7453070314985683,
+              "contrastCorrelation": 0.6055898346105687
+            },
+            {
+              "id": "symbol-0-5",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6345188553777511,
+              "meanDistance": 1.1505074048564383,
+              "censusSimilarity": 0.6751232241229341,
+              "contrastCorrelation": 0.4717687417002529
+            },
+            {
+              "id": "symbol-1-U",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5033790993810913,
+              "meanDistance": 1.5382445297770229,
+              "censusSimilarity": 0.8219595199713415,
+              "contrastCorrelation": 0.6652794437445039
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0eaf0ac8-f5a7-4689-8d3e-dd865763df44",
+      "name": "Terror",
+      "number": "132",
+      "inputHash": "5672c787ad70cc0459fdcf6ce53fab103ee0dc8462fdfa9885376e9736f44e9e",
+      "referenceHash": "f192e9b10cb2d97c9bc48ae4bbf7dcbfba94f1edcf39af27c5a04903fb8e1d78",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "132.inspect.control.png",
+          "sha256": "4fc90588e1a3b3a26ad1ec96d8f78e6371310bb5452b205883b3b2f40e23456a",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.5804846689213741,
+              "meanDistance": 1.4498096879913835,
+              "censusSimilarity": 0.5981928102450758,
+              "contrastCorrelation": 0.4145315927936506
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6588235294117647,
+              "meanDistance": 1.2020902297076057,
+              "censusSimilarity": 0.6959852086634971,
+              "contrastCorrelation": 0.5421560502626737
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.44386449184441656,
+              "meanDistance": 2.0480268718174526,
+              "censusSimilarity": 0.5032762096774194,
+              "contrastCorrelation": 0.14580298985631274
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "132.inspect.x435-y44.5-p27.png",
+          "sha256": "5452fac2e3d421b2fd558995acf12bbba71f6f438230b9bb748ffd21bd7c527e",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.7802572309151256,
+              "meanDistance": 0.9464211683524283,
+              "censusSimilarity": 0.8523694987973737,
+              "contrastCorrelation": 0.8272455655666137
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7949526813880126,
+              "meanDistance": 0.9446517246558255,
+              "censusSimilarity": 0.887216059165346,
+              "contrastCorrelation": 0.8572743169097374
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7690147561395607,
+              "meanDistance": 0.9582272965665466,
+              "censusSimilarity": 0.8249747983870968,
+              "contrastCorrelation": 0.7847736104030331
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "132.table.control.png",
+          "sha256": "3dbe231b0c15bfde962a9b4520188e884141d6a16c3094e1fa30a3eefe78a90e",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.5138089356049129,
+              "meanDistance": 1.5518541043543548,
+              "censusSimilarity": 0.6033933563024118,
+              "contrastCorrelation": 0.4370380039754459
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6022783556215947,
+              "meanDistance": 1.2863953936023682,
+              "censusSimilarity": 0.7194928684627575,
+              "contrastCorrelation": 0.5771328971279294
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.45957091402620454,
+              "meanDistance": 1.83840834762005,
+              "censusSimilarity": 0.5003780241935484,
+              "contrastCorrelation": 0.12906719152153132
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "132.table.x435-y44.5-p27.png",
+          "sha256": "0c4bf2c76bf4ba5160747ff7caeb921760af2f28974292949639e3cbbbbf5957",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.7935636887876111,
+              "meanDistance": 0.9631152267507723,
+              "censusSimilarity": 0.8552948059546253,
+              "contrastCorrelation": 0.8261778293885024
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.804933299773471,
+              "meanDistance": 0.9033033950873504,
+              "censusSimilarity": 0.8968568409931326,
+              "contrastCorrelation": 0.8666199958422781
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.797915282816412,
+              "meanDistance": 0.9424357169260102,
+              "censusSimilarity": 0.8244707661290323,
+              "contrastCorrelation": 0.7632238711606202
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fa35113b-5242-41f4-a989-42f2cd8002b6",
+      "name": "Sengir Vampire",
+      "number": "129",
+      "inputHash": "7568ec71a0b99dc46b3f2ea2920b8162f6fa18e75425100b111fb7e5ffae08ae",
+      "referenceHash": "759804765b25d489bcf83a95ea0218b36c74026afd7a76ac34a5b7f90c739a0b",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "129.inspect.control.png",
+          "sha256": "d929866145a49d03b921765c73122a1f8c54581b47a943a6a5bd13921fb026ac",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.5333604970968728,
+              "meanDistance": 1.5691157523515296,
+              "censusSimilarity": 0.5486484181802678,
+              "contrastCorrelation": 0.22638658383816868
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.5925731186329279,
+              "meanDistance": 1.2504128138107755,
+              "censusSimilarity": 0.6294345898004434,
+              "contrastCorrelation": 0.4236239999893392
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5480671663775326,
+              "meanDistance": 1.502232368217873,
+              "censusSimilarity": 0.5289976133651552,
+              "contrastCorrelation": 0.10061336599366374
+            },
+            {
+              "id": "symbol-2-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.42857142857142855,
+              "meanDistance": 2.1230939568372875,
+              "censusSimilarity": 0.5058236272878536,
+              "contrastCorrelation": 0.09393547301398299
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "129.inspect.x435-y44.5-p27.png",
+          "sha256": "1f08ec3471d7e3d8e1e468894615e165844f2aa0e5e33b33a533da68a7355fd4",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.6917807444494294,
+              "meanDistance": 1.0815350225947464,
+              "censusSimilarity": 0.7263153406668372,
+              "contrastCorrelation": 0.6415066832183479
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.8193040386080772,
+              "meanDistance": 0.9033044745845179,
+              "censusSimilarity": 0.8210920177383592,
+              "contrastCorrelation": 0.8130836614655893
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7127591706539075,
+              "meanDistance": 0.9711925406254035,
+              "censusSimilarity": 0.7070405727923628,
+              "contrastCorrelation": 0.5662348914626435
+            },
+            {
+              "id": "symbol-2-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.6312634698275862,
+              "meanDistance": 1.1629160116633401,
+              "censusSimilarity": 0.6677332650710355,
+              "contrastCorrelation": 0.5235092230304765
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "129.table.control.png",
+          "sha256": "dcff5d44f55888462366f4a132b39cde48de1fe6bc4af8e10d3f5ca09326d3e5",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.5417441022047548,
+              "meanDistance": 1.5308877096963638,
+              "censusSimilarity": 0.5694551036070606,
+              "contrastCorrelation": 0.28791904009884783
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.6953031146532275,
+              "meanDistance": 1.080157008247504,
+              "censusSimilarity": 0.6693458980044346,
+              "contrastCorrelation": 0.4903761386388843
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5599311668541929,
+              "meanDistance": 1.4072395658545327,
+              "censusSimilarity": 0.5147971360381861,
+              "contrastCorrelation": 0.13453262255570717
+            },
+            {
+              "id": "symbol-2-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.4535677239722662,
+              "meanDistance": 1.8201291900493062,
+              "censusSimilarity": 0.5302700627159862,
+              "contrastCorrelation": 0.12843098180819468
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "129.table.x435-y44.5-p27.png",
+          "sha256": "28701eda372817d8801aa756b9c66b483839673636620c9b6f0117bb653eca67",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.6748454298512143,
+              "meanDistance": 1.0942752392470332,
+              "censusSimilarity": 0.7429436343480856,
+              "contrastCorrelation": 0.6886813363796004
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.7512015234410422,
+              "meanDistance": 0.9921475298293121,
+              "censusSimilarity": 0.8395232815964523,
+              "contrastCorrelation": 0.8297384205186956
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6587237227871,
+              "meanDistance": 1.0724030999632155,
+              "censusSimilarity": 0.7047732696897375,
+              "contrastCorrelation": 0.6053952403701524
+            },
+            {
+              "id": "symbol-2-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7045447599254256,
+              "meanDistance": 1.0265015415361065,
+              "censusSimilarity": 0.6917957250735953,
+              "contrastCorrelation": 0.5820209008847975
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6caeadf8-1b40-497d-be7c-667fbb98f848",
+      "name": "Dwarven Warriors",
+      "number": "144",
+      "inputHash": "8e8f344e87bdb6e20ef20adf87eff1d356c2cfe24680096b634dcea431c006a7",
+      "referenceHash": "b68c31548f931663364088ccbdcfdc20d03001b7e5ce0db464d52725637b3e3b",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "144.inspect.control.png",
+          "sha256": "2f4d4eba1989de2ba64c393e5ec590371e9278ce14c61522f1155e1f3968c84e",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.510974886296223,
+              "meanDistance": 1.718277286463593,
+              "censusSimilarity": 0.5541363725682845,
+              "contrastCorrelation": 0.22014620883765218
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5910338517840805,
+              "meanDistance": 1.2657706528385995,
+              "censusSimilarity": 0.5914357682619648,
+              "contrastCorrelation": 0.27564757166053433
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.422986781663073,
+              "meanDistance": 1.9092330890724418,
+              "censusSimilarity": 0.5217570917102726,
+              "contrastCorrelation": 0.1837869456122527
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "144.inspect.x435-y44.5-p27.png",
+          "sha256": "ac691ab18f4c074d69d5143202f6c864f975d28e3d37c904ccc2044039b5e6ec",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.8809322676370566,
+              "meanDistance": 0.8226213474265653,
+              "censusSimilarity": 0.8811816335887863,
+              "contrastCorrelation": 0.8603827624372286
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.9131555593120061,
+              "meanDistance": 0.6820447042167382,
+              "censusSimilarity": 0.8641057934508816,
+              "contrastCorrelation": 0.8275040482411602
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.885144192102945,
+              "meanDistance": 0.8295697974001636,
+              "censusSimilarity": 0.907463508675296,
+              "contrastCorrelation": 0.8950567570963628
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "144.table.control.png",
+          "sha256": "2ddc998a8d939f1b02900bbc0bb6a36bef4892a5c6ddb7b63d7fc8194e031b6b",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.4622770007640943,
+              "meanDistance": 2.061740032836203,
+              "censusSimilarity": 0.5620619637125827,
+              "contrastCorrelation": 0.26379669448871784
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5662761314036296,
+              "meanDistance": 1.3178770442686751,
+              "censusSimilarity": 0.6066750629722922,
+              "contrastCorrelation": 0.3586655442068087
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.37923909079859003,
+              "meanDistance": 2.3578577522272455,
+              "censusSimilarity": 0.5196915450289177,
+              "contrastCorrelation": 0.16061594761438538
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "144.table.x435-y44.5-p27.png",
+          "sha256": "5ba51250acd0f7668e13e7b267d3e492dbf8f228f20e5ba48cf077db90625cb8",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.8132639477187462,
+              "meanDistance": 1.0274803067287126,
+              "censusSimilarity": 0.8539988209864413,
+              "contrastCorrelation": 0.8223512949542335
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7975925683632081,
+              "meanDistance": 0.8487543368289712,
+              "censusSimilarity": 0.8370277078085643,
+              "contrastCorrelation": 0.7785093030282667
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.8705952028427598,
+              "meanDistance": 0.8917810542047632,
+              "censusSimilarity": 0.8716606995318095,
+              "contrastCorrelation": 0.8565276766268416
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e2285cf5-f1c0-42d2-8203-297d2a5b9ec2",
+      "name": "Earth Elemental",
+      "number": "146",
+      "inputHash": "2f2750e83ea4cf46e1cf6a3bb8bbac4aeda59de54b15fe6cd6d58ae70cfeb0ca",
+      "referenceHash": "8cbd19d2927fc6dc5dc7aed31a92dc1ee8b2f3d60c24e13c55f8c4f98ddf84cc",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "146.inspect.control.png",
+          "sha256": "52cff92fe6e6b4f31c4b454c69bb16717e05c8364ccd64dab741de7fcf0526fd",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.4661514683153014,
+              "meanDistance": 1.8738855539580064,
+              "censusSimilarity": 0.5247068301853012,
+              "contrastCorrelation": 0.13990996974697043
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.6926722566532992,
+              "meanDistance": 1.1445109376251095,
+              "censusSimilarity": 0.6382278102080526,
+              "contrastCorrelation": 0.3891494374328737
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.4367417677642981,
+              "meanDistance": 1.9532803948254882,
+              "censusSimilarity": 0.516042780748663,
+              "contrastCorrelation": 0.04085150156439104
+            },
+            {
+              "id": "symbol-2-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.2991452991452992,
+              "meanDistance": 2.612862607460772,
+              "censusSimilarity": 0.4529722589167767,
+              "contrastCorrelation": -0.0700163949702185
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "146.inspect.x435-y44.5-p27.png",
+          "sha256": "a28f5dab978c5d38c1802892b0abaf13fcf577e5dd0114c39e485169ca5b361b",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.7621550591327202,
+              "meanDistance": 1.0540131975727383,
+              "censusSimilarity": 0.7442485005818638,
+              "contrastCorrelation": 0.595025082795139
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.8538278030795923,
+              "meanDistance": 0.8534107751316495,
+              "censusSimilarity": 0.756174225415357,
+              "contrastCorrelation": 0.6077153793043377
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7462366386803269,
+              "meanDistance": 1.0857439920710368,
+              "censusSimilarity": 0.7423796791443851,
+              "contrastCorrelation": 0.5670235796136536
+            },
+            {
+              "id": "symbol-2-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.728667305848514,
+              "meanDistance": 1.1201109712087238,
+              "censusSimilarity": 0.7470277410832232,
+              "contrastCorrelation": 0.6055988310053404
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "146.table.control.png",
+          "sha256": "ee15787e55addcdfdc626e38f6cf9bed8f25426075ce0d7f9424a25a57264fd1",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.4923961424332344,
+              "meanDistance": 1.9258195598359993,
+              "censusSimilarity": 0.5305702264792767,
+              "contrastCorrelation": 0.18007721010710653
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.7066963182604398,
+              "meanDistance": 1.0715566562719065,
+              "censusSimilarity": 0.6699595868881904,
+              "contrastCorrelation": 0.45504684531511325
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.40462525320729237,
+              "meanDistance": 2.1414027815697176,
+              "censusSimilarity": 0.5377005347593583,
+              "contrastCorrelation": 0.11128364746098864
+            },
+            {
+              "id": "symbol-2-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.29342984409799555,
+              "meanDistance": 2.6920681473301284,
+              "censusSimilarity": 0.4191545574636724,
+              "contrastCorrelation": -0.07724046307326633
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "146.table.x435-y44.5-p27.png",
+          "sha256": "fea3985c4b1fc9a18b3f7898c847ddbd5c70389b3247b8621f0abd3ea2c560da",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.7208420807091206,
+              "meanDistance": 1.1196635361287453,
+              "censusSimilarity": 0.7610330319577477,
+              "contrastCorrelation": 0.6254218131250374
+            },
+            {
+              "id": "symbol-0-3",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.7374274991470489,
+              "meanDistance": 1.0701830797437308,
+              "censusSimilarity": 0.7600658584044305,
+              "contrastCorrelation": 0.6356534123498917
+            },
+            {
+              "id": "symbol-1-R",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7421073879693176,
+              "meanDistance": 1.0586139105115766,
+              "censusSimilarity": 0.7581550802139038,
+              "contrastCorrelation": 0.5906986142001109
+            },
+            {
+              "id": "symbol-2-R",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.739634256744523,
+              "meanDistance": 1.0902659810942277,
+              "censusSimilarity": 0.7758256274768824,
+              "contrastCorrelation": 0.6511143250197076
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6d6deae3-3ed4-47eb-bf4a-4a766ce18135",
+      "name": "Llanowar Elves",
+      "number": "211",
+      "inputHash": "5c7fe107b40cbb01efcbbd17111b4024ee1b3a407ff48f03f06cca40feebd9f7",
+      "referenceHash": "c3749976583e4d6a0ae59518bce0e22d2e1c8b79be579f4f42c2bcbaad205d5f",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "211.inspect.control.png",
+          "sha256": "0ccc9cb20cef582e5a5945e2e5b440e253bbc7855cd24b3defe9ff09cc688106",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.5550295857988164,
+              "meanDistance": 1.6790977202419541,
+              "censusSimilarity": 0.4338530066815145,
+              "contrastCorrelation": 0.08136288132748651
+            },
+            {
+              "id": "symbol-0-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5306063243400059,
+              "meanDistance": 1.7718297400387932,
+              "censusSimilarity": 0.4267477203647416,
+              "contrastCorrelation": 0.08481322220912162
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "211.inspect.x435-y44.5-p27.png",
+          "sha256": "3f9390c0d71e05ae71817d492be71a5310408589922a55caa9d662c39ff3b48f",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.8218397355522626,
+              "meanDistance": 0.9828569482459807,
+              "censusSimilarity": 0.8087602078693392,
+              "contrastCorrelation": 0.791433459451071
+            },
+            {
+              "id": "symbol-0-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.8133631194151097,
+              "meanDistance": 1.1227341574722955,
+              "censusSimilarity": 0.8085106382978723,
+              "contrastCorrelation": 0.7934232849398245
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "211.table.control.png",
+          "sha256": "a29109ce153caf4990b8403bb3b82d6c0848376fff59bccc2ca6a126d9fe80ef",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.548378450817475,
+              "meanDistance": 1.743421646608756,
+              "censusSimilarity": 0.4602821083890126,
+              "contrastCorrelation": 0.13232571765248377
+            },
+            {
+              "id": "symbol-0-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5285016286644951,
+              "meanDistance": 1.931355290803416,
+              "censusSimilarity": 0.4560790273556231,
+              "contrastCorrelation": 0.13736970441373464
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "211.table.x435-y44.5-p27.png",
+          "sha256": "78499b19f579dc5abba3a119da14486f1585a1cdc567b9c5a4c75beb91a8f10c",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.7279029462738302,
+              "meanDistance": 1.125028812984176,
+              "censusSimilarity": 0.8253897550111359,
+              "contrastCorrelation": 0.7791524902516546
+            },
+            {
+              "id": "symbol-0-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7198827292110874,
+              "meanDistance": 1.3277080180502985,
+              "censusSimilarity": 0.8279635258358663,
+              "contrastCorrelation": 0.7812934873125972
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a5e4a23b-3b05-4240-9565-bdd8f3f3ef12",
+      "name": "Craw Wurm",
+      "number": "190",
+      "inputHash": "3e2dad8084e8f3d8b7d089c154186e2df3e55df4910a60962a6d15425ccc7ba0",
+      "referenceHash": "cce8714164923da1004d9e7073e6a23bde951593efb0e6a24f62715a6d26b2c5",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "190.inspect.control.png",
+          "sha256": "d7bb1676f747a88d2789c19adad999bf4a5ba32b4a4e3fba5af9171207059e2d",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.5352173556613827,
+              "meanDistance": 1.5744787708254644,
+              "censusSimilarity": 0.5738916256157636,
+              "contrastCorrelation": 0.38724972271268665
+            },
+            {
+              "id": "symbol-0-4",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.6432968239747999,
+              "meanDistance": 1.2810149317249575,
+              "censusSimilarity": 0.5974340698503208,
+              "contrastCorrelation": 0.3440500995228048
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.515827555019596,
+              "meanDistance": 1.6253844896064085,
+              "censusSimilarity": 0.6582342954159592,
+              "contrastCorrelation": 0.46755901353325086
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5308056872037914,
+              "meanDistance": 1.6951713309949867,
+              "censusSimilarity": 0.524857238831038,
+              "contrastCorrelation": 0.36645035710563484
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "190.inspect.x435-y44.5-p27.png",
+          "sha256": "f2846fa2f48955331f3c690671f7e40544b25e132fab7e9736203460d103fd42",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.7567897436414712,
+              "meanDistance": 1.2020937131703444,
+              "censusSimilarity": 0.8409650694133453,
+              "contrastCorrelation": 0.817499621023089
+            },
+            {
+              "id": "symbol-0-4",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.7511226017145188,
+              "meanDistance": 1.0227210716235857,
+              "censusSimilarity": 0.8508909479686386,
+              "contrastCorrelation": 0.7871065253097537
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6988798594333406,
+              "meanDistance": 1.4986129126957444,
+              "censusSimilarity": 0.8421052631578947,
+              "contrastCorrelation": 0.8282715553901976
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7674829588487755,
+              "meanDistance": 1.536732095689531,
+              "censusSimilarity": 0.8449781659388647,
+              "contrastCorrelation": 0.8385847076644477
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "190.table.control.png",
+          "sha256": "9ab25acaff4aa0edea059208e1f917d6996051e40c11dc9d6254c457e7251327",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.5685930223681196,
+              "meanDistance": 1.390216956491467,
+              "censusSimilarity": 0.6267913121361397,
+              "contrastCorrelation": 0.453469786716738
+            },
+            {
+              "id": "symbol-0-4",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.6153420105234008,
+              "meanDistance": 1.2851981131363743,
+              "censusSimilarity": 0.6578759800427655,
+              "contrastCorrelation": 0.4025672949014307
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5492854226214782,
+              "meanDistance": 1.4736153679660466,
+              "censusSimilarity": 0.6784380305602716,
+              "contrastCorrelation": 0.5289458682720038
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.542713567839196,
+              "meanDistance": 1.491721362296981,
+              "censusSimilarity": 0.5836412495801142,
+              "contrastCorrelation": 0.4470660529753164
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "190.table.x435-y44.5-p27.png",
+          "sha256": "1da2ce38338a1c8ceee6ba02fa49ba1e0d7b6a3483ac37376ef8dff1c431c048",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [364, 31, 90, 31],
+              "edgeF1": 0.7427601261217559,
+              "meanDistance": 1.273490863986587,
+              "censusSimilarity": 0.8440998656515898,
+              "contrastCorrelation": 0.807988472126442
+            },
+            {
+              "id": "symbol-0-4",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.7716114299450135,
+              "meanDistance": 1.0074635710353235,
+              "censusSimilarity": 0.8501781895937277,
+              "contrastCorrelation": 0.8015989848067099
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.701309004363348,
+              "meanDistance": 1.4248891372139716,
+              "censusSimilarity": 0.8497453310696095,
+              "contrastCorrelation": 0.8070456731828681
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7011118378024854,
+              "meanDistance": 1.6593576689260174,
+              "censusSimilarity": 0.8495129324823648,
+              "contrastCorrelation": 0.8182811394252888
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "803fd65f-4ca6-4fe4-abc2-72aa32ebb3a5",
+      "name": "Sol Ring",
+      "number": "274",
+      "inputHash": "5a1e4955ce71b8d8379e6c1c1c82f0b1e788e8bad50e06f00c2d10647e80a17e",
+      "referenceHash": "a4fe958556829b70652bed8f4c720ed2eb95a12df7d6f80b0ffea95dbac57853",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "274.inspect.control.png",
+          "sha256": "a061f83142660ec72df9188da240c43cd729f20dbe16b72988791381516f44c8",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.21656686626746507,
+              "meanDistance": 2.885340285742533,
+              "censusSimilarity": 0.3771836007130125,
+              "contrastCorrelation": -0.3565049601380014
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.2340321794246709,
+              "meanDistance": 2.7900700526539217,
+              "censusSimilarity": 0.3720805847744696,
+              "contrastCorrelation": -0.3565402532345639
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "274.inspect.x435-y44.5-p27.png",
+          "sha256": "940237375fb01498faf129d91bcbd566c3947f78e1054b379c6d5225b7c108ba",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.4598540145985402,
+              "meanDistance": 1.7279397860201455,
+              "censusSimilarity": 0.5245989304812835,
+              "contrastCorrelation": 0.09960371432067766
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.44442972579149553,
+              "meanDistance": 1.7536506874933526,
+              "censusSimilarity": 0.5485826350508112,
+              "contrastCorrelation": 0.12222125822770463
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "274.table.control.png",
+          "sha256": "cfa9c433e4fd883fae2afee771bddfbf645f3490b60555a2db51f72633a85dd6",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.17487471919820288,
+              "meanDistance": 3.055113303496541,
+              "censusSimilarity": 0.3213903743315508,
+              "contrastCorrelation": -0.4143908221611514
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.13644344118384752,
+              "meanDistance": 3.134193268237723,
+              "censusSimilarity": 0.31538598680691743,
+              "contrastCorrelation": -0.41484763009320913
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "274.table.x435-y44.5-p27.png",
+          "sha256": "66bffa6dac27bb7290cd83433adce77a4b28e802c3616fb38fcef699f57563bd",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.4883720930232558,
+              "meanDistance": 1.6617645308353834,
+              "censusSimilarity": 0.5837789661319073,
+              "contrastCorrelation": 0.14125699223383523
+            },
+            {
+              "id": "symbol-0-1",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.47580645161290325,
+              "meanDistance": 1.7224453485701696,
+              "censusSimilarity": 0.6147263326796221,
+              "contrastCorrelation": 0.16735069172597025
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d954e8a7-6b22-4f53-9435-ff1f7782a3d4",
+      "name": "Howl from Beyond",
+      "number": "114",
+      "inputHash": "b6e84dd5d6f63ca39a06f3749af5772e5e228a58f643bd974b40431f80b79781",
+      "referenceHash": "b4506d8f801f8051d401d07b9533d1ac4cd5835916e389283e87a85fcccddd3f",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "114.inspect.control.png",
+          "sha256": "925a9f4e391372e547b4d139b1899856d30431abb26cd3855acbbeb8e8687652",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.4715979880946888,
+              "meanDistance": 1.665812107536243,
+              "censusSimilarity": 0.5558092182390325,
+              "contrastCorrelation": 0.20416354553918414
+            },
+            {
+              "id": "symbol-0-X",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5347752619128084,
+              "meanDistance": 1.3261612175889703,
+              "censusSimilarity": 0.5939802672661422,
+              "contrastCorrelation": 0.27331847338969173
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.39458284567798024,
+              "meanDistance": 2.111774708632022,
+              "censusSimilarity": 0.5153919014918305,
+              "contrastCorrelation": 0.08974887316654422
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "114.inspect.x435-y44.5-p27.png",
+          "sha256": "d559c62112687806c500835c2231b95247ec2fdb08dca3c1469881f3904c2d43",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.6650764320510667,
+              "meanDistance": 1.1503591426066222,
+              "censusSimilarity": 0.7680014808416117,
+              "contrastCorrelation": 0.669588405890542
+            },
+            {
+              "id": "symbol-0-X",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7281917881107925,
+              "meanDistance": 1.0554774008826753,
+              "censusSimilarity": 0.7849381790932933,
+              "contrastCorrelation": 0.6752004918757822
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.6835443037974683,
+              "meanDistance": 1.143906915894767,
+              "censusSimilarity": 0.7450864314468387,
+              "contrastCorrelation": 0.6313722311963745
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "114.table.control.png",
+          "sha256": "f87030c4d5177c8d327fea38891dc3a8fd84ac11fc968697e5ec01fdbb132d29",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.42753227094983803,
+              "meanDistance": 1.7855931829741865,
+              "censusSimilarity": 0.5417412229283642,
+              "contrastCorrelation": 0.211730570744981
+            },
+            {
+              "id": "symbol-0-X",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.5316580438531658,
+              "meanDistance": 1.4440775127140355,
+              "censusSimilarity": 0.6064693393280879,
+              "contrastCorrelation": 0.3077535197175363
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.3929824561403509,
+              "meanDistance": 2.077052199139416,
+              "censusSimilarity": 0.4847264977504144,
+              "contrastCorrelation": 0.057677729846939224
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "114.table.x435-y44.5-p27.png",
+          "sha256": "0797af1eecebda6e9a6c8e6ba4b09a497bc90e04d4b81c6fc32720d52be6939d",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [391, 31, 63, 31],
+              "edgeF1": 0.6700487198471677,
+              "meanDistance": 1.134756025132749,
+              "censusSimilarity": 0.7763312149071389,
+              "contrastCorrelation": 0.6750718215190377
+            },
+            {
+              "id": "symbol-0-X",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6843575418994413,
+              "meanDistance": 1.0957292548313657,
+              "censusSimilarity": 0.8015486449356812,
+              "contrastCorrelation": 0.7096567256969591
+            },
+            {
+              "id": "symbol-1-B",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.6750602732386821,
+              "meanDistance": 1.1235836598876336,
+              "censusSimilarity": 0.7576367511247928,
+              "contrastCorrelation": 0.6253346488943761
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "56cb88db-2c6b-4d17-be16-2a89218efe4c",
+      "name": "Force of Nature",
+      "number": "196",
+      "inputHash": "f0b1abebc17255ec88a0a9ea36a978394cb36870ef7c86127fc41c2ceda41893",
+      "referenceHash": "6257f1861244dfa5f901bb310291eeff8727cd29b0715931856352f7adb03093",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "196.inspect.control.png",
+          "sha256": "3b1a1fa5214b0b112928b4d78e24e104b2da68c2244502416779b0788f871719",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [310, 31, 144, 31],
+              "edgeF1": 0.4818844196027548,
+              "meanDistance": 1.829291799333002,
+              "censusSimilarity": 0.49343175278368573,
+              "contrastCorrelation": 0.1026311609599828
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [312, 31, 32, 31],
+              "edgeF1": 0.2846975088967972,
+              "meanDistance": 2.4976770894889686,
+              "censusSimilarity": 0.48044619422572177,
+              "contrastCorrelation": -0.16239052408241436
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [339, 31, 32, 31],
+              "edgeF1": 0.4798048251558688,
+              "meanDistance": 1.8139022747355122,
+              "censusSimilarity": 0.4432372854668556,
+              "contrastCorrelation": -0.030811312892355194
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.5981595092024539,
+              "meanDistance": 1.5049653915109253,
+              "censusSimilarity": 0.4573543611200515,
+              "contrastCorrelation": 0.12107448211697394
+            },
+            {
+              "id": "symbol-3-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.48878340096470413,
+              "meanDistance": 1.9081698037993233,
+              "censusSimilarity": 0.5554707767434762,
+              "contrastCorrelation": 0.26497361897738286
+            },
+            {
+              "id": "symbol-4-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5264723378941107,
+              "meanDistance": 1.548608874206555,
+              "censusSimilarity": 0.49374108699096814,
+              "contrastCorrelation": 0.25801852662397795
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "196.inspect.x435-y44.5-p27.png",
+          "sha256": "18db684af1bc10c117981bd7fb5ecfedfbc9c88465ba2c55cd5f83225ea19485",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [310, 31, 144, 31],
+              "edgeF1": 0.7667091961919716,
+              "meanDistance": 1.1301583530019053,
+              "censusSimilarity": 0.8081759039159264,
+              "contrastCorrelation": 0.8121149384965907
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [312, 31, 32, 31],
+              "edgeF1": 0.8551810237203495,
+              "meanDistance": 0.831172763155057,
+              "censusSimilarity": 0.8456692913385827,
+              "contrastCorrelation": 0.8068203916776204
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [339, 31, 32, 31],
+              "edgeF1": 0.755182625863771,
+              "meanDistance": 1.2143813978920701,
+              "censusSimilarity": 0.7937332703511258,
+              "contrastCorrelation": 0.8023034789905538
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.7421800947867299,
+              "meanDistance": 1.1111845737860018,
+              "censusSimilarity": 0.76472481493402,
+              "contrastCorrelation": 0.7595470731934583
+            },
+            {
+              "id": "symbol-3-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.7518086816720259,
+              "meanDistance": 1.2750492409660696,
+              "censusSimilarity": 0.8127575156416909,
+              "contrastCorrelation": 0.8261645810327422
+            },
+            {
+              "id": "symbol-4-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.734251290877797,
+              "meanDistance": 1.5244116203283813,
+              "censusSimilarity": 0.8138171446680399,
+              "contrastCorrelation": 0.8270132829336264
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "196.table.control.png",
+          "sha256": "21a82dab38fdd7220c0b22bdf528bd10799bbb91ae7407376026ec026051940b",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [310, 31, 144, 31],
+              "edgeF1": 0.41578981344006194,
+              "meanDistance": 1.9989399299249615,
+              "censusSimilarity": 0.5143563117728012,
+              "contrastCorrelation": 0.14011703711508633
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [312, 31, 32, 31],
+              "edgeF1": 0.29176303148905885,
+              "meanDistance": 2.425648054426685,
+              "censusSimilarity": 0.4611548556430446,
+              "contrastCorrelation": -0.16210044379601027
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [339, 31, 32, 31],
+              "edgeF1": 0.3597592082440567,
+              "meanDistance": 1.9479507466424815,
+              "censusSimilarity": 0.4589828373484491,
+              "contrastCorrelation": 0.0037753837185929683
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.5182567726737337,
+              "meanDistance": 1.9212701343587173,
+              "censusSimilarity": 0.4753781783070486,
+              "contrastCorrelation": 0.15306939270695027
+            },
+            {
+              "id": "symbol-3-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.48367182607139664,
+              "meanDistance": 1.7042620319209547,
+              "censusSimilarity": 0.5750038150465435,
+              "contrastCorrelation": 0.3142345716361045
+            },
+            {
+              "id": "symbol-4-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5420560747663552,
+              "meanDistance": 1.5813291643481504,
+              "censusSimilarity": 0.5539534146727936,
+              "contrastCorrelation": 0.33325415250084345
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "196.table.x435-y44.5-p27.png",
+          "sha256": "89801c019cf5dd03d607c9349673a6d9ec265b78d1b2ff44057744a04a2b280a",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [310, 31, 144, 31],
+              "edgeF1": 0.6760522913374515,
+              "meanDistance": 1.299792256666396,
+              "censusSimilarity": 0.828381083448017,
+              "contrastCorrelation": 0.7890873915350837
+            },
+            {
+              "id": "symbol-0-2",
+              "rect": [312, 31, 32, 31],
+              "edgeF1": 0.7077269036167156,
+              "meanDistance": 0.9848533387947251,
+              "censusSimilarity": 0.8601049868766404,
+              "contrastCorrelation": 0.7832568529505931
+            },
+            {
+              "id": "symbol-1-G",
+              "rect": [339, 31, 32, 31],
+              "edgeF1": 0.6834851670170521,
+              "meanDistance": 1.2824510189794727,
+              "censusSimilarity": 0.8178239647299638,
+              "contrastCorrelation": 0.7720742222909929
+            },
+            {
+              "id": "symbol-2-G",
+              "rect": [366, 31, 32, 31],
+              "edgeF1": 0.6866658192449472,
+              "meanDistance": 1.1147325163086257,
+              "censusSimilarity": 0.7924042484711941,
+              "contrastCorrelation": 0.7404696028985127
+            },
+            {
+              "id": "symbol-3-G",
+              "rect": [393, 31, 32, 31],
+              "edgeF1": 0.6440819740694269,
+              "meanDistance": 1.4156643932291975,
+              "censusSimilarity": 0.8122997100564627,
+              "contrastCorrelation": 0.8026980678772109
+            },
+            {
+              "id": "symbol-4-G",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.6619469026548672,
+              "meanDistance": 1.7131555958203912,
+              "censusSimilarity": 0.8312470289969894,
+              "contrastCorrelation": 0.8109938610733456
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ef24fb75-49c7-48eb-a0b3-dc08d7f691ec",
+      "name": "Obsianus Golem",
+      "number": "268",
+      "inputHash": "59d925f9dc34af1fc5c0ca0b51f31c5a3929f931fe9ab152f9f497c2293db83c",
+      "referenceHash": "b0e14d1d707e78b42bf3dc852a884890a04648d65dbc6926d19536de9e33f958",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "268.inspect.control.png",
+          "sha256": "03706f0b62a61a9e1f261cf5394ea8d4a8d5c35ba800235664d9e288abd25603",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.610290717390634,
+              "meanDistance": 1.3133413491804906,
+              "censusSimilarity": 0.6175937543566151,
+              "contrastCorrelation": 0.4298027249915582
+            },
+            {
+              "id": "symbol-0-6",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5871066768994627,
+              "meanDistance": 1.3282756775177118,
+              "censusSimilarity": 0.6118895966029724,
+              "contrastCorrelation": 0.4140429326918162
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "inspect",
+          "file": "268.inspect.x435-y44.5-p27.png",
+          "sha256": "c2c9cb1182c5627611a6c579c0ac70b73f41a0cb2d5d641757bf3db7723c19e7",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.7645187146292293,
+              "meanDistance": 1.0127410016132568,
+              "censusSimilarity": 0.7839118918165342,
+              "contrastCorrelation": 0.6446073679669622
+            },
+            {
+              "id": "symbol-0-6",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.7933093099553595,
+              "meanDistance": 0.9565553566261423,
+              "censusSimilarity": 0.7848549186128804,
+              "contrastCorrelation": 0.6435398454149315
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "268.table.control.png",
+          "sha256": "3f15270ac3dcd4075499fe9f97eb6f87b028168cebdac2f03132645a9362cba2",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.5726950354609929,
+              "meanDistance": 1.370950147318868,
+              "censusSimilarity": 0.670709605464938,
+              "contrastCorrelation": 0.44645004815103784
+            },
+            {
+              "id": "symbol-0-6",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.5555343511450382,
+              "meanDistance": 1.3650301880185793,
+              "censusSimilarity": 0.667374380750177,
+              "contrastCorrelation": 0.4289467408579524
+            }
+          ]
+        },
+        {
+          "candidate": "x435-y44.5-p27",
+          "tier": "table",
+          "file": "268.table.x435-y44.5-p27.png",
+          "sha256": "2d07771eefd97df97091ddb7c40a9a016a15ad6eb2c57ca9964b73ae5cd5165f",
+          "regions": [
+            {
+              "id": "row",
+              "rect": [418, 31, 36, 31],
+              "edgeF1": 0.6598550993869589,
+              "meanDistance": 1.1750187005002075,
+              "censusSimilarity": 0.7889307123936986,
+              "contrastCorrelation": 0.6552748682111385
+            },
+            {
+              "id": "symbol-0-6",
+              "rect": [420, 31, 32, 31],
+              "edgeF1": 0.6953058321479374,
+              "meanDistance": 1.1151564673037457,
+              "censusSimilarity": 0.7893842887473461,
+              "contrastCorrelation": 0.6510346506465408
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "decision": "Pass: all 13 reserved rows improve >.02 in dark-ink edge F1 at both sizes. Median NCC and Census also improve. All three review sheets inspected after the frozen commit. Original white sun and shared row placement are visibly closer; header shadows are absent in the scans.",
+  "limitations": [
+    "Reservation is specific to this mana study; these cards appeared in previous body/lettering work.",
+    "Disenchant numeric disc is very low contrast against the pale white frame. Its numeral is taller/thinner than the existing SVG; retain this as an asset/style mismatch.",
+    "Skull teeth, tree detail, flame silhouette and numeral strokes still differ. Existing non-white SVGs remain unchanged.",
+    "No cross-set placement extrapolation. Revised lands, titles, inline symbols and all other frame families retain their prior behavior."
+  ],
+  "assetReview": [
+    {
+      "asset": {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/B.svg",
+        "sha256": "5dcca7a7b7ed92cec0f322f3d6329dc077084c9f7509a7b4b69de3702f81d13f",
+        "bytes": 2633,
+        "mime": "image/svg+xml",
+        "fetchedAt": "2026-10-11T22:18:49.071Z",
+        "etag": "W/\"a49-GTw2LPT+1fPeq0iiOzbCNJbvRcE\"",
+        "lastModified": null
+      },
+      "observed": "Skull teeth and lower outline differ from the scanned historic skull.",
+      "examples": [
+        {
+          "id": "0eaf0ac8-f5a7-4689-8d3e-dd865763df44",
+          "name": "Terror",
+          "referenceHash": "f192e9b10cb2d97c9bc48ae4bbf7dcbfba94f1edcf39af27c5a04903fb8e1d78"
+        },
+        {
+          "id": "fa35113b-5242-41f4-a989-42f2cd8002b6",
+          "name": "Sengir Vampire",
+          "referenceHash": "759804765b25d489bcf83a95ea0218b36c74026afd7a76ac34a5b7f90c739a0b"
+        },
+        {
+          "id": "d954e8a7-6b22-4f53-9435-ff1f7782a3d4",
+          "name": "Howl from Beyond",
+          "referenceHash": "b4506d8f801f8051d401d07b9533d1ac4cd5835916e389283e87a85fcccddd3f"
+        }
+      ],
+      "status": "Existing asset retained; review a historical contour/style variant independently of shared placement."
+    },
+    {
+      "asset": {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/G.svg",
+        "sha256": "5a741e9f498fd99ba57cc408887024c7cb3ad2de021e74dd97bce5b8732af936",
+        "bytes": 2915,
+        "mime": "image/svg+xml",
+        "fetchedAt": "2026-10-11T22:18:50.826Z",
+        "etag": "W/\"b63-bpOVXoIbqTAT5+T8jHEXTD3StS8\"",
+        "lastModified": null
+      },
+      "observed": "Tree canopy, branch holes and trunk details differ.",
+      "examples": [
+        {
+          "id": "6d6deae3-3ed4-47eb-bf4a-4a766ce18135",
+          "name": "Llanowar Elves",
+          "referenceHash": "c3749976583e4d6a0ae59518bce0e22d2e1c8b79be579f4f42c2bcbaad205d5f"
+        },
+        {
+          "id": "a5e4a23b-3b05-4240-9565-bdd8f3f3ef12",
+          "name": "Craw Wurm",
+          "referenceHash": "cce8714164923da1004d9e7073e6a23bde951593efb0e6a24f62715a6d26b2c5"
+        },
+        {
+          "id": "56cb88db-2c6b-4d17-be16-2a89218efe4c",
+          "name": "Force of Nature",
+          "referenceHash": "6257f1861244dfa5f901bb310291eeff8727cd29b0715931856352f7adb03093"
+        }
+      ],
+      "status": "Existing asset retained; review a historical contour/style variant independently of shared placement."
+    },
+    {
+      "asset": {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/R.svg",
+        "sha256": "c3c60f00e8f402d2047a9de1c8d0de9d86e544829e7ee9a95777ad3afad3026d",
+        "bytes": 2651,
+        "mime": "image/svg+xml",
+        "fetchedAt": "2026-10-11T22:18:49.342Z",
+        "etag": "W/\"a5b-kXeqkf8FFNaFvirokVtuMJ0ImBM\"",
+        "lastModified": null
+      },
+      "observed": "Flame contour differs; pale disc also has a stronger color cast.",
+      "examples": [
+        {
+          "id": "6caeadf8-1b40-497d-be7c-667fbb98f848",
+          "name": "Dwarven Warriors",
+          "referenceHash": "b68c31548f931663364088ccbdcfdc20d03001b7e5ce0db464d52725637b3e3b"
+        },
+        {
+          "id": "e2285cf5-f1c0-42d2-8203-297d2a5b9ec2",
+          "name": "Earth Elemental",
+          "referenceHash": "8cbd19d2927fc6dc5dc7aed31a92dc1ee8b2f3d60c24e13c55f8c4f98ddf84cc"
+        }
+      ],
+      "status": "Existing asset retained; review a historical contour/style variant independently of shared placement."
+    },
+    {
+      "asset": {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/1.svg",
+        "sha256": "ad98e50c7c304d20c198a226a107e3b4121c36cd023c16b4791774e8564a8ad9",
+        "bytes": 420,
+        "mime": "image/svg+xml",
+        "fetchedAt": "2026-10-11T22:18:45.927Z",
+        "etag": "W/\"1a4-e5H6H3Nn2X3a4QXgH+Z/r4TuE3k\"",
+        "lastModified": null
+      },
+      "observed": "Numeral is thicker/shorter and its disc darker than the scan on the white frame.",
+      "examples": [
+        {
+          "id": "41859c6f-1017-42ae-9061-050fe0db9731",
+          "name": "Disenchant",
+          "referenceHash": "40ea274352c5ad768ffe9bbe940226505136d09e1910d7d67ec204f2db98c690"
+        },
+        {
+          "id": "803fd65f-4ca6-4fe4-abc2-72aa32ebb3a5",
+          "name": "Sol Ring",
+          "referenceHash": "a4fe958556829b70652bed8f4c720ed2eb95a12df7d6f80b0ffea95dbac57853"
+        }
+      ],
+      "status": "Existing asset retained; review a historical contour/style variant independently of shared placement."
+    },
+    {
+      "asset": {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/U.svg",
+        "sha256": "ed6ec190796f9dba26149e690d9761d84dcf672e557a07f460557e65f072a552",
+        "bytes": 753,
+        "mime": "image/svg+xml",
+        "fetchedAt": "2026-10-11T22:18:47.663Z",
+        "etag": "W/\"2f1-tvdI0NJjTln4CLzNaPAjvllLGZw\"",
+        "lastModified": null
+      },
+      "observed": "Printed droplets are taller/narrower than the retained SVG; residual shape differences remain after row placement.",
+      "examples": [
+        {
+          "id": "131b80ad-1ffe-449d-a595-74c65f6605cd",
+          "name": "Creature Bond",
+          "referenceHash": "3f6b403cd9f355dd2813d58164ef3b01168ac1b92d57018bbdba4291dea6943f"
+        },
+        {
+          "id": "61fb9f2d-be6b-4073-91d8-68ca58046da9",
+          "name": "Magical Hack",
+          "referenceHash": "d47d715107b4763b62fa828c0f88354d9ee9843a1326eae06dc4ae19e69febcd"
+        },
+        {
+          "id": "e7bf32d8-dad7-4192-8cb6-ae75d8204ba3",
+          "name": "Unsummon",
+          "referenceHash": "774424e45b76acf46dbf3dae0d7f46c0955b842111e6ce0eae8bb82f8749a5d2"
+        }
+      ],
+      "status": "Post-validation corpus review; existing asset retained."
+    }
+  ]
+}

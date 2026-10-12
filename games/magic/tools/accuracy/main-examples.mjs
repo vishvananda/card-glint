@@ -43,6 +43,20 @@ const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
     '3ed',
+    'revised-mana',
+    '17',
+    'The original spiked sun replaces the modern symbol. Revised header costs have no shadow and share the validated row position and spacing. Both renderers receive the same printing text. The numeral remains thicker and its disc darker than the scan.',
+    ['mana'],
+  ],
+  [
+    '3ed',
+    'revised-mana',
+    '196',
+    'All five cost symbols use the same right anchor and wider pitch, validated after freezing the candidate. The other colored glyph assets are unchanged; tree contours still need improvement. Body wording is printing-reference data, not certified by this mana study.',
+    ['mana'],
+  ],
+  [
+    '3ed',
     'revised-large',
     '126',
     'The large centered rules policy restores all five printed lines and their endings. Its candidate was frozen before this card was opened for the current study. Original type wording and exact font strokes still need review.',
@@ -247,9 +261,24 @@ for (const set of new Set(selections.map((s) => s[0]))) {
         reviewedInputHash: input.inputHash,
       };
     }
+    if (set === '3ed' && run === 'revised-mana' && metricRegions.every((r) => r === 'mana')) {
+      const manaPlan = await readJson(path.join(fixtureRoot, '3ed/mana-plan.json'));
+      const selected = [...manaPlan.development, ...manaPlan.reserved].find(
+        (r) => r.id === card.id,
+      );
+      assert.ok(selected);
+      assert.equal(selected.referenceHash, card.images.reference.sha256);
+      assert.deepEqual(selected.face.manaSymbols, card.face.manaSymbols);
+      contentReview = {
+        file: '3ed/mana-transfer.json',
+        sha256: hash(await readFile(path.join(fixtureRoot, '3ed/mana-transfer.json'))),
+        regions: ['mana'],
+        reviewedInputHash: selected.inputHash,
+      };
+    }
     assert.ok(
       card.contentStatus === 'scan-reviewed' || contentReview,
-      'Comparison examples require printed wording',
+      'Comparison examples require scan-reviewed content for the measured regions',
     );
     assert.equal(hash(JSON.stringify(card.face)), card.inputHash);
     const reference = path.join(outputRoot, set, run, card.images.reference.file);
@@ -373,7 +402,9 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       inputHash: entry.card.inputHash,
       referenceHash: entry.card.images.reference.sha256,
       alignment: entry.alignment,
-      contentStatus: entry.contentReview ? 'scan-reviewed' : entry.card.contentStatus,
+      contentStatus: entry.contentReview?.regions.includes('body')
+        ? 'scan-reviewed'
+        : entry.card.contentStatus,
       ...(entry.contentReview
         ? { captureContentStatus: entry.card.contentStatus, contentReview: entry.contentReview }
         : {}),
