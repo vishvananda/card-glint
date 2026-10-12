@@ -77,7 +77,7 @@ export const paintRevisedMana: typeof paintMana = (c, symbol, x, y, size, images
 };
 
 export const paintFourthMana: typeof paintMana = (c, symbol, x, y, size, images) => {
-  if (symbol !== 'T') return paintEarlyMana(c, symbol, x, y, size, images);
+  if (symbol !== 'T') return paintMana(c, symbol, x, y, size, images);
   paintHistoricMana(c, symbol, x, y, size, images);
 };
 

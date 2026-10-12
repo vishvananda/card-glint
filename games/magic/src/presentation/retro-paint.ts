@@ -110,8 +110,7 @@ export function paintRetroFace(
     face.symbolStyle === 'original' ||
     (face.symbolStyle === undefined && face.wordingMode === 'original');
   const originalSun =
-    originalSymbols &&
-    ['lea', 'leb', '2ed', '3ed', '4ed'].includes(face.setCode?.toLowerCase() ?? '');
+    originalSymbols && ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
   if (revised) paintRevisedCost(c, cost, images, modernSymbols);
   else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
     paintEarlyCost(c, cost, images, modernSymbols);

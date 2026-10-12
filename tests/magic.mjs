@@ -419,6 +419,68 @@ try {
     });
     if (explicitLeft.size !== 22.5 || explicitLeft.lines.some((line) => line.x !== explicitLeft.x))
       throw Error('Historical centering overrode explicit host alignment');
+    const paladinParagraphs = [
+      { role: 'rules', runs: [{ text: '{W}{W}, {T}: Destroy target black permanent.' }] },
+      {
+        role: 'flavor',
+        runs: [{ text: '“Look to the north; there you will find aid and comfort.”', italic: true }],
+      },
+      { role: 'flavor', runs: [{ text: '—The Book of Tal' }] },
+    ];
+    const fourthPaladin = retroTextLayout(ctx, {
+      ...shortFourth,
+      rulesParagraphs: paladinParagraphs,
+    });
+    if (
+      fourthPaladin.overflow ||
+      fourthPaladin.lines.length !== 5 ||
+      fourthPaladin.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01)
+    )
+      throw Error('Fourth short rules/flavor block lost centered lines or attribution');
+    const longFourth = retroTextLayout(ctx, {
+      ...shortFourth,
+      rulesParagraphs: [
+        paladinParagraphs[0],
+        { role: 'flavor', runs: [{ text: 'A longer flavor passage. '.repeat(12), italic: true }] },
+      ],
+    });
+    if (longFourth.lines.some((line) => line.x !== longFourth.x))
+      throw Error('Fourth long flavor passage was incorrectly centered');
+    const { ordinaryTextLayout } = await import('/magic-presentation.js');
+    const wrath = {
+      name: 'Wrath of God',
+      typeLine: 'Sorcery',
+      rulesText: 'Destroy all creatures. They can’t be regenerated.',
+      colors: ['W'],
+    };
+    for (const setCode of ['8ed', '9ed', '10e', 'm10', 'm11', 'm12', 'm13', 'm14', 'm15']) {
+      const layout = ordinaryTextLayout(ctx, { ...wrath, setCode });
+      const shouldCenter = !['8ed', '9ed', 'm15'].includes(setCode);
+      if (
+        layout.lines.some((line) =>
+          shouldCenter
+            ? Math.abs(line.x + line.width / 2 - layout.x - layout.width / 2) > 0.01
+            : line.x !== layout.x,
+        )
+      )
+        throw Error(`Incorrect short-passage alignment for ${setCode}`);
+    }
+    for (const options of [
+      { rulesAlignment: { mode: 'left' } },
+      { rulesParagraphs: [{ role: 'rules', align: 'left', runs: [{ text: wrath.rulesText }] }] },
+      {
+        rulesAlignment: {
+          mode: 'auto',
+          reference: [
+            { role: 'rules', runs: [{ text: 'A lengthy original rules passage. '.repeat(12) }] },
+          ],
+        },
+      },
+    ]) {
+      const layout = ordinaryTextLayout(ctx, { ...wrath, setCode: '10e', ...options });
+      if (layout.lines.some((line) => line.x !== layout.x))
+        throw Error('Modern centering ignored explicit alignment or the chosen reference');
+    }
     const shortRevised = {
       ...shortFourth,
       setCode: '3ed',
@@ -701,51 +763,55 @@ try {
         disposed++;
       },
     });
-    const symbolFace = {
-      ...fixtures[3],
-      setCode: '3ed',
-      manaSymbols: ['W'],
-      rulesParagraphs: undefined,
-      rulesText: '{T}: Add {W}.',
-      wordingMode: 'oracle',
-      symbolStyle: 'modern',
-    };
-    const historicalFace = { ...symbolFace, symbolStyle: 'original' };
-    if (
-      JSON.stringify(retroTextLayout(ctx, symbolFace)) !==
-      JSON.stringify(retroTextLayout(ctx, historicalFace))
-    )
-      throw Error('Symbol selection changed Oracle text layout');
-    const symbolRasters = [];
-    for (const face of [symbolFace, historicalFace]) {
-      const canvas = await composeCardTexture(
-        { face, printingId: null, printedImage: null },
-        'inspect',
-        controller.signal,
-        { loadImages },
-      );
-      symbolRasters.push(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height));
-      canvas.width = canvas.height = 0;
+    for (const setCode of ['3ed', '4ed']) {
+      const symbolFace = {
+        ...fixtures[3],
+        setCode,
+        manaSymbols: ['W'],
+        rulesParagraphs: undefined,
+        rulesText: '{T}: Add {W}.',
+        wordingMode: 'oracle',
+        symbolStyle: 'modern',
+      };
+      const historicalFace = { ...symbolFace, symbolStyle: 'original' };
+      if (
+        JSON.stringify(retroTextLayout(ctx, symbolFace)) !==
+        JSON.stringify(retroTextLayout(ctx, historicalFace))
+      )
+        throw Error('Symbol selection changed Oracle text layout');
+      const symbolRasters = [];
+      for (const face of [symbolFace, historicalFace]) {
+        const canvas = await composeCardTexture(
+          { face, printingId: null, printedImage: null },
+          'inspect',
+          controller.signal,
+          { loadImages },
+        );
+        symbolRasters.push(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height));
+        canvas.width = canvas.height = 0;
+      }
+      const changedIn = ([x, y, w, h]) => {
+        for (let yy = Math.floor(y * 1.5); yy < Math.ceil((y + h) * 1.5); yy++)
+          for (let xx = Math.floor(x * 1.5); xx < Math.ceil((x + w) * 1.5); xx++) {
+            const n = (yy * symbolRasters[0].width + xx) * 4;
+            if (
+              [0, 1, 2, 3].some(
+                (k) => symbolRasters[0].data[n + k] !== symbolRasters[1].data[n + k],
+              )
+            )
+              return true;
+          }
+        return false;
+      };
+      if (
+        changedIn([415, 26, 38, 40]) !== (setCode === '3ed') ||
+        !changedIn([65, 410, 355, 190]) ||
+        changedIn([35, 85, 380, 310])
+      )
+        throw Error(
+          'Historic symbols must retain frame/art and the Fourth sun, while changing tap and the Revised sun',
+        );
     }
-    const changedIn = ([x, y, w, h]) => {
-      for (let yy = Math.floor(y * 1.5); yy < Math.ceil((y + h) * 1.5); yy++)
-        for (let xx = Math.floor(x * 1.5); xx < Math.ceil((x + w) * 1.5); xx++) {
-          const n = (yy * symbolRasters[0].width + xx) * 4;
-          if (
-            [0, 1, 2, 3].some((k) => symbolRasters[0].data[n + k] !== symbolRasters[1].data[n + k])
-          )
-            return true;
-        }
-      return false;
-    };
-    if (
-      !changedIn([415, 26, 38, 40]) ||
-      !changedIn([65, 410, 355, 190]) ||
-      changedIn([35, 85, 380, 310])
-    )
-      throw Error(
-        'Historic symbol choice must change header and inline glyphs, retaining the frame and art',
-      );
     const beforeFailure = disposed;
     let rejectedOverflow = false;
     try {

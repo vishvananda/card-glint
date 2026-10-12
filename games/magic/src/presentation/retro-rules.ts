@@ -5,6 +5,7 @@ import { retroBasicSymbol, retroFamily, retroPx, retroRects } from './retro-fram
 import { resolveFrameColors } from './profile.js';
 import { revisedLargeRules } from './revised-large-rules.js';
 import { wordingParagraphs } from './wording.js';
+import { shortCenteredRules } from './short-centered-rules.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -38,9 +39,10 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   // complete text; retain the historical minimum for original comparisons.
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   const set = face.setCode?.toLowerCase();
-  // Alpha's printed ink stays inside the panel even when Oracle adds reminders.
-  // Keep the established optical center; shrink only blocks crossing this inset.
-  const verticalLimits = set === 'lea' ? ([428, 590] as const) : undefined;
+  // Oracle reminders need a safe panel inset. Dense original Alpha printings
+  // have tighter margins; the original-comparison path retains their placement.
+  const verticalLimits =
+    set === 'lea' && face.wordingMode === 'oracle' ? ([428, 590] as const) : undefined;
   const early = ['lea', 'leb', '2ed'].includes(set ?? '');
   const revisedStyle = early || (set === '3ed' && retroFamily(face) === 'fourth');
   if (revisedStyle && !forcedLeft) {
@@ -58,6 +60,32 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   }
   const paragraph = reference.length === 1 ? reference[0] : undefined;
   const plain = paragraph?.runs.length === 1 ? paragraph.runs[0] : undefined;
+  // Fourth's short rules/flavor blocks are centered too. Measure the entire
+  // passage, including attribution lines; longer passages retain their inset.
+  if (
+    !forcedLeft &&
+    set === '4ed' &&
+    retroFamily(face) === 'fourth' &&
+    reference.some((p) => p.role === 'flavor')
+  ) {
+    const short = shortCenteredRules(
+      context,
+      paragraphs,
+      reference,
+      { x: 72, y: y + 2, width: 344, height: height - 8 },
+      25,
+      minimum,
+      5,
+      {
+        ...RETRO_TYPOGRAPHY,
+        leading: 1.1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        balanceLines: true,
+      },
+    );
+    if (short) return short;
+  }
   // Short Revised/Fourth passages use larger, centered and balanced lines.
   // Explicit host alignment, hard breaks and styled passages retain their policy.
   const centered =

@@ -2,7 +2,8 @@ import type { CanvasImages } from './canvas-assets.js';
 import { paintMana } from './canvas-text.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { faceRects } from './special-frames.js';
-import { layoutRules, rulesFont, type RulesLayout } from './rules-layout.js';
+import { layoutRules, rulesFont, RULES_TYPOGRAPHY, type RulesLayout } from './rules-layout.js';
+import { shortCenteredRules } from './short-centered-rules.js';
 
 export function ordinaryTextLayout(
   context: CanvasRenderingContext2D,
@@ -18,30 +19,54 @@ export function ordinaryTextLayout(
       .split('\n')
       .filter(Boolean)
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
+  const bounds: Parameters<typeof layoutRules>[2] = {
+    x: x * FACE_WIDTH + 3.5,
+    y: y * height + 7,
+    width: width * FACE_WIDTH - 9.5,
+    height: h * height - 8,
+    // Fit actual line ink around the existing power/toughness plate. Short
+    // final lines can use the lower left area without being painted over.
+    exclusions:
+      face.power != null && face.toughness != null
+        ? [
+            [
+              rects.stats[0] * FACE_WIDTH - 2,
+              rects.stats[1] * height - 2,
+              rects.stats[2] * FACE_WIDTH + 4,
+              rects.stats[3] * height + 4,
+            ],
+          ]
+        : [],
+  };
+  const reference =
+    face.rulesAlignment?.mode === 'auto'
+      ? (face.rulesAlignment.reference ?? paragraphs)
+      : paragraphs;
+  // These core sets retain centered short rules-only passages. Eighth/Ninth
+  // scans are left aligned; do not infer this policy from the 2003 frame alone.
+  if (
+    face.rulesAlignment?.mode !== 'left' &&
+    ['10e', 'm10', 'm11', 'm12', 'm13', 'm14'].includes(face.setCode?.toLowerCase() ?? '') &&
+    reference.every((p) => p.role === 'rules')
+  ) {
+    const centered = shortCenteredRules(
+      context,
+      paragraphs,
+      reference,
+      bounds,
+      24.5 * scale,
+      15 * scale,
+      3,
+      { ...RULES_TYPOGRAPHY, balanceLines: true },
+    );
+    if (centered) return centered;
+  }
   return layoutRules(
     context,
     face.rulesAlignment?.mode === 'left'
       ? paragraphs.map((p) => ({ ...p, align: 'left' as const }))
       : paragraphs,
-    {
-      x: x * FACE_WIDTH + 3.5,
-      y: y * height + 7,
-      width: width * FACE_WIDTH - 9.5,
-      height: h * height - 8,
-      // Fit actual line ink around the existing power/toughness plate. Short
-      // final lines can use the lower left area without being painted over.
-      exclusions:
-        face.power != null && face.toughness != null
-          ? [
-              [
-                rects.stats[0] * FACE_WIDTH - 2,
-                rects.stats[1] * height - 2,
-                rects.stats[2] * FACE_WIDTH + 4,
-                rects.stats[3] * height + 4,
-              ],
-            ]
-          : [],
-    },
+    bounds,
     24.5 * scale,
     15 * scale,
   );
