@@ -20,7 +20,9 @@ export function ordinaryTextLayout(
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
   return layoutRules(
     context,
-    paragraphs,
+    face.rulesAlignment?.mode === 'left'
+      ? paragraphs.map((p) => ({ ...p, align: 'left' as const }))
+      : paragraphs,
     {
       x: x * FACE_WIDTH + 3.5,
       y: y * height + 7,

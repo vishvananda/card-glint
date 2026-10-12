@@ -235,9 +235,29 @@ const visible = withCardWording(
     original: { typeLine: 'Summon Force', rulesText: printedRules },
   },
   'original',
+  { rulesAlignment: 'original' },
 );
 const recipe = magic.describe(visible, 'inspect');
 ```
+
+The optional fourth argument chooses `rulesAlignment: 'left' | 'original' | 'oracle'`.
+`left` forces left alignment. The other choices determine automatic centering
+from that wording, independently of which wording is displayed. The default is
+the displayed mode; requesting a missing alignment source throws. Explicit
+paragraph alignment takes precedence over automatic centering.
+
+The early-set rule is empirical: in Alpha, Beta, Unlimited and Revised, a
+rules-only passage that fits in five lines at the set's large size is centered.
+A short keyword heading can precede it; flavor blocks and longer passages use
+the smaller left-aligned layout. Aura eligibility (`Enchant …`) remains with
+the centered body. Styling such as italic reminder text does not change the
+panel inset. This is a shared set policy, not a claim to reproduce every
+historical typesetting decision. Oracle mode may shrink below the original
+printing's minimum size to fit full modern reminders without deleting text.
+
+Flat inputs can force `rulesAlignment: { mode: 'left' }` or supply
+`{ mode: 'auto', reference: paragraphs }` for the same classification behavior.
+The reference affects layout only; its words are never painted.
 
 The helper selects one face; apply it to each supplied child of a split card.
 Flat presentation inputs still work. Their optional `wordingMode` controls

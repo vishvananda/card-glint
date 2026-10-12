@@ -168,12 +168,12 @@ if (phase !== 'report') {
     beforeRendererHash: before.rendererHash,
     afterRendererHash: after.rendererHash,
     rows,
-    note: 'Fixed identity alignment. Selected development and frozen Beta printing transfer, not whole-set accuracy. Paired-edge F1 does not certify interior fill; signed contrast is also texture-sensitive. Node-only measurement after Chromium raster capture.',
+    note: 'Fixed identity alignment. Reserved diagnostic sample, not whole-set accuracy or a fresh holdout after visual review. Edge F1 includes frame texture and does not certify interior fill; signed contrast is also texture-sensitive. Node-only measurement after Chromium raster capture.',
   };
   await writeJson(path.join(fixtureRoot, study + '-measurement.json'), report);
   await atomicWrite(
     path.join(out, 'index.html'),
-    `<!doctype html><meta charset="utf-8"><title>Printing corrections</title><style>body{font:16px system-ui;background:#182128;color:#eee;margin:30px}img{width:min(100%,1500px);image-rendering:auto}article{margin:30px 0}p{max-width:1000px}a{color:#aaf}</style><h1>Printing corrections</h1><p>Each strip: scan · previous branch · corrected branch. Shared geometry; no scan-specific fitting. <a href="../main-review/">Full cards against main</a></p>${rows.map((r) => `<article><h2>${r.name} (${r.set.toUpperCase()}) — ${r.region.id}</h2><p>${r.cohort}; inspect edge F1 ${r.scores.inspect.before.edgeF1.toFixed(3)} → ${r.scores.inspect.after.edgeF1.toFixed(3)}, signed contrast ${r.scores.inspect.before.contrast?.toFixed(3)} → ${r.scores.inspect.after.contrast?.toFixed(3)}</p><img src="${r.crop.file}"></article>`).join('')}`,
+    `<!doctype html><meta charset="utf-8"><title>${study} comparison</title><style>body{font:16px system-ui;background:#182128;color:#eee;margin:30px}img{width:min(100%,1500px);image-rendering:auto}article{margin:30px 0}p{max-width:1000px}a{color:#aaf}</style><h1>${study} comparison</h1><p>Each strip: scan · previous branch · corrected branch. Shared geometry; no scan-specific fitting. <a href="../main-review/">Full cards against main</a></p>${rows.map((r) => `<article><h2>${r.name} (${r.set.toUpperCase()}) — ${r.region.id}</h2><p>${r.cohort}; inspect edge F1 ${r.scores.inspect.before.edgeF1.toFixed(3)} → ${r.scores.inspect.after.edgeF1.toFixed(3)}, signed contrast ${r.scores.inspect.before.contrast?.toFixed(3)} → ${r.scores.inspect.after.contrast?.toFixed(3)}</p><img src="${r.crop.file}"></article>`).join('')}`,
   );
   console.log(
     JSON.stringify(

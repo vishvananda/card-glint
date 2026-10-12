@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "source": "Direct inspection of all 27 body comparison crops, grouped in nine contact sheets.",
+  "scope": "Three sets, nine shared card names each; diagnostic sample, not whole-set accuracy or an independent holdout.",
+  "retained": {
+    "earlyLargeSize": "32.5 reference pixels in LEA/LEB/2ED; Revised retains 27.5.",
+    "classification": "Measured five-line fit for rules-only passages and optional keyword heading; longer or flavor blocks remain left aligned.",
+    "margins": "Shared early/Revised panel inset, independent of styled run count.",
+    "centeringSource": "Host may force left alignment or classify from original or Oracle wording."
+  },
+  "summary": {
+    "inspect": {
+      "before": 0.42537345395312937,
+      "after": 0.46650470017571727
+    },
+    "table": {
+      "before": 0.3992230066641081,
+      "after": 0.4479355767016577
+    }
+  },
+  "improvedCards": 21,
+  "flagged": [
+    "Disenchant and Healing Salve in all three sets lose regional edge F1 despite corrected centered line endings. The existing white texture contributes many unrelated edges; these are retained failures, not dismissed as successful scores.",
+    "Early Howling Mine, Disenchant and Healing Salve are several reference pixels low; black Terror differs in the opposite direction. Measure common frame/color geometry before another offset change; no per-scan fitting.",
+    "White Knight and Force of Nature still differ in small-text wrapping and font weight.",
+    "Alpha Force of Nature prints literal GGGG; the MTGJSON-derived input contains mana tokens. Exclude it from claims of exact original-text agreement until the source correction is reviewed.",
+    "Existing artifact mosaic and white/green/red/black panel textures differ from scans. Retain assets and track them for later replacement."
+  ],
+  "rejectedCandidate": "Revised 27.5px size transferred directly to early sets keeps Howling Mine at three lines and Disenchant at two; scans have four and three respectively.",
+  "measurement": "early-centered-measurement.json"
+}

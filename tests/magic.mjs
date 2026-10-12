@@ -64,6 +64,33 @@ assert.throws(
   () => withCardWording(originalFace, { oracle: wordings.oracle }, 'original'),
   /Missing original/,
 );
+assert.equal(
+  withCardWording(originalFace, wordings, 'oracle', { rulesAlignment: 'left' }).rulesAlignment.mode,
+  'left',
+);
+assert.throws(
+  () =>
+    withCardWording(originalFace, { oracle: wordings.oracle }, 'oracle', {
+      rulesAlignment: 'original',
+    }),
+  /Missing original alignment/,
+);
+assert.notEqual(
+  magic.describe(
+    withCardWording(originalFace, wordings, 'oracle', { rulesAlignment: 'left' }),
+    'inspect',
+  ).color.key,
+  magic.describe(oracleWording, 'inspect').color.key,
+  'Alignment choice must invalidate the raster cache',
+);
+assert.notEqual(
+  magic.describe(
+    withCardWording(originalFace, wordings, 'oracle', { rulesAlignment: 'original' }),
+    'inspect',
+  ).color.key,
+  magic.describe(oracleWording, 'inspect').color.key,
+  'Alignment reference must invalidate the raster cache',
+);
 assert.equal(faceFrame(walker), 'planeswalker');
 assert.equal(
   faceFrame({ ...walker, rulesText: walker.rulesText + '\n0: Scry 1.' }),
@@ -211,7 +238,7 @@ try {
   await page.route('https://**/*', (route) => route.fulfill({ status: 404, body: '' }));
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const result = await page.evaluate(async (fixtures) => {
-    const { magic, opticalDocument } = await import('/magic.js');
+    const { magic, opticalDocument, withCardWording } = await import('/magic.js');
     const { loadCanvasFonts, layoutRules, retroTextLayout } = await import(
       '/magic-presentation.js'
     );
@@ -407,6 +434,92 @@ try {
       if (retroTextLayout(ctx, { ...shortRevised, rulesParagraphs: paragraphs }).size !== 22.5)
         throw Error('Revised automatic centering overrode a different paragraph policy');
     }
+    const laceRules = [
+      {
+        role: 'rules',
+        runs: [
+          { text: 'Target spell or permanent becomes white. ' },
+          { text: '(Mana symbols on that permanent remain unchanged.)', italic: true },
+        ],
+      },
+    ];
+    const lace = retroTextLayout(ctx, { ...shortRevised, rulesParagraphs: laceRules });
+    if (
+      lace.x !== 70 ||
+      lace.width > 348 ||
+      lace.overflow ||
+      !lace.lines.flatMap((l) => l.runs).some((r) => r.italic) ||
+      lace.lines.some((l) => Math.abs(l.x + l.width / 2 - 244) > 0.01)
+    )
+      throw Error('Short italic reminder escaped the shared inset or centered policy');
+    const laceLeft = retroTextLayout(ctx, {
+      ...shortRevised,
+      rulesParagraphs: laceRules,
+      rulesAlignment: { mode: 'left' },
+    });
+    if (laceLeft.x !== 70 || laceLeft.lines.some((l) => l.x !== 70))
+      throw Error('Left-aligned styled text escaped the safe panel inset');
+    const alignmentWords = {
+      original: {
+        typeLine: 'Instant',
+        rulesText: 'A sufficiently long original passage. '.repeat(12),
+      },
+      oracle: { typeLine: 'Instant', rulesText: shortRevised.rulesText },
+    };
+    const fromOriginal = retroTextLayout(
+      ctx,
+      withCardWording(shortRevised, alignmentWords, 'oracle', { rulesAlignment: 'original' }),
+    );
+    const fromOracle = retroTextLayout(
+      ctx,
+      withCardWording(shortRevised, alignmentWords, 'oracle', { rulesAlignment: 'oracle' }),
+    );
+    if (
+      fromOriginal.lines.some((l) => l.x !== 70) ||
+      fromOracle.lines.some((l) => Math.abs(l.x + l.width / 2 - 244) > 0.01)
+    )
+      throw Error('Alignment was not classified from the chosen wording source');
+    const aura = retroTextLayout(ctx, {
+      ...shortRevised,
+      rulesText: "Enchant Wall\nEnchanted Wall can attack as though it didn't have defender.",
+    });
+    if (aura.lines.some((l) => Math.abs(l.x + l.width / 2 - 244) > 0.01))
+      throw Error('Aura heading was separated from its centered passage');
+    const pegasus = {
+      ...shortRevised,
+      wordingMode: 'oracle',
+      rulesParagraphs: [
+        {
+          role: 'rules',
+          runs: [
+            { text: 'Flying; banding ' },
+            {
+              text: "(Any creatures with banding, and up to one without, can attack in a band. Bands are blocked as a group. If any creatures with banding you control are blocking or being blocked by a creature, you divide that creature's combat damage, not its controller, among any of the creatures it's being blocked by or is blocking.)",
+              italic: true,
+            },
+          ],
+        },
+        {
+          role: 'flavor',
+          runs: [
+            {
+              text: 'Before a woman marries in the village of Sursi, she must visit the land of the Mesa Pegasus. Legend has it that if the woman is pure of heart and her love is true, a Mesa Pegasus will appear, blessing her family with long life and good fortune.',
+              italic: true,
+            },
+          ],
+        },
+      ],
+    };
+    const pegasusLayout = retroTextLayout(ctx, pegasus);
+    const normalizeWords = (t) => t.replace(/\s+/g, ' ').trim();
+    if (
+      pegasusLayout.overflow ||
+      normalizeWords(
+        pegasusLayout.lines.map((l) => l.runs.map((r) => r.text).join('')).join(' '),
+      ) !==
+        normalizeWords(pegasus.rulesParagraphs.flatMap((p) => p.runs.map((r) => r.text)).join(' '))
+    )
+      throw Error('Long Oracle reminder failed to fit or lost text');
     const flyingPassage = [
       { role: 'rules', runs: [{ text: 'Flying' }] },
       {

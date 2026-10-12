@@ -28,6 +28,9 @@ export interface RenderedCardInput extends CardProfileInput {
   rulesText?: string;
   /** Ordinary-face printing. When present this replaces rulesText for layout and painting. */
   rulesParagraphs?: readonly RulesParagraph[];
+  /** Automatic historical centering uses the displayed paragraphs unless a
+   * reference is supplied. Explicit paragraph alignment still wins. */
+  rulesAlignment?: { mode: 'left' } | { mode: 'auto'; reference?: readonly RulesParagraph[] };
   /** Wording is supplied by the host. This selects historical vs modern symbols
    * and disables automatic historical vocabulary in Oracle mode. Omitted keeps
    * the legacy set-based symbol policy. */

@@ -4,6 +4,7 @@ import { layoutRules, type RulesTypography } from './rules-layout.js';
 import { retroBasicSymbol, retroFamily, retroPx, retroRects } from './retro-frame.js';
 import { resolveFrameColors } from './profile.js';
 import { revisedLargeRules } from './revised-large-rules.js';
+import { wordingParagraphs } from './wording.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -19,25 +20,47 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   if (retroBasicSymbol(face)) return null;
   const [x, y, width, height] = retroPx(retroRects(face).rules);
   const basic = retroBasicPrinting(face);
-  const paragraphs: readonly RulesParagraph[] =
+  const visible =
     basic?.paragraphs ??
-    face.rulesParagraphs ??
-    (face.rulesText ?? '')
-      .split('\n')
-      .filter(Boolean)
-      .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
+    wordingParagraphs({
+      rulesText: face.rulesText ?? '',
+      rulesParagraphs: face.rulesParagraphs,
+    });
+  const forcedLeft = face.rulesAlignment?.mode === 'left';
+  const paragraphs: readonly RulesParagraph[] = forcedLeft
+    ? visible.map((p) => ({ ...p, align: 'left' }))
+    : visible;
+  const reference =
+    face.rulesAlignment?.mode === 'auto'
+      ? (face.rulesAlignment.reference ?? paragraphs)
+      : paragraphs;
+  // Oracle reminders can be much longer than the original printing. Fit the
+  // complete text; retain the historical minimum for original comparisons.
+  const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   const set = face.setCode?.toLowerCase();
-  if (set === '3ed' && retroFamily(face) === 'fourth') {
-    const large = revisedLargeRules(context, paragraphs, y, height);
+  const early = ['lea', 'leb', '2ed'].includes(set ?? '');
+  const revisedStyle = early || (set === '3ed' && retroFamily(face) === 'fourth');
+  if (revisedStyle && !forcedLeft) {
+    const large = revisedLargeRules(
+      context,
+      paragraphs,
+      reference,
+      y,
+      height,
+      early ? 32.5 : 27.5,
+      minimum,
+    );
     if (large) return large;
   }
-  const paragraph = paragraphs.length === 1 ? paragraphs[0] : undefined;
+  const paragraph = reference.length === 1 ? reference[0] : undefined;
   const plain = paragraph?.runs.length === 1 ? paragraph.runs[0] : undefined;
   // Short Revised/Fourth passages use larger, centered and balanced lines.
   // Explicit host alignment, hard breaks and styled passages retain their policy.
   const centered =
-    (set === '4ed' || set === '3ed') &&
+    !forcedLeft &&
+    set === '4ed' &&
     retroFamily(face) === 'fourth' &&
+    paragraphs.every((p) => p.align === undefined || p.align === 'center') &&
     paragraph?.role === 'rules' &&
     (paragraph.align === undefined || paragraph.align === 'center') &&
     plain &&
@@ -47,15 +70,14 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     plain.text.length <= 100;
   // Revised has larger printing and about 30px between baselines. Its frame
   // registration, leading and width were checked on separate reserved examples.
-  const revisedCentered = centered && set === '3ed';
+
   // Long Revised/Fourth blocks sit inside the textured panel. Revised's
   // optical center is higher, but dense text must stay below the panel's top.
   const longBlock =
-    (set === '4ed' || set === '3ed') &&
-    retroFamily(face) === 'fourth' &&
+    (revisedStyle || (set === '4ed' && retroFamily(face) === 'fourth')) &&
     (paragraphs.length > 1 ||
       paragraphs.reduce((n, p) => n + p.runs.reduce((n, r) => n + r.text.length, 0), 0) > 100);
-  const revisedBlock = longBlock && set === '3ed';
+  const revisedBlock = longBlock && revisedStyle;
   const fourthBlock = longBlock && set === '4ed';
   // Reviewed white plates allow another word near the right edge. Extending
   // every color regresses multicolor examples, so do not generalize this inset.
@@ -66,23 +88,18 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     resolveFrameColors(face).join('') === 'W';
   const regular = layoutRules(
     context,
-    centered ? [{ ...paragraph, align: 'center' }] : paragraphs,
+    centered ? paragraphs.map((p) => ({ ...p, align: 'center' })) : paragraphs,
     {
-      x: revisedCentered || revisedBlock ? 70 : fourthBlock || centered ? 72 : x,
+      x: revisedStyle ? 70 : fourthBlock || centered ? 72 : x,
       y: y + (basic ? 1.5 : centered ? -6 : fourthBlock ? 0 : 4),
-      width: revisedCentered
-        ? 348
-        : revisedBlock
-          ? 346
-          : fourthBlock || centered
-            ? 344
-            : width + (whiteExpansion ? 10 : 0),
+      // Insets belong to the frame, not paragraph count or italic styling.
+      width: revisedStyle ? 346 : fourthBlock || centered ? 344 : width + (whiteExpansion ? 10 : 0),
       height: height - 8,
     },
-    basic ? 24 : revisedCentered ? 27.5 : centered ? 25 : 22.5,
-    15,
+    basic ? 24 : centered ? 25 : 22.5,
+    minimum,
     centered
-      ? { ...RETRO_TYPOGRAPHY, leading: revisedCentered ? 1.1 : 1, balanceLines: true }
+      ? { ...RETRO_TYPOGRAPHY, leading: 1, balanceLines: true }
       : longBlock
         ? {
             ...RETRO_TYPOGRAPHY,
@@ -105,7 +122,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     paragraphs,
     { x: 70, y: y + 4, width: 346, height: height + 8 },
     15.5,
-    15,
+    minimum,
     {
       ...RETRO_TYPOGRAPHY,
       leading: 1.25,

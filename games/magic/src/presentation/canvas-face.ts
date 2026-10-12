@@ -90,7 +90,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v28',
+    'canvas-face-v30',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -139,6 +139,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.rulesText ?? '',
         face.rulesParagraphs ?? null,
         face.wordingMode ?? null,
+        face.rulesAlignment ?? null,
         face.illustration ?? null,
         face.illustrationCrop ?? null,
         extraRuleKey(face),
