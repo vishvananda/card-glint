@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "baselineRendererHash": "2c5ae597b3b944641588298aec0c9aaf62c7c86a06834178ff40b8a80d659d4f",
+  "development": {
+    "mirage": 24,
+    "tempest": 8,
+    "fourth": 8,
+    "allPreviouslyViewed": true
+  },
+  "width": {
+    "candidatePixels": [0, 10, 12],
+    "selected": 10,
+    "mirageSummary": [
+      {
+        "extra": 0,
+        "exact": 9,
+        "meanWrap": 0.6751322751322751,
+        "medianF1": [0.4328219012025045, 0.4646067767619946],
+        "gains": [],
+        "regressions": []
+      },
+      {
+        "extra": 10,
+        "exact": 10,
+        "meanWrap": 0.66140873015873,
+        "medianF1": [0.4628549488266178, 0.47344304577348284],
+        "gains": ["Mtenda Herder", "Zombie Mob", "Wellspring"],
+        "regressions": ["Energy Bolt"]
+      },
+      {
+        "extra": 12,
+        "exact": 10,
+        "meanWrap": 0.6780753968253967,
+        "medianF1": [0.46052980511618063, 0.47292004529927856],
+        "gains": ["Mtenda Herder", "Zombie Mob", "Wellspring"],
+        "regressions": ["Mangara's Blessing", "Energy Bolt"]
+      }
+    ],
+    "tempestSummary": [
+      {
+        "extra": 0,
+        "exact": 4,
+        "meanWrap": 0.7291666666666666,
+        "medianF1": [0.5004142838537591, 0.4796315516275397],
+        "gains": [],
+        "regressions": []
+      },
+      {
+        "extra": 10,
+        "exact": 4,
+        "meanWrap": 0.7708333333333333,
+        "medianF1": [0.5103200618092876, 0.5001305710389818],
+        "gains": ["Skyshroud Vampire", "Mogg Conscripts"],
+        "regressions": []
+      }
+    ],
+    "decision": "Apply only to white nonland/nonartifact plates in Mirage/Tempest. Broad all-color widening is rejected due to Energy Bolt; +12 also regresses Mangara’s Blessing. The reviewed white examples are Afterlife, Mangara’s Blessing, Mtenda Herder and Armor Sliver. This narrower scope is selected after viewing results and is not fresh transfer evidence."
+  },
+  "fourth": {
+    "candidates": [
+      {
+        "extra": 0,
+        "exact": 0,
+        "meanWrap": null,
+        "medianF1": [0.41643500316510473, 0.4309877133059212],
+        "gains": [],
+        "regressions": []
+      },
+      {
+        "extra": 1,
+        "exact": 0,
+        "meanWrap": null,
+        "medianF1": [0.41165972260827266, 0.4417984284688047],
+        "gains": ["Angry Mob", "Uncle Istvan", "Battering Ram"],
+        "regressions": ["Fellwar Stone"]
+      },
+      {
+        "extra": 2,
+        "exact": 0,
+        "meanWrap": null,
+        "medianF1": [0.5361307059965011, 0.5437648274291261],
+        "gains": [
+          "Angry Mob",
+          "Lifetap",
+          "Uncle Istvan",
+          "Immolation",
+          "Giant Growth",
+          "Battering Ram",
+          "Fellwar Stone"
+        ],
+        "regressions": ["Swords to Plowshares"]
+      }
+    ],
+    "selected": {
+      "x": 72,
+      "width": 344,
+      "yOffset": 0,
+      "paragraphGap": 0,
+      "flavorGap": 0
+    },
+    "scope": "Fourth Edition fourth-family blocks with multiple paragraphs or over 100 characters; keep short single-paragraph treatment unchanged. This threshold is a development heuristic separating the four long examples from the four short/centered examples, not a universal historical layout rule.",
+    "longExamples": ["Angry Mob", "Uncle Istvan", "Battering Ram", "Fellwar Stone"],
+    "remaining": "Short centered Fourth Edition passages and color-specific insets still need measured policies. Do not transfer the new block policy to Revised/Fifth without evidence."
+  },
+  "assetReview": {
+    "asset": "seventh/regular/w.png",
+    "sourceHash": "2fc988fc7aeb82d6183200dbfdb9e0de5196197ada5d8e4eac7afff24cec2091",
+    "issue": "Gray bevel on left and bottom of text box is embedded in frame asset; absent from Mtenda Herder scan. Existing frame asset retained."
+  }
+}

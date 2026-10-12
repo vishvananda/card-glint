@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
   "mainCommit": "0b0d408d9dcbba6e3188d5d9f309dd1340347526",
-  "branchCommit": "fd12355d1606914833acb9e3431e35e5c4f284d7",
+  "branchCommit": "2b738efb5ba7cf5b9651d635b04df9d9dbb55f4e",
   "rendererHashes": [
     "48093a204cb7594234715c4bcb3719054861aa05bf32f6a036e93ced5cac3530",
-    "2c5ae597b3b944641588298aec0c9aaf62c7c86a06834178ff40b8a80d659d4f"
+    "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376"
   ],
   "fontHashes": [
     "3493fd86c163fea26861cca7a28ac397aa8fbee4e7fa1599f556987ff9178ce2",
     "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12"
   ],
-  "note": "Five selected improvement examples and one flagged typography review, not an exhaustive main-branch ranking. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
+  "metricSource": "80e982bddec584b0292c49c49635008728000cf86b2c3b9f1204cbb24bca3754",
+  "note": "Six selected main comparison examples, with gray text-box bevel and set-symbol shape flagged for review. Identical scan-reviewed face inputs and cached artwork on both sides. Each revision retains its own unmodified font stylesheet. Fixed shared alignment; inspection tier only.",
   "examples": [
     {
       "set": "4ed",
@@ -20,8 +21,18 @@
       "source": "https://scryfall.com/card/4ed/165/uncle-istvan?utm_source=api",
       "inputHash": "fa7a162146376ae171f50dcb95fe674a204b00a76ab39cdb44a61c0f4e54bc33",
       "referenceHash": "3cfb4a42a2586f6003395299b8b65e054bf66a2e26e961111eedb884e3b62f23",
+      "alignment": {
+        "profileHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        }
+      },
       "contentStatus": "scan-reviewed",
-      "note": "Title, mana placement, credits and stats.",
+      "reviewCase": false,
+      "note": "Title, mana, credits and stats; the text now sits inside the black panel and uses the printed line breaks.",
       "captures": {
         "main": {
           "sha256": "0551f13edb7b09f6701cdf030f0843ba89dd40fe04e05b0196e04e946343851c",
@@ -60,7 +71,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "0933e1c247ba01593e8dfcfd81c6c70735a346b312c2693ebd4c79935b8d0708",
+          "sha256": "32362d9da30f236d5d61ac733d83ed93d6577252a0a0b07dabccf27441863585",
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -108,6 +119,11 @@
           "values": [0.44151488227454466, 0.8003933990814308]
         },
         {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.4252711676291708, 0.7586877126250967]
+        },
+        {
           "region": "footer",
           "rect": [36, 608, 354, 38],
           "values": [0.3170582946397051, 0.6017320619000014]
@@ -122,8 +138,16 @@
           "rect": [393, 607, 67, 33],
           "values": [0.33558278896507043, 0.7976310334616523]
         }
-      ],
-      "reviewCase": false,
+      ]
+    },
+    {
+      "set": "4ed",
+      "id": "a26d1c4d-af95-4b40-83a5-b51f8b2506db",
+      "name": "Angry Mob",
+      "number": "3",
+      "source": "https://scryfall.com/card/4ed/3/angry-mob?utm_source=api",
+      "inputHash": "bead8b4768b7d6b36e145a0e82be4e0a2515eece542ad4fc03986e89dd7cbbe9",
+      "referenceHash": "12e297a10640fbef837468de1e8e7dd82a8516f6f58430c472976814d9adad41",
       "alignment": {
         "profileHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
         "transform": {
@@ -132,21 +156,13 @@
           "scale": 0.9968361345476828,
           "rotation": 0.0005797161120773774
         }
-      }
-    },
-    {
-      "set": "4ed",
-      "id": "a26d1c4d-af95-4b40-83a5-b51f8b2506db",
-      "name": "Angry Mob",
-      "number": "3",
-      "source": "https://scryfall.com/card/4ed/3/angry-mob?utm_source=api",
-      "inputHash": "17719dafc088155b89ffd98a2a587b859269816a3efbf6988362062bb8421c09",
-      "referenceHash": "12e297a10640fbef837468de1e8e7dd82a8516f6f58430c472976814d9adad41",
-      "contentStatus": "oracle-unverified",
-      "note": "Natural-width stats, mana placement and credits. Body wording is still Oracle, so judge the marked regions.",
+      },
+      "contentStatus": "scan-reviewed",
+      "reviewCase": false,
+      "note": "Original printed wording and Summon Mob type on both sides. Corrected body inset and paragraph spacing, plus mana, credits and wide stats.",
       "captures": {
         "main": {
-          "sha256": "71eda6523de8db05945e7aa9aa0f4820da4aec317c0c7748ef06ca1344e40175",
+          "sha256": "baebf5f3fc5331696124402a5487a2469c5c5646b68ee9a5666048409c1dc15c",
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -182,7 +198,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "71da30f601f76bf98c988e6827115dd355cc2e0e73762ab73c590fd937144e88",
+          "sha256": "6088f52e473ac778aa3dc6a8310a2ce4ca310b28480f04b3943ab730e800febc",
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -225,6 +241,11 @@
       },
       "scores": [
         {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.4419274244612256, 0.662521618219109]
+        },
+        {
           "region": "footer",
           "rect": [36, 608, 354, 38],
           "values": [0.3587570412916848, 0.5913657344556068]
@@ -239,17 +260,7 @@
           "rect": [326, 607, 134, 33],
           "values": [0.5175546876580933, 0.6399098033580564]
         }
-      ],
-      "reviewCase": false,
-      "alignment": {
-        "profileHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
-        "transform": {
-          "tx": 0.14486881533656817,
-          "ty": 0.424818421327747,
-          "scale": 0.9968361345476828,
-          "rotation": 0.0005797161120773774
-        }
-      }
+      ]
     },
     {
       "set": "mir",
@@ -259,7 +270,17 @@
       "source": "https://scryfall.com/card/mir/91/shaper-guildmage?utm_source=api",
       "inputHash": "e9d90e555c0980eb6ae6570efec3ebf05280bcc54457c181c95851c09f322c6e",
       "referenceHash": "6215ddbc557dc456371bd69b6418b39700e1648d1337183f9e5d9d64df7ccb0b",
+      "alignment": {
+        "profileHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
+        "transform": {
+          "tx": 0.3548701644407304,
+          "ty": -0.9837370008095008,
+          "scale": 0.993876536931566,
+          "rotation": -0.00017253619106171497
+        }
+      },
       "contentStatus": "scan-reviewed",
+      "reviewCase": false,
       "note": "Text layout, mana row, historic tap and outlined set symbol.",
       "captures": {
         "main": {
@@ -361,17 +382,7 @@
           "rect": [418, 31, 29, 35],
           "values": [0.37331215250198574, 0.6331658291457287]
         }
-      ],
-      "reviewCase": false,
-      "alignment": {
-        "profileHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
-        "transform": {
-          "tx": 0.3548701644407304,
-          "ty": -0.9837370008095008,
-          "scale": 0.993876536931566,
-          "rotation": -0.00017253619106171497
-        }
-      }
+      ]
     },
     {
       "set": "tmp",
@@ -381,7 +392,17 @@
       "source": "https://scryfall.com/card/tmp/290/grindstone?utm_source=api",
       "inputHash": "583eca8e57515be75d887e21289a333b5eb40be6461a29e6d74f638da9e1d677",
       "referenceHash": "6ac36207d793546d57eb1b6471ca628d8b03a41be04ebdb11c4efa59a894a20c",
+      "alignment": {
+        "profileHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
+        "transform": {
+          "tx": 0.3548701644407304,
+          "ty": -0.9837370008095008,
+          "scale": 0.993876536931566,
+          "rotation": -0.00017253619106171497
+        }
+      },
       "contentStatus": "scan-reviewed",
+      "reviewCase": false,
       "note": "Historic tap, set-symbol outline, text and legal line.",
       "captures": {
         "main": {
@@ -478,17 +499,7 @@
           "rect": [391, 372, 51, 33],
           "values": [0.5208454527826255, 0.7388059701492536]
         }
-      ],
-      "reviewCase": false,
-      "alignment": {
-        "profileHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
-        "transform": {
-          "tx": 0.3548701644407304,
-          "ty": -0.9837370008095008,
-          "scale": 0.993876536931566,
-          "rotation": -0.00017253619106171497
-        }
-      }
+      ]
     },
     {
       "set": "tmp",
@@ -498,7 +509,17 @@
       "source": "https://scryfall.com/card/tmp/335/island?utm_source=api",
       "inputHash": "d8a8b624456aef8b627e5fa39f5e80f963eb7dbae4c158264588b0d078f6761e",
       "referenceHash": "9f5c0fabd00b5ac5322aa9246f6a1b970ad3ed8fc64e114435519ab833d5da5a",
+      "alignment": {
+        "profileHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
+        "transform": {
+          "tx": 0.3548701644407304,
+          "ty": -0.9837370008095008,
+          "scale": 0.993876536931566,
+          "rotation": -0.00017253619106171497
+        }
+      },
       "contentStatus": "scan-reviewed",
+      "reviewCase": false,
       "note": "Historical Land type and centered mana sentence replace the large symbol.",
       "captures": {
         "main": {
@@ -590,17 +611,7 @@
           "rect": [62, 417, 366, 180],
           "values": [0.05393699607349459, 0.5751161759634805]
         }
-      ],
-      "reviewCase": false,
-      "alignment": {
-        "profileHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
-        "transform": {
-          "tx": 0.3548701644407304,
-          "ty": -0.9837370008095008,
-          "scale": 0.993876536931566,
-          "rotation": -0.00017253619106171497
-        }
-      }
+      ]
     },
     {
       "set": "mir",
@@ -610,8 +621,18 @@
       "source": "https://scryfall.com/card/mir/29/mtenda-herder?utm_source=api",
       "inputHash": "2f8d0245708e2be5fd76369b38776f59c95fd0bb4d6f51070d2cf7b458bc7425",
       "referenceHash": "3b81c834c0477d3053ba8ac94e73ceaaf007663003b6da0d7b9d20ef5ebe7daa",
+      "alignment": {
+        "profileHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
+        "transform": {
+          "tx": 0.3548701644407304,
+          "ty": -0.9837370008095008,
+          "scale": 0.993876536931566,
+          "rotation": -0.00017253619106171497
+        }
+      },
       "contentStatus": "scan-reviewed",
-      "note": "Review case: italic styles and footer are restored, but heavier text changes wrapping and reduces body edge agreement.",
+      "reviewCase": true,
+      "note": "The white-frame text box is 10 canonical pixels wider; all seven printed lines now match with the same fonts. Gray bevel on the left/bottom is baked into the frame asset and remains flagged.",
       "captures": {
         "main": {
           "sha256": "80ba745cd7db7e7207d95b00634f36191e6e28e38dba930347603c2a2729bb60",
@@ -650,7 +671,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "430bd36c15766a1f15917c2ffa91642f284d255973ed1aec1baff1ff926191e2",
+          "sha256": "83d17f9a3ed0b380ae2cdde5af3c4584328b82f190c3c48af7c178b7a8cb0779",
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -700,25 +721,14 @@
         {
           "region": "body",
           "rect": [62, 417, 366, 180],
-          "values": [0.47288958992575547, 0.17684254450878434]
+          "values": [0.47288958992575547, 0.7041353107301843]
         },
         {
           "region": "footer",
           "rect": [44, 606, 343, 40],
           "values": [0.2540040841044469, 0.5855756580419392]
         }
-      ],
-      "reviewCase": true,
-      "alignment": {
-        "profileHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
-        "transform": {
-          "tx": 0.3548701644407304,
-          "ty": -0.9837370008095008,
-          "scale": 0.993876536931566,
-          "rotation": -0.00017253619106171497
-        }
-      }
+      ]
     }
-  ],
-  "metricSource": "2514a3fe2ad59bd25424a1a42cb71fb161565acaf60b96db609e5f20461fd930"
+  ]
 }

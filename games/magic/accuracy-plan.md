@@ -73,6 +73,37 @@ improvement claims use reviewed printed wording and confident alignment only.
 The initial baseline already used the repaired italic source so captures could
 pass font preflight; its old painter still rendered rules/flavor as plain text.
 
+## Printed wording and text insets
+
+The `text-insets` round captures and measures all **1,078** ordinary printings in
+Fourth Edition (378), Mirage (350) and Tempest (350), at both tiers, with no failed
+captures. It uses the cached MTGJSON printing text where available: 90 bodies have
+scan-reviewed annotations, 965 use source-backed printing text, and 23 retain an
+explicit unverified fallback. These absolute scores are not paired improvement
+claims, because importing original wording changes many inputs.
+
+Among 48 reviewed, identical-input pairs, the selected policy improves Mtenda
+Herder and four Fourth Edition long passages, with no expanded-body F1 regression
+over .02 at either tier. The examples are already viewed development data, not
+fresh holdouts; aggregates retain alignment warnings. Mtenda's font is unchanged:
+the white MIR/TMP plate allows 10 more pixels on the right. Fourth Edition long
+blocks use x=72, width=344, and no extra paragraph/flavor gaps. Short centered
+passages and other sets retain their previous policies. The wider all-color trial
+was rejected because it regressed Energy Bolt.
+
+- [Policy and rejected trials](fixtures/accuracy/text-insets-plan.json)
+- [Paired measurements](fixtures/accuracy/text-insets-measurement.json)
+- [Full denominator and text-source counts](fixtures/accuracy/text-insets-corpus.json)
+- [Printing text source metadata](fixtures/accuracy/printing-text-sources.json)
+
+The local `text-insets-review/index.html` page shows scan/before/corrected crops;
+`main-review/index.html` separately compares against actual `main`. All examples
+use reviewed printed wording on both sides, including Angry Mob's “Summon Mob”
+type. Both pages live under `test-results/magic-accuracy`. The white frame's gray
+text-box bevel remains an asset review item. `width-sweep.mjs` reproduces the
+0/10/12px MIR trial and 0/10px TMP trial. `fourth-insets-sweep.mjs` takes a checkout
+at `2b738ef` to reproduce its production-matched controls before the geometry fix.
+
 ## References and cache
 
 [corpus.json](fixtures/accuracy/m21/corpus.json) records the exact printing UUIDs,

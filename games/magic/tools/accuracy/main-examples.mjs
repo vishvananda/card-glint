@@ -41,23 +41,23 @@ const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
     '4ed',
-    'stats-wide',
+    'text-insets',
     '165',
-    'Title, mana placement, credits and stats.',
-    ['title', 'mana', 'footer', 'stats'],
+    'Title, mana, credits and stats; the text now sits inside the black panel and uses the printed line breaks.',
+    ['title', 'mana', 'body', 'footer', 'stats'],
   ],
   [
     '4ed',
-    'stats-wide',
+    'text-insets',
     '3',
-    'Natural-width stats, mana placement and credits. Body wording is still Oracle, so judge the marked regions.',
-    ['mana', 'footer', 'stats'],
+    'Original printed wording and Summon Mob type on both sides. Corrected body inset and paragraph spacing, plus mana, credits and wide stats.',
+    ['mana', 'body', 'footer', 'stats'],
   ],
   [
     'mir',
-    'retro-basics',
+    'text-insets',
     '29',
-    'Review case: italic styles and footer are restored, but heavier text changes wrapping and reduces body edge agreement.',
+    'The white-frame text box is 10 canonical pixels wider; all seven printed lines now match with the same fonts. Gray bevel on the left/bottom is baked into the frame asset and remains flagged.',
     ['type', 'body', 'footer'],
   ],
   [
@@ -103,6 +103,11 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     const capture = await readJson(path.join(outputRoot, set, run, 'capture.json'));
     const card = capture.results.find((c) => c.collectorNumber === number);
     assert.ok(card && !card.issue);
+    assert.equal(
+      card.contentStatus,
+      'scan-reviewed',
+      'Comparison examples require printed wording',
+    );
     assert.equal(hash(JSON.stringify(card.face)), card.inputHash);
     const reference = path.join(outputRoot, set, run, card.images.reference.file);
     assert.equal(hash(await readFile(reference)), card.images.reference.sha256);
@@ -234,7 +239,7 @@ const report = {
     new URL('.', import.meta.url),
     /^(?:compare(?:-worker)?|common|summary|alignment|pixels|edges|metrics|regions)\.mjs$/,
   ),
-  note: 'Five selected improvement examples and one flagged typography review, not an exhaustive main-branch ranking. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
+  note: 'Six selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
   examples,
 };
 await writeJson(path.join(out, 'comparison.json'), report);

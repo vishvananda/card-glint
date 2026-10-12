@@ -1,5 +1,25 @@
 # Detecting placement and shape errors
 
+The text-inset review adds three requirements:
+
+- Load printing-specific wording before diagnosing body geometry. Prefer a
+  scan-reviewed override, then MTGJSON `originalText` joined by exact printing ID.
+  Preserve raw source/checksum, normalize verified legacy symbol codes, and keep
+  source-backed wording separate from scan-certified typography. Require identical
+  face inputs for a before/after placement claim. Never score Oracle changes as
+  renderer improvements.
+- Group text safe areas by frame family, color/asset and passage style. Inspect
+  left inset and allowed right edge separately. A line that wraps one word too
+  early can shift the entire vertically centered block. Sweep small shared width
+  changes with fixed font and alignment; report exact soft wraps, block bounds,
+  edge F1 and every regression. Do not automatically transfer a white-frame width
+  to multicolor or a long-text policy to short centered passages.
+- Inspect the text-box edge separately from its contents. Add independent left
+  and bottom frame-edge windows and compare line thickness/profile, so an extra
+  gray bevel is visible in the asset queue. Review normalized images at the same
+  display scale before attributing heavier appearance to the font. The current
+  white-frame bevel is an observed asset mismatch, not a typography adjustment.
+
 The first old-border review exposed a reporting failure: a mana score near 0.42
 was already available, but a body-typography improvement dominated the report.
 Missing legal text and incorrect symbol treatments were mixed with frame-asset

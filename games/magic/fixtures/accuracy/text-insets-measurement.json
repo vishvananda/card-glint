@@ -1,0 +1,999 @@
+{
+  "schemaVersion": 1,
+  "headline": "Printed text: scan / before / corrected",
+  "description": "Width, inset and paragraph-spacing fixes using identical printed wording and fonts on both sides. Alignment remains fixed by frame/set. The existing frame assets are unchanged. These are reviewed development examples, not fresh holdouts.",
+  "beforeLabel": "Before these text fixes",
+  "scoreLabel": "before → corrected",
+  "note": "Body F1 uses the historical window; expanded-body F1 includes the added right margin and the top of Fourth Edition long text. Aggregates below include alignment-uncertain pairs and are development diagnostics, not a held-out accuracy claim. Changed inputs are excluded. Production capture is at both tiers.",
+  "examples": [
+    {
+      "set": "mir",
+      "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+      "name": "Mtenda Herder",
+      "number": "29",
+      "source": "https://scryfall.com/card/mir/29/mtenda-herder?utm_source=api",
+      "inputHash": "2f8d0245708e2be5fd76369b38776f59c95fd0bb4d6f51070d2cf7b458bc7425",
+      "referenceHash": "3b81c834c0477d3053ba8ac94e73ceaaf007663003b6da0d7b9d20ef5ebe7daa",
+      "contentStatus": "scan-reviewed",
+      "note": "Same fonts, with 10 more canonical pixels allowed on the right. “the”, “herded.” and “turn.)” now stay on their printed lines. The gray bevel is baked into the existing frame asset and remains flagged.",
+      "scores": [
+        {
+          "region": "body",
+          "values": [0.17684254450878434, 0.7041353107301843]
+        },
+        {
+          "region": "expanded body",
+          "values": [0.2318348025307621, 0.6869581639969927]
+        }
+      ]
+    },
+    {
+      "set": "4ed",
+      "id": "a26d1c4d-af95-4b40-83a5-b51f8b2506db",
+      "name": "Angry Mob",
+      "number": "3",
+      "source": "https://scryfall.com/card/4ed/3/angry-mob?utm_source=api",
+      "inputHash": "bead8b4768b7d6b36e145a0e82be4e0a2515eece542ad4fc03986e89dd7cbbe9",
+      "referenceHash": "12e297a10640fbef837468de1e8e7dd82a8516f6f58430c472976814d9adad41",
+      "contentStatus": "scan-reviewed",
+      "note": "Both rendered columns use the original printed wording from MTGJSON, verified against this scan, and the printed Summon Mob type. This comparison isolates geometry from wording changes.",
+      "scores": [
+        {
+          "region": "body",
+          "values": [0.4269953584418406, 0.662521618219109]
+        },
+        {
+          "region": "expanded body",
+          "values": [0.46653198108810895, 0.6781190300057656]
+        }
+      ]
+    },
+    {
+      "set": "4ed",
+      "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+      "name": "Uncle Istvan",
+      "number": "165",
+      "source": "https://scryfall.com/card/4ed/165/uncle-istvan?utm_source=api",
+      "inputHash": "fa7a162146376ae171f50dcb95fe674a204b00a76ab39cdb44a61c0f4e54bc33",
+      "referenceHash": "3cfb4a42a2586f6003395299b8b65e054bf66a2e26e961111eedb884e3b62f23",
+      "contentStatus": "scan-reviewed",
+      "note": "The long Fourth Edition text block moves inside the panel: left edge 72px, width 344px. Paragraph spacing now follows the print.",
+      "scores": [
+        {
+          "region": "body",
+          "values": [0.3639478749623599, 0.7586877126250967]
+        },
+        {
+          "region": "expanded body",
+          "values": [0.4130229786182775, 0.7568860409423633]
+        }
+      ]
+    },
+    {
+      "set": "4ed",
+      "id": "6f7a41cc-277a-4d95-a30c-91bf5aa7ac11",
+      "name": "Fellwar Stone",
+      "number": "319",
+      "source": "https://scryfall.com/card/4ed/319/fellwar-stone?utm_source=api",
+      "inputHash": "de661f4535e1b3308023910489668d9fe81a8e60beb46ddd7395fb5488fd0f1e",
+      "referenceHash": "982661e68c61561817870513b621b16eb93e5600b74e6fbf9ee75cd746a8ee17",
+      "contentStatus": "scan-reviewed",
+      "note": "Artifact transfer example using the same Fourth Edition block policy. Original wording is identical on both sides. Further glyph and text-size differences remain visible.",
+      "scores": [
+        {
+          "region": "body",
+          "values": [0.4427969373850397, 0.5610181120995773]
+        },
+        {
+          "region": "expanded body",
+          "values": [0.48121954991708626, 0.5926690196533824]
+        }
+      ]
+    }
+  ],
+  "sets": [
+    {
+      "set": "mir",
+      "beforeRun": "retro-basics",
+      "beforeRenderer": "7c408352113abf0abe486a8bc1f7b0828eb5a2880422d1d4eecc2622ec123e7c",
+      "afterRenderer": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+      "browser": "148.0.7778.96",
+      "fontStylesheetHash": "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12",
+      "alignmentHash": "312fde4655988fc078b28607683cf29205b8f60018500a07ea69acbe7f51238a",
+      "afterCaptured": 350,
+      "afterFailures": [],
+      "pairedReviewed": 24,
+      "changedInputs": 304,
+      "summary": {
+        "inspect": {
+          "medianBefore": 0.49603281849861924,
+          "medianAfter": 0.497384615180853,
+          "gains": ["Mtenda Herder"],
+          "regressions": []
+        },
+        "table": {
+          "medianBefore": 0.49467636256469494,
+          "medianAfter": 0.49575072986285473,
+          "gains": ["Mtenda Herder"],
+          "regressions": []
+        }
+      },
+      "rows": [
+        {
+          "id": "4644694d-52e6-4d00-8cad-748899eeea84",
+          "name": "Afterlife",
+          "number": "1",
+          "inputHash": "2c5313eff3ca1b181bd25ca3cffcdaa2ba26df06cc0ebf3e1c5089f1ca1ef4ac",
+          "referenceHash": "dfa81acf483b3bd3b95ab22f5ccdf817ea699bdb3a77d6017e44796e1cb260c7",
+          "tiers": {
+            "inspect": {
+              "previous": [0.3693665264480492, 0.3994829048678268],
+              "current": [0.3693665264480492, 0.3994829048678268]
+            },
+            "table": {
+              "previous": [0.350594489834221, 0.384116928805445],
+              "current": [0.350594489834221, 0.384116928805445]
+            }
+          }
+        },
+        {
+          "id": "b0125f79-ff68-4fb9-b309-8d277259f323",
+          "name": "Mangara's Blessing",
+          "number": "25",
+          "inputHash": "1261ab7d917309cb3a0a65deb7d77d14511dc7ddcde907968fb3940781b4c394",
+          "referenceHash": "a3e879fffd6879baed06ff3b567f9b1bc20328599d9392d0399695d0c6332e75",
+          "tiers": {
+            "inspect": {
+              "previous": [0.45480696432841644, 0.48431393086048247],
+              "current": [0.45480696432841644, 0.48431393086048247]
+            },
+            "table": {
+              "previous": [0.4445737024070973, 0.4788304650282669],
+              "current": [0.4445737024070973, 0.4788304650282669]
+            }
+          }
+        },
+        {
+          "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+          "name": "Mtenda Herder",
+          "number": "29",
+          "inputHash": "2f8d0245708e2be5fd76369b38776f59c95fd0bb4d6f51070d2cf7b458bc7425",
+          "referenceHash": "3b81c834c0477d3053ba8ac94e73ceaaf007663003b6da0d7b9d20ef5ebe7daa",
+          "tiers": {
+            "inspect": {
+              "previous": [0.17684254450878434, 0.2318348025307621],
+              "current": [0.7041353107301843, 0.6869581639969927]
+            },
+            "table": {
+              "previous": [0.16641182334848312, 0.2256080783368419],
+              "current": [0.7003462193699662, 0.685217444859143]
+            }
+          }
+        },
+        {
+          "id": "4a9304e1-f403-404d-9fe9-169da75e0d62",
+          "name": "Shaper Guildmage",
+          "number": "91",
+          "inputHash": "e9d90e555c0980eb6ae6570efec3ebf05280bcc54457c181c95851c09f322c6e",
+          "referenceHash": "6215ddbc557dc456371bd69b6418b39700e1648d1337183f9e5d9d64df7ccb0b",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4369221697519479, 0.49546834172392484],
+              "current": [0.4369221697519479, 0.49546834172392484]
+            },
+            "table": {
+              "previous": [0.42093769571704065, 0.47444091136035027],
+              "current": [0.42093769571704065, 0.47444091136035027]
+            }
+          }
+        },
+        {
+          "id": "b8a7c22e-fe96-4960-96d4-ee85abec3281",
+          "name": "Suq'Ata Firewalker",
+          "number": "94",
+          "inputHash": "1895c2cfcc251db7eb6a321efbb229481c223c835b7f07b14ae16269f6c72238",
+          "referenceHash": "0bf0d899ca2074906fd9792d9abf937cc177621d88f3ed4a2ac043951e5d0f2d",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5326069024866932, 0.5658473824316586],
+              "current": [0.5326069024866932, 0.5658473824316586]
+            },
+            "table": {
+              "previous": [0.5045181746233293, 0.5392009013477841],
+              "current": [0.5045181746233293, 0.5392009013477841]
+            }
+          }
+        },
+        {
+          "id": "048f2368-0e2f-4197-b977-353d38b38ccc",
+          "name": "Teferi's Imp",
+          "number": "98",
+          "inputHash": "77498181d4942936533470987ba743da439df72ad02458e6caf4451af16423cd",
+          "referenceHash": "5c2b9a0a4143c80af348a8ec029d5914456fc2cee82812b5284588205a2b7ec5",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5467015772704038, 0.5911525165836137],
+              "current": [0.5467015772704038, 0.5911525165836137]
+            },
+            "table": {
+              "previous": [0.5249760729541089, 0.5678694676215822],
+              "current": [0.5249760729541089, 0.5678694676215822]
+            }
+          }
+        },
+        {
+          "id": "c9dbfc7c-164d-47b8-8f05-987864fca89b",
+          "name": "Forsaken Wastes",
+          "number": "125",
+          "inputHash": "759ce7a6836d7d3c331c7f1f271d6444241fdaefd636ee865106634c085f6a0b",
+          "referenceHash": "6def454d10df3b029a9a1a21500b34a587e4224029a29389f4463c1787692c61",
+          "tiers": {
+            "inspect": {
+              "previous": [0.41592389019546844, 0.46787736917310035],
+              "current": [0.41592389019546844, 0.46787736917310035]
+            },
+            "table": {
+              "previous": [0.4010175215334992, 0.4599435115144227],
+              "current": [0.4010175215334992, 0.4599435115144227]
+            }
+          }
+        },
+        {
+          "id": "dde6d3d1-75db-445f-9f17-632ee0292211",
+          "name": "Wall of Corpses",
+          "number": "151",
+          "inputHash": "b7eb98898d9f0dd8f479433ecf0696e1341abafcb478513f4506c8ed570c57b4",
+          "referenceHash": "acb163e3e80914f8e5c5bb01ceac6527150b04789b61edde52d0f780e0790b26",
+          "tiers": {
+            "inspect": {
+              "previous": [0.454345393234902, 0.5054823449875803],
+              "current": [0.454345393234902, 0.5054823449875803]
+            },
+            "table": {
+              "previous": [0.4494542897436014, 0.5075500353213148],
+              "current": [0.4494542897436014, 0.5075500353213148]
+            }
+          }
+        },
+        {
+          "id": "ab85551f-c9cc-409c-9fb5-a45de695e521",
+          "name": "Zombie Mob",
+          "number": "153",
+          "inputHash": "717546fefb05661d3fa5fd51b69ad8f0a44e5fcc268ca3eef22c291646f9e38d",
+          "referenceHash": "a1b9aab3ec0c77deeaab3896f43423723b3746f02eeceac4b58067cb8e1edc21",
+          "tiers": {
+            "inspect": {
+              "previous": [0.32914253709814284, 0.40086213216427435],
+              "current": [0.32914253709814284, 0.40086213216427435]
+            },
+            "table": {
+              "previous": [0.3241274155727795, 0.4040165041981649],
+              "current": [0.3241274155727795, 0.4040165041981649]
+            }
+          }
+        },
+        {
+          "id": "9047d292-8f5c-4a6b-b74e-c8dbf3e0ab24",
+          "name": "Ekundu Cyclops",
+          "number": "171",
+          "inputHash": "f0391934e2f936e2d58eba4b3cd808783f9175db341a5d06b90604529a336dbf",
+          "referenceHash": "356d3f2ee79b907d9f1e426d3427bae771a790ee85e2eb3a68684a03f3bdb472",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5576291464692071, 0.5975936276136088],
+              "current": [0.5576291464692071, 0.5975936276136088]
+            },
+            "table": {
+              "previous": [0.5702401957451014, 0.6159767462509633],
+              "current": [0.5702401957451014, 0.6159767462509633]
+            }
+          }
+        },
+        {
+          "id": "c9e8c9f5-61dd-4dcc-bd40-8f366374ea18",
+          "name": "Emberwilde Djinn",
+          "number": "172",
+          "inputHash": "4106b730f22373dd7910d8db9ef6c098c894cdff2e08c9de734558a09ccbfca9",
+          "referenceHash": "af12af1a951454db6633554a6758a59080e63857de3b64dd4848e834c283201e",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4654802811109435, 0.49862937701320437],
+              "current": [0.4654802811109435, 0.49862937701320437]
+            },
+            "table": {
+              "previous": [0.45976968060280915, 0.5007114081309413],
+              "current": [0.45976968060280915, 0.5007114081309413]
+            }
+          }
+        },
+        {
+          "id": "4947cbf9-69dc-44e3-a22e-a6129f331f3c",
+          "name": "Viashino Warrior",
+          "number": "200",
+          "inputHash": "2f1347e0d36bd55e3aa1999d778985e60a3c983345d4ac31f57d41441dd3dc46",
+          "referenceHash": "e5f38ea693e130d8ec9f48ed362dbc9feaf9a6e939bfbe81ef4b6604b5346ee1",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4985433018102413, 0.5317745544360503],
+              "current": [0.4985433018102413, 0.5317745544360503]
+            },
+            "table": {
+              "previous": [0.5019105864879991, 0.5436573476006162],
+              "current": [0.5019105864879991, 0.5436573476006162]
+            }
+          }
+        },
+        {
+          "id": "c495e1f3-0845-4556-83e6-de8b9d518d1d",
+          "name": "Afiya Grove",
+          "number": "205",
+          "inputHash": "1f31aa152d005dc9c4a7f8ea2a3262810fd5c0c027418dc10d0b4f6cb2348153",
+          "referenceHash": "c7740fa526c87d96664ddc1c1560212eeec53b37dc5e52f23bb047b5d83d0986",
+          "tiers": {
+            "inspect": {
+              "previous": [0.38753369186108005, 0.40966963092080066],
+              "current": [0.38753369186108005, 0.40966963092080066]
+            },
+            "table": {
+              "previous": [0.3723273638357549, 0.39648560966433943],
+              "current": [0.3723273638357549, 0.39648560966433943]
+            }
+          }
+        },
+        {
+          "id": "1482c390-69cf-484e-a06c-8d63f770c7de",
+          "name": "Fallow Earth",
+          "number": "214",
+          "inputHash": "fd4eda00416f1348794fcc2430d2ecfa59073748ea2e637257536a8c1922ae75",
+          "referenceHash": "728a98772bd206ee1d11f5eb5336412aba414aab6a43b0a3b8f3bd5e70ff05ca",
+          "tiers": {
+            "inspect": {
+              "previous": [0.48958576627212247, 0.5042091623746627],
+              "current": [0.48958576627212247, 0.5042091623746627]
+            },
+            "table": {
+              "previous": [0.47805440291807755, 0.49460767122430876],
+              "current": [0.47805440291807755, 0.49460767122430876]
+            }
+          }
+        },
+        {
+          "id": "26724a51-87dd-4159-b012-71598e4cf5eb",
+          "name": "Roots of Life",
+          "number": "237",
+          "inputHash": "ecd7ee236b8d3b3af8605c379a8bc76f596bb07c52e872c3728a66a9805528c0",
+          "referenceHash": "be74b3bf152d6fb059dbc79ab70a9370abd66c59afff9d8bbb851e056ed019b2",
+          "tiers": {
+            "inspect": {
+              "previous": [0.574879250409751, 0.5828337650364387],
+              "current": [0.574879250409751, 0.5828337650364387]
+            },
+            "table": {
+              "previous": [0.5455425999629653, 0.5571761855364159],
+              "current": [0.5455425999629653, 0.5571761855364159]
+            }
+          }
+        },
+        {
+          "id": "711f4cff-0256-44b2-a2fe-1cae6e9edb2b",
+          "name": "Energy Bolt",
+          "number": "263",
+          "inputHash": "f171d418a21cbc15ae55943ce4a3e6c11c46a2c543b3b7bfe4f7b28600f97428",
+          "referenceHash": "92474769384e05d8e785ac2117bfe3519e5dfe4db564ea75ac1d7b2bbf82e13f",
+          "tiers": {
+            "inspect": {
+              "previous": [0.40209158388092264, 0.4269616188563513],
+              "current": [0.40209158388092264, 0.4269616188563513]
+            },
+            "table": {
+              "previous": [0.40875724131733215, 0.4355854796664869],
+              "current": [0.40875724131733215, 0.4355854796664869]
+            }
+          }
+        },
+        {
+          "id": "a69dc4ac-7354-465e-b859-d8556f3b1498",
+          "name": "Grim Feast",
+          "number": "265",
+          "inputHash": "88032fae9d8da021b51a95b11665a65833b8474f5bcc38d3d4c86d90aa8b63a1",
+          "referenceHash": "c65e3f81ad0f8d9b4446b1968eaafe03b8f496d5a8718f74ca6792cf63cbf04a",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5184942726095236, 0.5256635135925574],
+              "current": [0.5184942726095236, 0.5256635135925574]
+            },
+            "table": {
+              "previous": [0.5108802060322892, 0.5200022499500548],
+              "current": [0.5108802060322892, 0.5200022499500548]
+            }
+          }
+        },
+        {
+          "id": "c69ba095-dd78-4999-87a9-63f7165846e4",
+          "name": "Wellspring",
+          "number": "288",
+          "inputHash": "65a3fd9a3eed4ae45e9c1b9d6069d35d7f93df66a9d7cbb2ca84228e37671d55",
+          "referenceHash": "67258afc422890918e5f1c3dcdcb67f5ba3883398a06ab3ec96e33e8be52077f",
+          "tiers": {
+            "inspect": {
+              "previous": [0.25485095295734767, 0.2638143393067844],
+              "current": [0.25485095295734767, 0.2638143393067844]
+            },
+            "table": {
+              "previous": [0.22204800533261265, 0.24154822394051867],
+              "current": [0.22204800533261265, 0.24154822394051867]
+            }
+          }
+        },
+        {
+          "id": "dc9afb9e-eab3-4969-9a44-2c01bf730e68",
+          "name": "Lead Golem",
+          "number": "306",
+          "inputHash": "0d00270b66528e9e17c4d3c685ada72bbd8af4020e3c2b941a39efaecf989f90",
+          "referenceHash": "fc9079fb8a34039f612450f7866d2885d8b0ffd54d7e44051c73f690466464b9",
+          "tiers": {
+            "inspect": {
+              "previous": [0.38142326481405053, 0.4961398533485016],
+              "current": [0.38142326481405053, 0.4961398533485016]
+            },
+            "table": {
+              "previous": [0.36738872837577446, 0.4967564058206284],
+              "current": [0.36738872837577446, 0.4967564058206284]
+            }
+          }
+        },
+        {
+          "id": "63bacc32-d6ba-420c-9b49-299c08e5fb39",
+          "name": "Lion's Eye Diamond",
+          "number": "307",
+          "inputHash": "7dd0804fb3e59d5891d2252e212511f6371bba53f1b16a3dd6128857ce533848",
+          "referenceHash": "824f5808e30293aaeb3221cc13bd78f4b651101eb42cd59eb02cec6c091f4829",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4577383285566982, 0.5032490328963433],
+              "current": [0.4577383285566982, 0.5032490328963433]
+            },
+            "table": {
+              "previous": [0.44934605867797806, 0.5029086115070303],
+              "current": [0.44934605867797806, 0.5029086115070303]
+            }
+          }
+        },
+        {
+          "id": "84e4a955-ce9a-4386-b6ac-c00fd25de882",
+          "name": "Sand Golem",
+          "number": "318",
+          "inputHash": "a4fd3fff39a66a18a07c32502b313235a0eeeddb300e8d1ed430ca3c051dc1c2",
+          "referenceHash": "e079b7086583dc9b23f6b6dd48c52cb92c4e1486570b002b52334c6e9d62e048",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4238775642232491, 0.49592578364873696],
+              "current": [0.4238775642232491, 0.49592578364873696]
+            },
+            "table": {
+              "previous": [0.420041689773774, 0.4992652787404236],
+              "current": [0.420041689773774, 0.4992652787404236]
+            }
+          }
+        },
+        {
+          "id": "7a78abdb-d1ac-49cb-a74b-9de21c06364a",
+          "name": "Bad River",
+          "number": "324",
+          "inputHash": "24622e85471262f277ee682ab465c6009718d16512df93f3a461d0814e17dcbc",
+          "referenceHash": "5f0aceafc7b568b00fb4696582a6fedd4944bf664c7aa87d055736ad0e71142d",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4287216326530612, 0.5118124556117137],
+              "current": [0.4287216326530612, 0.5118124556117137]
+            },
+            "table": {
+              "previous": [0.41407530812274657, 0.49474505390508106],
+              "current": [0.41407530812274657, 0.49474505390508106]
+            }
+          }
+        },
+        {
+          "id": "65f5efac-ef98-4be2-abcc-1aa38bf66b06",
+          "name": "Grasslands",
+          "number": "327",
+          "inputHash": "f56dd6e7186ac9283e1a84eb665f6afdf6c7a7acfdaa9568ec68cb7c77e3089c",
+          "referenceHash": "b9260aa5cca643078d29157c5d4d06d4731c1b69a55efdef6b8ace41b44e4e5a",
+          "tiers": {
+            "inspect": {
+              "previous": [0.403710031243881, 0.4850628790222363],
+              "current": [0.403710031243881, 0.4850628790222363]
+            },
+            "table": {
+              "previous": [0.4210345969420597, 0.47154292886244004],
+              "current": [0.4210345969420597, 0.47154292886244004]
+            }
+          }
+        },
+        {
+          "id": "1e21c347-7aaf-42ae-abf3-f1283c5b54e6",
+          "name": "Rocky Tar Pit",
+          "number": "329",
+          "inputHash": "a4633ed24a7b94eb5940a9a07c656120793ab04825f50ebd3d6b6754332441a2",
+          "referenceHash": "fedb8110adeb6ac8e6394cca914cccbcc99165161e37ac2d5dec9581e5f09bbf",
+          "tiers": {
+            "inspect": {
+              "previous": [0.1934599145198593, 0.3147440081172554],
+              "current": [0.1934599145198593, 0.3147440081172554]
+            },
+            "table": {
+              "previous": [0.21884600103553217, 0.3030886594754683],
+              "current": [0.21884600103553217, 0.3030886594754683]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "set": "4ed",
+      "beforeRun": "text-insets-before",
+      "beforeRenderer": "2c5ae597b3b944641588298aec0c9aaf62c7c86a06834178ff40b8a80d659d4f",
+      "afterRenderer": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+      "browser": "148.0.7778.96",
+      "fontStylesheetHash": "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12",
+      "alignmentHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+      "afterCaptured": 378,
+      "afterFailures": [],
+      "pairedReviewed": 8,
+      "changedInputs": 0,
+      "summary": {
+        "inspect": {
+          "medianBefore": 0.4687789439504547,
+          "medianAfter": 0.556249268922098,
+          "gains": ["Angry Mob", "Uncle Istvan", "Battering Ram", "Fellwar Stone"],
+          "regressions": []
+        },
+        "table": {
+          "medianBefore": 0.4351011593337596,
+          "medianAfter": 0.5202515937142945,
+          "gains": ["Angry Mob", "Uncle Istvan", "Battering Ram", "Fellwar Stone"],
+          "regressions": []
+        }
+      },
+      "rows": [
+        {
+          "id": "a26d1c4d-af95-4b40-83a5-b51f8b2506db",
+          "name": "Angry Mob",
+          "number": "3",
+          "inputHash": "bead8b4768b7d6b36e145a0e82be4e0a2515eece542ad4fc03986e89dd7cbbe9",
+          "referenceHash": "12e297a10640fbef837468de1e8e7dd82a8516f6f58430c472976814d9adad41",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4269953584418406, 0.46653198108810895],
+              "current": [0.662521618219109, 0.6781190300057656]
+            },
+            "table": {
+              "previous": [0.39298029381754074, 0.4431436187589524],
+              "current": [0.63597055144527, 0.6602741016970303]
+            }
+          }
+        },
+        {
+          "id": "8bd501ae-5814-4336-a45b-2b88cb85d29e",
+          "name": "Swords to Plowshares",
+          "number": "52",
+          "inputHash": "ad58238999e0d7d8f629595fff8df734e926149dec9029f6f703a92b61aed0c8",
+          "referenceHash": "e392a9e960eb3e5ab1a3b22b77078b5884f119253503e8f3017664634623ebbf",
+          "tiers": {
+            "inspect": {
+              "previous": [0.45831460783611716, 0.4920690732981511],
+              "current": [0.45831460783611716, 0.4920690732981511]
+            },
+            "table": {
+              "previous": [0.3966473079961426, 0.4521268568540856],
+              "current": [0.3966473079961426, 0.4521268568540856]
+            }
+          }
+        },
+        {
+          "id": "634dd3bd-d29b-4481-990b-f320e60c4f91",
+          "name": "Lifetap",
+          "number": "81",
+          "inputHash": "30b1a6839ebe607df050daf8c1f5c3f7478150f6d07511b9916a5a236daf2e5c",
+          "referenceHash": "22120bb185b36482e5fb06d05f22c6a4c6c218075992d80d90099796f1ed3cee",
+          "tiers": {
+            "inspect": {
+              "previous": [0.3227611274272712, 0.4315090795929331],
+              "current": [0.3227611274272712, 0.4315090795929331]
+            },
+            "table": {
+              "previous": [0.2884758857090861, 0.42705869990856676],
+              "current": [0.2884758857090861, 0.42705869990856676]
+            }
+          }
+        },
+        {
+          "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+          "name": "Uncle Istvan",
+          "number": "165",
+          "inputHash": "fa7a162146376ae171f50dcb95fe674a204b00a76ab39cdb44a61c0f4e54bc33",
+          "referenceHash": "3cfb4a42a2586f6003395299b8b65e054bf66a2e26e961111eedb884e3b62f23",
+          "tiers": {
+            "inspect": {
+              "previous": [0.3639478749623599, 0.4130229786182775],
+              "current": [0.7586877126250967, 0.7568860409423633]
+            },
+            "table": {
+              "previous": [0.35500952945940595, 0.40378769800346603],
+              "current": [0.7901561723979851, 0.7827460794856983]
+            }
+          }
+        },
+        {
+          "id": "f9dbfdc1-a598-4c72-9b0d-91207bd067ab",
+          "name": "Immolation",
+          "number": "204",
+          "inputHash": "8c29029c9cbe9f2f3987f76ccb0f7d3d6b186b8fd1a3a411292b251aaac93d24",
+          "referenceHash": "99b244601c527d6b6daedacde8b8921242b0e966453329bb8bf062f798433388",
+          "tiers": {
+            "inspect": {
+              "previous": [0.2393855962903927, 0.43752538583520534],
+              "current": [0.2393855962903927, 0.43752538583520534]
+            },
+            "table": {
+              "previous": [0.2126533798140107, 0.38822242310566063],
+              "current": [0.2126533798140107, 0.38822242310566063]
+            }
+          }
+        },
+        {
+          "id": "c6ce96a5-76f1-48ca-854d-a37fb6a023a0",
+          "name": "Giant Growth",
+          "number": "248",
+          "inputHash": "41e9c1b13e8e2b5a18523ddfeabd9241c7e0539c6b0fea9f757963394c1e4104",
+          "referenceHash": "e78e7ca5055b9064bc61eaa6275598a748032639f22a0f990041c355ebac9346",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4915264067347915, 0.5198295181908137],
+              "current": [0.4915264067347915, 0.5198295181908137]
+            },
+            "table": {
+              "previous": [0.2782786940280742, 0.3485155073106238],
+              "current": [0.2782786940280742, 0.3485155073106238]
+            }
+          }
+        },
+        {
+          "id": "ebf5ea1c-0ea7-4b84-b886-ebd346f4e154",
+          "name": "Battering Ram",
+          "number": "297",
+          "inputHash": "e289a61641dfc09853c09836c2d498c21dc33354cbc5f200f26c9e46edf14c26",
+          "referenceHash": "7b86b1e57058647eaf7af1dbc5957f0723a877c540afea67d5f895a9f56c906b",
+          "tiers": {
+            "inspect": {
+              "previous": [0.41247044104900266, 0.47102590681280043],
+              "current": [0.8432955701976096, 0.8520507925606418]
+            },
+            "table": {
+              "previous": [0.386032540143644, 0.4465129506024519],
+              "current": [0.8358873921769207, 0.8452615978973052]
+            }
+          }
+        },
+        {
+          "id": "6f7a41cc-277a-4d95-a30c-91bf5aa7ac11",
+          "name": "Fellwar Stone",
+          "number": "319",
+          "inputHash": "de661f4535e1b3308023910489668d9fe81a8e60beb46ddd7395fb5488fd0f1e",
+          "referenceHash": "982661e68c61561817870513b621b16eb93e5600b74e6fbf9ee75cd746a8ee17",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4427969373850397, 0.48121954991708626],
+              "current": [0.5610181120995773, 0.5926690196533824]
+            },
+            "table": {
+              "previous": [0.4406536366048987, 0.4875838114659786],
+              "current": [0.5532532884841462, 0.5883763305745034]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "set": "tmp",
+      "beforeRun": "retro-basics",
+      "beforeRenderer": "7c408352113abf0abe486a8bc1f7b0828eb5a2880422d1d4eecc2622ec123e7c",
+      "afterRenderer": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+      "browser": "148.0.7778.96",
+      "fontStylesheetHash": "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12",
+      "alignmentHash": "2d1833e229370ca0e2c543fad1555294c3de9cf47c08228d2753891c579bf4bc",
+      "afterCaptured": 350,
+      "afterFailures": [],
+      "pairedReviewed": 16,
+      "changedInputs": 299,
+      "summary": {
+        "inspect": {
+          "medianBefore": 0.498789857537316,
+          "medianAfter": 0.5010200191083376,
+          "gains": [],
+          "regressions": []
+        },
+        "table": {
+          "medianBefore": 0.49862073965625253,
+          "medianAfter": 0.49862073965625253,
+          "gains": [],
+          "regressions": []
+        }
+      },
+      "rows": [
+        {
+          "id": "c275aba7-cac6-48e8-b12c-6bd77a5c38fe",
+          "name": "Armor Sliver",
+          "number": "4",
+          "inputHash": "18073614fff2f3aa9f30fa8f578b9cedb3d8be3787f43671ba90279d8a5121c1",
+          "referenceHash": "722adbfc5e1a63352e1511d733ebf41b655f54a5c60141adcad89102a3473706",
+          "tiers": {
+            "inspect": {
+              "previous": [0.46083181681540936, 0.48716771962369276],
+              "current": [0.46083181681540936, 0.48716771962369276]
+            },
+            "table": {
+              "previous": [0.4575714573728293, 0.4800665931744531],
+              "current": [0.4575714573728293, 0.4800665931744531]
+            }
+          }
+        },
+        {
+          "id": "2c8e174c-7abb-4a93-aa1d-8c2a2e815ba6",
+          "name": "Safeguard",
+          "number": "39",
+          "inputHash": "74f55eb446fabf7b2a574885598c9b11d427138e37715847cbf1d9a1f42b3dd4",
+          "referenceHash": "ed4c858b2a2db409d5b0673d787c1d5fa457de22e47a55d2af46639bea379d4a",
+          "tiers": {
+            "inspect": {
+              "previous": [0.46582967669400865, 0.4989695660620551],
+              "current": [0.49586880458502514, 0.5178383654252937]
+            },
+            "table": {
+              "previous": [0.4535538360997414, 0.48200952132103997],
+              "current": [0.4769750991491479, 0.4952751436736706]
+            }
+          }
+        },
+        {
+          "id": "734be7fa-0998-4771-9b97-4989b3fc1471",
+          "name": "Steal Enchantment",
+          "number": "90",
+          "inputHash": "e8bd5d0170d0024fb34accc12d65982e4d03fe58930c73bff48a3d187750cbc7",
+          "referenceHash": "4fc1650efb908153ff0996d9acde2acd16a4ae0bd74dbb42b6c07788a0a6eab1",
+          "tiers": {
+            "inspect": {
+              "previous": [0.18861680865838995, 0.30256573351852206],
+              "current": [0.18861680865838995, 0.30256573351852206]
+            },
+            "table": {
+              "previous": [0.18331196256440666, 0.2942659472372352],
+              "current": [0.18331196256440666, 0.2942659472372352]
+            }
+          }
+        },
+        {
+          "id": "9e7b5b00-9d14-4090-b8c3-28b70375571e",
+          "name": "Thalakos Mistfolk",
+          "number": "93",
+          "inputHash": "3efe66e4bb179fbcff842976cd9092d272b137c7c481db3f54d52be3917697a1",
+          "referenceHash": "97d512cd4eb16ce6f7d3693a79e86d6de700623aedc708cb03b30a7dd08e3e07",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5144410536409139, 0.5466426054343098],
+              "current": [0.5144410536409139, 0.5466426054343098]
+            },
+            "table": {
+              "previous": [0.4875447462666424, 0.5197919660409149],
+              "current": [0.4875447462666424, 0.5197919660409149]
+            }
+          }
+        },
+        {
+          "id": "4eb883b7-da6a-45c3-9dde-61334a0ddcae",
+          "name": "Darkling Stalker",
+          "number": "119",
+          "inputHash": "aed1dcb59c00b2d13ce36874db5bf532190e4f6159687848c8a05d4c809cb081",
+          "referenceHash": "5c75343ac6ba9175beefb3cd80e1834d6155c095a2bc055634d9d66435986e9a",
+          "tiers": {
+            "inspect": {
+              "previous": [0.6028437113699731, 0.6389014381785991],
+              "current": [0.6028437113699731, 0.6389014381785991]
+            },
+            "table": {
+              "previous": [0.579750364619636, 0.621862876394967],
+              "current": [0.579750364619636, 0.621862876394967]
+            }
+          }
+        },
+        {
+          "id": "eed2c97b-f003-436c-9faa-5518aba42fc1",
+          "name": "Skyshroud Vampire",
+          "number": "157",
+          "inputHash": "86705a02427e1556710c080e745524790e4886d1907bd7e2479e72b27f431e18",
+          "referenceHash": "679e6e4a95d5a9cd20d773bc6c2ef1d06762ea14d93691b96c65d44717a8ff70",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5311523373196115, 0.5839955363759788],
+              "current": [0.5311523373196115, 0.5839955363759788]
+            },
+            "table": {
+              "previous": [0.5044356917096582, 0.5666553038697021],
+              "current": [0.5044356917096582, 0.5666553038697021]
+            }
+          }
+        },
+        {
+          "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+          "name": "Mogg Conscripts",
+          "number": "189",
+          "inputHash": "6bb71cddfa240753f781dd5ae608bbe333e17fa8a66da0a535bb8df2feb5a068",
+          "referenceHash": "39f07e4dbedf8f890e58ccc1e7bfb916704edd480e5a81af90976d43a6f065eb",
+          "tiers": {
+            "inspect": {
+              "previous": [0.17424749271464943, 0.26305507087727736],
+              "current": [0.17424749271464943, 0.26305507087727736]
+            },
+            "table": {
+              "previous": [0.14960792882634844, 0.2466290720595074],
+              "current": [0.14960792882634844, 0.2466290720595074]
+            }
+          }
+        },
+        {
+          "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+          "name": "Searing Touch",
+          "number": "201",
+          "inputHash": "44e1ab1139166a1cd887503f6d01705feecb88875fac187d8c5b186c03ef152e",
+          "referenceHash": "4e54edc7722d858b75620452221c2db836f270402f496f82678e9fabe28f72a5",
+          "tiers": {
+            "inspect": {
+              "previous": [0.24421392873742456, 0.3180386746540429],
+              "current": [0.24421392873742456, 0.3180386746540429]
+            },
+            "table": {
+              "previous": [0.2355576397911559, 0.3102147451402624],
+              "current": [0.2355576397911559, 0.3102147451402624]
+            }
+          }
+        },
+        {
+          "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+          "name": "Krakilin",
+          "number": "235",
+          "inputHash": "e857b72738636657a9bb31d6be66ae2a9869fa4d3d929bb18d53b3ab51daa49f",
+          "referenceHash": "e2f867aa9a1bbc0972efd79b669faf527482f857838cc638146a410c0537a18f",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4871762748244062, 0.5034298892040983],
+              "current": [0.4871762748244062, 0.5034298892040983]
+            },
+            "table": {
+              "previous": [0.4919551123861194, 0.5087484938398541],
+              "current": [0.4919551123861194, 0.5087484938398541]
+            }
+          }
+        },
+        {
+          "id": "b4bb98ba-d599-4597-911c-2b472fa8817c",
+          "name": "Seeker of Skybreak",
+          "number": "254",
+          "inputHash": "846530ca98c380169faead24b2fc8adbd6a31bef012dfd95658e3251df4fb446",
+          "referenceHash": "83e48c913bbdc62616f58ace4800a17d8a4cbc512c6434b6836eab26d9b718c7",
+          "tiers": {
+            "inspect": {
+              "previous": [0.46826706030898213, 0.4864734170151042],
+              "current": [0.46826706030898213, 0.4864734170151042]
+            },
+            "table": {
+              "previous": [0.4445792140188094, 0.46563772470540626],
+              "current": [0.4445792140188094, 0.46563772470540626]
+            }
+          }
+        },
+        {
+          "id": "9c1624f7-8275-46d3-ab7e-7b162e27593f",
+          "name": "Selenia, Dark Angel",
+          "number": "270",
+          "inputHash": "64d76fce60a79cf2d7137fa190570f4d630f2e97059d09043d3a10828391c92f",
+          "referenceHash": "f730c8a9fd8eb644fec510b31ad6091c655562b7ad709c8bbb301cb41b40ba6a",
+          "tiers": {
+            "inspect": {
+              "previous": [0.13079268355315102, 0.20178938222555065],
+              "current": [0.13079268355315102, 0.20178938222555065]
+            },
+            "table": {
+              "previous": [0.1314081652884179, 0.21155854263390012],
+              "current": [0.1314081652884179, 0.21155854263390012]
+            }
+          }
+        },
+        {
+          "id": "be535a4a-c00d-4c58-a663-a3419a54da51",
+          "name": "Vhati il-Dal",
+          "number": "274",
+          "inputHash": "1f62fa2d4ab9de4b2a4217acd5e8a3b9a0eea64bf85b023ff1de66952dc39e2f",
+          "referenceHash": "faeaab7e0388ab46d726d4572eb8affa0218006daee628e7cab04b612756234e",
+          "tiers": {
+            "inspect": {
+              "previous": [0.5136522928831121, 0.5065472416446445],
+              "current": [0.5136522928831121, 0.5065472416446445]
+            },
+            "table": {
+              "previous": [0.4999264832950712, 0.5099507566523799],
+              "current": [0.4999264832950712, 0.5099507566523799]
+            }
+          }
+        },
+        {
+          "id": "4f2da99f-3c53-4980-97d6-2158c765aac0",
+          "name": "Altar of Dementia",
+          "number": "276",
+          "inputHash": "c94e7fa10dd11e0fb1a6b9e0772ab42aca14fe41569572f7a9d3b0e9ae59f9d9",
+          "referenceHash": "71f11dd16a3d36d1fb746433099d21e729e21e65ad40706b0e8fdbcf64439d49",
+          "tiers": {
+            "inspect": {
+              "previous": [0.531477837625225, 0.5801675227904871],
+              "current": [0.531477837625225, 0.5801675227904871]
+            },
+            "table": {
+              "previous": [0.5346309748991138, 0.5878327111386275],
+              "current": [0.5346309748991138, 0.5878327111386275]
+            }
+          }
+        },
+        {
+          "id": "f4459187-de64-456f-bb66-56dea40d5c3e",
+          "name": "Grindstone",
+          "number": "290",
+          "inputHash": "583eca8e57515be75d887e21289a333b5eb40be6461a29e6d74f638da9e1d677",
+          "referenceHash": "6ac36207d793546d57eb1b6471ca628d8b03a41be04ebdb11c4efa59a894a20c",
+          "tiers": {
+            "inspect": {
+              "previous": [0.6075815410638431, 0.6499534647701869],
+              "current": [0.6075815410638431, 0.6499534647701869]
+            },
+            "table": {
+              "previous": [0.5939746456781391, 0.6427226885365648],
+              "current": [0.5939746456781391, 0.6427226885365648]
+            }
+          }
+        },
+        {
+          "id": "224cb63f-9af0-4b00-ba0b-0b604abf20c8",
+          "name": "Salt Flats",
+          "number": "324",
+          "inputHash": "a5a63ca854773a33e7fcb75822004c1700db99f1fa322f3190509b7857488205",
+          "referenceHash": "145bf260438c4c97e8b2538adf7188cf86c1236aecab4d9dcc015816ad8fd7c3",
+          "tiers": {
+            "inspect": {
+              "previous": [0.4124512978777177, 0.4806813973019196],
+              "current": [0.4124512978777177, 0.4806813973019196]
+            },
+            "table": {
+              "previous": [0.45203125934391347, 0.49799130582329776],
+              "current": [0.45203125934391347, 0.49799130582329776]
+            }
+          }
+        },
+        {
+          "id": "b4d3d349-5c23-43a9-b25e-0e1a35b84673",
+          "name": "Stalking Stones",
+          "number": "327",
+          "inputHash": "5a3c78ef667a2f4309fe45c46ad2b21f0d4ce6ba7a065a984b1344113e13901e",
+          "referenceHash": "e35774564a73f6adc2b806cdea0cc1653e92ef465aa1b21f5e8a7d366bb95d08",
+          "tiers": {
+            "inspect": {
+              "previous": [0.43182870300475856, 0.4986101490125769],
+              "current": [0.43182870300475856, 0.4986101490125769]
+            },
+            "table": {
+              "previous": [0.46217743129713823, 0.4992501734892073],
+              "current": [0.46217743129713823, 0.4992501734892073]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

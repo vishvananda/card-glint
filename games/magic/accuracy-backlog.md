@@ -81,10 +81,24 @@ larger/heavier printed stars need a shared font/width treatment, not individual
 position fixes. Revised has 61 alignment warnings among 105 stat boxes, so frame
 landmarks and printed ink treatment must be reviewed before further geometry.
 
-A direct comparison against `main` additionally flags Mirage's Mtenda Herder:
-body edge F1 falls from .473 to .177 despite restored italic styling and credits.
-The enlarged triptych shows heavier glyphs and different wrapping/spacing. Keep
-this visible on the comparison page and revisit the regular/italic font metrics;
-a line-count improvement alone is insufficient. Shaper Guildmage's set-symbol
-score also falls (.465 → .401); its white outline is restored, but the palm shape
-and surrounding frame contamination remain under review.
+Mtenda Herder's regression against `main` was principally a wrapping boundary
+problem: allowing 10 more canonical pixels on the white frame restores all seven
+printed lines with the same fonts, raising body edge F1 from .177 to .704. This
+is a shared MIR/TMP white-plate policy, not a card-name exception. Extending every
+color regressed Energy Bolt, so other colors retain their existing widths.
+
+The white `seventh/regular/w.png` frame has a gray bevel along the left and bottom
+of its text box, absent from Mtenda Herder's scan. This is embedded in source
+asset `2fc988fc7aeb82d6183200dbfdb9e0de5196197ada5d8e4eac7afff24cec2091`;
+retain it in the asset improvement list while existing assets remain in use.
+Shaper Guildmage's set-symbol score also falls against main (.465 → .401); its
+white outline is restored, but the palm shape and frame contamination remain.
+
+Fourth Edition long text blocks now use an inset left edge at 72px and a 344px
+width, with no extra paragraph/flavor gap. Uncle Istvan's wrapping and inset
+improve substantially. Angry Mob now has scan-verified original rules and type,
+so its placement comparison no longer uses Oracle wording. Short centered
+passages (Swords to Plowshares, Lifetap, Immolation, Giant Growth) still need their
+own font-size/alignment policy. The long-block threshold is a development
+heuristic; measure color-specific safe areas and transfer it to other sets before
+claiming generality.
