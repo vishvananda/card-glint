@@ -1,18 +1,250 @@
 {
   "schemaVersion": 1,
   "mainCommit": "0b0d408d9dcbba6e3188d5d9f309dd1340347526",
-  "branchCommit": "0fff67a60ef36ad17381ebb6c279c1db18e0a888",
+  "branchCommit": "538782e1ee4f33cab76453aa6b485080b3d25773",
   "rendererHashes": [
     "48093a204cb7594234715c4bcb3719054861aa05bf32f6a036e93ced5cac3530",
-    "1681f1ad084c161f83432b92fa6fe11edf6f5a35a30fa671863ae9dce9286351"
+    "a704fb07f8b057318ad302e6e60a7d2042087c8ca4f886fb0b17e52cf060e294"
   ],
   "fontHashes": [
     "3493fd86c163fea26861cca7a28ac397aa8fbee4e7fa1599f556987ff9178ce2",
     "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12"
   ],
-  "metricSource": "e2f7654387f33a23e32ba96f4b60eed7ceaf4b41e105faed2ccb5ea95961eccf",
-  "note": "Selected examples with component-specific scan reviews, not an exhaustive main-branch ranking. Mana-only reviews do not certify body wording or styling. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
+  "metricSource": "9d8df093f8f4444e263a57908573038e6596e11d09772419b90dc8528887fed6",
+  "note": "Selected examples with component-specific scan reviews, not an exhaustive main-branch ranking. Mana/credit-only reviews do not certify body wording or styling. Early credits use dual-polarity boundary F1; Alpha whole-frame alignment remains uncertain. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
   "examples": [
+    {
+      "set": "lea",
+      "id": "9cd91814-6177-4a3d-a1c1-a3be7d7c7957",
+      "name": "Cockatrice",
+      "number": "189",
+      "source": "https://scryfall.com/card/lea/189/cockatrice?utm_source=api",
+      "inputHash": "fc717819c4e1d9cd186c9b6d022c5a4db683d0c25599ed2ada1e6c54fabfb8d7",
+      "referenceHash": "4637bcdc39642e66840cdf1d2cd11c4873878459e003cdcc6d651279f43ef131",
+      "alignment": {
+        "profileHash": "f01026b887105167e0682d3ced9848caeda4a813b674bb1c41f95553e4834fc7",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "contentStatus": "printing-reference",
+      "captureContentStatus": "printing-reference",
+      "contentReview": {
+        "file": "early-lettering-transfer.json",
+        "sha256": "9f1a84b68a8067a64d75ae9d451e03e3b3b570f2813e1ff5c466e4bff2ff1d58",
+        "regions": ["footer"],
+        "reviewedInputHash": "fc717819c4e1d9cd186c9b6d022c5a4db683d0c25599ed2ada1e6c54fabfb8d7"
+      },
+      "reviewCase": false,
+      "note": "The larger, left-aligned credit now includes the printed copyright mark and uses paired light/dark letter edges. These credit parameters passed reserved checks in Alpha and Unlimited. The title experiment was rejected and its previous painter is retained. Alpha frame edges and mana symbols still need work; body styling is unverified.",
+      "captures": {
+        "main": {
+          "sha256": "b5b0a240eccf98f07aa524b9029820d715ccce54531f51733860ee14d08a0ff0",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "41dacfc1abd4691a8dce69528db8d3934d58f1781fa9fe3b6a049c1acac2bae6",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "footer",
+          "rect": [42, 607, 347, 38],
+          "values": [0.31085621124755936, 0.6235987299263581]
+        }
+      ]
+    },
+    {
+      "set": "2ed",
+      "id": "c69d4007-d26b-442b-9c34-d3780c46c5f6",
+      "name": "Howling Mine",
+      "number": "248",
+      "source": "https://scryfall.com/card/2ed/248/howling-mine?utm_source=api",
+      "inputHash": "133dd4ec8cc487191778c675f5a4ac0094b573dfb3ab9da92f127dd2548e2e55",
+      "referenceHash": "24d59ceb8aa5821ff87fcc9953c8c94c507b5179347cc3e0625f2e40cc029d01",
+      "alignment": {
+        "profileHash": "f01026b887105167e0682d3ced9848caeda4a813b674bb1c41f95553e4834fc7",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "contentStatus": "printing-reference",
+      "captureContentStatus": "printing-reference",
+      "contentReview": {
+        "file": "early-lettering-transfer.json",
+        "sha256": "9f1a84b68a8067a64d75ae9d451e03e3b3b570f2813e1ff5c466e4bff2ff1d58",
+        "regions": ["footer"],
+        "reviewedInputHash": "133dd4ec8cc487191778c675f5a4ac0094b573dfb3ab9da92f127dd2548e2e55"
+      },
+      "reviewCase": false,
+      "note": "The credit moves from a small centered line to the printed left anchor, size and baseline. Both renderers use identical printing-specific wording and existing art. This is a credit-only score using both light and dark boundaries; the artifact frame color, type wording and title shape remain review items.",
+      "captures": {
+        "main": {
+          "sha256": "86ce4ddf9315db7eb2dd9b3f999317ef2207eedd6e66c520785461074b2cc886",
+          "attempts": 2,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "4a870f203e240290303fec2d426b32080f4556514674f037a835c3f82a382762",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "footer",
+          "rect": [42, 607, 347, 38],
+          "values": [0.3019126045433783, 0.6489352693987774]
+        }
+      ]
+    },
     {
       "set": "3ed",
       "id": "41859c6f-1017-42ae-9061-050fe0db9731",
@@ -2453,7 +2685,7 @@
       "captures": {
         "main": {
           "sha256": "80ba745cd7db7e7207d95b00634f36191e6e28e38dba930347603c2a2729bb60",
-          "attempts": 1,
+          "attempts": 2,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
