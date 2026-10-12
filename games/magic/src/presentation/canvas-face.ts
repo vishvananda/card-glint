@@ -1,3 +1,4 @@
+import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
 import { loadRetroFont } from './retro-font.js';
@@ -99,7 +100,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v51',
+    'canvas-face-v52',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -541,6 +542,7 @@ export function paintAssembledFace(
   const setIcon = images.get(faceSetSymbol(face) ?? '');
   const setCrop = setSymbolCrop(face),
     coreShield = hasCoreSetShield(face),
+    shapedCode = shapedSetCode(face),
     corePlacement = coreShield && kind === 'normal',
     symbolGrowth = corePlacement ? NORMAL_CORE_SYMBOL_SCALE : 1,
     setMargin = FACE_TEXT.setMargin + (corePlacement ? 2 : 0);
@@ -592,6 +594,16 @@ export function paintAssembledFace(
         ...symbolBounds,
         setCrop,
         corePlacement ? 1.5 : 1,
+      );
+    else if (shapedCode)
+      paintShapedSetSymbol(
+        context,
+        setIcon,
+        shapedCode,
+        face.rarity,
+        ...symbolBounds,
+        setCrop,
+        kind === 'normal',
       );
     else paintSetSymbol(context, setIcon, face.setCode, face.rarity, ...symbolBounds, setCrop);
   }

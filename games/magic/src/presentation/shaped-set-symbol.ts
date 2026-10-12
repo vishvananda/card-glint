@@ -1,0 +1,96 @@
+import type { FaceRect, RenderedCardInput } from './face-layout.js';
+
+type ShapedSetCode = 'm15' | 'war';
+
+export function shapedSetCode(
+  face: Pick<RenderedCardInput, 'setCode' | 'setSymbol'>,
+): ShapedSetCode | null {
+  if (face.setSymbol) return null;
+  const code = face.setCode?.toLowerCase();
+  return code === 'm15' || code === 'war' ? code : null;
+}
+
+/** Existing M15/WAR stencil envelopes. Interior holes are printing ink, not
+ * transparent windows onto the type plate. Coordinates follow the pinned SVGs. */
+export function paintShapedSetSymbol(
+  context: CanvasRenderingContext2D,
+  image: ImageBitmap,
+  code: ShapedSetCode,
+  rarity: string | undefined,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  crop: FaceRect,
+  normal: boolean,
+): void {
+  const [growth, dx, dy, rim]: readonly [number, number, number, number] = normal
+    ? code === 'm15'
+      ? [0.92, 2, -1, 0.7]
+      : [0.85, 0, 0, 1.2]
+    : [1, 0, 0, code === 'm15' ? 0.7 : 1.2];
+  x += dx - (width * (growth - 1)) / 2;
+  y += dy - (height * (growth - 1)) / 2;
+  width *= growth;
+  height *= growth;
+  const common = !rarity || rarity === 'common';
+  const layer = document.createElement('canvas'),
+    padding = 3,
+    resolution = 4;
+  layer.width = Math.ceil((width + padding * 2) * resolution);
+  layer.height = Math.ceil((height + padding * 2) * resolution);
+  const c = layer.getContext('2d')!;
+  c.scale(resolution, resolution);
+  c.translate(padding, padding);
+  c.drawImage(
+    image,
+    crop[0] * image.width,
+    crop[1] * image.height,
+    crop[2] * image.width,
+    crop[3] * image.height,
+    0,
+    0,
+    width,
+    height,
+  );
+  c.globalCompositeOperation = 'source-in';
+  const palette: readonly [string, string, string, string] =
+    rarity === 'mythic'
+      ? ['#9c2408', '#e97816', '#ffbf46', '#a73312']
+      : rarity === 'uncommon'
+        ? ['#506b80', '#a5c3d4', '#ccdce4', '#708898']
+        : ['#766326', '#c3af5c', '#eee1a0', '#907b36'];
+  const gradient = c.createLinearGradient(0, height * 0.65, width, height * 0.35);
+  gradient.addColorStop(0, palette[0]);
+  gradient.addColorStop(0.35, palette[1]);
+  gradient.addColorStop(0.6, palette[2]);
+  gradient.addColorStop(1, palette[3]);
+  c.fillStyle = common ? '#111111' : gradient;
+  c.fillRect(0, 0, width, height);
+  const sourceWidth = code === 'm15' ? 32 : 27;
+  const envelope = new Path2D(
+    code === 'm15'
+      ? 'M29.655 7.6c0 0 2.095 4.174 2.095 8.4s-2.095 8.4-2.095 8.4H2.376s-2.033-4.16-2.031-8.398C.343 11.76 2.376 7.6 2.376 7.6Z'
+      : 'M13.438 0 15.628 16.075 17.07 15.661 19.608 2.323 21.483 14.101 22.943 13.404 24.884 6.519 26.875 16.92 26.543 16.44C26.7 17.6 26.742 19 26.742 20.538c0 2.986-3.567 4.048-3.6 4.064-.066.033-7.531 2.77-9.721 7.399-2.206-4.612-9.655-7.382-9.721-7.399-.033 0-3.6-1.078-3.6-4.064 0-1.5.1-2.938.232-4.098L0 16.921 1.991 6.519 3.932 13.404 5.392 14.102 7.267 2.307 9.822 15.761 11.248 16.075Z',
+  );
+  const matrix = new DOMMatrix()
+    .translate((-crop[0] * width) / crop[2], (-crop[1] * height) / crop[3])
+    .scale(width / (sourceWidth * crop[2]), height / (32 * crop[3]));
+  const back = new Path2D();
+  back.addPath(envelope, matrix);
+  c.globalCompositeOperation = 'destination-over';
+  c.fillStyle = common ? '#f8f8f5' : '#111111';
+  c.fill(back);
+  c.strokeStyle = c.fillStyle;
+  c.lineWidth = rim;
+  c.lineJoin = 'round';
+  c.stroke(back);
+  context.drawImage(
+    layer,
+    x - padding,
+    y - padding,
+    layer.width / resolution,
+    layer.height / resolution,
+  );
+  layer.width = layer.height = 0;
+}
