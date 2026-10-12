@@ -7,6 +7,7 @@ import type { CanvasImages } from './canvas-assets.js';
 import { planeswalkerRuleRows } from './planeswalker-rules.js';
 import { paintRulesLayout } from './rules-paint.js';
 import type { RulesLayout } from './rules-layout.js';
+import { planeswalkerLowerPanel } from './planeswalker-lower-frame.js';
 /** Badge art has an asymmetric point and a small transparent right margin. */
 export function loyaltyBadge(badge: string) {
   return { font: 18, offsetY: badge.startsWith('+') ? 2 : badge === '0' ? 0 : -2 };
@@ -39,8 +40,11 @@ export function specialPaperColor(face: RenderedCardInput): string {
 export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: RenderedCardInput) {
   // Match the existing aperture in reference pixels. A rectangular underlay
   // leaks through the type opening and beyond the curved lower frame corners.
-  const top = faceFrame(face) === 'planeswalker-large' ? 382 : 429;
+  const { top, scale } = planeswalkerLowerPanel(faceFrame(face) === 'planeswalker-large');
   context.save();
+  context.translate(0, top);
+  context.scale(1, scale);
+  context.translate(0, -top);
   context.beginPath();
   context.moveTo(66, top);
   context.lineTo(448, top);

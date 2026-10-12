@@ -309,11 +309,10 @@ row spacing are implemented; type-strip shape/position is still under review.
   Restore illustration composition before treating all remaining differences
   as a color-calibration problem.
 - Bottom curve: the existing source assets contain it; their complete heights
-  now render instead of being cropped. Placement still needs review: inspect
-  overlap improves while table overlap declines, and the restored outer edge
-  sits low in the M21 Ugin sample. Separate inner rim, outer curve and missing
-  stamp targets before tuning geometry. This is not yet evidence that a new
-  frame asset is required.
+  now render instead of being cropped. Separate rim/curve landmarks establish a
+  shared 5px lower-panel lift, confirmed on ten reserved M19 printings at both
+  tiers. The missing central stamp and curved endpoints still need separate
+  targets. This is not evidence that a replacement frame asset is required.
 - Type strip: isolate printed letters, uniform outline and soft shadow into
   separate targets. Existing registration and raw scores disagree; most registered
   type crops decline after the visually directed shifts. Keep this flagged.
@@ -321,6 +320,8 @@ row spacing are implemented; type-strip shape/position is still under review.
   cases explicitly; curved ends and shadow shape still need separate targets.
 - Final ability text: check actual ink against the starting-loyalty silhouette;
   rectangle intersections alone flag many harmless transparent badge corners.
+  The new lower-rim audit also reveals real text/paper collisions on dense WAR
+  two-row cards that the nominal row-height overflow check missed.
 - Original wording: M15’s six type lines now have partial scan reviews. Its
   source line-ending artifacts are normalized with raw provenance retained.
 - Sparse typography: WAR’s one-activation cards now allow larger text. The final

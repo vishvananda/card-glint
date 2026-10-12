@@ -7,6 +7,7 @@ import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './spl
 import { faceFrame, faceRects } from './special-frames.js';
 import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.js';
 import { COLORLESS_PLATE_REPAINT, paintPlaneswalkerType } from './planeswalker-type.js';
+import { paintPlaneswalkerFrameImage } from './planeswalker-lower-frame.js';
 import { setSymbolCrop } from './set-symbols.js';
 import {
   cardStock,
@@ -92,7 +93,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v43',
+    'canvas-face-v44',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -409,7 +410,10 @@ export function paintAssembledFace(
     context.fillRect(bx, by, bw, bh);
   }
   const background = images.get(assets.background);
-  if (background)
+  const planeswalker = kind.startsWith('planeswalker');
+  if (background && planeswalker)
+    paintPlaneswalkerFrameImage(context, background, bx, by, bw, kind === 'planeswalker-large');
+  else if (background)
     context.drawImage(
       background,
       bx,
@@ -449,10 +453,11 @@ export function paintAssembledFace(
     context.restore();
   }
   paintIllustration(context, face, images, px(rects.art), layer);
-  const planeswalker = kind.startsWith('planeswalker');
   if (planeswalker) paintPlaneswalkerPaper(context, face);
-  if (frame && kind !== 'normal')
-    paintFrame(context, frame, profile.legendary, rects.frame, !planeswalker);
+  if (frame && planeswalker) {
+    const [x, y, width] = px(rects.frame);
+    paintPlaneswalkerFrameImage(context, frame, x, y, width, kind === 'planeswalker-large');
+  } else if (frame && kind !== 'normal') paintFrame(context, frame, profile.legendary, rects.frame);
   if (profile.legendary) draw(assets.crown, rects.crown);
   if (panel) {
     const boxes = images.get(assets.boxes);
@@ -618,18 +623,12 @@ function paintFrame(
   image: ImageBitmap,
   legendary: boolean,
   rect: FaceRect = FACE_RECTS.frame,
-  shadow = true,
 ) {
   const [x, y, width, height] = pixels(rect);
   const sourceHeight = Math.min(image.height, (height * image.width) / width);
   const renderedHeight = (sourceHeight * width) / image.width,
     scale = context.getTransform().a;
   context.save();
-  if (!shadow) {
-    context.drawImage(image, 0, 0, image.width, sourceHeight, x, y, width, renderedHeight);
-    context.restore();
-    return;
-  }
   context.shadowColor = 'black';
   context.shadowOffsetX = -0.00394 * FACE_WIDTH * scale;
   context.shadowOffsetY = 0.00394 * FACE_WIDTH * scale;

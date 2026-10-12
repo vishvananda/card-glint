@@ -1933,3 +1933,33 @@ and stamp separately before another shared geometry correction.
 The full [M21/M20](fixtures/accuracy/walker-materials-development-measurement.json)
 and [M15/WAR](fixtures/accuracy/walker-materials-set-transfer-measurement.json)
 reports preserve raw and registered scores for every region and card.
+
+The [lower-panel study](fixtures/accuracy/planeswalker-lower-panel-plan.json)
+separates the inner paper rim from the outer colored curve using signed vertical
+transitions in four fixed strips. Single, merged, competing and boundary peaks
+remain uncertain. Synthetic tests cover displacement, brightness, gamma, grain,
+missing transitions and distractors. No image registration is fitted by this tool.
+
+Both edges were 4–6px too low across the four examined sets. A shared 5px lift
+compresses only the existing background/frame/paper below the type opening;
+upper geometry, text and badge anchors are preserved. The
+[80-card geometry report](fixtures/accuracy/walker-lower-panel-geometry-measurement.json)
+records source/capture hashes and both raster tiers. Upper pixels differ by at
+most one channel unit from source-rectangle rounding. On the 70 development
+cards, raw inspect median absolute error falls from 4.78 to .59px for the inner
+rim and 5.23 to .50px for the outer curve, with 208/280 paired samples reliable.
+
+Ten M19 planeswalkers were selected by metadata and reserved before their scans
+or results were viewed. Their 33/40 reliable strips all improve: inspect inner
+error 4.44 → .31px and outer error 4.95 → .30px; table errors improve to .34 and
+.45px. Seven uncertain strips remain in the denominator. This validates the
+lower-panel correction on this set, not all typography, source wording or frame
+details. Raw measurements are primary; M19 receives no fitted registration.
+Run `node games/magic/tools/accuracy/walker-lower-frame-audit.mjs` to reproduce
+the CPU measurements from cached rasters.
+
+The stricter rim check also exposes a separate layout bug: dense two-row WAR
+abilities can extend below the paper while the old overflow flag reports false.
+Narset, Tibalt, Angrath, Ashiok, Dovin and Saheeli need a final glyph-bound fit
+against the actual paper aperture. This is visible in the new captures and must
+be corrected; nominal row-height checks are insufficient.
