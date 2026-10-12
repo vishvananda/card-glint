@@ -1,4 +1,7 @@
-import { paintRetroLetterEdges as paintLetterEdges } from './retro-lettering.js';
+import {
+  paintRetroLetterEdges as paintLetterEdges,
+  paintRetroGrayText,
+} from './retro-lettering.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { retroFamily } from './retro-frame.js';
 
@@ -16,7 +19,7 @@ export function paintRevisedTitle(
 ) {
   c.save();
   c.font = '26px "CardRenderer MTG Goudy", Georgia';
-  paintLetterEdges(c, text, 40, y, maxWidth + originalX - 40, 1);
+  paintRetroGrayText(c, text, 40, y, maxWidth + originalX - 40, 1);
   c.restore();
 }
 
@@ -30,9 +33,9 @@ export function paintRevisedStats(c: CanvasRenderingContext2D, text: string, y: 
 
 export function paintRevisedCredits(c: CanvasRenderingContext2D, artist: string) {
   c.save();
-  c.font = '22px "CardRenderer MTG MPlantin", Georgia';
+  c.font = '22px "CardRenderer MTG Goudy", Georgia';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  paintLetterEdges(c, `Illus. © ${artist}`, 50, 642, 338, 1.25);
+  paintRetroGrayText(c, `Illus. © ${artist}`, 50, 642, 338, 1.25);
   c.restore();
 }

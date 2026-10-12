@@ -1,16 +1,16 @@
 import type { RenderedCardInput } from './face-layout.js';
-import { paintRetroLetterEdges } from './retro-lettering.js';
+import { paintRetroGrayText } from './retro-lettering.js';
 
-/** Frozen across Alpha and Unlimited; Beta remains a separate transfer check. */
+/** Early gray credits use the title face; geometry is shared across ABU. */
 export function usesEarlyCredits(face: RenderedCardInput): boolean {
-  return ['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
+  return ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
 }
 
 export function paintEarlyCredits(c: CanvasRenderingContext2D, artist: string) {
   c.save();
-  c.font = '22.5px "CardRenderer MTG MPlantin", Georgia';
+  c.font = '22.5px "CardRenderer MTG Goudy", Georgia';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  paintRetroLetterEdges(c, `Illus. © ${artist}`, 49, 631, 338, 1.25);
+  paintRetroGrayText(c, `Illus. © ${artist}`, 49, 631, 338, 1.25);
   c.restore();
 }

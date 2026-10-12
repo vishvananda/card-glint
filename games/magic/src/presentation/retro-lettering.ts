@@ -42,3 +42,21 @@ export function paintRetroLetterEdges(
   layer.width = layer.height = 0;
   c.restore();
 }
+/** Solid gray ink over a lower-right shadow, composed once per cached face. */
+export function paintRetroGrayText(
+  c: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  offset: number,
+) {
+  c.save();
+  c.shadowColor = 'transparent';
+  c.shadowOffsetX = c.shadowOffsetY = 0;
+  c.fillStyle = '#17140f';
+  c.fillText(text, x + offset, y + offset, maxWidth);
+  c.fillStyle = '#ababab';
+  c.fillText(text, x, y, maxWidth);
+  c.restore();
+}

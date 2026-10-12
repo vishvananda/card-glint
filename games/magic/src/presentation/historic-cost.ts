@@ -51,11 +51,15 @@ function paintCost(
       paintMana(c, symbol, x, y, size, images, false);
       return;
     }
-    // Mana's original sun has no cost disc. Normalize its actual outline bounds,
-    // since the font's advance and em box do not describe the visible symbol.
+    // The early sun is still printed on a pale disc. The font supplies only
+    // the black glyph; normalize its outline independently of the disc size.
     c.save();
     c.shadowColor = 'transparent';
     c.shadowOffsetX = c.shadowOffsetY = 0;
+    c.fillStyle = '#efe7cb';
+    c.beginPath();
+    c.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
+    c.fill();
     c.fillStyle = '#0d0f0f';
     c.font = '100px "CardRenderer MTG Historic Symbols"';
     c.textAlign = 'left';
