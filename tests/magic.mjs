@@ -378,6 +378,38 @@ try {
       !measured.lines.some((l) => l.runs.some((r) => r.italic))
     )
       throw Error('Measured styled layout failed');
+    // Separators must clear actual ink, including italic ascenders and symbol
+    // descenders. Exercise wrapping and the fitter instead of a fixed baseline.
+    for (const width of [145, 250, 400]) {
+      for (const height of [115, 220]) {
+        const passage = layoutRules(
+          ctx,
+          [
+            { role: 'rules', runs: [{ text: 'Pay {T}: Draw a card, then discard a card.' }] },
+            {
+              role: 'flavor',
+              runs: [
+                {
+                  text: 'A flying dragon guards the high tower. Beyond it lies a forgotten city.',
+                  italic: true,
+                },
+              ],
+            },
+          ],
+          { x: 12, y: 30, width, height },
+        );
+        if (passage.overflow) throw Error('Separator fixture did not fit');
+        const lastRules = passage.lines.filter((line) => line.role === 'rules').at(-1);
+        const firstFlavor = passage.lines.find((line) => line.role === 'flavor');
+        const separator = passage.separators[0];
+        if (
+          passage.separators.length !== 1 ||
+          separator <= lastRules.inkBounds[1] + lastRules.inkBounds[3] ||
+          separator + 0.6 >= firstFlavor.inkBounds[1]
+        )
+          throw Error('Flavor separator overlaps lettering');
+      }
+    }
     const impossible = layoutRules(ctx, [{ role: 'rules', runs: [{ text: 'W'.repeat(100) }] }], {
       x: 0,
       y: 0,

@@ -174,3 +174,52 @@ assert.throws(
 console.log(
   'Printing text identity, ambiguity, absence, reviewed precedence and type separation passed.',
 );
+
+// Produced mana colors describe a modern land's printed palette, not its rules colors.
+const land = {
+  ...entry,
+  card: {
+    ...entry.card,
+    frame: '2015',
+    type_line: 'Land',
+    colors: [],
+    produced_mana: ['R', 'B', 'C'],
+  },
+};
+const landFace = presentation(land).face;
+assert.deepEqual(landFace.colors, []);
+assert.deepEqual(landFace.frameColors, ['B', 'R']);
+assert.deepEqual(
+  presentation({ ...land, card: { ...land.card, frame: '2003' } }).face.frameColors,
+  ['B', 'R'],
+);
+assert.deepEqual(
+  presentation({ ...land, card: { ...land.card, produced_mana: ['U'] } }).face.frameColors,
+  ['U'],
+);
+for (const changes of [
+  { produced_mana: ['C'] },
+  { produced_mana: ['W', 'U', 'B', 'R', 'G'] },
+  { produced_mana: undefined, color_identity: ['B', 'R'] },
+  { frame: '1997' },
+  { type_line: 'Artifact Land' },
+  { type_line: 'Basic Land — Mountain' },
+  { type_line: 'Artifact' },
+  { colors: ['G'] },
+])
+  assert.equal(
+    presentation({ ...land, card: { ...land.card, ...changes } }).face.frameColors,
+    undefined,
+  );
+assert.deepEqual(
+  presentation(land, {
+    'printing-a': { reviewedFields: ['frameColors'], referenceHash: 'scan-a', frameColors: [] },
+  }).face.frameColors,
+  [],
+);
+assert.deepEqual(
+  presentation(land, {
+    'printing-a': { reviewedFields: ['frameColors'], referenceHash: 'scan-a', frameColors: ['G'] },
+  }).face.frameColors,
+  ['G'],
+);

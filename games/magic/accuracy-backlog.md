@@ -434,7 +434,8 @@ at both tiers; this does not certify every symbol or every card in those sets.
   sets. Rules-panel narrowing transfers to WAR/M15/M19/M20, but M21 rejects it.
   Check Ikoria, Zendikar Rising and later releases before inferring an era boundary.
 - Retain border-strip regressions: split-color lands (Cinder Barrens, Caves of
-  Koilos, Bloodfell Caves) need their printed frame coloration/inner bevels;
+  Koilos, Bloodfell Caves) were missing adapter frame palettes. Corrected in v56;
+  remeasure their bevels with the corrected inputs before calling this an asset defect;
   WAR Ashiok's Skulker/Krenko/Roalesk and M20 Gargos/Risen Reef need edge review.
   M20 Skyknight Vanguard has a small type-width regression; long fitted types
   now keep their old font height. All per-card scores remain in window reports.
@@ -460,3 +461,22 @@ at both tiers; this does not certify every symbol or every card in those sets.
   generic treatments: the FDN reference shows a larger outlined, shaded star
   than the current flat symbol. Record topology/material fixes separately from
   aperture geometry. Do not certify text overlap until printing text is checked.
+
+### Flavor separators and land input palettes (v56)
+
+- Cached ordinary cohort: 262 cards across 11 modern sets; 175 rules/flavor
+  separators, 168 intersecting text before, zero after. The separator now uses
+  measured ink boundaries rather than a baseline estimate. Minimum clearance
+  is 8.71 reference pixels. All text lines, sizes and wrapping are unchanged.
+- Forty cards captured at inspect and table tiers. For unchanged inputs, pixel
+  changes are confined to the old/new separator strips. This is a structural
+  collision audit, not a scan-similarity or original-wording certification.
+- Sixteen modern land inputs now pass one/two produced mana colors as
+  `frameColors`, retaining colorless semantic `colors`. Explicit reviewed
+  palettes win, including an empty palette. Basic, artifact, retro, rainbow
+  and fetch-land inference remain excluded pending printing review.
+- Evidence: `fixtures/accuracy/flavor-land-plan.json` and
+  `flavor-land-measurement.json`; repeat comparisons with
+  `node games/magic/tools/accuracy/flavor-land-study.mjs compare`. Comparisons
+  read saved layouts/PNGs without Chromium. The local review page shows scans,
+  before/after renders and optional normalized red/green overlays.

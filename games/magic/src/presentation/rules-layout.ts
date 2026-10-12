@@ -106,8 +106,6 @@ export function layoutRules(
         if (previous) {
           if (previous === 'rules' && paragraph.role === 'flavor') {
             baseline += size * typography.flavorGap;
-            if (typography.flavorSeparator !== false)
-              separators.push(baseline - (size * typography.flavorGap) / 2 - size * 0.25);
           } else if (previous !== 'flavor' || paragraph.role !== 'flavor')
             baseline += size * typography.paragraphGap;
         }
@@ -146,6 +144,18 @@ export function layoutRules(
           baseline += paragraphSize * typography.leading;
         }
         previous = paragraph.role;
+      }
+      if (typography.flavorSeparator !== false) {
+        for (let i = 1; i < lines.length; i++) {
+          const above = lines[i - 1]!,
+            below = lines[i]!;
+          if (above.role !== 'rules' || below.role !== 'flavor') continue;
+          // The cursor already includes a line advance. Position the separator
+          // in the measured ink gap, not relative to the next baseline. This
+          // also handles italic flavor fitted at a different font size.
+          const bottom = above.inkBounds[1] + above.inkBounds[3];
+          separators.push((bottom + below.inkBounds[1]) / 2 - 0.3);
+        }
       }
       const inkTop = lines[0]?.inkBounds[1] ?? 0;
       const last = lines.at(-1)?.inkBounds;

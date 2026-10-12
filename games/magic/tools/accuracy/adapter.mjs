@@ -6,6 +6,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
   if (annotation.reviewed && annotation.referenceHash !== entry.reference?.sha256)
     throw Error(`Reviewed text is stale for ${card.name}; review it against the new reference.`);
   const fields = reviewedPrintingFields(entry, annotation);
+  const frameColors = fields.frameColors ?? inferredLandPalette(card);
   const original = printingText[card.id];
   const rules =
     annotation.rulesText ?? original?.originalText ?? card.printed_text ?? card.oracle_text ?? '';
@@ -44,7 +45,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     rarity: card.rarity,
     frameStyle: ['1993', '1997'].includes(card.frame) ? 'retro' : 'modern',
     borderColor: card.border_color,
-    ...(fields.frameColors === undefined ? {} : { frameColors: fields.frameColors }),
+    ...(frameColors === undefined ? {} : { frameColors }),
     // Historical "Summon" text changes the visible label, not creature identity.
     ...(fields.typeLine === undefined
       ? {}
@@ -70,4 +71,20 @@ function reminderRuns(text) {
     .split(/(\([^)]*\))/g)
     .filter(Boolean)
     .map((text) => ({ text, italic: text.startsWith('(') }));
+}
+
+/** Scryfall rules colors are empty for ordinary lands. Their one/two-color
+ * modern frames follow produced mana, excluding colorless. Keep ambiguous
+ * palettes (fetches, rainbow lands, artifact/basic/retro frames) for review;
+ * color identity is not a reliable description of the printed frame. */
+function inferredLandPalette(card) {
+  if (
+    !['2003', '2015'].includes(card.frame) ||
+    !/\bLand\b/.test(card.type_line ?? '') ||
+    /\b(?:Artifact|Basic)\b/.test(card.type_line ?? '') ||
+    card.colors?.length
+  )
+    return undefined;
+  const colors = [...'WUBRG'].filter((color) => card.produced_mana?.includes(color));
+  return colors.length >= 1 && colors.length <= 2 ? colors : undefined;
 }
