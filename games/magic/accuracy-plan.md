@@ -2228,3 +2228,40 @@ Reproduce the initial comparisons with
 These commands compare cached rasters on the CPU; they do not start Chromium
 or measure GPU completion. Source captures remain separate. Full-set coverage
 for M15/WAR and additional symbol topologies are still required.
+
+### Complete M15/WAR symbol coverage
+
+The frozen [full-set plan](fixtures/accuracy/set-symbol-topology-all-plan.json)
+now covers 284 M15 and 274 WAR printings, including basics and planeswalkers.
+WAR's one special treatment is excluded explicitly. All 558 captures succeeded
+at both tiers, and every pixel outside the permitted symbol region is unchanged
+between v51 and v53. This extends the examined corpus by 386 cards.
+
+| Ordinary nonbasic cohort | Cards | Inspect symbol F1 | Table symbol F1 |
+| ------------------------ | ----: | ----------------: | --------------: |
+| M15                      |   258 |       .563 → .948 |     .553 → .894 |
+| WAR                      |   221 |       .620 → .848 |     .576 → .786 |
+
+M15 has no edge regressions. WAR retains Mountain #260 at both tiers and
+Tomik #34 at table tier. Liliana's Triumph #98 loses inspect contrast; Census
+regresses on #34/#98/#260 at inspect and Sorin #217 at table. These are v51→v53
+results, distinct from the earlier rim-only regressions. All individual scores
+remain in the [M15](fixtures/accuracy/set-symbol-topology-all-m15-measurement.json)
+and [WAR](fixtures/accuracy/set-symbol-topology-all-war-measurement.json) reports.
+
+Planeswalker context scores improve but still mix symbol and frame ink. The six
+M15 planeswalker captures also missed the base annotations' reviewed original
+type lines because study-specific annotation loading did not inherit them.
+Before/after inputs are identical, so the symbol comparison remains valid;
+these captures cannot validate original typography. Fix annotation inheritance
+before the next typography capture.
+
+Independent [M15](fixtures/accuracy/normal-plate-symbol-m15-measurement.json) and
+[WAR](fixtures/accuracy/normal-plate-symbol-war-measurement.json) plate reports
+retain raw signed edge positions and confidence. Charity Extractor and
+Dreadhorde Invasion have similar title/type displacement, consistent with the
+whole-scan offset confirmed in visual review. Translation-only scan
+normalization is the next measurement pass; it must use independent frame
+landmarks, retain raw scores, and reject inconsistent geometry rather than
+fitting individual text or symbols. Bolas's Citadel's title width and rules
+typography require separate study.

@@ -395,6 +395,17 @@ at both tiers; this does not certify every symbol or every card in those sets.
   differences around its horn bases and central cutout. Keep those potential
   asset changes separate from corrected opacity and geometry. Exact gradient
   colors remain part of the pending set/material color study.
-- Complete every-card M15/WAR coverage, then extend treatments to further
-  symbol families. The current set-specific backing contours must not be used
-  indiscriminately for other SVGs or caller-provided artwork.
+- Every-card M15/WAR symbol coverage is complete: 558 supported printings,
+  with unchanged pixels outside symbols at both tiers. Keep WAR #260/#34 edge
+  regressions, #98 contrast regression and #217 table Census regression visible.
+  Extend treatments to further symbol families; existing set-specific backing
+  contours must not be used indiscriminately for other SVGs or custom artwork.
+- Add bounded translation-only scan normalization using independent frame
+  landmarks, with confidence rejection and raw/normalized scores side by side.
+  Visual review confirmed whole-scan vertical shifts on Charity Extractor and
+  Dreadhorde Invasion. Do not optimize individual components or renderer geometry
+  against each scan. Investigate Bolas's Citadel title width and body leading
+  separately after registration.
+- Repair study annotation inheritance before new typography captures: the full
+  symbol study did not inherit M15's six reviewed original planeswalker type
+  lines. Symbol comparisons remain controlled; printing typography is uncertified.
