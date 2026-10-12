@@ -21,10 +21,12 @@ import { compareRegion } from './metrics.mjs';
 import { letteringContrast } from './lettering-contrast.mjs';
 
 const phase = process.argv[2];
+const study = process.argv[3] ?? 'printing-style';
+assert.match(study, /^[a-z][a-z0-9-]*$/);
 assert.ok(['before', 'after', 'report'].includes(phase));
-const planBytes = await readFile(path.join(fixtureRoot, 'printing-style-plan.json'));
+const planBytes = await readFile(path.join(fixtureRoot, study + '-plan.json'));
 const plan = JSON.parse(planBytes);
-const out = path.join(outputRoot, 'printing-style');
+const out = path.join(outputRoot, study);
 if (phase !== 'report') {
   const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
   if (phase === 'before') assert.equal(rendererHash, plan.baselineRendererHash);
@@ -45,6 +47,7 @@ if (phase !== 'report') {
             '/games/magic/src/presentation/canvas-assets.ts'
           );
           const images = {};
+          let layout = null;
           for (const tier of ['inspect', 'table']) {
             const canvas = await composeCardTexture(
               { face, printingId: null, printedImage: null },
@@ -63,19 +66,25 @@ if (phase !== 'report') {
               },
             );
             images[tier] = canvas.toDataURL('image/png');
+            if (tier === 'inspect') {
+              const { retroTextLayout } = await import(
+                '/games/magic/src/presentation/retro-rules.ts'
+              );
+              layout = retroTextLayout(canvas.getContext('2d'), face);
+            }
             canvas.width = canvas.height = 0;
           }
           if ([...document.fonts].some((f) => f.status === 'error')) throw Error('Font failed');
-          return images;
+          return { images, layout };
         }, card.face);
         const images = {};
-        for (const [tier, data] of Object.entries(captures)) {
+        for (const [tier, data] of Object.entries(captures.images)) {
           const bytes = Buffer.from(data.split(',')[1], 'base64');
           const file = `${phase}/${set}-${card.number}.${tier}.png`;
           await atomicWrite(path.join(out, file), bytes);
           images[tier] = { file, sha256: hash(bytes) };
         }
-        results.push({ ...card, images });
+        results.push({ ...card, images, layout: captures.layout });
       }
       assert.deepEqual(session.faults, []);
     } finally {
@@ -121,7 +130,7 @@ if (phase !== 'report') {
           if (tier === 'inspect') images[side] = image;
           const p = cropGray(image, region.rect);
           scores[tier][side] = {
-            ...(region.id === 'mana'
+            ...(['mana', 'body'].includes(region.id)
               ? { edgeF1: compareRegion(r.gray, p.gray, r.width, r.height).edgeF1[1] }
               : compareLettering(r.gray, p.gray, r.width, r.height)),
             contrast: letteringContrast(r.gray, p.gray, r.width, r.height),
@@ -148,6 +157,7 @@ if (phase !== 'report') {
         referenceHash: card.referenceHash,
         inputHash: card.inputHash,
         scores,
+        ...(region.id === 'body' ? { beforeLayout: old.layout, afterLayout: card.layout } : {}),
         crop: { file, sha256: hash(await readFile(path.join(out, file))) },
       });
     }
@@ -160,7 +170,7 @@ if (phase !== 'report') {
     rows,
     note: 'Fixed identity alignment. Selected development and frozen Beta printing transfer, not whole-set accuracy. Paired-edge F1 does not certify interior fill; signed contrast is also texture-sensitive. Node-only measurement after Chromium raster capture.',
   };
-  await writeJson(path.join(fixtureRoot, 'printing-style-measurement.json'), report);
+  await writeJson(path.join(fixtureRoot, study + '-measurement.json'), report);
   await atomicWrite(
     path.join(out, 'index.html'),
     `<!doctype html><meta charset="utf-8"><title>Printing corrections</title><style>body{font:16px system-ui;background:#182128;color:#eee;margin:30px}img{width:min(100%,1500px);image-rendering:auto}article{margin:30px 0}p{max-width:1000px}a{color:#aaf}</style><h1>Printing corrections</h1><p>Each strip: scan · previous branch · corrected branch. Shared geometry; no scan-specific fitting. <a href="../main-review/">Full cards against main</a></p>${rows.map((r) => `<article><h2>${r.name} (${r.set.toUpperCase()}) — ${r.region.id}</h2><p>${r.cohort}; inspect edge F1 ${r.scores.inspect.before.edgeF1.toFixed(3)} → ${r.scores.inspect.after.edgeF1.toFixed(3)}, signed contrast ${r.scores.inspect.before.contrast?.toFixed(3)} → ${r.scores.inspect.after.contrast?.toFixed(3)}</p><img src="${r.crop.file}"></article>`).join('')}`,
