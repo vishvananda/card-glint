@@ -17,17 +17,46 @@ assert.equal(shifted.status, 'placement');
 assert.deepEqual([shifted.dx, shifted.dy], [-5, 3]);
 assert.ok(shifted.diagnosticEdgeF1 > 0.99);
 assert.ok(shifted.rawEdgeF1 < 0.7);
+assert.deepEqual([shifted.overlapPeak.dx, shifted.overlapPeak.dy], [-5, 3]);
+assert.equal(shifted.overlapPeak.edgeF1, 1);
+assert.equal(shifted.objectiveDisagreementPx, 0);
+assert.equal(shifted.search.evaluatedOffsets, 441);
 const recolored = componentOffset(a, shape(5, -3, 150, 65), width, height);
 assert.deepEqual([recolored.dx, recolored.dy], [-5, 3]);
 assert.equal(recolored.diagnosticEdgeF1, shifted.diagnosticEdgeF1);
+assert.deepEqual(recolored.overlapPeak, shifted.overlapPeak);
 assert.equal(
   componentOffset(a, new Float32Array(width * height).fill(200), width, height).status,
   'missing-ink',
 );
 assert.equal(componentOffset(a, shape(14, 0), width, height).status, 'search-boundary');
 assert.ok(componentOffset(a, shape(0, 0, 200, 30, true), width, height).diagnosticEdgeF1 < 0.65);
+const tinySearch = componentOffset(a, a, width, height, false, 1);
+assert.equal(tinySearch.search.evaluatedOffsets, 9);
+assert.equal(tinySearch.overlapPeak.edgeF1, 1);
+assert.equal(tinySearch.margin, null);
+assert.equal(tinySearch.overlapPeak.margin, null);
+assert.equal(tinySearch.overlapPeak.ambiguous, true);
+
+// Stationary marks can pull minimum distance away from the true foreground shift.
+// Retain the stronger overlap peak and expose disagreement instead of hiding it.
+function contaminatedShape(dx = 0, dy = 0) {
+  const w = 90,
+    h = 80,
+    gray = new Float32Array(w * h).fill(200);
+  for (let y = 25; y < 46; y++)
+    for (let x = 32; x < 56; x++)
+      if (x < 37 || y > 40 || (x > 46 && y < 33)) gray[(y + dy) * w + x + dx] = 30;
+  for (let j = 0; j < 3; j++) for (let x = 3; x < 5; x++) gray[(4 + j * 5) * w + x] = 30;
+  return gray;
+}
+const competing = componentOffset(contaminatedShape(), contaminatedShape(7, -6), 90, 80);
+assert.deepEqual([competing.overlapPeak.dx, competing.overlapPeak.dy], [-7, 6]);
+assert.ok(competing.overlapPeak.edgeF1 > competing.diagnosticEdgeF1 + 0.3);
+assert.ok(competing.objectiveDisagreementPx > 5);
+assert.equal(competing.status, 'ambiguous');
 console.log(
-  'Component diagnostics: known displacement, contrast, missing ink, range limit and wrong shape passed',
+  'Component diagnostics: displacement, contrast, missing ink, search limits, competing peaks and wrong shape passed',
 );
 
 // A frame line is shared by both candidates: it must not hide a displaced cost disc.

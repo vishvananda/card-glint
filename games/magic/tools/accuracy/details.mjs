@@ -152,7 +152,8 @@ for (const card of current.results) {
     inputHash: card.inputHash,
     manaCircles,
     manaRows,
-    alignmentUncertain: card.alignment.uncertain,
+    alignmentUncertain: card.alignment.uncertain || old.alignment.uncertain,
+    alignmentFlags: { before: old.alignment.uncertain, after: card.alignment.uncertain },
     regions: measured,
   });
 }
@@ -177,6 +178,12 @@ const summary = Object.fromEntries(
           (a, r) => ({ ...a, [r.after.status]: (a[r.after.status] ?? 0) + 1 }),
           {},
         ),
+        overlapDiagnostics: {
+          measured: valid.filter((r) => r.after.overlapPeak).length,
+          ambiguous: valid.filter((r) => r.after.overlapPeak?.ambiguous).length,
+          atBoundary: valid.filter((r) => r.after.overlapPeak?.boundary).length,
+          objectiveDisagreements: valid.filter((r) => r.after.objectiveDisagreementPx > 2).length,
+        },
         beforeOffset: ['dx', 'dy'].map((v) =>
           median(valid.map((r) => r.before[v]).filter(Number.isFinite)),
         ),
@@ -226,7 +233,7 @@ const rowSummary = {
 };
 const report = {
   schemaVersion: 1,
-  method: 'component-offset-v2',
+  method: 'component-offset-v3',
   set: opts.set,
   run: opts.run,
   baseline: opts.baseline,

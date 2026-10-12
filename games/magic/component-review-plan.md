@@ -16,6 +16,12 @@ issues. Every visible component needs its own review status and examples.
   F1, the suggested displacement, residual shape disagreement, alternative-peak
   ambiguity, and search-boundary failures. A suggested displacement never changes
   an image or replaces its raw score. Out-of-window edges remain penalized.
+  The search evaluates all 441 integer offsets within ±10 canonical pixels,
+  retaining both the maximum-overlap (edge F1) and minimum-edge-distance peaks.
+  This implements the small positional bumps without stopping at a local peak.
+  Peaks more than 2px apart trigger review. A boundary winner means the search
+  has not located an interior optimum; a narrow/tied peak margin means the
+  position is uncertain. Neither is accepted as a calibrated placement.
 - Locate mana discs with a separate radial contrast measurement. The Fourth
   Edition pass extends this to every disc in the cost row, each searched around
   a fixed nominal position. It reports pitch, vertical spread, partial rows and
@@ -29,7 +35,9 @@ issues. Every visible component needs its own review status and examples.
   change and after scoring it. The page exposes component data, not just a body
   average. All pixel comparison and page generation run in Node without Chromium.
 - Test known displacements, contrast changes, missing ink, wrong shapes, search
-  limits and a circle shifted independently of an unchanged frame line.
+  limits and a circle shifted independently of an unchanged frame line. A case
+  with stationary background marks also verifies that maximum overlap can find
+  the displaced shape when minimum distance favors a different position.
 
 These are initial diagnostics, not validated pass/fail certification. Generic
 region matching can still prefer a shared frame edge over a symbol, or align
@@ -104,6 +112,12 @@ interactions and omitted content outside the small windows.
 Use a shared parameter sweep only after that inspection identifies a plausible
 cause. Evaluate a small bounded grid, inspect the best candidates and the worst
 regressions, then freeze the production policy before opening the transfer set.
+Use the same candidate displacement for every card in a frame-family cohort;
+optimize the robust aggregate of their fixed component scores, retaining each
+card's delta and alignment uncertainty. For mana rows, sweep pitch and radius
+separately from row position. Per-card search peaks suggest candidates but must
+never become per-scan corrections. Isolate the foreground first when either
+objective is following a frame ridge or background mark.
 For a wrong shape, inspect the existing source asset and verified historical
 variants before changing code. Record unresolved visual questions on the example
 page so the user can help without needing to reconstruct the diagnosis.

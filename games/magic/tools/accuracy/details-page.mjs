@@ -54,7 +54,16 @@ export async function detailPage({ opts, dir, previous, current, before, report 
     }
   }
   const selected = fourth
-    ? ['Uncle Istvan', 'Lifetap', 'Conversion', 'Backfire', 'Fellwar Stone', 'Island', 'Strip Mine']
+    ? [
+        'Uncle Istvan',
+        'Lifetap',
+        'Conversion',
+        'Backfire',
+        'Fellwar Stone',
+        'Island',
+        'Strip Mine',
+        'Sleight of Mind',
+      ]
     : [
         'Viashino Warrior',
         "Suq'Ata Firewalker",
@@ -74,14 +83,18 @@ export async function detailPage({ opts, dir, previous, current, before, report 
       const old = s.before.results.find((c) => c.id === card.id),
         detail = s.report.results.find((c) => c.id === card.id);
       const region = (c, id) => c.comparisons.inspect.regions.find((r) => r.id === id)?.edgeF1?.[1];
-      const score = ['title', 'mana', 'set-symbol', 'stats', 'footer']
+      const score = ['title', 'mana', 'type', 'set-symbol', 'stats', 'footer']
         .filter((id) => region(card, id) != null)
         .map((id) => `${id}: ${number(region(old, id))} → ${number(region(card, id))}`)
         .join(' · ');
       const review = fourth
-        ? card.frame !== 'retro-fourth'
-          ? 'Unchanged land branch: this uses a different plate and has insufficient calibration evidence. The early basic-land body and credits still need a separate printing policy.'
-          : 'Remaining review: title/credit strokes look heavier than the print, and body typography has not been adjusted in this pass. Inspect glyph weight separately from placement.'
+        ? detail.alignmentUncertain && card.frame === 'retro-fourth'
+          ? 'Alignment review: at least one side of this pair fails the frame-landmark confidence gate. Scores remain visible but are excluded from paired summaries. A landmark may be following nearby text or texture; inspect before changing geometry.'
+          : card.frame !== 'retro-fourth'
+            ? 'Unchanged land branch: this uses a different plate and has insufficient calibration evidence. The early basic-land body and credits still need a separate printing policy.'
+            : name === 'Uncle Istvan'
+              ? 'Review: this is the largest type-line regression (0.688 → 0.654) despite better title, mana and credits. The title/credit strokes remain heavy and the printed stats are italic. Use the type and footer crops to inspect these separately.'
+              : 'Remaining review: title/credit strokes look heavier than the print, and body typography has not been adjusted in this pass. Inspect glyph weight separately from placement.'
         : name === 'Lead Golem'
           ? 'Frame asset review: the original artifact frame has a dark reddish texture. Our existing asset is much brighter and brown, with a different text-box pattern.'
           : name === 'Shaper Guildmage' || name === 'Grindstone'
@@ -97,7 +110,7 @@ export async function detailPage({ opts, dir, previous, current, before, report 
       const diagnostics = detail.regions
         .map(
           (r) =>
-            `<tr><td>${escape(r.id)}</td><td>${number(r.before.rawEdgeF1)} → ${number(r.after.rawEdgeF1)}</td><td>${escape(r.before.dx)}, ${escape(r.before.dy)} → ${escape(r.after.dx)}, ${escape(r.after.dy)}</td><td>${escape(r.after.status)}</td></tr>`,
+            `<tr><td>${escape(r.id)}</td><td>${number(r.before.rawEdgeF1)} → ${number(r.after.rawEdgeF1)}</td><td>${escape(r.before.dx)}, ${escape(r.before.dy)} → ${escape(r.after.dx)}, ${escape(r.after.dy)}</td><td>${r.after.overlapPeak ? `${r.after.overlapPeak.dx}, ${r.after.overlapPeak.dy} · F1 ${number(r.after.overlapPeak.edgeF1)}${r.after.overlapPeak.ambiguous ? ' · ambiguous' : ''}${r.after.overlapPeak.boundary ? ' · boundary' : ''}` : '—'}</td><td>${escape(r.after.status)}${r.after.objectiveDisagreementPx > 2 ? ' · objectives disagree' : ''}</td></tr>`,
         )
         .join('');
       const overlays = detail.regions
@@ -107,7 +120,7 @@ export async function detailPage({ opts, dir, previous, current, before, report 
         )
         .join('');
       return [
-        `<article id="card-${card.collectorNumber}-${s.set}"><h2>${escape(name)} <small>${s.set.toUpperCase()} #${card.collectorNumber}</small></h2><p class="scores">${score}</p>${review ? `<p class="review">${escape(review)}</p>` : ''}<div class="triptych">${columns.map(([title, url]) => `<figure><figcaption>${title}</figcaption><a class="card" href="${escape(url)}" target="_blank" rel="noopener"><img src="${escape(url)}" alt="${escape(name)} — ${title}" loading="lazy" width="488" height="680"></a></figure>`).join('')}</div><details><summary>Component offsets and edge overlays</summary>${detail.manaRows ? `<p>Whole mana row (scan / old / new): ${detail.manaRows.map((row) => `${row.status}; pitch ${number(row.pitch)}px`).join(' / ')}. Every disc is checked; a correct rightmost disc cannot hide incorrect spacing.</p>` : ''}${detail.manaCircles ? `<p>Independent rightmost-mana disc centers (scan / old / new): ${detail.manaCircles.map((v) => `${v.x}, ${v.y} · ${v.status}`).join(' / ')}. Ring detection discounts straight frame edges; uncertain circles require visual review.</p>` : ''}<p>Offsets suggest moving rendered ink toward the reference. They are diagnostics, never applied to these images or accuracy scores. Cyan = scan-only edge; magenta = render-only; white = overlap. Shape flags can also reflect typography, texture or incomplete crops.</p><table><thead><tr><th>Component</th><th>Fixed F1</th><th>Suggested dx, dy (px)</th><th>Current flag</th></tr></thead><tbody>${diagnostics}</tbody></table><div class="overlays">${overlays}</div></details><p><a href="${escape(card.source)}">Scryfall source</a> · <a href="${escape(local(s.dir, 'details.json'))}">Component data</a></p></article>`,
+        `<article id="card-${card.collectorNumber}-${s.set}"><h2>${escape(name)} <small>${s.set.toUpperCase()} #${card.collectorNumber}</small></h2><p class="scores">${score}</p>${review ? `<p class="review">${escape(review)}</p>` : ''}<div class="triptych">${columns.map(([title, url]) => `<figure><figcaption>${title}</figcaption><a class="card" href="${escape(url)}" target="_blank" rel="noopener"><img src="${escape(url)}" alt="${escape(name)} — ${title}" loading="lazy" width="488" height="680"></a></figure>`).join('')}</div><details><summary>Component offsets and edge overlays</summary>${detail.manaRows ? `<p>Whole mana row (scan / old / new): ${detail.manaRows.map((row) => `${row.status}; pitch ${number(row.pitch)}px`).join(' / ')}. Every disc is checked; a correct rightmost disc cannot hide incorrect spacing.</p>` : ''}${detail.manaCircles ? `<p>Independent rightmost-mana disc centers (scan / old / new): ${detail.manaCircles.map((v) => `${v.x}, ${v.y} · ${v.status}`).join(' / ')}. Ring detection discounts straight frame edges; uncertain circles require visual review.</p>` : ''}<p>The search tests every integer offset within ±10px. It reports both minimum edge distance and maximum overlap, including ambiguous peaks, search boundaries and disagreements. Offsets suggest moving rendered ink toward the reference. These diagnostics leave the displayed images and fixed accuracy scores unchanged. Cyan = scan-only edge; magenta = render-only; white = overlap. Shape flags can also reflect typography, texture or incomplete crops.</p><table><thead><tr><th>Component</th><th>Fixed F1</th><th>Best edge-distance dx, dy (px)</th><th>Maximum-overlap candidate</th><th>Current flag</th></tr></thead><tbody>${diagnostics}</tbody></table><div class="overlays">${overlays}</div></details><p><a href="${escape(card.source)}">Scryfall source</a> · <a href="${escape(local(s.dir, 'details.json'))}">Component data</a></p></article>`,
       ];
     }),
   );
@@ -131,7 +144,7 @@ export async function detailPage({ opts, dir, previous, current, before, report 
 </style><header><div class="tag">Local print-detail review · ${fourth ? 'Fourth Edition' : 'Mirage + Tempest'}</div><h1>Scan / previous / current</h1><p class="intro">${fourth ? 'Fourth Edition nonland cards: corrected header placement, whole-row mana spacing, artist credits, copyright and the historical tap. Its previous stats shadow is preserved; land plates remain flagged separately.' : 'Corrected mana placement and shadows, outlined black set symbols, power/toughness shadows, artist credits, copyright, historical tap glyph, and rounded Canvas corners.'} Existing frame and illustration assets are unchanged. ${fourth ? 'The previous column is the frozen pre-fix renderer.' : 'The previous column is the typography version you reviewed.'}</p><p class="intro">${sets.reduce((n, s) => n + s.report.attempted, 0)} paired cards; ${sets.reduce((n, s) => n + s.current.results.filter((c) => c.contentStatus === 'scan-reviewed').length, 0)} have reviewed printed body text. ${fourth ? 'Six nonland development cards; six reserved nonland cards evaluated after freezing the policy. The other two reserved cards use the unchanged land branch. Most body text remains Oracle diagnostics.' : 'No fresh holdouts.'} All scores use the frozen frame alignment; no per-scan fitting. F1 is edge agreement within one canonical pixel, not an accuracy percentage. Component crops include their own failure flags so a low mana score cannot disappear inside a body-text average.</p><p>${fullReports.map(([set, url]) => `<a href="${escape(url)}">${set.toUpperCase()} all-card scores and asset backlog</a>`).join(' · ')}</p>${fourth ? '<p><a href="../../tmp/retro-details/details.html">Mirage / Tempest printed details</a> · <a href="../../tmp/retro-basics/basics.html">Historical basic lands</a></p>' : ''}<details><summary>Paired component results</summary>${aggregate}</details></header><nav class="controls" aria-label="Image crop">${[
       ['full', 'Full cards', 0, 680],
       ['header', 'Mana / title', 20, 55],
-      ['set', 'Set symbols', 365, 45],
+      ['set', fourth ? 'Type line' : 'Set symbols', 365, 45],
       ['footer', 'Credits / stats', 602, 49],
       ['body', 'Rules / tap', 410, 193],
       ['corners', 'Top corners', 0, 65],

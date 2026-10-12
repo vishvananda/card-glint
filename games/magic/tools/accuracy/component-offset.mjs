@@ -68,10 +68,24 @@ export function componentOffset(reference, rendered, width, height, lightInk = f
     (a, b) => a.distance - b.distance || Math.hypot(a.dx, a.dy) - Math.hypot(b.dx, b.dy),
   );
   const best = candidates[0];
+  // Keep both objectives: frame ridges or repeated glyphs can favor different peaks.
+  // Exhaustive bounded search avoids the local maxima of greedy one-pixel stepping.
+  const overlapCandidates = [...candidates].sort(
+    (a, b) =>
+      b.edgeF1 - a.edgeF1 ||
+      a.distance - b.distance ||
+      Math.hypot(a.dx, a.dy) - Math.hypot(b.dx, b.dy),
+  );
+  const overlapBest = overlapCandidates[0];
+  const overlapAlternative = overlapCandidates.find(
+    (c) => Math.hypot(c.dx - overlapBest.dx, c.dy - overlapBest.dy) > 2,
+  );
+  const overlapMargin = overlapAlternative ? overlapBest.edgeF1 - overlapAlternative.edgeF1 : null;
+  const objectiveDisagreementPx = Math.hypot(best.dx - overlapBest.dx, best.dy - overlapBest.dy);
   const alternative = candidates.find((c) => Math.hypot(c.dx - best.dx, c.dy - best.dy) > 2);
-  const margin = alternative.distance - best.distance;
+  const margin = alternative ? alternative.distance - best.distance : null;
   const boundary = Math.abs(best.dx) === radius || Math.abs(best.dy) === radius;
-  const ambiguous = margin < 0.15;
+  const ambiguous = margin == null || margin < 0.15;
   const improvement = best.edgeF1 - raw.edgeF1;
   const status = boundary
     ? 'search-boundary'
@@ -95,5 +109,13 @@ export function componentOffset(reference, rendered, width, height, lightInk = f
     ambiguous,
     referenceEdges: pa.length,
     renderedEdges: pb.length,
+    overlapPeak: {
+      ...overlapBest,
+      margin: overlapMargin,
+      ambiguous: overlapMargin == null || overlapMargin < 0.02,
+      boundary: Math.abs(overlapBest.dx) === radius || Math.abs(overlapBest.dy) === radius,
+    },
+    objectiveDisagreementPx,
+    search: { radius, step: 1, evaluatedOffsets: candidates.length },
   };
 }
