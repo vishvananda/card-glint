@@ -153,8 +153,8 @@ export function paintRetroFace(
     const layout = retroTextLayout(c, face);
     if (layout) paintRulesLayout(c, layout, images, details ? paintHistoricMana : paintMana);
   }
-  c.shadowColor = details ? '#000' : '#000b';
-  if (details) c.shadowOffsetX = c.shadowOffsetY = 1.5 * c.getTransform().a;
+  c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
+  if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;
   c.fillStyle = retroInk(face);
   c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
   c.textBaseline = 'middle';

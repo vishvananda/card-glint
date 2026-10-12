@@ -16,7 +16,11 @@ issues. Every visible component needs its own review status and examples.
   F1, the suggested displacement, residual shape disagreement, alternative-peak
   ambiguity, and search-boundary failures. A suggested displacement never changes
   an image or replaces its raw score. Out-of-window edges remain penalized.
-- Locate the rightmost mana disc with a separate radial contrast measurement.
+- Locate mana discs with a separate radial contrast measurement. The Fourth
+  Edition pass extends this to every disc in the cost row, each searched around
+  a fixed nominal position. It reports pitch, vertical spread, partial rows and
+  conflicting disc order; no fitted disc anchors the next search. A compressed
+  row with an unchanged rightmost disc is covered by the failure tests.
   Agreement around all four quadrants discounts straight frame lines. Glyphs and
   shadows can still confuse it: uncertain and boundary results remain unmeasured,
   never silently accepted. In particular, the white sun often needs visual review.
@@ -30,7 +34,10 @@ issues. Every visible component needs its own review status and examples.
 These are initial diagnostics, not validated pass/fail certification. Generic
 region matching can still prefer a shared frame edge over a symbol, or align
 repeated letters incorrectly. The independent mana landmark exists because this
-failure was observed during the pass. No single similarity score certifies a
+failure was observed during the pass. Fourth Edition repeated the same failure
+for titles: ambiguous generic offsets stayed near zero despite a visible left/up
+error. Enlarged scan/render crops exposed it. Inspect uncertainty; never read
+an ambiguous zero offset as evidence of correct placement. No single similarity score certifies a
 correct tap glyph, shadow, outline, legal line or corner radius.
 
 ## Next implementation steps, in order
@@ -41,8 +48,8 @@ correct tap glyph, shadow, outline, legal line or corner radius.
    with 8–16 diverse development cards per family and an untouched cross-set
    cohort. Make set exceptions only when several scans consistently demonstrate
    a different printing template. Reuse the shared frame alignment.
-2. **Separate foreground from surrounding texture.** Extend the mana disc detector
-   to a row of discs with shared radius/pitch. Remove frame ridges from set-symbol
+2. **Separate foreground from surrounding texture.** Use the whole-row mana landmarks
+   to isolate discs, then compare their interior contours separately. Remove frame ridges from set-symbol
    windows using independently marked exclusion strips. Segment light outlines
    and dark symbol interiors separately. For credits, use reviewed text-line
    bounds and expected words instead of a texture-heavy footer rectangle. Add

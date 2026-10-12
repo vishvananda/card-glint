@@ -14,6 +14,8 @@ export function retroPrintDetails(face: RenderedCardInput) {
     manaTop: fourth ? 27.5 : 33.5,
     manaSize: 23.4,
     manaGap: fourth ? 3.6 : 1.7,
+    statsShadow: fourth ? 1 : 1.5,
+    statsOpaqueShadow: !fourth,
     setRight: set === 'mir' ? 434 : 432.5,
     setCenterY: set === 'mir' ? 388 : 387.5,
     setHeight: set === 'mir' ? 26 : 23.4,

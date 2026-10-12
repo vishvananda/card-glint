@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { options, outputRoot, readJson, writeJson, hash, sourceHash } from './common.mjs';
 import { cropGray, readPng, normalize, savePng } from './pixels.mjs';
 import { componentOffset } from './component-offset.mjs';
-import { manaLandmark } from './mana-landmark.mjs';
+import { manaLandmark, manaRowLandmarks } from './mana-landmark.mjs';
 import { median } from './metrics.mjs';
 import { inkEdges } from './edges.mjs';
 import { detailPage } from './details-page.mjs';
@@ -22,8 +22,8 @@ for (const key of [
   'fontStylesheetHash',
 ])
   if (current[key] !== before[key]) throw Error(`Incompatible pair: ${key}`);
-if (!['mir', 'tmp'].includes(opts.set))
-  throw Error('Detail regions currently reviewed only for MIR/TMP');
+if (!['mir', 'tmp', '4ed'].includes(opts.set))
+  throw Error('Detail regions currently reviewed only for MIR/TMP/4ED');
 const results = [];
 for (const card of current.results) {
   const old = before.results.find((c) => c.id === card.id);
@@ -43,19 +43,32 @@ for (const card of current.results) {
     );
   }
   const n = card.face.manaSymbols.length;
-  const legalLight =
-    !/\bLand\b/.test(card.face.typeLine) &&
-    !(card.face.colors.length === 1 && ['W', 'R'].includes(card.face.colors[0]));
+  const fourth = opts.set === '4ed';
+  const legalLight = fourth
+    ? /\bArtifact\b/.test(card.face.typeLine) ||
+      (card.face.colors.length === 1 && ['B', 'G'].includes(card.face.colors[0]))
+    : !/\bLand\b/.test(card.face.typeLine) &&
+      !(card.face.colors.length === 1 && ['W', 'R'].includes(card.face.colors[0]));
   // Fixed reference windows, deliberately independent of current painter coordinates.
-  const regions = [
-    { id: 'set-outline', rect: [400, 370, 42, 34], lightInk: true },
-    { id: 'artist', rect: [47, 605, 340, 24], lightInk: true },
-    { id: 'copyright', rect: [47, 629, 345, 14], lightInk: legalLight },
-  ];
+  const manaLeft = 423 - Math.max(0, n - 1) * 27;
+  const regions = fourth
+    ? [
+        { id: 'title', rect: [38, 24, (n ? manaLeft - 6 : 449) - 38, 35], lightInk: true },
+        { id: 'type', rect: [38, 374, 350, 31], lightInk: true },
+        { id: 'artist', rect: [38, 610, 350, 22], lightInk: true },
+        { id: 'copyright', rect: [38, 632, 350, 14], lightInk: legalLight },
+      ]
+    : [
+        { id: 'set-outline', rect: [400, 370, 42, 34], lightInk: true },
+        { id: 'artist', rect: [47, 605, 340, 24], lightInk: true },
+        { id: 'copyright', rect: [47, 629, 345, 14], lightInk: legalLight },
+      ];
   if (n)
     regions.unshift({
       id: 'mana',
-      rect: [Math.max(48, 453 - n * 26), 25, Math.min(408, n * 26 + 6), 46],
+      rect: fourth
+        ? [manaLeft - 3, 24, 455 - manaLeft, 35]
+        : [Math.max(48, 453 - n * 26), 25, Math.min(408, n * 26 + 6), 46],
       lightInk: false,
     });
   if (card.face.power != null)
@@ -109,20 +122,36 @@ for (const card of current.results) {
     await savePng(path.join(dir, file), overlay);
     measured.push({ ...region, before: values[0], after: values[1], overlay: file });
   }
-  const manaCircles = n
+  const manaRows = n
     ? images.map((im) => {
-        const c = cropGray(im, [411, 24, 53, 45]);
-        const v = manaLandmark(c.gray, c.width, c.height, { x: 27, y: 21, range: 9 });
-        return { ...v, x: v.x + 411, y: v.y + 24 };
+        const crop = cropGray(im, [0, 0, 488, 90]);
+        return manaRowLandmarks(crop.gray, crop.width, crop.height, {
+          count: n,
+          rightX: fourth ? 435 : 438,
+          y: fourth ? 39.5 : 45,
+          pitch: fourth ? 27 : 25,
+          range: 9,
+        });
       })
     : null;
+  const manaCircles = fourth
+    ? (manaRows?.map((row) => row.circles[0]) ?? null)
+    : n
+      ? images.map((im) => {
+          const c = cropGray(im, [411, 24, 53, 45]);
+          const v = manaLandmark(c.gray, c.width, c.height, { x: 27, y: 21, range: 9 });
+          return { ...v, x: v.x + 411, y: v.y + 24 };
+        })
+      : null;
   results.push({
     id: card.id,
     name: card.name,
     collectorNumber: card.collectorNumber,
     frame: card.frame,
+    cohort: card.cohort,
     inputHash: card.inputHash,
     manaCircles,
+    manaRows,
     alignmentUncertain: card.alignment.uncertain,
     regions: measured,
   });
@@ -176,9 +205,28 @@ const circleSummary = {
   ),
   note: 'Rightmost disc only. White sun glyphs, textured backgrounds and boundary optima often fail confidence; retain them for visual review.',
 };
+const rowPairs = results.filter(
+  (c) => !c.alignmentUncertain && c.manaRows?.every((row) => row.status === 'measured'),
+);
+const rowSummary = {
+  confidentTriples: rowPairs.length,
+  unmeasuredOrUncertain: results.filter((c) => c.manaRows).length - rowPairs.length,
+  multiDiscTriples: rowPairs.filter((c) => c.manaRows[0].circles.length > 1).length,
+  medianAbsolutePitchErrorBefore: median(
+    rowPairs
+      .filter((c) => c.manaRows[0].pitch != null)
+      .map((c) => Math.abs(c.manaRows[0].pitch - c.manaRows[1].pitch)),
+  ),
+  medianAbsolutePitchErrorAfter: median(
+    rowPairs
+      .filter((c) => c.manaRows[0].pitch != null)
+      .map((c) => Math.abs(c.manaRows[0].pitch - c.manaRows[2].pitch)),
+  ),
+  note: 'Independent nominal positions for every disc; no per-scan transforms. Missing/ambiguous discs or conflicting order invalidate the row aggregate. Full rows remain in per-card output.',
+};
 const report = {
   schemaVersion: 1,
-  method: 'component-offset-v1',
+  method: 'component-offset-v2',
   set: opts.set,
   run: opts.run,
   baseline: opts.baseline,
@@ -192,10 +240,11 @@ const report = {
   attempted: results.length,
   eligible: current.eligibleCount,
   alignmentExcluded: results.filter((r) => r.alignmentUncertain).length,
-  note: 'Development examples. Edge F1 at one canonical pixel, never percent accuracy. Translation search is diagnostic only; scores and displayed images remain at frozen family alignment. Heuristic flags require visual review. No fresh holdouts.',
+  note: 'Paired examples; cohort is recorded per card. Edge F1 at one canonical pixel, never percent accuracy. Translation search is diagnostic only; scores and displayed images remain at frozen family alignment. Heuristic flags require visual review; cohort independence needs a separately frozen study plan.',
   seconds: (performance.now() - start) / 1000,
   summary,
   circleSummary,
+  rowSummary,
   results,
 };
 await writeJson(path.join(dir, 'details.json'), report);
