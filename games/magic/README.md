@@ -123,10 +123,12 @@ The [old-border baseline](fixtures/accuracy/tmp/survey-measurement.json) adds 35
 Mirage and 350 Tempest printings with unchanged existing frame assets. Use
 `--set mir --run old-border` or `--set tmp --run old-border` on the reference
 commands, then `npm run magic:reference:survey -- --set tmp --run old-border`.
-Tempest uses Mirage's frozen alignment. Their separate legacy painter still needs
-body typography and layout instrumentation; its scores are baseline evidence.
+Tempest uses Mirage's frozen alignment. The subsequent `retro-type` study compares
+the archived legacy painter with measured old-border typography on the same 700
+printings, including fresh holdouts in both sets.
 
-For ordinary modern faces, `rulesParagraphs` optionally replaces `rulesText`:
+For ordinary modern and old-border faces, `rulesParagraphs` optionally replaces
+`rulesText`:
 
 ```ts
 face.rulesParagraphs = [
@@ -136,10 +138,23 @@ face.rulesParagraphs = [
 ```
 
 Runs support `{mana}` notation and explicit italic styles. The painter measures
-wrapping and font size, draws the flavor separator, and rejects unresolved text
-overflow. Other layouts still use their existing `rulesText` painters. Font
+wrapping and font size and rejects unresolved text overflow. Modern faces draw a
+flavor separator; old-border faces use their own spacing without a separator.
+Use paragraph `align: 'right'` for a printed flavor attribution. Other layouts
+still use their existing `rulesText` painters. Font
 preparation now rejects missing CSS or failed font loads and can retry after they
 become available; load `card-glint/magic/fonts.css` before preparing cards.
+
+For a local scan / old / new example page, first generate the paired reports and
+typography metrics described in the [accuracy plan](accuracy-plan.md), then run:
+
+```sh
+npm run magic:reference:examples -- --set tmp --study retro-type --baseline retro-before --run retro-type
+```
+
+Open `test-results/magic-accuracy/tmp/retro-type/examples.html`. It includes full
+cards, enlarged text boxes, measured gains and specific visual review questions.
+The page and downloaded images remain local.
 
 ## Existing scene or DOM editor
 

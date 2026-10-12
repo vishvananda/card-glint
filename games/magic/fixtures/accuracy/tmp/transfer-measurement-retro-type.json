@@ -1,0 +1,1958 @@
+{
+  "schemaVersion": 1,
+  "sourceSet": "mir",
+  "targetSet": "tmp",
+  "plan": {
+    "schemaVersion": 1,
+    "study": "retro-type",
+    "sourceSet": "mir",
+    "set": "tmp",
+    "baselineRendererCommit": "2002a16",
+    "sourceBaselineRun": "retro-before",
+    "sourceRun": "retro-type",
+    "setAlignmentFitting": false,
+    "typographyTuning": "Mirage previously reviewed development cards only; fresh Mirage and Tempest holdouts evaluated after renderer policy freeze.",
+    "alignment": "Keep original Mirage retro-seventh transform and unchanged Tempest copy. No per-scan fitting.",
+    "acceptance": "Same inputs, refs, fonts, metrics and browser for paired body edge F1, soft-wrap and block geometry. Measure all 700 printings, report clipping/failures and per-card regressions. Asset replacements and early-basic-land presentation changes are outside this typography pass.",
+    "frozenRendererCommit": "4385eaa",
+    "frozenRendererHash": "72fa9cd17489763b0dd8752fb4ea103a710535762863a91ee7592477476584ee",
+    "baselineRendererHash": "485705f6b13bee737a1a0e24c64a63b3f9b1cbf5cc804ef1ad52f53de2d6d67c",
+    "reviewExamples": [
+      {
+        "set": "mir",
+        "collectorNumber": "29",
+        "question": "Mtenda Herder: do you agree that the italic face looks too heavy or wide? The reminder is now italic, but still takes four lines instead of the scan’s three. This is the largest development regression."
+      },
+      {
+        "set": "tmp",
+        "collectorNumber": "189",
+        "question": "Mogg Conscripts: does the body look primarily too large, or too wide/heavy at the right height? Both versions wrap too early; the new styles are correct, but the body edge score falls."
+      },
+      {
+        "set": "mir",
+        "collectorNumber": "306",
+        "question": "Lead Golem: does the new version look closer overall? Its wrapping is now exact and its flavor is italic, yet the edge score falls. The remaining lettering is heavier than the scan."
+      }
+    ]
+  },
+  "frozenRendererHash": "72fa9cd17489763b0dd8752fb4ea103a710535762863a91ee7592477476584ee",
+  "baselineRendererHash": "485705f6b13bee737a1a0e24c64a63b3f9b1cbf5cc804ef1ad52f53de2d6d67c",
+  "browser": "148.0.7778.96",
+  "metricSource": "5db61886bb9150b6ffbb2462bf2371119454875345bcc8ff0b9828928da9275a",
+  "note": "Same before/after renderers, fonts, inputs, metrics and shared alignment transforms. Reviewed, confidently aligned holdouts only. F1 is structural similarity, not accuracy percentage. Bootstrap intervals describe the selected cards; ±0.02 F1 and 2px geometry are review thresholds, not acceptance gates.",
+  "sourceHoldout": {
+    "attempted": 8,
+    "paired": 7,
+    "excluded": [
+      {
+        "id": "1e21c347-7aaf-42ae-abf3-f1283c5b54e6",
+        "name": "Rocky Tar Pit",
+        "reason": "alignment-uncertain"
+      }
+    ],
+    "inspectBody": {
+      "beforeMedian": 0.24461236650121285,
+      "afterMedian": 0.4577383285566982,
+      "beforeMean": 0.3079847622814335,
+      "afterMean": 0.4434314501156797,
+      "medianPairedDelta": 0.15457073748845712,
+      "pairedDeltaBootstrap95": [0.010142254934206119, 0.28795858018825027],
+      "improved": 5,
+      "regressed": 1
+    },
+    "tableBody": {
+      "beforeMedian": 0.2352251113679082,
+      "afterMedian": 0.44934605867797806,
+      "beforeMean": 0.2959140041234631,
+      "afterMean": 0.42878324438228244,
+      "medianPairedDelta": 0.1547111183010093,
+      "pairedDeltaBootstrap95": [-0.009807379081794687, 0.26930732195080515],
+      "improved": 4,
+      "regressed": 1
+    },
+    "softBreakF1": {
+      "beforeMedian": 0.3333333333333333,
+      "afterMedian": 0.6666666666666666,
+      "beforeMean": 0.44897959183673464,
+      "afterMean": 0.6486394557823129,
+      "medianPairedDelta": 0.2857142857142857,
+      "pairedDeltaBootstrap95": [-0.3333333333333333, 0.7142857142857143],
+      "improved": 4,
+      "regressed": 2
+    },
+    "blockEdgeMae": {
+      "beforeMedian": 7.5,
+      "afterMedian": 8,
+      "beforeMean": 10.357142857142858,
+      "afterMean": 6.357142857142857,
+      "medianPairedDelta": 0.5,
+      "pairedDeltaBootstrap95": [-15, 1.5],
+      "improved": 2,
+      "regressed": 1
+    },
+    "exactWrapping": [1, 1],
+    "cards": [
+      {
+        "id": "b0125f79-ff68-4fb9-b309-8d277259f323",
+        "name": "Mangara's Blessing",
+        "inspect": [0.4870098516466338, 0.45480696432841644],
+        "table": [0.4803906513277193, 0.4445737024070973],
+        "softBreakF1": [1, 0.6],
+        "exactWrapping": [true, false],
+        "blockEdgeMae": [7.5, 8]
+      },
+      {
+        "id": "b8a7c22e-fe96-4960-96d4-ee85abec3281",
+        "name": "Suq'Ata Firewalker",
+        "inspect": [0.24461236650121285, 0.5325709466894631],
+        "table": [0.2352251113679082, 0.5045324333187133],
+        "softBreakF1": [0.3333333333333333, 0],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [18, 3]
+      },
+      {
+        "id": "c9dbfc7c-164d-47b8-8f05-987864fca89b",
+        "name": "Forsaken Wastes",
+        "inspect": [0.4057816352612623, 0.41592389019546844],
+        "table": [0.41082490061529386, 0.4010175215334992],
+        "softBreakF1": [0.6666666666666666, 0.6666666666666666],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [10.5, 10.5]
+      },
+      {
+        "id": "4947cbf9-69dc-44e3-a22e-a6129f331f3c",
+        "name": "Viashino Warrior",
+        "inspect": [0.20903659259138974, 0.4985433018102413],
+        "table": [0.1822585289350177, 0.5019105864879991],
+        "softBreakF1": [0.2857142857142857, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [6.5, 8]
+      },
+      {
+        "id": "1482c390-69cf-484e-a06c-8d63f770c7de",
+        "name": "Fallow Earth",
+        "inspect": [0.33501502878366535, 0.48958576627212247],
+        "table": [0.32334328461706824, 0.47805440291807755],
+        "softBreakF1": [0.2857142857142857, 0.6666666666666666],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [2, 5]
+      },
+      {
+        "id": "c69ba095-dd78-4999-87a9-63f7165846e4",
+        "name": "Wellspring",
+        "inspect": [0.2323762303169783, 0.25485095295734767],
+        "table": [0.20764196262069992, 0.22204800533261265],
+        "softBreakF1": [0.5714285714285714, 0.8571428571428571],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [0.5, 1.5]
+      },
+      {
+        "id": "63bacc32-d6ba-420c-9b49-299c08e5fb39",
+        "name": "Lion's Eye Diamond",
+        "inspect": [0.2420616308688924, 0.4577383285566982],
+        "table": [0.2317135893805344, 0.44934605867797806],
+        "softBreakF1": [0, 0.75],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [27.5, 8.5]
+      }
+    ]
+  },
+  "targetHoldout": {
+    "attempted": 8,
+    "paired": 8,
+    "excluded": [],
+    "inspectBody": {
+      "beforeMedian": 0.30561647697637384,
+      "afterMedian": 0.5004427336285264,
+      "beforeMean": 0.3207454251239957,
+      "afterMean": 0.465209005631483,
+      "medianPairedDelta": 0.158421371866874,
+      "pairedDeltaBootstrap95": [0.02502721415584439, 0.21689535923270203],
+      "improved": 6,
+      "regressed": 1
+    },
+    "tableBody": {
+      "beforeMedian": 0.3036356616619216,
+      "afterMedian": 0.4897499293263809,
+      "beforeMean": 0.3251708644007734,
+      "afterMean": 0.45597616768652194,
+      "medianPairedDelta": 0.1497272708902249,
+      "pairedDeltaBootstrap95": [0.013673956195671546, 0.1982866654004235],
+      "improved": 6,
+      "regressed": 2
+    },
+    "softBreakF1": {
+      "beforeMedian": 0.34285714285714286,
+      "afterMedian": 0.8333333333333333,
+      "beforeMean": 0.450297619047619,
+      "afterMean": 0.7291666666666666,
+      "medianPairedDelta": 0.35714285714285715,
+      "pairedDeltaBootstrap95": [0, 0.6],
+      "improved": 5,
+      "regressed": 1
+    },
+    "blockEdgeMae": {
+      "beforeMedian": 5.75,
+      "afterMedian": 5.25,
+      "beforeMean": 7.375,
+      "afterMean": 4.5625,
+      "medianPairedDelta": -4,
+      "pairedDeltaBootstrap95": [-4, 3.5],
+      "improved": 5,
+      "regressed": 2
+    },
+    "exactWrapping": [2, 4],
+    "cards": [
+      {
+        "id": "c275aba7-cac6-48e8-b12c-6bd77a5c38fe",
+        "name": "Armor Sliver",
+        "inspect": [0.299000163026844, 0.46083181681540936],
+        "table": [0.29925158778155, 0.4575714573728293],
+        "softBreakF1": [1, 0.6666666666666666],
+        "exactWrapping": [true, false],
+        "blockEdgeMae": [10.5, 6.5]
+      },
+      {
+        "id": "9e7b5b00-9d14-4090-b8c3-28b70375571e",
+        "name": "Thalakos Mistfolk",
+        "inspect": [0.2975456944082118, 0.5144410536409139],
+        "table": [0.2892580808662189, 0.4875447462666424],
+        "softBreakF1": [0.4, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [6, 2]
+      },
+      {
+        "id": "eed2c97b-f003-436c-9faa-5518aba42fc1",
+        "name": "Skyshroud Vampire",
+        "inspect": [0.3761412473744289, 0.5311523373196115],
+        "table": [0.3633010195204877, 0.5044356917096582],
+        "softBreakF1": [0.2857142857142857, 0.6666666666666666],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [0.5, 6]
+      },
+      {
+        "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+        "name": "Mogg Conscripts",
+        "inspect": [0.28585420409544143, 0.17424749271464943],
+        "table": [0.28015025609123195, 0.14960792882634844],
+        "softBreakF1": [0, 0],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [3.5, 7]
+      },
+      {
+        "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+        "name": "Krakilin",
+        "inspect": [0.3604741837888527, 0.4871762748244062],
+        "table": [0.37333210070039885, 0.4919551123861194],
+        "softBreakF1": [0, 0.5],
+        "exactWrapping": [false, false],
+        "blockEdgeMae": [5.5, 1.5]
+      },
+      {
+        "id": "be535a4a-c00d-4c58-a663-a3419a54da51",
+        "name": "Vhati il-Dal",
+        "inspect": [0.3122327909259037, 0.5137091924326467],
+        "table": [0.30801973554229317, 0.5002281389372885],
+        "softBreakF1": [0.6666666666666666, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [8.5, 4.5]
+      },
+      {
+        "id": "f4459187-de64-456f-bb66-56dea40d5c3e",
+        "name": "Grindstone",
+        "inspect": [0.2069786960207564, 0.6075187028599957],
+        "table": [0.19708749451866803, 0.5938961787519542],
+        "softBreakF1": [0.25, 1],
+        "exactWrapping": [false, true],
+        "blockEdgeMae": [19, 3]
+      },
+      {
+        "id": "b4d3d349-5c23-43a9-b25e-0e1a35b84673",
+        "name": "Stalking Stones",
+        "inspect": [0.42773642135152656, 0.4325951744442311],
+        "table": [0.4909666401853386, 0.46257008724133486],
+        "softBreakF1": [1, 1],
+        "exactWrapping": [true, true],
+        "blockEdgeMae": [5.5, 6]
+      }
+    ]
+  },
+  "coverage": {
+    "mir": {
+      "eligible": 350,
+      "measured": 350,
+      "failed": 0,
+      "reviewed": 24,
+      "unverified": 326,
+      "alignmentFlags": 11,
+      "overflow": 0,
+      "diagnosticMedianTextF1": 0.48783758348983164,
+      "frameFamilies": {
+        "retro-seventh": {
+          "count": 350,
+          "uncertain": 11,
+          "medianLandmarkResidual": 1
+        }
+      }
+    },
+    "tmp": {
+      "eligible": 350,
+      "measured": 350,
+      "failed": 0,
+      "reviewed": 16,
+      "unverified": 334,
+      "alignmentFlags": 0,
+      "overflow": 0,
+      "diagnosticMedianTextF1": 0.5202205240826528,
+      "frameFamilies": {
+        "retro-seventh": {
+          "count": 350,
+          "uncertain": 0,
+          "medianLandmarkResidual": 1
+        }
+      }
+    }
+  },
+  "assetReview": [
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/6.svg",
+      "role": "mana",
+      "cardCount": 3,
+      "confidentCount": 3,
+      "medianEdgeF1": 0.29899515650979547,
+      "allCardMedianEdgeF1": 0.29899515650979547,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "bfedc78e-47dc-43e3-aed7-2d5c8e97fdac",
+          "name": "Booby Trap",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.28846153846153855],
+          "distances": [2.2355002170625164],
+          "score": 0.28846153846153855,
+          "meanDistance": 2.2355002170625164
+        },
+        {
+          "id": "7f89f599-b063-4568-b7b9-08b96d04bde1",
+          "name": "Flowstone Sculpture",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.29899515650979547],
+          "distances": [2.3361649494375425],
+          "score": 0.29899515650979547,
+          "meanDistance": 2.3361649494375425
+        },
+        {
+          "id": "307f5d5e-3a4b-430e-8769-fb553216befa",
+          "name": "Phyrexian Hulk",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3243108394661345],
+          "distances": [2.181368864460571],
+          "score": 0.3243108394661345,
+          "meanDistance": 2.181368864460571
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/4.svg",
+      "role": "mana",
+      "cardCount": 17,
+      "confidentCount": 17,
+      "medianEdgeF1": 0.36042402826855124,
+      "allCardMedianEdgeF1": 0.36042402826855124,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "77d26c29-cd98-446b-b4e1-687561ed6d3f",
+          "name": "Telethopter",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.28776978417266186],
+          "distances": [2.4553294535477956],
+          "score": 0.28776978417266186,
+          "meanDistance": 2.4553294535477956
+        },
+        {
+          "id": "914f204c-7f3d-41f2-a771-0b6227d539eb",
+          "name": "Energizer",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30327352848599304],
+          "distances": [2.3137770355438843],
+          "score": 0.30327352848599304,
+          "meanDistance": 2.3137770355438843
+        },
+        {
+          "id": "06425615-6c10-4766-8128-a1a09a35649d",
+          "name": "Echo Chamber",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30988576827278186],
+          "distances": [2.2834381963179364],
+          "score": 0.30988576827278186,
+          "meanDistance": 2.2834381963179364
+        },
+        {
+          "id": "83be257c-8945-46be-8b58-fb2881084026",
+          "name": "Fool's Tome",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.32275215011727915],
+          "distances": [2.246171497075986],
+          "score": 0.32275215011727915,
+          "meanDistance": 2.246171497075986
+        },
+        {
+          "id": "79e16191-8dca-491b-b892-17696023d581",
+          "name": "Helm of Possession",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.32484919817566565],
+          "distances": [2.246723359197164],
+          "score": 0.32484919817566565,
+          "meanDistance": 2.246723359197164
+        },
+        {
+          "id": "b26e28d4-50e1-41db-984d-c55781295012",
+          "name": "Cold Storage",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3465310034653101],
+          "distances": [2.2137717209767924],
+          "score": 0.3465310034653101,
+          "meanDistance": 2.2137717209767924
+        },
+        {
+          "id": "76a0e317-5a76-4eac-a903-b0e3f0a45873",
+          "name": "Precognition",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3538839926214389],
+          "distances": [2.19629786373086],
+          "score": 0.3538839926214389,
+          "meanDistance": 2.19629786373086
+        },
+        {
+          "id": "a69ea676-60ba-4807-bc9b-976bf5666485",
+          "name": "Renegade Warlord",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3591045967420092],
+          "distances": [2.1048560400036376],
+          "score": 0.3591045967420092,
+          "meanDistance": 2.1048560400036376
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/U.svg",
+      "role": "mana",
+      "cardCount": 57,
+      "confidentCount": 57,
+      "medianEdgeF1": 0.36365323583452425,
+      "allCardMedianEdgeF1": 0.36365323583452425,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "abc58c34-c3de-47f8-a42f-3a974dcb9c47",
+          "name": "Power Sink",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30335861321776814],
+          "distances": [2.2094412780906025],
+          "score": 0.30335861321776814,
+          "meanDistance": 2.2094412780906025
+        },
+        {
+          "id": "9e7b5b00-9d14-4090-b8c3-28b70375571e",
+          "name": "Thalakos Mistfolk",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.31250774249494156],
+          "distances": [2.1407230897936698],
+          "score": 0.31250774249494156,
+          "meanDistance": 2.1407230897936698
+        },
+        {
+          "id": "4b073ac1-be1b-49c0-98b4-bf8165e2f872",
+          "name": "Wood Sage",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3128599362494308],
+          "distances": [2.525922640400133],
+          "score": 0.3128599362494308,
+          "meanDistance": 2.525922640400133
+        },
+        {
+          "id": "e259da60-c8bc-4a77-98ed-e529dc067732",
+          "name": "Whim of Volrath",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.31550907655880034],
+          "distances": [2.316942506157908],
+          "score": 0.31550907655880034,
+          "meanDistance": 2.316942506157908
+        },
+        {
+          "id": "a6315323-cf82-46c0-b164-e6ea1bf809f4",
+          "name": "Rootwater Diver",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3166007081857946],
+          "distances": [2.2447049678316953],
+          "score": 0.3166007081857946,
+          "meanDistance": 2.2447049678316953
+        },
+        {
+          "id": "136a7d63-94ae-4d92-86ab-12bf9d78a803",
+          "name": "Thalakos Seer",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3247436589314625],
+          "distances": [2.1748000328563997],
+          "score": 0.3247436589314625,
+          "meanDistance": 2.1748000328563997
+        },
+        {
+          "id": "75c5cfd1-3f7c-4250-a84d-8db83c6d7eb7",
+          "name": "Whispers of the Muse",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.32640831002796644],
+          "distances": [2.1959453358612784],
+          "score": 0.32640831002796644,
+          "meanDistance": 2.1959453358612784
+        },
+        {
+          "id": "854dc5e6-63f7-4c8b-83e5-a364f41c9a15",
+          "name": "Mana Severance",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.32729081941680366],
+          "distances": [2.0761471513717895],
+          "score": 0.32729081941680366,
+          "meanDistance": 2.0761471513717895
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/R.svg",
+      "role": "mana",
+      "cardCount": 57,
+      "confidentCount": 57,
+      "medianEdgeF1": 0.37747474747474746,
+      "allCardMedianEdgeF1": 0.37747474747474746,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "3707ab74-9aec-4d30-86e0-ffa5f72d5b4f",
+          "name": "Jackal Pup",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.24574083634486318],
+          "distances": [2.604228898192239],
+          "score": 0.24574083634486318,
+          "meanDistance": 2.604228898192239
+        },
+        {
+          "id": "94e9cc0a-c210-4525-8c7f-9c6306cc21b0",
+          "name": "Mogg Raider",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.24608918982021943],
+          "distances": [2.6718763750260224],
+          "score": 0.24608918982021943,
+          "meanDistance": 2.6718763750260224
+        },
+        {
+          "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+          "name": "Searing Touch",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.2716049382716049],
+          "distances": [2.492806848593023],
+          "score": 0.2716049382716049,
+          "meanDistance": 2.492806848593023
+        },
+        {
+          "id": "36658368-88c8-4c55-8147-f6e581f6af36",
+          "name": "Tahngarth's Rage",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.2875907362599378],
+          "distances": [2.469849540719398],
+          "score": 0.2875907362599378,
+          "meanDistance": 2.469849540719398
+        },
+        {
+          "id": "f2c82741-2869-41f9-82f4-6ed88756e2fd",
+          "name": "Crown of Flames",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.2974709784411277],
+          "distances": [2.5543253056699315],
+          "score": 0.2974709784411277,
+          "meanDistance": 2.5543253056699315
+        },
+        {
+          "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+          "name": "Mogg Conscripts",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3061809250920999],
+          "distances": [2.26736330787809],
+          "score": 0.3061809250920999,
+          "meanDistance": 2.26736330787809
+        },
+        {
+          "id": "bfb43289-35dc-4983-9c49-22b1b3a7d85a",
+          "name": "Giant Strength",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3073852295409182],
+          "distances": [2.2474035024356454],
+          "score": 0.3073852295409182,
+          "meanDistance": 2.2474035024356454
+        },
+        {
+          "id": "367c4ad6-973d-47ba-9431-312f9f2996f6",
+          "name": "Shadowstorm",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30751445086705204],
+          "distances": [2.283453842723056],
+          "score": 0.30751445086705204,
+          "meanDistance": 2.283453842723056
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/X.svg",
+      "role": "mana",
+      "cardCount": 9,
+      "confidentCount": 9,
+      "medianEdgeF1": 0.38844067431961027,
+      "allCardMedianEdgeF1": 0.38844067431961027,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "abc58c34-c3de-47f8-a42f-3a974dcb9c47",
+          "name": "Power Sink",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30335861321776814],
+          "distances": [2.2094412780906025],
+          "score": 0.30335861321776814,
+          "meanDistance": 2.2094412780906025
+        },
+        {
+          "id": "5fe58a24-f6a6-4858-82a5-0ca1d524efe1",
+          "name": "Spell Blast",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3312491970365295],
+          "distances": [2.132039224602755],
+          "score": 0.3312491970365295,
+          "meanDistance": 2.132039224602755
+        },
+        {
+          "id": "35c7e7fa-1493-4ef8-9cdb-b02b07a1ad85",
+          "name": "Ertai's Meddling",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3548434950304109],
+          "distances": [2.109006929875615],
+          "score": 0.3548434950304109,
+          "meanDistance": 2.109006929875615
+        },
+        {
+          "id": "e6a97817-d1fd-4ba4-9ced-c2702b081523",
+          "name": "Scorched Earth",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.37291416485939094],
+          "distances": [2.0283042700726517],
+          "score": 0.37291416485939094,
+          "meanDistance": 2.0283042700726517
+        },
+        {
+          "id": "0bb07402-d526-4938-89a3-9174d5b5a4de",
+          "name": "Rolling Thunder",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.38844067431961027],
+          "distances": [2.0385277080888855],
+          "score": 0.38844067431961027,
+          "meanDistance": 2.0385277080888855
+        },
+        {
+          "id": "e9474231-34c5-4563-8a61-fd1bc2693f86",
+          "name": "Endless Scream",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4352],
+          "distances": [1.726375130581876],
+          "score": 0.4352,
+          "meanDistance": 1.726375130581876
+        },
+        {
+          "id": "80e4203a-ff11-4075-a03a-11448779b413",
+          "name": "Dregs of Sorrow",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4581295087783428],
+          "distances": [1.6510051891535715],
+          "score": 0.4581295087783428,
+          "meanDistance": 1.6510051891535715
+        },
+        {
+          "id": "942cf220-472c-48f6-8f60-993939ea5ab8",
+          "name": "Abandon Hope",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5232472259834351],
+          "distances": [1.4760011198058143],
+          "score": 0.5232472259834351,
+          "meanDistance": 1.4760011198058143
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+      "role": "frame",
+      "cardCount": 53,
+      "confidentCount": 53,
+      "medianEdgeF1": 0.40786879367792384,
+      "allCardMedianEdgeF1": 0.40786879367792384,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "79d6ed64-9f5c-4233-85a9-028b8e5949c3",
+          "name": "Imps' Taunt",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5473414477898783, 0.006968641114982578],
+          "distances": [1.831443973746419, 16.89482343452915],
+          "score": 0.27715504445243044,
+          "meanDistance": 9.363133704137786
+        },
+        {
+          "id": "72122e8f-97ab-495e-aade-5d736c432873",
+          "name": "Death Pits of Rath",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.64907420283034, 0.02222222222222222],
+          "distances": [1.5626618587880785, 6.164007824496613],
+          "score": 0.33564821252628113,
+          "meanDistance": 3.8633348416423456
+        },
+        {
+          "id": "942cf220-472c-48f6-8f60-993939ea5ab8",
+          "name": "Abandon Hope",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.552421224131047, 0.125746684215855],
+          "distances": [1.9595426157485298, 4.62591116015669],
+          "score": 0.339083954173451,
+          "meanDistance": 3.29272688795261
+        },
+        {
+          "id": "d9f120fc-c681-47b6-827e-1cc7ead47a0f",
+          "name": "Minion of the Wastes",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6188782652726893, 0.06869417269247129],
+          "distances": [1.5329292670937122, 9.913924686862995],
+          "score": 0.34378621898258027,
+          "meanDistance": 5.723426976978353
+        },
+        {
+          "id": "e47ace1d-73de-44aa-a3fe-2e2a21ebec79",
+          "name": "Perish",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5652515248505344, 0.1302307391474384],
+          "distances": [1.8093311816248572, 3.9729163049457306],
+          "score": 0.34774113199898643,
+          "meanDistance": 2.891123743285294
+        },
+        {
+          "id": "2df7b947-bdb2-4204-8eb0-92fe66411613",
+          "name": "Coercion",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6327085852478839, 0.06311360448807854],
+          "distances": [1.4392122554234583, 6.084461709545286],
+          "score": 0.3479110948679812,
+          "meanDistance": 3.761836982484372
+        },
+        {
+          "id": "bf4708e8-2149-4990-987c-2ea55fc6c508",
+          "name": "Dark Ritual",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.7053919376477353, 0.006825938566552901],
+          "distances": [1.1905424658139316, 17.724040235896318],
+          "score": 0.3561089381071441,
+          "meanDistance": 9.457291350855124
+        },
+        {
+          "id": "9141daea-1f4f-4227-b7d7-20753e3cb4d4",
+          "name": "Reckless Spite",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6851611446633177, 0.033444816053511704],
+          "distances": [1.2347084604419334, 7.51949774847424],
+          "score": 0.3593029803584147,
+          "meanDistance": 4.377103104458087
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg/tmp.svg",
+      "role": "setSymbol",
+      "cardCount": 350,
+      "confidentCount": 350,
+      "medianEdgeF1": 0.40944698959580184,
+      "allCardMedianEdgeF1": 0.40944698959580184,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "afc114b0-2e95-4143-a4b6-6537813946e7",
+          "name": "Canopy Spider",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.15106315455410982],
+          "distances": [4.062169661671195],
+          "score": 0.15106315455410982,
+          "meanDistance": 4.062169661671195
+        },
+        {
+          "id": "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+          "name": "Bayou Dragonfly",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.15609756097560976],
+          "distances": [3.763799814065946],
+          "score": 0.15609756097560976,
+          "meanDistance": 3.763799814065946
+        },
+        {
+          "id": "4b073ac1-be1b-49c0-98b4-bf8165e2f872",
+          "name": "Wood Sage",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.1561338289962825],
+          "distances": [4.969724108600633],
+          "score": 0.1561338289962825,
+          "meanDistance": 4.969724108600633
+        },
+        {
+          "id": "d43f5349-a3f8-492d-a835-24a9f948741c",
+          "name": "Broken Fall",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.1568627450980392],
+          "distances": [4.156788676845405],
+          "score": 0.1568627450980392,
+          "meanDistance": 4.156788676845405
+        },
+        {
+          "id": "cba021eb-3d8b-41bf-aec4-af211e0860ad",
+          "name": "Twitch",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.19238476953907815],
+          "distances": [2.8833917116132164],
+          "score": 0.19238476953907815,
+          "meanDistance": 2.8833917116132164
+        },
+        {
+          "id": "875f81cf-5f27-451e-9248-746fad1e43d7",
+          "name": "Dream Cache",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.19354838709677422],
+          "distances": [2.511275257603227],
+          "score": 0.19354838709677422,
+          "meanDistance": 2.511275257603227
+        },
+        {
+          "id": "69e63f0c-a09f-493d-a8a9-ddcc0a0ca383",
+          "name": "Time Ebb",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.19615384615384615],
+          "distances": [2.8467256552676132],
+          "score": 0.19615384615384615,
+          "meanDistance": 2.8467256552676132
+        },
+        {
+          "id": "b2348ce1-6305-42a7-8061-64275f6dc5c6",
+          "name": "Horned Turtle",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.19755170958210216],
+          "distances": [2.4443157668040643],
+          "score": 0.19755170958210216,
+          "meanDistance": 2.4443157668040643
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/1.svg",
+      "role": "mana",
+      "cardCount": 87,
+      "confidentCount": 87,
+      "medianEdgeF1": 0.4099526066350711,
+      "allCardMedianEdgeF1": 0.4099526066350711,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "30143f4f-9846-448d-8797-8fe0bc0cc5df",
+          "name": "Metallic Sliver",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.2926829268292683],
+          "distances": [2.4359470605821176],
+          "score": 0.2926829268292683,
+          "meanDistance": 2.4359470605821176
+        },
+        {
+          "id": "f4459187-de64-456f-bb66-56dea40d5c3e",
+          "name": "Grindstone",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.29815428300993846],
+          "distances": [2.510521635619112],
+          "score": 0.29815428300993846,
+          "meanDistance": 2.510521635619112
+        },
+        {
+          "id": "2b524ae7-cb24-41af-b41b-3cb3ee8cf3b0",
+          "name": "Squee's Toy",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30247672580361845],
+          "distances": [2.479079936410046],
+          "score": 0.30247672580361845,
+          "meanDistance": 2.479079936410046
+        },
+        {
+          "id": "31415b9b-fb30-4132-a9a3-795b4573a901",
+          "name": "Cursed Scroll",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3252767110910323],
+          "distances": [2.272300848331218],
+          "score": 0.3252767110910323,
+          "meanDistance": 2.272300848331218
+        },
+        {
+          "id": "854dc5e6-63f7-4c8b-83e5-a364f41c9a15",
+          "name": "Mana Severance",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.32729081941680366],
+          "distances": [2.0761471513717895],
+          "score": 0.32729081941680366,
+          "meanDistance": 2.0761471513717895
+        },
+        {
+          "id": "c5a8bb3a-3a84-442f-8e31-8af2f04408ab",
+          "name": "Dauthi Horror",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3376904583737999],
+          "distances": [1.9998108805930757],
+          "score": 0.3376904583737999,
+          "meanDistance": 1.9998108805930757
+        },
+        {
+          "id": "3442c919-73b9-4d29-a014-87293f456325",
+          "name": "Interdict",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3404792991618582],
+          "distances": [2.116957750220581],
+          "score": 0.3404792991618582,
+          "meanDistance": 2.116957750220581
+        },
+        {
+          "id": "03aa58b4-dbc2-414e-aa7a-f09360d59b3c",
+          "name": "Winged Sliver",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3419994868724878],
+          "distances": [2.1451671216889903],
+          "score": 0.3419994868724878,
+          "meanDistance": 2.1451671216889903
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/2.svg",
+      "role": "mana",
+      "cardCount": 91,
+      "confidentCount": 91,
+      "medianEdgeF1": 0.414941721668305,
+      "allCardMedianEdgeF1": 0.414941721668305,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "71025a6b-3aed-4943-a907-9584d135f6c0",
+          "name": "Thumbscrews",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.2989495957077004],
+          "distances": [2.14413044127551],
+          "score": 0.2989495957077004,
+          "meanDistance": 2.14413044127551
+        },
+        {
+          "id": "b1e9061a-b9e6-49ec-bc7e-c18557da9fd5",
+          "name": "Phyrexian Splicer",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.31237239689669255],
+          "distances": [2.069244013978289],
+          "score": 0.31237239689669255,
+          "meanDistance": 2.069244013978289
+        },
+        {
+          "id": "9e7b5b00-9d14-4090-b8c3-28b70375571e",
+          "name": "Thalakos Mistfolk",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.31250774249494156],
+          "distances": [2.1407230897936698],
+          "score": 0.31250774249494156,
+          "meanDistance": 2.1407230897936698
+        },
+        {
+          "id": "34136f2c-3edd-4ca3-b1ef-1fdcaa4518a0",
+          "name": "Scalding Tongs",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.31526890583144446],
+          "distances": [2.100075116893589],
+          "score": 0.31526890583144446,
+          "meanDistance": 2.100075116893589
+        },
+        {
+          "id": "4f2da99f-3c53-4980-97d6-2158c765aac0",
+          "name": "Altar of Dementia",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.32727272727272727],
+          "distances": [2.14910262070155],
+          "score": 0.32727272727272727,
+          "meanDistance": 2.14910262070155
+        },
+        {
+          "id": "2b167347-2f8f-4338-a651-c7543d812597",
+          "name": "Mnemonic Sliver",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.33179003066562446],
+          "distances": [2.060331387482396],
+          "score": 0.33179003066562446,
+          "meanDistance": 2.060331387482396
+        },
+        {
+          "id": "6dc3d5b4-b04f-4b34-afd2-72fb3de0a33b",
+          "name": "Excavator",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.336316533207725],
+          "distances": [2.1194878225024048],
+          "score": 0.336316533207725,
+          "meanDistance": 2.1194878225024048
+        },
+        {
+          "id": "5f7346d8-1aef-4618-88e6-74bd8865e0f3",
+          "name": "Scroll Rack",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3385490753911806],
+          "distances": [2.0503503897741946],
+          "score": 0.3385490753911806,
+          "meanDistance": 2.0503503897741946
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/3.svg",
+      "role": "mana",
+      "cardCount": 57,
+      "confidentCount": 57,
+      "medianEdgeF1": 0.4376297716019805,
+      "allCardMedianEdgeF1": 0.4376297716019805,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "bdaa9ac4-b742-4a24-a316-97538adfd361",
+          "name": "Patchwork Gnomes",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.2496384469907665],
+          "distances": [2.5204094814659337],
+          "score": 0.2496384469907665,
+          "meanDistance": 2.5204094814659337
+        },
+        {
+          "id": "92b55586-9ea3-403e-96ec-2604f91c79cc",
+          "name": "Puppet Strings",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30397236614853196],
+          "distances": [2.293210487198134],
+          "score": 0.30397236614853196,
+          "meanDistance": 2.293210487198134
+        },
+        {
+          "id": "2fcf5b8a-563b-48d7-a874-e9c226192320",
+          "name": "Phyrexian Grimoire",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.30482802145787313],
+          "distances": [2.2682406069314247],
+          "score": 0.30482802145787313,
+          "meanDistance": 2.2682406069314247
+        },
+        {
+          "id": "5648158d-38d4-4167-8af5-ee5d7d6fd7cb",
+          "name": "Torture Chamber",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.31821106821106815],
+          "distances": [2.270790798177562],
+          "score": 0.31821106821106815,
+          "meanDistance": 2.270790798177562
+        },
+        {
+          "id": "8c2ffc07-9993-40de-b36e-33c7afd4cfc2",
+          "name": "Watchdog",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3308211650180562],
+          "distances": [2.311452767029346],
+          "score": 0.3308211650180562,
+          "meanDistance": 2.311452767029346
+        },
+        {
+          "id": "645297d1-ee77-4879-83eb-8114fbabb9a4",
+          "name": "Bottle Gnomes",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.35821697099892585],
+          "distances": [2.0882172767706098],
+          "score": 0.35821697099892585,
+          "meanDistance": 2.0882172767706098
+        },
+        {
+          "id": "426a28bd-033d-41af-b577-ece73cbd7b3a",
+          "name": "Coiled Tinviper",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3636363636363637],
+          "distances": [2.26638813755269],
+          "score": 0.3636363636363637,
+          "meanDistance": 2.26638813755269
+        },
+        {
+          "id": "3574d758-9143-4a2b-9ebd-ed8dab238251",
+          "name": "Static Orb",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.36397400185701023],
+          "distances": [2.0825807523820052],
+          "score": 0.36397400185701023,
+          "meanDistance": 2.0825807523820052
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/W.svg",
+      "role": "mana",
+      "cardCount": 57,
+      "confidentCount": 57,
+      "medianEdgeF1": 0.4468029759117632,
+      "allCardMedianEdgeF1": 0.4468029759117632,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "eb8efbec-e8bf-4e34-bf13-b43916d2e9ff",
+          "name": "Sky Spirit",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3794517557537579],
+          "distances": [2.0685285974403387],
+          "score": 0.3794517557537579,
+          "meanDistance": 2.0685285974403387
+        },
+        {
+          "id": "1ccdca3b-7d53-4d19-bd15-9a1b148c4aaf",
+          "name": "Gallantry",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3801980198019802],
+          "distances": [2.1143726656541832],
+          "score": 0.3801980198019802,
+          "meanDistance": 2.1143726656541832
+        },
+        {
+          "id": "f186c4b1-b7ec-46eb-a961-257411b401b0",
+          "name": "Talon Sliver",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3868471953578337],
+          "distances": [2.3149919980552554],
+          "score": 0.3868471953578337,
+          "meanDistance": 2.3149919980552554
+        },
+        {
+          "id": "49f29a3b-7136-496c-bc29-8808bfff0f82",
+          "name": "Circle of Protection: Shadow",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.38798641703377384],
+          "distances": [2.037152883794334],
+          "score": 0.38798641703377384,
+          "meanDistance": 2.037152883794334
+        },
+        {
+          "id": "6eff4351-5501-4061-a409-49f518ba9628",
+          "name": "Circle of Protection: White",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.39132826667210013],
+          "distances": [2.0468808241490546],
+          "score": 0.39132826667210013,
+          "meanDistance": 2.0468808241490546
+        },
+        {
+          "id": "cc538730-c46c-4e5f-bc1f-0efb7765086d",
+          "name": "Oracle en-Vec",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.39423176678078636],
+          "distances": [2.078063343897922],
+          "score": 0.39423176678078636,
+          "meanDistance": 2.078063343897922
+        },
+        {
+          "id": "d66d1f00-e857-4bc3-a36d-a33669d281e9",
+          "name": "Invulnerability",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.39791470814460306],
+          "distances": [2.0973738841086567],
+          "score": 0.39791470814460306,
+          "meanDistance": 2.0973738841086567
+        },
+        {
+          "id": "8a65e678-dcb9-4c6c-9a30-8332030dead6",
+          "name": "Disenchant",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3983497903422156],
+          "distances": [2.1633679071901577],
+          "score": 0.3983497903422156,
+          "meanDistance": 2.1633679071901577
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/B.svg",
+      "role": "mana",
+      "cardCount": 57,
+      "confidentCount": 57,
+      "medianEdgeF1": 0.47764781820002894,
+      "allCardMedianEdgeF1": 0.47764781820002894,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "c5a8bb3a-3a84-442f-8e31-8af2f04408ab",
+          "name": "Dauthi Horror",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3376904583737999],
+          "distances": [1.9998108805930757],
+          "score": 0.3376904583737999,
+          "meanDistance": 1.9998108805930757
+        },
+        {
+          "id": "bf4708e8-2149-4990-987c-2ea55fc6c508",
+          "name": "Dark Ritual",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3634625597450876],
+          "distances": [1.8439307758882966],
+          "score": 0.3634625597450876,
+          "meanDistance": 1.8439307758882966
+        },
+        {
+          "id": "34e6c04f-9d1a-497b-bc96-a0e48a1c1904",
+          "name": "Spontaneous Combustion",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3926946574808268],
+          "distances": [1.9022486408158654],
+          "score": 0.3926946574808268,
+          "meanDistance": 1.9022486408158654
+        },
+        {
+          "id": "ae1ef31c-8ca5-444c-8f39-e1d1827318f5",
+          "name": "Reanimate",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.40500325490560773],
+          "distances": [1.7837430352840242],
+          "score": 0.40500325490560773,
+          "meanDistance": 1.7837430352840242
+        },
+        {
+          "id": "d9e1959c-b87b-4e17-a0d2-0489ea79220b",
+          "name": "Sadistic Glee",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.42248960840078764],
+          "distances": [1.8890378783393351],
+          "score": 0.42248960840078764,
+          "meanDistance": 1.8890378783393351
+        },
+        {
+          "id": "27bffefb-23c0-4d03-b716-b1a7eff39a05",
+          "name": "Leeching Licid",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.423075122864498],
+          "distances": [1.8118891356482398],
+          "score": 0.423075122864498,
+          "meanDistance": 1.8118891356482398
+        },
+        {
+          "id": "ee7ba92d-d327-4b1c-be40-708c5abb27df",
+          "name": "Lobotomy",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.43379640304357847],
+          "distances": [1.9033021139554107],
+          "score": 0.43379640304357847,
+          "meanDistance": 1.9033021139554107
+        },
+        {
+          "id": "e9474231-34c5-4563-8a61-fd1bc2693f86",
+          "name": "Endless Scream",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4352],
+          "distances": [1.726375130581876],
+          "score": 0.4352,
+          "meanDistance": 1.726375130581876
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/G.svg",
+      "role": "mana",
+      "cardCount": 57,
+      "confidentCount": 57,
+      "medianEdgeF1": 0.4792155697518942,
+      "allCardMedianEdgeF1": 0.4792155697518942,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "4b073ac1-be1b-49c0-98b4-bf8165e2f872",
+          "name": "Wood Sage",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3128599362494308],
+          "distances": [2.525922640400133],
+          "score": 0.3128599362494308,
+          "meanDistance": 2.525922640400133
+        },
+        {
+          "id": "73d51a3c-95c0-4810-b847-4b8afd12fd64",
+          "name": "Mirri's Guile",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.37491330625185776],
+          "distances": [2.2153286720686625],
+          "score": 0.37491330625185776,
+          "meanDistance": 2.2153286720686625
+        },
+        {
+          "id": "99a12b74-f191-4362-81ab-77590ae5e68f",
+          "name": "Root Maze",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.3871935967983992],
+          "distances": [2.161285399126284],
+          "score": 0.3871935967983992,
+          "meanDistance": 2.161285399126284
+        },
+        {
+          "id": "994bb02d-6fef-454b-b1b1-d3d1af8dcd1a",
+          "name": "Storm Front",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.39662447257383965],
+          "distances": [2.150379739026738],
+          "score": 0.39662447257383965,
+          "meanDistance": 2.150379739026738
+        },
+        {
+          "id": "efe01296-2b8b-4cdf-a041-a08bebea9c29",
+          "name": "Skyshroud Ranger",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4059379217273954],
+          "distances": [2.0807239153446293],
+          "score": 0.4059379217273954,
+          "meanDistance": 2.0807239153446293
+        },
+        {
+          "id": "3941e799-a254-423e-90bb-091dbe56ca6a",
+          "name": "Frog Tongue",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.41161351737267965],
+          "distances": [2.138969139333782],
+          "score": 0.41161351737267965,
+          "meanDistance": 2.138969139333782
+        },
+        {
+          "id": "21204f62-c253-4d88-a4cd-7c0f6f0513e0",
+          "name": "Reality Anchor",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4142854697050113],
+          "distances": [2.0465210053435046],
+          "score": 0.4142854697050113,
+          "meanDistance": 2.0465210053435046
+        },
+        {
+          "id": "f99c10b5-b93b-40c3-936c-d1b81b49c5a4",
+          "name": "Elvish Fury",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4204625087596356],
+          "distances": [2.0171853424857717],
+          "score": 0.4204625087596356,
+          "meanDistance": 2.0171853424857717
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/gl.png",
+      "role": "frame",
+      "cardCount": 4,
+      "confidentCount": 4,
+      "medianEdgeF1": 0.5283723002529217,
+      "allCardMedianEdgeF1": 0.5283723002529217,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "36b3ffbd-3f3e-4fca-80c2-94f9fdc198a5",
+          "name": "Forest",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5852074113615622, 0.3904407763468166],
+          "distances": [1.5448955656137353, 2.183951457044718],
+          "score": 0.4878240938541894,
+          "meanDistance": 1.8644235113292267
+        },
+        {
+          "id": "6b667225-a808-43e9-955e-6c4e7ecd53f2",
+          "name": "Forest",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6915990847673332, 0.3546886864085042],
+          "distances": [1.0159580483854929, 2.0784646353217804],
+          "score": 0.5231438855879187,
+          "meanDistance": 1.5472113418536366
+        },
+        {
+          "id": "72bac71a-c326-4640-bdf8-43682f59060b",
+          "name": "Forest",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6610557570058546, 0.4061456728299949],
+          "distances": [1.1835083795984662, 2.2649453975128204],
+          "score": 0.5336007149179247,
+          "meanDistance": 1.7242268885556433
+        },
+        {
+          "id": "32411c3a-da2b-4316-9848-971e90951303",
+          "name": "Forest",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.7798070131098885, 0.3833596629805161],
+          "distances": [0.8661868908821775, 2.057037651067223],
+          "score": 0.5815833380452023,
+          "meanDistance": 1.4616122709747001
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/5.svg",
+      "role": "mana",
+      "cardCount": 3,
+      "confidentCount": 3,
+      "medianEdgeF1": 0.5335740434281131,
+      "allCardMedianEdgeF1": 0.5335740434281131,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "cc9fb7b6-d20c-4c08-9dae-4ccc9138b662",
+          "name": "Benthic Behemoth",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.4668142580978569],
+          "distances": [1.654166207929345],
+          "score": 0.4668142580978569,
+          "meanDistance": 1.654166207929345
+        },
+        {
+          "id": "29bd094c-fcc1-4abf-ba3e-03a5b9b6d1c2",
+          "name": "Verdant Force",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5335740434281131],
+          "distances": [1.5615597990116665],
+          "score": 0.5335740434281131,
+          "meanDistance": 1.5615597990116665
+        },
+        {
+          "id": "9a686ed6-fc13-4882-b56c-667f556d9804",
+          "name": "Rootbreaker Wurm",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5568326947637293],
+          "distances": [1.5599837848551514],
+          "score": 0.5568326947637293,
+          "meanDistance": 1.5599837848551514
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+      "role": "frame",
+      "cardCount": 53,
+      "confidentCount": 53,
+      "medianEdgeF1": 0.599008974956229,
+      "allCardMedianEdgeF1": 0.599008974956229,
+      "status": "review-asset-or-placement",
+      "examples": [
+        {
+          "id": "be80dd2d-f595-4d80-84ae-66d3d18e7399",
+          "name": "Needle Storm",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.5514890340528055, 0.40486115431676306],
+          "distances": [1.8001281444734987, 2.221213012491063],
+          "score": 0.47817509418478427,
+          "meanDistance": 2.010670578482281
+        },
+        {
+          "id": "56b84315-5287-4401-a4c8-34c192423270",
+          "name": "Mongrel Pack",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.7664296096345514, 0.24038028295935837],
+          "distances": [0.9385186744401528, 2.4496033142155307],
+          "score": 0.5034049462969549,
+          "meanDistance": 1.6940609943278417
+        },
+        {
+          "id": "651f89e5-9ce2-4713-aca9-6581005f6ca2",
+          "name": "Charging Rhino",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.693548625589614, 0.3339148270852081],
+          "distances": [1.2663246641249, 2.2599703373329976],
+          "score": 0.513731726337411,
+          "meanDistance": 1.7631475007289488
+        },
+        {
+          "id": "3c207142-4880-4935-9827-b91bc7d9d643",
+          "name": "Harrow",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6241416366093183, 0.4311164669098489],
+          "distances": [1.625331713114802, 2.286450745786891],
+          "score": 0.5276290517595836,
+          "meanDistance": 1.9558912294508464
+        },
+        {
+          "id": "602a1e1f-4195-48c0-8290-562e7e0db6d8",
+          "name": "Muscle Sliver",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6041766452725357, 0.49276852060887577],
+          "distances": [1.5767233352426686, 1.944422948542021],
+          "score": 0.5484725829407058,
+          "meanDistance": 1.760573141892345
+        },
+        {
+          "id": "b83e4b36-57c1-493d-ab79-52075990b2d5",
+          "name": "Crazed Armodon",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.7452540935481767, 0.35304745612854865],
+          "distances": [1.1251274962611448, 2.06390585597161],
+          "score": 0.5491507748383627,
+          "meanDistance": 1.5945166761163776
+        },
+        {
+          "id": "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+          "name": "Apes of Rath",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.8047500819787324, 0.3048645274681954],
+          "distances": [0.8467427820346265, 2.431644075930952],
+          "score": 0.554807304723464,
+          "meanDistance": 1.6391934289827894
+        },
+        {
+          "id": "a9e2df7d-5d72-4a32-a453-6d8611f0d63c",
+          "name": "Dirtcowl Wurm",
+          "family": "retro-seventh",
+          "alignmentUncertain": false,
+          "scores": [0.6940558284237472, 0.4439207447906847],
+          "distances": [1.1495710808036144, 2.2132632437721607],
+          "score": 0.568988286607216,
+          "meanDistance": 1.6814171622878875
+        }
+      ],
+      "families": ["retro-seventh"],
+      "caveat": "Color is not scored. Frame geometry, scan alignment, and co-occurring components can contribute; inspect examples before replacing assets."
+    }
+  ],
+  "performance": {
+    "cold": {
+      "mir/retro-before": {
+        "seconds": 488.289581186,
+        "cacheHits": 0
+      },
+      "mir/retro-type": {
+        "seconds": 490.416907781,
+        "cacheHits": 0
+      },
+      "tmp/retro-before": {
+        "seconds": 479.40764817600007,
+        "cacheHits": 0
+      },
+      "tmp/retro-type": {
+        "seconds": 488.335497761,
+        "cacheHits": 0
+      }
+    },
+    "note": "Cold runs overlap captures, checks and other comparisons. Warm Node comparisons verify both tiers and image checksums with 350 cache hits per set; no browser, downloads or capture. These are CPU file/metric wall times, not GPU completion measurements.",
+    "mir": {
+      "warmSeconds": 3.666916202,
+      "cacheHits": 350
+    },
+    "tmp": {
+      "warmSeconds": 3.216568689,
+      "cacheHits": 350
+    }
+  },
+  "layoutCoverage": {
+    "mir": {
+      "beforeMeasured": 330,
+      "afterMeasured": 330,
+      "basicSymbolPath": 20,
+      "legacyClipCrossings": 187,
+      "legacyVerticalCrossings": 17,
+      "legacyVerticalBeyond2px": 16,
+      "afterOverflow": 0,
+      "note": "Most legacy crossings are under 2px horizontal ink overhangs. Vertical clipping measures supplied text, which may be unverified Oracle wording."
+    },
+    "tmp": {
+      "beforeMeasured": 330,
+      "afterMeasured": 330,
+      "basicSymbolPath": 20,
+      "legacyClipCrossings": 142,
+      "legacyVerticalCrossings": 8,
+      "legacyVerticalBeyond2px": 6,
+      "afterOverflow": 0,
+      "note": "Most legacy crossings are under 2px horizontal ink overhangs. Vertical clipping measures supplied text, which may be unverified Oracle wording."
+    }
+  },
+  "fullPaired": {
+    "mir": {
+      "paired": 350,
+      "excluded": [],
+      "reviewedInspectBody": {
+        "count": 21,
+        "beforeMedian": 0.3306594549849436,
+        "afterMedian": 0.454345393234902,
+        "medianPairedDelta": 0.10831897849348832,
+        "improved": 12,
+        "regressed": 5,
+        "worst": [
+          {
+            "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+            "name": "Mtenda Herder",
+            "before": 0.47288958992575547,
+            "after": 0.17684254450878434,
+            "delta": -0.29604704541697113
+          },
+          {
+            "id": "dc9afb9e-eab3-4969-9a44-2c01bf730e68",
+            "name": "Lead Golem",
+            "before": 0.5540595008494297,
+            "after": 0.38142326481405053,
+            "delta": -0.17263623603537914
+          },
+          {
+            "id": "9047d292-8f5c-4a6b-b74e-c8dbf3e0ab24",
+            "name": "Ekundu Cyclops",
+            "before": 0.6361593769543359,
+            "after": 0.5576291464692071,
+            "delta": -0.07853023048512875
+          },
+          {
+            "id": "84e4a955-ce9a-4386-b6ac-c00fd25de882",
+            "name": "Sand Golem",
+            "before": 0.47998611368778665,
+            "after": 0.4238775642232491,
+            "delta": -0.05610854946453753
+          },
+          {
+            "id": "b0125f79-ff68-4fb9-b309-8d277259f323",
+            "name": "Mangara's Blessing",
+            "before": 0.4870098516466338,
+            "after": 0.45480696432841644,
+            "delta": -0.032202887318217355
+          }
+        ]
+      },
+      "reviewedTableBody": {
+        "count": 21,
+        "beforeMedian": 0.3207216174434493,
+        "afterMedian": 0.4445737024070973,
+        "medianPairedDelta": 0.08013845564432587,
+        "improved": 11,
+        "regressed": 6,
+        "worst": [
+          {
+            "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
+            "name": "Mtenda Herder",
+            "before": 0.4734633372191694,
+            "after": 0.16641182334848312,
+            "delta": -0.3070515138706863
+          },
+          {
+            "id": "dc9afb9e-eab3-4969-9a44-2c01bf730e68",
+            "name": "Lead Golem",
+            "before": 0.5396225592363418,
+            "after": 0.36738872837577446,
+            "delta": -0.17223383086056737
+          },
+          {
+            "id": "84e4a955-ce9a-4386-b6ac-c00fd25de882",
+            "name": "Sand Golem",
+            "before": 0.47950828604848844,
+            "after": 0.420041689773774,
+            "delta": -0.059466596274714456
+          },
+          {
+            "id": "b0125f79-ff68-4fb9-b309-8d277259f323",
+            "name": "Mangara's Blessing",
+            "before": 0.4803906513277193,
+            "after": 0.4445737024070973,
+            "delta": -0.03581694892062198
+          },
+          {
+            "id": "9047d292-8f5c-4a6b-b74e-c8dbf3e0ab24",
+            "name": "Ekundu Cyclops",
+            "before": 0.6054363912355679,
+            "after": 0.5702401957451014,
+            "delta": -0.035196195490466486
+          }
+        ]
+      },
+      "unchangedRegions": [
+        {
+          "region": "title",
+          "inspect": 0,
+          "table": 0
+        },
+        {
+          "region": "type",
+          "inspect": 0,
+          "table": 0
+        },
+        {
+          "region": "stats",
+          "inspect": 0,
+          "table": 0
+        },
+        {
+          "region": "set-symbol",
+          "inspect": 0,
+          "table": 0
+        }
+      ]
+    },
+    "tmp": {
+      "paired": 350,
+      "excluded": [],
+      "reviewedInspectBody": {
+        "count": 16,
+        "beforeMedian": 0.2982729287175279,
+        "afterMedian": 0.46680372723589325,
+        "medianPairedDelta": 0.158421371866874,
+        "improved": 10,
+        "regressed": 4,
+        "worst": [
+          {
+            "id": "734be7fa-0998-4771-9b97-4989b3fc1471",
+            "name": "Steal Enchantment",
+            "before": 0.34315929935815803,
+            "after": 0.18861680865838995,
+            "delta": -0.15454249069976808
+          },
+          {
+            "id": "9c1624f7-8275-46d3-ab7e-7b162e27593f",
+            "name": "Selenia, Dark Angel",
+            "before": 0.26481059389319955,
+            "after": 0.13079268355315102,
+            "delta": -0.13401791034004853
+          },
+          {
+            "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+            "name": "Mogg Conscripts",
+            "before": 0.28585420409544143,
+            "after": 0.17424749271464943,
+            "delta": -0.111606711380792
+          },
+          {
+            "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+            "name": "Searing Touch",
+            "before": 0.28371269572850577,
+            "after": 0.24421392873742456,
+            "delta": -0.03949876699108121
+          },
+          {
+            "id": "224cb63f-9af0-4b00-ba0b-0b604abf20c8",
+            "name": "Salt Flats",
+            "before": 0.41693357262837666,
+            "after": 0.4109017414243309,
+            "delta": -0.006031831204045768
+          }
+        ]
+      },
+      "reviewedTableBody": {
+        "count": 16,
+        "beforeMedian": 0.2963084260139993,
+        "afterMedian": 0.46007077230708204,
+        "medianPairedDelta": 0.1497272708902249,
+        "improved": 10,
+        "regressed": 5,
+        "worst": [
+          {
+            "id": "734be7fa-0998-4771-9b97-4989b3fc1471",
+            "name": "Steal Enchantment",
+            "before": 0.3274740028218043,
+            "after": 0.18331196256440666,
+            "delta": -0.14416204025739762
+          },
+          {
+            "id": "73719325-b091-4464-b0b0-77dfbb19562a",
+            "name": "Mogg Conscripts",
+            "before": 0.28015025609123195,
+            "after": 0.14960792882634844,
+            "delta": -0.13054232726488352
+          },
+          {
+            "id": "9c1624f7-8275-46d3-ab7e-7b162e27593f",
+            "name": "Selenia, Dark Angel",
+            "before": 0.24823981253461133,
+            "after": 0.1314081652884179,
+            "delta": -0.11683164724619344
+          },
+          {
+            "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+            "name": "Searing Touch",
+            "before": 0.2651471048389978,
+            "after": 0.2355576397911559,
+            "delta": -0.02958946504784188
+          },
+          {
+            "id": "b4d3d349-5c23-43a9-b25e-0e1a35b84673",
+            "name": "Stalking Stones",
+            "before": 0.4909666401853386,
+            "after": 0.46257008724133486,
+            "delta": -0.028396552944003728
+          }
+        ]
+      },
+      "unchangedRegions": [
+        {
+          "region": "title",
+          "inspect": 0,
+          "table": 0
+        },
+        {
+          "region": "type",
+          "inspect": 0,
+          "table": 0
+        },
+        {
+          "region": "stats",
+          "inspect": 0,
+          "table": 0
+        },
+        {
+          "region": "set-symbol",
+          "inspect": 0,
+          "table": 0
+        }
+      ]
+    }
+  },
+  "modernRegression": {
+    "set": "m21",
+    "cards": 8,
+    "tiers": ["inspect", "table"],
+    "identicalImageHashes": true
+  },
+  "nextStep": "Compare old-border regular and italic font width/weight on a new frozen development/holdout split. Resolve Mtenda Herder and Mogg Conscripts without per-card sizing or scan alignment. Keep early-basic presentation and frame assets as separate tracked issues."
+}

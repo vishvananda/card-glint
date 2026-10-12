@@ -426,3 +426,111 @@ checksum verification per set, without Chromium, download or capture. The cold
 runs took about 216 seconds each while running concurrently with other work;
 they are not isolated performance benchmarks. Downloads and local reports stay
 ignored and outside the public showcase and release packages.
+
+## Old-border typography transfer: Mirage → Tempest
+
+Study `retro-type` keeps the existing art, frames, fonts and shared alignment.
+Commit `2002a16` supplies the old renderer plus observation of its actual text
+positions. All 16 development captures were pixel-identical to the archived
+baseline at both tiers. Commit `4385eaa` freezes the new typography before fresh
+holdout review: 22.5px maximum, 15px minimum, quarter-pixel fitting, 1em leading,
+0.25em paragraph gaps and a 0.8em rules/flavor gap. It honors run italics and
+explicit right-aligned attribution paragraphs, with no separator or modern
+flavor-orphan heuristic. The pack owns this policy; the game-neutral renderer
+and browser backend are unchanged.
+
+The 16 previously reviewed Mirage cards became development data. Two already
+flagged alignment cases were excluded from tuning aggregates. Across 24 shared
+parameter candidates, selection maximized mean soft-wrap F1, breaking ties by
+mean body edge F1. This matters: a larger setting raised median image similarity
+while matching fewer printed wraps. The chosen candidate matches 7/14 development
+cards' full wrapping and has mean soft-wrap F1 0.741. Candidate summaries are in
+`mir/typography-selection-retro-type.json`.
+
+Eight fresh Mirage cards and eight fresh Tempest cards were selected by printing
+metadata before tuning, excluding previously reviewed names. Tempest also excludes
+all Mirage names. Printed wording, type lines, styles and line targets were
+reviewed only after the policy freeze. Both renderers receive those same inputs;
+soft line breaks are measurement targets, never painter inputs. Dialogue,
+poetry and attribution paragraphs preserve semantic breaks. The frozen Mirage
+transform remains identical in Tempest, with no scan-specific adjustment.
+
+Body layout is now observed on 330 nonbasic cards per set. The 20 basic lands per
+set retain their existing large-symbol path, which has no body text layout and
+still needs its separate historical presentation fix. The new painter rejects
+unresolved overflow rather than clipping text. Legacy ink crossing the old clip
+rectangle is reported separately from scan fidelity: most crossings are subpixel
+horizontal glyph overhangs, so raw clipping counts must not be described as
+hundreds of illegible cards.
+
+The [frozen transfer measurement](fixtures/accuracy/tmp/transfer-measurement-retro-type.json)
+records the paired results:
+
+| Fresh holdouts                         | Mirage, 7 confident | Tempest, 8 confident |
+| -------------------------------------- | ------------------- | -------------------- |
+| Median body edge F1, inspect           | 0.245 → 0.458       | 0.306 → 0.500        |
+| Median body edge F1, table             | 0.235 → 0.449       | 0.304 → 0.490        |
+| Mean soft-wrap F1                      | 0.449 → 0.649       | 0.450 → 0.729        |
+| Exact wrapping                         | 1 → 1               | 2 → 4                |
+| Median block edge error, canonical px  | 7.5 → 8.0           | 5.75 → 5.25          |
+| Inspect body gains / regressions >0.02 | 5 / 1               | 6 / 1                |
+
+Rocky Tar Pit remains excluded from Mirage's holdout aggregate because of its
+existing alignment flag. It remains visible in the full report. The paired
+inspect-body median gain is +0.155 for Mirage and +0.158 for Tempest; the small
+cohorts' bootstrap intervals are [0.010, 0.288] and [0.025, 0.217]. These intervals
+describe these selected cards, not all Magic. Wrapping improves on average but
+its intervals are wide, and median block geometry changes are within the roughly
+2px measurement uncertainty. This is evidence of transfer, not uniform fidelity.
+
+All 700 printings pair with identical inputs, with zero render/comparison failures.
+Forty bodies have reviewed printed wording; 660 still use unverified Oracle text.
+Across all confidently aligned reviewed bodies, 12/21 Mirage and 10/16 Tempest
+improve by more than 0.02 inspect F1, while 5/21 and 4/16 regress. Mirage's review
+list is Mtenda Herder, Lead Golem, Ekundu Cyclops, Sand Golem and Mangara's Blessing;
+Tempest's is Steal Enchantment, Selenia, Dark Angel, Mogg Conscripts and Searing
+Touch. Lead Golem wraps correctly after the change despite its edge regression.
+Suq'Ata Firewalker shows the reverse tradeoff: higher edge similarity and better
+block placement, but worse soft wraps. Keep these metrics separate.
+
+The new 660 measured body layouts have no unresolved overflow. The legacy observer
+finds vertical ink extending more than 2px past its clip on 16 Mirage and 6 Tempest
+cards. The old raw clip-crossing totals, 187 and 142, mostly reflect subpixel
+horizontal overhangs. Eight M21 holdouts remain pixel-identical at both tiers.
+Frame assets and the outstanding early-basic-land, mana, set-symbol and footer
+issues are unchanged. The next typography step is testing old-border font width
+and weight with fresh evaluation cards, without per-card sizing exceptions.
+
+Warm comparisons take 3.67s for Mirage and 3.22s for Tempest, each with 350 cache
+hits including checksum verification and both tiers. Cold runs took 479–490s
+while overlapping captures, tests and other comparisons; these are not isolated
+benchmarks. Timings cover CPU file/metric work, not rendering or GPU completion.
+
+To reproduce, use a worktree at `2002a16` for `retro-before`, with the study's
+current annotation/cohort JSON and the baseline observer from `4385eaa`; use
+`4385eaa` or the current unchanged production source for `retro-type`. Share the
+local cache through `MAGIC_ACCURACY_CACHE`, and collect both worktrees' runs under
+one ignored `test-results/magic-accuracy` directory. Then, in the current tree:
+
+```sh
+# Repeat for --set tmp, and for --run retro-before using the baseline worktree:
+npm run magic:reference:render -- --set mir --study retro-type --run retro-type
+# Compare both runs with the SAME current metric code:
+npm run magic:reference:compare -- --set mir --study retro-type --run retro-before
+npm run magic:reference:compare -- --set mir --study retro-type --run retro-type
+npm run magic:reference:typography -- --set mir --study retro-type --run retro-before
+npm run magic:reference:typography -- --set mir --study retro-type --run retro-type
+npm run magic:reference:delta -- --set mir --baseline retro-before --run retro-type
+npm run magic:reference:report -- --set mir --run retro-type
+# After both sets are complete:
+npm run magic:reference:transfer -- --set tmp --study retro-type --baseline retro-before --run retro-type
+npm run magic:reference:examples -- --set tmp --study retro-type --baseline retro-before --run retro-type
+```
+
+The transfer command checks the frozen renderer hashes as well as paired inputs,
+reference, metric, browser and alignment identities. The example page selects
+two of the largest confidently aligned, reviewed body improvements in each set
+and displays explicit review candidates alongside them. It is a curated review
+page, not an overall accuracy claim. Full per-card metrics and the asset backlog
+remain available in each set report. Only capture uses Chromium; comparisons,
+typography metrics and page generation run in Node against cached pixels.
