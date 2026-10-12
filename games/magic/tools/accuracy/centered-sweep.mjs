@@ -198,13 +198,13 @@ try {
       const f1 = compareRegion(target.gray, rendered.gray, 366, 184).edgeF1[1];
       const file = `${card.collectorNumber}.${value.id}.png`;
       await atomicWrite(path.join(out, file), bytes);
-      const target = targets[card.id];
+      const wrappingTarget = targets[card.id];
       scores.push({
         id: value.id,
         edgeF1: f1,
-        wrapping: target
+        wrapping: wrappingTarget
           ? wrapping(
-              target.lines,
+              wrappingTarget.lines,
               value.layout.lines.map(lineText),
               card.face.rulesParagraphs.map((p) => p.runs.map((r) => r.text).join('')),
             )
