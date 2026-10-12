@@ -1113,3 +1113,34 @@ the initial >300-character/single-paragraph gate. The candidate is rejected;
 reviews before fitting, broadens the shared hypothesis to >260 characters, and
 allows dense text more vertical space within the existing panel. No per-card
 alignment or new assets are introduced.
+
+The second character-count trial improves Living Wall and Sedge Troll, but
+incorrectly shrinks Copy Artifact and Mons's Goblin Raiders. A fit-only trial
+then fails Aladdin's Ring: edge F1 improves while the image visibly loses three
+printed lines. Both failures are retained in `dense-refine-transfer.json` and
+`dense-fit-transfer.json`. Edge overlap alone is insufficient to accept a change.
+
+The adopted Revised-only rule requires more than 270 source characters and a
+regular layout that would shrink below 22px. It uses 15.5px type, 1.25 leading,
+16px more available panel height and a correspondingly adjusted optical offset.
+No individual names, coordinates, frame assets or scan transforms enter the
+policy. All positive examples had been seen by the time this classifier was
+chosen: this is a full-corpus audit, **not fresh validation** or evidence of
+transfer to another set. Earlier reservation/failure records remain intact.
+
+`revised-dense` measures all 306 cards at both sizes on the separately corrected
+`revised-text` inputs. Exactly 13 change; 293 preserve complete PNGs and layout
+metadata. All 54 frozen final trial PNGs match production. All changed pixels
+remain inside the body, with zero failures or clipping. Another 56 representatives
+from M21/MIR/TMP/4ED/5ED preserve their full images at both sizes. These checks
+establish preservation, not comprehensive accuracy for those sets.
+
+All 13 changed cards improve by more than .02 at both sizes: median inspect F1
+.346 → .664, table .338 → .648. Their manually reviewed line counts all match,
+versus one before. Four have independently transcribed full line targets; two
+match every ending. Sedge Troll's missing source colon remains explicitly
+flagged and excluded from the additional source-qualified aggregate (12 cards).
+`dense-measurement.json`, `dense-line-review.json` and `dense-capture-check.json`
+retain complete denominators, image hashes and per-card evidence. The private
+`3ed/dense-review/index.html` includes every change and Aladdin's Ring as a
+negative control; the main comparison adds Earthbind and Gaea's Liege.

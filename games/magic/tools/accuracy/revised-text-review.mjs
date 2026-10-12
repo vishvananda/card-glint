@@ -115,10 +115,10 @@ await writeJson(path.join(fixture, 'text-corrections-measurement.json'), {
   checkedImages: 1836,
   coverage: metrics.summary,
   results,
-  note: 'Same renderer and frozen alignment. Changes are printing input/style corrections, not renderer accuracy gains. All other302 faces retain identical inputs, layout and both full PNGs. Full source and image hashes checked. Wrapping normalizes whitespace/quotes and does not certify stroke shape.',
+  note: 'Same renderer and frozen alignment. Changes are printing input/style corrections, not renderer accuracy gains. All other 302 faces retain identical inputs, layout and both full PNGs. Full source and image hashes checked. Wrapping normalizes whitespace/quotes and does not certify stroke shape.',
 });
 await atomicWrite(
   path.join(base, 'revised-text/index.html'),
-  `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Revised printed text corrections</title><style>body{background:#1c2024;color:#e4e8ea;font:16px/1.5 system-ui;margin:30px auto;max-width:1250px}article{border-top:1px solid #52606a;padding:20px 0}article div{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}figure{margin:0}img{width:100%}figcaption{margin-bottom:10px}</style><h1>Revised: original printing inputs</h1><p>Four scan-reviewed text/style corrections. The renderer is identical on both sides; these gains are excluded from renderer-only comparisons. All other302 cards are unchanged.</p>${articles.join('')}<p>Local fan study. Magic imagery © Wizards of the Coast; cached scans through Scryfall.</p></html>`,
+  `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Revised printed text corrections</title><style>body{background:#1c2024;color:#e4e8ea;font:16px/1.5 system-ui;margin:30px auto;max-width:1250px}article{border-top:1px solid #52606a;padding:20px 0}article div{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}figure{margin:0}img{width:100%}figcaption{margin-bottom:10px}</style><h1>Revised: original printing inputs</h1><p>Four scan-reviewed text/style corrections. The renderer is identical on both sides; these gains are excluded from renderer-only comparisons. All other 302 cards are unchanged.</p>${articles.join('')}<p>Local fan study. Magic imagery © Wizards of the Coast; cached scans through Scryfall.</p></html>`,
 );
 console.log(JSON.stringify({ corrected: results.length, unchanged, results }, null, 2));

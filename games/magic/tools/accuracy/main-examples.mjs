@@ -43,6 +43,20 @@ const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
     '3ed',
+    'revised-dense',
+    '147',
+    'Dense Revised text uses a shared smaller type size and wider baseline spacing. All seven printed lines and their endings match. Font stroke weight remains heavier than the scan. The final classifier was audited across the set after refinement, not on an untouched validation set.',
+    ['body'],
+  ],
+  [
+    '3ed',
+    'revised-dense',
+    '198',
+    'Smaller dense type restores all seven printed lines. The diagonal-T glyph and shared body inset are also corrected; no scan-specific coordinates or new frame assets. Existing frame color and outlined header/stat ink still need work.',
+    ['body'],
+  ],
+  [
+    '3ed',
     'revised-long',
     '75',
     'Shared body inset, narrower width and removal of the rules/flavor gap restore all six printed lines. Font weight remains heavier. This is an intermediate branch change: full-set regressions remain listed in the body review.',
@@ -175,10 +189,17 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     const card = capture.results.find((c) => c.collectorNumber === number);
     assert.ok(card && !card.issue);
     let contentReview = null;
-    if (card.contentStatus !== 'scan-reviewed' && set === '3ed' && run === 'revised-long') {
-      const reviewFile = path.join(fixtureRoot, '3ed/long-body-targets.json');
+    if (
+      card.contentStatus !== 'scan-reviewed' &&
+      set === '3ed' &&
+      ['revised-long', 'revised-dense'].includes(run)
+    ) {
+      const study = run === 'revised-dense' ? 'dense' : 'long-body';
+      const reviewFile = path.join(fixtureRoot, `3ed/${study}-targets.json`);
       const reviewed = await readJson(reviewFile);
-      const plan = await readJson(path.join(fixtureRoot, '3ed/long-body-plan.json'));
+      const plan = await readJson(
+        path.join(fixtureRoot, `3ed/${study === 'dense' ? 'dense-final' : study}-plan.json`),
+      );
       const target = reviewed.cards.find((c) => c.id === card.id);
       const input = [...plan.development, ...plan.reserved].find((c) => c.id === card.id);
       assert.ok(target && input);
@@ -187,7 +208,7 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       assert.equal(input.inputHash, card.inputHash);
       assert.equal(normalizedText(target.lines.join('')), normalizedText(card.face.rulesText));
       contentReview = {
-        file: '3ed/long-body-targets.json',
+        file: `3ed/${study}-targets.json`,
         sha256: hash(await readFile(reviewFile)),
       };
     }

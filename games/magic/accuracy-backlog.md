@@ -156,3 +156,20 @@ match printed line endings; stroke weight still differs. The other 302 cards
 are unchanged. Other missing punctuation (including Holy Armor) still needs
 review. The first dense-type candidate failed reserved transfer and was not
 adopted; `dense-transfer.json` records the regression and missed classifications.
+
+The `revised-dense` follow-up corrects the small type on 13 Revised cards,
+including Clone, Earthbind, Gaea's Liege and The Hive. All 13 improve at both
+sizes and match printed line counts; the other 293 faces are unchanged. This
+resolves the size component of those earlier dense regressions. It does not
+resolve remaining word wrapping, font stroke weight, larger centered passages,
+or the other regular-type regressions. The final shared classifier was developed
+with all affected scans visible; it has no untouched positive validation cohort.
+
+Two particularly useful metric failures are preserved: Copy Artifact and Mons's
+Goblin Raiders expose overclassification by character count; Aladdin's Ring
+gets a better edge score despite visibly wrong small type. Use line counts,
+word-line checks and direct crops together before accepting geometry. Aladdin's
+Ring retains regular type and still needs its printed inline flavor attribution.
+Newly inspected source issues include missing activation colons on Sedge Troll,
+Frozen Shade and Zombie Master; Sedge Troll is excluded from the no-known-content-
+issue aggregate. Correct those sources separately before finer placement tuning.

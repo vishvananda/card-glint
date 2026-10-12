@@ -1,0 +1,154 @@
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { readFile } from 'node:fs/promises';
+import { PNG } from 'pngjs';
+import { openBrowser } from './browser.mjs';
+import { readJson, writeJson, cacheRoot, outputRoot, fixtureRoot, hash } from './common.mjs';
+
+const root = path.join(outputRoot, '3ed');
+const before = await readJson(path.join(root, 'revised-text/capture.json'));
+const after = await readJson(path.join(root, 'revised-dense/capture.json'));
+assert.equal(before.complete, true);
+assert.equal(after.complete, true);
+assert.equal(after.results.length, 306);
+const previous = new Map(before.results.map((c) => [c.id, c]));
+let changed = 0,
+  identical = 0,
+  outsideChanges = 0,
+  minimumVisible = 1;
+for (const card of after.results) {
+  const old = previous.get(card.id);
+  assert.equal(card.issue, null);
+  assert.equal(card.inputHash, old.inputHash);
+  const paragraphs = card.face.rulesParagraphs;
+  const eligible =
+    card.frame === 'retro-fourth' &&
+    old.layout.size < 22 &&
+    paragraphs.reduce((sum, p) => sum + p.runs.reduce((n, r) => n + r.text.length, 0), 0) > 270;
+  if (eligible) changed++;
+  else {
+    identical++;
+    assert.deepEqual(card.layout, old.layout);
+  }
+  for (const tier of ['inspect', 'table']) {
+    const aBytes = await readFile(path.join(root, 'revised-text', old.images[tier].file));
+    const bBytes = await readFile(path.join(root, 'revised-dense', card.images[tier].file));
+    assert.equal(hash(aBytes), old.images[tier].sha256);
+    assert.equal(hash(bBytes), card.images[tier].sha256);
+    assert.equal(hash(aBytes) !== hash(bBytes), eligible, `${card.name} ${tier}`);
+    const a = PNG.sync.read(aBytes),
+      b = PNG.sync.read(bBytes),
+      scale = tier === 'inspect' ? 1.5 : 0.5;
+    let visible = 0;
+    for (let y = 0; y < b.height; y++)
+      for (let x = 0; x < b.width; x++) {
+        const i = (y * b.width + x) * 4;
+        if (b.data[i + 3]) visible++;
+        if (
+          a.data[i] === b.data[i] &&
+          a.data[i + 1] === b.data[i + 1] &&
+          a.data[i + 2] === b.data[i + 2] &&
+          a.data[i + 3] === b.data[i + 3]
+        )
+          continue;
+        if (x < 58 * scale || x > 432 * scale || y < 405 * scale || y > 615 * scale)
+          outsideChanges++;
+      }
+    const fraction = visible / (b.width * b.height);
+    assert.ok(fraction > 0.9);
+    minimumVisible = Math.min(minimumVisible, fraction);
+  }
+  if (eligible) {
+    assert.ok(!card.layout.overflow, card.name);
+    assert.ok(card.layout.top >= 416.556 - 1e-6, `Text above panel: ${card.name}`);
+    assert.ok(
+      card.layout.top + card.layout.height <= 609.788 + 1e-6,
+      `Text below panel: ${card.name}`,
+    );
+  }
+}
+assert.equal(outsideChanges, 0);
+const frozen = await readJson(path.join(fixtureRoot, '3ed/dense-final-candidate.json'));
+let prototypeMatches = 0;
+for (const phase of ['development']) {
+  const trial = await readJson(path.join(root, `dense-final-${phase}/trial.json`));
+  assert.equal(trial.experimentHash, frozen.experimentHash);
+  for (const card of trial.results)
+    for (const tier of ['inspect', 'table']) {
+      const score = card.scores.find((s) => s.tier === tier && s.candidate === frozen.candidate.id);
+      assert.equal(
+        after.results.find((r) => r.id === card.id).images[tier].sha256,
+        score.sha256,
+        `Prototype mismatch: ${card.name} ${tier}`,
+      );
+      prototypeMatches++;
+    }
+}
+const otherPolicies = [];
+for (const [set, run] of [
+  ['m21', 'stats-wide-parity'],
+  ['mir', 'text-insets'],
+  ['tmp', 'text-insets'],
+  ['4ed', 'centered'],
+  ['5ed', 'stats-wide-retained'],
+]) {
+  const snapshot = await readJson(path.join(cacheRoot, 'sets', `${set}.json`));
+  const capture = await readJson(path.join(outputRoot, set, run, 'capture.json'));
+  const groups = new Set();
+  const selected = capture.results.filter((c) => {
+    if (c.issue) return false;
+    const group = `${c.frame}:${c.face.colors.join('')}:${c.category}`;
+    if (!groups.has(group)) {
+      groups.add(group);
+      return true;
+    }
+    return ['Fellwar Stone', 'Shaper Guildmage', 'Grindstone'].includes(c.name);
+  });
+  const session = await openBrowser(snapshot);
+  try {
+    for (const card of selected) {
+      for (const tier of ['inspect', 'table']) {
+        const data = await session.page.evaluate(
+          async ({ face, tier }) => {
+            const { composeCardTexture } = await import(
+              '/games/magic/src/presentation/canvas-face.ts'
+            );
+            const canvas = await composeCardTexture(
+              { face, printingId: null, printedImage: null },
+              tier,
+              new AbortController().signal,
+            );
+            const data = canvas.toDataURL('image/png');
+            canvas.width = canvas.height = 0;
+            return data;
+          },
+          { face: card.face, tier },
+        );
+        assert.equal(
+          hash(Buffer.from(data.split(',')[1], 'base64')),
+          card.images[tier].sha256,
+          `Changed ${set} ${card.name} ${tier}`,
+        );
+      }
+      otherPolicies.push({ set, id: card.id, name: card.name, inputHash: card.inputHash });
+    }
+    assert.deepEqual(session.faults, []);
+  } finally {
+    await session.close();
+  }
+  console.log(`Preserved ${set}: ${selected.length} cards at both tiers`);
+}
+const result = {
+  schemaVersion: 1,
+  rendererHash: after.rendererHash,
+  changed,
+  identical,
+  comparedImages: 612,
+  outsideBodyPixelChanges: outsideChanges,
+  minimumVisibleFraction: minimumVisible,
+  prototypeMatches,
+  otherPolicies,
+  note: 'All Revised inputs match the separately corrected revised-text baseline. Dense changes stay in the body; all other complete PNGs and layout metadata match. Final prototypes are corpus-audit examples, not fresh validation. Other-policy representatives are preservation checks, not exhaustive accuracy evidence.',
+};
+await writeJson(path.join(fixtureRoot, '3ed/dense-capture-check.json'), result);
+console.log(JSON.stringify({ ...result, otherPolicies: otherPolicies.length }, null, 2));
