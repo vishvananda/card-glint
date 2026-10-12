@@ -43,24 +43,27 @@ const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
     '3ed',
-    'revised-dense',
+    'revised-frame',
     '147',
-    'Dense Revised text matches all seven printed lines and their endings. The title now uses thin light/dark edges, and the larger illustrator credit is left-aligned with ©. Existing type wording, mana shapes and frame texture remain review items. Body classification was audited after refinement; lettering passed a separate frozen 12-card validation.',
+    'Dense Revised text matches all seven printed lines and their endings. Both renderers now receive the reviewed Enchant Creature type. The title uses thin light/dark edges, and the larger illustrator credit is left-aligned with ©. Mana shapes, type ink and frame texture remain review items. Body classification was audited after refinement; lettering passed separate frozen validation.',
     ['body'],
+    'dense',
   ],
   [
     '3ed',
-    'revised-dense',
+    'revised-frame',
     '198',
-    'Smaller dense type restores all seven printed lines. Revised titles and credits now use thin paired edges; the illustrator credit includes © and stats sit lower against a shared right edge. The diagonal-T mark and body inset are corrected. Frame texture, type wording and exact glyph strokes still differ.',
+    'Smaller dense type restores all seven printed lines. Both columns use the reviewed Summon Gaea’s Liege type. Titles and credits use thin paired edges; the credit includes © and stats sit lower against a shared right edge. The diagonal-T mark and body inset are corrected. Frame texture, type ink and exact glyph strokes still differ.',
     ['body'],
+    'dense',
   ],
   [
     '3ed',
-    'revised-long',
+    'revised-frame',
     '75',
-    'Shared body inset, narrower width and removal of the rules/flavor gap restore all six printed lines. Font weight remains heavier. This is an intermediate branch change: full-set regressions remain listed in the body review.',
+    'Shared body inset, narrower width and removal of the rules/flavor gap restore all six printed lines. Both columns use the reviewed Summon Wizard type. Font weight remains heavier; the full-set body regressions remain listed in the review.',
     ['body'],
+    'long-body',
   ],
   [
     '3ed',
@@ -184,7 +187,9 @@ for (const set of new Set(selections.map((s) => s[0]))) {
   snapshot.components = [...snapshot.components, ...fontAssets];
   const profile = await readJson(path.join(fixtureRoot, set, 'alignment.json'));
   const entries = [];
-  for (const [, run, number, note, metricRegions] of selections.filter((s) => s[0] === set)) {
+  for (const [, run, number, note, metricRegions, bodyStudy] of selections.filter(
+    (s) => s[0] === set,
+  )) {
     const capture = await readJson(path.join(outputRoot, set, run, 'capture.json'));
     const card = capture.results.find((c) => c.collectorNumber === number);
     assert.ok(card && !card.issue);
@@ -192,9 +197,9 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     if (
       card.contentStatus !== 'scan-reviewed' &&
       set === '3ed' &&
-      ['revised-long', 'revised-dense'].includes(run)
+      (bodyStudy || ['revised-long', 'revised-dense'].includes(run))
     ) {
-      const study = run === 'revised-dense' ? 'dense' : 'long-body';
+      const study = bodyStudy ?? (run === 'revised-dense' ? 'dense' : 'long-body');
       const reviewFile = path.join(fixtureRoot, `3ed/${study}-targets.json`);
       const reviewed = await readJson(reviewFile);
       const plan = await readJson(
@@ -205,12 +210,17 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       assert.ok(target && input);
       assert.equal(target.warning, null, 'Unresolved source/style review');
       assert.equal(target.referenceHash, card.images.reference.sha256);
-      assert.equal(input.inputHash, card.inputHash);
+      assert.equal(hash(JSON.stringify(input.face)), input.inputHash);
+      // This proof certifies rules wording/style only. Later reviewed type,
+      // mana, stats or palette corrections do not invalidate that same body.
+      assert.equal(input.face.rulesText, card.face.rulesText);
+      assert.deepEqual(input.face.rulesParagraphs, card.face.rulesParagraphs);
       assert.equal(normalizedText(target.lines.join('')), normalizedText(card.face.rulesText));
       contentReview = {
         file: `3ed/${study}-targets.json`,
         sha256: hash(await readFile(reviewFile)),
         regions: ['body'],
+        reviewedInputHash: input.inputHash,
       };
     }
     assert.ok(

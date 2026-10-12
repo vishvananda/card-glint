@@ -43,7 +43,8 @@ capture; `--limit N` produces an explicitly incomplete run. A fetch with `--limi
 writes a separate sample snapshot and does not replace the complete set snapshot.
 Use a different `--run` name to preserve before/after captures.
 
-`magic:reference:text` caches MTGJSON's set-specific `originalText`, matched by
+`magic:reference:text` caches MTGJSON's set-specific
+[`originalText`](https://mtgjson.com/data-models/card/card-set/#originaltext), matched by
 Scryfall printing UUID and verified against set, number and name. Capture reads
 that local cache without downloading. Scan-reviewed annotations take precedence.
 Reports distinguish `scan-reviewed`, `printing-reference` and `oracle-unverified`;
@@ -1203,3 +1204,38 @@ shapes also remain open. `lettering-audit-review.json` records eight inspected
 cases without refitting the frozen candidate. The private
 `3ed/lettering-validation/index.html` shows the reserved crops; the full comparison
 against main has been refreshed with the current renderer.
+
+### Revised printing fields and printed frame palette
+
+The separate `revised-fields` baseline corrects eight previously inspected cards
+without changing the renderer or rules layout: seven historical type lines,
+Vesuvan Doppelganger's printed `*/*`, and Drain Life's printed `{1}{B}`. Its
+1836-image audit confirms the other 298 cards preserve inputs and both full PNGs;
+changed pixels stay in the corrected field regions. Partial field reviews are
+tied to the exact scan hash and do not promote the body to `scan-reviewed`.
+`printing-fields-measurement.json` records scores separately from painter gains.
+
+The Magic presentation now accepts optional `frameColors`, defaulting to `colors`.
+This preserves semantic card colors while selecting a printing's frame palette.
+The scan-hashed Serendib Efreet annotation uses the existing green plate and
+`Summon Efreet`, retaining blue colors, `{2}{U}`, artwork, stats and body layout.
+No card-name branch or per-scan alignment was added. `frame-selection-check.json`
+verifies all 305 other Revised faces and 56 representatives from five other sets
+retain both full PNGs. All 306 rules layouts and silhouette alpha are unchanged.
+
+The complete `revised-frame` run measures 306 cards at both tiers with no failures
+or clipping. Inspect frame-rail edge F1 changes from .797 to .880 on the left and
+.224 to .337 on the right. Left-rail Census falls despite the correct palette;
+the report retains both measurements. Body F1 also changes with the background
+while text geometry is identical, so it is not evidence of typography progress.
+`frame-selection-measurement.json` retains those disagreements and source hashes.
+Serendib's large centered continuation, weak title strokes, header mana and frame
+texture remain open review items.
+
+Check/build, package, browser, showcase, Magic and accuracy tests pass, including
+strict native/WASM Clippy. The private `3ed/revised-fields/index.html` shows the
+eight input corrections; `3ed/revised-frame/index.html` shows the frame correction
+and links to every card's scores. Main comparisons for Earthbind, Gaea's Liege
+and Prodigal Sorcerer now pass the corrected type to both renderers. Their body
+review proofs still verify identical rules wording/style and the same scan;
+reviewing a type line does not certify unrelated text.
