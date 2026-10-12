@@ -56,6 +56,7 @@ for (const [set, suffix] of [
   ['m20', ''],
   ['mir', '-retro-type'],
   ['tmp', '-retro-type'],
+  ['4ed', '-centered'],
 ]) {
   const targets = await fixture(set, 'typography' + suffix);
   const annotations = await fixture(set, 'annotations' + suffix);
@@ -70,9 +71,12 @@ for (const [set, suffix] of [
     );
     const text = annotation.paragraphs.flatMap((p) => p.runs.map((r) => r.text)).join('');
     assert.equal(normalizedText(target.lines.map((l) => l.text).join('')), normalizedText(text));
-    for (const {
-      inkBounds: [x, y, w, h],
-    } of target.lines)
+    for (const line of target.lines) {
+      if (set === '4ed') {
+        assert.equal(line.inkBounds, undefined, 'Line-only targets must not invent ink boxes');
+        continue;
+      }
+      const [x, y, w, h] = line.inkBounds;
       assert.ok(
         [x, y, w, h].every(Number.isFinite) &&
           x >= 0 &&
@@ -82,6 +86,7 @@ for (const [set, suffix] of [
           x + w <= 488 &&
           y + h <= 680,
       );
+    }
   }
   if (targets.alignmentHash)
     assert.equal(targets.alignmentHash, hash(JSON.stringify(await fixture(set, 'alignment'))));

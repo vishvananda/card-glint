@@ -108,7 +108,7 @@ text-box bevel remains an asset review item. `width-sweep.mjs` reproduces the
 0/10/12px MIR trial and 0/10px TMP trial. `fourth-insets-sweep.mjs` takes a checkout
 at `2b738ef` to reproduce its production-matched controls before the geometry fix.
 
-### Short centered passages: transfer rejected
+### Short centered passages: width trials and validation
 
 The balanced-line trial uses the same 25px font size, 320px width and vertical
 position for every card. It improves all six Fourth Edition development examples,
@@ -133,6 +133,54 @@ exposed development evidence. Next trials need fresh validation printings, an
 independent line-count/line-ending check, and a validated shared Revised alignment
 profile. Fifth Edition's tilted-card tap mark and Revised's bare numeric mana and
 earlier tap mark remain separate symbol-policy issues.
+
+A subsequent Fourth Edition study reserved 12 more printings before testing a
+340px width. Eleven improved, but Fear acquired an extra line; the independent
+line-count check rejected that candidate despite a higher median edge score.
+The final 344px width keeps all 24 exposed examples' printed breaks. It uses the
+same 25px size and y=406.556 as the earlier trial, centered at x=244, with balanced
+line lengths. Six further printings were reserved before this refinement was
+measured. All six improve and retain the printed line count; four match every
+soft break. Righteousness and Phantasmal Terrain still wrap one word differently.
+
+The adopted policy applies only to Fourth Edition nonland faces with one plain
+rules paragraph of 1–100 characters. Explicit host alignment, forced breaks,
+styled passages, longer text and other sets retain their existing policies.
+The shared wrapper preserves shaping, styles and inline symbols, bounds its
+balancing work, and never receives scan-derived soft breaks.
+
+The final `centered` run renders and scores all 378 Fourth Edition cards at both
+tiers, with no failures or clipping. Of 348 identical-input pairs, 285 are byte
+identical and 63 changed bodies all improve by more than .02 at both tiers. Their
+median body F1 rises from .374 to .678 at inspection size and .312 to .593 at
+table size. These 63 bodies use printing-source wording, not scan certification.
+Thirty newly annotated inputs are reported separately from those deltas. Across
+the 30 reviewed centered passages, 28 match all soft breaks and all 30 match the
+line count. Geometry MAEs remain null because these new targets annotate text,
+not measured ink boxes. Deathgrip and Regeneration receive scan-reviewed colon
+corrections; Fear receives its printed “Enchant Creature” type.
+
+Production reproduces all 30 frozen prototype crops exactly when given the same
+inputs. Another 53 representative cards across M21, Mirage, Tempest, Revised and
+Fifth Edition remain byte identical at both tiers. These are preservation checks,
+not exhaustive accuracy claims for those sets. Renderer, package, browser,
+showcase, Magic and accuracy tests, rustfmt and native/WASM strict Clippy pass.
+
+- [Reservations and width candidates](fixtures/accuracy/4ed/centered-width-plan.json)
+- [Final six-card transfer](fixtures/accuracy/4ed/centered-final-transfer.json)
+- [Corpus metrics and line-ending checks](fixtures/accuracy/4ed/centered-measurement.json)
+- [Pixel-preservation evidence](fixtures/accuracy/4ed/centered-capture-check.json)
+
+The refreshed local `main-review/index.html` adds Fear and Healing Salve alongside
+the existing examples, plus Righteousness as a remaining wrap-review case. All
+columns use identical reviewed input. Main's original font stylesheet remains
+unchanged. Inline historical mana shapes, the two soft-break differences, shared
+Revised alignment, and the uncalibrated early-border layouts remain follow-ups.
+The example capture tool now rejects empty or mostly transparent card PNGs and
+retries once in a fresh document, recording the attempt count. Two main captures
+needed that retry; all six unchanged main examples match their previously saved
+pixels exactly. A separate audit confirms all 756 final Fourth Edition images
+have at least 99.8% visible pixels. Empty captures never count as low fidelity.
 
 ## References and cache
 

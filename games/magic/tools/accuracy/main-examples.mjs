@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile, realpath } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
+import { PNG } from 'pngjs';
 import { openBrowser } from './browser.mjs';
 import { cachedFetch } from './cache.mjs';
 import {
@@ -41,14 +42,35 @@ const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
     '4ed',
-    'text-insets',
+    'centered',
+    '137',
+    'Larger centered rules text with balanced line lengths. The shared 344px width preserves the three printed lines; the narrower trial incorrectly added a fourth.',
+    ['body'],
+  ],
+  [
+    '4ed',
+    'centered',
+    '28',
+    'The shared Fourth Edition typography policy matches all three printed lines, using the original wording on both sides.',
+    ['body'],
+  ],
+  [
+    '4ed',
+    'centered',
+    '46',
+    'Remaining review case: centering and size improve, but “gets” still starts the second line instead of ending the first. No scan-specific line break is supplied to the painter.',
+    ['body'],
+  ],
+  [
+    '4ed',
+    'centered',
     '165',
     'Title, mana, credits and stats; the text now sits inside the black panel and uses the printed line breaks.',
     ['title', 'mana', 'body', 'footer', 'stats'],
   ],
   [
     '4ed',
-    'text-insets',
+    'centered',
     '3',
     'Original printed wording and Summon Mob type on both sides. Corrected body inset and paragraph spacing, plus mana, credits and wide stats.',
     ['mana', 'body', 'footer', 'stats'],
@@ -83,6 +105,12 @@ const selections = [
   ],
 ];
 const examples = [];
+const visibleFraction = (bytes) => {
+  const pixels = PNG.sync.read(bytes);
+  let visible = 0;
+  for (let i = 3; i < pixels.data.length; i += 4) if (pixels.data[i] > 0) visible++;
+  return visible / (pixels.width * pixels.height);
+};
 const fontAssets = [];
 for (const source of [mainRoot, root]) {
   const css = await readFile(path.join(source, 'games/magic/fonts.css'), 'utf8');
@@ -133,38 +161,50 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     const session = await openBrowser(snapshot, { sourceRoot });
     try {
       for (const entry of entries) {
-        const captured = await session.page.evaluate(async (face) => {
-          const { composeCardTexture } = await import(
-            '/games/magic/src/presentation/canvas-face.ts'
-          );
-          const { loadCanvasImages } = await import(
-            '/games/magic/src/presentation/canvas-assets.ts'
-          );
-          const canvas = await composeCardTexture(
-            { face, printingId: null, printedImage: null },
-            'inspect',
-            new AbortController().signal,
-            {
-              loadImages: async (urls, signal) => {
-                const loaded = await loadCanvasImages(urls, signal);
-                const missing = urls.filter((u) => u && !loaded.images.has(u));
-                if (missing.length) {
-                  loaded.dispose();
-                  throw Error('Missing assets: ' + missing.join(', '));
-                }
-                return loaded;
+        const capture = () =>
+          session.page.evaluate(async (face) => {
+            const { composeCardTexture } = await import(
+              '/games/magic/src/presentation/canvas-face.ts'
+            );
+            const { loadCanvasImages } = await import(
+              '/games/magic/src/presentation/canvas-assets.ts'
+            );
+            const canvas = await composeCardTexture(
+              { face, printingId: null, printedImage: null },
+              'inspect',
+              new AbortController().signal,
+              {
+                loadImages: async (urls, signal) => {
+                  const loaded = await loadCanvasImages(urls, signal);
+                  const missing = urls.filter((u) => u && !loaded.images.has(u));
+                  if (missing.length) {
+                    loaded.dispose();
+                    throw Error('Missing assets: ' + missing.join(', '));
+                  }
+                  return loaded;
+                },
               },
-            },
-          );
-          const data = canvas.toDataURL('image/png');
-          const fonts = [...document.fonts].map((f) => ({
-            family: f.family,
-            style: f.style,
-            status: f.status,
-          }));
-          canvas.width = canvas.height = 0;
-          return { data, fonts };
-        }, entry.card.face);
+            );
+            const data = canvas.toDataURL('image/png');
+            const fonts = [...document.fonts].map((f) => ({
+              family: f.family,
+              style: f.style,
+              status: f.status,
+            }));
+            canvas.width = canvas.height = 0;
+            return { data, fonts };
+          }, entry.card.face);
+        let captured = await capture();
+        let bytes = Buffer.from(captured.data.split(',')[1], 'base64');
+        let attempts = 1;
+        if (visibleFraction(bytes) <= 0.9) {
+          // Empty pixels are a capture failure, never a fidelity score. Retry
+          // once in a fresh document and retain this fact in the provenance.
+          await session.page.reload({ waitUntil: 'load' });
+          captured = await capture();
+          bytes = Buffer.from(captured.data.split(',')[1], 'base64');
+          attempts++;
+        }
         const failedFonts = captured.fonts.filter((f) => f.status === 'error');
         assert.ok(side === 'main' || failedFonts.length === 0, 'Branch fonts must load');
         assert.ok(
@@ -174,11 +214,15 @@ for (const set of new Set(selections.map((s) => s[0]))) {
           'Unexpected failed font',
         );
         const file = `${set}-${entry.card.collectorNumber}.${side}.png`;
-        const bytes = Buffer.from(captured.data.split(',')[1], 'base64');
+        assert.ok(
+          visibleFraction(bytes) > 0.9,
+          `Empty or incomplete ${side} capture for ${entry.card.name}; do not score it`,
+        );
         await atomicWrite(path.join(out, file), bytes);
         entry.images[side] = file;
         entry.captures[side] = {
           sha256: hash(bytes),
+          attempts,
           fonts: captured.fonts,
           browser: await session.browser.version(),
         };
@@ -215,7 +259,7 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       alignment: entry.alignment,
       contentStatus: entry.card.contentStatus,
       face: entry.card.face,
-      reviewCase: entry.card.name === 'Mtenda Herder',
+      reviewCase: ['Mtenda Herder', 'Righteousness'].includes(entry.card.name),
       note: entry.note,
       images: entry.images,
       captures: entry.captures,
@@ -239,7 +283,7 @@ const report = {
     new URL('.', import.meta.url),
     /^(?:compare(?:-worker)?|common|summary|alignment|pixels|edges|metrics|regions)\.mjs$/,
   ),
-  note: 'Six selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
+  note: 'Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
   examples,
 };
 await writeJson(path.join(out, 'comparison.json'), report);

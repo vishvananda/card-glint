@@ -1,18 +1,236 @@
 {
   "schemaVersion": 1,
   "mainCommit": "0b0d408d9dcbba6e3188d5d9f309dd1340347526",
-  "branchCommit": "2b738efb5ba7cf5b9651d635b04df9d9dbb55f4e",
+  "branchCommit": "86ce166d139615c7ab6ea762edc9d4c761cd42d9",
   "rendererHashes": [
     "48093a204cb7594234715c4bcb3719054861aa05bf32f6a036e93ced5cac3530",
-    "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376"
+    "0418ff983d6909a9ec534985c639e39ada84da0fed8cec64e9f34de241954fcc"
   ],
   "fontHashes": [
     "3493fd86c163fea26861cca7a28ac397aa8fbee4e7fa1599f556987ff9178ce2",
     "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12"
   ],
   "metricSource": "80e982bddec584b0292c49c49635008728000cf86b2c3b9f1204cbb24bca3754",
-  "note": "Six selected main comparison examples, with gray text-box bevel and set-symbol shape flagged for review. Identical scan-reviewed face inputs and cached artwork on both sides. Each revision retains its own unmodified font stylesheet. Fixed shared alignment; inspection tier only.",
+  "note": "Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
   "examples": [
+    {
+      "set": "4ed",
+      "id": "126c1b02-01bd-4b70-9293-a89173b4cd32",
+      "name": "Fear",
+      "number": "137",
+      "source": "https://scryfall.com/card/4ed/137/fear?utm_source=api",
+      "inputHash": "bab0d717af9c1737626c07e2e609bc02ede494ae05950a4b7a2bbeadfceec72b",
+      "referenceHash": "c1a0ef2311fa7d6ddd5367ea84337077d715c50253d673a9defc4b24522514b8",
+      "alignment": {
+        "profileHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        }
+      },
+      "contentStatus": "scan-reviewed",
+      "reviewCase": false,
+      "note": "Larger centered rules text with balanced line lengths. The shared 344px width preserves the three printed lines; the narrower trial incorrectly added a fourth.",
+      "captures": {
+        "main": {
+          "sha256": "f56f84369ae84098dc5b882fd490682db0130d54613f6b5bc7d7ce9b6fa03365",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "06011d6929d0661995306cbb6f2a626d7359dd043a918104b88d3d377a7f4762",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.35156473384997694, 0.6411869329678219]
+        }
+      ]
+    },
+    {
+      "set": "4ed",
+      "id": "afd08b3b-196e-43a5-9318-9dae9edc6d12",
+      "name": "Healing Salve",
+      "number": "28",
+      "source": "https://scryfall.com/card/4ed/28/healing-salve?utm_source=api",
+      "inputHash": "4bad4e02de49995ef901d4527bda1ae47597c3abb385074e0aa07cacfac176b4",
+      "referenceHash": "434d7f6c63320e0b39c95fb63517345e377b18eafe9760ba50b816ef4a1c5088",
+      "alignment": {
+        "profileHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        }
+      },
+      "contentStatus": "scan-reviewed",
+      "reviewCase": false,
+      "note": "The shared Fourth Edition typography policy matches all three printed lines, using the original wording on both sides.",
+      "captures": {
+        "main": {
+          "sha256": "2bb125d4de18766eb799200ad520cd5820f97286ed58bc25aac9e316a9a82798",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "a4a28cf678ee973ec1d519062d1dbb09ee7bcc210f433d4c895966017e3a64a8",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.5929131671973218, 0.7659292063958503]
+        }
+      ]
+    },
     {
       "set": "4ed",
       "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
@@ -36,6 +254,7 @@
       "captures": {
         "main": {
           "sha256": "0551f13edb7b09f6701cdf030f0843ba89dd40fe04e05b0196e04e946343851c",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -72,6 +291,7 @@
         },
         "branch": {
           "sha256": "32362d9da30f236d5d61ac733d83ed93d6577252a0a0b07dabccf27441863585",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -163,6 +383,7 @@
       "captures": {
         "main": {
           "sha256": "baebf5f3fc5331696124402a5487a2469c5c5646b68ee9a5666048409c1dc15c",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -199,6 +420,7 @@
         },
         "branch": {
           "sha256": "6088f52e473ac778aa3dc6a8310a2ce4ca310b28480f04b3943ab730e800febc",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -285,6 +507,7 @@
       "captures": {
         "main": {
           "sha256": "8734c7da41ab7718f661c42f31dda811ee2cb6aae32c3eddbe003aceee7c56d4",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -321,6 +544,7 @@
         },
         "branch": {
           "sha256": "c90b44b845cdf07a43d86d6c75042c2a7f21f4d95b9213eb72e8d123edf5fd4f",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -407,6 +631,7 @@
       "captures": {
         "main": {
           "sha256": "0a504cfeb3bbd42c1a31f6dc3e007e2f6167d59d1d159f7b3e0082167dbc5795",
+          "attempts": 2,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -443,6 +668,7 @@
         },
         "branch": {
           "sha256": "dbf949d63c6fe6033fcf57f5e9e5e92a483a1fb351957d291e87868ffc7142a3",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -524,6 +750,7 @@
       "captures": {
         "main": {
           "sha256": "8c1d8d6aed1dac764b54fd4ae3d8bbbd38a139e253896c871968c9388c97e450",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -560,6 +787,7 @@
         },
         "branch": {
           "sha256": "b4758cd5d92bb336167dbefc6affab410359173ce6f6e24128fab7efa99bdc54",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -614,6 +842,115 @@
       ]
     },
     {
+      "set": "4ed",
+      "id": "3fccc7f2-b317-40c4-9b55-658d67dca843",
+      "name": "Righteousness",
+      "number": "46",
+      "source": "https://scryfall.com/card/4ed/46/righteousness?utm_source=api",
+      "inputHash": "bbaf71ca81576619a8a92d0ad5bc842fd44d4c55cc2447958df4a38f37933907",
+      "referenceHash": "8a732997f99f2ffa444ed0ea0ffc821dc0f34eec007ed8cffb2e9326961c6a84",
+      "alignment": {
+        "profileHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        }
+      },
+      "contentStatus": "scan-reviewed",
+      "reviewCase": true,
+      "note": "Remaining review case: centering and size improve, but “gets” still starts the second line instead of ending the first. No scan-specific line break is supplied to the painter.",
+      "captures": {
+        "main": {
+          "sha256": "d209c36bb44b7262b18bb799951e2299d504aac53c2ef27de48eb6f77fad4862",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "f9fce57e4b721d8200e9f1d42ee68ca7d74b586412136a51e28eb8355b8e65a9",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "body",
+          "rect": [62, 417, 366, 184],
+          "values": [0.5939957015758167, 0.6546483532611658]
+        }
+      ]
+    },
+    {
       "set": "mir",
       "id": "51f30a3d-1421-4706-b17f-39a9ec7a0d8b",
       "name": "Mtenda Herder",
@@ -636,6 +973,7 @@
       "captures": {
         "main": {
           "sha256": "80ba745cd7db7e7207d95b00634f36191e6e28e38dba930347603c2a2729bb60",
+          "attempts": 2,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -672,6 +1010,7 @@
         },
         "branch": {
           "sha256": "83d17f9a3ed0b380ae2cdde5af3c4584328b82f190c3c48af7c178b7a8cb0779",
+          "attempts": 1,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -730,5 +1069,9 @@
         }
       ]
     }
-  ]
+  ],
+  "baselinePreservation": {
+    "unchangedExamples": 6,
+    "reference": "main-review-before-centered"
+  }
 }

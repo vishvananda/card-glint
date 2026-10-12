@@ -140,6 +140,9 @@ face.rulesParagraphs = [
 Runs support `{mana}` notation and explicit italic styles. The painter measures
 wrapping and font size and rejects unresolved text overflow. Modern faces draw a
 flavor separator; old-border faces use their own spacing without a separator.
+Short Fourth Edition passages use centered, balanced lines. Explicit paragraph
+alignment and hard breaks take precedence; other old-border sets retain their
+separate typography policies.
 Use paragraph `align: 'right'` for a printed flavor attribution. Other layouts
 still use their existing `rulesText` painters. Font
 preparation now rejects missing CSS or failed font loads and can retry after they
