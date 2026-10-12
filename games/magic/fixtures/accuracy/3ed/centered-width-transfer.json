@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "candidate": {
+    "id": "s27.5-l1.1-w348-y406.556",
+    "size": 27.5,
+    "leading": 1.1,
+    "width": 348,
+    "y": 406.556
+  },
+  "experimentHash": "d66197bbbd23f104f998c8fbae865e9b56fe6e8a413da511f21cec88c03de26c",
+  "captureHash": "c2ab8ca28a2b2a4970d40d8e2d3cda8a3f1ca8f63d3af8ff6d5906d1d4d41498",
+  "note": "All six fresh scans reviewed only after the width freeze. Both widths paint identical pixels on these six examples at both tiers; all printed word breaks match. Historic tap and bare numeric shapes still differ. Previous 21 plus four corpus wrap failures are development evidence.",
+  "results": [
+    {
+      "id": "434f2329-ea4c-41ba-ab62-857076d76442",
+      "name": "Castle",
+      "referenceHash": "3a822131b7f5f4576b82aba5e46c91cf624bccbf502c62b2b2e440289a543981",
+      "inputHash": "503027e672bb9b99f35bfd08a2be31b7698ebc873bebc31615029168abec0a76",
+      "scanLines": [
+        "Your untapped",
+        "creatures gain +0/+2.",
+        "Attacking creatures",
+        "do not get this bonus."
+      ],
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "sha256": "50959f047a423f25dafae1bf33201f576b2b29dd3aecf52d9fffb8fbcbf371a0",
+          "edgeF1": 0.5550838739815988,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "inspect",
+          "sha256": "50959f047a423f25dafae1bf33201f576b2b29dd3aecf52d9fffb8fbcbf371a0",
+          "edgeF1": 0.5550838739815988,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "sha256": "535781c0aba7af4d05f0c64c485ddc4d7b45ca8a96f81d99b0e1f9cab98e4b0a",
+          "edgeF1": 0.47979838788091345,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "table",
+          "sha256": "535781c0aba7af4d05f0c64c485ddc4d7b45ca8a96f81d99b0e1f9cab98e4b0a",
+          "edgeF1": 0.47979838788091345,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "20fc852a-77b0-48a6-8343-6cf890da9adb",
+      "name": "Spell Blast",
+      "referenceHash": "5df8cd0625c6c5f577c859b84819eee24dac1efbab26933450b00e12de6f1d73",
+      "inputHash": "d22bb3db049114aa57b859954b3c31fa179f275f2b583732d42ee3f28592dd6c",
+      "scanLines": ["Target spell is countered; X", "is casting cost of target spell."],
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "sha256": "3e61311f4104dffd9aac7b228af98c8ae84b85015dce494e0090af11259137a5",
+          "edgeF1": 0.3976950518719109,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "inspect",
+          "sha256": "3e61311f4104dffd9aac7b228af98c8ae84b85015dce494e0090af11259137a5",
+          "edgeF1": 0.3976950518719109,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "sha256": "fd322878e50a3a607ade7dd81bd7273375067441af8f192c3e9288cbb7398379",
+          "edgeF1": 0.3984512843365058,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "table",
+          "sha256": "fd322878e50a3a607ade7dd81bd7273375067441af8f192c3e9288cbb7398379",
+          "edgeF1": 0.3984512843365058,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "0eaf0ac8-f5a7-4689-8d3e-dd865763df44",
+      "name": "Terror",
+      "referenceHash": "f192e9b10cb2d97c9bc48ae4bbf7dcbfba94f1edcf39af27c5a04903fb8e1d78",
+      "inputHash": "5672c787ad70cc0459fdcf6ce53fab103ee0dc8462fdfa9885376e9736f44e9e",
+      "scanLines": [
+        "Buries target creature.",
+        "Cannot target",
+        "black creatures or",
+        "artifact creatures."
+      ],
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "sha256": "2ded761819458092439fc54e471b8e2394a4206634288dbe50cabd56ed960777",
+          "edgeF1": 0.7418359336810688,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "inspect",
+          "sha256": "2ded761819458092439fc54e471b8e2394a4206634288dbe50cabd56ed960777",
+          "edgeF1": 0.7418359336810688,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "sha256": "e7003239de6e4cacea9ac62399592dbda23da8ce32d3c66584afb00523590431",
+          "edgeF1": 0.734426475927306,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "table",
+          "sha256": "e7003239de6e4cacea9ac62399592dbda23da8ce32d3c66584afb00523590431",
+          "edgeF1": 0.734426475927306,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 4,
+            "actualLines": 4,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "603d1f86-2098-4af5-a038-c5a314ba7184",
+      "name": "Earthquake",
+      "referenceHash": "2e4043481d32205e5301b17e78222f5f7843cc2340d1e0c416fda26a21df2c70",
+      "inputHash": "5294a93cf8b172465f5e9ced901adf76cd91b6ff40ad7ce9ad7cd45021d85c8f",
+      "scanLines": ["Does X damage to", "each player and each", "non-flying creature in play."],
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "sha256": "f34742382dba8ec5252baf560dceddad7385a7c2e10d35d405cf88e15da6aefb",
+          "edgeF1": 0.7349274714558531,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "inspect",
+          "sha256": "f34742382dba8ec5252baf560dceddad7385a7c2e10d35d405cf88e15da6aefb",
+          "edgeF1": 0.7349274714558531,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "sha256": "6f7683efe1c9eabdc5f0486cfbaa21ae2e473a8105220675392e258785204c65",
+          "edgeF1": 0.7279917067156276,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "table",
+          "sha256": "6f7683efe1c9eabdc5f0486cfbaa21ae2e473a8105220675392e258785204c65",
+          "edgeF1": 0.7279917067156276,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "396aae79-41d5-4b16-8903-5af8fde65eee",
+      "name": "Regrowth",
+      "referenceHash": "97c9ad1d32bbc47bad830ec7c16045316f7903ebad269221cfd6fe141152ee02",
+      "inputHash": "e3d249f74e88a81796d4867b0fa7fae8bc10aa49cae5b47b928df97d87817615",
+      "scanLines": ["Bring any card from your", "graveyard to your hand."],
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "sha256": "057676fa1881f43ca49aca79ad92a3e4d62b505de891672132b21e21d10f6ba6",
+          "edgeF1": 0.4436765230744719,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "inspect",
+          "sha256": "057676fa1881f43ca49aca79ad92a3e4d62b505de891672132b21e21d10f6ba6",
+          "edgeF1": 0.4436765230744719,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "sha256": "6b07d738f90bf8a4b372e70c8b0472b4d8b9a549899a44128999f227ff74798b",
+          "edgeF1": 0.43040286172242,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "table",
+          "sha256": "6b07d738f90bf8a4b372e70c8b0472b4d8b9a549899a44128999f227ff74798b",
+          "edgeF1": 0.43040286172242,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "1a3068eb-2250-4c7b-8ed5-2366ff6cd0e1",
+      "name": "Helm of Chatzuk",
+      "referenceHash": "aac2598d2c42e16113eb5067abd55c8e915545b6758325f65c4304de3d9f9567",
+      "inputHash": "7fbe5e47845eaa4818ff4b02e44a12b642d152c249e9632072aae6f14a29eb48",
+      "scanLines": ["{1}, {T}: You may give", "one creature banding", "ability until end of turn."],
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "sha256": "987816d821d2d7f2fec05a13dd81185755973e20a5ed836878c629abbb4fbc21",
+          "edgeF1": 0.5558219466459441,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "inspect",
+          "sha256": "987816d821d2d7f2fec05a13dd81185755973e20a5ed836878c629abbb4fbc21",
+          "edgeF1": 0.5558219466459441,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "sha256": "7495d054178cbc4742a7dafa58fc6a14160de9e485b331c363470b5e7c206891",
+          "edgeF1": 0.5079886746935385,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "candidate": "s27.5-l1.1-w348-y406.556",
+          "tier": "table",
+          "sha256": "7495d054178cbc4742a7dafa58fc6a14160de9e485b331c363470b5e7c206891",
+          "edgeF1": 0.5079886746935385,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    }
+  ]
+}

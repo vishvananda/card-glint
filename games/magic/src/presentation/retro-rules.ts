@@ -28,10 +28,10 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   const set = face.setCode?.toLowerCase();
   const paragraph = paragraphs.length === 1 ? paragraphs[0] : undefined;
   const plain = paragraph?.runs.length === 1 ? paragraph.runs[0] : undefined;
-  // Short Fourth Edition passages use larger, centered and balanced lines.
+  // Short Revised/Fourth passages use larger, centered and balanced lines.
   // Explicit host alignment, hard breaks and styled passages retain their policy.
   const centered =
-    set === '4ed' &&
+    (set === '4ed' || set === '3ed') &&
     retroFamily(face) === 'fourth' &&
     paragraph?.role === 'rules' &&
     (paragraph.align === undefined || paragraph.align === 'center') &&
@@ -40,6 +40,9 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     !plain.text.includes('\n') &&
     plain.text.length > 0 &&
     plain.text.length <= 100;
+  // Revised has larger printing and about 30px between baselines. Its frame
+  // registration, leading and width were checked on separate reserved examples.
+  const revisedCentered = centered && set === '3ed';
   // Fourth's long, left-aligned blocks sit inside the textured panel.
   const fourthBlock =
     set === '4ed' &&
@@ -57,15 +60,19 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     context,
     centered ? [{ ...paragraph, align: 'center' }] : paragraphs,
     {
-      x: fourthBlock || centered ? 72 : x,
+      x: revisedCentered ? 70 : fourthBlock || centered ? 72 : x,
       y: y + (basic ? 1.5 : centered ? -6 : fourthBlock ? 0 : 4),
-      width: fourthBlock || centered ? 344 : width + (whiteExpansion ? 10 : 0),
+      width: revisedCentered
+        ? 348
+        : fourthBlock || centered
+          ? 344
+          : width + (whiteExpansion ? 10 : 0),
       height: height - 8,
     },
-    basic ? 24 : centered ? 25 : 22.5,
+    basic ? 24 : revisedCentered ? 27.5 : centered ? 25 : 22.5,
     15,
     centered
-      ? { ...RETRO_TYPOGRAPHY, balanceLines: true }
+      ? { ...RETRO_TYPOGRAPHY, leading: revisedCentered ? 1.1 : 1, balanceLines: true }
       : fourthBlock
         ? { ...RETRO_TYPOGRAPHY, paragraphGap: 0, flavorGap: 0 }
         : RETRO_TYPOGRAPHY,

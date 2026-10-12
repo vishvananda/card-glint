@@ -296,6 +296,36 @@ try {
     });
     if (explicitLeft.size !== 22.5 || explicitLeft.lines.some((line) => line.x !== explicitLeft.x))
       throw Error('Historical centering overrode explicit host alignment');
+    const shortRevised = {
+      ...shortFourth,
+      setCode: '3ed',
+      rulesText: 'An original passage that needs more than one line.',
+    };
+    const centeredRevised = retroTextLayout(ctx, shortRevised);
+    if (
+      centeredRevised.size !== 27.5 ||
+      centeredRevised.lines.length < 2 ||
+      Math.abs(centeredRevised.lines[1].baseline - centeredRevised.lines[0].baseline - 30.25) >
+        0.01 ||
+      centeredRevised.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01)
+    )
+      throw Error('Revised short passages lost their printed size, leading or centered position');
+    if (
+      retroTextLayout(ctx, { ...shortRevised, rulesText: 'Target creature gains +2/+1.' }).lines
+        .length !== 1
+    )
+      throw Error('Revised width introduced an extra line in a printed single-line passage');
+    for (const paragraphs of [
+      [{ role: 'rules', align: 'right', runs: [{ text: shortRevised.rulesText }] }],
+      [{ role: 'rules', runs: [{ text: 'Explicit\nprinted breaks.' }] }],
+      [
+        { role: 'rules', runs: [{ text: 'A passage.' }] },
+        { role: 'flavor', runs: [{ text: 'Original flavor.', italic: true }] },
+      ],
+    ]) {
+      if (retroTextLayout(ctx, { ...shortRevised, rulesParagraphs: paragraphs }).size !== 22.5)
+        throw Error('Revised automatic centering overrode a different paragraph policy');
+    }
     const retro = retroTextLayout(ctx, {
       ...fixtures[3],
       rulesParagraphs: [
