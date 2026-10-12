@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-before-validation",
+  "candidate": {
+    "id": "s27.5-l1.1-w344-y406.556",
+    "size": 27.5,
+    "leading": 1.1,
+    "width": 344,
+    "y": 406.556
+  },
+  "rendererHash": "0418ff983d6909a9ec534985c639e39ada84da0fed8cec64e9f34de241954fcc",
+  "experimentHash": "ad67a58154c0b90949408f22e6a2469dec21e708f1d3fea207bd5d3809a681ac",
+  "captureHash": "06c623e5bac66e98e6a402219e9d1c9fd045310885c80d43a97bd13fe203f7a9",
+  "policy": {
+    "maximumSize": 27.5,
+    "width": 344,
+    "centerX": 244,
+    "yOffsetFromRulesBox": -6,
+    "heightInset": 8,
+    "leading": 1.1,
+    "balanceLines": true,
+    "eligibility": "Single plain rules paragraph, 1–100 characters, no flavor; Revised fourth-family only, no explicit left/right alignment or hard line breaks."
+  },
+  "decision": "Both tested widths produce byte-identical text on all six development examples. Use 344px to retain the independently established Fourth-family text bounds. Revised font size and leading are distinct. The observed main ink-row spans repeat at 30px on five clean backgrounds, supporting the 30.25px candidate line spacing.",
+  "summaries": [
+    {
+      "id": "s27.5-l1.1-w344-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 344,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.4883279728339355,
+      "medianDistance": 2.9285828555784983,
+      "gains": 6,
+      "regressions": [],
+      "exactWraps": 6
+    },
+    {
+      "id": "previous-fourth-trial",
+      "size": 25,
+      "width": 320,
+      "y": 406.556,
+      "leading": 1,
+      "tier": "inspect",
+      "medianF1": 0.34135653906321806,
+      "medianDistance": 3.670576748720654,
+      "gains": 5,
+      "regressions": [],
+      "exactWraps": 6
+    },
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.16899492195026083,
+      "medianDistance": 5.956819950922982,
+      "gains": 0,
+      "regressions": [],
+      "exactWraps": 0
+    }
+  ],
+  "visualReview": "All six scan/control/candidate crops inspected. Candidate preserves all printed word breaks, fixes crowded line spacing and approximately matches printed glyph width/height. Existing font strokes remain heavier and Celestial Prism still has the wrong historic tap mark.",
+  "cards": [
+    {
+      "id": "1c687a4e-a3f9-4d2d-9931-bf60e97f4095",
+      "name": "Wrath of God",
+      "number": "46",
+      "inputHash": "5895967ebe9ac2183032e6a64da0db082dba077a9865af383beb875dbf94d507",
+      "referenceHash": "8e679ff3b1a98376ca3ef8f70841f444f54b9ee4852e395851b210cafc7d3910",
+      "scores": [
+        {
+          "id": "control",
+          "tier": "inspect",
+          "file": "46.inspect.control.png",
+          "sha256": "d4d4f59317c75d120e5e2d947b46a66baa83f29534dd79f8fbd1ec1c83294862",
+          "edgeF1": 0.333710857388949,
+          "meanDistance": 2.263026036617887,
+          "censusSimilarity": 0.5010512764368984,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 1,
+            "lineCountError": -1,
+            "exactWrapping": false
+          },
+          "layout": {
+            "size": 22.5,
+            "lines": [
+              {
+                "x": 62.464,
+                "width": 307.3497314453125,
+                "baseline": 510.8307495803833,
+                "text": "All creatures in play are buried."
+              }
+            ]
+          }
+        },
+        {
+          "id": "s27.5-l1.1-w344-y406.556",
+          "tier": "inspect",
+          "file": "46.inspect.s27.5-l1.1-w344-y406.556.png",
+          "sha256": "f854fdb8ecf0ae6c0f1e1c04c2742f5ac0ca39ecd88e6fa475bcb7eb1c2772a4",
+          "edgeF1": 0.4255052650715716,
+          "meanDistance": 1.9861557131211505,
+          "censusSimilarity": 0.6017152821562642,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "layout": {
+            "size": 27.5,
+            "lines": [
+              {
+                "x": 153.26380157470703,
+                "width": 181.47239685058594,
+                "baseline": 486.9632483215332,
+                "text": "All creatures in"
+              },
+              {
+                "x": 150.7338104248047,
+                "width": 186.53237915039062,
+                "baseline": 517.2132483215332,
+                "text": "play are buried."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "0a1b4e2e-5459-4fae-81d9-1e882647daac",
+      "name": "Counterspell",
+      "number": "54",
+      "inputHash": "f72f249097b6373c5e823088f326cabeda4e57d2e2f68ad40b2ee5e4eb6b3900",
+      "referenceHash": "2aec806def7f9cdf24f83d096fe138a7f5aeb6897ca585051cd541fb4aa72933",
+      "scores": [
+        {
+          "id": "control",
+          "tier": "inspect",
+          "file": "54.inspect.control.png",
+          "sha256": "29095528def8ae565c4aaeaf56d27154aa337d26de6a012d44931afd57c96d4e",
+          "edgeF1": 0.08351864120626559,
+          "meanDistance": 6.394070842372478,
+          "censusSimilarity": 0.43345150681885247,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "layout": {
+            "size": 22.5,
+            "lines": [
+              {
+                "x": 62.464,
+                "width": 330.45721435546875,
+                "baseline": 501.6507497520447,
+                "text": "Counters target spell as it is being"
+              },
+              {
+                "x": 62.464,
+                "width": 44.302459716796875,
+                "baseline": 524.1507497520447,
+                "text": "cast."
+              }
+            ]
+          }
+        },
+        {
+          "id": "s27.5-l1.1-w344-y406.556",
+          "tier": "inspect",
+          "file": "54.inspect.s27.5-l1.1-w344-y406.556.png",
+          "sha256": "df1d4bba064ca949807d26bb5888035709a323f0870cd02d1fa87cc48c656155",
+          "edgeF1": 0.3211825011321565,
+          "meanDistance": 4.579863958990374,
+          "censusSimilarity": 0.5502593687055513,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "layout": {
+            "size": 27.5,
+            "lines": [
+              {
+                "x": 119.49382019042969,
+                "width": 249.01235961914062,
+                "baseline": 487.01824862670895,
+                "text": "Counters target spell"
+              },
+              {
+                "x": 139.48632049560547,
+                "width": 209.02735900878906,
+                "baseline": 517.268248626709,
+                "text": "as it is being cast."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "9cb767eb-2161-4068-be80-c3cf68945393",
+      "name": "Bad Moon",
+      "number": "94",
+      "inputHash": "0cb765b064049bb740753acda14a8edc44ef05b238d5ebbfc5c5cede308bf620",
+      "referenceHash": "7c6299d5bc7fc55bea7f6ff39f4ff0e463a26902caeb66dbd271b1091db0a008",
+      "scores": [
+        {
+          "id": "control",
+          "tier": "inspect",
+          "file": "94.inspect.control.png",
+          "sha256": "273d2ff9bae3b658fffd40f4eaed3b81daa8bdf84a8326aa1a86e0f0c164cb4d",
+          "edgeF1": 0.17971358515126223,
+          "meanDistance": 6.321809076880022,
+          "censusSimilarity": 0.5267834440863393,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "layout": {
+            "size": 22.5,
+            "lines": [
+              {
+                "x": 62.464,
+                "width": 300.05975341796875,
+                "baseline": 501.5832496376038,
+                "text": "All black creatures in play gain"
+              },
+              {
+                "x": 62.464,
+                "width": 67.67996215820312,
+                "baseline": 524.0832496376038,
+                "text": "+1/+1."
+              }
+            ]
+          }
+        },
+        {
+          "id": "s27.5-l1.1-w344-y406.556",
+          "tier": "inspect",
+          "file": "94.inspect.s27.5-l1.1-w344-y406.556.png",
+          "sha256": "feda1ddf91db2d969a984cd14778ebcecb15d6614645bf653da9a3b2988e4f46",
+          "edgeF1": 0.5511506805962993,
+          "meanDistance": 3.3692255906656183,
+          "censusSimilarity": 0.6781107621685141,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "layout": {
+            "size": 27.5,
+            "lines": [
+              {
+                "x": 133.38131713867188,
+                "width": 221.23736572265625,
+                "baseline": 486.9632483215332,
+                "text": "All black creatures"
+              },
+              {
+                "x": 129.8888168334961,
+                "width": 228.2223663330078,
+                "baseline": 517.2132483215332,
+                "text": "in play gain +1/+1."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c",
+      "name": "Lightning Bolt",
+      "number": "162",
+      "inputHash": "5ca0a52eef1e87ec1d1e178be65875dfeac46f4568f785e93e6c3998598c5b14",
+      "referenceHash": "535e8bde88dcb9e53564e4baecd2ace5f93b843f0144b4a925751b61c6f3b557",
+      "scores": [
+        {
+          "id": "control",
+          "tier": "inspect",
+          "file": "162.inspect.control.png",
+          "sha256": "37e8653634d5cbdea2d7b89c71ba8cd3dde4ceca680746819e4b7ae73964fa20",
+          "edgeF1": 0.07368285732650569,
+          "meanDistance": 7.352797443725617,
+          "censusSimilarity": 0.4862097592473019,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": false
+          },
+          "layout": {
+            "size": 22.5,
+            "lines": [
+              {
+                "x": 62.464,
+                "width": 362.63226318359375,
+                "baseline": 499.5807500572205,
+                "text": "Lightning Bolt does 3 damage to one"
+              },
+              {
+                "x": 62.464,
+                "width": 62.57246398925781,
+                "baseline": 522.0807500572205,
+                "text": "target."
+              }
+            ]
+          }
+        },
+        {
+          "id": "s27.5-l1.1-w344-y406.556",
+          "tier": "inspect",
+          "file": "162.inspect.s27.5-l1.1-w344-y406.556.png",
+          "sha256": "24b1e9d40b244122807fd443a85a4acae05b5d959972368c601649ea8a37f8f5",
+          "edgeF1": 0.7202930264231581,
+          "meanDistance": 2.5332956601177528,
+          "censusSimilarity": 0.8236466973668339,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "layout": {
+            "size": 27.5,
+            "lines": [
+              {
+                "x": 113.93881225585938,
+                "width": 260.12237548828125,
+                "baseline": 486.9632483215332,
+                "text": "Lightning Bolt does 3"
+              },
+              {
+                "x": 114.21383666992188,
+                "width": 259.57232666015625,
+                "baseline": 517.2132483215332,
+                "text": "damage to one target."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "6a578955-7f77-42f1-a3e3-5e2b46216c43",
+      "name": "Tsunami",
+      "number": "222",
+      "inputHash": "92b33d218def289345de2ba4013ab88b48965dbc4a1ab6de5e98b473b631a0d5",
+      "referenceHash": "9b1f94b08995d300a4efab55736a08ce21458a2f86d3c188f93f8a04fa24ce92",
+      "scores": [
+        {
+          "id": "control",
+          "tier": "inspect",
+          "file": "222.inspect.control.png",
+          "sha256": "e9353cc76f10534c842a015b0d0d241e50b11fe9c2f62f61d23e7f8154f1136f",
+          "edgeF1": 0.15827625874925946,
+          "meanDistance": 4.025916524034736,
+          "censusSimilarity": 0.49566177225587843,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 2,
+            "actualLines": 1,
+            "lineCountError": -1,
+            "exactWrapping": false
+          },
+          "layout": {
+            "size": 22.5,
+            "lines": [
+              {
+                "x": 62.464,
+                "width": 316.5296936035156,
+                "baseline": 510.8307495803833,
+                "text": "All islands in play are destroyed."
+              }
+            ]
+          }
+        },
+        {
+          "id": "s27.5-l1.1-w344-y406.556",
+          "tier": "inspect",
+          "file": "222.inspect.s27.5-l1.1-w344-y406.556.png",
+          "sha256": "1cc0eada4d5f7ca2d0792ce71cfc07bd88428e3d89cf8c312e24666452c9799c",
+          "edgeF1": 0.26891495796880566,
+          "meanDistance": 3.2948851937809707,
+          "censusSimilarity": 0.5375466338090837,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 2,
+            "actualLines": 2,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "layout": {
+            "size": 27.5,
+            "lines": [
+              {
+                "x": 138.2900619506836,
+                "width": 211.4198760986328,
+                "baseline": 486.9632483215332,
+                "text": "All islands in play"
+              },
+              {
+                "x": 160.09754943847656,
+                "width": 167.80490112304688,
+                "baseline": 517.2132483215332,
+                "text": "are destroyed."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2bc5e073-2903-4a28-9c23-07a0482ae09a",
+      "name": "Celestial Prism",
+      "number": "239",
+      "inputHash": "03a19a54d45ab0a5406892c7f9e2d0918c3253dbe8e7a03d520610155ef98de2",
+      "referenceHash": "c922eb698917a301c6f21e536e72580608cba79495105c9671e5979881f12645",
+      "scores": [
+        {
+          "id": "control",
+          "tier": "inspect",
+          "file": "239.inspect.control.png",
+          "sha256": "48354940a729b782a1338dd1a657d657d425114ec685878e8a7caae75f338dc1",
+          "edgeF1": 0.2632020616547378,
+          "meanDistance": 5.5918308249659425,
+          "censusSimilarity": 0.5268968691152093,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0,
+            "expectedLines": 3,
+            "actualLines": 2,
+            "lineCountError": -1,
+            "exactWrapping": false
+          },
+          "layout": {
+            "size": 22.5,
+            "lines": [
+              {
+                "x": 62.464,
+                "width": 356.6922546386719,
+                "baseline": 499.8619996757507,
+                "text": "{2}, {T}: Provides 1 mana of any color."
+              },
+              {
+                "x": 62.464,
+                "width": 330.18719482421875,
+                "baseline": 522.3619996757507,
+                "text": "This use is played as an interrupt."
+              }
+            ]
+          }
+        },
+        {
+          "id": "s27.5-l1.1-w344-y406.556",
+          "tier": "inspect",
+          "file": "239.inspect.s27.5-l1.1-w344-y406.556.png",
+          "sha256": "4f7fc5a7a1db2394cbcfa4b880d9022d72265bc3e6ee0e014fc5429eee9eb67e",
+          "edgeF1": 0.5729227527038855,
+          "meanDistance": 2.562280517376026,
+          "censusSimilarity": 0.628849034718211,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 3,
+            "actualLines": 3,
+            "lineCountError": 0,
+            "exactWrapping": true
+          },
+          "layout": {
+            "size": 27.5,
+            "lines": [
+              {
+                "x": 104.52006988525392,
+                "width": 278.95986022949216,
+                "baseline": 472.18199870300293,
+                "text": "{2}, {T}: Provides 1 mana"
+              },
+              {
+                "x": 101.57757568359375,
+                "width": 284.8448486328125,
+                "baseline": 502.43199870300293,
+                "text": "of any color. This use is"
+              },
+              {
+                "x": 109.965087890625,
+                "width": 268.06982421875,
+                "baseline": 532.6819987030029,
+                "text": "played as an interrupt."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
