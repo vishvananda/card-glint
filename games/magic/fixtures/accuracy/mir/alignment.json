@@ -1,0 +1,49 @@
+{
+  "version": "fixed-frame-v2",
+  "scope": "set-and-frame",
+  "set": "mir",
+  "canonicalSize": [488, 680],
+  "sourceRun": "frame-calibration",
+  "sourceSnapshot": "e456fb93dc358ecab7dce0bd7d2402aa4977d511eb04c4e89fe3fffb6136c9d1",
+  "referenceIdentity": "e6563892a1eab6cd9d4d1404a465ac08cc85c59bbe417613163ef70c78136829",
+  "sourceDiffHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cohortHash": "6a8fa49f7602c1e378edc8728a7ff8fbca4294d960596c30b14e76a4812ad9ae",
+  "frameFamilies": {
+    "retro-seventh": {
+      "transform": {
+        "tx": 0.3548701644407304,
+        "ty": -0.9837370008095008,
+        "scale": 0.993876536931566,
+        "rotation": -0.00017253619106171497
+      },
+      "status": "calibrated",
+      "proposedTransform": {
+        "tx": 0.3548701644407304,
+        "ty": -0.9837370008095008,
+        "scale": 0.993876536931566,
+        "rotation": -0.00017253619106171497
+      },
+      "residualPx": 0.6503595377350507,
+      "landmarkCount": 15,
+      "sampleCount": 8,
+      "validation": {
+        "rawMedianF1": 0.6263185077923403,
+        "fittedMedianF1": 0.8310099435029292,
+        "medianPairedImprovement": 0.20125058450196098,
+        "nonRegressing": 7,
+        "accepted": true
+      },
+      "calibrationIds": [
+        "4644694d-52e6-4d00-8cad-748899eeea84",
+        "4a9304e1-f403-404d-9fe9-169da75e0d62",
+        "ab85551f-c9cc-409c-9fb5-a45de695e521",
+        "9047d292-8f5c-4a6b-b74e-c8dbf3e0ab24",
+        "26724a51-87dd-4159-b012-71598e4cf5eb",
+        "711f4cff-0256-44b2-a2fe-1cae6e9edb2b",
+        "dc9afb9e-eab3-4969-9a44-2c01bf730e68",
+        "7a78abdb-d1ac-49cb-a74b-9de21c06364a"
+      ]
+    }
+  },
+  "note": "One frozen transform per frame family for this set. No per-scan fitting. Identity applies to uncalibrated families. Raw scores remain available."
+}

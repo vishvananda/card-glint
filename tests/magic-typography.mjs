@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { normalizedText, wrapping } from '../games/magic/tools/accuracy/typography-metrics.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 
 assert.equal(normalizedText('“One”\n‘two’'), '"One"\'two\'');
 const paragraphs = ['A bright morning.', 'A silent evening.'];
@@ -71,6 +73,40 @@ assert.ok(
   transfer.selection.every((c) => !m21Names.has(c.name)),
   'Transfer cohort contains a training-set name',
 );
+for (const set of ['mir', 'tmp']) {
+  const annotations = await fixture(set, 'annotations');
+  const corpus = await fixture(set, 'corpus');
+  const cohort = await fixture(set, 'cohorts');
+  assert.equal(corpus.eligibleCount, 350);
+  assert.equal(corpus.entries.length, corpus.eligibleCount);
+  assert.equal(Object.keys(annotations.cards).length, cohort.selection.length);
+  for (const selected of cohort.selection) {
+    const entry = corpus.entries.find((c) => c.id === selected.id);
+    const annotation = annotations.cards[selected.id];
+    assert.ok(annotation.reviewed);
+    assert.equal(annotation.referenceHash, entry.referenceHash);
+    assert.equal(
+      normalizedText(annotation.paragraphs.flatMap((p) => p.runs.map((r) => r.text)).join('')),
+      normalizedText(annotation.rulesText + annotation.flavorText),
+    );
+    assert.throws(
+      () =>
+        presentation(
+          { card: { id: selected.id }, reference: { sha256: 'changed' } },
+          annotations.cards,
+        ),
+      /stale/,
+    );
+  }
+}
+const mirAlignment = await fixture('mir', 'alignment');
+const tmpAlignment = await fixture('tmp', 'alignment');
+assert.equal(tmpAlignment.transferredFrom.profileHash, hash(JSON.stringify(mirAlignment)));
+assert.deepEqual(tmpAlignment.frameFamilies, mirAlignment.frameFamilies);
+const mirNames = new Set((await fixture('mir', 'corpus')).entries.map((c) => c.name));
+const tmpCohort = await fixture('tmp', 'cohorts');
+assert.equal(tmpCohort.calibration.length, 0);
+assert.ok(tmpCohort.selection.every((c) => !mirNames.has(c.name)));
 console.log(
   'Typography metrics distinguish soft wrapping, forced paragraphs, content mismatch and line count.',
 );

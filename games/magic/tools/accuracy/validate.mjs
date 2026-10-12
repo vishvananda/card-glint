@@ -11,12 +11,19 @@ import {
 } from './common.mjs';
 import { normalize, readPng, cropGray } from './pixels.mjs';
 import { compareRegion, median, METRIC_VERSION } from './metrics.mjs';
+import { regions } from './regions.mjs';
 
 // Perturb references, never fit them. This tests sensitivity, not renderer quality.
 const opts = options();
 const snapshot = await readJson(path.join(cacheRoot, 'sets', opts.set + '.json'));
 const cohorts = await readJson(path.join(fixtureRoot, opts.set, 'cohorts.json'));
 const annotated = (await readJson(path.join(fixtureRoot, opts.set, 'annotations.json'))).cards;
+const capture = await readJson(path.join(outputRoot, opts.set, opts.run, 'capture.json'));
+assert.equal(
+  capture.snapshotIdentity,
+  snapshot.identity,
+  'Validation needs the current reference snapshot',
+);
 const entries = snapshot.entries.filter(
   (e) => cohorts.calibration.includes(e.card.collector_number) && annotated[e.id]?.reviewed,
 );
@@ -24,7 +31,10 @@ assert.ok(entries.length >= 3, 'At least three reviewed calibration cards needed
 const rows = [];
 for (const entry of entries) {
   const image = normalize(await readPng(objectFile(entry.reference)));
-  const reference = cropGray(image, [39, 433, 411, 170]);
+  const card = capture.results.find((card) => card.id === entry.id);
+  assert.ok(card && !card.issue, `Missing capture metadata for ${entry.card.name}`);
+  const rect = regions(card).find((region) => region.id === 'body').rect;
+  const reference = cropGray(image, rect);
   const { gray, width, height } = reference;
   const photometric = (change) => {
     const copy = { ...image, data: new Uint8Array(image.data) };
@@ -32,7 +42,7 @@ for (const entry of entries) {
       const rgb = change([...copy.data.slice(p, p + 3)], p);
       for (let c = 0; c < 3; c++) copy.data[p + c] = Math.max(0, Math.min(255, rgb[c]));
     }
-    return cropGray(copy, [39, 433, 411, 170]).gray;
+    return cropGray(copy, rect).gray;
   };
   const geometric = (map) =>
     Float32Array.from(gray, (_, i) => {
@@ -61,6 +71,7 @@ for (const entry of entries) {
   rows.push({
     id: entry.id,
     name: entry.card.name,
+    region: rect,
     variants: Object.fromEntries(
       Object.entries(variants).map(([name, candidate]) => [
         name,
