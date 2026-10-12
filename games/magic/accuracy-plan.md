@@ -53,6 +53,10 @@ Missing original text remains explicit, and Oracle fallbacks do not enter the
 reviewed-body aggregate. `originalType` is retained for audit but is not applied:
 Fourth Edition Angry Mob has a modern type in that field despite its printed
 “Summon Mob” type. MTGJSON supplies its correct original rules wording.
+The cache now also covers 290/306 Revised and 436/449 Fifth Edition records.
+Source errors still need reviewed overrides: Fourth Edition Deathgrip's
+`originalText` omits the colon after its two black mana symbols. Its scan and
+source identity are recorded in `centered-transfer-review.json`.
 
 Comparison uses two Node workers. Repeating comparison reuses per-card results
 when image checksums, input, alignment, and comparison source are unchanged. It
@@ -103,6 +107,32 @@ type. Both pages live under `test-results/magic-accuracy`. The white frame's gra
 text-box bevel remains an asset review item. `width-sweep.mjs` reproduces the
 0/10/12px MIR trial and 0/10px TMP trial. `fourth-insets-sweep.mjs` takes a checkout
 at `2b738ef` to reproduce its production-matched controls before the geometry fix.
+
+### Short centered passages: transfer rejected
+
+The balanced-line trial uses the same 25px font size, 320px width and vertical
+position for every card. It improves all six Fourth Edition development examples,
+but the frozen trial fails three of six reserved Fourth Edition examples:
+Spell Blast, Red Elemental Blast and Meekstone acquire an extra line. Its median
+body F1 rises from .385 to .447 despite these visible regressions. An aggregate
+gain alone is therefore insufficient to accept a typography policy.
+
+Five of six Revised examples improve numerically, but five have uncertain shared
+alignment. Fifth Edition has five regressions and no gains over .02; its short
+multi-line examples use left alignment. No renderer change is adopted from this
+trial. Both sides use identical printing-specific inputs, and all 18 control
+crops match production pixels exactly. The newly spotted Deathgrip punctuation
+error remains in both frozen trial inputs and is flagged for correction before
+further fitting.
+
+`centered-sweep.mjs SET transfer` reproduces the frozen candidate on these reserved
+printings. [Selection and candidate](fixtures/accuracy/centered-text-plan.json)
+and [transfer review](fixtures/accuracy/centered-transfer-review.json) record scan
+line endings, input/source hashes, scores and exclusions. These examples are now
+exposed development evidence. Next trials need fresh validation printings, an
+independent line-count/line-ending check, and a validated shared Revised alignment
+profile. Fifth Edition's tilted-card tap mark and Revised's bare numeric mana and
+earlier tap mark remain separate symbol-policy issues.
 
 ## References and cache
 

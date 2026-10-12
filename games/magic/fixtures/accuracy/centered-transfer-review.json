@@ -1,0 +1,1226 @@
+{
+  "schemaVersion": 1,
+  "selectionCommit": "6758da2",
+  "candidateFreezeCommit": "626c5d3",
+  "baselineCommit": "589731d",
+  "status": "No production change adopted",
+  "note": "Control and candidate use identical printing-specific inputs. Control crops are byte-identical to current production. Candidate size, width and y were frozen before these scans and scores were viewed. Fixed existing set alignment only; no per-scan fit. Development remains six of six gains, but transfer failures prevent adoption. These 18 examples are now exposed and must not be reused as fresh validation.",
+  "reports": [
+    {
+      "set": "4ed",
+      "rendererHash": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+      "experimentHash": "52d050cbb28f20a77884e009fa4e3e49eac38cdb2de058ed20db6c8fae30953f",
+      "alignmentHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+      "printingTextSource": {
+        "url": "https://mtgjson.com/api/v5/4ED.json",
+        "sha256": "b77fb24aac4e367438e378e336866d79bebeb3b2074c6a4d3937f33261287e22",
+        "bytes": 1541854,
+        "mime": "application/json",
+        "fetchedAt": "2026-10-12T05:24:13.206Z",
+        "etag": "\"6acb2879-683d7\"",
+        "lastModified": "Sun, 11 Oct 2026 06:11:05 GMT"
+      },
+      "summary": [
+        {
+          "id": "s25-y406.556",
+          "size": 25,
+          "width": 320,
+          "y": 406.556,
+          "medianF1": 0.4470958695334042,
+          "gains": 3,
+          "regressions": ["Spell Blast", "Red Elemental Blast", "Meekstone"]
+        },
+        {
+          "id": "control",
+          "medianF1": 0.38531788207244333,
+          "gains": 0,
+          "regressions": []
+        }
+      ],
+      "decision": "Rejected: three of six reserved cards regress and gain an extra line. Narrow shared width does not transfer within the set.",
+      "results": [
+        {
+          "id": "870ee86b-222b-4d7a-9c5b-ea10e1d73756",
+          "name": "Castle",
+          "number": "12",
+          "inputHash": "670712f2416afea6310105bfe71bd3a4a38a1d78080ac3a2c0361cb7b53a0590",
+          "referenceHash": "2a850ecc5043006c4489ab1815afb573a2f1bd86bdb11b9c140e3ae39a4e6fba",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.5566725403436025,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Untapped creatures you control get",
+                    "baseline": 499.5807495803833,
+                    "width": 347.24224853515625,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "+0/+2 when not attacking.",
+                    "baseline": 522.0807495803833,
+                    "width": 260.30230712890625,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "12.control.png",
+              "sha256": "f153bf01a21f35220e0aa6ba54de982c8e2e2489b827b4eb4f3cdcc26da6e745"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.6924583603816223,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Untapped creatures",
+                    "baseline": 476.4594994277954,
+                    "width": 214.9499053955078,
+                    "x": 136.5250473022461
+                  },
+                  {
+                    "text": "you control get +0/+2",
+                    "baseline": 501.4594994277954,
+                    "width": 238.7748565673828,
+                    "x": 124.6125717163086
+                  },
+                  {
+                    "text": "when not attacking.",
+                    "baseline": 526.4594994277954,
+                    "width": 214.37489318847656,
+                    "x": 136.81255340576172
+                  }
+                ],
+                "size": 25
+              },
+              "file": "12.s25-y406.556.png",
+              "sha256": "b0070a0e1a921f5a6a028dd20122b8f7092b8406b600906d617d2bfed3ff92dc"
+            }
+          ],
+          "scanLines": ["Untapped creatures", "you control get +0/+2", "when not attacking."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "008df307-f010-47bc-8548-65a1c7b1c4b8",
+          "name": "Spell Blast",
+          "number": "103",
+          "inputHash": "865e974ab0dc4b065ac1d50ee893dda694bdf3be19796f7be498cae76e0b460c",
+          "referenceHash": "c067946e3333229411c2ec20897807bb8d4b1735cab3721b01b18b97eb469a85",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.3672505488507862,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Counter target spell. X is the casting",
+                    "baseline": 499.62574965667727,
+                    "width": 357.6371765136719,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "cost of the target spell.",
+                    "baseline": 522.1257496566773,
+                    "width": 220.88230895996094,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "103.control.png",
+              "sha256": "c156d49684a0e19b70a2b00330a7716ec3fc0f8416fd749a2ac1257163738c11"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.34648489079530526,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Counter target spell.",
+                    "baseline": 476.50949961853024,
+                    "width": 223.77488708496094,
+                    "x": 132.11255645751953
+                  },
+                  {
+                    "text": "X is the casting cost",
+                    "baseline": 501.50949961853024,
+                    "width": 217.09988403320312,
+                    "x": 135.45005798339844
+                  },
+                  {
+                    "text": "of the target spell.",
+                    "baseline": 526.5094996185303,
+                    "width": 194.97488403320312,
+                    "x": 146.51255798339844
+                  }
+                ],
+                "size": 25
+              },
+              "file": "103.s25-y406.556.png",
+              "sha256": "c8957919d61d7200a81c78d935a31593ba0b59b74b8d085a92e3fbbd81563526"
+            }
+          ],
+          "scanLines": ["Counter target spell. X is the", "casting cost of the target spell."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "74e2ae05-29ec-4005-8d78-280a190601c4",
+          "name": "Deathgrip",
+          "number": "130",
+          "inputHash": "ce41382c25bf614d09555d85cb2863f6dbf6af4e0418b69c3a155f9ca686ab32",
+          "referenceHash": "ae3e1604ee1792e6d45b7dac396e847c8c0a82d0b0dfb7769a21327bd2055b29",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.4033852152941005,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{B}{B} Counter target green spell. Play",
+                    "baseline": 499.8619996757507,
+                    "width": 355.38726196289065,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "this ability as an interrupt.",
+                    "baseline": 522.3619996757507,
+                    "width": 256.94976806640625,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "130.control.png",
+              "sha256": "23f021e465376fde04000324796482e630c1104af8b3fd976adaa973515824ca"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.5477068482715032,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{B}{B} Counter target",
+                    "baseline": 476.7719994277954,
+                    "width": 211.27493286132812,
+                    "x": 138.36253356933594
+                  },
+                  {
+                    "text": "green spell. Play this",
+                    "baseline": 501.7719994277954,
+                    "width": 222.6248779296875,
+                    "x": 132.68756103515625
+                  },
+                  {
+                    "text": "ability as an interrupt.",
+                    "baseline": 526.7719994277954,
+                    "width": 239.52487182617188,
+                    "x": 124.23756408691406
+                  }
+                ],
+                "size": 25
+              },
+              "file": "130.s25-y406.556.png",
+              "sha256": "fd142364ca0d0ae3307d30fc3d6fe068d9eb105cb8ccf881764f78da8663b493"
+            }
+          ],
+          "scanLines": [
+            "{B}{B}: Counter target",
+            "green spell. Play this",
+            "ability as an interrupt."
+          ],
+          "bodyWordingStatus": "source-error",
+          "reviewNote": "MTGJSON omits the colon after {B}{B}. Keep measured inputs unchanged in this frozen trial; correct the wording before further fitting."
+        },
+        {
+          "id": "a54246c9-5e5c-484e-a546-ae1f9fd020f3",
+          "name": "Red Elemental Blast",
+          "number": "218",
+          "inputHash": "1a612b7f91c021b649b554e7039c63b90db473f7b983608feb8d25cf12fadcc9",
+          "referenceHash": "9412a88e9c268258c1e2a5f86a16abbeaf808ca873c6453fc3049b7f8a8f26fd",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.21800858999996778,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Counter target blue spell or destroy",
+                    "baseline": 499.62574965667727,
+                    "width": 347.647216796875,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "target blue permanent.",
+                    "baseline": 522.1257496566773,
+                    "width": 222.92984008789062,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "218.control.png",
+              "sha256": "d414d98f5ad2d7ee2aa8323ff903aa0149a9c921f6c70b4a9cc9cae21e98ef6c"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.17143707889882176,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Counter target blue",
+                    "baseline": 476.52199847412106,
+                    "width": 214.12490844726562,
+                    "x": 136.9375457763672
+                  },
+                  {
+                    "text": "spell or destroy target",
+                    "baseline": 501.52199847412106,
+                    "width": 234.3748779296875,
+                    "x": 126.81256103515625
+                  },
+                  {
+                    "text": "blue permanent.",
+                    "baseline": 526.5219984741211,
+                    "width": 178.52491760253906,
+                    "x": 154.73754119873047
+                  }
+                ],
+                "size": 25
+              },
+              "file": "218.s25-y406.556.png",
+              "sha256": "72a1a73197614223207300b64afe16d1c53c0b371ddf325b3be8e5c17a182b8a"
+            }
+          ],
+          "scanLines": ["Counter target blue spell or", "destroy target blue permanent."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "2338aeec-63f6-4cc1-833e-77d44994a7ca",
+          "name": "Pradesh Gypsies",
+          "number": "265",
+          "inputHash": "e23311ff4c9ac991ed4597aa9d5a3225cca633594b5d4744bd2d263330395646",
+          "referenceHash": "834b51ac37a356600bb98681c64241798bac264808f25598eccd6ad7b847c353",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.44009666879591375,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{1}{G}, {T}: Target creature gets -2/-0",
+                    "baseline": 501.88699977111816,
+                    "width": 334.84479370117185,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "until end of turn.",
+                    "baseline": 524.3869997711181,
+                    "width": 168.0523223876953,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "265.control.png",
+              "sha256": "397b18c9d1d82549a57d43ea6bd1776200a545e83026e548f4a45b756098c444"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.6112907490980918,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{1}{G}, {T}: Target creature",
+                    "baseline": 489.2719994277954,
+                    "width": 262.89990234375,
+                    "x": 112.550048828125
+                  },
+                  {
+                    "text": "gets -2/-0 until end of turn.",
+                    "baseline": 514.2719994277954,
+                    "width": 295.8748779296875,
+                    "x": 96.06256103515625
+                  }
+                ],
+                "size": 25
+              },
+              "file": "265.s25-y406.556.png",
+              "sha256": "1e97f66479f09044bc2228dc52ef2ec147907e461b387b05b844b78572404e3c"
+            }
+          ],
+          "scanLines": ["{1}{G}, {T}: Target creature", "gets -2/-0 until end of turn."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "c9714ce0-7fc3-4bf3-ad65-68555a9d2f35",
+          "name": "Meekstone",
+          "number": "335",
+          "inputHash": "fa1344346f3b2b46891f446b508dde1fecd0b5d1a5dd7b8816852e2d9c263574",
+          "referenceHash": "b6b628318813dbfbe90be3bb7cb10c3409f0d1bdab8aca8328bd755f0cb8a942",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.26302263280292454,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "No creatures with power greater",
+                    "baseline": 488.34199912261965,
+                    "width": 315.1347961425781,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "than 2 untap during their controllers'",
+                    "baseline": 510.84199912261965,
+                    "width": 361.732177734375,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "untap phase.",
+                    "baseline": 533.3419991226197,
+                    "width": 124.98741149902344,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "335.control.png",
+              "sha256": "796d7d93c704ba09eb0b39191527390a0e505c293a212c8c13da3e72c5ebb5bc"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.23156404385293589,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "No creatures with",
+                    "baseline": 463.9719982833862,
+                    "width": 194.3498992919922,
+                    "x": 146.8250503540039
+                  },
+                  {
+                    "text": "power greater than",
+                    "baseline": 488.9719982833862,
+                    "width": 204.4499053955078,
+                    "x": 141.7750473022461
+                  },
+                  {
+                    "text": "2 untap during their",
+                    "baseline": 513.9719982833863,
+                    "width": 219.47491455078125,
+                    "x": 134.26254272460938
+                  },
+                  {
+                    "text": "controllers' untap phase.",
+                    "baseline": 538.9719982833863,
+                    "width": 265.724853515625,
+                    "x": 111.1375732421875
+                  }
+                ],
+                "size": 25
+              },
+              "file": "335.s25-y406.556.png",
+              "sha256": "03f6884a4b58ef2a278e06eef049da4ad64f8b8abf5b2750b570fc4c08a43597"
+            }
+          ],
+          "scanLines": [
+            "No creatures with power",
+            "greater than 2 untap during",
+            "their controllers’ untap phase."
+          ],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        }
+      ]
+    },
+    {
+      "set": "3ed",
+      "rendererHash": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+      "experimentHash": "52d050cbb28f20a77884e009fa4e3e49eac38cdb2de058ed20db6c8fae30953f",
+      "alignmentHash": "1658627923a46b163fe231d111176d73c7548dfa74741a5ba71cc88ef029579f",
+      "printingTextSource": {
+        "url": "https://mtgjson.com/api/v5/3ED.json",
+        "sha256": "80957499aab887510db2cdf7e458a5a714afb3f30cbbe5a25f33f576bf6c4ba0",
+        "bytes": 1061285,
+        "mime": "application/json",
+        "fetchedAt": "2026-10-12T05:48:06.851Z",
+        "etag": "\"6acb286a-40086\"",
+        "lastModified": "Sun, 11 Oct 2026 06:10:50 GMT"
+      },
+      "summary": [
+        {
+          "id": "s25-y406.556",
+          "size": 25,
+          "width": 320,
+          "y": 406.556,
+          "medianF1": 0.34135653906321806,
+          "gains": 5,
+          "regressions": []
+        },
+        {
+          "id": "control",
+          "medianF1": 0.16899492195026083,
+          "gains": 0,
+          "regressions": []
+        }
+      ],
+      "decision": "Deferred: all six scans use centered text and five scores improve, but five of six scans have uncertain shared alignment. One confident example is insufficient to adopt the candidate.",
+      "results": [
+        {
+          "id": "1c687a4e-a3f9-4d2d-9931-bf60e97f4095",
+          "name": "Wrath of God",
+          "number": "46",
+          "inputHash": "5895967ebe9ac2183032e6a64da0db082dba077a9865af383beb875dbf94d507",
+          "referenceHash": "8e679ff3b1a98376ca3ef8f70841f444f54b9ee4852e395851b210cafc7d3910",
+          "alignmentUncertain": true,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.333710857388949,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "All creatures in play are buried.",
+                    "baseline": 510.8307495803833,
+                    "width": 307.3497314453125,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "46.control.png",
+              "sha256": "d4d4f59317c75d120e5e2d947b46a66baa83f29534dd79f8fbd1ec1c83294862"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.34167665882234427,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "All creatures in",
+                    "baseline": 488.9594994277954,
+                    "width": 164.97491455078125,
+                    "x": 161.51254272460938
+                  },
+                  {
+                    "text": "play are buried.",
+                    "baseline": 513.9594994277954,
+                    "width": 169.5749053955078,
+                    "x": 159.2125473022461
+                  }
+                ],
+                "size": 25
+              },
+              "file": "46.s25-y406.556.png",
+              "sha256": "a4103cf187abf288562a3eb4acd6ef59269119366593a931e0b6390a973bd320"
+            }
+          ],
+          "scanLines": ["All creatures in", "play are buried."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "0a1b4e2e-5459-4fae-81d9-1e882647daac",
+          "name": "Counterspell",
+          "number": "54",
+          "inputHash": "f72f249097b6373c5e823088f326cabeda4e57d2e2f68ad40b2ee5e4eb6b3900",
+          "referenceHash": "2aec806def7f9cdf24f83d096fe138a7f5aeb6897ca585051cd541fb4aa72933",
+          "alignmentUncertain": true,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.08351864120626559,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Counters target spell as it is being",
+                    "baseline": 501.6507497520447,
+                    "width": 330.45721435546875,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "cast.",
+                    "baseline": 524.1507497520447,
+                    "width": 44.302459716796875,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "54.control.png",
+              "sha256": "29095528def8ae565c4aaeaf56d27154aa337d26de6a012d44931afd57c96d4e"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.20581072362662697,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Counters target spell",
+                    "baseline": 489.00949961853024,
+                    "width": 226.37489318847656,
+                    "x": 130.81255340576172
+                  },
+                  {
+                    "text": "as it is being cast.",
+                    "baseline": 514.0094996185303,
+                    "width": 190.02488708496094,
+                    "x": 148.98755645751953
+                  }
+                ],
+                "size": 25
+              },
+              "file": "54.s25-y406.556.png",
+              "sha256": "e4680a46f845dcd9d15dc30f11fa8265c2b6384049493bbb545ffdd92beb1f88"
+            }
+          ],
+          "scanLines": ["Counters target spell", "as it is being cast."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "9cb767eb-2161-4068-be80-c3cf68945393",
+          "name": "Bad Moon",
+          "number": "94",
+          "inputHash": "0cb765b064049bb740753acda14a8edc44ef05b238d5ebbfc5c5cede308bf620",
+          "referenceHash": "7c6299d5bc7fc55bea7f6ff39f4ff0e463a26902caeb66dbd271b1091db0a008",
+          "alignmentUncertain": true,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.17971358515126223,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "All black creatures in play gain",
+                    "baseline": 501.5832496376038,
+                    "width": 300.05975341796875,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "+1/+1.",
+                    "baseline": 524.0832496376038,
+                    "width": 67.67996215820312,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "94.control.png",
+              "sha256": "273d2ff9bae3b658fffd40f4eaed3b81daa8bdf84a8326aa1a86e0f0c164cb4d"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.3965937164376426,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "All black creatures",
+                    "baseline": 488.9594994277954,
+                    "width": 201.12489318847656,
+                    "x": 143.43755340576172
+                  },
+                  {
+                    "text": "in play gain +1/+1.",
+                    "baseline": 513.9594994277954,
+                    "width": 207.47486877441406,
+                    "x": 140.26256561279297
+                  }
+                ],
+                "size": 25
+              },
+              "file": "94.s25-y406.556.png",
+              "sha256": "90dc17e827937cad6fa6f02525ab57ff24449a6c98671f85c5364725ea0bba54"
+            }
+          ],
+          "scanLines": ["All black creatures", "in play gain +1/+1."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c",
+          "name": "Lightning Bolt",
+          "number": "162",
+          "inputHash": "5ca0a52eef1e87ec1d1e178be65875dfeac46f4568f785e93e6c3998598c5b14",
+          "referenceHash": "535e8bde88dcb9e53564e4baecd2ace5f93b843f0144b4a925751b61c6f3b557",
+          "alignmentUncertain": true,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.07368285732650569,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Lightning Bolt does 3 damage to one",
+                    "baseline": 499.5807500572205,
+                    "width": 362.63226318359375,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "target.",
+                    "baseline": 522.0807500572205,
+                    "width": 62.57246398925781,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "162.control.png",
+              "sha256": "37e8653634d5cbdea2d7b89c71ba8cd3dde4ceca680746819e4b7ae73964fa20"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.3713013668323497,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Lightning Bolt does 3",
+                    "baseline": 488.9594994277954,
+                    "width": 236.47488403320312,
+                    "x": 125.76255798339844
+                  },
+                  {
+                    "text": "damage to one target.",
+                    "baseline": 513.9594994277954,
+                    "width": 235.97488403320312,
+                    "x": 126.01255798339844
+                  }
+                ],
+                "size": 25
+              },
+              "file": "162.s25-y406.556.png",
+              "sha256": "ce174df3764b250914742cdbec902c86b2235e43056b2ac692f58e36763f55b7"
+            }
+          ],
+          "scanLines": ["Lightning Bolt does 3", "damage to one target."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "6a578955-7f77-42f1-a3e3-5e2b46216c43",
+          "name": "Tsunami",
+          "number": "222",
+          "inputHash": "92b33d218def289345de2ba4013ab88b48965dbc4a1ab6de5e98b473b631a0d5",
+          "referenceHash": "9b1f94b08995d300a4efab55736a08ce21458a2f86d3c188f93f8a04fa24ce92",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.15827625874925946,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "All islands in play are destroyed.",
+                    "baseline": 510.8307495803833,
+                    "width": 316.5296936035156,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "222.control.png",
+              "sha256": "e9353cc76f10534c842a015b0d0d241e50b11fe9c2f62f61d23e7f8154f1136f"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.2297287570662134,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "All islands in play",
+                    "baseline": 488.9594994277954,
+                    "width": 192.19989013671875,
+                    "x": 147.90005493164062
+                  },
+                  {
+                    "text": "are destroyed.",
+                    "baseline": 513.9594994277954,
+                    "width": 152.54991149902344,
+                    "x": 167.72504425048828
+                  }
+                ],
+                "size": 25
+              },
+              "file": "222.s25-y406.556.png",
+              "sha256": "8de0b2f9af13d66113b859528e76c8d5512210eff9b19b6e50035dd160d88ccf"
+            }
+          ],
+          "scanLines": ["All islands in play", "are destroyed."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "2bc5e073-2903-4a28-9c23-07a0482ae09a",
+          "name": "Celestial Prism",
+          "number": "239",
+          "inputHash": "03a19a54d45ab0a5406892c7f9e2d0918c3253dbe8e7a03d520610155ef98de2",
+          "referenceHash": "c922eb698917a301c6f21e536e72580608cba79495105c9671e5979881f12645",
+          "alignmentUncertain": true,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.2632020616547378,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{2}, {T}: Provides 1 mana of any color.",
+                    "baseline": 499.8619996757507,
+                    "width": 356.6922546386719,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "This use is played as an interrupt.",
+                    "baseline": 522.3619996757507,
+                    "width": 330.18719482421875,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "239.control.png",
+              "sha256": "48354940a729b782a1338dd1a657d657d425114ec685878e8a7caae75f338dc1"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.34103641930409184,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{2}, {T}: Provides 1 mana",
+                    "baseline": 476.7719994277954,
+                    "width": 253.59988403320312,
+                    "x": 117.20005798339844
+                  },
+                  {
+                    "text": "of any color. This use is",
+                    "baseline": 501.7719994277954,
+                    "width": 258.9498291015625,
+                    "x": 114.52508544921875
+                  },
+                  {
+                    "text": "played as an interrupt.",
+                    "baseline": 526.7719994277954,
+                    "width": 243.6998748779297,
+                    "x": 122.15006256103516
+                  }
+                ],
+                "size": 25
+              },
+              "file": "239.s25-y406.556.png",
+              "sha256": "2f7f89730d0d3964743a3e3c7d84052055c2cfc6fffcdc21c3aa3d409f4ac4da"
+            }
+          ],
+          "scanLines": [
+            "{2}, {T}: Provides 1 mana",
+            "of any color. This use is",
+            "played as an interrupt."
+          ],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Words match. Printed numeric mana is bare and tap mark is the earlier diagonal T; current symbol assets/policy differ."
+        }
+      ]
+    },
+    {
+      "set": "5ed",
+      "rendererHash": "dc5db784c8ebd2faee6f511ac14e87468924e72433596d79e67facdc93abf376",
+      "experimentHash": "52d050cbb28f20a77884e009fa4e3e49eac38cdb2de058ed20db6c8fae30953f",
+      "alignmentHash": "36a041b73dfa944fce9ea88b0fb46ff231090cc39fb75e795e573f168b95b376",
+      "printingTextSource": {
+        "url": "https://mtgjson.com/api/v5/5ED.json",
+        "sha256": "9c66fa57eb3d63474d9913c9f5e3931caad541e52440dfa26a7558b2c38588f1",
+        "bytes": 2157656,
+        "mime": "application/json",
+        "fetchedAt": "2026-10-12T05:48:07.433Z",
+        "etag": "\"6acb2884-95f85\"",
+        "lastModified": "Sun, 11 Oct 2026 06:11:16 GMT"
+      },
+      "summary": [
+        {
+          "id": "control",
+          "medianF1": 0.3579085293778915,
+          "gains": 0,
+          "regressions": []
+        },
+        {
+          "id": "s25-y406.556",
+          "size": 25,
+          "width": 320,
+          "y": 406.556,
+          "medianF1": 0.24695183492475833,
+          "gains": 0,
+          "regressions": [
+            "Unsummon",
+            "Dark Ritual",
+            "Orcish Oriflamme",
+            "Stream of Life",
+            "Rod of Ruin"
+          ]
+        }
+      ],
+      "decision": "Rejected: five regressions. Short multi-line passages here are left aligned; a centered narrow policy changes the printed line count.",
+      "results": [
+        {
+          "id": "18720641-3a34-48f1-954e-49a703f12578",
+          "name": "Disenchant",
+          "number": "26",
+          "inputHash": "20bdc7c7bd1574c286af88fdc350934c9a4f3e3ea9d087aa589e365289fa0557",
+          "referenceHash": "2b284883f6b3bb5318d8e82b65a5c305f4b5508bd5b520f7ba85b81988243c85",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.18396556444498527,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Destroy target artifact or",
+                    "baseline": 501.6507497520447,
+                    "width": 241.3798370361328,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "enchantment.",
+                    "baseline": 524.1507497520447,
+                    "width": 134.7523956298828,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "26.control.png",
+              "sha256": "c04d1aefb27a8cd144c661e7f880d4139142ab5645102e824a866ee8547d6e4a"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.18926854979090527,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Destroy target artifact",
+                    "baseline": 491.25950057220456,
+                    "width": 238.3248748779297,
+                    "x": 124.83756256103516
+                  },
+                  {
+                    "text": "or enchantment.",
+                    "baseline": 516.2595005722046,
+                    "width": 179.59991455078125,
+                    "x": 154.20004272460938
+                  }
+                ],
+                "size": 25
+              },
+              "file": "26.s25-y406.556.png",
+              "sha256": "1107021c60548aaa733f177b0e422363c7a993a7e5e5e50952de16766d1600dc"
+            }
+          ],
+          "scanLines": ["Destroy target artifact or enchantment."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "3c830b54-0441-4df2-87de-a579dc734d97",
+          "name": "Unsummon",
+          "number": "132",
+          "inputHash": "3c28e3e4895cd858237a6d4e938170cd84de3ae9f12dc4f40204ee556279b2d2",
+          "referenceHash": "2d8c72e0555fa489e475b5c99433a18e6accc36c7a8e9c231576e5ef92b609f2",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.4385529765456854,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Return target creature to owner's",
+                    "baseline": 501.45949942779544,
+                    "width": 322.28973388671875,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "hand.",
+                    "baseline": 523.9594994277954,
+                    "width": 55.75495910644531,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "132.control.png",
+              "sha256": "bccb73a229750611f7131d7ee61f4a6fe36aad4db14f678e250bcd7430d53b78"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.20794251527637347,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Return target creature",
+                    "baseline": 491.04699999999997,
+                    "width": 240.7248992919922,
+                    "x": 123.6375503540039
+                  },
+                  {
+                    "text": "to owner's hand.",
+                    "baseline": 516.047,
+                    "width": 179.3249053955078,
+                    "x": 154.3375473022461
+                  }
+                ],
+                "size": 25
+              },
+              "file": "132.s25-y406.556.png",
+              "sha256": "122b41da97414c7ed74832030e5086ce8ce68d1ccd1645e678c1f32707b761a1"
+            }
+          ],
+          "scanLines": ["Return target creature to owner’s", "hand."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "fae25afd-0d16-431c-a85e-7ac91cef9050",
+          "name": "Dark Ritual",
+          "number": "153",
+          "inputHash": "e62517b4256c7473074864291471fb3a17cdb1b762f22d8f3ffaef94bde3d14b",
+          "referenceHash": "91e0b1ae7b08cd7b71f1ed1a7e33b10872092097a6325a187c6cec6bf5f3c0be",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.36412999342945523,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Add {B}{B}{B} to your mana pool.",
+                    "baseline": 511.1119987220764,
+                    "width": 300.21730651855466,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "153.control.png",
+              "sha256": "ffc9fb00fc7199e1bdb4d3cb071e844dc5544ef135e788341e27b96185358be4"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.2859611545731432,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Add {B}{B}{B} to",
+                    "baseline": 489.2719994277954,
+                    "width": 148.39996337890625,
+                    "x": 169.80001831054688
+                  },
+                  {
+                    "text": "your mana pool.",
+                    "baseline": 514.2719994277954,
+                    "width": 178.2248992919922,
+                    "x": 154.8875503540039
+                  }
+                ],
+                "size": 25
+              },
+              "file": "153.s25-y406.556.png",
+              "sha256": "b855f8aa2f533d7bbbf50b3bafd3b3c62b47979e7174eb29b358ca00026be6a9"
+            }
+          ],
+          "scanLines": ["Add {B}{B}{B} to your mana pool."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "1b00e95e-6bf1-445a-a46a-29aeb05bf9be",
+          "name": "Orcish Oriflamme",
+          "number": "257",
+          "inputHash": "5295f73af0baad5e656b5e8ff98bb2b610ea19144ade53f267d4fc12e62915e2",
+          "referenceHash": "1ff7e1a9c91dd9db8b650bf8162382aeeeb3e7cf577c614b473a0a7394d505fc",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.3516870653263279,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Attacking creatures you control get",
+                    "baseline": 501.5832496376038,
+                    "width": 342.854736328125,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "+1/+0.",
+                    "baseline": 524.0832496376038,
+                    "width": 67.67996215820312,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "257.control.png",
+              "sha256": "b1bcdb201a5c2af4973b14f14842c719b0abc70e0e32a4e315dd043d34d0d469"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.15742054717666085,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Attacking creatures",
+                    "baseline": 488.9594994277954,
+                    "width": 210.0749053955078,
+                    "x": 138.9625473022461
+                  },
+                  {
+                    "text": "you control get +1/+0.",
+                    "baseline": 513.9594994277954,
+                    "width": 246.07484436035156,
+                    "x": 120.96257781982422
+                  }
+                ],
+                "size": 25
+              },
+              "file": "257.s25-y406.556.png",
+              "sha256": "d89f093c844607c76be7711e88703409256e53bb71b26856efa0f62e50bf96f1"
+            }
+          ],
+          "scanLines": ["Attacking creatures you control get", "+1/+0."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "738e9ec1-a186-44ad-8a68-d5cc183ccdc0",
+          "name": "Stream of Life",
+          "number": "328",
+          "inputHash": "aee6ce24771ebeca82609bf890bbda241174d6bf9399bb9b6794d011c5de79f9",
+          "referenceHash": "460e9e96cad4e56eda4b3f68de4d3d76df3606869dfc0455dda1e0d8bfc338cd",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.34920424277467604,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Target player gains X life.",
+                    "baseline": 510.87574870300296,
+                    "width": 253.70980834960938,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "328.control.png",
+              "sha256": "f766421cea8f527dcd6dfaaed46f43649ca2f59f66c706913298f80c83ee2a21"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.2992607952524315,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "Target player gains X life.",
+                    "baseline": 501.50949961853024,
+                    "width": 281.89984130859375,
+                    "x": 103.05007934570312
+                  }
+                ],
+                "size": 25
+              },
+              "file": "328.s25-y406.556.png",
+              "sha256": "a1411c5170f5d1a4d4de25218427525e7481705c672de32c2e58ec7303b44870"
+            }
+          ],
+          "scanLines": ["Target player gains X life."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Body wording reviewed only; these crops do not certify type lines, glyph shape, punctuation spacing or the full face."
+        },
+        {
+          "id": "1589724f-bec2-43a9-824a-1e85020731a4",
+          "name": "Rod of Ruin",
+          "number": "396",
+          "inputHash": "ca2400bcd5c0cdb7ce25ddc047ea1d1b4ad97aa9ea4920ae525c7e5015580d2c",
+          "referenceHash": "43f0ccf5a52ddf702138dfd247be6377596fdf5132c6d9ca4ca90f372b03ca5c",
+          "alignmentUncertain": false,
+          "scores": [
+            {
+              "id": "control",
+              "edgeF1": 0.48548924758027184,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{3}, {T}: Rod of Ruin deals 1 damage",
+                    "baseline": 499.8619996757507,
+                    "width": 342.40471801757815,
+                    "x": 62.464
+                  },
+                  {
+                    "text": "to target creature or player.",
+                    "baseline": 522.3619996757507,
+                    "width": 266.872314453125,
+                    "x": 62.464
+                  }
+                ],
+                "size": 22.5
+              },
+              "file": "396.control.png",
+              "sha256": "a248d12ac7cb2cd633d919684f185aa8c07f6f1e7d56b0509ef23e199d1c88c2"
+            },
+            {
+              "id": "s25-y406.556",
+              "edgeF1": 0.3757361219703383,
+              "layout": {
+                "lines": [
+                  {
+                    "text": "{3}, {T}: Rod of Ruin",
+                    "baseline": 476.7719994277954,
+                    "width": 206.9748992919922,
+                    "x": 140.5125503540039
+                  },
+                  {
+                    "text": "deals 1 damage to target",
+                    "baseline": 501.7719994277954,
+                    "width": 264.5248718261719,
+                    "x": 111.73756408691406
+                  },
+                  {
+                    "text": "creature or player.",
+                    "baseline": 526.7719994277954,
+                    "width": 198.52488708496094,
+                    "x": 144.73755645751953
+                  }
+                ],
+                "size": 25
+              },
+              "file": "396.s25-y406.556.png",
+              "sha256": "a6d52f4c9ae95ce246e08e2aa0daba9bd854dfb8e0d36522802c5c6beaddde9d"
+            }
+          ],
+          "scanLines": ["{3}, {T}: Rod of Ruin deals 1 damage", "to target creature or player."],
+          "bodyWordingStatus": "matches-words-and-symbols",
+          "reviewNote": "Words match. The printed tap mark is the tilted card; current Fifth Edition painter uses the modern arrow."
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    "Check line count and actual line ends independently of edge overlap; reject new wraps even when texture improves an aggregate score.",
+    "Investigate width by printing layout and color using the now-exposed examples, then reserve fresh printings before another fitting pass.",
+    "Calibrate and validate a shared Revised frame profile before using its body scores for adoption.",
+    "Retain separate Fifth Edition typography; track its historic tap symbol and inline numeric treatment.",
+    "Correct source punctuation errors with scan-hashed annotations; do not silently alter MTGJSON cached bytes."
+  ]
+}
