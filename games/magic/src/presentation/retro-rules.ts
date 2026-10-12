@@ -59,7 +59,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     !basic &&
     !/\b(?:Land|Artifact)\b/.test(face.typeLine ?? '') &&
     normalizeColors(face.colors ?? []).join('') === 'W';
-  return layoutRules(
+  const regular = layoutRules(
     context,
     centered ? [{ ...paragraph, align: 'center' }] : paragraphs,
     {
@@ -86,5 +86,27 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
             centerOffset: revisedBlock ? -10 : 0,
           }
         : RETRO_TYPOGRAPHY,
+  );
+  // Revised uses a distinct small face for dense passages. Character count
+  // alone misclassifies wide/italic blocks; fit alone misclassifies short
+  // multi-paragraph printing. Both gates are checked against the full set.
+  const length = paragraphs.reduce(
+    (sum, p) => sum + p.runs.reduce((n, run) => n + run.text.length, 0),
+    0,
+  );
+  if (!revisedBlock || length <= 270 || regular.size >= 22) return regular;
+  return layoutRules(
+    context,
+    paragraphs,
+    { x: 70, y: y + 4, width: 346, height: height + 8 },
+    15.5,
+    15,
+    {
+      ...RETRO_TYPOGRAPHY,
+      leading: 1.25,
+      paragraphGap: 0,
+      flavorGap: 0,
+      centerOffset: -18,
+    },
   );
 }
