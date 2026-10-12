@@ -1963,3 +1963,22 @@ abilities can extend below the paper while the old overflow flag reports false.
 Narset, Tibalt, Angrath, Ashiok, Dovin and Saheeli need a final glyph-bound fit
 against the actual paper aperture. This is visible in the new captures and must
 be corrected; nominal row-height checks are insufficient.
+
+The [paper-fit correction](fixtures/accuracy/planeswalker-paper-final-plan.json)
+now constrains actual glyph blocks to the aperture, propagating downward from
+the top limit and upward from the bottom limit while preserving at least 8px
+between abilities. The existing divider is constrained to that gap. Only an
+impossible fit needs a smaller font; final overflow checks actual glyph bounds.
+An original dense two-row fixture exercises this failure in `test:magic`.
+
+The [80-card confirmation](fixtures/accuracy/walker-paper-final-measurement.json)
+keeps every font size, printed input, line wrapping and loyalty anchor unchanged.
+34 cards move text or dividers; 46 retain byte-identical images at both tiers.
+All final ink lies inside the paper with at least an 8px inter-ability gap.
+The lowest glyph ends at y=616.33. These are now examined cards, including M19;
+the earlier independent lower-frame validation remains separate. This fixes
+the collision invariant, not sparse-row typography or loyalty-badge placement.
+Run `node games/magic/tools/accuracy/walker-paper-fit-audit.mjs` to reproduce.
+Raw overlap remains mixed: Saheeli's body F1 falls .371 → .246 while p95 edge
+distance improves 18 → 12px and the formerly clipped final line becomes visible.
+Keep typography accuracy separate from the now-enforced paper-bound invariant.

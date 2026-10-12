@@ -96,8 +96,13 @@ export function paintSpecialRules(
     : planeswalkerRuleRows(context, face);
   for (const [rowIndex, row] of rows.entries()) {
     if (rowIndex > 0) {
+      const previous = rows[rowIndex - 1]?.layout;
+      const separator =
+        row.layout && previous
+          ? Math.max(previous.top + previous.height + 3, Math.min(y + row.top, row.layout.top - 3))
+          : y + row.top;
       context.fillStyle = '#0002';
-      context.fillRect(x + (saga ? 0 : 40), y + row.top, w - (saga ? 0 : 40), 1.5);
+      context.fillRect(x + (saga ? 0 : 40), separator, w - (saga ? 0 : 40), 1.5);
     }
     context.fillStyle = '#17140f';
     context.textAlign = 'left';

@@ -328,6 +328,23 @@ try {
       if (shortPassive[i].layout.top - previous.top - previous.height < 7.99)
         throw Error('Dense planeswalker abilities have overlapping ink');
     }
+    const densePair = planeswalkerRuleRows(ctx, {
+      typeLine: ability.typeLine,
+      rulesText:
+        'Whenever a player casts a spell, put a marker on a permanent you control.\n−2: Choose another permanent you control. Until the beginning of your next turn, it becomes a copy of a creature you control, except it is an artifact in addition to its other types.',
+    });
+    for (const row of densePair) {
+      if (
+        row.layout.overflow ||
+        normalizedText(row) !== row.text ||
+        row.layout.lines.some(
+          (line) => line.inkBounds[1] < 435 || line.inkBounds[1] + line.inkBounds[3] > 618,
+        )
+      )
+        throw Error('Dense two-row ability crosses the visible planeswalker paper');
+    }
+    if (densePair[1].layout.top - densePair[0].layout.top - densePair[0].layout.height < 7.99)
+      throw Error('Fitting the lower ability overlapped the static paragraph');
     const unrelatedParagraphs = planeswalkerRuleRows(ctx, {
       ...ability,
       rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Unrelated ordinary-face text.' }] }],

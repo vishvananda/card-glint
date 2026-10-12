@@ -321,7 +321,10 @@ row spacing are implemented; type-strip shape/position is still under review.
 - Final ability text: check actual ink against the starting-loyalty silhouette;
   rectangle intersections alone flag many harmless transparent badge corners.
   The new lower-rim audit also reveals real text/paper collisions on dense WAR
-  two-row cards that the nominal row-height overflow check missed.
+  two-row cards that the nominal row-height overflow check missed. The final
+  glyph-bound fitter now resolves these across 80 examined cards without
+  changing font sizes or line wrapping. Sparse static/activated row placement
+  (especially Narset/Tibalt) remains a later study; it is not a clipping problem.
 - Original wording: M15’s six type lines now have partial scan reviews. Its
   source line-ending artifacts are normalized with raw provenance retained.
 - Sparse typography: WAR’s one-activation cards now allow larger text. The final

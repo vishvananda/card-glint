@@ -9,6 +9,12 @@ export function planeswalkerLowerPanel(large: boolean) {
   return { top, scale: 1 - LOWER_LIFT / (FRAME_BOTTOM - top) };
 }
 
+/** Inset the printed ink from the aperture's inner rim, including its curve. */
+export function planeswalkerInkLimits(large: boolean): readonly [number, number] {
+  const { top, scale } = planeswalkerLowerPanel(large);
+  return [top + 6, top + (625 - top) * scale - 4];
+}
+
 /** Keep all source pixels, with the upper frame unchanged and a shared small
  * vertical compression below the type opening. Called during face preparation. */
 export function paintPlaneswalkerFrameImage(
