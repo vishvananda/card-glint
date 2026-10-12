@@ -568,3 +568,38 @@ its application, deployment and database outside this library repository.
   patches are in `fixtures/accuracy/land-paper-review.json`; reproduce with
   `node games/magic/tools/accuracy/land-paper-study.mjs`. This asset/material
   issue remains open; no speculative per-card tint has been applied.
+
+### Old-frame symbol treatment survey (v61)
+
+- Frozen v59 baseline and v61 candidate cover 85 printings from seventeen sets
+  at both raster tiers. Sixty-five cards receive historical black ink or the
+  restored Chronicles glyph; twenty Exodus/no-symbol controls remain identical.
+  Every changed pixel stays inside the fixed symbol region. This is an initial
+  survey, not completed all-printing coverage or accepted symbol geometry.
+- Before Exodus, rarity does not change symbol ink. Separate the black outer
+  contours of ARN/ATQ/LEG/DRK from later light rims. Thirty-five additional
+  black/green/artifact scans establish that distinction. Opaque white interior
+  details are a separate pending topology pass, especially ARN/LEG/WTH.
+  [Wizards' card anatomy guide](https://magic.wizards.com/en/news/feature/anatomy-magic-card-2006-10-21)
+  documents the rarity boundary.
+- Chronicles now resolves all 125 English printings (116 names) to ARN/ATQ/LEG/DRK
+  by exact Oracle identity in the cached printing inventories. The painter uses
+  that English name-to-origin map; explicit `setSymbol` still wins and unknown
+  custom names have no guessed symbol. The five photographed examples validate
+  the identity change, not every printing's shape. Portal Second Age's `p02`
+  code now resolves to the existing `po2` asset.
+- Keep 27 survey cards flagged, including all five Chronicles shape reviews.
+  The raw-window edge/Census diagnostics can be influenced by neighboring text,
+  wrong glyph dimensions and unregistered scans. Ink correctness alone is not
+  a reason to dismiss their regressions or certify the overall symbol.
+- Next: fit visible symbol dimensions on independent frame registration, then
+  validate on darker-material and held-out cards. ARN/ALL/EXO are substantially
+  undersized because transparent SVG padding shrinks wide glyphs; WTH and LEG
+  also need sizing review. Retain the original stencils while testing cropped
+  visible bounds. ICE's printed fine snowflake differs from the current glyph;
+  inspect available pinned variants before flagging a replacement asset.
+- Evidence: `old-symbol-treatment-{plan,measurement}.json`,
+  `old-symbol-material-review.json`, `old-symbol-stencil-bounds.json` and
+  `chronicles-symbol-identities.json` under `fixtures/accuracy/`. The audit reads
+  cached PNG regions without Chromium. Full rendering is captured once per
+  candidate; no image readback enters the runtime painter.

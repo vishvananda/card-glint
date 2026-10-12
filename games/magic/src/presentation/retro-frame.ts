@@ -1,4 +1,5 @@
 import manifest from '../../assets.json' with { type: 'json' };
+import { hasNoPrintedSetSymbol } from './historical-set-symbol.js';
 import { retroBasicPrinting, simpleBasicMana } from './retro-basic.js';
 import {
   cardStock,
@@ -123,7 +124,7 @@ export function retroBasicSymbol(face: RenderedCardInput) {
 export const RETRO_WHITE = '#eeedeb';
 export function retroSetSymbol(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase() ?? '';
-  return ['lea', 'leb', '2ed', '3ed', '4ed', '5ed'].includes(set) ? null : faceSetSymbol(face);
+  return !face.setSymbol && hasNoPrintedSetSymbol(set) ? null : faceSetSymbol(face);
 }
 export function retroRulesSize(face: RenderedCardInput) {
   const n = (face.rulesText ?? '').length;

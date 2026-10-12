@@ -72,6 +72,6 @@ export function setSymbolVector(code: string, rarity = 'common'): string | null 
   const normalized = code.trim().toLowerCase();
   if (normalized === 'forge') return forgeSymbol(rarity);
   if (normalized === LOCAL_CARD_SET_CODE.toLowerCase()) return localCardSymbol(rarity);
-  const key = normalized === 'con' ? 'con_' : normalized;
+  const key = normalized === 'con' ? 'con_' : normalized === 'p02' ? 'po2' : normalized;
   return KEYRUNE_CODES.has(key) ? `${KEYRUNE_ROOT}/${key}.svg` : null;
 }

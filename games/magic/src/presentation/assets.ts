@@ -3,6 +3,7 @@ import manifest from '../../assets.json' with { type: 'json' };
 import type { SingleFrame } from './special-frames.js';
 import type { CardProfile } from './profile.js';
 import { setSymbolVector } from './set-symbols.js';
+import { chroniclesSymbol } from './chronicles-symbols.js';
 
 export const RENDERER_COMPONENT_ROOT = manifest.RENDERER_COMPONENT_ROOT;
 
@@ -86,5 +87,9 @@ export function componentAsset(group: string, name: string): string {
 
 /** Explicit symbols support custom sets without changing their printed names. */
 export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): string | null {
-  return face.setSymbol ?? setSymbolAsset(face.setCode ?? '', rarity);
+  const set = face.setCode?.trim().toLowerCase() ?? '';
+  return (
+    face.setSymbol ??
+    setSymbolAsset(set === 'chr' ? (chroniclesSymbol(face.name) ?? '') : set, rarity)
+  );
 }

@@ -20,7 +20,7 @@ import { openBrowser } from './browser.mjs';
 const [action = 'before'] = process.argv.slice(2),
   file = `${cacheRoot}/rollout/old-symbol-survey.json`,
   planFile = `${fixtureRoot}/old-symbol-survey-plan.json`;
-assert.ok(['fetch', 'before', 'after'].includes(action));
+assert.ok(['fetch', 'before', 'baseline', 'after'].includes(action));
 if (action === 'fetch') {
   const selections = [];
   for (const set of [
@@ -107,6 +107,26 @@ const snapshot = await readJson(file),
   directory = `${outputRoot}/old-symbol-survey/${action}`;
 assert.equal(hash(JSON.stringify(snapshot)), plan.snapshotHash);
 if (action === 'before') assert.equal(rendererHash, plan.baselineRendererHash);
+const treatmentPlanFile = `${fixtureRoot}/old-symbol-treatment-plan.json`;
+if (action === 'baseline') {
+  const treatmentPlan = {
+    schemaVersion: 1,
+    scope:
+      'Freeze the current painter before historical symbol treatment changes. The older v55 survey remains a separate artifact.',
+    surveyPlanHash: hash(JSON.stringify(plan)),
+    rendererHash,
+  };
+  try {
+    assert.deepEqual(await readJson(treatmentPlanFile), treatmentPlan);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    await writeJson(treatmentPlanFile, treatmentPlan);
+  }
+}
+if (action === 'after') {
+  const treatmentPlan = await readJson(treatmentPlanFile);
+  assert.equal(treatmentPlan.surveyPlanHash, hash(JSON.stringify(plan)));
+}
 const session = await openBrowser(snapshot);
 try {
   for (const entry of snapshot.entries) {

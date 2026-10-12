@@ -935,6 +935,63 @@ try {
       frame.close();
       source.width = source.height = 0;
     }
+    // The same stencil must print identically at every pre-Exodus rarity.
+    // Exodus is the boundary control, with genuinely different rarity ink.
+    const historicalStencil = document.createElement('canvas');
+    historicalStencil.width = historicalStencil.height = 64;
+    const historicalInk = historicalStencil.getContext('2d');
+    historicalInk.fillStyle = '#444';
+    historicalInk.fillRect(12, 8, 40, 48);
+    historicalInk.clearRect(24, 20, 16, 24);
+    for (const setCode of ['arn', 'ice', 'sth', 'por', 'exo']) {
+      const renders = [];
+      for (const rarity of ['common', 'uncommon', 'rare']) {
+        const face = {
+          name: '',
+          typeLine: '',
+          colors: ['U'],
+          frameStyle: 'retro',
+          setCode,
+          rarity,
+          setSymbol: 'test:historical-stencil',
+        };
+        const canvas = await composeCardTexture(
+          { face, printingId: null, printedImage: null },
+          'inspect',
+          new AbortController().signal,
+          {
+            loadImages: async (urls) => ({
+              images: new Map(
+                urls.map((url) => [url, url === face.setSymbol ? historicalStencil : bitmap]),
+              ),
+              dispose() {},
+            }),
+          },
+        );
+        renders.push(canvas.toDataURL());
+        canvas.width = canvas.height = 0;
+      }
+      if (new Set(renders).size !== (setCode === 'exo' ? 3 : 1))
+        throw Error(`Incorrect historical set-symbol rarity treatment: ${setCode}`);
+    }
+    historicalStencil.width = historicalStencil.height = 0;
+    if (!faceSetSymbol({ setCode: 'p02' })?.endsWith('/po2.svg'))
+      throw Error('Portal Second Age must use the pinned po2 glyph alias');
+    for (const [name, code] of [
+      ["D'Avenant Archer", 'leg'],
+      ["Abu Ja'far", 'arn'],
+      ['Dance of Many', 'drk'],
+      ["Urza's Tower", 'atq'],
+    ])
+      if (!faceSetSymbol({ name, setCode: 'chr' })?.endsWith(`/${code}.svg`))
+        throw Error(`Chronicles lost its original expansion symbol: ${name}`);
+    if (
+      faceSetSymbol({ name: 'Unknown custom card', setCode: 'chr' }) !== null ||
+      faceSetSymbol({ name: 'constructor', setCode: 'chr' }) !== null ||
+      faceSetSymbol({ name: "Abu Ja'far", setCode: 'chr', setSymbol: 'test:custom' }) !==
+        'test:custom'
+    )
+      throw Error('Chronicles must preserve custom symbols and avoid guessing unknown identities');
     // A wide glyph inside a square SVG viewport must retain its visible size.
     // Synthetic padded art exercises the complete painter without remote assets.
     for (const [setCode, customSymbol] of [

@@ -1,4 +1,5 @@
 import { paintRetroGoldBevel } from './retro-gold-bevel.js';
+import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -139,15 +140,15 @@ export function paintRetroFace(
   );
   if (icon) {
     const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);
-    if (details)
+    if (details || usesMonochromeSetSymbol(face.setCode))
       paintOutlinedRetroSet(
         c,
         icon,
-        details.setRight - icon.width * scale,
-        details.setCenterY - (icon.height * scale) / 2,
+        (details?.setRight ?? tx + tw) - icon.width * scale,
+        (details?.setCenterY ?? ty + th / 2) - (icon.height * scale) / 2,
         icon.width * scale,
         icon.height * scale,
-        details.setOutline,
+        details?.setOutline ?? historicalSetOutline(face.setCode),
       );
     else
       paintSetSymbol(

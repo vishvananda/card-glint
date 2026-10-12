@@ -147,7 +147,7 @@ export function paintOutlinedRetroSet(
   ink.fillRect(0, 0, layer.width, layer.height);
   c.save();
   c.shadowColor = 'transparent';
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; outline > 0 && i < 16; i++) {
     const angle = (i * Math.PI) / 8;
     c.drawImage(
       layer,
