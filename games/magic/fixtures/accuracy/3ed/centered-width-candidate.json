@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-before-reserved-image-review",
+  "candidate": {
+    "id": "s27.5-l1.1-w348-y406.556",
+    "size": 27.5,
+    "leading": 1.1,
+    "width": 348,
+    "y": 406.556
+  },
+  "experimentHash": "d66197bbbd23f104f998c8fbae865e9b56fe6e8a413da511f21cec88c03de26c",
+  "rendererHash": "4774f82d0240cb425786cbbd12295b6655bcff4248ea79a69e37551f87701b84",
+  "captureHash": "c2ab8ca28a2b2a4970d40d8e2d3cda8a3f1ca8f63d3af8ff6d5906d1d4d41498",
+  "reason": "348, 352 and 356 produce identical line breaks and pixels on all 25 development cards. Choose the smallest change from 344. All 25 printed wraps now match; widths of 360+ incorrectly reduce El-Hajjâj and Kird Ape to two lines.",
+  "development": [
+    {
+      "id": "s27.5-l1.1-w348-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 348,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.45647165227874537,
+      "medianDistance": 2.5332956601177528,
+      "gains": 4,
+      "regressions": [],
+      "exactWraps": 25
+    },
+    {
+      "id": "s27.5-l1.1-w352-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 352,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.45647165227874537,
+      "medianDistance": 2.5332956601177528,
+      "gains": 4,
+      "regressions": [],
+      "exactWraps": 25
+    },
+    {
+      "id": "s27.5-l1.1-w356-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 356,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.45647165227874537,
+      "medianDistance": 2.5332956601177528,
+      "gains": 4,
+      "regressions": [],
+      "exactWraps": 25
+    },
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.43008117629039666,
+      "medianDistance": 2.562280517376026,
+      "gains": 0,
+      "regressions": [],
+      "exactWraps": 21
+    },
+    {
+      "id": "s27.5-l1.1-w344-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 344,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.43008117629039666,
+      "medianDistance": 2.562280517376026,
+      "gains": 0,
+      "regressions": [],
+      "exactWraps": 21
+    },
+    {
+      "id": "s27.5-l1.1-w360-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 360,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.43008117629039666,
+      "medianDistance": 2.554540936819736,
+      "gains": 4,
+      "regressions": ["El-Hajjâj", "Kird Ape"],
+      "exactWraps": 23
+    },
+    {
+      "id": "s27.5-l1.1-w364-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 364,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.43008117629039666,
+      "medianDistance": 2.554540936819736,
+      "gains": 4,
+      "regressions": ["El-Hajjâj", "Kird Ape"],
+      "exactWraps": 23
+    },
+    {
+      "id": "s27.5-l1.1-w368-y406.556",
+      "size": 27.5,
+      "leading": 1.1,
+      "width": 368,
+      "y": 406.556,
+      "tier": "inspect",
+      "medianF1": 0.43008117629039666,
+      "medianDistance": 2.554540936819736,
+      "gains": 4,
+      "regressions": ["Blue Elemental Blast", "El-Hajjâj", "Kird Ape"],
+      "exactWraps": 22
+    }
+  ]
+}
