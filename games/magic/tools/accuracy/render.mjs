@@ -19,6 +19,7 @@ import {
 } from './common.mjs';
 import { openBrowser } from './browser.mjs';
 import { presentation } from './adapter.mjs';
+import { compatibleCapture, reusableFace } from './capture-cache.mjs';
 
 const opts = options();
 const snapshot = await readJson(path.join(cacheRoot, 'sets', opts.set + '.json'));
@@ -43,6 +44,24 @@ await mkdir(path.join(out, 'cards'), { recursive: true });
 const session = await openBrowser(snapshot);
 const results = [];
 try {
+  const identity = {
+    rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
+    fontStylesheetHash: hash(await readFile(path.join(root, 'games/magic/fonts.css'))),
+    browser: await session.browser.version(),
+    os: `${os.platform()} ${os.release()} ${os.arch()}`,
+    snapshotIdentity: snapshot.identity,
+    study: opts.study ?? null,
+    components: snapshot.components,
+  };
+  let previous = null,
+    reusedFaces = 0;
+  try {
+    const candidate = await readJson(path.join(out, 'capture.json'));
+    if (compatibleCapture(candidate, identity)) previous = candidate;
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  const previousById = new Map(previous?.results.map((r) => [r.id, r]) ?? []);
   const fontStatus = await session.page.evaluate(
     async (retro) => {
       const { loadCanvasFonts } = await import('/games/magic/src/presentation/canvas-assets.ts');
@@ -84,112 +103,136 @@ try {
       issue: entry.issue,
     };
     if (!entry.issue) {
-      try {
-        const captured = await session.page.evaluate(async (face) => {
-          const api = await import('/games/magic/src/presentation/canvas-face.ts');
-          const { loadCanvasImages } = await import(
-            '/games/magic/src/presentation/canvas-assets.ts'
-          );
-          const { faceFrame } = await import('/games/magic/src/presentation/special-frames.ts');
-          const { profileAssets, faceSetSymbol, manaSymbolAsset } = await import(
-            '/games/magic/src/presentation/assets.ts'
-          );
-          const { resolveCardProfile } = await import('/games/magic/src/presentation/profile.ts');
-          const retro = await import('/games/magic/src/presentation/retro-frame.ts');
-          const oldBorder = retro.isRetro(face);
-          const output = {
-            tiers: {},
-            frame: oldBorder ? `retro-${retro.retroFamily(face)}` : faceFrame(face),
-            layout: null,
-            assets: {
-              ...(oldBorder
-                ? {
-                    frame: retro.retroFrameAsset(face),
-                    boxes: retro.retroFrameAsset(face),
-                    border:
-                      retro.retroBorder(face) !== 'black' || retro.retroFamily(face) === 'fourth'
-                        ? retro.retroBorderMask(face)
-                        : null,
-                    basicSymbol: retro.retroBasicSymbol(face),
-                  }
-                : profileAssets(resolveCardProfile(face), faceFrame(face))),
-              setSymbol: oldBorder ? retro.retroSetSymbol(face) : faceSetSymbol(face),
-              mana: face.manaSymbols.map(manaSymbolAsset),
-            },
-          };
-          for (const tier of ['inspect', 'table']) {
-            const canvas = await api.composeCardTexture(
-              { face, printingId: null, printedImage: null },
-              tier,
-              new AbortController().signal,
-              {
-                loadImages: async (urls, signal) => {
-                  const loaded = await loadCanvasImages(urls, signal);
-                  const missing = urls.filter((url) => url && !loaded.images.has(url));
-                  if (missing.length) {
-                    loaded.dispose();
-                    throw Error('Missing bitmaps: ' + missing.join(', '));
-                  }
-                  return loaded;
-                },
-              },
-            );
-            output.tiers[tier] = {
-              data: canvas.toDataURL('image/png'),
-              width: canvas.width,
-              height: canvas.height,
-            };
-            if (tier === 'inspect' && api.ordinaryTextLayout && output.frame === 'normal')
-              output.layout = api.ordinaryTextLayout(canvas.getContext('2d'), face);
-            if (tier === 'inspect' && oldBorder) {
-              const layout =
-                api.retroTextLayout ??
-                (await import('/games/magic/tools/accuracy/legacy-retro-layout.mjs'))
-                  .legacyRetroLayout;
-              output.layout = layout(canvas.getContext('2d'), face);
-            }
-            canvas.width = canvas.height = 0;
-          }
-          return output;
-        }, input.face);
-        result.frame = captured.frame;
-        result.layout = captured.layout;
-        result.assets = captured.assets;
-        result.images = {};
-        for (const [tier, capture] of Object.entries(captured.tiers)) {
-          const file = `cards/${entry.id}.${tier}.png`;
-          const bytes = Buffer.from(capture.data.split(',')[1], 'base64');
-          await atomicWrite(path.join(out, file), bytes);
-          result.images[tier] = {
-            file,
-            width: capture.width,
-            height: capture.height,
-            sha256: hash(bytes),
-          };
-        }
-        const file = `cards/${entry.id}.reference.png`;
+      const cached = await reusableFace(
+        previousById.get(entry.id),
+        result,
+        entry.reference.sha256,
+        out,
+      );
+      if (cached) {
+        Object.assign(result, cached);
+        result.rasterProvenance = previousById.get(entry.id).rasterProvenance ?? {
+          source: previous.source,
+          sourceDiffHash: previous.sourceDiffHash,
+          createdAt: previous.createdAt,
+        };
+        reusedFaces++;
+      } else {
         try {
-          await link(objectFile(entry.reference), path.join(out, file));
-        } catch (error) {
-          if (error.code === 'EEXIST') {
-            if (hash(await readFile(path.join(out, file))) !== entry.reference.sha256)
+          const captured = await session.page.evaluate(async (face) => {
+            const api = await import('/games/magic/src/presentation/canvas-face.ts');
+            const { loadCanvasImages } = await import(
+              '/games/magic/src/presentation/canvas-assets.ts'
+            );
+            const { faceFrame } = await import('/games/magic/src/presentation/special-frames.ts');
+            const { profileAssets, faceSetSymbol, manaSymbolAsset } = await import(
+              '/games/magic/src/presentation/assets.ts'
+            );
+            const { resolveCardProfile } = await import('/games/magic/src/presentation/profile.ts');
+            const retro = await import('/games/magic/src/presentation/retro-frame.ts');
+            const oldBorder = retro.isRetro(face);
+            const output = {
+              tiers: {},
+              frame: oldBorder ? `retro-${retro.retroFamily(face)}` : faceFrame(face),
+              layout: null,
+              assets: {
+                ...(oldBorder
+                  ? {
+                      frame: retro.retroFrameAsset(face),
+                      boxes: retro.retroFrameAsset(face),
+                      border:
+                        retro.retroBorder(face) !== 'black' || retro.retroFamily(face) === 'fourth'
+                          ? retro.retroBorderMask(face)
+                          : null,
+                      basicSymbol: retro.retroBasicSymbol(face),
+                    }
+                  : profileAssets(resolveCardProfile(face), faceFrame(face))),
+                setSymbol: oldBorder ? retro.retroSetSymbol(face) : faceSetSymbol(face),
+                mana: face.manaSymbols.map(manaSymbolAsset),
+              },
+            };
+            for (const tier of ['inspect', 'table']) {
+              const canvas = await api.composeCardTexture(
+                { face, printingId: null, printedImage: null },
+                tier,
+                new AbortController().signal,
+                {
+                  loadImages: async (urls, signal) => {
+                    const loaded = await loadCanvasImages(urls, signal);
+                    const missing = urls.filter((url) => url && !loaded.images.has(url));
+                    if (missing.length) {
+                      loaded.dispose();
+                      throw Error('Missing bitmaps: ' + missing.join(', '));
+                    }
+                    return loaded;
+                  },
+                },
+              );
+              output.tiers[tier] = {
+                data: canvas.toDataURL('image/png'),
+                width: canvas.width,
+                height: canvas.height,
+              };
+              if (tier === 'inspect' && api.ordinaryTextLayout && output.frame === 'normal')
+                output.layout = api.ordinaryTextLayout(canvas.getContext('2d'), face);
+              if (tier === 'inspect' && oldBorder) {
+                const layout =
+                  api.retroTextLayout ??
+                  (await import('/games/magic/tools/accuracy/legacy-retro-layout.mjs'))
+                    .legacyRetroLayout;
+                output.layout = layout(canvas.getContext('2d'), face);
+              }
+              canvas.width = canvas.height = 0;
+            }
+            return output;
+          }, input.face);
+          result.frame = captured.frame;
+          result.layout = captured.layout;
+          result.assets = captured.assets;
+          result.images = {};
+          for (const [tier, capture] of Object.entries(captured.tiers)) {
+            const file = `cards/${entry.id}.${tier}.png`;
+            const bytes = Buffer.from(capture.data.split(',')[1], 'base64');
+            await atomicWrite(path.join(out, file), bytes);
+            result.images[tier] = {
+              file,
+              width: capture.width,
+              height: capture.height,
+              sha256: hash(bytes),
+            };
+          }
+          const file = `cards/${entry.id}.reference.png`;
+          try {
+            await link(objectFile(entry.reference), path.join(out, file));
+          } catch (error) {
+            if (error.code === 'EEXIST') {
+              if (hash(await readFile(path.join(out, file))) !== entry.reference.sha256)
+                await atomicWrite(
+                  path.join(out, file),
+                  await readFile(objectFile(entry.reference)),
+                );
+            } else if (error.code === 'EXDEV')
               await atomicWrite(path.join(out, file), await readFile(objectFile(entry.reference)));
-          } else if (error.code === 'EXDEV')
-            await atomicWrite(path.join(out, file), await readFile(objectFile(entry.reference)));
-          else throw error;
+            else throw error;
+          }
+          result.images.reference = { file, sha256: entry.reference.sha256 };
+        } catch (error) {
+          result.issue = String(error);
         }
-        result.images.reference = { file, sha256: entry.reference.sha256 };
-      } catch (error) {
-        result.issue = String(error);
       }
     }
     results.push(result);
     if (results.length % 20 === 0 || results.length === entries.length)
       console.log(
-        `Rendered ${results.length}/${entries.length}; failures ${results.filter((r) => r.issue).length}`,
+        `Captured ${results.length}/${entries.length}; reused ${reusedFaces}; failures ${results.filter((r) => r.issue).length}`,
       );
   }
   if (session.faults.length) throw Error(session.faults.join('\n'));
+  if (
+    identity.rendererHash !== (await sourceHash(path.join(root, 'games/magic/src'))) ||
+    identity.fontStylesheetHash !== hash(await readFile(path.join(root, 'games/magic/fonts.css')))
+  )
+    throw Error('Renderer or fonts changed during capture; no capture manifest published');
   const source = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   const diff = execFileSync('git', ['diff', '--', 'games/magic/src', 'games/magic/fonts.css'], {
     cwd: root,
@@ -203,10 +246,11 @@ try {
     createdAt: new Date().toISOString(),
     source,
     sourceDiffHash: hash(diff),
-    rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
-    fontStylesheetHash: hash(await readFile(path.join(root, 'games/magic/fonts.css'))),
-    browser: await session.browser.version(),
-    os: `${os.platform()} ${os.release()} ${os.arch()}`,
+    rendererHash: identity.rendererHash,
+    fontStylesheetHash: identity.fontStylesheetHash,
+    browser: identity.browser,
+    reusedFaces,
+    os: identity.os,
     fonts: fontStatus,
     components: snapshot.components,
     snapshotIdentity: snapshot.identity,

@@ -18,7 +18,7 @@
     "media:showcase": "node scripts/showcase-media.mjs",
     "test:showcase": "node tests/showcase.mjs",
     "test:magic": "node tests/magic.mjs",
-    "test:magic-accuracy": "node tests/magic-accuracy.mjs && node tests/magic-cache.mjs && node tests/magic-typography.mjs && node tests/magic-components.mjs",
+    "test:magic-accuracy": "node tests/magic-accuracy.mjs && node tests/magic-cache.mjs && node tests/magic-capture-cache.mjs && node tests/magic-typography.mjs && node tests/magic-components.mjs",
     "magic:reference:fetch": "node games/magic/tools/accuracy/fetch.mjs",
     "magic:reference:render": "node games/magic/tools/accuracy/render.mjs",
     "magic:reference:calibrate": "node games/magic/tools/accuracy/calibrate.mjs",
@@ -43,7 +43,8 @@
     "magic:reference:survey": "node games/magic/tools/accuracy/survey.mjs",
     "magic:reference:examples": "node games/magic/tools/accuracy/examples.mjs",
     "magic:reference:details": "node games/magic/tools/accuracy/details.mjs",
-    "magic:reference:basics": "node games/magic/tools/accuracy/basics.mjs"
+    "magic:reference:basics": "node games/magic/tools/accuracy/basics.mjs",
+    "magic:reference:stats": "node games/magic/tools/accuracy/stats-study.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

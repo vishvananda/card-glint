@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "study": "fourth-stats",
+  "baselineCommit": "6ae2a4d",
+  "baselineRendererHash": "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264",
+  "baselineRun": "fourth-details-all",
+  "run": "stats-placement",
+  "policy": {
+    "sets": ["4ed", "5ed"],
+    "scope": "Nonland Fourth/Fifth Edition stats only",
+    "xOffset": 4,
+    "yOffset": 3,
+    "font": "Unchanged MPlantin regular 27.8px",
+    "shadow": "Unchanged existing set shadow"
+  },
+  "development": [
+    {
+      "id": "b354858f-d25b-4264-8a0b-fecc3a58db6d",
+      "name": "Samite Healer",
+      "collectorNumber": "47"
+    },
+    {
+      "id": "0c8527ac-27c3-4e2d-b46c-bfd6a1e1f778",
+      "name": "Tundra Wolves",
+      "collectorNumber": "53"
+    },
+    {
+      "id": "daa120ce-63a6-4d5e-9801-123d5e05646e",
+      "name": "Phantom Monster",
+      "collectorNumber": "90"
+    },
+    {
+      "id": "dadea972-714e-4f6d-8fb7-a59c0ac1e028",
+      "name": "Water Elemental",
+      "collectorNumber": "115"
+    },
+    {
+      "id": "9691e76c-770d-4721-b758-805574227de1",
+      "name": "Lord of the Pit",
+      "collectorNumber": "144"
+    },
+    {
+      "id": "db11b832-7584-4e4b-8d02-b03fe76dcbc3",
+      "name": "Nightmare",
+      "collectorNumber": "150"
+    },
+    {
+      "id": "dbd55d32-e969-4d12-b101-a35db8a53921",
+      "name": "Scathe Zombies",
+      "collectorNumber": "158"
+    },
+    {
+      "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+      "name": "Uncle Istvan",
+      "collectorNumber": "165"
+    },
+    {
+      "id": "92191f72-e3d7-4679-97a2-f0c2d19d7738",
+      "name": "Ali Baba",
+      "collectorNumber": "175"
+    },
+    {
+      "id": "cac8fc5c-368f-4b25-a33e-a32855037c4b",
+      "name": "Crimson Manticore",
+      "collectorNumber": "183"
+    },
+    {
+      "id": "925adfb2-cfe3-4847-9db0-20bbe4e7baf1",
+      "name": "Ley Druid",
+      "collectorNumber": "256"
+    },
+    {
+      "id": "281e8da8-1383-460e-b74e-ad56f1b6d007",
+      "name": "Scryb Sprites",
+      "collectorNumber": "270"
+    },
+    {
+      "id": "39f236da-8391-487b-88d4-a45342bfff62",
+      "name": "Wall of Wood",
+      "collectorNumber": "284"
+    },
+    {
+      "id": "c0662881-664f-47d2-8164-b4727125ba0b",
+      "name": "Dancing Scimitar",
+      "collectorNumber": "313"
+    },
+    {
+      "id": "c64c2dff-9c11-4c91-a606-b5de704f18d4",
+      "name": "Onulet",
+      "collectorNumber": "340"
+    }
+  ],
+  "developmentSelection": "Metadata text-length .25/.65 quantiles per color/artifact creature group, plus previously reviewed Uncle Istvan, starred Nightmare and zero-power Wall of Wood. Development only; the full set was already seen in diagnostic form.",
+  "sweep": {
+    "method": "shared maximum edge F1 over all 441 integer offsets within ±10px",
+    "componentRect": [394, 606, 65, 35],
+    "lightInk": true,
+    "rawMedian": 0.3060779723948664,
+    "candidate": {
+      "dx": 4,
+      "dy": 3,
+      "medianEdgeF1": 0.800269875182728,
+      "medianDistance": 2.2789962717958914,
+      "medianDelta": 0.5616277294691665,
+      "improved": 15,
+      "regressed": 0,
+      "worstDelta": 0.1872196461090354
+    },
+    "diagnosticSource": "6ccdd5ca8d12bde2dda866d367f4590a7e954bbebeff01f08f42e14726bd2b1b"
+  },
+  "visualReview": "All 15 reference/render stat crops inspected. Repeated up/left displacement across all colors, zero-power and starred stats. Font stroke weight remains heavier than print, with especially different star shapes. Keep those separate from this positional correction.",
+  "transfer": {
+    "set": "5ed",
+    "cohortFile": "../5ed/cohorts.json",
+    "calibrationPurpose": "Frame alignment only. The 12 selected Fifth Edition cohort stat crops and scores were not viewed before freezing the displacement. Battering Ram, outside both cohorts, was viewed in full to repair body overflow after the +4,+3 candidate had been recorded; it is exploratory corpus evidence.",
+    "heldOutPurpose": "Six new names excluding Fourth Edition stats-development names; report the full Fifth Edition corpus as additional coverage.",
+    "retuning": "Do not tune the displacement on Fifth Edition. Revert the transfer if evidence rejects it; a revised policy requires a new study."
+  },
+  "evaluation": "Render actual production faces and measure fixed component F1 at both tiers. Require paired reference/input/font/alignment identity. Report failures and the union of alignment warnings; verify every pixel outside the stats region is unchanged. MIR/TMP/M21 regression cohorts must remain byte-identical. No per-card scan transform.",
+  "note": "The Fourth Edition set was already seen in diagnostic form; there are no fresh within-set holdouts. Existing frame assets remain unchanged.",
+  "frozenRendererHash": "3276f654bba035c59c2fa7f7471bee19c7cc4d0f890e9c866c44a724f42270fc",
+  "productionDevelopment": "Fifteen actual production faces captured at both tiers after the shared offset; compare against the frozen baseline before Fifth Edition evaluation."
+}

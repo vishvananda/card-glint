@@ -1,6 +1,14 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 
+/** One shared displacement from Fourth Edition development; Fifth is the transfer cohort. */
+export function retroStatsOffset(face: RenderedCardInput): readonly [number, number] {
+  return ['4ed', '5ed'].includes(face.setCode?.toLowerCase() ?? '') &&
+    !/\bLand\b/.test(face.typeLine ?? '')
+    ? [4, 3]
+    : [0, 0];
+}
+
 /** Set policies measured from cached development scans; no per-card geometry. */
 export function retroPrintDetails(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
