@@ -43,12 +43,15 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   // Revised has larger printing and about 30px between baselines. Its frame
   // registration, leading and width were checked on separate reserved examples.
   const revisedCentered = centered && set === '3ed';
-  // Fourth's long, left-aligned blocks sit inside the textured panel.
-  const fourthBlock =
-    set === '4ed' &&
+  // Long Revised/Fourth blocks sit inside the textured panel. Revised's
+  // optical center is higher, but dense text must stay below the panel's top.
+  const longBlock =
+    (set === '4ed' || set === '3ed') &&
     retroFamily(face) === 'fourth' &&
     (paragraphs.length > 1 ||
       paragraphs.reduce((n, p) => n + p.runs.reduce((n, r) => n + r.text.length, 0), 0) > 100);
+  const revisedBlock = longBlock && set === '3ed';
+  const fourthBlock = longBlock && set === '4ed';
   // Reviewed white plates allow another word near the right edge. Extending
   // every color regresses multicolor examples, so do not generalize this inset.
   const whiteExpansion =
@@ -60,21 +63,28 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     context,
     centered ? [{ ...paragraph, align: 'center' }] : paragraphs,
     {
-      x: revisedCentered ? 70 : fourthBlock || centered ? 72 : x,
+      x: revisedCentered || revisedBlock ? 70 : fourthBlock || centered ? 72 : x,
       y: y + (basic ? 1.5 : centered ? -6 : fourthBlock ? 0 : 4),
       width: revisedCentered
         ? 348
-        : fourthBlock || centered
-          ? 344
-          : width + (whiteExpansion ? 10 : 0),
+        : revisedBlock
+          ? 346
+          : fourthBlock || centered
+            ? 344
+            : width + (whiteExpansion ? 10 : 0),
       height: height - 8,
     },
     basic ? 24 : revisedCentered ? 27.5 : centered ? 25 : 22.5,
     15,
     centered
       ? { ...RETRO_TYPOGRAPHY, leading: revisedCentered ? 1.1 : 1, balanceLines: true }
-      : fourthBlock
-        ? { ...RETRO_TYPOGRAPHY, paragraphGap: 0, flavorGap: 0 }
+      : longBlock
+        ? {
+            ...RETRO_TYPOGRAPHY,
+            paragraphGap: 0,
+            flavorGap: 0,
+            centerOffset: revisedBlock ? -10 : 0,
+          }
         : RETRO_TYPOGRAPHY,
   );
 }

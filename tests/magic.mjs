@@ -245,6 +245,18 @@ try {
     if (symbols.lines.flatMap((l) => l.runs).filter((r) => r.symbol).length !== 3)
       throw Error('Inline symbols lost while wrapping');
     const balancedStyle = { leading: 1, paragraphGap: 0, flavorGap: 0, balanceLines: true };
+    for (const centerOffset of [-1000, 1000]) {
+      const bounded = layoutRules(
+        ctx,
+        paragraphs,
+        { x: 10, y: 20, width: 180, height: 160 },
+        22.5,
+        15,
+        { ...balancedStyle, centerOffset },
+      );
+      if (bounded.overflow || bounded.top < 20 || bounded.top + bounded.height > 180.01)
+        throw Error('Optical centering moved text outside its physical bounds');
+    }
     ctx.font = '24px "CardRenderer MTG MPlantin", Georgia';
     const balanceBox = {
       x: 0,

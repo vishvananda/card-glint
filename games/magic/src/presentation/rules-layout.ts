@@ -27,6 +27,8 @@ export interface RulesTypography {
   flavorOrphans?: boolean;
   flavorSeparator?: boolean;
   balanceLines?: boolean;
+  /** Optical shift from vertical centering, constrained to the text box. */
+  centerOffset?: number;
 }
 /** Shared ordinary-frame policy. Calibration fixtures never enter the painter. */
 export const RULES_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -146,7 +148,11 @@ export function layoutRules(
       const inkTop = lines[0]?.inkBounds[1] ?? 0;
       const last = lines.at(-1)?.inkBounds;
       const inkHeight = last ? last[1] + last[3] - inkTop : 0;
-      const offset = bounds.y + Math.max(0, (bounds.height - inkHeight) / 2) - inkTop;
+      const spareHeight = Math.max(0, bounds.height - inkHeight);
+      const offset =
+        bounds.y +
+        Math.max(0, Math.min(spareHeight, spareHeight / 2 + (typography.centerOffset ?? 0))) -
+        inkTop;
       layout = {
         size,
         x: bounds.x,
