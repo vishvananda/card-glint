@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 1,
+  "planHash": "1ab80b07101f946d6851e94f6c54ee5365f45be161a9efb767ca58a094c89420",
+  "experimentHash": "f94d9609bd8c0fc6a92da0598a5adefd84c89a5dc3f3038463905f493d9c4f8e",
+  "metricHash": "2bb27aebcf71914a1d80891c819b33e500c86dad2064c31d8599da6c7c50c5b2",
+  "rendererHash": "1681f1ad084c161f83432b92fa6fe11edf6f5a35a30fa671863ae9dce9286351",
+  "candidate": {
+    "id": "early-lettering",
+    "title": {
+      "mode": "bevel",
+      "size": 26,
+      "x": 34,
+      "dy": 2,
+      "offset": 1
+    },
+    "footer": {
+      "mode": "bevel",
+      "size": 22.5,
+      "x": 49,
+      "baseline": 631,
+      "offset": 1.25
+    }
+  },
+  "developmentTrialHash": "1d6fb2edde4559007eaa310768bcb6d3efb22ac75fd315c49ac82fd362c2d4b4",
+  "developmentSummary": [
+    {
+      "candidate": "control",
+      "set": "all",
+      "tier": "inspect",
+      "region": "title",
+      "count": 16,
+      "medianF1": 0.5715455892608223,
+      "medianDelta": 0,
+      "medianContrast": 0.41084495619732864,
+      "medianCensus": 0.5949986258040827,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "all",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 16,
+      "medianF1": 0.3837824840426569,
+      "medianDelta": 0,
+      "medianContrast": 0.16099480563040602,
+      "medianCensus": 0.548512665090515,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "all",
+      "tier": "table",
+      "region": "title",
+      "count": 16,
+      "medianF1": 0.5096066735341727,
+      "medianDelta": 0,
+      "medianContrast": 0.3430081491367071,
+      "medianCensus": 0.5803023356323642,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "all",
+      "tier": "table",
+      "region": "footer",
+      "count": 16,
+      "medianF1": 0.33414982807152166,
+      "medianDelta": 0,
+      "medianContrast": 0.17914963720898297,
+      "medianCensus": 0.5738806475993374,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "lea",
+      "tier": "inspect",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.5603345605081773,
+      "medianDelta": 0,
+      "medianContrast": 0.3291251084401587,
+      "medianCensus": 0.6034514055434361,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "lea",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.3629650709438613,
+      "medianDelta": 0,
+      "medianContrast": 0.189609585922749,
+      "medianCensus": 0.5648904031363818,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "lea",
+      "tier": "table",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.5275112093715559,
+      "medianDelta": 0,
+      "medianContrast": 0.37510744131885343,
+      "medianCensus": 0.5983181275543965,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "lea",
+      "tier": "table",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.3334407788880899,
+      "medianDelta": 0,
+      "medianContrast": 0.21391914513523258,
+      "medianCensus": 0.5866322053195503,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "2ed",
+      "tier": "inspect",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.5844591249088398,
+      "medianDelta": 0,
+      "medianContrast": 0.42949736078023937,
+      "medianCensus": 0.5915322210464928,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "2ed",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.4089709192017922,
+      "medianDelta": 0,
+      "medianContrast": 0.13300725611614303,
+      "medianCensus": 0.5482746854107144,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "2ed",
+      "tier": "table",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.4670080474282251,
+      "medianDelta": 0,
+      "medianContrast": 0.29433437664676043,
+      "medianCensus": 0.5638238889730007,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "set": "2ed",
+      "tier": "table",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.3599438332780317,
+      "medianDelta": 0,
+      "medianContrast": 0.16112063103735838,
+      "medianCensus": 0.5642416138397232,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "all",
+      "tier": "inspect",
+      "region": "title",
+      "count": 16,
+      "medianF1": 0.6198613104124743,
+      "medianDelta": 0.04276275022737644,
+      "medianContrast": 0.4382931911174135,
+      "medianCensus": 0.6349733367823307,
+      "gains": [
+        "lea Swords to Plowshares",
+        "lea Psionic Blast",
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island",
+        "2ed Resurrection",
+        "2ed Invisibility",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "all",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 16,
+      "medianF1": 0.6468427182005779,
+      "medianDelta": 0.24003560586027015,
+      "medianContrast": 0.5475562538941254,
+      "medianCensus": 0.73778648616404,
+      "gains": [
+        "lea Swords to Plowshares",
+        "lea Psionic Blast",
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Wall of Wood",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island",
+        "2ed Resurrection",
+        "2ed Invisibility",
+        "2ed Demonic Tutor",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter",
+        "2ed Savannah",
+        "2ed Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "all",
+      "tier": "table",
+      "region": "title",
+      "count": 16,
+      "medianF1": 0.5350849922276661,
+      "medianDelta": 0.023481494602648173,
+      "medianContrast": 0.3962340362974759,
+      "medianCensus": 0.6176485262738114,
+      "gains": [
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Wall of Wood",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island",
+        "2ed Demonic Tutor",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "all",
+      "tier": "table",
+      "region": "footer",
+      "count": 16,
+      "medianF1": 0.592331836924465,
+      "medianDelta": 0.2448840448252479,
+      "medianContrast": 0.5058471949575409,
+      "medianCensus": 0.706859164996239,
+      "gains": [
+        "lea Swords to Plowshares",
+        "lea Psionic Blast",
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Wall of Wood",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island",
+        "2ed Resurrection",
+        "2ed Invisibility",
+        "2ed Demonic Tutor",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter",
+        "2ed Savannah",
+        "2ed Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "lea",
+      "tier": "inspect",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.6161530280264687,
+      "medianDelta": 0.05568661872775377,
+      "medianContrast": 0.40184226897130815,
+      "medianCensus": 0.636264932600081,
+      "gains": [
+        "lea Swords to Plowshares",
+        "lea Psionic Blast",
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "lea",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.6442856274054255,
+      "medianDelta": 0.23106219108364698,
+      "medianContrast": 0.5347427302235518,
+      "medianCensus": 0.73778648616404,
+      "gains": [
+        "lea Swords to Plowshares",
+        "lea Psionic Blast",
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Wall of Wood",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "lea",
+      "tier": "table",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.56425558059702,
+      "medianDelta": 0.025974223455265566,
+      "medianContrast": 0.407728220427597,
+      "medianCensus": 0.6300106428624976,
+      "gains": [
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Wall of Wood",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "lea",
+      "tier": "table",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.5941456324318575,
+      "medianDelta": 0.23516818948431434,
+      "medianContrast": 0.5030876769252576,
+      "medianCensus": 0.7039936673232088,
+      "gains": [
+        "lea Swords to Plowshares",
+        "lea Psionic Blast",
+        "lea Bog Wraith",
+        "lea Tunnel",
+        "lea Wall of Wood",
+        "lea Soul Net",
+        "lea Plateau",
+        "lea Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "2ed",
+      "tier": "inspect",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.6278025245054976,
+      "medianDelta": 0.034901660666025375,
+      "medianContrast": 0.4662523296835188,
+      "medianCensus": 0.6287026154031012,
+      "gains": [
+        "2ed Resurrection",
+        "2ed Invisibility",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "2ed",
+      "tier": "inspect",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.6479695968020572,
+      "medianDelta": 0.24890123104687092,
+      "medianContrast": 0.5757495896142787,
+      "medianCensus": 0.7430278857015769,
+      "gains": [
+        "2ed Resurrection",
+        "2ed Invisibility",
+        "2ed Demonic Tutor",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter",
+        "2ed Savannah",
+        "2ed Island"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "2ed",
+      "tier": "table",
+      "region": "title",
+      "count": 8,
+      "medianF1": 0.4983975833765954,
+      "medianDelta": 0.020943627697319528,
+      "medianContrast": 0.3351974907658481,
+      "medianCensus": 0.6039935676868117,
+      "gains": [
+        "2ed Demonic Tutor",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "early-lettering",
+      "set": "2ed",
+      "tier": "table",
+      "region": "footer",
+      "count": 8,
+      "medianF1": 0.592331836924465,
+      "medianDelta": 0.25144448258236707,
+      "medianContrast": 0.5362569412845749,
+      "medianCensus": 0.7222520193127848,
+      "gains": [
+        "2ed Resurrection",
+        "2ed Invisibility",
+        "2ed Demonic Tutor",
+        "2ed Goblin Balloon Brigade",
+        "2ed Giant Spider",
+        "2ed Disrupting Scepter",
+        "2ed Savannah",
+        "2ed Island"
+      ],
+      "regressions": []
+    }
+  ],
+  "reviewedCrops": [
+    {
+      "set": "lea",
+      "name": "Swords to Plowshares",
+      "number": "40",
+      "file": "lea-40.early-lettering.review.png",
+      "sha256": "1f2969e4ae63fc6310a6107870ec650cd85992e27bfbad4c5830fa773f48a626"
+    },
+    {
+      "set": "lea",
+      "name": "Psionic Blast",
+      "number": "74",
+      "file": "lea-74.early-lettering.review.png",
+      "sha256": "1569439220602885867410cb416fc5012a757a993e1e3e50d001fc7b62c0e716"
+    },
+    {
+      "set": "lea",
+      "name": "Bog Wraith",
+      "number": "95",
+      "file": "lea-95.early-lettering.review.png",
+      "sha256": "ce6473e0394940c19ca7524e89fcb2a4c5fb612d7dd59b11a6957ecc1d973133"
+    },
+    {
+      "set": "lea",
+      "name": "Tunnel",
+      "number": "178",
+      "file": "lea-178.early-lettering.review.png",
+      "sha256": "15cf176473f45eda651ad39dd9580680d2fe76e48551ceaa3f7ad7b62acf0f12"
+    },
+    {
+      "set": "lea",
+      "name": "Wall of Wood",
+      "number": "225",
+      "file": "lea-225.early-lettering.review.png",
+      "sha256": "ecbed6bafd4665ec728d78876293572b868e32c9c3b0eeaf58103903cf81e8f5"
+    },
+    {
+      "set": "lea",
+      "name": "Soul Net",
+      "number": "270",
+      "file": "lea-270.early-lettering.review.png",
+      "sha256": "f6ba8faf4e24aa27bad9f16cdef8309b23f76f4e73d6e27d8899c9f9a01bbbd3"
+    },
+    {
+      "set": "lea",
+      "name": "Plateau",
+      "number": "279",
+      "file": "lea-279.early-lettering.review.png",
+      "sha256": "c8db1526f381e1d8512d1ac4070a59f696fba438360edef8de8dc7e5f1d0c808"
+    },
+    {
+      "set": "lea",
+      "name": "Island",
+      "number": "289",
+      "file": "lea-289.early-lettering.review.png",
+      "sha256": "03607def958feb5e0736914aca208c3af6c4603146999e66969c2854cdb7e2b2"
+    },
+    {
+      "set": "2ed",
+      "name": "Resurrection",
+      "number": "35",
+      "file": "2ed-35.early-lettering.review.png",
+      "sha256": "f76900ea529023f4dc72f994c7537fd5d07c4d652e7f431f8bb9bef58ba9d1c3"
+    },
+    {
+      "set": "2ed",
+      "name": "Invisibility",
+      "number": "60",
+      "file": "2ed-60.early-lettering.review.png",
+      "sha256": "3da117a421692221a66925f5d1dfc7116b02e39ce6d0459cccb6dea83debb548"
+    },
+    {
+      "set": "2ed",
+      "name": "Demonic Tutor",
+      "number": "105",
+      "file": "2ed-105.early-lettering.review.png",
+      "sha256": "387cd659d68aae4f2b8cee822de3b984be4817726fc3fbac565fc225aa261996"
+    },
+    {
+      "set": "2ed",
+      "name": "Goblin Balloon Brigade",
+      "number": "154",
+      "file": "2ed-154.early-lettering.review.png",
+      "sha256": "a63e082538309c1165d930a1e9ca0ac33b45087f7503cbd9232eb9026e9e5804"
+    },
+    {
+      "set": "2ed",
+      "name": "Giant Spider",
+      "number": "199",
+      "file": "2ed-199.early-lettering.review.png",
+      "sha256": "3669deb7916f559c4902879e39237f0c45ea3d816d898342e123b59369d976cf"
+    },
+    {
+      "set": "2ed",
+      "name": "Disrupting Scepter",
+      "number": "243",
+      "file": "2ed-243.early-lettering.review.png",
+      "sha256": "a6cd6366f4e4b6fcbf7090d0acf67e34f71dd7f9f51aa91b24b9ac0e00d4f543"
+    },
+    {
+      "set": "2ed",
+      "name": "Savannah",
+      "number": "281",
+      "file": "2ed-281.early-lettering.review.png",
+      "sha256": "a8e00712ca8ae086ee2423654f8b8f407cdd1a7fe40df5dc6e445e89a6a19d9a"
+    },
+    {
+      "set": "2ed",
+      "name": "Island",
+      "number": "293",
+      "file": "2ed-293.early-lettering.review.png",
+      "sha256": "32aa0c6a6d7eaf9d61639ae363640b492536cc23cd2190aee8b63b063dd611af"
+    }
+  ],
+  "decision": "Freeze for reserved validation. Titles use 26px at x34 and +2px y; this candidate improves each set/tier median without any development regression over .02. Credits use 22.5px at x49/baseline631, the highest development median paired gain after neighboring values were tested. All 16 credit examples improve over .02 at both tiers.",
+  "limitations": [
+    "Letter-edge shape and intensity remain imperfect; existing font files are retained.",
+    "Whole-frame confidence is not established for Alpha. No scan-specific transform is fitted.",
+    "Development includes both Alpha and Unlimited; reserve results test within both sets, not an untouched-set transfer.",
+    "Type lines, mana symbols, stats, body layout, frame edges and corner silhouette are outside this candidate."
+  ]
+}
