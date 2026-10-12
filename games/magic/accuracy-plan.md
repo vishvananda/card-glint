@@ -716,7 +716,7 @@ next geometry sweep must apply each candidate to the whole development cohort,
 then freeze its result before looking at a new transfer cohort.
 
 Typography remains visibly heavier than the scans, Fourth Edition stats need
-their printed italic style, and the land branch needs independent calibration
+placement and numeric-stroke review, and the land branch needs independent calibration
 and historical wording. The tap-layout window can miss the actual scan glyph
 when body placement differs; low tap scores require foreground inspection before
 attributing them to a glyph asset. These are retained in the

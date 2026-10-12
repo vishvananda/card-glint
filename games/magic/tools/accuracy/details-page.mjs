@@ -93,7 +93,7 @@ export async function detailPage({ opts, dir, previous, current, before, report 
           : card.frame !== 'retro-fourth'
             ? 'Unchanged land branch: this uses a different plate and has insufficient calibration evidence. The early basic-land body and credits still need a separate printing policy.'
             : name === 'Uncle Istvan'
-              ? 'Review: this is the largest type-line regression (0.688 → 0.654) despite better title, mana and credits. The title/credit strokes remain heavy and the printed stats are italic. Use the type and footer crops to inspect these separately.'
+              ? 'Review: this is the largest type-line regression (0.688 → 0.654) despite better title, mana and credits. The title/credit strokes remain heavy; stats placement and numeric stroke weight need a separate pass. Use the type and footer crops to inspect these separately.'
               : 'Remaining review: title/credit strokes look heavier than the print, and body typography has not been adjusted in this pass. Inspect glyph weight separately from placement.'
         : name === 'Lead Golem'
           ? 'Frame asset review: the original artifact frame has a dark reddish texture. Our existing asset is much brighter and brown, with a different text-box pattern.'

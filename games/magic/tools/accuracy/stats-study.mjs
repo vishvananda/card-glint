@@ -203,6 +203,33 @@ for (const set of plan.policy.sets) {
     ),
   );
 }
+const regressionParity = [];
+for (const set of ['mir', 'tmp', 'm21']) {
+  const aRoot = path.join(outputRoot, set, 'stats-parity'),
+    bRoot = path.join(outputRoot, set, 'fourth-details-parity');
+  const a = await readJson(path.join(aRoot, 'capture.json')),
+    b = await readJson(path.join(bRoot, 'capture.json'));
+  assert.equal(a.rendererHash, plan.frozenRendererHash);
+  assert.equal(a.results.length, b.results.length);
+  for (const card of a.results) {
+    const old = b.results.find((c) => c.id === card.id);
+    assert.ok(old);
+    assert.equal(card.issue, null);
+    assert.equal(card.inputHash, old.inputHash);
+    for (const tier of ['inspect', 'table']) {
+      assert.equal(card.images[tier].sha256, old.images[tier].sha256);
+      for (const [root, c] of [
+        [aRoot, card],
+        [bRoot, old],
+      ])
+        assert.equal(
+          hash(await readFile(path.join(root, c.images[tier].file))),
+          c.images[tier].sha256,
+        );
+    }
+  }
+  regressionParity.push({ set, cards: a.results.length, tiers: 2, identical: true });
+}
 const measurement = {
   schemaVersion: 1,
   study: 'fourth-stats',
@@ -211,6 +238,7 @@ const measurement = {
   rendererHashes: [plan.baselineRendererHash, plan.frozenRendererHash],
   note: 'Fixed-region F1, not percent accuracy. Shared production displacement; no per-card alignment. Fourth Edition is development, Fifth Edition has reserved transfer names. Whole-set corpus results remain exploratory.',
   parityRegion: rect,
+  regressionParity,
   seconds: (performance.now() - start) / 1000,
   timingScope:
     'Node image verification, pixel parity and component searches, not GPU completion. Chromium is used only for production capture.',
