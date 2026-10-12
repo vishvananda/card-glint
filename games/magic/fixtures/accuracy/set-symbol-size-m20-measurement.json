@@ -1,0 +1,2306 @@
+{
+  "schemaVersion": 1,
+  "set": "m20",
+  "planHash": "07acce0b1ca6222933c2c14d775675de1ab617f492d24e1947bfce5622f24624",
+  "studyHash": "358a859a16f365a65600aaadb307f5b852d3c219778f4259e63aae8d43763ca1",
+  "methods": {
+    "normalized-gray-region": "483485fc98f99cb952a4320a78387759b4d2eddb1f3d13c72c7825fd57d27682",
+    "region-cache": "ebf16b154b8227878da7973ad3d047dbcf6212839814e358b01dd1af221dd0fb",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "lettering-contrast": "4e364b2565bf83c0a8e1addba651a96ae1762c7bff8bfb2d0fe8813af4578b88",
+    "component-offset": "98d23fd854adddf08ff4a154ae2df28847082358c3ec04308010cd74835165a8",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+  },
+  "scope": "Selected cached cohort, fixed normalization, no per-scan fitting. Paired symbol diagnostics are not whole-card accuracy percentages. Planeswalker windows include nearby frame ink.",
+  "captures": {
+    "before": {
+      "run": "symbol-size-before",
+      "hash": "c73da81934afdcc5e7b8113676f65353bc9e2370b19c14d6a6052150c1c13fb1",
+      "rendererHash": "9c3b4e704b706c4b3285706932927c0e19ea1a9676bec2a8b1d71646ae4f3853"
+    },
+    "after": {
+      "run": "symbol-sized",
+      "hash": "8698af0a745e874ce43dd14ed099e17f10841c9928d09f35b6f7b299847dfedd",
+      "rendererHash": "22eaed11ae1a3334ea060717cb2464b3489f1bf80efd4c6ff4c5e6b340b7ce96"
+    }
+  },
+  "coverage": {
+    "totalPrintings": 344,
+    "cohortEntries": 28,
+    "measured": 28,
+    "ordinaryDenominator": null,
+    "specialTreatments": null,
+    "failures": [],
+    "structuralExclusions": []
+  },
+  "summary": {
+    "all": {
+      "entries": 28,
+      "measured": 28,
+      "tiers": {
+        "inspect": {
+          "edgeF1": {
+            "before": 0.6273868748295003,
+            "after": 0.8901151972580951,
+            "gains": 28,
+            "regressions": []
+          },
+          "contrast": {
+            "before": 0.5832280893830946,
+            "after": 0.8199681370581415,
+            "gains": 28,
+            "regressions": []
+          },
+          "census": {
+            "before": 0.6893579818900656,
+            "after": 0.8476774301790251,
+            "gains": 28,
+            "regressions": []
+          }
+        },
+        "table": {
+          "edgeF1": {
+            "before": 0.597843832621372,
+            "after": 0.8081044334507334,
+            "gains": 28,
+            "regressions": []
+          },
+          "contrast": {
+            "before": 0.6193440772817492,
+            "after": 0.8149239946745218,
+            "gains": 27,
+            "regressions": []
+          },
+          "census": {
+            "before": 0.749640923161821,
+            "after": 0.839519223934129,
+            "gains": 28,
+            "regressions": []
+          }
+        }
+      }
+    },
+    "ordinary": {
+      "entries": 28,
+      "measured": 28,
+      "tiers": {
+        "inspect": {
+          "edgeF1": {
+            "before": 0.6273868748295003,
+            "after": 0.8901151972580951,
+            "gains": 28,
+            "regressions": []
+          },
+          "contrast": {
+            "before": 0.5832280893830946,
+            "after": 0.8199681370581415,
+            "gains": 28,
+            "regressions": []
+          },
+          "census": {
+            "before": 0.6893579818900656,
+            "after": 0.8476774301790251,
+            "gains": 28,
+            "regressions": []
+          }
+        },
+        "table": {
+          "edgeF1": {
+            "before": 0.597843832621372,
+            "after": 0.8081044334507334,
+            "gains": 28,
+            "regressions": []
+          },
+          "contrast": {
+            "before": 0.6193440772817492,
+            "after": 0.8149239946745218,
+            "gains": 27,
+            "regressions": []
+          },
+          "census": {
+            "before": 0.749640923161821,
+            "after": 0.839519223934129,
+            "gains": 28,
+            "regressions": []
+          }
+        }
+      }
+    },
+    "basic-land": {
+      "entries": 0,
+      "measured": 0,
+      "tiers": {
+        "inspect": {
+          "edgeF1": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "contrast": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "census": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          }
+        },
+        "table": {
+          "edgeF1": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "contrast": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "census": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          }
+        }
+      }
+    },
+    "planeswalker": {
+      "entries": 0,
+      "measured": 0,
+      "tiers": {
+        "inspect": {
+          "edgeF1": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "contrast": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "census": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          }
+        },
+        "table": {
+          "edgeF1": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "contrast": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          },
+          "census": {
+            "before": null,
+            "after": null,
+            "gains": 0,
+            "regressions": []
+          }
+        }
+      }
+    }
+  },
+  "measurementHash": "be98733ccdb78c57e6f69a23eb429fa1aaa8827540a5cae8fa97d4bef5213d6e",
+  "rows": [
+    {
+      "id": "64d9c182-cbb3-4791-90dd-0e533ddeebda",
+      "number": "1",
+      "name": "Aerial Assault",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "c83a5d0736d2f0b0b9a3871fd1c4e1ed26992f9c83bfd1dea18bea541dfdeb10",
+      "referenceHash": "d8113fd62eba20b54328beec53ec6918a5440fc97d5085920156260f70abf6e1",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.7484648196364112,
+            "contrast": 0.7230252329689933,
+            "census": 0.7432942862634118,
+            "meanDistance": 0.9918183867353613
+          },
+          "after": {
+            "edgeF1": 0.8325360552616526,
+            "contrast": 0.8232015763214974,
+            "census": 0.8594730208590651,
+            "meanDistance": 0.7753872376533383,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9670399749387454,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": -1,
+                "edgeF1": 0.9685449601018533,
+                "distance": 0.5550334030593713,
+                "margin": 0.21526890975413204,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.7431861275385035,
+            "contrast": 0.7848066711553018,
+            "census": 0.7968886609039362,
+            "meanDistance": 0.9943746877301768
+          },
+          "after": {
+            "edgeF1": 0.7650522243615433,
+            "contrast": 0.7841170841023788,
+            "census": 0.850870518852646,
+            "meanDistance": 0.9219408819046898,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": -1,
+              "edgeF1": 0.9037294509815095,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.9180548544506142,
+                "distance": 0.677141568622157,
+                "margin": 0.20990245342588643,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "2ba18114-af6c-48cd-82c9-eb6541d566bf",
+      "number": "3",
+      "name": "Ancestral Blade",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "4077d166756e4250e40181a9478faf3dc24d70ba474e4ced7e450d4119ad27e7",
+      "referenceHash": "7924490243851c005b034e87e428777431a97ef4356b2184fd9adaa8d0c7cc26",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6545837368712468,
+            "contrast": 0.5904723270722324,
+            "census": 0.6818173329112605,
+            "meanDistance": 1.184493364040517
+          },
+          "after": {
+            "edgeF1": 0.8796372490242332,
+            "contrast": 0.7672444966399562,
+            "census": 0.8106609409506669,
+            "meanDistance": 0.7441588910307044,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9580374656308085,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9580374656308085,
+                "distance": 0.49390221293043035,
+                "margin": 0.29064527911072147,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6101926532850337,
+            "contrast": 0.6161133390012108,
+            "census": 0.7225572247680406,
+            "meanDistance": 1.3704296460020768
+          },
+          "after": {
+            "edgeF1": 0.8142103381175285,
+            "contrast": 0.8234977843375701,
+            "census": 0.8347275877320816,
+            "meanDistance": 0.97298303717417,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.8720777272622372,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.8720777272622372,
+                "distance": 0.7875554689665334,
+                "margin": 0.220538018996435,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "ca42da05-330d-4050-a580-dc00f6faff24",
+      "number": "8",
+      "name": "Bishop of Wings",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "a1b767e588ee89d8246e253efcd62706f5794c2416e75ce320a463a905f21ac2",
+      "referenceHash": "d33490ac1d7d1967df641a42050cfd95b24e0ab2b11e7112def2b7a91a16d708",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6324928704187787,
+            "contrast": 0.5880460667007368,
+            "census": 0.7255594898546427,
+            "meanDistance": 1.2443465281407593
+          },
+          "after": {
+            "edgeF1": 0.9116567490478863,
+            "contrast": 0.911772242308753,
+            "census": 0.9161329110640785,
+            "meanDistance": 0.6226581763584798,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.9518051182075044,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.9518051182075044,
+                "distance": 0.4629111023131042,
+                "margin": 0.21414037296520216,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5919566410053902,
+            "contrast": 0.6280716225923773,
+            "census": 0.7788083423905197,
+            "meanDistance": 1.502975581176672
+          },
+          "after": {
+            "edgeF1": 0.8094307374201748,
+            "contrast": 0.8460865038427184,
+            "census": 0.8578516665602596,
+            "meanDistance": 0.921619060793893,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.8343472861604847,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.8464501721410627,
+                "distance": 0.7918790401162674,
+                "margin": 0.13424756277805416,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "f7b1919e-c0c1-4ac7-9061-a337b6fe7273",
+      "number": "10",
+      "name": "Cavalier of Dawn",
+      "category": "ordinary",
+      "rarity": "mythic",
+      "frame": "normal",
+      "inputHash": "777445670238a7fd62679d70ae3b8990adf969f8ae7dcaa2c9286385863f843b",
+      "referenceHash": "1ab32961430b19ddafe4e3751bb19e808b9485b2e4930756f97f7af6a3c236ae",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5568806751781734,
+            "contrast": 0.4691020452488469,
+            "census": 0.675038418208434,
+            "meanDistance": 1.4133083268733322
+          },
+          "after": {
+            "edgeF1": 0.7933456455449779,
+            "contrast": 0.7673947163748319,
+            "census": 0.80935433062324,
+            "meanDistance": 0.9543432149521355,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.9590688485160846,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.9590688485160846,
+                "distance": 0.4526181302504654,
+                "margin": 0.25585710792840444,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5157919965225026,
+            "contrast": 0.4988339275998455,
+            "census": 0.7096011711952105,
+            "meanDistance": 1.7562090249577254
+          },
+          "after": {
+            "edgeF1": 0.7195656863712195,
+            "contrast": 0.8055317909119944,
+            "census": 0.8050265397070545,
+            "meanDistance": 1.1993917705546275,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.8469656067033622,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.8469656067033622,
+                "distance": 0.7632737989519156,
+                "margin": 0.17128212323565206,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "783da808-6698-4e55-9fac-430a6effe2b1",
+      "number": "42",
+      "name": "Aether Gust",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "cb40cdaa2008784388ee75eb6c8fa94b9a9b2c6610ca38b9a396ca537a33d0ac",
+      "referenceHash": "6a18303aa7fa416b1525160dc4d006db329a381695560161bf179a9d2ac4ef4b",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6175274845044123,
+            "contrast": 0.5939573380316049,
+            "census": 0.6885628515443787,
+            "meanDistance": 1.2827193452931835
+          },
+          "after": {
+            "edgeF1": 0.9292203602644593,
+            "contrast": 0.8943614243772624,
+            "census": 0.8823825090327374,
+            "meanDistance": 0.5821215931052206,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.933833272250571,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.9343019812153227,
+                "distance": 0.5912704949652164,
+                "margin": 0.16859050661195285,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5941141429523409,
+            "contrast": 0.6380651082545378,
+            "census": 0.7246723286579384,
+            "meanDistance": 1.4466494562567584
+          },
+          "after": {
+            "edgeF1": 0.832465687025463,
+            "contrast": 0.871517969044601,
+            "census": 0.860092598533926,
+            "meanDistance": 0.8770200694493394,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8373486622351934,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.8381472534397647,
+                "distance": 1.0301992313649326,
+                "margin": 0.1466740328877999,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "cc6686e6-4535-49be-b0b3-e76464656cd2",
+      "number": "43",
+      "name": "Agent of Treachery",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "cc13ff532a7416d10ba21dcb29dba715ae1f5ff8a68347ac1e8f60661a07781b",
+      "referenceHash": "6fbcca715197115204b8f163a938a0fd6882f348f98083efeb2590ae0ea852f7",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6107664194170064,
+            "contrast": 0.5148654902422966,
+            "census": 0.6623248466508493,
+            "meanDistance": 1.405730705956484
+          },
+          "after": {
+            "edgeF1": 0.8097787499729514,
+            "contrast": 0.667107441587688,
+            "census": 0.7572264079231537,
+            "meanDistance": 0.8918789287031101,
+            "offset": {
+              "status": "close",
+              "dx": -1,
+              "dy": 1,
+              "edgeF1": 0.9318614389036923,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 1,
+                "edgeF1": 0.9318614389036923,
+                "distance": 0.5727830307864579,
+                "margin": 0.24456498193499343,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5658141381759605,
+            "contrast": 0.5278388107105209,
+            "census": 0.6946886583954307,
+            "meanDistance": 1.5354394989355808
+          },
+          "after": {
+            "edgeF1": 0.7551883708434401,
+            "contrast": 0.7500872899538934,
+            "census": 0.7886709060657252,
+            "meanDistance": 1.0634252911678304,
+            "offset": {
+              "status": "close",
+              "dx": -1,
+              "dy": 1,
+              "edgeF1": 0.829364471669219,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 1,
+                "edgeF1": 0.829364471669219,
+                "distance": 0.8885678212031476,
+                "margin": 0.17376455572049032,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "2080556a-6c76-4819-9eb2-c4dd4c9dbd67",
+      "number": "45",
+      "name": "Anticipate",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "c8c2ac49eb44ff0ec1ee39e396f81f7a616066b381235a9b2b112d5a66569352",
+      "referenceHash": "3bbd31fa9fa3a9f5438e64ea818f673a054d146364ebc32acca4fd61376b5887",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.7996912031877834,
+            "contrast": 0.7574259632323358,
+            "census": 0.7052992332924684,
+            "meanDistance": 0.9342051096412088
+          },
+          "after": {
+            "edgeF1": 0.9559727587157085,
+            "contrast": 0.9040133004468923,
+            "census": 0.9073006868037082,
+            "meanDistance": 0.5113047655286965,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9531324005505313,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.9547048021812921,
+                "distance": 0.5118732241196864,
+                "margin": 0.19914581515226182,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.7885839290952561,
+            "contrast": 0.8137386222819454,
+            "census": 0.8201925629449683,
+            "meanDistance": 0.8525335915073643
+          },
+          "after": {
+            "edgeF1": 0.8793720988719855,
+            "contrast": 0.8716682127999975,
+            "census": 0.8987790798591986,
+            "meanDistance": 0.6220591920473993,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.8959307797114885,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.8959307797114885,
+                "distance": 0.5248458558965324,
+                "margin": 0.24092771034377825,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "a5356b11-e505-4838-aecb-327689eeead1",
+      "number": "52",
+      "name": "Cavalier of Gales",
+      "category": "ordinary",
+      "rarity": "mythic",
+      "frame": "normal",
+      "inputHash": "2aa74bf978d65a38f10a8bb7afd9ccb363ae2856e0ed39716ebcfc7ad1ff807c",
+      "referenceHash": "6c7d3fb57afc8bc6e05aa3668b9f532ac31ae7d334beec02548bb0b1b4da7968",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.605493102048217,
+            "contrast": 0.5459064796982458,
+            "census": 0.7139865249801263,
+            "meanDistance": 1.2515284403307758
+          },
+          "after": {
+            "edgeF1": 0.8870505027473556,
+            "contrast": 0.8893587453420042,
+            "census": 0.8844735037731998,
+            "meanDistance": 0.6519691668234824,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.9423130515559683,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9629676762534997,
+                "distance": 0.5021324664771724,
+                "margin": 0.20410357327534567,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5440448143687293,
+            "contrast": 0.5717188124202488,
+            "census": 0.7607588955471098,
+            "meanDistance": 1.5549130080987936
+          },
+          "after": {
+            "edgeF1": 0.8074942853489986,
+            "contrast": 0.8527900183181345,
+            "census": 0.8424794166590761,
+            "meanDistance": 0.9037527161265763,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8821091153515815,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.8821091153515815,
+                "distance": 0.7345743385729966,
+                "margin": 0.14419959897092627,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "0d8efd95-1c2f-4dd1-b70b-3cfb10ff3a28",
+      "number": "83",
+      "name": "Agonizing Syphon",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "542aa79cf7fc1c190b1603ec4796f19ba5226e98f3cdf7581e429e2ea43ce00f",
+      "referenceHash": "9da23e285be28abee73a7561e533ddc72022c29d75ec1dcf164e91240b7b4b39",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6684434181934322,
+            "contrast": 0.6795421493617457,
+            "census": 0.6682509124568952,
+            "meanDistance": 1.022812521142619
+          },
+          "after": {
+            "edgeF1": 0.8931798917688345,
+            "contrast": 0.8094793394786532,
+            "census": 0.8336724227711282,
+            "meanDistance": 0.7899235057549046,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.952361125568162,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.952361125568162,
+                "distance": 0.36657033837030806,
+                "margin": 0.28396285716989356,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.7135182418215578,
+            "contrast": 0.7308347942333124,
+            "census": 0.7515869879453667,
+            "meanDistance": 1.0365045777805846
+          },
+          "after": {
+            "edgeF1": 0.8379092351511419,
+            "contrast": 0.81557368917407,
+            "census": 0.852728346578236,
+            "meanDistance": 0.8867230998937587,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.9034732580438951,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.9034732580438951,
+                "distance": 0.5322312990778231,
+                "margin": 0.30374953049103137,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "bd43d44b-de27-4139-9cb8-b1f4c04fb87e",
+      "number": "87",
+      "name": "Blightbeetle",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "e46e5115f16039948e5f44095b95313a6ec03fa601e48c8e3aceb741beca8480",
+      "referenceHash": "be81ed71aa8d6b50a051e068135ffe2005d4eff95e8d5f569697b74bb8203ec0",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6134363158392079,
+            "contrast": 0.5793864490843075,
+            "census": 0.6616420596179263,
+            "meanDistance": 1.340605075796137
+          },
+          "after": {
+            "edgeF1": 0.8334439022634436,
+            "contrast": 0.7579736506000099,
+            "census": 0.8133642162136332,
+            "meanDistance": 0.8440506292460374,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.904175885540716,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9097589344575501,
+                "distance": 0.7003924855146786,
+                "margin": 0.2054672519660956,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5955515664596649,
+            "contrast": 0.6225748155622877,
+            "census": 0.6900242781267509,
+            "meanDistance": 1.4308040193549898
+          },
+          "after": {
+            "edgeF1": 0.7697136945002068,
+            "contrast": 0.790360521452623,
+            "census": 0.8152672462219493,
+            "meanDistance": 1.0859772462720518,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.8081043655710226,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.8081043655710226,
+                "distance": 0.9019734799400452,
+                "margin": 0.13559655175575813,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "f03109b9-54a8-4d68-97c2-e42c7d5c2d41",
+      "number": "94",
+      "name": "Cavalier of Night",
+      "category": "ordinary",
+      "rarity": "mythic",
+      "frame": "normal",
+      "inputHash": "aa12000cc4f1343f97409e1e22fb09fd744482268976404fc82c2417aef17099",
+      "referenceHash": "f79ad1135db708116f919103ca04d89a694b9dc12783646a45f818703c4b4572",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5848290502884003,
+            "contrast": 0.4082272980346467,
+            "census": 0.6121600045293818,
+            "meanDistance": 1.4715321110077948
+          },
+          "after": {
+            "edgeF1": 0.6590476934224287,
+            "contrast": 0.5406217166994843,
+            "census": 0.687992956654105,
+            "meanDistance": 1.1490911152127326,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.9141545884245004,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.9141545884245004,
+                "distance": 0.6327338940550813,
+                "margin": 0.2168267364203893,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5446378719667854,
+            "contrast": 0.4333331460105016,
+            "census": 0.6399824883377125,
+            "meanDistance": 1.6529643770735736
+          },
+          "after": {
+            "edgeF1": 0.621506149068124,
+            "contrast": 0.637315291951564,
+            "census": 0.7266179349662636,
+            "meanDistance": 1.2965376911599755,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.8374967131212201,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.8374967131212201,
+                "distance": 0.8450958656786439,
+                "margin": 0.19079827881216638,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": ["table:residual-shape-or-placement"]
+    },
+    {
+      "id": "0430db1a-5cad-4444-ba93-57fb32e65606",
+      "number": "96",
+      "name": "Dread Presence",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "2eed5ca527097980294a75865d68ccd3c6e29aa7811e84fc44e0f02f6be5d2be",
+      "referenceHash": "781f0deca7101ba5a71efd24f35c4d484657b470644fa5ce02be46ee00714fd9",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6009748592761304,
+            "contrast": 0.5052139286432206,
+            "census": 0.6417618924433817,
+            "meanDistance": 1.3538957169498027
+          },
+          "after": {
+            "edgeF1": 0.830284571133424,
+            "contrast": 0.7682533568137712,
+            "census": 0.8498792097279952,
+            "meanDistance": 0.8390950716962482,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9631533050404046,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.9631533050404046,
+                "distance": 0.4723166372392567,
+                "margin": 0.23384915205842238,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6111136705395981,
+            "contrast": 0.5764583371957442,
+            "census": 0.6880911326193155,
+            "meanDistance": 1.4112396245555467
+          },
+          "after": {
+            "edgeF1": 0.7180653970108428,
+            "contrast": 0.721937585225146,
+            "census": 0.8206062335107243,
+            "meanDistance": 1.0823352089685008,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.8448891176354146,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.8448891176354146,
+                "distance": 0.8519258199576152,
+                "margin": 0.18857886187814754,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "20234668-53ce-4cc8-892f-30ee3ecfc34c",
+      "number": "124",
+      "name": "Act of Treason",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "348fdfd33cb4da10c56a2a9c1108c7babd964b9d6ef8c2d1ef1cdbe83d8c9482",
+      "referenceHash": "4c85307dab28b3f96cbc1eb544ac9f56248d18d53526aa753fb3db5761df9f73",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6647547548923294,
+            "contrast": 0.6614955941645126,
+            "census": 0.6976339290237956,
+            "meanDistance": 1.033390463981984
+          },
+          "after": {
+            "edgeF1": 0.8751695067834138,
+            "contrast": 0.8130721692074439,
+            "census": 0.8095559442247289,
+            "meanDistance": 0.781140459558203,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9265452440327753,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9265452440327753,
+                "distance": 0.4394872418911727,
+                "margin": 0.23757816951720534,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6807443006657652,
+            "contrast": 0.6931325092075048,
+            "census": 0.7804200153090127,
+            "meanDistance": 1.1198296023953356
+          },
+          "after": {
+            "edgeF1": 0.8583623714737068,
+            "contrast": 0.8478799716438598,
+            "census": 0.834035511374652,
+            "meanDistance": 0.8571249761979012,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.872074481048974,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.872074481048974,
+                "distance": 0.5775980048998569,
+                "margin": 0.252268054109566,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "0c18c541-758b-4237-9961-9637e996e8a5",
+      "number": "125",
+      "name": "Cavalier of Flame",
+      "category": "ordinary",
+      "rarity": "mythic",
+      "frame": "normal",
+      "inputHash": "a3c26e70fb45ef2153325dccf5ffaf355188d706a9ef2b7ebb17c080837f5aa0",
+      "referenceHash": "f7daf88c81f15f5bdc347f2839a592552e36d880e93ea1750b002db6c7a09cba",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6242840322606069,
+            "contrast": 0.5330364476185782,
+            "census": 0.6901531122357525,
+            "meanDistance": 1.2702644010257185
+          },
+          "after": {
+            "edgeF1": 0.83733939070222,
+            "contrast": 0.748408096837363,
+            "census": 0.795988980457367,
+            "meanDistance": 0.7855283518645416,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9547343842777994,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9547343842777994,
+                "distance": 0.5161434208312033,
+                "margin": 0.26283843044936595,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5576331019830904,
+            "contrast": 0.5467711916065046,
+            "census": 0.7385657320541865,
+            "meanDistance": 1.6264939781781924
+          },
+          "after": {
+            "edgeF1": 0.7841738405220651,
+            "contrast": 0.8007677932828708,
+            "census": 0.8162535701279212,
+            "meanDistance": 0.9517185367039867,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.8675003957574798,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.8675003957574798,
+                "distance": 0.7616390735647202,
+                "margin": 0.20934372927825817,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "8f1b1d5c-f71e-4c68-8baf-c134e42ed6f2",
+      "number": "131",
+      "name": "Chandra's Regulator",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "ae2d5967721db550df8c30242083eab3a55d7d0ac64c3c3bb2c9a1f885922d89",
+      "referenceHash": "d8e72da4bbd2c8400180375c744586d24c35071ca1047a02a51705f578399973",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6304897173983937,
+            "contrast": 0.5131760392964423,
+            "census": 0.6589458397598489,
+            "meanDistance": 1.3455852890360536
+          },
+          "after": {
+            "edgeF1": 0.8578223660588002,
+            "contrast": 0.8167346977947856,
+            "census": 0.8796122657179721,
+            "meanDistance": 0.7685170196227299,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9491920160083405,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.9491920160083405,
+                "distance": 0.5059012162959439,
+                "margin": 0.23746818727038932,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6274779092056665,
+            "contrast": 0.5871344104719588,
+            "census": 0.7233682938540837,
+            "meanDistance": 1.4387897333740205
+          },
+          "after": {
+            "edgeF1": 0.746275105145096,
+            "contrast": 0.7386754890643745,
+            "census": 0.8260133081382802,
+            "meanDistance": 1.1167537246524037,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.8424190800681431,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.8424190800681431,
+                "distance": 0.9394004881885893,
+                "margin": 0.15100594551554425,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "8a857da7-5438-465b-821a-bd5bfd780c69",
+      "number": "132",
+      "name": "Chandra's Spitfire",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "b7c58eecad118121b9975f9001a4db6d5c4f489a173df98871a2b35b543a2194",
+      "referenceHash": "3310d4fdd42e897bca4cf97db55183d954230575cfe79c973e3b692cda9c87f4",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6967825520377215,
+            "contrast": 0.6479753712368345,
+            "census": 0.7230517306079751,
+            "meanDistance": 1.107855050775378
+          },
+          "after": {
+            "edgeF1": 0.9085868934995476,
+            "contrast": 0.8751521179824836,
+            "census": 0.9039949083750813,
+            "meanDistance": 0.6260192111471296,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9419639823309547,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.9503345418103576,
+                "distance": 0.49799873407273165,
+                "margin": 0.16672577421695178,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6917470425186243,
+            "contrast": 0.7063549575923995,
+            "census": 0.7761931137956339,
+            "meanDistance": 1.252131660139185
+          },
+          "after": {
+            "edgeF1": 0.7955644690674506,
+            "contrast": 0.7932308065232514,
+            "census": 0.836559031209182,
+            "meanDistance": 0.9251366669695242,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.8565251293683986,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.8565251293683986,
+                "distance": 0.7365362324890583,
+                "margin": 0.1731664864556982,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "0cfd2e76-ad64-42ff-a6a2-c4cf1bec5932",
+      "number": "165",
+      "name": "Barkhide Troll",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "69acc2dc20f997e957d6c7e585f1b0ccb51655c877303c15f16e631346fd10da",
+      "referenceHash": "bb263b648abc79c79d819cfd9329f46a7ec2a62b695cb8e244cb4270990729b3",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6311181671322964,
+            "contrast": 0.611742434688074,
+            "census": 0.7154014961476913,
+            "meanDistance": 1.264138029884366
+          },
+          "after": {
+            "edgeF1": 0.9308270115017006,
+            "contrast": 0.8807257522081179,
+            "census": 0.8837781582931266,
+            "meanDistance": 0.5407757362863719,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.9394698612543949,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 0,
+                "edgeF1": 0.9520960571689726,
+                "distance": 0.5283513089333969,
+                "margin": 0.18697650723929604,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5973532282924234,
+            "contrast": 0.6518247533174099,
+            "census": 0.7552464144876678,
+            "meanDistance": 1.3758002935395615
+          },
+          "after": {
+            "edgeF1": 0.8562577583332438,
+            "contrast": 0.8497714970760435,
+            "census": 0.84706119882599,
+            "meanDistance": 0.7480995311223277,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8623298033282905,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.8623298033282905,
+                "distance": 0.7601660256305371,
+                "margin": 0.17487404747733692,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "e1fb9767-29bf-4a69-b37c-0925d41f6b46",
+      "number": "166",
+      "name": "Brightwood Tracker",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "2781383155adfbdda9e331c91ae03fc112efaa0760968574ef54da1a00b85e2a",
+      "referenceHash": "d6782828a6f5a87a123856834210fb9978dcdafb3fa3bf2574dbe72588a52533",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6912461397348664,
+            "contrast": 0.6995302526781474,
+            "census": 0.7225816663531248,
+            "meanDistance": 0.979769099612424
+          },
+          "after": {
+            "edgeF1": 0.9292392500002018,
+            "contrast": 0.8647311805568233,
+            "census": 0.8454756506300548,
+            "meanDistance": 0.6863740193132792,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9557648417988549,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9557648417988549,
+                "distance": 0.36858055961792424,
+                "margin": 0.3094576070789018,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.7190680310193784,
+            "contrast": 0.7364420568078708,
+            "census": 0.8007588917841474,
+            "meanDistance": 1.03818959322706
+          },
+          "after": {
+            "edgeF1": 0.88673041501882,
+            "contrast": 0.8803512143852826,
+            "census": 0.8568780015470799,
+            "meanDistance": 0.7826422658154554,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9031254859275384,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9031254859275384,
+                "distance": 0.5597005143469298,
+                "margin": 0.290641013877849,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "e4662a9c-3cbd-41f7-8c15-d048a3826a42",
+      "number": "167",
+      "name": "Cavalier of Thorns",
+      "category": "ordinary",
+      "rarity": "mythic",
+      "frame": "normal",
+      "inputHash": "171f303998e9ba48a08de038ac84253d72acaf8914f6a3e2a35301c8129d2fa5",
+      "referenceHash": "8ddd008033469d960897b1dcbaa01f2e4af58392ef3015790899b1d441963460",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5725387257839507,
+            "contrast": 0.48197906252695516,
+            "census": 0.6763712237499804,
+            "meanDistance": 1.4394508546443936
+          },
+          "after": {
+            "edgeF1": 0.8337861774249585,
+            "contrast": 0.7310971872732805,
+            "census": 0.7844026212866331,
+            "meanDistance": 0.8527682929619247,
+            "offset": {
+              "status": "close",
+              "dx": -1,
+              "dy": 1,
+              "edgeF1": 0.9521465030815588,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 1,
+                "edgeF1": 0.9521465030815588,
+                "distance": 0.5164679031949377,
+                "margin": 0.24063223204706374,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5059592460495241,
+            "contrast": 0.5011227074881464,
+            "census": 0.7174662513904563,
+            "meanDistance": 1.704871778120502
+          },
+          "after": {
+            "edgeF1": 0.7608400071156122,
+            "contrast": 0.7726572370082005,
+            "census": 0.7956050374841206,
+            "meanDistance": 1.0240494174454975,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.8263243024666397,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 1,
+                "edgeF1": 0.8627862768172354,
+                "distance": 0.8128329449436555,
+                "margin": 0.18263770067196083,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "39c431d7-d94b-46c4-bb89-f3db56214ab4",
+      "number": "169",
+      "name": "Elvish Reclaimer",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "f89691b17ef8c925f516e2ae7b050d94c8875546b4f7cf2373a87f57a008aa34",
+      "referenceHash": "70f077b174ec9e53d271e29cae755df23883f54f7a087a42916c490a81435dd4",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5992395852838401,
+            "contrast": 0.5677771689561386,
+            "census": 0.6833963950829403,
+            "meanDistance": 1.3729290323296646
+          },
+          "after": {
+            "edgeF1": 0.9025571216884485,
+            "contrast": 0.8536076674003404,
+            "census": 0.8710646263772498,
+            "meanDistance": 0.6635803223250876,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9263102284077495,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9263102284077495,
+                "distance": 0.6054733736227299,
+                "margin": 0.22216863471771398,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5599023004224675,
+            "contrast": 0.6070839368520391,
+            "census": 0.713446060351757,
+            "meanDistance": 1.5008819827055113
+          },
+          "after": {
+            "edgeF1": 0.8093511312957835,
+            "contrast": 0.8446151064238524,
+            "census": 0.8514903557742861,
+            "meanDistance": 0.9568880801270222,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8091805208180078,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.8297985487274203,
+                "distance": 1.0280298550194926,
+                "margin": 0.15027322230182438,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "8b45117b-8369-48fc-8e5d-8986e662d123",
+      "number": "206",
+      "name": "Corpse Knight",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "666da69a2f6737806e1790559965afcf08fe6aa2d3b6907d766dcebc8fc86c98",
+      "referenceHash": "239b02c646ce2e14cfa1bdd89488cf8cc7f7a092c950c849af6bf32b46456b2e",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5894407522564297,
+            "contrast": 0.5160356344324427,
+            "census": 0.6414190441313177,
+            "meanDistance": 1.311121353269838
+          },
+          "after": {
+            "edgeF1": 0.6693466267056964,
+            "contrast": 0.567132423240373,
+            "census": 0.6934196367209572,
+            "meanDistance": 1.104675561688946,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.8724353256021409,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.8914911094758099,
+                "distance": 0.7757267200996577,
+                "margin": 0.19160713581869226,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.561965180742757,
+            "contrast": 0.543422468276164,
+            "census": 0.6582203765478167,
+            "meanDistance": 1.4316609008063998
+          },
+          "after": {
+            "edgeF1": 0.6658843094573825,
+            "contrast": 0.6864598092545148,
+            "census": 0.7398374105693808,
+            "meanDistance": 1.2023725692333167,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.808598818154427,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.8301133136006218,
+                "distance": 1.1569216823524742,
+                "margin": 0.13628232647246308,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "1f400655-f495-4b21-ab9e-57fe4d845d45",
+      "number": "210",
+      "name": "Kaalia, Zenith Seeker",
+      "category": "ordinary",
+      "rarity": "mythic",
+      "frame": "normal",
+      "inputHash": "48ed9fc01816eabce538f2e2fc6ede52cdb5259ee5912cdfbfb3646cea522b81",
+      "referenceHash": "63389dcd334c46b9284ea222bc94732f27ab8a3d907e68731a6b1558a07ea559",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6048356400486589,
+            "contrast": 0.5528929846460219,
+            "census": 0.7199821601794475,
+            "meanDistance": 1.2921514209281202
+          },
+          "after": {
+            "edgeF1": 0.9205981595354966,
+            "contrast": 0.9006946933990742,
+            "census": 0.9124742281339076,
+            "meanDistance": 0.5357796479184229,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.942443404136389,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.942443404136389,
+                "distance": 0.4826709566582127,
+                "margin": 0.19778055268080297,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5751402160779774,
+            "contrast": 0.5937770530981431,
+            "census": 0.7710728912948395,
+            "meanDistance": 1.5425838710175328
+          },
+          "after": {
+            "edgeF1": 0.8186730068316241,
+            "contrast": 0.8359746438250284,
+            "census": 0.8471876098263275,
+            "meanDistance": 0.8899629278402601,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8632382028821701,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.8632382028821701,
+                "distance": 0.8197343206594512,
+                "margin": 0.16577340594596524,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "aa6d7bbe-0418-4a58-a97b-13b50eb0b642",
+      "number": "221",
+      "name": "Anvilwrought Raptor",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "1ef12f45a9edf045a03d1f5f078c8b872a3103c45095e70c1d1c906016c45fbf",
+      "referenceHash": "f5ec6a4e5a85d8fcc57b979842531c0ac7b5f4b355963692ca3930bf21ddc68f",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.8051556327454457,
+            "contrast": 0.7803243209386421,
+            "census": 0.7378069449330484,
+            "meanDistance": 0.8751203405133934
+          },
+          "after": {
+            "edgeF1": 0.9589455629176032,
+            "contrast": 0.9269394811219829,
+            "census": 0.9383851928665559,
+            "meanDistance": 0.48541684539466096,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9465997691564789,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.9646871281867644,
+                "distance": 0.4594311935802212,
+                "margin": 0.205610591099326,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.7963874786811496,
+            "contrast": 0.8393983978138893,
+            "census": 0.8402978547653643,
+            "meanDistance": 0.8347856389002215
+          },
+          "after": {
+            "edgeF1": 0.9085821442910442,
+            "contrast": 0.8739601734924383,
+            "census": 0.8882064989675655,
+            "meanDistance": 0.6400390989574776,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.9061752871887574,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.9061752871887574,
+                "distance": 0.57322126527037,
+                "margin": 0.24052359468638473,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "49283832-54f2-4619-b4a9-750493c93292",
+      "number": "222",
+      "name": "Bag of Holding",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "8fae303dd693173a061c630b1dc850c6d670179a67206e2bda858e78ab8ee4cc",
+      "referenceHash": "f32f2b53f74e660fd95d888635550fd7aa5e772ace2e4bc54d8435a4edb29be2",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6222452535341922,
+            "contrast": 0.5368396979810368,
+            "census": 0.6826893280721495,
+            "meanDistance": 1.3600925962924184
+          },
+          "after": {
+            "edgeF1": 0.8946349834981344,
+            "contrast": 0.8121151379749809,
+            "census": 0.8454564738207493,
+            "meanDistance": 0.6384016226010788,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.9201767481253663,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 0,
+                "edgeF1": 0.9355152096291904,
+                "distance": 0.5765818275845609,
+                "margin": 0.17244933098946513,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5983344369503205,
+            "contrast": 0.5953737353521027,
+            "census": 0.7476948583782752,
+            "meanDistance": 1.4908766238793656
+          },
+          "after": {
+            "edgeF1": 0.8087145815524681,
+            "contrast": 0.7825929974143745,
+            "census": 0.8067158960635727,
+            "meanDistance": 0.9089409579823143,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8331289500990472,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.8331289500990472,
+                "distance": 0.8972535455205598,
+                "margin": 0.09335583676895576,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "fa35b2b5-3e91-4a6c-90b1-8581b4ecaf8b",
+      "number": "223",
+      "name": "Colossus Hammer",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "250e3e187f8c9ef6a23c64a51cc15aabf5a18a3c8a63bf79b180d79b806d6810",
+      "referenceHash": "145b747cb470e871f56c2424b8f631e1408fd5a5685de253b2893eedb762b8af",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6370800143259565,
+            "contrast": 0.5870697296818818,
+            "census": 0.6919021644188925,
+            "meanDistance": 1.2753511752362183
+          },
+          "after": {
+            "edgeF1": 0.9203333560452637,
+            "contrast": 0.8843266372914096,
+            "census": 0.9156585816379761,
+            "meanDistance": 0.6138457230635347,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.9506322099642335,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.9506322099642335,
+                "distance": 0.49066943662719253,
+                "margin": 0.2161319165943918,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6150921877241218,
+            "contrast": 0.6491598002989192,
+            "census": 0.7526418959816338,
+            "meanDistance": 1.4314094922547125
+          },
+          "after": {
+            "edgeF1": 0.8042061326316529,
+            "contrast": 0.8142743001749736,
+            "census": 0.8518165760747421,
+            "meanDistance": 0.9941119418627531,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 0,
+              "edgeF1": 0.8294814710109079,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 0,
+                "edgeF1": 0.8294814710109079,
+                "distance": 0.9071429994582567,
+                "margin": 0.14659866556159773,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "9b7ec5a3-3c40-4090-b9e3-11fb5b06fb8f",
+      "number": "242",
+      "name": "Bloodfell Caves",
+      "category": "ordinary",
+      "rarity": "common",
+      "frame": "normal",
+      "inputHash": "0e2b80660577939991a7b83b769e67c4f40e1bcaed948f5f2c3feecf63bb3489",
+      "referenceHash": "d6ef1b1f40199fbefc59a885e9edd678ec40997a42991e82f6b8360225007135",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6671374414294731,
+            "contrast": 0.7018702182242218,
+            "census": 0.6949822483433619,
+            "meanDistance": 0.9888302547751875
+          },
+          "after": {
+            "edgeF1": 0.9131122915049366,
+            "contrast": 0.8389880516218147,
+            "census": 0.8414086459234363,
+            "meanDistance": 0.724242390509321,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.9551457269883089,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.9551457269883089,
+                "distance": 0.4628555402854252,
+                "margin": 0.26469442489314,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6982629960276387,
+            "contrast": 0.7421725841038708,
+            "census": 0.7856876900750139,
+            "meanDistance": 1.0605989154548567
+          },
+          "after": {
+            "edgeF1": 0.8664987180119462,
+            "contrast": 0.8448030353330046,
+            "census": 0.8563252849676659,
+            "meanDistance": 0.8408810958582804,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "edgeF1": 0.8701268217737977,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.8898626854025736,
+                "distance": 0.6359683728052138,
+                "margin": 0.20753160401676896,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "fde9e9cb-68ab-4856-8ad6-30f66666dd93",
+      "number": "244",
+      "name": "Cryptic Caves",
+      "category": "ordinary",
+      "rarity": "uncommon",
+      "frame": "normal",
+      "inputHash": "35a4f6da0d6af05c0a8fe637e0873ed18ec2e0d0cf02f58e4d0eeb6ea5b27db8",
+      "referenceHash": "539ebfed43d99849b0e6d811acf3fbafb9aa8b1a80ee203ce90079ad7ea45536",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.6128253304267595,
+            "contrast": 0.5156248225984715,
+            "census": 0.6547257241043443,
+            "meanDistance": 1.3336488419479324
+          },
+          "after": {
+            "edgeF1": 0.8184452511884481,
+            "contrast": 0.6825794381472396,
+            "census": 0.76392114262293,
+            "meanDistance": 0.8479782932910427,
+            "offset": {
+              "status": "close",
+              "dx": -1,
+              "dy": 1,
+              "edgeF1": 0.9552371128747644,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 1,
+                "edgeF1": 0.9552371128747644,
+                "distance": 0.5079421133764672,
+                "margin": 0.2604378534939783,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5727051871916473,
+            "contrast": 0.5401506973888764,
+            "census": 0.6869252625958069,
+            "meanDistance": 1.4910180216388491
+          },
+          "after": {
+            "edgeF1": 0.7792183073646051,
+            "contrast": 0.7745255021944116,
+            "census": 0.7965878766637616,
+            "meanDistance": 1.0111393975240706,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "edgeF1": 0.8391858644598523,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.8391858644598523,
+                "distance": 0.8068816067306215,
+                "margin": 0.14983480183910003,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "470ca3f4-29aa-4c4c-8ff2-8cdd70c69943",
+      "number": "247",
+      "name": "Field of the Dead",
+      "category": "ordinary",
+      "rarity": "rare",
+      "frame": "normal",
+      "inputHash": "e61e6840e72aac655d7f10dbf4650ee2cb63aa1b2824c7344494501f3fec8d2c",
+      "referenceHash": "f0154b8c82b205cfa931e4e492d40f8da81dec4cc09132a2f49b64cd941760f5",
+      "issue": null,
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.650408745628364,
+            "contrast": 0.6166759222046503,
+            "census": 0.7077302398886969,
+            "meanDistance": 1.2390646682768915
+          },
+          "after": {
+            "edgeF1": 0.9297140622483625,
+            "contrast": 0.9085439700132458,
+            "census": 0.9253727535739653,
+            "meanDistance": 0.5755624511674926,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.9515928063244469,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.9515928063244469,
+                "distance": 0.4849346415461754,
+                "margin": 0.22332191071083096,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.6327918747291821,
+            "contrast": 0.6703929033329967,
+            "census": 0.7687088167116715,
+            "meanDistance": 1.3565684694633293
+          },
+          "after": {
+            "edgeF1": 0.8275533327756008,
+            "contrast": 0.8335812045944926,
+            "census": 0.8601846492334748,
+            "meanDistance": 0.9089939865891077,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 0,
+              "edgeF1": 0.8398338205877827,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 0,
+                "edgeF1": 0.8398338205877827,
+                "distance": 0.9094764380208651,
+                "margin": 0.15733935072323313,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0
+            }
+          }
+        }
+      },
+      "review": []
+    }
+  ],
+  "timingTrials": [
+    {
+      "milliseconds": 8045.650193,
+      "cacheHits": 0,
+      "cacheMisses": 140,
+      "scope": "CPU source hashing, optional PNG decoding, canonical region sampling and structural metrics; no Chromium or GPU work."
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "scope": "All eligible cached M19/M20/M21 printings, including lands and planeswalkers. Audit of frozen core-shield policy, not fresh calibration. Special treatments remain excluded; structural-layout exclusions are separately counted as coverage defects.",
+  "scope": "All eligible cached M19/M20/M21 printings, before symbol treatment vs frozen v50 size/rim/bevel. Obsolete intermediate v49 full captures were stopped after the complete baseline, and are not scored.",
   "baseline": "symbol-all-baseline",
-  "run": "symbol-all-final",
+  "run": "symbol-all-sized",
   "baselineCommit": "698b6de",
-  "rendererCommit": "41c08a6",
+  "rendererCommit": "5f1d263",
   "rendererHashes": {
     "before": "fd91363ea20f4e978a942d7edf5bc9a1a53e2627c66d1873a9f268a30c815225",
-    "after": "9c3b4e704b706c4b3285706932927c0e19ea1a9676bec2a8b1d71646ae4f3853"
+    "after": "22eaed11ae1a3334ea060717cb2464b3489f1bf80efd4c6ff4c5e6b340b7ce96"
   },
   "regions": {
     "normal": [387, 387, 66, 30],
@@ -36,5 +36,6 @@
       "eligible": 297,
       "excluded": 100
     }
-  }
+  },
+  "policy": "set-symbol-size-plan.json"
 }

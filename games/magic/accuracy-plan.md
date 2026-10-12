@@ -2030,3 +2030,60 @@ calibration --run symbol-final` and M19's `held-out` cohort. Then run
 `node games/magic/tools/accuracy/set-symbol-audit.mjs symbol-final development`
 and the same command with `reserved`. Baseline images and source hashes remain
 in the local capture cache. The local review browser remains outside the repo.
+
+## Uniform core-symbol scale and type-plate bevel
+
+The next pass addresses the observed width and height deficit together. The
+[policy](fixtures/accuracy/set-symbol-size-plan.json) freezes a 1.10 uniform scale
+about the existing normal-frame center and a 1.5px white or black rim. The type
+line reserves half the added width. Custom symbols and planeswalker geometry
+retain their existing behavior. Existing shield vectors and frame sprites remain.
+
+Ten candidates separate scale and rim thickness on the same 26 M21 development
+cards. The selected candidate improves every card by more than .02 on all three
+inspect diagnostics: median paired edge F1 .597 → .920, signed contrast .556 →
+.907, Census .680 → .908. The 12% trial declines; 2px rims have mixed effects.
+These are component diagnostics, not percentages of whole-card accuracy.
+The [measurements](fixtures/accuracy/set-symbol-size-development-measurement.json)
+retain each candidate, source hashes, fixed window and per-card results.
+
+The dark inset immediately above the normal type plate's lower outline now has
+a 20% white blend in a 2.3px band, faded at the ends. Six material examples improve
+in a separate [tone diagnosis](fixtures/accuracy/set-symbol-bevel-development-measurement.json);
+gold worsens and remains unchanged, as do unexamined land/colorless materials.
+The tone diagnosis samples one shared two-pixel displacement between the scanned
+and rendered bevel. It neither fits individual scans nor certifies the remaining
+plate-height error. Geometry and tone remain separate review items.
+
+M20's 28 normal-card material/rarity examples were selected from metadata before
+viewing their symbol crops or scores. The policy is frozen before that validation.
+The paired production captures confirm the change at both tiers:
+
+| Cohort          | Cards | Inspect edge F1 | Table edge F1 | Edge gains / regressions at either tier |
+| --------------- | ----- | --------------- | ------------- | --------------------------------------- |
+| M21 development | 26    | .597 → .920     | .601 → .830   | 26 / 0                                  |
+| M20 reserved    | 28    | .627 → .890     | .598 → .808   | 28 / 0                                  |
+
+All 54 cards also improve inspect signed contrast and Census by more than .02.
+At table size, M20 has 27 contrast gains and one stable result; none regress.
+The [M21](fixtures/accuracy/set-symbol-size-m21-measurement.json) and
+[M20](fixtures/accuracy/set-symbol-size-m20-measurement.json) reports retain
+per-card and per-tier scores. Mazemind Tome M21 #232 retains a shared-coordinate
+placement residual: its diagnostic peak is 2px right, with F1 .635 → .972.
+Cavalier of Night M20 #94 peaks at (1,1), .659 → .914 inspect. Those fitted
+diagnostic values are not the reported accuracy scores; neither card receives
+an individual rendering or scan transform. Both remain in the local review page.
+
+The [full-set plan](fixtures/accuracy/set-symbol-all-plan.json) covers 952 eligible
+M19/M20/M21 printings, retaining unsupported-layout exclusions in the denominator.
+Its complete before captures precede the initial symbol treatment. Intermediate
+v49 full captures were superseded by v50; partial captures are never scored.
+
+The comparison cache hashes source PNG bytes on every call and stores exact
+canonical grayscale regions with method and payload hashes. Cold sampling is
+bit-identical to full normalization followed by cropping; warm sampling skips PNG
+decoding and whole-image resampling. The ten-candidate warm audit took 14.9s for
+286 regions on this machine while other jobs were running. This includes CPU
+hashing and metrics, no Chromium or GPU work. Capture still uses Chromium;
+sharing each card's decoded source lease between inspect/table preserved all six
+PNG hashes and layout outputs in a three-card parity check.

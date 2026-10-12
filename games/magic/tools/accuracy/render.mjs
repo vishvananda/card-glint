@@ -125,7 +125,7 @@ try {
         try {
           const captured = await session.page.evaluate(async (face) => {
             const api = await import('/games/magic/src/presentation/canvas-face.ts');
-            const { loadCanvasImages } = await import(
+            const { loadCanvasImages, canvasAssetUrls } = await import(
               '/games/magic/src/presentation/canvas-assets.ts'
             );
             const { faceFrame } = await import('/games/magic/src/presentation/special-frames.ts');
@@ -156,44 +156,51 @@ try {
                 mana: face.manaSymbols.map(manaSymbolAsset),
               },
             };
-            for (const tier of ['inspect', 'table']) {
-              const canvas = await api.composeCardTexture(
-                { face, printingId: null, printedImage: null },
-                tier,
-                new AbortController().signal,
-                {
-                  loadImages: async (urls, signal) => {
-                    const loaded = await loadCanvasImages(urls, signal);
-                    const missing = urls.filter((url) => url && !loaded.images.has(url));
-                    if (missing.length) {
-                      loaded.dispose();
-                      throw Error('Missing bitmaps: ' + missing.join(', '));
-                    }
-                    return loaded;
+            // Both tiers consume the same decoded source images. Keep their lease
+            // until both captures finish; composition still uses the real painter.
+            const prepared = await loadCanvasImages(
+              canvasAssetUrls(face),
+              new AbortController().signal,
+            );
+            try {
+              for (const tier of ['inspect', 'table']) {
+                const canvas = await api.composeCardTexture(
+                  { face, printingId: null, printedImage: null },
+                  tier,
+                  new AbortController().signal,
+                  {
+                    loadImages: async (urls, signal) => {
+                      signal.throwIfAborted();
+                      const missing = urls.filter((url) => url && !prepared.images.has(url));
+                      if (missing.length) throw Error('Missing bitmaps: ' + missing.join(', '));
+                      return { images: prepared.images, dispose() {} };
+                    },
                   },
-                },
-              );
-              output.tiers[tier] = {
-                data: canvas.toDataURL('image/png'),
-                width: canvas.width,
-                height: canvas.height,
-              };
-              if (tier === 'inspect' && api.ordinaryTextLayout && output.frame === 'normal')
-                output.layout = api.ordinaryTextLayout(canvas.getContext('2d'), face);
-              if (tier === 'inspect' && output.frame.startsWith('planeswalker')) {
-                const { planeswalkerRuleRows } = await import(
-                  '/games/magic/src/presentation/planeswalker-rules.ts'
                 );
-                output.specialLayout = planeswalkerRuleRows(canvas.getContext('2d'), face);
+                output.tiers[tier] = {
+                  data: canvas.toDataURL('image/png'),
+                  width: canvas.width,
+                  height: canvas.height,
+                };
+                if (tier === 'inspect' && api.ordinaryTextLayout && output.frame === 'normal')
+                  output.layout = api.ordinaryTextLayout(canvas.getContext('2d'), face);
+                if (tier === 'inspect' && output.frame.startsWith('planeswalker')) {
+                  const { planeswalkerRuleRows } = await import(
+                    '/games/magic/src/presentation/planeswalker-rules.ts'
+                  );
+                  output.specialLayout = planeswalkerRuleRows(canvas.getContext('2d'), face);
+                }
+                if (tier === 'inspect' && oldBorder) {
+                  const layout =
+                    api.retroTextLayout ??
+                    (await import('/games/magic/tools/accuracy/legacy-retro-layout.mjs'))
+                      .legacyRetroLayout;
+                  output.layout = layout(canvas.getContext('2d'), face);
+                }
+                canvas.width = canvas.height = 0;
               }
-              if (tier === 'inspect' && oldBorder) {
-                const layout =
-                  api.retroTextLayout ??
-                  (await import('/games/magic/tools/accuracy/legacy-retro-layout.mjs'))
-                    .legacyRetroLayout;
-                output.layout = layout(canvas.getContext('2d'), face);
-              }
-              canvas.width = canvas.height = 0;
+            } finally {
+              prepared.dispose();
             }
             return output;
           }, input.face);

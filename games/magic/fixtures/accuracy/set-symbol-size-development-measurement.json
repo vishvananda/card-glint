@@ -1,0 +1,2538 @@
+{
+  "schemaVersion": 1,
+  "scope": "26 previously examined M21 normal cards, inspect tier. Fixed normalization and one symbol window; no per-scan fitting. Development metrics, not independent validation or whole-card accuracy percentages.",
+  "captureHash": "950724834486387b17618936df14114a32f7f2a96d8417f4c08816b9a31dd7b9",
+  "baselineRendererHash": "9c3b4e704b706c4b3285706932927c0e19ea1a9676bec2a8b1d71646ae4f3853",
+  "studyHash": "632831bd0f587cd87ff1058ad4e2a91db42a25637a9a598a46d7ae176ea22400",
+  "methods": {
+    "normalized-gray-region": "483485fc98f99cb952a4320a78387759b4d2eddb1f3d13c72c7825fd57d27682",
+    "region-cache": "ebf16b154b8227878da7973ad3d047dbcf6212839814e358b01dd1af221dd0fb",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "lettering-contrast": "4e364b2565bf83c0a8e1addba651a96ae1762c7bff8bfb2d0fe8813af4578b88"
+  },
+  "variants": [
+    {
+      "id": "control",
+      "scale": 1,
+      "white": 1,
+      "black": 1,
+      "painterHash": "55a3f1222916314b382038151eb1e26d9bb3c61dfa5cb59595fc2bed2a8a0d81",
+      "faceHash": "02244ca05515501de6726f94ecb2f80906ef6a1514f04467b6d7527a32994726"
+    },
+    {
+      "id": "s06-w15",
+      "scale": 1.06,
+      "white": 1.5,
+      "black": 1,
+      "painterHash": "70f2f58782cd1cdd7396a29ad1408d53c6e3632f57beb7324033c65cefa15c20",
+      "faceHash": "776ba1364f5fb5e4c29160437fc83107b731082d03890a71229babca9b3ca3d1"
+    },
+    {
+      "id": "s08-w15",
+      "scale": 1.08,
+      "white": 1.5,
+      "black": 1,
+      "painterHash": "010568b2810ec6ef9d86896750d4f7e7fce5f1eaa2b5caadda5a2d595fd017df",
+      "faceHash": "5bec943b5c90b31f94e684a44a83a5c8d3fccaea901363c1224a5b105984e9f3"
+    },
+    {
+      "id": "s10-w15",
+      "scale": 1.1,
+      "white": 1.5,
+      "black": 1,
+      "painterHash": "89c39d0d2c6bec30d96ee5f140d4a5775521afd0e755d96e434febe6a0919fb0",
+      "faceHash": "425494746592af8d68aeaeb88fc5d2401e6bee6122fd1db5a5f105d9cf07a04b"
+    },
+    {
+      "id": "s08-w20",
+      "scale": 1.08,
+      "white": 2,
+      "black": 1,
+      "painterHash": "732779189df4f5c10e71e0ac30e00e66b555a844212fb539224f742a8525e71d",
+      "faceHash": "fd16f1a5f6962e426f8ebee8c53cc19d65281bc9a4c0178c72ad7c22c81061f8"
+    },
+    {
+      "id": "s08-b15",
+      "scale": 1.08,
+      "white": 1.5,
+      "black": 1.5,
+      "painterHash": "771bf6c7eab85acda250424035310d50a9665ee1ead3119c691ff22967a3cb32",
+      "faceHash": "6cc7d022f7ab92d956092007be89d27271f4ed2d0203731c9024a3411bea61c1"
+    },
+    {
+      "id": "s10-b15",
+      "scale": 1.1,
+      "white": 1.5,
+      "black": 1.5,
+      "painterHash": "e2526278dfb20964fb95626bc7d406df2c80d883fabf0ec3c56c231aa05bf62d",
+      "faceHash": "b8201ef27e4b3b196ceb15a34165aecf8d4ad3b644a41e469f264c0b36d54140"
+    },
+    {
+      "id": "s12-b15",
+      "scale": 1.12,
+      "white": 1.5,
+      "black": 1.5,
+      "painterHash": "1fbfed37802aea1f460d0d7040c2498a6b2912e6dd34cc2c3b09a9160a2dde04",
+      "faceHash": "bf7d0ba661c088204662ab7f02e3b6e4a7887c299638f00f350efc9693e6e03a"
+    },
+    {
+      "id": "s10-w20-b15",
+      "scale": 1.1,
+      "white": 2,
+      "black": 1.5,
+      "painterHash": "33889a6065a25c836cfab2b9c342f8bd6fe111bd0780836437afd2b5bce2ef51",
+      "faceHash": "b4c920b662b0e7f5a5d409de175afaeb5c0c1bffbc750991d093482c13661ecc"
+    },
+    {
+      "id": "s10-b20",
+      "scale": 1.1,
+      "white": 1.5,
+      "black": 2,
+      "painterHash": "bbaa6f24e64782b6ac92ba14a391c26a2c7ce9ec3df77d49aabfb6ceeaa23465",
+      "faceHash": "46ae304368784a1219154a09d87ec2efd4191d13662de07389b753d758ae4fd8"
+    }
+  ],
+  "rect": [387, 387, 66, 30],
+  "summary": {
+    "control": {
+      "all": {
+        "edgeF1": {
+          "median": 0.5973679999979691,
+          "gains": 0,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.5562351437077832,
+          "gains": 0,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.680255267164435,
+          "gains": 0,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.7613287629315083,
+          "gains": 0,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.696063059675813,
+          "gains": 0,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.7085921647095863,
+          "gains": 0,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.5878056819260224,
+          "gains": 0,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.559926081528969,
+          "gains": 0,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.6504777581310899,
+          "gains": 0,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.5776316762878542,
+          "gains": 0,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.5315090064525192,
+          "gains": 0,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.6763635686929355,
+          "gains": 0,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.5910746197847762,
+          "gains": 0,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.5256637520131326,
+          "gains": 0,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.6736909811753077,
+          "gains": 0,
+          "regressions": []
+        }
+      }
+    },
+    "s06-w15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.7717604944712266,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.7975244173595359,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8558031665744564,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.9440681701237873,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8953380378700287,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.875478098378152,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.7584576581039351,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8032352302683061,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8064181566171456,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.7619528639687227,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.7995995852161077,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.858962187367156,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.7665945440318058,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.7738979095759125,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8227802911505868,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s08-w15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.8303563134446958,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8589989504044491,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8859391018931676,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.971999383582748,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9294545795875095,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9013750117831087,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.8095803950673248,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.850253787361526,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8507572795221741,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.8268954482036923,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8440756323926887,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9037363100018194,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8132234542547516,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8327154209367711,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8664602644933702,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s10-w15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.8683648002050441,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8823773352576152,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8952266968539441,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.9696092297605878,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9209629854920078,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8989386767709451,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.8607850489663065,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8648755170669932,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8721984379126133,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.8645958002585921,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8684817184106253,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9072323732246521,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8315752911423352,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8637988465437842,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8864770943026918,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s08-w20": {
+      "all": {
+        "edgeF1": {
+          "median": 0.8303563134446958,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8589989504044491,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8842902894792819,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.9611393918838577,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9133226541266478,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8947160150971057,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.8095803950673248,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.850253787361526,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8507572795221741,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.8268954482036923,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8440756323926887,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9037363100018194,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8132234542547516,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8327154209367711,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8664602644933702,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s08-b15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.9203263883263573,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8852756159378012,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8988191490967508,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.971999383582748,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9294545795875095,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9013750117831087,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.8955147826809206,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8682674542762325,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8891943108977056,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.9183769186899684,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8861724015971719,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9317558161231475,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8681064406131805,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.864912513446912,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8988191490967508,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s10-b15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.9200308707142123,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9065818133337271,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9083270603944934,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.9696092297605878,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9209629854920078,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8989386767709451,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.9170059293164564,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.885499864522723,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8954024954061482,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.9311758489166235,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9183684043482453,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9267358057988905,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8933287128308244,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8933142752814249,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9150847636496273,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s12-b15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.9093923253288831,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8832579652807153,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8981468448534788,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.947374123917847,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8932214957616669,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8890184818526018,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.908196594626802,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8707890176744187,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8785316167662385,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.9210335735283947,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8874363070033997,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9020646603794353,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8910672134835523,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8877365994133628,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9045946743382901,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s10-w20-b15": {
+      "all": {
+        "edgeF1": {
+          "median": 0.92409088911654,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9032987722939011,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9077325770272229,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.9598000088555065,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9151873206275059,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8998838698360403,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.9170059293164564,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.885499864522723,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8954024954061482,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.9311758489166235,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9183684043482453,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9267358057988905,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8933287128308244,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8933142752814249,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9150847636496273,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "s10-b20": {
+      "all": {
+        "edgeF1": {
+          "median": 0.9251396001976915,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8995192797180321,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9122781483431077,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "edgeF1": {
+          "median": 0.9696092297605878,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9209629854920078,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.8989386767709451,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "edgeF1": {
+          "median": 0.9268385888577102,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8737892009580889,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9010376664071454,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "edgeF1": {
+          "median": 0.9328489436235631,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.9168965546474648,
+          "gains": 7,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.927868849456993,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "edgeF1": {
+          "median": 0.8842324919528618,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "median": 0.8899368011402342,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "median": 0.9180852198270464,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+      "number": "2",
+      "name": "Alpine Watchdog",
+      "rarity": "common",
+      "inputHash": "8aa0cec6c9e5a212a30d08ae8d6c5af8eb7fa1ac4b5d4ce24de3679292f53eee",
+      "referenceHash": "550d62229fda2a96274e44453286fd3a03c0ee7f836ff8cf3c1f81a8f2458e88",
+      "scores": {
+        "control": {
+          "edgeF1": 0.8121063035034147,
+          "contrast": 0.7433522945931504,
+          "census": 0.7783685179828188
+        },
+        "s06-w15": {
+          "edgeF1": 0.9768756833939206,
+          "contrast": 0.950407242402855,
+          "census": 0.9209720615123296
+        },
+        "s08-w15": {
+          "edgeF1": 0.989141482291229,
+          "contrast": 0.9792298617752034,
+          "census": 0.9545876261418129
+        },
+        "s10-w15": {
+          "edgeF1": 0.985910763958755,
+          "contrast": 0.9688887107823897,
+          "census": 0.9500475330413358
+        },
+        "s08-w20": {
+          "edgeF1": 0.9815608850457449,
+          "contrast": 0.9666142647784379,
+          "census": 0.9435557882758425
+        },
+        "s08-b15": {
+          "edgeF1": 0.989141482291229,
+          "contrast": 0.9792298617752034,
+          "census": 0.9545876261418129
+        },
+        "s10-b15": {
+          "edgeF1": 0.985910763958755,
+          "contrast": 0.9688887107823897,
+          "census": 0.9500475330413358
+        },
+        "s12-b15": {
+          "edgeF1": 0.9696862469757868,
+          "contrast": 0.9383781390178157,
+          "census": 0.9337753164439598
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9857576516906499,
+          "contrast": 0.9651964000392976,
+          "census": 0.9401072166777309
+        },
+        "s10-b20": {
+          "edgeF1": 0.985910763958755,
+          "contrast": 0.9688887107823897,
+          "census": 0.9500475330413358
+        }
+      }
+    },
+    {
+      "id": "e8cca776-b0e4-4cd2-815f-36c1f86cf497",
+      "number": "3",
+      "name": "Angelic Ascension",
+      "rarity": "uncommon",
+      "inputHash": "6aa306a16c3d7d436d33bdaf5f265e5b6e920bd8d9d418167706df97cf2180e8",
+      "referenceHash": "c0f8c685ea45b94b6dcb44d601e3da83a06430a4bb39292eb1beb6f0ac0eb7a4",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5815318886992678,
+          "contrast": 0.52656463343378,
+          "census": 0.6493269954043637
+        },
+        "s06-w15": {
+          "edgeF1": 0.7584576581039351,
+          "contrast": 0.7827520336814969,
+          "census": 0.8064181566171456
+        },
+        "s08-w15": {
+          "edgeF1": 0.8039436023771314,
+          "contrast": 0.8406905742705407,
+          "census": 0.8490823820156206
+        },
+        "s10-w15": {
+          "edgeF1": 0.8096867890074831,
+          "contrast": 0.8648755170669932,
+          "census": 0.8673293918168491
+        },
+        "s08-w20": {
+          "edgeF1": 0.8039436023771314,
+          "contrast": 0.8406905742705407,
+          "census": 0.8490823820156206
+        },
+        "s08-b15": {
+          "edgeF1": 0.8586712743844829,
+          "contrast": 0.8678603141814611,
+          "census": 0.8891943108977056
+        },
+        "s10-b15": {
+          "edgeF1": 0.896795401201295,
+          "contrast": 0.885499864522723,
+          "census": 0.8954024954061482
+        },
+        "s12-b15": {
+          "edgeF1": 0.908196594626802,
+          "contrast": 0.8707890176744187,
+          "census": 0.8785316167662385
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.896795401201295,
+          "contrast": 0.885499864522723,
+          "census": 0.8954024954061482
+        },
+        "s10-b20": {
+          "edgeF1": 0.9071322292538333,
+          "contrast": 0.8737892009580889,
+          "census": 0.9010376664071454
+        }
+      }
+    },
+    {
+      "id": "4bd3014b-94bb-4a9f-92cf-239a2dcc7e97",
+      "number": "6",
+      "name": "Baneslayer Angel",
+      "rarity": "mythic",
+      "inputHash": "bdfaf66227d0a1bfe47afe264da9b021e6e7866fe987b74dfdf820d46fe7fdcb",
+      "referenceHash": "bebfcad8e6e76cd864fcf61a31c9d06ad44f244315c5af389b89b9c70104dd4c",
+      "scores": {
+        "control": {
+          "edgeF1": 0.6376146491804899,
+          "contrast": 0.5282780496301922,
+          "census": 0.7242327919364039
+        },
+        "s06-w15": {
+          "edgeF1": 0.8319587917747303,
+          "contrast": 0.7897051120758233,
+          "census": 0.8846355015902998
+        },
+        "s08-w15": {
+          "edgeF1": 0.883709498535127,
+          "contrast": 0.8689587553263165,
+          "census": 0.9101961998707666
+        },
+        "s10-w15": {
+          "edgeF1": 0.896175662877059,
+          "contrast": 0.9075300646335072,
+          "census": 0.9234210278711056
+        },
+        "s08-w20": {
+          "edgeF1": 0.883709498535127,
+          "contrast": 0.8689587553263165,
+          "census": 0.9101961998707666
+        },
+        "s08-b15": {
+          "edgeF1": 0.9240319419381287,
+          "contrast": 0.9155996702665422,
+          "census": 0.9400999197224382
+        },
+        "s10-b15": {
+          "edgeF1": 0.9483346665923666,
+          "contrast": 0.948282514825496,
+          "census": 0.9608881337905208
+        },
+        "s12-b15": {
+          "edgeF1": 0.9442669752244245,
+          "contrast": 0.936992468605906,
+          "census": 0.9415556395560629
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9483346665923666,
+          "contrast": 0.948282514825496,
+          "census": 0.9608881337905208
+        },
+        "s10-b20": {
+          "edgeF1": 0.9234406115376727,
+          "contrast": 0.9503722541668732,
+          "census": 0.9622532221716216
+        }
+      }
+    },
+    {
+      "id": "74b1eae0-1bf8-4922-a9e3-45c01ece9005",
+      "number": "9",
+      "name": "Basri's Lieutenant",
+      "rarity": "rare",
+      "inputHash": "25f9426e3a587e15ac09f68f92a9f21bbb114d83013526450a97c9e6c3ba7c33",
+      "referenceHash": "71b40ac9ddb2dea60ea1a8182525c0f0e8a7771174f0fb419da56fcc5482d508",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5776316762878542,
+          "contrast": 0.5315090064525192,
+          "census": 0.6763635686929355
+        },
+        "s06-w15": {
+          "edgeF1": 0.7575648689987051,
+          "contrast": 0.7995995852161077,
+          "census": 0.8614980051970195
+        },
+        "s08-w15": {
+          "edgeF1": 0.8082643096272792,
+          "contrast": 0.8698891697561677,
+          "census": 0.905239399728245
+        },
+        "s10-w15": {
+          "edgeF1": 0.8187943229578265,
+          "contrast": 0.8971682028809039,
+          "census": 0.9204523432184903
+        },
+        "s08-w20": {
+          "edgeF1": 0.8082643096272792,
+          "contrast": 0.8698891697561677,
+          "census": 0.905239399728245
+        },
+        "s08-b15": {
+          "edgeF1": 0.8795663292894661,
+          "contrast": 0.9149259704392557,
+          "census": 0.9443393158030144
+        },
+        "s10-b15": {
+          "edgeF1": 0.9111450941177184,
+          "contrast": 0.9396274203723459,
+          "census": 0.9555429051953188
+        },
+        "s12-b15": {
+          "edgeF1": 0.9210335735283947,
+          "contrast": 0.9224415757679173,
+          "census": 0.9275715552342682
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9111450941177184,
+          "contrast": 0.9396274203723459,
+          "census": 0.9555429051953188
+        },
+        "s10-b20": {
+          "edgeF1": 0.9328489436235631,
+          "contrast": 0.9417343915800889,
+          "census": 0.9593384135496037
+        }
+      }
+    },
+    {
+      "id": "cb078fbb-beb9-4c0b-be93-ed1e73e6f8d8",
+      "number": "45",
+      "name": "Barrin, Tolarian Archmage",
+      "rarity": "rare",
+      "inputHash": "00edf6f87ea4a8b15d82311164ed032c3ecb668868a20e35a51ad0568bbd4c49",
+      "referenceHash": "53750ee1e7cc3f264ce1b11c6389326ff70f8e0cfe2d0676a561406a0eefd6df",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5756954014049087,
+          "contrast": 0.5033819076632677,
+          "census": 0.6692090519723856
+        },
+        "s06-w15": {
+          "edgeF1": 0.7585723785016518,
+          "contrast": 0.7717118556516321,
+          "census": 0.858962187367156
+        },
+        "s08-w15": {
+          "edgeF1": 0.8195709831881143,
+          "contrast": 0.8398335994477967,
+          "census": 0.9063933042464837
+        },
+        "s10-w15": {
+          "edgeF1": 0.8645958002585921,
+          "contrast": 0.8684817184106253,
+          "census": 0.9251212482306366
+        },
+        "s08-w20": {
+          "edgeF1": 0.8195709831881143,
+          "contrast": 0.8398335994477967,
+          "census": 0.9063933042464837
+        },
+        "s08-b15": {
+          "edgeF1": 0.9222758579627461,
+          "contrast": 0.8861724015971719,
+          "census": 0.9419625661570368
+        },
+        "s10-b15": {
+          "edgeF1": 0.9492101241138465,
+          "contrast": 0.9210559284405084,
+          "census": 0.9569204206990987
+        },
+        "s12-b15": {
+          "edgeF1": 0.9440297972840477,
+          "contrast": 0.90931254355973,
+          "census": 0.9342787398177379
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9492101241138465,
+          "contrast": 0.9210559284405084,
+          "census": 0.9569204206990987
+        },
+        "s10-b20": {
+          "edgeF1": 0.9500460054752196,
+          "contrast": 0.9347000862896123,
+          "census": 0.9627387605240183
+        }
+      }
+    },
+    {
+      "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+      "number": "46",
+      "name": "Cancel",
+      "rarity": "common",
+      "inputHash": "2e9d349169059a6e63320428e490b4399ce983c945813c08ae271ccadafd944f",
+      "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a",
+      "scores": {
+        "control": {
+          "edgeF1": 0.7962366833362117,
+          "contrast": 0.6513184137449795,
+          "census": 0.6998414012651137
+        },
+        "s06-w15": {
+          "edgeF1": 0.9284184165972422,
+          "contrast": 0.8399121246167364,
+          "census": 0.8551929968293084
+        },
+        "s08-w15": {
+          "edgeF1": 0.9566882301705948,
+          "contrast": 0.8780359210251478,
+          "census": 0.8832453983077342
+        },
+        "s10-w15": {
+          "edgeF1": 0.9230558121119682,
+          "contrast": 0.8821661823801296,
+          "census": 0.8914501490168616
+        },
+        "s08-w20": {
+          "edgeF1": 0.9414148704140173,
+          "contrast": 0.8617686084818988,
+          "census": 0.8748488080267923
+        },
+        "s08-b15": {
+          "edgeF1": 0.9566882301705948,
+          "contrast": 0.8780359210251478,
+          "census": 0.8832453983077342
+        },
+        "s10-b15": {
+          "edgeF1": 0.9230558121119682,
+          "contrast": 0.8821661823801296,
+          "census": 0.8914501490168616
+        },
+        "s12-b15": {
+          "edgeF1": 0.8927427376217645,
+          "contrast": 0.8662610093030293,
+          "census": 0.8789112421510367
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9332126092888612,
+          "contrast": 0.8729839771800145,
+          "census": 0.8891323842323009
+        },
+        "s10-b20": {
+          "edgeF1": 0.9230558121119682,
+          "contrast": 0.8821661823801296,
+          "census": 0.8914501490168616
+        }
+      }
+    },
+    {
+      "id": "b33ba0a8-04e9-4df6-af20-a3ca4470cdcc",
+      "number": "48",
+      "name": "Discontinuity",
+      "rarity": "mythic",
+      "inputHash": "84edcf786c24675ecf29c54ba79abf0ae8d7fbffdc1b8e0c6575b56849082c2c",
+      "referenceHash": "8cba5f4ddb904bab5d6dd272f2a33b888a02d2f6e1b265379000876e77adc43f",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5963378856449904,
+          "contrast": 0.5434068186136609,
+          "census": 0.7024588858895422
+        },
+        "s06-w15": {
+          "edgeF1": 0.7634596402049946,
+          "contrast": 0.7933204386726853,
+          "census": 0.8564133363196045
+        },
+        "s08-w15": {
+          "edgeF1": 0.819092698688014,
+          "contrast": 0.8608884790556335,
+          "census": 0.888632805478601
+        },
+        "s10-w15": {
+          "edgeF1": 0.8339750553276476,
+          "contrast": 0.892619803196216,
+          "census": 0.900050016652353
+        },
+        "s08-w20": {
+          "edgeF1": 0.819092698688014,
+          "contrast": 0.8608884790556335,
+          "census": 0.888632805478601
+        },
+        "s08-b15": {
+          "edgeF1": 0.8837142787183276,
+          "contrast": 0.8992887029095369,
+          "census": 0.9257814590590177
+        },
+        "s10-b15": {
+          "edgeF1": 0.9087906147430449,
+          "contrast": 0.9228016230448098,
+          "census": 0.9331651027344539
+        },
+        "s12-b15": {
+          "edgeF1": 0.9098732882557123,
+          "contrast": 0.91007841003259,
+          "census": 0.9154846146509246
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9087906147430449,
+          "contrast": 0.9228016230448098,
+          "census": 0.9331651027344539
+        },
+        "s10-b20": {
+          "edgeF1": 0.8965184497205629,
+          "contrast": 0.9175589936545808,
+          "census": 0.9392093206422237
+        }
+      }
+    },
+    {
+      "id": "d3bc7176-abe0-47cf-a242-cf22a1f590be",
+      "number": "49",
+      "name": "Enthralling Hold",
+      "rarity": "uncommon",
+      "inputHash": "c200e8d72c60e5fac043c96c6b3cd10903d6da365ba48d340bd3b2ff41ca59a8",
+      "referenceHash": "9f73d37a53e456554d1bf404e9deb7c56ee9c49cb6db393cebc43a5065d7b9bc",
+      "scores": {
+        "control": {
+          "edgeF1": 0.573764866800512,
+          "contrast": 0.559926081528969,
+          "census": 0.6504777581310899
+        },
+        "s06-w15": {
+          "edgeF1": 0.7345126841760529,
+          "contrast": 0.8032352302683061,
+          "census": 0.7961470598142959
+        },
+        "s08-w15": {
+          "edgeF1": 0.8095803950673248,
+          "contrast": 0.850253787361526,
+          "census": 0.8507572795221741
+        },
+        "s10-w15": {
+          "edgeF1": 0.8607850489663065,
+          "contrast": 0.8641655618446642,
+          "census": 0.8721984379126133
+        },
+        "s08-w20": {
+          "edgeF1": 0.8095803950673248,
+          "contrast": 0.850253787361526,
+          "census": 0.8507572795221741
+        },
+        "s08-b15": {
+          "edgeF1": 0.8955147826809206,
+          "contrast": 0.8682674542762325,
+          "census": 0.8863748810893255
+        },
+        "s10-b15": {
+          "edgeF1": 0.9170059293164564,
+          "contrast": 0.8806988860656781,
+          "census": 0.889523751467813
+        },
+        "s12-b15": {
+          "edgeF1": 0.9012111248783059,
+          "contrast": 0.8631098341440886,
+          "census": 0.873979057865073
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9170059293164564,
+          "contrast": 0.8806988860656781,
+          "census": 0.889523751467813
+        },
+        "s10-b20": {
+          "edgeF1": 0.9283999914013388,
+          "contrast": 0.868792229010665,
+          "census": 0.8907915206914949
+        }
+      }
+    },
+    {
+      "id": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+      "number": "87",
+      "name": "Alchemist's Gift",
+      "rarity": "common",
+      "inputHash": "a91a78cf4a01ec8c9d3c667a003f42ecd0e549c096b9928a1c09bf453b509339",
+      "referenceHash": "f84af8443f3b4bf16e46ee3e1e4ce88af2741f6ab779c216447909dda5ff51d6",
+      "scores": {
+        "control": {
+          "edgeF1": 0.677847378385038,
+          "contrast": 0.6095337308057768,
+          "census": 0.6649744844539578
+        },
+        "s06-w15": {
+          "edgeF1": 0.8813684006579491,
+          "contrast": 0.7909787919596144,
+          "census": 0.8119414765906896
+        },
+        "s08-w15": {
+          "edgeF1": 0.9300029304454851,
+          "contrast": 0.8355431341329581,
+          "census": 0.8390010320795076
+        },
+        "s10-w15": {
+          "edgeF1": 0.9138328499699508,
+          "contrast": 0.8377056145149744,
+          "census": 0.8480086908649962
+        },
+        "s08-w20": {
+          "edgeF1": 0.9201586285449244,
+          "contrast": 0.8165914099433306,
+          "census": 0.8336021199765888
+        },
+        "s08-b15": {
+          "edgeF1": 0.9300029304454851,
+          "contrast": 0.8355431341329581,
+          "census": 0.8390010320795076
+        },
+        "s10-b15": {
+          "edgeF1": 0.9138328499699508,
+          "contrast": 0.8377056145149744,
+          "census": 0.8480086908649962
+        },
+        "s12-b15": {
+          "edgeF1": 0.89551405775724,
+          "contrast": 0.8230162537215974,
+          "census": 0.8288398466784006
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9124067196891952,
+          "contrast": 0.8276919527187856,
+          "census": 0.8502503606762941
+        },
+        "s10-b20": {
+          "edgeF1": 0.9138328499699508,
+          "contrast": 0.8377056145149744,
+          "census": 0.8480086908649962
+        }
+      }
+    },
+    {
+      "id": "83437022-ba00-4370-83c2-ce1260336fcc",
+      "number": "88",
+      "name": "Archfiend's Vessel",
+      "rarity": "uncommon",
+      "inputHash": "88856302738ea4406bd36a774ed0bfb65a3e2558d6eaa13da8dfdb83ce09e976",
+      "referenceHash": "0cd801fd59d96a918ed2ccb4d7786c7df858e8f7b63639f0023c0dbe2ed7b414",
+      "scores": {
+        "control": {
+          "edgeF1": 0.6277710987656895,
+          "contrast": 0.6503124467891428,
+          "census": 0.6963026829557399
+        },
+        "s06-w15": {
+          "edgeF1": 0.824454685954241,
+          "contrast": 0.8745422180980873,
+          "census": 0.8843202182927107
+        },
+        "s08-w15": {
+          "edgeF1": 0.8931116247304548,
+          "contrast": 0.9060981717973788,
+          "census": 0.9217337782135645
+        },
+        "s10-w15": {
+          "edgeF1": 0.8970886219693996,
+          "contrast": 0.9044015135884897,
+          "census": 0.9245304057368634
+        },
+        "s08-w20": {
+          "edgeF1": 0.8931116247304548,
+          "contrast": 0.9060981717973788,
+          "census": 0.9217337782135645
+        },
+        "s08-b15": {
+          "edgeF1": 0.9407143387148508,
+          "contrast": 0.9306328103009317,
+          "census": 0.9327467146451811
+        },
+        "s10-b15": {
+          "edgeF1": 0.9411631820412845,
+          "contrast": 0.9301012863643137,
+          "census": 0.9328499711153754
+        },
+        "s12-b15": {
+          "edgeF1": 0.9182732343911769,
+          "contrast": 0.8948511755259553,
+          "census": 0.9029722668035634
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9411631820412845,
+          "contrast": 0.9301012863643137,
+          "census": 0.9328499711153754
+        },
+        "s10-b20": {
+          "edgeF1": 0.9396018835635248,
+          "contrast": 0.9253008664807195,
+          "census": 0.9256425914235171
+        }
+      }
+    },
+    {
+      "id": "56149192-ddc1-45a4-b7aa-be311da5fe8e",
+      "number": "95",
+      "name": "Demonic Embrace",
+      "rarity": "rare",
+      "inputHash": "1d407e86700e8a407fcf8fab7ef9a332abacfe27ad648771b7078a0eb3409edc",
+      "referenceHash": "d36bb38db6e4b22a9a19ac46b91e19102485deb6e17943e82fb2e212b03a1bdd",
+      "scores": {
+        "control": {
+          "edgeF1": 0.571267849040584,
+          "contrast": 0.5292333084279573,
+          "census": 0.6309170559034339
+        },
+        "s06-w15": {
+          "edgeF1": 0.7619528639687227,
+          "contrast": 0.7554501958537673,
+          "census": 0.7730612397799257
+        },
+        "s08-w15": {
+          "edgeF1": 0.8268954482036923,
+          "contrast": 0.8040926638913609,
+          "census": 0.828676499157211
+        },
+        "s10-w15": {
+          "edgeF1": 0.8376145676265572,
+          "contrast": 0.8200926352385153,
+          "census": 0.8471179600254367
+        },
+        "s08-w20": {
+          "edgeF1": 0.8268954482036923,
+          "contrast": 0.8040926638913609,
+          "census": 0.828676499157211
+        },
+        "s08-b15": {
+          "edgeF1": 0.897802256019847,
+          "contrast": 0.8196165570637006,
+          "census": 0.851377641422986
+        },
+        "s10-b15": {
+          "edgeF1": 0.8934264435003038,
+          "contrast": 0.8361243213946697,
+          "census": 0.8619863529155198
+        },
+        "s12-b15": {
+          "edgeF1": 0.8726435904064147,
+          "contrast": 0.8291459471248458,
+          "census": 0.8559737296072506
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.8934264435003038,
+          "contrast": 0.8361243213946697,
+          "census": 0.8619863529155198
+        },
+        "s10-b20": {
+          "edgeF1": 0.9103892440939061,
+          "contrast": 0.8265683704633756,
+          "census": 0.8597026051420206
+        }
+      }
+    },
+    {
+      "id": "928558ab-e29a-44cb-ac2f-88443571f41a",
+      "number": "103",
+      "name": "Grim Tutor",
+      "rarity": "mythic",
+      "inputHash": "61d16123029f465685b977c113053d679dd8686b4523246f6183c712e563ca71",
+      "referenceHash": "9e0d9ab0d91f291080b3a584a008fbb31bc980baf0c9fa4001e80cc4234000a8",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5949700689193854,
+          "contrast": 0.5230494543960731,
+          "census": 0.6566121728618148
+        },
+        "s06-w15": {
+          "edgeF1": 0.7631003444999631,
+          "contrast": 0.7580907070760018,
+          "census": 0.7980121409010879
+        },
+        "s08-w15": {
+          "edgeF1": 0.8065600398685662,
+          "contrast": 0.8083214201202775,
+          "census": 0.8354980119530195
+        },
+        "s10-w15": {
+          "edgeF1": 0.8322762476439134,
+          "contrast": 0.8336466878452897,
+          "census": 0.8547973238997347
+        },
+        "s08-w20": {
+          "edgeF1": 0.8065600398685662,
+          "contrast": 0.8083214201202775,
+          "census": 0.8354980119530195
+        },
+        "s08-b15": {
+          "edgeF1": 0.868796618545234,
+          "contrast": 0.8291874700406416,
+          "census": 0.8682721612987536
+        },
+        "s10-b15": {
+          "edgeF1": 0.8961989448197218,
+          "contrast": 0.839266478240285,
+          "census": 0.8709319798073338
+        },
+        "s12-b15": {
+          "edgeF1": 0.8874325691890177,
+          "contrast": 0.8210327261990721,
+          "census": 0.8558492018377313
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.8961989448197218,
+          "contrast": 0.839266478240285,
+          "census": 0.8709319798073338
+        },
+        "s10-b20": {
+          "edgeF1": 0.8831665272147562,
+          "contrast": 0.8199254390071865,
+          "census": 0.8735057955695043
+        }
+      }
+    },
+    {
+      "id": "faca827d-0b35-48d7-acd6-13ecacc32b82",
+      "number": "130",
+      "name": "Battle-Rattle Shaman",
+      "rarity": "uncommon",
+      "inputHash": "4f81ad89b979585bb243b1b8432ddf003bc9261ea4bc137a1c7f19c3d339fd75",
+      "referenceHash": "3d610f1f3eff010c01600444b5182e74f513e62e2bd8a3a8085d7f2b843edc62",
+      "scores": {
+        "control": {
+          "edgeF1": 0.6106780627340467,
+          "contrast": 0.6141111351089308,
+          "census": 0.6930923366433306
+        },
+        "s06-w15": {
+          "edgeF1": 0.7983780437003384,
+          "contrast": 0.8428094899268344,
+          "census": 0.8713479399971666
+        },
+        "s08-w15": {
+          "edgeF1": 0.8756699880032534,
+          "contrast": 0.8790610525375068,
+          "census": 0.9040149609886592
+        },
+        "s10-w15": {
+          "edgeF1": 0.8967338522365174,
+          "contrast": 0.8825884881351008,
+          "census": 0.9100015128974214
+        },
+        "s08-w20": {
+          "edgeF1": 0.8756699880032534,
+          "contrast": 0.8790610525375068,
+          "census": 0.9040149609886592
+        },
+        "s08-b15": {
+          "edgeF1": 0.9481918614187224,
+          "contrast": 0.9070130131279229,
+          "census": 0.9259932706304018
+        },
+        "s10-b15": {
+          "edgeF1": 0.9380247943098332,
+          "contrast": 0.9112792623352112,
+          "census": 0.925663986019791
+        },
+        "s12-b15": {
+          "edgeF1": 0.9195273174365237,
+          "contrast": 0.8793094941991837,
+          "census": 0.8999869235598712
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9380247943098332,
+          "contrast": 0.9112792623352112,
+          "census": 0.925663986019791
+        },
+        "s10-b20": {
+          "edgeF1": 0.9268385888577102,
+          "contrast": 0.9084085907577679,
+          "census": 0.9251718436876906
+        }
+      }
+    },
+    {
+      "id": "6075e0a3-a0ab-4a11-8ad2-7dabb071d309",
+      "number": "132",
+      "name": "Bone Pit Brute",
+      "rarity": "common",
+      "inputHash": "fdbbb5145b1b03f47d85be83e667c0b7a761ea9b218cd9efa85d2f55c66a10e4",
+      "referenceHash": "2f6aee8e5c651bf0788e02262831764c0054a9883c2aa796c48bcb90f0b0a44b",
+      "scores": {
+        "control": {
+          "edgeF1": 0.7806992984682384,
+          "contrast": 0.7157063788478096,
+          "census": 0.7089246956294777
+        },
+        "s06-w15": {
+          "edgeF1": 0.9558541385831955,
+          "contrast": 0.9135267139286487,
+          "census": 0.8934008460757668
+        },
+        "s08-w15": {
+          "edgeF1": 0.9766006799688618,
+          "contrast": 0.9427113238251755,
+          "census": 0.9193986059709126
+        },
+        "s10-w15": {
+          "edgeF1": 0.9677375997140152,
+          "contrast": 0.9359031706750834,
+          "census": 0.917344857412003
+        },
+        "s08-w20": {
+          "edgeF1": 0.9661715717153874,
+          "contrast": 0.9257447447408848,
+          "census": 0.9092755037528134
+        },
+        "s08-b15": {
+          "edgeF1": 0.9766006799688618,
+          "contrast": 0.9427113238251755,
+          "census": 0.9193986059709126
+        },
+        "s10-b15": {
+          "edgeF1": 0.9677375997140152,
+          "contrast": 0.9359031706750834,
+          "census": 0.917344857412003
+        },
+        "s12-b15": {
+          "edgeF1": 0.9500718362471616,
+          "contrast": 0.9064217076976379,
+          "census": 0.9086828746216578
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9615038293460292,
+          "contrast": 0.9301331653959783,
+          "census": 0.9140109771951492
+        },
+        "s10-b20": {
+          "edgeF1": 0.9677375997140152,
+          "contrast": 0.9359031706750834,
+          "census": 0.917344857412003
+        }
+      }
+    },
+    {
+      "id": "ebb5e613-a803-42f3-840a-7089ac6b7e3d",
+      "number": "133",
+      "name": "Brash Taunter",
+      "rarity": "rare",
+      "inputHash": "3dd8dbd58a67e90d65fe395d39dc043a372cb520d4694099734ade0f5a540b9f",
+      "referenceHash": "5b728184f6d9882069d69cd1dd2dfd0a05431bc4c3f1d8d76aa0a312859aa209",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5983981143509478,
+          "contrast": 0.6018429721588894,
+          "census": 0.6880446928428496
+        },
+        "s06-w15": {
+          "edgeF1": 0.7912695682109077,
+          "contrast": 0.8385079291852303,
+          "census": 0.8698018498570665
+        },
+        "s08-w15": {
+          "edgeF1": 0.8601969322494769,
+          "contrast": 0.8812798623981831,
+          "census": 0.9037363100018194
+        },
+        "s10-w15": {
+          "edgeF1": 0.8810980261667152,
+          "contrast": 0.8867668807986238,
+          "census": 0.9072323732246521
+        },
+        "s08-w20": {
+          "edgeF1": 0.8601969322494769,
+          "contrast": 0.8812798623981831,
+          "census": 0.9037363100018194
+        },
+        "s08-b15": {
+          "edgeF1": 0.9350494322030833,
+          "contrast": 0.9118987757902246,
+          "census": 0.9317558161231475
+        },
+        "s10-b15": {
+          "edgeF1": 0.9311758489166235,
+          "contrast": 0.9183684043482453,
+          "census": 0.9267358057988905
+        },
+        "s12-b15": {
+          "edgeF1": 0.9089113624020541,
+          "contrast": 0.8874363070033997,
+          "census": 0.9020646603794353
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9311758489166235,
+          "contrast": 0.9183684043482453,
+          "census": 0.9267358057988905
+        },
+        "s10-b20": {
+          "edgeF1": 0.9297890632050423,
+          "contrast": 0.9168965546474648,
+          "census": 0.927868849456993
+        }
+      }
+    },
+    {
+      "id": "0b12e4b7-2c45-4795-94d3-901f89b8f290",
+      "number": "143",
+      "name": "Fiery Emancipation",
+      "rarity": "mythic",
+      "inputHash": "db41c51201b9f91ab87abf52d2ff0e495f43850252fc12e40c3dfcbcee04ce19",
+      "referenceHash": "04f5c5cd7928476e94355d119b4f102adb51ea3deb2a4efbcd8e3893bf6e56f1",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5836989456995464,
+          "contrast": 0.4803739058395279,
+          "census": 0.6633289737935242
+        },
+        "s06-w15": {
+          "edgeF1": 0.7763440336011159,
+          "contrast": 0.7275810703920029,
+          "census": 0.8175230808943469
+        },
+        "s08-w15": {
+          "edgeF1": 0.8262637873764815,
+          "contrast": 0.8042878913358633,
+          "census": 0.8643080130259138
+        },
+        "s10-w15": {
+          "edgeF1": 0.830874334640757,
+          "contrast": 0.8399815306793631,
+          "census": 0.8893000035940067
+        },
+        "s08-w20": {
+          "edgeF1": 0.8262637873764815,
+          "contrast": 0.8042878913358633,
+          "census": 0.8643080130259138
+        },
+        "s08-b15": {
+          "edgeF1": 0.867416262681127,
+          "contrast": 0.8454461966153932,
+          "census": 0.8958717966728748
+        },
+        "s10-b15": {
+          "edgeF1": 0.8904584808419269,
+          "contrast": 0.8829033712966861,
+          "census": 0.9199426110352965
+        },
+        "s12-b15": {
+          "edgeF1": 0.893962049771081,
+          "contrast": 0.8836598649243905,
+          "census": 0.9113068367354509
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.8904584808419269,
+          "contrast": 0.8829033712966861,
+          "census": 0.9199426110352965
+        },
+        "s10-b20": {
+          "edgeF1": 0.8852984566909674,
+          "contrast": 0.8906299686782964,
+          "census": 0.9191470130865205
+        }
+      }
+    },
+    {
+      "id": "0b8aff2c-1f7b-4507-b914-53f8c4706b3d",
+      "number": "173",
+      "name": "Azusa, Lost but Seeking",
+      "rarity": "rare",
+      "inputHash": "0a11525233d1bff77a2277f997386e5955a8957a78d49e020a382b780f2ab56c",
+      "referenceHash": "e01880a96745380a52617a512cb8a73cdb4283d221f40ff17f0c58c9de249b52",
+      "scores": {
+        "control": {
+          "edgeF1": 0.6127977074176872,
+          "contrast": 0.5659438119969354,
+          "census": 0.6764575457717787
+        },
+        "s06-w15": {
+          "edgeF1": 0.7737915410838364,
+          "contrast": 0.8186310868303736,
+          "census": 0.8621256449558776
+        },
+        "s08-w15": {
+          "edgeF1": 0.8338171786856994,
+          "contrast": 0.8786827605346724,
+          "census": 0.9110203197274462
+        },
+        "s10-w15": {
+          "edgeF1": 0.8721338001514962,
+          "contrast": 0.8981937907185189,
+          "census": 0.9314616085866518
+        },
+        "s08-w20": {
+          "edgeF1": 0.8338171786856994,
+          "contrast": 0.8786827605346724,
+          "census": 0.9110203197274462
+        },
+        "s08-b15": {
+          "edgeF1": 0.9183769186899684,
+          "contrast": 0.9128916880175281,
+          "census": 0.9403393873783948
+        },
+        "s10-b15": {
+          "edgeF1": 0.9428910959105916,
+          "contrast": 0.93986767750069,
+          "census": 0.9540857468620694
+        },
+        "s12-b15": {
+          "edgeF1": 0.9430190899705437,
+          "contrast": 0.9213765598618759,
+          "census": 0.9306386244279286
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9428910959105916,
+          "contrast": 0.93986767750069,
+          "census": 0.9540857468620694
+        },
+        "s10-b20": {
+          "edgeF1": 0.9358739333058079,
+          "contrast": 0.9454860496220843,
+          "census": 0.9543416867014519
+        }
+      }
+    },
+    {
+      "id": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c",
+      "number": "174",
+      "name": "Burlfist Oak",
+      "rarity": "uncommon",
+      "inputHash": "742964787a73e72fe2d0942e73918d010313f74a63468a0d8e6e5876f6a24b39",
+      "referenceHash": "a53ce3e809ff5a26e6192e9cddc65362f65faa84b073c7be56a6e28fb0b86370",
+      "scores": {
+        "control": {
+          "edgeF1": 0.6228051568236597,
+          "contrast": 0.6214218680432402,
+          "census": 0.6985739321880039
+        },
+        "s06-w15": {
+          "edgeF1": 0.81006691103598,
+          "contrast": 0.8677599891201565,
+          "census": 0.88485998901348
+        },
+        "s08-w15": {
+          "edgeF1": 0.8620570380977102,
+          "contrast": 0.9121402073245192,
+          "census": 0.9328783633478276
+        },
+        "s10-w15": {
+          "edgeF1": 0.9041217372803898,
+          "contrast": 0.9162001377314869,
+          "census": 0.9411014648833325
+        },
+        "s08-w20": {
+          "edgeF1": 0.8620570380977102,
+          "contrast": 0.9121402073245192,
+          "census": 0.9328783633478276
+        },
+        "s08-b15": {
+          "edgeF1": 0.9441724165514238,
+          "contrast": 0.9393943797159361,
+          "census": 0.9632791423200382
+        },
+        "s10-b15": {
+          "edgeF1": 0.9475244475663471,
+          "contrast": 0.9447693367651455,
+          "census": 0.9569587926362378
+        },
+        "s12-b15": {
+          "edgeF1": 0.9242616177890557,
+          "contrast": 0.913658083392879,
+          "census": 0.9202987235169622
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.9475244475663471,
+          "contrast": 0.9447693367651455,
+          "census": 0.9569587926362378
+        },
+        "s10-b20": {
+          "edgeF1": 0.9333361247977269,
+          "contrast": 0.9393687014075001,
+          "census": 0.9545090972115186
+        }
+      }
+    },
+    {
+      "id": "8059c52b-5d25-4052-b48a-e9e219a7a546",
+      "number": "176",
+      "name": "Colossal Dreadmaw",
+      "rarity": "common",
+      "inputHash": "3e4c91aa32647fa1fde7ac79a84a68e6bbef11768aae61decc9738b705e3e3e4",
+      "referenceHash": "7dbdf1bc34fc9966192d032fb28337b352026e6f63189921fff1161c8bc33083",
+      "scores": {
+        "control": {
+          "edgeF1": 0.7146644796804099,
+          "contrast": 0.6834430687152557,
+          "census": 0.7082596337896949
+        },
+        "s06-w15": {
+          "edgeF1": 0.9322822016643791,
+          "contrast": 0.8809215599165271,
+          "census": 0.8615047489996397
+        },
+        "s08-w15": {
+          "edgeF1": 0.9673980871966341,
+          "contrast": 0.9172577977537903,
+          "census": 0.8939871486407889
+        },
+        "s10-w15": {
+          "edgeF1": 0.9714808598071604,
+          "contrast": 0.9094384474012902,
+          "census": 0.890811112196735
+        },
+        "s08-w20": {
+          "edgeF1": 0.956107212052328,
+          "contrast": 0.9010384155912978,
+          "census": 0.8867428406116914
+        },
+        "s08-b15": {
+          "edgeF1": 0.9673980871966341,
+          "contrast": 0.9172577977537903,
+          "census": 0.8939871486407889
+        },
+        "s10-b15": {
+          "edgeF1": 0.9714808598071604,
+          "contrast": 0.9094384474012902,
+          "census": 0.890811112196735
+        },
+        "s12-b15": {
+          "edgeF1": 0.9446764115885324,
+          "contrast": 0.8828560656370401,
+          "census": 0.8796257859393752
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.958096188364984,
+          "contrast": 0.9028723653216383,
+          "census": 0.894529501881593
+        },
+        "s10-b20": {
+          "edgeF1": 0.9714808598071604,
+          "contrast": 0.9094384474012902,
+          "census": 0.890811112196735
+        }
+      }
+    },
+    {
+      "id": "d51269cf-a333-4a64-94cd-245798d840d2",
+      "number": "179",
+      "name": "Elder Gargaroth",
+      "rarity": "mythic",
+      "inputHash": "f33faa21f38ccc922063d97a66394d4d6675228e3d278718a09cccafc266fe84",
+      "referenceHash": "912c786d8232e51fa53795dec25c506d0d7222302dcd1f92f424cc48ea0fe7ff",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5871791706501669,
+          "contrast": 0.5525442058865973,
+          "census": 0.6840529885570912
+        },
+        "s06-w15": {
+          "edgeF1": 0.769729447858617,
+          "contrast": 0.7954492495029641,
+          "census": 0.8280375014068269
+        },
+        "s08-w15": {
+          "edgeF1": 0.8073542098214892,
+          "contrast": 0.8571094217532648,
+          "census": 0.8686125159608267
+        },
+        "s10-w15": {
+          "edgeF1": 0.8275755880361171,
+          "contrast": 0.8876161624082054,
+          "census": 0.8836541850113768
+        },
+        "s08-w20": {
+          "edgeF1": 0.8073542098214892,
+          "contrast": 0.8571094217532648,
+          "census": 0.8686125159608267
+        },
+        "s08-b15": {
+          "edgeF1": 0.864030258993066,
+          "contrast": 0.8843788302784307,
+          "census": 0.9017665015206267
+        },
+        "s10-b15": {
+          "edgeF1": 0.8853087247739888,
+          "contrast": 0.9037251792661639,
+          "census": 0.9102269162639582
+        },
+        "s12-b15": {
+          "edgeF1": 0.8881723771960237,
+          "contrast": 0.891813333902335,
+          "census": 0.8978825119411293
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.8853087247739888,
+          "contrast": 0.9037251792661639,
+          "census": 0.9102269162639582
+        },
+        "s10-b20": {
+          "edgeF1": 0.8765733412478374,
+          "contrast": 0.8892436336021722,
+          "census": 0.9170234265675723
+        }
+      }
+    },
+    {
+      "id": "43224e74-2c51-40bd-bc34-f66e990a3e33",
+      "number": "215",
+      "name": "Alpine Houndmaster",
+      "rarity": "uncommon",
+      "inputHash": "d23cea074913efeb868fb258d3827d8f300a6f419c4f3166d486e22e8d58b1bd",
+      "referenceHash": "870c5f8576434173ca04fa8a54569a6bd286a0740f573603d014ede095b424a3",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5648709860522437,
+          "contrast": 0.5085699197833852,
+          "census": 0.6229745640323805
+        },
+        "s06-w15": {
+          "edgeF1": 0.6820019779242641,
+          "contrast": 0.6642784797954613,
+          "census": 0.7103717504446108
+        },
+        "s08-w15": {
+          "edgeF1": 0.7371659649295903,
+          "contrast": 0.6863982022360003,
+          "census": 0.7489725150148321
+        },
+        "s10-w15": {
+          "edgeF1": 0.7399515370551522,
+          "contrast": 0.6858987926681426,
+          "census": 0.7521944920286431
+        },
+        "s08-w20": {
+          "edgeF1": 0.7371659649295903,
+          "contrast": 0.6863982022360003,
+          "census": 0.7489725150148321
+        },
+        "s08-b15": {
+          "edgeF1": 0.7884560888539693,
+          "contrast": 0.6763511191421901,
+          "census": 0.7606221472275168
+        },
+        "s10-b15": {
+          "edgeF1": 0.77999306518724,
+          "contrast": 0.6741956983670311,
+          "census": 0.7593334331132572
+        },
+        "s12-b15": {
+          "edgeF1": 0.7680643823763513,
+          "contrast": 0.658241144356233,
+          "census": 0.740834889464644
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.77999306518724,
+          "contrast": 0.6741956983670311,
+          "census": 0.7593334331132572
+        },
+        "s10-b20": {
+          "edgeF1": 0.8167163821330259,
+          "contrast": 0.6513589673894634,
+          "census": 0.757946582693481
+        }
+      }
+    },
+    {
+      "id": "e21827eb-fa49-4784-a86b-aef164a5018e",
+      "number": "222",
+      "name": "Niambi, Esteemed Speaker",
+      "rarity": "rare",
+      "inputHash": "c1b121ae6e493b057e5a0b3cb740b9ca01fc123700496a2100e111f7941a0832",
+      "referenceHash": "e5357313a249dc176dbcae737da0a3c17d15d11c2e2d54cfeff79466d25d06e4",
+      "scores": {
+        "control": {
+          "edgeF1": 0.6350065530674369,
+          "contrast": 0.604089761859405,
+          "census": 0.6916220999294234
+        },
+        "s06-w15": {
+          "edgeF1": 0.7639196218662618,
+          "contrast": 0.8105755249316411,
+          "census": 0.8510124962600343
+        },
+        "s08-w15": {
+          "edgeF1": 0.8571309653657644,
+          "contrast": 0.8440756323926887,
+          "census": 0.8818377383468724
+        },
+        "s10-w15": {
+          "edgeF1": 0.8780397212282391,
+          "contrast": 0.8523099294160044,
+          "census": 0.8990032446910265
+        },
+        "s08-w20": {
+          "edgeF1": 0.8571309653657644,
+          "contrast": 0.8440756323926887,
+          "census": 0.8818377383468724
+        },
+        "s08-b15": {
+          "edgeF1": 0.9266312655464952,
+          "contrast": 0.8641722862116528,
+          "census": 0.8940072477620573
+        },
+        "s10-b15": {
+          "edgeF1": 0.946729454944961,
+          "contrast": 0.8825403548523467,
+          "census": 0.9051368462806757
+        },
+        "s12-b15": {
+          "edgeF1": 0.9343319522888716,
+          "contrast": 0.8595663191893419,
+          "census": 0.8921952263875984
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.946729454944961,
+          "contrast": 0.8825403548523467,
+          "census": 0.9051368462806757
+        },
+        "s10-b20": {
+          "edgeF1": 0.9353937297540611,
+          "contrast": 0.8866053743196903,
+          "census": 0.9075328701186431
+        }
+      }
+    },
+    {
+      "id": "3af78d76-ad5c-44ba-880d-b834bcde5398",
+      "number": "228",
+      "name": "Chromatic Orrery",
+      "rarity": "mythic",
+      "inputHash": "9174d3fa09ac731dd79423b067c82665b4fca3a1d0982b2ec22a8a11a4d3d436",
+      "referenceHash": "0240694a2772bd87728e3008a03e31c0bf18e4e616cecf44c908c013f70e0e7a",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5577125459675191,
+          "contrast": 0.5057811448934832,
+          "census": 0.6550772829173923
+        },
+        "s06-w15": {
+          "edgeF1": 0.7281415744933037,
+          "contrast": 0.7239133799537202,
+          "census": 0.7844156613542221
+        },
+        "s08-w15": {
+          "edgeF1": 0.7775784835742888,
+          "contrast": 0.7809158608292169,
+          "census": 0.8213797082869252
+        },
+        "s10-w15": {
+          "edgeF1": 0.7917410002225865,
+          "contrast": 0.8183026309659612,
+          "census": 0.8392641433531148
+        },
+        "s08-w20": {
+          "edgeF1": 0.7775784835742888,
+          "contrast": 0.7809158608292169,
+          "census": 0.8213797082869252
+        },
+        "s08-b15": {
+          "edgeF1": 0.8362308939487126,
+          "contrast": 0.8023233850152549,
+          "census": 0.8470293024622817
+        },
+        "s10-b15": {
+          "edgeF1": 0.8574392891920501,
+          "contrast": 0.8211746533789025,
+          "census": 0.8530477022648
+        },
+        "s12-b15": {
+          "edgeF1": 0.868802216828809,
+          "contrast": 0.8192542868160211,
+          "census": 0.8458451200988921
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.8574392891920501,
+          "contrast": 0.8211746533789025,
+          "census": 0.8530477022648
+        },
+        "s10-b20": {
+          "edgeF1": 0.8292091303381186,
+          "contrast": 0.800290557451233,
+          "census": 0.8575397319245713
+        }
+      }
+    },
+    {
+      "id": "1e01bcb4-e823-4da5-b433-e75be3356367",
+      "number": "229",
+      "name": "Chrome Replicator",
+      "rarity": "uncommon",
+      "inputHash": "a790c195b4102b5dbc895b6bd40e186b537d84f9e34defc700906efd372583ec",
+      "referenceHash": "91a70ce9c01ca0097e93c024780965f83007f4d1e0605023c6b19ecdad99e978",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5878056819260224,
+          "contrast": 0.549366734251332,
+          "census": 0.6354323375454825
+        },
+        "s06-w15": {
+          "edgeF1": 0.7443389245486574,
+          "contrast": 0.7755574969760894,
+          "census": 0.788214616235687
+        },
+        "s08-w15": {
+          "edgeF1": 0.7943225406428975,
+          "contrast": 0.8090455106314539,
+          "census": 0.8242663386097062
+        },
+        "s10-w15": {
+          "edgeF1": 0.8373414649208579,
+          "contrast": 0.8162959999895053,
+          "census": 0.8412483903871819
+        },
+        "s08-w20": {
+          "edgeF1": 0.7943225406428975,
+          "contrast": 0.8090455106314539,
+          "census": 0.8242663386097062
+        },
+        "s08-b15": {
+          "edgeF1": 0.8702125426231593,
+          "contrast": 0.8195206479510891,
+          "census": 0.856527818756342
+        },
+        "s10-b15": {
+          "edgeF1": 0.894330189540822,
+          "contrast": 0.8180730130089172,
+          "census": 0.8535918147230777
+        },
+        "s12-b15": {
+          "edgeF1": 0.878460154525541,
+          "contrast": 0.7898642469227876,
+          "census": 0.8310851924045908
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.894330189540822,
+          "contrast": 0.8180730130089172,
+          "census": 0.8535918147230777
+        },
+        "s10-b20": {
+          "edgeF1": 0.8989758216252133,
+          "contrast": 0.7974249449325427,
+          "census": 0.8522905917549495
+        }
+      }
+    },
+    {
+      "id": "3bd39a06-c53a-42c2-b2df-028358f03406",
+      "number": "231",
+      "name": "Forgotten Sentinel",
+      "rarity": "common",
+      "inputHash": "6f0faa1e840b43547fd174353ba93befe901629b25642ba3cb54b89fe0784d3e",
+      "referenceHash": "0cd38366e792fba6a905699e65864de9ec3fbebf06d02502ef9352bd1632a1fb",
+      "scores": {
+        "control": {
+          "edgeF1": 0.7419582273947782,
+          "contrast": 0.7086830506363702,
+          "census": 0.716495084926295
+        },
+        "s06-w15": {
+          "edgeF1": 0.9561566254041891,
+          "contrast": 0.9097545158235304,
+          "census": 0.8894514477566644
+        },
+        "s08-w15": {
+          "edgeF1": 0.9823957274014892,
+          "contrast": 0.9416513614212286,
+          "census": 0.9087628749254287
+        },
+        "s10-w15": {
+          "edgeF1": 0.9791335818598126,
+          "contrast": 0.9324875235827254,
+          "census": 0.9064272045250286
+        },
+        "s08-w20": {
+          "edgeF1": 0.9670547982080251,
+          "contrast": 0.9256068926619978,
+          "census": 0.9026891895825201
+        },
+        "s08-b15": {
+          "edgeF1": 0.9823957274014892,
+          "contrast": 0.9416513614212286,
+          "census": 0.9087628749254287
+        },
+        "s10-b15": {
+          "edgeF1": 0.9791335818598126,
+          "contrast": 0.9324875235827254,
+          "census": 0.9064272045250286
+        },
+        "s12-b15": {
+          "edgeF1": 0.9562119674375845,
+          "contrast": 0.9035869258862936,
+          "census": 0.8984111777658284
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.974151058449813,
+          "contrast": 0.9275022759333735,
+          "census": 0.9052382377904875
+        },
+        "s10-b20": {
+          "edgeF1": 0.9791335818598126,
+          "contrast": 0.9324875235827254,
+          "census": 0.9064272045250286
+        }
+      }
+    },
+    {
+      "id": "9fd761f3-6b43-4150-8595-dc3abd85b06c",
+      "number": "232",
+      "name": "Mazemind Tome",
+      "rarity": "rare",
+      "inputHash": "e53c3ed764a807638519a444d58e858d8e2fecd460e22a5a15efb83fa4298bec",
+      "referenceHash": "8a089b7e2c2bfe0281a959b434a1afe9fdb59adac5d073b592d9f74899a01022",
+      "scores": {
+        "control": {
+          "edgeF1": 0.5336727699452077,
+          "contrast": 0.3690908686440802,
+          "census": 0.6082604898530413
+        },
+        "s06-w15": {
+          "edgeF1": 0.5969376081974129,
+          "contrast": 0.5047034234035269,
+          "census": 0.6968408179584379
+        },
+        "s08-w15": {
+          "edgeF1": 0.6064512434722653,
+          "contrast": 0.5436114407148337,
+          "census": 0.726528740924228
+        },
+        "s10-w15": {
+          "edgeF1": 0.6021508738730036,
+          "contrast": 0.5588509913016257,
+          "census": 0.7376643179703952
+        },
+        "s08-w20": {
+          "edgeF1": 0.6064512434722653,
+          "contrast": 0.5436114407148337,
+          "census": 0.726528740924228
+        },
+        "s08-b15": {
+          "edgeF1": 0.6342565841493827,
+          "contrast": 0.5581684227188825,
+          "census": 0.7431350272094803
+        },
+        "s10-b15": {
+          "edgeF1": 0.6366228542974595,
+          "contrast": 0.5785932597037056,
+          "census": 0.7511737611542391
+        },
+        "s12-b15": {
+          "edgeF1": 0.6399017198847403,
+          "contrast": 0.5872595173670623,
+          "census": 0.7491895058563838
+        },
+        "s10-w20-b15": {
+          "edgeF1": 0.6366228542974595,
+          "contrast": 0.5785932597037056,
+          "census": 0.7511737611542391
+        },
+        "s10-b20": {
+          "edgeF1": 0.6243869989305215,
+          "contrast": 0.575585179083993,
+          "census": 0.7474386648735345
+        }
+      }
+    }
+  ],
+  "timing": {
+    "milliseconds": 14934.533767,
+    "hits": 286,
+    "misses": 0,
+    "scope": "CPU source hashing, cached region sampling and structural metrics; no Chromium or GPU work."
+  }
+}

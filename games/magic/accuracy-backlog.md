@@ -338,11 +338,12 @@ M19's padded viewport no longer shrinks its symbol. Normal shields share a
 at both tiers; this does not certify every symbol or every card in those sets.
 
 - Existing `m21.svg` (`6535b31dcb289af1f58f33f200e536cad9392465ad947462585ca06e491b23d0`)
-  still needs numeral-contour and letter-weight review. Rendered shields look
-  short/narrow, so test shared scale before attributing that residual to the SVG. M21
-  Cancel #46 and Alchemist's Gift #87 retain diagnostic regressions despite
-  correct white-letter treatment. The common white rim should be reviewed
-  separately from the opaque glyph interior.
+  still needs numeral-contour and letter-weight review. The short/narrow envelope
+  was primarily rendering geometry: a shared 10% uniform enlargement and 1.5px
+  rim improve all 26 development cards on paired edges, signed contrast and Census.
+  Keep contour residuals separate from that corrected scale; the original glyph
+  remains in use. See `set-symbol-size-plan.json` for the frozen policy and
+  independent M20 reservation.
 - Existing `m19.svg` (`cc9bce99d9170a8110235826bb06b6e735615559b0c932206c39d246a0a30c24`)
   no longer suffers viewport-padding shrinkage, but enlarged scans show differences in the M and 9
   outlines/weight. Examples: Aegis of the Heavens #1, Angel of the Dawn #7 and
@@ -350,6 +351,10 @@ at both tiers; this does not certify every symbol or every card in those sets.
 - Rarity gradients are an approximate material treatment. Per-set/color HSB
   calibration remains a separate task, and the scan's grain is not a geometry
   target.
+- Normal type plates: a narrow lighter inset corrects the dark lower bevel in
+  W/U/B/R/G/artifact materials. Gold, land and colorless plates retain their
+  existing tone. The lower edge is still about two canonical pixels high in
+  the examined M21 scans; examine the whole plate geometry separately from tone.
 - Next: full normal-card coverage for M19/M20/M21, then black outlines, negative
   space and gradients for non-shield symbols. M15 and WAR intentionally retain
   their existing symbol treatment until their topology is examined.
