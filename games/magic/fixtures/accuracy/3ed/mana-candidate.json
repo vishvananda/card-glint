@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "baselineRendererHash": "5e40956ce8e445f24b6e04bb022ee09d1e4da3bd9566fb865dccecbbcd5edd89",
+  "captureHash": "9824d130dde8e84170c9b097b8c35ab4ad1396c7d1e4e3156ebbe7578ef286af",
+  "experimentHash": "b866bb8db48dc487efef0224c1b43162666f72f0f5ce52a0bb51008db595015f",
+  "metricHash": "00b501e408e454f6f72e9826e6c5b520f3e4b1cbaf1e25b6983eef731475f80b",
+  "planHash": "397678aec8b83bace29d41915d9cfec6932fb8de0d9a137d360196b49d789899",
+  "developmentTrialHash": "d255eadd723dbda00007a8db732ca7354da1d315f9be59f223f1997c350fbd8d",
+  "candidate": {
+    "id": "x435-y44.5-p27",
+    "right": 435,
+    "centerY": 44.5,
+    "pitch": 27,
+    "size": 23.4,
+    "whiteSize": 21
+  },
+  "developmentSummary": [
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "count": 12,
+      "medianF1": 0.4760034687284954,
+      "medianContrast": 0.1917431710471657,
+      "medianCensus": 0.5174953563205149,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "count": 12,
+      "medianF1": 0.4618861705742644,
+      "medianContrast": 0.2183166047915926,
+      "medianCensus": 0.5051031474839731,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "x435-y44.5-p27",
+      "tier": "inspect",
+      "count": 12,
+      "medianF1": 0.7679517555762597,
+      "medianContrast": 0.8203327629767814,
+      "medianCensus": 0.8361243588551357,
+      "medianDelta": 0.3109157122034809,
+      "gains": [
+        "Benalish Hero",
+        "Water Elemental",
+        "Sacrifice",
+        "Earthbind",
+        "Giant Growth",
+        "Living Wall",
+        "Fireball",
+        "Gaea's Liege",
+        "Drain Life",
+        "Aladdin's Lamp",
+        "Counterspell",
+        "Shivan Dragon"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "x435-y44.5-p27",
+      "tier": "table",
+      "count": 12,
+      "medianF1": 0.7446629463192811,
+      "medianContrast": 0.8018982728504445,
+      "medianCensus": 0.8389150005408522,
+      "medianDelta": 0.27487307762774693,
+      "gains": [
+        "Benalish Hero",
+        "Water Elemental",
+        "Sacrifice",
+        "Earthbind",
+        "Giant Growth",
+        "Living Wall",
+        "Fireball",
+        "Gaea's Liege",
+        "Drain Life",
+        "Aladdin's Lamp",
+        "Counterspell",
+        "Shivan Dragon"
+      ],
+      "regressions": []
+    }
+  ],
+  "selection": "Highest median paired row-F1 delta across development cards; no individual regression >.02 at either tier. Extended x search from 435..437 to 433..437 because the first winner touched the search boundary. Winner remains x435/y44.5/pitch27, interior to all grid axes. All twelve original-color crops inspected. White diameter fixed at 21px after shape inspection, not tuned per scan.",
+  "visualReview": "Original sun identity is restored without a disc. All remaining header glyphs retain their pale discs, existing SVGs and radius. Shadow is removed; row position and pitch improve visually. Skull teeth, tree details, flame shape and numeric stroke widths still differ. No title or body changes.",
+  "glyphSource": {
+    "url": "https://raw.githubusercontent.com/andrewgioia/mana/6ca9e696d3bda2519dcf3eebd96598f84ad9ddd8/css/mana.css",
+    "fontHash": "40b95cc8d3ffd0c27c86f0230fb73bc14852c3d8543535c71d9d42bbaff57b3c",
+    "glyph": "w-original U+E997"
+  },
+  "gate": "Require correct printed glyph identity and disc presence; no unrelated pixels or input changes; median cost-row dark-ink F1 must improve at both tiers, with no unexplained individual regression >.02. Keep NCC/Census and per-symbol values as separate diagnostics. Inspect every reserved crop."
+}
