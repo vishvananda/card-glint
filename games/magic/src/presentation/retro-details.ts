@@ -1,12 +1,22 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 
-/** One shared displacement from Fourth Edition development; Fifth is the transfer cohort. */
-export function retroStatsOffset(face: RenderedCardInput): readonly [number, number] {
-  return ['4ed', '5ed'].includes(face.setCode?.toLowerCase() ?? '') &&
+/** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
+export function retroStatsPlacement(face: RenderedCardInput) {
+  return ['3ed', '4ed', '5ed'].includes(face.setCode?.toLowerCase() ?? '') &&
     !/\bLand\b/.test(face.typeLine ?? '')
-    ? [4, 3]
-    : [0, 0];
+    ? { right: 451, yOffset: 3, maxWidth: 130 }
+    : null;
+}
+
+/** Fourth Edition parenthesizes the subtractive toughness expression in print. */
+export function retroStatsText(face: RenderedCardInput): string {
+  const toughness = String(face.toughness ?? '');
+  const printed =
+    face.setCode?.toLowerCase() === '4ed' && /^\d+-\*$/.test(toughness)
+      ? `(${toughness})`
+      : toughness;
+  return `${face.power ?? ''}/${printed}`;
 }
 
 /** Set policies measured from cached development scans; no per-card geometry. */

@@ -1,16 +1,20 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
-import { fixtureRoot, outputRoot, readJson, writeJson, hash } from './common.mjs';
+import { fixtureRoot, outputRoot, readJson, writeJson, hash, options } from './common.mjs';
 import { readPng, normalize, cropGray } from './pixels.mjs';
 import { median } from './metrics.mjs';
 import { componentOffset } from './component-offset.mjs';
 import { statsPage } from './stats-page.mjs';
 
 const start = performance.now();
-const plan = await readJson(path.join(fixtureRoot, '4ed/stats-plan.json'));
+const opts = options();
+if (opts.study && opts.study !== 'stats-wide') throw Error('Unknown stats study');
+const plan = await readJson(
+  path.join(fixtureRoot, `4ed/${opts.study === 'stats-wide' ? 'stats-wide' : 'stats'}-plan.json`),
+);
 const sets = [];
-const rect = [388, 599, 85, 50];
+const rect = plan.parityRegion ?? [388, 599, 85, 50];
 const summarize = (rows) =>
   Object.fromEntries(
     ['inspect', 'table'].map((tier) => {
@@ -29,14 +33,18 @@ const summarize = (rows) =>
   );
 
 for (const set of plan.policy.sets) {
-  const baseline = set === '4ed' ? plan.baselineRun : 'stats-before';
+  const baseline =
+    plan.baselines?.[set]?.run ?? (set === '4ed' ? plan.baselineRun : 'stats-before');
   const dir = path.join(outputRoot, set, plan.run),
     previous = path.join(outputRoot, set, baseline);
   const before = await readJson(path.join(previous, 'metrics.json')),
     after = await readJson(path.join(dir, 'metrics.json'));
   assert.ok(before.complete && after.complete, 'Require complete paired captures');
   assert.equal(after.rendererHash, plan.frozenRendererHash);
-  assert.equal(before.rendererHash, plan.baselineRendererHash);
+  assert.equal(
+    before.rendererHash,
+    plan.baselines?.[set]?.rendererHash ?? plan.baselineRendererHash,
+  );
   for (const key of [
     'referenceIdentity',
     'alignmentHash',
@@ -126,6 +134,11 @@ for (const set of plan.policy.sets) {
     if (hasStats) assert.ok(Object.values(scores).every((v) => v.every(Number.isFinite)));
     let diagnostic = null;
     if (hasStats) {
+      const region = card.comparisons.inspect.regions.find((r) => r.id === 'stats');
+      assert.deepEqual(
+        region.rect,
+        old.comparisons.inspect.regions.find((r) => r.id === 'stats').rect,
+      );
       const crops = [];
       for (const [root, c, tier] of [
         [dir, card, 'reference'],
@@ -136,9 +149,11 @@ for (const set of plan.policy.sets) {
           await readPng(path.join(root, c.images[tier].file)),
           tier === 'reference' ? card.alignment.transform : {},
         );
-        crops.push(cropGray(image, [393, 607, 67, 33]));
+        crops.push(cropGray(image, region.rect));
       }
-      diagnostic = crops.slice(1).map((c) => componentOffset(crops[0].gray, c.gray, 67, 33, true));
+      diagnostic = crops
+        .slice(1)
+        .map((c) => componentOffset(crops[0].gray, c.gray, c.width, c.height, region.lightInk));
     }
     results.push({
       id: card.id,
@@ -205,7 +220,7 @@ for (const set of plan.policy.sets) {
 }
 const regressionParity = [];
 for (const set of ['mir', 'tmp', 'm21']) {
-  const aRoot = path.join(outputRoot, set, 'stats-parity'),
+  const aRoot = path.join(outputRoot, set, plan.parityRun ?? 'stats-parity'),
     bRoot = path.join(outputRoot, set, 'fourth-details-parity');
   const a = await readJson(path.join(aRoot, 'capture.json')),
     b = await readJson(path.join(bRoot, 'capture.json'));
@@ -232,11 +247,14 @@ for (const set of ['mir', 'tmp', 'm21']) {
 }
 const measurement = {
   schemaVersion: 1,
-  study: 'fourth-stats',
+  study: plan.study,
   planHash: hash(JSON.stringify(plan)),
   policy: plan.policy,
-  rendererHashes: [plan.baselineRendererHash, plan.frozenRendererHash],
-  note: 'Fixed-region F1, not percent accuracy. Shared production displacement; no per-card alignment. Fourth Edition is development, Fifth Edition has reserved transfer names. Whole-set corpus results remain exploratory.',
+  rendererHashes: {
+    baselines: plan.baselines ?? plan.baselineRendererHash,
+    current: plan.frozenRendererHash,
+  },
+  note: plan.note,
   parityRegion: rect,
   regressionParity,
   seconds: (performance.now() - start) / 1000,
@@ -249,5 +267,8 @@ const measurement = {
       .map(({ images, diagnostic, ...r }) => ({ ...r, offset: diagnostic[1] })),
   })),
 };
-await writeJson(path.join(fixtureRoot, '5ed/stats-measurement.json'), measurement);
-await statsPage(sets, path.join(outputRoot, '5ed', plan.run));
+await writeJson(
+  path.join(fixtureRoot, plan.measurementFile ?? '5ed/stats-measurement.json'),
+  measurement,
+);
+await statsPage(sets, path.join(outputRoot, plan.transferSet ?? '5ed', plan.run), plan);

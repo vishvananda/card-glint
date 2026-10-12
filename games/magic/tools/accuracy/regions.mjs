@@ -106,6 +106,16 @@ function fourthRegions(result) {
       rect: [Math.floor(manaX - 3), 24, Math.ceil(452 - manaX), 35],
     });
   if (result.face.power != null)
-    list.push({ id: 'stats', kind: 'text', rect: [393, 607, 67, 33], lightInk: true });
+    list.push({
+      id: 'stats',
+      kind: 'text',
+      // Reviewed long expressions reach well left of the ordinary three-character box.
+      // This window depends on expected content, never a fitted scan displacement.
+      rect:
+        `${result.face.power}/${result.face.toughness}`.length > 3
+          ? [326, 607, 134, 33]
+          : [393, 607, 67, 33],
+      lightInk: true,
+    });
   return list;
 }

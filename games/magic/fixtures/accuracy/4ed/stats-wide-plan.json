@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "study": "stats-wide",
+  "run": "stats-wide",
+  "baselines": {
+    "4ed": {
+      "run": "stats-wide-before",
+      "rendererHash": "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264"
+    },
+    "5ed": {
+      "run": "stats-wide-before",
+      "rendererHash": "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264"
+    },
+    "3ed": {
+      "run": "stats-wide-before",
+      "rendererHash": "3276f654bba035c59c2fa7f7471bee19c7cc4d0f890e9c866c44a724f42270fc"
+    }
+  },
+  "frozenRendererHash": "c9756ab2942b46fed92f220f033ba17f16b51719c82fdf7cf2472e625ddad8a7",
+  "transferSet": "3ed",
+  "parityRun": "stats-wide-parity",
+  "parityRegion": [320, 599, 153, 50],
+  "measurementFile": "3ed/stats-wide-measurement.json",
+  "policy": {
+    "sets": ["4ed", "5ed", "3ed"],
+    "scope": "Nonland Fourth-family stats, shared right anchor",
+    "right": 451,
+    "yOffset": 3,
+    "maxWidth": 130,
+    "font": "Unchanged MPlantin regular 27.8px",
+    "shadow": "Unchanged existing set shadow",
+    "expression": "Fourth Edition wraps subtractive toughness in parentheses, matching reviewed print; Fifth/Revised expression unchanged."
+  },
+  "priorTrial": {
+    "plan": "stats-plan.json",
+    "result": "requires-refinement",
+    "failures": ["4ed Angry Mob", "4ed Leviathan", "5ed Shapeshifter"],
+    "reason": "Centered max-width compressed wide expressions. Original diagnostic window cropped their left edge."
+  },
+  "development": {
+    "set": "4ed",
+    "cards": [
+      {
+        "id": "a26d1c4d-af95-4b40-83a5-b51f8b2506db",
+        "name": "Angry Mob",
+        "collectorNumber": "3",
+        "rect": [326, 607, 134, 33],
+        "score": {
+          "inspect": [0.5175546876580933, 0.6399098033580564],
+          "table": [0.4243565321401675, 0.6352426923481492]
+        }
+      },
+      {
+        "id": "b354858f-d25b-4264-8a0b-fecc3a58db6d",
+        "name": "Samite Healer",
+        "collectorNumber": "47",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.3831694848604011, 0.7754389986120132],
+          "table": [0.34852361524099307, 0.7487298333184776]
+        }
+      },
+      {
+        "id": "0c8527ac-27c3-4e2d-b46c-bfd6a1e1f778",
+        "name": "Tundra Wolves",
+        "collectorNumber": "53",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.439561343949962, 0.7768150720491018],
+          "table": [0.40110464648631255, 0.7788244453094589]
+        }
+      },
+      {
+        "id": "fbc98990-7fb0-4f69-a80d-38443966b3ae",
+        "name": "Leviathan",
+        "collectorNumber": "80",
+        "rect": [326, 607, 134, 33],
+        "score": {
+          "inspect": [0.5792969787905785, 0.8070764644160493],
+          "table": [0.5683060109289618, 0.7763947429011779]
+        }
+      },
+      {
+        "id": "daa120ce-63a6-4d5e-9801-123d5e05646e",
+        "name": "Phantom Monster",
+        "collectorNumber": "90",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.4474093027506168, 0.7582481164998873],
+          "table": [0.4106706489275047, 0.7393242926121616]
+        }
+      },
+      {
+        "id": "dadea972-714e-4f6d-8fb7-a59c0ac1e028",
+        "name": "Water Elemental",
+        "collectorNumber": "115",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.4370015948963318, 0.7919361402410392],
+          "table": [0.4139571768437748, 0.7427756939234809]
+        }
+      },
+      {
+        "id": "9691e76c-770d-4721-b758-805574227de1",
+        "name": "Lord of the Pit",
+        "collectorNumber": "144",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.22327930961902756, 0.7847159892293883],
+          "table": [0.2137867547517193, 0.783891975861863]
+        }
+      },
+      {
+        "id": "db11b832-7584-4e4b-8d02-b03fe76dcbc3",
+        "name": "Nightmare",
+        "collectorNumber": "150",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.3182775926138758, 0.6832086333821434],
+          "table": [0.3179622756622095, 0.6647230320699707]
+        }
+      },
+      {
+        "id": "dbd55d32-e969-4d12-b101-a35db8a53921",
+        "name": "Scathe Zombies",
+        "collectorNumber": "158",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.31298569055147646, 0.8028403828342081],
+          "table": [0.3337615255059804, 0.794377771071752]
+        }
+      },
+      {
+        "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+        "name": "Uncle Istvan",
+        "collectorNumber": "165",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.33558278896507043, 0.7976310334616523],
+          "table": [0.3338669868587819, 0.7833057640921237]
+        }
+      },
+      {
+        "id": "92191f72-e3d7-4679-97a2-f0c2d19d7738",
+        "name": "Ali Baba",
+        "collectorNumber": "175",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.15308151093439365, 0.892188252628],
+          "table": [0.20515411824153612, 0.8587543210625267]
+        }
+      },
+      {
+        "id": "cac8fc5c-368f-4b25-a33e-a32855037c4b",
+        "name": "Crimson Manticore",
+        "collectorNumber": "183",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.29284229284229285, 0.96513109169012],
+          "table": [0.33453125693242824, 0.9400082615741476]
+        }
+      },
+      {
+        "id": "925adfb2-cfe3-4847-9db0-20bbe4e7baf1",
+        "name": "Ley Druid",
+        "collectorNumber": "256",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.19130038715554543, 0.8914814636262836],
+          "table": [0.17880794701986752, 0.8665791137701251]
+        }
+      },
+      {
+        "id": "281e8da8-1383-460e-b74e-ad56f1b6d007",
+        "name": "Scryb Sprites",
+        "collectorNumber": "270",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.1954713006845708, 0.8853503184713376],
+          "table": [0.18658374055975122, 0.8610976314269209]
+        }
+      },
+      {
+        "id": "39f236da-8391-487b-88d4-a45342bfff62",
+        "name": "Wall of Wood",
+        "collectorNumber": "284",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.3482587064676617, 0.9330477404433698],
+          "table": [0.3454351111274926, 0.9200478299861402]
+        }
+      },
+      {
+        "id": "c0662881-664f-47d2-8164-b4727125ba0b",
+        "name": "Dancing Scimitar",
+        "collectorNumber": "313",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.19800214056368176, 0.9283218796790417],
+          "table": [0.24810475534114404, 0.9208772567551194]
+        }
+      },
+      {
+        "id": "c64c2dff-9c11-4c91-a606-b5de704f18d4",
+        "name": "Onulet",
+        "collectorNumber": "340",
+        "rect": [393, 607, 67, 33],
+        "score": {
+          "inspect": [0.3050893586138075, 0.9137673807960852],
+          "table": [0.33877306903622684, 0.8897932499795702]
+        }
+      },
+      {
+        "id": "0b9d1526-9888-41bc-b77d-88d62325e0b2",
+        "name": "Shapeshifter",
+        "collectorNumber": "345",
+        "rect": [326, 607, 134, 33],
+        "score": {
+          "inspect": [0.4143668903011099, 0.8447588364744603],
+          "table": [0.3166229370759653, 0.8027777777777779]
+        }
+      }
+    ],
+    "summary": {
+      "inspect": {
+        "before": 0.3269301907894731,
+        "after": 0.8049584236251287,
+        "improved": 18,
+        "regressed": 0
+      },
+      "table": {
+        "before": 0.3341991218956051,
+        "after": 0.7891348734668076,
+        "improved": 18,
+        "regressed": 0
+      }
+    },
+    "selection": "Original fifteen plus all three wide-expression cards. Fifth Edition is now exploratory development, including its former holdouts.",
+    "sweep": [
+      {
+        "id": "center-control",
+        "median": 0.7873212894015633,
+        "wideMedian": 0.4479779296507618,
+        "regressions": []
+      },
+      {
+        "id": "right-449.5",
+        "median": 0.652196523105772,
+        "wideMedian": 0.600950718528033,
+        "regressions": [
+          "Samite Healer",
+          "Tundra Wolves",
+          "Phantom Monster",
+          "Water Elemental",
+          "Lord of the Pit",
+          "Scathe Zombies",
+          "Uncle Istvan",
+          "Ali Baba",
+          "Crimson Manticore",
+          "Ley Druid",
+          "Scryb Sprites",
+          "Wall of Wood",
+          "Dancing Scimitar",
+          "Onulet"
+        ]
+      },
+      {
+        "id": "right-450",
+        "median": 0.7463565350146735,
+        "wideMedian": 0.6803747774579855,
+        "regressions": [
+          "Samite Healer",
+          "Tundra Wolves",
+          "Phantom Monster",
+          "Water Elemental",
+          "Lord of the Pit",
+          "Scathe Zombies",
+          "Crimson Manticore",
+          "Ley Druid",
+          "Scryb Sprites",
+          "Wall of Wood",
+          "Dancing Scimitar",
+          "Onulet"
+        ]
+      },
+      {
+        "id": "right-450.5",
+        "median": 0.7900685775630665,
+        "wideMedian": 0.7755435267904601,
+        "regressions": ["Onulet"]
+      },
+      {
+        "id": "right-451",
+        "median": 0.8049584236251287,
+        "wideMedian": 0.8070764644160493,
+        "regressions": []
+      },
+      {
+        "id": "right-451.5",
+        "median": 0.7966601866002632,
+        "wideMedian": 0.7938123781205756,
+        "regressions": ["Uncle Istvan", "Ali Baba", "Wall of Wood"]
+      }
+    ],
+    "control": "Centered sweep control byte-matches all 18 production crops of the first trial.",
+    "visualReview": "Scan/old/current crops reviewed for Angry Mob, Leviathan, Shapeshifter, Nightmare, Uncle Istvan and Onulet. Full width and right anchoring improve expression geometry; heavier numeric strokes and different star shapes remain.",
+    "productionSweepParity": "All 18 actual production inspect crops byte-match selected right-451 candidate, including after numeric/string type normalization."
+  },
+  "metric": {
+    "ordinaryRect": [393, 607, 67, 33],
+    "wideRect": [326, 607, 134, 33],
+    "wideRule": "Expected power/toughness length > 3, independent of measured scan. Re-score cloned old captures; preserve first-trial metrics."
+  },
+  "transfer": {
+    "set": "3ed",
+    "cohortFile": "../3ed/cohorts.json",
+    "statusAtFreeze": "Six reserved names, no Revised scans or component scores viewed. Six calibration names used only for frame landmarks. Shared frame transform rejected by validation; use identity with per-scan uncertainty flags. No per-scan fitting.",
+    "rule": "Freeze before transfer. Report failures and regressions; do not tune on reserved cards."
+  },
+  "evaluation": "Complete paired captures with exact reference, input, font, browser and alignment identity; same metric source. Exclude union of alignment warnings from paired aggregates but publish their scores. Verify pixels outside enlarged stats window unchanged at both tiers. MIR/TMP/M21 regression cohorts byte-identical.",
+  "reportTitle": "Natural-width stats across three old-border sets",
+  "reportDescription": "One shared right edge at 451 canonical pixels, with a 3px downward adjustment. Wide expressions extend left at natural width. Fourth Edition subtractive toughness uses its printed parentheses. Existing fonts, shadows, frame and art assets are retained.",
+  "note": "Fixed-region edge F1, not percent rendering accuracy. Fourth/Fifth Edition are development/exploratory. Only the six Revised reserved names provide fresh transfer evidence; whole-set results are exploratory."
+}

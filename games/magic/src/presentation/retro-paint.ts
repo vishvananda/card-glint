@@ -20,7 +20,8 @@ import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
 import {
   retroPrintDetails,
-  retroStatsOffset,
+  retroStatsPlacement,
+  retroStatsText,
   paintHistoricMana,
   paintOutlinedRetroSet,
   paintRetroCredits,
@@ -161,9 +162,14 @@ export function paintRetroFace(
   c.textBaseline = 'middle';
   if (face.power != null && face.toughness != null) {
     const [sx, sy, sw, sh] = retroPx(rect.stats);
-    const [dx, dy] = retroStatsOffset(face);
-    c.textAlign = 'center';
-    c.fillText(`${face.power}/${face.toughness}`, sx + sw / 2 + dx, sy + sh / 2 + dy, sw);
+    const placement = retroStatsPlacement(face);
+    c.textAlign = placement ? 'right' : 'center';
+    c.fillText(
+      retroStatsText(face),
+      placement?.right ?? sx + sw / 2,
+      sy + sh / 2 + (placement?.yOffset ?? 0),
+      placement?.maxWidth ?? sw,
+    );
   }
   if (details) paintRetroCredits(c, face, details);
   else if (face.artist) {
