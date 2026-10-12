@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": 1,
+  "candidateCommit": "c141f4e",
+  "candidateHash": "248dbdb547e0b656228e22b67ad554716909b4b208a8824aa1ca4ec71fc60fb0",
+  "status": "accepted-for-lea-and-2ed",
+  "scope": "Twenty-five reserved mana crops were first measured and visually reviewed after the candidate commit. All printed costs match. Review does not certify title/body text or whole-frame registration. Beta is not covered.",
+  "gate": "Each set has positive median F1 gains at both tiers and at least 90% of costs nonregressing within .02. All reserved crops reviewed. One table-tier exception is retained explicitly, not omitted from the numbers.",
+  "exception": {
+    "set": "2ed",
+    "name": "Sol Ring",
+    "tier": "table",
+    "beforeF1": 0.7915971336016492,
+    "afterF1": 0.760154052060856,
+    "referenceDisc": {
+      "x": 432,
+      "y": 46.5,
+      "radius": 12,
+      "status": "measured",
+      "margin": 9.245096111288053
+    },
+    "evidence": "The independent circular-edge detector supports the new x432/y46 position within half a design pixel. The enlarged table crop shows the printed narrow numeral and retained broader SVG with different disc contrast. Signed contrast improves .8085 to .8182; inspect F1 also improves. Exact cause of the table boundary-score loss is not isolated. Retain as an explicit small-size shape/measurement review, with no card-specific offset.",
+    "cropHash": "0d90684d778dd028694cfdb2b60d1c2d62339ae4c1c0f29868bdb94e86259499"
+  },
+  "assetReview": [
+    "Retained B.svg skull teeth/eye and jaw outlines differ visibly from both sets.",
+    "Retained G.svg canopy and root shapes differ; U.svg is rounder than the printed droplet.",
+    "R.svg flame contour and generic digit stroke weight differ. Sol Ring retains 1.svg as a named review example.",
+    "Cost disc hue/contrast differs from scans; these color differences are not calibration targets."
+  ],
+  "sets": [
+    {
+      "set": "lea",
+      "trialHash": "f4b69311ba4e66109111e56fd7ca69e8b731af51a0c87ac42c9ee3704dd16d7b",
+      "summary": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "count": 12,
+          "medianF1": 0.5052032673722859,
+          "medianContrast": 0.2569841768062024,
+          "medianCensus": 0.5673470261298699,
+          "medianDelta": 0,
+          "gains": [],
+          "regressions": []
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "count": 12,
+          "medianF1": 0.49919385126176846,
+          "medianContrast": 0.31648919943287523,
+          "medianCensus": 0.5804066009429081,
+          "medianDelta": 0,
+          "gains": [],
+          "regressions": []
+        },
+        {
+          "candidate": "refine-9",
+          "tier": "inspect",
+          "count": 12,
+          "medianF1": 0.8105891906295242,
+          "medianContrast": 0.8726064381229346,
+          "medianCensus": 0.8823691711845237,
+          "medianDelta": 0.31018333241531426,
+          "gains": [
+            "Benalish Hero",
+            "Serra Angel",
+            "Counterspell",
+            "Air Elemental",
+            "Drudge Skeletons",
+            "Howl from Beyond",
+            "Stone Rain",
+            "Dragon Whelp",
+            "Giant Growth",
+            "Craw Wurm",
+            "Sol Ring",
+            "Jayemdae Tome"
+          ],
+          "regressions": []
+        },
+        {
+          "candidate": "refine-9",
+          "tier": "table",
+          "count": 12,
+          "medianF1": 0.7902769441057009,
+          "medianContrast": 0.8501814672012491,
+          "medianCensus": 0.8773876796365523,
+          "medianDelta": 0.3178779285322627,
+          "gains": [
+            "Benalish Hero",
+            "Serra Angel",
+            "Counterspell",
+            "Air Elemental",
+            "Drudge Skeletons",
+            "Howl from Beyond",
+            "Stone Rain",
+            "Dragon Whelp",
+            "Giant Growth",
+            "Craw Wurm",
+            "Sol Ring",
+            "Jayemdae Tome"
+          ],
+          "regressions": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+          "name": "Benalish Hero",
+          "number": "4",
+          "inputHash": "b1cb2ae618e5962b22cc14b62560ad374f2f49b6cdd7ef0e165c6242d545c15c",
+          "referenceHash": "6e5de4ef1b34ef601791e962bbfc90f8e57833953295e131cac04347f61cee98",
+          "printedCostChecked": true,
+          "cropHash": "f747874c3b349607d332c55b0618e28011533bccd65b88f33e63e1510ce02cca",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.6298342541436464,
+                "meanDistance": 1.4302056383826303,
+                "censusSimilarity": 0.5885277246653919,
+                "contrastCorrelation": 0.43631219920385433
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.9092542677448338,
+                "meanDistance": 0.735056009859431,
+                "censusSimilarity": 0.8445506692160611,
+                "contrastCorrelation": 0.8872367033884868
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.555253912488023,
+                "meanDistance": 1.989135727642267,
+                "censusSimilarity": 0.6810707456978967,
+                "contrastCorrelation": 0.5531253959425794
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8128022929479907,
+                "meanDistance": 0.9825454416540704,
+                "censusSimilarity": 0.7606118546845124,
+                "contrastCorrelation": 0.7842756427797939
+              }
+            }
+          ]
+        },
+        {
+          "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+          "name": "Serra Angel",
+          "number": "39",
+          "inputHash": "12b3cfad63bd3891e63d8ebcad8133ed77f5176d8407615e10718e5ccfafea79",
+          "referenceHash": "08fd162ebb84008e27072894b6ba2d65b75ecedf6fa3da96b58076275445961a",
+          "printedCostChecked": true,
+          "cropHash": "1a50e47cfe74802d7b6bb7ef98514ae836d502215a86092514d074ac8409b535",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.5010566977844337,
+                "meanDistance": 1.782161369294207,
+                "censusSimilarity": 0.5216148624508753,
+                "contrastCorrelation": 0.25588120416651167
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.9337020467115228,
+                "meanDistance": 0.6282735904043443,
+                "censusSimilarity": 0.8670358461355246,
+                "contrastCorrelation": 0.8717463539896844
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4631494160289972,
+                "meanDistance": 2.0091473481781232,
+                "censusSimilarity": 0.570441824461117,
+                "contrastCorrelation": 0.33728015383746923
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8846937636089554,
+                "meanDistance": 0.774733223720641,
+                "censusSimilarity": 0.8148148148148148,
+                "contrastCorrelation": 0.7913944488397064
+              }
+            }
+          ]
+        },
+        {
+          "id": "0df55e3f-14de-46ef-b6b1-616618724d9e",
+          "name": "Counterspell",
+          "number": "54",
+          "inputHash": "ab083e581bf9b14c10c1c3005685deaa6d88b4a3fd2c74fabda89eda644862a3",
+          "referenceHash": "a6d76ed9b1dc229344c00731832fb1c8a789f25bcab21778ef9cc8f906e955f2",
+          "printedCostChecked": true,
+          "cropHash": "0bb563ee9983346f536d1e333823f5db1054d93538108c0e2d0c2d05aeee8f92",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.5485293553706332,
+                "meanDistance": 1.6639348299762282,
+                "censusSimilarity": 0.6948538294273979,
+                "contrastCorrelation": 0.33379885516176755
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.8871287128712871,
+                "meanDistance": 0.8245421503530257,
+                "censusSimilarity": 0.9029556253523395,
+                "contrastCorrelation": 0.8734665222561847
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.5221262817053427,
+                "meanDistance": 1.7361396661051414,
+                "censusSimilarity": 0.6909881613916405,
+                "contrastCorrelation": 0.3532517341622882
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.8631837927190251,
+                "meanDistance": 0.8014003676719285,
+                "censusSimilarity": 0.9044052508657485,
+                "contrastCorrelation": 0.8778962369583418
+              }
+            }
+          ]
+        },
+        {
+          "id": "69c3b2a3-0daa-4d42-832d-fcdfda6555ea",
+          "name": "Air Elemental",
+          "number": "46",
+          "inputHash": "9391af26c788ee048411c16fe26a776592202cb1e99337cb6783cf6bc3ce85b2",
+          "referenceHash": "9446e3aa061d30343d402cf223777043905bae3718064f239f4a8f23bea9a64c",
+          "printedCostChecked": true,
+          "cropHash": "d2e77478d1c22081d4bd01f1703e990001afefdb4c9b0fe5336cec531e355b4c",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4347337676926533,
+                "meanDistance": 1.905126839220145,
+                "censusSimilarity": 0.6015085158150851,
+                "contrastCorrelation": 0.18796873842135364
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8600806060017481,
+                "meanDistance": 0.8064777671199954,
+                "censusSimilarity": 0.8864720194647202,
+                "contrastCorrelation": 0.8989518952423479
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.3877629652462048,
+                "meanDistance": 2.016078506516142,
+                "censusSimilarity": 0.5883698296836983,
+                "contrastCorrelation": 0.1990976485238851
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.7941368015783324,
+                "meanDistance": 0.9548646070224922,
+                "censusSimilarity": 0.8935766423357664,
+                "contrastCorrelation": 0.8929563083664044
+              }
+            }
+          ]
+        },
+        {
+          "id": "23614289-0d73-4747-a849-5cb67cc97d6a",
+          "name": "Drudge Skeletons",
+          "number": "106",
+          "inputHash": "aed14871ec41897810d3ba3a71674018aadbdaf88e0c6465e63e65ceabb74852",
+          "referenceHash": "9a598fd6b11453100b209340f31a3f8056b4da188d51984cc4acd8f9c2295892",
+          "printedCostChecked": true,
+          "cropHash": "9370995d4dc3f5309d146487f7ed75f458648b13224205bbeee516c8da3a6524",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.5093498369601382,
+                "meanDistance": 1.6227363392487149,
+                "censusSimilarity": 0.4733468051006898,
+                "contrastCorrelation": 0.03715625902958683
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.8052773915747112,
+                "meanDistance": 0.8038315606105065,
+                "censusSimilarity": 0.8782663229043273,
+                "contrastCorrelation": 0.8649891604905786
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.45219134599320604,
+                "meanDistance": 1.759787398025304,
+                "censusSimilarity": 0.4816389101804752,
+                "contrastCorrelation": 0.07524040076909704
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.8059242043059274,
+                "meanDistance": 0.865466989957056,
+                "censusSimilarity": 0.8725524353703574,
+                "contrastCorrelation": 0.8628441794969633
+              }
+            }
+          ]
+        },
+        {
+          "id": "67ec17e1-174b-4d07-a27f-91a333c4b2fb",
+          "name": "Howl from Beyond",
+          "number": "111",
+          "inputHash": "744061877177838b257041af1919ab8dfa216c3fb4d8f2e257a1b0b1eaf4b5cb",
+          "referenceHash": "3b6f6146fe22d9f5a3905c582af5e1e19a0df5c0c8cf05781c115f402d72b604",
+          "printedCostChecked": true,
+          "cropHash": "dba2dfa15eaa3cb5caaddf28f47b230e67f1a78413c44baaa89d0958b555faf0",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.5396379573758854,
+                "meanDistance": 1.4697058987826024,
+                "censusSimilarity": 0.5609837823348076,
+                "contrastCorrelation": 0.2580871494458931
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.7385419945282425,
+                "meanDistance": 1.1136496333690484,
+                "censusSimilarity": 0.856386543358799,
+                "contrastCorrelation": 0.7828831587992097
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.523124572470928,
+                "meanDistance": 1.485811955641795,
+                "censusSimilarity": 0.5724433722021177,
+                "contrastCorrelation": 0.2956982450282812
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.72915855148054,
+                "meanDistance": 1.0713562097965084,
+                "censusSimilarity": 0.8600723763570567,
+                "contrastCorrelation": 0.7880972275826935
+              }
+            }
+          ]
+        },
+        {
+          "id": "57ff74cb-a2ed-4123-ac42-f72f9820049e",
+          "name": "Stone Rain",
+          "number": "177",
+          "inputHash": "abac238730cf5f480de295c8772584f9b45ebf6dea2f1139c1be072dd75020d1",
+          "referenceHash": "c29379ae1540b976fb5dabf9074dee5ae57ff666450ab27b959c3daaf30d11ed",
+          "printedCostChecked": true,
+          "cropHash": "efbd83fdc587df85f0237b94f8a31e8c53bd72ed793ec5a04a3b11aa648f1e9b",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.46051068883610446,
+                "meanDistance": 1.9025181740443595,
+                "censusSimilarity": 0.511183662128369,
+                "contrastCorrelation": 0.13752580013835317
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.78494979905216,
+                "meanDistance": 0.952243188053356,
+                "censusSimilarity": 0.8514170602945262,
+                "contrastCorrelation": 0.7677193146465916
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.40106382978723404,
+                "meanDistance": 1.9869869533823254,
+                "censusSimilarity": 0.5236871353153654,
+                "contrastCorrelation": 0.16468581891032072
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.6957621758380771,
+                "meanDistance": 1.2233410244923342,
+                "censusSimilarity": 0.8448180050013893,
+                "contrastCorrelation": 0.7396887303871658
+              }
+            }
+          ]
+        },
+        {
+          "id": "6bbf1eab-bc32-4835-b566-8634b1fe81b0",
+          "name": "Dragon Whelp",
+          "number": "141",
+          "inputHash": "a69231d55157673239b7d24abfb7126f68c9f237dc4b94695a61276533139c12",
+          "referenceHash": "80b7af3d28c744a6d208aea61f3eb27cf33391fd1bf146a4c40a923587bf96c8",
+          "printedCostChecked": true,
+          "cropHash": "0d939ddcc9c36e46d1447dad29a1a551f518d47a1fbc76c57a770e038df16e7f",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.456215712659145,
+                "meanDistance": 1.8884711785722914,
+                "censusSimilarity": 0.5410491257285596,
+                "contrastCorrelation": 0.09725985223471623
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8099334013393698,
+                "meanDistance": 1.0077379232435693,
+                "censusSimilarity": 0.8602830974188177,
+                "contrastCorrelation": 0.8198941029637693
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.39348269898443494,
+                "meanDistance": 2.0049579521867273,
+                "censusSimilarity": 0.5278101582014988,
+                "contrastCorrelation": 0.10835704571315279
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.7734674329501916,
+                "meanDistance": 1.0824783686655213,
+                "censusSimilarity": 0.8469192339716902,
+                "contrastCorrelation": 0.7980997441929023
+              }
+            }
+          ]
+        },
+        {
+          "id": "367dbefe-3366-408e-9fcf-7dc00f8cc201",
+          "name": "Giant Growth",
+          "number": "197",
+          "inputHash": "f5584dc6a9a34689065c87e214fffba7f1a9ff7aef6f4fd9ae6fd3943445e5d6",
+          "referenceHash": "969032b90784c72d5a3850e29fa34a8fcc4e7947131bf9fb8113905a6e52e821",
+          "printedCostChecked": true,
+          "cropHash": "051e18c2cf42c394bc1b6dda055e126752c5847a543e8bcef3e758b8e38657e5",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5611850006672301,
+                "meanDistance": 1.548864290722721,
+                "censusSimilarity": 0.6578781180928324,
+                "contrastCorrelation": 0.5440113637385265
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8112449799196787,
+                "meanDistance": 1.1700567259166348,
+                "censusSimilarity": 0.8910640985159457,
+                "contrastCorrelation": 0.8995731917579318
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.6135922330097088,
+                "meanDistance": 1.4313023204345483,
+                "censusSimilarity": 0.6760341016735081,
+                "contrastCorrelation": 0.5887893927276204
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.758804437339534,
+                "meanDistance": 1.3565708351239265,
+                "censusSimilarity": 0.882222923902747,
+                "contrastCorrelation": 0.8780251634458524
+              }
+            }
+          ]
+        },
+        {
+          "id": "bfed1a95-bd67-4e16-a781-81866028af2f",
+          "name": "Craw Wurm",
+          "number": "190",
+          "inputHash": "85a846a7a92b92dc6c5f1ed6581a0b221689497a70c98331fa8489b02bc42233",
+          "referenceHash": "83a1bd8121fab037d7ee0d95a9535c735cf1154e6630548587bda0bfe2ae2d94",
+          "printedCostChecked": true,
+          "cropHash": "a89d66a494f1f68fc5eba9b9b57d0899a1f6ccb54524acf93b3d3228110d6d99",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4834071153908295,
+                "meanDistance": 1.9072957530880854,
+                "censusSimilarity": 0.5303908534964106,
+                "contrastCorrelation": 0.10235973626776605
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8717423017781808,
+                "meanDistance": 0.7192349115861236,
+                "censusSimilarity": 0.8944961446423824,
+                "contrastCorrelation": 0.868263226946291
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4762614208181942,
+                "meanDistance": 1.8816142435792265,
+                "censusSimilarity": 0.5387928742355756,
+                "contrastCorrelation": 0.12379991560666045
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8649291315441441,
+                "meanDistance": 0.7481571137808509,
+                "censusSimilarity": 0.8854559957458122,
+                "contrastCorrelation": 0.837518754905535
+              }
+            }
+          ]
+        },
+        {
+          "id": "c4300d24-1cae-4dd5-be7e-38cc677cf5bd",
+          "name": "Sol Ring",
+          "number": "269",
+          "inputHash": "e81dea190ec4be305ed51a54c546b3d0e48bb451b30add69e4edba57a0c5d305",
+          "referenceHash": "f59b58072fdd28211818e0d9c9ede25adf93480ab0f3f6a812699d7c5271c395",
+          "printedCostChecked": true,
+          "cropHash": "04b7f3cf06a7ec09292cdd4fddb1509115d08333dd280adf450afb66ce82c99e",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5788933470187553,
+                "meanDistance": 1.318836542277729,
+                "censusSimilarity": 0.711764705882353,
+                "contrastCorrelation": 0.5869313189581976
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7943699467560639,
+                "meanDistance": 0.926829081420367,
+                "censusSimilarity": 0.9217993079584775,
+                "contrastCorrelation": 0.906389196093379
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.6818620201890311,
+                "meanDistance": 1.3513094581515583,
+                "censusSimilarity": 0.7896193771626298,
+                "contrastCorrelation": 0.6324824993110437
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7864170866330694,
+                "meanDistance": 1.0908178705253349,
+                "censusSimilarity": 0.9404844290657439,
+                "contrastCorrelation": 0.8988384776323615
+              }
+            }
+          ]
+        },
+        {
+          "id": "cac8c421-5b92-481d-b2de-560c0231ab58",
+          "name": "Jayemdae Tome",
+          "number": "254",
+          "inputHash": "f586052b84774eb88f2ff5f37b821fa4255bd9adbe55d1bfe8af03c770a7e3ae",
+          "referenceHash": "7f29a589339604b0350471c37ba9647f8106f659d813a2688f303f2bcb2c81b2",
+          "printedCostChecked": true,
+          "cropHash": "e7a43b9778505e7093157889a6197fbb0cad6caf8fcecb300591c51a5bf425f7",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5004601932811781,
+                "meanDistance": 1.499416852392787,
+                "censusSimilarity": 0.5737102699249321,
+                "contrastCorrelation": 0.3430183382838284
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7918781725888325,
+                "meanDistance": 0.9197194323308066,
+                "censusSimilarity": 0.9137517968375659,
+                "contrastCorrelation": 0.9033652602037247
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5658056580565806,
+                "meanDistance": 1.4907475617650081,
+                "censusSimilarity": 0.6532502795080658,
+                "contrastCorrelation": 0.40468409624921853
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7717381181510569,
+                "meanDistance": 1.0479733093027779,
+                "censusSimilarity": 0.9415428845232391,
+                "contrastCorrelation": 0.875351784741091
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "set": "2ed",
+      "trialHash": "09a7acb84e199b2e7a9ae6a5e88850d255546bb2b29303b07db74045d94d6344",
+      "summary": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "count": 13,
+          "medianF1": 0.5030317056236981,
+          "medianContrast": 0.19360236956049395,
+          "medianCensus": 0.5595912336862842,
+          "medianDelta": 0,
+          "gains": [],
+          "regressions": []
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "count": 13,
+          "medianF1": 0.4771986153614609,
+          "medianContrast": 0.21704137511787047,
+          "medianCensus": 0.572826889928589,
+          "medianDelta": 0,
+          "gains": [],
+          "regressions": []
+        },
+        {
+          "candidate": "refine-9",
+          "tier": "inspect",
+          "count": 13,
+          "medianF1": 0.8078198337854712,
+          "medianContrast": 0.7577231254866186,
+          "medianCensus": 0.815732546705998,
+          "medianDelta": 0.2349695608337521,
+          "gains": [
+            "Benalish Hero",
+            "Serra Angel",
+            "Counterspell",
+            "Air Elemental",
+            "Drudge Skeletons",
+            "Howl from Beyond",
+            "Stone Rain",
+            "Dragon Whelp",
+            "Giant Growth",
+            "Craw Wurm",
+            "Sol Ring",
+            "Jayemdae Tome",
+            "Force of Nature"
+          ],
+          "regressions": []
+        },
+        {
+          "candidate": "refine-9",
+          "tier": "table",
+          "count": 13,
+          "medianF1": 0.744106484203774,
+          "medianContrast": 0.7470230319376742,
+          "medianCensus": 0.8171632602807191,
+          "medianDelta": 0.24947903023598694,
+          "gains": [
+            "Benalish Hero",
+            "Serra Angel",
+            "Counterspell",
+            "Air Elemental",
+            "Drudge Skeletons",
+            "Howl from Beyond",
+            "Stone Rain",
+            "Dragon Whelp",
+            "Giant Growth",
+            "Craw Wurm",
+            "Jayemdae Tome",
+            "Force of Nature"
+          ],
+          "regressions": ["Sol Ring"]
+        }
+      ],
+      "rows": [
+        {
+          "id": "9404e779-2065-4c4f-95d1-6997c7fea156",
+          "name": "Benalish Hero",
+          "number": "4",
+          "inputHash": "76c0ab0b60e8f7de485f3b2139c11b4d082e449caf915e077ec66096cec4ac8a",
+          "referenceHash": "225f9e281adb4c2108419421f9682d33bcd3592ca9c57f63f9b311c363530aa6",
+          "printedCostChecked": true,
+          "cropHash": "360667193592fa3357957f28ca9351546c6afa4389863162e697b726221eb926",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7179226069246435,
+                "meanDistance": 1.1679232160060986,
+                "censusSimilarity": 0.6133439237490071,
+                "contrastCorrelation": 0.35185268503809397
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8229251589760312,
+                "meanDistance": 0.8746597321764115,
+                "censusSimilarity": 0.7334392374900714,
+                "contrastCorrelation": 0.7465678487338858
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.6530150469510126,
+                "meanDistance": 1.6240566045786722,
+                "censusSimilarity": 0.6749801429706116,
+                "contrastCorrelation": 0.4498918359655716
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.744106484203774,
+                "meanDistance": 1.1300539705165846,
+                "censusSimilarity": 0.6803812549642574,
+                "contrastCorrelation": 0.630753800336458
+              }
+            }
+          ]
+        },
+        {
+          "id": "1941cf19-b1f6-4148-a1de-6d03531f2f1c",
+          "name": "Serra Angel",
+          "number": "40",
+          "inputHash": "fac29cda89a3565addb980065a80907c51152f9d39a59d8f44ded7c40f06624b",
+          "referenceHash": "bc24665f390b3d00037fbe994179985ab65ff96e44a7d9a1d1ce042ecf371417",
+          "printedCostChecked": true,
+          "cropHash": "d7e234b0d577fe09aea6b181d2e0c2ee058dabab3042daae8cf5b5c11e0c983a",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.48689191280976035,
+                "meanDistance": 1.832181288227917,
+                "censusSimilarity": 0.5090499045856705,
+                "contrastCorrelation": 0.21850640755651274
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.9022801302931597,
+                "meanDistance": 0.757221783006873,
+                "censusSimilarity": 0.800959925981611,
+                "contrastCorrelation": 0.8279580481786593
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.48502981656108785,
+                "meanDistance": 2.032412648079408,
+                "censusSimilarity": 0.5569305499334991,
+                "contrastCorrelation": 0.292442225012611
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8529648995939256,
+                "meanDistance": 0.7932142724321085,
+                "censusSimilarity": 0.7686925345515526,
+                "contrastCorrelation": 0.7522408895177428
+              }
+            }
+          ]
+        },
+        {
+          "id": "7c666b4b-c4ff-40ca-9d16-c76aafebaa83",
+          "name": "Counterspell",
+          "number": "55",
+          "inputHash": "32707d23841fa1eb4b673769d3d8161e8683e68509464065c07001ef78cab00e",
+          "referenceHash": "1fe5612231183dbdd00c5b6f75fc317a30ff1f666126f8978d6b0360df600ce3",
+          "printedCostChecked": true,
+          "cropHash": "7c42c56d9126494ac2a67f1d2aab3f6ea9f07a5d311984440d8a507452652194",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.532490456056812,
+                "meanDistance": 1.573809298419131,
+                "censusSimilarity": 0.6714378133592107,
+                "contrastCorrelation": 0.47235418186259176
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.8119460578411077,
+                "meanDistance": 0.938053839798123,
+                "censusSimilarity": 0.8921235646126476,
+                "contrastCorrelation": 0.8844440796661911
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.4771986153614609,
+                "meanDistance": 1.749072715304827,
+                "censusSimilarity": 0.6721656153970564,
+                "contrastCorrelation": 0.47489965009702373
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.8123711340206186,
+                "meanDistance": 0.9546594343190958,
+                "censusSimilarity": 0.8919618308264596,
+                "contrastCorrelation": 0.8849367846060028
+              }
+            }
+          ]
+        },
+        {
+          "id": "ef5b8140-a157-4c20-a428-fa7250ab34e1",
+          "name": "Air Elemental",
+          "number": "47",
+          "inputHash": "1820b7be9f5d61195a1085eabc43a3e860204bc73d5994e99487704168b3a2c8",
+          "referenceHash": "324c3c4d99962779b4bd6056c6cb2571e60d0868a5edb4396ed6600bd24c17e0",
+          "printedCostChecked": true,
+          "cropHash": "537bee5436f65b01b808eaff2f5feee77a12408825bcffa733b1eda44ae16643",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.5030317056236981,
+                "meanDistance": 1.7896199761352665,
+                "censusSimilarity": 0.6175732980712234,
+                "contrastCorrelation": 0.07150741224301194
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8067280830360986,
+                "meanDistance": 0.8936857172213817,
+                "censusSimilarity": 0.8280060188773881,
+                "contrastCorrelation": 0.7742576411493669
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.45651453606096676,
+                "meanDistance": 1.9350809467890282,
+                "censusSimilarity": 0.6036660435000684,
+                "contrastCorrelation": 0.09080571108940826
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.7510482092040345,
+                "meanDistance": 1.0237961952936687,
+                "censusSimilarity": 0.8371711276275592,
+                "contrastCorrelation": 0.7796890386883805
+              }
+            }
+          ]
+        },
+        {
+          "id": "4eb88d79-048b-4f7c-9ca0-4d9066af805e",
+          "name": "Drudge Skeletons",
+          "number": "107",
+          "inputHash": "492381b5bc8bec29ac9b3bb551d06bed6bf607000e5c31113a403b4109940448",
+          "referenceHash": "5f1ccc449f9edb6c45a91262256dc28dc7000208cad1c2143e1fed2953957c38",
+          "printedCostChecked": true,
+          "cropHash": "b0ea094fff19ace0e5bacd6449053a87180f42e82abbe8f49aba8fec740f5c78",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.47253554027898287,
+                "meanDistance": 1.8107901489155815,
+                "censusSimilarity": 0.4687625957275292,
+                "contrastCorrelation": -0.2667216602120376
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.618817792189837,
+                "meanDistance": 1.2515171908375966,
+                "censusSimilarity": 0.6249784073242356,
+                "contrastCorrelation": 0.41038576502661606
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.43181365528883997,
+                "meanDistance": 1.9813456979260158,
+                "censusSimilarity": 0.44054816606207176,
+                "contrastCorrelation": -0.27510703538846243
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.5736788979086994,
+                "meanDistance": 1.345651901032688,
+                "censusSimilarity": 0.6495652674612772,
+                "contrastCorrelation": 0.44647412009293613
+              }
+            }
+          ]
+        },
+        {
+          "id": "78694fa9-85dc-4671-87e9-a2bccdc9fcce",
+          "name": "Howl from Beyond",
+          "number": "112",
+          "inputHash": "2153dd7f5895763eaffd364d31c6a58cb3c22f7a55b6fe825bc37ef5808a0a39",
+          "referenceHash": "cbc8929d1a50f15a6b912ee94e5521276caaa2d40e77379b2ad010c4add319e6",
+          "printedCostChecked": true,
+          "cropHash": "70357f1759d76796d0ff398ff176756557eb7ea87c55adb0f471e7ded59291db",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.5518001704986122,
+                "meanDistance": 1.3939708464974523,
+                "censusSimilarity": 0.5595912336862842,
+                "contrastCorrelation": 0.19360236956049395
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.7867697313323643,
+                "meanDistance": 0.926934309292937,
+                "censusSimilarity": 0.8112533858655504,
+                "contrastCorrelation": 0.7099090387561948
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.539085346563684,
+                "meanDistance": 1.453882771751191,
+                "censusSimilarity": 0.572826889928589,
+                "contrastCorrelation": 0.21704137511787047
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.788564376799671,
+                "meanDistance": 0.9084954404619028,
+                "censusSimilarity": 0.8171632602807191,
+                "contrastCorrelation": 0.733542935208448
+              }
+            }
+          ]
+        },
+        {
+          "id": "cdb490bb-43fe-49ab-a094-438585677801",
+          "name": "Stone Rain",
+          "number": "178",
+          "inputHash": "32cc296dca809a37600a86080f94ae3eaba8cbc1b08a7a740e4a07ad26d99874",
+          "referenceHash": "d3aa4297bf767f288619c3f9ca5988576c798a9dbfd69364bd51bf7b81a533f7",
+          "printedCostChecked": true,
+          "cropHash": "f7fd8405298e43df6b2866756adf8fb5da25530dafd6b334a6cd0ebfd1e83988",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.3718431882174572,
+                "meanDistance": 1.974816385193863,
+                "censusSimilarity": 0.44634546050475254,
+                "contrastCorrelation": -0.05952837200402024
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.7639803784162579,
+                "meanDistance": 1.0127673279809843,
+                "censusSimilarity": 0.815732546705998,
+                "contrastCorrelation": 0.728402700120902
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.32362747277172704,
+                "meanDistance": 2.1242888194616443,
+                "censusSimilarity": 0.450868567682727,
+                "contrastCorrelation": -0.04224817507332336
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [389, 31, 65, 31],
+                "edgeF1": 0.7019570322692876,
+                "meanDistance": 1.2411996780637886,
+                "censusSimilarity": 0.821501147164864,
+                "contrastCorrelation": 0.7290854976579786
+              }
+            }
+          ]
+        },
+        {
+          "id": "7ad8ab3d-8a77-4fd3-8d5a-ac1e8a09e3bc",
+          "name": "Dragon Whelp",
+          "number": "142",
+          "inputHash": "16dadf3cbf68d5f073f90983933dc0e728d40abb014e759fc18f3cc749db5273",
+          "referenceHash": "a8b900fc0769b2d9115e75826497ad7b9c10898fa86b97c4ca9f36b01c5cb612",
+          "printedCostChecked": true,
+          "cropHash": "57af72a53b4719af0268b05b78349c03f3f5abac7ef7ec0c72a7eb076b966c5a",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4635941594094175,
+                "meanDistance": 1.7756584530026651,
+                "censusSimilarity": 0.47858090469465486,
+                "contrastCorrelation": -0.03803415553074737
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.8198614318706698,
+                "meanDistance": 0.8508634695279956,
+                "censusSimilarity": 0.8186331150768177,
+                "contrastCorrelation": 0.7577231254866186
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.3941842129028224,
+                "meanDistance": 1.9766863756080464,
+                "censusSimilarity": 0.4582958873625198,
+                "contrastCorrelation": -0.032331373156719405
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.7413790300291024,
+                "meanDistance": 1.0538131288879864,
+                "censusSimilarity": 0.8148243249026405,
+                "contrastCorrelation": 0.7470230319376742
+              }
+            }
+          ]
+        },
+        {
+          "id": "211ba440-1c29-403a-8dd7-aa5792d20a1a",
+          "name": "Giant Growth",
+          "number": "198",
+          "inputHash": "361b307047c4fdb015325c29b574369a9a9474ce9fab58c4f84cf0f9c1d4691b",
+          "referenceHash": "d14e941bbdfbe769506d52d84cfec9ae9058e76af5799044c5d770d5e89e1f9b",
+          "printedCostChecked": true,
+          "cropHash": "668453ca04935746537aa5fa4e69be5d9712e02da83c70bd0444ef0e491580a1",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5990469707283866,
+                "meanDistance": 1.3498300992049812,
+                "censusSimilarity": 0.7061283345349676,
+                "contrastCorrelation": 0.5390181880149036
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8099328665271059,
+                "meanDistance": 1.1588346082577732,
+                "censusSimilarity": 0.8467195385724585,
+                "contrastCorrelation": 0.7950403640472319
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.6278547854785478,
+                "meanDistance": 1.3198430070690081,
+                "censusSimilarity": 0.7343907714491709,
+                "contrastCorrelation": 0.5932043294550343
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.717741935483871,
+                "meanDistance": 1.264744413961116,
+                "censusSimilarity": 0.8673395818312906,
+                "contrastCorrelation": 0.789529933462374
+              }
+            }
+          ]
+        },
+        {
+          "id": "a5bbaf11-6bf1-42a1-a8be-66bc47485a6c",
+          "name": "Craw Wurm",
+          "number": "191",
+          "inputHash": "6b6411d91a54c67f3b2267bb0a95cf7d1aeb2da2c2e7950be345944631b9831d",
+          "referenceHash": "02995039b337efc83d734f9579e659445f3c615e3c82fcdb71df863e085a0f49",
+          "printedCostChecked": true,
+          "cropHash": "90f3d59727081dd94e7bb1f2587b0d61d9beafb27c24359be49f968ed7dd1f14",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4681004649582812,
+                "meanDistance": 1.9301510381853244,
+                "censusSimilarity": 0.5311395548763015,
+                "contrastCorrelation": -0.030366885034643958
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.698984991622959,
+                "meanDistance": 1.1309892168725721,
+                "censusSimilarity": 0.7452001146241284,
+                "contrastCorrelation": 0.6089642066100308
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.4526144200626959,
+                "meanDistance": 1.9771268344695216,
+                "censusSimilarity": 0.5408826057885184,
+                "contrastCorrelation": -0.009914634206228158
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [362, 31, 92, 31],
+                "edgeF1": 0.6831865820618851,
+                "meanDistance": 1.180253431855928,
+                "censusSimilarity": 0.7671219791766167,
+                "contrastCorrelation": 0.6286034077950373
+              }
+            }
+          ]
+        },
+        {
+          "id": "e07f656c-97b5-4147-821a-edbb49f34e19",
+          "name": "Sol Ring",
+          "number": "270",
+          "inputHash": "c92a76d42d925e8c0e5320594a7e25cca20af3211ec4ff97c4685cd7ccd6f84d",
+          "referenceHash": "68241faa9c986f2349401bd53c36725ed652c65bffc3b7b0ae73b58c1e502f2a",
+          "printedCostChecked": true,
+          "cropHash": "000ec37967a7ecbd3273787b8214da0d51cefb32be511d17ab660f907a2fc6e0",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7869977131656323,
+                "meanDistance": 1.0230073802592248,
+                "censusSimilarity": 0.837441230944579,
+                "contrastCorrelation": 0.7989093178498174
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8078198337854712,
+                "meanDistance": 0.9506909246586608,
+                "censusSimilarity": 0.8593816783017524,
+                "contrastCorrelation": 0.8002320930562781
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.7915971336016492,
+                "meanDistance": 0.9945544399219495,
+                "censusSimilarity": 0.8828893004701525,
+                "contrastCorrelation": 0.8084743442188035
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.760154052060856,
+                "meanDistance": 1.1230405482740564,
+                "censusSimilarity": 0.8783302464738567,
+                "contrastCorrelation": 0.8182298784984307
+              }
+            }
+          ]
+        },
+        {
+          "id": "e470c00b-57ac-48d4-b1e6-74b74872e620",
+          "name": "Jayemdae Tome",
+          "number": "255",
+          "inputHash": "4f2e9204accedfbd189fa022cfedce0ea77a60e76253e5dead64df0a2852140e",
+          "referenceHash": "67152e791f81338cdbe4b6d8c69791a85630a11868637e63a6a81efd7af91d8c",
+          "printedCostChecked": true,
+          "cropHash": "466a5c4f6d9672bf63065394576f2a9f09224b9dbe7fd299dc42716cb4c24b6a",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5125184094256259,
+                "meanDistance": 1.45255613727401,
+                "censusSimilarity": 0.5205357142857143,
+                "contrastCorrelation": 0.19866522025025138
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8287644020659516,
+                "meanDistance": 0.7674392029879585,
+                "censusSimilarity": 0.8290816326530612,
+                "contrastCorrelation": 0.8107313151198224
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.5540778721358757,
+                "meanDistance": 1.457451501136185,
+                "censusSimilarity": 0.5644132653061225,
+                "contrastCorrelation": 0.25275396156017454
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [416, 31, 38, 31],
+                "edgeF1": 0.8135326514555468,
+                "meanDistance": 0.8922503619274615,
+                "censusSimilarity": 0.8623724489795919,
+                "contrastCorrelation": 0.8231317842993495
+              }
+            }
+          ]
+        },
+        {
+          "id": "247a2ba4-aa5d-4970-b886-90196f684f80",
+          "name": "Force of Nature",
+          "number": "195",
+          "inputHash": "781c7d0f54e1fa83f4f8cd9acdd22117792d47f168ef9569632b8c0b21c27bc4",
+          "referenceHash": "46834d1565854660acff85eeb096a0d0b8d3730f057cf7983fbd9c9104d1e33c",
+          "printedCostChecked": true,
+          "cropHash": "727d87c0b70e5f4f0e1cb6e2bbb7b331bed0f0ae4e1425c95371e0a6b0771c7f",
+          "scores": [
+            {
+              "tier": "inspect",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [308, 31, 146, 31],
+                "edgeF1": 0.48802444981521975,
+                "meanDistance": 1.8414811889193214,
+                "censusSimilarity": 0.5674717244714289,
+                "contrastCorrelation": 0.0607067521992781
+              }
+            },
+            {
+              "tier": "inspect",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [308, 31, 146, 31],
+                "edgeF1": 0.6189429249846099,
+                "meanDistance": 1.3310033343935417,
+                "censusSimilarity": 0.6314375520511512,
+                "contrastCorrelation": 0.3603367645140701
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "control",
+              "row": {
+                "id": "row",
+                "rect": [308, 31, 146, 31],
+                "edgeF1": 0.43549454914595925,
+                "meanDistance": 2.1743203799506925,
+                "censusSimilarity": 0.5755581226660935,
+                "contrastCorrelation": 0.05859430177041486
+              }
+            },
+            {
+              "tier": "table",
+              "candidate": "refine-9",
+              "row": {
+                "id": "row",
+                "rect": [308, 31, 146, 31],
+                "edgeF1": 0.5868005404155769,
+                "meanDistance": 1.4522608920856732,
+                "censusSimilarity": 0.6567982161566773,
+                "contrastCorrelation": 0.40662029799121624
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
