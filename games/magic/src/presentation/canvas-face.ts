@@ -9,7 +9,12 @@ import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.
 import { COLORLESS_PLATE_REPAINT, paintPlaneswalkerType } from './planeswalker-type.js';
 import { paintPlaneswalkerFrameImage } from './planeswalker-lower-frame.js';
 import { setSymbolCrop } from './set-symbols.js';
-import { hasCoreSetShield, paintCoreSetSymbol } from './core-set-symbol.js';
+import {
+  hasCoreSetShield,
+  NORMAL_CORE_SYMBOL_SCALE,
+  paintCoreSetSymbol,
+} from './core-set-symbol.js';
+import { paintNormalTypeBevel } from './normal-type-bevel.js';
 import {
   cardStock,
   faceStats,
@@ -94,7 +99,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v49',
+    'canvas-face-v50',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -491,7 +496,10 @@ export function paintAssembledFace(
     }
     const boxes = images.get(assets.boxes);
     if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate);
-    else draw(assets.boxes, rects.type, 'bottom');
+    else {
+      draw(assets.boxes, rects.type, 'bottom');
+      if (kind === 'normal' && boxes) paintNormalTypeBevel(context, px(rects.type), profile.boxes);
+    }
   }
   context.fillStyle = '#17140f';
   context.textBaseline = 'middle';
@@ -531,6 +539,7 @@ export function paintAssembledFace(
   const setCrop = setSymbolCrop(face),
     coreShield = hasCoreSetShield(face),
     corePlacement = coreShield && kind === 'normal',
+    symbolGrowth = corePlacement ? NORMAL_CORE_SYMBOL_SCALE : 1,
     setMargin = FACE_TEXT.setMargin + (corePlacement ? 2 : 0);
   const [, typeY, , typeH] = px(rects.type),
     typeCenter =
@@ -541,7 +550,11 @@ export function paintAssembledFace(
         (FACE_TEXT.setHeight * setIcon.width * setCrop[2]) / (setIcon.height * setCrop[3]),
       )
     : 0;
-  const typeWidth = plateEnd - textX - (setIcon ? setWidth + setMargin + FACE_TEXT.typeGap : 0);
+  // Growth is centered, so half its extra width extends into the type's space.
+  const typeWidth =
+    plateEnd -
+    textX -
+    (setIcon ? setWidth * (1 + (symbolGrowth - 1) / 2) + setMargin + FACE_TEXT.typeGap : 0);
   context.font = `${FACE_TEXT.typeFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
   paintFittedText(
     context,
@@ -557,12 +570,26 @@ export function paintAssembledFace(
       FACE_TEXT.setHeight / (setIcon.height * setCrop[3]),
     );
     const symbolBounds = [
-      plateEnd - setMargin - setWidth + (planeswalker ? 1.5 : 0),
-      typeCenter - (setIcon.height * setCrop[3] * scale) / 2 - (corePlacement ? 1 : 0),
-      setIcon.width * setCrop[2] * scale,
-      setIcon.height * setCrop[3] * scale,
+      plateEnd -
+        setMargin -
+        setWidth -
+        (setWidth * (symbolGrowth - 1)) / 2 +
+        (planeswalker ? 1.5 : 0),
+      typeCenter -
+        (setIcon.height * setCrop[3] * scale * symbolGrowth) / 2 -
+        (corePlacement ? 1 : 0),
+      setIcon.width * setCrop[2] * scale * symbolGrowth,
+      setIcon.height * setCrop[3] * scale * symbolGrowth,
     ] as const;
-    if (coreShield) paintCoreSetSymbol(context, setIcon, face.rarity, ...symbolBounds, setCrop);
+    if (coreShield)
+      paintCoreSetSymbol(
+        context,
+        setIcon,
+        face.rarity,
+        ...symbolBounds,
+        setCrop,
+        corePlacement ? 1.5 : 1,
+      );
     else paintSetSymbol(context, setIcon, face.setCode, face.rarity, ...symbolBounds, setCrop);
   }
   if (hasExtraRules(face)) paintExtraRules(context, face, images);

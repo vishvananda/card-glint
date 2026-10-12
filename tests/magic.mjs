@@ -846,7 +846,9 @@ try {
         );
         const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
         let left = canvas.width,
-          right = -1;
+          right = -1,
+          top = canvas.height,
+          bottom = -1;
         for (let i = 0; i < pixels.length; i += 4)
           if (
             coreShield
@@ -863,12 +865,25 @@ try {
             const x = (i / 4) % canvas.width;
             left = Math.min(left, x);
             right = Math.max(right, x);
+            top = Math.min(top, Math.floor(i / 4 / canvas.width));
+            bottom = Math.max(bottom, Math.floor(i / 4 / canvas.width));
           }
         const width = ((right - left + 1) * 488) / canvas.width;
-        if (customSymbol ? width < 27 || width > 32 : width < 50 || width > 55)
+        if (
+          customSymbol
+            ? width < 27 || width > 32
+            : coreShield
+              ? width < 55 || width > 60
+              : width < 50 || width > 55
+        )
           throw Error(
             `Visible set glyph has the wrong size: ${setCode}, custom=${customSymbol}, ${tier}: ${width}`,
           );
+        const visibleHeight = ((bottom - top + 1) * 680) / canvas.height;
+        // At table scale one raster row spans two canonical pixels; the ink
+        // threshold excludes antialiasing and the pale rim from this envelope.
+        if (coreShield && (visibleHeight < 19 || visibleHeight > 25))
+          throw Error(`Core shield aspect was distorted: ${setCode}, ${tier}: ${visibleHeight}`);
         canvas.width = canvas.height = 0;
       }
       symbol.width = symbol.height = 0;

@@ -1,5 +1,8 @@
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
+/** Shared normal-frame enlargement; preserve the shield's aspect and center. */
+export const NORMAL_CORE_SYMBOL_SCALE = 1.1;
+
 /** These pinned Keyrune shields encode the letters as transparent holes. Other
  * set glyphs and caller-provided artwork must keep their own topology. */
 export function hasCoreSetShield(face: Pick<RenderedCardInput, 'setCode' | 'setSymbol'>): boolean {
@@ -17,6 +20,7 @@ export function paintCoreSetSymbol(
   width: number,
   height: number,
   crop: FaceRect,
+  rim = 1,
 ): void {
   const common = !rarity || rarity === 'common';
   const layer = document.createElement('canvas');
@@ -73,7 +77,7 @@ export function paintCoreSetSymbol(
   c.fill();
   c.globalCompositeOperation = 'source-over';
   c.strokeStyle = common ? '#f8f8f5' : '#111111';
-  c.lineWidth = 1;
+  c.lineWidth = rim;
   c.stroke();
   context.drawImage(
     layer,
