@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "1d1c87c",
+  "rendererHash": "4c6ad3abd1866cc7ab3d57d3e7d2a100411c1cef114eec3f545dae4345b413f8",
+  "experimentHash": "5eda7e4e49efc98ee88059370826ea21f8b40f662796919346ec4745368120d8",
+  "planHash": "6f07f3136d5c7be283230664405d510242ed8d0514cc50f61a634a09f799c498",
+  "developmentTrialHash": "4d9add4ce58e451124d8b1461bec2d95e95d23a7440039720abb46886965302e",
+  "candidate": {
+    "id": "s27.5-o0",
+    "size": 27.5,
+    "centerOffset": 0,
+    "width": 348,
+    "maximumLines": 5
+  },
+  "summary": [
+    {
+      "id": "s27.5-o0",
+      "size": 27.5,
+      "centerOffset": 0,
+      "width": 348,
+      "maximumLines": 5,
+      "tier": "inspect",
+      "medianF1": 0.5821748955968489,
+      "medianDelta": 0.23373981226786011,
+      "medianDistance": 1.5194838144736669,
+      "gains": ["Animate Wall", "Serendib Efreet", "Volcanic Eruption"],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "s27.5-o0",
+      "size": 27.5,
+      "centerOffset": 0,
+      "width": 348,
+      "maximumLines": 5,
+      "tier": "table",
+      "medianF1": 0.5635206193178153,
+      "medianDelta": 0.2685505087773155,
+      "medianDistance": 1.9117579167202217,
+      "gains": ["Animate Wall", "Serendib Efreet", "Volcanic Eruption"],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.34843508332898876,
+      "medianDelta": 0,
+      "medianDistance": 2.3162393758068003,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "table",
+      "medianF1": 0.29497011054049976,
+      "medianDelta": 0,
+      "medianDistance": 2.720900929582064,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    }
+  ],
+  "decision": "Frozen before opening reserved images for this study. At27.5px all three development positives match every printed line and gain edge F1 at both tiers; both negative controls remain byte-identical. Size27 erroneously enlarges both negatives; reject. Shared five-line fit gate; no per-card geometry. Font stroke weight still differs."
+}
