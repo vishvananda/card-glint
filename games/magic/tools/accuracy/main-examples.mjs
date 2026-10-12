@@ -433,10 +433,14 @@ const report = {
     new URL('.', import.meta.url),
     /^(?:compare(?:-worker)?|common|summary|alignment|frame-boundaries|pixels|edges|metrics|regions)\.mjs$/,
   ),
-  note: 'Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
+  note: 'Selected examples with component-specific scan reviews, not an exhaustive main-branch ranking. Mana-only reviews do not certify body wording or styling. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
   examples,
 };
 await writeJson(path.join(out, 'comparison.json'), report);
+await writeJson(path.join(fixtureRoot, 'main-comparison.json'), {
+  ...report,
+  examples: examples.map(({ face, images, ...example }) => example),
+});
 await mainPage(report, out);
 console.log(
   JSON.stringify(

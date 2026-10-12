@@ -1,18 +1,250 @@
 {
   "schemaVersion": 1,
   "mainCommit": "0b0d408d9dcbba6e3188d5d9f309dd1340347526",
-  "branchCommit": "35f48ae70da54b0c280b6f27f5209f83f55e22ae",
+  "branchCommit": "0fff67a60ef36ad17381ebb6c279c1db18e0a888",
   "rendererHashes": [
     "48093a204cb7594234715c4bcb3719054861aa05bf32f6a036e93ced5cac3530",
-    "5e40956ce8e445f24b6e04bb022ee09d1e4da3bd9566fb865dccecbbcd5edd89"
+    "1681f1ad084c161f83432b92fa6fe11edf6f5a35a30fa671863ae9dce9286351"
   ],
   "fontHashes": [
     "3493fd86c163fea26861cca7a28ac397aa8fbee4e7fa1599f556987ff9178ce2",
     "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12"
   ],
   "metricSource": "e2f7654387f33a23e32ba96f4b60eed7ceaf4b41e105faed2ccb5ea95961eccf",
-  "note": "Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
+  "note": "Selected examples with component-specific scan reviews, not an exhaustive main-branch ranking. Mana-only reviews do not certify body wording or styling. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.",
   "examples": [
+    {
+      "set": "3ed",
+      "id": "41859c6f-1017-42ae-9061-050fe0db9731",
+      "name": "Disenchant",
+      "number": "17",
+      "source": "https://scryfall.com/card/3ed/17/disenchant?utm_source=api",
+      "inputHash": "4d7daadaea17d7910d4e6401f5ec643caedf647173e0511f97a3304be28b06ea",
+      "referenceHash": "40ea274352c5ad768ffe9bbe940226505136d09e1910d7d67ec204f2db98c690",
+      "alignment": {
+        "profileHash": "1658627923a46b163fe231d111176d73c7548dfa74741a5ba71cc88ef029579f",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "contentStatus": "printing-reference",
+      "captureContentStatus": "printing-reference",
+      "contentReview": {
+        "file": "3ed/mana-transfer.json",
+        "sha256": "17707ffe5607c776439f20067d0910b079c43f82245c2dfc315ee426dd233841",
+        "regions": ["mana"],
+        "reviewedInputHash": "4d7daadaea17d7910d4e6401f5ec643caedf647173e0511f97a3304be28b06ea"
+      },
+      "reviewCase": false,
+      "note": "The original spiked sun replaces the modern symbol. Revised header costs have no shadow and share the validated row position and spacing. Both renderers receive the same printing text. The numeral remains thicker and its disc darker than the scan.",
+      "captures": {
+        "main": {
+          "sha256": "7dba02cbe711a654571fea285f32f90c89030f30408a48c02f8f7bfd26e65c37",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "4d6d4500056c38bac50b350175bb3f62edf393bbbbaf5ae489a1be9c572c6b1a",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "mana",
+          "rect": [393, 24, 56, 35],
+          "values": [0.4614753839846091, 0.6061468122936247]
+        }
+      ]
+    },
+    {
+      "set": "3ed",
+      "id": "56cb88db-2c6b-4d17-be16-2a89218efe4c",
+      "name": "Force of Nature",
+      "number": "196",
+      "source": "https://scryfall.com/card/3ed/196/force-of-nature?utm_source=api",
+      "inputHash": "f0b1abebc17255ec88a0a9ea36a978394cb36870ef7c86127fc41c2ceda41893",
+      "referenceHash": "6257f1861244dfa5f901bb310291eeff8727cd29b0715931856352f7adb03093",
+      "alignment": {
+        "profileHash": "1658627923a46b163fe231d111176d73c7548dfa74741a5ba71cc88ef029579f",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        }
+      },
+      "contentStatus": "printing-reference",
+      "captureContentStatus": "printing-reference",
+      "contentReview": {
+        "file": "3ed/mana-transfer.json",
+        "sha256": "17707ffe5607c776439f20067d0910b079c43f82245c2dfc315ee426dd233841",
+        "regions": ["mana"],
+        "reviewedInputHash": "f0b1abebc17255ec88a0a9ea36a978394cb36870ef7c86127fc41c2ceda41893"
+      },
+      "reviewCase": false,
+      "note": "All five cost symbols use the same right anchor and wider pitch, validated after freezing the candidate. The other colored glyph assets are unchanged; tree contours still need improvement. Body wording is printing-reference data, not certified by this mana study.",
+      "captures": {
+        "main": {
+          "sha256": "19048b0901f72035694458ca7c8f48c002c5728e88f8fadb308f60409e908ace",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "error"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        },
+        "branch": {
+          "sha256": "18db684af1bc10c117981bd7fb5ecfedfbc9c88465ba2c55cd5f83225ea19485",
+          "attempts": 1,
+          "fonts": [
+            {
+              "family": "CardRenderer MTG Beleren",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG MPlantin",
+              "style": "italic",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Relay",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Artist Credit",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Goudy",
+              "style": "normal",
+              "status": "loaded"
+            },
+            {
+              "family": "CardRenderer MTG Historic Symbols",
+              "style": "normal",
+              "status": "loaded"
+            }
+          ],
+          "browser": "148.0.7778.96"
+        }
+      },
+      "scores": [
+        {
+          "region": "mana",
+          "rect": [312, 24, 137, 35],
+          "values": [0.46996349153667444, 0.6990132124238955]
+        }
+      ]
+    },
     {
       "set": "3ed",
       "id": "76bc3b43-158c-420e-a3fb-7413334699ca",
@@ -79,7 +311,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "6c14ff94926758008c911ba3430f08ca9f3125e879fcfbc1bba09a2c8559af2d",
+          "sha256": "6d8b3cbb73f94a0d8c7e5155ffa0fb60a310fee8294794678f8627bee97870eb",
           "attempts": 1,
           "fonts": [
             {
@@ -195,7 +427,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "f637c24b585dde44c82b7205b8657936b0ef030344d37879eb4ceeb06b7f4826",
+          "sha256": "0886065466872b5941bb01dd30c2ee8e041d6a70f5e519fbbf16a2b1e5d583d9",
           "attempts": 1,
           "fonts": [
             {
@@ -311,7 +543,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "165a88ddb01683aa9009186a5510d06f6fbf66634934ccf3daddb1eb4d366ef9",
+          "sha256": "c91bc8cc2ae4092fc0aa235d3237473bc24887d9ca966156c41a53b5064c235a",
           "attempts": 1,
           "fonts": [
             {
@@ -427,7 +659,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "5bc5ef93044674ea407174de9074700d505345c043cc3b0bcf780d3d43121848",
+          "sha256": "f970fef243d9ae9c43ed7496f185d6103ff0252452f8408fc9c741a53fbfa969",
           "attempts": 1,
           "fonts": [
             {
@@ -543,7 +775,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "976c8a38228879e42b90bb377d9660285cc6725248a4ce7b367e93c5bf5a65a5",
+          "sha256": "7a4d2372175830b29950353673b853eb6859bfc3e1aa5373cb47d429c9187c0c",
           "attempts": 1,
           "fonts": [
             {
@@ -659,7 +891,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "da30c2845c649228ccf4ce3f6e53539e3d92ef885695b4afe0d95b9be933ca75",
+          "sha256": "21c04ee2d4a9bace588f09e81c3865ee60ac5b4430a2aea13bdbde937dd5eb79",
           "attempts": 1,
           "fonts": [
             {
@@ -775,7 +1007,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "2f4d4eba1989de2ba64c393e5ec590371e9278ce14c61522f1155e1f3968c84e",
+          "sha256": "ac691ab18f4c074d69d5143202f6c864f975d28e3d37c904ccc2044039b5e6ec",
           "attempts": 1,
           "fonts": [
             {
@@ -884,7 +1116,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "1f54545b07f02b71e61114a58b166eff77842803ac8843c12638dba6340d2870",
+          "sha256": "80e15e75ddaf279de94a581345cc227e082817a2b7f55df5b0ade32890265964",
           "attempts": 1,
           "fonts": [
             {
@@ -993,7 +1225,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "7e89a61d463a742481848a6aec866ef80ebf5b78b74a29ac99d407f722d1c22b",
+          "sha256": "853437de23ebdeb39b4217d915ddca7f9cc9ef8b4ebb2108b165d7f2b2445551",
           "attempts": 1,
           "fonts": [
             {
@@ -1102,7 +1334,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "9e1c2e8091946f1be03081c43adb5478b2ce57b03c33673c568c9de4fbfb0bf6",
+          "sha256": "3c789c2c5ab5910dbce4a0046cbeaa3c3c9bf7a9fc6f0355536916b79243de94",
           "attempts": 1,
           "fonts": [
             {
@@ -2039,7 +2271,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "a061f83142660ec72df9188da240c43cd729f20dbe16b72988791381516f44c8",
+          "sha256": "940237375fb01498faf129d91bcbd566c3947f78e1054b379c6d5225b7c108ba",
           "attempts": 1,
           "fonts": [
             {
