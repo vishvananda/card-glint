@@ -202,7 +202,13 @@ export function layoutRules(
           const ascent = Math.max(0, ...runs.map((run) => run.ascent));
           const descent = Math.max(0, ...runs.map((run) => run.descent));
           const width = runs.reduce((n, r) => n + r.width, 0);
-          const x = bounds.x + (paragraph.align === 'right' ? bounds.width - width : 0);
+          const x =
+            bounds.x +
+            (paragraph.align === 'right'
+              ? bounds.width - width
+              : paragraph.align === 'center'
+                ? (bounds.width - width) / 2
+                : 0);
           let cursor = 0,
             left = Infinity,
             right = -Infinity;

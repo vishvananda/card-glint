@@ -1,4 +1,5 @@
 import manifest from '../../assets.json' with { type: 'json' };
+import { retroBasicPrinting, simpleBasicMana } from './retro-basic.js';
 import {
   cardStock,
   FACE_RECTS,
@@ -115,12 +116,8 @@ export function retroFrameFilter(face: RenderedCardInput) {
     : 'none';
 }
 export function retroBasicSymbol(face: RenderedCardInput) {
-  if (
-    !/\bBasic Land\b/.test(face.typeLine ?? '') ||
-    !/^\(?\{T\}: Add \{[WUBRG]\}\.\)?$/.test(face.rulesText ?? '')
-  )
-    return null;
-  const symbol = (face.rulesText ?? '').match(/Add \{([WUBRG])\}/)?.[1];
+  if (retroBasicPrinting(face)) return null;
+  const symbol = simpleBasicMana(face);
   return symbol ? `${RETRO_ROOT}/img/frames/m15/basics/${symbol.toLowerCase()}.png` : null;
 }
 export const RETRO_WHITE = '#eeedeb';

@@ -34,6 +34,13 @@ assert.equal(
 );
 assert.equal(retroFamily({ ...creature, setCode: 'LEA' }), 'abu');
 assert.notDeepEqual(faceRects(walker).rules, faceRects(creature).rules);
+const basic = {
+  name: 'Plains',
+  typeLine: 'Basic Land — Plains',
+  colors: [],
+  setCode: 'MIR',
+  rulesText: '({T}: Add {W}.)',
+};
 const fixtures = [
   creature,
   walker,
@@ -87,6 +94,14 @@ const fixtures = [
         rulesText: 'Draw a card.',
       },
     ],
+  },
+  basic,
+  {
+    ...basic,
+    setCode: 'TMP',
+    name: 'Forest',
+    typeLine: 'Basic Land — Forest',
+    rulesText: '({T}: Add {G}.)',
   },
 ];
 for (const face of fixtures) {
@@ -236,6 +251,28 @@ try {
       Math.abs(attribution.x + attribution.width - (retro.x + retro.width)) > 0.01
     )
       throw Error('Retro styles, alignment or separator policy lost');
+    const historicalLand = retroTextLayout(ctx, fixtures.at(-2));
+    const landLine = historicalLand.lines[0];
+    if (
+      historicalLand.overflow ||
+      historicalLand.lines.length !== 1 ||
+      !landLine.runs
+        .map((r) => (r.symbol ? `{${r.text}}` : r.text))
+        .join('')
+        .includes('to your mana pool.') ||
+      Math.abs(landLine.x + landLine.width / 2 - (historicalLand.x + historicalLand.width / 2)) >
+        0.01
+    )
+      throw Error('Historical basic land lost printed wording or centered alignment');
+    const customLand = retroTextLayout(ctx, {
+      ...fixtures.at(-2),
+      rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Custom printed rules.' }] }],
+    });
+    if (
+      customLand.lines.map((l) => l.runs.map((r) => r.text).join('')).join('') !==
+      'Custom printed rules.'
+    )
+      throw Error('Historical land policy replaced explicit custom text');
     ctx.fillStyle = '#164d65';
     ctx.fillRect(0, 0, 64, 64);
     let leases = 0,

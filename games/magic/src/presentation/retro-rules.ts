@@ -1,3 +1,4 @@
+import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
 import { retroBasicSymbol, retroPx, retroRects } from './retro-frame.js';
@@ -15,7 +16,9 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 export function retroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;
   const [x, y, width, height] = retroPx(retroRects(face).rules);
+  const basic = retroBasicPrinting(face);
   const paragraphs =
+    basic?.paragraphs ??
     face.rulesParagraphs ??
     (face.rulesText ?? '')
       .split('\n')
@@ -24,8 +27,8 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   return layoutRules(
     context,
     paragraphs,
-    { x, y: y + 4, width, height: height - 8 },
-    22.5,
+    { x, y: y + (basic ? 1.5 : 4), width, height: height - 8 },
+    basic ? 24 : 22.5,
     15,
     RETRO_TYPOGRAPHY,
   );

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "study": "retro-basics",
+  "sourceSet": "mir",
+  "set": "tmp",
+  "baselineRun": "retro-details-all",
+  "baselineRendererCommit": "8764045",
+  "baselineRendererHash": "53e4df745083c35839c8876f8ba904a3a2e7f57aa415004eb2648c68b0830840",
+  "frozenRendererHash": "7c408352113abf0abe486a8bc1f7b0828eb5a2880422d1d4eecc2622ec123e7c",
+  "sourceDevelopmentRun": "retro-basics-development",
+  "frozenPolicy": {
+    "sets": ["mir", "tmp"],
+    "typeLine": "Land",
+    "wording": "{T}: Add {color} to your mana pool.",
+    "alignment": "center",
+    "size": 24,
+    "bodyTopInset": 1.5,
+    "bodyHeightInset": 8
+  },
+  "tuning": "Five Mirage cards, one printing of each basic land. Holdouts reviewed after freeze. No per-card or per-scan geometry.",
+  "evaluation": "15 additional Mirage and 20 Tempest basic lands. Same semantic/Oracle reminder inputs in baseline and current. Expected printed vocabulary is a reviewed target; changes measure historical content and layout, not typography alone.",
+  "alignment": "Existing Mirage/Tempest shared profile, unchanged",
+  "regression": "Nonbasic old-border and eight modern holdouts must retain pixel identity; explicit paragraph overrides must remain visible."
+}

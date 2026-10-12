@@ -1,3 +1,4 @@
+import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import {
@@ -96,7 +97,12 @@ export function paintRetroFace(
   const [tx, ty, tw, th] = retroPx(rect.type),
     icon = images.get(retroSetSymbol(face) ?? '');
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
-  c.fillText(face.typeLine ?? '', tx, ty + th / 2, tw - (icon ? 48 : 0));
+  c.fillText(
+    retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
+    tx,
+    ty + th / 2,
+    tw - (icon ? 48 : 0),
+  );
   if (icon) {
     const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);
     if (details)
