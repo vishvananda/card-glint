@@ -103,5 +103,12 @@ so its placement comparison no longer uses Oracle wording. Fourth Edition short
 passages now use 25px centered balanced lines in a 344px width; 63 identical-input
 full-set pairs improve at both tiers. Of 30 reviewed line targets, 28 wrap exactly;
 Righteousness and Phantasmal Terrain still have a word on the wrong line. This
-policy has not been transferred to Revised or Fifth Edition. Revised registration
-is now reliable enough to resume that trial using its original wording.
+policy has not been transferred to Fifth Edition. Revised now uses a separately
+validated 27.5px size, 30.25px baseline spacing and 348px width. The initial 344px
+trial passed 15 reserved scans but introduced extra lines elsewhere in the full
+set. A four-pixel expansion fixes the four reviewed wrapping failures and keeps
+the earlier 21 line targets exact; six newly reserved scans also match exactly.
+This shows why full-corpus checks must follow small validation cohorts. Revised
+font weight, historic symbols, type lines and outlined header/stats ink remain
+open issues. Blessing's source omitted a colon; its correction is tracked
+separately from geometry changes.

@@ -140,9 +140,10 @@ face.rulesParagraphs = [
 Runs support `{mana}` notation and explicit italic styles. The painter measures
 wrapping and font size and rejects unresolved text overflow. Modern faces draw a
 flavor separator; old-border faces use their own spacing without a separator.
-Short Fourth Edition passages use centered, balanced lines. Explicit paragraph
-alignment and hard breaks take precedence; other old-border sets retain their
-separate typography policies.
+Short Fourth Edition and Revised passages use centered, balanced lines. Revised
+uses larger type and more space between lines, validated separately from Fourth
+Edition. Explicit paragraph alignment and hard breaks take precedence; other
+old-border sets retain their separate typography policies.
 Use paragraph `align: 'right'` for a printed flavor attribution. Other layouts
 still use their existing `rulesText` painters. Font
 preparation now rejects missing CSS or failed font loads and can retry after they
@@ -166,6 +167,13 @@ frame-size mismatches: 281 fourth-family cards have coherent boundaries, while
 The report includes optional frame guides and center/size differences in JSON
 and CSV. See the [Revised registration study](accuracy-plan.md#revised-frame-registration)
 and [validation measurements](fixtures/accuracy/3ed/frame-registration-measurement.json).
+
+The subsequent `revised-centered-final` run applies Revised's larger short-body
+type, leading and shared 348px text box. All 80 changed identical-input bodies
+improve at both tiers; 223 other faces retain their pixels. All 32 reviewed
+line-ending targets match. Three source punctuation corrections are measured
+separately. See the [typography study](accuracy-plan.md#revised-short-body-typography)
+for the full-set check that caught wrapping errors missed by the initial holdouts.
 
 ## Existing scene or DOM editor
 

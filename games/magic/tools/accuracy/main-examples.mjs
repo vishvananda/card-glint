@@ -41,6 +41,34 @@ assert.equal(
 const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
+    '3ed',
+    'revised-centered-final',
+    '152',
+    'Revised uses larger centered type with 30.25px baseline spacing. Both printed lines match; original wording is identical in both rendered columns.',
+    ['body'],
+  ],
+  [
+    '3ed',
+    'revised-centered-final',
+    '202',
+    'The Revised policy matches both printed lines. Existing font strokes are heavier than the scan; the shared frame alignment is unchanged.',
+    ['body'],
+  ],
+  [
+    '3ed',
+    'revised-centered-final',
+    '15',
+    'Larger type and balanced lines reproduce the two-line printing. A shared 348px text box also prevents excess wrapping on longer single-line passages.',
+    ['body'],
+  ],
+  [
+    '3ed',
+    'revised-centered-final',
+    '274',
+    'Review case: all three printed lines match, but Revised uses a different tap mark. The existing tap glyph remains flagged separately from placement and word wrapping.',
+    ['body'],
+  ],
+  [
     '4ed',
     'centered',
     '137',
@@ -259,7 +287,7 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       alignment: entry.alignment,
       contentStatus: entry.card.contentStatus,
       face: entry.card.face,
-      reviewCase: ['Mtenda Herder', 'Righteousness'].includes(entry.card.name),
+      reviewCase: ['Mtenda Herder', 'Righteousness', 'Sol Ring'].includes(entry.card.name),
       note: entry.note,
       images: entry.images,
       captures: entry.captures,
@@ -281,9 +309,9 @@ const report = {
   fontHashes,
   metricSource: await sourceHash(
     new URL('.', import.meta.url),
-    /^(?:compare(?:-worker)?|common|summary|alignment|pixels|edges|metrics|regions)\.mjs$/,
+    /^(?:compare(?:-worker)?|common|summary|alignment|frame-boundaries|pixels|edges|metrics|regions)\.mjs$/,
   ),
-  note: 'Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
+  note: 'Selected examples with scan-reviewed wording, not an exhaustive main-branch ranking. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
   examples,
 };
 await writeJson(path.join(out, 'comparison.json'), report);

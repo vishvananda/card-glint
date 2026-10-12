@@ -218,16 +218,63 @@ showcase, Magic and accuracy tests, rustfmt and native/WASM strict Clippy pass.
 - [Corpus metrics and line-ending checks](fixtures/accuracy/4ed/centered-measurement.json)
 - [Pixel-preservation evidence](fixtures/accuracy/4ed/centered-capture-check.json)
 
-The refreshed local `main-review/index.html` adds Fear and Healing Salve alongside
+The Fourth Edition refresh of local `main-review/index.html` adds Fear and Healing Salve alongside
 the existing examples, plus Righteousness as a remaining wrap-review case. All
 columns use identical reviewed input. Main's original font stylesheet remains
-unchanged. Inline historical mana shapes, the two soft-break differences, shared
-Revised alignment, and the uncalibrated early-border layouts remain follow-ups.
+unchanged. Inline historical mana shapes, the two soft-break differences and
+uncalibrated early-border layouts remain follow-ups.
 The example capture tool now rejects empty or mostly transparent card PNGs and
 retries once in a fresh document, recording the attempt count. Two main captures
 needed that retry; all six unchanged main examples match their previously saved
 pixels exactly. A separate audit confirms all 756 final Fourth Edition images
 have at least 99.8% visible pixels. Empty captures never count as low fidelity.
+
+### Revised short-body typography
+
+After validating Revised's shared frame registration, six development cards and
+15 reserved printings established a 27.5px maximum size and 30.25px baseline
+spacing. All 15 reserved scans matched their printed line breaks at both raster
+tiers. The complete 306-card run then exposed a width problem: a 344px box added
+lines on Wanderlust, Unholy Strength, Raise Dead and Holy Strength. The first
+two also regressed by more than .02 F1. Small validation cohorts alone were
+insufficient to approve the layout.
+
+Those four cases and the earlier 21 examples became development data for a
+width-only refinement. Widths 348–356 produced identical pixels and exact wraps
+on all 25; widths of 360 or more broke El-Hajjâj and Kird Ape. The smallest
+passing change, 348px, was frozen before viewing six more reserved scans across
+colors and artifacts. All six match their printed lines and preserve the
+earlier candidate's pixels. These are fresh image reviews within an already
+captured/scored corpus, not an untouched dataset. No per-card geometry or scan
+transform is fitted.
+
+The final `revised-centered-final` run captures all 306 cards at both tiers,
+with zero failures or clipping. Of 303 identical-input pairs, 223 remain byte
+identical and all 80 changed bodies improve by more than .02 at both tiers.
+Median body F1 rises from .248 to .495 at inspection size and .232 to .511 at
+table size. Source-backed text is not scan certification. Thirty-two reviewed
+bodies match all line endings; geometry MAEs remain null because their targets
+do not include measured ink boxes. Blessing's missing colon and Cursed Land /
+Wanderlust apostrophes are corrected separately and excluded from paired deltas.
+
+All 612 PNGs pass the visible-pixel check. Thirty-six unchanged-input prototype
+crops match production exactly; 53 representatives of other policies and 30
+Fourth Edition prototype crops also retain their pixels. Required renderer,
+package, browser, showcase, Magic and accuracy checks and native/WASM strict
+Clippy pass. The 96.8-second Node comparison measures offline scoring work, not
+renderer CPU submission or GPU completion time.
+
+- [Initial frozen candidate](fixtures/accuracy/3ed/centered-candidate.json)
+- [Width reservation and candidate](fixtures/accuracy/3ed/centered-width-plan.json)
+- [Six-card width validation](fixtures/accuracy/3ed/centered-width-transfer.json)
+- [Full-set metrics](fixtures/accuracy/3ed/centered-measurement.json)
+- [Capture and preservation checks](fixtures/accuracy/3ed/centered-capture-check.json)
+
+The local main comparison now has 13 examples, adding Flashfires, Hurricane,
+Crusade and Sol Ring. All nine previous examples retain both main and branch
+pixels. Sol Ring flags the wrong historic tap shape even though its wrapping
+matches. Font weight, historical numeric symbols, original type lines, outlined
+headers/stats and credits remain separate work; existing frame plates are retained.
 
 ## References and cache
 
