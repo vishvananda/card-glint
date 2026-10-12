@@ -14,7 +14,7 @@ import {
   NORMAL_CORE_SYMBOL_SCALE,
   paintCoreSetSymbol,
 } from './core-set-symbol.js';
-import { paintNormalTypeBevel } from './normal-type-bevel.js';
+import { paintNormalTypeBevel, paintNormalTypeCap } from './normal-type-bevel.js';
 import {
   cardStock,
   faceStats,
@@ -99,7 +99,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v50',
+    'canvas-face-v51',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -448,7 +448,7 @@ export function paintAssembledFace(
   context.fillRect(...px(rects.art));
   const frame = images.get(assets.frame);
   if (frame && kind === 'normal' && !panel)
-    paintFrame(context, frame, profile.legendary, rects.frame);
+    paintFrame(context, frame, profile.legendary, rects.frame, true);
   if (underArt) {
     context.save();
     context.beginPath();
@@ -498,7 +498,10 @@ export function paintAssembledFace(
     if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate);
     else {
       draw(assets.boxes, rects.type, 'bottom');
-      if (kind === 'normal' && boxes) paintNormalTypeBevel(context, px(rects.type), profile.boxes);
+      if (kind === 'normal' && boxes) {
+        paintNormalTypeCap(context, boxes, px(rects.type));
+        paintNormalTypeBevel(context, px(rects.type), profile.boxes);
+      }
     }
   }
   context.fillStyle = '#17140f';
@@ -650,23 +653,48 @@ function paintFrame(
   image: ImageBitmap,
   legendary: boolean,
   rect: FaceRect = FACE_RECTS.frame,
+  expandRulesTop = false,
 ) {
   const [x, y, width, height] = pixels(rect);
   const sourceHeight = Math.min(image.height, (height * image.width) / width);
   const renderedHeight = (sourceHeight * width) / image.width,
     scale = context.getTransform().a;
+  // Raise only the asset band containing the rules box's upper inset. The
+  // bottom edge and all text retain their coordinates. Even-pixel clip seams
+  // map to whole raster rows at both supported tiers.
+  const paint = () => {
+    if (!expandRulesTop) {
+      context.drawImage(image, 0, 0, image.width, sourceHeight, x, y, width, renderedHeight);
+      return;
+    }
+    const top = 424,
+      bottom = 436;
+    context.save();
+    context.beginPath();
+    context.rect(0, 0, FACE_WIDTH, top);
+    context.rect(0, bottom, FACE_WIDTH, FACE_HEIGHT - bottom);
+    context.clip();
+    context.drawImage(image, 0, 0, image.width, sourceHeight, x, y, width, renderedHeight);
+    context.restore();
+    context.save();
+    context.beginPath();
+    context.rect(0, top, FACE_WIDTH, bottom - top);
+    context.clip();
+    context.drawImage(image, 0, 0, image.width, sourceHeight, x, y - 1, width, renderedHeight);
+    context.restore();
+  };
   context.save();
   context.shadowColor = 'black';
   context.shadowOffsetX = -0.00394 * FACE_WIDTH * scale;
   context.shadowOffsetY = 0.00394 * FACE_WIDTH * scale;
   context.shadowBlur = 0.00236 * FACE_WIDTH * scale;
-  context.drawImage(image, 0, 0, image.width, sourceHeight, x, y, width, renderedHeight);
+  paint();
   if (!legendary) {
     context.shadowColor = '#ffffffa0';
     context.shadowOffsetX = 0.00157 * FACE_WIDTH * scale;
     context.shadowOffsetY = -0.00315 * FACE_WIDTH * scale;
     context.shadowBlur = 0.00157 * FACE_WIDTH * scale;
-    context.drawImage(image, 0, 0, image.width, sourceHeight, x, y, width, renderedHeight);
+    paint();
   }
   context.restore();
 }

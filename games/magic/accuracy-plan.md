@@ -2087,3 +2087,73 @@ decoding and whole-image resampling. The ten-candidate warm audit took 14.9s for
 hashing and metrics, no Chromium or GPU work. Capture still uses Chromium;
 sharing each card's decoded source lease between inspect/table preserved all six
 PNG hashes and layout outputs in a three-card parity check.
+
+## Complete core-set symbol coverage
+
+The frozen v47-to-v50 audit now measures all 952 captured eligible printings:
+312 M19, 343 M20 and 297 M21. The 1,055-printing corpus contains 102 excluded
+special treatments and one unsupported ordinary transform, M19 #218 Nicol
+Bolas, the Ravager // Nicol Bolas, the Arisen. Its cached `originpwdfc` exclusion
+is retained as a structural failure in the denominator: coverage is 952/953,
+not 952/952. There are no capture failures among the 952 measured printings.
+
+The reports separate ordinary nonbasic cards, basic lands and planeswalkers.
+Ordinary nonbasic symbol-window results at inspect size are:
+
+| Set | Cards | Median edge F1 | Gains / regressions |
+| --- | ----: | -------------: | ------------------: |
+| M19 |   282 |    .274 → .634 |             282 / 0 |
+| M20 |   311 |    .469 → .894 |            290 / 15 |
+| M21 |   268 |    .355 → .932 |             266 / 0 |
+
+Gains/regressions require an absolute .02 change. These comparisons include
+the lettering, rim, viewport and scale changes together, not just the final
+10% enlargement. All fifteen M20 ordinary inspect regressions are commons;
+eight are black cards. Feral Abomination #101, Mind Rot #108 and Maniacal Rage
+#149 remain review examples. The subset's gains do not certify the full set.
+M19 retains a larger contour mismatch despite its consistent improvement.
+Planeswalker windows contain nearby frame ink and are flagged separately;
+their declines must not be interpreted as isolated shield regressions.
+
+The [M19](fixtures/accuracy/set-symbol-all-m19-measurement.json),
+[M20](fixtures/accuracy/set-symbol-all-m20-measurement.json) and
+[M21](fixtures/accuracy/set-symbol-all-m21-measurement.json) reports preserve
+every card, category, both tiers, paired metrics, diagnostic offsets and source
+hashes. No diagnostic offset is applied to a scan or individual card. Reproduce
+with `node games/magic/tools/accuracy/set-symbol-all-audit.mjs m19` (and m20/m21).
+Cold CPU audits took approximately 222–240 seconds per set while running
+concurrently, including PNG decoding, cached-region generation and bounded
+offset searches. This excludes raster capture and measures no GPU completion.
+
+## One-pixel normal-frame borders
+
+User review selected two small changes using the existing bitmaps: extend the
+type plate's top outline 1px inward, and expand the rules box upward by 1px.
+The original type pass retains its silhouette; a clipped repeated upper cap
+adds ink around the curved ends. Only the frame band containing the rules
+box's upper border shifts. Its bottom, rules text and other frame geometry
+retain their positions. This applies to normal frames, not planeswalkers.
+
+The [M21](fixtures/accuracy/normal-border-m21-measurement.json) and
+[M20](fixtures/accuracy/normal-border-m20-measurement.json) diagnostics revisit
+the 54 previously examined cards with fixed normalization and no fitted scan
+alignment. The audit requires byte-identical pixels outside the upper type
+and rules-border bands at both tiers, including the complete lower rules box,
+and identical text layout. All 54 pass.
+
+| Region / set    | Inspect edge F1 | Gains / regressions | Table edge F1 |
+| --------------- | --------------: | ------------------: | ------------: |
+| Type top / M21  |     .285 → .836 |              26 / 0 |   .574 → .992 |
+| Type top / M20  |     .750 → .973 |              26 / 2 |   .679 → .948 |
+| Rules top / M21 |     .942 → .892 |              5 / 19 |   .907 → .914 |
+| Rules top / M20 |     .892 → .926 |              19 / 4 |   .873 → .891 |
+
+The thicker type outline has strong aggregate support. The one-pixel rules
+expansion was accepted in visual review, but its mixed edge scores remain
+recorded; this is not a uniformly improving metric change. Thin-border
+diagnostics still need to separate shared scan alignment, edge thickness and
+bevel shape before any further adjustment. Do not introduce per-card or
+per-set offsets from these results alone. The local comparison includes both
+top and bottom crops plus full cards, and stays outside the repository.
+Run `node games/magic/tools/accuracy/normal-border-audit.mjs m21` (and m20)
+to reproduce from the cached v50/v51 rasters.

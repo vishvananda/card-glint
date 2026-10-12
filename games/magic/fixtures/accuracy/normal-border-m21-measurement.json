@@ -1,0 +1,2703 @@
+{
+  "schemaVersion": 1,
+  "scope": "User-directed +1px inward type outline and 1px upward rules-box expansion. Previously examined cards; fixed normalization, no per-scan fitting. Thin-border structural windows are diagnostics, not whole-card accuracy percentages. All pixels outside the two bands, including the complete lower rules box, must be byte-identical; rules layout is identical.",
+  "rendererHashes": {
+    "before": "22eaed11ae1a3334ea060717cb2464b3489f1bf80efd4c6ff4c5e6b340b7ce96",
+    "after": "2f513c7505256db59e97c32794421d9ee38f84f874fd2eef0b7ed8def84d2483"
+  },
+  "captures": {
+    "before": "c659ccbb8ef867a01dabe95ab66d884e77ccc898de940efbde3101baf2bea72b",
+    "after": "1c9555aac175c9359559e1e364d82ddb768511bff840a4b3b8b59b8a4895094d"
+  },
+  "studyHash": "795c47bd27f565f82921c3e7ca241d72b9ae54fd75c0fb1888a69c3d004a8152",
+  "methods": {
+    "normalized-gray-region": "483485fc98f99cb952a4320a78387759b4d2eddb1f3d13c72c7825fd57d27682",
+    "region-cache": "ebf16b154b8227878da7973ad3d047dbcf6212839814e358b01dd1af221dd0fb",
+    "pixels": "3c4f9b614c2eb69a7656d5bbf5462a031fcaca15c45016cfa82daa1e0e2e1d33",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+  },
+  "allowed": [
+    [26, 380, 436, 24],
+    [0, 424, 488, 12]
+  ],
+  "summary": {
+    "inspect": {
+      "type-top": {
+        "before": 0.2853873300275926,
+        "after": 0.836335246640463,
+        "gains": 26,
+        "regressions": []
+      },
+      "rules-top": {
+        "before": 0.9421796092494322,
+        "after": 0.892256868922577,
+        "gains": 5,
+        "regressions": [
+          "2",
+          "3",
+          "9",
+          "48",
+          "49",
+          "87",
+          "88",
+          "95",
+          "103",
+          "130",
+          "133",
+          "174",
+          "176",
+          "179",
+          "222",
+          "228",
+          "229",
+          "231",
+          "232"
+        ]
+      }
+    },
+    "table": {
+      "type-top": {
+        "before": 0.5744872505543237,
+        "after": 0.9921427034461735,
+        "gains": 26,
+        "regressions": []
+      },
+      "rules-top": {
+        "before": 0.9069495858904751,
+        "after": 0.9141648873810029,
+        "gains": 4,
+        "regressions": ["2", "3", "222", "228", "229", "231"]
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+      "number": "2",
+      "name": "Alpine Watchdog",
+      "inputHash": "8aa0cec6c9e5a212a30d08ae8d6c5af8eb7fa1ac4b5d4ce24de3679292f53eee",
+      "referenceHash": "550d62229fda2a96274e44453286fd3a03c0ee7f836ff8cf3c1f81a8f2458e88",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26371,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5869690875065388,
+                "darkEdgeF1": 0.6666666666666666,
+                "lightEdgeF1": 0.5072715083464108,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.068614485672504,
+                "censusSimilarity": 0.2534207559640407
+              },
+              "after": {
+                "edgeF1": 0.8800225254306703,
+                "darkEdgeF1": 0.9219391947411668,
+                "lightEdgeF1": 0.8381058561201737,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0124365861408187,
+                "censusSimilarity": 0.5320863143032184
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8482004718895184,
+                "darkEdgeF1": 0.7017543859649121,
+                "lightEdgeF1": 0.9946465578141246,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8751725110250556,
+                "censusSimilarity": 0.82630415294014
+              },
+              "after": {
+                "edgeF1": 0.7460553433322669,
+                "darkEdgeF1": 0.7937839195729927,
+                "lightEdgeF1": 0.6983267670915411,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1625155407323398,
+                "censusSimilarity": 0.6048326572084455
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3038,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.792464408361061,
+                "darkEdgeF1": 0.9410815173527037,
+                "lightEdgeF1": 0.6438472993694183,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0017637974626206,
+                "censusSimilarity": 0.8339209075901193
+              },
+              "after": {
+                "edgeF1": 0.9288202176919911,
+                "darkEdgeF1": 0.9899923017705928,
+                "lightEdgeF1": 0.8676481336133894,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.41007925048326377,
+                "censusSimilarity": 0.8342659104954069
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8275739887230057,
+                "darkEdgeF1": 0.7017543859649121,
+                "lightEdgeF1": 0.9533935914810993,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0172278399507815,
+                "censusSimilarity": 0.8602811634680008
+              },
+              "after": {
+                "edgeF1": 0.7420302453329887,
+                "darkEdgeF1": 0.805922838844115,
+                "lightEdgeF1": 0.6781376518218624,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1570065890461478,
+                "censusSimilarity": 0.7529414345051422
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e8cca776-b0e4-4cd2-815f-36c1f86cf497",
+      "number": "3",
+      "name": "Angelic Ascension",
+      "inputHash": "6aa306a16c3d7d436d33bdaf5f265e5b6e920bd8d9d418167706df97cf2180e8",
+      "referenceHash": "c0f8c685ea45b94b6dcb44d601e3da83a06430a4bb39292eb1beb6f0ac0eb7a4",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26610,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5892706279921149,
+                "darkEdgeF1": 0.6666666666666666,
+                "lightEdgeF1": 0.5118745893175631,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9455826642348364,
+                "censusSimilarity": 0.2857969638123901
+              },
+              "after": {
+                "edgeF1": 0.9301423344208912,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8602846688417826,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0357415104071603,
+                "censusSimilarity": 0.5521959871190391
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.893438915303712,
+                "darkEdgeF1": 0.7884022208513264,
+                "lightEdgeF1": 0.9984756097560976,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8360375098591751,
+                "censusSimilarity": 0.8428224203585029
+              },
+              "after": {
+                "edgeF1": 0.7689775347662359,
+                "darkEdgeF1": 0.8403219217180964,
+                "lightEdgeF1": 0.6976331478143754,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1055433867413516,
+                "censusSimilarity": 0.6214519916179067
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3058,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.8332892212002911,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.6665784424005823,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9880734701992662,
+                "censusSimilarity": 0.8416765490663426
+              },
+              "after": {
+                "edgeF1": 0.9307267252351534,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.861453450470307,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.4092693673558502,
+                "censusSimilarity": 0.8419300694072039
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8831695536315902,
+                "darkEdgeF1": 0.7953025218973268,
+                "lightEdgeF1": 0.9710365853658537,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9947927859048638,
+                "censusSimilarity": 0.8681564589718584
+              },
+              "after": {
+                "edgeF1": 0.7602376404057607,
+                "darkEdgeF1": 0.8470677985061625,
+                "lightEdgeF1": 0.6734074823053589,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1405156981020879,
+                "censusSimilarity": 0.7709762410606482
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "4bd3014b-94bb-4a9f-92cf-239a2dcc7e97",
+      "number": "6",
+      "name": "Baneslayer Angel",
+      "inputHash": "bdfaf66227d0a1bfe47afe264da9b021e6e7866fe987b74dfdf820d46fe7fdcb",
+      "referenceHash": "bebfcad8e6e76cd864fcf61a31c9d06ad44f244315c5af389b89b9c70104dd4c",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26307,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5636227030058678,
+                "darkEdgeF1": 0.6666666666666666,
+                "lightEdgeF1": 0.46057873934506893,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0428949799121474,
+                "censusSimilarity": 0.40372107136876856
+              },
+              "after": {
+                "edgeF1": 0.9114664558708122,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8229329117416244,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.03073102135503,
+                "censusSimilarity": 0.7370767929403195
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8743542487182072,
+                "darkEdgeF1": 0.995405819295559,
+                "lightEdgeF1": 0.7533026781408554,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9626180897504825,
+                "censusSimilarity": 0.9386979708844065
+              },
+              "after": {
+                "edgeF1": 0.9253161606154204,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8506323212308409,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.44093333339658086,
+                "censusSimilarity": 0.9316334693351065
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3031,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.880600027827642,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7612000556552839,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8592371753763105,
+                "censusSimilarity": 0.9595761856710394
+              },
+              "after": {
+                "edgeF1": 0.9308835276572134,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8617670553144269,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.4228312646865071,
+                "censusSimilarity": 0.9599596367305752
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.7935981286264824,
+                "darkEdgeF1": 0.9946500327072237,
+                "lightEdgeF1": 0.592546224545741,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1539837140987754,
+                "censusSimilarity": 0.8581739690989975
+              },
+              "after": {
+                "edgeF1": 0.8615879828326181,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.723175965665236,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8662925762753748,
+                "censusSimilarity": 0.990091081362285
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "74b1eae0-1bf8-4922-a9e3-45c01ece9005",
+      "number": "9",
+      "name": "Basri's Lieutenant",
+      "inputHash": "25f9426e3a587e15ac09f68f92a9f21bbb114d83013526450a97c9e6c3ba7c33",
+      "referenceHash": "71b40ac9ddb2dea60ea1a8182525c0f0e8a7771174f0fb419da56fcc5482d508",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25779,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5607539851885398,
+                "darkEdgeF1": 0.6666666666666666,
+                "lightEdgeF1": 0.454841303710413,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.045223096182887,
+                "censusSimilarity": 0.29578978961025426
+              },
+              "after": {
+                "edgeF1": 0.8988689096978866,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.797737819395773,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0889873068636178,
+                "censusSimilarity": 0.5712846358097261
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8891848622828701,
+                "darkEdgeF1": 0.9894419306184012,
+                "lightEdgeF1": 0.7889277939473389,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9246272249946913,
+                "censusSimilarity": 0.9311632392056157
+              },
+              "after": {
+                "edgeF1": 0.8599028239113053,
+                "darkEdgeF1": 0.9864457831325301,
+                "lightEdgeF1": 0.7333598646900806,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7533845386109557,
+                "censusSimilarity": 0.7875343192055977
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2973,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.8541261253555161,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7082522507110321,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9740703080131319,
+                "censusSimilarity": 0.87127892566324
+              },
+              "after": {
+                "edgeF1": 0.9217377028505076,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8434754057010153,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.467426072679875,
+                "censusSimilarity": 0.8716345311283344
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8210740545363695,
+                "darkEdgeF1": 0.9894419306184012,
+                "lightEdgeF1": 0.6527061784543378,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1826259820138352,
+                "censusSimilarity": 0.8794825343243204
+              },
+              "after": {
+                "edgeF1": 0.8724088469309523,
+                "darkEdgeF1": 0.9834087481146305,
+                "lightEdgeF1": 0.761408945747274,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8397030114793376,
+                "censusSimilarity": 0.8652247430121438
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "cb078fbb-beb9-4c0b-be93-ed1e73e6f8d8",
+      "number": "45",
+      "name": "Barrin, Tolarian Archmage",
+      "inputHash": "00edf6f87ea4a8b15d82311164ed032c3ecb668868a20e35a51ad0568bbd4c49",
+      "referenceHash": "53750ee1e7cc3f264ce1b11c6389326ff70f8e0cfe2d0676a561406a0eefd6df",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 24232,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.2764026402640264,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.5528052805280528,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.9060743017270174,
+                "censusSimilarity": 0.508863995484051
+              },
+              "after": {
+                "edgeF1": 0.8692307692307693,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7384615384615384,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0969837199805714,
+                "censusSimilarity": 0.8119190255167896
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9028633392004022,
+                "darkEdgeF1": 0.9603658536585366,
+                "lightEdgeF1": 0.8453608247422679,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.03261584682124,
+                "censusSimilarity": 1
+              },
+              "after": {
+                "edgeF1": 0.9244357193030894,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.848871438606179,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.3373124204804343,
+                "censusSimilarity": 1
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2985,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5833214419002876,
+                "darkEdgeF1": 0.3475609756097561,
+                "lightEdgeF1": 0.819081908190819,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1857959025232283,
+                "censusSimilarity": 0.9231420761406526
+              },
+              "after": {
+                "edgeF1": 0.9992378048780488,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9984756097560976,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5247059554406782,
+                "censusSimilarity": 0.9187601394798885
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9089609001760119,
+                "darkEdgeF1": 0.9725609756097561,
+                "lightEdgeF1": 0.8453608247422679,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9720867206488544,
+                "censusSimilarity": 0.9987412858249419
+              },
+              "after": {
+                "edgeF1": 0.9249037227214378,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8498074454428756,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5329487221069019,
+                "censusSimilarity": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+      "number": "46",
+      "name": "Cancel",
+      "inputHash": "2e9d349169059a6e63320428e490b4399ce983c945813c08ae271ccadafd944f",
+      "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25309,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.2768678500193429,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.5537357000386858,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.8787006632686492,
+                "censusSimilarity": 0.5130835710732535
+              },
+              "after": {
+                "edgeF1": 0.8981651376146789,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7963302752293578,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.060937307457008,
+                "censusSimilarity": 0.8116107981606842
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9049382716049383,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8098765432098766,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0047660914887158,
+                "censusSimilarity": 1
+              },
+              "after": {
+                "edgeF1": 0.9444157248354033,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8888314496708064,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.29399545465454496,
+                "censusSimilarity": 1
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3089,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.8822509081473794,
+                "darkEdgeF1": 0.8810975609756098,
+                "lightEdgeF1": 0.883404255319149,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8668127855897609,
+                "censusSimilarity": 0.9138503367285886
+              },
+              "after": {
+                "edgeF1": 0.9977134146341464,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9954268292682927,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.533405813320381,
+                "censusSimilarity": 0.9118131085033688
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9049382716049383,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8098765432098766,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0047660914887158,
+                "censusSimilarity": 0.9998685709278892
+              },
+              "after": {
+                "edgeF1": 0.904438964241677,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8088779284833539,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5073260477493725,
+                "censusSimilarity": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "b33ba0a8-04e9-4df6-af20-a3ca4470cdcc",
+      "number": "48",
+      "name": "Discontinuity",
+      "inputHash": "84edcf786c24675ecf29c54ba79abf0ae8d7fbffdc1b8e0c6575b56849082c2c",
+      "referenceHash": "8cba5f4ddb904bab5d6dd272f2a33b888a02d2f6e1b265379000876e77adc43f",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25277,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.2764026402640264,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.5528052805280528,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.9121718627026274,
+                "censusSimilarity": 0.4873660851190265
+              },
+              "after": {
+                "edgeF1": 0.8637245392822502,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7274490785645005,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.104698140946467,
+                "censusSimilarity": 0.7804590856151474
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9558609055911169,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9117218111822339,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.573397251509082,
+                "censusSimilarity": 1
+              },
+              "after": {
+                "edgeF1": 0.8815434414666288,
+                "darkEdgeF1": 0.9791044776119403,
+                "lightEdgeF1": 0.7839824053213174,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6801675869427235,
+                "censusSimilarity": 0.9998328131966117
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3076,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.8592234068807452,
+                "darkEdgeF1": 0.8810975609756098,
+                "lightEdgeF1": 0.8373492527858806,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9151064140039106,
+                "censusSimilarity": 0.9023492839894465
+              },
+              "after": {
+                "edgeF1": 1,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 1,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.4717987804878049,
+                "censusSimilarity": 0.9285268743002828
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.949442626186325,
+                "darkEdgeF1": 0.9820359281437125,
+                "lightEdgeF1": 0.9168493242289375,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6428685679466432,
+                "censusSimilarity": 0.9373885421310745
+              },
+              "after": {
+                "edgeF1": 0.9437087760696121,
+                "darkEdgeF1": 0.9704142011834319,
+                "lightEdgeF1": 0.9170033509557923,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.34545664681752764,
+                "censusSimilarity": 0.999777084262149
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "d3bc7176-abe0-47cf-a242-cf22a1f590be",
+      "number": "49",
+      "name": "Enthralling Hold",
+      "inputHash": "c200e8d72c60e5fac043c96c6b3cd10903d6da365ba48d340bd3b2ff41ca59a8",
+      "referenceHash": "9f73d37a53e456554d1bf404e9deb7c56ee9c49cb6db393cebc43a5065d7b9bc",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 24766,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.20220082530949104,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.4044016506189821,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.0354070385478638,
+                "censusSimilarity": 0.37580781645591216
+              },
+              "after": {
+                "edgeF1": 0.8343685577360713,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.6687371154721428,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0806441203032326,
+                "censusSimilarity": 0.6390386273318911
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9711385015850615,
+                "darkEdgeF1": 0.993939393939394,
+                "lightEdgeF1": 0.9483376092307291,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5689737617310073,
+                "censusSimilarity": 0.9998929106875134
+              },
+              "after": {
+                "edgeF1": 0.8607518535934471,
+                "darkEdgeF1": 0.9864661654135338,
+                "lightEdgeF1": 0.7350375417733604,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7029780709329191,
+                "censusSimilarity": 0.9894517027200685
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3031,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.842222476028734,
+                "darkEdgeF1": 0.8810975609756098,
+                "lightEdgeF1": 0.8033473910818584,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9568969915489756,
+                "censusSimilarity": 0.7939553832820381
+              },
+              "after": {
+                "edgeF1": 1,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 1,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.586890243902439,
+                "censusSimilarity": 0.9307885153010276
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.979766697636007,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.959533395272014,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5584268020773853,
+                "censusSimilarity": 0.937879936137592
+              },
+              "after": {
+                "edgeF1": 0.973786482447507,
+                "darkEdgeF1": 0.9894419306184012,
+                "lightEdgeF1": 0.9581310342766127,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1371941397807941,
+                "censusSimilarity": 0.9996787320625402
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+      "number": "87",
+      "name": "Alchemist's Gift",
+      "inputHash": "a91a78cf4a01ec8c9d3c667a003f42ecd0e549c096b9928a1c09bf453b509339",
+      "referenceHash": "f84af8443f3b4bf16e46ee3e1e4ce88af2741f6ab779c216447909dda5ff51d6",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25550,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.010670731707317074,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.021341463414634148,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.4077182987750305,
+                "censusSimilarity": 0.34268925525752747
+              },
+              "after": {
+                "edgeF1": 0.7503805175038052,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.5007610350076104,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.122803960449812,
+                "censusSimilarity": 0.5248035143971519
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9736842105263158,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9473684210526316,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.0884294222385952,
+                "censusSimilarity": 0.9992765909912571
+              },
+              "after": {
+                "edgeF1": 0.8760416666666666,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7520833333333333,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6253357787781845,
+                "censusSimilarity": 0.9331474341784975
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2914,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.2750085036643063,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.5500170073286126,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.6617945981392346,
+                "censusSimilarity": 0.7237897465023714
+              },
+              "after": {
+                "edgeF1": 0.9548334448431766,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9096668896863532,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9737743008881807,
+                "censusSimilarity": 0.9008044017845653
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9737144153741029,
+                "darkEdgeF1": 0.9909365558912386,
+                "lightEdgeF1": 0.956492274856967,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.12812214367516014,
+                "censusSimilarity": 0.9890536388255134
+              },
+              "after": {
+                "edgeF1": 0.9602854354526811,
+                "darkEdgeF1": 0.9761904761904763,
+                "lightEdgeF1": 0.944380394714886,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.30901391548718465,
+                "censusSimilarity": 0.9866507223168429
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "83437022-ba00-4370-83c2-ce1260336fcc",
+      "number": "88",
+      "name": "Archfiend's Vessel",
+      "inputHash": "88856302738ea4406bd36a774ed0bfb65a3e2558d6eaa13da8dfdb83ce09e976",
+      "referenceHash": "0cd801fd59d96a918ed2ccb4d7786c7df858e8f7b63639f0023c0dbe2ed7b414",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25137,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.23170731707317074,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.4634146341463415,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.9743991529614462,
+                "censusSimilarity": 0.4413120671979357
+              },
+              "after": {
+                "edgeF1": 0.8724969156306349,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7449938312612698,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0461108807201793,
+                "censusSimilarity": 0.6219191156639385
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9497282608695652,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8994565217391305,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.20134811419516205,
+                "censusSimilarity": 0.9962217004782532
+              },
+              "after": {
+                "edgeF1": 0.887014781863542,
+                "darkEdgeF1": 0.9847560975609756,
+                "lightEdgeF1": 0.7892734661661084,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6403034573341255,
+                "censusSimilarity": 0.9415845425318792
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2888,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.35562108976655726,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.7112421795331145,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.5312193890870034,
+                "censusSimilarity": 0.7850448938228267
+              },
+              "after": {
+                "edgeF1": 1,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 1,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6753048780487805,
+                "censusSimilarity": 0.9073953608112995
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9499314128943759,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8998628257887517,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1964714737546378,
+                "censusSimilarity": 0.9879362770315687
+              },
+              "after": {
+                "edgeF1": 0.9457831325301205,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8915662650602408,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.23012520304924974,
+                "censusSimilarity": 0.9945867293053765
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "56149192-ddc1-45a4-b7aa-be311da5fe8e",
+      "number": "95",
+      "name": "Demonic Embrace",
+      "inputHash": "1d407e86700e8a407fcf8fab7ef9a332abacfe27ad648771b7078a0eb3409edc",
+      "referenceHash": "d36bb38db6e4b22a9a19ac46b91e19102485deb6e17943e82fb2e212b03a1bdd",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25253,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.23323170731707318,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.46646341463414637,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.005202669468595,
+                "censusSimilarity": 0.41463597743696023
+              },
+              "after": {
+                "edgeF1": 0.8357053055066633,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.6714106110133267,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.087258198911824,
+                "censusSimilarity": 0.5900556509978426
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9682677827541022,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9365355655082045,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.10217035390811505,
+                "censusSimilarity": 0.9993115890423967
+              },
+              "after": {
+                "edgeF1": 0.9003880048706994,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8007760097413988,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.573795500065058,
+                "censusSimilarity": 0.9654607605754166
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2890,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.32646101379631065,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.6529220275926213,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.5460630104499042,
+                "censusSimilarity": 0.7469823381177891
+              },
+              "after": {
+                "edgeF1": 0.9938977341162301,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9877954682324601,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.685714065665152,
+                "censusSimilarity": 0.8862402721698885
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9680234979592,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9360469959183998,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.10325627349393965,
+                "censusSimilarity": 0.9938841223223764
+              },
+              "after": {
+                "edgeF1": 0.9623502301356535,
+                "darkEdgeF1": 0.9909365558912386,
+                "lightEdgeF1": 0.9337639043800682,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.18596975341991304,
+                "censusSimilarity": 0.9947063571191188
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "928558ab-e29a-44cb-ac2f-88443571f41a",
+      "number": "103",
+      "name": "Grim Tutor",
+      "inputHash": "61d16123029f465685b977c113053d679dd8686b4523246f6183c712e563ca71",
+      "referenceHash": "9e0d9ab0d91f291080b3a584a008fbb31bc980baf0c9fa4001e80cc4234000a8",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25646,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.21417682926829268,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.42835365853658536,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.0218672739205563,
+                "censusSimilarity": 0.40225968511403676
+              },
+              "after": {
+                "edgeF1": 0.8369651877742627,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.6739303755485253,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0890983006939656,
+                "censusSimilarity": 0.5771840442958687
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9574616457461645,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9149232914923291,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.13018447540105627,
+                "censusSimilarity": 0.9985775680061706
+              },
+              "after": {
+                "edgeF1": 0.8913913913913913,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7827827827827827,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.604166448629976,
+                "censusSimilarity": 0.9497177762754268
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2922,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.3302285036281307,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.6604570072562614,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.555297980832924,
+                "censusSimilarity": 0.7378639809870653
+              },
+              "after": {
+                "edgeF1": 0.9984744443201312,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9969488886402625,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6885779066601905,
+                "censusSimilarity": 0.8794346013385808
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9619718309859155,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.923943661971831,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.11451283361001148,
+                "censusSimilarity": 0.9961665296110591
+              },
+              "after": {
+                "edgeF1": 0.9561077546966812,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9122155093933625,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1512299661867552,
+                "censusSimilarity": 0.998511660013728
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "faca827d-0b35-48d7-acd6-13ecacc32b82",
+      "number": "130",
+      "name": "Battle-Rattle Shaman",
+      "inputHash": "4f81ad89b979585bb243b1b8432ddf003bc9261ea4bc137a1c7f19c3d339fd75",
+      "referenceHash": "3d610f1f3eff010c01600444b5182e74f513e62e2bd8a3a8085d7f2b843edc62",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26336,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.11748878923766816,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.23497757847533632,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.2225066796416297,
+                "censusSimilarity": 0.3642012649287588
+              },
+              "after": {
+                "edgeF1": 0.7991139481707317,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.5982278963414633,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0883268113361626,
+                "censusSimilarity": 0.6285730804070052
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9573333333333334,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9146666666666667,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1557331292609486,
+                "censusSimilarity": 0.9992096623635309
+              },
+              "after": {
+                "edgeF1": 0.8972718673769104,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7945437347538208,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5726721646518668,
+                "censusSimilarity": 0.9529399923172044
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3001,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5414019489521902,
+                "darkEdgeF1": 0.3018292682926829,
+                "lightEdgeF1": 0.7809746296116975,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.28071615507432,
+                "censusSimilarity": 0.8198128469112627
+              },
+              "after": {
+                "edgeF1": 0.9918667699457785,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.983733539891557,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7573285868597045,
+                "censusSimilarity": 0.9321191610839988
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9587412587412587,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9174825174825175,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.14209129009894753,
+                "censusSimilarity": 0.9887635415333839
+              },
+              "after": {
+                "edgeF1": 0.9579099606912408,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9158199213824816,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.16194919349502715,
+                "censusSimilarity": 0.999094843012643
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "6075e0a3-a0ab-4a11-8ad2-7dabb071d309",
+      "number": "132",
+      "name": "Bone Pit Brute",
+      "inputHash": "fdbbb5145b1b03f47d85be83e667c0b7a761ea9b218cd9efa85d2f55c66a10e4",
+      "referenceHash": "2f6aee8e5c651bf0788e02262831764c0054a9883c2aa796c48bcb90f0b0a44b",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26732,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.2939068100358423,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.5878136200716846,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.9314135755937465,
+                "censusSimilarity": 0.47967966669945455
+              },
+              "after": {
+                "edgeF1": 0.8633720930232558,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7267441860465117,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1070683524092777,
+                "censusSimilarity": 0.769150770873277
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9184222389181067,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8368444778362134,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.33005691502376694,
+                "censusSimilarity": 0.9992540216420023
+              },
+              "after": {
+                "edgeF1": 0.93524169825864,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8704833965172799,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.432410837012297,
+                "censusSimilarity": 0.9964323632866112
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3057,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5656530592083598,
+                "darkEdgeF1": 0.31402439024390244,
+                "lightEdgeF1": 0.8172817281728173,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1719796285279598,
+                "censusSimilarity": 0.9013870734063791
+              },
+              "after": {
+                "edgeF1": 0.9954268185431954,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9908536370863908,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5621439477650038,
+                "censusSimilarity": 0.9159388075936131
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9039408866995073,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8078817733990148,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.357778169723846,
+                "censusSimilarity": 0.9885189932346841
+              },
+              "after": {
+                "edgeF1": 0.9191039005775785,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8382078011551569,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.3333380868147274,
+                "censusSimilarity": 0.999367555624274
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ebb5e613-a803-42f3-840a-7089ac6b7e3d",
+      "number": "133",
+      "name": "Brash Taunter",
+      "inputHash": "3dd8dbd58a67e90d65fe395d39dc043a372cb520d4694099734ade0f5a540b9f",
+      "referenceHash": "5b728184f6d9882069d69cd1dd2dfd0a05431bc4c3f1d8d76aa0a312859aa209",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26616,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.13926325247079965,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.2785265049415993,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.1972828965618247,
+                "censusSimilarity": 0.37922468278919164
+              },
+              "after": {
+                "edgeF1": 0.805229307007212,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.6104586140144239,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.095180106375061,
+                "censusSimilarity": 0.6484115448024548
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9523512395510694,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9047024791021386,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1749390194052593,
+                "censusSimilarity": 0.9983318384917556
+              },
+              "after": {
+                "edgeF1": 0.8835138165082553,
+                "darkEdgeF1": 0.9984779299847794,
+                "lightEdgeF1": 0.7685497030317313,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6692265135197932,
+                "censusSimilarity": 0.9383810885477215
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3034,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5350799238327096,
+                "darkEdgeF1": 0.31402439024390244,
+                "lightEdgeF1": 0.7561354574215168,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.2658168211272636,
+                "censusSimilarity": 0.834928807320028
+              },
+              "after": {
+                "edgeF1": 0.9919073581118591,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9838147162237184,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7376437752611049,
+                "censusSimilarity": 0.9407472996188924
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9711274360553999,
+                "darkEdgeF1": 0.9984779299847794,
+                "lightEdgeF1": 0.9437769421260205,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1412696462291327,
+                "censusSimilarity": 0.9841799512559106
+              },
+              "after": {
+                "edgeF1": 0.9577623144453979,
+                "darkEdgeF1": 0.9879518072289156,
+                "lightEdgeF1": 0.9275728216618802,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.28876278063384775,
+                "censusSimilarity": 0.9899090221891411
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "0b12e4b7-2c45-4795-94d3-901f89b8f290",
+      "number": "143",
+      "name": "Fiery Emancipation",
+      "inputHash": "db41c51201b9f91ab87abf52d2ff0e495f43850252fc12e40c3dfcbcee04ce19",
+      "referenceHash": "04f5c5cd7928476e94355d119b4f102adb51ea3deb2a4efbcd8e3893bf6e56f1",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26760,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.39146778564559837,
+                "darkEdgeF1": 0.1951219512195122,
+                "lightEdgeF1": 0.5878136200716846,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.7093775393127908,
+                "censusSimilarity": 0.6033937303205816
+              },
+              "after": {
+                "edgeF1": 0.9938366718027736,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.987673343605547,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8868491876909532,
+                "censusSimilarity": 0.8585117194919791
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9111090307682705,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8222180615365412,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.549709097513701,
+                "censusSimilarity": 0.9968587944948583
+              },
+              "after": {
+                "edgeF1": 0.9457483035736618,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8914966071473237,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.3699745814800108,
+                "censusSimilarity": 0.9943717390666263
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3052,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.716131252849447,
+                "darkEdgeF1": 0.46036585365853666,
+                "lightEdgeF1": 0.9718966520403575,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.937072351707666,
+                "censusSimilarity": 0.934551652412109
+              },
+              "after": {
+                "edgeF1": 0.994254373129013,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9885087462580261,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6248991936752462,
+                "censusSimilarity": 0.8445489406552213
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8858823529411765,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7717647058823529,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5983494533221194,
+                "censusSimilarity": 0.9963701255070139
+              },
+              "after": {
+                "edgeF1": 0.9022419120087838,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8044838240175676,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5610790550490137,
+                "censusSimilarity": 0.9973302093423039
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "0b8aff2c-1f7b-4507-b914-53f8c4706b3d",
+      "number": "173",
+      "name": "Azusa, Lost but Seeking",
+      "inputHash": "0a11525233d1bff77a2277f997386e5955a8957a78d49e020a382b780f2ab56c",
+      "referenceHash": "e01880a96745380a52617a512cb8a73cdb4283d221f40ff17f0c58c9de249b52",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 26752,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.30991855082784403,
+                "darkEdgeF1": 0.003048780487804878,
+                "lightEdgeF1": 0.6167883211678832,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.7907263240202587,
+                "censusSimilarity": 0.6098078141742808
+              },
+              "after": {
+                "edgeF1": 0.9640522875816994,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9281045751633987,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9593064968262304,
+                "censusSimilarity": 0.8505449297738245
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.836989243918279,
+                "darkEdgeF1": 0.8567073170731707,
+                "lightEdgeF1": 0.8172711707633873,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.046617420111534,
+                "censusSimilarity": 0.9998326395379877
+              },
+              "after": {
+                "edgeF1": 0.9366546095626007,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8733092191252014,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.34393010950244024,
+                "censusSimilarity": 0.9995423181305169
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3066,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.7044922190685694,
+                "darkEdgeF1": 0.4878048780487805,
+                "lightEdgeF1": 0.9211795600883583,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9479105118986622,
+                "censusSimilarity": 0.9113202597811602
+              },
+              "after": {
+                "edgeF1": 0.9923780487804879,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9847560975609756,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6666591876163716,
+                "censusSimilarity": 0.8523597684859797
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.842186247566701,
+                "darkEdgeF1": 0.8932926829268293,
+                "lightEdgeF1": 0.7910798122065729,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9825245664005324,
+                "censusSimilarity": 0.9997206480964163
+              },
+              "after": {
+                "edgeF1": 0.9092258741844272,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8184517483688546,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6332839592214319,
+                "censusSimilarity": 0.9998075319620412
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c",
+      "number": "174",
+      "name": "Burlfist Oak",
+      "inputHash": "742964787a73e72fe2d0942e73918d010313f74a63468a0d8e6e5876f6a24b39",
+      "referenceHash": "a53ce3e809ff5a26e6192e9cddc65362f65faa84b073c7be56a6e28fb0b86370",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27357,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.3083941605839416,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.6167883211678832,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.873555266797439,
+                "censusSimilarity": 0.5414915696761671
+              },
+              "after": {
+                "edgeF1": 0.9042548476761207,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8085096953522416,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0612590741654495,
+                "censusSimilarity": 0.8020994253150259
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9346309576292993,
+                "darkEdgeF1": 0.9878048780487805,
+                "lightEdgeF1": 0.8814570372098182,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6520397584298754,
+                "censusSimilarity": 0.9998932194340631
+              },
+              "after": {
+                "edgeF1": 0.9075401751718295,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.815080350343659,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5469355694642173,
+                "censusSimilarity": 0.9990923651895355
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3116,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.9151596783031907,
+                "darkEdgeF1": 0.948170731707317,
+                "lightEdgeF1": 0.8821486248990643,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8463507540029319,
+                "censusSimilarity": 0.9257564211750056
+              },
+              "after": {
+                "edgeF1": 1,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 1,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5403963414634146,
+                "censusSimilarity": 0.9277885907674129
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9329921311261306,
+                "darkEdgeF1": 0.9878048780487805,
+                "lightEdgeF1": 0.8781793842034806,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.714824825895666,
+                "censusSimilarity": 0.9373889174093392
+              },
+              "after": {
+                "edgeF1": 0.940637982976102,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.8812759659522039,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.22355151316455782,
+                "censusSimilarity": 0.9998932194340631
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "8059c52b-5d25-4052-b48a-e9e219a7a546",
+      "number": "176",
+      "name": "Colossal Dreadmaw",
+      "inputHash": "3e4c91aa32647fa1fde7ac79a84a68e6bbef11768aae61decc9738b705e3e3e4",
+      "referenceHash": "7dbdf1bc34fc9966192d032fb28337b352026e6f63189921fff1161c8bc33083",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27370,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.09493510719062942,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.18987021438125884,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.2289751485864113,
+                "censusSimilarity": 0.36483608922709215
+              },
+              "after": {
+                "edgeF1": 0.7954905474824367,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.5909810949648734,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.102700609583656,
+                "censusSimilarity": 0.6030206661966768
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.967605633802817,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9352112676056338,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5321684460595052,
+                "censusSimilarity": 0.9996735881422535
+              },
+              "after": {
+                "edgeF1": 0.8810566510545628,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7621133021091256,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6401965791119952,
+                "censusSimilarity": 0.9605911085744299
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3128,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.859548938951761,
+                "darkEdgeF1": 0.948170731707317,
+                "lightEdgeF1": 0.7709271461962048,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.0328304550581278,
+                "censusSimilarity": 0.8154676036185735
+              },
+              "after": {
+                "edgeF1": 0.9969325153374233,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9938650306748467,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8332642077854494,
+                "censusSimilarity": 0.9156676297248538
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.977438136826783,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9548762736535662,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5647632311977716,
+                "censusSimilarity": 0.9372838681575968
+              },
+              "after": {
+                "edgeF1": 0.9644351464435146,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9288702928870293,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.10878487729727207,
+                "censusSimilarity": 0.999758910199377
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "d51269cf-a333-4a64-94cd-245798d840d2",
+      "number": "179",
+      "name": "Elder Gargaroth",
+      "inputHash": "f33faa21f38ccc922063d97a66394d4d6675228e3d278718a09cccafc266fe84",
+      "referenceHash": "912c786d8232e51fa53795dec25c506d0d7222302dcd1f92f424cc48ea0fe7ff",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27521,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.1654275092936803,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0.3308550185873606,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.1127985238591935,
+                "censusSimilarity": 0.3830676046428669
+              },
+              "after": {
+                "edgeF1": 0.826176212044722,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.652352424089444,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1108737536326234,
+                "censusSimilarity": 0.6124509374948357
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9576976421636616,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9153952843273232,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.555018785201712,
+                "censusSimilarity": 0.9995044009193867
+              },
+              "after": {
+                "edgeF1": 0.8931223464537628,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.7862446929075255,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6168861729062141,
+                "censusSimilarity": 0.9722965993431508
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3135,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.8613931285018371,
+                "darkEdgeF1": 0.948170731707317,
+                "lightEdgeF1": 0.7746155252963572,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9953792056698313,
+                "censusSimilarity": 0.8313484998697742
+              },
+              "after": {
+                "edgeF1": 0.9969325153374233,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9938650306748467,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.755520305346425,
+                "censusSimilarity": 0.9273559462451169
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9699140401146131,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9398280802292264,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5804754449571523,
+                "censusSimilarity": 0.9373388299057802
+              },
+              "after": {
+                "edgeF1": 0.9574361005230765,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9148722010461529,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.1362878070876436,
+                "censusSimilarity": 0.9995426213749745
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "43224e74-2c51-40bd-bc34-f66e990a3e33",
+      "number": "215",
+      "name": "Alpine Houndmaster",
+      "inputHash": "d23cea074913efeb868fb258d3827d8f300a6f419c4f3166d486e22e8d58b1bd",
+      "referenceHash": "870c5f8576434173ca04fa8a54569a6bd286a0740f573603d014ede095b424a3",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 25509,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.16670121783668057,
+                "darkEdgeF1": 0.11642826593166374,
+                "lightEdgeF1": 0.21697416974169742,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.2222867561770188,
+                "censusSimilarity": 0.29559205221495244
+              },
+              "after": {
+                "edgeF1": 0.7183946950109221,
+                "darkEdgeF1": 0.8426872820914977,
+                "lightEdgeF1": 0.5941021079303467,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1077066901565966,
+                "censusSimilarity": 0.5105498791045469
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.7812137566043179,
+                "darkEdgeF1": 0.6285852547905866,
+                "lightEdgeF1": 0.9338422584180492,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8231033536488069,
+                "censusSimilarity": 0.9059937641431468
+              },
+              "after": {
+                "edgeF1": 0.7752946321565367,
+                "darkEdgeF1": 0.8557535602320745,
+                "lightEdgeF1": 0.6948357040809989,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.250564034503888,
+                "censusSimilarity": 0.7887685879084718
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3004,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.4449589297968593,
+                "darkEdgeF1": 0.28326391596052447,
+                "lightEdgeF1": 0.6066539436331941,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 2.1417075701155794,
+                "censusSimilarity": 0.6546975114774518
+              },
+              "after": {
+                "edgeF1": 0.9450234963420994,
+                "darkEdgeF1": 0.9958592132505176,
+                "lightEdgeF1": 0.8941877794336811,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.77721780694444,
+                "censusSimilarity": 0.8572478239257098
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.7764009466528698,
+                "darkEdgeF1": 0.624230464734311,
+                "lightEdgeF1": 0.9285714285714286,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.906310037543852,
+                "censusSimilarity": 0.9021421671349291
+              },
+              "after": {
+                "edgeF1": 0.8807317202920513,
+                "darkEdgeF1": 0.9235955056179775,
+                "lightEdgeF1": 0.8378679349661251,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7935321198542,
+                "censusSimilarity": 0.8669762441923201
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e21827eb-fa49-4784-a86b-aef164a5018e",
+      "number": "222",
+      "name": "Niambi, Esteemed Speaker",
+      "inputHash": "c1b121ae6e493b057e5a0b3cb740b9ca01fc123700496a2100e111f7941a0832",
+      "referenceHash": "e5357313a249dc176dbcae737da0a3c17d15d11c2e2d54cfeff79466d25d06e4",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 24029,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.31126173636262633,
+                "darkEdgeF1": 0.38749353260549224,
+                "lightEdgeF1": 0.23502994011976047,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.8856014399066188,
+                "censusSimilarity": 0.3219954183174567
+              },
+              "after": {
+                "edgeF1": 0.7711327708232902,
+                "darkEdgeF1": 0.9281697977830816,
+                "lightEdgeF1": 0.6140957438634987,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1619624097464167,
+                "censusSimilarity": 0.5325953382160262
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8759918422125195,
+                "darkEdgeF1": 0.8749265692265876,
+                "lightEdgeF1": 0.8770571151984512,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9870883135572759,
+                "censusSimilarity": 0.8976470426144587
+              },
+              "after": {
+                "edgeF1": 0.8105518607986033,
+                "darkEdgeF1": 0.846877711121366,
+                "lightEdgeF1": 0.7742260104758407,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8148882751279414,
+                "censusSimilarity": 0.7911191740558295
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 2884,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.3090812020135252,
+                "darkEdgeF1": 0.10985915492957747,
+                "lightEdgeF1": 0.5083032490974729,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 8.287556727714644,
+                "censusSimilarity": 0.7458743794365112
+              },
+              "after": {
+                "edgeF1": 0.9227465380313324,
+                "darkEdgeF1": 0.9788018433179724,
+                "lightEdgeF1": 0.8666912327446924,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6795413094974679,
+                "censusSimilarity": 0.9073417190358328
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8814403428624498,
+                "darkEdgeF1": 0.8827235148015201,
+                "lightEdgeF1": 0.8801571709233793,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.044939523030728,
+                "censusSimilarity": 0.9061073850022427
+              },
+              "after": {
+                "edgeF1": 0.8329395863771692,
+                "darkEdgeF1": 0.9039744108495765,
+                "lightEdgeF1": 0.761904761904762,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8619579776896276,
+                "censusSimilarity": 0.8506117588068678
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "3af78d76-ad5c-44ba-880d-b834bcde5398",
+      "number": "228",
+      "name": "Chromatic Orrery",
+      "inputHash": "9174d3fa09ac731dd79423b067c82665b4fca3a1d0982b2ec22a8a11a4d3d436",
+      "referenceHash": "0240694a2772bd87728e3008a03e31c0bf18e4e616cecf44c908c013f70e0e7a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27495,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.47014579945465157,
+                "darkEdgeF1": 0.663983903420523,
+                "lightEdgeF1": 0.2763076954887801,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.403025345970957,
+                "censusSimilarity": 0.19178817310808488
+              },
+              "after": {
+                "edgeF1": 0.752528961625587,
+                "darkEdgeF1": 0.9899923017705928,
+                "lightEdgeF1": 0.5150656214805812,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1496931569016429,
+                "censusSimilarity": 0.4074588476205408
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9831192969793292,
+                "darkEdgeF1": 0.9962034927866363,
+                "lightEdgeF1": 0.9700351011720222,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8748789700395807,
+                "censusSimilarity": 0.8652835559483553
+              },
+              "after": {
+                "edgeF1": 0.9240121556746588,
+                "darkEdgeF1": 0.9962034927866363,
+                "lightEdgeF1": 0.8518208185626813,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7174209457985563,
+                "censusSimilarity": 0.6627876556751643
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3097,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.09298086069386519,
+                "darkEdgeF1": 0.16503496503496504,
+                "lightEdgeF1": 0.02092675635276532,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 49.79175603364158,
+                "censusSimilarity": 0.7163838781373413
+              },
+              "after": {
+                "edgeF1": 0.9736990236925728,
+                "darkEdgeF1": 0.9946360153256706,
+                "lightEdgeF1": 0.952762032059475,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.5885541585268426,
+                "censusSimilarity": 0.8243804489729707
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9582483024651385,
+                "darkEdgeF1": 0.9857250187828701,
+                "lightEdgeF1": 0.930771586147407,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7665578425745996,
+                "censusSimilarity": 0.868910680285946
+              },
+              "after": {
+                "edgeF1": 0.7894679154542776,
+                "darkEdgeF1": 0.9366132714875502,
+                "lightEdgeF1": 0.642322559421005,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1767745112781252,
+                "censusSimilarity": 0.7749653337295557
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "1e01bcb4-e823-4da5-b433-e75be3356367",
+      "number": "229",
+      "name": "Chrome Replicator",
+      "inputHash": "a790c195b4102b5dbc895b6bd40e186b537d84f9e34defc700906efd372583ec",
+      "referenceHash": "91a70ce9c01ca0097e93c024780965f83007f4d1e0605023c6b19ecdad99e978",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27268,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.47729853277298534,
+                "darkEdgeF1": 0.6626262626262627,
+                "lightEdgeF1": 0.291970802919708,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.7946577476173458,
+                "censusSimilarity": 0.08450383133882516
+              },
+              "after": {
+                "edgeF1": 0.4973529671541731,
+                "darkEdgeF1": 0.5,
+                "lightEdgeF1": 0.4947059343083462,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1150286297182586,
+                "censusSimilarity": 0.26150001051245686
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.7718831293445771,
+                "darkEdgeF1": 0.569487282642707,
+                "lightEdgeF1": 0.9742789760464472,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9743397640753251,
+                "censusSimilarity": 0.791839693466724
+              },
+              "after": {
+                "edgeF1": 0.7369801921019239,
+                "darkEdgeF1": 0.5680990531682447,
+                "lightEdgeF1": 0.905861331035603,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.963121247850103,
+                "censusSimilarity": 0.5540090986564972
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3077,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0,
+                "darkStatus": "missing-ink",
+                "lightStatus": "missing-ink",
+                "meanDistance": null,
+                "censusSimilarity": 0
+              },
+              "after": {
+                "edgeF1": 0.8027907735402625,
+                "darkEdgeF1": 0.702274975272008,
+                "lightEdgeF1": 0.903306571808517,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6540476875297648,
+                "censusSimilarity": 0.7228931961666814
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8205225473338867,
+                "darkEdgeF1": 0.6471717114138593,
+                "lightEdgeF1": 0.9938733832539142,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.120369738437007,
+                "censusSimilarity": 0.8544812795465148
+              },
+              "after": {
+                "edgeF1": 0.6845965100992453,
+                "darkEdgeF1": 0.5680990531682447,
+                "lightEdgeF1": 0.8010939670302457,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9498341015594378,
+                "censusSimilarity": 0.7209710131735095
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "3bd39a06-c53a-42c2-b2df-028358f03406",
+      "number": "231",
+      "name": "Forgotten Sentinel",
+      "inputHash": "6f0faa1e840b43547fd174353ba93befe901629b25642ba3cb54b89fe0784d3e",
+      "referenceHash": "0cd38366e792fba6a905699e65864de9ec3fbebf06d02502ef9352bd1632a1fb",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27371,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.4736545505776275,
+                "darkEdgeF1": 0.6666666666666666,
+                "lightEdgeF1": 0.28064243448858833,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.5703183115363852,
+                "censusSimilarity": 0.1967583590771102
+              },
+              "after": {
+                "edgeF1": 0.6839999966742263,
+                "darkEdgeF1": 0.8541662165957354,
+                "lightEdgeF1": 0.5138337767527172,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1062835297395281,
+                "censusSimilarity": 0.42189484783811404
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.961045383958481,
+                "darkEdgeF1": 0.936950146627566,
+                "lightEdgeF1": 0.9851406212893961,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8652772101298961,
+                "censusSimilarity": 0.8493714030876887
+              },
+              "after": {
+                "edgeF1": 0.8979775612733367,
+                "darkEdgeF1": 0.936950146627566,
+                "lightEdgeF1": 0.8590049759191073,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7644083450688552,
+                "censusSimilarity": 0.6364806146866007
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3083,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0,
+                "darkStatus": "missing-ink",
+                "lightStatus": "missing-ink",
+                "meanDistance": null,
+                "censusSimilarity": 0
+              },
+              "after": {
+                "edgeF1": 0.9796410453870855,
+                "darkEdgeF1": 0.967741935483871,
+                "lightEdgeF1": 0.9915401552903,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.3878690658535524,
+                "censusSimilarity": 0.841767484889267
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9019404310965986,
+                "darkEdgeF1": 0.936950146627566,
+                "lightEdgeF1": 0.8669307155656311,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.9370707481521828,
+                "censusSimilarity": 0.8742960521466672
+              },
+              "after": {
+                "edgeF1": 0.8696676074195576,
+                "darkEdgeF1": 0.936950146627566,
+                "lightEdgeF1": 0.8023850682115492,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.8740308628455278,
+                "censusSimilarity": 0.767980563716476
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "9fd761f3-6b43-4150-8595-dc3abd85b06c",
+      "number": "232",
+      "name": "Mazemind Tome",
+      "inputHash": "e53c3ed764a807638519a444d58e858d8e2fecd460e22a5a15efb83fa4298bec",
+      "referenceHash": "8a089b7e2c2bfe0281a959b434a1afe9fdb59adac5d073b592d9f74899a01022",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 27590,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0.5228417216147789,
+                "darkEdgeF1": 0.6666666666666666,
+                "lightEdgeF1": 0.3790167765628912,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.3061693524263123,
+                "censusSimilarity": 0.3196674455908042
+              },
+              "after": {
+                "edgeF1": 0.7864364311141343,
+                "darkEdgeF1": 0.9907692307692307,
+                "lightEdgeF1": 0.5821036314590378,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 1.1176743571736036,
+                "censusSimilarity": 0.5389382897723618
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.9556885047377182,
+                "darkEdgeF1": 0.937125748502994,
+                "lightEdgeF1": 0.9742512609724423,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.772090355764725,
+                "censusSimilarity": 0.8762354960161473
+              },
+              "after": {
+                "edgeF1": 0.8994818366990437,
+                "darkEdgeF1": 0.937125748502994,
+                "lightEdgeF1": 0.8618379248950934,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.6556726121326755,
+                "censusSimilarity": 0.6746053438340089
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 3118,
+          "unchangedOutsideBands": true,
+          "scores": {
+            "type-top": {
+              "before": {
+                "edgeF1": 0,
+                "darkEdgeF1": 0,
+                "lightEdgeF1": 0,
+                "darkStatus": "missing-ink",
+                "lightStatus": "missing-ink",
+                "meanDistance": null,
+                "censusSimilarity": 0
+              },
+              "after": {
+                "edgeF1": 0.9858132856812645,
+                "darkEdgeF1": 1,
+                "lightEdgeF1": 0.9716265713625291,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.46510999511729006,
+                "censusSimilarity": 0.9048172977312249
+              }
+            },
+            "rules-top": {
+              "before": {
+                "edgeF1": 0.8895335243373415,
+                "darkEdgeF1": 0.9447402767506716,
+                "lightEdgeF1": 0.8343267719240112,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.928701732032673,
+                "censusSimilarity": 0.8806803580474634
+              },
+              "after": {
+                "edgeF1": 0.8788107457414556,
+                "darkEdgeF1": 0.92603550295858,
+                "lightEdgeF1": 0.8315859885243312,
+                "darkStatus": "measured",
+                "lightStatus": "measured",
+                "meanDistance": 0.7943757802378969,
+                "censusSimilarity": 0.7988822926034338
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

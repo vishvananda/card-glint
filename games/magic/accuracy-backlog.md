@@ -355,6 +355,20 @@ at both tiers; this does not certify every symbol or every card in those sets.
   W/U/B/R/G/artifact materials. Gold, land and colorless plates retain their
   existing tone. The lower edge is still about two canonical pixels high in
   the examined M21 scans; examine the whole plate geometry separately from tone.
-- Next: full normal-card coverage for M19/M20/M21, then black outlines, negative
-  space and gradients for non-shield symbols. M15 and WAR intentionally retain
-  their existing symbol treatment until their topology is examined.
+- Full core-set coverage now measures 952/953 ordinary-treatment printings,
+  including basics and planeswalkers; M19 #218's unsupported transform remains
+  in the denominator. Repair its cached exclusion policy separately from the
+  frozen captures. All per-card results are in `set-symbol-all-*-measurement.json`.
+- M20 has fifteen ordinary nonbasic inspect edge regressions, all commons;
+  eight are black. Review Feral Abomination #101, Mind Rot #108 and Maniacal
+  Rage #149 before assuming the selected material/rarity cohort covered every
+  placement variant. Keep raw scores and diagnostic offsets separate.
+- The top type outline now extends 1px inward. The rules box expands upward
+  1px with byte-identical lower geometry and unchanged text. Visual review
+  accepted both. Rules-top scores remain mixed (M21 inspect median .942 → .892,
+  M20 .892 → .926); investigate border shape and shared scan alignment before
+  another shift. See `normal-border-*-measurement.json`.
+- Next: black outlines, white components, negative space and gradients for
+  non-shield symbols. Begin with M15 and WAR, retaining the existing pinned
+  assets. Separate stencil holes from intentional white ink; do not assume
+  every symbol has the same topology as the core-set shields.
