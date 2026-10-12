@@ -44,6 +44,7 @@ export function regions(result) {
 
 /** Seventh-family old borders: reviewed separately from the modern frame plates. */
 function retroRegions(result) {
+  if (result.frame === 'retro-fourth') return fourthRegions(result);
   const manaCount = result.face.manaSymbols.length;
   const manaX = 446 - manaCount * 25;
   const list = [
@@ -73,6 +74,36 @@ function retroRegions(result) {
       kind: 'asset',
       assetRole: 'mana',
       rect: [Math.floor(manaX - 3), 31, Math.ceil(450 - manaX), 35],
+    });
+  if (result.face.power != null)
+    list.push({ id: 'stats', kind: 'text', rect: [393, 607, 67, 33], lightInk: true });
+  return list;
+}
+
+/** Fourth Edition development scans; independently observed from the existing plate geometry. */
+function fourthRegions(result) {
+  const manaCount = result.face.manaSymbols.length;
+  const manaX = 447 - 24 - Math.max(0, manaCount - 1) * 27;
+  const list = [
+    {
+      id: 'title',
+      kind: 'text',
+      rect: [38, 24, (manaCount ? manaX - 6 : 449) - 38, 35],
+      lightInk: true,
+    },
+    { id: 'type', kind: 'text', rect: [40, 374, 350, 31], lightInk: true },
+    { id: 'body', kind: 'text', rect: [62, 417, 366, 184] },
+    { id: 'footer', kind: 'missing-content', rect: [36, 608, 354, 38], lightInk: true },
+    { id: 'frame-left', kind: 'asset', assetRole: 'frame', rect: [39, 111, 18, 240] },
+    { id: 'frame-right', kind: 'asset', assetRole: 'frame', rect: [433, 111, 18, 240] },
+    { id: 'type-border', kind: 'asset', assetRole: 'boxes', rect: [62, 404, 366, 8] },
+  ];
+  if (manaCount)
+    list.push({
+      id: 'mana',
+      kind: 'asset',
+      assetRole: 'mana',
+      rect: [Math.floor(manaX - 3), 24, Math.ceil(452 - manaX), 35],
     });
   if (result.face.power != null)
     list.push({ id: 'stats', kind: 'text', rect: [393, 607, 67, 33], lightInk: true });

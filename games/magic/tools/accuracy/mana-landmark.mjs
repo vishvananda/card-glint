@@ -1,4 +1,43 @@
 import { blur } from './edges.mjs';
+import { median } from './metrics.mjs';
+
+/** Measure every disc against fixed nominal positions; never walk from a previously fitted disc. */
+export function manaRowLandmarks(gray, width, height, { count, rightX, y, pitch, range = 9 }) {
+  if (
+    !Number.isInteger(count) ||
+    count < 1 ||
+    ![rightX, y, pitch, range].every(Number.isFinite) ||
+    pitch <= 0 ||
+    range <= 0
+  )
+    throw Error('Invalid mana row target');
+  const circles = Array.from({ length: count }, (_, index) => {
+    const x = rightX - index * pitch;
+    if (
+      x - range - 15 < 0 ||
+      x + range + 15 >= width ||
+      y - range - 15 < 0 ||
+      y + range + 15 >= height
+    )
+      return { symbolIndex: count - index - 1, status: 'outside-search-window' };
+    return {
+      symbolIndex: count - index - 1,
+      ...manaLandmark(gray, width, height, { x, y, range }),
+    };
+  });
+  const measured = circles.every((c) => c.status === 'measured');
+  const separations = circles.slice(1).map((c, i) => circles[i].x - c.x);
+  const conflict = measured && separations.some((v) => v < pitch / 2 || v > pitch * 1.5);
+  return {
+    status: conflict ? 'conflicting-disc-order' : measured ? 'measured' : 'partial',
+    circles,
+    pitch: measured && !conflict ? median(separations) : null,
+    verticalSpread:
+      measured && !conflict
+        ? Math.max(...circles.map((c) => c.y)) - Math.min(...circles.map((c) => c.y))
+        : null,
+  };
+}
 
 /** Locate the printed cost disc independently of glyph, hue, and nearby frame edges.
  * Fixed rightmost-symbol search area; only reports measurements, never fits a scan.

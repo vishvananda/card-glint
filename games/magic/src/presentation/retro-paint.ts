@@ -82,7 +82,16 @@ export function paintRetroFace(
   c.shadowColor = '#000b';
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
   c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
-  c.fillText(face.name, x, y + h / 2, Math.max(1, cost.length ? costX - x - 5 : w - 5));
+  const titleX = details?.titleX ?? x;
+  c.fillText(
+    face.name,
+    titleX,
+    y + h / 2 + (details?.titleYOffset ?? 0),
+    Math.max(
+      1,
+      cost.length ? costX - titleX - 5 : details?.titleX == null ? w - 5 : x + w - titleX - 5,
+    ),
+  );
   cost.forEach((s, i) =>
     paintMana(
       c,
@@ -99,7 +108,7 @@ export function paintRetroFace(
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
   c.fillText(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
-    tx,
+    details?.typeX ?? tx,
     ty + th / 2,
     tw - (icon ? 48 : 0),
   );

@@ -1,0 +1,68 @@
+{
+  "version": "fixed-frame-v2",
+  "scope": "set-and-frame",
+  "set": "4ed",
+  "canonicalSize": [488, 680],
+  "sourceRun": "early-reviewed-before",
+  "sourceSnapshot": "acca37265fe10462370daa766e3f1a8f792fa6e3a442022e2fd94e9bdc5a3301",
+  "referenceIdentity": "463b29875b3c8bb9c40aaab2a34fa1d4c7bb0a3141f2cbaac7cee5b84387e5e1",
+  "sourceDiffHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cohortHash": "59207e40f6c976f7add984bf43882a06936b565ab8dfb32dfe7da2b0affdb671",
+  "frameFamilies": {
+    "retro-fourth": {
+      "transform": {
+        "tx": 0.14486881533656817,
+        "ty": 0.424818421327747,
+        "scale": 0.9968361345476828,
+        "rotation": 0.0005797161120773774
+      },
+      "status": "calibrated",
+      "proposedTransform": {
+        "tx": 0.14486881533656817,
+        "ty": 0.424818421327747,
+        "scale": 0.9968361345476828,
+        "rotation": 0.0005797161120773774
+      },
+      "residualPx": 1.6220572845904206,
+      "landmarkCount": 15,
+      "sampleCount": 6,
+      "validation": {
+        "rawMedianF1": 0.8798438473178942,
+        "fittedMedianF1": 0.9566990499075063,
+        "medianPairedImprovement": 0.051625129297389716,
+        "nonRegressing": 6,
+        "accepted": true
+      },
+      "calibrationIds": [
+        "8bd501ae-5814-4336-a45b-2b88cb85d29e",
+        "634dd3bd-d29b-4481-990b-f320e60c4f91",
+        "cbf5aa58-f68b-4197-9697-1e6653760853",
+        "f9dbfdc1-a598-4c72-9b0d-91207bd067ab",
+        "c6ce96a5-76f1-48ca-854d-a37fb6a023a0",
+        "6f7a41cc-277a-4d95-a30c-91bf5aa7ac11"
+      ]
+    },
+    "retro-seventh": {
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0
+      },
+      "status": "insufficient-calibration",
+      "sampleCount": 2,
+      "validation": {
+        "rawMedianF1": 0.3314636024281148,
+        "fittedMedianF1": 0.3314636024281148,
+        "medianPairedImprovement": 0,
+        "nonRegressing": 2,
+        "accepted": false
+      },
+      "calibrationIds": [
+        "a5899b46-226b-4be6-8e80-d2396f54210d",
+        "6e5e3819-3d75-40d4-9a93-1147834dfd69"
+      ]
+    }
+  },
+  "note": "One frozen transform per frame family for this set. No per-scan fitting. Identity applies to uncalibrated families. Raw scores remain available."
+}

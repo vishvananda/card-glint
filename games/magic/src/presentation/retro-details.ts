@@ -1,32 +1,40 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 
-/** Verified against ordinary Mirage/Tempest scans. Other eras keep their existing policy. */
+/** Set policies measured from cached development scans; no per-card geometry. */
 export function retroPrintDetails(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
-  if (set !== 'mir' && set !== 'tmp') return null;
+  const fourth = set === '4ed' && !/\bLand\b/.test(face.typeLine ?? '');
+  if (set !== 'mir' && set !== 'tmp' && !fourth) return null;
   return {
-    manaRight: 448,
-    manaTop: 33.5,
+    titleX: fourth ? 42.5 : undefined,
+    titleYOffset: fourth ? -5 : 0,
+    typeX: fourth ? 42.5 : undefined,
+    manaRight: fourth ? 446.5 : 448,
+    manaTop: fourth ? 27.5 : 33.5,
     manaSize: 23.4,
-    manaGap: 1.7,
+    manaGap: fourth ? 3.6 : 1.7,
     setRight: set === 'mir' ? 434 : 432.5,
     setCenterY: set === 'mir' ? 388 : 387.5,
     setHeight: set === 'mir' ? 26 : 23.4,
     setOutline: 1.25,
-    artistX: 52,
-    artistBaseline: 624,
+    artistX: fourth ? 42.5 : 52,
+    artistBaseline: fourth ? 628.5 : 624,
     artistSize: 19.5,
-    legalBaseline: 637.5,
+    legalBaseline: fourth ? 640.5 : 637.5,
     legalSize: 10.5,
-    legalLight:
-      !/\bLand\b/.test(face.typeLine ?? '') &&
-      !(face.colors?.length === 1 && ['W', 'R'].includes(face.colors[0]!)),
+    legalLight: fourth
+      ? /\bArtifact\b/.test(face.typeLine ?? '') ||
+        (face.colors?.length === 1 && ['B', 'G'].includes(face.colors[0]!))
+      : !/\bLand\b/.test(face.typeLine ?? '') &&
+        !(face.colors?.length === 1 && ['W', 'R'].includes(face.colors[0]!)),
     legalText:
       face.legalText === undefined
-        ? set === 'mir'
-          ? '©1996 Wizards of the Coast, Inc. All rights reserved.'
-          : '©1997 Wizards of the Coast, Inc.'
+        ? fourth
+          ? '©1995 Wizards of the Coast, Inc. All rights reserved.'
+          : set === 'mir'
+            ? '©1996 Wizards of the Coast, Inc. All rights reserved.'
+            : '©1997 Wizards of the Coast, Inc.'
         : face.legalText,
   };
 }

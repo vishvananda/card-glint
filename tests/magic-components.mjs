@@ -54,6 +54,38 @@ for (const [x, y, base, ink] of [
 }
 console.log('Independent mana landmarks reject shared frame-line distraction');
 
+// An unchanged rightmost disc cannot conceal a compressed cost row.
+const { manaRowLandmarks } = await import('../games/magic/tools/accuracy/mana-landmark.mjs');
+function row(pitch, base = 55, ink = 200) {
+  const width = 130,
+    height = 64;
+  const gray = new Float32Array(width * height).fill(base);
+  for (let y = 0; y < height; y++)
+    for (let x = 0; x < width; x++) {
+      if ([0, 1, 2].some((i) => Math.hypot(x - (96 - i * pitch), y - 32) < 11.5))
+        gray[y * width + x] = ink;
+      if (y === 6) gray[y * width + x] = 255;
+    }
+  return manaRowLandmarks(gray, width, height, {
+    count: 3,
+    rightX: 96,
+    y: 32,
+    pitch: 27,
+    range: 6,
+  });
+}
+const referenceRow = row(27),
+  compressedRow = row(25),
+  recoloredRow = row(25, 85, 175);
+for (const result of [referenceRow, compressedRow, recoloredRow])
+  assert.equal(result.status, 'measured');
+assert.equal(referenceRow.circles[0].x, compressedRow.circles[0].x);
+assert.equal(referenceRow.pitch, 27);
+assert.equal(compressedRow.pitch, 25);
+assert.equal(recoloredRow.pitch, 25);
+assert.equal(compressedRow.circles[2].x - referenceRow.circles[2].x, 4);
+console.log('Whole-row landmarks detect spacing errors hidden by the rightmost disc');
+
 assert.equal(
   componentOffset(a, new Float32Array(width * height).fill(200), width, height).rawEdgeF1,
   0,
