@@ -1599,3 +1599,26 @@ Unlimited Samite Healer is another counterexample to trusting MTGJSON's
 `originalType`: the source says Creature – Human Cleric while the scan says
 Summon Cleric. A hash-bound partial type review corrects this printing without
 certifying its body wording. Do not infer historical subtypes from Oracle types.
+
+### Full early-set typography audit before inset/weight follow-up
+
+The frozen `early-centered-corpus` captures contain every eligible card in Alpha
+(295), Beta (302) and Unlimited (302), with zero rendering failures or reported
+text overflows. The Node-only audit verifies input/reference/raster hashes and
+scores the same body rectangle at both texture tiers, using shared identity
+registration. No per-scan alignment is fitted.
+
+At inspect size, the paired Alpha body edge F1 mean changes from .443 to .485;
+Unlimited changes from .442 to .488 across 301 unchanged-input pairs. Alpha has
+173 gains and 38 declines larger than .02; Unlimited has 180 and 30. Howling
+Mine's changed input is excluded from the paired Unlimited result. Beta has no
+full-corpus baseline and receives absolute diagnostics only. All per-card scores,
+fit summaries and regressions are retained in each set's
+`early-centered-corpus-measurement.json`.
+
+These are structural diagnostics, not accuracy percentages: texture and scan
+placement still affect them. There are 48 Oracle-unverified source rows across
+the three sets, and most remaining original text is imported rather than
+scan-reviewed. Independent OCR line-geometry checks remain pending. The capture
+renderer predates the independent-symbol option and the subsequent Alpha inset
+and weight investigation; its hashes preserve that boundary.

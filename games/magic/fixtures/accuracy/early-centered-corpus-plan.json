@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "rendererHash": "ae9f00bacf621b501e1a95f1a2cf6e630665788a27d5a77d75e4a236c9dd0485",
+  "sets": ["lea", "leb", "2ed"],
+  "run": "early-centered-corpus",
+  "baselines": {
+    "lea": "early-mana",
+    "2ed": "early-mana"
+  },
+  "scope": "Every eligible ordinary printing in the three cached set snapshots. Beta has no full-corpus baseline capture. Previously inspected shared names are development evidence, not independent transfer.",
+  "alignment": {
+    "scope": "shared identity registration",
+    "perScan": false
+  },
+  "metrics": [
+    "body edge F1 and census at inspect/table",
+    "complete text fit and render failures",
+    "independent scan OCR line wrapping and geometry when source content matches"
+  ],
+  "exclusions": [
+    "Special treatments follow the frozen corpus policy.",
+    "OCR/source mismatches remain separate from geometric scores."
+  ]
+}
