@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { PNG } from 'pngjs';
 import { cacheRoot, fixtureRoot, outputRoot, readJson, writeJson, hash } from './common.mjs';
 import { readObject } from './cache.mjs';
 import { cachedGrayRegion } from './region-cache.mjs';
@@ -31,6 +32,8 @@ for (const [stage, runChoice] of [
   assert.equal(data.snapshotIdentity, snapshot.identity);
   assert.equal(data.results.length, entries.length);
   assert.equal(new Set(data.results.map((r) => r.id)).size, entries.length);
+  assert.deepEqual(data.results.map((r) => r.id).sort(), entries.map((e) => e.id).sort());
+  assert.equal(data.referenceIdentity, plan.sets[set].referenceIdentity);
   captures[stage] = { hash: hash(bytes), run, data };
 }
 assert.equal(captures.before.data.fontStylesheetHash, captures.after.data.fontStylesheetHash);
@@ -51,6 +54,39 @@ async function region(stage, asset, rect) {
   if (r.cacheHit) cacheHits++;
   else cacheMisses++;
   return r;
+}
+async function unchangedOutside(before, after, rect) {
+  const images = await Promise.all(
+    [
+      ['before', before],
+      ['after', after],
+    ].map(async ([stage, asset]) => {
+      const bytes = await readFile(`${outputRoot}/${set}/${captures[stage].run}/${asset.file}`);
+      assert.equal(hash(bytes), asset.sha256);
+      return PNG.sync.read(bytes, { checkCRC: true });
+    }),
+  );
+  const [a, b] = images;
+  assert.equal(a.width, b.width);
+  assert.equal(a.height, b.height);
+  let changedPixels = 0;
+  for (let p = 0; p < a.data.length; p += 4) {
+    if (
+      a.data[p] === b.data[p] &&
+      a.data[p + 1] === b.data[p + 1] &&
+      a.data[p + 2] === b.data[p + 2] &&
+      a.data[p + 3] === b.data[p + 3]
+    )
+      continue;
+    const x = (((p / 4) % a.width) * 488) / a.width,
+      y = (Math.floor(p / 4 / a.width) * 680) / a.height;
+    assert.ok(
+      x >= rect[0] && x < rect[0] + rect[2] && y >= rect[1] && y < rect[1] + rect[3],
+      `Changed outside symbol window: ${set} ${after.file} at ${x},${y}`,
+    );
+    changedPixels++;
+  }
+  return { unchangedOutsideSymbol: true, changedPixels };
 }
 function compare(a, b, diagnostic) {
   const args = [a.gray, b.gray, a.width, a.height],
@@ -85,24 +121,46 @@ for (const entry of entries) {
     name: entry.card.name,
     category: entry.category,
     rarity: entry.card.rarity,
+    colors: entry.card.colors,
     frame: after.frame,
+    symbolStudyCohort: plan.sets[set].previousSymbolStudyIds
+      ? plan.sets[set].previousSymbolStudyIds.includes(entry.id)
+        ? 'previous-symbol-study'
+        : 'expanded-coverage'
+      : null,
     inputHash: after.inputHash,
     referenceHash: entry.reference?.sha256 ?? null,
     issue: after.issue ?? before.issue ?? null,
   };
   if (!row.issue) {
+    assert.equal(before.frame, after.frame);
+    assert.deepEqual(before.layout, after.layout, 'Rules text layout changed');
+    assert.deepEqual(before.specialLayout, after.specialLayout, 'Special text layout changed');
     assert.equal(before.images.reference.sha256, after.images.reference.sha256);
     assert.equal(after.images.reference.sha256, entry.reference.sha256);
-    const rect = plan.regions[after.frame];
+    const rect =
+      after.frame === 'normal' && plan.normalRegions?.[set]
+        ? plan.normalRegions[set]
+        : plan.regions[after.frame];
     if (!rect) row.issue = 'no-symbol-window-for-frame';
     else {
       const reference = await region('after', after.images.reference, rect);
       row.scores = {};
-      for (const tier of ['inspect', 'table'])
+      for (const tier of ['inspect', 'table']) {
         row.scores[tier] = {
           before: compare(reference, await region('before', before.images[tier], rect), false),
           after: compare(reference, await region('after', after.images[tier], rect), true),
         };
+        if (plan.unchangedOutsideRegions) {
+          const allowed = plan.unchangedOutsideRegions[after.frame];
+          assert.ok(allowed);
+          row.scores[tier].invariants = await unchangedOutside(
+            before.images[tier],
+            after.images[tier],
+            allowed,
+          );
+        }
+      }
       row.review = [];
       if (after.frame !== 'normal') row.review.push('symbol-window-includes-planeswalker-frame');
       for (const tier of ['inspect', 'table']) {
@@ -135,8 +193,16 @@ for (const page of plan.cards ? [] : snapshot.pages) {
   }
 }
 const summary = {};
-for (const category of ['all', 'ordinary', 'basic-land', 'planeswalker']) {
-  const group = rows.filter((r) => category === 'all' || r.category === category),
+for (const category of [
+  'all',
+  'ordinary',
+  'basic-land',
+  'planeswalker',
+  ...(plan.sets[set].previousSymbolStudyIds ? ['previous-symbol-study', 'expanded-coverage'] : []),
+]) {
+  const group = rows.filter(
+      (r) => category === 'all' || r.category === category || r.symbolStudyCohort === category,
+    ),
     measured = group.filter((r) => r.scores);
   summary[category] = { entries: group.length, measured: measured.length, tiers: {} };
   for (const tier of ['inspect', 'table']) {
