@@ -62,6 +62,23 @@ export function retroPrintDetails(face: RenderedCardInput) {
 /** The tilted-card tap mark, distinct from both the diagonal T and modern arrow. */
 export const paintHistoricMana: typeof paintMana = (c, symbol, x, y, size, images) => {
   if (symbol !== 'T') return paintMana(c, symbol, x, y, size, images);
+  paintTap(c, x, y, size, '\uea31', 0.88);
+};
+
+/** Revised prints a diagonal T inside the same pale disc, not the later card mark. */
+export const paintRevisedMana: typeof paintMana = (c, symbol, x, y, size, images) => {
+  if (symbol !== 'T') return paintMana(c, symbol, x, y, size, images);
+  paintTap(c, x, y, size, '\ue61c', 0.8);
+};
+
+function paintTap(
+  c: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  glyph: '\uea31' | '\ue61c',
+  fontScale: number,
+) {
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
@@ -70,18 +87,17 @@ export const paintHistoricMana: typeof paintMana = (c, symbol, x, y, size, image
   c.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   c.fill();
   c.fillStyle = '#0d0f0f';
-  c.font = `${size * 0.88}px "CardRenderer MTG Historic Symbols"`;
+  c.font = `${size * fontScale}px "CardRenderer MTG Historic Symbols"`;
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  const glyph = '\uea31',
-    m = c.measureText(glyph);
+  const m = c.measureText(glyph);
   c.fillText(
     glyph,
     x + (size - m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2 + m.actualBoundingBoxLeft,
     y + (size + m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2,
   );
   c.restore();
-};
+}
 
 /** Outline the existing monochrome bitmap during composition; no mask readback. */
 export function paintOutlinedRetroSet(

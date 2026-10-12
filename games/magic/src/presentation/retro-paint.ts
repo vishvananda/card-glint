@@ -23,6 +23,7 @@ import {
   retroStatsPlacement,
   retroStatsText,
   paintHistoricMana,
+  paintRevisedMana,
   paintOutlinedRetroSet,
   paintRetroCredits,
 } from './retro-details.js';
@@ -153,7 +154,17 @@ export function paintRetroFace(
     );
   } else {
     const layout = retroTextLayout(c, face);
-    if (layout) paintRulesLayout(c, layout, images, details ? paintHistoricMana : paintMana);
+    if (layout)
+      paintRulesLayout(
+        c,
+        layout,
+        images,
+        face.setCode?.toLowerCase() === '3ed'
+          ? paintRevisedMana
+          : details
+            ? paintHistoricMana
+            : paintMana,
+      );
   }
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
   if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;

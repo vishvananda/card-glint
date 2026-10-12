@@ -37,6 +37,7 @@ not automatically applied because it contains modernized types in some old sets.
 The `GLINT` gem and `FORGE` spark/anvil symbols are original procedural symbols
 for locally authored cards, not official set identities.
 
-Mirage/Tempest use Mana’s `tap-4ed` glyph (U+EA31), the tilted-card mark,
-from the pinned external font. The earlier diagonal-T `tap-alt` glyph is
-not the same symbol. See the [Mana icon reference](https://mana.andrewgioia.com/icons.html).
+Mirage/Tempest and Fourth Edition use Mana’s `tap-4ed` glyph (U+EA31), the
+tilted-card mark, from the pinned external font. Revised uses its earlier
+diagonal-T `tap-alt` / `tap-3ed` glyph (U+E61C). Both retain pale circular
+backgrounds. See the [Mana icon reference](https://mana.andrewgioia.com/icons.html).

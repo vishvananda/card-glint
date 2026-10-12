@@ -103,6 +103,15 @@ const fixtures = [
     typeLine: 'Basic Land — Forest',
     rulesText: '({T}: Add {G}.)',
   },
+  {
+    name: 'Example Relic',
+    typeLine: 'Artifact',
+    colors: [],
+    frameStyle: 'retro',
+    setCode: '3ED',
+    borderColor: 'white',
+    rulesText: '{2}, {T}: Draw a card.',
+  },
 ];
 for (const face of fixtures) {
   const before = JSON.stringify(face);
