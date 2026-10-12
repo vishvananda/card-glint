@@ -9,6 +9,7 @@ import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.
 import { COLORLESS_PLATE_REPAINT, paintPlaneswalkerType } from './planeswalker-type.js';
 import { paintPlaneswalkerFrameImage } from './planeswalker-lower-frame.js';
 import { setSymbolCrop } from './set-symbols.js';
+import { hasCoreSetShield, paintCoreSetSymbol } from './core-set-symbol.js';
 import {
   cardStock,
   faceStats,
@@ -93,7 +94,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v47',
+    'canvas-face-v49',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -527,7 +528,10 @@ export function paintAssembledFace(
     ),
   );
   const setIcon = images.get(faceSetSymbol(face) ?? '');
-  const setCrop = setSymbolCrop(face);
+  const setCrop = setSymbolCrop(face),
+    coreShield = hasCoreSetShield(face),
+    corePlacement = coreShield && kind === 'normal',
+    setMargin = FACE_TEXT.setMargin + (corePlacement ? 2 : 0);
   const [, typeY, , typeH] = px(rects.type),
     typeCenter =
       typeY + typeH / 2 + FACE_TEXT.typeLift / 2 + (kind === 'normal' || planeswalker ? 2 : 0);
@@ -537,8 +541,7 @@ export function paintAssembledFace(
         (FACE_TEXT.setHeight * setIcon.width * setCrop[2]) / (setIcon.height * setCrop[3]),
       )
     : 0;
-  const typeWidth =
-    plateEnd - textX - (setIcon ? setWidth + FACE_TEXT.setMargin + FACE_TEXT.typeGap : 0);
+  const typeWidth = plateEnd - textX - (setIcon ? setWidth + setMargin + FACE_TEXT.typeGap : 0);
   context.font = `${FACE_TEXT.typeFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
   paintFittedText(
     context,
@@ -553,17 +556,14 @@ export function paintAssembledFace(
       setWidth / (setIcon.width * setCrop[2]),
       FACE_TEXT.setHeight / (setIcon.height * setCrop[3]),
     );
-    paintSetSymbol(
-      context,
-      setIcon,
-      face.setCode,
-      face.rarity,
-      plateEnd - FACE_TEXT.setMargin - setWidth + (planeswalker ? 1.5 : 0),
-      typeCenter - (setIcon.height * setCrop[3] * scale) / 2,
+    const symbolBounds = [
+      plateEnd - setMargin - setWidth + (planeswalker ? 1.5 : 0),
+      typeCenter - (setIcon.height * setCrop[3] * scale) / 2 - (corePlacement ? 1 : 0),
       setIcon.width * setCrop[2] * scale,
       setIcon.height * setCrop[3] * scale,
-      setCrop,
-    );
+    ] as const;
+    if (coreShield) paintCoreSetSymbol(context, setIcon, face.rarity, ...symbolBounds, setCrop);
+    else paintSetSymbol(context, setIcon, face.setCode, face.rarity, ...symbolBounds, setCrop);
   }
   if (hasExtraRules(face)) paintExtraRules(context, face, images);
   else if (kind !== 'normal') paintSpecialRules(context, face, images);

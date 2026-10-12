@@ -592,5 +592,28 @@
   "baselineCaptures": {
     "m21": "03895c402683e50e2515fc639bcca9c19a3069238fad1c52f0302fd2465a7c2c",
     "m19": "a3475aaa014fd8a1f12aada03eaf0055dbdda7597b58b629e270afd2cb5db3e3"
+  },
+  "frozenRendererHash": "9c3b4e704b706c4b3285706932927c0e19ea1a9676bec2a8b1d71646ae4f3853",
+  "policy": {
+    "codes": ["m19", "m20", "m21"],
+    "customAssets": "Keep existing custom-symbol behavior; never add core backplate.",
+    "crop": "M19 joins existing M20/M21 visible viewport crop.",
+    "style": "Existing glyph stencil over an opaque convex core-shield envelope. Common: pale letter holes and 1px pale rim, near-black field. Other rarities: black letter holes and 1px black rim, horizontal shaded rarity fill.",
+    "normalPlacement": {
+      "dx": -2,
+      "dy": -1
+    },
+    "otherFrames": "Keep existing symbol positions. Core rarity treatment applies; M19 size fix applies.",
+    "selection": "Shared 81-offset search on all 26 development cards: (-2,-1) has best median dark edge F1; minimum-distance winner differs by 1px vertically. No per-scan transforms.",
+    "limitations": [
+      "Two common M21 cards retain diagnostic regressions; inspected correct opaque white letters, remaining size/contour differences belong to the asset review.",
+      "Rarity palette is visually approximated, not calibrated HSB or print-color accuracy.",
+      "M15/WAR and other non-shield symbols remain separate work."
+    ]
+  },
+  "rendererHashes": {
+    "symbol-baseline": "fd91363ea20f4e978a942d7edf5bc9a1a53e2627c66d1873a9f268a30c815225",
+    "symbol-treatment": "d63a34f3b39c5081edc7bd9f4f0c87d406bb25469873322833762147557655ad",
+    "symbol-final": "9c3b4e704b706c4b3285706932927c0e19ea1a9676bec2a8b1d71646ae4f3853"
   }
 }

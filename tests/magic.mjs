@@ -811,10 +811,12 @@ try {
     // Synthetic padded art exercises the complete painter without remote assets.
     for (const [setCode, customSymbol] of [
       ['m15', false],
+      ['m19', false],
       ['m20', false],
       ['m21', false],
       ['m21', true],
     ]) {
+      const coreShield = !customSymbol && ['m19', 'm20', 'm21'].includes(setCode);
       const symbol = document.createElement('canvas');
       symbol.width = symbol.height = 320;
       const c = symbol.getContext('2d');
@@ -823,6 +825,8 @@ try {
       else c.fillRect(0, 93.3, 320, 133.4);
       const face = {
         ...fixtures[1],
+        typeLine: 'Artifact',
+        rulesText: '',
         setCode,
         rarity: 'common',
         ...(customSymbol ? { setSymbol: 'test:padded-symbol' } : {}),
@@ -844,7 +848,18 @@ try {
         let left = canvas.width,
           right = -1;
         for (let i = 0; i < pixels.length; i += 4)
-          if (pixels[i] > 220 && pixels[i + 1] < 30 && pixels[i + 2] > 220) {
+          if (
+            coreShield
+              ? pixels[i] < 30 &&
+                pixels[i + 1] < 30 &&
+                pixels[i + 2] < 30 &&
+                pixels[i + 3] > 240 &&
+                (i / 4) % canvas.width > canvas.width * 0.79 &&
+                (i / 4) % canvas.width < canvas.width * 0.935 &&
+                Math.floor(i / 4 / canvas.width) > canvas.height * 0.572 &&
+                Math.floor(i / 4 / canvas.width) < canvas.height * 0.61
+              : pixels[i] > 220 && pixels[i + 1] < 30 && pixels[i + 2] > 220
+          ) {
             const x = (i / 4) % canvas.width;
             left = Math.min(left, x);
             right = Math.max(right, x);
@@ -858,6 +873,48 @@ try {
       }
       symbol.width = symbol.height = 0;
     }
+    // The letters in core-set stencils are holes. They need opaque white ink
+    // for commons and black ink for other rarities, independent of the plate.
+    const stencil = document.createElement('canvas');
+    stencil.width = stencil.height = 320;
+    const stencilContext = stencil.getContext('2d');
+    stencilContext.fillRect(0, 93.3, 320, 133.4);
+    stencilContext.clearRect(130, 120, 60, 65);
+    for (const rarity of ['common', 'uncommon', 'rare', 'mythic']) {
+      const face = { name: '', typeLine: 'Artifact', rulesText: '', setCode: 'm21', rarity };
+      const url = faceSetSymbol(face);
+      for (const tier of ['table', 'inspect']) {
+        const canvas = await composeCardTexture(
+          { face, printingId: null, printedImage: null },
+          tier,
+          new AbortController().signal,
+          {
+            loadImages: async (urls) => ({
+              images: new Map(urls.map((u) => [u, u === url ? stencil : bitmap])),
+              dispose() {},
+            }),
+          },
+        );
+        const c = canvas.getContext('2d'),
+          scale = canvas.width / 488;
+        const sample = (x, y) => [...c.getImageData(x * scale, y * scale, 1, 1).data];
+        const hole = sample(420, 400);
+        if (
+          rarity === 'common'
+            ? hole.slice(0, 3).some((v) => v < 240)
+            : hole.slice(0, 3).some((v) => v > 30)
+        )
+          throw Error(`Core shield letter holes show the plate: ${rarity}, ${tier}`);
+        if (rarity !== 'common') {
+          const left = sample(400, 402),
+            center = sample(430, 402);
+          if (Math.abs(left[0] - center[0]) + Math.abs(left[1] - center[1]) < 30)
+            throw Error(`Core shield lost its rarity gradient: ${rarity}, ${tier}`);
+        }
+        canvas.width = canvas.height = 0;
+      }
+    }
+    stencil.width = stencil.height = 0;
     const printed = { ...fixtures[0], setCode: '3ed', frameColors: ['G'] };
     const immutablePrinted = magic.describe(printed, 'table');
     printed.frameColors[0] = 'R';

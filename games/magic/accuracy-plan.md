@@ -1982,3 +1982,51 @@ Run `node games/magic/tools/accuracy/walker-paper-fit-audit.mjs` to reproduce.
 Raw overlap remains mixed: Saheeli's body F1 falls .371 → .246 while p95 edge
 distance improves 18 → 12px and the formerly clipped final line becomes visible.
 Keep typography accuracy separate from the now-enforced paper-bound invariant.
+
+## Core-set symbol treatment and M19 transfer
+
+The M21 symbol study separates silhouette/placement from color. The existing
+Keyrune shields encode letters as transparent holes: that exposed the plate
+instead of printing opaque black letters on uncommon/rare/mythic shields, or
+white letters on common shields. The painter now supplies those letter inks,
+a one-pixel outer rim and a shaded rarity field using the existing stencil.
+M19 also receives the visible-viewport crop already used for M20/M21. Custom
+symbols retain their existing behavior. These changes run only during cached
+face preparation, with no pixel readback or additional asset download.
+
+[The frozen plan](fixtures/accuracy/set-symbol-plan.json) selects the first
+normal card in each rarity/color bucket: 26 M21 development cards and 26 M19
+cards reserved before their scans were inspected. Previously seen M19
+planeswalkers are excluded. A shared 81-offset search favored two pixels left
+and one up on normal core shields; the distance objective preferred zero up,
+so the one-pixel vertical ambiguity remains recorded. The production capture
+uses one position for the entire family. Planeswalker positions are unchanged.
+
+| Cohort                | Cards | Inspect symbol edge F1 | Table symbol edge F1 | Inspect gains / regressions |
+| --------------------- | ----: | ---------------------: | -------------------: | --------------------------: |
+| M21 development       |    26 |            .312 → .597 |          .336 → .601 |                      24 / 1 |
+| M19 reserved transfer |    26 |            .286 → .626 |          .301 → .590 |                      26 / 0 |
+
+Gains/regressions require an absolute .02 change; the remaining M21 card is
+stable. M19 also improves signed contrast and Census on every card at both
+tiers. M21 Alchemist's Gift has an inspect edge regression; Cancel and
+Alchemist's Gift have contrast/Census regressions. Enlarged scan/before/after
+crops confirm corrected white letter ink but expose remaining stencil size and
+contour differences. Shared scale needs a separate check before those differences
+are attributed to the SVG asset. Do not tune those scans individually or hide their scores.
+The approximate rarity gradients are not calibrated print colors or HSB fits.
+
+Measurements use identical printing inputs, fixed raw normalization and a
+fixed symbol window. CPU comparison of both sizes takes about 16 seconds for
+M21 and 19 seconds for M19 in this run, including PNG decoding and bounded
+translation diagnostics; it uses no Chromium or GPU work. Raster capture still
+uses the browser. These are component scores, not percentages of card accuracy.
+The window can contain nearby frame/type ink; this is not a foreground-certified
+metric. M20 uses the same shield treatment but still needs a full-set follow-up,
+as do every-card M19/M21 coverage and non-shield symbols such as WAR/M15.
+
+Reproduce with `magic:reference:render -- --set m21 --study set-symbol --cohort
+calibration --run symbol-final` and M19's `held-out` cohort. Then run
+`node games/magic/tools/accuracy/set-symbol-audit.mjs symbol-final development`
+and the same command with `reserved`. Baseline images and source hashes remain
+in the local capture cache. The local review browser remains outside the repo.

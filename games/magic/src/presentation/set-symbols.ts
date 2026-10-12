@@ -9,6 +9,7 @@ const KEYRUNE_ROOT = manifest.KEYRUNE_ROOT;
  * must not shrink wide core-set icons. Custom assets keep their own viewport. */
 const CORE_SYMBOL_CROPS: Readonly<Record<string, FaceRect>> = {
   m15: [0.25 / 32, 7.6 / 32, 31.5 / 32, 16.8 / 32],
+  m19: [0, 9.314 / 32, 1, 13.38 / 32],
   m20: [0, 9.31 / 32, 1, 13.38 / 32],
   m21: [0, 9.33 / 32, 1, 13.34 / 32],
 };

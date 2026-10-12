@@ -1,0 +1,4755 @@
+{
+  "schemaVersion": 1,
+  "run": "symbol-final",
+  "cohort": "reserved",
+  "planHash": "ee52d0664a5e998f6c751c2dbeae47e2fcaead74eb9a0b2aaa4e21ded6c06d80",
+  "studyHash": "d301d3149d92210b35bcd811b26d83e9859e422a176977f04ee0b38bd93b1e20",
+  "methods": {
+    "pixels": "3c4f9b614c2eb69a7656d5bbf5462a031fcaca15c45016cfa82daa1e0e2e1d33",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "lettering-contrast": "4e364b2565bf83c0a8e1addba651a96ae1762c7bff8bfb2d0fe8813af4578b88",
+    "component-offset": "98d23fd854adddf08ff4a154ae2df28847082358c3ec04308010cd74835165a8"
+  },
+  "captures": {
+    "m19/symbol-baseline": {
+      "hash": "a3475aaa014fd8a1f12aada03eaf0055dbdda7597b58b629e270afd2cb5db3e3",
+      "rendererHash": "fd91363ea20f4e978a942d7edf5bc9a1a53e2627c66d1873a9f268a30c815225"
+    },
+    "m19/symbol-final": {
+      "hash": "49cd117a2c3197963e48b615f556f57372075413639356ae2c5ef2dc9298c403",
+      "rendererHash": "9c3b4e704b706c4b3285706932927c0e19ea1a9676bec2a8b1d71646ae4f3853"
+    }
+  },
+  "scope": "Fixed raw normalization and identical printing inputs. Offset peaks are diagnostics only; no scan fitting. These component scores are not percentages of rendering accuracy. Windows can contain nearby type or frame ink; review regressions and uncertain offsets.",
+  "summary": {
+    "inspect": {
+      "all": {
+        "cards": 26,
+        "edgeF1": {
+          "measured": 26,
+          "before": 0.2855502908398542,
+          "after": 0.6264660388245584,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 26,
+          "before": 0.14064585361728144,
+          "after": 0.4910289202316245,
+          "gains": 26,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 26,
+          "before": 0.5233855865442696,
+          "after": 0.6331802572649408,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "cards": 6,
+        "edgeF1": {
+          "measured": 6,
+          "before": 0.2659937945436017,
+          "after": 0.6348214353535545,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 6,
+          "before": -0.15087652254768957,
+          "after": 0.5625028103859132,
+          "gains": 6,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 6,
+          "before": 0.4628990450714109,
+          "after": 0.6356889136619703,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "cards": 7,
+        "edgeF1": {
+          "measured": 7,
+          "before": 0.27805701826382945,
+          "after": 0.6104774596312186,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 7,
+          "before": 0.2003025302879723,
+          "after": 0.4398233390447326,
+          "gains": 7,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 7,
+          "before": 0.510627527588974,
+          "after": 0.6200927939935825,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "cards": 6,
+        "edgeF1": {
+          "measured": 6,
+          "before": 0.3121146653716825,
+          "after": 0.6305147221597441,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 6,
+          "before": 0.1587498640945653,
+          "after": 0.48628785730482094,
+          "gains": 6,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 6,
+          "before": 0.5371195722961597,
+          "after": 0.6331802572649408,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "cards": 7,
+        "edgeF1": {
+          "measured": 7,
+          "before": 0.29077871717840914,
+          "after": 0.6485564285436165,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 7,
+          "before": 0.12480173977705866,
+          "after": 0.4855650206278263,
+          "gains": 7,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 7,
+          "before": 0.5450421169345814,
+          "after": 0.6666636944328104,
+          "gains": 7,
+          "regressions": []
+        }
+      }
+    },
+    "table": {
+      "all": {
+        "cards": 26,
+        "edgeF1": {
+          "measured": 26,
+          "before": 0.3008905795747923,
+          "after": 0.5895416377405579,
+          "gains": 26,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 26,
+          "before": 0.19091223552797276,
+          "after": 0.5178933286101148,
+          "gains": 26,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 26,
+          "before": 0.5494089662130563,
+          "after": 0.6690965061821227,
+          "gains": 26,
+          "regressions": []
+        }
+      },
+      "common": {
+        "cards": 6,
+        "edgeF1": {
+          "measured": 6,
+          "before": 0.26180145292967427,
+          "after": 0.6400947277318241,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 6,
+          "before": -0.1987356070131971,
+          "after": 0.5977491501787932,
+          "gains": 6,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 6,
+          "before": 0.43968418862860514,
+          "after": 0.708452103673416,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "uncommon": {
+        "cards": 7,
+        "edgeF1": {
+          "measured": 7,
+          "before": 0.2781418487728269,
+          "after": 0.56965285580619,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 7,
+          "before": 0.273948550402231,
+          "after": 0.4715051623126401,
+          "gains": 7,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 7,
+          "before": 0.539841156198752,
+          "after": 0.6406241510702688,
+          "gains": 7,
+          "regressions": []
+        }
+      },
+      "rare": {
+        "cards": 6,
+        "edgeF1": {
+          "measured": 6,
+          "before": 0.33449253725311545,
+          "after": 0.5844970944027239,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 6,
+          "before": 0.2270599948528679,
+          "after": 0.5186892525920581,
+          "gains": 6,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 6,
+          "before": 0.5750479950433423,
+          "after": 0.6741928306399747,
+          "gains": 6,
+          "regressions": []
+        }
+      },
+      "mythic": {
+        "cards": 7,
+        "edgeF1": {
+          "measured": 7,
+          "before": 0.31334601277333823,
+          "after": 0.6192192052781771,
+          "gains": 7,
+          "regressions": []
+        },
+        "contrast": {
+          "measured": 7,
+          "before": 0.1796622480782457,
+          "after": 0.5144740574482723,
+          "gains": 7,
+          "regressions": []
+        },
+        "censusSimilarity": {
+          "measured": 7,
+          "before": 0.5817539869836157,
+          "after": 0.706775878951874,
+          "gains": 7,
+          "regressions": []
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "0503c55d-74bb-4165-9273-127c01bb2214",
+      "number": "1",
+      "name": "Aegis of the Heavens",
+      "rarity": "uncommon",
+      "colors": ["W"],
+      "referenceHash": "ce549b9978cb3069bf18c9c9cea3bad090023e1fc934408d0f99bc9b3a43c4c3",
+      "inputHash": "31dab88447d82759e59642970d54fb6be36d4ce232eedccfa36345c306da4c2e",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2882047377745407,
+            "darkEdgeF1": 0.2804695213368925,
+            "lightEdgeF1": 0.2959399542121888,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.217901494464138,
+            "censusSimilarity": 0.5051077094225896,
+            "contrast": 0.1038718056284377,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -4,
+              "dy": -1,
+              "rawEdgeF1": 0.2804695213368925,
+              "diagnosticEdgeF1": 0.37631433314886553,
+              "improvement": 0.09584481181197302,
+              "distance": 3.805588873951955,
+              "margin": 0.027263082497400504,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 300,
+              "renderedEdges": 133,
+              "overlapPeak": {
+                "dx": -3,
+                "dy": -2,
+                "edgeF1": 0.41570438799076215,
+                "distance": 3.8346636130068834,
+                "margin": 0.050543446687002336,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5663082813654482,
+            "darkEdgeF1": 0.5786370785675309,
+            "lightEdgeF1": 0.5539794841633655,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4301462425329339,
+            "censusSimilarity": 0.5837941964861295,
+            "contrast": 0.37136158951598025,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5786370785675309,
+              "diagnosticEdgeF1": 0.7386768341224285,
+              "improvement": 0.16003975555489758,
+              "distance": 1.0040085183953706,
+              "margin": 0.26817786220059525,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 300,
+              "renderedEdges": 269,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7466000876329997,
+                "distance": 1.0550789190926664,
+                "margin": 0.07876177480347413,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.33997647446228474,
+            "darkEdgeF1": 0.35817077070674763,
+            "lightEdgeF1": 0.3217821782178218,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.844884171921218,
+            "censusSimilarity": 0.5425757949009831,
+            "contrast": 0.1452614624741992,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -3,
+              "dy": -1,
+              "rawEdgeF1": 0.35817077070674763,
+              "diagnosticEdgeF1": 0.4748445449406445,
+              "improvement": 0.11667377423389685,
+              "distance": 3.0863685816045137,
+              "margin": 0.08219134580397913,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 300,
+              "renderedEdges": 161,
+              "overlapPeak": {
+                "dx": -3,
+                "dy": -1,
+                "edgeF1": 0.4748445449406445,
+                "distance": 3.0863685816045137,
+                "margin": 0.04883557633077901,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5324975937504477,
+            "darkEdgeF1": 0.5123240868787114,
+            "lightEdgeF1": 0.552671100622184,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4914267847628504,
+            "censusSimilarity": 0.606987601081309,
+            "contrast": 0.40681435222148554,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5123240868787114,
+              "diagnosticEdgeF1": 0.7374760058715044,
+              "improvement": 0.22515191899279297,
+              "distance": 1.0824233233578064,
+              "margin": 0.23646882002093217,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 300,
+              "renderedEdges": 238,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7528438469493277,
+                "distance": 1.0879654594128874,
+                "margin": 0.1113208740645073,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "1aebbb57-31b3-4289-815e-4f529e29f3ea",
+      "number": "4",
+      "name": "Ajani's Last Stand",
+      "rarity": "rare",
+      "colors": ["W"],
+      "referenceHash": "caa4800533c7502bb2b6820a372a7fc106c49a86c06fb5defc089c859aa9154c",
+      "inputHash": "baff68461842f2967338624ad6195b360e0b1c65c5c668563a63ba23c6cc244d",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2818808208326048,
+            "darkEdgeF1": 0.3014686936356609,
+            "lightEdgeF1": 0.26229294802954867,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.28929958298269,
+            "censusSimilarity": 0.5250338110143137,
+            "contrast": 0.11002629270768968,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -5,
+              "dy": -2,
+              "rawEdgeF1": 0.3014686936356609,
+              "diagnosticEdgeF1": 0.4107075800654471,
+              "improvement": 0.10923888642978619,
+              "distance": 3.6962128388190245,
+              "margin": 0.022989639779635862,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 294,
+              "renderedEdges": 133,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.4342692880242287,
+                "distance": 3.7008179090503632,
+                "margin": 0.05956202807106714,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6307786498007668,
+            "darkEdgeF1": 0.6512286611038812,
+            "lightEdgeF1": 0.6103286384976525,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3193186345315164,
+            "censusSimilarity": 0.6364518641536638,
+            "contrast": 0.4760828947742192,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6512286611038812,
+              "diagnosticEdgeF1": 0.7192405987586711,
+              "improvement": 0.06801193765478986,
+              "distance": 1.1069454697280134,
+              "margin": 0.20910039530987246,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 294,
+              "renderedEdges": 272,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7192405987586711,
+                "distance": 1.1069454697280134,
+                "margin": 0.0746137793099253,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.32262185735280957,
+            "darkEdgeF1": 0.34645226582705496,
+            "lightEdgeF1": 0.2987914488785641,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.9573963932309537,
+            "censusSimilarity": 0.5586480925785369,
+            "contrast": 0.16037803717919846,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -4,
+              "dy": -1,
+              "rawEdgeF1": 0.34645226582705496,
+              "diagnosticEdgeF1": 0.44052863436123346,
+              "improvement": 0.0940763685341785,
+              "distance": 3.3333584747676337,
+              "margin": 0.06907106506429184,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 294,
+              "renderedEdges": 160,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.4473741938314395,
+                "distance": 3.3531916572579314,
+                "margin": 0.0501336359873778,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5908890746496522,
+            "darkEdgeF1": 0.5858816111744307,
+            "lightEdgeF1": 0.5958965381248738,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4400658616286965,
+            "censusSimilarity": 0.6777665881353314,
+            "contrast": 0.507346984710642,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.5858816111744307,
+              "diagnosticEdgeF1": 0.7234794908062234,
+              "improvement": 0.1375978796317927,
+              "distance": 1.1568485134813775,
+              "margin": 0.2350424562467961,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 294,
+              "renderedEdges": 238,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7234794908062234,
+                "distance": 1.1568485134813775,
+                "margin": 0.09398552797892723,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "f4bae0e4-1143-4dc4-afb1-e6b4201ff101",
+      "number": "7",
+      "name": "Angel of the Dawn",
+      "rarity": "common",
+      "colors": ["W"],
+      "referenceHash": "7162ce5c1d892afb0a18e8895d5d9381f4ca288678c523d47e5e6eba55820aac",
+      "inputHash": "89cd2f4228b62be5738b24270123c6a8d153aa83f454f43587d728a5bdf32afc",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.25433132091458194,
+            "darkEdgeF1": 0.33221002909069963,
+            "lightEdgeF1": 0.17645261273846422,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.37942292375337,
+            "censusSimilarity": 0.4286062398910665,
+            "contrast": -0.13002010106767226,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": 0,
+              "rawEdgeF1": 0.33221002909069963,
+              "diagnosticEdgeF1": 0.33221002909069963,
+              "improvement": 0,
+              "distance": 3.593109309908461,
+              "margin": 0.030425278059436955,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 336,
+              "renderedEdges": 129,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": -5,
+                "edgeF1": 0.4000294572501657,
+                "distance": 3.877537029002229,
+                "margin": 0.01614896393767662,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5.099019513592785,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6558061559967795,
+            "darkEdgeF1": 0.660683582756999,
+            "lightEdgeF1": 0.65092872923656,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.077566939905331,
+            "censusSimilarity": 0.7077147803245217,
+            "contrast": 0.6196642201205709,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.660683582756999,
+              "diagnosticEdgeF1": 0.8032385782285689,
+              "improvement": 0.1425549954715699,
+              "distance": 0.8503996057579432,
+              "margin": 0.25759629489351965,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 336,
+              "renderedEdges": 291,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.8032385782285689,
+                "distance": 0.8503996057579432,
+                "margin": 0.1267885748420292,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.24637002445201545,
+            "darkEdgeF1": 0.2779652219050091,
+            "lightEdgeF1": 0.21477482699902176,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.00432538395256,
+            "censusSimilarity": 0.40604050059852825,
+            "contrast": -0.1771240867470454,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 4,
+              "dy": -3,
+              "rawEdgeF1": 0.2779652219050091,
+              "diagnosticEdgeF1": 0.4380984662316753,
+              "improvement": 0.1601332443266662,
+              "distance": 2.89525409741171,
+              "margin": 0.06131821869804499,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 336,
+              "renderedEdges": 142,
+              "overlapPeak": {
+                "dx": 5,
+                "dy": -3,
+                "edgeF1": 0.45023696682464465,
+                "distance": 3.1885087647088657,
+                "margin": 0.04692306403857954,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6471385976208421,
+            "darkEdgeF1": 0.6429512516469038,
+            "lightEdgeF1": 0.6513259435947805,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.138693081694802,
+            "censusSimilarity": 0.7507682209025164,
+            "contrast": 0.6505639903806361,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6429512516469038,
+              "diagnosticEdgeF1": 0.754244272292731,
+              "improvement": 0.11129302064582725,
+              "distance": 0.909681032069254,
+              "margin": 0.28338761525298073,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 336,
+              "renderedEdges": 249,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.754244272292731,
+                "distance": 0.909681032069254,
+                "margin": 0.11438567750704831,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "586854d1-edfd-4c66-873d-df459324dbfd",
+      "number": "34",
+      "name": "Resplendent Angel",
+      "rarity": "mythic",
+      "colors": ["W"],
+      "referenceHash": "164c9f23710c57833a10553d6943f8087b2425237ef0fb6006936b3cd0ba820b",
+      "inputHash": "5b70408ea8b9203cfa4565e5c6e4a8640e663bc36f3ca495be1860e808f1694d",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.28160819174162316,
+            "darkEdgeF1": 0.348113408654871,
+            "lightEdgeF1": 0.2151029748283753,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.5679392791754685,
+            "censusSimilarity": 0.553591327918801,
+            "contrast": 0.10031962385124596,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.348113408654871,
+              "diagnosticEdgeF1": 0.3623515555991756,
+              "improvement": 0.014238146944304586,
+              "distance": 3.631028306843672,
+              "margin": 0.06335458330554644,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 269,
+              "renderedEdges": 135,
+              "overlapPeak": {
+                "dx": -5,
+                "dy": -2,
+                "edgeF1": 0.45377923520962626,
+                "distance": 3.770637251374545,
+                "margin": 0.07158988058140636,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 3.1622776601683795,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6755502812537797,
+            "darkEdgeF1": 0.6534636918191694,
+            "lightEdgeF1": 0.6976368706883899,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2551163578011182,
+            "censusSimilarity": 0.6904898645055623,
+            "contrast": 0.5079926630094188,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6534636918191694,
+              "diagnosticEdgeF1": 0.7152682255845944,
+              "improvement": 0.06180453376542494,
+              "distance": 1.0479026215609994,
+              "margin": 0.15923648474873642,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 269,
+              "renderedEdges": 272,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7152682255845944,
+                "distance": 1.0479026215609994,
+                "margin": 0.060966965023347086,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3033488461427067,
+            "darkEdgeF1": 0.36448598130841126,
+            "lightEdgeF1": 0.24221171097700211,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.188903717487673,
+            "censusSimilarity": 0.5789044012892142,
+            "contrast": 0.14539077673830633,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": -1,
+              "rawEdgeF1": 0.36448598130841126,
+              "diagnosticEdgeF1": 0.3767551382307625,
+              "improvement": 0.012269156922351254,
+              "distance": 3.3789168405570744,
+              "margin": 0.038553783760693516,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 269,
+              "renderedEdges": 159,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.4409767660057776,
+                "distance": 3.468600344055594,
+                "margin": 0.03618330156451921,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 4,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6546829516660291,
+            "darkEdgeF1": 0.6238550809564454,
+            "lightEdgeF1": 0.6855108223756129,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3701317010599467,
+            "censusSimilarity": 0.7322831740435927,
+            "contrast": 0.5270658730631214,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6238550809564454,
+              "diagnosticEdgeF1": 0.6954243559396043,
+              "improvement": 0.0715692749831589,
+              "distance": 1.1271219667786971,
+              "margin": 0.19077656704991197,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 269,
+              "renderedEdges": 232,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7131727411122055,
+                "distance": 1.170509959687225,
+                "margin": 0.08828117607674091,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "5d6178ed-6353-4733-81e1-7b3dc592c3bd",
+      "number": "43",
+      "name": "Aether Tunnel",
+      "rarity": "uncommon",
+      "colors": ["U"],
+      "referenceHash": "94747f06edf966d590e908ee635208f3bc0fb3853a15374a9c9d41270ed4ef7f",
+      "inputHash": "93fefef4cacb50f86be7838529cc40a2631535fbbea519e1f3e8605a44802d3b",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.28673864430267726,
+            "darkEdgeF1": 0.2796529184664195,
+            "lightEdgeF1": 0.29382437013893503,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 6.506436446881404,
+            "censusSimilarity": 0.5548883509554289,
+            "contrast": 0.21098866109020226,
+            "offset": {
+              "status": "search-boundary",
+              "dx": -6,
+              "dy": -1,
+              "rawEdgeF1": 0.2796529184664195,
+              "diagnosticEdgeF1": 0.33540295542034027,
+              "improvement": 0.05575003695392078,
+              "distance": 3.8476888857074973,
+              "margin": 0.10661506532971687,
+              "boundary": true,
+              "ambiguous": true,
+              "referenceEdges": 311,
+              "renderedEdges": 126,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.39411098527746313,
+                "distance": 3.9813110584541738,
+                "margin": 0.05870802985712287,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.23606797749979,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6068165989904452,
+            "darkEdgeF1": 0.637677759330109,
+            "lightEdgeF1": 0.5759554386507814,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3377173204008368,
+            "censusSimilarity": 0.6210943786464154,
+            "contrast": 0.4408777479344596,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.637677759330109,
+              "diagnosticEdgeF1": 0.7407660261134688,
+              "improvement": 0.1030882667833598,
+              "distance": 0.968408448719712,
+              "margin": 0.43201357506797833,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 311,
+              "renderedEdges": 279,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.75240145113817,
+                "distance": 1.0899126721595707,
+                "margin": 0.06057462397849722,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.2781418487728269,
+            "darkEdgeF1": 0.34047441272758605,
+            "lightEdgeF1": 0.21580928481806777,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.6435617191360965,
+            "censusSimilarity": 0.5816461237809172,
+            "contrast": 0.2937576698064945,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": -1,
+              "rawEdgeF1": 0.34047441272758605,
+              "diagnosticEdgeF1": 0.36165168972931244,
+              "improvement": 0.02117727700172639,
+              "distance": 3.29354039623321,
+              "margin": 0.09370373532118448,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 311,
+              "renderedEdges": 139,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.39429499909731003,
+                "distance": 3.435484890093531,
+                "margin": 0.011828258227007338,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 4,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5677992196496392,
+            "darkEdgeF1": 0.5742243764146414,
+            "lightEdgeF1": 0.561374062884637,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4941726889345328,
+            "censusSimilarity": 0.6406241510702688,
+            "contrast": 0.4782299858429084,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.5742243764146414,
+              "diagnosticEdgeF1": 0.7341772151898734,
+              "improvement": 0.15995283877523203,
+              "distance": 1.1768248486264166,
+              "margin": 0.40009683614356106,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 311,
+              "renderedEdges": 242,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7445585900146507,
+                "distance": 1.252986533540729,
+                "margin": 0.09374456719573665,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "a07b1d89-1e6a-4e95-be89-1f03182fc470",
+      "number": "44",
+      "name": "Anticipate",
+      "rarity": "common",
+      "colors": ["U"],
+      "referenceHash": "1ddf3c259c8c91a5abb2c007e9a9907e72344323b9cb7dffe8760b55cfde3b35",
+      "inputHash": "696874ec2440d9e29fd84e18a49bd631bbbd584d11118eee60eb986083abab7f",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.24738161331235312,
+            "darkEdgeF1": 0.3315833103067146,
+            "lightEdgeF1": 0.1631799163179916,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.528047564863039,
+            "censusSimilarity": 0.4671721769853731,
+            "contrast": -0.16283705718358554,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": 0,
+              "rawEdgeF1": 0.3315833103067146,
+              "diagnosticEdgeF1": 0.30800637958532695,
+              "improvement": -0.023576930721387668,
+              "distance": 3.6401867021615697,
+              "margin": 0.08120037457722207,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 318,
+              "renderedEdges": 129,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 5,
+                "edgeF1": 0.38926174496644295,
+                "distance": 3.8654265467868103,
+                "margin": 0.0050855845424340185,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.589835639974382,
+            "darkEdgeF1": 0.5868569086912789,
+            "lightEdgeF1": 0.592814371257485,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.19077679472695,
+            "censusSimilarity": 0.6094855506945958,
+            "contrast": 0.4983001652515818,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5868569086912789,
+              "diagnosticEdgeF1": 0.7954661127694403,
+              "improvement": 0.20860920407816141,
+              "distance": 0.8225938198441463,
+              "margin": 0.3151356356973056,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 318,
+              "renderedEdges": 287,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.8103497221959365,
+                "distance": 0.9001698968484055,
+                "margin": 0.08194097182134863,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.2660012945430478,
+            "darkEdgeF1": 0.29049794883767466,
+            "lightEdgeF1": 0.2415046402484209,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.685212844767742,
+            "censusSimilarity": 0.4479371407366305,
+            "contrast": -0.2164216845609074,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 3,
+              "dy": -3,
+              "rawEdgeF1": 0.29049794883767466,
+              "diagnosticEdgeF1": 0.40008799589352495,
+              "improvement": 0.10959004705585029,
+              "distance": 2.9665249418963686,
+              "margin": 0.04432786815382528,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 318,
+              "renderedEdges": 139,
+              "overlapPeak": {
+                "dx": 6,
+                "dy": -3,
+                "edgeF1": 0.4361893349310964,
+                "distance": 3.410562059198708,
+                "margin": 0.036101339037571456,
+                "ambiguous": false,
+                "boundary": true
+              },
+              "objectiveDisagreementPx": 3,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6156897426017418,
+            "darkEdgeF1": 0.5905221699911066,
+            "lightEdgeF1": 0.6408573152123771,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2468172926896506,
+            "censusSimilarity": 0.6635782153515248,
+            "contrast": 0.5316679892661438,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 2,
+              "rawEdgeF1": 0.5905221699911066,
+              "diagnosticEdgeF1": 0.7804878048780488,
+              "improvement": 0.18996563488694218,
+              "distance": 0.8217870736504864,
+              "margin": 0.24586720906423243,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 318,
+              "renderedEdges": 248,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.796340051695977,
+                "distance": 0.8978674765982355,
+                "margin": 0.06575400903704143,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "27d38bba-6eb9-4dd8-81aa-722def89b163",
+      "number": "52",
+      "name": "Djinn of Wishes",
+      "rarity": "rare",
+      "colors": ["U"],
+      "referenceHash": "1f1e2719abbae429c6b877bb01499ab002056617db54394173e93bbb05a5d902",
+      "inputHash": "7077fd87a7d30804df5bef5b2487d254c58f04d30c9f89e79a037f78a10d35b3",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.3168975016804708,
+            "darkEdgeF1": 0.29308617234468937,
+            "lightEdgeF1": 0.3407088310162522,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.803517783139324,
+            "censusSimilarity": 0.5602605769136189,
+            "contrast": 0.1584083699527021,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -4,
+              "dy": -1,
+              "rawEdgeF1": 0.29308617234468937,
+              "diagnosticEdgeF1": 0.4069311303353857,
+              "improvement": 0.11384495799069633,
+              "distance": 3.84121849506046,
+              "margin": 0.041438974519566685,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 301,
+              "renderedEdges": 133,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.41962844330557336,
+                "distance": 3.9240364467978877,
+                "margin": 0.05803293318330438,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6390340483551611,
+            "darkEdgeF1": 0.6405722384453681,
+            "lightEdgeF1": 0.6374958582649541,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2821993993515601,
+            "censusSimilarity": 0.6314797234297773,
+            "contrast": 0.46665680503095613,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6405722384453681,
+              "diagnosticEdgeF1": 0.7229753684601489,
+              "improvement": 0.08240313001478072,
+              "distance": 1.110923518058883,
+              "margin": 0.2485434240560549,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 301,
+              "renderedEdges": 272,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7229753684601489,
+                "distance": 1.110923518058883,
+                "margin": 0.10270311304931734,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.33563225960445203,
+            "darkEdgeF1": 0.34573304157549234,
+            "lightEdgeF1": 0.3255314776334117,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.477654064972236,
+            "censusSimilarity": 0.5796232609525112,
+            "contrast": 0.2335828156353448,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": -1,
+              "rawEdgeF1": 0.34573304157549234,
+              "diagnosticEdgeF1": 0.36020252350719273,
+              "improvement": 0.01446948193170039,
+              "distance": 3.4038172922949133,
+              "margin": 0.07099675124193627,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 301,
+              "renderedEdges": 156,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.4113785557986871,
+                "distance": 3.48537810667759,
+                "margin": 0.013332810678247653,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 3,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5781051141557956,
+            "darkEdgeF1": 0.570805575299064,
+            "lightEdgeF1": 0.5854046530125273,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.460512074744786,
+            "censusSimilarity": 0.6557849599474836,
+            "contrast": 0.4919749399855003,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.570805575299064,
+              "diagnosticEdgeF1": 0.7253432029759994,
+              "improvement": 0.15453762767693546,
+              "distance": 1.223005951139849,
+              "margin": 0.26267171302358583,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 301,
+              "renderedEdges": 240,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7253432029759994,
+                "distance": 1.223005951139849,
+                "margin": 0.13798260818046038,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "db534b4e-8bff-4924-baea-9988d195fb25",
+      "number": "65",
+      "name": "Omniscience",
+      "rarity": "mythic",
+      "colors": ["U"],
+      "referenceHash": "0d2cc99298581cf06f971541c1af26bbcf99fc5cf5415254be0dd9726de16340",
+      "inputHash": "6beaebaab2412c21b4697a432163349be9d3b30020aeae250d93184a62cc439d",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2914815032128646,
+            "darkEdgeF1": 0.31565958719712833,
+            "lightEdgeF1": 0.2673034192286008,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.877500537166581,
+            "censusSimilarity": 0.5807200479252738,
+            "contrast": 0.12480173977705866,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -5,
+              "dy": -1,
+              "rawEdgeF1": 0.31565958719712833,
+              "diagnosticEdgeF1": 0.4117024830197083,
+              "improvement": 0.09604289582257997,
+              "distance": 3.842383187707043,
+              "margin": 0.016848506978722533,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 134,
+              "overlapPeak": {
+                "dx": -5,
+                "dy": -2,
+                "edgeF1": 0.43593974556874443,
+                "distance": 3.9294113268754565,
+                "margin": 0.061160204122536255,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6588595537485449,
+            "darkEdgeF1": 0.6124443887461621,
+            "lightEdgeF1": 0.7052747187509275,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2894804746320583,
+            "censusSimilarity": 0.6666636944328104,
+            "contrast": 0.4855650206278263,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6124443887461621,
+              "diagnosticEdgeF1": 0.6792260114622937,
+              "improvement": 0.06678162271613153,
+              "distance": 1.1668048038862753,
+              "margin": 0.11676224331465401,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 276,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.6843033509700177,
+                "distance": 1.190064580277679,
+                "margin": 0.06686400234921341,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3003115742761635,
+            "darkEdgeF1": 0.3555958261479555,
+            "lightEdgeF1": 0.24502732240437158,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.6384747652145,
+            "censusSimilarity": 0.6007045407918664,
+            "contrast": 0.1796622480782457,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": -1,
+              "rawEdgeF1": 0.3555958261479555,
+              "diagnosticEdgeF1": 0.37599864014958356,
+              "improvement": 0.020402814001628078,
+              "distance": 3.3527331878202946,
+              "margin": 0.10794393864492857,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 155,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.4226646248085758,
+                "distance": 3.5473265095709987,
+                "margin": 0.035027792870391705,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 4,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6192192052781771,
+            "darkEdgeF1": 0.5829676904666933,
+            "lightEdgeF1": 0.655470720089661,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.43827626440289,
+            "censusSimilarity": 0.706775878951874,
+            "contrast": 0.4980763736041208,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.5829676904666933,
+              "diagnosticEdgeF1": 0.6677046555996579,
+              "improvement": 0.08473696513296458,
+              "distance": 1.2165136523552462,
+              "margin": 0.1524797404088849,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 282,
+              "renderedEdges": 241,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.6765429965879152,
+                "distance": 1.2514378451305772,
+                "margin": 0.08682939336315221,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "de2de2bd-9ba7-4b6f-94c2-dafb2011a48e",
+      "number": "85",
+      "name": "Abnormal Endurance",
+      "rarity": "common",
+      "colors": ["B"],
+      "referenceHash": "aec347d843db77e710621ed6798394339517427f2f89c79be33f1d43a414abe8",
+      "inputHash": "1050244f1290592bb2f0d801c960f56be242680c061dde2295628fbd00784852",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2394704121681479,
+            "darkEdgeF1": 0.3221888384580963,
+            "lightEdgeF1": 0.15675198587819947,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.2584691613994385,
+            "censusSimilarity": 0.4721130520655286,
+            "contrast": -0.17385868588027692,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": 0,
+              "rawEdgeF1": 0.3221888384580963,
+              "diagnosticEdgeF1": 0.28529596318761763,
+              "improvement": -0.03689287527047869,
+              "distance": 3.005942744185166,
+              "margin": 0.018273636481347832,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 305,
+              "renderedEdges": 138,
+              "overlapPeak": {
+                "dx": 4,
+                "dy": -4,
+                "edgeF1": 0.4124943954565835,
+                "distance": 3.8869505521293264,
+                "margin": 0.004614905305946104,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 6.4031242374328485,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6033715638583892,
+            "darkEdgeF1": 0.5924998042746418,
+            "lightEdgeF1": 0.6142433234421365,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2744567576665902,
+            "censusSimilarity": 0.6068858377973839,
+            "contrast": 0.4687406511045646,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 2,
+              "rawEdgeF1": 0.5924998042746418,
+              "diagnosticEdgeF1": 0.7408207850783434,
+              "improvement": 0.1483209808037016,
+              "distance": 0.9453405615251129,
+              "margin": 0.19271078556516175,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 305,
+              "renderedEdges": 282,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7408207850783434,
+                "distance": 0.9453405615251129,
+                "margin": 0.07382988672497715,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.2544332667636796,
+            "darkEdgeF1": 0.2734915000934056,
+            "lightEdgeF1": 0.2353750334339536,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.425321820708428,
+            "censusSimilarity": 0.4449291586122283,
+            "contrast": -0.22617953131599122,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 3,
+              "dy": -3,
+              "rawEdgeF1": 0.2734915000934056,
+              "diagnosticEdgeF1": 0.41752473248536237,
+              "improvement": 0.14403323239195676,
+              "distance": 2.806336423787742,
+              "margin": 0.06587544498011333,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 305,
+              "renderedEdges": 136,
+              "overlapPeak": {
+                "dx": 5,
+                "dy": -3,
+                "edgeF1": 0.4392308263419704,
+                "distance": 3.1412928720636213,
+                "margin": 0.03390841078414031,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6217943659749073,
+            "darkEdgeF1": 0.5989110707803994,
+            "lightEdgeF1": 0.6446776611694153,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3061401974930793,
+            "censusSimilarity": 0.6368812137881033,
+            "contrast": 0.497149070491118,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 2,
+              "rawEdgeF1": 0.5989110707803994,
+              "diagnosticEdgeF1": 0.7584214247680234,
+              "improvement": 0.15951035398762403,
+              "distance": 0.9366867306056729,
+              "margin": 0.2535568792820294,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 305,
+              "renderedEdges": 246,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7584214247680234,
+                "distance": 0.9366867306056729,
+                "margin": 0.09298667867871246,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "6fe72bd9-825e-4451-9314-826882f75c85",
+      "number": "86",
+      "name": "Blood Divination",
+      "rarity": "uncommon",
+      "colors": ["B"],
+      "referenceHash": "c029ac9e0c0e00cae82e54d6ad889ec4049ef9997ea03614288426d3854572c2",
+      "inputHash": "24b2beafcb9b6204aa43feb0348b403ce71d2b6d81955db6e103bd2a03249a88",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.0455491974840511,
+            "darkEdgeF1": 0.06718924972004481,
+            "lightEdgeF1": 0.023909145248057383,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 7.711104566186178,
+            "censusSimilarity": 0.5249066095912511,
+            "contrast": 0.2003025302879723,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.06718924972004481,
+              "diagnosticEdgeF1": 0.10011123470522804,
+              "improvement": 0.03292198498518323,
+              "distance": 4.7694657743711915,
+              "margin": 0.07522310218103367,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 338,
+              "renderedEdges": 24,
+              "overlapPeak": {
+                "dx": -2,
+                "dy": 0,
+                "edgeF1": 0.11084718923198733,
+                "distance": 4.807989002537915,
+                "margin": 0.005207792885680726,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.624777553261935,
+            "darkEdgeF1": 0.6525233044037286,
+            "lightEdgeF1": 0.5970318021201413,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3048673805328779,
+            "censusSimilarity": 0.6395453774442373,
+            "contrast": 0.5221781445026275,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6525233044037286,
+              "diagnosticEdgeF1": 0.7054392179722884,
+              "improvement": 0.052915913568559736,
+              "distance": 1.112259305490847,
+              "margin": 0.2876962990878702,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 338,
+              "renderedEdges": 280,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7054392179722884,
+                "distance": 1.112259305490847,
+                "margin": 0.0776075027619324,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.1198530104588712,
+            "darkEdgeF1": 0.2397060209177424,
+            "lightEdgeF1": 0,
+            "darkStatus": "measured",
+            "lightStatus": "missing-ink",
+            "meanDistance": null,
+            "censusSimilarity": 0.2848831664282308,
+            "contrast": 0.28354219336781056,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 1,
+              "dy": -1,
+              "rawEdgeF1": 0.2397060209177424,
+              "diagnosticEdgeF1": 0.24889198745082414,
+              "improvement": 0.009185966533081735,
+              "distance": 4.289720342906259,
+              "margin": 0.14685495975608198,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 338,
+              "renderedEdges": 69,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 0,
+                "edgeF1": 0.25374281966619927,
+                "distance": 4.436575302662341,
+                "margin": 0.0008395938597476338,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.23606797749979,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5853349830055321,
+            "darkEdgeF1": 0.5982905982905983,
+            "lightEdgeF1": 0.5723793677204658,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4663489680902233,
+            "censusSimilarity": 0.6675739392196274,
+            "contrast": 0.5641235946774735,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.5982905982905983,
+              "diagnosticEdgeF1": 0.7057228640102465,
+              "improvement": 0.10743226571964826,
+              "distance": 1.3171004291098276,
+              "margin": 0.31886270512342074,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 338,
+              "renderedEdges": 247,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7057228640102465,
+                "distance": 1.3171004291098276,
+                "margin": 0.11541049654696223,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "08a0de62-6e9f-4ee9-9d8d-ee6f6a115307",
+      "number": "88",
+      "name": "Bone Dragon",
+      "rarity": "mythic",
+      "colors": ["B"],
+      "referenceHash": "58ae270bee3e354227fcf026a9c6bbf5b6f6806cff5b31de37ca5f4267eb08fc",
+      "inputHash": "954f839f1432d4d7f444eb0fbfc10a6992add9fe01408bcc7d1ade872d03a6c3",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.29077871717840914,
+            "darkEdgeF1": 0.29588799470841143,
+            "lightEdgeF1": 0.28566943964840685,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.974117973779598,
+            "censusSimilarity": 0.5246104431608568,
+            "contrast": 0.13711391175062845,
+            "offset": {
+              "status": "search-boundary",
+              "dx": -6,
+              "dy": -1,
+              "rawEdgeF1": 0.29588799470841143,
+              "diagnosticEdgeF1": 0.3622669930333271,
+              "improvement": 0.06637899832491567,
+              "distance": 3.0685263134486287,
+              "margin": 0.07727974716653208,
+              "boundary": true,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 141,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -3,
+                "edgeF1": 0.4412811387900356,
+                "distance": 3.330916038218965,
+                "margin": 0.02520548867183231,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.8284271247461903,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.57122796391555,
+            "darkEdgeF1": 0.6043956043956044,
+            "lightEdgeF1": 0.5380603234354956,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4294841939740808,
+            "censusSimilarity": 0.5879178828510894,
+            "contrast": 0.3808482206475702,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.6043956043956044,
+              "diagnosticEdgeF1": 0.7188612099644127,
+              "improvement": 0.11446560556880836,
+              "distance": 1.0291637699292422,
+              "margin": 0.14296076871009356,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 280,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7302477793361383,
+                "distance": 1.0718003663369347,
+                "margin": 0.05957892279199151,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.32332749995060067,
+            "darkEdgeF1": 0.32103688933200397,
+            "lightEdgeF1": 0.32561811056919737,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.065279667919723,
+            "censusSimilarity": 0.5817539869836157,
+            "contrast": 0.1878435914972716,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -3,
+              "dy": -1,
+              "rawEdgeF1": 0.32103688933200397,
+              "diagnosticEdgeF1": 0.42617291699356663,
+              "improvement": 0.10513602766156266,
+              "distance": 3.1999695773327606,
+              "margin": 0.0030624211003593693,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 150,
+              "overlapPeak": {
+                "dx": -3,
+                "dy": -1,
+                "edgeF1": 0.42617291699356663,
+                "distance": 3.1999695773327606,
+                "margin": 0.02885984574590672,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5178485758988141,
+            "darkEdgeF1": 0.5440502051653392,
+            "lightEdgeF1": 0.49164694663228903,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.551965733071584,
+            "censusSimilarity": 0.6246033246413418,
+            "contrast": 0.4241399508277148,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5440502051653392,
+              "diagnosticEdgeF1": 0.699873896595208,
+              "improvement": 0.15582369142986885,
+              "distance": 1.1360780051942414,
+              "margin": 0.12071463205184485,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 282,
+              "renderedEdges": 240,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7108769755190579,
+                "distance": 1.162578201706105,
+                "margin": 0.10281304526115731,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "c9699446-b6f5-4e6a-a263-059cbf6e4b7e",
+      "number": "90",
+      "name": "Death Baron",
+      "rarity": "rare",
+      "colors": ["B"],
+      "referenceHash": "8a9d6fc1053d38db225d86b44376ea2adf5e42fd43d98f0b8c632106332137b8",
+      "inputHash": "1d4be3807425153f6255ed788e54923a709a2538ef8cc28a61a115041616a25c",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2885546359482285,
+            "darkEdgeF1": 0.30129040667361834,
+            "lightEdgeF1": 0.2758188652228387,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.241821984882592,
+            "censusSimilarity": 0.5349970357276033,
+            "contrast": 0.18296181244527976,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -5,
+              "dy": -1,
+              "rawEdgeF1": 0.30129040667361834,
+              "diagnosticEdgeF1": 0.36106139600031123,
+              "improvement": 0.05977098932669289,
+              "distance": 3.219384242867421,
+              "margin": 0.07525462600726218,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 319,
+              "renderedEdges": 135,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.40262582056892776,
+                "distance": 3.284019817665702,
+                "margin": 0.043222420590311283,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.618763142175181,
+            "darkEdgeF1": 0.6310517529215358,
+            "lightEdgeF1": 0.6064745314288262,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.352462740198907,
+            "censusSimilarity": 0.6128552697147398,
+            "contrast": 0.44849583811226446,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6310517529215358,
+              "diagnosticEdgeF1": 0.6952186429501922,
+              "improvement": 0.06416689002865639,
+              "distance": 1.0837215536453773,
+              "margin": 0.3477514420517134,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 319,
+              "renderedEdges": 280,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7070532237126785,
+                "distance": 1.189037586317514,
+                "margin": 0.07404543187119494,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.28757698826762046,
+            "darkEdgeF1": 0.2989010989010989,
+            "lightEdgeF1": 0.276252877634142,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.342781874058627,
+            "censusSimilarity": 0.5743785345745345,
+            "contrast": 0.27059293982244914,
+            "offset": {
+              "status": "search-boundary",
+              "dx": 1,
+              "dy": -6,
+              "rawEdgeF1": 0.2989010989010989,
+              "diagnosticEdgeF1": 0.4000397505652033,
+              "improvement": 0.1011386516641044,
+              "distance": 3.1243401177303487,
+              "margin": 0.17342937868069574,
+              "boundary": true,
+              "ambiguous": false,
+              "referenceEdges": 319,
+              "renderedEdges": 142,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": -6,
+                "edgeF1": 0.4000397505652033,
+                "distance": 3.1243401177303487,
+                "margin": 0.023946456104561975,
+                "ambiguous": false,
+                "boundary": true
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5695683987426883,
+            "darkEdgeF1": 0.5674068199841397,
+            "lightEdgeF1": 0.571729977501237,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.5014347875949454,
+            "censusSimilarity": 0.6372251100666305,
+            "contrast": 0.4814461902788304,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.5674068199841397,
+              "diagnosticEdgeF1": 0.7028791608691,
+              "improvement": 0.1354723408849603,
+              "distance": 1.2915924836861499,
+              "margin": 0.36089491494861825,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 319,
+              "renderedEdges": 246,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7185840707964603,
+                "distance": 1.3612846245877979,
+                "margin": 0.11598146819385757,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "9160dde8-cd77-4967-a5f3-a676376c58f7",
+      "number": "127",
+      "name": "Act of Treason",
+      "rarity": "common",
+      "colors": ["R"],
+      "referenceHash": "3c7b80e9d2b568d60243feccf54bf7c62d0aa21c2d78508485de519b60415132",
+      "inputHash": "705f24252406345d42c0948b17c75a9393dbd3c1fb310e57a1a2f8a36eb4ec57",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.27857658056274903,
+            "darkEdgeF1": 0.33727738472798247,
+            "lightEdgeF1": 0.21987577639751554,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.384969387773885,
+            "censusSimilarity": 0.4814204748641273,
+            "contrast": -0.15165575813849944,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": 0,
+              "rawEdgeF1": 0.33727738472798247,
+              "diagnosticEdgeF1": 0.30126662444585184,
+              "improvement": -0.03601076028213063,
+              "distance": 3.6263645772741717,
+              "margin": 0.07795561278629792,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 324,
+              "renderedEdges": 128,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": 5,
+                "edgeF1": 0.4001086849125581,
+                "distance": 3.875881372663526,
+                "margin": 0.004425231675147967,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6146004206378559,
+            "darkEdgeF1": 0.5883974093978228,
+            "lightEdgeF1": 0.640803431877889,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1374906009798509,
+            "censusSimilarity": 0.6284592738370959,
+            "contrast": 0.5549430013159227,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5883974093978228,
+              "diagnosticEdgeF1": 0.7960417216615563,
+              "improvement": 0.20764431226373348,
+              "distance": 0.8480126802664907,
+              "margin": 0.29647438724835706,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 324,
+              "renderedEdges": 285,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.8069160405533904,
+                "distance": 0.9463449345346083,
+                "margin": 0.12208574368122105,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.26335779263560777,
+            "darkEdgeF1": 0.29711004306847266,
+            "lightEdgeF1": 0.22960554220274287,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.685035814958434,
+            "censusSimilarity": 0.4716658702018608,
+            "contrast": -0.2078679142310195,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 3,
+              "dy": -3,
+              "rawEdgeF1": 0.29711004306847266,
+              "diagnosticEdgeF1": 0.3914759273875297,
+              "improvement": 0.09436588431905701,
+              "distance": 2.824626205432274,
+              "margin": 0.08286647935492208,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 324,
+              "renderedEdges": 143,
+              "overlapPeak": {
+                "dx": 4,
+                "dy": -4,
+                "edgeF1": 0.4414856341976173,
+                "distance": 3.111210305395855,
+                "margin": 0.008898751348258571,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6330508578428061,
+            "darkEdgeF1": 0.574377499677461,
+            "lightEdgeF1": 0.6917242160081513,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1567500045674255,
+            "censusSimilarity": 0.7054648606022864,
+            "contrast": 0.5986723939723592,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.574377499677461,
+              "diagnosticEdgeF1": 0.7741380546197405,
+              "improvement": 0.1997605549422795,
+              "distance": 0.9201955124791692,
+              "margin": 0.29099093502939577,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 324,
+              "renderedEdges": 247,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7773806484554506,
+                "distance": 0.9889029757923027,
+                "margin": 0.1132080026529435,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "2435c810-2baf-4e3b-80ce-542b94694901",
+      "number": "128",
+      "name": "Alpine Moon",
+      "rarity": "rare",
+      "colors": ["R"],
+      "referenceHash": "dc649955a51612e836ed1e1f499831e5789fa6e93507d011a7e5b046ca976d45",
+      "inputHash": "7ecd62eef9d199432b05aa28a81464921bed567b8496b325c44bb01aad6535d9",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.3185663789868441,
+            "darkEdgeF1": 0.2959644548892887,
+            "lightEdgeF1": 0.3411683030843995,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.527420861363733,
+            "censusSimilarity": 0.5028665752874493,
+            "contrast": 0.15909135823642848,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -5,
+              "dy": -2,
+              "rawEdgeF1": 0.2959644548892887,
+              "diagnosticEdgeF1": 0.38607820067310583,
+              "improvement": 0.09011374578381715,
+              "distance": 3.8039058545510875,
+              "margin": 0.06238288712782403,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 304,
+              "renderedEdges": 129,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.42533729705008005,
+                "distance": 3.84469826362179,
+                "margin": 0.06644874013343821,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.614551003517484,
+            "darkEdgeF1": 0.6828057107386717,
+            "lightEdgeF1": 0.5462962962962964,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3298386774663895,
+            "censusSimilarity": 0.6327008586933001,
+            "contrast": 0.49649281983542265,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6828057107386717,
+              "diagnosticEdgeF1": 0.7496874336533698,
+              "improvement": 0.06688172291469807,
+              "distance": 0.9359194706669338,
+              "margin": 0.3882467946604422,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 304,
+              "renderedEdges": 279,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7496874336533698,
+                "distance": 0.9359194706669338,
+                "margin": 0.10694457651051259,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.35597612730971967,
+            "darkEdgeF1": 0.362222108127535,
+            "lightEdgeF1": 0.3497301464919043,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.392207286906643,
+            "censusSimilarity": 0.5374806503946743,
+            "contrast": 0.21449861220034952,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.362222108127535,
+              "diagnosticEdgeF1": 0.4008338860987397,
+              "improvement": 0.038611777971204686,
+              "distance": 3.2023577378401353,
+              "margin": 0.07887725768329146,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 304,
+              "renderedEdges": 158,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.44135921498050307,
+                "distance": 3.281234995523427,
+                "margin": 0.02950539941526914,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.23606797749979,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6037088467104623,
+            "darkEdgeF1": 0.6209460855195208,
+            "lightEdgeF1": 0.586471607901404,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.445521687188386,
+            "censusSimilarity": 0.670619073144618,
+            "contrast": 0.5392068314254793,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6209460855195208,
+              "diagnosticEdgeF1": 0.7353514547393976,
+              "improvement": 0.11440536921987676,
+              "distance": 1.1256457373734174,
+              "margin": 0.3371714411844826,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 304,
+              "renderedEdges": 241,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7353514547393976,
+                "distance": 1.1256457373734174,
+                "margin": 0.13149793361263706,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "c827bccf-38f9-4a7c-bd0e-038594a9f63b",
+      "number": "129",
+      "name": "Apex of Power",
+      "rarity": "mythic",
+      "colors": ["R"],
+      "referenceHash": "8d14e42762b6a0b99e9607cfd39b8f139f0e0a0d44c7df35754528c92abd160a",
+      "inputHash": "9991901ba690f41bebda8fe60414d04721b4f2fe0dc8351984c7d6549adffb4d",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.28271833002674096,
+            "darkEdgeF1": 0.3084931297125578,
+            "lightEdgeF1": 0.25694353034092404,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.804238512808043,
+            "censusSimilarity": 0.5126538844100529,
+            "contrast": 0.11007365528876577,
+            "offset": {
+              "status": "search-boundary",
+              "dx": -6,
+              "dy": -1,
+              "rawEdgeF1": 0.3084931297125578,
+              "diagnosticEdgeF1": 0.3562544480970618,
+              "improvement": 0.04776131838450398,
+              "distance": 3.7093370240353645,
+              "margin": 0.09003982266479049,
+              "boundary": true,
+              "ambiguous": true,
+              "referenceEdges": 277,
+              "renderedEdges": 131,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.4491802378271496,
+                "distance": 3.799376846700155,
+                "margin": 0.07663121821930646,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.23606797749979,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6281545243871819,
+            "darkEdgeF1": 0.5949417991718201,
+            "lightEdgeF1": 0.6613672496025437,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2882884632535654,
+            "censusSimilarity": 0.6200138308593295,
+            "contrast": 0.4692912673515339,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.5949417991718201,
+              "diagnosticEdgeF1": 0.7086277732128183,
+              "improvement": 0.11368597404099823,
+              "distance": 1.0610300086570443,
+              "margin": 0.179981939780262,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 277,
+              "renderedEdges": 279,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7229758751521225,
+                "distance": 1.0845689873035615,
+                "margin": 0.1011288831165218,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.2949794698295427,
+            "darkEdgeF1": 0.3374861231034908,
+            "lightEdgeF1": 0.25247281655559456,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.822425416784084,
+            "censusSimilarity": 0.5486168156309428,
+            "contrast": 0.15770839809053752,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": -5,
+              "rawEdgeF1": 0.3374861231034908,
+              "diagnosticEdgeF1": 0.3810803998991851,
+              "improvement": 0.043594276795694276,
+              "distance": 3.3669186534199773,
+              "margin": 0.027301222611643805,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 277,
+              "renderedEdges": 158,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.4183908045977011,
+                "distance": 3.4525949337476676,
+                "margin": 0.024670932785566313,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5881942008314636,
+            "darkEdgeF1": 0.5514858512675602,
+            "lightEdgeF1": 0.624902550395367,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4443151664192482,
+            "censusSimilarity": 0.6540615302442717,
+            "contrast": 0.4873406138236763,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.5514858512675602,
+              "diagnosticEdgeF1": 0.7038461538461539,
+              "improvement": 0.15236030257859368,
+              "distance": 1.1365117442836163,
+              "margin": 0.19375272542940025,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 277,
+              "renderedEdges": 243,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7178079364260281,
+                "distance": 1.1452844554738515,
+                "margin": 0.12101569472517026,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "be8875d8-fe8c-4721-aa8d-978bf72e9c26",
+      "number": "137",
+      "name": "Doublecast",
+      "rarity": "uncommon",
+      "colors": ["R"],
+      "referenceHash": "b469b3f4676200202fd9a377ef2b4172979f34255304104f011bef0e98af5486",
+      "inputHash": "ef51670fa1735d3b876db5756698631a0b7d15a3813e7c7bea014325759f86b7",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.1635431117731758,
+            "darkEdgeF1": 0.21861597310768516,
+            "lightEdgeF1": 0.10847025043866644,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 6.712656109698235,
+            "censusSimilarity": 0.5052304178274651,
+            "contrast": 0.21708044834836004,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -5,
+              "dy": -1,
+              "rawEdgeF1": 0.21861597310768516,
+              "diagnosticEdgeF1": 0.25215381382643415,
+              "improvement": 0.03353784071874899,
+              "distance": 3.936841377234193,
+              "margin": 0.10590785912215006,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 302,
+              "renderedEdges": 82,
+              "overlapPeak": {
+                "dx": -3,
+                "dy": -2,
+                "edgeF1": 0.28921670475794725,
+                "distance": 4.1295043574918395,
+                "margin": 0.02359170475794725,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.23606797749979,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5577548216331222,
+            "darkEdgeF1": 0.5825755115297174,
+            "lightEdgeF1": 0.5329341317365269,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3797671077318636,
+            "censusSimilarity": 0.5777581375727421,
+            "contrast": 0.31614368141402943,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5825755115297174,
+              "diagnosticEdgeF1": 0.771675503386558,
+              "improvement": 0.18909999185684057,
+              "distance": 0.8565601876832003,
+              "margin": 0.437625532621974,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 302,
+              "renderedEdges": 280,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 1,
+                "edgeF1": 0.771675503386558,
+                "distance": 0.8565601876832003,
+                "margin": 0.13833720678143602,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.1746667463560897,
+            "darkEdgeF1": 0.2654067378800329,
+            "lightEdgeF1": 0.08392675483214651,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 6.780225771191299,
+            "censusSimilarity": 0.5351391548008664,
+            "contrast": 0.2645512119782239,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": -1,
+              "rawEdgeF1": 0.2654067378800329,
+              "diagnosticEdgeF1": 0.28426395939086296,
+              "improvement": 0.01885722151083008,
+              "distance": 3.6295288765152423,
+              "margin": 0.06784120798454207,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 302,
+              "renderedEdges": 92,
+              "overlapPeak": {
+                "dx": -2,
+                "dy": -1,
+                "edgeF1": 0.29829149232914925,
+                "distance": 3.709379488037534,
+                "margin": 0.0014250822137011898,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5319115610253699,
+            "darkEdgeF1": 0.5309325946445059,
+            "lightEdgeF1": 0.5328905274062338,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.504097195344452,
+            "censusSimilarity": 0.5872355105762956,
+            "contrast": 0.355326995982948,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 1,
+              "rawEdgeF1": 0.5309325946445059,
+              "diagnosticEdgeF1": 0.7527408234171632,
+              "improvement": 0.22180822877265727,
+              "distance": 1.0572973580027925,
+              "margin": 0.36547478362750696,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 302,
+              "renderedEdges": 242,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7600948424937157,
+                "distance": 1.1485986839285638,
+                "margin": 0.09855227071870998,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "1b01d243-9f68-47c7-980b-1418e5f2f3e9",
+      "number": "169",
+      "name": "Blanchwood Armor",
+      "rarity": "uncommon",
+      "colors": ["G"],
+      "referenceHash": "1ff93d7a9c338eea73ce63775b60b4ea463e3530315e761343ad2639289fbdd0",
+      "inputHash": "94db653165c241f27a61d2ae614d5b56e516ffca60bd8aa19f57ddc638e43213",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.36517421239490133,
+            "darkEdgeF1": 0.38548752834467126,
+            "lightEdgeF1": 0.34486089644513135,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.2287762688575183,
+            "censusSimilarity": 0.5502909719611556,
+            "contrast": 0.20291092701318084,
+            "offset": {
+              "status": "shape-or-content",
+              "dx": 2,
+              "dy": -1,
+              "rawEdgeF1": 0.38548752834467126,
+              "diagnosticEdgeF1": 0.41627456407417657,
+              "improvement": 0.030787035729505308,
+              "distance": 2.3082478555732466,
+              "margin": 0.2005047489958489,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 306,
+              "renderedEdges": 152,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 0,
+                "edgeF1": 0.42350907519446845,
+                "distance": 2.359840174223862,
+                "margin": 0.038021546849797194,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6164757449989604,
+            "darkEdgeF1": 0.6202338586680224,
+            "lightEdgeF1": 0.6127176313298983,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2893923025709686,
+            "censusSimilarity": 0.6200927939935825,
+            "contrast": 0.43477673258229754,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6202338586680224,
+              "diagnosticEdgeF1": 0.717948717948718,
+              "improvement": 0.09771485928069557,
+              "distance": 1.0855238635329387,
+              "margin": 0.19787087171308482,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 306,
+              "renderedEdges": 279,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7265706079694929,
+                "distance": 1.0992261198045532,
+                "margin": 0.10445311933121659,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.30553586390354304,
+            "darkEdgeF1": 0.352786209266365,
+            "lightEdgeF1": 0.25828551854072107,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.312029946236544,
+            "censusSimilarity": 0.575485885717618,
+            "contrast": 0.273948550402231,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 1,
+              "dy": -1,
+              "rawEdgeF1": 0.352786209266365,
+              "diagnosticEdgeF1": 0.3557156526143975,
+              "improvement": 0.0029294433480325233,
+              "distance": 3.2855262867019266,
+              "margin": 0.05295986985673018,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 306,
+              "renderedEdges": 142,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 0,
+                "edgeF1": 0.38250222385013866,
+                "distance": 3.4181368395344585,
+                "margin": 0.0049859990123870546,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5775075239435216,
+            "darkEdgeF1": 0.5599737255729936,
+            "lightEdgeF1": 0.5950413223140495,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.41986347852355,
+            "censusSimilarity": 0.6340618627520533,
+            "contrast": 0.46530316421239826,
+            "offset": {
+              "status": "placement",
+              "dx": 2,
+              "dy": 2,
+              "rawEdgeF1": 0.5599737255729936,
+              "diagnosticEdgeF1": 0.7024862806585284,
+              "improvement": 0.14251255508553473,
+              "distance": 1.1826002948139342,
+              "margin": 0.1806938334047632,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 306,
+              "renderedEdges": 246,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7423423423423423,
+                "distance": 1.208757712403762,
+                "margin": 0.1531414017504793,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "999030b2-2f91-4c45-981f-acdbbf9034af",
+      "number": "170",
+      "name": "Bristling Boar",
+      "rarity": "common",
+      "colors": ["G"],
+      "referenceHash": "58dd7c4ec6a171647864f0571daf4df6d6b94055e493f4f9f0adbb29580d001a",
+      "inputHash": "c29d0c2017bec28e45966d1401dd2596a5860e285c6f05dbdd9f11362ac614d7",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.27765626817262157,
+            "darkEdgeF1": 0.2953797551665131,
+            "lightEdgeF1": 0.25993278117873003,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.642038809552764,
+            "censusSimilarity": 0.43498542421709874,
+            "contrast": -0.1500972869568797,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 3,
+              "dy": -3,
+              "rawEdgeF1": 0.2953797551665131,
+              "diagnosticEdgeF1": 0.39772057378659853,
+              "improvement": 0.10234081862008543,
+              "distance": 2.617150891749036,
+              "margin": 0.0063935538361254984,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 310,
+              "renderedEdges": 146,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": -4,
+                "edgeF1": 0.412459562787962,
+                "distance": 3.0723661645397486,
+                "margin": 0.007709317929979587,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 4.123105625617661,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6550424500692531,
+            "darkEdgeF1": 0.6558272988113131,
+            "lightEdgeF1": 0.6542576013271931,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.129892599021741,
+            "censusSimilarity": 0.6429185534868449,
+            "contrast": 0.5700626194559038,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6558272988113131,
+              "diagnosticEdgeF1": 0.7873845100946731,
+              "improvement": 0.13155721128336006,
+              "distance": 0.8425122614809673,
+              "margin": 0.3175336461677114,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 310,
+              "renderedEdges": 287,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7873845100946731,
+                "distance": 0.8425122614809673,
+                "margin": 0.13155721128336006,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.2602451132237407,
+            "darkEdgeF1": 0.2854009796037722,
+            "lightEdgeF1": 0.23508924684370922,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.4282132358425965,
+            "censusSimilarity": 0.41064038291779564,
+            "contrast": -0.18960329979537466,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 3,
+              "dy": -2,
+              "rawEdgeF1": 0.2854009796037722,
+              "diagnosticEdgeF1": 0.3473799926713081,
+              "improvement": 0.06197901306753589,
+              "distance": 3.0510254660717786,
+              "margin": 0.012667574039419094,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 310,
+              "renderedEdges": 132,
+              "overlapPeak": {
+                "dx": 5,
+                "dy": -3,
+                "edgeF1": 0.4198108410454592,
+                "distance": 3.374833153982083,
+                "margin": 0.028657839385308137,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2.23606797749979,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6706077198451339,
+            "darkEdgeF1": 0.6678635547576302,
+            "lightEdgeF1": 0.6733518849326378,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1575477606759563,
+            "censusSimilarity": 0.7114393467445457,
+            "contrast": 0.5968259063852271,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6678635547576302,
+              "diagnosticEdgeF1": 0.781593326624473,
+              "improvement": 0.11372977186684285,
+              "distance": 0.8370070447440059,
+              "margin": 0.3754610316574658,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 310,
+              "renderedEdges": 247,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.7830950901180858,
+                "distance": 0.984019311606705,
+                "margin": 0.08472956262922993,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "4da3b0bc-84da-4b85-992b-d0700c97157c",
+      "number": "179",
+      "name": "Elvish Clancaller",
+      "rarity": "rare",
+      "colors": ["G"],
+      "referenceHash": "cba6477bd7af98f508b04134df7d23ef7f3f3613b334b992343f03ea3b8b3011",
+      "inputHash": "258602cacc3f93cc52e1ced90b90e2889b3a68d5f37e74b33887b6ef291f89af",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.4088053754833343,
+            "darkEdgeF1": 0.4048582995951417,
+            "lightEdgeF1": 0.41275245137152683,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.9730517230193145,
+            "censusSimilarity": 0.5783361351535223,
+            "contrast": 0.19793929288348797,
+            "offset": {
+              "status": "shape-or-content",
+              "dx": 1,
+              "dy": -1,
+              "rawEdgeF1": 0.4048582995951417,
+              "diagnosticEdgeF1": 0.4106602315785017,
+              "improvement": 0.005801931983359987,
+              "distance": 2.2960900508175746,
+              "margin": 0.26398025970356853,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 324,
+              "renderedEdges": 153,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": -1,
+                "edgeF1": 0.43693693693693697,
+                "distance": 2.363012201992082,
+                "margin": 0.049783436080812205,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6302507945187215,
+            "darkEdgeF1": 0.648067331670823,
+            "lightEdgeF1": 0.6124342573666199,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2837746024376764,
+            "censusSimilarity": 0.6649368837043772,
+            "contrast": 0.5415253916112671,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "rawEdgeF1": 0.648067331670823,
+              "diagnosticEdgeF1": 0.705073086844368,
+              "improvement": 0.057005755173545,
+              "distance": 1.1295461383361778,
+              "margin": 0.36472667507156564,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 324,
+              "renderedEdges": 274,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.705073086844368,
+                "distance": 1.1295461383361778,
+                "margin": 0.1157754788974995,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.36582368935001974,
+            "darkEdgeF1": 0.33954451345755693,
+            "lightEdgeF1": 0.3921028652424825,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.060983479900123,
+            "censusSimilarity": 0.62145033110473,
+            "contrast": 0.2688498186812931,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.33954451345755693,
+              "diagnosticEdgeF1": 0.3533900792486058,
+              "improvement": 0.013845565791048897,
+              "distance": 3.249187439904418,
+              "margin": 0.025505199564353376,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 324,
+              "renderedEdges": 155,
+              "overlapPeak": {
+                "dx": -5,
+                "dy": -1,
+                "edgeF1": 0.4105276520120171,
+                "distance": 3.468816751137239,
+                "margin": 0.00833886952227697,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 3,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5719989843225455,
+            "darkEdgeF1": 0.593595639584398,
+            "lightEdgeF1": 0.5504023290606931,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4430116226956011,
+            "censusSimilarity": 0.697943903762539,
+            "contrast": 0.5595057374866494,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "rawEdgeF1": 0.593595639584398,
+              "diagnosticEdgeF1": 0.6917306988657153,
+              "improvement": 0.09813505928131727,
+              "distance": 1.3033081485993332,
+              "margin": 0.34341805668340797,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 324,
+              "renderedEdges": 240,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.7006142903330101,
+                "distance": 1.3427902770263178,
+                "margin": 0.12872232687478158,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "175e21a3-00f7-4c51-8a8e-fbfd7089efda",
+      "number": "201",
+      "name": "Scapeshift",
+      "rarity": "mythic",
+      "colors": ["G"],
+      "referenceHash": "0d04d14347b69ceaf3ee4d53543f8e7f5481968649c2cf2e5c12cb9102a1c6f3",
+      "inputHash": "1b8ce1f2c0cb9318551e3dc57beeccd7e86d53ea84581b52f4b434421a33b2ac",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.35991383180410647,
+            "darkEdgeF1": 0.40546496253856323,
+            "lightEdgeF1": 0.3143627010696497,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.249795330190217,
+            "censusSimilarity": 0.5727287259590763,
+            "contrast": 0.14444849859773864,
+            "offset": {
+              "status": "shape-or-content",
+              "dx": 1,
+              "dy": -1,
+              "rawEdgeF1": 0.40546496253856323,
+              "diagnosticEdgeF1": 0.44215787152726743,
+              "improvement": 0.0366929089887042,
+              "distance": 2.3419531116525962,
+              "margin": 0.2363141689648427,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 279,
+              "renderedEdges": 152,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": -1,
+                "edgeF1": 0.44215787152726743,
+                "distance": 2.3419531116525962,
+                "margin": 0.02289963609764295,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6559954254013682,
+            "darkEdgeF1": 0.6383734064870099,
+            "lightEdgeF1": 0.6736174443157265,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2907906441184982,
+            "censusSimilarity": 0.6725831990376054,
+            "contrast": 0.502957882376243,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6383734064870099,
+              "diagnosticEdgeF1": 0.6912014325418291,
+              "improvement": 0.05282802605481918,
+              "distance": 1.1009497185588106,
+              "margin": 0.12634857127832522,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 279,
+              "renderedEdges": 278,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.7051665067836097,
+                "distance": 1.136553958499079,
+                "margin": 0.06996928182849127,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3436528282371879,
+            "darkEdgeF1": 0.34965034965034963,
+            "lightEdgeF1": 0.33765530682402617,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.173076160084595,
+            "censusSimilarity": 0.6120437916207512,
+            "contrast": 0.19398087955867396,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": -1,
+              "rawEdgeF1": 0.34965034965034963,
+              "diagnosticEdgeF1": 0.376090981221899,
+              "improvement": 0.026440631571549356,
+              "distance": 3.2876577370809192,
+              "margin": 0.07268837543377105,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 279,
+              "renderedEdges": 148,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.4044215021215643,
+                "distance": 3.437552572093499,
+                "margin": 0.00022374857561036077,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 4,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6312922921466909,
+            "darkEdgeF1": 0.6164562264376758,
+            "lightEdgeF1": 0.646128357855706,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4167515568953861,
+            "censusSimilarity": 0.7112679506619128,
+            "contrast": 0.5213125997719573,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6164562264376758,
+              "diagnosticEdgeF1": 0.6735515375478421,
+              "improvement": 0.0570953111101663,
+              "distance": 1.1791439938636354,
+              "margin": 0.1526992151851354,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 279,
+              "renderedEdges": 241,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 2,
+                "edgeF1": 0.6976079290955876,
+                "distance": 1.2185065184779655,
+                "margin": 0.09104111587378305,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "5314bae2-4930-4f8a-8a52-853bc3feb88f",
+      "number": "211",
+      "name": "Aerial Engineer",
+      "rarity": "uncommon",
+      "colors": ["U", "W"],
+      "referenceHash": "2640c68f8a187263be88eddc2388d5c2409be47d9343cd82e42a8c404f215441",
+      "inputHash": "59a0b760260223147288860539da1c856b0e1c62f570dc88a0788f71f227a04e",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0,
+            "darkEdgeF1": 0,
+            "lightEdgeF1": 0,
+            "darkStatus": "missing-ink",
+            "lightStatus": "missing-ink",
+            "meanDistance": null,
+            "censusSimilarity": 0,
+            "contrast": 0.16898833832791513,
+            "offset": {
+              "status": "missing-ink",
+              "rawEdgeF1": 0,
+              "diagnosticEdgeF1": null,
+              "referenceEdges": 352,
+              "renderedEdges": 0,
+              "dx": null,
+              "dy": null
+            }
+          },
+          "after": {
+            "edgeF1": 0.6104774596312186,
+            "darkEdgeF1": 0.5854010292044971,
+            "lightEdgeF1": 0.63555389005794,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.345354272746627,
+            "censusSimilarity": 0.6393461036047372,
+            "contrast": 0.5249335713666946,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.5854010292044971,
+              "diagnosticEdgeF1": 0.6863666890530558,
+              "improvement": 0.10096565984855865,
+              "distance": 1.2150050147851825,
+              "margin": 0.16634900263875219,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 352,
+              "renderedEdges": 294,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.688475088072471,
+                "distance": 1.2409711088823938,
+                "margin": 0.08814968251186428,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.07331602260577363,
+            "darkEdgeF1": 0.14663204521154727,
+            "lightEdgeF1": 0,
+            "darkStatus": "measured",
+            "lightStatus": "missing-ink",
+            "meanDistance": null,
+            "censusSimilarity": 0.25668792840822546,
+            "contrast": 0.2824839758294495,
+            "offset": {
+              "status": "search-boundary",
+              "dx": 2,
+              "dy": -6,
+              "rawEdgeF1": 0.14663204521154727,
+              "diagnosticEdgeF1": 0.14392107553922043,
+              "improvement": -0.0027109696723268406,
+              "distance": 5.3488242372470705,
+              "margin": 0.1306561319915316,
+              "boundary": true,
+              "ambiguous": true,
+              "referenceEdges": 352,
+              "renderedEdges": 61,
+              "overlapPeak": {
+                "dx": 4,
+                "dy": -1,
+                "edgeF1": 0.15661566156615664,
+                "distance": 5.835189140519757,
+                "margin": 0.003984082618788243,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5.385164807134505,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.5702473756355473,
+            "darkEdgeF1": 0.5423064358052924,
+            "lightEdgeF1": 0.5981883154658023,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.5142678897551582,
+            "censusSimilarity": 0.6498000599336146,
+            "contrast": 0.5520863861474083,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.5423064358052924,
+              "diagnosticEdgeF1": 0.6830933577256357,
+              "improvement": 0.14078692192034337,
+              "distance": 1.4464308562934298,
+              "margin": 0.16874257281263594,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 352,
+              "renderedEdges": 247,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.6830933577256357,
+                "distance": 1.4464308562934298,
+                "margin": 0.11539275611613498,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "1e90c638-d4b2-4243-bbc4-1cc10516c40f",
+      "number": "212",
+      "name": "Arcades, the Strategist",
+      "rarity": "mythic",
+      "colors": ["G", "U", "W"],
+      "referenceHash": "5fb5480ce8ceb3da0441815e6f537c96265b3af9ed2715beae2895e2e43000f4",
+      "inputHash": "931c94cb63c48bb15df0e83bf3228a304b57d097f5af38f342edc162ca4c4d28",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.31591248403072264,
+            "darkEdgeF1": 0.3062645011600928,
+            "lightEdgeF1": 0.3255604669013525,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 5.436409414374619,
+            "censusSimilarity": 0.5450421169345814,
+            "contrast": 0.15206707978800618,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.3062645011600928,
+              "diagnosticEdgeF1": 0.29596781856767285,
+              "improvement": -0.010296682592419948,
+              "distance": 3.943013476078557,
+              "margin": 0.01377872086706633,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 315,
+              "renderedEdges": 134,
+              "overlapPeak": {
+                "dx": -5,
+                "dy": -2,
+                "edgeF1": 0.40089086859688194,
+                "distance": 4.086115176654828,
+                "margin": 0.038339746678013764,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 3.1622776601683795,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6180130343606145,
+            "darkEdgeF1": 0.656088764645994,
+            "lightEdgeF1": 0.579937304075235,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3627131439971192,
+            "censusSimilarity": 0.6743608352919661,
+            "contrast": 0.5278362330399332,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "rawEdgeF1": 0.656088764645994,
+              "diagnosticEdgeF1": 0.7005246283882249,
+              "improvement": 0.04443586374223096,
+              "distance": 1.1442334195374833,
+              "margin": 0.2918563758051218,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 315,
+              "renderedEdges": 279,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.7005246283882249,
+                "distance": 1.1442334195374833,
+                "margin": 0.08361741189337957,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.37774398389561104,
+            "darkEdgeF1": 0.36644137525712606,
+            "lightEdgeF1": 0.38904659253409596,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.168069672782352,
+            "censusSimilarity": 0.6085759636203361,
+            "contrast": 0.21996377437069045,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 1,
+              "dy": -1,
+              "rawEdgeF1": 0.36644137525712606,
+              "diagnosticEdgeF1": 0.41860465116279066,
+              "improvement": 0.05216327590566461,
+              "distance": 3.185758062968993,
+              "margin": 0.11091546435683775,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 315,
+              "renderedEdges": 158,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": -1,
+                "edgeF1": 0.4199700021427041,
+                "distance": 3.1941957557323537,
+                "margin": 0.014050340409088813,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.583244543656896,
+            "darkEdgeF1": 0.6216274819564477,
+            "lightEdgeF1": 0.5448616053573443,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.5320169364066172,
+            "censusSimilarity": 0.7134225194543836,
+            "contrast": 0.5544447001742271,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "rawEdgeF1": 0.6216274819564477,
+              "diagnosticEdgeF1": 0.6742788461538461,
+              "improvement": 0.052651364197398465,
+              "distance": 1.3446058148709834,
+              "margin": 0.24242195694114366,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 315,
+              "renderedEdges": 243,
+              "overlapPeak": {
+                "dx": 0,
+                "dy": 1,
+                "edgeF1": 0.6742788461538461,
+                "distance": 1.3446058148709834,
+                "margin": 0.08975658069772863,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "d45ac8dc-281f-4257-9658-80af65a0295b",
+      "number": "226",
+      "name": "Amulet of Safekeeping",
+      "rarity": "rare",
+      "colors": [],
+      "referenceHash": "fc111092b9616cce77e2e6cf09708baa9bf3b04c4cb143786984bae19b6fe082",
+      "inputHash": "7d558e64d49715ef3dc59c63d0e13d35052fccf6b463501423d39c2ee91e422f",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.30733182906289414,
+            "darkEdgeF1": 0.3008631319358816,
+            "lightEdgeF1": 0.3138005261899067,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.731847816264705,
+            "censusSimilarity": 0.5392421088647161,
+            "contrast": 0.14417779548393442,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.3008631319358816,
+              "diagnosticEdgeF1": 0.32605647907069896,
+              "improvement": 0.025193347134817357,
+              "distance": 3.5132529018454703,
+              "margin": 0.024036168966812266,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 288,
+              "renderedEdges": 131,
+              "overlapPeak": {
+                "dx": -5,
+                "dy": -2,
+                "edgeF1": 0.42343673067454457,
+                "distance": 3.581900002504363,
+                "margin": 0.054907211945001644,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 3.1622776601683795,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6533233422071032,
+            "darkEdgeF1": 0.6653727594474257,
+            "lightEdgeF1": 0.6412739249667806,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2209104734247047,
+            "censusSimilarity": 0.6336596558365815,
+            "contrast": 0.5033980049905186,
+            "offset": {
+              "status": "close",
+              "dx": 0,
+              "dy": 1,
+              "rawEdgeF1": 0.6653727594474257,
+              "diagnosticEdgeF1": 0.6972590306770738,
+              "improvement": 0.031886271229648155,
+              "distance": 1.0455768988796321,
+              "margin": 0.32064153187109845,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 288,
+              "renderedEdges": 274,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7257442164993452,
+                "distance": 1.0883518504197895,
+                "margin": 0.08063223013757936,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3333528149017788,
+            "darkEdgeF1": 0.347011385199241,
+            "lightEdgeF1": 0.31969424460431656,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.430070462668651,
+            "censusSimilarity": 0.57571745551215,
+            "contrast": 0.220537174070391,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -2,
+              "dy": -1,
+              "rawEdgeF1": 0.347011385199241,
+              "diagnosticEdgeF1": 0.3667262969588551,
+              "improvement": 0.019714911759614095,
+              "distance": 3.4334663998618806,
+              "margin": 0.08903255765680385,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 288,
+              "renderedEdges": 152,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -1,
+                "edgeF1": 0.4256914686404363,
+                "distance": 3.496749226657445,
+                "margin": 0.045395570859669665,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 2,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6081408226124765,
+            "darkEdgeF1": 0.6118536009445101,
+            "lightEdgeF1": 0.6044280442804427,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3772149582259465,
+            "censusSimilarity": 0.6813608961904736,
+            "contrast": 0.5300315204734741,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6118536009445101,
+              "diagnosticEdgeF1": 0.7110005460833686,
+              "improvement": 0.09914694513885847,
+              "distance": 1.156969758308298,
+              "margin": 0.20155940951908535,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 288,
+              "renderedEdges": 239,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7289860088001188,
+                "distance": 1.1583652182372641,
+                "margin": 0.11976479129838435,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "0ce4702d-f65b-413e-99da-112f632a0a63",
+      "number": "227",
+      "name": "Arcane Encyclopedia",
+      "rarity": "uncommon",
+      "colors": [],
+      "referenceHash": "2576a8560c293f7b77d5622d76048de4ec6cb6fe57847dcc9330289df96d50fe",
+      "inputHash": "1d8bfa2cd44d02e6da7f91143a51ef9d8a3d5a52ed1e39ecdb2b1847d3c76d56",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.27805701826382945,
+            "darkEdgeF1": 0.280384571187804,
+            "lightEdgeF1": 0.27572946533985493,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.042357131787515,
+            "censusSimilarity": 0.510627527588974,
+            "contrast": 0.14733079465934149,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 2,
+              "dy": 0,
+              "rawEdgeF1": 0.280384571187804,
+              "diagnosticEdgeF1": 0.3246668408675203,
+              "improvement": 0.04428226967971627,
+              "distance": 3.4994220988475364,
+              "margin": 0.044753048883574564,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 306,
+              "renderedEdges": 127,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.3916254789803965,
+                "distance": 3.711722915175706,
+                "margin": 0.048482162546613916,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 6.324555320336759,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6301101390592116,
+            "darkEdgeF1": 0.6317101545620741,
+            "lightEdgeF1": 0.6285101235563493,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2977783963147849,
+            "censusSimilarity": 0.610350849817904,
+            "contrast": 0.4398233390447326,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6317101545620741,
+              "diagnosticEdgeF1": 0.742601460083209,
+              "improvement": 0.11089130552113491,
+              "distance": 0.9537521898649097,
+              "margin": 0.3897005349008087,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 306,
+              "renderedEdges": 280,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7470752262707772,
+                "distance": 1.0422204400436217,
+                "margin": 0.07448661373936205,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3014695848734211,
+            "darkEdgeF1": 0.35903673072245196,
+            "lightEdgeF1": 0.24390243902439024,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.795200628807549,
+            "censusSimilarity": 0.539841156198752,
+            "contrast": 0.2401413988743399,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": -1,
+              "rawEdgeF1": 0.35903673072245196,
+              "diagnosticEdgeF1": 0.37950983485852524,
+              "improvement": 0.020473104136073283,
+              "distance": 3.184484131470257,
+              "margin": 0.07729240564230144,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 306,
+              "renderedEdges": 147,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": -6,
+                "edgeF1": 0.38203095507738777,
+                "distance": 3.3718221820726924,
+                "margin": 0.0008355634435828208,
+                "ambiguous": true,
+                "boundary": true
+              },
+              "objectiveDisagreementPx": 5.099019513592785,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.56965285580619,
+            "darkEdgeF1": 0.5687257324391105,
+            "lightEdgeF1": 0.5705799791732693,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4747446772844865,
+            "censusSimilarity": 0.6435840444504979,
+            "contrast": 0.4715051623126401,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.5687257324391105,
+              "diagnosticEdgeF1": 0.7330232558139534,
+              "improvement": 0.16429752337484294,
+              "distance": 1.1575283113570638,
+              "margin": 0.30707414427736257,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 306,
+              "renderedEdges": 242,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.746132848043676,
+                "distance": 1.18699100341376,
+                "margin": 0.11365493826478956,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "eb28b35c-28a5-4042-b21d-6d43658a16eb",
+      "number": "229",
+      "name": "Crucible of Worlds",
+      "rarity": "mythic",
+      "colors": [],
+      "referenceHash": "f4f366f0d844fc7c026cf6be5511930f18f46b81538efa114a97d381cc0756ac",
+      "inputHash": "6e295f2c2613e16f563ab1929497a3cdd28f646dbf8c0ac832b137c9ac80748d",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2843619373770312,
+            "darkEdgeF1": 0.31580185904224023,
+            "lightEdgeF1": 0.2529220157118222,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.000698455662251,
+            "censusSimilarity": 0.5221607299276825,
+            "contrast": 0.11263330295721886,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.31580185904224023,
+              "diagnosticEdgeF1": 0.32072266831377394,
+              "improvement": 0.00492080927153371,
+              "distance": 3.4635254552998362,
+              "margin": 0.0014861446890481744,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 273,
+              "renderedEdges": 134,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.4340611598508844,
+                "distance": 3.5783756712912784,
+                "margin": 0.05116225292377752,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5.8309518948453,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6485564285436165,
+            "darkEdgeF1": 0.6547451422134609,
+            "lightEdgeF1": 0.6423677148737722,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2905909241392939,
+            "censusSimilarity": 0.6442346288526606,
+            "contrast": 0.48388368772305995,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6547451422134609,
+              "diagnosticEdgeF1": 0.7495561376061315,
+              "improvement": 0.09481099539267057,
+              "distance": 0.945037938654619,
+              "margin": 0.16063170911395774,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 273,
+              "renderedEdges": 278,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7681266165362018,
+                "distance": 0.9935538475300216,
+                "margin": 0.10569001782909104,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.31334601277333823,
+            "darkEdgeF1": 0.3559496674680739,
+            "lightEdgeF1": 0.2707423580786026,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.772543140678212,
+            "censusSimilarity": 0.5502011167951699,
+            "contrast": 0.15929424653759564,
+            "offset": {
+              "status": "ambiguous",
+              "dx": -1,
+              "dy": -1,
+              "rawEdgeF1": 0.3559496674680739,
+              "diagnosticEdgeF1": 0.3562505783288609,
+              "improvement": 0.0003009108607870403,
+              "distance": 3.3663714637278543,
+              "margin": 0.040017209988765234,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 273,
+              "renderedEdges": 152,
+              "overlapPeak": {
+                "dx": -4,
+                "dy": -2,
+                "edgeF1": 0.4371981293603537,
+                "distance": 3.4615338722738387,
+                "margin": 0.04023373940121766,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 3.1622776601683795,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6280066160116712,
+            "darkEdgeF1": 0.6101162660286366,
+            "lightEdgeF1": 0.6458969659947058,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3907740574858187,
+            "censusSimilarity": 0.6974906148295799,
+            "contrast": 0.5144740574482723,
+            "offset": {
+              "status": "close",
+              "dx": 1,
+              "dy": 1,
+              "rawEdgeF1": 0.6101162660286366,
+              "diagnosticEdgeF1": 0.7421875,
+              "improvement": 0.13207123397136344,
+              "distance": 1.05848909346305,
+              "margin": 0.17104482541682176,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 273,
+              "renderedEdges": 239,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 1,
+                "edgeF1": 0.7421875,
+                "distance": 1.05848909346305,
+                "margin": 0.11074135585869727,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m19",
+      "cohort": "reserved",
+      "id": "608f431b-a05c-4610-94f7-928d87b2c056",
+      "number": "233",
+      "name": "Explosive Apparatus",
+      "rarity": "common",
+      "colors": [],
+      "referenceHash": "7f0d8c0a4282877f7e33d3725415d18a21a744f7bba6bcba8b89ecd14cd48ecd",
+      "inputHash": "ec43a6f685d7fa72c6ab494544e51d71a387b4f5c446bdc03e5119afa2d47e4d",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2922891965590415,
+            "darkEdgeF1": 0.321647081674274,
+            "lightEdgeF1": 0.26293131144380905,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.010594996782921,
+            "censusSimilarity": 0.4586259131574487,
+            "contrast": -0.1314629938899574,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 0,
+              "dy": 1,
+              "rawEdgeF1": 0.321647081674274,
+              "diagnosticEdgeF1": 0.332331065041937,
+              "improvement": 0.010683983367662964,
+              "distance": 3.279897931493121,
+              "margin": 0.023839839332973956,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 311,
+              "renderedEdges": 131,
+              "overlapPeak": {
+                "dx": -1,
+                "dy": -4,
+                "edgeF1": 0.40018258464677925,
+                "distance": 3.6036569487963406,
+                "margin": 0.01646838556747282,
+                "ambiguous": true,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 5.099019513592785,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6623883182833777,
+            "darkEdgeF1": 0.6587770203492056,
+            "lightEdgeF1": 0.6659996162175499,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1095923275565571,
+            "censusSimilarity": 0.64834777893275,
+            "contrast": 0.58242245806208,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6587770203492056,
+              "diagnosticEdgeF1": 0.7979966611018363,
+              "improvement": 0.1392196407526307,
+              "distance": 0.8190133264344871,
+              "margin": 0.3410991062757883,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 311,
+              "renderedEdges": 288,
+              "overlapPeak": {
+                "dx": 2,
+                "dy": 2,
+                "edgeF1": 0.8011934651523477,
+                "distance": 0.9179870750423669,
+                "margin": 0.08640588727984788,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.28272193551644115,
+            "darkEdgeF1": 0.28296753128967894,
+            "lightEdgeF1": 0.28247633974320335,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 4.842739700633284,
+            "censusSimilarity": 0.4344392186449819,
+            "contrast": -0.1748908517856805,
+            "offset": {
+              "status": "ambiguous",
+              "dx": 4,
+              "dy": -2,
+              "rawEdgeF1": 0.28296753128967894,
+              "diagnosticEdgeF1": 0.39305749427164266,
+              "improvement": 0.11008996298196372,
+              "distance": 2.9290638832809037,
+              "margin": 0.012906139293457297,
+              "boundary": false,
+              "ambiguous": true,
+              "referenceEdges": 311,
+              "renderedEdges": 137,
+              "overlapPeak": {
+                "dx": 5,
+                "dy": -3,
+                "edgeF1": 0.46114013172836704,
+                "distance": 3.2271497940973504,
+                "margin": 0.05605657323742347,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 1.4142135623730951,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          },
+          "after": {
+            "edgeF1": 0.6608886807206252,
+            "darkEdgeF1": 0.6440071556350626,
+            "lightEdgeF1": 0.6777702058061879,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1876763094403653,
+            "censusSimilarity": 0.722801953768546,
+            "contrast": 0.608837569550259,
+            "offset": {
+              "status": "placement",
+              "dx": 1,
+              "dy": 2,
+              "rawEdgeF1": 0.6440071556350626,
+              "diagnosticEdgeF1": 0.7858584863853464,
+              "improvement": 0.14185133075028378,
+              "distance": 0.8458597591579016,
+              "margin": 0.38249237214924814,
+              "boundary": false,
+              "ambiguous": false,
+              "referenceEdges": 311,
+              "renderedEdges": 248,
+              "overlapPeak": {
+                "dx": 1,
+                "dy": 2,
+                "edgeF1": 0.7858584863853464,
+                "distance": 0.8458597591579016,
+                "margin": 0.14185133075028378,
+                "ambiguous": false,
+                "boundary": false
+              },
+              "objectiveDisagreementPx": 0,
+              "search": {
+                "radius": 6,
+                "step": 1,
+                "evaluatedOffsets": 169
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "timing": {
+    "milliseconds": 18588.117095999998,
+    "scope": "CPU cached PNG comparison, no Chromium or GPU work."
+  }
+}

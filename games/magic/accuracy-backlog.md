@@ -329,3 +329,27 @@ row spacing are implemented; type-strip shape/position is still under review.
   source line-ending artifacts are normalized with raw provenance retained.
 - Sparse typography: WAR’s one-activation cards now allow larger text. The final
   70-card pass reuses examined cards; reserve another set before claiming transfer.
+
+## Core-set symbol follow-up
+
+M19/M20/M21 now paint opaque lettering, an outer rim and shaded rarity fields;
+M19's padded viewport no longer shrinks its symbol. Normal shields share a
+2px left / 1px up correction. All 26 independently reserved M19 examples improve
+at both tiers; this does not certify every symbol or every card in those sets.
+
+- Existing `m21.svg` (`6535b31dcb289af1f58f33f200e536cad9392465ad947462585ca06e491b23d0`)
+  still needs numeral-contour and letter-weight review. Rendered shields look
+  short/narrow, so test shared scale before attributing that residual to the SVG. M21
+  Cancel #46 and Alchemist's Gift #87 retain diagnostic regressions despite
+  correct white-letter treatment. The common white rim should be reviewed
+  separately from the opaque glyph interior.
+- Existing `m19.svg` (`cc9bce99d9170a8110235826bb06b6e735615559b0c932206c39d246a0a30c24`)
+  no longer suffers viewport-padding shrinkage, but enlarged scans show differences in the M and 9
+  outlines/weight. Examples: Aegis of the Heavens #1, Angel of the Dawn #7 and
+  Resplendent Angel #34. Keep the pinned glyph; do not compensate per scan.
+- Rarity gradients are an approximate material treatment. Per-set/color HSB
+  calibration remains a separate task, and the scan's grain is not a geometry
+  target.
+- Next: full normal-card coverage for M19/M20/M21, then black outlines, negative
+  space and gradients for non-shield symbols. M15 and WAR intentionally retain
+  their existing symbol treatment until their topology is examined.
