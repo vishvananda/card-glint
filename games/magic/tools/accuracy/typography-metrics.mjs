@@ -33,22 +33,23 @@ export function wrapping(expected, actual, paragraphs) {
 }
 
 /** Read actual ink near each reported baseline; never move a scan or a rendered line. */
-export function renderedLineBounds(image, layout) {
-  const region = cropGray(image, [35, 428, 420, 198]);
+export function renderedLineBounds(image, layout, rect = [35, 428, 420, 198]) {
+  const [rx, ry, rw, rh] = rect;
+  const region = cropGray(image, rect);
   const { ink } = inkEdges(region.gray, region.width, region.height);
   return layout.lines.map((line, i) => {
     const size = Math.max(...line.runs.map((r) => r.size ?? layout.size));
     const before = layout.lines[i - 1],
       after = layout.lines[i + 1];
     const minY = Math.max(
-      428,
+      ry,
       Math.floor(line.baseline - size * 0.8),
-      before ? Math.ceil((before.baseline + line.baseline) / 2 - size * 0.25) : 428,
+      before ? Math.ceil((before.baseline + line.baseline) / 2 - size * 0.25) : ry,
     );
     const maxY = Math.min(
-      625,
+      ry + rh - 1,
       Math.ceil(line.baseline + size * 0.24),
-      after ? Math.floor((after.baseline + line.baseline) / 2 - size * 0.25) : 625,
+      after ? Math.floor((after.baseline + line.baseline) / 2 - size * 0.25) : ry + rh - 1,
     );
     let left = Infinity,
       top = Infinity,
@@ -56,11 +57,11 @@ export function renderedLineBounds(image, layout) {
       bottom = -1;
     for (let y = minY; y <= maxY; y++)
       for (
-        let x = Math.max(35, Math.floor(layout.x - 2));
-        x <= Math.min(454, Math.ceil(layout.x + line.width + 2));
+        let x = Math.max(rx, Math.floor((line.x ?? layout.x) - 2));
+        x <= Math.min(rx + rw - 1, Math.ceil((line.x ?? layout.x) + line.width + 2));
         x++
       )
-        if (ink[(y - 428) * region.width + x - 35]) {
+        if (ink[(y - ry) * region.width + x - rx]) {
           left = Math.min(left, x);
           right = Math.max(right, x);
           top = Math.min(top, y);
@@ -79,7 +80,11 @@ export function typographyMetrics(target, card, image) {
     paragraphs,
   );
   if (result.status !== 'measured') return result;
-  const bounds = renderedLineBounds(image, card.layout);
+  const bounds = renderedLineBounds(
+    image,
+    card.layout,
+    card.frame?.startsWith('retro-') ? [59, 413, 373, 188] : undefined,
+  );
   const expectedBounds = target.lines.map((l) => l.inkBounds);
   const used = new Set();
   const pairs = actual.flatMap((text, i) => {

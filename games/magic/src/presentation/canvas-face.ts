@@ -27,6 +27,7 @@ import {
 import { paintFittedText, paintMana, paintSetSymbol } from './canvas-text.js';
 import { ordinaryTextLayout, paintRulesLayout } from './rules-paint.js';
 export { ordinaryTextLayout } from './rules-paint.js';
+export { retroTextLayout } from './retro-rules.js';
 import { paintEtchingMask, type EtchingResolver } from './canvas-etching.js';
 import { fullResolutionScan } from '../scan-url.js';
 import type { AbilityEmblem } from '../emblems.js';
@@ -88,7 +89,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v7',
+    'canvas-face-v8',
     input.paintLayer ?? null,
     tier,
     input.printingId,

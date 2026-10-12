@@ -12,6 +12,7 @@ export interface MeasuredRun {
   inkRight: number;
 }
 export interface RulesLine {
+  x?: number;
   runs: MeasuredRun[];
   width: number;
   baseline: number;
@@ -35,6 +36,8 @@ export interface RulesTypography {
   leading: number;
   paragraphGap: number;
   flavorGap: number;
+  flavorOrphans?: boolean;
+  flavorSeparator?: boolean;
 }
 /** Shared ordinary-frame policy. Calibration fixtures never enter the painter. */
 export const RULES_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -169,6 +172,7 @@ export function layoutRules(
         // reduction can remove it. Two-line quotations keep their intended cadence.
         if (
           paragraph.role === 'flavor' &&
+          typography.flavorOrphans !== false &&
           rows.length > 2 &&
           rows.at(-1)!.reduce((n, run) => n + run.width, 0) < bounds.width * 0.3
         ) {
@@ -189,7 +193,8 @@ export function layoutRules(
         if (previous) {
           if (previous === 'rules' && paragraph.role === 'flavor') {
             baseline += size * typography.flavorGap;
-            separators.push(baseline - (size * typography.flavorGap) / 2 - size * 0.25);
+            if (typography.flavorSeparator !== false)
+              separators.push(baseline - (size * typography.flavorGap) / 2 - size * 0.25);
           } else if (previous !== 'flavor' || paragraph.role !== 'flavor')
             baseline += size * typography.paragraphGap;
         }
@@ -197,6 +202,7 @@ export function layoutRules(
           const ascent = Math.max(0, ...runs.map((run) => run.ascent));
           const descent = Math.max(0, ...runs.map((run) => run.descent));
           const width = runs.reduce((n, r) => n + r.width, 0);
+          const x = bounds.x + (paragraph.align === 'right' ? bounds.width - width : 0);
           let cursor = 0,
             left = Infinity,
             right = -Infinity;
@@ -206,12 +212,13 @@ export function layoutRules(
             cursor += run.width;
           }
           lines.push({
+            x,
             runs,
             role: paragraph.role,
             baseline,
             width,
             inkBounds: [
-              bounds.x + (runs.length ? left : 0),
+              x + (runs.length ? left : 0),
               baseline - ascent,
               runs.length ? right - left : 0,
               ascent + descent,

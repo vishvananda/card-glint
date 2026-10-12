@@ -7,7 +7,6 @@ import {
   retroBorderMask,
   retroInk,
   retroSetSymbol,
-  retroRulesSize,
   retroPx,
   retroFrameFilter,
   retroFamily,
@@ -15,7 +14,9 @@ import {
   retroStock,
 } from './retro-frame.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
-import { paintMana, paintRules, rulesLines, paintSetSymbol } from './canvas-text.js';
+import { paintMana, paintSetSymbol } from './canvas-text.js';
+import { paintRulesLayout } from './rules-paint.js';
+import { retroTextLayout } from './retro-rules.js';
 export function paintRetroFace(
   c: CanvasRenderingContext2D,
   face: RenderedCardInput,
@@ -94,18 +95,9 @@ export function paintRetroFace(
     );
   }
   c.shadowColor = 'transparent';
-  const [rx, ry, rw, rh] = retroPx(rect.rules),
-    text = face.rulesText ?? '',
-    font = retroRulesSize(face);
-  c.font = `${font}px "CardRenderer MTG MPlantin", Georgia`;
+  const [rx, ry, rw, rh] = retroPx(rect.rules);
   c.fillStyle = '#17140f';
   const basic = images.get(retroBasicSymbol(face) ?? '');
-  const lines = rulesLines(c, text, rw, font),
-    height = lines.length * font + (text.split('\n').length - 1) * 3.84;
-  c.save();
-  c.beginPath();
-  c.rect(rx, ry, rw, rh);
-  c.clip();
   if (basic) {
     const scale = Math.min((rw * 0.4) / basic.width, (rh * 0.75) / basic.height);
     c.drawImage(
@@ -115,8 +107,10 @@ export function paintRetroFace(
       basic.width * scale,
       basic.height * scale,
     );
-  } else paintRules(c, text, rx, ry + Math.max(0, (rh - height) / 2), rw, font, images);
-  c.restore();
+  } else {
+    const layout = retroTextLayout(c, face);
+    if (layout) paintRulesLayout(c, layout, images);
+  }
   c.shadowColor = '#000b';
   c.fillStyle = retroInk(face);
   c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';

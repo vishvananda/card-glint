@@ -19,6 +19,8 @@ const opts = options();
 const fixtures = await readJson(studyFile(opts, 'typography'));
 const runRoot = path.join(outputRoot, opts.set, opts.run);
 const report = await readJson(path.join(runRoot, 'metrics.json'));
+if (fixtures.alignmentHash && fixtures.alignmentHash !== report.alignmentHash)
+  throw Error('Typography targets belong to a different alignment profile');
 const results = [];
 for (const card of report.results) {
   const target = fixtures.cards[card.id];

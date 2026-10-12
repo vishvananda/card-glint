@@ -48,7 +48,7 @@ export function legacyRetroLayout(context, face) {
         const present = runs.filter((r) => r.inkBounds[2] > 0);
         const left = Math.min(...present.map((r) => r.inkBounds[0]), cursor);
         const right = Math.max(...present.map((r) => r.inkBounds[0] + r.inkBounds[2]), x);
-        const inkTop = Math.min(...present.map((r) => r.inkBounds[1]), top);
+        const inkTop = present.length ? Math.min(...present.map((r) => r.inkBounds[1])) : top;
         const bottom = Math.max(...present.map((r) => r.inkBounds[1] + r.inkBounds[3]), top);
         lines.push({
           runs,

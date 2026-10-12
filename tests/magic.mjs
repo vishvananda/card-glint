@@ -120,7 +120,9 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const result = await page.evaluate(async (fixtures) => {
     const { magic, opticalDocument } = await import('/magic.js');
-    const { loadCanvasFonts, layoutRules } = await import('/magic-presentation.js');
+    const { loadCanvasFonts, layoutRules, retroTextLayout } = await import(
+      '/magic-presentation.js'
+    );
     let missingFontsRejected = false;
     try {
       await loadCanvasFonts();
@@ -208,6 +210,22 @@ try {
     });
     if (symbols.lines.flatMap((l) => l.runs).filter((r) => r.symbol).length !== 3)
       throw Error('Inline symbols lost while wrapping');
+    const retro = retroTextLayout(ctx, {
+      ...fixtures[3],
+      rulesParagraphs: [
+        ...paragraphs,
+        { role: 'flavor', align: 'right', runs: [{ text: '—Original attribution', italic: true }] },
+      ],
+    });
+    const attribution = retro.lines.at(-1);
+    if (
+      retro.overflow ||
+      retro.separators.length ||
+      !retro.lines.some((l) => l.runs.some((r) => r.italic)) ||
+      attribution.x <= retro.x ||
+      Math.abs(attribution.x + attribution.width - (retro.x + retro.width)) > 0.01
+    )
+      throw Error('Retro styles, alignment or separator policy lost');
     ctx.fillStyle = '#164d65';
     ctx.fillRect(0, 0, 64, 64);
     let leases = 0,
@@ -252,6 +270,10 @@ try {
     styledChange.face.rulesParagraphs[0].runs[0].italic = true;
     if (cardTextureKey(styledInput, 'inspect') === cardTextureKey(styledChange, 'inspect'))
       throw Error('Rules style absent from cache identity');
+    const alignedChange = structuredClone(styledInput);
+    alignedChange.face.rulesParagraphs[0].align = 'right';
+    if (cardTextureKey(styledInput, 'inspect') === cardTextureKey(alignedChange, 'inspect'))
+      throw Error('Paragraph alignment absent from cache identity');
     if (
       cardTextureKey(input, 'table') ===
       cardTextureKey({ ...input, face: { ...custom, setSymbol: 'test:other' } }, 'table')
@@ -266,6 +288,25 @@ try {
         disposed++;
       },
     });
+    const beforeFailure = disposed;
+    let rejectedOverflow = false;
+    try {
+      await composeCardTexture(
+        {
+          face: { ...fixtures[3], rulesText: 'W'.repeat(1000) },
+          printingId: null,
+          printedImage: null,
+        },
+        'inspect',
+        controller.signal,
+        { loadImages },
+      );
+    } catch (error) {
+      rejectedOverflow = /does not fit/.test(String(error));
+    }
+    if (!rejectedOverflow || disposed !== beforeFailure + 1)
+      throw Error('Retro overflow must reject the face and release its image lease');
+    disposed = 0;
     const mask = await composeCardTexture(input, 'table', controller.signal, {
       loadImages,
       resolveEtching: async (face, id, signal, threshold) => {

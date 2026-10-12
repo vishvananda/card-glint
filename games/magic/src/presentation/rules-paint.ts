@@ -66,7 +66,7 @@ export function paintRulesLayout(
   }
   context.fillStyle = '#17140f';
   for (const line of layout.lines) {
-    let x = layout.x;
+    let x = line.x ?? layout.x;
     for (const run of line.runs) {
       if (run.symbol)
         paintMana(

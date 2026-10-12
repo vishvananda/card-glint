@@ -10,6 +10,8 @@ export interface RulesRun {
 export interface RulesParagraph {
   role: 'rules' | 'flavor';
   runs: readonly RulesRun[];
+  /** Explicit printing alignment, for example an old-border flavor attribution. */
+  align?: 'left' | 'right';
 }
 
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
