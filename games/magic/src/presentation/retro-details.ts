@@ -3,7 +3,7 @@ import { paintMana } from './canvas-text.js';
 
 /** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
 export function retroStatsPlacement(face: RenderedCardInput) {
-  return ['3ed', '4ed', '5ed'].includes(face.setCode?.toLowerCase() ?? '') &&
+  return ['4ed', '5ed'].includes(face.setCode?.toLowerCase() ?? '') &&
     !/\bLand\b/.test(face.typeLine ?? '')
     ? { right: 451, yOffset: 3, maxWidth: 130 }
     : null;
