@@ -149,3 +149,10 @@ particularly clear Oracle fallback error: its scan has only flavor, whereas the
 input adds a modern defender/reminder line. Keep it outside source-backed
 aggregates and correct its input independently. Existing font stroke weight and
 plate texture differences remain asset work, not reasons to fit individual scans.
+
+The source/style issues above for Drudge Skeletons, Dragon Whelp, Fireball and
+Wall of Ice are now corrected in the separate `revised-text` baseline. All four
+match printed line endings; stroke weight still differs. The other 302 cards
+are unchanged. Other missing punctuation (including Holy Armor) still needs
+review. The first dense-type candidate failed reserved transfer and was not
+adopted; `dense-transfer.json` records the regression and missed classifications.

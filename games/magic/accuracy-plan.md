@@ -1093,3 +1093,23 @@ are included only in the all-changed diagnostic aggregate; 182 changed inputs
 have printing-source text and confident alignment. Source fields still require
 scan review. Comparison uses offline Node workers; its elapsed time is neither
 renderer CPU submission time nor GPU completion time.
+
+### Revised printing-input corrections and dense-type transfer
+
+`revised-text` establishes a separate baseline on the unchanged `revised-long`
+renderer. Four scan-hashed annotations restore Drudge Skeletons' activation
+colon, Dragon Whelp's colon and inline italic flavor, Fireball's upright
+parenthesis, and Wall of Ice's flavor-only poem. All four match the independently
+transcribed printed line endings. `revised-text-review.mjs` checks every cached
+image hash and confirms the other 302 cards retain identical inputs, layout and
+both full PNGs. Scores and source-only deltas are recorded in
+`3ed/text-corrections-measurement.json`; they are not renderer gains.
+
+The first small-type candidate was frozen before seven reserved body scans were
+reviewed. It improves all four development cards, but fails transfer: Bottle of
+Suleiman regresses, and five reserved cards needing small type are excluded by
+the initial >300-character/single-paragraph gate. The candidate is rejected;
+`3ed/dense-transfer.json` retains every result. Round two reserves eight new body
+reviews before fitting, broadens the shared hypothesis to >260 characters, and
+allows dense text more vertical space within the existing panel. No per-card
+alignment or new assets are introduced.

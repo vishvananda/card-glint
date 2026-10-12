@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "baselineRun": "revised-long",
+  "baselineRendererHash": "d92bd32e88bf3b815367df238c2ffd70263050f4a2a8991ddf9edd55e3d8715c",
+  "reviewed": [
+    {
+      "id": "59145073-2cfd-4153-a6d8-47ad42e739c3",
+      "number": "107",
+      "name": "Drudge Skeletons",
+      "referenceHash": "812442110c882bbb3f6307437bcabd79120efd6e9953ce7dc5efc206a10c0a7d",
+      "previousInputHash": "265e6a6f9785e83481919058857dc97851ac9e9595e02f169afa5f487916d7b7",
+      "note": "Restore the activation colon omitted by MTGJSON originalText. Rules and flavor otherwise retain the captured source.",
+      "scanLines": [
+        "{B}: Regenerates.",
+        "Bones scattered around us joined to",
+        "form misshapen bodies. We struck at",
+        "them repeatedly—they fell, but soon",
+        "formed again, with the same mocking",
+        "look on their faceless skulls."
+      ]
+    },
+    {
+      "id": "643d6f5b-6a17-434d-945a-6b9a05015493",
+      "number": "143",
+      "name": "Dragon Whelp",
+      "referenceHash": "5086fc320d8eed290af691273234b50230bb8aa9ba7afb1c3b1020276dd786c5",
+      "previousInputHash": "bcd6a20e7567373350315db74554619b44ae84e45f40bbbc704404438836a568",
+      "note": "Restore the missing activation colon; flavor begins inline after the final rules sentence, with its attribution on a new line. This expresses printed content/style, not scan-specific coordinates or soft wrapping.",
+      "scanLines": [
+        "Flying",
+        "{R}: +1/+0; if more than {R}{R}{R} is",
+        "spent in this way during one turn,",
+        "Dragon Whelp is killed at end of",
+        "turn. “O to be a dragon . . . of",
+        "silkworm size or immense . . .”",
+        "—Marianne Moore, “O to Be a",
+        "Dragon”"
+      ]
+    },
+    {
+      "id": "dafb512f-536f-4f96-8440-03f1d20d8a5a",
+      "number": "150",
+      "name": "Fireball",
+      "referenceHash": "e02d5c3c30b7ce0eecec406a36eb1e5188933e4e3650aaa3c72d51cdf17c4da1",
+      "previousInputHash": "78a10b6f8ba0b3a55e044ab2c8855e5fad36d79216df525c96368cca1929f241",
+      "note": "The printed parenthesis (round down) is upright rules text, not italic reminder text. No wording change.",
+      "scanLines": [
+        "Fireball does X damage total,",
+        "divided evenly (round down)",
+        "among any number of targets. Pay",
+        "1 extra mana for each target",
+        "beyond the first."
+      ]
+    },
+    {
+      "id": "b0af9d4c-b3e5-4953-b4ca-7f34f67bdbeb",
+      "number": "225",
+      "name": "Wall of Ice",
+      "referenceHash": "cb7a106b2fd90883dcd9c84d917bb2332e51687a5ed8491b2620e3c16130414e",
+      "previousInputHash": "d53d6ca082a1c09f114f92aa5ff8f70bc6b5ef6fad29781a89f34c7e314c5035",
+      "note": "The printing has flavor only. Remove the modern Oracle defender/reminder line. Preserve source poem-line boundaries and restore printed curly quotation marks.",
+      "scanLines": [
+        "“And through the drifts the snowy",
+        "cliffs",
+        "Did send a dismal sheen:",
+        "Nor shapes of men nor beasts we",
+        "ken—",
+        "The ice was all between.”",
+        "—Samuel Coleridge, “The Rime of",
+        "the Ancient Mariner”"
+      ]
+    }
+  ],
+  "note": "Prepare corrected inputs on the same renderer before the dense-size change. Do not count changed wording/style as a renderer-only accuracy gain."
+}
