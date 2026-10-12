@@ -4,6 +4,7 @@ import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.j
 import { faceRects } from './special-frames.js';
 import { layoutRules, rulesFont, RULES_TYPOGRAPHY, type RulesLayout } from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
+import { hasFlavorSeparator } from './flavor-separator.js';
 
 export function ordinaryTextLayout(
   context: CanvasRenderingContext2D,
@@ -12,6 +13,10 @@ export function ordinaryTextLayout(
   scale = 1,
 ): RulesLayout {
   const rects = faceRects(face);
+  const typography = {
+    ...RULES_TYPOGRAPHY,
+    flavorSeparator: hasFlavorSeparator(face.setCode),
+  };
   const [x, y, width, h] = rects.rules;
   const paragraphs =
     face.rulesParagraphs ??
@@ -57,7 +62,7 @@ export function ordinaryTextLayout(
       24.5 * scale,
       15 * scale,
       3,
-      { ...RULES_TYPOGRAPHY, balanceLines: true },
+      { ...typography, balanceLines: true },
     );
     if (centered) return centered;
   }
@@ -69,6 +74,7 @@ export function ordinaryTextLayout(
     bounds,
     24.5 * scale,
     15 * scale,
+    typography,
   );
 }
 

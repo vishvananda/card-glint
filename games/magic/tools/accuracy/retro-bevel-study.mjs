@@ -1,4 +1,4 @@
-import { measureRetroBevel } from './retro-bevel-ink.mjs';
+import { measureRetroBevel, compareRetroBevelShadow } from './retro-bevel-ink.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
@@ -104,6 +104,7 @@ if (action === 'compare') {
         outsideAllowed,
         before: measureRetroBevel(normalize(oldImage)),
         after: measureRetroBevel(normalize(newImage)),
+        shadow: compareRetroBevelShadow(normalize(oldImage), normalize(newImage)),
       };
     }
     rows.push({

@@ -1,4 +1,37 @@
 import { median } from './metrics.mjs';
+
+/** Check a fixed left-bevel strip on saved renders. Normalizing by its mean
+ * tolerates brightness gain but exposes a white overlay washing out texture.
+ * This compares asset preservation, not scan registration or scan similarity. */
+export function compareRetroBevelShadow(before, after) {
+  const profile = (image) => {
+    if (image.width !== 488 || image.height !== 680) throw Error('Expected canonical card image');
+    const values = Array.from({ length: 160 }, (_, row) => {
+      const i = ((row + 425) * image.width + 55) * 4;
+      return image.data[i] * 0.2126 + image.data[i + 1] * 0.7152 + image.data[i + 2] * 0.0722;
+    });
+    const mean = values.reduce((n, v) => n + v, 0) / values.length;
+    return values.map((v) => v / Math.max(mean, 1) - 1);
+  };
+  const a = profile(before),
+    b = profile(after);
+  const rms = (values) => Math.sqrt(values.reduce((n, v) => n + v * v, 0) / values.length);
+  const beforeContrast = rms(a),
+    afterContrast = rms(b),
+    normalizedProfileRms = rms(a.map((v, i) => v - b[i]));
+  return {
+    beforeContrast,
+    afterContrast,
+    contrastRetention: beforeContrast > 0.01 ? afterContrast / beforeContrast : null,
+    normalizedProfileRms,
+    status:
+      beforeContrast <= 0.01
+        ? 'weak-texture'
+        : normalizedProfileRms < 0.02 && Math.abs(afterContrast / beforeContrast - 1) < 0.15
+          ? 'preserved'
+          : 'texture-changed',
+  };
+}
 // Fixed ordinary retro-gold paper neighborhood. These locate a keyline for
 // polarity measurement only; they never transform scans or fit renderer inputs.
 const sides = {

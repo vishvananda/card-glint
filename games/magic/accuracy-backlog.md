@@ -509,7 +509,7 @@ its application, deployment and database outside this library repository.
   Accepted policies should export as versioned pack configuration plus measured
   evidence and a reviewed commit, not become live unreviewed renderer defaults.
 
-### Gold paper bevel and printed credit (v57)
+### Gold paper bevel and printed credit (v57, shadow correction v59)
 
 - The historical survey has 25 scans across 13 sets. The checked Ice Age,
   Alliances, Mirage, Visions, Tempest, Stronghold, Invasion, Planeshift,
@@ -517,8 +517,9 @@ its application, deployment and database outside this library repository.
   light left/bottom and dark top/right paper bevels. Legends has a separate
   paper treatment. No date transition was found in this sample.
 - The existing seventh-family `m.png` has reversed lighting. Lighten the left
-  and bottom facets and darken the top and right facets in place during face
-  preparation. Keep the baked shadow texture at its original coordinates;
+  and bottom facets with multiplicative brightness and darken the top and right
+  facets in place during face preparation. A white overlay retains a faint
+  shadow but washes out its strength. Keep the baked shadow contrast and coordinates;
   rotating the rim moves those shadows. Center texture, keyline and geometry
   are unchanged. No new asset, decode or readback enters the render loop.
 - Audit: 45 Mirage/Tempest gold cards and 10 monocolor controls. Forty-four
@@ -528,7 +529,10 @@ its application, deployment and database outside this library repository.
   scan direction. Highlight strength and texture remain on the HSB/asset list.
   Table edges also match, but their tiny rasterized keyline makes polarity a
   diagnostic rather than an acceptance criterion. Synthetic asymmetric shadow
-  checks cover both tiers and two decoded asset sizes.
+  checks cover both tiers and two decoded asset sizes. The saved-render left
+  shadow profile retains 99.4% of relative contrast at inspect size and 97.8% at
+  table size across all 44 corrected gold cards. The metric rejects both moved
+  shadows and a white overlay that erases their contrast.
 - Wellspring is retained as an input/adapter review item: its original
   `Enchant Land` label selects a land frame in the historical asset heuristic.
   Exclude it from bevel certification, not the coverage denominator. Preserve
@@ -540,3 +544,27 @@ its application, deployment and database outside this library repository.
   The local gallery includes Selenia and Asmira before/after plus the history
   sheet. Bevel metrics use signed local contrast and distinguish missing or
   uncertain keylines; they do not fit scan transforms to individual components.
+
+### Flavor-divider era and land paper review (v58–v59)
+
+- The subtle ordinary-frame divider belongs to the 2018 template update,
+  first seen in DDU, then DOM. Known earlier ordinary sets including M15, ORI,
+  SOI, XLN, RIX and A25 suppress it even with Oracle wording. Retro layouts
+  retain their separate policy; Portal's historical bar is a different treatment.
+  Source: [Wizards' template announcement](https://magic.wizards.com/en/news/announcements/dominaria-frame-template-and-rules-changes-2018-03-21).
+- The existing 262-card audit now retains 161 separators and removes fourteen
+  incorrect M15 bars. Zero collisions remain, minimum clearance is still 8.71px,
+  and text positions are unchanged. `flavor-land-measurement.json` contains the
+  latest saved-capture comparison; its renderer hash identifies v58 independently
+  of the unrelated v59 retro-bevel correction.
+- BR/WB land paper is too pale in the existing frame assets. Six Bloodfell Caves
+  and Caves of Koilos printings from M15/M20/M21/IKO/DMU/FDN show the same issue.
+  Broad interior patches put rendered luminance near 229–237 versus scan
+  medians of 158–183; side-to-side color distance is only 13–30% of the scan.
+  These are raw-scan review diagnostics, not calibrated color coefficients.
+- Keep the accepted land borders. During the new-frame HSB pass, adjust the
+  rules-paper component separately and test matching-palette nonlands before
+  changing the shared assets. Source URLs/hashes, reference/render hashes and
+  patches are in `fixtures/accuracy/land-paper-review.json`; reproduce with
+  `node games/magic/tools/accuracy/land-paper-study.mjs`. This asset/material
+  issue remains open; no speculative per-card tint has been applied.

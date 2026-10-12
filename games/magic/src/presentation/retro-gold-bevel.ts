@@ -1,7 +1,8 @@
 /** The pinned seventh-family gold paper has reversed bevel lighting. Adjust
  * the four facets in place: moving/copying the rim also moves its baked shadow
- * texture. This face-preparation overlay needs no extra asset or readback. */
-export function paintRetroGoldBevel(context: CanvasRenderingContext2D) {
+ * texture. Multiplicative light preserves shadows; a white overlay washes them
+ * out. Reuse the decoded frame during preparation, without another readback. */
+export function paintRetroGoldBevel(context: CanvasRenderingContext2D, frame: CanvasImageSource) {
   // Bounds of the existing 1500×2100 asset, excluding its black keyline.
   const x = (160 / 1500) * 488,
     y = (1255 / 2100) * 680,
@@ -10,15 +11,15 @@ export function paintRetroGoldBevel(context: CanvasRenderingContext2D) {
     insetX = (17 / 1500) * 488,
     insetY = (17 / 2100) * 680;
   const facet = (points: readonly (readonly [number, number])[]) => {
-    context.beginPath();
     context.moveTo(...points[0]!);
     for (const point of points.slice(1)) context.lineTo(...point);
     context.closePath();
-    context.fill();
   };
   context.save();
+  const frameFilter = context.filter;
   context.filter = 'none';
   context.fillStyle = '#00000047';
+  context.beginPath();
   facet([
     [x, y],
     [right, y],
@@ -31,7 +32,8 @@ export function paintRetroGoldBevel(context: CanvasRenderingContext2D) {
     [right - insetX, bottom - insetY],
     [right - insetX, y + insetY],
   ]);
-  context.fillStyle = '#ffffff80';
+  context.fill();
+  context.beginPath();
   facet([
     [x, y],
     [x + insetX, y + insetY],
@@ -44,5 +46,8 @@ export function paintRetroGoldBevel(context: CanvasRenderingContext2D) {
     [right - insetX, bottom - insetY],
     [right, bottom],
   ]);
+  context.clip();
+  context.filter = `${frameFilter === 'none' ? '' : frameFilter + ' '}brightness(1.35)`;
+  context.drawImage(frame, 0, 0, 488, 680);
   context.restore();
 }

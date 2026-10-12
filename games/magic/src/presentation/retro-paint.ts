@@ -66,7 +66,7 @@ export function paintRetroFace(
     c.save();
     c.filter = retroFrameFilter(face);
     c.drawImage(frame, ...retroPx(rect.frame));
-    if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c);
+    if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
     c.restore();
   }
   if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {

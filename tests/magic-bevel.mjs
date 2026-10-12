@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
-import { measureRetroBevel } from '../games/magic/tools/accuracy/retro-bevel-ink.mjs';
+import {
+  measureRetroBevel,
+  compareRetroBevelShadow,
+} from '../games/magic/tools/accuracy/retro-bevel-ink.mjs';
 function fixture({
   reversed = false,
   offset = 0,
@@ -46,6 +49,21 @@ assert.ok(
     (s) => s.status.endsWith('uncertain') || s.status.startsWith('weak-'),
   ),
 );
+function shadow({ gain = 1, white = 0, shift = 0 } = {}) {
+  const image = fixture();
+  for (let y = 0; y < image.height; y++) {
+    const sourceY = y - shift;
+    const value = (sourceY > 470 && sourceY < 510 ? 45 : 155) + 8 * Math.sin(sourceY / 12);
+    const result = Math.min(255, Math.max(0, value * gain * (1 - white) + 255 * white));
+    const i = (y * image.width + 55) * 4;
+    image.data[i] = image.data[i + 1] = image.data[i + 2] = result;
+  }
+  return image;
+}
+assert.equal(compareRetroBevelShadow(shadow(), shadow({ gain: 1.35 })).status, 'preserved');
+assert.equal(compareRetroBevelShadow(shadow(), shadow({ white: 0.5 })).status, 'texture-changed');
+assert.equal(compareRetroBevelShadow(shadow(), shadow({ shift: 15 })).status, 'texture-changed');
+assert.equal(compareRetroBevelShadow(fixture(), fixture()).status, 'weak-texture');
 console.log(
-  'Retro bevel polarity distinguishes reversed light direction from tone, grain and scan translation; missing edges remain uncertain.',
+  'Retro bevel polarity tolerates tone/grain/translation; shadow profiles reject shifted or washed-out texture and retain multiplicative lighting.',
 );

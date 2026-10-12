@@ -581,6 +581,34 @@ try {
     if (shortReference.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01))
       throw Error('Fourth character boundary ignored the chosen alignment reference');
     const { ordinaryTextLayout } = await import('/magic-presentation.js');
+    // Printing cosmetics stay historical even when the displayed text is Oracle.
+    for (const wordingMode of ['original', 'oracle']) {
+      for (const setCode of [
+        '8ed',
+        'M15',
+        'ddk',
+        'ori',
+        'soi',
+        'xln',
+        'rix',
+        'a25',
+        'ddu',
+        'dom',
+        'm19',
+        'war',
+      ]) {
+        const layout = ordinaryTextLayout(ctx, {
+          name: 'Divider era control',
+          typeLine: 'Instant',
+          rulesParagraphs: paragraphs,
+          setCode,
+          wordingMode,
+        });
+        const expected = ['ddu', 'dom', 'm19', 'war'].includes(setCode) ? 1 : 0;
+        if (layout.separators.length !== expected)
+          throw Error(`Incorrect flavor divider era: ${setCode}, ${wordingMode}`);
+      }
+    }
     const wrath = {
       name: 'Wrath of God',
       typeLine: 'Sorcery',
@@ -854,7 +882,7 @@ try {
       ink.fillStyle = '#ccc';
       ink.fillRect(52, 406, 386, 6);
       ink.fillRect(432, 406, 6, 197);
-      ink.fillStyle = '#666';
+      ink.fillStyle = '#888';
       ink.fillRect(52, 406, 6, 197);
       ink.fillRect(52, 597, 386, 6);
       // An asymmetric shadow on the left must stay on the left at this height.
@@ -897,6 +925,11 @@ try {
           throw Error(`Gold bevel failed with resized bitmap: ${decodedWidth}, ${tier}`);
         if (red(55, 485) > red(55, 470) - 20)
           throw Error('Bevel correction moved the original shadow texture');
+        // Location alone is insufficient: a pale overlay retains a faint mark
+        // but destroys the dark shadow that continues into the bevel.
+        const shadowRatio = red(55, 485) / red(55, 470);
+        if (shadowRatio > 0.35 || shadowRatio < 0.18)
+          throw Error(`Bevel correction washed out the shadow: ${shadowRatio}`);
         canvas.width = canvas.height = 0;
       }
       frame.close();
