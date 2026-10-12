@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "sourceSet": "m21",
+  "set": "m20",
+  "frozenRendererCommit": "cbb7fe3",
+  "baselineRendererCommit": "aabf689",
+  "frozenAt": "2026-10-12T00:00:45.218Z",
+  "typographyTuning": false,
+  "setAlignmentFitting": false,
+  "alignment": "Reuse the frozen M21 transforms, including identity for ordinary frames. Preserve per-card residual flags without fitting per-scan transforms.",
+  "selection": "cohorts.json; 24 cards with names absent from M21; full ordinary printing corpus retained for diagnostics.",
+  "acceptance": "Report paired before/after body edge F1, soft-wrap agreement and text-block errors on reviewed identical inputs; report confidence, coverage and regressions. Compare absolute levels with M21, without retuning to M20.",
+  "limitations": "A second core set tests transfer within this frame/era, not across all Magic layouts or eras."
+}
