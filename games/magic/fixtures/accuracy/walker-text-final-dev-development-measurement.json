@@ -1,0 +1,1543 @@
+{
+  "schemaVersion": 1,
+  "run": "walker-text-final-dev",
+  "cohort": "development",
+  "planHash": "b819ce4f45d75349c47213df7ca87c09af8cfca2955a07f36499720df9fb5ccb",
+  "planName": "planeswalker-anchor-text-plan.json",
+  "metricVersion": "structural-v2",
+  "captures": {
+    "m21/walker-text-before": {
+      "hash": "6f40a15f61352765993044baa30eaa527ea2e50c13b42896b2b77622e3fe0d00",
+      "rendererHash": "24d47fdb59af0f5ccdae9909b73083182792e3de332a73ee9834f286cc53ff17"
+    },
+    "m21/walker-text-final-dev": {
+      "hash": "38e5607cea5ca796a6ce773c023e45f9a5cce8a4ddfcd7ae12250eccae357a9b",
+      "rendererHash": "f51ce9532ff0c02f951e31f737e4ccb2b82ae33eaa9c325a879610fb621b8bdf"
+    }
+  },
+  "scope": "Measured planeswalker rules rows; original printing words. Development uses six M21 cards. Geometry is frozen before examining reserved output. Special treatments excluded.",
+  "limitations": [
+    "Printing-reference wording is not automatically scan-certified.",
+    "Texture and small scan registration differences affect structural metrics.",
+    "Teferi art variants share a text layout and are not independent typographic validation.",
+    "Body-region results do not establish whole-card accuracy."
+  ],
+  "alignment": {
+    "perScan": false,
+    "profile": "Existing frozen M21 planeswalker registration, transferred unchanged to M20.",
+    "profileHashes": {
+      "m21": "a48a84f9859ce6da4b6655443ea94752c9499c548074affba16f6664629f68f9",
+      "m20": "f6c11db585c1c50895b884bdd48de5a03518ad4170e38f2f120506e86e08eebf"
+    }
+  },
+  "regions": {
+    "body": {
+      "planeswalker": [64, 434, 383, 181],
+      "planeswalker-large": [64, 380, 383, 235]
+    },
+    "badges": {
+      "planeswalker": [18, 434, 63, 181],
+      "planeswalker-large": [18, 380, 63, 235]
+    },
+    "loyalty": [395, 599, 69, 48]
+  },
+  "summary": {
+    "inspect": {
+      "body": {
+        "count": 6,
+        "before": 0.4000228108518102,
+        "after": 0.5036147259835766,
+        "gainsOver02": 5,
+        "declinesOver02": 1
+      },
+      "badges": {
+        "count": 6,
+        "before": 0.5628005386129004,
+        "after": 0.5981729503208301,
+        "gainsOver02": 4,
+        "declinesOver02": 0
+      },
+      "loyalty": {
+        "count": 6,
+        "before": 0.5108776255255729,
+        "after": 0.5165408221433242,
+        "gainsOver02": 0,
+        "declinesOver02": 0
+      }
+    },
+    "table": {
+      "body": {
+        "count": 6,
+        "before": 0.38621253616012274,
+        "after": 0.4816760858788987,
+        "gainsOver02": 5,
+        "declinesOver02": 1
+      },
+      "badges": {
+        "count": 6,
+        "before": 0.5484598428909021,
+        "after": 0.5821734044054517,
+        "gainsOver02": 3,
+        "declinesOver02": 0
+      },
+      "loyalty": {
+        "count": 6,
+        "before": 0.4550131233098466,
+        "after": 0.45963893419546537,
+        "gainsOver02": 0,
+        "declinesOver02": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "name": "Ugin, the Spirit Dragon",
+      "number": "1",
+      "frame": "planeswalker",
+      "inputHash": "e2611a792bd7d11815174094a6839444557e58f14b98cb612d06fdf6920daa43",
+      "referenceHash": "56ea3b56cf3e438c5601d007e97f73f8118af2189b8bc733c84c4ddc498ce53f",
+      "contentStatus": "printing-reference",
+      "scores": {
+        "inspect": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.44337602377910396,
+                "census": 0.5205454759896655,
+                "p95": 12.49385867118823
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.456908333073352,
+                "census": 0.5430436901521912,
+                "p95": 8.485280990600586
+              },
+              "delta": 0.013532309294248035
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4634741853598952,
+                "census": 0.5665786764100865,
+                "p95": 14
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.40668006720551064,
+                "census": 0.5594601386346907,
+                "p95": 9.242640495300293
+              },
+              "delta": -0.056794118154384565
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5548796067979418,
+                "census": 0.6371461622210125,
+                "p95": 7
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5724850385443399,
+                "census": 0.6544297768100164,
+                "p95": 5.828427314758301
+              },
+              "delta": 0.01760543174639806
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5862380279290327,
+                "census": 0.6814309672690116,
+                "p95": 7
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6151932797156041,
+                "census": 0.6813199018181414,
+                "p95": 5.41421365737915
+              },
+              "delta": 0.028955251786571434
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.6901776192402457,
+                "census": 0.838483293181104,
+                "p95": 3
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6901776192402457,
+                "census": 0.838483293181104,
+                "p95": 3
+              },
+              "delta": 0
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5307382790378825,
+                "census": 0.7549355522923805,
+                "p95": 3.8284270763397217
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5307382790378825,
+                "census": 0.7549355522923805,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0
+            }
+          }
+        },
+        "table": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.41220319552041773,
+                "census": 0.5344449661636651,
+                "p95": 12.828426361083984
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4206043098145253,
+                "census": 0.5338597010474688,
+                "p95": 9.485280990600586
+              },
+              "delta": 0.008401114294107559
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4304943504738076,
+                "census": 0.560641001977001,
+                "p95": 14
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.36272725079824125,
+                "census": 0.5321379408500881,
+                "p95": 9.929645919799732
+              },
+              "delta": -0.06776709967556632
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5628922319310573,
+                "census": 0.6791643984757757,
+                "p95": 7.41421365737915
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5928860431878586,
+                "census": 0.7104427508619126,
+                "p95": 6
+              },
+              "delta": 0.02999381125680134
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5558076898606663,
+                "census": 0.7030331974632651,
+                "p95": 7
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5611475846921832,
+                "census": 0.6932261181514267,
+                "p95": 6
+              },
+              "delta": 0.005339894831516867
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5951540813926135,
+                "census": 0.858960930135121,
+                "p95": 3.4142136573791504
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5951540813926135,
+                "census": 0.858960930135121,
+                "p95": 3.4142136573791504
+              },
+              "delta": 0
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.46448907559222585,
+                "census": 0.8262359275575134,
+                "p95": 4
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.46448907559222585,
+                "census": 0.8262359275575134,
+                "p95": 4
+              },
+              "delta": 0
+            }
+          }
+        }
+      },
+      "overflow": false,
+      "layout": [
+        {
+          "font": 19,
+          "top": 0,
+          "height": 62.659866666666666,
+          "lines": ["Ugin, the Spirit Dragon deals 3 damage to", "any target."]
+        },
+        {
+          "font": 19,
+          "top": 62.659866666666666,
+          "height": 62.659866666666666,
+          "lines": [
+            "Exile each permanent with converted mana",
+            "cost X or less that's one or more colors."
+          ]
+        },
+        {
+          "font": 19,
+          "top": 125.31973333333333,
+          "height": 62.659866666666666,
+          "lines": [
+            "You gain 7 life, draw seven cards, then put",
+            "up to seven permanent cards from your",
+            "hand onto the battlefield."
+          ]
+        }
+      ]
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "name": "Basri Ket",
+      "number": "7",
+      "frame": "planeswalker",
+      "inputHash": "8b35d85fc5fc282049b34c96c6c772e913ad6951da3e9dbcd47fdcc47ab7a10e",
+      "referenceHash": "b65b4fcf0b818b9bc7d15aaaf8c29fc4435cc76551a81cec292ff279fd2b21bd",
+      "contentStatus": "printing-reference",
+      "scores": {
+        "inspect": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.49871135985448084,
+                "census": 0.5410121906985393,
+                "p95": 7.242640542984009
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5945999907867493,
+                "census": 0.5857187835446743,
+                "p95": 5.41421365737915
+              },
+              "delta": 0.09588863093226846
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4067967275015733,
+                "census": 0.5122215035610271,
+                "p95": 7.242640495300293
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.640532679465533,
+                "census": 0.6407217794538419,
+                "p95": 6
+              },
+              "delta": 0.23373595196395974
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5845916601101494,
+                "census": 0.652727470956644,
+                "p95": 7
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6253686324428175,
+                "census": 0.6861015881476457,
+                "p95": 6.2683764696120985
+              },
+              "delta": 0.04077697233266808
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5804460306347228,
+                "census": 0.6525012930464174,
+                "p95": 7.931980609893799
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5776372975108652,
+                "census": 0.7267041148946919,
+                "p95": 9
+              },
+              "delta": -0.002808733123857543
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.6350628387452374,
+                "census": 0.8165579528349223,
+                "p95": 5.497056388854952
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6527487198326263,
+                "census": 0.8181133968891119,
+                "p95": 3
+              },
+              "delta": 0.01768588108738889
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5186341670649461,
+                "census": 0.7443433162149794,
+                "p95": 5
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5307263179729035,
+                "census": 0.7488178166471755,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0.012092150907957344
+            }
+          }
+        },
+        "table": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5113530589123995,
+                "census": 0.5460571256023081,
+                "p95": 7.5112698554991795
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5739715765107019,
+                "census": 0.6074819698813704,
+                "p95": 5.41421365737915
+              },
+              "delta": 0.06261851759830239
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.43210812333021587,
+                "census": 0.5100362863000033,
+                "p95": 7.242640495300293
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5878950863301818,
+                "census": 0.6121732679960681,
+                "p95": 5.41421365737915
+              },
+              "delta": 0.15578696299996597
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.576540679426634,
+                "census": 0.6624429126942786,
+                "p95": 7.682590126991248
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6250822027912415,
+                "census": 0.7311899599026033,
+                "p95": 7
+              },
+              "delta": 0.048541523364607486
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5701289671516918,
+                "census": 0.6939268917569794,
+                "p95": 8.156854152679443
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5723863388534292,
+                "census": 0.7597098764689608,
+                "p95": 8.04974746704102
+              },
+              "delta": 0.002257371701737343
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5612969361023576,
+                "census": 0.8414952333166081,
+                "p95": 4.6213202476501465
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5737894946015765,
+                "census": 0.8416959357752133,
+                "p95": 3.4142136573791504
+              },
+              "delta": 0.01249255849921882
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4546287809349221,
+                "census": 0.8079524075863121,
+                "p95": 5.656854152679443
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4637963979347075,
+                "census": 0.8142573854680429,
+                "p95": 4.072792148590091
+              },
+              "delta": 0.00916761699978541
+            }
+          }
+        }
+      },
+      "overflow": false,
+      "layout": [
+        {
+          "font": 16,
+          "top": 0,
+          "height": 62.659866666666666,
+          "lines": [
+            "Put a +1/+1 counter on up to one target creature.",
+            "It gains indestructible until end of turn."
+          ]
+        },
+        {
+          "font": 16,
+          "top": 62.659866666666666,
+          "height": 62.659866666666666,
+          "lines": [
+            "Whenever one or more nontoken creatures attack",
+            "this turn, create that many 1/1 white Soldier",
+            "creature tokens that are tapped and attacking."
+          ]
+        },
+        {
+          "font": 16,
+          "top": 125.31973333333333,
+          "height": 62.659866666666666,
+          "lines": [
+            "You get an emblem with \"At the beginning of",
+            "combat on your turn, create a 1/1 white Soldier",
+            "creature token, then put a +1/+1 counter on each",
+            "creature you control.\""
+          ]
+        }
+      ]
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+      "name": "Teferi, Master of Time",
+      "number": "75",
+      "frame": "planeswalker-large",
+      "inputHash": "2dcc13c4403eb17209a3ef2eff5899ed81ae3381d48840acd9078608722aa1b0",
+      "referenceHash": "91c0bf0ae94f6196a16a8916163630c5d4fff8e97fc68468099b5b09ee7f0eec",
+      "contentStatus": "printing-reference",
+      "scores": {
+        "inspect": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.45872557193311914,
+                "census": 0.5600334900941141,
+                "p95": 14.414213180541992
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5465865229137479,
+                "census": 0.6127688665024167,
+                "p95": 10.242640495300293
+              },
+              "delta": 0.08786095098062874
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.40979575528749357,
+                "census": 0.5407001672583156,
+                "p95": 13.828426361083984
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.489714475783128,
+                "census": 0.5636180329958552,
+                "p95": 10
+              },
+              "delta": 0.07991872049563442
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.48958125642973177,
+                "census": 0.5993085532732663,
+                "p95": 12.745583724975473
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6234032862789827,
+                "census": 0.6527991038232368,
+                "p95": 5
+              },
+              "delta": 0.1338220298492509
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5360730779429371,
+                "census": 0.6495782459654124,
+                "p95": 12
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6366201984998864,
+                "census": 0.6789373338982398,
+                "p95": 4.828427314758301
+              },
+              "delta": 0.10054712055694925
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5617038152556635,
+                "census": 0.8083466104743794,
+                "p95": 2.8284270763397217
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5617038152556635,
+                "census": 0.8083466104743794,
+                "p95": 2.8284270763397217
+              },
+              "delta": 0
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.48359659781287967,
+                "census": 0.6802785691674581,
+                "p95": 3.8284270763397217
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.48359659781287967,
+                "census": 0.6802785691674581,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0
+            }
+          }
+        },
+        "table": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4443313963707053,
+                "census": 0.5695639566702705,
+                "p95": 14.48528003692627
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5291526694366874,
+                "census": 0.616018020128622,
+                "p95": 9.899494171142578
+              },
+              "delta": 0.08482127306598208
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.3899935679238107,
+                "census": 0.5471606645524392,
+                "p95": 13.899493217468262
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4542929672230406,
+                "census": 0.5646165612771892,
+                "p95": 9.485280990600586
+              },
+              "delta": 0.0642993992992299
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.47356104796091336,
+                "census": 0.6046778881903603,
+                "p95": 12.397055816650367
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5941011521316911,
+                "census": 0.6897084528396635,
+                "p95": 5
+              },
+              "delta": 0.12054010417077776
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5310957451597084,
+                "census": 0.6491930824635057,
+                "p95": 12
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6104487261960793,
+                "census": 0.6744501791010283,
+                "p95": 5
+              },
+              "delta": 0.0793529810363709
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5235037437397729,
+                "census": 0.8491545459217762,
+                "p95": 3.8284270763397217
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5235037437397729,
+                "census": 0.8491545459217762,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4227632471545941,
+                "census": 0.7678062678062678,
+                "p95": 4
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4227632471545941,
+                "census": 0.7678062678062678,
+                "p95": 4
+              },
+              "delta": 0
+            }
+          }
+        }
+      },
+      "overflow": false,
+      "layout": [
+        {
+          "font": 18,
+          "top": 4,
+          "height": 68.03800106048584,
+          "lines": [
+            "You may activate loyalty abilities of Teferi,",
+            "Master of Time on any player's turn any time",
+            "you could cast an instant."
+          ]
+        },
+        {
+          "font": 18,
+          "top": 72.03800106048584,
+          "height": 47.640599141693116,
+          "lines": ["Draw a card, then discard a card."]
+        },
+        {
+          "font": 18,
+          "top": 119.67860020217896,
+          "height": 67.91200065612793,
+          "lines": [
+            "Target creature you don't control phases out.",
+            "(Treat it and anything attached to it as though",
+            "they don't exist until its controller's next turn.)"
+          ]
+        },
+        {
+          "font": 18,
+          "top": 187.59060085830689,
+          "height": 47.640599141693116,
+          "lines": ["Take two extra turns after this one."]
+        }
+      ]
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "e329a3e2-6702-4758-8aac-c3017e77b619",
+      "name": "Liliana, Waker of the Dead",
+      "number": "108",
+      "frame": "planeswalker",
+      "inputHash": "f66fb00b3dc23f2b5942a716d3619f141b39427c975563b5a41ded066e7d5f48",
+      "referenceHash": "d0c2e35c399f151aafe8cb23470cefef444a7cccec98d7f238df2e293c74a72b",
+      "contentStatus": "printing-reference",
+      "scores": {
+        "inspect": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.26374047635043546,
+                "census": 0.5077768999167218,
+                "p95": 11.414213180541992
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5972057732514595,
+                "census": 0.5773547436527087,
+                "p95": 8.52817416191101
+              },
+              "delta": 0.33346529690102406
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.28012726563185764,
+                "census": 0.5157140722078698,
+                "p95": 10
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4884586798633705,
+                "census": 0.5466810427653351,
+                "p95": 7.071067810058594
+              },
+              "delta": 0.20833141423151286
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5232713044669576,
+                "census": 0.6457131136332559,
+                "p95": 7.41421365737915
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5028014107527969,
+                "census": 0.6020101189662246,
+                "p95": 5.828427314758301
+              },
+              "delta": -0.020469893714160636
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5182719989176865,
+                "census": 0.6198073806669214,
+                "p95": 8
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5724698094641738,
+                "census": 0.654470955586883,
+                "p95": 6.118376541137714
+              },
+              "delta": 0.05419781054648731
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.6137807723778449,
+                "census": 0.8360860588938389,
+                "p95": 4.828427314758301
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6263336391468833,
+                "census": 0.836683690101054,
+                "p95": 2.8284270763397217
+              },
+              "delta": 0.01255286676903844
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.47146401985111663,
+                "census": 0.6988005085401581,
+                "p95": 4.828427314758301
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.48101265822784817,
+                "census": 0.7017854181637279,
+                "p95": 4.242640495300293
+              },
+              "delta": 0.009548638376731533
+            }
+          }
+        },
+        "table": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.24209119416028377,
+                "census": 0.48858234929854155,
+                "p95": 11.260406494140625
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5901139278329516,
+                "census": 0.5963357605005232,
+                "p95": 9
+              },
+              "delta": 0.3480227336726678
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.26195278536629524,
+                "census": 0.5013450904199671,
+                "p95": 10.242640495300293
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4893492553108558,
+                "census": 0.5578303478019514,
+                "p95": 7.41421365737915
+              },
+              "delta": 0.2273964699445606
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4830286431467837,
+                "census": 0.6272665116915083,
+                "p95": 7.656854152679443
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4823416466562682,
+                "census": 0.6712429919321756,
+                "p95": 6
+              },
+              "delta": -0.0006869964905154569
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5024546818625475,
+                "census": 0.6183844745128523,
+                "p95": 8
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5690013035979588,
+                "census": 0.6988181973887037,
+                "p95": 6.41421365737915
+              },
+              "delta": 0.06654662173541126
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5996709900513658,
+                "census": 0.871400630229273,
+                "p95": 4.957106828689575
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6124645892351274,
+                "census": 0.8712919700097794,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0.01279359918376155
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4335483870967742,
+                "census": 0.7782875462937372,
+                "p95": 5.656854152679443
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4409448818897638,
+                "census": 0.7820463213752695,
+                "p95": 5
+              },
+              "delta": 0.007396494792989594
+            }
+          }
+        }
+      },
+      "overflow": false,
+      "layout": [
+        {
+          "font": 16.25,
+          "top": 0,
+          "height": 62.659866666666666,
+          "lines": ["Each player discards a card. Each opponent who", "can't loses 3 life."]
+        },
+        {
+          "font": 16.25,
+          "top": 62.659866666666666,
+          "height": 62.659866666666666,
+          "lines": [
+            "Target creature gets -X/-X until end of turn,",
+            "where X is the number of cards in your graveyard."
+          ]
+        },
+        {
+          "font": 16.25,
+          "top": 125.31973333333333,
+          "height": 62.659866666666666,
+          "lines": [
+            "You get an emblem with \"At the beginning of",
+            "combat on your turn, put target creature card",
+            "from a graveyard onto the battlefield under your",
+            "control. It gains haste.\""
+          ]
+        }
+      ]
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "name": "Chandra, Heart of Fire",
+      "number": "135",
+      "frame": "planeswalker",
+      "inputHash": "1636fd875acb9fd9fc88db02a8d18b1f7837bd329222e62db661766cb98e5a3a",
+      "referenceHash": "4d31823661997ca2307216abd6b9c3642ac2ed77c84131352da7c12e62d1e69d",
+      "contentStatus": "printing-reference",
+      "scores": {
+        "inspect": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.48318975333785324,
+                "census": 0.5656387145094552,
+                "p95": 6
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5320933620149517,
+                "census": 0.5446584551017284,
+                "p95": 13
+              },
+              "delta": 0.048903608677098476
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4349979180444965,
+                "census": 0.5164590061638862,
+                "p95": 7
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5114542338437561,
+                "census": 0.5413411234652963,
+                "p95": 13
+              },
+              "delta": 0.0764563157992596
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5938013378294463,
+                "census": 0.677993918038326,
+                "p95": 5
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.551494137438015,
+                "census": 0.640198870492832,
+                "p95": 6
+              },
+              "delta": -0.04230720039143132
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5926165469377166,
+                "census": 0.643412623051312,
+                "p95": 5
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.59624492209764,
+                "census": 0.6494224551366035,
+                "p95": 5
+              },
+              "delta": 0.003628375159923425
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5752187931828651,
+                "census": 0.750306258322237,
+                "p95": 4.345584392547602
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5812156753234665,
+                "census": 0.750306258322237,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0.005996882140601456
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5843995683675042,
+                "census": 0.7688507102352479,
+                "p95": 7.248528194427476
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5905904346471413,
+                "census": 0.7689630003930156,
+                "p95": 4.242640495300293
+              },
+              "delta": 0.006190866279637164
+            }
+          }
+        },
+        "table": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4613274582122696,
+                "census": 0.5534172937254764,
+                "p95": 6.242640495300293
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5169458268012355,
+                "census": 0.5575495175075311,
+                "p95": 13.656852722167969
+              },
+              "delta": 0.05561836858896585
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4056950314539609,
+                "census": 0.516204576393003,
+                "p95": 6.828427314758301
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4812613582830982,
+                "census": 0.5458837163089483,
+                "p95": 13.079645490646238
+              },
+              "delta": 0.07556632682913728
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.578700823421775,
+                "census": 0.7074142008978134,
+                "p95": 5.632590103149381
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5629520136348765,
+                "census": 0.6795988801467394,
+                "p95": 6
+              },
+              "delta": -0.01574880978689852
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5704954458449345,
+                "census": 0.6625719677392213,
+                "p95": 5.656854152679443
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.6109072107957538,
+                "census": 0.7050254215897208,
+                "p95": 5.802691340446457
+              },
+              "delta": 0.04041176495081933
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5555951713951,
+                "census": 0.7792809587217044,
+                "p95": 6.941421365737901
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5641290856433596,
+                "census": 0.7792809587217044,
+                "p95": 4.41421365737915
+              },
+              "delta": 0.008533914248259666
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5234002045919528,
+                "census": 0.7945090112851608,
+                "p95": 8.414213180541992
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5311619121771164,
+                "census": 0.794452866206277,
+                "p95": 5.242640495300293
+              },
+              "delta": 0.007761707585163591
+            }
+          }
+        }
+      },
+      "overflow": false,
+      "layout": [
+        {
+          "font": 16.25,
+          "top": 0,
+          "height": 62.659866666666666,
+          "lines": [
+            "Discard your hand, then exile the top three cards",
+            "of your library. Until end of turn, you may play",
+            "cards exiled this way."
+          ]
+        },
+        {
+          "font": 16.25,
+          "top": 62.659866666666666,
+          "height": 62.659866666666666,
+          "lines": ["Chandra, Heart of Fire deals 2 damage to any", "target."]
+        },
+        {
+          "font": 16.25,
+          "top": 125.31973333333333,
+          "height": 62.659866666666666,
+          "lines": [
+            "Search your graveyard and library for any number",
+            "of red instant and/or sorcery cards, exile them,",
+            "then shuffle your library. You may cast them this",
+            "turn. Add six {R}."
+          ]
+        }
+      ]
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "name": "Garruk, Unleashed",
+      "number": "183",
+      "frame": "planeswalker",
+      "inputHash": "99c5b8e2f61b5f680a84081c7e05022eb0549020e14f659f22a5df1954469bdd",
+      "referenceHash": "b8ee722b04e0070b20e73f23a04c61bd66978d0d7e0aadcc1b15d1f76e3afe19",
+      "contentStatus": "printing-reference",
+      "scores": {
+        "inspect": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4206920365728742,
+                "census": 0.5088949939717796,
+                "p95": 6.41421365737915
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5939142662624242,
+                "census": 0.5801897047699304,
+                "p95": 7
+              },
+              "delta": 0.17322222968954998
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.40494501328554455,
+                "census": 0.5254199344151902,
+                "p95": 7.071067810058594
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.48484821974016135,
+                "census": 0.5397798198656425,
+                "p95": 8
+              },
+              "delta": 0.07990320645461679
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5288607680098837,
+                "census": 0.6042873987105191,
+                "p95": 6
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5495310477056423,
+                "census": 0.6301146484032011,
+                "p95": 5
+              },
+              "delta": 0.02067027969575863
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5631575493153069,
+                "census": 0.6390698369599064,
+                "p95": 5.828427314758301
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5908721946368111,
+                "census": 0.6815424664017836,
+                "p95": 4.41421365737915
+              },
+              "delta": 0.02771464532150414
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.574674029437084,
+                "census": 0.8219861922464153,
+                "p95": 2.8284270763397217
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5819442081986733,
+                "census": 0.8237387148167817,
+                "p95": 2.8284270763397217
+              },
+              "delta": 0.007270178761589308
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4764331210191083,
+                "census": 0.6829187396351576,
+                "p95": 4.242640495300293
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.48258064516129034,
+                "census": 0.6865671641791045,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0.006147524142182059
+            }
+          }
+        },
+        "table": {
+          "body": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.42297046586427545,
+                "census": 0.5183676549594016,
+                "p95": 6.242640495300293
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5979355365829109,
+                "census": 0.5912992387013543,
+                "p95": 7.225483226776061
+              },
+              "delta": 0.17496507071863543
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.39703135841264614,
+                "census": 0.5055528591717545,
+                "p95": 7
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5145305973279747,
+                "census": 0.549793055030706,
+                "p95": 8
+              },
+              "delta": 0.11749923891532854
+            }
+          },
+          "badges": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.4972780711638452,
+                "census": 0.6136072853164748,
+                "p95": 6
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5387047926844276,
+                "census": 0.6883294448207521,
+                "p95": 5
+              },
+              "delta": 0.04142672152058241
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5607765274658645,
+                "census": 0.6624733767608704,
+                "p95": 6
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.5691492622973063,
+                "census": 0.7103017923200519,
+                "p95": 5.41421365737915
+              },
+              "delta": 0.008372734831441853
+            }
+          },
+          "loyalty": {
+            "raw": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.5622647157017373,
+                "census": 0.8700477960701009,
+                "p95": 3.8284270763397217
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.56790309231811,
+                "census": 0.8714285714285714,
+                "p95": 3.8284270763397217
+              },
+              "delta": 0.005638376616372676
+            },
+            "registered": {
+              "before": {
+                "status": "measured",
+                "edgeF1": 0.43124904448861023,
+                "census": 0.7673852957435047,
+                "p95": 4.828427314758301
+              },
+              "after": {
+                "status": "measured",
+                "edgeF1": 0.4346780904243844,
+                "census": 0.7751796572692095,
+                "p95": 4.242640495300293
+              },
+              "delta": 0.0034290459357741443
+            }
+          }
+        }
+      },
+      "overflow": false,
+      "layout": [
+        {
+          "font": 16,
+          "top": 0,
+          "height": 62.659866666666666,
+          "lines": ["Up to one target creature gets +3/+3 and gains", "trample until end of turn."]
+        },
+        {
+          "font": 16,
+          "top": 62.659866666666666,
+          "height": 62.659866666666666,
+          "lines": [
+            "Create a 3/3 green Beast creature token. Then if an",
+            "opponent controls more creatures than you, put a",
+            "loyalty counter on Garruk, Unleashed."
+          ]
+        },
+        {
+          "font": 16,
+          "top": 125.31973333333333,
+          "height": 62.659866666666666,
+          "lines": [
+            "You get an emblem with \"At the beginning of your",
+            "end step, you may search your library for a creature",
+            "card, put it onto the battlefield, then shuffle your",
+            "library.\""
+          ]
+        }
+      ]
+    }
+  ],
+  "timing": {
+    "elapsedMs": 6255.993755,
+    "scope": "Serial Node hash verification, PNG decoding, normalization and CPU region scoring. No browser, rendering, network or GPU."
+  }
+}

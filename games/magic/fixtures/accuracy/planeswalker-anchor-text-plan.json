@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "scope": "Measured planeswalker rules rows; original printing words. Development uses six M21 cards. Geometry is frozen before examining reserved output. Special treatments excluded.",
+  "policy": {
+    "maximumFont": {
+      "normal": 19,
+      "taller": 18
+    },
+    "minimumFont": 8,
+    "step": 0.25,
+    "abilityInset": 67,
+    "passiveInset": 45,
+    "rightInset": 8,
+    "bottomReserve": {
+      "normal": 16,
+      "taller": 24
+    },
+    "topInset": {
+      "normal": 0,
+      "taller": 4
+    },
+    "minimumRowPadding": 16,
+    "minimumRowHeight": 34,
+    "normalRows": "Equally spaced badge anchors, with measured ink gaps of at least 8px and explicit upper/lower ink limits.",
+    "tallerRows": "Measured minimum row heights; share spare room among shorter rows."
+  },
+  "alignment": {
+    "perScan": false,
+    "profile": "Existing frozen M21 planeswalker registration, transferred unchanged to M20.",
+    "profileHashes": {
+      "m21": "a48a84f9859ce6da4b6655443ea94752c9499c548074affba16f6664629f68f9",
+      "m20": "f6c11db585c1c50895b884bdd48de5a03518ad4170e38f2f120506e86e08eebf"
+    }
+  },
+  "regions": {
+    "body": {
+      "planeswalker": [64, 434, 383, 181],
+      "planeswalker-large": [64, 380, 383, 235]
+    },
+    "badges": {
+      "planeswalker": [18, 434, 63, 181],
+      "planeswalker-large": [18, 380, 63, 235]
+    },
+    "loyalty": [395, 599, 69, 48]
+  },
+  "cards": [
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "name": "Ugin, the Spirit Dragon",
+      "number": "1",
+      "frame": "planeswalker",
+      "inputHash": "e2611a792bd7d11815174094a6839444557e58f14b98cb612d06fdf6920daa43",
+      "referenceHash": "56ea3b56cf3e438c5601d007e97f73f8118af2189b8bc733c84c4ddc498ce53f",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "name": "Basri Ket",
+      "number": "7",
+      "frame": "planeswalker",
+      "inputHash": "8b35d85fc5fc282049b34c96c6c772e913ad6951da3e9dbcd47fdcc47ab7a10e",
+      "referenceHash": "b65b4fcf0b818b9bc7d15aaaf8c29fc4435cc76551a81cec292ff279fd2b21bd",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+      "name": "Teferi, Master of Time",
+      "number": "75",
+      "frame": "planeswalker-large",
+      "inputHash": "2dcc13c4403eb17209a3ef2eff5899ed81ae3381d48840acd9078608722aa1b0",
+      "referenceHash": "91c0bf0ae94f6196a16a8916163630c5d4fff8e97fc68468099b5b09ee7f0eec",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "e329a3e2-6702-4758-8aac-c3017e77b619",
+      "name": "Liliana, Waker of the Dead",
+      "number": "108",
+      "frame": "planeswalker",
+      "inputHash": "f66fb00b3dc23f2b5942a716d3619f141b39427c975563b5a41ded066e7d5f48",
+      "referenceHash": "d0c2e35c399f151aafe8cb23470cefef444a7cccec98d7f238df2e293c74a72b",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "name": "Chandra, Heart of Fire",
+      "number": "135",
+      "frame": "planeswalker",
+      "inputHash": "1636fd875acb9fd9fc88db02a8d18b1f7837bd329222e62db661766cb98e5a3a",
+      "referenceHash": "4d31823661997ca2307216abd6b9c3642ac2ed77c84131352da7c12e62d1e69d",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-before",
+      "cohort": "development",
+      "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "name": "Garruk, Unleashed",
+      "number": "183",
+      "frame": "planeswalker",
+      "inputHash": "99c5b8e2f61b5f680a84081c7e05022eb0549020e14f659f22a5df1954469bdd",
+      "referenceHash": "b8ee722b04e0070b20e73f23a04c61bd66978d0d7e0aadcc1b15d1f76e3afe19",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "2d1ff397-2445-459a-ae4e-7bf1cd48f490",
+      "name": "Teferi, Master of Time",
+      "number": "275",
+      "frame": "planeswalker-large",
+      "inputHash": "7bb9b4ad33d7eb5ca2903a2bb35b4a4fa2f17599f5c3a2fe72df6d0ed38a749f",
+      "referenceHash": "7decdcce29a4cbbcd59f1dab6e70f7c6d97f09cd800076909f6a9c262c74cd25",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "a8bf5708-4222-46d2-b108-0ed4cf3c83c3",
+      "name": "Teferi, Master of Time",
+      "number": "276",
+      "frame": "planeswalker-large",
+      "inputHash": "a66d77eb4106d899bd0c4d52357c5d8e8b2bf2f670c805122f3e24cd448b1039",
+      "referenceHash": "e966046f60dea8b8224aa44090125840ed92bfafe7f3f77da2d32e537d7c91d4",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "d4949a0b-e320-470a-ba54-07ac75b0053b",
+      "name": "Teferi, Master of Time",
+      "number": "277",
+      "frame": "planeswalker-large",
+      "inputHash": "72d06c189ef3312f9ff130cc0e0df8860a946fbe941da2a302bc20d154425073",
+      "referenceHash": "aa87321133e83453b0a6ef34d5d4f1a293cf328b76c76cf9bf2423804afa16ba",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+      "name": "Basri, Devoted Paladin",
+      "number": "320",
+      "frame": "planeswalker",
+      "inputHash": "fb8158a2fd22d814955a153a4a6e03e437bcde1399d3d9f83f0eb2f35f07d4cd",
+      "referenceHash": "a134870aec4150b8a0985a06072073b0fe2abdeaae9e4ec8ea68f5e7d6bd5fb3",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "62d05287-ad7f-4de8-9f68-8f36c62fae72",
+      "name": "Teferi, Timeless Voyager",
+      "number": "324",
+      "frame": "planeswalker",
+      "inputHash": "1f9893de0589240b349b14bdc2d00d7214d8b9c660215c69644bd88d93fc8bf3",
+      "referenceHash": "8ff5c9ef688ca6b751ce188866c02271230ab477115c194ab74f6c96aad4c65c",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+      "name": "Liliana, Death Mage",
+      "number": "328",
+      "frame": "planeswalker",
+      "inputHash": "b255ed4b45c4ca0de08738285375ffe2b1458c57d7f73f1b5a80c9c5364367c4",
+      "referenceHash": "6f68fd1970e753dbd5964d0aa69c8940633b6cfd797feb15fb9902298a6e0be9",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "1e49ce44-5286-4310-88c2-f8a1402b113b",
+      "name": "Chandra, Flame's Catalyst",
+      "number": "332",
+      "frame": "planeswalker",
+      "inputHash": "c270e2cbc94614e16bd7420a94a94168b9ad0f3fe38175bf9a84b59c41cffcfa",
+      "referenceHash": "2730cdf3ab073a6fcd5ad9f530565df8ee0c15fbf94437b29495d0e2b2f5a28c",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m21",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "same-set-reserved",
+      "id": "48133629-4a5b-4c91-b496-2ee94f6cbc4c",
+      "name": "Garruk, Savage Herald",
+      "number": "336",
+      "frame": "planeswalker",
+      "inputHash": "7bd628867971b4ae0c186da94fc93576e2c56c491cbe9dd9da463d343a290c62",
+      "referenceHash": "ac601e41f9abd1b4a2d435b593f6b5e6a5fc5ef14aabff4cd54f50212970569e",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "79883468-a37c-4894-8d05-6a4d150b7d59",
+      "name": "Ajani, Strength of the Pride",
+      "number": "2",
+      "frame": "planeswalker",
+      "inputHash": "e7106925435d90c9d72d6dfae3d4574429528b051dbec15ff8aa6721cfcb425c",
+      "referenceHash": "ceee3031f7a3bfa0a02012c53a8a6aa7f7afd9545109779a71a1ec622475cc91",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "0240f9eb-e1b2-4b41-94b0-b00ad2850825",
+      "name": "Mu Yanling, Sky Dancer",
+      "number": "68",
+      "frame": "planeswalker",
+      "inputHash": "64cfe02944220f310e5b7eb5f3606651eb9c7aa90efa8cfaf3e423464816eb28",
+      "referenceHash": "adb161c4729e5083cb69e9cf4cd7f62ae60295d393aa017e36604515a1480289",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "9f764be3-dd3f-44b1-a4a6-807d1387590b",
+      "name": "Sorin, Imperious Bloodlord",
+      "number": "115",
+      "frame": "planeswalker",
+      "inputHash": "2f408f287005ce5fe3cb2a530c2779c279e13a38750cbc5564fc190d908d6f01",
+      "referenceHash": "b54ab4a8b5f097a00c2406dbe505d66efb5c33737c64ae51a2e41997a1876c61",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "2cabfcfe-012e-4cab-bba2-24052eac0946",
+      "name": "Chandra, Acolyte of Flame",
+      "number": "126",
+      "frame": "planeswalker",
+      "inputHash": "9f3e6c159188727b045ea0ec59239f060a61347ce5fdf3ac6c616b8e123e683b",
+      "referenceHash": "f0e5b99cf7b9fbec3e7878695eaf36daeff82cd24838078a825496e041368c0c",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "49d2a680-4f3b-4bfa-b77b-d2dfaced9f23",
+      "name": "Chandra, Awakened Inferno",
+      "number": "127",
+      "frame": "planeswalker-large",
+      "inputHash": "93ee4cefa119e20a88b5c3acbc5b0020ea403b72bf815e9a1f61752ca030741f",
+      "referenceHash": "27c41186862612972203182a1329e9bd3fd86849207dfdddf3a06c6788e3d2e8",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "d678cf4c-60e3-40a1-a9cc-b0bd157bcf36",
+      "name": "Chandra, Novice Pyromancer",
+      "number": "128",
+      "frame": "planeswalker",
+      "inputHash": "523e665d1e1262b1e0114fca900820edaa43344c10755d9f347f282426feadc9",
+      "referenceHash": "70accefb81d8b7e2ac508af3dcb6819818930b131293627901214cab02472fb5",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "592c5e27-c538-425e-b41f-1d6708428853",
+      "name": "Vivien, Arkbow Ranger",
+      "number": "199",
+      "frame": "planeswalker",
+      "inputHash": "ac54d2210fbf82842348fd34fe4542b2cb1b6852abe9ec01ea0ebdd80b37fc59",
+      "referenceHash": "99e0d775ffda61b3bba7457715a4d2e82e0165510e155699f69bca7fa51177e5",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "dba41e5f-66b8-4459-8a07-bbe893216f1e",
+      "name": "Ajani, Inspiring Leader",
+      "number": "282",
+      "frame": "planeswalker",
+      "inputHash": "0e840887797f7e4ce8e78feb7ad6eb662e293dbe49c86a615b2e80aa239eca31",
+      "referenceHash": "c9772495ea1402ecc9a5d8408b3c343d24da4e5a0c0e5af9e294e0a916fff4f7",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "84ae9595-8e76-4d8c-a08c-00434be75672",
+      "name": "Mu Yanling, Celestial Wind",
+      "number": "286",
+      "frame": "planeswalker",
+      "inputHash": "f94c1f26b26e4009dbfd0beb7fd72b2cf45a6d6e52fe83ebb3b3a4a4633509f1",
+      "referenceHash": "fbdade0ee8d2ceb2dbd384906d82ec8171156a966f81483b62bac7b348a7d2bc",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "bf20ea7b-e480-4b0e-b080-888f24d3c08d",
+      "name": "Sorin, Vampire Lord",
+      "number": "290",
+      "frame": "planeswalker",
+      "inputHash": "5b948fa93c6e953af47f03ebabd311d478b4174faea723b1f02581855bbfbf3d",
+      "referenceHash": "12ac19081070631a501a81b18c910282e7b2882140edd56ad9c4160079b403d6",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "5d1c6c4b-62ab-4d44-a2d7-64b44d163606",
+      "name": "Chandra, Flame's Fury",
+      "number": "294",
+      "frame": "planeswalker",
+      "inputHash": "54431b7590fb6baf7dc1266d2244011e56fe887fb1fb8b17a4451e623b76cac3",
+      "referenceHash": "805926173855f2edcee2362a667b574afeee1ea9feb865714ffbbc7f02581880",
+      "contentStatus": "printing-reference"
+    },
+    {
+      "set": "m20",
+      "baseline": "walker-text-reserved-before",
+      "cohort": "set-transfer",
+      "id": "f7ead409-3bce-47c8-ace7-498c38522369",
+      "name": "Vivien, Nature's Avenger",
+      "number": "298",
+      "frame": "planeswalker",
+      "inputHash": "cd716dfa3f217e1b22889eceed5702afb45c5cb86adf09cb8af957867308eff4",
+      "referenceHash": "7058a7950c412093c37b1c07d6019a52885e04028e469edb58a02a5b240510b6",
+      "contentStatus": "printing-reference"
+    }
+  ],
+  "limitations": [
+    "Printing-reference wording is not automatically scan-certified.",
+    "Texture and small scan registration differences affect structural metrics.",
+    "Teferi art variants share a text layout and are not independent typographic validation.",
+    "Body-region results do not establish whole-card accuracy."
+  ],
+  "parentPlanHash": "982a77cff82ab79947379f291497561b848f180276e7eefe8e211565a0b96dd2",
+  "developmentDecision": "Two earlier measured-layout trials moved normal abilities too far apart or too high. Fixed normal badge anchors improve five of six development bodies; review the remaining decline and all reserved cards without changing the frozen policy."
+}

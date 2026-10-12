@@ -1738,3 +1738,54 @@ UUID-specific flavor overrides. MTGJSON imports Scryfall bulk card data, maps
 was submitted to Scryfall's official card-issue form, which confirmed receipt;
 both upstream corrections are pending review. No general flavor-source migration
 is implied.
+
+### Measured planeswalker abilities across M21 and M20
+
+The [frozen anchor policy](fixtures/accuracy/planeswalker-anchor-text-plan.json)
+replaces estimated character widths with measured MPlantin runs. Normal panels
+keep equal badge anchors while fitting actual ink and checking adjacent text gaps.
+Taller panels allocate room from measured row demand. Passive text uses a smaller
+left inset; matching explicit paragraph runs retain italic reminders. The existing
+frame, paper and badge assets remain. Oversize content produces an explicit error,
+and cached captures retain the per-ability layout diagnostics.
+
+All 26 eligible planeswalkers (14 M21, 12 M20) now have exact-printing MTGJSON
+wording in both sides of the comparison. This avoids falsely attributing shortened
+names, “mana value” and Oracle reminder changes to geometry. It does not certify
+every source character against a scan. Six M21 cards formed development; eight
+M21 printings and all twelve M20 cards were reserved before the final geometry
+was selected. The three additional Teferi illustrations share wording and are not
+independent typesetting cases.
+
+| Cohort          | Cards | Inspect body edge F1 | Table body edge F1 | Inspect gains / declines > .02 |
+| --------------- | ----: | -------------------- | ------------------ | ------------------------------ |
+| M21 development |     6 | .400 → .504          | .386 → .482        | 5 / 1                          |
+| M21 reserved    |     8 | .365 → .508          | .351 → .488        | 8 / 0                          |
+| M20 transfer    |    12 | .316 → .486          | .302 → .473        | 11 / 0                         |
+
+The [development report](fixtures/accuracy/walker-text-final-dev-development-measurement.json),
+[same-set report](fixtures/accuracy/walker-text-anchors-same-set-reserved-measurement.json)
+and [transfer report](fixtures/accuracy/walker-text-anchors-set-transfer-measurement.json)
+contain all per-card body, badge and loyalty scores, raw and registered. Registration
+uses the previously frozen M21 frame transform, transferred unchanged to M20; no
+scan receives a fitted offset. Node scores frozen rasters without Chromium or a
+GPU. The scores are regional diagnostics, not percent accuracy. All captures have
+zero render failures and zero measured overflow. Earlier development trials with
+variable normal row heights or a global downward offset were rejected; their
+reports remain as diagnostic history, not held-out evidence.
+
+Two explicit review flags remain. Ugin's body F1 falls .463 → .407, although badge
+F1 improves .586 → .615: line wrapping and the text's position relative to its
+badge still disagree. Chandra, Awakened Inferno's badge F1 falls .556 → .482 while
+body F1 changes .377 → .392. Its short passive paragraph receives too little
+vertical space ahead of three denser abilities. Teferi's long passive paragraph
+benefits from the new policy, so another global taller-panel offset is unsuitable.
+Revisit shared row allocation with separately reserved examples of both patterns.
+Do not add card-name exceptions or per-scan corrections.
+
+Visual review also separates asset/composition defects from this text work:
+planeswalker paper is flat and opaque instead of showing the printed texture and
+underlying illustration; horizontal separators are too explicit; loyalty badge
+bevels and silhouettes differ; the bottom foil stamp and complete collector/legal
+printing are missing. Several line endings and glyph weights still differ despite
+correct source wording. These remain work items, not reasons to retune registration.
