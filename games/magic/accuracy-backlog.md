@@ -428,3 +428,20 @@ at both tiers; this does not certify every symbol or every card in those sets.
   Instant). Review Zombie Mob's wrapping, Steal Enchantment's flavor layout and
   Selenia's body size/line breaks. Existing set-level scan transforms help some
   edges and worsen others; validate independent anchors before replacing them.
+- Release-era check: 267 references across twelve sets, including IKO, ZNR,
+  MID, DMU, WOE, FDN and the limited TDM sample. No universal M21 cutoff:
+  window proportions vary even after accepted shared scale corrections.
+  WOE/FDN need roughly +0.4% reference scale; retain distinct set/frame groups
+  until broader cohorts support merging them. Do not add date-based geometry
+  switches from these samples.
+- Review scale failures for WAR, M20 and DMU. Outer width and vertical span
+  disagree with a uniform zoom against the frozen template. Investigate
+  independent vertical outer-frame anchors, reference aspect/crop and asset
+  geometry; do not resolve the conflict with arbitrary per-scan warps.
+  TDM needs more high-resolution references before calibration.
+- Recent-set transfer: all 72 additional IKO/ZNR/MID/DMU/WOE/FDN art borders
+  improve at both raster tiers. Remaining WOE/FDN rules-panel widths and
+  body baselines need review after registration. Newer set symbols still use
+  generic treatments: the FDN reference shows a larger outlined, shaded star
+  than the current flat symbol. Record topology/material fixes separately from
+  aperture geometry. Do not certify text overlap until printing text is checked.

@@ -1,0 +1,3577 @@
+{
+  "schemaVersion": 1,
+  "set": "m15",
+  "name": "Magic 2015",
+  "releasedAt": "2014-07-18",
+  "scope": "Raw canonical scan geometry only: no renderer tuning, no per-scan transform, no color/saturation matching. Same fixed edge windows for every set; uncertain edges excluded with their measurements retained. Balanced small diagnostic sample, not a full-set census.",
+  "selection": "First three high-resolution ordinary nonlegendary normal cards per W/U/B/R/G/artifact/land/gold bucket, frozen before viewing scans. Special treatments and special layouts excluded.",
+  "sourceInventory": {
+    "total": 284,
+    "eligible": 250,
+    "excluded": {
+      "outside-normal-nonlegendary-scope": 34
+    }
+  },
+  "snapshotHash": "5ab51ebcd511143d4e3aa4099d57e300d3380128065067e1ea4669e0370c249e",
+  "methods": {
+    "window-era-study": "068ebe62466ff6ce97e6bd0303c61379861fcb700198fd36008e1bf90133bdd0",
+    "window-geometry": "55161b2f9e0a664b97a3e3d3daa2fbdc1290f4df7710bf169717d6b6945a44f1",
+    "scan-translation": "0913e25ab70bdeba9e22eeaaefe2ef2d1657bb8bb4139174a35fa23a711fc162",
+    "scan-scale": "945f9dff12fad35222abf41dcda28a45cbd9ea86dc318a070372bbedff9966f2",
+    "pixels": "3c4f9b614c2eb69a7656d5bbf5462a031fcaca15c45016cfa82daa1e0e2e1d33"
+  },
+  "scaleProfile": {
+    "version": "normal-set-scale-v1",
+    "status": "accepted",
+    "proposed": 1.0029748514652868,
+    "scale": 1.0029748514652868,
+    "target": {
+      "groups": {
+        "outerLeft": {
+          "count": 3,
+          "position": 18.738016910309085,
+          "spread": 0.00380200087737137,
+          "reliable": true
+        },
+        "outerRight": {
+          "count": 3,
+          "position": 468.2518256438106,
+          "spread": 0.011894473717234177,
+          "reliable": true
+        },
+        "artTop": {
+          "count": 3,
+          "position": 66.27084943393263,
+          "spread": 0.0005535744725477798,
+          "reliable": true
+        },
+        "artBottom": {
+          "count": 3,
+          "position": 381.5412197979136,
+          "spread": 0.013160114146387514,
+          "reliable": true
+        }
+      },
+      "outerWidth": 449.5138087335015,
+      "verticalSpan": 315.270370363981
+    },
+    "calibration": [
+      "e145e85d-1eaa-4ec6-9208-ca6491577302",
+      "46f1b48f-6528-46bd-a384-2358af25e500",
+      "32efcfad-818c-4485-9022-cf94403f370b",
+      "bfe513d1-2509-4051-ba85-49a19479fa5c",
+      "e15a3f1a-83af-4541-8d1c-bf7844f969c9",
+      "7b24ea58-0690-45d7-a84b-265b6277b59a",
+      "b49270b2-ba15-4268-adb3-16d09c09adee"
+    ],
+    "validation": [
+      "eafd2e27-01d0-4894-886e-2b8776904ab9",
+      "f5dacedc-f532-43b3-a783-e1dc7ccea53b",
+      "bd814ce3-9555-4e9d-a212-e40717f4e546"
+    ],
+    "widthMad": 0.08737071799026808,
+    "validationWidthError": 0.2286250081746175,
+    "verticalError": 0.33970954053120295,
+    "limits": {
+      "minimumCalibration": 6,
+      "minimumColors": 3,
+      "minimumValidation": 2,
+      "minimumVertical": 6,
+      "maximumScaleChange": 0.02,
+      "maximumWidthMad": 0.75,
+      "maximumValidationError": 1.5,
+      "maximumVerticalError": 1.5
+    },
+    "templateHash": "c01fec3161c4684c4c71945d4d9094381eb8e32f54f19b68d7acb7feaf6369fc",
+    "scope": "First two U/B/R/G cards per color calibrate one uniform set/frame scale from outer rails; third cards validate. Art-window vertical span is a rejection check, never a fitted scale target. No card-specific scale, rotation, or anisotropic warp. Failed fits retain unit scale. This does not establish physical printing dimensions."
+  },
+  "summary": {
+    "all": {
+      "art": {
+        "cards": 21,
+        "measured": 20,
+        "medianWidth": 412.70076080893375,
+        "medianCenter": 243.45526061558115
+      },
+      "rules": {
+        "cards": 21,
+        "measured": 17,
+        "medianWidth": 414.9920294381342,
+        "medianCenter": 243.12530672471917
+      }
+    },
+    "W": {
+      "art": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 412.7099874237612,
+        "medianCenter": 243.35510416136128
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 416.5372149825013,
+        "medianCenter": 240.40380186013422
+      }
+    },
+    "U": {
+      "art": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 412.5546156155321,
+        "medianCenter": 243.27850068145617
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 414.28671966389066,
+        "medianCenter": 243.2042624588871
+      }
+    },
+    "B": {
+      "art": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 412.7185204795273,
+        "medianCenter": 243.19298466998768
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 414.9920294381342,
+        "medianCenter": 243.27745966044478
+      }
+    },
+    "R": {
+      "art": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 412.47435384144535,
+        "medianCenter": 243.6578252878216
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 2,
+        "medianWidth": 414.6867975038062,
+        "medianCenter": 243.8193598394016
+      }
+    },
+    "G": {
+      "art": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 412.89849568982993,
+        "medianCenter": 243.51264556699624
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 414.1915432860465,
+        "medianCenter": 243.12530672471917
+      }
+    },
+    "artifact": {
+      "art": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 412.7094775380659,
+        "medianCenter": 243.47548221160264
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 0,
+        "medianWidth": null,
+        "medianCenter": null
+      }
+    },
+    "land": {
+      "art": {
+        "cards": 3,
+        "measured": 2,
+        "medianWidth": 412.4325811840459,
+        "medianCenter": 243.5601309873201
+      },
+      "rules": {
+        "cards": 3,
+        "measured": 3,
+        "medianWidth": 418.1044921835152,
+        "medianCenter": 241.323430876604
+      }
+    }
+  },
+  "scaleDiagnostics": {
+    "cards": 12,
+    "outerMeasured": 10,
+    "outerWidth": 448.0939172160923,
+    "art": {
+      "width": 412.7052822796644,
+      "ratioToOuter": 0.9208706029641873
+    },
+    "rules": {
+      "width": 414.35495880032784,
+      "ratioToOuter": 0.9248627820682224
+    }
+  },
+  "rows": [
+    {
+      "id": "e411cacd-910b-4eda-8f67-03b426c94ebe",
+      "name": "Ajani's Pridemate",
+      "number": "2",
+      "bucket": "W",
+      "referenceHash": "3114c85474d0e1bd2b5beec4cf48b457bf62d132f216e525d1337964b4b20fa0",
+      "artHash": "a53403e42a26d53b14fa6b305a97374197d3479b50d177bf529b1586682fda9d",
+      "source": "https://scryfall.com/card/m15/2/ajanis-pridemate?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.16490055190752,
+                "strength": 171.3244199236234
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.24983853284005,
+                "strength": 150.11349041461943
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.27615501330809,
+                "strength": 136.43661033113798
+              }
+            ],
+            "position": 37.24983853284005,
+            "spread": 0.08493798093252991,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.6409131428183,
+                "strength": 145.72455361088117
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.57596974508414,
+                "strength": 155.1072365283966
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.6202395062793,
+                "strength": 148.69941634138425
+              }
+            ],
+            "position": 449.6202395062793,
+            "spread": 0.04426976119515302,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.37040097343925,
+          "center": 243.43503901955967
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.272650521868705,
+                "strength": 216.26822697321575
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 32.279049287663014,
+                "strength": 213.2412815729777
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 32.31633789701832,
+                "strength": 212.03020947774252
+              }
+            ],
+            "position": 32.279049287663014,
+            "spread": 0.037288609355307756,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 448.5673448546637,
+                "strength": 72.05126724243163
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.57494397221086,
+                "strength": 75.75101216634114
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 448.625447321402,
+                "strength": 80.04445317586263
+              }
+            ],
+            "position": 448.57494397221086,
+            "spread": 0.050503349191160396,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 416.2958946845479,
+          "center": 240.42699662993692
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.570943993210754,
+            "spread": 0.04212973675411291,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.4009202398179,
+            "spread": 0.0025675246808418706,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.92815690167434,
+            "spread": 0.17806656614521899,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.68964768156604,
+            "spread": 0.3438372901077287,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.82997624660715,
+        "verticalSpan": 314.7614907798917
+      }
+    },
+    {
+      "id": "7a8313a1-af64-4ffb-9110-e70d297b9343",
+      "name": "Battle Mastery",
+      "number": "4",
+      "bucket": "W",
+      "referenceHash": "51872103638953a5bc89a22e65ffb6c672b221294ba44219526977c8abc70c89",
+      "artHash": "e9a31c05698c2858aba6bd0fdb416510066c94731890b107a62969a7654a5500",
+      "source": "https://scryfall.com/card/m15/4/battle-mastery?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.986152604458866,
+                "strength": 226.3204197347164
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.98943607483058,
+                "strength": 241.44350980122883
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.9946588722684,
+                "strength": 199.542710318168
+              }
+            ],
+            "position": 36.98943607483058,
+            "spread": 0.005222797437824056,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.6994234985918,
+                "strength": 150.83595667878788
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.6713359952372,
+                "strength": 227.4484931608041
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.7065045833403,
+                "strength": 194.20101372798283
+              }
+            ],
+            "position": 449.6994234985918,
+            "spread": 0.028087503354583987,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.7099874237612,
+          "center": 243.34442978671117
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.141638963328774,
+                "strength": 217.31606607437135
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 32.135194368883575,
+                "strength": 218.17592067718505
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 32.129553569793025,
+                "strength": 218.247633266449
+              }
+            ],
+            "position": 32.135194368883575,
+            "spread": 0.006444594445198959,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 448.61088839034653,
+                "strength": 71.54006576538086
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.692997076381,
+                "strength": 71.824818166097
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 448.6724093513849,
+                "strength": 68.36317443847656
+              }
+            ],
+            "position": 448.6724093513849,
+            "spread": 0.06152096103835447,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 416.5372149825013,
+          "center": 240.40380186013422
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.295318401749842,
+            "spread": 0.07336211077626231,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.3842005551643,
+            "spread": 0.28180045406946874,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.89440317380665,
+            "spread": 6.5039242664173855,
+            "reliable": false
+          },
+          "artBottom": {
+            "count": 0,
+            "position": null,
+            "spread": null,
+            "reliable": false
+          }
+        },
+        "outerWidth": 448.08888215341443,
+        "verticalSpan": null
+      }
+    },
+    {
+      "id": "85003365-7c5f-4283-995d-e466deef444b",
+      "name": "Boonweaver Giant",
+      "number": "5",
+      "bucket": "W",
+      "referenceHash": "5c6eea06cb48e8cdfbe72ea25faae50bcb17b33717cf5342bc177fa3e9a0bf10",
+      "artHash": "659a661ed599e3852b392b91c8039b8959741100ba860ab2f028dc6b1eecbf9a",
+      "source": "https://scryfall.com/card/m15/5/boonweaver-giant?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.06261014873892,
+                "strength": 196.45551373958588
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.982440481038275,
+                "strength": 172.81655352512996
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.91408971431889,
+                "strength": 138.69105571111044
+              }
+            ],
+            "position": 36.982440481038275,
+            "spread": 0.08016966770064471,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.7277678416843,
+                "strength": 161.94533356428147
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.7364405621069,
+                "strength": 171.53157374660174
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.6505260659216,
+                "strength": 134.94721617897352
+              }
+            ],
+            "position": 449.7277678416843,
+            "spread": 0.07724177576267266,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.745327360646,
+          "center": 243.35510416136128
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.010061121558486,
+                "strength": 223.84883971214293
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 31.972755170784524,
+                "strength": 226.1774795850118
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 31.932455952535452,
+                "strength": 221.19115829467773
+              }
+            ],
+            "position": 31.972755170784524,
+            "spread": 0.040299218249071345,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 448.6059853089495,
+                "strength": 60.76639404296875
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.642446356098,
+                "strength": 65.34389419555664
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 448.65242132944013,
+                "strength": 69.84166768391927
+              }
+            ],
+            "position": 448.642446356098,
+            "spread": 0.036461047148463877,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 416.66969118531347,
+          "center": 240.30760076344126
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.523251734186655,
+            "spread": 0.15977652701318945,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.49487159004747,
+            "spread": 0.11461540701708373,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 74.33196938517963,
+            "spread": 0.0712864556697923,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 1,
+            "position": null,
+            "spread": null,
+            "reliable": false
+          }
+        },
+        "outerWidth": 447.9716198558608,
+        "verticalSpan": null
+      }
+    },
+    {
+      "id": "e145e85d-1eaa-4ec6-9208-ca6491577302",
+      "name": "Aeronaut Tinkerer",
+      "number": "43",
+      "bucket": "U",
+      "referenceHash": "a2405f8eaf91b099026cd2e6f2c13eaca41a2b707a52bc9529f0bac9c869cef1",
+      "artHash": "f5351db7608b0dd86056d7054a39c4539902894388d8f819e7312a5dd088fb42",
+      "source": "https://scryfall.com/card/m15/43/aeronaut-tinkerer?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.16156515475063,
+                "strength": 132.86157615979513
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.120425695231575,
+                "strength": 95.75051695505778
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.102381229943475,
+                "strength": 112.76535658836364
+              }
+            ],
+            "position": 37.120425695231575,
+            "spread": 0.04113945951905862,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 450.23564128172103,
+                "strength": 161.67416672706605
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 450.20420205697303,
+                "strength": 167.18956339359283
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 450.2408924426341,
+                "strength": 165.24304342269897
+              }
+            ],
+            "position": 450.23564128172103,
+            "spread": 0.03143922474799865,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 413.11521558648946,
+          "center": 243.6780334884763
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.497232509833914,
+                "strength": 148.82084528605142
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.508785471973674,
+                "strength": 147.44448165893556
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.51532795547338,
+                "strength": 147.88299357096355
+              }
+            ],
+            "position": 36.508785471973674,
+            "spread": 0.01155296213975987,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.83580901679755,
+                "strength": 76.88718007405599
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.8637442723015,
+                "strength": 79.98537979125976
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.95523634463666,
+                "strength": 81.59444071451823
+              }
+            ],
+            "position": 450.8637442723015,
+            "spread": 0.0914920723351429,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.35495880032784,
+          "center": 243.6862648721376
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.427052495933633,
+            "spread": 0.16125892451936252,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.3838904410395,
+            "spread": 0.0694305606335206,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.22442696473595,
+            "spread": 0.1402775411222592,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.31824129508436,
+            "spread": 0.1418880460520313,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.95683794510586,
+        "verticalSpan": 315.09381433034844
+      }
+    },
+    {
+      "id": "46f1b48f-6528-46bd-a384-2358af25e500",
+      "name": "Aetherspouts",
+      "number": "44",
+      "bucket": "U",
+      "referenceHash": "3ac0ab13b466b2003b150cff202b0eedf862bd7a2b2812d84d169f859f9432b8",
+      "artHash": "1380fac43260a7a0dc17bd3970288622863f828393904c2fc55c1f416214fb8d",
+      "source": "https://scryfall.com/card/m15/44/aetherspouts?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.04005664324137,
+                "strength": 86.02424000700314
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.001192873690094,
+                "strength": 122.62338309089343
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.99329799983215,
+                "strength": 148.62521292169887
+              }
+            ],
+            "position": 37.001192873690094,
+            "spread": 0.038863769551277016,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.5558084892222,
+                "strength": 92.12474974791209
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.537360288635,
+                "strength": 137.03217738469442
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.5771445811836,
+                "strength": 147.0041124800841
+              }
+            ],
+            "position": 449.5558084892222,
+            "spread": 0.021336091961359216,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.5546156155321,
+          "center": 243.27850068145617
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.02677207424676,
+                "strength": 169.52895329793293
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.06090262694177,
+                "strength": 171.28649368286133
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.07551942733896,
+                "strength": 169.45492579142254
+              }
+            ],
+            "position": 36.06090262694177,
+            "spread": 0.03413055269501086,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.07086858172306,
+                "strength": 73.60483957926432
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.35363874184014,
+                "strength": 66.9994997660319
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.3476222908324,
+                "strength": 70.05141932169596
+              }
+            ],
+            "position": 450.3476222908324,
+            "spread": 0.27675370910935726,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.28671966389066,
+          "center": 243.2042624588871
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.68671413223981,
+            "spread": 0.06350117127761479,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.77988161696567,
+            "spread": 0.02233088103969294,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 68.44334289712451,
+            "spread": 0.43479772557230945,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 2,
+            "position": 382.958497603781,
+            "spread": 0.03899845492236409,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.0931674847259,
+        "verticalSpan": 314.51515470665646
+      }
+    },
+    {
+      "id": "eafd2e27-01d0-4894-886e-2b8776904ab9",
+      "name": "Amphin Pathmage",
+      "number": "45",
+      "bucket": "U",
+      "referenceHash": "3d22954b8685095644fc2a32e1c1cf15e8ef2e5a833631d2abef15f6e3dbd346",
+      "artHash": "fc167716e5810c6f0a2a600104fbe3d44389515647b3fbc58dfa3bc3749305a3",
+      "source": "https://scryfall.com/card/m15/45/amphin-pathmage?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.94142363640418,
+                "strength": 54.51956345240275
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.851706183547606,
+                "strength": 65.10809332529703
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.83420295216864,
+                "strength": 75.81084054311117
+              }
+            ],
+            "position": 36.851706183547606,
+            "spread": 0.08971745285657562,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.3205466314059,
+                "strength": 54.728219985961914
+              },
+              {
+                "y": 210,
+                "status": "ambiguous",
+                "position": 453.1865658481525,
+                "strength": 58.93014780680338
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.34250313368807,
+                "strength": 54.62165352503459
+              }
+            ],
+            "position": 449.331524882547,
+            "spread": 0.010978251141125384,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.4798186989994,
+          "center": 243.0916155330473
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 35.632068736793215,
+                "strength": 152.6387601216634
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 35.658330761160016,
+                "strength": 155.19624671936035
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 35.669117290224335,
+                "strength": 155.14018071492512
+              }
+            ],
+            "position": 35.658330761160016,
+            "spread": 0.02626202436680103,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 449.92984831155246,
+                "strength": 94.22738494873047
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 449.8945197363505,
+                "strength": 88.91900075276693
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 449.9718807166111,
+                "strength": 92.5462526957194
+              }
+            ],
+            "position": 449.92984831155246,
+            "spread": 0.04203240505864869,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.27151755039245,
+          "center": 242.79408953635624
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.401661943235524,
+            "spread": 0.04346967043069583,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.32920923190323,
+            "spread": 0.09629291149519759,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.77396535635546,
+            "spread": 0.17102827070847582,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.2233520791097,
+            "spread": 0.17597044254216598,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.9275472886677,
+        "verticalSpan": 314.44938672275424
+      }
+    },
+    {
+      "id": "2513fe72-4e20-49e6-9970-839f1c635792",
+      "name": "Accursed Spirit",
+      "number": "85",
+      "bucket": "B",
+      "referenceHash": "59af11c7a7e09ba57680e71c404d22dd1d42e37e225de16b34b4a21e737daa40",
+      "artHash": "0474409cc10a13e70ed015b0c9d916f907f4e3580f094e932e57afb1a174502e",
+      "source": "https://scryfall.com/card/m15/85/accursed-spirit?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.8620392539202,
+                "strength": 81.77566405932109
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.79615262769136,
+                "strength": 91.38116641441981
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.809919286534644,
+                "strength": 15.433360068003337
+              }
+            ],
+            "position": 36.809919286534644,
+            "spread": 0.052119967385557686,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.6806837826266,
+                "strength": 30.392933162053428
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.5019633663362,
+                "strength": 62.33698304494222
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.48901933495625,
+                "strength": 80.73131000200907
+              }
+            ],
+            "position": 449.5019633663362,
+            "spread": 0.17872041629038904,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.6920440798016,
+          "center": 243.15594132643542
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 35.828707821709806,
+                "strength": 222.84347333908082
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 35.80206735478343,
+                "strength": 224.87217394510904
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 35.82036391426376,
+                "strength": 224.44380497932434
+              }
+            ],
+            "position": 35.82036391426376,
+            "spread": 0.01829655948032638,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.31072494943464,
+                "strength": 119.76246630350748
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.31893480869866,
+                "strength": 120.546986134847
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.353851709605,
+                "strength": 120.11074651082357
+              }
+            ],
+            "position": 450.31893480869866,
+            "spread": 0.03491690090635302,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.4985708944349,
+          "center": 243.0696493614812
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.66724167036018,
+            "spread": 2.3641202975204507,
+            "reliable": false
+          },
+          "outerRight": {
+            "count": 2,
+            "position": 467.5262853842513,
+            "spread": 0.05570300966604691,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.36346358177234,
+            "spread": 0.3866187932486014,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 381.78094557159864,
+            "spread": 0.2354351403345163,
+            "reliable": true
+          }
+        },
+        "outerWidth": null,
+        "verticalSpan": 314.4174819898263
+      }
+    },
+    {
+      "id": "32efcfad-818c-4485-9022-cf94403f370b",
+      "name": "Black Cat",
+      "number": "86",
+      "bucket": "B",
+      "referenceHash": "2f3bdd6f626df0b0215865df3343c6df578f07ed4ab29bcc2de669d71ed896bb",
+      "artHash": "67fbc3c2fdf28735b6dbf5929a26c815f8a0ad7f1fdacf53b651151c46d3b42b",
+      "source": "https://scryfall.com/card/m15/86/black-cat?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.87999635296339,
+                "strength": 69.89814321200053
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.95251794307503,
+                "strength": 55.167159748077395
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.024893857184914,
+                "strength": 59.70689624150594
+              }
+            ],
+            "position": 36.95251794307503,
+            "spread": 0.07252159011164139,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.8167934639857,
+                "strength": 33.713949871063235
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 450.06963115481483,
+                "strength": 47.48100681304932
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 450.29202609364285,
+                "strength": 23.215353536605836
+              }
+            ],
+            "position": 450.06963115481483,
+            "spread": 0.2528376908291534,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 413.1171132117398,
+          "center": 243.51107454894492
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.264023752941355,
+                "strength": 204.07878081003824
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.31011365975386,
+                "strength": 205.2144069035848
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.33406554221681,
+                "strength": 202.77380650838217
+              }
+            ],
+            "position": 36.31011365975386,
+            "spread": 0.046089906812504466,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 451.3806416884503,
+                "strength": 123.59621423085531
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 451.6314810496736,
+                "strength": 125.68099263509114
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 451.73767750605407,
+                "strength": 130.88204555511476
+              }
+            ],
+            "position": 451.6314810496736,
+            "spread": 0.2508393612233135,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 415.3213673899197,
+          "center": 243.97079735471374
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.613834752666055,
+            "spread": 0.14685050437929803,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.7085017001247,
+            "spread": 0.32284603729027594,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.27593994996204,
+            "spread": 0.14673587676723798,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 381.3344063544868,
+            "spread": 0.16123220692253426,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.0946669474587,
+        "verticalSpan": 314.0584664045248
+      }
+    },
+    {
+      "id": "1454a83d-f018-446c-89fb-21460924e589",
+      "name": "Blood Host",
+      "number": "87",
+      "bucket": "B",
+      "referenceHash": "6e4e6f9f1299443588a1b9972c3e31d3682790322567a9f1bf0db9f8fee39912",
+      "artHash": "86f08b1db38e7372bc81459f1c1c254169665e18d1a0eaa490e1806700d91a4f",
+      "source": "https://scryfall.com/card/m15/87/blood-host?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.68717401379283,
+                "strength": 16.010176785786946
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.83936025427587,
+                "strength": 14.098319864273071
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.83372443022405,
+                "strength": 34.830466683705644
+              }
+            ],
+            "position": 36.83372443022405,
+            "spread": 0.14655041643122502,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.5522449097513,
+                "strength": 14.158573309580484
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.53056903291275,
+                "strength": 20.528646731376647
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.6658440689548,
+                "strength": 35.505940135320024
+              }
+            ],
+            "position": 449.5522449097513,
+            "spread": 0.1135991592034884,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.7185204795273,
+          "center": 243.19298466998768
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 35.773465481217,
+                "strength": 221.4729877948761
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 35.78144494137766,
+                "strength": 223.03670097986858
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 35.81778376144616,
+                "strength": 226.7089135805766
+              }
+            ],
+            "position": 35.78144494137766,
+            "spread": 0.036338820068500866,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.66462618855155,
+                "strength": 118.33934682210287
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.77347437951187,
+                "strength": 125.10881366729737
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.8526464310342,
+                "strength": 129.1045326868693
+              }
+            ],
+            "position": 450.77347437951187,
+            "spread": 0.10884819096031606,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.9920294381342,
+          "center": 243.27745966044478
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.25446248004726,
+            "spread": 2.9248655058425754,
+            "reliable": false
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 466.93858426144016,
+            "spread": 0.3390047741257831,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.78937350447515,
+            "spread": 0.060582413778774935,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.26982186440387,
+            "spread": 0.36983490689010523,
+            "reliable": true
+          }
+        },
+        "outerWidth": null,
+        "verticalSpan": 314.4804483599287
+      }
+    },
+    {
+      "id": "bfe513d1-2509-4051-ba85-49a19479fa5c",
+      "name": "Act on Impulse",
+      "number": "126",
+      "bucket": "R",
+      "referenceHash": "7ec29158b67f53a9652a773e10771ee53e50b3a3509e8c536010a0d2fab5ad46",
+      "artHash": "06054c614cdd111025cda7ef054293cfedfc323e57d42632d1d7a0f25cccad56",
+      "source": "https://scryfall.com/card/m15/126/act-on-impulse?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.34856434422085,
+                "strength": 91.28829277356466
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.18883227654301,
+                "strength": 69.61675314108531
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.916244977923554,
+                "strength": 90.4502097050349
+              }
+            ],
+            "position": 37.18883227654301,
+            "spread": 0.27258729861945596,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.91330917644376,
+                "strength": 93.77935037612914
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.80526609468575,
+                "strength": 72.10076706409454
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.7469947638699,
+                "strength": 70.79231989383698
+              }
+            ],
+            "position": 449.80526609468575,
+            "spread": 0.10804308175801225,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.61643381814275,
+          "center": 243.49704918561437
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.286114644252706,
+                "strength": 154.06504821777344
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.30615429105613,
+                "strength": 154.40987904866537
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.33159902594363,
+                "strength": 153.12024739583333
+              }
+            ],
+            "position": 36.30615429105613,
+            "spread": 0.02544473488750043,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 451.51452768461786,
+                "strength": 71.1042594909668
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 451.54473429009863,
+                "strength": 75.37194620768229
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 451.5674223744261,
+                "strength": 75.05577265421549
+              }
+            ],
+            "position": 451.54473429009863,
+            "spread": 0.03020660548077103,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 415.2385799990425,
+          "center": 243.9254442905774
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.259899298022855,
+            "spread": 0.057033114299180454,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.6183642772521,
+            "spread": 0.05878827280139376,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.53104796299799,
+            "spread": 0.1685642360964863,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.6623517809277,
+            "spread": 0.04178365249737226,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.35846497922927,
+        "verticalSpan": 315.1313038179297
+      }
+    },
+    {
+      "id": "e15a3f1a-83af-4541-8d1c-bf7844f969c9",
+      "name": "Aggressive Mining",
+      "number": "127",
+      "bucket": "R",
+      "referenceHash": "ba1b135c0f17fd16d4024f17a17cee2d7fc07dcfe658dff057b4e2927317ae8e",
+      "artHash": "1cb699aaebd039d87bea2fc22ef1cc528727b20470fc0cf212001c5ba3a480ba",
+      "source": "https://scryfall.com/card/m15/127/aggressive-mining?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.695390896844984,
+                "strength": 55.3979300181071
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.71022949718333,
+                "strength": 60.89589296976725
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.83436543263276,
+                "strength": 52.87465993563334
+              }
+            ],
+            "position": 37.71022949718333,
+            "spread": 0.12413593544943069,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 450.2435545977237,
+                "strength": 98.55289004643758
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 450.18458333862867,
+                "strength": 111.08333257039388
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 450.04073876557754,
+                "strength": 71.87462007204691
+              }
+            ],
+            "position": 450.18458333862867,
+            "spread": 0.1438445730511262,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.47435384144535,
+          "center": 243.947406417906
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.68214563853515,
+                "strength": 150.97394739786785
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.6457678839409,
+                "strength": 149.59458554585774
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.63080195799996,
+                "strength": 148.32760772705078
+              }
+            ],
+            "position": 36.6457678839409,
+            "spread": 0.0363777545942483,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.79911444878377,
+                "strength": 82.0279992421468
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.775477456397,
+                "strength": 85.25998090108236
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.7807828925108,
+                "strength": 87.72624028523764
+              }
+            ],
+            "position": 450.7807828925108,
+            "spread": 0.018331556272983107,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.1350150085699,
+          "center": 243.71327538822584
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.36292435671527,
+            "spread": 0.05940898405838979,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.6000155131308,
+            "spread": 0.24901037369068035,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.80046734594417,
+            "spread": 0.052227594125753285,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.75651558020775,
+            "spread": 0.060949728237289946,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.23709115641554,
+        "verticalSpan": 314.95604823426356
+      }
+    },
+    {
+      "id": "f5dacedc-f532-43b3-a783-e1dc7ccea53b",
+      "name": "Altac Bloodseeker",
+      "number": "128",
+      "bucket": "R",
+      "referenceHash": "32389809adee590173d5efc2329c400428361b30c8c3c0d7966093d4813ea900",
+      "artHash": "51e7afda120cabe59dc0934ebf5c9cc9400c1f722ef289d2deac7d53c4d30977",
+      "source": "https://scryfall.com/card/m15/128/altac-bloodseeker?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.4529187143486,
+                "strength": 48.49493322372437
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.43592750456776,
+                "strength": 57.45554677645365
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.44200936388305,
+                "strength": 85.7745063940684
+              }
+            ],
+            "position": 37.44200936388305,
+            "spread": 0.010909350465546197,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.9448678021854,
+                "strength": 117.31838356653849
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.8736412117601,
+                "strength": 80.5221900542577
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.8277540904719,
+                "strength": 80.90566975275675
+              }
+            ],
+            "position": 449.8736412117601,
+            "spread": 0.07122659042528312,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.43163184787704,
+          "center": 243.6578252878216
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.82551009442273,
+                "strength": 154.36873270670574
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.85066254701218,
+                "strength": 154.49692459106444
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.837304796786825,
+                "strength": 154.57793986002605
+              }
+            ],
+            "position": 36.837304796786825,
+            "spread": 0.013357750225353016,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 448.73921262374313,
+                "strength": 66.82089284261068
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.73946857846994,
+                "strength": 71.154519144694
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 451.37114617111985,
+                "strength": 69.53800633748372
+              }
+            ],
+            "position": 448.73946857846994,
+            "spread": 2.6316775926499076,
+            "reliable": false
+          },
+          "reliable": false,
+          "width": null,
+          "center": null
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.653491528043812,
+            "spread": 0.079590614984415,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.6060828307548,
+            "spread": 0.16605391788351653,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 68.03101479154921,
+            "spread": 0.017818440517132217,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.67708276301704,
+            "spread": 0.017702050558341398,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.952591302711,
+        "verticalSpan": 314.6460679714678
+      }
+    },
+    {
+      "id": "7b24ea58-0690-45d7-a84b-265b6277b59a",
+      "name": "Ancient Silverback",
+      "number": "168",
+      "bucket": "G",
+      "referenceHash": "15623778c51e83671a1181b1bffc7452bb9eda55e6ca2ac435498f6d33edc994",
+      "artHash": "84a130b92de90782646cfadf263e1195ff673f01170891b8f4a853a61c755c04",
+      "source": "https://scryfall.com/card/m15/168/ancient-silverback?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.02446041373048,
+                "strength": 82.02256647745769
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.96521044130904,
+                "strength": 89.64682981967925
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.9855198844325,
+                "strength": 70.75058002471924
+              }
+            ],
+            "position": 36.9855198844325,
+            "spread": 0.03894052929798164,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.85509098102546,
+                "strength": 116.1196964263916
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.89691740762896,
+                "strength": 115.48890364964804
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.88401557426243,
+                "strength": 115.01374618212382
+              }
+            ],
+            "position": 449.88401557426243,
+            "spread": 0.02892459323697949,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.89849568982993,
+          "center": 243.43476772934747
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 35.8160454812235,
+                "strength": 168.06434694925943
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 35.79531191873596,
+                "strength": 171.1185796101888
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 35.83946601920264,
+                "strength": 168.22784639994305
+              }
+            ],
+            "position": 35.8160454812235,
+            "spread": 0.023420537979141898,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.00758876727,
+                "strength": 90.37544606526693
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.0583699238487,
+                "strength": 89.23513870239258
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 449.9953006614974,
+                "strength": 88.64423891703288
+              }
+            ],
+            "position": 450.00758876727,
+            "spread": 0.050781156578693754,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.1915432860465,
+          "center": 242.91181712424677
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.366977560581482,
+            "spread": 0.06231029604033722,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.74159069150187,
+            "spread": 0.015045355090023804,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.88393034379044,
+            "spread": 0.02209253931042099,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 2,
+            "position": 382.58580553046784,
+            "spread": 0.011709497957497206,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.3746131309204,
+        "verticalSpan": 314.7018751866774
+      }
+    },
+    {
+      "id": "b49270b2-ba15-4268-adb3-16d09c09adee",
+      "name": "Back to Nature",
+      "number": "169",
+      "bucket": "G",
+      "referenceHash": "92c4e39a95e53460f64d6715c60510eb3b3e1dac5dd551abac22d6b8c3880f69",
+      "artHash": "8d3e5ada2213561e31dcc7a930338aa798ae902d55abc857b7810030ec76cc4d",
+      "source": "https://scryfall.com/card/m15/169/back-to-nature?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.6329216229142,
+                "strength": 57.6098965326945
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.54197623376936,
+                "strength": 57.94206666946411
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.46850340569126,
+                "strength": 54.984156894683835
+              }
+            ],
+            "position": 37.54197623376936,
+            "spread": 0.09094538914484218,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 450.31810567607357,
+                "strength": 63.01690991719564
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 450.2815326923849,
+                "strength": 73.82165651321411
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 450.2937312167036,
+                "strength": 64.47648356755575
+              }
+            ],
+            "position": 450.2937312167036,
+            "spread": 0.024374459369994383,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.75175498293424,
+          "center": 243.91785372523645
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.21071788417862,
+                "strength": 147.43687388102214
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.19655180246929,
+                "strength": 152.38651415507
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.18612260771517,
+                "strength": 149.33969472249348
+              }
+            ],
+            "position": 36.19655180246929,
+            "spread": 0.014166081709333866,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.05406164696905,
+                "strength": 82.49161936442057
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.283177744838,
+                "strength": 82.0197260538737
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 449.92732169392247,
+                "strength": 80.95192006429036
+              }
+            ],
+            "position": 450.05406164696905,
+            "spread": 0.22911609786893905,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 413.85750984449976,
+          "center": 243.12530672471917
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.626268913347413,
+            "spread": 0.014854032258465821,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.80680711606357,
+            "spread": 0.010967008316470128,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.90846164141793,
+            "spread": 0.146542607163056,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.6658270826338,
+            "spread": 0.19331610989081582,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.18053820271615,
+        "verticalSpan": 314.7573654412159
+      }
+    },
+    {
+      "id": "bd814ce3-9555-4e9d-a212-e40717f4e546",
+      "name": "Carnivorous Moss-Beast",
+      "number": "170",
+      "bucket": "G",
+      "referenceHash": "6ddd9b9648618182bde77849598a4fea3f131d730ed9d5f94d1d3766f57cd9e8",
+      "artHash": "5f8f3a79bc1eebf6f440b6e6423255604519982efef7883c75c814387e958509",
+      "source": "https://scryfall.com/card/m15/170/carnivorous-moss-beast?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.068972675791734,
+                "strength": 130.43225702444713
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.000740570622526,
+                "strength": 104.71406733194986
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.99327379082411,
+                "strength": 75.20795329411824
+              }
+            ],
+            "position": 37.000740570622526,
+            "spread": 0.06823210516920852,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 450.06186994763044,
+                "strength": 127.9553899606069
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.98236160149065,
+                "strength": 89.08782365322114
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 450.0245505633699,
+                "strength": 77.36202634175619
+              }
+            ],
+            "position": 450.0245505633699,
+            "spread": 0.04218896187927612,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 413.0238099927474,
+          "center": 243.51264556699624
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.095978972076495,
+                "strength": 150.75513865152996
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.113639425592204,
+                "strength": 155.31848068237304
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.0740974944148,
+                "strength": 152.45536117553712
+              }
+            ],
+            "position": 36.095978972076495,
+            "spread": 0.021881477661693793,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.9328401268105,
+                "strength": 64.6575798034668
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 451.0106002578077,
+                "strength": 69.9411137898763
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.9403144444501,
+                "strength": 61.24555257161458
+              }
+            ],
+            "position": 450.9403144444501,
+            "spread": 0.07028581335760009,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 414.8443354723736,
+          "center": 243.51814670826332
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.48214377987072,
+            "spread": 0.059294987862024584,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.46937308166497,
+            "spread": 0.13821735839189841,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.4385853323986,
+            "spread": 0.17525539376191546,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.6873926350405,
+            "spread": 0.06075496102158695,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.98722930179423,
+        "verticalSpan": 315.2488073026419
+      }
+    },
+    {
+      "id": "ec56727f-6280-4625-96b9-9b599af0dada",
+      "name": "Avarice Amulet",
+      "number": "212",
+      "bucket": "artifact",
+      "referenceHash": "14aea4fd2b440b24ee0b6666b14f1a2428494ce03ea4c67065ad01a06d6f749e",
+      "artHash": "e0f350b8a3bda2e689723761dfe641fae6dc3677ca257dca2933d2ed42a47e5e",
+      "source": "https://scryfall.com/card/m15/212/avarice-amulet?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.21441164532485,
+                "strength": 126.44352339903513
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.18359609530999,
+                "strength": 127.58595267534255
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.19533461333242,
+                "strength": 125.76836066444714
+              }
+            ],
+            "position": 37.19533461333242,
+            "spread": 0.01907703199243116,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.79150343178304,
+                "strength": 126.75870362122853
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.8156329873382,
+                "strength": 151.26487404704093
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.8095884620546,
+                "strength": 122.95042277177176
+              }
+            ],
+            "position": 449.8095884620546,
+            "spread": 0.01808503027154984,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.61425384872217,
+          "center": 243.5024615376935
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.29938997297787,
+                "strength": 204.2618000348409
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 32.309664047590935,
+                "strength": 203.65700019200642
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 32.31700661653573,
+                "strength": 205.72480680147808
+              }
+            ],
+            "position": 32.309664047590935,
+            "spread": 0.010274074613064954,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "ambiguous",
+                "position": 454.9746296156163,
+                "strength": 76.7607198079427
+              },
+              {
+                "y": 500,
+                "status": "ambiguous",
+                "position": 448.72515415495263,
+                "strength": 77.06163991292318
+              },
+              {
+                "y": 550,
+                "status": "ambiguous",
+                "position": 455.13453157746716,
+                "strength": 85.91952082316081
+              }
+            ],
+            "position": null,
+            "spread": null,
+            "reliable": false
+          },
+          "reliable": false,
+          "width": null,
+          "center": null
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.404104584829707,
+            "spread": 0.11463294862522133,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.39629937169275,
+            "spread": 0.2452078506691464,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 74.87005557693261,
+            "spread": 0.04690307757309142,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.80639563743966,
+            "spread": 0.01986946565426706,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.992194786863,
+        "verticalSpan": 307.93634006050706
+      }
+    },
+    {
+      "id": "eddc4ee6-7855-4dc7-9488-5e019609bd09",
+      "name": "Brawler's Plate",
+      "number": "213",
+      "bucket": "artifact",
+      "referenceHash": "cf0c16c5be0b0dbbe08b4916fe6e209188797242405b1dbb926eb45e977ec410",
+      "artHash": "dbb035ac37dd4f17421ac277d4cf421bf72a292462a6c807b2fcba29414727dc",
+      "source": "https://scryfall.com/card/m15/213/brawlers-plate?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.77690485226407,
+                "strength": 115.50450317064922
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.85808622793936,
+                "strength": 130.00216952959696
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.98468145403179,
+                "strength": 125.14568241437276
+              }
+            ],
+            "position": 36.85808622793936,
+            "spread": 0.12659522609242657,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.8632831431112,
+                "strength": 126.40764294266701
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.8248558625662,
+                "strength": 141.90396315256754
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.8314166985496,
+                "strength": 132.45678351124127
+              }
+            ],
+            "position": 449.8314166985496,
+            "spread": 0.03186644456155818,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.9733304706103,
+          "center": 243.34475146324448
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.15149441911019,
+                "strength": 228.36693317095438
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 32.195627304277956,
+                "strength": 226.37562058766682
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 32.28346518823126,
+                "strength": 218.1549115975698
+              }
+            ],
+            "position": 32.195627304277956,
+            "spread": 0.0878378839533056,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "ambiguous",
+                "position": 448.7187597247399,
+                "strength": 82.60934702555339
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.7382538870154,
+                "strength": 79.89293950398763
+              },
+              {
+                "y": 550,
+                "status": "ambiguous",
+                "position": 455.05972321011393,
+                "strength": 87.54399998982747
+              }
+            ],
+            "position": null,
+            "spread": null,
+            "reliable": false
+          },
+          "reliable": false,
+          "width": null,
+          "center": null
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.20425973036349,
+            "spread": 0.11678848013300325,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.34729041190826,
+            "spread": 0.104006009237537,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 68.10107847928964,
+            "spread": 7.146274479233,
+            "reliable": false
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 383.1344669152193,
+            "spread": 0.10617110863393009,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.14303068154476,
+        "verticalSpan": null
+      }
+    },
+    {
+      "id": "e8ba6d7d-fad0-4af1-be12-44be326a031e",
+      "name": "Bronze Sable",
+      "number": "214",
+      "bucket": "artifact",
+      "referenceHash": "a183ae3c612bfdf2ffb54c0a656b66ec44e4281809c85d04fb6ff58fa87ff97e",
+      "artHash": "278c44bde95576e58677fc278703a900d5f3011db43b866c54d60464e0eb19df",
+      "source": "https://scryfall.com/card/m15/214/bronze-sable?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.22174477826782,
+                "strength": 126.7294133345286
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.12074344256967,
+                "strength": 146.60335287253062
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.118126232715106,
+                "strength": 125.79388697942098
+              }
+            ],
+            "position": 37.12074344256967,
+            "spread": 0.10100133569815029,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.8842178533912,
+                "strength": 137.2531133254369
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.82924195544973,
+                "strength": 127.09186329841614
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.8302209806356,
+                "strength": 139.36583727995554
+              }
+            ],
+            "position": 449.8302209806356,
+            "spread": 0.053996872755590175,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.7094775380659,
+          "center": 243.47548221160264
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.200030164705645,
+                "strength": 208.14148604075115
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 32.1770761442934,
+                "strength": 213.3974261601766
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 32.152742068759444,
+                "strength": 213.18070675532024
+              }
+            ],
+            "position": 32.1770761442934,
+            "spread": 0.02433407553395739,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "ambiguous",
+                "position": 448.7656194542738,
+                "strength": 83.20250091552734
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.78898936406387,
+                "strength": 83.41816533406576
+              },
+              {
+                "y": 550,
+                "status": "ambiguous",
+                "position": 455.1204533133258,
+                "strength": 81.97770716349284
+              }
+            ],
+            "position": null,
+            "spread": null,
+            "reliable": false
+          },
+          "reliable": false,
+          "width": null,
+          "center": null
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.36863874335211,
+            "spread": 0.051806569939131464,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.49485609412943,
+            "spread": 0.12400748489665148,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 74.10105600900502,
+            "spread": 0.3238163522425168,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 2,
+            "position": 381.9194214667766,
+            "spread": 0.14162264710654426,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.1262173507773,
+        "verticalSpan": 307.8183654577716
+      }
+    },
+    {
+      "id": "1dc57d63-5a6d-4ff2-8079-544b2c4eade1",
+      "name": "Battlefield Forge",
+      "number": "240",
+      "bucket": "land",
+      "referenceHash": "f640436d6037122da3a803fabfaf09e1b2ea034cfee6a80a3aa5652d302f3a28",
+      "artHash": "5bcee9c9619b4d65b4f36e00f91799a8e872cb80f6781b61c94fe33dd833a4bf",
+      "source": "https://scryfall.com/card/m15/240/battlefield-forge?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.75171100907799,
+                "strength": 101.82426277399063
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.73104864642676,
+                "strength": 98.03205647865931
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 37.643219544663296,
+                "strength": 76.41732659737269
+              }
+            ],
+            "position": 37.73104864642676,
+            "spread": 0.08782910176346093,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.8704523471223,
+                "strength": 159.6371529440085
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.9253889603331,
+                "strength": 168.48053018649418
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.95001979234377,
+                "strength": 167.83084681828817
+              }
+            ],
+            "position": 449.9253889603331,
+            "spread": 0.054936613210827545,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.19434031390637,
+          "center": 243.82821880337994
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 36.814523376914146,
+                "strength": 119.74281285603841
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 36.805844332360415,
+                "strength": 118.40190823872884
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 36.79285593886768,
+                "strength": 120.67917938232422
+              }
+            ],
+            "position": 36.805844332360415,
+            "spread": 0.012988393492733508,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 454.91033651587566,
+                "strength": 183.110760307312
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 454.8821313111909,
+                "strength": 153.25604006449382
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 454.9250265906068,
+                "strength": 142.3404332478841
+              }
+            ],
+            "position": 454.91033651587566,
+            "spread": 0.028205204684752516,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 418.1044921835152,
+          "center": 245.85809042411805
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.748859129918564,
+            "spread": 0.11378318044912916,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.40056993424935,
+            "spread": 0.1659944286699897,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 68.11853694176652,
+            "spread": 6.830753807314622,
+            "reliable": false
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 382.63701748843084,
+            "spread": 0.03851030131045263,
+            "reliable": true
+          }
+        },
+        "outerWidth": 447.6517108043308,
+        "verticalSpan": null
+      }
+    },
+    {
+      "id": "aa9ad0c9-77a7-4d18-9707-1e5e3d4cf7e8",
+      "name": "Caves of Koilos",
+      "number": "241",
+      "bucket": "land",
+      "referenceHash": "07c5e111711db70456c3d8d4bdec3e7880acead54ed924d1eeae9ab98f0f59bf",
+      "artHash": "4e43666698af090e30e92de8b8b49436893414a81e51717b78ea80be7a0a08eb",
+      "source": "https://scryfall.com/card/m15/241/caves-of-koilos?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 37.05804935522198,
+                "strength": 138.89889019330343
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 37.01084631625377,
+                "strength": 139.75932925542196
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.93020143992965,
+                "strength": 149.1519732952118
+              }
+            ],
+            "position": 37.01084631625377,
+            "spread": 0.0806448763241221,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 453.41073377840183,
+                "strength": 34.16294314066569
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 453.50052275343324,
+                "strength": 74.2199691772461
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.4938027943837,
+                "strength": 64.58543713092804
+              }
+            ],
+            "position": 453.41073377840183,
+            "spread": 3.9169309840181086,
+            "reliable": false
+          },
+          "reliable": false,
+          "width": null,
+          "center": null
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 31.988819252066907,
+                "strength": 248.03089344104131
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 31.967629626501804,
+                "strength": 246.90586682955424
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 31.9398538744457,
+                "strength": 247.5894665280978
+              }
+            ],
+            "position": 31.967629626501804,
+            "spread": 0.027775752056104608,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 450.67923212670615,
+                "strength": 75.96592648824056
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 450.6540224790178,
+                "strength": 77.20461978912354
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 450.71992618024524,
+                "strength": 74.52597382863362
+              }
+            ],
+            "position": 450.67923212670615,
+            "spread": 0.04069405353908451,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 418.7116025002043,
+          "center": 241.323430876604
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.48126165981188,
+            "spread": 0.14639372601291356,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.6369569276952,
+            "spread": 0.027692043546437617,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.37656389990923,
+            "spread": 6.935360072503215,
+            "reliable": false
+          },
+          "artBottom": {
+            "count": 3,
+            "position": 381.91018469017473,
+            "spread": 0.1657185613894967,
+            "reliable": true
+          }
+        },
+        "outerWidth": 448.15569526788335,
+        "verticalSpan": null
+      }
+    },
+    {
+      "id": "b0ad4395-5766-44c3-b5af-3d65d49a3333",
+      "name": "Darksteel Citadel",
+      "number": "242",
+      "bucket": "land",
+      "referenceHash": "76bc8cdc9d650d9d5f5170c4abc1c382e6c95ee5dbac32a74b5c042703f5c44d",
+      "artHash": "8ee3cf7a28b7d75ae2354b5afea67fc9143a3df30e460b5f36ef9dd043c4e593",
+      "source": "https://scryfall.com/card/m15/242/darksteel-citadel?utm_source=api",
+      "referenceDimensions": [745, 1040],
+      "normalization": {
+        "sourceWidth": 745,
+        "sourceHeight": 1040,
+        "factor": 0.6538461538461539,
+        "padX": 0.4423076923076792,
+        "padY": 0,
+        "aspectErrorPercent": -0.1812736443884022
+      },
+      "windows": {
+        "art": {
+          "left": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 36.96298917453351,
+                "strength": 140.24602012634278
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 36.95663214416756,
+                "strength": 170.81667996644973
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 36.94158128810244,
+                "strength": 200.37136256694794
+              }
+            ],
+            "position": 36.95663214416756,
+            "spread": 0.015050856065116136,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 105,
+                "status": "measured",
+                "position": 449.6279732377793,
+                "strength": 127.94121308724085
+              },
+              {
+                "y": 210,
+                "status": "measured",
+                "position": 449.62745419835295,
+                "strength": 105.6414839108785
+              },
+              {
+                "y": 315,
+                "status": "measured",
+                "position": 449.60126021075814,
+                "strength": 151.82252926627794
+              }
+            ],
+            "position": 449.62745419835295,
+            "spread": 0.026193987594808732,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 412.6708220541854,
+          "center": 243.29204317126025
+        },
+        "rules": {
+          "left": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "measured",
+                "position": 32.043965976411364,
+                "strength": 150.51441873311995
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 32.03466585771131,
+                "strength": 150.8091062227885
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 32.025047574663695,
+                "strength": 150.5798408985138
+              }
+            ],
+            "position": 32.03466585771131,
+            "spread": 0.00961828304761525,
+            "reliable": true
+          },
+          "right": {
+            "strips": [
+              {
+                "y": 450,
+                "status": "ambiguous",
+                "position": 454.60932971665216,
+                "strength": 69.17166175842286
+              },
+              {
+                "y": 500,
+                "status": "measured",
+                "position": 448.4668724856071,
+                "strength": 54.566846720377605
+              },
+              {
+                "y": 550,
+                "status": "measured",
+                "position": 448.43204770460625,
+                "strength": 57.7474126180013
+              }
+            ],
+            "position": 448.4494600951067,
+            "spread": 0.017412390500453512,
+            "reliable": true
+          },
+          "reliable": true,
+          "width": 416.41479423739537,
+          "center": 240.24206297640902
+        }
+      },
+      "printing": {
+        "groups": {
+          "outerLeft": {
+            "count": 3,
+            "position": 19.47547415696752,
+            "spread": 0.08853314520555244,
+            "reliable": true
+          },
+          "outerRight": {
+            "count": 3,
+            "position": 467.4285543164315,
+            "spread": 0.04425032171275234,
+            "reliable": true
+          },
+          "artTop": {
+            "count": 3,
+            "position": 67.53478907969222,
+            "spread": 0.1412502352754359,
+            "reliable": true
+          },
+          "artBottom": {
+            "count": 1,
+            "position": null,
+            "spread": null,
+            "reliable": false
+          }
+        },
+        "outerWidth": 447.953080159464,
+        "verticalSpan": null
+      }
+    }
+  ]
+}

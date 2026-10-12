@@ -2364,3 +2364,76 @@ says `Interrupt`. Type overlap cannot certify typography until this source
 mismatch is corrected. Zombie Mob, Steal Enchantment and Selenia expose body
 font/line-break differences; old art borders also need separate left/right
 inspection. Reproduce with `old-window-audit.mjs SET capture`.
+
+### Recent-set transfer and shared scan scale
+
+The release-era survey caches 267 high-resolution references and matching art
+crops across M15, WAR, M19, M20, IKO, M21, ZNR, MID, DMU, WOE, FDN and TDM.
+Selection is deterministic: the first three eligible ordinary nonlegendary
+cards per material/color bucket. This is a diagnostic sample, not a full-set
+census. Reports retain rejected/ambiguous edges and the source inventory.
+TDM has only five eligible high-resolution references in this snapshot; 242
+otherwise queried references fail the quality gate. It cannot support a
+balanced scale estimate yet.
+
+`scan-scale.mjs` adds one uniform factor per set/normal-frame group, measured
+against the previously frozen WAR baseline frame template. The first two
+U/B/R/G cards per color calibrate opposing outer rails; the third validates.
+At least six calibration cards across three colors and two validation cards
+are required. A separate vertical span checks the uniform-scale hypothesis;
+it does not choose the scale. Missing anchors, excessive spread, an out-of-range
+scale or disagreement between horizontal and vertical geometry rejects the
+fit. Text, mana, set symbols and horizontal art/rules-box widths never fit it.
+These previously inspected references are validation samples, not blind holdouts.
+
+Accepted factors include IKO 1.00046, M21 1.00007, ZNR 1.00001, MID 1.00099,
+WOE 1.00408 and FDN 1.00436. M15 and M19 also accept small corrections.
+WAR, M20 and DMU fail the vertical consistency check and retain unit scale.
+TDM lacks enough anchors. Each card then uses the existing independent bounded
+translation detector; uncertain axes stay at zero. The final transform is
+applied to the source PNG in one resampling pass. No per-card scale, rotation
+fit, anisotropic stretch or component warp is allowed by this experiment.
+The raw images and raw scores remain available.
+
+The roughly 0.4% WOE/FDN corrections account for almost two pixels of outer
+frame width, but do not explain all window differences. For example, median
+art widths in the balanced U/B/R/G samples are approximately 414.3px for IKO,
+415.8px for M21, 415.9px for ZNR, 414.2px for MID and 413.6–413.7px for WOE/FDN
+after their accepted shared scales (488×680 comparison grid). The later sets
+do not support one permanent M21 cutoff. Reference cropping, digitization,
+frame assets and physical printing differences are not yet separated enough
+to claim a manufacturing change. White, artifact, gold and land bevels remain
+separate diagnostic buckets because strong neighboring transitions can
+confuse their edge measurements.
+
+The exact v54 baseline and v55 painter were captured for 72 additional cards:
+12 U/B/R/G cards each in IKO, ZNR, MID, DMU, WOE and FDN. All 72 improve art-edge
+F1 by more than .02 at both inspect and table tiers after accepted normalization;
+there are no art regressions. Inspect medians:
+
+| Set | Before | Current |
+| --- | -----: | ------: |
+| IKO |   .496 |    .854 |
+| ZNR |   .459 |    .837 |
+| MID |   .493 |    .790 |
+| DMU |   .589 |    .797 |
+| WOE |   .419 |    .767 |
+| FDN |   .438 |    .743 |
+
+These are border-overlap scores, not whole-card accuracy percentages. The rules
+frame remains unchanged in these six sets. Their symbols and original wording
+have not been certified, so this study deliberately does not score typography.
+Each `window-era-SET-render-measurement.json` retains both raster tiers, raw and
+normalized scores, source hashes, individual transforms and every result.
+Earlier v55 reports keep their original translation-only results; this study
+does not rewrite earlier evidence under a different normalization policy.
+
+Reproduce the geometry survey with
+`node games/magic/tools/accuracy/window-era-study.mjs fetch` (cache downloads)
+and `compare` (CPU only). Optional set codes follow either command. Render
+with `window-era-render.mjs capture`, generate controls with
+`window-era-render.mjs baseline PATH_TO_CLEAN_V54_CHECKOUT`, then run
+`window-era-render.mjs compare`. Capturing uses Chromium once per revision;
+geometry and edge comparisons use Node on cached PNGs, with no GPU or browser.
+The local review page includes raw, translation-only and shared-scale overlays;
+the page and downloaded imagery remain outside the tracked repository.
