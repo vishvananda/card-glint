@@ -1,0 +1,122 @@
+{
+  "version": "fixed-frame-v2",
+  "scope": "frame-transfer",
+  "set": "m20",
+  "canonicalSize": [488, 680],
+  "sourceSnapshot": "becd8f0e85e6dde9172aad5fff4c5944264e68dbc9bc74302c457700cf0a2d33",
+  "referenceIdentity": "0b14203ebce8cfae410e4b96549b6d38af8923ed9923b59d5caa9eb94286d491",
+  "sourceRun": "m21/baseline-reviewed",
+  "transferredFrom": {
+    "set": "m21",
+    "profileHash": "36080f2c05a3b82450601e3389389cfa6296dd6fac7ae3d2b8411eaccee8589f",
+    "sourceSnapshot": "62e86f481f7dcad3d393d92712757e520f5493975f76d5f6718a4151c39958d7",
+    "referenceIdentity": "4f3b8733b523e434c3a61517fae85590d91a825902599ae29779e12fb037b46d"
+  },
+  "frameFamilies": {
+    "planeswalker": {
+      "transform": {
+        "tx": 1.1178011652519948,
+        "ty": -1.514261100810595,
+        "scale": 0.9986527390400496,
+        "rotation": 0.0025265266349578054
+      },
+      "status": "calibrated",
+      "proposedTransform": {
+        "tx": 1.1178011652519948,
+        "ty": -1.514261100810595,
+        "scale": 0.9986527390400496,
+        "rotation": 0.0025265266349578054
+      },
+      "residualPx": 1.6102750330269093,
+      "landmarkCount": 15,
+      "sampleCount": 5,
+      "validation": {
+        "rawMedianF1": 0.714939304579927,
+        "fittedMedianF1": 0.7606465782802749,
+        "medianPairedImprovement": 0.08280763081374254,
+        "nonRegressing": 4,
+        "accepted": true
+      },
+      "calibrationIds": [
+        "9c017fa9-7021-417a-9c2e-3df409644fcf",
+        "98c85699-2daf-4e87-a3be-465d02bd64bb",
+        "e329a3e2-6702-4758-8aac-c3017e77b619",
+        "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+        "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3"
+      ]
+    },
+    "modern-normal": {
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0
+      },
+      "status": "identity-frame-validation",
+      "proposedTransform": {
+        "tx": 0.6061655317099184,
+        "ty": -2.215683278313995,
+        "scale": 1.0000848379637783,
+        "rotation": 0.004092459400241654
+      },
+      "residualPx": 1.4095051030406853,
+      "landmarkCount": 15,
+      "sampleCount": 13,
+      "validation": {
+        "rawMedianF1": 0.8865576371053028,
+        "fittedMedianF1": 0.8666402192063917,
+        "medianPairedImprovement": -0.023542062571282885,
+        "nonRegressing": 6,
+        "accepted": false
+      },
+      "calibrationIds": [
+        "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+        "4bd3014b-94bb-4a9f-92cf-239a2dcc7e97",
+        "323db259-d35e-467d-9a46-4adcb2fc107c",
+        "6d42d3dd-29df-44a1-89b8-994761eda77d",
+        "49c07ea0-27ff-46fb-a41f-3e378c977b5d",
+        "9c0f60a6-b5c8-4704-8b61-94e8fc463e5d",
+        "5d878dab-5ed2-4ef3-b2c7-472290892854",
+        "59fa8e8d-bcb8-47bf-b71a-df11c8d0f2c9",
+        "4a433310-3fe2-4156-864d-7a6b2638340b",
+        "71a4860a-8bb6-45c0-b00a-b4a42da33ab9",
+        "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+        "43224e74-2c51-40bd-bc34-f66e990a3e33",
+        "7bbd2cab-538e-4932-a828-150e3e9d52ad"
+      ]
+    },
+    "modern-legendary": {
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0
+      },
+      "status": "identity-frame-validation",
+      "proposedTransform": {
+        "tx": 0.8434650122250328,
+        "ty": -1.2326267404908307,
+        "scale": 0.9998000561952066,
+        "rotation": -0.00009414561448303996
+      },
+      "residualPx": 1.0445983686646234,
+      "landmarkCount": 15,
+      "sampleCount": 5,
+      "validation": {
+        "rawMedianF1": 0.9959731543624161,
+        "fittedMedianF1": 0.9397473386904899,
+        "medianPairedImprovement": -0.05803212666308566,
+        "nonRegressing": 2,
+        "accepted": false
+      },
+      "calibrationIds": [
+        "9b4e628f-5fc5-4c17-a07d-448d361d7e7c",
+        "cb078fbb-beb9-4c0b-be93-ed1e73e6f8d8",
+        "0b8aff2c-1f7b-4507-b914-53f8c4706b3d",
+        "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+        "3af78d76-ad5c-44ba-880d-b834bcde5398"
+      ]
+    }
+  },
+  "note": "Exact frozen M21 family transforms reused. Calibration IDs and validation scores belong to M21. No M20 fitting, text-based alignment, or per-scan corrections. Large planeswalkers remain unconfigured. Residual confidence is still measured per scan without altering any transform."
+}
