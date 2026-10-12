@@ -1521,3 +1521,58 @@ The next detector pass should evaluate component anatomy explicitly:
 
 These diagnostics run on cached PNGs in Node. Chromium remains a raster/font
 capture step, never a requirement for scoring or searching local comparisons.
+
+### Early text centering and styled margins
+
+The [27-card diagnostic](fixtures/accuracy/early-centered-measurement.json)
+compares nine shared names across Alpha, Beta and Unlimited. Larger 32.5px
+printing reproduces the centered line endings on Howling Mine, Disenchant and
+Healing Salve; transferring Revised's 27.5px size directly did not. Mean body
+edge F1 increases from .425 to .467 at inspect size and .399 to .448 at table
+size. Twenty-one cards improve; all six Disenchant/Healing Salve scores regress.
+The [visual review](fixtures/accuracy/early-centered-review.json) retains those
+failures, remaining vertical offsets, font-weight differences and a source
+mismatch on Alpha Force of Nature. These are development diagnostics, not
+whole-set accuracy or an independent holdout.
+
+Automatic centering now uses measured line fit and paragraph structure, with
+the source selectable independently from visible wording. Purelace exposed a
+separate margin bug: italic reminder runs bypassed both short and long text
+paths. Early/Revised text now retains the panel inset regardless of styling.
+Full Oracle reminders can shrink to fit, including Mesa Pegasus; they are not
+dropped to force agreement with scans. See the [wording API](README.md#original-printing-and-oracle-wording).
+
+## Queued experiments after the early-set work
+
+Requested order; these remain experiments to try, not completed calibrations.
+Keep the existing frame assets and shared set/frame policies while evaluating
+them. Preserve geometry scores independently of color matching.
+
+1. **HSB adjustments by set, frame color and component.** Sample representative
+   white, blue, black, red, green, artifact and land frames from cached scans.
+   Use approximate frame regions, then isolate the outer frame, mana symbols
+   and text-box background; exclude illustration and printed ink from background
+   estimates. Estimate robust hue, saturation and brightness adjustments for
+   each component and combination, preserving texture and gradients. Compare
+   several scans to identify common printing appearance, freeze the adjustments,
+   and test other cards from the set. Do not fit individual scans. Report sparse
+   or inconsistent samples rather than inventing a correction. Keep color
+   agreement separate from shape/placement metrics so tint changes cannot hide
+   alignment failures.
+2. **More faithful set symbols.** Compare original contours, black outlines,
+   white interior components and rarity fills. Reproduce the silver/gold
+   gradients, including their direction and tonal range, rather than a flat
+   metallic color. Measure silhouette, outline thickness and placement
+   separately from fill color, and retain a list of source assets whose shapes
+   cannot be corrected through rendering alone.
+3. **Modern-frame alignment.** Run a component-by-component pass on ordinary
+   modern cards: frame and art edges, title/mana row, type/set-symbol row,
+   text panel, stats and footer. Use shared frame geometry first, with per-set
+   exceptions only when repeated evidence supports them. Freeze changes before
+   testing transfer to another set using the same frame.
+4. **Planeswalker components and layout.** Review ability-text origins,
+   paragraph spacing, loyalty-cost symbols and their relation to each ability
+   row. Also inspect the lower frame, text-panel boundary and loyalty area.
+   Evaluate different supported ability counts separately; keep unsupported
+   layouts and frame-asset defects explicit rather than masking them with text
+   offsets.
