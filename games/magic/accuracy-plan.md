@@ -673,3 +673,70 @@ The last command generates `test-results/magic-accuracy/tmp/retro-basics/basics.
 without a browser. It shows six reserved scan/previous/current examples with
 full-card, type, body and footer crops, and links every card's scores. The prior
 printed-detail page remains linked. Reference/art images stay local.
+
+## Fourth Edition headers and credits
+
+The [Fourth Edition plan](fixtures/accuracy/4ed/details-plan.json) freezes a
+separate policy for nonland cards using the fourth-family plate. Six development
+cards established title and type placement, the complete mana row, credits,
+copyright and historical tap treatment. The six reserved nonland cards were
+opened after the header policy was frozen at `2178f86`. A development stats
+regression was then removed at `0467153`, restoring the previous shadow. At both
+tiers, every pixel outside the stats window matches the frozen header policy,
+and every pixel inside it matches the original baseline, across all 378 cards.
+
+[The paired measurement](fixtures/accuracy/4ed/details-measurement.json) covers
+all 378 ordinary printings at both tiers with identical input, reference bytes,
+fonts and fixed alignment. Nine bodies/printing targets are reviewed; 369 remain
+Oracle diagnostics. A warning on either side excludes a card from paired
+headline metrics: 18 lands lack calibration, and Balance, Plague Rats and Sleight
+of Mind have uncertain frame landmarks. All remain in the individual results.
+There are 20 current-render warnings and 21 warnings across the pair.
+
+| Group                            | Cards | Title F1      | Mana F1       | Footer F1     |
+| -------------------------------- | ----- | ------------- | ------------- | ------------- |
+| Development nonlands             | 6     | 0.411 → 0.653 | 0.446 → 0.826 | 0.331 → 0.622 |
+| Reserved nonlands                | 6     | 0.423 → 0.627 | 0.467 → 0.846 | 0.309 → 0.620 |
+| All confidently aligned nonlands | 357   | 0.410 → 0.638 | 0.470 → 0.816 | 0.320 → 0.624 |
+
+These are median inspect-tier edge F1 values, not accuracy percentages. All 357
+cards improve by more than 0.02 in those three regions. Type placement has mixed
+results: 155 improve and 12 regress by more than 0.02. Stats pixels and scores
+are unchanged. Existing frame assets remain in use, and 24 Mirage, 16 Tempest
+and eight modern regression examples are byte-identical at both tiers. This is
+within-set confirmation; another set using the fourth-family frame is still
+needed for an independent transfer result.
+
+The component search now reports both maximum edge overlap and minimum edge
+distance over all 441 integer offsets within ±10px. Disagreement, ambiguous peaks
+and search-boundary winners trigger inspection. Whole-row radial landmarks
+separately measure every mana disc and the pitch between them. These searches
+do not modify the render, the frozen frame transform or the fixed scores. The
+next geometry sweep must apply each candidate to the whole development cohort,
+then freeze its result before looking at a new transfer cohort.
+
+Typography remains visibly heavier than the scans, Fourth Edition stats need
+their printed italic style, and the land branch needs independent calibration
+and historical wording. The tap-layout window can miss the actual scan glyph
+when body placement differs; low tap scores require foreground inspection before
+attributing them to a glyph asset. These are retained in the
+[working review queue](accuracy-backlog.md).
+
+```sh
+# Preserve the baseline capture from c239e96; use the same annotations on both sides.
+npm run magic:reference:compare -- --set 4ed --run fourth-details-before-all
+npm run magic:reference:compare -- --set 4ed --run fourth-details-all
+npm run magic:reference:details -- --set 4ed --baseline fourth-details-before-all --run fourth-details-all
+npm run magic:reference:report -- --set 4ed --run fourth-details-all
+```
+
+Open `test-results/magic-accuracy/4ed/fourth-details-all/details.html` for full
+cards, header/footer enlargements, old/current edge overlays and both offset
+objectives. Pixel measurements and HTML generation run in Node. Chromium is
+needed only to capture changed production renders. The final comparison took
+53.8s with 227 cache hits; this mixed cold/warm CPU workload is not a cold
+benchmark or GPU-completion measurement. The uncached component search over
+2,083 paired windows took 279.3s. Independent full mana rows were measurable in
+169 scan/old/new triples, including 75 multi-disc rows; their median absolute
+pitch error fell from 1.5px to 0.5px. The other 191 cost rows remain uncertain or
+unmeasured, including alignment exclusions.

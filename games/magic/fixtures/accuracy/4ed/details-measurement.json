@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": 1,
+  "study": "fourth-details",
+  "set": "4ed",
+  "baseline": "fourth-details-before-all",
+  "run": "fourth-details-all",
+  "rendererHashes": [
+    "7c408352113abf0abe486a8bc1f7b0828eb5a2880422d1d4eecc2622ec123e7c",
+    "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264"
+  ],
+  "frozenHeaderCommit": "2178f86",
+  "finalRendererCommit": "0467153",
+  "referenceIdentity": "463b29875b3c8bb9c40aaab2a34fa1d4c7bb0a3141f2cbaac7cee5b84387e5e1",
+  "alignmentHash": "47968ea23ba6b5e35bd27c8f662891f35e258a96d6060b00a4f40fec38ec8193",
+  "metricSource": "014426eb5cb1338aa458e592215fed1e5979e00b75925e9a0ab908bebe1cedae",
+  "fontStylesheetHash": "5c4b40071184e2059c707a6eb49c431a746e25084fac2fe0f79147d2b8364c12",
+  "browser": "148.0.7778.96",
+  "manifests": {
+    "metrics.json": "54fff0350517a5a6407279a93bedcea1e65c7aed6fed10b77d4720b717657827",
+    "details.json": "789a9893ee9683bf3d23ed67f47d40286e1943f3aa3857169afcdc67cf2a8b06",
+    "parity.json": "8694ab7158dad84b6e02fb08ad820dc3bc438fdf1117239cf4d4aec1981a154e",
+    "frozen-nonstats-pixels.json": "f440f68c8569470bc7d0646f718cfcd5f814a7a8ca22830add28700b153d366e"
+  },
+  "counts": {
+    "eligible": 378,
+    "attempted": 378,
+    "failed": 0,
+    "reviewedPrintedTargets": 9,
+    "oracleDiagnostics": 369,
+    "confidentNonlandPairs": 357,
+    "pairedAlignmentExclusions": 21,
+    "currentAlignmentWarnings": 20,
+    "unchangedLands": 18,
+    "verifiedImageFiles": 2268
+  },
+  "scoreMeaning": "Boundary F1 within one canonical pixel, not percent accuracy. Paired summaries exclude alignment warnings from either render. Every scan uses its frozen frame-family transform; component searches are diagnostic only.",
+  "scope": "Six development nonlands and six reserved nonlands in Fourth Edition. Other corpus cards provide broad coverage, not fresh cross-set evidence. Stats restored to baseline after development regression; complete pixel parity outside the stats region preserves frozen header validation.",
+  "pairedSummary": {
+    "calibration": {
+      "inspect": {
+        "title": {
+          "count": 6,
+          "before": 0.4107477221410948,
+          "after": 0.652639866850782,
+          "medianDelta": 0.2842704599682063,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 6,
+          "before": 0.4462962438240904,
+          "after": 0.8262717263876682,
+          "medianDelta": 0.35288784991525013,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 6,
+          "before": 0.7467113799051013,
+          "after": 0.748181287390664,
+          "medianDelta": -0.0043480399380160795,
+          "improved": 1,
+          "regressed": 1,
+          "worstRegressions": [
+            {
+              "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+              "name": "Uncle Istvan",
+              "collectorNumber": "165",
+              "values": [0.6880294108653032, 0.6539445759736877]
+            }
+          ]
+        },
+        "footer": {
+          "count": 6,
+          "before": 0.3314105032520559,
+          "after": 0.6217324817574781,
+          "medianDelta": 0.29079052181653176,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 1,
+          "before": 0.33558278896507043,
+          "after": 0.33558278896507043,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      },
+      "table": {
+        "title": {
+          "count": 6,
+          "before": 0.3373619198506308,
+          "after": 0.5068961035404039,
+          "medianDelta": 0.21237157214193292,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 6,
+          "before": 0.3870391413808082,
+          "after": 0.8053736561410849,
+          "medianDelta": 0.4294359626124439,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 6,
+          "before": 0.7007547901885611,
+          "after": 0.7243780903411297,
+          "medianDelta": 0.006951316274985131,
+          "improved": 1,
+          "regressed": 1,
+          "worstRegressions": [
+            {
+              "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+              "name": "Uncle Istvan",
+              "collectorNumber": "165",
+              "values": [0.7045366566351569, 0.6786366427455254]
+            }
+          ]
+        },
+        "footer": {
+          "count": 6,
+          "before": 0.27660209716073414,
+          "after": 0.6491074617252319,
+          "medianDelta": 0.37153472684187927,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 1,
+          "before": 0.3338669868587819,
+          "after": 0.3338669868587819,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      }
+    },
+    "held-out": {
+      "inspect": {
+        "title": {
+          "count": 6,
+          "before": 0.4229403625292085,
+          "after": 0.6265623273664085,
+          "medianDelta": 0.23513601468614148,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 6,
+          "before": 0.4666110725709979,
+          "after": 0.8460173791916668,
+          "medianDelta": 0.3548999541825294,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 6,
+          "before": 0.6866098946802999,
+          "after": 0.6964242064866117,
+          "medianDelta": 0.01451445968899051,
+          "improved": 2,
+          "regressed": 1,
+          "worstRegressions": [
+            {
+              "id": "a81f7a0f-183f-438b-b252-738d8d30c245",
+              "name": "Black Mana Battery",
+              "collectorNumber": "298",
+              "values": [0.8174691003046073, 0.7970054783446001]
+            }
+          ]
+        },
+        "footer": {
+          "count": 6,
+          "before": 0.30867540877934446,
+          "after": 0.6200159235843461,
+          "medianDelta": 0.327632485572337,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 1,
+          "before": 0.3018373467664444,
+          "after": 0.3018373467664444,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      },
+      "table": {
+        "title": {
+          "count": 6,
+          "before": 0.323052257237594,
+          "after": 0.5158877030284836,
+          "medianDelta": 0.19859775363654147,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 6,
+          "before": 0.42386757065851666,
+          "after": 0.8193641104117975,
+          "medianDelta": 0.3898114170909588,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 6,
+          "before": 0.6456198034721856,
+          "after": 0.657868506855707,
+          "medianDelta": 0.026911362985865772,
+          "improved": 4,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "footer": {
+          "count": 6,
+          "before": 0.2629486394163564,
+          "after": 0.6553107957860935,
+          "medianDelta": 0.402362720425662,
+          "improved": 6,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 1,
+          "before": 0.32545915716774126,
+          "after": 0.32545915716774126,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      }
+    },
+    "corpus": {
+      "inspect": {
+        "title": {
+          "count": 345,
+          "before": 0.40977112676056343,
+          "after": 0.6397226584491392,
+          "medianDelta": 0.23409904780010327,
+          "improved": 345,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 345,
+          "before": 0.4703413075106733,
+          "after": 0.8151702592939708,
+          "medianDelta": 0.33636829929181633,
+          "improved": 345,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 345,
+          "before": 0.6778654273832438,
+          "after": 0.7041613175687053,
+          "medianDelta": 0.016409705680288877,
+          "improved": 152,
+          "regressed": 10,
+          "worstRegressions": [
+            {
+              "id": "673c0a08-1aaf-4976-8eea-c93a9f9486fa",
+              "name": "Helm of Chatzuk",
+              "collectorNumber": "324",
+              "values": [0.8336225868851824, 0.803438593491871]
+            },
+            {
+              "id": "b622e694-858d-482f-a67d-0e52d268708c",
+              "name": "White Mana Battery",
+              "collectorNumber": "357",
+              "values": [0.8321963015083346, 0.8066100845024825]
+            },
+            {
+              "id": "4b7cdfd5-bef9-4f33-b81a-2a395c9bba29",
+              "name": "Circle of Protection: Blue",
+              "collectorNumber": "15",
+              "values": [0.7221567382960075, 0.6972698303333046]
+            },
+            {
+              "id": "9521375e-0bc1-45ef-b513-6d332a25f9d2",
+              "name": "Lightning Bolt",
+              "collectorNumber": "208",
+              "values": [0.8120764696159991, 0.7886167738404707]
+            },
+            {
+              "id": "7601b15a-53d8-499f-837b-abf369d1e3f4",
+              "name": "Fissure",
+              "collectorNumber": "194",
+              "values": [0.8229912118690508, 0.8003126210253019]
+            }
+          ]
+        },
+        "footer": {
+          "count": 345,
+          "before": 0.3204810974148529,
+          "after": 0.6244527848317553,
+          "medianDelta": 0.30415540617552983,
+          "improved": 345,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 148,
+          "before": 0.3109878909465662,
+          "after": 0.3109878909465662,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      },
+      "table": {
+        "title": {
+          "count": 345,
+          "before": 0.3101866073630515,
+          "after": 0.5015513809744526,
+          "medianDelta": 0.19023288105924885,
+          "improved": 345,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 345,
+          "before": 0.4113924050632911,
+          "after": 0.7951186022725679,
+          "medianDelta": 0.3808966953717087,
+          "improved": 345,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 345,
+          "before": 0.6540246339730419,
+          "after": 0.6881566610928,
+          "medianDelta": 0.019623476114206895,
+          "improved": 170,
+          "regressed": 4,
+          "worstRegressions": [
+            {
+              "id": "673c0a08-1aaf-4976-8eea-c93a9f9486fa",
+              "name": "Helm of Chatzuk",
+              "collectorNumber": "324",
+              "values": [0.7462058824787644, 0.7210634990603902]
+            },
+            {
+              "id": "3be9942c-89b3-422f-bb9d-b55f51a22a37",
+              "name": "Mana Vault",
+              "collectorNumber": "334",
+              "values": [0.7727278208544864, 0.7507935339097678]
+            },
+            {
+              "id": "192c50c5-ef98-47bd-9cab-cb3feaf6080b",
+              "name": "Circle of Protection: Green",
+              "collectorNumber": "16",
+              "values": [0.6250132522882285, 0.604349379232917]
+            },
+            {
+              "id": "a2ee9127-d007-48e8-b797-88ef72bc7c8b",
+              "name": "Savannah Lions",
+              "collectorNumber": "48",
+              "values": [0.5778845686158156, 0.5573538713398073]
+            }
+          ]
+        },
+        "footer": {
+          "count": 345,
+          "before": 0.2663527829157558,
+          "after": 0.6514042477310489,
+          "medianDelta": 0.38328866647503385,
+          "improved": 345,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 148,
+          "before": 0.3242426518853574,
+          "after": 0.3242426518853574,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      }
+    },
+    "all": {
+      "inspect": {
+        "title": {
+          "count": 357,
+          "before": 0.40977112676056343,
+          "after": 0.6379619817413257,
+          "medianDelta": 0.23618395435438233,
+          "improved": 357,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 357,
+          "before": 0.4695209521236509,
+          "after": 0.8155339805825244,
+          "medianDelta": 0.3400566929311039,
+          "improved": 357,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 357,
+          "before": 0.6788879127482309,
+          "after": 0.706874257128303,
+          "medianDelta": 0.0162680891643332,
+          "improved": 155,
+          "regressed": 12,
+          "worstRegressions": [
+            {
+              "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+              "name": "Uncle Istvan",
+              "collectorNumber": "165",
+              "values": [0.6880294108653032, 0.6539445759736877]
+            },
+            {
+              "id": "673c0a08-1aaf-4976-8eea-c93a9f9486fa",
+              "name": "Helm of Chatzuk",
+              "collectorNumber": "324",
+              "values": [0.8336225868851824, 0.803438593491871]
+            },
+            {
+              "id": "b622e694-858d-482f-a67d-0e52d268708c",
+              "name": "White Mana Battery",
+              "collectorNumber": "357",
+              "values": [0.8321963015083346, 0.8066100845024825]
+            },
+            {
+              "id": "4b7cdfd5-bef9-4f33-b81a-2a395c9bba29",
+              "name": "Circle of Protection: Blue",
+              "collectorNumber": "15",
+              "values": [0.7221567382960075, 0.6972698303333046]
+            },
+            {
+              "id": "9521375e-0bc1-45ef-b513-6d332a25f9d2",
+              "name": "Lightning Bolt",
+              "collectorNumber": "208",
+              "values": [0.8120764696159991, 0.7886167738404707]
+            }
+          ]
+        },
+        "footer": {
+          "count": 357,
+          "before": 0.32038609012831387,
+          "after": 0.6244527848317553,
+          "medianDelta": 0.30415540617552983,
+          "improved": 357,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 150,
+          "before": 0.3109878909465662,
+          "after": 0.3109878909465662,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      },
+      "table": {
+        "title": {
+          "count": 357,
+          "before": 0.3112038523274478,
+          "after": 0.5015513809744526,
+          "medianDelta": 0.19023288105924885,
+          "improved": 357,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "mana": {
+          "count": 357,
+          "before": 0.4113924050632911,
+          "after": 0.7951186022725679,
+          "medianDelta": 0.3813295331482973,
+          "improved": 357,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "type": {
+          "count": 357,
+          "before": 0.6542569710083093,
+          "after": 0.6884093962889574,
+          "medianDelta": 0.0195113672474595,
+          "improved": 175,
+          "regressed": 5,
+          "worstRegressions": [
+            {
+              "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+              "name": "Uncle Istvan",
+              "collectorNumber": "165",
+              "values": [0.7045366566351569, 0.6786366427455254]
+            },
+            {
+              "id": "673c0a08-1aaf-4976-8eea-c93a9f9486fa",
+              "name": "Helm of Chatzuk",
+              "collectorNumber": "324",
+              "values": [0.7462058824787644, 0.7210634990603902]
+            },
+            {
+              "id": "3be9942c-89b3-422f-bb9d-b55f51a22a37",
+              "name": "Mana Vault",
+              "collectorNumber": "334",
+              "values": [0.7727278208544864, 0.7507935339097678]
+            },
+            {
+              "id": "192c50c5-ef98-47bd-9cab-cb3feaf6080b",
+              "name": "Circle of Protection: Green",
+              "collectorNumber": "16",
+              "values": [0.6250132522882285, 0.604349379232917]
+            },
+            {
+              "id": "a2ee9127-d007-48e8-b797-88ef72bc7c8b",
+              "name": "Savannah Lions",
+              "collectorNumber": "48",
+              "values": [0.5778845686158156, 0.5573538713398073]
+            }
+          ]
+        },
+        "footer": {
+          "count": 357,
+          "before": 0.2666022103709494,
+          "after": 0.6514042477310489,
+          "medianDelta": 0.38328866647503385,
+          "improved": 357,
+          "regressed": 0,
+          "worstRegressions": []
+        },
+        "stats": {
+          "count": 150,
+          "before": 0.32442352562555316,
+          "after": 0.32442352562555316,
+          "medianDelta": 0,
+          "improved": 0,
+          "regressed": 0,
+          "worstRegressions": []
+        }
+      }
+    }
+  },
+  "componentSummary": {
+    "mana": {
+      "count": 357,
+      "before": 0.47091108671789245,
+      "after": 0.8080808080808082,
+      "improved": 357,
+      "regressed": 0,
+      "afterFlags": {
+        "close": 357
+      },
+      "overlapDiagnostics": {
+        "measured": 357,
+        "ambiguous": 0,
+        "atBoundary": 0,
+        "objectiveDisagreements": 0
+      },
+      "beforeOffset": [1, -1],
+      "afterOffset": [0, 0]
+    },
+    "title": {
+      "count": 357,
+      "before": 0.40977112676056343,
+      "after": 0.6379619817413257,
+      "improved": 357,
+      "regressed": 0,
+      "afterFlags": {
+        "ambiguous": 50,
+        "close": 189,
+        "shape-or-content": 90,
+        "placement": 28
+      },
+      "overlapDiagnostics": {
+        "measured": 357,
+        "ambiguous": 11,
+        "atBoundary": 0,
+        "objectiveDisagreements": 3
+      },
+      "beforeOffset": [1, 0],
+      "afterOffset": [0, 0]
+    },
+    "type": {
+      "count": 357,
+      "before": 0.6778604238819638,
+      "after": 0.7058066232885826,
+      "improved": 153,
+      "regressed": 12,
+      "afterFlags": {
+        "close": 210,
+        "shape-or-content": 5,
+        "placement": 19,
+        "ambiguous": 123
+      },
+      "overlapDiagnostics": {
+        "measured": 357,
+        "ambiguous": 45,
+        "atBoundary": 1,
+        "objectiveDisagreements": 12
+      },
+      "beforeOffset": [0, 0],
+      "afterOffset": [1, 0]
+    },
+    "artist": {
+      "count": 357,
+      "before": 0.36049107142857145,
+      "after": 0.6361226808027262,
+      "improved": 357,
+      "regressed": 0,
+      "afterFlags": {
+        "shape-or-content": 72,
+        "ambiguous": 129,
+        "close": 112,
+        "placement": 44
+      },
+      "overlapDiagnostics": {
+        "measured": 357,
+        "ambiguous": 57,
+        "atBoundary": 0,
+        "objectiveDisagreements": 28
+      },
+      "beforeOffset": [1, -1],
+      "afterOffset": [0, -1]
+    },
+    "copyright": {
+      "count": 357,
+      "before": 0.2704719122301367,
+      "after": 0.6762702307026852,
+      "improved": 357,
+      "regressed": 0,
+      "afterFlags": {
+        "ambiguous": 356,
+        "placement": 1
+      },
+      "overlapDiagnostics": {
+        "measured": 357,
+        "ambiguous": 282,
+        "atBoundary": 109,
+        "objectiveDisagreements": 165
+      },
+      "beforeOffset": [1, -1],
+      "afterOffset": [3, -1]
+    },
+    "stats": {
+      "count": 150,
+      "before": 0.3000598479253615,
+      "after": 0.3000598479253615,
+      "improved": 0,
+      "regressed": 0,
+      "afterFlags": {
+        "placement": 44,
+        "shape-or-content": 64,
+        "ambiguous": 42
+      },
+      "overlapDiagnostics": {
+        "measured": 150,
+        "ambiguous": 0,
+        "atBoundary": 1,
+        "objectiveDisagreements": 73
+      },
+      "beforeOffset": [4, 1],
+      "afterOffset": [4, 1]
+    },
+    "tap-layout-window": {
+      "count": 50,
+      "before": 0.26225178057638787,
+      "after": 0.2884324732807946,
+      "improved": 28,
+      "regressed": 14,
+      "afterFlags": {
+        "ambiguous": 13,
+        "shape-or-content": 35,
+        "missing-reference-ink": 7,
+        "placement": 2
+      },
+      "overlapDiagnostics": {
+        "measured": 50,
+        "ambiguous": 17,
+        "atBoundary": 4,
+        "objectiveDisagreements": 42
+      },
+      "beforeOffset": [0, 1],
+      "afterOffset": [0, 0]
+    }
+  },
+  "circleSummary": {
+    "confidentTriples": 206,
+    "unmeasuredOrUncertain": 154,
+    "medianDistanceBefore": 7.905694150420949,
+    "medianDistanceAfter": 0.7071067811865476,
+    "note": "Rightmost disc only. White sun glyphs, textured backgrounds and boundary optima often fail confidence; retain them for visual review."
+  },
+  "rowSummary": {
+    "confidentTriples": 169,
+    "unmeasuredOrUncertain": 191,
+    "multiDiscTriples": 75,
+    "medianAbsolutePitchErrorBefore": 1.5,
+    "medianAbsolutePitchErrorAfter": 0.5,
+    "note": "Independent nominal positions for every disc; no per-scan transforms. Missing/ambiguous discs or conflicting order invalidate the row aggregate. Full rows remain in per-card output."
+  },
+  "parity": {
+    "sets": [
+      {
+        "set": "mir",
+        "cards": 24,
+        "tiers": 2,
+        "identical": true,
+        "rendererHash": "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264"
+      },
+      {
+        "set": "tmp",
+        "cards": 16,
+        "tiers": 2,
+        "identical": true,
+        "rendererHash": "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264"
+      },
+      {
+        "set": "m21",
+        "cards": 8,
+        "tiers": 2,
+        "identical": true,
+        "rendererHash": "0a0fce2f3d09ffef496dc1e5c8818eacaed118ca30b2aee4ca27d57014e68264"
+      }
+    ],
+    "statsRestored": 378,
+    "otherPixelsMatchFrozenHeaderPolicy": 378,
+    "tiers": 2
+  },
+  "alignmentExclusions": [
+    {
+      "id": "db3e219d-8e5e-44c7-97b3-2d489e2808b9",
+      "name": "Balance",
+      "collectorNumber": "6",
+      "frame": "retro-fourth",
+      "before": {
+        "family": "retro-fourth",
+        "status": "calibrated",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        },
+        "medianResidualPx": 4,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-fourth",
+        "status": "calibrated",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        },
+        "medianResidualPx": 4,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "cd21dc3d-c9e6-4592-a655-1a20ee13ae73",
+      "name": "Sleight of Mind",
+      "collectorNumber": "102",
+      "frame": "retro-fourth",
+      "before": {
+        "family": "retro-fourth",
+        "status": "calibrated",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-fourth",
+        "status": "calibrated",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        },
+        "medianResidualPx": 1,
+        "measuredLandmarks": 15,
+        "uncertain": false
+      }
+    },
+    {
+      "id": "901591cb-a7e9-47c1-96ff-3de7b39b1055",
+      "name": "Plague Rats",
+      "collectorNumber": "154",
+      "frame": "retro-fourth",
+      "before": {
+        "family": "retro-fourth",
+        "status": "calibrated",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        },
+        "medianResidualPx": 5,
+        "measuredLandmarks": 10,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-fourth",
+        "status": "calibrated",
+        "transform": {
+          "tx": 0.14486881533656817,
+          "ty": 0.424818421327747,
+          "scale": 0.9968361345476828,
+          "rotation": 0.0005797161120773774
+        },
+        "medianResidualPx": 3.75,
+        "measuredLandmarks": 10,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "aff8d4f1-eaad-4afb-9097-2afab133f707",
+      "name": "Mishra's Factory",
+      "collectorNumber": "361",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "1d51a6de-7bb4-4e3d-82a7-a298c8d742ef",
+      "name": "Oasis",
+      "collectorNumber": "362",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2.5,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2.5,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "a5899b46-226b-4be6-8e80-d2396f54210d",
+      "name": "Strip Mine",
+      "collectorNumber": "363",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "639e47dc-c90f-4f55-9b3a-721240ec04ed",
+      "name": "Plains",
+      "collectorNumber": "364",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "d17f8abd-c087-4039-8dfd-c6168f7db0a6",
+      "name": "Plains",
+      "collectorNumber": "365",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "ad1317da-9e81-4aff-8c04-9155d14be90c",
+      "name": "Plains",
+      "collectorNumber": "366",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "b06bbd6e-eb0d-45fc-88ef-0e085d6505ef",
+      "name": "Island",
+      "collectorNumber": "367",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 12,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 2,
+        "measuredLandmarks": 12,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "6e5e3819-3d75-40d4-9a93-1147834dfd69",
+      "name": "Island",
+      "collectorNumber": "368",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "33a05f9a-1285-4d14-b827-8b81968e09df",
+      "name": "Island",
+      "collectorNumber": "369",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "84634023-5c94-4dcc-9449-abf73ecea542",
+      "name": "Swamp",
+      "collectorNumber": "370",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "ddaa0be1-7358-4ea2-8c40-be6d699a6631",
+      "name": "Swamp",
+      "collectorNumber": "371",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "7ac4979a-5b2f-4db1-b665-9d8ccc15ba82",
+      "name": "Swamp",
+      "collectorNumber": "372",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "0c5c9379-b686-4823-b85a-eaf2c4b63205",
+      "name": "Mountain",
+      "collectorNumber": "373",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "10478e22-d1dd-4e02-81a7-d93ce71ed81d",
+      "name": "Mountain",
+      "collectorNumber": "374",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "50352268-88a6-4575-a5e1-cd8bef7f8286",
+      "name": "Mountain",
+      "collectorNumber": "375",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.25,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.25,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "119c4d73-5b71-446a-a739-25d494591aa1",
+      "name": "Forest",
+      "collectorNumber": "376",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3.5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "ddb35995-0298-4281-88d1-2531c93a4916",
+      "name": "Forest",
+      "collectorNumber": "377",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    },
+    {
+      "id": "b794073f-4188-45c9-9e65-c9d7f2ecc24b",
+      "name": "Forest",
+      "collectorNumber": "378",
+      "frame": "retro-seventh",
+      "before": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "after": {
+        "family": "retro-seventh",
+        "status": "insufficient-calibration",
+        "transform": {
+          "tx": 0,
+          "ty": 0,
+          "scale": 1,
+          "rotation": 0
+        },
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      }
+    }
+  ],
+  "timings": {
+    "baselineSeconds": 139.131858152,
+    "baselineCacheHits": 0,
+    "finalSeconds": 53.832067897,
+    "finalCacheHits": 227,
+    "detailSeconds": 279.32136608,
+    "scope": "Node CPU PNG decoding, metrics and output; no Chromium for comparison. Final run includes cache hits, not a cold benchmark. These are not GPU-completion measurements."
+  },
+  "remainingReview": [
+    "Title and credit glyph weight/width",
+    "Twelve type-line regressions over 0.02",
+    "Printed italic power/toughness",
+    "Historical land presentation and frame calibration",
+    "Independent tap foreground targets before shape scoring",
+    "Frame, mana and font assets after foreground isolation",
+    "Cross-set transfer of fourth-family policy"
+  ]
+}

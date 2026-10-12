@@ -48,6 +48,13 @@ error. Enlarged scan/render crops exposed it. Inspect uncertainty; never read
 an ambiguous zero offset as evidence of correct placement. No single similarity score certifies a
 correct tap glyph, shadow, outline, legal line or corner radius.
 
+The full Fourth Edition search supplies a concrete next candidate: 88 of 150
+confidently aligned stat boxes have an unambiguous maximum-overlap peak at
+`dx=4, dy=3`. Across those 150 boxes, 73 have overlap and distance peaks more
+than 2px apart. This is a diagnostic observation, not a production correction
+or a fresh holdout result. A shared stats displacement/typography sweep should
+test it on reviewed development crops, then validate on a newly reserved set.
+
 ## Next implementation steps, in order
 
 1. **Freeze component targets for each frame family.** Record independent scan

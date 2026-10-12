@@ -178,3 +178,12 @@ pixel-identical. See the [basic-land transfer results](fixtures/accuracy/tmp/tra
 `magic:reference:basics -- --set tmp --study retro-basics --baseline retro-details-all --run retro-basics`
 generates the local `tmp/retro-basics/basics.html` comparison after capture and
 scoring. Paragraph alignment also accepts `center` for explicit printed layouts.
+
+The [Fourth Edition measurement](fixtures/accuracy/4ed/details-measurement.json)
+adds all 378 ordinary printings. Header and credit placement improve on all 357
+confidently aligned nonland pairs, including six reserved examples; font weight,
+type-line regressions and the land branch remain flagged. Generate its local
+scan/previous/current page with
+`magic:reference:details -- --set 4ed --baseline fourth-details-before-all --run fourth-details-all`.
+It includes maximum-overlap and minimum-distance offset searches, independent
+whole-row mana measurements, and links to the earlier Mirage/Tempest comparisons.
