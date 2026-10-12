@@ -42,8 +42,14 @@ try {
     inputHash: 'face',
     images: { inspect: image, table: image, reference: image },
     frame: 'frame',
+    specialLayout: [{ layout: { overflow: false } }],
   };
   assert.ok(await reusableFace(previous, { inputHash: 'face' }, digest, directory));
+  assert.deepEqual(
+    (await reusableFace(previous, { inputHash: 'face' }, digest, directory)).specialLayout,
+    previous.specialLayout,
+    'Reusing a raster must retain its measured special-frame diagnostics',
+  );
   assert.equal(await reusableFace(previous, { inputHash: 'changed' }, digest, directory), null);
   assert.equal(
     await reusableFace(previous, { inputHash: 'face' }, 'changed-reference', directory),

@@ -283,6 +283,52 @@ try {
     bitmap.width = 64;
     bitmap.height = 64;
     const ctx = bitmap.getContext('2d');
+    const { planeswalkerRuleRows } = await import('/magic-presentation.js');
+    const ability = {
+      typeLine: 'Planeswalker — Example',
+      rulesText:
+        'You may act during another turn.\n+1: Draw a card.\n−3: Choose a creature. (It phases out.)\n−9: Take another turn.',
+      rulesParagraphs: [
+        { role: 'rules', runs: [{ text: 'You may act during another turn.' }] },
+        { role: 'rules', runs: [{ text: '+1: Draw a card.' }] },
+        {
+          role: 'rules',
+          runs: [{ text: '−3: Choose a creature. ' }, { text: '(It phases out.)', italic: true }],
+        },
+        { role: 'rules', runs: [{ text: '−9: Take another turn.' }] },
+      ],
+    };
+    ctx.letterSpacing = '2px';
+    const abilityRows = planeswalkerRuleRows(ctx, ability);
+    if (ctx.letterSpacing !== '2px') throw Error('Ability measurement leaked canvas state');
+    ctx.letterSpacing = '0px';
+    if (abilityRows.length !== 4 || abilityRows.some((r) => r.layout.overflow))
+      throw Error('Measured abilities did not fit the taller rules panel');
+    if (abilityRows[0].layout.x >= abilityRows[1].layout.x)
+      throw Error('Static planeswalker text incorrectly retains the badge indent');
+    const normalizedText = (row) =>
+      row.layout.lines
+        .map((l) => l.runs.map((r) => r.text).join(''))
+        .join(' ')
+        .replace(/\s+/g, ' ');
+    for (const row of abilityRows)
+      if (normalizedText(row) !== row.text)
+        throw Error('Ability layout dropped text or duplicated the loyalty prefix');
+    if (!abilityRows[2].layout.lines.some((l) => l.runs.some((r) => r.italic)))
+      throw Error('Explicit italic reminder style was lost in a planeswalker row');
+    const unrelatedParagraphs = planeswalkerRuleRows(ctx, {
+      ...ability,
+      rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Unrelated ordinary-face text.' }] }],
+    });
+    if (unrelatedParagraphs.some((r, i) => normalizedText(r) !== abilityRows[i].text))
+      throw Error('Ordinary paragraphs replaced the special-frame wording');
+    const overfullAbility = planeswalkerRuleRows(ctx, {
+      ...ability,
+      rulesText: '+1: ' + 'W'.repeat(1000),
+      rulesParagraphs: undefined,
+    });
+    if (!overfullAbility.some((r) => r.layout.overflow))
+      throw Error('An overfull ability was silently clipped');
     const paragraphs = [
       {
         role: 'rules',

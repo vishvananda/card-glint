@@ -4,6 +4,9 @@ import { FACE_WIDTH, FACE_HEIGHT, type RenderedCardInput } from './face-layout.j
 import { faceFrame, faceRects, specialRuleRows, type SingleFrame } from './special-frames.js';
 import { paintRules, rulesLines } from './canvas-text.js';
 import type { CanvasImages } from './canvas-assets.js';
+import { planeswalkerRuleRows } from './planeswalker-rules.js';
+import { paintRulesLayout } from './rules-paint.js';
+import type { RulesLayout } from './rules-layout.js';
 /** Badge art has an asymmetric point and a small transparent right margin. */
 export function loyaltyBadge(badge: string) {
   return { font: 18, offsetY: badge.startsWith('+') ? 2 : badge === '0' ? 0 : -2 };
@@ -58,24 +61,30 @@ export function paintSpecialRules(
   const box = sagaTextbox(face, resolveCardProfile(face).boxes);
   const paper = box ? images.get(box) : undefined;
   if (paper) context.drawImage(paper, x, y, w, h);
-  for (const row of specialRuleRows(face)) {
+  const rows: (ReturnType<typeof specialRuleRows>[number] & { layout?: RulesLayout })[] = saga
+    ? specialRuleRows(face)
+    : planeswalkerRuleRows(context, face);
+  for (const row of rows) {
     if (row.top > 0) {
       context.fillStyle = '#0002';
       context.fillRect(x + (saga ? 0 : 40), y + row.top, w - (saga ? 0 : 40), 1.5);
     }
     context.fillStyle = '#17140f';
     context.textAlign = 'left';
-    context.font = `${row.reminder ? 'italic ' : ''}${row.font}px "CardRenderer MTG MPlantin", Georgia`;
-    const textHeight = rulesLines(context, row.text, row.width, row.font).length * row.font;
-    paintRules(
-      context,
-      row.text,
-      x + row.left,
-      y + row.top + (row.height - textHeight) / 2,
-      row.width,
-      { size: row.font, italic: row.reminder },
-      images,
-    );
+    if (row.layout) paintRulesLayout(context, row.layout, images);
+    else {
+      context.font = `${row.reminder ? 'italic ' : ''}${row.font}px "CardRenderer MTG MPlantin", Georgia`;
+      const textHeight = rulesLines(context, row.text, row.width, row.font).length * row.font;
+      paintRules(
+        context,
+        row.text,
+        x + row.left,
+        y + row.top + (row.height - textHeight) / 2,
+        row.width,
+        { size: row.font, italic: row.reminder },
+        images,
+      );
+    }
     const badgeW = saga ? 36 : 54,
       badgeH = saga ? 36 : 34;
     row.badges.forEach((badge, index) => {

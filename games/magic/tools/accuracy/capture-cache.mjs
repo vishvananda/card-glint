@@ -43,6 +43,7 @@ export async function reusableFace(previous, input, referenceHash, directory) {
   return {
     frame: previous.frame,
     layout: previous.layout,
+    specialLayout: previous.specialLayout,
     assets: previous.assets,
     images: previous.images,
   };

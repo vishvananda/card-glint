@@ -122,7 +122,8 @@ export function faceRects(face: RenderedCardInput): FaceRects {
     };
   return FACE_RECTS;
 }
-/** Shared rule geometry. Conservative line estimates keep the DOM and canvas in step. */
+/** Approximate geometry for hosts without a measurement context and the Saga painter.
+ * The planeswalker canvas painter uses measured planeswalkerRuleRows instead. */
 export function specialRuleRows(face: RenderedCardInput) {
   const saga = faceFrame(face) === 'saga',
     rect = faceRects(face).rules,

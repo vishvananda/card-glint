@@ -22,6 +22,7 @@ export * from './presentation/retro-paint.js';
 export * from './presentation/set-symbol-ink.js';
 export * from './presentation/set-symbols.js';
 export * from './presentation/special-frames.js';
+export * from './presentation/planeswalker-rules.js';
 export * from './presentation/special-rule-paint.js';
 export * from './presentation/split-layout.js';
 export * from './presentation/wording.js';

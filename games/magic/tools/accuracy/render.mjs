@@ -139,6 +139,7 @@ try {
               tiers: {},
               frame: oldBorder ? `retro-${retro.retroFamily(face)}` : faceFrame(face),
               layout: null,
+              specialLayout: null,
               assets: {
                 ...(oldBorder
                   ? {
@@ -179,6 +180,12 @@ try {
               };
               if (tier === 'inspect' && api.ordinaryTextLayout && output.frame === 'normal')
                 output.layout = api.ordinaryTextLayout(canvas.getContext('2d'), face);
+              if (tier === 'inspect' && output.frame.startsWith('planeswalker')) {
+                const { planeswalkerRuleRows } = await import(
+                  '/games/magic/src/presentation/planeswalker-rules.ts'
+                );
+                output.specialLayout = planeswalkerRuleRows(canvas.getContext('2d'), face);
+              }
               if (tier === 'inspect' && oldBorder) {
                 const layout =
                   api.retroTextLayout ??
@@ -192,6 +199,7 @@ try {
           }, input.face);
           result.frame = captured.frame;
           result.layout = captured.layout;
+          result.specialLayout = captured.specialLayout;
           result.assets = captured.assets;
           result.images = {};
           for (const [tier, capture] of Object.entries(captured.tiers)) {

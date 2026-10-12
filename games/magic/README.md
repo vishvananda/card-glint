@@ -68,6 +68,7 @@ reflection on the sharp printed layer. `mtg` remains an alias for `magic`.
 | Card inputs, ordinary rectangles, text sizes           | [face-layout.ts](src/presentation/face-layout.ts)                                                                        |
 | Color pairs, artifacts, lands, legendary crowns        | [profile.ts](src/presentation/profile.ts)                                                                                |
 | Planeswalker, Saga, Adventure, Class, leveler geometry | [special-frames.ts](src/presentation/special-frames.ts)                                                                  |
+| Measured planeswalker ability text and badge rows      | [planeswalker-rules.ts](src/presentation/planeswalker-rules.ts)                                                          |
 | Retro frame families, old-set mapping and geometry     | [retro-frame.ts](src/presentation/retro-frame.ts)                                                                        |
 | Split, aftermath, room and multi-panel arrangements    | [split-layout.ts](src/presentation/split-layout.ts)                                                                      |
 | Frame URL selection and symbols                        | [assets.ts](src/presentation/assets.ts), [set-symbols.ts](src/presentation/set-symbols.ts)                               |
@@ -154,7 +155,12 @@ uses larger type and more space between lines, validated separately from Fourth
 Edition. Explicit paragraph alignment and hard breaks take precedence; other
 old-border sets retain their separate typography policies.
 Use paragraph `align: 'right'` for a printed flavor attribution. Other layouts
-still use their existing `rulesText` painters. Font
+still use their `rulesText` as the source. Planeswalker rows now measure loaded
+font outlines, preserve italic runs from matching `rulesParagraphs`, and report
+overflow rather than clipping. Passive paragraphs have no loyalty-badge indent;
+ordinary and taller panels retain separate shared row policies. The public
+`planeswalkerRuleRows` helper exposes the same layout used by the canvas painter.
+Font
 preparation now rejects missing CSS or failed font loads and can retry after they
 become available; load `card-glint/magic/fonts.css` before preparing cards.
 
