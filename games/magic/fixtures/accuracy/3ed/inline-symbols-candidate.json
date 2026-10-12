@@ -1,0 +1,823 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-before-reserved-scans",
+  "candidate": {
+    "id": "scale0.8-dy0",
+    "scale": 0.8,
+    "dy": 0
+  },
+  "experimentHash": "e8de1751289f038cedfc043124e05cada1e80a0d4306829f3836046cbaa2827f",
+  "rendererHash": "7c9078ddfd0fc5d4a8a939784e4cbd034256e4daced629dc2929ba38b2a305bf",
+  "captureHash": "8e94b86da88be05696d7708c9ba24c32ad88c100dd4fd81665a6cb64d8fe1ce5",
+  "reason": "Best mean tap edge F1 and mean symmetric distance across all three independent windows and both tiers. Preserve centered glyph placement; size is .8 of the inline disc diameter. Enlarged scan/control/candidate review confirms diagonal-T identity. Brass Man numeric-only pixels remain unchanged.",
+  "summary": [
+    {
+      "id": "control",
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.6356936879205383,
+      "medianDistance": 1.3573276798824634
+    },
+    {
+      "id": "control",
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6193592834998278,
+      "medianDistance": 1.3711077391591846
+    },
+    {
+      "id": "scale0.64-dy-1",
+      "scale": 0.64,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7596552824768592,
+      "medianDistance": 0.8686075531884531
+    },
+    {
+      "id": "scale0.64-dy-1",
+      "scale": 0.64,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.730911786508525,
+      "medianDistance": 0.995360158269222
+    },
+    {
+      "id": "scale0.64-dy0",
+      "scale": 0.64,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7375934738273283,
+      "medianDistance": 0.9518717738539584
+    },
+    {
+      "id": "scale0.64-dy0",
+      "scale": 0.64,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.730911786508525,
+      "medianDistance": 0.995360158269222
+    },
+    {
+      "id": "scale0.64-dy1",
+      "scale": 0.64,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.6222222222222222,
+      "medianDistance": 1.2169928751614412
+    },
+    {
+      "id": "scale0.64-dy1",
+      "scale": 0.64,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.5783132530120482,
+      "medianDistance": 1.422465985260167
+    },
+    {
+      "id": "scale0.72-dy-1",
+      "scale": 0.72,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7826546800634585,
+      "medianDistance": 0.9059114785597078
+    },
+    {
+      "id": "scale0.72-dy-1",
+      "scale": 0.72,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6741573033707865,
+      "medianDistance": 1.0567233984263575
+    },
+    {
+      "id": "scale0.72-dy0",
+      "scale": 0.72,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.8228912394901003,
+      "medianDistance": 0.812568729140251
+    },
+    {
+      "id": "scale0.72-dy0",
+      "scale": 0.72,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.738238841978287,
+      "medianDistance": 0.9624434319826273
+    },
+    {
+      "id": "scale0.72-dy1",
+      "scale": 0.72,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.693877551020408,
+      "medianDistance": 0.9712978203260778
+    },
+    {
+      "id": "scale0.72-dy1",
+      "scale": 0.72,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7384336256425763,
+      "medianDistance": 0.93755537042251
+    },
+    {
+      "id": "scale0.76-dy-1",
+      "scale": 0.76,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7848484848484848,
+      "medianDistance": 0.9479517007294374
+    },
+    {
+      "id": "scale0.76-dy-1",
+      "scale": 0.76,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.8137044967880086,
+      "medianDistance": 0.9289855333891781
+    },
+    {
+      "id": "scale0.76-dy0",
+      "scale": 0.76,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.78,
+      "medianDistance": 0.8717591436818624
+    },
+    {
+      "id": "scale0.76-dy0",
+      "scale": 0.76,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7738029719317557,
+      "medianDistance": 1.00314770445355
+    },
+    {
+      "id": "scale0.76-dy1",
+      "scale": 0.76,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7676767676767676,
+      "medianDistance": 0.9512919487032289
+    },
+    {
+      "id": "scale0.76-dy1",
+      "scale": 0.76,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7216494845360826,
+      "medianDistance": 1.00314770445355
+    },
+    {
+      "id": "scale0.8-dy-1",
+      "scale": 0.8,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.804490177736202,
+      "medianDistance": 0.8923423791228376
+    },
+    {
+      "id": "scale0.8-dy-1",
+      "scale": 0.8,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7569313593539704,
+      "medianDistance": 0.9201968406157877
+    },
+    {
+      "id": "scale0.8-dy0",
+      "scale": 0.8,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7647058823529411,
+      "medianDistance": 0.793372571009856
+    },
+    {
+      "id": "scale0.8-dy0",
+      "scale": 0.8,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7909967845659165,
+      "medianDistance": 0.8729709961350709
+    },
+    {
+      "id": "scale0.8-dy1",
+      "scale": 0.8,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7441980402269212,
+      "medianDistance": 1.0410902785796385
+    },
+    {
+      "id": "scale0.8-dy1",
+      "scale": 0.8,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7909967845659165,
+      "medianDistance": 0.8873962502749193
+    },
+    {
+      "id": "scale0.84-dy-1",
+      "scale": 0.84,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7524752475247524,
+      "medianDistance": 0.9846319798116968
+    },
+    {
+      "id": "scale0.84-dy-1",
+      "scale": 0.84,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6833189778926212,
+      "medianDistance": 1.1003947712750037
+    },
+    {
+      "id": "scale0.84-dy0",
+      "scale": 0.84,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7667731629392972,
+      "medianDistance": 0.848678390229989
+    },
+    {
+      "id": "scale0.84-dy0",
+      "scale": 0.84,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7450980392156863,
+      "medianDistance": 0.9397997615429071
+    },
+    {
+      "id": "scale0.84-dy1",
+      "scale": 0.84,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7647058823529411,
+      "medianDistance": 0.9060422437466107
+    },
+    {
+      "id": "scale0.84-dy1",
+      "scale": 0.84,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7450980392156863,
+      "medianDistance": 0.9397997615429071
+    },
+    {
+      "id": "scale0.88-dy-1",
+      "scale": 0.88,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7667731629392972,
+      "medianDistance": 0.9126793179621704
+    },
+    {
+      "id": "scale0.88-dy-1",
+      "scale": 0.88,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.689655172413793,
+      "medianDistance": 1.0183842941826464
+    },
+    {
+      "id": "scale0.88-dy0",
+      "scale": 0.88,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7378640776699028,
+      "medianDistance": 0.8614591024085587
+    },
+    {
+      "id": "scale0.88-dy0",
+      "scale": 0.88,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.7184466019417477,
+      "medianDistance": 0.9565288232102833
+    },
+    {
+      "id": "scale0.88-dy1",
+      "scale": 0.88,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7378640776699028,
+      "medianDistance": 0.938759262430542
+    },
+    {
+      "id": "scale0.88-dy1",
+      "scale": 0.88,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6569086651053864,
+      "medianDistance": 1.2074284887313844
+    },
+    {
+      "id": "scale0.96-dy-1",
+      "scale": 0.96,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.7224334600760457,
+      "medianDistance": 1.12096777091642
+    },
+    {
+      "id": "scale0.96-dy-1",
+      "scale": 0.96,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6248520710059171,
+      "medianDistance": 1.0896721333265305
+    },
+    {
+      "id": "scale0.96-dy0",
+      "scale": 0.96,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.6818764419379646,
+      "medianDistance": 1.041477150808681
+    },
+    {
+      "id": "scale0.96-dy0",
+      "scale": 0.96,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6538461538461539,
+      "medianDistance": 1.0617923748034697
+    },
+    {
+      "id": "scale0.96-dy1",
+      "scale": 0.96,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.6915887850467289,
+      "medianDistance": 0.9701687024398283
+    },
+    {
+      "id": "scale0.96-dy1",
+      "scale": 0.96,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6538461538461539,
+      "medianDistance": 1.0617923748034697
+    },
+    {
+      "id": "scale1.04-dy-1",
+      "scale": 1.04,
+      "dy": -1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.593372720267146,
+      "medianDistance": 1.2854904179670372
+    },
+    {
+      "id": "scale1.04-dy-1",
+      "scale": 1.04,
+      "dy": -1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.5504587155963302,
+      "medianDistance": 1.3006389626299715
+    },
+    {
+      "id": "scale1.04-dy0",
+      "scale": 1.04,
+      "dy": 0,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.6091825307950728,
+      "medianDistance": 1.1780049449811547
+    },
+    {
+      "id": "scale1.04-dy0",
+      "scale": 1.04,
+      "dy": 0,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.5657646318439269,
+      "medianDistance": 1.2044037342462384
+    },
+    {
+      "id": "scale1.04-dy1",
+      "scale": 1.04,
+      "dy": 1,
+      "tier": "inspect",
+      "count": 3,
+      "medianF1": 0.6700201207243461,
+      "medianDistance": 1.131386056683163
+    },
+    {
+      "id": "scale1.04-dy1",
+      "scale": 1.04,
+      "dy": 1,
+      "tier": "table",
+      "count": 3,
+      "medianF1": 0.6138719107095402,
+      "medianDistance": 1.190501890376083
+    }
+  ],
+  "development": [
+    {
+      "id": "803fd65f-4ca6-4fe4-abc2-72aa32ebb3a5",
+      "name": "Sol Ring",
+      "number": "274",
+      "inputHash": "5a1e4955ce71b8d8379e6c1c1c82f0b1e788e8bad50e06f00c2d10647e80a17e",
+      "referenceHash": "a4fe958556829b70652bed8f4c720ed2eb95a12df7d6f80b0ffea95dbac57853",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "274.inspect.control.png",
+          "sha256": "63e60a1e170fd44a050c3dc195f9e743c922185c9edffbf324201cb8b05f066a",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.6679187132036613,
+              "meanDistance": 1.7879449304139583,
+              "censusSimilarity": 0.6677153864564594
+            },
+            {
+              "id": "tap-0",
+              "rect": [82, 450, 23, 25],
+              "edgeF1": 0.5098039215686274,
+              "meanDistance": 1.574098302523295,
+              "censusSimilarity": 0.5583657587548638
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "inspect",
+          "file": "274.inspect.scale0.8-dy0.png",
+          "sha256": "cd9126735ec79b9099338fec0cb1aab255f0d7e3db1bdf9a097bd35c3ba7dad5",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.6689021188203921,
+              "meanDistance": 1.785046764962972,
+              "censusSimilarity": 0.6694949931672367
+            },
+            {
+              "id": "tap-0",
+              "rect": [82, 450, 23, 25],
+              "edgeF1": 0.6291913214990138,
+              "meanDistance": 1.2807958205540975,
+              "censusSimilarity": 0.6873262923846581
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "274.table.control.png",
+          "sha256": "11baa2a7a33801f5856af6375e462b6c475502c40e0452d7b6568eb7ea6ba856",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.6317629141759631,
+              "meanDistance": 2.146942452076466,
+              "censusSimilarity": 0.6688348787474039
+            },
+            {
+              "id": "tap-0",
+              "rect": [82, 450, 23, 25],
+              "edgeF1": 0.5098039215686274,
+              "meanDistance": 1.5577522812287012,
+              "censusSimilarity": 0.6256253474152307
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "table",
+          "file": "274.table.scale0.8-dy0.png",
+          "sha256": "471c5fa57892e1848b7d4e185753594c50a756fa12f22f21f91dd777d0e0566d",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.6323338703077714,
+              "meanDistance": 2.1436425666062213,
+              "censusSimilarity": 0.6694216471205886
+            },
+            {
+              "id": "tap-0",
+              "rect": [82, 450, 23, 25],
+              "edgeF1": 0.5625000000000001,
+              "meanDistance": 1.275744123718013,
+              "censusSimilarity": 0.6667593107281823
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2b56c9ed-c912-4829-9be0-e80303759c9c",
+      "name": "Jandor's Ring",
+      "number": "256",
+      "inputHash": "c3b0054457d2c9be93a91905d00efad0d5b023b3655b64c197d79531b0b1c6e6",
+      "referenceHash": "b81c391d7e7ee84c5f4dfe69b078d2c5a8d5f9727acba53f649767b0e7751ee4",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "256.inspect.control.png",
+          "sha256": "323b5e47dc91b3e6db7cd7203f7615cd7fa6c897a3d02f06481a8d97d64b98d1",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.6681905057979164,
+              "meanDistance": 1.8043769412309325,
+              "censusSimilarity": 0.6866181277543224
+            },
+            {
+              "id": "tap-0",
+              "rect": [155, 434, 23, 25],
+              "edgeF1": 0.6356936879205383,
+              "meanDistance": 1.3573276798824634,
+              "censusSimilarity": 0.7104144527098831
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "inspect",
+          "file": "256.inspect.scale0.8-dy0.png",
+          "sha256": "595083acf34f9bbfa88427ca419b9b09ea3bb9b2b4fe0e732a8d9251fec9107d",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.6700135318597623,
+              "meanDistance": 1.797008769401834,
+              "censusSimilarity": 0.6871409821838242
+            },
+            {
+              "id": "tap-0",
+              "rect": [155, 434, 23, 25],
+              "edgeF1": 0.7647058823529411,
+              "meanDistance": 0.793372571009856,
+              "censusSimilarity": 0.7460148777895855
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "256.table.control.png",
+          "sha256": "1a174f4ac3e9474f20761557b5b7f3868827c9273396fb685f92e7597f0603dd",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.7007016709784897,
+              "meanDistance": 2.0961015209329386,
+              "censusSimilarity": 0.7325795218905278
+            },
+            {
+              "id": "tap-0",
+              "rect": [155, 434, 23, 25],
+              "edgeF1": 0.6193592834998278,
+              "meanDistance": 1.3711077391591846,
+              "censusSimilarity": 0.7242295430393199
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "table",
+          "file": "256.table.scale0.8-dy0.png",
+          "sha256": "98336bd486cce40d87687da1c102ed0f46fa78719e5eb3685a124cff0037052d",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.7033074159388045,
+              "meanDistance": 2.0851947319485076,
+              "censusSimilarity": 0.7326471017147491
+            },
+            {
+              "id": "tap-0",
+              "rect": [155, 434, 23, 25],
+              "edgeF1": 0.7909967845659165,
+              "meanDistance": 0.8729709961350709,
+              "censusSimilarity": 0.7207757704569607
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0ba1daee-a5ac-4d9e-b681-3e3c7a3eb095",
+      "name": "Brass Man",
+      "number": "238",
+      "inputHash": "521a08118bc6c87f2473a96c196973de3d40715d736697f839b23051f50f35d2",
+      "referenceHash": "8cad2b59208e41bc61b02e728ef6a58ba881b04f564a8cbf7e0076e504cc8efd",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "238.inspect.control.png",
+          "sha256": "3d509d0ba7546a7c693dc656f11d55cbfbf51441949ba35bf142a2cd9447fe52",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.7702235232249094,
+              "meanDistance": 1.5691392225423715,
+              "censusSimilarity": 0.7758243810656945
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "inspect",
+          "file": "238.inspect.scale0.8-dy0.png",
+          "sha256": "3d509d0ba7546a7c693dc656f11d55cbfbf51441949ba35bf142a2cd9447fe52",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.7702235232249094,
+              "meanDistance": 1.5691392225423715,
+              "censusSimilarity": 0.7758243810656945
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "238.table.control.png",
+          "sha256": "b2f55fddbd4caad8f27765ea9fe13198859aa3f82b1c83b963a0a3ca4de7c04a",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.7230021650111016,
+              "meanDistance": 1.8606313993303591,
+              "censusSimilarity": 0.7524608648132648
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "table",
+          "file": "238.table.scale0.8-dy0.png",
+          "sha256": "b2f55fddbd4caad8f27765ea9fe13198859aa3f82b1c83b963a0a3ca4de7c04a",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.7230021650111016,
+              "meanDistance": 1.8606313993303591,
+              "censusSimilarity": 0.7524608648132648
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a3068eb-2250-4c7b-8ed5-2366ff6cd0e1",
+      "name": "Helm of Chatzuk",
+      "number": "250",
+      "inputHash": "7fbe5e47845eaa4818ff4b02e44a12b642d152c249e9632072aae6f14a29eb48",
+      "referenceHash": "aac2598d2c42e16113eb5067abd55c8e915545b6758325f65c4304de3d9f9567",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "250.inspect.control.png",
+          "sha256": "fc5cee5424268b4004cb5591c68b36c5268b2c0c87182c61f181ae7a32e91c62",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.5700437420018994,
+              "meanDistance": 2.3765410714224013,
+              "censusSimilarity": 0.6308930679952769
+            },
+            {
+              "id": "tap-0",
+              "rect": [163, 450, 24, 25],
+              "edgeF1": 0.664928292046936,
+              "meanDistance": 1.249451368335429,
+              "censusSimilarity": 0.6126224156692056
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "inspect",
+          "file": "250.inspect.scale0.8-dy0.png",
+          "sha256": "33aed6968a59b2f81bd50fe3c2193137e34c9042ed65f22e4f79cdad5019f02a",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.5744534927781155,
+              "meanDistance": 2.367081716939269,
+              "censusSimilarity": 0.6363889448876345
+            },
+            {
+              "id": "tap-0",
+              "rect": [163, 450, 24, 25],
+              "edgeF1": 0.9787234042553191,
+              "meanDistance": 0.5610749284375687,
+              "censusSimilarity": 0.9153971708378672
+            }
+          ]
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "250.table.control.png",
+          "sha256": "93ce48a9f370ae41ccc27ab3dfd394fb0a97ae9de17b3e082c2f8058f0e03e16",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.5210590779019445,
+              "meanDistance": 3.025512355188419,
+              "censusSimilarity": 0.6169445804413981
+            },
+            {
+              "id": "tap-0",
+              "rect": [163, 450, 24, 25],
+              "edgeF1": 0.7340129749768304,
+              "meanDistance": 1.121624895558606,
+              "censusSimilarity": 0.6536996735582155
+            }
+          ]
+        },
+        {
+          "candidate": "scale0.8-dy0",
+          "tier": "table",
+          "file": "250.table.scale0.8-dy0.png",
+          "sha256": "8d0bef9681f164f66d049347156ec945672db5a2210cd3f5a33458701567742c",
+          "regions": [
+            {
+              "id": "body",
+              "rect": [62, 417, 366, 184],
+              "edgeF1": 0.5227666760517136,
+              "meanDistance": 3.0141184587505534,
+              "censusSimilarity": 0.6213124826003897
+            },
+            {
+              "id": "tap-0",
+              "rect": [163, 450, 24, 25],
+              "edgeF1": 0.8659793814432989,
+              "meanDistance": 0.6259772752215262,
+              "censusSimilarity": 0.8906420021762785
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
