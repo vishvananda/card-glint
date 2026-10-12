@@ -1,0 +1,872 @@
+{
+  "schemaVersion": 1,
+  "phase": "development",
+  "detectorVersion": "white-frame-boundary-v1",
+  "detectorHash": "4774da5e2424af5a62b451736a30a120884d01ecacf8f72a2cd93015aa45ee14",
+  "captureHash": "079bad607665f08f760b643063c425d4d0901b90c36b2114d62f177a70757a5b",
+  "transform": {
+    "tx": 0,
+    "ty": 0,
+    "scale": 1,
+    "rotation": 0
+  },
+  "developmentFit": {
+    "transform": {
+      "tx": -1.01489440773038,
+      "ty": -0.787999510830777,
+      "scale": 1.0038248951767699,
+      "rotation": -0.00020265243804391443
+    },
+    "status": "calibrated",
+    "proposedTransform": {
+      "tx": -1.01489440773038,
+      "ty": -0.787999510830777,
+      "scale": 1.0038248951767699,
+      "rotation": -0.00020265243804391443
+    },
+    "residualPx": 1.2106786074468883,
+    "landmarkCount": 12,
+    "sampleCount": 6
+  },
+  "translation": {
+    "tx": -0.9670372673035939,
+    "ty": -0.8458521597210247,
+    "scale": 1,
+    "rotation": 0
+  },
+  "summary": {
+    "identity": {
+      "outerMedianResidualPx": 1.4249397405693998,
+      "internalMedianPairedGain": 0,
+      "internalRegressions": 0
+    },
+    "similarity": {
+      "outerMedianResidualPx": 1.1942077867409662,
+      "internalMedianPairedGain": -0.10963835521976989,
+      "internalRegressions": 4
+    },
+    "translation": {
+      "outerMedianResidualPx": 1.4343256577752275,
+      "internalMedianPairedGain": -0.010107224460717906,
+      "internalRegressions": 1
+    }
+  },
+  "count": 6,
+  "legacyWarnings": 3,
+  "coherentOuterBoundaries": 6,
+  "status": "frozen-before-reserved-review",
+  "decision": "Retain identity. Similarity improves outer residual only .23px and regresses internal frame F1 on four of six cards; translation gives no median internal gain. Width and height errors have opposite signs, inconsistent with a uniform scale correction.",
+  "validationCriteria": {
+    "allBoundariesMeasured": true,
+    "maximumSideSpreadPx": 1.5,
+    "maximumMedianResidualPx": 3,
+    "visualReview": "All 12 markers must lie on the exterior paper-to-frame transition, not inner bevel or text. Review each reserved scan and rendered image."
+  },
+  "diagnosticPolicy": "Retain raw legacy ridge diagnostics. For 3ED retro-fourth white borders only, a coherent outer boundary measurement within 3px can certify registration while flagging a frame size mismatch over 3px. No image transform is estimated or applied per card.",
+  "developmentMeasurements": [
+    {
+      "id": "5ef69d3f-cbad-4069-82dc-4dbfb35377f4",
+      "name": "Northern Paladin",
+      "collectorNumber": "29",
+      "referenceHash": "0d678aa96dcc740cd91a8ed0bda2daed26d25495550698797a3ea0d3f7cb5424",
+      "renderedHash": "7fb20aa600e8778221e2668a9de6d39e5c9a3f82eea6e7ead384289441a02e48",
+      "legacy": {
+        "medianResidualPx": 5,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "alternatives": {
+        "identity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.19931825742477,
+                "rendered": 22.056544277051014,
+                "delta": -0.14277398037375733,
+                "spread": 0.05151732185655433
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.8518021072186,
+                "rendered": 462.77332539479863,
+                "delta": -2.078476712419956,
+                "spread": 0.18727767554190677
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.844774281989892,
+                "rendered": 24.04265522531587,
+                "delta": -2.8076294508264574,
+                "spread": 0.0946946978412413
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.6914218716448,
+                "rendered": 653.7897445456192,
+                "delta": 1.098322673974394,
+                "spread": 0.08001256815703073
+              }
+            },
+            "complete": true,
+            "centerDelta": [-1.1106253463968567, -0.8546533884260317],
+            "sizeDelta": [-1.9357027320461988, 3.9059521248008515],
+            "medianResidualPx": 1.588399693197175,
+            "coherent": true
+          },
+          "internalFrameF1": 0.4245227740068786
+        },
+        "similarity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 20.330395679332735,
+                "rendered": 22.056544277051014,
+                "delta": 1.7073432377981987,
+                "spread": 0.06415193991598045
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.6763048015358,
+                "rendered": 462.77332539479863,
+                "delta": -1.9029794067371881,
+                "spread": 0.25197437896247266
+              },
+              "top": {
+                "count": 3,
+                "reference": 24.861939424194354,
+                "rendered": 24.04265522531587,
+                "delta": -0.8192841988784849,
+                "spread": 0.07938718389867816
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.961252567044,
+                "rendered": 653.7897445456192,
+                "delta": 0.8284919785752436,
+                "spread": 0.08035315551614985
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.09781808446949469, 0.004603889848379339],
+            "sizeDelta": [-3.610322644535387, 1.6477761774537285],
+            "medianResidualPx": 1.2679176081867212,
+            "coherent": true
+          },
+          "internalFrameF1": 0.300698261773882
+        },
+        "translation": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 21.225795419433574,
+                "rendered": 22.056544277051014,
+                "delta": 0.83074885761744,
+                "spread": 0.054089006346004
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.8799233145049,
+                "rendered": 462.77332539479863,
+                "delta": -1.106597919706246,
+                "spread": 0.18322144973154764
+              },
+              "top": {
+                "count": 3,
+                "reference": 25.970902571725226,
+                "rendered": 24.04265522531587,
+                "delta": -1.9330806272496375,
+                "spread": 0.09537181115339521
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.8134301328587,
+                "rendered": 653.7897445456192,
+                "delta": 1.97631441276053,
+                "spread": 0.07549519662177318
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.13792453104440305, 0.021616892755446315],
+            "sizeDelta": [-1.937346777323686, 3.9093950400101676],
+            "medianResidualPx": 1.5198392734779418,
+            "coherent": true
+          },
+          "internalFrameF1": 0.5492681372568067
+        }
+      }
+    },
+    {
+      "id": "14363981-7c27-49d4-91d6-e2a51b679784",
+      "name": "Wall of Water",
+      "collectorNumber": "91",
+      "referenceHash": "79bb1b4b4feff88947b90473fc75714a3aef71c3303d306127a294be3d41779a",
+      "renderedHash": "73f6baea54bf858f5b90927fa5d44d89c0605e0dde8c55032dda3816247ab77c",
+      "legacy": {
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": false
+      },
+      "alternatives": {
+        "identity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.250609290376495,
+                "rendered": 22.195999924163413,
+                "delta": -0.09914763490219869,
+                "spread": 0.0958267783916753
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.63477199957936,
+                "rendered": 463.21210217756703,
+                "delta": -1.4704392858942583,
+                "spread": 0.04776946388193437
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.93102822508592,
+                "rendered": 23.917606583441515,
+                "delta": -3.013421641644406,
+                "spread": 0.21577618157520106
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.4440204179857,
+                "rendered": 653.6872993289248,
+                "delta": 1.2340682197634578,
+                "spread": 0.048892242613987946
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.7847934603982285, -0.8896767109404742],
+            "sizeDelta": [-1.3712916509920596, 4.247489861407864],
+            "medianResidualPx": 1.352253752828858,
+            "coherent": true
+          },
+          "internalFrameF1": 0.42869151022695434
+        },
+        "similarity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 20.390886060945252,
+                "rendered": 22.195999924163413,
+                "delta": 1.763132340221933,
+                "spread": 0.05133496242446611
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.4453855282204,
+                "rendered": 463.21210217756703,
+                "delta": -1.237106344474796,
+                "spread": 0.08717692658217402
+              },
+              "top": {
+                "count": 3,
+                "reference": 24.940595799555325,
+                "rendered": 23.917606583441515,
+                "delta": -1.0166812602228887,
+                "spread": 0.1898929499906039
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.7806538034245,
+                "rendered": 653.6872993289248,
+                "delta": 0.8920084142697533,
+                "spread": 0.014637111230626942
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.26301299787356847, -0.06233642297656772],
+            "sizeDelta": [-3.000238684696729, 1.908689674492642],
+            "medianResidualPx": 1.1268938023488424,
+            "coherent": true
+          },
+          "internalFrameF1": 0.3332393120204112
+        },
+        "translation": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 21.282815277468323,
+                "rendered": 22.195999924163413,
+                "delta": 0.8686463780059732,
+                "spread": 0.09657627039155159
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.6709087400162,
+                "rendered": 463.21210217756703,
+                "delta": -0.5046352233670177,
+                "spread": 0.04582866091783444
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.058770138961453,
+                "rendered": 23.917606583441515,
+                "delta": -2.141163555519938,
+                "spread": 0.2122916108438595
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.6184685041521,
+                "rendered": 653.6872993289248,
+                "delta": 2.0616636705160545,
+                "spread": 0.06491018785061442
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.18200557731947775, -0.03974994250194186],
+            "sizeDelta": [-1.373281601372991, 4.202827226035993],
+            "medianResidualPx": 1.4651550242610138,
+            "coherent": true
+          },
+          "internalFrameF1": 0.41526600162591604
+        }
+      }
+    },
+    {
+      "id": "2c8bd2bc-f48d-43c4-b2aa-5a0905656e90",
+      "name": "Hypnotic Specter",
+      "collectorNumber": "115",
+      "referenceHash": "4f7fc215e920eb3e484afd721fa5ae9bf8c1aacbae8538d96d8e589c6b07899d",
+      "renderedHash": "d970bcbff32e759756431467055c82c78a979783b06b0981904724d078e53aff",
+      "legacy": {
+        "medianResidualPx": 5,
+        "measuredLandmarks": 14,
+        "uncertain": true
+      },
+      "alternatives": {
+        "identity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.7853070142627,
+                "rendered": 22.434529293846985,
+                "delta": -0.2724566592963811,
+                "spread": 0.11414077535646072
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.1591428015767,
+                "rendered": 462.8908250073588,
+                "delta": -1.223818333948202,
+                "spread": 0.1102575695619521
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.438763803543235,
+                "rendered": 23.899963541389628,
+                "delta": -3.5432810341503824,
+                "spread": 0.06479089381800662
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.974557302885,
+                "rendered": 653.4959235503445,
+                "delta": 1.5277060096503874,
+                "spread": 0.03552725639235632
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.7481374966222916, -1.0077875122499975],
+            "sizeDelta": [-0.951361674651821, 5.07098704380077],
+            "medianResidualPx": 1.3757621717992947,
+            "coherent": true
+          },
+          "internalFrameF1": 0.0894239036973345
+        },
+        "similarity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 20.914149670325195,
+                "rendered": 22.434529293846985,
+                "delta": 1.5680130734995714,
+                "spread": 0.11378737156575269
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.94955886201177,
+                "rendered": 462.8908250073588,
+                "delta": -1.065707462276464,
+                "spread": 0.07268806617059909
+              },
+              "top": {
+                "count": 3,
+                "reference": 25.462347864778188,
+                "rendered": 23.899963541389628,
+                "delta": -1.5623843233885601,
+                "spread": 0.03957520900874201
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.3261924529769,
+                "rendered": 653.4959235503445,
+                "delta": 1.1760708595585356,
+                "spread": 0.0692891621548597
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.25115280561155373, -0.19315673191501226],
+            "sizeDelta": [-2.6337205357760354, 2.738455182947096],
+            "medianResidualPx": 1.369227591473548,
+            "coherent": true
+          },
+          "internalFrameF1": 0.10686447070656273
+        },
+        "translation": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 21.826149363660672,
+                "rendered": 22.434529293846985,
+                "delta": 0.6867009913056457,
+                "spread": 0.11201178950444302
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.1990210662265,
+                "rendered": 462.8908250073588,
+                "delta": -0.2644769670806113,
+                "spread": 0.10947720107935766
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.613975185825304,
+                "rendered": 23.899963541389628,
+                "delta": -2.714621960870087,
+                "spread": 0.04486676255069
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.1199910069781,
+                "rendered": 653.4959235503445,
+                "delta": 2.382272305557308,
+                "spread": 0.0392112836451588
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.21111201211251718, -0.16617482765638947],
+            "sizeDelta": [-0.951177958386257, 5.096894266427395],
+            "medianResidualPx": 1.5344866484314768,
+            "coherent": true
+          },
+          "internalFrameF1": 0.08548431862336942
+        }
+      }
+    },
+    {
+      "id": "6e81e219-c840-4844-be87-0449ab0fa645",
+      "name": "Mons's Goblin Raiders",
+      "collectorNumber": "167",
+      "referenceHash": "2fa6f8c55fd3ed91fae25131043ccad8a1a7750394bc228a5ad4c3f6829828e6",
+      "renderedHash": "cdb611ff80f956132feb1877b7799f7d1245b8081bb441ce6c23e9ff6d950f39",
+      "legacy": {
+        "medianResidualPx": 3,
+        "measuredLandmarks": 15,
+        "uncertain": false
+      },
+      "alternatives": {
+        "identity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.61621914626806,
+                "rendered": 22.10070172538337,
+                "delta": -0.502696408033799,
+                "spread": 0.02429801722417224
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.49626149855476,
+                "rendered": 462.88037986163596,
+                "delta": -1.600438826896152,
+                "spread": 0.06265840196755335
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.214826834467868,
+                "rendered": 24.295044681929493,
+                "delta": -2.9197821525383745,
+                "spread": 0.16094359031803762
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.2687274163178,
+                "rendered": 653.6838629698867,
+                "delta": 1.4277792280106496,
+                "spread": 0.02370866276248762
+              }
+            },
+            "complete": true,
+            "centerDelta": [-1.0515676174649755, -0.7460014622638624],
+            "sizeDelta": [-1.097742418862353, 4.347561380549024],
+            "medianResidualPx": 1.5141090274534008,
+            "coherent": true
+          },
+          "internalFrameF1": 0.5154864912590499
+        },
+        "similarity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 20.775640492301413,
+                "rendered": 22.10070172538337,
+                "delta": 1.3378822459328497,
+                "spread": 0.04292712745874283
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.2576820423544,
+                "rendered": 462.88037986163596,
+                "delta": -1.3352043285468085,
+                "spread": 0.08817826752647306
+              },
+              "top": {
+                "count": 3,
+                "reference": 25.221357496979092,
+                "rendered": 24.295044681929493,
+                "delta": -0.9263128150495987,
+                "spread": 0.17638390769856827
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.6213761248426,
+                "rendered": 653.6838629698867,
+                "delta": 1.0751305194858105,
+                "spread": 0.042655269182432676
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.0013389586930205866, 0.07440885221810589],
+            "sizeDelta": [-2.673086574479658, 2.0014433345354092],
+            "medianResidualPx": 1.2051674240163095,
+            "coherent": true
+          },
+          "internalFrameF1": 0.2043121208165674
+        },
+        "translation": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 21.6570845924609,
+                "rendered": 22.10070172538337,
+                "delta": 0.4564381457733617,
+                "spread": 0.021614055348763372
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.5431106729627,
+                "rendered": 462.88037986163596,
+                "delta": -0.6447380343960276,
+                "spread": 0.06010843505947605
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.353875694487797,
+                "rendered": 24.295044681929493,
+                "delta": -2.0588310125583043,
+                "spread": 0.16138905495332168
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.4253669429152,
+                "rendered": 653.6838629698867,
+                "delta": 2.27113970141329,
+                "spread": 0.028486207725791246
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.09414994431133294, 0.10615434442749283],
+            "sizeDelta": [-1.1011761801693893, 4.329970713971594],
+            "medianResidualPx": 1.351784523477166,
+            "coherent": true
+          },
+          "internalFrameF1": 0.4447558211415619
+        }
+      }
+    },
+    {
+      "id": "24547919-0272-4502-9b3a-e9a0eb6a90d2",
+      "name": "Elvish Archers",
+      "collectorNumber": "193",
+      "referenceHash": "0c44c9dbbc19c85606a637118699a5ba2a1cbbc5ac2e756642d6de8f90a54598",
+      "renderedHash": "033c90222464fc3a5623ae295fbc8508b4290a033ff1ce749c21509090cb67c3",
+      "legacy": {
+        "medianResidualPx": 1,
+        "measuredLandmarks": 15,
+        "uncertain": false
+      },
+      "alternatives": {
+        "identity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.66408313984494,
+                "rendered": 22.154940811776086,
+                "delta": -0.5091423280688545,
+                "spread": 0.019265110314584888
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.362562308412,
+                "rendered": 462.81340714330395,
+                "delta": -1.5491551651080613,
+                "spread": 0.19042958760877582
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.19978889076153,
+                "rendered": 24.126607575158545,
+                "delta": -3.0731813156029837,
+                "spread": 0.1475640599110548
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.1796052150155,
+                "rendered": 653.6472751426608,
+                "delta": 1.3990794535709483,
+                "spread": 0.0884455973225613
+              }
+            },
+            "complete": true,
+            "centerDelta": [-1.029148746588458, -0.8370509310160177],
+            "sizeDelta": [-1.0400128370392068, 4.472260769173932],
+            "medianResidualPx": 1.4741173093395048,
+            "coherent": true
+          },
+          "internalFrameF1": 0.5022069982222608
+        },
+        "similarity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 20.80432320833718,
+                "rendered": 22.154940811776086,
+                "delta": 1.3506176034389057,
+                "spread": 0.04917703692705544
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.12333234805993,
+                "rendered": 462.81340714330395,
+                "delta": -1.2893132074978553,
+                "spread": 0.1239670194428868
+              },
+              "top": {
+                "count": 3,
+                "reference": 25.203790666591935,
+                "rendered": 24.126607575158545,
+                "delta": -1.0771830914333904,
+                "spread": 0.13450203235718305
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.5621489938246,
+                "rendered": 653.6472751426608,
+                "delta": 1.017134019035666,
+                "spread": 0.14806031714761048
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.030652197970525208, -0.03002453619886225],
+            "sizeDelta": [-2.639930810936761, 2.0943171104690563],
+            "medianResidualPx": 1.1832481494656228,
+            "coherent": true
+          },
+          "internalFrameF1": 0.5313586412511166
+        },
+        "translation": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 21.698829607969024,
+                "rendered": 22.154940811776086,
+                "delta": 0.4561112038070618,
+                "spread": 0.020891269085225872
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.4027692018556,
+                "rendered": 462.81340714330395,
+                "delta": -0.5893620585516715,
+                "spread": 0.1900711078417885
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.344238099185755,
+                "rendered": 24.126607575158545,
+                "delta": -2.2176305240272107,
+                "spread": 0.1456698702048307
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.358205766522,
+                "rendered": 653.6472751426608,
+                "delta": 2.2204789020644284,
+                "spread": 0.1242600661846609
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.06662542737230481, 0.0014241890186088568],
+            "sizeDelta": [-1.0454732623587333, 4.438109426091639],
+            "medianResidualPx": 1.403496291289441,
+            "coherent": true
+          },
+          "internalFrameF1": 0.49159633027522925
+        }
+      }
+    },
+    {
+      "id": "516858c9-7679-4a65-a787-36a2cf175ede",
+      "name": "Living Wall",
+      "collectorNumber": "262",
+      "referenceHash": "0689a18083356522396512857320ed478b84f9dd0af12e6fa47fe7b3891658a2",
+      "renderedHash": "c7ee838fc75227ad2da94e131005078e8a18beed47d5c93ae97844fc230c1914",
+      "legacy": {
+        "medianResidualPx": 4,
+        "measuredLandmarks": 15,
+        "uncertain": true
+      },
+      "alternatives": {
+        "identity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.78134101518061,
+                "rendered": 22.234036724595448,
+                "delta": -0.5497349255909114,
+                "spread": 0.04851392249116415
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.50190938566436,
+                "rendered": 463.2184735985441,
+                "delta": -1.2601166504465482,
+                "spread": 0.09685113574283832
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.970310688639934,
+                "rendered": 24.20872393194128,
+                "delta": -2.761586756698655,
+                "spread": 0.3187105491015636
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.2842682599675,
+                "rendered": 653.6363187020517,
+                "delta": 1.3520504420841917,
+                "spread": 0.0222981203459085
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.9049257880187298, -0.7047681573072317],
+            "sizeDelta": [-0.7103817248556368, 4.113637198782847],
+            "medianResidualPx": 1.30608354626537,
+            "coherent": true
+          },
+          "internalFrameF1": 0.5769309288873767
+        },
+        "similarity": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 20.89072680364238,
+                "rendered": 22.234036724595448,
+                "delta": 1.3408792859473202,
+                "spread": 0.0724811379012813
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.2342130695987,
+                "rendered": 463.2184735985441,
+                "delta": -1.009490027677714,
+                "spread": 0.05761341530410391
+              },
+              "top": {
+                "count": 3,
+                "reference": 24.976261381014922,
+                "rendered": 24.20872393194128,
+                "delta": -0.7675374490736431,
+                "spread": 0.30631857058573075
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.6689578965529,
+                "rendered": 653.6363187020517,
+                "delta": 0.9673608054987426,
+                "spread": 0.03195399387868747
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.16569462913480315, 0.09991167821254976],
+            "sizeDelta": [-2.350369313625034, 1.7348982545723857],
+            "medianResidualPx": 0.9884254165882282,
+            "coherent": true
+          },
+          "internalFrameF1": 0.3442564042618593
+        },
+        "translation": {
+          "boundary": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 21.807868845176255,
+                "rendered": 22.234036724595448,
+                "delta": 0.42373724441344507,
+                "spread": 0.04720978117675401
+              },
+              "right": {
+                "count": 3,
+                "reference": 463.54340545709175,
+                "rendered": 463.2184735985441,
+                "delta": -0.30161272187393706,
+                "spread": 0.10198475176775901
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.117396356197844,
+                "rendered": 24.20872393194128,
+                "delta": -1.9048553074521877,
+                "spread": 0.32421476676649874
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.4692088625761,
+                "rendered": 653.6363187020517,
+                "delta": 2.167109839475529,
+                "spread": 0.023534026830020593
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.061062261269754003, 0.13112726601167068],
+            "sizeDelta": [-0.7253499662873821, 4.071965146927717],
+            "medianResidualPx": 1.1642962759328164,
+            "coherent": true
+          },
+          "internalFrameF1": 0.5673271479129725
+        }
+      }
+    }
+  ]
+}
