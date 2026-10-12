@@ -205,3 +205,24 @@ and Lifeforce also retain different line endings. Deathgrip adds a confirmed
 source omission: the colon after its two black mana symbols. Correct its input
 separately before refining typography. Of 25 changed bodies, 24 match the printed
 line count and 19 match every line ending; stroke weight still differs.
+
+The Revised interior-fill trial in `3ed/letter-fill-transfer.json` is rejected:
+the frozen neutral fill slightly reduces reserved inspect-title paired F1
+(.493 to .491), table-stat F1 and stats contrast correlation. No production
+renderer change is adopted. It improves some white-frame strokes but leaves
+dark-frame contours weak; this is still an ink/font investigation, not a proven
+replacement-asset requirement. The 12 reserved examples now count as seen.
+
+Development-only glyph-bound windows reduce empty title/footer area, but texture
+and nearby frame edges still change the preferred translation. Competing title
+peaks and stats window sensitivity make those offsets unsuitable for adoption.
+Inspect the local `3ed/letter-fill-development-neutral/foreground-windows.png`
+alongside `3ed/letter-foreground-development.json` before another geometry study.
+The private `3ed/letter-fill-validation/index.html` labels the candidate rejected
+and preserves the current renderer alongside it.
+
+Mesa Pegasus's Revised scan credits "Melissa Benson"; the input credits
+"Melissa A. Benson". The exact scan hash is recorded in the transfer fixture.
+Correct this presentation field separately and exclude the footer from further
+fitting in the meantime. MTGJSON original rules text does not certify artist
+spelling, historical type, punctuation or paragraph styling.

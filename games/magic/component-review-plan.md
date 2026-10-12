@@ -195,3 +195,30 @@ size and interior fill varied separately. Keep the established placement fixed
 during the ink-shape trial. Correct the recorded printed type, mana and stat
 fields in a separate baseline before fitting those components. Do not use the
 now-viewed audit examples as fresh validation.
+
+The interior-fill follow-up added signed local-contrast correlation: blur lightly,
+subtract local background, then correlate the residuals. It retains stroke
+interiors and cancels positive affine luminance changes; synthetic hollow-stroke,
+translation, blank-window and contrast cases are tested. It is not invariant to
+arbitrary saturation changes or unrelated frame texture.
+
+The neutral fill frozen in `00a7dd4` failed its reserved gate. Do not select a
+replacement on those 12 cards. Its unchanged control images are useful for
+diagnosing metric windows, but neither re-windowing nor reweighting makes that
+failed trial a successful validation.
+
+`revised-letter-foreground.mjs` now probes unchanged Canvas glyph bounds on the
+seven development cards and measures fixed padded windows in Node. The initial
+4px horizontal margin nearly cropped the wider scanned Benalish Hero title; a
+shared 12px horizontal margin preserves it. Vertical padding remains 4px. Visual
+review covers every crop. These rectangles still contain texture, and the wider
+stats window approaches the outer frame line. They are not foreground masks or
+independent scan targets. The shift grid has competing title peaks at x=-1 and
+x=+1, both y=+1; the stats winner changes with the window. Apply neither result.
+
+Before using these measurements to adjust geometry, exclude frame edges using
+shared frame geometry, preserve whole-glyph recall, and test window sensitivity.
+Freeze windows and aggregate shift/shape criteria before opening a new reserved
+cohort. Source errors must be corrected first: the fill study found Mesa Pegasus
+printed with artist "Melissa Benson" while the input says "Melissa A. Benson".
+Keep this footer outside further fitting until its scan-hashed source correction.

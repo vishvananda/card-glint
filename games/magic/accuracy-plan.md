@@ -1281,3 +1281,39 @@ local `3ed/large-body-review/index.html` shows all changed cards and four contro
 including the regression; `3ed/revised-large/report.html` contains every card's
 metrics. Frozen plans, transfer results, corpus targets, image checks and line
 reviews are recorded in the `3ed/large-body-*` fixtures.
+
+### Revised letter interiors: rejected candidate
+
+The `letter-fill-*` study holds all fonts, sizes, positions, body layout and
+existing frame assets fixed. Light underlays make the lettering too bright and
+heavy; a neutral gray underlay improves all six development medians for paired
+edge overlap and local contrast. The neutral candidate was committed in
+`00a7dd4` before the 12 reserved crops were measured and opened. The reservation
+is specific to this lettering study; earlier work had exposed this set.
+
+The frozen gate requires nonregressing paired-edge and contrast medians in each
+component at both sizes. Inspect-title F1 falls .493 to .491, table-stat F1 falls
+.374 to .372, and stats contrast falls at both sizes. No individual paired-F1
+regression exceeds .02, but the gate still fails. Production remains unchanged.
+`letter-fill-transfer.json` records all 12 cases, both sizes and image hashes.
+The local `3ed/letter-fill-validation/index.html` marks the candidate rejected.
+Mesa Pegasus adds a source error: its scan says "Melissa Benson", while its input
+says "Melissa A. Benson". That footer is excluded from future fitting pending a
+separate source correction; the frozen trial is preserved as measured.
+
+The new local-contrast metric retains signed stroke interiors instead of only
+boundaries. Positive affine luminance differences cancel; color-dependent
+contrast and background texture can still interfere. The seven development
+cards also expose excessive background in the broad lettering windows.
+`letter-foreground-development.json` records a diagnostic using unchanged font
+bounds with fixed padding. All seven controls reproduce the baseline PNG hash.
+The glyph probe uses Canvas; pixel scoring and shift searches use Node.
+
+These narrower windows are not a validated replacement metric. Their crop review
+required more horizontal padding to retain wide scan lettering, and the widened
+stats window approaches the frame edge. Competing horizontal title peaks and
+stats sensitivity to padding block a placement recommendation. Shared shift
+searches remain diagnostic; no card or scan is repositioned. Preserve the failed
+candidate decision and freeze a new window/shape study before using fresh
+reserved cards. The image-inspection and validation steps are in
+`component-review-plan.md`.
