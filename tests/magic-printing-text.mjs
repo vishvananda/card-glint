@@ -57,6 +57,46 @@ const reviewed = presentation(
 assert.equal(reviewed.face.rulesText, 'Reviewed correction.');
 assert.equal(reviewed.face.typeLine, 'Summon Example');
 assert.equal(reviewed.contentStatus, 'scan-reviewed');
+const partial = {
+  reviewedFields: ['typeLine', 'power', 'toughness', 'manaSymbols'],
+  referenceHash: 'scan-a',
+  typeLine: 'Summon Example',
+  power: 0,
+  toughness: '*',
+  manaSymbols: [],
+};
+const partialResult = presentation(entry, { 'printing-a': partial }, index.cards);
+assert.equal(partialResult.contentStatus, 'printing-reference');
+assert.equal(partialResult.face.creature, true);
+assert.equal(partialResult.face.power, 0);
+assert.equal(partialResult.face.toughness, '*');
+assert.deepEqual(partialResult.face.manaSymbols, []);
+assert.equal(partialResult.face.rulesText, 'Printed wording.');
+assert.deepEqual(partialResult.reviewedFields, partial.reviewedFields);
+assert.throws(
+  () => presentation(entry, { 'printing-a': { ...partial, referenceHash: 'other-scan' } }),
+  /stale/,
+);
+assert.throws(
+  () => presentation(entry, { 'printing-a': { ...partial, reviewedFields: ['unknown'] } }),
+  /Invalid reviewed printing field/,
+);
+assert.throws(
+  () =>
+    presentation(entry, {
+      'printing-a': { ...partial, reviewedFields: ['power'], power: Infinity },
+    }),
+  /Invalid reviewed printing field/,
+);
+assert.throws(
+  () => presentation(entry, { 'printing-a': { ...partial, reviewedFields: ['power', 'power'] } }),
+  /Repeated printing field/,
+);
+const removedStats = presentation(entry, {
+  'printing-a': { ...partial, power: null, toughness: null },
+});
+assert.equal(removedStats.face.power, null);
+assert.equal(removedStats.face.toughness, null);
 assert.equal(
   printingTextIndex(snapshot, { code: '4ED', cards: [{ ...record, originalText: undefined }] })
     .missing.length,

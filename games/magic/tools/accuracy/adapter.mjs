@@ -1,8 +1,11 @@
+import { reviewedPrintingFields } from './printing-fields.mjs';
+
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
   const annotation = annotations[card.id] ?? {};
   if (annotation.reviewed && annotation.referenceHash !== entry.reference?.sha256)
     throw Error(`Reviewed text is stale for ${card.name}; review it against the new reference.`);
+  const fields = reviewedPrintingFields(entry, annotation);
   const original = printingText[card.id];
   const rules =
     annotation.rulesText ?? original?.originalText ?? card.printed_text ?? card.oracle_text ?? '';
@@ -28,22 +31,29 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     name: annotation.name ?? card.name,
     typeLine: annotation.typeLine ?? card.printed_type_line ?? card.type_line,
     colors: card.colors,
-    manaSymbols: [...(card.mana_cost ?? '').matchAll(/\{([^}]+)\}/g)].map((m) => m[1]),
+    manaSymbols:
+      fields.manaSymbols ?? [...(card.mana_cost ?? '').matchAll(/\{([^}]+)\}/g)].map((m) => m[1]),
     rulesText,
     rulesParagraphs,
     illustration: entry.art ? `/__accuracy/object/${entry.art.sha256}` : null,
     artist: card.artist,
-    power: card.power,
-    toughness: card.toughness,
+    power: Object.hasOwn(fields, 'power') ? fields.power : card.power,
+    toughness: Object.hasOwn(fields, 'toughness') ? fields.toughness : card.toughness,
     loyalty: card.loyalty,
     setCode: card.set,
     rarity: card.rarity,
     frameStyle: ['1993', '1997'].includes(card.frame) ? 'retro' : 'modern',
     borderColor: card.border_color,
+    ...(fields.frameColors === undefined ? {} : { frameColors: fields.frameColors }),
+    // Historical "Summon" text changes the visible label, not creature identity.
+    ...(fields.typeLine === undefined
+      ? {}
+      : { creature: /\bCreature\b/.test(card.type_line ?? '') }),
     ...(entry.category === 'planeswalker' ? { rulesText: rules } : {}),
   };
   return {
     face,
+    reviewedFields: Object.keys(fields),
     contentStatus: annotation.reviewed
       ? 'scan-reviewed'
       : original || card.printed_text != null

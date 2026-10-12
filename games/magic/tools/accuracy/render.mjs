@@ -99,6 +99,7 @@ try {
       category: entry.category,
       source: entry.card.scryfall_uri,
       contentStatus: input.contentStatus,
+      reviewedFields: input.reviewedFields,
       printingTextSource: printingText?.cards[entry.id] ? printingText.source.sha256 : null,
       cohort: input.cohort,
       inputHash: hash(JSON.stringify(input.face)),
