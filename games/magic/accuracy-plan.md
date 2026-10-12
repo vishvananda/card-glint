@@ -1789,3 +1789,63 @@ underlying illustration; horizontal separators are too explicit; loyalty badge
 bevels and silhouettes differ; the bottom foil stamp and complete collector/legal
 printing are missing. Several line endings and glyph weights still differ despite
 correct source wording. These remain work items, not reasons to retune registration.
+
+### Planeswalker component review and sparse text
+
+The [reviewed component plan](fixtures/accuracy/planeswalker-reviewed-components-plan.json)
+records 70 cards: 14 M21, 12 M20, six M15 and 38 WAR. M15/WAR were initially
+reserved, but subsequent user review and iteration consumed that reservation.
+The final reports are confirmation on examined cards, not fresh held-out evidence.
+No registration was fitted per scan. M15/WAR use the frozen M21 transform as an
+explicitly unvalidated transfer; raw scores remain alongside it.
+
+The painter now uses regular MPlantin for the colon instead of the bold Beleren
+number font, taller ability badges with a soft shadow, and a wider starting-loyalty
+plate. A [bounded component search](fixtures/accuracy/planeswalker-loyalty-offset-study.json)
+across the 26 development cards identifies a shared right/up correction for the
+widened plate. Distance and overlap optima disagree by only about one pixel;
+the selected correction is +1px horizontally and −3px vertically. The source
+badge still contains a baked shadow and angular bevels.
+
+Paper is clipped to the existing frame aperture before the frame is painted.
+This prevents the rectangular underlay leaking through the type opening and
+lower corners. The generic frame drop shadow is omitted for planeswalkers.
+The type strip reuses the existing texture with a separate outline and left/down
+shadow, excluding the baked bottom edge. Its position and contour are still
+under review; this is not an accepted whole-frame calibration.
+
+Four-row panels retain equal anchors even with a short static paragraph, use
+0.9-em baseline spacing and a 17.5px font ceiling. One-/two-row panels allow 24px
+text and a larger vertical budget; three-row layouts retain the previous 19px
+policy. All 70 captures succeed with no measured text overflow. This does not
+prove absence of text/plate occlusion: final-line ink near the loyalty silhouette
+needs an independent foreground check, beyond a conservative bounding rectangle.
+
+| Examined cohort | Cards | Inspect body F1 | Inspect starting loyalty F1 | Inspect type-strip F1 |
+| --------------- | ----: | --------------- | --------------------------- | --------------------- |
+| M21/M20         |    26 | .497 → .507     | .459 → .622                 | .571 → .504           |
+| M15/WAR         |    44 | .374 → .411     | .457 → .640                 | .569 → .466           |
+
+The [M21/M20 report](fixtures/accuracy/walker-review-refined-development-measurement.json)
+and [M15/WAR report](fixtures/accuracy/walker-review-refined-set-transfer-measurement.json)
+include every card and both raster tiers. Chandra, Awakened Inferno's body F1
+improves .392 → .516 and Kasmina's .359 → .532. Ugin retains the text layout the
+user preferred; body F1 is nearly unchanged (.407 → .404). These are regional
+structural scores, not percentages of accuracy. Frozen rasters are compared in
+Node without Chromium or GPU work; the report timing states that scope.
+
+Do not hide the regressions: type-strip registered overlap declines on 60 of 70
+cards by more than .02. Chandra's raw type score improves .535 → .615 while its
+registered score declines .611 → .473. This disagreement calls for separate
+text-ink and outline targets and a frame-registration audit; neither optimizing
+the combined crop nor fitting each scan is an appropriate resolution. Ability
+badge and left-border scores also remain mixed. Keep the revised visuals
+reviewable while measuring those components independently.
+
+M15 exposed source errors: literal backslash-r line-ending artifacts and the
+later Legendary erratum in MTGJSON's `originalType`. The raw original text is
+retained, with only line-ending artifacts normalized. All six printed type lines
+were checked against the cached scans and recorded as hash-bound partial
+annotations, not full rules certification. Both sides of the final M15 comparison
+use these corrections: the old renderer was recaptured at `08fa0e5`. Earlier M15
+reports containing the source artifacts are diagnostic history only.
