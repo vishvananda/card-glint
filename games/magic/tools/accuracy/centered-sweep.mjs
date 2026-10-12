@@ -4,6 +4,7 @@ import { PNG } from 'pngjs';
 import { openBrowser } from './browser.mjs';
 import { readPrintingText } from './printing-text.mjs';
 import { presentation } from './adapter.mjs';
+import { lineText, wrapping } from './typography-metrics.mjs';
 import {
   readJson,
   writeJson,
@@ -20,52 +21,86 @@ import { compareRegion, median } from './metrics.mjs';
 
 const plan = await readJson(path.join(fixtureRoot, 'centered-text-plan.json'));
 const set = process.argv[2] ?? '4ed';
-const transfer = process.argv[3] === 'transfer';
+const mode = process.argv[3] ?? 'development';
+const widthTrial = mode.startsWith('width-');
+const transfer = mode.endsWith('transfer');
+if (!['development', 'transfer', 'width-development', 'width-transfer'].includes(mode))
+  throw Error('Unknown centered trial mode');
 if (!['4ed', '3ed', '5ed'].includes(set) || (!transfer && set !== '4ed'))
   throw Error('Use 4ed development or 4ed/3ed/5ed transfer');
+if (widthTrial && set !== '4ed') throw Error('The width trial is reserved for Fourth Edition');
+const widthPlan = widthTrial
+  ? await readJson(path.join(fixtureRoot, '4ed/centered-width-plan.json'))
+  : null;
+const targets = (await readJson(path.join(fixtureRoot, '4ed/centered-text-targets.json'))).cards;
+if (widthTrial && !transfer)
+  for (const card of (
+    await readJson(path.join(fixtureRoot, 'centered-transfer-review.json'))
+  ).reports.find((r) => r.set === '4ed').results)
+    targets[card.id] = { lines: card.scanLines };
 const base = path.join(
   outputRoot,
   set,
   set === '4ed' ? 'text-insets' : set === '3ed' ? 'stats-wide-before' : 'stats-wide',
 );
-const out = path.join(outputRoot, set, transfer ? 'centered-transfer' : 'centered-study');
+const out = path.join(
+  outputRoot,
+  set,
+  widthTrial ? `centered-${mode}` : transfer ? 'centered-transfer' : 'centered-study',
+);
 const capture = await readJson(path.join(base, 'metrics.json'));
 const snapshot = await readJson(path.join(cacheRoot, 'sets', `${set}.json`));
 const original = await readPrintingText(snapshot);
-const cards = (transfer ? plan.reserved[set].cards : plan.development).map((t) => {
+const selected = widthPlan
+  ? transfer
+    ? widthPlan.heldOut
+    : widthPlan.development
+  : transfer
+    ? plan.reserved[set].cards
+    : plan.development;
+const cards = selected.map((t) => {
   const card = capture.results.find((c) => c.id === t.id);
-  return transfer
-    ? {
-        ...card,
-        face: presentation(
-          snapshot.entries.find((e) => e.id === t.id),
-          {},
-          original.cards,
-        ).face,
-      }
-    : card;
+  const value =
+    transfer || widthTrial
+      ? {
+          ...card,
+          face: presentation(
+            snapshot.entries.find((e) => e.id === t.id),
+            {},
+            original.cards,
+          ).face,
+        }
+      : card;
+  if (widthTrial && t.name === 'Deathgrip') {
+    // Scan-reviewed punctuation correction, recorded before the new width trial.
+    value.face.rulesText = '{B}{B}: Counter target green spell. Play this ability as an interrupt.';
+    value.face.rulesParagraphs = [{ role: 'rules', runs: [{ text: value.face.rulesText }] }];
+  }
+  return value;
 });
-const candidates = transfer
-  ? [
-      { id: 'control' },
-      {
-        id: plan.frozenCandidate.id,
-        size: plan.frozenCandidate.size,
-        width: plan.frozenCandidate.width,
-        y: plan.frozenCandidate.y,
-      },
-    ]
-  : [
-      { id: 'control' },
-      ...[24, 24.5, 25, 25.5, 26, 26.5, 27].flatMap((size) =>
-        [400.556, 402.556, 404.556, 406.556, 408.556, 410.556, 412.556].map((y) => ({
-          id: `s${size}-y${y}`,
-          size,
-          width: 320,
-          y,
-        })),
-      ),
-    ];
+const frozen = widthPlan?.frozenCandidate ?? plan.frozenCandidate;
+const candidates =
+  transfer || widthTrial
+    ? [
+        { id: 'control' },
+        {
+          id: frozen.id,
+          size: frozen.size,
+          width: frozen.width,
+          y: frozen.y,
+        },
+      ]
+    : [
+        { id: 'control' },
+        ...[24, 24.5, 25, 25.5, 26, 26.5, 27].flatMap((size) =>
+          [400.556, 402.556, 404.556, 406.556, 408.556, 410.556, 412.556].map((y) => ({
+            id: `s${size}-y${y}`,
+            size,
+            width: 320,
+            y,
+          })),
+        ),
+      ];
 const session = await openBrowser(snapshot);
 const results = [];
 try {
@@ -163,13 +198,28 @@ try {
       const f1 = compareRegion(target.gray, rendered.gray, 366, 184).edgeF1[1];
       const file = `${card.collectorNumber}.${value.id}.png`;
       await atomicWrite(path.join(out, file), bytes);
-      scores.push({ id: value.id, edgeF1: f1, layout: value.layout, file, sha256: hash(bytes) });
+      const target = targets[card.id];
+      scores.push({
+        id: value.id,
+        edgeF1: f1,
+        wrapping: target
+          ? wrapping(
+              target.lines,
+              value.layout.lines.map(lineText),
+              card.face.rulesParagraphs.map((p) => p.runs.map((r) => r.text).join('')),
+            )
+          : null,
+        layout: value.layout,
+        file,
+        sha256: hash(bytes),
+      });
     }
     results.push({
       id: card.id,
       name: card.name,
       number: card.collectorNumber,
       inputHash: hash(JSON.stringify(card.face)),
+      face: card.face,
       referenceHash: card.images.reference.sha256,
       alignmentUncertain: card.alignment.uncertain,
       scores,
@@ -196,10 +246,11 @@ await writeJson(path.join(out, 'sweep.json'), {
   schemaVersion: 1,
   set,
   transfer,
+  mode,
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
   experimentHash: await sourceHash(new URL('.', import.meta.url), /^centered.*\.mjs$/),
   alignmentHash: capture.alignmentHash,
-  note: `${transfer ? 'Reserved transfer printings, frozen candidate only.' : 'Six development printings.'} A single size/y candidate applies to every card. Width fixed at 320px after layout-only study; balanced breaks minimize squared unused width at the minimum feasible line count. Existing font/assets/alignment remain unchanged. Control matches production crop pixels.`,
+  note: `${transfer ? 'Reserved transfer printings, frozen candidate only.' : 'Development printings.'} A single size/y/width candidate applies to every card. Balanced breaks minimize squared unused width at the minimum feasible line count. Existing font/assets/alignment remain unchanged. Control matches production crop pixels.`,
   candidates,
   summary,
   results,
