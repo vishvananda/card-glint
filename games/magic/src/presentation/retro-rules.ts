@@ -2,7 +2,7 @@ import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
 import { retroBasicSymbol, retroFamily, retroPx, retroRects } from './retro-frame.js';
-import { normalizeColors } from './profile.js';
+import { resolveFrameColors } from './profile.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -58,7 +58,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     (set === 'mir' || set === 'tmp') &&
     !basic &&
     !/\b(?:Land|Artifact)\b/.test(face.typeLine ?? '') &&
-    normalizeColors(face.colors ?? []).join('') === 'W';
+    resolveFrameColors(face).join('') === 'W';
   const regular = layoutRules(
     context,
     centered ? [{ ...paragraph, align: 'center' }] : paragraphs,

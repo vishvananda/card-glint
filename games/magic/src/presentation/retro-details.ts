@@ -1,5 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
+import { resolveFrameColors } from './profile.js';
 
 /** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
 export function retroStatsPlacement(face: RenderedCardInput) {
@@ -24,6 +25,7 @@ export function retroPrintDetails(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   const fourth = set === '4ed' && !/\bLand\b/.test(face.typeLine ?? '');
   if (set !== 'mir' && set !== 'tmp' && !fourth) return null;
+  const colors = resolveFrameColors(face);
   return {
     titleX: fourth ? 42.5 : undefined,
     titleYOffset: fourth ? -5 : 0,
@@ -45,9 +47,9 @@ export function retroPrintDetails(face: RenderedCardInput) {
     legalSize: 10.5,
     legalLight: fourth
       ? /\bArtifact\b/.test(face.typeLine ?? '') ||
-        (face.colors?.length === 1 && ['B', 'G'].includes(face.colors[0]!))
+        (colors.length === 1 && ['B', 'G'].includes(colors[0]!))
       : !/\bLand\b/.test(face.typeLine ?? '') &&
-        !(face.colors?.length === 1 && ['W', 'R'].includes(face.colors[0]!)),
+        !(colors.length === 1 && ['W', 'R'].includes(colors[0]!)),
     legalText:
       face.legalText === undefined
         ? fourth

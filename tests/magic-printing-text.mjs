@@ -97,6 +97,27 @@ const removedStats = presentation(entry, {
 });
 assert.equal(removedStats.face.power, null);
 assert.equal(removedStats.face.toughness, null);
+const framed = presentation(
+  { ...entry, card: { ...entry.card, colors: ['U'], mana_cost: '{2}{U}' } },
+  {
+    'printing-a': { reviewedFields: ['frameColors'], referenceHash: 'scan-a', frameColors: ['G'] },
+  },
+);
+assert.deepEqual(framed.face.colors, ['U']);
+assert.deepEqual(framed.face.frameColors, ['G']);
+assert.deepEqual(framed.face.manaSymbols, ['2', 'U']);
+assert.equal(framed.contentStatus, 'oracle-unverified');
+assert.throws(
+  () =>
+    presentation(entry, {
+      'printing-a': {
+        reviewedFields: ['frameColors'],
+        referenceHash: 'scan-a',
+        frameColors: ['Blue'],
+      },
+    }),
+  /Invalid reviewed printing field/,
+);
 assert.equal(
   printingTextIndex(snapshot, { code: '4ED', cards: [{ ...record, originalText: undefined }] })
     .missing.length,

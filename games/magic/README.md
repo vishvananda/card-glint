@@ -38,6 +38,15 @@ await renderer.ready(card.id, card.revision);
 // Place it with updateScene() and render(), as in the core README.
 ```
 
+Use `frameColors` when a physical printing uses a different palette from its
+rules colors. For example, `colors: ['U'], frameColors: ['G']` keeps the blue
+card identity while selecting green frame/panel styling from the existing
+assets. Mana symbols are supplied independently. An explicit empty array selects
+a colorless palette; omitting the field uses `colors`. The recipe snapshots the
+override with the rest of the presentation input. For historical `Summon` type
+labels, supply `creature: true` so changing the visible type does not lose that
+semantic flag.
+
 For script-only inclusion, use `magic.js` and a stylesheet link to `magic.css`
 beside `browser.js` in the browser release or version-pinned CDN tree.
 The browser ZIP includes `magic.html`: serve the extracted directory over HTTP

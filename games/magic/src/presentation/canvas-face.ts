@@ -90,7 +90,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v22',
+    'canvas-face-v23',
     input.paintLayer ?? null,
     tier,
     input.printingId,

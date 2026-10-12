@@ -8,7 +8,7 @@ import {
   type RenderedCardInput,
   type FaceRect,
 } from './face-layout.js';
-import { normalizeColors } from './profile.js';
+import { resolveFrameColors } from './profile.js';
 import { manaSymbolAsset, faceSetSymbol } from './assets.js';
 export const RETRO_SYMBOL_FONT = manifest.RETRO_SYMBOL_FONT;
 export const RETRO_ROOT = manifest.RETRO_ROOT;
@@ -36,7 +36,7 @@ export function retroEarly(face: RenderedCardInput) {
 export function retroFamily(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase() ?? '';
   if (retroEarly(face)) return 'abu';
-  if (set === 'leg' && normalizeColors(face.colors ?? []).length > 1) return 'legends';
+  if (set === 'leg' && resolveFrameColors(face).length > 1) return 'legends';
   if (['3ed', '4ed', '5ed', 'atq'].includes(set) && !/\bLand\b/.test(face.typeLine ?? ''))
     return 'fourth';
   return 'seventh';
@@ -65,7 +65,7 @@ export function retroRects(face: RenderedCardInput) {
   };
 }
 export function retroFrameAsset(face: RenderedCardInput) {
-  const colors = normalizeColors(face.colors ?? []),
+  const colors = resolveFrameColors(face),
     type = face.typeLine ?? '';
   const landType = [
     ['Plains', 'w'],
@@ -110,7 +110,7 @@ export function retroInk(face: RenderedCardInput) {
 }
 export function retroFrameFilter(face: RenderedCardInput) {
   return face.setCode?.toLowerCase() === '7ed' &&
-    normalizeColors(face.colors ?? []).some((c) => c === 'W' || c === 'G') &&
+    resolveFrameColors(face).some((c) => c === 'W' || c === 'G') &&
     !/Land/.test(face.typeLine ?? '')
     ? 'saturate(.7) brightness(.88)'
     : 'none';

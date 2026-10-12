@@ -33,6 +33,16 @@ assert.equal(
   'R',
 );
 assert.equal(retroFamily({ ...creature, setCode: 'LEA' }), 'abu');
+const printedPalette = { ...creature, frameColors: ['G'] };
+assert.equal(resolveCardProfile(printedPalette).frame, 'G');
+assert.equal(resolveCardProfile(printedPalette).boxes, 'G');
+assert.deepEqual(printedPalette.colors, ['U']);
+assert.deepEqual(printedPalette.manaSymbols, ['2', 'U']);
+assert.equal(resolveCardProfile({ ...creature, frameColors: [] }).frame, 'Colourless');
+assert.notEqual(
+  magic.describe(printedPalette, 'inspect').color.key,
+  magic.describe(creature, 'inspect').color.key,
+);
 assert.notDeepEqual(faceRects(walker).rules, faceRects(creature).rules);
 const basic = {
   name: 'Plains',
@@ -56,6 +66,14 @@ const fixtures = [
     rulesText: '{T}: Draw a card.',
   },
   { ...creature, frameStyle: 'retro', setCode: 'TMP', artist: 'Example Artist' },
+  {
+    ...printedPalette,
+    name: 'Printed Green Adept',
+    typeLine: 'Summon Adept',
+    creature: true,
+    frameStyle: 'retro',
+    setCode: '3ED',
+  },
   {
     name: 'Example Chronicle',
     typeLine: 'Enchantment — Saga',
@@ -414,6 +432,24 @@ try {
     const { composeCardTexture, cardTextureKey, faceSetSymbol } = await import(
       '/magic-presentation.js'
     );
+    const printed = { ...fixtures[0], setCode: '3ed', frameColors: ['G'] };
+    const immutablePrinted = magic.describe(printed, 'table');
+    printed.frameColors[0] = 'R';
+    const printedUrls = [];
+    await immutablePrinted.color.paint(
+      {
+        images: async (assets) => {
+          printedUrls.push(...assets.map((a) => a.url));
+          return { value: new Map(assets.map((a) => [a.url, bitmap])), release() {} };
+        },
+      },
+      new AbortController().signal,
+    );
+    if (
+      !printedUrls.some((url) => url.endsWith('/old/fourth/g.png')) ||
+      printedUrls.some((url) => url.endsWith('/old/fourth/r.png'))
+    )
+      throw Error('Printed frame palette was not captured immutably');
     const custom = {
       ...fixtures[0],
       setCode: 'CUSTOM',

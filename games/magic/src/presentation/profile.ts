@@ -20,9 +20,12 @@ export type FrameAssetKey =
   | 'WR'
   | 'WU';
 export type BoxAssetKey = 'Artifact' | 'B' | 'Colourless' | 'G' | 'Gold' | 'Land' | 'R' | 'U' | 'W';
+export type FrameColor = 'W' | 'U' | 'B' | 'R' | 'G';
 
 export interface CardProfileInput {
   colors?: readonly string[];
+  /** Printed frame palette when it differs from the card's rules colors. */
+  frameColors?: readonly FrameColor[];
   typeLine?: string;
   artifact?: boolean;
   land?: boolean;
@@ -56,7 +59,7 @@ export function resolveCardProfile(input: CardProfileInput): CardProfile {
     !/\bPlaneswalker\b/i.test(typeLine) &&
     (input.legendary ?? /(^|\s)Legendary(?:\s|$)/i.test(typeLine));
   const creature = input.creature ?? /(^|\s)Creature(?:\s|$)/i.test(typeLine);
-  const colors = normalizeColors(input.colors ?? []);
+  const colors = resolveFrameColors(input);
   const colorKey =
     colors.length === 0
       ? 'Colourless'
@@ -91,6 +94,11 @@ export function resolveCardProfile(input: CardProfileInput): CardProfile {
     creature,
     className: `rendered-card-profile-${boxes.toLocaleLowerCase()}`,
   };
+}
+
+/** Presentation color selection never rewrites the card's semantic colors. */
+export function resolveFrameColors(input: CardProfileInput): string[] {
+  return normalizeColors(input.frameColors ?? input.colors ?? []);
 }
 
 export function normalizeColors(colors: readonly string[]): string[] {
