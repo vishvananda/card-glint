@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "83f63c6",
+  "rendererHash": "d92bd32e88bf3b815367df238c2ffd70263050f4a2a8991ddf9edd55e3d8715c",
+  "experimentHash": "64722d500cc62e646ef703ee069b391ced9b96d1c6bdc8fadfd660437e781024",
+  "developmentTrialHash": "8f5141efe4fac28bbb63fdba906ecb7e9036576cadf7413fde3f66f8da2c70cf",
+  "candidate": {
+    "id": "s15.5-l1.2-o-10",
+    "size": 15.5,
+    "leading": 1.2,
+    "centerOffset": -10,
+    "minimumCharacters": 300,
+    "singleRulesParagraph": true
+  },
+  "summary": [
+    {
+      "id": "s15.5-l1.2-o-10",
+      "size": 15.5,
+      "leading": 1.2,
+      "centerOffset": -10,
+      "minimumCharacters": 300,
+      "singleRulesParagraph": true,
+      "tier": "inspect",
+      "medianF1": 0.6744538695358833,
+      "medianDelta": 0.4084296546944831,
+      "medianDistance": 1.3671450828101348,
+      "gains": ["Clone", "Earthbind", "Gaea's Liege", "The Hive"],
+      "regressions": [],
+      "exactWraps": 2,
+      "overflow": []
+    },
+    {
+      "id": "s15.5-l1.2-o-10",
+      "size": 15.5,
+      "leading": 1.2,
+      "centerOffset": -10,
+      "minimumCharacters": 300,
+      "singleRulesParagraph": true,
+      "tier": "table",
+      "medianF1": 0.6431654453904944,
+      "medianDelta": 0.3869441019186144,
+      "medianDistance": 1.6097322313127171,
+      "gains": ["Clone", "Earthbind", "Gaea's Liege", "The Hive"],
+      "regressions": [],
+      "exactWraps": 2,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "table",
+      "medianF1": 0.2385118874523005,
+      "medianDelta": 0,
+      "medianDistance": 3.5904235526209036,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.23789587737351506,
+      "medianDelta": 0,
+      "medianDistance": 3.369845788742771,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    }
+  ],
+  "decision": "Frozen before reserved body image review. All four development cards gain at both tiers and match printed line counts; Earthbind and Gaea’s Liege match all line endings. Clone and The Hive retain wrapping differences. Size15.5 has higher inspect median, two exact wraps and no regression; size16 has slightly higher table median but only one exact wrap. Applicability remains one rules paragraph over300 source characters; no per-card alignment."
+}
