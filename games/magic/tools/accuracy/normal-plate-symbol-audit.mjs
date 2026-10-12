@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
-import { fixtureRoot, outputRoot, readJson, writeJson, hash } from './common.mjs';
+import { fixtureRoot, outputRoot, writeJson, hash } from './common.mjs';
 import { normalize } from './pixels.mjs';
 import { measurePlate, plateDifference, PLATE_GEOMETRY_VERSION } from './plate-geometry.mjs';
 import { median } from './metrics.mjs';
@@ -85,6 +85,7 @@ for (const card of capture.results) {
     category: card.category,
     colors: card.face.colors,
     rarity: card.face.rarity,
+    plateAsset: card.assets.boxes,
     referenceHash: card.images.reference.sha256,
     renderedHash: card.images.inspect.sha256,
     measurements,
@@ -101,7 +102,7 @@ for (const card of capture.results) {
   });
   if (rows.length % 50 === 0) console.log(`${set}: independent plate landmarks ${rows.length}`);
 }
-const material = (r) =>
+const colorGroup = (r) =>
     r.colors.length === 1 ? r.colors[0] : r.colors.length ? 'multicolor' : 'colorless',
   summary = {};
 const med = (values) => {
@@ -109,7 +110,7 @@ const med = (values) => {
   return usable.length ? median(usable) : null;
 };
 for (const group of ['all', 'W', 'U', 'B', 'R', 'G', 'multicolor', 'colorless']) {
-  const cards = rows.filter((r) => group === 'all' || material(r) === group),
+  const cards = rows.filter((r) => group === 'all' || colorGroup(r) === group),
     type = cards.map((r) => r.measurements.type.difference).filter((d) => d.status === 'measured'),
     title = cards
       .map((r) => r.measurements.title.difference)
