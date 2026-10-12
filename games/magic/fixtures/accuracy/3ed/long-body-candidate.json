@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "candidate": {
+    "id": "x70-w346-s22.5-l1-y-6-min4",
+    "x": 70,
+    "width": 346,
+    "size": 22.5,
+    "leading": 1,
+    "yOffset": -6,
+    "paragraphGap": 0,
+    "flavorGap": 0,
+    "minimumTopOffset": 4
+  },
+  "experimentHash": "84a5f0ba484aed7999a27607a15da4c591fcff5e15033ec94b08ede102996ad5",
+  "rendererHash": "bc857ffd7ae5a535e383018372b13d2ea6cce83242a256361165136024276481",
+  "captureHash": "ac2d415556ab1f0b1b15e2bd584e07e133ad723c4fc3e635b1477ded6d929bb3",
+  "developmentTrialHash": "e6e6c6e5d8a5059db27fd98f09ca742410669980a693e1ea21d4eb54611938bb",
+  "developmentPlanHash": "694f53f2e96822dc0eccb77b2d2e8e325b802921c8ab2dd1d26dbf28b5a03fb8",
+  "selectedScores": [
+    {
+      "id": "x70-w346-s22.5-l1-y-6-min4",
+      "x": 70,
+      "width": 346,
+      "size": 22.5,
+      "leading": 1,
+      "yOffset": -6,
+      "paragraphGap": 0,
+      "flavorGap": 0,
+      "minimumTopOffset": 4,
+      "tier": "table",
+      "medianF1": 0.6498692526260891,
+      "medianDelta": 0.32262016078574535,
+      "medianDistance": 1.5952284714842562,
+      "gains": [
+        "Samite Healer",
+        "Prodigal Sorcerer",
+        "Royal Assassin",
+        "Dwarven Warriors",
+        "Llanowar Elves",
+        "Aladdin's Lamp",
+        "Atog",
+        "Contract from Below",
+        "Channel"
+      ],
+      "regressions": [],
+      "exactWraps": 9,
+      "overflow": []
+    },
+    {
+      "id": "x70-w346-s22.5-l1-y-6-min4",
+      "x": 70,
+      "width": 346,
+      "size": 22.5,
+      "leading": 1,
+      "yOffset": -6,
+      "paragraphGap": 0,
+      "flavorGap": 0,
+      "minimumTopOffset": 4,
+      "tier": "inspect",
+      "medianF1": 0.6430284936085179,
+      "medianDelta": 0.3333324613826261,
+      "medianDistance": 1.4420095861034559,
+      "gains": [
+        "Samite Healer",
+        "Prodigal Sorcerer",
+        "Royal Assassin",
+        "Dwarven Warriors",
+        "Llanowar Elves",
+        "Aladdin's Lamp",
+        "Atog",
+        "Contract from Below",
+        "Channel"
+      ],
+      "regressions": ["Animate Wall"],
+      "exactWraps": 9,
+      "overflow": []
+    }
+  ],
+  "controlScores": [
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.2383394398834773,
+      "medianDelta": 0,
+      "medianDistance": 3.554130113068162,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 1,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "table",
+      "medianF1": 0.22510407762660767,
+      "medianDelta": 0,
+      "medianDistance": 3.820188225403316,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 1,
+      "overflow": []
+    }
+  ],
+  "selectedImages": [
+    {
+      "id": "7545fe51-dbe5-4d4c-87a8-86d54734bf33",
+      "name": "Samite Healer",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "b35e08fd878d2f966d5e5a5594b42e2094c6351f855c9f5bf1f618e61553a2c1",
+          "edgeF1": 0.5791853591583954,
+          "meanDistance": 1.4420095861034559,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "d9b82685d33161387bc176debbc56fb06201d08e5daf7fd1df811a5f01eb8791",
+          "edgeF1": 0.5427355949545137,
+          "meanDistance": 1.7586515939701575,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "20f1411b-a5ad-4d49-915b-ad8a21d51342",
+      "name": "Prodigal Sorcerer",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "2d445d3ad86058e4c32c24b132e9559425bb8ee5da2e375e35057f4fbbc342e6",
+          "edgeF1": 0.6430284936085179,
+          "meanDistance": 2.1678527446323104,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "a9eaca85b45ca5128c65192619f0b587c52a97245f45e6ca2b155cb3a3dd30cb",
+          "edgeF1": 0.6498692526260891,
+          "meanDistance": 2.539247692513319,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "4945ec9e-eda7-42ad-88b7-ba14f9d95e54",
+      "name": "Royal Assassin",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "0d1c7c5c406634d54000adf7642365926b2a2937870fdcfc5eff9c9faacf8fd0",
+          "edgeF1": 0.6885042903535836,
+          "meanDistance": 1.9101242331783053,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 5,
+            "actualLines": 5,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "23e16230a2364c88bcce718d523b35eb76732364c4a67b3187903481aab40cb1",
+          "edgeF1": 0.6652624177193155,
+          "meanDistance": 2.2485994062317065,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 5,
+            "actualLines": 5,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "6caeadf8-1b40-497d-be7c-667fbb98f848",
+      "name": "Dwarven Warriors",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "d3c16129fb26feba590bc51b67fd43cf877cd2cd2715d251c4219f22860f38a7",
+          "edgeF1": 0.7103760404381029,
+          "meanDistance": 1.3337685715979313,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 5,
+            "actualLines": 5,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "3bc281ce4e4f3dd705fa2a3086aad8c5d1fc729c040135ae37fd08af71046592",
+          "edgeF1": 0.6589695990353409,
+          "meanDistance": 1.5952284714842562,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 5,
+            "actualLines": 5,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "6d6deae3-3ed4-47eb-bf4a-4a766ce18135",
+      "name": "Llanowar Elves",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "651c0a42b5b675b9ba1d35a4295f513f3db5adb910d993c3c1ccc873f27d1597",
+          "edgeF1": 0.671413125573666,
+          "meanDistance": 1.377163878190176,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "cbd3883b5d4d38badd48e183cf5488f9b8495b628dac68a0f6c17558a9ea43f2",
+          "edgeF1": 0.682560460056652,
+          "meanDistance": 1.4426172505128219,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "2c7e444a-dba1-406f-bfdc-1a54102083a8",
+      "name": "Aladdin's Lamp",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "11b111fe3ec26fe9bc91f506726cba097603184b3a40efcdbdb955b8d13adf46",
+          "edgeF1": 0.7245296781079111,
+          "meanDistance": 1.3878849363388448,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "fe74bc74cb7a9305e54adfec8f44e1bf4e6ed21bf4e41d5eec6c13e3e32eab2f",
+          "edgeF1": 0.7137071386711971,
+          "meanDistance": 1.5396149589814065,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "976121fd-a21d-42cd-a7d0-310c8648e307",
+      "name": "Atog",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "b8d6baee18a01001321a70d0bb302813334e5200061133eb626ffa0fce062784",
+          "edgeF1": 0.6039499771464962,
+          "meanDistance": 1.3830126191706946,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 7,
+            "actualLines": 7,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "5ad7fab59388758e932fb1a0b39d9257d6c8e4d8795854dd7a2d747a1590f556",
+          "edgeF1": 0.6093713418358179,
+          "meanDistance": 1.458189704336786,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 7,
+            "actualLines": 7,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "dffd3a5f-066b-40c2-99e0-dba1771c899d",
+      "name": "Animate Wall",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "306fede62f3763696fb8287367fd72c46a4348a8fa671799af33c44ca74356bd",
+          "edgeF1": 0.34843508332898876,
+          "meanDistance": 2.3162393758068003,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0.2857142857142857,
+            "expectedLines": 5,
+            "actualLines": 4,
+            "lineCountError": -1,
+            "exactWrapping": false
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "1566e5d1f99cf066f64aea85fec641bfdba14677f38feac2b241833bdd55973f",
+          "edgeF1": 0.29497011054049976,
+          "meanDistance": 2.720900929582064,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0.2857142857142857,
+            "expectedLines": 5,
+            "actualLines": 4,
+            "lineCountError": -1,
+            "exactWrapping": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "b59fde1a-8d41-4f09-a4a1-4a15aaa704c7",
+      "name": "Clone",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "2e553b4309d02c9a58476764e04f0628daf3cd1455bc357c0a2048ee6b646f7b",
+          "edgeF1": 0.20185264711583928,
+          "meanDistance": 3.536774256684973,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0.2857142857142857,
+            "expectedLines": 7,
+            "actualLines": 9,
+            "lineCountError": 2,
+            "exactWrapping": false
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "6f98b4d010472ebbaa051817ea74ab106d24b7983be0759a9871905eb9469618",
+          "edgeF1": 0.18253539505816213,
+          "meanDistance": 3.698448909167668,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 0.2857142857142857,
+            "expectedLines": 7,
+            "actualLines": 9,
+            "lineCountError": 2,
+            "exactWrapping": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "0f1a0d5c-bf25-49ff-8af0-cdb2e00c50d9",
+      "name": "Contract from Below",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "16a958fc678e8d313cba58f4539868362ed61566e7327bfba10dc8aff1a89c9d",
+          "edgeF1": 0.7439298904077267,
+          "meanDistance": 1.3244119646228123,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "32180b9ae107b99794f35fe15ba5d7c0bc54f123601404bcea4a66b940074f2b",
+          "edgeF1": 0.7286324078213533,
+          "meanDistance": 1.5400404226339237,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 6,
+            "actualLines": 6,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "bc0cea66-7c61-4308-af2f-3622fbb82983",
+      "name": "Channel",
+      "scores": [
+        {
+          "tier": "inspect",
+          "sha256": "310d050b595818958317f99db9816736fe25a72086a4ea9580af58d75eb06156",
+          "edgeF1": 0.637942469181436,
+          "meanDistance": 1.4638793055260373,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 8,
+            "actualLines": 8,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        },
+        {
+          "tier": "table",
+          "sha256": "2ed7f936499b20703a4e2d6430a6ebd9fb777b1d0303b00dbaba8e3a967303ca",
+          "edgeF1": 0.6233413188287839,
+          "meanDistance": 1.479093327081574,
+          "wrapping": {
+            "status": "measured",
+            "softBreakF1": 1,
+            "expectedLines": 8,
+            "actualLines": 8,
+            "lineCountError": 0,
+            "exactWrapping": true
+          }
+        }
+      ]
+    }
+  ],
+  "decision": "Freeze before reserved body scans. Widths345 and346 produce identical development pixels;346 retains the largest tested width before new wrap failures. x70/y-6 wins median shape agreement; minimum first-ink y is the original rules rectangle plus4. Font stays22.5 with existing shrink-to-fit. Nine of11 exact wrapping patterns,1before. Animate Wall remains wrongly classified as left-aligned and has an inspect regression; Clone needs smaller type. Neither receives a card-specific exception."
+}
