@@ -57,7 +57,7 @@ const entries = await mapLimit(selected, 2, async (card, index) => {
 });
 const snapshot = {
   schemaVersion: 1,
-  policy: 'ordinary-paper-v1',
+  policy: 'ordinary-paper-v2',
   set: opts.set,
   query,
   createdAt: new Date().toISOString(),

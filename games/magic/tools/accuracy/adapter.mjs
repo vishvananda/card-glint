@@ -36,8 +36,8 @@ export function presentation(entry, annotations = {}) {
     loyalty: card.loyalty,
     setCode: card.set,
     rarity: card.rarity,
-    frameStyle: 'modern',
-    borderColor: 'black',
+    frameStyle: ['1993', '1997'].includes(card.frame) ? 'retro' : 'modern',
+    borderColor: card.border_color,
     ...(entry.category === 'planeswalker' ? { rulesText: rules } : {}),
   };
   return {

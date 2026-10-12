@@ -12,6 +12,15 @@ export function frameFamily(result) {
 
 /** Search strips contain frame borders, not names or rules. Coordinates are independent reference landmarks. */
 export function landmarks(family) {
+  if (family === 'retro-seventh')
+    return [
+      ...[90, 240, 400].flatMap((x) => [67, 370, 406].map((y) => ({ x, y, axis: 'y' }))),
+      ...[130, 230, 310].flatMap((y) => [
+        { x: 56, y, axis: 'x' },
+        { x: 432, y, axis: 'x' },
+      ]),
+    ];
+  if (family.startsWith('retro-')) return [];
   const large = family === 'planeswalker-large',
     walker = family.startsWith('planeswalker');
   const artTop = walker ? 64 : 72,

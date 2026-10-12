@@ -42,19 +42,32 @@ await mkdir(path.join(out, 'cards'), { recursive: true });
 const session = await openBrowser(snapshot);
 const results = [];
 try {
-  const fontStatus = await session.page.evaluate(async () => {
-    const { loadCanvasFonts } = await import('/games/magic/src/presentation/canvas-assets.ts');
-    await loadCanvasFonts();
-    const faces = [...document.fonts].map((f) => ({
-      family: f.family,
-      style: f.style,
-      weight: f.weight,
-      status: f.status,
-    }));
-    if (faces.length < 5 || faces.some((f) => f.status !== 'loaded'))
-      throw Error('Required fonts not loaded: ' + JSON.stringify(faces));
-    return faces;
-  });
+  const fontStatus = await session.page.evaluate(
+    async (retro) => {
+      const { loadCanvasFonts } = await import('/games/magic/src/presentation/canvas-assets.ts');
+      await loadCanvasFonts();
+      if (retro) {
+        const { loadRetroFont } = await import('/games/magic/src/presentation/retro-font.ts');
+        await loadRetroFont();
+        if (
+          ![...document.fonts].some(
+            (f) => f.family === 'CardRenderer MTG Goudy' && f.status === 'loaded',
+          )
+        )
+          throw Error('Required retro font did not load');
+      }
+      const faces = [...document.fonts].map((f) => ({
+        family: f.family,
+        style: f.style,
+        weight: f.weight,
+        status: f.status,
+      }));
+      if (faces.length < 5 || faces.some((f) => f.status !== 'loaded'))
+        throw Error('Required fonts not loaded: ' + JSON.stringify(faces));
+      return faces;
+    },
+    entries.some((e) => presentation(e).face.frameStyle === 'retro'),
+  );
   for (const entry of entries) {
     const input = presentation(entry, annotations);
     const result = {
@@ -81,13 +94,25 @@ try {
             '/games/magic/src/presentation/assets.ts'
           );
           const { resolveCardProfile } = await import('/games/magic/src/presentation/profile.ts');
+          const retro = await import('/games/magic/src/presentation/retro-frame.ts');
+          const oldBorder = retro.isRetro(face);
           const output = {
             tiers: {},
-            frame: faceFrame(face),
+            frame: oldBorder ? `retro-${retro.retroFamily(face)}` : faceFrame(face),
             layout: null,
             assets: {
-              ...profileAssets(resolveCardProfile(face), faceFrame(face)),
-              setSymbol: faceSetSymbol(face),
+              ...(oldBorder
+                ? {
+                    frame: retro.retroFrameAsset(face),
+                    boxes: retro.retroFrameAsset(face),
+                    border:
+                      retro.retroBorder(face) !== 'black' || retro.retroFamily(face) === 'fourth'
+                        ? retro.retroBorderMask(face)
+                        : null,
+                    basicSymbol: retro.retroBasicSymbol(face),
+                  }
+                : profileAssets(resolveCardProfile(face), faceFrame(face))),
+              setSymbol: oldBorder ? retro.retroSetSymbol(face) : faceSetSymbol(face),
               mana: face.manaSymbols.map(manaSymbolAsset),
             },
           };

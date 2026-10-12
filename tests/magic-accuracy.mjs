@@ -4,9 +4,12 @@ import {
   fitSharedTransform,
   IDENTITY,
   landmarks,
+  frameFamily,
 } from '../games/magic/tools/accuracy/alignment.mjs';
 import { exclusion, qualityIssue } from '../games/magic/tools/accuracy/corpus.mjs';
 import { normalize } from '../games/magic/tools/accuracy/pixels.mjs';
+import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+import { regions } from '../games/magic/tools/accuracy/regions.mjs';
 
 const width = 220,
   height = 100;
@@ -102,6 +105,27 @@ assert.equal(exclusion({ ...card, type_line: 'Basic Land — Plains' }), null);
 assert.equal(exclusion({ ...card, type_line: 'Legendary Planeswalker — Example' }), null);
 assert.match(exclusion({ ...card, frame_effects: ['extendedart'] }), /treatment/);
 assert.equal(qualityIssue({ ...card, highres_image: false }), 'reference-not-high-resolution');
+for (const frame of ['1993', '1997']) {
+  const old = { ...card, frame, border_color: 'white', name: 'Old printing', set: '7ed' };
+  assert.equal(exclusion(old), null, 'Ordinary white borders must stay in the denominator');
+  assert.equal(qualityIssue(old), null);
+  const { face } = presentation({ card: old });
+  assert.equal(face.frameStyle, 'retro');
+  assert.equal(face.borderColor, 'white');
+  const captured = { frame: 'retro-seventh', face, assets: {} };
+  assert.equal(frameFamily(captured), 'retro-seventh');
+  const body = regions(captured).find((r) => r.id === 'body');
+  assert.ok(body.rect[1] < 430 && body.rect[0] > 50, 'Old body uses its own text window');
+}
+assert.equal(exclusion({ ...card, border_color: 'silver' }), 'special-treatment');
+assert.equal(qualityIssue({ ...card, frame: '1997', layout: 'split' }), 'unsupported-layout');
+assert.equal(qualityIssue({ ...card, frame: '2003' }), 'unsupported-layout');
+assert.equal(landmarks('retro-seventh').length, 15);
+assert.deepEqual(
+  landmarks('retro-abu'),
+  [],
+  'Unreviewed frame families cannot use modern landmarks',
+);
 console.log(
   'Structural metric mutations, empty/missing ink, frozen shared alignment and corpus denominator passed:',
   scores,

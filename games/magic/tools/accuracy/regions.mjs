@@ -1,5 +1,6 @@
 /** Reference regions in the 488 x 680 comparison grid; independent of the painter's rectangles. */
 export function regions(result) {
+  if (result.frame?.startsWith('retro-')) return retroRegions(result);
   const large = result.frame === 'planeswalker-large';
   const walker = result.frame?.startsWith('planeswalker');
   const titleY = walker ? 30 : 38;
@@ -38,5 +39,42 @@ export function regions(result) {
     });
     list.push({ id: 'stats-border', kind: 'asset', assetRole: 'pt', rect: [378, 604, 81, 6] });
   }
+  return list;
+}
+
+/** Seventh-family old borders: reviewed separately from the modern frame plates. */
+function retroRegions(result) {
+  const manaCount = result.face.manaSymbols.length;
+  const manaX = 446 - manaCount * 25;
+  const list = [
+    {
+      id: 'title',
+      kind: 'text',
+      rect: [51, 34, (manaCount ? manaX - 6 : 445) - 51, 31],
+      lightInk: true,
+    },
+    { id: 'type', kind: 'text', rect: [51, 374, 336, 31], lightInk: true },
+    { id: 'body', kind: 'text', rect: [62, 417, 366, 180] },
+    { id: 'footer', kind: 'missing-content', rect: [44, 606, 343, 40], lightInk: true },
+    { id: 'frame-left', kind: 'asset', assetRole: 'frame', rect: [42, 111, 18, 240] },
+    { id: 'frame-right', kind: 'asset', assetRole: 'frame', rect: [431, 111, 18, 240] },
+    { id: 'type-border', kind: 'asset', assetRole: 'boxes', rect: [62, 404, 366, 8] },
+  ];
+  if (result.assets?.setSymbol)
+    list.push({
+      id: 'set-symbol',
+      kind: 'asset',
+      assetRole: 'setSymbol',
+      rect: [391, 372, 51, 33],
+    });
+  if (manaCount)
+    list.push({
+      id: 'mana',
+      kind: 'asset',
+      assetRole: 'mana',
+      rect: [Math.floor(manaX - 3), 31, Math.ceil(450 - manaX), 35],
+    });
+  if (result.face.power != null)
+    list.push({ id: 'stats', kind: 'text', rect: [393, 607, 67, 33], lightInk: true });
   return list;
 }
