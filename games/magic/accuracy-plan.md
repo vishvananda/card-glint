@@ -1896,3 +1896,40 @@ checks. Curved ends, bevels and competing edges still need dedicated targets;
 these measurements do not authorize another positioning change. Reproduce with
 `node games/magic/tools/accuracy/walker-type-geometry.mjs`. This runs on cached
 rasters in Node, without Chromium or GPU execution.
+
+The [material and lower-curve pass](fixtures/accuracy/planeswalker-materials-plan.json)
+restores the full native heights of the existing planeswalker background and
+frame. The previous bounds cropped about 9px from each source at canonical size,
+hiding the lower curve. All 34 unique cached frame/background assets used by
+these cards share the respective 2736×3810 and 2778×3793 dimensions. Width and
+top anchors are unchanged; this does not replace or stretch the source artwork.
+
+Colorless title/type textures contain gray pixels with approximately 70% opacity.
+A shared partial second pass raises their coverage to about 85%; the rules paper
+also receives a lighter neutral fill. The outer frame's tone is unchanged.
+M21 Ugin, WAR Ugin and WAR Karn all had dark paper and type fills. In fixed blank
+patches, median absolute luminance error across these three printings falls from
+18.8 to 0.4 for paper and 26.9 to 2.1 for the type fill (encoded 0–255 scale).
+Karn's title remains brighter than both Ugin scans, so the shared title correction
+does not fully match Karn. These are development measurements, not independent
+validation or a complete HSB calibration; printed texture and illustration
+composition remain missing.
+
+The [isolated comparison](fixtures/accuracy/walker-materials-isolation-measurement.json)
+checks the curve-only intermediate separately from the gray-fill change. All 70
+inputs and ability layouts are unchanged, with no measured overflow; the 67
+other cards have byte-identical rasters between the curve-only and final passes
+at both tiers. Reproduce with `node games/magic/tools/accuracy/walker-material-audit.mjs`.
+This is CPU analysis of cached PNGs, without Chromium or GPU work.
+
+Lower-curve placement remains open: registered inspect F1 rises .174 → .300
+(55 gains and 8 declines over .02), while table F1 falls .180 → .091
+(2 gains and 54 declines). Raw scores show the same disagreement between tiers.
+The crop includes the missing stamp and other frame details, and thin edges
+change under downsampling. A fixed straight sample on M21 Ugin also shows the
+restored outer edge lower than the scan. Do not interpret the restored curve or
+the inspect gain as an accepted alignment. Measure the inner rim, outer curve
+and stamp separately before another shared geometry correction.
+The full [M21/M20](fixtures/accuracy/walker-materials-development-measurement.json)
+and [M15/WAR](fixtures/accuracy/walker-materials-set-transfer-measurement.json)
+reports preserve raw and registered scores for every region and card.

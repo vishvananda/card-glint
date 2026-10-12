@@ -1,0 +1,5484 @@
+{
+  "schemaVersion": 1,
+  "planName": "planeswalker-materials-plan.json",
+  "planHash": "cc13cb6d8ab316855859ebd5508ee6a0925184de67f544926b6095a22e71a402",
+  "runs": ["walker-type-symbol", "walker-bottom-curve", "walker-materials"],
+  "patches": {
+    "title": [365, 34, 35, 15],
+    "type": [365, 391, 20, 18],
+    "paper": [110, 433, 220, 5],
+    "sideFrame": [26, 445, 8, 35]
+  },
+  "studyHash": "c23a384220fd6f3c9f13e78463ffbf6223cf98a271bf5520bb78964e368064e9",
+  "metricVersion": "structural-v2",
+  "methodHash": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a",
+  "scope": "70 examined planeswalkers: geometry-only bottom curve comparison; three colorless development printings receive a separate fixed-patch brightness diagnostic. All inputs and ability layouts are unchanged, with no measured overflow.",
+  "limitations": [
+    "These are confirmation measurements on already examined cards, not fresh validation.",
+    "Fixed raw blank patches measure encoded sRGB luminance, not perceptual color accuracy or full HSB calibration. Grain, illustration and scan processing remain confounds.",
+    "Karn title brightness differs from both Ugin printings; one shared correction is intentionally retained.",
+    "Outer-frame tones are unchanged; the side-frame patch is a negative control, not an accepted calibration.",
+    "Bottom crops contain other print details. Edge overlap is diagnostic, not a curve segmentation or percent accuracy.",
+    "Registration is frozen per frame/set; M15/WAR use an unvalidated transferred profile. No per-scan fitting."
+  ],
+  "captures": {
+    "m21/walker-type-symbol": {
+      "hash": "76282f9ecae9cfbafb39562ba5371e1dbadd36f74433ac15e5ae466cd13c4080",
+      "rendererHash": "fffd28dfb63a752c46fbf1dc0ee8a776274cc9709466204efd7b6d36925569ae"
+    },
+    "m21/walker-materials": {
+      "hash": "20f64de68949ada31a29615564aae44ad5b7a6367bd8c764465ae230d270ee4e",
+      "rendererHash": "09ff4a2f7d12912a4b8ba99d1144e3e6af534876675f24e2b417d95fbc0ff73c"
+    },
+    "m21/walker-bottom-curve": {
+      "hash": "0bde86275e27e3e7e5dadb091d561ffcdccecfdd6f69c4fb20860c46bf6b818c",
+      "rendererHash": "7b5fc06a9f96b4ed2bb81086d59143f2d4ea592c5e38a26200a650e5de06acdd"
+    },
+    "m20/walker-materials": {
+      "hash": "0076cf601d6a882dd0448f24e804d1ccc7dd7ea6d20d0ea2d7fbad3b2231cdc0",
+      "rendererHash": "09ff4a2f7d12912a4b8ba99d1144e3e6af534876675f24e2b417d95fbc0ff73c"
+    },
+    "m20/walker-bottom-curve": {
+      "hash": "ce58007af8cc5102c295f0e015e54a8d04e09f90962c09acf5660025da08cd0d",
+      "rendererHash": "7b5fc06a9f96b4ed2bb81086d59143f2d4ea592c5e38a26200a650e5de06acdd"
+    },
+    "m20/walker-type-symbol": {
+      "hash": "cbb5c5560150692d177c502222a5bdc3469af9d862dd1c00af3680eb927eb096",
+      "rendererHash": "fffd28dfb63a752c46fbf1dc0ee8a776274cc9709466204efd7b6d36925569ae"
+    },
+    "m15/walker-materials": {
+      "hash": "d16369109241cbfa34c708766d36beb2a2dddb2fc9a4bc0792e45ce02f014c44",
+      "rendererHash": "09ff4a2f7d12912a4b8ba99d1144e3e6af534876675f24e2b417d95fbc0ff73c"
+    },
+    "m15/walker-bottom-curve": {
+      "hash": "341af2c99db3dfaf0586623dfb93d84d37c9996cf8491f92e6cd11cbd195de72",
+      "rendererHash": "7b5fc06a9f96b4ed2bb81086d59143f2d4ea592c5e38a26200a650e5de06acdd"
+    },
+    "m15/walker-type-symbol": {
+      "hash": "4688312af334b9e9dc622ba0169e04de3d8b98a6c001e7cae4af24b5cb006323",
+      "rendererHash": "fffd28dfb63a752c46fbf1dc0ee8a776274cc9709466204efd7b6d36925569ae"
+    },
+    "war/walker-type-symbol": {
+      "hash": "5597989a74da2a0f3d243553f13cee9635c07ba4a8bb1da2c533382db810b3cf",
+      "rendererHash": "fffd28dfb63a752c46fbf1dc0ee8a776274cc9709466204efd7b6d36925569ae"
+    },
+    "war/walker-materials": {
+      "hash": "08e1cc27a2b740de2a03c660cf87b8008c4eab556e363b9a0de656f5d2f39054",
+      "rendererHash": "09ff4a2f7d12912a4b8ba99d1144e3e6af534876675f24e2b417d95fbc0ff73c"
+    },
+    "war/walker-bottom-curve": {
+      "hash": "8e0dfdb86fca56108aafb5b572e99d8fb59372eb40c424000d0ed0ab96d80848",
+      "rendererHash": "7b5fc06a9f96b4ed2bb81086d59143f2d4ea592c5e38a26200a650e5de06acdd"
+    }
+  },
+  "materialPassUnchanged": 67,
+  "summary": {
+    "inspect": {
+      "bottomCurve": {
+        "raw": {
+          "measured": 70,
+          "uncertain": 0,
+          "before": 0.14665292078836906,
+          "after": 0.2647700903104162,
+          "improved": 49,
+          "regressed": 20
+        },
+        "registered": {
+          "measured": 70,
+          "uncertain": 0,
+          "before": 0.17402086140113074,
+          "after": 0.300427756158854,
+          "improved": 55,
+          "regressed": 8
+        }
+      },
+      "color": {
+        "title": {
+          "before": 31.640594482421875,
+          "after": 0.9253997802734375
+        },
+        "type": {
+          "before": 26.8948974609375,
+          "after": 2.1051025390625
+        },
+        "paper": {
+          "before": 18.800994873046875,
+          "after": 0.41780853271484375
+        },
+        "sideFrame": {
+          "before": 16.67389678955078,
+          "after": 16.67389678955078
+        }
+      }
+    },
+    "table": {
+      "bottomCurve": {
+        "raw": {
+          "measured": 70,
+          "uncertain": 0,
+          "before": 0.14976925435782765,
+          "after": 0.06920615834946531,
+          "improved": 1,
+          "regressed": 61
+        },
+        "registered": {
+          "measured": 70,
+          "uncertain": 0,
+          "before": 0.18049569999049708,
+          "after": 0.09070529263254434,
+          "improved": 2,
+          "regressed": 54
+        }
+      },
+      "color": {
+        "title": {
+          "before": 31.640594482421875,
+          "after": 0.9253997802734375
+        },
+        "type": {
+          "before": 26.8948974609375,
+          "after": 2.1051025390625
+        },
+        "paper": {
+          "before": 18.800994873046875,
+          "after": 0.41780853271484375
+        },
+        "sideFrame": {
+          "before": 33.425193786621094,
+          "after": 33.425193786621094
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "set": "m21",
+      "number": "1",
+      "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "name": "Ugin, the Spirit Dragon",
+      "colorless": true,
+      "inputHash": "e2611a792bd7d11815174094a6839444557e58f14b98cb612d06fdf6920daa43",
+      "referenceHash": "56ea3b56cf3e438c5601d007e97f73f8118af2189b8bc733c84c4ddc498ce53f",
+      "materialPassUnchanged": {
+        "inspect": false,
+        "table": false
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.37725970103012935,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10350345430217635,
+              "p95": 7.41421365737915
+            },
+            "delta": -0.273756246727953
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.24397512936381685,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3090815030804684,
+              "p95": 9.948527908325183
+            },
+            "delta": 0.06510637371665154
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3968312675789818,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08665418561112598,
+              "p95": 11
+            },
+            "delta": -0.3101770819678558
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2489000770227875,
+              "p95": 9.584062194824202
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0908179512885534,
+              "p95": 11.82670230865477
+            },
+            "delta": -0.15808212573423408
+          }
+        }
+      },
+      "color": {
+        "reference": {
+          "title": {
+            "median": 185.28720092773438,
+            "pixels": 525
+          },
+          "type": {
+            "median": 186.8948974609375,
+            "pixels": 360
+          },
+          "paper": {
+            "median": 227.43779754638672,
+            "pixels": 1100
+          },
+          "sideFrame": {
+            "median": 104.83839797973633,
+            "pixels": 280
+          }
+        },
+        "inspect": {
+          "before": {
+            "title": {
+              "median": 155.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 160,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 208.7834014892578,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 121,
+              "pixels": 280
+            }
+          },
+          "after": {
+            "title": {
+              "median": 186.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 189,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 227.85560607910156,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 121,
+              "pixels": 280
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "title": {
+              "median": 155.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 160,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 208.7834014892578,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 118.24870300292969,
+              "pixels": 280
+            }
+          },
+          "after": {
+            "title": {
+              "median": 186.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 189,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 227.85560607910156,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 118.24870300292969,
+              "pixels": 280
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "m21",
+      "number": "7",
+      "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "name": "Basri Ket",
+      "colorless": false,
+      "inputHash": "8b35d85fc5fc282049b34c96c6c772e913ad6951da3e9dbcd47fdcc47ab7a10e",
+      "referenceHash": "b65b4fcf0b818b9bc7d15aaaf8c29fc4435cc76551a81cec292ff279fd2b21bd",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.39646740262445324,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11441759170472461,
+              "p95": 7
+            },
+            "delta": -0.28204981091972864
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23434343434343433,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3597679903116834,
+              "p95": 7
+            },
+            "delta": 0.12542455596824906
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4180363795748411,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11003288478221397,
+              "p95": 6
+            },
+            "delta": -0.3080034947926271
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2388282123178886,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2595131827175264,
+              "p95": 8
+            },
+            "delta": 0.020684970399637792
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "75",
+      "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+      "name": "Teferi, Master of Time",
+      "colorless": false,
+      "inputHash": "2dcc13c4403eb17209a3ef2eff5899ed81ae3381d48840acd9078608722aa1b0",
+      "referenceHash": "91c0bf0ae94f6196a16a8916163630c5d4fff8e97fc68468099b5b09ee7f0eec",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3942922958791912,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2815149445816042,
+              "p95": 7
+            },
+            "delta": -0.11277735129758698
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.21245774987928537,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3873501857078959,
+              "p95": 10.605381870269763
+            },
+            "delta": 0.17489243582861055
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16099211215180848,
+              "p95": 11.12253866195678
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06215224930761746,
+              "p95": 11
+            },
+            "delta": -0.09883986284419102
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.21516532014094028,
+              "p95": 11.878173828124996
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06224511058851546,
+              "p95": 12
+            },
+            "delta": -0.15292020955242483
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "108",
+      "id": "e329a3e2-6702-4758-8aac-c3017e77b619",
+      "name": "Liliana, Waker of the Dead",
+      "colorless": false,
+      "inputHash": "f66fb00b3dc23f2b5942a716d3619f141b39427c975563b5a41ded066e7d5f48",
+      "referenceHash": "d0c2e35c399f151aafe8cb23470cefef444a7cccec98d7f238df2e293c74a72b",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11353211009174312,
+              "p95": 257.4894256591797
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.17551329700862411,
+              "p95": 26.40563449859618
+            },
+            "delta": 0.061981186916880995
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.030716723549488054,
+              "p95": 255.03527526855464
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24630259623992834,
+              "p95": 10.227817249298077
+            },
+            "delta": 0.21558587269044027
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12244229824848585,
+              "p95": 269.00416564941406
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.049514028974876216,
+              "p95": 25.693248939514156
+            },
+            "delta": -0.07292826927360962
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.006968641114982579,
+              "p95": 266.54999999999995
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10264279192452065,
+              "p95": 12
+            },
+            "delta": 0.09567415080953807
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "135",
+      "id": "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "name": "Chandra, Heart of Fire",
+      "colorless": false,
+      "inputHash": "1636fd875acb9fd9fc88db02a8d18b1f7837bd329222e62db661766cb98e5a3a",
+      "referenceHash": "4d31823661997ca2307216abd6b9c3642ac2ed77c84131352da7c12e62d1e69d",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12969905237946475,
+              "p95": 260.1421203613281
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.25447050695021844,
+              "p95": 6
+            },
+            "delta": 0.1247714545707537
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06902694277443774,
+              "p95": 257.35658264160156
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.30725026580932613,
+              "p95": 7
+            },
+            "delta": 0.23822332303488838
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.15447404221705358,
+              "p95": 271.2426452636719
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05978930086195102,
+              "p95": 10.828426361083984
+            },
+            "delta": -0.09468474135510255
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06174855276829449,
+              "p95": 268.313720703125
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05274077828283628,
+              "p95": 10
+            },
+            "delta": -0.009007774485458211
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "183",
+      "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "name": "Garruk, Unleashed",
+      "colorless": false,
+      "inputHash": "99c5b8e2f61b5f680a84081c7e05022eb0549020e14f659f22a5df1954469bdd",
+      "referenceHash": "b8ee722b04e0070b20e73f23a04c61bd66978d0d7e0aadcc1b15d1f76e3afe19",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09991426121749071,
+              "p95": 256.4296493530273
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.22800675817071211,
+              "p95": 7
+            },
+            "delta": 0.1280924969532214
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11252912631736464,
+              "p95": 252.01664733886716
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3781788205678222,
+              "p95": 7.8627418518066285
+            },
+            "delta": 0.2656496942504576
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12548061699914057,
+              "p95": 257.36274414062495
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.040126110633419323,
+              "p95": 10.463960647583002
+            },
+            "delta": -0.08535450636572124
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14130890365846357,
+              "p95": 251.53137207031247
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06417285617825794,
+              "p95": 11
+            },
+            "delta": -0.07713604748020564
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "275",
+      "id": "2d1ff397-2445-459a-ae4e-7bf1cd48f490",
+      "name": "Teferi, Master of Time",
+      "colorless": false,
+      "inputHash": "7bb9b4ad33d7eb5ca2903a2bb35b4a4fa2f17599f5c3a2fe72df6d0ed38a749f",
+      "referenceHash": "7decdcce29a4cbbcd59f1dab6e70f7c6d97f09cd800076909f6a9c262c74cd25",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4280761145540419,
+              "p95": 9.588834285736084
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.22780668627416858,
+              "p95": 6
+            },
+            "delta": -0.2002694282798733
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16219538037719855,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.4033157783394386,
+              "p95": 7.41421365737915
+            },
+            "delta": 0.24112039796224005
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1878841088674276,
+              "p95": 11.31370735168457
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.04113238648343012,
+              "p95": 10
+            },
+            "delta": -0.14675172238399747
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.15730337078651685,
+              "p95": 11.828426361083984
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.03651197340921109,
+              "p95": 11
+            },
+            "delta": -0.12079139737730576
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "276",
+      "id": "a8bf5708-4222-46d2-b108-0ed4cf3c83c3",
+      "name": "Teferi, Master of Time",
+      "colorless": false,
+      "inputHash": "a66d77eb4106d899bd0c4d52357c5d8e8b2bf2f670c805122f3e24cd448b1039",
+      "referenceHash": "e966046f60dea8b8224aa44090125840ed92bfafe7f3f77da2d32e537d7c91d4",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.41347469918898494,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.22331885317115555,
+              "p95": 6.032842707633942
+            },
+            "delta": -0.1901558460178294
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1552537644114389,
+              "p95": 11.021320056915279
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3858351683354799,
+              "p95": 10.901218509674061
+            },
+            "delta": 0.23058140392404103
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16717748676511562,
+              "p95": 12.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.04121032114349359,
+              "p95": 11
+            },
+            "delta": -0.12596716562162202
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1453319024988502,
+              "p95": 12.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05038992201559688,
+              "p95": 12
+            },
+            "delta": -0.09494198048325331
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "277",
+      "id": "d4949a0b-e320-470a-ba54-07ac75b0053b",
+      "name": "Teferi, Master of Time",
+      "colorless": false,
+      "inputHash": "72d06c189ef3312f9ff130cc0e0df8860a946fbe941da2a302bc20d154425073",
+      "referenceHash": "aa87321133e83453b0a6ef34d5d4f1a293cf328b76c76cf9bf2423804afa16ba",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.43175203820861,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2145990327297267,
+              "p95": 6
+            },
+            "delta": -0.21715300547888333
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16711028577323842,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3928138627947714,
+              "p95": 7
+            },
+            "delta": 0.22570357702153296
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1807403076223424,
+              "p95": 12.328783226013181
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.02613565650280025,
+              "p95": 10
+            },
+            "delta": -0.15460465111954214
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.15382496211978913,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.020923076923076923,
+              "p95": 11
+            },
+            "delta": -0.1329018851967122
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "320",
+      "id": "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+      "name": "Basri, Devoted Paladin",
+      "colorless": false,
+      "inputHash": "fb8158a2fd22d814955a153a4a6e03e437bcde1399d3d9f83f0eb2f35f07d4cd",
+      "referenceHash": "a134870aec4150b8a0985a06072073b0fe2abdeaae9e4ec8ea68f5e7d6bd5fb3",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3831928285154118,
+              "p95": 8.04264068603515
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08795948669598651,
+              "p95": 6.9313709259033045
+            },
+            "delta": -0.2952333418194253
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.24627641704129138,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3589391537241984,
+              "p95": 9
+            },
+            "delta": 0.112662736682907
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.40796489064596864,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07968008147737655,
+              "p95": 6
+            },
+            "delta": -0.3282848091685921
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.24765728483631846,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2637266034211201,
+              "p95": 8.414213180541992
+            },
+            "delta": 0.016069318584801623
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "324",
+      "id": "62d05287-ad7f-4de8-9f68-8f36c62fae72",
+      "name": "Teferi, Timeless Voyager",
+      "colorless": false,
+      "inputHash": "1f9893de0589240b349b14bdc2d00d7214d8b9c660215c69644bd88d93fc8bf3",
+      "referenceHash": "8ff5c9ef688ca6b751ce188866c02271230ab477115c194ab74f6c96aad4c65c",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4282902586520452,
+              "p95": 9.776954889297453
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.21871716854729775,
+              "p95": 6
+            },
+            "delta": -0.20957309010474742
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18952277716544758,
+              "p95": 10.708325624465935
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3853531881956759,
+              "p95": 7.24264075756073
+            },
+            "delta": 0.1958304110302283
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18998562916794498,
+              "p95": 12.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.03527177353712581,
+              "p95": 10.934671211242666
+            },
+            "delta": -0.15471385563081919
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17625271403635742,
+              "p95": 12.828426361083984
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.03428449744463373,
+              "p95": 12
+            },
+            "delta": -0.1419682165917237
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "328",
+      "id": "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+      "name": "Liliana, Death Mage",
+      "colorless": false,
+      "inputHash": "b255ed4b45c4ca0de08738285375ffe2b1458c57d7f73f1b5a80c9c5364367c4",
+      "referenceHash": "6f68fd1970e753dbd5964d0aa69c8940633b6cfd797feb15fb9902298a6e0be9",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10776446065659198,
+              "p95": 252.58294525146482
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2299690619345047,
+              "p95": 6.644722127914412
+            },
+            "delta": 0.12220460127791272
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.05350605463249789,
+              "p95": 253.92877960205075
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.26789794364051783,
+              "p95": 11.071066904067992
+            },
+            "delta": 0.21439188900801995
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12783583991842978,
+              "p95": 264.62340545654297
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.020221223643276873,
+              "p95": 11
+            },
+            "delta": -0.10761461627515291
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06425789701427953,
+              "p95": 265.4435043334961
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.03374233128834356,
+              "p95": 12
+            },
+            "delta": -0.030515565725935972
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "332",
+      "id": "1e49ce44-5286-4310-88c2-f8a1402b113b",
+      "name": "Chandra, Flame's Catalyst",
+      "colorless": false,
+      "inputHash": "c270e2cbc94614e16bd7420a94a94168b9ad0f3fe38175bf9a84b59c41cffcfa",
+      "referenceHash": "2730cdf3ab073a6fcd5ad9f530565df8ee0c15fbf94437b29495d0e2b2f5a28c",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10350183841601289,
+              "p95": 259.50243377685547
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.23033222436656958,
+              "p95": 5.828427314758301
+            },
+            "delta": 0.12683038595055668
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.07224549881100668,
+              "p95": 258.3222686767578
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2852085287914872,
+              "p95": 7.0604076385497985
+            },
+            "delta": 0.21296302998048056
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11622708985248102,
+              "p95": 271.3370086669922
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.027378624266643996,
+              "p95": 11
+            },
+            "delta": -0.08884846558583703
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08020468004369574,
+              "p95": 269.17646484374995
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.02212461363266634,
+              "p95": 12
+            },
+            "delta": -0.058080066411029405
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m21",
+      "number": "336",
+      "id": "48133629-4a5b-4c91-b496-2ee94f6cbc4c",
+      "name": "Garruk, Savage Herald",
+      "colorless": false,
+      "inputHash": "7bd628867971b4ae0c186da94fc93576e2c56c491cbe9dd9da463d343a290c62",
+      "referenceHash": "ac601e41f9abd1b4a2d435b593f6b5e6a5fc5ef14aabff4cd54f50212970569e",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11162049033286824,
+              "p95": 257.08821868896484
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2051941885133531,
+              "p95": 6
+            },
+            "delta": 0.09357369818048487
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09374432265487799,
+              "p95": 255.22167205810544
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.34859453275051894,
+              "p95": 9.75121865272521
+            },
+            "delta": 0.25485021009564096
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13638546502321114,
+              "p95": 258.3370086669922
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.021502165148573987,
+              "p95": 10.2669045448303
+            },
+            "delta": -0.11488329987463715
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11734028683181226,
+              "p95": 256.29178619384766
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.04257222073159825,
+              "p95": 11
+            },
+            "delta": -0.07476806610021401
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "2",
+      "id": "79883468-a37c-4894-8d05-6a4d150b7d59",
+      "name": "Ajani, Strength of the Pride",
+      "colorless": false,
+      "inputHash": "e7106925435d90c9d72d6dfae3d4574429528b051dbec15ff8aa6721cfcb425c",
+      "referenceHash": "ceee3031f7a3bfa0a02012c53a8a6aa7f7afd9545109779a71a1ec622475cc91",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.20744463476771383,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2654758867057923,
+              "p95": 7.225483226776119
+            },
+            "delta": 0.05803125193807848
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.27918781725888325,
+              "p95": 19.045330142974855
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.26297319748419146,
+              "p95": 19.414213180541992
+            },
+            "delta": -0.016214619774691796
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2119670117564485,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13479683508153603,
+              "p95": 7
+            },
+            "delta": -0.07717017667491247
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2899346506322261,
+              "p95": 19.112489032745323
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.23229247694188246,
+              "p95": 19.142132091522218
+            },
+            "delta": -0.05764217369034366
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "68",
+      "id": "0240f9eb-e1b2-4b41-94b0-b00ad2850825",
+      "name": "Mu Yanling, Sky Dancer",
+      "colorless": false,
+      "inputHash": "64cfe02944220f310e5b7eb5f3606651eb9c7aa90efa8cfaf3e423464816eb28",
+      "referenceHash": "adb161c4729e5083cb69e9cf4cd7f62ae60295d393aa017e36604515a1480289",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.276339013047472,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3375076778957938,
+              "p95": 7
+            },
+            "delta": 0.061168664848321785
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19753860625538922,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3993363563432889,
+              "p95": 8
+            },
+            "delta": 0.20179775008789969
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14225419935982778,
+              "p95": 12.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.067875201483804,
+              "p95": 10
+            },
+            "delta": -0.07437899787602377
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17516843118383063,
+              "p95": 12.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06871071063088925,
+              "p95": 11
+            },
+            "delta": -0.10645772055294138
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "115",
+      "id": "9f764be3-dd3f-44b1-a4a6-807d1387590b",
+      "name": "Sorin, Imperious Bloodlord",
+      "colorless": false,
+      "inputHash": "2f408f287005ce5fe3cb2a530c2779c279e13a38750cbc5564fc190d908d6f01",
+      "referenceHash": "b54ab4a8b5f097a00c2406dbe505d66efb5c33737c64ae51a2e41997a1876c61",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09426647622934096,
+              "p95": 251.39091186523436
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3161622578311043,
+              "p95": 10.446193695068356
+            },
+            "delta": 0.22189578160176332
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12892620207831856,
+              "p95": 249.90537414550778
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.14311614782367668,
+              "p95": 14.727920532226562
+            },
+            "delta": 0.014189945745358118
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10891793367120121,
+              "p95": 262.90563659667964
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0836863236214962,
+              "p95": 12
+            },
+            "delta": -0.02523161004970502
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13511304821574505,
+              "p95": 262.24852905273434
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1430993719103002,
+              "p95": 14.31370668411255
+            },
+            "delta": 0.007986323694555153
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "126",
+      "id": "2cabfcfe-012e-4cab-bba2-24052eac0946",
+      "name": "Chandra, Acolyte of Flame",
+      "colorless": false,
+      "inputHash": "9f3e6c159188727b045ea0ec59239f060a61347ce5fdf3ac6c616b8e123e683b",
+      "referenceHash": "f0e5b99cf7b9fbec3e7878695eaf36daeff82cd24838078a825496e041368c0c",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06519031562319634,
+              "p95": 256.69325256347656
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.29468609941408236,
+              "p95": 7
+            },
+            "delta": 0.22949578379088603
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09048067860508954,
+              "p95": 253.56811828613286
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2516375943472877,
+              "p95": 9.5882251739502
+            },
+            "delta": 0.16115691574219818
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.07453837032017618,
+              "p95": 267.87548828125
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06053080862952041,
+              "p95": 10.562488842010486
+            },
+            "delta": -0.01400756169065577
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10560444650301064,
+              "p95": 263.4142150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06100925385840179,
+              "p95": 11.862741851806648
+            },
+            "delta": -0.04459519264460885
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "127",
+      "id": "49d2a680-4f3b-4bfa-b77b-d2dfaced9f23",
+      "name": "Chandra, Awakened Inferno",
+      "colorless": false,
+      "inputHash": "93ee4cefa119e20a88b5c3acbc5b0020ea403b72bf815e9a1f61752ca030741f",
+      "referenceHash": "27c41186862612972203182a1329e9bd3fd86849207dfdddf3a06c6788e3d2e8",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06108202443280977,
+              "p95": 253.6311225891113
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.33080135988343856,
+              "p95": 8
+            },
+            "delta": 0.26971933545062876
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10077362153391475,
+              "p95": 253.4438537597656
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1565235773403859,
+              "p95": 9
+            },
+            "delta": 0.05574995580647116
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06754653551640416,
+              "p95": 264.97426452636716
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0823362662445238,
+              "p95": 11
+            },
+            "delta": 0.014789730728119635
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12252414102852008,
+              "p95": 263.37279357910154
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0905926339765353,
+              "p95": 12
+            },
+            "delta": -0.031931507051984775
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "128",
+      "id": "d678cf4c-60e3-40a1-a9cc-b0bd157bcf36",
+      "name": "Chandra, Novice Pyromancer",
+      "colorless": false,
+      "inputHash": "523e665d1e1262b1e0114fca900820edaa43344c10755d9f347f282426feadc9",
+      "referenceHash": "70accefb81d8b7e2ac508af3dcb6819818930b131293627901214cab02472fb5",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09706080107578523,
+              "p95": 250.56811828613274
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3733600124097553,
+              "p95": 11.4852801322937
+            },
+            "delta": 0.27629921133397006
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12439261418853256,
+              "p95": 250.65684509277344
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09971671388101981,
+              "p95": 12.656854629516602
+            },
+            "delta": -0.024675900307512752
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12056042829479441,
+              "p95": 260.08284301757806
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06514256104030695,
+              "p95": 11.007106685638421
+            },
+            "delta": -0.055417867254487455
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14369574720539563,
+              "p95": 261
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09501899309828261,
+              "p95": 12.242640495300293
+            },
+            "delta": -0.048676754107113016
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "199",
+      "id": "592c5e27-c538-425e-b41f-1d6708428853",
+      "name": "Vivien, Arkbow Ranger",
+      "colorless": false,
+      "inputHash": "ac54d2210fbf82842348fd34fe4542b2cb1b6852abe9ec01ea0ebdd80b37fc59",
+      "referenceHash": "99e0d775ffda61b3bba7457715a4d2e82e0165510e155699f69bca7fa51177e5",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.0748851551192499,
+              "p95": 255.96162033081055
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3592451364805756,
+              "p95": 7
+            },
+            "delta": 0.2843599813613257
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.114140773620799,
+              "p95": 252.9852752685547
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3519708776520107,
+              "p95": 8.207106590270996
+            },
+            "delta": 0.2378301040312117
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08818185189305447,
+              "p95": 257.1829605102539
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0890965680649236,
+              "p95": 10.828426361083984
+            },
+            "delta": 0.000914716171869126
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1464559012456013,
+              "p95": 252.91421508789062
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07651756229360551,
+              "p95": 11.242640495300293
+            },
+            "delta": -0.06993833895199578
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "282",
+      "id": "dba41e5f-66b8-4459-8a07-bbe893216f1e",
+      "name": "Ajani, Inspiring Leader",
+      "colorless": false,
+      "inputHash": "0e840887797f7e4ce8e78feb7ad6eb662e293dbe49c86a615b2e80aa239eca31",
+      "referenceHash": "c9772495ea1402ecc9a5d8408b3c343d24da4e5a0c0e5af9e294e0a916fff4f7",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2213440014238503,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.27935049578630833,
+              "p95": 7.41421365737915
+            },
+            "delta": 0.05800649436245803
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.31009769337901166,
+              "p95": 38.00893554687501
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.12238924599595022,
+              "p95": 38
+            },
+            "delta": -0.18770844738306144
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2216931150974208,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.14773601085394283,
+              "p95": 7
+            },
+            "delta": -0.07395710424347796
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.32879442045831947,
+              "p95": 38.24264144897461
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10713445809997474,
+              "p95": 38.35390930175781
+            },
+            "delta": -0.22165996235834473
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "286",
+      "id": "84ae9595-8e76-4d8c-a08c-00434be75672",
+      "name": "Mu Yanling, Celestial Wind",
+      "colorless": false,
+      "inputHash": "f94c1f26b26e4009dbfd0beb7fd72b2cf45a6d6e52fe83ebb3b3a4a4633509f1",
+      "referenceHash": "fbdade0ee8d2ceb2dbd384906d82ec8171156a966f81483b62bac7b348a7d2bc",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.38454455093363654,
+              "p95": 9.969848251342766
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24306844086306525,
+              "p95": 7
+            },
+            "delta": -0.1414761100705713
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17557037747631157,
+              "p95": 10.52817440032959
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3876280484890067,
+              "p95": 7.922792291641228
+            },
+            "delta": 0.21205767101269515
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14771530009650544,
+              "p95": 12.878173160552972
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0717305138524233,
+              "p95": 10
+            },
+            "delta": -0.07598478624408214
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17151032643606562,
+              "p95": 13.260406494140625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06807131280388978,
+              "p95": 11
+            },
+            "delta": -0.10343901363217584
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "290",
+      "id": "bf20ea7b-e480-4b0e-b080-888f24d3c08d",
+      "name": "Sorin, Vampire Lord",
+      "colorless": false,
+      "inputHash": "5b948fa93c6e953af47f03ebabd311d478b4174faea723b1f02581855bbfbf3d",
+      "referenceHash": "12ac19081070631a501a81b18c910282e7b2882140edd56ad9c4160079b403d6",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09729263294143027,
+              "p95": 253.92020111083983
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3106257336985522,
+              "p95": 7
+            },
+            "delta": 0.21333310075712192
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1081528486687819,
+              "p95": 252.81664733886717
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.25405932383823215,
+              "p95": 8
+            },
+            "delta": 0.14590647516945027
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10777018257333218,
+              "p95": 266.8441162109375
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06934863701578192,
+              "p95": 10
+            },
+            "delta": -0.03842154555755026
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11228569863613956,
+              "p95": 264.33137207031245
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07095177580094977,
+              "p95": 11
+            },
+            "delta": -0.04133392283518979
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "294",
+      "id": "5d1c6c4b-62ab-4d44-a2d7-64b44d163606",
+      "name": "Chandra, Flame's Fury",
+      "colorless": false,
+      "inputHash": "54431b7590fb6baf7dc1266d2244011e56fe887fb1fb8b17a4451e623b76cac3",
+      "referenceHash": "805926173855f2edcee2362a667b574afeee1ea9feb865714ffbbc7f02581880",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06864617396991497,
+              "p95": 256.7279052734375
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24655102561760706,
+              "p95": 6
+            },
+            "delta": 0.1779048516476921
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06712186089572965,
+              "p95": 257.39947509765625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.31395047167641543,
+              "p95": 7.242640495300293
+            },
+            "delta": 0.2468286107806858
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.07848951292896698,
+              "p95": 267.82843017578125
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06544752410781443,
+              "p95": 10.414213180541992
+            },
+            "delta": -0.013041988821152553
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08039325493124261,
+              "p95": 268.27818298339844
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06927395565705585,
+              "p95": 10.742640495300293
+            },
+            "delta": -0.011119299274186756
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m20",
+      "number": "298",
+      "id": "f7ead409-3bce-47c8-ace7-498c38522369",
+      "name": "Vivien, Nature's Avenger",
+      "colorless": false,
+      "inputHash": "cd716dfa3f217e1b22889eceed5702afb45c5cb86adf09cb8af957867308eff4",
+      "referenceHash": "7058a7950c412093c37b1c07d6019a52885e04028e469edb58a02a5b240510b6",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.0917820324005891,
+              "p95": 249.97669677734376
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3820974648988019,
+              "p95": 7.523401880264266
+            },
+            "delta": 0.2903154324982128
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17427746807417072,
+              "p95": 255.09679794311523
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.18832776804910503,
+              "p95": 14.485280513763428
+            },
+            "delta": 0.014050299974934316
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12582781456953643,
+              "p95": 249.86421508789056
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07698948044647876,
+              "p95": 11
+            },
+            "delta": -0.04883833412305767
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1973984175942068,
+              "p95": 256.2683807373047
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11401140114011402,
+              "p95": 14.414213180541992
+            },
+            "delta": -0.08338701645409277
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m15",
+      "number": "1",
+      "id": "f9302ba8-7ff2-4eaa-a32d-eedd94f0bb79",
+      "name": "Ajani Steadfast",
+      "colorless": false,
+      "inputHash": "57cd2727f99e672ce76d04089422d2bd31806451eb08fb939a3bf8af7b329877",
+      "referenceHash": "be79070441e41797e00741dcefd173dcf6f013adec986d1924ac459defe6668a",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23813110219507855,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2608994754493078,
+              "p95": 8.8284273147583
+            },
+            "delta": 0.022768373254229257
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.28534696309303564,
+              "p95": 14.045330142974858
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.33756523670281674,
+              "p95": 14.414213180541992
+            },
+            "delta": 0.052218273609781096
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.24959415857790468,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11412784971292671,
+              "p95": 8.414213180541992
+            },
+            "delta": -0.13546630886497796
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2949258177684574,
+              "p95": 14.11248908042904
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.283104137267561,
+              "p95": 14.142133712768555
+            },
+            "delta": -0.011821680500896381
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m15",
+      "number": "62",
+      "id": "99713bb4-186f-42b6-aa66-e94ec8858e6a",
+      "name": "Jace, the Living Guildpact",
+      "colorless": false,
+      "inputHash": "dfd014f5c007e9c782061a66c7d388a9f8aead3d60e943d780ade2bd72584c85",
+      "referenceHash": "3c8a6d0cf93ef85c90eb7b41015d51b4858d9bd244a9061b1cc9bb205efada40",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16190037686942582,
+              "p95": 10.354162740707395
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.4209256226837887,
+              "p95": 8.708326101303093
+            },
+            "delta": 0.25902524581436287
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2592636721077088,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2569391877771844,
+              "p95": 12.31370735168457
+            },
+            "delta": -0.002324484330524401
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16284484846226926,
+              "p95": 11.9648229598999
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07803056163530853,
+              "p95": 11
+            },
+            "delta": -0.08481428682696074
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2257718168057169,
+              "p95": 13.751218223571769
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13171735650583125,
+              "p95": 13.019594764709462
+            },
+            "delta": -0.09405446029988565
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m15",
+      "number": "103",
+      "id": "6087f146-f468-472a-b248-fc7386ea3e63",
+      "name": "Liliana Vess",
+      "colorless": false,
+      "inputHash": "aa7cbc70a48219074651d1fa8116555838f3af219394b5bbe26394fc9c4d9bbd",
+      "referenceHash": "c86842d6cbeabc01f8dbef024333d952c2f3d84106d86f362d7de9611910e25f",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09022071854357983,
+              "p95": 248.49949035644534
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.31802032425723376,
+              "p95": 9.27695503234864
+            },
+            "delta": 0.22779960571365393
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14793273485902136,
+              "p95": 253.92608489990235
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.17077706800355785,
+              "p95": 30.991421318054186
+            },
+            "delta": 0.02284433314453649
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12236085976442201,
+              "p95": 260.01421508789065
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.12646579495925717,
+              "p95": 11.174010848999028
+            },
+            "delta": 0.004104935194835152
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17994807269822247,
+              "p95": 266.6834548950195
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.18614365766683647,
+              "p95": 30.636142063140838
+            },
+            "delta": 0.0061955849686139985
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m15",
+      "number": "134",
+      "id": "e92cc35d-4e97-4be2-8c53-cce68c3374ca",
+      "name": "Chandra, Pyromaster",
+      "colorless": false,
+      "inputHash": "0dc20c4707a1c280737e0a00b1192d24bd9c9d32b0ada7953bacbf5649f2910b",
+      "referenceHash": "55fe3b27e179def60a24d6681738cfa5d1f958b9676d90af7e5a7059305fddff",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.06936917407327119,
+              "p95": 252.6651763916015
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.33780018909549325,
+              "p95": 7
+            },
+            "delta": 0.26843101502222205
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09962818190485272,
+              "p95": 252.46456451416012
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.14932076415190437,
+              "p95": 9
+            },
+            "delta": 0.049692582247051656
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.080416487654477,
+              "p95": 262.1799011230468
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08549256872287256,
+              "p95": 11
+            },
+            "delta": 0.005076081068395563
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12223206377325066,
+              "p95": 262.393504333496
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10821592259378714,
+              "p95": 11.991421318054188
+            },
+            "delta": -0.014016141179463523
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m15",
+      "number": "187",
+      "id": "07eb2476-488b-4610-8567-f0456601f7fd",
+      "name": "Nissa, Worldwaker",
+      "colorless": false,
+      "inputHash": "b6d6af5d7aa28fd5af27cc80ad4b5cb49ebc7b47dff84063a84ef1c484e8a621",
+      "referenceHash": "6f2ce6cd0123909bd850093703e061eba8600c6cfe46b563411a47e3cc44911a",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09721847150958683,
+              "p95": 248.94949035644527
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.4079581848282643,
+              "p95": 8.511016941070533
+            },
+            "delta": 0.31073971331867745
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18161318610519533,
+              "p95": 255.55390319824218
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.19552609776304888,
+              "p95": 13.31370735168457
+            },
+            "delta": 0.01391291165785355
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14371980676328502,
+              "p95": 248.46421508789058
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08678555413749095,
+              "p95": 11
+            },
+            "delta": -0.056934252625794074
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19545592051841354,
+              "p95": 255.89705810546874
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13182031694232244,
+              "p95": 14.142133712768555
+            },
+            "delta": -0.0636356035760911
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "m15",
+      "number": "210",
+      "id": "a3957b43-4d7e-41f9-b7a1-6f57d6603ab8",
+      "name": "Garruk, Apex Predator",
+      "colorless": false,
+      "inputHash": "b38aecd86eb1b7dd7402d274c97036d88e044784c4dcf3682204bda7ff95c9c7",
+      "referenceHash": "eefd03b08f5b338b4626bddc5ee67be16224b43ab4115ddf46022995db80f9f9",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09939906636061176,
+              "p95": 249.02375488281248
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.34797480473046455,
+              "p95": 8.435533523559567
+            },
+            "delta": 0.2485757383698528
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11138198994362336,
+              "p95": 251.63172149658203
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.16480308086862452,
+              "p95": 9.43198013305664
+            },
+            "delta": 0.05342109092500116
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12381014615870527,
+              "p95": 260.53847961425777
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09077551299355875,
+              "p95": 11
+            },
+            "delta": -0.033034633165146515
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13262066471084677,
+              "p95": 263.56066131591797
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11634295473403528,
+              "p95": 12
+            },
+            "delta": -0.016277709976811494
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "1",
+      "id": "3ec0c0fb-1a4f-45f4-85b7-346a6d3ce2c5",
+      "name": "Karn, the Great Creator",
+      "colorless": true,
+      "inputHash": "d175730dba047417939943f8b194949939a65685dc11cd3973f16533cd2342b4",
+      "referenceHash": "a196afb98b7c9b263bbe3c4018efe0aafc19bbbfff6f8e99c46a4419eef0e74b",
+      "materialPassUnchanged": {
+        "inspect": false,
+        "table": false
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3888395083140026,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08952240288264429,
+              "p95": 8
+            },
+            "delta": -0.2993171054313583
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.27107011961818833,
+              "p95": 10.499137687683112
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.30496871448717777,
+              "p95": 10.499137687683112
+            },
+            "delta": 0.03389859486898944
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4074744813961146,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06906367968314871,
+              "p95": 11
+            },
+            "delta": -0.3384108017129659
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.27295100305764786,
+              "p95": 10.084924173355109
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10001648623399462,
+              "p95": 12
+            },
+            "delta": -0.17293451682365324
+          }
+        }
+      },
+      "color": {
+        "reference": {
+          "title": {
+            "median": 206.50140380859375,
+            "pixels": 525
+          },
+          "type": {
+            "median": 190.627197265625,
+            "pixels": 360
+          },
+          "paper": {
+            "median": 231.2855987548828,
+            "pixels": 1100
+          },
+          "sideFrame": {
+            "median": 173.1377944946289,
+            "pixels": 280
+          }
+        },
+        "inspect": {
+          "before": {
+            "title": {
+              "median": 155.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 160,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 208.7834014892578,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 156.46389770507812,
+              "pixels": 280
+            }
+          },
+          "after": {
+            "title": {
+              "median": 186.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 189,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 227.85560607910156,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 156.46389770507812,
+              "pixels": 280
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "title": {
+              "median": 155.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 160,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 208.7834014892578,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 139.7126007080078,
+              "pixels": 280
+            }
+          },
+          "after": {
+            "title": {
+              "median": 186.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 189,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 227.85560607910156,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 139.7126007080078,
+              "pixels": 280
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "war",
+      "number": "2",
+      "id": "7b003521-3da3-41bf-9765-36630653f902",
+      "name": "Ugin, the Ineffable",
+      "colorless": true,
+      "inputHash": "2ec66602e297f6e04853062911caa550e38c53364d9ec0f92e358486152546c2",
+      "referenceHash": "cf42b9968f660c77df5122601a99441ac558dea9e90587a0c780688bb414d36e",
+      "materialPassUnchanged": {
+        "inspect": false,
+        "table": false
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.22823663154212756,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.27907032861848324,
+              "p95": 9.453300476074215
+            },
+            "delta": 0.05083369707635568
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.302203126291041,
+              "p95": 13.656853675842285
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.27973699940227137,
+              "p95": 13.656853675842285
+            },
+            "delta": -0.022466126888769644
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23988882158001637,
+              "p95": 9.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09825879632974496,
+              "p95": 12
+            },
+            "delta": -0.1416300252502714
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.30118907769907455,
+              "p95": 13.242640018463135
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13048570643608023,
+              "p95": 13.242640018463135
+            },
+            "delta": -0.1707033712629943
+          }
+        }
+      },
+      "color": {
+        "reference": {
+          "title": {
+            "median": 186.8531951904297,
+            "pixels": 525
+          },
+          "type": {
+            "median": 184.5376968383789,
+            "pixels": 360
+          },
+          "paper": {
+            "median": 227.5843963623047,
+            "pixels": 1100
+          },
+          "sideFrame": {
+            "median": 100.12110137939453,
+            "pixels": 280
+          }
+        },
+        "inspect": {
+          "before": {
+            "title": {
+              "median": 155.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 160,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 208.7834014892578,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 156.46389770507812,
+              "pixels": 280
+            }
+          },
+          "after": {
+            "title": {
+              "median": 186.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 189,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 227.85560607910156,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 156.46389770507812,
+              "pixels": 280
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "title": {
+              "median": 155.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 160,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 208.7834014892578,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 139.7126007080078,
+              "pixels": 280
+            }
+          },
+          "after": {
+            "title": {
+              "median": 186.2126007080078,
+              "pixels": 525
+            },
+            "type": {
+              "median": 189,
+              "pixels": 360
+            },
+            "paper": {
+              "median": 227.85560607910156,
+              "pixels": 1100
+            },
+            "sideFrame": {
+              "median": 139.7126007080078,
+              "pixels": 280
+            }
+          }
+        }
+      }
+    },
+    {
+      "set": "war",
+      "number": "13",
+      "id": "39d51c5e-26cb-4276-a676-fabfef866248",
+      "name": "Gideon Blackblade",
+      "colorless": false,
+      "inputHash": "3823cb74ed34876f29de082267338156ff1fc04ed97c5f9b37948ba0f501e07c",
+      "referenceHash": "106997c6e3630e41201e78e5441f79794981ca497da36bba4ee4b0444f261097",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3676677123992267,
+              "p95": 9.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10168074253700142,
+              "p95": 8.845584583282456
+            },
+            "delta": -0.26598696986222525
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.26732890219852457,
+              "p95": 12.21837644577023
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3582541163418139,
+              "p95": 12.21837644577023
+            },
+            "delta": 0.09092521414328936
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3889005722381485,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09643938554167664,
+              "p95": 8.105382347106902
+            },
+            "delta": -0.29246118669647186
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2716881457356127,
+              "p95": 11.937615013122542
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.25637037613085517,
+              "p95": 11.748884534835776
+            },
+            "delta": -0.015317769604757503
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "32",
+      "id": "a974571c-d8d5-4860-9077-2023e5f32a24",
+      "name": "Teyo, the Shieldmage",
+      "colorless": false,
+      "inputHash": "579269b12aa322c353cb03ac86e60925a1d8d709c724a85cf60c58d01b7c57b5",
+      "referenceHash": "3c5e6688bb24fa4310bebe96e7f3dbf243841ad5cd9941e3dba287b5ef3dd69e",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23186879806004912,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24261645679957114,
+              "p95": 8.053300857543945
+            },
+            "delta": 0.01074765873952202
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.27476255088195384,
+              "p95": 21.42314739227296
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.29997616804929805,
+              "p95": 21.974873065948486
+            },
+            "delta": 0.025213617167344216
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.24897122489253318,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06669896788466637,
+              "p95": 7.914213538169861
+            },
+            "delta": -0.1822722570078668
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2869520547945206,
+              "p95": 21.668984794616687
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.25129973352582957,
+              "p95": 21.727918815612792
+            },
+            "delta": -0.035652321268691
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "37",
+      "id": "d0f0e463-9eed-4348-af7c-fde5f0d8188c",
+      "name": "The Wanderer",
+      "colorless": false,
+      "inputHash": "4b5d50c5bb5726a3234e7710dcd79948e5e060ff0e5cc3091263e4020b240a5b",
+      "referenceHash": "e730132ac53e319f9257df64d48f00c65e2e7709637f1465ae73f9d1eae50d4b",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23504867872044508,
+              "p95": 13.37375812530518
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.45161237140596155,
+              "p95": 13.37375812530518
+            },
+            "delta": 0.21656369268551648
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.29390495583500725,
+              "p95": 44.48528232574463
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11097749527572583,
+              "p95": 45.10659885406494
+            },
+            "delta": -0.18292746055928144
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.24045924833704718,
+              "p95": 12.787971305847172
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3202460519311528,
+              "p95": 12.787971305847172
+            },
+            "delta": 0.07978680359410562
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2607682297567639,
+              "p95": 44.68969535827634
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13356599668239297,
+              "p95": 44.97644729614254
+            },
+            "delta": -0.12720223307437092
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "54",
+      "id": "6adb7d73-4482-4930-8497-cffd169b57e2",
+      "name": "Jace, Wielder of Mysteries",
+      "colorless": false,
+      "inputHash": "210fae1dd503902693cc77616400fb8c8a780617faaf2ec4ef9788c3b7c6d645",
+      "referenceHash": "14333e1c689497b7627f42f27fbc4fb7fe884e9721eede7b3a9652c0c750ac97",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16365126293463594,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3852330296941832,
+              "p95": 7.122539615631096
+            },
+            "delta": 0.22158176675954727
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.20984221634116113,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3079934974624691,
+              "p95": 9.846193313598633
+            },
+            "delta": 0.098151281121308
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13903721925561488,
+              "p95": 12.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06990743737458736,
+              "p95": 11
+            },
+            "delta": -0.06912978188102752
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19090838569544644,
+              "p95": 13.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08064422282475883,
+              "p95": 11.871319770812988
+            },
+            "delta": -0.1102641628706876
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "56",
+      "id": "c77d9454-a78c-4063-ad66-46b2f5a030aa",
+      "name": "Kasmina, Enigmatic Mentor",
+      "colorless": false,
+      "inputHash": "1574b47ce292ae43ac25106bcb28617edc6eba33b0b964bf98f58e84903d2af3",
+      "referenceHash": "2fba5385f40227cfbc454c2f58abb81e26907c4078136c366fbdab1d6afd06b7",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4722078288410654,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2447834557170688,
+              "p95": 6.7083261013030935
+            },
+            "delta": -0.22742437312399658
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.20231343045342812,
+              "p95": 11.301575374603255
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.43913739956219006,
+              "p95": 11.301575374603255
+            },
+            "delta": 0.23682396910876194
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11934081635124173,
+              "p95": 12.558072185516346
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05498958422509488,
+              "p95": 6.124264097213726
+            },
+            "delta": -0.06435123212614685
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1934782608695652,
+              "p95": 13.644722557067855
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07273575008742278,
+              "p95": 9.994974708557121
+            },
+            "delta": -0.12074251078214243
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "61",
+      "id": "8c39f9b4-02b9-4d44-b8d6-4fd02ebbb0c5",
+      "name": "Narset, Parter of Veils",
+      "colorless": false,
+      "inputHash": "dc4f280b3ccbdda9f6ee2b4143818a4170c38bb6250fdc565eec1ed80c787543",
+      "referenceHash": "ab54652155d05a90d36c6935789260809749e098b946acfadafec52bb4b077cb",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4593893025479882,
+              "p95": 8.897056388854978
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.23973382411018734,
+              "p95": 7.097056198120112
+            },
+            "delta": -0.21965547843780087
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2170463271051958,
+              "p95": 10.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.32942435987668395,
+              "p95": 10.414213180541992
+            },
+            "delta": 0.11237803277148814
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.28973304642392994,
+              "p95": 11.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05470412017540051,
+              "p95": 7
+            },
+            "delta": -0.23502892624852945
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1837187953448429,
+              "p95": 11.414213180541992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07601779379469564,
+              "p95": 9.502438354492192
+            },
+            "delta": -0.10770100155014725
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "83",
+      "id": "5b1a44f0-1db8-406a-b7d9-f883f947f7bd",
+      "name": "Davriel, Rogue Shadowmage",
+      "colorless": false,
+      "inputHash": "8b3376fec590f2459c3f967fc1fd4beb3744693b8722b425b4a5b74b224ab32e",
+      "referenceHash": "9d9487493e57b9e30abfb2d266794fcda27e2621224b345e981d5cbe799fd586",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10272790055248618,
+              "p95": 259.2929794311523
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2996891852402837,
+              "p95": 9
+            },
+            "delta": 0.19696128468779753
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.110262618737195,
+              "p95": 255.2367462158203
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.34424354260912954,
+              "p95": 10.93380889892578
+            },
+            "delta": 0.23398092387193453
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13303536216642567,
+              "p95": 271.80771942138665
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05262938056054468,
+              "p95": 8.807716608047457
+            },
+            "delta": -0.080405981605881
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12218045112781956,
+              "p95": 267.4142150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08164949588038678,
+              "p95": 10.519595718383787
+            },
+            "delta": -0.040530955247432776
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "97",
+      "id": "d75ebba8-34ca-47a0-bf13-8318ad73b343",
+      "name": "Liliana, Dreadhorde General",
+      "colorless": false,
+      "inputHash": "c1954f901a29742d9957340b19ede04a743b77b2bb9a0676fdc8d55e301a25f4",
+      "referenceHash": "f1c5f7c7dbd25c0d2fdb910af41cc88ad9af1d3a7b70437d7c4403cd8be0ae5b",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08972340903980211,
+              "p95": 250.1687301635742
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.32412733657790493,
+              "p95": 7.9399495601654015
+            },
+            "delta": 0.23440392753810282
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08426779171755301,
+              "p95": 251.09177093505858
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.18096031291596332,
+              "p95": 9.417766571044918
+            },
+            "delta": 0.0966925211984103
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10597402597402597,
+              "p95": 261.6834548950195
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08379235826934571,
+              "p95": 11
+            },
+            "delta": -0.02218166770468026
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10114660114660115,
+              "p95": 263.0207107543945
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08859286602736427,
+              "p95": 11.012131977081287
+            },
+            "delta": -0.01255373511923688
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "100",
+      "id": "14916e2d-73af-4747-a927-d2d4cb3e32db",
+      "name": "Ob Nixilis, the Hate-Twisted",
+      "colorless": false,
+      "inputHash": "1b8dacae05ace5cd9e8ab89feb8392e1f688600daaf438c260576b5db95c309e",
+      "referenceHash": "e9b52dd404f17d3664237829835255cec0ac9095506acda774aab60b9b49c2cf",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13424695846734724,
+              "p95": 260.1337890625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.22696891997725593,
+              "p95": 9.939696502685544
+            },
+            "delta": 0.09272196150990869
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.07358003442340791,
+              "p95": 257.6902847290039
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.12185866219319533,
+              "p95": 13.84802141189574
+            },
+            "delta": 0.04827862776978742
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17067833698030632,
+              "p95": 271.6485290527344
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06334686689820476,
+              "p95": 9.485280990600586
+            },
+            "delta": -0.10733147008210156
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08346581875993642,
+              "p95": 269.7642150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10033314283324737,
+              "p95": 13.433808231353748
+            },
+            "delta": 0.016867324073310958
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "119",
+      "id": "d21a7b23-8827-49f2-ade4-75a602d17743",
+      "name": "Chandra, Fire Artisan",
+      "colorless": false,
+      "inputHash": "519b49d106b41b2ab1dfbcc3bbc684c90d6fbe414192748a1af0721dad4f3240",
+      "referenceHash": "e59673f2ef66f7e20b90ebb55a5136b691a67fdc0bef2fc4d12f6c66541ed2d1",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09184845005740527,
+              "p95": 256.89947509765625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2339390245184072,
+              "p95": 7
+            },
+            "delta": 0.14209057446100193
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08716947208530952,
+              "p95": 251.60953979492186
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.30087934426840984,
+              "p95": 7.828427314758301
+            },
+            "delta": 0.21370987218310034
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10702090134714248,
+              "p95": 268.2426452636719
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.03935877987782378,
+              "p95": 10
+            },
+            "delta": -0.0676621214693187
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1014799154334038,
+              "p95": 261.12426452636714
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05417408148159813,
+              "p95": 11
+            },
+            "delta": -0.047305833951805674
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "135",
+      "id": "129dc8a8-9fbc-4300-b559-243395dc6ed5",
+      "name": "Jaya, Venerated Firemage",
+      "colorless": false,
+      "inputHash": "136aa40063f4b8ae15291018d5afab1d1022fef3a1968dc1b3ecb6ce26dee957",
+      "referenceHash": "5b69cf5642739a9d043cb61374ce17fbcae213a531a2ffad069fdf47f1c6dd18",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09640073649960905,
+              "p95": 252.8743667602539
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2903305130283518,
+              "p95": 7
+            },
+            "delta": 0.19392977652874271
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12030075187969926,
+              "p95": 256.45094604492186
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.34676174665106907,
+              "p95": 11.402437591552715
+            },
+            "delta": 0.22646099477136983
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1085904288901048,
+              "p95": 262.3890914916992
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.055029160341934974,
+              "p95": 7
+            },
+            "delta": -0.053561268548169824
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13171305370442965,
+              "p95": 265.96568603515624
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07434063681501389,
+              "p95": 10.988224411010723
+            },
+            "delta": -0.05737241688941576
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "143",
+      "id": "2bb96971-5bf1-4ae3-98f4-7cd7a614bf97",
+      "name": "Sarkhan the Masterless",
+      "colorless": false,
+      "inputHash": "8d40869b01b86eb04c4de0383643a36d7dbf76e0a6c82b54f98fd149bce85c3f",
+      "referenceHash": "c1aba7097d8e08f8eadf487cec78c59decf803965c67b38224fbe609d0d9a79f",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08443271767810026,
+              "p95": 255.79030685424806
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3012160898035547,
+              "p95": 8
+            },
+            "delta": 0.21678337212545443
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10750573582431988,
+              "p95": 253.9938537597656
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.31888798037612426,
+              "p95": 9.867513656616207
+            },
+            "delta": 0.21138224455180438
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09591474245115453,
+              "p95": 267.0009765625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08485562757807896,
+              "p95": 11
+            },
+            "delta": -0.011059114873075565
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11710677382319173,
+              "p95": 263.9642150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09695400951808332,
+              "p95": 12
+            },
+            "delta": -0.020152764305108414
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "146",
+      "id": "7f9a24dc-8bc3-4528-8780-57fb108fdfbf",
+      "name": "Tibalt, Rakish Instigator",
+      "colorless": false,
+      "inputHash": "8abf156ecf1ffbe7b73b92ce2d5c860cc304a9774850c93c0dff4f7e3bad1ec3",
+      "referenceHash": "2d491b04124f7906b3302f66f39e753dbfb5e3e3bf9c369c8d58ba9652d4a101",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09171749834643933,
+              "p95": 253.43086242675776
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3512894283220934,
+              "p95": 8.153910446166964
+            },
+            "delta": 0.2595719299756541
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10796526991317477,
+              "p95": 258.6902847290039
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11447752987817231,
+              "p95": 9.665432643890362
+            },
+            "delta": 0.006512259964997533
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10181685715586723,
+              "p95": 260.94558715820307
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0586541870524002,
+              "p95": 7.8627418518066285
+            },
+            "delta": -0.043162670103467034
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.13626218724304004,
+              "p95": 266.6192398071289
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06013636724014905,
+              "p95": 10
+            },
+            "delta": -0.07612582000289099
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "150",
+      "id": "5391d2f1-e8d3-4d39-98cf-367888e10534",
+      "name": "Arlinn, Voice of the Pack",
+      "colorless": false,
+      "inputHash": "a6a461cf52970371c3d9403a979325b3d3b674a38709661be55b268eeece85c2",
+      "referenceHash": "5cf9f04bc056efa818efc8e9edebc4e164479642da13eea0c3e40bb2bc667773",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10818145902399644,
+              "p95": 253.01812515258786
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.42791753894191537,
+              "p95": 7.5476659297943005
+            },
+            "delta": 0.3197360799179189
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16883330590752016,
+              "p95": 255.17461395263672
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.27392323621114995,
+              "p95": 9
+            },
+            "delta": 0.10508993030362979
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16624543667509126,
+              "p95": 254.07818298339842
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.04753533031307053,
+              "p95": 8
+            },
+            "delta": -0.11871010636202073
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18738344800977427,
+              "p95": 255.10355377197266
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10343990287333063,
+              "p95": 10
+            },
+            "delta": -0.08394354513644364
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "164",
+      "id": "10e0d47d-b13c-4d48-881f-8aaa347ef209",
+      "name": "Jiang Yanggu, Wildcrafter",
+      "colorless": false,
+      "inputHash": "bc768029b6038ed94da808e957bb371b20f1fc3b26c4710e832c2e3e9352ae54",
+      "referenceHash": "16a97f94f2630e96451e0e34cf07530168d43f2562f27d96192a27cddb47e55d",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09637275140076673,
+              "p95": 256.85658264160156
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.25472807526258134,
+              "p95": 7.957106828689575
+            },
+            "delta": 0.1583553238618146
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14056012682116706,
+              "p95": 255.58882904052734
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.43317185117856183,
+              "p95": 9
+            },
+            "delta": 0.2926117243573948
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11104625210314872,
+              "p95": 258.21752166748047
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0529320646160655,
+              "p95": 7.371320366859436
+            },
+            "delta": -0.058114187487083226
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18104332728277173,
+              "p95": 255.10355377197266
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06968165049870201,
+              "p95": 9
+            },
+            "delta": -0.11136167678406972
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "169",
+      "id": "f857bbe4-5619-4733-a0c7-69700f2ef4f3",
+      "name": "Nissa, Who Shakes the World",
+      "colorless": false,
+      "inputHash": "b04b39da08e10949140758e5a8c15afb3a6c3c225d5be537dd3a6e7f9027499a",
+      "referenceHash": "9c8125139feae26d03110ddab76f0d7a2226b4aa7ac15a601f8c00d04af77e1f",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08303793501889897,
+              "p95": 258.25685424804686
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24668461422829063,
+              "p95": 8
+            },
+            "delta": 0.16364667920939166
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11895339909042583,
+              "p95": 257.3222686767578
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3803549062856763,
+              "p95": 8.434923887252788
+            },
+            "delta": 0.26140150719525046
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09853413420741751,
+              "p95": 260.2568603515625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06988029763830475,
+              "p95": 11
+            },
+            "delta": -0.02865383656911276
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1383219954648526,
+              "p95": 258.17646484374995
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07215873582715827,
+              "p95": 11
+            },
+            "delta": -0.06616325963769433
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "180",
+      "id": "ff3986d7-9b3d-4082-8d72-ce59c9fcd5d5",
+      "name": "Vivien, Champion of the Wilds",
+      "colorless": false,
+      "inputHash": "ec533cec1b4d922f1f94cee8ce4353cd3c04645e973764c90ae79c10ffc7183f",
+      "referenceHash": "0cf7f262c6f999b318762294f6a35fefb6ccd0e8a3cb3e05fab98be19041446a",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08584300749630794,
+              "p95": 255.805126953125
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2551097041050941,
+              "p95": 8
+            },
+            "delta": 0.16926669660878615
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14221746975873822,
+              "p95": 257.0024169921875
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.36552903043870305,
+              "p95": 9.27695503234864
+            },
+            "delta": 0.22331156067996483
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1031578947368421,
+              "p95": 256.9595550537109
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05789104166923275,
+              "p95": 11
+            },
+            "delta": -0.04526685306760935
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1589870266275067,
+              "p95": 258.4142150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07917514070850873,
+              "p95": 11.862741851806648
+            },
+            "delta": -0.07981188591899796
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "184",
+      "id": "6cc78151-8cb0-4521-9674-fb0c67e24a17",
+      "name": "Ajani, the Greathearted",
+      "colorless": false,
+      "inputHash": "2784d7078e8d6b80954fa1f5cf60ba313a9d0afe42af047c9e041d6a67d47fc6",
+      "referenceHash": "fbe7823928259638c6f92b140b91e636fde1f361d975be55d4929cadbfd0c0e1",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.20659168485255444,
+              "p95": 31.849136924743632
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3086165629487793,
+              "p95": 7.828427314758301
+            },
+            "delta": 0.10202487809622487
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.26491940619560445,
+              "p95": 30.11248741149901
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2164088279946299,
+              "p95": 28.31370553970337
+            },
+            "delta": -0.04851057820097454
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.21797354425201143,
+              "p95": 37.677571105957014
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07758799529769726,
+              "p95": 11
+            },
+            "delta": -0.14038554895431415
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2845777233782129,
+              "p95": 35.25096664428712
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.09989561990180539,
+              "p95": 28.90477218627929
+            },
+            "delta": -0.1846821034764075
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "191",
+      "id": "c1af9881-e35b-4be2-8716-ea7c6664e22c",
+      "name": "Domri, Anarch of Bolas",
+      "colorless": false,
+      "inputHash": "ed2de4990879a8e134bf652bc8cda99abd402f7327fd398af9c2bec12bfa6928",
+      "referenceHash": "cd41dc6a7f2b8692ba78d660209a46c38a00e95a15adc956c501ea1c4c4328e4",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09624888600826378,
+              "p95": 119.9790344238281
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.29549176312511377,
+              "p95": 7.5476659297943005
+            },
+            "delta": 0.19924287711685
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11312284901990123,
+              "p95": 116.15979537963865
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.16153469232003398,
+              "p95": 9.063961029052733
+            },
+            "delta": 0.04841184330013275
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10894315176141374,
+              "p95": 267.6420333862304
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05920556984386772,
+              "p95": 11
+            },
+            "delta": -0.04973758191754602
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12792213435300254,
+              "p95": 263.4142150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06356329434907561,
+              "p95": 11.59827499389647
+            },
+            "delta": -0.06435884000392693
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "207",
+      "id": "98b68dea-a7be-4f99-8a50-4c8cf0e0f7a9",
+      "name": "Nicol Bolas, Dragon-God",
+      "colorless": false,
+      "inputHash": "14cc3ab74bc3652049222f57773f7e99ce8c1926f6393dcac4846db44aeab585",
+      "referenceHash": "f4a6490c67e67cd2bddb634502ee643fed40078fb2484c563475f6cb51efbb20",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4044567088006647,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24754048371824297,
+              "p95": 7.438477706909158
+            },
+            "delta": -0.15691622508242173
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.30473795867054293,
+              "p95": 29.622538375854486
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2337573310990936,
+              "p95": 29.7530460357666
+            },
+            "delta": -0.07098062757144932
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.41421913669527205,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08178844056706651,
+              "p95": 11
+            },
+            "delta": -0.3324306961282055
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.31499623210248684,
+              "p95": 29.781118297576885
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11694608329925812,
+              "p95": 29.313705635070804
+            },
+            "delta": -0.19805014880322871
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "211",
+      "id": "678ce3bf-152d-45ca-87ae-ad46c921328b",
+      "name": "Ral, Storm Conduit",
+      "colorless": false,
+      "inputHash": "f3e8dc9693d46166c530ec0ed213d2e1e85f2101810b7cb7ad9dc3f833105dee",
+      "referenceHash": "1926a82fd3b1a94bb4c2565d5c4ee23ede54a4a449c0f337e441910bf69e6b31",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17766079947359764,
+              "p95": 105.7740097045898
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.34473939513438523,
+              "p95": 8.014213562011713
+            },
+            "delta": 0.1670785956607876
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19569967383387696,
+              "p95": 101.34558410644532
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2758789939830052,
+              "p95": 11.208325576782238
+            },
+            "delta": 0.08017932014912824
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16080920679155697,
+              "p95": 114.74803466796874
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.058738960772232486,
+              "p95": 11.519595527648914
+            },
+            "delta": -0.10207024601932449
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.20502413339183853,
+              "p95": 109.9313720703125
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07682569537381993,
+              "p95": 12
+            },
+            "delta": -0.1281984380180186
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "217",
+      "id": "354fe9bd-4ec8-409c-8ce5-b29393f3d169",
+      "name": "Sorin, Vengeful Bloodlord",
+      "colorless": false,
+      "inputHash": "d16f05b8c6978e6dd2a40b81704c0966f29b8b9af9f0813ce6d7a9046be3e614",
+      "referenceHash": "faa33a434c23ec5c19bcb7eb2c4ff1029c6b0993a26f817f84213113640ac5f2",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1703793375908837,
+              "p95": 92.5355339050293
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.32706600758988225,
+              "p95": 10.485280990600586
+            },
+            "delta": 0.15668666999899855
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2185376460994836,
+              "p95": 94.85771942138669
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.14831340947687388,
+              "p95": 36.24264144897461
+            },
+            "delta": -0.07022423662260971
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1883614088820827,
+              "p95": 93.12132263183594
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1711269561996481,
+              "p95": 12
+            },
+            "delta": -0.017234452682434592
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.21114885400650768,
+              "p95": 95.46421508789058
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.11091132059856904,
+              "p95": 36.67106628417969
+            },
+            "delta": -0.10023753340793864
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "220",
+      "id": "76776b24-a2e1-4590-88e7-8a421baf2fc4",
+      "name": "Tamiyo, Collector of Tales",
+      "colorless": false,
+      "inputHash": "320e546b3ff78c81b4794faa4a9bd7084be8164fb7bfa7f1c9dae91dfd28c00f",
+      "referenceHash": "fa26caa8097775d6a5962a85f000b0c7e41cabee484ec053a827831223737ec1",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1328537324297995,
+              "p95": 38.828426361083984
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3852314704206716,
+              "p95": 7
+            },
+            "delta": 0.25237773799087204
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2038463987773037,
+              "p95": 33.32842826843262
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2935716082358155,
+              "p95": 9.053300857543945
+            },
+            "delta": 0.08972520945851181
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12920023925970234,
+              "p95": 52.156856536865234
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0785914774177086,
+              "p95": 11
+            },
+            "delta": -0.05060876184199374
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2062655946770169,
+              "p95": 47.33883571624756
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08544102019128587,
+              "p95": 11.328426599502563
+            },
+            "delta": -0.12082457448573104
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "221",
+      "id": "5cb76266-ae50-4bbc-8f96-d98f309b02d3",
+      "name": "Teferi, Time Raveler",
+      "colorless": false,
+      "inputHash": "7c5d9dcfa7cd0581b275522006c9c9a9e13075e165480db819e88c256b3845ab",
+      "referenceHash": "897eaff09b2ba80cc59e3120c148996c6298fcfdce923da9f00d9e15d43e4d59",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.36850013547799104,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.23012485398169163,
+              "p95": 7.828427314758301
+            },
+            "delta": -0.1383752814962994
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2644985463048834,
+              "p95": 20.605381202697743
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.2894839056032894,
+              "p95": 20.094111633300766
+            },
+            "delta": 0.024985359298406007
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3024038853971104,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07182932092394874,
+              "p95": 11
+            },
+            "delta": -0.23057456447316166
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2865290293144747,
+              "p95": 20.65685405731201
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10656398316468167,
+              "p95": 20.72791986465454
+            },
+            "delta": -0.17996504614979303
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "227",
+      "id": "aa3a4cb5-945e-4caf-8a18-1ef977879fe8",
+      "name": "Angrath, Captain of Chaos",
+      "colorless": false,
+      "inputHash": "46f5c1d84c2975a3ff9738bf1b2d32dd1fb33cf79b9e33771579f86729b3da5f",
+      "referenceHash": "7dc470f14195623a24516b3312645929f7a9a963f810e459336df384960a4536",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10327967289051554,
+              "p95": 251.8450775146484
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.26406429391504016,
+              "p95": 7
+            },
+            "delta": 0.16078462102452462
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10774044347707797,
+              "p95": 255.36811828613278
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.35718650312261313,
+              "p95": 11.816651535034161
+            },
+            "delta": 0.24944605964553518
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.12742206289422334,
+              "p95": 263.3598022460937
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.036963696369636964,
+              "p95": 7
+            },
+            "delta": -0.09045836652458637
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.11290575505723695,
+              "p95": 266.8828430175781
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08129524956546731,
+              "p95": 11.402438354492169
+            },
+            "delta": -0.031610505491769636
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "228",
+      "id": "f2df3258-c053-48a8-974f-d80899b2cd93",
+      "name": "Ashiok, Dream Render",
+      "colorless": false,
+      "inputHash": "c24be289fa9acba9bc20411215f54084df9daacc6b1cd71621b7a30be0c1232c",
+      "referenceHash": "839fe9e667161fbf3242d43885104d221d0460cb60b247642fbf51fb28d0552f",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17951872447222084,
+              "p95": 140.2840583801269
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3858214666853515,
+              "p95": 12.822286033630363
+            },
+            "delta": 0.20630274221313066
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17376425472809076,
+              "p95": 140.87990112304686
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13304633878893718,
+              "p95": 13.025482463836639
+            },
+            "delta": -0.04071791593915358
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18631463653657693,
+              "p95": 140.86985168457028
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.0705009276437848,
+              "p95": 11.751219081878654
+            },
+            "delta": -0.11581370889279213
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.183909760020451,
+              "p95": 141.71421508789058
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.13575398743354278,
+              "p95": 12.343859100341792
+            },
+            "delta": -0.04815577258690823
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "229",
+      "id": "bd6ff745-919b-4688-9e9e-ab7835b3b891",
+      "name": "Dovin, Hand of Control",
+      "colorless": false,
+      "inputHash": "9b5548b9d0275b5c34c53910567b54c87cf2475b931032441a9f00fca5ca9747",
+      "referenceHash": "5a157b7830b49d401a9be266727869da59595a0e58250e1adaf2ea3240ed7ded",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.41771808846999314,
+              "p95": 8
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.12846762214460636,
+              "p95": 5.0207106828689385
+            },
+            "delta": -0.28925046632538676
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17752391939508697,
+              "p95": 9.014213562011713
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.44711574335953014,
+              "p95": 8.691168403625477
+            },
+            "delta": 0.26959182396444314
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3376769380142061,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07219119417418246,
+              "p95": 6
+            },
+            "delta": -0.26548574384002366
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.20497586334942444,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1655235899141895,
+              "p95": 8.048528099060043
+            },
+            "delta": -0.03945227343523494
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "230",
+      "id": "d709742c-82a2-457e-9991-85e98d78029d",
+      "name": "Huatli, the Sun's Heart",
+      "colorless": false,
+      "inputHash": "758ded729d5491da9bab3714171b307af618bcb821f1dbbc43a4e0e65b6e72dc",
+      "referenceHash": "204f65a47e50c2de11f9f7aa015a0635106784c543742f023ec4da283bcace37",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3555690624525148,
+              "p95": 32.15979537963865
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1450372527190203,
+              "p95": 6.662741851806603
+            },
+            "delta": -0.2105318097334945
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1771825643804322,
+              "p95": 29.02071065902708
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3807263675963115,
+              "p95": 9.088225078582749
+            },
+            "delta": 0.2035438032158793
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.3252032520325203,
+              "p95": 37.57401733398436
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05792304509722796,
+              "p95": 6
+            },
+            "delta": -0.26728020693529236
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19962345493737893,
+              "p95": 35.09178218841551
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.12874184109835698,
+              "p95": 8.665433263778679
+            },
+            "delta": -0.07088161383902195
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "231",
+      "id": "a9b575d3-f3f9-4ff4-8e5c-da7c2ec69882",
+      "name": "Kaya, Bane of the Dead",
+      "colorless": false,
+      "inputHash": "843c7bc8de0c84293dcf3f8dba5bac29e6c72e03bde4cf8527499fded2c1d5b1",
+      "referenceHash": "6f43d9be9b100f518358a408e7b4b04fa88d4a90dfe4150db6c1bd3fac2a03de",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2949641944322918,
+              "p95": 98.33087730407713
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1733033113879439,
+              "p95": 7.426345682144154
+            },
+            "delta": -0.12166088304434794
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18214389464510508,
+              "p95": 97.29411087036132
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.38944588493375487,
+              "p95": 11.315431976318347
+            },
+            "delta": 0.2073019902886498
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.31847657360239623,
+              "p95": 99.26690254211424
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05893682588597843,
+              "p95": 7
+            },
+            "delta": -0.2595397477164178
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19083207831325302,
+              "p95": 97.87990112304686
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.18248201056325544,
+              "p95": 10.901218795776357
+            },
+            "delta": -0.00835006774999758
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "232",
+      "id": "7a61b1a6-a75f-47b0-b215-de9708b6d773",
+      "name": "Kiora, Behemoth Beckoner",
+      "colorless": false,
+      "inputHash": "5f4c1fb3d44e3a74b2cf32b6eb9a907888025b2e609e17e381d164a88546db8b",
+      "referenceHash": "cacdc7653b5f03f3d9f530798f2b433b0f1ec7a851419f5c7420dfce11b18f5a",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1526682306001441,
+              "p95": 38.71690349578856
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.4544076292451706,
+              "p95": 11.716904115676865
+            },
+            "delta": 0.3017393986450265
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23062538956991482,
+              "p95": 40.913353347778326
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.3050622691620606,
+              "p95": 13.681727695465089
+            },
+            "delta": 0.07443687959214576
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.18663823215795858,
+              "p95": 52.13111724853514
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07753527295770972,
+              "p95": 10.888477134704575
+            },
+            "delta": -0.10910295920024886
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23429099620833413,
+              "p95": 54.63025302886964
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1053399069509062,
+              "p95": 12.559187793731699
+            },
+            "delta": -0.12895108925742793
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "233",
+      "id": "8806605c-0cb7-4360-96e4-afb424ccad90",
+      "name": "Nahiri, Storm of Stone",
+      "colorless": false,
+      "inputHash": "56eae99a8233c480d8f29553424e9cbdc8dbc397b490c56c7f03bc3d367899b4",
+      "referenceHash": "cc43bb7d11d2243495b603757be7ae84bc14d8667613b382e2c002abe17d51f5",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.1551397647712861,
+              "p95": 39.47634677886962
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.29217653498932106,
+              "p95": 7.828427314758301
+            },
+            "delta": 0.13703677021803495
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.21882270823638902,
+              "p95": 36.414215087890625
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.22174827999121394,
+              "p95": 20.31370573043823
+            },
+            "delta": 0.0029255717548249127
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.16965410328456548,
+              "p95": 46.718992614746085
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05677042703641259,
+              "p95": 7.096803712844845
+            },
+            "delta": -0.11288367624815289
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.2447108417863259,
+              "p95": 44.48529052734375
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.12645994706553676,
+              "p95": 20.52401008605954
+            },
+            "delta": -0.11825089472078915
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "234",
+      "id": "5a10b543-d5d4-42a8-9ee8-dada59a2ad7e",
+      "name": "Saheeli, Sublime Artificer",
+      "colorless": false,
+      "inputHash": "35365c4e945af946b44355b9d5e3aa3a010e3211c161a29bbdf73f144762a079",
+      "referenceHash": "99416765fd320f6d9505223fd5dca1b969fa587ae7789eec67b1b5e01e65ad1d",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14063761097659402,
+              "p95": 72.04446563720704
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.20286225402504474,
+              "p95": 7
+            },
+            "delta": 0.06222464304845071
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.22616177374367702,
+              "p95": 75.40243377685545
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24761782586075418,
+              "p95": 9
+            },
+            "delta": 0.021456052117077157
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.17807739607364387,
+              "p95": 97.9734027862549
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1124562053151793,
+              "p95": 8
+            },
+            "delta": -0.06562119075846456
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.22524045467793644,
+              "p95": 101.33137207031248
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.14058444890837377,
+              "p95": 10
+            },
+            "delta": -0.08465600576956267
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "235",
+      "id": "e0457e3f-56c1-401b-8e08-f04b95c55e2d",
+      "name": "Samut, Tyrant Smasher",
+      "colorless": false,
+      "inputHash": "6b138e37a638f4ff9160dda7bc56ff0872b126d46d19846c308bb2efc06f17f4",
+      "referenceHash": "d718c3cddb8f3896d4e8b130818478c1144369d8697ccd2733819d4513aa5abd",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08838309193023944,
+              "p95": 120.43381690979001
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.366333983734222,
+              "p95": 8.191168689727752
+            },
+            "delta": 0.2779508918039826
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10679957280170879,
+              "p95": 117.40563621520995
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.1663135012695687,
+              "p95": 10.067513513565059
+            },
+            "delta": 0.05951392846785991
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.10623556581986142,
+              "p95": 268.04975280761715
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.06275113935425895,
+              "p95": 7.828427314758301
+            },
+            "delta": -0.043484426465602466
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.14391321464502865,
+              "p95": 265.36421508789056
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07313715367406642,
+              "p95": 10
+            },
+            "delta": -0.07077606097096223
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "236",
+      "id": "59ee2974-07e9-4506-903c-457cb7327dd8",
+      "name": "Vraska, Swarm's Eminence",
+      "colorless": false,
+      "inputHash": "a231213265ca3d5796b6829344b02926dc94a9e88c973e5c060e2e5034fd6453",
+      "referenceHash": "d5ceb64e36b70e53722c329057250d8fb4b6e91a65fd8a6561b979865a8018e4",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.07929515418502202,
+              "p95": 256.88675079345705
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.34123250108240727,
+              "p95": 7.828427314758301
+            },
+            "delta": 0.26193734689738524
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.08167102681491172,
+              "p95": 254.1953247070312
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.15175002039650812,
+              "p95": 10.098528051376327
+            },
+            "delta": 0.0700789935815964
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09618687736173137,
+              "p95": 270.0497528076172
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05970457902511078,
+              "p95": 8
+            },
+            "delta": -0.03648229833662059
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.09452976832397457,
+              "p95": 266.4142150878906
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08912741386745891,
+              "p95": 10
+            },
+            "delta": -0.005402354456515657
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "265",
+      "id": "43e7331d-98b8-420f-a346-3f3521c3b258",
+      "name": "Gideon, the Oathsworn",
+      "colorless": false,
+      "inputHash": "c16572c30052519d1bb82ce01ba2ee93c81ebb6faea39537c705316b59a9dce2",
+      "referenceHash": "d6837f32f92d33b1326780cf26cc370616e3e4cad65be4bb4a19084c357f68e7",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.38710032570301384,
+              "p95": 8.017766952514648
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.10409223000333476,
+              "p95": 6.828427314758301
+            },
+            "delta": -0.2830080956996791
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.23648648648648649,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.38407255481891184,
+              "p95": 7
+            },
+            "delta": 0.14758606833242535
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.41426629955169614,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.08979230408321053,
+              "p95": 6
+            },
+            "delta": -0.3244739954684856
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.25073299127074034,
+              "p95": 9
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.26988653749648106,
+              "p95": 8
+            },
+            "delta": 0.019153546225740725
+          }
+        }
+      },
+      "color": null
+    },
+    {
+      "set": "war",
+      "number": "270",
+      "id": "b6a857fb-159f-40c4-8988-da91d8521a60",
+      "name": "Jace, Arcane Strategist",
+      "colorless": false,
+      "inputHash": "72919bda5feb2bc0292d57a30bef3f23befb3130ffd1eab2b90db2e6eef9166f",
+      "referenceHash": "a17847c587b9b36861bc65d2aeca8026a9f813794524147cb94bab84172a57d5",
+      "materialPassUnchanged": {
+        "inspect": true,
+        "table": true
+      },
+      "bottomCurve": {
+        "inspect": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.4099006949995258,
+              "p95": 10
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.24000973670331452,
+              "p95": 7
+            },
+            "delta": -0.1698909582962113
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19813763654759659,
+              "p95": 11
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.37834097894051566,
+              "p95": 8
+            },
+            "delta": 0.18020334239291907
+          }
+        },
+        "table": {
+          "raw": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.15182320861914986,
+              "p95": 13.31370735168457
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.07016693829009382,
+              "p95": 11
+            },
+            "delta": -0.08165627032905604
+          },
+          "registered": {
+            "before": {
+              "status": "measured",
+              "edgeF1": 0.19733199093883713,
+              "p95": 13.42634515762328
+            },
+            "after": {
+              "status": "measured",
+              "edgeF1": 0.05699942809938362,
+              "p95": 11.83197975158691
+            },
+            "delta": -0.1403325628394535
+          }
+        }
+      },
+      "color": null
+    }
+  ],
+  "timing": {
+    "milliseconds": 29012.830113,
+    "scope": "CPU cached PNG decoding, normalization and measurements; no Chromium or GPU execution."
+  }
+}

@@ -6,7 +6,7 @@ import { paintExtraRules } from './extra-rule-paint.js';
 import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './split-layout.js';
 import { faceFrame, faceRects } from './special-frames.js';
 import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.js';
-import { paintPlaneswalkerType } from './planeswalker-type.js';
+import { COLORLESS_PLATE_REPAINT, paintPlaneswalkerType } from './planeswalker-type.js';
 import { setSymbolCrop } from './set-symbols.js';
 import {
   cardStock,
@@ -92,7 +92,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v41',
+    'canvas-face-v43',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -474,9 +474,17 @@ export function paintAssembledFace(
         ...px(rects.rules),
       );
   } else {
+    const colorlessPlate =
+      planeswalker && ['Colourless', 'Artifact', 'Land'].includes(profile.boxes);
     draw(assets.boxes, rects.title);
+    if (colorlessPlate) {
+      context.save();
+      context.globalAlpha *= COLORLESS_PLATE_REPAINT;
+      draw(assets.boxes, rects.title);
+      context.restore();
+    }
     const boxes = images.get(assets.boxes);
-    if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type);
+    if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate);
     else draw(assets.boxes, rects.type, 'bottom');
   }
   context.fillStyle = '#17140f';

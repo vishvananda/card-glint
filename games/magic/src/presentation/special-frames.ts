@@ -93,7 +93,10 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       stampHeight = FACE_RECTS.stamp[3];
     return {
       ...FACE_RECTS,
-      frame: [0.04724, 0.02655, 0.91339, 0.89989],
+      // Preserve the complete lower curve in the pinned 2778x3793 background
+      // and 2736x3810 frame. Ordinary-face heights cut both off near the paper.
+      background: [0.03937, 0.02531, 0.92126, (0.92126 * FACE_WIDTH * 3793) / 2778 / FACE_HEIGHT],
+      frame: [0.04724, 0.02655, 0.91339, (0.91339 * FACE_WIDTH * 3810) / 2736 / FACE_HEIGHT],
       art: [0.06299, 0.09224, 0.86614, (large ? 0.49044 : 0.55793) - 0.09224],
       title: [0.05669, 0.03375, 0.88662, 0.05737],
       type: [

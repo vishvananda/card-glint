@@ -1,11 +1,16 @@
 import { FACE_HEIGHT, FACE_WIDTH, type FaceRect } from './face-layout.js';
 
+/** The pinned gray plates have ~70% alpha. A partial second pass increases
+ * coverage to ~85% while retaining their texture and transparent outer edges. */
+export const COLORLESS_PLATE_REPAINT = 0.7;
+
 /** Reuse the plate's texture without its baked down-right shadow. The left end
  * flares slightly below the upper curve instead of forming a symmetric pill. */
 export function paintPlaneswalkerType(
   context: CanvasRenderingContext2D,
   image: ImageBitmap,
   rect: FaceRect,
+  colorless = false,
 ) {
   const [x, y, w, h] = [
     rect[0] * FACE_WIDTH,
@@ -39,8 +44,7 @@ export function paintPlaneswalkerType(
   // The paired title/type bitmap is aligned by its bottom edge. Crop within
   // the bottom strip, beyond its curved ends and baked border pixels.
   const sourceScale = image.width / w;
-  context.drawImage(
-    image,
+  const textureRect = [
     20 * sourceScale,
     image.height - (h - 4) * sourceScale,
     image.width - 40 * sourceScale,
@@ -49,7 +53,12 @@ export function paintPlaneswalkerType(
     y,
     w + 2,
     h,
-  );
+  ] as const;
+  context.drawImage(image, ...textureRect);
+  if (colorless) {
+    context.globalAlpha *= COLORLESS_PLATE_REPAINT;
+    context.drawImage(image, ...textureRect);
+  }
   context.restore();
   context.strokeStyle = '#191816';
   context.lineWidth = 1.2;

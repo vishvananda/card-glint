@@ -31,6 +31,7 @@ export function specialPaperColor(face: RenderedCardInput): string {
     R: '#ecd4c8f0',
     G: '#d4e2d0f0',
     Gold: '#e8dfbef0',
+    Colourless: '#f2f2f0f0',
   };
   return colors[resolveCardProfile(face).boxes] ?? '#dededbf0';
 }

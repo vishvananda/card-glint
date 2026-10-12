@@ -295,7 +295,7 @@ modern Oracle subtypes.
 
 ## Planeswalker component follow-up
 
-The latest [70-card review](fixtures/accuracy/planeswalker-type-symbol-plan.json)
+The latest [70-card review](fixtures/accuracy/planeswalker-materials-plan.json)
 retains the existing assets. Paper clipping, colon identity, badge dimensions and
 row spacing are implemented; type-strip shape/position is still under review.
 
@@ -303,8 +303,17 @@ row spacing are implemented; type-strip shape/position is still under review.
   angular bevel. An added soft shadow improves spread but cannot remove that
   baked shape. Replace or separate those asset layers later.
 - Paper/frame plates: flat color still hides the illustration and printed paper
-  texture; multicolor and colorless tones differ markedly. Restore illustration
-  composition before treating all of this as a color-calibration problem.
+  texture. Colorless paper and type/title fills now use a shared brightness
+  correction developed on M21 Ugin and WAR Ugin/Karn; outer-frame tone is unchanged.
+  Karn's brighter title and variable outer-frame grays remain unresolved.
+  Restore illustration composition before treating all remaining differences
+  as a color-calibration problem.
+- Bottom curve: the existing source assets contain it; their complete heights
+  now render instead of being cropped. Placement still needs review: inspect
+  overlap improves while table overlap declines, and the restored outer edge
+  sits low in the M21 Ugin sample. Separate inner rim, outer curve and missing
+  stamp targets before tuning geometry. This is not yet evidence that a new
+  frame asset is required.
 - Type strip: isolate printed letters, uniform outline and soft shadow into
   separate targets. Existing registration and raw scores disagree; most registered
   type crops decline after the visually directed shifts. Keep this flagged.
