@@ -19,6 +19,12 @@ import { paintMana, paintSetSymbol } from './canvas-text.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
 import {
+  usesRevisedLettering,
+  paintRevisedTitle,
+  paintRevisedStats,
+  paintRevisedCredits,
+} from './revised-lettering.js';
+import {
   retroPrintDetails,
   retroStatsPlacement,
   retroStatsText,
@@ -35,7 +41,8 @@ export function paintRetroFace(
   layer?: PaintLayer,
 ) {
   const rect = retroRects(face),
-    details = retroPrintDetails(face);
+    details = retroPrintDetails(face),
+    revised = usesRevisedLettering(face);
   if (layer === 'artwork') {
     paintIllustration(c, face, images, retroPx(rect.art), layer);
     return;
@@ -86,15 +93,13 @@ export function paintRetroFace(
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
   c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
   const titleX = details?.titleX ?? x;
-  c.fillText(
-    face.name,
-    titleX,
-    y + h / 2 + (details?.titleYOffset ?? 0),
-    Math.max(
+  const titleY = y + h / 2 + (details?.titleYOffset ?? 0),
+    titleWidth = Math.max(
       1,
       cost.length ? costX - titleX - 5 : details?.titleX == null ? w - 5 : x + w - titleX - 5,
-    ),
-  );
+    );
+  if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
+  else c.fillText(face.name, titleX, titleY, titleWidth);
   cost.forEach((s, i) =>
     paintMana(
       c,
@@ -175,14 +180,17 @@ export function paintRetroFace(
     const [sx, sy, sw, sh] = retroPx(rect.stats);
     const placement = retroStatsPlacement(face);
     c.textAlign = placement ? 'right' : 'center';
-    c.fillText(
-      retroStatsText(face),
-      placement?.right ?? sx + sw / 2,
-      sy + sh / 2 + (placement?.yOffset ?? 0),
-      placement?.maxWidth ?? sw,
-    );
+    if (revised) paintRevisedStats(c, retroStatsText(face), sy + sh / 2);
+    else
+      c.fillText(
+        retroStatsText(face),
+        placement?.right ?? sx + sw / 2,
+        sy + sh / 2 + (placement?.yOffset ?? 0),
+        placement?.maxWidth ?? sw,
+      );
   }
-  if (details) paintRetroCredits(c, face, details);
+  if (revised && face.artist) paintRevisedCredits(c, face.artist);
+  else if (details) paintRetroCredits(c, face, details);
   else if (face.artist) {
     const [fx, fy, fw, fh] = retroPx(rect.footer);
     c.textAlign = 'center';
