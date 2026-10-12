@@ -6,6 +6,21 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Agreed execution order
+
+Use the [current rollout plan](accuracy-plan.md#current-rollout-old-frames-then-new-frames):
+major sets contain at least 50 distinct ordinary English paper cards; measure
+every ordinary printing in admitted sets. Arabian Nights and Antiquities are
+included. Smaller sets follow later.
+
+1. Old-frame set symbols, then border geometry, then component HSB.
+2. New-frame set symbols, then border geometry, then component HSB, including
+   both 2003-era and 2015-era families.
+
+Build the inventory and coverage ledger first. Keep unsupported cards and
+registration failures visible. Existing typography/font issues below remain
+queued separately during these three component passes.
+
 ## Assets needing visual review
 
 | Asset group                                             | Observed problem                                                                                                                                                                                          | Examples / next evidence                                                                                                                                                                                                                                                                         |

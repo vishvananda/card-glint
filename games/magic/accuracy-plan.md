@@ -1,5 +1,154 @@
 # Magic rendering accuracy
 
+## Current rollout: old frames, then new frames
+
+The agreed scope is **major sets with at least 50 distinct ordinary English
+paper cards**, including large supplemental/reprint sets. Count distinct card
+identities for admission so art/printing variants cannot inflate a small set;
+then measure **every ordinary printing** within an admitted set. Keep smaller
+sets in a follow-up queue. Unsupported layouts, missing assets and low-quality
+references remain in coverage totals; they must not make a set appear smaller
+or improve its measured success rate.
+
+Arabian Nights and Antiquities are explicitly included. The cached English
+paper inventories contain 78 ordinary Arabian Nights cards and 100 ordinary
+Antiquities printings representing 85 distinct cards. Thus both clear 50
+regardless of whether printing variants are counted. Do not use Scryfall's
+unfiltered set count as the final eligibility test.
+
+Execute **two waves**, completing the three passes across the old-frame cohort
+before moving to the new-frame cohort:
+
+| Order | Cohort     | Pass                                   |
+| ----- | ---------- | -------------------------------------- |
+| 1     | Old frames | Set-symbol drawing, size and placement |
+| 2     | Old frames | Frame geometry and border alignment    |
+| 3     | Old frames | Component HSB adjustment               |
+| 4     | New frames | Set-symbol drawing, size and placement |
+| 5     | New frames | Frame geometry and border alignment    |
+| 6     | New frames | Component HSB adjustment               |
+
+Old frames include the 1993/1997 families and their white-border variants.
+New frames include both the 2003-era and 2015-era families. Route by the
+actual printing/frame family, not release date alone. Mixed-frame sets can
+contribute distinct printing groups to both waves. Special treatments remain
+out of scope. Ordinary special layouts stay in the coverage ledger with
+supported, reference-unavailable or adapter-needed status; never silently
+paint them as an ordinary frame. The current evaluator's 2003-frame and
+multi-face gaps must be surfaced during inventory.
+
+### Shared preparation and coverage ledger
+
+1. Freeze the major-set inventory, corpus policy and printing IDs. Audit the
+   treatment filter so normal frame features are not mistaken for alternate
+   treatments. Separate classification from reference quality and adapter
+   support. Record the smaller-set queue at the same time.
+2. Cache full-resolution Scryfall references, matching art crops and source
+   metadata by checksum. Reuse existing immutable objects. Fetch original
+   wording by exact printing identity for visual comparisons; typography is
+   not part of these three passes and unreviewed wording cannot certify it.
+3. Establish independent frame registration before symbol measurements:
+   shared uniform scale per frame family, split by set only when transfer
+   fails, plus the bounded frame-only translation diagnostic. Use separate
+   calibration/validation cards. Freeze the target and transforms before
+   comparing renderer candidates. A failed registration is a review item,
+   never a license to fit on text, symbols or the box under evaluation.
+4. Maintain one row per set/frame group with eligible, reference-ready,
+   rendered, measured, uncertain and unsupported counts; pass status;
+   candidate/reference/method hashes; metrics; failures; asset flags; and
+   review-gallery links. Keep per-printing results beneath that summary.
+
+Existing evidence is a starting baseline, not automatic certification of every
+printing. Raw and normalized metrics must remain available. Where a common
+scale fails, retain the failure and diagnose anchor/asset/reference differences
+before attempting anisotropic correction. Do not optimize individual scans.
+
+### Pass 1: set symbols
+
+Cover symbol identity and negative space, black/white outlines, opaque interior
+components, rarity fill/gradient shape, size, aspect ratio and placement.
+Verify the correct absence of a symbol for sets that originally had none;
+user-facing alternate-symbol options do not change the accuracy reference.
+
+Start from the existing stencils. Isolate symbol ink and outline from the type
+plate so its border cannot dominate the score. Sample every available rarity
+across contrasting frame materials, then validate on reserved cards and run the
+entire set. Small shared x/y and size searches can propose candidates, but
+cannot introduce per-card placement exceptions. Keep color calibration for
+pass 3; pass 1 establishes the correct painted shape and gradient structure.
+If a stencil is substantially wrong, retain the existing asset and record its
+URL/hash, affected sets, example cards and contour mismatch for later replacement.
+
+Deliver a symbol profile per reusable family/set where needed, all-printing
+symbol metrics at inspect and table sizes, explicit regressions and a local
+scan/before/current/tinted-overlay review page. Already measured M15/WAR and
+M19/M20/M21 treatments remain controls for the new-frame wave.
+
+### Pass 2: frame geometry
+
+With symbol styling fixed, measure the outer silhouette, frame rails, art
+aperture/rim, title/type plates, rules-box boundaries, stat/loyalty boxes and
+relevant special-layout shapes. Report widths, heights and centers separately;
+translation must not absorb a width error. Check neighboring overlaps and
+clipping as well as each boundary independently.
+
+Prefer shared frame-family geometry. Add a set/material variant only when the
+same discrepancy repeats across cards and passes reserved-set validation.
+The recent-set survey does not support a single M21 cutoff. Keep typography
+fixed during this pass, including font metrics and line wrapping; record text
+issues in their existing queue. Separate defects in an asset's contour/texture
+from a placement fix that the painter can make using that asset.
+
+Deliver frozen geometry profiles, per-boundary residuals and structural scores,
+all-printing coverage at both tiers, and overlays for the largest gains and
+remaining outliers. Recheck symbol alignment after geometry changes. Reject
+changes that make adjacent regions worse even if a combined score improves.
+
+### Pass 3: HSB by set, material and component
+
+Freeze geometry and registration first. Estimate hue, saturation and brightness
+from masked frame material, title/type backgrounds, rules paper, mana discs
+and symbol fill separately. Exclude illustration pixels, text, hard outlines,
+foil/stamp areas and unreliable highlights. Group by set, frame family and
+color/artifact/land material, merging groups when transfer supports it.
+
+Use several references per group with robust statistics so one faded or unusually
+processed scan does not set the palette. Treat neutral colors separately because
+hue becomes unstable at low saturation. Fit hue circularly, bound corrections,
+track clipping, and retain uncertainty where references disagree. Preserve
+texture, gradients and black/white ink; do not apply a whole-card filter to art
+and lettering. Original art crops and full-card references may have independent
+color processing, so their difference is not a frame-color target.
+
+Validate color with perceptual color differences and component distributions,
+while retaining the unchanged structural checks. A better HSB match cannot
+hide a geometric regression. Deliver versioned component color profiles and
+before/after galleries; mark texture/shape mismatches that HSB cannot fix as
+asset work. Sparse material groups stay pending instead of receiving guessed
+per-card adjustments.
+
+### Pass completion and handoff
+
+For each pass, every admitted printing must have either measured results or an
+explicit unresolved status. Review per-card regressions and worst cases rather
+than accepting an improving median alone. Report median, lower-tail quality,
+regression counts and registration uncertainty per set/frame/material, alongside
+coverage; do not call a structural F1 score a whole-card accuracy percentage.
+All renderer changes need the required package/browser/showcase checks and
+Magic accuracy checks. Commit each validated batch on the working branch.
+
+Advance when the supported cohort is validated and remaining exceptions are
+recorded with a reason and next action. A blocked adapter/asset group must not
+silently count as complete or halt unrelated sets indefinitely. Keep the local
+review browser outside the repository, retain the existing frame assets and
+maintain the separate asset-improvement queue.
+
+**Next implementation step:** build the complete 50-card inventory/coverage
+ledger, verify old-frame registration, then begin old-frame symbol profiles.
+Finish that symbol sweep before starting the old-frame geometry sweep.
+
+## Earlier measurements and reproduction
+
 M21 is the first measured set. The local pipeline inventories **397 English paper
 printings**, excludes **100 alternate treatments**, and captures all **297 ordinary
 printings** at both raster tiers. That includes 268 nonbasic/non-planeswalker cards,
