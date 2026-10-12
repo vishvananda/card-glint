@@ -2157,3 +2157,74 @@ per-set offsets from these results alone. The local comparison includes both
 top and bottom crops plus full cards, and stays outside the repository.
 Run `node games/magic/tools/accuracy/normal-border-audit.mjs m21` (and m20)
 to reproduce from the cached v50/v51 rasters.
+
+## M15 and WAR symbol ink, outlines and geometry
+
+The [topology study](fixtures/accuracy/set-symbol-topology-plan.json) retains
+the pinned M15 and WAR SVG stencils. Their interior holes now receive opaque
+white ink on commons and black ink on other rarities. Backing contours follow
+the stencil envelopes, with an outer rim and the existing core-symbol rarity
+gradient. Caller-supplied symbols keep their own painting behavior. These
+operations run during static face preparation without bitmap readback.
+
+The first normal nonbasic card in each material/rarity bucket supplies 28 M15
+and 30 WAR development examples; the next printing was reserved before its
+scan was inspected. Candidate crops reuse decoded images and must match the
+production control pixel-for-pixel. The CPU sampling path must also match
+full-card canonical normalization. The candidate template, source hashes and
+all trials are retained in the development measurement reports.
+
+M15 uses 92% of the previous size, shifted 2px right and 1px up, with a .7px
+outline stroke. WAR initially used 85% size and a 1.2px outline. WAR's .82 and
+.85 trials are nearly tied; .85 retains more of the original size. Geometry
+is shared by set symbol, never fitted to individual printings. Other modern
+frame types receive the ink treatment while preserving their geometry.
+
+The first frozen pass validates all 50 reserved normal cards:
+
+| Reserved cohort | Cards | Inspect symbol edge F1 | Table symbol edge F1 | Edge gains / regressions at either tier |
+| --------------- | ----: | ---------------------: | -------------------: | --------------------------------------: |
+| M15             |    21 |            .502 → .935 |          .479 → .902 |                                  21 / 0 |
+| WAR             |    29 |            .622 → .806 |          .570 → .734 |                                  29 / 0 |
+
+All M15 diagnostics improve on every reserved card. WAR's Cruel Celebrant #188
+loses local-contrast agreement at both tiers despite edge/Census gains. The
+[M15](fixtures/accuracy/set-symbol-topology-m15-reserved-validation.json) and
+[WAR](fixtures/accuracy/set-symbol-topology-war-reserved-validation.json)
+reports retain that result. Narrow symbol windows reduce frame-line distraction;
+larger contextual windows remain alongside them. Neither is a percentage of
+whole-card accuracy.
+
+The 58 development cards and 44 previously examined planeswalkers are separate
+confirmation cohorts. All 152 first-pass comparisons preserve every pixel
+outside their symbol windows and all text layouts. Planeswalker context crops
+still contain frame ink and have weak absolute agreement; their improvements
+do not establish isolated symbol placement accuracy.
+
+### WAR common rim and vertical follow-up
+
+Visual review identified a weak common white rim and symbols sitting low.
+The [follow-up policy](fixtures/accuracy/set-symbol-war-rim-plan.json) compares
+0/1/2px lifts and three common outline widths on the examined development
+cards. A 1px lift improves the aggregate diagnostics more than 0 or 2px. A 2px
+outline stroke leaves approximately 1px of white outside the black stencil;
+2.8px looks too heavy despite a small common-edge advantage. Other rarity rims
+remain 1.2px, and planeswalker positions remain unchanged.
+
+Twenty additional normal cards were selected from metadata and reserved before
+their scans were viewed. Against the previous topology pass, their narrow
+symbol-window median edge F1 improves .808 → .844 inspect and .758 → .775
+table; signed contrast improves .789 → .834 and .765 → .811. Twelve improve
+edge F1 by more than .02 at each tier. Three regress on all three diagnostics
+at both tiers: Bolas's Citadel #79, Charity Extractor #81 and Dreadhorde Invasion
+#86. They are all black cards. Keep them flagged for shared frame/scan-alignment
+analysis; do not add individual offsets. The [full reserved report](fixtures/accuracy/set-symbol-rim-war-reserved-validation.json)
+also verifies unchanged pixels outside the symbol window and unchanged text.
+
+Reproduce the initial comparisons with
+`node games/magic/tools/accuracy/symbol-topology-validation.mjs m15 reserved`
+(or war, and development/walkers). The follow-up uses
+`node games/magic/tools/accuracy/symbol-topology-validation.mjs war reserved set-symbol-war-rim-plan`.
+These commands compare cached rasters on the CPU; they do not start Chromium
+or measure GPU completion. Source captures remain separate. Full-set coverage
+for M15/WAR and additional symbol topologies are still required.

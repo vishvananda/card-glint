@@ -1,0 +1,1866 @@
+{
+  "schemaVersion": 1,
+  "set": "war",
+  "phase": "walkers",
+  "scope": "Paired identical-input captures; fixed scan normalization, no per-card fitting. All pixels outside symbol windows and all text layouts must remain identical. Normal symbol windows reduce surrounding frame ink; planeswalker context windows may contain frame ink. Component metrics are not whole-card accuracy percentages.",
+  "planHash": "a0f59c12b41f1296c0b60519f62a75d6bcf988cf37fe1607a0a7f7be70a95738",
+  "studyHash": "5b89fbc89c633079c091b55504e7b3d50c5cd6259845fde6f56f3292108d5d9a",
+  "methods": {
+    "normalized-gray-region": "483485fc98f99cb952a4320a78387759b4d2eddb1f3d13c72c7825fd57d27682",
+    "region-cache": "ebf16b154b8227878da7973ad3d047dbcf6212839814e358b01dd1af221dd0fb",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "lettering-contrast": "4e364b2565bf83c0a8e1addba651a96ae1762c7bff8bfb2d0fe8813af4578b88",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+  },
+  "captures": {
+    "before": {
+      "run": "symbol-topology-walkers-before",
+      "hash": "091129914a3beb721454e1efce0877c0f52144c18a4d0192b4c021bb7aca8fd5",
+      "rendererHash": "2f513c7505256db59e97c32794421d9ee38f84f874fd2eef0b7ed8def84d2483"
+    },
+    "after": {
+      "run": "symbol-topology-walkers-after",
+      "hash": "819b927398a422e6d083b0554879fc50a8f642fd9d61cf7cfb8b3ee840002699",
+      "rendererHash": "651e93cc995e9f8e9978b2b06beaee4ecd53d8d853858c35640c8ca0ec956be3"
+    }
+  },
+  "summary": {
+    "inspect": {
+      "context": {
+        "edgeF1": {
+          "before": 0.2656334865280395,
+          "after": 0.3580869716570232,
+          "gains": 37,
+          "regressions": []
+        },
+        "contrast": {
+          "before": -0.1635583604575882,
+          "after": -0.10407293017164065,
+          "gains": 37,
+          "regressions": []
+        },
+        "census": {
+          "before": 0.43097562925445343,
+          "after": 0.4726466361463776,
+          "gains": 27,
+          "regressions": []
+        }
+      }
+    },
+    "table": {
+      "context": {
+        "edgeF1": {
+          "before": 0.236300613437991,
+          "after": 0.33213950322494945,
+          "gains": 29,
+          "regressions": []
+        },
+        "contrast": {
+          "before": -0.0823867900831832,
+          "after": -0.042883324863603675,
+          "gains": 34,
+          "regressions": []
+        },
+        "census": {
+          "before": 0.4889907625097596,
+          "after": 0.5293700078402236,
+          "gains": 23,
+          "regressions": ["217"]
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "3ec0c0fb-1a4f-45f4-85b7-346a6d3ce2c5",
+      "number": "1",
+      "name": "Karn, the Great Creator",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "d175730dba047417939943f8b194949939a65685dc11cd3973f16533cd2342b4",
+      "referenceHash": "a196afb98b7c9b263bbe3c4018efe0aafc19bbbfff6f8e99c46a4419eef0e74b",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2665812031675249,
+                "contrast": -0.5058194112586338,
+                "census": 0.3262633692787805
+              },
+              "after": {
+                "edgeF1": 0.31826794205590103,
+                "contrast": -0.3695641866677668,
+                "census": 0.3832723039360655
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 205,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2196610661730437,
+                "contrast": -0.3903470865277731,
+                "census": 0.3616356706472677
+              },
+              "after": {
+                "edgeF1": 0.2631156081821122,
+                "contrast": -0.3120115346532201,
+                "census": 0.3997849844931665
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7b003521-3da3-41bf-9765-36630653f902",
+      "number": "2",
+      "name": "Ugin, the Ineffable",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "2ec66602e297f6e04853062911caa550e38c53364d9ec0f92e358486152546c2",
+      "referenceHash": "cf42b9968f660c77df5122601a99441ac558dea9e90587a0c780688bb414d36e",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3403926397972997,
+                "contrast": -0.3561425568045273,
+                "census": 0.4122420787870238
+              },
+              "after": {
+                "edgeF1": 0.37482858128038743,
+                "contrast": -0.26301760675060837,
+                "census": 0.4591757778158637
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 205,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.27732337365651544,
+                "contrast": -0.2966253378102763,
+                "census": 0.4246048003992017
+              },
+              "after": {
+                "edgeF1": 0.30528003631346207,
+                "contrast": -0.2443708564338989,
+                "census": 0.460866850213425
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "39d51c5e-26cb-4276-a676-fabfef866248",
+      "number": "13",
+      "name": "Gideon Blackblade",
+      "frame": "planeswalker-large",
+      "rarity": "mythic",
+      "inputHash": "3823cb74ed34876f29de082267338156ff1fc04ed97c5f9b37948ba0f501e07c",
+      "referenceHash": "106997c6e3630e41201e78e5441f79794981ca497da36bba4ee4b0444f261097",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.343153570789824,
+                "contrast": -0.3985226095193917,
+                "census": 0.3293816292964554
+              },
+              "after": {
+                "edgeF1": 0.3661170818957131,
+                "contrast": -0.3273918103107104,
+                "census": 0.3579291330284236
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2531937761844741,
+                "contrast": -0.4089552224293743,
+                "census": 0.3734659770104986
+              },
+              "after": {
+                "edgeF1": 0.25665241990969445,
+                "contrast": -0.3531020294971062,
+                "census": 0.38564815516614115
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "a974571c-d8d5-4860-9077-2023e5f32a24",
+      "number": "32",
+      "name": "Teyo, the Shieldmage",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "579269b12aa322c353cb03ac86e60925a1d8d709c724a85cf60c58d01b7c57b5",
+      "referenceHash": "3c5e6688bb24fa4310bebe96e7f3dbf243841ad5cd9941e3dba287b5ef3dd69e",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3558605750622522,
+                "contrast": -0.5246147552594926,
+                "census": 0.326035713095549
+              },
+              "after": {
+                "edgeF1": 0.3847122947243199,
+                "contrast": -0.40398976951763876,
+                "census": 0.37873157438623567
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.35099490051669396,
+                "contrast": -0.49322759051841436,
+                "census": 0.3680490366583047
+              },
+              "after": {
+                "edgeF1": 0.36823270070227815,
+                "contrast": -0.413904286427352,
+                "census": 0.4105398767612167
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "d0f0e463-9eed-4348-af7c-fde5f0d8188c",
+      "number": "37",
+      "name": "The Wanderer",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "4b5d50c5bb5726a3234e7710dcd79948e5e060ff0e5cc3091263e4020b240a5b",
+      "referenceHash": "e730132ac53e319f9257df64d48f00c65e2e7709637f1465ae73f9d1eae50d4b",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.29609438605676697,
+                "contrast": -0.3690881320978329,
+                "census": 0.4083707572074875
+              },
+              "after": {
+                "edgeF1": 0.318764770702339,
+                "contrast": -0.2962953251240509,
+                "census": 0.4492531946255374
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2620350042669563,
+                "contrast": -0.387049215174977,
+                "census": 0.431432854352795
+              },
+              "after": {
+                "edgeF1": 0.2822228739851357,
+                "contrast": -0.33751028813040923,
+                "census": 0.4638567262249453
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "6adb7d73-4482-4930-8497-cffd169b57e2",
+      "number": "54",
+      "name": "Jace, Wielder of Mysteries",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "210fae1dd503902693cc77616400fb8c8a780617faaf2ec4ef9788c3b7c6d645",
+      "referenceHash": "14333e1c689497b7627f42f27fbc4fb7fe884e9721eede7b3a9652c0c750ac97",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.28645549969365813,
+                "contrast": -0.20198056860585378,
+                "census": 0.39399215904260027
+              },
+              "after": {
+                "edgeF1": 0.3440055458844784,
+                "contrast": -0.13061418716200743,
+                "census": 0.4433595392031108
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.28603803404473793,
+                "contrast": -0.11466399567579727,
+                "census": 0.43794582420040606
+              },
+              "after": {
+                "edgeF1": 0.3052269399372416,
+                "contrast": -0.07776999604416703,
+                "census": 0.4786489974097534
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "c77d9454-a78c-4063-ad66-46b2f5a030aa",
+      "number": "56",
+      "name": "Kasmina, Enigmatic Mentor",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "1574b47ce292ae43ac25106bcb28617edc6eba33b0b964bf98f58e84903d2af3",
+      "referenceHash": "2fba5385f40227cfbc454c2f58abb81e26907c4078136c366fbdab1d6afd06b7",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3172668758950344,
+                "contrast": -0.0770599010717335,
+                "census": 0.38548457189840746
+              },
+              "after": {
+                "edgeF1": 0.39249366333202707,
+                "contrast": -0.011968295049716473,
+                "census": 0.42277177863925397
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 208,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3191245642769817,
+                "contrast": 0.02456906655445107,
+                "census": 0.44909747810090495
+              },
+              "after": {
+                "edgeF1": 0.3915901522629065,
+                "contrast": 0.05909058744761633,
+                "census": 0.47294234770427257
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "8c39f9b4-02b9-4d44-b8d6-4fd02ebbb0c5",
+      "number": "61",
+      "name": "Narset, Parter of Veils",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "dc4f280b3ccbdda9f6ee2b4143818a4170c38bb6250fdc565eec1ed80c787543",
+      "referenceHash": "ab54652155d05a90d36c6935789260809749e098b946acfadafec52bb4b077cb",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2660044194546878,
+                "contrast": -0.18883205341496473,
+                "census": 0.40911561192310547
+              },
+              "after": {
+                "edgeF1": 0.3417980078893996,
+                "contrast": -0.13037427433099116,
+                "census": 0.4497902377789952
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 208,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.21515328245355303,
+                "contrast": -0.1109735368620869,
+                "census": 0.45145522076986727
+              },
+              "after": {
+                "edgeF1": 0.3094011613314525,
+                "contrast": -0.08242176401820552,
+                "census": 0.4796833982290255
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "5b1a44f0-1db8-406a-b7d9-f883f947f7bd",
+      "number": "83",
+      "name": "Davriel, Rogue Shadowmage",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "8b3376fec590f2459c3f967fc1fd4beb3744693b8722b425b4a5b74b224ab32e",
+      "referenceHash": "9d9487493e57b9e30abfb2d266794fcda27e2621224b345e981d5cbe799fd586",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.18668858620101506,
+                "contrast": -0.09490876881501223,
+                "census": 0.49107911321730235
+              },
+              "after": {
+                "edgeF1": 0.37708566383958453,
+                "contrast": -0.0431040188541373,
+                "census": 0.5502743764971023
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 206,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.19315522170424185,
+                "contrast": -0.012690442099014172,
+                "census": 0.5516125519235038
+              },
+              "after": {
+                "edgeF1": 0.33879198980649083,
+                "contrast": 0.014211014501928191,
+                "census": 0.6115267825871811
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "d75ebba8-34ca-47a0-bf13-8318ad73b343",
+      "number": "97",
+      "name": "Liliana, Dreadhorde General",
+      "frame": "planeswalker-large",
+      "rarity": "mythic",
+      "inputHash": "c1954f901a29742d9957340b19ede04a743b77b2bb9a0676fdc8d55e301a25f4",
+      "referenceHash": "f1c5f7c7dbd25c0d2fdb910af41cc88ad9af1d3a7b70437d7c4403cd8be0ae5b",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4460064167558764,
+                "contrast": 0.10313112347883725,
+                "census": 0.4993355787493625
+              },
+              "after": {
+                "edgeF1": 0.4369226295343849,
+                "contrast": 0.13932305063258538,
+                "census": 0.5320539081756863
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.38807043575429245,
+                "contrast": 0.14444588783147996,
+                "census": 0.6317617379811842
+              },
+              "after": {
+                "edgeF1": 0.3922171227369364,
+                "contrast": 0.16315010507598027,
+                "census": 0.6609120293836651
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14916e2d-73af-4747-a927-d2d4cb3e32db",
+      "number": "100",
+      "name": "Ob Nixilis, the Hate-Twisted",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "1b8dacae05ace5cd9e8ab89feb8392e1f688600daaf438c260576b5db95c309e",
+      "referenceHash": "e9b52dd404f17d3664237829835255cec0ac9095506acda774aab60b9b49c2cf",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.1873242989936313,
+                "contrast": -0.11006299541625056,
+                "census": 0.5318394213250106
+              },
+              "after": {
+                "edgeF1": 0.3490700185324646,
+                "contrast": -0.08719033731067583,
+                "census": 0.5272395290198684
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 206,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.18449629101096393,
+                "contrast": -0.029877895026395155,
+                "census": 0.5892072226129834
+              },
+              "after": {
+                "edgeF1": 0.32434167610521064,
+                "contrast": -0.025577891070513357,
+                "census": 0.5796688452573981
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "d21a7b23-8827-49f2-ade4-75a602d17743",
+      "number": "119",
+      "name": "Chandra, Fire Artisan",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "519b49d106b41b2ab1dfbcc3bbc684c90d6fbe414192748a1af0721dad4f3240",
+      "referenceHash": "e59673f2ef66f7e20b90ebb55a5136b691a67fdc0bef2fc4d12f6c66541ed2d1",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2823507926068668,
+                "contrast": -0.1167557193556554,
+                "census": 0.41753990894118304
+              },
+              "after": {
+                "edgeF1": 0.32827202875160766,
+                "contrast": -0.05255196772515215,
+                "census": 0.4696633308559044
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2729162635445238,
+                "contrast": -0.04798444472032825,
+                "census": 0.5184750597315125
+              },
+              "after": {
+                "edgeF1": 0.30599081414836693,
+                "contrast": -0.012989370438892802,
+                "census": 0.5602082809274006
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "129dc8a8-9fbc-4300-b559-243395dc6ed5",
+      "number": "135",
+      "name": "Jaya, Venerated Firemage",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "136aa40063f4b8ae15291018d5afab1d1022fef3a1968dc1b3ecb6ce26dee957",
+      "referenceHash": "5b69cf5642739a9d043cb61374ce17fbcae213a531a2ffad069fdf47f1c6dd18",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2633862262191582,
+                "contrast": -0.07983917013705231,
+                "census": 0.41796348624385415
+              },
+              "after": {
+                "edgeF1": 0.37405322429837035,
+                "contrast": -0.022913649585359675,
+                "census": 0.4847632621726986
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.21844521633098582,
+                "contrast": -0.024465821256251366,
+                "census": 0.5222689650265204
+              },
+              "after": {
+                "edgeF1": 0.35550079484725633,
+                "contrast": 0.0061329614124785,
+                "census": 0.5776436095473227
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "2bb96971-5bf1-4ae3-98f4-7cd7a614bf97",
+      "number": "143",
+      "name": "Sarkhan the Masterless",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "8d40869b01b86eb04c4de0383643a36d7dbf76e0a6c82b54f98fd149bce85c3f",
+      "referenceHash": "c1aba7097d8e08f8eadf487cec78c59decf803965c67b38224fbe609d0d9a79f",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2827018730687536,
+                "contrast": -0.18832545615968588,
+                "census": 0.42714606995700843
+              },
+              "after": {
+                "edgeF1": 0.3189000843042946,
+                "contrast": -0.1481157730864008,
+                "census": 0.4493833123065758
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.27096480777104115,
+                "contrast": -0.13344820496798862,
+                "census": 0.5277133690848271
+              },
+              "after": {
+                "edgeF1": 0.2983289353470496,
+                "contrast": -0.11429578473052,
+                "census": 0.5356213469810998
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7f9a24dc-8bc3-4528-8780-57fb108fdfbf",
+      "number": "146",
+      "name": "Tibalt, Rakish Instigator",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "8abf156ecf1ffbe7b73b92ce2d5c860cc304a9774850c93c0dff4f7e3bad1ec3",
+      "referenceHash": "2d491b04124f7906b3302f66f39e753dbfb5e3e3bf9c369c8d58ba9652d4a101",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2640400199021113,
+                "contrast": -0.13860425582514657,
+                "census": 0.4257111714913852
+              },
+              "after": {
+                "edgeF1": 0.35736414428567764,
+                "contrast": -0.09345039275492419,
+                "census": 0.46058130039902623
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.21497177178574234,
+                "contrast": -0.0918074144220067,
+                "census": 0.5266908406098755
+              },
+              "after": {
+                "edgeF1": 0.34438541395143063,
+                "contrast": -0.06973652969860157,
+                "census": 0.5531066286572286
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "5391d2f1-e8d3-4d39-98cf-367888e10534",
+      "number": "150",
+      "name": "Arlinn, Voice of the Pack",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "a6a461cf52970371c3d9403a979325b3d3b674a38709661be55b268eeece85c2",
+      "referenceHash": "5cf9f04bc056efa818efc8e9edebc4e164479642da13eea0c3e40bb2bc667773",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3318556049064364,
+                "contrast": -0.16680777270501593,
+                "census": 0.4872826660368571
+              },
+              "after": {
+                "edgeF1": 0.35880979902836874,
+                "contrast": -0.11207860801775597,
+                "census": 0.5390773289894132
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3221247767588502,
+                "contrast": -0.10137937538607361,
+                "census": 0.5293199650857907
+              },
+              "after": {
+                "edgeF1": 0.3425882496378578,
+                "contrast": -0.07403223930767093,
+                "census": 0.569084934283247
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "10e0d47d-b13c-4d48-881f-8aaa347ef209",
+      "number": "164",
+      "name": "Jiang Yanggu, Wildcrafter",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "bc768029b6038ed94da808e957bb371b20f1fc3b26c4710e832c2e3e9352ae54",
+      "referenceHash": "16a97f94f2630e96451e0e34cf07530168d43f2562f27d96192a27cddb47e55d",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.32218982185003375,
+                "contrast": -0.07695030445111672,
+                "census": 0.4472034461425658
+              },
+              "after": {
+                "edgeF1": 0.39412731206497914,
+                "contrast": -0.002844598415069591,
+                "census": 0.5185005794406999
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3432762654277613,
+                "contrast": 0.027751468004097148,
+                "census": 0.5020462703376048
+              },
+              "after": {
+                "edgeF1": 0.3908813229834669,
+                "contrast": 0.06915244520807369,
+                "census": 0.5601374610239794
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "f857bbe4-5619-4733-a0c7-69700f2ef4f3",
+      "number": "169",
+      "name": "Nissa, Who Shakes the World",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "b04b39da08e10949140758e5a8c15afb3a6c3c225d5be537dd3a6e7f9027499a",
+      "referenceHash": "9c8125139feae26d03110ddab76f0d7a2226b4aa7ac15a601f8c00d04af77e1f",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4119334851694898,
+                "contrast": 0.026731751104979905,
+                "census": 0.44980495028999534
+              },
+              "after": {
+                "edgeF1": 0.4477358466183756,
+                "contrast": 0.0764605127485113,
+                "census": 0.48703548623887943
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4352600961561378,
+                "contrast": 0.13352434390100176,
+                "census": 0.5038017782682287
+              },
+              "after": {
+                "edgeF1": 0.4506217277049589,
+                "contrast": 0.15854391137263568,
+                "census": 0.5325249449495328
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ff3986d7-9b3d-4082-8d72-ce59c9fcd5d5",
+      "number": "180",
+      "name": "Vivien, Champion of the Wilds",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "ec533cec1b4d922f1f94cee8ce4353cd3c04645e973764c90ae79c10ffc7183f",
+      "referenceHash": "0cf7f262c6f999b318762294f6a35fefb6ccd0e8a3cb3e05fab98be19041446a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.29757170011675976,
+                "contrast": -0.15391959598076813,
+                "census": 0.4305974065176046
+              },
+              "after": {
+                "edgeF1": 0.3322021861360005,
+                "contrast": -0.07528066684948045,
+                "census": 0.5032839632579074
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.30095254439700403,
+                "contrast": -0.05312278676810704,
+                "census": 0.4852989866704416
+              },
+              "after": {
+                "edgeF1": 0.31985254257919593,
+                "contrast": -0.009446088411647091,
+                "census": 0.5450030354905971
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "6cc78151-8cb0-4521-9674-fb0c67e24a17",
+      "number": "184",
+      "name": "Ajani, the Greathearted",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "2784d7078e8d6b80954fa1f5cf60ba313a9d0afe42af047c9e041d6a67d47fc6",
+      "referenceHash": "fbe7823928259638c6f92b140b91e636fde1f361d975be55d4929cadbfd0c0e1",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.1700659619224132,
+                "contrast": -0.5100194231730544,
+                "census": 0.3625599162090027
+              },
+              "after": {
+                "edgeF1": 0.24107138273057666,
+                "contrast": -0.4327551492896315,
+                "census": 0.384772736302204
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.22011796867244426,
+                "contrast": -0.5415520574796489,
+                "census": 0.3669144116561464
+              },
+              "after": {
+                "edgeF1": 0.3051793788455352,
+                "contrast": -0.48869981294699794,
+                "census": 0.3800092161208229
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "c1af9881-e35b-4be2-8716-ea7c6664e22c",
+      "number": "191",
+      "name": "Domri, Anarch of Bolas",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "ed2de4990879a8e134bf652bc8cda99abd402f7327fd398af9c2bec12bfa6928",
+      "referenceHash": "cd41dc6a7f2b8692ba78d660209a46c38a00e95a15adc956c501ea1c4c4328e4",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.22525015720226452,
+                "contrast": -0.2108798061118242,
+                "census": 0.459107505603619
+              },
+              "after": {
+                "edgeF1": 0.32609034384268776,
+                "contrast": -0.13905281576047177,
+                "census": 0.518675437950268
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.160568234042431,
+                "contrast": -0.11723481333900328,
+                "census": 0.4988846397260177
+              },
+              "after": {
+                "edgeF1": 0.28395418273596007,
+                "contrast": -0.08012483808459944,
+                "census": 0.5447215258473992
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "98b68dea-a7be-4f99-8a50-4c8cf0e0f7a9",
+      "number": "207",
+      "name": "Nicol Bolas, Dragon-God",
+      "frame": "planeswalker-large",
+      "rarity": "mythic",
+      "inputHash": "14cc3ab74bc3652049222f57773f7e99ce8c1926f6393dcac4846db44aeab585",
+      "referenceHash": "f4a6490c67e67cd2bddb634502ee643fed40078fb2484c563475f6cb51efbb20",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.42344704938556277,
+                "contrast": -0.21389645854490155,
+                "census": 0.40248467601385796
+              },
+              "after": {
+                "edgeF1": 0.44688947408226515,
+                "contrast": -0.15291853970193103,
+                "census": 0.44302248755410767
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 206,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3989373531594093,
+                "contrast": -0.22682632945162837,
+                "census": 0.44115337433584806
+              },
+              "after": {
+                "edgeF1": 0.41086529989969234,
+                "contrast": -0.18262401420189217,
+                "census": 0.4684944417818615
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "678ce3bf-152d-45ca-87ae-ad46c921328b",
+      "number": "211",
+      "name": "Ral, Storm Conduit",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "f3e8dc9693d46166c530ec0ed213d2e1e85f2101810b7cb7ad9dc3f833105dee",
+      "referenceHash": "1926a82fd3b1a94bb4c2565d5c4ee23ede54a4a449c0f337e441910bf69e6b31",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.18369804831537598,
+                "contrast": -0.21259558134313944,
+                "census": 0.4355222097432724
+              },
+              "after": {
+                "edgeF1": 0.2956555759198074,
+                "contrast": -0.1435539972826988,
+                "census": 0.4950976361843854
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.13971234391297963,
+                "contrast": -0.1135531292578407,
+                "census": 0.4864372801004179
+              },
+              "after": {
+                "edgeF1": 0.26321161311782315,
+                "contrast": -0.07813863316262709,
+                "census": 0.534320406178316
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "354fe9bd-4ec8-409c-8ce5-b29393f3d169",
+      "number": "217",
+      "name": "Sorin, Vengeful Bloodlord",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "d16f05b8c6978e6dd2a40b81704c0966f29b8b9af9f0813ce6d7a9046be3e614",
+      "referenceHash": "faa33a434c23ec5c19bcb7eb2c4ff1029c6b0993a26f817f84213113640ac5f2",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.24644616929452734,
+                "contrast": -0.058818422054711314,
+                "census": 0.5327738159281372
+              },
+              "after": {
+                "edgeF1": 0.34028689973766035,
+                "contrast": -0.05073899149200803,
+                "census": 0.5161754964433651
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.19339064419253915,
+                "contrast": 0.028953099222989477,
+                "census": 0.6129985670991478
+              },
+              "after": {
+                "edgeF1": 0.32984179635891303,
+                "contrast": 0.019628041266443973,
+                "census": 0.5819739783739512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "76776b24-a2e1-4590-88e7-8a421baf2fc4",
+      "number": "220",
+      "name": "Tamiyo, Collector of Tales",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "320e546b3ff78c81b4794faa4a9bd7084be8164fb7bfa7f1c9dae91dfd28c00f",
+      "referenceHash": "fa26caa8097775d6a5962a85f000b0c7e41cabee484ec053a827831223737ec1",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2212075079198901,
+                "contrast": -0.219223222937603,
+                "census": 0.4437218591333928
+              },
+              "after": {
+                "edgeF1": 0.32515848556879734,
+                "contrast": -0.1388432124822228,
+                "census": 0.5074832661920065
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.15583405089840546,
+                "contrast": -0.11063219804243349,
+                "census": 0.47156116787817925
+              },
+              "after": {
+                "edgeF1": 0.28175276460995846,
+                "contrast": -0.06846021736618041,
+                "census": 0.5262150707309143
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "5cb76266-ae50-4bbc-8f96-d98f309b02d3",
+      "number": "221",
+      "name": "Teferi, Time Raveler",
+      "frame": "planeswalker",
+      "rarity": "rare",
+      "inputHash": "7c5d9dcfa7cd0581b275522006c9c9a9e13075e165480db819e88c256b3845ab",
+      "referenceHash": "897eaff09b2ba80cc59e3120c148996c6298fcfdce923da9f00d9e15d43e4d59",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.29152919575429187,
+                "contrast": -0.2108791581050863,
+                "census": 0.4194026758938608
+              },
+              "after": {
+                "edgeF1": 0.38553569548685684,
+                "contrast": -0.11061381895579897,
+                "census": 0.4756299414368507
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.28146062231904545,
+                "contrast": -0.07296616574435968,
+                "census": 0.45944744564926954
+              },
+              "after": {
+                "edgeF1": 0.39553505055519333,
+                "contrast": -0.020246597248710505,
+                "census": 0.5036412520387012
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "aa3a4cb5-945e-4caf-8a18-1ef977879fe8",
+      "number": "227",
+      "name": "Angrath, Captain of Chaos",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "46f5c1d84c2975a3ff9738bf1b2d32dd1fb33cf79b9e33771579f86729b3da5f",
+      "referenceHash": "7dc470f14195623a24516b3312645929f7a9a963f810e459336df384960a4536",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2299303136581481,
+                "contrast": -0.10537932994150224,
+                "census": 0.4796059053810538
+              },
+              "after": {
+                "edgeF1": 0.39094163706370155,
+                "contrast": -0.04776487037615384,
+                "census": 0.49563357127266683
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.21231029442671573,
+                "contrast": -0.04849938136040594,
+                "census": 0.5453740211113571
+              },
+              "after": {
+                "edgeF1": 0.3467851594275151,
+                "contrast": -0.016568495344004674,
+                "census": 0.5578002151488894
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "f2df3258-c053-48a8-974f-d80899b2cd93",
+      "number": "228",
+      "name": "Ashiok, Dream Render",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "c24be289fa9acba9bc20411215f54084df9daacc6b1cd71621b7a30be0c1232c",
+      "referenceHash": "839fe9e667161fbf3242d43885104d221d0460cb60b247642fbf51fb28d0552f",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.18318953504838004,
+                "contrast": -0.04630064925992598,
+                "census": 0.5722710619288591
+              },
+              "after": {
+                "edgeF1": 0.3879582884819156,
+                "contrast": 0.0027528687926738093,
+                "census": 0.5883438663209957
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.17881797950448688,
+                "contrast": 0.04007464962657976,
+                "census": 0.6367292214720077
+              },
+              "after": {
+                "edgeF1": 0.3556491910427234,
+                "contrast": 0.06557189694515948,
+                "census": 0.6600429510397277
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bd6ff745-919b-4688-9e9e-ab7835b3b891",
+      "number": "229",
+      "name": "Dovin, Hand of Control",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "9b5548b9d0275b5c34c53910567b54c87cf2475b931032441a9f00fca5ca9747",
+      "referenceHash": "5a157b7830b49d401a9be266727869da59595a0e58250e1adaf2ea3240ed7ded",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.26526255360139117,
+                "contrast": -0.1603089482101605,
+                "census": 0.45731893188989314
+              },
+              "after": {
+                "edgeF1": 0.3770882390529474,
+                "contrast": -0.09874095911986566,
+                "census": 0.4541913491058638
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2454870044450314,
+                "contrast": -0.02479518642933989,
+                "census": 0.48076940223875264
+              },
+              "after": {
+                "edgeF1": 0.3962411678398152,
+                "contrast": 0.0021040905828991585,
+                "census": 0.4949382064929132
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "d709742c-82a2-457e-9991-85e98d78029d",
+      "number": "230",
+      "name": "Huatli, the Sun's Heart",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "758ded729d5491da9bab3714171b307af618bcb821f1dbbc43a4e0e65b6e72dc",
+      "referenceHash": "204f65a47e50c2de11f9f7aa015a0635106784c543742f023ec4da283bcace37",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.13289095823515623,
+                "contrast": -0.5554712420640179,
+                "census": 0.33480022237570206
+              },
+              "after": {
+                "edgeF1": 0.2837406267327313,
+                "contrast": -0.45129729256027834,
+                "census": 0.34211801911320533
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.13692453830992077,
+                "contrast": -0.5831636068745811,
+                "census": 0.3495790642129034
+              },
+              "after": {
+                "edgeF1": 0.2791040151698696,
+                "contrast": -0.5102369594573523,
+                "census": 0.3641848547980835
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "a9b575d3-f3f9-4ff4-8e5c-da7c2ec69882",
+      "number": "231",
+      "name": "Kaya, Bane of the Dead",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "843c7bc8de0c84293dcf3f8dba5bac29e6c72e03bde4cf8527499fded2c1d5b1",
+      "referenceHash": "6f43d9be9b100f518358a408e7b4b04fa88d4a90dfe4150db6c1bd3fac2a03de",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.16926405264028005,
+                "contrast": -0.09679223797984962,
+                "census": 0.5560648504744481
+              },
+              "after": {
+                "edgeF1": 0.35706365280887997,
+                "contrast": -0.040379116590545334,
+                "census": 0.5787998139925892
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.16526390841774447,
+                "contrast": -0.007679707977550747,
+                "census": 0.6348183208168828
+              },
+              "after": {
+                "edgeF1": 0.3435687983402846,
+                "contrast": 0.022617690211687247,
+                "census": 0.6432531383638733
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7a61b1a6-a75f-47b0-b215-de9708b6d773",
+      "number": "232",
+      "name": "Kiora, Behemoth Beckoner",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "5f4c1fb3d44e3a74b2cf32b6eb9a907888025b2e609e17e381d164a88546db8b",
+      "referenceHash": "cacdc7653b5f03f3d9f530798f2b433b0f1ec7a851419f5c7420dfce11b18f5a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.15604646214930068,
+                "contrast": -0.18139624074861566,
+                "census": 0.5153306209003818
+              },
+              "after": {
+                "edgeF1": 0.3300520072680199,
+                "contrast": -0.10940490122341563,
+                "census": 0.5288068918906266
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.13582706979936615,
+                "contrast": -0.09816354238956199,
+                "census": 0.549535290492857
+              },
+              "after": {
+                "edgeF1": 0.2815952419596326,
+                "contrast": -0.060188758656693986,
+                "census": 0.5467526293951365
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "8806605c-0cb7-4360-96e4-afb424ccad90",
+      "number": "233",
+      "name": "Nahiri, Storm of Stone",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "56eae99a8233c480d8f29553424e9cbdc8dbc397b490c56c7f03bc3d367899b4",
+      "referenceHash": "cc43bb7d11d2243495b603757be7ae84bc14d8667613b382e2c002abe17d51f5",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.1298251659082138,
+                "contrast": -0.40410648838497615,
+                "census": 0.4313538519913022
+              },
+              "after": {
+                "edgeF1": 0.2636098013677597,
+                "contrast": -0.33929263649649627,
+                "census": 0.4370103322971849
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.22711422243095059,
+                "contrast": -0.42754211901588574,
+                "census": 0.4242776440027436
+              },
+              "after": {
+                "edgeF1": 0.3344372100909858,
+                "contrast": -0.38477688525960574,
+                "census": 0.42947483326766195
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "5a10b543-d5d4-42a8-9ee8-dada59a2ad7e",
+      "number": "234",
+      "name": "Saheeli, Sublime Artificer",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "35365c4e945af946b44355b9d5e3aa3a010e3211c161a29bbdf73f144762a079",
+      "referenceHash": "99416765fd320f6d9505223fd5dca1b969fa587ae7789eec67b1b5e01e65ad1d",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.21894438630650742,
+                "contrast": -0.0885863077957345,
+                "census": 0.5134194744283234
+              },
+              "after": {
+                "edgeF1": 0.39157826354202974,
+                "contrast": -0.02509604041263297,
+                "census": 0.5368515860264611
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.20980730319114133,
+                "contrast": -0.022188597338952575,
+                "census": 0.5571151736964435
+              },
+              "after": {
+                "edgeF1": 0.3591947485682795,
+                "contrast": 0.013097501957415346,
+                "census": 0.56542285011688
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e0457e3f-56c1-401b-8e08-f04b95c55e2d",
+      "number": "235",
+      "name": "Samut, Tyrant Smasher",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "6b138e37a638f4ff9160dda7bc56ff0872b126d46d19846c308bb2efc06f17f4",
+      "referenceHash": "d718c3cddb8f3896d4e8b130818478c1144369d8697ccd2733819d4513aa5abd",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2125198897227475,
+                "contrast": -0.14907647643228356,
+                "census": 0.4836819111388725
+              },
+              "after": {
+                "edgeF1": 0.36673088655751074,
+                "contrast": -0.08809101753411912,
+                "census": 0.48762212928185666
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.17034610670614558,
+                "contrast": -0.048867255335842436,
+                "census": 0.5157065904866451
+              },
+              "after": {
+                "edgeF1": 0.3081440095997787,
+                "contrast": -0.020288427260921393,
+                "census": 0.5239933525450624
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "59ee2974-07e9-4506-903c-457cb7327dd8",
+      "number": "236",
+      "name": "Vraska, Swarm's Eminence",
+      "frame": "planeswalker",
+      "rarity": "uncommon",
+      "inputHash": "a231213265ca3d5796b6829344b02926dc94a9e88c973e5c060e2e5034fd6453",
+      "referenceHash": "d5ceb64e36b70e53722c329057250d8fb4b6e91a65fd8a6561b979865a8018e4",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1235,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.22545199597208582,
+                "contrast": -0.06491957302747339,
+                "census": 0.45853551963992134
+              },
+              "after": {
+                "edgeF1": 0.38313921858275857,
+                "contrast": -0.0037045074319831165,
+                "census": 0.46639151231737885
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 207,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.28127998516444735,
+                "contrast": 0.048357701423781964,
+                "census": 0.4915442449191013
+              },
+              "after": {
+                "edgeF1": 0.4270768070684584,
+                "contrast": 0.07895816380863621,
+                "census": 0.5111515550751076
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "43e7331d-98b8-420f-a346-3f3521c3b258",
+      "number": "265",
+      "name": "Gideon, the Oathsworn",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "c16572c30052519d1bb82ce01ba2ee93c81ebb6faea39537c705316b59a9dce2",
+      "referenceHash": "d6837f32f92d33b1326780cf26cc370616e3e4cad65be4bb4a19084c357f68e7",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1238,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.32721744914591794,
+                "contrast": -0.4088320564066337,
+                "census": 0.3367164696570525
+              },
+              "after": {
+                "edgeF1": 0.3654326069528866,
+                "contrast": -0.2916069416631214,
+                "census": 0.38328754937922915
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3317325773877075,
+                "contrast": -0.3643806552269881,
+                "census": 0.3497042616964624
+              },
+              "after": {
+                "edgeF1": 0.3405483261955213,
+                "contrast": -0.28021278308475756,
+                "census": 0.3950338857421142
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "b6a857fb-159f-40c4-8988-da91d8521a60",
+      "number": "270",
+      "name": "Jace, Arcane Strategist",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "72919bda5feb2bc0292d57a30bef3f23befb3130ffd1eab2b90db2e6eef9166f",
+      "referenceHash": "a17847c587b9b36861bc65d2aeca8026a9f813794524147cb94bab84172a57d5",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1236,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.2877065566618153,
+                "contrast": -0.11074941621447691,
+                "census": 0.4095754707025071
+              },
+              "after": {
+                "edgeF1": 0.32487803056881726,
+                "contrast": -0.0586881442619361,
+                "census": 0.40946158127390453
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 209,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.29516572828303483,
+                "contrast": -0.02429652819997866,
+                "census": 0.47146254349399586
+              },
+              "after": {
+                "edgeF1": 0.302691981827531,
+                "contrast": 0.006735925923849264,
+                "census": 0.4530060970630133
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "timing": {
+    "milliseconds": 12816.514204000001,
+    "scope": "CPU decoding, pixel invariants and structural diagnostics. No Chromium or GPU work."
+  }
+}

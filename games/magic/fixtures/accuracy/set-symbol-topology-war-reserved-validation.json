@@ -1,0 +1,2179 @@
+{
+  "schemaVersion": 1,
+  "set": "war",
+  "phase": "reserved",
+  "scope": "Paired identical-input captures; fixed scan normalization, no per-card fitting. All pixels outside symbol windows and all text layouts must remain identical. Normal symbol windows reduce surrounding frame ink; planeswalker context windows may contain frame ink. Component metrics are not whole-card accuracy percentages.",
+  "planHash": "a0f59c12b41f1296c0b60519f62a75d6bcf988cf37fe1607a0a7f7be70a95738",
+  "studyHash": "5b89fbc89c633079c091b55504e7b3d50c5cd6259845fde6f56f3292108d5d9a",
+  "methods": {
+    "normalized-gray-region": "483485fc98f99cb952a4320a78387759b4d2eddb1f3d13c72c7825fd57d27682",
+    "region-cache": "ebf16b154b8227878da7973ad3d047dbcf6212839814e358b01dd1af221dd0fb",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "lettering-contrast": "4e364b2565bf83c0a8e1addba651a96ae1762c7bff8bfb2d0fe8813af4578b88",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+  },
+  "captures": {
+    "before": {
+      "run": "symbol-topology-reserved-before",
+      "hash": "921dc6ca1edd7720f01e55477b8cfb16d3975381d0a398bb39c127511ff048d0",
+      "rendererHash": "2f513c7505256db59e97c32794421d9ee38f84f874fd2eef0b7ed8def84d2483"
+    },
+    "after": {
+      "run": "symbol-topology-reserved-after",
+      "hash": "d7dc47fbec170d33a7e44b158cbad7b7c2cc3b557922c1de41367156f8a186e8",
+      "rendererHash": "651e93cc995e9f8e9978b2b06beaee4ecd53d8d853858c35640c8ca0ec956be3"
+    }
+  },
+  "summary": {
+    "inspect": {
+      "context": {
+        "edgeF1": {
+          "before": 0.7520311471423038,
+          "after": 0.8167062203793567,
+          "gains": 29,
+          "regressions": []
+        },
+        "contrast": {
+          "before": 0.7334957251782945,
+          "after": 0.7719154306494356,
+          "gains": 22,
+          "regressions": []
+        },
+        "census": {
+          "before": 0.7179363430991205,
+          "after": 0.7654705656119358,
+          "gains": 25,
+          "regressions": []
+        }
+      },
+      "symbol": {
+        "edgeF1": {
+          "before": 0.6223863688826063,
+          "after": 0.8055412343244284,
+          "gains": 29,
+          "regressions": []
+        },
+        "contrast": {
+          "before": 0.6474909093991698,
+          "after": 0.7812116186267895,
+          "gains": 25,
+          "regressions": ["188"]
+        },
+        "census": {
+          "before": 0.6505307094872843,
+          "after": 0.7879449097590779,
+          "gains": 28,
+          "regressions": []
+        }
+      }
+    },
+    "table": {
+      "context": {
+        "edgeF1": {
+          "before": 0.7096797693470802,
+          "after": 0.7577126411165136,
+          "gains": 28,
+          "regressions": []
+        },
+        "contrast": {
+          "before": 0.7105136774857054,
+          "after": 0.7648896540512399,
+          "gains": 26,
+          "regressions": []
+        },
+        "census": {
+          "before": 0.6874994308344138,
+          "after": 0.7284285892501929,
+          "gains": 25,
+          "regressions": []
+        }
+      },
+      "symbol": {
+        "edgeF1": {
+          "before": 0.5703322523368065,
+          "after": 0.7337023891575953,
+          "gains": 29,
+          "regressions": []
+        },
+        "contrast": {
+          "before": 0.628351717890561,
+          "after": 0.7601054174556238,
+          "gains": 27,
+          "regressions": ["188"]
+        },
+        "census": {
+          "before": 0.6684357671020396,
+          "after": 0.7796447797451209,
+          "gains": 28,
+          "regressions": []
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "bb7c78bb-9f2a-47a4-adc4-b497bb38f46f",
+      "number": "6",
+      "name": "Bond of Discipline",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "efc1cb997c3fb5dd319db855e2f27c9e3ab0be8ecff8df3e4c902d9563246fea",
+      "referenceHash": "8ab9a42dcafd604407c258bf101ea6958c6bd45482f94873d414c2df58ede9a0",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7318079846178933,
+                "contrast": 0.6388321023994604,
+                "census": 0.6962290966357929
+              },
+              "after": {
+                "edgeF1": 0.801194224208626,
+                "contrast": 0.6977330513957198,
+                "census": 0.7423460351759087
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5856332737855976,
+                "contrast": 0.6232408338843696,
+                "census": 0.6467380036966068
+              },
+              "after": {
+                "edgeF1": 0.8035866661285358,
+                "contrast": 0.7627100248997122,
+                "census": 0.7592096604543803
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7108528554144901,
+                "contrast": 0.5399660831528329,
+                "census": 0.6888309904659817
+              },
+              "after": {
+                "edgeF1": 0.7530814611509781,
+                "contrast": 0.6065792373227655,
+                "census": 0.7301428193386432
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5735643734771485,
+                "contrast": 0.600271833847061,
+                "census": 0.6575482004149985
+              },
+              "after": {
+                "edgeF1": 0.7790693130630341,
+                "contrast": 0.7425119027711984,
+                "census": 0.7649066187731353
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "11510817-edb3-40d4-bd27-6161fedadd11",
+      "number": "7",
+      "name": "Bulwark Giant",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "f4bff6363307ed01ad586363789fb7a403a0921698693ae67e4498cabe36b64a",
+      "referenceHash": "cd44807e1ac8dd9eda2d8e0fdb8ef3ca410a035df41866c4a78fadccc22a8474",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1096,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.8063138523150108,
+                "contrast": 0.6031994313618463,
+                "census": 0.7589062436211498
+              },
+              "after": {
+                "edgeF1": 0.8545336816167008,
+                "contrast": 0.7370044656230545,
+                "census": 0.8170357167017095
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6628635042238789,
+                "contrast": 0.5055775679483403,
+                "census": 0.6872456371204854
+              },
+              "after": {
+                "edgeF1": 0.8112499666991853,
+                "contrast": 0.7796292286541326,
+                "census": 0.8376122350224546
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 159,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7357117542005851,
+                "contrast": 0.5341292362976751,
+                "census": 0.7421166667149621
+              },
+              "after": {
+                "edgeF1": 0.7624030254212453,
+                "contrast": 0.6646756577430231,
+                "census": 0.7886759841495252
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5605547033101412,
+                "contrast": 0.4517269844070026,
+                "census": 0.6827038788383011
+              },
+              "after": {
+                "edgeF1": 0.7033304692169754,
+                "contrast": 0.7231317445536152,
+                "census": 0.8025913480993494
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "df70f155-2336-421c-8a9d-69772d2b51a8",
+      "number": "16",
+      "name": "God-Eternal Oketra",
+      "frame": "normal",
+      "rarity": "mythic",
+      "inputHash": "ffc613f60600d04cef9b01f86608dcded5862671f00a058e1950cee051733bb0",
+      "referenceHash": "099031a76f5478b5f87353fc8858d2369a644e0c4dcff2e9fe84900164e8c093",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.8162099269423557,
+                "contrast": 0.6844834380748429,
+                "census": 0.7489560860223752
+              },
+              "after": {
+                "edgeF1": 0.8504691253927108,
+                "contrast": 0.7373689480819179,
+                "census": 0.7719916152528825
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5586291005552829,
+                "contrast": 0.5547457165363457,
+                "census": 0.6395132234600784
+              },
+              "after": {
+                "edgeF1": 0.6994373441597003,
+                "contrast": 0.7129302711658914,
+                "census": 0.7076997822683677
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 175,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7280845856213202,
+                "contrast": 0.6316250198373311,
+                "census": 0.7658462535528241
+              },
+              "after": {
+                "edgeF1": 0.7568910893615388,
+                "contrast": 0.6925246453927123,
+                "census": 0.7989916155736048
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5457176411023843,
+                "contrast": 0.5420227334201949,
+                "census": 0.6634281733494867
+              },
+              "after": {
+                "edgeF1": 0.6165735446612943,
+                "contrast": 0.7206215077888202,
+                "census": 0.7504514194787735
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e0f83824-43c6-4101-88fd-9109958b23e2",
+      "number": "28",
+      "name": "Ravnica at War",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "f9c8d67f2df32ecbf628a7662de81fb36bfe0418eb9ac18edd2f1bb32d1deb65",
+      "referenceHash": "b2c7a1d2559785bfa9677907ac1a0dca14d4c3674c9b70e4af85b9a8d85ca2c8",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7633319280867759,
+                "contrast": 0.6808759858476405,
+                "census": 0.7251436260269332
+              },
+              "after": {
+                "edgeF1": 0.8463726584757064,
+                "contrast": 0.7498087910548671,
+                "census": 0.7866340026437446
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5530140601892146,
+                "contrast": 0.6600313717799369,
+                "census": 0.6350912689776634
+              },
+              "after": {
+                "edgeF1": 0.8055412343244284,
+                "contrast": 0.8269609468613265,
+                "census": 0.7937418478091134
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 174,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7148592364108828,
+                "contrast": 0.5885329736411546,
+                "census": 0.710921611893425
+              },
+              "after": {
+                "edgeF1": 0.7894863397729461,
+                "contrast": 0.6623456549389245,
+                "census": 0.7670556940148785
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5685875137335861,
+                "contrast": 0.6158916482415727,
+                "census": 0.6452875618498668
+              },
+              "after": {
+                "edgeF1": 0.783656163027439,
+                "contrast": 0.7870766977884668,
+                "census": 0.7910402004370346
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fe479484-a827-4d3c-8e35-e905e4f6664a",
+      "number": "42",
+      "name": "Aven Eternal",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "6b452cff317269a4b1460eafad156096ba62a4a0ea41686c63f7e8d4050b2abd",
+      "referenceHash": "edbc8ab7d8dc0a8c5a1256e7b1ea4166ef9834dd6cbe03a66f0558775857f549",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1103,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.8108843054566557,
+                "contrast": 0.6778990993036899,
+                "census": 0.7407242584034572
+              },
+              "after": {
+                "edgeF1": 0.8657192239671374,
+                "contrast": 0.7912895431631628,
+                "census": 0.8104244748042941
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6646596651794586,
+                "contrast": 0.5424788379834465,
+                "census": 0.6663125680103192
+              },
+              "after": {
+                "edgeF1": 0.8354164333166147,
+                "contrast": 0.8033759525081278,
+                "census": 0.837019280023132
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6134982590898095,
+                "contrast": 0.6105993221731588,
+                "census": 0.6389695865570757
+              },
+              "after": {
+                "edgeF1": 0.6415373450120448,
+                "contrast": 0.7129728723944014,
+                "census": 0.6886699985008375
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6110443566212718,
+                "contrast": 0.5107621145275784,
+                "census": 0.6761738071815733
+              },
+              "after": {
+                "edgeF1": 0.7107555181645813,
+                "contrast": 0.7478541467373232,
+                "census": 0.7989305198074925
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "648629af-e911-49e1-b564-c98f339b84a1",
+      "number": "43",
+      "name": "Bond of Insight",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "b00f44c757ffe7813b824db1dc83e95c8abbf934e41e1c1b9712fe17bfd33e9d",
+      "referenceHash": "c116aeffbd60e907ef22f273bce41c1ae1568b27cd7cc781db649501d44d71dd",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7894252893703281,
+                "contrast": 0.8040491075510432,
+                "census": 0.7788485522839613
+              },
+              "after": {
+                "edgeF1": 0.8759218985659578,
+                "contrast": 0.8215368543473754,
+                "census": 0.8102536045289366
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5582756512950579,
+                "contrast": 0.7160027024721197,
+                "census": 0.6493073968642544
+              },
+              "after": {
+                "edgeF1": 0.8064674953702531,
+                "contrast": 0.7631700126804035,
+                "census": 0.7253453033190046
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.5986404594093673,
+                "contrast": 0.7402587358041617,
+                "census": 0.6840113259650387
+              },
+              "after": {
+                "edgeF1": 0.6776356250629139,
+                "contrast": 0.7648896540512399,
+                "census": 0.7146394586291795
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.47784832781985953,
+                "contrast": 0.7258930556231594,
+                "census": 0.6722773639606164
+              },
+              "after": {
+                "edgeF1": 0.7267600857634182,
+                "contrast": 0.7613633658390805,
+                "census": 0.7402539764057755
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "52558748-6893-4c72-a9e2-e87d31796b59",
+      "number": "50",
+      "name": "Fblthp, the Lost",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "6db5e804649045d215877c67e79cd79822ead3387483adafcc3126ebecbb2d80",
+      "referenceHash": "101fa4b685021a38b1c3b581541b50fef1c7eac833e2f843374cd189d97efdd7",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.8092007438890538,
+                "contrast": 0.8096287252388153,
+                "census": 0.7789325638180034
+              },
+              "after": {
+                "edgeF1": 0.860220649126638,
+                "contrast": 0.8044877575664174,
+                "census": 0.7805978069443502
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5892847979831701,
+                "contrast": 0.7011796855014018,
+                "census": 0.6482731554485687
+              },
+              "after": {
+                "edgeF1": 0.7125913513010287,
+                "contrast": 0.7009795315279828,
+                "census": 0.6547775617056413
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 174,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7028419625915098,
+                "contrast": 0.7653625193123919,
+                "census": 0.7620085585080376
+              },
+              "after": {
+                "edgeF1": 0.7479497231664094,
+                "contrast": 0.7752501973477478,
+                "census": 0.7633286804434203
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5262397480924522,
+                "contrast": 0.7108003044798797,
+                "census": 0.6882161916093111
+              },
+              "after": {
+                "edgeF1": 0.6643880506408104,
+                "contrast": 0.7308467280129927,
+                "census": 0.6871020634149114
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "5e14060f-9167-4e28-a053-77689e066e30",
+      "number": "53",
+      "name": "God-Eternal Kefnet",
+      "frame": "normal",
+      "rarity": "mythic",
+      "inputHash": "f286eb3f0797d6e12cb586c68703df8444952de03fe82d63549cb17bf02333b6",
+      "referenceHash": "3eb419e21462e89daec3a11895e2d8aaa213d8ea896d2b0d4ee85e367f13352f",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.8089378834405336,
+                "contrast": 0.8139002883012999,
+                "census": 0.7834813182871818
+              },
+              "after": {
+                "edgeF1": 0.8778847773436782,
+                "contrast": 0.8469857940094897,
+                "census": 0.8108362284097453
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5940252326307973,
+                "contrast": 0.6730383868701425,
+                "census": 0.6505307094872843
+              },
+              "after": {
+                "edgeF1": 0.7749933000490776,
+                "contrast": 0.7791406168886746,
+                "census": 0.7238665363041079
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 175,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.700544525778541,
+                "contrast": 0.771281096153635,
+                "census": 0.7626587718300393
+              },
+              "after": {
+                "edgeF1": 0.766021951662215,
+                "contrast": 0.808389988792426,
+                "census": 0.7897662032962716
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5577215404599546,
+                "contrast": 0.6867027491426545,
+                "census": 0.6882559964409742
+              },
+              "after": {
+                "edgeF1": 0.7070101984658224,
+                "contrast": 0.7924460456291142,
+                "census": 0.751493534034098
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ae2f3dee-1768-4562-9333-a50b9ee7570f",
+      "number": "66",
+      "name": "Silent Submersible",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "21e46ff694829e16bc540742df13b1f911c3d7634d795ef2bf64a8c2f8c52ed9",
+      "referenceHash": "b7d83cf5f36340380c031a3b306a1a70bd6956a4702f4e62498796fcfeb54b01",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.813355711720805,
+                "contrast": 0.8119625327877615,
+                "census": 0.782245018139755
+              },
+              "after": {
+                "edgeF1": 0.8790361191910807,
+                "contrast": 0.8254047778753464,
+                "census": 0.8010233375646909
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.603735861219789,
+                "contrast": 0.6933072586040491,
+                "census": 0.6529472228198712
+              },
+              "after": {
+                "edgeF1": 0.7632164234070851,
+                "contrast": 0.7361486788129152,
+                "census": 0.7043383317312235
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 174,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6424617317765702,
+                "contrast": 0.7399276324843723,
+                "census": 0.6881928147040929
+              },
+              "after": {
+                "edgeF1": 0.703018801142913,
+                "contrast": 0.7653469653995237,
+                "census": 0.7076465038720677
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5539716221394047,
+                "contrast": 0.6817574815295807,
+                "census": 0.6748047012936477
+              },
+              "after": {
+                "edgeF1": 0.7201243646417552,
+                "contrast": 0.7308466796924867,
+                "census": 0.7189452630098617
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "b9e03567-c95a-40b8-a75a-971076093f57",
+      "number": "77",
+      "name": "Banehound",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "039ee4f6cc744bb0c76b100880a6a20fad47685b51b37b54ef02fd9d8a8b772a",
+      "referenceHash": "c9eabb930b2c59118531f51321998653897e145bb66786fca0065810a073f3a4",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1101,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.698249636751469,
+                "contrast": 0.7362031259679716,
+                "census": 0.6619708286164556
+              },
+              "after": {
+                "edgeF1": 0.7612682265003439,
+                "contrast": 0.7900770393713403,
+                "census": 0.6926826816155962
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6432415383555342,
+                "contrast": 0.521069277973483,
+                "census": 0.6514146131819994
+              },
+              "after": {
+                "edgeF1": 0.8091407030478406,
+                "contrast": 0.715754567466664,
+                "census": 0.7228352327742884
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7581336373883758,
+                "contrast": 0.7718247950750794,
+                "census": 0.739809612842099
+              },
+              "after": {
+                "edgeF1": 0.8057293451413368,
+                "contrast": 0.8270563369287801,
+                "census": 0.7794242786091012
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6210728518682864,
+                "contrast": 0.5268725240060319,
+                "census": 0.6653849539422245
+              },
+              "after": {
+                "edgeF1": 0.7040908907783392,
+                "contrast": 0.7206682743828399,
+                "census": 0.7542075939666644
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "c6482fb9-f874-4e33-aa74-7a0da4c9760c",
+      "number": "80",
+      "name": "Bond of Revival",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "d623d9e3fe3b35ea0d6d7855cbde2e7c91cd7051d78929db7079758879a5e68b",
+      "referenceHash": "7c2930c9eacd366ae4a4409f8ff8f603eae18dc1d0546a90208b3612e6f9a53b",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1068,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.5952672370224475,
+                "contrast": 0.7482423043304322,
+                "census": 0.6421609206886993
+              },
+              "after": {
+                "edgeF1": 0.7599261197707197,
+                "contrast": 0.7839909370549766,
+                "census": 0.7062267208667725
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.352542846975971,
+                "contrast": 0.6405810897247508,
+                "census": 0.6308072530133662
+              },
+              "after": {
+                "edgeF1": 0.8202940211826281,
+                "contrast": 0.7812116186267895,
+                "census": 0.7701931894209662
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7071877673785125,
+                "contrast": 0.8116162055914847,
+                "census": 0.7341085227454782
+              },
+              "after": {
+                "edgeF1": 0.8136324403441542,
+                "contrast": 0.839535030468601,
+                "census": 0.788713951421594
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.3261629685100559,
+                "contrast": 0.6459788968429324,
+                "census": 0.6511900399864464
+              },
+              "after": {
+                "edgeF1": 0.7579646274855661,
+                "contrast": 0.7746057916049053,
+                "census": 0.7646988371985318
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "67aa7104-7acc-4827-b763-ac053c99baab",
+      "number": "85",
+      "name": "Deliver Unto Evil",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "27c983b77668c6eb81d007a1d6609f626ebc0ae81bc55fbdaf1e0f403e8e6acd",
+      "referenceHash": "f8b7b6d89c5203ae0a61fba66283cfccbf2f46be72b1c817312ef41719b77b68",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.664771689238885,
+                "contrast": 0.6819533573223139,
+                "census": 0.6109756490483922
+              },
+              "after": {
+                "edgeF1": 0.7432595056510434,
+                "contrast": 0.7130097522714895,
+                "census": 0.6656209903304477
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6232923497267759,
+                "contrast": 0.6168448107756493,
+                "census": 0.6109973042797907
+              },
+              "after": {
+                "edgeF1": 0.7977517297224581,
+                "contrast": 0.7529685352822951,
+                "census": 0.7445658700939002
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 170,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7648333635217834,
+                "contrast": 0.7965512119575889,
+                "census": 0.7635286881236926
+              },
+              "after": {
+                "edgeF1": 0.8253919950404681,
+                "contrast": 0.8188001144527608,
+                "census": 0.8192831787818851
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5757090913901096,
+                "contrast": 0.6273838370123266,
+                "census": 0.6324317584523563
+              },
+              "after": {
+                "edgeF1": 0.7707611355301669,
+                "contrast": 0.7587505449972191,
+                "census": 0.7645822166041985
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "3714a135-e2b9-43a7-a2a2-fa5a2e0ac61a",
+      "number": "92",
+      "name": "God-Eternal Bontu",
+      "frame": "normal",
+      "rarity": "mythic",
+      "inputHash": "af841e2666f7d28d024301d39e7d658b7ec0c8abac083587a1bc3ca3665ec340",
+      "referenceHash": "4f8b6cc102de12e7a83b99f2a4ca62b583719af908ea06bb502d8a05a93955cd",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6899870122072482,
+                "contrast": 0.7334957251782945,
+                "census": 0.6884266964793042
+              },
+              "after": {
+                "edgeF1": 0.7577261685174793,
+                "contrast": 0.7719154306494356,
+                "census": 0.7477918026486318
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6449083204414551,
+                "contrast": 0.6351984063767891,
+                "census": 0.6521775071203468
+              },
+              "after": {
+                "edgeF1": 0.8123758583445044,
+                "contrast": 0.8051751758094974,
+                "census": 0.7930957289418901
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.786366402107868,
+                "contrast": 0.8185121364584913,
+                "census": 0.7837245842752047
+              },
+              "after": {
+                "edgeF1": 0.8222669664896247,
+                "contrast": 0.8472284302728266,
+                "census": 0.8324151594803297
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6346275128376907,
+                "contrast": 0.6719407737299411,
+                "census": 0.6785878064089639
+              },
+              "after": {
+                "edgeF1": 0.7373928260254794,
+                "contrast": 0.8175790572364883,
+                "census": 0.7861614627849893
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "1d49637b-2255-4f16-8f24-140145966bfa",
+      "number": "114",
+      "name": "Blindblast",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "8a253f1987f1c211d801d9d7dc2b475301d7a48949e7efb0a3b642a1a3955f74",
+      "referenceHash": "10b5aeb81651440c7a8a13d8c5f8f39c877f157a61e351dc859fc833353e7b8e",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1103,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7520311471423038,
+                "contrast": 0.67602015772804,
+                "census": 0.6939311904786347
+              },
+              "after": {
+                "edgeF1": 0.8077558800772623,
+                "contrast": 0.786373096800155,
+                "census": 0.7506459747045962
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.641474400975507,
+                "contrast": 0.5544243374481796,
+                "census": 0.6636450116747652
+              },
+              "after": {
+                "edgeF1": 0.8267822854622766,
+                "contrast": 0.8085404520174493,
+                "census": 0.7983101270417976
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6916218490454913,
+                "contrast": 0.6279069389806126,
+                "census": 0.6447678089293597
+              },
+              "after": {
+                "edgeF1": 0.7324325999037613,
+                "contrast": 0.7272972311332608,
+                "census": 0.696961908037245
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5703322523368065,
+                "contrast": 0.536513808085191,
+                "census": 0.6833261999720637
+              },
+              "after": {
+                "edgeF1": 0.6918222427239853,
+                "contrast": 0.7723086447406105,
+                "census": 0.8050278667965789
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ae644e9d-9bc4-4ccd-aef4-3d0559948aa6",
+      "number": "116",
+      "name": "Bond of Passion",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "81809d145e6d3caaa2b363dd8d28fc818418d1308d09d66ebd3f1f1ab948a9d9",
+      "referenceHash": "8dc3cf16681d3943b184a92f6e2924fb5a16bce2d1ece9835f7e687bf47f930a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6808118693506395,
+                "contrast": 0.7388820670913603,
+                "census": 0.6757385641800882
+              },
+              "after": {
+                "edgeF1": 0.8167062203793567,
+                "contrast": 0.796952934901347,
+                "census": 0.7458364625835708
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.457552451774053,
+                "contrast": 0.6924176943061335,
+                "census": 0.6460872626565639
+              },
+              "after": {
+                "edgeF1": 0.8566062122159683,
+                "contrast": 0.838028228849944,
+                "census": 0.804615934400666
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7096797693470802,
+                "contrast": 0.7207095775663444,
+                "census": 0.6691029669442341
+              },
+              "after": {
+                "edgeF1": 0.792006311386489,
+                "contrast": 0.7734975265384503,
+                "census": 0.7301717540907222
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.4139756643512276,
+                "contrast": 0.6995628541136804,
+                "census": 0.6684357671020396
+              },
+              "after": {
+                "edgeF1": 0.80052858592871,
+                "contrast": 0.8247296096003113,
+                "census": 0.7997342490107554
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "c0109b60-09aa-4a03-92e7-0c651d976d51",
+      "number": "133",
+      "name": "Ilharg, the Raze-Boar",
+      "frame": "normal",
+      "rarity": "mythic",
+      "inputHash": "e71c9a037d5a15c8c20b82d080e77127cbea1d1434efb0a5f06c52c695844083",
+      "referenceHash": "e0017a4686c04f8465f0bbd159d898624e0f2c3051319e1495313e9900302bda",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.718576527384655,
+                "contrast": 0.7542214569264147,
+                "census": 0.7561768180828108
+              },
+              "after": {
+                "edgeF1": 0.8037246292700284,
+                "contrast": 0.8063585387590555,
+                "census": 0.8080191908232268
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.597823575151377,
+                "contrast": 0.6800849627831981,
+                "census": 0.6596178857048345
+              },
+              "after": {
+                "edgeF1": 0.80246724146475,
+                "contrast": 0.8274538750589053,
+                "census": 0.7906486977081233
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6359188983265884,
+                "contrast": 0.7152049960332083,
+                "census": 0.6874994308344138
+              },
+              "after": {
+                "edgeF1": 0.6788510103427017,
+                "contrast": 0.7658730598237894,
+                "census": 0.7412043282616818
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6007338244893277,
+                "contrast": 0.6997649614116819,
+                "census": 0.6753686772893481
+              },
+              "after": {
+                "edgeF1": 0.7345550420633431,
+                "contrast": 0.8363507708902065,
+                "census": 0.8031069469052348
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "37ed04d3-cfa1-4778-aea6-b4c2c29e6e0a",
+      "number": "137",
+      "name": "Krenko, Tin Street Kingpin",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "35de65d718d45e95ad49847fecca0f1a259aa5064b5cf92807ea7363d1b8f142",
+      "referenceHash": "9e7b0da204e8b11f96f6fea5684ed4a515205573dd854d56e83a43dd56d05fc0",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7039323571120613,
+                "contrast": 0.7365589031590488,
+                "census": 0.7179363430991205
+              },
+              "after": {
+                "edgeF1": 0.8076225262043714,
+                "contrast": 0.7950239628713409,
+                "census": 0.7916251873755737
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6266224887734393,
+                "contrast": 0.6794321139997108,
+                "census": 0.650394137096011
+              },
+              "after": {
+                "edgeF1": 0.843572647751891,
+                "contrast": 0.8464903060112305,
+                "census": 0.8266462677834578
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7262938960866407,
+                "contrast": 0.7315669918550868,
+                "census": 0.702923888954162
+              },
+              "after": {
+                "edgeF1": 0.7832820554916973,
+                "contrast": 0.7809198583214348,
+                "census": 0.7658141904814137
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.574069732095043,
+                "contrast": 0.7007633437069332,
+                "census": 0.6688324769845908
+              },
+              "after": {
+                "edgeF1": 0.8155448795461498,
+                "contrast": 0.8437608073709127,
+                "census": 0.8127078892608318
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "747223a5-c669-4d0e-a062-265eb47710cd",
+      "number": "151",
+      "name": "Arlinn's Wolf",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "4614dfc6ef4bae87bf708abfefe6f7f9ac7ea86cb716e28c25199bef1d901dd4",
+      "referenceHash": "c639004fc0444626616c5afcd95e41828060c5d2870612246652810739beca4d",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1102,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7510836930891978,
+                "contrast": 0.6612526441303899,
+                "census": 0.7083341021767444
+              },
+              "after": {
+                "edgeF1": 0.8280256117328522,
+                "contrast": 0.7520839931414254,
+                "census": 0.7488481659079652
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6859815492884496,
+                "contrast": 0.5866106908707129,
+                "census": 0.6943580508134407
+              },
+              "after": {
+                "edgeF1": 0.857996405805292,
+                "contrast": 0.8186480256445289,
+                "census": 0.7880982037179989
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7786228280987433,
+                "contrast": 0.699006611602343,
+                "census": 0.686843545355498
+              },
+              "after": {
+                "edgeF1": 0.8357315588753143,
+                "contrast": 0.7817734541938284,
+                "census": 0.7247323291370072
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6536139276546264,
+                "contrast": 0.5735110918782865,
+                "census": 0.7112671882506629
+              },
+              "after": {
+                "edgeF1": 0.7479688708729051,
+                "contrast": 0.7883613296266987,
+                "census": 0.8010390339606643
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "328d778a-ef16-437f-9a9d-204cf061919b",
+      "number": "157",
+      "name": "Challenger Troll",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "155c65b870f79b8686503fb4d5ce32be115bdcf6268384213e55449f79cf7c13",
+      "referenceHash": "56fda7b8efdd2a8e2545cc7cd5530dfe3c7f6b2767534e6e51fc48c68bf6cb0d",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1069,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7737999012811094,
+                "contrast": 0.8151004699958704,
+                "census": 0.7778468531181619
+              },
+              "after": {
+                "edgeF1": 0.8410493407081472,
+                "contrast": 0.8323057068621007,
+                "census": 0.8061566619725575
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.634816091875119,
+                "contrast": 0.7156160280536406,
+                "census": 0.656400249887964
+              },
+              "after": {
+                "edgeF1": 0.7848461811489993,
+                "contrast": 0.7640458792231536,
+                "census": 0.7243402276036794
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6486976454216759,
+                "contrast": 0.7607077275407582,
+                "census": 0.6814804556178573
+              },
+              "after": {
+                "edgeF1": 0.7031154850879344,
+                "contrast": 0.7849010747943879,
+                "census": 0.7125395494144084
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5392189274728835,
+                "contrast": 0.723664616344654,
+                "census": 0.6733365742774091
+              },
+              "after": {
+                "edgeF1": 0.7163089721848157,
+                "contrast": 0.7601054174556238,
+                "census": 0.7363036250518271
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "0eb444f0-69cc-47c8-8cd6-1f9edad5d903",
+      "number": "163",
+      "name": "God-Eternal Rhonas",
+      "frame": "normal",
+      "rarity": "mythic",
+      "inputHash": "b8c8e34efcacf8ae57a6a8983cbab87bb2156f223be2a3556901a1c3e8add8af",
+      "referenceHash": "ed843ec42442bbaa3393c932f9844a855c9f02fb9f71082ec60ca56c406c87f9",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7651867773063856,
+                "contrast": 0.7494159225089826,
+                "census": 0.7619235748322432
+              },
+              "after": {
+                "edgeF1": 0.8333469634147164,
+                "contrast": 0.80921793525778,
+                "census": 0.8215570258311986
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6223863688826063,
+                "contrast": 0.6751335162549837,
+                "census": 0.6658984987082419
+              },
+              "after": {
+                "edgeF1": 0.8161322878607662,
+                "contrast": 0.8413481330241137,
+                "census": 0.8110170714706167
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 174,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6674990849812628,
+                "contrast": 0.7302436019363416,
+                "census": 0.7288675177850807
+              },
+              "after": {
+                "edgeF1": 0.714592481900991,
+                "contrast": 0.7831154359404571,
+                "census": 0.7835815881130075
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5915432292574787,
+                "contrast": 0.6939320477273588,
+                "census": 0.6856737238611357
+              },
+              "after": {
+                "edgeF1": 0.7337023891575953,
+                "contrast": 0.843451054082711,
+                "census": 0.8185754780731298
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "11016840-56b6-4759-bde6-3dc0e339e87e",
+      "number": "172",
+      "name": "Planewide Celebration",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "a15508033b706d9e3aa6fbe3ec92b745cdfa1f7ea1df6a823df3b3de28abbdd8",
+      "referenceHash": "ff7d41b1202e841f346af03e0b4ea043d2310234603fa25112edf16a0944057e",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.762509555826802,
+                "contrast": 0.7341136396787437,
+                "census": 0.6964025833685381
+              },
+              "after": {
+                "edgeF1": 0.8324612844395467,
+                "contrast": 0.7766282906824078,
+                "census": 0.7549997173010115
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6710320328306008,
+                "contrast": 0.6903858717474785,
+                "census": 0.6478781585143214
+              },
+              "after": {
+                "edgeF1": 0.8229031899688195,
+                "contrast": 0.8208101652388403,
+                "census": 0.7879449097590779
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 172,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7980604585817409,
+                "contrast": 0.7617341026494143,
+                "census": 0.6761309437462361
+              },
+              "after": {
+                "edgeF1": 0.8486248045957915,
+                "contrast": 0.7957425044911636,
+                "census": 0.7284285892501929
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6458842657894734,
+                "contrast": 0.6872911277123352,
+                "census": 0.6686647540550812
+              },
+              "after": {
+                "edgeF1": 0.7510503590523743,
+                "contrast": 0.7961366224188577,
+                "census": 0.7796447797451209
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "08fc5e50-c6f7-41ec-815a-5667eefded78",
+      "number": "187",
+      "name": "Casualties of War",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "88df102a192359a9f0568ab53ce5c6ae9360725abc794cdeaf067b3f8793df1e",
+      "referenceHash": "4ca8aa63eb3491a74010ffd6afa7d2a54fb60b52ba72fd514cf68e4714d97027",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1069,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6911989436037825,
+                "contrast": 0.5738034112294991,
+                "census": 0.6104857593835242
+              },
+              "after": {
+                "edgeF1": 0.7931869496630868,
+                "contrast": 0.6421924254706554,
+                "census": 0.7147441854919279
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5259600994878064,
+                "contrast": 0.6474909093991698,
+                "census": 0.5964564760095754
+              },
+              "after": {
+                "edgeF1": 0.8478459575019428,
+                "contrast": 0.830260956842498,
+                "census": 0.8491594867819081
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6003982373527925,
+                "contrast": 0.5533637622886246,
+                "census": 0.594364994918589
+              },
+              "after": {
+                "edgeF1": 0.6855564377398439,
+                "contrast": 0.6070727284158244,
+                "census": 0.6782161790949794
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5282233068791351,
+                "contrast": 0.610976603836558,
+                "census": 0.6004312456879293
+              },
+              "after": {
+                "edgeF1": 0.8102132990172439,
+                "contrast": 0.7587552752744734,
+                "census": 0.8006455951385902
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "87ead6ac-b1c5-4852-8413-7fa43c6cfc57",
+      "number": "188",
+      "name": "Cruel Celebrant",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "0c160ef8f63d807d1abfb893e3f49e95721793b2d9441659635c96b116b564b5",
+      "referenceHash": "71914934b6e1c9508febf93010ca7caab94bc364c5dc46738317d24e7a3a51eb",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7151888808774869,
+                "contrast": 0.7703433088928643,
+                "census": 0.6747705486032582
+              },
+              "after": {
+                "edgeF1": 0.8102172787783692,
+                "contrast": 0.7531931819656926,
+                "census": 0.712524148749637
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.3046271428097749,
+                "contrast": 0.6748492669393382,
+                "census": 0.5539707633492796
+              },
+              "after": {
+                "edgeF1": 0.704650594210932,
+                "contrast": 0.6297448300737633,
+                "census": 0.6323567600691833
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 171,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.48795210352750146,
+                "contrast": 0.6640920743875774,
+                "census": 0.6184035140344295
+              },
+              "after": {
+                "edgeF1": 0.5846780359657685,
+                "contrast": 0.6619375977096612,
+                "census": 0.6673779918008721
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.2908755570535146,
+                "contrast": 0.7035082866127246,
+                "census": 0.5727482267297952
+              },
+              "after": {
+                "edgeF1": 0.6922464800342321,
+                "contrast": 0.6710256284982866,
+                "census": 0.667888902965577
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "de14b4fd-fb4e-4986-9123-69ae68b5050a",
+      "number": "213",
+      "name": "Roalesk, Apex Hybrid",
+      "frame": "normal",
+      "rarity": "mythic",
+      "inputHash": "4b4d458c3adf06f3e88fe148c07aa3f7b5b70f87fd0d53155566c3e20d49d0ef",
+      "referenceHash": "eff241fedc7c0e09f19baf69be3fff4f10301d0cc5788062388f2fc667a086c6",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7292195824268982,
+                "contrast": 0.6334474522909777,
+                "census": 0.7010824941466052
+              },
+              "after": {
+                "edgeF1": 0.7852984720872743,
+                "contrast": 0.6660598993447758,
+                "census": 0.737291999349445
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6314566767801781,
+                "contrast": 0.6607666123986927,
+                "census": 0.6567099125875658
+              },
+              "after": {
+                "edgeF1": 0.789769001444977,
+                "contrast": 0.7721336498314703,
+                "census": 0.7745471836450196
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 171,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7232447618139184,
+                "contrast": 0.5996787314059205,
+                "census": 0.6513274399318298
+              },
+              "after": {
+                "edgeF1": 0.7577126411165136,
+                "contrast": 0.6328528144619054,
+                "census": 0.6803421628479243
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6106745514238052,
+                "contrast": 0.6695063807223229,
+                "census": 0.6632962301743865
+              },
+              "after": {
+                "edgeF1": 0.7508573510998755,
+                "contrast": 0.7718138923842932,
+                "census": 0.7516079405472702
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7dce06ba-c1e1-45ec-82a7-fc10b0fa8870",
+      "number": "238",
+      "name": "God-Pharaoh's Statue",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "81f5ef70bd9fa5f43f74ba4d171e684a5c723b7c1292bed9ce9cf781966e59fc",
+      "referenceHash": "be70fa9545f434fdb12942e0909a04d636db86bed068b750dab5b62beb5137ba",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1069,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6928121934945509,
+                "contrast": 0.5801022926892675,
+                "census": 0.6181837656783246
+              },
+              "after": {
+                "edgeF1": 0.7905068198361251,
+                "contrast": 0.6489817085714493,
+                "census": 0.7010129414991286
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5440230441634195,
+                "contrast": 0.5976347416221296,
+                "census": 0.6115940225990362
+              },
+              "after": {
+                "edgeF1": 0.8003304848978983,
+                "contrast": 0.8019226448894858,
+                "census": 0.8235521269581326
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7201041174863028,
+                "contrast": 0.5397383665713489,
+                "census": 0.6530404661082945
+              },
+              "after": {
+                "edgeF1": 0.7797297167976855,
+                "contrast": 0.5981402690557407,
+                "census": 0.7223777175837973
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5401904395207431,
+                "contrast": 0.5867558564849884,
+                "census": 0.6219216984450298
+              },
+              "after": {
+                "edgeF1": 0.7460737180849749,
+                "contrast": 0.760964406365076,
+                "census": 0.790589676282548
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ded2c66e-402c-4d5c-b987-402679aa914b",
+      "number": "240",
+      "name": "Iron Bully",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "e37258a128f1def7a14dd2ec623f960c76d709c6eb45b70dd6ea5d2a316c8191",
+      "referenceHash": "d09f648228cb00e4560d6f2ce5eb1c074703b32be36efbe2267bc6ff3a65570a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1102,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.759983557140413,
+                "contrast": 0.5851989117140451,
+                "census": 0.7303561959643372
+              },
+              "after": {
+                "edgeF1": 0.7929789819977038,
+                "contrast": 0.71813592256487,
+                "census": 0.7975377270570424
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6456918511784921,
+                "contrast": 0.49790896450080524,
+                "census": 0.659864785765313
+              },
+              "after": {
+                "edgeF1": 0.7819536133338199,
+                "contrast": 0.7829738833351788,
+                "census": 0.8347249891527665
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 169,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7137605068468078,
+                "contrast": 0.47799166363044726,
+                "census": 0.6545252886710304
+              },
+              "after": {
+                "edgeF1": 0.7342787671424974,
+                "contrast": 0.6018968070559716,
+                "census": 0.7020941913579037
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6029244264944384,
+                "contrast": 0.4212880124269547,
+                "census": 0.6633840089459444
+              },
+              "after": {
+                "edgeF1": 0.690996044906703,
+                "contrast": 0.6902348217103887,
+                "census": 0.786102863750794
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "132d8e2a-e1dd-4867-8e8c-e48b9450b350",
+      "number": "247",
+      "name": "Interplanar Beacon",
+      "frame": "normal",
+      "rarity": "uncommon",
+      "inputHash": "7d44f5e9b246435c2eea47215f9862a3783f909c3f50e132451663a0e633de58",
+      "referenceHash": "931df18d94505f6dcc49c40c42edd125e0a36758c1961ba689038248d41722c0",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1069,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7725608140502711,
+                "contrast": 0.7542084661965295,
+                "census": 0.7493633462571077
+              },
+              "after": {
+                "edgeF1": 0.8185283173363618,
+                "contrast": 0.7443003860827127,
+                "census": 0.7654705656119358
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.4566686273230415,
+                "contrast": 0.5997608576830057,
+                "census": 0.6195222254087
+              },
+              "after": {
+                "edgeF1": 0.7128861616309896,
+                "contrast": 0.595388784400257,
+                "census": 0.6636282508945788
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 168,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.6935641686907585,
+                "contrast": 0.7105136774857054,
+                "census": 0.6828034708862463
+              },
+              "after": {
+                "edgeF1": 0.7608431550681809,
+                "contrast": 0.7074436423357272,
+                "census": 0.6950282871570812
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.3833026379561033,
+                "contrast": 0.6206100283875907,
+                "census": 0.6480183950951603
+              },
+              "after": {
+                "edgeF1": 0.6395288360429983,
+                "contrast": 0.6046496765983981,
+                "census": 0.6772433050583814
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "b9d895af-7e8c-419f-bc5d-5596083fbfb6",
+      "number": "248",
+      "name": "Karn's Bastion",
+      "frame": "normal",
+      "rarity": "rare",
+      "inputHash": "7a7128adb91d97c6c9383e65bafc42d213e4c3832d28ec2017b4f23d0aa3a017",
+      "referenceHash": "9cafe5645c68afcfeef185eb0beb371a532bed104eeb2a58945816d2afc9a786",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1071,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.8587082412126623,
+                "contrast": 0.6677000589731854,
+                "census": 0.7698380170390939
+              },
+              "after": {
+                "edgeF1": 0.9007856094593278,
+                "contrast": 0.6840950557090713,
+                "census": 0.7809461985515691
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.62380840497908,
+                "contrast": 0.7065426701868802,
+                "census": 0.6583886924538311
+              },
+              "after": {
+                "edgeF1": 0.7437425992677211,
+                "contrast": 0.7135415506568998,
+                "census": 0.6950340775189991
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 170,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.7636146837798223,
+                "contrast": 0.5103410179955051,
+                "census": 0.6919868150292359
+              },
+              "after": {
+                "edgeF1": 0.8269484924365089,
+                "contrast": 0.5511330024956106,
+                "census": 0.703347476797076
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.5796723113039719,
+                "contrast": 0.628351717890561,
+                "census": 0.6650105194254772
+              },
+              "after": {
+                "edgeF1": 0.687877238078112,
+                "contrast": 0.6570706234027108,
+                "census": 0.69063983680389
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "cbadf8cf-02bf-45f6-b3c1-a684d9bc5228",
+      "number": "269",
+      "name": "Orzhov Guildgate",
+      "frame": "normal",
+      "rarity": "common",
+      "inputHash": "c2d30a547b00b0267cc7e83cb4a796c563648fb859e52558183a810cf9c7c680",
+      "referenceHash": "8c8839eb38d970f248f599a17e1f471550d648a737c4e02a6c044a83f3cde3a1",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 1101,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.669953386506202,
+                "contrast": 0.33172660164517226,
+                "census": 0.6423001409915211
+              },
+              "after": {
+                "edgeF1": 0.722948701447824,
+                "contrast": 0.4244008992298554,
+                "census": 0.7210370870216636
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6630668093394992,
+                "contrast": 0.570687764618489,
+                "census": 0.6663577391198778
+              },
+              "after": {
+                "edgeF1": 0.8591223449316883,
+                "contrast": 0.8191468999408508,
+                "census": 0.8362912628229296
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 168,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.5504059385892152,
+                "contrast": 0.18472766286152806,
+                "census": 0.566074176648994
+              },
+              "after": {
+                "edgeF1": 0.5701041965517903,
+                "contrast": 0.2783954507608281,
+                "census": 0.6258124408653724
+              }
+            },
+            "symbol": {
+              "before": {
+                "edgeF1": 0.6247734422989166,
+                "contrast": 0.44654530241847545,
+                "census": 0.6554120986202883
+              },
+              "after": {
+                "edgeF1": 0.7347025247055671,
+                "contrast": 0.7040564865423379,
+                "census": 0.7880951746522185
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "timing": {
+    "milliseconds": 13295.496689000001,
+    "scope": "CPU decoding, pixel invariants and structural diagnostics. No Chromium or GPU work."
+  }
+}

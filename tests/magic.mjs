@@ -811,12 +811,14 @@ try {
     // Synthetic padded art exercises the complete painter without remote assets.
     for (const [setCode, customSymbol] of [
       ['m15', false],
+      ['m15', true],
       ['m19', false],
       ['m20', false],
       ['m21', false],
       ['m21', true],
     ]) {
       const coreShield = !customSymbol && ['m19', 'm20', 'm21'].includes(setCode);
+      const tintedSymbol = coreShield || (!customSymbol && setCode === 'm15');
       const symbol = document.createElement('canvas');
       symbol.width = symbol.height = 320;
       const c = symbol.getContext('2d');
@@ -851,7 +853,7 @@ try {
           bottom = -1;
         for (let i = 0; i < pixels.length; i += 4)
           if (
-            coreShield
+            tintedSymbol
               ? pixels[i] < 30 &&
                 pixels[i + 1] < 30 &&
                 pixels[i + 2] < 30 &&
@@ -874,7 +876,7 @@ try {
             ? width < 27 || width > 32
             : coreShield
               ? width < 55 || width > 60
-              : width < 50 || width > 55
+              : width < 47 || width > 52
         )
           throw Error(
             `Visible set glyph has the wrong size: ${setCode}, custom=${customSymbol}, ${tier}: ${width}`,
@@ -895,38 +897,40 @@ try {
     const stencilContext = stencil.getContext('2d');
     stencilContext.fillRect(0, 93.3, 320, 133.4);
     stencilContext.clearRect(130, 120, 60, 65);
-    for (const rarity of ['common', 'uncommon', 'rare', 'mythic']) {
-      const face = { name: '', typeLine: 'Artifact', rulesText: '', setCode: 'm21', rarity };
-      const url = faceSetSymbol(face);
-      for (const tier of ['table', 'inspect']) {
-        const canvas = await composeCardTexture(
-          { face, printingId: null, printedImage: null },
-          tier,
-          new AbortController().signal,
-          {
-            loadImages: async (urls) => ({
-              images: new Map(urls.map((u) => [u, u === url ? stencil : bitmap])),
-              dispose() {},
-            }),
-          },
-        );
-        const c = canvas.getContext('2d'),
-          scale = canvas.width / 488;
-        const sample = (x, y) => [...c.getImageData(x * scale, y * scale, 1, 1).data];
-        const hole = sample(420, 400);
-        if (
-          rarity === 'common'
-            ? hole.slice(0, 3).some((v) => v < 240)
-            : hole.slice(0, 3).some((v) => v > 30)
-        )
-          throw Error(`Core shield letter holes show the plate: ${rarity}, ${tier}`);
-        if (rarity !== 'common') {
-          const left = sample(400, 402),
-            center = sample(430, 402);
-          if (Math.abs(left[0] - center[0]) + Math.abs(left[1] - center[1]) < 30)
-            throw Error(`Core shield lost its rarity gradient: ${rarity}, ${tier}`);
+    for (const setCode of ['m15', 'm21']) {
+      for (const rarity of ['common', 'uncommon', 'rare', 'mythic']) {
+        const face = { name: '', typeLine: 'Artifact', rulesText: '', setCode, rarity };
+        const url = faceSetSymbol(face);
+        for (const tier of ['table', 'inspect']) {
+          const canvas = await composeCardTexture(
+            { face, printingId: null, printedImage: null },
+            tier,
+            new AbortController().signal,
+            {
+              loadImages: async (urls) => ({
+                images: new Map(urls.map((u) => [u, u === url ? stencil : bitmap])),
+                dispose() {},
+              }),
+            },
+          );
+          const c = canvas.getContext('2d'),
+            scale = canvas.width / 488;
+          const sample = (x, y) => [...c.getImageData(x * scale, y * scale, 1, 1).data];
+          const hole = sample(setCode === 'm15' ? 422 : 420, 400);
+          if (
+            rarity === 'common'
+              ? hole.slice(0, 3).some((v) => v < 240)
+              : hole.slice(0, 3).some((v) => v > 30)
+          )
+            throw Error(`Core shield letter holes show the plate: ${setCode}, ${rarity}, ${tier}`);
+          if (rarity !== 'common') {
+            const left = sample(400, 402),
+              center = sample(430, 402);
+            if (Math.abs(left[0] - center[0]) + Math.abs(left[1] - center[1]) < 30)
+              throw Error(`Core shield lost its rarity gradient: ${setCode}, ${rarity}, ${tier}`);
+          }
+          canvas.width = canvas.height = 0;
         }
-        canvas.width = canvas.height = 0;
       }
     }
     stencil.width = stencil.height = 0;

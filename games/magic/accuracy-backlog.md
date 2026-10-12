@@ -372,3 +372,29 @@ at both tiers; this does not certify every symbol or every card in those sets.
   non-shield symbols. Begin with M15 and WAR, retaining the existing pinned
   assets. Separate stencil holes from intentional white ink; do not assume
   every symbol has the same topology as the core-set shields.
+
+## M15 / WAR symbol follow-up
+
+- M15 and WAR now have opaque interior ink, outlines and shaded rarity fields.
+  M15 uses a shared 8% reduction, 2px right / 1px up placement; normal WAR uses
+  a shared 15% reduction and 1px lift. WAR commons have a stronger white rim.
+  All 50 originally reserved normal cards improve edge overlap at both tiers
+  after the first topology pass. The subsequent rim/lift pass improves the
+  median on 20 newly reserved cards but retains three black-card regressions.
+- Examine WAR Bolas's Citadel #79, Charity Extractor #81 and Dreadhorde Invasion
+  #86 using independent frame landmarks. Their shared pattern could reflect
+  plate geometry or scan alignment; current scores do not distinguish those
+  causes. No individual offsets were introduced.
+- Add distinct foreground, outer-rim and interior-ink targets. A contextual
+  crop can hide a weak white border behind a strong type-plate edge; evaluate
+  common white rims separately from colored-rarity black outlines. Preserve
+  both the narrow symbol score and surrounding-frame diagnostics.
+- Retained M15 stencil `7e234ce3ffbc59c06283c92eeb6f8f93bbd69b2a23ac1bea631ce5c5d147b057`
+  still needs close letter/serif contour review. WAR stencil
+  `00c515430c162efe2d396a1d359333af538c5ada94c4de8b15fb50d8d6c6f1b9` retains
+  differences around its horn bases and central cutout. Keep those potential
+  asset changes separate from corrected opacity and geometry. Exact gradient
+  colors remain part of the pending set/material color study.
+- Complete every-card M15/WAR coverage, then extend treatments to further
+  symbol families. The current set-specific backing contours must not be used
+  indiscriminately for other SVGs or caller-provided artwork.

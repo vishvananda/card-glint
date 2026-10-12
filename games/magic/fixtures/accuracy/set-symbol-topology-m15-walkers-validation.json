@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "set": "m15",
+  "phase": "walkers",
+  "scope": "Paired identical-input captures; fixed scan normalization, no per-card fitting. All pixels outside symbol windows and all text layouts must remain identical. Normal symbol windows reduce surrounding frame ink; planeswalker context windows may contain frame ink. Component metrics are not whole-card accuracy percentages.",
+  "planHash": "a0f59c12b41f1296c0b60519f62a75d6bcf988cf37fe1607a0a7f7be70a95738",
+  "studyHash": "5b89fbc89c633079c091b55504e7b3d50c5cd6259845fde6f56f3292108d5d9a",
+  "methods": {
+    "normalized-gray-region": "483485fc98f99cb952a4320a78387759b4d2eddb1f3d13c72c7825fd57d27682",
+    "region-cache": "ebf16b154b8227878da7973ad3d047dbcf6212839814e358b01dd1af221dd0fb",
+    "lettering-metrics": "9cac632865bdaa66e810df560d94e6dc0114dde5093eebee5416035c9b71bb6e",
+    "lettering-contrast": "4e364b2565bf83c0a8e1addba651a96ae1762c7bff8bfb2d0fe8813af4578b88",
+    "edges": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+  },
+  "captures": {
+    "before": {
+      "run": "symbol-topology-walkers-before",
+      "hash": "e45ab56fa9399b69d2fa147d06650b6c8982d270e50bf2b4dc690fc48aef662e",
+      "rendererHash": "2f513c7505256db59e97c32794421d9ee38f84f874fd2eef0b7ed8def84d2483"
+    },
+    "after": {
+      "run": "symbol-topology-walkers-after",
+      "hash": "60ffbfd48bdeae55420916ac83283c2b9f175b4d245a213533657709c86e6797",
+      "rendererHash": "651e93cc995e9f8e9978b2b06beaee4ecd53d8d853858c35640c8ca0ec956be3"
+    }
+  },
+  "summary": {
+    "inspect": {
+      "context": {
+        "edgeF1": {
+          "before": 0.4172565047669239,
+          "after": 0.46919229695310705,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "before": -0.20192448525845502,
+          "after": -0.05279681520466813,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "before": 0.4276983395889543,
+          "after": 0.488406037250226,
+          "gains": 6,
+          "regressions": []
+        }
+      }
+    },
+    "table": {
+      "context": {
+        "edgeF1": {
+          "before": 0.38809099015741816,
+          "after": 0.4356272170094202,
+          "gains": 6,
+          "regressions": []
+        },
+        "contrast": {
+          "before": -0.1280045069495835,
+          "after": -0.026624856889842344,
+          "gains": 6,
+          "regressions": []
+        },
+        "census": {
+          "before": 0.47506819422666713,
+          "after": 0.528717589242593,
+          "gains": 4,
+          "regressions": []
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "f9302ba8-7ff2-4eaa-a32d-eedd94f0bb79",
+      "number": "1",
+      "name": "Ajani Steadfast",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "57cd2727f99e672ce76d04089422d2bd31806451eb08fb939a3bf8af7b329877",
+      "referenceHash": "be79070441e41797e00741dcefd173dcf6f013adec986d1924ac459defe6668a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 3709,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3681759892334653,
+                "contrast": -0.3570197146849008,
+                "census": 0.36995723753723336
+              },
+              "after": {
+                "edgeF1": 0.41358201748794754,
+                "contrast": -0.13523025563447177,
+                "census": 0.4085727409670079
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 473,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.37392663623528116,
+                "contrast": -0.33046334172139336,
+                "census": 0.4114971366729179
+              },
+              "after": {
+                "edgeF1": 0.4091932290149244,
+                "contrast": -0.14193329073202368,
+                "census": 0.4272161982194866
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "99713bb4-186f-42b6-aa66-e94ec8858e6a",
+      "number": "62",
+      "name": "Jace, the Living Guildpact",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "dfd014f5c007e9c782061a66c7d388a9f8aead3d60e943d780ade2bd72584c85",
+      "referenceHash": "3c8a6d0cf93ef85c90eb7b41015d51b4858d9bd244a9061b1cc9bb205efada40",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 3709,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4249485487841183,
+                "contrast": -0.16829667387783426,
+                "census": 0.43887614424169696
+              },
+              "after": {
+                "edgeF1": 0.47689814599831637,
+                "contrast": -0.036163697624560814,
+                "census": 0.498594572490773
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 473,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.41017093934830673,
+                "contrast": -0.08544820693926544,
+                "census": 0.4633063529562699
+              },
+              "after": {
+                "edgeF1": 0.4421686604040235,
+                "contrast": 0.00008209899655931424,
+                "census": 0.5129155981167468
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "6087f146-f468-472a-b248-fc7386ea3e63",
+      "number": "103",
+      "name": "Liliana Vess",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "aa7cbc70a48219074651d1fa8116555838f3af219394b5bbe26394fc9c4d9bbd",
+      "referenceHash": "c86842d6cbeabc01f8dbef024333d952c2f3d84106d86f362d7de9611910e25f",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 3709,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4095644607497295,
+                "contrast": -0.10886758799565857,
+                "census": 0.45996429953306606
+              },
+              "after": {
+                "edgeF1": 0.4614864479078978,
+                "contrast": -0.008442582110408022,
+                "census": 0.5213407671325703
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 473,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.39204520458248104,
+                "contrast": -0.028957201705697308,
+                "census": 0.5405462225880188
+              },
+              "after": {
+                "edgeF1": 0.44703607072801776,
+                "contrast": 0.029465213302926986,
+                "census": 0.5582966614697388
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e92cc35d-4e97-4be2-8c53-cce68c3374ca",
+      "number": "134",
+      "name": "Chandra, Pyromaster",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "0dc20c4707a1c280737e0a00b1192d24bd9c9d32b0ada7953bacbf5649f2910b",
+      "referenceHash": "55fe3b27e179def60a24d6681738cfa5d1f958b9676d90af7e5a7059305fddff",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 3709,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.34494551805240103,
+                "contrast": -0.2645201504985994,
+                "census": 0.3878926817520215
+              },
+              "after": {
+                "edgeF1": 0.4247427686180442,
+                "contrast": -0.06942993278477544,
+                "census": 0.47806786644456056
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 473,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.29724670870291303,
+                "contrast": -0.19919824099185215,
+                "census": 0.45730254921002556
+              },
+              "after": {
+                "edgeF1": 0.38899003103216334,
+                "contrast": -0.053331812776244006,
+                "census": 0.5187661124917029
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "07eb2476-488b-4610-8567-f0456601f7fd",
+      "number": "187",
+      "name": "Nissa, Worldwaker",
+      "frame": "planeswalker",
+      "rarity": "mythic",
+      "inputHash": "b6d6af5d7aa28fd5af27cc80ad4b5cb49ebc7b47dff84063a84ef1c484e8a621",
+      "referenceHash": "6f2ce6cd0123909bd850093703e061eba8600c6cfe46b563411a47e3cc44911a",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 3709,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4272932357732969,
+                "contrast": -0.23555229663907581,
+                "census": 0.4541253484785078
+              },
+              "after": {
+                "edgeF1": 0.481051829639454,
+                "contrast": -0.07374600913804857,
+                "census": 0.5352210328139893
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 473,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3841367757323553,
+                "contrast": -0.17056080695990158,
+                "census": 0.4868300354970644
+              },
+              "after": {
+                "edgeF1": 0.446641600310297,
+                "contrast": -0.060381878613799345,
+                "census": 0.5547497584694892
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "a3957b43-4d7e-41f9-b7a1-6f57d6603ab8",
+      "number": "210",
+      "name": "Garruk, Apex Predator",
+      "frame": "planeswalker-large",
+      "rarity": "mythic",
+      "inputHash": "b38aecd86eb1b7dd7402d274c97036d88e044784c4dcf3682204bda7ff95c9c7",
+      "referenceHash": "eefd03b08f5b338b4626bddc5ee67be16224b43ab4115ddf46022995db80f9f9",
+      "tiers": {
+        "inspect": {
+          "changedPixels": 3707,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.4317032383482996,
+                "contrast": -0.10314338137298079,
+                "census": 0.41652053493621166
+              },
+              "after": {
+                "edgeF1": 0.5060215781294727,
+                "contrast": 0.033351094807547055,
+                "census": 0.478217502009679
+              }
+            }
+          }
+        },
+        "table": {
+          "changedPixels": 473,
+          "unchangedOutsideSymbol": true,
+          "scores": {
+            "context": {
+              "before": {
+                "edgeF1": 0.3959156474558866,
+                "contrast": -0.06813441816627043,
+                "census": 0.500974606226595
+              },
+              "after": {
+                "edgeF1": 0.429085773614817,
+                "contrast": 0.030389869797959795,
+                "census": 0.5386690659934831
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "timing": {
+    "milliseconds": 2249.869202,
+    "scope": "CPU decoding, pixel invariants and structural diagnostics. No Chromium or GPU work."
+  }
+}
