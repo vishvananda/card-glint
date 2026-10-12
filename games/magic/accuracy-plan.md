@@ -54,7 +54,26 @@ Missing original text remains explicit, and Oracle fallbacks do not enter the
 reviewed-body aggregate. `originalType` is retained for audit but is not applied:
 Fourth Edition Angry Mob has a modern type in that field despite its printed
 “Summon Mob” type. MTGJSON supplies its correct original rules wording.
-The cache now also covers 290/306 Revised and 436/449 Fifth Edition records.
+The cache includes original wording for these printing records:
+
+| Set            | Populated `originalText` / cached printings |
+| -------------- | ------------------------------------------- |
+| Alpha          | 279 / 295                                   |
+| Unlimited      | 286 / 302                                   |
+| Revised        | 290 / 306                                   |
+| Fourth Edition | 361 / 378                                   |
+| Fifth Edition  | 436 / 449                                   |
+| Mirage         | 347 / 350                                   |
+| Tempest        | 346 / 350                                   |
+
+Fetch another cached set with `npm run magic:reference:text -- --set lea`.
+The [source manifest](fixtures/accuracy/printing-text-sources.json) records the
+upstream URLs, checksums, snapshot identities and missing printing IDs. These
+counts measure source coverage, not agreement with the scans. Alpha and Unlimited
+each have 16 missing entries: 15 with no Oracle rules and one with Oracle rules.
+Neither case certifies an empty printed rules box. Their reserved scans remain
+unviewed; capture the new wording under a new run name before geometry work.
+
 Source errors still need reviewed overrides: Fourth Edition Deathgrip's
 `originalText` omits the colon after its two black mana symbols. Its scan and
 source identity are recorded in `centered-transfer-review.json`.
