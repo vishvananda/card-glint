@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "baselineRendererHash": "a704fb07f8b057318ad302e6e60a7d2042087c8ca4f886fb0b17e52cf060e294",
+  "experimentHash": "5508fa75a81eda6fa855d9d30c98fad7a3240b695eadf69068aaa0d5b5a3a750",
+  "metricHash": "00b501e408e454f6f72e9826e6c5b520f3e4b1cbaf1e25b6983eef731475f80b",
+  "planHash": "f135b33ce45d4b1a6d633e2d798f4189e20d157c0402afe2c48b43c8a5070b16",
+  "developmentPhase": "development-final",
+  "developmentTrialHash": "73f9e76fc998fa6bbc2086a6256e8f10dee6d7bb9f4b8ac8f56f1fff9b296903",
+  "candidate": {
+    "id": "refine-9",
+    "right": 432,
+    "centerY": 46,
+    "pitch": 27,
+    "size": 23.9,
+    "whiteSize": 20.5
+  },
+  "developmentSummary": [
+    {
+      "candidate": "control",
+      "tier": "inspect",
+      "count": 12,
+      "medianF1": 0.5599289998973335,
+      "medianContrast": 0.3208301707921818,
+      "medianCensus": 0.5646499476439624,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "control",
+      "tier": "table",
+      "count": 12,
+      "medianF1": 0.5276513722818356,
+      "medianContrast": 0.3798795884317661,
+      "medianCensus": 0.6124585920754149,
+      "medianDelta": 0,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "candidate": "refine-9",
+      "tier": "inspect",
+      "count": 12,
+      "medianF1": 0.8101448245773272,
+      "medianContrast": 0.8486932701032168,
+      "medianCensus": 0.8587659008209725,
+      "medianDelta": 0.3003902418306421,
+      "gains": [
+        "Disenchant",
+        "White Knight",
+        "Ancestral Recall",
+        "Water Elemental",
+        "Dark Ritual",
+        "Royal Assassin",
+        "Lightning Bolt",
+        "Shivan Dragon",
+        "Llanowar Elves",
+        "Force of Nature",
+        "Black Lotus",
+        "Fireball"
+      ],
+      "regressions": []
+    },
+    {
+      "candidate": "refine-9",
+      "tier": "table",
+      "count": 12,
+      "medianF1": 0.7741654399368456,
+      "medianContrast": 0.801641521297929,
+      "medianCensus": 0.843143449894987,
+      "medianDelta": 0.289348971651094,
+      "gains": [
+        "Disenchant",
+        "White Knight",
+        "Ancestral Recall",
+        "Water Elemental",
+        "Dark Ritual",
+        "Royal Assassin",
+        "Shivan Dragon",
+        "Llanowar Elves",
+        "Force of Nature",
+        "Black Lotus",
+        "Fireball"
+      ],
+      "regressions": []
+    }
+  ],
+  "developmentReview": [
+    {
+      "file": "early-mana/lea-development-final/review-1.png"
+    },
+    {
+      "file": "early-mana/lea-development-final/review-2.png"
+    }
+  ],
+  "visualReview": "All twelve development scan/control/candidate crops inspected. Original white sun and wider row match better. Skull teeth, tree canopy, droplet aspect, flame outline, numeric weight and disc contrast remain asset differences. No original printing-field mismatch found.",
+  "selection": "A 36-candidate shared grid followed by two rounds of half-pixel neighbors. This candidate has the strongest combined median paired F1 gain in the evaluated final neighbors and the strongest signed local-contrast medians. Position and pitch remained stable; no per-card fitting. No claim of a global optimum or complete glyph accuracy.",
+  "status": "Frozen before reserved Alpha and Unlimited costs are opened or measured."
+}
