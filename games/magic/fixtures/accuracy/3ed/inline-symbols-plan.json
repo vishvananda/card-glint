@@ -5,7 +5,7 @@
   "baselineCommit": "17b65b3",
   "captureHash": "8e94b86da88be05696d7708c9ba24c32ad88c100dd4fd81665a6cb64d8fe1ce5",
   "baselineRendererHash": "7c9078ddfd0fc5d4a8a939784e4cbd034256e4daced629dc2929ba38b2a305bf",
-  "policyScope": "Revised inline rules symbols only: diagonal-T tap and bare generic numbers/X. Header mana remains unchanged; frame assets and shared scan alignment are frozen.",
+  "policyScope": "Revised inline tap glyph only: diagonal T from the existing pinned font. Inline numeric/cost circles, header mana, body layout, frame assets and shared alignment remain unchanged.",
   "selection": "Four previously reviewed artifact bodies are development. Eight metadata-selected printing examples across the five colors, artifacts and numeric/X cases are reserved until the shared candidate is frozen. Corpus was already captured/scored; these are reserved image reviews, not an untouched dataset.",
   "development": [
     {
@@ -37,7 +37,8 @@
         "rarity": "uncommon",
         "frameStyle": "retro",
         "borderColor": "white"
-      }
+      },
+      "tapWindows": [[82, 450, 23, 25]]
     },
     {
       "id": "2b56c9ed-c912-4829-9be0-e80303759c9c",
@@ -68,7 +69,8 @@
         "rarity": "rare",
         "frameStyle": "retro",
         "borderColor": "white"
-      }
+      },
+      "tapWindows": [[155, 434, 23, 25]]
     },
     {
       "id": "0ba1daee-a5ac-4d9e-b681-3e3c7a3eb095",
@@ -101,7 +103,8 @@
         "rarity": "uncommon",
         "frameStyle": "retro",
         "borderColor": "white"
-      }
+      },
+      "tapWindows": []
     },
     {
       "id": "1a3068eb-2250-4c7b-8ed5-2366ff6cd0e1",
@@ -132,7 +135,8 @@
         "rarity": "rare",
         "frameStyle": "retro",
         "borderColor": "white"
-      }
+      },
+      "tapWindows": [[163, 450, 24, 25]]
     }
   ],
   "reserved": [
@@ -444,7 +448,7 @@
   ],
   "acceptance": [
     "Select glyph identity from the pinned existing font and verify visually against development scans.",
-    "Use the same measured advances, ink bounds and painted glyphs; preserve semantic {symbol} tokens in line-ending comparisons.",
+    "Keep layout and semantic symbol tokens unchanged; measure tap shape separately from body typography. Numeric-only examples must retain pixels.",
     "Freeze candidate before viewing reserved scans; compare glyph shape separately from body placement and source wording.",
     "Inspect complete-set regressions and preserve unaffected cards byte-for-byte at both tiers. No per-card transforms or fitted production offsets."
   ],
@@ -453,5 +457,16 @@
       "url": "https://raw.githubusercontent.com/andrewgioia/mana/6ca9e696d3bda2519dcf3eebd96598f84ad9ddd8/css/mana.css",
       "finding": "tap-alt/tap-3ed maps to U+E61C; tap-4ed maps to U+EA31."
     }
-  ]
+  ],
+  "rejectedHypotheses": [
+    {
+      "hypothesis": "Revised inline generic numbers have no circle.",
+      "finding": "Rejected by enlarged Sol Ring, Jandor’s Ring, Brass Man and Helm of Chatzuk scans. Pale generic circles are visible; do not remove or change numeric advances."
+    }
+  ],
+  "developmentGrid": {
+    "glyphScale": [0.8, 0.88, 0.96, 1.04],
+    "dy": [-1, 0, 1]
+  },
+  "targetNote": "Development tap windows manually located on normalized scan pixels and checked in enlarged crops; do not derive them from the painter. The zero-window Brass Man example is a numeric-only preservation control."
 }
