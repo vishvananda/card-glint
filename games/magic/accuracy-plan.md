@@ -294,7 +294,7 @@ The first renderer pass repairs the invalid italic font URL, rejects failed/empt
 font loads with a retry path, adds explicit rules/flavor/style runs, and measures
 wrapping against available width and height. Plain `rulesText` stays supported.
 Layout and painting share shaped runs; mana symbols remain indivisible. Ordinary
-rules no longer use character-count thresholds or silently clip overflow. Long
+modern rules no longer use character-count thresholds or silently clip overflow. Long
 names/type lines retain their full content through size/width fitting. Title,
 type and stats placement and the existing M21 SVG's ink crop were adjusted.
 All new visible inputs participate in cache identity. Preparation failures release
@@ -319,7 +319,8 @@ Next passes should:
    stamp coverage and separate planeswalker typography acceptance.
 4. Review the asset backlog with paired examples. Keep source-asset replacements
    separate from typography changes so their effects can be measured.
-5. Add another frame/era and bulk ingestion and aggregation across sets.
+5. Extend the old-border baseline below to additional historical frame families,
+   then bulk ingestion and aggregation across sets.
    Keep per-frame defaults and use set overrides only when cohort evidence supports
    them. Inventory unsupported layouts and low-quality references explicitly.
 6. Validate WebGL compositing and Safari captures separately. A future native
@@ -332,3 +333,96 @@ Renderer changes require `npm run check`, `npm run build`, `npm run test:package
 rustfmt use the pinned toolchain. Downloaded references are local opt-in data;
 public CI stays synthetic. All decoding/font work remains in preparation, never
 per-frame rendering. CPU submission time must not be labeled GPU completion time.
+
+## Mirage and Tempest old-border baseline
+
+The [frozen survey](fixtures/accuracy/tmp/survey-measurement.json) adds all 350
+ordinary printings from each set, including 20 basic lands each. All 700 produced
+inspect and table rasters and per-region scores without failures. Combined with
+M21/M20, coverage is now 1,340 printings and 72 reviewed printed bodies. This is
+a baseline of the unchanged legacy painter, not an old-border typography fix.
+
+Both sets use the existing `retro-seventh` asset family. Capture now respects
+Scryfall's historical frame and border, caches and verifies the Goudy font, records
+the actual retro asset URLs, and uses separate old-border comparison regions.
+Ordinary white borders are eligible too, though this pair tests black borders.
+The earlier modern corpora retain their snapshot identities where the expanded
+selection policy makes no difference. Unconfigured retro families cannot silently
+reuse modern alignment landmarks.
+
+The cohorts were frozen before viewing their scans or scores. Mirage contributes
+eight frame-calibration cards and eight holdouts, stratified by color/type and
+text length. Tempest contributes eight holdouts with names absent from Mirage.
+All 24 printed body texts, styles and type lines were reviewed; the other 676
+Oracle bodies remain diagnostic. Printed soft wraps are not forced into inputs.
+
+Mirage's frame-only calibration accepted one transform: +0.355px horizontal,
+−0.984px vertical, scale 0.993877, rotation −0.00989°. Frame-edge median F1 rose
+from 0.626 to 0.831 on the calibration cohort, with seven of eight cards
+nonregressing. Tempest uses that exact profile without fitting. No individual
+scan is adjusted. The shared profile gives 1px median and 2px p90 landmark
+residuals in both full sets.
+
+| Baseline metric                       | Mirage  | Tempest |
+| ------------------------------------- | ------- | ------- |
+| Printings measured                    | 350/350 | 350/350 |
+| Alignment flags                       | 11      | 0       |
+| Reviewed holdouts included            | 7/8     | 8/8     |
+| Median reviewed body edge F1, inspect | 0.347   | 0.288   |
+| Median reviewed body edge F1, table   | 0.321   | 0.279   |
+| Warm Node comparison, both tiers      | 3.23s   | 3.25s   |
+
+These are different cards, so the two columns are not paired improvement scores
+or percentages of correct cards. Grasslands exceeds the existing 3px residual
+limit and is excluded from Mirage's reviewed holdout aggregate while remaining
+visible in the full report. Seven nonbasic lands and four white cards account
+for Mirage's flags. Investigate their shared geometry before adding a frame/set
+exception; a per-scan fit would hide this evidence.
+
+The scan-based sensitivity check passed across the eight Mirage calibration crops.
+Median F1 remained 0.986–1.000 under brightness, gamma, saturation, color-cast and
+small-noise changes, versus 0.648 for a 2px shift and 0.583 for wider glyphs and
+spacing. This validates sensitivity on those crops, not universal perception.
+
+The review queue is concrete:
+
+- **Old-border body typography:** the legacy painter ignores paragraph/run
+  italics and picks 16/19/23px using character count. Move it to measured layout
+  with old-border spacing, preserving the existing frames. Add layout/overflow
+  output and reviewed line targets first: currently all 700 lack those checks.
+  Their zero recorded overflow count is not evidence that text fits.
+- **Early basic lands:** the inspected Forest scans in both sets print a tap
+  ability and type “Land”; the current adapter/painter produces a large mana
+  emblem and a modern type line. This is a presentation-policy error distinct
+  from the frame asset backlog.
+- **Existing frames:** `seventh/regular/b.png` scores 0.444/0.408 across confidently
+  aligned Mirage/Tempest cards, `g.png` 0.558/0.599, and `gl.png` 0.487/0.528.
+  These are region associations, not proof that replacing the source fixes them.
+- **Symbols and other printing:** mana-cost regions flag in both sets; set-symbol
+  medians are 0.414/0.409. Check glyph placement and the legacy recoloring policy.
+  Title/type sizes, stats placement, and the centered artist credit also need
+  review. Missing legal/footer content is kept outside typography aggregates.
+
+All frame assets remain unchanged. The reviewed holdouts have now been observed;
+reserve fresh cards before claiming an untouched evaluation of a policy based
+on these examples.
+
+```sh
+# Repeat these four commands with --set tmp for Tempest:
+npm run magic:reference:fetch -- --set mir
+npm run magic:reference:render -- --set mir --run old-border
+npm run magic:reference:compare -- --set mir --run old-border
+npm run magic:reference:report -- --set mir --run old-border
+npm run magic:reference:validate -- --set mir --run old-border
+# Requires both reports; verifies frozen renderer/font/browser/metric fingerprints
+# and exact shared alignment before summarizing the different card populations:
+npm run magic:reference:survey -- --set tmp --run old-border
+```
+
+Open `test-results/magic-accuracy/{mir,tmp}/old-border/report.html` for the
+side-by-side images, edge view, every-card CSV/JSON and asset backlog. The survey
+is `tmp/old-border/survey.json`. Warm timings include 350 cache hits and PNG
+checksum verification per set, without Chromium, download or capture. The cold
+runs took about 216 seconds each while running concurrently with other work;
+they are not isolated performance benchmarks. Downloads and local reports stay
+ignored and outside the public showcase and release packages.

@@ -93,7 +93,8 @@ The original showcase remains independent of this optional pack and its assets.
 
 ## Rendering accuracy
 
-The [accuracy pipeline](accuracy-plan.md) covers 297 ordinary M21 and 343 M20 printings,
+The [accuracy pipeline](accuracy-plan.md) covers 1,340 ordinary printings across M21,
+M20, Mirage, and Tempest,
 with a local Scryfall PNG/art cache, frozen frame/set alignment, per-card structural
 metrics, and an asset improvement list. Existing frame assets are retained.
 
@@ -117,6 +118,13 @@ after comparison and before report generation. Its soft-wrap score excludes
 forced paragraph breaks; geometry errors are in reference pixels. See the
 [typography measurement](fixtures/accuracy/m21/typography-measurement.json) for
 the frozen M21 calibration and holdout results.
+
+The [old-border baseline](fixtures/accuracy/tmp/survey-measurement.json) adds 350
+Mirage and 350 Tempest printings with unchanged existing frame assets. Use
+`--set mir --run old-border` or `--set tmp --run old-border` on the reference
+commands, then `npm run magic:reference:survey -- --set tmp --run old-border`.
+Tempest uses Mirage's frozen alignment. Their separate legacy painter still needs
+body typography and layout instrumentation; its scores are baseline evidence.
 
 For ordinary modern faces, `rulesParagraphs` optionally replaces `rulesText`:
 

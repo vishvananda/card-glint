@@ -6,7 +6,7 @@ import {
   landmarks,
   frameFamily,
 } from '../games/magic/tools/accuracy/alignment.mjs';
-import { exclusion, qualityIssue } from '../games/magic/tools/accuracy/corpus.mjs';
+import { corpusPolicy, exclusion, qualityIssue } from '../games/magic/tools/accuracy/corpus.mjs';
 import { normalize } from '../games/magic/tools/accuracy/pixels.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 import { regions } from '../games/magic/tools/accuracy/regions.mjs';
@@ -101,6 +101,8 @@ const card = {
   image_uris: { png: 'x', art_crop: 'y' },
 };
 assert.equal(exclusion(card), null);
+assert.equal(corpusPolicy([card]), 'ordinary-paper-v1');
+assert.equal(corpusPolicy([{ ...card, frame: '1997' }]), 'ordinary-paper-v2');
 assert.equal(exclusion({ ...card, type_line: 'Basic Land — Plains' }), null);
 assert.equal(exclusion({ ...card, type_line: 'Legendary Planeswalker — Example' }), null);
 assert.match(exclusion({ ...card, frame_effects: ['extendedart'] }), /treatment/);

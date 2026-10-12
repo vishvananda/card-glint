@@ -25,6 +25,9 @@ for (const [value, label] of [
   $('summary').append(stat);
 }
 if (!report.complete) $('scope').append(' · INCOMPLETE RUN');
+$('scope').append(
+  ` · Layout/overflow checked on ${report.summary.layoutMeasured}/${report.summary.measured} cards`,
+);
 function showTab(tab) {
   for (const id of ['cards', 'assets', 'excluded']) $(id).hidden = id !== tab;
   document
@@ -86,12 +89,13 @@ function drawDetail() {
     r.alignment?.family,
     r.alignment?.uncertain ? 'Alignment uncertain' : null,
     r.clipping ? 'Text overflow' : null,
+    r.layout == null && !r.issue ? 'Layout/overflow unmeasured' : null,
   ].filter(Boolean))
     badges.append(
       element(
         'span',
         label,
-        'badge' + (/unverified|uncertain|overflow/.test(label) ? ' warning' : ''),
+        'badge' + (/unverified|uncertain|overflow|unmeasured/.test(label) ? ' warning' : ''),
       ),
     );
   target.append(badges);

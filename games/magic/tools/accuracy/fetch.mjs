@@ -10,7 +10,7 @@ import {
 } from './common.mjs';
 import { PNG } from 'pngjs';
 import { cachedFetch, readObject } from './cache.mjs';
-import { category, exclusion, qualityIssue } from './corpus.mjs';
+import { category, corpusPolicy, exclusion, qualityIssue } from './corpus.mjs';
 import { fetchComponents } from './components.mjs';
 
 const opts = options();
@@ -57,7 +57,7 @@ const entries = await mapLimit(selected, 2, async (card, index) => {
 });
 const snapshot = {
   schemaVersion: 1,
-  policy: 'ordinary-paper-v2',
+  policy: corpusPolicy(cards),
   set: opts.set,
   query,
   createdAt: new Date().toISOString(),

@@ -1,4 +1,14 @@
 /** Treatment selection is explicit. Ordinary basic lands and planeswalkers stay in the denominator. */
+export function corpusPolicy(cards) {
+  // Keep existing modern snapshot identities when the expanded policy changes
+  // neither eligibility nor supported layout. Old/white borders use the new policy.
+  return cards.some(
+    (card) => ['1993', '1997'].includes(card.frame) || card.border_color === 'white',
+  )
+    ? 'ordinary-paper-v2'
+    : 'ordinary-paper-v1';
+}
+
 export function exclusion(card) {
   if (card.lang !== 'en' || !card.games?.includes('paper')) return 'not-English-paper';
   if (card.digital || card.oversized) return 'digital-or-oversized';
