@@ -2,6 +2,14 @@ import path from 'node:path';
 import { cacheRoot, readJson } from './common.mjs';
 import { readObject } from './cache.mjs';
 
+/** Source artifacts, not printed characters. Retain rawOriginalText for audits. */
+export function normalizePrintingText(text) {
+  return text
+    .replace(/\\r(?=\n|$)/g, '')
+    .replace(/\r\n/g, '\n')
+    .replace(/\bocT\b/g, '{T}');
+}
+
 /** Exact printing IDs only; names alone cannot distinguish historical wording. */
 export function printingTextIndex(snapshot, data) {
   if (data.code.toLowerCase() !== snapshot.set.toLowerCase())
@@ -36,7 +44,7 @@ export function printingTextIndex(snapshot, data) {
       rawOriginalText: card.originalText,
       // Gatherer's legacy tilted-card tap code, verified against cached scans
       // of Fellwar Stone, Shaper Guildmage and Grindstone. Keep the raw source.
-      originalText: card.originalText.replace(/\bocT\b/g, '{T}'),
+      originalText: normalizePrintingText(card.originalText),
       // Retain for auditing only: this field has modern creature types in old sets.
       originalType: card.originalType ?? null,
     };

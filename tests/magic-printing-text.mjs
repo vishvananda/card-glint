@@ -36,6 +36,18 @@ const tapped = printingTextIndex(snapshot, {
 });
 assert.equal(tapped.cards['printing-a'].originalText, '{T}: Add {U} to your mana pool.');
 assert.equal(tapped.cards['printing-a'].rawOriginalText, 'ocT: Add {U} to your mana pool.');
+const escapedBreaks = printingTextIndex(snapshot, {
+  code: '4ED',
+  cards: [{ ...record, originalText: '+1: First ability.\\r\n−2: Second ability.' }],
+});
+assert.equal(
+  escapedBreaks.cards['printing-a'].originalText,
+  '+1: First ability.\n−2: Second ability.',
+);
+assert.equal(
+  escapedBreaks.cards['printing-a'].rawOriginalText,
+  '+1: First ability.\\r\n−2: Second ability.',
+);
 assert.equal(
   original.face.typeLine,
   entry.card.type_line,
