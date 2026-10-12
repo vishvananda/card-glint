@@ -17,6 +17,7 @@ import {
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintSetSymbol } from './canvas-text.js';
 import { paintRevisedCost } from './revised-mana.js';
+import { usesEarlyCredits, paintEarlyCredits } from './early-credits.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
 import {
@@ -193,6 +194,7 @@ export function paintRetroFace(
       );
   }
   if (revised && face.artist) paintRevisedCredits(c, face.artist);
+  else if (face.artist && usesEarlyCredits(face)) paintEarlyCredits(c, face.artist);
   else if (details) paintRetroCredits(c, face, details);
   else if (face.artist) {
     const [fx, fy, fw, fh] = retroPx(rect.footer);

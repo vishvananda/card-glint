@@ -1381,3 +1381,49 @@ sizes; this is not renderer submission time or GPU completion time.
 Check/build, strict native/WASM Clippy, package/browser/showcase, Magic and
 accuracy tests pass. The comparison against main includes reviewed mana examples
 without promoting their unreviewed body typography to scan-reviewed status.
+
+## Alpha and Unlimited credit placement
+
+The early-frame study now covers all 295 Alpha and 302 Unlimited printings.
+The accepted change enlarges the artist credit to 22.5px, restores its left
+anchor at x49 and alphabetic baseline at y631, and adds the printed © mark.
+It uses the existing MPlantin font with paired light/dark edges. Beta retains
+its previous painter until a separate transfer check.
+
+The [frozen candidate](fixtures/accuracy/early-lettering-candidate.json) was
+committed before opening the sixteen reserved title/credit crops. Credits pass
+on all thirteen reserved examples whose artist text matches the scan: five
+Alpha and eight Unlimited. Three Alpha source mismatches are excluded and
+recorded separately in the [transfer review](fixtures/accuracy/early-lettering-transfer.json).
+The same review rejects the title change despite aggregate overlap gains:
+several strokes look broken, individual titles regress, and Alpha's signed
+contrast correlation falls. Production titles are unchanged.
+
+| Set / tier          | Cards | Median credit F1 before → after | Gains > .02 | Regressions > .02 |
+| ------------------- | ----- | ------------------------------- | ----------- | ----------------- |
+| Alpha / inspect     | 295   | .386 → .631                     | 295         | 0                 |
+| Alpha / table       | 295   | .357 → .562                     | 294         | 0                 |
+| Unlimited / inspect | 302   | .426 → .626                     | 297         | 0                 |
+| Unlimited / table   | 302   | .391 → .576                     | 295         | 0                 |
+
+These full-corpus values are diagnostics, not certification that every artist
+credit matches its printing. [Alpha measurements](fixtures/accuracy/lea/early-credits-measurement.json)
+and [Unlimited measurements](fixtures/accuracy/2ed/early-credits-measurement.json)
+retain every pair. All pixels outside the credit area and the silhouette alpha
+are unchanged. All 64 development/reserved component rasters match the frozen
+prototype exactly. [Other-policy checks](fixtures/accuracy/early-credits-controls.json)
+verify complete PNG equality for 64 cards at both sizes, including Revised after
+extracting its unchanged lettering helper.
+
+Shared identity registration remains explicit. The eight Unlimited development
+outer frames are centered within .4px; fitting internal art ridges would move
+that correctly centered outer frame. The [frame review](fixtures/accuracy/early-frame-review.json)
+keeps the internal detector diagnostic because bevel/art peaks are ambiguous on
+several cards. Alpha's outer frame edge remains uncertain. No per-scan transform
+or coordinate adjustment is introduced. The paired audits run in Node; each took
+about 107 seconds with both sets being audited concurrently, including decoding
+and pixel invariants. This is CPU workload timing, not GPU completion time.
+
+The local `early-lettering/validation/index.html` preserves the rejected title
+experiment as well as the accepted credit candidate. `main-review/index.html`
+shows the production credit change against actual main with identical inputs.

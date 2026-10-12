@@ -18,6 +18,7 @@ import {
 } from './common.mjs';
 import { readPng, normalize, cropGray, savePng } from './pixels.mjs';
 import { compareRegion } from './metrics.mjs';
+import { compareLettering } from './lettering-metrics.mjs';
 import { regions } from './regions.mjs';
 import { mainPage } from './main-page.mjs';
 import { normalizedText } from './typography-metrics.mjs';
@@ -41,6 +42,20 @@ assert.equal(
 );
 const out = path.join(outputRoot, 'main-review');
 const selections = [
+  [
+    'lea',
+    'early-credits',
+    '189',
+    'The larger, left-aligned credit now includes the printed copyright mark and uses paired light/dark letter edges. These credit parameters passed reserved checks in Alpha and Unlimited. The title experiment was rejected and its previous painter is retained. Alpha frame edges and mana symbols still need work; body styling is unverified.',
+    ['footer'],
+  ],
+  [
+    '2ed',
+    'early-credits',
+    '248',
+    'The credit moves from a small centered line to the printed left anchor, size and baseline. Both renderers use identical printing-specific wording and existing art. This is a credit-only score using both light and dark boundaries; the artifact frame color, type wording and title shape remain review items.',
+    ['footer'],
+  ],
   [
     '3ed',
     'revised-mana',
@@ -223,7 +238,19 @@ const fontHashes = await Promise.all(
 for (const set of new Set(selections.map((s) => s[0]))) {
   const snapshot = await readJson(path.join(cacheRoot, 'sets', `${set}.json`));
   snapshot.components = [...snapshot.components, ...fontAssets];
-  const profile = await readJson(path.join(fixtureRoot, set, 'alignment.json'));
+  const early = ['lea', '2ed'].includes(set);
+  const earlyPlan = early
+    ? await readJson(path.join(fixtureRoot, 'early-lettering-plan.json'))
+    : null;
+  if (early)
+    assert.equal(earlyPlan.sets.find((s) => s.code === set).snapshotIdentity, snapshot.identity);
+  const profile = early
+    ? {
+        scope: 'component-trial',
+        ...earlyPlan.alignment,
+        frameFamilies: { 'retro-abu': { transform: earlyPlan.alignment.transform } },
+      }
+    : await readJson(path.join(fixtureRoot, set, 'alignment.json'));
   const entries = [];
   for (const [, run, number, note, metricRegions, bodyStudy] of selections.filter(
     (s) => s[0] === set,
@@ -232,6 +259,23 @@ for (const set of new Set(selections.map((s) => s[0]))) {
     const card = capture.results.find((c) => c.collectorNumber === number);
     assert.ok(card && !card.issue);
     let contentReview = null;
+    if (early && run === 'early-credits' && metricRegions.every((r) => r === 'footer')) {
+      const reviewFile = path.join(fixtureRoot, 'early-lettering-transfer.json');
+      const review = await readJson(reviewFile);
+      const selected = earlyPlan.sets
+        .find((s) => s.code === set)
+        .reserved.find((r) => r.id === card.id);
+      assert.ok(selected && review.reviewedCrops.some((r) => r.set === set && r.number === number));
+      assert.ok(!review.sourceExclusions.some((r) => r.id === card.id));
+      assert.equal(selected.referenceHash, card.images.reference.sha256);
+      assert.equal(selected.inputHash, card.inputHash);
+      contentReview = {
+        file: 'early-lettering-transfer.json',
+        sha256: hash(await readFile(reviewFile)),
+        regions: ['footer'],
+        reviewedInputHash: selected.inputHash,
+      };
+    }
     if (
       card.contentStatus !== 'scan-reviewed' &&
       set === '3ed' &&
@@ -380,15 +424,20 @@ for (const set of new Set(selections.map((s) => s[0]))) {
   for (const entry of entries) {
     assert.equal(entry.captures.main.browser, entry.captures.branch.browser);
     const scores = [];
-    for (const region of regions(entry.card).filter((r) => entry.metricRegions.includes(r.id))) {
+    const measuredRegions = early
+      ? [{ id: 'footer', rect: [42, 607, 347, 38] }]
+      : regions(entry.card).filter((r) => entry.metricRegions.includes(r.id));
+    for (const region of measuredRegions) {
       const target = cropGray(entry.aligned, region.rect),
         values = [];
       for (const side of ['main', 'branch']) {
         const image = normalize(await readPng(path.join(out, entry.images[side]))),
           crop = cropGray(image, region.rect);
         values.push(
-          compareRegion(target.gray, crop.gray, crop.width, crop.height, region.lightInk)
-            .edgeF1?.[1] ?? null,
+          early
+            ? compareLettering(target.gray, crop.gray, crop.width, crop.height).edgeF1
+            : (compareRegion(target.gray, crop.gray, crop.width, crop.height, region.lightInk)
+                .edgeF1?.[1] ?? null),
         );
       }
       scores.push({ region: region.id, rect: region.rect, values });
@@ -431,9 +480,9 @@ const report = {
   fontHashes,
   metricSource: await sourceHash(
     new URL('.', import.meta.url),
-    /^(?:compare(?:-worker)?|common|summary|alignment|frame-boundaries|pixels|edges|metrics|regions)\.mjs$/,
+    /^(?:compare(?:-worker)?|common|summary|alignment|frame-boundaries|pixels|edges|metrics|lettering-metrics|regions)\.mjs$/,
   ),
-  note: 'Selected examples with component-specific scan reviews, not an exhaustive main-branch ranking. Mana-only reviews do not certify body wording or styling. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
+  note: 'Selected examples with component-specific scan reviews, not an exhaustive main-branch ranking. Mana/credit-only reviews do not certify body wording or styling. Early credits use dual-polarity boundary F1; Alpha whole-frame alignment remains uncertain. Remaining soft-break differences, font weight, historic tap glyph, gray text-box bevel and set-symbol shape remain flagged. Identical per-card face inputs, cached artwork and frame bytes. Each revision uses its own unmodified font stylesheet and renderer. Fixed shared reference alignment; inspection tier only. Main font failures, if present, are recorded rather than silently repaired.',
   examples,
 };
 await writeJson(path.join(out, 'comparison.json'), report);

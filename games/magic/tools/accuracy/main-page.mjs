@@ -14,7 +14,7 @@ const sourceLabel = (c) => {
       : c.contentStatus === 'printing-reference'
         ? 'Printing-specific reference wording supplied to both renderers; paragraph styling and other fields still need scan review.'
         : 'Body wording is unreviewed Oracle text on both sides.';
-  return `${c.contentReview?.regions?.includes('mana') ? 'Mana cost checked against the scan. ' : ''}${wording}`;
+  return `${c.contentReview?.regions?.includes('mana') ? 'Mana cost checked against the scan. ' : ''}${c.contentReview?.regions?.includes('footer') ? 'Artist credit checked against the scan. ' : ''}${wording}`;
 };
 const score = (v) => (Number.isFinite(v) ? v.toFixed(3) : '—');
 export async function mainPage(report, dir) {
