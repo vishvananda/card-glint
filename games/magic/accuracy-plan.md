@@ -1692,6 +1692,25 @@ Paladin and the other changed-source input are excluded from paired aggregates.
 The newly centered flavor subset has 16 comparable inputs: inspect .435 → .588,
 table .394 → .560, with 15 gains and one decline over .02 at both tiers.
 
+The subsequent [isolated boundary audit](fixtures/accuracy/4ed/centering-boundary-measurement.json)
+resolves both flags. A Fourth-only 150-character gate (mana tokens count as one)
+returns Sisters of the Flame to left alignment: body F1 .367 → .629 inspect and
+.336 → .596 table. Of 374 unchanged-input pairs, only Sisters changes; the other
+373 body rasters remain identical, preserving the 16 reviewed centered examples.
+All 378 cards render without overflow. Deathgrip and Regeneration's reviewed
+activation colons were stranded in a study annotation file; promoting them to the
+canonical annotations restores their exact-wording corpus captures. Newly reviewed
+Brothers of Fire and Wall of Brambles receive their printed colons too. These four
+changed inputs are excluded from geometric deltas. Deathgrip's corrected absolute
+inspect body F1 is .547, with 5px p95 edge distance.
+
+The [frozen Fifth boundary sample](fixtures/accuracy/centering-length-boundary-plan.json)
+contains twelve nearest examples on either side of 150 characters, selected by
+color/artifact before viewing their scans. All twelve scans are left aligned.
+This rejects a cross-set transfer of the Fourth rule; it does not establish
+Fifth's own centering policy. The 150-character Fourth cutoff is an empirical
+approximation, not a recovered historical typesetting specification.
+
 On the single Tenth Edition Wrath development example, a fixed body crop and
 identity registration give edge F1 .204 → .337 and p95 edge distance 49.1 → 7.2px
 when switching from forced-left to automatic centering with identical words and
