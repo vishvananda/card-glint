@@ -11,8 +11,9 @@ references remain in coverage totals; they must not make a set appear smaller
 or improve its measured success rate.
 
 Arabian Nights and Antiquities are explicitly included. The cached English
-paper inventories contain 78 ordinary Arabian Nights cards and 100 ordinary
-Antiquities printings representing 85 distinct cards. Thus both clear 50
+paper inventories, now including printing variations explicitly, contain 92
+Arabian Nights printings representing 78 distinct cards and 102 Antiquities
+printings representing 85 distinct cards. Thus both clear 50
 regardless of whether printing variants are counted. Do not use Scryfall's
 unfiltered set count as the final eligibility test.
 
@@ -62,6 +63,27 @@ Existing evidence is a starting baseline, not automatic certification of every
 printing. Raw and normalized metrics must remain available. Where a common
 scale fails, retain the failure and diagnose anchor/asset/reference differences
 before attempting anisotropic correction. Do not optimize individual scans.
+
+### Inventory checkpoint (2026-10-12)
+
+`fixtures/accuracy/rollout-inventory.json` records the complete metadata
+inventory: 409 candidate sets examined, 272 admitted major sets and 72,998
+ordinary printings. There are 63 old-frame and 221 new-frame set groups,
+including twelve mixed sets. Enumeration is complete; these totals do not
+certify rendering or completion of a pass. Every group starts as not started.
+
+Keep 221 printings with unresolved frame effects in the major-set review count.
+MPS and BRR are separate classification-review sets because their premium
+product metadata does not reliably distinguish ordinary retro reprints from
+custom frames. Reference quality and adapter support never exclude a printing
+from the ordinary denominator. The ledger also retains the smaller-set queue.
+
+Reproduce the ledger with `node games/magic/tools/accuracy/rollout-inventory.mjs
+report`; source metadata and policy hashes are recorded. The first old-symbol
+baseline contains 85 cards from 17 sets, with printing IDs frozen in
+`fixtures/accuracy/old-symbol-survey-plan.json`. Next inspect historical
+monochrome rarity treatment, original-expansion symbols on Chronicles and
+missing glyph aliases before fitting size or placement.
 
 ### Pass 1: set symbols
 
