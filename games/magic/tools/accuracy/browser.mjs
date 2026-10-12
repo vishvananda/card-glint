@@ -4,7 +4,7 @@ import { readObject } from './cache.mjs';
 import { root } from './common.mjs';
 
 /** Local source runner: snapshots supply all external bytes; capture never downloads. */
-export async function openBrowser(snapshot, { fonts = true } = {}) {
+export async function openBrowser(snapshot, { fonts = true, sourceRoot = root } = {}) {
   const assets = [
     ...(snapshot.components ?? []),
     ...snapshot.entries.flatMap((e) => [e.reference, e.art]).filter(Boolean),
@@ -14,7 +14,7 @@ export async function openBrowser(snapshot, { fonts = true } = {}) {
   const faults = [];
   const server = await createServer({
     configFile: false,
-    root,
+    root: sourceRoot,
     server: { host: '127.0.0.1', port: 0 },
     plugins: [
       {

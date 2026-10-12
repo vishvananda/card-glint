@@ -1,6 +1,6 @@
 # Rendering accuracy review queue
 
-This is a working queue from the measured M21, M20, Mirage, Tempest and Fourth Edition sets, not
+This is a working queue from the measured M21, M20, Mirage, Tempest, Fourth/Fifth Edition and Revised sets, not
 an assertion that every supported frame has been evaluated. Special treatments
 remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
@@ -26,17 +26,17 @@ have different color/scan processing, which must not become a geometry penalty.
 
 ## Implementation and coverage gaps
 
-| Area                                                 | Current state                                                                                                                                                                                                   | Next action                                                                                                                                                                                                                |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Old-border basic lands                               | MIR/TMP now render the historical type line and centered mana sentence; all 40 improve, including 35 reserved cards. Other early sets still use the later large symbol.                                         | Transfer the printing policy only after reviewing other eras; track basic-land plate texture separately.                                                                                                                   |
-| Fourth-family headers and typography                 | All 378 Fourth Edition cards measured; all 357 confident nonland pairs improve in title, mana and footer. Type placement has 155 gains and 12 regressions; P/T placement and numeric stroke weight need review. | Isolate title/type/credit ink and fit shared font weight/width, then review numeric glyph weight and shape. Inspect the type regressions before expanding. Transfer the frozen header policy to another fourth-family set. |
-| Old-border ABU and Legends multicolor families       | Painter branches exist but lack calibrated accuracy evidence. Alpha has 295 cached printings and frozen metadata cohorts.                                                                                       | Calibrate independent frame landmarks and component windows before geometry changes. Alpha development examples show incorrect title/type ink treatment, credits and historical body presentation.                         |
-| Modern planeswalkers                                 | Both normal and taller rules-panel branches are captured in M21/M20. “Large” means the rules panel for more than three parsed rows, not oversized physical cards.                                               | Replace estimated row sizing with measured text and independently reviewed badge/loyalty regions.                                                                                                                          |
-| Saga, Class and leveler                              | Painter branches exist; the current reference adapter accepts only `normal` Scryfall layout and lacks dedicated region metrics.                                                                                 | Add explicit eligible layouts and asset routing, then independent windows and cross-set examples. Do not call these unsupported renderers merely because evaluation is missing.                                            |
-| Adventure, split and aftermath                       | Composition code exists, but multi-face reference/art selection and paired per-panel evaluation are missing from this pipeline.                                                                                 | Preserve printing identity and face ordering; add per-face art/cache records and panel metrics.                                                                                                                            |
-| Transform, modal double-faced, meld, flip and Battle | No verified dedicated rendering/evaluation contract in this pass. Unknown layouts can currently fall through to an ordinary frame.                                                                              | Inventory routing and implement explicit support or a reported unsupported result; do not silently claim ordinary-frame output is correct.                                                                                 |
-| 2003-era modern and future frames                    | Reference policy currently accepts only Scryfall frame values `1993`, `1997`, `2015`.                                                                                                                           | Distinguish unsupported frame geometry from unsupported image/reference metadata; add families deliberately.                                                                                                               |
-| Footer metadata and printed wording                  | MIR/TMP and Fourth Edition nonlands have reviewed legal defaults. Only nine Fourth Edition bodies/targets are reviewed; 369 remain Oracle diagnostics.                                                          | Review historical wording before scoring body typography. Fourth Edition lands still need their legal line and artist placement after calibration.                                                                         |
+| Area                                                 | Current state                                                                                                                                                                                                                                     | Next action                                                                                                                                                                                                                       |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Old-border basic lands                               | MIR/TMP now render the historical type line and centered mana sentence; all 40 improve, including 35 reserved cards. Other early sets still use the later large symbol.                                                                           | Transfer the printing policy only after reviewing other eras; track basic-land plate texture separately.                                                                                                                          |
+| Fourth-family headers and typography                 | All 378 Fourth Edition cards measured; all 357 confident nonland pairs improve in title, mana and footer. Type placement has 155 gains and 12 regressions. A natural-width stats policy now improves all 150 confident Fourth Edition stat boxes. | Isolate title/type/credit ink and fit shared font weight/width. Fifth Edition stats still need weight/width review; Revised uses different numeric ink treatment. Inspect type regressions before transferring the header policy. |
+| Old-border ABU and Legends multicolor families       | Painter branches exist but lack calibrated accuracy evidence. Alpha has 295 cached printings and frozen metadata cohorts.                                                                                                                         | Calibrate independent frame landmarks and component windows before geometry changes. Alpha development examples show incorrect title/type ink treatment, credits and historical body presentation.                                |
+| Modern planeswalkers                                 | Both normal and taller rules-panel branches are captured in M21/M20. “Large” means the rules panel for more than three parsed rows, not oversized physical cards.                                                                                 | Replace estimated row sizing with measured text and independently reviewed badge/loyalty regions.                                                                                                                                 |
+| Saga, Class and leveler                              | Painter branches exist; the current reference adapter accepts only `normal` Scryfall layout and lacks dedicated region metrics.                                                                                                                   | Add explicit eligible layouts and asset routing, then independent windows and cross-set examples. Do not call these unsupported renderers merely because evaluation is missing.                                                   |
+| Adventure, split and aftermath                       | Composition code exists, but multi-face reference/art selection and paired per-panel evaluation are missing from this pipeline.                                                                                                                   | Preserve printing identity and face ordering; add per-face art/cache records and panel metrics.                                                                                                                                   |
+| Transform, modal double-faced, meld, flip and Battle | No verified dedicated rendering/evaluation contract in this pass. Unknown layouts can currently fall through to an ordinary frame.                                                                                                                | Inventory routing and implement explicit support or a reported unsupported result; do not silently claim ordinary-frame output is correct.                                                                                        |
+| 2003-era modern and future frames                    | Reference policy currently accepts only Scryfall frame values `1993`, `1997`, `2015`.                                                                                                                                                             | Distinguish unsupported frame geometry from unsupported image/reference metadata; add families deliberately.                                                                                                                      |
+| Footer metadata and printed wording                  | MIR/TMP and Fourth Edition nonlands have reviewed legal defaults. Only nine Fourth Edition bodies/targets are reviewed; 369 remain Oracle diagnostics.                                                                                            | Review historical wording before scoring body typography. Fourth Edition lands still need their legal line and artist placement after calibration.                                                                                |
 
 Before expanding, follow the [component review plan](component-review-plan.md):
 independent component targets, multiple structural measurements, visual crop
@@ -49,3 +49,42 @@ the baseline; a landmark may be following nearby text. Keep the union of both
 sides' warnings when comparing versions. Maximum-overlap and minimum-distance
 component searches now expose competing peaks; agreement still needs an
 isolated foreground check before a shared placement change.
+
+## Stats transfer findings
+
+The centered-offset trial is retained in
+[Fifth Edition's first measurement](fixtures/accuracy/5ed/stats-measurement.json)
+as a failed wide-expression validation. The replacement
+[right-anchor study](fixtures/accuracy/4ed/stats-wide-plan.json) includes complete
+wide-expression windows and all three Fourth Edition wide cases. Positions stay
+shared; no card gets a fitted scan offset. Numeric font files and shadow assets
+remain unchanged.
+
+- Fourth Edition: the shared right edge fixes compressed expressions. Numeric
+  strokes and stars remain visibly heavier/different in some scan comparisons.
+- Fifth Edition: printed stats appear heavier than our regular numeric font.
+  Shapeshifter retains a width/shape mismatch after its right edge is corrected.
+  These cards are already seen development evidence, not fresh validation.
+- Revised: reserved crops reveal dark strokes with pale edges, unlike our light
+  fill. Four of six reserved cards have confident alignment; three improve and
+  Wall of Water regresses. Zombie Master and Primal Clay have frame-alignment
+  warnings. Light-ink-only scores cannot certify the different treatment.
+- Revised Serendib Efreet (`35415199-0f1d-4398-a48f-f78697a51105`): its reviewed
+  scan has a green frame with a blue mana cost; semantic color currently selects
+  `old/fourth/u.png`. This needs printing-specific frame selection, separate from
+  any asset replacement. The cached scan hash begins `d4df515ddc0674a4`.
+
+The full stats study retains Fourth/Fifth Edition placement and rejects Revised's
+transfer. Revised's old output is restored byte-for-byte across all 306 cards.
+Fifth Edition's two confident regressions are Keldon Warlord and Lhurgoyf; their
+larger/heavier printed stars need a shared font/width treatment, not individual
+position fixes. Revised has 61 alignment warnings among 105 stat boxes, so frame
+landmarks and printed ink treatment must be reviewed before further geometry.
+
+A direct comparison against `main` additionally flags Mirage's Mtenda Herder:
+body edge F1 falls from .473 to .177 despite restored italic styling and credits.
+The enlarged triptych shows heavier glyphs and different wrapping/spacing. Keep
+this visible on the comparison page and revisit the regular/italic font metrics;
+a line-count improvement alone is insufficient. Shaper Guildmage's set-symbol
+score also falls (.465 → .401); its white outline is restored, but the palm shape
+and surrounding frame contamination remain under review.

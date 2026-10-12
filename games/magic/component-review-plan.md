@@ -48,12 +48,26 @@ error. Enlarged scan/render crops exposed it. Inspect uncertainty; never read
 an ambiguous zero offset as evidence of correct placement. No single similarity score certifies a
 correct tap glyph, shadow, outline, legal line or corner radius.
 
-The full Fourth Edition search supplies a concrete next candidate: 88 of 150
-confidently aligned stat boxes have an unambiguous maximum-overlap peak at
-`dx=4, dy=3`. Across those 150 boxes, 73 have overlap and distance peaks more
-than 2px apart. This is a diagnostic observation, not a production correction
-or a fresh holdout result. A shared stats displacement/typography sweep should
-test it on reviewed development crops, then validate on a newly reserved set.
+The full Fourth Edition search found a repeated stats displacement at
+`dx=4, dy=3`. The initial shared shift improved ordinary expressions but failed
+on wide ones: Angry Mob and Leviathan in development, and Shapeshifter in the
+reserved Fifth Edition cohort. That failed trial remains archived. Its small
+stats window also cropped the left side of long expressions.
+
+The follow-up includes all three wide Fourth Edition expressions and measures
+their full width. Production-matched candidate crops test a shared right edge
+instead of a centered, width-constrained box. Eighteen development cards selected
+`right=451`, `yOffset=3`, retaining the existing font and shadow. Fourth Edition's
+printed Shapeshifter needs parentheses absent from Oracle. The new policy and
+wider metric windows are [frozen together](fixtures/accuracy/4ed/stats-wide-plan.json)
+before opening a fresh Revised transfer cohort. Previously viewed Fifth Edition
+cards now count as development/exploratory evidence.
+
+Include unusually wide content when selecting a cohort. Search position only
+after checking content, anchoring and compression; a higher overlap score for
+ordinary short text can conceal the wrong layout rule. Keep old score artifacts
+when changing windows, and re-score identical baseline pixels under the new
+metric definition.
 
 ## Next implementation steps, in order
 

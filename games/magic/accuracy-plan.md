@@ -740,3 +740,57 @@ benchmark or GPU-completion measurement. The uncached component search over
 169 scan/old/new triples, including 75 multi-disc rows; their median absolute
 pitch error fell from 1.5px to 0.5px. The other 191 cost rows remain uncertain or
 unmeasured, including alignment exclusions.
+
+## Natural-width stats and the main-branch comparison
+
+The [stats plan](fixtures/accuracy/4ed/stats-wide-plan.json) replaces the initial
+centered-offset trial with a shared right edge at 451px and a 3px downward shift.
+Wide expressions retain their natural width. Fourth Edition's subtractive
+Shapeshifter toughness includes its printed parentheses. The original failed
+trial remains archived; the new metric windows include the complete expression.
+
+[Paired measurements](fixtures/accuracy/3ed/stats-wide-measurement.json) cover
+all 1,133 Fourth Edition, Fifth Edition and Revised cards without capture failures.
+The inspect-tier results below exclude the union of alignment warnings:
+
+| Set            | Confident stat boxes | Median F1   | Gains / regressions over .02 | Decision                                    |
+| -------------- | -------------------- | ----------- | ---------------------------- | ------------------------------------------- |
+| Fourth Edition | 150 of 151           | .313 → .870 | 150 / 0                      | Retain shared anchor                        |
+| Fifth Edition  | 163 of 182           | .403 → .566 | 154 / 2                      | Retain; review numeric weight and stars     |
+| Revised        | 44 of 105            | .298 → .324 | 24 / 11                      | Reject transfer; restore previous placement |
+
+Fifth Edition's regressions are Keldon Warlord and Lhurgoyf. Shapeshifter also
+remains a width/shape review case. Revised uses dark numeric strokes with pale
+edges; light-ink scores cannot certify that treatment. Only four of its six
+reserved examples have confident alignment, with three gains and one regression.
+The [visual review](fixtures/accuracy/3ed/stats-wide-review.json) records the
+reference hashes and next experiments. No per-card offsets were introduced.
+
+All 1,133 pairs preserve every pixel outside the expanded stats window at both
+tiers, and 48 MIR/TMP/M21 regression examples are byte-identical. After rejecting
+Revised, [adoption checks](fixtures/accuracy/3ed/stats-wide-adoption.json) verify
+all 306 restored cards match their original baseline exactly; 18 Fourth Edition
+and six Fifth Edition examples still match the measured candidate. Both tiers
+are checked. Existing frame assets and numerical font sources are retained.
+
+The local `main-review/index.html` compares the actual `main` commit `0b0d408`
+with the current branch, using identical inputs and cached art. It includes five
+improvement examples and a clearly labeled Mtenda Herder typography regression.
+Each revision uses its original font stylesheet; main's failed italic face is
+recorded and its fallback is preserved. [Source hashes and scores](fixtures/accuracy/main-comparison.json)
+are committed; PNGs remain local. Reproduce with an isolated checkout of `main`
+and its dependencies available:
+
+```sh
+node games/magic/tools/accuracy/main-examples.mjs ../card-glint-main
+```
+
+The page supports full-card, header, rules and footer views. The separate
+`3ed/stats-wide/stats.html` retains the rejected Revised candidate, explicitly
+labeled, alongside the Fourth/Fifth Edition improvements. Archived run names
+must not be overwritten when capturing a later renderer revision.
+
+Unlimited's 302 printings are cached for the early-frame follow-up. Its cohorts
+were selected before viewing its scans. Basic-land names repeat; Keldon Warlord
+was subsequently viewed in Fifth Edition and is also excluded from any fresh-name
+subtotal. These exposures are recorded in its cohort fixture.
