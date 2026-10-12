@@ -839,6 +839,69 @@ try {
     const { composeCardTexture, cardTextureKey, faceSetSymbol } = await import(
       '/magic-presentation.js'
     );
+    // The real frame loader downsizes its bitmaps. Bevel correction must
+    // preserve shadow locations and the paper center at both tiers.
+    for (const decodedWidth of [750, 300]) {
+      const source = document.createElement('canvas');
+      source.width = decodedWidth;
+      source.height = decodedWidth * 1.4;
+      const ink = source.getContext('2d');
+      ink.scale(source.width / 488, source.height / 680);
+      ink.fillStyle = '#777';
+      ink.fillRect(0, 0, 488, 680);
+      ink.fillStyle = '#aaa';
+      ink.fillRect(52, 406, 386, 197);
+      ink.fillStyle = '#ccc';
+      ink.fillRect(52, 406, 386, 6);
+      ink.fillRect(432, 406, 6, 197);
+      ink.fillStyle = '#666';
+      ink.fillRect(52, 406, 6, 197);
+      ink.fillRect(52, 597, 386, 6);
+      // An asymmetric shadow on the left must stay on the left at this height.
+      ink.fillStyle = '#222';
+      ink.fillRect(52, 480, 6, 10);
+      const frame = await createImageBitmap(source);
+      for (const tier of ['inspect', 'table']) {
+        const canvas = await composeCardTexture(
+          {
+            face: {
+              name: '',
+              typeLine: '',
+              colors: ['W', 'B'],
+              frameStyle: 'retro',
+              setCode: 'tmp',
+            },
+            printingId: null,
+            printedImage: null,
+          },
+          tier,
+          new AbortController().signal,
+          {
+            loadImages: async (urls) => ({
+              images: new Map(urls.filter((u) => u?.endsWith('/m.png')).map((u) => [u, frame])),
+              dispose() {},
+            }),
+          },
+        );
+        const c = canvas.getContext('2d');
+        const red = (x, y) =>
+          c.getImageData((x * canvas.width) / 488, (y * canvas.height) / 680, 1, 1).data[0];
+        const center = red(240, 500);
+        if (
+          Math.abs(center - 170) > 3 ||
+          red(55, 500) < center + 5 ||
+          red(240, 600) < center + 5 ||
+          red(435, 500) > center - 15 ||
+          red(240, 409) > center - 15
+        )
+          throw Error(`Gold bevel failed with resized bitmap: ${decodedWidth}, ${tier}`);
+        if (red(55, 485) > red(55, 470) - 20)
+          throw Error('Bevel correction moved the original shadow texture');
+        canvas.width = canvas.height = 0;
+      }
+      frame.close();
+      source.width = source.height = 0;
+    }
     // A wide glyph inside a square SVG viewport must retain its visible size.
     // Synthetic padded art exercises the complete painter without remote assets.
     for (const [setCode, customSymbol] of [

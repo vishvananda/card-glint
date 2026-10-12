@@ -1,3 +1,4 @@
+import { paintRetroGoldBevel } from './retro-gold-bevel.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -65,6 +66,7 @@ export function paintRetroFace(
     c.save();
     c.filter = retroFrameFilter(face);
     c.drawImage(frame, ...retroPx(rect.frame));
+    if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c);
     c.restore();
   }
   if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {

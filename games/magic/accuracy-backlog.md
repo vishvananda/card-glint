@@ -480,3 +480,63 @@ at both tiers; this does not certify every symbol or every card in those sets.
   `node games/magic/tools/accuracy/flavor-land-study.mjs compare`. Comparisons
   read saved layouts/PNGs without Chromium. The local review page shows scans,
   before/after renders and optional normalized red/green overlays.
+
+### Shared text-alignment review browser (after the set passes)
+
+User priority: finish the old/new set passes before building this service. Keep
+its application, deployment and database outside this library repository.
+
+- Queue the worst **text alignment** results, separating different wording,
+  unavailable references and renderer overflow from actual placement errors.
+  Use region scores and collision flags, not a whole-card color error ranking.
+- Show the printing scan, original reconstruction and optional Oracle version,
+  with frame-normalized red/green overlays. Keep raw scan view available.
+- Provide small reversible adjustments for left/right/top/bottom margins, text
+  width or horizontal scale, font size, line spacing, paragraph gap and gap
+  before flavor text. Expose these as separate controls so a width error cannot
+  silently become a size change. Include reset, keyboard nudges and before/after.
+- Save append-only review observations: printing ID, set/frame/material,
+  reference and art hashes, renderer/config version, original/Oracle source
+  identity, frozen frame transform, starting settings, proposed deltas,
+  resulting line geometry/scores, reviewer and confidence. Preserve disagreements
+  and stale reviews when data or rendering changes. Do not overwrite scans.
+- Treat per-card slider values as observations for shared calibration. Fit robust
+  frame/set/material policies using a calibration partition, then validate on
+  held-out cards and other sets with the same frame. Do not ship individual
+  per-scan/per-card layout adjustments or refit scan alignment to the text.
+- Start with a small local database and the existing local review browser; choose
+  shared hosting, authentication and reviewer access when deployment work begins.
+  Accepted policies should export as versioned pack configuration plus measured
+  evidence and a reviewed commit, not become live unreviewed renderer defaults.
+
+### Gold paper bevel and printed credit (v57)
+
+- The historical survey has 25 scans across 13 sets. The checked Ice Age,
+  Alliances, Mirage, Visions, Tempest, Stronghold, Invasion, Planeshift,
+  Apocalypse, Odyssey, Scourge and Time Spiral timeshifted examples share
+  light left/bottom and dark top/right paper bevels. Legends has a separate
+  paper treatment. No date transition was found in this sample.
+- The existing seventh-family `m.png` has reversed lighting. Lighten the left
+  and bottom facets and darken the top and right facets in place during face
+  preparation. Keep the baked shadow texture at its original coordinates;
+  rotating the rim moves those shadows. Center texture, keyline and geometry
+  are unchanged. No new asset, decode or readback enters the render loop.
+- Audit: 45 Mirage/Tempest gold cards and 10 monocolor controls. Forty-four
+  gold frames changed; all changes stay within the bevel or separately reviewed
+  credit. Controls are pixel-identical at inspect and table sizes. All 176
+  inspected gold edges previously had reversed contrast; all 176 now match the
+  scan direction. Highlight strength and texture remain on the HSB/asset list.
+  Table edges also match, but their tiny rasterized keyline makes polarity a
+  diagnostic rather than an acceptance criterion. Synthetic asymmetric shadow
+  checks cover both tiers and two decoded asset sizes.
+- Wellspring is retained as an input/adapter review item: its original
+  `Enchant Land` label selects a land frame in the historical asset heuristic.
+  Exclude it from bevel certification, not the coverage denominator. Preserve
+  semantic card kind when restoring original type wording in that adapter.
+- Selenia's reviewed printed artist credit is `Matthew Wilson`. Both cached
+  Scryfall and MTGJSON return `Matthew D. Wilson`; a scan-hash-bound artist
+  annotation now preserves the printing without changing artist identity.
+- Evidence: `fixtures/accuracy/retro-bevel-{history,plan,measurement}.json`.
+  The local gallery includes Selenia and Asmira before/after plus the history
+  sheet. Bevel metrics use signed local contrast and distinguish missing or
+  uncertain keylines; they do not fit scan transforms to individual components.
