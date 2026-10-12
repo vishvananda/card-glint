@@ -1849,3 +1849,12 @@ were checked against the cached scans and recorded as hash-bound partial
 annotations, not full rules certification. Both sides of the final M15 comparison
 use these corrections: the old renderer was recaptured at `08fa0e5`. Earlier M15
 reports containing the source artifacts are diagnostic history only.
+
+The subsequent [one-pixel type-strip follow-up](fixtures/accuracy/planeswalker-type-lowered-plan.json)
+lowers the strip again after user visual review. All 70 inputs and measured
+ability layouts are identical to the preceding pass, and all 70 render without
+overflow. The [M21/M20 follow-up](fixtures/accuracy/walker-type-lowered-development-measurement.json)
+and [M15/WAR follow-up](fixtures/accuracy/walker-type-lowered-set-transfer-measurement.json)
+retain the unchanged baseline and registration. Inspect type-strip F1 is now
+.466 and .465 respectively; the type/registration review flag remains open.
+The local comparison displays this latest version.

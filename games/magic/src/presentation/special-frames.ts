@@ -98,7 +98,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       title: [0.05669, 0.03375, 0.88662, 0.05737],
       type: [
         0.05669 + 1.5 / FACE_WIDTH,
-        (large ? 0.49044 : 0.55793) + 3 / FACE_HEIGHT,
+        (large ? 0.49044 : 0.55793) + 4 / FACE_HEIGHT,
         0.88662,
         0.05737,
       ],
