@@ -43,6 +43,30 @@ const out = path.join(outputRoot, 'main-review');
 const selections = [
   [
     '3ed',
+    'revised-large',
+    '126',
+    'The large centered rules policy restores all five printed lines and their endings. Its candidate was frozen before this card was opened for the current study. Original type wording and exact font strokes still need review.',
+    ['body'],
+    'large-body',
+  ],
+  [
+    '3ed',
+    'revised-large',
+    '113',
+    'Larger centered rules with balanced lines now match all five printed lines. Both renderers receive the same original wording; fixed frame alignment and existing assets are preserved. Font strokes still differ.',
+    ['body'],
+    'large-body',
+  ],
+  [
+    '3ed',
+    'revised-large',
+    '1',
+    'A five-line large passage was previously missed by the 100-character cutoff. Shared measured fitting restores the printed word-line endings. Type wording remains modern and is not part of this body score.',
+    ['body'],
+    'large-body',
+  ],
+  [
+    '3ed',
     'revised-frame',
     '147',
     'Dense Revised text matches all seven printed lines and their endings. Both renderers now receive the reviewed Enchant Creature type. The title uses thin light/dark edges, and the larger illustrator credit is left-aligned with ©. Mana shapes, type ink and frame texture remain review items. Body classification was audited after refinement; lettering passed separate frozen validation.',
