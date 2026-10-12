@@ -144,11 +144,21 @@ export function paintFittedText(
   width: number,
   size: number,
   bold = false,
+  widthScale = 1,
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   context.save();
   context.font = `${bold ? 'bold ' : ''}${size}px "CardRenderer MTG Beleren", Georgia`;
   const measured = context.measureText(text).width;
+  // A long type already uses the available width. Expanding it would force a
+  // smaller font height without gaining any horizontal space.
+  if (widthScale > 1 && measured * widthScale > width) widthScale = 1;
+  if (widthScale !== 1) {
+    context.translate(x, 0);
+    context.scale(widthScale, 1);
+    x = 0;
+    width /= widthScale;
+  }
   if (measured > width) {
     size = Math.max(size * 0.78, (size * width) / measured);
     context.font = `${bold ? 'bold ' : ''}${size}px "CardRenderer MTG Beleren", Georgia`;

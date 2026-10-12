@@ -2322,3 +2322,45 @@ frozen candidate template retain the results. Do not promote that rule yet.
 Next separate actual line widths, paragraph baselines and bottom/stat clearance;
 test margin changes without changing the font size. The local comparison's
 “Dense-text trial” remains an explicitly experimental view.
+
+### Window and type-width pass (v55)
+
+The [frozen selection](fixtures/accuracy/normal-window-plan.json) covers 167
+ordinary cards across WAR, M15, M19, M20 and M21 at both raster tiers. Art now
+has a separate inner aperture (4.5px inset per side) and a 1.5px black rim;
+previous painting covered that rim. Type lettering expands 2% where it fits,
+while already width-fitted lines preserve their font height. Modern corners
+use a 0.045 radius in card widths; historical corners retain 0.058. The Canvas
+and GPU policies agree, including art/finish apertures.
+
+Normalized inspect art edge F1 medians improve: WAR .400→.766, M15 .473→.835,
+M19 .492→.855, M20 .425→.718 and M21 .554→.838. There are 165 gains above .02
+and no inspect art regressions. Type medians improve in all five sets; M20
+Skyknight Vanguard retains a small inspect regression. These are component
+overlap scores, not percentages of total card fidelity. The reports retain
+raw scores, both raster tiers and all regressions.
+
+The 1.5px horizontal frame inset preserves height and is enabled only for the
+four measured sets WAR/M15/M19/M20. M21 rejects it: its rules paper is wider in
+the reference cohort. Unknown sets keep the existing panel width pending the
+release-era study. Do not infer a universal historical cutoff from M21 alone.
+Land split-color frames and several colored bevels still regress in border
+strips; retain these as asset/geometry review items, rather than hiding them
+behind the improving median.
+
+`normal-window-study.mjs SET capture` captures the current painter; omit
+`capture` for CPU-only re-scoring. `baseline PATH_TO_BASELINE_CHECKOUT` renders
+the frozen v54 baseline with a required source hash. `window-geometry.mjs`
+measures paired edges and separates width errors from translation. Tests cover
+known translations, changed widths, tone/grain and absent edges.
+
+The [Revised](fixtures/accuracy/old-window-3ed-measurement.json),
+[Mirage](fixtures/accuracy/old-window-mir-measurement.json) and
+[Tempest](fixtures/accuracy/old-window-tmp-measurement.json) audits cover another
+61 cards without changing their rendering. They retain raw and existing frozen
+set/frame transforms. Unreviewed type wording is explicitly uncertified:
+Blue Elemental Blast still has `Instant` in the capture input while its scan
+says `Interrupt`. Type overlap cannot certify typography until this source
+mismatch is corrected. Zombie Mob, Steal Enchantment and Selenia expose body
+font/line-break differences; old art borders also need separate left/right
+inspection. Reproduce with `old-window-audit.mjs SET capture`.

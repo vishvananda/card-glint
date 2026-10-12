@@ -1,4 +1,5 @@
 import { isRetro, retroRects } from './retro-frame.js';
+import { NORMAL_FRAME_GEOMETRY } from './normal-frame-geometry.js';
 import {
   FACE_RECTS,
   FACE_WIDTH,
@@ -134,7 +135,15 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       rules: [0.052, 0.67, 0.896, 0.29],
       footer: [0, 1, 0, 0],
     };
-  return FACE_RECTS;
+  return {
+    ...FACE_RECTS,
+    art: [
+      FACE_RECTS.art[0] + NORMAL_FRAME_GEOMETRY.artInset / FACE_WIDTH,
+      FACE_RECTS.art[1],
+      FACE_RECTS.art[2] - (2 * NORMAL_FRAME_GEOMETRY.artInset) / FACE_WIDTH,
+      FACE_RECTS.art[3],
+    ],
+  };
 }
 /** Approximate geometry for hosts without a measurement context and the Saga painter.
  * The planeswalker canvas painter uses measured planeswalkerRuleRows instead. */

@@ -414,3 +414,17 @@ at both tiers; this does not certify every symbol or every card in those sets.
   additional dense cards. Review those failures and isolate margin/fitter
   effects before shipping a text-length rule. The local overlay has raw/aligned,
   red/green and before/current/trial controls for this inspection.
+- Window pass v55: shared modern art aperture, visible inner rim, narrower type
+  lettering deficit and excessive corner radius corrected across five measured
+  sets. Rules-panel narrowing transfers to WAR/M15/M19/M20, but M21 rejects it.
+  Check Ikoria, Zendikar Rising and later releases before inferring an era boundary.
+- Retain border-strip regressions: split-color lands (Cinder Barrens, Caves of
+  Koilos, Bloodfell Caves) need their printed frame coloration/inner bevels;
+  WAR Ashiok's Skulker/Krenko/Roalesk and M20 Gargos/Risen Reef need edge review.
+  M20 Skyknight Vanguard has a small type-width regression; long fitted types
+  now keep their old font height. All per-card scores remain in window reports.
+- Old-border overlap audit: 61 Revised/Mirage/Tempest cards. Resolve unreviewed
+  historical type inputs before interpreting type scores (e.g. Interrupt vs
+  Instant). Review Zombie Mob's wrapping, Steal Enchantment's flavor layout and
+  Selenia's body size/line breaks. Existing set-level scan transforms help some
+  edges and worsen others; validate independent anchors before replacing them.

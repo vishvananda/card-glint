@@ -1,3 +1,5 @@
+import { faceCornerRadius } from './face-silhouette.js';
+import { NORMAL_FRAME_GEOMETRY, normalFrameInset } from './normal-frame-geometry.js';
 import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
@@ -20,7 +22,6 @@ import {
   cardStock,
   faceStats,
   FACE_HEIGHT,
-  FACE_CORNER_RADIUS,
   FACE_RECTS,
   FACE_TEXT,
   FACE_WIDTH,
@@ -100,7 +101,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v54',
+    'canvas-face-v55',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -240,7 +241,7 @@ export async function composeCardTexture(
             plateUrl ? loaded.images.get(plateUrl) : undefined,
             input.statusLayout === 'inspect' || tier === 'inspect',
           );
-          roundCanvasSilhouette(context);
+          roundCanvasSilhouette(context, input.face);
           return canvas;
         }
       } finally {
@@ -272,7 +273,7 @@ export async function composeCardTexture(
         plateUrl ? loaded.images.get(plateUrl) : undefined,
         input.statusLayout === 'inspect' || tier === 'inspect',
       );
-      roundCanvasSilhouette(context);
+      roundCanvasSilhouette(context, input.face);
       return canvas;
     } finally {
       loaded.dispose();
@@ -284,7 +285,7 @@ export async function composeCardTexture(
 }
 
 /** Apply the silhouette after painting so a complex clip cannot alter interior antialiasing. */
-function roundCanvasSilhouette(context: CanvasRenderingContext2D) {
+function roundCanvasSilhouette(context: CanvasRenderingContext2D, face: RenderedCardInput) {
   context.save();
   context.setTransform(
     context.canvas.width / FACE_WIDTH,
@@ -300,7 +301,7 @@ function roundCanvasSilhouette(context: CanvasRenderingContext2D) {
   context.filter = 'none';
   context.fillStyle = '#000';
   context.beginPath();
-  context.roundRect(0, 0, FACE_WIDTH, FACE_HEIGHT, FACE_CORNER_RADIUS * FACE_WIDTH);
+  context.roundRect(0, 0, FACE_WIDTH, FACE_HEIGHT, faceCornerRadius(face) * FACE_WIDTH);
   context.fill();
   context.restore();
 }
@@ -449,7 +450,7 @@ export function paintAssembledFace(
   context.fillRect(...px(rects.art));
   const frame = images.get(assets.frame);
   if (frame && kind === 'normal' && !panel)
-    paintFrame(context, frame, profile.legendary, rects.frame, true);
+    paintFrame(context, frame, profile.legendary, rects.frame, true, normalFrameInset(face));
   if (underArt) {
     context.save();
     context.beginPath();
@@ -458,6 +459,12 @@ export function paintAssembledFace(
     context.resetTransform();
     context.drawImage(underArt, 0, 0, context.canvas.width, context.canvas.height);
     context.restore();
+  }
+  if (kind === 'normal' && !panel) {
+    const [ax, ay, aw, ah] = px(rects.art),
+      rim = NORMAL_FRAME_GEOMETRY.artRim;
+    context.fillStyle = '#090806';
+    context.fillRect(ax - rim, ay, aw + 2 * rim, ah);
   }
   paintIllustration(context, face, images, px(rects.art), layer);
   if (planeswalker) paintPlaneswalkerPaper(context, face);
@@ -570,6 +577,8 @@ export function paintAssembledFace(
     typeCenter,
     typeWidth,
     FACE_TEXT.typeFont * textScale,
+    false,
+    kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
   );
   if (setIcon) {
     const scale = Math.min(
@@ -668,10 +677,14 @@ function paintFrame(
   legendary: boolean,
   rect: FaceRect = FACE_RECTS.frame,
   expandRulesTop = false,
+  horizontalInset = 0,
 ) {
-  const [x, y, width, height] = pixels(rect);
-  const sourceHeight = Math.min(image.height, (height * image.width) / width);
-  const renderedHeight = (sourceHeight * width) / image.width,
+  const [originalX, y, originalWidth, height] = pixels(rect);
+  const inset = horizontalInset,
+    x = originalX + inset,
+    width = originalWidth - 2 * inset;
+  const sourceHeight = Math.min(image.height, (height * image.width) / originalWidth);
+  const renderedHeight = (sourceHeight * originalWidth) / image.width,
     scale = context.getTransform().a;
   // Raise only the asset band containing the rules box's upper inset. The
   // bottom edge and all text retain their coordinates. Even-pixel clip seams
