@@ -633,3 +633,41 @@ its application, deployment and database outside this library repository.
   `fixtures/accuracy/land-paper-{plan,measurement}.json`; original source assets
   and the pale-paper diagnostic remain in `land-paper-review.json`. Comparison
   uses cached PNGs without Chromium; runtime painting needs no pixel readback.
+
+### Remaining dual-land palettes and neutral land material (v64)
+
+- Extend the paper correction to all ten dual-color palettes. The eight new
+  palettes share five color tints; the previously reviewed BR/WB values stay
+  unchanged. Frame asset keys use sorted WUBRG names, while their visible halves
+  follow the two-color wheel order: WG → GW, WR → RW, UG → GU. This agrees with
+  [Wizards' explanation of two-color mana order](https://magic.wizards.com/en/news/making-magic/split-odds-ends-2006-04-17).
+  Mana costs keep their supplied sequence; asset lookup does not sort costs.
+- Detection Tower's blue paper and pale gray rails came from reusing the
+  artifact frame image. For ordinary neutral lands, desaturate that image and
+  use separate shared brightness factors for its rails and paper. Preserve
+  source texture, alpha and shadow placement; surrounding land background,
+  plates, art, typography and nonland artifact frames stay unchanged. This is
+  composition-time filtering, with no extra decode or pixel readback.
+- Freeze 32 printings: eleven calibration lands (eight M21 duals, M21 Animal
+  Sanctuary, M15 Battlefield Forge and M19 Detection Tower), eleven reserved
+  lands (eight FDN duals plus FDN Soulstone Sanctuary, M15 Radiant Fountain and
+  M20 Cryptic Caves), and ten controls (four BR/WB lands and six nonlands).
+  Every corrected card improves its broad paper-patch RGB error at both
+  rendering sizes. Inspection mean error falls 75.08 → 7.21 on calibration
+  cards and 66.09 → 11.85 on reserved cards. All ten controls and every text
+  layout remain identical; no pixels change outside the permitted materials.
+- Neutral-land rail patches also improve on all five printings, including
+  Detection Tower (141.33 → 12.76). These narrow raw-scan patches are sensitive
+  to registration and are only diagnostic; full-card visual review confirms
+  the direction. Color metrics remain Euclidean sRGB patch distance, not
+  Delta E, alignment accuracy or an overall card score. No scan-specific tint.
+- Reproduce with `land-palette-correction.mjs prepare|before|after` and
+  `land-palette-audit.mjs` in `tools/accuracy/`; plan and measurements are
+  `fixtures/accuracy/land-palette-{plan,measurement}.json`. Preparation and
+  baseline capture refuse to overwrite a frozen study with another revision.
+  Cached PNG comparison does not require Chromium. Local review includes all
+  32 examples with full-card, close-up and red/green overlay modes.
+- Still flagged: source paper texture is too mottled, colored rail saturation
+  differs from scans, and per-set tone/gradient transitions need the later HSB
+  pass. Single-color, rainbow and special land treatments were not validated
+  by this round. This targeted correction does not complete the set passes.

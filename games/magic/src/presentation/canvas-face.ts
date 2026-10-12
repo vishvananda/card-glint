@@ -1,6 +1,6 @@
 import { faceCornerRadius } from './face-silhouette.js';
 import { NORMAL_FRAME_GEOMETRY, normalFrameInset } from './normal-frame-geometry.js';
-import { paintLandPaper } from './land-paper.js';
+import { paintLandFrame, paintLandPaper } from './land-paper.js';
 import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
@@ -102,7 +102,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v62',
+    'canvas-face-v64',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -451,8 +451,11 @@ export function paintAssembledFace(
   context.fillRect(...px(rects.art));
   const frame = images.get(assets.frame);
   if (frame && kind === 'normal' && !panel) {
-    paintFrame(context, frame, profile.legendary, rects.frame, true, normalFrameInset(face));
-    paintLandPaper(context, profile, normalFrameInset(face));
+    const inset = normalFrameInset(face);
+    paintLandFrame(context, profile, inset, () =>
+      paintFrame(context, frame, profile.legendary, rects.frame, true, inset),
+    );
+    paintLandPaper(context, profile, inset);
   }
   if (underArt) {
     context.save();
