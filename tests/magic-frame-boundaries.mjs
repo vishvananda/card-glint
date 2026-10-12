@@ -4,6 +4,7 @@ import {
   boundaryDifference,
 } from '../games/magic/tools/accuracy/frame-boundaries.mjs';
 import { alignmentDiagnostic } from '../games/magic/tools/accuracy/alignment.mjs';
+import { measureEarlyArt } from '../games/magic/tools/accuracy/early-frame-landmarks.mjs';
 
 // A pale textured frame with a thin keyline and much stronger inner bevels.
 // A known movement must stay observable despite brightness, grain and content.
@@ -82,6 +83,44 @@ for (const context of [{ ...face, setCode: '4ed' }, { ...face, borderColor: 'bla
   );
 }
 assert.throws(() => measureWhiteFrame({ width: 10, height: 10 }), /canonical/);
+// Outer art keylines must survive a stronger neighboring art edge. Unlike a
+// whole-frame transform, these measurements may be incoherent and only diagnose.
+function earlySample(dx = 0, dy = 0, brightness = 1) {
+  const image = { width: 488, height: 680, data: new Uint8Array(488 * 680 * 4) };
+  for (let y = 0; y < 680; y++)
+    for (let x = 0; x < 488; x++) {
+      const xx = x - dx,
+        yy = y - dy;
+      const outer = Math.min(
+        Math.abs(xx - 52),
+        Math.abs(xx - 436),
+        Math.abs(yy - 66),
+        Math.abs(yy - 376),
+      );
+      const inner = Math.min(
+        Math.abs(xx - 58),
+        Math.abs(xx - 430),
+        Math.abs(yy - 72),
+        Math.abs(yy - 370),
+      );
+      const value = Math.round((outer <= 1 ? 70 : inner <= 1 ? 0 : 220) * brightness);
+      image.data.set([value, value, value, 255], (y * 488 + x) * 4);
+    }
+  return image;
+}
+const earlyOriginal = measureEarlyArt(earlySample());
+for (const [dx, dy] of [
+  [0, 0],
+  [2, -2],
+  [-2, 2],
+]) {
+  const moved = measureEarlyArt(earlySample(dx, dy, 0.7));
+  const difference = boundaryDifference(earlyOriginal, moved);
+  assert.equal(difference.coherent, true);
+  assert.ok(Math.abs(difference.centerDelta[0] - dx) < 0.2);
+  assert.ok(Math.abs(difference.centerDelta[1] - dy) < 0.2);
+}
+assert.ok(measureEarlyArt(sample({ blank: true })).every((p) => p.detected === null));
 console.log(
   'Outer frame detector: known translations, brightness, grain, competing inner bevels and missing boundaries passed.',
 );

@@ -1,0 +1,5745 @@
+{
+  "schemaVersion": 1,
+  "detector": "abu-art-keyline-v1",
+  "detectorHash": "cb70c23b77ada6a12be600cc9b981ed4999b4670032677244699743ff185a922",
+  "proposedFit": {
+    "transform": {
+      "tx": 0.8423586564253124,
+      "ty": 1.3105379638098866,
+      "scale": 1.000668376848597,
+      "rotation": -0.0006307724730162012
+    },
+    "status": "calibrated",
+    "proposedTransform": {
+      "tx": 0.8423586564253124,
+      "ty": 1.3105379638098866,
+      "scale": 1.000668376848597,
+      "rotation": -0.0006307724730162012
+    },
+    "residualPx": 0.2036313330021979,
+    "landmarkCount": 12,
+    "sampleCount": 12
+  },
+  "adoptedTransform": {
+    "tx": 0,
+    "ty": 0,
+    "scale": 1,
+    "rotation": 0
+  },
+  "decision": "Keep shared identity. The internal fit improves some art-border scores but shifts the independently centered Unlimited outer frame. The art detector is diagnostic only: competing bevel/art peaks make several black, red and land examples incoherent. Do not promote its per-card coordinates to scan transforms or confident registration labels.",
+  "alphaLimitation": "Black stock exposes plate edges outside the intended frame; white-frame detector cannot certify Alpha outer registration. Inspect Alpha gains directly and retain whole-frame uncertainty.",
+  "rows": [
+    {
+      "set": "lea",
+      "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+      "name": "Swords to Plowshares",
+      "referenceHash": "495af24931d1f3a0dc3d4f217a6d56467e33878a62ba5289e2af5792cd5848e3",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.64796825178325,
+          "strength": 46.6022223195722,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.8270270348741,
+          "strength": 42.275852572533395,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.70875543018933,
+          "strength": 46.19905779438634,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.9029085153271,
+          "strength": 41.2061757733745,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.7760962635423,
+          "strength": 42.2704832015499,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.18194551225116,
+          "strength": 39.18193866360572,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.253150803796004,
+          "strength": 50.71446990966797,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.9655656836223,
+          "strength": 33.20646642869519,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.28840390674567,
+          "strength": 46.32018821470199,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.02364889200487,
+          "strength": 33.87341726979902,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.3158475702974,
+          "strength": 47.26007301576676,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.9902690587243,
+          "strength": 34.30677623133506,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.74096466673181,
+          "strength": 40.864845029769405,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.37778046701516,
+          "strength": 48.19214507072203,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.68777369464844,
+          "strength": 38.952749929120465,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.33610124764715,
+          "strength": 50.46717268420804,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.81698990639762,
+          "strength": 38.13345853744015,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.4518587036034,
+          "strength": 46.941199764128655,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.084081777643135,
+          "strength": 60.31477528233682,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.7564466492937,
+          "strength": 33.55649640483241,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.1420750824237,
+          "strength": 59.44849149642452,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.966265505099,
+          "strength": 34.48763053647934,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.21412540780839,
+          "strength": 60.59356910951676,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.0093316582803,
+          "strength": 35.87536916425151,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 50.28840390674567,
+            "rendered": 51.1420750824237,
+            "delta": 0.8536711756780306,
+            "spread": 0.04460666183295814
+          },
+          "right": {
+            "count": 3,
+            "reference": 436.9902690587243,
+            "rendered": 436.966265505099,
+            "delta": -0.05738338690588307,
+            "spread": 0.15173564742269718
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.70875543018933,
+            "rendered": 65.74096466673181,
+            "delta": 1.0408936428553233,
+            "spread": 0.06187537839620916
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 375.9029085153271,
+            "rendered": 377.37778046701516,
+            "delta": 1.4331927323200375,
+            "spread": 0.1632795409677783
+          }
+        },
+        "complete": true,
+        "centerDelta": [0.3981438943860738, 1.2370431875876804],
+        "sizeDelta": [-0.9110545625839137, 0.39229908946471426],
+        "medianResidualPx": 0.947282409266677,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.8790477202350578,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.960386783871481,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "a6a86e6e-bfff-46af-9d36-c912901fea92",
+      "name": "Psionic Blast",
+      "referenceHash": "f35cfcf6fda28ca28d9c1b416c82bec40a3d76701d989080e1ab42e177790d56",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.80708003209108,
+          "strength": 25.47041726881458,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.9877343832791,
+          "strength": 30.773061936901463,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.79938149651562,
+          "strength": 27.165489812051096,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.8850519061271,
+          "strength": 35.169709851664884,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.79049479089439,
+          "strength": 27.851392684444303,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.95426451801046,
+          "strength": 31.658216414913053,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.93781049617401,
+          "strength": 28.916454069076046,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.46385566111223,
+          "strength": 19.707285973333544,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.054791861597884,
+          "strength": 37.01471156458701,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.4216936127706,
+          "strength": 16.401968371483587,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.12660244864271,
+          "strength": 42.10588935113722,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 442.4321897642942,
+          "strength": 8.932989305065524,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.18416237499942,
+          "strength": 35.04820103799143,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.77288185519893,
+          "strength": 39.5972771183137,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.35795396957353,
+          "strength": 26.551591873168945,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.7932574548772,
+          "strength": 41.01406663463962,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.38352292112664,
+          "strength": 28.70342771468624,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.86187874839266,
+          "strength": 35.42817921792307,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.17316902385784,
+          "strength": 31.778710334531723,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.19549198457594,
+          "strength": 21.412242028021044,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.50701044781974,
+          "strength": 36.77830720716907,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.2055478861485,
+          "strength": 18.242473417712795,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.762513708623956,
+          "strength": 41.510672046292214,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 442.2432763042372,
+          "strength": 14.112780294110697,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 51.054791861597884,
+            "rendered": 49.50701044781974,
+            "delta": -1.5477814137781465,
+            "spread": 0.2168600585380247
+          },
+          "right": {
+            "count": 3,
+            "reference": 436.46385566111223,
+            "rendered": 436.2055478861485,
+            "delta": -0.21614572662207365,
+            "spread": 0.05221794991422257
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.79938149651562,
+            "rendered": 65.35795396957353,
+            "delta": 0.5585724730579074,
+            "spread": 0.1814901301495695
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 376.95426451801046,
+            "rendered": 377.7932574548772,
+            "delta": 0.9076142303821939,
+            "spread": 0.12246675846233757
+          }
+        },
+        "complete": true,
+        "centerDelta": [-0.8819635702001101, 0.7330933517200506],
+        "sizeDelta": [1.3316356871560728, 0.34904175732428655],
+        "medianResidualPx": 0.7330933517200506,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.8196010104859714,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.7706710603813001,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "6701874e-986e-4b81-9268-90b6171e6187",
+      "name": "Bog Wraith",
+      "referenceHash": "d0143e753b34ec47d43e86bd2b0840179af3658d564945d213bc11f7d7317966",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 69.01031175187109,
+          "strength": 39.8554945914976,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.01656762930037,
+          "strength": 27.33854890638782,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.94578550492704,
+          "strength": 29.610010700841105,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.961503949811,
+          "strength": 23.829903264199533,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.78038128659429,
+          "strength": 9.950408043399934,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.01313198835464,
+          "strength": 26.825835689421623,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.390153095512204,
+          "strength": 22.249810864848474,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.85974052237503,
+          "strength": 9.75524551637711,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.07595920253692,
+          "strength": 6.870235689224735,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.1889832755101,
+          "strength": 12.28902103054908,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.612719231410175,
+          "strength": 18.344281288885302,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.9902335909443,
+          "strength": 10.84573681123795,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.90271519602483,
+          "strength": 45.96807858251756,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.6238715476975,
+          "strength": 21.202812748570597,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.87708459678342,
+          "strength": 34.88086989618117,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.50915759889125,
+          "strength": 19.78002425163023,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 59.8631906208234,
+          "strength": 23.281303159652218,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.62699560887165,
+          "strength": 20.8052493679908,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.96067933650957,
+          "strength": 24.220420160601215,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.66526793139434,
+          "strength": 6.1478266562184976,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.036269927686064,
+          "strength": 19.290035678494363,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.56728164223813,
+          "strength": 24.75577735900879,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.121194501667944,
+          "strength": 19.19647579808389,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.8538985620397,
+          "strength": 8.44972804284865,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 50.390153095512204,
+            "rendered": 50.036269927686064,
+            "delta": -0.42947375900263296,
+            "spread": 3.3897844841517752
+          },
+          "right": {
+            "count": 3,
+            "reference": 435.9902335909443,
+            "rendered": 435.66526793139434,
+            "delta": -0.1944725909806948,
+            "spread": 5.427229042291287
+          },
+          "top": {
+            "count": 3,
+            "reference": 68.94578550492704,
+            "rendered": 68.87708459678342,
+            "delta": -0.10759655584625705,
+            "spread": 5.809594109924632
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 377.01313198835464,
+            "rendered": 378.6238715476975,
+            "delta": 1.6073039183971218,
+            "spread": 0.05965026931687589
+          }
+        },
+        "complete": true,
+        "centerDelta": [-0.3119731749916639, 0.7498536812754324],
+        "sizeDelta": [0.23500116802193816, 1.7149004742433789],
+        "medianResidualPx": 0.3119731749916639,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.8590936744724741,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.8936687669918035,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "b21ebc9f-a93e-4d18-b3e8-8459e3abbf31",
+      "name": "Tunnel",
+      "referenceHash": "e4c03d6ec855db809aa16089ec6383c309bd262a0fc1b3207f4b355263fa5764",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.08253064658854,
+          "strength": 17.926455036286384,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.53698161447943,
+          "strength": 23.864294728925152,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.16686098982113,
+          "strength": 21.373396165909305,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.609178816069,
+          "strength": 22.52042099737352,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.18851634737074,
+          "strength": 19.222986282840854,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.7607643356278,
+          "strength": 24.42196482996787,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 48.49792803516376,
+          "strength": 17.106376586421842,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.0545163836593,
+          "strength": 14.87546262433452,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 48.27452383936189,
+          "strength": 19.674365628150202,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.9355218573774,
+          "strength": 14.081046688941218,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 48.374260464540605,
+          "strength": 19.525804458125943,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.09731211843916,
+          "strength": 13.393886627689485,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.14356669190205,
+          "strength": 16.32037408890263,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.4589486613667,
+          "strength": 23.24477041921308,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.33452678725968,
+          "strength": 17.55603857963316,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.7968259383297,
+          "strength": 24.7265505636892,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.33716172558684,
+          "strength": 17.357980235930413,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.95848741111695,
+          "strength": 22.39454835461032,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.92251895348666,
+          "strength": 23.47212686846333,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.6665801742416,
+          "strength": 10.150924559562437,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.0132331548978,
+          "strength": 22.83338842084331,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.67714091367003,
+          "strength": 10.526329963437972,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.078340352076765,
+          "strength": 24.92101521645823,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.85941527755847,
+          "strength": 9.732007795764554,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 48.374260464540605,
+            "rendered": 51.0132331548978,
+            "delta": 2.7040798875361602,
+            "spread": 0.2794889692132614
+          },
+          "right": {
+            "count": 3,
+            "reference": 436.0545163836593,
+            "rendered": 436.67714091367003,
+            "delta": 0.7416190562926204,
+            "spread": 0.12955526571033715
+          },
+          "top": {
+            "count": 3,
+            "reference": 65.16686098982113,
+            "rendered": 66.33452678725968,
+            "delta": 1.1486453782161021,
+            "spread": 0.08760933290258777
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 376.609178816069,
+            "rendered": 378.7968259383297,
+            "delta": 2.187647122260671,
+            "spread": 0.2656800753733819
+          }
+        },
+        "complete": true,
+        "centerDelta": [1.7228494719143903, 1.6681462502383866],
+        "sizeDelta": [-1.9624608312435399, 1.039001744044569],
+        "medianResidualPx": 1.6681462502383866,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.6766183222863332,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.829697591208383,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "8df80424-3bd9-4982-ad79-e55d9ba3b43d",
+      "name": "Wall of Wood",
+      "referenceHash": "d56c93d6a40578bce007ca245fb7ac4eec53c1ab99fbf4391fe82090c0c863af",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.09991793076543,
+          "strength": 9.664860140892767,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.9473542012067,
+          "strength": 25.08415375986407,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.89211740731758,
+          "strength": 11.997074250252016,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.9348785729596,
+          "strength": 25.89531695458197,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.1064531386018,
+          "strength": 15.868620226460118,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.8991526235284,
+          "strength": 23.571532587851248,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.23369347159961,
+          "strength": 23.739911110170425,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.0059373379914,
+          "strength": 14.863262484150548,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.43582105281486,
+          "strength": 26.68543932514806,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.0113544712276,
+          "strength": 14.42317759606146,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.306111605521025,
+          "strength": 23.220252252394154,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.8719668784576,
+          "strength": 11.832437084567163,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.7559507097575,
+          "strength": 11.63303590589954,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.3860433869486,
+          "strength": 29.857853058845766,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.5310786101694,
+          "strength": 18.71394951112809,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.5162209755873,
+          "strength": 30.979461792976625,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.47042281634002,
+          "strength": 18.842005575856856,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.3174043080688,
+          "strength": 34.67993373255576,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 52.04405728380711,
+          "strength": 28.444083059987715,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.9508745868739,
+          "strength": 20.591491514636623,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 52.413121839856935,
+          "strength": 33.69905951715285,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.14855157217676,
+          "strength": 22.862130565028036,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 52.50729479333794,
+          "strength": 26.38211428734564,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.1300591692553,
+          "strength": 15.76005861836095,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 50.306111605521025,
+            "rendered": 52.413121839856935,
+            "delta": 1.9773007870420756,
+            "spread": 0.22388240077484056
+          },
+          "right": {
+            "count": 3,
+            "reference": 437.0059373379914,
+            "rendered": 437.1300591692553,
+            "delta": 0.13719710094915172,
+            "spread": 0.192259852066627
+          },
+          "top": {
+            "count": 3,
+            "reference": 65.09991793076543,
+            "rendered": 65.5310786101694,
+            "delta": 0.6389612028518172,
+            "spread": 0.2749915251135917
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 376.9348785729596,
+            "rendered": 378.3860433869486,
+            "delta": 1.4386891857419073,
+            "spread": 0.142653216885833
+          }
+        },
+        "complete": true,
+        "centerDelta": [1.0572489439956136, 1.0388251942968623],
+        "sizeDelta": [-1.8401036860929239, 0.7997279828900901],
+        "medianResidualPx": 1.0388251942968623,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.7979825974596784,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.9083170196551653,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "2b814198-814b-4619-a158-327af675f8f2",
+      "name": "Soul Net",
+      "referenceHash": "51665b7f0b3272ed448ceca35bc7f7da50b5008d8e92a2fab5091fb19032c141",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.67077352671441,
+          "strength": 21.45439714001071,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.36928933969335,
+          "strength": 21.83643857894405,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.72738099452052,
+          "strength": 19.602193770870084,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.2584367431567,
+          "strength": 18.98748102495747,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.73483274075141,
+          "strength": 18.393365983040102,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.24939548643846,
+          "strength": 21.73176488568706,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.22765494445923,
+          "strength": 24.839412689208984,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.15823602825657,
+          "strength": 14.33296375889932,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.217324678024355,
+          "strength": 23.30094282088741,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.22500653900386,
+          "strength": 13.595423298497353,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.16540196637401,
+          "strength": 22.253406770767704,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.17603411348273,
+          "strength": 15.690255072809034,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.96462497861614,
+          "strength": 20.981882772138043,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.9758088210314,
+          "strength": 27.029749962591357,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.32196654765067,
+          "strength": 16.906798578077748,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.01920975114155,
+          "strength": 24.926117374051003,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.60630053242687,
+          "strength": 16.21778549686555,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.0754864956939,
+          "strength": 29.755643044748613,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.681529791647506,
+          "strength": 26.81128188102476,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.2957462538132,
+          "strength": 13.506525593419228,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.80900272053794,
+          "strength": 26.696751502252393,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.4571505474232,
+          "strength": 14.072448238249748,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.63406163730144,
+          "strength": 22.87280765656502,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.21377971857453,
+          "strength": 14.860165257607736,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 50.217324678024355,
+            "rendered": 50.681529791647506,
+            "delta": 0.4686596709274298,
+            "spread": 0.1230183715861557
+          },
+          "right": {
+            "count": 3,
+            "reference": 436.17603411348273,
+            "rendered": 437.2957462538132,
+            "delta": 1.137510225556639,
+            "spread": 0.09976462046483903
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.72738099452052,
+            "rendered": 66.32196654765067,
+            "delta": 1.594585553130159,
+            "spread": 0.3007341012284286
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 376.2584367431567,
+            "rendered": 378.01920975114155,
+            "delta": 1.7607730079848238,
+            "spread": 0.1542535266467553
+          }
+        },
+        "complete": true,
+        "centerDelta": [0.8030849482420344, 1.6776792805574914],
+        "sizeDelta": [0.6688505546292092, 0.1661874548546649],
+        "medianResidualPx": 1.366047889343399,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.730594236494285,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.8958803008491716,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "6eafa00b-c628-40f6-86eb-88e1361fc7a0",
+      "name": "Plateau",
+      "referenceHash": "b993cad837a0e40fb8df6e57ad9bd4eafe8fa5789c2761d1512b6b399c75f56a",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 59.9487333115339,
+          "strength": 19.892211052679247,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.49857507642076,
+          "strength": 17.668323516845703,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 59.7267883429394,
+          "strength": 19.365330972979145,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.3036418637823,
+          "strength": 17.954396155572706,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.08560332823573,
+          "strength": 22.67525211457283,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.0064263453491,
+          "strength": 19.337968272547567,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.57502521952701,
+          "strength": 19.70784685688634,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 441.2309686575377,
+          "strength": 18.240477285077496,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.291573259505405,
+          "strength": 18.444602720199093,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 441.17789473023464,
+          "strength": 19.268214318060107,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.67585539572965,
+          "strength": 18.310669806695753,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 441.1939077591468,
+          "strength": 19.570023936610067,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.99967128087646,
+          "strength": 38.30366516113281,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.70575415042,
+          "strength": 13.593997093939013,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 69.0451930479488,
+          "strength": 19.95185827439831,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.8420315974339,
+          "strength": 19.753937628961378,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 62.248960650024245,
+          "strength": 8.284275301041141,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.9271725503621,
+          "strength": 19.08228006670552,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.859190212157486,
+          "strength": 12.323664265294228,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.83516936804585,
+          "strength": 6.4107346073273686,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.177487725131314,
+          "strength": 9.67361831665039,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 441.02732586416926,
+          "strength": 9.462808178317163,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.61694516971383,
+          "strength": 17.845143595049457,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 441.17094254389525,
+          "strength": 11.310383089127079,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 47.57502521952701,
+            "rendered": 47.859190212157486,
+            "delta": 0.2841649926304797,
+            "spread": 1.6569247813537018
+          },
+          "right": {
+            "count": 3,
+            "reference": 441.1939077591468,
+            "rendered": 441.02732586416926,
+            "delta": -0.15056886606538455,
+            "spread": 0.24523042342644885
+          },
+          "top": {
+            "count": 3,
+            "reference": 59.9487333115339,
+            "rendered": 68.99967128087646,
+            "delta": 9.050937969342556,
+            "spread": 11.887580647554046
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 379.3036418637823,
+            "rendered": 379.8420315974339,
+            "delta": 0.538389733651627,
+            "spread": 0.6687893403475869
+          }
+        },
+        "complete": true,
+        "centerDelta": [0.06679806328254756, 4.794663851497091],
+        "sizeDelta": [-0.43473385869586423, -8.512548235690929],
+        "medianResidualPx": 0.41127736314105334,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.6936900375563484,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.7984071952346018,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "lea",
+      "id": "bc6ea08d-7991-4a57-a1e3-abd508426970",
+      "name": "Island",
+      "referenceHash": "8078940813879cf8b6d510dc4da2d8d927fabb4c90345b1b2f85382a611802b6",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 63.77405217929896,
+          "strength": 16.580108396468624,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.29871426168694,
+          "strength": 33.54461952947801,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 63.41041142893247,
+          "strength": 17.73980909778226,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.20748327382597,
+          "strength": 40.80790181313792,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 63.42943014638533,
+          "strength": 18.081578408518144,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.13616008455233,
+          "strength": 47.68142774028163,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.184637891795056,
+          "strength": 38.92363579042496,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 438.7514184994087,
+          "strength": 20.969376717844316,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.02833684132605,
+          "strength": 29.966178032659716,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 438.84411738935444,
+          "strength": 20.186608345277847,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.169471348445065,
+          "strength": 43.539227516420425,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 439.0201442311323,
+          "strength": 14.50753427320911,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.41374341808036,
+          "strength": 9.505786649642452,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.55231147631645,
+          "strength": 17.954241844915575,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.00995214290766,
+          "strength": 8.624495106358681,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.1998927758563,
+          "strength": 23.88422307660503,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.14811666964188,
+          "strength": 7.7968410368888605,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.147842874186,
+          "strength": 28.744177418370402,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.74540582259301,
+          "strength": 20.071956880630985,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.60315542848895,
+          "strength": 37.27209583405526,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.614435010634054,
+          "strength": 15.242259363974295,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.61801840362983,
+          "strength": 43.41692807597499,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.04152071976857,
+          "strength": 25.479168553506174,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.9489428944694,
+          "strength": 12.117018299718056,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 49.169471348445065,
+            "rendered": 50.04152071976857,
+            "delta": 0.8720493713235058,
+            "spread": 0.7140487979844963
+          },
+          "right": {
+            "count": 3,
+            "reference": 438.84411738935444,
+            "rendered": 430.61801840362983,
+            "delta": -8.148263070919768,
+            "spread": 10.077061734256858
+          },
+          "top": {
+            "count": 3,
+            "reference": 63.42943014638533,
+            "rendered": 66.14811666964188,
+            "delta": 2.6396912387813956,
+            "spread": 0.07899528447515536
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 378.20748327382597,
+            "rendered": 380.1998927758563,
+            "delta": 2.011682789633653,
+            "spread": 0.24191442499585492
+          }
+        },
+        "complete": true,
+        "centerDelta": [-3.638106849798131, 2.3256870142075243],
+        "sizeDelta": [-9.020312442243274, -0.6280084491477425],
+        "medianResidualPx": 2.3256870142075243,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.6423338064642237,
+          "outer": null
+        },
+        "internalFit": {
+          "internalF1": 0.9055721518811882,
+          "outer": null
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "609f6e06-daaa-4b15-a167-dc3ed6ce33cc",
+      "name": "Resurrection",
+      "referenceHash": "8697f48bb85a17dbaf95665042d1dc2991351cd66a48a976edb7ee160e550c1d",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.69250226412966,
+          "strength": 46.261857063539566,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.9325576810991,
+          "strength": 41.55137806553994,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.67284333167703,
+          "strength": 45.550800200431574,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.8673685031393,
+          "strength": 44.98897527879284,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.65901029004132,
+          "strength": 45.25860349593624,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.88314957292255,
+          "strength": 46.16134791220388,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.3094854942963,
+          "strength": 42.081637474798384,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.2881335053881,
+          "strength": 39.749438132009196,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.3251331140917,
+          "strength": 40.926795959472656,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.2742140660352,
+          "strength": 39.91193734445879,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.32853921235427,
+          "strength": 41.76052708779612,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.22385774132533,
+          "strength": 39.48904911164315,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.71252018441533,
+          "strength": 40.791347872826364,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.37778046701516,
+          "strength": 48.19214507072203,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.65199497568274,
+          "strength": 38.823294854933216,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.33610124764715,
+          "strength": 50.46717268420804,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.692435605826,
+          "strength": 37.75842925040953,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.4518587036034,
+          "strength": 46.941199764128655,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.084081777643135,
+          "strength": 60.31477528233682,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.7564466492937,
+          "strength": 33.55649640483241,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.1420750824237,
+          "strength": 59.44849149642452,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.966265505099,
+          "strength": 34.48763053647934,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.21412540780839,
+          "strength": 60.59356910951676,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.0093316582803,
+          "strength": 35.87536916425151,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 50.3251331140917,
+            "rendered": 51.1420750824237,
+            "delta": 0.8169419683320029,
+            "spread": 0.06864422712211393
+          },
+          "right": {
+            "count": 3,
+            "reference": 436.2742140660352,
+            "rendered": 436.966265505099,
+            "delta": 0.6920514390637891,
+            "spread": 0.22373829515817079
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.67284333167703,
+            "rendered": 65.692435605826,
+            "delta": 1.0200179202856674,
+            "spread": 0.04086627627995654
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 375.88314957292255,
+            "rendered": 377.37778046701516,
+            "delta": 1.4687327445078608,
+            "spread": 0.09997638617301163
+          }
+        },
+        "complete": true,
+        "centerDelta": [0.754496703697896, 1.2443753323967641],
+        "sizeDelta": [-0.12489052926821387, 0.44871482422219344],
+        "medianResidualPx": 0.9184799443088352,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.8627261732141314,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.63156225578724,
+                "rendered": 23.345939478322858,
+                "delta": 0.7308854901792046,
+                "spread": 0.04739501902836807
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.6162325093469,
+                "rendered": 464.0474178554352,
+                "delta": -0.5688146539117156,
+                "spread": 0.24867540989026793
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.019636901058075,
+                "rendered": 27.19899535780971,
+                "delta": 0.1793584567516362,
+                "spread": 0.020752637502756244
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.787468366665,
+                "rendered": 651.3750799626139,
+                "delta": -0.4236577591149171,
+                "spread": 0.07228961513499144
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.08103541813374449, -0.12214965118164045],
+            "sizeDelta": [-1.2997001440909202, -0.6030162158665533],
+            "medianResidualPx": 0.49623620651331635,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.951108968328902,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.311587846049125,
+                "rendered": 23.345939478322858,
+                "delta": 0.03102228980965549,
+                "spread": 0.07516796677329651
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.56782837916825,
+                "rendered": 464.0474178554352,
+                "delta": -1.497690917262787,
+                "spread": 0.05210044554405613
+              },
+              "top": {
+                "count": 3,
+                "reference": 28.065378243368922,
+                "rendered": 27.19899535780971,
+                "delta": -0.8443768915862293,
+                "spread": 0.09289322054686266
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.2025772355225,
+                "rendered": 651.3750799626139,
+                "delta": -1.8387666279724044,
+                "spread": 0.1390783286409487
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.7333343137265658, -1.3415717597793169],
+            "sizeDelta": [-1.5287132070724425, -0.9943897363861751],
+            "medianResidualPx": 1.1710339044245082,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "de833d23-2abd-42c3-a38f-f16813aaee4e",
+      "name": "Invisibility",
+      "referenceHash": "f172f2ca70d33917aa0977832be0ed1c9049d31a2ff6a2d99ed117303c579720",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.82773795547398,
+          "strength": 37.743514030210434,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.74630482442836,
+          "strength": 40.71632680585307,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.8705343837557,
+          "strength": 35.48309806085402,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.71167216728696,
+          "strength": 42.202415958527595,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.81612802970189,
+          "strength": 35.95898191390499,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.7947732484551,
+          "strength": 40.17025953723538,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.647615879773426,
+          "strength": 37.0599482136388,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 434.97555459188936,
+          "strength": 27.014786381875314,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.73268422348549,
+          "strength": 49.716023598947835,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.05252997150734,
+          "strength": 23.335480228547127,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.74628252510203,
+          "strength": 56.02976276028541,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.4526121039315,
+          "strength": 12.13571277741463,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.18210511389611,
+          "strength": 35.04820103799143,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.77850915884295,
+          "strength": 39.69943938716765,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.3553930590121,
+          "strength": 26.551591873168945,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.7931752410515,
+          "strength": 41.01406663463962,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.38480779090531,
+          "strength": 28.70342771468624,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.86187874839266,
+          "strength": 35.42817921792307,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.17316902385784,
+          "strength": 31.778710334531723,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.19549198457594,
+          "strength": 21.412242028021044,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.50701044781974,
+          "strength": 36.77830720716907,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.2055478861485,
+          "strength": 18.242473417712795,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.762513708623956,
+          "strength": 41.510672046292214,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 442.2432763042372,
+          "strength": 14.112780294110697,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 49.73268422348549,
+            "rendered": 49.50701044781974,
+            "delta": -0.2256737756657543,
+            "spread": 0.24877308024983336
+          },
+          "right": {
+            "count": 3,
+            "reference": 435.05252997150734,
+            "rendered": 436.2055478861485,
+            "delta": 1.2199373926865746,
+            "spread": 0.5707268076191667
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.82773795547398,
+            "rendered": 65.3553930590121,
+            "delta": 0.4848586752564046,
+            "spread": 0.13049151683426885
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 376.74630482442836,
+            "rendered": 377.7931752410515,
+            "delta": 1.0671054999375542,
+            "spread": 0.0349011655229674
+          }
+        },
+        "complete": true,
+        "centerDelta": [0.49713180851041017, 0.7759820875969794],
+        "sizeDelta": [1.445611168352329, 0.5822468246811496],
+        "medianResidualPx": 0.7759820875969794,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.7346453643030387,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.66205875417321,
+                "rendered": 23.693195407091984,
+                "delta": 1.0757030845853706,
+                "spread": 0.04456643166659546
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.2387574896641,
+                "rendered": 463.92491925340113,
+                "delta": -0.30060077487792114,
+                "spread": 0.013237461385074312
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.93753049431496,
+                "rendered": 27.77308276754836,
+                "delta": 0.8211913817033718,
+                "spread": 0.014360891530028397
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.9641182648235,
+                "rendered": 651.0207879020402,
+                "delta": -0.9073042170556391,
+                "spread": 0.05492451824966338
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.3875511548537247, -0.04305641767613366],
+            "sizeDelta": [-1.3763038594632917, -1.728495598759011],
+            "medianResidualPx": 0.8642477993795055,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.8847560005743791,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.394223079317424,
+                "rendered": 23.693195407091984,
+                "delta": 0.2989723277745604,
+                "spread": 0.12440354378216512
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.21930885487797,
+                "rendered": 463.92491925340113,
+                "delta": -1.2648802522895721,
+                "spread": 0.14678444697273108
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.99771689154012,
+                "rendered": 27.77308276754836,
+                "delta": -0.22463412399175908,
+                "spread": 0.10787264048979495
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.3603230132874,
+                "rendered": 651.0207879020402,
+                "delta": -2.300891862538151,
+                "spread": 0.09541215960916816
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.48295396225750586, -1.2627629932649551],
+            "sizeDelta": [-1.5638525800641325, -2.076257738546392],
+            "medianResidualPx": 0.7819262900320663,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "c8d5d6a5-6807-4a80-9460-7633dc430ee9",
+      "name": "Demonic Tutor",
+      "referenceHash": "03fc7650b2c23404b342cb7555d33a65cf9bc15585b039605c1e2c78a070f96a",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.2306324505803,
+          "strength": 8.30729490710843,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.7743662246337,
+          "strength": 25.447033113048924,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 69.88908666999102,
+          "strength": 9.183649616856728,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.7589092453386,
+          "strength": 24.07808506873346,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 60.16103752175971,
+          "strength": 12.7418456539031,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.7445937957366,
+          "strength": 25.00419585935531,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.90161943452633,
+          "strength": 23.934459317115046,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.4344142604717,
+          "strength": 6.4239996017948275,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.94531185105103,
+          "strength": 17.108433385049143,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.27624906410017,
+          "strength": 7.126162805864888,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.00147549631361,
+          "strength": 19.338354356827274,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.07417154215517,
+          "strength": 8.113520960653982,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.74841508263222,
+          "strength": 16.40812458530549,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.6238715476975,
+          "strength": 21.202812748570597,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.7640538555823,
+          "strength": 14.513703561598255,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.50915759889125,
+          "strength": 19.78002425163023,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 59.88469839778432,
+          "strength": 21.293756977204353,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.62699560887165,
+          "strength": 20.8052493679908,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.96067933650957,
+          "strength": 24.220420160601215,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.66526793139434,
+          "strength": 6.1478266562184976,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.036269927686064,
+          "strength": 19.290035678494363,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.832883037171,
+          "strength": 24.55794100607595,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.121194501667944,
+          "strength": 19.19647579808389,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.8538985620397,
+          "strength": 8.44972804284865,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 49.94531185105103,
+            "rendered": 50.036269927686064,
+            "delta": 0.09095807663503308,
+            "spread": 0.031898174651793454
+          },
+          "right": {
+            "count": 3,
+            "reference": 435.27624906410017,
+            "rendered": 435.66526793139434,
+            "delta": 0.23085367092261322,
+            "spread": 4.674219697851811
+          },
+          "top": {
+            "count": 3,
+            "reference": 66.2306324505803,
+            "rendered": 68.74841508263222,
+            "delta": -0.27633912397539007,
+            "spread": 2.794121756027309
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 377.7589092453386,
+            "rendered": 378.6238715476975,
+            "delta": 0.849505323063795,
+            "spread": 0.0992569695111456
+          }
+        },
+        "complete": true,
+        "centerDelta": [0.16090587377882315, 0.28658309954420247],
+        "sizeDelta": [0.13989559428758014, 1.125844447039185],
+        "medianResidualPx": 0.25359639744900164,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.8866635799718707,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.047733829699176,
+                "rendered": 23.998195997894054,
+                "delta": 0.9020079716889384,
+                "spread": 0.05304667210399927
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.1828509813139,
+                "rendered": 463.3569467298594,
+                "delta": -0.8308518825513715,
+                "spread": 0.010648927067791192
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.168047148114034,
+                "rendered": 28.147325437151032,
+                "delta": 0.9866696554336123,
+                "spread": 0.12752859414999307
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.8696875371384,
+                "rendered": 650.7571029570646,
+                "delta": -1.112584580073758,
+                "spread": 0.03562380641005802
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.03557804456878344, -0.06295746232007282],
+            "sizeDelta": [-1.73285985424031, -2.0992542355073702],
+            "medianResidualPx": 0.9443388135612754,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.839365547037487,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.860476887470167,
+                "rendered": 23.998195997894054,
+                "delta": 0.13771911042388751,
+                "spread": 0.12822234861539528
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.15038164685916,
+                "rendered": 463.3569467298594,
+                "delta": -1.7934349169997859,
+                "spread": 0.14511258152538176
+              },
+              "top": {
+                "count": 3,
+                "reference": 28.236654113619295,
+                "rendered": 28.147325437151032,
+                "delta": -0.1452714281472005,
+                "spread": 0.0559427516789377
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.2473685508207,
+                "rendered": 650.7571029570646,
+                "delta": -2.490265593756135,
+                "spread": 0.09791544374411387
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.8278579032879492, -1.3177685109516677],
+            "sizeDelta": [-1.9311540274236734, -2.3449941656089344],
+            "medianResidualPx": 0.9693531725734932,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "26cbb4d5-bb1b-4b1c-b94d-58e45ba497ca",
+      "name": "Goblin Balloon Brigade",
+      "referenceHash": "5afe344a3c2bf7cefddc8f7bc7609cf6bd3c817f9ef7069191537ed4a1c371cc",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.0963418167189,
+          "strength": 58.701304651075795,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.7361031325617,
+          "strength": 29.111950043709047,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 63.77726604273383,
+          "strength": 20.19438934326172,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.7337336228208,
+          "strength": 27.646378670969316,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.09467479451759,
+          "strength": 17.994482594151652,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 375.6902510866272,
+          "strength": 25.46002431069651,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.02314668514101,
+          "strength": 27.701007596908077,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.837890287323,
+          "strength": 11.787234521681263,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.989956633129275,
+          "strength": 25.01091286443895,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.1028533288765,
+          "strength": 13.467796448738344,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.90925162668173,
+          "strength": 23.004776370140814,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.29945527093145,
+          "strength": 10.838194693288495,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.84268845916772,
+          "strength": 57.79161041013656,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.4589486613667,
+          "strength": 23.24477041921308,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.75810383124102,
+          "strength": 47.075209279214185,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.0625095093149,
+          "strength": 31.665142551545173,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.66592522876857,
+          "strength": 29.642194378760554,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.95848741111695,
+          "strength": 22.39454835461032,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.92251895348666,
+          "strength": 23.47212686846333,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.6665801742416,
+          "strength": 10.150924559562437,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.0132331548978,
+          "strength": 22.83338842084331,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.30200845661915,
+          "strength": 47.68204455221853,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 51.078340352076765,
+          "strength": 24.92101521645823,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.4149211921071,
+          "strength": 41.92534274439658,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 49.989956633129275,
+            "rendered": 51.0132331548978,
+            "delta": 1.0232765217685227,
+            "spread": 0.14581220362651237
+          },
+          "right": {
+            "count": 3,
+            "reference": 435.29945527093145,
+            "rendered": 430.4149211921071,
+            "delta": -4.800844872257358,
+            "spread": 5.629534759175954
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.09467479451759,
+            "rendered": 68.75810383124102,
+            "delta": 4.5712504342509845,
+            "spread": 3.8249037918021713
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 375.7337336228208,
+            "rendered": 378.95848741111695,
+            "delta": 3.2682363244897488,
+            "spread": 0.5453907956847388
+          }
+        },
+        "complete": true,
+        "centerDelta": [-1.8887841752444174, 3.9197433793703667],
+        "sizeDelta": [-5.82412139402588, -1.3030141097612358],
+        "medianResidualPx": 3.9197433793703667,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.7209250352295118,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.741242009216688,
+                "rendered": 23.933790087593344,
+                "delta": 1.1932746988738963,
+                "spread": 0.10369341662947562
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.24856360358643,
+                "rendered": 463.30222631601737,
+                "delta": -0.9463372875690652,
+                "spread": 0.0743561398551833
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.277310151715213,
+                "rendered": 28.05851075517231,
+                "delta": 0.7821874190588716,
+                "spread": 0.03473238312304616
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.8204506260162,
+                "rendered": 650.7719567983758,
+                "delta": -1.0521398179720336,
+                "spread": 0.04467772580062501
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.12346870565241552, -0.13497619945658101],
+            "sizeDelta": [-2.1396119864429615, -1.8343272370309052],
+            "medianResidualPx": 0.9992385527705494,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.8531915935174914,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.500841365220488,
+                "rendered": 23.933790087593344,
+                "delta": 0.4313435882450598,
+                "spread": 0.03631675927199396
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.2185075498686,
+                "rendered": 463.30222631601737,
+                "delta": -1.9162812338512367,
+                "spread": 0.17623196478194814
+              },
+              "top": {
+                "count": 3,
+                "reference": 28.386414741588,
+                "rendered": 28.05851075517231,
+                "delta": -0.32790398641568785,
+                "spread": 0.17236412118406363
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.2115266364144,
+                "rendered": 650.7719567983758,
+                "delta": -2.4370434003789114,
+                "spread": 0.10348220776791095
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.7424688228030885, -1.3824736933972996],
+            "sizeDelta": [-2.3476248220962965, -2.1091394139632236],
+            "medianResidualPx": 1.1738124110481483,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "a94d08f2-07ac-4887-aa30-ed0579d5113f",
+      "name": "Giant Spider",
+      "referenceHash": "df73320a70200fb2b752c43a31918ef77bdbf6160b186341fe7fbd22ed2bb84e",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.05245143644272,
+          "strength": 17.651736720915764,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.8302689648326,
+          "strength": 33.038258583314956,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.99040331299469,
+          "strength": 21.838149901359312,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.80924055995234,
+          "strength": 35.260355549473914,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.95530015640105,
+          "strength": 26.778172523744644,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.73866274070707,
+          "strength": 36.88504520539315,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.16782591026845,
+          "strength": 36.658574996456025,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": null,
+          "strength": 0,
+          "status": "no-keyline",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.255884172179016,
+          "strength": 42.59575037802419,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 434.89198123210525,
+          "strength": 15.060118152249244,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.16538139049584,
+          "strength": 37.93833984867219,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": null,
+          "strength": 0,
+          "status": "no-keyline",
+          "competing": false
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.78050512225433,
+          "strength": 11.648769870881111,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.3860433869486,
+          "strength": 29.857853058845766,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.52562002255806,
+          "strength": 18.688201904296875,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.5162209755873,
+          "strength": 30.979461792976625,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.46799415445977,
+          "strength": 18.842005575856856,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.3174043080688,
+          "strength": 34.67993373255576,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 52.04405728380711,
+          "strength": 28.444083059987715,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 436.9508745868739,
+          "strength": 20.591491514636623,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 52.413121839856935,
+          "strength": 33.69905951715285,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.14855157217676,
+          "strength": 22.862130565028036,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 52.50729479333794,
+          "strength": 26.38211428734564,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.65934724129653,
+          "strength": 61.45061037617345,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 49.16782591026845,
+            "rendered": 52.413121839856935,
+            "delta": 3.1572376676779186,
+            "spread": 0.28100629413925304
+          },
+          "right": {
+            "count": 1,
+            "reference": 434.89198123210525,
+            "rendered": 437.14855157217676,
+            "delta": 2.256570340071505,
+            "spread": 0
+          },
+          "top": {
+            "count": 3,
+            "reference": 65.99040331299469,
+            "rendered": 65.52562002255806,
+            "delta": -0.46478329043662825,
+            "spread": 0.19283697624823048
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 377.80924055995234,
+            "rendered": 378.3860433869486,
+            "delta": 0.5787415673617033,
+            "spread": 0.12823884827326992
+          }
+        },
+        "complete": false,
+        "centerDelta": null,
+        "sizeDelta": null,
+        "medianResidualPx": null,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.6518215023086213,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.99476356377811,
+                "rendered": 24.00868858863829,
+                "delta": 1.0139250248601783,
+                "spread": 0.1301248593182116
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.2298285519204,
+                "rendered": 463.12534549300545,
+                "delta": -1.1691757852213982,
+                "spread": 0.22168336036901337
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.09521262110705,
+                "rendered": 28.125322416467714,
+                "delta": 0.9861589692243022,
+                "spread": 0.09142112649286105
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.952731864764,
+                "rendered": 650.7639798589406,
+                "delta": -1.206080302106102,
+                "spread": 0.03367227560522679
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.07762538018060994, -0.10996066644089986],
+            "sizeDelta": [-2.1831008100815765, -2.192239271330404],
+            "medianResidualPx": 1.0915504050407883,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.5952393167321203,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.704146760952227,
+                "rendered": 24.00868858863829,
+                "delta": 0.31477145415017205,
+                "spread": 0.010229626464109742
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.25866655288826,
+                "rendered": 463.12534549300545,
+                "delta": -2.133321059882803,
+                "spread": 0.39310271847477907
+              },
+              "top": {
+                "count": 3,
+                "reference": 28.1898542941823,
+                "rendered": 28.125322416467714,
+                "delta": -0.08968622952913918,
+                "spread": 0.025154351814553166
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.3532640934346,
+                "rendered": 650.7639798589406,
+                "delta": -2.5892842344940163,
+                "spread": 0.0953959680217622
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.9092748028663156, -1.3394852320115778],
+            "sizeDelta": [-2.4480925140329752, -2.499598004964877],
+            "medianResidualPx": 1.2240462570164876,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "0c58f236-0b2c-4b71-8819-1beaea7ded17",
+      "name": "Disrupting Scepter",
+      "referenceHash": "3d3944e469e6b2c9b675ac0080304e9829a9f18a8e4206df33cb45ac2e5001bf",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.73229781893441,
+          "strength": 21.278129208472468,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.2512415625737,
+          "strength": 31.705165247763357,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.81139089265542,
+          "strength": 17.182207415180823,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.2322956773435,
+          "strength": 31.129569022886216,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.99175754153218,
+          "strength": 16.297908659904234,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 376.3982265473095,
+          "strength": 32.25993261029643,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.06925626098558,
+          "strength": 34.69943138860887,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.1438509467044,
+          "strength": 20.01009012037708,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.02937455082297,
+          "strength": 32.167689046552105,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.17377772376045,
+          "strength": 19.399812882946385,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.02175949870197,
+          "strength": 28.65413308912708,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.1741773408648,
+          "strength": 22.337107258458293,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.04773073196029,
+          "strength": 20.72909865840789,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.06041601098707,
+          "strength": 27.54957026820029,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.17059418881495,
+          "strength": 16.862454568186113,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.01920975114155,
+          "strength": 24.926117374051003,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.4465851838712,
+          "strength": 15.477749424595986,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.0754864956939,
+          "strength": 29.755643044748613,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.68070721069192,
+          "strength": 26.81128188102476,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.2957462538132,
+          "strength": 13.506525593419228,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.80844072139372,
+          "strength": 26.696751502252393,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.4571505474232,
+          "strength": 14.072448238249748,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.63280969675969,
+          "strength": 22.87280765656502,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 437.21377971857453,
+          "strength": 14.860165257607736,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 50.02937455082297,
+            "rendered": 50.68070721069192,
+            "delta": 0.6114509497063381,
+            "spread": 0.1676152208644126
+          },
+          "right": {
+            "count": 3,
+            "reference": 435.17377772376045,
+            "rendered": 437.2957462538132,
+            "delta": 2.1518953071088163,
+            "spread": 0.13147751655395723
+          },
+          "top": {
+            "count": 3,
+            "reference": 64.81139089265542,
+            "rendered": 66.17059418881495,
+            "delta": 1.3592032961595208,
+            "spread": 0.09562434617950544
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 376.2512415625737,
+            "rendered": 378.06041601098707,
+            "delta": 1.7869140737980729,
+            "spread": 0.10965412541366959
+          }
+        },
+        "complete": true,
+        "centerDelta": [1.3816731284075772, 1.5730586849787969],
+        "sizeDelta": [1.5404443574024782, 0.42771077763855203],
+        "medianResidualPx": 1.5730586849787969,
+        "coherent": true
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.6211255558626785,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 22.909536226676245,
+                "rendered": 23.879469179462188,
+                "delta": 0.9766678248467073,
+                "spread": 0.04003545997898783
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.1905144261281,
+                "rendered": 463.3028413766123,
+                "delta": -0.8876730495157972,
+                "spread": 0.04751350052902126
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.3172178124715,
+                "rendered": 28.07698311230094,
+                "delta": 0.7693820052186346,
+                "spread": 0.009616705389195346
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.8881593790923,
+                "rendered": 650.7634535671694,
+                "delta": -1.12539014010747,
+                "spread": 0.020518172953529756
+              }
+            },
+            "complete": true,
+            "centerDelta": [0.04449738766545508, -0.17800406744441766],
+            "sizeDelta": [-1.8643408743625045, -1.8947721453261046],
+            "medianResidualPx": 0.9321704371812523,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.8731833718480071,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.658280801211532,
+                "rendered": 23.879469179462188,
+                "delta": 0.22792325031142013,
+                "spread": 0.0395756320281464
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.1395416572123,
+                "rendered": 463.3028413766123,
+                "delta": -1.8248305679291548,
+                "spread": 0.2138492172189217
+              },
+              "top": {
+                "count": 3,
+                "reference": 28.35762844490659,
+                "rendered": 28.07698311230094,
+                "delta": -0.2745577191948172,
+                "spread": 0.08671876568856263
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.2608516072692,
+                "rendered": 650.7634535671694,
+                "delta": -2.4973980400997107,
+                "spread": 0.07968644888796916
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.7984536588088673, -1.385977879647264],
+            "sizeDelta": [-2.052753818240575, -2.2228403209048935],
+            "medianResidualPx": 1.049694143561986,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "38937c61-280e-457f-aef9-43139446163a",
+      "name": "Savannah",
+      "referenceHash": "999f60e3429d917df106769c9ae8fae7ca1f9eaeae2f93bc44e42d2347d51460",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 61.067923648056215,
+          "strength": 33.138626221687566,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 381.2298639632832,
+          "strength": 29.150873122676725,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 60.97438101025029,
+          "strength": 33.26318580873551,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 381.0560218299459,
+          "strength": 25.78846925304782,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 60.900650998660545,
+          "strength": 34.742984771728516,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.8455264520477,
+          "strength": 21.53377926734186,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 46.84733747812577,
+          "strength": 37.54733657836914,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.6975125415548,
+          "strength": 20.161558581936745,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 46.92749007965174,
+          "strength": 40.31353206019248,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.7404916288371,
+          "strength": 22.81491937944966,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.08366147068125,
+          "strength": 39.4322390402517,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.7377569536804,
+          "strength": 25.000181874921246,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 68.9817712504456,
+          "strength": 50.94664075297694,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.70575415042,
+          "strength": 13.593997093939013,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 69.01112333211114,
+          "strength": 46.33493091214088,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.46739997594347,
+          "strength": 13.393193152643018,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 69.03474739386336,
+          "strength": 49.48004458027501,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 378.9271725503621,
+          "strength": 19.08228006670552,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.859190212157486,
+          "strength": 12.323664265294228,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.71122162949814,
+          "strength": 57.57483537735477,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.177487725131314,
+          "strength": 9.67361831665039,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 430.69552209938615,
+          "strength": 37.16635993219191,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.61694516971383,
+          "strength": 17.845143595049457,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 441.17094254389525,
+          "strength": 11.310383089127079,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 46.92749007965174,
+            "rendered": 47.859190212157486,
+            "delta": 1.011852734031713,
+            "spread": 1.5214309650008673
+          },
+          "right": {
+            "count": 3,
+            "reference": 440.7377569536804,
+            "rendered": 430.71122162949814,
+            "delta": -9.986290912056631,
+            "spread": 10.419476502271493
+          },
+          "top": {
+            "count": 3,
+            "reference": 60.97438101025029,
+            "rendered": 69.01112333211114,
+            "delta": 8.03674232186085,
+            "spread": 0.12289471947146069
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 381.0560218299459,
+            "rendered": 379.46739997594347,
+            "delta": -1.5886218540024402,
+            "spread": 1.06451204113921
+          }
+        },
+        "complete": true,
+        "centerDelta": [-4.487219089012459, 3.2240602339292046],
+        "sizeDelta": [-10.998143646088344, -9.62536417586329],
+        "medianResidualPx": 4.812682087931645,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.7825379618885207,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.110636043649205,
+                "rendered": 23.63106592326026,
+                "delta": 0.5695303546585748,
+                "spread": 0.059406771876787445
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.2922696472143,
+                "rendered": 463.61131326331616,
+                "delta": -0.6987373392376526,
+                "spread": 0.034663902573640826
+              },
+              "top": {
+                "count": 3,
+                "reference": 26.948633932610754,
+                "rendered": 28.094625379242217,
+                "delta": 1.1819793929793612,
+                "spread": 0.07181771795669434
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 652.0489125241123,
+                "rendered": 650.6255452680202,
+                "delta": -1.4196735803658385,
+                "spread": 0.07192033304977485
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.06460349228953888, -0.11884709369323865],
+            "sizeDelta": [-1.2682676938962274, -2.6016529733451996],
+            "medianResidualPx": 0.9403583661085069,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.7023626736611535,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.82923753950477,
+                "rendered": 23.63106592326026,
+                "delta": -0.2084779130737786,
+                "spread": 0.19526247338473368
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.2609118900492,
+                "rendered": 463.61131326331616,
+                "delta": -1.6673795820725559,
+                "spread": 0.19221554448705547
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.989299587520648,
+                "rendered": 28.094625379242217,
+                "delta": 0.10532579172156886,
+                "spread": 0.17975727732822477
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.4913205137088,
+                "rendered": 650.6255452680202,
+                "delta": -2.879326441984631,
+                "spread": 0.16031295144659907
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.9379287475731672, -1.387000325131531],
+            "sizeDelta": [-1.4589016689987773, -2.9846522337062],
+            "medianResidualPx": 0.9379287475731672,
+            "coherent": true
+          }
+        }
+      }
+    },
+    {
+      "set": "2ed",
+      "id": "712dc7d6-5543-49fd-bafa-5ffb6c2bb0ce",
+      "name": "Island",
+      "referenceHash": "11849b244eb1b825a3569e6b91ad3fbc00527137c97a2df09503c63b6761774b",
+      "referenceLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.14044458204192,
+          "strength": 15.665972494309948,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 379.60785207287194,
+          "strength": 9.812429735737462,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 65.01024194119363,
+          "strength": 13.4427425630631,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.0525941937909,
+          "strength": 22.79848357169859,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 64.89975118987859,
+          "strength": 13.770355839883127,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 377.0817512035776,
+          "strength": 34.588567672237275,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.85671369598099,
+          "strength": 21.395402723743068,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 435.02253769416615,
+          "strength": 13.287899694135112,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 47.23770542919231,
+          "strength": 19.27761483961536,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 434.9228937391226,
+          "strength": 15.952694862119612,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 48.074182518332975,
+          "strength": 24.369253589260964,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 434.7515249224472,
+          "strength": 19.529612695017168,
+          "status": "measured",
+          "competing": false
+        }
+      ],
+      "renderedLandmarks": [
+        {
+          "side": "top",
+          "x": 90,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.3212916702664,
+          "strength": 9.482057632938508,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 90,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.55231147631645,
+          "strength": 17.954241844915575,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 240,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.01212847468058,
+          "strength": 8.631022053380166,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 240,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.1998927758563,
+          "strength": 23.88422307660503,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "top",
+          "x": 400,
+          "y": 66,
+          "axis": "y",
+          "inward": 1,
+          "detected": 66.01966327857683,
+          "strength": 7.764046207551034,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "bottom",
+          "x": 400,
+          "y": 376,
+          "axis": "y",
+          "inward": -1,
+          "detected": 380.147842874186,
+          "strength": 28.744177418370402,
+          "status": "measured",
+          "competing": false
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 130,
+          "axis": "x",
+          "inward": 1,
+          "detected": 49.74540582259301,
+          "strength": 20.071956880630985,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 130,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.148534476066,
+          "strength": 8.154604142712008,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 230,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.61080830743684,
+          "strength": 15.242259363974295,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 230,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.79251298488333,
+          "strength": 9.993286748086252,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "left",
+          "x": 52,
+          "y": 310,
+          "axis": "x",
+          "inward": 1,
+          "detected": 50.04152071976857,
+          "strength": 25.479168553506174,
+          "status": "measured",
+          "competing": true
+        },
+        {
+          "side": "right",
+          "x": 436,
+          "y": 310,
+          "axis": "x",
+          "inward": -1,
+          "detected": 440.9489428944694,
+          "strength": 12.117018299718056,
+          "status": "measured",
+          "competing": true
+        }
+      ],
+      "artBoundaryDifference": {
+        "sides": {
+          "left": {
+            "count": 3,
+            "reference": 47.85671369598099,
+            "rendered": 50.04152071976857,
+            "delta": 1.9673382014355951,
+            "spread": 1.4057646768089356
+          },
+          "right": {
+            "count": 3,
+            "reference": 434.9228937391226,
+            "rendered": 440.79251298488333,
+            "delta": 5.869619245760703,
+            "spread": 0.7436224638608451
+          },
+          "top": {
+            "count": 3,
+            "reference": 65.01024194119363,
+            "rendered": 66.01966327857683,
+            "delta": 1.1199120886982428,
+            "spread": 0.11802555521128966
+          },
+          "bottom": {
+            "count": 3,
+            "reference": 377.0817512035776,
+            "rendered": 380.1998927758563,
+            "delta": 3.0660916706083867,
+            "spread": 2.121632267163875
+          }
+        },
+        "complete": true,
+        "centerDelta": [3.918478723598149, 2.0930018796533147],
+        "sizeDelta": [3.9022810443251075, 1.946179581910144],
+        "medianResidualPx": 2.516714936021991,
+        "coherent": false
+      },
+      "alternatives": {
+        "identity": {
+          "internalF1": 0.5640797522918053,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.061074008503336,
+                "rendered": 23.725929001514775,
+                "delta": 0.7186307864769219,
+                "spread": 0.17192243429731136
+              },
+              "right": {
+                "count": 3,
+                "reference": 464.2073546166986,
+                "rendered": 463.46721218505337,
+                "delta": -0.7494518069134983,
+                "spread": 0.11312705305601867
+              },
+              "top": {
+                "count": 3,
+                "reference": 27.095012000222614,
+                "rendered": 27.904795986584478,
+                "delta": 0.8119854758485481,
+                "spread": 0.02405737852155454
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 651.9332466897456,
+                "rendered": 650.68071513991,
+                "delta": -1.2645098643622532,
+                "spread": 0.09942390511469057
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.01541051021828821, -0.22626219425685257],
+            "sizeDelta": [-1.4680825933904202, -2.0764953402108013],
+            "medianResidualPx": 0.7807186413810232,
+            "coherent": true
+          }
+        },
+        "internalFit": {
+          "internalF1": 0.7654906487674096,
+          "outer": {
+            "sides": {
+              "left": {
+                "count": 3,
+                "reference": 23.736026084883353,
+                "rendered": 23.725929001514775,
+                "delta": 0.043678710096905604,
+                "spread": 0.17444525922494947
+              },
+              "right": {
+                "count": 3,
+                "reference": 465.18433194002563,
+                "rendered": 463.46721218505337,
+                "delta": -1.7171197549722592,
+                "spread": 0.23376220072049136
+              },
+              "top": {
+                "count": 3,
+                "reference": 28.115546759976354,
+                "rendered": 27.904795986584478,
+                "delta": -0.238484913265939,
+                "spread": 0.14455143695881745
+              },
+              "bottom": {
+                "count": 3,
+                "reference": 653.3257140749508,
+                "rendered": 650.68071513991,
+                "delta": -2.6569772495674897,
+                "spread": 0.1301582825198011
+              }
+            },
+            "complete": true,
+            "centerDelta": [-0.8367205224376768, -1.4477310814167144],
+            "sizeDelta": [-1.7607984650691648, -2.4184923363015507],
+            "medianResidualPx": 0.9778023341190991,
+            "coherent": true
+          }
+        }
+      }
+    }
+  ]
+}
