@@ -295,7 +295,7 @@ modern Oracle subtypes.
 
 ## Planeswalker component follow-up
 
-The latest [70-card review](fixtures/accuracy/planeswalker-type-shadow-plan.json)
+The latest [70-card review](fixtures/accuracy/planeswalker-type-symbol-plan.json)
 retains the existing assets. Paper clipping, colon identity, badge dimensions and
 row spacing are implemented; type-strip shape/position is still under review.
 
@@ -308,6 +308,8 @@ row spacing are implemented; type-strip shape/position is still under review.
 - Type strip: isolate printed letters, uniform outline and soft shadow into
   separate targets. Existing registration and raw scores disagree; most registered
   type crops decline after the visually directed shifts. Keep this flagged.
+  Independent straight-edge and interior-ink diagnostics now retain ambiguous
+  cases explicitly; curved ends and shadow shape still need separate targets.
 - Final ability text: check actual ink against the starting-loyalty silhouette;
   rectangle intersections alone flag many harmless transparent badge corners.
 - Original wording: M15’s six type lines now have partial scan reviews. Its

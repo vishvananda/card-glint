@@ -1870,3 +1870,29 @@ retain raw and registered scores. Individual results remain mixed: Ugin's
 registered type F1 improves .434 → .514 while Chandra's declines .453 → .386.
 Keep the independent outline/ink and registration review open. The local
 comparison displays this latest version.
+
+The [type-box and symbol follow-up](fixtures/accuracy/planeswalker-type-symbol-plan.json)
+raises the plate's bottom edge 1px while extending its shadow offset by 1px,
+preserving the top and typography anchors. The initial top-trim interpretation
+was superseded by the user's clarification. M15 and M20 now crop the transparent
+padding in their pinned Keyrune vectors, as M21 already did; their visible glyphs
+grow from about 30px to 54px wide. Custom symbols retain their viewport. The
+regression check paints padded synthetic symbols at both raster tiers.
+
+All 70 cards render without measured ability overflow. Inspect type-region F1
+is .473 for M21/M20 and .476 for M15/WAR; the
+[development](fixtures/accuracy/walker-type-symbol-development-measurement.json) and
+[confirmation](fixtures/accuracy/walker-type-symbol-set-transfer-measurement.json)
+reports retain every raw/registered result. These remain mixed regional scores,
+not proof of complete frame accuracy.
+
+The new [independent geometry audit](fixtures/accuracy/walker-type-symbol-geometry-measurement.json)
+measures signed paper transitions in three fixed strips and lettering in a
+separate interior sample. It confirms the approximately 1px bottom-edge lift
+on 50/70 inspect pairs; 20 ambiguous cases remain uncertain. The straight lower
+shadow sample is byte-identical before/after on all 70 cards at both tiers.
+Against raw scans, only 39/70 plate pairs and 35 text samples pass confidence
+checks. Curved ends, bevels and competing edges still need dedicated targets;
+these measurements do not authorize another positioning change. Reproduce with
+`node games/magic/tools/accuracy/walker-type-geometry.mjs`. This runs on cached
+rasters in Node, without Chromium or GPU execution.

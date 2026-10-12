@@ -1,9 +1,23 @@
 import manifest from '../../assets.json' with { type: 'json' };
+import type { FaceRect, RenderedCardInput } from './face-layout.js';
 /** Keyrune set-symbol SVGs by Andrew Gioia, pinned to commit 256add455.
  * Glyph SVGs are GPL-3.0: https://github.com/andrewgioia/keyrune/blob/256add455a043462f7b2bfa224ca71bfc66b62ab/LICENSE.md
  * The CDN serves immutable vectors with CORS so Canvas2D and CSS use the same art.
  */
 const KEYRUNE_ROOT = manifest.KEYRUNE_ROOT;
+/** Visible bounds in the pinned 32-square vectors. Transparent viewport padding
+ * must not shrink wide core-set icons. Custom assets keep their own viewport. */
+const CORE_SYMBOL_CROPS: Readonly<Record<string, FaceRect>> = {
+  m15: [0.25 / 32, 7.6 / 32, 31.5 / 32, 16.8 / 32],
+  m20: [0, 9.31 / 32, 1, 13.38 / 32],
+  m21: [0, 9.33 / 32, 1, 13.34 / 32],
+};
+
+export function setSymbolCrop(face: Pick<RenderedCardInput, 'setCode' | 'setSymbol'>): FaceRect {
+  return !face.setSymbol
+    ? (CORE_SYMBOL_CROPS[face.setCode?.toLowerCase() ?? ''] ?? [0, 0, 1, 1])
+    : [0, 0, 1, 1];
+}
 const KEYRUNE_CODES = new Set(
   `
 10e 2ed 2x2 2xm 3ed 40k 4ed 5dn 5ed 6ed 7ed 8ed 9ed a25 acr aer afc afr akh akr

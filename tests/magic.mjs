@@ -790,6 +790,57 @@ try {
     const { composeCardTexture, cardTextureKey, faceSetSymbol } = await import(
       '/magic-presentation.js'
     );
+    // A wide glyph inside a square SVG viewport must retain its visible size.
+    // Synthetic padded art exercises the complete painter without remote assets.
+    for (const [setCode, customSymbol] of [
+      ['m15', false],
+      ['m20', false],
+      ['m21', false],
+      ['m21', true],
+    ]) {
+      const symbol = document.createElement('canvas');
+      symbol.width = symbol.height = 320;
+      const c = symbol.getContext('2d');
+      c.fillStyle = '#ff00ff';
+      if (setCode === 'm15') c.fillRect(2.5, 76, 315, 168);
+      else c.fillRect(0, 93.3, 320, 133.4);
+      const face = {
+        ...fixtures[1],
+        setCode,
+        rarity: 'common',
+        ...(customSymbol ? { setSymbol: 'test:padded-symbol' } : {}),
+      };
+      const url = faceSetSymbol(face);
+      for (const tier of ['table', 'inspect']) {
+        const canvas = await composeCardTexture(
+          { face, printingId: null, printedImage: null },
+          tier,
+          new AbortController().signal,
+          {
+            loadImages: async (urls) => ({
+              images: new Map(urls.map((u) => [u, u === url ? symbol : bitmap])),
+              dispose() {},
+            }),
+          },
+        );
+        const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+        let left = canvas.width,
+          right = -1;
+        for (let i = 0; i < pixels.length; i += 4)
+          if (pixels[i] > 220 && pixels[i + 1] < 30 && pixels[i + 2] > 220) {
+            const x = (i / 4) % canvas.width;
+            left = Math.min(left, x);
+            right = Math.max(right, x);
+          }
+        const width = ((right - left + 1) * 488) / canvas.width;
+        if (customSymbol ? width < 27 || width > 32 : width < 50 || width > 55)
+          throw Error(
+            `Visible set glyph has the wrong size: ${setCode}, custom=${customSymbol}, ${tier}: ${width}`,
+          );
+        canvas.width = canvas.height = 0;
+      }
+      symbol.width = symbol.height = 0;
+    }
     const printed = { ...fixtures[0], setCode: '3ed', frameColors: ['G'] };
     const immutablePrinted = magic.describe(printed, 'table');
     printed.frameColors[0] = 'R';

@@ -7,6 +7,7 @@ import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './spl
 import { faceFrame, faceRects } from './special-frames.js';
 import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.js';
 import { paintPlaneswalkerType } from './planeswalker-type.js';
+import { setSymbolCrop } from './set-symbols.js';
 import {
   cardStock,
   faceStats,
@@ -91,7 +92,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v39',
+    'canvas-face-v41',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -513,12 +514,7 @@ export function paintAssembledFace(
     ),
   );
   const setIcon = images.get(faceSetSymbol(face) ?? '');
-  // Keyrune M21's 32-square viewport contains a wide glyph at y=9.33..22.67.
-  // This pack-owned crop uses the existing vector; custom symbols keep their viewport.
-  const setCrop: FaceRect =
-    !face.setSymbol && face.setCode?.toLowerCase() === 'm21'
-      ? [0, 9.33 / 32, 1, 13.34 / 32]
-      : [0, 0, 1, 1];
+  const setCrop = setSymbolCrop(face);
   const [, typeY, , typeH] = px(rects.type),
     typeCenter =
       typeY + typeH / 2 + FACE_TEXT.typeLift / 2 + (kind === 'normal' || planeswalker ? 2 : 0);
