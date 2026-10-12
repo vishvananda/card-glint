@@ -36,7 +36,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     rulesText,
     rulesParagraphs,
     illustration: entry.art ? `/__accuracy/object/${entry.art.sha256}` : null,
-    artist: card.artist,
+    artist: fields.artist ?? card.artist,
     power: Object.hasOwn(fields, 'power') ? fields.power : card.power,
     toughness: Object.hasOwn(fields, 'toughness') ? fields.toughness : card.toughness,
     loyalty: card.loyalty,

@@ -42,6 +42,23 @@ assert.equal(
   'Do not trust originalType automatically',
 );
 assert.equal(presentation(entry).contentStatus, 'oracle-unverified');
+const artistReview = {
+  reviewedFields: ['artist'],
+  referenceHash: 'scan-a',
+  artist: 'Printed Artist Spelling',
+};
+const artistResult = presentation(entry, { 'printing-a': artistReview });
+assert.equal(artistResult.face.artist, 'Printed Artist Spelling');
+assert.equal(artistResult.contentStatus, 'oracle-unverified');
+assert.equal(entry.card.artist, undefined, 'Printing override must not change source metadata');
+assert.throws(
+  () => presentation(entry, { 'printing-a': { ...artistReview, artist: '' } }),
+  /Invalid reviewed printing field/,
+);
+assert.throws(
+  () => presentation(entry, { 'printing-a': { ...artistReview, referenceHash: 'old-scan' } }),
+  /stale/,
+);
 const reviewed = presentation(
   entry,
   {
