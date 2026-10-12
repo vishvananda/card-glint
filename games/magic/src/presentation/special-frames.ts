@@ -1,5 +1,11 @@
 import { isRetro, retroRects } from './retro-frame.js';
-import { FACE_RECTS, type FaceRect, type RenderedCardInput } from './face-layout.js';
+import {
+  FACE_RECTS,
+  FACE_WIDTH,
+  FACE_HEIGHT,
+  type FaceRect,
+  type RenderedCardInput,
+} from './face-layout.js';
 export type SingleFrame =
   | 'normal'
   | 'saga'
@@ -90,9 +96,9 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       frame: [0.04724, 0.02655, 0.91339, 0.89989],
       art: [0.06299, 0.09224, 0.86614, (large ? 0.49044 : 0.55793) - 0.09224],
       title: [0.05669, 0.03375, 0.88662, 0.05737],
-      type: [0.05669, large ? 0.49044 : 0.55793, 0.88662, 0.05737],
+      type: [0.05669, (large ? 0.49044 : 0.55793) + 1 / FACE_HEIGHT, 0.88662, 0.05737],
       rules,
-      stats: [0.808, 0.881, 0.14, 0.069],
+      stats: [0.792 + 1 / FACE_WIDTH, 0.881 - 3 / FACE_HEIGHT, 0.16, 0.069],
       stamp: [
         rules[0] + (rules[2] - stampWidth) / 2,
         rules[1] + (rules[3] - stampHeight) / 2,

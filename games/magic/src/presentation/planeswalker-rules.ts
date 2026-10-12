@@ -1,6 +1,6 @@
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { faceFrame, faceRects, specialRules } from './special-frames.js';
-import { layoutRules } from './rules-layout.js';
+import { layoutRules, RULES_TYPOGRAPHY } from './rules-layout.js';
 
 /** Match explicit styles to the visible ability, stripping only its loyalty prefix.
  * rulesText remains the special-frame source; unrelated ordinary paragraphs do
@@ -26,7 +26,8 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
     y = rect[1] * FACE_HEIGHT,
     width = rect[2] * FACE_WIDTH,
     height = rect[3] * FACE_HEIGHT - (large ? 24 : 16),
-    topInset = large ? 4 : 0;
+    topInset = large ? 8 : 0;
+  const typography = large ? { ...RULES_TYPOGRAPHY, leading: 0.9 } : RULES_TYPOGRAPHY;
   const rows = specialRules(face).map((row, index) => ({
     ...row,
     runs: abilityRuns(face, row.text, index),
@@ -40,6 +41,7 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
         { x: x + row.left, y: 0, width: width - row.left - 8, height: 1000 },
         size,
         size,
+        typography,
       ),
     );
   let font = large ? 18 : 19,
@@ -56,27 +58,15 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
       );
     });
   };
-  while (
-    font > 8 &&
-    (minimum().reduce((sum, h) => sum + h, 0) > height || (!large && !fixedRowsFit()))
-  ) {
+  while (font > 8 && (minimum().reduce((sum, h) => sum + h, 0) > height || !fixedRowsFit())) {
     font -= 0.25;
     measured = measure(font);
   }
-  const heights = minimum();
-  // Equal rows where possible; a longer ability reserves its measured demand.
-  let share = height / Math.max(1, rows.length),
-    remaining = height,
-    count = rows.length;
-  for (const needed of large ? [...heights].sort((a, b) => b - a) : []) {
-    if (needed <= share) break;
-    remaining -= needed;
-    share = remaining / Math.max(1, --count);
-  }
+  const share = height / Math.max(1, rows.length);
   let top = topInset;
   return rows.map((row, index) => {
-    const h = large ? Math.max(share, heights[index]!) : share;
-    // Three-ability cards keep evenly spaced badge anchors. Measured text may
+    const h = share;
+    // Keep evenly spaced ability anchors, including a short static row. Text may
     // extend slightly across a nominal row edge, with explicit ink-gap checks.
     const textHeight = Math.max(h, measured[index]!.height);
     const layout = layoutRules(
@@ -90,9 +80,10 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
       },
       font,
       font,
+      typography,
     );
     layout.overflow ||= top + h > topInset + height + 0.01;
-    layout.overflow ||= !large && !fixedRowsFit();
+    layout.overflow ||= !fixedRowsFit();
     const result = { ...row, top, height: h, font, width: layout.width, layout };
     top += h;
     return result;

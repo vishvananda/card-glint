@@ -34,6 +34,24 @@ export function specialPaperColor(face: RenderedCardInput): string {
   };
   return colors[resolveCardProfile(face).boxes] ?? '#dededbf0';
 }
+/** Paper belongs below the frame's own outline, not across its inside edge. */
+export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+  const [x, y, w, h] = faceRects(face).rules;
+  context.fillStyle = specialPaperColor(face);
+  context.fillRect(x * FACE_WIDTH + 36, y * FACE_HEIGHT, w * FACE_WIDTH - 36, h * FACE_HEIGHT);
+}
+
+function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center: number) {
+  context.fillStyle = '#17140f';
+  context.font = '24px "CardRenderer MTG MPlantin", Georgia';
+  context.textBaseline = 'alphabetic';
+  const ink = context.measureText(':');
+  context.fillText(
+    ':',
+    x,
+    center + 1.5 + (ink.actualBoundingBoxAscent - ink.actualBoundingBoxDescent) / 2,
+  );
+}
 export function paintSpecialRules(
   context: CanvasRenderingContext2D,
   face: RenderedCardInput,
@@ -46,17 +64,9 @@ export function paintSpecialRules(
     y = rect[1] * FACE_HEIGHT,
     w = rect[2] * FACE_WIDTH,
     h = rect[3] * FACE_HEIGHT;
-  context.fillStyle = saga ? '#e3d8bb' : specialPaperColor(face);
-  if (saga) context.fillRect(x, y, w, h);
-  else {
-    context.beginPath();
-    context.roundRect(x + 40, y + 3, w - 40, h - 6, [
-      4,
-      4,
-      { x: (w - 40) / 2, y: 10 },
-      { x: (w - 40) / 2, y: 10 },
-    ]);
-    context.fill();
+  if (saga) {
+    context.fillStyle = '#e3d8bb';
+    context.fillRect(x, y, w, h);
   }
   const box = sagaTextbox(face, resolveCardProfile(face).boxes);
   const paper = box ? images.get(box) : undefined;
@@ -64,8 +74,8 @@ export function paintSpecialRules(
   const rows: (ReturnType<typeof specialRuleRows>[number] & { layout?: RulesLayout })[] = saga
     ? specialRuleRows(face)
     : planeswalkerRuleRows(context, face);
-  for (const row of rows) {
-    if (row.top > 0) {
+  for (const [rowIndex, row] of rows.entries()) {
+    if (rowIndex > 0) {
       context.fillStyle = '#0002';
       context.fillRect(x + (saga ? 0 : 40), y + row.top, w - (saga ? 0 : 40), 1.5);
     }
@@ -86,14 +96,23 @@ export function paintSpecialRules(
       );
     }
     const badgeW = saga ? 36 : 54,
-      badgeH = saga ? 36 : 34;
+      badgeH = saga ? 36 : 40;
     row.badges.forEach((badge, index) => {
       const bx = x + (saga ? -18 : 0),
         by = y + row.top + row.height / 2 + (index - row.badges.length / 2) * badgeH;
       const url = ruleBadgeAsset(kind, badge),
         image = url ? images.get(url) : null;
-      if (image) context.drawImage(image, bx, by, badgeW, badgeH);
-      else {
+      if (image) {
+        context.save();
+        if (!saga) {
+          const scale = context.getTransform().a;
+          context.shadowColor = '#0009';
+          context.shadowBlur = 3 * scale;
+          context.shadowOffsetY = 2 * scale;
+        }
+        context.drawImage(image, bx, by, badgeW, badgeH);
+        context.restore();
+      } else {
         context.fillStyle = '#29231c';
         context.fillRect(bx, by, badgeW, badgeH);
       }
@@ -109,10 +128,7 @@ export function paintSpecialRules(
           by + badgeH / 2 + (saga ? 0 : metrics.offsetY),
           badgeW - 3,
         );
-        if (!saga) {
-          context.fillStyle = '#17140f';
-          context.fillText(':', bx + badgeW + 4, by + badgeH / 2);
-        }
+        if (!saga) paintAbilityColon(context, bx + badgeW + 4, by + badgeH / 2);
       }
     });
   }

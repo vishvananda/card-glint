@@ -5,7 +5,8 @@ import { hasExtraRules, extraRuleKey, extraRuleBlocks } from './extra-rules.js';
 import { paintExtraRules } from './extra-rule-paint.js';
 import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './split-layout.js';
 import { faceFrame, faceRects } from './special-frames.js';
-import { paintSpecialRules } from './special-rule-paint.js';
+import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.js';
+import { paintPlaneswalkerType } from './planeswalker-type.js';
 import {
   cardStock,
   faceStats,
@@ -90,7 +91,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v35',
+    'canvas-face-v36',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -447,7 +448,10 @@ export function paintAssembledFace(
     context.restore();
   }
   paintIllustration(context, face, images, px(rects.art), layer);
-  if (frame && kind !== 'normal') paintFrame(context, frame, profile.legendary, rects.frame);
+  const planeswalker = kind.startsWith('planeswalker');
+  if (planeswalker) paintPlaneswalkerPaper(context, face);
+  if (frame && kind !== 'normal')
+    paintFrame(context, frame, profile.legendary, rects.frame, !planeswalker);
   if (profile.legendary) draw(assets.crown, rects.crown);
   if (panel) {
     const boxes = images.get(assets.boxes);
@@ -470,7 +474,9 @@ export function paintAssembledFace(
       );
   } else {
     draw(assets.boxes, rects.title);
-    draw(assets.boxes, rects.type, 'bottom');
+    const boxes = images.get(assets.boxes);
+    if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type);
+    else draw(assets.boxes, rects.type, 'bottom');
   }
   context.fillStyle = '#17140f';
   context.textBaseline = 'middle';
@@ -514,7 +520,8 @@ export function paintAssembledFace(
       ? [0, 9.33 / 32, 1, 13.34 / 32]
       : [0, 0, 1, 1];
   const [, typeY, , typeH] = px(rects.type),
-    typeCenter = typeY + typeH / 2 + FACE_TEXT.typeLift / 2 + (kind === 'normal' ? 2 : 0);
+    typeCenter =
+      typeY + typeH / 2 + FACE_TEXT.typeLift / 2 + (kind === 'normal' || planeswalker ? 2 : 0);
   const setWidth = setIcon
     ? Math.min(
         FACE_TEXT.setMaxWidth,
@@ -607,12 +614,18 @@ function paintFrame(
   image: ImageBitmap,
   legendary: boolean,
   rect: FaceRect = FACE_RECTS.frame,
+  shadow = true,
 ) {
   const [x, y, width, height] = pixels(rect);
   const sourceHeight = Math.min(image.height, (height * image.width) / width);
   const renderedHeight = (sourceHeight * width) / image.width,
     scale = context.getTransform().a;
   context.save();
+  if (!shadow) {
+    context.drawImage(image, 0, 0, image.width, sourceHeight, x, y, width, renderedHeight);
+    context.restore();
+    return;
+  }
   context.shadowColor = 'black';
   context.shadowOffsetX = -0.00394 * FACE_WIDTH * scale;
   context.shadowOffsetY = 0.00394 * FACE_WIDTH * scale;

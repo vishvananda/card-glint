@@ -316,6 +316,18 @@ try {
         throw Error('Ability layout dropped text or duplicated the loyalty prefix');
     if (!abilityRows[2].layout.lines.some((l) => l.runs.some((r) => r.italic)))
       throw Error('Explicit italic reminder style was lost in a planeswalker row');
+    const shortPassive = planeswalkerRuleRows(ctx, {
+      typeLine: ability.typeLine,
+      rulesText:
+        'This spell cannot be countered.\n+2: Each opponent gets an emblem with a triggered ability that deals damage at the beginning of their upkeep.\n−3: Deal 3 damage to each non-Elemental creature.\n−X: Deal X damage to target creature or planeswalker. If a permanent dealt damage this way would die this turn, exile it instead.',
+    });
+    if (shortPassive[0].height < 48 || shortPassive.some((r) => r.layout.overflow))
+      throw Error('Short static text lost its row or crowded a dense final ability');
+    for (let i = 1; i < shortPassive.length; i++) {
+      const previous = shortPassive[i - 1].layout;
+      if (shortPassive[i].layout.top - previous.top - previous.height < 7.99)
+        throw Error('Dense planeswalker abilities have overlapping ink');
+    }
     const unrelatedParagraphs = planeswalkerRuleRows(ctx, {
       ...ability,
       rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Unrelated ordinary-face text.' }] }],
