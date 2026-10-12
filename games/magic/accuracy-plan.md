@@ -1144,3 +1144,62 @@ flagged and excluded from the additional source-qualified aggregate (12 cards).
 retain complete denominators, image hashes and per-card evidence. The private
 `3ed/dense-review/index.html` includes every change and Aladdin's Ring as a
 negative control; the main comparison adds Earthbind and Gaea's Liege.
+
+### Revised titles, credits and stats
+
+`3ed/lettering-plan.json` reserved 12 title/credit examples before fitting seven
+development cards. Enlarged scans show paired pale upper-left and dark lower-right
+letter edges. Solid dark fill can score higher while visibly filling the wrong
+part of the glyph. The selected candidate uses the existing fonts and frame
+assets, with two translated glyph masks subtracted during cached face composition.
+There is no pixel readback or per-frame font/mask work.
+
+The shared Revised nonland policy uses a 26px title at x=40, 22px left-aligned
+credits at x=50/baseline=642 including `Illus. ©`, and 26px stats at right=451,
+12px below the former middle baseline. Type and mana remain unchanged. This is
+a set-scoped policy; it is not extrapolated to another frame era. The candidate
+was committed in `f344cb1` before reserved crops were opened. All 12 reserved
+titles and credits and all five matching numeric stats improve paired edge F1
+at both tiers. Census medians also improve; Hill Giant's inspect title census
+falls and remains flagged. `lettering-transfer.json` preserves every result.
+
+`lettering-metrics.mjs` averages separate light/dark boundary F1 and retains
+Census local-order similarity. Its test demonstrates the failure of dark-only
+matching: removing the highlight retains .948 dark F1 but drops paired F1 to
+.474; an affine tone change still matches exactly. This experimental component
+metric is separate from the existing structural-v2 corpus report. Neither
+metric certifies fill style or glyph topology without image inspection.
+
+The complete `revised-lettering` capture has 306 cards/612 PNGs, no failures or
+clipping, and the same source inputs and body layout as `revised-dense`. All 281
+nonlands change only in title/footer regions; silhouette alpha and all 25 land
+PNG pairs are unchanged. Production matches all 38 frozen development/reserved
+PNG candidates. Another 56 representatives from M21/MIR/TMP/4ED/5ED preserve both
+full PNGs. All required renderer checks, package/browser/showcase tests, Magic
+tests, accuracy tests and strict native/WASM Clippy pass.
+
+| Inspect component | Diagnostic count | Paired F1 median | Gains / regressions > .02 |
+| ----------------- | ---------------: | ---------------: | ------------------------: |
+| Title             |              281 |      .390 → .480 |                   268 / 1 |
+| Credits           |              281 |      .232 → .467 |                   280 / 0 |
+| Stats             |              104 |      .209 → .365 |                    98 / 0 |
+
+`lettering-measurement.json` contains every card, both tiers, image/source hashes,
+Census disagreements and a separate 19-card reviewed-component subset (10
+matching stats). The complete component measurement took 129 seconds in Node,
+including PNG decode and normalization; it did not launch a browser or measure
+GPU time. Other printing fields remain unverified, so these corpus numbers are
+diagnostics rather than a percentage of rendering accuracy. Vesuvan's printed
+`*/*` versus cached `0/0` is excluded from stats fitting/scoring. Drain Life's
+printed `{1}{B}` versus cached `{X}{1}{B}` is separately recorded, along with seven
+type-line mismatches, for the next source-correction baseline.
+
+The post-adoption image audit retains Animate Dead's title F1 regression and
+the largest Census disagreements. Some dark-frame letter interiors look too
+weak/broken; white numeric glyphs can still be too thin/small. These need a new
+reserved-component study, not per-card shifts. Serendib Efreet still needs its
+printing-specific green-frame routing. Existing frame textures and font glyph
+shapes also remain open. `lettering-audit-review.json` records eight inspected
+cases without refitting the frozen candidate. The private
+`3ed/lettering-validation/index.html` shows the reserved crops; the full comparison
+against main has been refreshed with the current renderer.

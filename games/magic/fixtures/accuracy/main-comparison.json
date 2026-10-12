@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "mainCommit": "0b0d408d9dcbba6e3188d5d9f309dd1340347526",
-  "branchCommit": "8cd3211c4824bcf7cae2566f856a14f72cd391ed",
+  "branchCommit": "2f23b16a6821a01533edf5de52ec0041cc9d274c",
   "rendererHashes": [
     "48093a204cb7594234715c4bcb3719054861aa05bf32f6a036e93ced5cac3530",
-    "16e7ee2d195497a4a61bc11e4ab553d1d101a5ca0610cd74499c89c9f3ecef6e"
+    "e4105957ac913fd4720fc6877af7ded944d622d34a52d7161170275f13ef464e"
   ],
   "fontHashes": [
     "3493fd86c163fea26861cca7a28ac397aa8fbee4e7fa1599f556987ff9178ce2",
@@ -34,10 +34,11 @@
       "captureContentStatus": "printing-reference",
       "contentReview": {
         "file": "3ed/dense-targets.json",
-        "sha256": "c6b9e63579ff0543d1e86d8fef9e28493effeb8bcd26f0ed053f2e860ba3d283"
+        "sha256": "c6b9e63579ff0543d1e86d8fef9e28493effeb8bcd26f0ed053f2e860ba3d283",
+        "regions": ["body"]
       },
       "reviewCase": false,
-      "note": "Dense Revised text uses a shared smaller type size and wider baseline spacing. All seven printed lines and their endings match. Font stroke weight remains heavier than the scan. The final classifier was audited across the set after refinement, not on an untouched validation set.",
+      "note": "Dense Revised text matches all seven printed lines and their endings. The title now uses thin light/dark edges, and the larger illustrator credit is left-aligned with ©. Existing type wording, mana shapes and frame texture remain review items. Body classification was audited after refinement; lettering passed a separate frozen 12-card validation.",
       "captures": {
         "main": {
           "sha256": "0a99ae383d538499a8f42259eb2fedff0581342fd42397c0b9504d6420610158",
@@ -77,7 +78,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "3af54d916eb57a8e162f080437d15af38c7f2611df7872c6618c62655dac4158",
+          "sha256": "d20552eb4b49b67944adf817cd95815b5a65f92f591411824bbf2132ea6c79fe",
           "attempts": 1,
           "fonts": [
             {
@@ -148,10 +149,11 @@
       "captureContentStatus": "printing-reference",
       "contentReview": {
         "file": "3ed/dense-targets.json",
-        "sha256": "c6b9e63579ff0543d1e86d8fef9e28493effeb8bcd26f0ed053f2e860ba3d283"
+        "sha256": "c6b9e63579ff0543d1e86d8fef9e28493effeb8bcd26f0ed053f2e860ba3d283",
+        "regions": ["body"]
       },
       "reviewCase": false,
-      "note": "Smaller dense type restores all seven printed lines. The diagonal-T glyph and shared body inset are also corrected; no scan-specific coordinates or new frame assets. Existing frame color and outlined header/stat ink still need work.",
+      "note": "Smaller dense type restores all seven printed lines. Revised titles and credits now use thin paired edges; the illustrator credit includes © and stats sit lower against a shared right edge. The diagonal-T mark and body inset are corrected. Frame texture, type wording and exact glyph strokes still differ.",
       "captures": {
         "main": {
           "sha256": "0384407f3801b00d7463f5c7cb065ed26729160154513280c2a28559379b585e",
@@ -191,7 +193,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "75cf354997ae9e84ff9beda952e49f35d88b364851a4af8937b042744c179deb",
+          "sha256": "293cf917c6f9b58e32f58eaf1a13425c4e63ac2bf13cbf2ace9d150f733ef97d",
           "attempts": 1,
           "fonts": [
             {
@@ -262,7 +264,8 @@
       "captureContentStatus": "printing-reference",
       "contentReview": {
         "file": "3ed/long-body-targets.json",
-        "sha256": "c8a07591a84f62b5741a38f582070df4bbc8e33adeff939c9ad8067484540a19"
+        "sha256": "c8a07591a84f62b5741a38f582070df4bbc8e33adeff939c9ad8067484540a19",
+        "regions": ["body"]
       },
       "reviewCase": false,
       "note": "Shared body inset, narrower width and removal of the rules/flavor gap restore all six printed lines. Font weight remains heavier. This is an intermediate branch change: full-set regressions remain listed in the body review.",
@@ -305,7 +308,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "2d445d3ad86058e4c32c24b132e9559425bb8ee5da2e375e35057f4fbbc342e6",
+          "sha256": "0cf94e3efbf85527fa1b4046048a2a2260f36798d645a51e8cd0412325c4aef1",
           "attempts": 1,
           "fonts": [
             {
@@ -376,7 +379,8 @@
       "captureContentStatus": "printing-reference",
       "contentReview": {
         "file": "3ed/long-body-targets.json",
-        "sha256": "c8a07591a84f62b5741a38f582070df4bbc8e33adeff939c9ad8067484540a19"
+        "sha256": "c8a07591a84f62b5741a38f582070df4bbc8e33adeff939c9ad8067484540a19",
+        "regions": ["body"]
       },
       "reviewCase": false,
       "note": "Shared text bounds restore all five printed lines and move the body upward. The existing diagonal tap mark is retained. No card-specific coordinates or scan transforms.",
@@ -419,7 +423,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "d3c16129fb26feba590bc51b67fd43cf877cd2cd2715d251c4219f22860f38a7",
+          "sha256": "2f4d4eba1989de2ba64c393e5ec590371e9278ce14c61522f1155e1f3968c84e",
           "attempts": 1,
           "fonts": [
             {
@@ -528,7 +532,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "4fcdce9d31425fd6e187689ecdee55ffde272edef9487d34ffbcfa0f207d8e41",
+          "sha256": "1f54545b07f02b71e61114a58b166eff77842803ac8843c12638dba6340d2870",
           "attempts": 1,
           "fonts": [
             {
@@ -637,7 +641,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "f6db45d5a22d53f136b285bf6ed8ddb96c6215ef6097e938a4c85f75243a4749",
+          "sha256": "7e89a61d463a742481848a6aec866ef80ebf5b78b74a29ac99d407f722d1c22b",
           "attempts": 1,
           "fonts": [
             {
@@ -746,7 +750,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "b20618df68be9b0aebc13989ea3de67dc1b6db3d99aeee61c66def4d5901d9c5",
+          "sha256": "9e1c2e8091946f1be03081c43adb5478b2ce57b03c33673c568c9de4fbfb0bf6",
           "attempts": 1,
           "fonts": [
             {
@@ -819,7 +823,7 @@
       "captures": {
         "main": {
           "sha256": "f56f84369ae84098dc5b882fd490682db0130d54613f6b5bc7d7ce9b6fa03365",
-          "attempts": 1,
+          "attempts": 2,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -1355,12 +1359,12 @@
               "status": "loaded"
             },
             {
-              "family": "CardRenderer MTG Goudy",
+              "family": "CardRenderer MTG Historic Symbols",
               "style": "normal",
               "status": "loaded"
             },
             {
-              "family": "CardRenderer MTG Historic Symbols",
+              "family": "CardRenderer MTG Goudy",
               "style": "normal",
               "status": "loaded"
             }
@@ -1683,7 +1687,7 @@
           "browser": "148.0.7778.96"
         },
         "branch": {
-          "sha256": "cd9126735ec79b9099338fec0cb1aab255f0d7e3db1bdf9a097bd35c3ba7dad5",
+          "sha256": "a061f83142660ec72df9188da240c43cd729f20dbe16b72988791381516f44c8",
           "attempts": 1,
           "fonts": [
             {
@@ -1865,7 +1869,7 @@
       "captures": {
         "main": {
           "sha256": "80ba745cd7db7e7207d95b00634f36191e6e28e38dba930347603c2a2729bb60",
-          "attempts": 1,
+          "attempts": 2,
           "fonts": [
             {
               "family": "CardRenderer MTG Beleren",
@@ -1930,12 +1934,12 @@
               "status": "loaded"
             },
             {
-              "family": "CardRenderer MTG Goudy",
+              "family": "CardRenderer MTG Historic Symbols",
               "style": "normal",
               "status": "loaded"
             },
             {
-              "family": "CardRenderer MTG Historic Symbols",
+              "family": "CardRenderer MTG Goudy",
               "style": "normal",
               "status": "loaded"
             }

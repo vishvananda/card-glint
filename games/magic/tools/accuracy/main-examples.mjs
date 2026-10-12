@@ -45,14 +45,14 @@ const selections = [
     '3ed',
     'revised-dense',
     '147',
-    'Dense Revised text uses a shared smaller type size and wider baseline spacing. All seven printed lines and their endings match. Font stroke weight remains heavier than the scan. The final classifier was audited across the set after refinement, not on an untouched validation set.',
+    'Dense Revised text matches all seven printed lines and their endings. The title now uses thin light/dark edges, and the larger illustrator credit is left-aligned with ©. Existing type wording, mana shapes and frame texture remain review items. Body classification was audited after refinement; lettering passed a separate frozen 12-card validation.',
     ['body'],
   ],
   [
     '3ed',
     'revised-dense',
     '198',
-    'Smaller dense type restores all seven printed lines. The diagonal-T glyph and shared body inset are also corrected; no scan-specific coordinates or new frame assets. Existing frame color and outlined header/stat ink still need work.',
+    'Smaller dense type restores all seven printed lines. Revised titles and credits now use thin paired edges; the illustrator credit includes © and stats sit lower against a shared right edge. The diagonal-T mark and body inset are corrected. Frame texture, type wording and exact glyph strokes still differ.',
     ['body'],
   ],
   [
@@ -210,6 +210,7 @@ for (const set of new Set(selections.map((s) => s[0]))) {
       contentReview = {
         file: `3ed/${study}-targets.json`,
         sha256: hash(await readFile(reviewFile)),
+        regions: ['body'],
       };
     }
     assert.ok(

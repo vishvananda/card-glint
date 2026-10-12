@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "rendererHash": "e4105957ac913fd4720fc6877af7ded944d622d34a52d7161170275f13ef464e",
+  "measurementHash": "a164a43fbed1299060a7ca3f499187ce699f0a21be70ea37188a6c49c5beb51f",
+  "selection": "Largest inspect-tier paired-edge/census disagreements across title, credits and stats; selected after full-set scoring for diagnostic review, not fitting or validation.",
+  "image": "3ed/revised-lettering/audit-review.png",
+  "imageHash": "dc275d286259c47c694910e05aed00b4781e1a314677fd3f0a2816c0c534e2f5",
+  "cropRows": [
+    [15, 65],
+    [605, 66]
+  ],
+  "columns": ["scan", "revised-dense", "revised-lettering"],
+  "cards": [
+    {
+      "id": "a450ce98-4854-4378-8809-27019b3800c2",
+      "number": "30",
+      "name": "Pearled Unicorn",
+      "inputHash": "6346892f0e305351f87efa75fd42becba1687f25f46c54279521dc0c7d78fcef",
+      "referenceHash": "6e89de3344ecadc8a706e01221aa812f10490f76458a41c9fd374b05fc6b9539",
+      "note": "Credits and stats placement visibly improve. Stats remain thin relative to the scan; source 2/2 is confirmed."
+    },
+    {
+      "id": "d55a1479-6654-4e8e-9a27-44e23753f8be",
+      "number": "42",
+      "name": "Veteran Bodyguard",
+      "inputHash": "0bef4f8c02a307131d8dca4b9ccfddb3b28e771c676f093fa785174bf062ad79",
+      "referenceHash": "69c897d6dc2daa9d5a1de8212b26dc8862fa26b8b05780defab884145a511a6a",
+      "note": "Stats are visibly lower/right, but now look a little small/thin; census falls. Keep as a font-size/shape review case across white cards."
+    },
+    {
+      "id": "7954f128-7f3d-4c5e-adea-6ff452186ba4",
+      "number": "69",
+      "name": "Phantasmal Forces",
+      "inputHash": "e5806407c94af3d05d8a11836095efb3053b64e787c00bf2aad6b5b9cccd48ab",
+      "referenceHash": "767437dbc9e686ca692f88f9fe45f67131feb4bdba191fd499b3bc5d8ef221a3",
+      "note": "Title is better positioned but remains a little narrow. Credits and lower/right numeric stats visibly improve; fine glyph strokes differ."
+    },
+    {
+      "id": "35415199-0f1d-4398-a48f-f78697a51105",
+      "number": "79",
+      "name": "Serendib Efreet",
+      "inputHash": "d7e71b79b0e9ad07c8571f495d3bc627b602163d5dbed7ec9d974ffd81f658b0",
+      "referenceHash": "d4df515ddc0674a46f340f8e7f13110a6cdc04fd275bc68ee4229a6050524f55",
+      "note": "Existing known printing routing defect: the scan has a green frame while semantic blue chooses a blue plate. This dominates local appearance; exact printing-specific frame routing is needed."
+    },
+    {
+      "id": "eed73f84-ad08-44f8-a4fe-cd324ec1da92",
+      "number": "93",
+      "name": "Animate Dead",
+      "inputHash": "50e4b9ab285ef700b356cc569e532d705619c5f5ce3525ba7295154321abd5a7",
+      "referenceHash": "1c255874972c6bd78b4383140acb7d10f9b38a2846123ab2df7a6918d918067c",
+      "note": "Only paired-edge title regression over .02. Placement moves toward the left edge, but the pale strokes look weak/broken on the dark frame. Revisit glyph interior treatment across black cards with a new reserved cohort; no per-card offset."
+    },
+    {
+      "id": "ea2c2bf3-357d-4595-9b24-3451bd2d0179",
+      "number": "206",
+      "name": "Ley Druid",
+      "inputHash": "333fc1eca7f6cbb399ee37db89d305dfa48f53b35c67587ee5bf3b1a92cc918f",
+      "referenceHash": "d2ebfc3c950c6c170ce1fc48e3c4318dc85145193c9b75b98e2b9efaee31da03",
+      "note": "Left credits and lower/right stats visibly improve. Artist glyph weight/width and frame texture differ; do not fit scan-specific coordinates."
+    },
+    {
+      "id": "b3654fd6-f8ac-471a-8559-ba4ed0fe75c3",
+      "number": "270",
+      "name": "Ornithopter",
+      "inputHash": "806dd95fed8f96863ee77d29a8fadda8245f15913a39171087c4ae23dc73aef3",
+      "referenceHash": "95116c4d7df302b0b816b9509c037c10eeda3cd668af0726f1546a6767780d35",
+      "note": "Title and stats are better positioned. The letter-edge treatment is thin and the original artifact texture/gray lettering still differs."
+    },
+    {
+      "id": "803fd65f-4ca6-4fe4-abc2-72aa32ebb3a5",
+      "number": "274",
+      "name": "Sol Ring",
+      "inputHash": "5a1e4955ce71b8d8379e6c1c1c82f0b1e788e8bad50e06f00c2d10647e80a17e",
+      "referenceHash": "a4fe958556829b70652bed8f4c720ed2eb95a12df7d6f80b0ffea95dbac57853",
+      "note": "Credits move to the correct left region and gain ©. Font width and pale/dark stroke balance still differ; census drops despite higher edge overlap."
+    }
+  ],
+  "next": "Keep the shared placement gains. Investigate weak/broken interior glyph strokes on dark backgrounds and numeric glyph size using new reserved component images before any further style changes. Correct printing type/mana/stat source fields separately before fitting those components."
+}

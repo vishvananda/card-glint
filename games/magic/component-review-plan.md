@@ -176,3 +176,22 @@ measurements are not GPU-completion or frame-rate measurements.
 A replacement headless rasterizer is optional, not a prerequisite for fast
 comparison. It would need a font-shaping and alpha-compositing parity suite
 against the production Canvas backend before its scores could guide changes.
+
+## Paired lettering follow-up
+
+The Revised study now scores both dark and pale boundaries and keeps Census
+local-order agreement beside them. Synthetic missing-highlight and inverted-ink
+cases are regression tests; tone-only changes remain matched. A solid dark title
+still achieved a higher paired score than the visually supported edge-only
+treatment, so the combined score remains a diagnostic, not an acceptance gate
+by itself. The full-set audit found one title edge regression and further Census
+disagreements; the largest eight were inspected after the frozen validation.
+
+Next, separate glyph support from background texture in the stats/footer windows,
+which can include panel edges or long artist credits. Preserve missing-component
+recall when narrowing the support mask. Investigate weak or broken strokes on
+black frames and thin white-frame numerals using a newly reserved cohort, with
+size and interior fill varied separately. Keep the established placement fixed
+during the ink-shape trial. Correct the recorded printed type, mana and stat
+fields in a separate baseline before fitting those components. Do not use the
+now-viewed audit examples as fresh validation.
