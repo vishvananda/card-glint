@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "decision": "rejected-by-visual-review-despite-score-gain",
+  "experimentHash": "5f2b098ca00c2d13eff3ecabb9c58b016f7c42e77189bae204895378e40318f8",
+  "summary": [
+    {
+      "id": "control",
+      "tier": "inspect",
+      "medianF1": 0.572917683488706,
+      "medianDelta": 0,
+      "medianDistance": 1.615532380232608,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "regular-below22-small15.5",
+      "size": 15.5,
+      "leading": 1.25,
+      "y": 4,
+      "height": 8,
+      "centerOffset": -18,
+      "regularSizeBelow": 22,
+      "tier": "inspect",
+      "medianF1": 0.572917683488706,
+      "medianDelta": 0,
+      "medianDistance": 1.615532380232608,
+      "gains": ["Aladdin's Ring"],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "control",
+      "tier": "table",
+      "medianF1": 0.5670375994762954,
+      "medianDelta": 0,
+      "medianDistance": 1.7121431835742524,
+      "gains": [],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    },
+    {
+      "id": "regular-below22-small15.5",
+      "size": 15.5,
+      "leading": 1.25,
+      "y": 4,
+      "height": 8,
+      "centerOffset": -18,
+      "regularSizeBelow": 22,
+      "tier": "table",
+      "medianF1": 0.5670375994762954,
+      "medianDelta": 0,
+      "medianDistance": 1.7121431835742524,
+      "gains": ["Aladdin's Ring"],
+      "regressions": [],
+      "exactWraps": 0,
+      "overflow": []
+    }
+  ],
+  "results": [
+    {
+      "id": "40cb7c36-135b-40d0-bc7b-62fbcd508f49",
+      "name": "Aladdin's Ring",
+      "number": "232",
+      "inputHash": "ef20f0318eb12d1c1b5b76fcc27e7514d841dfafaf20b75219408c183b45be81",
+      "referenceHash": "398b8f1d140490e7ebe4f182f688168967e99a458a2660480383615989b4c6ca",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "232.inspect.control.png",
+          "sha256": "0abb56a43b5481476571aa7f83980b6e9bd8a2a4c8c764754164990a5950fa35",
+          "edgeF1": 0.32259353284099357,
+          "meanDistance": 3.195144527782218,
+          "censusSimilarity": 0.48937397210534184,
+          "wrapping": null,
+          "size": 20.75,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "232.inspect.regular-below22-small15.5.png",
+          "sha256": "e310908bf0a8951ee6aa825930799217f638fdf284159be9ca904ff689b5010c",
+          "edgeF1": 0.3903720832291413,
+          "meanDistance": 3.7829627960102856,
+          "censusSimilarity": 0.5110994824038674,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 5
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "232.table.control.png",
+          "sha256": "a8a798541156837e3d21b49f8fc4f3a6e202106d6b983101331f1ed344070b04",
+          "edgeF1": 0.31157193181167947,
+          "meanDistance": 3.346693827173377,
+          "censusSimilarity": 0.490068134731626,
+          "wrapping": null,
+          "size": 20.75,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "232.table.regular-below22-small15.5.png",
+          "sha256": "3c74134143f0addb2ebc73b1118e77b82942c11823005fdf49d4351aa857d2bd",
+          "edgeF1": 0.3574811934986853,
+          "meanDistance": 4.887051972383536,
+          "censusSimilarity": 0.5224606107207188,
+          "wrapping": null,
+          "size": 15.5,
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "id": "a21b08d4-b43d-4c93-99e7-39dfe83ced91",
+      "name": "Balance",
+      "number": "3",
+      "inputHash": "9b64e8e7c80b9a8c5c75f2558d501893b7ac4d4111604d290368186a6d2d89d9",
+      "referenceHash": "8eef2ddaefda2b3ee11e4111c76338e25824dffe08154eb90a1ab9c33e2bd553",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "3.inspect.control.png",
+          "sha256": "ec7048690823188b3f6b6e046839ff383d0c4b80106c39c1be07d4b63510bb6a",
+          "edgeF1": 0.5118082122070723,
+          "meanDistance": 1.5562748851673007,
+          "censusSimilarity": 0.46101601185730806,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "3.inspect.regular-below22-small15.5.png",
+          "sha256": "ec7048690823188b3f6b6e046839ff383d0c4b80106c39c1be07d4b63510bb6a",
+          "edgeF1": 0.5118082122070723,
+          "meanDistance": 1.5562748851673007,
+          "censusSimilarity": 0.46101601185730806,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "3.table.control.png",
+          "sha256": "f5ae0476b9ded6a20e34cbd452bd35fb58a5785acf51f47ca83388d87f7a6353",
+          "edgeF1": 0.5102318114172021,
+          "meanDistance": 1.6358147937882586,
+          "censusSimilarity": 0.4858534791542685,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "3.table.regular-below22-small15.5.png",
+          "sha256": "f5ae0476b9ded6a20e34cbd452bd35fb58a5785acf51f47ca83388d87f7a6353",
+          "edgeF1": 0.5102318114172021,
+          "meanDistance": 1.6358147937882586,
+          "censusSimilarity": 0.4858534791542685,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "cd07c415-4f39-4011-b94a-4aab56dca7d7",
+      "name": "Nether Shadow",
+      "number": "118",
+      "inputHash": "b6c27c594501ce91513b634d3238e77e74ad5aaf743171c4e77e7b66eba1e731",
+      "referenceHash": "f18268aff836b56daa3105d9932a9821e4fc5a39b137b146ad27264c10ed0026",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "118.inspect.control.png",
+          "sha256": "a816dfbb9c7d3e6cf289930edd10aa60f7d19a8396c5aab5061e30e0fc85b128",
+          "edgeF1": 0.7880275582009224,
+          "meanDistance": 1.0478074189187605,
+          "censusSimilarity": 0.7094307269578368,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 7
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "118.inspect.regular-below22-small15.5.png",
+          "sha256": "a816dfbb9c7d3e6cf289930edd10aa60f7d19a8396c5aab5061e30e0fc85b128",
+          "edgeF1": 0.7880275582009224,
+          "meanDistance": 1.0478074189187605,
+          "censusSimilarity": 0.7094307269578368,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 7
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "118.table.control.png",
+          "sha256": "3706e5385dfadb9ccf622007d13b65f89b9b54508d3ae2fc0fe280586537732f",
+          "edgeF1": 0.7883021497572757,
+          "meanDistance": 1.0544108920382096,
+          "censusSimilarity": 0.7536676322266628,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 7
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "118.table.regular-below22-small15.5.png",
+          "sha256": "3706e5385dfadb9ccf622007d13b65f89b9b54508d3ae2fc0fe280586537732f",
+          "edgeF1": 0.7883021497572757,
+          "meanDistance": 1.0544108920382096,
+          "censusSimilarity": 0.7536676322266628,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "id": "6cba931e-94b5-4fcc-8d5f-eb60664baf31",
+      "name": "Frozen Shade",
+      "number": "112",
+      "inputHash": "c71187477402338f943effba436cca9e2dcad20313f60fe17011ed058dbdad5b",
+      "referenceHash": "a50f119d94caeca14299f6e609833cc01ababde7215067ee05d3c2c24fffc553",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "112.inspect.control.png",
+          "sha256": "c6f2da5629e1b823ae2c30a85940b8b1fd713f5416e9700df061469580234de7",
+          "edgeF1": 0.5767320465689733,
+          "meanDistance": 2.5545121363777534,
+          "censusSimilarity": 0.5765183771350266,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "112.inspect.regular-below22-small15.5.png",
+          "sha256": "c6f2da5629e1b823ae2c30a85940b8b1fd713f5416e9700df061469580234de7",
+          "edgeF1": 0.5767320465689733,
+          "meanDistance": 2.5545121363777534,
+          "censusSimilarity": 0.5765183771350266,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "112.table.control.png",
+          "sha256": "573b5739c5538658967b61213080b01274ce2a35a345ccbc7b565ce2549e0616",
+          "edgeF1": 0.5727305937038839,
+          "meanDistance": 2.696715632408088,
+          "censusSimilarity": 0.5935946752801841,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "112.table.regular-below22-small15.5.png",
+          "sha256": "573b5739c5538658967b61213080b01274ce2a35a345ccbc7b565ce2549e0616",
+          "edgeF1": 0.5727305937038839,
+          "meanDistance": 2.696715632408088,
+          "censusSimilarity": 0.5935946752801841,
+          "wrapping": null,
+          "size": 22.5,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "5b61cb02-7eb7-4d85-8ced-7978cb1a81d2",
+      "name": "Lord of the Pit",
+      "number": "116",
+      "inputHash": "acbd703468a305a3565b33a136dbfeaf925d943c7558000e568abf4ff5014001",
+      "referenceHash": "61c7629ec38c08bdeb81b77a633623491fd46c95cd826732b619804f784898af",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "116.inspect.control.png",
+          "sha256": "93a7d5a49f4de8efbe66131a87037167b5212cc81596e0d04ddde9c6b24fec55",
+          "edgeF1": 0.5691033204084386,
+          "meanDistance": 1.73064544214311,
+          "censusSimilarity": 0.5396534945129247,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "116.inspect.regular-below22-small15.5.png",
+          "sha256": "93a7d5a49f4de8efbe66131a87037167b5212cc81596e0d04ddde9c6b24fec55",
+          "edgeF1": 0.5691033204084386,
+          "meanDistance": 1.73064544214311,
+          "censusSimilarity": 0.5396534945129247,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "116.table.control.png",
+          "sha256": "12156f6f231d61f8aa2395b0f5cbcd1e7d8b07ec9727b8a8c544f96f022e28da",
+          "edgeF1": 0.5542042904046591,
+          "meanDistance": 1.8802461865489886,
+          "censusSimilarity": 0.5502715228418898,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "116.table.regular-below22-small15.5.png",
+          "sha256": "12156f6f231d61f8aa2395b0f5cbcd1e7d8b07ec9727b8a8c544f96f022e28da",
+          "edgeF1": 0.5542042904046591,
+          "meanDistance": 1.8802461865489886,
+          "censusSimilarity": 0.5502715228418898,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "e868767f-b62e-4bb4-95e5-62feac05ff9d",
+      "name": "Zombie Master",
+      "number": "138",
+      "inputHash": "d829b9ce0fc0ed16a74533b5c07fd6af90eedd0246bb7511b001f9899b8171da",
+      "referenceHash": "9cb66a6753fad9030dca23bbeb8c0dcae0d761e0b9f05673d11cad759783753a",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "138.inspect.control.png",
+          "sha256": "c116c22e587161225ee9cefc2c64a3cb3b04402be6e6b0c6844ea82b6f88e095",
+          "edgeF1": 0.6879416892174955,
+          "meanDistance": 1.3621994124091201,
+          "censusSimilarity": 0.6184879866323492,
+          "wrapping": null,
+          "size": 22,
+          "lines": 7
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "138.inspect.regular-below22-small15.5.png",
+          "sha256": "c116c22e587161225ee9cefc2c64a3cb3b04402be6e6b0c6844ea82b6f88e095",
+          "edgeF1": 0.6879416892174955,
+          "meanDistance": 1.3621994124091201,
+          "censusSimilarity": 0.6184879866323492,
+          "wrapping": null,
+          "size": 22,
+          "lines": 7
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "138.table.control.png",
+          "sha256": "15c793b67966d3abb4d136dc0a5fa8db06d4bdcd158da691262f9d880c38e232",
+          "edgeF1": 0.633581543963919,
+          "meanDistance": 1.5156981944667103,
+          "censusSimilarity": 0.6066548531849236,
+          "wrapping": null,
+          "size": 22,
+          "lines": 7
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "138.table.regular-below22-small15.5.png",
+          "sha256": "15c793b67966d3abb4d136dc0a5fa8db06d4bdcd158da691262f9d880c38e232",
+          "edgeF1": 0.633581543963919,
+          "meanDistance": 1.5156981944667103,
+          "censusSimilarity": 0.6066548531849236,
+          "wrapping": null,
+          "size": 22,
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "id": "c83929b1-4826-4b84-823d-0997560b6bdc",
+      "name": "Dwarven Weaponsmith",
+      "number": "145",
+      "inputHash": "ba6e76c22e429db5fd9f16906dfab0b73ba16bd3387c907cf6ddd6896f4472b3",
+      "referenceHash": "cd841f7c71316baba85dcd6781a4f7f3d15cf60fc18aaca5d3f67e4670b3de1e",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "145.inspect.control.png",
+          "sha256": "18abae56af3e16315aee83d278180f9cd7b1c3d06298fc5ad09fe22124642f99",
+          "edgeF1": 0.5986596931794766,
+          "meanDistance": 1.4042168569997426,
+          "censusSimilarity": 0.5342870538546095,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "145.inspect.regular-below22-small15.5.png",
+          "sha256": "18abae56af3e16315aee83d278180f9cd7b1c3d06298fc5ad09fe22124642f99",
+          "edgeF1": 0.5986596931794766,
+          "meanDistance": 1.4042168569997426,
+          "censusSimilarity": 0.5342870538546095,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "145.table.control.png",
+          "sha256": "625ba9368fc7ff43f4d9d7ee73740f993704c16ff6c43c11251c38c9964f128b",
+          "edgeF1": 0.5984178099508976,
+          "meanDistance": 1.4268541286800964,
+          "censusSimilarity": 0.5603889477686328,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "145.table.regular-below22-small15.5.png",
+          "sha256": "625ba9368fc7ff43f4d9d7ee73740f993704c16ff6c43c11251c38c9964f128b",
+          "edgeF1": 0.5984178099508976,
+          "meanDistance": 1.4268541286800964,
+          "censusSimilarity": 0.5603889477686328,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        }
+      ]
+    },
+    {
+      "id": "05a60435-7b5e-47c1-8186-1ca30a243992",
+      "name": "Thicket Basilisk",
+      "number": "218",
+      "inputHash": "27954a47533a49cf00ed639e2c88a47988264910606ac9acd0aa96a28405f7fe",
+      "referenceHash": "ab023195cecdb9b20fff8b03eb5c093462854e71fe8721fcbdec1476b60a70a5",
+      "scores": [
+        {
+          "candidate": "control",
+          "tier": "inspect",
+          "file": "218.inspect.control.png",
+          "sha256": "00ccb3d79b2b53ae2108259bc11add63801aca9c2a0b80c6f1be76f2c61f3052",
+          "edgeF1": 0.5497529668339147,
+          "meanDistance": 1.6747898752979151,
+          "censusSimilarity": 0.5267553987576384,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "inspect",
+          "file": "218.inspect.regular-below22-small15.5.png",
+          "sha256": "00ccb3d79b2b53ae2108259bc11add63801aca9c2a0b80c6f1be76f2c61f3052",
+          "edgeF1": 0.5497529668339147,
+          "meanDistance": 1.6747898752979151,
+          "censusSimilarity": 0.5267553987576384,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "control",
+          "tier": "table",
+          "file": "218.table.control.png",
+          "sha256": "235ecd1ce02b12cd5a4a28d683ba06c08a242a331edbf901b037f96453ae5a90",
+          "edgeF1": 0.5613446052487069,
+          "meanDistance": 1.7884715733602463,
+          "censusSimilarity": 0.5493124069860208,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        },
+        {
+          "candidate": "regular-below22-small15.5",
+          "tier": "table",
+          "file": "218.table.regular-below22-small15.5.png",
+          "sha256": "235ecd1ce02b12cd5a4a28d683ba06c08a242a331edbf901b037f96453ae5a90",
+          "edgeF1": 0.5613446052487069,
+          "meanDistance": 1.7884715733602463,
+          "censusSimilarity": 0.5493124069860208,
+          "wrapping": null,
+          "size": 22.25,
+          "lines": 8
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Aladdin’s Ring is clearly regular type in the scan:8 printed lines become5 in the candidate. Its edge F1 misleadingly increases. Reject despite favorable numerical aggregate.",
+    "Seven unchanged controls preserve PNGs. No new generalization claim. Final classification will require both measured fit below22 and >270 source characters; all positives have now been seen, so only full-corpus audit is possible."
+  ]
+}
