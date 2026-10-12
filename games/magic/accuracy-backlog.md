@@ -567,7 +567,8 @@ its application, deployment and database outside this library repository.
   changing the shared assets. Source URLs/hashes, reference/render hashes and
   patches are in `fixtures/accuracy/land-paper-review.json`; reproduce with
   `node games/magic/tools/accuracy/land-paper-study.mjs`. This asset/material
-  issue remains open; no speculative per-card tint has been applied.
+  issue was confirmed at v59; the shared-palette v62 correction below addresses
+  its dominant brightness/gradient error without replacing those assets.
 
 ### Old-frame symbol treatment survey (v61)
 
@@ -603,3 +604,32 @@ its application, deployment and database outside this library repository.
   `chronicles-symbol-identities.json` under `fixtures/accuracy/`. The audit reads
   cached PNG regions without Chromium. Full rendering is captured once per
   candidate; no image readback enters the runtime painter.
+
+### BR/WB land rules-paper correction (v62)
+
+- The original BR/WB frame images contain nearly white, opaque rules paper;
+  a missing background layer is not the cause. Apply a multiplicative gradient
+  only inside ordinary land rules boxes, preserving the source grain and inset
+  shadows. Two palette-wide corrections serve every set; no per-card or per-scan
+  parameters. Colored rails, name/type plates, art, typography, special layouts
+  and nonland uses of these assets are unchanged.
+- Freeze twelve inputs before changing the painter: the six reported printings,
+  two different M19 lands reserved for validation, and four controls (WR land,
+  colorless land, BR nonland and WB nonland). All eight corrected printings
+  improve at both table and inspection sizes. Inspection mean patch RGB error
+  falls from 114.5 to 11.7 on the six calibration printings, and 112.1 to 8.4 on
+  Cinder Barrens/Forsaken Sanctuary. Every changed pixel intersects the paper
+  interior; all four controls and all text layouts remain identical.
+- This metric is mean Euclidean sRGB distance between broad median patches,
+  not perceptual Delta E or overall rendering accuracy. Raw-scan color variation
+  remains. Paper texture is still more mottled than the scans, and exact gradient
+  transitions/per-set color calibration stay on the new-frame HSB review list.
+  Other land color pairs are unchanged and still need that pass. The local
+  comparison offers close-ups/full cards and the existing frozen frame
+  registration; wording is not certified by this material study.
+- Reproduce with `land-paper-correction.mjs before|after` and
+  `land-paper-audit.mjs` under `tools/accuracy/`. The baseline command refuses to
+  overwrite another renderer revision. Evidence is in
+  `fixtures/accuracy/land-paper-{plan,measurement}.json`; original source assets
+  and the pale-paper diagnostic remain in `land-paper-review.json`. Comparison
+  uses cached PNGs without Chromium; runtime painting needs no pixel readback.

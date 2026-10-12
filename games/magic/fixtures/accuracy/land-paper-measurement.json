@@ -1,0 +1,601 @@
+{
+  "schemaVersion": 1,
+  "scope": "Cached PNG-only material audit. Mean Euclidean sRGB distance (0–255 channels) of broad median patches, not perceptual Delta E or a total card-accuracy score. Six reported printings informed two shared palette corrections; two different M19 lands held out. Raw scans, no color calibration or per-scan fitting. Typography unchanged; source wording unverified. Same-palette nonlands and other land palettes are pixel-identical controls. No browser needed for comparison.",
+  "baselineRendererHash": "15beaccd08c686015fbe1464ffdcd79693328545e81cc112f77d547086367ea8",
+  "rendererHash": "80dd353392c7cacea1f22cdc5ac6646f7ea77039ed68ecd6339342658f2e3b81",
+  "planHash": "144171a92b0c08744c57067f7be63c5df664e7a4da0dfbdf0735d4e7e1341279",
+  "methodHash": "375946638a4a4b6658928b14e1be58700c08a6c6ed37d46899cde22f4c875e85",
+  "patches": {
+    "left": [55, 448, 80, 145],
+    "right": [355, 448, 80, 145]
+  },
+  "summary": {
+    "calibration": {
+      "cards": 6,
+      "beforeMeanRgbError": 114.50283859476365,
+      "afterMeanRgbError": 11.728528314638604,
+      "improved": 6,
+      "outsidePaper": 0
+    },
+    "held-out": {
+      "cards": 2,
+      "beforeMeanRgbError": 112.07880643426023,
+      "afterMeanRgbError": 8.400107324278611,
+      "improved": 2,
+      "outsidePaper": 0
+    },
+    "control": {
+      "cards": 4,
+      "beforeMeanRgbError": 43.989945132945145,
+      "afterMeanRgbError": 43.989945132945145,
+      "improved": 0,
+      "outsidePaper": 0
+    }
+  },
+  "rows": [
+    {
+      "id": "1dc57d63-5a6d-4ff2-8079-544b2c4eade1",
+      "set": "m15",
+      "name": "Battlefield Forge",
+      "cohort": "control",
+      "referenceHash": "f640436d6037122da3a803fabfaf09e1b2ea034cfee6a80a3aa5652d302f3a28",
+      "reference": {
+        "left": [230, 129, 104],
+        "right": [241, 214, 160]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [245, 222, 211],
+            "right": [245, 243, 238]
+          },
+          "after": {
+            "left": [245, 222, 211],
+            "right": [245, 243, 238]
+          },
+          "beforeError": 112.93571195919816,
+          "afterError": 112.93571195919816,
+          "referenceSideContrast": 102.38163897887159,
+          "beforeSideContrast": 34.20526275297414,
+          "afterSideContrast": 34.20526275297414,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [244, 222, 210],
+            "right": [244, 242, 237]
+          },
+          "after": {
+            "left": [244, 222, 210],
+            "right": [244, 242, 237]
+          },
+          "beforeError": 111.84762454123849,
+          "afterError": 111.84762454123849,
+          "referenceSideContrast": 102.38163897887159,
+          "beforeSideContrast": 33.60059523282288,
+          "afterSideContrast": 33.60059523282288,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "aa9ad0c9-77a7-4d18-9707-1e5e3d4cf7e8",
+      "set": "m15",
+      "name": "Caves of Koilos",
+      "cohort": "calibration",
+      "referenceHash": "07c5e111711db70456c3d8d4bdec3e7880acead54ed924d1eeae9ab98f0f59bf",
+      "reference": {
+        "left": [234, 218, 161],
+        "right": [159, 145, 147]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [241, 241, 238],
+            "right": [233, 233, 230]
+          },
+          "after": {
+            "left": [227, 212, 169],
+            "right": [155, 143, 152]
+          },
+          "beforeError": 111.23609187326635,
+          "afterError": 9.457379774116536,
+          "referenceSideContrast": 105.59356040971439,
+          "beforeSideContrast": 13.856406460551018,
+          "afterSideContrast": 101.16323442832382,
+          "changedPixels": 184522,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [240, 240, 237],
+            "right": [233, 232, 230]
+          },
+          "after": {
+            "left": [226, 211, 169],
+            "right": [154, 143, 151]
+          },
+          "beforeError": 110.2675779354542,
+          "afterError": 10.00616931407472,
+          "referenceSideContrast": 105.59356040971439,
+          "beforeSideContrast": 12.727922061357855,
+          "afterSideContrast": 100.65783625729296,
+          "changedPixels": 21206,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "db41b554-2bb1-4f11-be29-233d36cc955a",
+      "set": "m19",
+      "name": "Cinder Barrens",
+      "cohort": "held-out",
+      "referenceHash": "83a9596f7fa733c028c739d321c6c5c1531f9d81b95a66b6470707ce2f2c0b5c",
+      "reference": {
+        "left": [162, 157, 157],
+        "right": [228, 157, 116]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [232, 231, 228],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [164, 159, 162],
+            "right": [231, 154, 125]
+          },
+          "beforeError": 121.28775806258719,
+          "afterError": 7.847218508802115,
+          "referenceSideContrast": 77.69813382572325,
+          "beforeSideContrast": 20.808652046684813,
+          "afterSideContrast": 76.70071707617862,
+          "changedPixels": 182457,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [231, 229, 226],
+            "right": [243, 223, 212]
+          },
+          "after": {
+            "left": [163, 157, 161],
+            "right": [231, 154, 125]
+          },
+          "beforeError": 119.36446464557889,
+          "afterError": 7.036489998341931,
+          "referenceSideContrast": 77.69813382572325,
+          "beforeSideContrast": 19.390719429665317,
+          "afterSideContrast": 77,
+          "changedPixels": 21260,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "02f99756-d334-4dba-a375-ba3d91ecae62",
+      "set": "m19",
+      "name": "Detection Tower",
+      "cohort": "control",
+      "referenceHash": "9297d23d14b0b440c127bfdc319f9bbc7c840048c7babb6f98706bb6775e76c8",
+      "reference": {
+        "left": [203, 196, 196],
+        "right": [206, 198, 198]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [208, 225, 227],
+            "right": [209, 225, 226]
+          },
+          "after": {
+            "left": [208, 225, 227],
+            "right": [209, 225, 226]
+          },
+          "beforeError": 40.87811947629367,
+          "afterError": 40.87811947629367,
+          "referenceSideContrast": 4.123105625617661,
+          "beforeSideContrast": 1.4142135623730951,
+          "afterSideContrast": 1.4142135623730951,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [204, 222, 224],
+            "right": [207, 223, 225]
+          },
+          "after": {
+            "left": [204, 222, 224],
+            "right": [207, 223, 225]
+          },
+          "beforeError": 37.51667717292236,
+          "afterError": 37.51667717292236,
+          "referenceSideContrast": 4.123105625617661,
+          "beforeSideContrast": 3.3166247903554003,
+          "afterSideContrast": 3.3166247903554003,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "b376c8c9-cd35-4c2b-8b5b-95ea9735b366",
+      "set": "m19",
+      "name": "Forsaken Sanctuary",
+      "cohort": "held-out",
+      "referenceHash": "7c7b44632ba452fed4e5eca06fa9d463dc4219c4485caa15ae23b15cdbac9cf7",
+      "reference": {
+        "left": [232, 216, 172],
+        "right": [156, 152, 155]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [241, 241, 238],
+            "right": [233, 233, 230]
+          },
+          "after": {
+            "left": [226, 211, 169],
+            "right": [155, 143, 152]
+          },
+          "beforeError": 102.86985480593327,
+          "afterError": 8.952996139755108,
+          "referenceSideContrast": 100.80178569846865,
+          "beforeSideContrast": 13.856406460551018,
+          "afterSideContrast": 99.76973488989535,
+          "changedPixels": 180554,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [239, 238, 233],
+            "right": [233, 232, 229]
+          },
+          "after": {
+            "left": [225, 209, 166],
+            "right": [154, 143, 151]
+          },
+          "beforeError": 99.3290365271315,
+          "afterError": 10.812856261955558,
+          "referenceSideContrast": 100.80178569846865,
+          "beforeSideContrast": 9.38083151964686,
+          "afterSideContrast": 98.09179374443103,
+          "changedPixels": 21222,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "9b7ec5a3-3c40-4090-b9e3-11fb5b06fb8f",
+      "set": "m20",
+      "name": "Bloodfell Caves",
+      "cohort": "calibration",
+      "referenceHash": "d6ef1b1f40199fbefc59a885e9edd678ec40997a42991e82f6b8360225007135",
+      "reference": {
+        "left": [145, 144, 150],
+        "right": [243, 154, 121]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [232, 231, 229],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [164, 159, 162],
+            "right": [232, 154, 125]
+          },
+          "beforeError": 130.60997099373475,
+          "afterError": 19.36160604146611,
+          "referenceSideContrast": 102.68885041717041,
+          "beforeSideContrast": 21.540659228538015,
+          "afterSideContrast": 77.57576941287789,
+          "changedPixels": 183728,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [232, 230, 227],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [163, 158, 161],
+            "right": [231, 154, 125]
+          },
+          "beforeError": 129.7759588842215,
+          "afterError": 18.98354422150892,
+          "referenceSideContrast": 102.68885041717041,
+          "beforeSideContrast": 19.723082923316017,
+          "afterSideContrast": 77.04544113703288,
+          "changedPixels": 21273,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "5d89a0e2-1163-4a11-b0df-deef2e6c8108",
+      "set": "m21",
+      "name": "Bloodfell Caves",
+      "cohort": "calibration",
+      "referenceHash": "aca69500cfe9e9b4d335205ee23f3df9967e52310d5538ee9f909ec0a77cb1bf",
+      "reference": {
+        "left": [177, 169, 170],
+        "right": [227, 153, 119]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [232, 231, 229],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [164, 159, 162],
+            "right": [232, 154, 125]
+          },
+          "beforeError": 110.08107128507457,
+          "afterError": 13.061147732453236,
+          "referenceSideContrast": 73.19152956456095,
+          "beforeSideContrast": 21.540659228538015,
+          "afterSideContrast": 77.57576941287789,
+          "changedPixels": 184952,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [231, 230, 227],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [163, 158, 161],
+            "right": [231, 154, 125]
+          },
+          "beforeError": 108.92777949855704,
+          "afterError": 13.61502361627026,
+          "referenceSideContrast": 73.19152956456095,
+          "beforeSideContrast": 20.346989949375807,
+          "afterSideContrast": 77.04544113703288,
+          "changedPixels": 21273,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "0c8269e6-b30c-4fdc-82a7-d503c133afa6",
+      "set": "iko",
+      "name": "Bloodfell Caves",
+      "cohort": "calibration",
+      "referenceHash": "907432abb3fa2ccc27515a475828e03d6fcdd4b3226dafeea03a4db0aeccc57e",
+      "reference": {
+        "left": [174, 166, 172],
+        "right": [226, 154, 125]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [232, 231, 229],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [164, 159, 162],
+            "right": [232, 154, 125]
+          },
+          "beforeError": 108.68544554239557,
+          "afterError": 10.88986691902975,
+          "referenceSideContrast": 71.1125867902441,
+          "beforeSideContrast": 21.540659228538015,
+          "afterSideContrast": 77.57576941287789,
+          "changedPixels": 184952,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [231, 230, 227],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [163, 158, 161],
+            "right": [231, 154, 125]
+          },
+          "beforeError": 107.54918626423976,
+          "afterError": 11.24642784226795,
+          "referenceSideContrast": 71.1125867902441,
+          "beforeSideContrast": 20.346989949375807,
+          "afterSideContrast": 77.04544113703288,
+          "changedPixels": 21273,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "99264beb-2149-4cd4-9880-f0dc5c570c1b",
+      "set": "dmu",
+      "name": "Caves of Koilos",
+      "cohort": "calibration",
+      "referenceHash": "53fcbef62df0c5bbb6ee55dbdbe844b2003ff63ce7035d8f0d3fce52fb58949d",
+      "reference": {
+        "left": [220, 207, 177],
+        "right": [150, 141, 155]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [241, 241, 238],
+            "right": [233, 232, 230]
+          },
+          "after": {
+            "left": [226, 211, 169],
+            "right": [155, 143, 151]
+          },
+          "beforeError": 108.5646671047954,
+          "afterError": 8.739266773384188,
+          "referenceSideContrast": 98.69143833180262,
+          "beforeSideContrast": 14.45683229480096,
+          "afterSideContrast": 99.94498486667553,
+          "changedPixels": 178903,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [239, 238, 233],
+            "right": [233, 231, 229]
+          },
+          "after": {
+            "left": [225, 209, 166],
+            "right": [154, 142, 151]
+          },
+          "beforeError": 104.91209452378989,
+          "afterError": 8.99600568022696,
+          "referenceSideContrast": 98.69143833180262,
+          "beforeSideContrast": 10.04987562112089,
+          "afterSideContrast": 98.76740352970711,
+          "changedPixels": 21069,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "8b90dc92-cb66-41d9-89f9-2b6e3cfc8082",
+      "set": "fdn",
+      "name": "Bloodfell Caves",
+      "cohort": "calibration",
+      "referenceHash": "cb380bdc0b462c58786e99d35604ac125679949d75abec301026e747cad07e4a",
+      "reference": {
+        "left": [161, 154, 153],
+        "right": [235, 156, 131]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [232, 231, 229],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [164, 159, 162],
+            "right": [232, 154, 125]
+          },
+          "beforeError": 117.83978476931526,
+          "afterError": 8.861902647381804,
+          "referenceSideContrast": 77.2269383052313,
+          "beforeSideContrast": 21.540659228538015,
+          "afterSideContrast": 77.57576941287789,
+          "changedPixels": 184952,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [231, 230, 227],
+            "right": [244, 223, 213]
+          },
+          "after": {
+            "left": [163, 158, 161],
+            "right": [231, 154, 125]
+          },
+          "beforeError": 116.68187583830229,
+          "afterError": 8.32423308172978,
+          "referenceSideContrast": 77.2269383052313,
+          "beforeSideContrast": 20.346989949375807,
+          "afterSideContrast": 77.04544113703288,
+          "changedPixels": 21273,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "1fa781df-859f-4346-9424-b3713b17e1f6",
+      "set": "m21",
+      "name": "Dire Fleet Warmonger",
+      "cohort": "control",
+      "referenceHash": "972ec86b4ec54c4ad4846ba2ba5ccc6d66da7568e4c69515a902e281b8dcb43d",
+      "reference": {
+        "left": [225, 224, 228],
+        "right": [228, 215, 210]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [232, 230, 227],
+            "right": [243, 222, 211]
+          },
+          "after": {
+            "left": [232, 230, 227],
+            "right": [243, 222, 211]
+          },
+          "beforeError": 12.928371223636352,
+          "afterError": 12.928371223636352,
+          "referenceSideContrast": 20.346989949375804,
+          "beforeSideContrast": 21,
+          "afterSideContrast": 21,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [226, 225, 222],
+            "right": [243, 221, 209]
+          },
+          "after": {
+            "left": [226, 225, 222],
+            "right": [243, 221, 209]
+          },
+          "beforeError": 11.175414029603811,
+          "afterError": 11.175414029603811,
+          "referenceSideContrast": 20.346989949375804,
+          "beforeSideContrast": 21.77154105707724,
+          "afterSideContrast": 21.77154105707724,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        }
+      }
+    },
+    {
+      "id": "642e0c48-1f77-41e0-abbe-f570b757cd66",
+      "set": "m21",
+      "name": "Indulging Patrician",
+      "cohort": "control",
+      "referenceHash": "1f3d8c56518fdf3b29d849a40fd752d7fdc41052463011f2c683bffa3f062f1a",
+      "reference": {
+        "left": [236, 234, 233],
+        "right": [227, 226, 230]
+      },
+      "tiers": {
+        "inspect": {
+          "before": {
+            "left": [241, 241, 238],
+            "right": [233, 232, 230]
+          },
+          "after": {
+            "left": [241, 241, 238],
+            "right": [233, 232, 230]
+          },
+          "beforeError": 9.217577872652384,
+          "afterError": 9.217577872652384,
+          "referenceSideContrast": 12.409673645990857,
+          "beforeSideContrast": 14.45683229480096,
+          "afterSideContrast": 14.45683229480096,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        },
+        "table": {
+          "before": {
+            "left": [239, 239, 235],
+            "right": [232, 231, 228]
+          },
+          "after": {
+            "left": [239, 239, 235],
+            "right": [232, 231, 228]
+          },
+          "beforeError": 6.756441615659256,
+          "afterError": 6.756441615659256,
+          "referenceSideContrast": 12.409673645990857,
+          "beforeSideContrast": 12.727922061357855,
+          "afterSideContrast": 12.727922061357855,
+          "changedPixels": 0,
+          "outsidePaper": 0
+        }
+      }
+    }
+  ]
+}
