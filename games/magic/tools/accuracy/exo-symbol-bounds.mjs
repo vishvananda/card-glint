@@ -11,7 +11,7 @@ import {
   objectFile,
 } from './common.mjs';
 import { median } from './metrics.mjs';
-import { symbolComponentBounds } from './symbol-component-bounds.mjs';
+import { measureSymbolBounds, fittedSymbolBounds } from './symbol-bounds.mjs';
 const stage = process.argv[2] ?? 'rim-outer',
   base = `${outputRoot}/exo-symbol`,
   snapshot = await readJson(`${cacheRoot}/rollout/exo-symbol.json`),
@@ -25,36 +25,14 @@ async function checkedPng(file, sha) {
   return PNG.sync.read(bytes, { checkCRC: true });
 }
 function measure(image, light = false) {
-  const thresholds = light ? [190, 205, 220] : [120, 140, 160],
-    samples = thresholds.map((t) => symbolComponentBounds(image, t, light)),
-    accepted = samples.filter(Boolean),
-    rect = accepted.length
-      ? Array.from({ length: 4 }, (_, j) => median(accepted.map((s) => s.rect[j])))
-      : null,
-    spread = accepted.length
-      ? Array.from(
-          { length: 4 },
-          (_, j) =>
-            Math.max(...accepted.map((s) => s.rect[j])) -
-            Math.min(...accepted.map((s) => s.rect[j])),
-        )
-      : null;
-  return { samples, rect, spread, stable: accepted.length >= 2 && Math.max(...spread) <= 1.31 };
+  return measureSymbolBounds(image, {
+    region: [363, 374, 76, 31],
+    limits: { width: [40, 72], height: [light ? 18 : 12, 29] },
+    thresholds: light ? [190, 205, 220] : [120, 140, 160],
+    light,
+  });
 }
-function fit(rect) {
-  const [x, y, width, height] = rect,
-    cx = x + width / 2 - 244,
-    cy = y + height / 2 - 340,
-    c = Math.cos(transform.rotation),
-    s = Math.sin(transform.rotation);
-  // Width/height are measured independently of translation and rotation.
-  return {
-    width: width * transform.scale,
-    height: height * transform.scale,
-    centerX: 244 + transform.tx + transform.scale * (cx * c - cy * s),
-    centerY: 340 + transform.ty + transform.scale * (cx * s + cy * c),
-  };
-}
+const fit = (rect) => fittedSymbolBounds(rect, transform);
 for (const e of snapshot.entries.filter((e) => e.cohort !== 'control')) {
   const ref = await checkedPng(objectFile(e.reference), e.reference.sha256),
     a = capture.rows.find((r) => r.id === e.id),
@@ -118,6 +96,7 @@ const report = {
     'Direct native-resolution Exodus component bounds, independent width and height. All 55 common scans are the measurement cohort; 88 metallic printings provide rim-only cross-checks, not reliable dark-ink segmentation. Fixed search window, 8-connected components, boundary rejection, grayscale threshold sweep and explicit instability flags. Raw source pixels are measured before resampling. Translate units with the full-image 488 × 680 fit; additionally report the pre-existing provisional shared frame scale/transform without refitting it. Never use per-scan dimensions or offsets in the painter. Threshold uncertainty and source pixel quantization limit precision (about 0.65 canonical px per scan pixel). This diagnostic does not certify color, individual scan alignment, or whole-card accuracy.',
   methodHash: hash(await readFile(new URL(import.meta.url))),
   segmenterHash: hash(await readFile(new URL('./symbol-component-bounds.mjs', import.meta.url))),
+  boundsMethodHash: hash(await readFile(new URL('./symbol-bounds.mjs', import.meta.url))),
   snapshotHash: hash(JSON.stringify(snapshot)),
   captureHash: hash(JSON.stringify(capture)),
   rendererHash: capture.rendererHash,

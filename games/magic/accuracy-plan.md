@@ -106,6 +106,43 @@ symbol metrics at inspect and table sizes, explicit regressions and a local
 scan/before/current/tinted-overlay review page. Already measured M15/WAR and
 M19/M20/M21 treatments remain controls for the new-frame wave.
 
+### Reusable symbol measurement workflow
+
+Use the native-pixel measurement approach from Exodus for future symbols.
+`symbol-bounds.mjs` is the shared analysis entry point; set studies supply a
+frozen search window, broad component limits and threshold sweep. Measure
+width and height independently, and report center/placement separately.
+Measure original source pixels before resampling. Keep raw measurements and
+any existing shared frame transform distinct; do not fit transforms to symbols.
+
+- Start with separate dark-ink and light-rim masks. Sweep multiple thresholds
+  to expose fragile segmentation. Reject components touching the search-window
+  boundary, competing components and dimensions that vary beyond the stated
+  uncertainty. Preserve every uncertain/missing row in coverage.
+- Fine or disconnected linework may need the contrast-envelope mode. It uses
+  a 3 × 3 native-pixel contrast operator and removes its known one-pixel support
+  per side. This measures an outline envelope, not interchangeable ink bounds;
+  inspect annotated crops before using it as geometry evidence.
+- For renders, subtract an exact matched blank-symbol face when frame lines
+  touch the symbol. `measureRenderedSymbol` isolates renderer-owned pixels
+  without letting the frame dictate its measured dimensions. Never apply this
+  synthetic-mask shortcut to reference scans.
+- Freeze representative cards across colors/materials and rarities before
+  choosing one shared profile. Correct each axis from measured differences,
+  verify the actual rasterized bounds, then audit every ordinary printing at
+  both tiers with grayscale edge/Census scores and outside-region byte checks.
+  A higher overlap score cannot override visibly wrong contours or dimensions.
+- Keep threshold spread and native pixel size visible in the report. Agreement
+  below one scan pixel does not establish subpixel precision. Annotated scan,
+  previous and current bounds plus red/green overlays belong in the local
+  review page. Record contour/asset errors separately from geometry.
+
+The shared utility is tested for independent axes, native resolution, contrast,
+light rims, touching frame edges, ambiguous/missing symbols and frozen shared
+transforms in `tests/magic-symbol-bounds.mjs`, included in `test:magic-accuracy`.
+Historical measurement fixtures retain their original method hashes; a method
+revision never silently rewrites an earlier measurement.
+
 ### Pass 2: frame geometry
 
 With symbol styling fixed, measure the outer silhouette, frame rails, art
