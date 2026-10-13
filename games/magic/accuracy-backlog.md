@@ -885,3 +885,36 @@ its application, deployment and database outside this library repository.
   continuing this study. Reproduce the frozen captures with
   `ice-symbol-study.mjs before`, template rasterization with
   `ice-symbol-templates.mjs`, and CPU candidates with `ice-symbol-search.mjs`.
+
+### Exodus wider rim review (v70)
+
+- Follow the visual review request to double the nominal white rim while
+  splitting the added width equally inward and outward. The outside radius
+  changes 1.25 → 1.875 px; the ink gains a 0.625 px inset. The original 55 × 19
+  glyph bounds, center, palette and type widths remain fixed. Only the visible
+  outside silhouette grows by 0.625 px per side.
+- Intersect shifted copies of the existing filled silhouette during static
+  composition. Reuse opaque window backing so the inset acts on the exterior
+  and open arch, preserving the window contours. No replacement vector,
+  pixel readback or per-animation-frame preparation is introduced.
+- All 143 printings and seven controls were recaptured at both tiers. Every
+  changed pixel lies in the tight rim envelope `[371, 376, 64, 27]`. All controls,
+  type measurements and pixels outside that envelope are identical to v69.
+- Inspection median edge F1 improves .687 → .725 with the frozen provisional
+  frame fit (.586 → .594 raw). Sixty-two cards improve by more than .02;
+  thirty-nine regress. The common median falls .760 → .724 while uncommon
+  improves .662 → .711 and rare improves .693 → .772. Overall inspection
+  Census is essentially unchanged, .743 → .742.
+- **Keep small-size rendering and common ink under review.** Table median F1
+  falls .744 → .714 (.632 → .626 raw), with twelve improvements and seventy-seven
+  regressions over .02. Table Census falls .801 → .779. Allay and Cataclysm
+  are explicit examples where widening the rim worsens edge diagnostics.
+  This is a user-directed visual refinement, not an across-the-board metric
+  improvement or a reason to refit scans/individual symbols.
+- Reproduce with `exo-symbol-study.mjs rim-candidate|rim` and
+  `exo-rim-audit.mjs rim-candidate|rim`. Reports are
+  `exo-symbol-rim-{candidate-measurement,measurement}.json` (the full-set file
+  is `exo-symbol-rim-measurement.json`). The local comparison retains v69 next
+  to the balanced rim, raw/provisional-fit scans, overlays and every card's
+  scores, including regressions. Fine bridge contours remain an asset-review
+  item; frame normalization remains provisional.

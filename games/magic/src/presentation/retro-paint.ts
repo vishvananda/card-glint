@@ -179,9 +179,11 @@ export function paintRetroFace(
         centerY - height / 2,
         width,
         height,
-        palette ? 1.25 : (details?.setOutline ?? historicalSetOutline(face.setCode)),
+        palette ? 1.875 : (details?.setOutline ?? historicalSetOutline(face.setCode)),
         crop,
         palette,
+        palette ? 0.625 : 0,
+        backing || null,
       );
     else
       paintSetSymbol(
