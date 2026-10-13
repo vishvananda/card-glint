@@ -11,10 +11,14 @@ geometry in the review queue. The [color results](hsb-calibration.md) admit
 regressing groups remain unchanged. Do not treat retained sources as certified
 geometric matches or transfer fitted colors to a different source bitmap.
 
-Next: deploy the separate text-review application with persistent proposals,
-then resume the old-frame set-symbol pass. Its queue must use current renderer
-scores, exact original wording, and accepted shared frame normalization.
-Historical reports remain available as archived evidence. Revised now has a
+The separate text-review application is deployed with persistent SQLite
+proposals, versioned source evidence, and daily consistent backups. Its first
+current-CDN audit covers 37 Revised printings: 28 are eligible for the queue and
+nine require wording or frame review. This is sampled coverage, not a complete
+set score. Experimental text edits remain review proposals for shared policies.
+Next: resume the old-frame set-symbol pass. The queue uses current renderer
+scores, exact original wording, and accepted shared frame normalization;
+historical reports remain available as archived evidence. Revised now has a
 [validated shared stock profile](fixtures/accuracy/old-frame-registration-3ed.json)
 against actual rendered boundaries, with remaining source-aspect differences
 reported separately. Its held-out error improves 1.81 → 1.25 canonical pixels;
