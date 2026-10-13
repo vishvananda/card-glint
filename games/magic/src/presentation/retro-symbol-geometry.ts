@@ -14,7 +14,14 @@ interface RetroSymbolGeometry {
  * from the frozen old-symbol-material study; explicit custom symbols retain
  * their original viewport. Chronicles has its own printing geometry. */
 const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
-  arn: { right: 439, centerY: 394, width: 65, height: 22, crop: [0, 0.283203125, 1, 0.435546875] },
+  arn: {
+    right: 439,
+    centerY: 394,
+    width: 65,
+    height: 22,
+    crop: [0, 0.283203125, 1, 0.435546875],
+    sampling: 'high',
+  },
   // Native anvil bounds across Antiquities colors/materials; no added outer rim.
   atq: { right: 415, centerY: 391.5, width: 33, height: 16, crop: [0, 0.240234375, 1, 0.51953125] },
   drk: {
@@ -50,11 +57,12 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     outline: 0,
   },
   leg: {
-    right: 441,
+    right: 443.75,
     centerY: 394,
-    width: 24,
-    height: 21,
+    width: 25.5,
+    height: 22.5,
     crop: [0, 0.1264957264957265, 1, 0.764102564102564],
+    sampling: 'high',
   },
   all: {
     right: 429,

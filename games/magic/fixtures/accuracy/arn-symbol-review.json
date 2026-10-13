@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "decision": "retain-existing-geometry; retain-smoother-sampling-with-neutral-structural-results; stencil-and-placement-review-open",
+  "scope": "One shared set geometry; no per-card renderer offsets. Full raw audit retained, with separately guarded frame-normalized metrics. No typography or whole-card fidelity certification.",
+  "rawMeasurementHash": "96ccdd127def9cb071d8d1e70f41cce32892c3ec64190e9acf3f48fcd8e09f89",
+  "registeredMeasurementHash": "86e3b9bd8533a8fd2e20d1294577ed78f1751ebb212006aa17a99edd39071e62",
+  "boundsHash": "27de729161ce923f4c37aae2fc8c7c7510dc457d104adfd454a2173d88fb781a",
+  "coverage": {
+    "ordinary": 92,
+    "rawCompared": 92,
+    "registeredCompared": 55,
+    "unvalidatedFrame": 37,
+    "partialReferenceRegion": [],
+    "stableNativeReferences": 22,
+    "controls": 8,
+    "failures": 0
+  },
+  "visualFindings": [
+    "The raw width increase was not adopted: after independent frame normalization, the original width matches the stable native pairs more closely.",
+    "Higher-quality mask downsampling smooths stepped blade edges. Structural medians and lower-tail scores are nearly unchanged or slightly lower; do not claim an accuracy gain from this sampling-only change. No raw or registered edge regression exceeds .02.",
+    "The retained hilt hook/guard, dangling cord and blade contour differ from the print. Flat gray backing does not reproduce the printed blade shading. Thin light edge details need inspection before adding any exterior rim.",
+    "Aligned calibration crops and the six lowest aligned results were inspected. The latter are Hurr Jackal, Aladdin, Bird Maiden, Ali from Cairo, Mijae Djinn and Kird Ape.",
+    "Registration covers W/U/R/A only. Black and green have insufficient reliable stock anchors, and lands use other source assets. Preserve those failures; no transfer is certified."
+  ],
+  "rawRegressionIds": [],
+  "registeredRegressionIds": [],
+  "nextActions": [
+    "Validate remaining frame materials before placement work.",
+    "Review hilt/cord/blade contour against other retained stencils or future asset replacements."
+  ]
+}

@@ -136,7 +136,9 @@ try {
     const normalized = normalize(PNG.sync.read(bytes));
     targets[material] = stockBounds(normalized, border);
     if (usePlate) plateTargets[material] = plateProfiles(normalized);
-    else assert.ok(targets[material].reliable, `Unreliable rendered ${material} stock anchors`);
+    // Dark source plates can lack a measurable outer transition. Retain that
+    // target as uncertain; the fitter excludes it instead of losing the whole
+    // study or treating a weak boundary as a valid registration anchor.
     const asset = sources.components.find((s) => s.url === result.url),
       mask = sources.components.find((s) => s.url === result.maskUrl);
     assert.ok(asset && (!result.maskUrl || mask));
@@ -168,12 +170,25 @@ for (const entry of selected) {
     ...(usePlate ? { profiles: plateProfiles(normalized) } : {}),
   });
 }
-const fit = usePlate
+// Admit material groups using only anchor reliability and fixed cohort counts,
+// before estimating any transform. Sparse groups remain in the coverage report
+// and cannot inherit a fit validated on the other materials.
+const stockMaterials = materials.filter(
+    (material) =>
+      targets[material].reliable &&
+      ['calibration', 'validation'].every(
+        (cohort) =>
+          rows.filter((r) => r.material === material && r.cohort === cohort && r.bounds.reliable)
+            .length >= 2,
+      ),
+  ),
+  fitRows = usePlate ? rows : rows.filter((r) => stockMaterials.includes(r.material)),
+  fit = usePlate
     ? fitSharedPlateRegistration(
         rows.filter((r) => r.material !== 'L'),
         plateTargets,
       )
-    : fitSharedStockRegistration(rows, targets),
+    : fitSharedStockRegistration(fitRows, targets),
   methodHash = hash(
     Buffer.concat(
       await Promise.all(
@@ -220,6 +235,14 @@ if (
     1,
   );
 }
+const admittedMaterials = usePlate
+  ? materials
+  : materials.filter(
+      (material) =>
+        targets[material].reliable &&
+        (fit.counts.materialCounts[material]?.calibration ?? 0) >= 2 &&
+        (fit.counts.materialCounts[material]?.validation ?? 0) >= 2,
+    );
 const result = {
   schemaVersion: 1,
   method: usePlate ? PLATE_REGISTRATION_VERSION : OLD_FRAME_REGISTRATION_VERSION,
@@ -231,7 +254,7 @@ const result = {
   coordinateSystem:
     '488x680; references only; pAfter=center+scale*(pBefore-center)+(tx,ty), center=(244,340); pixels.normalize handles source resolution/letterboxing first',
   scope: {
-    materials,
+    materials: admittedMaterials,
     layouts: ['normal'],
     frameFamily: `retro-${family}`,
     excludes: [
@@ -244,7 +267,7 @@ const result = {
   policy:
     'One shared translation and uniform scale fitted on frozen calibration cards to the retained painter outer printed plate, equally weighted by material. No text, art, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. ABU black stock uses normalized gradient profiles of the plate border to separate its narrow bevel from the adjacent cast shadow and faint bitmap edge. Other families use stock boundaries. Residual opposed boundaries remain a source-geometry diagnostic.',
   guards: {
-    sources: guards,
+    sources: guards.filter((g) => admittedMaterials.includes(g.material)),
     runtime:
       'Require set, stock, normal layout, family, exact pinned frame URL, frame rectangle and mask URL. Byte hashes document the cached sources and need not trigger another runtime download.',
   },
@@ -257,6 +280,13 @@ const result = {
     referencesHash: hash(JSON.stringify(rows.map((r) => [r.id, r.referenceHash, r.cohort]))),
   },
   ...fit,
+  ...(usePlate
+    ? {}
+    : {
+        excluded: fit.excluded + rows.length - fitRows.length,
+        uncertainMaterials: materials.filter((m) => !admittedMaterials.includes(m)),
+        unvalidatedSources: guards.filter((g) => !admittedMaterials.includes(g.material)),
+      }),
   targets,
   ...(usePlate
     ? {

@@ -187,6 +187,13 @@ adjacent-set controls and a Chronicles control, plus a separate
 `<set>-symbol-measurement-profile.json` for scan/render segmentation. The runner
 retains every ordinary printing, caches its inputs and records missing references
 or rendering failures. It uses explicit Oracle wording with original symbols.
+Component preparation must resolve that exact face, including wording, symbols,
+frame and explicit-symbol overrides. The shared `fetchComponents` helper accepts
+the study's face resolver; its default remains the ordinary reference adapter.
+Mirage/Tempest Oracle basic lands demonstrated why this matters: preparing only
+the default wording omitted five required basic-land images. Their offline
+captures failed and were preserved separately before the snapshots were repaired;
+card inputs and renderer source did not change.
 
 ```sh
 node games/magic/tools/accuracy/symbol-study.mjs drk prepare
@@ -204,6 +211,9 @@ for the full set. A calibration revision can use a named stage such as
 earlier adoption plan and its linked measurements when revising geometry; do
 not overwrite historical captures with a different source revision. Existing
 baselines must be reproduced from their recorded revision.
+List reserved identities already present in earlier measurements separately.
+Being reserved from the current fit does not make a previously examined card
+fresh validation evidence.
 
 ```sh
 node games/magic/tools/accuracy/symbol-study.mjs drk after
@@ -364,8 +374,87 @@ unchanged. This does not change the frozen deployed Alpha typography trial.
 
 References and art are cached for the next six studies: Arabian Nights (92),
 Legends (310), Mirage (351), Tempest (350), Stronghold (143) and Portal (228).
-These 1,474 inputs are cache preparation, not completed calibration or coverage
-certification. Freeze their capture baselines before the next renderer change.
+Their 1,474 ordinary-printing baselines and calibration templates are now frozen,
+with no failed captures; see
+[old-symbol-next-baselines.json](fixtures/accuracy/old-symbol-next-baselines.json).
+This is capture coverage, not completed calibration or accuracy certification.
+
+### Arabian Nights and Legends checkpoint (2026-10-13)
+
+Native measurements initially suggested wider ARN and larger LEG symbols.
+Independent frame normalization changed that conclusion. The stock study now
+preserves unreliable rendered targets and admits only material groups with at
+least two reliable calibration and two reliable validation anchors. Those
+criteria are applied before estimating a transform. Excluded materials remain
+in the report and cannot inherit another material's validated transform.
+
+ARN's W/U/R/A profile has 12 calibration and 12 validation cards; stock-boundary
+RMS improves 4.92 → .96 and 4.77 → .84 canonical pixels respectively. LEG's W/U/A
+profile uses six calibration and nine validation cards, improving 5.28 → .77
+and 5.22 → .71. Both profiles use one shared translation and uniform scale;
+neither text nor symbols enters the fit. ARN retains opposed-boundary geometry
+residuals. Black/green ARN and black/red/green LEG lack sufficient stock anchors;
+multicolor and land source groups are outside these studies.
+
+The new `symbol-study-registered.mjs` reuses the cached PNGs and immutable
+frame profile. It checks set, stock, family, source URL, rectangle, mask and
+material scope, retains the full raw audit, and reports unvalidated printings
+explicitly. Comparisons run on the CPU without Chromium; only renderer capture
+needs a browser. Registered native dimensions use the same frozen transform.
+
+ARN's original width is closer after registration, so the enlargement is not
+adopted. Its geometry and gray blade remain unchanged. High-quality temporary
+mask sampling smooths stepped edges, but structural scores are essentially
+neutral or slightly lower. LEG retains center Y 394 and moves shared center X
+429 → 431, with nominal width/height 25.5 × 22.5 and high-quality sampling.
+The raw-size candidate and its rejection evidence remain in separate fixtures.
+
+| Set / comparison                  | Printings | Inspect median before → after | Table median before → after |
+| --------------------------------- | --------: | ----------------------------: | --------------------------: |
+| ARN / raw                         |        92 |                   .554 → .551 |                 .531 → .528 |
+| ARN / registered                  |        55 |                   .636 → .634 |                 .578 → .579 |
+| LEG / raw                         |       310 |                   .516 → .461 |                 .523 → .507 |
+| LEG / registered, complete region |       114 |                   .615 → .724 |                 .639 → .741 |
+
+Every one of the 114 complete registered LEG comparisons improves both tiers.
+Its tenth-percentile inspect/table scores improve .554/.591 → .676/.704.
+The 106 reserved registered comparisons include one previously measured card;
+the remaining 105 were not present in the recorded prior measurements. ARN has
+44 reserved registered comparisons, including one previously measured card.
+Its tenth-percentile scores decline slightly (.497/.421 → .491/.414); no raw or
+registered ARN edge regression exceeds .02. These are component scores, not
+whole-card accuracy percentages.
+
+There are 224 distinct raw LEG regressions over .02. Of these, 136 lack validated
+frame registration; the other raw regressions improve after independent frame
+normalization. Keep the raw results and all 195 unvalidated frame/material
+printings visible. This does not certify the whole set. Equinox is the additional
+partial-region case: full-scan inspection confirms an unusually far-right
+printed column, clipped by the fixed comparison window. Its diagnostic scores
+are retained but excluded from complete-symbol summaries. An automatic
+reference-region coverage check is needed before scaling this measurement to
+the rest of the corpus; no per-card renderer offset is introduced.
+
+Native reference segmentation is stable for 22/92 ARN and 57/310 LEG printings.
+Matched raster/native bounds are calibration-only; only three stable pairs per
+set also have validated frame registration. All 402 ordinary printings render
+and receive raw metrics. Each set's eight controls remain byte-identical, all
+changed pixels stay in the symbol envelopes, and type regions are unchanged.
+Required checks, build, package, browser, showcase and Magic accuracy suites
+pass. The separate deployed Alpha typography trial remains unchanged.
+
+Aligned calibration crops, the six worst aligned results per set and the six
+largest raw regressions on unvalidated LEG materials were inspected. The local
+gallery also shows Equinox as a full card. Exact results, exposure history and
+remaining hilt/column/frame issues are in
+[arn-symbol-review.json](fixtures/accuracy/arn-symbol-review.json) and
+[leg-symbol-review.json](fixtures/accuracy/leg-symbol-review.json).
+Reproduce with the shared capture/bounds/audit scripts plus
+`symbol-study-registered.mjs <set> after` at the recorded revisions.
+
+**Next prerequisite:** extend independent frame registration to the remaining
+materials and 1997-frame groups before choosing MIR/TMP/STH/POR symbol geometry.
+Revisit provisional earlier placements after their frame profiles are available.
 
 ### Pass 2: frame geometry
 

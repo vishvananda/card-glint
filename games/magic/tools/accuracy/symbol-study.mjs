@@ -100,10 +100,7 @@ if (action === 'prepare') {
     excluded,
     totalPrintings: cards.length,
     ordinaryPrintings: eligible.length,
-    components: await fetchComponents(
-      entries.map((e) => (e.modernFrame ? { ...e, card: { ...e.card, frame: '2015' } } : e)),
-      {},
-    ),
+    components: await fetchComponents(entries, {}, studyFace),
   };
   const plan = {
     schemaVersion: 1,

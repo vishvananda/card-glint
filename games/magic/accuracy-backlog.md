@@ -83,6 +83,41 @@ The tenth-percentile table score also falls slightly (.559 to .553). Keep the
 left spine contour/hatching and gray page shading in the asset/color queues,
 and recheck placement after independent frame normalization.
 
+### Arabian Nights and Legends normalization follow-up
+
+The six next baselines are now frozen: ARN, LEG, MIR, TMP, STH and POR, totaling
+1,474 ordinary printings plus controls, with no capture failures. Component
+preparation now enumerates the exact study face; the failed initial Mirage and
+Tempest snapshots omitted Oracle basic-land assets and remain preserved.
+
+Independent frame registration covers W/U/R/A for Arabian Nights and W/U/A for
+Legends. Sparse/weak materials remain outside those profiles. Normalization
+invalidated the proposed Arabian Nights width increase, so its geometry stays
+unchanged. Smoother symbol-mask sampling is retained, but its structural scores
+are neutral or slightly lower; the hilt hook, cord and blade shading still need
+asset review. See [arn-symbol-review.json](fixtures/accuracy/arn-symbol-review.json).
+
+Legends' shared correction improves both tiers on all 114 complete comparisons
+with validated frame registration. This is partial coverage of 310 printings:
+195 still lack a validated frame/material model, and Equinox has a partial
+reference region. The raw audit has 224 distinct regressions over .02, including
+136 on unvalidated materials; keep them visible until those frame models exist.
+Do not present the aligned subset as validation of every material. The six worst
+unvalidated raw regressions were inspected and remain frame-review cases.
+See [leg-symbol-review.json](fixtures/accuracy/leg-symbol-review.json).
+
+Equinox's full scan places its column unusually far right, outside part of the
+fixed score window. Its partial scores are preserved but excluded from complete
+symbol summaries. Add automatic reference-component coverage checks and a
+complete-region comparison; do not compensate with a per-card renderer offset.
+Keep the column capital, rounded channels and contour differences on the
+retained-stencil list.
+
+Before sizing the next four symbols, establish their independent frame profiles.
+Raw size and overlap alone can produce the wrong correction. Extend the frame
+study to 1997 printings and the remaining material/source groups, preserving
+weak anchors and unvalidated counts rather than borrowing a transform silently.
+
 ## Assets needing visual review
 
 | Asset group                                             | Observed problem                                                                                                                                                                                          | Examples / next evidence                                                                                                                                                                                                                                                                         |
