@@ -1,0 +1,30 @@
+import type { RenderedCardInput } from './face-layout.js';
+import { isStyledSetSymbol } from './styled-set-symbols.js';
+
+type Bounds = readonly [number, number, number, number];
+// Canonical 488 × 680 pixels. Shared set profiles after frame-only scan
+// registration; axis scales apply to visible SVG bounds, not a square viewport.
+// Source/family-specific: do not transfer these to component or retro frames.
+const profiles: Readonly<Record<string, { family: string; delta: Bounds }>> = {
+  m15: { family: 'm15-accurate', delta: [1, 0, 1, 1] },
+  m21: { family: 'm15-accurate', delta: [2, 0, 1.1, 1.06] },
+  woe: { family: 'm15-accurate', delta: [2, 0, 1.08, 1.08] },
+  tdm: { family: 'm15-accurate', delta: [0, 0, 1.08, 1.08] },
+  '8ed': { family: 'eighth', delta: [-4, 0, 1, 0.92] },
+  '9ed': { family: 'eighth', delta: [0, 1, 0.9, 0.92] },
+};
+
+export function styledSymbolBounds(
+  face: RenderedCardInput,
+  url: string | null,
+  bounds: Bounds,
+): Bounds {
+  const key = face.setCode?.toLowerCase() ?? '';
+  const profile = Object.hasOwn(profiles, key) ? profiles[key] : undefined;
+  if (face.setSymbol || !isStyledSetSymbol(url) || profile?.family !== face.frameAssetFamily)
+    return bounds;
+  if (!profile) return bounds;
+  const [x, y, w, h] = bounds,
+    [dx, dy, sx, sy] = profile.delta;
+  return [x + w + dx - w * sx, y + h / 2 + dy - (h * sy) / 2, w * sx, h * sy];
+}

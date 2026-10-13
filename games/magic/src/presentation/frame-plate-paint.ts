@@ -1,3 +1,4 @@
+import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { resolveCardProfile } from './profile.js';
 import { framePlate } from './frame-plates.js';
 import { faceSetSymbol } from './assets.js';
@@ -146,6 +147,12 @@ export function paintFramePlateFace(
     : 0;
   const iw = icon ? icon.width * crop[2] * iconScale : 0,
     ih = icon ? icon.height * crop[3] * iconScale : 0;
+  const bounds = styledSymbolBounds(face, url, [
+    plate.symbol.right * W - iw,
+    plate.symbol.center * H - ih / 2,
+    iw,
+    ih,
+  ]);
   const [x, y, w, h] = px(rects.type);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
@@ -153,14 +160,13 @@ export function paintFramePlateFace(
     face.typeLine ?? '',
     x,
     y + h / 2,
-    icon ? plate.symbol.right * W - iw - x - 7 : w,
+    icon ? bounds[0] - x - 7 : w,
     plate.typeSize,
     true,
     1,
     family,
   );
   if (icon) {
-    const bounds = [plate.symbol.right * W - iw, plate.symbol.center * H - ih / 2, iw, ih] as const;
     const shaped = shapedSetCode(face);
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
     else if (hasCoreSetShield(face)) paintCoreSetSymbol(c, icon, face.rarity, ...bounds, crop, 1.5);

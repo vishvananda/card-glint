@@ -89,6 +89,29 @@ try {
           { style, weight },
         ).load(),
       );
+    const { styledSymbolBounds } = await import(
+      '/games/magic/src/presentation/styled-symbol-placement.ts'
+    );
+    const bounds = [400, 390, 40, 20],
+      symbol = setSymbolAsset('m21', 'rare');
+    const adjusted = styledSymbolBounds(
+      { setCode: 'm21', frameAssetFamily: 'm15-accurate' },
+      symbol,
+      bounds,
+    );
+    check(
+      adjusted.every((value, i) => Math.abs(value - [398, 389.4, 44, 21.2][i]) < 1e-9),
+      'Calibrated axis sizing or right/center anchoring changed',
+    );
+    for (const face of [
+      { setCode: 'm21' },
+      { setCode: 'm21', frameAssetFamily: 'eighth' },
+      { setCode: 'm21', frameAssetFamily: 'm15-accurate', setSymbol: symbol },
+    ])
+      check(
+        styledSymbolBounds(face, symbol, bounds) === bounds,
+        'Symbol calibration leaked into another source/family',
+      );
     check(setSymbolAsset('fin', 'rare').endsWith('/fin-r.svg'), 'Styled inventory not used');
     check(
       setSymbolAsset('p02', 'rare').endsWith('/p02-r.svg'),

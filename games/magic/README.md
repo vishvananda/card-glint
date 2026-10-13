@@ -90,6 +90,12 @@ share the pack's encoded-source cache across direct and host rendering. Custom
 URLs are untouched. Source bytes and patched SVGs remain external/local; only
 transformation code, checksums and provenance are stored here.
 
+Placement profiles for the replacement plates currently cover M15, M21, WOE,
+TDM, 8ED and 9ED; 10E retains its measured placement. They use shared set values
+validated after independent frame normalization. Other sets retain their family
+geometry until measured; component/retro frame placements remain a separate
+calibration. See the [placement evidence](fixtures/assets/styled-symbol-placement-calibration.json).
+
 All source URLs include immutable revisions. The new collection uses GitHub raw
 URLs because jsDelivr rejects uncached files from this oversized repository. Asset decoding uses the existing
 host cache; full plates are bounded to 768 pixels wide during preparation.

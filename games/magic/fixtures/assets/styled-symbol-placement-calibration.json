@@ -1,0 +1,2154 @@
+{
+  "schemaVersion": 1,
+  "scope": "Styled set-symbol placement on replacement base plates. Patched material topology fixed before fitting; source gradient colors retained. Tight 74×33 region at [382,385], edge F1 at 1 px; no per-card rendering offsets. Frames normalized independently with frozen translation/scale/rotation/skew fits. Leave-one-out within this development cohort is not an independent corpus accuracy estimate. Rejected frame fits are not scored.",
+  "grids": [
+    {
+      "file": "patched-symbol-placement-study.json",
+      "sha256": "22626e7ae3b0cebf6937118bd51a1fabe35bf121705290454f71bae605ac16b3"
+    },
+    {
+      "file": "refined-symbol-placement-study.json",
+      "sha256": "eed43c86f843c1f09dc607deeefe474aa7d393a48bbab9d9546c079fa38de3e6"
+    },
+    {
+      "file": "boundary-symbol-placement-study.json",
+      "sha256": "eee0d4993550e88b62e720e0d823a352da48807c7c5e805d394b75f2d951ebc7"
+    }
+  ],
+  "summaries": [
+    {
+      "set": "m15",
+      "family": "m15-accurate",
+      "count": 4,
+      "parameters": {
+        "dx": 1,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1
+      },
+      "adopted": true,
+      "best": {
+        "dx": 1,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1
+      },
+      "before": 0.9372753340188932,
+      "after": 0.9672544177071495,
+      "heldOutDelta": 0.025407892708731644,
+      "heldOut": [
+        {
+          "slug": "m15-4",
+          "parameters": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1.02,
+            "sy": 1
+          },
+          "before": 0.9546005591429774,
+          "after": 0.9767702593691464
+        },
+        {
+          "slug": "m15-10",
+          "parameters": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1
+          },
+          "before": 0.9258184002402644,
+          "after": 0.9551226391454596
+        },
+        {
+          "slug": "m15-71",
+          "parameters": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1.02,
+            "sy": 1
+          },
+          "before": 0.914768150033835,
+          "after": 0.9678840649212465
+        },
+        {
+          "slug": "m15-173",
+          "parameters": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1
+          },
+          "before": 0.9539142266584958,
+          "after": 0.9509559434746467
+        }
+      ],
+      "rows": [
+        {
+          "slug": "m15-4",
+          "source": "https://scryfall.com/card/m15/4/battle-mastery?utm_source=api",
+          "identity": {
+            "reference": "51872103638953a5bc89a22e65ffb6c672b221294ba44219526977c8abc70c89",
+            "template": "e2317747cc69e570383e405ce178bde5d3cc93f242e745af013c7133f1459098",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "2bf697130bf6dc3c2c77753c081e7e93b211db2ebd1fd938135472950744867b",
+          "transform": {
+            "matrix": [
+              1.0032574433574046, 0, 0, 1.0032574433574046, 0.2052071009152418, 0.229489446555101
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9546005591429774,
+            "distance": 0.5817449949248618
+          },
+          "after": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.985757852690811,
+            "distance": 0.3532478638851423
+          },
+          "finalRaster": {
+            "before": 0.9557176087794158,
+            "after": 0.9844232432301019
+          },
+          "finalRasterHashes": {
+            "before": "31622dcb7e52784c67b7885eea6e4b01c98cd7a96c7c725897d348b8f5fd908e",
+            "after": "30d6e201f23ee9479c57d7d7bb7f287037dedf845b754a1f6b1feafe0fe7f8dc"
+          }
+        },
+        {
+          "slug": "m15-10",
+          "source": "https://scryfall.com/card/m15/10/divine-favor?utm_source=api",
+          "identity": {
+            "reference": "6838579418548632cde3651d924b996eda731ba722929d54d312c189deab82fc",
+            "template": "2fd175e45db81d28222bfcaefc20b6170d0ec1873ab0f9305610499d8d7906dd",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "7e5336b1b7da2d88779bfb9c62e474bd77457d65474e8af012efb51183d9ea1b",
+          "transform": {
+            "matrix": [
+              1.003536225563408, 0, 0, 1.003536225563408, 0.08089450660961522, 0.44202340260993417
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9258184002402644,
+            "distance": 0.7116847905733734
+          },
+          "after": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9551226391454596,
+            "distance": 0.5666387111986639
+          },
+          "finalRaster": {
+            "before": 0.9314300812958173,
+            "after": 0.9482745601449821
+          },
+          "finalRasterHashes": {
+            "before": "a97c5ed54693f08a35ee2185605800b1073ee5ff92b08173e431cb148fce9be4",
+            "after": "fd0fc2dda366ab425dfd07d4f09e31aa8e445fc607038b1a1d5b3dc3c9a7b0f9"
+          }
+        },
+        {
+          "slug": "m15-71",
+          "source": "https://scryfall.com/card/m15/71/negate?utm_source=api",
+          "identity": {
+            "reference": "b7b64f158158089fbd2bc5db48a13b732f002086359477c45fc9873e34496868",
+            "template": "027cb22b047f8139de32754c9a4593f7d1714b015be34f2c792564e5a847b8c3",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "4d080319f6b7bb1daf66676ee702dd6b99d44033fa8844af8ca1413d080fcc46",
+          "transform": {
+            "matrix": [
+              1.0021329444605416, 0, 0, 1.0021329444605416, 0.24709446355829717,
+              -0.19719599681406355
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.914768150033835,
+            "distance": 0.6806049192584722
+          },
+          "after": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9771812355176805,
+            "distance": 0.32091392660419926
+          },
+          "finalRaster": {
+            "before": 0.8616505157082102,
+            "after": 0.9470722584489092
+          },
+          "finalRasterHashes": {
+            "before": "58649383cfdde2a92eee02233d015ae00ce592f178414837a2d426d165c91798",
+            "after": "cc8bdf4555b152e7fb91a0e3ddf2aed7cf3e12950706d080804dd96d81e9cbc8"
+          }
+        },
+        {
+          "slug": "m15-173",
+          "source": "https://scryfall.com/card/m15/173/elvish-mystic?utm_source=api",
+          "identity": {
+            "reference": "10bbb081679e8948e6d6d783359ac6c59cb54f6c3beb23b2cd3f4cb7c1122696",
+            "template": "e67c17fecbbb06f23056b89ebdc08abb3f0a50530f9561b8547f07c8a8ade841",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "b6378d366b66e45eb956290ad3e2c8f623b69020249760b07a386b77bd90e007",
+          "transform": {
+            "matrix": [
+              1.0018515746877268, 0, 0, 1.0018515746877268, 0.248210742461088, -0.22791314145922276
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9539142266584958,
+            "distance": 0.623440947281805
+          },
+          "after": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9509559434746467,
+            "distance": 0.6799117835859458
+          },
+          "finalRaster": {
+            "before": 0.9084091366115047,
+            "after": 0.9316338998111742
+          },
+          "finalRasterHashes": {
+            "before": "231ebae4e2f2dd8f357f091092d237231d54055cebed9678811ba0d3c083029c",
+            "after": "077d0c8b0a66f64df5a0c05b0ab8caa95fa395b6277d28fd92315d184ee94c44"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.914301835598737,
+        "after": 0.9528509904087918
+      }
+    },
+    {
+      "set": "m21",
+      "family": "m15-accurate",
+      "count": 9,
+      "parameters": {
+        "dx": 2,
+        "dy": 0,
+        "sx": 1.1,
+        "sy": 1.06
+      },
+      "adopted": true,
+      "best": {
+        "dx": 2,
+        "dy": 0,
+        "sx": 1.1,
+        "sy": 1.06
+      },
+      "before": 0.7194197068091479,
+      "after": 0.9716316884238325,
+      "heldOutDelta": 0.2430810024405346,
+      "heldOut": [
+        {
+          "slug": "m21-6",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.1
+          },
+          "before": 0.6916336846120834,
+          "after": 0.9364510774167414
+        },
+        {
+          "slug": "m21-2",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06
+          },
+          "before": 0.773606901375612,
+          "after": 0.9879446332955631
+        },
+        {
+          "slug": "m21-4",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06
+          },
+          "before": 0.7870837537840566,
+          "after": 0.9878970411891017
+        },
+        {
+          "slug": "m21-8",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06
+          },
+          "before": 0.7631685293513617,
+          "after": 0.9893772426215094
+        },
+        {
+          "slug": "m21-3",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06
+          },
+          "before": 0.6879795396419437,
+          "after": 0.9667957042957042
+        },
+        {
+          "slug": "m21-5",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.08
+          },
+          "before": 0.6920012670499813,
+          "after": 0.9476441778351494
+        },
+        {
+          "slug": "m21-10",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.1
+          },
+          "before": 0.7261635707146652,
+          "after": 0.9206566981543111
+        },
+        {
+          "slug": "m21-9",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06
+          },
+          "before": 0.6799471011322128,
+          "after": 0.9665331372648446
+        },
+        {
+          "slug": "m21-13",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06
+          },
+          "before": 0.6731930136204145,
+          "after": 0.9592066711742169
+        }
+      ],
+      "rows": [
+        {
+          "slug": "m21-6",
+          "source": "https://scryfall.com/card/m21/6/baneslayer-angel?utm_source=api",
+          "identity": {
+            "reference": "bebfcad8e6e76cd864fcf61a31c9d06ad44f244315c5af389b89b9c70104dd4c",
+            "template": "7260eed56b02bdb510c4c2e12260b3a91dda7febb73ce5343021143589892325",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "55b7731b294cf4515c29d8b06d902f7fef55c0058efda401e5fae53379f2d822",
+          "transform": {
+            "matrix": [
+              1.000115896134561, 0, 0, 1.000115896134561, 0.10931496596908966, 0.10368931211293647
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6916336846120834,
+            "distance": 1.1687241083211293
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9679354747417573,
+            "distance": 0.43267526666945444
+          },
+          "finalRaster": {
+            "before": 0.6723138300878154,
+            "after": 0.9666866489680568
+          },
+          "finalRasterHashes": {
+            "before": "cce4734a1c5f2aabded2ca4249ca2f7259150dcdb511b3668d8ec0d18267459d",
+            "after": "7898861de700e21c0cfce55dfbe449f6ac642dec04a4aac90effe5a5084920ae"
+          }
+        },
+        {
+          "slug": "m21-2",
+          "source": "https://scryfall.com/card/m21/2/alpine-watchdog?utm_source=api",
+          "identity": {
+            "reference": "550d62229fda2a96274e44453286fd3a03c0ee7f836ff8cf3c1f81a8f2458e88",
+            "template": "017270828a709780a5e24e24cb149b777eca8a50aa4db0cec43034c2ec8bf69b",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "1342b369e4cce0ae71756545f19912512f0ebfd9ded16b3f50181ad05a31b53e",
+          "transform": {
+            "matrix": [
+              0.9999839896271524, 0, 0, 0.9999839896271524, 0.11336650525583081,
+              0.014649152212015869
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.773606901375612,
+            "distance": 1.060931653327566
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9879446332955631,
+            "distance": 0.3168603421877925
+          },
+          "finalRaster": {
+            "before": 0.7768448481777713,
+            "after": 0.9880401948091979
+          },
+          "finalRasterHashes": {
+            "before": "017270828a709780a5e24e24cb149b777eca8a50aa4db0cec43034c2ec8bf69b",
+            "after": "68e14b7b355732c87de644c08cbcb7585207854abc60db686993c423f5508201"
+          }
+        },
+        {
+          "slug": "m21-4",
+          "source": "https://scryfall.com/card/m21/4/anointed-chorister?utm_source=api",
+          "identity": {
+            "reference": "3adfd8353c7abf53f4da4d27e4a4d51335b072927ebee5c9a45dcd6bc57df69c",
+            "template": "f89262fe9f249c954ae3493d60cedd32645a861232e79dc3f801a012d7821eb8",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "35905547b673cb6de5d4b2c8f1c6e6c4b4ecddc6f1fcadff1b9f98cf7223677a",
+          "transform": {
+            "matrix": [
+              0.9999561764844924, 0, 0, 0.9999561764844924, 0.11758458022535524,
+              0.037836005995981574
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7870837537840566,
+            "distance": 1.1041540512852475
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9878970411891017,
+            "distance": 0.4165212025894496
+          },
+          "finalRaster": {
+            "before": 0.7933831205332048,
+            "after": 0.987978444106674
+          },
+          "finalRasterHashes": {
+            "before": "f89262fe9f249c954ae3493d60cedd32645a861232e79dc3f801a012d7821eb8",
+            "after": "3f418c9431a482d045daaad9037e6ff1ff8c7ceb566826816fe9d49aabbc92e5"
+          }
+        },
+        {
+          "slug": "m21-8",
+          "source": "https://scryfall.com/card/m21/8/basris-acolyte?utm_source=api",
+          "identity": {
+            "reference": "c3bf18f16501d648ead5db23a639be8fb93d50c73b315ded6af270f93e62ceec",
+            "template": "0b1bfcfc7dc8fd04452b6169bfd97333827df2039d2e8227c405d76253a834c4",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "9d93c41ec1ea7525aa7c27d724cabe2cfd4fe3c289aeb4918700cd9f2f180ac9",
+          "transform": {
+            "matrix": [
+              1.0000687489439766, 0, 0, 1.0000687489439766, 0.10852808588577419,
+              0.011209593803051502
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7631685293513617,
+            "distance": 1.081592370595569
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9893772426215094,
+            "distance": 0.4183308860280117
+          },
+          "finalRaster": {
+            "before": 0.7692557201149536,
+            "after": 0.9894588896697118
+          },
+          "finalRasterHashes": {
+            "before": "0b1bfcfc7dc8fd04452b6169bfd97333827df2039d2e8227c405d76253a834c4",
+            "after": "c33b5fdbbcbea0084fbef44f71bb040f28c79083156184864b82013e8f2fda96"
+          }
+        },
+        {
+          "slug": "m21-3",
+          "source": "https://scryfall.com/card/m21/3/angelic-ascension?utm_source=api",
+          "identity": {
+            "reference": "c0f8c685ea45b94b6dcb44d601e3da83a06430a4bb39292eb1beb6f0ac0eb7a4",
+            "template": "96ac126f755e9823ef657d890f2eef41298ecfdb881d217691f3dd66bd8720fa",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "163684a240284cc024410ed1b5866628a1ace02e1d15a354a575b90c3bf1e841",
+          "transform": {
+            "matrix": [
+              0.9999556311432157, 0, 0, 0.9999556311432157, 0.10620234142898208, 0.03170353062095099
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6879795396419437,
+            "distance": 1.163757549007372
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9667957042957042,
+            "distance": 0.393951210766191
+          },
+          "finalRaster": {
+            "before": 0.6795643818065342,
+            "after": 0.9516171559149236
+          },
+          "finalRasterHashes": {
+            "before": "96ac126f755e9823ef657d890f2eef41298ecfdb881d217691f3dd66bd8720fa",
+            "after": "487985fb5b89d1afc2fbc07391d8e8150b5d30e1225219825fd31417223b0eba"
+          }
+        },
+        {
+          "slug": "m21-5",
+          "source": "https://scryfall.com/card/m21/5/aven-gagglemaster?utm_source=api",
+          "identity": {
+            "reference": "b8a9510fb33908195c83e53019e77ef6cce96db598e31f189d3c4bfd80c8310c",
+            "template": "2358724f3bc5cc9286a98e90b121079cddaa34f74ec89551404473cea3b11938",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "a4fa06f3feaea042e8f9c8477faa5d248fce488939c0e3027a8148d9135f9848",
+          "transform": {
+            "matrix": [
+              0.9999848949840345, 0, 0, 0.9999848949840345, 0.09907473061447904,
+              0.030812374367876896
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6920012670499813,
+            "distance": 1.2034072364209671
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9593804512431231,
+            "distance": 0.38586765063597284
+          },
+          "finalRaster": {
+            "before": 0.6935087399854334,
+            "after": 0.934674887468321
+          },
+          "finalRasterHashes": {
+            "before": "2358724f3bc5cc9286a98e90b121079cddaa34f74ec89551404473cea3b11938",
+            "after": "4a120cf57c2d5cb5789c4bf3c943814ea24832307e88a639f3d51327439282f3"
+          }
+        },
+        {
+          "slug": "m21-10",
+          "source": "https://scryfall.com/card/m21/10/basris-solidarity?utm_source=api",
+          "identity": {
+            "reference": "68dbbb9693f4701ead757d0f1f286987c216293035b5de4b34a9810c267ee2fd",
+            "template": "f5adc014008fd0ae0d2f553dfb9f1150e8c7285d7938d2fff1117437e93388cb",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "821c2822ee55cb572ad7db8d50d9533672aee1f91e749a02719360f654c3284b",
+          "transform": {
+            "matrix": [
+              0.9999697149484817, 0, 0, 0.9999697149484817, 0.11067354985385609, 0.0217075874506138
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7261635707146652,
+            "distance": 1.0103530631817734
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9596148399886718,
+            "distance": 0.5263124317374399
+          },
+          "finalRaster": {
+            "before": 0.69690857816014,
+            "after": 0.9569265062610633
+          },
+          "finalRasterHashes": {
+            "before": "f5adc014008fd0ae0d2f553dfb9f1150e8c7285d7938d2fff1117437e93388cb",
+            "after": "da262fc9ba03947e8393b0c91500632c5a04e6e516e88865aa0e7bf76cda3d70"
+          }
+        },
+        {
+          "slug": "m21-9",
+          "source": "https://scryfall.com/card/m21/9/basris-lieutenant?utm_source=api",
+          "identity": {
+            "reference": "71b40ac9ddb2dea60ea1a8182525c0f0e8a7771174f0fb419da56fcc5482d508",
+            "template": "2623b9c4b40f1a19f5ac17856f707074edd8b52669b8566137b87da444a7584c",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "629cb25676566f37e5724cae6d63b6d257d23ac6e2599f10fd1ab9218c2f68ab",
+          "transform": {
+            "matrix": [
+              1.0000973380599092, 0, 0, 1.0000973380599092, 0.10822276633130418, 0.07226719107237621
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6799471011322128,
+            "distance": 1.1664641276617151
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9665331372648446,
+            "distance": 0.3010055800688033
+          },
+          "finalRaster": {
+            "before": 0.6962718129153783,
+            "after": 0.9284099472494348
+          },
+          "finalRasterHashes": {
+            "before": "2623b9c4b40f1a19f5ac17856f707074edd8b52669b8566137b87da444a7584c",
+            "after": "3563d391fcfb4dbb5ab68ffcd1cb4fedb726d2b3a2abd3f2c330cbc44df7d19b"
+          }
+        },
+        {
+          "slug": "m21-13",
+          "source": "https://scryfall.com/card/m21/13/containment-priest?utm_source=api",
+          "identity": {
+            "reference": "25f57433af44089cf52a49aebdcd775d92759f7ac9209472fdc77a222f1375e7",
+            "template": "36739932c8d83edd74ddcca8ce4b32503823ff591dc6f6579ebf6d3f8118405c",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "bcfdc4394efe6e7a9c61e578a186be2b6ad042bfaeed1996f8b9efb2d39e0cbb",
+          "transform": {
+            "matrix": [
+              1.0000189143014198, 0, 0, 1.0000189143014198, 0.11160341827935216, 0.05477699147374604
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6731930136204145,
+            "distance": 1.183657814629373
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.1,
+            "sy": 1.06,
+            "f1": 0.9592066711742169,
+            "distance": 0.5735443519318805
+          },
+          "finalRaster": {
+            "before": 0.6860662251655629,
+            "after": 0.9247899284420559
+          },
+          "finalRasterHashes": {
+            "before": "36739932c8d83edd74ddcca8ce4b32503823ff591dc6f6579ebf6d3f8118405c",
+            "after": "52de553e36641b6282640f9ef0e9bb01c8d2c94fd80f99e18ae7a4bc637a3030"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.7182352507718659,
+        "after": 0.9587314003210489
+      }
+    },
+    {
+      "set": "woe",
+      "family": "m15-accurate",
+      "count": 7,
+      "parameters": {
+        "dx": 2,
+        "dy": 0,
+        "sx": 1.08,
+        "sy": 1.08
+      },
+      "adopted": true,
+      "best": {
+        "dx": 2,
+        "dy": 0,
+        "sx": 1.08,
+        "sy": 1.08
+      },
+      "before": 0.7819196034745406,
+      "after": 0.9107360911102197,
+      "heldOutDelta": 0.12626492900396621,
+      "heldOut": [
+        {
+          "slug": "woe-16",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8264089046690111,
+          "after": 0.9248080204778157
+        },
+        {
+          "slug": "woe-2",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8167169617946821,
+          "after": 0.9866666666666666
+        },
+        {
+          "slug": "woe-3",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8167169617946821,
+          "after": 0.9866666666666666
+        },
+        {
+          "slug": "woe-59",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.4850680372223606,
+          "after": 0.6230862853116392
+        },
+        {
+          "slug": "woe-44",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8079372644166198,
+          "after": 0.931688856217158
+        },
+        {
+          "slug": "woe-1",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8843521606265179,
+          "after": 0.9750120909237466
+        },
+        {
+          "slug": "woe-42",
+          "parameters": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.06,
+            "sy": 1.08
+          },
+          "before": 0.8362369337979094,
+          "after": 0.9293631410858538
+        }
+      ],
+      "rows": [
+        {
+          "slug": "woe-16",
+          "source": "https://scryfall.com/card/woe/16/glass-casket?utm_source=api",
+          "identity": {
+            "reference": "6ce7267b4e7846cb0fada93efe1565b14c76c1157fad52fd68e74dbeafb5b29e",
+            "template": "74ee2ae9df17a7a6e018a6e8af236c61c9dc388d949948fff5993581d736e7ec",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "596f607f51d1b8e5f7a7228828941222138ea0627874c01fa1951215c9da3bbd",
+          "transform": {
+            "matrix": [
+              1.0026249451727371, 0, 0, 1.0026249451727371, -0.11005912275565707, 0.3271057562479819
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8264089046690111,
+            "distance": 1.0560932396770033
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9248080204778157,
+            "distance": 0.7404979084063014
+          },
+          "finalRaster": {
+            "before": 0.8489713998996488,
+            "after": 0.9297226365787732
+          },
+          "finalRasterHashes": {
+            "before": "48b658316981b2340afa648550cbb1cacdace7cd4e34a75005e0b792fc6bc61b",
+            "after": "ab8b9f7722abe321ff05b3329c02163820611694c3dab2f77204fe1651e75780"
+          }
+        },
+        {
+          "slug": "woe-2",
+          "source": "https://scryfall.com/card/woe/2/archons-glory?utm_source=api",
+          "identity": {
+            "reference": "d1a7b45a45457de22214a8bdfb7154880723fd7d87daab0c383c7cc4cd3ca1da",
+            "template": "3771d1806c03ab41d97a1ecd64dd18db3b305ac079c8281f56cd2b26a9213b86",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "16fc8d2174bfa9c93287ae15e71d64179ddb674d631d2fd4e5b02410c8948f98",
+          "transform": {
+            "matrix": [
+              1.0030366542119578, 0, 0, 1.0030366542119578, -0.015656599461168534,
+              0.11133027592517271
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8167169617946821,
+            "distance": 0.8205927952362024
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9866666666666666,
+            "distance": 0.3487622209681378
+          },
+          "finalRaster": {
+            "before": 0.816294409706821,
+            "after": 0.9798071518138972
+          },
+          "finalRasterHashes": {
+            "before": "3771d1806c03ab41d97a1ecd64dd18db3b305ac079c8281f56cd2b26a9213b86",
+            "after": "59acf9752e95d805289c79abbbcae140db74f49e36620df6794602bc93fd5490"
+          }
+        },
+        {
+          "slug": "woe-3",
+          "source": "https://scryfall.com/card/woe/3/armory-mice?utm_source=api",
+          "identity": {
+            "reference": "fc223540034304be8fd53021dc4e085e9e6760734e6a655234d6f023bfbda226",
+            "template": "f120dce5a956aa5a9df97f7fb328e2cdf1749b8769a1a5b93f33580eaef778fc",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "5229a96472cd7e178f9ba935a24fab5edc991c49fa341cc0b8af92f60bf30f57",
+          "transform": {
+            "matrix": [
+              1.0030389480260178, 0, 0, 1.0030389480260178, -0.016013885168162757,
+              0.10970538955390077
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8167169617946821,
+            "distance": 0.8205927952362024
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9866666666666666,
+            "distance": 0.3487622209681378
+          },
+          "finalRaster": {
+            "before": 0.816294409706821,
+            "after": 0.9798071518138972
+          },
+          "finalRasterHashes": {
+            "before": "f120dce5a956aa5a9df97f7fb328e2cdf1749b8769a1a5b93f33580eaef778fc",
+            "after": "43a5446c7985552093bed1fa746c03760b257d992715ceb3dd6a8ef45aaf952e"
+          }
+        },
+        {
+          "slug": "woe-59",
+          "source": "https://scryfall.com/card/woe/59/living-lectern?utm_source=api",
+          "identity": {
+            "reference": "a3ce7eacbf224fd4783a9a797b1ee41c252d98a08768354b3e62ae7d408728ab",
+            "template": "ef146afe6548efab189aa1a8b9369f7b11f3af0a4fd436862d010db4a37d90f0",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "42febccbfab57e2c5f0331e1dfd6db5358c410b90a432f6d0a7fdaf63a946aa0",
+          "transform": {
+            "matrix": [
+              1.0064183128328874, 0, 0, 1.0064183128328874, -0.10524455579054919, 2.1242815562821193
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.4850680372223606,
+            "distance": 3.0200863993096605
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.6230862853116392,
+            "distance": 2.583242609843006
+          },
+          "finalRaster": {
+            "before": 0.5015616388021311,
+            "after": 0.6207584492873688
+          },
+          "finalRasterHashes": {
+            "before": "ef146afe6548efab189aa1a8b9369f7b11f3af0a4fd436862d010db4a37d90f0",
+            "after": "1f8d60be8e4eed3c1c9f8f9571de7efb598430d6d7887d7431ffa5d64ee9f64d"
+          }
+        },
+        {
+          "slug": "woe-44",
+          "source": "https://scryfall.com/card/woe/44/bitter-chill?utm_source=api",
+          "identity": {
+            "reference": "efa7419c11c6aa275009042f1b8228793811648fd4ca1c5f66d8e286597dc94a",
+            "template": "9a4b8339ec613d5153d3d4746faf66e63ccbacbd49fc97078a3e08c5d31148b4",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "1e07737558efd5ad48c4fa07947c4638d1fcd0a5ff3d056d739d4ce6ca0c9a72",
+          "transform": {
+            "matrix": [
+              1.0031017874756039, 0, 0, 1.0031017874756039, -0.023763617250075954,
+              0.20262668671234907
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8079372644166198,
+            "distance": 1.4652834039800142
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.931688856217158,
+            "distance": 1.003110580620279
+          },
+          "finalRaster": {
+            "before": 0.8269230769230769,
+            "after": 0.9307877513649156
+          },
+          "finalRasterHashes": {
+            "before": "9a4b8339ec613d5153d3d4746faf66e63ccbacbd49fc97078a3e08c5d31148b4",
+            "after": "cc829fe5888668bc3d09df5e65103fc23342be71c575ccd2bc12169b873c6c40"
+          }
+        },
+        {
+          "slug": "woe-1",
+          "source": "https://scryfall.com/card/woe/1/archon-of-the-wild-rose?utm_source=api",
+          "identity": {
+            "reference": "4128ac642348c8ed923bb55a28d1a147c06f9a5c6a1678e94d197755fca50470",
+            "template": "ab15874f9e9ec115044b6a56c9dc5d093ba31969444f86f22c289be02434f35d",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "5f3119f67bdeb8d73b2553432b92cc1a6b6d97054576e519b3fd0dbf5ee93458",
+          "transform": {
+            "matrix": [
+              1.0031452622356902, 0, 0, 1.0031452622356902, -0.015415170198215913,
+              0.1609185027643566
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8843521606265179,
+            "distance": 0.6755896610075577
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9750120909237466,
+            "distance": 0.34988051999626113
+          },
+          "finalRaster": {
+            "before": 0.8676566619101749,
+            "after": 0.9687958710166201
+          },
+          "finalRasterHashes": {
+            "before": "ab15874f9e9ec115044b6a56c9dc5d093ba31969444f86f22c289be02434f35d",
+            "after": "e92ce76812bebfb38344df9905d2cda162630c279e7c1ce188eb59d1acc1c293"
+          }
+        },
+        {
+          "slug": "woe-42",
+          "source": "https://scryfall.com/card/woe/42/asinine-antics?utm_source=api",
+          "identity": {
+            "reference": "cb167c29e338603850fb1bd93942ff6bb1490e654c336876955cd00c7863c755",
+            "template": "8fa5d48d712cc0aa18544d95d9bcb17124ded64e641200a0537a12bed51ddb32",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "d52feec09627dbc506d2e37e320778a5d96fe637dc9f05a3025b3e8df20d4757",
+          "transform": {
+            "matrix": [
+              1.0031991575975259, 0, 0, 1.0031991575975259, -0.026732019735482688,
+              0.24851584593514756
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8362369337979094,
+            "distance": 1.3028257854561514
+          },
+          "after": {
+            "dx": 2,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9472240515078454,
+            "distance": 0.8869743677958368
+          },
+          "finalRaster": {
+            "before": 0.8412996326617056,
+            "after": 0.931849697297663
+          },
+          "finalRasterHashes": {
+            "before": "8fa5d48d712cc0aa18544d95d9bcb17124ded64e641200a0537a12bed51ddb32",
+            "after": "b4fb93c3fa5951cfe6d5d83ecf8f258f89fc1e91d819a286c9ffd7edb1e017ba"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.788428747087197,
+        "after": 0.9059326727390192
+      }
+    },
+    {
+      "set": "tdm",
+      "family": "m15-accurate",
+      "count": 5,
+      "parameters": {
+        "dx": 0,
+        "dy": 0,
+        "sx": 1.08,
+        "sy": 1.08
+      },
+      "adopted": true,
+      "best": {
+        "dx": 0,
+        "dy": 0,
+        "sx": 1.08,
+        "sy": 1.08
+      },
+      "before": 0.8384769958096664,
+      "after": 0.9261058323582297,
+      "heldOutDelta": 0.08449935404059965,
+      "heldOut": [
+        {
+          "slug": "tdm-123",
+          "parameters": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8722319401540808,
+          "after": 0.9326620380352754
+        },
+        {
+          "slug": "tdm-19",
+          "parameters": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.04,
+            "sy": 1.02
+          },
+          "before": 0.8508869447532506,
+          "after": 0.9185852566752677
+        },
+        {
+          "slug": "tdm-224",
+          "parameters": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8086233075253165,
+          "after": 0.9063309885227694
+        },
+        {
+          "slug": "tdm-32",
+          "parameters": {
+            "dx": -1,
+            "dy": 0,
+            "sx": 1.02,
+            "sy": 1.08
+          },
+          "before": 0.8526843711290372,
+          "after": 0.9313474642462765
+        },
+        {
+          "slug": "tdm-194",
+          "parameters": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08
+          },
+          "before": 0.8079584154866464,
+          "after": 0.9259560017717408
+        }
+      ],
+      "rows": [
+        {
+          "slug": "tdm-123",
+          "source": "https://scryfall.com/card/tdm/123/stormscale-scion?utm_source=api",
+          "identity": {
+            "reference": "e1ef2246d625ced5057c722334cb90ca7b7bc8bc2c9e244968f83597614e03b7",
+            "template": "709b81850b873c356ad6b63ddf589a92bdb84833ed28bfff0ec30eba7bed6e67",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "91b2bf2cb65693db3889227dbeeeef2cbe9627e021f6a962229ef44ca000ca2f",
+          "transform": {
+            "matrix": [
+              1.0027882662298087, 0, 0, 1.0027882662298087, 0.3393359193772578, 0.007992664444491066
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8722319401540808,
+            "distance": 0.6851027781651213
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9326620380352754,
+            "distance": 0.5811246178304807
+          },
+          "finalRaster": {
+            "before": 0.8602266311269843,
+            "after": 0.9146982693580027
+          },
+          "finalRasterHashes": {
+            "before": "0943618c179f6e5e71094620da09a8810b865f2d563ef7a23983771f03b0b534",
+            "after": "802b57e3abb3dd16841ca0725643cf8371bc21564c737951d85c0a5c3aeae9d7"
+          }
+        },
+        {
+          "slug": "tdm-19",
+          "source": "https://scryfall.com/card/tdm/19/rally-the-monastery?utm_source=api",
+          "identity": {
+            "reference": "ddce90818253a9aedacb4af38bb424ae56a17d95bce0b5d4cd75a4482f3a4c64",
+            "template": "5bfc9691a1fbc9e03773b0468ebb74a06dd574548b66232a923f3ac394c2dd82",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "9e691a61b76c6b020b952759190202ce3538cc2e373a1a28cfc95fc39cdfd7e0",
+          "transform": {
+            "matrix": [
+              1.003554665174311, 0, 0, 1.003554665174311, 0.22912425051474355, 0.29608156758517834
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8508869447532506,
+            "distance": 1.841081074249359
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9310983414581007,
+            "distance": 1.5212572423850343
+          },
+          "finalRaster": {
+            "before": 0.8694818680440918,
+            "after": 0.9427781013395458
+          },
+          "finalRasterHashes": {
+            "before": "5bfc9691a1fbc9e03773b0468ebb74a06dd574548b66232a923f3ac394c2dd82",
+            "after": "4a99fead204f01f309fb0a5006f7115c9c39fdef638ffd94681bee8824b57a2a"
+          }
+        },
+        {
+          "slug": "tdm-224",
+          "source": "https://scryfall.com/card/tdm/224/skirmish-rhino?utm_source=api",
+          "identity": {
+            "reference": "e8c209a5ff10ce5eed93c7bfcd792ff28122a88bee79d58f58003f17a6d19f6e",
+            "template": "26d74c294d86bd9f51aea7f991d0c6f8ab6dcd327169adc25a7cae4abf821c4d",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "ff39027b1c06b32ae2022653a4041b0d382ac5020773d121f44f9340ee8c9c67",
+          "transform": {
+            "matrix": [
+              1.0035689807758876, 0, 0, 1.0035689807758876, 0.20090972161009746, 0.33031684224518076
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8086233075253165,
+            "distance": 1.0718723759634718
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9063309885227694,
+            "distance": 0.8424181712701384
+          },
+          "finalRaster": {
+            "before": 0.8036733141335652,
+            "after": 0.9205377839592027
+          },
+          "finalRasterHashes": {
+            "before": "26d74c294d86bd9f51aea7f991d0c6f8ab6dcd327169adc25a7cae4abf821c4d",
+            "after": "dc65de6d222a902b09b05d39f4ced87a0f2102fc71dcf4e7f6363e60cbbdc8e1"
+          }
+        },
+        {
+          "slug": "tdm-32",
+          "source": "https://scryfall.com/card/tdm/32/united-battlefront?utm_source=api",
+          "identity": {
+            "reference": "084309bf7e26b8fcd5372e70b3ed204d2918b32951d2bb726c5f0a67a9043dbd",
+            "template": "35bba2c67b93b882c05eab62ed23eab34a7a6e9abf6e55ee5f049e40738f7f36",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "3d482fafce5adee63f819dafc54fe215bd783bbfca3d687971bff33069d179a9",
+          "transform": {
+            "matrix": [
+              1.0036638907429172, 0, 0, 1.0036638907429172, 0.22662923340869034, 0.33555640694064953
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8526843711290372,
+            "distance": 1.8539833912007588
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9344817920032619,
+            "distance": 1.4323597590532544
+          },
+          "finalRaster": {
+            "before": 0.8609202894917181,
+            "after": 0.9317149698621088
+          },
+          "finalRasterHashes": {
+            "before": "35bba2c67b93b882c05eab62ed23eab34a7a6e9abf6e55ee5f049e40738f7f36",
+            "after": "9104ae07de3e22d31b408b0d2b4d52a40f0b4883e715eeeec2b0f3cd31b07f6d"
+          }
+        },
+        {
+          "slug": "tdm-194",
+          "source": "https://scryfall.com/card/tdm/194/inevitable-defeat?utm_source=api",
+          "identity": {
+            "reference": "a197d16f7baa636f5bfe2982b35b526fe9d503201f1f0080b91ad6512a3a3071",
+            "template": "5a2f947bb9ec75d62fbb49e78959f8ec0b5a19c355cb85eed8c565b0a4f6006d",
+            "family": "m15-accurate",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "00fe443976989d1590b00adb21c4f18068475366f7c1f257d94d175c674cc15b",
+          "transform": {
+            "matrix": [
+              1.0036311747671856, 0, 0, 1.0036311747671856, 0.20763556009153217, 0.3622698200507083
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.8079584154866464,
+            "distance": 1.040959368892338
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1.08,
+            "sy": 1.08,
+            "f1": 0.9259560017717408,
+            "distance": 0.7520131703232789
+          },
+          "finalRaster": {
+            "before": 0.8086021505376345,
+            "after": 0.9363137916490932
+          },
+          "finalRasterHashes": {
+            "before": "5a2f947bb9ec75d62fbb49e78959f8ec0b5a19c355cb85eed8c565b0a4f6006d",
+            "after": "e6f09a557713a389536c14c79a4fe6770a2d2bdaad70dccec7c59ba8fc19403f"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.8405808506667988,
+        "after": 0.9292085832335907
+      }
+    },
+    {
+      "set": "9ed",
+      "family": "eighth",
+      "count": 4,
+      "parameters": {
+        "dx": 0,
+        "dy": 1,
+        "sx": 0.9,
+        "sy": 0.92
+      },
+      "adopted": true,
+      "best": {
+        "dx": 0,
+        "dy": 1,
+        "sx": 0.9,
+        "sy": 0.92
+      },
+      "before": 0.7463883266878673,
+      "after": 0.8564732859411348,
+      "heldOutDelta": 0.1083470503022474,
+      "heldOut": [
+        {
+          "slug": "9ed-161",
+          "parameters": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 0.9,
+            "sy": 0.94
+          },
+          "before": 0.7367180142385785,
+          "after": 0.8531772224518375
+        },
+        {
+          "slug": "9ed-243",
+          "parameters": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92
+          },
+          "before": 0.7937481741162723,
+          "after": 0.8627540788789582
+        },
+        {
+          "slug": "9ed-219",
+          "parameters": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92
+          },
+          "before": 0.7216171510816095,
+          "after": 0.8456063702346559
+        },
+        {
+          "slug": "9ed-159",
+          "parameters": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92
+          },
+          "before": 0.7334699673150082,
+          "after": 0.8574038363950066
+        }
+      ],
+      "rows": [
+        {
+          "slug": "9ed-161",
+          "source": "https://scryfall.com/card/9ed/161/sengir-vampire?utm_source=api",
+          "identity": {
+            "reference": "922ed220a443be1db2df82813c4c756bb54fee6e3490accb5b3a9b8f714bb65a",
+            "template": "8b5ff822c36856bd1a883931bfe0f769bcf6bf915493faddedb7acd6695b4107",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "df4a6efdf631a058d9fad6b84b78586d6a413562c08e634a3b59fcc5ad985d9f",
+          "transform": {
+            "matrix": [
+              0.9928655218898633, 0, 0, 0.9928655218898633, 0.08779021445956012,
+              0.048764529659651314
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7367180142385785,
+            "distance": 1.097382772899229
+          },
+          "after": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92,
+            "f1": 0.8601288582559184,
+            "distance": 0.7290235517778658
+          },
+          "finalRaster": {
+            "before": 0.7321711568938193,
+            "after": 0.8543031986458921
+          },
+          "finalRasterHashes": {
+            "before": "f0b079a7b1238ed89ecd7d50ad596f6736d7b41ee9bd41fd891d8f2685f83d69",
+            "after": "c4a6d3f47b6150fb2b8795c50bc68bca10b0da2aa9a412b50668ac6a200d67fa"
+          }
+        },
+        {
+          "slug": "9ed-243",
+          "source": "https://scryfall.com/card/9ed/243/giant-growth?utm_source=api",
+          "identity": {
+            "reference": "e7c84cdc5b66254ff1a97e19516ad6527a03bcb020abde1d09373746dd5a93cc",
+            "template": "55a080e97629e648d5ca7ba61c4c7deb191b9a66514236e7d343c6e197f3b606",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "33a39d888692eb55ff94b3ac15158177c3231859cd1a49065b5018c25eac8787",
+          "transform": {
+            "matrix": [
+              0.9915858893915612, 0, 0, 0.9915858893915612, 0.046258578022852465,
+              0.016275916764052663
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7937481741162723,
+            "distance": 0.794773921951071
+          },
+          "after": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92,
+            "f1": 0.8627540788789582,
+            "distance": 0.6333321788802142
+          },
+          "finalRaster": {
+            "before": 0.8040218896287993,
+            "after": 0.863164234877632
+          },
+          "finalRasterHashes": {
+            "before": "55a080e97629e648d5ca7ba61c4c7deb191b9a66514236e7d343c6e197f3b606",
+            "after": "c57ba6962dfc9f09ca8ca4f003be6dad028447e31943672b76fb0fd7de30cb3f"
+          }
+        },
+        {
+          "slug": "9ed-219",
+          "source": "https://scryfall.com/card/9ed/219/shivan-dragon?utm_source=api",
+          "identity": {
+            "reference": "0a2ca9fbeef261db437a0de57ada4d2ccffa3af433263b455f1da97e9831fd6a",
+            "template": "a35f9adadb32b332732809e3800cf846ec4256adfc385eec5da20e6f59aedfff",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "bb126ff691622ed0ee4cea2bbabd843fb7ee2496ac288163cf8a732c462d1599",
+          "transform": {
+            "matrix": [
+              0.9914577576557738, 0, 0, 0.9914577576557738, 0.011780763465429254,
+              0.06607555361490969
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7216171510816095,
+            "distance": 1.026534096261157
+          },
+          "after": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92,
+            "f1": 0.8456063702346559,
+            "distance": 0.8675500203096311
+          },
+          "finalRaster": {
+            "before": 0.7324729682595047,
+            "after": 0.8330814441645674
+          },
+          "finalRasterHashes": {
+            "before": "a35f9adadb32b332732809e3800cf846ec4256adfc385eec5da20e6f59aedfff",
+            "after": "c8870ac6a6e89d0dd01fd1f0de49f25ca724a9a37f2c71abbe66075217aee9b0"
+          }
+        },
+        {
+          "slug": "9ed-159",
+          "source": "https://scryfall.com/card/9ed/159/royal-assassin?utm_source=api",
+          "identity": {
+            "reference": "31b67619b446e97e167cafcb21432e592908cbb09b2f9ed6aab6f3795d6d2543",
+            "template": "f53ff3aa64ee65f5ba3e2bfc4d6dd3c079b7dfba240bb921f45536bff5debea5",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "32608d60ef5f4c4b1edb90bda11251e4b5395273629f241321a3130f0539c69a",
+          "transform": {
+            "matrix": [
+              0.9928180504799331, 0, 0, 0.9928180504799331, 0.06847972111830286,
+              -0.02794670767509363
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7334699673150082,
+            "distance": 1.0256602670701667
+          },
+          "after": {
+            "dx": 0,
+            "dy": 1,
+            "sx": 0.9,
+            "sy": 0.92,
+            "f1": 0.8574038363950066,
+            "distance": 0.7604940813757068
+          },
+          "finalRaster": {
+            "before": 0.7369453229660116,
+            "after": 0.8532783328826817
+          },
+          "finalRasterHashes": {
+            "before": "f53ff3aa64ee65f5ba3e2bfc4d6dd3c079b7dfba240bb921f45536bff5debea5",
+            "after": "3af3c1f18da919edd450fff055e854520b49b545ac948460221ff8cf924c4db2"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.7514028344370337,
+        "after": 0.8509568026426934
+      }
+    },
+    {
+      "set": "10e",
+      "family": "eighth",
+      "count": 3,
+      "parameters": {
+        "dx": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1
+      },
+      "adopted": false,
+      "best": {
+        "dx": -1,
+        "dy": 0,
+        "sx": 0.94,
+        "sy": 1
+      },
+      "before": 0.9631800833771041,
+      "after": 0.9631800833771041,
+      "heldOutDelta": -0.00414677760464192,
+      "heldOut": [
+        {
+          "slug": "10e-64",
+          "parameters": {
+            "dx": -1,
+            "dy": 0,
+            "sx": 0.94,
+            "sy": 1
+          },
+          "before": 0.9921208207064435,
+          "after": 0.9936708860759493
+        },
+        {
+          "slug": "10e-71",
+          "parameters": {
+            "dx": 1,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1
+          },
+          "before": 0.9645021127322012,
+          "after": 0.9383606557377049
+        },
+        {
+          "slug": "10e-61",
+          "parameters": {
+            "dx": -1,
+            "dy": 0,
+            "sx": 0.94,
+            "sy": 1
+          },
+          "before": 0.9329173166926678,
+          "after": 0.9450683755037325
+        }
+      ],
+      "rows": [
+        {
+          "slug": "10e-64",
+          "source": "https://scryfall.com/card/10e/64/air-elemental?utm_source=api",
+          "identity": {
+            "reference": "d8dd1fc2586d14497c4d1a11bbad4dc516b5de87952479ec902868dbb7c30175",
+            "template": "527f7eb84d1733b61074d8efa86797be8ebf48680d36ab8e225912ce62ac4eb8",
+            "family": "eighth",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "4e3b3d33e2264ea9c3fe5628ec98c13bf64c2c55e71fbb5732b7d94517a3d3a3",
+          "transform": {
+            "matrix": [
+              0.9930800832511203, 0, 0, 0.9930800832511203, -0.0671260212455899,
+              0.033202516408518123
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9921208207064435,
+            "distance": 0.38974289415842567
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9921208207064435,
+            "distance": 0.38974289415842567
+          },
+          "finalRaster": {
+            "before": 0.9841470115386963,
+            "after": 0.9841470115386963
+          },
+          "finalRasterHashes": {
+            "before": "0b963c6c5eaacda07269cfdfa76f35414c4afc659d402334207abb3c6d1591f4",
+            "after": "0b963c6c5eaacda07269cfdfa76f35414c4afc659d402334207abb3c6d1591f4"
+          }
+        },
+        {
+          "slug": "10e-71",
+          "source": "https://scryfall.com/card/10e/71/cancel?utm_source=api",
+          "identity": {
+            "reference": "293c77eb8dbbb4ae25feb9776707e36c0dffdc64b4000adee67af958d6c3987c",
+            "template": "63a53eb43d4be7b3f67e7fb6735a7a863b168c11dd7114930f2ca5ecb48705d0",
+            "family": "eighth",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "1e9d369a3a8bc48265171548e9aacd76c7ba619660c17f05de54d06e2a700a5f",
+          "transform": {
+            "matrix": [
+              0.9934882076572401, 0, 0, 0.9934882076572401, -0.2501816128914185, 0.03340380766135782
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9645021127322012,
+            "distance": 0.708110823777729
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9645021127322012,
+            "distance": 0.708110823777729
+          },
+          "finalRaster": {
+            "before": 0.964492717353221,
+            "after": 0.964492717353221
+          },
+          "finalRasterHashes": {
+            "before": "7b2aefb9a3c8bfd8574e923c6672b3b1d95f3c48f00b2122af7bdc2cbafdbb18",
+            "after": "7b2aefb9a3c8bfd8574e923c6672b3b1d95f3c48f00b2122af7bdc2cbafdbb18"
+          }
+        },
+        {
+          "slug": "10e-61",
+          "source": "https://scryfall.com/card/10e/61/wrath-of-god?utm_source=api",
+          "identity": {
+            "reference": "ea502bd22b65e3dc1ae79ad11967982425b792f55e4cebe119f4a3dcb93aa9c8",
+            "template": "2102a33909c695a99f23965f7e56dff62b9cf2e277173fea21183784a0a9538d",
+            "family": "eighth",
+            "border": "black",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "2c8da07ee3be1e2cc1c83bdca308695fb90399266e101647f85f1e3a17dd63a1",
+          "transform": {
+            "matrix": [
+              0.99371181915701, 0, 0, 0.99371181915701, -0.11853772047810478, 0.007359630836082938
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9329173166926678,
+            "distance": 0.4570846806993092
+          },
+          "after": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.9329173166926678,
+            "distance": 0.4570846806993092
+          },
+          "finalRaster": {
+            "before": 0.923804766902187,
+            "after": 0.923804766902187
+          },
+          "finalRasterHashes": {
+            "before": "c239ca7a3522423cdd6ce8ce9ae593030c14390f985b41bc46329da49f77aad6",
+            "after": "c239ca7a3522423cdd6ce8ce9ae593030c14390f985b41bc46329da49f77aad6"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.9574814985980348,
+        "after": 0.9574814985980348
+      }
+    },
+    {
+      "set": "8ed",
+      "family": "eighth",
+      "count": 3,
+      "parameters": {
+        "dx": -4,
+        "dy": 0,
+        "sx": 1,
+        "sy": 0.92
+      },
+      "adopted": true,
+      "best": {
+        "dx": -4,
+        "dy": 0,
+        "sx": 1,
+        "sy": 0.92
+      },
+      "before": 0.6526630872628826,
+      "after": 0.8118021927789036,
+      "heldOutDelta": 0.13734828291277465,
+      "heldOut": [
+        {
+          "slug": "8ed-254",
+          "parameters": {
+            "dx": -4,
+            "dy": 0,
+            "sx": 1,
+            "sy": 0.92
+          },
+          "before": 0.6312866294125665,
+          "after": 0.7985104402181142
+        },
+        {
+          "slug": "8ed-221",
+          "parameters": {
+            "dx": -3,
+            "dy": 0,
+            "sx": 1,
+            "sy": 0.92
+          },
+          "before": 0.6017910447761194,
+          "after": 0.7428029626372419
+        },
+        {
+          "slug": "8ed-159",
+          "parameters": {
+            "dx": -4,
+            "dy": 0,
+            "sx": 1,
+            "sy": 0.94
+          },
+          "before": 0.7249115875999617,
+          "after": 0.8287207076716155
+        }
+      ],
+      "rows": [
+        {
+          "slug": "8ed-254",
+          "source": "https://scryfall.com/card/8ed/254/giant-growth?utm_source=api",
+          "identity": {
+            "reference": "c5ae383160651e7d0199ff8c943fbf156db5d3243d2703b6370bcdbf3ddee2c4",
+            "template": "a319064fc6e7a6ae2f9b18920abe91579aa86ef360de8bc2cf32ecf485850c31",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "2183939f96181686fb2c9606922dda1bb646707e3c93dabc933bcc9ca765668d",
+          "transform": {
+            "matrix": [
+              0.9955740356484576, 0, 0, 0.9955740356484576, -0.2403852641237555, 0.9976210321300572
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6312866294125665,
+            "distance": 1.2999593781558034
+          },
+          "after": {
+            "dx": -4,
+            "dy": 0,
+            "sx": 1,
+            "sy": 0.92,
+            "f1": 0.7985104402181142,
+            "distance": 0.9753154573070895
+          },
+          "finalRaster": {
+            "before": 0.6277369669298891,
+            "after": 0.7957728469349379
+          },
+          "finalRasterHashes": {
+            "before": "a319064fc6e7a6ae2f9b18920abe91579aa86ef360de8bc2cf32ecf485850c31",
+            "after": "aaf847a6eb04253ddc4ea01685c8969292ecc5e44ff585fc1f1193531fcc96a1"
+          }
+        },
+        {
+          "slug": "8ed-221",
+          "source": "https://scryfall.com/card/8ed/221/shivan-dragon?utm_source=api",
+          "identity": {
+            "reference": "dfd1dc79c62511f7611241f5199cea6980dce9fb8242d16f211c32880e2302d6",
+            "template": "357886346486682cd95d81912ce9109e0f6034770734e18d5179359e81a49fdf",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "c0d635315539c8e983ac1c7427097ae6c825c460653d86ed4f1508e3e5d815ff",
+          "transform": {
+            "matrix": [
+              0.99157194832778, 0, 0, 0.99157194832778, -0.036927060988477214, -0.1097028522990459
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.6017910447761194,
+            "distance": 1.348868801077507
+          },
+          "after": {
+            "dx": -4,
+            "dy": 0,
+            "sx": 1,
+            "sy": 0.92,
+            "f1": 0.8002142611179839,
+            "distance": 0.8569847558928182
+          },
+          "finalRaster": {
+            "before": 0.5720155215704178,
+            "after": 0.7721698687181429
+          },
+          "finalRasterHashes": {
+            "before": "357886346486682cd95d81912ce9109e0f6034770734e18d5179359e81a49fdf",
+            "after": "a7128a56f00239bac515a42e1a47c4efc17aef8e1d92a7b50ead87875ab3ac23"
+          }
+        },
+        {
+          "slug": "8ed-159",
+          "source": "https://scryfall.com/card/8ed/159/royal-assassin?utm_source=api",
+          "identity": {
+            "reference": "133178c150e7509d803572b7f7156eb4f1ae0076ef32c2fa551c5cbefe8e4ac9",
+            "template": "bb12c13cbbcb3629daf6c9f42603f622057e312044241980d30598d36c936023",
+            "family": "eighth",
+            "border": "white",
+            "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+          },
+          "normalizationHash": "ad8b61de917466c0ef09f946957eba12a19004e922878ded1ff4c2f4d4eec601",
+          "transform": {
+            "matrix": [
+              0.993608973612887, 0, 0, 0.993608973612887, -0.30411808462298157, 0.11998034407521566
+            ]
+          },
+          "before": {
+            "dx": 0,
+            "dy": 0,
+            "sx": 1,
+            "sy": 1,
+            "f1": 0.7249115875999617,
+            "distance": 1.039961160796532
+          },
+          "after": {
+            "dx": -4,
+            "dy": 0,
+            "sx": 1,
+            "sy": 0.92,
+            "f1": 0.8366818770006129,
+            "distance": 0.7111196822205742
+          },
+          "finalRaster": {
+            "before": 0.6878939712299983,
+            "after": 0.8199122383915861
+          },
+          "finalRasterHashes": {
+            "before": "bb12c13cbbcb3629daf6c9f42603f622057e312044241980d30598d36c936023",
+            "after": "30cbff8be9d36a487e5fd1d552c8ebf7b6ed3ec2d2c147bef77deaae4500340b"
+          }
+        }
+      ],
+      "finalRaster": {
+        "before": 0.6292154865767684,
+        "after": 0.7959516513482222
+      }
+    }
+  ],
+  "rejected": [
+    "m15-155",
+    "m15-241",
+    "m15-249",
+    "m15-246",
+    "m19-248",
+    "war-81",
+    "8ed-58",
+    "8ed-303",
+    "10e-230",
+    "10e-266",
+    "10e-176",
+    "10e-325",
+    "m21-21",
+    "woe-41",
+    "woe-79",
+    "woe-124",
+    "8ed-59",
+    "8ed-45",
+    "9ed-58",
+    "9ed-43",
+    "m21-46",
+    "m21-87",
+    "m21-88",
+    "m21-132",
+    "m21-130",
+    "m21-176"
+  ],
+  "confirmation": {
+    "parameters": {
+      "dx": 2,
+      "dy": 0,
+      "sx": 1.1,
+      "sy": 1.06
+    },
+    "set": "m21",
+    "count": 2,
+    "rows": [
+      {
+        "slug": "m21-49",
+        "colors": ["U"],
+        "identity": {
+          "reference": "9f73d37a53e456554d1bf404e9deb7c56ee9c49cb6db393cebc43a5065d7b9bc",
+          "template": "3b430e318a73230b8cee8fbe1fb0047a6209e1457420b994ba7e2dd416de641d",
+          "family": "m15-accurate",
+          "border": "black",
+          "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+        },
+        "normalizationHash": "2decaeb340632ea66ddf45becb67a502a2114c9ffd5b02eecf7d4079263e1a4f",
+        "before": 0.7096862210095498,
+        "after": 0.9840868813030086,
+        "finalRaster": {
+          "before": 0.7013264313206403,
+          "after": 0.9505586687464919
+        },
+        "finalRasterHashes": {
+          "before": "3b430e318a73230b8cee8fbe1fb0047a6209e1457420b994ba7e2dd416de641d",
+          "after": "a56849753dab0dcc7250f6fd943bfca392f7ef7df23b83a4c1eac395b15d1b87"
+        }
+      },
+      {
+        "slug": "m21-174",
+        "colors": ["G"],
+        "identity": {
+          "reference": "a53ce3e809ff5a26e6192e9cddc65362f65faa84b073c7be56a6e28fb0b86370",
+          "template": "8165bebbd38ebbc2dcfd2ea4377f790fbdef90f1da462571fdea805b713c7da7",
+          "family": "m15-accurate",
+          "border": "black",
+          "methodHash": "5a162e929600c6aebf6d0469a3efdc93d71627e5a18bb7108c87f9d3bac662c0"
+        },
+        "normalizationHash": "f032a2c0d6761caae96cce168485822717481927e5f559af6c44078889c56918",
+        "before": 0.7372076923979489,
+        "after": 0.9574413093809767,
+        "finalRaster": {
+          "before": 0.7317116022901318,
+          "after": 0.9846153846153847
+        },
+        "finalRasterHashes": {
+          "before": "8165bebbd38ebbc2dcfd2ea4377f790fbdef90f1da462571fdea805b713c7da7",
+          "after": "79abe32778dfd5d81005b4b0bcc000bae29155e30caea40018718aeb27e67518"
+        }
+      }
+    ],
+    "finalRaster": {
+      "before": 0.7165190168053861,
+      "after": 0.9675870266809383
+    }
+  },
+  "sourceRevision": "b5b0d9a",
+  "patchRevision": "symbol-svg-v1",
+  "reviewFlags": [
+    "Twenty-six rejected frame fits across 63 captures; no text or symbol evidence used to rescue a bad fit.",
+    "Eighth/Ninth numeral contour weight still differs; local patches repair material topology, not the underlying numeral outlines.",
+    "Placement profiles apply only to measured replacement frame families. Component frames and retro families still require their own source recalibration.",
+    "Many set symbols remain outside this initial seven-set cohort."
+  ]
+}

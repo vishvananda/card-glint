@@ -355,3 +355,59 @@ PNG/geometry work and does not launch Chromium; browser rendering is only used
 to prepare source captures. Neither CPU scoring nor capture time measures GPU
 completion time. The HTML review and all external images remain outside the
 repository and public showcase.
+
+## Styled symbol default and local SVG corrections
+
+Styled Card Conjurer symbols now replace the prior source exemptions for every
+available set/rarity. Explicit Keyrune and caller-owned URLs remain supported.
+Seven checksum-verified source patches correct the M15 uncommon/rare/mythic
+metal/ink polarity and Eighth/Ninth Edition uncommon/rare material topology.
+The patch runs once before decoding in the shared encoded-source cache. It does
+not add a branch to an animated painter or redistribute vector path data.
+
+The [placement study](fixtures/assets/styled-symbol-placement-calibration.json)
+covers 63 captures in nine sets, with 37 accepted frame fits across seven sets. Thirty-five
+accepted scans form the development cohort; two additional blue/green M21
+scans confirm the selected profile without refitting. Twenty-six frame fits
+remain rejected. The symbol region excludes most neighboring frame lines and
+uses grayscale edge F1 with one-pixel tolerance. Fit translation, scale,
+rotation and skew from frame-only anchors first, freeze the result and source
+hashes, then search symbol position and independent horizontal/vertical scale.
+
+| Set | Accepted development cards | Before | After |
+| --- | -------------------------: | -----: | ----: |
+| M15 |                          4 |  91.4% | 95.3% |
+| M21 |                          9 |  71.8% | 95.9% |
+| WOE |                          7 |  78.8% | 90.6% |
+| TDM |                          5 |  84.1% | 92.9% |
+| 8ED |                          3 |  62.9% | 79.6% |
+| 9ED |                          4 |  75.1% | 85.1% |
+| 10E |                          3 |  95.7% | 95.7% |
+
+These are final full-card raster measurements of the symbol region, not whole-card
+accuracy. Candidate search uses a 2× region capture; final verification uses the
+ordinary 732×1020 card export, so antialiasing produces slightly different scores.
+Both sets of scores are retained in the fixture. No development card regresses
+by more than two percentage points in the final raster check.
+Profiles are shared per set, with leave-one-out checks; Tenth Edition retains
+its placement because its fitted change did not transfer. Replacement plate
+profiles must not be applied to the component or retro frame families without
+new measurements. The Eighth/Ninth numeral outline weights still need visual
+review. Other set symbols remain outside this initial placement cohort.
+
+Reproduce candidate capture/scoring with
+`node games/magic/tools/accuracy/styled-symbol-placement.mjs CAPTURE_DIRECTORY [GRID_JSON]`.
+The optional grid maps each set code to `{dx,dy,sx,sy}` candidates. Candidate
+geometry starts at the unadjusted family bounds, so adoption does not shift a
+later search's origin. Source capture uses one cached browser session; score
+calculation and report aggregation use Node CPU code. These measurements do
+not measure GPU completion time. Combine successive grids with
+`node games/magic/tools/accuracy/styled-symbol-report.mjs CAPTURE_DIRECTORY GRID_JSON...`.
+The local source capture remains external, and the fixture records the measured
+source revision, source hashes, normalization hashes and selected transforms.
+
+Verify normal full-card exports after adopting the profile with
+`node games/magic/tools/accuracy/styled-symbol-final-review.mjs CAPTURE_DIRECTORY REPORT_JSON`.
+Keep each baseline as `CARD-pre-calibration.png`, the new export as
+`CARD-plate.png`, and the frozen frame registration beside the reference scans.
+This check records final raster hashes and scores separately from search scores.
