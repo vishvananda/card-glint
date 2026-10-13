@@ -72,6 +72,17 @@ export async function openBrowser(snapshot, { fonts = true, sourceRoot = root } 
       page,
       browser,
       faults,
+      // Batch studies extend a frozen, content-addressed allowlist while using
+      // one browser. The route still refuses every uncached external request.
+      addAssets(assets) {
+        for (const asset of assets) {
+          const prior = byUrl.get(asset.url);
+          if (prior && prior.sha256 !== asset.sha256)
+            throw Error(`Batch asset identity changed: ${asset.url}`);
+          byHash.set(asset.sha256, asset);
+          byUrl.set(asset.url, asset);
+        }
+      },
       close: async () => {
         await browser.close();
         await server.close();
