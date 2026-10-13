@@ -16,6 +16,9 @@ export function historicalSetOutline(setCode?: string | null): number {
   return ['arn', 'atq', 'leg', 'drk', 'chr'].includes(setCode?.toLowerCase() ?? '') ? 0 : 1;
 }
 
-export function hasNoPrintedSetSymbol(setCode?: string | null): boolean {
-  return noSymbolSets.has(setCode?.trim().toLowerCase() ?? '');
+export function hasNoPrintedSetSymbol(setCode?: string | null, name?: string): boolean {
+  const set = setCode?.trim().toLowerCase() ?? '';
+  // The Antiquities Reconstruction printing omits its anvil, independently of
+  // Oracle wording or mana/tap glyph style: https://scryfall.com/card/atq/12/reconstruction
+  return noSymbolSets.has(set) || (set === 'atq' && name === 'Reconstruction');
 }

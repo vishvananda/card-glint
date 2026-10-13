@@ -1054,3 +1054,55 @@ its application, deployment and database outside this library repository.
   adoption plan, measurement reports and control hashes freeze provenance.
   The local review retains all scores, uncertain bounds, calibration examples,
   strongest changes, regressions and the four resolved wording-mode failures.
+
+### Antiquities measured anvil and printed omission (v75–v76)
+
+- Freeze all **102 ordinary printings** (85 distinct cards), with sixteen
+  calibration cards spanning W/U/B/R/G, artifacts and lands, then reserve the
+  remaining 86. Cache every scan/art asset and render explicit Oracle wording
+  with original symbols at both tiers. Eight controls cover adjacent sets,
+  Chronicles' inherited anvil, an explicit custom URL and a modern-frame card.
+  The baseline and final capture both contain all 110 faces with no failures.
+- Reuse native symbol bounds. The initial wide dark threshold sweep merges
+  background texture or cuts off the anvil tip; retain the calibration-only
+  segmentation screen. A shared 60/70/80/90 sweep supplies six stable references
+  across W/U/artifact/land, median **32.856 × 16.183** canonical px. Ten calibration
+  references remain uncertain. Full-set measurements find 28 stable references;
+  one of the remaining 74 is the known absent symbol, not an unmeasured anvil.
+  No thresholds, offsets or scales are fitted to individual cards.
+- The existing padded stencil painted only **24 × 12.667**, around twenty pixels
+  too far right. Crop its existing alpha bounds and use shared geometry
+  **33 × 16**, right **415**, center Y **391.5**, with no outer rim. Actual
+  inspection ink bounds are **33.333 × 16.667**. Paired calibration median
+  absolute width/height error falls **8.856/3.516 → .490/.987** px. Source pixels
+  represent about .65 canonical px; raw scan registration is still provisional.
+- The geometry-only pass improves 101 cards and reveals Reconstruction as its
+  sole substantial inspection regression. Its [Antiquities printing scan](https://scryfall.com/card/atq/12/reconstruction)
+  has **no anvil**. Preserve the geometry-only capture/report and fix this
+  printing detail separately. Both mana/tap symbol styles keep the omission in
+  the original frame; explicit custom symbols and modern-frame behavior remain
+  unchanged in targeted captures. This is a printing exception discovered in
+  validation, so the final report separately identifies 85 untouched validation
+  cards. It is not per-card alignment tuning.
+- All 102 final faces improve symbol-region edge F1 by more than .02 at both
+  sizes, with no edge/Census regressions. Median inspection F1 is
+  **.338 → .717**, table **.315 → .689**; Census **.570 → .823** and
+  **.611 → .850**. The 85 untouched validation cards show **.352 → .725** and
+  **.319 → .700** F1. These are raw symbol-region metrics, not whole-card fidelity.
+- All eight controls are byte-identical. All other changes stay inside the
+  symbol envelope, except necessary type-only compression for the long Oracle
+  labels on Priest of Yawgmoth and Dragon Engine (335.178 → 323.589 px maximum).
+  The final omission correction leaves every other v75 face byte-identical.
+  No original-wording typography claim is made.
+- Keep the anvil's horn/stem contours flagged for asset review. Blue/black frame
+  texture, artifact type-strip geometry and gold-tinted land framing differ
+  visibly from scans; retain them for the frame and HSB passes. The local page
+  includes all calibration cards, strongest/weakest changes, Reconstruction and
+  both compressed labels, with full cards, measured bounds and red/green overlays.
+- Reproduce current results with `atq-symbol-study.mjs after`,
+  `atq-symbol-audit.mjs after`, `atq-symbol-bounds.mjs after`, and
+  `atq-symbol-exception.mjs after`. Earlier baselines require their recorded
+  renderer revisions. Geometry-only captures are retained under `geometry-only`;
+  fixtures preserve the original capture/method hashes and all 102 scores.
+  `npm run check`, build, package, browser, showcase, Magic layouts and accuracy
+  checks passed on v76. The review page remains local and outside the repository.

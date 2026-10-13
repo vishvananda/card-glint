@@ -22,6 +22,9 @@ const base = `${outputRoot}/atq-symbol`,
   adoption = await readJson(`${fixtureRoot}/atq-symbol-adoption-plan.json`),
   before = await readJson(`${base}/before/capture.json`),
   after = await readJson(`${base}/${stage}/capture.json`),
+  exception =
+    stage === 'after' ? await readJson(`${fixtureRoot}/atq-symbol-exception-plan.json`) : null,
+  geometry = stage === 'after' ? await readJson(`${base}/geometry-only/capture.json`) : null,
   rect = [374, 375, 68, 32],
   rows = [];
 assert.equal(hash(JSON.stringify(before)), adoption.baselineHash);
@@ -30,6 +33,7 @@ assert.equal(before.planHash, hash(JSON.stringify(plan)));
 assert.equal(after.planHash, hash(JSON.stringify(plan)));
 assert.equal(after.rendererHash, await sourceHash(`${root}/games/magic/src`));
 assert.equal(before.rows.length, plan.cards.length);
+if (exception) assert.equal(hash(JSON.stringify(geometry)), exception.geometryCaptureHash);
 assert.deepEqual(
   after.rows.map((r) => r.id).sort(),
   plan.cards
@@ -67,6 +71,11 @@ for (const a of after.rows) {
   assert.deepEqual(a.clearance.typeRegion, b.clearance.typeRegion);
   if (control) assert.deepEqual(a.clearance, b.clearance);
   for (const tier of ['inspect', 'table']) {
+    if (exception && a.id !== exception.id)
+      assert.equal(
+        a.images[tier].sha256,
+        geometry.rows.find((r) => r.id === a.id).images[tier].sha256,
+      );
     const images = {},
       metrics = {};
     for (const [label, row, folder] of [
@@ -118,6 +127,7 @@ for (const a of after.rows) {
     scores,
     review: [
       'scan-registration-unverified',
+      ...(a.id === exception?.id ? ['printed-symbol-omission-corrected-after-validation'] : []),
       ...(adoption.uncertainIds.includes(a.id) ? ['calibration-bounds-uncertain'] : []),
       ...(a.clearance.needsCompression ? ['oracle-type-compressed-for-clearance'] : []),
       ...['inspect', 'table'].flatMap((t) => [
@@ -159,13 +169,18 @@ const ordinary = rows.filter((r) => r.cohort !== 'control'),
     calibration: summarize(ordinary.filter((r) => r.cohort === 'calibration')),
     validation:
       stage === 'after' ? summarize(ordinary.filter((r) => r.cohort === 'validation')) : null,
+    untouchedValidation:
+      stage === 'after'
+        ? summarize(ordinary.filter((r) => r.cohort === 'validation' && r.id !== exception.id))
+        : null,
     controls: rows.filter((r) => r.cohort === 'control').length,
     failures: 0,
   };
 await writeJson(`${fixtureRoot}/atq-symbol-${stage}-measurement.json`, {
   schemaVersion: 1,
   scope:
-    'Production Antiquities anvil correction with explicit Oracle/original-symbol inputs. Same pinned vector, one measured geometry, no fitted scan transform. Every ordinary printing and control retained. Pixels outside symbol plus necessary type-clearance compression must be identical; all eight controls unchanged. Raw grayscale edge/Census scores cover the symbol region, not whole-card accuracy or certified scan alignment.',
+    'Production Antiquities anvil correction with explicit Oracle/original-symbol inputs. Same pinned vector, one measured geometry, no fitted scan transform. Every ordinary printing and control retained. Pixels outside symbol plus necessary type-clearance compression must be identical; all eight controls unchanged. Raw grayscale edge/Census scores cover the symbol region, not whole-card accuracy or certified scan alignment. Final pass corrects the missing-symbol printing exception discovered during validation; preserve geometry-only results and report 85 untouched validation cards separately.',
+  printingExceptionHash: exception ? hash(JSON.stringify(exception)) : null,
   baselineHash: hash(JSON.stringify(before)),
   adoptionHash: hash(JSON.stringify(adoption)),
   planHash: after.planHash,

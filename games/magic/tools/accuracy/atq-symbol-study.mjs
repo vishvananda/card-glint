@@ -144,7 +144,7 @@ try {
           images.push({ tier, data: canvas.toDataURL() });
           canvas.width = canvas.height = 0;
         }
-        const { retroPx, retroRects } = await import(
+        const { retroPx, retroRects, retroSetSymbol } = await import(
           '/games/magic/src/presentation/retro-frame.ts'
         );
         const { retroSymbolGeometry } = await import(
@@ -155,7 +155,12 @@ try {
         const [x, y, w, h] = retroPx(retroRects(face).type),
           g = face.frameStyle === 'retro' ? retroSymbolGeometry(face) : null,
           before = w - 48,
-          after = g ? Math.min(before, g.right - g.width - x - 6) : before,
+          after =
+            face.frameStyle === 'retro' && !retroSetSymbol(face)
+              ? w
+              : g
+                ? Math.min(before, g.right - g.width - x - 6)
+                : before,
           measuredWidth = context.measureText(face.typeLine).width;
         return {
           images,
