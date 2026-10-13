@@ -147,9 +147,6 @@ const normalizedMaterials: Readonly<
     U: { ...profiles.all!, right: 427.5, centerY: 393.25 },
     W: { ...profiles.all!, right: 427.25, centerY: 392.75 },
   },
-  leg: {
-    W: { ...profiles.leg!, right: 443.75, centerY: 393.75 },
-  },
   mir: {
     G: { ...profiles.mir!, right: 437, centerY: 390.25 },
     W: { ...profiles.mir!, right: 437.75, centerY: 389.25 },
@@ -160,8 +157,6 @@ const normalizedMaterials: Readonly<
     W: { ...profiles.sth!, right: 435.25, centerY: 389.25 },
   },
   tmp: {
-    G: { ...profiles.tmp!, right: 432.5, centerY: 391.5 },
-    R: { ...profiles.tmp!, right: 432.25, centerY: 392.5 },
     U: { ...profiles.tmp!, right: 433, centerY: 392.75 },
     W: { ...profiles.tmp!, right: 433.25, centerY: 389.5 },
   },

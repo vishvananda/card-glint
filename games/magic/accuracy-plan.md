@@ -42,6 +42,61 @@ including fit quality and rejection reasons. Evaluate rotation and global skew
 using disjoint frame-anchor samples before accepting the extra degrees of
 freedom. Translation/scale pilots alone do not finish this recalibration.
 
+### Stored frame poses and placement validation
+
+The current normalization implementation is CPU-only. It samples 26 disjoint
+strips along each of four outer frame edges, alternating fitting and validation
+samples. A fit needs at least eight samples per side in each partition, spanning
+at least 60% of that side. Text, artwork and the symbol are not registration
+objectives. Stored frame targets remain independent of symbol candidates.
+
+The model sequence is translation/uniform scale, rotation, then bounded global
+shear. Rotation must improve validation RMS by at least .12px and shear by .15px;
+both also require a 20% relative improvement and cannot worsen any side's RMS
+by more than .15px. A comparable simpler fit is required. Limits are 2% scale,
+6px translation, .6 degrees rotation and .4 degrees shear. Validation RMS must
+remain at most .8px and each side's 90th-percentile residual at most 1.25px.
+The shear model has equal matrix diagonals, so it cannot independently stretch
+card width and height to conceal a frame-asset aspect error. Perspective and
+local warps are excluded. Synthetic tests cover recovery, model selection,
+rejection, raster extraction, inverse transforms and exact crop/full-image
+sampling parity.
+
+`symbol-scan-pose.mjs SET` stores every printing's result, including failures.
+Accepted rows contain the centered affine matrix, inverse, parameters, sample
+support, validation errors and candidate-model decisions. Scan, target, method
+and policy hashes bind the fit. Anchor observations and fit results also live
+in the local content-keyed `derived/scan-frame` cache. Warm runs still verify
+source bytes but skip PNG decoding and fitting. The region cache supports the
+same matrix and scores the exact normalized pixels displayed in comparisons.
+
+The first batch stores **3,084 printings in 15 old-frame sets**: 1,073 accepted
+translation/scale fits, 724 rejected fits and 1,287 without an admitted material
+frame template. None passes the extra-model gates for rotation or shear. This
+is limited coverage, not completion of any set or the all-major-set request.
+Dark, gold and land materials need more template/anchor work; Antiquities has
+only one accepted fit under these conservative frame checks. Do not compensate
+for those failures by fitting the symbol itself or stretching each axis.
+
+`symbol-placement-normalization.mjs SET STAGE` proposes shared material shifts
+from normalized native symbol bounds, using a deterministic development split.
+These references were previously observed; this is not a new blind holdout.
+The proposal must then pass production raster comparisons at both tiers, Census
+comparison, crop coverage, controls, type clearance and visual review. The
+[trial review](fixtures/accuracy/symbol-pose-trial-review.json) rejected the
+white Legends quarter-pixel shift and Tempest's red/green shifts. Their bounding
+box centers improved while the raster comparisons regressed. Keep the previous
+placements for these groups and investigate stencil/measurement differences.
+This is a concrete limit of bounding-box-only calibration.
+
+The retained changes cover Alliances W/U, Mirage W/G, Stronghold W/R/G, Tempest
+W/U, Visions W, Weatherlight W and Homelands R. Portal retains the preceding
+per-scan pilot's placements. Existing stencils, dimensions and color treatment
+remain in use. All other material groups retain their previous values.
+Full-set final captures and the hash-bound `symbol-pose-review.mjs` report
+verify the selected subset before shipping. The full normalization rollout
+remains open, including the rest of the old-frame sets and the new-frame wave.
+
 ### Per-scan symbol pilot
 
 Portal now stores frozen per-card frame fits and shares placement by frame color.

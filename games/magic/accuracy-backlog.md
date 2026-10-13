@@ -35,6 +35,25 @@ queued separately during the component passes. The
 [text-calibration handoff](accuracy-plan.md#automatic-text-calibration-after-both-waves)
 defines fitting, shared defaults and outlier review.
 
+### Frame-normalized placement review
+
+- Stored translation/scale/rotation/shear model checks now cover 3,084 printings
+  in 15 old-frame sets. Only 1,073 have accepted fits; 724 fail frame validation
+  and 1,287 lack an admitted template. Preserve these coverage failures.
+- Extend frame targets and reliable edge extraction for black, gold and land
+  materials. Revisit Antiquities' frame aspect/anchors before learning placement
+  from its single accepted scan. Continue the complete old/new rollout ledger.
+- Reject the trial LEG/W and TMP/R,G placements: native bounding-box center
+  improvement did not survive raster overlap validation. Use shared overlap
+  search and contour review for these outliers; never tune individual scans to
+  the symbol. Keep the retained assets and record bolt/cloud contour differences.
+- Stronghold white has mixed edge-F1 results with improved Census agreement;
+  retain its explicit regressions for review. Revisit those narrow gate strokes
+  and raster phase alongside the remaining source-shape differences.
+- ATQ/ICE/EXO have stored poses but still need their specialized measurement
+  adapters migrated. Fallen Empires has placement proposals awaiting raster
+  validation. These are unfinished work, not completed sets.
+
 ### Stored normalization and Portal follow-up
 
 The [Portal pilot](fixtures/accuracy/por-symbol-normalized-review.json) improves
