@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "scope": "Native Visions black triangle and detached point. Fixed low luminance thresholds separate ink on lighter materials; retain uncertainty on dark/texture-dominated frames. A one-pixel grouping gap includes the detached point without expanding bounds. Matched blank subtraction isolates rendered black ink from its incorrect outer white rim. Raw position is provisional until independent frame registration; no per-card fit.",
+  "reference": {
+    "region": [405, 370, 43, 43],
+    "limits": { "width": [17, 30], "height": [20, 35] },
+    "componentGap": 1,
+    "thresholds": [30, 45, 60, 75],
+    "maxSpread": 1.4
+  },
+  "rendered": {
+    "region": [405, 370, 43, 43],
+    "limits": { "width": [15, 30], "height": [18, 35] },
+    "componentGap": 1,
+    "thresholds": [30, 45, 60, 75],
+    "maxSpread": 1.4,
+    "foreground": "dark",
+    "minimumDifference": 8
+  }
+}

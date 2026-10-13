@@ -254,8 +254,47 @@ Reproduce from the recorded renderer revision with `symbol-study.mjs hml after`,
 The full audit and exact provenance are in
 [hml-symbol-after-measurement.json](fixtures/accuracy/hml-symbol-after-measurement.json).
 Strict checks, build, package, browser, showcase and Magic accuracy suites pass.
-Next old-symbol studies: Visions (outer rim and opaque V), Alliances and
-Weatherlight. Their existing baselines remain frozen before this correction.
+Next old-symbol studies: Alliances and Weatherlight. Their existing baselines
+remain frozen before this correction. Visions follows below.
+
+### Visions symbol checkpoint (2026-10-13)
+
+The frozen 22-card calibration cohort has six stable black-ink measurements
+across white, blue, red and green. Their median envelope is 21.904 × 26.154
+canonical pixels; baseline rendered ink was 17.333 × 21.000. The adopted geometry
+renders 22.000 × 26.667, with median absolute width/height errors .327/.513 pixels
+on those stable pairs. Remove the unprinted exterior white rim and fill the
+existing closed V path with opaque white behind the retained black stencil.
+The source vector is unchanged; no per-card correction was added.
+
+All 167 ordinary printings, including 145 reserved examples, render and compare
+at both tiers. The eight controls remain byte-identical, all changed pixels stay
+inside the frozen symbol envelope, and type-line clearance is unchanged.
+
+| Cohort / tier      | Cards | Median edge F1 before → after | Regressions > .02 |
+| ------------------ | ----: | ----------------------------: | ----------------: |
+| All / inspect      |   167 |                   .533 → .579 |                 6 |
+| Reserved / inspect |   145 |                   .533 → .580 |                 5 |
+| All / table        |   167 |                   .502 → .562 |                 5 |
+| Reserved / table   |   145 |                   .503 → .565 |                 4 |
+
+Eight distinct cards regress in at least one tier. All eight scan/before/after
+crops were inspected; their names, scores and unresolved frame/stencil findings
+remain in [vis-symbol-review.json](fixtures/accuracy/vis-symbol-review.json).
+Retain the measured size and printed treatment, but do not certify placement or
+claim every printing improves. Do not refit to the reserved examples. Raw scan
+positions and frame boundaries differ; independent registration is required to
+separate scan pose from renderer geometry. Internal V stroke/proportion residuals
+remain in the retained-asset review.
+
+Native reference segmentation is stable for 45/167; the remaining 122 printings
+are uncertain for this dark-ink detector and stay in the full structural audit.
+The six stable paired bounds are calibration-only, not full-set paired coverage.
+Exact provenance and results are in
+[vis-symbol-after-measurement.json](fixtures/accuracy/vis-symbol-after-measurement.json).
+Reproduce with the shared `symbol-study`, `symbol-study-bounds` and
+`symbol-study-audit` scripts at the recorded revision. Strict checks, build,
+package, browser, showcase and Magic accuracy suites pass.
 
 ### Pass 2: frame geometry
 

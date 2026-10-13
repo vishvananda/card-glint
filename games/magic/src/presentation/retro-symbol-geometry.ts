@@ -39,6 +39,15 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     height: 22.5,
     crop: [0, 0.083984375, 0.9861111111111112, 0.83203125],
   },
+  // The printed Visions V is white inside its black triangle, with no white rim.
+  vis: {
+    right: 436.5,
+    centerY: 390.5,
+    width: 23,
+    height: 27,
+    crop: [0.004807692307692308, 0.037109375, 0.9903846153846154, 0.92578125],
+    outline: 0,
+  },
   leg: {
     right: 441,
     centerY: 394,

@@ -1,0 +1,2477 @@
+{
+  "schemaVersion": 1,
+  "scope": "Native Visions black triangle and detached point. Fixed low luminance thresholds separate ink on lighter materials; retain uncertainty on dark/texture-dominated frames. A one-pixel grouping gap includes the detached point without expanding bounds. Matched blank subtraction isolates rendered black ink from its incorrect outer white rim. Raw position is provisional until independent frame registration; no per-card fit.",
+  "configurationHash": "38f5b7146193c2f8cfdfceaa7ab40e3d98465871e1786779f543e4b405b3c08d",
+  "methodHash": "e2a456d4cc2fa6cb3837080b89f3da7875304d652e4e475b8878cf291b4e9990",
+  "boundsMethodHash": "9368538b4b887da940cc49773bb1cbf6171a43f5f0280fc0c23edb7407153cc3",
+  "segmenterHash": "7b5585c005fa506d586f88fd25c78ee0bb4dfb1eda34527642676c0a0202e4ec",
+  "captureHash": "ffffc5daf0004aca7d1ec19cf08a09438089227d9cece8532de137ae490ce465",
+  "baselineHash": "1d3efd155d4d269cd163439d52e6436e69a9d0633040896a501da09f6d507cfc",
+  "profile": {
+    "region": [405, 370, 43, 43],
+    "limits": {
+      "width": [17, 30],
+      "height": [20, 35]
+    },
+    "componentGap": 1,
+    "thresholds": [30, 45, 60, 75],
+    "maxSpread": 1.4
+  },
+  "renderedProfile": {
+    "region": [405, 370, 43, 43],
+    "limits": {
+      "width": [15, 30],
+      "height": [18, 35]
+    },
+    "componentGap": 1,
+    "thresholds": [30, 45, 60, 75],
+    "maxSpread": 1.4,
+    "foreground": "dark",
+    "minimumDifference": 8
+  },
+  "templateHash": "bdc354280977576a4065177d3bd33d835a81c206b09d5e50521e3a5842908359",
+  "summary": {
+    "cards": 22,
+    "stableReferences": 6,
+    "reference": [412.6923076923077, 377.75961538461536, 21.903846153846153, 26.153846153846153],
+    "variants": {
+      "after": {
+        "stablePairs": 6,
+        "rendered": [414, 377.3333333333333, 22, 26.666666666666664],
+        "widthError": 0.32692307692307665,
+        "heightError": 0.512820512820511
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "368144bf-d415-48ab-a957-9d7ac1ceb353",
+      "name": "Archangel",
+      "cohort": "calibration",
+      "referenceHash": "33ca09a46304b1f20771f9df67388a6b158b744d45f290abb4a9a6e00c997d98",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [413.6730769230769, 376.61538461538464, 21.576923076923077, 21.576923076923077],
+            "nativeRect": [632, 576, 33, 33],
+            "area": 85.50295857988166,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [413.6730769230769, 376.61538461538464, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [632, 576, 34, 40],
+            "area": 156.47041420118344,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [413.6730769230769, 376.61538461538464, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [632, 576, 34, 40],
+            "area": 176.13609467455623,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [413.6730769230769, 376.61538461538464, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [632, 576, 34, 40],
+            "area": 183.83136094674558,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [413.6730769230769, 376.61538461538464, 22.23076923076923, 26.153846153846153],
+        "spread": [0, 0, 0.6538461538461533, 4.576923076923077],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 171.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 180.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 197.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0, 0, 0],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "2f7afcaa-9df8-4dd6-89ad-bc2e15f1ec4b",
+      "name": "Daraja Griffin",
+      "cohort": "calibration",
+      "referenceHash": "b9a2b142c07d91680044a89b178d7e129ee7355a9b18b501bc63b7daaf6c8b51",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [413.6730769230769, 377.2692307692308, 21.576923076923077, 25.5],
+            "nativeRect": [632, 577, 33, 39],
+            "area": 64.12721893491124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [413.6730769230769, 377.2692307692308, 21.576923076923077, 25.5],
+            "nativeRect": [632, 577, 33, 39],
+            "area": 135.09467455621302,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [413.6730769230769, 376.61538461538464, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [632, 576, 33, 40],
+            "area": 156.89792899408286,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [413.6730769230769, 376.61538461538464, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [632, 576, 33, 40],
+            "area": 171.43343195266272,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [413.6730769230769, 376.94230769230774, 21.576923076923077, 25.826923076923077],
+        "spread": [0, 0.653846153846132, 0, 0.6538461538461533],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 171.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 180.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 197.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0, 0, 0],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "33dc0244-319c-4e15-9083-8d21ad0364d8",
+      "name": "Freewind Falcon",
+      "cohort": "calibration",
+      "referenceHash": "1f8f83d50a07d0f3cc976fdd422ab97a610344c040b4b70b138f3231646cf707",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [413.6730769230769, 376.61538461538464, 21.576923076923077, 22.23076923076923],
+            "nativeRect": [632, 576, 33, 34],
+            "area": 111.15384615384616,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [413.6730769230769, 376.61538461538464, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [632, 576, 33, 40],
+            "area": 161.17307692307693,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [413.6730769230769, 376.61538461538464, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [632, 576, 34, 40],
+            "area": 172.71597633136096,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [413.0192307692308, 376.61538461538464, 22.884615384615383, 26.153846153846153],
+            "nativeRect": [631, 576, 35, 40],
+            "area": 182.97633136094674,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [413.6730769230769, 376.61538461538464, 21.903846153846153, 26.153846153846153],
+        "spread": [0.653846153846132, 0, 1.3076923076923066, 3.9230769230769234],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 171.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 180.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 197.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0, 0, 0],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "7f9b5c75-882e-4fe4-827f-584080e91485",
+      "name": "Betrayal",
+      "cohort": "calibration",
+      "referenceHash": "7b2ff09cb87ec3354d20c493e20c5e422c4193b5e548472d837cc6dc8c232ef8",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [416.28846153846155, 379.2307692307692, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [636, 580, 33, 40],
+            "area": 126.54437869822486,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [416.28846153846155, 379.2307692307692, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [636, 580, 33, 40],
+            "area": 179.1286982248521,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [415.63461538461536, 379.2307692307692, 22.884615384615383, 26.153846153846153],
+            "nativeRect": [635, 580, 35, 40],
+            "area": 190.67159763313612,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null
+        ],
+        "rect": [416.28846153846155, 379.2307692307692, 21.576923076923077, 26.153846153846153],
+        "spread": [0.6538461538461888, 0, 1.3076923076923066, 0],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 176,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 201.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 376.66666666666663, 22, 27.333333333333332],
+              "nativeRect": [621, 565, 33, 41],
+              "area": 212.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0.6666666666666856, 0, 0.6666666666666679],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "05ada02f-04e9-4269-b04a-97a7eaac2c46",
+      "name": "Chronatog",
+      "cohort": "calibration",
+      "referenceHash": "50cf23970d1c47ff43725967a56b5098a192fda395b0883fc721a47d1953aa8a",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [636, 579, 33, 40],
+            "area": 56.859467455621306,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [636, 579, 33, 40],
+            "area": 149.2026627218935,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [416.28846153846155, 378.5769230769231, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [636, 579, 34, 40],
+            "area": 185.1139053254438,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null
+        ],
+        "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 26.153846153846153],
+        "spread": [0, 0, 0.6538461538461533, 0],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 176,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 201.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 376.66666666666663, 22, 27.333333333333332],
+              "nativeRect": [621, 565, 33, 41],
+              "area": 212.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0.6666666666666856, 0, 0.6666666666666679],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "3bd292a0-ec08-4250-8d75-0802e985d6e6",
+      "name": "Dream Tides",
+      "cohort": "calibration",
+      "referenceHash": "b5403fb349eac90e38fde57d099ed2307e0e2d63b7cbb947f023cade503cac38",
+      "failure": null,
+      "reference": {
+        "samples": [
+          null,
+          {
+            "threshold": 45,
+            "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 22.23076923076923],
+            "nativeRect": [636, 579, 33, 34],
+            "area": 69.25739644970415,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 22.23076923076923],
+            "nativeRect": [636, 579, 33, 34],
+            "area": 148.7751479289941,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [
+              416.28846153846155, 375.96153846153845, 24.846153846153847, 29.423076923076923
+            ],
+            "nativeRect": [636, 575, 38, 45],
+            "area": 206.9171597633136,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 22.23076923076923],
+        "spread": [0, 2.6153846153846416, 3.26923076923077, 7.192307692307693],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 176,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 201.77777777777777,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 376.66666666666663, 22, 27.333333333333332],
+              "nativeRect": [621, 565, 33, 41],
+              "area": 212.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0.6666666666666856, 0, 0.6666666666666679],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "369a5df5-fc36-476c-84f4-ec4bdeb4f9d2",
+      "name": "Aku Djinn",
+      "cohort": "calibration",
+      "referenceHash": "de3a6a0eb5cffa022e58cee2844d0a479b942e9f842581d90ea9974513f03ed9",
+      "failure": null,
+      "reference": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [null, null, null, null],
+          "rect": null,
+          "spread": null,
+          "stable": false,
+          "review": ["insufficient-segmentation"],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "fe012fd0-9ff0-4436-a890-3ab436e42201",
+      "name": "Blanket of Night",
+      "cohort": "calibration",
+      "referenceHash": "e7a588c18f1b59afdbf35a7d36c6a41a318116b31aa016770a2d9696ea4cc880",
+      "failure": null,
+      "reference": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [null, null, null, null],
+          "rect": null,
+          "spread": null,
+          "stable": false,
+          "review": ["insufficient-segmentation"],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "f3b07d33-f5f5-45cc-b2ac-360eaf2d4146",
+      "name": "Coercion",
+      "cohort": "calibration",
+      "referenceHash": "0552d522f466b9781a2ff36930374a1d122336c277c7a492cac880ea73070076",
+      "failure": null,
+      "reference": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [null, null, null, null],
+          "rect": null,
+          "spread": null,
+          "stable": false,
+          "review": ["insufficient-segmentation"],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "253db28a-3873-4364-80d7-a8164000ea9e",
+      "name": "Bogardan Phoenix",
+      "cohort": "calibration",
+      "referenceHash": "9b4895095ec1c10654ad41ea88a2c60e441d1fa58a6861ed0df4c49a96d66478",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [411.71153846153845, 377.2692307692308, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [629, 577, 33, 40],
+            "area": 129.1094674556213,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [411.0576923076923, 376.61538461538464, 22.884615384615383, 26.807692307692307],
+            "nativeRect": [628, 576, 35, 41],
+            "area": 182.97633136094674,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [411.38461538461536, 376.94230769230774, 22.23076923076923, 26.48076923076923],
+        "spread": [0.653846153846132, 0.653846153846132, 1.3076923076923066, 0.6538461538461533],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 179.11111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 196.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 203.1111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 228.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "077d33bb-41bf-440d-939b-67ab5aacb092",
+      "name": "Dwarven Vigilantes",
+      "cohort": "calibration",
+      "referenceHash": "1d50cc3d158fffd9db7bce297dba2576041302d6631c8455fce22f404d377cd0",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [411.71153846153845, 377.9230769230769, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [629, 578, 33, 40],
+            "area": 93.19822485207101,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [411.0576923076923, 377.2692307692308, 22.884615384615383, 26.807692307692307],
+            "nativeRect": [628, 577, 35, 41],
+            "area": 171.43343195266272,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [411.38461538461536, 377.5961538461538, 22.23076923076923, 26.48076923076923],
+        "spread": [0.653846153846132, 0.653846153846132, 1.3076923076923066, 0.6538461538461533],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 179.11111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 196.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 203.1111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 228.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "6ee791d5-1d48-40e8-b65f-b6aa889f3467",
+      "name": "Goblin Recruiter",
+      "cohort": "calibration",
+      "referenceHash": "43f18dfd908f5dbdde02b922630f3696c6a982f37e4fef06695df58aa270e2c2",
+      "failure": null,
+      "reference": {
+        "samples": [
+          null,
+          {
+            "threshold": 45,
+            "rect": [411.0576923076923, 375.96153846153845, 22.23076923076923, 26.807692307692307],
+            "nativeRect": [628, 575, 34, 41],
+            "area": 152.19526627218934,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [411.0576923076923, 375.96153846153845, 22.23076923076923, 26.807692307692307],
+        "spread": [0, 0, 0, 0],
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 179.11111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 196.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 203.1111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 228.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "fa7f5f41-ed30-412b-b51e-37d26e9e6455",
+      "name": "Bull Elephant",
+      "cohort": "calibration",
+      "referenceHash": "da9c2d672d0ef3e64853b791432b6370b178b66babcaf966a40318536e88c5a2",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [411.71153846153845, 377.9230769230769, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [629, 578, 34, 40],
+            "area": 131.24704142011834,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [411.71153846153845, 377.9230769230769, 22.23076923076923, 26.153846153846153],
+            "nativeRect": [629, 578, 34, 40],
+            "area": 182.97633136094674,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [411.71153846153845, 377.9230769230769, 22.23076923076923, 26.153846153846153],
+        "spread": [0, 0, 0, 0],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 182.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 200.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 376.66666666666663, 22.666666666666664, 27.333333333333332],
+              "nativeRect": [621, 565, 34, 41],
+              "area": 224,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 236.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377, 22.333333333333332, 27],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "be499b81-bb2d-4f1d-9deb-c8bfcdca8e13",
+      "name": "City of Solitude",
+      "cohort": "calibration",
+      "referenceHash": "8bcebfb8c16c9dee8d78fcef3ecf8532f24b7866c8088ab2ec5dd15b605988ab",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [411.71153846153845, 377.2692307692308, 21.576923076923077, 21.576923076923077],
+            "nativeRect": [629, 577, 33, 33],
+            "area": 72.67751479289942,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [411.71153846153845, 377.2692307692308, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [629, 577, 33, 40],
+            "area": 164.1656804733728,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [411.71153846153845, 377.2692307692308, 21.576923076923077, 23.865384615384613],
+        "spread": [0, 0, 0, 4.576923076923077],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 182.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 200.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 376.66666666666663, 22.666666666666664, 27.333333333333332],
+              "nativeRect": [621, 565, 34, 41],
+              "area": 224,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 236.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377, 22.333333333333332, 27],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "36e7691f-c771-4451-ac54-3532ca10d48f",
+      "name": "Creeping Mold",
+      "cohort": "calibration",
+      "referenceHash": "e21e264a777b2049aff6ebffd362e04deb96861bdde0622fb1190441d2577ed6",
+      "failure": null,
+      "reference": {
+        "samples": [
+          null,
+          {
+            "threshold": 45,
+            "rect": [411.71153846153845, 377.2692307692308, 21.576923076923077, 26.153846153846153],
+            "nativeRect": [629, 577, 33, 40],
+            "area": 158.18047337278108,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [411.71153846153845, 377.2692307692308, 21.576923076923077, 26.153846153846153],
+        "spread": [0, 0, 0, 0],
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 182.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 200.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 376.66666666666663, 22.666666666666664, 27.333333333333332],
+              "nativeRect": [621, 565, 34, 41],
+              "area": 224,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 236.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377, 22.333333333333332, 27],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "7e129be5-e2c5-4f69-b8e8-539ac2085c7a",
+      "name": "Army Ants",
+      "cohort": "calibration",
+      "referenceHash": "51d7d62c748bf68e062d8da82f555f940a4fbae68f0fc4c9d03595bc674145f9",
+      "failure": null,
+      "reference": {
+        "samples": [
+          null,
+          {
+            "threshold": 45,
+            "rect": [412.3653846153846, 377.9230769230769, 21.576923076923077, 26.807692307692307],
+            "nativeRect": [630, 578, 33, 41],
+            "area": 89.77810650887574,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [412.3653846153846, 377.9230769230769, 21.576923076923077, 26.807692307692307],
+        "spread": [0, 0, 0, 0],
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 176.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.33333333333331,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 203.1111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 211.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0, 0, 0],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "f87ace53-d77c-4df5-b200-4be2ac2b7fdb",
+      "name": "Breathstealer's Crypt",
+      "cohort": "calibration",
+      "referenceHash": "501a3a3b3f0bec44cc9cf92e2a011e960c63b45c673a894d2cb73fb6bcd16328",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [412.3653846153846, 377.9230769230769, 21.576923076923077, 26.807692307692307],
+            "nativeRect": [630, 578, 33, 41],
+            "area": 101.74852071005918,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null,
+          null
+        ],
+        "rect": [412.3653846153846, 377.9230769230769, 21.576923076923077, 26.807692307692307],
+        "spread": [0, 0, 0, 0],
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 176.88888888888889,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 193.33333333333331,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 203.1111111111111,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 211.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+          "spread": [0, 0, 0, 0],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "7ff965dd-54b4-4f21-a52f-81c0dd1e691e",
+      "name": "Anvil of Bogardan",
+      "cohort": "calibration",
+      "referenceHash": "2c84eddc9f46c58b3a725c06f86912e34eab5c23221cf279fdc1c9b9e7ddb52e",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [413.0192307692308, 376.61538461538464, 22.884615384615383, 26.153846153846153],
+            "nativeRect": [631, 576, 35, 40],
+            "area": 116.28402366863907,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null,
+          null
+        ],
+        "rect": [413.0192307692308, 376.61538461538464, 22.884615384615383, 26.153846153846153],
+        "spread": [0, 0, 0, 0],
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 184.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 201.33333333333331,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 226.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 239.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [413.66666666666663, 377, 22.666666666666664, 27],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "200c9655-e51c-4b63-96cf-7f3fba3ec75c",
+      "name": "Brass-Talon Chimera",
+      "cohort": "calibration",
+      "referenceHash": "df925308961eb6995ae12cb417e0a1c9f2ccbcd74e4971451afcf9dd2a2d9a99",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [413.6730769230769, 377.2692307692308, 20.923076923076923, 22.23076923076923],
+            "nativeRect": [632, 577, 32, 34],
+            "area": 96.61834319526628,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [412.3653846153846, 374.65384615384613, 26.153846153846153, 29.423076923076923],
+            "nativeRect": [630, 573, 40, 45],
+            "area": 184.68639053254438,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [413.0192307692307, 375.96153846153845, 23.53846153846154, 25.826923076923077],
+        "spread": [1.3076923076923208, 2.6153846153846416, 5.23076923076923, 7.192307692307693],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 184.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 201.33333333333331,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 226.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 239.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [413.66666666666663, 377, 22.666666666666664, 27],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "9f8a3979-2947-4692-8b2f-d4c07c534777",
+      "name": "Phyrexian Walker",
+      "cohort": "calibration",
+      "referenceHash": "e6fa60d23a2c63e492d658c49549452b14999cc2785fab376ee0f38dd6cc069e",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [413.0192307692308, 376.61538461538464, 22.23076923076923, 21.576923076923077],
+            "nativeRect": [631, 576, 34, 33],
+            "area": 76.52514792899409,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null,
+          null
+        ],
+        "rect": [413.0192307692308, 376.61538461538464, 22.23076923076923, 21.576923076923077],
+        "spread": [0, 0, 0, 0],
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 184.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 201.33333333333331,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 226.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 239.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [413.66666666666663, 377, 22.666666666666664, 27],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "5d7c4619-e5af-4aa0-bd3f-6bf0e1fdc1fc",
+      "name": "Coral Atoll",
+      "cohort": "calibration",
+      "referenceHash": "07ce8c610daa8e4a7ef243d381ffd626bbd1ae840e9f6739e8328873f992f93f",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [416.28846153846155, 378.5769230769231, 21.576923076923077, 25.5],
+            "nativeRect": [636, 579, 33, 39],
+            "area": 75.67011834319527,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [415.63461538461536, 378.5769230769231, 22.23076923076923, 28.76923076923077],
+            "nativeRect": [635, 579, 34, 44],
+            "area": 150.05769230769232,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [414.9807692307692, 374, 22.884615384615383, 34],
+            "nativeRect": [634, 572, 35, 52],
+            "area": 191.0991124260355,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null
+        ],
+        "rect": [415.63461538461536, 378.5769230769231, 22.23076923076923, 28.76923076923077],
+        "spread": [1.3076923076923208, 4.576923076923094, 1.3076923076923066, 8.5],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 180.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 22.666666666666664, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 34, 41],
+              "area": 206.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 219.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 230.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [413.3333333333333, 376.66666666666663, 23, 27.333333333333332],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "id": "705d8194-3ad0-41b7-ae32-9c0cd8cd46b9",
+      "name": "Griffin Canyon",
+      "cohort": "calibration",
+      "referenceHash": "5fac5f780a77d071bd795ec69397f1a7fec4a016290adffefcbecde34e74d801",
+      "failure": null,
+      "reference": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [415.63461538461536, 378.5769230769231, 21.576923076923077, 25.5],
+            "nativeRect": [635, 579, 33, 39],
+            "area": 81.22781065088758,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [414.9807692307692, 378.5769230769231, 22.23076923076923, 30.076923076923077],
+            "nativeRect": [634, 579, 34, 46],
+            "area": 170.1508875739645,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          null,
+          null
+        ],
+        "rect": [415.30769230769226, 378.5769230769231, 21.903846153846153, 27.78846153846154],
+        "spread": [0.653846153846132, 0, 0.6538461538461533, 4.576923076923077],
+        "stable": false,
+        "review": ["threshold-sensitive"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "before": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [418, 381.3333333333333, 16.666666666666664, 20.666666666666664],
+            "nativeRect": [627, 572, 25, 31],
+            "area": 105.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [417.3333333333333, 381.3333333333333, 17.333333333333332, 20.666666666666664],
+            "nativeRect": [626, 572, 26, 31],
+            "area": 109.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 124,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [417.3333333333333, 380.66666666666663, 17.333333333333332, 21.333333333333332],
+            "nativeRect": [626, 571, 26, 32],
+            "area": 129.77777777777777,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [417.3333333333333, 381, 17.333333333333332, 21],
+        "spread": [0.6666666666666856, 0.6666666666666856, 0.6666666666666679, 0.6666666666666679],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6666666666666666
+      },
+      "renders": {
+        "after": {
+          "samples": [
+            {
+              "threshold": 30,
+              "rect": [414, 377.3333333333333, 22, 26.666666666666664],
+              "nativeRect": [621, 566, 33, 40],
+              "area": 180.44444444444443,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 45,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 22.666666666666664, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 34, 41],
+              "area": 206.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 60,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 219.55555555555554,
+              "candidateCount": 1,
+              "ambiguous": false
+            },
+            {
+              "threshold": 75,
+              "rect": [
+                413.3333333333333, 376.66666666666663, 23.333333333333332, 27.333333333333332
+              ],
+              "nativeRect": [620, 565, 35, 41],
+              "area": 230.66666666666666,
+              "candidateCount": 1,
+              "ambiguous": false
+            }
+          ],
+          "rect": [413.3333333333333, 376.66666666666663, 23, 27.333333333333332],
+          "spread": [
+            0.6666666666666856, 0.6666666666666856, 1.3333333333333321, 0.6666666666666679
+          ],
+          "stable": true,
+          "review": [],
+          "sourcePixelSize": 0.6666666666666666
+        }
+      }
+    }
+  ]
+}

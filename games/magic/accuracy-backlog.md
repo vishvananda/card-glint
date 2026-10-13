@@ -47,6 +47,18 @@ globe contour/ink-weight differences in the retained-stencil review, and light
 detail tone in the later color pass. The corrected globe uses the existing
 Keyrune asset and its closed inner-circle path; no source asset was replaced.
 
+### Visions V follow-up
+
+The measured size, opaque white V and removal of the false exterior white rim
+are retained after auditing all 167 printings. Placement remains provisional.
+Eight cards regress by more than .02 edge F1 in at least one tier: Necromancy,
+Necrosavant, Pillar Tombs of Aku, Goblin Recruiter, Heat Wave, Solfatara, Song of
+Blood and Talruum Champion. Their scan/before/after crops were inspected; retain
+the exact scores in [vis-symbol-review.json](fixtures/accuracy/vis-symbol-review.json).
+Separate scan pose from frame geometry before revising placement, and keep the
+remaining internal V stroke/proportion differences in the source-stencil queue.
+Do not hide these regressions in the improving median or add per-card offsets.
+
 ## Assets needing visual review
 
 | Asset group                                             | Observed problem                                                                                                                                                                                          | Examples / next evidence                                                                                                                                                                                                                                                                         |
