@@ -16,6 +16,13 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
   arn: { right: 439, centerY: 394, width: 65, height: 22, crop: [0, 0.283203125, 1, 0.435546875] },
   // Native anvil bounds across Antiquities colors/materials; no added outer rim.
   atq: { right: 415, centerY: 391.5, width: 33, height: 16, crop: [0, 0.240234375, 1, 0.51953125] },
+  drk: {
+    right: 445,
+    centerY: 397.25,
+    width: 21,
+    height: 18.5,
+    crop: [0, 0.09375, 0.9884259259259259, 0.814453125],
+  },
   leg: {
     right: 441,
     centerY: 394,

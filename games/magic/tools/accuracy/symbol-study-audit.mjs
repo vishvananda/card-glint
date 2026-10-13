@@ -26,6 +26,14 @@ const base = `${outputRoot}/${set}-symbol`,
   rect = adoption.scoreRegion,
   rows = [];
 assert.equal(hash(JSON.stringify(before)), adoption.baselineHash);
+assert.equal(
+  hash(JSON.stringify(await readJson(`${fixtureRoot}/${set}-symbol-bounds-before.json`))),
+  adoption.boundsHash,
+);
+assert.equal(
+  hash(JSON.stringify(await readJson(`${fixtureRoot}/${set}-symbol-measurement-profile.json`))),
+  adoption.measurementProfileHash,
+);
 assert.equal(before.rendererHash, plan.baselineRendererHash);
 assert.equal(before.planHash, hash(JSON.stringify(plan)));
 assert.equal(after.planHash, hash(JSON.stringify(plan)));

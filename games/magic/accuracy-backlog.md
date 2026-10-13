@@ -1106,3 +1106,55 @@ its application, deployment and database outside this library repository.
   fixtures preserve the original capture/method hashes and all 102 scores.
   `npm run check`, build, package, browser, showcase, Magic layouts and accuracy
   checks passed on v76. The review page remains local and outside the repository.
+
+### The Dark measured crescent and shared study runner (v77)
+
+- Freeze **122 ordinary printings** (119 distinct cards), eighteen calibration
+  examples across W/U/B/R/G/gold/artifact/land and **104 reserved validation
+  printings**. All scans/art and components are cached. Both baseline and final
+  captures contain all 130 faces at both tiers, including eight controls; no
+  missing references or rendering failures. Use explicit Oracle wording with
+  original symbols, without claiming original-printing text alignment.
+- Eight calibration scans have stable native dark-ink bounds. Their median
+  dimensions are **20.923 × 18.635**, right edge **445.058**, center Y **397.212**.
+  Ten calibration scans remain uncertain. The original rendered crescent was
+  around **19.333 × 19**, starting near **416, 382**; it was roughly nine pixels
+  left and six pixels high. Crop the existing pinned vector and use one profile:
+  **21 × 18.5**, right **445**, center Y **397.25**, with no added outer rim.
+- Actual final inspection ink is approximately **20.667 × 18.667**, starting
+  **424, 388**. Seven stable calibration pairs have median absolute width/height
+  differences **.256/.359** px. Full-set reference measurement finds 56 stable
+  bounds and retains 66 uncertain rows. Native scan pixels are about .65
+  canonical px; no subpixel precision or per-scan alignment is claimed.
+- Full-set median symbol-region F1 improves **.275 → .434** at inspection and
+  **.245 → .478** at table size; Census **.490 → .652** and **.458 → .665**.
+  Reserved validation follows the same pattern: **.275 → .435** and
+  **.245 → .491** F1. 103 printings improve by more than .02 at both sizes;
+  nineteen remain within that band, with no edge regressions beyond .02.
+  Every changed pixel stays within the symbol envelope, all typography is
+  byte-identical, and all eight controls remain byte-identical.
+- Keep four inspection Census regressions: **Ashes to Ashes, Frankenstein's
+  Monster, Murk Dwellers and Nameless Race**. Black-frame crescents nearly vanish
+  against the much darker rendered frame; their regional scores are the weakest.
+  Frame texture, rules-box placement, artifact/gold/land panels and fine crescent
+  contours remain visible review items. Do not adjust individual symbols to
+  compensate for these frame/background differences. The local page retains
+  these examples, the stable bounds, strongest changes and all 122 score rows.
+- Also flag the Gaea's Touch **77†** reference for verification. Scryfall marks
+  it as a variation, and the cached image shows different title/type/credit
+  typography plus a smaller crescent farther left. This does not establish a
+  new rendering profile: verify the reference first. Keep it in all 122 scores;
+  `drk-symbol-review.json` records the image hash and visual finding without
+  changing geometry or hiding the result.
+- Introduce shared `symbol-study.mjs`, `symbol-study-templates.mjs`,
+  `symbol-study-bounds.mjs` and `symbol-study-audit.mjs`. A set recipe freezes
+  calibration and controls; a separate native segmentation profile and adoption
+  plan freeze measurement and geometry. Unsupported adapters and failures stay
+  in coverage. Match blank templates by removing glyph and derived opaque
+  backing. Audits verify identities, profile hashes, full-card pixel containment
+  and controls; native measurement/comparison stays CPU-only.
+- Reproduce with `symbol-study.mjs drk after`, `symbol-study-bounds.mjs drk after`
+  and `symbol-study-audit.mjs drk after`. Historical before/candidate/template
+  captures retain their original source/method hashes. Required check/build,
+  package, browser, showcase, Magic-layout and accuracy suites pass on v77.
+  Review HTML remains outside the repository.

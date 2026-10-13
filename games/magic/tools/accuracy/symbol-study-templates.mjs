@@ -33,19 +33,27 @@ try {
         '/games/magic/src/presentation/canvas-assets.ts'
       );
       const { retroSetSymbol } = await import('/games/magic/src/presentation/retro-frame.ts');
+      const { historicalBackingKey } = await import(
+        '/games/magic/src/presentation/historical-symbol-backing.ts'
+      );
       const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts');
       const loaded = await loadCanvasImages(canvasAssetUrls(face), new AbortController().signal),
         url = retroSetSymbol(face),
         out = [];
       try {
-        const bitmap = loaded.images.get(url);
-        if (!bitmap) throw Error(`Missing symbol: ${url}`);
-        const blank = document.createElement('canvas');
-        blank.width = bitmap.width;
-        blank.height = bitmap.height;
-        loaded.images.set(url, await createImageBitmap(blank));
-        bitmap.close();
-        blank.width = blank.height = 0;
+        if (!loaded.images.has(url)) throw Error(`Missing symbol: ${url}`);
+        // A matched blank must also remove any opaque plate derived from the
+        // symbol. Keeping it would silently hide that layer from measurement.
+        for (const key of [url, historicalBackingKey(url)]) {
+          const bitmap = loaded.images.get(key);
+          if (!bitmap) continue;
+          const blank = document.createElement('canvas');
+          blank.width = bitmap.width;
+          blank.height = bitmap.height;
+          loaded.images.set(key, await createImageBitmap(blank));
+          bitmap.close();
+          blank.width = blank.height = 0;
+        }
         for (const tier of ['inspect', 'table']) {
           const c = await composeCardTexture(
             { face, printingId: null, printedImage: null },

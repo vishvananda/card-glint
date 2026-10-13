@@ -143,6 +143,39 @@ transforms in `tests/magic-symbol-bounds.mjs`, included in `test:magic-accuracy`
 Historical measurement fixtures retain their original method hashes; a method
 revision never silently rewrites an earlier measurement.
 
+New ordinary retro-symbol studies can use the shared set runner. Freeze a
+`<set>-symbol-study.json` recipe with additional calibration collector numbers,
+adjacent-set controls and a Chronicles control, plus a separate
+`<set>-symbol-measurement-profile.json` for scan/render segmentation. The runner
+retains every ordinary printing, caches its inputs and records missing references
+or rendering failures. It uses explicit Oracle wording with original symbols.
+
+```sh
+node games/magic/tools/accuracy/symbol-study.mjs drk prepare
+node games/magic/tools/accuracy/symbol-study.mjs drk before
+node games/magic/tools/accuracy/symbol-study-templates.mjs drk
+node games/magic/tools/accuracy/symbol-study-bounds.mjs drk before
+```
+
+Inspect calibration crops and freeze the measured geometry, profile hashes,
+allowed change envelope and score region in `<set>-symbol-adoption-plan.json`
+before changing production code. Matched blank templates remove both the glyph
+and any derived opaque backing. Capture/measure a `candidate` first, then `after`
+for the full set; do not overwrite historical captures with a different source
+revision. Existing baselines must be reproduced from their recorded revision.
+
+```sh
+node games/magic/tools/accuracy/symbol-study.mjs drk after
+node games/magic/tools/accuracy/symbol-study-bounds.mjs drk after
+node games/magic/tools/accuracy/symbol-study-audit.mjs drk after
+```
+
+The audit verifies reference/capture hashes, inventory coverage, shared geometry,
+full-card pixel containment and unchanged controls. Failures remain in the
+denominator; a coverage change requires separate review. Comparison and native
+measurement run on the CPU; only actual face/template capture needs Chromium.
+Keep preview pages outside the repository.
+
 ### Pass 2: frame geometry
 
 With symbol styling fixed, measure the outer silhouette, frame rails, art

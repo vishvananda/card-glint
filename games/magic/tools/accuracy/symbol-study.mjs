@@ -14,7 +14,7 @@ import {
   atomicWrite,
   mapLimit,
 } from './common.mjs';
-import { printingScope, referenceIssue } from './rollout-policy.mjs';
+import { printingScope, referenceIssue, evaluatorIssue } from './rollout-policy.mjs';
 import { fetchComponents } from './components.mjs';
 import { presentation } from './adapter.mjs';
 import { openBrowser } from './browser.mjs';
@@ -50,7 +50,12 @@ if (action === 'prepare') {
     calibration.add(card.id);
   }
   const entries = await mapLimit(eligible, 2, async (card) => {
-    const issue = referenceIssue(card);
+    const issue =
+      referenceIssue(card) ??
+      evaluatorIssue(card) ??
+      (!['1993', '1997'].includes(card.frame)
+        ? `symbol-study-frame-unvalidated:${card.frame}`
+        : null);
     if (issue) return { id: card.id, card, category: 'ordinary', issue, cohort: 'unavailable' };
     const cached = prior.entries.find((e) => e.id === card.id);
     const entry = {

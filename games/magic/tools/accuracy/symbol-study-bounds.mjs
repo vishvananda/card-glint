@@ -20,9 +20,17 @@ const base = `${outputRoot}/${set}-symbol`,
   baseline = await readJson(`${base}/before/capture.json`),
   templates = await readJson(`${base}/templates/capture.json`),
   capture = await readJson(`${base}/${stage}/capture.json`),
+  plan = await readJson(`${fixtureRoot}/${set}-symbol-plan.json`),
   configuration = await readJson(`${fixtureRoot}/${set}-symbol-measurement-profile.json`),
   profile = configuration.reference,
   rows = [];
+assert.equal(hash(JSON.stringify(snapshot)), plan.snapshotHash);
+for (const source of [baseline, templates, capture])
+  assert.equal(source.planHash, hash(JSON.stringify(plan)));
+if (stage !== 'before') {
+  const adoption = await readJson(`${fixtureRoot}/${set}-symbol-adoption-plan.json`);
+  assert.equal(hash(JSON.stringify(configuration)), adoption.measurementProfileHash);
+}
 async function png(file, sha) {
   const bytes = await readFile(file);
   assert.equal(hash(bytes), sha);
