@@ -88,8 +88,8 @@ export function fitAffineScan(anchors, target, simpler) {
     }),
   );
   const bounded =
-    Math.abs(sx - 1) <= 0.02 &&
-    Math.abs(sy - 1) <= 0.02 &&
+    Math.abs(sx - 1) <= 0.03 &&
+    Math.abs(sy - 1) <= 0.03 &&
     Math.abs(tx) <= 6 &&
     Math.abs(ty) <= 6 &&
     Math.abs(rotationDegrees) <= 0.6 &&

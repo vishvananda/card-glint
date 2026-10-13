@@ -1,7 +1,7 @@
 # Major-set calibration and release audit
 
 The October 2026 inventory contains 272 major sets, using the agreed cutoff of
-50 distinct ordinary English paper cards. The batch samples 6,236 presentations
+50 distinct ordinary English paper cards. The batch samples 6,321 presentations
 across 445 set/frame/stock groups, with old frames first. Special layouts,
 effects, modern legend crowns, unavailable scans, and missing sources stay in
 the coverage report. These are stratified calibration samples, not accuracy
@@ -11,7 +11,7 @@ The comparison stores each reference hash, renderer hash, template hash, and
 frame transform. Translation and uniform scale are preferred. Rotation/skew
 need improvement on separate frame strips. A bounded affine fallback permits
 comparison of internal components when scan and source-frame aspect differ;
-its axis ratio remains a separate diagnostic and cannot certify the outer
+each axis is bounded to 3%, and its axis ratio remains a separate diagnostic and cannot certify the outer
 frame's physical proportions. No scan transform is used by the renderer.
 
 Set-symbol searches use cached styled SVG rasters and pure CPU sampling. The
@@ -27,6 +27,9 @@ node games/magic/tools/accuracy/major-calibration-plan.mjs
 node games/magic/tools/accuracy/major-calibration-capture.mjs
 node games/magic/tools/accuracy/major-calibration-measure.mjs
 node games/magic/tools/accuracy/major-calibration-verify.mjs
+node games/magic/tools/accuracy/major-frame-verify.mjs
+node games/magic/tools/accuracy/major-calibration-report.mjs
+node games/magic/tools/accuracy/major-calibration-adopt.mjs
 ```
 
 Captures and detailed measurements live in the ignored content-addressed

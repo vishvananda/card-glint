@@ -4,8 +4,9 @@ import { cacheRoot, fixtureRoot, hash, readJson, writeJson, root } from './commo
 import { printingScope, referenceIssue } from './rollout-policy.mjs';
 import { presentation } from './adapter.mjs';
 
-// Freeze names before looking at scores. Four different names per rarity,
-// alternating fit/validation, with color diversity before hash order.
+// Freeze names before looking at scores. At least twelve names per group
+// where available, and four per rarity. A single-rarity early set still needs
+// enough independent fit/validation scans after frame-registration exclusions.
 const inventory = await readJson(`${fixtureRoot}/rollout-inventory.json`);
 const server = await createServer({
   configFile: false,
@@ -66,7 +67,9 @@ try {
     for (const group of groups.values()) {
       const samples = [],
         seen = new Set();
-      for (const rarity of [...new Set(group.cards.map((c) => c.rarity))].sort()) {
+      const rarities = [...new Set(group.cards.map((c) => c.rarity))].sort();
+      const perRarity = Math.max(4, Math.ceil(12 / rarities.length));
+      for (const rarity of rarities) {
         const candidates = group.cards
           .filter((c) => c.rarity === rarity)
           .sort((a, b) =>
@@ -91,7 +94,7 @@ try {
         for (const card of ordered) {
           if (seen.has(card.name)) continue;
           const same = samples.filter((s) => s.card.rarity === rarity).length;
-          if (same >= 4) break;
+          if (same >= perRarity) break;
           seen.add(card.name);
           const face = presentation({ card }).face;
           if (!['retro', 'component'].includes(group.family)) face.frameAssetFamily = group.family;

@@ -15,7 +15,8 @@ export async function openBrowser(snapshot, { fonts = true, sourceRoot = root } 
   const server = await createServer({
     configFile: false,
     root: sourceRoot,
-    server: { host: '127.0.0.1', port: 0 },
+    optimizeDeps: { noDiscovery: true },
+    server: { host: '127.0.0.1', port: 0, hmr: false },
     plugins: [
       {
         name: 'accuracy-local',

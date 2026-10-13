@@ -50,8 +50,9 @@ try {
   )) {
     const key = group.key.replaceAll('/', '-');
     const groupHash = hash(JSON.stringify(group));
+    let prior;
     try {
-      const prior = await readJson(`${directory}/${key}.json`);
+      prior = await readJson(`${directory}/${key}.json`);
       if (
         prior.rendererHash === rendererHash &&
         prior.groupHash === groupHash &&
@@ -60,13 +61,21 @@ try {
         console.log('cached', key);
         continue;
       }
-      if (prior.samples.some((s) => s.issue))
-        throw Object.assign(Error('Retry failed captures'), { code: 'ENOENT' });
-      throw Error(`Stale capture ${key}; use a new capture revision`);
+      if (prior.rendererHash !== rendererHash)
+        throw Error(`Stale capture ${key}; use a new capture revision`);
     } catch (e) {
       if (e.code !== 'ENOENT') throw e;
     }
     const samples = [];
+    // Fetch a small group ahead of rasterization. Scryfall API requests remain
+    // serialized by cache.mjs; these are immutable image-host URLs. Failed
+    // samples are recorded individually by the capture loop below.
+    await mapLimit(group.samples, 2, async ({ card }) => {
+      await Promise.allSettled([
+        cachedFetch(card.image_uris.png),
+        cachedFetch(card.image_uris.art_crop),
+      ]);
+    });
     for (const sample of group.samples) {
       const card = sample.card;
       try {
@@ -79,6 +88,20 @@ try {
           ...sample.face,
           illustration: `/__accuracy/object/${art.sha256}`,
         };
+        const reusable = prior?.samples.find((s) => s.id === card.id && !s.issue);
+        if (
+          reusable &&
+          JSON.stringify(reusable.face) === JSON.stringify(face) &&
+          reusable.reference.sha256 === reference.sha256 &&
+          reusable.art.sha256 === art.sha256 &&
+          reusable.symbol === sample.symbol
+        ) {
+          for (const asset of Object.values(reusable.images))
+            if (hash(await readFile(`${directory}/${asset.file}`)) !== asset.sha256)
+              throw Error('Cached capture artifact changed');
+          samples.push({ ...reusable, cohort: sample.cohort, material: sample.material });
+          continue;
+        }
         const components = await mapLimit(
           canvasAssetUrls(face).filter((u) => u?.startsWith('https://')),
           3,
