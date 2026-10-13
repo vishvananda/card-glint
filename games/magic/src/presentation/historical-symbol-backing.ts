@@ -10,6 +10,7 @@ const DETAILS: Readonly<Record<string, { count: number; white: readonly number[]
   all: { count: 5, white: [0, 1, 2] },
   wth: { count: 8, white: [0, 1, 2, 3, 4, 5, 6] },
   exo: { count: 6, white: [0, 1, 2, 3, 4] },
+  ice2: { count: 16, white: [0] },
 };
 
 /** Internal decoded-image key only; this suffix is never fetched. */

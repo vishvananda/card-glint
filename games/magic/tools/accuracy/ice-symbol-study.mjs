@@ -19,11 +19,38 @@ import { fetchComponents } from './components.mjs';
 import { presentation } from './adapter.mjs';
 import { openBrowser } from './browser.mjs';
 
-const [action = 'prepare'] = process.argv.slice(2);
-assert.ok(['prepare', 'before', 'variant', 'candidate', 'after'].includes(action));
-const base = `${outputRoot}/ice-symbol`,
-  planFile = `${fixtureRoot}/ice-symbol-plan.json`,
+const [action = 'prepare', wording = 'legacy'] = process.argv.slice(2);
+assert.ok(['legacy', 'oracle'].includes(wording));
+const stem = wording === 'oracle' ? 'ice-symbol-oracle' : 'ice-symbol';
+assert.ok(['prepare', 'before', 'variant', 'candidate', 'after', 'controls'].includes(action));
+const base = `${outputRoot}/${stem}`,
+  planFile = `${fixtureRoot}/${stem}-plan.json`,
   snapshotFile = `${cacheRoot}/rollout/ice-symbol.json`;
+if (action === 'prepare' && wording === 'oracle') {
+  const snapshot = await readJson(snapshotFile),
+    prior = await readJson(`${fixtureRoot}/ice-symbol-plan.json`);
+  assert.equal(hash(JSON.stringify(snapshot)), prior.snapshotHash);
+  const plan = {
+    ...prior,
+    scope:
+      'Complete ordinary Ice Age inventory with explicit Oracle wording and original symbols. Same scans/art, eleven frozen calibration identities and 372 validation cards, plus six controls. This separate matched baseline resolves the four legacy input-mode failures without changing frozen historical inputs or claiming original-text fidelity. No per-scan geometry or transform.',
+    baselineRendererHash: await sourceHash(`${root}/games/magic/src`),
+    priorPlanHash: hash(JSON.stringify(prior)),
+    cards: prior.cards.map((c) => ({
+      ...c,
+      inputHash: hash(JSON.stringify(studyFace(snapshot.entries.find((e) => e.id === c.id)))),
+    })),
+  };
+  try {
+    await readJson(planFile);
+    throw Error('Plan already frozen');
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  await writeJson(planFile, plan);
+  console.log('Prepared explicit Oracle baseline', plan.cards.length);
+  process.exit(0);
+}
 if (action === 'prepare') {
   const prior = await readJson(`${cacheRoot}/rollout/old-symbol-survey.json`),
     reviewed = await readJson(`${fixtureRoot}/old-symbol-material-review.json`),
@@ -127,6 +154,7 @@ try {
   for (const e of snapshot.entries.filter(
     (e) =>
       !e.issue &&
+      (action !== 'controls' || e.cohort === 'control') &&
       (!['variant', 'candidate'].includes(action) || ['calibration', 'control'].includes(e.cohort)),
   )) {
     const face = studyFace(e);
@@ -212,6 +240,10 @@ try {
 
 function studyFace(entry) {
   const face = presentation(entry).face;
+  if (wording === 'oracle') {
+    face.wordingMode = 'oracle';
+    face.symbolStyle = 'original';
+  }
   if (entry.modernFrame) face.frameStyle = 'modern';
   if (entry.explicitSymbol)
     face.setSymbol = `https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg/${entry.card.set}.svg`;

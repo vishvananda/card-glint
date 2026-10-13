@@ -179,7 +179,8 @@ export function paintRetroFace(
         centerY - height / 2,
         width,
         height,
-        palette ? 2 : (details?.setOutline ?? historicalSetOutline(face.setCode)),
+        geometry?.outline ??
+          (palette ? 2 : (details?.setOutline ?? historicalSetOutline(face.setCode))),
         crop,
         palette,
       );

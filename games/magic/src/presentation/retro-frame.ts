@@ -124,6 +124,7 @@ export function retroBasicSymbol(face: RenderedCardInput) {
 export const RETRO_WHITE = '#eeedeb';
 export function retroSetSymbol(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase() ?? '';
+  if (!face.setSymbol && set === 'ice') return `${manifest.KEYRUNE_ROOT}/ice2.svg`;
   return !face.setSymbol && hasNoPrintedSetSymbol(set) ? null : faceSetSymbol(face);
 }
 export function retroRulesSize(face: RenderedCardInput) {

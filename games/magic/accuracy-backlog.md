@@ -866,7 +866,7 @@ its application, deployment and database outside this library repository.
   The local page provides 21 examples, including the weakest matches and all
   three type exceptions, plus metrics for all 143 cards and red/green overlays.
 
-### Ice Age baseline and existing snowflake variants
+### Ice Age baseline and existing snowflake variants (superseded by v74 below)
 
 - Cache and freeze all 383 ordinary printings before the symbol correction,
   plus six controls. Eleven calibration cards span every mono-color, gold,
@@ -999,3 +999,58 @@ its application, deployment and database outside this library repository.
   table rasters and red/green overlays. Legacy five-card/remaining-card
   metric groups are retained for continuity; they are not an untouched
   holdout for this new 55-common measurement selection.
+
+### Ice Age measured snowflake and reusable bounds (v74)
+
+- Reuse native symbol measurements for later sets through `symbol-bounds.mjs`.
+  Set studies supply a frozen region, broad dimensions and threshold sweep;
+  width, height and placement stay separate. Shared tests cover resolution,
+  tone changes, light rims, touching frames, ambiguous/missing components and
+  fixed transforms. The refactor preserves all 594 previous Exodus scan
+  threshold bounds; `symbol-bounds-reuse.json` records that check.
+- Ice Age's fine linework fragments under solid-ink segmentation. Add a
+  contrast-envelope mode with its known one-native-pixel kernel support
+  removed, and use exact matched blank-face subtraction for renderer bounds.
+  Reference envelopes and dark-ink bounds are distinct measurements. Four of
+  eleven calibration references are stable; seven remain uncertain. Full-set
+  measurement finds 121 stable references out of 383, with a median envelope
+  20.269 × 21.577 canonical px; keep the other 262 explicitly uncertain.
+  Artifact/land textures are particularly difficult for this segmentation.
+- Select the already pinned **ice2.svg** finer snowflake. Reuse its closed
+  outer subpath as the opaque white plate and retain the existing black
+  contours; no added outer rim. Shared geometry is **20 × 21**, right
+  **443.5**, center Y **394.5**. The actual inspection raster's isolated
+  envelope is 20.667 × 21.333. Stable calibration pairs have median absolute
+  width/height differences of .397/.247 px, below a source pixel (~.65 px).
+  That agreement is not a claim of subpixel scan precision.
+- The earlier overlap-only no-rim candidate was taller and narrower. Direct
+  axis measurements and visual contour review replaced it; no scan-specific
+  transforms or card-specific positions were introduced. Raw scan offsets,
+  tiny-stroke rasterization and mismatched frame textures remain separate
+  review items. The original coarse `ice.svg` remains unchanged for explicit
+  custom URLs and modern-frame overrides.
+- Freeze a separate explicit-Oracle/original-symbol baseline. All 383 ordinary
+  printings and six controls render at both tiers, including Cooperation,
+  Formation, Kjeldoran Knight and Dance of the Dead. The historical four
+  failures stay in the older report; do not call this original-wording
+  validation. Six v73 control captures account for the separately committed
+  Exodus correction before evaluating the Ice Age change.
+- All 383 production faces pass the full-card audit at both tiers: changed
+  pixels stay inside `[405, 375, 44, 37]`; six controls, type clearance and
+  typography remain identical. Inspection median symbol F1 improves
+  **.370 → .591**, table **.394 → .538**. Census improves .550 → .699 and
+  .551 → .688. Inspection has 354 improvements and six regressions over .02;
+  table has 308 improvements and 53 regressions. The 372 reserved printings
+  show similar median gains, .370 → .593 and .395 → .538 respectively.
+- Keep blue-frame table rasters and land-region scores flagged. Hydroblast,
+  Zuran Spellcaster and four basic-land printings regress at inspection size;
+  land results are the weakest overall. Raw regional scores include nearby
+  frame edges and texture, so they cannot alone distinguish fine-stencil
+  errors from frame/background mismatch. No registration was refitted to
+  improve those numbers.
+- Reproduce with `ice-symbol-study.mjs before|controls|candidate|after oracle`,
+  `ice-symbol-baseline.mjs`, `ice-symbol-audit.mjs candidate|after`, and
+  `ice-symbol-bounds.mjs variants|candidate|after`. The separate Oracle plan,
+  adoption plan, measurement reports and control hashes freeze provenance.
+  The local review retains all scores, uncertain bounds, calibration examples,
+  strongest changes, regressions and the four resolved wording-mode failures.

@@ -6,6 +6,7 @@ interface RetroSymbolGeometry {
   width: number;
   height: number;
   crop: FaceRect;
+  outline?: number;
 }
 
 /** Visible ink bounds, not the padded source viewport. Shared set profiles
@@ -36,6 +37,14 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
   },
   // Independent ink-axis measurements across common Exodus scans; retain the 2 px rim.
   exo: { right: 430.5, centerY: 390, width: 55.5, height: 21, crop: [0, 0.30859375, 1, 0.3828125] },
+  ice: {
+    right: 443.5,
+    centerY: 394.5,
+    width: 20,
+    height: 21,
+    crop: [0, 0.04296875, 1, 0.9140625],
+    outline: 0,
+  },
 };
 
 export function retroSymbolGeometry(face: RenderedCardInput): RetroSymbolGeometry | null {

@@ -1,0 +1,1306 @@
+{
+  "schemaVersion": 1,
+  "scope": "Four calibration-only candidates using actual Canvas symbol painting on matched blank faces at both tiers. Same frozen eleven identities, explicit Oracle baseline, original symbols. Existing stencil/backing contours and prior bounded CPU candidates only; no per-scan transform. These composite candidates rank material/shape alternatives; adoption still requires complete production captures and full-set validation.",
+  "rendererHash": "13a3cf8a2ea1f965c0a191297dfcfe91247b0933249a2238760312f06bec954a",
+  "planHash": "6777ab8ad049b80a33ae2fb3220840681c420a6b82d045e6216ddaf63944c198",
+  "captureHash": "93122d4aaf08938316cc7da3e4ffee5047023abf7b71938575ea5092aba88969",
+  "baselineHash": "a5f23e16cd82160f4511c860adfe11e43e13871463a4cb4e1c42986f7927a443",
+  "methodHash": "9a918f247bd77c98ffc74ee3a4e78d07a2323e2418464e443164b767803519a6",
+  "rect": [404, 376, 44, 35],
+  "configurations": [
+    {
+      "name": "original-half-rim",
+      "stencil": "ice",
+      "backing": null,
+      "outline": 0.5,
+      "crop": [0, 0.0625, 0.9953703703703703, 0.875],
+      "geometry": {
+        "right": 444,
+        "centerY": 394,
+        "width": 21,
+        "height": 22
+      }
+    },
+    {
+      "name": "fine-white-plate",
+      "stencil": "ice2",
+      "backing": "plate",
+      "outline": 0.5,
+      "crop": [0, 0.04296875, 1, 0.9140625],
+      "geometry": {
+        "right": 443,
+        "centerY": 394,
+        "width": 19.5,
+        "height": 20.5
+      }
+    },
+    {
+      "name": "fine-no-rim",
+      "stencil": "ice2",
+      "backing": "plate",
+      "outline": 0,
+      "crop": [0, 0.04296875, 1, 0.9140625],
+      "geometry": {
+        "right": 443,
+        "centerY": 394.5,
+        "width": 19,
+        "height": 23
+      }
+    },
+    {
+      "name": "fine-star",
+      "stencil": "ice2",
+      "backing": "star",
+      "outline": 0.5,
+      "crop": [0, 0.04296875, 1, 0.9140625],
+      "geometry": {
+        "right": 442.5,
+        "centerY": 394,
+        "width": 19.5,
+        "height": 20.5
+      }
+    }
+  ],
+  "summary": [
+    {
+      "variant": "original-half-rim",
+      "tiers": {
+        "inspect": {
+          "edgeF1": 0.5922357426541649,
+          "census": 0.6559637661552502,
+          "beforeEdgeF1": 0.38506485662620726,
+          "regressed": ["f3f26060-0c24-496c-b8e2-4dac7ea6166b"]
+        },
+        "table": {
+          "edgeF1": 0.5334062984299397,
+          "census": 0.6151826786289109,
+          "beforeEdgeF1": 0.3838739569162398,
+          "regressed": [
+            "f3f26060-0c24-496c-b8e2-4dac7ea6166b",
+            "7e973a84-7f7d-4524-9f2f-ec9a014d52ee",
+            "ff62754b-f4f0-4731-8dd7-327a820f60a8"
+          ]
+        }
+      }
+    },
+    {
+      "variant": "fine-white-plate",
+      "tiers": {
+        "inspect": {
+          "edgeF1": 0.5520133436891219,
+          "census": 0.6720397251688066,
+          "beforeEdgeF1": 0.38506485662620726,
+          "regressed": ["09dd9023-f7ee-4e99-8821-7059deb83730"]
+        },
+        "table": {
+          "edgeF1": 0.4486409614321474,
+          "census": 0.5758044689046367,
+          "beforeEdgeF1": 0.3838739569162398,
+          "regressed": [
+            "5b616963-fac0-451c-8df4-2cacc9466b17",
+            "1005a00a-6a0e-44cb-abea-37e2e53125e2",
+            "7e973a84-7f7d-4524-9f2f-ec9a014d52ee",
+            "ff62754b-f4f0-4731-8dd7-327a820f60a8",
+            "09dd9023-f7ee-4e99-8821-7059deb83730"
+          ]
+        }
+      }
+    },
+    {
+      "variant": "fine-no-rim",
+      "tiers": {
+        "inspect": {
+          "edgeF1": 0.5787677763633828,
+          "census": 0.6459250030951529,
+          "beforeEdgeF1": 0.38506485662620726,
+          "regressed": []
+        },
+        "table": {
+          "edgeF1": 0.5428923706277576,
+          "census": 0.6278033597359582,
+          "beforeEdgeF1": 0.3838739569162398,
+          "regressed": []
+        }
+      }
+    },
+    {
+      "variant": "fine-star",
+      "tiers": {
+        "inspect": {
+          "edgeF1": 0.5723726280517707,
+          "census": 0.6403466683750261,
+          "beforeEdgeF1": 0.38506485662620726,
+          "regressed": ["09dd9023-f7ee-4e99-8821-7059deb83730"]
+        },
+        "table": {
+          "edgeF1": 0.4484859801222346,
+          "census": 0.5700136774238644,
+          "beforeEdgeF1": 0.3838739569162398,
+          "regressed": [
+            "5b616963-fac0-451c-8df4-2cacc9466b17",
+            "7e973a84-7f7d-4524-9f2f-ec9a014d52ee",
+            "ff62754b-f4f0-4731-8dd7-327a820f60a8",
+            "09dd9023-f7ee-4e99-8821-7059deb83730"
+          ]
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "id": "0ba7526f-dba8-4483-b925-946164fc0ae9",
+      "name": "Adarkar Unicorn",
+      "referenceHash": "31bff83470480cd4e139f7d176cb72e8acf07e98b25acfac58163bd11edc9fc6",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.2479306406468118,
+            "darkEdgeF1": 0.2686485996555787,
+            "lightEdgeF1": 0.2272126816380449,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.8347151789444816,
+            "censusSimilarity": 0.41965374254419985
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6197796006297125,
+              "darkEdgeF1": 0.6419753086419753,
+              "lightEdgeF1": 0.5975838926174496,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.852862130955261,
+              "censusSimilarity": 0.6563787163719501
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.5520133436891219,
+              "darkEdgeF1": 0.5891509998802539,
+              "lightEdgeF1": 0.5148756874979898,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.974868667302114,
+              "censusSimilarity": 0.661353916843241
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5787677763633828,
+              "darkEdgeF1": 0.598696219035202,
+              "lightEdgeF1": 0.5588393336915637,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.8433718853747265,
+              "censusSimilarity": 0.5984784255285927
+            },
+            "fine-star": {
+              "edgeF1": 0.5723726280517707,
+              "darkEdgeF1": 0.6027141579499942,
+              "lightEdgeF1": 0.5420310981535472,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.902141436594171,
+              "censusSimilarity": 0.6329650836436902
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.23243979434065043,
+            "darkEdgeF1": 0.261624449994054,
+            "lightEdgeF1": 0.2032551386872469,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 3.0060118019175843,
+            "censusSimilarity": 0.4037030137921935
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6061362040998974,
+              "darkEdgeF1": 0.6831753098045931,
+              "lightEdgeF1": 0.5290970983952019,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.853576115937368,
+              "censusSimilarity": 0.615398646632767
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.4641847241886893,
+              "darkEdgeF1": 0.6075070514211325,
+              "lightEdgeF1": 0.3208623969562461,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.3943274566884765,
+              "censusSimilarity": 0.5363976513991786
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5428923706277576,
+              "darkEdgeF1": 0.6320114326545194,
+              "lightEdgeF1": 0.4537733086009958,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9153351866133654,
+              "censusSimilarity": 0.5551421413016895
+            },
+            "fine-star": {
+              "edgeF1": 0.4503115590013479,
+              "darkEdgeF1": 0.6019837092037457,
+              "lightEdgeF1": 0.2986394087989502,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.4649735600847436,
+              "censusSimilarity": 0.5491993290668539
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "c558a8c4-035c-464e-9ff8-c188c1bb619e",
+      "name": "Battle Cry",
+      "referenceHash": "509034b373d1eb9bd17a83925ae469c6b0c2f45ce4f38b9b5c873eccef6dd3d9",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.287302501530218,
+            "darkEdgeF1": 0.3634248788368336,
+            "lightEdgeF1": 0.21118012422360247,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.7020202131077817,
+            "censusSimilarity": 0.4631956296850606
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6504012421178517,
+              "darkEdgeF1": 0.6550099206349206,
+              "lightEdgeF1": 0.6457925636007827,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.4897099240370921,
+              "censusSimilarity": 0.7039175140514462
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.5870247168826679,
+              "darkEdgeF1": 0.6402656499815521,
+              "lightEdgeF1": 0.5337837837837838,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7392738566345438,
+              "censusSimilarity": 0.7070211125640076
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.6116811469163874,
+              "darkEdgeF1": 0.6473924470881174,
+              "lightEdgeF1": 0.5759698467446573,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5962321701180846,
+              "censusSimilarity": 0.6402085372547941
+            },
+            "fine-star": {
+              "edgeF1": 0.5843161472109348,
+              "darkEdgeF1": 0.6292922463793901,
+              "lightEdgeF1": 0.5393400480424797,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7396332439803732,
+              "censusSimilarity": 0.6682291881253297
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.24694155987870217,
+            "darkEdgeF1": 0.3190932037910178,
+            "lightEdgeF1": 0.17478991596638654,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.9088148739611235,
+            "censusSimilarity": 0.45473616560993657
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6202601211379701,
+              "darkEdgeF1": 0.684032822443676,
+              "lightEdgeF1": 0.5564874198322644,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.6053396593182254,
+              "censusSimilarity": 0.64612380521016
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.4668337404635949,
+              "darkEdgeF1": 0.5685312941567617,
+              "lightEdgeF1": 0.36513618677042803,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.201356379614257,
+              "censusSimilarity": 0.5716515508707591
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5574269258600761,
+              "darkEdgeF1": 0.6645724258289704,
+              "lightEdgeF1": 0.450281425891182,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.6192845097588926,
+              "censusSimilarity": 0.6278033597359582
+            },
+            "fine-star": {
+              "edgeF1": 0.49457906117153927,
+              "darkEdgeF1": 0.6132170934848602,
+              "lightEdgeF1": 0.3759410288582183,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.1062252198661358,
+              "censusSimilarity": 0.5700136774238644
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "14fc0683-9cfa-4439-a533-8773e7747ec4",
+      "name": "Blinking Spirit",
+      "referenceHash": "03043473689e5a7469fa415b539340cef48cea663d4616b7cb8450549f255104",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.26988274179949046,
+            "darkEdgeF1": 0.3374833259226323,
+            "lightEdgeF1": 0.20228215767634855,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.6651599859448307,
+            "censusSimilarity": 0.43609973881928366
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.5922357426541649,
+              "darkEdgeF1": 0.6043707001214084,
+              "lightEdgeF1": 0.5801007851869213,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7287383903197155,
+              "censusSimilarity": 0.6525350707467237
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.5510695250198774,
+              "darkEdgeF1": 0.5932633103947844,
+              "lightEdgeF1": 0.5088757396449703,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.880981482577083,
+              "censusSimilarity": 0.6720397251688066
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5613945126443922,
+              "darkEdgeF1": 0.5791019723038187,
+              "lightEdgeF1": 0.5436870529849657,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7602669853132629,
+              "censusSimilarity": 0.5939452766733444
+            },
+            "fine-star": {
+              "edgeF1": 0.5522279472120015,
+              "darkEdgeF1": 0.6028588940073945,
+              "lightEdgeF1": 0.5015970004166087,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.8505997916276449,
+              "censusSimilarity": 0.6403466683750261
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.24659183592512046,
+            "darkEdgeF1": 0.315533242050814,
+            "lightEdgeF1": 0.17765042979942694,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.8806840790880957,
+            "censusSimilarity": 0.42640826538840837
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6157616933575665,
+              "darkEdgeF1": 0.6847282139775669,
+              "lightEdgeF1": 0.546795172737566,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7453751409645553,
+              "censusSimilarity": 0.6124715562266754
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.46259051798989204,
+              "darkEdgeF1": 0.5687093779015785,
+              "lightEdgeF1": 0.3564716580782056,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.2581187876444937,
+              "censusSimilarity": 0.535674262679332
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5495526822779007,
+              "darkEdgeF1": 0.6265093684941013,
+              "lightEdgeF1": 0.4725959960617,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.78092027390255,
+              "censusSimilarity": 0.5796768144852178
+            },
+            "fine-star": {
+              "edgeF1": 0.4484859801222346,
+              "darkEdgeF1": 0.5781735106320661,
+              "lightEdgeF1": 0.3187984496124031,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.3451791332662104,
+              "censusSimilarity": 0.5297924138409605
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "5b616963-fac0-451c-8df4-2cacc9466b17",
+      "name": "Balduvian Conjurer",
+      "referenceHash": "106d02ddf005218473d641e5536c8df9dcbca4e8c09b643e00c6233f3a82da19",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5034488671187327,
+            "darkEdgeF1": 0.4866767043663994,
+            "lightEdgeF1": 0.5202210298710659,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.7241927044453282,
+            "censusSimilarity": 0.5870579077033359
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6572649809863625,
+              "darkEdgeF1": 0.6245392874312269,
+              "lightEdgeF1": 0.6899906745414982,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2945774950256723,
+              "censusSimilarity": 0.680286525078859
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.5416215153148621,
+              "darkEdgeF1": 0.515825812086678,
+              "lightEdgeF1": 0.5674172185430463,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5992846823755364,
+              "censusSimilarity": 0.6011786712432616
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5612498675137325,
+              "darkEdgeF1": 0.5557467180311927,
+              "lightEdgeF1": 0.5667530169962722,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5772210816562895,
+              "censusSimilarity": 0.6459250030951529
+            },
+            "fine-star": {
+              "edgeF1": 0.5301487730095091,
+              "darkEdgeF1": 0.4984728161270616,
+              "lightEdgeF1": 0.5618247298919568,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.6474815180429263,
+              "censusSimilarity": 0.5908884967362518
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.460406299160354,
+            "darkEdgeF1": 0.4904730555816797,
+            "lightEdgeF1": 0.4303395427390284,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.0376864757715816,
+            "censusSimilarity": 0.5671149417743786
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.5929168415640583,
+              "darkEdgeF1": 0.5968228724269423,
+              "lightEdgeF1": 0.5890108107011743,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5483665315708737,
+              "censusSimilarity": 0.6470369865765697
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.41702951556400586,
+              "darkEdgeF1": 0.4892412231030578,
+              "lightEdgeF1": 0.34481780802495393,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.2289987497598363,
+              "censusSimilarity": 0.5564472125713009
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5189724048117251,
+              "darkEdgeF1": 0.5857436573048286,
+              "lightEdgeF1": 0.4522011523186217,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.860659404605578,
+              "censusSimilarity": 0.6071721721672849
+            },
+            "fine-star": {
+              "edgeF1": 0.4220568958571785,
+              "darkEdgeF1": 0.49767441860465117,
+              "lightEdgeF1": 0.3464393731097058,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.132900965830867,
+              "censusSimilarity": 0.5361060113394892
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "1005a00a-6a0e-44cb-abea-37e2e53125e2",
+      "name": "Deflection",
+      "referenceHash": "dd82801423d75de2b601f89aa97b34842d91da1e7196a934ff631f6a35e4be9c",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.49619657010977586,
+            "darkEdgeF1": 0.4910925963557542,
+            "lightEdgeF1": 0.5013005438637975,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.6632367589186632,
+            "censusSimilarity": 0.6117095666857083
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6054927739434659,
+              "darkEdgeF1": 0.6304177749960882,
+              "lightEdgeF1": 0.5805677728908436,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3655098123184726,
+              "censusSimilarity": 0.6928072087684701
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.5173530209587518,
+              "darkEdgeF1": 0.48383755556514607,
+              "lightEdgeF1": 0.5508684863523574,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5319481557996475,
+              "censusSimilarity": 0.6298840021505512
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5360634754172009,
+              "darkEdgeF1": 0.5500296912114014,
+              "lightEdgeF1": 0.5220972596230002,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5738698665615558,
+              "censusSimilarity": 0.6376843283851608
+            },
+            "fine-star": {
+              "edgeF1": 0.5348091848634737,
+              "darkEdgeF1": 0.4839506172839506,
+              "lightEdgeF1": 0.5856677524429967,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5241934959657248,
+              "censusSimilarity": 0.6281708893662206
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.49258902958865414,
+            "darkEdgeF1": 0.45919865333046256,
+            "lightEdgeF1": 0.5259794058468458,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.977591546495467,
+            "censusSimilarity": 0.613015317115397
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.5705171481740752,
+              "darkEdgeF1": 0.5035561877667142,
+              "lightEdgeF1": 0.6374781085814362,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5259812309215737,
+              "censusSimilarity": 0.6818992860591463
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.45973427489065705,
+              "darkEdgeF1": 0.4744594446273735,
+              "lightEdgeF1": 0.4450091051539406,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9402933405601854,
+              "censusSimilarity": 0.58727991774624
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5786944609423028,
+              "darkEdgeF1": 0.5437580705627525,
+              "lightEdgeF1": 0.6136308513218531,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.6140082470104826,
+              "censusSimilarity": 0.6382095641137298
+            },
+            "fine-star": {
+              "edgeF1": 0.47811673593349163,
+              "darkEdgeF1": 0.4544005998687787,
+              "lightEdgeF1": 0.5018328719982046,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.8114427138190274,
+              "censusSimilarity": 0.5738832960549054
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fc26f19c-bcf7-4bd8-af42-4757dbe47fb1",
+      "name": "Abyssal Specter",
+      "referenceHash": "eb52726b9a66a5db566513f89cb5c4eb2979f83b928e76c80c7b8e542294bba3",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.3592273149096614,
+            "darkEdgeF1": 0.3273618706392608,
+            "lightEdgeF1": 0.391092759180062,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.5814928538559974,
+            "censusSimilarity": 0.5422635926562682
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.5366165961367229,
+              "darkEdgeF1": 0.41459766676637744,
+              "lightEdgeF1": 0.6586355255070682,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.948785014470717,
+              "censusSimilarity": 0.6559637661552502
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.585116316701449,
+              "darkEdgeF1": 0.483344262295082,
+              "lightEdgeF1": 0.6868883711078161,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.977643198153288,
+              "censusSimilarity": 0.7122924986556519
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5798985836399679,
+              "darkEdgeF1": 0.4676660787771899,
+              "lightEdgeF1": 0.6921310885027461,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.913211299096501,
+              "censusSimilarity": 0.7105897714420133
+            },
+            "fine-star": {
+              "edgeF1": 0.5967564179095988,
+              "darkEdgeF1": 0.4936201688960118,
+              "lightEdgeF1": 0.6998926669231859,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9397312582455912,
+              "censusSimilarity": 0.7024836694619134
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.32643731902357087,
+            "darkEdgeF1": 0.2976354679802956,
+            "lightEdgeF1": 0.3552391700668461,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.517311930109517,
+            "censusSimilarity": 0.5577480684208671
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.42286344543879695,
+              "darkEdgeF1": 0.38137719542793425,
+              "lightEdgeF1": 0.46434969544965965,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.6676606719696827,
+              "censusSimilarity": 0.6138366159746609
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.4040389706711809,
+              "darkEdgeF1": 0.3148860609647825,
+              "lightEdgeF1": 0.4931918803775792,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.038294470094722,
+              "censusSimilarity": 0.6683279283847152
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.4767720916187993,
+              "darkEdgeF1": 0.3501945525291829,
+              "lightEdgeF1": 0.6033496307084157,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.009966925442196,
+              "censusSimilarity": 0.69815512661804
+            },
+            "fine-star": {
+              "edgeF1": 0.42483528259224823,
+              "darkEdgeF1": 0.3272687176094387,
+              "lightEdgeF1": 0.5224018475750578,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.8815057595297517,
+              "censusSimilarity": 0.6558141754433111
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "f3f26060-0c24-496c-b8e2-4dac7ea6166b",
+      "name": "Aggression",
+      "referenceHash": "ac3ebe2eec3d0262f5b514235f640b05d3eeefff4afc9a8f66821f9df6a2e9f6",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.4312142203798751,
+            "darkEdgeF1": 0.48370152942993977,
+            "lightEdgeF1": 0.3787269113298104,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.8069957126985066,
+            "censusSimilarity": 0.634314242785613
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.4083767121638767,
+              "darkEdgeF1": 0.40159081394653434,
+              "lightEdgeF1": 0.41516261038121904,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.860384775478318,
+              "censusSimilarity": 0.5130266720161293
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.6772788870694225,
+              "darkEdgeF1": 0.6759795570698467,
+              "lightEdgeF1": 0.6785782170689983,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.006233872626259,
+              "censusSimilarity": 0.7323253790816839
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.7021796670791706,
+              "darkEdgeF1": 0.6874539372980327,
+              "lightEdgeF1": 0.7169053968603084,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.021300946837241,
+              "censusSimilarity": 0.7742933661969624
+            },
+            "fine-star": {
+              "edgeF1": 0.6861827752228327,
+              "darkEdgeF1": 0.6886121763109138,
+              "lightEdgeF1": 0.6837533741347516,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9457625732992283,
+              "censusSimilarity": 0.718919585716776
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.4342910741545791,
+            "darkEdgeF1": 0.49902170874871876,
+            "lightEdgeF1": 0.36956043956043955,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.4674628867101616,
+            "censusSimilarity": 0.6348031365356466
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.4090845094857226,
+              "darkEdgeF1": 0.4666200629150647,
+              "lightEdgeF1": 0.3515489560563805,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.659106029307259,
+              "censusSimilarity": 0.5323914606789706
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.44383086160088925,
+              "darkEdgeF1": 0.48913773796192606,
+              "lightEdgeF1": 0.3985239852398524,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.8814045564421704,
+              "censusSimilarity": 0.6299093153038197
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.6296524071820444,
+              "darkEdgeF1": 0.5954631379962193,
+              "lightEdgeF1": 0.6638416763678696,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.1404721622763745,
+              "censusSimilarity": 0.7126926049496545
+            },
+            "fine-star": {
+              "edgeF1": 0.4327011779739007,
+              "darkEdgeF1": 0.4573116691285082,
+              "lightEdgeF1": 0.40809068681929317,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.870777835952552,
+              "censusSimilarity": 0.6064981691708723
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7e973a84-7f7d-4524-9f2f-ec9a014d52ee",
+      "name": "Aurochs",
+      "referenceHash": "d69b890bace9a585ff352c2fdb8ef44217e52fb6246953513e5122efdf434e68",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.5076584514874156,
+            "darkEdgeF1": 0.4248843996982914,
+            "lightEdgeF1": 0.59043250327654,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.3358278891674242,
+            "censusSimilarity": 0.636292483100215
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.5126742036000635,
+              "darkEdgeF1": 0.3528103767757876,
+              "lightEdgeF1": 0.6725380304243396,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.292696192145102,
+              "censusSimilarity": 0.6228094313434334
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.6739931115122431,
+              "darkEdgeF1": 0.5079457859934973,
+              "lightEdgeF1": 0.8400404370309887,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.826269236346488,
+              "censusSimilarity": 0.7536937452623491
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.6104534109024394,
+              "darkEdgeF1": 0.42857142857142855,
+              "lightEdgeF1": 0.7923353932334504,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.0116335061772377,
+              "censusSimilarity": 0.6842524376187658
+            },
+            "fine-star": {
+              "edgeF1": 0.6900623658337898,
+              "darkEdgeF1": 0.5412004069175992,
+              "lightEdgeF1": 0.8389243247499804,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.709231944261279,
+              "censusSimilarity": 0.7747636366468333
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.5130924807075931,
+            "darkEdgeF1": 0.47081677704194264,
+            "lightEdgeF1": 0.5553681843732434,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.0954124811931507,
+            "censusSimilarity": 0.6604996080080578
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.4417304684137472,
+              "darkEdgeF1": 0.32050545663411834,
+              "lightEdgeF1": 0.562955480193376,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.3353341885658816,
+              "censusSimilarity": 0.6151826786289109
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.4486409614321474,
+              "darkEdgeF1": 0.27507163323782235,
+              "lightEdgeF1": 0.6222102896264724,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.5910398960551575,
+              "censusSimilarity": 0.6729812631312975
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5363912867186658,
+              "darkEdgeF1": 0.3792663639610223,
+              "lightEdgeF1": 0.6935162094763093,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.1500787499289187,
+              "censusSimilarity": 0.6676000271711854
+            },
+            "fine-star": {
+              "edgeF1": 0.4583249510628441,
+              "darkEdgeF1": 0.2980988593155894,
+              "lightEdgeF1": 0.6185510428100989,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.627979045143419,
+              "censusSimilarity": 0.6802437142837363
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "75d5b014-8675-4d91-a539-ac5c31d44b35",
+      "name": "Altar of Bone",
+      "referenceHash": "4f8ad381ba714bfdf09ee0f26a9ac3bf236e5cf090160a0136f80d45cfd5fe32",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.4923653377287912,
+            "darkEdgeF1": 0.4881170018281536,
+            "lightEdgeF1": 0.4966136736294289,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.226811888154733,
+            "censusSimilarity": 0.632857415659464
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.6158945267360016,
+              "darkEdgeF1": 0.5089820359281437,
+              "lightEdgeF1": 0.7228070175438597,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.6127953943892792,
+              "censusSimilarity": 0.6902620576172315
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.6151875047094189,
+              "darkEdgeF1": 0.4862147753236862,
+              "lightEdgeF1": 0.7441602340951516,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.512777651753018,
+              "censusSimilarity": 0.7313947272200338
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.6794553685697835,
+              "darkEdgeF1": 0.6331556575129883,
+              "lightEdgeF1": 0.7257550796265788,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3754491254173702,
+              "censusSimilarity": 0.7588718913394006
+            },
+            "fine-star": {
+              "edgeF1": 0.6363064710707272,
+              "darkEdgeF1": 0.5035920267125366,
+              "lightEdgeF1": 0.7690209154289179,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.4185839516176486,
+              "censusSimilarity": 0.7129720829625845
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.48073518671526105,
+            "darkEdgeF1": 0.49072753209700426,
+            "lightEdgeF1": 0.4707428413335178,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.2464479576417506,
+            "censusSimilarity": 0.6259863912171393
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.5334062984299397,
+              "darkEdgeF1": 0.4444551824112104,
+              "lightEdgeF1": 0.6223574144486691,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.877395780439265,
+              "censusSimilarity": 0.6945231989748886
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.4960118863946103,
+              "darkEdgeF1": 0.4573015505669984,
+              "lightEdgeF1": 0.5347222222222222,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.0645480666536984,
+              "censusSimilarity": 0.6983172095226875
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.6288228750740659,
+              "darkEdgeF1": 0.5564796612732498,
+              "lightEdgeF1": 0.7011660888748819,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5001143505759251,
+              "censusSimilarity": 0.7386560716254944
+            },
+            "fine-star": {
+              "edgeF1": 0.5067873741344098,
+              "darkEdgeF1": 0.4507465489717345,
+              "lightEdgeF1": 0.562828199297085,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9135099566472402,
+              "censusSimilarity": 0.6657079994473436
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ff62754b-f4f0-4731-8dd7-327a820f60a8",
+      "name": "Adarkar Sentinel",
+      "referenceHash": "abb4e89971a479d916edd6c397da23789d94f1d3d7bf92360aebc4fdfeab3b87",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.38506485662620726,
+            "darkEdgeF1": 0.4109898381633421,
+            "lightEdgeF1": 0.35913987508907236,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.223473617040854,
+            "censusSimilarity": 0.5570862851259266
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.3979108704840324,
+              "darkEdgeF1": 0.3400862537600116,
+              "lightEdgeF1": 0.4557354872080531,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.257769668987637,
+              "censusSimilarity": 0.5217317344621027
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.5350426387398631,
+              "darkEdgeF1": 0.4940606347142603,
+              "lightEdgeF1": 0.5760246427654659,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9393338411460135,
+              "censusSimilarity": 0.6444388265558707
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5481434681751094,
+              "darkEdgeF1": 0.48272674042343366,
+              "lightEdgeF1": 0.6135601959267852,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.050462676895408,
+              "censusSimilarity": 0.6482186757824928
+            },
+            "fine-star": {
+              "edgeF1": 0.5471998487753154,
+              "darkEdgeF1": 0.5079534896815789,
+              "lightEdgeF1": 0.5864462078690519,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.902481290226779,
+              "censusSimilarity": 0.6242747551296232
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3838739569162398,
+            "darkEdgeF1": 0.36905674846625763,
+            "lightEdgeF1": 0.398691165366222,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.171956514588103,
+            "censusSimilarity": 0.567071426767751
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.31945180177725696,
+              "darkEdgeF1": 0.26507182785357936,
+              "lightEdgeF1": 0.3738317757009346,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.72240982572686,
+              "censusSimilarity": 0.5365165091690305
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.33899236081041834,
+              "darkEdgeF1": 0.2952341654631731,
+              "lightEdgeF1": 0.38275055615766357,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7810045427192027,
+              "censusSimilarity": 0.5758044689046367
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.5112677889384601,
+              "darkEdgeF1": 0.40944743876254325,
+              "lightEdgeF1": 0.613088139114377,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.3838339135239215,
+              "censusSimilarity": 0.625458253431991
+            },
+            "fine-star": {
+              "edgeF1": 0.3397185767162568,
+              "darkEdgeF1": 0.30864787386526515,
+              "lightEdgeF1": 0.37078927956724855,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.819942794807036,
+              "censusSimilarity": 0.5600662605379432
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "09dd9023-f7ee-4e99-8821-7059deb83730",
+      "name": "Adarkar Wastes",
+      "referenceHash": "f9bf1c4da3cab62459f8c7e534ad95e7c90d637a41cdfedcdac2056ac293bb8c",
+      "scores": {
+        "inspect": {
+          "before": {
+            "edgeF1": 0.30876902388703387,
+            "darkEdgeF1": 0.28423475258918296,
+            "lightEdgeF1": 0.33330329518488483,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.4974016912530845,
+            "censusSimilarity": 0.43421177459363103
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.4357771641860084,
+              "darkEdgeF1": 0.3747940691927512,
+              "lightEdgeF1": 0.49676025917926564,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.006417330326736,
+              "censusSimilarity": 0.4960463102650813
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.2700011059110706,
+              "darkEdgeF1": 0.1281640499839795,
+              "lightEdgeF1": 0.4118381618381618,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.6577268025740404,
+              "censusSimilarity": 0.44975921025602517
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.3429607351298571,
+              "darkEdgeF1": 0.24900962082625921,
+              "lightEdgeF1": 0.43691184943345496,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.483778728628847,
+              "censusSimilarity": 0.4684013228664389
+            },
+            "fine-star": {
+              "edgeF1": 0.2741937157962229,
+              "darkEdgeF1": 0.11541218637992832,
+              "lightEdgeF1": 0.4329752452125175,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.692181267920351,
+              "censusSimilarity": 0.4213617307484168
+            }
+          }
+        },
+        "table": {
+          "before": {
+            "edgeF1": 0.3117171551438968,
+            "darkEdgeF1": 0.2963943102877936,
+            "lightEdgeF1": 0.32704,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.5278748750609763,
+            "censusSimilarity": 0.3990394087853881
+          },
+          "variants": {
+            "original-half-rim": {
+              "edgeF1": 0.3867162624609433,
+              "darkEdgeF1": 0.3404255319148936,
+              "lightEdgeF1": 0.433006993006993,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.1853528387168435,
+              "censusSimilarity": 0.4889783678536166
+            },
+            "fine-white-plate": {
+              "edgeF1": 0.2720636858528407,
+              "darkEdgeF1": 0.2479410489813611,
+              "lightEdgeF1": 0.29618632272432033,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.5713147078325975,
+              "censusSimilarity": 0.4161370543967804
+            },
+            "fine-no-rim": {
+              "edgeF1": 0.32193671104325394,
+              "darkEdgeF1": 0.2545387408455905,
+              "lightEdgeF1": 0.3893346812409174,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.4135541014259916,
+              "censusSimilarity": 0.4501133680413669
+            },
+            "fine-star": {
+              "edgeF1": 0.2654673422631264,
+              "darkEdgeF1": 0.25719610685442124,
+              "lightEdgeF1": 0.2737385776718316,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.563006296785206,
+              "censusSimilarity": 0.40567215707409954
+            }
+          }
+        }
+      }
+    }
+  ]
+}

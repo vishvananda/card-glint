@@ -14,15 +14,22 @@ import {
 import { openBrowser } from './browser.mjs';
 import { presentation } from './adapter.mjs';
 
+const wording = process.argv[2] ?? 'legacy';
+assert.ok(['legacy', 'oracle'].includes(wording));
+const stem = wording === 'oracle' ? 'ice-symbol-oracle' : 'ice-symbol';
 const snapshot = await readJson(`${cacheRoot}/rollout/ice-symbol.json`),
-  plan = await readJson(`${fixtureRoot}/ice-symbol-plan.json`),
-  base = `${outputRoot}/ice-symbol/templates`,
+  plan = await readJson(`${fixtureRoot}/${stem}-plan.json`),
+  base = `${outputRoot}/${stem}/templates`,
   rendererHash = await sourceHash(`${root}/games/magic/src`),
   session = await openBrowser(snapshot),
   rows = [];
 try {
   for (const e of snapshot.entries.filter((e) => e.cohort === 'calibration')) {
     const face = presentation(e).face;
+    if (wording === 'oracle') {
+      face.wordingMode = 'oracle';
+      face.symbolStyle = 'original';
+    }
     const rendered = await session.page.evaluate(async (face) => {
       const { loadCanvasImages, canvasAssetUrls } = await import(
         '/games/magic/src/presentation/canvas-assets.ts'
@@ -41,14 +48,16 @@ try {
         loaded.images.set(url, await createImageBitmap(blank));
         bitmap.close();
         blank.width = blank.height = 0;
-        const c = await composeCardTexture(
-          { face, printingId: null, printedImage: null },
-          'inspect',
-          new AbortController().signal,
-          { loadImages: async () => ({ images: loaded.images, dispose() {} }) },
-        );
-        out.push({ tier: 'inspect', data: c.toDataURL() });
-        c.width = c.height = 0;
+        for (const tier of ['inspect', 'table']) {
+          const c = await composeCardTexture(
+            { face, printingId: null, printedImage: null },
+            tier,
+            new AbortController().signal,
+            { loadImages: async () => ({ images: loaded.images, dispose() {} }) },
+          );
+          out.push({ tier, data: c.toDataURL() });
+          c.width = c.height = 0;
+        }
         return out;
       } finally {
         loaded.dispose();
