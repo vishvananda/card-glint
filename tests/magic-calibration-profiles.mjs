@@ -79,7 +79,7 @@ try {
   };
   assert.equal(colorCalibrationCoverage(revised).frame, true);
   assert.ok(colorCalibrationCoverage(revised).manaSymbols.includes('W'));
-  assert.equal(colorCalibrationCoverage({ ...revised, colors: ['G'] }).frame, false);
+  assert.equal(colorCalibrationCoverage({ ...revised, colors: ['G'] }).frame, true);
   assert.deepEqual(colorCalibrationCoverage({ ...revised, colorCalibration: undefined }), {
     frame: false,
     manaSymbols: [],

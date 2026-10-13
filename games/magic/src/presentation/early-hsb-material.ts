@@ -2,11 +2,13 @@ import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { retroFrameAsset } from './retro-frame.js';
 import { manaSymbolAsset } from './assets.js';
-import { adjustHsb, rgbToHsb, type HsbAdjustment, type Rgb } from './hsb.js';
+import { rgbToHsb, type HsbAdjustment, type Rgb } from './hsb.js';
+import { colorFrame, type FrameHsb } from './frame-hsb.js';
 import { BITMAP_MANA_COLORS } from './mana-colors.js';
 import { earlyHsbBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import {
   calibratedFrameProfile,
+  calibratedDualFrameProfile,
   calibratedManaTarget,
   hasColorCalibration,
 } from './calibration-profiles.js';
@@ -21,8 +23,8 @@ export async function prepareEarlyHsb(
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
   const unchanged = { images, dispose() {} };
   if (!hasColorCalibration(face)) return unchanged;
-  const profile = calibratedFrameProfile(face);
-  const adjustments = new Map<string, HsbAdjustment>(),
+  const profile = calibratedDualFrameProfile(face) ?? calibratedFrameProfile(face);
+  const adjustments = new Map<string, FrameHsb>(),
     colors: Record<string, string> = {};
   if (profile) adjustments.set(retroFrameAsset(face), profile);
   const symbols = new Set([
@@ -72,20 +74,12 @@ export function earlyHsbMaterialKey(
   url: string,
   width: number,
   height: number,
-  adjustment: HsbAdjustment,
+  adjustment: FrameHsb,
 ) {
-  return JSON.stringify([
-    'early-hsb-rgb-preserve-ink-v1',
-    url,
-    width,
-    height,
-    adjustment.hueDegrees,
-    adjustment.saturationScale,
-    adjustment.brightnessScale,
-  ]);
+  return JSON.stringify(['frame-hsb-paper-mask-v2', url, width, height, adjustment]);
 }
 
-async function buildMaterial(source: ImageBitmap, adjustment: HsbAdjustment) {
+async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb) {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
   canvas.height = source.height;
@@ -94,28 +88,19 @@ async function buildMaterial(source: ImageBitmap, adjustment: HsbAdjustment) {
     if (!c) throw Error('HSB preparation needs Canvas2D.');
     c.drawImage(source, 0, 0);
     const pixels = c.getImageData(0, 0, canvas.width, canvas.height);
-    colorEarlyFrame(pixels, adjustment);
+    colorFrame(pixels, adjustment);
     c.putImageData(pixels, 0, 0);
     return await createImageBitmap(canvas);
   } finally {
     canvas.width = canvas.height = 0;
   }
 }
-/** One transform across the complete source. No rectangular paper mask can
- * split an irregular parchment edge, inset shadow or wooden frame detail. */
+/** Whole-material helper retained for mana discs and unmasked profiles. */
 export function colorEarlyFrame(
   image: { width: number; height: number; data: Uint8ClampedArray },
   adjustment: HsbAdjustment,
 ) {
-  for (let i = 0; i < image.data.length; i += 4) {
-    if (image.data[i + 3] === 0) continue;
-    const rgb: Rgb = [image.data[i]! / 255, image.data[i + 1]! / 255, image.data[i + 2]! / 255],
-      v = Math.max(...rgb),
-      s = v === 0 ? 0 : (v - Math.min(...rgb)) / v;
-    if (v < 0.075 || (s < 0.025 && v > 0.97)) continue;
-    const changed = adjustHsb(rgb, adjustment);
-    for (let c = 0; c < 3; c++) image.data[i + c] = Math.round(255 * changed[c]!);
-  }
+  colorFrame(image, adjustment);
 }
 
 /** Bind the measured target to the bitmap's actual disc color. Applying the

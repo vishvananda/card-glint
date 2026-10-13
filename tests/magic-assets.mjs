@@ -155,6 +155,14 @@ try {
       'HSB repeated across card/tier/loaders',
     );
     check(earlyHsbBitmapCache.stats.hits > 0, 'Calibrated component was not reused');
+    const dualFace = { ...calibrated, setCode: '3ed', colors: ['W'], typeLine: 'Instant' };
+    const dualFirst = await magic.describe(dualFace, 'table').color.paint(host, signal);
+    const dualBuilds = earlyHsbBitmapCache.stats.builds;
+    const dualSecond = await magic
+      .describe({ ...dualFace, name: 'Another masked specimen' }, 'inspect')
+      .color.paint(host, signal);
+    check(earlyHsbBitmapCache.stats.builds === dualBuilds, 'Masked HSB rebuilt across cards/tiers');
+    dualFirst.width = dualFirst.height = dualSecond.width = dualSecond.height = 0;
     const identity = earlyHsbMaterialKey('pinned:source', 768, 1075, adjustment);
     check(
       identity !== earlyHsbMaterialKey('pinned:other-source', 768, 1075, adjustment),

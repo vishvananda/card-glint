@@ -8,6 +8,8 @@ import {
   EARLY_MANA_TARGETS,
 } from './early-hsb-profiles.js';
 import { OLD_HSB_PROFILES, OLD_HSB_FRAME_ROOT, OLD_MANA_TARGETS } from './old-hsb-profiles.js';
+import { REVISED_DUAL_HSB_PROFILES } from './revised-dual-hsb-profiles.js';
+import type { DualFrameHsb } from './frame-hsb.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   return (
     isRetro(face) &&
@@ -22,6 +24,21 @@ const earlyStockMatches = (face: RenderedCardInput) => {
     : ['2ed', '3ed'].includes(set) && retroBorder(face) === 'white';
 };
 const sameRect = (a: FaceRect | undefined, b: FaceRect) => a?.every((v, i) => v === b[i]) ?? false;
+/** Separate frame/paper profiles take precedence over legacy shared fits. */
+export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHsb | undefined {
+  if (
+    !hasColorCalibration(face) ||
+    face.setCode?.toLowerCase() !== '3ed' ||
+    !earlyStockMatches(face)
+  )
+    return undefined;
+  const asset = retroFrameAsset(face),
+    material = asset.split('/').at(-1)!.replace('.png', '').toUpperCase(),
+    profile = REVISED_DUAL_HSB_PROFILES[material];
+  return profile?.asset === asset && sameRect(profile.rect, retroFrameRect(face))
+    ? profile.adjustment
+    : undefined;
+}
 /** A source or placement change invalidates the fit instead of silently reusing it. */
 export function calibratedFrameProfile(face: RenderedCardInput): HsbAdjustment | undefined {
   if (!hasColorCalibration(face)) return undefined;

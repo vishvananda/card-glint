@@ -41,7 +41,7 @@ export interface RenderedCardInput extends CardProfileInput {
   /** Select glyph era independently of wording; omitted follows wordingMode
    * (or the legacy set policy when neither choice is supplied). */
   symbolStyle?: 'original' | 'modern';
-  /** Opt-in measured whole-frame and mana colors. set-hsb-v1 includes admitted
+  /** Opt-in measured frame/paper and mana colors. set-hsb-v1 includes admitted
    * old-frame set/stock/material profiles; early-hsb-v1 limits these to the first
    * four sets. Omitted preserves source colors. Art and lettering are unchanged. */
   colorCalibration?: 'early-hsb-v1' | 'set-hsb-v1';
