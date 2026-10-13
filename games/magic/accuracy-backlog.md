@@ -8,6 +8,18 @@ example UUIDs, alignment flags and scores for each affected group.
 
 ## Agreed execution order
 
+Current priority: redo all old-frame color profiles with separate frame and
+paper transforms, source-derived masks for irregular edges, and stock-correct
+per-scan frame normalization. Urza's Saga white's pink cast and Urza's Destiny
+white's brown shadows/excess contrast are required regression examples. Gate
+component hue, shadow color and texture contrast separately from median color.
+Then resume the remaining old-frame and new-frame set-symbol passes.
+
+For that symbol pass, review rarity materials as well as placement: user review
+flags Urza's Saga as flat-filled and Urza's Legacy as using only a subtle
+gradient. Compare uncommon and rare scans before changing the shared historical
+material policy; record this separately from alignment scores.
+
 Use the [current rollout plan](accuracy-plan.md#current-rollout-old-frames-then-new-frames):
 major sets contain at least 50 distinct ordinary English paper cards; measure
 every ordinary printing in admitted sets. Arabian Nights and Antiquities are

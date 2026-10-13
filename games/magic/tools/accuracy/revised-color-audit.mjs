@@ -21,7 +21,7 @@ const rows = [],
 try {
   const math = await server.ssrLoadModule('/games/magic/src/presentation/hsb.ts');
   const { calibratedFrameProfile } = await server.ssrLoadModule(
-    '/games/magic/src/presentation/calibration-profiles.ts',
+    '/games/magic/tools/accuracy/legacy-hsb-profiles.ts',
   );
   const templateCache = new Map();
   for (const material of ['W', 'U', 'B', 'R', 'G', 'A']) {

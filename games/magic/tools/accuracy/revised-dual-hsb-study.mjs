@@ -23,7 +23,7 @@ try {
       const { loadCanvasImages } = await import('/games/magic/src/presentation/canvas-assets.ts');
       const { colorFrame } = await import('/games/magic/src/presentation/frame-hsb.ts');
       const { calibratedFrameProfile } = await import(
-        '/games/magic/src/presentation/calibration-profiles.ts'
+        '/games/magic/tools/accuracy/legacy-hsb-profiles.ts'
       );
       const loaded = await loadCanvasImages([spec.asset], new AbortController().signal);
       const result = {};
