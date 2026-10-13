@@ -1,0 +1,1521 @@
+{
+  "schemaVersion": 1,
+  "phase": "rim-outer-candidate",
+  "rim": {
+    "before": {
+      "outset": 1.875,
+      "inset": 0.625
+    },
+    "after": {
+      "outset": 2,
+      "inset": 0
+    }
+  },
+  "scope": "User-directed Exodus rim revision: use a 2 px outer-only rim. Restore un-eroded colored ink and increase outer white radius to 2 px. Same v69 geometry, palettes, faces and type widths; no per-card fit. Compare against the v70 balanced rim. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Full-card bytes protect the tight rim envelope (boundary texel footprints may intersect it), seven controls and capture identities. No original-text or whole-card accuracy certification.",
+  "baselineRendererHash": "3261b2108b6aeffa03f219c8f01d59427bb28f2e387b397e70afd9b771be02fb",
+  "rendererHash": "13a3cf8a2ea1f965c0a191297dfcfe91247b0933249a2238760312f06bec954a",
+  "planHash": "6c8ed9e5bf21d4db0766f1ca03634f32678a02fd47105fe17b24390a519830fb",
+  "methodHash": "94aae5ff027df8f34831a5ae7fc571e44ab6c17af43143bf786e5824f08401df",
+  "candidateHash": "5a752893b2c5ed2927361aa590189dcccdd9742b3cb58d0e6b0a01ab9c1da0a7",
+  "registrationHash": "666022c1fb84050328b78382872a8047cef26560596aec41646e130615219d2d",
+  "summary": {
+    "all": {
+      "cards": 5,
+      "typeCompression": 0,
+      "tiers": {
+        "inspect": {
+          "beforeEdgeF1": 0.7717976067833869,
+          "afterEdgeF1": 0.7847869396872784,
+          "rawBeforeEdgeF1": 0.6868795870441671,
+          "rawAfterEdgeF1": 0.6875283593963056,
+          "beforeCensus": 0.7699231440794587,
+          "afterCensus": 0.88560435686339,
+          "improved": 2,
+          "regressed": ["fee17ef5-7e1a-42ae-b680-df81204df7dd"],
+          "unchangedTypeImproved": 2
+        },
+        "table": {
+          "beforeEdgeF1": 0.744306158297179,
+          "afterEdgeF1": 0.7308756007435344,
+          "rawBeforeEdgeF1": 0.6576079116533547,
+          "rawAfterEdgeF1": 0.6612855908120913,
+          "beforeCensus": 0.8365639806774827,
+          "afterCensus": 0.871899346255453,
+          "improved": 2,
+          "regressed": [],
+          "unchangedTypeImproved": 2
+        }
+      }
+    },
+    "calibration": {
+      "cards": 5,
+      "typeCompression": 0,
+      "tiers": {
+        "inspect": {
+          "beforeEdgeF1": 0.7717976067833869,
+          "afterEdgeF1": 0.7847869396872784,
+          "rawBeforeEdgeF1": 0.6868795870441671,
+          "rawAfterEdgeF1": 0.6875283593963056,
+          "beforeCensus": 0.7699231440794587,
+          "afterCensus": 0.88560435686339,
+          "improved": 2,
+          "regressed": ["fee17ef5-7e1a-42ae-b680-df81204df7dd"],
+          "unchangedTypeImproved": 2
+        },
+        "table": {
+          "beforeEdgeF1": 0.744306158297179,
+          "afterEdgeF1": 0.7308756007435344,
+          "rawBeforeEdgeF1": 0.6576079116533547,
+          "rawAfterEdgeF1": 0.6612855908120913,
+          "beforeCensus": 0.8365639806774827,
+          "afterCensus": 0.871899346255453,
+          "improved": 2,
+          "regressed": [],
+          "unchangedTypeImproved": 2
+        }
+      }
+    },
+    "validation": {
+      "cards": 0,
+      "typeCompression": 0,
+      "tiers": {
+        "inspect": {
+          "beforeEdgeF1": null,
+          "afterEdgeF1": null,
+          "rawBeforeEdgeF1": null,
+          "rawAfterEdgeF1": null,
+          "beforeCensus": null,
+          "afterCensus": null,
+          "improved": 0,
+          "regressed": [],
+          "unchangedTypeImproved": 0
+        },
+        "table": {
+          "beforeEdgeF1": null,
+          "afterEdgeF1": null,
+          "rawBeforeEdgeF1": null,
+          "rawAfterEdgeF1": null,
+          "beforeCensus": null,
+          "afterCensus": null,
+          "improved": 0,
+          "regressed": [],
+          "unchangedTypeImproved": 0
+        }
+      }
+    },
+    "rarities": {
+      "common": {
+        "cards": 1,
+        "typeCompression": 0,
+        "tiers": {
+          "inspect": {
+            "beforeEdgeF1": 0.7915113170845848,
+            "afterEdgeF1": 0.9238167012629602,
+            "rawBeforeEdgeF1": 0.6868795870441671,
+            "rawAfterEdgeF1": 0.76746576977145,
+            "beforeCensus": 0.7699231440794587,
+            "afterCensus": 0.88560435686339,
+            "improved": 1,
+            "regressed": [],
+            "unchangedTypeImproved": 1
+          },
+          "table": {
+            "beforeEdgeF1": 0.7518835613236261,
+            "afterEdgeF1": 0.8320150050891513,
+            "rawBeforeEdgeF1": 0.6576079116533547,
+            "rawAfterEdgeF1": 0.7130738486835275,
+            "beforeCensus": 0.8365639806774827,
+            "afterCensus": 0.871899346255453,
+            "improved": 1,
+            "regressed": [],
+            "unchangedTypeImproved": 1
+          }
+        }
+      },
+      "uncommon": {
+        "cards": 2,
+        "typeCompression": 0,
+        "tiers": {
+          "inspect": {
+            "beforeEdgeF1": 0.6220070761391293,
+            "afterEdgeF1": 0.6129013366691412,
+            "rawBeforeEdgeF1": 0.5517920718915468,
+            "rawAfterEdgeF1": 0.5437776684937374,
+            "beforeCensus": 0.6715706843722038,
+            "afterCensus": 0.6984032591708074,
+            "improved": 0,
+            "regressed": ["fee17ef5-7e1a-42ae-b680-df81204df7dd"],
+            "unchangedTypeImproved": 0
+          },
+          "table": {
+            "beforeEdgeF1": 0.6125685945542761,
+            "afterEdgeF1": 0.600131375397293,
+            "rawBeforeEdgeF1": 0.5467185473271747,
+            "rawAfterEdgeF1": 0.5277319250419809,
+            "beforeCensus": 0.7229967131001287,
+            "afterCensus": 0.7258476838264587,
+            "improved": 0,
+            "regressed": [],
+            "unchangedTypeImproved": 0
+          }
+        }
+      },
+      "rare": {
+        "cards": 2,
+        "typeCompression": 0,
+        "tiers": {
+          "inspect": {
+            "beforeEdgeF1": 0.6723675277128133,
+            "afterEdgeF1": 0.7419981813926946,
+            "rawBeforeEdgeF1": 0.5655281322513771,
+            "rawAfterEdgeF1": 0.5934025302751742,
+            "beforeCensus": 0.6715669405738349,
+            "afterCensus": 0.7171131303286211,
+            "improved": 1,
+            "regressed": [],
+            "unchangedTypeImproved": 1
+          },
+          "table": {
+            "beforeEdgeF1": 0.6783692310872659,
+            "afterEdgeF1": 0.7073244924899715,
+            "rawBeforeEdgeF1": 0.555073609772966,
+            "rawAfterEdgeF1": 0.5764923798955833,
+            "beforeCensus": 0.7260713716580782,
+            "afterCensus": 0.7425183959511805,
+            "improved": 1,
+            "regressed": [],
+            "unchangedTypeImproved": 1
+          }
+        }
+      }
+    },
+    "controls": 7
+  },
+  "rows": [
+    {
+      "id": "f20a1c6d-ec6a-4bd6-b3b2-b997f71d41fc",
+      "name": "Allay",
+      "set": "exo",
+      "number": "1",
+      "rarity": "common",
+      "cohort": "calibration",
+      "referenceHash": "68828d27f594a3e0cebb3694237f87db259770ddbd749bf1e3d83b76a786072e",
+      "clearance": {
+        "typeLine": "Instant",
+        "measuredWidth": 66.44535827636719,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 316.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 1053,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.6868795870441671,
+              "darkEdgeF1": 0.643309664526553,
+              "lightEdgeF1": 0.7304495095617812,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1720172327514455,
+              "censusSimilarity": 0.6427804323950439
+            },
+            "registered": {
+              "edgeF1": 0.7915113170845848,
+              "darkEdgeF1": 0.7357545706863685,
+              "lightEdgeF1": 0.847268063482801,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.9656144444931081,
+              "censusSimilarity": 0.7699231440794587
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.76746576977145,
+              "darkEdgeF1": 0.7337772503947202,
+              "lightEdgeF1": 0.8011542891481797,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.878221133487179,
+              "censusSimilarity": 0.6989534848024228
+            },
+            "registered": {
+              "edgeF1": 0.9238167012629602,
+              "darkEdgeF1": 0.894331376665667,
+              "lightEdgeF1": 0.9533020258602535,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.6311316644651876,
+              "censusSimilarity": 0.88560435686339
+            }
+          }
+        },
+        "table": {
+          "changed": 278,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.6576079116533547,
+              "darkEdgeF1": 0.5925925925925926,
+              "lightEdgeF1": 0.7226232307141169,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3356544283641767,
+              "censusSimilarity": 0.7157567847788209
+            },
+            "registered": {
+              "edgeF1": 0.7518835613236261,
+              "darkEdgeF1": 0.6355678355626712,
+              "lightEdgeF1": 0.8681992870845812,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.188304220305525,
+              "censusSimilarity": 0.8365639806774827
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7130738486835275,
+              "darkEdgeF1": 0.6608462055070518,
+              "lightEdgeF1": 0.7653014918600034,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1944115484372064,
+              "censusSimilarity": 0.7499232960502393
+            },
+            "registered": {
+              "edgeF1": 0.8320150050891513,
+              "darkEdgeF1": 0.7852239884393064,
+              "lightEdgeF1": 0.8788060217389962,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.9110059990268846,
+              "censusSimilarity": 0.871899346255453
+            }
+          }
+        }
+      },
+      "review": ["internal-frame-registration-provisional"]
+    },
+    {
+      "id": "024ae668-a1ae-4020-89c8-acbd8bd0a691",
+      "name": "Cataclysm",
+      "set": "exo",
+      "number": "3",
+      "rarity": "rare",
+      "cohort": "calibration",
+      "referenceHash": "3a53b37f3e7e4277dc6d5858bde854a238a03e85b439dde43dc655e3314fe123",
+      "clearance": {
+        "typeLine": "Sorcery",
+        "measuredWidth": 71.675048828125,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 316.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 1057,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.6929297887816941,
+              "darkEdgeF1": 0.6480670586763418,
+              "lightEdgeF1": 0.7377925188870462,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1126758333000448,
+              "censusSimilarity": 0.6629895250150992
+            },
+            "registered": {
+              "edgeF1": 0.7930302685056423,
+              "darkEdgeF1": 0.7120418848167538,
+              "lightEdgeF1": 0.8740186521945308,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.9574326773269495,
+              "censusSimilarity": 0.7864134942199428
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7664674241442146,
+              "darkEdgeF1": 0.7443147522478384,
+              "lightEdgeF1": 0.7886200960405908,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.8771635774760451,
+              "censusSimilarity": 0.7285313401105966
+            },
+            "registered": {
+              "edgeF1": 0.9307367598980909,
+              "darkEdgeF1": 0.9017598574292714,
+              "lightEdgeF1": 0.9597136623669102,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.6686790902208589,
+              "censusSimilarity": 0.9018629954132265
+            }
+          }
+        },
+        "table": {
+          "changed": 280,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.6635524002824498,
+              "darkEdgeF1": 0.5979282602805394,
+              "lightEdgeF1": 0.7291765402843603,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2000519841459738,
+              "censusSimilarity": 0.7215159921444689
+            },
+            "registered": {
+              "edgeF1": 0.750926382957863,
+              "darkEdgeF1": 0.633814922440961,
+              "lightEdgeF1": 0.8680378434747648,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.0881628704348114,
+              "censusSimilarity": 0.8431551689099167
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7141552193139649,
+              "darkEdgeF1": 0.6682483505063675,
+              "lightEdgeF1": 0.7600620881215621,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.0766254716326777,
+              "censusSimilarity": 0.7668710133530894
+            },
+            "registered": {
+              "edgeF1": 0.8243684704741097,
+              "darkEdgeF1": 0.767590618336887,
+              "lightEdgeF1": 0.8811463226113324,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.8542268011062878,
+              "censusSimilarity": 0.8930390168316537
+            }
+          }
+        }
+      },
+      "review": ["internal-frame-registration-provisional"]
+    },
+    {
+      "id": "1c5239dc-f51b-48c0-91a2-ed6551aaff32",
+      "name": "High Ground",
+      "set": "exo",
+      "number": "7",
+      "rarity": "uncommon",
+      "cohort": "calibration",
+      "referenceHash": "b73a93f88aa8056dd5823eca0befbe6f0eec0eb5783d7c77ce986cc585b69387",
+      "clearance": {
+        "typeLine": "Enchantment",
+        "measuredWidth": 128.13841247558594,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 316.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 1024,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.6976965028179695,
+              "darkEdgeF1": 0.6405236018922247,
+              "lightEdgeF1": 0.7548694037437143,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.205201190809655,
+              "censusSimilarity": 0.7045005877939936
+            },
+            "registered": {
+              "edgeF1": 0.7717976067833869,
+              "darkEdgeF1": 0.6759268562242541,
+              "lightEdgeF1": 0.8676683573425199,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2461983089311128,
+              "censusSimilarity": 0.8039556476319385
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.6875283593963056,
+              "darkEdgeF1": 0.5882540092862327,
+              "lightEdgeF1": 0.7868027095063785,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2546822221219307,
+              "censusSimilarity": 0.7320527260520068
+            },
+            "registered": {
+              "edgeF1": 0.7847869396872784,
+              "darkEdgeF1": 0.6428571428571429,
+              "lightEdgeF1": 0.9267167365174139,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.181131727352231,
+              "censusSimilarity": 0.8856355457493346
+            }
+          }
+        },
+        "table": {
+          "changed": 273,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.6902855261726835,
+              "darkEdgeF1": 0.6363250353020173,
+              "lightEdgeF1": 0.7442460170433495,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.256144327637454,
+              "censusSimilarity": 0.7534342933801158
+            },
+            "registered": {
+              "edgeF1": 0.744306158297179,
+              "darkEdgeF1": 0.6571800561128124,
+              "lightEdgeF1": 0.8314322604815457,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.263387381239559,
+              "censusSimilarity": 0.8601069937420469
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.6612855908120913,
+              "darkEdgeF1": 0.5688729874776387,
+              "lightEdgeF1": 0.7536981941465438,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3581773856200496,
+              "censusSimilarity": 0.7644204116352542
+            },
+            "registered": {
+              "edgeF1": 0.7308756007435344,
+              "darkEdgeF1": 0.6056508089833373,
+              "lightEdgeF1": 0.8561003925037316,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3303842583563301,
+              "censusSimilarity": 0.8887626703019122
+            }
+          }
+        }
+      },
+      "review": ["internal-frame-registration-provisional"]
+    },
+    {
+      "id": "fee17ef5-7e1a-42ae-b680-df81204df7dd",
+      "name": "Curiosity",
+      "set": "exo",
+      "number": "29",
+      "rarity": "uncommon",
+      "cohort": "calibration",
+      "referenceHash": "6da48e73c76d452dae9179313e4ba01797b57b95d86ec63003df1c2c8d27c8e2",
+      "clearance": {
+        "typeLine": "Enchantment — Aura",
+        "measuredWidth": 208.47177124023438,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 316.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 1050,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.4058876409651242,
+              "darkEdgeF1": 0.3986928104575163,
+              "lightEdgeF1": 0.41308247147273214,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.006068724799978,
+              "censusSimilarity": 0.4464482766953146
+            },
+            "registered": {
+              "edgeF1": 0.47221654549487163,
+              "darkEdgeF1": 0.4477630733973834,
+              "lightEdgeF1": 0.49667001759235985,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.750007746217209,
+              "censusSimilarity": 0.5391857211124691
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4000269775911691,
+              "darkEdgeF1": 0.41428053642624135,
+              "lightEdgeF1": 0.38577341875609694,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9866491875498602,
+              "censusSimilarity": 0.42129354516172346
+            },
+            "registered": {
+              "edgeF1": 0.4410157336510038,
+              "darkEdgeF1": 0.42499634128494074,
+              "lightEdgeF1": 0.4570351260170669,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.76279183297071,
+              "censusSimilarity": 0.5111709725922802
+            }
+          }
+        },
+        "table": {
+          "changed": 280,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.4031515684816661,
+              "darkEdgeF1": 0.3918945560030416,
+              "lightEdgeF1": 0.41440858096029054,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9704330785427,
+              "censusSimilarity": 0.47900144497847286
+            },
+            "registered": {
+              "edgeF1": 0.48083103081137324,
+              "darkEdgeF1": 0.470057715637139,
+              "lightEdgeF1": 0.4916043459856075,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7503801103626204,
+              "censusSimilarity": 0.5858864324582105
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.3941782592718705,
+              "darkEdgeF1": 0.38309422256688636,
+              "lightEdgeF1": 0.40526229597685465,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.9540071090844864,
+              "censusSimilarity": 0.451999465443922
+            },
+            "registered": {
+              "edgeF1": 0.4693871500510516,
+              "darkEdgeF1": 0.46818606480798547,
+              "lightEdgeF1": 0.47058823529411764,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.752125808938899,
+              "censusSimilarity": 0.5629326973510052
+            }
+          }
+        }
+      },
+      "review": [
+        "internal-frame-registration-provisional",
+        "inspect:edge-regression",
+        "inspect:census-regression",
+        "table:census-regression"
+      ]
+    },
+    {
+      "id": "e3e03323-43e8-4ddc-a874-211a97fd7648",
+      "name": "Dominating Licid",
+      "set": "exo",
+      "number": "30",
+      "rarity": "rare",
+      "cohort": "calibration",
+      "referenceHash": "53ebec2e12b2842aa86f02ffe0ae093a83d02e801c01711129016a34b65f4866",
+      "clearance": {
+        "typeLine": "Creature — Licid",
+        "measuredWidth": 166.46058654785156,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 316.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 1083,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.4381264757210601,
+              "darkEdgeF1": 0.4187670592863993,
+              "lightEdgeF1": 0.45748589215572094,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.772564932609245,
+              "censusSimilarity": 0.45343507581870646
+            },
+            "registered": {
+              "edgeF1": 0.5517047869199843,
+              "darkEdgeF1": 0.5008337965536409,
+              "lightEdgeF1": 0.6025757772863275,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.4849606136309772,
+              "censusSimilarity": 0.5567203869277271
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4203376364061338,
+              "darkEdgeF1": 0.42243275672432756,
+              "lightEdgeF1": 0.41824251608794005,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7806887298207115,
+              "censusSimilarity": 0.4238009988309629
+            },
+            "registered": {
+              "edgeF1": 0.5532596028872983,
+              "darkEdgeF1": 0.48622366288492713,
+              "lightEdgeF1": 0.6202955428896695,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.5053821403073537,
+              "censusSimilarity": 0.5323632652440158
+            }
+          }
+        },
+        "table": {
+          "changed": 287,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.44659481926348243,
+              "darkEdgeF1": 0.42782061987327474,
+              "lightEdgeF1": 0.4653690186536902,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7624554317565795,
+              "censusSimilarity": 0.49803957343201355
+            },
+            "registered": {
+              "edgeF1": 0.6058120792166688,
+              "darkEdgeF1": 0.5536873016624828,
+              "lightEdgeF1": 0.6579368567708549,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.472840461102371,
+              "censusSimilarity": 0.6089875744062399
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4388295404772018,
+              "darkEdgeF1": 0.42036790587181755,
+              "lightEdgeF1": 0.4572911750825861,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.7492706436511072,
+              "censusSimilarity": 0.46906736596194604
+            },
+            "registered": {
+              "edgeF1": 0.5902805145058334,
+              "darkEdgeF1": 0.5577155718103813,
+              "lightEdgeF1": 0.6228454572012855,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.4747893776034253,
+              "censusSimilarity": 0.5919977750707073
+            }
+          }
+        }
+      },
+      "review": ["internal-frame-registration-provisional", "inspect:census-regression"]
+    },
+    {
+      "id": "3d170015-b125-49a6-a15e-8fd116bbcb14",
+      "name": "Army of Allah",
+      "set": "arn",
+      "number": "2",
+      "rarity": "common",
+      "cohort": "control",
+      "referenceHash": "8c8d671aa69428e750ccc070533743a9ee8533ed29abe56df071e2bcae6e3dc2",
+      "clearance": {
+        "typeLine": "Instant",
+        "measuredWidth": 66.44535827636719,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 315.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.7249310961887528,
+              "darkEdgeF1": 0.7547303522074977,
+              "lightEdgeF1": 0.695131840170008,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1720774612490779,
+              "censusSimilarity": 0.7321880104080455
+            },
+            "registered": {
+              "edgeF1": 0.7249310961887528,
+              "darkEdgeF1": 0.7547303522074977,
+              "lightEdgeF1": 0.695131840170008,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1720774612490779,
+              "censusSimilarity": 0.7321880104080455
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7249310961887528,
+              "darkEdgeF1": 0.7547303522074977,
+              "lightEdgeF1": 0.695131840170008,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1720774612490779,
+              "censusSimilarity": 0.7321880104080455
+            },
+            "registered": {
+              "edgeF1": 0.7249310961887528,
+              "darkEdgeF1": 0.7547303522074977,
+              "lightEdgeF1": 0.695131840170008,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1720774612490779,
+              "censusSimilarity": 0.7321880104080455
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.7189257526335103,
+              "darkEdgeF1": 0.775905692459139,
+              "lightEdgeF1": 0.6619458128078817,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2300592103249075,
+              "censusSimilarity": 0.8028437642559976
+            },
+            "registered": {
+              "edgeF1": 0.7189257526335103,
+              "darkEdgeF1": 0.775905692459139,
+              "lightEdgeF1": 0.6619458128078817,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2300592103249075,
+              "censusSimilarity": 0.8028437642559976
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7189257526335103,
+              "darkEdgeF1": 0.775905692459139,
+              "lightEdgeF1": 0.6619458128078817,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2300592103249075,
+              "censusSimilarity": 0.8028437642559976
+            },
+            "registered": {
+              "edgeF1": 0.7189257526335103,
+              "darkEdgeF1": 0.775905692459139,
+              "lightEdgeF1": 0.6619458128078817,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.2300592103249075,
+              "censusSimilarity": 0.8028437642559976
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "set": "leg",
+      "number": "2",
+      "rarity": "common",
+      "cohort": "control",
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "clearance": {
+        "typeLine": "Instant",
+        "measuredWidth": 66.44535827636719,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 335.1776,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.4239172735331753,
+              "darkEdgeF1": 0.5254131864226053,
+              "lightEdgeF1": 0.3224213606437454,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.0525621698552383,
+              "censusSimilarity": 0.4913230433945133
+            },
+            "registered": {
+              "edgeF1": 0.8290452928079424,
+              "darkEdgeF1": 0.9266160817223906,
+              "lightEdgeF1": 0.731474503893494,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.8544178595319983,
+              "censusSimilarity": 0.8127563064142
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4239172735331753,
+              "darkEdgeF1": 0.5254131864226053,
+              "lightEdgeF1": 0.3224213606437454,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.0525621698552383,
+              "censusSimilarity": 0.4913230433945133
+            },
+            "registered": {
+              "edgeF1": 0.8290452928079424,
+              "darkEdgeF1": 0.9266160817223906,
+              "lightEdgeF1": 0.731474503893494,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 0.8544178595319983,
+              "censusSimilarity": 0.8127563064142
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.5228416040955943,
+              "darkEdgeF1": 0.6036192618341684,
+              "lightEdgeF1": 0.44206394635702023,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.0062591053148564,
+              "censusSimilarity": 0.5855973992184892
+            },
+            "registered": {
+              "edgeF1": 0.755276955468015,
+              "darkEdgeF1": 0.8356663921891543,
+              "lightEdgeF1": 0.6748875187468756,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.053901492705884,
+              "censusSimilarity": 0.8255479701918713
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.5228416040955943,
+              "darkEdgeF1": 0.6036192618341684,
+              "lightEdgeF1": 0.44206394635702023,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.0062591053148564,
+              "censusSimilarity": 0.5855973992184892
+            },
+            "registered": {
+              "edgeF1": 0.755276955468015,
+              "darkEdgeF1": 0.8356663921891543,
+              "lightEdgeF1": 0.6748875187468756,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.053901492705884,
+              "censusSimilarity": 0.8255479701918713
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "5543b08d-d470-435e-83d9-a3a84c1cc2e6",
+      "name": "Carrier Pigeons",
+      "set": "all",
+      "number": "1a",
+      "rarity": "common",
+      "cohort": "control",
+      "referenceHash": "14efd65925adae2a5c355b4408accf92586d4a9b667c1271294c84a37a010a15",
+      "clearance": {
+        "typeLine": "Creature — Bird",
+        "measuredWidth": 158.77880859375,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 311.5888,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.40736258810823434,
+              "darkEdgeF1": 0.4250700038026757,
+              "lightEdgeF1": 0.38965517241379305,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.086406538433841,
+              "censusSimilarity": 0.5055889780027102
+            },
+            "registered": {
+              "edgeF1": 0.7596494574187198,
+              "darkEdgeF1": 0.8077813967110108,
+              "lightEdgeF1": 0.7115175181264287,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.0200471156013973,
+              "censusSimilarity": 0.794526302678978
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.40736258810823434,
+              "darkEdgeF1": 0.4250700038026757,
+              "lightEdgeF1": 0.38965517241379305,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.086406538433841,
+              "censusSimilarity": 0.5055889780027102
+            },
+            "registered": {
+              "edgeF1": 0.7596494574187198,
+              "darkEdgeF1": 0.8077813967110108,
+              "lightEdgeF1": 0.7115175181264287,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.0200471156013973,
+              "censusSimilarity": 0.794526302678978
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.39781396858151297,
+              "darkEdgeF1": 0.39378901872898997,
+              "lightEdgeF1": 0.401838918434036,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.1275414864807796,
+              "censusSimilarity": 0.5175017607839716
+            },
+            "registered": {
+              "edgeF1": 0.7514288982124177,
+              "darkEdgeF1": 0.8085515983585794,
+              "lightEdgeF1": 0.6943061980662559,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1387784332332682,
+              "censusSimilarity": 0.8707638047728795
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.39781396858151297,
+              "darkEdgeF1": 0.39378901872898997,
+              "lightEdgeF1": 0.401838918434036,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.1275414864807796,
+              "censusSimilarity": 0.5175017607839716
+            },
+            "registered": {
+              "edgeF1": 0.7514288982124177,
+              "darkEdgeF1": 0.8085515983585794,
+              "lightEdgeF1": 0.6943061980662559,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.1387784332332682,
+              "censusSimilarity": 0.8707638047728795
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "97382dd8-2754-4ca3-8ba8-d655acaf22ac",
+      "name": "Alms",
+      "set": "wth",
+      "number": "3",
+      "rarity": "common",
+      "cohort": "control",
+      "referenceHash": "a7c540305a173a29844c2dac3b76f28012b21c3d78b453da610a347134efca88",
+      "clearance": {
+        "typeLine": "Enchantment",
+        "measuredWidth": 128.13841247558594,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 335.1776,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.7678406469990887,
+              "darkEdgeF1": 0.8400150271024528,
+              "lightEdgeF1": 0.6956662668957246,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3381905723870204,
+              "censusSimilarity": 0.7913281427858173
+            },
+            "registered": {
+              "edgeF1": 0.7678406469990887,
+              "darkEdgeF1": 0.8400150271024528,
+              "lightEdgeF1": 0.6956662668957246,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3381905723870204,
+              "censusSimilarity": 0.7913281427858173
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7678406469990887,
+              "darkEdgeF1": 0.8400150271024528,
+              "lightEdgeF1": 0.6956662668957246,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3381905723870204,
+              "censusSimilarity": 0.7913281427858173
+            },
+            "registered": {
+              "edgeF1": 0.7678406469990887,
+              "darkEdgeF1": 0.8400150271024528,
+              "lightEdgeF1": 0.6956662668957246,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.3381905723870204,
+              "censusSimilarity": 0.7913281427858173
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.7227967253040748,
+              "darkEdgeF1": 0.7946221888365961,
+              "lightEdgeF1": 0.6509712617715536,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.351201294343941,
+              "censusSimilarity": 0.7833953133149105
+            },
+            "registered": {
+              "edgeF1": 0.7227967253040748,
+              "darkEdgeF1": 0.7946221888365961,
+              "lightEdgeF1": 0.6509712617715536,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.351201294343941,
+              "censusSimilarity": 0.7833953133149105
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.7227967253040748,
+              "darkEdgeF1": 0.7946221888365961,
+              "lightEdgeF1": 0.6509712617715536,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.351201294343941,
+              "censusSimilarity": 0.7833953133149105
+            },
+            "registered": {
+              "edgeF1": 0.7227967253040748,
+              "darkEdgeF1": 0.7946221888365961,
+              "lightEdgeF1": 0.6509712617715536,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 1.351201294343941,
+              "censusSimilarity": 0.7833953133149105
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "f20a1c6d-ec6a-4bd6-b3b2-b997f71d41fc-custom",
+      "name": "Allay",
+      "set": "exo",
+      "number": "1",
+      "rarity": "common",
+      "cohort": "control",
+      "referenceHash": "68828d27f594a3e0cebb3694237f87db259770ddbd749bf1e3d83b76a786072e",
+      "clearance": {
+        "typeLine": "Instant",
+        "measuredWidth": 66.44535827636719,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 335.1776,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.3062362170388133,
+              "darkEdgeF1": 0.36241641794498053,
+              "lightEdgeF1": 0.25005601613264616,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.048584013561705,
+              "censusSimilarity": 0.5053791459320867
+            },
+            "registered": {
+              "edgeF1": 0.31626525224359847,
+              "darkEdgeF1": 0.3598577517717975,
+              "lightEdgeF1": 0.2726727527153995,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.114471898615597,
+              "censusSimilarity": 0.5204987994964915
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.3062362170388133,
+              "darkEdgeF1": 0.36241641794498053,
+              "lightEdgeF1": 0.25005601613264616,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.048584013561705,
+              "censusSimilarity": 0.5053791459320867
+            },
+            "registered": {
+              "edgeF1": 0.31626525224359847,
+              "darkEdgeF1": 0.3598577517717975,
+              "lightEdgeF1": 0.2726727527153995,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.114471898615597,
+              "censusSimilarity": 0.5204987994964915
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.29105233014949766,
+              "darkEdgeF1": 0.30132431347818606,
+              "lightEdgeF1": 0.28078034682080927,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.4547486503623874,
+              "censusSimilarity": 0.5169517992008501
+            },
+            "registered": {
+              "edgeF1": 0.3071874045253638,
+              "darkEdgeF1": 0.30449572492415183,
+              "lightEdgeF1": 0.3098790841265758,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.426917084810632,
+              "censusSimilarity": 0.5379140892869485
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.29105233014949766,
+              "darkEdgeF1": 0.30132431347818606,
+              "lightEdgeF1": 0.28078034682080927,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.4547486503623874,
+              "censusSimilarity": 0.5169517992008501
+            },
+            "registered": {
+              "edgeF1": 0.3071874045253638,
+              "darkEdgeF1": 0.30449572492415183,
+              "lightEdgeF1": 0.3098790841265758,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 3.426917084810632,
+              "censusSimilarity": 0.5379140892869485
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "1c5239dc-f51b-48c0-91a2-ed6551aaff32-custom",
+      "name": "High Ground",
+      "set": "exo",
+      "number": "7",
+      "rarity": "uncommon",
+      "cohort": "control",
+      "referenceHash": "b73a93f88aa8056dd5823eca0befbe6f0eec0eb5783d7c77ce986cc585b69387",
+      "clearance": {
+        "typeLine": "Enchantment",
+        "measuredWidth": 128.13841247558594,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 335.1776,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.40904719507831555,
+              "darkEdgeF1": 0.5295405474777672,
+              "lightEdgeF1": 0.28855384267886386,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.5701818723387797,
+              "censusSimilarity": 0.5300008425515979
+            },
+            "registered": {
+              "edgeF1": 0.43001877934923427,
+              "darkEdgeF1": 0.5426750155130592,
+              "lightEdgeF1": 0.31736254318540935,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7355835679595075,
+              "censusSimilarity": 0.5542323022332256
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.40904719507831555,
+              "darkEdgeF1": 0.5295405474777672,
+              "lightEdgeF1": 0.28855384267886386,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.5701818723387797,
+              "censusSimilarity": 0.5300008425515979
+            },
+            "registered": {
+              "edgeF1": 0.43001877934923427,
+              "darkEdgeF1": 0.5426750155130592,
+              "lightEdgeF1": 0.31736254318540935,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7355835679595075,
+              "censusSimilarity": 0.5542323022332256
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.4156009042393929,
+              "darkEdgeF1": 0.4834681849965039,
+              "lightEdgeF1": 0.34773362348228193,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.6023828645973763,
+              "censusSimilarity": 0.5608267804983507
+            },
+            "registered": {
+              "edgeF1": 0.40817671752679296,
+              "darkEdgeF1": 0.45338725985844286,
+              "lightEdgeF1": 0.3629661751951431,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7645443107767105,
+              "censusSimilarity": 0.5781124748074813
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.4156009042393929,
+              "darkEdgeF1": 0.4834681849965039,
+              "lightEdgeF1": 0.34773362348228193,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.6023828645973763,
+              "censusSimilarity": 0.5608267804983507
+            },
+            "registered": {
+              "edgeF1": 0.40817671752679296,
+              "darkEdgeF1": 0.45338725985844286,
+              "lightEdgeF1": 0.3629661751951431,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7645443107767105,
+              "censusSimilarity": 0.5781124748074813
+            }
+          }
+        }
+      },
+      "review": []
+    },
+    {
+      "id": "024ae668-a1ae-4020-89c8-acbd8bd0a691-custom",
+      "name": "Cataclysm",
+      "set": "exo",
+      "number": "3",
+      "rarity": "rare",
+      "cohort": "control",
+      "referenceHash": "3a53b37f3e7e4277dc6d5858bde854a238a03e85b439dde43dc655e3314fe123",
+      "clearance": {
+        "typeLine": "Sorcery",
+        "measuredWidth": 71.675048828125,
+        "beforeMaximum": 335.1776,
+        "afterMaximum": 335.1776,
+        "needsCompression": false,
+        "typeRegion": [50.4112, 372.048, 383.1776, 38.924]
+      },
+      "scores": {
+        "inspect": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.36384967486727104,
+              "darkEdgeF1": 0.45441537203597715,
+              "lightEdgeF1": 0.273283977698565,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7195826100728318,
+              "censusSimilarity": 0.515680232699006
+            },
+            "registered": {
+              "edgeF1": 0.3553319799375486,
+              "darkEdgeF1": 0.411975766131404,
+              "lightEdgeF1": 0.29868819374369326,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.841133246481726,
+              "censusSimilarity": 0.5429314912685964
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.36384967486727104,
+              "darkEdgeF1": 0.45441537203597715,
+              "lightEdgeF1": 0.273283977698565,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.7195826100728318,
+              "censusSimilarity": 0.515680232699006
+            },
+            "registered": {
+              "edgeF1": 0.3553319799375486,
+              "darkEdgeF1": 0.411975766131404,
+              "lightEdgeF1": 0.29868819374369326,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.841133246481726,
+              "censusSimilarity": 0.5429314912685964
+            }
+          }
+        },
+        "table": {
+          "changed": 0,
+          "typeChanged": 0,
+          "outside": 0,
+          "before": {
+            "raw": {
+              "edgeF1": 0.3887783054720937,
+              "darkEdgeF1": 0.4541139788671401,
+              "lightEdgeF1": 0.3234426320770472,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.6959825909234363,
+              "censusSimilarity": 0.5347574121622207
+            },
+            "registered": {
+              "edgeF1": 0.3671197251173423,
+              "darkEdgeF1": 0.4008426852489568,
+              "lightEdgeF1": 0.33339676498572784,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.8242156675956664,
+              "censusSimilarity": 0.560028581376162
+            }
+          },
+          "after": {
+            "raw": {
+              "edgeF1": 0.3887783054720937,
+              "darkEdgeF1": 0.4541139788671401,
+              "lightEdgeF1": 0.3234426320770472,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.6959825909234363,
+              "censusSimilarity": 0.5347574121622207
+            },
+            "registered": {
+              "edgeF1": 0.3671197251173423,
+              "darkEdgeF1": 0.4008426852489568,
+              "lightEdgeF1": 0.33339676498572784,
+              "darkStatus": "measured",
+              "lightStatus": "measured",
+              "meanDistance": 2.8242156675956664,
+              "censusSimilarity": 0.560028581376162
+            }
+          }
+        }
+      },
+      "review": []
+    }
+  ]
+}

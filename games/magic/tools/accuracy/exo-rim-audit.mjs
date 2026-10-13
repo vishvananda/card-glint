@@ -16,12 +16,14 @@ import { cachedGrayRegion } from './region-cache.mjs';
 import { compareLettering } from './lettering-metrics.mjs';
 import { median } from './metrics.mjs';
 import { oldSymbolRegions } from './old-symbol-regions.mjs';
-const phase = process.argv[2] ?? 'rim';
-assert.ok(['rim-candidate', 'rim'].includes(phase));
-const base = `${outputRoot}/exo-symbol`,
-  before = await readJson(`${base}/after/capture.json`),
+const phase = process.argv[2] ?? 'rim-outer';
+assert.ok(['rim-candidate', 'rim', 'rim-outer-candidate', 'rim-outer'].includes(phase));
+const outer = phase.startsWith('rim-outer'),
+  beforeStage = outer ? 'rim' : 'after',
+  base = `${outputRoot}/exo-symbol`,
+  before = await readJson(`${base}/${beforeStage}/capture.json`),
   after = await readJson(`${base}/${phase}/capture.json`),
-  baseline = await readJson(`${fixtureRoot}/exo-symbol-after-measurement.json`),
+  baseline = await readJson(`${fixtureRoot}/exo-symbol-${beforeStage}-measurement.json`),
   registration = await readJson(`${fixtureRoot}/old-symbol-material-registration.json`),
   candidate = await readJson(`${fixtureRoot}/exo-symbol-candidate.json`),
   plan = await readJson(`${fixtureRoot}/exo-symbol-plan.json`),
@@ -30,7 +32,7 @@ assert.equal(before.planHash, hash(JSON.stringify(plan)));
 assert.equal(before.rendererHash, baseline.rendererHash);
 assert.equal(after.rendererHash, await sourceHash(`${root}/games/magic/src`));
 assert.equal(after.planHash, before.planHash);
-assert.equal(after.rows.length, phase === 'rim' ? before.rows.length : 12);
+assert.equal(after.rows.length, phase.endsWith('-candidate') ? 12 : before.rows.length);
 const server = await createServer({ configFile: false, root, server: { middlewareMode: true } });
 try {
   const { retroSymbolGeometry } = await server.ssrLoadModule(
@@ -61,7 +63,7 @@ for (const a of after.rows) {
     const images = {},
       metrics = {};
     for (const [stage, row, directory] of [
-      ['before', b, `${base}/after`],
+      ['before', b, `${base}/${beforeStage}`],
       ['after', a, `${base}/${phase}`],
     ]) {
       if (!row) continue;
@@ -88,7 +90,9 @@ for (const a of after.rows) {
       changed++;
       const x = (((i / 4) % old.width) * 488) / old.width,
         y = (Math.floor(i / 4 / old.width) * 680) / old.height;
-      if (x < 371 || x >= 435 || y < 376 || y >= 403) outside++;
+      // Boundary texels may straddle the envelope at table resolution.
+      if (x + 488 / old.width <= 371 || x >= 435 || y + 680 / old.height <= 376 || y >= 403)
+        outside++;
     }
 
     assert.equal(outside, 0, `${a.name} ${tier}: pixels outside rim changed`);
@@ -180,9 +184,12 @@ const ordinary = rows.filter((r) => r.cohort !== 'control'),
 await writeJson(`${fixtureRoot}/exo-symbol-${phase}-measurement.json`, {
   schemaVersion: 1,
   phase,
-  rim: { before: { outset: 1.25, inset: 0 }, after: { outset: 1.875, inset: 0.625 } },
-  scope:
-    'User-directed wider Exodus white rim, split equally inward/outward. Outer radius 1.25 to 1.875 px, inward erosion 0 to 0.625 px, preserving window contours through the existing filled backing. Same v69 geometry, palettes, faces and type widths; no per-card fit. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Verify full-card bytes outside the tight rim envelope, seven controls, and both capture identities. No original-text or whole-card accuracy certification.',
+  rim: outer
+    ? { before: { outset: 1.875, inset: 0.625 }, after: { outset: 2, inset: 0 } }
+    : { before: { outset: 1.25, inset: 0 }, after: { outset: 1.875, inset: 0.625 } },
+  scope: outer
+    ? 'User-directed Exodus rim revision: use a 2 px outer-only rim. Restore un-eroded colored ink and increase outer white radius to 2 px. Same v69 geometry, palettes, faces and type widths; no per-card fit. Compare against the v70 balanced rim. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Full-card bytes protect the tight rim envelope (boundary texel footprints may intersect it), seven controls and capture identities. No original-text or whole-card accuracy certification.'
+    : 'User-directed wider Exodus white rim, split equally inward/outward. Outer radius 1.25 to 1.875 px, inward erosion 0 to 0.625 px, preserving window contours through the existing filled backing. Same v69 geometry, palettes, faces and type widths; no per-card fit. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Verify full-card bytes outside the tight rim envelope, seven controls, and both capture identities. No original-text or whole-card accuracy certification.',
   baselineRendererHash: before.rendererHash,
   rendererHash: after.rendererHash,
   planHash: after.planHash,

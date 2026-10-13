@@ -3,7 +3,6 @@ import { paintMana } from './canvas-text.js';
 import { paintEarlyMana } from './historic-cost.js';
 import { resolveFrameColors } from './profile.js';
 import type { RetroSymbolPalette } from './retro-symbol-material.js';
-import { insetRetroSymbolInk } from './retro-symbol-rim.js';
 
 /** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
 export function retroStatsPlacement(face: RenderedCardInput) {
@@ -139,8 +138,6 @@ export function paintOutlinedRetroSet(
   outline: number,
   crop: FaceRect = [0, 0, 1, 1],
   palette: RetroSymbolPalette | null = null,
-  inset = 0,
-  backing: ImageBitmap | null = null,
 ) {
   const layer = document.createElement('canvas');
   const pad = Math.ceil(outline * 2) + 1;
@@ -173,7 +170,6 @@ export function paintOutlinedRetroSet(
       layer.height / 2,
     );
   }
-  insetRetroSymbolInk(layer, backing, crop, pad, w * 2, h * 2, inset * 2);
   ink.fillStyle = '#17140f';
   if (palette) {
     const gradient = ink.createLinearGradient(pad, pad, pad + w * 2, pad);

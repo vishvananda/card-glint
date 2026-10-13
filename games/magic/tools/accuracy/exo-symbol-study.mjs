@@ -21,7 +21,17 @@ import { openBrowser } from './browser.mjs';
 
 const [action = 'prepare'] = process.argv.slice(2);
 assert.ok(
-  ['prepare', 'before', 'material', 'candidate', 'after', 'rim-candidate', 'rim'].includes(action),
+  [
+    'prepare',
+    'before',
+    'material',
+    'candidate',
+    'after',
+    'rim-candidate',
+    'rim',
+    'rim-outer-candidate',
+    'rim-outer',
+  ].includes(action),
 );
 const base = `${outputRoot}/exo-symbol`,
   planFile = `${fixtureRoot}/exo-symbol-plan.json`,
@@ -110,7 +120,7 @@ try {
   for (const e of snapshot.entries.filter(
     (e) =>
       !e.issue &&
-      (!['material', 'candidate', 'rim-candidate'].includes(action) ||
+      (!['material', 'candidate', 'rim-candidate', 'rim-outer-candidate'].includes(action) ||
         ['calibration', 'control'].includes(e.cohort)),
   )) {
     const face = studyFace(e);

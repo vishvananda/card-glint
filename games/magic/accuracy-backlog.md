@@ -918,3 +918,29 @@ its application, deployment and database outside this library repository.
   to the balanced rim, raw/provisional-fit scans, overlays and every card's
   scores, including regressions. Fine bridge contours remain an asset-review
   item; frame normalization remains provisional.
+
+### Exodus exterior-only rim (v71, supersedes the v70 inset)
+
+- Visual review found that the inward expansion removed too much colored ink.
+  Use the requested **2 px outside rim, zero inset**. Restore the original
+  colored bridge silhouette and remove the unused erosion helper. Geometry,
+  gradients, window backing and type widths remain unchanged.
+- Compare all 143 printings against the v70 balanced rim at both tiers, with
+  the same seven controls. Changes are confined to the rim envelope; boundary
+  texel footprints may intersect it at table resolution. Controls, type
+  measurements and all pixels away from that envelope remain identical.
+- Shared-fit median F1 improves .725 → .770 at inspection and .714 → .749 at
+  table size. Raw medians also improve, .594 → .612 and .626 → .637. Census
+  improves .742 → .793 and .779 → .810. Inspection has 83 improvements and
+  20 regressions over .02; table has 88 improvements and nine regressions.
+  Against the earlier v69 thin rim, inspection/table medians were .687/.744.
+- Common and rare medians improve at both sizes. Uncommon inspection improves
+  .711 → .736, while its table median is nearly flat (.725 → .719). Keep the
+  remaining blue-frame offsets and fine bridge contour mismatches flagged;
+  none of these scores certifies scan normalization or overall card accuracy.
+- Reproduce with `exo-symbol-study.mjs rim-outer-candidate|rim-outer` and
+  `exo-rim-audit.mjs rim-outer-candidate|rim-outer`. The corresponding
+  `exo-symbol-rim-outer-*-measurement.json` candidate report and
+  `exo-symbol-rim-outer-measurement.json` full-set report retain both tiers,
+  all rows and regressions. The local comparison places the balanced rim next
+  to the 2 px exterior-only version, with full cards, table rasters and overlays.
