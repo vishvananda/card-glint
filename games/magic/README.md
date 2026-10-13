@@ -76,13 +76,19 @@ Prior old-frame HSB and scan-offset profiles are not applied to these assets.
 Set symbols now prefer complete styled SVGs where available, preserving their
 white details, black outlines and metallic gradients. The
 [versioned inventory](set-symbol-inventory.json) lists 1,880 rarity files for
-383 set codes. Already reviewed historical and M15/M19/M20/M21/WAR treatments
-keep their existing source by default. Set `setSymbolSource: 'cardconjurer'` to
-preview replacements, or `'keyrune'` to compare the prior source. Frame-family
+383 set codes. These are the default for all available sets. Use
+`setSymbolSource: 'keyrune'` to select the prior source. Frame-family
 selection does not change the symbol-source policy. A missing exact rarity falls back to
 Keyrune; unknown sets return no symbol instead of requesting a nonexistent file.
 Pre-Exodus printings still use monochrome symbols. Host-owned `setSymbol` URLs
 and the original GLINT/FORGE marks take precedence and preserve their colors.
+
+The [SVG patch manifest](symbol-svg-patches.json) records local material fixes
+for M15 uncommon/rare/mythic and Eighth/Ninth Edition uncommon/rare. Patches
+verify SHA-256 before editing fills and outlines, run once before decoding, and
+share the pack's encoded-source cache across direct and host rendering. Custom
+URLs are untouched. Source bytes and patched SVGs remain external/local; only
+transformation code, checksums and provenance are stored here.
 
 All source URLs include immutable revisions. The new collection uses GitHub raw
 URLs because jsDelivr rejects uncached files from this oversized repository. Asset decoding uses the existing

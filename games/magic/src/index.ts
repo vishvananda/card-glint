@@ -103,7 +103,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       },
       stamp: {
         key: JSON.stringify([
-          'mtg-stamp-v2',
+          'mtg-stamp-v3',
           tier,
           face.setCode,
           children.map((child) => [

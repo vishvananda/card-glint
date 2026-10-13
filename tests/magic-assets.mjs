@@ -78,6 +78,7 @@ try {
         name: 'Test specimen',
         typeLine: 'Artifact',
         setCode: 'arn',
+        setSymbolSource: 'keyrune',
         rarity: 'common',
         rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Pay {G}.' }] }],
       },

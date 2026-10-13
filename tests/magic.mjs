@@ -991,7 +991,7 @@ try {
       ['Dance of Many', 'drk'],
       ["Urza's Tower", 'atq'],
     ])
-      if (!faceSetSymbol({ name, setCode: 'chr' })?.endsWith(`/${code}.svg`))
+      if (!faceSetSymbol({ name, setCode: 'chr' })?.endsWith(`/${code}-c.svg`))
         throw Error(`Chronicles lost its original expansion symbol: ${name}`);
     if (
       faceSetSymbol({ name: 'Unknown custom card', setCode: 'chr' }) !== null ||
@@ -1024,6 +1024,7 @@ try {
         rulesText: '',
         setCode,
         rarity: 'common',
+        setSymbolSource: 'keyrune',
         ...(customSymbol ? { setSymbol: 'test:padded-symbol' } : {}),
       };
       const url = faceSetSymbol(face);
@@ -1092,7 +1093,14 @@ try {
     stencilContext.clearRect(130, 120, 60, 65);
     for (const setCode of ['m15', 'm21']) {
       for (const rarity of ['common', 'uncommon', 'rare', 'mythic']) {
-        const face = { name: '', typeLine: 'Artifact', rulesText: '', setCode, rarity };
+        const face = {
+          name: '',
+          typeLine: 'Artifact',
+          rulesText: '',
+          setCode,
+          rarity,
+          setSymbolSource: 'keyrune',
+        };
         const url = faceSetSymbol(face);
         for (const tier of ['table', 'inspect']) {
           const canvas = await composeCardTexture(

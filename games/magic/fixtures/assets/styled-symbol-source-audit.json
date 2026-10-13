@@ -218,22 +218,28 @@
       "rarities": ["uncommon", "rare"],
       "cards": ["Battle Mastery", "Caves of Koilos"],
       "finding": "Imported symbol paints metallic letters/rim on black; printing has black letters on metallic shield. Confirmed visually against both scans. All seven inspected sources identical.",
-      "resolution": "Frame family no longer forces imported symbols. Existing reviewed source policy applies uniformly; explicit imported source remains available for review."
+      "resolution": "Checksum-verified local SVG material patch; imported symbols are now the default. See symbol-svg-patches.json."
     },
     {
       "code": "8ed",
       "rarities": ["rare"],
       "cards": ["Wrath of God"],
       "finding": "Numeric shield material topology differs: reference has a dark interior and colored numeral, imported source colors the card panels around a black numeral.",
-      "resolution": "Flagged source replacement; no automatic inversion based on edge scores."
+      "resolution": "Checksum-verified local SVG material patch; imported symbols are now the default. See symbol-svg-patches.json."
     },
     {
       "code": "9ed",
       "rarities": ["rare"],
       "cards": ["Sengir Vampire"],
       "finding": "Reference numeral/panel line treatment differs from imported vector; extra pale rim and heavy black numeral remain visible.",
-      "resolution": "Flagged source replacement; no per-card painter exception."
+      "resolution": "Checksum-verified local SVG material patch; imported symbols are now the default. See symbol-svg-patches.json."
     }
   ],
-  "nextDetection": "Alongside edge matching, score dark-ink occupancy versus metallic-field occupancy inside registered symbol masks. Compare both normal and reversed polarity for diagnosis only; disagreement identifies a source issue instead of moving the symbol. Admit source revisions only after held-out rarity/printing review."
+  "nextDetection": "Alongside edge matching, score dark-ink occupancy versus metallic-field occupancy inside registered symbol masks. Compare both normal and reversed polarity for diagnosis only; disagreement identifies a source issue instead of moving the symbol. Admit source revisions only after held-out rarity/printing review.",
+  "localPatchReview": {
+    "m15": ["uncommon: Battle Mastery", "rare: Caves of Koilos", "mythic: Ajani Steadfast"],
+    "8ed": ["uncommon: Air Elemental", "rare: Wrath of God"],
+    "9ed": ["uncommon: Air Elemental", "rare: Sengir Vampire"],
+    "scope": "Material topology only. Original gradient colors and numeral outlines retained. No blanket inversion; source-specific SVG transforms before decode."
+  }
 }

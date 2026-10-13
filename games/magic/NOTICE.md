@@ -53,3 +53,10 @@ at `33f2547137fe366b40e9e8dba4eb591af190fddf`. See that source's
 [contributor credits and terms](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/legal/index.html).
 The `official` directory name describes the upstream collection, not a grant of
 rights. Only pinned URLs and an inventory of available filenames are included.
+
+Local SVG material corrections are described in [symbol-svg-patches.json](symbol-svg-patches.json).
+They rewrite fetched, checksum-verified Card Conjurer SVGs before decoding;
+no source paths or patched artwork are embedded in the package. M15 retains its
+palette with black lettering, Eighth Edition uses a dark front card and metallic
+numeral, and Ninth Edition uses an outlined metallic numeral. Source attribution
+and rights remain as above.

@@ -57,7 +57,7 @@ export interface RenderedCardInput extends CardProfileInput {
   setCode?: string | null;
   /** Optional host-owned symbol URL; setCode remains the printed label. */
   setSymbol?: string | null;
-  /** Auto prefers complete styled vectors, retaining reviewed Keyrune profiles.
+  /** Auto prefers complete styled vectors, falling back to Keyrune if unavailable.
    * Explicit selection is useful for asset comparisons. Custom URLs win. */
   setSymbolSource?: 'auto' | 'keyrune' | 'cardconjurer';
   rarity?: 'common' | 'uncommon' | 'rare' | 'mythic' | 'special' | 'bonus';

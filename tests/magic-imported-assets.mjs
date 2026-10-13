@@ -55,6 +55,8 @@ try {
     const { faceSetSymbol, setSymbolAsset } = await import(
       '/games/magic/src/presentation/assets.ts'
     );
+    const { retroSetSymbol } = await import('/games/magic/src/presentation/retro-frame.ts');
+
     const { framePlate } = await import('/games/magic/src/presentation/frame-plates.ts');
     const { faceRects } = await import('/games/magic/src/presentation/special-frames.ts');
     const { canvasAssetUrls, canvasAssetWidth } = await import(
@@ -66,6 +68,10 @@ try {
     const check = (ok, message) => {
       if (!ok) throw Error(message);
     };
+    check(
+      retroSetSymbol({ setCode: 'ice' }).endsWith('/ice-c.svg'),
+      'Ice Age bypassed imported default',
+    );
     for (const [family, style, weight] of [
       ['Beleren', 'normal', '400 700'],
       ['Matrix', 'normal', '700'],
@@ -90,8 +96,8 @@ try {
     );
     check(setSymbolAsset('p02', 'rare', 'keyrune').endsWith('/po2.svg'), 'Keyrune alias lost');
     check(
-      setSymbolAsset('arn', 'rare').endsWith('/arn.svg'),
-      'Reviewed source replaced implicitly',
+      setSymbolAsset('arn', 'rare').endsWith('/arn-c.svg'),
+      'Imported monochrome symbol is not the default',
     );
     check(
       setSymbolAsset('arn', 'rare', 'cardconjurer').endsWith('/arn-c.svg'),

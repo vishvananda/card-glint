@@ -1,3 +1,4 @@
+import { hasSymbolSvgPatch, patchSymbolSvg } from './symbol-svg-patches.js';
 import {
   hasHistoricalBacking,
   historicalBackingBlob,
@@ -6,7 +7,7 @@ import {
 
 interface SymbolSources {
   original: string;
-  backing: string;
+  backing?: string;
 }
 interface Entry {
   promise: Promise<SymbolSources>;
@@ -16,7 +17,7 @@ interface Entry {
   retired: boolean;
 }
 
-// Only the six exact pinned URLs qualify. Retain encoded SVG object URLs, not
+// Only exact pinned URLs qualify. Retain encoded SVG object URLs, not
 // decoded bitmaps: the host still owns its bounded decoded-image cache.
 const entries = new Map<string, Entry>();
 
@@ -27,7 +28,7 @@ function retire(entry: Entry) {
     return;
   }
   URL.revokeObjectURL(entry.sources.original);
-  URL.revokeObjectURL(entry.sources.backing);
+  if (entry.sources.backing) URL.revokeObjectURL(entry.sources.backing);
   entry.sources = undefined;
 }
 
@@ -52,14 +53,13 @@ async function acquire(url: string, signal: AbortSignal) {
       promise: Promise.resolve().then(async () => {
         // A consumer's abort must not poison another loader sharing this fetch.
         const response = await fetch(url, { mode: 'cors', signal: fresh.controller.signal });
-        if (!response.ok) throw Error(`Historical symbol ${response.status}: ${url}`);
-        const blob = await response.blob(),
+        if (!response.ok) throw Error(`Symbol source ${response.status}: ${url}`);
+        const blob = await patchSymbolSvg(url, await response.blob()),
           backing = await historicalBackingBlob(url, blob);
-        if (!backing) throw Error('Missing historical symbol backing policy.');
         fresh.controller.signal.throwIfAborted();
         const original = URL.createObjectURL(blob);
         try {
-          const sources = { original, backing: URL.createObjectURL(backing) };
+          const sources = { original, backing: backing ? URL.createObjectURL(backing) : undefined };
           fresh.sources = sources;
           return sources;
         } catch (error) {
@@ -124,14 +124,14 @@ export async function resolveCanvasSources(
   };
   const results = await Promise.allSettled(
     list.map(async (url) => {
-      if (!hasHistoricalBacking(url)) {
+      if (!hasHistoricalBacking(url) && !hasSymbolSvgPatch(url)) {
         aliases.set(url, url);
         return;
       }
       const lease = await acquire(url, signal);
       held.push(lease);
       aliases.set(url, lease.sources.original);
-      aliases.set(historicalBackingKey(url), lease.sources.backing);
+      if (lease.sources.backing) aliases.set(historicalBackingKey(url), lease.sources.backing);
     }),
   );
   const failure = results.find((result) => result.status === 'rejected');
