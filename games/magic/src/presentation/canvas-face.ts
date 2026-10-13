@@ -1,3 +1,4 @@
+import { prepareEarlyHsb } from './early-hsb-material.js';
 import { faceCornerRadius } from './face-silhouette.js';
 import { NORMAL_FRAME_GEOMETRY, normalFrameInset } from './normal-frame-geometry.js';
 import { paintLandFrame, paintLandPaper } from './land-paper.js';
@@ -102,7 +103,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v78',
+    'canvas-face-v79',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -152,6 +153,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.rulesParagraphs ?? null,
         face.wordingMode ?? null,
         face.symbolStyle ?? null,
+        face.colorCalibration ?? null,
         face.rulesAlignment ?? null,
         face.illustration ?? null,
         face.illustrationCrop ?? null,
@@ -255,13 +257,16 @@ export async function composeCardTexture(
     ]);
     signal.throwIfAborted();
     const loaded = await loadImages(canvasAssetUrls(input.face), signal);
+    let calibrated: Awaited<ReturnType<typeof prepareEarlyHsb>> | undefined;
     try {
+      if (input.paintLayer !== 'artwork')
+        calibrated = await prepareEarlyHsb(input.face, loaded.images, signal);
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
       paintAssembledFace(
         context,
         input.face,
-        loaded.images,
+        calibrated?.images ?? loaded.images,
         FACE_HEIGHT,
         false,
         hooks?.underArt,
@@ -277,6 +282,7 @@ export async function composeCardTexture(
       roundCanvasSilhouette(context, input.face);
       return canvas;
     } finally {
+      calibrated?.dispose();
       loaded.dispose();
     }
   } catch (error) {
