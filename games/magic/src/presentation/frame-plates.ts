@@ -1,5 +1,5 @@
 import type { FaceRects } from './special-frames.js';
-import { FACE_RECTS, type FaceRect, type RenderedCardInput } from './face-layout.js';
+import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './face-layout.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { isRetro } from './retro-frame.js';
@@ -92,10 +92,6 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
     plate.frame,
     ...(plate.rightFrame ? [plate.rightFrame] : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),
-    ...(face.borderColor === 'white' ||
-    face.borderColor === 'silver' ||
-    (!face.borderColor && ['8ed', '9ed'].includes(face.setCode?.toLowerCase() ?? ''))
-      ? [plate.border]
-      : []),
+    ...(cardStock(face.setCode, face.borderColor).border !== '#090806' ? [plate.border] : []),
   ];
 }

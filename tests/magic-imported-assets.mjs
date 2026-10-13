@@ -119,6 +119,11 @@ try {
     };
     const input = (f) => ({ face: f, printingId: null, printedImage: null });
     const plainKey = cardTextureKey(input(face), 'inspect');
+    const restyled = { ...face, setCode: '3ed', frameAssetFamily: 'eighth' };
+    check(
+      canvasAssetUrls(restyled).includes(framePlate(restyled).border),
+      'Explicit modern frame lost the printing stock mask',
+    );
     for (const family of ['eighth', 'm15-accurate'])
       for (const tier of ['table', 'inspect']) {
         const f = { ...face, frameAssetFamily: family, borderColor: 'white' };
