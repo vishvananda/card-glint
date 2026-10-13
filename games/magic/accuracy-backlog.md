@@ -59,6 +59,30 @@ Separate scan pose from frame geometry before revising placement, and keep the
 remaining internal V stroke/proportion differences in the source-stencil queue.
 Do not hide these regressions in the improving median or add per-card offsets.
 
+### Alliances banner follow-up
+
+The independent-axis size correction and smoother mask sampling are measured
+across all 199 ordinary printings. The shared raw placement remains provisional:
+21 printings regress by more than .02 edge F1 in at least one tier, concentrated
+in black and gold frames. All regression crops were inspected; these materials
+repeatedly put the printed banner farther left. Separate scan pose from frame
+geometry before changing placement again. Keep every score and the 11 derived
+type-clearance changes in
+[all-symbol-review.json](fixtures/accuracy/all-symbol-review.json).
+The retained stencil's folds, dark central curl, shaded interior and exterior
+rim still need review; black-ink dimensions do not validate the white rim.
+
+### Weatherlight book follow-up
+
+High-quality temporary-mask downsampling removes broken fine book lines while
+retaining the measured geometry. All 167 ordinary printings were audited;
+Odylic Wraith and Lotus Vale regress by more than .02 at table size, despite
+improving at inspect size. Both were visually inspected and remain in
+[wth-symbol-review.json](fixtures/accuracy/wth-symbol-review.json).
+The tenth-percentile table score also falls slightly (.559 to .553). Keep the
+left spine contour/hatching and gray page shading in the asset/color queues,
+and recheck placement after independent frame normalization.
+
 ## Assets needing visual review
 
 | Asset group                                             | Observed problem                                                                                                                                                                                          | Examples / next evidence                                                                                                                                                                                                                                                                         |

@@ -5,14 +5,20 @@
   "printedFrame": "1993",
   "border": "white",
   "frameFamily": "fourth",
+  "anchor": "outer-stock",
   "coordinateSystem": "488x680; references only; pAfter=center+scale*(pBefore-center)+(tx,ty), center=(244,340); pixels.normalize handles source resolution/letterboxing first",
   "scope": {
     "materials": ["W", "U", "B", "R", "G", "A"],
     "layouts": ["normal"],
     "frameFamily": "retro-fourth",
-    "excludes": ["lands using another family", "tokens", "special layouts", "other sets or stocks"]
+    "excludes": [
+      "land assets not explicitly guarded",
+      "tokens",
+      "special layouts",
+      "other sets or stocks"
+    ]
   },
-  "policy": "One shared translation and uniform scale fitted on frozen calibration cards to the retained painter stock boundaries, equally weighted by material. The target includes the actual scaled frame and white border mask. No text, art, internal bevel, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. Residual opposed boundaries remain a source-geometry diagnostic.",
+  "policy": "One shared translation and uniform scale fitted on frozen calibration cards to the retained painter outer printed plate, equally weighted by material. No text, art, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. ABU black stock uses normalized gradient profiles of the plate border to separate its narrow bevel from the adjacent cast shadow and faint bitmap edge. Other families use stock boundaries. Residual opposed boundaries remain a source-geometry diagnostic.",
   "guards": {
     "sources": [
       {
@@ -81,8 +87,8 @@
   "provenance": {
     "planHash": "4d187f5340a927df95cea753729336baf310b5ba79928a24713d482d0a3464f8",
     "snapshotHash": "ea33a87e0f2a9da324bf86c9e4593b4ac2673d5c693fcc7bafe722d09e5c5054",
-    "methodHash": "d3b8b21cbb634cd92a1b7dce2cb0d3cc5b033c9263fbdac771d2cdb665fd7a9b",
-    "rendererStockHash": "51e436df9f9e0fd4f472a73a0a3d9044e9e3b0256c64818e07a1bc29aab9e2d3",
+    "methodHash": "7c18ecc38c04fddec617b823046134d930bb6c6243ea902657821e68d72c96ff",
+    "rendererStockHash": "287485e3658296e60f959f9b0d1055a8afc8dc0d546ed25418d629f860926214",
     "targetsHash": "f0a986ef535e21db56eef3d3bc25c544da1c21cd881cfa928bb9a11f839ee4c5",
     "referencesHash": "8dd33168949a37e054e72164d726422483cfcdd78619409cb5d8566136447999"
   },

@@ -93,6 +93,16 @@ for (const a of after.rows) {
   assert.equal(a.clearance.measuredWidth, b.clearance.measuredWidth);
   assert.deepEqual(a.clearance.typeRegion, b.clearance.typeRegion);
   if (control || !adoption.allowTypeCompression) assert.deepEqual(a.clearance, b.clearance);
+  if (!control && adoption.scoreExcludesType)
+    for (const row of [a, b]) {
+      const typeRight =
+        row.clearance.typeRegion[0] +
+        2 +
+        Math.min(row.clearance.measuredWidth, row.clearance.afterMaximum);
+      // The source type region starts two pixels before the text origin.
+      // Leave another two pixels for upright glyph overhang and its shadow.
+      assert.ok(rect[0] >= typeRight + 2, `${a.name}: type ink enters the symbol score`);
+    }
   for (const tier of ['inspect', 'table']) {
     const images = {},
       metrics = {};
@@ -127,7 +137,8 @@ for (const a of after.rows) {
         if (
           !control &&
           adoption.allowTypeCompression &&
-          a.clearance.needsCompression &&
+          (a.clearance.needsCompression || b.clearance.needsCompression) &&
+          a.clearance.afterMaximum !== b.clearance.afterMaximum &&
           intersects(a.clearance.typeRegion)
         )
           typeChanged++;

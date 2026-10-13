@@ -183,6 +183,7 @@ export function paintRetroFace(
           (palette ? 2 : (details?.setOutline ?? historicalSetOutline(face.setCode))),
         crop,
         palette,
+        geometry?.sampling,
       );
     else
       paintSetSymbol(

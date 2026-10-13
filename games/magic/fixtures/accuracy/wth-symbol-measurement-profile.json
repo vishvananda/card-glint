@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "scope": "Weatherlight full book contrast envelope, including the light page outlines and exterior rim: the dark-ink detector measures only the lower spine and must not set total height. Sweep native local-contrast thresholds, remove the operator's known one-pixel support, and retain background joins/unstable estimates. Matched blank subtraction measures the full rendered envelope, including its rim. No geometry refit to an individual scan.",
+  "reference": {
+    "region": [392, 371, 55, 40],
+    "limits": { "width": [27, 42], "height": [20, 29] },
+    "signal": "contrast",
+    "thresholds": [35, 50, 65, 80],
+    "maxSpread": 1.4
+  },
+  "rendered": {
+    "region": [392, 371, 55, 40],
+    "limits": { "width": [27, 42], "height": [20, 29] },
+    "thresholds": [8, 12, 18, 24],
+    "maxSpread": 1.4,
+    "foreground": "difference"
+  }
+}

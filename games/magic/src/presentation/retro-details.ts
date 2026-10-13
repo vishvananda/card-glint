@@ -138,12 +138,16 @@ export function paintOutlinedRetroSet(
   outline: number,
   crop: FaceRect = [0, 0, 1, 1],
   palette: RetroSymbolPalette | null = null,
+  sampling: ImageSmoothingQuality = 'low',
 ) {
   const layer = document.createElement('canvas');
   const pad = Math.ceil(outline * 2) + 1;
   layer.width = Math.ceil(w * 2) + pad * 2;
   layer.height = Math.ceil(h * 2) + pad * 2;
   const ink = layer.getContext('2d')!;
+  // Fine book lines need area downsampling on this temporary mask as well as
+  // the main canvas. Keep uncalibrated stencils on their existing sampling.
+  ink.imageSmoothingQuality = sampling;
   ink.drawImage(
     image,
     crop[0] * image.width,

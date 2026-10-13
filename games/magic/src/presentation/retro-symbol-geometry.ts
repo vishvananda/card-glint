@@ -7,6 +7,7 @@ interface RetroSymbolGeometry {
   height: number;
   crop: FaceRect;
   outline?: number;
+  sampling?: ImageSmoothingQuality;
 }
 
 /** Visible ink bounds, not the padded source viewport. Shared set profiles
@@ -56,11 +57,12 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     crop: [0, 0.1264957264957265, 1, 0.764102564102564],
   },
   all: {
-    right: 424,
-    centerY: 392,
-    width: 54,
-    height: 23,
+    right: 429,
+    centerY: 393.5,
+    width: 56.5,
+    height: 24.5,
     crop: [0.00390625, 0.2890625, 0.994140625, 0.421875],
+    sampling: 'high',
   },
   wth: {
     right: 434,
@@ -68,6 +70,7 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     width: 34,
     height: 22,
     crop: [0, 0.154296875, 0.998046875, 0.646484375],
+    sampling: 'high',
   },
   // Independent ink-axis measurements across common Exodus scans; retain the 2 px rim.
   exo: { right: 430.5, centerY: 390, width: 55.5, height: 21, crop: [0, 0.30859375, 1, 0.3828125] },

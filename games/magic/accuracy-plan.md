@@ -296,6 +296,77 @@ Reproduce with the shared `symbol-study`, `symbol-study-bounds` and
 `symbol-study-audit` scripts at the recorded revision. Strict checks, build,
 package, browser, showcase and Magic accuracy suites pass.
 
+### Alliances and Weatherlight symbol checkpoint (2026-10-13)
+
+Alliances' frozen 22-card calibration cohort supplies eight stable native
+black-ink references, with a median envelope of 54.923 × 24.029 canonical pixels.
+The old rendering measured 53.333 × 22.667. Independent-axis correction and a
+calibration-only raster adjustment produce 55.333 × 24.000; median absolute
+width/height errors are .410/.192 pixels. Retain the pinned banner stencil,
+opaque interior and existing one-pixel white rim. Rim dimensions remain
+uncertain and are not established by the black-ink measurements.
+
+Weatherlight's fine linework needs a contrast envelope: a dark-ink detector
+finds only the lower spine. Nine of 20 calibration references give stable
+contrast bounds, with the operator's known one-pixel support removed. Their
+median envelope is 36.615 × 24.519. High-quality downsampling on the temporary
+symbol mask changes the measured rendering from 36.667 × 23.333 to
+36.667 × 24.000, removing broken fine lines without changing nominal geometry.
+The main canvas already used high-quality sampling; the intermediate mask did
+not. Sampling changes apply only to these two measured symbols.
+
+Both frozen candidates were audited across every ordinary printing, with eight
+byte-identical controls each and no rendering/reference failures:
+
+| Set / cohort / tier      | Cards | Median edge F1 before → after | Regressions > .02 |
+| ------------------------ | ----: | ----------------------------: | ----------------: |
+| ALL / all / inspect      |   199 |                   .431 → .494 |                 9 |
+| ALL / reserved / inspect |   177 |                   .433 → .515 |                 9 |
+| ALL / all / table        |   199 |                   .454 → .491 |                21 |
+| ALL / reserved / table   |   177 |                   .454 → .495 |                19 |
+| WTH / all / inspect      |   167 |                   .811 → .814 |                 0 |
+| WTH / reserved / inspect |   147 |                   .803 → .814 |                 0 |
+| WTH / all / table        |   167 |                   .731 → .735 |                 2 |
+| WTH / reserved / table   |   147 |                   .730 → .732 |                 1 |
+
+Alliances' tenth-percentile inspect/table scores improve .349/.329 to .422/.402.
+Weatherlight's inspect tenth percentile improves .549 to .563, but its table
+tenth percentile falls .559 to .553. All 21 distinct Alliances regressions and
+both Weatherlight regressions were visually inspected. Alliances' black/gold
+cohorts repeatedly place the scan banner farther left than the new raw render;
+shared placement remains provisional pending independent frame normalization.
+Weatherlight's Odylic Wraith and Lotus Vale regress at table size while improving
+at inspect size. Record these tradeoffs without fitting individual offsets or
+refitting to reserved cards. Retained-stencil folds/spine details and light-fill
+shading remain asset/color work.
+
+The final Alliances score window starts at x=369, beyond the largest rendered
+Oracle type advance plus two pixels for overhang/shadow. The earlier x=363
+window contained type-line pixels. Both baseline and final scores were recomputed
+with the corrected window; geometry was already frozen and was not refit.
+Earlier reports and adoption plans remain as explicitly named unmasked history.
+The audit now asserts that type ink stays outside this symbol-only score region.
+Moving the banner's left boundary increases available type width by 2.5 pixels:
+11 printings have deterministic type-region changes, including Kaysa becoming
+uncompressed. Every other changed pixel remains inside the symbol envelope.
+Weatherlight has no type changes. The exact affected printings and review notes
+are in [all-symbol-review.json](fixtures/accuracy/all-symbol-review.json) and
+[wth-symbol-review.json](fixtures/accuracy/wth-symbol-review.json).
+
+Full-set native reference segmentation is stable for 76/199 Alliances and
+67/167 Weatherlight printings. Uncertain cases remain in structural score
+coverage; matched render/reference bounds remain calibration-only. Reproduce
+with `symbol-study`, `symbol-study-bounds` and `symbol-study-audit` at the
+recorded revision. Required checks, build, package, browser, showcase and Magic
+accuracy suites pass. Alpha/Revised frame-profile source guards were refreshed:
+rendered frame hashes, targets, transforms and reference measurements are
+unchanged. This does not change the frozen deployed Alpha typography trial.
+
+References and art are cached for the next six studies: Arabian Nights (92),
+Legends (310), Mirage (351), Tempest (350), Stronghold (143) and Portal (228).
+These 1,474 inputs are cache preparation, not completed calibration or coverage
+certification. Freeze their capture baselines before the next renderer change.
+
 ### Pass 2: frame geometry
 
 With symbol styling fixed, measure the outer silhouette, frame rails, art

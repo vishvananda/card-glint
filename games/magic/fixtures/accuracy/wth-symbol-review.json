@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "scope": "Improve temporary symbol-mask downsampling while retaining the measured geometry and pinned source asset. Inspect all regressions at either tier; do not refit to reserved cards.",
+  "decision": "sampling-fix-retained; spine-contour-tone-and-frame-review-open",
+  "referenceSegmentation": "67/167 stable native contrast envelopes; all 167 remain in structural score coverage. The nine stable matched render/reference pairs are calibration-only.",
+  "visualFindings": [
+    "Both regression printings, Odylic Wraith and Lotus Vale, were inspected as scan/before/after crops. High-quality mask downsampling removes visibly broken fine book lines without changing the nominal symbol geometry.",
+    "The left spine hatching/contour and page shading still differ from the print. The flat white page fill cannot reproduce the scanned gray paper using a sampling change alone.",
+    "Both regressions occur at table size; inspect-size scores improve for these two cards. Keep the measured native envelope and record the small-size tradeoff rather than changing geometry to fit two references.",
+    "Raw frame boundaries and scan placement still differ. This is not frame-normalized symbol certification."
+  ],
+  "measurementHash": "8abb3be0c0751453d23ec4d805dbe924d1b2fb0e2f839685dad70631a76bde22",
+  "coverage": {
+    "ordinary": 167,
+    "unavailable": 0,
+    "controls": 8,
+    "regressions": 2
+  },
+  "lowerTailEdgeF1P10": {
+    "inspect": {
+      "before": 0.5488937744650808,
+      "after": 0.5627358551768423
+    },
+    "table": {
+      "before": 0.5591431745182749,
+      "after": 0.5532245303428541
+    }
+  },
+  "derivedTypeChanges": [],
+  "rows": [
+    {
+      "id": "3a3b7cd1-051c-43a8-b5f0-72a9d704efbc",
+      "name": "Odylic Wraith",
+      "number": "77",
+      "cohort": "validation",
+      "referenceHash": "947f7ce588adbcaf5c58fb04d3e66ffa9c26635cbfb415cb54d0492d138286fc",
+      "scores": {
+        "inspect": {
+          "before": 0.8806169979013196,
+          "after": 0.9191096363013544
+        },
+        "table": {
+          "before": 0.8076834507753194,
+          "after": 0.785367395411757
+        }
+      },
+      "status": "small-size-and-stencil-review"
+    },
+    {
+      "id": "2e5cd12a-2a07-44a8-8eac-de00d26fe9e3",
+      "name": "Lotus Vale",
+      "number": "165",
+      "cohort": "calibration",
+      "referenceHash": "227644cc41cdb6cc11143d1d9392552921d84d4cbbd374a237a1870e0960bd7f",
+      "scores": {
+        "inspect": {
+          "before": 0.7412242053993867,
+          "after": 0.7621908132965114
+        },
+        "table": {
+          "before": 0.6708950372682846,
+          "after": 0.6401771150413667
+        }
+      },
+      "status": "small-size-and-stencil-review"
+    }
+  ]
+}
