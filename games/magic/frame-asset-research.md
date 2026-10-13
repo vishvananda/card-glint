@@ -250,3 +250,55 @@ when selecting assets, especially fonts. No external binaries were added here.
 
 These sources supply assets and design references. They do not replace scan
 normalization, original-printing text, or our accuracy measurements.
+
+### First asset import and font comparison (2026-10-13)
+
+The Magic pack now has an explicit `frameAssetFamily` option for the updated
+Eighth Edition and M15 Accurate base plates. Geometry, art windows, border
+masks and P/T badges switch together. Existing component frames remain the
+default; the calibrated retro families and their HSB policies are unchanged.
+The new source uses commit-pinned GitHub raw URLs: jsDelivr returned HTTP 403
+with its 50 MB package-size restriction for uncached files from this repository.
+
+A generated inventory covers **1,880 styled rarity vectors in 383 sets**.
+Complete vectors bypass Keyrune cropping, recoloring and added outlines.
+Reviewed historical/M15/M19/M20/M21/WAR profiles remain on their existing source
+unless explicitly selected for comparison. Missing exact rarity files fall
+back to Keyrune; custom URLs retain their own colors. Original showcase assets
+and the game-neutral renderer are unaffected.
+
+The local review contains 15 scan/current/styled-symbol/replacement-frame
+examples, including Eighth/Ninth/Tenth, M15, M19, M21, WAR, WOE and TDM, plus
+dual lands. This is asset acceptance work, not a new set-alignment calibration.
+Review candidates still include core-set rarity treatment (particularly
+Eighth/Ninth), frame borders, P/T and footer sizing, modern legendary crowns,
+and colored spell pinlines. The new base plates do not yet supply those crowns
+or spell pinlines. Revised dual-land paper remains unresolved.
+
+Twenty font files from the current pack, Card Conjurer and Full Magic Pack were
+loaded and inspected. The [font study](fixtures/assets/font-import-study.json)
+compares 19 body-text examples and 15 title examples across 23 cards. Within a
+comparison, the text, layout settings, frame and scan transform remain fixed.
+A separate diagnostic permits a small translation only. Header fonts are
+registered across the requested weights to avoid synthetic bold.
+
+| Candidate                 | Result in this exploratory sample                                                                                                    | Decision                                   |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| Card Conjurer Matrix Bold | All four 2003-frame titles improve; the two passing frame normalization improve by an average **6.41 percentage points** of edge F1. | Use in the optional Eighth Edition family. |
+| Card Conjurer MPlantin    | Mean body delta +0.076 points across 19 samples; only +0.010 points on the three normalized samples.                                 | Keep current body default.                 |
+| MSE MPlantin              | Mixed wrapping/shape changes; mean body delta −0.167 points.                                                                         | Retain as a candidate, no global switch.   |
+| Plantin Semibold          | Four gains and eight regressions larger than half a point; mean −5.19 points.                                                        | Do not promote globally.                   |
+| Card Conjurer Beleren2016 | No material win on the 11 modern titles; mean −0.109 points. None pass the frame-normalization gate.                                 | Keep existing Beleren.                     |
+
+Only five of the 34 region comparisons pass the strict frame-only normalization
+gate. Other scores are clearly labeled diagnostic; some card text also differs
+from the printing. These results do not establish per-set defaults. The useful
+font finding is Matrix for the 2003-era title/type style; further body-font
+selection should follow the larger original-wording and aligned-scan study.
+
+The existing Beleren and MSE Beleren have identical tested outlines and advances.
+Card Conjurer/MSE medieval outlines also match; the Card Conjurer italic and
+medieval files have not changed from our existing pinned source. Merely swapping
+those files cannot solve the early-set weight or spacing issues. Small-caps
+fonts and treatment-specific families are inventoried for later P/T and special
+layout comparisons.

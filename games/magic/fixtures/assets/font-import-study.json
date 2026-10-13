@@ -1,0 +1,1739 @@
+{
+  "schemaVersion": 1,
+  "rendererRevision": "c5d1bf0",
+  "scope": "Exploratory fonts only. Same text, geometry, size policy and cached art within each card. Frame-only transform held fixed across candidates; rejected fits use identity and remain diagnostic. No shared calibration changed. Diagnostic F1 permits local translation only, never size/skew.",
+  "selection": "15 frame/symbol review cards plus Air Elemental, Animate Wall, Ankh of Mishra and Armageddon in LEA and 3ED. Exploratory, not a corpus acceptance study; several scans have wording differences.",
+  "fontMatching": "Same font size policy, margins, leading, frame, art, text and scan transform within each comparison. Header faces cover weights 400–700 to avoid synthetic bold. No candidate-specific scale or skew. Body trial replaces upright rules only; existing italics remain fixed.",
+  "decision": {
+    "adopt": "Matrix Bold for the optional Eighth Edition base plate.",
+    "retain": "Current MPlantin and Beleren defaults. Do not globally promote Plantin Semibold or MSE MPlantin on these mixed results.",
+    "review": "Two 2003-frame titles pass frame-only registration. Other header/body values with rejected normalization are diagnostics, not calibrated acceptance scores. Early core-set symbol rarity treatments, plate geometry, footer/artist sizing and modern crowns/pinlines still require review."
+  },
+  "aggregate": {
+    "body": [
+      {
+        "font": "current-mplantin.woff",
+        "count": 19,
+        "meanDelta": 0,
+        "medianDelta": 0,
+        "improvedOverHalfPoint": 0,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 3,
+        "acceptedFrameMeanDelta": 0
+      },
+      {
+        "font": "conjurer-mplantin.ttf",
+        "count": 19,
+        "meanDelta": 0.0007595426580864863,
+        "medianDelta": 0.00010131407336944065,
+        "improvedOverHalfPoint": 1,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 3,
+        "acceptedFrameMeanDelta": 0.0000959893496750482
+      },
+      {
+        "font": "mse-mplantin.ttf",
+        "count": 19,
+        "meanDelta": -0.0016715009899417029,
+        "medianDelta": 0,
+        "improvedOverHalfPoint": 5,
+        "regressedOverHalfPoint": 2,
+        "acceptedFrameCount": 3,
+        "acceptedFrameMeanDelta": 0.00019705890826512049
+      },
+      {
+        "font": "conjurer-plantin-semibold.otf",
+        "count": 19,
+        "meanDelta": -0.05194668244812802,
+        "medianDelta": -0.0026343111498003946,
+        "improvedOverHalfPoint": 4,
+        "regressedOverHalfPoint": 8,
+        "acceptedFrameCount": 3,
+        "acceptedFrameMeanDelta": 0.0019134265767617638
+      }
+    ],
+    "modern-title": [
+      {
+        "font": "current-beleren-bold_P1.01.ttf",
+        "count": 11,
+        "meanDelta": 0,
+        "medianDelta": 0,
+        "improvedOverHalfPoint": 0,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 0,
+        "acceptedFrameMeanDelta": null
+      },
+      {
+        "font": "conjurer-beleren-b.ttf",
+        "count": 11,
+        "meanDelta": -0.0010921103995809236,
+        "medianDelta": -0.0012354105010174976,
+        "improvedOverHalfPoint": 0,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 0,
+        "acceptedFrameMeanDelta": null
+      }
+    ],
+    "2003-title": [
+      {
+        "font": "current-beleren-bold_P1.01.ttf",
+        "count": 4,
+        "meanDelta": 0,
+        "medianDelta": 0,
+        "improvedOverHalfPoint": 0,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 2,
+        "acceptedFrameMeanDelta": 0
+      },
+      {
+        "font": "conjurer-matrix-b.ttf",
+        "count": 4,
+        "meanDelta": 0.14159916677035658,
+        "medianDelta": 0.14345492928569228,
+        "improvedOverHalfPoint": 4,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 2,
+        "acceptedFrameMeanDelta": 0.06414642248096214
+      },
+      {
+        "font": "conjurer-matrix.ttf",
+        "count": 4,
+        "meanDelta": 0.14159916677035658,
+        "medianDelta": 0.14345492928569228,
+        "improvedOverHalfPoint": 4,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 2,
+        "acceptedFrameMeanDelta": 0.06414642248096214
+      },
+      {
+        "font": "mse-MATRIX.TTF",
+        "count": 4,
+        "meanDelta": 0.03761507779480963,
+        "medianDelta": 0.03568578274953771,
+        "improvedOverHalfPoint": 4,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 2,
+        "acceptedFrameMeanDelta": 0.04062262084467427
+      },
+      {
+        "font": "mse-ModMatrix.ttf",
+        "count": 4,
+        "meanDelta": 0.14159916677035658,
+        "medianDelta": 0.14345492928569228,
+        "improvedOverHalfPoint": 4,
+        "regressedOverHalfPoint": 0,
+        "acceptedFrameCount": 2,
+        "acceptedFrameMeanDelta": 0.06414642248096214
+      }
+    ]
+  },
+  "fonts": [
+    {
+      "group": "conjurer",
+      "path": "fonts/beleren-b.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/beleren-b.ttf",
+      "bytes": 137124,
+      "sha256": "255129bc1f17d116027189dfccb892f9fc7a0e8f594ae8e707c4e8d9147e8f14",
+      "family": "Beleren2016",
+      "style": "Regular",
+      "outlineHash": "1b020ab571de80004afb961ebfdb630929d5ee0ea33da0b4dac37358275381db",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/beleren-bsc.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/beleren-bsc.ttf",
+      "bytes": 95632,
+      "sha256": "407e4d49ed433fd4035852ab9bf3f74ede9d1008b25c5fc2b2e9095e07f85aa7",
+      "family": "Beleren Small Caps",
+      "style": "Bold",
+      "outlineHash": "6ec2e11fff312da6518e384102ebad5948b8876511f2668c64879847e136f271",
+      "unitsPerEm": 2048
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/mplantin.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/mplantin.ttf",
+      "bytes": 70564,
+      "sha256": "c1e35883c756a46dd772e5a9c659c41ed03c81c744ec90b7f6d5a6e9b3e8a5ca",
+      "family": "MPlantin",
+      "style": "Regular",
+      "outlineHash": "79b92c55811123bf650bbcbaf70d26150c6c5f21c0d1fe03a6b53d1c815aa77f",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/mplantin-i.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/mplantin-i.ttf",
+      "bytes": 79392,
+      "sha256": "392866adcae151ad4f88b11171a50daf30fafdbe8aaf4496b80edb16b70ae24e",
+      "family": "MPlantin-Italic",
+      "style": "Regular",
+      "outlineHash": "64bcb7014f9c1f5dd9464393d4dc8938d96bbee0fc7103b240001c96db90b487",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/plantin-semibold.otf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/plantin-semibold.otf",
+      "bytes": 31460,
+      "sha256": "828ebc3080627f06ac3dbb0dca318f609dcb7b3e8590cb30c27e8058f5651e28",
+      "family": "Plantin",
+      "style": "Semibold",
+      "outlineHash": "08ded5f21b7c0eea4c9424b48cfd63d20e328e30372b87c7bdbd9000b62aa761",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/Plantin-SemiboldItalic.otf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/Plantin-SemiboldItalic.otf",
+      "bytes": 34216,
+      "sha256": "6ffc8713d52e92e4569559d588336c6c00cf174ea224808bd698f35176f7a722",
+      "family": "Plantin",
+      "style": "Semibold Italic",
+      "outlineHash": "3e6796dba59a600ee5927756e50324ec233215b929f49fd6f496b7a6df45c0b1",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/goudy-medieval.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/goudy-medieval.ttf",
+      "bytes": 29252,
+      "sha256": "f1f02810d4843bb692bdffbd5d7a39803704a4787ccf0f69cec25f9fbc2a430b",
+      "family": "MagicMedieval",
+      "style": "Regular",
+      "outlineHash": "40e0aee7d9224f49e63a98d2951fa914da80c60738cef18914d96b6649dd0e27",
+      "unitsPerEm": 3040
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/matrix-b.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/matrix-b.ttf",
+      "bytes": 33872,
+      "sha256": "22dd30ba87941d9e785fc17510e1b14fb3ffce38f5d525af2632f66330cf82ce",
+      "family": "Matrix",
+      "style": "Bold",
+      "outlineHash": "43741e14c4d7e446bc32b252937c7f8e7b0340e61b5f86a478b0996f2d9ccd45",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "conjurer",
+      "path": "fonts/matrix.ttf",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/matrix.ttf",
+      "bytes": 33392,
+      "sha256": "fa2f0879677295f546e8ebc78b8ef1a488579b195398643da06c8d29f9c2b543",
+      "family": "Matrix Revised",
+      "style": "Bold",
+      "outlineHash": "586a9ff3b8f883400703670055af940a2d2c47a01db187db5021942f7d6e04cc",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/beleren-bold_P1.01.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/beleren-bold_P1.01.ttf",
+      "bytes": 274760,
+      "sha256": "00d9238fe4816e91bb472a8f13e5d91150a473ae565068a968ad72482f17910d",
+      "family": "Beleren",
+      "style": "Bold",
+      "outlineHash": "02980426c162229158cd70be4f3dc291be0e9dfafe4433bbd614e872da577bd5",
+      "unitsPerEm": 2048
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/belerensmallcaps-bold.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/belerensmallcaps-bold.ttf",
+      "bytes": 277544,
+      "sha256": "a6d9b84692439dadf5d29691af35afd2c346e99da491fb3f6728d70abdcb765c",
+      "family": "Beleren Small Caps",
+      "style": "Bold",
+      "outlineHash": "6ec2e11fff312da6518e384102ebad5948b8876511f2668c64879847e136f271",
+      "unitsPerEm": 2048
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/mplantin.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/mplantin.ttf",
+      "bytes": 287560,
+      "sha256": "177b709b467bef6e6ee6d409c39a7304b5e820cd4d3d7371cd1a4c2d8064f02b",
+      "family": "MPlantin",
+      "style": "Regular",
+      "outlineHash": "3a8a4769cc2592d970c7aafa66585937227a28da75492ce1742ed1b6cc06cf2f",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/mplanti1.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/mplanti1.ttf",
+      "bytes": 278416,
+      "sha256": "bc5eae070d7947a938004f751b0abb28a77106fbca325f3b92254a7dd9dd4cf6",
+      "family": "MPlantin-Bold",
+      "style": "Regular",
+      "outlineHash": "f3428b295bdfb6de99c96d216b654834438e3e4a0fd8f9cee925e484aa3878ea",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/mplantinit.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/mplantinit.ttf",
+      "bytes": 343860,
+      "sha256": "e81d83608cfa12d57f7d9ffa8b4a441de67aef1a776e7f4a471d9889fb513290",
+      "family": "MPlantin-Italic",
+      "style": "Regular",
+      "outlineHash": "64bcb7014f9c1f5dd9464393d4dc8938d96bbee0fc7103b240001c96db90b487",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/MagicMedieval.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/MagicMedieval.ttf",
+      "bytes": 27888,
+      "sha256": "1037f1e470e7bf6df267e7cc8be644004a84b9d9e1466b759eda013b70f64b9f",
+      "family": "MagicMedieval",
+      "style": "Regular",
+      "outlineHash": "40e0aee7d9224f49e63a98d2951fa914da80c60738cef18914d96b6649dd0e27",
+      "unitsPerEm": 3040
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/MATRIX.TTF",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/MATRIX.TTF",
+      "bytes": 30944,
+      "sha256": "58eeef0e53fc3bb052fe1d45e689368c1bd8fb2a471cb28c7a98df25b7bc3b93",
+      "family": "Matrix",
+      "style": "Medium",
+      "outlineHash": "262159e01e7417e1d3b426da6c3b241ead84bc1d49211c191598db1894df2232",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/ModMatrix.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/ModMatrix.ttf",
+      "bytes": 33148,
+      "sha256": "4daafa93630a055f6984a7b51a18c5f61f9b38a30face132058d19d43ee57a88",
+      "family": "ModMatrix",
+      "style": "Bold",
+      "outlineHash": "fb3586c9c347ab8879a9f154f0e3744ae4ea01472f93f5e8095c9a8e6a845cf1",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "mse",
+      "path": "Magic - Fonts/matrixbsc.ttf",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/matrixbsc.ttf",
+      "bytes": 39524,
+      "sha256": "49cbde38d79e40d0355284726b2cbcd3b62145deee25d289546553b4ad4a41af",
+      "family": "MatrixBoldSmallCaps",
+      "style": "Regular",
+      "outlineHash": "514474ed5ca1faa335748866131c10877d9cc31c3f4a84fb00c47712654efb25",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "current",
+      "path": "app/src/main/resources/static/card-rendering/assets/fonts/mplantin.woff",
+      "revision": "b52888cda57a99b5b7dd47bc4fdfae47383a93f9",
+      "url": "https://raw.githubusercontent.com/wingedsheep/mtg-card-renderer/b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/mplantin.woff",
+      "bytes": 49720,
+      "sha256": "9d48af2762d8434fb7cce48492391eeb2a21c81994d28ab47f950b62c06b2b35",
+      "family": "MPlantin",
+      "style": "Regular",
+      "outlineHash": "4f88815ef16fbd0ae0e6b19441920d81702f0d10442dad114c301b83d0ff4d09",
+      "unitsPerEm": 1000
+    },
+    {
+      "group": "current",
+      "path": "app/src/main/resources/static/card-rendering/assets/fonts/beleren-bold_P1.01.ttf",
+      "revision": "b52888cda57a99b5b7dd47bc4fdfae47383a93f9",
+      "url": "https://raw.githubusercontent.com/wingedsheep/mtg-card-renderer/b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/beleren-bold_P1.01.ttf",
+      "bytes": 92224,
+      "sha256": "281de1b0a3c32719eccb37230e2049999e0d31c6ff25e5fd41527a6ba49f8004",
+      "family": "Beleren",
+      "style": "Bold",
+      "outlineHash": "02980426c162229158cd70be4f3dc291be0e9dfafe4433bbd614e872da577bd5",
+      "unitsPerEm": 2048
+    }
+  ],
+  "cards": [
+    {
+      "slug": "m15-4",
+      "name": "Battle Mastery",
+      "set": "m15",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.46908665448755354,
+          "census": 0.5246715224888298,
+          "diagnosticF1": 0.5741387455571284,
+          "offset": [4, -6]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.46908665448755354,
+          "census": 0.5246715224888298,
+          "diagnosticF1": 0.5741387455571284,
+          "offset": [4, -6]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.46540280797342276,
+          "census": 0.5212453111317327,
+          "diagnosticF1": 0.5716669401579124,
+          "offset": [4, -6]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.4809208818119572,
+          "census": 0.5440935663779438,
+          "diagnosticF1": 0.5549363080747645,
+          "offset": [4, -6]
+        }
+      ]
+    },
+    {
+      "slug": "m15-10",
+      "name": "Divine Favor",
+      "set": "m15",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.37123357143938074,
+          "census": 0.48691666864555516,
+          "diagnosticF1": 0.53970898464864,
+          "offset": [3, 4]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.3741637625925015,
+          "census": 0.48927190575597496,
+          "diagnosticF1": 0.534354347009853,
+          "offset": [3, 4]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.36800610002896106,
+          "census": 0.5022634886436986,
+          "diagnosticF1": 0.47665855986859795,
+          "offset": [3, 4]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.37034595260654657,
+          "census": 0.5136014403429882,
+          "diagnosticF1": 0.3813348274060774,
+          "offset": [-3, 4]
+        }
+      ]
+    },
+    {
+      "slug": "m15-71",
+      "name": "Negate",
+      "set": "m15",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.3980739083872808,
+          "census": 0.47587600544160186,
+          "diagnosticF1": 0.6485242290119099,
+          "offset": [3, -5]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.3980739083872808,
+          "census": 0.47587160285111757,
+          "diagnosticF1": 0.6485242290119099,
+          "offset": [3, -5]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.40526256008566,
+          "census": 0.483554123246118,
+          "diagnosticF1": 0.6444115252642771,
+          "offset": [3, -5]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.3987382020966406,
+          "census": 0.4820902619101079,
+          "diagnosticF1": 0.6382303804978584,
+          "offset": [3, -5]
+        }
+      ]
+    },
+    {
+      "slug": "m15-155",
+      "name": "Lightning Strike",
+      "set": "m15",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.4060143026088556,
+          "census": 0.47529264925584824,
+          "diagnosticF1": 0.6099867862042703,
+          "offset": [3, 3]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.4060143026088556,
+          "census": 0.47524726261843075,
+          "diagnosticF1": 0.6098629916861473,
+          "offset": [3, 3]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.40559810569409577,
+          "census": 0.46907089770986593,
+          "diagnosticF1": 0.5459670683902171,
+          "offset": [3, 3]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.4050259283671822,
+          "census": 0.49000926643847276,
+          "diagnosticF1": 0.4840887220708838,
+          "offset": [-2, 3]
+        }
+      ]
+    },
+    {
+      "slug": "m15-173",
+      "name": "Elvish Mystic",
+      "set": "m15",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.36370609618080274,
+          "census": 0.5204205544751029,
+          "diagnosticF1": 0.4977803851339186,
+          "offset": [6, -6]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.36370609618080274,
+          "census": 0.5204049460103203,
+          "diagnosticF1": 0.4977803851339186,
+          "offset": [6, -6]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.3895996331006339,
+          "census": 0.5444357383896434,
+          "diagnosticF1": 0.5032753443491631,
+          "offset": [6, -6]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.36025291728782194,
+          "census": 0.5271040990950212,
+          "diagnosticF1": 0.500444567086834,
+          "offset": [6, -6]
+        }
+      ]
+    },
+    {
+      "slug": "m15-241",
+      "name": "Caves of Koilos",
+      "set": "m15",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.1912942792598904,
+          "census": 0.5012720144530338,
+          "diagnosticF1": 0.3938143567008003,
+          "offset": [-4, 6]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.19154005603832727,
+          "census": 0.5010344078885379,
+          "diagnosticF1": 0.39337295005081435,
+          "offset": [-4, 6]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.1902015083883578,
+          "census": 0.49745801942638496,
+          "diagnosticF1": 0.41768415416023214,
+          "offset": [-4, 6]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.18197915406123796,
+          "census": 0.4982937390670255,
+          "diagnosticF1": 0.3786042901770536,
+          "offset": [-3, 6]
+        }
+      ]
+    },
+    {
+      "slug": "m19-248",
+      "name": "Cinder Barrens",
+      "set": "m19",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.44770652180996434,
+          "census": 0.5317261166111245,
+          "diagnosticF1": 0.5940357034362784,
+          "offset": [2, -4]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.4481375616977564,
+          "census": 0.5319151531043146,
+          "diagnosticF1": 0.5930313617838232,
+          "offset": [2, -4]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.4311750518524117,
+          "census": 0.5202863597974261,
+          "diagnosticF1": 0.5880917015933174,
+          "offset": [2, -4]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.3916101367727388,
+          "census": 0.5331408413343537,
+          "diagnosticF1": 0.5278143352620596,
+          "offset": [1, -4]
+        }
+      ]
+    },
+    {
+      "slug": "m21-6",
+      "name": "Baneslayer Angel",
+      "set": "m21",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.5767659260421283,
+          "census": 0.5293289726143138,
+          "diagnosticF1": 0.723578298618789,
+          "offset": [3, -2]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.5807628031375616,
+          "census": 0.5256990804415763,
+          "diagnosticF1": 0.7399428995252911,
+          "offset": [3, -1]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.5959208662851126,
+          "census": 0.5538312795316434,
+          "diagnosticF1": 0.7064013957200751,
+          "offset": [1, -2]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.17705360400552803,
+          "census": 0.4789682293527156,
+          "diagnosticF1": 0.34393335466914937,
+          "offset": [0, 6]
+        }
+      ]
+    },
+    {
+      "slug": "war-81",
+      "name": "Charity Extractor",
+      "set": "war",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.5305833091665187,
+          "census": 0.53415273337177,
+          "diagnosticF1": 0.6384510404123629,
+          "offset": [2, 2]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.5361844329411334,
+          "census": 0.5390324440484302,
+          "diagnosticF1": 0.6384950365984964,
+          "offset": [2, 2]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.5305833091665187,
+          "census": 0.5341370092772157,
+          "diagnosticF1": 0.6384510404123629,
+          "offset": [2, 2]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.5378464145554754,
+          "census": 0.5529063368101054,
+          "diagnosticF1": 0.633955829630118,
+          "offset": [-2, 2]
+        }
+      ]
+    },
+    {
+      "slug": "woe-16",
+      "name": "Glass Casket",
+      "set": "woe",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.5052162053841182,
+          "census": 0.5416951627511506,
+          "diagnosticF1": 0.5337269328356492,
+          "offset": [-3, -1]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.5068611761635682,
+          "census": 0.5411791525726574,
+          "diagnosticF1": 0.5343256727478574,
+          "offset": [4, -1]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.5030075354472505,
+          "census": 0.5416489528844198,
+          "diagnosticF1": 0.5448402016190771,
+          "offset": [-4, -1]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.5107589906398147,
+          "census": 0.5422204149029901,
+          "diagnosticF1": 0.5420872123607469,
+          "offset": [-6, -1]
+        }
+      ]
+    },
+    {
+      "slug": "tdm-123",
+      "name": "Stormscale Scion",
+      "set": "tdm",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [41.27344, 429.2856, 405.45312, 184.8728],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.4427304717857,
+          "census": 0.5070289589819731,
+          "diagnosticF1": 0.5155698307345115,
+          "offset": [6, -2]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.4427598958772025,
+          "census": 0.5070166202593599,
+          "diagnosticF1": 0.5156043182839541,
+          "offset": [6, -2]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.4444598838523846,
+          "census": 0.5081373875633902,
+          "diagnosticF1": 0.5139576925517695,
+          "offset": [4, -2]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.4400961606358996,
+          "census": 0.5087419849714359,
+          "diagnosticF1": 0.5121981793943035,
+          "offset": [5, -2]
+        }
+      ]
+    },
+    {
+      "slug": "lea-46",
+      "name": "Air Elemental",
+      "set": "lea",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": true,
+        "reason": null,
+        "transform": {
+          "matrix": [
+            0.9988567110377135, 0, 0, 0.9988567110377135, 0.5345972565574824, 1.478354851211532
+          ]
+        },
+        "model": "translation-scale",
+        "heldOutRms": 0.4073909770705162
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.6289430494668752,
+          "census": 0.606266927326008,
+          "diagnosticF1": 0.646926475413702,
+          "offset": [-2, 0]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.6289430494668752,
+          "census": 0.606264944623108,
+          "diagnosticF1": 0.646926475413702,
+          "offset": [-2, 0]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.6289430494668752,
+          "census": 0.606264944623108,
+          "diagnosticF1": 0.646926475413702,
+          "offset": [-2, 0]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.6311756904952189,
+          "census": 0.60943726926295,
+          "diagnosticF1": 0.6450269329405389,
+          "offset": [-2, 0]
+        }
+      ]
+    },
+    {
+      "slug": "lea-1",
+      "name": "Animate Wall",
+      "set": "lea",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": true,
+        "reason": null,
+        "transform": {
+          "matrix": [
+            0.9998727893328369, 0, 0, 0.9998727893328369, 0.48240077483858057, 1.9240525632193093
+          ]
+        },
+        "model": "translation-scale",
+        "heldOutRms": 0.3490822983151588
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.48108688028558094,
+          "census": 0.589079120935289,
+          "diagnosticF1": 0.48108688028558094,
+          "offset": [0, 0]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.48127353426123665,
+          "census": 0.5887213300385117,
+          "diagnosticF1": 0.48127353426123665,
+          "offset": [0, 0]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.4796290315138651,
+          "census": 0.5899873593655699,
+          "diagnosticF1": 0.4796290315138651,
+          "offset": [0, 0]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.47497070303488875,
+          "census": 0.5923365908032012,
+          "diagnosticF1": 0.47497070303488875,
+          "offset": [0, 0]
+        }
+      ]
+    },
+    {
+      "slug": "lea-230",
+      "name": "Ankh of Mishra",
+      "set": "lea",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.3547496738911871,
+          "census": 0.5157748917748918,
+          "diagnosticF1": 0.6467765678094819,
+          "offset": [6, -5]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.355027257357519,
+          "census": 0.5158518518518519,
+          "diagnosticF1": 0.6467295599587892,
+          "offset": [6, -5]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.36846237483251143,
+          "census": 0.5313631553631554,
+          "diagnosticF1": 0.6247705749126553,
+          "offset": [6, -5]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.3489517125456708,
+          "census": 0.49814333814333817,
+          "diagnosticF1": 0.5103062305813112,
+          "offset": [1, -4]
+        }
+      ]
+    },
+    {
+      "slug": "lea-2",
+      "name": "Armageddon",
+      "set": "lea",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": true,
+        "reason": null,
+        "transform": {
+          "matrix": [
+            0.9999031099898192, 0, 0, 0.9999031099898192, 0.046767255733015406, 1.5161378804565513
+          ]
+        },
+        "model": "translation-scale",
+        "heldOutRms": 0.19205875134475553
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.7939509017583605,
+          "census": 0.8088469148690807,
+          "diagnosticF1": 0.7939509017583605,
+          "offset": [0, 0]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.7940522158317299,
+          "census": 0.8088930431299239,
+          "diagnosticF1": 0.7940522158317299,
+          "offset": [0, 0]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.7959999272548717,
+          "census": 0.8093761759671761,
+          "diagnosticF1": 0.7959999272548717,
+          "offset": [0, 0]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.8035747177109942,
+          "census": 0.8077762536568786,
+          "diagnosticF1": 0.8035747177109942,
+          "offset": [0, 0]
+        }
+      ]
+    },
+    {
+      "slug": "3ed-47",
+      "name": "Air Elemental",
+      "set": "3ed",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "no-validated-model",
+        "transform": null,
+        "model": null,
+        "heldOutRms": null
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.652318945426568,
+          "census": 0.614518883873329,
+          "diagnosticF1": 0.7152908926449432,
+          "offset": [1, 1]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.652318945426568,
+          "census": 0.6145275981665127,
+          "diagnosticF1": 0.7152908926449432,
+          "offset": [1, 1]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.652318945426568,
+          "census": 0.6145275981665127,
+          "diagnosticF1": 0.7152908926449432,
+          "offset": [1, 1]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.6512769847261303,
+          "census": 0.6139677048294613,
+          "diagnosticF1": 0.7106673212140543,
+          "offset": [1, 1]
+        }
+      ]
+    },
+    {
+      "slug": "3ed-1",
+      "name": "Animate Wall",
+      "set": "3ed",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "no-validated-model",
+        "transform": null,
+        "model": null,
+        "heldOutRms": null
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.6048430939516583,
+          "census": 0.6108985527379512,
+          "diagnosticF1": 0.6914285524006634,
+          "offset": [-2, 0]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.6036124558010942,
+          "census": 0.6096193436480419,
+          "diagnosticF1": 0.6921141888755907,
+          "offset": [-2, 0]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.6209924566745645,
+          "census": 0.626804736353656,
+          "diagnosticF1": 0.6593607916245222,
+          "offset": [-1, 0]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.36259293253392105,
+          "census": 0.49138222111601826,
+          "diagnosticF1": 0.43007579146572333,
+          "offset": [1, 6]
+        }
+      ]
+    },
+    {
+      "slug": "3ed-233",
+      "name": "Ankh of Mishra",
+      "set": "3ed",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "no-validated-model",
+        "transform": null,
+        "model": null,
+        "heldOutRms": null
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.802580192040905,
+          "census": 0.8098009203582042,
+          "diagnosticF1": 0.804809657275467,
+          "offset": [0, -1]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.8028846986303741,
+          "census": 0.8097561945275461,
+          "diagnosticF1": 0.8046554916911104,
+          "offset": [0, -1]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.7143274632921144,
+          "census": 0.7138043791557751,
+          "diagnosticF1": 0.7143274632921144,
+          "offset": [0, 0]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.535125456983203,
+          "census": 0.5746672895152714,
+          "diagnosticF1": 0.5716726599077852,
+          "offset": [3, 0]
+        }
+      ]
+    },
+    {
+      "slug": "3ed-2",
+      "name": "Armageddon",
+      "set": "3ed",
+      "region": "body",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "no-validated-model",
+        "transform": null,
+        "model": null,
+        "heldOutRms": null
+      },
+      "rect": [66.464, 416.55600000000004, 355.072, 171.23199999999997],
+      "candidates": [
+        {
+          "font": "current-mplantin.woff",
+          "edgeF1": 0.398001380555883,
+          "census": 0.5423651902716877,
+          "diagnosticF1": 0.6741092494887098,
+          "offset": [0, 6]
+        },
+        {
+          "font": "conjurer-mplantin.ttf",
+          "edgeF1": 0.397913867544914,
+          "census": 0.5423752184257302,
+          "diagnosticF1": 0.6741511807995173,
+          "offset": [0, 6]
+        },
+        {
+          "font": "mse-mplantin.ttf",
+          "edgeF1": 0.39723623478413933,
+          "census": 0.5385394495044838,
+          "diagnosticF1": 0.6693441810726761,
+          "offset": [0, 6]
+        },
+        {
+          "font": "conjurer-plantin-semibold.otf",
+          "edgeF1": 0.36960185654390887,
+          "census": 0.5140832888333998,
+          "diagnosticF1": 0.6593933117883801,
+          "offset": [0, 6]
+        }
+      ]
+    },
+    {
+      "slug": "m15-4",
+      "name": "Battle Mastery",
+      "set": "m15",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 367.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.5690869865139427,
+          "census": 0.5802677420239761,
+          "diagnosticF1": 0.6448875454116865,
+          "offset": [-1, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.5661847539776845,
+          "census": 0.5778673908868954,
+          "diagnosticF1": 0.6398753560538637,
+          "offset": [-1, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m15-10",
+      "name": "Divine Favor",
+      "set": "m15",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 367.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.700124835301779,
+          "census": 0.6894047960256042,
+          "diagnosticF1": 0.7553273619907808,
+          "offset": [0, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.6987904089931287,
+          "census": 0.6876214133307856,
+          "diagnosticF1": 0.7549059798770357,
+          "offset": [0, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m15-71",
+      "name": "Negate",
+      "set": "m15",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 367.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.6706556749761874,
+          "census": 0.5984565269670536,
+          "diagnosticF1": 0.7383417652923193,
+          "offset": [0, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.6711127735861107,
+          "census": 0.5985439758641045,
+          "diagnosticF1": 0.7383417652923193,
+          "offset": [0, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m15-155",
+      "name": "Lightning Strike",
+      "set": "m15",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 367.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.6075528772692601,
+          "census": 0.5855387703762054,
+          "diagnosticF1": 0.697195287495069,
+          "offset": [-1, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.6105612310289766,
+          "census": 0.584585869109482,
+          "diagnosticF1": 0.6970112615462483,
+          "offset": [-1, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m15-173",
+      "name": "Elvish Mystic",
+      "set": "m15",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 392.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.5682779763672731,
+          "census": 0.5792877240435884,
+          "diagnosticF1": 0.6205887800921047,
+          "offset": [0, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.5675482813699255,
+          "census": 0.5760543456294983,
+          "diagnosticF1": 0.6176275679257788,
+          "offset": [0, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m15-241",
+      "name": "Caves of Koilos",
+      "set": "m15",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 428.67056, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.6754677191421242,
+          "census": 0.6189989917530571,
+          "diagnosticF1": 0.7418890346425308,
+          "offset": [-1, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.6742323086411067,
+          "census": 0.615082340167007,
+          "diagnosticF1": 0.7441604433657805,
+          "offset": [-1, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m19-248",
+      "name": "Cinder Barrens",
+      "set": "m19",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 428.67056, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.7379538400964764,
+          "census": 0.6938630110062893,
+          "diagnosticF1": 0.8009284165062076,
+          "offset": [-1, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.7375916948453908,
+          "census": 0.692671481918239,
+          "diagnosticF1": 0.8009108964566395,
+          "offset": [-1, 1]
+        }
+      ]
+    },
+    {
+      "slug": "m21-6",
+      "name": "Baneslayer Angel",
+      "set": "m21",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 342.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.8428815760382014,
+          "census": 0.782114741581317,
+          "diagnosticF1": 0.8951797894783851,
+          "offset": [-1, 0]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.8402271942996242,
+          "census": 0.7770332534688397,
+          "diagnosticF1": 0.8893870348961953,
+          "offset": [-1, 0]
+        }
+      ]
+    },
+    {
+      "slug": "war-81",
+      "name": "Charity Extractor",
+      "set": "war",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 367.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.514848696400944,
+          "census": 0.5907108534419722,
+          "diagnosticF1": 0.5870604955817834,
+          "offset": [0, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.5129367037566844,
+          "census": 0.5879165360910895,
+          "diagnosticF1": 0.5840556139418474,
+          "offset": [0, 1]
+        }
+      ]
+    },
+    {
+      "slug": "woe-16",
+      "name": "Glass Casket",
+      "set": "woe",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 367.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.53036515533675,
+          "census": 0.543431352475154,
+          "diagnosticF1": 0.606045336006042,
+          "offset": [0, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.5307847272609324,
+          "census": 0.5435101037942386,
+          "diagnosticF1": 0.606045336006042,
+          "offset": [0, 1]
+        }
+      ]
+    },
+    {
+      "slug": "tdm-123",
+      "name": "Stormscale Scion",
+      "set": "tdm",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [31.66472, 31.593200000000003, 342.17528000000004, 37.0116],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.5383300658826798,
+          "census": 0.561926817971283,
+          "diagnosticF1": 0.6254705897954759,
+          "offset": [-1, 1]
+        },
+        {
+          "font": "conjurer-beleren-b.ttf",
+          "edgeF1": 0.5335621111706633,
+          "census": 0.5563819228478794,
+          "diagnosticF1": 0.6222457812077709,
+          "offset": [-1, 1]
+        }
+      ]
+    },
+    {
+      "slug": "8ed-58",
+      "name": "Wrath of God",
+      "set": "8ed",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [47.92, 43.772, 325.92, 27.172],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.3842371075010041,
+          "census": 0.42823724007561437,
+          "diagnosticF1": 0.6285154745709249,
+          "offset": [-4, -2]
+        },
+        {
+          "font": "conjurer-matrix-b.ttf",
+          "edgeF1": 0.5843743383442725,
+          "census": 0.5678166351606805,
+          "diagnosticF1": 0.7512087928915704,
+          "offset": [1, -2]
+        },
+        {
+          "font": "conjurer-matrix.ttf",
+          "edgeF1": 0.5843743383442725,
+          "census": 0.5678166351606805,
+          "diagnosticF1": 0.7512087928915704,
+          "offset": [1, -2]
+        },
+        {
+          "font": "mse-MATRIX.TTF",
+          "edgeF1": 0.40490383533910695,
+          "census": 0.4748818525519849,
+          "diagnosticF1": 0.5719826643861161,
+          "offset": [5, -3]
+        },
+        {
+          "font": "mse-ModMatrix.ttf",
+          "edgeF1": 0.5843743383442725,
+          "census": 0.5678166351606805,
+          "diagnosticF1": 0.7512087928915704,
+          "offset": [1, -2]
+        }
+      ]
+    },
+    {
+      "slug": "9ed-161",
+      "name": "Sengir Vampire",
+      "set": "9ed",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": true,
+        "reason": null,
+        "transform": {
+          "matrix": [
+            0.9928655218898633, 0, 0, 0.9928655218898633, 0.08779021445956012, 0.048764529659651314
+          ]
+        },
+        "model": "translation-scale",
+        "heldOutRms": 0.27641887207236
+      },
+      "rect": [47.92, 43.772, 325.92, 27.172],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.5161163892162078,
+          "census": 0.5652270433905147,
+          "diagnosticF1": 0.5406746755805977,
+          "offset": [0, 2]
+        },
+        {
+          "font": "conjurer-matrix-b.ttf",
+          "edgeF1": 0.602889016944324,
+          "census": 0.6034712411705349,
+          "diagnosticF1": 0.796437232682217,
+          "offset": [1, 2]
+        },
+        {
+          "font": "conjurer-matrix.ttf",
+          "edgeF1": 0.602889016944324,
+          "census": 0.6034712411705349,
+          "diagnosticF1": 0.796437232682217,
+          "offset": [1, 2]
+        },
+        {
+          "font": "mse-MATRIX.TTF",
+          "edgeF1": 0.5745384070582681,
+          "census": 0.607547931382442,
+          "diagnosticF1": 0.6516300172496268,
+          "offset": [1, 1]
+        },
+        {
+          "font": "mse-ModMatrix.ttf",
+          "edgeF1": 0.602889016944324,
+          "census": 0.6034712411705349,
+          "diagnosticF1": 0.796437232682217,
+          "offset": [1, 2]
+        }
+      ]
+    },
+    {
+      "slug": "8ed-303",
+      "name": "Howling Mine",
+      "set": "8ed",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": false,
+        "reason": "frame-template-unvalidated",
+        "transform": null,
+        "heldOutRms": null
+      },
+      "rect": [47.92, 43.772, 375.92, 27.172],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.5687528330857835,
+          "census": 0.4304902759499488,
+          "diagnosticF1": 0.710776436016346,
+          "offset": [-4, 0]
+        },
+        {
+          "font": "conjurer-matrix-b.ttf",
+          "edgeF1": 0.8067194243620172,
+          "census": 0.7347036828142299,
+          "diagnosticF1": 0.8067194243620172,
+          "offset": [0, 0]
+        },
+        {
+          "font": "conjurer-matrix.ttf",
+          "edgeF1": 0.8067194243620172,
+          "census": 0.7347036828142299,
+          "diagnosticF1": 0.8067194243620172,
+          "offset": [0, 0]
+        },
+        {
+          "font": "mse-MATRIX.TTF",
+          "edgeF1": 0.6173011747375706,
+          "census": 0.5271667606692988,
+          "diagnosticF1": 0.6680904337580088,
+          "offset": [3, 0]
+        },
+        {
+          "font": "mse-ModMatrix.ttf",
+          "edgeF1": 0.8067194243620172,
+          "census": 0.7347036828142299,
+          "diagnosticF1": 0.8067194243620172,
+          "offset": [0, 0]
+        }
+      ]
+    },
+    {
+      "slug": "10e-64",
+      "name": "Air Elemental",
+      "set": "10e",
+      "region": "header",
+      "frameNormalization": {
+        "accepted": true,
+        "reason": null,
+        "transform": {
+          "matrix": [
+            0.9930800832511203, 0, 0, 0.9930800832511203, -0.0671260212455899, 0.033202516408518123
+          ]
+        },
+        "model": "translation-scale",
+        "heldOutRms": 0.3492731129154398
+      },
+      "rect": [47.92, 43.772, 325.92, 27.172],
+      "candidates": [
+        {
+          "font": "current-beleren-bold_P1.01.ttf",
+          "edgeF1": 0.5460774375739836,
+          "census": 0.5469753100623577,
+          "diagnosticF1": 0.6651936271659495,
+          "offset": [-2, 1]
+        },
+        {
+          "font": "conjurer-matrix-b.ttf",
+          "edgeF1": 0.5875976548077918,
+          "census": 0.49529441542603375,
+          "diagnosticF1": 0.8645993224782713,
+          "offset": [4, 1]
+        },
+        {
+          "font": "conjurer-matrix.ttf",
+          "edgeF1": 0.5875976548077918,
+          "census": 0.49529441542603375,
+          "diagnosticF1": 0.8645993224782713,
+          "offset": [4, 1]
+        },
+        {
+          "font": "mse-MATRIX.TTF",
+          "edgeF1": 0.5689006614212719,
+          "census": 0.5515773487655031,
+          "diagnosticF1": 0.6723192813693591,
+          "offset": [3, 0]
+        },
+        {
+          "font": "mse-ModMatrix.ttf",
+          "edgeF1": 0.5875976548077918,
+          "census": 0.49529441542603375,
+          "diagnosticF1": 0.8645993224782713,
+          "offset": [4, 1]
+        }
+      ]
+    }
+  ]
+}
