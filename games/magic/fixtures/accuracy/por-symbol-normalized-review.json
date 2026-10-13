@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "scope": "Portal translation/uniform-scale pilot under the new per-scan comparison policy. All native source assets retained. No card-specific renderer settings. Rotation/skew validation and remaining frame-template groups are pending; this is not complete all-set recalibration. Previously observed development references.",
+  "rendererHash": "2c25a676066a8b5731b0b0b3920c4ce74c988b201a6a4bf0728670c4e931b8ad",
+  "rawHash": "3cffc6d3e2fbe54ac71273b4e135f81cd1693c9682c3ad0aa966345712157c46",
+  "registeredHash": "5e00bec25e72429ed64469c1255d668fe29a17f8d920b1da31a7ccfd1a3feec2",
+  "scanRegistrationHash": "fa57644dc04dd8fdebefb7ec67b1018acee932c8311aced6cd90abe7c788bcea",
+  "adoptionHash": "1d6fe6bb402188e3c9c35d2e83df72bd7e819be3490aa4cce0d87bedf32cf71a",
+  "coverage": {
+    "ordinary": 228,
+    "rawCompared": 228,
+    "normalized": 152,
+    "normalization": {
+      "accepted": 152,
+      "unreliable-frame-anchors": 15,
+      "frame-template-unvalidated": 61
+    },
+    "referenceCrop": {
+      "covered": 106,
+      "near-edge": 0,
+      "clipped": 0,
+      "unknown": 46
+    },
+    "controls": 8,
+    "failures": 0
+  },
+  "results": {
+    "tiers": {
+      "inspect": {
+        "baseline": 0.5978392662047618,
+        "sharedPlacement": 0.6485388184764034,
+        "initialMaterialPlacement": 0.7005309142178722,
+        "normalizedMaterialPlacement": 0.7362553997950122,
+        "p10": 0.6002418092440684,
+        "census": 0.771328736837154
+      },
+      "table": {
+        "baseline": 0.5771113994085023,
+        "sharedPlacement": 0.6061324761807705,
+        "initialMaterialPlacement": 0.6675483220855438,
+        "normalizedMaterialPlacement": 0.6868122507293648,
+        "p10": 0.6109879763158799,
+        "census": 0.7822021607463556
+      }
+    },
+    "regressionsFromBaseline": [
+      {
+        "id": "cb3b9682-7f3a-4857-9ecf-01f3530659fc",
+        "name": "Thing from the Deep"
+      },
+      {
+        "id": "71cce019-162c-4969-89ac-1cf94148a032",
+        "name": "Devastation"
+      }
+    ],
+    "versusSharedPlacement": {
+      "improvedBothTiers": 146,
+      "regressions": [
+        {
+          "id": "4528edca-cc36-4f63-9615-24ca315d672c",
+          "name": "Giant Octopus",
+          "deltas": {
+            "inspect": -0.0415970373928265,
+            "table": -0.008713404141373893
+          }
+        },
+        {
+          "id": "71cce019-162c-4969-89ac-1cf94148a032",
+          "name": "Devastation",
+          "deltas": {
+            "inspect": -0.09587643982725702,
+            "table": -0.03705813943405367
+          }
+        },
+        {
+          "id": "49e47248-051c-4ee6-aad2-352ebd1f38ca",
+          "name": "Charging Rhino",
+          "deltas": {
+            "inspect": 0.017425384962105772,
+            "table": -0.027095762109826116
+          }
+        },
+        {
+          "id": "26caff65-3a96-46f2-8f0b-e5091b632a2e",
+          "name": "Elvish Ranger",
+          "deltas": {
+            "inspect": 0.006679234939230283,
+            "table": -0.0341853008108195
+          }
+        },
+        {
+          "id": "1fd2edb9-0b53-432e-bb3b-171d2a85439d",
+          "name": "Monstrous Growth",
+          "deltas": {
+            "inspect": 0.005801279322345976,
+            "table": -0.026384043544303015
+          }
+        }
+      ]
+    },
+    "versusInitialMaterialPlacement": {
+      "improvedBothTiers": 117,
+      "regressions": [
+        {
+          "id": "9d6a5c33-cf74-4cec-a4f4-1aac9e7b8f79",
+          "name": "Exhaustion",
+          "deltas": {
+            "inspect": -0.04431288655729704,
+            "table": -0.01666339904830938
+          }
+        },
+        {
+          "id": "269bb4fc-9d8f-42cc-8f71-6a658e41533c",
+          "name": "Prosperity",
+          "deltas": {
+            "inspect": -0.038458142876534374,
+            "table": -0.009731453009886537
+          }
+        },
+        {
+          "id": "a5bb2fa5-8f88-4d08-badb-3e52358d21d6",
+          "name": "Storm Crow",
+          "deltas": {
+            "inspect": -0.02461469586569276,
+            "table": -0.02219526705094732
+          }
+        },
+        {
+          "id": "cb3b9682-7f3a-4857-9ecf-01f3530659fc",
+          "name": "Thing from the Deep",
+          "deltas": {
+            "inspect": -0.025132462919858156,
+            "table": -0.015723042076717042
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "deltas": {
+            "inspect": -0.022638217647470205,
+            "table": -0.02669503048921118
+          }
+        },
+        {
+          "id": "86f2c423-1694-466e-9a7d-4ec99e53578d",
+          "name": "Last Chance",
+          "deltas": {
+            "inspect": -0.003364356057997231,
+            "table": -0.03139450450972481
+          }
+        },
+        {
+          "id": "89e825e4-98be-49f0-bc5e-c8988118dcef",
+          "name": "Lava Flow",
+          "deltas": {
+            "inspect": 0.0002063479028381332,
+            "table": -0.02289955415777123
+          }
+        },
+        {
+          "id": "9e4817bd-68e8-4a85-983a-ee6dda2bbf33",
+          "name": "Scorching Spear",
+          "deltas": {
+            "inspect": -0.0058918045047422485,
+            "table": -0.030435244983125997
+          }
+        },
+        {
+          "id": "70c5ac71-bf45-4b99-8184-36ce88dd728a",
+          "name": "Wall of Granite",
+          "deltas": {
+            "inspect": -0.03399476251130895,
+            "table": -0.031360217460124185
+          }
+        }
+      ]
+    }
+  },
+  "inspected": {
+    "calibration": "All 12 accepted calibration crops under individual frame transforms.",
+    "final": {
+      "sheets": [
+        "lowest six normalized inspect scores",
+        "six largest regressions against original baseline",
+        "six rejected frame fits, raw only",
+        "all five regressions against shared placement"
+      ],
+      "fullCard": ["Ancestral Memories: aligned scan and final rendering"],
+      "findings": [
+        "Placement substantially improved. Portal stencil still differs in radial joins and panel tone; retain existing asset and flag contour/tone separately.",
+        "Devastation and Thing from the Deep remain baseline regression flags. Five regressions against shared placement are preserved separately.",
+        "Full-card art, typography, stock and paper differences remain outside the symbol change. Weak-fit crops are displayed raw and are not admitted to normalized aggregates."
+      ]
+    }
+  },
+  "next": [
+    "Evaluate rotation and global skew on independent frame samples, with frozen accepted per-scan fits.",
+    "Extend frame templates to black/land and improve weak-edge extraction without silently inheriting a shared transform.",
+    "Recalibrate every old/new set-symbol placement using the versioned per-card normalization ledger.",
+    "Keep gray panel tone and radial/source-contour mismatches in the color/asset work."
+  ]
+}

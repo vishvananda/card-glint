@@ -12,20 +12,31 @@ import {
 } from './symbol-reference-cache.mjs';
 import { median, quantile } from './metrics.mjs';
 
-// Supplemental comparison only: one independently frozen frame transform for
-// every admitted material, never a transform estimated from symbol or text ink.
+// Supplemental comparison only: independently frozen frame transforms, never
+// transforms estimated from symbol or text ink. Historical shared fits remain
+// reproducible; current plans can require a reliable per-scan stock fit.
 // The raw structural audit remains mandatory and preserves complete coverage.
-const [set, stage = 'candidate'] = process.argv.slice(2);
+const [set, stage = 'candidate', registrationName = 'registration-plan', reportName = stage] =
+  process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
-assert.ok(stage === 'after' || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
+assert.match(registrationName, /^[a-z0-9-]+$/);
+assert.ok(/^(?:after|candidate)(?:-[a-z0-9]+)*$/.test(stage));
+assert.ok(/^(?:after|candidate)(?:-[a-z0-9]+)*$/.test(reportName));
 const base = `${outputRoot}/${set}-symbol`,
-  plan = await readJson(`${fixtureRoot}/${set}-symbol-registration-plan.json`),
+  plan = await readJson(`${fixtureRoot}/${set}-symbol-${registrationName}.json`),
   profile = await readJson(`${fixtureRoot}/old-frame-registration-${set}.json`),
   raw = await readJson(`${fixtureRoot}/${set}-symbol-${stage}-measurement.json`),
   bounds = await readJson(`${fixtureRoot}/${set}-symbol-bounds-${stage}.json`),
   before = await readJson(`${base}/before/capture.json`),
   after = await readJson(`${base}/${stage}/capture.json`),
   rows = [];
+let scans = null;
+if (plan.scanRegistration) {
+  assert.match(plan.scanRegistration.file, /^[a-z0-9-]+\.json$/);
+  scans = await readJson(`${fixtureRoot}/${plan.scanRegistration.file}`);
+  assert.equal(hash(JSON.stringify(scans)), plan.scanRegistration.hash);
+  assert.equal(scans.profileHash, plan.profileHash);
+}
 assert.equal(hash(JSON.stringify(profile)), plan.profileHash);
 assert.ok(profile.accepted && profile.set === set && profile.transform);
 assert.deepEqual(raw.rect, plan.scoreRegion);
@@ -80,6 +91,12 @@ try {
     assert.deepEqual(a.face, b.face);
     const partial = plan.partialReferenceRegions?.find((r) => r.id === a.id);
     if (partial) assert.equal(partial.referenceHash, a.referenceHash);
+    const scan = scans?.rows.find((r) => r.id === a.id);
+    if (scans) {
+      assert.ok(scan, 'Every scan must retain a fit or an explicit rejection');
+      assert.equal(scan.referenceHash, a.referenceHash);
+      if (scan.accepted) assert.ok(scan.transform);
+    }
     const row = {
       id: a.id,
       name: a.name,
@@ -93,14 +110,17 @@ try {
       scores: null,
       nativeBounds: null,
       referenceCoverage: null,
+      scanFailure: scan && !scan.accepted ? scan.reason : null,
+      transform: guard ? (scans ? scan.transform : profile.transform) : null,
     };
+    if (row.status === 'measured' && scans && !scan.accepted) row.status = 'scan-frame-unvalidated';
     if (row.status === 'measured') {
       const rect = plan.scoreRegion,
         reference = await cachedGrayRegion(
           objectFile({ sha256: a.referenceHash }),
           a.referenceHash,
           rect,
-          profile.transform,
+          row.transform,
         );
       row.scores = {};
       for (const tier of ['inspect', 'table']) {
@@ -122,10 +142,10 @@ try {
             plan.coverageProfile,
           )
         : measured?.reference;
-      row.referenceCoverage = symbolRegionCoverage(coverageBounds, rect, profile.transform);
+      row.referenceCoverage = symbolRegionCoverage(coverageBounds, rect, row.transform);
       if (measured?.reference?.stable && measured.before?.stable && measured.renders.after?.stable)
         row.nativeBounds = {
-          reference: fittedSymbolBounds(measured.reference.rect, profile.transform),
+          reference: fittedSymbolBounds(measured.reference.rect, row.transform),
           before: fittedSymbolBounds(measured.before.rect),
           after: fittedSymbolBounds(measured.renders.after.rect),
         };
@@ -207,7 +227,11 @@ const result = {
   ),
   referenceBoundsMethodHash: plan.coverageProfile ? REFERENCE_BOUNDS_METHOD_HASH : null,
   rendererHash: after.rendererHash,
-  transform: profile.transform,
+  captureStage: stage,
+  normalization: scans ? 'per-scan-stock' : 'shared-set-stock',
+  scanRegistrationHash: scans ? hash(JSON.stringify(scans)) : null,
+  transform: scans ? null : profile.transform,
+  sharedTransform: profile.transform,
   summary: {
     all: summarize(rows),
     calibration: summarize(rows.filter((r) => r.cohort === 'calibration')),
@@ -218,5 +242,5 @@ const result = {
   },
   rows,
 };
-await writeJson(`${fixtureRoot}/${set}-symbol-${stage}-registered.json`, result);
+await writeJson(`${fixtureRoot}/${set}-symbol-${reportName}-registered.json`, result);
 console.log(JSON.stringify(result.summary, null, 2));

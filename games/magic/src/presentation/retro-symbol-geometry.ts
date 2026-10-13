@@ -1,4 +1,5 @@
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
+import { resolveFrameColors } from './profile.js';
 
 interface RetroSymbolGeometry {
   right: number;
@@ -127,7 +128,21 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
   },
 };
 
+// Portal's repeated material placements survive independent stock registration
+// and same-scan symbol-to-stock distance checks. Reuse prepared profiles; black
+// and land assets retain the shared placement until their frame groups validate.
+const portalMaterials: Readonly<Partial<Record<string, RetroSymbolGeometry>>> = {
+  W: { ...profiles.por!, right: 436.75, centerY: 389.75 },
+  U: { ...profiles.por!, right: 436.5, centerY: 392.75 },
+  R: { ...profiles.por!, right: 433.75, centerY: 392 },
+  G: { ...profiles.por!, right: 434, centerY: 390.75 },
+};
+
 export function retroSymbolGeometry(face: RenderedCardInput): RetroSymbolGeometry | null {
   const code = face.setCode?.toLowerCase() ?? '';
-  return !face.setSymbol && Object.hasOwn(profiles, code) ? profiles[code]! : null;
+  if (face.setSymbol || !Object.hasOwn(profiles, code)) return null;
+  const colors = resolveFrameColors(face);
+  if (code === 'por' && colors.length === 1 && !/\b(?:Land|Artifact)\b/.test(face.typeLine ?? ''))
+    return portalMaterials[colors[0]!] ?? profiles[code]!;
+  return profiles[code]!;
 }

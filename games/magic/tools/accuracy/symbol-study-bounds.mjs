@@ -12,9 +12,11 @@ import {
 } from './common.mjs';
 import { measureSymbolBounds, measureRenderedSymbol } from './symbol-bounds.mjs';
 import { median } from './metrics.mjs';
-const [set, stage = 'before'] = process.argv.slice(2);
+const [set, stage = 'before', adoptionName = 'adoption-plan'] = process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
-assert.ok(['before', 'after'].includes(stage) || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
+assert.match(adoptionName, /^[a-z0-9-]+$/);
+const full = /^after(?:-[a-z0-9]+)*$/.test(stage);
+assert.ok(stage === 'before' || full || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
 const base = `${outputRoot}/${set}-symbol`,
   snapshot = await readJson(`${cacheRoot}/rollout/${set}-symbol.json`),
   baseline = await readJson(`${base}/before/capture.json`),
@@ -28,7 +30,7 @@ assert.equal(hash(JSON.stringify(snapshot)), plan.snapshotHash);
 for (const source of [baseline, templates, capture])
   assert.equal(source.planHash, hash(JSON.stringify(plan)));
 if (stage !== 'before') {
-  const adoption = await readJson(`${fixtureRoot}/${set}-symbol-adoption-plan.json`);
+  const adoption = await readJson(`${fixtureRoot}/${set}-symbol-${adoptionName}.json`);
   assert.equal(hash(JSON.stringify(configuration)), adoption.measurementProfileHash);
 }
 async function png(file, sha) {
@@ -39,7 +41,7 @@ async function png(file, sha) {
 const measured = async (file, sha) => measureSymbolBounds(await png(file, sha), profile);
 const renderedProfile = configuration.rendered;
 for (const e of snapshot.entries.filter((e) =>
-  stage === 'after' ? e.cohort !== 'control' : e.cohort === 'calibration',
+  full ? e.cohort !== 'control' : e.cohort === 'calibration',
 )) {
   const a = capture.rows.find((r) => r.id === e.id),
     b = baseline.rows.find((r) => r.id === e.id),

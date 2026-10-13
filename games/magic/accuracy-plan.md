@@ -26,7 +26,52 @@ evidence. Revised has a
 [validated shared stock profile](fixtures/accuracy/old-frame-registration-3ed.json)
 against actual rendered boundaries, with remaining source-aspect differences
 reported separately. Its held-out error improves 1.81 → 1.25 canonical pixels;
-no individual scan or text block receives a fitted transform.
+that historical study used one shared transform.
+
+Current comparison policy also normalizes each scan before symbol and other
+component measurements. Fit translation and uniform scale from independent
+frame anchors, freeze that fit, and reuse it for every renderer candidate.
+These are comparison transforms only, never per-card renderer settings. Reject
+weak or inconsistent fits explicitly; a shared set offset alone does not remove
+scan-to-scan variation. Preserve raw scores and historical shared-fit reports.
+Recalibrate all set-symbol placements under this policy, in old/new wave order.
+The [normalization rollout](fixtures/accuracy/symbol-normalization-rollout.json)
+retains every major-set frame group and marks previous placements provisional.
+Store per-card poses by scan checksum, frame-template hash, method and policy,
+including fit quality and rejection reasons. Evaluate rotation and global skew
+using disjoint frame-anchor samples before accepting the extra degrees of
+freedom. Translation/scale pilots alone do not finish this recalibration.
+
+### Per-scan symbol pilot
+
+Portal now stores frozen per-card frame fits and shares placement by frame color.
+On the same 152 accepted scans, inspection edge F1 rises from .649 with the
+previous shared placement to .736; table F1 rises from .606 to .687. All 228
+ordinary printings were captured. Fifteen frame fits fail and 61 printings lack
+an admitted frame template; these remain visible and excluded from normalized
+aggregates. Of 152 scored references, 106 have verified crop coverage and 46
+have uncertain segmentation. No known crop is clipped.
+
+The [review evidence](fixtures/accuracy/por-symbol-normalized-review.json) preserves
+both baseline comparisons: two cards regress against the original baseline,
+and five regress against the more recent shared placement. All eight controls
+and all type-line pixels remain unchanged. The final candidate and full-set
+capture match on their common cards. Lowest scores, regressions and weak-fit
+crops were visually reviewed. Existing radial contour and tone differences
+remain asset/color work. These are previously observed development references.
+
+Tempest also has stored translation/scale fits: 231 accepted, 20 weak and 99
+without validated frame templates. Its placement is not yet recalibrated under
+the new policy. Rotation/skew validation and the complete old/new rollout remain
+pending. The pilot does not mark either set complete.
+
+Reproduce the pilot with `symbol-material-diagnostic.mjs SET`, then
+`symbol-scan-registration.mjs SET`. Reuse captures with
+`symbol-study-registered.mjs por after scan-registration-plan after-scan` and
+`symbol-study-registered.mjs por after-normalized scan-registration-plan`.
+Reference checksums, frame-profile hashes, method hashes and rejected fits are
+stored with the measurements. Required check/build/package/browser/showcase
+checks and the Magic accuracy suite pass for this renderer revision.
 
 The [early HSB experiment](hsb-calibration.md) remains opt-in evidence; do not
 transfer its numbers onto a different source asset. See also the
@@ -79,10 +124,10 @@ multi-face gaps must be surfaced during inventory.
    metadata by checksum. Reuse existing immutable objects. Fetch original
    wording by exact printing identity for visual comparisons; typography is
    not part of these three passes and unreviewed wording cannot certify it.
-3. Establish independent frame registration before symbol measurements:
-   shared uniform scale per frame family, split by set only when transfer
-   fails, plus the bounded frame-only translation diagnostic. Use separate
-   calibration/validation cards. Freeze the target and transforms before
+3. Establish independent frame targets per family/material, splitting by set
+   when transfer fails. Normalize each scan with bounded frame-only translation
+   and uniform scale before symbol measurements. Use separate
+   calibration/validation cards for frame targets. Freeze targets and scan fits before
    comparing renderer candidates. A failed registration is a review item,
    never a license to fit on text, symbols or the box under evaluation.
 4. Maintain one row per set/frame group with eligible, reference-ready,
@@ -92,8 +137,9 @@ multi-face gaps must be surfaced during inventory.
 
 Existing evidence is a starting baseline, not automatic certification of every
 printing. Raw and normalized metrics must remain available. Where a common
-scale fails, retain the failure and diagnose anchor/asset/reference differences
-before attempting anisotropic correction. Do not optimize individual scans.
+scale fails, retain the failure and diagnose anchor/asset/reference differences.
+Do not estimate pose from the symbol, text, art or component being evaluated;
+do not add anisotropic or local warps to improve component overlap.
 
 ### Inventory checkpoint (2026-10-12)
 
@@ -1034,7 +1080,11 @@ input hashes, and native image hashes. The two native tiers are 732 × 1020 and
 source dimensions and aspect residuals are reported. The sampled full PNGs are
 745 × 1040. No anisotropic stretching is used.
 
-## Shared alignment, never per scan
+## Historical shared alignment
+
+This describes the original M21 study. New component comparisons follow the
+per-scan frame normalization policy above; keep these reports reproducible as
+historical evidence rather than silently replacing their transforms.
 
 [alignment.json](fixtures/accuracy/m21/alignment.json) is a frozen set/frame profile.
 Every card in a frame family gets exactly the same translation, uniform scale,

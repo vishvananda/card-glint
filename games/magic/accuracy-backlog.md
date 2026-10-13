@@ -22,10 +22,28 @@ included. Smaller sets follow later.
    Keep a small random audit of high-scoring cards to detect metric blind spots.
 
 The inventory and coverage ledger are established. Keep unsupported cards and
-registration failures visible. Existing typography/font issues below remain
+registration failures visible. Current component comparisons must normalize
+each scan's translation and uniform scale from frame-only anchors before
+measuring placement. Freeze and reuse fits across candidates; keep them out of
+renderer settings. Historical shared-offset results remain diagnostic evidence.
+Recalibrate every set-symbol placement using these stored per-card poses;
+evaluate rotation and global skew against independent frame samples as part of
+the normalization work. The [rollout ledger](fixtures/accuracy/symbol-normalization-rollout.json)
+keeps every major-set group pending until that work is validated.
+Existing typography/font issues below remain
 queued separately during the component passes. The
 [text-calibration handoff](accuracy-plan.md#automatic-text-calibration-after-both-waves)
 defines fitting, shared defaults and outlier review.
+
+### Stored normalization and Portal follow-up
+
+The [Portal pilot](fixtures/accuracy/por-symbol-normalized-review.json) improves
+inspection F1 .649 → .736 on the same 152 normalized scans. Two baseline and
+five previous-shared-placement regressions remain explicit review flags.
+Rotation/skew model validation, weak anchors and missing material templates
+remain open. Tempest has 231 stored accepted fits and awaits recalibration.
+Neither set completes the full rollout. Keep Portal radial contour/panel-tone
+mismatches separate from placement.
 
 ### Revised dual-land text-box treatment
 
@@ -1366,6 +1384,7 @@ its application, deployment and database outside this library repository.
   hashes. Score the exact normalized scan displayed in the overlay. Rejected
   registration remains visibly unaligned, never a certified identity transform.
 - Register scan translation and uniform scale against the actual rendered stock
-  transitions using calibration names only, then validate reserved names. Keep
-  opposing residual edge errors as asset geometry issues; never fit each scan
-  or use text to improve its own score.
+  transitions independently of text. Current comparisons store per-scan fits;
+  the earlier shared-only registration is historical evidence. Keep opposing
+  residual edge errors as asset geometry issues; never use text to fit its own
+  comparison transform.

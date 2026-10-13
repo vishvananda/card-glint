@@ -15,12 +15,14 @@ import {
 import { cachedGrayRegion } from './region-cache.mjs';
 import { compareLettering } from './lettering-metrics.mjs';
 import { median } from './metrics.mjs';
-const [set, stage = 'candidate'] = process.argv.slice(2);
+const [set, stage = 'candidate', adoptionName = 'adoption-plan'] = process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
-assert.ok(stage === 'after' || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
+assert.match(adoptionName, /^[a-z0-9-]+$/);
+const full = /^after(?:-[a-z0-9]+)*$/.test(stage);
+assert.ok(full || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
 const base = `${outputRoot}/${set}-symbol`,
   plan = await readJson(`${fixtureRoot}/${set}-symbol-plan.json`),
-  adoption = await readJson(`${fixtureRoot}/${set}-symbol-adoption-plan.json`),
+  adoption = await readJson(`${fixtureRoot}/${set}-symbol-${adoptionName}.json`),
   before = await readJson(`${base}/before/capture.json`),
   after = await readJson(`${base}/${stage}/capture.json`),
   rect = adoption.scoreRegion,
@@ -42,7 +44,7 @@ assert.equal(before.rows.length, plan.cards.length);
 assert.deepEqual(
   after.rows.map((r) => r.id).sort(),
   plan.cards
-    .filter((r) => stage === 'after' || ['calibration', 'control'].includes(r.cohort))
+    .filter((r) => full || ['calibration', 'control'].includes(r.cohort))
     .map((r) => r.id)
     .sort(),
 );
@@ -57,6 +59,13 @@ try {
     '/games/magic/src/presentation/retro-symbol-geometry.ts',
   );
   assert.deepEqual(retroSymbolGeometry({ setCode: set }), adoption.geometry);
+  for (const row of after.rows.filter((r) => r.cohort !== 'control' && r.face)) {
+    const groups = Object.values(adoption.materialGroups ?? {}).filter((g) =>
+      g.ids.includes(row.id),
+    );
+    assert.ok(groups.length <= 1, 'Material cohorts must be disjoint');
+    assert.deepEqual(retroSymbolGeometry(row.face), groups[0]?.geometry ?? adoption.geometry);
+  }
 } finally {
   await server.close();
 }
@@ -203,8 +212,7 @@ const ordinary = rows.filter((r) => r.cohort !== 'control'),
   summary = {
     all: summarize(ordinary),
     calibration: summarize(ordinary.filter((r) => r.cohort === 'calibration')),
-    validation:
-      stage === 'after' ? summarize(ordinary.filter((r) => r.cohort === 'validation')) : null,
+    validation: full ? summarize(ordinary.filter((r) => r.cohort === 'validation')) : null,
     controls: rows.filter((r) => r.cohort === 'control').length,
     failures: rows.filter((r) => !r.scores).length,
   };

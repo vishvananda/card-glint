@@ -23,7 +23,9 @@ const [set, action = 'prepare'] = process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
 const recipe = await readJson(`${fixtureRoot}/${set}-symbol-study.json`);
 const candidate = /^candidate(?:-[a-z0-9]+)*$/.test(action);
-assert.ok(['prepare', 'before', 'after'].includes(action) || candidate);
+assert.ok(
+  ['prepare', 'before'].includes(action) || /^after(?:-[a-z0-9]+)*$/.test(action) || candidate,
+);
 const base = `${outputRoot}/${set}-symbol`,
   planFile = `${fixtureRoot}/${set}-symbol-plan.json`,
   snapshotFile = `${cacheRoot}/rollout/${set}-symbol.json`;
