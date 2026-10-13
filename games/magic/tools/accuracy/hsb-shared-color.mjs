@@ -7,7 +7,7 @@ export function fitSharedHsb(pairs, model, math) {
     clamp = (x, k) => Math.max(bounds(k)[0], Math.min(bounds(k)[1], x));
   const loss = (a) =>
     targets.reduce((sum, p) => {
-      const d = delta(math.adjustHsb(p.source.rgb, a), p.target);
+      const d = delta(center(p.source.tiles.map((t) => math.adjustHsb(t, a))), p.target);
       return sum + (d <= 3 ? d * d : 6 * d - 9);
     }, 0) / targets.length;
   const seeds = [

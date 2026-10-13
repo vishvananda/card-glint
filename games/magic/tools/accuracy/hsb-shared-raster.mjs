@@ -15,7 +15,8 @@ import { sampleColor, delta, median } from './hsb-color.mjs';
 import { perCardMana } from './hsb-shared-color.mjs';
 const base = `${outputRoot}/early-hsb`,
   plan = await readJson(`${fixtureRoot}/early-hsb-plan.json`),
-  results = await readJson(`${fixtureRoot}/early-hsb-shared-results.json`),
+  results = await readJson(`${fixtureRoot}/early-hsb-family-results.json`),
+  candidate = await readJson(`${fixtureRoot}/early-hsb-family-candidate.json`),
   snapshot = await readJson(`${cacheRoot}/rollout/early-hsb.json`),
   before = await readJson(`${base}/before/capture.json`),
   after = await readJson(`${base}/after/capture.json`);
@@ -46,7 +47,12 @@ for (const row of after.rows) {
         b = sampleColor(current, patches, opts),
         group = results.groups.find((g) => g.key === `${row.set}-${row.material}`);
       components[component] = {
-        status: group.status,
+        status:
+          group.status === 'trial' &&
+          candidate.groups.find((g) => g.key === group.key)?.status === 'trial' &&
+          /-(W|U|B|R|G|A)$/.test(group.key)
+            ? 'trial'
+            : 'review-only',
         flags: group.flags,
         before: delta(a.rgb, ref.rgb),
         after: delta(b.rgb, ref.rgb),
@@ -81,7 +87,11 @@ for (const row of after.rows) {
           set: row.set,
           symbol: ref.symbol,
           cohort: row.cohort,
-          status: group?.status ?? 'unfitted',
+          status:
+            group?.status === 'trial' &&
+            candidate.mana.find((g) => g.key === group.key)?.status === 'trial'
+              ? 'trial'
+              : 'review-only',
           flags: group?.flags ?? [],
           before: delta(a.rgb, ref.rgb),
           after: delta(b.rgb, ref.rgb),
@@ -116,7 +126,7 @@ const report = {
   rows,
   mana,
 };
-await writeJson(`${fixtureRoot}/early-hsb-shared-raster-results.json`, report);
+await writeJson(`${fixtureRoot}/early-hsb-family-raster-results.json`, report);
 console.log(JSON.stringify(report.summary));
 
 function summarize(rows) {

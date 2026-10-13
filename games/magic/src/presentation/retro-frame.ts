@@ -10,7 +10,8 @@ import {
   type FaceRect,
 } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
-import { manaSymbolAsset, faceSetSymbol } from './assets.js';
+import { faceSetSymbol } from './assets.js';
+import { faceManaAssets } from './mana-assets.js';
 export const RETRO_SYMBOL_FONT = manifest.RETRO_SYMBOL_FONT;
 export const RETRO_ROOT = manifest.RETRO_ROOT;
 export const RETRO_FONT = `${RETRO_ROOT}/fonts/goudy-medieval.ttf`;
@@ -138,8 +139,7 @@ export function retroAssets(face: RenderedCardInput) {
     retroBorder(face) !== 'black' || retroFamily(face) === 'fourth' ? retroBorderMask(face) : null,
     face.illustration,
     retroSetSymbol(face),
-    ...(face.manaSymbols ?? []).map(manaSymbolAsset),
-    ...[...(face.rulesText ?? '').matchAll(/\{([^}]+)\}/g)].map((m) => manaSymbolAsset(m[1]!)),
+    ...faceManaAssets(face),
   ];
 }
 export const retroPx = ([x, y, w, h]: FaceRect): [number, number, number, number] => [

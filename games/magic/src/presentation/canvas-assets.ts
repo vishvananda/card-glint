@@ -1,17 +1,15 @@
 import { isRetro, retroAssets, RETRO_ROOT } from './retro-frame.js';
-import { historicalBackingBlob, historicalBackingKey } from './historical-symbol-backing.js';
+import { aliasCanvasImages, resolveCanvasSources } from './historical-symbol-sources.js';
+export { clearHistoricalSymbolSources } from './historical-symbol-sources.js';
+export { clearEarlyHsbBitmaps } from './material-bitmap-cache.js';
+import { faceManaAssets } from './mana-assets.js';
 import { extraRuleAssets } from './extra-rules.js';
 import { splitPanels } from './split-layout.js';
 import { faceFrame, specialRules } from './special-frames.js';
 import { ruleBadgeAsset, sagaTextbox } from './special-rule-paint.js';
-import {
-  manaSymbolAsset,
-  profileAssets,
-  RENDERER_COMPONENT_ROOT,
-  faceSetSymbol,
-} from './assets.js';
+import { profileAssets, RENDERER_COMPONENT_ROOT, faceSetSymbol } from './assets.js';
 import { resolveCardProfile } from './profile.js';
-import { symbolTextParts, type RenderedCardInput } from './face-layout.js';
+import type { RenderedCardInput } from './face-layout.js';
 
 export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   /** Face-preparation palette for procedural/fallback mana discs. */
@@ -98,42 +96,44 @@ export async function decodeCanvasImage(
   }
 }
 
-/** Four CORS fetch/decode jobs at most; the compositor owns and closes all bitmaps. */
+/** Four decode jobs at most; the compositor owns and closes all bitmaps.
+ * The six pinned historical SVG bundles have separate shared source preparation. */
 export async function loadCanvasImages(
   urls: readonly (string | null | undefined)[],
   signal: AbortSignal,
 ) {
-  const pending = [...new Set(urls.filter((url): url is string => Boolean(url)))];
+  const sources = await resolveCanvasSources(urls, signal),
+    pending = sources.urls;
   const images = new Map<string, ImageBitmap>();
   let index = 0;
-  await Promise.all(
-    Array.from({ length: Math.min(4, pending.length) }, async () => {
-      while (index < pending.length && !signal.aborted) {
-        const url = pending[index++]!;
-        try {
-          const response = await fetchCanvasAsset(url, signal);
-          if (!response.ok) continue;
-          const blob = await response.blob();
-          const bitmap = await decodeCanvasImage(blob, signal, canvasAssetWidth(url));
-          if (signal.aborted) bitmap.close();
-          else images.set(url, bitmap);
-          const backing = await historicalBackingBlob(url, blob);
-          if (backing) {
-            const white = await decodeCanvasImage(backing, signal);
-            if (signal.aborted) white.close();
-            else images.set(historicalBackingKey(url), white);
+  try {
+    await Promise.all(
+      Array.from({ length: Math.min(4, pending.length) }, async () => {
+        while (index < pending.length && !signal.aborted) {
+          const url = pending[index++]!;
+          try {
+            const response = await fetchCanvasAsset(url, signal);
+            if (!response.ok) continue;
+            const blob = await response.blob();
+            const bitmap = await decodeCanvasImage(blob, signal, canvasAssetWidth(url));
+            if (signal.aborted) bitmap.close();
+            else images.set(url, bitmap);
+          } catch {
+            /* A missing illustration or frame leaves the drawn face readable. */
           }
-        } catch {
-          /* A missing illustration or frame leaves the drawn face readable. */
         }
-      }
-    }),
-  );
+      }),
+    );
+  } finally {
+    sources.dispose();
+  }
+  const aliased = aliasCanvasImages(sources.aliases, images);
   return {
-    images,
+    images: aliased,
     dispose: () => {
       for (const image of images.values()) image.close();
       images.clear();
+      aliased.clear();
     },
   };
 }
@@ -159,17 +159,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
     profile.legendary ? assets.crown : null,
     face.illustration,
     faceSetSymbol(face),
-    ...(face.manaSymbols ?? []).map(manaSymbolAsset),
-    ...symbolTextParts(face.rulesText ?? '').flatMap((part) =>
-      part.symbol ? [manaSymbolAsset(part.symbol)] : [],
-    ),
-    ...(face.rulesParagraphs ?? []).flatMap((paragraph) =>
-      paragraph.runs.flatMap((run) =>
-        symbolTextParts(run.text).flatMap((part) =>
-          part.symbol ? [manaSymbolAsset(part.symbol)] : [],
-        ),
-      ),
-    ),
+    ...faceManaAssets(face),
   ];
 }
 

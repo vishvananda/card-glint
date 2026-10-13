@@ -1,36 +1,27 @@
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
-import { isRetro, retroFrameAsset } from './retro-frame.js';
+import { retroFrameAsset } from './retro-frame.js';
 import { manaSymbolAsset } from './assets.js';
-import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
-import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
+import { adjustHsb, rgbToHsb, type HsbAdjustment, type Rgb } from './hsb.js';
+import { BITMAP_MANA_COLORS } from './mana-colors.js';
+import { earlyHsbBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import {
-  EARLY_HSB_PROFILES,
-  EARLY_MANA_HSB_PROFILES,
-  EARLY_HSB_FRAME_ASSETS,
-} from './early-hsb-profiles.js';
+  calibratedFrameProfile,
+  calibratedManaTarget,
+  hasColorCalibration,
+} from './calibration-profiles.js';
+export { calibratedFrameProfile as earlyHsbProfile } from './calibration-profiles.js';
 
-const materialKey = (face: RenderedCardInput) =>
-  retroFrameAsset(face).split('/').at(-1)!.replace('.png', '').toUpperCase();
-export function earlyHsbProfile(face: RenderedCardInput): HsbAdjustment | undefined {
-  if (face.colorCalibration !== 'early-hsb-v1' || !isRetro(face)) return undefined;
-  const key = `${face.setCode?.toLowerCase()}-${materialKey(face)}`;
-  // A different source frame invalidates its fitted color transform.
-  return EARLY_HSB_FRAME_ASSETS[key] === retroFrameAsset(face)
-    ? EARLY_HSB_PROFILES[key]
-    : undefined;
-}
-/** Derived bitmaps live only during static face composition. Original assets
- * and their owner remain untouched; no work happens during animated frames. */
+/** Static composition leases shared derived bitmaps. Original assets and their
+ * owner remain untouched; no work happens during animated frames. */
 export async function prepareEarlyHsb(
   face: RenderedCardInput,
   images: CanvasImages,
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
   const unchanged = { images, dispose() {} };
-  if (face.colorCalibration !== 'early-hsb-v1' || !isRetro(face)) return unchanged;
-  const profile = earlyHsbProfile(face),
-    set = face.setCode?.toLowerCase() ?? '';
+  if (!hasColorCalibration(face)) return unchanged;
+  const profile = calibratedFrameProfile(face);
   const adjustments = new Map<string, HsbAdjustment>(),
     colors: Record<string, string> = {};
   if (profile) adjustments.set(retroFrameAsset(face), profile);
@@ -45,51 +36,69 @@ export async function prepareEarlyHsb(
   symbols.add('W');
   for (const symbol of symbols) {
     const key = /^\d+$/.test(symbol) ? 'N' : symbol,
-      adjustment = EARLY_MANA_HSB_PROFILES[`${set}-${key}`];
-    if (!adjustment) continue;
+      target = calibratedManaTarget(face, key),
+      source = BITMAP_MANA_COLORS[key];
+    if (!target || !source) continue;
     const url = manaSymbolAsset(symbol);
-    if (url) adjustments.set(url, adjustment);
-    const hex = MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
-    const rgb = adjustHsb(
-      [
-        parseInt(hex.slice(1, 3), 16) / 255,
-        parseInt(hex.slice(3, 5), 16) / 255,
-        parseInt(hex.slice(5, 7), 16) / 255,
-      ],
-      adjustment,
-    );
-    colors[symbol] = `rgb(${rgb.map((v) => Math.round(v * 255)).join(' ')})`;
+    if (url) adjustments.set(url, manaSourceAdjustment(source, target));
+    colors[symbol] = `rgb(${target.map((v) => Math.round(v * 255)).join(' ')})`;
   }
   if (!adjustments.size && !Object.keys(colors).length) return unchanged;
-  const derived = Object.assign(new Map(images), { manaColors: colors }),
-    owned: ImageBitmap[] = [];
+  const derived = Object.assign(new Map(images), { manaColors: colors });
+  const materials = [...adjustments].flatMap(([url, adjustment]) => {
+    const source = images.get(url);
+    return source ? [{ url, source, adjustment }] : [];
+  });
+  let leases: MaterialBitmapLease[] = [];
   try {
-    for (const [url, adjustment] of adjustments) {
-      const source = images.get(url);
-      if (!source) continue;
-      signal.throwIfAborted();
-      const canvas = document.createElement('canvas');
-      canvas.width = source.width;
-      canvas.height = source.height;
-      try {
-        const c = canvas.getContext('2d', { willReadFrequently: true });
-        if (!c) throw Error('HSB preparation needs Canvas2D.');
-        c.drawImage(source, 0, 0);
-        const pixels = c.getImageData(0, 0, canvas.width, canvas.height);
-        colorEarlyFrame(pixels, adjustment);
-        c.putImageData(pixels, 0, 0);
-        const bitmap = await createImageBitmap(canvas);
-        owned.push(bitmap);
-        signal.throwIfAborted();
-        derived.set(url, bitmap);
-      } finally {
-        canvas.width = canvas.height = 0;
-      }
-    }
-    return { images: derived, dispose: () => owned.forEach((b) => b.close()) };
+    leases = await earlyHsbBitmapCache.acquireMany(
+      materials.map(({ url, source, adjustment }) => ({
+        key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),
+        bytes: source.width * source.height * 4,
+        build: () => buildMaterial(source, adjustment),
+      })),
+      signal,
+    );
+    materials.forEach(({ url }, i) => derived.set(url, leases[i]!.value));
+    return { images: derived, dispose: () => leases.forEach((lease) => lease.release()) };
   } catch (error) {
-    owned.forEach((b) => b.close());
+    leases.forEach((lease) => lease.release());
     throw error;
+  }
+}
+
+/** Pinned URL includes source revision; policy version includes ink protection. */
+export function earlyHsbMaterialKey(
+  url: string,
+  width: number,
+  height: number,
+  adjustment: HsbAdjustment,
+) {
+  return JSON.stringify([
+    'early-hsb-rgb-preserve-ink-v1',
+    url,
+    width,
+    height,
+    adjustment.hueDegrees,
+    adjustment.saturationScale,
+    adjustment.brightnessScale,
+  ]);
+}
+
+async function buildMaterial(source: ImageBitmap, adjustment: HsbAdjustment) {
+  const canvas = document.createElement('canvas');
+  canvas.width = source.width;
+  canvas.height = source.height;
+  try {
+    const c = canvas.getContext('2d', { willReadFrequently: true });
+    if (!c) throw Error('HSB preparation needs Canvas2D.');
+    c.drawImage(source, 0, 0);
+    const pixels = c.getImageData(0, 0, canvas.width, canvas.height);
+    colorEarlyFrame(pixels, adjustment);
+    c.putImageData(pixels, 0, 0);
+    return await createImageBitmap(canvas);
+  } finally {
+    canvas.width = canvas.height = 0;
   }
 }
 /** One transform across the complete source. No rectangular paper mask can
@@ -107,4 +116,22 @@ export function colorEarlyFrame(
     const changed = adjustHsb(rgb, adjustment);
     for (let c = 0; c < 3; c++) image.data[i + c] = Math.round(255 * changed[c]!);
   }
+}
+
+/** Bind the measured target to the bitmap's actual disc color. Applying the
+ * historical sun's coefficients to a modern white SVG changes the target. */
+export function manaSourceAdjustment(hex: string, target: Rgb): HsbAdjustment {
+  const rgb: Rgb = [
+    parseInt(hex.slice(1, 3), 16) / 255,
+    parseInt(hex.slice(3, 5), 16) / 255,
+    parseInt(hex.slice(5, 7), 16) / 255,
+  ];
+  const [h, s, b] = rgbToHsb(rgb),
+    [th, ts, tb] = rgbToHsb(target);
+  if (s <= 0 || b <= 0) throw Error('Mana source requires a chromatic disc.');
+  return {
+    hueDegrees: ((th - h + 540) % 360) - 180,
+    saturationScale: ts / s,
+    brightnessScale: tb / b,
+  };
 }

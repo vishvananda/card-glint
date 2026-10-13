@@ -8,6 +8,12 @@ import type {
 } from '../../../packages/browser/src/index.js';
 import { composeCardTexture, cardTextureKey } from './presentation/canvas-face.js';
 import { canvasAssetWidth } from './presentation/canvas-assets.js';
+import { clearEarlyHsbBitmaps } from './presentation/material-bitmap-cache.js';
+import {
+  aliasCanvasImages,
+  clearHistoricalSymbolSources,
+  resolveCanvasSources,
+} from './presentation/historical-symbol-sources.js';
 import { faceRects } from './presentation/special-frames.js';
 import { visibleArt } from './presentation/art-apertures.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
@@ -24,17 +30,28 @@ export {
 
 function loader(host: RasterHost) {
   return async (urls: readonly (string | null | undefined)[], signal: AbortSignal) => {
-    const list = [...new Set(urls.filter((url): url is string => Boolean(url)))];
-    const lease = await host.images(
-      list.map((url) => ({ url, width: canvasAssetWidth(url) })),
-      signal,
-    );
-    return { images: new Map(lease.value), dispose: () => lease.release() };
+    const sources = await resolveCanvasSources(urls, signal);
+    try {
+      const lease = await host.images(
+        sources.urls.map((url) => ({ url, width: canvasAssetWidth(url) })),
+        signal,
+      );
+      return {
+        images: aliasCanvasImages(sources.aliases, lease.value),
+        dispose: () => lease.release(),
+      };
+    } finally {
+      sources.dispose();
+    }
   };
 }
 /** Game semantics and geometry stop at this adapter; GPU code sees only rasters. */
 export const mtg: GamePack<RenderedCardInput> = {
   id: 'mtg',
+  dispose() {
+    clearHistoricalSymbolSources();
+    clearEarlyHsbBitmaps();
+  },
   describe(value: RenderedCardInput, tier: Tier): FaceRecipe {
     const face = structuredClone({
       ...value,

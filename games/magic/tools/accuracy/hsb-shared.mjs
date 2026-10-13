@@ -31,7 +31,25 @@ const methodHash = hash(
     ),
   ),
 );
-const candidateFile = `${fixtureRoot}/early-hsb-shared-candidate.json`;
+const family = await readJson(`${fixtureRoot}/old-frame-family-results.json`);
+const provenance = {
+  planHash: hash(JSON.stringify(plan)),
+  snapshotHash: hash(JSON.stringify(snapshot)),
+  captureHash: hash(JSON.stringify(capture)),
+  familyHash: hash(JSON.stringify(family)),
+  templates: Object.fromEntries(
+    await Promise.all(
+      capture.templates.map(async (t) => {
+        const sha = hash(await readFile(`${outputRoot}/early-hsb/templates/${t.file}`));
+        assert.equal(sha, t.sha256);
+        return [t.key, { sha256: sha, asset: t.frameAsset, rect: t.frameRect }];
+      }),
+    ),
+  ),
+};
+assert.equal(provenance.snapshotHash, plan.snapshotHash);
+assert.equal(capture.planHash, provenance.planHash);
+const candidateFile = `${fixtureRoot}/early-hsb-family-candidate.json`;
 let frozen;
 if (action === 'fit') {
   try {
@@ -43,6 +61,7 @@ if (action === 'fit') {
 } else {
   frozen = await readJson(candidateFile);
   assert.equal(frozen.methodHash, methodHash);
+  assert.deepEqual(frozen.provenance, provenance);
 }
 const server = await createServer({
   configFile: false,
@@ -51,6 +70,17 @@ const server = await createServer({
   server: { middlewareMode: true },
 });
 try {
+  const { retroFrameAsset, retroFrameRect } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/retro-frame.ts',
+  );
+  for (const r of capture.rows) {
+    assert.equal(retroFrameAsset(r.face), r.frameAsset, 'Source changed: recapture before fitting');
+    assert.deepEqual(
+      retroFrameRect(r.face),
+      r.frameRect,
+      'Geometry changed: recapture before fitting',
+    );
+  }
   const math = await server.ssrLoadModule('/games/magic/src/presentation/hsb.ts'),
     sources = new Map(),
     references = new Map(),
@@ -138,7 +168,24 @@ try {
         ...rows.flatMap((r) => Object.values(r.components).map((c) => c.clipping)),
       ),
     };
+    const components = Object.fromEntries(
+      ['frame', 'paper'].map((c) => [
+        c,
+        {
+          before: median(rows.map((r) => r.components[c].before)),
+          after: median(rows.map((r) => r.components[c].after)),
+          worstRegression: Math.max(
+            0,
+            ...rows.map((r) => r.components[c].after - r.components[c].before),
+          ),
+        },
+      ]),
+    );
     const flags = [];
+    for (const [c, v] of Object.entries(components)) {
+      if (v.after > v.before + 0.25) flags.push(c + '-median-regression');
+      if (v.worstRegression > 1) flags.push(c + '-card-regression');
+    }
     if ((calibration?.count ?? rows.length) < 3 || rows.length < 2) flags.push('sparse-group');
     if (summary.after > summary.before - 0.25) flags.push('no-material-gain');
     if (summary.worstRegression > 1) flags.push('reserved-regression');
@@ -152,8 +199,11 @@ try {
       count: rows.length,
       flags,
       summary,
-      status: flags.some((f) =>
-        ['sparse-group', 'no-material-gain', 'reserved-regression', 'clipping'].includes(f),
+      components,
+      status: flags.some(
+        (f) =>
+          f.endsWith('-regression') ||
+          ['sparse-group', 'no-material-gain', 'reserved-regression', 'clipping'].includes(f),
       )
         ? 'review-only'
         : 'trial',
@@ -226,6 +276,9 @@ try {
       key,
       adjustment: fit.adjustment,
       count: refs.length,
+      sourceRgb: cal?.sourceRgb ?? source.rgb,
+      targetRgb:
+        cal?.targetRgb ?? center(source.tiles.map((t) => math.adjustHsb(t, fit.adjustment))),
       summary,
       flags,
       status: flags.length ? 'review-only' : 'trial',
@@ -241,11 +294,12 @@ try {
     );
   }
   const result = {
-    schemaVersion: 2,
+    schemaVersion: 3,
+    provenance,
     planHash: hash(JSON.stringify(plan)),
     methodHash,
     policy:
-      'User-reviewed revision: a single HSB transform across the whole frame bitmap, including paper, for every material. Equal frame/paper weight; bounded Huber fit on calibration medians. Same reserved cohorts reused, so this is an iterative study, not a fresh blind validation. Mana fitted separately by set/symbol using fixed eroded discs; no per-scan alignment. Global set fit is compared across six nonland materials. White texture was visually confirmed; contrast spread alone is not an asset mismatch.',
+      'User-reviewed revision: a single HSB transform across the whole frame bitmap, including paper, for every material. Equal frame/paper weight; bounded Huber fit on transformed source tile medians, with separate component regression gates. Same reserved cohorts reused, so this is an iterative study, not a fresh blind validation. Mana fitted separately by set/symbol using fixed eroded discs; no per-scan alignment. Global set fit is compared across six nonland materials. White texture was visually confirmed; contrast spread alone is not an asset mismatch.',
     groups,
     global,
     mana,
@@ -253,7 +307,7 @@ try {
   if (action === 'fit') await writeJson(candidateFile, result);
   else {
     result.candidateHash = hash(JSON.stringify(frozen));
-    await writeJson(`${fixtureRoot}/early-hsb-shared-results.json`, result);
+    await writeJson(`${fixtureRoot}/early-hsb-family-results.json`, result);
   }
 } finally {
   await server.close();

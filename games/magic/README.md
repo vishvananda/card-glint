@@ -193,6 +193,29 @@ for the full-set check that caught wrapping errors missed by the initial holdout
 Revised inline tap symbols now use the diagonal-T glyph from the existing
 historical-symbol font; later old-border sets keep their tilted-card mark.
 
+## Measured set colors
+
+Set `colorCalibration: 'set-hsb-v1'` to opt into admitted old-frame color profiles.
+One HSB adjustment covers the entire frame bitmap, including its rules paper;
+mana discs have separate targets. `early-hsb-v1` restricts the trial to Alpha,
+Beta, Unlimited and Revised. Omission keeps original source colors. Unsupported,
+sparse and rejected groups stay unchanged; this option is not an assertion that
+every printing is calibrated. The default artwork and lettering are untouched.
+
+Profiles are shared by set, border stock and material. A different source URL or
+placement disables its frame profile. The [calibration report](hsb-calibration.md)
+records coverage, reserved results and exclusions. These are matches to cached
+scan colors, not measurements of physical printing ink.
+
+Recolored bitmaps are prepared once and shared across cards and raster tiers in
+a 16 MiB Magic-owned LRU cache, in addition to the host's source-image budget.
+Whole-face admission waits when concurrent work exhausts that budget. This limit
+counts retained and pending decoded results; temporary Canvas/ImageData staging
+is additional. Pack disposal retires cached results after active leases finish.
+No decoding, pixel readback or color conversion occurs during animated frames.
+Historical symbol backings use the same source resolver in direct composition
+and the public pack, preserving white details in both paths.
+
 ## Existing scene or DOM editor
 
 Use `card-glint/magic/presentation` for the shared geometry and raster painter.

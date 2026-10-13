@@ -134,6 +134,67 @@ try {
       'inspect',
     ),
   );
+  // Procedural and modern mana have different source colors but must reach the
+  // same fitted disc target; preserve the SVG glyph shape and fallback palette.
+  const target = [0.87, 0.82, 0.65];
+  for (const hex of ['#efe7cb', '#f8f6d8', '#c1d7e9', '#cac5c0', '#e49977', '#a3c095']) {
+    const sourceRgb = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+    assert.ok(
+      delta(math.adjustHsb(sourceRgb, material.manaSourceAdjustment(hex, target)), target) < 1e-8,
+    );
+  }
+  const profiles = await server.ssrLoadModule(
+    '/games/magic/src/presentation/calibration-profiles.ts',
+  );
+  const { OLD_HSB_PROFILES } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/old-hsb-profiles.ts',
+  );
+  for (const key of Object.keys(OLD_HSB_PROFILES)) {
+    const [setCode, borderColor, m] = key.split('-');
+    const basic = { WL: 'Plains', UL: 'Island', BL: 'Swamp', RL: 'Mountain', GL: 'Forest' }[m];
+    const typeLine = basic
+      ? 'Land — ' + basic
+      : m === 'L'
+        ? 'Land'
+        : m === 'A'
+          ? 'Artifact'
+          : 'Creature';
+    const colors = m === 'M' || m === 'LEGENDSFRAMEM' ? ['W', 'U'] : /^[WUBRG]$/.test(m) ? [m] : [];
+    const calibrated = {
+      name: 'Stock test',
+      setCode,
+      borderColor,
+      typeLine,
+      colors,
+      frameStyle: 'retro',
+      colorCalibration: 'set-hsb-v1',
+    };
+    assert.ok(profiles.calibratedFrameProfile(calibrated), key);
+    assert.equal(
+      profiles.calibratedFrameProfile({ ...calibrated, layout: 'token' }),
+      undefined,
+      key + ' token',
+    );
+    assert.equal(
+      profiles.calibratedFrameProfile({ ...calibrated, colorCalibration: 'early-hsb-v1' }),
+      undefined,
+      key + ' early-only',
+    );
+  }
+  const earlyBlue = {
+    name: 'Stock test',
+    setCode: 'lea',
+    typeLine: 'Creature',
+    colors: ['U'],
+    colorCalibration: 'set-hsb-v1',
+  };
+  assert.ok(profiles.calibratedFrameProfile(earlyBlue));
+  assert.equal(profiles.calibratedFrameProfile({ ...earlyBlue, borderColor: 'white' }), undefined);
+  assert.equal(
+    profiles.calibratedManaTarget({ ...earlyBlue, borderColor: 'white' }, 'U'),
+    undefined,
+  );
+  assert.equal(profiles.calibratedManaTarget({ ...earlyBlue, layout: 'token' }, 'U'), undefined);
   // No DOM work or ownership changes on the default path.
   const images = new Map(),
     result = await material.prepareEarlyHsb(face, images, new AbortController().signal);

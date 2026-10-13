@@ -16,6 +16,9 @@ const DETAILS: Readonly<Record<string, { count: number; white: readonly number[]
 /** Internal decoded-image key only; this suffix is never fetched. */
 export const historicalBackingKey = (url: string) => `${url}#opaque-print-details-v1`;
 
+export const hasHistoricalBacking = (url: string): boolean =>
+  Object.keys(DETAILS).some((key) => url === `${manifest.KEYRUNE_ROOT}/${key}.svg`);
+
 /** Derive a white-detail bitmap during asset preparation. Only exact pinned
  * vectors qualify; custom URLs and all original source bitmaps are unchanged.
  * Closed-subpath validation makes a changed source fail instead of filling an
