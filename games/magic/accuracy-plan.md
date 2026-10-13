@@ -10,6 +10,13 @@ Separate source-asset choice from printing typography, compare structure with
 color-insensitive metrics, validate on reserved card names, and retain ambiguous
 matches for review. Freeze the chosen asset and geometry before refitting HSB.
 Use per-color corrections, with one shared adjustment for the frame and paper.
+The first [family comparison](frame-asset-research.md) is complete. No alternative
+passed every structural admission check, so this color round retains existing
+sources and carries uncertain geometry in the review queue. Complete remaining
+old-frame HSB measurements, publish the checked library release, then resume the
+paused set-symbol pass. Do not treat retained sources as certified geometric
+matches or silently apply a profile to a different source bitmap.
+
 The [early HSB experiment](hsb-calibration.md) remains opt-in evidence; do not
 transfer its numbers onto a different source asset. See also the
 [asset-source findings](frame-asset-research.md), including the missing dual-land

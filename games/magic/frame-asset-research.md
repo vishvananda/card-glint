@@ -1,12 +1,43 @@
 # Existing old-frame source candidates
 
-Choose frame sources before fitting color. The current renderer uses three
-ordinary families (ABU, Fourth and Seventh), plus a specialized Legends gold
-frame. Family choice is not yet a validated per-set result. The new
-[coverage plan](fixtures/accuracy/old-frame-family-plan.json) records every
-old-frame set/material group in the major-set inventory and separate
-calibration/reserved printing names. Its selection fields deliberately remain
-unmeasured until comparisons exist.
+The first comparison is recorded in
+[family results](fixtures/accuracy/old-frame-family-results.json): 35 source
+plates, 2,767 cached full scans, 717 set/material/layout/stock groups across
+63 major sets. The coverage inventory contains 13,603 printings; the comparison
+is a sample study, not a full rerender of that inventory.
+
+**Decision: retain the current source families for this color-calibration round.**
+No alternative passed every admission check. Thirty-six groups support retaining
+the current asset; 681 need further review because of sparse cohorts, weak or
+ambiguous borders, region regressions, or unsettled scan registration. The
+current family ranks first for 21 of 24 early-set nonland materials. Alpha
+black's Fourth candidate does not transfer to reserved cards; Beta green's
+Fourth candidate improves the combined score but regresses individual borders.
+Unlimited red lacks enough usable structural regions.
+
+The metric compares signed grayscale gradients and local intensity ordering.
+All candidates share the intersection of their opaque frame pixels, eroded by
+two canonical pixels, so internal artwork cannot win the comparison. Missing
+candidate edges score zero on reference-defined support. Three fixed strips
+per edge and separate calibration/reserved names limit text/texture interference.
+This replaces an exploratory dark-keyline detector: some frame edges are light,
+and strong interior artwork could steal its peak. These are structural scores,
+not percentages of whole-card accuracy.
+
+Only 26 of 66 shared set/frame/stock registration groups passed the independent
+outer-anchor checks. The early sets retain raw normalized scans: their outer
+frame proportions disagree with the fixed target by 2.8–4.3 pixels vertically.
+Do not disguise a real frame-proportion difference as a per-scan warp or loosen
+registration gates to force an asset winner. Review candidate gains for Arabian
+Nights, Legends and Collector's Edition alongside their border regressions.
+Typography remains tied to printing policy; no source switch has changed it.
+
+Reproduce with `old-frame-cache.mjs`, `old-frame-templates.mjs`,
+`old-frame-measure.mjs`, and `old-frame-select.mjs` in `tools/accuracy/`.
+Source plates are captured once in Canvas; all scan measurement and selection
+run on the CPU without Chromium. Detailed per-scan profiles stay in the local
+cache, while source/method hashes and aggregate candidate scores are committed.
+This measures image structure, not CPU submission or GPU completion time.
 
 ## Most useful existing asset
 
