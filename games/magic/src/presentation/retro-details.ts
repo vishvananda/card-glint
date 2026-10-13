@@ -2,6 +2,7 @@ import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 import { paintEarlyMana } from './historic-cost.js';
 import { resolveFrameColors } from './profile.js';
+import type { RetroSymbolPalette } from './retro-symbol-material.js';
 
 /** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
 export function retroStatsPlacement(face: RenderedCardInput) {
@@ -136,6 +137,7 @@ export function paintOutlinedRetroSet(
   h: number,
   outline: number,
   crop: FaceRect = [0, 0, 1, 1],
+  palette: RetroSymbolPalette | null = null,
 ) {
   const layer = document.createElement('canvas');
   const pad = Math.ceil(outline * 2) + 1;
@@ -169,6 +171,11 @@ export function paintOutlinedRetroSet(
     );
   }
   ink.fillStyle = '#17140f';
+  if (palette) {
+    const gradient = ink.createLinearGradient(pad, pad, pad + w * 2, pad);
+    palette.forEach((color, index) => gradient.addColorStop(index / 2, color));
+    ink.fillStyle = gradient;
+  }
   ink.fillRect(0, 0, layer.width, layer.height);
   c.drawImage(layer, x - pad / 2, y - pad / 2, layer.width / 2, layer.height / 2);
   c.restore();

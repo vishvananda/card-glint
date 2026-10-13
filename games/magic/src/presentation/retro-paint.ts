@@ -1,5 +1,6 @@
 import { paintRetroGoldBevel } from './retro-gold-bevel.js';
 import { retroSymbolGeometry } from './retro-symbol-geometry.js';
+import { retroSymbolPalette } from './retro-symbol-material.js';
 import { historicalBackingKey } from './historical-symbol-backing.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
@@ -134,7 +135,8 @@ export function paintRetroFace(
   const [tx, ty, tw, th] = retroPx(rect.type),
     symbolUrl = retroSetSymbol(face) ?? '',
     icon = images.get(symbolUrl),
-    geometry = retroSymbolGeometry(face);
+    geometry = retroSymbolGeometry(face),
+    palette = retroSymbolPalette(face);
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
   c.fillText(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
@@ -169,7 +171,7 @@ export function paintRetroFace(
       );
       c.restore();
     }
-    if (details || usesMonochromeSetSymbol(face.setCode))
+    if (palette || details || usesMonochromeSetSymbol(face.setCode))
       paintOutlinedRetroSet(
         c,
         icon,
@@ -177,8 +179,9 @@ export function paintRetroFace(
         centerY - height / 2,
         width,
         height,
-        details?.setOutline ?? historicalSetOutline(face.setCode),
+        palette ? 1.25 : (details?.setOutline ?? historicalSetOutline(face.setCode)),
         crop,
+        palette,
       );
     else
       paintSetSymbol(

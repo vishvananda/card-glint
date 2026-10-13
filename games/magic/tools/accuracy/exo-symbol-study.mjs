@@ -20,7 +20,7 @@ import { presentation } from './adapter.mjs';
 import { openBrowser } from './browser.mjs';
 
 const [action = 'prepare'] = process.argv.slice(2);
-assert.ok(['prepare', 'before', 'after'].includes(action));
+assert.ok(['prepare', 'before', 'material', 'candidate', 'after'].includes(action));
 const base = `${outputRoot}/exo-symbol`,
   planFile = `${fixtureRoot}/exo-symbol-plan.json`,
   snapshotFile = `${cacheRoot}/rollout/exo-symbol.json`;
@@ -105,7 +105,12 @@ if (action === 'before') assert.equal(rendererHash, frozen.baselineRendererHash)
 const session = await openBrowser(snapshot),
   rows = [];
 try {
-  for (const e of snapshot.entries.filter((e) => !e.issue)) {
+  for (const e of snapshot.entries.filter(
+    (e) =>
+      !e.issue &&
+      (!['material', 'candidate'].includes(action) ||
+        ['calibration', 'control'].includes(e.cohort)),
+  )) {
     const face = studyFace(e);
     const rendered = await session.page.evaluate(async (face) => {
       const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts');
@@ -119,7 +124,28 @@ try {
         images.push({ tier, data: canvas.toDataURL() });
         canvas.width = canvas.height = 0;
       }
-      return { images };
+      const { retroPx, retroRects } = await import('/games/magic/src/presentation/retro-frame.ts');
+      const { retroSymbolGeometry } = await import(
+        '/games/magic/src/presentation/retro-symbol-geometry.ts'
+      );
+      const context = document.createElement('canvas').getContext('2d');
+      context.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
+      const [x, y, w, h] = retroPx(retroRects(face).type),
+        g = retroSymbolGeometry(face),
+        before = w - 48,
+        after = g ? Math.min(before, g.right - g.width - x - 6) : before,
+        measuredWidth = context.measureText(face.typeLine).width;
+      return {
+        images,
+        clearance: {
+          typeLine: face.typeLine,
+          measuredWidth,
+          beforeMaximum: before,
+          afterMaximum: after,
+          needsCompression: after < before && measuredWidth > after,
+          typeRegion: [x - 2, y - 1, w, h + 2],
+        },
+      };
     }, face);
     const images = {};
     for (const image of rendered.images) {
@@ -133,7 +159,7 @@ try {
       ...frozen.cards.find((c) => c.id === e.id),
       number: e.card.collector_number,
       face,
-
+      clearance: rendered.clearance,
       images,
     });
     console.log(action, e.card.set, e.card.name);

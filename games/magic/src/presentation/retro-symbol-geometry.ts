@@ -34,6 +34,7 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     height: 22,
     crop: [0, 0.154296875, 0.998046875, 0.646484375],
   },
+  exo: { right: 430, centerY: 389, width: 55, height: 19, crop: [0, 0.30859375, 1, 0.3828125] },
 };
 
 export function retroSymbolGeometry(face: RenderedCardInput): RetroSymbolGeometry | null {

@@ -808,3 +808,60 @@ its application, deployment and database outside this library repository.
   multiply blending, verified visually; shared dark ink stays dark while
   mismatches separate into red/green. This browser-only fix stays outside the
   repository, as requested.
+
+### Exodus symbol material and full-set size validation (v69)
+
+- Restore the printed white outer rim on every ordinary Exodus rarity. Reuse
+  the pinned bridge stencil and existing opaque window backing; leave the arch
+  open. The common bridge has dark ink, while uncommon/rare use shared silver
+  and gold gradients with pale centers. Explicit custom symbols retain their
+  previous paint path. This uses the existing composition canvas, with no new
+  network assets, pixel readback or animation-frame preparation.
+- The padded source viewport made the bridge much too small. Fit the visible
+  bounds after including the rim/material: 55 × 19 px, right edge 430 and center
+  Y 389, with a 1.25 px rim. The cached-stencil search uses only the five frozen
+  calibration cards and production palettes, with 56 bounded candidates and
+  half-pixel final bumps. Its selected solution does not hit a search boundary.
+  Actual production captures confirm the candidate before full-set validation.
+- Validate all 143 ordinary printings: 55 common, 44 uncommon and 44 rare, plus
+  seven controls, at inspection and table sizes. All 143 improve grayscale
+  symbol-edge F1 by more than .02 at both sizes, under both raw scan coordinates
+  and the frozen shared fit. The five-card inspection median changes .316 →
+  .745; the other 138 cards change .240 → .686. That larger check includes some
+  previously reviewed examples and is not an entirely unseen cohort.
+
+| Scope                | Raw inspection F1 | Shared-fit inspection F1 | Shared-fit table F1 |
+| -------------------- | ----------------- | ------------------------ | ------------------- |
+| All 143 Exodus cards | .262 → .586       | .253 → .687              | .240 → .744         |
+| Common (55)          | .268 → .624       | .294 → .760              | .254 → .767         |
+| Uncommon (44)        | .257 → .573       | .223 → .662              | .211 → .721         |
+| Rare (44)            | .249 → .582       | .261 → .693              | .243 → .799         |
+
+- These are symbol-region shape scores, not whole-card accuracy percentages.
+  The shared fit uses internal frame borders and remains provisional pending
+  the frame pass. No individual scan or card placement is fitted. Gradient
+  colors are a shared printing treatment; they do not complete HSB calibration.
+- All seven controls are byte-identical. The frozen v66 baseline predates the
+  separately committed ARN/LEG refinements, so those two controls use their v67
+  captures; the other five use v66. This provenance is recorded explicitly.
+  Every pixel outside the symbol/type allowance stays identical.
+- Three supplied Oracle types require narrower fitting to clear the enlarged
+  symbol: Ertai, Wizard Adept; Thalakos Scout; and Mirri, Cat Warrior. Their
+  maximum type width changes 335.18 → 316.59 px. Font measurements determine
+  the allowed type envelope; those rows are flagged because the wording and
+  compression can affect the symbol score window. The other 140 cards improve
+  without type changes. Original printing typography is not certified here.
+- Keep Aether Tide's inspection Census regression (.467 → .432), despite its
+  improved edge overlap, visible for review. The weakest remaining matches also
+  include Keeper of the Mind, Fade Away, Rootwater Mystic and Pit Spawn.
+  Inspection shows frame/symbol offsets in the blue examples; do not compensate
+  with individual-card symbol adjustments. Fine tower/foot contours, arch shape,
+  rim weight and metallic colors remain candidates for the frame/HSB/asset pass.
+- Reproduce captures with `exo-symbol-study.mjs material|candidate|after`, the
+  CPU search with `exo-symbol-search.mjs`, and comparisons with
+  `exo-symbol-audit.mjs candidate|after`. The immutable input plan and candidate
+  are `exo-symbol-plan.json` and `exo-symbol-candidate.json`; both production
+  stages have `exo-symbol-*-measurement.json` evidence. The audit verifies source
+  identity, controls, both tiers, all non-symbol pixels and type clearance.
+  The local page provides 21 examples, including the weakest matches and all
+  three type exceptions, plus metrics for all 143 cards and red/green overlays.

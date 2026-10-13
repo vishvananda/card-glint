@@ -40,7 +40,8 @@ export function symbolRaster(stencil, crop, width, height, outline, ink, backing
         }
       const index = y * w + x;
       alpha[index] = a + white * (1 - a);
-      premultiplied[index] = ink * a + 255 * white * (1 - a);
+      const tone = typeof ink === 'function' ? ink(xx / width, yy / height) : ink;
+      premultiplied[index] = tone * a + 255 * white * (1 - a);
     }
   return { width: w, height: h, alpha, premultiplied, pad };
 }
