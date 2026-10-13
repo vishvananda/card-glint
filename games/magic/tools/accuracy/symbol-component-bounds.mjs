@@ -4,8 +4,10 @@ import assert from 'node:assert/strict';
  * the search window so a frame edge cannot silently become the symbol bounds.
  * Callers must check threshold stability; this is not a universal segmenter. */
 export function symbolComponentBounds(image, threshold, light = false, profile = {}) {
-  const signal = profile.signal ?? 'luminance';
+  const signal = profile.signal ?? 'luminance',
+    componentGap = profile.componentGap ?? 0;
   assert.ok(['luminance', 'contrast'].includes(signal));
+  assert.ok(Number.isFinite(componentGap) && componentGap >= 0 && componentGap <= 4);
   const region = profile.region ?? [363, 374, 76, 31],
     limits = profile.limits ?? { width: [40, 72], height: [light ? 18 : 12, 29] };
   assert.ok(Number.isFinite(threshold) && threshold >= 0 && threshold <= 255);
@@ -68,7 +70,11 @@ export function symbolComponentBounds(image, threshold, light = false, profile =
       }
       mask[y * width + x] = Number(image.data[p + 3] > 0 && selected);
     }
-  const queue = new Int32Array(mask.length),
+  // Some printed symbols have detached bars or dots. Group only across a
+  // declared canonical gap, preserving the original ink bounds (no dilation).
+  // The whole group is still rejected if it reaches the measurement window.
+  const reach = 1 + Math.floor(componentGap / factor),
+    queue = new Int32Array(mask.length),
     components = [];
   for (let start = 0; start < mask.length; start++) {
     if (mask[start] !== 1) continue;
@@ -88,8 +94,8 @@ export function symbolComponentBounds(image, threshold, light = false, profile =
       right = Math.max(right, x);
       top = Math.min(top, y);
       bottom = Math.max(bottom, y);
-      for (let dy = -1; dy <= 1; dy++)
-        for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -reach; dy <= reach; dy++)
+        for (let dx = -reach; dx <= reach; dx++) {
           const nx = x + dx,
             ny = y + dy,
             j = ny * width + nx;

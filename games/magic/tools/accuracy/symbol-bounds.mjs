@@ -57,16 +57,31 @@ export function measureRenderedSymbol(rendered, blank, profile) {
   assert.equal(rendered.width, blank.width);
   assert.equal(rendered.height, blank.height);
   assert.equal(rendered.data.length, blank.data.length);
-  const data = new Uint8Array(rendered.data.length);
+  const foreground = profile.foreground ?? 'difference',
+    minimumDifference = profile.minimumDifference ?? 8,
+    data = new Uint8Array(rendered.data.length);
+  assert.ok(['difference', 'dark', 'light'].includes(foreground));
+  assert.ok(
+    Number.isFinite(minimumDifference) && minimumDifference >= 0 && minimumDifference < 255,
+  );
   for (let p = 0; p < data.length; p += 4) {
     const value = Math.max(
       ...[0, 1, 2, 3].map((c) => Math.abs(rendered.data[p + c] - blank.data[p + c])),
     );
-    data[p] = data[p + 1] = data[p + 2] = value;
-    data[p + 3] = 255;
+    if (foreground === 'difference') {
+      data[p] = data[p + 1] = data[p + 2] = value;
+      data[p + 3] = 255;
+    } else {
+      // Compare like ink with like ink: a white outline must not count toward
+      // a reference's black-ink bounds. Subtraction still excludes the frame.
+      data[p] = rendered.data[p];
+      data[p + 1] = rendered.data[p + 1];
+      data[p + 2] = rendered.data[p + 2];
+      data[p + 3] = value > minimumDifference ? rendered.data[p + 3] : 0;
+    }
   }
   return measureSymbolBounds(
     { width: rendered.width, height: rendered.height, data },
-    { ...profile, signal: 'luminance', light: true },
+    { ...profile, signal: 'luminance', light: foreground !== 'dark' },
   );
 }

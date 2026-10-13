@@ -123,10 +123,17 @@ any existing shared frame transform distinct; do not fit transforms to symbols.
   a 3 × 3 native-pixel contrast operator and removes its known one-pixel support
   per side. This measures an outline envelope, not interchangeable ink bounds;
   inspect annotated crops before using it as geometry evidence.
+- For detached ink parts such as Fallen Empires' crown foot, a fixed
+  `componentGap` joins nearby components without expanding their measured
+  bounds. Declare the gap before fitting geometry and keep it shared across the
+  set. Groups reaching the window boundary still fail; never bridge to a frame
+  just to obtain a measurement.
 - For renders, subtract an exact matched blank-symbol face when frame lines
   touch the symbol. `measureRenderedSymbol` isolates renderer-owned pixels
   without letting the frame dictate its measured dimensions. Never apply this
   synthetic-mask shortcut to reference scans.
+  Optional `foreground: "dark"` or `"light"` then measures that ink alone within
+  the changed pixels, so a white rim does not inflate a black-ink comparison.
 - Freeze representative cards across colors/materials and rarities before
   choosing one shared profile. Correct each axis from measured differences,
   verify the actual rasterized bounds, then audit every ordinary printing at
@@ -138,7 +145,7 @@ any existing shared frame transform distinct; do not fit transforms to symbols.
   review page. Record contour/asset errors separately from geometry.
 
 The shared utility is tested for independent axes, native resolution, contrast,
-light rims, touching frame edges, ambiguous/missing symbols and frozen shared
+light rims, detached parts, touching frame edges, ambiguous/missing symbols and frozen shared
 transforms in `tests/magic-symbol-bounds.mjs`, included in `test:magic-accuracy`.
 Historical measurement fixtures retain their original method hashes; a method
 revision never silently rewrites an earlier measurement.

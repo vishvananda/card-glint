@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "scope": "Native black-ink crown and detached foot bounds. A fixed two-canonical-pixel grouping gap joins detached printing without expanding measured ink. Reject groups touching frame-window boundaries and retain threshold-sensitive/missing measurements. Rendered black ink uses exact blank-face subtraction to exclude the frame and luminance thresholds to exclude the white outer rim. Raw coordinates, no per-scan fit.",
+  "reference": {
+    "region": [404, 373, 49, 39],
+    "limits": { "width": [12, 31], "height": [14, 26] },
+    "componentGap": 2,
+    "maxSpread": 1.4,
+    "thresholds": [45, 60, 75, 90]
+  },
+  "rendered": {
+    "region": [400, 373, 55, 39],
+    "limits": { "width": [12, 33], "height": [14, 28] },
+    "componentGap": 2,
+    "maxSpread": 1.4,
+    "thresholds": [45, 60, 75, 90],
+    "foreground": "dark",
+    "minimumDifference": 8
+  }
+}
