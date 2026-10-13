@@ -16,8 +16,9 @@ export interface FramePlate {
   symbol: { right: number; center: number; width: number; height: number };
 }
 
-/** Source-native geometry from pack8th.js and packM15RegularNew.js at the
- * pinned revision. No scan offsets or HSB fitted to other assets are reused. */
+/** Source-native frame apertures from pack8th.js and packM15RegularNew.js,
+ * with separately measured cost/symbol placement. No scan offsets or HSB
+ * fitted to other assets are reused. */
 export function framePlate(face: RenderedCardInput): FramePlate | null {
   if (!face.frameAssetFamily) return null;
   if (
@@ -30,6 +31,13 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   const eighth = face.frameAssetFamily === 'eighth';
   const profile = resolveCardProfile(face),
     colors = resolveFrameColors(face);
+  // Pair keys are WUBRG-sorted, but visible halves follow the short arc around
+  // the color wheel: RW, GW and GU wrap across its end. Match printed lands
+  // without changing the semantic colors or source asset naming convention.
+  const landColors =
+    colors.length === 2 && 'WUBRG'.indexOf(colors[1]!) - 'WUBRG'.indexOf(colors[0]!) > 2
+      ? [...colors].reverse()
+      : colors;
   const folder = eighth ? '8th' : 'm15/new';
   const root = `${CONJURER_ROOT}/img/frames/${folder}`;
   const material = profile.land
@@ -43,8 +51,10 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
           : (colors[0]?.toLowerCase() ?? 'c');
   const land = (color: string) => (eighth ? `${color.toLowerCase()}l` : `l${color.toLowerCase()}`);
   const left =
-    profile.land && colors.length ? land(colors.length > 2 ? 'm' : colors[0]!) : material;
-  const right = profile.land && colors.length === 2 ? land(colors[1]!) : undefined;
+    profile.land && landColors.length
+      ? land(landColors.length > 2 ? 'm' : landColors[0]!)
+      : material;
+  const right = profile.land && landColors.length === 2 ? land(landColors[1]!) : undefined;
   // Base multicolor plates retain gold material. Color-pair pinlines and modern
   // legend crowns need their own masks; these options are base plate candidates.
   const ptKey = material === 'l' ? (eighth ? 'l' : 'c') : material;

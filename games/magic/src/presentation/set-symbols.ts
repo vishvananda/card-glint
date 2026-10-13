@@ -21,12 +21,7 @@ export function setSymbolCrop(
     'setCode' | 'setSymbol' | 'setSymbolSource' | 'rarity' | 'frameAssetFamily'
   >,
 ): FaceRect {
-  return !face.setSymbol &&
-    !styledSetSymbol(
-      face.setCode ?? '',
-      face.rarity,
-      face.setSymbolSource,
-    )
+  return !face.setSymbol && !styledSetSymbol(face.setCode ?? '', face.rarity, face.setSymbolSource)
     ? (CORE_SYMBOL_CROPS[face.setCode?.toLowerCase() ?? ''] ?? [0, 0, 1, 1])
     : [0, 0, 1, 1];
 }

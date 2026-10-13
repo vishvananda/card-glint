@@ -207,15 +207,32 @@ try {
       frameColors: ['R', 'W'],
     });
     check(
-      dual.frame.endsWith('/lw.png') && dual.rightFrame.endsWith('/lr.png'),
+      dual.frame.endsWith('/lr.png') && dual.rightFrame.endsWith('/lw.png'),
       'Dual-land frame palette lost',
     );
+    for (const family of ['eighth', 'm15-accurate']) {
+      for (const pair of ['WU', 'WB', 'RW', 'GW', 'UB', 'UR', 'GU', 'BR', 'BG', 'RG']) {
+        const plate = framePlate({
+          ...face,
+          frameAssetFamily: family,
+          typeLine: 'Land',
+          frameColors: [...pair].reverse(),
+        });
+        const file = (color) =>
+          family === 'eighth' ? `${color.toLowerCase()}l` : `l${color.toLowerCase()}`;
+        check(
+          plate.frame.endsWith(`/${file(pair[0])}.png`) &&
+            plate.rightFrame.endsWith(`/${file(pair[1])}.png`),
+          `Wrong printed land order: ${family} ${pair}`,
+        );
+      }
+    }
     const land = await composeCardTexture(
       input({
         ...face,
         frameAssetFamily: 'm15-accurate',
         typeLine: 'Land',
-        frameColors: ['W', 'R'],
+        frameColors: ['U', 'R'],
       }),
       'inspect',
       signal,
