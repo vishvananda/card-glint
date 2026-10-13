@@ -1,0 +1,5178 @@
+const Dr = "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets", Pr = "https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg", xr = "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf", Fr = "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1", _r = "https://cdn.jsdelivr.net/gh/andrewgioia/mana@6ca9e696d3bda2519dcf3eebd96598f84ad9ddd8/fonts/mana.woff2", fe = {
+  RENDERER_COMPONENT_ROOT: Dr,
+  KEYRUNE_ROOT: Pr,
+  CONJURER_ROOT: xr,
+  RETRO_ROOT: Fr,
+  RETRO_SYMBOL_FONT: _r
+}, Ur = new Set(
+  "arn atq leg drk fem ice hml all chr mir vis wth tmp sth por".split(" ")
+), Nr = new Set("lea leb 2ed 3ed 4ed 5ed ced cei sum itp".split(" "));
+function Jt(e) {
+  return Ur.has(e?.trim().toLowerCase() ?? "");
+}
+function Yr(e) {
+  return ["arn", "atq", "leg", "drk", "chr"].includes(e?.toLowerCase() ?? "") ? 0 : 1;
+}
+function Hr(e, t) {
+  const r = e?.trim().toLowerCase() ?? "";
+  return Nr.has(r) || r === "atq" && t === "Reconstruction";
+}
+const zr = {
+  Plains: "W",
+  Island: "U",
+  Swamp: "B",
+  Mountain: "R",
+  Forest: "G"
+};
+function Zt(e) {
+  if (!/\bBasic Land\b/.test(e.typeLine ?? "")) return null;
+  const t = e.rulesText ?? "", r = /^\(?\{T\}: Add \{([WUBRG])\}\.\)?$/.exec(t);
+  if (!r || t.startsWith("(") !== t.endsWith(")")) return null;
+  if (e.rulesParagraphs) {
+    const a = e.rulesParagraphs;
+    if (a.length !== 1 || a[0].role !== "rules" || a[0].align || a[0].runs.length !== 1 || a[0].runs[0].text !== t || !!a[0].runs[0].italic !== t.startsWith("("))
+      return null;
+  }
+  return r[1];
+}
+function ot(e) {
+  if (e.wordingMode === "oracle" || !["mir", "tmp"].includes(e.setCode?.toLowerCase() ?? "")) return null;
+  const t = /^Basic Land — (Plains|Island|Swamp|Mountain|Forest)$/.exec(
+    e.typeLine ?? ""
+  )?.[1];
+  if (!t) return null;
+  const r = zr[t];
+  return Zt(e) !== r ? null : {
+    typeLine: "Land",
+    paragraphs: [
+      {
+        role: "rules",
+        align: "center",
+        runs: [{ text: `{T}: Add {${r}} to your mana pool.` }]
+      }
+    ]
+  };
+}
+function qr(e) {
+  return e.power != null && e.toughness != null ? {
+    text: `${e.power}/${e.toughness}`,
+    label: `Power ${e.power}, toughness ${e.toughness}`
+  } : e.loyalty != null && e.loyalty !== "" ? { text: String(e.loyalty), label: `Starting loyalty ${e.loyalty}` } : null;
+}
+const f = 488, L = 680, Xr = 0.058;
+function ce(e, t) {
+  if (t === "silver") return { border: "#b8bbc2", ink: "#17140f" };
+  const r = (t ?? (["2ed", "3ed", "4ed", "5ed", "6ed", "7ed", "8ed", "9ed", "chr"].includes(
+    e?.toLowerCase() ?? ""
+  ) ? "white" : "black")) === "white";
+  return { border: r ? "#eeedeb" : "#090806", ink: r ? "#17140f" : "#fff" };
+}
+const Vr = "M50 4 88 24v52L50 96 12 76V24Z M50 13 20 29v42l30 16 30-16V29Z", N = {
+  background: [0.03937, 0.02531, 0.92126, 0.88976],
+  legendaryBackground: [0.03937, 0.03993, 0.92126, 0.88976],
+  frame: [0.04858, 0.03937, 0.90284, 0.88864],
+  crown: [0.01575, 0.01687, 0.9622, 0.15748],
+  title: [0.05669, 0.04499, 0.88662, 0.05737],
+  art: [0.06929, 0.10742, 0.86142, 0.44882],
+  type: [0.05669, 0.5613, 0.88662, 0.05737],
+  rules: [0.07638, 0.62542, 0.84724, 0.29246],
+  stats: [0.7704, 0.88752, 0.18236, 0.06974],
+  footer: [0.06693, 0.93262, 0.86614, 0.045],
+  stamp: [0.34, 0.76 - 0.16 * f / L, 0.32, 0.32 * f / L]
+}, G = {
+  titleFont: 24,
+  normalTitleFont: 26,
+  titleTracking: 54e-5 * f,
+  titleGap: 0.02362 * f,
+  plateLeft: 0.02362 * f,
+  plateRight: 0.01575 * f,
+  manaSize: 0.03556 * 1.35 * f,
+  manaGap: 378e-5 * f,
+  manaLift: -63e-4 * f,
+  typeFont: 0.044 * f,
+  typeGap: 945e-5 * f,
+  typeLift: -315e-5 * f,
+  setHeight: 0.06142 * f,
+  setMaxWidth: 0.11024 * f,
+  setMargin: 472e-5 * f,
+  rulesPaddingX: 0.01575 * f,
+  rulesPaddingY: 0.02362 * f,
+  normalRulesFont: 0.04444 * f,
+  longRulesFont: 0.0381 * f,
+  denseRulesFont: 0.0328 * f,
+  paragraphGap: 787e-5 * f,
+  statsFont: 0.05333 * f,
+  statsLine: 0.08661 * f,
+  footerFont: 0.02167 * f,
+  footerLine: 0.02126 * f,
+  footerTracking: 362e-5 * f,
+  artistMarginLeft: 7e-3 * f,
+  artistMarginRight: 35e-4 * f,
+  legendaryBackgroundLift: -0.02047 * f
+}, vt = (e) => e.replace(/[A-Z]/g, (t) => `-${t.toLowerCase()}`);
+function Kr(e = N) {
+  return {
+    ...Object.fromEntries(
+      Object.entries(e).flatMap(
+        ([t, r]) => r.map((a, n) => [
+          `--face-${vt(t)}-${["x", "y", "w", "h"][n]}`,
+          `${a * 100}%`
+        ])
+      )
+    ),
+    ...Object.fromEntries(
+      Object.entries(G).map(([t, r]) => [
+        `--face-${vt(t)}`,
+        `${r / f * 100}cqw`
+      ])
+    )
+  };
+}
+const c0 = Kr();
+function Jr(e) {
+  return e.length > 340 ? "dense" : e.length > 210 ? "long" : "normal";
+}
+function d0(e) {
+  return {
+    dense: G.denseRulesFont,
+    long: G.longRulesFont,
+    normal: G.normalRulesFont
+  }[Jr(e)];
+}
+function Ne(e) {
+  return e.split(/(\{[^}\n]+\})/g).filter(Boolean).map((t) => ({
+    value: t,
+    symbol: /^\{[^}\n]+\}$/.test(t) ? t.slice(1, -1) : null
+  }));
+}
+function Zr(e) {
+  const t = e.trim().toUpperCase();
+  return { LEA: "α", LEB: "β", "2ED": "∞", "3ED": "III" }[t] ?? t.slice(0, 3);
+}
+const Ze = "WUBRG";
+function K(e) {
+  const t = e.typeLine ?? "", r = e.artifact ?? /(^|\s)Artifact(?:\s|$)/i.test(t), a = e.land ?? /(^|\s)Land(?:\s|$)/i.test(t), n = !/\bPlaneswalker\b/i.test(t) && (e.legendary ?? /(^|\s)Legendary(?:\s|$)/i.test(t)), s = e.creature ?? /(^|\s)Creature(?:\s|$)/i.test(t), l = pe(e), o = l.length === 0 ? "Colourless" : l.length > 2 ? "Gold" : l.join(""), i = (r || a) && l.length === 0 ? "Artifact" : o, c = a ? "Land" : r ? "Artifact" : l.length > 1 ? "Gold" : o;
+  return {
+    frame: i,
+    boxes: c,
+    background: c,
+    // Land crowns keep the same color pair as their frame; panels stay land material.
+    crown: a && l.length > 0 ? o : r && l.length > 0 ? l.length > 1 ? "Gold" : o : c,
+    pt: c,
+    artifact: r,
+    land: a,
+    legendary: n,
+    creature: s,
+    className: `rendered-card-profile-${c.toLocaleLowerCase()}`
+  };
+}
+function pe(e) {
+  return Qr(e.frameColors ?? e.colors ?? []);
+}
+function Qr(e) {
+  return [
+    ...new Set(
+      e.map((t) => t.toLocaleUpperCase()).filter((t) => Ze.includes(t))
+    )
+  ].sort((t, r) => Ze.indexOf(t) - Ze.indexOf(r));
+}
+const ea = { "10e": "cmrsu", "2ed": "cmrsu", "2x2": "cmrsu", "2xm": "cmrsu", "30a": "cmrsu", "3ed": "cmrsu", "40k": "cmrsu", "4ed": "cmrsu", "5dn": "cmrsu", "5ed": "cmrsu", "6ed": "cmrsu", "7ed": "cmrsu", "8ed": "cmrsu", "9ed": "cmrsu", a25: "cmrsu", acr: "cmrsu", aer: "cmrsu", afc: "cmrsu", afr: "cmrsu", akh: "cmrsu", akr: "cmrsu", ala: "cmrsu", all: "cmrsu", ana: "cmrsu", apc: "cmrsu", arb: "cmrsu", arc: "cmrsu", archie: "cmrsu", arena: "cmrsu", arn: "cmrsu", ath: "cmrsu", atq: "cmrsu", avr: "cmrsu", azorius: "cmru", bbd: "cmrsu", bfz: "cmrsu", big: "cmrsu", blb: "cmrsu", blc: "cmrsu", bng: "cmrsu", bok: "cmrsu", boros: "cmru", bot: "cmrsu", brb: "cmrsu", brc: "cmrsu", bro: "cmrsu", brr: "cmrsu", btd: "cmrsu", c13: "cmrsu", c14: "cmrsu", c15: "cmrsu", c16: "cmrsu", c17: "cmrsu", c18: "cmrsu", c19: "cmrsu", c20: "cmrsu", c21: "cmrsu", cc1: "cmrsu", cc2: "cmrsu", ced: "cmrsu", cei: "cmrsu", chk: "cmrsu", chr: "cmrsu", clb: "cmrsu", clu: "cmrsu", cm1: "cmrsu", cm2: "cmrsu", cma: "cmrsu", cmd: "cmrsu", cmm: "cmrsu", cmr: "cmrsu", cn2: "cmrsu", cns: "cmrsu", con: "cmrsu", conf: "cmrsu", csp: "cmrsu", dci: "cmrsu", dd1: "cmrsu", dd2: "cmrsu", ddc: "cmrsu", ddd: "cmrsu", dde: "cmrsu", ddf: "cmrsu", ddg: "cmrsu", ddh: "cmrsu", ddi: "cmrsu", ddj: "cmrsu", ddk: "cmrsu", ddl: "cmrsu", ddm: "cmrsu", ddn: "cmrsu", ddo: "cmrsu", ddp: "cmrsu", ddq: "cmrsu", ddr: "cmrsu", dds: "cmrsu", ddt: "cmrsu", ddu: "cmrsu", default: "cmrsu", dft: "cmrsu", dgm: "cmrsu", dimir: "cmru", dis: "cmrsu", dka: "cmrsu", dkm: "cmrsu", dmc: "cmrsu", dmr: "cmrsu", dmu: "cmrsu", dom: "cmrsu", dpa: "cmrsu", drb: "cmrsu", drc: "cmrsu", drk: "cmrsu", dsc: "cmrsu", dsk: "cmrsu", dst: "cmrsu", dtk: "cmrsu", e01: "cmrsu", e02: "cmrsu", ecc: "cmrsu", ecl: "cmrsu", eld: "cmrsu", ema: "cmrsu", emn: "cmrsu", eoc: "cmrsu", eoe: "cmrsu", eos: "cmru", eve: "cmrsu", exo: "cmrsu", exp: "cmrsu", fca: "cmrsu", fdc: "cmrsu", fdn: "cmrsu", fem: "cmrsu", fic: "cmrsu", fin: "cmrsu", fnm: "r", fra: "cmrsu", frc: "cmrsu", frf: "cmrsu", fut: "cmrsu", gn2: "cmrsu", gn3: "cmrsu", gnt: "cmrsu", golgari: "cmru", gpt: "cmrsu", grn: "cmrsu", gruul: "cmru", gs1: "cmrsu", gtc: "cmrsu", h09: "cmrsu", h17: "cmrsu", ha1: "cmrsu", hbg: "cmrsu", hml: "cmrsu", hob: "cmrsu", hoc: "cmrsu", hop: "cmrsu", hou: "cmrsu", ice: "cmrsu", idw: "cmrsu", iko: "cmrsu", ima: "cmrsu", inr: "cmrsu", inv: "cmrsu", isd: "cmrsu", izzet: "cmru", j20: "cmrsu", j21: "cmrsu", j22: "cmrsu", j25: "cmru", jmp: "cmrsu", jou: "cmrsu", jud: "cmrsu", khc: "cmrsu", khm: "cmrsu", kld: "cmrsu", klr: "cmrsu", ktk: "cmrsu", lcc: "cmrsu", lci: "cmrsu", lea: "cmrsu", leb: "cmrsu", leg: "cmrsu", lgn: "cmrsu", lrw: "cmrsu", ltc: "cmrsu", ltr: "cmrsu", m10: "cmrsu", m11: "cmrsu", m12: "cmrsu", m13: "cmrsu", m14: "cmrsu", m15: "cmrsu", m19: "cmrsu", m20: "cmrsu", m21: "cmrsu", m3c: "cmrsu", mat: "cmrsu", mb2: "cmrsu", mbc: "cmrsu", mbs: "cmrsu", mc3: "cmrsu", md1: "cmrsu", me1: "cmrsu", me2: "cmrsu", me3: "cmrsu", me4: "cmrsu", med: "cmrsu", mh1: "cmrsu", mh2: "cmrsu", mh3: "cmrsu", mic: "cmrsu", mid: "cmrsu", mir: "cmrsu", mkc: "cmrsu", mkm: "cmrsu", mm2: "cmrsu", mm3: "cmrsu", mma: "cmrsu", mmq: "cmrsu", moc: "cmrsu", mom: "cmrsu", mor: "cmrsu", mp2: "cmrsu", mps: "cmrsu", mrd: "cmrsu", msc: "cmrsu", msh: "cmrsu", mtga: "cmrsu", mtgo: "cmrsu", mul: "cmrsu", ncc: "cmrsu", nec: "cmrsu", nem: "cmrsu", neo: "cmrsu", nph: "cmrsu", ody: "cmrsu", ogw: "cmrsu", om1: "cmrsu", omb: "cmrsu", onc: "cmrsu", one: "cmrsu", ons: "cmrsu", ori: "cmrsu", orzhov: "cmru", otc: "cmrsu", otj: "cmrsu", otp: "cmrsu", p02: "cmrsu", papac: "cmrsu", parl2: "cmrsu", past: "cmrsu", pbook: "cmrsu", pc2: "cmrsu", pca: "cmrsu", pcy: "cmrsu", pd2: "cmrsu", pd3: "cmrsu", pdrc: "c", peuro: "cmrsu", pgru: "c", phpr: "cmrsu", phuk: "cmrsu", pidw: "cmrsu", pio: "cmrsu", pip: "cmrsu", planeswalker: "cmrsu", plc: "cmrsu", pls: "cmrsu", pmps: "cmrsu", por: "cmrsu", prm: "cmrsu", ps11: "cmrsu", psal: "cmrsu", psdg: "cmrsu", psum: "cmrsu", ptg: "cmrsu", ptk: "cmrsu", pvan: "c", pxbox: "cmrsu", pz1: "cmrsu", pz2: "cmrsu", pza: "cmrsu", rav: "cmrsu", ren: "cmrsu", rex: "cmrsu", rin: "cmrsu", rix: "cmrsu", rna: "cmrsu", roe: "cmrsu", rtr: "cmrsu", rvr: "cmrsu", s00: "cmrsu", s99: "cmrsu", scd: "cmrsu", scg: "cmrsu", sds: "cmrsu", selesnya: "cmru", shm: "cmrsu", simic: "cmru", sir: "cmrsu", sis: "cmrsu", sld: "cmrsu", snc: "cmrsu", soa: "cmrsu", soc: "cmrsu", soi: "cmrsu", sok: "cmrsu", som: "cmrsu", sos: "cmrsu", spe: "cmrsu", spg: "cmrsu", spm: "cmrsu", ss1: "cmrsu", ss2: "cmrsu", ss3: "cmrsu", sta: "cmrsu", star: "cmrsu", sth: "cmrsu", stx: "cmrsu", td0: "cmrsu", td2: "cmrsu", tdc: "cmrsu", tdm: "cmrsu", thb: "cmrsu", ths: "cmrsu", tla: "cmrsu", tle: "cmrsu", tlr: "c", tmc: "cmrsu", tmp: "cmrsu", tmt: "cmrsu", tor: "cmrsu", tpr: "cmrsu", trc: "cmrsu", trk: "cmrsu", tsp: "cmrsu", tsr: "cmrsu", uds: "cmrsu", ugl: "cmrsu", ulg: "cmrsu", uma: "cmrsu", und: "cmrsu", unf: "cmrsu", unh: "cmrsu", usg: "cmrsu", ust: "cmrsu", v09: "cmrsu", v10: "cmrsu", v11: "cmrsu", v12: "cmrsu", v13: "cmrsu", v14: "cmrsu", v15: "cmrsu", v16: "cmrsu", v17: "cmrsu", van: "cmrsu", vis: "cmrsu", vma: "cmrsu", voc: "cmrsu", vow: "cmrsu", w16: "cmrsu", w17: "cmrsu", war: "cmrsu", who: "cmrsu", woc: "cmrsu", woe: "cmrsu", wor: "u", wot: "cmrsu", wth: "cmrsu", wwk: "cmrsu", x2ps: "cmrsu", xln: "cmrsu", y22: "cmrsu", y23: "cmrsu", y24: "cmrsu", y25: "cmrsu", y26: "cmrsu", zen: "cmrsu", znc: "cmrsu", zne: "cmrsu", znr: "cmrsu" }, ta = {
+  codes: ea
+}, me = fe.CONJURER_ROOT, Qt = `${me}/img/setSymbols/official/`, Rt = ta.codes, ra = {
+  common: "c",
+  uncommon: "u",
+  rare: "r",
+  mythic: "m",
+  special: "s",
+  bonus: "s"
+};
+function er(e, t = "common", r = "auto") {
+  const a = e.trim().toLowerCase();
+  if (r === "keyrune") return null;
+  const n = Jt(a) ? "c" : ra[t];
+  return n && Object.hasOwn(Rt, a) && Rt[a].includes(n) ? `${Qt}${a}-${n}.svg` : null;
+}
+function Oe(e) {
+  return !!e?.startsWith(Qt);
+}
+const aa = fe.KEYRUNE_ROOT, sa = {
+  m15: [0.25 / 32, 7.6 / 32, 31.5 / 32, 16.8 / 32],
+  m19: [0, 9.314 / 32, 1, 13.38 / 32],
+  m20: [0, 9.31 / 32, 1, 13.38 / 32],
+  m21: [0, 9.33 / 32, 1, 13.34 / 32]
+};
+function tr(e) {
+  return !e.setSymbol && !er(e.setCode ?? "", e.rarity, e.setSymbolSource) ? sa[e.setCode?.toLowerCase() ?? ""] ?? [0, 0, 1, 1] : [0, 0, 1, 1];
+}
+const rr = new Set(
+  `
+10e 2ed 2x2 2xm 3ed 40k 4ed 5dn 5ed 6ed 7ed 8ed 9ed a25 acr aer afc afr akh akr
+ala all apc arb arc arn ath atq avr bbd bcore bfz big blb blc bng bok boros bot br
+brb brc bro brr btd c13 c14 c15 c16 c17 c18 c19 c20 c21 cc1 cc2 chk chr clb clu
+cm1 cm2 cma cmd cmm cmr cn2 cns csp dd2 ddc ddd dde ddf ddg ddh ddi ddj ddk ddl
+ddm ddn ddo ddp ddq ddr dds ddt ddu dft dgm dimir dis dka dkm dmc dmr dmu dom dpa
+drb drc drk dsc dsk dst dtk dvk e01 e02 ecc ecl eld ema emn eoc eoe eos eve evg
+exo exp fdc fdn fem fic fin fra frf fut gn2 gn3 gnt gpt grn gruul gs1 gtc h09 h17
+ha1 hbg hml hob hoc hop hou ice ice2 iko ima inr inv isd izzet j20 j21 j22 j25 jmp
+jou jud khc khm kld klr ktk lcc lci lea leb leg lgn lrw ltc ltr m10 m11 m12 m13
+m14 m15 m19 m20 m21 m3c mar mat mb1 mb2 mbs md1 me1 me2 me3 me4 med mh1 mh2 mh3
+mic mid mir mkc mkm mm2 mm3 mma mmq moc mom mor mp1 mp2 mrd msc msh ncc nec nem
+neo nms nph ody ogw om1 omb onc one ons ori otc otj otp papac parl parl2 parl3 past pbook
+pc2 pca pcy pd2 pd3 pdep pdgc peuro pfnm pgru pidw pio pip plc pleaf pls pm2 pma pmei pmodo
+pmps pmpu pmtg1 pmtg2 po2 por psega psum ptg ptk ptsa pxbox pz2 rav rex rix rna roe rtr rvr
+s00 s99 scg shm simic sld2 snc soa soc soi sok som sos spe spg spm ss1 ss2 ss3 sta
+sth stx td2 tdc tdm thb ths tla tle tmc tmp tmt tor tpr tsp tsr uds ugl ulg uma
+una und unf unh usg ust v09 v0x v10 v11 v12 v13 v14 v15 v16 v17 van vis vma voc
+vow w16 w17 war who woc woe wot wth wwk x1e x2e x2ps x2u x3e x4ea xcle xice xlcu xln
+xmods xren xrin y22 y24 y25 y26 ydmu zen znc zne znr
+`.trim().split(/\s+/)
+);
+rr.add("con_");
+const na = "GLINT", Pe = {
+  common: "#171717",
+  uncommon: "#8c9ba5",
+  rare: "#bc923f",
+  mythic: "#d66b32",
+  special: "#926ab5",
+  bonus: "#926ab5"
+};
+function la(e) {
+  const t = Pe[e] ?? Pe.common;
+  return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="${t}" stroke="#171717" stroke-width="2" d="M50 3 8 44h32L50 3Zm0 0 10 41h32L50 3ZM8 52l38 45-6-45H8Zm52 0-6 45 38-45H60Z"/></svg>`)}`;
+}
+function oa(e) {
+  const t = Pe[e] ?? Pe.common;
+  return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="${t}" stroke="#171717" stroke-width="2" stroke-linejoin="round"><path d="m50 3 7 17 17 7-17 7-7 17-7-17-17-7 17-7Z"/><path d="M8 48h84L78 64H62v16l12 10H26l12-10V64H22ZM15 94h70v4H15Z"/></g></svg>`)}`;
+}
+function ia(e, t = "common", r) {
+  const a = e.trim().toLowerCase();
+  if (a === "forge") return oa(t);
+  if (a === na.toLowerCase()) return la(t);
+  const n = er(a, t, r);
+  if (n) return n;
+  const s = a === "con" ? "con_" : a === "p02" ? "po2" : a;
+  return rr.has(s) ? `${aa}/${s}.svg` : null;
+}
+const Ct = {
+  "Abu Ja'far": "arn",
+  "Active Volcano": "leg",
+  "Akron Legionnaire": "leg",
+  Aladdin: "arn",
+  "Angelic Voices": "leg",
+  "Arcades Sabboth": "leg",
+  "Arena of the Ancients": "leg",
+  "Argothian Pixies": "atq",
+  "Ashnod's Altar": "atq",
+  "Ashnod's Transmogrant": "atq",
+  "Axelrod Gunnarson": "leg",
+  "Ayesha Tanaka": "leg",
+  "Azure Drake": "leg",
+  Banshee: "drk",
+  "Barl's Cage": "drk",
+  "Beasts of Bogardan": "leg",
+  "Blood Moon": "drk",
+  "Blood of the Martyr": "drk",
+  "Bog Rats": "drk",
+  "Book of Rass": "drk",
+  Boomerang: "leg",
+  "Bronze Horse": "leg",
+  "Cat Warriors": "leg",
+  Chromium: "leg",
+  "City of Brass": "arn",
+  Cocoon: "leg",
+  "Concordant Crossroads": "leg",
+  "Craw Giant": "leg",
+  "Cuombajj Witches": "arn",
+  Cyclone: "arn",
+  "D'Avenant Archer": "leg",
+  "Dakkon Blackblade": "leg",
+  "Dance of Many": "drk",
+  Dandân: "arn",
+  "Divine Offering": "leg",
+  "Emerald Dragonfly": "leg",
+  "Enchantment Alteration": "leg",
+  "Erhnam Djinn": "arn",
+  "Fallen Angel": "leg",
+  "Feldon's Cane": "atq",
+  "Fire Drake": "drk",
+  "Fishliver Oil": "arn",
+  "Flash Flood": "leg",
+  "Fountain of Youth": "drk",
+  "Gabriel Angelfire": "leg",
+  "Gauntlets of Chaos": "leg",
+  "Ghazbán Ogre": "arn",
+  "Giant Slug": "leg",
+  "Goblin Artisans": "atq",
+  "Goblin Digging Team": "drk",
+  "Goblin Shrine": "drk",
+  "Goblins of the Flarg": "drk",
+  "Hasran Ogress": "arn",
+  "Hell's Caretaker": "leg",
+  "Horn of Deafening": "leg",
+  "Indestructible Aura": "leg",
+  "Ivory Guardians": "leg",
+  "Jalum Tome": "atq",
+  "Jeweled Bird": "arn",
+  Johan: "leg",
+  Juxtapose: "leg",
+  "Keepers of the Faith": "leg",
+  "Kei Takahashi": "leg",
+  "Land's Edge": "leg",
+  "Living Armor": "drk",
+  "Marhault Elsdragon": "leg",
+  Metamorphosis: "arn",
+  "Mountain Yeti": "leg",
+  Nebuchadnezzar: "leg",
+  "Nicol Bolas": "leg",
+  "Obelisk of Undoing": "atq",
+  "Palladia-Mors": "leg",
+  "Petra Sphinx": "leg",
+  "Primordial Ooze": "leg",
+  "Puppet Master": "leg",
+  "Rabid Wombat": "leg",
+  Rakalite: "atq",
+  Recall: "leg",
+  "Remove Soul": "leg",
+  "Repentant Blacksmith": "arn",
+  Revelation: "leg",
+  "Rubinia Soulsinger": "leg",
+  Runesword: "drk",
+  "Safe Haven": "drk",
+  "Scavenger Folk": "drk",
+  Sentinel: "leg",
+  "Serpent Generator": "leg",
+  "Shield Wall": "leg",
+  "Shimian Night Stalker": "leg",
+  "Sivitri Scarzam": "leg",
+  "Sol'kanar the Swamp King": "leg",
+  Stangg: "leg",
+  "Storm Seeker": "leg",
+  Takklemaggot: "leg",
+  Teleport: "leg",
+  "The Fallen": "drk",
+  "The Wretched": "leg",
+  "Tobias Andrion": "leg",
+  "Tor Wauki": "leg",
+  "Tormod's Crypt": "drk",
+  Transmutation: "leg",
+  "Triassic Egg": "leg",
+  "Urza's Mine": "atq",
+  "Urza's Power Plant": "atq",
+  "Urza's Tower": "atq",
+  "Vaevictis Asmadi": "leg",
+  "Voodoo Doll": "leg",
+  "Wall of Heat": "leg",
+  "Wall of Opposition": "leg",
+  "Wall of Shadows": "leg",
+  "Wall of Vapor": "leg",
+  "Wall of Wonder": "leg",
+  "War Elephant": "arn",
+  "Witch Hunter": "drk",
+  "Xira Arien": "leg",
+  "Yawgmoth Demon": "atq"
+};
+function ca(e) {
+  return Object.hasOwn(Ct, e) ? Ct[e] : null;
+}
+const Re = fe.RENDERER_COMPONENT_ROOT;
+function it(e, t = "normal") {
+  const r = ["normal", "adventure", "leveler"].includes(t), a = t === "saga" ? "saga" : t === "planeswalker-large" ? "planeswalker_large" : t, n = ["saga", "class"].includes(t) && e.boxes === "Colourless" ? "Land" : t.startsWith("planeswalker") && e.boxes === "Artifact" ? "Colourless" : e.boxes;
+  return {
+    background: Q(
+      r ? "bg" : t === "class" ? "saga_bg" : `${a}_bg`,
+      t.startsWith("planeswalker") && n === "Land" ? "Colourless" : n
+    ),
+    frame: Q(
+      ["normal", "leveler"].includes(t) ? "frames" : `${a}_frames`,
+      t === "adventure" ? "WUBRG".includes(e.frame) ? e.frame : "W" : t === "class" ? e.frame === "WU" ? "UW" : e.frame.length === 2 ? "Gold" : e.frame : t === "saga" && e.frame === "Colourless" ? "Land" : t.startsWith("planeswalker") && ["Artifact", "Land"].includes(e.frame) ? "Colourless" : e.frame
+    ),
+    boxes: Q(t.startsWith("planeswalker") ? "planeswalker_boxes" : "boxes", n),
+    nameplate: Q("nameplates", e.boxes),
+    crown: Q("legendary-crowns", e.crown),
+    pt: t.startsWith("planeswalker") ? Q("planeswalker", "Loyalty") : Q("pt-boxes", e.pt)
+  };
+}
+function Ye(e) {
+  const t = e.replace(/^\{|\}$/g, "").toLocaleUpperCase(), r = t === "∞" ? "INFINITY" : t === "½" ? "HALF" : t.replaceAll("/", "");
+  return /^[A-Z0-9]+$/.test(r) ? Q("symbols", r) : null;
+}
+function da(e, t, r) {
+  return ia(e, t, r);
+}
+function Q(e, t) {
+  const r = e === "legendary-crowns" ? "legendary_crowns" : e === "pt-boxes" ? "pt_boxes" : e === "nameplates" ? "boxes" : e, a = e === "symbols" ? "svg" : "webp";
+  return `${Re}/img/${r}/${encodeURIComponent(t)}.${a}`;
+}
+function Ce(e, t = e.rarity) {
+  const r = e.setCode?.trim().toLowerCase() ?? "";
+  return e.setSymbol ?? da(
+    r === "chr" ? ca(e.name) ?? "" : r,
+    t,
+    e.setSymbolSource
+  );
+}
+function rt(e) {
+  const t = [
+    e.rulesText ?? "",
+    ...(e.rulesParagraphs ?? []).flatMap((a) => a.runs.map((n) => n.text))
+  ];
+  return [.../* @__PURE__ */ new Set([
+    ...e.manaSymbols ?? [],
+    ...t.flatMap(
+      (a) => Ne(a).flatMap((n) => n.symbol ? [n.symbol] : [])
+    )
+  ])].map(Ye);
+}
+const ha = fe.RETRO_SYMBOL_FONT, Me = fe.RETRO_ROOT, ua = `${Me}/fonts/goudy-medieval.ttf`, ma = new Set(
+  "lea leb 2ed 3ed 4ed 5ed 6ed 7ed arn atq leg drk fem ice hml all mir vis wth tmp sth exo usg ulg uds mmq nem pcy inv pls apc ody tor jud ons lgn scg chr tsb".split(
+    " "
+  )
+), ga = new Set("2ed 3ed 4ed 5ed 6ed 7ed chr".split(" "));
+function be(e) {
+  return e.layout && !["normal", "token"].includes(e.layout) || /\b(Saga|Class|Planeswalker|Battle)\b/.test(e.typeLine ?? "") ? !1 : e.frameStyle === "retro" || e.frameStyle !== "modern" && ma.has(e.setCode?.toLowerCase() ?? "");
+}
+function He(e) {
+  return ["lea", "leb", "2ed"].includes(e.setCode?.toLowerCase() ?? "");
+}
+function ne(e) {
+  const t = e.setCode?.toLowerCase() ?? "";
+  return He(e) ? "abu" : t === "leg" && pe(e).length > 1 ? "legends" : ["3ed", "4ed", "5ed", "atq"].includes(t) && !/\bLand\b/.test(e.typeLine ?? "") ? "fourth" : "seventh";
+}
+function ar(e) {
+  return ne(e) === "fourth" ? [0.012, 0.01, 0.974, 0.982] : [0, 0, 1, 1];
+}
+function ct(e) {
+  const t = He(e);
+  return {
+    ...N,
+    frame: ar(e),
+    title: [t ? 0.07 : 0.1134, 0.0481, t ? 0.8467 : 0.8, 0.043],
+    art: ne(e) === "legends" ? [0.112, 0.094, 0.78, 0.45] : ne(e) === "fourth" ? [0.114, 0.098, 0.772, 0.445] : t ? [0.116, 0.1043, 0.7654, 0.441] : [0.12, 0.0991, 0.7667, 0.4429],
+    type: [0.1074, 0.5486, 0.7852, 0.0543],
+    rules: [0.128, 0.6067, 0.744, 0.2724],
+    stats: [0.8074, 0.895, 0.1367, 0.043],
+    footer: [0.1, 0.9, 0.68, 0.04],
+    stamp: [0.34, 0.628, 0.32, 0.23]
+  };
+}
+function Te(e) {
+  const t = pe(e), r = e.typeLine ?? "", a = [
+    ["Plains", "w"],
+    ["Island", "u"],
+    ["Swamp", "b"],
+    ["Mountain", "r"],
+    ["Forest", "g"]
+  ].filter(([o]) => r.includes(o)), n = /\bLand\b/.test(r) ? a.length === 1 ? a[0][1] + "l" : "l" : /\bArtifact\b/.test(r) ? "a" : t.length > 1 ? "m" : t[0]?.toLowerCase() ?? "c", s = ne(e), l = s === "seventh" || n === "c" || s === "abu" && n === "m" ? "seventh/regular" : `old/${s}`;
+  return `${Me}/img/frames/${l}/${s === "legends" ? "legendsFrameM" : n}.png`;
+}
+function ge(e) {
+  return e.borderColor ?? (ga.has(e.setCode?.toLowerCase() ?? "") ? "white" : "black");
+}
+function Mt(e) {
+  return ge(e) === "silver" ? ce(null, "silver").border : ge(e) === "white" ? pa : "#080808";
+}
+function sr(e) {
+  return ne(e) === "fourth" ? `${Me}/img/frames/old/fourth/borderBlack.png` : `${Me}/img/frames/${He(e) ? "old/abu" : "seventh/regular"}/border.svg`;
+}
+function Tt(e) {
+  return He(e) ? "#ababab" : "#f2eee3";
+}
+function fa(e) {
+  return e.setCode?.toLowerCase() === "7ed" && pe(e).some((t) => t === "W" || t === "G") && !/Land/.test(e.typeLine ?? "") ? "saturate(.7) brightness(.88)" : "none";
+}
+function dt(e) {
+  if (ot(e)) return null;
+  const t = Zt(e);
+  return t ? `${Me}/img/frames/m15/basics/${t.toLowerCase()}.png` : null;
+}
+const pa = "#eeedeb";
+function nr(e) {
+  const t = e.setCode?.toLowerCase() ?? "";
+  return !e.setSymbol && t === "ice" && e.setSymbolSource === "keyrune" ? `${fe.KEYRUNE_ROOT}/ice2.svg` : !e.setSymbol && Hr(t, e.name) ? null : Ce(e);
+}
+function h0(e) {
+  const t = (e.rulesText ?? "").length;
+  return t > 340 ? 16 : t > 210 ? 19 : 23;
+}
+function ba(e) {
+  return [
+    dt(e),
+    Te(e),
+    ge(e) !== "black" || ne(e) === "fourth" ? sr(e) : null,
+    e.illustration,
+    nr(e),
+    ...rt(e)
+  ];
+}
+const se = ([e, t, r, a]) => [
+  e * f,
+  t * L,
+  r * f,
+  a * L
+];
+function u0(e, t) {
+  return ["7ed", "8ed", "9ed"].includes(e?.toLowerCase() ?? "") && ["foil", "prismatic", "etched", "cold", "opal"].includes(t ?? "") ? "black" : void 0;
+}
+function at([e, t, r]) {
+  const a = Math.max(e, t, r), n = a - Math.min(e, t, r);
+  return [((n === 0 ? 0 : a === e ? (t - r) / n : a === t ? (r - e) / n + 2 : (e - t) / n + 4) * 60 % 360 + 360) % 360, a === 0 ? 0 : n / a, a];
+}
+function wa(e, t, r) {
+  const a = (e % 360 + 360) % 360 / 60, n = r * t, s = n * (1 - Math.abs(a % 2 - 1)), l = r - n, o = a < 1 ? [n, s, 0] : a < 2 ? [s, n, 0] : a < 3 ? [0, n, s] : a < 4 ? [0, s, n] : a < 5 ? [s, 0, n] : [n, 0, s];
+  return [o[0] + l, o[1] + l, o[2] + l];
+}
+function Lt(e, t) {
+  const [r, a, n] = at(e);
+  return wa(
+    r + t.hueDegrees,
+    Math.min(1, a * t.saturationScale),
+    Math.min(1, n * t.brightnessScale)
+  );
+}
+const jt = (e) => {
+  const t = Math.max(0, Math.min(1, e));
+  return t * t * (3 - 2 * t);
+}, Qe = (e) => {
+  const t = Math.max(1e-3, e[0] + e[1] + e[2]);
+  return e.map((r) => r / t);
+};
+function ka(e, t) {
+  const { width: r, height: a, data: n } = e, s = new Float32Array(r * a);
+  if (t.kind === "rect") {
+    const [b, p, y, R] = t.rect;
+    for (let j = 0; j < a; j++)
+      for (let B = 0; B < r; B++) {
+        const C = Math.min(
+          B / r - b,
+          b + y - B / r,
+          j / a - p,
+          p + R - j / a
+        );
+        s[j * r + B] = jt(C / t.feather + 0.5);
+      }
+    return s;
+  }
+  const l = Qe(t.frameRgb), o = Qe(t.paperRgb), i = o.map((b, p) => b - l[p]), c = i.reduce((b, p) => b + p * p, 0);
+  if (c < 1e-3) throw Error("Paper and frame chroma are too similar for this mask.");
+  const [d, h, u, m] = t.bounds;
+  for (let b = 0; b < a; b++)
+    for (let p = 0; p < r; p++) {
+      if (p / r < d || p / r > d + u || b / a < h || b / a > h + m)
+        continue;
+      const y = b * r + p, R = y * 4;
+      if (n[R + 3] < 250) continue;
+      const B = Qe([n[R] / 255, n[R + 1] / 255, n[R + 2] / 255]).reduce((C, T, A) => C + (T - l[A]) * i[A], 0) / c;
+      s[y] = jt((B - 0.22) / 0.56);
+    }
+  const g = new Uint8Array(s.length), w = new Int32Array(s.length), S = Math.round(t.seed[1] * a) * r + Math.round(t.seed[0] * r);
+  if (!(s[S] > 0.08)) throw Error("Paper mask seed is outside the paper.");
+  let v = 0, k = 1;
+  for (w[0] = S, g[S] = 1; v < k; ) {
+    const b = w[v++], p = b % r;
+    for (const y of [b - r, b + r, p ? b - 1 : -1, p < r - 1 ? b + 1 : -1])
+      y >= 0 && y < g.length && !g[y] && s[y] > 0.08 && (g[y] = 1, w[k++] = y);
+  }
+  for (let b = 0; b < s.length; b++) g[b] || (s[b] = 0);
+  return s;
+}
+function ya(e, t) {
+  const r = "mask" in t ? t : void 0, a = r ? ka(e, r.mask) : void 0, n = "mask" in t ? t.frame : t;
+  for (let s = 0; s < e.data.length; s += 4) {
+    if (e.data[s + 3] === 0) continue;
+    const l = [e.data[s] / 255, e.data[s + 1] / 255, e.data[s + 2] / 255], o = Math.max(...l), i = o === 0 ? 0 : (o - Math.min(...l)) / o;
+    if (o < 0.075 || !r && i < 0.025 && o > 0.97) continue;
+    const c = a?.[s / 4] ?? 0, d = Lt(l, c === 1 && r ? r.paper : n), h = c > 0 && c < 1 && r ? Lt(l, r.paper) : d;
+    for (let u = 0; u < 3; u++)
+      e.data[s + u] = Math.round(
+        Math.round(255 * d[u]) * (1 - c) + Math.round(255 * h[u]) * c
+      );
+  }
+}
+const Sa = {
+  W: "#efe7cb",
+  U: "#3d7ac3",
+  B: "#33313c",
+  R: "#c2432e",
+  G: "#3b8a4e"
+}, va = "#9aa4ae", Ra = {
+  W: "#f8f6d8",
+  U: "#c1d7e9",
+  B: "#cac5c0",
+  R: "#e49977",
+  G: "#a3c095",
+  N: "#cac5c0"
+};
+class Ca {
+  constructor(t) {
+    if (this.limit = t, !Number.isSafeInteger(t) || t < 1) throw RangeError("Invalid material budget");
+  }
+  limit;
+  entries = /* @__PURE__ */ new Map();
+  bytes = 0;
+  peakBytes = 0;
+  builds = 0;
+  hits = 0;
+  evictions = 0;
+  waiting = /* @__PURE__ */ new Set();
+  get stats() {
+    return {
+      bytes: this.bytes,
+      peakBytes: this.peakBytes,
+      entries: this.entries.size,
+      builds: this.builds,
+      hits: this.hits,
+      evictions: this.evictions
+    };
+  }
+  destroy(t) {
+    t.bitmap?.close(), t.bitmap = void 0, t.accounted && (this.bytes -= t.bytes, t.accounted = !1);
+  }
+  admit(t) {
+    const r = new Set(t.map((n) => n.key)), a = t.reduce((n, s) => {
+      const l = this.entries.get(s.key);
+      if (l && l.bytes !== s.bytes)
+        throw Error("Material cache key has inconsistent dimensions");
+      return n + (l ? 0 : s.bytes);
+    }, 0);
+    for (const [n, s] of this.entries) {
+      if (this.bytes + a <= this.limit) break;
+      s.users || r.has(n) || (this.entries.delete(n), s.retired = !0, this.destroy(s), this.evictions++);
+    }
+    if (!(this.bytes + a > this.limit))
+      return this.bytes += a, this.peakBytes = Math.max(this.peakBytes, this.bytes), t.map((n) => {
+        let s = this.entries.get(n.key);
+        if (s)
+          this.hits++, this.entries.delete(n.key), this.entries.set(n.key, s);
+        else {
+          const l = {
+            users: 0,
+            bytes: n.bytes,
+            accounted: !0,
+            retired: !1,
+            promise: Promise.resolve().then(async () => {
+              this.builds++;
+              const o = await n.build();
+              if (o.width * o.height * 4 !== n.bytes)
+                throw o.close(), Error("Derived bitmap dimensions differ from its cache reservation");
+              return l.bitmap = o, o;
+            })
+          };
+          l.promise = l.promise.catch((o) => {
+            throw this.entries.get(n.key) === l && this.entries.delete(n.key), l.retired = !0, this.destroy(l), this.notify(), o;
+          }), this.entries.set(n.key, l), s = l;
+        }
+        return s.users++, s;
+      });
+  }
+  notify() {
+    for (const t of [...this.waiting]) t();
+  }
+  wait(t) {
+    return t.throwIfAborted(), new Promise((r, a) => {
+      const n = () => {
+        this.waiting.delete(s), t.removeEventListener("abort", l);
+      }, s = () => {
+        n(), r();
+      }, l = () => {
+        n(), a(t.reason);
+      };
+      this.waiting.add(s), t.addEventListener("abort", l, { once: !0 });
+    });
+  }
+  async acquire(t, r, a, n) {
+    return (await this.acquireMany([{ key: t, bytes: r, build: a }], n))[0];
+  }
+  /** Admit a complete face atomically. Per-component waiting could deadlock two
+   * faces that each hold half their required components while awaiting the rest. */
+  async acquireMany(t, r) {
+    if (r.throwIfAborted(), new Set(t.map((s) => s.key)).size !== t.length)
+      throw Error("Duplicate key in material batch");
+    if (t.some((s) => !Number.isSafeInteger(s.bytes) || s.bytes < 1) || t.reduce((s, l) => s + l.bytes, 0) > this.limit)
+      throw RangeError("Material batch exceeds derived-image budget");
+    let a;
+    for (; !(a = this.admit(t)); )
+      await this.wait(r), r.throwIfAborted();
+    const n = a.map((s) => {
+      let l = !1;
+      return () => {
+        l || (l = !0, s.users--, s.retired && !s.users && this.destroy(s), this.notify());
+      };
+    });
+    try {
+      const l = (await Promise.allSettled(a.map((o) => o.promise))).find((o) => o.status === "rejected");
+      if (l?.status === "rejected") throw l.reason;
+      return r.throwIfAborted(), a.map((o, i) => ({ value: o.bitmap, release: n[i] }));
+    } catch (s) {
+      for (const l of n) l();
+      throw s;
+    }
+  }
+  /** Retire active results; their final lease closes them. New work may start
+   * after teardown, but retired pending/leased bytes still count toward budget. */
+  clear() {
+    for (const t of this.entries.values())
+      t.retired = !0, t.users || this.destroy(t);
+    this.entries.clear(), this.notify();
+  }
+}
+const lr = new Ca(16 * 1024 * 1024), m0 = () => lr.clear(), Ma = {
+  "arn-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -21.501473124461086,
+        saturationScale: 0.35187499999999994,
+        brightnessScale: 0.9157303370786517
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.35,
+        brightnessScale: 0.8834426229508195
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "arn-black-L": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 0,
+        saturationScale: 0.35,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: 1.0282170119955936,
+        saturationScale: 0.42361231045559733,
+        brightnessScale: 1.0091324200913243
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.11885245901639344, 0.6058823529411764, 0.7663934426229508, 0.2720588235294118],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "leg-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 14.296790811986057,
+        saturationScale: 1.0286132997102524,
+        brightnessScale: 1.0213483146067415
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.75,
+        brightnessScale: 0.9776331967213114
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "fem-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 10.238420910075774,
+        saturationScale: 0.8891222334004024,
+        brightnessScale: 0.8179775280898877
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.4099365482233503,
+        brightnessScale: 0.8023770491803277
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "4ed-white-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: -6.651960784313815,
+        saturationScale: 1.0475972265564049,
+        brightnessScale: 1.0161725067385445
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.6786248131539612,
+        brightnessScale: 0.9823788546255507
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.1160164271047228, 0.6068048400622977, 0.7637088901605682, 0.2845333652809393],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "4ed-white-R": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 0.9473365617433274,
+        saturationScale: 0.7790679728967409,
+        brightnessScale: 0.8409669211195929
+      },
+      paper: {
+        hueDegrees: -1.5370879120878271,
+        saturationScale: 0.7975936392842132,
+        brightnessScale: 0.8755980861244019
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.11812030834483456, 0.6068048400622977, 0.7616050089204565, 0.2815382772253505],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "4ed-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 4.748297537978033,
+        saturationScale: 0.7365248790437341,
+        brightnessScale: 0.9202898550724637
+      },
+      paper: {
+        hueDegrees: -1.2028743315507882,
+        saturationScale: 0.7347446151409566,
+        brightnessScale: 0.9060773480662984
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.08235432726293468, 0.5828441356175872, 0.8394486148045915, 0.32346951000359414],
+        seed: [0.5010266940451745, 0.7385887145082066],
+        frameRgb: [0.24313725490196078, 0.40588235294117647, 0.29411764705882354],
+        paperRgb: [0.7098039215686275, 0.5450980392156862, 0.40784313725490196]
+      }
+    }
+  },
+  "4ed-white-A": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.166705840874329,
+        saturationScale: 0.8970156657190242,
+        brightnessScale: 1.045643153526971
+      },
+      paper: {
+        hueDegrees: 3.573863636363626,
+        saturationScale: 0.7584100356294544,
+        brightnessScale: 0.9611872146118722
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.12443195206516984, 0.6097999281178866, 0.7552933652001211, 0.2785431891697616],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "chr-white-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -10.093309859154942,
+        saturationScale: 0.6057336832224741,
+        brightnessScale: 0.8303370786516854
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.35,
+        brightnessScale: 0.8523565573770491
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "chr-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.5470263556198997,
+        brightnessScale: 1.1472478070175438
+      },
+      paper: {
+        hueDegrees: -10.756302521008365,
+        saturationScale: 0.7279174397031539,
+        brightnessScale: 0.7173913043478262
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "rqs-white-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -3.9569462227912027,
+        saturationScale: 0.675647699087608,
+        brightnessScale: 0.8932584269662921
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.35,
+        brightnessScale: 0.9122336065573771
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "rqs-white-R": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -11.305000607238298,
+        saturationScale: 0.7892046722427082,
+        brightnessScale: 0.9791955617198335
+      },
+      paper: {
+        hueDegrees: -15.011290079783294,
+        saturationScale: 0.8518182848079755,
+        brightnessScale: 0.9417475728155339
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "mir-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -1.5308098591549424,
+        saturationScale: 1.75,
+        brightnessScale: 0.8289606741573033
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.8293023858921132,
+        brightnessScale: 0.9695799180327868
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "mir-black-L": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -0.21134202183861817,
+        saturationScale: 0.7810010960906101,
+        brightnessScale: 1.2578125
+      },
+      paper: {
+        hueDegrees: 49.72569600359225,
+        saturationScale: 0.35,
+        brightnessScale: 0.6826484018264841
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.11885245901639344, 0.6058823529411764, 0.7663934426229508, 0.2720588235294118],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "itp-white-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.2012644046094465,
+        saturationScale: 1.1224918378193693,
+        brightnessScale: 0.8337078651685392
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.35000000000000003,
+        brightnessScale: 0.8798975409836065
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "itp-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 54.72844827586209,
+        saturationScale: 0.667496921182266,
+        brightnessScale: 0.9824561403508771
+      },
+      paper: {
+        hueDegrees: -8.03571428571422,
+        saturationScale: 0.8959469144800777,
+        brightnessScale: 0.7304347826086957
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "vis-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 2.7191901408450576,
+        saturationScale: 1.5913694945918608,
+        brightnessScale: 0.8134831460674158
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.7390216244725715,
+        brightnessScale: 0.953186475409836
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "por-black-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 33.79094827586209,
+        saturationScale: 0.4635736808609119,
+        brightnessScale: 0.8713450292397661
+      },
+      paper: {
+        hueDegrees: -6.285714285714221,
+        saturationScale: 0.7974474662746454,
+        brightnessScale: 0.7695652173913043
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "wth-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 0.7816901408450576,
+        saturationScale: 1.7463796482863188,
+        brightnessScale: 0.7932584269662921
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.6375529661016933,
+        brightnessScale: 0.9490881147540983
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "usg-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -0.41717349551845473,
+        saturationScale: 1.663864073081557,
+        brightnessScale: 0.7617977528089888
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.35,
+        brightnessScale: 0.8950409836065574
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "ath-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.7312202380952383,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: -11.893466500208092,
+        saturationScale: 0.9593076222289706,
+        brightnessScale: 0.9487179487179488
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.08627450980392157, 0.06274509803921569, 0.06274509803921569],
+        paperRgb: [0.9176470588235294, 0.7843137254901961, 0.5686274509803921]
+      }
+    }
+  },
+  "ulg-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 6.196897147214486,
+        saturationScale: 1.44966853763682,
+        brightnessScale: 0.7764044943820225
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.9164319248826271,
+        brightnessScale: 0.8729508196721312
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "ulg-black-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 27.774922634836457,
+        saturationScale: 0.6514603887857772,
+        brightnessScale: 1.0321637426900583
+      },
+      paper: {
+        hueDegrees: -4.285714285714221,
+        saturationScale: 0.9254331447604949,
+        brightnessScale: 0.8391304347826086
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "6ed-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.4424509803921568,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: -9.796244277985807,
+        saturationScale: 0.9636483807005948,
+        brightnessScale: 0.9444444444444445
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.08627450980392157, 0.06274509803921569, 0.06274509803921569],
+        paperRgb: [0.9176470588235294, 0.7843137254901961, 0.5686274509803921]
+      }
+    }
+  },
+  "6ed-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 6.568010131532219,
+        saturationScale: 0.6071820777509336,
+        brightnessScale: 0.9181286549707602
+      },
+      paper: {
+        hueDegrees: -8.571428571428555,
+        saturationScale: 0.8757351823708206,
+        brightnessScale: 0.8173913043478261
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "ptk-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.8566071428571431,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: -9.407859606185411,
+        saturationScale: 1.1858096941603267,
+        brightnessScale: 0.952991452991453
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.08627450980392157, 0.06274509803921569, 0.06274509803921569],
+        paperRgb: [0.9176470588235294, 0.7843137254901961, 0.5686274509803921]
+      }
+    }
+  },
+  "uds-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 2.465900667160895,
+        saturationScale: 1.6933264866979658,
+        brightnessScale: 0.8089887640449439
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.0263953488372048,
+        brightnessScale: 0.8798975409836065
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "s99-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.35,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: -15.019828155981486,
+        saturationScale: 0.8201216369446448,
+        brightnessScale: 0.9316239316239316
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.08627450980392157, 0.06274509803921569, 0.06274509803921569],
+        paperRgb: [0.9176470588235294, 0.7843137254901961, 0.5686274509803921]
+      }
+    }
+  },
+  "s99-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 42.145378655608965,
+        saturationScale: 0.4593960416241585,
+        brightnessScale: 0.9883040935672514
+      },
+      paper: {
+        hueDegrees: -10.47813001605141,
+        saturationScale: 0.5791702507449261,
+        brightnessScale: 0.7891304347826087
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "brb-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.7403869047619052,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: -9.399216201522222,
+        saturationScale: 1.1101902451481103,
+        brightnessScale: 0.9401709401709403
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.08627450980392157, 0.06274509803921569, 0.06274509803921569],
+        paperRgb: [0.9176470588235294, 0.7843137254901961, 0.5686274509803921]
+      }
+    }
+  },
+  "brb-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 28.994895644283133,
+        saturationScale: 0.5908991706678307,
+        brightnessScale: 0.9239766081871345
+      },
+      paper: {
+        hueDegrees: -4.285714285714221,
+        saturationScale: 0.8685969387755101,
+        brightnessScale: 0.7999999999999999
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "nem-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.289738430583384,
+        saturationScale: 0.8915652681436504,
+        brightnessScale: 0.8235955056179776
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.5422222222222192,
+        brightnessScale: 0.9221311475409836
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "pcy-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.633564096443024,
+        saturationScale: 1.0799672453324602,
+        brightnessScale: 0.7730337078651686
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.859911894273126,
+        brightnessScale: 0.9303278688524589
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "pcy-black-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 17.807077308120142,
+        saturationScale: 0.3893356835959018,
+        brightnessScale: 0.9152046783625731
+      },
+      paper: {
+        hueDegrees: -7.681547619047592,
+        saturationScale: 0.7065816326530612,
+        brightnessScale: 0.782608695652174
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "btd-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 45.43273932063812,
+        saturationScale: 0.47032019704433514,
+        brightnessScale: 0.8187134502923976
+      },
+      paper: {
+        hueDegrees: -6.666666666666629,
+        saturationScale: 0.8142768838304553,
+        brightnessScale: 0.7913043478260869
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "pls-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -7.13672588968916,
+        saturationScale: 1.1802209231170504,
+        brightnessScale: 0.7887640449438202
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.7511403508771918,
+        brightnessScale: 0.9313012295081968
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "7ed-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 60,
+        saturationScale: 0.4756250000000001,
+        brightnessScale: 1.4
+      },
+      paper: {
+        hueDegrees: -9.253827741731357,
+        saturationScale: 0.8491438968335036,
+        brightnessScale: 0.9401709401709403
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.08627450980392157, 0.06274509803921569, 0.06274509803921569],
+        paperRgb: [0.9176470588235294, 0.7843137254901961, 0.5686274509803921]
+      }
+    }
+  },
+  "ody-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.730436724826404,
+        saturationScale: 1.1895774647887327,
+        brightnessScale: 0.7999999999999999
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.197101034858387,
+        brightnessScale: 0.9361987704918033
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "tor-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.125844105730266,
+        saturationScale: 1.3379202774282588,
+        brightnessScale: 0.7797752808988764
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.2835277777777736,
+        brightnessScale: 0.9177561475409837
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "mh2-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -5.12371526456036,
+        saturationScale: 0.7905520188605681,
+        brightnessScale: 0.9741573033707864
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.35,
+        brightnessScale: 1.0356352459016396
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "rvr-black-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -5.432334166885994,
+        saturationScale: 0.8071559831369582,
+        brightnessScale: 0.9327485380116958
+      },
+      paper: {
+        hueDegrees: -0.8894878706198597,
+        saturationScale: 1.07695026062373,
+        brightnessScale: 1.0043478260869565
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "rvr-black-A": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -1.3874016938898421,
+        saturationScale: 0.9385034153567606,
+        brightnessScale: 1.0527638190954773
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.75,
+        brightnessScale: 0.9644727366255146
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "mh3-black-C": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/c.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 0,
+        saturationScale: 1.3783333333333334,
+        brightnessScale: 1
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.9614659685863863,
+        brightnessScale: 0.9979166666666666
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10860655737704918, 0.5985294117647059, 0.7868852459016393, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "mh3-black-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -5.728282493368738,
+        saturationScale: 0.8035133376707874,
+        brightnessScale: 0.9298245614035087
+      },
+      paper: {
+        hueDegrees: -0.8894878706198597,
+        saturationScale: 1.07695026062373,
+        brightnessScale: 1.0043478260869565
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "inr-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 0.6181627435848895,
+        saturationScale: 1.054930083373806,
+        brightnessScale: 0.9775280898876404
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.3903999999999978,
+        brightnessScale: 1.0245901639344261
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.10655737704918032, 0.5985294117647059, 0.7889344262295082, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "inr-black-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: -4.142150315687218,
+        saturationScale: 0.8832387603666523,
+        brightnessScale: 0.9239766081871345
+      },
+      paper: {
+        hueDegrees: -2.691511387163473,
+        saturationScale: 1.056747448979592,
+        brightnessScale: 1
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294],
+        seed: [0.5, 0.7352941176470589],
+        frameRgb: [0.2588235294117647, 0.33529411764705885, 0.1647058823529412],
+        paperRgb: [0.9019607843137255, 0.7372549019607844, 0.5176470588235295]
+      }
+    }
+  },
+  "lea-black-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/w.png",
+    rect: [0, 0, 1, 1],
+    adjustment: {
+      frame: {
+        hueDegrees: 0.07692307692309441,
+        saturationScale: 0.8721979027962715,
+        brightnessScale: 0.920343137254902
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.5488573232323238,
+        brightnessScale: 0.9289524647887324
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.12704918032786885, 0.5985294117647059, 0.7479508196721312, 0.2867647058823529],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "3ed-white-G": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 14.90078457567256,
+        saturationScale: 0.653073971761817,
+        brightnessScale: 1.0440835266821344
+      },
+      paper: {
+        hueDegrees: 1.278409090909122,
+        saturationScale: 0.5333302459988145,
+        brightnessScale: 0.6657458563535911
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.08866597098326993, 0.5813465915897927, 0.8310330898441446, 0.32945968611477183],
+        seed: [0.5010266940451745, 0.7385887145082066],
+        frameRgb: [0.2450980392156863, 0.42254901960784313, 0.3088235294117647],
+        paperRgb: [0.7098039215686275, 0.5450980392156862, 0.40784313725490196]
+      }
+    }
+  },
+  "3ed-white-A": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 1.5746966632962085,
+        saturationScale: 0.5767416007905141,
+        brightnessScale: 1.08641975308642
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 0.5332231404958686,
+        brightnessScale: 1.0076912100456623
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.12266666666666666, 0.6095238095238096, 0.7573333333333333, 0.2795238095238095],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "3ed-white-W": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 0.5817307692307168,
+        saturationScale: 1.0365597519207619,
+        brightnessScale: 1.1704225352112676
+      },
+      paper: {
+        hueDegrees: 0,
+        saturationScale: 1.0189145738203973,
+        brightnessScale: 0.9653827092511013
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.116, 0.6071428571428571, 0.764, 0.2842857142857143],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "3ed-white-U": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 4.66481543145278,
+        saturationScale: 0.4908900383397078,
+        brightnessScale: 1.0187590187590188
+      },
+      paper: {
+        hueDegrees: -2.4850427350427253,
+        saturationScale: 1.1119809394145677,
+        brightnessScale: 0.9338842975206612
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.118, 0.6071428571428571, 0.762, 0.2819047619047619],
+        feather: 0.0013333333333333333
+      }
+    }
+  },
+  "3ed-white-B": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/b.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: 11.54464285714289,
+        saturationScale: 0.47346938775510233,
+        brightnessScale: 1.0560344827586208
+      },
+      paper: {
+        hueDegrees: 6.655906593406598,
+        saturationScale: 0.5819440807296368,
+        brightnessScale: 0.9186991869918698
+      },
+      mask: {
+        kind: "chroma",
+        bounds: [0.08866597098326993, 0.5813465915897927, 0.8310330898441446, 0.32945968611477183],
+        seed: [0.5010266940451745, 0.7385887145082066],
+        frameRgb: [0.18627450980392157, 0.22745098039215686, 0.19117647058823528],
+        paperRgb: [0.9647058823529412, 0.7450980392156863, 0.5803921568627451]
+      }
+    }
+  },
+  "3ed-white-R": {
+    asset: "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",
+    rect: [0.012, 0.01, 0.974, 0.982],
+    adjustment: {
+      frame: {
+        hueDegrees: -9.881086142322147,
+        saturationScale: 0.7089456692675254,
+        brightnessScale: 0.8498727735368956
+      },
+      paper: {
+        hueDegrees: -3.849587912087827,
+        saturationScale: 0.637973137973138,
+        brightnessScale: 0.7751196172248803
+      },
+      mask: {
+        kind: "rect",
+        rect: [0.11733333333333333, 0.6061904761904762, 0.7626666666666667, 0.28285714285714286],
+        feather: 0.0013333333333333333
+      }
+    }
+  }
+}, Ta = {
+  "arn-black-U": [0.6803921568627451, 0.8078431372549021, 0.896078431372549],
+  "atq-black-W": [0.8647058823529412, 0.8549019607843137, 0.7941176470588235],
+  "atq-black-U": [0.7137254901960784, 0.8509803921568626, 0.8901960784313725],
+  "sum-white-N": [0.9117450980392157, 0.9034513771597749, 0.895157656280334],
+  "sum-white-W": [0.9411764705882353, 0.9529411764705882, 0.8803921568627451],
+  "sum-white-G": [0.8607843137254901, 0.9313725490196079, 0.8254901960784313],
+  "fem-black-N": [0.7775392156862744, 0.7489971713561662, 0.7204551270260577],
+  "fem-black-W": [0.8156862745098039, 0.8294117647058823, 0.7313725490196078],
+  "4ed-white-N": [0.801921568627451, 0.7741905244286774, 0.7464594802299036],
+  "4ed-white-W": [0.9372549019607843, 0.9235294117647059, 0.8156862745098039],
+  "4ed-white-U": [0.7607843137254902, 0.8627450980392157, 0.8941176470588236],
+  "4ed-white-B": [0.681642156862745, 0.6581474364807804, 0.6346527160988157],
+  "4ed-white-R": [0.8901960784313725, 0.7588235294117647, 0.7098039215686275],
+  "4ed-white-G": [0.7725490196078432, 0.8313725490196077, 0.7235294117647058],
+  "ice-black-W": [0.9176470588235294, 0.8941176470588236, 0.7568627450980392],
+  "ice-black-U": [0.7294117647058823, 0.8117647058823529, 0.8509803921568627],
+  "chr-white-N": [0.7788088235294118, 0.749940847954281, 0.7210728723791499],
+  "chr-white-W": [0.9098039215686274, 0.8901960784313725, 0.792156862745098],
+  "chr-white-B": [0.6470392156862745, 0.6242150965428648, 0.6013909773994549],
+  "chr-white-R": [0.8784313725490196, 0.7372549019607845, 0.6784313725490196],
+  "chr-white-G": [0.7862745098039214, 0.8431372549019608, 0.7372549019607844],
+  "hml-black-W": [0.8803921568627451, 0.892156862745098, 0.8137254901960784],
+  "hml-black-N": [0.8451372549019607, 0.8365603669190448, 0.8279834789361288],
+  "hml-black-U": [0.8, 0.8627450980392157, 0.8813725490196078],
+  "hml-black-R": [0.8924019607843137, 0.8034685790167723, 0.7430811941004472],
+  "all-black-N": [0.7901176470588235, 0.7687034108259793, 0.7472891745931349],
+  "all-black-W": [0.9058823529411765, 0.8980392156862746, 0.7784313725490196],
+  "rqs-white-N": [0.7999215686274509, 0.7684890069889343, 0.7370564453504174],
+  "rqs-white-W": [0.9235294117647059, 0.9019607843137254, 0.7901960784313725],
+  "rqs-white-B": [0.6684117647058823, 0.6399132680547467, 0.6114147714036109],
+  "rqs-white-R": [0.9215686274509804, 0.7490196078431373, 0.7019607843137255],
+  "rqs-white-G": [0.7333333333333333, 0.8431372549019608, 0.6980392156862745],
+  "mir-black-N": [0.7515, 0.718947400990099, 0.686394801980198],
+  "mir-black-W": [0.9313725490196079, 0.9117647058823526, 0.7215686274509804],
+  "mir-black-G": [0.6803921568627451, 0.8, 0.5588235294117647],
+  "itp-white-N": [0.7553970588235294, 0.725230379996705, 0.6950637011698805],
+  "itp-white-W": [0.8941176470588236, 0.8666666666666669, 0.7549019607843137],
+  "itp-white-B": [0.7294411764705881, 0.7071826870096959, 0.6849241975488034],
+  "itp-white-R": [0.8411764705882353, 0.6156862745098035, 0.5215686274509804],
+  "itp-white-G": [0.7196078431372549, 0.7764705882352941, 0.6686274509803921],
+  "vis-black-N": [0.7397941176470588, 0.7077485803727434, 0.6757030430984275],
+  "vis-black-W": [0.9215686274509803, 0.8980392156862743, 0.7313725490196078],
+  "5ed-white-N": [0.7058039215686275, 0.6768467433508057, 0.6478895651329839],
+  "5ed-white-U": [0.6470588235294118, 0.8235294117647061, 0.8784313725490196],
+  "5ed-white-B": [0.7122794117647059, 0.6923545533905743, 0.6724296950164426],
+  "5ed-white-R": [0.8274509803921568, 0.5588235294117643, 0.45098039215686275],
+  "5ed-white-G": [0.7450980392156863, 0.8235294117647058, 0.7686274509803923],
+  "por-black-N": [0.7000196078431372, 0.6772464841423832, 0.6544733604416291],
+  "por-black-W": [0.8980392156862745, 0.8862745098039213, 0.75],
+  "por-black-R": [0.8549019607843137, 0.5921568627450975, 0.49019607843137253],
+  "wth-black-N": [0.7210588235294119, 0.6898248398369251, 0.6585908561444381],
+  "wth-black-W": [0.9147058823529411, 0.8980392156862745, 0.7196078431372549],
+  "tmp-black-R": [0.8568627450980392, 0.5725490196078433, 0.4588235294117647],
+  "sth-black-W": [0.9039215686274511, 0.9176470588235294, 0.7411764705882353],
+  "sth-black-G": [0.5843137254901961, 0.7294117647058823, 0.5941176470588235],
+  "exo-black-W": [0.8980392156862745, 0.8882352941176469, 0.7490196078431373],
+  "exo-black-N": [0.7292549019607844, 0.7020432246165794, 0.6748315472723744],
+  "p02-black-N": [0.7077843137254901, 0.6771253397398564, 0.6464663657542224],
+  "p02-black-W": [0.8745098039215686, 0.8509803921568627, 0.7176470588235294],
+  "p02-black-R": [0.8313725490196079, 0.5872549019607844, 0.4745098039215686],
+  "p02-black-G": [0.5705882352941176, 0.7098039215686275, 0.5725490196078433],
+  "usg-black-N": [0.692735294117647, 0.6627281959813629, 0.6327210978450786],
+  "usg-black-W": [0.8765490196078433, 0.8599897089339418, 0.678618595825427],
+  "ath-white-N": [0.7181617647058823, 0.6920793333286794, 0.6659969019514763],
+  "ath-white-W": [0.8901960784313725, 0.8784313725490196, 0.7490196078431373],
+  "ath-white-B": [0.6902352941176471, 0.6832304309842749, 0.6762255678509027],
+  "ath-white-R": [0.8509803921568627, 0.5813725490196081, 0.4862745098039216],
+  "ath-white-G": [0.5519607843137255, 0.7176470588235294, 0.592156862745098],
+  "ulg-black-W": [0.8666666666666667, 0.8588235294117645, 0.6901960784313725],
+  "ulg-black-N": [0.7232156862745098, 0.69188827412153, 0.6605608619685499],
+  "6ed-white-N": [0.7096078431372548, 0.6791772592700446, 0.6487466754028343],
+  "6ed-white-W": [0.8862745098039215, 0.8666666666666667, 0.7156862745098039],
+  "6ed-white-B": [0.7284411764705883, 0.6968874126383229, 0.6653336488060572],
+  "ptk-white-N": [0.7037843137254901, 0.6732986070665891, 0.6428129004076878],
+  "ptk-white-W": [0.907843137254902, 0.8784313725490197, 0.7098039215686275],
+  "ptk-white-B": [0.6922156862745099, 0.6622310959037083, 0.6322465055329064],
+  "ptk-white-R": [0.8490196078431372, 0.5666666666666665, 0.42745098039215684],
+  "uds-black-N": [0.7138774509803922, 0.6829545415938655, 0.6520316322073385],
+  "uds-black-W": [0.8549019607843137, 0.8509803921568626, 0.696078431372549],
+  "s99-white-N": [0.7151519607843138, 0.7015578851410496, 0.6879638094977854],
+  "s99-white-W": [0.8901960784313725, 0.8862745098039215, 0.7803921568627451],
+  "s99-white-B": [0.6936225490196078, 0.6876134427781013, 0.6816043365365948],
+  "s99-white-R": [0.8333333333333334, 0.5960784313725492, 0.5411764705882353],
+  "mmq-black-N": [0.7071323529411764, 0.6796084513322656, 0.6520845497233546],
+  "mmq-black-G": [0.6098039215686275, 0.7058823529411764, 0.5784313725490196],
+  "brb-white-N": [0.7013872549019609, 0.6710053812366532, 0.6406235075713455],
+  "brb-white-B": [0.6907107843137253, 0.6607913815278587, 0.6308719787419917],
+  "brb-white-W": [0.8980392156862745, 0.8823529411764705, 0.7333333333333334],
+  "brb-white-R": [0.8509803921568627, 0.5764705882352936, 0.44901960784313727],
+  "brb-white-G": [0.5882352941176471, 0.7215686274509804, 0.5745098039215686],
+  "nem-black-N": [0.7646666666666668, 0.7369052030713278, 0.7091437394759885],
+  "nem-black-W": [0.8980392156862745, 0.8823529411764705, 0.788235294117647],
+  "pcy-black-W": [0.9098039215686274, 0.8901960784313723, 0.7725490196078432],
+  "pcy-black-G": [0.5362745098039216, 0.6901960784313725, 0.5999999999999999],
+  "btd-white-N": [0.6705098039215687, 0.641465443603184, 0.6124210832847992],
+  "btd-white-B": [0.6277892156862745, 0.6043636651257039, 0.5809381145651331],
+  "btd-white-R": [0.8411764705882353, 0.541176470588235, 0.4352941176470588],
+  "inv-black-N": [0.6763333333333332, 0.6470367161716172, 0.6177400990099009],
+  "inv-black-W": [0.9019607843137255, 0.8745098039215686, 0.7156862745098039],
+  "inv-black-G": [0.5372549019607843, 0.6862745098039216, 0.5411764705882353],
+  "pls-black-W": [0.9, 0.880392156862745, 0.7607843137254902],
+  "7ed-white-N": [0.6787696078431372, 0.671299468668047, 0.6638293294929567],
+  "7ed-white-W": [0.8784313725490196, 0.8823529411764706, 0.8],
+  "7ed-black-W": [0.9921568627450981, 0.9941176470588236, 0.9019607843137255],
+  "7ed-white-B": [0.6719166666666667, 0.664174656559406, 0.6564326464521453],
+  "7ed-white-R": [0.8156862745098039, 0.5568627450980393, 0.4823529411764706],
+  "7ed-white-G": [0.4980392156862745, 0.6823529411764706, 0.603921568627451],
+  "apc-black-R": [0.8705882352941177, 0.5764705882352935, 0.4588235294117647],
+  "ody-black-W": [0.8862745098039215, 0.8705882352941177, 0.7294117647058824],
+  "ody-black-N": [0.696735294117647, 0.6665549286546302, 0.6363745631916132],
+  "tor-black-N": [0.6698186274509803, 0.6516680813893724, 0.6335175353277643],
+  "tor-black-W": [0.884313725490196, 0.8598039215686275, 0.7254901960784313],
+  "jud-black-N": [0.6904362745098039, 0.660528762618909, 0.630621250728014],
+  "jud-black-R": [0.8313725490196079, 0.5392156862745099, 0.43333333333333335],
+  "ons-black-W": [0.9627450980392157, 0.9549019607843137, 0.7843137254901961],
+  "scg-black-W": [0.9222549019607845, 0.9106216656928856, 0.7140037950664139],
+  "tsb-black-W": [0.925, 0.9161764705882351, 0.759313725490196],
+  "tsb-black-U": [0.6666666666666665, 0.7960784313725485, 0.9411764705882351],
+  "tsb-black-R": [0.8568627450980392, 0.6137254901960782, 0.4980392156862745],
+  "sld-black-N": [0.8008725490196077, 0.7711867410454281, 0.7415009330712482],
+  "sld-black-W": [0.9921568627450981, 0.9647058823529411, 0.8794117647058823],
+  "tsr-black-W": [0.9927647058823531, 0.9899625474383303, 0.9479301707779888],
+  "tsr-black-N": [0.855279411764706, 0.8478698129004079, 0.8404602140361096],
+  "mh2-black-W": [0.9843137254901959, 0.9725490196078431, 0.8999999999999999],
+  "brc-black-U": [0.7470588235294118, 0.8882352941176471, 0.9882352941176471],
+  "brc-black-R": [0.9254901960784314, 0.66078431372549, 0.6313725490196078],
+  "brc-black-W": [0.9803921568627451, 0.9588235294117646, 0.8],
+  "dmr-black-U": [0.7705882352941177, 0.8784313725490195, 0.9882352941176471],
+  "dmr-black-R": [0.9107843137254901, 0.6421568627450981, 0.5931372549019607],
+  "rvr-black-W": [1, 0.976470588235294, 0.8470588235294118],
+  "rvr-black-U": [0.7098039215686275, 0.8784313725490198, 0.9764705882352941],
+  "rvr-black-B": [0.8111911764705881, 0.7810601428272423, 0.7509291091838963],
+  "rvr-black-R": [0.9686274509803922, 0.6745098039215688, 0.5568627450980392],
+  "mh3-black-W": [0.996078431372549, 0.9725490196078431, 0.8549019607843137],
+  "mh3-black-U": [0.7098039215686275, 0.8745098039215684, 0.9647058823529412],
+  "mh3-black-R": [0.9607843137254901, 0.6745098039215689, 0.5529411764705883],
+  "mh3-black-B": [0.8132107843137254, 0.7823282841363888, 0.7514457839590519],
+  "inr-black-W": [0.996078431372549, 0.9764705882352941, 0.8509803921568627],
+  "inr-black-U": [0.6802606033829841, 0.8765397843821006, 0.9723970588235294],
+  "inr-black-R": [0.9647058823529412, 0.6745098039215687, 0.5529411764705883],
+  "lea-black-W": [0.8588235294117647, 0.8666666666666667, 0.807843137254902],
+  "lea-black-U": [0.6480392156862745, 0.7490196078431373, 0.7862745098039216],
+  "leb-black-U": [0.6764705882352942, 0.8088235294117648, 0.8627450980392157],
+  "2ed-white-W": [0.9215686274509804, 0.9235294117647059, 0.8431372549019608],
+  "2ed-white-U": [0.6784313725490196, 0.8176470588235295, 0.8754901960784314],
+  "2ed-white-R": [0.8745098039215686, 0.6960784313725488, 0.6196078431372549],
+  "3ed-white-W": [0.8647058823529412, 0.8607843137254902, 0.788235294117647],
+  "3ed-white-U": [0.7372549019607844, 0.8764705882352941, 0.903921568627451],
+  "3ed-white-B": [0.6431764705882351, 0.6285728524927555, 0.6139692343972758],
+  "3ed-white-R": [0.8784313725490196, 0.7607843137254902, 0.6980392156862745],
+  "3ed-white-G": [0.7529411764705881, 0.8274509803921568, 0.7294117647058823]
+};
+function ht(e) {
+  const t = ["lea", "leb", "2ed", "3ed"].includes(e.setCode?.toLowerCase() ?? "");
+  return be(e) && (!e.layout || e.layout === "normal") && (e.colorCalibration === "set-hsb-v1" || t && e.colorCalibration === "early-hsb-v1");
+}
+function La(e) {
+  if (!ht(e)) return;
+  const t = Te(e), r = t.split("/").at(-1).replace(".png", "").toUpperCase(), a = Ma[`${e.setCode?.toLowerCase()}-${ge(e)}-${r}`];
+  return a?.asset === t && a.rect.every((n, s) => n === ar(e)[s]) ? a.adjustment : void 0;
+}
+function ja(e, t) {
+  if (ht(e))
+    return Ta[`${e.setCode?.toLowerCase()}-${ge(e)}-${t}`];
+}
+async function Ba(e, t, r) {
+  const a = { images: t, dispose() {
+  } };
+  if (!ht(e)) return a;
+  const n = La(e), s = /* @__PURE__ */ new Map(), l = {};
+  n && s.set(Te(e), n);
+  const o = /* @__PURE__ */ new Set([
+    ...e.manaSymbols ?? [],
+    ...[...(e.rulesText ?? "").matchAll(/\{([^}]+)\}/g)].map((h) => h[1])
+  ]);
+  for (const h of e.rulesParagraphs ?? [])
+    for (const u of h.runs) for (const m of u.text.matchAll(/\{([^}]+)\}/g)) o.add(m[1]);
+  o.add("W");
+  for (const h of o) {
+    const u = /^\d+$/.test(h) ? "N" : h, m = ja(e, u), g = Ra[u];
+    if (!m || !g) continue;
+    const w = Ye(h);
+    w && s.set(w, Oa(g, m)), l[h] = `rgb(${m.map((S) => Math.round(S * 255)).join(" ")})`;
+  }
+  if (!s.size && !Object.keys(l).length) return a;
+  const i = Object.assign(new Map(t), { manaColors: l }), c = [...s].flatMap(([h, u]) => {
+    const m = t.get(h);
+    return m ? [{ url: h, source: m, adjustment: u }] : [];
+  });
+  let d = [];
+  try {
+    return d = await lr.acquireMany(
+      c.map(({ url: h, source: u, adjustment: m }) => ({
+        key: Ia(h, u.width, u.height, m),
+        bytes: u.width * u.height * 4,
+        build: () => Aa(u, m)
+      })),
+      r
+    ), c.forEach(({ url: h }, u) => i.set(h, d[u].value)), { images: i, dispose: () => d.forEach((h) => h.release()) };
+  } catch (h) {
+    throw d.forEach((u) => u.release()), h;
+  }
+}
+function Ia(e, t, r, a) {
+  return JSON.stringify(["frame-hsb-paper-mask-v3", e, t, r, a]);
+}
+async function Aa(e, t) {
+  const r = document.createElement("canvas");
+  r.width = e.width, r.height = e.height;
+  try {
+    const a = r.getContext("2d", { willReadFrequently: !0 });
+    if (!a) throw Error("HSB preparation needs Canvas2D.");
+    a.drawImage(e, 0, 0);
+    const n = a.getImageData(0, 0, r.width, r.height);
+    return ya(n, t), a.putImageData(n, 0, 0), await createImageBitmap(r);
+  } finally {
+    r.width = r.height = 0;
+  }
+}
+function Oa(e, t) {
+  const r = [
+    parseInt(e.slice(1, 3), 16) / 255,
+    parseInt(e.slice(3, 5), 16) / 255,
+    parseInt(e.slice(5, 7), 16) / 255
+  ], [a, n, s] = at(r), [l, o, i] = at(t);
+  if (n <= 0 || s <= 0) throw Error("Mana source requires a chromatic disc.");
+  return {
+    hueDegrees: (l - a + 540) % 360 - 180,
+    saturationScale: o / n,
+    brightnessScale: i / s
+  };
+}
+const Ea = "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf", Bt = {
+  "apc/retro/black": [0, -1, 1.18, 1.18],
+  "arn/retro/black": [-3, 0, 0.88, 0.88],
+  "chr/retro/white": [6.5, -1, 1.06, 0.92],
+  "drk/retro/black": [1, -3, 1.26, 1.32],
+  "mmq/retro/black": [0, -1, 1, 1.02],
+  "nem/retro/black": [2, -2.5, 1.12, 1.26],
+  "ody/retro/black": [1.5, -2, 1.14, 1.06],
+  "ons/retro/black": [5, -2.5, 1.2, 1.14],
+  "pcy/retro/black": [2.5, -2, 1.26, 1.2],
+  "s99/retro/white": [2, -1, 1.24, 1.24],
+  "tsr/retro/black": [3.5, 0, 1.06, 1.16],
+  "uds/retro/black": [0, 0, 1.2, 1.14],
+  "ulg/retro/black": [2.5, -1, 1.14, 1.12],
+  "vis/retro/black": [3, 1, 1.28, 1.24],
+  "2x2/component/black": [2.5, -2.5, 0.98, 0.92],
+  "2xm/component/black": [2.5, -1, 0.86, 0.84],
+  "2xm/m15-accurate/black": [2.5, 0, 0.94, 0.94],
+  "a25/m15-accurate/black": [-2, 1, 1.04, 1.08],
+  "aer/component/black": [-0.5, -1, 0.94, 0.92],
+  "aer/m15-accurate/black": [-0.5, 0.5, 1.02, 1.04],
+  "afc/component/black": [-1, -2, 1.16, 1.08],
+  "afc/m15-accurate/black": [-1.5, 0, 1.22, 1.22],
+  "afr/m15-accurate/black": [0, 0, 1.28, 1.22],
+  "ala/eighth/black": [0, 0, 1.12, 1.04],
+  "arb/eighth/black": [-2, 1, 1, 1.02],
+  "avr/eighth/black": [-2, 0.5, 0.96, 1.06],
+  "bbd/component/black": [2, 0, 0.92, 0.88],
+  "bbd/m15-accurate/black": [2, 1, 1.02, 1.04],
+  "blb/component/black": [-2, -1.5, 0.98, 1],
+  "blb/m15-accurate/black": [-1.5, -1, 1.14, 1.2],
+  "blc/component/black": [2, -1, 1, 1],
+  "blc/m15-accurate/black": [1.5, 1, 1.1, 1.14],
+  "bng/eighth/black": [4, 1.5, 1, 0.9],
+  "bok/eighth/black": [0.5, 0.5, 1.02, 1.08],
+  "bro/component/black": [-1, -2.5, 0.96, 0.96],
+  "bro/m15-accurate/black": [-1, -1.5, 1.08, 1.1],
+  "c13/eighth/black": [2, 0, 1.1, 1.02],
+  "c14/m15-accurate/black": [-1.5, 0, 0.96, 0.94],
+  "c15/component/black": [-4.5, -0.5, 0.82, 0.8],
+  "c15/m15-accurate/black": [-4.5, 0, 0.94, 0.9],
+  "c19/component/black": [-1, 0, 0.92, 0.88],
+  "c21/component/black": [-1, -0.5, 0.96, 0.96],
+  "c21/m15-accurate/black": [-0.5, 0, 1.08, 1.08],
+  "clb/component/black": [0, -2, 0.92, 0.92],
+  "clb/m15-accurate/black": [0.5, -1.5, 1.08, 1.06],
+  "cm2/m15-accurate/black": [-0.5, 1, 1.08, 1.06],
+  "cmd/eighth/black": [3, 1, 1.08, 0.98],
+  "cmm/component/black": [-1, -1, 0.96, 0.94],
+  "cmm/m15-accurate/black": [-1, 0, 1.08, 1.12],
+  "cn2/component/black": [-2, -1, 0.92, 0.84],
+  "cn2/m15-accurate/black": [-2, 1, 1, 1],
+  "cns/eighth/black": [2, 0, 1.08, 0.96],
+  "con/eighth/black": [1.5, 0, 1.22, 1],
+  "csp/eighth/black": [0.5, 1, 1, 1.06],
+  "dd2/eighth/black": [2.5, 1, 1.04, 1.04],
+  "ddc/eighth/black": [5, 1, 1.04, 1],
+  "dde/eighth/black": [3.5, 0.5, 1.1, 1.06],
+  "ddf/eighth/black": [1, 1, 1.06, 1.08],
+  "ddg/eighth/black": [3.5, 0.5, 1.06, 1.1],
+  "ddh/eighth/black": [3, 0.5, 0.92, 0.9],
+  "ddi/eighth/black": [3, 0.5, 1.04, 1.02],
+  "ddj/eighth/black": [2.5, 0, 1.1, 1.08],
+  "ddl/eighth/black": [1.5, 1, 0.96, 0.92],
+  "ddn/m15-accurate/black": [-2, 0, 0.9, 0.92],
+  "ddo/component/black": [0, -1, 0.88, 0.84],
+  "ddq/component/black": [0, -1.5, 0.98, 0.9],
+  "ddq/m15-accurate/black": [0, 0, 1.1, 1.02],
+  "dds/component/black": [-3, -1, 0.92, 0.92],
+  "dds/m15-accurate/black": [-2.5, 0.5, 1.06, 1.02],
+  "ddt/component/black": [0, -1, 0.9, 0.88],
+  "ddu/m15-accurate/black": [-1, 1, 1.1, 1.1],
+  "dft/component/black": [1, -1, 0.88, 0.84],
+  "dft/m15-accurate/black": [0, 0.5, 0.98, 0.98],
+  "dgm/eighth/black": [0, 0, 1.04, 1.04],
+  "dka/eighth/black": [2.5, 0, 0.96, 0.92],
+  "dmc/component/black": [2, -1.5, 0.98, 0.98],
+  "dmr/m15-accurate/black": [4.5, 0.5, 1.18, 1.06],
+  "dmu/component/black": [2.5, -2, 1, 0.96],
+  "dmu/m15-accurate/black": [1, -1, 1.06, 1.12],
+  "dpa/eighth/black": [1, 1, 1.08, 1.12],
+  "drc/component/black": [0, -1, 0.98, 0.92],
+  "drc/m15-accurate/black": [0, 0, 1.1, 1.04],
+  "dsc/component/black": [3, -1, 0.94, 0.94],
+  "dsc/m15-accurate/black": [2.5, 0.5, 1.04, 1.06],
+  "dsk/component/black": [3, 0, 0.92, 0.92],
+  "dsk/m15-accurate/black": [2, 1.5, 0.88, 0.88],
+  "dst/eighth/black": [-3, 1, 0.96, 0.94],
+  "e01/component/black": [-2, -0.5, 0.84, 0.86],
+  "e01/m15-accurate/black": [-2, 1, 0.96, 1.04],
+  "ecc/component/black": [-3, -1.5, 0.92, 0.92],
+  "ecc/m15-accurate/black": [-3, 0, 1.04, 1.12],
+  "ecl/component/black": [-1, -1.5, 0.96, 0.94],
+  "ecl/m15-accurate/black": [-1, 0, 1.08, 1.04],
+  "eld/m15-accurate/black": [-1, 1, 1.1, 0.96],
+  "ema/component/black": [-3, -1, 0.86, 0.88],
+  "ema/m15-accurate/black": [-3, 0.5, 0.96, 0.98],
+  "emn/m15-accurate/black": [2, 0, 1.04, 1.08],
+  "eoc/component/black": [1, -1, 0.94, 0.96],
+  "eoc/m15-accurate/black": [1, 0.5, 1.06, 1.06],
+  "eoe/component/black": [1.5, -1, 0.96, 0.96],
+  "eve/eighth/black": [4.5, 1, 1.08, 1.02],
+  "fdc/component/black": [1.5, -1, 0.98, 0.96],
+  "fdc/m15-accurate/black": [1, -0.5, 1.06, 1.1],
+  "fdn/component/black": [1.5, -1.5, 1.02, 1],
+  "fdn/m15-accurate/black": [1.5, -0.5, 1.14, 1.16],
+  "frc/m15-accurate/black": [0.5, 0.5, 1.1, 1.04],
+  "frf/component/black": [-0.5, -0.5, 0.96, 0.92],
+  "frf/m15-accurate/black": [-1, 0.5, 1.06, 1.02],
+  "gn3/component/black": [0.5, -2, 0.98, 0.92],
+  "gnt/m15-accurate/black": [3, 1, 1.06, 1.08],
+  "hob/component/black": [-1, -1, 0.96, 0.94],
+  "hob/m15-accurate/black": [-1, 1, 1.08, 1.04],
+  "hoc/component/black": [-0.5, -1, 0.96, 0.98],
+  "hoc/m15-accurate/black": [-1, 0.5, 1.08, 1.06],
+  "hop/eighth/black": [4, 0, 1.06, 1.04],
+  "hou/component/black": [-3, -1, 0.96, 0.88],
+  "hou/m15-accurate/black": [-3, 0, 1.12, 0.96],
+  "iko/component/black": [-1.5, -0.5, 0.92, 0.92],
+  "iko/m15-accurate/black": [-1.5, 0.5, 1.04, 1.02],
+  "ima/component/black": [-0.5, -0.5, 0.92, 0.9],
+  "ima/m15-accurate/black": [0, 1, 1.06, 1],
+  "inr/component/black": [-1, -1.5, 0.96, 0.98],
+  "inr/m15-accurate/black": [-1, 0, 1.08, 1.12],
+  "j22/component/black": [3, -2, 0.96, 0.98],
+  "j22/m15-accurate/black": [3, -1, 1.08, 1.12],
+  "j25/component/black": [0, -1.5, 0.96, 0.98],
+  "j25/m15-accurate/black": [0, 0, 1.1, 1.08],
+  "jmp/m15-accurate/black": [0.5, 0, 0.92, 0.94],
+  "jou/eighth/black": [0, 1, 0.98, 0.96],
+  "kld/component/black": [0, -0.5, 0.88, 0.92],
+  "ktk/m15-accurate/black": [-0.5, 0, 1.06, 1.1],
+  "lcc/component/black": [-1, -1, 1, 0.94],
+  "lcc/m15-accurate/black": [-2, 0, 1.08, 1.08],
+  "lci/component/black": [0, -1.5, 0.98, 0.96],
+  "lci/m15-accurate/black": [0, 0, 1.1, 1.1],
+  "m10/eighth/black": [5, 0.5, 1.08, 1],
+  "m11/eighth/black": [4, 0.5, 1.06, 1.02],
+  "m12/eighth/black": [4, 0.5, 1.06, 1],
+  "m13/eighth/black": [4.5, 0.5, 1.06, 1.06],
+  "m15/component/black": [1, -0.5, 0.94, 0.9],
+  "m19/component/black": [2.5, 1, 1.04, 0.98],
+  "m19/m15-accurate/black": [3, 1.5, 1.08, 1.02],
+  "m20/component/black": [1.5, 0.5, 1.02, 1.02],
+  "mbs/eighth/black": [1, -0.5, 1.06, 1.04],
+  "mh1/component/black": [0, 0, 0.92, 0.94],
+  "mh2/component/black": [1, -1, 0.96, 0.94],
+  "mh2/m15-accurate/black": [0.5, 0, 1.04, 1.06],
+  "mid/m15-accurate/black": [-1.5, 1, 1.1, 1.08],
+  "mkc/m15-accurate/black": [-3, 0, 1.04, 1.14],
+  "mkm/m15-accurate/black": [-1.5, 0, 1.1, 1.1],
+  "mm3/m15-accurate/black": [2, 1, 0.88, 1.08],
+  "mma/eighth/black": [1.5, 0, 0.94, 0.96],
+  "moc/component/black": [-1, -2, 0.96, 0.96],
+  "moc/m15-accurate/black": [-1, -1.5, 1.08, 1.08],
+  "mom/component/black": [0.5, -2, 0.92, 0.92],
+  "msc/component/black": [-3.5, -1, 0.9, 0.88],
+  "msh/component/black": [-5.5, -1.5, 0.92, 0.88],
+  "msh/m15-accurate/black": [-6, -1, 0.92, 0.96],
+  "ncc/component/black": [-4, -2, 0.96, 0.92],
+  "ncc/m15-accurate/black": [-4, -1, 1.08, 1.08],
+  "nec/m15-accurate/black": [-1, 0.5, 1.1, 1.12],
+  "neo/m15-accurate/black": [2, -1, 0.88, 0.86],
+  "nph/eighth/black": [-1, 0.5, 1.08, 1],
+  "ogw/component/black": [-3.5, -0.5, 0.92, 0.86],
+  "ogw/m15-accurate/black": [-4, 0, 1, 1.06],
+  "one/component/black": [1, -1.5, 0.98, 0.96],
+  "ori/component/black": [0, -1, 0.8, 0.78],
+  "ori/m15-accurate/black": [0, 0.5, 0.9, 0.9],
+  "otc/component/black": [2, -1.5, 0.96, 1.02],
+  "otc/m15-accurate/black": [2, -0.5, 1.12, 1.18],
+  "otj/component/black": [2.5, -2, 0.98, 0.96],
+  "otj/m15-accurate/black": [3, -1, 1.1, 1.12],
+  "pc2/eighth/black": [3.5, 0.5, 1, 0.98],
+  "plc/eighth/black": [2.5, 0.5, 1.02, 1],
+  "rtr/eighth/black": [2.5, 0, 1.1, 1.02],
+  "rvr/component/black": [-2.5, -1, 0.96, 0.9],
+  "rvr/m15-accurate/black": [-2.5, -1.5, 1.06, 1.08],
+  "scd/component/black": [1.5, -2, 1.04, 0.88],
+  "scd/m15-accurate/black": [1, 0.5, 1.1, 1.12],
+  "shm/eighth/black": [5, 0, 0.9, 0.92],
+  "sld/component/black": [-2, -0.5, 1.14, 1.18],
+  "sld/m15-accurate/black": [-2.5, 0.5, 1.1, 1.12],
+  "snc/component/black": [1, -1, 0.88, 0.84],
+  "snc/m15-accurate/black": [1.5, -0.5, 1, 1.02],
+  "soc/component/black": [1.5, -1, 0.96, 0.94],
+  "soi/component/black": [-1.5, -1, 0.94, 0.96],
+  "soi/m15-accurate/black": [-2, 0, 1.06, 1.04],
+  "sok/eighth/black": [2, 0.5, 1, 0.94],
+  "som/eighth/black": [1, 0.5, 1.08, 1],
+  "sos/component/black": [1.5, -1, 0.96, 0.94],
+  "sos/m15-accurate/black": [1, 0, 1.06, 1],
+  "spm/component/black": [1.5, -1, 0.94, 0.96],
+  "spm/m15-accurate/black": [0.5, 0, 1.02, 1.1],
+  "stx/component/black": [0, -1, 1, 1],
+  "stx/m15-accurate/black": [0, 1, 1.1, 1.1],
+  "ths/eighth/black": [2.5, 0.5, 0.98, 0.96],
+  "tla/component/black": [-1.5, -1.5, 0.9, 0.94],
+  "tla/m15-accurate/black": [-1.5, -0.5, 1.02, 1.1],
+  "tle/m15-accurate/black": [-3.5, 0, 1.08, 1.12],
+  "tmc/component/black": [0, -1, 0.94, 0.94],
+  "tmc/m15-accurate/black": [0, 0.5, 1.04, 1.1],
+  "tmt/component/black": [0, -1, 0.94, 0.94],
+  "tmt/m15-accurate/black": [0, 0.5, 1.06, 1.08],
+  "uma/m15-accurate/black": [3, 1, 0.98, 1],
+  "unf/component/black": [6, -2, 0.92, 0.88],
+  "unf/m15-accurate/black": [5.5, -2, 0.92, 1],
+  "voc/component/black": [-7, -1.5, 0.96, 0.88],
+  "vow/component/black": [0.5, -1, 0.96, 0.96],
+  "vow/m15-accurate/black": [1, 0, 1.1, 1.1],
+  "war/component/black": [0.5, -1.5, 0.92, 0.9],
+  "war/m15-accurate/black": [2, -1, 1.08, 1.08],
+  "woc/component/black": [-0.5, -1, 1, 1.04],
+  "woc/m15-accurate/black": [-1, -0.5, 1.12, 1.12],
+  "woe/component/black": [2.5, -1, 0.96, 0.96],
+  "wwk/eighth/black": [1, 0, 1.08, 1.12],
+  "xln/component/black": [3, -0.5, 1, 1.08],
+  "xln/m15-accurate/black": [4, 0, 1.22, 1.24],
+  "zen/eighth/black": [1.5, 0, 1.02, 1],
+  "znr/m15-accurate/black": [0, 1, 1.02, 1.06]
+}, It = {
+  m15: { family: "m15-accurate", delta: [1, 0, 1, 1] },
+  m21: { family: "m15-accurate", delta: [2, 0, 1.1, 1.06] },
+  woe: { family: "m15-accurate", delta: [2, 0, 1.08, 1.08] },
+  tdm: { family: "m15-accurate", delta: [0, 0, 1.08, 1.08] },
+  "8ed": { family: "eighth", delta: [-4, 0, 1, 0.92] },
+  "9ed": { family: "eighth", delta: [0, 1, 0.9, 0.92] }
+};
+function Ga(e, t, r) {
+  const a = e.setCode?.toLowerCase() ?? "", n = Object.hasOwn(It, a) ? It[a] : void 0;
+  let s = r;
+  return n && !e.setSymbol && Oe(t) && n.family === e.frameAssetFamily && (s = or(r, n.delta)), e.frameAssetFamily ? ut(e, t, s, e.frameAssetFamily) : s;
+}
+function ut(e, t, r, a) {
+  if (e.setSymbol || !Oe(t) || me !== Ea || (e.layout ?? "normal") !== "normal" || ["component", "m15-accurate"].includes(a) && K(e).legendary)
+    return r;
+  const n = e.borderColor ?? (a === "retro" ? ge(e) : ce(e.setCode).border === "#eeedeb" ? "white" : "black"), s = `${e.setCode?.trim().toLowerCase() ?? ""}/${a}/${n}`, l = Object.hasOwn(Bt, s) ? Bt[s] : void 0;
+  return l ? or(r, l) : r;
+}
+function or(e, t) {
+  const [r, a, n, s] = e, [l, o, i, c] = t;
+  return [r + n + l - n * i, a + s / 2 + o - s * c / 2, n * i, s * c];
+}
+const $a = 0.045;
+function Wa(e) {
+  return be(e) ? Xr : $a;
+}
+const Da = "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets", At = {
+  "blb/black": 1,
+  "blc/black": 1,
+  "dft/black": 1,
+  "drc/black": 1,
+  "dsk/black": 1,
+  "ecc/black": 1,
+  "eoe/black": 1,
+  "fdn/black": 1.5,
+  "frc/black": 1.5,
+  "hoc/black": 1,
+  "iko/black": 0.5,
+  "inr/black": 1,
+  "j25/black": 1,
+  "snc/black": 1,
+  "soc/black": 1,
+  "tla/black": 1,
+  "tmt/black": 1
+}, Ie = {
+  artInset: 4.5,
+  artRim: 1.5,
+  frameInset: 1.5,
+  typeWidthScale: 1.02
+};
+function Pa(e) {
+  if (!e.frameAssetFamily && !K(e).legendary && (e.layout ?? "normal") === "normal" && Re === Da) {
+    const t = e.borderColor ?? (ce(e.setCode).border === "#eeedeb" ? "white" : "black"), r = `${e.setCode?.toLowerCase() ?? ""}/${t}`;
+    if (Object.hasOwn(At, r)) return At[r];
+  }
+  return ["m15", "m19", "m20", "war"].includes(e.setCode?.toLowerCase() ?? "") ? Ie.frameInset : 0;
+}
+const et = "#fbf0c5", Ge = "#ccdaf2", Ot = "#9c9995", tt = "#edaa8d", $e = "#dde6e2", xa = {
+  WU: [et, Ge],
+  WB: ["#f0e0b5", "#a99da8"],
+  WR: [tt, et],
+  WG: [$e, et],
+  UB: [Ge, Ot],
+  UR: [Ge, tt],
+  UG: [$e, Ge],
+  BR: ["#b4afb5", "#f2b096"],
+  BG: [Ot, $e],
+  RG: [tt, $e]
+};
+function Fa(e, t, r) {
+  if (!t.land) return;
+  const a = xa[t.frame];
+  if (!a) return;
+  const n = 34 + r, s = 420 - 2 * r, l = e.createLinearGradient(n, 0, n + s, 0);
+  l.addColorStop(0, a[0]), l.addColorStop(0.35, a[0]), l.addColorStop(0.65, a[1]), l.addColorStop(1, a[1]), e.save(), e.globalCompositeOperation = "multiply", e.fillStyle = l, e.fillRect(n, 425, s, 203.5), e.restore();
+}
+function _a(e, t, r, a) {
+  if (!t.land || t.frame !== "Artifact") {
+    a();
+    return;
+  }
+  const n = 34 + r, s = 420 - 2 * r;
+  for (const l of [!1, !0])
+    e.save(), e.beginPath(), l || e.rect(0, 0, 488, 680), e.rect(n, 425, s, 203.5), e.clip("evenodd"), e.filter = `grayscale(1) brightness(${l ? 0.9 : 0.63})`, a(), e.restore();
+}
+function ir(e) {
+  if (e.setSymbol) return null;
+  const t = e.setCode?.toLowerCase();
+  return t === "m15" || t === "war" ? t : null;
+}
+function cr(e, t, r, a, n, s, l, o, i, c) {
+  const [d, h, u, m] = c ? r === "m15" ? [0.92, 2, -1, 0.7] : [0.85, 0, -1, 1.2] : [1, 0, 0, r === "m15" ? 0.7 : 1.2];
+  n += h - l * (d - 1) / 2, s += u - o * (d - 1) / 2, l *= d, o *= d;
+  const g = !a || a === "common", w = document.createElement("canvas"), S = 3, v = 4;
+  w.width = Math.ceil((l + S * 2) * v), w.height = Math.ceil((o + S * 2) * v);
+  const k = w.getContext("2d");
+  k.scale(v, v), k.translate(S, S), k.drawImage(
+    t,
+    i[0] * t.width,
+    i[1] * t.height,
+    i[2] * t.width,
+    i[3] * t.height,
+    0,
+    0,
+    l,
+    o
+  ), k.globalCompositeOperation = "source-in";
+  const b = a === "mythic" ? ["#9c2408", "#e97816", "#ffbf46", "#a73312"] : a === "uncommon" ? ["#506b80", "#a5c3d4", "#ccdce4", "#708898"] : ["#766326", "#c3af5c", "#eee1a0", "#907b36"], p = k.createLinearGradient(0, o * 0.65, l, o * 0.35);
+  p.addColorStop(0, b[0]), p.addColorStop(0.35, b[1]), p.addColorStop(0.6, b[2]), p.addColorStop(1, b[3]), k.fillStyle = g ? "#111111" : p, k.fillRect(0, 0, l, o);
+  const y = r === "m15" ? 32 : 27, R = new Path2D(
+    r === "m15" ? "M29.655 7.6c0 0 2.095 4.174 2.095 8.4s-2.095 8.4-2.095 8.4H2.376s-2.033-4.16-2.031-8.398C.343 11.76 2.376 7.6 2.376 7.6Z" : "M13.438 0 15.628 16.075 17.07 15.661 19.608 2.323 21.483 14.101 22.943 13.404 24.884 6.519 26.875 16.92 26.543 16.44C26.7 17.6 26.742 19 26.742 20.538c0 2.986-3.567 4.048-3.6 4.064-.066.033-7.531 2.77-9.721 7.399-2.206-4.612-9.655-7.382-9.721-7.399-.033 0-3.6-1.078-3.6-4.064 0-1.5.1-2.938.232-4.098L0 16.921 1.991 6.519 3.932 13.404 5.392 14.102 7.267 2.307 9.822 15.761 11.248 16.075Z"
+  ), j = new DOMMatrix().translate(-i[0] * l / i[2], -i[1] * o / i[3]).scale(l / (y * i[2]), o / (32 * i[3])), B = new Path2D();
+  B.addPath(R, j), k.globalCompositeOperation = "destination-over", k.fillStyle = g ? "#f8f8f5" : "#111111", k.fill(B), k.strokeStyle = k.fillStyle, k.lineWidth = r === "war" && g ? 2 : m, k.lineJoin = "round", k.stroke(B), e.drawImage(
+    w,
+    n - S,
+    s - S,
+    w.width / v,
+    w.height / v
+  ), w.width = w.height = 0;
+}
+function Ua(e, t) {
+  const r = 52.053333333333335, a = 1255 / 2100 * 680, n = 1346 / 1500 * 488, s = 1861 / 2100 * 680, l = 17 / 1500 * 488, o = 17 / 2100 * 680, i = (d) => {
+    e.moveTo(...d[0]);
+    for (const h of d.slice(1)) e.lineTo(...h);
+    e.closePath();
+  };
+  e.save();
+  const c = e.filter;
+  e.filter = "none", e.fillStyle = "#00000047", e.beginPath(), i([
+    [r, a],
+    [n, a],
+    [n - l, a + o],
+    [r + l, a + o]
+  ]), i([
+    [n, a],
+    [n, s],
+    [n - l, s - o],
+    [n - l, a + o]
+  ]), e.fill(), e.beginPath(), i([
+    [r, a],
+    [r + l, a + o],
+    [r + l, s - o],
+    [r, s]
+  ]), i([
+    [r, s],
+    [r + l, s - o],
+    [n - l, s - o],
+    [n, s]
+  ]), e.clip(), e.filter = `${c === "none" ? "" : c + " "}brightness(1.35)`, e.drawImage(t, 0, 0, 488, 680), e.restore();
+}
+const Y = {
+  arn: {
+    right: 439,
+    centerY: 394,
+    width: 65,
+    height: 22,
+    crop: [0, 0.283203125, 1, 0.435546875],
+    sampling: "high"
+  },
+  // Native anvil bounds across Antiquities colors/materials; no added outer rim.
+  atq: { right: 415, centerY: 391.5, width: 33, height: 16, crop: [0, 0.240234375, 1, 0.51953125] },
+  drk: {
+    right: 445,
+    centerY: 397.25,
+    width: 21,
+    height: 18.5,
+    crop: [0, 0.09375, 0.9884259259259259, 0.814453125]
+  },
+  // Crown and detached foot measured together; preserve the existing white rim.
+  fem: {
+    right: 441.75,
+    centerY: 390.75,
+    width: 20.75,
+    height: 16.75,
+    crop: [0, 0.12109375, 1, 0.724609375]
+  },
+  // Frozen globe ink bounds across Homelands materials; preserve its white rim.
+  hml: {
+    right: 440.75,
+    centerY: 392.5,
+    width: 23.5,
+    height: 22.5,
+    crop: [0, 0.083984375, 0.9861111111111112, 0.83203125]
+  },
+  // The printed Visions V is white inside its black triangle, with no white rim.
+  vis: {
+    right: 436.5,
+    centerY: 390.5,
+    width: 23,
+    height: 27,
+    crop: [0.004807692307692308, 0.037109375, 0.9903846153846154, 0.92578125],
+    outline: 0
+  },
+  leg: {
+    right: 443.75,
+    centerY: 394,
+    width: 25.5,
+    height: 22.5,
+    crop: [0, 0.1264957264957265, 1, 0.764102564102564],
+    sampling: "high"
+  },
+  all: {
+    right: 429,
+    centerY: 393.5,
+    width: 56.5,
+    height: 24.5,
+    crop: [390625e-8, 0.2890625, 0.994140625, 0.421875],
+    sampling: "high"
+  },
+  wth: {
+    right: 434,
+    centerY: 390,
+    width: 34,
+    height: 22,
+    crop: [0, 0.154296875, 0.998046875, 0.646484375],
+    sampling: "high"
+  },
+  // Native silhouettes, after independent outer-frame registration. These
+  // retain the source contours and use one placement per printed set.
+  mir: {
+    right: 437,
+    centerY: 391,
+    width: 26.75,
+    height: 25,
+    crop: [1953125e-9, 0.037109375, 0.99609375, 0.91015625],
+    sampling: "high"
+  },
+  tmp: {
+    right: 433.5,
+    centerY: 390.5,
+    width: 20.5,
+    height: 19.5,
+    crop: [0, 0.13982300884955753, 0.984375, 0.7964601769911505],
+    outline: 2,
+    sampling: "high"
+  },
+  sth: {
+    right: 434.75,
+    centerY: 390.75,
+    width: 18.75,
+    height: 19.5,
+    crop: [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+    sampling: "high"
+  },
+  por: {
+    right: 435.5,
+    centerY: 391,
+    width: 23,
+    height: 23,
+    crop: [0, 0.08401976935749589, 0.98828125, 0.8336079077429983],
+    sampling: "high"
+  },
+  // Independent ink-axis measurements across common Exodus scans; retain the 2 px rim.
+  exo: { right: 430.5, centerY: 390, width: 55.5, height: 21, crop: [0, 0.30859375, 1, 0.3828125] },
+  ice: {
+    right: 443.5,
+    centerY: 394.5,
+    width: 20,
+    height: 21,
+    crop: [0, 0.04296875, 1, 0.9140625],
+    outline: 0
+  }
+}, Na = {
+  W: { ...Y.por, right: 436.75, centerY: 389.75 },
+  U: { ...Y.por, right: 436.5, centerY: 392.75 },
+  R: { ...Y.por, right: 433.75, centerY: 392 },
+  G: { ...Y.por, right: 434, centerY: 390.75 }
+}, Ya = {
+  all: {
+    U: { ...Y.all, right: 427.5, centerY: 393.25 },
+    W: { ...Y.all, right: 427.25, centerY: 392.75 }
+  },
+  mir: {
+    G: { ...Y.mir, right: 437, centerY: 390.25 },
+    W: { ...Y.mir, right: 437.75, centerY: 389.25 }
+  },
+  sth: {
+    G: { ...Y.sth, right: 434, centerY: 391 },
+    R: { ...Y.sth, right: 433.5, centerY: 391.75 },
+    W: { ...Y.sth, right: 435.25, centerY: 389.25 }
+  },
+  tmp: {
+    U: { ...Y.tmp, right: 433, centerY: 392.75 },
+    W: { ...Y.tmp, right: 433.25, centerY: 389.5 }
+  },
+  vis: {
+    W: { ...Y.vis, right: 437.5, centerY: 389.25 }
+  },
+  wth: {
+    W: { ...Y.wth, right: 435.75, centerY: 389.75 }
+  },
+  hml: {
+    R: { ...Y.hml, right: 437.75, centerY: 393.5 }
+  },
+  por: Na
+};
+function Ha(e) {
+  const t = e.setCode?.toLowerCase() ?? "";
+  if (e.setSymbol || !Object.hasOwn(Y, t)) return null;
+  const r = pe(e);
+  return r.length === 1 && !/\b(?:Land|Artifact)\b/.test(e.typeLine ?? "") ? Ya[t]?.[r[0]] ?? Y[t] : Y[t];
+}
+function za(e) {
+  return e.setSymbol || e.setCode?.toLowerCase() !== "exo" ? null : e.rarity === "uncommon" ? ["#7f9196", "#cdd7da", "#7c8d92"] : e.rarity === "rare" ? ["#8e7934", "#d3bd66", "#91803b"] : ["#4a5251", "#252b2b", "#555e5d"];
+}
+const st = {
+  arn: { count: 6, white: [2] },
+  leg: { count: 6, white: [0, 1, 2, 3, 4] },
+  hml: { count: 5, white: [3] },
+  vis: { count: 2, white: [1] },
+  all: { count: 5, white: [0, 1, 2] },
+  wth: { count: 8, white: [0, 1, 2, 3, 4, 5, 6] },
+  exo: { count: 6, white: [0, 1, 2, 3, 4] },
+  ice2: { count: 16, white: [0] },
+  por: { count: 21, white: Array.from({ length: 20 }, (e, t) => t) },
+  tmp: { count: 2, white: [1] }
+}, dr = (e) => `${e}#opaque-print-details-v1`, qa = (e) => Object.keys(st).some((t) => e === `${fe.KEYRUNE_ROOT}/${t}.svg`);
+async function Xa(e, t) {
+  const r = Object.keys(st).find((d) => e === `${fe.KEYRUNE_ROOT}/${d}.svg`);
+  if (!r) return null;
+  const a = new DOMParser().parseFromString(await t.text(), "image/svg+xml"), n = a.documentElement, s = a.querySelectorAll("path"), l = s[0]?.getAttribute("d") ?? "", o = l.match(/M[^M]*/g) ?? [], i = st[r];
+  if (n.localName !== "svg" || a.querySelector("parsererror") || s.length !== 1 || o.length !== i.count || o.some((d) => /m/.test(d) || !/[zZ]\s*$/.test(d)))
+    throw new Error(`Unexpected pinned ${r} symbol paths.`);
+  const c = a.createElementNS("http://www.w3.org/2000/svg", "path");
+  return c.setAttribute("d", i.white.map((d) => o[d]).join("")), c.setAttribute("fill", "#fff"), n.replaceChildren(c), new Blob([new XMLSerializer().serializeToString(a)], { type: "image/svg+xml" });
+}
+function xe(e, t, [r, a, n, s]) {
+  if (!(e > 0 && t > 0)) return [r, a, n, s];
+  const l = Math.max(n / e, s / t), o = e * l, i = t * l;
+  return [r + (n - o) / 2, a + (s - i) / 2, o, i];
+}
+function Va(e, t, r, a) {
+  const n = [a[0] * e, a[1] * t, a[2] * e, a[3] * t];
+  return [...n, ...xe(n[2], n[3], r)];
+}
+function Ae(e, t, r, a, n) {
+  const [s, l, o, i] = a;
+  if (n === "printing") {
+    e.clearRect(s, l, o, i);
+    return;
+  }
+  n === "artwork" && (e.fillStyle = "#80745c", e.fillRect(s, l, o, i));
+  const c = r.get(t.illustration ?? "");
+  c && (e.save(), e.beginPath(), e.rect(s, l, o, i), e.clip(), t.illustrationCrop ? e.drawImage(
+    c,
+    ...Va(c.width, c.height, a, t.illustrationCrop)
+  ) : e.drawImage(c, ...xe(c.width, c.height, a)), e.restore());
+}
+function mt(e, t, r, a) {
+  const n = [];
+  for (const s of t.split(`
+`)) {
+    let l = [], o = 0;
+    const i = Ne(s).flatMap(
+      (c) => c.symbol ? [{ text: c.symbol, symbol: !0 }] : (c.value.match(/\s+|\S+/g) ?? []).map((d) => ({ text: d, symbol: !1 }))
+    );
+    for (const c of i) {
+      const d = !c.symbol && e.measureText(c.text).width > r ? [...c.text].map((h) => ({ text: h, symbol: !1 })) : [c];
+      for (const h of d) {
+        const u = h.symbol ? a * 0.94 : e.measureText(h.text).width;
+        o + u > r && l.length && (n.push(l), l = [], o = 0), !(!l.length && /^\s+$/.test(h.text)) && (l.push({ ...h, width: u }), o += u);
+      }
+    }
+    n.push(l);
+  }
+  return n;
+}
+function le(e, t, r, a, n, s, l = !1) {
+  const o = s.get(Ye(t) ?? "");
+  if (e.save(), e.shadowColor = "transparent", e.shadowOffsetX = e.shadowOffsetY = 0, l) {
+    const i = 1.5372 * e.getTransform().a;
+    e.shadowColor = "#000d", e.shadowOffsetX = -i, e.shadowOffsetY = i;
+  }
+  if (e.fillStyle = s.manaColors?.[t] ?? Sa[t] ?? va, e.beginPath(), e.arc(r + n / 2, a + n / 2, n / 2, 0, Math.PI * 2), e.fill(), e.shadowColor = "transparent", o) {
+    e.drawImage(o, r, a, n, n), e.restore();
+    return;
+  }
+  e.fillStyle = t === "B" ? "white" : "#17140f", e.textAlign = "center", e.textBaseline = "middle", e.font = `bold ${n * 0.62}px Georgia`, e.fillText(t, r + n / 2, a + n / 2, n * 0.9), e.restore();
+}
+function hr(e, t, r, a, n, s, l) {
+  const o = typeof s == "number" ? s : s.size;
+  e.font = `${typeof s != "number" && s.italic ? "italic " : ""}${o}px "CardRenderer MTG MPlantin", Georgia`;
+  const i = t.split(`
+`).map((c) => mt(e, c, n, o));
+  e.textBaseline = "top";
+  for (const c of i) {
+    for (const d of c) {
+      let h = r;
+      for (const u of d)
+        u.symbol ? le(e, u.text, h + o * 0.07, a + o * 0.03, o * 0.8, l) : e.fillText(u.text, h, a), h += u.width;
+      a += o;
+    }
+    a += G.paragraphGap;
+  }
+}
+function g0(e, t, r) {
+  if (e.measureText(t).width <= r) return t;
+  const a = [...t];
+  for (; a.length && e.measureText(`${a.join("")}…`).width > r; ) a.pop();
+  return a.length || e.measureText("…").width <= r ? `${a.join("")}…` : "";
+}
+function Fe(e, t, r, a, n, s, l = !1, o = 1, i = "CardRenderer MTG Beleren") {
+  if (!(n > 0)) throw Error("Magic title/type plate has no text space.");
+  e.save(), e.font = `${l ? "bold " : ""}${s}px "${i}", Georgia`;
+  const c = e.measureText(t).width;
+  o > 1 && c * o > n && (o = 1), o !== 1 && (e.translate(r, 0), e.scale(o, 1), r = 0, n /= o), c > n && (s = Math.max(s * 0.78, s * n / c), e.font = `${l ? "bold " : ""}${s}px "${i}", Georgia`), e.fillText(t, r, a, n), e.restore();
+}
+function gt(e, t, r, a, n, s, l, o, i = [0, 0, 1, 1]) {
+  const c = [
+    i[0] * t.width,
+    i[1] * t.height,
+    i[2] * t.width,
+    i[3] * t.height
+  ], d = {
+    uncommon: "#aaaeb2",
+    rare: "#bc923f",
+    mythic: "#c65c2d",
+    special: "#8664af",
+    bonus: "#bc923f"
+  }[a ?? "common"];
+  if (!d || ["forge", "glint"].includes(r?.toLowerCase() ?? "")) {
+    e.drawImage(t, ...c, n, s, l, o);
+    return;
+  }
+  const h = document.createElement("canvas");
+  h.width = Math.max(1, Math.ceil(l * 2)), h.height = Math.max(1, Math.ceil(o * 2));
+  const u = h.getContext("2d");
+  u.drawImage(t, ...c, 0, 0, h.width, h.height), u.globalCompositeOperation = "source-in", u.fillStyle = d, u.fillRect(0, 0, h.width, h.height), e.drawImage(h, n, s, l, o), h.width = h.height = 0;
+}
+function Ka(e, t, r, a = !1) {
+  ur(
+    e,
+    t,
+    r,
+    {
+      right: 435,
+      centerY: 44.5,
+      pitch: 27,
+      size: 23.4,
+      whiteSize: 21
+    },
+    a
+  );
+}
+function Ja(e, t, r, a = !1) {
+  ur(
+    e,
+    t,
+    r,
+    {
+      right: 432,
+      centerY: 46,
+      pitch: 27,
+      size: 23.9,
+      whiteSize: 20.5
+    },
+    a
+  );
+}
+function ur(e, t, r, a, n) {
+  t.forEach((s, l) => {
+    const { size: o } = a, i = a.right - (t.length - 1 - l) * a.pitch - o / 2, c = a.centerY - o / 2;
+    if (s !== "W" || n) {
+      le(e, s, i, c, o, r, !1);
+      return;
+    }
+    gr(e, i, c, o, a.whiteSize, r.manaColors?.W);
+  });
+}
+const mr = (e, t, r, a, n, s) => {
+  if (t !== "W") return le(e, t, r, a, n, s);
+  gr(e, r, a, n, n * 0.87, s.manaColors?.W);
+};
+function gr(e, t, r, a, n, s = "#efe7cb") {
+  e.save(), e.shadowColor = "transparent", e.shadowOffsetX = e.shadowOffsetY = 0, e.fillStyle = s, e.beginPath(), e.arc(t + a / 2, r + a / 2, a / 2, 0, Math.PI * 2), e.fill(), e.fillStyle = "#0d0f0f", e.font = '100px "CardRenderer MTG Historic Symbols"', e.textAlign = "left", e.textBaseline = "alphabetic";
+  const l = "", o = e.measureText(l), i = o.actualBoundingBoxLeft + o.actualBoundingBoxRight, c = o.actualBoundingBoxAscent + o.actualBoundingBoxDescent, d = n / Math.max(i, c);
+  e.translate(t + a / 2, r + a / 2), e.scale(d, d), e.fillText(
+    l,
+    (o.actualBoundingBoxLeft - o.actualBoundingBoxRight) / 2,
+    (o.actualBoundingBoxAscent - o.actualBoundingBoxDescent) / 2
+  ), e.restore();
+}
+function Za(e, t, r, a, n, s) {
+  e.save(), e.shadowColor = "transparent", e.shadowOffsetX = e.shadowOffsetY = 0;
+  const l = document.createElement("canvas");
+  l.width = e.canvas.width, l.height = e.canvas.height;
+  const o = l.getContext("2d");
+  if (!o) throw Error("Retro lettering needs a Canvas2D context");
+  const i = e.getTransform();
+  o.font = e.font, o.textAlign = e.textAlign, o.textBaseline = e.textBaseline, o.letterSpacing = e.letterSpacing, e.resetTransform();
+  for (const [c, d, h] of [
+    [0, s, "#f2eee3"],
+    [s, 0, "#17140f"]
+  ])
+    o.resetTransform(), o.clearRect(0, 0, l.width, l.height), o.setTransform(i), o.globalCompositeOperation = "source-over", o.fillStyle = h, o.fillText(t, r + c, a + c, n), o.globalCompositeOperation = "destination-out", o.fillText(t, r + d, a + d, n), e.drawImage(l, 0, 0);
+  l.width = l.height = 0, e.restore();
+}
+function ft(e, t, r, a, n, s) {
+  e.save(), e.shadowColor = "transparent", e.shadowOffsetX = e.shadowOffsetY = 0, e.fillStyle = "#17140f", e.fillText(t, r + s, a + s, n), e.fillStyle = "#ababab", e.fillText(t, r, a, n), e.restore();
+}
+function Qa(e) {
+  return ["lea", "leb", "2ed"].includes(e.setCode?.toLowerCase() ?? "");
+}
+function es(e, t) {
+  e.save(), e.font = '22.5px "CardRenderer MTG MPlantin", Georgia', e.textAlign = "left", e.textBaseline = "alphabetic", ft(e, `Illus. © ${t}`, 49, 631, 338, 1.25), e.restore();
+}
+function pt(e) {
+  if (!e.frameAssetFamily) return null;
+  if (be(e) || e.layout && !["normal", "token"].includes(e.layout) || /\b(Saga|Class|Planeswalker|Battle)\b/.test(e.typeLine ?? "") || /^Level up\b/m.test(e.rulesText ?? ""))
+    throw Error("Replacement frame plates currently support ordinary modern faces only.");
+  const t = e.frameAssetFamily === "eighth", r = K(e), a = pe(e), n = a.length === 2 && "WUBRG".indexOf(a[1]) - "WUBRG".indexOf(a[0]) > 2 ? [...a].reverse() : a, l = `${me}/img/frames/${t ? "8th" : "m15/new"}`, o = r.land ? "l" : r.artifact ? "a" : /\bVehicle\b/.test(e.typeLine ?? "") ? "v" : a.length > 1 ? "m" : a[0]?.toLowerCase() ?? "c", i = (g) => t ? `${g.toLowerCase()}l` : `l${g.toLowerCase()}`, c = r.land && n.length ? i(n.length > 2 ? "m" : n[0]) : o, d = r.land && n.length === 2 ? i(n[1]) : void 0, h = o === "l" ? t ? "l" : "c" : o, u = t ? [0.09, 0.0629, 0.824, 0.0429] : [168 / 2010, 145 / 2814, 0.8292, 0.0543], m = t ? [205 / 2010, 1611 / 2814, 1601 / 2010, 0.0358] : [168 / 2010, 1588 / 2814, 0.8292, 0.0543];
+  return {
+    frame: `${l}/${c}.png`,
+    rightFrame: d ? `${l}/${d}.png` : void 0,
+    border: `${l}/border.png`,
+    pt: t ? `${me}/img/frames/8th/pt/${h === "c" ? "l" : h}.png` : `${me}/img/frames/m15/regular/m15PT${h.toUpperCase()}.png`,
+    rects: {
+      ...N,
+      frame: [0, 0, 1, 1],
+      background: [0, 0, 1, 1],
+      title: u,
+      type: m,
+      art: t ? [180 / 2010, 341 / 2814, 1656 / 2010, 1216 / 2814] : [0.0767, 0.1129, 0.8476, 0.4429],
+      rules: t ? [205 / 2010, 1779 / 2814, 1596 / 2010, 729 / 2814] : [0.086, 1780 / 2814, 0.828, 0.2875],
+      stats: t ? [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814] : [0.7573, 0.8848, 0.188, 0.0733],
+      footer: t ? [150 / 2010, 1938 / 2100, 0.81, 0.04] : N.footer
+    },
+    titleSize: t ? 29.2 : 26,
+    typeSize: t ? 24.3 : 22,
+    // Shared family adjustments measured after frame-only scan normalization.
+    // Cost discs have their own baseline; they do not follow font centering.
+    mana: {
+      right: (t ? 0.9147 : 1864 / 2010) - (t ? 2 : 1) / 488,
+      center: u[1] + u[3] / 2 + (t ? 1 : -4) / 680,
+      size: t ? 22 : 23.4,
+      gap: 1.5
+    },
+    symbol: t ? { right: 0.9079 - 2 / 488, center: 0.5886, width: 0.114, height: 0.0391 * 0.95 } : { right: 1862 / 2010 - 2 / 488, center: 0.591, width: 0.114, height: 0.041 * 0.95 }
+  };
+}
+function ts(e) {
+  const t = pt(e);
+  return t ? [
+    t.frame,
+    ...t.rightFrame ? [t.rightFrame] : [],
+    ...e.power != null && e.toughness != null ? [t.pt] : [],
+    ...ce(e.setCode, e.borderColor).border !== "#090806" ? [t.border] : []
+  ] : null;
+}
+function ze(e) {
+  const t = e.layout === "saga" || /\bSaga\b/i.test(e.typeLine ?? "");
+  return (e.rulesText ?? "").split(`
+`).filter((r) => r.trim()).map((r) => {
+    const a = t ? r.match(/^\s*([IVXLCDM]+(?:\s*,\s*[IVXLCDM]+)*)\s*[—–-]\s*(.+)$/) : null;
+    if (a)
+      return { text: a[2], badges: a[1].split(/\s*,\s*/), reminder: !1 };
+    const n = t ? null : r.match(/^\s*\[?([+−-]?(?:\d+|X))\]?\s*:\s*(.*)$/i);
+    return n ? {
+      text: n[2],
+      badges: [n[1].replace("-", "−").toUpperCase()],
+      reminder: !1
+    } : { text: r, badges: [], reminder: t && /^\s*\(/.test(r) };
+  });
+}
+function ee(e) {
+  return e.layout === "ability" ? "normal" : e.layout === "adventure" && e.faces?.length === 2 ? "adventure" : e.layout === "class" || /\bClass\b/i.test(e.typeLine ?? "") ? "class" : e.layout === "leveler" || /^Level up\b/m.test(e.rulesText ?? "") ? "leveler" : e.layout === "saga" || /\bSaga\b/i.test(e.typeLine ?? "") ? "saga" : e.layout === "planeswalker" || /\bPlaneswalker\b/i.test(e.typeLine ?? "") ? ze(e).length > 3 ? "planeswalker-large" : "planeswalker" : "normal";
+}
+function oe(e) {
+  const t = pt(e);
+  if (t) return t.rects;
+  if (be(e)) return ct(e);
+  const r = ee(e);
+  if (r === "adventure")
+    return {
+      ...N,
+      frame: [2.9 / 63.5, 3.5 / 88.9, 57.4 / 63.5, 79 / 88.9],
+      type: [0.05669, 49.7 / 88.9, 0.88662, 0.05737],
+      stamp: [0.58, 0.74, 0.25, 0.1794]
+    };
+  if (r === "class")
+    return {
+      ...N,
+      background: [0.03937, 2.5 / 88.9, 0.92126, 0.93926],
+      art: [4.3 / 63.5, 10 / 88.9, 27.3 / 63.5, 64.3 / 88.9],
+      type: [0.05669, 74.4 / 88.9, 0.88662, 0.05737],
+      rules: [31.8 / 63.5, 10.1 / 88.9, 26.4 / 63.5, 63.65 / 88.9],
+      stamp: [0.57, 0.55, 0.25, 0.1794]
+    };
+  if (r === "saga")
+    return {
+      ...N,
+      background: [0.03937, 0.02812, 0.92126, 0.93926],
+      frame: [0.032, 0.04117, 0.92126, 0.88864],
+      art: [0.5008, 0.11249, 0.42992, 0.72328],
+      type: [0.05669, 0.84589, 0.88662, 0.05737],
+      rules: [0.07717, 0.11192, 0.4189, 0.72328],
+      stamp: [0.17, 0.48, 0.23, 0.16506]
+    };
+  if (r.startsWith("planeswalker")) {
+    const a = r === "planeswalker-large", n = [
+      0.04409,
+      a ? 0.55118 : 0.62655,
+      0.88827,
+      a ? 0.37534 : 0.29997
+    ], s = N.stamp[2], l = N.stamp[3];
+    return {
+      ...N,
+      // Preserve the complete lower curve in the pinned 2778x3793 background
+      // and 2736x3810 frame. Ordinary-face heights cut both off near the paper.
+      background: [0.03937, 0.02531, 0.92126, 0.92126 * f * 3793 / 2778 / L],
+      frame: [0.04724, 0.02655, 0.91339, 0.91339 * f * 3810 / 2736 / L],
+      art: [0.06299, 0.09224, 0.86614, (a ? 0.49044 : 0.55793) - 0.09224],
+      title: [0.05669, 0.03375, 0.88662, 0.05737],
+      type: [
+        0.05669 + 1.5 / f,
+        (a ? 0.49044 : 0.55793) + 5 / L,
+        0.88662,
+        0.05737
+      ],
+      rules: n,
+      stats: [0.792 + 1 / f, 0.881 - 3 / L, 0.16, 0.069],
+      stamp: [
+        n[0] + (n[2] - s) / 2,
+        n[1] + (n[3] - l) / 2,
+        s,
+        l
+      ]
+    };
+  }
+  return e.layout === "split-half" || e.layout === "aftermath-bottom" ? {
+    ...N,
+    background: [0.03937, 0.02531, 0.92126, 0.94],
+    frame: [0.04858, 0.03937, 0.90284, 0.93],
+    title: [0.05669, 0.045, 0.88662, 0.09],
+    art: [0.06929, 0.14, 0.86142, 0.38],
+    type: [0.05669, 0.525, 0.88662, 0.07],
+    rules: [0.07638, 0.605, 0.84724, 0.32]
+  } : e.layout === "aftermath-top" ? {
+    ...N,
+    title: [0.035, 0.025, 0.93, 0.105],
+    art: [0.052, 0.145, 0.896, 0.39],
+    type: [0.035, 0.55, 0.93, 0.105],
+    rules: [0.052, 0.67, 0.896, 0.29],
+    footer: [0, 1, 0, 0]
+  } : {
+    ...N,
+    art: [
+      N.art[0] + Ie.artInset / f,
+      N.art[1],
+      N.art[2] - 2 * Ie.artInset / f,
+      N.art[3]
+    ]
+  };
+}
+function rs(e) {
+  const t = ee(e) === "saga", r = oe(e).rules, a = ze(e), n = r[2] * 488 - (t ? 32 : 70), s = r[3] * 680;
+  let l = t ? 21 : 19;
+  const o = (S, v) => Math.max(1, Math.ceil(S.length * v * 0.49 / n)), i = (S, v) => Math.max(t ? S.badges.length * 36 : 34, o(S.text, v) * v + 16), c = (S) => a.reduce((v, k) => v + i(k, S), 0);
+  for (; l > 8 && c(l) > s; ) l -= 0.5;
+  const d = a.map((S) => i(S, l)), h = Math.max(0, s - c(l)) / Math.max(1, a.length);
+  let u = s / Math.max(1, a.length), m = s, g = a.length;
+  if (!t)
+    for (const S of [...d].sort((v, k) => k - v)) {
+      if (S <= u) break;
+      m -= S, u = m / Math.max(1, --g);
+    }
+  let w = 0;
+  return a.map((S, v) => {
+    const k = t ? d[v] + h : Math.max(u, d[v]), b = { ...S, top: w, height: k, font: l, left: t ? 27 : 62, width: n };
+    return w += k, b;
+  });
+}
+const nt = (e, t = !1) => `${t ? "italic " : ""}${e}px "CardRenderer MTG MPlantin", Georgia`;
+function as(e) {
+  const t = [];
+  let r = [], a = !1;
+  const n = () => {
+    r.length && (t.push({ pieces: r, space: a }), r = [], a = !1);
+  };
+  for (const s of e)
+    for (const l of Ne(s.text))
+      if (l.symbol) r.push({ text: l.symbol, symbol: !0, italic: !1 });
+      else
+        for (const o of l.value.split(/(\n|[^\S\n]+)/).filter(Boolean))
+          /^\s+$/.test(o) ? (n(), o === `
+` ? (t.push({ pieces: [], space: !1, newline: !0 }), a = !1) : a = !0) : r.push({ text: o, symbol: !1, italic: !!s.italic });
+  return n(), t;
+}
+function Be(e, t, r) {
+  const a = [];
+  for (const n of t) {
+    const s = a.at(-1);
+    s && !s.symbol && !n.symbol && s.italic === n.italic ? s.text += n.text : a.push({ ...n });
+  }
+  return a.map((n) => {
+    e.font = nt(r, n.italic);
+    const s = e.measureText(n.text);
+    return {
+      ...n,
+      size: r,
+      width: n.symbol ? r * 0.88 : s.width,
+      ascent: n.symbol ? r * 0.72 : s.actualBoundingBoxAscent,
+      descent: n.symbol ? r * 0.08 : s.actualBoundingBoxDescent,
+      inkLeft: n.symbol ? r * 0.025 : -s.actualBoundingBoxLeft,
+      inkRight: n.symbol ? r * 0.825 : s.actualBoundingBoxRight
+    };
+  });
+}
+function fr(e, t, r, a) {
+  const n = [];
+  let s = [];
+  for (const l of t) {
+    if (l.newline) {
+      n.push(Be(e, s, a)), s = [];
+      continue;
+    }
+    const o = s.length && l.space ? [{ text: " ", italic: l.pieces[0]?.italic ?? !1, symbol: !1 }] : [], i = Be(e, [...s, ...o, ...l.pieces], a);
+    s.length && i.reduce((c, d) => c + d.width, 0) > r ? (n.push(Be(e, s, a)), s = [...l.pieces]) : s.push(...o, ...l.pieces);
+  }
+  return s.length && n.push(Be(e, s, a)), n;
+}
+function Et(e, t, r, a) {
+  const n = fr(e, t, r, a);
+  if (n.length < 2) return n;
+  const s = /* @__PURE__ */ new Map(), l = (h, u) => {
+    const m = `${h}:${u}`;
+    let g = s.get(m);
+    if (!g) {
+      const w = [];
+      for (let S = h; S < u; S++) {
+        const v = t[S];
+        S > h && v.space && w.push({ text: " ", italic: v.pieces[0]?.italic ?? !1, symbol: !1 }), w.push(...v.pieces);
+      }
+      g = Be(e, w, a), s.set(m, g);
+    }
+    return g;
+  }, o = /* @__PURE__ */ new Map(), i = (h, u) => {
+    if (!u) return h === t.length ? { cost: 0, cuts: [] } : null;
+    const m = `${h}:${u}`;
+    if (o.has(m)) return o.get(m);
+    let g = null;
+    for (let w = h + 1; w <= t.length - u + 1; w++) {
+      const S = l(h, w).reduce((b, p) => b + p.width, 0);
+      if (S > r) break;
+      const v = i(w, u - 1);
+      if (!v) continue;
+      const k = v.cost + (r - S) ** 2;
+      (!g || k < g.cost) && (g = { cost: k, cuts: [w, ...v.cuts] });
+    }
+    return o.set(m, g), g;
+  }, c = i(0, n.length);
+  if (!c) return n;
+  let d = 0;
+  return c.cuts.map((h) => {
+    const u = l(d, h);
+    return d = h, u;
+  });
+}
+function Gt(e, t, r, a, n = !1) {
+  const s = as(t);
+  if (!n || s.length > 64) return fr(e, s, r, a);
+  const l = [];
+  let o = [];
+  for (const i of s)
+    i.newline ? (l.push(...o.length ? Et(e, o, r, a) : [[]]), o = []) : o.push(i);
+  return o.length && l.push(...Et(e, o, r, a)), l;
+}
+const _e = {
+  leading: 1,
+  paragraphGap: 0.45,
+  flavorGap: 0.9
+};
+function de(e, t, r, a = 24, n = 15, s = _e) {
+  e.save(), e.letterSpacing = "0px", e.textBaseline = "alphabetic", e.textAlign = "left";
+  try {
+    let l, o = a;
+    do {
+      const i = [], c = [];
+      let d = 0, h;
+      for (const p of t) {
+        let y = o, R = Gt(
+          e,
+          p.runs,
+          r.width,
+          y,
+          s.balanceLines
+        );
+        if (p.role === "flavor" && s.flavorOrphans !== !1 && R.length > 2 && R.at(-1).reduce((j, B) => j + B.width, 0) < r.width * 0.3)
+          for (let j = y - 0.25; j >= y * 0.94; j -= 0.25) {
+            const B = Gt(
+              e,
+              p.runs,
+              r.width,
+              j,
+              s.balanceLines
+            );
+            if (B.length < R.length) {
+              y = j, R = B;
+              break;
+            }
+          }
+        if (R.length) {
+          h && (h === "rules" && p.role === "flavor" ? d += o * s.flavorGap : (h !== "flavor" || p.role !== "flavor") && (d += o * s.paragraphGap));
+          for (const j of R) {
+            const B = Math.max(0, ...j.map((P) => P.ascent)), C = Math.max(0, ...j.map((P) => P.descent)), T = j.reduce((P, H) => P + H.width, 0), A = r.x + (p.align === "right" ? r.width - T : p.align === "center" ? (r.width - T) / 2 : 0);
+            let $ = 0, M = 1 / 0, W = -1 / 0;
+            for (const P of j)
+              M = Math.min(M, $ + P.inkLeft), W = Math.max(W, $ + P.inkRight), $ += P.width;
+            i.push({
+              x: A,
+              runs: j,
+              role: p.role,
+              baseline: d,
+              width: T,
+              inkBounds: [
+                A + (j.length ? M : 0),
+                d - B,
+                j.length ? W - M : 0,
+                B + C
+              ]
+            }), d += y * s.leading;
+          }
+          h = p.role;
+        }
+      }
+      if (s.flavorSeparator !== !1)
+        for (let p = 1; p < i.length; p++) {
+          const y = i[p - 1], R = i[p];
+          if (y.role !== "rules" || R.role !== "flavor") continue;
+          const j = y.inkBounds[1] + y.inkBounds[3];
+          c.push((j + R.inkBounds[1]) / 2 - 0.3);
+        }
+      const u = i[0]?.inkBounds[1] ?? 0, m = i.at(-1)?.inkBounds, g = m ? m[1] + m[3] - u : 0, w = Math.max(0, r.height - g), S = r.y + Math.max(0, Math.min(w, w / 2 + (s.centerOffset ?? 0))), v = Math.max(r.y, r.verticalLimits?.[0] ?? r.y), k = Math.min(
+        r.y + r.height,
+        r.verticalLimits?.[1] ?? r.y + r.height
+      ), b = Math.max(v, Math.min(k - g, S)) - u;
+      if (l = {
+        size: o,
+        x: r.x,
+        top: u + b,
+        width: r.width,
+        height: g,
+        overflow: g > k - v + 0.01 || i.some((p) => p.width > r.width + 0.01),
+        lines: i.map((p) => ({
+          ...p,
+          baseline: p.baseline + b,
+          inkBounds: [
+            p.inkBounds[0],
+            p.inkBounds[1] + b,
+            p.inkBounds[2],
+            p.inkBounds[3]
+          ]
+        })),
+        separators: c.map((p) => p + b)
+      }, l.overflow ||= l.lines.some(
+        (p) => r.exclusions?.some(([y, R, j, B]) => {
+          const [C, T, A, $] = p.inkBounds;
+          return C < y + j && C + A > y && T < R + B && T + $ > R;
+        })
+      ), !l.overflow || o <= n) break;
+      o = Math.max(n, o - 0.25);
+    } while (!0);
+    return l;
+  } finally {
+    e.restore();
+  }
+}
+function pr(e, t, r, a, n, s, l, o, i = 1 / 0) {
+  const c = (m) => (m.align === void 0 || m.align === "center") && m.runs.length > 0 && m.runs.every((g) => !g.text.includes(`
+`));
+  if (!r.length || !r.every(c) || !t.every(c)) return null;
+  const d = r.map((m) => m.runs.map((g) => g.text).join("")).join(`
+`);
+  if (Array.from(d.replace(/\{[^}]+\}/g, "●")).length > i) return null;
+  const h = (m) => m.map((g) => ({ ...g, align: "center" })), u = de(e, h(r), a, n, n, o);
+  return u.overflow || u.lines.length > l ? null : de(e, h(t), a, n, s, o);
+}
+const ss = new Set(
+  "8ed wc03 mrd dst 5dn wc04 chk unh bok sok 9ed psal rav phuk gpt dis csp cst tsb tsp hho plc fut 10e me1 lrw dd1 mor shm eve me2 ala dd2 con ddc arb m10 hop ohop me3 zen ddd h09 wwk dde roe dpa arc oarc m11 ddf som td0 pd2 olgc ps11 me4 mbs ddg nph td2 cmd ocmd pcmd m12 ddh isd pd3 dka ddi phel avr opc2 pc2 m13 ddj rtr ocm1 gtc ddk dgm mma m14 ddl thp1 ths tfth c13 oc13 bng thp2 tbth ddm jou thp3 tdag md1 cns vma ppc1 cp1 m15 ddn ktk c14 oc14 dvd evg gvl jvc cp2 frf ddo dtk tpr mm2 cp3 ori ddp bfz c15 oc15 ogw ddq soi w16 ema emn cn2 ddr kld c16 oc16 opca pca aer mm3 dds w17 akh cma e01 oe01 hou c17 oc17 h17 phtr xln g17 ddt ima e02 ust rix a25".split(" ")
+);
+function ns(e) {
+  return !ss.has(e?.trim().toLowerCase() ?? "");
+}
+function br(e, t, r = L, a = 1) {
+  const n = oe(t), s = {
+    ..._e,
+    flavorSeparator: t.frameAssetFamily === "eighth" ? !1 : ns(t.setCode)
+  }, [l, o, i, c] = n.rules, d = t.rulesParagraphs ?? (t.rulesText ?? "").split(`
+`).filter(Boolean).map((m) => ({ role: "rules", runs: [{ text: m }] })), h = {
+    x: l * f + (t.frameAssetFamily ? 0 : 3.5),
+    y: o * r + (t.frameAssetFamily ? 0 : 7),
+    width: i * f - (t.frameAssetFamily ? 0 : 9.5),
+    height: c * r - (t.frameAssetFamily ? 0 : 8),
+    // Fit actual line ink around the existing power/toughness plate. Short
+    // final lines can use the lower left area without being painted over.
+    exclusions: t.power != null && t.toughness != null ? [
+      [
+        n.stats[0] * f - 2,
+        n.stats[1] * r - 2,
+        n.stats[2] * f + 4,
+        n.stats[3] * r + 4
+      ]
+    ] : []
+  }, u = t.rulesAlignment?.mode === "auto" ? t.rulesAlignment.reference ?? d : d;
+  if (t.rulesAlignment?.mode !== "left" && ["10e", "m10", "m11", "m12", "m13", "m14"].includes(t.setCode?.toLowerCase() ?? "") && u.every((m) => m.role === "rules")) {
+    const m = pr(
+      e,
+      d,
+      u,
+      h,
+      24.5 * a,
+      15 * a,
+      3,
+      { ...s, balanceLines: !0 }
+    );
+    if (m) return m;
+  }
+  return de(
+    e,
+    t.rulesAlignment?.mode === "left" ? d.map((m) => ({ ...m, align: "left" })) : d,
+    h,
+    24.5 * a,
+    15 * a,
+    s
+  );
+}
+function qe(e, t, r, a = le, n = 0) {
+  if (t.overflow) throw Error("Magic rules text does not fit the available area.");
+  e.save(), e.textAlign = "left", e.textBaseline = "alphabetic", e.letterSpacing = "0px";
+  for (const o of t.separators) {
+    const i = e.createLinearGradient(t.x, o, t.x + t.width, o);
+    i.addColorStop(0, "#17140f00"), i.addColorStop(0.15, "#17140f55"), i.addColorStop(0.85, "#17140f55"), i.addColorStop(1, "#17140f00"), e.fillStyle = i, e.fillRect(t.x, o, t.width, 0.6);
+  }
+  e.fillStyle = "#17140f";
+  const s = n > 0 ? document.createElement("canvas") : null;
+  s && (s.width = e.canvas.width, s.height = e.canvas.height);
+  const l = s ? s.getContext("2d") : e;
+  if (!l) throw Error("Missing rules text context");
+  s && (l.setTransform(e.getTransform()), l.textAlign = "left", l.textBaseline = "alphabetic", l.letterSpacing = "0px", l.fillStyle = "#17140f");
+  for (const o of t.lines) {
+    let i = o.x ?? t.x;
+    for (const c of o.runs)
+      c.symbol ? a(
+        e,
+        c.text,
+        i + c.size * 0.025,
+        o.baseline - c.size * 0.72,
+        c.size * 0.8,
+        r
+      ) : (l.font = nt(c.size, c.italic), l.fillText(c.text, i, o.baseline)), i += c.width;
+  }
+  if (s) {
+    l.globalCompositeOperation = "destination-out", l.lineJoin = "round";
+    for (const o of t.lines) {
+      let i = o.x ?? t.x;
+      for (const c of o.runs)
+        c.symbol || (l.font = nt(c.size, c.italic), l.lineWidth = c.size * n * 2, l.strokeText(c.text, i, o.baseline)), i += c.width;
+    }
+    e.resetTransform(), e.drawImage(s, 0, 0), s.width = s.height = 0;
+  }
+  e.restore();
+}
+const Ue = (e) => e?.runs.map((t) => t.text).join("") ?? "", $t = (e) => e.length === 2 && /^[A-Za-z ,]+$/.test(Ue(e[0])) && Ue(e[0]).length <= 20;
+function ls(e, t, r, a, n, s, l, o) {
+  const i = (m) => m.role === "rules" && m.runs.length > 0 && !Ue(m).includes(`
+`) && m.align === void 0;
+  if (!r.length || !r.every(i) || t.some((m) => m.align) || r.length !== 1 && !$t(r)) return null;
+  const c = (m) => m.map(
+    (g, w) => ({
+      ...g,
+      align: g.align ?? (g.role === "flavor" || $t(m) && w === 0 && !/^Enchant\b/.test(Ue(g)) ? "left" : "center")
+    })
+  ), d = { x: 70, y: a - 6, width: 348, height: n - 8 }, h = {
+    leading: 1.1,
+    paragraphGap: 0,
+    flavorGap: 0,
+    flavorOrphans: !1,
+    flavorSeparator: !1,
+    balanceLines: !0,
+    centerOffset: 0
+  }, u = de(e, c(r), d, s, s, h);
+  return u.overflow || u.lines.length > 5 ? null : de(
+    e,
+    c(t),
+    { ...d, verticalLimits: o },
+    s,
+    l,
+    h
+  );
+}
+function wr(e) {
+  return e.rulesParagraphs ?? e.rulesText.split(`
+`).filter(Boolean).map((t) => ({ role: "rules", runs: [{ text: t }] }));
+}
+function f0(e, t, r = "oracle", a = {}) {
+  const n = t[r];
+  if (!n) throw Error(`Missing ${r} printing wording`);
+  if (typeof n.typeLine != "string" || typeof n.rulesText != "string")
+    throw Error("Wording requires a type line and rules text");
+  const s = a.rulesAlignment ?? r, l = s === "left" ? void 0 : t[s];
+  if (s !== "left" && !l) throw Error(`Missing ${s} alignment wording`);
+  const o = K({ ...e, typeLine: t.oracle.typeLine });
+  return {
+    ...e,
+    ...n,
+    // Clearing an absent paragraph override matters when switching from an
+    // annotated printing: stale original runs must not replace Oracle text.
+    rulesParagraphs: n.rulesParagraphs,
+    rulesAlignment: l ? { mode: "auto", reference: wr(l) } : { mode: "left" },
+    artifact: e.artifact ?? o.artifact,
+    land: e.land ?? o.land,
+    creature: e.creature ?? o.creature,
+    legendary: e.legendary ?? o.legendary,
+    wordingMode: r,
+    symbolStyle: a.symbolStyle ?? (r === "oracle" ? "modern" : "original")
+  };
+}
+const je = {
+  leading: 1,
+  paragraphGap: 0.25,
+  flavorGap: 0.8,
+  flavorOrphans: !1,
+  flavorSeparator: !1
+};
+function os(e, t) {
+  if (dt(t)) return null;
+  const [r, a, n, s] = se(ct(t).rules), l = ot(t), o = l?.paragraphs ?? wr({
+    rulesText: t.rulesText ?? "",
+    rulesParagraphs: t.rulesParagraphs
+  }), i = t.rulesAlignment?.mode === "left", c = i ? o.map((C) => ({ ...C, align: "left" })) : o, d = t.rulesAlignment?.mode === "auto" ? t.rulesAlignment.reference ?? c : c, h = t.wordingMode === "oracle" ? 10 : 15, u = t.setCode?.toLowerCase(), m = u === "lea" && t.wordingMode === "oracle" ? [428, 590] : void 0, g = ["lea", "leb", "2ed"].includes(u ?? ""), w = g || u === "3ed" && ne(t) === "fourth";
+  if (w && !i) {
+    const C = ls(
+      e,
+      c,
+      d,
+      a,
+      s,
+      g ? 32.5 : 27.5,
+      h,
+      m
+    );
+    if (C) return C;
+  }
+  const S = d.length === 1 ? d[0] : void 0, v = S?.runs.length === 1 ? S.runs[0] : void 0;
+  if (!i && u === "4ed" && ne(t) === "fourth" && d.some((C) => C.role === "flavor")) {
+    const C = pr(
+      e,
+      c,
+      d,
+      { x: 72, y: a + 2, width: 344, height: s - 8 },
+      25,
+      h,
+      5,
+      {
+        ...je,
+        leading: 1.1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        balanceLines: !0
+      },
+      150
+    );
+    if (C) return C;
+  }
+  const k = !i && u === "4ed" && ne(t) === "fourth" && c.every((C) => C.align === void 0 || C.align === "center") && S?.role === "rules" && (S.align === void 0 || S.align === "center") && v && !v.italic && !v.text.includes(`
+`) && v.text.length > 0 && v.text.length <= 100, b = (w || u === "4ed" && ne(t) === "fourth") && (c.length > 1 || c.reduce((C, T) => C + T.runs.reduce((A, $) => A + $.text.length, 0), 0) > 100), p = b && w, y = b && u === "4ed", R = (u === "mir" || u === "tmp") && !l && !/\b(?:Land|Artifact)\b/.test(t.typeLine ?? "") && pe(t).join("") === "W", j = de(
+    e,
+    k ? c.map((C) => ({ ...C, align: "center" })) : c,
+    {
+      x: w ? 70 : y || k ? 72 : r,
+      y: a + (l ? 1.5 : k ? -6 : y ? 0 : 4),
+      // Insets belong to the frame, not paragraph count or italic styling.
+      width: w ? 346 : y || k ? 344 : n + (R ? 10 : 0),
+      height: s - 8,
+      verticalLimits: m
+    },
+    l ? 24 : k ? 25 : 22.5,
+    h,
+    k ? { ...je, leading: 1, balanceLines: !0 } : b ? {
+      ...je,
+      paragraphGap: 0,
+      flavorGap: 0,
+      centerOffset: p ? -10 : 0
+    } : je
+  ), B = c.reduce(
+    (C, T) => C + T.runs.reduce((A, $) => A + $.text.length, 0),
+    0
+  );
+  return !p || B <= 270 || j.size >= 22 ? j : de(
+    e,
+    c,
+    { x: 70, y: a + 4, width: 346, height: s + 8, verticalLimits: m },
+    15.5,
+    h,
+    {
+      ...je,
+      leading: 1.25,
+      paragraphGap: 0,
+      flavorGap: 0,
+      centerOffset: -18
+    }
+  );
+}
+function is(e) {
+  return e.setCode?.toLowerCase() === "3ed" && ne(e) === "fourth";
+}
+function cs(e, t, r, a, n) {
+  e.save(), e.font = '26px "CardRenderer MTG Goudy", Georgia', ft(e, t, 40, a, n + r - 40, 1), e.restore();
+}
+function ds(e, t, r) {
+  e.save(), e.font = '26px "CardRenderer MTG MPlantin", Georgia', e.textAlign = "right", Za(e, t, 451, r + 12, 130, 1.25), e.restore();
+}
+function hs(e, t) {
+  e.save(), e.font = '22px "CardRenderer MTG MPlantin", Georgia', e.textAlign = "left", e.textBaseline = "alphabetic", ft(e, `Illus. © ${t}`, 50, 642, 338, 1.25), e.restore();
+}
+function us(e) {
+  return ["4ed", "5ed"].includes(e.setCode?.toLowerCase() ?? "") && !/\bLand\b/.test(e.typeLine ?? "") ? { right: 451, yOffset: 3, maxWidth: 130 } : null;
+}
+function Wt(e) {
+  const t = String(e.toughness ?? ""), r = e.wordingMode !== "oracle" && e.setCode?.toLowerCase() === "4ed" && /^\d+-\*$/.test(t) ? `(${t})` : t;
+  return `${e.power ?? ""}/${r}`;
+}
+function ms(e) {
+  const t = e.setCode?.toLowerCase(), r = t === "4ed" && !/\bLand\b/.test(e.typeLine ?? "");
+  if (t !== "mir" && t !== "tmp" && !r) return null;
+  const a = pe(e);
+  return {
+    titleX: r ? 42.5 : void 0,
+    titleYOffset: r ? -5 : 0,
+    typeX: r ? 42.5 : void 0,
+    manaRight: r ? 446.5 : 448,
+    manaTop: r ? 27.5 : 33.5,
+    manaSize: 23.4,
+    manaGap: r ? 3.6 : 1.7,
+    statsShadow: r ? 1 : 1.5,
+    statsOpaqueShadow: !r,
+    setRight: t === "mir" ? 434 : 432.5,
+    setCenterY: t === "mir" ? 388 : 387.5,
+    setHeight: t === "mir" ? 26 : 23.4,
+    setOutline: 1.25,
+    artistX: r ? 42.5 : 52,
+    artistBaseline: r ? 628.5 : 624,
+    artistSize: 19.5,
+    legalBaseline: r ? 640.5 : 637.5,
+    legalSize: 10.5,
+    legalLight: r ? /\bArtifact\b/.test(e.typeLine ?? "") || a.length === 1 && ["B", "G"].includes(a[0]) : !/\bLand\b/.test(e.typeLine ?? "") && !(a.length === 1 && ["W", "R"].includes(a[0])),
+    legalText: e.legalText === void 0 ? r ? "©1995 Wizards of the Coast, Inc. All rights reserved." : t === "mir" ? "©1996 Wizards of the Coast, Inc. All rights reserved." : "©1997 Wizards of the Coast, Inc." : e.legalText
+  };
+}
+const bt = (e, t, r, a, n, s) => {
+  if (t !== "T") return le(e, t, r, a, n, s);
+  kr(e, r, a, n, "", 0.88);
+}, lt = (e, t, r, a, n, s) => {
+  if (t !== "T") return mr(e, t, r, a, n, s);
+  kr(e, r, a, n, "", 0.8);
+}, gs = (e, t, r, a, n, s) => {
+  if (t !== "T") return le(e, t, r, a, n, s);
+  bt(e, t, r, a, n, s);
+}, fs = new Set(
+  "5ed 6ed 7ed ice hml all chr mir vis wth tmp sth exo usg ulg uds mmq nem pcy inv pls apc ody tor jud ons lgn scg brb btd ath dkm s99 s00 por po2 ptk".split(
+    " "
+  )
+);
+function ps(e) {
+  const t = e?.toLowerCase() ?? "";
+  return ["3ed", "leg", "drk", "fem"].includes(t) || ["lea", "leb", "2ed", "arn", "atq"].includes(t) ? lt : t === "4ed" ? gs : fs.has(t) ? bt : le;
+}
+function kr(e, t, r, a, n, s) {
+  e.save(), e.shadowColor = "transparent", e.shadowOffsetX = e.shadowOffsetY = 0, e.fillStyle = "#c9c4be", e.beginPath(), e.arc(t + a / 2, r + a / 2, a / 2, 0, Math.PI * 2), e.fill(), e.fillStyle = "#0d0f0f", e.font = `${a * s}px "CardRenderer MTG Historic Symbols"`, e.textAlign = "left", e.textBaseline = "alphabetic";
+  const l = e.measureText(n);
+  e.fillText(
+    n,
+    t + (a - l.actualBoundingBoxLeft - l.actualBoundingBoxRight) / 2 + l.actualBoundingBoxLeft,
+    r + (a + l.actualBoundingBoxAscent - l.actualBoundingBoxDescent) / 2
+  ), e.restore();
+}
+function bs(e, t, r, a, n, s, l, o = [0, 0, 1, 1], i = null, c = "low") {
+  const d = document.createElement("canvas"), h = Math.ceil(l * 2) + 1;
+  d.width = Math.ceil(n * 2) + h * 2, d.height = Math.ceil(s * 2) + h * 2;
+  const u = d.getContext("2d");
+  u.imageSmoothingQuality = c, u.drawImage(
+    t,
+    o[0] * t.width,
+    o[1] * t.height,
+    o[2] * t.width,
+    o[3] * t.height,
+    h,
+    h,
+    n * 2,
+    s * 2
+  ), u.globalCompositeOperation = "source-in", u.fillStyle = "#fff", u.fillRect(0, 0, d.width, d.height), e.save(), e.shadowColor = "transparent";
+  for (let m = 0; l > 0 && m < 16; m++) {
+    const g = m * Math.PI / 8;
+    e.drawImage(
+      d,
+      r - h / 2 + Math.cos(g) * l,
+      a - h / 2 + Math.sin(g) * l,
+      d.width / 2,
+      d.height / 2
+    );
+  }
+  if (u.fillStyle = "#17140f", i) {
+    const m = u.createLinearGradient(h, h, h + n * 2, h);
+    i.forEach((g, w) => m.addColorStop(w / 2, g)), u.fillStyle = m;
+  }
+  u.fillRect(0, 0, d.width, d.height), e.drawImage(d, r - h / 2, a - h / 2, d.width / 2, d.height / 2), e.restore(), d.width = d.height = 0;
+}
+function ws(e, t, r) {
+  e.save(), e.textAlign = "left", e.textBaseline = "alphabetic", t.artist && (e.fillStyle = "#f2eee3", e.shadowColor = "#000", e.shadowOffsetX = e.shadowOffsetY = e.getTransform().a, e.font = `${r.artistSize}px "CardRenderer MTG MPlantin", Georgia`, e.fillText(`Illus. ${t.artist}`, r.artistX, r.artistBaseline, 338)), e.shadowColor = "transparent", e.fillStyle = r.legalLight ? "#f2eee3" : "#17140f", e.font = `${r.legalSize}px "CardRenderer MTG MPlantin", Georgia`, r.legalText && e.fillText(r.legalText, r.artistX, r.legalBaseline, 380), e.restore();
+}
+function ks(e, t, r, a, n) {
+  const s = ct(t), l = ms(t), o = is(t);
+  if (n === "artwork") {
+    Ae(e, t, r, se(s.art), n);
+    return;
+  }
+  e.fillStyle = Mt(t), e.fillRect(0, 0, 488, 680), e.fillStyle = "#686050", e.fillRect(24.4, 27.2, 439.2, 625.6), e.fillStyle = "#e5dec5", e.fillRect(...se(s.rules)), e.fillStyle = "#746b58", e.fillRect(...se(s.art)), a && e.drawImage(a, 0, 0, 488, 680), Ae(e, t, r, se(s.art), n);
+  const i = r.get(Te(t));
+  if (i && (e.save(), e.filter = fa(t), e.drawImage(i, ...se(s.frame)), Te(t).endsWith("/seventh/regular/m.png") && Ua(e, i), e.restore()), ge(t) !== "black" || ne(t) === "fourth") {
+    const D = r.get(sr(t));
+    if (D) {
+      const F = document.createElement("canvas");
+      F.width = 732, F.height = 1020;
+      const U = F.getContext("2d");
+      U.drawImage(D, 0, 0, 732, 1020), U.globalCompositeOperation = "source-in", U.fillStyle = Mt(t), U.fillRect(0, 0, 732, 1020), e.drawImage(F, ...se(s.frame)), F.width = F.height = 0;
+    }
+  }
+  e.fillStyle = Tt(t), e.textBaseline = "middle", e.textAlign = "left", e.letterSpacing = "0px";
+  const [c, d, h, u] = se(s.title), m = t.manaSymbols ?? [], g = l?.manaSize ?? 23.4, w = l?.manaGap ?? 1.7, S = m.length * (g + w), v = l ? l.manaRight - S + w : c + h - S;
+  e.shadowColor = "#000b", e.shadowOffsetX = e.shadowOffsetY = e.getTransform().a, e.font = '27.8px "CardRenderer MTG Goudy", Georgia';
+  const k = l?.titleX ?? c, b = d + u / 2 + (l?.titleYOffset ?? 0), p = Math.max(
+    1,
+    m.length ? v - k - 5 : l?.titleX == null ? h - 5 : c + h - k - 5
+  );
+  o ? cs(e, t.name, k, b, p) : e.fillText(t.name, k, b, p);
+  const y = t.symbolStyle === "modern" || t.symbolStyle === void 0 && t.wordingMode === "oracle", R = t.symbolStyle === "original" || t.symbolStyle === void 0 && t.wordingMode === "original", j = R && ["lea", "leb", "2ed", "3ed"].includes(t.setCode?.toLowerCase() ?? "");
+  o ? Ka(e, m, r, y) : ["lea", "2ed"].includes(t.setCode?.toLowerCase() ?? "") ? Ja(e, m, r, y) : m.forEach(
+    (D, F) => (j ? mr : le)(
+      e,
+      D,
+      v + F * (g + w),
+      l?.manaTop ?? d + u / 2 - g / 2,
+      g,
+      r,
+      !1
+    )
+  );
+  const [B, C, T, A] = se(s.type), $ = nr(t) ?? "", M = r.get($), W = Ha(t), P = za(t), H = M ? Math.min(44 / M.width, (l?.setHeight ?? 23.4) / M.height) : 0, z = W?.width ?? (M?.width ?? 0) * H, O = W?.height ?? (M?.height ?? 0) * H, _ = [
+    (W?.right ?? l?.setRight ?? B + T) - z,
+    (W?.centerY ?? l?.setCenterY ?? C + A / 2) - O / 2,
+    z,
+    O
+  ], E = ut(t, $, _, "retro");
+  if (e.font = '21.7px "CardRenderer MTG MPlantin", Georgia', e.fillText(
+    ot(t)?.typeLine ?? t.typeLine ?? "",
+    l?.typeX ?? B,
+    C + A / 2,
+    M ? Math.max(
+      1,
+      Math.min(
+        T - 48,
+        W ? W.right - W.width - B - 6 : T,
+        E !== _ ? E[0] - (l?.typeX ?? B) - 6 : T
+      )
+    ) : T
+  ), M) {
+    const D = Math.min(44 / M.width, (l?.setHeight ?? 23.4) / M.height), F = W?.width ?? M.width * D, U = W?.height ?? M.height * D, re = W?.right ?? l?.setRight ?? B + T, J = W?.centerY ?? l?.setCenterY ?? C + A / 2, Z = W?.crop ?? [0, 0, 1, 1], he = Oe($), ae = !he && !t.setSymbol && r.get(dr($));
+    ae && (e.save(), e.shadowColor = "transparent", t.setCode?.toLowerCase() === "arn" && (e.filter = "brightness(0.7)"), e.drawImage(
+      ae,
+      Z[0] * ae.width,
+      Z[1] * ae.height,
+      Z[2] * ae.width,
+      Z[3] * ae.height,
+      re - F,
+      J - U / 2,
+      F,
+      U
+    ), e.restore()), he || t.setSymbol ? (e.save(), e.shadowColor = "transparent", e.drawImage(M, ...E), e.restore()) : P || l || Jt(t.setCode) ? bs(
+      e,
+      M,
+      re - F,
+      J - U / 2,
+      F,
+      U,
+      W?.outline ?? (P ? 2 : l?.setOutline ?? Yr(t.setCode)),
+      Z,
+      P,
+      W?.sampling
+    ) : gt(
+      e,
+      M,
+      t.setCode,
+      t.rarity,
+      B + T - M.width * D,
+      C + A / 2 - M.height * D / 2,
+      M.width * D,
+      M.height * D
+    );
+  }
+  e.shadowColor = "transparent";
+  const [te, q, we, ke] = se(s.rules);
+  e.fillStyle = "#17140f";
+  const X = r.get(dt(t) ?? "");
+  if (X) {
+    const D = Math.min(we * 0.4 / X.width, ke * 0.75 / X.height);
+    e.drawImage(
+      X,
+      te + (we - X.width * D) / 2,
+      q + (ke - X.height * D) / 2,
+      X.width * D,
+      X.height * D
+    );
+  } else {
+    const D = os(e, t);
+    D && qe(
+      e,
+      D,
+      r,
+      y ? le : R ? ps(t.setCode) : t.setCode?.toLowerCase() === "3ed" ? lt : l ? bt : le,
+      t.setCode?.toLowerCase() === "lea" ? 0.012 : 0
+    );
+  }
+  if (e.shadowColor = l?.statsOpaqueShadow ? "#000" : "#000b", l && (e.shadowOffsetX = e.shadowOffsetY = l.statsShadow * e.getTransform().a), e.fillStyle = Tt(t), e.font = '27.8px "CardRenderer MTG MPlantin", Georgia', e.textBaseline = "middle", t.power != null && t.toughness != null) {
+    const [D, F, U, re] = se(s.stats), J = us(t);
+    e.textAlign = J ? "right" : "center", o ? ds(e, Wt(t), F + re / 2) : e.fillText(
+      Wt(t),
+      J?.right ?? D + U / 2,
+      F + re / 2 + (J?.yOffset ?? 0),
+      J?.maxWidth ?? U
+    );
+  }
+  if (o && t.artist) hs(e, t.artist);
+  else if (t.artist && Qa(t)) es(e, t.artist);
+  else if (l) ws(e, t, l);
+  else if (t.artist) {
+    const [D, F, U, re] = se(s.footer);
+    e.textAlign = "center", e.font = '15.6px "CardRenderer MTG MPlantin", Georgia', e.fillText(`Illus. ${t.artist}`, D + U / 2, F + re / 2, U);
+  }
+  e.shadowColor = "transparent";
+}
+const ys = (e, t = {}) => fetch(e, { ...t, mode: "cors" });
+let Dt;
+const Ss = [
+  ["CardRenderer MTG Goudy", ua],
+  ["CardRenderer MTG Historic Symbols", ha]
+];
+function vs() {
+  return typeof FontFace != "function" ? Promise.resolve() : Dt ??= Promise.all(
+    Ss.map(async ([e, t]) => {
+      if ([...document.fonts].some(
+        (a) => a.family.replace(/^"|"$/g, "") === e && a.status === "loaded"
+      ))
+        return;
+      const r = await ys(t);
+      if (!r.ok) throw Error(`Retro font unavailable: ${e}`);
+      document.fonts.add(await new FontFace(e, await r.arrayBuffer()).load());
+    })
+  ).then(() => {
+  }).catch((e) => {
+    throw Dt = void 0, e;
+  });
+}
+const Rs = `${Re}/img/class_level_bg.webp`, yr = (e) => ["adventure", "class", "leveler"].includes(ee(e)), Se = (e, t, r, a) => ({
+  x: e / 63.5 * 488,
+  y: t / 88.9 * 680,
+  width: r / 63.5 * 488,
+  height: a / 88.9 * 680
+}), Cs = {
+  W: "#dcc8af",
+  U: "#b9c0da",
+  B: "#af9aa5",
+  R: "#d7a67c",
+  G: "#b2c0b0"
+};
+function Ms(e, t, r, a = 21) {
+  const n = e.replace(/\{[^}]+\}/g, "●").split(`
+`);
+  let s = a;
+  for (; s > 8 && n.reduce(
+    (l, o) => l + Math.max(1, Math.ceil(o.length * s * 0.53 / t)) * s + 4,
+    0
+  ) > r; )
+    s -= 0.5;
+  return s;
+}
+function Xe(e) {
+  const t = ee(e), r = [], a = (n, s, l, o = {}) => {
+    r.push({ kind: n, text: s, ...l, font: Ms(s, l.width, l.height), ...o });
+  };
+  if (t === "adventure") {
+    const n = e.faces?.[1];
+    if (!n) return [];
+    const s = (n.manaSymbols ?? []).map((o) => `{${o}}`).join(""), l = (n.manaSymbols?.length ?? 0) * 2.5;
+    a("heading", n.name, Se(5.6, 55.3, 25 - l, 4.2), {
+      color: "white",
+      font: Math.min(18, (25 - l) * 488 / 63.5 / Math.max(1, n.name.length * 0.55))
+    }), a("rules", s, Se(30 - l, 55.3, l, 4.2), { color: "white", font: 17 }), a("heading", n.typeLine ?? "", Se(5.6, 59.5, 25, 4.2), {
+      color: "white",
+      font: Math.min(17, 25 * 488 / 63.5 / Math.max(1, (n.typeLine ?? "").length * 0.52))
+    }), a("rules", n.rulesText ?? "", Se(5.6, 64.5, 24.7, 15.6)), a("rules", e.rulesText ?? e.faces?.[0]?.rulesText ?? "", Se(33, 54.9, 25.5, 25));
+  } else if (t === "class") {
+    const [n, s, l, o] = oe(e).rules.map(
+      (b, p) => b * (p % 2 ? L : f)
+    ), i = K(e);
+    a(
+      "band",
+      "",
+      { x: n, y: s, width: l, height: o },
+      {
+        fill: "#e3d8bb",
+        asset: Q(
+          "saga_textboxes",
+          i.boxes === "Colourless" ? "Land" : i.boxes
+        )
+      }
+    );
+    const c = [];
+    for (const b of (e.rulesText ?? "").split(`
+`).filter(Boolean))
+      c.length && !/^.*:\s*Level\s+\d+\s*$/i.test(b) && !/^.*:\s*Level\s+\d+\s*$/i.test(c.at(-1)) && !c.at(-1).startsWith("(") ? c[c.length - 1] += `
+` + b : c.push(b);
+    const d = (b) => /^.*:\s*Level\s+\d+\s*$/i.test(b), h = 28, u = 20, m = (b, p) => b.split(`
+`).reduce(
+      (y, R) => y + Math.max(1, Math.ceil(R.length * p * 0.53 / (l - 10))),
+      0
+    ), g = c.map(
+      (b) => d(b) ? h : m(b, b.startsWith("(") ? 16 : u) * (b.startsWith("(") ? 16 : u) + 8
+    ), w = c.filter((b) => !d(b)).length, S = Math.max(0, o - g.reduce((b, p) => b + p, 0)) / Math.max(1, w), v = Math.min(
+      1,
+      (o - c.filter(d).length * h) / g.reduce((b, p, y) => b + (d(c[y]) ? 0 : p), 0)
+    );
+    let k = s;
+    c.forEach((b, p) => {
+      const y = d(b), R = y ? h : g[p] * v + S;
+      if (y) {
+        const [j, B] = b.split(/:\s*/);
+        a("band", "", { x: n, y: k, width: l, height: R }, { asset: Rs }), a("rules", j + ":", { x: n + 5, y: k, width: l / 2 - 5, height: R }, { font: 18 }), a(
+          "heading",
+          B,
+          { x: n + l / 2, y: k, width: l / 2 - 5, height: R },
+          { font: 18, align: "right" }
+        );
+      } else
+        a(
+          "rules",
+          b,
+          { x: n + 5, y: k + 4, width: l - 10, height: R - 8 },
+          { font: (b.startsWith("(") ? 16 : u) * v, italic: b.startsWith("(") }
+        );
+      k += R;
+    });
+  } else if (t === "leveler") {
+    const n = e.rulesText ?? "", s = n.split(/^LEVEL\s+([^\n]+)\n/gm), l = [
+      {
+        range: "",
+        text: s[0] ?? "",
+        stats: e.power != null && e.toughness != null ? `${e.power}/${e.toughness}` : ""
+      }
+    ];
+    for (let d = 1; d < s.length; d += 2) {
+      const h = s[d + 1] ?? "", u = h.match(/^([*X\d+−-]+\/[*X\d+−-]+)(?:\n|$)/);
+      l.push({
+        range: s[d],
+        stats: u?.[1] ?? "",
+        text: u ? h.slice(u[0].length) : h
+      });
+    }
+    const o = Se(4.9, 55.6, 53.7, 25.5), i = o.height / l.length, c = Cs[K(e).frame] ?? "#dcc8af";
+    l.forEach((d, h) => {
+      const u = o.y + h * i;
+      h && a(
+        "band",
+        "",
+        { x: o.x, y: u, width: o.width, height: i },
+        { fill: h % 2 ? "#00000018" : "#00000028" }
+      );
+      const m = d.range ? 55 : 7, g = d.stats ? 72 : 7;
+      a("rules", d.text, {
+        x: o.x + m,
+        y: u + 4,
+        width: o.width - m - g,
+        height: i - 8
+      }), d.range && a(
+        "level",
+        `LEVEL
+${d.range}`,
+        { x: o.x - 12, y: u + i / 2 - 23, width: 65, height: 46 },
+        { fill: c, font: 13 }
+      ), d.stats && a(
+        "stats",
+        d.stats,
+        { x: o.x + o.width - 68, y: u + i / 2 - 22, width: 77, height: 44 },
+        { asset: Q("pt-boxes", K(e).pt), font: 26 }
+      );
+    });
+  }
+  return r;
+}
+function Ts(e) {
+  return Xe(e).flatMap((t) => [
+    t.asset ?? null,
+    ...Ne(t.text).flatMap((r) => r.symbol ? [Ye(r.symbol)] : [])
+  ]);
+}
+function Ls(e) {
+  return yr(e) ? Xe(e) : null;
+}
+function js(e, t, r) {
+  for (const a of Xe(t)) {
+    const { x: n, y: s, width: l, height: o, font: i } = a;
+    e.save(), e.textAlign = "left", e.fillStyle = a.fill ?? "transparent", a.kind === "level" ? (e.beginPath(), e.moveTo(n, s), e.lineTo(n + l * 0.72, s), e.lineTo(n + l, s + o / 2), e.lineTo(n + l * 0.72, s + o), e.lineTo(n, s + o), e.closePath(), e.fill(), e.strokeStyle = "#0008", e.lineWidth = 1, e.stroke()) : a.fill && e.fillRect(n, s, l, o);
+    const c = a.asset ? r.get(a.asset) : null;
+    if (c && e.drawImage(c, n, s, l, o), e.beginPath(), e.rect(n, s, l, o), e.clip(), e.fillStyle = a.color ?? "#17140f", ["stats", "level"].includes(a.kind)) {
+      e.font = `${i}px "CardRenderer MTG Beleren", Georgia`, e.textAlign = "center", e.textBaseline = "middle";
+      const d = a.text.split(`
+`);
+      d.forEach(
+        (h, u) => e.fillText(
+          h,
+          n + l * (a.kind === "level" ? 0.43 : 0.5),
+          s + o / 2 + (u - (d.length - 1) / 2) * i,
+          l * 0.85
+        )
+      );
+    } else if (a.align === "right")
+      e.font = `${i}px "CardRenderer MTG MPlantin", Georgia`, e.textAlign = "right", e.textBaseline = "middle", e.fillText(a.text, n + l, s + o / 2, l);
+    else {
+      e.font = `${a.italic ? "italic " : ""}${i}px "CardRenderer MTG MPlantin", Georgia`;
+      const d = mt(e, a.text, l, i).length * i + (a.text.split(`
+`).length - 1) * G.paragraphGap;
+      hr(
+        e,
+        a.text,
+        n,
+        s + Math.max(0, (o - d) / 2),
+        l,
+        { size: i, italic: !!a.italic },
+        r
+      );
+    }
+    e.restore();
+  }
+}
+function Ee(e) {
+  if (!["split", "aftermath"].includes(e.layout ?? "") || e.faces?.length !== 2) return [];
+  const t = e.layout === "aftermath" || /\bAftermath\b/.test(e.faces[1].rulesText ?? "");
+  return e.faces.map((r, a) => {
+    const n = t ? 0.615 : 0.5, s = {
+      setCode: e.setCode,
+      rarity: e.rarity,
+      artist: e.artist,
+      ...r,
+      layout: t ? a === 0 ? "aftermath-top" : "aftermath-bottom" : "split-half",
+      faces: void 0,
+      rulesText: r.rulesText?.split(`
+`).filter((l) => !/^Fuse\b/.test(l)).join(`
+`),
+      illustration: r.illustration ?? e.illustration,
+      etchedIllustration: r.etchedIllustration ?? (r.illustration ? void 0 : e.etchedIllustration),
+      illustrationCrop: r.illustrationCrop ?? (!r.illustration && e.illustration ? [a ? n : 0, 0, a ? 1 - n : n, 1] : void 0)
+    };
+    return t ? a === 0 ? { face: s, x: 0, y: 0, width: 488, height: 375, rotation: 0 } : { face: s, x: 488, y: 367, width: 276, height: 488, rotation: 90 } : {
+      face: s,
+      x: 5,
+      y: (a ? 333 : 648) - (wt(e) ? 12 : 0),
+      width: 333,
+      height: 488,
+      rotation: -90
+    };
+  });
+}
+function p0(e) {
+  return {
+    left: `${e.x / f * 100}%`,
+    top: `${e.y / L * 100}%`,
+    width: `${e.width / f * 100}%`,
+    height: `${e.height / L * 100}%`,
+    transform: `rotate(${e.rotation}deg)`
+  };
+}
+function Sr(e, t) {
+  e.translate(t.x, t.y), e.rotate(t.rotation * Math.PI / 180), e.scale(t.width / f, t.width / f);
+}
+function Pt(e, t) {
+  const r = t[0] * e.width, a = t[1] * e.height, n = t[2] * e.width, s = t[3] * e.height;
+  return e.rotation === -90 ? [
+    (e.x + a) / f,
+    (e.y - r - n) / L,
+    s / f,
+    n / L
+  ] : e.rotation === 90 ? [
+    (e.x - a - s) / f,
+    (e.y + r) / L,
+    s / f,
+    n / L
+  ] : [(e.x + r) / f, (e.y + a) / L, n / f, s / L];
+}
+function Bs(e) {
+  return e.layout === "split-half" || e.layout === "aftermath-bottom" ? 1.5 : 1;
+}
+function wt(e) {
+  return /\bFuse\b/.test(e.rulesText ?? "") || !!e.faces?.some((t) => /^Fuse\b/m.test(t.rulesText ?? ""));
+}
+const Is = 5, As = 0.02655 * L + 0.91339 * f * 3810 / 2736;
+function kt(e) {
+  const t = e ? 382 : 429;
+  return { top: t, scale: 1 - Is / (As - t) };
+}
+function Os(e) {
+  const { top: t, scale: r } = kt(e);
+  return [t + 6, t + (625 - t) * r - 4];
+}
+function xt(e, t, r, a, n, s) {
+  const { top: l, scale: o } = kt(s), i = t.height * n / t.width, c = Math.max(0, Math.min(i, l - a)), d = c * t.width / n;
+  c > 0 && e.drawImage(t, 0, 0, t.width, d, r, a, n, c), c < i && e.drawImage(
+    t,
+    0,
+    d,
+    t.width,
+    t.height - d,
+    r,
+    a + c,
+    n,
+    (i - c) * o
+  );
+}
+function Es(e, t, r) {
+  const a = e.rulesParagraphs?.filter((l) => l.role === "rules")[r], n = (e.rulesText ?? "").split(`
+`).filter((l) => l.trim())[r];
+  if (!a || a.runs.map((l) => l.text).join("") !== n) return [{ text: t }];
+  let s = n.length - t.length;
+  return a.runs.flatMap((l) => {
+    const o = Math.min(s, l.text.length);
+    return s -= o, o === l.text.length ? [] : [{ ...l, text: l.text.slice(o) }];
+  });
+}
+function Gs(e, t) {
+  const r = ee(t) === "planeswalker-large", a = ze(t), n = !r && a.length < 3, s = oe(t).rules, l = s[0] * f, o = s[1] * L, i = s[2] * f, c = s[3] * L - (r ? 24 : n ? 4 : 16), d = r ? 8 : n ? 3 : 0, h = r ? { ..._e, leading: 0.9 } : _e, u = a.map((C, T) => ({
+    ...C,
+    runs: Es(t, C.text, T),
+    left: C.badges.length ? 67 : 45
+  })), m = (C) => u.map(
+    (T) => de(
+      e,
+      [{ role: "rules", runs: T.runs }],
+      { x: l + T.left, y: 0, width: i - T.left - 8, height: 1e3 },
+      C,
+      C,
+      h
+    )
+  );
+  let g = r ? 17.5 : n ? 24 : 19, w = m(g);
+  const [S, v] = Os(r), k = () => {
+    const C = c / Math.max(1, u.length), T = w.map((M, W) => o + d + C * (W + 0.5) - M.height / 2);
+    let A = S - 8;
+    for (let M = 0; M < T.length; M++)
+      T[M] = Math.max(T[M], A + 8), A = T[M] + w[M].height;
+    let $ = v + 8;
+    for (let M = T.length - 1; M >= 0; M--)
+      T[M] = Math.min(T[M], $ - 8 - w[M].height), $ = T[M];
+    return T;
+  }, b = () => (k()[0] ?? S) >= S, p = () => w.map((C) => Math.max(34, C.height + 16)), y = () => {
+    const C = c / Math.max(1, u.length);
+    return w.every((T, A) => {
+      const $ = C * (A + 0.5);
+      return $ - T.height / 2 >= 6 && $ + T.height / 2 <= c + 6 && (!A || C - (T.height + w[A - 1].height) / 2 >= 8);
+    });
+  };
+  for (; g > 8 && (p().reduce((C, T) => C + T, 0) > c || !y() || !b()); )
+    g -= 0.25, w = m(g);
+  const R = c / Math.max(1, u.length), j = k();
+  let B = d;
+  return u.map((C, T) => {
+    const A = R, $ = w[T].height, M = de(
+      e,
+      [{ role: "rules", runs: C.runs }],
+      {
+        x: l + C.left,
+        y: j[T],
+        width: i - C.left - 8,
+        height: $
+      },
+      g,
+      g,
+      h
+    );
+    M.overflow ||= B + A > d + c + 0.01, M.overflow ||= !y(), M.overflow ||= !b(), M.overflow ||= M.lines.some(
+      (P) => P.inkBounds[1] < S - 0.01 || P.inkBounds[1] + P.inkBounds[3] > v + 0.01
+    );
+    const W = { ...C, top: B, height: A, font: g, width: M.width, layout: M };
+    return B += A, W;
+  });
+}
+function $s(e) {
+  return { font: 18, offsetY: e.startsWith("+") ? 2 : e === "0" ? 0 : -2 };
+}
+function vr(e, t) {
+  return e === "saga" ? /^(I|II|III|IV)$/.test(t) ? Q("saga", t) : null : Q(
+    "planeswalker",
+    t.startsWith("+") ? "LoyaltyPlus" : t === "0" ? "LoyaltyZero" : "LoyaltyMinus"
+  );
+}
+function Rr(e, t) {
+  return ee(e) === "saga" ? Q("saga_textboxes", t === "Colourless" ? "Land" : t) : null;
+}
+function Ws(e) {
+  return {
+    W: "#eee9d9f0",
+    U: "#d3e4ecf0",
+    B: "#ddd8e4f0",
+    R: "#ecd4c8f0",
+    G: "#d4e2d0f0",
+    Gold: "#e8dfbef0",
+    Colourless: "#f2f2f0f0"
+  }[K(e).boxes] ?? "#dededbf0";
+}
+function Ds(e, t) {
+  const { top: r, scale: a } = kt(ee(t) === "planeswalker-large");
+  e.save(), e.translate(0, r), e.scale(1, a), e.translate(0, -r), e.beginPath(), e.moveTo(66, r), e.lineTo(448, r), e.quadraticCurveTo(456, r, 456, r + 8), e.lineTo(456, 613), e.bezierCurveTo(456, 623, 420, 629, 257, 629), e.bezierCurveTo(94, 629, 58, 623, 58, 613), e.lineTo(58, r + 8), e.quadraticCurveTo(58, r, 66, r), e.closePath(), e.clip(), e.fillStyle = Ws(t), e.fillRect(58, r, 398, 629 - r), e.restore();
+}
+function Ps(e, t, r) {
+  e.fillStyle = "#17140f", e.font = '24px "CardRenderer MTG MPlantin", Georgia', e.textBaseline = "alphabetic";
+  const a = e.measureText(":");
+  e.fillText(
+    ":",
+    t,
+    r + 1.5 + (a.actualBoundingBoxAscent - a.actualBoundingBoxDescent) / 2
+  );
+}
+function xs(e, t, r) {
+  const a = ee(t), n = a === "saga", s = oe(t).rules, l = s[0] * f, o = s[1] * L, i = s[2] * f, c = s[3] * L;
+  n && (e.fillStyle = "#e3d8bb", e.fillRect(l, o, i, c));
+  const d = Rr(t, K(t).boxes), h = d ? r.get(d) : void 0;
+  h && e.drawImage(h, l, o, i, c);
+  const u = n ? rs(t) : Gs(e, t);
+  for (const [m, g] of u.entries()) {
+    if (m > 0) {
+      const v = u[m - 1]?.layout, k = g.layout && v ? Math.max(v.top + v.height + 3, Math.min(o + g.top, g.layout.top - 3)) : o + g.top;
+      e.fillStyle = "#0002", e.fillRect(l + (n ? 0 : 40), k, i - (n ? 0 : 40), 1.5);
+    }
+    if (e.fillStyle = "#17140f", e.textAlign = "left", g.layout) qe(e, g.layout, r);
+    else {
+      e.font = `${g.reminder ? "italic " : ""}${g.font}px "CardRenderer MTG MPlantin", Georgia`;
+      const v = mt(e, g.text, g.width, g.font).length * g.font;
+      hr(
+        e,
+        g.text,
+        l + g.left,
+        o + g.top + (g.height - v) / 2,
+        g.width,
+        { size: g.font, italic: g.reminder },
+        r
+      );
+    }
+    const w = n ? 36 : 54, S = n ? 36 : 40;
+    g.badges.forEach((v, k) => {
+      const b = l + (n ? -18 : 0), p = o + g.top + g.height / 2 + (k - g.badges.length / 2) * S, y = vr(a, v), R = y ? r.get(y) : null;
+      if (R) {
+        if (e.save(), !n) {
+          const j = e.getTransform().a;
+          e.shadowColor = "#0009", e.shadowBlur = 3 * j, e.shadowOffsetY = 2 * j;
+        }
+        e.drawImage(R, b, p, w, S), e.restore();
+      } else
+        e.fillStyle = "#29231c", e.fillRect(b, p, w, S);
+      if (!R || !n) {
+        e.fillStyle = "white", e.textAlign = "center", e.textBaseline = "middle";
+        const j = $s(v);
+        e.font = `bold ${n ? 19 : j.font}px "CardRenderer MTG Beleren", Georgia`, e.fillText(
+          v,
+          b + w / 2 - (n ? 0 : 1.5),
+          p + S / 2 + (n ? 0 : j.offsetY),
+          w - 3
+        ), n || Ps(e, b + w + 4, p + S / 2);
+      }
+    });
+  }
+}
+const Cr = 0.7;
+function Fs(e, t, r, a = !1) {
+  const [n, s, l, o] = [
+    r[0] * f,
+    r[1] * L,
+    r[2] * f,
+    r[3] * L - 1
+  ], i = new Path2D();
+  i.moveTo(n + 14, s), i.lineTo(n + l - 14, s), i.quadraticCurveTo(n + l, s, n + l, s + 14), i.lineTo(n + l, s + o - 7), i.quadraticCurveTo(n + l, s + o, n + l - 7, s + o), i.lineTo(n + 9, s + o), i.quadraticCurveTo(n - 2, s + o, n - 2, s + o - 9), i.quadraticCurveTo(n - 2, s + 17, n + 2, s + 9), i.quadraticCurveTo(n + 5, s, n + 14, s), i.closePath(), e.save();
+  const c = e.getTransform().a;
+  e.shadowColor = "#0009", e.shadowBlur = 1.4 * c, e.shadowOffsetX = -1.2 * c, e.shadowOffsetY = 3.5 * c, e.fillStyle = "#191816", e.fill(i), e.shadowColor = "transparent", e.save(), e.clip(i);
+  const d = t.width / l, h = [
+    20 * d,
+    t.height - (o - 4) * d,
+    t.width - 40 * d,
+    (o - 12) * d,
+    n - 2,
+    s,
+    l + 2,
+    o
+  ];
+  e.drawImage(t, ...h), a && (e.globalAlpha *= Cr, e.drawImage(t, ...h)), e.restore(), e.strokeStyle = "#191816", e.lineWidth = 1.2, e.stroke(i), e.restore();
+}
+const _s = 1.1;
+function Mr(e) {
+  return !e.setSymbol && ["m19", "m20", "m21"].includes(e.setCode?.toLowerCase() ?? "");
+}
+function Tr(e, t, r, a, n, s, l, o, i = 1) {
+  const c = !r || r === "common", d = document.createElement("canvas"), h = 2, u = 4;
+  d.width = Math.ceil((s + h * 2) * u), d.height = Math.ceil((l + h * 2) * u);
+  const m = d.getContext("2d");
+  m.scale(u, u), m.translate(h, h), m.drawImage(
+    t,
+    o[0] * t.width,
+    o[1] * t.height,
+    o[2] * t.width,
+    o[3] * t.height,
+    0,
+    0,
+    s,
+    l
+  ), m.globalCompositeOperation = "source-in";
+  const g = r === "mythic" ? ["#9c2408", "#e97816", "#ffbf46", "#a73312"] : r === "uncommon" ? ["#506b80", "#a5c3d4", "#ccdce4", "#708898"] : ["#766326", "#c3af5c", "#eee1a0", "#907b36"], w = m.createLinearGradient(0, l * 0.65, s, l * 0.35);
+  w.addColorStop(0, g[0]), w.addColorStop(0.35, g[1]), w.addColorStop(0.6, g[2]), w.addColorStop(1, g[3]), m.fillStyle = c ? "#111111" : w, m.fillRect(0, 0, s, l), m.beginPath(), m.moveTo(s * 0.046, 0), m.lineTo(s * 0.953, 0), m.bezierCurveTo(
+    s * 1.016,
+    l * 0.38,
+    s * 1.016,
+    l * 0.62,
+    s * 0.953,
+    l
+  ), m.lineTo(s * 0.046, l), m.bezierCurveTo(-s * 0.017, l * 0.62, -s * 0.017, l * 0.38, s * 0.046, 0), m.closePath(), m.globalCompositeOperation = "destination-over", m.fillStyle = c ? "#f8f8f5" : "#111111", m.fill(), m.globalCompositeOperation = "source-over", m.strokeStyle = c ? "#f8f8f5" : "#111111", m.lineWidth = i, m.stroke(), e.drawImage(
+    d,
+    a - h,
+    n - h,
+    d.width / u,
+    d.height / u
+  ), d.width = d.height = 0;
+}
+const ve = (e) => [
+  e[0] * f,
+  e[1] * L,
+  e[2] * f,
+  e[3] * L
+];
+function Us(e, t, r, a, n) {
+  const s = pt(t);
+  if (!s) throw Error("Missing replacement frame family.");
+  const l = (O) => {
+    const _ = r.get(O);
+    if (!_) throw Error(`Replacement frame asset unavailable: ${O}`);
+    return _;
+  }, { rects: o } = s, i = t.frameAssetFamily === "eighth";
+  if (e.save(), e.fillStyle = ce(t.setCode, t.borderColor).border, e.fillRect(0, 0, f, L), a && e.drawImage(a, 0, 0, f, L), Ae(e, t, r, ve(o.art), n), n === "artwork") {
+    e.restore();
+    return;
+  }
+  if (e.drawImage(l(s.frame), 0, 0, f, L), s.rightFrame) {
+    const O = document.createElement("canvas");
+    O.width = 732, O.height = 1020;
+    const _ = O.getContext("2d");
+    _.drawImage(l(s.rightFrame), 0, 0, O.width, O.height);
+    const E = document.createElement("canvas");
+    E.width = O.width, E.height = O.height;
+    const te = E.getContext("2d"), q = (he, ae) => {
+      const ie = te.createLinearGradient(E.width * he, 0, E.width * ae, 0);
+      return ie.addColorStop(0, "#0000"), ie.addColorStop(1, "#000"), ie;
+    };
+    te.fillStyle = q(0.47, 0.53), te.fillRect(0, 0, E.width, E.height);
+    const we = i ? [0.08, 0.627, 0.84, 0.29] : [0.071, 0.629, 0.858, 0.294], [ke, X, D, F] = we, U = ke * E.width, re = X * E.height, J = D * E.width, Z = F * E.height;
+    te.clearRect(U, re, J, Z), te.fillStyle = q(0.27, 0.73), te.fillRect(U, re, J, Z), _.globalCompositeOperation = "destination-in", _.drawImage(E, 0, 0), e.drawImage(O, 0, 0, f, L), O.width = O.height = 0, E.width = E.height = 0;
+  }
+  const c = ce(t.setCode, t.borderColor);
+  if (c.border !== "#090806") {
+    const O = document.createElement("canvas");
+    O.width = 732, O.height = 1020;
+    const _ = O.getContext("2d");
+    _.drawImage(l(s.border), 0, 0, O.width, O.height), _.globalCompositeOperation = "source-in", _.fillStyle = c.border, _.fillRect(0, 0, O.width, O.height), e.drawImage(O, 0, 0, f, L), O.width = O.height = 0;
+  }
+  e.fillStyle = "#17140f", e.textAlign = "left", e.textBaseline = "middle";
+  const d = i ? "CardRenderer MTG Matrix" : "CardRenderer MTG Beleren", [h, u, m, g] = ve(o.title), w = t.manaSymbols ?? [], { size: S, gap: v } = s.mana, k = s.mana.right * f, b = w.length * S + Math.max(0, w.length - 1) * v;
+  e.font = `bold ${s.titleSize}px "${d}", Georgia`, Fe(
+    e,
+    t.name,
+    h,
+    u + g / 2,
+    w.length ? k - b - h - 8 : m,
+    s.titleSize,
+    !0,
+    1,
+    d
+  ), w.forEach(
+    (O, _) => le(
+      e,
+      O,
+      k - b + _ * (S + v),
+      s.mana.center * L - S / 2,
+      S,
+      r,
+      !0
+    )
+  );
+  const p = Ce(t), y = r.get(p ?? ""), R = tr(t), j = y ? Math.min(
+    s.symbol.width * f / (y.width * R[2]),
+    s.symbol.height * L / (y.height * R[3])
+  ) : 0, B = y ? y.width * R[2] * j : 0, C = y ? y.height * R[3] * j : 0, T = Ga(t, p, [
+    s.symbol.right * f - B,
+    s.symbol.center * L - C / 2,
+    B,
+    C
+  ]), [A, $, M, W] = ve(o.type);
+  if (e.font = `bold ${s.typeSize}px "${d}", Georgia`, Fe(
+    e,
+    t.typeLine ?? "",
+    A,
+    $ + W / 2,
+    y ? T[0] - A - 7 : M,
+    s.typeSize,
+    !0,
+    1,
+    d
+  ), y) {
+    const O = ir(t);
+    Oe(p) || t.setSymbol ? e.drawImage(y, ...T) : Mr(t) ? Tr(e, y, t.rarity, ...T, R, 1.5) : O ? cr(e, y, O, t.rarity, ...T, R, !1) : gt(e, y, t.setCode, t.rarity, ...T, R);
+  }
+  if (qe(e, br(e, t), r), t.power != null && t.toughness != null) {
+    e.drawImage(l(s.pt), ...ve(o.stats));
+    const [O, _, E, te] = ve(o.stats);
+    e.font = `bold ${i ? 29 : 25}px "${d}", Georgia`, e.textAlign = "center", e.textBaseline = "middle", e.fillText(`${t.power}/${t.toughness}`, O + E * 0.52, _ + te * 0.52, E * 0.85);
+  }
+  const [P, H, z] = ve(o.footer);
+  e.textAlign = "left", e.textBaseline = "top", e.fillStyle = i ? ["B", "Colourless", "Land"].includes(K(t).boxes) ? "#fff" : "#17140f" : "#fff", e.font = `${i ? 14 : 12}px "${d}", Georgia`, e.fillText(t.artist ?? "", P, H, z), t.legalText && (e.font = '9px "CardRenderer MTG MPlantin", Georgia', e.fillText(t.legalText, P, H + 15, z)), e.restore();
+}
+let Ft = null;
+function Ns(e) {
+  return e.frameAssetFamily !== "eighth" ? Promise.resolve() : Ft ??= document.fonts.load('bold 24px "CardRenderer MTG Matrix"').then((t) => {
+    if (!t.length || t.some((r) => r.status !== "loaded"))
+      throw Error("Replacement Eighth Edition frames need card-glint/magic/fonts.css.");
+  }).catch((t) => {
+    throw Ft = null, t;
+  });
+}
+function Ys(e, t, [r, a, n, s]) {
+  const l = t.height * n / t.width;
+  e.save(), e.beginPath(), e.rect(r, a, n, s / 2), e.clip(), e.drawImage(t, r, a + s - l + 1, n, l), e.restore();
+}
+function Hs(e, [t, r, a, n], s) {
+  if (!["W", "U", "B", "R", "G", "Artifact"].includes(s)) return;
+  e.save(), e.shadowColor = "transparent";
+  const l = e.createLinearGradient(t, 0, t + a, 0);
+  l.addColorStop(0, "rgba(255,255,255,0)"), l.addColorStop(0.025, "rgba(255,255,255,0.2)"), l.addColorStop(0.975, "rgba(255,255,255,0.2)"), l.addColorStop(1, "rgba(255,255,255,0)"), e.fillStyle = l, e.fillRect(t, r + n - 4, a, 2.3), e.restore();
+}
+const zs = "symbol-svg-v1", qs = { "m15-u": { sha256: "bfd962ff9640a846e5690d76c0fe88324e9d49cb6771744b5ab8f34f7afe7362", recipe: "m15" }, "m15-r": { sha256: "933756b97cebe7389ff7cee219a34b1ac13bc504743a2be037a286ee5ffc4b0d", recipe: "m15" }, "m15-m": { sha256: "6e9f87473f1ed8ecb05647fbde6f13e22faeab18fe56b8f76cfa1759bb4210e7", recipe: "m15" }, "8ed-u": { sha256: "6c20e8da28fdd5cdb030814e5c1339978f276c77f4ad9d99ca816adb8d970880", recipe: "8ed" }, "8ed-r": { sha256: "eccde74c56b4810434ecdf4e99206046d6970ea601e4fed2f73eb2ee855053a2", recipe: "8ed" }, "9ed-u": { sha256: "acb7ea7f3422f50dca2aef4e07aa3977aa1641ff2cb54f6eb64ae1bc17abbf53", recipe: "9ed" }, "9ed-r": { sha256: "c1cbcc1aea4f032c5f2ccf7f1d63073813bf9c6f050ba2f5385170ff3deca8a5", recipe: "9ed" } }, Lr = {
+  revision: zs,
+  sources: qs
+}, _t = `${me}/img/setSymbols/official/`, Ut = Lr.sources;
+function jr(e) {
+  if (!e.startsWith(_t) || !e.endsWith(".svg")) return;
+  const t = e.slice(_t.length, -4);
+  return Object.hasOwn(Ut, t) ? Ut[t] : void 0;
+}
+function Xs(e) {
+  return !!jr(e);
+}
+async function Vs(e, t) {
+  const r = jr(e);
+  if (!r) return t;
+  const a = await t.arrayBuffer();
+  if ([...new Uint8Array(await crypto.subtle.digest("SHA-256", a))].map((h) => h.toString(16).padStart(2, "0")).join("") !== r.sha256) throw Error(`Unexpected pinned symbol checksum: ${e}`);
+  const l = new DOMParser().parseFromString(new TextDecoder().decode(a), "image/svg+xml"), o = l.documentElement, i = [...o.querySelectorAll("path")], c = o.querySelector("linearGradient");
+  if (o.localName !== "svg" || l.querySelector("parsererror") || !c)
+    throw Error(`Unexpected pinned symbol SVG: ${e}`);
+  const d = (h, u) => {
+    for (const [m, g] of Object.entries(u)) h.setAttribute(m, g);
+  };
+  if (r.recipe === "m15") {
+    if (i.length !== 6) throw Error("Unexpected M15 path topology.");
+    d(i[0], { fill: `url(#${c.id})`, stroke: "#000", "stroke-width": "8" });
+    for (const h of i.slice(1)) h.setAttribute("fill", "#000");
+  } else if (r.recipe === "8ed" || r.recipe === "9ed") {
+    if (i.length !== 4) throw Error("Unexpected numeric shield path topology.");
+    const h = i[2], u = h.parentElement?.getAttribute("transform");
+    if (!u) throw Error("Missing numeric shield coordinate transform.");
+    const m = c.cloneNode(!0);
+    if (d(m, {
+      id: "glint-root-metal",
+      gradientTransform: `${u} ${c.getAttribute("gradientTransform") ?? ""}`
+    }), c.after(m), i[0].setAttribute("fill", "#000"), d(i[3], {
+      fill: "url(#glint-root-metal)",
+      stroke: "#000",
+      "stroke-width": r.recipe === "8ed" ? "9" : "12",
+      "paint-order": "stroke fill"
+    }), r.recipe === "8ed") {
+      const g = h.getAttribute("d")?.match(/[Mm][^Mm]+/g);
+      if (g?.length !== 3) throw Error("Unexpected Eighth Edition card panels.");
+      const w = h.cloneNode();
+      d(w, {
+        d: g[0],
+        style: `fill:#000;stroke:url(#${c.id});stroke-width:1.4`
+      }), h.after(w);
+    }
+  } else throw Error(`Unknown symbol SVG patch recipe: ${r.recipe}`);
+  return o.setAttribute("data-card-glint-patch", Lr.revision), new Blob([new XMLSerializer().serializeToString(l)], { type: "image/svg+xml" });
+}
+const ue = /* @__PURE__ */ new Map();
+function Br(e) {
+  if (!(!e.retired || e.users)) {
+    if (!e.sources) {
+      e.controller.abort();
+      return;
+    }
+    URL.revokeObjectURL(e.sources.original), e.sources.backing && URL.revokeObjectURL(e.sources.backing), e.sources = void 0;
+  }
+}
+function b0() {
+  for (const e of ue.values())
+    e.retired = !0, Br(e);
+  ue.clear();
+}
+async function Ks(e, t) {
+  t.throwIfAborted();
+  let r = ue.get(e);
+  if (!r) {
+    const i = {
+      users: 0,
+      retired: !1,
+      controller: new AbortController(),
+      promise: Promise.resolve().then(async () => {
+        const c = await fetch(e, { mode: "cors", signal: i.controller.signal });
+        if (!c.ok) throw Error(`Symbol source ${c.status}: ${e}`);
+        const d = await Vs(e, await c.blob()), h = await Xa(e, d);
+        i.controller.signal.throwIfAborted();
+        const u = URL.createObjectURL(d);
+        try {
+          const m = { original: u, backing: h ? URL.createObjectURL(h) : void 0 };
+          return i.sources = m, m;
+        } catch (m) {
+          throw URL.revokeObjectURL(u), m;
+        }
+      })
+    };
+    i.promise = i.promise.catch((c) => {
+      throw ue.get(e) === i && ue.delete(e), c;
+    }), ue.set(e, i), r = i;
+  }
+  r.users++;
+  const a = r;
+  let n = !1;
+  const s = () => {
+    n || (n = !0, a.users--, !a.users && !a.sources && (a.retired = !0, ue.get(e) === a && ue.delete(e)), Br(a));
+  };
+  let l = () => {
+  };
+  const o = new Promise((i, c) => {
+    l = () => {
+      s(), c(t.reason);
+    }, t.addEventListener("abort", l, { once: !0 });
+  });
+  try {
+    const i = await Promise.race([a.promise, o]);
+    return t.throwIfAborted(), { sources: i, release: s };
+  } catch (i) {
+    throw s(), i;
+  } finally {
+    t.removeEventListener("abort", l);
+  }
+}
+async function Js(e, t) {
+  t.throwIfAborted();
+  const r = [...new Set(e.filter((i) => !!i))], a = [], n = /* @__PURE__ */ new Map(), s = () => {
+    for (const i of a) i.release();
+    a.length = 0;
+  }, o = (await Promise.allSettled(
+    r.map(async (i) => {
+      if (!qa(i) && !Xs(i)) {
+        n.set(i, i);
+        return;
+      }
+      const c = await Ks(i, t);
+      a.push(c), n.set(i, c.sources.original), c.sources.backing && n.set(dr(i), c.sources.backing);
+    })
+  )).find((i) => i.status === "rejected");
+  if (o?.status === "rejected")
+    throw s(), o.reason;
+  return t.aborted && (s(), t.throwIfAborted()), { urls: [...new Set(n.values())], aliases: n, dispose: s };
+}
+function Zs(e, t) {
+  const r = /* @__PURE__ */ new Map();
+  for (const [a, n] of e) {
+    const s = t.get(n);
+    s && r.set(a, s);
+  }
+  return r;
+}
+async function Qs(e, t) {
+  return t.throwIfAborted(), fetch(e, { signal: t, mode: "cors" });
+}
+function e0(e) {
+  if (e.startsWith(`${me}/img/frames/`) && e.endsWith(".png"))
+    return /\/pt\/|\/m15PT/.test(e) ? 256 : 768;
+  if (e.startsWith(`${Me}/img/frames/`) && e.endsWith(".png")) return 768;
+  const t = e.startsWith(`${Re}/img/`) ? e.slice(`${Re}/img/`.length) : "";
+  return t === "class_level_bg.webp" || /^(bg|frames|adventure_frames|class_frames|boxes|legendary_crowns|saga_(?:bg|frames|textboxes)|planeswalker_(?:large_)?(?:bg|frames|boxes))\//.test(
+    t
+  ) ? 768 : void 0;
+}
+async function t0(e) {
+  if (!e.type.includes("svg")) return e;
+  const t = new DOMParser().parseFromString(await e.text(), "image/svg+xml"), r = t.documentElement;
+  if (r.localName !== "svg" || t.querySelector("parsererror"))
+    throw new Error("Invalid SVG asset.");
+  const a = (r.getAttribute("viewBox") ?? "").trim().split(/[\s,]+/).map(Number), n = a[2] ?? parseFloat(r.getAttribute("width") ?? ""), s = a[3] ?? parseFloat(r.getAttribute("height") ?? "");
+  if (!(n > 0 && s > 0 && Number.isFinite(n + s)))
+    throw new Error("SVG asset needs a finite viewport.");
+  const l = 512 / Math.max(n, s);
+  return r.hasAttribute("viewBox") || r.setAttribute("viewBox", `0 0 ${n} ${s}`), r.setAttribute("width", String(Math.max(1, Math.round(n * l)))), r.setAttribute("height", String(Math.max(1, Math.round(s * l)))), new Blob([new XMLSerializer().serializeToString(r)], { type: "image/svg+xml" });
+}
+async function r0(e, t, r) {
+  if (t.throwIfAborted(), !e.type.includes("svg"))
+    return r ? createImageBitmap(e, { resizeWidth: r, resizeQuality: "high" }) : createImageBitmap(e);
+  const a = URL.createObjectURL(await t0(e)), n = new Image(), s = document.createElement("canvas"), l = () => {
+    n.src = "";
+  };
+  t.addEventListener("abort", l, { once: !0 });
+  try {
+    t.throwIfAborted(), n.src = a, await n.decode(), t.throwIfAborted(), s.width = n.naturalWidth, s.height = n.naturalHeight;
+    const o = s.getContext("2d", { willReadFrequently: !0 });
+    if (!o || !s.width || !s.height)
+      throw new Error("SVG asset could not be rasterized.");
+    return o.drawImage(n, 0, 0), await createImageBitmap(s);
+  } finally {
+    t.removeEventListener("abort", l), n.src = "", URL.revokeObjectURL(a), s.width = 0, s.height = 0;
+  }
+}
+async function Ir(e, t) {
+  const r = await Js(e, t), a = r.urls, n = /* @__PURE__ */ new Map();
+  let s = 0;
+  try {
+    await Promise.all(
+      Array.from({ length: Math.min(4, a.length) }, async () => {
+        for (; s < a.length && !t.aborted; ) {
+          const o = a[s++];
+          try {
+            const i = await Qs(o, t);
+            if (!i.ok) continue;
+            const c = await i.blob(), d = await r0(c, t, e0(o));
+            t.aborted ? d.close() : n.set(o, d);
+          } catch {
+          }
+        }
+      })
+    );
+  } finally {
+    r.dispose();
+  }
+  const l = Zs(r.aliases, n);
+  return {
+    images: l,
+    dispose: () => {
+      for (const o of n.values()) o.close();
+      n.clear(), l.clear();
+    }
+  };
+}
+function Ar(e) {
+  const t = ts(e);
+  if (t) return [...t, e.illustration, Ce(e), ...rt(e)];
+  if (be(e)) return ba(e);
+  const r = Ee(e);
+  if (r.length) return r.flatMap((s) => Ar(s.face));
+  const a = K(e), n = it(a, ee(e));
+  return [
+    ...Ts(e),
+    n.background,
+    n.frame,
+    n.boxes,
+    n.pt,
+    Rr(e, a.boxes),
+    ...["saga", "planeswalker", "planeswalker-large"].includes(ee(e)) ? ze(e).flatMap(
+      (s) => s.badges.map((l) => vr(ee(e), l))
+    ) : [],
+    a.legendary ? n.crown : null,
+    e.illustration,
+    Ce(e),
+    ...rt(e)
+  ];
+}
+let Nt = null;
+function Yt() {
+  return Nt ??= Promise.all([
+    document.fonts.load('24px "CardRenderer MTG Beleren"'),
+    document.fonts.load('700 24px "CardRenderer MTG Beleren"'),
+    document.fonts.load('24px "CardRenderer MTG MPlantin"'),
+    document.fonts.load('italic 24px "CardRenderer MTG MPlantin"'),
+    document.fonts.load('14px "CardRenderer MTG Relay"'),
+    document.fonts.load('14px "CardRenderer MTG Artist Credit"')
+  ]).then((e) => {
+    if (e.some((t) => !t.length || t.some((r) => r.status !== "loaded")))
+      throw Error(
+        "Magic fonts are unavailable. Load card-glint/magic/fonts.css before preparing cards."
+      );
+  }).catch((e) => {
+    throw Nt = null, e;
+  });
+}
+function We(e) {
+  const t = oe(e), r = t.art;
+  return ee(e).startsWith("planeswalker") ? [r[0], r[1], r[2], t.type[1] - r[1]] : r;
+}
+const Ht = /* @__PURE__ */ new WeakMap(), De = ([e, t, r, a]) => [e, 1 - t - a, e + r, 1 - t], a0 = [De(oe({}).art), [0, 0, 0, 0]];
+function w0(e) {
+  if (!e) return a0;
+  const t = Ht.get(e);
+  if (t) return t;
+  const r = Ee(e), a = r.length ? [
+    De(Pt(r[0], We(r[0].face))),
+    De(Pt(r[1], We(r[1].face)))
+  ] : [De(We(e)), [0, 0, 0, 0]];
+  return Ht.set(e, a), a;
+}
+async function s0(e, t, r, a, n, s, l = Ir, o) {
+  return Or(e, t, r, a, {
+    threshold: n,
+    resolveEtching: o,
+    beforePaint: s,
+    loadImages: l,
+    height: L
+  });
+}
+async function Or(e, t, r, a, n) {
+  const { threshold: s, beforePaint: l, loadImages: o, height: i } = n, c = Ee(t);
+  if (c.length) {
+    for (const p of c)
+      e.save(), Sr(e, p), await Or(e, p.face, r, a, {
+        ...n,
+        height: p.height * f / p.width
+      }), e.restore();
+    return;
+  }
+  if (t.illustration && n.resolveEtching) {
+    let p;
+    try {
+      const y = await n.resolveEtching(t, r, a, s, l);
+      p = await o([y, t.illustration], a);
+      const R = p.images.get(y ?? "");
+      if (R && !a.aborted) {
+        await l?.(), a.throwIfAborted();
+        const [j, B, C, T] = oe(t).art, A = j * f, $ = B * i, M = C * f, W = T * i, P = p.images.get(t.illustration) ?? R;
+        e.save(), e.beginPath();
+        const H = We(t);
+        if (e.rect(
+          H[0] * f,
+          H[1] * i,
+          H[2] * f,
+          H[3] * i
+        ), e.clip(), e.imageSmoothingQuality = "low", t.illustrationCrop) {
+          const z = t.illustrationCrop, O = xe(P.width * z[2], P.height * z[3], [
+            A,
+            $,
+            M,
+            W
+          ]);
+          e.drawImage(
+            R,
+            z[0] * R.width,
+            z[1] * R.height,
+            z[2] * R.width,
+            z[3] * R.height,
+            ...O
+          );
+        } else
+          e.drawImage(
+            R,
+            ...xe(P.width, P.height, [A, $, M, W])
+          );
+        e.restore();
+      }
+    } catch {
+    } finally {
+      p?.dispose();
+    }
+  }
+  if (a.throwIfAborted(), !t.setCode) return;
+  const [d, h, u, m] = oe(t).stamp, g = d * f, w = h * i, S = u * f, v = m * i, k = Ce(t, "common"), b = await o([k], a);
+  try {
+    await l?.(), a.throwIfAborted();
+    const p = k ? b.images.get(k) : null;
+    if (e.save(), e.globalAlpha = 0.68, p) {
+      const y = Math.min(S / p.width, v / p.height);
+      e.drawImage(
+        p,
+        g + (S - p.width * y) / 2,
+        w + (v - p.height * y) / 2,
+        p.width * y,
+        p.height * y
+      );
+    } else
+      e.translate(g, w), e.scale(S / 100, v / 100), e.fillStyle = "white", e.fill(new Path2D(Vr)), e.font = "bold 43px Georgia", e.textAlign = "center", e.textBaseline = "alphabetic", e.fillText(Zr(t.setCode), 50, 65);
+    e.restore();
+  } finally {
+    b.dispose();
+  }
+}
+function n0(e) {
+  return e.replace(
+    /^(https:\/\/cards\.scryfall\.io\/)normal(\/(?:front|back)\/[^?#]+)\.jpg$/,
+    "$1png$2.png"
+  );
+}
+const l0 = {
+  table: { right: 0.015, bottom: 0.0325, width: 0.44, height: 0.16 },
+  inspect: { right: 0.015, bottom: 0.0325, width: 0.24, height: 0.09 }
+}, zt = /* @__PURE__ */ new WeakMap();
+function o0(e, t) {
+  let r = zt.get(t);
+  if (r || (r = new Path2D(t.path), zt.set(t, r)), e.save(), t.viewBox) {
+    const [a, n, s, l] = t.viewBox;
+    e.scale(24 / s, 24 / l), e.translate(-a, -n);
+  }
+  t.transform && e.transform(...t.transform), t.filled ? (e.fillStyle = e.strokeStyle, e.fill(r)) : e.stroke(r), e.restore();
+}
+function qt(e, t, r, a, n = !1) {
+  const s = f * 0.105, l = f * 0.015, o = Math.floor(f * 0.9 / (s + l));
+  if (t.forEach((m, g) => {
+    e.save(), e.translate(
+      f * 0.05 + g % o * (s + l),
+      L * 0.13 + Math.floor(g / o) * (s + l)
+    ), e.fillStyle = "#17201fed", e.strokeStyle = "#c6af7977", e.lineWidth = 1, e.beginPath(), e.arc(s / 2, s / 2, s / 2, 0, Math.PI * 2), e.fill(), e.stroke(), e.translate(s * 0.14, s * 0.14), e.scale(s * 0.72 / 24, s * 0.72 / 24), e.strokeStyle = "#f3e9cf", e.lineWidth = 1.8, e.lineCap = "round", e.lineJoin = "round", o0(e, m), e.restore();
+  }), r?.power == null || r.toughness == null) return;
+  e.save();
+  const i = l0[n ? "inspect" : "table"], c = f * i.width, d = L * i.height, h = f * (1 - i.right - i.width), u = L * (1 - i.bottom - i.height);
+  a ? e.drawImage(a, h, u, c, d) : (e.fillStyle = "#eee5cf", e.strokeStyle = "#746854", e.lineWidth = 2, e.beginPath(), e.roundRect(
+    h + c * (n ? 0.14 : 0.1),
+    u + d * (n ? 0.19 : 0.18),
+    c * (n ? 0.72 : 0.8),
+    d * (n ? 0.62 : 0.64),
+    d * 0.12
+  ), e.fill(), e.stroke()), e.font = `bold ${f * (n ? 0.0625 : 0.13)}px "CardRenderer MTG Beleren", Georgia, serif`, e.fillStyle = "#17140f", e.textAlign = "center", e.textBaseline = "middle", e.fillText(
+    `${r.power}/${r.toughness}`,
+    h + c / 2,
+    n ? u + d / 2 - f * 0.01 : u + d * 0.48,
+    c * 0.72
+  ), e.restore();
+}
+function k0(e) {
+  return e.currentStats?.power != null && e.currentStats.toughness != null && e.statusLayout !== "inspect" ? { ...e, statusLayout: "inspect" } : e;
+}
+function y0(e, t) {
+  if (e.custom)
+    return JSON.stringify([
+      "custom-face-v1",
+      e.custom.key,
+      t,
+      e.layer ?? "face",
+      e.layer === "etching" ? e.etchThreshold ?? 20 : null
+    ]);
+  const r = e.face, a = Er(r, e.layer === "etching"), n = e.currentStats?.power != null && e.currentStats.toughness != null ? [e.currentStats.power, e.currentStats.toughness] : null;
+  return JSON.stringify([
+    Re,
+    me,
+    "canvas-face-v89",
+    e.paintLayer ?? null,
+    t,
+    e.printingId,
+    e.layer === "etching" ? null : e.printedImage,
+    a,
+    e.layer ?? "face",
+    e.layer === "etching" ? e.etchThreshold ?? 14 : null,
+    e.layer === "etching" ? null : [
+      (e.emblems ?? []).map((s) => [
+        s.path,
+        s.viewBox ?? null,
+        s.transform ?? null,
+        !!s.filled
+      ]),
+      n,
+      n ? e.statusLayout ?? t : null
+    ]
+  ]);
+}
+function Er(e, t) {
+  const r = Ee(e);
+  return r.length ? [
+    e.layout,
+    r.map((a) => [a.x, a.y, a.width, a.height, a.rotation, Er(a.face, t)]),
+    !t && wt(e)
+  ] : t ? [
+    e.illustration ?? null,
+    e.etchedIllustration ?? null,
+    e.illustrationCrop ?? null,
+    e.setCode ?? null,
+    e.setSymbol ?? null,
+    e.setSymbolSource ?? null,
+    oe(e)
+  ] : [
+    be(e) ? [Te(e), ge(e)] : null,
+    e.borderColor ?? null,
+    e.frameAssetFamily ?? null,
+    e.name,
+    e.manaSymbols ?? [],
+    e.typeLine ?? "",
+    e.rulesText ?? "",
+    e.rulesParagraphs ?? null,
+    e.wordingMode ?? null,
+    e.symbolStyle ?? null,
+    e.colorCalibration ?? null,
+    e.rulesAlignment ?? null,
+    e.illustration ?? null,
+    e.illustrationCrop ?? null,
+    Ls(e),
+    e.artist ?? null,
+    e.legalText === void 0 ? ["default"] : e.legalText,
+    e.setCode ?? null,
+    e.setSymbol ?? null,
+    e.setSymbolSource ?? null,
+    e.rarity ?? "common",
+    e.power ?? null,
+    e.toughness ?? null,
+    e.loyalty ?? null,
+    oe(e),
+    K(e)
+  ];
+}
+function i0(e) {
+  const t = document.createElement("canvas");
+  return t.width = e === "table" ? 244 : 732, t.height = e === "table" ? 340 : 1020, t;
+}
+async function S0(e, t, r, a) {
+  if (e.custom)
+    return await a?.beforePaint?.(), r.throwIfAborted(), e.custom.compose(t, r, e.layer ?? "face", e.etchThreshold);
+  const n = a?.loadImages ?? Ir, s = i0(t);
+  try {
+    const l = s.getContext("2d", {
+      willReadFrequently: !!a?.cpuPixels
+    });
+    if (!l) throw new Error("Card composition needs Canvas2D.");
+    if (l.imageSmoothingEnabled = !0, l.imageSmoothingQuality = "high", l.scale(s.width / f, s.height / L), e.layer === "etching")
+      return await s0(
+        l,
+        e.face,
+        e.printingId,
+        r,
+        e.etchThreshold,
+        a?.beforePaint,
+        n,
+        a?.resolveEtching
+      ), s;
+    l.fillStyle = "#090806", l.fillRect(0, 0, f, L);
+    const o = e.currentStats?.power != null && e.currentStats.toughness != null ? it(K(e.face)).pt : null;
+    if (e.printedImage) {
+      const d = t === "inspect" ? n0(e.printedImage) : e.printedImage;
+      o && await (a?.loadFonts ?? Yt)();
+      const h = await n(o ? [d, o] : [d], r);
+      try {
+        const u = h.images.get(d);
+        if (u && !r.aborted)
+          return await a?.beforePaint?.(), r.throwIfAborted(), l.drawImage(u, 0, 0, f, L), qt(
+            l,
+            e.emblems ?? [],
+            e.currentStats,
+            o ? h.images.get(o) : void 0,
+            e.statusLayout === "inspect" || t === "inspect"
+          ), Xt(l, e.face), s;
+      } finally {
+        h.dispose();
+      }
+    }
+    await Promise.all([
+      (a?.loadFonts ?? Yt)(),
+      Ns(e.face),
+      be(e.face) ? (a?.loadRetroFont ?? vs)() : Promise.resolve()
+    ]), r.throwIfAborted();
+    const i = await n(Ar(e.face), r);
+    let c;
+    try {
+      return e.paintLayer !== "artwork" && (c = await Ba(e.face, i.images, r)), await a?.beforePaint?.(), r.throwIfAborted(), Gr(
+        l,
+        e.face,
+        c?.images ?? i.images,
+        L,
+        !1,
+        a?.underArt,
+        e.paintLayer
+      ), qt(
+        l,
+        e.emblems ?? [],
+        e.currentStats,
+        o ? i.images.get(o) : void 0,
+        e.statusLayout === "inspect" || t === "inspect"
+      ), Xt(l, e.face), s;
+    } finally {
+      c?.dispose(), i.dispose();
+    }
+  } catch (l) {
+    throw s.width = s.height = 0, l;
+  }
+}
+function Xt(e, t) {
+  e.save(), e.setTransform(
+    e.canvas.width / f,
+    0,
+    0,
+    e.canvas.height / L,
+    0,
+    0
+  ), e.globalCompositeOperation = "destination-in", e.globalAlpha = 1, e.shadowColor = "transparent", e.filter = "none", e.fillStyle = "#000", e.beginPath(), e.roundRect(0, 0, f, L, Wa(t) * f), e.fill(), e.restore();
+}
+function Gr(e, t, r, a = L, n = !1, s, l) {
+  if (t.frameAssetFamily) {
+    Us(e, t, r, s, l);
+    return;
+  }
+  if (be(t)) {
+    ks(e, t, r, s, l);
+    return;
+  }
+  const o = Ee(t);
+  if (o.length) {
+    e.fillStyle = ce(t.setCode, t.borderColor).border, e.fillRect(0, 0, f, L);
+    for (const I of o)
+      e.save(), Sr(e, I), Gr(
+        e,
+        I.face,
+        r,
+        I.height * f / I.width,
+        !0,
+        s,
+        l
+      ), e.restore();
+    if (l === "artwork") return;
+    Vt(e, t), wt(t) && (e.font = '14px "CardRenderer MTG MPlantin", Georgia', e.fillStyle = "white", e.textAlign = "center", e.textBaseline = "middle", e.fillText(
+      "Fuse (You may cast one or both halves of this card from your hand.)",
+      f / 2,
+      L - 12,
+      f * 0.9
+    ));
+    return;
+  }
+  const i = (I) => [
+    I[0] * f,
+    I[1] * a,
+    I[2] * f,
+    I[3] * a
+  ];
+  e.fillStyle = ce(t.setCode, t.borderColor).border, e.fillRect(0, 0, f, a);
+  const c = oe(t), d = ee(t);
+  if (l === "artwork") {
+    Ae(e, t, r, i(c.art), l);
+    return;
+  }
+  const h = K(t), u = it(h, d), g = {
+    W: "#d7cda9",
+    U: "#447e9a",
+    B: "#5b5260",
+    R: "#a84f3e",
+    G: "#477553",
+    Gold: "#a38335"
+  }[h.boxes] ?? "#827d72", w = (I, x, V = "top") => {
+    const ye = r.get(I);
+    if (!ye) return !1;
+    const [Le, Ve, Ke, Je] = i(x);
+    e.save(), e.beginPath(), e.rect(Le, Ve, Ke, Je), e.clip();
+    const St = V === "stretch" ? Je : ye.height * Ke / ye.width;
+    return e.drawImage(
+      ye,
+      Le,
+      V === "bottom" ? Ve + Je - St : Ve,
+      Ke,
+      St
+    ), e.restore(), !0;
+  }, [S, v, k, b] = i(h.legendary ? c.legendaryBackground : c.background);
+  if (e.save(), e.beginPath(), e.roundRect(S, v, k, b, [
+    { x: k * 0.01282, y: b * 962e-5 },
+    { x: k * 0.01282, y: b * 962e-5 },
+    { x: k * 0.06838, y: b * 0.05128 },
+    { x: k * 0.06838, y: b * 0.05128 }
+  ]), e.clip(), n) {
+    const I = g.slice(1).match(/../g).map(
+      (x, V) => Math.round(parseInt(x, 16) * 0.62 + [244, 236, 217][V] * 0.38)
+    );
+    e.fillStyle = `rgb(${I.join(",")})`, e.fillRect(S, v, k, b);
+  }
+  const p = r.get(u.background), y = d.startsWith("planeswalker");
+  if (p && y ? xt(e, p, S, v, k, d === "planeswalker-large") : p ? e.drawImage(
+    p,
+    S,
+    v + (h.legendary ? G.legendaryBackgroundLift : 0),
+    k,
+    n ? b : p.height * k / p.width
+  ) : (e.fillStyle = g, e.fillRect(S, v, k, b)), e.restore(), e.fillStyle = "#e3d8bb", !r.has(u.frame))
+    if (d === "adventure")
+      for (const I of Xe(t).filter((x) => x.kind === "rules" && !x.color))
+        e.fillRect(I.x, I.y, I.width, I.height);
+    else e.fillRect(...i(c.rules));
+  r.has(u.boxes) || (e.fillRect(...i(c.title)), e.fillRect(...i(c.type))), e.fillStyle = "#80745c", e.fillRect(...i(c.art));
+  const R = r.get(u.frame);
+  if (R && d === "normal" && !n) {
+    const I = Pa(t);
+    _a(
+      e,
+      h,
+      I,
+      () => Kt(e, R, h.legendary, c.frame, !0, I)
+    ), Fa(e, h, I);
+  }
+  if (s && (e.save(), e.beginPath(), e.rect(0, 0, f, a), e.clip(), e.resetTransform(), e.drawImage(s, 0, 0, e.canvas.width, e.canvas.height), e.restore()), d === "normal" && !n) {
+    const [I, x, V, ye] = i(c.art), Le = Ie.artRim;
+    e.fillStyle = "#090806", e.fillRect(I - Le, x, V + 2 * Le, ye);
+  }
+  if (Ae(e, t, r, i(c.art), l), y && Ds(e, t), R && y) {
+    const [I, x, V] = i(c.frame);
+    xt(e, R, I, x, V, d === "planeswalker-large");
+  } else R && d !== "normal" && Kt(e, R, h.legendary, c.frame);
+  if (h.legendary && w(u.crown, c.crown), n) {
+    const I = r.get(u.boxes);
+    if (I) {
+      const V = I.height * 0.104;
+      e.drawImage(I, 0, 0, I.width, V, ...i(c.title)), e.drawImage(I, 0, I.height - V, I.width, V, ...i(c.type));
+    }
+    const x = r.get(u.frame);
+    e.fillStyle = "#e3d8bb", e.fillRect(...i(c.rules)), x && e.drawImage(
+      x,
+      x.width * 0.035,
+      x.height * 0.675,
+      x.width * 0.93,
+      x.height * 0.325,
+      ...i(c.rules)
+    );
+  } else {
+    const I = y && ["Colourless", "Artifact", "Land"].includes(h.boxes);
+    w(u.boxes, c.title), I && (e.save(), e.globalAlpha *= Cr, w(u.boxes, c.title), e.restore());
+    const x = r.get(u.boxes);
+    y && x ? Fs(e, x, c.type, I) : (w(u.boxes, c.type, "bottom"), d === "normal" && x && (Ys(e, x, i(c.type)), Hs(e, i(c.type), h.boxes)));
+  }
+  e.fillStyle = "#17140f", e.textBaseline = "middle", e.textAlign = "left";
+  const [j, B, C, T] = i(c.title), A = j + G.plateLeft + (d === "normal" ? 1 : 0), $ = Bs(t), M = t.manaSymbols ?? [], W = G.manaSize * $, P = M.length * W + Math.max(0, M.length - 1) * G.manaGap, H = j + C - G.plateRight, z = H - P, O = (d === "normal" && !n ? G.normalTitleFont : G.titleFont) * $;
+  e.font = `bold ${O}px "CardRenderer MTG Beleren", Georgia`, e.letterSpacing = `${G.titleTracking}px`, Fe(
+    e,
+    t.name,
+    A,
+    B + T / 2 + (d === "normal" ? 1 : 0),
+    z - A - (M.length ? G.titleGap : 0),
+    O,
+    !0
+  ), e.letterSpacing = "0px", M.forEach(
+    (I, x) => le(
+      e,
+      I,
+      z + x * (W + G.manaGap),
+      B + T / 2 - W / 2 + G.manaLift / 2,
+      W,
+      r,
+      !0
+    )
+  );
+  const _ = Ce(t), E = r.get(_ ?? ""), te = Oe(_), q = tr(t), we = Mr(t), ke = ir(t), X = we && d === "normal", D = X ? _s : 1, F = G.setMargin + (X ? 2 : 0), [, U, , re] = i(c.type), J = U + re / 2 + G.typeLift / 2 + (d === "normal" || y ? 2 : 0), Z = E ? Math.min(
+    G.setMaxWidth,
+    G.setHeight * E.width * q[2] / (E.height * q[3])
+  ) : 0, he = E ? Math.min(
+    Z / (E.width * q[2]),
+    G.setHeight / (E.height * q[3])
+  ) : 0, ae = [
+    H - F - Z - Z * (D - 1) / 2 + (y ? 1.5 : 0),
+    J - (E?.height ?? 0) * q[3] * he * D / 2 - (X ? 1 : 0),
+    (E?.width ?? 0) * q[2] * he * D,
+    (E?.height ?? 0) * q[3] * he * D
+  ], ie = d === "normal" && !n ? ut(t, _, ae, "component") : ae, Wr = Math.max(
+    1,
+    Math.min(
+      H - A - (E ? Z * (1 + (D - 1) / 2) + F + G.typeGap : 0),
+      E && ie !== ae ? ie[0] - A - G.typeGap : 1 / 0
+    )
+  );
+  e.font = `${G.typeFont * $}px "CardRenderer MTG Beleren", Georgia`, Fe(
+    e,
+    t.typeLine ?? "",
+    A + (y ? 1.5 : 0),
+    J,
+    Wr,
+    G.typeFont * $,
+    !1,
+    d === "normal" && !n ? Ie.typeWidthScale : 1
+  ), E && (te || t.setSymbol ? (e.save(), e.shadowColor = "transparent", e.drawImage(E, ...ie), e.restore()) : we ? Tr(
+    e,
+    E,
+    t.rarity,
+    ...ie,
+    q,
+    X ? 1.5 : 1
+  ) : ke ? cr(
+    e,
+    E,
+    ke,
+    t.rarity,
+    ...ie,
+    q,
+    d === "normal"
+  ) : gt(e, E, t.setCode, t.rarity, ...ie, q)), yr(t) ? js(e, t, r) : d !== "normal" ? xs(e, t, r) : qe(e, br(e, t, a, $), r);
+  const yt = qr(t);
+  if (yt && d !== "leveler") {
+    w(u.pt, c.stats, "stretch");
+    const [I, x, V] = i(c.stats);
+    e.fillStyle = d.startsWith("planeswalker") ? "white" : "#17140f", e.font = `bold ${G.statsFont}px "CardRenderer MTG Beleren", Georgia`, e.textAlign = "center", e.textBaseline = "middle", e.fillText(
+      yt.text,
+      I + V / 2,
+      x + (d.startsWith("planeswalker") ? c.stats[3] * L / 2 : G.statsLine / 2 + (d === "normal" ? 2 : 0)),
+      V
+    );
+  }
+  n || Vt(e, t);
+}
+function Vt(e, t) {
+  const [r, a, n, s] = $r(N.footer), l = a + G.footerLine;
+  e.save(), e.beginPath(), e.rect(r, a, n, s), e.clip(), e.textAlign = "left", e.textBaseline = "top", e.fillStyle = ce(t.setCode, t.borderColor).ink, e.font = `${G.footerFont}px "CardRenderer MTG Relay", sans-serif`, e.letterSpacing = `${G.footerTracking}px`;
+  const o = t.setCode?.trim().toUpperCase() ?? "";
+  e.fillText(o, r, l);
+  let i = r + e.measureText(o).width;
+  e.letterSpacing = "0px", t.artist && (i += G.artistMarginLeft, e.font = `${G.footerFont}px "CardRenderer MTG Artist Credit", sans-serif`, e.fillText("a", i, l), i += e.measureText("a").width + G.artistMarginRight, e.font = `${G.footerFont * 1.154}px "CardRenderer MTG Beleren", Georgia`, e.fillText(t.artist, i, l)), e.restore();
+}
+function Kt(e, t, r, a = N.frame, n = !1, s = 0) {
+  const [l, o, i, c] = $r(a), d = s, h = l + d, u = i - 2 * d, m = Math.min(t.height, c * t.width / i), g = m * i / t.width, w = e.getTransform().a, S = () => {
+    if (!n) {
+      e.drawImage(t, 0, 0, t.width, m, h, o, u, g);
+      return;
+    }
+    const v = 424, k = 436;
+    e.save(), e.beginPath(), e.rect(0, 0, f, v), e.rect(0, k, f, L - k), e.clip(), e.drawImage(t, 0, 0, t.width, m, h, o, u, g), e.restore(), e.save(), e.beginPath(), e.rect(0, v, f, k - v), e.clip(), e.drawImage(t, 0, 0, t.width, m, h, o - 1, u, g), e.restore();
+  };
+  e.save(), e.shadowColor = "black", e.shadowOffsetX = -394e-5 * f * w, e.shadowOffsetY = 394e-5 * f * w, e.shadowBlur = 236e-5 * f * w, S(), r || (e.shadowColor = "#ffffffa0", e.shadowOffsetX = 157e-5 * f * w, e.shadowOffsetY = -315e-5 * f * w, e.shadowBlur = 157e-5 * f * w, S()), e.restore();
+}
+function $r(e) {
+  return [e[0] * f, e[1] * L, e[2] * f, e[3] * L];
+}
+export {
+  i0 as $,
+  Xr as A,
+  L as B,
+  Rs as C,
+  a0 as D,
+  Vr as E,
+  N as F,
+  c0 as G,
+  f as H,
+  ua as I,
+  Me as J,
+  ha as K,
+  na as L,
+  pa as M,
+  _e as N,
+  Ar as O,
+  l0 as P,
+  ce as Q,
+  Re as R,
+  Q as S,
+  Va as T,
+  r0 as U,
+  g0 as V,
+  Zr as W,
+  Ts as X,
+  Xe as Y,
+  Ls as Z,
+  w0 as _,
+  Wa as a,
+  Ne as a$,
+  Kr as a0,
+  qr as a1,
+  Qs as a2,
+  pt as a3,
+  ts as a4,
+  yr as a5,
+  xe as a6,
+  k0 as a7,
+  de as a8,
+  Yt as a9,
+  dt as aA,
+  ge as aB,
+  sr as aC,
+  He as aD,
+  Te as aE,
+  fa as aF,
+  ar as aG,
+  Tt as aH,
+  se as aI,
+  h0 as aJ,
+  nr as aK,
+  Mt as aL,
+  os as aM,
+  vr as aN,
+  Jr as aO,
+  nt as aP,
+  d0 as aQ,
+  mt as aR,
+  Rr as aS,
+  tr as aT,
+  ia as aU,
+  t0 as aV,
+  Ws as aW,
+  rs as aX,
+  ze as aY,
+  wt as aZ,
+  Bs as a_,
+  Ir as aa,
+  vs as ab,
+  $s as ac,
+  Qr as ad,
+  br as ae,
+  o0 as af,
+  Gr as ag,
+  qt as ah,
+  s0 as ai,
+  js as aj,
+  Fe as ak,
+  Ae as al,
+  le as am,
+  Ds as an,
+  ks as ao,
+  hr as ap,
+  qe as aq,
+  gt as ar,
+  xs as as,
+  p0 as at,
+  Sr as au,
+  $r as av,
+  Gs as aw,
+  u0 as ax,
+  pe as ay,
+  ba as az,
+  Ce as b,
+  wr as b0,
+  S0 as c,
+  y0 as d,
+  b0 as e,
+  oe as f,
+  m0 as g,
+  e0 as h,
+  Zs as i,
+  G as j,
+  ee as k,
+  be as l,
+  Ye as m,
+  it as n,
+  K as o,
+  Pt as p,
+  ne as q,
+  Js as r,
+  Ee as s,
+  ct as t,
+  da as u,
+  We as v,
+  f0 as w,
+  er as x,
+  ja as y,
+  La as z
+};
