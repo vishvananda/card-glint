@@ -5,14 +5,16 @@ import { PNG } from 'pngjs';
 
 // Original synthetic assets: complete plate + transparent art window and a
 // gradient symbol with an opaque white hole. No third-party bytes in tests.
-const png = (border = false) => {
+const png = (border = false, right = false) => {
   const p = new PNG({ width: 100, height: 140 });
   for (let y = 0; y < p.height; y++)
     for (let x = 0; x < p.width; x++) {
       const art = x >= 7 && x <= 93 && y >= 15 && y <= 79;
       const edge = x < 5 || x > 94 || y < 5 || y > 134;
       p.data.set(
-        border ? [0, 0, 0, edge ? 255 : 0] : [100, 160, 190, art ? 0 : 255],
+        border
+          ? [0, 0, 0, edge ? 255 : 0]
+          : [...(right ? [190, 80, 100] : [100, 160, 190]), art ? 0 : 255],
         (y * p.width + x) * 4,
       );
     }
@@ -38,7 +40,11 @@ try {
       status: 200,
       headers: { 'Access-Control-Allow-Origin': '*' },
       contentType: svg ? 'image/svg+xml' : 'image/png',
-      body: svg ? (url.includes('/art.svg') ? art : symbol) : png(url.endsWith('/border.png')),
+      body: svg
+        ? url.includes('/art.svg')
+          ? art
+          : symbol
+        : png(url.endsWith('/border.png'), url.endsWith('/lr.png')),
     });
   });
   await page.goto(server.resolvedUrls.local[0]);
@@ -95,10 +101,24 @@ try {
     check(setSymbolAsset('constructor', 'rare') === null, 'Prototype key accepted');
     check(setSymbolAsset('GLINT', 'rare').startsWith('data:'), 'Original symbol replaced');
     check(
-      setSymbolCrop({ setCode: 'm21', rarity: 'rare', frameAssetFamily: 'm15-accurate' }).join() ===
+      setSymbolCrop({ setCode: 'm21', rarity: 'rare', setSymbolSource: 'cardconjurer' }).join() ===
         '0,0,1,1',
       'Keyrune crop applied to styled shield',
     );
+    for (const family of ['eighth', 'm15-accurate']) {
+      for (const rarity of ['common', 'uncommon', 'rare', 'mythic']) {
+        const input = { setCode: 'm15', rarity };
+        check(
+          faceSetSymbol(input) === faceSetSymbol({ ...input, frameAssetFamily: family }),
+          'Frame choice silently changed a reviewed symbol source',
+        );
+        check(
+          setSymbolCrop(input).join() ===
+            setSymbolCrop({ ...input, frameAssetFamily: family }).join(),
+          'Frame choice silently changed a reviewed symbol crop',
+        );
+      }
+    }
     const { default: initialize } = await import('/packages/browser/generated/renderer.js');
     await initialize({ module_or_path: '/packages/browser/generated/renderer_bg.wasm' });
     const signal = new AbortController().signal,
@@ -190,6 +210,27 @@ try {
       dual.frame.endsWith('/lw.png') && dual.rightFrame.endsWith('/lr.png'),
       'Dual-land frame palette lost',
     );
+    const land = await composeCardTexture(
+      input({
+        ...face,
+        frameAssetFamily: 'm15-accurate',
+        typeLine: 'Land',
+        frameColors: ['W', 'R'],
+      }),
+      'inspect',
+      signal,
+    );
+    const paperLeft = pixel(land, 0.43, 0.8),
+      paperRight = pixel(land, 0.57, 0.8);
+    check(
+      paperLeft[0] > 115 && paperRight[0] < 175,
+      'Dual-land paper has an abrupt half-frame split',
+    );
+    check(
+      pixel(land, 0.43, 0.62)[0] === 100 && pixel(land, 0.57, 0.62)[0] === 190,
+      'Paper blending leaked into the surrounding frame',
+    );
+    land.width = land.height = 0;
     check(
       faceSetSymbol({ ...face, setSymbol: 'https://custom.invalid/s.svg' }) ===
         'https://custom.invalid/s.svg',

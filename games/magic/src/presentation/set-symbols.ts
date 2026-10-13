@@ -25,7 +25,7 @@ export function setSymbolCrop(
     !styledSetSymbol(
       face.setCode ?? '',
       face.rarity,
-      face.setSymbolSource ?? (face.frameAssetFamily ? 'cardconjurer' : 'auto'),
+      face.setSymbolSource,
     )
     ? (CORE_SYMBOL_CROPS[face.setCode?.toLowerCase() ?? ''] ?? [0, 0, 1, 1])
     : [0, 0, 1, 1];

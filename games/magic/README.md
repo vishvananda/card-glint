@@ -78,8 +78,8 @@ white details, black outlines and metallic gradients. The
 [versioned inventory](set-symbol-inventory.json) lists 1,880 rarity files for
 383 set codes. Already reviewed historical and M15/M19/M20/M21/WAR treatments
 keep their existing source by default. Set `setSymbolSource: 'cardconjurer'` to
-preview replacements, or `'keyrune'` to compare the prior source. Replacement
-frame plates prefer styled symbols. A missing exact rarity falls back to
+preview replacements, or `'keyrune'` to compare the prior source. Frame-family
+selection does not change the symbol-source policy. A missing exact rarity falls back to
 Keyrune; unknown sets return no symbol instead of requesting a nonexistent file.
 Pre-Exodus printings still use monochrome symbols. Host-owned `setSymbol` URLs
 and the original GLINT/FORGE marks take precedence and preserve their colors.

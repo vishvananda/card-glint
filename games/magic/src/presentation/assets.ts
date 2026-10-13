@@ -97,7 +97,7 @@ export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): st
     setSymbolAsset(
       set === 'chr' ? (chroniclesSymbol(face.name) ?? '') : set,
       rarity,
-      face.setSymbolSource ?? (face.frameAssetFamily ? 'cardconjurer' : 'auto'),
+      face.setSymbolSource,
     )
   );
 }

@@ -3,6 +3,8 @@ import { framePlate } from './frame-plates.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
+import { hasCoreSetShield, paintCoreSetSymbol } from './core-set-symbol.js';
+import { shapedSetCode, paintShapedSetSymbol } from './shaped-set-symbol.js';
 import type { CanvasImages } from './canvas-assets.js';
 import {
   FACE_WIDTH as W,
@@ -58,14 +60,35 @@ export function paintFramePlateFace(
     mix.height = 1020;
     const m = mix.getContext('2d')!;
     m.drawImage(required(plate.rightFrame), 0, 0, mix.width, mix.height);
+    const mask = document.createElement('canvas');
+    mask.width = mix.width;
+    mask.height = mix.height;
+    const a = mask.getContext('2d')!;
+    const blend = (left: number, right: number) => {
+      const gradient = a.createLinearGradient(mask.width * left, 0, mask.width * right, 0);
+      gradient.addColorStop(0, '#0000');
+      gradient.addColorStop(1, '#000');
+      return gradient;
+    };
+    a.fillStyle = blend(0.47, 0.53);
+    a.fillRect(0, 0, mask.width, mask.height);
+    // Paper uses a broad transition; the outer colored rails keep their narrow
+    // join. Blend the original textures (including grain and inset shadows),
+    // without painting a flat gradient over them or moving any frame geometry.
+    const paper: FaceRect = eighth ? [0.08, 0.627, 0.84, 0.29] : [0.071, 0.629, 0.858, 0.294];
+    const [px, py, pw, ph] = paper;
+    const x = px * mask.width,
+      y = py * mask.height,
+      w = pw * mask.width,
+      h = ph * mask.height;
+    a.clearRect(x, y, w, h);
+    a.fillStyle = blend(0.27, 0.73);
+    a.fillRect(x, y, w, h);
     m.globalCompositeOperation = 'destination-in';
-    const gradient = m.createLinearGradient(mix.width * 0.47, 0, mix.width * 0.53, 0);
-    gradient.addColorStop(0, '#0000');
-    gradient.addColorStop(1, '#000');
-    m.fillStyle = gradient;
-    m.fillRect(0, 0, mix.width, mix.height);
+    m.drawImage(mask, 0, 0);
     c.drawImage(mix, 0, 0, W, H);
     mix.width = mix.height = 0;
+    mask.width = mask.height = 0;
   }
   const stock = cardStock(face.setCode, face.borderColor);
   if (stock.border !== '#090806') {
@@ -86,9 +109,9 @@ export function paintFramePlateFace(
   const family = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
   const [tx, ty, tw, th] = px(rects.title),
     cost = face.manaSymbols ?? [],
-    size = eighth ? 23 : 23.4;
-  const costRight = (eighth ? 0.9147 : 1864 / 2010) * W;
-  const costWidth = cost.length * size + Math.max(0, cost.length - 1) * 1.5;
+    { size, gap } = plate.mana;
+  const costRight = plate.mana.right * W;
+  const costWidth = cost.length * size + Math.max(0, cost.length - 1) * gap;
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
   paintFittedText(
     c,
@@ -105,8 +128,8 @@ export function paintFramePlateFace(
     paintMana(
       c,
       symbol,
-      costRight - costWidth + i * (size + 1.5),
-      ty + th / 2 - size / 2,
+      costRight - costWidth + i * (size + gap),
+      plate.mana.center * H - size / 2,
       size,
       images,
       true,
@@ -138,7 +161,10 @@ export function paintFramePlateFace(
   );
   if (icon) {
     const bounds = [plate.symbol.right * W - iw, plate.symbol.center * H - ih / 2, iw, ih] as const;
+    const shaped = shapedSetCode(face);
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
+    else if (hasCoreSetShield(face)) paintCoreSetSymbol(c, icon, face.rarity, ...bounds, crop, 1.5);
+    else if (shaped) paintShapedSetSymbol(c, icon, shaped, face.rarity, ...bounds, crop, false);
     else paintSetSymbol(c, icon, face.setCode, face.rarity, ...bounds, crop);
   }
   paintRulesLayout(c, ordinaryTextLayout(c, face), images);

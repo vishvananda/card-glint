@@ -12,6 +12,7 @@ export interface FramePlate {
   rects: FaceRects;
   titleSize: number;
   typeSize: number;
+  mana: { right: number; center: number; size: number; gap: number };
   symbol: { right: number; center: number; width: number; height: number };
 }
 
@@ -79,9 +80,17 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     },
     titleSize: eighth ? 29.2 : 26,
     typeSize: eighth ? 24.3 : 22,
+    // Shared family adjustments measured after frame-only scan normalization.
+    // Cost discs have their own baseline; they do not follow font centering.
+    mana: {
+      right: (eighth ? 0.9147 : 1864 / 2010) - (eighth ? 2 : 1) / 488,
+      center: title[1] + title[3] / 2 + (eighth ? 1 : -4) / 680,
+      size: eighth ? 22 : 23.4,
+      gap: 1.5,
+    },
     symbol: eighth
-      ? { right: 0.9079, center: 0.5886, width: 0.12, height: 0.0391 }
-      : { right: 1862 / 2010, center: 0.591, width: 0.12, height: 0.041 },
+      ? { right: 0.9079 - 2 / 488, center: 0.5886, width: 0.114, height: 0.0391 * 0.95 }
+      : { right: 1862 / 2010 - 2 / 488, center: 0.591, width: 0.114, height: 0.041 * 0.95 },
   };
 }
 
