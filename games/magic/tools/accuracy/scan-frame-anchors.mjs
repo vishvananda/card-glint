@@ -10,13 +10,13 @@ export const SCAN_ANCHOR_WINDOWS = Object.freeze({
 
 /** Frame-only strips. Disjoint 11-pixel-wide fit/validation samples exclude
  * titles, symbols, rules and artwork. Keep missing/ambiguous samples explicit. */
-export function scanFrameAnchors(image, border) {
+export function scanFrameAnchors(image, border, windows = SCAN_ANCHOR_WINDOWS) {
   if (image.width !== WIDTH || image.height !== HEIGHT) throw Error('Expected canonical image');
   if (!['white', 'black'].includes(border)) throw Error('Unsupported stock color');
   const gray = luminance(image),
     points = [],
     rejected = [];
-  for (const [side, spec] of Object.entries(SCAN_ANCHOR_WINDOWS)) {
+  for (const [side, spec] of Object.entries(windows)) {
     const { axis, lo, hi, start, step, count } = spec;
     const sign = (side === 'left' || side === 'top' ? 1 : -1) * (border === 'white' ? -1 : 1);
     for (let index = 0; index < count; index++) {

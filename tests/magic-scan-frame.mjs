@@ -10,6 +10,7 @@ import {
   scanMatrix,
 } from '../games/magic/tools/accuracy/scan-transform.mjs';
 import { normalize } from '../games/magic/tools/accuracy/pixels-pure.mjs';
+import { framePlateRegistration } from '../games/magic/tools/accuracy/frame-plate-registration.mjs';
 
 const positions = { left: 26, right: 464, top: 28, bottom: 652 },
   target = {
@@ -122,6 +123,42 @@ const rasterFit = fitScanFrame(scanFrameAnchors(moved, 'black'), rasterTarget);
 assert.equal(rasterFit.accepted, true);
 assert.equal(rasterFit.model, 'rotation');
 assert.ok(rasterFit.validation.rms < 0.1);
+
+// M15's black collector area has no bottom outer rail. Independently spaced
+// rules-frame samples must recover pose without using any title/mana/symbol ink.
+const modern = { width: 488, height: 680, data: new Uint8Array(data.length) };
+for (let y = 0; y < 680; y++)
+  for (let x = 0; x < 488; x++) {
+    const value = x >= 20 && x < 469 && y >= 20 && y < 630 ? 175 : 15;
+    modern.data.set([value, value, value, 255], (y * 488 + x) * 4);
+  }
+const modernMove = { scale: 1.003, rotation: 0.004, tx: 1, ty: -1.5 };
+const modernFit = framePlateRegistration(
+  normalize(modern, modernMove),
+  modern,
+  'm15-accurate',
+  'black',
+);
+assert.equal(modernFit.accepted, true);
+assert.equal(modernFit.model, 'rotation');
+for (const [x, y] of [
+  [40, 50],
+  [440, 400],
+  [100, 600],
+]) {
+  const observed = projectScanPoint(x, y, modernMove);
+  const aligned = projectScanPoint(...observed, modernFit.transform);
+  assert.ok(Math.hypot(aligned[0] - x, aligned[1] - y) < 0.15);
+}
+assert.equal(
+  framePlateRegistration(
+    normalize(modern, { matrix: [1.015, 0, 0, 0.985, 0, 0] }),
+    modern,
+    'm15-accurate',
+    'black',
+  ).accepted,
+  false,
+);
 console.log(
   'Independent frame fits: translation, scale, rotation, bounded skew, model selection, rejected distortion and raster extraction pass.',
 );

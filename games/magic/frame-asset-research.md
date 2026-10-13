@@ -302,3 +302,56 @@ medieval files have not changed from our existing pinned source. Merely swapping
 those files cannot solve the early-set weight or spacing issues. Small-caps
 fonts and treatment-specific families are inventoried for later P/T and special
 layout comparisons.
+
+## Replacement plate review: paper and placement
+
+The new dual-land paper initially joined at 47–53% of card width, producing a
+visible seam. Its blend now spans 27–73% inside the paper; the colored outer
+rails retain their narrow join. Both original textures, grain and inset shadows
+remain in place. The local review includes WB, BR, UG and UR lands. The
+additional UG example exposed reversed halves: both native plate families now
+follow the printed color wheel for RW, GW and GU, with all ten pairs checked.
+
+Frame-family selection no longer implicitly changes set-symbol sources. The
+existing reviewed-source policy applies with either family; explicit imported
+symbols remain available for comparison. This fixes the M15 uncommon regression
+without a new per-rarity branch. Enlarged scans also show inverse coloring in the
+imported M15 rare and different numeric-shield treatment in 8ED/9ED. Seven
+inspected repositories carry identical M15 files, so switching among these forks
+cannot fix the source. The [source audit](fixtures/assets/styled-symbol-source-audit.json)
+records blob identities, confirmed findings and remaining review work. This was
+a targeted audit, not validation of the entire imported inventory.
+
+Mana and set-symbol placement now have independent family geometry. At 488×680,
+M15 costs move left 1 px and up 4 px. Eighth-family costs move left 2 px and down
+1 px, with diameter reduced from 23 to 22 px. Both families' symbols move left
+2 px and scale to 95%. No card-specific renderer offsets were introduced.
+
+The [calibration report](fixtures/assets/frame-plate-import-calibration.json)
+records 23 source pairs, hashes and frozen per-card frame transforms. Eleven
+passed independent frame validation; the other twelve have no alignment score.
+M15 uses its lower rules-frame boundary because the collector area lacks an
+outer bottom rail. The existing fit/validation separation, uniform scale and
+bounded rotation/skew policy remain unchanged. Do not fit or score through a
+failed normalization.
+
+| Family       | Accepted cards |  Mana edge F1 | Symbol edge F1 |
+| ------------ | -------------: | ------------: | -------------: |
+| Eighth       |              4 | 80.9% → 88.6% |  91.2% → 92.1% |
+| M15 Accurate |              7 | 72.1% → 86.7% |  88.1% → 93.9% |
+
+These are development examples at 1 px tolerance, not corpus accuracy numbers.
+Symbol deltas include restoring the reviewed source policy. Every accepted
+card's mana score improved. Symbol regressions over two percentage points remain
+flagged for 9ED Sengir Vampire, M15 Negate and WOE Glass Casket. Avoid fitting
+per-card exceptions to them; examine source shape and wider set cohorts first.
+
+`node games/magic/tools/accuracy/frame-plate-review.mjs CAPTURE_DIRECTORY`
+recomputes scores from local `examples.json`, `snapshot.json` and frozen
+`*-reference.png`, `*-before.png`, `*-plate.png` captures. It persists
+`placement-normalization.json`, rejects changed source/template identities,
+and emits normalized references plus red/green overlays. Scoring is pure Node
+PNG/geometry work and does not launch Chromium; browser rendering is only used
+to prepare source captures. Neither CPU scoring nor capture time measures GPU
+completion time. The HTML review and all external images remain outside the
+repository and public showcase.
