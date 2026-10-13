@@ -1,0 +1,2048 @@
+{
+  "schemaVersion": 1,
+  "scope": "Frozen per-card frame normalization precedes symbol measurement. Propose shared set/material translations from native symbol bounds only, preserving width/height and assets. Deterministic development train/validation partition; all references previously observed. Rendering, color-insensitive scores, control/type checks and visual review are required before adoption.",
+  "captureStage": "after",
+  "captureHash": "82eedf126b93840999766a8c3e6b272a173df48b62f9db6ce6c29a7666a59156",
+  "boundsHash": "d24100c4360366c359322965a44322c99d18f203acf11177cf4577f8fc408757",
+  "poseHash": "e6c276a37a71ba348f73aa7964fb87b95e58f839a0d90d99364a7c9736e9a6d0",
+  "policy": {
+    "minimumTrain": 4,
+    "minimumValidation": 4,
+    "maxMedianDeviation": 1.25,
+    "maxPartitionDisagreement": 1,
+    "maxShift": 4,
+    "minimumValidationGain": 0.15,
+    "grid": 0.25
+  },
+  "templates": {
+    "W": {
+      "ids": [
+        "79ed559a-9a88-43d2-85d1-4bbec038f71e",
+        "155fc239-c2eb-41cc-9a0a-2414da3c3d7b",
+        "5be86f1f-c85a-4396-aa16-a39fbf493c96"
+      ],
+      "centerX": 425.3333333333333,
+      "centerY": 391
+    },
+    "U": {
+      "ids": [
+        "938d6c51-903b-4e0b-8702-291666581f2a",
+        "ff4a22d9-007b-4eb7-af9e-b5c2cae36238",
+        "0148f3ca-4dba-4408-86d0-1190c387ee69"
+      ],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    },
+    "B": {
+      "ids": [
+        "91f05fc3-da6e-45d4-8566-f4e7bdce1fe5",
+        "04013bc6-7774-400b-a6af-de755b4c324d",
+        "88a9b76d-6ce1-40d4-bc04-7ae6237f5eaf"
+      ],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    },
+    "R": {
+      "ids": [
+        "5c5bdb8c-2a2e-47cf-a502-2d62f9ada3fa",
+        "d5e50a1d-b9f5-4a03-a1c2-ca45ace53a52",
+        "ea3cf964-88f6-4e62-97ce-cf0e179a53fb"
+      ],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    },
+    "G": {
+      "ids": [
+        "59612c02-6028-4953-ac4d-aca94b0ce4b9",
+        "97a8a5fe-0391-489b-9556-0a1bf7e1900d",
+        "283146fd-2307-4019-b23d-7fb1893dc46c"
+      ],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    },
+    "M": {
+      "ids": ["2d92c3f7-a589-4c87-aa17-0d9707605ff4", "235c0ece-aed0-4120-99cc-5d0e28fa70ab"],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    },
+    "A": {
+      "ids": ["ff312dd7-456c-4ce5-9614-e2cbe3c2219c", "27d838a1-2739-45f7-a856-6202334fa76a"],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    },
+    "L": {
+      "ids": ["43bf015b-152e-4d67-b773-e75fb2487a32"],
+      "centerX": 425.3333333333333,
+      "centerY": 390.6666666666667
+    }
+  },
+  "groups": {
+    "A": {
+      "accepted": false,
+      "reasons": ["no-validation-improvement"],
+      "train": 6,
+      "validation": 5,
+      "rawShift": {
+        "dx": 0.2357231471252419,
+        "dy": 0.028564729312421377
+      },
+      "shift": {
+        "dx": 0.25,
+        "dy": 0
+      },
+      "spread": {
+        "dx": 0.15518800435131652,
+        "dy": 0.13670523083180797
+      },
+      "partitionDisagreement": {
+        "dx": 0.031210355609601947,
+        "dy": 0.3477887312608061
+      },
+      "validationCenterError": {
+        "before": 0.6027012658101766,
+        "after": 0.5480773202012921
+      },
+      "geometry": null,
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "ff312dd7-456c-4ce5-9614-e2cbe3c2219c",
+        "27d838a1-2739-45f7-a856-6202334fa76a",
+        "0ed17325-6d2f-404e-b13f-d2d419d522b7",
+        "950660f9-b185-4979-a08b-cce4ec6ce07d",
+        "51e9afeb-4d27-441c-b379-3dfe974053b8",
+        "1c675814-094c-45d4-93ee-0f50b4755e79",
+        "28028830-83ed-45e2-b495-3b9ad9d3e988",
+        "a4de4af2-fa75-4a87-b0e1-0117727917a5",
+        "49b7a950-bf79-46fa-8b29-b7856b38e0fd",
+        "401678d7-11dc-47ec-be28-4facdd949bc1",
+        "23e9e60a-5718-460d-b031-b47d6f6715d1"
+      ],
+      "supportIds": [
+        "ff312dd7-456c-4ce5-9614-e2cbe3c2219c",
+        "27d838a1-2739-45f7-a856-6202334fa76a",
+        "0ed17325-6d2f-404e-b13f-d2d419d522b7",
+        "950660f9-b185-4979-a08b-cce4ec6ce07d",
+        "51e9afeb-4d27-441c-b379-3dfe974053b8",
+        "1c675814-094c-45d4-93ee-0f50b4755e79",
+        "28028830-83ed-45e2-b495-3b9ad9d3e988",
+        "a4de4af2-fa75-4a87-b0e1-0117727917a5",
+        "49b7a950-bf79-46fa-8b29-b7856b38e0fd",
+        "401678d7-11dc-47ec-be28-4facdd949bc1",
+        "23e9e60a-5718-460d-b031-b47d6f6715d1"
+      ]
+    },
+    "B": {
+      "accepted": false,
+      "reasons": ["insufficient-stable-symbols"],
+      "train": 0,
+      "validation": 0,
+      "rawShift": {
+        "dx": null,
+        "dy": null
+      },
+      "shift": {
+        "dx": null,
+        "dy": null
+      },
+      "spread": {
+        "dx": null,
+        "dy": null
+      },
+      "partitionDisagreement": {
+        "dx": null,
+        "dy": null
+      },
+      "validationCenterError": {
+        "before": null,
+        "after": null
+      },
+      "geometry": null,
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "91f05fc3-da6e-45d4-8566-f4e7bdce1fe5",
+        "04013bc6-7774-400b-a6af-de755b4c324d",
+        "c0896ae6-fe96-44e8-ba62-a6d3fc1aae4f",
+        "c12c6548-20e6-4697-ba26-e711590f9e28",
+        "88a9b76d-6ce1-40d4-bc04-7ae6237f5eaf",
+        "6d83770e-16ff-49c6-b4e7-eb7fc566eef8",
+        "7478a471-3bd2-4038-a4eb-70c38a43afa9",
+        "6a818483-de47-454d-bb24-3410aa95289c",
+        "e35ab62e-d6c6-448c-bbe0-42abe5780adc",
+        "940536be-fce1-4a90-9126-195815a43e0f",
+        "3132c128-e0bd-4524-9526-914b3c7181fc",
+        "4eacd05b-078a-468c-b137-a802346d348a",
+        "92bd531c-fdd1-4a22-816e-258b2975c1a3",
+        "ebe796e1-97f9-469a-a6b6-a09161058e12",
+        "270a26ce-3435-4fef-bc34-abbc6f1cf3f4",
+        "860f46ea-6fd0-456d-971d-8d1eccc7fa60",
+        "ed8c028e-6656-47ef-97fb-de99f8833d5f",
+        "0da40601-b6a3-47ca-b5b6-8fdbdf81f3d4",
+        "ab726e7d-171f-48b2-9652-545e17913330",
+        "57af1b3f-661a-4b02-be08-0ec721d7cab8",
+        "cc0f043c-efb3-4392-ae25-b3ec180b0cb2",
+        "6171c210-01b5-45a9-9dd3-dbf96a33a750",
+        "fe74a415-ea8f-4f16-8889-ae649f1483b2",
+        "1754b92b-d6f9-4503-af01-dee03f72a048",
+        "bca2c333-405f-4c1b-a02a-f1fadb3e1d29"
+      ],
+      "supportIds": []
+    },
+    "G": {
+      "accepted": true,
+      "reasons": [],
+      "train": 13,
+      "validation": 11,
+      "rawShift": {
+        "dx": -0.6786497059896419,
+        "dy": 0.33991930494795497
+      },
+      "shift": {
+        "dx": -0.75,
+        "dy": 0.25
+      },
+      "spread": {
+        "dx": 0.1765747138154552,
+        "dy": 0.28806829312151194
+      },
+      "partitionDisagreement": {
+        "dx": 0.10137241232280303,
+        "dy": 0.1523179540330375
+      },
+      "validationCenterError": {
+        "before": 0.8265220036482106,
+        "after": 0.33498713521456847
+      },
+      "geometry": {
+        "right": 434,
+        "centerY": 391,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "59612c02-6028-4953-ac4d-aca94b0ce4b9",
+        "fa9af8e5-bc97-4704-ae5c-e3d2d5b72586",
+        "ae10e7fe-ee51-4c39-86ec-503324d19f6c",
+        "97a8a5fe-0391-489b-9556-0a1bf7e1900d",
+        "283146fd-2307-4019-b23d-7fb1893dc46c",
+        "daba8742-c246-4e64-8af1-8f4ebcdc4b5f",
+        "29d43e8f-a914-44ed-bbd3-3746fb4ea6da",
+        "3efc0622-ac2c-4722-ba05-961cc98c5940",
+        "454d6938-b87a-46b1-99d8-74573544ac5b",
+        "4cf9e9a9-325a-4010-acb8-1406adcaeca9",
+        "bb9179f5-c3e0-4499-9cfb-6cb7e8329a59",
+        "e78026e4-edb8-4f55-bd80-4152f4dfb461",
+        "fa3c58f1-5276-420e-8c09-d256492ee87b",
+        "485aeabb-4a9b-4d88-80ad-83e31da6804b",
+        "d5197937-023c-412c-bf2c-b8e811ca04e1",
+        "f7e11ef7-18a9-4ab1-981e-b337b1488ebd",
+        "a6ea4703-8521-4576-8405-4b923e0a9522",
+        "3751b2ae-a234-4691-984b-2f9f6b1cd1df",
+        "aa45664c-ac39-40f8-9f56-cf25ed60a84a",
+        "2713de6c-b754-435c-8d11-5215fd602a40",
+        "113fad70-36bc-4ab7-962a-cda3bddd02fc",
+        "da7f3e0b-0600-4451-b621-e40c902a16cb",
+        "7079bf55-4827-4b8b-a178-8c7b903d93b9",
+        "7d74f7d8-10eb-4082-9b07-41de13359b8c",
+        "7eb4a1a3-efcf-4c9a-ad1f-0a3f8f2b456f"
+      ],
+      "supportIds": [
+        "59612c02-6028-4953-ac4d-aca94b0ce4b9",
+        "fa9af8e5-bc97-4704-ae5c-e3d2d5b72586",
+        "97a8a5fe-0391-489b-9556-0a1bf7e1900d",
+        "283146fd-2307-4019-b23d-7fb1893dc46c",
+        "daba8742-c246-4e64-8af1-8f4ebcdc4b5f",
+        "29d43e8f-a914-44ed-bbd3-3746fb4ea6da",
+        "3efc0622-ac2c-4722-ba05-961cc98c5940",
+        "454d6938-b87a-46b1-99d8-74573544ac5b",
+        "4cf9e9a9-325a-4010-acb8-1406adcaeca9",
+        "bb9179f5-c3e0-4499-9cfb-6cb7e8329a59",
+        "e78026e4-edb8-4f55-bd80-4152f4dfb461",
+        "fa3c58f1-5276-420e-8c09-d256492ee87b",
+        "485aeabb-4a9b-4d88-80ad-83e31da6804b",
+        "d5197937-023c-412c-bf2c-b8e811ca04e1",
+        "f7e11ef7-18a9-4ab1-981e-b337b1488ebd",
+        "a6ea4703-8521-4576-8405-4b923e0a9522",
+        "3751b2ae-a234-4691-984b-2f9f6b1cd1df",
+        "aa45664c-ac39-40f8-9f56-cf25ed60a84a",
+        "2713de6c-b754-435c-8d11-5215fd602a40",
+        "113fad70-36bc-4ab7-962a-cda3bddd02fc",
+        "da7f3e0b-0600-4451-b621-e40c902a16cb",
+        "7079bf55-4827-4b8b-a178-8c7b903d93b9",
+        "7d74f7d8-10eb-4082-9b07-41de13359b8c",
+        "7eb4a1a3-efcf-4c9a-ad1f-0a3f8f2b456f"
+      ]
+    },
+    "L": {
+      "accepted": false,
+      "reasons": ["insufficient-stable-symbols"],
+      "train": 0,
+      "validation": 0,
+      "rawShift": {
+        "dx": null,
+        "dy": null
+      },
+      "shift": {
+        "dx": null,
+        "dy": null
+      },
+      "spread": {
+        "dx": null,
+        "dy": null
+      },
+      "partitionDisagreement": {
+        "dx": null,
+        "dy": null
+      },
+      "validationCenterError": {
+        "before": null,
+        "after": null
+      },
+      "geometry": null,
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": ["43bf015b-152e-4d67-b773-e75fb2487a32"],
+      "supportIds": []
+    },
+    "M": {
+      "accepted": false,
+      "reasons": ["insufficient-stable-symbols"],
+      "train": 0,
+      "validation": 0,
+      "rawShift": {
+        "dx": null,
+        "dy": null
+      },
+      "shift": {
+        "dx": null,
+        "dy": null
+      },
+      "spread": {
+        "dx": null,
+        "dy": null
+      },
+      "partitionDisagreement": {
+        "dx": null,
+        "dy": null
+      },
+      "validationCenterError": {
+        "before": null,
+        "after": null
+      },
+      "geometry": null,
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "2d92c3f7-a589-4c87-aa17-0d9707605ff4",
+        "06551990-713c-4b8b-bebb-4e849babb5bb",
+        "94934d64-6518-4c5e-90d9-a3bf23b8973f",
+        "235c0ece-aed0-4120-99cc-5d0e28fa70ab",
+        "9a8a9442-7b08-4cc8-94ec-bddb8feab1a8",
+        "5e58908e-7095-4fb9-b7cb-a67d12f33b8a"
+      ],
+      "supportIds": []
+    },
+    "R": {
+      "accepted": true,
+      "reasons": [],
+      "train": 8,
+      "validation": 5,
+      "rawShift": {
+        "dx": -1.144555971942168,
+        "dy": 1.001948379511532
+      },
+      "shift": {
+        "dx": -1.25,
+        "dy": 1
+      },
+      "spread": {
+        "dx": 0.1376365237544519,
+        "dy": 0.3043734421839872
+      },
+      "partitionDisagreement": {
+        "dx": 0.13463378417236527,
+        "dy": 0.19618055944573598
+      },
+      "validationCenterError": {
+        "before": 1.496610693905732,
+        "after": 0.5617098218688413
+      },
+      "geometry": {
+        "right": 433.5,
+        "centerY": 391.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "5c5bdb8c-2a2e-47cf-a502-2d62f9ada3fa",
+        "d5e50a1d-b9f5-4a03-a1c2-ca45ace53a52",
+        "ea3cf964-88f6-4e62-97ce-cf0e179a53fb",
+        "90af852f-57a2-4a00-82dc-7c0f23899361",
+        "79075361-e6ee-4cc9-990b-88fef27bbb1c",
+        "e069d90a-e7d9-4967-a872-0dd8a0a9934a",
+        "6b144452-2e91-4e46-abe9-ed76b39f8314",
+        "ab9781fd-10c9-4790-8279-51c3cc6653cf",
+        "680ccbc7-aa97-4f01-9d26-0df184af3c3e",
+        "a3165251-6ac6-4294-8bca-595c362f4ceb",
+        "6f2b70a5-db13-4c3f-829d-d4b9e0a16245",
+        "b6a79dc7-ce46-41f7-9375-8d12afe6355a",
+        "8dbb98db-f2ee-446f-9170-dd05b1a7dbd8",
+        "f52c2f83-9535-4ee5-9964-5cc01e617981",
+        "b790d789-bb21-4119-a0e3-43af9bef8acc",
+        "16064ad4-eec2-4c32-b66d-a2bdb1a6191f",
+        "1b1b384e-a7d5-4b5f-87d5-95ac1a6c6320",
+        "5a91aa6f-cb2f-4aad-9415-bba4eb9b76ca",
+        "ddd33c58-f25d-4117-a266-75a91e9ddc75",
+        "d45eea06-806b-4163-ac86-de6ed6d1a91e",
+        "e6f1edb8-fff4-4f84-944c-fa5a032f4fb1",
+        "fe6a6d56-e73f-4dc6-a7df-d105010e52ab",
+        "f9b2ff2a-6dfe-4635-8da2-22d525e82b94",
+        "38c25d65-16bd-4628-b6ec-9e5495818277",
+        "0bb37bcd-0bbd-4f3f-9623-803885750344"
+      ],
+      "supportIds": [
+        "5c5bdb8c-2a2e-47cf-a502-2d62f9ada3fa",
+        "ea3cf964-88f6-4e62-97ce-cf0e179a53fb",
+        "90af852f-57a2-4a00-82dc-7c0f23899361",
+        "79075361-e6ee-4cc9-990b-88fef27bbb1c",
+        "e069d90a-e7d9-4967-a872-0dd8a0a9934a",
+        "6b144452-2e91-4e46-abe9-ed76b39f8314",
+        "6f2b70a5-db13-4c3f-829d-d4b9e0a16245",
+        "b6a79dc7-ce46-41f7-9375-8d12afe6355a",
+        "8dbb98db-f2ee-446f-9170-dd05b1a7dbd8",
+        "b790d789-bb21-4119-a0e3-43af9bef8acc",
+        "5a91aa6f-cb2f-4aad-9415-bba4eb9b76ca",
+        "ddd33c58-f25d-4117-a266-75a91e9ddc75",
+        "0bb37bcd-0bbd-4f3f-9623-803885750344"
+      ]
+    },
+    "U": {
+      "accepted": false,
+      "reasons": ["insufficient-stable-symbols"],
+      "train": 0,
+      "validation": 0,
+      "rawShift": {
+        "dx": null,
+        "dy": null
+      },
+      "shift": {
+        "dx": null,
+        "dy": null
+      },
+      "spread": {
+        "dx": null,
+        "dy": null
+      },
+      "partitionDisagreement": {
+        "dx": null,
+        "dy": null
+      },
+      "validationCenterError": {
+        "before": null,
+        "after": null
+      },
+      "geometry": null,
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "938d6c51-903b-4e0b-8702-291666581f2a",
+        "c1fa8e60-c32f-4586-b133-224f0aec3355",
+        "ff4a22d9-007b-4eb7-af9e-b5c2cae36238",
+        "1444f76b-c876-4166-b957-b17313221fea",
+        "1cb8ae53-a53f-4a0f-94f7-559aca041797",
+        "0148f3ca-4dba-4408-86d0-1190c387ee69",
+        "854627ab-38bd-4894-94d8-9ef51a57579c",
+        "e3ce5dbc-3597-42e8-859a-cac105c8102e",
+        "7e55f653-0952-4713-8d43-ca50acff9e3b",
+        "0841423d-7a27-4bc5-9ac2-0ba47648c6f1",
+        "abcaf16d-aa02-43e2-aa38-bb1835d47a05",
+        "09891c87-eb74-4174-ad46-11a7f79de859",
+        "4da50979-1f5d-48d1-9406-dfc785273c04",
+        "b438802b-629a-42c8-824d-f081a1619f68",
+        "bb6ca66e-1116-4739-8375-87af99e9bba5",
+        "21a9242f-0516-4dae-8cbc-1f7f78931782",
+        "bf5b23da-9ba8-4b43-a5c9-51e1fc253913",
+        "02a20067-4ac2-4688-b8e8-3463185c4a41",
+        "c881c388-430f-4a4b-9cd1-fba0a2bc2cd6",
+        "ae4cc2f5-3a50-40c8-87ea-6b92f081f55c",
+        "8737440b-0bf0-483f-895b-aa24da2b9cfe",
+        "ab89a30a-ac4d-4a5e-bbff-a02366bc9cf6",
+        "ec89ee13-34ef-41c8-8fe4-0a6b21df2032",
+        "bd2f906d-b127-400a-809b-449f1e7f647b",
+        "4638d815-fb86-490c-84d6-777a1c6131d6"
+      ],
+      "supportIds": []
+    },
+    "W": {
+      "accepted": true,
+      "reasons": [],
+      "train": 8,
+      "validation": 9,
+      "rawShift": {
+        "dx": 0.5206039388858983,
+        "dy": -1.563197109775615
+      },
+      "shift": {
+        "dx": 0.5,
+        "dy": -1.5
+      },
+      "spread": {
+        "dx": 0.18493901814517244,
+        "dy": 0.24422796178234307
+      },
+      "partitionDisagreement": {
+        "dx": 0.03063367311179377,
+        "dy": 0.019169233680088382
+      },
+      "validationCenterError": {
+        "before": 1.6920342846759961,
+        "after": 0.21811827289125274
+      },
+      "geometry": {
+        "right": 435.25,
+        "centerY": 389.25,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "priorGeometry": {
+        "right": 434.75,
+        "centerY": 390.75,
+        "width": 18.75,
+        "height": 19.5,
+        "crop": [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+        "sampling": "high"
+      },
+      "ids": [
+        "79ed559a-9a88-43d2-85d1-4bbec038f71e",
+        "155fc239-c2eb-41cc-9a0a-2414da3c3d7b",
+        "afaf277e-b430-4c96-880c-ae654973478c",
+        "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+        "190332b3-6a1c-4c25-af61-d8923fc9a0c3",
+        "5be86f1f-c85a-4396-aa16-a39fbf493c96",
+        "35c44137-ddcc-42fa-baff-a0c3785b84ee",
+        "e7cd99c2-6d4a-48e8-8848-6fdc0788525d",
+        "b3a03c68-0ebe-488a-8e6c-7cbf7a448416",
+        "eaa577b1-2604-4065-a973-166521682a86",
+        "dd27e9c9-0a47-4fa3-9da5-1993f20305c2",
+        "37ae4b01-a9c1-4eec-9204-78cb2508e0df",
+        "3b21aa2e-df36-4101-89b6-515858f2ab88",
+        "20454d36-d98d-4421-b3aa-d2dd4b368d84",
+        "a9a13c4c-d5c0-4947-bb68-d2e9611bcdea",
+        "afb86621-1a6e-4d56-ab0e-531105775c56",
+        "14f165ad-cfe6-4a5d-8073-a70969494855",
+        "a112edf3-c976-426c-a407-e86255586e41",
+        "f8adc368-ede3-4b1c-af93-a5e0f2e24d83",
+        "e4bff910-24ab-45a0-b014-30bef6263c38",
+        "704b8be3-4ed8-4e94-aa66-c7187a299088",
+        "2f237426-a657-4234-9f79-0a06558eeb39",
+        "16a9ca33-3e9b-4ed9-b503-a1c09c17ca8b",
+        "81d2c6e3-e556-4cc6-94b6-fdbc62d6853e",
+        "fcd3b7a7-c5e8-4179-ade3-31625620f3a9"
+      ],
+      "supportIds": [
+        "79ed559a-9a88-43d2-85d1-4bbec038f71e",
+        "155fc239-c2eb-41cc-9a0a-2414da3c3d7b",
+        "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+        "190332b3-6a1c-4c25-af61-d8923fc9a0c3",
+        "35c44137-ddcc-42fa-baff-a0c3785b84ee",
+        "e7cd99c2-6d4a-48e8-8848-6fdc0788525d",
+        "b3a03c68-0ebe-488a-8e6c-7cbf7a448416",
+        "37ae4b01-a9c1-4eec-9204-78cb2508e0df",
+        "3b21aa2e-df36-4101-89b6-515858f2ab88",
+        "20454d36-d98d-4421-b3aa-d2dd4b368d84",
+        "a9a13c4c-d5c0-4947-bb68-d2e9611bcdea",
+        "afb86621-1a6e-4d56-ab0e-531105775c56",
+        "f8adc368-ede3-4b1c-af93-a5e0f2e24d83",
+        "e4bff910-24ab-45a0-b014-30bef6263c38",
+        "704b8be3-4ed8-4e94-aa66-c7187a299088",
+        "2f237426-a657-4234-9f79-0a06558eeb39",
+        "fcd3b7a7-c5e8-4179-ade3-31625620f3a9"
+      ]
+    }
+  },
+  "rows": [
+    {
+      "id": "79ed559a-9a88-43d2-85d1-4bbec038f71e",
+      "name": "Bandage",
+      "material": "W",
+      "referenceHash": "bd63c5915c4fba54a1439f54b3905f35bc4d2b33052d994a5ec8c6ddabb2fafa",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.47025351563968343,
+      "dy": -1.3412931565640065
+    },
+    {
+      "id": "155fc239-c2eb-41cc-9a0a-2414da3c3d7b",
+      "name": "Calming Licid",
+      "material": "W",
+      "referenceHash": "056d6f494b85ffe47a85c4bfebb7e99a2d50577e59b43aa6b16c955ff6e9ec2b",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.7718845534751608,
+      "dy": -2.100783852926668
+    },
+    {
+      "id": "afaf277e-b430-4c96-880c-ae654973478c",
+      "name": "Change of Heart",
+      "material": "W",
+      "referenceHash": "bfe71f2cc86a45394d6c82dcb32943426c01a038ceebd7861d2e9314768a9b55",
+      "partition": "validation",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+      "name": "Contemplation",
+      "material": "W",
+      "referenceHash": "b456d6428901d7818fdf0cc78831337a3d8279c3fdf9e96e6663973b2f26a8b3",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.29613611529867967,
+      "dy": -1.4175803801153393
+    },
+    {
+      "id": "190332b3-6a1c-4c25-af61-d8923fc9a0c3",
+      "name": "Conviction",
+      "material": "W",
+      "referenceHash": "e9d95e1e0e46ab34b19d01349f56dcc0bbb862674f07cd434e687ca01f6454c9",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.7212392383494262,
+      "dy": -1.3670122611133593
+    },
+    {
+      "id": "5be86f1f-c85a-4396-aa16-a39fbf493c96",
+      "name": "Hidden Retreat",
+      "material": "W",
+      "referenceHash": "bfe08fdd9b1dcb40bba8bd812d2aad1996c81ff64853a8e2796761e458d0af40",
+      "partition": "validation",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "35c44137-ddcc-42fa-baff-a0c3785b84ee",
+      "name": "Honor Guard",
+      "material": "W",
+      "referenceHash": "f45319eaba633b02034d70f6b4d103f50323bf8c9b845666df7c05f2dceb72c3",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.743542684773729,
+      "dy": -1.2250672510270988
+    },
+    {
+      "id": "e7cd99c2-6d4a-48e8-8848-6fdc0788525d",
+      "name": "Lancers en-Kor",
+      "material": "W",
+      "referenceHash": "57a4d65fef41eec9d037a0dab9c921a67d3076fc5d18462156803f6f9a5acc64",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.6900462671296737,
+      "dy": -1.607042035290533
+    },
+    {
+      "id": "b3a03c68-0ebe-488a-8e6c-7cbf7a448416",
+      "name": "Nomads en-Kor",
+      "material": "W",
+      "referenceHash": "6c86589feb784e87f18d8563ab07182258dd1212f618bfffd7eb9e24d6f8d3e7",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.3242269525782717,
+      "dy": -2.1834989915062124
+    },
+    {
+      "id": "eaa577b1-2604-4065-a973-166521682a86",
+      "name": "Pursuit of Knowledge",
+      "material": "W",
+      "referenceHash": "747bb80059e020a5fface4f779c5c658ca3a99f07d5fd1a777688ef60f264a75",
+      "partition": "validation",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "dd27e9c9-0a47-4fa3-9da5-1993f20305c2",
+      "name": "Rolling Stones",
+      "material": "W",
+      "referenceHash": "a27d9e8dc2206257492de33aae2fd530554a6156c0372fd559256533979dec35",
+      "partition": "train",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "37ae4b01-a9c1-4eec-9204-78cb2508e0df",
+      "name": "Sacred Ground",
+      "material": "W",
+      "referenceHash": "2ce191e9659c7969f3030e4dc04dad0e726103e1343406435fc0b66e86a4fed3",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.2778593629068382,
+      "dy": -0.9085578700926362
+    },
+    {
+      "id": "3b21aa2e-df36-4101-89b6-515858f2ab88",
+      "name": "Samite Blessing",
+      "material": "W",
+      "referenceHash": "d73924eeff14d946ccd6f977bc8d1fe13f4d67db18772aa1b7719545d5f745cf",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.5992468403067619,
+      "dy": -1.5823663434557034
+    },
+    {
+      "id": "20454d36-d98d-4421-b3aa-d2dd4b368d84",
+      "name": "Scapegoat",
+      "material": "W",
+      "referenceHash": "e9bdae058c9658239b3bc336fb78d803441a0d39919a122be866f1dd6a4b8fa6",
+      "partition": "train",
+      "reason": null,
+      "dx": 1.1622133322840682,
+      "dy": -0.9030986523839601
+    },
+    {
+      "id": "a9a13c4c-d5c0-4947-bb68-d2e9611bcdea",
+      "name": "Shaman en-Kor",
+      "material": "W",
+      "referenceHash": "e5ea1c3b2af0aa6ab3d3615ab34f3f87fc2ef0933a7eec057c2f755068a41d10",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.6250467121629981,
+      "dy": -1.4690713872323045
+    },
+    {
+      "id": "afb86621-1a6e-4d56-ab0e-531105775c56",
+      "name": "Skyshroud Falcon",
+      "material": "W",
+      "referenceHash": "c02947bf35e8afd36191829464c1a29fe0e3420797bb700b16c65970d45cb562",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.5512376119976921,
+      "dy": -1.7048723077448358
+    },
+    {
+      "id": "14f165ad-cfe6-4a5d-8073-a70969494855",
+      "name": "Smite",
+      "material": "W",
+      "referenceHash": "928d06772ee216ab99570516625d4eb55ac3d9f3c5c964a3ab9b54cdb288e04d",
+      "partition": "validation",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "a112edf3-c976-426c-a407-e86255586e41",
+      "name": "Soltari Champion",
+      "material": "W",
+      "referenceHash": "20a3be7a8d4949cfcbeaddeea77135f03eacfc8e297f280e632e127524b17ae7",
+      "partition": "validation",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "f8adc368-ede3-4b1c-af93-a5e0f2e24d83",
+      "name": "Spirit en-Kor",
+      "material": "W",
+      "referenceHash": "69df29e27df613c3c84cbd20c03286625877a8edc2215cceec070eab649be77e",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.34710288890318,
+      "dy": -1.6573228323189255
+    },
+    {
+      "id": "e4bff910-24ab-45a0-b014-30bef6263c38",
+      "name": "Temper",
+      "material": "W",
+      "referenceHash": "3f88cf5720f2934fede7576c3865be3ae0195a46bf698aae9281a6b304f26f71",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.41616116560879846,
+      "dy": -1.8554681846780454
+    },
+    {
+      "id": "704b8be3-4ed8-4e94-aa66-c7187a299088",
+      "name": "Venerable Monk",
+      "material": "W",
+      "referenceHash": "e52f7f7d05e29a8cb25a44bdb97b4a462d8c0f64fcbcf5394ae4995d2d6fa160",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.27072800385428764,
+      "dy": -1.4336410421745995
+    },
+    {
+      "id": "2f237426-a657-4234-9f79-0a06558eeb39",
+      "name": "Wall of Essence",
+      "material": "W",
+      "referenceHash": "96da7efdf98e5bdc617c2d59499989e9533f5b2c6dbec1063caf879fd70aeb55",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.5498523740139376,
+      "dy": -1.6651999776910884
+    },
+    {
+      "id": "16a9ca33-3e9b-4ed9-b503-a1c09c17ca8b",
+      "name": "Warrior en-Kor",
+      "material": "W",
+      "referenceHash": "4eae63c99fc58d1178503c77d543cad59c7e1e90c84cec7f8c1c784e3c860420",
+      "partition": "train",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "81d2c6e3-e556-4cc6-94b6-fdbc62d6853e",
+      "name": "Warrior Angel",
+      "material": "W",
+      "referenceHash": "b6d467562712055bc7e78899ac8a12d22fb0dd5788e125ad262d3a993f516d66",
+      "partition": "validation",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "fcd3b7a7-c5e8-4179-ade3-31625620f3a9",
+      "name": "Youthful Knight",
+      "material": "W",
+      "referenceHash": "ef239d2b5198579544ac7e686ca2afdc4835bfbba5d5c515eca915a928e1d3e1",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.6316835060389963,
+      "dy": -2.015576630127896
+    },
+    {
+      "id": "938d6c51-903b-4e0b-8702-291666581f2a",
+      "name": "Cloud Spirit",
+      "material": "U",
+      "referenceHash": "981df8413d3557f1a5aea4093ce2bf36ddb8ce12249138584369679ed9885cda",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "c1fa8e60-c32f-4586-b133-224f0aec3355",
+      "name": "Contempt",
+      "material": "U",
+      "referenceHash": "563ec1e692a357f9eff2f555979d7df9b1a07775c5e4d932511bf50190302202",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ff4a22d9-007b-4eb7-af9e-b5c2cae36238",
+      "name": "Dream Halls",
+      "material": "U",
+      "referenceHash": "38069b9fabc4744a50a33a86d090439f4f9cebb4569d6162c311c9dccdb1430a",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "1444f76b-c876-4166-b957-b17313221fea",
+      "name": "Dream Prowler",
+      "material": "U",
+      "referenceHash": "207b6812f9fbe09b264a329b76d02dab6b02db2657eea61ecfc7889cea5305fd",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "1cb8ae53-a53f-4a0f-94f7-559aca041797",
+      "name": "Evacuation",
+      "material": "U",
+      "referenceHash": "58b7232e67e5a875421c9ab7a4f39729dfafa10655bb77a2a06d2fe607434f27",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "0148f3ca-4dba-4408-86d0-1190c387ee69",
+      "name": "Gliding Licid",
+      "material": "U",
+      "referenceHash": "50fd60f62862d5c3bfe9cb13c781cd0d0b8f4654446709e8c1e6d2cd7b26eaac",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "854627ab-38bd-4894-94d8-9ef51a57579c",
+      "name": "Hammerhead Shark",
+      "material": "U",
+      "referenceHash": "37e37ee183520f7402a9bb09625ebbc78f5547cf3de851f9d15c4948e034b65f",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "e3ce5dbc-3597-42e8-859a-cac105c8102e",
+      "name": "Hesitation",
+      "material": "U",
+      "referenceHash": "6873af9e17316f328732c36c5a3e89cabecaea16ac74b718d36ae4ea0588b0b6",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "7e55f653-0952-4713-8d43-ca50acff9e3b",
+      "name": "Intruder Alarm",
+      "material": "U",
+      "referenceHash": "8daa0213fb7d1f610b6ce918e870d89c2b0a3c369c528bf0623e093e41e0236d",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "0841423d-7a27-4bc5-9ac2-0ba47648c6f1",
+      "name": "Leap",
+      "material": "U",
+      "referenceHash": "9d3e5e73cf147148881034578d4f56d24c8d5387a544cc5d61e798453a61c2ef",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "abcaf16d-aa02-43e2-aa38-bb1835d47a05",
+      "name": "Mana Leak",
+      "material": "U",
+      "referenceHash": "880505a9cc15c3319110d2fedce624764d52945ed67f4c92ef3d35a012b20682",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "09891c87-eb74-4174-ad46-11a7f79de859",
+      "name": "Mask of the Mimic",
+      "material": "U",
+      "referenceHash": "c0517c951d230b3108b4ee794e184ecbaeec2ad8eb13daa00b8f0be2e8d6904a",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "4da50979-1f5d-48d1-9406-dfc785273c04",
+      "name": "Mind Games",
+      "material": "U",
+      "referenceHash": "2c365094e433a31fabeb6f0751787e9c2c9034eeb1397b8b8824457aab29b738",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "b438802b-629a-42c8-824d-f081a1619f68",
+      "name": "Ransack",
+      "material": "U",
+      "referenceHash": "ca37948584fb1016d99c8bc010dae887d9530370162cef6192bad1292d06d83b",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "bb6ca66e-1116-4739-8375-87af99e9bba5",
+      "name": "Rebound",
+      "material": "U",
+      "referenceHash": "da9bf41aa081b9d46da9d11effe63a1205a3d6985bdc0b73a1aeec48d38e213f",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "21a9242f-0516-4dae-8cbc-1f7f78931782",
+      "name": "Reins of Power",
+      "material": "U",
+      "referenceHash": "24339861e00e9b1a49c3babadcfba3ae6cb2a0c6d4a1d29f16aa761b30101626",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "bf5b23da-9ba8-4b43-a5c9-51e1fc253913",
+      "name": "Sift",
+      "material": "U",
+      "referenceHash": "dc84886cb2a9888d684b1b16e281ecf6d087b2e19db090c0a2415c4e461c968a",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "02a20067-4ac2-4688-b8e8-3463185c4a41",
+      "name": "Silver Wyvern",
+      "material": "U",
+      "referenceHash": "d5cb362d356edcd3cf3b69bb3c8b0b458c5b26398c991439faf41f96778d48e7",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "c881c388-430f-4a4b-9cd1-fba0a2bc2cd6",
+      "name": "Spindrift Drake",
+      "material": "U",
+      "referenceHash": "685b0b8a66da5d4a292e3d94be40c01f4d94b4e5aa82ae00b730ef7754aafd80",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ae4cc2f5-3a50-40c8-87ea-6b92f081f55c",
+      "name": "Thalakos Deceiver",
+      "material": "U",
+      "referenceHash": "435bcf9b138e72168ce67a69666c362347898a3a238a76b16256bf5e15ae8a41",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "8737440b-0bf0-483f-895b-aa24da2b9cfe",
+      "name": "Tidal Surge",
+      "material": "U",
+      "referenceHash": "8c78b553a10dffdd3f87b6343fa6112d936336e6f2dcac63775f23bcb9978119",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ab89a30a-ac4d-4a5e-bbff-a02366bc9cf6",
+      "name": "Tidal Warrior",
+      "material": "U",
+      "referenceHash": "0f18f69adb42f0d357fefad47fea0b71b97e413c2cdd3d4f7feda45001dcfc54",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ec89ee13-34ef-41c8-8fe4-0a6b21df2032",
+      "name": "Volrath's Shapeshifter",
+      "material": "U",
+      "referenceHash": "a2f5e157ff22549b6764090e8fb366d32e008058c90e35088a11dad9bdde814e",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "bd2f906d-b127-400a-809b-449f1e7f647b",
+      "name": "Walking Dream",
+      "material": "U",
+      "referenceHash": "5ce5b07560f7c26d70e4e95fa91f52253c6a10ddd27f5c8eff1acca16e38ebe4",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "4638d815-fb86-490c-84d6-777a1c6131d6",
+      "name": "Wall of Tears",
+      "material": "U",
+      "referenceHash": "0e7d5300650fa8bdbdb8fbcf618a253f03fae02a5241e93026106fd85919893b",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "91f05fc3-da6e-45d4-8566-f4e7bdce1fe5",
+      "name": "Bottomless Pit",
+      "material": "B",
+      "referenceHash": "7387890f8d9b64ee93627729c0c7cac9c5c1a980f9f3f6955ca84259995eea37",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "04013bc6-7774-400b-a6af-de755b4c324d",
+      "name": "Brush with Death",
+      "material": "B",
+      "referenceHash": "22c377fb4d37bdcb5f1c3253f7cfc5d7c117efee605ff3d682dd078c4f7ddd26",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "c0896ae6-fe96-44e8-ba62-a6d3fc1aae4f",
+      "name": "Cannibalize",
+      "material": "B",
+      "referenceHash": "c133311eeb830db51a34a32d9eadf0660422b21a271b5c05d6d985c41b6b0007",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "c12c6548-20e6-4697-ba26-e711590f9e28",
+      "name": "Corrupting Licid",
+      "material": "B",
+      "referenceHash": "903f5e07f936c42247e122a3b92ded74d76db690106fd02ea623f8ebdf8dd0e3",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "88a9b76d-6ce1-40d4-bc04-7ae6237f5eaf",
+      "name": "Crovax the Cursed",
+      "material": "B",
+      "referenceHash": "e5d38cdfe667a390813a8f2de8f29a85286693f027670a2219ce6e1dea6f9afc",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "6d83770e-16ff-49c6-b4e7-eb7fc566eef8",
+      "name": "Dauthi Trapper",
+      "material": "B",
+      "referenceHash": "d0747693b46255138c588c71c5d1ca12baaa25408e7d8096f2c9317d97a83b1a",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "7478a471-3bd2-4038-a4eb-70c38a43afa9",
+      "name": "Death Stroke",
+      "material": "B",
+      "referenceHash": "e45c965f4835940de3a9339c2e10c54e7496539d2aa6bc3bcc31f5f4540d8c19",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "6a818483-de47-454d-bb24-3410aa95289c",
+      "name": "Dungeon Shade",
+      "material": "B",
+      "referenceHash": "66b96fc896da4d452cbedaef768f7c5bbfba9e9a4373022f4f48e94c6b4d5195",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "e35ab62e-d6c6-448c-bbe0-42abe5780adc",
+      "name": "Foul Imp",
+      "material": "B",
+      "referenceHash": "681e9403021ab47a381308ef6beb97d0e468c130fb83af5b9680a157389da4b4",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "940536be-fce1-4a90-9126-195815a43e0f",
+      "name": "Grave Pact",
+      "material": "B",
+      "referenceHash": "b0a3884031048f803c63a47035143be0ff61df7dfd04ea0660976431addc3cbe",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "3132c128-e0bd-4524-9526-914b3c7181fc",
+      "name": "Lab Rats",
+      "material": "B",
+      "referenceHash": "686437fe87e30f29b968e9b82d53b29aac99a652f340ba07c7de958a3c1dcd37",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "4eacd05b-078a-468c-b137-a802346d348a",
+      "name": "Megrim",
+      "material": "B",
+      "referenceHash": "f5a8f21976b98d41531bcb01a37ea6f7bd1bc54fc4bc20d1c5de10999b9ecd19",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "92bd531c-fdd1-4a22-816e-258b2975c1a3",
+      "name": "Mind Peel",
+      "material": "B",
+      "referenceHash": "761dbdcca6fda7eb92e887db94b636b8c3df0c981d2429b15f5d6f553e3e4a08",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ebe796e1-97f9-469a-a6b6-a09161058e12",
+      "name": "Mindwarper",
+      "material": "B",
+      "referenceHash": "39ffde1cc3e48f3af956f093d31995becd9a952bb8e103a91c4d29b803edb978",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "270a26ce-3435-4fef-bc34-abbc6f1cf3f4",
+      "name": "Morgue Thrull",
+      "material": "B",
+      "referenceHash": "339c778597f4c8773db5e065ec95ad0d7eb920c858205ca884b4276c907bd8d9",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "860f46ea-6fd0-456d-971d-8d1eccc7fa60",
+      "name": "Mortuary",
+      "material": "B",
+      "referenceHash": "93149499ddf147acf3519725a4cf5b0a57e96b1aaf7496ecccc2c3f04f35f538",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ed8c028e-6656-47ef-97fb-de99f8833d5f",
+      "name": "Rabid Rats",
+      "material": "B",
+      "referenceHash": "467a2af8940e35cc4bd98a6bfde9bbc99c53a6ecd34f1914e7e2c0cf117dcaaa",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "0da40601-b6a3-47ca-b5b6-8fdbdf81f3d4",
+      "name": "Revenant",
+      "material": "B",
+      "referenceHash": "ac31b20435f25ecbd28a005cc84cc14fc9f0b5493b969332942515c8ed8c4377",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ab726e7d-171f-48b2-9652-545e17913330",
+      "name": "Serpent Warrior",
+      "material": "B",
+      "referenceHash": "c1b5cebea54925f737dde850293ccab6eb7e0815b80687cf3cdf761d648862f4",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "57af1b3f-661a-4b02-be08-0ec721d7cab8",
+      "name": "Skeleton Scavengers",
+      "material": "B",
+      "referenceHash": "851e6ec409e88ee4297b8ddd854d0ae5935809c73db475cbf3a073645e92a753",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "cc0f043c-efb3-4392-ae25-b3ec180b0cb2",
+      "name": "Stronghold Assassin",
+      "material": "B",
+      "referenceHash": "5d95b1825bc4e31c8c208764fa4497ce4d4fd64331765a5b1916310c2556ba9f",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "6171c210-01b5-45a9-9dd3-dbf96a33a750",
+      "name": "Stronghold Taskmaster",
+      "material": "B",
+      "referenceHash": "bdf8a63bec045217334188816d0aa3d2c8ebc91393f5addbbb27a964a03f4c93",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "fe74a415-ea8f-4f16-8889-ae649f1483b2",
+      "name": "Torment",
+      "material": "B",
+      "referenceHash": "3d83724d760b037c314feec81f965bc18da7f30a7f0418bfab4cadd0e9d259bb",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "1754b92b-d6f9-4503-af01-dee03f72a048",
+      "name": "Tortured Existence",
+      "material": "B",
+      "referenceHash": "3d4883399a4f3c9848038c66a9333651c1d11b783b3b7c7f2bd7fcb61c4c4779",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "bca2c333-405f-4c1b-a02a-f1fadb3e1d29",
+      "name": "Wall of Souls",
+      "material": "B",
+      "referenceHash": "6ef7f86b2176ded89c3d769206eb51b66ed6d4ae74746013bcc84d626f9d8e93",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "5c5bdb8c-2a2e-47cf-a502-2d62f9ada3fa",
+      "name": "Amok",
+      "material": "R",
+      "referenceHash": "2595b6879b7e67be855b274364206b898ff4153b1480dca6899ad5fdbf1f1168",
+      "partition": "train",
+      "reason": null,
+      "dx": -1.221661571016,
+      "dy": 0.614029339857666
+    },
+    {
+      "id": "d5e50a1d-b9f5-4a03-a1c2-ca45ace53a52",
+      "name": "Convulsing Licid",
+      "material": "R",
+      "referenceHash": "e7554998b287ec9f59467308e0895890a82db2aa5c1d908c5026a948c61111a0",
+      "partition": "train",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ea3cf964-88f6-4e62-97ce-cf0e179a53fb",
+      "name": "Craven Giant",
+      "material": "R",
+      "referenceHash": "d0646a611c34e4f23326d507f32f30ede77bd2551483e0104701730db314198d",
+      "partition": "train",
+      "reason": null,
+      "dx": -1.213106747454333,
+      "dy": 0.9215874257467931
+    },
+    {
+      "id": "90af852f-57a2-4a00-82dc-7c0f23899361",
+      "name": "Duct Crawler",
+      "material": "R",
+      "referenceHash": "22a299b2d6407ca1a67f6dd589ad4a63dfbadfbaf53a6c7fdcb0df1281999e5f",
+      "partition": "train",
+      "reason": null,
+      "dx": -1.107908806272576,
+      "dy": 1.9366747642726523
+    },
+    {
+      "id": "79075361-e6ee-4cc9-990b-88fef27bbb1c",
+      "name": "Fanning the Flames",
+      "material": "R",
+      "referenceHash": "a7b3afc3116006c06117e845ecf3958d22aa79f3e8fdae0f0cfc3bb379b78989",
+      "partition": "validation",
+      "reason": null,
+      "dx": -1.0099221877698028,
+      "dy": 1.0038534871100637
+    },
+    {
+      "id": "e069d90a-e7d9-4967-a872-0dd8a0a9934a",
+      "name": "Flame Wave",
+      "material": "R",
+      "referenceHash": "5a7eae15688ebd2c45b5e594d50a9743f90407b22270b2a2b8d1cbc2f838f551",
+      "partition": "train",
+      "reason": null,
+      "dx": -1.1812031376117602,
+      "dy": 0.6734632295882648
+    },
+    {
+      "id": "6b144452-2e91-4e46-abe9-ed76b39f8314",
+      "name": "Fling",
+      "material": "R",
+      "referenceHash": "a5ba3adacccd273ef7fcddf9453474b9141f7a74155f6f066192b05ae883b847",
+      "partition": "validation",
+      "reason": null,
+      "dx": -1.0043520453221504,
+      "dy": 1.1095587132595597
+    },
+    {
+      "id": "ab9781fd-10c9-4790-8279-51c3cc6653cf",
+      "name": "Flowstone Blade",
+      "material": "R",
+      "referenceHash": "995d238f3badac17770203433b1c2bada608858e3f6d77ccd78cffa66d6bbacb",
+      "partition": "validation",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "680ccbc7-aa97-4f01-9d26-0df184af3c3e",
+      "name": "Flowstone Hellion",
+      "material": "R",
+      "referenceHash": "7dbeb74834f8a66dab2ac33b4489d45f251c676c29c56472edd32e11a57ee535",
+      "partition": "validation",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "a3165251-6ac6-4294-8bca-595c362f4ceb",
+      "name": "Flowstone Mauler",
+      "material": "R",
+      "referenceHash": "91b6a12bccd3648b90e680e1b4745ee2a80f493aef030f781a46f3822e5eb8f5",
+      "partition": "validation",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "6f2b70a5-db13-4c3f-829d-d4b9e0a16245",
+      "name": "Flowstone Shambler",
+      "material": "R",
+      "referenceHash": "6b0c9286ff45fb1e723c2ecbaac16608e3854283198a4ee1a97fb253a044b4fd",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.9135411263522428,
+      "dy": 1.2822101139562392
+    },
+    {
+      "id": "b6a79dc7-ce46-41f7-9375-8d12afe6355a",
+      "name": "Furnace Spirit",
+      "material": "R",
+      "referenceHash": "173a971fcdd659cc42ec196e4027f38631b2f513a4a7fc45ca2f5b58692ca3f6",
+      "partition": "train",
+      "reason": null,
+      "dx": -1.5007133636401022,
+      "dy": 1.6230237365187463
+    },
+    {
+      "id": "8dbb98db-f2ee-446f-9170-dd05b1a7dbd8",
+      "name": "Heat of Battle",
+      "material": "R",
+      "referenceHash": "46dbeb69752f0f683c0bd7c5253dea0f476ae4af74b5b49c36b19208a30bc9d9",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.724392877206185,
+      "dy": 1.198128938957268
+    },
+    {
+      "id": "f52c2f83-9535-4ee5-9964-5cc01e617981",
+      "name": "Invasion Plans",
+      "material": "R",
+      "referenceHash": "405c855edc552e92925dcbeb05cf10a7328709d97d8d38f79b9f8464d75130df",
+      "partition": "train",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "b790d789-bb21-4119-a0e3-43af9bef8acc",
+      "name": "Mob Justice",
+      "material": "R",
+      "referenceHash": "de082b9c7ed2289b8b19b60883d501ace8d7b367b6d6d9d11e47ca56ef6aa50b",
+      "partition": "validation",
+      "reason": null,
+      "dx": -1.2231744792584323,
+      "dy": 1.5883458753314699
+    },
+    {
+      "id": "16064ad4-eec2-4c32-b66d-a2bdb1a6191f",
+      "name": "Mogg Bombers",
+      "material": "R",
+      "referenceHash": "f6b152292858ed1fa69ee882b2bb90bcb95d5ce0bc30c9ca9410c2f41f9be7cb",
+      "partition": "train",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "1b1b384e-a7d5-4b5f-87d5-95ac1a6c6320",
+      "name": "Mogg Flunkies",
+      "material": "R",
+      "referenceHash": "a7d4ee6f8abbd7301c906cd256891c7a05e0943e30ccedc5d5945adb2ee9fc31",
+      "partition": "validation",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "5a91aa6f-cb2f-4aad-9415-bba4eb9b76ca",
+      "name": "Mogg Infestation",
+      "material": "R",
+      "referenceHash": "6c17a6e65903f64ebfb8917c4d26f9145e2679a5c41b656524775ff467a5e3ec",
+      "partition": "validation",
+      "reason": null,
+      "dx": -1.1308567230344124,
+      "dy": 2.1150881523354883
+    },
+    {
+      "id": "ddd33c58-f25d-4117-a266-75a91e9ddc75",
+      "name": "Mogg Maniac",
+      "material": "R",
+      "referenceHash": "51ce4de343ed9528dec14e2bb8e23e2bd2a51b1a7e3bc45e7e9ae34aab89a496",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.5337053727571401,
+      "dy": 1.082309333276271
+    },
+    {
+      "id": "d45eea06-806b-4163-ac86-de6ed6d1a91e",
+      "name": "Ruination",
+      "material": "R",
+      "referenceHash": "e67c870052581a1e4e523d843ba865c3726fbb3cb8d0209ee0e5aea75e2d02f9",
+      "partition": "validation",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "e6f1edb8-fff4-4f84-944c-fa5a032f4fb1",
+      "name": "Seething Anger",
+      "material": "R",
+      "referenceHash": "2696e65153dd1e509846379291f06d807bdcf55a5c21e91dfb50c64c7afa2060",
+      "partition": "train",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "fe6a6d56-e73f-4dc6-a7df-d105010e52ab",
+      "name": "Shard Phoenix",
+      "material": "R",
+      "referenceHash": "9cafb2a262df6d2b1a5505303a3e5c27c9da84dd6be596e6db05ed4ae2c0e500",
+      "partition": "train",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "f9b2ff2a-6dfe-4635-8da2-22d525e82b94",
+      "name": "Shock",
+      "material": "R",
+      "referenceHash": "cd12dafa5b4ca8d582c2d9ab3e02d7d2440f8003415698c339574e0ad4143dbc",
+      "partition": "validation",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "38c25d65-16bd-4628-b6ec-9e5495818277",
+      "name": "Spitting Hydra",
+      "material": "R",
+      "referenceHash": "fb895f3d3d06f7793ffcfd1218dc0bbd42ea542e964f111ce04c626124fef209",
+      "partition": "train",
+      "reason": "no-validated-model",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "0bb37bcd-0bbd-4f3f-9623-803885750344",
+      "name": "Wall of Razors",
+      "material": "R",
+      "referenceHash": "3260165abf8dc08c5d3b298129bf745f0fd547fb2dcbed58455b2e8df8baaa5c",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.9463885235070961,
+      "dy": 0.8811216766207508
+    },
+    {
+      "id": "59612c02-6028-4953-ac4d-aca94b0ce4b9",
+      "name": "Awakening",
+      "material": "G",
+      "referenceHash": "71e1b0338a473e31f7938501b318c438a6535d4eb25874ab74f0e2c437707bc2",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.6580913602639953,
+      "dy": 0.2609044242962568
+    },
+    {
+      "id": "fa9af8e5-bc97-4704-ae5c-e3d2d5b72586",
+      "name": "Burgeoning",
+      "material": "G",
+      "referenceHash": "05a6bb272db9614d6614050509371306dba674c86217d536799e1d5ffeebf618",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.7837754568134301,
+      "dy": 0.18760135091491748
+    },
+    {
+      "id": "ae10e7fe-ee51-4c39-86ec-503324d19f6c",
+      "name": "Carnassid",
+      "material": "G",
+      "referenceHash": "145134e817b0796e9d2860aa1917fcc4fb5188b0eb42ee0a4039f17163e1aea5",
+      "partition": "train",
+      "reason": "reference-symbol-uncertain",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "97a8a5fe-0391-489b-9556-0a1bf7e1900d",
+      "name": "Constant Mists",
+      "material": "G",
+      "referenceHash": "003544f212360052aec6509dbcb9673ebce90f7694b65c9b577fc8c69bcb26e9",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.24756737904897363,
+      "dy": -0.1409785169460065
+    },
+    {
+      "id": "283146fd-2307-4019-b23d-7fb1893dc46c",
+      "name": "Crossbow Ambush",
+      "material": "G",
+      "referenceHash": "225c8fe11557281a2746524dc032498056b7092eb54f6667b0e48094a97c4f6b",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.699010533023511,
+      "dy": 0.6279875980694669
+    },
+    {
+      "id": "daba8742-c246-4e64-8af1-8f4ebcdc4b5f",
+      "name": "Elven Rite",
+      "material": "G",
+      "referenceHash": "492791960441f3fa1b148b0dd35a29fe6e191cd559dfa7c8ccb450cedd05f24b",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.6377964775094256,
+      "dy": 0.5984549047442442
+    },
+    {
+      "id": "29d43e8f-a914-44ed-bbd3-3746fb4ea6da",
+      "name": "Endangered Armodon",
+      "material": "G",
+      "referenceHash": "f1d2185cf4e3545f0755a6800b56d50a7aa36f83db79081dd36ee01bf5ead395",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.949503947265498,
+      "dy": -0.019099527656123882
+    },
+    {
+      "id": "3efc0622-ac2c-4722-ba05-961cc98c5940",
+      "name": "Hermit Druid",
+      "material": "G",
+      "referenceHash": "051b1bea78954ec5e1639198b013ac2c2e6bf6eda94ed24ae263b552b0259ebf",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.7561499506347786,
+      "dy": 0.6735608802170532
+    },
+    {
+      "id": "454d6938-b87a-46b1-99d8-74573544ac5b",
+      "name": "Lowland Basilisk",
+      "material": "G",
+      "referenceHash": "c0a535a1394297cb31e7aff9b548f23d03aa16c076f09c41431d96ea4d086dff",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.34994773470202745,
+      "dy": 0.33991930494795497
+    },
+    {
+      "id": "4cf9e9a9-325a-4010-acb8-1406adcaeca9",
+      "name": "Mulch",
+      "material": "G",
+      "referenceHash": "bebaa107f947a2fa61f63a8a82153b79f8d2c73ce87638c7f2adaaf91fd675e7",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.8552244198050971,
+      "dy": -0.06865419926776894
+    },
+    {
+      "id": "bb9179f5-c3e0-4499-9cfb-6cb7e8329a59",
+      "name": "Overgrowth",
+      "material": "G",
+      "referenceHash": "80c40b8c145594ba03d407ab7e26c4f3aee779160e27f0ee1867a98754c15232",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.5552580525832127,
+      "dy": 0.08769969338339934
+    },
+    {
+      "id": "e78026e4-edb8-4f55-bd80-4152f4dfb461",
+      "name": "Primal Rage",
+      "material": "G",
+      "referenceHash": "2560ed0dcb0385a6f046a36f01b995d7898eb5c74e7e4a46b58c2b5f96d6382c",
+      "partition": "train",
+      "reason": null,
+      "dx": -1.0048611739693456,
+      "dy": 0.6385754576369891
+    },
+    {
+      "id": "fa3c58f1-5276-420e-8c09-d256492ee87b",
+      "name": "Provoke",
+      "material": "G",
+      "referenceHash": "f4db48738a655ccc8ba9cacb3a659a4fd77e9b6bebef6bb4270b8b6e9f4225a5",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.48426380396949753,
+      "dy": 0.5405682975701893
+    },
+    {
+      "id": "485aeabb-4a9b-4d88-80ad-83e31da6804b",
+      "name": "Skyshroud Archer",
+      "material": "G",
+      "referenceHash": "34e9cd967ff74676f4fb2425b3351e6909b7a8597f68ea946315dd76d5222975",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.780022118312445,
+      "dy": -0.2733205397660754
+    },
+    {
+      "id": "d5197937-023c-412c-bf2c-b8e811ca04e1",
+      "name": "Skyshroud Troopers",
+      "material": "G",
+      "referenceHash": "1d7ef1809f07025bd39586209dd6f084df13128524818d4090f7a7860eadba59",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.9144910012452669,
+      "dy": 0.9565067083823919
+    },
+    {
+      "id": "f7e11ef7-18a9-4ab1-981e-b337b1488ebd",
+      "name": "Spike Breeder",
+      "material": "G",
+      "referenceHash": "62d955d6d7b9d8a06ae3fe52768143da5540f3e893e10814626cfcc1dbf20a06",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.9789104899357994,
+      "dy": 0.40429499232163835
+    },
+    {
+      "id": "a6ea4703-8521-4576-8405-4b923e0a9522",
+      "name": "Spike Colony",
+      "material": "G",
+      "referenceHash": "ddb433004c317fdf3a51ed82dc79d304cf8ff2a412698247599f2fc7ccf41093",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.49061585693544885,
+      "dy": 0.5450593534827135
+    },
+    {
+      "id": "3751b2ae-a234-4691-984b-2f9f6b1cd1df",
+      "name": "Spike Feeder",
+      "material": "G",
+      "referenceHash": "721b5616943dbdb8a2fafa572126aed02b3e95c2e0d72aa2570368d4c7d9a0b5",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.8501043991436745,
+      "dy": 0.13324587492508044
+    },
+    {
+      "id": "aa45664c-ac39-40f8-9f56-cf25ed60a84a",
+      "name": "Spike Soldier",
+      "material": "G",
+      "referenceHash": "39d06fd3dc91daee64ff95929dbefd084a9ab902889ca092836223e3987b4b3f",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.751354396003876,
+      "dy": -0.1579507569198313
+    },
+    {
+      "id": "2713de6c-b754-435c-8d11-5215fd602a40",
+      "name": "Spike Worker",
+      "material": "G",
+      "referenceHash": "580225fdfdec93c83eec893110c4c6b5b4c7fef38fe4512d557834e77b3256a7",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.6786497059896419,
+      "dy": -0.0017391281088521282
+    },
+    {
+      "id": "113fad70-36bc-4ab7-962a-cda3bddd02fc",
+      "name": "Spined Wurm",
+      "material": "G",
+      "referenceHash": "0a7f89a505315671c17d7ec734c7f035759241e3839068be8b8c85a00124138a",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.2078905247888656,
+      "dy": -0.02921373322914178
+    },
+    {
+      "id": "da7f3e0b-0600-4451-b621-e40c902a16cb",
+      "name": "Tempting Licid",
+      "material": "G",
+      "referenceHash": "f8c094e36e232926a9c3f8bfaded692df47bee029d1e5369f46b082e627d4a64",
+      "partition": "validation",
+      "reason": null,
+      "dx": -1.1328747374445243,
+      "dy": 0.510574891788508
+    },
+    {
+      "id": "7079bf55-4827-4b8b-a178-8c7b903d93b9",
+      "name": "Verdant Touch",
+      "material": "G",
+      "referenceHash": "c7cd02d420dfec83b51b83d8a5f59f8a2b9316d1c5a65d22e01f4d41fc18a11c",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.6030419385112964,
+      "dy": 0.22156997225744135
+    },
+    {
+      "id": "7d74f7d8-10eb-4082-9b07-41de13359b8c",
+      "name": "Volrath's Gardens",
+      "material": "G",
+      "referenceHash": "d7c5b87662278f3ee5a6bbc0fbd0d42de75da1bdd8f05f566dd5c1ab83d27a72",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.3588903209587784,
+      "dy": 0.16116976109344705
+    },
+    {
+      "id": "7eb4a1a3-efcf-4c9a-ad1f-0a3f8f2b456f",
+      "name": "Wall of Blossoms",
+      "material": "G",
+      "referenceHash": "ddb3c0b6db8511a765346a25dff5202f071cd38564df4651a84bcfd7227d2e16",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.6809780894192841,
+      "dy": 0.5635471605489784
+    },
+    {
+      "id": "2d92c3f7-a589-4c87-aa17-0d9707605ff4",
+      "name": "Acidic Sliver",
+      "material": "M",
+      "referenceHash": "8b19cad9f84621f0344d262a76e906f6fe4d18bc8371e60c19a0c8811c56fb8e",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "06551990-713c-4b8b-bebb-4e849babb5bb",
+      "name": "Crystalline Sliver",
+      "material": "M",
+      "referenceHash": "b0d3fa95d236a6d0c44b21e5004b40779358b04bb54c29a3b925e6a8b4fc511f",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "94934d64-6518-4c5e-90d9-a3bf23b8973f",
+      "name": "Hibernation Sliver",
+      "material": "M",
+      "referenceHash": "571009d6106c1c850f20fbca8cafd3ed6158b4275e391961ae682f13e5157724",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "235c0ece-aed0-4120-99cc-5d0e28fa70ab",
+      "name": "Sliver Queen",
+      "material": "M",
+      "referenceHash": "ca6ca92b0a6ebd40d531fa48a4454350e81c368ef168844a785b461b7fe6c9d2",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "9a8a9442-7b08-4cc8-94ec-bddb8feab1a8",
+      "name": "Spined Sliver",
+      "material": "M",
+      "referenceHash": "488877f4bed14aff494ffd5fd47a51aa60112384fb0854cf06a7aac073d6e1ff",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "5e58908e-7095-4fb9-b7cb-a67d12f33b8a",
+      "name": "Victual Sliver",
+      "material": "M",
+      "referenceHash": "71cdbeac24ea37d2fdaee14e506eee2b4580457d8cc5ec77864c409c7ac91a1c",
+      "partition": "validation",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    },
+    {
+      "id": "ff312dd7-456c-4ce5-9614-e2cbe3c2219c",
+      "name": "Bullwhip",
+      "material": "A",
+      "referenceHash": "e5b77bcc2fdaaa599ec892871710f4aa01db4164abdac923e07780dff646ffe6",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.6652192919530648,
+      "dy": 0.00654015058216828
+    },
+    {
+      "id": "27d838a1-2739-45f7-a856-6202334fa76a",
+      "name": "Ensnaring Bridge",
+      "material": "A",
+      "referenceHash": "47d6d6302dc208a6e10336e931a0017977afbdacbdeaacb9fd105badf9b01dfb",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.0521528532414095,
+      "dy": -0.18485648843432045
+    },
+    {
+      "id": "0ed17325-6d2f-404e-b13f-d2d419d522b7",
+      "name": "Heartstone",
+      "material": "A",
+      "referenceHash": "126773e9bac4d432d2a11191ef215a4a364b8cd7449ba17ac003731253067faf",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.24438586537979745,
+      "dy": -0.18205512407871538
+    },
+    {
+      "id": "950660f9-b185-4979-a08b-cce4ec6ce07d",
+      "name": "Horn of Greed",
+      "material": "A",
+      "referenceHash": "dc4edb8c501d87b370f200b4ea2472a14bf5f4e257590b65752205d127b8c365",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.6955163133927726,
+      "dy": -0.31922400194838474
+    },
+    {
+      "id": "51e9afeb-4d27-441c-b379-3dfe974053b8",
+      "name": "Hornet Cannon",
+      "material": "A",
+      "referenceHash": "b98e16270bf6e352da76349171b4a8343f74b1b0bb5471c12ee84e4c274a83b8",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.35856536567547437,
+      "dy": -0.1782854419897717
+    },
+    {
+      "id": "1c675814-094c-45d4-93ee-0f50b4755e79",
+      "name": "Jinxed Ring",
+      "material": "A",
+      "referenceHash": "562b96e4ca3a6526609afb94ef73511cda9507942b5e67d5c4729db887e14a91",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.22706042887068634,
+      "dy": 0.050589308042674475
+    },
+    {
+      "id": "28028830-83ed-45e2-b495-3b9ad9d3e988",
+      "name": "Mox Diamond",
+      "material": "A",
+      "referenceHash": "9d6c599853c1c7e84c8379aa4576b365ea1baed1d3120b170a2a4f6ee8a1a9db",
+      "partition": "validation",
+      "reason": null,
+      "dx": -0.45340378932746717,
+      "dy": -0.3970816284250418
+    },
+    {
+      "id": "a4de4af2-fa75-4a87-b0e1-0117727917a5",
+      "name": "Portcullis",
+      "material": "A",
+      "referenceHash": "92cb4fdbe36eae60198dc4d90edba52b4296b547913b845c583605d40ee92049",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.3669951119927646,
+      "dy": -0.611935235223541
+    },
+    {
+      "id": "49b7a950-bf79-46fa-8b29-b7856b38e0fd",
+      "name": "Shifting Wall",
+      "material": "A",
+      "referenceHash": "0497ae66cd96c4c8e43904f25aab3e6bcc9fe877cbe23e5d2a80cbf67d88e0d6",
+      "partition": "validation",
+      "reason": null,
+      "dx": 0.20451279151563995,
+      "dy": -0.9317008699862868
+    },
+    {
+      "id": "401678d7-11dc-47ec-be28-4facdd949bc1",
+      "name": "Sword of the Chosen",
+      "material": "A",
+      "referenceHash": "b47ba63a81ac91898eb825c13aad734052c0ddcc460edc72f1281ea1743ad0b7",
+      "partition": "train",
+      "reason": null,
+      "dx": 0.056619103290131534,
+      "dy": 0.1848116173815697
+    },
+    {
+      "id": "23e9e60a-5718-460d-b031-b47d6f6715d1",
+      "name": "Volrath's Laboratory",
+      "material": "A",
+      "referenceHash": "891e375a10357ec4e92e1dd24f4fdfee9d23b856707161dc80ced10c48684117",
+      "partition": "train",
+      "reason": null,
+      "dx": -0.08243100124576586,
+      "dy": 0.14572830290688898
+    },
+    {
+      "id": "43bf015b-152e-4d67-b773-e75fb2487a32",
+      "name": "Volrath's Stronghold",
+      "material": "L",
+      "referenceHash": "26cc6cd8bd041659f5b5ff5320a7da44c2777a32250099b7d960bd86e212dc25",
+      "partition": "train",
+      "reason": "frame-template-unvalidated",
+      "dx": null,
+      "dy": null
+    }
+  ]
+}

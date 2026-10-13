@@ -1,3 +1,5 @@
+import { inverseScanMatrix } from './scan-transform.mjs';
+
 export const WIDTH = 488;
 export const HEIGHT = 680;
 
@@ -6,6 +8,7 @@ export function normalize(image, transform = {}) {
   const width = WIDTH,
     height = HEIGHT;
   const { tx = 0, ty = 0, scale = 1, rotation = 0 } = transform;
+  const matrix = inverseScanMatrix(transform);
   const factor = Math.min(width / image.width, height / image.height);
   const padX = (width - image.width * factor) / 2,
     padY = (height - image.height * factor) / 2;
@@ -16,8 +19,14 @@ export function normalize(image, transform = {}) {
     for (let x = 0; x < width; x++) {
       const dx = x - width / 2 - tx,
         dy = y - height / 2 - ty;
-      const sx = (cosine * dx + sine * dy + width / 2 - padX + 0.5) / factor - 0.5;
-      const sy = (-sine * dx + cosine * dy + height / 2 - padY + 0.5) / factor - 0.5;
+      const px = transform.matrix
+        ? matrix[0] * (x - width / 2) + matrix[2] * (y - height / 2) + matrix[4]
+        : cosine * dx + sine * dy;
+      const py = transform.matrix
+        ? matrix[1] * (x - width / 2) + matrix[3] * (y - height / 2) + matrix[5]
+        : -sine * dx + cosine * dy;
+      const sx = (px + width / 2 - padX + 0.5) / factor - 0.5;
+      const sy = (py + height / 2 - padY + 0.5) / factor - 0.5;
       const i = (y * width + x) * 4;
       if (sx < 0 || sy < 0 || sx > image.width - 1 || sy > image.height - 1) continue;
       const left = Math.floor(sx),

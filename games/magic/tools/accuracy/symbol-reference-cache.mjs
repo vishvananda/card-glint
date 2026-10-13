@@ -7,9 +7,12 @@ import { measureSymbolBounds } from './symbol-bounds.mjs';
 export const REFERENCE_BOUNDS_METHOD_HASH = hash(
   Buffer.concat(
     await Promise.all(
-      ['symbol-reference-cache.mjs', 'symbol-bounds.mjs', 'symbol-component-bounds.mjs'].map(
-        (file) => readFile(new URL(file, import.meta.url)),
-      ),
+      [
+        'symbol-reference-cache.mjs',
+        'symbol-bounds.mjs',
+        'symbol-component-bounds.mjs',
+        'scan-transform.mjs',
+      ].map((file) => readFile(new URL(file, import.meta.url))),
     ),
   ),
 );

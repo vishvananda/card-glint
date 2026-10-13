@@ -38,7 +38,8 @@ if (plan.scanRegistration) {
   assert.equal(scans.profileHash, plan.profileHash);
 }
 assert.equal(hash(JSON.stringify(profile)), plan.profileHash);
-assert.ok(profile.accepted && profile.set === set && profile.transform);
+assert.equal(profile.set, set);
+if (!scans) assert.ok(profile.accepted && profile.transform);
 assert.deepEqual(raw.rect, plan.scoreRegion);
 assert.equal(hash(JSON.stringify(before)), raw.baselineHash);
 assert.equal(hash(JSON.stringify(after)), raw.captureHash);

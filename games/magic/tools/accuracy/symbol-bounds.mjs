@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { median } from './metrics.mjs';
 import { symbolComponentBounds } from './symbol-component-bounds.mjs';
+import { scanMatrix, projectScanPoint } from './scan-transform.mjs';
 
 /** Shared offline measurement: inspect native pixels, sweep thresholds, keep
  * independent axes and flag uncertainty. Profiles are set/cohort choices,
@@ -37,7 +38,19 @@ export function measureSymbolBounds(image, profile) {
 
 /** Keep raw dimensions separate from a frozen shared scale/position model.
  * Extents stay along the symbol's axes, not a rotated rectangle's AABB. */
-export function fittedSymbolBounds(rect, { tx = 0, ty = 0, scale = 1, rotation = 0 } = {}) {
+export function fittedSymbolBounds(rect, transform = {}) {
+  const { tx = 0, ty = 0, scale = 1, rotation = 0 } = transform;
+  const matrix = scanMatrix(transform);
+  if (transform.matrix) {
+    const [x, y, width, height] = rect,
+      [centerX, centerY] = projectScanPoint(x + width / 2, y + height / 2, transform);
+    return {
+      width: width * Math.hypot(matrix[0], matrix[1]),
+      height: height * Math.hypot(matrix[2], matrix[3]),
+      centerX,
+      centerY,
+    };
+  }
   const [x, y, width, height] = rect,
     cx = x + width / 2 - 244,
     cy = y + height / 2 - 340,

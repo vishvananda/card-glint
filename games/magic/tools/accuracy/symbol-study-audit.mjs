@@ -136,7 +136,15 @@ for (const a of after.rows) {
       typeChanged = 0;
     const [sx, sy, sw, sh] = adoption.changeEnvelope;
     for (let p = 0; p < old.data.length; p += 4) {
-      if (old.data.subarray(p, p + 4).equals(current.data.subarray(p, p + 4))) continue;
+      // The full-set audit visits millions of unchanged pixels per printing.
+      // Compare channels directly instead of allocating two Buffer views each.
+      if (
+        old.data[p] === current.data[p] &&
+        old.data[p + 1] === current.data[p + 1] &&
+        old.data[p + 2] === current.data[p + 2] &&
+        old.data[p + 3] === current.data[p + 3]
+      )
+        continue;
       changed++;
       const x = (((p / 4) % old.width) * 488) / old.width,
         y = (Math.floor(p / 4 / old.width) * 680) / old.height;

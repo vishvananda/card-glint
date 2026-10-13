@@ -1,0 +1,2133 @@
+{
+  "schemaVersion": 1,
+  "method": "old-frame-shared-similarity-v1",
+  "set": "atq",
+  "printedFrame": "1993",
+  "border": "black",
+  "frameFamily": "fourth",
+  "anchor": "outer-stock",
+  "coordinateSystem": "488x680; references only; pAfter=center+scale*(pBefore-center)+(tx,ty), center=(244,340); pixels.normalize handles source resolution/letterboxing first",
+  "scope": {
+    "materials": ["W", "U", "G", "A"],
+    "layouts": ["normal"],
+    "frameFamily": "retro-fourth",
+    "excludes": [
+      "land assets not explicitly guarded",
+      "tokens",
+      "special layouts",
+      "other sets or stocks"
+    ]
+  },
+  "policy": "One shared translation and uniform scale fitted on frozen calibration cards to the retained painter outer printed plate, equally weighted by material. No text, art, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. ABU black stock uses normalized gradient profiles of the plate border to separate its narrow bevel from the adjacent cast shadow and faint bitmap edge. Other families use stock boundaries. Residual opposed boundaries remain a source-geometry diagnostic.",
+  "guards": {
+    "sources": [
+      {
+        "material": "W",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png",
+        "rect": [0.012, 0.01, 0.974, 0.982],
+        "sha256": "8052949d9fe2d28fe8ca40b381d5a1e2a1bbf0f2e6e3a7846363b8e6ef593bbe",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/borderBlack.png",
+        "maskSha256": "87e998c950c32297ca85f452b37b46ac78341d3acb5ea877adc54ad379b0b71e",
+        "renderedHash": "b4326f7162b308a0ee53c46b78714b70151047457fa0a0606dd7d05638719bb6",
+        "file": "atq-W.png"
+      },
+      {
+        "material": "U",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png",
+        "rect": [0.012, 0.01, 0.974, 0.982],
+        "sha256": "2972a77c490deacdf1e3c8e24b2a8ebb02edb66c3b39f3f5094caa83c3ecb74d",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/borderBlack.png",
+        "maskSha256": "87e998c950c32297ca85f452b37b46ac78341d3acb5ea877adc54ad379b0b71e",
+        "renderedHash": "0771b9ddfc0b10fb5ac68d600766e9d73f650079698ee34cadd160ddc99bac04",
+        "file": "atq-U.png"
+      },
+      {
+        "material": "G",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",
+        "rect": [0.012, 0.01, 0.974, 0.982],
+        "sha256": "65af2266e3af54c4f345fd52c39cecbc788070a69f2bae1bb81593d76aa664d6",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/borderBlack.png",
+        "maskSha256": "87e998c950c32297ca85f452b37b46ac78341d3acb5ea877adc54ad379b0b71e",
+        "renderedHash": "ce0dc4ab726d321b73c568779d7ca902b00d40f0e55359041ffe40d36f5d5904",
+        "file": "atq-G.png"
+      },
+      {
+        "material": "A",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",
+        "rect": [0.012, 0.01, 0.974, 0.982],
+        "sha256": "57adae1b5031a53f4b1078e7e6d0048e122ca43df419d65cf1b1950e03da7354",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/borderBlack.png",
+        "maskSha256": "87e998c950c32297ca85f452b37b46ac78341d3acb5ea877adc54ad379b0b71e",
+        "renderedHash": "6c588c2c53153839550410722b75c645bde09b45dd7206bcca47fe823d0fb7e5",
+        "file": "atq-A.png"
+      }
+    ],
+    "runtime": "Require set, stock, normal layout, family, exact pinned frame URL, frame rectangle and mask URL. Byte hashes document the cached sources and need not trigger another runtime download."
+  },
+  "provenance": {
+    "planHash": "4d187f5340a927df95cea753729336baf310b5ba79928a24713d482d0a3464f8",
+    "snapshotHash": "ea33a87e0f2a9da324bf86c9e4593b4ac2673d5c693fcc7bafe722d09e5c5054",
+    "methodHash": "005c33ee8e4fc6af8dfd162c1b1b20e45ab3583adc66b356bce2c89f9117354a",
+    "rendererStockHash": "287485e3658296e60f959f9b0d1055a8afc8dc0d546ed25418d629f860926214",
+    "targetsHash": "7d9dafbed91c084ccf0d80e75be414614c98d25f1f15592277144e0447bf2de9",
+    "referencesHash": "6edf902d82a3b722523166e1317379872f7f215dc5307603d362f6a993a5913c"
+  },
+  "status": "accepted",
+  "accepted": true,
+  "transform": {
+    "scale": 0.9849609338049619,
+    "tx": -0.49126164857809335,
+    "ty": -1.6977303991832626
+  },
+  "proposed": {
+    "scale": 0.9849609338049619,
+    "tx": -0.49126164857809335,
+    "ty": -1.6977303991832626
+  },
+  "flags": [],
+  "geometryFlags": ["remaining-opposed-stock-residual"],
+  "counts": {
+    "calibration": 12,
+    "validation": 10,
+    "materialCounts": {
+      "A": {
+        "calibration": 3,
+        "validation": 2
+      },
+      "G": {
+        "calibration": 3,
+        "validation": 2
+      },
+      "U": {
+        "calibration": 3,
+        "validation": 3
+      },
+      "W": {
+        "calibration": 3,
+        "validation": 3
+      }
+    }
+  },
+  "excluded": 14,
+  "calibration": {
+    "count": 12,
+    "beforeRms": 4.379634000403285,
+    "afterRms": 1.138845655215373,
+    "afterP90": 1.448395427920854,
+    "worstRegression": -2.7665547500765926,
+    "regressed": 0,
+    "residuals": {
+      "left": -1.0635312787562157,
+      "right": 1.1915558933853845,
+      "top": 0.8043989085650978,
+      "bottom": -0.9990227450249449
+    },
+    "scatter": {
+      "left": 0.22653824301849212,
+      "right": 0.2373532563373999,
+      "top": 0.5186163895206377,
+      "bottom": 0.5335143578593602
+    },
+    "rows": [
+      {
+        "id": "22ebd5a3-fef8-4097-b038-89a6cb38227d",
+        "material": "W",
+        "beforeRms": 4.306347555447012,
+        "afterRms": 1.069676028490159,
+        "before": {
+          "left": -3.8587068280803223,
+          "right": 4.931931972778216,
+          "top": -1.738353817835062,
+          "bottom": 5.651820211936183
+        },
+        "after": {
+          "left": -0.9667957616027074,
+          "right": 1.057466591880825,
+          "top": 1.3509937799530967,
+          "bottom": -0.8358907779351057
+        }
+      },
+      {
+        "id": "b3a5101a-ec66-4658-950c-9ad49c29b836",
+        "material": "W",
+        "beforeRms": 4.34756420132663,
+        "afterRms": 1.1470269828354804,
+        "before": {
+          "left": -4.034812800410492,
+          "right": 4.957927506835119,
+          "top": -1.635554466499066,
+          "bottom": 5.662990378620975
+        },
+        "after": {
+          "left": -1.1402532645576393,
+          "right": 1.0830711773802477,
+          "top": 1.4522471250395874,
+          "bottom": -0.8248886001265419
+        }
+      },
+      {
+        "id": "ce83a3cb-467d-44f6-a051-4855c8cf52a6",
+        "material": "W",
+        "beforeRms": 4.308955165596724,
+        "afterRms": 0.8804644681068658,
+        "before": {
+          "left": -3.957810427488191,
+          "right": 4.641473318761598,
+          "top": -2.9584330109448445,
+          "bottom": 5.32057465388209
+        },
+        "after": {
+          "left": -1.064408935418907,
+          "right": 0.7713761647888759,
+          "top": 0.14926343859171354,
+          "bottom": -1.1621547121147842
+        }
+      },
+      {
+        "id": "f32373dd-06d8-45d1-8777-3b1411bcb30a",
+        "material": "U",
+        "beforeRms": 4.589044437109624,
+        "afterRms": 1.054319789663759,
+        "before": {
+          "left": -3.956981521416701,
+          "right": 5.376708775965653,
+          "top": -2.254424241270044,
+          "bottom": 5.881172221680117
+        },
+        "after": {
+          "left": -1.0626536220935243,
+          "right": 1.5017964782230706,
+          "top": 0.8359596058887107,
+          "bottom": -0.6024176543538715
+        }
+      },
+      {
+        "id": "6eab6765-eba3-4844-81ca-ae37a6e903df",
+        "material": "U",
+        "beforeRms": 4.064982845853246,
+        "afterRms": 1.0946590717907527,
+        "before": {
+          "left": -3.7596326602324623,
+          "right": 4.791567104079263,
+          "top": -2.2919345065155596,
+          "bottom": 4.873338210445354
+        },
+        "after": {
+          "left": -0.8682727034961211,
+          "right": 0.9254547906736548,
+          "top": 0.7990134600051917,
+          "bottom": -1.5950947831801159
+        }
+      },
+      {
+        "id": "b4ff60ce-073c-46b8-807c-8b40467b960c",
+        "material": "U",
+        "beforeRms": 4.721567193671332,
+        "afterRms": 1.0658751393685362,
+        "before": {
+          "left": -4.250838769511965,
+          "right": 5.273521764799682,
+          "top": -2.280999151873445,
+          "bottom": 6.171723250305718
+        },
+        "after": {
+          "left": -1.35209153158279,
+          "right": 1.4001613033484546,
+          "top": 0.8097843571250039,
+          "bottom": -0.31623624188080157
+        }
+      },
+      {
+        "id": "f8a130dc-3b1f-4fae-8459-b26bb5647fec",
+        "material": "G",
+        "beforeRms": 4.403634164555268,
+        "afterRms": 1.2472776591432067,
+        "before": {
+          "left": -4.351691582609426,
+          "right": 5.138691724390924,
+          "top": -2.857756840032412,
+          "bottom": 4.904878081637094
+        },
+        "after": {
+          "left": -1.4572957757909926,
+          "right": 1.2603273941313091,
+          "top": 0.252505607831889,
+          "bottom": -1.5642605395100873
+        }
+      },
+      {
+        "id": "ae1d7b09-3a1f-410f-b330-04ae768b0455",
+        "material": "G",
+        "beforeRms": 4.226740132834127,
+        "afterRms": 1.4601853827575346,
+        "before": {
+          "left": -4.66350759453762,
+          "right": 4.892852672387107,
+          "top": -2.199448607225314,
+          "bottom": 4.57552664381069
+        },
+        "after": {
+          "left": -1.7644223660751202,
+          "right": 1.018185531903896,
+          "top": 0.9009134995490591,
+          "bottom": -1.8886588392615522
+        }
+      },
+      {
+        "id": "39d763bd-b0a9-46ba-bcd2-9304063446f2",
+        "material": "G",
+        "beforeRms": 4.385852665930665,
+        "afterRms": 1.3422858343907267,
+        "before": {
+          "left": -4.56654203708813,
+          "right": 4.999048621023803,
+          "top": -3.016146854508655,
+          "bottom": 4.690616088446063
+        },
+        "after": {
+          "left": -1.6689150800627708,
+          "right": 1.1227843926394598,
+          "top": 0.09649763126799016,
+          "bottom": -1.775300232402401
+        }
+      },
+      {
+        "id": "2aa5b289-36ba-49b1-a5ac-f23bf71f8241",
+        "material": "A",
+        "beforeRms": 4.373415334875904,
+        "afterRms": 1.57153716729606,
+        "before": {
+          "left": -3.716819008264178,
+          "right": 6.008790493584399,
+          "top": -2.8024799177610724,
+          "bottom": 4.3281458316319
+        },
+        "after": {
+          "left": -0.8170610155256988,
+          "right": 2.1328576903360954,
+          "top": 0.3078751658322574,
+          "bottom": -2.137161323980422
+        }
+      },
+      {
+        "id": "856be1dd-a20b-49c2-be9d-7db76c7efd8b",
+        "material": "A",
+        "beforeRms": 4.666592266830323,
+        "afterRms": 1.2371892259474468,
+        "before": {
+          "left": -3.7572917204864282,
+          "right": 5.814999492386221,
+          "top": -1.9467044714087827,
+          "bottom": 5.948715413521768
+        },
+        "after": {
+          "left": -0.8569250559497483,
+          "right": 1.941981124832921,
+          "top": 1.1507805485988172,
+          "bottom": -0.5409635953061525
+        }
+      },
+      {
+        "id": "a64d4f93-0c04-4078-aec0-7e9de92f260f",
+        "material": "A",
+        "beforeRms": 4.786252660201061,
+        "afterRms": 1.1306643275952653,
+        "before": {
+          "left": -3.390768454073637,
+          "right": 6.009224305647479,
+          "top": -2.847339863023027,
+          "bottom": 5.993114912033775
+        },
+        "after": {
+          "left": -0.49591395720256415,
+          "right": 2.133284978270808,
+          "top": 0.26368987225666274,
+          "bottom": -0.4972318237913669
+        }
+      }
+    ]
+  },
+  "validation": {
+    "count": 10,
+    "beforeRms": 4.462425708813393,
+    "afterRms": 1.1764270539827617,
+    "afterP90": 1.501480056357062,
+    "worstRegression": -2.7790383929662554,
+    "regressed": 0,
+    "residuals": {
+      "left": -1.2792936692893164,
+      "right": 1.2193601840327801,
+      "top": 0.8257607893654537,
+      "bottom": -0.6936100494277753
+    },
+    "scatter": {
+      "left": 0.28872070320717214,
+      "right": 0.19308316420026017,
+      "top": 0.5574250799180955,
+      "bottom": 0.2901041620849014
+    },
+    "rows": [
+      {
+        "id": "da7ed8ba-3886-4779-a9b3-6892a7ed3527",
+        "material": "W",
+        "beforeRms": 4.438978078075603,
+        "afterRms": 1.235958297791591,
+        "before": {
+          "left": -4.417932966341549,
+          "right": 4.889894085153685,
+          "top": -1.6054059349536018,
+          "bottom": 5.7281394392464335
+        },
+        "after": {
+          "left": -1.5176116609526211,
+          "right": 1.0160609148309732,
+          "top": 1.4819422508234474,
+          "bottom": -0.7607193205363956
+        }
+      },
+      {
+        "id": "5f604338-5ee4-4c47-ad5a-5c805c96c8de",
+        "material": "W",
+        "beforeRms": 4.420970991143295,
+        "afterRms": 1.2411772224278224,
+        "before": {
+          "left": -4.472311463547616,
+          "right": 4.891245719730421,
+          "top": -1.7258914253347477,
+          "bottom": 5.592439743825366
+        },
+        "after": {
+          "left": -1.5711723563395985,
+          "right": 1.0173922220858458,
+          "top": 1.363268749707725,
+          "bottom": -0.8943782192553726
+        }
+      },
+      {
+        "id": "bde037b9-4947-4ff7-8ea4-e9f1a7e4ab88",
+        "material": "W",
+        "beforeRms": 4.408626087732088,
+        "afterRms": 0.7299248752975735,
+        "before": {
+          "left": -3.75090877073751,
+          "right": 4.715870551884052,
+          "top": -3.0528569913843207,
+          "bottom": 5.667031713989331
+        },
+        "after": {
+          "left": -0.8606188863799495,
+          "right": 0.8446545329976516,
+          "top": 0.05625950664447643,
+          "bottom": -0.8209080426682931
+        }
+      },
+      {
+        "id": "4be2aa3b-207b-4d21-abfb-6788520c7676",
+        "material": "U",
+        "beforeRms": 4.753825232714411,
+        "afterRms": 1.0963618126793742,
+        "before": {
+          "left": -4.36176346968125,
+          "right": 5.269371565348706,
+          "top": -2.293579188604987,
+          "bottom": 6.192225336598767
+        },
+        "after": {
+          "left": -1.4613480278435595,
+          "right": 1.3960735190217406,
+          "top": 0.797393512398564,
+          "bottom": -0.29604248782072773
+        }
+      },
+      {
+        "id": "bd1f624b-e8f2-462f-838a-7cb9e8fda988",
+        "material": "U",
+        "beforeRms": 4.616752466452083,
+        "afterRms": 0.9499308575454087,
+        "before": {
+          "left": -3.887006490120804,
+          "right": 5.209663053150791,
+          "top": -2.2359783721801705,
+          "bottom": 6.165111960337981
+        },
+        "after": {
+          "left": -0.9937309499252542,
+          "right": 1.337262967091192,
+          "top": 0.8541280663323434,
+          "bottom": -0.3227481042210911
+        }
+      },
+      {
+        "id": "1aa2d27b-cc25-4baa-86f4-4db45b30e2a4",
+        "material": "U",
+        "beforeRms": 4.713876990772015,
+        "afterRms": 1.0415100845130651,
+        "before": {
+          "left": -4.200960527347004,
+          "right": 5.269438960581795,
+          "top": -2.3225121393933534,
+          "bottom": 6.170366778990115
+        },
+        "after": {
+          "left": -1.302963411603418,
+          "right": 1.3961399006934698,
+          "top": 0.7688956861723497,
+          "bottom": -0.3175723131345194
+        }
+      },
+      {
+        "id": "5712e87a-2381-4f5b-a853-6973841f9bf1",
+        "material": "G",
+        "beforeRms": 4.4858733395511825,
+        "afterRms": 1.1511049885190352,
+        "before": {
+          "left": -4.146940468230994,
+          "right": 4.977395994068672,
+          "top": -1.5824883521953979,
+          "bottom": 6.001365091404409
+        },
+        "after": {
+          "left": -1.2556239269752147,
+          "right": 1.1014574009743683,
+          "top": 1.5085952484639016,
+          "bottom": -0.48426367046465657
+        }
+      },
+      {
+        "id": "8db8882e-4db6-4e3c-9e9e-8c71d557a071",
+        "material": "G",
+        "beforeRms": 4.268782782845438,
+        "afterRms": 1.4897443898791827,
+        "before": {
+          "left": -4.750047468167267,
+          "right": 4.910088163758019,
+          "top": -1.8776997635584216,
+          "bottom": 4.763649090842478
+        },
+        "after": {
+          "left": -1.849660760816743,
+          "right": 1.0351618175791941,
+          "top": 1.2178235410578928,
+          "bottom": -1.7033655781634707
+        }
+      },
+      {
+        "id": "cdcccb0f-ce96-453b-9e82-41d87f52e58b",
+        "material": "A",
+        "beforeRms": 4.414334565582608,
+        "afterRms": 1.6071010546579758,
+        "before": {
+          "left": -3.5681463141776284,
+          "right": 6.179329686556912,
+          "top": -2.866016469514836,
+          "bottom": 4.3376911749819556
+        },
+        "after": {
+          "left": -0.670624219926939,
+          "right": 2.3008321330966055,
+          "top": 0.2452941444861665,
+          "bottom": -2.1277595336807735
+        }
+      },
+      {
+        "id": "23eb19f9-2e8f-4bf0-9bf8-868e6da70e2d",
+        "material": "A",
+        "beforeRms": 4.800444606445114,
+        "afterRms": 1.2017491194464884,
+        "before": {
+          "left": -3.5301233480102674,
+          "right": 6.095726344834361,
+          "top": -2.8628443179317955,
+          "bottom": 5.861872189514429
+        },
+        "after": {
+          "left": -0.6331730836646763,
+          "right": 2.218486107564331,
+          "top": 0.24841858987153387,
+          "bottom": -0.626500778319155
+        }
+      }
+    ]
+  },
+  "uncertainMaterials": ["B", "R"],
+  "unvalidatedSources": [
+    {
+      "material": "B",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/b.png",
+      "rect": [0.012, 0.01, 0.974, 0.982],
+      "sha256": "5e980df74dc12b8fd57bbd6c12c4e0bba3c45c17971470aaac9fd78e9a0ab151",
+      "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/borderBlack.png",
+      "maskSha256": "87e998c950c32297ca85f452b37b46ac78341d3acb5ea877adc54ad379b0b71e",
+      "renderedHash": "36bb5fa9a84ad0d72ca67d14205f8f525ea337416f50979c94de9659220f159e",
+      "file": "atq-B.png"
+    },
+    {
+      "material": "R",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",
+      "rect": [0.012, 0.01, 0.974, 0.982],
+      "sha256": "124696583c40fa9076e8febccdd3466c929dbde53ecb8079662297d348df008d",
+      "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/borderBlack.png",
+      "maskSha256": "87e998c950c32297ca85f452b37b46ac78341d3acb5ea877adc54ad379b0b71e",
+      "renderedHash": "ae06eebed029a547653d355c634f0cb2c6dc3b3915314c0791637b1742b58630",
+      "file": "atq-R.png"
+    }
+  ],
+  "targets": {
+    "W": {
+      "sides": {
+        "left": {
+          "position": 22.899745202395927,
+          "count": 3,
+          "spread": 0.04913676068879269,
+          "reliable": true
+        },
+        "right": {
+          "position": 464.0290920990208,
+          "count": 3,
+          "spread": 0.09323545045083392,
+          "reliable": true
+        },
+        "top": {
+          "position": 23.428830148680998,
+          "count": 3,
+          "spread": 0.45025861289703073,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 652.8507070439429,
+          "count": 3,
+          "spread": 0.05162251737772294,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 441.12934689662484,
+      "height": 629.4218768952619
+    },
+    "U": {
+      "sides": {
+        "left": {
+          "position": 22.83731624470579,
+          "count": 3,
+          "spread": 0.4982565678719624,
+          "reliable": true
+        },
+        "right": {
+          "position": 463.61403235667973,
+          "count": 3,
+          "spread": 0.4224699552166271,
+          "reliable": true
+        },
+        "top": {
+          "position": 23.875996734797553,
+          "count": 3,
+          "spread": 0.4733077929874696,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 652.3473277918218,
+          "count": 3,
+          "spread": 1.2048275600981242,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.77671611197394,
+      "height": 628.4713310570243
+    },
+    "B": {
+      "sides": {
+        "left": {
+          "position": 21.598278874851623,
+          "count": 3,
+          "spread": 0.2473318302943639,
+          "reliable": true
+        },
+        "right": {
+          "position": 464.21345558630884,
+          "count": 3,
+          "spread": 0.018670802460917457,
+          "reliable": true
+        },
+        "top": {
+          "position": 23.658882718751954,
+          "count": 3,
+          "spread": 0.10471011406153252,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.4541036591659,
+          "count": 3,
+          "spread": 0.04454657766643777,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 442.6151767114572,
+      "height": 629.7952209404139
+    },
+    "R": {
+      "sides": {
+        "left": {
+          "position": 23.270442482722803,
+          "count": 3,
+          "spread": 0.06429833125898199,
+          "reliable": true
+        },
+        "right": {
+          "position": 464.1060377227181,
+          "count": 3,
+          "spread": 0.019903093851326048,
+          "reliable": true
+        },
+        "top": {
+          "position": 23.04296492939409,
+          "count": 3,
+          "spread": 0.007791038403262007,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 652.4935580944898,
+          "count": 3,
+          "spread": 0.12113902708154001,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.8355952399953,
+      "height": 629.4505931650957
+    },
+    "G": {
+      "sides": {
+        "left": {
+          "position": 23.227510899532,
+          "count": 3,
+          "spread": 0.142798956174083,
+          "reliable": true
+        },
+        "right": {
+          "position": 464.0815870984412,
+          "count": 3,
+          "spread": 0.017872293399307182,
+          "reliable": true
+        },
+        "top": {
+          "position": 23.157531793223395,
+          "count": 3,
+          "spread": 0.08917333909985103,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 652.3627075573023,
+          "count": 3,
+          "spread": 0.1714464209393327,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.85407619890924,
+      "height": 629.205175764079
+    },
+    "A": {
+      "sides": {
+        "left": {
+          "position": 22.23608786849657,
+          "count": 3,
+          "spread": 0.013519331570741144,
+          "reliable": true
+        },
+        "right": {
+          "position": 463.0498076118596,
+          "count": 3,
+          "spread": 0.03637801208839164,
+          "reliable": true
+        },
+        "top": {
+          "position": 23.096095198012556,
+          "count": 3,
+          "spread": 0.1063717500160628,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 652.6846722914776,
+          "count": 3,
+          "spread": 0.035976239271349186,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.81371974336304,
+      "height": 629.588577093465
+    }
+  },
+  "referenceRows": [
+    {
+      "id": "22ebd5a3-fef8-4097-b038-89a6cb38227d",
+      "name": "Circle of Protection: Artifacts",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e7e8111dd2e9d55a1c540c955618ed74a35d6938c4232fc4c376bc65b2223ca3",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.041038374315605,
+            "count": 3,
+            "spread": 0.027178330333651246,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.961024071799,
+            "count": 3,
+            "spread": 0.11828924729150003,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.690476330845936,
+            "count": 3,
+            "spread": 0.060387377558328126,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.502527255879,
+            "count": 3,
+            "spread": 1.1503929539823048,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.9199856974834,
+        "height": 636.8120509250331
+      }
+    },
+    {
+      "id": "b3a5101a-ec66-4658-950c-9ad49c29b836",
+      "name": "Artifact Ward",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "187f7357f8b6c65dee1e765f01b0fbc37c808fcde2cf9be005f742ab8e1afdcc",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.864932401985435,
+            "count": 3,
+            "spread": 0.049421688098025385,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9870196058559,
+            "count": 3,
+            "spread": 0.09532037927351666,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.793275682181932,
+            "count": 3,
+            "spread": 0.03961775974412518,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5136974225638,
+            "count": 3,
+            "spread": 0.19563115916059814,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.1220872038705,
+        "height": 636.7204217403819
+      }
+    },
+    {
+      "id": "ce83a3cb-467d-44f6-a051-4855c8cf52a6",
+      "name": "Argivian Archaeologist",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e379b244a2982e31bbc9c187553a9d3df0ffd472f6836398c9c44fd08e9454c7",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.941934774907736,
+            "count": 3,
+            "spread": 0.046118511338459456,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.67056541778237,
+            "count": 3,
+            "spread": 0.12483271736584811,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.470397137736153,
+            "count": 3,
+            "spread": 1.094123450983286,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.171281697825,
+            "count": 3,
+            "spread": 0.05549741224308491,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.72863064287463,
+        "height": 637.7008845600888
+      }
+    },
+    {
+      "id": "da7ed8ba-3886-4779-a9b3-6892a7ed3527",
+      "name": "Reverse Polarity",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "07ccd063b62365b40128f05ac7ffa1f7003f2ae9e5c02ee13ee33ca46af53fbe",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.481812236054378,
+            "count": 3,
+            "spread": 0.14166281983571594,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.91898618417446,
+            "count": 3,
+            "spread": 0.021063166664532673,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.823424213727396,
+            "count": 3,
+            "spread": 0.019306244871401645,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5788464831893,
+            "count": 3,
+            "spread": 0.014517770221118553,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.43717394812006,
+        "height": 636.7554222694619
+      }
+    },
+    {
+      "id": "5f604338-5ee4-4c47-ad5a-5c805c96c8de",
+      "name": "Argivian Blacksmith",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "d726f46d29a911282c5b4d8188a447948390fc376a86622f15d4e8e47ce0f5a9",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.42743373884831,
+            "count": 3,
+            "spread": 0.018877914095526194,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9203378187512,
+            "count": 3,
+            "spread": 0.03982238941523519,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.70293872334625,
+            "count": 3,
+            "spread": 0.023978449072451724,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.4431467877682,
+            "count": 3,
+            "spread": 0.1293753376631912,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.49290407990287,
+        "height": 636.740208064422
+      }
+    },
+    {
+      "id": "bde037b9-4947-4ff7-8ea4-e9f1a7e4ab88",
+      "name": "Martyrs of Korlis",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "d5f691ec17a16b7e5cfd9a03f5bf1d8a381615d410a900422927c17d2e4e68a1",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.148836431658417,
+            "count": 3,
+            "spread": 0.13573267030589875,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.7449626509048,
+            "count": 3,
+            "spread": 0.0636624259239511,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.375973157296677,
+            "count": 3,
+            "spread": 0.037652415548294016,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5177387579322,
+            "count": 3,
+            "spread": 0.009418027865876866,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.5961262192464,
+        "height": 638.1417656006355
+      }
+    },
+    {
+      "id": "f32373dd-06d8-45d1-8777-3b1411bcb30a",
+      "name": "Hurkyl's Recall",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "b9772f8d17541c29fb77c92146231abe79d6aac0db05cea384385cbef6045243",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.88033472328909,
+            "count": 3,
+            "spread": 0.08604803270922545,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9907411326454,
+            "count": 3,
+            "spread": 0.0698032210917745,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.62157249352751,
+            "count": 3,
+            "spread": 0.034553784726206516,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.228500013502,
+            "count": 3,
+            "spread": 0.5046769321556894,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.1104064093563,
+        "height": 636.6069275199744
+      }
+    },
+    {
+      "id": "6eab6765-eba3-4844-81ca-ae37a6e903df",
+      "name": "Transmute Artifact",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "89d6a5ba0384550a3356e3ab4b1b39ded214aff10f7b40f848ae0cf99ddc5c43",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.077683584473327,
+            "count": 3,
+            "spread": 0.06659445788319829,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.405599460759,
+            "count": 3,
+            "spread": 0.2632494620817738,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.584062228281994,
+            "count": 3,
+            "spread": 0.04226080875685767,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.2206660022672,
+            "count": 3,
+            "spread": 0.04659606244558745,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.32791587628566,
+        "height": 635.6366037739851
+      }
+    },
+    {
+      "id": "b4ff60ce-073c-46b8-807c-8b40467b960c",
+      "name": "Sage of Lat-Nam",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "e1db9b3623d2c69b711b6133d554b346c2db9ef4898a82fb38cdcb4789e6798f",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.586477475193824,
+            "count": 3,
+            "spread": 0.2868282650083245,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8875541214794,
+            "count": 3,
+            "spread": 0.07894255552599816,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.59499758292411,
+            "count": 3,
+            "spread": 0.011635914053091057,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5190510421276,
+            "count": 3,
+            "spread": 0.04306225427876598,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.3010766462856,
+        "height": 636.9240534592035
+      }
+    },
+    {
+      "id": "4be2aa3b-207b-4d21-abfb-6788520c7676",
+      "name": "Drafna's Restoration",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "d1a233a416d765bdf0df7296ac3fd5e8c1409a14ff5f6f6b18f93db9eba16851",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.47555277502454,
+            "count": 3,
+            "spread": 0.3789721886947035,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.88340392202844,
+            "count": 3,
+            "spread": 0.10590285545617917,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.582417546192566,
+            "count": 3,
+            "spread": 0.028812492089617336,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5395531284206,
+            "count": 3,
+            "spread": 0.02179797517442239,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.4078511470039,
+        "height": 636.957135582228
+      }
+    },
+    {
+      "id": "bd1f624b-e8f2-462f-838a-7cb9e8fda988",
+      "name": "Energy Flux",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "290b126680a31f4158db7bef314f0005f238e5eb9986a8ac62f666633e95189a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.950309754584985,
+            "count": 3,
+            "spread": 0.04883539720747976,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8236954098305,
+            "count": 3,
+            "spread": 0.01670651612215579,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.640018362617383,
+            "count": 3,
+            "spread": 0.018847216512547504,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5124397521598,
+            "count": 3,
+            "spread": 0.2962163356975225,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.87338565524556,
+        "height": 636.8724213895424
+      }
+    },
+    {
+      "id": "1aa2d27b-cc25-4baa-86f4-4db45b30e2a4",
+      "name": "Reconstruction",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "facb22db33d5a49fd5db8b20802643da079e6d87f3baa3ec9effd82dcb182960",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.636355717358786,
+            "count": 3,
+            "spread": 0.16817650967575304,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8834713172615,
+            "count": 3,
+            "spread": 0.05124519950470585,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.5534845954042,
+            "count": 3,
+            "spread": 0.055194843980924446,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.517694570812,
+            "count": 3,
+            "spread": 0.23380012478583012,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.2471155999027,
+        "height": 636.9642099754078
+      }
+    },
+    {
+      "id": "21a985a9-5612-4844-982e-fd1aa6249770",
+      "name": "Phyrexian Gremlins",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "c36e4329c0902c86c0be739009dc70f783e20d7ff9303c8ab7cf00459ee6dff4",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.259821322110316,
+            "count": 3,
+            "spread": 0.202836584610111,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9536753478871,
+            "count": 3,
+            "spread": 0.08111922846728703,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.173999754851327,
+            "count": 3,
+            "spread": 0.07946318091228122,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.6080781381461,
+            "count": 3,
+            "spread": 1.8283716498714284,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "1f372950-6693-4838-80ef-8fd9aa3e0349",
+      "name": "Gate to Phyrexia",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "f83229e4ecfdf4279524e4e3606a4715241662eeca8d64af104d9775a9c879ef",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 20.816795920373973,
+            "count": 3,
+            "spread": 0.1042126837222348,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0570790532868,
+            "count": 3,
+            "spread": 0.09211539933988888,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.024485767735467,
+            "count": 3,
+            "spread": 0.017384604327460806,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.0927876265552,
+            "count": 3,
+            "spread": 1.8165951176645194,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "04bbd231-0d5f-4cbf-92a7-10d2c5c4b82c",
+      "name": "Yawgmoth Demon",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "9dd15bf42a93454353879a2f8ab43ec32fe2ab26fd28a9868f678480116d8a49",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.441335452273037,
+            "count": 3,
+            "spread": 0.3908316639396965,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9682153559297,
+            "count": 3,
+            "spread": 0.021502566820856828,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.02684500856843,
+            "count": 3,
+            "spread": 0.034690710102896816,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.9009997811784,
+            "count": 3,
+            "spread": 3.5934148528425567,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "5149ffff-d38f-458e-bcfa-a4b6b332a0b4",
+      "name": "Xenic Poltergeist",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "ba68e3eda4c73789a90b39a0537c3cf32ffa1c849795197bb25412c31aeafd8a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.17132958363773,
+            "count": 3,
+            "spread": 0.0788272807485697,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.515220297219,
+            "count": 3,
+            "spread": 0.04010210828539584,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.824574536742425,
+            "count": 3,
+            "spread": 0.10881266914860532,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.8059469255757,
+            "count": 3,
+            "spread": 2.695546104226196,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "587d6ac8-fad8-49e0-862e-636e06628ff9",
+      "name": "Artifact Possession",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "1b40bebd41ea9c324a66a55c1ddb7e137ad93904e20a899c900ab68e108268f9",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 20.855977398510294,
+            "count": 3,
+            "spread": 0.38872053126663175,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.95455296001796,
+            "count": 3,
+            "spread": 0.07561860394383757,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.180280414886024,
+            "count": 3,
+            "spread": 0.042095310137195696,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.109407196452,
+            "count": 3,
+            "spread": 3.5835460555321106,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "a2f6ef2f-a3a2-4e1f-b7eb-59abc8414114",
+      "name": "Haunting Wind",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "52b1a1527098ff99e332db2faf00b3fff0c6e956f4f9b8a73fd01173117de6b5",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 21.05372669798915,
+            "count": 3,
+            "spread": 1.7392210844714064,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.25679539073803,
+            "count": 3,
+            "spread": 0.10787623437403226,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.107237090266647,
+            "count": 3,
+            "spread": 0.03391412181172271,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.7613030768058,
+            "count": 3,
+            "spread": 2.0497139884076887,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "5e34fc6b-5f00-4a22-9ee2-afc1caf99961",
+      "name": "Orcish Mechanics",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "60f309f9bbfeee404a9b109497c9ef88d3e1153978bf4abc1cb388f949fb4491",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.39831328513211,
+            "count": 3,
+            "spread": 1.5785343754696513,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.01581384289676,
+            "count": 3,
+            "spread": 0.1829311790537531,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.558621712489145,
+            "count": 3,
+            "spread": 0.1475120955349034,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.3908730011154,
+            "count": 3,
+            "spread": 0.22468826093790994,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "1506d99d-7b2e-4101-84a5-c950dadb263a",
+      "name": "Artifact Blast",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "893b090a63bfc08a8c11b7571d2ee5d1a159e04ab494e143b0a18ffb8af66b8b",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.311360565576727,
+            "count": 3,
+            "spread": 0.04509408247475477,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9106887321935,
+            "count": 3,
+            "spread": 0.0476800644295281,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.226810666382637,
+            "count": 3,
+            "spread": 0.0395669547536599,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.4137858736032,
+            "count": 3,
+            "spread": 0.670220158733855,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.5993281666168,
+        "height": 636.1869752072205
+      }
+    },
+    {
+      "id": "ffd7eb90-ae95-49df-898a-9510187bce1c",
+      "name": "Detonate",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "2113215f2a51b8debc288044f7120169b981e52eb9235326c5dd3eef7d520afe",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 20.8685620428609,
+            "count": 3,
+            "spread": 2.421488729014513,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.08798068657916,
+            "count": 3,
+            "spread": 0.04974084375072607,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.931799259330553,
+            "count": 3,
+            "spread": 0.09606461408524325,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.4029007955719,
+            "count": 3,
+            "spread": 0.31399238874996627,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "6669d96e-9a7b-4427-a477-f4e76831f593",
+      "name": "Goblin Artisans",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "594d3333231c2d63061da47e7788ab0f41eaa01204b0ea67f5fbc44a11938760",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.419655164316918,
+            "count": 3,
+            "spread": 0.04780444151347396,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.1561673217107,
+            "count": 3,
+            "spread": 0.06844842488220593,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.303334092644235,
+            "count": 3,
+            "spread": 0.15124854739358184,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.4399225213517,
+            "count": 3,
+            "spread": 0.07423011151661285,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.7365121573938,
+        "height": 636.1365884287075
+      }
+    },
+    {
+      "id": "0987461a-45c0-4956-8627-cd27a7e038d0",
+      "name": "Shatterstorm",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "8513aabea9a766a542985505212adde1a6e5c2f62bd40a299d350ee9136c7dfd",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.95223650238918,
+            "count": 3,
+            "spread": 0.48734885911763115,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9098729085104,
+            "count": 3,
+            "spread": 0.04010520553833885,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.36678171773184,
+            "count": 3,
+            "spread": 0.038179342476478695,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.7804148046553,
+            "count": 3,
+            "spread": 0.11418485903084274,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.95763640612125,
+        "height": 636.4136330869235
+      }
+    },
+    {
+      "id": "2249fc40-4412-48fd-800a-7ea3678aee3f",
+      "name": "Atog",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "e123bf996d9986a1dec904a1167eb2bcb74451ce961dc5f9a4f17cfabf8ba833",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.17826204460849,
+            "count": 3,
+            "spread": 0.056901612132683965,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.1760182153957,
+            "count": 3,
+            "spread": 0.009738744250228137,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.163703057561882,
+            "count": 3,
+            "spread": 0.12179863848479755,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.0344177926762,
+            "count": 3,
+            "spread": 2.0083539024526544,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "f8a130dc-3b1f-4fae-8459-b26bb5647fec",
+      "name": "Citanul Druid",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "247f421d4e000535a1870ea29fad3e49eb8c9d2291232cf5e929538f3c21894d",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.875819316922573,
+            "count": 3,
+            "spread": 0.3985934378358351,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.22027882283214,
+            "count": 3,
+            "spread": 0.09399059302364776,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.299774953190983,
+            "count": 3,
+            "spread": 0.034047663369417336,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.2675856389394,
+            "count": 3,
+            "spread": 1.3578058388454792,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.3444595059096,
+        "height": 636.9678106857484
+      }
+    },
+    {
+      "id": "ae1d7b09-3a1f-410f-b330-04ae768b0455",
+      "name": "Powerleech",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "1f9ed9442741ca759acc74f469a602021aebb06eb7aad95fd370b1b7965dc681",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.56400330499438,
+            "count": 3,
+            "spread": 0.09139889954792224,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9744397708283,
+            "count": 3,
+            "spread": 0.08681655501476371,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.95808318599808,
+            "count": 3,
+            "spread": 0.10640741650669128,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.938234201113,
+            "count": 3,
+            "spread": 1.1430084317818228,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.4104364658339,
+        "height": 635.9801510151149
+      }
+    },
+    {
+      "id": "39d763bd-b0a9-46ba-bcd2-9304063446f2",
+      "name": "Gaea's Avenger",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "dcaa7312317ebf91b5529f3988e6964a8e368b3487ae89a5d5e0d6b6c756c747",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.66096886244387,
+            "count": 3,
+            "spread": 0.2051559650534358,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.080635719465,
+            "count": 3,
+            "spread": 0.012681226007543955,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.14138493871474,
+            "count": 3,
+            "spread": 0.08671706519981726,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.0533236457484,
+            "count": 3,
+            "spread": 0.731719096880056,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.4196668570211,
+        "height": 636.9119387070336
+      }
+    },
+    {
+      "id": "5712e87a-2381-4f5b-a853-6973841f9bf1",
+      "name": "Argothian Pixies",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "5762fc3343ea8245b7e52e27f80b3ed5f9acd3928364db7c0e34a76d000ea4dd",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.080570431301005,
+            "count": 3,
+            "spread": 0.20513158360943606,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0589830925099,
+            "count": 3,
+            "spread": 0.05076355613340411,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.575043441027997,
+            "count": 3,
+            "spread": 0.03790481014578262,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.3640726487067,
+            "count": 3,
+            "spread": 0.3316151247821608,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.9784126612089,
+        "height": 636.7890292076787
+      }
+    },
+    {
+      "id": "d2101f86-8d3c-4ba8-ac42-bd3df0644280",
+      "name": "Crumble",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "b08a1a1e486876efc69be9c908890c408c5566e585c26a8f7ff488baf3a83fa6",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.102235951818717,
+            "count": 3,
+            "spread": 0.23532525157320805,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.085455978712,
+            "count": 3,
+            "spread": 0.12834388383021178,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.51925032556154,
+            "count": 3,
+            "spread": 0.10253787470012554,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.4676279151266,
+            "count": 3,
+            "spread": 2.507590910522026,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "8db8882e-4db6-4e3c-9e9e-8c71d557a071",
+      "name": "Argothian Treefolk",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "993413122d41968348a7f37e98cd9dede577977b6a3e6e44e7d998249347d5fb",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.477463431364733,
+            "count": 3,
+            "spread": 0.1690974825265208,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.99167526219924,
+            "count": 3,
+            "spread": 0.04791495225288145,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.279832029664973,
+            "count": 3,
+            "spread": 0.28364577902592814,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.1263566481448,
+            "count": 3,
+            "spread": 1.4788080052634314,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5142118308345,
+        "height": 635.8465246184799
+      }
+    },
+    {
+      "id": "2aa5b289-36ba-49b1-a5ac-f23bf71f8241",
+      "name": "Ashnod's Transmogrant",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "b1afda7775ea1ff6a1279f3012d3edddf8580d9068ff44710a29bb9f7e988b91",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.51926886023239,
+            "count": 3,
+            "spread": 0.12690899373922804,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.058598105444,
+            "count": 3,
+            "spread": 0.13326786323858641,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.293615280251483,
+            "count": 3,
+            "spread": 0.16046442460146437,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.0128181231095,
+            "count": 3,
+            "spread": 0.02599758088240378,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5393292452116,
+        "height": 636.719202842858
+      }
+    },
+    {
+      "id": "856be1dd-a20b-49c2-be9d-7db76c7efd8b",
+      "name": "Golgothian Sylex",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "ba7c2d954f31cde121488383e1eaa61064fb0794ea148136dd3955cb09293d87",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.47879614801014,
+            "count": 3,
+            "spread": 0.24524131547448746,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8648071042458,
+            "count": 3,
+            "spread": 0.07522088527440474,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.149390726603773,
+            "count": 3,
+            "spread": 0.1514542670010499,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.6333877049993,
+            "count": 3,
+            "spread": 0.017099534585895526,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.3860109562357,
+        "height": 637.4839969783956
+      }
+    },
+    {
+      "id": "a64d4f93-0c04-4078-aec0-7e9de92f260f",
+      "name": "Su-Chi",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "05e9de7c7534c96ce20f87051eefd41183d0c7e810f87eda46d87c4989ff5fe7",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.84531941442293,
+            "count": 3,
+            "spread": 0.018549903132711876,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.05903191750707,
+            "count": 3,
+            "spread": 0.14437312697140214,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.24875533498953,
+            "count": 3,
+            "spread": 0.07475649748792179,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.6777872035113,
+            "count": 3,
+            "spread": 0.01714823179065661,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.21371250308414,
+        "height": 638.4290318685219
+      }
+    },
+    {
+      "id": "cdcccb0f-ce96-453b-9e82-41d87f52e58b",
+      "name": "Ashnod's Altar",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "a1e4b7a24c2318c6e089de81f6897df42cefa45f23863d5e6b4dc26be83a97c6",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.66794155431894,
+            "count": 3,
+            "spread": 0.06430679448969556,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.2291372984165,
+            "count": 3,
+            "spread": 0.12848013845291462,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.23007872849772,
+            "count": 3,
+            "spread": 0.06363027903622864,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.0223634664595,
+            "count": 3,
+            "spread": 0.06532502766867765,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5611957440976,
+        "height": 636.7922847379618
+      }
+    },
+    {
+      "id": "23eb19f9-2e8f-4bf0-9bf8-868e6da70e2d",
+      "name": "Tetravus",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "0ec3d97f26b211de4068fbeff848ba8a444ae0a334899110bb58a3d6ef0f4390",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.7059645204863,
+            "count": 3,
+            "spread": 0.08593684672711888,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.14553395669395,
+            "count": 3,
+            "spread": 0.13718895681415688,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.23325088008076,
+            "count": 3,
+            "spread": 0.03648091313607438,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.546544480992,
+            "count": 3,
+            "spread": 0.029824188142924868,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.43956943620765,
+        "height": 638.3132936009113
+      }
+    },
+    {
+      "id": "46adf48f-99d2-440e-9129-794584c1ea21",
+      "name": "Weakstone",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "029b03b920dfe9d9f55abc83ede2a50ba75603c4f28f34fd0c292e46194df0b3",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.57138505788387,
+            "count": 3,
+            "spread": 0.18368096856432814,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.12844657247405,
+            "count": 3,
+            "spread": 0.06171906023445217,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.414703332266207,
+            "count": 3,
+            "spread": 0.023118370207203753,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5308181397254,
+            "count": 3,
+            "spread": 1.8532444315270595,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    }
+  ]
+}

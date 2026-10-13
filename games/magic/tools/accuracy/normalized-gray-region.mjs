@@ -1,4 +1,5 @@
 import { WIDTH, HEIGHT } from './pixels.mjs';
+import { inverseScanMatrix } from './scan-transform.mjs';
 
 /** Exactly the same bilinear sampling/byte rounding as normalize()+cropGray(),
  * evaluated only inside the requested canonical region. No registration fit. */
@@ -16,6 +17,7 @@ export function normalizedGrayRegion(image, rect, transform = {}) {
   )
     throw Error('Invalid canonical comparison region');
   const { tx = 0, ty = 0, scale = 1, rotation = 0 } = transform;
+  const matrix = inverseScanMatrix(transform);
   if (![tx, ty, scale, rotation].every(Number.isFinite) || scale <= 0)
     throw Error('Invalid normalization transform');
   const factor = Math.min(WIDTH / image.width, HEIGHT / image.height),
@@ -28,8 +30,14 @@ export function normalizedGrayRegion(image, rect, transform = {}) {
     for (let x = 0; x < width; x++) {
       const dx = x + left - WIDTH / 2 - tx,
         dy = y + top - HEIGHT / 2 - ty;
-      const sx = (cosine * dx + sine * dy + WIDTH / 2 - padX + 0.5) / factor - 0.5,
-        sy = (-sine * dx + cosine * dy + HEIGHT / 2 - padY + 0.5) / factor - 0.5;
+      const px = transform.matrix
+        ? matrix[0] * (x + left - WIDTH / 2) + matrix[2] * (y + top - HEIGHT / 2) + matrix[4]
+        : cosine * dx + sine * dy;
+      const py = transform.matrix
+        ? matrix[1] * (x + left - WIDTH / 2) + matrix[3] * (y + top - HEIGHT / 2) + matrix[5]
+        : -sine * dx + cosine * dy;
+      const sx = (px + WIDTH / 2 - padX + 0.5) / factor - 0.5,
+        sy = (py + HEIGHT / 2 - padY + 0.5) / factor - 0.5;
       if (sx < 0 || sy < 0 || sx > image.width - 1 || sy > image.height - 1) continue;
       const l = Math.floor(sx),
         t = Math.floor(sy),

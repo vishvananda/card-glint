@@ -22,7 +22,11 @@ for (const [width, height] of [
       (_, i) => (i * 37 + Math.floor(i / 113)) % 256,
     ),
   };
-  for (const transform of [{}, { tx: -2, ty: 1.5, scale: 1.012, rotation: 0.004 }]) {
+  for (const transform of [
+    {},
+    { tx: -2, ty: 1.5, scale: 1.012, rotation: 0.004 },
+    { matrix: [1.002, 0.003, -0.001, 1.002, -2, 1.5] },
+  ]) {
     const full = normalize(image, transform);
     for (const rect of [
       [387, 387, 66, 30],

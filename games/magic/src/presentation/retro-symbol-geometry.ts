@@ -138,11 +138,50 @@ const portalMaterials: Readonly<Partial<Record<string, RetroSymbolGeometry>>> = 
   G: { ...profiles.por!, right: 434, centerY: 390.75 },
 };
 
+// Shared placements measured after frozen per-scan frame normalization.
+// Missing material groups retain their set default. No scan poses enter rendering.
+const normalizedMaterials: Readonly<
+  Partial<Record<string, Readonly<Partial<Record<string, RetroSymbolGeometry>>>>>
+> = {
+  all: {
+    U: { ...profiles.all!, right: 427.5, centerY: 393.25 },
+    W: { ...profiles.all!, right: 427.25, centerY: 392.75 },
+  },
+  leg: {
+    W: { ...profiles.leg!, right: 443.75, centerY: 393.75 },
+  },
+  mir: {
+    G: { ...profiles.mir!, right: 437, centerY: 390.25 },
+    W: { ...profiles.mir!, right: 437.75, centerY: 389.25 },
+  },
+  sth: {
+    G: { ...profiles.sth!, right: 434, centerY: 391 },
+    R: { ...profiles.sth!, right: 433.5, centerY: 391.75 },
+    W: { ...profiles.sth!, right: 435.25, centerY: 389.25 },
+  },
+  tmp: {
+    G: { ...profiles.tmp!, right: 432.5, centerY: 391.5 },
+    R: { ...profiles.tmp!, right: 432.25, centerY: 392.5 },
+    U: { ...profiles.tmp!, right: 433, centerY: 392.75 },
+    W: { ...profiles.tmp!, right: 433.25, centerY: 389.5 },
+  },
+  vis: {
+    W: { ...profiles.vis!, right: 437.5, centerY: 389.25 },
+  },
+  wth: {
+    W: { ...profiles.wth!, right: 435.75, centerY: 389.75 },
+  },
+  hml: {
+    R: { ...profiles.hml!, right: 437.75, centerY: 393.5 },
+  },
+  por: portalMaterials,
+};
+
 export function retroSymbolGeometry(face: RenderedCardInput): RetroSymbolGeometry | null {
   const code = face.setCode?.toLowerCase() ?? '';
   if (face.setSymbol || !Object.hasOwn(profiles, code)) return null;
   const colors = resolveFrameColors(face);
-  if (code === 'por' && colors.length === 1 && !/\b(?:Land|Artifact)\b/.test(face.typeLine ?? ''))
-    return portalMaterials[colors[0]!] ?? profiles[code]!;
+  if (colors.length === 1 && !/\b(?:Land|Artifact)\b/.test(face.typeLine ?? ''))
+    return normalizedMaterials[code]?.[colors[0]!] ?? profiles[code]!;
   return profiles[code]!;
 }

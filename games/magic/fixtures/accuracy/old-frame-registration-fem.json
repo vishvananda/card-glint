@@ -1,0 +1,2129 @@
+{
+  "schemaVersion": 1,
+  "method": "old-frame-shared-similarity-v1",
+  "set": "fem",
+  "printedFrame": "1993",
+  "border": "black",
+  "frameFamily": "seventh",
+  "anchor": "outer-stock",
+  "coordinateSystem": "488x680; references only; pAfter=center+scale*(pBefore-center)+(tx,ty), center=(244,340); pixels.normalize handles source resolution/letterboxing first",
+  "scope": {
+    "materials": ["W", "U", "R", "A"],
+    "layouts": ["normal"],
+    "frameFamily": "retro-seventh",
+    "excludes": [
+      "land assets not explicitly guarded",
+      "tokens",
+      "special layouts",
+      "other sets or stocks"
+    ]
+  },
+  "policy": "One shared translation and uniform scale fitted on frozen calibration cards to the retained painter outer printed plate, equally weighted by material. No text, art, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. ABU black stock uses normalized gradient profiles of the plate border to separate its narrow bevel from the adjacent cast shadow and faint bitmap edge. Other families use stock boundaries. Residual opposed boundaries remain a source-geometry diagnostic.",
+  "guards": {
+    "sources": [
+      {
+        "material": "W",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "2fc988fc7aeb82d6183200dbfdb9e0de5196197ada5d8e4eac7afff24cec2091",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "59fcb31f540e54d465951d03fbd8eccf856d60cfbd3b1ad7153352a40363b207",
+        "file": "fem-W.png"
+      },
+      {
+        "material": "U",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "97aa1032bcf40d868cd7ffa9c188484248d362d2663c93314dac91a33110f7fc",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "b9db1320ce826c825231d460c24baec1e5d24d58ca9861201e214953fe35c93d",
+        "file": "fem-U.png"
+      },
+      {
+        "material": "R",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "1c431fa93806d76cbdbfe540d7cc0c0b8642dc8e230f2d95d82efaca24a35f8b",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "3a100439e03bc55f8eefb849c41e61dd17bc221e6ce56e6602599664d2f6e356",
+        "file": "fem-R.png"
+      },
+      {
+        "material": "A",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "39a8a5806460b165226f052e31eeb44296872f93ed5c9a8eaba315696dc62f34",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "2435ffd91c5a394534fa5c8258641dd9df8a68fc244753b0a857cb9a61bfb90a",
+        "file": "fem-A.png"
+      }
+    ],
+    "runtime": "Require set, stock, normal layout, family, exact pinned frame URL, frame rectangle and mask URL. Byte hashes document the cached sources and need not trigger another runtime download."
+  },
+  "provenance": {
+    "planHash": "4d187f5340a927df95cea753729336baf310b5ba79928a24713d482d0a3464f8",
+    "snapshotHash": "ea33a87e0f2a9da324bf86c9e4593b4ac2673d5c693fcc7bafe722d09e5c5054",
+    "methodHash": "005c33ee8e4fc6af8dfd162c1b1b20e45ab3583adc66b356bce2c89f9117354a",
+    "rendererStockHash": "287485e3658296e60f959f9b0d1055a8afc8dc0d546ed25418d629f860926214",
+    "targetsHash": "5e8464d0d0b49a325c76e70ed1dc7e1fa03bfcaf20443951ede006ab0177c468",
+    "referencesHash": "15104df491613653299c703dc7a7638c1bbfdb3f7d669ed7007b31c9be18f3ee"
+  },
+  "status": "rejected",
+  "accepted": false,
+  "transform": null,
+  "proposed": {
+    "scale": 0.9830441470733707,
+    "tx": 1.5516108566828006,
+    "ty": 0.7969479139724285
+  },
+  "flags": ["calibration-unstable-anchors"],
+  "geometryFlags": ["remaining-opposed-stock-residual"],
+  "counts": {
+    "calibration": 11,
+    "validation": 11,
+    "materialCounts": {
+      "A": {
+        "calibration": 2,
+        "validation": 2
+      },
+      "R": {
+        "calibration": 3,
+        "validation": 3
+      },
+      "U": {
+        "calibration": 3,
+        "validation": 3
+      },
+      "W": {
+        "calibration": 3,
+        "validation": 3
+      }
+    }
+  },
+  "excluded": 14,
+  "calibration": {
+    "count": 11,
+    "beforeRms": 5.2318622388489535,
+    "afterRms": 1.185621982535465,
+    "afterP90": 2.166807644194439,
+    "worstRegression": -1.3536595822549065,
+    "regressed": 0,
+    "residuals": {
+      "left": -1.3997547814366307,
+      "right": 1.4363165972709453,
+      "top": 0.48050363539399044,
+      "bottom": -0.7977882594367429
+    },
+    "scatter": {
+      "left": 0.1964726103001162,
+      "right": 0.05146021705070325,
+      "top": 0.07384638887002026,
+      "bottom": 1.8536653444593867
+    },
+    "rows": [
+      {
+        "id": "08ee87a0-a7eb-4472-9045-85d11e8a1501",
+        "material": "W",
+        "beforeRms": 5.491753847559582,
+        "afterRms": 1.1008557012363425,
+        "before": {
+          "left": -6.870413518499447,
+          "right": 3.570327029008297,
+          "top": -5.6497213563011215,
+          "bottom": 5.363606331159076
+        },
+        "after": {
+          "left": -1.4919447180506076,
+          "right": 1.310869375214736,
+          "top": 0.5682947339373925,
+          "bottom": 0.7617720358232418
+        }
+      },
+      {
+        "id": "7a899b2d-825c-4929-a769-f4df70bf6a17",
+        "material": "W",
+        "beforeRms": 5.450844215076694,
+        "afterRms": 0.9493879095456472,
+        "before": {
+          "left": -6.529290659177711,
+          "right": 3.579319735184299,
+          "top": -5.962785808134356,
+          "bottom": 5.277199044545
+        },
+        "after": {
+          "left": -1.1566058877614331,
+          "right": 1.3197096023874337,
+          "top": 0.26053855690602745,
+          "bottom": 0.6768298584527201
+        }
+      },
+      {
+        "id": "e11bf79b-a951-4d0c-acdf-d8ba5290a648",
+        "material": "W",
+        "beforeRms": 5.55379855966933,
+        "afterRms": 1.185621982535465,
+        "before": {
+          "left": -6.776633461023476,
+          "right": 3.7369404584968606,
+          "top": -5.605720636721699,
+          "bottom": 5.662784196237681
+        },
+        "after": {
+          "left": -1.3997547814366307,
+          "right": 1.4746577318973095,
+          "top": 0.6115493837869224,
+          "bottom": 1.0558770850226438
+        }
+      },
+      {
+        "id": "69c9e4a5-735f-471c-ab1a-6e6d50ba5724",
+        "material": "U",
+        "beforeRms": 5.599334444193464,
+        "afterRms": 1.1659806187931514,
+        "before": {
+          "left": -6.838066152019909,
+          "right": 3.6461334145802766,
+          "top": -5.74625343716821,
+          "bottom": 5.686591134523269
+        },
+        "after": {
+          "left": -1.4597593306808818,
+          "right": 1.384856380220242,
+          "top": 0.4739008605107635,
+          "bottom": 1.079229674659473
+        }
+      },
+      {
+        "id": "b2192c7b-ef6f-4ff6-9017-b1a125340517",
+        "material": "U",
+        "beforeRms": 5.525854837622088,
+        "afterRms": 1.1008490957328554,
+        "before": {
+          "left": -6.5997448899640325,
+          "right": 3.657508978088174,
+          "top": -5.7347448080594035,
+          "bottom": 5.684978820973697
+        },
+        "after": {
+          "left": -1.2254790088937142,
+          "right": 1.3960390613463574,
+          "top": 0.48521435099696575,
+          "bottom": 1.0776446992613273
+        }
+      },
+      {
+        "id": "18f1cc24-a5fc-43cc-b558-ac7901c48b81",
+        "material": "U",
+        "beforeRms": 5.2318622388489535,
+        "afterRms": 1.1709582917310866,
+        "before": {
+          "left": -6.976888056877552,
+          "right": 3.6984812335504103,
+          "top": -5.732937839473188,
+          "bottom": 3.777197808003393
+        },
+        "after": {
+          "left": -1.5962273917367469,
+          "right": 1.4363165972709453,
+          "top": 0.4869906808896296,
+          "bottom": -0.7977882594367429
+        }
+      },
+      {
+        "id": "5af19ab0-4bd0-4d5f-8d2e-507e4fe87c18",
+        "material": "R",
+        "beforeRms": 3.8943648549345777,
+        "afterRms": 1.9474225697375673,
+        "before": {
+          "left": -2.1309610875340574,
+          "right": 3.8481278934149827,
+          "top": -5.664510201704413,
+          "bottom": 3.0378530622007247
+        },
+        "after": {
+          "left": 3.1670742721680405,
+          "right": 1.5835512489182975,
+          "top": 0.5543500242640107,
+          "bottom": -1.5246378939643819
+        }
+      },
+      {
+        "id": "1befdfc7-a1e3-4a2a-ad68-7d0fee170f3f",
+        "material": "R",
+        "beforeRms": 3.9794437484008696,
+        "afterRms": 1.8894479592010387,
+        "before": {
+          "left": -2.3007411711409205,
+          "right": 3.833619359885688,
+          "top": -5.905169350856909,
+          "bottom": 2.9125277322926877
+        },
+        "after": {
+          "left": 3.0001729546887113,
+          "right": 1.569288719949725,
+          "top": 0.31777145625000003,
+          "bottom": -1.647838226010549
+        }
+      },
+      {
+        "id": "28e08767-7e92-4ff4-b0d8-196565fbc23c",
+        "material": "R",
+        "beforeRms": 3.7153105021863344,
+        "afterRms": 2.361650919931428,
+        "before": {
+          "left": -2.0633305570692286,
+          "right": 3.79104399626533,
+          "top": -5.8669614040764415,
+          "bottom": 1.4708993250208096
+        },
+        "after": {
+          "left": 3.2335580693049657,
+          "right": 1.5274352579331776,
+          "top": 0.3553315547042075,
+          "bottom": -3.0650225940339624
+        }
+      },
+      {
+        "id": "213d6e0d-5ec9-441e-a38d-50ce44583e4b",
+        "material": "A",
+        "beforeRms": 4.922102873716807,
+        "afterRms": 2.166807644194439,
+        "before": {
+          "left": -7.018721399911371,
+          "right": 3.700433875715703,
+          "top": -5.770855679494794,
+          "bottom": 0.806195116661911
+        },
+        "after": {
+          "left": -1.6375028639997034,
+          "right": 1.4382276008460622,
+          "top": 0.44991435720608663,
+          "bottom": -3.718586327826074
+        }
+      },
+      {
+        "id": "262b8788-c5a0-4c8e-9d58-b769b1b0a2ff",
+        "material": "A",
+        "beforeRms": 4.874096575128181,
+        "afterRms": 1.9380283504137847,
+        "before": {
+          "left": -6.841125556445135,
+          "right": 3.69473821080868,
+          "top": -5.7397387878689585,
+          "bottom": 1.2769412736226968
+        },
+        "after": {
+          "left": -1.462918309535656,
+          "right": 1.432628510795496,
+          "top": 0.48050363539399044,
+          "bottom": -3.2558220734684937
+        }
+      }
+    ]
+  },
+  "validation": {
+    "count": 11,
+    "beforeRms": 5.2501512875496825,
+    "afterRms": 1.2303152699194417,
+    "afterP90": 2.4763412102379725,
+    "worstRegression": -1.0466889054270854,
+    "regressed": 0,
+    "residuals": {
+      "left": -1.1588856773901206,
+      "right": 1.3888358532197458,
+      "top": 0.47783830536755545,
+      "bottom": -0.4121471891389774
+    },
+    "scatter": {
+      "left": 0.37439383987958763,
+      "right": 0.0655971777994182,
+      "top": 0.05242444273935121,
+      "bottom": 1.4997979171387215
+    },
+    "rows": [
+      {
+        "id": "af092da3-8713-4a59-86d3-827b942d6456",
+        "material": "W",
+        "beforeRms": 5.399029736337578,
+        "afterRms": 0.9849949792814263,
+        "before": {
+          "left": -6.531609771330974,
+          "right": 3.620393016417097,
+          "top": -5.74173800564402,
+          "bottom": 5.278386235555786
+        },
+        "after": {
+          "left": -1.1588856773901206,
+          "right": 1.3600864511044506,
+          "top": 0.47783830536755545,
+          "bottom": 0.6779969196272759
+        }
+      },
+      {
+        "id": "2be5ab7a-e7db-4c09-8df2-6fe55fa4a116",
+        "material": "W",
+        "beforeRms": 5.510943241607156,
+        "afterRms": 1.1118229117876186,
+        "before": {
+          "left": -6.676079407156671,
+          "right": 3.5730306005023635,
+          "top": -5.631266885069103,
+          "bottom": 5.695105880947153
+        },
+        "after": {
+          "left": -1.3009057073183818,
+          "right": 1.3135271053482143,
+          "top": 0.5864362938693546,
+          "bottom": 1.087650727999744
+        }
+      },
+      {
+        "id": "2a324a98-31c2-470a-b792-96b6b098a58c",
+        "material": "W",
+        "beforeRms": 5.2501512875496825,
+        "afterRms": 1.0921158711233094,
+        "before": {
+          "left": -6.912461273264224,
+          "right": 3.6448144331329786,
+          "top": -5.639622296968966,
+          "bottom": 4.1694389802246405
+        },
+        "after": {
+          "left": -1.5332795172697082,
+          "right": 1.384093781870206,
+          "top": 0.5782225551048157,
+          "bottom": -0.4121471891389774
+        }
+      },
+      {
+        "id": "2cbb62fc-3cd9-41a6-804a-4ff9a766897f",
+        "material": "U",
+        "beforeRms": 5.626678461790689,
+        "afterRms": 1.2303152699194417,
+        "before": {
+          "left": -6.883626259607908,
+          "right": 3.7029479934748224,
+          "top": -5.6563390284976975,
+          "bottom": 5.792040790590818
+        },
+        "after": {
+          "left": -1.504546927785313,
+          "right": 1.4407076194709703,
+          "top": 0.5622906936918746,
+          "bottom": 1.1828913418676166
+        }
+      },
+      {
+        "id": "316d25ae-7ac6-4f5b-93ab-0e0e28ec104b",
+        "material": "U",
+        "beforeRms": 5.608534057872477,
+        "afterRms": 1.1755284090014892,
+        "before": {
+          "left": -6.892999332780363,
+          "right": 3.716910145214456,
+          "top": -5.78508571194747,
+          "bottom": 5.570147178430261
+        },
+        "after": {
+          "left": -1.5137610725075632,
+          "right": 1.454433031019164,
+          "top": 0.43572702007146447,
+          "bottom": 0.9647601251601827
+        }
+      },
+      {
+        "id": "68d97e1b-2526-4740-b354-f158734d1f72",
+        "material": "U",
+        "beforeRms": 5.538508038321522,
+        "afterRms": 1.078198785857944,
+        "before": {
+          "left": -6.708741630295663,
+          "right": 3.5791444380933513,
+          "top": -5.8038158470750965,
+          "bottom": 5.585563320261599
+        },
+        "after": {
+          "left": -1.332627616526807,
+          "right": 1.3190032589663474,
+          "top": 0.4173144703603491,
+          "bottom": 0.979914873158009
+        }
+      },
+      {
+        "id": "ea9a38b1-4676-425a-b40d-4fb478966024",
+        "material": "R",
+        "beforeRms": 3.836143697836399,
+        "afterRms": 1.761613872435541,
+        "before": {
+          "left": -2.4885069164690385,
+          "right": 3.414081833479713,
+          "top": -5.733585110932925,
+          "bottom": 2.85330934503736
+        },
+        "after": {
+          "left": 2.8155909377230195,
+          "right": 1.1568648101386998,
+          "top": 0.4864463390372862,
+          "bottom": -1.7060525150010335
+        }
+      },
+      {
+        "id": "2232386e-986d-41b5-8b70-e086264f3277",
+        "material": "R",
+        "beforeRms": 3.6995900248249334,
+        "afterRms": 2.236107992944225,
+        "before": {
+          "left": -2.583772785315837,
+          "right": 3.6958562896021476,
+          "top": -5.714117144984151,
+          "bottom": 1.3272132989856118
+        },
+        "after": {
+          "left": 2.7219403829373086,
+          "right": 1.4338615400246226,
+          "top": 0.5055842090186502,
+          "bottom": -3.206272300943965
+        }
+      },
+      {
+        "id": "50f0f4fe-2dd0-42c1-8f68-5d24a8a9d07d",
+        "material": "R",
+        "beforeRms": 3.7575661363090127,
+        "afterRms": 2.1653536213974425,
+        "before": {
+          "left": -2.5220442972988657,
+          "right": 3.738691593442752,
+          "top": -5.7956702945849194,
+          "bottom": 1.596526430408744
+        },
+        "after": {
+          "left": 2.7826222117900876,
+          "right": 1.4759705347532304,
+          "top": 0.42541386262820424,
+          "bottom": -2.941525603368518
+        }
+      },
+      {
+        "id": "14749600-9eca-4122-b04f-30ddda091b74",
+        "material": "A",
+        "beforeRms": 3.623412327043524,
+        "afterRms": 2.5767234216164385,
+        "before": {
+          "left": -1.7479325764563356,
+          "right": 3.751137741703758,
+          "top": -5.8429198788761845,
+          "bottom": 1.118236203601782
+        },
+        "after": {
+          "left": 3.5439152393574993,
+          "right": 1.4880717395396346,
+          "top": 0.37907206779069114,
+          "bottom": -3.411836163663338
+        }
+      },
+      {
+        "id": "7f95de4a-7fae-42bc-9660-39ea7685ca02",
+        "material": "A",
+        "beforeRms": 3.602730307032086,
+        "afterRms": 2.4763412102379725,
+        "before": {
+          "left": -1.8606840360478394,
+          "right": 3.65019020377747,
+          "top": -5.789028901431571,
+          "bottom": 1.2727031992824323
+        },
+        "after": {
+          "left": 3.4330755769320938,
+          "right": 1.3888358532197458,
+          "top": 0.4320492777476552,
+          "bottom": -3.259988287643523
+        }
+      }
+    ]
+  },
+  "uncertainMaterials": ["B", "G"],
+  "unvalidatedSources": [
+    {
+      "material": "B",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+      "rect": [0, 0, 1, 1],
+      "sha256": "67590d7fb6ba60c445f24d0a07b3eaa45274582c1c82ecfb5a5424fd9914f278",
+      "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+      "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+      "renderedHash": "a30bf02274db1d11b60adda9d0af29fe4d077f7c1db38d30da79d5acf68711ed",
+      "file": "fem-B.png"
+    },
+    {
+      "material": "G",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+      "rect": [0, 0, 1, 1],
+      "sha256": "a62f3a473d9a173909184819826dbe8a05035d00b3358b894e38d7891210ae2b",
+      "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+      "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+      "renderedHash": "9bbed84b2756e0117a841ad551e3821b3d379c9106dfced2923ee86f94034f39",
+      "file": "fem-G.png"
+    }
+  ],
+  "targets": {
+    "W": {
+      "sides": {
+        "left": {
+          "position": 25.175017343179523,
+          "count": 3,
+          "spread": 0.007305000290639185,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.1938607100266,
+          "count": 3,
+          "spread": 0.010616343464391775,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.933090189238538,
+          "count": 3,
+          "spread": 0.004662018965454706,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.038672378718,
+          "count": 3,
+          "spread": 0.008872199657616875,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.0188433668471,
+      "height": 627.1055821894795
+    },
+    "U": {
+      "sides": {
+        "left": {
+          "position": 25.152222967665708,
+          "count": 3,
+          "spread": 0.025696151302280867,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.2253553593443,
+          "count": 3,
+          "spread": 0.022767397623624674,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.903517883042355,
+          "count": 3,
+          "spread": 0.0226215396879077,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0416614176461,
+          "count": 3,
+          "spread": 0.01886061950324347,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.0731323916786,
+      "height": 627.1381435346037
+    },
+    "B": {
+      "sides": {
+        "left": {
+          "position": 27.69853133658909,
+          "count": 2,
+          "spread": 2.5233564019172796,
+          "reliable": false
+        },
+        "right": {
+          "position": 465.2697454414299,
+          "count": 3,
+          "spread": 0.015096870073080026,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.838921650301977,
+          "count": 3,
+          "spread": 0.010887237438204522,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 650.607111699429,
+          "count": 2,
+          "spread": 2.350675111931764,
+          "reliable": false
+        }
+      },
+      "reliable": false,
+      "width": null,
+      "height": null
+    },
+    "R": {
+      "sides": {
+        "left": {
+          "position": 25.17926262502149,
+          "count": 3,
+          "spread": 0.010186829919863527,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.2179609487544,
+          "count": 3,
+          "spread": 0.00655727177644394,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.898094707451047,
+          "count": 3,
+          "spread": 0.007865554846532063,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0440859195035,
+          "count": 3,
+          "spread": 0.018607578175988237,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.03869832373294,
+      "height": 627.1459912120524
+    },
+    "G": {
+      "sides": {
+        "left": {
+          "position": 25.18042381837546,
+          "count": 3,
+          "spread": 0.0040257815705366795,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.2348140901708,
+          "count": 3,
+          "spread": 0.009728669049252403,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.89108398637681,
+          "count": 3,
+          "spread": 0.004282686249375445,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0469144564693,
+          "count": 3,
+          "spread": 0.008159773763395606,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.05439027179534,
+      "height": 627.1558304700925
+    },
+    "A": {
+      "sides": {
+        "left": {
+          "position": 25.161154941874702,
+          "count": 3,
+          "spread": 0.027876480342570176,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.22585842320115,
+          "count": 3,
+          "spread": 0.01350969256998269,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.891805878920415,
+          "count": 3,
+          "spread": 0.01574532928593797,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0517618665922,
+          "count": 3,
+          "spread": 0.0011697321236852076,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.06470348132643,
+      "height": 627.1599559876718
+    }
+  },
+  "referenceRows": [
+    {
+      "id": "08ee87a0-a7eb-4472-9045-85d11e8a1501",
+      "name": "Heroism",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "63ee2adbb2b679f72f311d7b526b3d045bfbac305a0d70c063a9f950ac8c4196",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.304603824680076,
+            "count": 3,
+            "spread": 0.04422230587586995,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.7641877390349,
+            "count": 3,
+            "spread": 0.037427135491100216,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.283368832937416,
+            "count": 3,
+            "spread": 0.007339187167008987,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.4022787098771,
+            "count": 3,
+            "spread": 0.36585767472945463,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.4595839143548,
+        "height": 638.1189098769397
+      }
+    },
+    {
+      "id": "7a899b2d-825c-4929-a769-f4df70bf6a17",
+      "name": "Hand of Justice",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e332d752831d1e438f2d0d4f12958d3bd820c02e611274ecb1155f456bdf6c56",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.64572668400181,
+            "count": 3,
+            "spread": 0.17339195142673347,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.7731804452109,
+            "count": 3,
+            "spread": 0.015556730701348442,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.97030438110418,
+            "count": 3,
+            "spread": 0.03420133645880341,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.315871423263,
+            "count": 3,
+            "spread": 0.16286642498391757,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.1274537612091,
+        "height": 638.3455670421589
+      }
+    },
+    {
+      "id": "e11bf79b-a951-4d0c-acdf-d8ba5290a648",
+      "name": "Farrelite Priest",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "efbb696e16ffa9955b11abcb4ea154b783c957ff0362df15d8c4ff1cd2d547f5",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.398383882156047,
+            "count": 3,
+            "spread": 0.032689877046173876,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9308011685235,
+            "count": 3,
+            "spread": 0.015531688185774328,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.32736955251684,
+            "count": 3,
+            "spread": 0.03273568276199157,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.7014565749557,
+            "count": 3,
+            "spread": 0.03479985594356094,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.53241728636743,
+        "height": 638.3740870224389
+      }
+    },
+    {
+      "id": "af092da3-8713-4a59-86d3-827b942d6456",
+      "name": "Farrel's Mantle",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "41c18ba19c729451a1efe2ff3154dd98b3f06d6e52c1996bdc637f040f2f8d67",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.64340757184855,
+            "count": 3,
+            "spread": 0.1617936804232336,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8142537264437,
+            "count": 3,
+            "spread": 0.05305977604638201,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.191352183594518,
+            "count": 3,
+            "spread": 0.038127943258110975,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.3170586142738,
+            "count": 3,
+            "spread": 0.21407278130538998,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.17084615459515,
+        "height": 638.1257064306793
+      }
+    },
+    {
+      "id": "2be5ab7a-e7db-4c09-8df2-6fe55fa4a116",
+      "name": "Icatian Javelineers",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "2af616ad09ff18ab3c0410ca6bf074a58a1075c989a44e4a37056dd7a2bbed58",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.498937936022852,
+            "count": 3,
+            "spread": 0.2566647531464312,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.766891310529,
+            "count": 3,
+            "spread": 0.027916840299781143,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.301823304169435,
+            "count": 3,
+            "spread": 0.061396017212043574,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.7337782596652,
+            "count": 3,
+            "spread": 0.03934814004242071,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.26795337450613,
+        "height": 638.4319549554957
+      }
+    },
+    {
+      "id": "2a324a98-31c2-470a-b792-96b6b098a58c",
+      "name": "Combat Medic",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "74f59883d69d85211ee0cb9d4e52a3a383beee9db4417644d86d84a211f24b55",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.2625560699153,
+            "count": 3,
+            "spread": 0.039573599227491485,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8386751431596,
+            "count": 3,
+            "spread": 0.06140734160919692,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.29346789226957,
+            "count": 3,
+            "spread": 0.07103221231372814,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.2081113589427,
+            "count": 3,
+            "spread": 1.3055831288535273,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5761190732443,
+        "height": 636.9146434666732
+      }
+    },
+    {
+      "id": "69c9e4a5-735f-471c-ab1a-6e6d50ba5724",
+      "name": "Deep Spawn",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "de33b1d529bccb58c23d3c33cb2901776eaedb5d1530ff64865f1b86a07c070e",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.3141568156458,
+            "count": 3,
+            "spread": 0.07058877017654552,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.87148877392457,
+            "count": 3,
+            "spread": 0.10186769253317607,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.157264445874144,
+            "count": 3,
+            "spread": 0.01927145315775647,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.7282525521694,
+            "count": 3,
+            "spread": 0.061907514937615815,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5573319582788,
+        "height": 638.5709881062952
+      }
+    },
+    {
+      "id": "b2192c7b-ef6f-4ff6-9017-b1a125340517",
+      "name": "Tidal Influence",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "60e03d14735c6f5d435178b8b1b061c31390a433a56f72e523caed17ce3c6d5c",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.552478077701675,
+            "count": 3,
+            "spread": 0.11552945752594113,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.88286433743247,
+            "count": 3,
+            "spread": 0.060357070836630555,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.16877307498295,
+            "count": 3,
+            "spread": 0.045103621436940244,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.7266402386198,
+            "count": 3,
+            "spread": 0.15198530826307888,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.3303862597308,
+        "height": 638.5578671636368
+      }
+    },
+    {
+      "id": "18f1cc24-a5fc-43cc-b558-ac7901c48b81",
+      "name": "Homarid",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "11d4221febc1d8da8f7a5d31c48f994ea7ef0b69c1c4469385165fd91c83ceae",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.175334910788155,
+            "count": 3,
+            "spread": 0.0817647732905975,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9238365928947,
+            "count": 3,
+            "spread": 0.0954381174219634,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.170580043569167,
+            "count": 3,
+            "spread": 0.032320697729041115,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.8188592256495,
+            "count": 3,
+            "spread": 0.15296765051652983,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.74850168210656,
+        "height": 636.6482791820803
+      }
+    },
+    {
+      "id": "2cbb62fc-3cd9-41a6-804a-4ff9a766897f",
+      "name": "Homarid Spawning Bed",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "3f69b375ec4dbfd7cb75aba5512ac7e95e98c96302764a84b3c15ea1f9700d43",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.2685967080578,
+            "count": 3,
+            "spread": 0.061384755686244574,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9283033528191,
+            "count": 3,
+            "spread": 0.06509567181541343,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.247178854544657,
+            "count": 3,
+            "spread": 0.01864248041465899,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.8337022082369,
+            "count": 3,
+            "spread": 0.04812877779545488,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.6597066447613,
+        "height": 638.5865233536922
+      }
+    },
+    {
+      "id": "316d25ae-7ac6-4f5b-93ab-0e0e28ec104b",
+      "name": "Svyelunite Priest",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "71dee002bbfc4f40192bdb1db57f53ee3d01e12112a34473d9cf451e5eb411b4",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.259223634885345,
+            "count": 3,
+            "spread": 0.06868776652353503,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.94226550455875,
+            "count": 3,
+            "spread": 0.0379437992368139,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.118432171094884,
+            "count": 3,
+            "spread": 0.04027471031985286,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.6118085960763,
+            "count": 3,
+            "spread": 0.015296965356810688,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.6830418696734,
+        "height": 638.4933764249814
+      }
+    },
+    {
+      "id": "68d97e1b-2526-4740-b354-f158734d1f72",
+      "name": "Vodalian Knights",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "c826dc0ea759d427915aed9625c1c490dbb5f2aa4100205326318306f1a04afa",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.443481337370045,
+            "count": 3,
+            "spread": 0.04468331787092339,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.80449979743764,
+            "count": 3,
+            "spread": 0.017778853854792942,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.09970203596726,
+            "count": 3,
+            "spread": 0.0746797851822798,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.6272247379077,
+            "count": 3,
+            "spread": 0.05532987693834457,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.3610184600676,
+        "height": 638.5275227019404
+      }
+    },
+    {
+      "id": "06883fd2-eccd-47c6-8c34-10d95e923685",
+      "name": "Tourach's Chant",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "cb32b07ed4c5c554c780b49a1f8d5bff350a253a589284ca3ece1de37f889a22",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.912249053577526,
+            "count": 1,
+            "spread": 0,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.2042546248221,
+            "count": 3,
+            "spread": 0.07492515438752889,
+            "reliable": true
+          },
+          "top": {
+            "position": 27.238369124831937,
+            "count": 3,
+            "spread": 8.449463962734459,
+            "reliable": false
+          },
+          "bottom": {
+            "position": 646.397812514637,
+            "count": 2,
+            "spread": 0.4226668768909576,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "18a91ed4-131e-455b-a3bd-0bd42aa754e5",
+      "name": "Armor Thrull",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "c8e909dbb8f0df0384509337904221e0c13c4ac8e1fa697f641fbf0ac4be362b",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.548398870992585,
+            "count": 1,
+            "spread": 0,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.1368243936721,
+            "count": 3,
+            "spread": 0.05973694339149915,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.122294034770547,
+            "count": 3,
+            "spread": 15.688251714493049,
+            "reliable": false
+          },
+          "bottom": {
+            "position": 645.7144367798372,
+            "count": 2,
+            "spread": 0.3492182325603608,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "9eb2b79f-f09a-49dc-8e0f-7d711ba78981",
+      "name": "Derelor",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "7d4f067aa8da059ac4dd6af6b2ddc5ab13f25d9a0384a2512e4d607cd743a93a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.738025212748955,
+            "count": 1,
+            "spread": 0,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.26086786635005,
+            "count": 3,
+            "spread": 0.0178118734305599,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.049533527157507,
+            "count": 3,
+            "spread": 15.405291141129396,
+            "reliable": false
+          },
+          "bottom": {
+            "position": 645.5561504225582,
+            "count": 2,
+            "spread": 0.18398840609972922,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "9f73597d-f453-4d37-b2ef-c54ef683a884",
+      "name": "Soul Exchange",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "2d1d2d940c4494027a144b105d56c31658a1fe0b84ae2e1abed1b278c5da8afb",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.516980086841105,
+            "count": 1,
+            "spread": 0,
+            "reliable": false
+          },
+          "right": {
+            "position": 468.8915778826449,
+            "count": 3,
+            "spread": 0.029300830102442887,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.805787463699165,
+            "count": 3,
+            "spread": 0.0643833892011969,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 645.1668157086921,
+            "count": 2,
+            "spread": 0.377694986732763,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "c4e732fb-cbef-4fd8-b704-e4d513a6cf2d",
+      "name": "Thrull Wizard",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "986d7057ddaf72dbc0f5f06b72dbfca711f8c4898620ee23cf9753803c904810",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.281603610219115,
+            "count": 1,
+            "spread": 0,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.2826608658968,
+            "count": 3,
+            "spread": 0.05846369203300128,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.934200930427643,
+            "count": 3,
+            "spread": 0.06966633991987692,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 645.2626552233307,
+            "count": 2,
+            "spread": 0.39521388684318026,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "d77f6401-a9fb-449c-b511-6fb837055bb4",
+      "name": "Tourach's Gate",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "d96fb5d5c15adc2980e1a3193f2b7c4d51d2108fdbbc01cea0cfd1aac7f1b309",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.02505016150641,
+            "count": 1,
+            "spread": 0,
+            "reliable": false
+          },
+          "right": {
+            "position": 468.98504445500663,
+            "count": 3,
+            "spread": 0.039594734954334854,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.896324541988754,
+            "count": 3,
+            "spread": 15.563841655310881,
+            "reliable": false
+          },
+          "bottom": {
+            "position": 645.4496871203221,
+            "count": 2,
+            "spread": 0.4524844076395311,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "5af19ab0-4bd0-4d5f-8d2e-507e4fe87c18",
+      "name": "Orgg",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "5ab3075960e3917eabc7cb596c70ccbf257ee9c6e708c2429cecca45b22b0fa5",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.048301537487433,
+            "count": 3,
+            "spread": 0.19436940588994744,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0660888421694,
+            "count": 3,
+            "spread": 0.007651528444739597,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.233584505746634,
+            "count": 3,
+            "spread": 0.11764267852917243,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.0819389817042,
+            "count": 3,
+            "spread": 0.29688655386905793,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 446.017787304682,
+        "height": 635.8483544759575
+      }
+    },
+    {
+      "id": "1befdfc7-a1e3-4a2a-ad68-7d0fee170f3f",
+      "name": "Goblin Grenade",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "a328810cf5ce58cde1ec3325bd4527cb86a71b8dc5261e221f33585264ae4a6e",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.87852145388057,
+            "count": 3,
+            "spread": 0.14415804972533408,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0515803086401,
+            "count": 3,
+            "spread": 0.0212098800543572,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.99292535659414,
+            "count": 3,
+            "spread": 0.08480284416969042,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.9566136517961,
+            "count": 3,
+            "spread": 0.06772288619140454,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 446.1730588547595,
+        "height": 635.963688295202
+      }
+    },
+    {
+      "id": "28e08767-7e92-4ff4-b0d8-196565fbc23c",
+      "name": "Orcish Spy",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "3cadd9ddfc3b13cca7ba235f668afd8390b1bfa9046d8d85139ce78c81674df6",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.11593206795226,
+            "count": 3,
+            "spread": 0.1136457184086197,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.00900494501974,
+            "count": 3,
+            "spread": 0.06518758426699378,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.031133303374606,
+            "count": 3,
+            "spread": 0.08372252240242517,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.5149852445243,
+            "count": 3,
+            "spread": 0.257061993155844,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 445.8930728770675,
+        "height": 634.4838519411496
+      }
+    },
+    {
+      "id": "ea9a38b1-4676-425a-b40d-4fb478966024",
+      "name": "Dwarven Lieutenant",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "3c70de16d4d7bc79e9a2dfd62ef6730a5b8769eaba72c6b2620743031ccf827a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.69075570855245,
+            "count": 3,
+            "spread": 0.30362510331476145,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.6320427822341,
+            "count": 3,
+            "spread": 0.028289743203117723,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.164509596518123,
+            "count": 3,
+            "spread": 0.03422963614818997,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.8973952645408,
+            "count": 3,
+            "spread": 0.10057781947318745,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 445.9412870736817,
+        "height": 635.7328856680227
+      }
+    },
+    {
+      "id": "2232386e-986d-41b5-8b70-e086264f3277",
+      "name": "Goblin War Drums",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "a3bcec7ee460123f401dc07259f7103e3ca9d03f47592a7b9e0777b100b047d4",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.595489839705653,
+            "count": 3,
+            "spread": 0.24913791975878752,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.91381723835656,
+            "count": 3,
+            "spread": 0.007846494910211277,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.183977562466897,
+            "count": 3,
+            "spread": 0.0470127830541216,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.3712992184891,
+            "count": 3,
+            "spread": 0.3367923281419962,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 446.3183273986509,
+        "height": 634.1873216560222
+      }
+    },
+    {
+      "id": "50f0f4fe-2dd0-42c1-8f68-5d24a8a9d07d",
+      "name": "Brassclaw Orcs",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "5989a7d3031e99a176e7b32480e34e331d1fff4182bc4b094d491151632dd14f",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.657218327722624,
+            "count": 3,
+            "spread": 0.27563464457703546,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.95665254219716,
+            "count": 3,
+            "spread": 0.030258384099397517,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.102424412866128,
+            "count": 3,
+            "spread": 0.045260778228065845,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.6406123499122,
+            "count": 3,
+            "spread": 0.46389930605278096,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 446.29943421447456,
+        "height": 634.5381879370461
+      }
+    },
+    {
+      "id": "40a9710e-b2f8-4746-8640-d450f58a6e49",
+      "name": "Elvish Farmer",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "9c22a11eb8cc8a7b72f054a291183332d6f2799f70b41b9f67c68e36e1036164",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.543777439098765,
+            "count": 3,
+            "spread": 0.14274772468365882,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.1216139172366,
+            "count": 3,
+            "spread": 0.031246915528868158,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.961447415569943,
+            "count": 3,
+            "spread": 0.03480561867033671,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.5538212679382,
+            "count": 3,
+            "spread": 3.229618850614088,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "f9681dc0-d0fc-4d5b-a23c-63ec1cc8343d",
+      "name": "Spore Flower",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "874de65163d695677d75225974d9fc3849d45ee4e3afede790ce78d347eeb1a2",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.916569179906226,
+            "count": 3,
+            "spread": 0.16531066657448434,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.1288806639667,
+            "count": 3,
+            "spread": 0.09789131163665843,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.021622170601475,
+            "count": 3,
+            "spread": 0.10944416328735329,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.169045868473,
+            "count": 3,
+            "spread": 0.2521640120583015,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 446.2123114840605,
+        "height": 634.1474236978714
+      }
+    },
+    {
+      "id": "5400ff25-c70e-4095-a228-190601b86043",
+      "name": "Thelonite Monk",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "38944abef123cc2d9903c8da83b66ac8ae53ab0b4a6f413a1364eadd5dc26159",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.270608857054416,
+            "count": 3,
+            "spread": 0.34441758907876263,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.11582109165687,
+            "count": 3,
+            "spread": 0.07696558730685865,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.20823838165648,
+            "count": 3,
+            "spread": 0.1139060802062275,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.558295090638,
+            "count": 3,
+            "spread": 1.1349218178797855,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 445.84521223460246,
+        "height": 635.3500567089816
+      }
+    },
+    {
+      "id": "204c8aff-b103-4606-b86b-d794bc5dcde1",
+      "name": "Elvish Hunter",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "b1934fe04cd0ab25b26b1b67eb40a1971e36dff8bbb308e79f0e5b4036d346b9",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.570990379585584,
+            "count": 3,
+            "spread": 0.11323741900150353,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.98815812720136,
+            "count": 3,
+            "spread": 0.12270246012872121,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.198578022026485,
+            "count": 3,
+            "spread": 0.01395238589664416,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.3628820641227,
+            "count": 3,
+            "spread": 0.1978443197405113,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 445.4171677476158,
+        "height": 634.1643040420962
+      }
+    },
+    {
+      "id": "aa533845-4c4b-4072-aa39-8e56ce7ec325",
+      "name": "Thallid Devourer",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "c080417c8251f47af0a1ccaa539174d56bfc5f17452933f7bab54d824695239d",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.16208766972218,
+            "count": 3,
+            "spread": 0.08825129449938629,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.22841288525007,
+            "count": 3,
+            "spread": 0.10362024968338801,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.07593347960464,
+            "count": 3,
+            "spread": 0.06554551688954646,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5418105659036,
+            "count": 3,
+            "spread": 4.150834372529403,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "cf1a2cb2-9a6b-41f7-96f7-ec457c69c16c",
+      "name": "Fungal Bloom",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "e91aa3bb7dbfe45e1aac4d0411eafa1fce035e18b95d17c78b4a4c6043f2725c",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.526849013501035,
+            "count": 3,
+            "spread": 0.13688330727660514,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.01736074977,
+            "count": 3,
+            "spread": 0.07867058463119747,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.96293124977325,
+            "count": 3,
+            "spread": 0.04806557284002366,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.7339689678505,
+            "count": 3,
+            "spread": 4.611732599057632,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "213d6e0d-5ec9-441e-a38d-50ce44583e4b",
+      "name": "Spirit Shield",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "a1dc53a328211dc0aaea36bc5986cd9735d9553ec24ae321913ab65a6ce8132a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.14243354196333,
+            "count": 3,
+            "spread": 0.050989187587056506,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.92629229891685,
+            "count": 3,
+            "spread": 0.01757538975624584,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.12095019942562,
+            "count": 3,
+            "spread": 0.061807810816443265,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 653.8579569832541,
+            "count": 3,
+            "spread": 0.1190988406709721,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.7838587569535,
+        "height": 633.7370067838285
+      }
+    },
+    {
+      "id": "a532d38a-809b-4132-8690-be15fe23afab",
+      "name": "Ring of Renewal",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "7281fe9c5c53269c75a32717185cfc157e0c2ff61be784492ceda5dd7d2b8ad2",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.218410535036274,
+            "count": 3,
+            "spread": 0.08065780323282823,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0222096328283,
+            "count": 3,
+            "spread": 0.020679510546187885,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.035151555828058,
+            "count": 3,
+            "spread": 0.09806077932825374,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.010137468762,
+            "count": 3,
+            "spread": 4.770203053978548,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "262b8788-c5a0-4c8e-9d58-b769b1b0a2ff",
+      "name": "Delif's Cone",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "dd2b0f1a6e0599dabd41c285b91834a95a1d3c6f473aabeebc83d3bb79df3047",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.320029385429567,
+            "count": 3,
+            "spread": 0.03220941106645725,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9205966340098,
+            "count": 3,
+            "spread": 0.02199903692934413,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.152067091051457,
+            "count": 3,
+            "spread": 0.1359329336902917,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.3287031402149,
+            "count": 3,
+            "spread": 0.09019631830813069,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.60056724858026,
+        "height": 634.1766360491634
+      }
+    },
+    {
+      "id": "14749600-9eca-4122-b04f-30ddda091b74",
+      "name": "Delif's Cube",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "ca8f8a8d98901022bc8cb9a75f1a8be54db96720ae0ab6433052df255972cfd8",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.413222365418367,
+            "count": 3,
+            "spread": 0.23519090074117344,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9769961649049,
+            "count": 3,
+            "spread": 0.05452069319449038,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.04888600004423,
+            "count": 3,
+            "spread": 0.031068415898602098,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.169998070194,
+            "count": 3,
+            "spread": 0.04950920826706806,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 445.5637737994865,
+        "height": 634.1211120701497
+      }
+    },
+    {
+      "id": "7f95de4a-7fae-42bc-9660-39ea7685ca02",
+      "name": "Balm of Restoration",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "7ecfe88f4d4d04182610b46892a6f71d8c510f90e3a588ea2e87a24113b2d265",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 23.300470905826863,
+            "count": 3,
+            "spread": 0.24917608212291142,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8760486269786,
+            "count": 3,
+            "spread": 0.02703696952539758,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.102776977488844,
+            "count": 3,
+            "spread": 0.04198430472809633,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.3244650658746,
+            "count": 3,
+            "spread": 1.188364009516249,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 445.5755777211518,
+        "height": 634.2216880883858
+      }
+    },
+    {
+      "id": "a09030ee-415c-45af-bf08-7623197a314f",
+      "name": "Aeolipile",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "cfd41b76bc3fc6d059daff407f9452a393d6bee7ace944b1919c8c9814816580",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.22156331179591,
+            "count": 3,
+            "spread": 0.14443012430494662,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.97517579163133,
+            "count": 3,
+            "spread": 0.01203990850763148,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.097929761289247,
+            "count": 3,
+            "spread": 0.07788313656819312,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 653.8063435259307,
+            "count": 3,
+            "spread": 4.894976711161462,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    }
+  ]
+}

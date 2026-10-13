@@ -1,0 +1,2135 @@
+{
+  "schemaVersion": 1,
+  "scope": "Trial review; reject LEG/W and TMP/R,G before the final renderer. Shared shape measurements are proposals, not automatic adoption. All comparisons use identical frozen per-scan fits; reference material without a reliable frame fit is excluded explicitly. Previously observed development references.",
+  "modelSelection": "Require a comparable simpler fit and disjoint-validation improvement before rotation/skew. No real scan in this pilot meets those additional-model gates.",
+  "rows": [
+    {
+      "set": "all",
+      "ordinary": 199,
+      "normalized": 51,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "791f3186eb49d3265128daccb77ef3f87d53db51b510e83e232d3db7573ea017",
+      "beforeHash": "291ebfdc2a5db355bfb75e20f82d9cae46bcbd4287c83cb0c75f346aba87be49",
+      "rawHash": "f6850d88d3f7bb1657c89e8e06993cfaac9c415ca3232385032c81163b61ec11",
+      "referenceCoverage": {
+        "covered": 38,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 13
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.5318077071323769,
+          "after": 0.6233684504206727,
+          "beforeCensus": 0.605684100769553,
+          "afterCensus": 0.7108368145835979,
+          "regressions": []
+        },
+        "table": {
+          "before": 0.5352557308678387,
+          "after": 0.6137102034395054,
+          "beforeCensus": 0.632643863895366,
+          "afterCensus": 0.6985613718047959,
+          "regressions": []
+        }
+      },
+      "groups": {
+        "U": {
+          "count": 23,
+          "tiers": {
+            "inspect": {
+              "before": 0.5248410975301971,
+              "after": 0.6070239714608305,
+              "beforeCensus": 0.6010665132130143,
+              "afterCensus": 0.6806956432930689,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.49944150082526473,
+              "after": 0.5787785001244766,
+              "beforeCensus": 0.6047784158023319,
+              "afterCensus": 0.6815826198457948,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        },
+        "W": {
+          "count": 25,
+          "tiers": {
+            "inspect": {
+              "before": 0.5439976267787525,
+              "after": 0.6482621418782559,
+              "beforeCensus": 0.6156233584860784,
+              "afterCensus": 0.7342748860418378,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.5558244358390882,
+              "after": 0.6538110951101523,
+              "beforeCensus": 0.6566375364799528,
+              "afterCensus": 0.7588598395455973,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    },
+    {
+      "set": "leg",
+      "ordinary": 310,
+      "normalized": 53,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "283ab406fbb3012e6fe87d0503cf1662cf6dbf339e2a86a6514d69848cc13493",
+      "beforeHash": "a78b8d058a28b2949f98cadd7d5a906e02fe7b3e667c0f98f34d28f9cff7fed9",
+      "rawHash": "d0b89b94aed5343758e3bdb9e8d27c1ec934777b1d2a5aa9eb94463450105ddb",
+      "referenceCoverage": {
+        "covered": 23,
+        "near-edge": 1,
+        "clipped": 0,
+        "unknown": 30
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.7391400310181839,
+          "after": 0.7382162239783645,
+          "beforeCensus": 0.8130877501100735,
+          "afterCensus": 0.7957531971534408,
+          "regressions": [
+            {
+              "id": "461d7c11-3a7d-42c2-bb6b-0a43779e6842",
+              "name": "Heaven's Gate",
+              "delta": -0.020528971371180815
+            },
+            {
+              "id": "dc60077f-d577-4a6c-a78f-697317024c40",
+              "name": "Infinite Authority",
+              "delta": -0.027807924436342724
+            },
+            {
+              "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+              "name": "Lifeblood",
+              "delta": -0.029042723337574627
+            },
+            {
+              "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+              "name": "Petra Sphinx",
+              "delta": -0.02410365923014568
+            },
+            {
+              "id": "e26e7c9c-e6de-47f4-8394-7e853408f84c",
+              "name": "Rapid Fire",
+              "delta": -0.021228258555738955
+            },
+            {
+              "id": "df608b59-cc07-4e1d-b6d6-f15e69b15b92",
+              "name": "Seeker",
+              "delta": -0.026175732137810326
+            },
+            {
+              "id": "654dd1e0-a91d-44ee-af20-c025bf360c3f",
+              "name": "Spiritual Sanctuary",
+              "delta": -0.02949421281354825
+            }
+          ]
+        },
+        "table": {
+          "before": 0.7420670501352487,
+          "after": 0.7301237800634277,
+          "beforeCensus": 0.7756619955033963,
+          "afterCensus": 0.7665244810559324,
+          "regressions": [
+            {
+              "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+              "name": "Akron Legionnaire",
+              "delta": -0.026357434990553763
+            },
+            {
+              "id": "cbce1c55-123c-4a05-bde4-18a1601fcc5a",
+              "name": "Amrou Kithkin",
+              "delta": -0.02468407211641299
+            },
+            {
+              "id": "8068c263-e5fa-4449-8887-418e9d0a4da4",
+              "name": "Angelic Voices",
+              "delta": -0.026071714953021408
+            },
+            {
+              "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+              "name": "Cleanse",
+              "delta": -0.034143177936536206
+            },
+            {
+              "id": "db1f578f-fa3b-4447-953b-1490852b6c80",
+              "name": "Clergy of the Holy Nimbus",
+              "delta": -0.02062058447869275
+            },
+            {
+              "id": "b09aee5c-8b9e-46c2-b4d4-508062f8af05",
+              "name": "D'Avenant Archer",
+              "delta": -0.023027623071481318
+            },
+            {
+              "id": "9c78c2f3-2f40-48ad-9dc4-55d1fa399a56",
+              "name": "Divine Offering",
+              "delta": -0.021223384335288253
+            },
+            {
+              "id": "ba1384e5-d140-4074-9548-250af09cb413",
+              "name": "Glyph of Life",
+              "delta": -0.027465523858561047
+            },
+            {
+              "id": "ed2a7333-c9ce-4011-b00e-1304e1eec25e",
+              "name": "Indestructible Aura",
+              "delta": -0.03213202951684613
+            },
+            {
+              "id": "9bf9cccd-fe97-4632-a90a-9eeb0d41135e",
+              "name": "Ivory Guardians",
+              "delta": -0.020415713456720885
+            },
+            {
+              "id": "7e0651ad-6901-4f9b-8807-d66e53a4ada8",
+              "name": "Kismet",
+              "delta": -0.034660181998982686
+            },
+            {
+              "id": "952ba126-0915-47f0-9b6a-a0a6dcd22c6f",
+              "name": "Moat",
+              "delta": -0.022336475216791274
+            },
+            {
+              "id": "f85614b3-62a3-4da9-a74a-7ea40fad1b52",
+              "name": "Osai Vultures",
+              "delta": -0.03395153441893006
+            },
+            {
+              "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+              "name": "Presence of the Master",
+              "delta": -0.03714360789814308
+            },
+            {
+              "id": "a5032bf0-f9c0-4ef0-8ec2-fe7ccea9bdf3",
+              "name": "Shield Wall",
+              "delta": -0.022932613053921025
+            },
+            {
+              "id": "5e2d35f8-3cf6-4843-9030-0e9a885d836c",
+              "name": "Spirit Link",
+              "delta": -0.034027380127043094
+            },
+            {
+              "id": "8f649cb5-e19c-453f-b062-4fd452d92257",
+              "name": "Tundra Wolves",
+              "delta": -0.028621403224471265
+            },
+            {
+              "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+              "name": "Visions",
+              "delta": -0.026728888270694418
+            },
+            {
+              "id": "f5758e82-f901-42b7-b705-0e68ca7ba59e",
+              "name": "Wall of Light",
+              "delta": -0.031923272092945654
+            }
+          ]
+        }
+      },
+      "groups": {
+        "W": {
+          "count": 29,
+          "tiers": {
+            "inspect": {
+              "before": 0.8458503376039948,
+              "after": 0.8290332686555096,
+              "beforeCensus": 0.8312205734935568,
+              "afterCensus": 0.800961233869198,
+              "regressions": [
+                {
+                  "id": "461d7c11-3a7d-42c2-bb6b-0a43779e6842",
+                  "name": "Heaven's Gate",
+                  "delta": -0.020528971371180815
+                },
+                {
+                  "id": "dc60077f-d577-4a6c-a78f-697317024c40",
+                  "name": "Infinite Authority",
+                  "delta": -0.027807924436342724
+                },
+                {
+                  "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+                  "name": "Lifeblood",
+                  "delta": -0.029042723337574627
+                },
+                {
+                  "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+                  "name": "Petra Sphinx",
+                  "delta": -0.02410365923014568
+                },
+                {
+                  "id": "e26e7c9c-e6de-47f4-8394-7e853408f84c",
+                  "name": "Rapid Fire",
+                  "delta": -0.021228258555738955
+                },
+                {
+                  "id": "df608b59-cc07-4e1d-b6d6-f15e69b15b92",
+                  "name": "Seeker",
+                  "delta": -0.026175732137810326
+                },
+                {
+                  "id": "654dd1e0-a91d-44ee-af20-c025bf360c3f",
+                  "name": "Spiritual Sanctuary",
+                  "delta": -0.02949421281354825
+                }
+              ]
+            },
+            "table": {
+              "before": 0.8021994194549855,
+              "after": 0.7755232113743189,
+              "beforeCensus": 0.8209530372528702,
+              "afterCensus": 0.8008683800002832,
+              "regressions": [
+                {
+                  "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+                  "name": "Akron Legionnaire",
+                  "delta": -0.026357434990553763
+                },
+                {
+                  "id": "cbce1c55-123c-4a05-bde4-18a1601fcc5a",
+                  "name": "Amrou Kithkin",
+                  "delta": -0.02468407211641299
+                },
+                {
+                  "id": "8068c263-e5fa-4449-8887-418e9d0a4da4",
+                  "name": "Angelic Voices",
+                  "delta": -0.026071714953021408
+                },
+                {
+                  "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+                  "name": "Cleanse",
+                  "delta": -0.034143177936536206
+                },
+                {
+                  "id": "db1f578f-fa3b-4447-953b-1490852b6c80",
+                  "name": "Clergy of the Holy Nimbus",
+                  "delta": -0.02062058447869275
+                },
+                {
+                  "id": "b09aee5c-8b9e-46c2-b4d4-508062f8af05",
+                  "name": "D'Avenant Archer",
+                  "delta": -0.023027623071481318
+                },
+                {
+                  "id": "9c78c2f3-2f40-48ad-9dc4-55d1fa399a56",
+                  "name": "Divine Offering",
+                  "delta": -0.021223384335288253
+                },
+                {
+                  "id": "ba1384e5-d140-4074-9548-250af09cb413",
+                  "name": "Glyph of Life",
+                  "delta": -0.027465523858561047
+                },
+                {
+                  "id": "ed2a7333-c9ce-4011-b00e-1304e1eec25e",
+                  "name": "Indestructible Aura",
+                  "delta": -0.03213202951684613
+                },
+                {
+                  "id": "9bf9cccd-fe97-4632-a90a-9eeb0d41135e",
+                  "name": "Ivory Guardians",
+                  "delta": -0.020415713456720885
+                },
+                {
+                  "id": "7e0651ad-6901-4f9b-8807-d66e53a4ada8",
+                  "name": "Kismet",
+                  "delta": -0.034660181998982686
+                },
+                {
+                  "id": "952ba126-0915-47f0-9b6a-a0a6dcd22c6f",
+                  "name": "Moat",
+                  "delta": -0.022336475216791274
+                },
+                {
+                  "id": "f85614b3-62a3-4da9-a74a-7ea40fad1b52",
+                  "name": "Osai Vultures",
+                  "delta": -0.03395153441893006
+                },
+                {
+                  "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+                  "name": "Presence of the Master",
+                  "delta": -0.03714360789814308
+                },
+                {
+                  "id": "a5032bf0-f9c0-4ef0-8ec2-fe7ccea9bdf3",
+                  "name": "Shield Wall",
+                  "delta": -0.022932613053921025
+                },
+                {
+                  "id": "5e2d35f8-3cf6-4843-9030-0e9a885d836c",
+                  "name": "Spirit Link",
+                  "delta": -0.034027380127043094
+                },
+                {
+                  "id": "8f649cb5-e19c-453f-b062-4fd452d92257",
+                  "name": "Tundra Wolves",
+                  "delta": -0.028621403224471265
+                },
+                {
+                  "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+                  "name": "Visions",
+                  "delta": -0.026728888270694418
+                },
+                {
+                  "id": "f5758e82-f901-42b7-b705-0e68ca7ba59e",
+                  "name": "Wall of Light",
+                  "delta": -0.031923272092945654
+                }
+              ]
+            }
+          },
+          "decision": "reject"
+        }
+      }
+    },
+    {
+      "set": "mir",
+      "ordinary": 351,
+      "normalized": 135,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "c865d3ab389f9d53bd2fc02ad4cfd3b3b85c841065f5760456dc720fd7f8e592",
+      "beforeHash": "911c035291c5cbec10db8c2ed99878317aec364093a792da0874dc36c520bcd0",
+      "rawHash": "79cc385338c6a06ba4872cf0818aa0735f34336b8aa6a8e2e1c34417d6f4dfcd",
+      "referenceCoverage": {
+        "covered": 44,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 91
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.7484757467759877,
+          "after": 0.8217823871043357,
+          "beforeCensus": 0.7085888473127498,
+          "afterCensus": 0.8146742959956439,
+          "regressions": []
+        },
+        "table": {
+          "before": 0.7208909326887956,
+          "after": 0.7267895896546512,
+          "beforeCensus": 0.7385500847843087,
+          "afterCensus": 0.7817666112172937,
+          "regressions": []
+        }
+      },
+      "groups": {
+        "G": {
+          "count": 48,
+          "tiers": {
+            "inspect": {
+              "before": 0.7709338946370119,
+              "after": 0.8232682412786478,
+              "beforeCensus": 0.7824645142657152,
+              "afterCensus": 0.8638356248073072,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.781328457301153,
+              "after": 0.8124251386617345,
+              "beforeCensus": 0.8059519794209079,
+              "afterCensus": 0.8571258408404214,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        },
+        "W": {
+          "count": 51,
+          "tiers": {
+            "inspect": {
+              "before": 0.7068643522353433,
+              "after": 0.842641973408347,
+              "beforeCensus": 0.6280079123622735,
+              "afterCensus": 0.8126522364037261,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.5927943961120494,
+              "after": 0.6678645894495339,
+              "beforeCensus": 0.6388242072518084,
+              "afterCensus": 0.7596015841760863,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    },
+    {
+      "set": "sth",
+      "ordinary": 143,
+      "normalized": 74,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "d7c2fe4d0e79edd90f5b75519c64efe3bc247328ed23b75c0299918a300e2901",
+      "beforeHash": "932b3ccb884dc7dd76488f0818e282cb2e771f95c6dc4aa1c9bb26a9b64fd017",
+      "rawHash": "889c7bd330976c6de22d0719adf6be6a9d4f48517c56a8b91d81e6747286a9a7",
+      "referenceCoverage": {
+        "covered": 64,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 10
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.8378841792443155,
+          "after": 0.8497567484147086,
+          "beforeCensus": 0.8202949876698112,
+          "afterCensus": 0.852915632911188,
+          "regressions": [
+            {
+              "id": "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+              "name": "Contemplation",
+              "delta": -0.02343909226699792
+            },
+            {
+              "id": "3b21aa2e-df36-4101-89b6-515858f2ab88",
+              "name": "Samite Blessing",
+              "delta": -0.02548767672162744
+            }
+          ]
+        },
+        "table": {
+          "before": 0.7277132068085929,
+          "after": 0.7695210182015813,
+          "beforeCensus": 0.7781735079849648,
+          "afterCensus": 0.8172122611742482,
+          "regressions": [
+            {
+              "id": "79ed559a-9a88-43d2-85d1-4bbec038f71e",
+              "name": "Bandage",
+              "delta": -0.04077816072777296
+            },
+            {
+              "id": "155fc239-c2eb-41cc-9a0a-2414da3c3d7b",
+              "name": "Calming Licid",
+              "delta": -0.03529946262120931
+            },
+            {
+              "id": "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+              "name": "Contemplation",
+              "delta": -0.03375958617331376
+            },
+            {
+              "id": "b3a03c68-0ebe-488a-8e6c-7cbf7a448416",
+              "name": "Nomads en-Kor",
+              "delta": -0.043168908785579885
+            },
+            {
+              "id": "16a9ca33-3e9b-4ed9-b503-a1c09c17ca8b",
+              "name": "Warrior en-Kor",
+              "delta": -0.031452156087431904
+            }
+          ]
+        }
+      },
+      "groups": {
+        "G": {
+          "count": 25,
+          "tiers": {
+            "inspect": {
+              "before": 0.849446958088379,
+              "after": 0.8750577336970424,
+              "beforeCensus": 0.8683476850353543,
+              "afterCensus": 0.9299808473405214,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.8507842600301097,
+              "after": 0.8800239948764993,
+              "beforeCensus": 0.8839650347232716,
+              "afterCensus": 0.9081634613034019,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        },
+        "R": {
+          "count": 13,
+          "tiers": {
+            "inspect": {
+              "before": 0.5844175878441267,
+              "after": 0.7259800648475971,
+              "beforeCensus": 0.6067960178027416,
+              "afterCensus": 0.7227400756254017,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.6507295317214322,
+              "after": 0.7088276497100962,
+              "beforeCensus": 0.6851216759451764,
+              "afterCensus": 0.7506579393569175,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        },
+        "W": {
+          "count": 25,
+          "tiers": {
+            "inspect": {
+              "before": 0.8375960028756642,
+              "after": 0.8325609901454533,
+              "beforeCensus": 0.7703277923423305,
+              "afterCensus": 0.824748623294755,
+              "regressions": [
+                {
+                  "id": "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+                  "name": "Contemplation",
+                  "delta": -0.02343909226699792
+                },
+                {
+                  "id": "3b21aa2e-df36-4101-89b6-515858f2ab88",
+                  "name": "Samite Blessing",
+                  "delta": -0.02548767672162744
+                }
+              ]
+            },
+            "table": {
+              "before": 0.6643261239800928,
+              "after": 0.6654342865064448,
+              "beforeCensus": 0.7288272630910548,
+              "afterCensus": 0.7460142326247379,
+              "regressions": [
+                {
+                  "id": "79ed559a-9a88-43d2-85d1-4bbec038f71e",
+                  "name": "Bandage",
+                  "delta": -0.04077816072777296
+                },
+                {
+                  "id": "155fc239-c2eb-41cc-9a0a-2414da3c3d7b",
+                  "name": "Calming Licid",
+                  "delta": -0.03529946262120931
+                },
+                {
+                  "id": "848672be-b1cd-40ef-a7ed-ce1620aebd2e",
+                  "name": "Contemplation",
+                  "delta": -0.03375958617331376
+                },
+                {
+                  "id": "b3a03c68-0ebe-488a-8e6c-7cbf7a448416",
+                  "name": "Nomads en-Kor",
+                  "delta": -0.043168908785579885
+                },
+                {
+                  "id": "16a9ca33-3e9b-4ed9-b503-a1c09c17ca8b",
+                  "name": "Warrior en-Kor",
+                  "delta": -0.031452156087431904
+                }
+              ]
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    },
+    {
+      "set": "tmp",
+      "ordinary": 350,
+      "normalized": 197,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "08ba68186ffad8fbd984507b801eecc4de7f906d8e1c23a35631d8ddc5d70f6d",
+      "beforeHash": "34bae7e64eb4741b31d9eb44d96127ee30a1ab70afa0f28bfba1c4a11300e90d",
+      "rawHash": "f71c78790271aeb4992e5eccba758119a280e62148bc32b9993bf1be32ea346a",
+      "referenceCoverage": {
+        "covered": 125,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 72
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.7456959852769712,
+          "after": 0.7609947142448454,
+          "beforeCensus": 0.7771612241053104,
+          "afterCensus": 0.7850856437575089,
+          "regressions": [
+            {
+              "id": "e538b359-d893-422d-9d60-5f3e8ee0fa9e",
+              "name": "Capsize",
+              "delta": -0.02462905856061859
+            },
+            {
+              "id": "76a0e317-5a76-4eac-a903-b0e3f0a45873",
+              "name": "Precognition",
+              "delta": -0.02713916854754783
+            },
+            {
+              "id": "57c11175-9feb-4801-9b46-d577d5ecef40",
+              "name": "Shadow Rift",
+              "delta": -0.06761061770446897
+            },
+            {
+              "id": "5fe58a24-f6a6-4858-82a5-0ca1d524efe1",
+              "name": "Spell Blast",
+              "delta": -0.04285348829751445
+            },
+            {
+              "id": "bce63d86-8748-428a-aa9c-d3c0526537a2",
+              "name": "Volrath's Curse",
+              "delta": -0.06339779378725474
+            },
+            {
+              "id": "7ff23780-d183-4cca-ad0c-448ef325bf36",
+              "name": "Apocalypse",
+              "delta": -0.04574694368760812
+            },
+            {
+              "id": "06f39d83-e1ea-45c9-8181-2a2b6e5148da",
+              "name": "Blood Frenzy",
+              "delta": -0.026533098734608185
+            },
+            {
+              "id": "2fa1c529-44e5-41b6-9704-ae2319f31f13",
+              "name": "Boil",
+              "delta": -0.04037488490851393
+            },
+            {
+              "id": "22f84143-5912-43ca-a274-f26ed0dbadd0",
+              "name": "Canyon Drake",
+              "delta": -0.07504763064790476
+            },
+            {
+              "id": "0169e52b-7909-4a8f-8ca2-62f030f9a85a",
+              "name": "Canyon Wildcat",
+              "delta": -0.09284783745590741
+            },
+            {
+              "id": "f2c82741-2869-41f9-82f4-6ed88756e2fd",
+              "name": "Crown of Flames",
+              "delta": -0.023822048786870886
+            },
+            {
+              "id": "46e8240a-d882-4f60-8960-1856284e04a0",
+              "name": "Flowstone Giant",
+              "delta": -0.09539932443476429
+            },
+            {
+              "id": "ee7949c7-ab80-46a1-9cf7-d8e8c004df6e",
+              "name": "Flowstone Wyvern",
+              "delta": -0.05568958292629467
+            },
+            {
+              "id": "bfb43289-35dc-4983-9c49-22b1b3a7d85a",
+              "name": "Giant Strength",
+              "delta": -0.05301258581185864
+            },
+            {
+              "id": "179e954f-1d90-4ef4-b800-25845cc338e2",
+              "name": "Goblin Bombardment",
+              "delta": -0.045750520837710806
+            },
+            {
+              "id": "af4cb86a-db01-4d9a-99e9-bb50ce23507f",
+              "name": "Hand to Hand",
+              "delta": -0.02811038078713668
+            },
+            {
+              "id": "d7b032a1-6e43-4e22-9efa-43cfbf211e1c",
+              "name": "Havoc",
+              "delta": -0.060706834819212796
+            },
+            {
+              "id": "930745eb-b038-4b55-97f3-bf8d99b54d32",
+              "name": "Kindle",
+              "delta": -0.027750035787400762
+            },
+            {
+              "id": "11f6d2a4-cc97-43f3-a8b2-f96262c27371",
+              "name": "Lightning Elemental",
+              "delta": -0.05684755986236045
+            },
+            {
+              "id": "94e9cc0a-c210-4525-8c7f-9c6306cc21b0",
+              "name": "Mogg Raider",
+              "delta": -0.09894818361829916
+            },
+            {
+              "id": "4b267071-42a6-4e25-9c92-5bca32f8d9af",
+              "name": "Mogg Squad",
+              "delta": -0.06220477602855978
+            },
+            {
+              "id": "ae0026c0-8f61-4485-8909-6a44c2ca9169",
+              "name": "Opportunist",
+              "delta": -0.048040319175597146
+            },
+            {
+              "id": "7df61bff-a459-4ddb-a084-f47859a43795",
+              "name": "Rathi Dragon",
+              "delta": -0.08580595512628975
+            },
+            {
+              "id": "eaa61413-3c6a-4895-b8e7-2723e273a952",
+              "name": "Sandstone Warrior",
+              "delta": -0.10974330114736497
+            },
+            {
+              "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+              "name": "Searing Touch",
+              "delta": -0.07160706778170356
+            },
+            {
+              "id": "5fa05258-2ce3-4604-938c-e8c3fb8cf142",
+              "name": "Shatter",
+              "delta": -0.031298650251061044
+            },
+            {
+              "id": "c09c0da6-37a7-42ba-b264-18898ee372f0",
+              "name": "Stun",
+              "delta": -0.07701936400342368
+            },
+            {
+              "id": "1d7fd516-4b0d-407f-b0c2-d656ad160b8d",
+              "name": "Sudden Impact",
+              "delta": -0.044311062744912255
+            },
+            {
+              "id": "36658368-88c8-4c55-8147-f6e581f6af36",
+              "name": "Tahngarth's Rage",
+              "delta": -0.04871203485066866
+            },
+            {
+              "id": "71696093-0867-4889-8fb4-56fa143f9b27",
+              "name": "Tooth and Claw",
+              "delta": -0.08187697161232299
+            },
+            {
+              "id": "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+              "name": "Apes of Rath",
+              "delta": -0.08566219990850366
+            },
+            {
+              "id": "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+              "name": "Bayou Dragonfly",
+              "delta": -0.07940554179862103
+            },
+            {
+              "id": "d43f5349-a3f8-492d-a835-24a9f948741c",
+              "name": "Broken Fall",
+              "delta": -0.055874723351652
+            },
+            {
+              "id": "afc114b0-2e95-4143-a4b6-6537813946e7",
+              "name": "Canopy Spider",
+              "delta": -0.07732668387339758
+            },
+            {
+              "id": "651f89e5-9ce2-4713-aca9-6581005f6ca2",
+              "name": "Charging Rhino",
+              "delta": -0.0684229942248169
+            },
+            {
+              "id": "e2f85205-3c4f-4411-b09c-d1271be56dde",
+              "name": "Choke",
+              "delta": -0.06651455740118162
+            },
+            {
+              "id": "b83e4b36-57c1-493d-ab79-52075990b2d5",
+              "name": "Crazed Armodon",
+              "delta": -0.06795619995575031
+            },
+            {
+              "id": "a9e2df7d-5d72-4a32-a453-6d8611f0d63c",
+              "name": "Dirtcowl Wurm",
+              "delta": -0.025547790578930973
+            },
+            {
+              "id": "9dda7531-82a1-4f49-8858-601ddbc6e2bc",
+              "name": "Earthcraft",
+              "delta": -0.047574245658050796
+            },
+            {
+              "id": "d8531643-5657-44b6-89d1-9cdf67ed09c4",
+              "name": "Eladamri's Vineyard",
+              "delta": -0.06484629877905546
+            },
+            {
+              "id": "0b1689f3-9dfa-4525-90b3-7af15f7eb720",
+              "name": "Eladamri, Lord of Leaves",
+              "delta": -0.0597360136980587
+            },
+            {
+              "id": "29138c1e-11cb-488f-8e04-f5488e08a81e",
+              "name": "Elven Warhounds",
+              "delta": -0.0466202974143588
+            },
+            {
+              "id": "f99c10b5-b93b-40c3-936c-d1b81b49c5a4",
+              "name": "Elvish Fury",
+              "delta": -0.021200970042571377
+            },
+            {
+              "id": "43d246ac-1ca5-4c55-856c-4a83a4d638ab",
+              "name": "Flailing Drake",
+              "delta": -0.05949514932708144
+            },
+            {
+              "id": "afe165cd-8ef7-408e-ae56-3c6a0cc4e409",
+              "name": "Fugitive Druid",
+              "delta": -0.06780906763244099
+            },
+            {
+              "id": "e2b9a001-2a1e-4fc4-9b84-c776f741a858",
+              "name": "Heartwood Dryad",
+              "delta": -0.06637024014136417
+            },
+            {
+              "id": "de263f02-8e3e-4785-9c06-9adc168994f3",
+              "name": "Heartwood Treefolk",
+              "delta": -0.058516905348524606
+            },
+            {
+              "id": "d0175cec-e64c-45c6-9208-76127e76a7cf",
+              "name": "Horned Sliver",
+              "delta": -0.0636388201366811
+            },
+            {
+              "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+              "name": "Krakilin",
+              "delta": -0.03851543282217462
+            },
+            {
+              "id": "73d51a3c-95c0-4810-b847-4b8afd12fd64",
+              "name": "Mirri's Guile",
+              "delta": -0.03743590638387828
+            },
+            {
+              "id": "56b84315-5287-4401-a4c8-34c192423270",
+              "name": "Mongrel Pack",
+              "delta": -0.08018325948874383
+            },
+            {
+              "id": "602a1e1f-4195-48c0-8290-562e7e0db6d8",
+              "name": "Muscle Sliver",
+              "delta": -0.0354156178286974
+            },
+            {
+              "id": "1ff5d12a-8634-468b-86ca-4ba0f7c013ca",
+              "name": "Natural Spring",
+              "delta": -0.045816860597167164
+            },
+            {
+              "id": "a70386c5-053a-46c4-b26d-c6f92f536bed",
+              "name": "Nature's Revolt",
+              "delta": -0.05343257372521926
+            },
+            {
+              "id": "be80dd2d-f595-4d80-84ae-66d3d18e7399",
+              "name": "Needle Storm",
+              "delta": -0.046553429254680645
+            },
+            {
+              "id": "0bf53069-44ac-49c5-83bf-9c3c1274e407",
+              "name": "Nurturing Licid",
+              "delta": -0.04839688593582392
+            },
+            {
+              "id": "0ad7a961-d3a1-471a-8472-8407d1057de0",
+              "name": "Overrun",
+              "delta": -0.06352490429291002
+            },
+            {
+              "id": "dba68902-1e05-414a-8c3d-1f97da61d09d",
+              "name": "Pincher Beetles",
+              "delta": -0.03912192630513989
+            },
+            {
+              "id": "3ffbf716-9c3a-45aa-8fdb-632128cc97e2",
+              "name": "Rampant Growth",
+              "delta": -0.058274616803641655
+            },
+            {
+              "id": "21204f62-c253-4d88-a4cd-7c0f6f0513e0",
+              "name": "Reality Anchor",
+              "delta": -0.041785310502826634
+            },
+            {
+              "id": "229f8a3d-d1a5-46d7-9b1b-e165397e6579",
+              "name": "Reap",
+              "delta": -0.02933067565374481
+            },
+            {
+              "id": "ae984b86-ac6d-45e2-9c8d-0b7ac50021a1",
+              "name": "Recycle",
+              "delta": -0.04164241155153947
+            },
+            {
+              "id": "228a8d29-cc14-49c7-ae24-5847344583ed",
+              "name": "Respite",
+              "delta": -0.04912433068340483
+            },
+            {
+              "id": "99a12b74-f191-4362-81ab-77590ae5e68f",
+              "name": "Root Maze",
+              "delta": -0.04830372131314564
+            },
+            {
+              "id": "9a686ed6-fc13-4882-b56c-667f556d9804",
+              "name": "Rootbreaker Wurm",
+              "delta": -0.06742532607549245
+            },
+            {
+              "id": "d80f7fa7-e7c4-4fc4-99bf-8a8502965fc8",
+              "name": "Scragnoth",
+              "delta": -0.03271904322542252
+            },
+            {
+              "id": "b4bb98ba-d599-4597-911c-2b472fa8817c",
+              "name": "Seeker of Skybreak",
+              "delta": -0.06454644746680971
+            },
+            {
+              "id": "26877a52-dec3-433d-b7a5-767f6cdf2365",
+              "name": "Skyshroud Elf",
+              "delta": -0.06976833007177574
+            },
+            {
+              "id": "efe01296-2b8b-4cdf-a041-a08bebea9c29",
+              "name": "Skyshroud Ranger",
+              "delta": -0.06140822455361894
+            },
+            {
+              "id": "925c488d-79db-47d1-b7be-851f31732026",
+              "name": "Skyshroud Troll",
+              "delta": -0.030879110567082146
+            },
+            {
+              "id": "38f94fd1-6f85-41ad-9674-f05cc893324f",
+              "name": "Trumpeting Armodon",
+              "delta": -0.023984434246578035
+            },
+            {
+              "id": "29bd094c-fcc1-4abf-ba3e-03a5b9b6d1c2",
+              "name": "Verdant Force",
+              "delta": -0.06895335416296455
+            },
+            {
+              "id": "0c79664d-3461-44e7-afe6-33ec54e312ad",
+              "name": "Verdigris",
+              "delta": -0.04747166938532921
+            }
+          ]
+        },
+        "table": {
+          "before": 0.6367399839723541,
+          "after": 0.6627088975286038,
+          "beforeCensus": 0.7724945235464339,
+          "afterCensus": 0.7732575622310669,
+          "regressions": [
+            {
+              "id": "be436b65-9193-45ca-93e0-c5e9718f7e72",
+              "name": "Fighting Drake",
+              "delta": -0.04288021717456347
+            },
+            {
+              "id": "76a0e317-5a76-4eac-a903-b0e3f0a45873",
+              "name": "Precognition",
+              "delta": -0.029750832274031636
+            },
+            {
+              "id": "57c11175-9feb-4801-9b46-d577d5ecef40",
+              "name": "Shadow Rift",
+              "delta": -0.02496462439007463
+            },
+            {
+              "id": "5fe58a24-f6a6-4858-82a5-0ca1d524efe1",
+              "name": "Spell Blast",
+              "delta": -0.033869973345302506
+            },
+            {
+              "id": "69e63f0c-a09f-493d-a8a9-ddcc0a0ca383",
+              "name": "Time Ebb",
+              "delta": -0.02130298734906977
+            },
+            {
+              "id": "bce63d86-8748-428a-aa9c-d3c0526537a2",
+              "name": "Volrath's Curse",
+              "delta": -0.022170355107248185
+            },
+            {
+              "id": "22f84143-5912-43ca-a274-f26ed0dbadd0",
+              "name": "Canyon Drake",
+              "delta": -0.022356578917123393
+            },
+            {
+              "id": "0169e52b-7909-4a8f-8ca2-62f030f9a85a",
+              "name": "Canyon Wildcat",
+              "delta": -0.029808262272278063
+            },
+            {
+              "id": "46e8240a-d882-4f60-8960-1856284e04a0",
+              "name": "Flowstone Giant",
+              "delta": -0.028816770842336803
+            },
+            {
+              "id": "d7b032a1-6e43-4e22-9efa-43cfbf211e1c",
+              "name": "Havoc",
+              "delta": -0.023819831434737315
+            },
+            {
+              "id": "eaa61413-3c6a-4895-b8e7-2723e273a952",
+              "name": "Sandstone Warrior",
+              "delta": -0.0471416185958069
+            },
+            {
+              "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+              "name": "Searing Touch",
+              "delta": -0.02158845979115731
+            },
+            {
+              "id": "c09c0da6-37a7-42ba-b264-18898ee372f0",
+              "name": "Stun",
+              "delta": -0.023296316737504097
+            },
+            {
+              "id": "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+              "name": "Apes of Rath",
+              "delta": -0.04053610444782341
+            },
+            {
+              "id": "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+              "name": "Bayou Dragonfly",
+              "delta": -0.03826861588245012
+            },
+            {
+              "id": "d43f5349-a3f8-492d-a835-24a9f948741c",
+              "name": "Broken Fall",
+              "delta": -0.04335683879862695
+            },
+            {
+              "id": "afc114b0-2e95-4143-a4b6-6537813946e7",
+              "name": "Canopy Spider",
+              "delta": -0.031629600831283966
+            },
+            {
+              "id": "651f89e5-9ce2-4713-aca9-6581005f6ca2",
+              "name": "Charging Rhino",
+              "delta": -0.027960464463505197
+            },
+            {
+              "id": "e2f85205-3c4f-4411-b09c-d1271be56dde",
+              "name": "Choke",
+              "delta": -0.03256086882133147
+            },
+            {
+              "id": "b83e4b36-57c1-493d-ab79-52075990b2d5",
+              "name": "Crazed Armodon",
+              "delta": -0.034705402807386876
+            },
+            {
+              "id": "9dda7531-82a1-4f49-8858-601ddbc6e2bc",
+              "name": "Earthcraft",
+              "delta": -0.032366551933656895
+            },
+            {
+              "id": "d8531643-5657-44b6-89d1-9cdf67ed09c4",
+              "name": "Eladamri's Vineyard",
+              "delta": -0.03406160754900034
+            },
+            {
+              "id": "0b1689f3-9dfa-4525-90b3-7af15f7eb720",
+              "name": "Eladamri, Lord of Leaves",
+              "delta": -0.03793251244647555
+            },
+            {
+              "id": "29138c1e-11cb-488f-8e04-f5488e08a81e",
+              "name": "Elven Warhounds",
+              "delta": -0.027689472893204226
+            },
+            {
+              "id": "43d246ac-1ca5-4c55-856c-4a83a4d638ab",
+              "name": "Flailing Drake",
+              "delta": -0.043303614164543314
+            },
+            {
+              "id": "afe165cd-8ef7-408e-ae56-3c6a0cc4e409",
+              "name": "Fugitive Druid",
+              "delta": -0.03785166037861165
+            },
+            {
+              "id": "3c207142-4880-4935-9827-b91bc7d9d643",
+              "name": "Harrow",
+              "delta": -0.039025524131976796
+            },
+            {
+              "id": "e2b9a001-2a1e-4fc4-9b84-c776f741a858",
+              "name": "Heartwood Dryad",
+              "delta": -0.041888288425347864
+            },
+            {
+              "id": "de263f02-8e3e-4785-9c06-9adc168994f3",
+              "name": "Heartwood Treefolk",
+              "delta": -0.04208828361254069
+            },
+            {
+              "id": "d0175cec-e64c-45c6-9208-76127e76a7cf",
+              "name": "Horned Sliver",
+              "delta": -0.039233329724081445
+            },
+            {
+              "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+              "name": "Krakilin",
+              "delta": -0.039833046640821435
+            },
+            {
+              "id": "56b84315-5287-4401-a4c8-34c192423270",
+              "name": "Mongrel Pack",
+              "delta": -0.045650298446478055
+            },
+            {
+              "id": "602a1e1f-4195-48c0-8290-562e7e0db6d8",
+              "name": "Muscle Sliver",
+              "delta": -0.0334144877323056
+            },
+            {
+              "id": "1ff5d12a-8634-468b-86ca-4ba0f7c013ca",
+              "name": "Natural Spring",
+              "delta": -0.02771717447843891
+            },
+            {
+              "id": "a70386c5-053a-46c4-b26d-c6f92f536bed",
+              "name": "Nature's Revolt",
+              "delta": -0.0378339571943207
+            },
+            {
+              "id": "0bf53069-44ac-49c5-83bf-9c3c1274e407",
+              "name": "Nurturing Licid",
+              "delta": -0.035766827367463616
+            },
+            {
+              "id": "0ad7a961-d3a1-471a-8472-8407d1057de0",
+              "name": "Overrun",
+              "delta": -0.035001824714230745
+            },
+            {
+              "id": "3ffbf716-9c3a-45aa-8fdb-632128cc97e2",
+              "name": "Rampant Growth",
+              "delta": -0.05309380326750612
+            },
+            {
+              "id": "229f8a3d-d1a5-46d7-9b1b-e165397e6579",
+              "name": "Reap",
+              "delta": -0.041324580453522275
+            },
+            {
+              "id": "ae984b86-ac6d-45e2-9c8d-0b7ac50021a1",
+              "name": "Recycle",
+              "delta": -0.02536740825460493
+            },
+            {
+              "id": "99a12b74-f191-4362-81ab-77590ae5e68f",
+              "name": "Root Maze",
+              "delta": -0.04627115252873781
+            },
+            {
+              "id": "9a686ed6-fc13-4882-b56c-667f556d9804",
+              "name": "Rootbreaker Wurm",
+              "delta": -0.020738793657745003
+            },
+            {
+              "id": "03ce4d5d-63cb-47b6-94ce-2063977db9b4",
+              "name": "Rootwalla",
+              "delta": -0.024772984377324336
+            },
+            {
+              "id": "d80f7fa7-e7c4-4fc4-99bf-8a8502965fc8",
+              "name": "Scragnoth",
+              "delta": -0.0473634449540592
+            },
+            {
+              "id": "b4bb98ba-d599-4597-911c-2b472fa8817c",
+              "name": "Seeker of Skybreak",
+              "delta": -0.02997092430296977
+            },
+            {
+              "id": "26877a52-dec3-433d-b7a5-767f6cdf2365",
+              "name": "Skyshroud Elf",
+              "delta": -0.032956654160433585
+            },
+            {
+              "id": "29bd094c-fcc1-4abf-ba3e-03a5b9b6d1c2",
+              "name": "Verdant Force",
+              "delta": -0.04053608085541227
+            },
+            {
+              "id": "0c79664d-3461-44e7-afe6-33ec54e312ad",
+              "name": "Verdigris",
+              "delta": -0.04650083154311635
+            }
+          ]
+        }
+      },
+      "groups": {
+        "G": {
+          "count": 53,
+          "tiers": {
+            "inspect": {
+              "before": 0.8124321602057196,
+              "after": 0.7689685518460823,
+              "beforeCensus": 0.8506687506554951,
+              "afterCensus": 0.8008287791262343,
+              "regressions": [
+                {
+                  "id": "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+                  "name": "Apes of Rath",
+                  "delta": -0.08566219990850366
+                },
+                {
+                  "id": "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+                  "name": "Bayou Dragonfly",
+                  "delta": -0.07940554179862103
+                },
+                {
+                  "id": "d43f5349-a3f8-492d-a835-24a9f948741c",
+                  "name": "Broken Fall",
+                  "delta": -0.055874723351652
+                },
+                {
+                  "id": "afc114b0-2e95-4143-a4b6-6537813946e7",
+                  "name": "Canopy Spider",
+                  "delta": -0.07732668387339758
+                },
+                {
+                  "id": "651f89e5-9ce2-4713-aca9-6581005f6ca2",
+                  "name": "Charging Rhino",
+                  "delta": -0.0684229942248169
+                },
+                {
+                  "id": "e2f85205-3c4f-4411-b09c-d1271be56dde",
+                  "name": "Choke",
+                  "delta": -0.06651455740118162
+                },
+                {
+                  "id": "b83e4b36-57c1-493d-ab79-52075990b2d5",
+                  "name": "Crazed Armodon",
+                  "delta": -0.06795619995575031
+                },
+                {
+                  "id": "a9e2df7d-5d72-4a32-a453-6d8611f0d63c",
+                  "name": "Dirtcowl Wurm",
+                  "delta": -0.025547790578930973
+                },
+                {
+                  "id": "9dda7531-82a1-4f49-8858-601ddbc6e2bc",
+                  "name": "Earthcraft",
+                  "delta": -0.047574245658050796
+                },
+                {
+                  "id": "d8531643-5657-44b6-89d1-9cdf67ed09c4",
+                  "name": "Eladamri's Vineyard",
+                  "delta": -0.06484629877905546
+                },
+                {
+                  "id": "0b1689f3-9dfa-4525-90b3-7af15f7eb720",
+                  "name": "Eladamri, Lord of Leaves",
+                  "delta": -0.0597360136980587
+                },
+                {
+                  "id": "29138c1e-11cb-488f-8e04-f5488e08a81e",
+                  "name": "Elven Warhounds",
+                  "delta": -0.0466202974143588
+                },
+                {
+                  "id": "f99c10b5-b93b-40c3-936c-d1b81b49c5a4",
+                  "name": "Elvish Fury",
+                  "delta": -0.021200970042571377
+                },
+                {
+                  "id": "43d246ac-1ca5-4c55-856c-4a83a4d638ab",
+                  "name": "Flailing Drake",
+                  "delta": -0.05949514932708144
+                },
+                {
+                  "id": "afe165cd-8ef7-408e-ae56-3c6a0cc4e409",
+                  "name": "Fugitive Druid",
+                  "delta": -0.06780906763244099
+                },
+                {
+                  "id": "e2b9a001-2a1e-4fc4-9b84-c776f741a858",
+                  "name": "Heartwood Dryad",
+                  "delta": -0.06637024014136417
+                },
+                {
+                  "id": "de263f02-8e3e-4785-9c06-9adc168994f3",
+                  "name": "Heartwood Treefolk",
+                  "delta": -0.058516905348524606
+                },
+                {
+                  "id": "d0175cec-e64c-45c6-9208-76127e76a7cf",
+                  "name": "Horned Sliver",
+                  "delta": -0.0636388201366811
+                },
+                {
+                  "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+                  "name": "Krakilin",
+                  "delta": -0.03851543282217462
+                },
+                {
+                  "id": "73d51a3c-95c0-4810-b847-4b8afd12fd64",
+                  "name": "Mirri's Guile",
+                  "delta": -0.03743590638387828
+                },
+                {
+                  "id": "56b84315-5287-4401-a4c8-34c192423270",
+                  "name": "Mongrel Pack",
+                  "delta": -0.08018325948874383
+                },
+                {
+                  "id": "602a1e1f-4195-48c0-8290-562e7e0db6d8",
+                  "name": "Muscle Sliver",
+                  "delta": -0.0354156178286974
+                },
+                {
+                  "id": "1ff5d12a-8634-468b-86ca-4ba0f7c013ca",
+                  "name": "Natural Spring",
+                  "delta": -0.045816860597167164
+                },
+                {
+                  "id": "a70386c5-053a-46c4-b26d-c6f92f536bed",
+                  "name": "Nature's Revolt",
+                  "delta": -0.05343257372521926
+                },
+                {
+                  "id": "be80dd2d-f595-4d80-84ae-66d3d18e7399",
+                  "name": "Needle Storm",
+                  "delta": -0.046553429254680645
+                },
+                {
+                  "id": "0bf53069-44ac-49c5-83bf-9c3c1274e407",
+                  "name": "Nurturing Licid",
+                  "delta": -0.04839688593582392
+                },
+                {
+                  "id": "0ad7a961-d3a1-471a-8472-8407d1057de0",
+                  "name": "Overrun",
+                  "delta": -0.06352490429291002
+                },
+                {
+                  "id": "dba68902-1e05-414a-8c3d-1f97da61d09d",
+                  "name": "Pincher Beetles",
+                  "delta": -0.03912192630513989
+                },
+                {
+                  "id": "3ffbf716-9c3a-45aa-8fdb-632128cc97e2",
+                  "name": "Rampant Growth",
+                  "delta": -0.058274616803641655
+                },
+                {
+                  "id": "21204f62-c253-4d88-a4cd-7c0f6f0513e0",
+                  "name": "Reality Anchor",
+                  "delta": -0.041785310502826634
+                },
+                {
+                  "id": "229f8a3d-d1a5-46d7-9b1b-e165397e6579",
+                  "name": "Reap",
+                  "delta": -0.02933067565374481
+                },
+                {
+                  "id": "ae984b86-ac6d-45e2-9c8d-0b7ac50021a1",
+                  "name": "Recycle",
+                  "delta": -0.04164241155153947
+                },
+                {
+                  "id": "228a8d29-cc14-49c7-ae24-5847344583ed",
+                  "name": "Respite",
+                  "delta": -0.04912433068340483
+                },
+                {
+                  "id": "99a12b74-f191-4362-81ab-77590ae5e68f",
+                  "name": "Root Maze",
+                  "delta": -0.04830372131314564
+                },
+                {
+                  "id": "9a686ed6-fc13-4882-b56c-667f556d9804",
+                  "name": "Rootbreaker Wurm",
+                  "delta": -0.06742532607549245
+                },
+                {
+                  "id": "d80f7fa7-e7c4-4fc4-99bf-8a8502965fc8",
+                  "name": "Scragnoth",
+                  "delta": -0.03271904322542252
+                },
+                {
+                  "id": "b4bb98ba-d599-4597-911c-2b472fa8817c",
+                  "name": "Seeker of Skybreak",
+                  "delta": -0.06454644746680971
+                },
+                {
+                  "id": "26877a52-dec3-433d-b7a5-767f6cdf2365",
+                  "name": "Skyshroud Elf",
+                  "delta": -0.06976833007177574
+                },
+                {
+                  "id": "efe01296-2b8b-4cdf-a041-a08bebea9c29",
+                  "name": "Skyshroud Ranger",
+                  "delta": -0.06140822455361894
+                },
+                {
+                  "id": "925c488d-79db-47d1-b7be-851f31732026",
+                  "name": "Skyshroud Troll",
+                  "delta": -0.030879110567082146
+                },
+                {
+                  "id": "38f94fd1-6f85-41ad-9674-f05cc893324f",
+                  "name": "Trumpeting Armodon",
+                  "delta": -0.023984434246578035
+                },
+                {
+                  "id": "29bd094c-fcc1-4abf-ba3e-03a5b9b6d1c2",
+                  "name": "Verdant Force",
+                  "delta": -0.06895335416296455
+                },
+                {
+                  "id": "0c79664d-3461-44e7-afe6-33ec54e312ad",
+                  "name": "Verdigris",
+                  "delta": -0.04747166938532921
+                }
+              ]
+            },
+            "table": {
+              "before": 0.7593486147079354,
+              "after": 0.7339648797165568,
+              "beforeCensus": 0.8519863416981396,
+              "afterCensus": 0.8328830705925709,
+              "regressions": [
+                {
+                  "id": "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+                  "name": "Apes of Rath",
+                  "delta": -0.04053610444782341
+                },
+                {
+                  "id": "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+                  "name": "Bayou Dragonfly",
+                  "delta": -0.03826861588245012
+                },
+                {
+                  "id": "d43f5349-a3f8-492d-a835-24a9f948741c",
+                  "name": "Broken Fall",
+                  "delta": -0.04335683879862695
+                },
+                {
+                  "id": "afc114b0-2e95-4143-a4b6-6537813946e7",
+                  "name": "Canopy Spider",
+                  "delta": -0.031629600831283966
+                },
+                {
+                  "id": "651f89e5-9ce2-4713-aca9-6581005f6ca2",
+                  "name": "Charging Rhino",
+                  "delta": -0.027960464463505197
+                },
+                {
+                  "id": "e2f85205-3c4f-4411-b09c-d1271be56dde",
+                  "name": "Choke",
+                  "delta": -0.03256086882133147
+                },
+                {
+                  "id": "b83e4b36-57c1-493d-ab79-52075990b2d5",
+                  "name": "Crazed Armodon",
+                  "delta": -0.034705402807386876
+                },
+                {
+                  "id": "9dda7531-82a1-4f49-8858-601ddbc6e2bc",
+                  "name": "Earthcraft",
+                  "delta": -0.032366551933656895
+                },
+                {
+                  "id": "d8531643-5657-44b6-89d1-9cdf67ed09c4",
+                  "name": "Eladamri's Vineyard",
+                  "delta": -0.03406160754900034
+                },
+                {
+                  "id": "0b1689f3-9dfa-4525-90b3-7af15f7eb720",
+                  "name": "Eladamri, Lord of Leaves",
+                  "delta": -0.03793251244647555
+                },
+                {
+                  "id": "29138c1e-11cb-488f-8e04-f5488e08a81e",
+                  "name": "Elven Warhounds",
+                  "delta": -0.027689472893204226
+                },
+                {
+                  "id": "43d246ac-1ca5-4c55-856c-4a83a4d638ab",
+                  "name": "Flailing Drake",
+                  "delta": -0.043303614164543314
+                },
+                {
+                  "id": "afe165cd-8ef7-408e-ae56-3c6a0cc4e409",
+                  "name": "Fugitive Druid",
+                  "delta": -0.03785166037861165
+                },
+                {
+                  "id": "3c207142-4880-4935-9827-b91bc7d9d643",
+                  "name": "Harrow",
+                  "delta": -0.039025524131976796
+                },
+                {
+                  "id": "e2b9a001-2a1e-4fc4-9b84-c776f741a858",
+                  "name": "Heartwood Dryad",
+                  "delta": -0.041888288425347864
+                },
+                {
+                  "id": "de263f02-8e3e-4785-9c06-9adc168994f3",
+                  "name": "Heartwood Treefolk",
+                  "delta": -0.04208828361254069
+                },
+                {
+                  "id": "d0175cec-e64c-45c6-9208-76127e76a7cf",
+                  "name": "Horned Sliver",
+                  "delta": -0.039233329724081445
+                },
+                {
+                  "id": "a90442e8-9d22-4767-9e08-bd314169ea70",
+                  "name": "Krakilin",
+                  "delta": -0.039833046640821435
+                },
+                {
+                  "id": "56b84315-5287-4401-a4c8-34c192423270",
+                  "name": "Mongrel Pack",
+                  "delta": -0.045650298446478055
+                },
+                {
+                  "id": "602a1e1f-4195-48c0-8290-562e7e0db6d8",
+                  "name": "Muscle Sliver",
+                  "delta": -0.0334144877323056
+                },
+                {
+                  "id": "1ff5d12a-8634-468b-86ca-4ba0f7c013ca",
+                  "name": "Natural Spring",
+                  "delta": -0.02771717447843891
+                },
+                {
+                  "id": "a70386c5-053a-46c4-b26d-c6f92f536bed",
+                  "name": "Nature's Revolt",
+                  "delta": -0.0378339571943207
+                },
+                {
+                  "id": "0bf53069-44ac-49c5-83bf-9c3c1274e407",
+                  "name": "Nurturing Licid",
+                  "delta": -0.035766827367463616
+                },
+                {
+                  "id": "0ad7a961-d3a1-471a-8472-8407d1057de0",
+                  "name": "Overrun",
+                  "delta": -0.035001824714230745
+                },
+                {
+                  "id": "3ffbf716-9c3a-45aa-8fdb-632128cc97e2",
+                  "name": "Rampant Growth",
+                  "delta": -0.05309380326750612
+                },
+                {
+                  "id": "229f8a3d-d1a5-46d7-9b1b-e165397e6579",
+                  "name": "Reap",
+                  "delta": -0.041324580453522275
+                },
+                {
+                  "id": "ae984b86-ac6d-45e2-9c8d-0b7ac50021a1",
+                  "name": "Recycle",
+                  "delta": -0.02536740825460493
+                },
+                {
+                  "id": "99a12b74-f191-4362-81ab-77590ae5e68f",
+                  "name": "Root Maze",
+                  "delta": -0.04627115252873781
+                },
+                {
+                  "id": "9a686ed6-fc13-4882-b56c-667f556d9804",
+                  "name": "Rootbreaker Wurm",
+                  "delta": -0.020738793657745003
+                },
+                {
+                  "id": "03ce4d5d-63cb-47b6-94ce-2063977db9b4",
+                  "name": "Rootwalla",
+                  "delta": -0.024772984377324336
+                },
+                {
+                  "id": "d80f7fa7-e7c4-4fc4-99bf-8a8502965fc8",
+                  "name": "Scragnoth",
+                  "delta": -0.0473634449540592
+                },
+                {
+                  "id": "b4bb98ba-d599-4597-911c-2b472fa8817c",
+                  "name": "Seeker of Skybreak",
+                  "delta": -0.02997092430296977
+                },
+                {
+                  "id": "26877a52-dec3-433d-b7a5-767f6cdf2365",
+                  "name": "Skyshroud Elf",
+                  "delta": -0.032956654160433585
+                },
+                {
+                  "id": "29bd094c-fcc1-4abf-ba3e-03a5b9b6d1c2",
+                  "name": "Verdant Force",
+                  "delta": -0.04053608085541227
+                },
+                {
+                  "id": "0c79664d-3461-44e7-afe6-33ec54e312ad",
+                  "name": "Verdigris",
+                  "delta": -0.04650083154311635
+                }
+              ]
+            }
+          },
+          "decision": "reject"
+        },
+        "R": {
+          "count": 44,
+          "tiers": {
+            "inspect": {
+              "before": 0.5864435753923226,
+              "after": 0.5691743776201813,
+              "beforeCensus": 0.6471286111482639,
+              "afterCensus": 0.6102462792432224,
+              "regressions": [
+                {
+                  "id": "7ff23780-d183-4cca-ad0c-448ef325bf36",
+                  "name": "Apocalypse",
+                  "delta": -0.04574694368760812
+                },
+                {
+                  "id": "06f39d83-e1ea-45c9-8181-2a2b6e5148da",
+                  "name": "Blood Frenzy",
+                  "delta": -0.026533098734608185
+                },
+                {
+                  "id": "2fa1c529-44e5-41b6-9704-ae2319f31f13",
+                  "name": "Boil",
+                  "delta": -0.04037488490851393
+                },
+                {
+                  "id": "22f84143-5912-43ca-a274-f26ed0dbadd0",
+                  "name": "Canyon Drake",
+                  "delta": -0.07504763064790476
+                },
+                {
+                  "id": "0169e52b-7909-4a8f-8ca2-62f030f9a85a",
+                  "name": "Canyon Wildcat",
+                  "delta": -0.09284783745590741
+                },
+                {
+                  "id": "f2c82741-2869-41f9-82f4-6ed88756e2fd",
+                  "name": "Crown of Flames",
+                  "delta": -0.023822048786870886
+                },
+                {
+                  "id": "46e8240a-d882-4f60-8960-1856284e04a0",
+                  "name": "Flowstone Giant",
+                  "delta": -0.09539932443476429
+                },
+                {
+                  "id": "ee7949c7-ab80-46a1-9cf7-d8e8c004df6e",
+                  "name": "Flowstone Wyvern",
+                  "delta": -0.05568958292629467
+                },
+                {
+                  "id": "bfb43289-35dc-4983-9c49-22b1b3a7d85a",
+                  "name": "Giant Strength",
+                  "delta": -0.05301258581185864
+                },
+                {
+                  "id": "179e954f-1d90-4ef4-b800-25845cc338e2",
+                  "name": "Goblin Bombardment",
+                  "delta": -0.045750520837710806
+                },
+                {
+                  "id": "af4cb86a-db01-4d9a-99e9-bb50ce23507f",
+                  "name": "Hand to Hand",
+                  "delta": -0.02811038078713668
+                },
+                {
+                  "id": "d7b032a1-6e43-4e22-9efa-43cfbf211e1c",
+                  "name": "Havoc",
+                  "delta": -0.060706834819212796
+                },
+                {
+                  "id": "930745eb-b038-4b55-97f3-bf8d99b54d32",
+                  "name": "Kindle",
+                  "delta": -0.027750035787400762
+                },
+                {
+                  "id": "11f6d2a4-cc97-43f3-a8b2-f96262c27371",
+                  "name": "Lightning Elemental",
+                  "delta": -0.05684755986236045
+                },
+                {
+                  "id": "94e9cc0a-c210-4525-8c7f-9c6306cc21b0",
+                  "name": "Mogg Raider",
+                  "delta": -0.09894818361829916
+                },
+                {
+                  "id": "4b267071-42a6-4e25-9c92-5bca32f8d9af",
+                  "name": "Mogg Squad",
+                  "delta": -0.06220477602855978
+                },
+                {
+                  "id": "ae0026c0-8f61-4485-8909-6a44c2ca9169",
+                  "name": "Opportunist",
+                  "delta": -0.048040319175597146
+                },
+                {
+                  "id": "7df61bff-a459-4ddb-a084-f47859a43795",
+                  "name": "Rathi Dragon",
+                  "delta": -0.08580595512628975
+                },
+                {
+                  "id": "eaa61413-3c6a-4895-b8e7-2723e273a952",
+                  "name": "Sandstone Warrior",
+                  "delta": -0.10974330114736497
+                },
+                {
+                  "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+                  "name": "Searing Touch",
+                  "delta": -0.07160706778170356
+                },
+                {
+                  "id": "5fa05258-2ce3-4604-938c-e8c3fb8cf142",
+                  "name": "Shatter",
+                  "delta": -0.031298650251061044
+                },
+                {
+                  "id": "c09c0da6-37a7-42ba-b264-18898ee372f0",
+                  "name": "Stun",
+                  "delta": -0.07701936400342368
+                },
+                {
+                  "id": "1d7fd516-4b0d-407f-b0c2-d656ad160b8d",
+                  "name": "Sudden Impact",
+                  "delta": -0.044311062744912255
+                },
+                {
+                  "id": "36658368-88c8-4c55-8147-f6e581f6af36",
+                  "name": "Tahngarth's Rage",
+                  "delta": -0.04871203485066866
+                },
+                {
+                  "id": "71696093-0867-4889-8fb4-56fa143f9b27",
+                  "name": "Tooth and Claw",
+                  "delta": -0.08187697161232299
+                }
+              ]
+            },
+            "table": {
+              "before": 0.5879399655148028,
+              "after": 0.5973734839409718,
+              "beforeCensus": 0.6746363568102502,
+              "afterCensus": 0.693963750657872,
+              "regressions": [
+                {
+                  "id": "22f84143-5912-43ca-a274-f26ed0dbadd0",
+                  "name": "Canyon Drake",
+                  "delta": -0.022356578917123393
+                },
+                {
+                  "id": "0169e52b-7909-4a8f-8ca2-62f030f9a85a",
+                  "name": "Canyon Wildcat",
+                  "delta": -0.029808262272278063
+                },
+                {
+                  "id": "46e8240a-d882-4f60-8960-1856284e04a0",
+                  "name": "Flowstone Giant",
+                  "delta": -0.028816770842336803
+                },
+                {
+                  "id": "d7b032a1-6e43-4e22-9efa-43cfbf211e1c",
+                  "name": "Havoc",
+                  "delta": -0.023819831434737315
+                },
+                {
+                  "id": "eaa61413-3c6a-4895-b8e7-2723e273a952",
+                  "name": "Sandstone Warrior",
+                  "delta": -0.0471416185958069
+                },
+                {
+                  "id": "e9091667-d5a8-4978-9023-032ff65f9642",
+                  "name": "Searing Touch",
+                  "delta": -0.02158845979115731
+                },
+                {
+                  "id": "c09c0da6-37a7-42ba-b264-18898ee372f0",
+                  "name": "Stun",
+                  "delta": -0.023296316737504097
+                }
+              ]
+            }
+          },
+          "decision": "reject"
+        },
+        "U": {
+          "count": 19,
+          "tiers": {
+            "inspect": {
+              "before": 0.5698153354927381,
+              "after": 0.6020185895759236,
+              "beforeCensus": 0.6364475345142476,
+              "afterCensus": 0.6440285222061242,
+              "regressions": [
+                {
+                  "id": "e538b359-d893-422d-9d60-5f3e8ee0fa9e",
+                  "name": "Capsize",
+                  "delta": -0.02462905856061859
+                },
+                {
+                  "id": "76a0e317-5a76-4eac-a903-b0e3f0a45873",
+                  "name": "Precognition",
+                  "delta": -0.02713916854754783
+                },
+                {
+                  "id": "57c11175-9feb-4801-9b46-d577d5ecef40",
+                  "name": "Shadow Rift",
+                  "delta": -0.06761061770446897
+                },
+                {
+                  "id": "5fe58a24-f6a6-4858-82a5-0ca1d524efe1",
+                  "name": "Spell Blast",
+                  "delta": -0.04285348829751445
+                },
+                {
+                  "id": "bce63d86-8748-428a-aa9c-d3c0526537a2",
+                  "name": "Volrath's Curse",
+                  "delta": -0.06339779378725474
+                }
+              ]
+            },
+            "table": {
+              "before": 0.5813768682497173,
+              "after": 0.5952474400276744,
+              "beforeCensus": 0.6387609585194252,
+              "afterCensus": 0.6508822122755711,
+              "regressions": [
+                {
+                  "id": "be436b65-9193-45ca-93e0-c5e9718f7e72",
+                  "name": "Fighting Drake",
+                  "delta": -0.04288021717456347
+                },
+                {
+                  "id": "76a0e317-5a76-4eac-a903-b0e3f0a45873",
+                  "name": "Precognition",
+                  "delta": -0.029750832274031636
+                },
+                {
+                  "id": "57c11175-9feb-4801-9b46-d577d5ecef40",
+                  "name": "Shadow Rift",
+                  "delta": -0.02496462439007463
+                },
+                {
+                  "id": "5fe58a24-f6a6-4858-82a5-0ca1d524efe1",
+                  "name": "Spell Blast",
+                  "delta": -0.033869973345302506
+                },
+                {
+                  "id": "69e63f0c-a09f-493d-a8a9-ddcc0a0ca383",
+                  "name": "Time Ebb",
+                  "delta": -0.02130298734906977
+                },
+                {
+                  "id": "bce63d86-8748-428a-aa9c-d3c0526537a2",
+                  "name": "Volrath's Curse",
+                  "delta": -0.022170355107248185
+                }
+              ]
+            }
+          },
+          "decision": "retain-for-final-capture"
+        },
+        "W": {
+          "count": 47,
+          "tiers": {
+            "inspect": {
+              "before": 0.6997288399138799,
+              "after": 0.8108932110590957,
+              "beforeCensus": 0.7290409609145023,
+              "afterCensus": 0.8048613577456007,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.5816375012444763,
+              "after": 0.6265705879145782,
+              "beforeCensus": 0.7350372313083213,
+              "afterCensus": 0.7488308640297296,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    },
+    {
+      "set": "vis",
+      "ordinary": 167,
+      "normalized": 71,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "ca4675cb4dc6f87727bd955b711bccc67370fd8f42254dd87f4c2a8cd8f303dd",
+      "beforeHash": "31d29d1a4336e0dba539fb07468b64f27eab23dfa1a0c8d38c315aa1d5703eb4",
+      "rawHash": "aadec8eefc806cd5e583033b3dfe957d524237f7001c2e8394e370267c74d998",
+      "referenceCoverage": {
+        "covered": 28,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 43
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.7702556944074997,
+          "after": 0.7986087553227625,
+          "beforeCensus": 0.7688272610644087,
+          "afterCensus": 0.8548002897956795,
+          "regressions": []
+        },
+        "table": {
+          "before": 0.6468074895587703,
+          "after": 0.7100106273231683,
+          "beforeCensus": 0.7718893565398164,
+          "afterCensus": 0.8364589766233035,
+          "regressions": []
+        }
+      },
+      "groups": {
+        "W": {
+          "count": 25,
+          "tiers": {
+            "inspect": {
+              "before": 0.7417600034199727,
+              "after": 0.7922656472446759,
+              "beforeCensus": 0.7377593521288077,
+              "afterCensus": 0.8587513798718263,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.6022602468498719,
+              "after": 0.7004541346614006,
+              "beforeCensus": 0.7467357052716974,
+              "afterCensus": 0.8360029777081571,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    },
+    {
+      "set": "wth",
+      "ordinary": 167,
+      "normalized": 69,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "0b2b55f629efebfe6f4a37b52db107acc089d94beb49cd5d7ded3e8b3054ff28",
+      "beforeHash": "9f8dd58830f05f3ababd0af1c2f4adf70266c1b7d22fed0d79d84be3eae02841",
+      "rawHash": "1bd483cdb7d7d3c78bd65431b9f83e61f44293c2336345af57ebc4bc80598bc3",
+      "referenceCoverage": {
+        "covered": 34,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 35
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.774698755806932,
+          "after": 0.825593099268592,
+          "beforeCensus": 0.7416633192539965,
+          "afterCensus": 0.8292263184768014,
+          "regressions": []
+        },
+        "table": {
+          "before": 0.6723477496515773,
+          "after": 0.7428672848253559,
+          "beforeCensus": 0.7412324929462374,
+          "afterCensus": 0.79039179733541,
+          "regressions": []
+        }
+      },
+      "groups": {
+        "W": {
+          "count": 29,
+          "tiers": {
+            "inspect": {
+              "before": 0.7230198141550501,
+              "after": 0.7966127609702931,
+              "beforeCensus": 0.7051853492900393,
+              "afterCensus": 0.821307844750004,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.635948467509302,
+              "after": 0.7061932669290338,
+              "beforeCensus": 0.6927440917165735,
+              "afterCensus": 0.7497274522367221,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    },
+    {
+      "set": "hml",
+      "ordinary": 140,
+      "normalized": 32,
+      "controls": 8,
+      "captureFailures": 0,
+      "afterHash": "346c219ed45015a770a9b7ae9836234cb63217851d5d1440455b2445d6680ada",
+      "beforeHash": "afa3a4ce720d7714910280e165aa230efd20bc821c37995d821e41d851c81fa8",
+      "rawHash": "150a2573e100aa54d4f10c9431d01a3d2c49b8217929cfb2c7205f112966728d",
+      "referenceCoverage": {
+        "covered": 27,
+        "near-edge": 0,
+        "clipped": 0,
+        "unknown": 5
+      },
+      "tiers": {
+        "inspect": {
+          "before": 0.4256509345139067,
+          "after": 0.68526834139362,
+          "beforeCensus": 0.5368043074116108,
+          "afterCensus": 0.7945282909295076,
+          "regressions": []
+        },
+        "table": {
+          "before": 0.4614374419597359,
+          "after": 0.5782122707210264,
+          "beforeCensus": 0.5215366668687351,
+          "afterCensus": 0.7170277385341769,
+          "regressions": []
+        }
+      },
+      "groups": {
+        "R": {
+          "count": 23,
+          "tiers": {
+            "inspect": {
+              "before": 0.4193978000895196,
+              "after": 0.6916454536598535,
+              "beforeCensus": 0.5357132319421537,
+              "afterCensus": 0.8008725846701796,
+              "regressions": []
+            },
+            "table": {
+              "before": 0.4599029150049426,
+              "after": 0.5893915501193833,
+              "beforeCensus": 0.5169256909326085,
+              "afterCensus": 0.7207616192355604,
+              "regressions": []
+            }
+          },
+          "decision": "retain-for-final-capture"
+        }
+      }
+    }
+  ]
+}

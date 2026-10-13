@@ -6,7 +6,13 @@ import { WIDTH, HEIGHT } from './pixels.mjs';
 import { normalizedGrayRegion } from './normalized-gray-region.mjs';
 
 export const regionMethodHash = hash(
-  await readFile(new URL('./normalized-gray-region.mjs', import.meta.url)),
+  Buffer.concat(
+    await Promise.all(
+      ['normalized-gray-region.mjs', 'scan-transform.mjs'].map((file) =>
+        readFile(new URL(file, import.meta.url)),
+      ),
+    ),
+  ),
 );
 
 /** Analysis cache only. Source bytes are still hashed on every call; a warm hit

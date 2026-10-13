@@ -1,0 +1,2169 @@
+{
+  "schemaVersion": 1,
+  "method": "old-frame-shared-similarity-v1",
+  "set": "drk",
+  "printedFrame": "1993",
+  "border": "black",
+  "frameFamily": "seventh",
+  "anchor": "outer-stock",
+  "coordinateSystem": "488x680; references only; pAfter=center+scale*(pBefore-center)+(tx,ty), center=(244,340); pixels.normalize handles source resolution/letterboxing first",
+  "scope": {
+    "materials": ["W", "U", "R", "A"],
+    "layouts": ["normal"],
+    "frameFamily": "retro-seventh",
+    "excludes": [
+      "land assets not explicitly guarded",
+      "tokens",
+      "special layouts",
+      "other sets or stocks"
+    ]
+  },
+  "policy": "One shared translation and uniform scale fitted on frozen calibration cards to the retained painter outer printed plate, equally weighted by material. No text, art, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. ABU black stock uses normalized gradient profiles of the plate border to separate its narrow bevel from the adjacent cast shadow and faint bitmap edge. Other families use stock boundaries. Residual opposed boundaries remain a source-geometry diagnostic.",
+  "guards": {
+    "sources": [
+      {
+        "material": "W",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "2fc988fc7aeb82d6183200dbfdb9e0de5196197ada5d8e4eac7afff24cec2091",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "c5357b93c1c1388d007987396b24cde2c99438b4384f235c3542398334da438e",
+        "file": "drk-W.png"
+      },
+      {
+        "material": "U",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "97aa1032bcf40d868cd7ffa9c188484248d362d2663c93314dac91a33110f7fc",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "d4ab05825103638db05dbe3254701825920f97f6cd0174bc41c554c5acd569bf",
+        "file": "drk-U.png"
+      },
+      {
+        "material": "R",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "1c431fa93806d76cbdbfe540d7cc0c0b8642dc8e230f2d95d82efaca24a35f8b",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "f676ecef929ba4d1838d987df8ccfbfd7b058a77bad2995f964c06be96046faf",
+        "file": "drk-R.png"
+      },
+      {
+        "material": "A",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+        "rect": [0, 0, 1, 1],
+        "sha256": "39a8a5806460b165226f052e31eeb44296872f93ed5c9a8eaba315696dc62f34",
+        "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+        "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+        "renderedHash": "d2141222df6afeda1e99e4b624c508caf2621b018a23b19c635b2a67d2a42cc9",
+        "file": "drk-A.png"
+      }
+    ],
+    "runtime": "Require set, stock, normal layout, family, exact pinned frame URL, frame rectangle and mask URL. Byte hashes document the cached sources and need not trigger another runtime download."
+  },
+  "provenance": {
+    "planHash": "4d187f5340a927df95cea753729336baf310b5ba79928a24713d482d0a3464f8",
+    "snapshotHash": "ea33a87e0f2a9da324bf86c9e4593b4ac2673d5c693fcc7bafe722d09e5c5054",
+    "methodHash": "005c33ee8e4fc6af8dfd162c1b1b20e45ab3583adc66b356bce2c89f9117354a",
+    "rendererStockHash": "287485e3658296e60f959f9b0d1055a8afc8dc0d546ed25418d629f860926214",
+    "targetsHash": "5e8464d0d0b49a325c76e70ed1dc7e1fa03bfcaf20443951ede006ab0177c468",
+    "referencesHash": "b777161c5578f4fac78f145805c2a9f6bd8f0bb1891a05242841cdf0c4658df1"
+  },
+  "status": "accepted",
+  "accepted": true,
+  "transform": {
+    "scale": 0.9821941567344712,
+    "tx": 1.3286240259621636,
+    "ty": -0.2601684543161278
+  },
+  "proposed": {
+    "scale": 0.9821941567344712,
+    "tx": 1.3286240259621636,
+    "ty": -0.2601684543161278
+  },
+  "flags": [],
+  "geometryFlags": ["remaining-opposed-stock-residual"],
+  "counts": {
+    "calibration": 12,
+    "validation": 12,
+    "materialCounts": {
+      "A": {
+        "calibration": 3,
+        "validation": 3
+      },
+      "R": {
+        "calibration": 3,
+        "validation": 3
+      },
+      "U": {
+        "calibration": 3,
+        "validation": 3
+      },
+      "W": {
+        "calibration": 3,
+        "validation": 3
+      }
+    }
+  },
+  "excluded": 12,
+  "calibration": {
+    "count": 12,
+    "beforeRms": 5.0181605451739415,
+    "afterRms": 1.0091416024789739,
+    "afterP90": 1.4359647873496724,
+    "worstRegression": -2.712725161314155,
+    "regressed": 0,
+    "residuals": {
+      "left": -1.0968740912210766,
+      "right": 1.0461754819057205,
+      "top": 0.8367829769570552,
+      "bottom": -0.7404908112631574
+    },
+    "scatter": {
+      "left": 0.2707471348060011,
+      "right": 0.06934633602509166,
+      "top": 0.527594704678588,
+      "bottom": 0.20603458628551152
+    },
+    "rows": [
+      {
+        "id": "c4104546-abd9-4bfb-a65e-5928cdd4522f",
+        "material": "W",
+        "beforeRms": 4.91578158263109,
+        "afterRms": 1.0003000445404948,
+        "before": {
+          "left": -6.249186093053481,
+          "right": 3.6827140134456613,
+          "top": -4.1358350831080095,
+          "bottom": 5.19035577850218
+        },
+        "after": {
+          "left": -0.9129266952118762,
+          "right": 1.0072209957926361,
+          "top": 1.2698646648171845,
+          "bottom": -0.736148873722982
+        }
+      },
+      {
+        "id": "e2c9f463-d1cc-4f11-aad2-d4a4520aa978",
+        "material": "W",
+        "beforeRms": 4.7955937258954835,
+        "afterRms": 1.036788448883835,
+        "before": {
+          "left": -6.017027806861989,
+          "right": 3.799858561521546,
+          "top": -4.186312475997582,
+          "bottom": 4.880790496690111
+        },
+        "after": {
+          "left": -0.68490218307711,
+          "right": 1.1222796864061024,
+          "top": 1.2202860644737754,
+          "bottom": -1.040202084646694
+        }
+      },
+      {
+        "id": "ae541c73-9903-49e6-997a-db4701135145",
+        "material": "W",
+        "beforeRms": 4.849310022688439,
+        "afterRms": 1.008384595731767,
+        "before": {
+          "left": -6.147658776453394,
+          "right": 3.642052043426986,
+          "top": -4.019563035304227,
+          "bottom": 5.181514476585676
+        },
+        "after": {
+          "left": -0.8132071580983613,
+          "right": 0.9672830464390358,
+          "top": 1.3840663907615678,
+          "bottom": -0.7448327488033328
+        }
+      },
+      {
+        "id": "fabc3267-b59b-4f36-8873-5b4b072711ca",
+        "material": "U",
+        "beforeRms": 5.003506623377202,
+        "afterRms": 1.0275846768228072,
+        "before": {
+          "left": -6.41085882803765,
+          "right": 3.7235112819267897,
+          "top": -4.156403145012508,
+          "bottom": 5.282137809370738
+        },
+        "after": {
+          "left": -1.071314837738889,
+          "right": 1.0467310457161147,
+          "top": 1.2501893944483164,
+          "bottom": -0.6460543216693395
+        }
+      },
+      {
+        "id": "5f4b6507-89ee-482e-aafd-8e05ada8f1ce",
+        "material": "U",
+        "beforeRms": 5.032814466970682,
+        "afterRms": 1.140783350814346,
+        "before": {
+          "left": -6.718074872696519,
+          "right": 3.659222535218987,
+          "top": -4.1302737547621575,
+          "bottom": 5.072995662240373
+        },
+        "after": {
+          "left": -1.3730606416578937,
+          "right": 0.9835870143559191,
+          "top": 1.2758535288712984,
+          "bottom": -0.8514725165076698
+        }
+      },
+      {
+        "id": "b0f11ae4-e30e-441d-bb64-439930d9997c",
+        "material": "U",
+        "beforeRms": 4.948238967421091,
+        "afterRms": 1.0098706221999034,
+        "before": {
+          "left": -6.302484170500158,
+          "right": 3.6616494049513335,
+          "top": -4.060190418217665,
+          "bottom": 5.322231317637943
+        },
+        "after": {
+          "left": -0.9648698823674451,
+          "right": 0.9859706716262053,
+          "top": 1.3446889725097186,
+          "bottom": -0.6066747121263916
+        }
+      },
+      {
+        "id": "65a10fd5-506e-46bf-87e6-fde134c0dc04",
+        "material": "R",
+        "beforeRms": 4.31530670478462,
+        "afterRms": 1.6025815434704644,
+        "before": {
+          "left": -3.8613437614584534,
+          "right": 3.922697672028505,
+          "top": -5.753891168220424,
+          "bottom": 3.329067674202406
+        },
+        "after": {
+          "left": 1.4323224992608594,
+          "right": 1.2425024178910462,
+          "top": -0.3187574431852127,
+          "bottom": -2.564391566424433
+        }
+      },
+      {
+        "id": "a6b61512-5b24-424c-966f-36b595781e14",
+        "material": "R",
+        "beforeRms": 5.184857558059018,
+        "afterRms": 1.4687627247424861,
+        "before": {
+          "left": -6.693142332360857,
+          "right": 4.0562098532616915,
+          "top": -5.709685064513263,
+          "bottom": 3.698580186853178
+        },
+        "after": {
+          "left": -1.3490535101284742,
+          "right": 1.3736373021511668,
+          "top": -0.27533846643198245,
+          "bottom": -2.201458535658503
+        }
+      },
+      {
+        "id": "d646feea-3c20-4737-8d20-ffad42258ced",
+        "material": "R",
+        "beforeRms": 5.480418217789383,
+        "afterRms": 1.0084125827580444,
+        "before": {
+          "left": -6.787187125456441,
+          "right": 3.8225649418122316,
+          "top": -5.73321651975872,
+          "bottom": 5.156767581997769
+        },
+        "after": {
+          "left": -1.4414237563782741,
+          "right": 1.1441526353747804,
+          "top": -0.298450924273574,
+          "bottom": -0.7692353967236158
+        }
+      },
+      {
+        "id": "64c19977-ac7d-4ce7-925c-33a7503420f5",
+        "material": "A",
+        "beforeRms": 5.46184776778555,
+        "afterRms": 0.9162785893671661,
+        "before": {
+          "left": -6.462742119423744,
+          "right": 4.063639116381523,
+          "top": -5.5411665714631155,
+          "bottom": 5.508393469133807
+        },
+        "after": {
+          "left": -1.1224333447032642,
+          "right": 1.3807936597841035,
+          "top": -0.10970860936136617,
+          "bottom": -0.4240071817328044
+        }
+      },
+      {
+        "id": "6768a307-da2e-435e-8efd-72d82b4d4a2b",
+        "material": "A",
+        "beforeRms": 5.477036573299557,
+        "afterRms": 0.8858961380421139,
+        "before": {
+          "left": -6.70683689849481,
+          "right": 3.7214217137853325,
+          "top": -5.549810607168716,
+          "bottom": 5.510052628673975
+        },
+        "after": {
+          "left": -1.3621818103962617,
+          "right": 1.0446697266212936,
+          "top": -0.11819873072200338,
+          "bottom": -0.42237756492738754
+        }
+      },
+      {
+        "id": "2b60eb23-cb9a-4203-86fb-60e47dbd870b",
+        "material": "A",
+        "beforeRms": 5.330222162222684,
+        "afterRms": 0.9233559882656397,
+        "before": {
+          "left": -6.722577451394709,
+          "right": 3.722389130937529,
+          "top": -4.9679718574226435,
+          "bottom": 5.469469845088611
+        },
+        "after": {
+          "left": -1.3776420894783108,
+          "right": 1.0456199180953263,
+          "top": 0.4532798894403349,
+          "bottom": -0.4622377378289002
+        }
+      }
+    ]
+  },
+  "validation": {
+    "count": 12,
+    "beforeRms": 4.866152212685288,
+    "afterRms": 1.077630199479608,
+    "afterP90": 1.3139841646100148,
+    "worstRegression": -2.8973918992087038,
+    "regressed": 0,
+    "residuals": {
+      "left": -1.0371702497447917,
+      "right": 1.0617860160647297,
+      "top": 1.1051036968463386,
+      "bottom": -0.9161284105206278
+    },
+    "scatter": {
+      "left": 0.308300684159855,
+      "right": 0.05864498205042423,
+      "top": 0.35376427400320765,
+      "bottom": 0.4051144322714322
+    },
+    "rows": [
+      {
+        "id": "4eef9bb7-cd3c-422e-a93b-90d98684675a",
+        "material": "W",
+        "beforeRms": 4.850296558951025,
+        "afterRms": 1.3188184419448015,
+        "before": {
+          "left": -6.711373031140841,
+          "right": 3.6458228369633616,
+          "top": -4.139526571911464,
+          "bottom": 4.316396005683373
+        },
+        "after": {
+          "left": -1.3668840051202658,
+          "right": 0.9709866978166701,
+          "top": 1.2662389060847588,
+          "bottom": -1.594547055806629
+        }
+      },
+      {
+        "id": "1e03d335-d259-4ab4-814f-9333cfd3afc9",
+        "material": "W",
+        "beforeRms": 4.965306613777226,
+        "afterRms": 1.0811977712383298,
+        "before": {
+          "left": -6.464271578557877,
+          "right": 3.683050284301771,
+          "top": -4.043114548023002,
+          "bottom": 5.188317394762748
+        },
+        "after": {
+          "left": -1.124182402272691,
+          "right": 1.0075512790626249,
+          "top": 1.360934232586935,
+          "bottom": -0.7381509623211286
+        }
+      },
+      {
+        "id": "374df061-ebd2-4f1f-9a6e-7940a49197a9",
+        "material": "W",
+        "beforeRms": 4.848053968014111,
+        "afterRms": 1.1693326556772816,
+        "before": {
+          "left": -6.366198258386117,
+          "right": 3.727101910475028,
+          "top": -3.843696260729992,
+          "bottom": 4.982041674475909
+        },
+        "after": {
+          "left": -1.0278553602684433,
+          "right": 1.0508185288846335,
+          "top": 1.5568017091121575,
+          "bottom": -0.9407537694629582
+        }
+      },
+      {
+        "id": "fec3275e-4491-43a8-9f23-d7b48177c103",
+        "material": "U",
+        "beforeRms": 4.736242070366171,
+        "afterRms": 1.2704756685969338,
+        "before": {
+          "left": -6.3312958347135115,
+          "right": 3.7667154158648373,
+          "top": -4.170280045259396,
+          "bottom": 4.25009037195241
+        },
+        "after": {
+          "left": -0.9931685306036044,
+          "right": 1.089165893616837,
+          "top": 1.2365595841122605,
+          "bottom": -1.659725284174442
+        }
+      },
+      {
+        "id": "36313dc7-6bf2-4d73-b696-969d984a7466",
+        "material": "U",
+        "beforeRms": 4.882007866419551,
+        "afterRms": 0.9144410149323375,
+        "before": {
+          "left": -6.143272203681363,
+          "right": 3.5396492578684615,
+          "top": -4.194828589924331,
+          "bottom": 5.241231352938939
+        },
+        "after": {
+          "left": -0.8084928188758553,
+          "right": 0.8661428400406521,
+          "top": 1.2124481469860235,
+          "bottom": -0.6862324041493366
+        }
+      },
+      {
+        "id": "b638d9be-c533-45c3-92f9-fabf56edc2df",
+        "material": "U",
+        "beforeRms": 5.097208037780088,
+        "afterRms": 1.074062627720886,
+        "before": {
+          "left": -6.385579000879755,
+          "right": 3.7131244899391618,
+          "top": -5.5170290806304365,
+          "bottom": 4.350355915422938
+        },
+        "after": {
+          "left": -1.04648513922114,
+          "right": 1.036529199318693,
+          "top": -0.08620944901698735,
+          "bottom": -1.5612450532559023
+        }
+      },
+      {
+        "id": "78373616-e2d6-4ccf-998f-09f02bea45b4",
+        "material": "R",
+        "beforeRms": 4.651836354187795,
+        "afterRms": 0.8702886613180785,
+        "before": {
+          "left": -4.346223047898139,
+          "right": 3.5558120856777578,
+          "top": -5.666751722791862,
+          "bottom": 4.7867312861779965
+        },
+        "after": {
+          "left": 0.9560768973982441,
+          "right": 0.882149538787246,
+          "top": -0.23316958906421092,
+          "bottom": -1.132682884257406
+        }
+      },
+      {
+        "id": "c1ba83ab-83f5-421d-bba1-0f925870b5c8",
+        "material": "R",
+        "beforeRms": 4.3763986715800645,
+        "afterRms": 1.4790067723713605,
+        "before": {
+          "left": -4.1381797868263135,
+          "right": 3.7568000560904125,
+          "top": -5.800618936406028,
+          "bottom": 3.4243543443253657
+        },
+        "after": {
+          "left": 1.160415772770957,
+          "right": 1.0795587489004674,
+          "top": -0.36465318405434033,
+          "bottom": -2.4708015558148873
+        }
+      },
+      {
+        "id": "564e0ccd-decb-48d2-981f-cefa8045340f",
+        "material": "R",
+        "beforeRms": 4.823612549965446,
+        "afterRms": 0.8363657313573937,
+        "before": {
+          "left": -4.542374571970576,
+          "right": 3.8434786906374825,
+          "top": -5.686790035237294,
+          "bottom": 5.032283380970625
+        },
+        "after": {
+          "left": 0.7634180166197346,
+          "right": 1.1646939972663404,
+          "top": -0.25285110245889797,
+          "bottom": -0.8915030515782973
+        }
+      },
+      {
+        "id": "893e8e9c-983e-4db1-8d93-10637025a559",
+        "material": "A",
+        "beforeRms": 5.234040192419617,
+        "afterRms": 1.0904999689618027,
+        "before": {
+          "left": -6.7338643386259776,
+          "right": 3.8894446319401936,
+          "top": -4.316505480761904,
+          "bottom": 5.520487197889452
+        },
+        "after": {
+          "left": -1.3887280041645589,
+          "right": 1.2097008550304622,
+          "top": 1.0931463579054643,
+          "bottom": -0.41212879201589203
+        }
+      },
+      {
+        "id": "80c9070a-8c70-480e-a476-e00f8e2c71b9",
+        "material": "A",
+        "beforeRms": 5.411704570965326,
+        "afterRms": 0.9082528138547178,
+        "before": {
+          "left": -6.677328641888078,
+          "right": 3.7500146110562014,
+          "top": -5.492293665208191,
+          "bottom": 5.322740682564586
+        },
+        "after": {
+          "left": -1.3331989731817053,
+          "right": 1.0727535032448259,
+          "top": -0.06170592641514716,
+          "bottom": -0.6063542638825083
+        }
+      },
+      {
+        "id": "72cfe9b9-677d-4ecb-83ab-67fb6481371d",
+        "material": "A",
+        "beforeRms": 5.201989544721426,
+        "afterRms": 1.0641127250719464,
+        "before": {
+          "left": -6.702317511224749,
+          "right": 3.803046630806591,
+          "top": -4.292157262318739,
+          "bottom": 5.516878033066291
+        },
+        "after": {
+          "left": -1.357742894627588,
+          "right": 1.1248412431634733,
+          "top": 1.1170610357872128,
+          "bottom": -0.41567369261588283
+        }
+      }
+    ]
+  },
+  "uncertainMaterials": ["B", "G"],
+  "unvalidatedSources": [
+    {
+      "material": "B",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+      "rect": [0, 0, 1, 1],
+      "sha256": "67590d7fb6ba60c445f24d0a07b3eaa45274582c1c82ecfb5a5424fd9914f278",
+      "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+      "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+      "renderedHash": "025f0b05376e0343a9a71de98b89850f8725c1018b76cf2eca679e702cf516ff",
+      "file": "drk-B.png"
+    },
+    {
+      "material": "G",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+      "rect": [0, 0, 1, 1],
+      "sha256": "a62f3a473d9a173909184819826dbe8a05035d00b3358b894e38d7891210ae2b",
+      "maskUrl": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/border.svg",
+      "maskSha256": "1f234d3e9a96f1c7829a5202e200e12da632b07fd0f99b9543a1f8839a9a0d93",
+      "renderedHash": "c707226c062296da4453f8604b408a25166bb38b79d5ce103f7949267aabde98",
+      "file": "drk-G.png"
+    }
+  ],
+  "targets": {
+    "W": {
+      "sides": {
+        "left": {
+          "position": 25.175017343179523,
+          "count": 3,
+          "spread": 0.007305000290639185,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.1938607100266,
+          "count": 3,
+          "spread": 0.010616343464391775,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.933090189238538,
+          "count": 3,
+          "spread": 0.004662018965454706,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.038672378718,
+          "count": 3,
+          "spread": 0.008872199657616875,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.0188433668471,
+      "height": 627.1055821894795
+    },
+    "U": {
+      "sides": {
+        "left": {
+          "position": 25.152222967665708,
+          "count": 3,
+          "spread": 0.025696151302280867,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.2253553593443,
+          "count": 3,
+          "spread": 0.022767397623624674,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.903517883042355,
+          "count": 3,
+          "spread": 0.0226215396879077,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0416614176461,
+          "count": 3,
+          "spread": 0.01886061950324347,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.0731323916786,
+      "height": 627.1381435346037
+    },
+    "B": {
+      "sides": {
+        "left": {
+          "position": 27.69853133658909,
+          "count": 2,
+          "spread": 2.5233564019172796,
+          "reliable": false
+        },
+        "right": {
+          "position": 465.2697454414299,
+          "count": 3,
+          "spread": 0.015096870073080026,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.838921650301977,
+          "count": 3,
+          "spread": 0.010887237438204522,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 650.607111699429,
+          "count": 2,
+          "spread": 2.350675111931764,
+          "reliable": false
+        }
+      },
+      "reliable": false,
+      "width": null,
+      "height": null
+    },
+    "R": {
+      "sides": {
+        "left": {
+          "position": 25.17926262502149,
+          "count": 3,
+          "spread": 0.010186829919863527,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.2179609487544,
+          "count": 3,
+          "spread": 0.00655727177644394,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.898094707451047,
+          "count": 3,
+          "spread": 0.007865554846532063,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0440859195035,
+          "count": 3,
+          "spread": 0.018607578175988237,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.03869832373294,
+      "height": 627.1459912120524
+    },
+    "G": {
+      "sides": {
+        "left": {
+          "position": 25.18042381837546,
+          "count": 3,
+          "spread": 0.0040257815705366795,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.2348140901708,
+          "count": 3,
+          "spread": 0.009728669049252403,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.89108398637681,
+          "count": 3,
+          "spread": 0.004282686249375445,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0469144564693,
+          "count": 3,
+          "spread": 0.008159773763395606,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.05439027179534,
+      "height": 627.1558304700925
+    },
+    "A": {
+      "sides": {
+        "left": {
+          "position": 25.161154941874702,
+          "count": 3,
+          "spread": 0.027876480342570176,
+          "reliable": true
+        },
+        "right": {
+          "position": 465.22585842320115,
+          "count": 3,
+          "spread": 0.01350969256998269,
+          "reliable": true
+        },
+        "top": {
+          "position": 25.891805878920415,
+          "count": 3,
+          "spread": 0.01574532928593797,
+          "reliable": true
+        },
+        "bottom": {
+          "position": 653.0517618665922,
+          "count": 3,
+          "spread": 0.0011697321236852076,
+          "reliable": true
+        }
+      },
+      "reliable": true,
+      "width": 440.06470348132643,
+      "height": 627.1599559876718
+    }
+  },
+  "referenceRows": [
+    {
+      "id": "c4104546-abd9-4bfb-a65e-5928cdd4522f",
+      "name": "Morale",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "88d80644a26a3689b8eb8a0ea0c12d7956276501a31ef4b990b2a135aaba0613",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.92583125012604,
+            "count": 3,
+            "spread": 0.10068687750969474,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8765747234723,
+            "count": 3,
+            "spread": 0.04454055455062189,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.797255106130528,
+            "count": 3,
+            "spread": 0.024785539994478967,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.2290281572202,
+            "count": 3,
+            "spread": 0.08276370565909019,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.9507434733462,
+        "height": 636.4317730510897
+      }
+    },
+    {
+      "id": "e2c9f463-d1cc-4f11-aad2-d4a4520aa978",
+      "name": "Martyr's Cry",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "2b946bd98c3095bdc3bc2d06880f7d751f4a68b0b5d9f21a9243b3f37045262b",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.157989536317533,
+            "count": 3,
+            "spread": 0.17859104846850116,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9937192715482,
+            "count": 3,
+            "spread": 0.1538853574810446,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.746777713240956,
+            "count": 3,
+            "spread": 0.04781048383860309,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.9194628754082,
+            "count": 3,
+            "spread": 0.11011960984183133,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.83572973523064,
+        "height": 636.1726851621672
+      }
+    },
+    {
+      "id": "ae541c73-9903-49e6-997a-db4701135145",
+      "name": "Knights of Thorn",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "1e286c3f0f468eaeb7b57b730e07063e5b11be4a8e4453882084fd63395101ec",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.02735856672613,
+            "count": 3,
+            "spread": 0.02457059027756614,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8359127534536,
+            "count": 3,
+            "spread": 0.0274863715101219,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.91352715393431,
+            "count": 3,
+            "spread": 0.033256176420366046,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.2201868553037,
+            "count": 3,
+            "spread": 0.02249278683234479,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.80855418672746,
+        "height": 636.3066597013694
+      }
+    },
+    {
+      "id": "4eef9bb7-cd3c-422e-a93b-90d98684675a",
+      "name": "Witch Hunter",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "f347caf95cced14e269c84296a327eeeeb15e9769b70025d92154304e61c76ee",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.46364431203868,
+            "count": 3,
+            "spread": 0.02284369951279075,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.83968354699,
+            "count": 3,
+            "spread": 0.015041417573513627,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.793563617327074,
+            "count": 3,
+            "spread": 0.09312939305404555,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.3550683844014,
+            "count": 3,
+            "spread": 0.13271645946110766,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.3760392349513,
+        "height": 635.5615047670743
+      }
+    },
+    {
+      "id": "1e03d335-d259-4ab4-814f-9333cfd3afc9",
+      "name": "Preacher",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "064eae915c1bb1f304a0a476008732e7497ab3e215a59e506efccc3412c205a0",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.710745764621645,
+            "count": 3,
+            "spread": 0.08888447324366311,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8769109943284,
+            "count": 3,
+            "spread": 0.0414352374224336,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.889975641215536,
+            "count": 3,
+            "spread": 0.015380756542974439,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.2269897734808,
+            "count": 3,
+            "spread": 0.08883700604565092,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.16616522970673,
+        "height": 636.3370141322653
+      }
+    },
+    {
+      "id": "374df061-ebd2-4f1f-9a6e-7940a49197a9",
+      "name": "Squire",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "fe22feed2c29becca20e839dc6f6a611a253094760d314a9732d60cb655cc3ae",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.808819084793406,
+            "count": 3,
+            "spread": 0.04751171530377718,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.92096262050165,
+            "count": 3,
+            "spread": 0.12380328255977702,
+            "reliable": true
+          },
+          "top": {
+            "position": 22.089393928508546,
+            "count": 3,
+            "spread": 0.05034313546862634,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.020714053194,
+            "count": 3,
+            "spread": 0.035817463979014974,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.11214353570824,
+        "height": 635.9313201246854
+      }
+    },
+    {
+      "id": "fabc3267-b59b-4f36-8873-5b4b072711ca",
+      "name": "Flood",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "6472932946187ac3c03189d8a7168b54829db38dc37753d724bcad37e31169ea",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.741364139628057,
+            "count": 3,
+            "spread": 0.05345510064310943,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9488666412711,
+            "count": 3,
+            "spread": 0.06501626866236165,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.747114738029847,
+            "count": 3,
+            "spread": 0.047317578491036016,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.3237992270168,
+            "count": 3,
+            "spread": 0.1795060765667813,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.20750250164303,
+        "height": 636.576684488987
+      }
+    },
+    {
+      "id": "5f4b6507-89ee-482e-aafd-8e05ada8f1ce",
+      "name": "Erosion",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "cc18fdffccb1400f0566e6321dd1b70a22577bf8e1434cafa8aa2ae34a6207f7",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.43414809496919,
+            "count": 3,
+            "spread": 0.19810489214282256,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8845778945633,
+            "count": 3,
+            "spread": 0.06479048723582537,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.773244128280197,
+            "count": 3,
+            "spread": 0.026889729377078453,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.1146570798865,
+            "count": 3,
+            "spread": 0.2395862856496933,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.4504297995941,
+        "height": 636.3414129516062
+      }
+    },
+    {
+      "id": "b0f11ae4-e30e-441d-bb64-439930d9997c",
+      "name": "Riptide",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "86316aa75ee88a965fd7fdad0b1c5f17b0dda0a36da27249e02cb9a3ccb38add",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.84973879716555,
+            "count": 3,
+            "spread": 0.1429706719940924,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.8870047642956,
+            "count": 3,
+            "spread": 0.09694404027044357,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.84332746482469,
+            "count": 3,
+            "spread": 0.009086973242155238,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.363892735284,
+            "count": 3,
+            "spread": 0.10854151599062334,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.03726596713005,
+        "height": 636.5205652704593
+      }
+    },
+    {
+      "id": "fec3275e-4491-43a8-9f23-d7b48177c103",
+      "name": "Psychic Allergy",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "a444691ef8951fcc9c6202111d9a0996cd9cc4aad51dd0d49ed465a37d986c89",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.820927132952196,
+            "count": 3,
+            "spread": 0.28187084995649414,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.99207077520913,
+            "count": 3,
+            "spread": 0.028444734801382765,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.73323783778296,
+            "count": 3,
+            "spread": 0.01969969885954015,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.2917517895985,
+            "count": 3,
+            "spread": 0.05155970095847806,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.17114364225694,
+        "height": 635.5585139518155
+      }
+    },
+    {
+      "id": "36313dc7-6bf2-4d73-b696-969d984a7466",
+      "name": "Merfolk Assassin",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "e95ec90c9e34e8428930d4493b8287fa70b01365c59b2bc4475dd261d58a918b",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.008950763984345,
+            "count": 3,
+            "spread": 0.07128028276943965,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.76500461721275,
+            "count": 3,
+            "spread": 0.1011658804130775,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.708689293118024,
+            "count": 3,
+            "spread": 0.0851419173933401,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.282892770585,
+            "count": 3,
+            "spread": 0.16730016943188275,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 449.7560538532284,
+        "height": 636.574203477467
+      }
+    },
+    {
+      "id": "b638d9be-c533-45c3-92f9-fabf56edc2df",
+      "name": "Leviathan",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "f99ac77d3a3541727f25befa78f76b9a3941d053722760bd64880ae859ddb248",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.766643966785953,
+            "count": 3,
+            "spread": 0.27694282188381436,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.93847984928345,
+            "count": 3,
+            "spread": 0.04163034248301756,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.386488802411918,
+            "count": 3,
+            "spread": 1.2575923161268179,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.392017333069,
+            "count": 3,
+            "spread": 0.19032933889297965,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.1718358824975,
+        "height": 637.0055285306571
+      }
+    },
+    {
+      "id": "a131605a-f646-4745-a1e4-48d155a3d94f",
+      "name": "Grave Robbers",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "b3c99a27ac58d294830aa1940681d0e338604f188643892745a5950e76de8f98",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 22.665221869011518,
+            "count": 3,
+            "spread": 3.593281882255635,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.18532699143555,
+            "count": 3,
+            "spread": 0.04382707278699627,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.026114686219795,
+            "count": 3,
+            "spread": 0.0312555812871409,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 654.7985939983685,
+            "count": 3,
+            "spread": 1.2410635403491597,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "f4c133b8-8383-433f-be96-c47a937287b7",
+      "name": "Rag Man",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "0ed2c03df651c9c72b720f440e66af5cd8f9d0a24effe2b6297450eb40aaceb3",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 21.12854377976931,
+            "count": 3,
+            "spread": 1.8940108436581582,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.12478030985113,
+            "count": 3,
+            "spread": 0.04555094571344398,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.94987081997046,
+            "count": 3,
+            "spread": 0.07168730112995902,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.7010167068491,
+            "count": 3,
+            "spread": 0.7952820909995353,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "5f133f06-6398-4db1-8577-66c16fd3e00d",
+      "name": "Inquisition",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "1ddcdcc44d6812160d8f6a4f7b184f3ad945a5aeea0388649fd3a315747cc7e0",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 21.257145219261925,
+            "count": 3,
+            "spread": 2.8346571187882894,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.25034016740085,
+            "count": 3,
+            "spread": 0.10508544357429628,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.086525488893592,
+            "count": 3,
+            "spread": 0.011011201437185036,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.7596554864346,
+            "count": 3,
+            "spread": 1.850533730090433,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "8f99894d-5ece-44f1-acce-474494ae2084",
+      "name": "Frankenstein's Monster",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "fdca8e7b221dbf2e769cbf1cd4209ea1d6d002fbf4917f7de9c7ff651907c7ad",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 21.04891713247751,
+            "count": 3,
+            "spread": 2.7318148525024846,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.0465627669177,
+            "count": 3,
+            "spread": 0.038249582708488106,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.03981304338795,
+            "count": 3,
+            "spread": 0.049733259784304096,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.8879813718403,
+            "count": 3,
+            "spread": 3.47759679711055,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "d89fe2be-bb7e-4bae-9b1f-9f0d58f20ceb",
+      "name": "Eater of the Dead",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "7bdc6b0aab80014e341c14066d38cd13c8289b701031369309fe33c75e984016",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.327991356758055,
+            "count": 3,
+            "spread": 2.0725017090096323,
+            "reliable": false
+          },
+          "right": {
+            "position": 468.9736391710334,
+            "count": 3,
+            "spread": 0.058849573920269904,
+            "reliable": true
+          },
+          "top": {
+            "position": 19.982459988136164,
+            "count": 3,
+            "spread": 0.004099313286477724,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.7917807543844,
+            "count": 3,
+            "spread": 0.32571822896034064,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "ee30efdb-f1f1-497f-80a6-ec961db67c1d",
+      "name": "Word of Binding",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "d4c4e960947e77df9e196b2c64dec572011fe78a2c16cf6b158d01384059bb83",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 20.747308926382182,
+            "count": 3,
+            "spread": 2.408275365550683,
+            "reliable": false
+          },
+          "right": {
+            "position": 469.0792923836575,
+            "count": 3,
+            "spread": 0.05548776730637428,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.01396883706723,
+            "count": 3,
+            "spread": 0.025804515169685516,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 655.0598629122031,
+            "count": 3,
+            "spread": 2.5380349336209065,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "65a10fd5-506e-46bf-87e6-fde134c0dc04",
+      "name": "Orc General",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "2bbd5dc36947a8b0e49d23a3177e01bbf4c0b3b89fb85c2ee8f469ce5c68d65c",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 21.317918863563037,
+            "count": 3,
+            "spread": 0.04556342474645092,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.1406586207829,
+            "count": 3,
+            "spread": 0.14108470408655194,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.144203539230624,
+            "count": 3,
+            "spread": 0.023956525271302098,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.3731535937059,
+            "count": 3,
+            "spread": 0.37307704736304004,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 447.8227397572199,
+        "height": 636.2289500544753
+      }
+    },
+    {
+      "id": "a6b61512-5b24-424c-966f-36b595781e14",
+      "name": "Inferno",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "fb0595cdb9f67ec9e734bcd8b2759be484ee621aaf4004776cb494debfedf35d",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.486120292660633,
+            "count": 3,
+            "spread": 0.024912182482683676,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.2741708020161,
+            "count": 3,
+            "spread": 0.16972838696153758,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.188409642937785,
+            "count": 3,
+            "spread": 0.018473890441040197,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.7426661063566,
+            "count": 3,
+            "spread": 0.1703823630352872,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.78805050935546,
+        "height": 636.5542564634188
+      }
+    },
+    {
+      "id": "d646feea-3c20-4737-8d20-ffad42258ced",
+      "name": "Eternal Flame",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "060947b9d2e7e3992511763b415bb4d0741d65afd7d7370f91ef0ec362219447",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.39207549956505,
+            "count": 3,
+            "spread": 0.04403461290212718,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.04052589056664,
+            "count": 3,
+            "spread": 0.011071454258853919,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.164878187692327,
+            "count": 3,
+            "spread": 0.02668144018565144,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.2008535015012,
+            "count": 3,
+            "spread": 0.3241013476495027,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.6484503910016,
+        "height": 638.0359753138089
+      }
+    },
+    {
+      "id": "78373616-e2d6-4ccf-998f-09f02bea45b4",
+      "name": "Blood Moon",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "4eb1aa9bf88af1487511684828b6409e6456a7da35b656a945931dfb6779744a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 20.83303957712335,
+            "count": 3,
+            "spread": 0.05690438489666505,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.77377303443217,
+            "count": 3,
+            "spread": 0.018757554730257198,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.231342984659186,
+            "count": 3,
+            "spread": 0.014800955310057873,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 657.8308172056815,
+            "count": 3,
+            "spread": 0.18601787227510158,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 447.9407334573088,
+        "height": 637.5994742210223
+      }
+    },
+    {
+      "id": "c1ba83ab-83f5-421d-bba1-0f925870b5c8",
+      "name": "Ball Lightning",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "ab6dc567af89f2cb44be09fbf9a3c73e243cbe18ee95bb77f1faf70a1411e887",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 21.041082838195177,
+            "count": 3,
+            "spread": 0.05902347613683645,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9747610048448,
+            "count": 3,
+            "spread": 0.011892121973346548,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.09747577104502,
+            "count": 3,
+            "spread": 0.0617205218752126,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.4684402638288,
+            "count": 3,
+            "spread": 1.3834311903489152,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 447.93367816664966,
+        "height": 636.3709644927839
+      }
+    },
+    {
+      "id": "564e0ccd-decb-48d2-981f-cefa8045340f",
+      "name": "Sisters of the Flame",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "46ce578db9202a568cde1e86511fb88939cf622fdeea1551024531ea6e9d0ac9",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 20.636888053050914,
+            "count": 3,
+            "spread": 0.12336332456545662,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0614396393919,
+            "count": 3,
+            "spread": 0.04829983109175373,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.211304672213753,
+            "count": 3,
+            "spread": 0.007968238899984215,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.0763693004741,
+            "count": 3,
+            "spread": 0.2433942425013811,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 448.42455158634095,
+        "height": 637.8650646282604
+      }
+    },
+    {
+      "id": "2fa20173-e88a-4b14-9c54-14567ca5571c",
+      "name": "Wormwood Treefolk",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "83c9429de2d4c0f8b99f69c0a1e35d83b12cb993563908f457c5b6e10315deb2",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 19.041085467342867,
+            "count": 3,
+            "spread": 0.38283945943930675,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.2711547404695,
+            "count": 3,
+            "spread": 0.10385706864542499,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.40315243829613,
+            "count": 3,
+            "spread": 0.05970863319117825,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5514444617594,
+            "count": 3,
+            "spread": 4.327370316414658,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "ff99543d-86a1-44f8-88ec-aaec071d6c05",
+      "name": "Land Leeches",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "5fa30741e445086fd83d4a2a5469a016063f05771d0a1462b8a5f916abb3b6f3",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.393036813548783,
+            "count": 3,
+            "spread": 0.04847077804664224,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9552585569876,
+            "count": 3,
+            "spread": 0.061205642456400255,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.52024549020401,
+            "count": 3,
+            "spread": 1.078227345019119,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5355306872883,
+            "count": 3,
+            "spread": 2.6861298762454453,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "109cce7a-96f7-4e67-878a-bd5c93ea8643",
+      "name": "Marsh Viper",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "be3a9579b180848188a99dfaeee02594bca7f9902a8519f73549e692412ff09d",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.251811783622173,
+            "count": 3,
+            "spread": 0.12324867677489593,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.06780562077256,
+            "count": 3,
+            "spread": 0.03876929198332846,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.30648985185855,
+            "count": 3,
+            "spread": 0.021479932337939545,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5487742830113,
+            "count": 3,
+            "spread": 4.530099342961989,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "7011356e-7516-4ca0-ac54-d30af7ce03a2",
+      "name": "Spitting Slug",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "3887966e074ebc6f7b9353795c9b21ee0e2ae7f6e8f62a6fdb86c7a125f65e9b",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.59548312542651,
+            "count": 3,
+            "spread": 2.42294461682447,
+            "reliable": false
+          },
+          "right": {
+            "position": 468.9645220309049,
+            "count": 3,
+            "spread": 0.03204026769185475,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.393126955303504,
+            "count": 3,
+            "spread": 0.4951158872559773,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.5752495396908,
+            "count": 3,
+            "spread": 0.9230593455280314,
+            "reliable": true
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "35ffc69e-26f2-434f-8c89-2df108dd984a",
+      "name": "Tracker",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "a19adad630220987b4576573e0e2a26ef13c06779735389b7266b65ff23182fb",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.59110262581732,
+            "count": 3,
+            "spread": 0.46438838814354,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.0907255534712,
+            "count": 3,
+            "spread": 0.09367032106865736,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.41914070012671,
+            "count": 3,
+            "spread": 0.26047415331912305,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 656.970600987289,
+            "count": 3,
+            "spread": 1.53019349334636,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "2fb5926f-9988-4bc0-b2b7-e286db208310",
+      "name": "People of the Woods",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "7fd625c22d0ca8d7233c08a5e20487348dc324077287fe47bf59263f59e5be1a",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.451558517523132,
+            "count": 3,
+            "spread": 0.11815206243785781,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.27488457496764,
+            "count": 3,
+            "spread": 0.17519579905945193,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.280251409179023,
+            "count": 3,
+            "spread": 0.042380716532580465,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.6000543234244,
+            "count": 3,
+            "spread": 4.315247157630779,
+            "reliable": false
+          }
+        },
+        "reliable": false,
+        "width": null,
+        "height": null
+      }
+    },
+    {
+      "id": "64c19977-ac7d-4ce7-925c-33a7503420f5",
+      "name": "Tower of Coireall",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "8c1e99b987bc03b1253f1f85a08a9d0824e1e897b66b5de52f924515bbcf91ff",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.69841282245096,
+            "count": 3,
+            "spread": 0.1477283546842294,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.28949753958267,
+            "count": 3,
+            "spread": 0.058445948462178876,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.3506393074573,
+            "count": 3,
+            "spread": 0.10721517039697304,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.560155335726,
+            "count": 3,
+            "spread": 0.08070425203845843,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5910847171317,
+        "height": 638.2095160282687
+      }
+    },
+    {
+      "id": "6768a307-da2e-435e-8efd-72d82b4d4a2b",
+      "name": "Barl's Cage",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "82cebb01ab06d7d859db6620aff756cd54646905650e19c4782fc75e2fa69b83",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.454318043379892,
+            "count": 3,
+            "spread": 0.1449672440769163,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9472801369865,
+            "count": 3,
+            "spread": 0.11887215970943998,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.3419952717517,
+            "count": 3,
+            "spread": 0.01478755019624245,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5618144952662,
+            "count": 3,
+            "spread": 0.027699586945573174,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.4929620936066,
+        "height": 638.2198192235145
+      }
+    },
+    {
+      "id": "2b60eb23-cb9a-4203-86fb-60e47dbd870b",
+      "name": "Fountain of Youth",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "890cd7806cff08e14fb2c2421172f60b5846b8257202e787f89735922bac6ca0",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.438577490479993,
+            "count": 3,
+            "spread": 0.03404267352239998,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.9482475541387,
+            "count": 3,
+            "spread": 0.0587887082978682,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.923834021497772,
+            "count": 3,
+            "spread": 0.4244750333879388,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5212317116808,
+            "count": 3,
+            "spread": 1.2729147748040077,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5096700636587,
+        "height": 637.597397690183
+      }
+    },
+    {
+      "id": "893e8e9c-983e-4db1-8d93-10637025a559",
+      "name": "Necropolis",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "9616dc14cffb4919a1f5ceaa981e6d98b0d8e2996c556d398a6c257146e88b90",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.427290603248725,
+            "count": 3,
+            "spread": 0.046503112027981075,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.11530305514134,
+            "count": 3,
+            "spread": 0.016207302759255526,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.57530039815851,
+            "count": 3,
+            "spread": 0.04350049596087047,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5722490644816,
+            "count": 3,
+            "spread": 0.013245649734813014,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.68801245189263,
+        "height": 636.9969486663231
+      }
+    },
+    {
+      "id": "80c9070a-8c70-480e-a476-e00f8e2c71b9",
+      "name": "Wand of Ith",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "a4df26a90c9367be869cd5a02e92b665e5ffa33a467bfdd890d8659b7ff5ceae",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.483826299986625,
+            "count": 3,
+            "spread": 0.08853552030976886,
+            "reliable": true
+          },
+          "right": {
+            "position": 468.97587303425735,
+            "count": 3,
+            "spread": 0.04377672343866834,
+            "reliable": true
+          },
+          "top": {
+            "position": 20.399512213712224,
+            "count": 3,
+            "spread": 0.05105875921726266,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.3745025491568,
+            "count": 3,
+            "spread": 0.13394352584145963,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.49204673427073,
+        "height": 637.9749903354445
+      }
+    },
+    {
+      "id": "72cfe9b9-677d-4ecb-83ab-67fb6481371d",
+      "name": "Dark Sphere",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "36ccf1a627bed6cc74d17f19e9b2259ba87fcb791b9b29a5267f4651f1f414cf",
+      "bounds": {
+        "sides": {
+          "left": {
+            "position": 18.458837430649954,
+            "count": 3,
+            "spread": 0.12410889659789248,
+            "reliable": true
+          },
+          "right": {
+            "position": 469.02890505400774,
+            "count": 3,
+            "spread": 0.003177560869175977,
+            "reliable": true
+          },
+          "top": {
+            "position": 21.599648616601677,
+            "count": 3,
+            "spread": 0.052192118871957405,
+            "reliable": true
+          },
+          "bottom": {
+            "position": 658.5686398996585,
+            "count": 3,
+            "spread": 0.038522473078955954,
+            "reliable": true
+          }
+        },
+        "reliable": true,
+        "width": 450.5700676233578,
+        "height": 636.9689912830568
+      }
+    }
+  ]
+}

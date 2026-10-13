@@ -14,7 +14,13 @@ assert.equal(symbolRegionCoverage(measured, [407, 377, 26, 29], { tx: -2 }).stat
 assert.equal(symbolRegionCoverage(measured, region, { tx: 4 }).status, 'clipped');
 assert.equal(symbolRegionCoverage(measured, region, { ty: -4 }).status, 'clipped');
 assert.equal(symbolRegionCoverage(measured, region, { scale: 1.02 }).status, 'clipped');
-assert.throws(() => symbolRegionCoverage(measured, region, { rotation: 0.01 }));
+assert.equal(symbolRegionCoverage(measured, region, { rotation: 0.001 }).status, 'covered');
+assert.equal(symbolRegionCoverage(measured, region, { rotation: 0.1 }).status, 'clipped');
+assert.equal(
+  symbolRegionCoverage(measured, region, { matrix: [1, 0, 0.01, 1, 0, 0] }).status,
+  'covered',
+);
+assert.throws(() => symbolRegionCoverage(measured, region, { matrix: [0, 0, 0, 0, 0, 0] }));
 assert.throws(() => symbolRegionCoverage(measured, region, { scale: 0 }));
 assert.throws(() => symbolRegionCoverage(measured, [407, 377, -1, 29]));
 assert.throws(() => symbolRegionCoverage(measured, region, {}, -1));
