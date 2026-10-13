@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "description": "Reviewed source-image crops. Pixel bounds remove printed frame contamination from a specific cached art asset; they do not move the renderer aperture or fit a scan.",
+  "cards": {
+    "cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c": {
+      "name": "Lightning Bolt",
+      "set": "3ed",
+      "source": "reference",
+      "sourceUrl": "https://cards.scryfall.io/png/front/c/b/cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c.png?1783948311",
+      "artHash": "f3da51fe96956a7eb6121032a3d2d2a2cccbef789e2014c01b6e5b102090fc65",
+      "referenceHash": "535e8bde88dcb9e53564e4baecd2ace5f93b843f0144b4a925751b61c6f3b557",
+      "sourceDimensions": [745, 1040],
+      "cropPixels": [87, 106, 579, 466],
+      "reason": "The 582×467 art_crop contains pink frame pixels in columns 0–6, keyline in columns 7–8, and top frame in rows 0–3, while omitting approximately 6–7 pixels of illustration on the right. Use the same printing's full PNG inside its visible art edges (x87–665, y106–571). This recovers the right edge/signature without borrowing another printing's color or grain."
+    }
+  }
+}

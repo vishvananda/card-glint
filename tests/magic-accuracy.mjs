@@ -9,6 +9,7 @@ import {
 import { corpusPolicy, exclusion, qualityIssue } from '../games/magic/tools/accuracy/corpus.mjs';
 import { normalize } from '../games/magic/tools/accuracy/pixels.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+import { reviewedArtCrop } from '../games/magic/tools/accuracy/art-crop.mjs';
 import { regions } from '../games/magic/tools/accuracy/regions.mjs';
 
 const width = 220,
@@ -123,6 +124,28 @@ assert.equal(exclusion({ ...card, border_color: 'silver' }), 'special-treatment'
 assert.equal(qualityIssue({ ...card, frame: '1997', layout: 'split' }), 'unsupported-layout');
 assert.equal(qualityIssue({ ...card, frame: '2003' }), 'unsupported-layout');
 assert.equal(landmarks('retro-seventh').length, 15);
+const artEntry = {
+  card: { ...card, id: 'cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c' },
+  art: { sha256: 'f3da51fe96956a7eb6121032a3d2d2a2cccbef789e2014c01b6e5b102090fc65' },
+  reference: { sha256: '535e8bde88dcb9e53564e4baecd2ace5f93b843f0144b4a925751b61c6f3b557' },
+};
+assert.deepEqual(presentation(artEntry).face.illustrationCrop, [
+  87 / 745,
+  106 / 1040,
+  579 / 745,
+  466 / 1040,
+]);
+assert.equal(
+  presentation(artEntry).face.illustration,
+  `/__accuracy/object/${artEntry.reference.sha256}`,
+);
+assert.equal(
+  reviewedArtCrop({ ...artEntry, reference: { sha256: 'replacement' } }).status,
+  'stale-source',
+);
+const replacedArt = { ...artEntry, art: { sha256: 'replacement' } };
+assert.equal(reviewedArtCrop(replacedArt).status, 'stale-source');
+assert.equal(presentation(replacedArt).face.illustrationCrop, undefined);
 assert.deepEqual(
   landmarks('retro-abu'),
   [],

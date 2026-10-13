@@ -1221,3 +1221,26 @@ its application, deployment and database outside this library repository.
 - Include the ABU dual-land stripe mask and compatible colored land plates in
   source evaluation. Revised land geometry differs and requires review.
   [Source research](frame-asset-research.md) records provenance and limitations.
+
+### Revised Lightning Bolt: contaminated art crop and stale ranking
+
+- The Scryfall art crop includes the pink left bevel and its keyline, while
+  omitting about 6–7 pixels on the right. The same printing's full PNG contains
+  that missing artwork. [Reviewed crop metadata](fixtures/accuracy/art-crops.json)
+  selects its illustration interior, guarded by both cached source hashes.
+  The painter's aperture is unchanged. A replacement scan/crop requires review.
+- Reported the source issue through Scryfall's card issue form on 2026-10-12;
+  the site confirmed receipt. Alternative Scryfall printings with the same
+  illustration ID were checked; Fourth Edition has a cleaner crop, but using
+  Revised's own PNG also preserves its print color and grain.
+- Source QA should detect continuous frame-colored strips and keylines along
+  art-crop edges and compare available same-illustration crops. Flag suspect
+  assets for review; do not silently trim every image or stretch the aperture.
+- Historical body scores cannot rank current previews. A review comparison must
+  bind the renderer/adapter, exact wording and assets, and shared registration
+  hashes. Score the exact normalized scan displayed in the overlay. Rejected
+  registration remains visibly unaligned, never a certified identity transform.
+- Register scan translation and uniform scale against the actual rendered stock
+  transitions using calibration names only, then validate reserved names. Keep
+  opposing residual edge errors as asset geometry issues; never fit each scan
+  or use text to improve its own score.

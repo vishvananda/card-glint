@@ -1,4 +1,5 @@
 import { reviewedPrintingFields } from './printing-fields.mjs';
+import { reviewedArtCrop } from './art-crop.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
@@ -7,6 +8,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     throw Error(`Reviewed text is stale for ${card.name}; review it against the new reference.`);
   const fields = reviewedPrintingFields(entry, annotation);
   const frameColors = fields.frameColors ?? inferredLandPalette(card);
+  const artCorrection = reviewedArtCrop(entry);
   const original = printingText[card.id];
   const rules =
     annotation.rulesText ?? original?.originalText ?? card.printed_text ?? card.oracle_text ?? '';
@@ -36,7 +38,10 @@ export function presentation(entry, annotations = {}, printingText = {}) {
       fields.manaSymbols ?? [...(card.mana_cost ?? '').matchAll(/\{([^}]+)\}/g)].map((m) => m[1]),
     rulesText,
     rulesParagraphs,
-    illustration: entry.art ? `/__accuracy/object/${entry.art.sha256}` : null,
+    illustration: entry.art
+      ? `/__accuracy/object/${artCorrection.sourceHash ?? entry.art.sha256}`
+      : null,
+    ...(artCorrection.crop ? { illustrationCrop: artCorrection.crop } : {}),
     artist: fields.artist ?? card.artist,
     power: Object.hasOwn(fields, 'power') ? fields.power : card.power,
     toughness: Object.hasOwn(fields, 'toughness') ? fields.toughness : card.toughness,
@@ -62,6 +67,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
         : 'oracle-unverified',
     cohort: annotation.cohort ?? 'corpus',
     annotation,
+    artCorrection,
   };
 }
 
