@@ -953,3 +953,49 @@ its application, deployment and database outside this library repository.
   `exo-symbol-rim-outer-measurement.json` full-set report retain both tiers,
   all rows and regressions. The local comparison places the balanced rim next
   to the 2 px exterior-only version, with full cards, table rasters and overlays.
+
+### Exodus independently measured symbol axes (v73)
+
+- Supersede the unadopted 58 × 20 proportional enlargement trial. Measure
+  native scan pixels before resampling, with independent width/height bounds,
+  connected-component boundary rejection and a grayscale threshold sweep.
+  All 55 commons are the measurement cohort; 54 have stable ink bounds and
+  Culling the Weak is explicitly threshold-sensitive. The 88 metallic
+  printings provide separate white-rim checks, not reliable dark-ink masks.
+  Across all rarities, 107 rim measurements are stable; retain the other
+  36 as uncertain rather than silently dropping them.
+- Common ink measures 55.577 × 21.577 canonical px in raw scans. The existing
+  provisional shared frame scale gives 55.214 × 21.436. Previous rendered
+  ink was 54.667 × 19.333, so the height error is much larger than the width
+  error. Native scan pixels represent approximately 0.65 canonical px;
+  numerical differences below this are not precision claims.
+- Use shared geometry **55.5 × 21**, right **430.5**, center Y **390**.
+  Its center (402.75, 390) rounds the measured shared-frame median
+  (402.703, 389.957). The 2 px exterior rim, pinned stencil, white backing,
+  rarity palettes and symbol left edge remain unchanged. Actual rendered
+  ink measures **55.333 × 21.333**. Paired median absolute width/height
+  errors fall from .547/2.103 to **.119/.103 px** on the 54 stable commons.
+- Validate all 143 printings at both tiers against v71; seven controls and
+  all typography are byte-identical, including the three previously
+  compressed Oracle type lines. Every changed pixel stays inside the
+  symbol envelope. No per-card profiles or scan transforms were fitted.
+- Inspection symbol F1 median improves **.770 → .877**, table **.749 → .803**.
+  Raw medians improve .612 → .752 and .637 → .727. Inspection/table Census
+  improves .793 → .857 and .810 → .829. There are 111/103 improvements
+  and 21/23 regressions exceeding .02 at inspection/table size respectively.
+  These are symbol-region diagnostics, not full-card accuracy percentages.
+- Position remains provisional: white-frame scan centers differ from blue
+  and black centers by approximately 2.6 px after the shared fit. Most
+  inspection regressions are white cards. Resolve this with the frame pass;
+  do not introduce per-scan offsets. The retained bridge stencil also has
+  squarer tower/foot contours than the printed symbol, which remains an
+  asset-review item even when its outer dimensions match.
+- Reproduce native measurements with `exo-symbol-bounds.mjs rim-outer|measured`;
+  captures with `exo-symbol-study.mjs measured-candidate|measured`; and
+  shape/containment checks with `exo-rim-audit.mjs measured-candidate|measured`.
+  `exo-symbol-measured-plan.json` freezes the measurement cohort and choice.
+  The earlier `size` reports preserve the rejected proportional trial.
+  The local comparison includes measured common-ink rectangles, full cards,
+  table rasters and red/green overlays. Legacy five-card/remaining-card
+  metric groups are retained for continuity; they are not an untouched
+  holdout for this new 55-common measurement selection.

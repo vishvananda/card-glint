@@ -17,9 +17,25 @@ import { compareLettering } from './lettering-metrics.mjs';
 import { median } from './metrics.mjs';
 import { oldSymbolRegions } from './old-symbol-regions.mjs';
 const phase = process.argv[2] ?? 'rim-outer';
-assert.ok(['rim-candidate', 'rim', 'rim-outer-candidate', 'rim-outer'].includes(phase));
-const outer = phase.startsWith('rim-outer'),
-  beforeStage = outer ? 'rim' : 'after',
+assert.ok(
+  [
+    'rim-candidate',
+    'rim',
+    'rim-outer-candidate',
+    'rim-outer',
+    'size-candidate',
+    'size',
+    'measured-candidate',
+    'measured',
+  ].includes(phase),
+);
+const measured = phase.startsWith('measured'),
+  resize = measured || phase.startsWith('size'),
+  outer = phase.startsWith('rim-outer'),
+  sizePlan = resize
+    ? await readJson(`${fixtureRoot}/exo-symbol-${measured ? 'measured' : 'size'}-plan.json`)
+    : null,
+  beforeStage = resize ? 'rim-outer' : outer ? 'rim' : 'after',
   base = `${outputRoot}/exo-symbol`,
   before = await readJson(`${base}/${beforeStage}/capture.json`),
   after = await readJson(`${base}/${phase}/capture.json`),
@@ -30,6 +46,7 @@ const outer = phase.startsWith('rim-outer'),
   rows = [];
 assert.equal(before.planHash, hash(JSON.stringify(plan)));
 assert.equal(before.rendererHash, baseline.rendererHash);
+if (resize) assert.equal(before.rendererHash, sizePlan.baselineRendererHash);
 assert.equal(after.rendererHash, await sourceHash(`${root}/games/magic/src`));
 assert.equal(after.planHash, before.planHash);
 assert.equal(after.rows.length, phase.endsWith('-candidate') ? 12 : before.rows.length);
@@ -40,7 +57,7 @@ try {
     ),
     g = retroSymbolGeometry({ setCode: 'exo' });
   for (const key of ['right', 'centerY', 'width', 'height'])
-    assert.equal(g[key], candidate.selected[key]);
+    assert.equal(g[key], resize ? sizePlan.after[key] : candidate.selected[key]);
   assert.deepEqual(g.crop, candidate.crop);
 } finally {
   await server.close();
@@ -58,7 +75,22 @@ for (const a of after.rows) {
     raw = await cachedGrayRegion(objectFile({ sha256: a.referenceHash }), a.referenceHash, rect),
     scores = {};
   assert.deepEqual(a.face, b.face);
-  assert.deepEqual(a.clearance, b.clearance);
+  const typeWidthChanged =
+    a.clearance.afterMaximum !== b.clearance.afterMaximum &&
+    a.clearance.measuredWidth > a.clearance.afterMaximum;
+  if (resize && a.cohort !== 'control') {
+    assert.deepEqual(
+      {
+        ...a.clearance,
+        afterMaximum: b.clearance.afterMaximum,
+        needsCompression: b.clearance.needsCompression,
+      },
+      b.clearance,
+    );
+    const widthDelta =
+      sizePlan.after.right - sizePlan.after.width - sizePlan.before.right + sizePlan.before.width;
+    assert.ok(Math.abs(a.clearance.afterMaximum - b.clearance.afterMaximum - widthDelta) < 1e-9);
+  } else assert.deepEqual(a.clearance, b.clearance);
   for (const tier of ['inspect', 'table']) {
     const images = {},
       metrics = {};
@@ -91,8 +123,21 @@ for (const a of after.rows) {
       const x = (((i / 4) % old.width) * 488) / old.width,
         y = (Math.floor(i / 4 / old.width) * 680) / old.height;
       // Boundary texels may straddle the envelope at table resolution.
-      if (x + 488 / old.width <= 371 || x >= 435 || y + 680 / old.height <= 376 || y >= 403)
-        outside++;
+      const [sx, sy, sw, sh] = resize ? sizePlan.changeEnvelope : [371, 376, 64, 27];
+      if (x + 488 / old.width <= sx || x >= sx + sw || y + 680 / old.height <= sy || y >= sy + sh) {
+        const [tx, ty, tw, th] = a.clearance.typeRegion;
+        if (
+          resize &&
+          typeWidthChanged &&
+          a.cohort !== 'control' &&
+          x + 488 / old.width > tx &&
+          x < tx + tw &&
+          y + 680 / old.height > ty &&
+          y < ty + th
+        )
+          typeChanged++;
+        else outside++;
+      }
     }
 
     assert.equal(outside, 0, `${a.name} ${tier}: pixels outside rim changed`);
@@ -101,7 +146,9 @@ for (const a of after.rows) {
     scores[tier] = { changed, typeChanged, outside, ...metrics };
   }
   const review = a.cohort === 'control' ? [] : ['internal-frame-registration-provisional'];
-  if (a.clearance.needsCompression) review.push('previous-oracle-type-compression-unchanged');
+  if (typeWidthChanged)
+    review.push('oracle-type-clearance-reduced', 'type-change-overlaps-score-region');
+  else if (a.clearance.needsCompression) review.push('previous-oracle-type-compression-unchanged');
   for (const tier of ['inspect', 'table']) {
     if (scores[tier].after.registered.edgeF1 < scores[tier].before.registered.edgeF1 - 0.02)
       review.push(`${tier}:edge-regression`);
@@ -120,6 +167,7 @@ for (const a of after.rows) {
     cohort: a.cohort,
     referenceHash: a.referenceHash,
     clearance: a.clearance,
+    ...(resize ? { beforeClearance: b.clearance, typeWidthChanged } : {}),
     scores,
     review,
   });
@@ -180,16 +228,27 @@ const ordinary = rows.filter((r) => r.cohort !== 'control'),
       ]),
     ),
     controls: rows.filter((r) => r.cohort === 'control').length,
+    ...(resize ? { unchangedType: summarize(ordinary.filter((r) => !r.typeWidthChanged)) } : {}),
   };
 await writeJson(`${fixtureRoot}/exo-symbol-${phase}-measurement.json`, {
   schemaVersion: 1,
   phase,
-  rim: outer
-    ? { before: { outset: 1.875, inset: 0.625 }, after: { outset: 2, inset: 0 } }
-    : { before: { outset: 1.25, inset: 0 }, after: { outset: 1.875, inset: 0.625 } },
-  scope: outer
-    ? 'User-directed Exodus rim revision: use a 2 px outer-only rim. Restore un-eroded colored ink and increase outer white radius to 2 px. Same v69 geometry, palettes, faces and type widths; no per-card fit. Compare against the v70 balanced rim. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Full-card bytes protect the tight rim envelope (boundary texel footprints may intersect it), seven controls and capture identities. No original-text or whole-card accuracy certification.'
-    : 'User-directed wider Exodus white rim, split equally inward/outward. Outer radius 1.25 to 1.875 px, inward erosion 0 to 0.625 px, preserving window contours through the existing filled backing. Same v69 geometry, palettes, faces and type widths; no per-card fit. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Verify full-card bytes outside the tight rim envelope, seven controls, and both capture identities. No original-text or whole-card accuracy certification.',
+  ...(resize
+    ? {
+        sizePlanHash: hash(JSON.stringify(sizePlan)),
+        geometry: { before: sizePlan.before, after: sizePlan.after },
+      }
+    : {}),
+  rim: resize
+    ? { before: { outset: 2, inset: 0 }, after: { outset: 2, inset: 0 } }
+    : outer
+      ? { before: { outset: 1.875, inset: 0.625 }, after: { outset: 2, inset: 0 } }
+      : { before: { outset: 1.25, inset: 0 }, after: { outset: 1.875, inset: 0.625 } },
+  scope: resize
+    ? sizePlan.scope
+    : outer
+      ? 'User-directed Exodus rim revision: use a 2 px outer-only rim. Restore un-eroded colored ink and increase outer white radius to 2 px. Same v69 geometry, palettes, faces and type widths; no per-card fit. Compare against the v70 balanced rim. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Full-card bytes protect the tight rim envelope (boundary texel footprints may intersect it), seven controls and capture identities. No original-text or whole-card accuracy certification.'
+      : 'User-directed wider Exodus white rim, split equally inward/outward. Outer radius 1.25 to 1.875 px, inward erosion 0 to 0.625 px, preserving window contours through the existing filled backing. Same v69 geometry, palettes, faces and type widths; no per-card fit. CPU shape metrics at both tiers with raw scans and the frozen provisional internal-frame fit. Verify full-card bytes outside the tight rim envelope, seven controls, and both capture identities. No original-text or whole-card accuracy certification.',
   baselineRendererHash: before.rendererHash,
   rendererHash: after.rendererHash,
   planHash: after.planHash,

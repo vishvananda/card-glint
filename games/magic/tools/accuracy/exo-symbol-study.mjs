@@ -31,6 +31,10 @@ assert.ok(
     'rim',
     'rim-outer-candidate',
     'rim-outer',
+    'size-candidate',
+    'size',
+    'measured-candidate',
+    'measured',
   ].includes(action),
 );
 const base = `${outputRoot}/exo-symbol`,
@@ -120,7 +124,14 @@ try {
   for (const e of snapshot.entries.filter(
     (e) =>
       !e.issue &&
-      (!['material', 'candidate', 'rim-candidate', 'rim-outer-candidate'].includes(action) ||
+      (![
+        'material',
+        'candidate',
+        'rim-candidate',
+        'rim-outer-candidate',
+        'size-candidate',
+        'measured-candidate',
+      ].includes(action) ||
         ['calibration', 'control'].includes(e.cohort)),
   )) {
     const face = studyFace(e);
