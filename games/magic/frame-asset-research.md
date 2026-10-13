@@ -81,3 +81,172 @@ Downloads stay in the local cache/review workspace. Do not add these external
 images to the public showcase or README. Inspect provenance and redistribution
 terms before adopting assets from a new collection; repository code licensing
 does not establish rights to every contained card-frame image.
+
+## MSE and Card Conjurer investigation, 2026-10-13
+
+Calibration was paused for this investigation. No renderer, source selection,
+calibration profile, or asset URL was changed. The findings below identify
+candidates; they do not establish scan-accuracy improvements.
+
+### Sources and revisions
+
+| Collection                                                                 | Inspected revision                         | Main value                                                            |
+| -------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------- |
+| [Full-Magic-Pack](https://github.com/MagicSetEditorPacks/Full-Magic-Pack)  | `16f1d13bb7f5924613fc1ddc25da582beccfefb6` | Layout rules, shared modules, historical and special frame families   |
+| [Investigamer/Card Conjurer](https://github.com/Investigamer/cardconjurer) | `2fcddba8966156d484cedf54d8214996748dd5e1` | Existing pinned source; many assets remain unused by our pack         |
+| [joshbirnholz/Card Conjurer](https://github.com/joshbirnholz/cardconjurer) | `33f2547137fe366b40e9e8dba4eb591af190fddf` | Preferred additional source for current frames and styled set symbols |
+| [shopglobal/Card Conjurer](https://github.com/shopglobal/cardconjurer)     | `f9b854c728ca0efd44097e9da52a009f0fc4dafb` | Older 2018 implementation and component library                       |
+
+Josh's [publish workflow](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/.github/workflows/publish.yaml)
+syncs `master` to the `cardconjurer.app` S3 bucket. Its frame menus match the
+live site. The live `img/frames/m15/new/w.png` sample was downloaded through
+the browser and matched the existing pinned archive byte for byte:
+SHA-256 `8f14e393efdc056cf86a3942a923e89a096f6840d5843d642a4723a319090dff`.
+This verifies that sample, not the entire deployment revision.
+
+Complete GitHub tree inventories, with no truncated responses, found 2,018
+added frame-image paths and 283 changed existing paths in Josh's revision
+relative to our pin. This count covers PNG/JPEG/SVG/WebP under `img/frames/`,
+excluding filenames containing `thumb` or `sample`; masks, custom frames, and
+variants count as files, not distinct official frame families. There are 121
+new `js/frames/pack*` files. Changed bytes alone do not establish changed
+appearance or better accuracy.
+
+The same frame paths and blob hashes were present in AModSoul's default branch
+at `d3c6706692898d596ec6a5be0be44f63062c9e12`. Its unmerged feature branches
+were not exhaustively inspected. Boffo90, thedeveloloper and rssilver had no
+different frame-asset content at their inspected default heads despite recent
+push dates. Pixel64 added 16 frame files. This was a targeted fork survey,
+not an exhaustive audit of every fork.
+
+### Layout techniques worth adopting
+
+MSE separates game fields (`.mse-game`), styles (`.mse-style`), shared code/assets
+(`.mse-include`), and symbol fonts. The inspected pack has 366 Magic-named style
+packages, including deprecated and custom designs; that is not a count of
+official frame families. Use `magic-m15-altered.mse-style` (M15 Main), not the
+deprecated `magic-m15.mse-style`, when studying current ordinary layouts.
+
+- **Explicit composition order.** The [modules guide](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-modules.mse-include/readme.txt)
+  distinguishes art, frame, trim effects, pinlines, border, movable plates,
+  watermark/ability backgrounds, attachments, text, overlays, and corners.
+  This makes interactions such as Nyx plus Adventure or DFC plus crown explicit.
+- **Measured dependencies.** [M15 Main](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-altered.mse-style/style)
+  reserves title width from measured mana width and type width from measured
+  rarity width. Its prototype components use measured content dimensions.
+  These are useful constraints, though some other decisions still use character
+  counts and manual overrides.
+- **Separate spacing controls.** The [engine's style contract](https://github.com/twanvl/MagicSetEditor2/blob/master/doc/type/style.txt)
+  distinguishes wrapped lines, explicit newlines, paragraph separators, minimum
+  padding, and bounded expansion of line spacing. Text masks define irregular
+  usable areas. This is directly relevant to crowded flavor text and loyalty
+  indentation, without requiring us to replace Canvas typography.
+- **Attachments follow text layout.** The [shared game script](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic.mse-game/script)
+  obtains loyalty ability bounds from measured text blocks and derives stripes
+  and badge positions from those bounds. Colons are separate Beleren Bold text
+  fields in the loyalty module. This is a reference implementation, not proof
+  of the font used on every physical printing.
+- **Preserve edge shapes when resizing.** The [Saga style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-saga.mse-style/style)
+  uses nine-slice resizing for selected components: corners/endcaps stay fixed
+  while the middle grows. The loyalty stripe builder does this too. Selective
+  resizing is a better candidate than stretching a complete textured frame.
+
+MSE does not supply a universal historically accurate centering rule. Its ABU
+template defaults to never centering; its optional short-text rule checks for
+no explicit newline, no flavor, and at most two measured lines. It would not
+replace the per-printing work already done here.
+
+Card Conjurer packs are executable JavaScript containing frame-image choices,
+mask lists, normalized art/symbol bounds and text presets. Its compositor blends
+masked layers, applies opacity and optional HSL, and measures words while
+shrinking overflowing text. The useful extraction is the asset/mask metadata
+and layout relationships. Do not import its DOM-dependent editor into the pack
+or move its image readbacks into the animated rendering path. HSL controls are
+also not equivalent to our calibrated HSB parameters.
+
+### Asset candidates
+
+| Candidate                                                                                                                                                                 | Verified file evidence                                                                                     | Relevance                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [Card Conjurer Accurate Frames](https://github.com/joshbirnholz/cardconjurer/tree/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new)                            | Sample white plate and component masks are 2010 × 2814                                                     | Ordinary modern alternative to our wingedsheep components; already present in our pinned archive      |
+| [Updated Eighth Edition](https://github.com/joshbirnholz/cardconjurer/commit/ad3b19809c9352a6f67cef41121ff3451a533c18)                                                    | White plate changed from 1500 × 2100 to 2010 × 2814 in November 2025                                       | Real additional family candidate for 2003-era modern frames                                           |
+| [Rooms](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packRoom.js)                                                 | Dedicated plates, half masks, rotated text presets                                                         | Our current split painter has no dedicated Room branch despite an older README table mentioning rooms |
+| [Battles](https://github.com/joshbirnholz/cardconjurer/tree/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/battle)                                               | Inspected Card Conjurer plate is 2814 × 2010; MSE sample is 523 × 375                                      | Missing landscape layout, defense region, and reverse-face reminder                                   |
+| [Current pack catalog](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/groupStandard-3.js)                           | Prototype, mutate, Case, Omen, Prepare, Station, flip and DFC variants; creature Sagas in the Saga catalog | Missing dedicated layouts/treatments or more complete alternatives to existing layouts                |
+| [MSE old gold](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-old.mse-style/mcard.jpg)                   | 375 × 523 JPEG, visibly different rules-box bevel shading                                                  | Candidate for the old gold bevel problem; texture and resolution need scan validation                 |
+| [MSE ABU](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/tree/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-old-abu.mse-style)                              | White plate and blending masks are 750 × 1054                                                              | Additional blending reference; not demonstrated to improve our existing ABU plate                     |
+| [MSE historical Future Sight](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/tree/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-future.mse-style)           | Separate card, textbox, typeline and PT assets; inspected white JPEG is 375 × 527                          | Missing family; Card Conjurer also has `packFutureRegular.js`                                         |
+| [MSE Mystical Archive](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/tree/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-showcase-strixhaven.mse-style) | Inspected white card component is 744 × 1039                                                               | Later special-treatment support                                                                       |
+
+Josh's ABU, Fourth and Seventh source assets are unchanged from our pin. More
+recent repository activity does not provide another early-frame replacement.
+Shopglobal's inspected M15 white plate is 375 × 523; prioritize it as historical
+reference rather than a resolution upgrade. MSE's old/Portal samples are also
+375 × 523, and its ordinary shared M15 sample is that size. Higher nominal image
+dimensions alone do not prove more source detail.
+
+The ABU alternating-band mask is still useful for duals. MSE provides
+`alpha_blend.png` and `land_blend_card*.png`, with scripted choices between
+colored land plates and neutral land areas. No inspected file has yet been
+validated as the exact missing **Revised dual rules-box treatment**. Custom
+dual-land templates must not be mistaken for historical printing references.
+
+### Styled set-symbol library
+
+Josh's [official-symbol directory](https://github.com/joshbirnholz/cardconjurer/tree/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official)
+has 2,537 SVG files, compared with 1,835 files in our pinned archive (1,767 SVG
+and 68 PNG). There are 770 added paths, 26 changed retained paths and 68 removed
+PNG paths. Counts include rarity variants and watermarks, not unique sets.
+
+This is a separate candidate from the Keyrune silhouette source currently used
+by our renderer. Inspected `tmp-c.svg` has explicit white and black contour
+paths; `exo-r.svg` includes a gold radial gradient and outline geometry. WAR,
+M21, Arabian Nights, Legends and Stronghold also have styled variants. These
+could reduce the need to reconstruct outlines and metallic fills ourselves.
+Check their visible bounds, historical treatment and contour accuracy against
+normalized scans before adoption; fictitious rarity variants exist even for
+sets whose original symbols did not encode rarity.
+
+This library is not uniformly new: many inspected historical variants are
+already in our pinned Card Conjurer archive but unused. MSE's rarity module
+mostly applies customizable fills/borders to a supplied set symbol; this audit
+did not find an equivalent comprehensive historical symbol collection there.
+
+### Availability and provenance
+
+The images and masks are ordinary files in the repositories; MSE does not need
+to be installed or run to retrieve them. Asset URLs can be pinned to revisions
+just as our current references are. Keep source repository, path, blob/content
+hash, native dimensions, alpha or luminance mask semantics, visible bounds,
+credit, and known reuse terms with each admitted source.
+
+There is no repository-wide license file in the inspected Full-Magic-Pack or
+modern Card Conjurer forks. Full-Magic-Pack has an MIT license specifically
+inside `magic-m15-bigtext.mse-style`; that is not evidence of a pack-wide grant.
+The modern Card Conjurer [notice](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/legal/index.html)
+credits several frame contributors, identifies third-party game imagery, and
+describes personal/noncommercial service use. Shopglobal has GPL-3.0 code and
+a separate [asset disclaimer](https://github.com/shopglobal/cardconjurer/blob/f9b854c728ca0efd44097e9da52a009f0fc4dafb/Disclaimer.txt)
+that describes some material as CC BY-NC-SA 2.5. Availability is established;
+blanket asset redistribution permission is not. Preserve these distinctions
+when selecting assets, especially fonts. No external binaries were added here.
+
+### Recommended follow-up after the pause
+
+1. Test the styled Tempest, Stronghold, Exodus, WAR and M21 symbols against
+   our current silhouettes/treatments with the stored scan normalization.
+2. Compare Accurate M15 and the updated Eighth Edition plates against current
+   components across several sets. Keep geometry scoring separate from color.
+3. Compare MSE old gold shading and dual blending on a small historical sample;
+   retain the existing early plates unless an alternative earns admission.
+4. Introduce typed layout definitions within the Magic pack: native dimensions,
+   regions, masks, attachments, text constraints, and explicit supported
+   combinations. Start with Battles and Rooms, then prototype/mutate and DFC
+   treatments. Keep game definitions out of the neutral renderer.
+5. Preserve our cache strategy: prepare/decode/mask/recolor once per immutable
+   asset/profile key. Use selective resizing only for known stretchable regions.
+   If a frame source changes, remeasure frame geometry, HSB and dependent
+   placements; stored scan transforms must retain their target/source hashes.
+
+These sources supply assets and design references. They do not replace scan
+normalization, original-printing text, or our accuracy measurements.
