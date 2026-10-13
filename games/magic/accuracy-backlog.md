@@ -865,3 +865,23 @@ its application, deployment and database outside this library repository.
   identity, controls, both tiers, all non-symbol pixels and type clearance.
   The local page provides 21 examples, including the weakest matches and all
   three type exceptions, plus metrics for all 143 cards and red/green overlays.
+
+### Ice Age baseline and existing snowflake variants
+
+- Cache and freeze all 383 ordinary printings before the symbol correction,
+  plus six controls. Eleven calibration cards span every mono-color, gold,
+  artifact and land; the remaining printings are reserved for validation.
+  The baseline keeps rules-overflow failures explicit instead of removing
+  those cards from the coverage denominator. See `ice-symbol-baseline.json`.
+- Rasterize the existing pinned `ice.svg` and `ice2.svg` once, then compare
+  cached stencils without Chromium. The alternative has finer contours.
+  White plate and central-star candidates reuse closed source subpaths.
+  Search records 0, 0.5 and 1 px rim variants and bounded shared geometry;
+  no per-scan transform or placement is fitted. Several candidates hit bounds,
+  and the best shape scores do not clearly distinguish the alternatives.
+- These are exploratory calibration results, **not adopted geometry or a
+  completed Ice Age pass**. Production candidate captures and full-set
+  validation remain necessary. Exodus rim review takes priority before
+  continuing this study. Reproduce the frozen captures with
+  `ice-symbol-study.mjs before`, template rasterization with
+  `ice-symbol-templates.mjs`, and CPU candidates with `ice-symbol-search.mjs`.
