@@ -1,0 +1,158 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { PNG } from 'pngjs';
+import { cachedFetch, readObject } from './cache.mjs';
+import {
+  cacheRoot,
+  fixtureRoot,
+  outputRoot,
+  root,
+  readJson,
+  writeJson,
+  sourceHash,
+  hash,
+  atomicWrite,
+  mapLimit,
+} from './common.mjs';
+import { printingScope, referenceIssue } from './rollout-policy.mjs';
+import { fetchComponents } from './components.mjs';
+import { presentation } from './adapter.mjs';
+import { openBrowser } from './browser.mjs';
+
+const [action = 'prepare'] = process.argv.slice(2);
+assert.ok(['prepare', 'before', 'after'].includes(action));
+const base = `${outputRoot}/exo-symbol`,
+  planFile = `${fixtureRoot}/exo-symbol-plan.json`,
+  snapshotFile = `${cacheRoot}/rollout/exo-symbol.json`;
+if (action === 'prepare') {
+  const prior = await readJson(`${cacheRoot}/rollout/old-symbol-material.json`),
+    inventory = await readJson(`${cacheRoot}/rollout/sets/exo.json`),
+    cards = [];
+  for (const page of inventory.pages)
+    cards.push(...JSON.parse((await readObject(page)).toString()).data);
+  const eligible = cards.filter((c) => printingScope(c).status === 'ordinary'),
+    excluded = cards
+      .filter((c) => printingScope(c).status !== 'ordinary')
+      .map((c) => ({ id: c.id, name: c.name, reason: printingScope(c) }));
+  const calibration = new Set(
+    prior.entries
+      .filter((e) => e.card.set === 'exo' && e.cohort === 'calibration')
+      .map((e) => e.id),
+  );
+  const entries = await mapLimit(eligible, 2, async (card) => {
+    const issue = referenceIssue(card);
+    if (issue) return { id: card.id, card, category: 'ordinary', issue, cohort: 'unavailable' };
+    const cached = prior.entries.find((e) => e.id === card.id);
+    return {
+      id: card.id,
+      card,
+      category: 'ordinary',
+      issue: null,
+      cohort: calibration.has(card.id) ? 'calibration' : 'validation',
+      reference: cached?.reference ?? (await cachedFetch(card.image_uris.png)),
+      art: cached?.art ?? (await cachedFetch(card.image_uris.art_crop)),
+    };
+  });
+  for (const set of ['arn', 'leg', 'all', 'wth'])
+    entries.push({
+      ...prior.entries.find((e) => e.card.set === set && e.cohort === 'calibration'),
+      cohort: 'control',
+    });
+  for (const rarity of ['common', 'uncommon', 'rare']) {
+    const e = entries.find((e) => e.card.rarity === rarity && e.cohort === 'calibration');
+    entries.push({ ...e, id: e.id + '-custom', explicitSymbol: true, cohort: 'control' });
+  }
+  const snapshot = {
+    schemaVersion: 1,
+    entries,
+    excluded,
+    totalPrintings: cards.length,
+    ordinaryPrintings: eligible.length,
+    components: await fetchComponents(entries, {}),
+  };
+  const plan = {
+    schemaVersion: 1,
+    scope:
+      'Complete ordinary Exodus inventory, five prior calibration cards, remaining printings reserved for full-set validation. Four other old-set controls and three explicit-symbol rarity controls. Cached high-resolution scans/art, source assets retained. Correct white rim and metallic ink before shared visible geometry; no per-card layout tuning.',
+    baselineRendererHash: await sourceHash(`${root}/games/magic/src`),
+    snapshotHash: hash(JSON.stringify(snapshot)),
+    cards: entries.map((e) => ({
+      id: e.id,
+      set: e.card.set,
+      name: e.card.name,
+      referenceHash: e.reference?.sha256 ?? null,
+      issue: e.issue,
+      inputHash: hash(JSON.stringify(studyFace(e))),
+      cohort: e.cohort,
+    })),
+  };
+  try {
+    await readJson(planFile);
+    throw Error('Plan already frozen');
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  await writeJson(snapshotFile, snapshot);
+  await writeJson(planFile, plan);
+  console.log('Prepared', entries.length);
+  process.exit(0);
+}
+const frozen = await readJson(planFile),
+  snapshot = await readJson(snapshotFile),
+  rendererHash = await sourceHash(`${root}/games/magic/src`);
+assert.equal(hash(JSON.stringify(snapshot)), frozen.snapshotHash);
+if (action === 'before') assert.equal(rendererHash, frozen.baselineRendererHash);
+const session = await openBrowser(snapshot),
+  rows = [];
+try {
+  for (const e of snapshot.entries.filter((e) => !e.issue)) {
+    const face = studyFace(e);
+    const rendered = await session.page.evaluate(async (face) => {
+      const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts');
+      const images = [];
+      for (const tier of ['inspect', 'table']) {
+        const canvas = await composeCardTexture(
+          { face, printingId: null, printedImage: null },
+          tier,
+          new AbortController().signal,
+        );
+        images.push({ tier, data: canvas.toDataURL() });
+        canvas.width = canvas.height = 0;
+      }
+      return { images };
+    }, face);
+    const images = {};
+    for (const image of rendered.images) {
+      const bytes = Buffer.from(image.data.split(',')[1], 'base64'),
+        file = `${e.id}.${image.tier}.png`;
+      PNG.sync.read(bytes, { checkCRC: true });
+      await atomicWrite(`${base}/${action}/${file}`, bytes);
+      images[image.tier] = { file, sha256: hash(bytes) };
+    }
+    rows.push({
+      ...frozen.cards.find((c) => c.id === e.id),
+      number: e.card.collector_number,
+      face,
+
+      images,
+    });
+    console.log(action, e.card.set, e.card.name);
+  }
+  assert.deepEqual(session.faults, []);
+  assert.equal(await sourceHash(`${root}/games/magic/src`), rendererHash);
+  await writeJson(`${base}/${action}/capture.json`, {
+    rendererHash,
+    planHash: hash(JSON.stringify(frozen)),
+    methodHash: hash(await readFile(new URL(import.meta.url))),
+    rows,
+  });
+} finally {
+  await session.close();
+}
+
+function studyFace(entry) {
+  const face = presentation(entry).face;
+  if (entry.explicitSymbol)
+    face.setSymbol = `https://cdn.jsdelivr.net/gh/andrewgioia/keyrune@256add455a043462f7b2bfa224ca71bfc66b62ab/svg/${entry.card.set}.svg`;
+  return face;
+}
