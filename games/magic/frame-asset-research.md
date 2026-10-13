@@ -411,3 +411,26 @@ Verify normal full-card exports after adopting the profile with
 Keep each baseline as `CARD-pre-calibration.png`, the new export as
 `CARD-plate.png`, and the frozen frame registration beside the reference scans.
 This check records final raster hashes and scores separately from search scores.
+
+## Revised color alternatives after the major-set pass
+
+A color-only recheck of the existing ABU, Fourth and Seventh plates is recorded
+in [candidate measurements](fixtures/accuracy/revised-frame-color-candidates.json).
+It reuses the normalized Revised development and reserved cohorts from the color
+audit, so it is exploratory evidence rather than a fresh admission test.
+
+For green, one shared HSB fit gives median reserved border/paper Oklab errors of
+1.33/1.84 for ABU, 11.69/3.39 for Fourth, and 18.17/5.43 for Seventh (lower is
+better). ABU also has a more compatible starting brightness balance for white.
+This does not settle asset selection: the earlier green structural comparison
+favored Fourth (0.604 reserved score) over ABU (0.388), and flagged unsettled
+registration for both. Compare color and geometry separately before switching.
+
+The user has reopened separate border/paper calibration as an alternative.
+The next comparison uses source-derived masks for green and black, following
+the irregular paper boundary and preserving the inset shadow. Compare the
+current frame with separate transforms against ABU with one shared transform,
+using original wording, full cards and fixed-pose red/green overlays. Masks and
+derived colors should be prepared once per immutable source/profile; no scan
+segmentation or mask readback belongs in the animation loop. No candidate in
+this study changes released frame selection or color defaults.

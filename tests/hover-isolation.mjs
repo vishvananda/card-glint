@@ -1,12 +1,30 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 
-const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+const browser = await chromium.launch({
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+});
 try {
   async function sample(finish, hovered) {
     const page = await browser.newPage({ viewport: { width: 1400, height: 1100 } });
-    await page.clock.install({ time: new Date('2026-01-01T00:00:00Z') });
-    await page.clock.pauseAt(new Date('2026-01-01T00:00:01Z'));
+    // A paused wall clock can start independent documents at different RAF
+    // phases. Drive the real animation callback with identical timestamps;
+    // neither navigation speed nor screenshots may advance simulation time.
+    await page.addInitScript(() => {
+      let nextId = 1;
+      const callbacks = new Map();
+      window.requestAnimationFrame = (callback) => {
+        const id = nextId++;
+        callbacks.set(id, callback);
+        return id;
+      };
+      window.cancelAnimationFrame = (id) => callbacks.delete(id);
+      window.advanceTestFrame = (time) => {
+        const pending = [...callbacks.values()];
+        callbacks.clear();
+        for (const callback of pending) callback(time);
+      };
+    });
     await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');
     await page.evaluate(async (value) => {
       await window.lab.ready;
@@ -17,9 +35,17 @@ try {
     const rect = await page.locator('#scene').boundingBox();
     if (hovered) await page.mouse.move(rect.x + rect.width / 10, rect.y + rect.height * 0.3);
     const snapshots = [];
+    let timestamp = 0;
     for (const duration of [600, 200]) {
       await page.evaluate(() => window.lab.pause(false));
-      await page.clock.runFor(duration);
+      await page.evaluate(
+        ({ start, duration }) => {
+          for (let elapsed = 10; elapsed <= duration; elapsed += 10)
+            window.advanceTestFrame(start + elapsed);
+        },
+        { start: timestamp, duration },
+      );
+      timestamp += duration;
       const state = await page.evaluate(() => {
         window.lab.pause();
         return {

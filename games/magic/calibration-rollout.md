@@ -84,9 +84,14 @@ multiplier cannot match both. The old metric compared median color in narrow
 outer strips and a broad paper patch; it did not demonstrate a close match
 across the entire texture.
 
-Do not enable rejected profiles or fit separate spatial masks across continuous
-frame textures. The next color experiment should compare one smooth, shared
+Do not enable rejected profiles without a new comparison. The next color
+experiment should compare one smooth, shared
 color transform over the complete asset, first testing a tonal gamma/contrast
 curve and then a regularized color LUT if needed, against HSB, with more spatial patches, texture-contrast checks, clipping
 limits, and untouched validation names. Report coverage and residual error per
 component and material, including materials that receive no adjustment.
+
+The follow-up [frame-color study](frame-asset-research.md#revised-color-alternatives-after-the-major-set-pass)
+also tests ABU source textures and, following user review, source-derived
+irregular paper masks with separate border/paper transforms. The earlier
+whole-frame-only constraint no longer excludes this masked alternative.
