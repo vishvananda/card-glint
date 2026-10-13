@@ -13,6 +13,7 @@ import {
 import { cachedFetch } from './cache.mjs';
 import { presentation } from './adapter.mjs';
 import { openBrowser } from './browser.mjs';
+import { calibrationGroups } from './major-calibration-groups.mjs';
 
 const plan = await readJson(`${cacheRoot}/rollout/major-calibration-plan.json`);
 const directory = `${cacheRoot}/rollout/major-calibration`;
@@ -45,9 +46,7 @@ try {
   );
   session.addAssets(fonts);
   let count = 0;
-  for (const group of plan.rows.filter(
-    (r) => !filter.length || filter.includes(r.set) || filter.includes(r.family),
-  )) {
+  for (const group of calibrationGroups(plan.rows, filter)) {
     const key = group.key.replaceAll('/', '-');
     const groupHash = hash(JSON.stringify(group));
     let prior;

@@ -6,6 +6,7 @@ import { openBrowser } from './browser.mjs';
 import { normalize, cropGray } from './pixels-pure.mjs';
 import { compareRegion } from './metrics.mjs';
 import { fetchComponents } from './components.mjs';
+import { calibrationGroups } from './major-calibration-groups.mjs';
 
 // Verify candidates with fresh production Canvas exports. The CPU sampler is
 // used only to propose parameters; it never supplies the release's final score.
@@ -18,9 +19,7 @@ const fonts = await readJson(`${cacheRoot}/rollout/early-hsb.json`);
 session.addAssets(fonts.components);
 session.addAssets(await fetchComponents([], {}));
 try {
-  for (const group of plan.rows.filter(
-    (r) => !filter.length || filter.includes(r.family) || filter.includes(r.set),
-  )) {
+  for (const group of calibrationGroups(plan.rows, filter)) {
     const key = group.key.replaceAll('/', '-');
     let measured;
     try {
