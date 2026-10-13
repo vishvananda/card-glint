@@ -2,6 +2,19 @@
 
 ## Current rollout: old frames, then new frames
 
+Current priority: **select source-frame families across all old-frame groups
+before applying HSB calibration**. The set-symbol expansion remains paused.
+The [family coverage plan](fixtures/accuracy/old-frame-family-plan.json) freezes
+set/material cohorts and candidate families; its choices are not yet measured.
+Separate source-asset choice from printing typography, compare structure with
+color-insensitive metrics, validate on reserved card names, and retain ambiguous
+matches for review. Freeze the chosen asset and geometry before refitting HSB.
+Use per-color corrections, with one shared adjustment for the frame and paper.
+The [early HSB experiment](hsb-calibration.md) remains opt-in evidence; do not
+transfer its numbers onto a different source asset. See also the
+[asset-source findings](frame-asset-research.md), including the missing dual-land
+stripe mask already available in the pinned collection.
+
 The agreed scope is **major sets with at least 50 distinct ordinary English
 paper cards**, including large supplemental/reprint sets. Count distinct card
 identities for admission so art/printing variants cannot inflate a small set;

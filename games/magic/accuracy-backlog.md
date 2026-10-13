@@ -1205,3 +1205,19 @@ its application, deployment and database outside this library repository.
   corrected candidate hashes remain linked in the adoption plan. Local review
   HTML includes annotated native bounds, full cards and red/green overlays;
   images and HTML remain outside the repository.
+
+### Source-frame selection before color calibration
+
+- User priority: pick the best existing old-frame family per set/material before
+  applying HSB. Cover all old-frame groups in the 50-card-cutoff inventory.
+  Preserve typography while evaluating alternative source plates.
+- Retain per-color HSB rather than one adjustment per set. Use the same transform
+  for frame and text-box paper; mana colors are a separate fitted component.
+  The [experiment](hsb-calibration.md) records global/per-color comparisons,
+  raster validation and full-inventory color predictions. It remains opt-in.
+- Revised green demonstrates a component tradeoff that the combined color score
+  can conceal. Resolve source choice and geometry first, then refit; do not
+  compensate with per-card colors or split the paper/frame correction again.
+- Include the ABU dual-land stripe mask and compatible colored land plates in
+  source evaluation. Revised land geometry differs and requires review.
+  [Source research](frame-asset-research.md) records provenance and limitations.
