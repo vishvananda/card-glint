@@ -153,6 +153,9 @@ export function paintRetroFace(
     if (backing) {
       c.save();
       c.shadowColor = 'transparent';
+      // ARN's printed blade is gray. Keep this tone local to that printing;
+      // the shared white stencil also supplies Chronicles.
+      if (face.setCode?.toLowerCase() === 'arn') c.filter = 'brightness(0.7)';
       c.drawImage(
         backing,
         crop[0] * backing.width,

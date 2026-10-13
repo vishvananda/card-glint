@@ -15,7 +15,7 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
   arn: { right: 439, centerY: 394, width: 65, height: 22, crop: [0, 0.283203125, 1, 0.435546875] },
   leg: {
     right: 441,
-    centerY: 395,
+    centerY: 394,
     width: 24,
     height: 21,
     crop: [0, 0.1264957264957265, 1, 0.764102564102564],

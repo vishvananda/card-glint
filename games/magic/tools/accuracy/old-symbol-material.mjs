@@ -19,7 +19,7 @@ import { presentation } from './adapter.mjs';
 import { openBrowser } from './browser.mjs';
 
 const [action = 'prepare'] = process.argv.slice(2);
-assert.ok(['prepare', 'before', 'after', 'geometry'].includes(action));
+assert.ok(['prepare', 'before', 'after', 'geometry', 'review'].includes(action));
 const base = `${outputRoot}/old-symbol-material`,
   planFile = `${fixtureRoot}/old-symbol-material-plan.json`,
   snapshotFile = `${cacheRoot}/rollout/old-symbol-material.json`;

@@ -733,3 +733,39 @@ its application, deployment and database outside this library repository.
   The material-only capture is an intermediate candidate; the final renderer
   is the `geometry` capture. The local comparison exposes full cards, symbol
   close-ups and the red/green overlay, with unresolved cases labeled.
+
+### Visual follow-up: Legends height and Arabian Nights gray blade (v67)
+
+- Move the shared Legends symbol up one canonical pixel (center Y 395 → 394),
+  following visual review. Tint only the Arabian Nights blade backing to 70%
+  brightness, a neutral gray, retaining the original outline and open hilt.
+  Chronicles keeps its existing white detail material. Explicit symbols are
+  unchanged. The existing mask and geometry are reused; no extra decoding or
+  readback is needed.
+- Recapture the same sixty cards at both tiers. Sixteen change; the other 44 are
+  pixel-identical. Every pixel outside the symbol windows and every text layout
+  stays identical. These examples have already been reviewed, so their original
+  calibration/held-out labels do not constitute a fresh validation cohort.
+- ARN median inspection edge F1 improves .668 → .671 on the original calibration
+  sample and .514 → .529 on the original reserved sample. Its blade-tone
+  diagnostic improves, but remains sensitive to the unresolved registration and
+  source contour mismatch. The gray is a shared visual correction, not a finished
+  per-set HSB calibration. Small renders have no fully opaque blade interior;
+  tone diagnostics use inspection captures only.
+- LEG scores are mixed: inspection medians .834 → .803 (original calibration)
+  and .727 → .734 (original reserved). At table size they change .800 → .755
+  and .649 → .698. Keep the requested visual adjustment and retain regressions
+  for Alabaster Potion, Fortified Area, Akron Legionnaire and Arboria. Do not
+  describe the shift as an across-the-board metric improvement or refit scan
+  registration to hide these differences.
+- Reproduce with `old-symbol-material.mjs review` and
+  `old-symbol-review-audit.mjs`; the v66 `geometry` capture is the immediate
+  baseline. Evidence is `fixtures/accuracy/old-symbol-review-measurement.json`.
+  The local review shows the previous version beside the new one and keeps
+  accepted frame alignment, full-card views and red/green overlays available.
+- The Exodus full-set baseline was captured before these changes: 143 ordinary
+  printings plus seven controls. Its plan and capture tool are frozen in
+  `exo-symbol-plan.json` and `exo-symbol-study.mjs`. ARN/LEG controls in that
+  baseline intentionally predate this separate correction; future Exodus-only
+  audits must account for that provenance, rather than attribute their changes
+  to Exodus. Its symbol material and geometry pass remains pending.
