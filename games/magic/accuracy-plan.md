@@ -217,6 +217,46 @@ denominator; a coverage change requires separate review. Comparison and native
 measurement run on the CPU; only actual face/template capture needs Chromium.
 Keep preview pages outside the repository.
 
+### Homelands symbol checkpoint (2026-10-13)
+
+The frozen 19-card calibration cohort gives 17 stable native black-ink bounds.
+Reference medians are 22.885 × 22.231 canonical pixels; the baseline's measured
+ink was 19.333 × 19.333. Independent-axis fitting and a calibration-only raster
+correction produce 23.333 × 22.000 ink, within the source-pixel uncertainty.
+Keep the one-pixel exterior white rim. Fill the globe's existing closed inner
+circle behind the black stencil so printed light details do not reveal the
+frame texture; the pinned external vector remains unchanged.
+
+The initial candidate and its raster correction are retained separately in the
+`hml-symbol-*` fixtures. The final frozen geometry was then validated on all
+140 ordinary printings, including 121 reserved examples, at both output tiers.
+Every printing improves; all eight controls remain byte-identical and no pixels
+outside the fixed symbol envelope change. Type-line clearance is unchanged.
+
+| Cohort / tier      | Cards | Median edge F1 before → after | Regressions |
+| ------------------ | ----: | ----------------------------: | ----------: |
+| All / inspect      |   140 |                   .461 → .668 |           0 |
+| Reserved / inspect |   121 |                   .461 → .668 |           0 |
+| All / table        |   140 |                   .479 → .607 |           0 |
+| Reserved / table   |   121 |                   .479 → .609 |           0 |
+
+Full-set native reference segmentation is stable for 119/140 printings; all 21
+uncertain cases remain visible and all 140 are included in the structural audit.
+The bounds report's 15 stable render/reference pairs are calibration-only,
+because matched blank renders were frozen only for that cohort. Do not present
+those pairs as full-set segmentation coverage. The land cohort remains the worst
+raw positional match. Scan registration is still unverified here; revisit shared
+placement during the frame pass and retain globe contour and light-tone issues
+for the asset/color queues. This does not certify text or frame accuracy.
+
+Reproduce from the recorded renderer revision with `symbol-study.mjs hml after`,
+`symbol-study-bounds.mjs hml after` and `symbol-study-audit.mjs hml after`.
+The full audit and exact provenance are in
+[hml-symbol-after-measurement.json](fixtures/accuracy/hml-symbol-after-measurement.json).
+Strict checks, build, package, browser, showcase and Magic accuracy suites pass.
+Next old-symbol studies: Visions (outer rim and opaque V), Alliances and
+Weatherlight. Their existing baselines remain frozen before this correction.
+
 ### Pass 2: frame geometry
 
 With symbol styling fixed, measure the outer silhouette, frame rails, art

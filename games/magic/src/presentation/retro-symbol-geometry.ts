@@ -31,6 +31,14 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     height: 16.75,
     crop: [0, 0.12109375, 1, 0.724609375],
   },
+  // Frozen globe ink bounds across Homelands materials; preserve its white rim.
+  hml: {
+    right: 440.75,
+    centerY: 392.5,
+    width: 23.5,
+    height: 22.5,
+    crop: [0, 0.083984375, 0.9861111111111112, 0.83203125],
+  },
   leg: {
     right: 441,
     centerY: 394,

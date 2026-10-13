@@ -7,6 +7,7 @@ import manifest from '../../assets.json' with { type: 'json' };
 const DETAILS: Readonly<Record<string, { count: number; white: readonly number[] }>> = {
   arn: { count: 6, white: [2] },
   leg: { count: 6, white: [0, 1, 2, 3, 4] },
+  hml: { count: 5, white: [3] },
   all: { count: 5, white: [0, 1, 2] },
   wth: { count: 8, white: [0, 1, 2, 3, 4, 5, 6] },
   exo: { count: 6, white: [0, 1, 2, 3, 4] },

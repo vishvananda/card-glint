@@ -36,6 +36,17 @@ frame assets, record missing components, and validate the paper treatment with
 the frame/HSB work before learning text defaults. Do not let a background mismatch
 drive text size or margin corrections.
 
+### Homelands globe follow-up
+
+The native-size and opaque-interior correction is validated on all 140 ordinary
+printings, with eight unchanged controls. Shared symbol placement still needs
+the frame-normalization pass: An-Havva Township, Aysen Abbey, Castle Sengir and
+Wizards' School have the lowest residual scores and scans displaced to the right
+of the main material cohort. Do not add individual symbol offsets. Keep internal
+globe contour/ink-weight differences in the retained-stencil review, and light
+detail tone in the later color pass. The corrected globe uses the existing
+Keyrune asset and its closed inner-circle path; no source asset was replaced.
+
 ## Assets needing visual review
 
 | Asset group                                             | Observed problem                                                                                                                                                                                          | Examples / next evidence                                                                                                                                                                                                                                                                         |
