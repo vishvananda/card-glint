@@ -1,5 +1,10 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
+import { CONJURER_ROOT } from './styled-set-symbols.js';
+import { MAJOR_SYMBOL_PROFILES, MAJOR_SYMBOL_SOURCE } from './major-symbol-profiles.js';
+import { cardStock } from './face-layout.js';
+import { retroBorder } from './retro-frame.js';
+import { resolveCardProfile } from './profile.js';
 
 type Bounds = readonly [number, number, number, number];
 // Canonical 488 × 680 pixels. Shared set profiles after frame-only scan
@@ -21,10 +26,48 @@ export function styledSymbolBounds(
 ): Bounds {
   const key = face.setCode?.toLowerCase() ?? '';
   const profile = Object.hasOwn(profiles, key) ? profiles[key] : undefined;
-  if (face.setSymbol || !isStyledSetSymbol(url) || profile?.family !== face.frameAssetFamily)
+  let result = bounds;
+  if (
+    profile &&
+    !face.setSymbol &&
+    isStyledSetSymbol(url) &&
+    profile.family === face.frameAssetFamily
+  )
+    result = adjust(bounds, profile.delta);
+  return face.frameAssetFamily
+    ? calibratedStyledSymbolBounds(face, url, result, face.frameAssetFamily)
+    : result;
+}
+
+/** Shared printing geometry only; stored scan transforms never enter painting. */
+export function calibratedStyledSymbolBounds(
+  face: RenderedCardInput,
+  url: string | null,
+  bounds: Bounds,
+  family: 'retro' | 'component' | 'eighth' | 'm15-accurate',
+): Bounds {
+  if (
+    face.setSymbol ||
+    !isStyledSetSymbol(url) ||
+    CONJURER_ROOT !== MAJOR_SYMBOL_SOURCE ||
+    (face.layout ?? 'normal') !== 'normal' ||
+    (['component', 'm15-accurate'].includes(family) && resolveCardProfile(face).legendary)
+  )
     return bounds;
-  if (!profile) return bounds;
+  const border =
+    face.borderColor ??
+    (family === 'retro'
+      ? retroBorder(face)
+      : cardStock(face.setCode).border === '#eeedeb'
+        ? 'white'
+        : 'black');
+  const key = `${face.setCode?.trim().toLowerCase() ?? ''}/${family}/${border}`;
+  const delta = Object.hasOwn(MAJOR_SYMBOL_PROFILES, key) ? MAJOR_SYMBOL_PROFILES[key] : undefined;
+  return delta ? adjust(bounds, delta) : bounds;
+}
+
+function adjust(bounds: Bounds, delta: Bounds): Bounds {
   const [x, y, w, h] = bounds,
-    [dx, dy, sx, sy] = profile.delta;
+    [dx, dy, sx, sy] = delta;
   return [x + w + dx - w * sx, y + h / 2 + dy - (h * sy) / 2, w * sx, h * sy];
 }

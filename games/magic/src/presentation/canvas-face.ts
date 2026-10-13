@@ -1,4 +1,5 @@
 import { prepareEarlyHsb } from './early-hsb-material.js';
+import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
 import { faceCornerRadius } from './face-silhouette.js';
 import { NORMAL_FRAME_GEOMETRY, normalFrameInset } from './normal-frame-geometry.js';
 import { paintLandFrame, paintLandPaper } from './land-paper.js';
@@ -106,7 +107,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v86',
+    'canvas-face-v87',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -589,11 +590,40 @@ export function paintAssembledFace(
         (FACE_TEXT.setHeight * setIcon.width * setCrop[2]) / (setIcon.height * setCrop[3]),
       )
     : 0;
-  // Growth is centered, so half its extra width extends into the type's space.
-  const typeWidth =
+  const setScale = setIcon
+    ? Math.min(
+        setWidth / (setIcon.width * setCrop[2]),
+        FACE_TEXT.setHeight / (setIcon.height * setCrop[3]),
+      )
+    : 0;
+  const baseSymbolBounds = [
     plateEnd -
-    textX -
-    (setIcon ? setWidth * (1 + (symbolGrowth - 1) / 2) + setMargin + FACE_TEXT.typeGap : 0);
+      setMargin -
+      setWidth -
+      (setWidth * (symbolGrowth - 1)) / 2 +
+      (planeswalker ? 1.5 : 0),
+    typeCenter -
+      ((setIcon?.height ?? 0) * setCrop[3] * setScale * symbolGrowth) / 2 -
+      (corePlacement ? 1 : 0),
+    (setIcon?.width ?? 0) * setCrop[2] * setScale * symbolGrowth,
+    (setIcon?.height ?? 0) * setCrop[3] * setScale * symbolGrowth,
+  ] as const;
+  const symbolBounds =
+    kind === 'normal' && !panel
+      ? calibratedStyledSymbolBounds(face, setUrl, baseSymbolBounds, 'component')
+      : baseSymbolBounds;
+  // Preserve existing type fitting unless an adjusted symbol needs more room.
+  const typeWidth = Math.max(
+    1,
+    Math.min(
+      plateEnd -
+        textX -
+        (setIcon ? setWidth * (1 + (symbolGrowth - 1) / 2) + setMargin + FACE_TEXT.typeGap : 0),
+      setIcon && symbolBounds !== baseSymbolBounds
+        ? symbolBounds[0] - textX - FACE_TEXT.typeGap
+        : Infinity,
+    ),
+  );
   context.font = `${FACE_TEXT.typeFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
   paintFittedText(
     context,
@@ -606,22 +636,6 @@ export function paintAssembledFace(
     kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
   );
   if (setIcon) {
-    const scale = Math.min(
-      setWidth / (setIcon.width * setCrop[2]),
-      FACE_TEXT.setHeight / (setIcon.height * setCrop[3]),
-    );
-    const symbolBounds = [
-      plateEnd -
-        setMargin -
-        setWidth -
-        (setWidth * (symbolGrowth - 1)) / 2 +
-        (planeswalker ? 1.5 : 0),
-      typeCenter -
-        (setIcon.height * setCrop[3] * scale * symbolGrowth) / 2 -
-        (corePlacement ? 1 : 0),
-      setIcon.width * setCrop[2] * scale * symbolGrowth,
-      setIcon.height * setCrop[3] * scale * symbolGrowth,
-    ] as const;
     if (styledSymbol || face.setSymbol) {
       context.save();
       context.shadowColor = 'transparent';

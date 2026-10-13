@@ -39,12 +39,41 @@ can select a stage's groups. Browser use is limited to source rasterization and
 final validation; there is no browser launch per placement candidate. These
 measurements do not benchmark GPU completion time.
 
+## Adopted results and review queue
+
+The completed batch accepts 3,254 frame normalizations and adopts 219 symbol
+profiles across 157 distinct sets, plus 17 component-frame horizontal insets.
+The source-pinned tables exclude custom symbols, unsupported stock and modern
+legend crowns. Reserved-card mean symbol edge F1 at one-pixel tolerance is:
+
+| Frame family         | Profiles | Reserved cards | Before | After |
+| -------------------- | -------: | -------------: | -----: | ----: |
+| Retro                |       14 |             61 |  0.654 | 0.699 |
+| Eighth Edition plate |       42 |            187 |  0.842 | 0.916 |
+| Component            |       79 |            358 |  0.800 | 0.892 |
+| M15 plate            |       84 |            396 |  0.823 | 0.899 |
+
+These are symbol-region scores, not whole-card accuracy. The report retains 189
+symbol groups for review, 23 missing or unconfirmed symbol-source/absence
+policies, 11 groups with no printed symbol and three unsupported groups.
+Shared frame residuals occur in 215 groups; asset-shape differences are not
+silently converted into runtime distortions. Five sampled presentations could
+not render because their text overflowed: Seek Bolas's Counsel in CMB1/CMB2
+(two frame variants each) and Roiling Horror in the PLC Eighth Edition plate.
+
+The existing comparison guards for 15 old-frame sets were transferred only
+after every stored frame target measurement matched the current frame-only
+raster exactly. This preserves validated comparison geometry across symbol
+changes without refitting scans or changing their transforms. The
+`registration-geometry-transfer.mjs` tool records both source hashes and the
+matching measurements in each profile.
+
 ## Revised color audit
 
-The deployed v0.2.10 has whole-frame HSB profiles for Revised white and red
+Versions 0.2.10 and 0.2.11 have whole-frame HSB profiles for Revised white and red
 only. Other Revised frame materials retain their source colors because earlier
 fits failed component validation. Mana calibration is independent. The review
-app's generic calibrated-colors label must not imply every material has a fit.
+app reports coverage per face rather than implying every material has a fit.
 
 The normalized recheck in
 `fixtures/accuracy/revised-color-calibration-audit.json` confirms that scan pose
@@ -57,7 +86,7 @@ across the entire texture.
 
 Do not enable rejected profiles or fit separate spatial masks across continuous
 frame textures. The next color experiment should compare one smooth, shared
-color transform over the complete asset (for example a regularized color LUT)
-against HSB, with more spatial patches, texture-contrast checks, clipping
+color transform over the complete asset, first testing a tonal gamma/contrast
+curve and then a regularized color LUT if needed, against HSB, with more spatial patches, texture-contrast checks, clipping
 limits, and untouched validation names. Report coverage and residual error per
 component and material, including materials that receive no adjustment.

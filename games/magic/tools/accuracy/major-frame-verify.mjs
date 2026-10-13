@@ -5,6 +5,7 @@ import { openBrowser } from './browser.mjs';
 import { normalize, cropGray } from './pixels-pure.mjs';
 import { compareRegion } from './metrics.mjs';
 import { fetchComponents } from './components.mjs';
+import { calibrationGroups } from './major-calibration-groups.mjs';
 
 // Test the renderer's existing horizontal-inset parameter. No new asset warp,
 // per-card geometry, or scan refitting is used. Propose from calibration rail
@@ -33,7 +34,9 @@ await session.page.route(
 );
 const mean = (values) => values.reduce((n, v) => n + v, 0) / values.length;
 try {
-  for (const group of plan.rows.filter((g) => g.family === 'component')) {
+  for (const group of calibrationGroups(plan.rows, process.argv.slice(2)).filter(
+    (g) => g.family === 'component',
+  )) {
     const key = group.key.replaceAll('/', '-');
     let measured;
     try {

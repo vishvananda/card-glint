@@ -90,11 +90,12 @@ share the pack's encoded-source cache across direct and host rendering. Custom
 URLs are untouched. Source bytes and patched SVGs remain external/local; only
 transformation code, checksums and provenance are stored here.
 
-Placement profiles for the replacement plates currently cover M15, M21, WOE,
-TDM, 8ED and 9ED; 10E retains its measured placement. They use shared set values
-validated after independent frame normalization. Other sets retain their family
-geometry until measured; component/retro frame placements remain a separate
-calibration. See the [placement evidence](fixtures/assets/styled-symbol-placement-calibration.json).
+The major-set batch adds 219 symbol profiles across 157 sets and four frame
+families, plus 17 component-frame inset profiles. Position and independent
+width/height adjustments are shared by set, family and stock after per-scan
+frame normalization and validation on reserved card names. Uncertain groups
+retain their existing geometry. See the [calibration audit](calibration-rollout.md)
+and the earlier [plate pilot evidence](fixtures/assets/styled-symbol-placement-calibration.json).
 
 All source URLs include immutable revisions. The new collection uses GitHub raw
 URLs because jsDelivr rejects uncached files from this oversized repository. Asset decoding uses the existing
@@ -249,6 +250,13 @@ Profiles are shared by set, border stock and material. A different source URL or
 placement disables its frame profile. The [calibration report](hsb-calibration.md)
 records coverage, reserved results and exclusions. These are matches to cached
 scan colors, not measurements of physical printing ink.
+
+`colorCalibrationCoverage(face)` reports whether the exact face receives a
+frame profile and which visible mana symbols have targets. Hosts should use
+this to distinguish adjusted materials from source colors. Revised currently
+has admitted whole-frame profiles only for white and red; its other materials
+remain unchanged. The [Revised audit](calibration-rollout.md#revised-color-audit)
+explains why one HSB multiplier cannot match both frame and paper reliably.
 
 Recolored bitmaps are prepared once and shared across cards and raster tiers in
 a 16 MiB Magic-owned LRU cache, in addition to the host's source-image budget.

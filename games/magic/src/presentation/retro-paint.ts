@@ -1,4 +1,5 @@
 import { isStyledSetSymbol } from './styled-set-symbols.js';
+import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
 import { paintRetroGoldBevel } from './retro-gold-bevel.js';
 import { retroSymbolGeometry } from './retro-symbol-geometry.js';
 import { retroSymbolPalette } from './retro-symbol-material.js';
@@ -138,12 +139,31 @@ export function paintRetroFace(
     icon = images.get(symbolUrl),
     geometry = retroSymbolGeometry(face),
     palette = retroSymbolPalette(face);
+  const setScale = icon ? Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height) : 0;
+  const setWidth = geometry?.width ?? (icon?.width ?? 0) * setScale,
+    setHeight = geometry?.height ?? (icon?.height ?? 0) * setScale;
+  const baseBounds = [
+    (geometry?.right ?? details?.setRight ?? tx + tw) - setWidth,
+    (geometry?.centerY ?? details?.setCenterY ?? ty + th / 2) - setHeight / 2,
+    setWidth,
+    setHeight,
+  ] as const;
+  const symbolBounds = calibratedStyledSymbolBounds(face, symbolUrl, baseBounds, 'retro');
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
   c.fillText(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
     details?.typeX ?? tx,
     ty + th / 2,
-    icon ? Math.min(tw - 48, geometry ? geometry.right - geometry.width - tx - 6 : tw) : tw,
+    icon
+      ? Math.max(
+          1,
+          Math.min(
+            tw - 48,
+            geometry ? geometry.right - geometry.width - tx - 6 : tw,
+            symbolBounds !== baseBounds ? symbolBounds[0] - (details?.typeX ?? tx) - 6 : tw,
+          ),
+        )
+      : tw,
   );
   if (icon) {
     const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);
@@ -178,7 +198,7 @@ export function paintRetroFace(
       c.shadowColor = 'transparent';
       // Complete styled assets already contain opaque holes, rims and gradients.
       // Keyrune viewport crops and recoloring must never touch these vectors.
-      c.drawImage(icon, right - width, centerY - height / 2, width, height);
+      c.drawImage(icon, ...symbolBounds);
       c.restore();
     } else if (palette || details || usesMonochromeSetSymbol(face.setCode))
       paintOutlinedRetroSet(
