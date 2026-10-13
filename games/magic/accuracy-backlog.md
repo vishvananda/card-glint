@@ -769,3 +769,42 @@ its application, deployment and database outside this library repository.
   baseline intentionally predate this separate correction; future Exodus-only
   audits must account for that provenance, rather than attribute their changes
   to Exodus. Its symbol material and geometry pass remains pending.
+
+### Legends frame confounds the one-pixel symbol decision
+
+- User review correctly identified that the frames differ. The eight sampled
+  single-color/artifact Legends cards use `seventh/regular` frame assets;
+  multicolor Legends follows a separate asset path and is not covered here.
+  The prior accepted fit used internal art/rules borders, with 1.69 px residual.
+  It improved frame-edge overlap but cannot independently establish scan
+  registration closely enough to certify a one-pixel symbol adjustment.
+- Add a cached-PNG diagnostic with broad signed-gradient strips, retained
+  profiles/competing peaks, and explicit weak-boundary results. Compare inner
+  dimensions as fractions of the outer colored-frame span. Those proportions
+  distinguish internal geometry from uniform scale/translation without fitting
+  any individual scan. They do not establish absolute print scale, and different
+  bevel styles still affect the measured transition locations.
+- On the five original white/blue calibration cards, the median colored-frame
+  span is approximately 449.5 × 639.1 px in scans versus 439.5 × 626.7 px in our
+  rendering. Even after accounting for that size difference, our art bounds are
+  about 1.9 px narrower and 2.5 px shorter, while the type band is 2.1 px taller.
+  The previously reviewed green/artifact examples support that direction; the
+  black card has weak boundaries and remains flagged. This is an eight-card
+  diagnostic, not a Legends-wide geometry certification.
+- Keep the current symbol placement provisional; do not fit another offset to
+  compensate for these frame differences. During the old-frame alignment pass,
+  separate outer-frame geometry, art keylines, paper transitions and bevel
+  thickness, then repeat symbol placement checks. Existing source textures and
+  bevel treatments also differ and remain on the asset improvement list.
+- Reproduce with `tools/accuracy/legends-frame-audit.mjs`; evidence is
+  `fixtures/accuracy/legends-frame-diagnostic.json`. The local full-card review
+  offers raw scans, an explicitly provisional shared internal-frame fit,
+  red/green overlays and measured boundary guides. Symbol review pages now label
+  that alignment's limitation rather than imply independent scan normalization.
+  Runtime rendering is unchanged by this diagnostic.
+- Correct the local review pages' overlay filter references and blend mode.
+  The newer pages copied `redInk`/`greenInk` definitions but referenced different
+  IDs and used screen blending. They now use the defined ink filters with
+  multiply blending, verified visually; shared dark ink stays dark while
+  mismatches separate into red/green. This browser-only fix stays outside the
+  repository, as requested.
