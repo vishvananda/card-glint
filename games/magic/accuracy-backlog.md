@@ -885,6 +885,15 @@ its application, deployment and database outside this library repository.
   continuing this study. Reproduce the frozen captures with
   `ice-symbol-study.mjs before`, template rasterization with
   `ice-symbol-templates.mjs`, and CPU candidates with `ice-symbol-search.mjs`.
+- The four baseline failures are an input-mode issue, not unsupported frames.
+  Unverified Oracle text was supplied without `wordingMode`, retaining the
+  15 px historical floor. Explicit `wordingMode: 'oracle'` with
+  `symbolStyle: 'original'` renders every supplied paragraph: Cooperation at
+  14.75 px, Formation at 13.5, Kjeldoran Knight at 14.5 and Dance of the Dead at 14. Both raster tiers are captured and hashed in `ice-wording-fit.json`;
+  reproduce with `ice-wording-fit.mjs`. Preserve the original frozen failures
+  and input identities. A follow-up corpus using explicit Oracle mode needs
+  its own matched baseline; it must not silently replace historical inputs or
+  count these alternate-mode renders as original-text accuracy validation.
 
 ### Exodus wider rim review (v70)
 
