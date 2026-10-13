@@ -11,6 +11,9 @@ try {
     // phases. Drive the real animation callback with identical timestamps;
     // neither navigation speed nor screenshots may advance simulation time.
     await page.addInitScript(() => {
+      const nativeFrame = window.requestAnimationFrame.bind(window);
+      window.settleTestLayout = () =>
+        new Promise((resolve) => nativeFrame(() => nativeFrame(resolve)));
       let nextId = 1;
       const callbacks = new Map();
       window.requestAnimationFrame = (callback) => {
@@ -27,10 +30,19 @@ try {
     });
     await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');
     await page.evaluate(async (value) => {
-      await window.lab.ready;
+      const renderer = await window.lab.ready;
+      // The initial ResizeObserver also renders. Let it finish before choosing
+      // a stateful surface effect, then seed both runs with the same pose/time.
+      // Otherwise a mouse event can give only the hovered run an extra seed.
+      await window.settleTestLayout();
       const select = document.querySelector('#finish');
       select.value = value;
       select.dispatchEvent(new Event('change'));
+      renderer.updateScene(window.lab.instances());
+      renderer.render({
+        viewProjection: window.lab.api.IDENTITY,
+        time: window.lab.motionState().time,
+      });
     }, finish);
     const rect = await page.locator('#scene').boundingBox();
     if (hovered) await page.mouse.move(rect.x + rect.width / 10, rect.y + rect.height * 0.3);
