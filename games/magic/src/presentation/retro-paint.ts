@@ -131,7 +131,7 @@ export function paintRetroFace(
         details?.manaTop ?? y + h / 2 - size / 2,
         size,
         images,
-        !details,
+        false,
       ),
     );
   const [tx, ty, tw, th] = retroPx(rect.type),

@@ -38,25 +38,54 @@ try {
     typeLine: 'Creature',
     colorCalibration: 'set-hsb-v1',
   };
-  for (const material of ['W', 'U', 'B', 'R', 'G', 'A']) {
-    const profile = calibratedDualFrameProfile({
+  const { DUAL_HSB_PROFILES } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/old-dual-hsb-profiles.ts',
+  );
+  const current = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/old-dual-hsb-results.json'),
+  );
+  for (const [key, profile] of Object.entries(DUAL_HSB_PROFILES)) {
+    const [setCode, borderColor, m] = key.split('-'),
+      basic = { WL: 'Plains', UL: 'Island', BL: 'Swamp', RL: 'Mountain', GL: 'Forest' }[m];
+    const f = {
       ...face,
-      colors: [material],
-      typeLine: material === 'A' ? 'Artifact' : 'Creature',
-    });
-    assert.ok(profile, material);
-    assert.equal(profile.mask.kind, ['G', 'B'].includes(material) ? 'chroma' : 'rect');
+      setCode,
+      borderColor,
+      frameStyle: 'retro',
+      colors: /^[WUBRG]$/.test(m) ? [m] : m === 'M' || m === 'LEGENDSFRAMEM' ? ['W', 'U'] : [],
+      typeLine: basic
+        ? 'Land — ' + basic
+        : m === 'L'
+          ? 'Land'
+          : m === 'A'
+            ? 'Artifact'
+            : 'Creature',
+    };
+    assert.deepEqual(calibratedDualFrameProfile(f), profile.adjustment, key);
+    for (const change of [
+      { colorCalibration: undefined },
+      { setCode: 'unknown' },
+      { layout: 'token' },
+      { frameStyle: 'modern' },
+    ])
+      assert.equal(calibratedDualFrameProfile({ ...f, ...change }), undefined);
+    if (setCode === '3ed') assert.deepEqual(profile, REVISED_DUAL_HSB_PROFILES[m]);
+    else
+      assert.ok(
+        current.groups.some(
+          (g) =>
+            g.status === 'trial' &&
+            g.set === setCode &&
+            g.border === borderColor &&
+            g.source.asset === profile.asset,
+        ),
+      );
   }
-  for (const change of [
-    { colorCalibration: undefined },
-    { setCode: '4ed' },
-    { borderColor: 'black' },
-    { frameStyle: 'modern' },
-    { layout: 'token' },
-    { typeLine: 'Land' },
-    { colors: ['W', 'U'] },
-  ])
-    assert.equal(calibratedDualFrameProfile({ ...face, ...change }), undefined);
+  for (const setCode of ['usg', 'uds'])
+    assert.ok(
+      calibratedDualFrameProfile({ ...face, setCode, colors: ['W'] }),
+      setCode + ' white regression',
+    );
 
   const image = { width: 64, height: 64, data: new Uint8ClampedArray(64 * 64 * 4) };
   const put = (x, y, rgb, alpha = 255) => image.data.set([...rgb, alpha], (y * 64 + x) * 4);
@@ -92,7 +121,20 @@ try {
     dual = copy();
   colorFrame(single, adjustment);
   colorFrame(dual, { frame: adjustment, paper: adjustment, mask: spec });
-  assert.deepEqual(single.data, dual.data, 'Equal transforms must not introduce a mask seam');
+  const whiteAt = (33 * 64 + 22) * 4;
+  for (let i = 0; i < single.data.length; i++)
+    if (i < whiteAt || i >= whiteAt + 3)
+      assert.equal(single.data[i], dual.data[i], 'Equal transforms must not introduce a mask seam');
+  assert.deepEqual(
+    [...single.data.slice(whiteAt, whiteAt + 3)],
+    [255, 255, 255],
+    'White mana details stay intact',
+  );
+  assert.deepEqual(
+    [...dual.data.slice(whiteAt, whiteAt + 3)],
+    [217, 217, 217],
+    'Frame highlights follow brightness rather than becoming false relief',
+  );
   const split = copy();
   colorFrame(split, {
     frame: adjustment,
@@ -100,7 +142,7 @@ try {
     mask: spec,
   });
   for (let p = 0; p < 64 * 64; p++) assert.equal(split.data[p * 4 + 3], image.data[p * 4 + 3]);
-  for (const x of [21, 22, 23])
+  for (const x of [21, 23])
     assert.deepEqual(
       split.data.slice((33 * 64 + x) * 4, (33 * 64 + x + 1) * 4),
       image.data.slice((33 * 64 + x) * 4, (33 * 64 + x + 1) * 4),
@@ -113,7 +155,7 @@ try {
   assert.equal(rect[32 * 64 + 16], 0.5);
   assert.equal(rect[32 * 64 + 17], 1);
   assert.equal(rect[32 * 64 + 15], 0);
-  const profile = calibratedDualFrameProfile(face),
+  const profile = REVISED_DUAL_HSB_PROFILES.G.adjustment,
     key = (p) => earlyHsbMaterialKey('pinned-source', 64, 64, p);
   assert.notEqual(
     key(profile),

@@ -240,8 +240,9 @@ historical-symbol font; later old-border sets keep their tilted-card mark.
 ## Measured set colors
 
 Set `colorCalibration: 'set-hsb-v1'` to opt into admitted old-frame color profiles.
-One HSB adjustment covers the entire frame bitmap, including its rules paper;
-mana discs have separate targets. `early-hsb-v1` restricts the trial to Alpha,
+Separate HSB adjustments cover the outer frame and rules paper; mana discs
+have independent targets. Source-derived masks follow irregular green/black
+paper edges, including their shadows. Other paper interiors use fixed masks. `early-hsb-v1` restricts the trial to Alpha,
 Beta, Unlimited and Revised. Omission keeps original source colors. Unsupported,
 sparse and rejected groups stay unchanged; this option is not an assertion that
 every printing is calibrated. The default artwork and lettering are untouched.
@@ -253,10 +254,12 @@ scan colors, not measurements of physical printing ink.
 
 `colorCalibrationCoverage(face)` reports whether the exact face receives a
 frame profile and which visible mana symbols have targets. Hosts should use
-this to distinguish adjusted materials from source colors. Revised currently
-has admitted whole-frame profiles only for white and red; its other materials
-remain unchanged. The [Revised audit](calibration-rollout.md#revised-color-audit)
-explains why one HSB multiplier cannot match both frame and paper reliably.
+this to distinguish adjusted materials from source colors. Rejected profiles
+do not fall back to older combined frame/paper coefficients. The
+[Revised audit](calibration-rollout.md#revised-color-audit) explains why one HSB
+multiplier cannot match both frame and paper reliably. Admission checks frame
+chroma, shadow tint and texture contrast independently of average color, using
+frame-normalized scans and reserved cards.
 
 Recolored bitmaps are prepared once and shared across cards and raster tiers in
 a 16 MiB Magic-owned LRU cache, in addition to the host's source-image budget.

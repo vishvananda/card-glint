@@ -1,120 +1,117 @@
-# Old-frame HSB calibration
+# Old-frame color calibration
 
-The frame-family comparison is complete for this round: no replacement passed
-all structural gates, so existing sources are retained. Color profiles are
-explicitly opt-in with `colorCalibration: 'set-hsb-v1'`. The older
-`early-hsb-v1` option limits the trial to Alpha, Beta, Unlimited and Revised.
-Neither option certifies a geometric match or recolors artwork and lettering.
+Color profiles are opt-in with `colorCalibration: 'set-hsb-v1'`;
+`early-hsb-v1` restricts them to Alpha, Beta, Unlimited and Revised. The current
+study uses the pinned ABU, Fourth, Seventh and Legends assets. Frame and paper
+have separate HSB transforms. Green/black paper uses a connected source-chroma
+mask that follows its irregular edge and embedded shadows; rectangular paper
+interiors use fixed masks. Artwork and lettering are not recolored.
 
-## Coverage and admission
+## Current coverage
 
-The study accounts for all **63 old-frame major-set entries**, including modern
-retro reprints. Major means at least 50 distinct ordinary English paper cards;
-special treatments remain excluded. Alpha–Revised use their denser 334-reference
-study. The remaining 59 set entries use 2,564 sampled scans from 58 sets:
-30th Anniversary Edition has no qualifying high-resolution references in the
-frozen inventory and remains explicitly unmeasured.
+The audit processed **2,898 cached examples from 62 sets**, against a 63-set
+inventory. **1,825 scans passed frame normalization**. The fit accounts for 655
+sampled groups; 66 inventory groups have no frozen sample (four denser early-set
+study groups do not map one-to-one to the inventory). Missing references and
+failed normalization never supply color measurements.
 
-| Study                           | Frame profiles admitted | Mana targets admitted | Evidence                                                                    |
-| ------------------------------- | ----------------------: | --------------------: | --------------------------------------------------------------------------- |
-| Alpha, Beta, Unlimited, Revised |                       6 |                    20 | 334 references; 96 full-card previews at two tiers                          |
-| Remaining old-frame sets        |                     191 |                   231 | 634 groups, 607 with reserved measurements; 191 full-card reserved previews |
-| Total runtime                   |                     197 |                   251 | Rejected and sparse groups retain source colors                             |
+Runtime now has **53 dual frame/paper profiles across 32 sets** and **151 mana
+targets across 54 sets**. Of the frame profiles, 47 pass the new automatic gates;
+six preserve the previously approved Revised visual comparison. Revised's
+reviewed values and source masks remain frozen rather than being silently
+replaced by the new fit. Their new diagnostic flags remain visible.
 
-The remaining-set frame results admit profiles in 54 sets; mana targets in 56.
-All 634 groups have an outcome, including 27 without usable reserved samples.
-The inventory of 13,603 old-frame printings is a coverage denominator, **not a
-claim that every printing was rerendered**. Detailed scores and exclusions are
-in [remaining-set results](fixtures/accuracy/old-hsb-results.json) and
-[early-set results](fixtures/accuracy/early-hsb-family-results.json).
+- [Frozen fit](fixtures/accuracy/old-dual-hsb-candidate.json)
+- [Reserved measurements](fixtures/accuracy/old-dual-hsb-results.json)
+- [Exact runtime inventory and reviewed overrides](fixtures/accuracy/old-dual-hsb-runtime.json)
+- [Rejected and unmeasured groups](fixtures/accuracy/old-dual-hsb-review.json)
+- [Source-asset review leads](fixtures/accuracy/old-dual-hsb-assets-review.json)
 
-Fit one bounded HSB transform to the entire frame bitmap, including its paper,
-with equal component weight. Fit the median of transformed source tiles, not
-the transform of their median. Require separate calibration and reserved names,
-at least three calibration and two reserved samples, improvement in the combined
-score, no component-median regression above 0.25, no individual component
-regression above 1.0, and at most 2% clipped source tiles. Both cohorts must pass.
-Never trade a badly darkened frame for better paper: Revised green and Alpha
-black now remain unchanged. Early-set profiles dropped from 22 proposed/admitted
-under the earlier combined gate to six under these component gates.
+This is deliberately less automatic coverage than the earlier combined fits.
+A rejected group receives source colors, not the old combined transform. Hosts
+can distinguish these cases with `colorCalibrationCoverage(face)`. An admitted
+color profile does not certify text, geometry, texture identity or every card in
+the set. All source URLs, frame rectangles, stock and ordinary-layout constraints
+must match before a profile applies.
 
-Mana is fitted separately by set, stock and symbol. Fixed eroded discs and the
-brightest fifth by rank suppress black glyph ink. Targets are bound to the
-actual bitmap disc color; the historical procedural white sun and fallback
-palette use that same target directly. Thus modern and original white symbols
-no longer inherit coefficients fitted to different source colors.
+## Measurement and admission
 
-## Raster evidence
+Each scan is aligned to a stock-correct frame target before sampling. The
+existing bounded translation/scale/rotation/skew fitter validates on disjoint
+frame strips. A weak dark source can use its exact stock mask only when at least
+two visible RGB boundaries agree within 0.75 canonical pixels. A conflicting
+mask or ambiguous scan remains rejected. Cached poses include reference,
+source, target and method hashes. These poses are analysis-only.
 
-The 191 remaining-set reserved full-card previews improve median sampled
-frame/paper color distance **7.78 → 1.95**. Maximum component regression is 0.86;
-none exceeds the 1.0 admission limit. Early-set admitted preview components
-improve **4.51 → 1.60**, with maximum regression 0.44. Admitted early mana samples
-improve **4.77 → 1.01**. Sampled art interiors are unchanged. All 192 early default
-preview PNGs still match the pre-HSB baseline byte for byte.
+Parameters are shared by set, stock and material, with at least three calibration
+and two reserved cards. Frame and paper are fitted independently; no per-scan
+color parameters are introduced. The cohorts predate this round and have been
+used in earlier studies, so this is an iterative audit, not a new blind test.
+Fitting refuses to overwrite frozen candidates; validation reuses their exact
+parameters and source masks.
 
-Scores are 100 × Euclidean Oklab distance between robust interior color samples;
-lower is better. They are neither whole-card accuracy percentages nor physical
-ink measurements. Scan processing varies. See the full
-[remaining raster audit](fixtures/accuracy/old-hsb-raster-results.json) and
-[early raster audit](fixtures/accuracy/early-hsb-family-raster-results.json).
-The early reserved cohort was reused after visual review, so it is an iterative
-study, not a fresh blind test.
+Median Oklab color error alone missed the pink Saga frame and Destiny's brown
+darks. We also compare luminance-ranked RGB bins from ink-free frame patches,
+which do not require matching the texture's phase. Separate admission limits
+check chroma, darkest-bin tint/lightness and 10–90% texture contrast. Current
+operational limits are 3 chroma units, 3 shadow-chroma units, 5 shadow-lightness
+units and 2 contrast units, all in 100-scaled Oklab coordinates. These are
+conservative review thresholds, not universal perceptual tolerances.
 
-## Retained review cases
+Component color error must be at most 5, median regression at most 0.25,
+individual regression at most 2, and clipped source tiles at most 2%. Both
+cohorts must pass. Mana is fitted separately from eroded, ink-rejected cost discs;
+any sample with more than 1.5 units of position sensitivity blocks its group.
+The JSON policy is authoritative for reproducing these decisions.
 
-- Structural family uncertainty remains visible. No per-scan color transform,
-  translation or scale was fitted. Early outer-frame proportions do not justify
-  treating their geometric mismatch as a scan warp.
-- Dual-land stripes and specialized layouts need their own source study. Existing
-  Seventh Edition frame filters cannot be silently combined with an unfiltered
-  fit; those groups are withheld. Partial adapter coverage is also withheld.
-- Twenty-two admitted remaining-set mana groups have individually sensitive
-  reserved samples despite a stable median. INV, PLS and RVR generic mana are
-  prominent examples. Preserve maximum sensitivity for visual review rather
-  than retuning to these reserved outliers.
-- The user confirmed the white-card texture matches. Contrast spread alone does
-  not establish a wrong texture. Other source-texture and geometry differences
-  remain on the [asset backlog](accuracy-backlog.md).
-- Per-color corrections remain preferable to the earlier global-set experiment.
-  Historical global comparisons are retained in `early-hsb-global-results.json`;
-  they are not the current runtime admission results.
+## Rendered checks
+
+One reserved full-card render for each of the 53 active profiles gives median
+sampled frame/paper color error **6.22 → 1.00**, relative to the unadjusted source
+assets. Sampled art interiors are identical. These are color distances, not
+whole-card accuracy percentages. See the
+[raster audit](fixtures/accuracy/old-dual-hsb-raster-results.json).
+
+The reviewed Revised red profile retains one visible outlier: Stone Giant's
+paper error is 6.11 versus 4.82 unadjusted. Its frame improves, and its appearance
+remains the previously reviewed treatment; the mismatch is recorded rather than
+fitting that scan independently. Other rejected groups include ambiguous dark
+borders, insufficient normalized samples and texture contrast that HSB alone
+does not match. An asset-review lead is not proof of a bad asset: scan processing
+and sample geometry also contribute.
+
+Urza's Saga, Legacy and Destiny white pass the new gates. The actual Destiny
+Jasmine Seer render reduces frame-contrast error from 2.33 in v0.2.11 to 0.08;
+shadow-chroma error drops from 2.99 to 1.84. The [regression measurements](fixtures/accuracy/old-dual-hsb-regressions.json) retain the renderer and reference identities.
+Frame textures now recolor near-white
+highlights along with the surrounding paper. The former white-pixel exemption
+created an exaggerated relief effect when paper was darkened. White mana-glyph
+details retain their protection. Retro cost symbols no longer acquire synthetic
+modern drop shadows merely because a set has no detailed typography profile.
 
 ## Loading and reproduction
 
-Profiles guard the exact source revision, frame placement, material, border stock
-and ordinary layout. Changed sources disable incompatible fits. Historical
-set-symbol backings use one source resolver in both public and direct loading.
-The host owns decoded source images; the Magic pack owns derived images.
+Prepared materials share a 16 MiB Magic-owned cache with pending-byte accounting,
+leases and LRU retirement. Keys include the complete dual adjustment, mask,
+source revision, dimensions and pixel policy. Mask generation and color changes
+happen only when preparing a missing static material. There is no animation-frame
+decoding, readback, font loading or conversion. Temporary Canvas/ImageData memory
+is additional. CPU preparation/submission time is not GPU completion time.
 
-Derived materials share a 16 MiB cache with pending-byte accounting and LRU
-retirement. Whole-face batches wait for capacity instead of partially pinning
-components and deadlocking. Cancellation before admission stops waiting;
-after admission all shared builders settle before source leases release.
-Temporary Canvas/ImageData staging is additional to this retained-bitmap limit.
-Tests cover concurrent grids, warm cross-card/tier reuse, failure retry, abort,
-eviction and single-close teardown. There is no animation-frame decoding,
-readback, font loading or conversion. CPU preparation/submission timings do not
-measure GPU completion time.
-
-Run `old-frame-{cache,templates,measure,select}.mjs` first. Then:
+With the frozen old-frame and early reference caches available:
 
 ```sh
-node games/magic/tools/accuracy/hsb-shared.mjs fit
-node games/magic/tools/accuracy/hsb-shared.mjs validate
-node games/magic/tools/accuracy/hsb-adopt.mjs
-node games/magic/tools/accuracy/old-hsb-samples.mjs
-node games/magic/tools/accuracy/old-hsb-study.mjs fit
-node games/magic/tools/accuracy/old-hsb-study.mjs validate
-node games/magic/tools/accuracy/old-hsb-adopt.mjs
-node games/magic/tools/accuracy/old-hsb-raster.mjs prepare
-node games/magic/tools/accuracy/old-hsb-raster.mjs capture
-node games/magic/tools/accuracy/old-hsb-raster.mjs measure
+node games/magic/tools/accuracy/old-dual-hsb-templates.mjs
+node games/magic/tools/accuracy/old-dual-hsb-samples.mjs
+node games/magic/tools/accuracy/old-dual-hsb-study.mjs fit
+node games/magic/tools/accuracy/old-dual-hsb-study.mjs validate
+node games/magic/tools/accuracy/old-dual-hsb-adopt.mjs
+node games/magic/tools/accuracy/old-dual-hsb-raster.mjs prepare
+node games/magic/tools/accuracy/old-dual-hsb-raster.mjs capture
+node games/magic/tools/accuracy/old-dual-hsb-raster.mjs measure
 ```
 
-Fitting refuses to overwrite a frozen candidate; validation and export require
-its exact hashes. Preserve prior experiments under their own names before a new
-round. Source, template, capture, inventory and family-result identities are
-recorded. Early previews use `hsb-study.mjs after` and `hsb-shared-raster.mjs`.
-Comparisons and fits run on the CPU without Chromium; only raster capture uses
-it. Downloaded art/scans and the review browser stay local and are not shipped.
+Use a new study revision/cohort for new fitting; do not overwrite the checked-in
+candidate. External scans and frame pixels stay in the ignored local cache.
+The earlier `old-hsb-*`, `early-hsb-*` and `revised-dual-hsb` reports are historical
+evidence; the runtime inventory linked above identifies the active profiles.

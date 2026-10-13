@@ -172,7 +172,12 @@ try {
       texture,
       flags,
       status: flags.length ? 'review-only' : 'trial',
-      rows: measurements,
+      rows: measurements.map((r) => ({
+        ...r,
+        components: Object.fromEntries(
+          Object.entries(r.components).map(([c, v]) => [c, { before: v.before, after: v.after }]),
+        ),
+      })),
     });
   }
   const manaKeys = [

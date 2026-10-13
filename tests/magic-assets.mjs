@@ -125,7 +125,8 @@ try {
     check(host.decodes === coldDecodes, 'A different face decoded resident assets again');
 
     // Separate cards and raster tiers share the same calibrated component.
-    const [profileKey, adjustment] = Object.entries(EARLY_HSB_PROFILES)[0],
+    const profileKey = '3ed-R',
+      adjustment = EARLY_HSB_PROFILES['lea-U'],
       [set, material] = profileKey.split('-'),
       calibrated = {
         name: 'Calibrated specimen',

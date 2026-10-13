@@ -143,9 +143,7 @@ try {
       delta(math.adjustHsb(sourceRgb, material.manaSourceAdjustment(hex, target)), target) < 1e-8,
     );
   }
-  const profiles = await server.ssrLoadModule(
-    '/games/magic/src/presentation/calibration-profiles.ts',
-  );
+  const profiles = await server.ssrLoadModule('/games/magic/tools/accuracy/legacy-hsb-profiles.ts');
   const { OLD_HSB_PROFILES } = await server.ssrLoadModule(
     '/games/magic/src/presentation/old-hsb-profiles.ts',
   );
@@ -190,11 +188,17 @@ try {
   };
   assert.ok(profiles.calibratedFrameProfile(earlyBlue));
   assert.equal(profiles.calibratedFrameProfile({ ...earlyBlue, borderColor: 'white' }), undefined);
+  const liveProfiles = await server.ssrLoadModule(
+    '/games/magic/src/presentation/calibration-profiles.ts',
+  );
   assert.equal(
-    profiles.calibratedManaTarget({ ...earlyBlue, borderColor: 'white' }, 'U'),
+    liveProfiles.calibratedManaTarget({ ...earlyBlue, borderColor: 'white' }, 'U'),
     undefined,
   );
-  assert.equal(profiles.calibratedManaTarget({ ...earlyBlue, layout: 'token' }, 'U'), undefined);
+  assert.equal(
+    liveProfiles.calibratedManaTarget({ ...earlyBlue, layout: 'token' }, 'U'),
+    undefined,
+  );
   // No DOM work or ownership changes on the default path.
   const images = new Map(),
     result = await material.prepareEarlyHsb(face, images, new AbortController().signal);

@@ -7,12 +7,11 @@ import { colorFrame, type FrameHsb } from './frame-hsb.js';
 import { BITMAP_MANA_COLORS } from './mana-colors.js';
 import { earlyHsbBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import {
-  calibratedFrameProfile,
   calibratedDualFrameProfile,
   calibratedManaTarget,
   hasColorCalibration,
 } from './calibration-profiles.js';
-export { calibratedFrameProfile as earlyHsbProfile } from './calibration-profiles.js';
+export { calibratedDualFrameProfile as earlyHsbProfile } from './calibration-profiles.js';
 
 /** Static composition leases shared derived bitmaps. Original assets and their
  * owner remain untouched; no work happens during animated frames. */
@@ -23,7 +22,7 @@ export async function prepareEarlyHsb(
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
   const unchanged = { images, dispose() {} };
   if (!hasColorCalibration(face)) return unchanged;
-  const profile = calibratedDualFrameProfile(face) ?? calibratedFrameProfile(face);
+  const profile = calibratedDualFrameProfile(face);
   const adjustments = new Map<string, FrameHsb>(),
     colors: Record<string, string> = {};
   if (profile) adjustments.set(retroFrameAsset(face), profile);
@@ -76,7 +75,7 @@ export function earlyHsbMaterialKey(
   height: number,
   adjustment: FrameHsb,
 ) {
-  return JSON.stringify(['frame-hsb-paper-mask-v2', url, width, height, adjustment]);
+  return JSON.stringify(['frame-hsb-paper-mask-v3', url, width, height, adjustment]);
 }
 
 async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb) {

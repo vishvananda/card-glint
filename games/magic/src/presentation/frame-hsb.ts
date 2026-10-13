@@ -8,7 +8,9 @@ export interface DualFrameHsb {
 }
 export type FrameHsb = HsbAdjustment | DualFrameHsb;
 
-/** Recolor the static source, preserving alpha, black ink and neutral white.
+/** Recolor the static source, preserving alpha and black ink. Single-component
+ * mana transforms also protect white glyph details. Frame-paper highlights
+ * must follow their material, otherwise darkening produces false white relief.
  * Blend recolored pixels at the paper edge without moving texture or shadows. */
 export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
   const dual = 'mask' in adjustment ? adjustment : undefined,
@@ -19,7 +21,7 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
     const rgb: Rgb = [image.data[i]! / 255, image.data[i + 1]! / 255, image.data[i + 2]! / 255],
       v = Math.max(...rgb),
       s = v === 0 ? 0 : (v - Math.min(...rgb)) / v;
-    if (v < 0.075 || (s < 0.025 && v > 0.97)) continue;
+    if (v < 0.075 || (!dual && s < 0.025 && v > 0.97)) continue;
     const weight = mask?.[i / 4] ?? 0,
       outside = adjustHsb(rgb, weight === 1 && dual ? dual.paper : frame),
       inside = weight > 0 && weight < 1 && dual ? adjustHsb(rgb, dual.paper) : outside;

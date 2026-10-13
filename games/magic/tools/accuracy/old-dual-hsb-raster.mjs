@@ -26,7 +26,11 @@ const base = `${outputRoot}/old-dual-hsb`,
   snapshotFile = `${cacheRoot}/rollout/old-dual-hsb-preview.json`,
   sampling = (await readJson(`${cacheRoot}/rollout/old-dual-hsb-samples.json`)).sampling;
 if (action === 'prepare') {
-  const selected = results.groups.filter((g) => g.status === 'trial'),
+  const selected = results.groups.filter(
+      (g) =>
+        g.status === 'trial' ||
+        (g.set === '3ed' && ['W', 'U', 'B', 'R', 'G', 'A'].includes(g.material)),
+    ),
     cardMap = new Map(),
     entries = [];
   for (const set of new Set(selected.map((g) => g.set))) {
