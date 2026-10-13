@@ -13,7 +13,10 @@ import {
 import { resolveCardProfile } from './profile.js';
 import { symbolTextParts, type RenderedCardInput } from './face-layout.js';
 
-export type CanvasImages = ReadonlyMap<string, ImageBitmap>;
+export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
+  /** Face-preparation palette for procedural/fallback mana discs. */
+  readonly manaColors?: Readonly<Record<string, string>>;
+}
 
 export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promise<Response> {
   signal.throwIfAborted();

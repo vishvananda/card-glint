@@ -66,14 +66,14 @@ function paintCost(
       paintMana(c, symbol, x, y, size, images, false);
       return;
     }
-    paintOriginalWhite(c, x, y, size, geometry.whiteSize);
+    paintOriginalWhite(c, x, y, size, geometry.whiteSize, images.manaColors?.W);
   });
 }
 
 /** The original sun and its pale disc also occur inside early rules text. */
 export const paintEarlyMana: typeof paintMana = (c, symbol, x, y, size, images) => {
   if (symbol !== 'W') return paintMana(c, symbol, x, y, size, images);
-  paintOriginalWhite(c, x, y, size, size * 0.87);
+  paintOriginalWhite(c, x, y, size, size * 0.87, images.manaColors?.W);
 };
 
 function paintOriginalWhite(
@@ -82,12 +82,13 @@ function paintOriginalWhite(
   y: number,
   size: number,
   whiteSize: number,
+  fill = '#efe7cb',
 ) {
   // The font supplies only the black glyph; its outline and disc size differ.
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
-  c.fillStyle = '#efe7cb';
+  c.fillStyle = fill;
   c.beginPath();
   c.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   c.fill();

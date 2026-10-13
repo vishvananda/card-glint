@@ -7,6 +7,7 @@ import {
   oklab,
   delta,
 } from '../games/magic/tools/accuracy/hsb-color.mjs';
+import { fitSharedHsb, manaDiscColor } from '../games/magic/tools/accuracy/hsb-shared-color.mjs';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -88,9 +89,29 @@ try {
       math,
     ).clipping === 1,
   );
+  // A single shared transform must recover two distinct material colors.
+  const pairs = [
+    [0.3, 0.6, 0.45],
+    [0.7, 0.5, 0.25],
+  ].map((rgb) => ({
+    source: { rgb, tiles: [rgb], spread: 0 },
+    references: [{ rgb: math.adjustHsb(rgb, adjustment) }],
+  }));
+  const shared = fitSharedHsb(pairs, model, math);
+  for (const p of pairs)
+    assert.ok(delta(math.adjustHsb(p.source.rgb, shared.adjustment), p.references[0].rgb) < 0.05);
+  // Dense historical glyphs occupy most of the disc. A median or tied quantile
+  // would measure the black ink instead of the colored background.
+  const disc = fixture();
+  for (let y = 0; y < 120; y++)
+    for (let x = 0; x < 120; x++) {
+      const rgb = x % 4 === 0 ? [0.7, 0.8, 0.9] : [0.03, 0.03, 0.03];
+      rgb.forEach((v, c) => (disc.data[(y * 120 + x) * 4 + c] = Math.round(255 * v)));
+    }
+  assert.ok(delta(manaDiscColor(disc, 60, 60).rgb, [0.7, 0.8, 0.9]) < 0.2);
   const pixels = fixture(),
     alpha = pixels.data.filter((_, i) => i % 4 === 3);
-  material.colorEarlyFrame(pixels, { frame: adjustment }, 'abu', 'W');
+  material.colorEarlyFrame(pixels, adjustment);
   assert.deepEqual(
     pixels.data.filter((_, i) => i % 4 === 3),
     alpha,

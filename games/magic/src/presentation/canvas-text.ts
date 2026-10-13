@@ -1,3 +1,4 @@
+import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
 import { manaSymbolAsset } from './assets.js';
 import { FACE_TEXT, symbolTextParts, type FaceRect } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -62,20 +63,13 @@ export function paintMana(
   context.shadowColor = 'transparent';
   context.shadowOffsetX = context.shadowOffsetY = 0;
   // These are the shared --m-* token defaults, also used behind loaded DOM glyphs.
-  const colors: Record<string, string> = {
-    W: '#efe7cb',
-    U: '#3d7ac3',
-    B: '#33313c',
-    R: '#c2432e',
-    G: '#3b8a4e',
-  };
   if (shadow) {
     const offset = 1.5372 * context.getTransform().a;
     context.shadowColor = '#000d';
     context.shadowOffsetX = -offset;
     context.shadowOffsetY = offset;
   }
-  context.fillStyle = colors[symbol] ?? '#9aa4ae';
+  context.fillStyle = images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
   context.beginPath();
   context.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   context.fill();

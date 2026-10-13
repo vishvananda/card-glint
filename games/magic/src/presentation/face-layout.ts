@@ -38,7 +38,7 @@ export interface RenderedCardInput extends CardProfileInput {
   /** Select glyph era independently of wording; omitted follows wordingMode
    * (or the legacy set policy when neither choice is supplied). */
   symbolStyle?: 'original' | 'modern';
-  /** Opt-in Canvas color trial for LEA/LEB/2ED/3ED frame material and rules paper.
+  /** Opt-in Canvas color trial for LEA/LEB/2ED/3ED whole-frame and mana colors.
    * Omitted preserves source colors. Does not recolor art, lettering or scans. */
   colorCalibration?: 'early-hsb-v1';
   illustration?: string | null;
