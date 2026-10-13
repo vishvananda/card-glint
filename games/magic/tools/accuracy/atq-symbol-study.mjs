@@ -153,7 +153,7 @@ try {
         const context = document.createElement('canvas').getContext('2d');
         context.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
         const [x, y, w, h] = retroPx(retroRects(face).type),
-          g = retroSymbolGeometry(face),
+          g = face.frameStyle === 'retro' ? retroSymbolGeometry(face) : null,
           before = w - 48,
           after = g ? Math.min(before, g.right - g.width - x - 6) : before,
           measuredWidth = context.measureText(face.typeLine).width;
