@@ -2,20 +2,23 @@
 
 ## Current rollout: old frames, then new frames
 
-Current priority: **select source-frame families across all old-frame groups
-before applying HSB calibration**. The set-symbol expansion remains paused.
+The source-family comparison and old-frame HSB round are complete for 0.2.10.
 The [family coverage plan](fixtures/accuracy/old-frame-family-plan.json) freezes
-set/material cohorts and candidate families; its choices are not yet measured.
-Separate source-asset choice from printing typography, compare structure with
-color-insensitive metrics, validate on reserved card names, and retain ambiguous
-matches for review. Freeze the chosen asset and geometry before refitting HSB.
-Use per-color corrections, with one shared adjustment for the frame and paper.
-The first [family comparison](frame-asset-research.md) is complete. No alternative
-passed every structural admission check, so this color round retains existing
-sources and carries uncertain geometry in the review queue. Complete remaining
-old-frame HSB measurements, publish the checked library release, then resume the
-paused set-symbol pass. Do not treat retained sources as certified geometric
-matches or silently apply a profile to a different source bitmap.
+63 set entries and their material cohorts. No alternative passed every structural
+admission check, so this round retains existing sources and carries uncertain
+geometry in the review queue. The [color results](hsb-calibration.md) admit
+197 whole-frame/paper profiles and 251 mana targets; sparse, unsupported and
+regressing groups remain unchanged. Do not treat retained sources as certified
+geometric matches or transfer fitted colors to a different source bitmap.
+
+Next: deploy the separate text-review application with persistent proposals,
+then resume the old-frame set-symbol pass. Its queue must use current renderer
+scores, exact original wording, and accepted shared frame normalization.
+Historical reports remain available as archived evidence. Revised now has a
+[validated shared stock profile](fixtures/accuracy/old-frame-registration-3ed.json)
+against actual rendered boundaries, with remaining source-aspect differences
+reported separately. Its held-out error improves 1.81 → 1.25 canonical pixels;
+no individual scan or text block receives a fitted transform.
 
 The [early HSB experiment](hsb-calibration.md) remains opt-in evidence; do not
 transfer its numbers onto a different source asset. See also the
