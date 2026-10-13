@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "geometry": {
+    "right": 434.25,
+    "centerY": 390.25,
+    "width": 22.25,
+    "height": 20,
+    "crop": [0, 0.13982300884955753, 0.984375, 0.7964601769911505],
+    "sampling": "high"
+  },
+  "changeEnvelope": [400, 371, 46, 40],
+  "scoreRegion": [400, 371, 46, 40],
+  "scope": "One shared set geometry, chosen from calibration-only native bounds after independent frame registration. Preserve existing source contours and white outer rim; high-quality mask sampling. Portal also restores opaque enclosed white panels from existing closed source subpaths. No per-card renderer adjustment. Regions include full calibration silhouettes; reference coverage must remain explicit.",
+  "baselineHash": "0f83d0c4917fd57df0cd5cb06f11e01cff85823eef493439647695a16303fe9e",
+  "boundsHash": "1bced4d4689abd65857c2177905a1b671709188bf473e2cb96b7abcf43fd757a",
+  "measurementProfileHash": "6655c0442024553932cae0d7c677a94a12920cd81f0ddb59c2a16b0275e66ebf",
+  "frameProfileHash": "4b4ade5e376dd98a76d0cb06f996a00f6e0779319a3a499b764f29bf15fbe432",
+  "allowTypeCompression": false,
+  "calibrationIds": [
+    "81ce7e1e-ffe5-4ced-8967-9a6917245240",
+    "44faefbe-d5e7-48f3-ba88-833da0b19707",
+    "86dca066-d5e3-442a-95a0-e695c1d5850c",
+    "cc9fb7b6-d20c-4c08-9dae-4ccc9138b662",
+    "e538b359-d893-422d-9d60-5f3e8ee0fa9e",
+    "5a7bd777-6f11-441e-887f-9cee1ef96035",
+    "942cf220-472c-48f6-8f60-993939ea5ab8",
+    "26915b4b-ada1-45f3-b908-04a774011b66",
+    "5a89ba1b-e68b-4d70-a25e-27be9bf48a3b",
+    "c91a26b2-03f8-43f0-a3a4-ff6c5a3690c4",
+    "e315c1c2-436e-48ff-9214-938697178393",
+    "7ff23780-d183-4cca-ad0c-448ef325bf36",
+    "268403bc-733d-446e-a7c1-abc957c42bc2",
+    "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+    "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+    "3560556c-f1d3-4d69-afe7-c2a5fa2a5c3d",
+    "ee7ba92d-d327-4b1c-be40-708c5abb27df",
+    "4f2da99f-3c53-4980-97d6-2158c765aac0",
+    "645297d1-ee77-4879-83eb-8114fbabb9a4",
+    "426a28bd-033d-41af-b577-ece73cbd7b3a",
+    "30e401e3-282b-4524-87e1-c6cd50cd6d00",
+    "7f01fe22-e8ff-4106-8ac5-693ef920b2c9",
+    "62e339a9-3f9b-401e-a459-dc3affc9a114"
+  ],
+  "stableIds": [
+    "81ce7e1e-ffe5-4ced-8967-9a6917245240",
+    "44faefbe-d5e7-48f3-ba88-833da0b19707",
+    "cc9fb7b6-d20c-4c08-9dae-4ccc9138b662",
+    "5a7bd777-6f11-441e-887f-9cee1ef96035",
+    "942cf220-472c-48f6-8f60-993939ea5ab8",
+    "26915b4b-ada1-45f3-b908-04a774011b66",
+    "5a89ba1b-e68b-4d70-a25e-27be9bf48a3b",
+    "c91a26b2-03f8-43f0-a3a4-ff6c5a3690c4",
+    "e315c1c2-436e-48ff-9214-938697178393",
+    "7ff23780-d183-4cca-ad0c-448ef325bf36",
+    "268403bc-733d-446e-a7c1-abc957c42bc2",
+    "25eff287-6b53-4e6d-9da2-d80d05bb8c51",
+    "93cfcca5-070b-4946-b17b-0c94b1e47fcd",
+    "3560556c-f1d3-4d69-afe7-c2a5fa2a5c3d",
+    "ee7ba92d-d327-4b1c-be40-708c5abb27df",
+    "4f2da99f-3c53-4980-97d6-2158c765aac0",
+    "645297d1-ee77-4879-83eb-8114fbabb9a4",
+    "7f01fe22-e8ff-4106-8ac5-693ef920b2c9",
+    "62e339a9-3f9b-401e-a459-dc3affc9a114"
+  ],
+  "uncertainIds": [
+    "86dca066-d5e3-442a-95a0-e695c1d5850c",
+    "e538b359-d893-422d-9d60-5f3e8ee0fa9e",
+    "426a28bd-033d-41af-b577-ece73cbd7b3a",
+    "30e401e3-282b-4524-87e1-c6cd50cd6d00"
+  ],
+  "selection": "Use material-balanced reference medians, retain a single placement across materials. White-rim bounds set full extents; nominal ink dimensions account for the retained outline. Quarter-pixel rounding. Black and pale envelopes are distinct; do not mix them. MIR has sparse contrast pairs with corroborating W black-ink measurements; keep its source-outline uncertainty. The first candidate stretched the cloud while matching the full pale bolt. Compare one shorter, intermediate-height alternative on calibration only; restore the enclosed bolt cutout from its existing SVG subpath. No reserved cards used to choose between these candidates.",
+  "priorObservationPolicy": "MIR/TMP reserved printings are conservatively treated as previously observed because of earlier complete-set renderer audits. STH/POR exposure is matched by UUID in listed earlier studies; absence is not a universal claim of never seen.",
+  "priorExposureSources": [
+    {
+      "file": "old-symbol-material-candidates.json",
+      "sha256": "054ede8b16f9216d536a82dcd7f7706d20211762d7d11bef46be9ff68d124634"
+    },
+    {
+      "file": "old-symbol-treatment-measurement.json",
+      "sha256": "625fe4395865c62501b34c32f9249a5d54d5eae0432811431d10b831f1c42a25"
+    },
+    {
+      "file": "old-window-tmp-measurement.json",
+      "sha256": "7b19d1c4356f46179c038c586d8f8ceb6e4416b43004cb8c36605b4f5aae20dc"
+    },
+    {
+      "file": "tmp/details-measurement.json",
+      "sha256": "09ca57a7f4a20b3b669614c51bd2cbbee665df27abde438bd1c7e8ab5da91edb"
+    }
+  ],
+  "previousAdoptionHash": "c1bd6c09e44ea85717d66a4696b022e0abed548be4bb1e595316a9f190f56dc4"
+}

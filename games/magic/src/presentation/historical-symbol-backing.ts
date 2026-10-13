@@ -13,6 +13,8 @@ const DETAILS: Readonly<Record<string, { count: number; white: readonly number[]
   wth: { count: 8, white: [0, 1, 2, 3, 4, 5, 6] },
   exo: { count: 6, white: [0, 1, 2, 3, 4] },
   ice2: { count: 16, white: [0] },
+  por: { count: 21, white: Array.from({ length: 20 }, (_, index) => index) },
+  tmp: { count: 2, white: [1] },
 };
 
 /** Internal decoded-image key only; this suffix is never fetched. */

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "geometry": {
+    "right": 435.5,
+    "centerY": 391,
+    "width": 23,
+    "height": 23,
+    "crop": [0, 0.08401976935749589, 0.98828125, 0.8336079077429983],
+    "sampling": "high"
+  },
+  "changeEnvelope": [400, 371, 46, 40],
+  "scoreRegion": [400, 371, 46, 40],
+  "scope": "One shared set geometry, chosen from calibration-only native bounds after independent frame registration. Preserve existing source contours and white outer rim; high-quality mask sampling. Portal also restores opaque enclosed white panels from existing closed source subpaths. No per-card renderer adjustment. Regions include full calibration silhouettes; reference coverage must remain explicit.",
+  "baselineHash": "3a9d82143d0676341f32ccf8fea368752dd64dc79df87734941a47f4dcf0dccd",
+  "boundsHash": "9c7d28a967a6e68a860e4166f7439117f20076b8e05da26df7f59a63a4194d5e",
+  "measurementProfileHash": "c36c66200fa7e224033ac52b60fc53c79c2fb9cee5259616bf5c84b0e0877f40",
+  "frameProfileHash": "b40f8662f7050e520c3923630a308a104dab410d5a54c5a98a8752d151385009",
+  "allowTypeCompression": false,
+  "calibrationIds": [
+    "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+    "31dda640-2a00-437e-855f-173c487e7395",
+    "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+    "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+    "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+    "9746790c-a426-4135-8c9d-afb82a0c26b8",
+    "e7342875-d49b-4fa7-a2fb-8dfc5e3d6e4f",
+    "8681b3fd-33e5-4a45-8650-a4a142405096",
+    "96837a9e-dd68-4ce8-b760-0e1c22837164",
+    "f175c959-3b5d-46a3-9194-fad2359bbff9",
+    "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+    "71cce019-162c-4969-89ac-1cf94148a032",
+    "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+    "0a2012ad-6425-4935-83af-fc7309ec2ece",
+    "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+    "90d35453-7fe3-4053-aad9-a124ecc7dcf0"
+  ],
+  "stableIds": [
+    "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+    "31dda640-2a00-437e-855f-173c487e7395",
+    "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+    "e7342875-d49b-4fa7-a2fb-8dfc5e3d6e4f",
+    "96837a9e-dd68-4ce8-b760-0e1c22837164",
+    "f175c959-3b5d-46a3-9194-fad2359bbff9",
+    "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+    "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+    "0a2012ad-6425-4935-83af-fc7309ec2ece",
+    "7396c4e9-b0d8-4b8f-8c17-6f913a967b17"
+  ],
+  "uncertainIds": [
+    "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+    "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+    "9746790c-a426-4135-8c9d-afb82a0c26b8",
+    "8681b3fd-33e5-4a45-8650-a4a142405096",
+    "71cce019-162c-4969-89ac-1cf94148a032",
+    "90d35453-7fe3-4053-aad9-a124ecc7dcf0"
+  ],
+  "selection": "Use material-balanced reference medians, retain a single placement across materials. White-rim bounds set full extents; nominal ink dimensions account for the retained outline. Quarter-pixel rounding. Black and pale envelopes are distinct; do not mix them. MIR has sparse contrast pairs with corroborating W black-ink measurements; keep its source-outline uncertainty.",
+  "priorObservationPolicy": "MIR/TMP reserved printings are conservatively treated as previously observed because of earlier complete-set renderer audits. STH/POR exposure is matched by UUID in listed earlier studies; absence is not a universal claim of never seen.",
+  "priorExposureSources": [
+    {
+      "file": "old-symbol-material-candidates.json",
+      "sha256": "054ede8b16f9216d536a82dcd7f7706d20211762d7d11bef46be9ff68d124634"
+    },
+    {
+      "file": "old-symbol-treatment-measurement.json",
+      "sha256": "625fe4395865c62501b34c32f9249a5d54d5eae0432811431d10b831f1c42a25"
+    },
+    {
+      "file": "old-window-tmp-measurement.json",
+      "sha256": "7b19d1c4356f46179c038c586d8f8ceb6e4416b43004cb8c36605b4f5aae20dc"
+    },
+    {
+      "file": "tmp/details-measurement.json",
+      "sha256": "09ca57a7f4a20b3b669614c51bd2cbbee665df27abde438bd1c7e8ab5da91edb"
+    }
+  ]
+}

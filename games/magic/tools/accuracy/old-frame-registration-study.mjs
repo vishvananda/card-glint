@@ -44,7 +44,7 @@ const plan = await readJson(`${fixtureRoot}/old-frame-family-plan.json`),
   selected = snapshot.entries.filter(
     (e) =>
       e.set === set &&
-      e.frame === '1993' &&
+      ['1993', '1997'].includes(e.frame) &&
       materials.includes(e.material) &&
       e.group.split('/')[2] === 'normal' &&
       !e.issue,
@@ -66,8 +66,10 @@ if (set === 'lea') {
   );
 }
 assert.ok(selected.length >= 12, 'Insufficient frozen metadata-only cohort');
-const stocks = [...new Set(selected.map((e) => e.border))],
+const printedFrames = [...new Set(selected.map((e) => e.frame))],
+  stocks = [...new Set(selected.map((e) => e.border))],
   families = [...new Set(selected.map((e) => e.currentFamily))];
+assert.equal(printedFrames.length, 1, 'Mixed printed frames require separate studies');
 assert.equal(stocks.length, 1, 'Mixed stocks require separate studies');
 assert.equal(families.length, 1, 'Mixed families require separate studies');
 const border = stocks[0],
@@ -247,7 +249,7 @@ const result = {
   schemaVersion: 1,
   method: usePlate ? PLATE_REGISTRATION_VERSION : OLD_FRAME_REGISTRATION_VERSION,
   set,
-  printedFrame: '1993',
+  printedFrame: printedFrames[0],
   border,
   frameFamily: family,
   anchor,

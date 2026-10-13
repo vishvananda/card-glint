@@ -1,0 +1,4635 @@
+{
+  "scope": "Calibration-only diagnostic profiles, never selected using renderer overlap or reserved cards. Dark/light envelopes are different components; preserve their interpretation.",
+  "alternatives": [
+    {
+      "label": "dark",
+      "refProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "luminance",
+        "thresholds": [30, 45, 60, 75],
+        "componentGap": 2,
+        "maxSpread": 1.4,
+        "light": false
+      },
+      "renderProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "luminance",
+        "thresholds": [30, 45, 60, 75],
+        "componentGap": 2,
+        "maxSpread": 1.4,
+        "light": false,
+        "foreground": "dark",
+        "minimumDifference": 8
+      },
+      "stable": 4,
+      "paired": [],
+      "medians": {
+        "width": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        },
+        "height": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        },
+        "centerX": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        },
+        "centerY": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        }
+      },
+      "rows": [
+        {
+          "id": "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+          "name": "Alabaster Dragon",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 60,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.23076923076923, 21.576923076923077
+                ],
+                "nativeRect": [630, 580, 34, 33],
+                "area": 112.8639053254438,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [630, 580, 34, 34],
+                "area": 141.07988165680473,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [412.3653846153846, 379.2307692307692, 22.23076923076923, 21.903846153846153],
+            "spread": [0, 0, 0, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "31dda640-2a00-437e-855f-173c487e7395",
+          "name": "Angelic Blessing",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [
+                  413.0192307692308, 378.5769230769231, 21.576923076923077, 21.576923076923077
+                ],
+                "nativeRect": [631, 579, 33, 33],
+                "area": 69.68491124260355,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 45,
+                "rect": [
+                  413.0192307692308, 378.5769230769231, 21.576923076923077, 22.23076923076923
+                ],
+                "nativeRect": [631, 579, 33, 34],
+                "area": 117.99408284023669,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 60,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 579, 35, 34],
+                "area": 141.07988165680473,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 579, 35, 34],
+                "area": 164.5931952662722,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [412.6923076923077, 378.5769230769231, 22.23076923076923, 22.23076923076923],
+            "spread": [0.6538461538461888, 0, 1.3076923076923066, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+          "name": "Ardent Militia",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 45,
+                "rect": [
+                  413.0192307692308, 379.8846153846154, 22.23076923076923, 20.923076923076923
+                ],
+                "nativeRect": [631, 581, 34, 32],
+                "area": 73.53254437869823,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 60,
+                "rect": [
+                  413.0192307692308, 379.8846153846154, 22.23076923076923, 21.576923076923077
+                ],
+                "nativeRect": [631, 581, 34, 33],
+                "area": 111.58136094674556,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [
+                  413.0192307692308, 379.2307692307692, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [631, 580, 34, 34],
+                "area": 138.9423076923077,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [413.0192307692308, 379.8846153846154, 22.23076923076923, 21.576923076923077],
+            "spread": [0, 0.6538461538461888, 0, 1.3076923076923066],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+          "name": "Ancestral Memories",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [413.0192307692308, 382.5, 21.576923076923077, 20.26923076923077],
+                "nativeRect": [631, 585, 33, 31],
+                "area": 27.36094674556213,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 45,
+                "rect": [
+                  413.0192307692308, 381.1923076923077, 22.23076923076923, 21.576923076923077
+                ],
+                "nativeRect": [631, 583, 34, 33],
+                "area": 90.63313609467455,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 60,
+                "rect": [
+                  410.40384615384613, 380.53846153846155, 26.153846153846153, 22.23076923076923
+                ],
+                "nativeRect": [627, 582, 40, 34],
+                "area": 133.8121301775148,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [413.0192307692308, 381.1923076923077, 22.23076923076923, 21.576923076923077],
+            "spread": [2.6153846153846416, 1.9615384615384528, 4.576923076923077, 1.96153846153846],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+          "name": "Baleful Stare",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 45,
+                "rect": [
+                  413.0192307692308, 381.1923076923077, 22.23076923076923, 21.576923076923077
+                ],
+                "nativeRect": [631, 583, 34, 33],
+                "area": 94.05325443786982,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 60,
+                "rect": [
+                  411.0576923076923, 381.1923076923077, 24.192307692307693, 22.23076923076923
+                ],
+                "nativeRect": [628, 583, 37, 34],
+                "area": 127.82692307692308,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [412.03846153846155, 381.1923076923077, 23.21153846153846, 21.903846153846153],
+            "spread": [1.9615384615384528, 0, 1.9615384615384635, 0.6538461538461533],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "9746790c-a426-4135-8c9d-afb82a0c26b8",
+          "name": "Cloak of Feathers",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [
+                  413.0192307692308, 381.84615384615387, 22.23076923076923, 20.923076923076923
+                ],
+                "nativeRect": [631, 584, 34, 32],
+                "area": 61.989644970414204,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 45,
+                "rect": [
+                  410.40384615384613, 381.1923076923077, 24.846153846153847, 21.576923076923077
+                ],
+                "nativeRect": [627, 583, 38, 33],
+                "area": 103.88609467455622,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [411.71153846153845, 381.5192307692308, 23.53846153846154, 21.25],
+            "spread": [
+              2.6153846153846416, 0.6538461538461888, 2.6153846153846168, 0.6538461538461533
+            ],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e7342875-d49b-4fa7-a2fb-8dfc5e3d6e4f",
+          "name": "Arrogant Vampire",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 60,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 38.666666666666664,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 49.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8681b3fd-33e5-4a45-8650-a4a142405096",
+          "name": "Bog Imp",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 60,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 38.666666666666664,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 49.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "96837a9e-dd68-4ce8-b760-0e1c22837164",
+          "name": "Cruel Bargain",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 60,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 38.666666666666664,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 49.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "f175c959-3b5d-46a3-9194-fad2359bbff9",
+          "name": "Blaze",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [
+                  407.13461538461536, 379.2307692307692, 26.153846153846153, 21.576923076923077
+                ],
+                "nativeRect": [622, 580, 40, 33],
+                "area": 54.72189349112426,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null,
+              null
+            ],
+            "rect": [407.13461538461536, 379.2307692307692, 26.153846153846153, 21.576923076923077],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "71cce019-162c-4969-89ac-1cf94148a032",
+          "name": "Devastation",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [
+                  411.0576923076923, 380.53846153846155, 21.576923076923077, 21.576923076923077
+                ],
+                "nativeRect": [628, 582, 33, 33],
+                "area": 56.859467455621306,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null,
+              null
+            ],
+            "rect": [411.0576923076923, 380.53846153846155, 21.576923076923077, 21.576923076923077],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+          "name": "Alluring Scent",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [409.75, 379.8846153846154, 22.23076923076923, 22.23076923076923],
+                "nativeRect": [626, 581, 34, 34],
+                "area": 46.171597633136095,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null,
+              null
+            ],
+            "rect": [409.75, 379.8846153846154, 22.23076923076923, 22.23076923076923],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "0a2012ad-6425-4935-83af-fc7309ec2ece",
+          "name": "Anaconda",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [409.75, 381.84615384615387, 22.23076923076923, 20.26923076923077],
+                "nativeRect": [626, 584, 34, 31],
+                "area": 32.91863905325444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 45,
+                "rect": [
+                  408.4423076923077, 379.8846153846154, 23.53846153846154, 22.23076923076923
+                ],
+                "nativeRect": [624, 581, 36, 34],
+                "area": 106.02366863905326,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [409.0961538461538, 380.86538461538464, 22.884615384615387, 21.25],
+            "spread": [
+              1.3076923076923208, 1.9615384615384528, 1.3076923076923102, 1.96153846153846
+            ],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+          "name": "Elite Cat Warrior",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [409.75, 381.1923076923077, 21.576923076923077, 20.26923076923077],
+                "nativeRect": [626, 583, 33, 31],
+                "area": 41.896449704142015,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 45,
+                "rect": [
+                  407.13461538461536, 379.8846153846154, 24.846153846153847, 22.23076923076923
+                ],
+                "nativeRect": [622, 581, 38, 34],
+                "area": 82.93786982248521,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [408.4423076923077, 380.53846153846155, 23.21153846153846, 21.25],
+            "spread": [2.6153846153846416, 1.307692307692264, 3.26923076923077, 1.96153846153846],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "90d35453-7fe3-4053-aad9-a124ecc7dcf0",
+          "name": "Plains",
+          "material": "L",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 30,
+                "rect": [
+                  411.0576923076923, 381.84615384615387, 21.576923076923077, 20.923076923076923
+                ],
+                "nativeRect": [628, 584, 33, 32],
+                "area": 39.33136094674556,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 45,
+                "rect": [
+                  411.0576923076923, 381.84615384615387, 21.576923076923077, 20.923076923076923
+                ],
+                "nativeRect": [628, 584, 33, 32],
+                "area": 66.26479289940829,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 60,
+                "rect": [
+                  411.0576923076923, 380.53846153846155, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [628, 582, 34, 34],
+                "area": 112.43639053254438,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 75,
+                "rect": [
+                  410.40384615384613, 380.53846153846155, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [627, 582, 35, 34],
+                "area": 137.23224852071007,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.0576923076923, 381.19230769230774, 21.903846153846153, 21.576923076923077],
+            "spread": [
+              0.6538461538461888, 1.3076923076923208, 1.3076923076923066, 1.3076923076923066
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        }
+      ]
+    },
+    {
+      "label": "dark-mid",
+      "refProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "luminance",
+        "thresholds": [60, 80, 100, 120],
+        "componentGap": 2,
+        "maxSpread": 1.4,
+        "light": false
+      },
+      "renderProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "luminance",
+        "thresholds": [60, 80, 100, 120],
+        "componentGap": 2,
+        "maxSpread": 1.4,
+        "light": false,
+        "foreground": "dark",
+        "minimumDifference": 8
+      },
+      "stable": 4,
+      "paired": [],
+      "medians": {
+        "width": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        },
+        "height": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        },
+        "centerX": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        },
+        "centerY": {
+          "ref": null,
+          "before": null,
+          "delta": null
+        }
+      },
+      "rows": [
+        {
+          "id": "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+          "name": "Alabaster Dragon",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.23076923076923, 21.576923076923077
+                ],
+                "nativeRect": [630, 580, 34, 33],
+                "area": 112.8639053254438,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [630, 580, 34, 34],
+                "area": 146.63757396449705,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [630, 580, 34, 34],
+                "area": 169.2958579881657,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 580, 35, 34],
+                "area": 194.51923076923077,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [412.3653846153846, 379.2307692307692, 22.23076923076923, 22.23076923076923],
+            "spread": [0, 0, 0.6538461538461533, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "31dda640-2a00-437e-855f-173c487e7395",
+          "name": "Angelic Blessing",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 579, 35, 34],
+                "area": 141.07988165680473,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 579, 35, 34],
+                "area": 170.1508875739645,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 579, 35, 34],
+                "area": 194.09171597633136,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [412.3653846153846, 378.5769230769231, 22.884615384615383, 22.23076923076923],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+          "name": "Ardent Militia",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  413.0192307692308, 379.8846153846154, 22.23076923076923, 21.576923076923077
+                ],
+                "nativeRect": [631, 581, 34, 33],
+                "area": 111.58136094674556,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [
+                  413.0192307692308, 379.2307692307692, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [631, 580, 34, 34],
+                "area": 146.21005917159763,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  412.3653846153846, 379.2307692307692, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [630, 580, 35, 34],
+                "area": 179.1286982248521,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.884615384615383
+                ],
+                "nativeRect": [630, 579, 35, 35],
+                "area": 210.33727810650888,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [412.6923076923077, 379.2307692307692, 22.557692307692307, 22.23076923076923],
+            "spread": [
+              0.6538461538461888, 1.3076923076923208, 0.6538461538461533, 1.3076923076923066
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+          "name": "Ancestral Memories",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  410.40384615384613, 380.53846153846155, 26.153846153846153, 22.23076923076923
+                ],
+                "nativeRect": [627, 582, 40, 34],
+                "area": 133.8121301775148,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null,
+              null
+            ],
+            "rect": [410.40384615384613, 380.53846153846155, 26.153846153846153, 22.23076923076923],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 382, 20, 20],
+                "nativeRect": [623, 573, 30, 30],
+                "area": 106.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 382, 20, 20],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+          "name": "Baleful Stare",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  411.0576923076923, 381.1923076923077, 24.192307692307693, 22.23076923076923
+                ],
+                "nativeRect": [628, 583, 37, 34],
+                "area": 127.82692307692308,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null,
+              null
+            ],
+            "rect": [411.0576923076923, 381.1923076923077, 24.192307692307693, 22.23076923076923],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 382, 20, 20],
+                "nativeRect": [623, 573, 30, 30],
+                "area": 106.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 382, 20, 20],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "9746790c-a426-4135-8c9d-afb82a0c26b8",
+          "name": "Cloak of Feathers",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 382, 20, 20],
+                "nativeRect": [623, 573, 30, 30],
+                "area": 106.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 382, 20, 20],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e7342875-d49b-4fa7-a2fb-8dfc5e3d6e4f",
+          "name": "Arrogant Vampire",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 38.666666666666664,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 52,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 61.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 74.22222222222221,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415, 380.66666666666663, 21.666666666666664, 22],
+            "spread": [0.6666666666666856, 0, 0.6666666666666679, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8681b3fd-33e5-4a45-8650-a4a142405096",
+          "name": "Bog Imp",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 38.666666666666664,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 52,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 61.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 74.22222222222221,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415, 380.66666666666663, 21.666666666666664, 22],
+            "spread": [0.6666666666666856, 0, 0.6666666666666679, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "96837a9e-dd68-4ce8-b760-0e1c22837164",
+          "name": "Cruel Bargain",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 38.666666666666664,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 52,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 61.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 74.22222222222221,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415, 380.66666666666663, 21.666666666666664, 22],
+            "spread": [0.6666666666666856, 0, 0.6666666666666679, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "f175c959-3b5d-46a3-9194-fad2359bbff9",
+          "name": "Blaze",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [416, 380.66666666666663, 20.666666666666664, 22],
+                "nativeRect": [624, 571, 31, 33],
+                "area": 108.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [416, 380.66666666666663, 20.666666666666664, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [416, 380.66666666666663, 20.666666666666664, 22],
+                "nativeRect": [624, 571, 31, 33],
+                "area": 108.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [416, 380.66666666666663, 20.666666666666664, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "71cce019-162c-4969-89ac-1cf94148a032",
+          "name": "Devastation",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [416, 380.66666666666663, 20.666666666666664, 22],
+                "nativeRect": [624, 571, 31, 33],
+                "area": 108.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [416, 380.66666666666663, 20.666666666666664, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+          "name": "Alluring Scent",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 100,
+                "rect": [
+                  415.3333333333333, 380.66666666666663, 21.333333333333332, 21.333333333333332
+                ],
+                "nativeRect": [623, 571, 32, 32],
+                "area": 98.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 114.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 21.666666666666664],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "0a2012ad-6425-4935-83af-fc7309ec2ece",
+          "name": "Anaconda",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 100,
+                "rect": [
+                  415.3333333333333, 380.66666666666663, 21.333333333333332, 21.333333333333332
+                ],
+                "nativeRect": [623, 571, 32, 32],
+                "area": 98.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 114.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 21.666666666666664],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+          "name": "Elite Cat Warrior",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 100,
+                "rect": [
+                  415.3333333333333, 380.66666666666663, 21.333333333333332, 21.333333333333332
+                ],
+                "nativeRect": [623, 571, 32, 32],
+                "area": 98.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 22],
+                "nativeRect": [623, 571, 32, 33],
+                "area": 114.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 21.333333333333332, 21.666666666666664],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "90d35453-7fe3-4053-aad9-a124ecc7dcf0",
+          "name": "Plains",
+          "material": "L",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  411.0576923076923, 380.53846153846155, 22.23076923076923, 22.23076923076923
+                ],
+                "nativeRect": [628, 582, 34, 34],
+                "area": 112.43639053254438,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [
+                  410.40384615384613, 380.53846153846155, 22.884615384615383, 22.23076923076923
+                ],
+                "nativeRect": [627, 582, 35, 34],
+                "area": 143.21745562130178,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [410.7307692307692, 380.53846153846155, 22.557692307692307, 22.23076923076923],
+            "spread": [0.6538461538461888, 0, 0.6538461538461533, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [415.3333333333333, 380.66666666666663, 20, 22],
+                "nativeRect": [623, 571, 30, 33],
+                "area": 107.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [415.3333333333333, 380.66666666666663, 20, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        }
+      ]
+    },
+    {
+      "label": "light",
+      "refProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "luminance",
+        "thresholds": [170, 185, 200, 215],
+        "componentGap": 0,
+        "maxSpread": 1.4,
+        "light": true
+      },
+      "renderProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "luminance",
+        "thresholds": [170, 185, 200, 215],
+        "componentGap": 0,
+        "maxSpread": 1.4,
+        "light": true,
+        "foreground": "light",
+        "minimumDifference": 8
+      },
+      "stable": 10,
+      "paired": [
+        {
+          "id": "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+          "name": "Alabaster Dragon",
+          "ref": {
+            "width": 26.20582653761139,
+            "height": 25.550680874171107,
+            "centerX": 425.6390993025415,
+            "centerY": 390.48579835313154
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "31dda640-2a00-437e-855f-173c487e7395",
+          "name": "Angelic Blessing",
+          "ref": {
+            "width": 25.550680874171107,
+            "height": 25.550680874171107,
+            "centerX": 425.3115264708214,
+            "centerY": 389.83065268969125
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+          "name": "Ancestral Memories",
+          "ref": {
+            "width": 25.550680874171107,
+            "height": 24.89553521073082,
+            "centerX": 425.96667213426167,
+            "centerY": 392.1236625117322
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "f175c959-3b5d-46a3-9194-fad2359bbff9",
+          "name": "Blaze",
+          "ref": {
+            "width": 25.223108042450963,
+            "height": 25.550680874171107,
+            "centerX": 422.52715740120016,
+            "centerY": 391.1409440165718
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 23.585243883850254,
+            "centerX": 421.7082253218998,
+            "centerY": 390.8133711848517
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+          "name": "Alluring Scent",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 25.223108042450963,
+            "centerX": 422.36337098534005,
+            "centerY": 390.97715760071173
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "0a2012ad-6425-4935-83af-fc7309ec2ece",
+          "name": "Anaconda",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 24.89553521073082,
+            "centerX": 422.36337098534005,
+            "centerY": 391.468516848292
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+          "name": "Elite Cat Warrior",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 24.89553521073082,
+            "centerX": 422.36337098534005,
+            "centerY": 390.81337118485163
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        }
+      ],
+      "medians": {
+        "width": {
+          "ref": 25.059321626590894,
+          "before": 22,
+          "delta": 3.059321626590892
+        },
+        "height": {
+          "ref": 25.059321626590894,
+          "before": 22,
+          "delta": 3.059321626590892
+        },
+        "centerX": {
+          "ref": 422.4452641932701,
+          "before": 425.66666666666663,
+          "delta": -3.221402473396523
+        },
+        "centerY": {
+          "ref": 390.8952643927817,
+          "before": 391.66666666666663,
+          "delta": -0.7714022738849167
+        }
+      },
+      "rows": [
+        {
+          "id": "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+          "name": "Alabaster Dragon",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 185,
+                "rect": [411.0576923076923, 377.2692307692308, 26.153846153846153, 25.5],
+                "nativeRect": [628, 577, 40, 39],
+                "area": 91.06065088757397,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [411.0576923076923, 377.2692307692308, 26.153846153846153, 25.5],
+                "nativeRect": [628, 577, 40, 39],
+                "area": 69.25739644970415,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  411.71153846153845, 377.9230769230769, 24.846153846153847, 24.192307692307693
+                ],
+                "nativeRect": [629, 578, 38, 37],
+                "area": 39.75887573964497,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.0576923076923, 377.2692307692308, 26.153846153846153, 25.5],
+            "spread": [
+              0.653846153846132, 0.653846153846132, 1.3076923076923066, 1.3076923076923066
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 213.33333333333331,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 154.2222222222222,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 136.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 104.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "31dda640-2a00-437e-855f-173c487e7395",
+          "name": "Angelic Blessing",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 185,
+                "rect": [411.0576923076923, 376.61538461538464, 25.5, 25.5],
+                "nativeRect": [628, 576, 39, 39],
+                "area": 76.95266272189349,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [411.0576923076923, 376.61538461538464, 25.5, 25.5],
+                "nativeRect": [628, 576, 39, 39],
+                "area": 61.13461538461539,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [411.71153846153845, 376.61538461538464, 24.846153846153847, 25.5],
+                "nativeRect": [629, 576, 38, 39],
+                "area": 47.45414201183432,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.0576923076923, 376.61538461538464, 25.5, 25.5],
+            "spread": [0.653846153846132, 0, 0.6538461538461533, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 213.33333333333331,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 154.2222222222222,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 136.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 104.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+          "name": "Ardent Militia",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 185,
+                "rect": [
+                  411.0576923076923, 377.2692307692308, 26.153846153846153, 26.153846153846153
+                ],
+                "nativeRect": [628, 577, 40, 40],
+                "area": 82.5103550295858,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [411.0576923076923, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [628, 578, 39, 39],
+                "area": 61.13461538461539,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  411.71153846153845, 379.8846153846154, 24.846153846153847, 22.884615384615383
+                ],
+                "nativeRect": [629, 581, 38, 35],
+                "area": 41.0414201183432,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.0576923076923, 377.9230769230769, 25.5, 25.5],
+            "spread": [0.653846153846132, 2.6153846153846416, 1.3076923076923066, 3.26923076923077],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 213.33333333333331,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 154.2222222222222,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 136.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 104.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+          "name": "Ancestral Memories",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [411.71153846153845, 379.2307692307692, 25.5, 24.846153846153847],
+                "nativeRect": [629, 580, 39, 38],
+                "area": 70.96745562130178,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [411.71153846153845, 379.2307692307692, 25.5, 24.846153846153847],
+                "nativeRect": [629, 580, 39, 38],
+                "area": 62.41715976331361,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [411.71153846153845, 379.2307692307692, 25.5, 24.846153846153847],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 204.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 143.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 123.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 76.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+          "name": "Baleful Stare",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [
+                  411.71153846153845, 379.8846153846154, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [629, 581, 38, 38],
+                "area": 77.8076923076923,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  411.71153846153845, 379.8846153846154, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [629, 581, 38, 38],
+                "area": 60.70710059171598,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  411.71153846153845, 381.1923076923077, 24.846153846153847, 23.53846153846154
+                ],
+                "nativeRect": [629, 583, 38, 36],
+                "area": 52.15680473372781,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  411.71153846153845, 381.84615384615387, 24.192307692307693, 22.884615384615383
+                ],
+                "nativeRect": [629, 584, 37, 35],
+                "area": 39.75887573964497,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [
+              411.71153846153845, 380.53846153846155, 24.846153846153847, 24.192307692307693
+            ],
+            "spread": [0, 1.9615384615384528, 0.6538461538461533, 1.9615384615384635],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 204.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 143.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 123.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 76.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "9746790c-a426-4135-8c9d-afb82a0c26b8",
+          "name": "Cloak of Feathers",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [411.71153846153845, 379.2307692307692, 24.846153846153847, 25.5],
+                "nativeRect": [629, 580, 38, 39],
+                "area": 55.57692307692308,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  411.71153846153845, 379.8846153846154, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [629, 581, 38, 38],
+                "area": 46.599112426035504,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  411.71153846153845, 380.53846153846155, 24.192307692307693, 23.53846153846154
+                ],
+                "nativeRect": [629, 582, 37, 36],
+                "area": 37.193786982248525,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [411.71153846153845, 379.8846153846154, 24.846153846153847, 24.846153846153847],
+            "spread": [0, 1.3076923076923208, 0.6538461538461533, 1.96153846153846],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 204.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 143.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 123.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 76.44444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e7342875-d49b-4fa7-a2fb-8dfc5e3d6e4f",
+          "name": "Arrogant Vampire",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [
+                  409.0961538461538, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [625, 578, 38, 38],
+                "area": 66.26479289940829,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  409.0961538461538, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [625, 578, 38, 38],
+                "area": 49.164201183431956,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  409.0961538461538, 379.2307692307692, 24.192307692307693, 23.53846153846154
+                ],
+                "nativeRect": [625, 580, 37, 36],
+                "area": 35.05621301775148,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [409.0961538461538, 377.9230769230769, 24.846153846153847, 24.846153846153847],
+            "spread": [0, 1.3076923076923208, 0.6538461538461533, 1.3076923076923066],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 192,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 132.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 112.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  414.66666666666663, 380.66666666666663, 21.333333333333332, 21.333333333333332
+                ],
+                "nativeRect": [622, 571, 32, 32],
+                "area": 66.22222222222221,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 21.666666666666664],
+            "spread": [0, 0, 0.6666666666666679, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8681b3fd-33e5-4a45-8650-a4a142405096",
+          "name": "Bog Imp",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [
+                  407.78846153846155, 379.2307692307692, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [623, 580, 38, 38],
+                "area": 86.78550295857988,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  407.78846153846155, 379.2307692307692, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [623, 580, 38, 38],
+                "area": 52.58431952662722,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  408.4423076923077, 383.15384615384613, 24.192307692307693, 20.923076923076923
+                ],
+                "nativeRect": [624, 586, 37, 32],
+                "area": 32.49112426035503,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [407.78846153846155, 379.2307692307692, 24.846153846153847, 24.846153846153847],
+            "spread": [
+              0.653846153846132, 3.9230769230769056, 0.6538461538461533, 3.9230769230769234
+            ],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 192,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 132.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 112.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  414.66666666666663, 380.66666666666663, 21.333333333333332, 21.333333333333332
+                ],
+                "nativeRect": [622, 571, 32, 32],
+                "area": 66.22222222222221,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 21.666666666666664],
+            "spread": [0, 0, 0.6666666666666679, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "96837a9e-dd68-4ce8-b760-0e1c22837164",
+          "name": "Cruel Bargain",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [409.0961538461538, 378.5769230769231, 24.846153846153847, 25.5],
+                "nativeRect": [625, 579, 38, 39],
+                "area": 82.93786982248521,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  409.0961538461538, 379.2307692307692, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [625, 580, 38, 38],
+                "area": 44.88905325443787,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  409.0961538461538, 379.2307692307692, 24.192307692307693, 24.846153846153847
+                ],
+                "nativeRect": [625, 580, 37, 38],
+                "area": 39.33136094674556,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  409.0961538461538, 379.2307692307692, 24.192307692307693, 24.846153846153847
+                ],
+                "nativeRect": [625, 580, 37, 38],
+                "area": 34.201183431952664,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [409.0961538461538, 379.2307692307692, 24.51923076923077, 24.846153846153847],
+            "spread": [0, 0.653846153846132, 0.6538461538461533, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 192,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 132.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 112.88888888888889,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [
+                  414.66666666666663, 380.66666666666663, 21.333333333333332, 21.333333333333332
+                ],
+                "nativeRect": [622, 571, 32, 32],
+                "area": 66.22222222222221,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 21.666666666666664],
+            "spread": [0, 0, 0.6666666666666679, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "f175c959-3b5d-46a3-9194-fad2359bbff9",
+          "name": "Blaze",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 95.76331360946746,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [408.4423076923077, 377.9230769230769, 24.846153846153847, 25.5],
+                "nativeRect": [624, 578, 38, 39],
+                "area": 65.40976331360947,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [408.4423076923077, 377.9230769230769, 25.173076923076923, 25.5],
+            "spread": [0, 0, 0.6538461538461533, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 201.33333333333331,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 140.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 119.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 73.33333333333333,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [407.78846153846155, 377.2692307692308, 25.5, 24.846153846153847],
+                "nativeRect": [623, 577, 39, 38],
+                "area": 57.714497041420124,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  407.78846153846155, 378.5769230769231, 24.846153846153847, 23.53846153846154
+                ],
+                "nativeRect": [623, 579, 38, 36],
+                "area": 44.46153846153847,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  408.4423076923077, 378.5769230769231, 24.192307692307693, 23.53846153846154
+                ],
+                "nativeRect": [624, 579, 37, 36],
+                "area": 41.0414201183432,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [407.78846153846155, 378.5769230769231, 24.846153846153847, 23.53846153846154],
+            "spread": [
+              0.653846153846132, 1.3076923076923208, 1.3076923076923066, 1.3076923076923066
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 201.33333333333331,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 140.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 119.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 73.33333333333333,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "71cce019-162c-4969-89ac-1cf94148a032",
+          "name": "Devastation",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.3269230769231, 377.9230769230769, 20.923076923076923, 25.5],
+                "nativeRect": [633, 578, 32, 39],
+                "area": 67.54733727810651,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null,
+              null
+            ],
+            "rect": [414.3269230769231, 377.9230769230769, 20.923076923076923, 25.5],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 201.33333333333331,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 140.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 119.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 73.33333333333333,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+          "name": "Alluring Scent",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [408.4423076923077, 377.9230769230769, 24.846153846153847, 25.5],
+                "nativeRect": [624, 578, 38, 39],
+                "area": 91.06065088757397,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 578, 38, 38],
+                "area": 58.99704142011834,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [408.4423076923077, 377.9230769230769, 24.846153846153847, 25.173076923076923],
+            "spread": [0, 0, 0, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 200,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 136.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 118.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 71.55555555555556,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "0a2012ad-6425-4935-83af-fc7309ec2ece",
+          "name": "Anaconda",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [
+                  408.4423076923077, 378.5769230769231, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 579, 38, 38],
+                "area": 94.05325443786982,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  408.4423076923077, 378.5769230769231, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 579, 38, 38],
+                "area": 73.53254437869823,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [
+                  408.4423076923077, 379.8846153846154, 24.846153846153847, 23.53846153846154
+                ],
+                "nativeRect": [624, 581, 38, 36],
+                "area": 48.73668639053255,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [408.4423076923077, 378.5769230769231, 24.846153846153847, 24.846153846153847],
+            "spread": [0, 1.3076923076923208, 0, 1.3076923076923066],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 200,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 136.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 118.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 71.55555555555556,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+          "name": "Elite Cat Warrior",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [
+                  408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 578, 38, 38],
+                "area": 91.91568047337279,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [
+                  408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 578, 38, 38],
+                "area": 55.14940828402367,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null,
+              null
+            ],
+            "rect": [408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 200,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 136.44444444444443,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 118.66666666666666,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 71.55555555555556,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "90d35453-7fe3-4053-aad9-a124ecc7dcf0",
+          "name": "Plains",
+          "material": "L",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [409.75, 379.2307692307692, 24.846153846153847, 25.5],
+                "nativeRect": [626, 580, 38, 39],
+                "area": 101.74852071005918,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [409.75, 379.2307692307692, 24.846153846153847, 24.846153846153847],
+                "nativeRect": [626, 580, 38, 38],
+                "area": 59.42455621301775,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [409.75, 381.1923076923077, 24.846153846153847, 22.884615384615383],
+                "nativeRect": [626, 583, 38, 35],
+                "area": 46.599112426035504,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              null
+            ],
+            "rect": [409.75, 379.2307692307692, 24.846153846153847, 24.846153846153847],
+            "spread": [0, 1.9615384615384528, 0, 2.6153846153846168],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 170,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 201.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 185,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 139.11111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 200,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 120,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 215,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 21.333333333333332],
+                "nativeRect": [622, 571, 33, 32],
+                "area": 72,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0.6666666666666679],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        }
+      ]
+    },
+    {
+      "label": "contrast-high",
+      "refProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "contrast",
+        "thresholds": [60, 80, 100, 120],
+        "componentGap": 1,
+        "maxSpread": 1.4
+      },
+      "renderProfile": {
+        "region": [403, 373, 45, 38],
+        "limits": {
+          "width": [20, 29],
+          "height": [20, 29]
+        },
+        "signal": "contrast",
+        "thresholds": [8, 16, 24, 32],
+        "componentGap": 1,
+        "maxSpread": 1.4,
+        "foreground": "difference",
+        "minimumDifference": 8
+      },
+      "stable": 12,
+      "paired": [
+        {
+          "id": "31dda640-2a00-437e-855f-173c487e7395",
+          "name": "Angelic Blessing",
+          "ref": {
+            "width": 24.240389547290537,
+            "height": 24.89553521073082,
+            "centerX": 425.3115264708214,
+            "centerY": 390.1582255214114
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+          "name": "Baleful Stare",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 24.56796237901068,
+            "centerX": 425.63909930254147,
+            "centerY": 392.94259459103256
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "9746790c-a426-4135-8c9d-afb82a0c26b8",
+          "name": "Cloak of Feathers",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 24.240389547290537,
+            "centerX": 425.3115264708213,
+            "centerY": 392.7788081751725
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "f175c959-3b5d-46a3-9194-fad2359bbff9",
+          "name": "Blaze",
+          "ref": {
+            "width": 25.550680874171107,
+            "height": 25.550680874171107,
+            "centerX": 422.6909438170602,
+            "centerY": 391.1409440165718
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "ref": {
+            "width": 25.550680874171107,
+            "height": 25.550680874171107,
+            "centerX": 422.0357981536199,
+            "centerY": 390.48579835313154
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "71cce019-162c-4969-89ac-1cf94148a032",
+          "name": "Devastation",
+          "ref": {
+            "width": 24.240389547290537,
+            "height": 25.550680874171107,
+            "centerX": 424.6563808073811,
+            "centerY": 391.1409440165718
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+          "name": "Alluring Scent",
+          "ref": {
+            "width": 25.550680874171107,
+            "height": 25.550680874171107,
+            "centerX": 422.6909438170602,
+            "centerY": 391.1409440165718
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "0a2012ad-6425-4935-83af-fc7309ec2ece",
+          "name": "Anaconda",
+          "ref": {
+            "width": 24.89553521073082,
+            "height": 25.223108042450963,
+            "centerX": 422.36337098534005,
+            "centerY": 391.63230326415203
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        },
+        {
+          "id": "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+          "name": "Elite Cat Warrior",
+          "ref": {
+            "width": 25.223108042450963,
+            "height": 25.223108042450963,
+            "centerX": 422.52715740120016,
+            "centerY": 390.97715760071173
+          },
+          "before": {
+            "width": 22,
+            "height": 22,
+            "centerX": 425.66666666666663,
+            "centerY": 391.66666666666663
+          }
+        }
+      ],
+      "medians": {
+        "width": {
+          "ref": 24.89553521073082,
+          "before": 22,
+          "delta": 2.89553521073082
+        },
+        "height": {
+          "ref": 25.223108042450963,
+          "before": 22,
+          "delta": 3.2231080424509635
+        },
+        "centerX": {
+          "ref": 422.6909438170602,
+          "before": 425.66666666666663,
+          "delta": -2.975722849606427
+        },
+        "centerY": {
+          "ref": 391.1409440165718,
+          "before": 391.66666666666663,
+          "delta": -0.5257226500948491
+        }
+      },
+      "rows": [
+        {
+          "id": "1edc6ec1-3b34-45e0-8573-39eba1d10efa",
+          "name": "Alabaster Dragon",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  411.71153846153845, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [629, 578, 38, 38],
+                "area": 477.1065088757397,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [
+                  412.3653846153846, 377.9230769230769, 23.53846153846154, 24.192307692307693
+                ],
+                "nativeRect": [630, 578, 36, 37],
+                "area": 424.94970414201185,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  412.3653846153846, 377.9230769230769, 22.884615384615383, 24.192307692307693
+                ],
+                "nativeRect": [630, 578, 35, 37],
+                "area": 377.4955621301775,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  412.3653846153846, 378.5769230769231, 22.884615384615383, 22.884615384615383
+                ],
+                "nativeRect": [630, 579, 35, 35],
+                "area": 340.72928994082844,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [412.3653846153846, 377.9230769230769, 23.21153846153846, 24.192307692307693],
+            "spread": [
+              0.653846153846132, 0.6538461538461888, 1.9615384615384635, 1.9615384615384635
+            ],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 367.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 359.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 341.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 313.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "31dda640-2a00-437e-855f-173c487e7395",
+          "name": "Angelic Blessing",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 80,
+                "rect": [
+                  411.71153846153845, 377.2692307692308, 24.192307692307693, 24.846153846153847
+                ],
+                "nativeRect": [629, 577, 37, 38],
+                "area": 458.2958579881657,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  411.71153846153845, 377.2692307692308, 24.192307692307693, 24.846153846153847
+                ],
+                "nativeRect": [629, 577, 37, 38],
+                "area": 411.2692307692308,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  412.3653846153846, 377.9230769230769, 22.884615384615383, 24.192307692307693
+                ],
+                "nativeRect": [630, 578, 35, 37],
+                "area": 354.40976331360946,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.71153846153845, 377.2692307692308, 24.192307692307693, 24.846153846153847],
+            "spread": [
+              0.653846153846132, 0.653846153846132, 1.3076923076923102, 0.6538461538461533
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 367.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 359.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 341.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 313.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+          "name": "Ardent Militia",
+          "material": "W",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 100,
+                "rect": [
+                  411.71153846153845, 378.5769230769231, 24.192307692307693, 24.192307692307693
+                ],
+                "nativeRect": [629, 579, 37, 37],
+                "area": 388.1834319526627,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  411.71153846153845, 379.2307692307692, 23.53846153846154, 22.23076923076923
+                ],
+                "nativeRect": [629, 580, 36, 34],
+                "area": 336.45414201183434,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.71153846153845, 378.9038461538462, 23.865384615384617, 23.21153846153846],
+            "spread": [0, 0.653846153846132, 0.6538461538461533, 1.9615384615384635],
+            "stable": false,
+            "review": ["threshold-sensitive"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 367.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 359.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 341.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 313.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+          "name": "Ancestral Memories",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              null,
+              null,
+              {
+                "threshold": 120,
+                "rect": [
+                  411.71153846153845, 379.2307692307692, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [629, 580, 38, 38],
+                "area": 429.22485207100596,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.71153846153845, 379.2307692307692, 24.846153846153847, 24.846153846153847],
+            "spread": [0, 0, 0, 0],
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 370.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 368.88888888888886,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 364.88888888888886,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "49fb46c8-30ae-4457-a726-6fe1ddd183d5",
+          "name": "Baleful Stare",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 100,
+                "rect": [
+                  411.71153846153845, 379.8846153846154, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [629, 581, 38, 38],
+                "area": 437.7751479289941,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  411.71153846153845, 380.53846153846155, 24.846153846153847, 24.192307692307693
+                ],
+                "nativeRect": [629, 582, 38, 37],
+                "area": 404.8565088757397,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.71153846153845, 380.21153846153845, 24.846153846153847, 24.51923076923077],
+            "spread": [0, 0.653846153846132, 0, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 370.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 368.88888888888886,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 364.88888888888886,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "9746790c-a426-4135-8c9d-afb82a0c26b8",
+          "name": "Cloak of Feathers",
+          "material": "U",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              null,
+              {
+                "threshold": 100,
+                "rect": [411.0576923076923, 379.8846153846154, 25.5, 24.846153846153847],
+                "nativeRect": [628, 581, 39, 38],
+                "area": 435.63757396449705,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  411.71153846153845, 380.53846153846155, 24.192307692307693, 23.53846153846154
+                ],
+                "nativeRect": [629, 582, 37, 36],
+                "area": 396.7337278106509,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [
+              411.38461538461536, 380.21153846153845, 24.846153846153847, 24.192307692307693
+            ],
+            "spread": [
+              0.653846153846132, 0.653846153846132, 1.3076923076923066, 1.3076923076923066
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 370.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 368.88888888888886,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 364.88888888888886,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e7342875-d49b-4fa7-a2fb-8dfc5e3d6e4f",
+          "name": "Arrogant Vampire",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [409.0961538461538, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [625, 578, 39, 39],
+                "area": 516.8653846153846,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [409.0961538461538, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [625, 578, 39, 39],
+                "area": 489.9319526627219,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [409.0961538461538, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [625, 578, 39, 39],
+                "area": 452.7381656804734,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [409.0961538461538, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [625, 578, 39, 39],
+                "area": 424.094674556213,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [409.0961538461538, 377.9230769230769, 25.5, 25.5],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 326.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 312.4444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 303.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 297.3333333333333,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8681b3fd-33e5-4a45-8650-a4a142405096",
+          "name": "Bog Imp",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [407.78846153846155, 379.2307692307692, 25.5, 25.5],
+                "nativeRect": [623, 580, 39, 39],
+                "area": 507.46005917159766,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [407.78846153846155, 379.2307692307692, 25.5, 25.5],
+                "nativeRect": [623, 580, 39, 39],
+                "area": 480.0991124260355,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [407.78846153846155, 379.2307692307692, 24.846153846153847, 25.5],
+                "nativeRect": [623, 580, 38, 39],
+                "area": 454.0207100591716,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  407.78846153846155, 379.2307692307692, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [623, 580, 38, 38],
+                "area": 433.92751479289944,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [407.78846153846155, 379.2307692307692, 25.173076923076923, 25.5],
+            "spread": [0, 0, 0.6538461538461533, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 326.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 312.4444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 303.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 297.3333333333333,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "96837a9e-dd68-4ce8-b760-0e1c22837164",
+          "name": "Cruel Bargain",
+          "material": "B",
+          "scoped": false,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 80,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 26.153846153846153],
+                "nativeRect": [624, 578, 39, 40],
+                "area": 503.18491124260356,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [409.0961538461538, 378.5769230769231, 24.846153846153847, 25.5],
+                "nativeRect": [625, 579, 38, 39],
+                "area": 476.67899408284023,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [409.0961538461538, 378.5769230769231, 24.846153846153847, 25.5],
+                "nativeRect": [625, 579, 38, 39],
+                "area": 452.7381656804734,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [409.0961538461538, 378.5769230769231, 24.846153846153847, 25.5],
+            "spread": [
+              0.653846153846132, 0.6538461538461888, 0.6538461538461533, 0.6538461538461533
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 326.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 312.4444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 303.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 297.3333333333333,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "f175c959-3b5d-46a3-9194-fad2359bbff9",
+          "name": "Blaze",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 80,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 502.7573964497042,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 475.396449704142,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 436.4926035502959,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 371.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 368.4444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 366.66666666666663,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "e2b8f443-dba5-45a5-bb2e-f57b4fdd1d01",
+          "name": "Burning Cloak",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [
+                  407.13461538461536, 376.61538461538464, 26.153846153846153, 26.153846153846153
+                ],
+                "nativeRect": [622, 576, 40, 40],
+                "area": 519.8579881656805,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [407.78846153846155, 377.2692307692308, 25.5, 25.5],
+                "nativeRect": [623, 577, 39, 39],
+                "area": 484.3742603550296,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [407.78846153846155, 377.2692307692308, 25.5, 25.5],
+                "nativeRect": [623, 577, 39, 39],
+                "area": 452.31065088757396,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [407.78846153846155, 377.2692307692308, 25.5, 24.846153846153847],
+                "nativeRect": [623, 577, 39, 38],
+                "area": 417.6819526627219,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [407.78846153846155, 377.2692307692308, 25.5, 25.5],
+            "spread": [
+              0.6538461538461888, 0.653846153846132, 0.6538461538461533, 1.3076923076923066
+            ],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 371.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 368.4444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 366.66666666666663,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "71cce019-162c-4969-89ac-1cf94148a032",
+          "name": "Devastation",
+          "material": "R",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 80,
+                "rect": [411.0576923076923, 377.9230769230769, 24.192307692307693, 25.5],
+                "nativeRect": [628, 578, 37, 39],
+                "area": 471.12130177514797,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [411.0576923076923, 377.9230769230769, 24.192307692307693, 25.5],
+                "nativeRect": [628, 578, 37, 39],
+                "area": 437.3476331360947,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [411.71153846153845, 377.9230769230769, 23.53846153846154, 25.5],
+                "nativeRect": [629, 578, 36, 39],
+                "area": 397.5887573964497,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [411.0576923076923, 377.9230769230769, 24.192307692307693, 25.5],
+            "spread": [0.653846153846132, 0, 0.6538461538461533, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 371.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 368.4444444444444,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 366.66666666666663,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "8726242e-bfd8-4ed5-a016-ac0c82e4762b",
+          "name": "Alluring Scent",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              null,
+              {
+                "threshold": 80,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 495.48964497041425,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 461.715976331361,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 578, 38, 38],
+                "area": 432.6449704142012,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+            "spread": [0, 0, 0.6538461538461533, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 371.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 365.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 354.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "0a2012ad-6425-4935-83af-fc7309ec2ece",
+          "name": "Anaconda",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 26.153846153846153],
+                "nativeRect": [624, 578, 39, 40],
+                "area": 509.5976331360947,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [408.4423076923077, 378.5769230769231, 24.846153846153847, 25.5],
+                "nativeRect": [624, 579, 38, 39],
+                "area": 480.95414201183434,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  408.4423076923077, 378.5769230769231, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 579, 38, 38],
+                "area": 455.30325443786984,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  408.4423076923077, 378.5769230769231, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 579, 38, 38],
+                "area": 430.93491124260356,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [408.4423076923077, 378.5769230769231, 24.846153846153847, 25.173076923076923],
+            "spread": [0, 0.6538461538461888, 0.6538461538461533, 1.3076923076923066],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 371.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 365.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 354.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "7396c4e9-b0d8-4b8f-8c17-6f913a967b17",
+          "name": "Elite Cat Warrior",
+          "material": "G",
+          "scoped": true,
+          "reference": {
+            "samples": [
+              {
+                "threshold": 60,
+                "rect": [407.78846153846155, 377.9230769230769, 26.153846153846153, 25.5],
+                "nativeRect": [623, 578, 40, 39],
+                "area": 508.3150887573965,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 80,
+                "rect": [408.4423076923077, 377.9230769230769, 25.5, 25.5],
+                "nativeRect": [624, 578, 39, 39],
+                "area": 480.95414201183434,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 100,
+                "rect": [
+                  408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 578, 38, 38],
+                "area": 448.0355029585799,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 120,
+                "rect": [
+                  408.4423076923077, 377.9230769230769, 24.846153846153847, 24.846153846153847
+                ],
+                "nativeRect": [624, 578, 38, 38],
+                "area": 421.5295857988166,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [408.4423076923077, 377.9230769230769, 25.173076923076923, 25.173076923076923],
+            "spread": [0.653846153846132, 0, 1.3076923076923066, 0.6538461538461533],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 375.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 371.1111111111111,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 365.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 354.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        },
+        {
+          "id": "90d35453-7fe3-4053-aad9-a124ecc7dcf0",
+          "name": "Plains",
+          "material": "L",
+          "scoped": false,
+          "reference": {
+            "samples": [null, null, null, null],
+            "rect": null,
+            "spread": null,
+            "stable": false,
+            "review": ["insufficient-segmentation"],
+            "sourcePixelSize": 0.6538461538461539
+          },
+          "rendered": {
+            "samples": [
+              {
+                "threshold": 8,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 373.77777777777777,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 16,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 370.22222222222223,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 24,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 367.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              },
+              {
+                "threshold": 32,
+                "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+                "nativeRect": [622, 571, 33, 33],
+                "area": 359.55555555555554,
+                "candidateCount": 1,
+                "ambiguous": false
+              }
+            ],
+            "rect": [414.66666666666663, 380.66666666666663, 22, 22],
+            "spread": [0, 0, 0, 0],
+            "stable": true,
+            "review": [],
+            "sourcePixelSize": 0.6666666666666666
+          }
+        }
+      ]
+    }
+  ]
+}

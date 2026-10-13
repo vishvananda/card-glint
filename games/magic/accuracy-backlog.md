@@ -108,15 +108,43 @@ See [leg-symbol-review.json](fixtures/accuracy/leg-symbol-review.json).
 
 Equinox's full scan places its column unusually far right, outside part of the
 fixed score window. Its partial scores are preserved but excluded from complete
-symbol summaries. Add automatic reference-component coverage checks and a
-complete-region comparison; do not compensate with a per-card renderer offset.
+symbol summaries. A broader reference-only coverage check now catches this
+automatically; a complete-region comparison is still needed. Do not compensate
+with a per-card renderer offset.
 Keep the column capital, rounded channels and contour differences on the
 retained-stencil list.
 
-Before sizing the next four symbols, establish their independent frame profiles.
-Raw size and overlap alone can produce the wrong correction. Extend the frame
-study to 1997 printings and the remaining material/source groups, preserving
-weak anchors and unvalidated counts rather than borrowing a transform silently.
+The 1997 extension now covers admitted materials in MIR/TMP/STH/POR. Extend the
+remaining material/source groups, preserving weak anchors and unvalidated counts
+rather than borrowing a transform silently.
+
+### Mirage, Tempest, Stronghold and Portal follow-up
+
+All 1,072 ordinary printings are scored, with zero capture failures and 32
+unchanged controls. Independent frame registration admits 690 comparisons;
+382 frame/material cases remain unvalidated. The native coverage check verifies
+409 silhouettes inside their scoring windows and marks 281 inconclusive. Unknown
+coverage does not certify a complete symbol, and the raw audit retains every card.
+
+Mirage improves on all 186 aligned comparisons at both tiers. Stronghold improves
+on 82 of 86; four smaller declines remain below .02. Preserve the remaining palm
+contours, segmented trunk, gate arch and fine grille differences as asset issues.
+
+Tempest retains 73 aligned regressions over .02 across white/red/green/artifact
+materials. Its cloud and bolt proportions cannot both be corrected by stretching
+the whole stencil. Measure the bolt separately, retain the new opaque inner
+detail, and review the repeated placement residuals after material frame checks.
+
+Portal's opaque panels and larger silhouette improve overall scores, but 53
+aligned regressions remain on white (29) and blue (24) frames. Calibration showed
+different printed centers for W/U versus R/G. Validate the frame/material source
+groups before adopting shared material placement variants. Its panel tone is
+too white and the radial/outer-ring contours still differ from the scan; these
+belong in the color/asset work, not individual card offsets.
+
+See the [1997-frame checkpoint](accuracy-plan.md#1997-frame-symbol-checkpoint-2026-10-13)
+and the four per-set symbol review fixtures. These studies do not close the
+material-specific placement issues or certify whole-set fidelity.
 
 ## Assets needing visual review
 

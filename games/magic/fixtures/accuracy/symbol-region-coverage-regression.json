@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "scope": "Known visual coverage defect, used to validate reference-only crop QA. No renderer adjustment or score-dependent reference registration. Native broad search follows the same 16-horizontal/4-vertical padding policy as new studies.",
+  "id": "840c6586-a7a9-4ae8-96be-a995a0693eb6",
+  "name": "Equinox",
+  "referenceHash": "efecd93d944777b78c90464e9d1fb9d132b4aa5f30c001b0869dade9bc419858",
+  "scoreRegion": [414, 378, 34, 34],
+  "frameProfileHash": "952d088cf3fe9f6f77630f9a91b6698e44149ea70d9b88a083536ce1f86cd75b",
+  "methodHash": "af7cd224812753e56ffb9cf8f73c3966ee06a9c9816930d799236f1279d8e960",
+  "rows": [
+    {
+      "label": "original",
+      "profile": {
+        "region": [413, 377, 38, 36],
+        "limits": {
+          "width": [22, 31],
+          "height": [21, 31]
+        },
+        "componentGap": 2,
+        "thresholds": [30, 45, 60, 75],
+        "maxSpread": 1.4
+      },
+      "measurement": {
+        "samples": [null, null, null, null],
+        "rect": null,
+        "spread": null,
+        "stable": false,
+        "review": ["insufficient-segmentation"],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "coverage": {
+        "status": "unknown",
+        "reason": "reference-segmentation-unreliable",
+        "clearances": null
+      }
+    },
+    {
+      "label": "broad",
+      "profile": {
+        "region": [398, 374, 66, 42],
+        "limits": {
+          "width": [22, 31],
+          "height": [21, 31]
+        },
+        "componentGap": 2,
+        "thresholds": [30, 45, 60, 75],
+        "maxSpread": 1.4
+      },
+      "measurement": {
+        "samples": [
+          {
+            "threshold": 30,
+            "rect": [433.9423076923077, 383.8076923076923, 23.53846153846154, 22.23076923076923],
+            "nativeRect": [663, 587, 36, 34],
+            "area": 122.69674556213019,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 45,
+            "rect": [433.28846153846155, 383.8076923076923, 24.192307692307693, 22.23076923076923],
+            "nativeRect": [662, 587, 37, 34],
+            "area": 163.31065088757398,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 60,
+            "rect": [433.28846153846155, 383.8076923076923, 24.192307692307693, 22.23076923076923],
+            "nativeRect": [662, 587, 37, 34],
+            "area": 179.1286982248521,
+            "candidateCount": 1,
+            "ambiguous": false
+          },
+          {
+            "threshold": 75,
+            "rect": [433.28846153846155, 383.8076923076923, 24.192307692307693, 22.23076923076923],
+            "nativeRect": [662, 587, 37, 34],
+            "area": 191.52662721893492,
+            "candidateCount": 1,
+            "ambiguous": false
+          }
+        ],
+        "rect": [433.28846153846155, 383.8076923076923, 24.192307692307693, 22.23076923076923],
+        "spread": [0.653846153846132, 0, 0.6538461538461533, 0],
+        "stable": true,
+        "review": [],
+        "sourcePixelSize": 0.6538461538461539
+      },
+      "coverage": {
+        "status": "clipped",
+        "clearances": {
+          "left": 17.007551003983565,
+          "right": -6.753581926877326,
+          "top": 4.833897530590434,
+          "bottom": 7.3454254051288075
+        },
+        "padding": 1
+      }
+    }
+  ]
+}

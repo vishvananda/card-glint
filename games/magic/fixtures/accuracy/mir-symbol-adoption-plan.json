@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "geometry": {
+    "right": 437,
+    "centerY": 391,
+    "width": 26.75,
+    "height": 25,
+    "crop": [0.001953125, 0.037109375, 0.99609375, 0.91015625],
+    "sampling": "high"
+  },
+  "changeEnvelope": [400, 371, 46, 40],
+  "scoreRegion": [400, 371, 46, 40],
+  "scope": "One shared set geometry, chosen from calibration-only native bounds after independent frame registration. Preserve existing source contours and white outer rim; high-quality mask sampling. Portal also restores opaque enclosed white panels from existing closed source subpaths. No per-card renderer adjustment. Regions include full calibration silhouettes; reference coverage must remain explicit.",
+  "baselineHash": "28f578d91c04d6ff529a310b07a45ff447474e2645a31a200628cc9a6488df8e",
+  "boundsHash": "316d2cac91b257286c4253e89c0818aa49f0eba5855f639aaf4e01a6cecb9269",
+  "measurementProfileHash": "45cfab8d365577cc32c3ee4a828a4586aa3e47ff6f7ea623a2551a96d767dd33",
+  "frameProfileHash": "b0227df3be692328b578e37956fb4e8eef7f7aa492b425e71f649029ef4e3c71",
+  "allowTypeCompression": false,
+  "calibrationIds": [
+    "4644694d-52e6-4d00-8cad-748899eeea84",
+    "155f2aa6-6c47-4a06-b0ef-2d9205cd133e",
+    "7f6f9ec3-6033-4cd4-a52e-31a559559a93",
+    "b1d1298b-9f56-4540-8d6b-7eecfe38cf62",
+    "854ba4e0-f6f3-4b6c-b6cb-ab2b93d64601",
+    "5c599f95-c0dd-4dd8-a8d7-9481df0cf649",
+    "08798c53-46f3-4a51-9284-491730605b2b",
+    "1b96810d-72d3-4dee-a29f-cdf85ea5ce6f",
+    "b620a9f4-358d-4436-85b8-b0c16602ff57",
+    "5694cb42-7489-40c5-b21a-aeb36636015f",
+    "7380af0a-8a8f-44fd-9456-14a68a2830d3",
+    "a3a2955e-e714-419e-9e3d-7ae3d7fae041",
+    "c495e1f3-0845-4556-83e6-de8b9d518d1d",
+    "dacdb9e7-d79e-4d24-8678-a37ab6e3a413",
+    "1220fdd1-e4b0-4175-9b8a-178f6a84b8e6",
+    "a7d64600-84fc-42a5-a6a6-b26f98fac0a4",
+    "c52981ea-1173-4f4b-a929-705a11c6e381",
+    "6dfdea79-2a7c-489d-8466-e6090c2a0919",
+    "5ff538f9-10b4-4327-aea6-a86759daf488",
+    "7a78abdb-d1ac-49cb-a74b-9de21c06364a",
+    "b6ed7ca8-fd91-46e3-9149-a3de23c7078e",
+    "888f32ad-3bdd-4c46-b3f0-522ac9763591"
+  ],
+  "stableIds": [
+    "08798c53-46f3-4a51-9284-491730605b2b",
+    "b620a9f4-358d-4436-85b8-b0c16602ff57",
+    "5694cb42-7489-40c5-b21a-aeb36636015f",
+    "a3a2955e-e714-419e-9e3d-7ae3d7fae041",
+    "1220fdd1-e4b0-4175-9b8a-178f6a84b8e6",
+    "c52981ea-1173-4f4b-a929-705a11c6e381"
+  ],
+  "uncertainIds": [
+    "4644694d-52e6-4d00-8cad-748899eeea84",
+    "155f2aa6-6c47-4a06-b0ef-2d9205cd133e",
+    "7f6f9ec3-6033-4cd4-a52e-31a559559a93",
+    "b1d1298b-9f56-4540-8d6b-7eecfe38cf62",
+    "854ba4e0-f6f3-4b6c-b6cb-ab2b93d64601",
+    "5c599f95-c0dd-4dd8-a8d7-9481df0cf649",
+    "1b96810d-72d3-4dee-a29f-cdf85ea5ce6f",
+    "7380af0a-8a8f-44fd-9456-14a68a2830d3",
+    "c495e1f3-0845-4556-83e6-de8b9d518d1d",
+    "dacdb9e7-d79e-4d24-8678-a37ab6e3a413",
+    "a7d64600-84fc-42a5-a6a6-b26f98fac0a4",
+    "6dfdea79-2a7c-489d-8466-e6090c2a0919",
+    "5ff538f9-10b4-4327-aea6-a86759daf488",
+    "7a78abdb-d1ac-49cb-a74b-9de21c06364a",
+    "b6ed7ca8-fd91-46e3-9149-a3de23c7078e",
+    "888f32ad-3bdd-4c46-b3f0-522ac9763591"
+  ],
+  "selection": "Use material-balanced reference medians, retain a single placement across materials. White-rim bounds set full extents; nominal ink dimensions account for the retained outline. Quarter-pixel rounding. Black and pale envelopes are distinct; do not mix them. MIR has sparse contrast pairs with corroborating W black-ink measurements; keep its source-outline uncertainty.",
+  "priorObservationPolicy": "MIR/TMP reserved printings are conservatively treated as previously observed because of earlier complete-set renderer audits. STH/POR exposure is matched by UUID in listed earlier studies; absence is not a universal claim of never seen.",
+  "priorExposureSources": [
+    {
+      "file": "old-symbol-material-candidates.json",
+      "sha256": "054ede8b16f9216d536a82dcd7f7706d20211762d7d11bef46be9ff68d124634"
+    },
+    {
+      "file": "old-symbol-treatment-measurement.json",
+      "sha256": "625fe4395865c62501b34c32f9249a5d54d5eae0432811431d10b831f1c42a25"
+    },
+    {
+      "file": "old-window-tmp-measurement.json",
+      "sha256": "7b19d1c4356f46179c038c586d8f8ceb6e4416b43004cb8c36605b4f5aae20dc"
+    },
+    {
+      "file": "tmp/details-measurement.json",
+      "sha256": "09ca57a7f4a20b3b669614c51bd2cbbee665df27abde438bd1c7e8ab5da91edb"
+    }
+  ]
+}

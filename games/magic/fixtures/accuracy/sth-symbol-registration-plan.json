@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "scope": "Only the independently fitted and validated shared outer-frame transform, guarded by exact set/stock/family/source/rectangle/mask and admitted materials. No scan, text or symbol fitting. Raw scores and unvalidated printings retained. Fixed score region frozen before candidate capture.",
+  "profileHash": "47639f6b1632b268818ca9f59e321dac8f729b59d4280a317c2fc3996cb5b11f",
+  "scoreRegion": [400, 371, 46, 40],
+  "previouslyObservedReservedIds": [],
+  "coverageProfile": {
+    "region": [384, 367, 78, 48],
+    "limits": {
+      "width": [17, 26],
+      "height": [17, 27]
+    },
+    "signal": "luminance",
+    "thresholds": [170, 185, 200, 215],
+    "componentGap": 0,
+    "maxSpread": 1.4,
+    "light": true
+  },
+  "coveragePolicy": "Reference-only QA uses a fixed search region extending 16 canonical pixels horizontally and four vertically beyond the scoring region. No candidate-dependent crop expansion, position fitting or geometry change. Unknown segmentation stays unknown; clipped shapes retain diagnostic scores but leave complete-region summaries. Frozen before this broader QA reads reserved references."
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "scope": "Calibration-only diagnostic profiles, never selected using renderer overlap or reserved cards. Dark/light envelopes are different components; preserve their interpretation. Use the high-contrast outer rim because the low-contrast mask joined frame texture; weak segmentations remain uncertain.",
+  "reference": {
+    "region": [403, 372, 43, 41],
+    "limits": {
+      "width": [22, 34],
+      "height": [21, 33]
+    },
+    "signal": "contrast",
+    "thresholds": [60, 80, 100, 120],
+    "componentGap": 1,
+    "maxSpread": 1.4
+  },
+  "rendered": {
+    "region": [403, 372, 43, 41],
+    "limits": {
+      "width": [22, 34],
+      "height": [21, 33]
+    },
+    "signal": "contrast",
+    "thresholds": [8, 16, 24, 32],
+    "componentGap": 1,
+    "maxSpread": 1.4,
+    "foreground": "difference",
+    "minimumDifference": 8
+  }
+}

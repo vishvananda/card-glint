@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "decision": "retain-shared-symbol-revision; incomplete-frame-material-and-source-shape-review",
+  "scope": "Full raw inventory plus separately guarded frame-aligned symbol metrics. No typography or whole-card fidelity certification. Existing frame assets retained. All final calibration/control raster hashes match the chosen candidates.",
+  "rawMeasurementHash": "9ab72cb4d0d21fb1e234a685a1d650c1effbc9d151eb760f3769f86fef15035e",
+  "registeredMeasurementHash": "ff2ae9d52fb3e59c3b6cde33e89ba108c46bd3e219cb1a13552bc703a44a5d24",
+  "boundsHash": "2b019c3a729bacfdfb502121dbd0ed2a2c5ce2332a5eab997ba21af795f89a90",
+  "frameProfileHash": "b40f8662f7050e520c3923630a308a104dab410d5a54c5a98a8752d151385009",
+  "coverage": {
+    "ordinary": 228,
+    "rawCompared": 228,
+    "alignedCompared": 167,
+    "frameMaterials": ["W", "U", "R", "G"],
+    "frameUnvalidated": 61,
+    "referenceCrop": {
+      "covered": 111,
+      "near-edge": 0,
+      "clipped": 0,
+      "unknown": 56
+    },
+    "stableNativeReferences": 152,
+    "controls": 8,
+    "failures": 0
+  },
+  "results": {
+    "improvedBothTiers": 94,
+    "regressionsOver02": 53,
+    "regressionMaterials": {
+      "W": 29,
+      "U": 24
+    },
+    "rawInspect": [0.5725645174376341, 0.6511874971107627],
+    "rawTable": [0.557308340548297, 0.6259029602978553]
+  },
+  "visualFindings": [
+    "Restore opaque enclosed portal panels using only existing closed SVG subpaths; retain the dark center. Larger visible geometry matches the native printing much better.",
+    "Aggregate edge/Census scores improve, but 53 aligned cards regress beyond .02: 29 W and 24 U. Calibration already showed different printed centers in W/U versus R/G; keep this systematic material issue open instead of adding per-card offsets.",
+    "Panel tone is too white versus the gray printed panels, and radial spacing/outer-ring contours differ. Color and source-shape review remain separate from geometry."
+  ],
+  "inspected": {
+    "calibration": "All original calibration native crops and all admitted frame-aligned candidate crops, including all final Tempest rim pages.",
+    "lowestAligned": [
+      "Taunt",
+      "Tidal Surge",
+      "Personal Tutor",
+      "Horned Turtle",
+      "Sorcerous Sight",
+      "Snapping Drake"
+    ],
+    "unvalidated": ["Island", "Island", "Plains", "Forest", "Mountain", "Swamp"],
+    "largestAlignedDeclines": [
+      "Seasoned Marshal",
+      "Gift of Estates",
+      "Prosperity",
+      "Knight Errant",
+      "Foot Soldiers",
+      "Exhaustion"
+    ]
+  },
+  "registeredRegressionIds": [
+    "31dda640-2a00-437e-855f-173c487e7395",
+    "387b9236-1241-44b7-9436-1fbc9970b692",
+    "543f8c6a-bcf1-4400-82e5-83d36cb60464",
+    "2073ca8b-2bca-4539-94d7-989da157e4b8",
+    "3f021a79-a182-4914-9ff4-d6fcba7c1d22",
+    "899ecc19-8106-4e5a-bb25-aaea9684ba0e",
+    "985af775-2036-459d-83c6-31ac84a0ffb1",
+    "bcea5e09-6385-41df-970b-ac26c9b46127",
+    "9cc37fd2-5c34-4522-8113-e6dd2181550b",
+    "89fb4bf8-51b6-44a8-92ac-e5aec4e4f2bc",
+    "03cd972d-1cc1-4fb1-9b4e-a88ea115cf7f",
+    "458ddb33-66c4-4753-b1eb-8937ab812a81",
+    "342b5afe-544f-4fa1-a833-4e0590b41eed",
+    "3657001a-7f79-4d3f-9d35-462ecf684fa8",
+    "9c31b4b4-18fc-4a6e-8d74-fd5340964320",
+    "a1f3e1c9-bfad-49a1-b171-6fa344ef2eef",
+    "e56300cb-6b44-47fe-9508-c33ad5670b4b",
+    "57b19990-c4a2-433d-a9ce-005216e9e4ac",
+    "17db0060-3667-4c8c-ae9b-d62dceac64e3",
+    "0dbea02f-9124-4e1a-8693-d988a0a3adae",
+    "f6992524-6921-473b-8301-cb63fe502600",
+    "36691cd0-c709-4452-a61a-d6e2049fdfcf",
+    "cb4693b3-d5d7-4401-aee3-119d3eb276a2",
+    "5f6ee294-7dbb-4872-81d1-c69c7337cf9f",
+    "67f61bdf-cbcd-4a63-8866-eb13ec9b351c",
+    "c91c249b-157c-4f1d-8171-29d1e75b1c9f",
+    "3e8d55a3-0d7f-4fba-9879-9a8264110e78",
+    "8668e4af-ae89-4fab-8015-8dc643c6cd36",
+    "9279d545-28b7-41c5-bb88-6dc4bbbcd71f",
+    "cf9b613c-61bf-4c2d-9c90-2949e442aea5",
+    "3875e753-117a-40b6-9cd2-dd5dfd11a38d",
+    "4bb7fb59-65c0-4af6-9d3a-79cd6602d004",
+    "9f7386c6-d17a-4c7d-884d-2471b87d8b8e",
+    "88425a48-7b03-4ecf-88cd-d72ef98ca814",
+    "cc7547aa-fcf7-4b6e-955d-cc5ebc40cd7d",
+    "35bbb10f-c118-4905-8329-3963af415178",
+    "44bea0d4-946e-4cb8-b6f1-50231d52bfbe",
+    "f2d7f8d8-30fb-47c7-8927-646c41f0b9bc",
+    "3a5e7b52-2663-4140-9758-f24b8b947876",
+    "7c93d4e9-7fd6-4814-b86b-89b92d1dad3b",
+    "9d6a5c33-cf74-4cec-a4f4-1aac9e7b8f79",
+    "e835b618-83c1-46e2-b8bd-aec56f58ccfc",
+    "52d60f29-6da0-4ce6-9c92-96f313007271",
+    "6be1956e-c43e-4a6c-950a-5be6e6ca013f",
+    "1edc3917-fded-4773-8f8d-62bd861c1131",
+    "6dbcb0df-d1cc-4718-ba1e-b590852cce20",
+    "269bb4fc-9d8f-42cc-8f71-6a658e41533c",
+    "7b49dd4c-ead6-4d94-9acb-0518d1f6426e",
+    "55811106-9f30-4e34-924e-2c9401b49574",
+    "29019e28-4ef8-4732-9972-0a47305fe303",
+    "cb3b9682-7f3a-4857-9ecf-01f3530659fc",
+    "e5fd26ca-dc7d-453d-8653-7f967e8f6dc7",
+    "5486d2dc-9a5d-4f58-a5ec-d94de54b852f"
+  ],
+  "rawRegressionIds": [
+    "f6992524-6921-473b-8301-cb63fe502600",
+    "3e511581-2739-445e-b486-c2b2d15c9be4",
+    "b37ea002-f81e-4fa6-ac24-bba1cb6d7edf"
+  ],
+  "nextActions": [
+    "Validate missing frame/material groups before certifying set-wide symbol placement.",
+    "Distinguish repeated material placement differences from residual source-frame geometry before adding shared material variants.",
+    "Keep unknown crop coverage in review; extend reference segmentation without selecting thresholds from candidate overlap.",
+    "Retain existing vectors and queue contour/panel-tone mismatches for asset/HSB work."
+  ]
+}

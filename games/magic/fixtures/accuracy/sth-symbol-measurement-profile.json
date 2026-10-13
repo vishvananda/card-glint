@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "scope": "Calibration-only diagnostic profiles, never selected using renderer overlap or reserved cards. Dark/light envelopes are different components; preserve their interpretation. Use the light outer rim and fixed luminance sweep; enclosed paper and frame-connected cases remain uncertain.",
+  "reference": {
+    "region": [406, 375, 42, 35],
+    "limits": {
+      "width": [17, 26],
+      "height": [17, 27]
+    },
+    "signal": "luminance",
+    "thresholds": [170, 185, 200, 215],
+    "componentGap": 0,
+    "maxSpread": 1.4,
+    "light": true
+  },
+  "rendered": {
+    "region": [406, 375, 42, 35],
+    "limits": {
+      "width": [17, 26],
+      "height": [17, 27]
+    },
+    "signal": "luminance",
+    "thresholds": [170, 185, 200, 215],
+    "componentGap": 0,
+    "maxSpread": 1.4,
+    "light": true,
+    "foreground": "light",
+    "minimumDifference": 8
+  }
+}

@@ -1,19 +1,15 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
-import {
-  readJson,
-  writeJson,
-  hash,
-  sourceHash,
-  root,
-  fixtureRoot,
-  outputRoot,
-  objectFile,
-} from './common.mjs';
+import { readJson, writeJson, hash, root, fixtureRoot, outputRoot, objectFile } from './common.mjs';
 import { cachedGrayRegion } from './region-cache.mjs';
 import { compareLettering } from './lettering-metrics.mjs';
 import { fittedSymbolBounds } from './symbol-bounds.mjs';
+import { symbolRegionCoverage } from './symbol-region-coverage.mjs';
+import {
+  cachedReferenceSymbolBounds,
+  REFERENCE_BOUNDS_METHOD_HASH,
+} from './symbol-reference-cache.mjs';
 import { median, quantile } from './metrics.mjs';
 
 // Supplemental comparison only: one independently frozen frame transform for
@@ -36,7 +32,11 @@ assert.deepEqual(raw.rect, plan.scoreRegion);
 assert.equal(hash(JSON.stringify(before)), raw.baselineHash);
 assert.equal(hash(JSON.stringify(after)), raw.captureHash);
 assert.equal(bounds.captureHash, raw.captureHash);
-assert.equal(after.rendererHash, await sourceHash(`${root}/games/magic/src`));
+// CPU rescoring consumes immutable captures, including historical candidates.
+// The original structural audit binds the renderer revision; the independent
+// frame painter/source guards below must still match the registration profile.
+assert.equal(after.rendererHash, raw.rendererHash);
+assert.equal(after.planHash, before.planHash);
 assert.equal(
   profile.provenance.rendererStockHash,
   hash(
@@ -92,6 +92,7 @@ try {
       rawScores: rawRow.scores,
       scores: null,
       nativeBounds: null,
+      referenceCoverage: null,
     };
     if (row.status === 'measured') {
       const rect = plan.scoreRegion,
@@ -114,6 +115,14 @@ try {
         }
       }
       const measured = bounds.rows.find((r) => r.id === a.id);
+      const coverageBounds = plan.coverageProfile
+        ? await cachedReferenceSymbolBounds(
+            objectFile({ sha256: a.referenceHash }),
+            a.referenceHash,
+            plan.coverageProfile,
+          )
+        : measured?.reference;
+      row.referenceCoverage = symbolRegionCoverage(coverageBounds, rect, profile.transform);
       if (measured?.reference?.stable && measured.before?.stable && measured.renders.after?.stable)
         row.nativeBounds = {
           reference: fittedSymbolBounds(measured.reference.rect, profile.transform),
@@ -122,7 +131,8 @@ try {
         };
       // Preserve the diagnostic scores, but a visibly clipped reference glyph
       // cannot enter the complete-symbol summary as if its full shape was scored.
-      if (partial) row.status = 'partial-reference-region';
+      if (partial || row.referenceCoverage.status === 'clipped')
+        row.status = 'partial-reference-region';
     }
     rows.push(row);
   }
@@ -135,6 +145,12 @@ function summarize(cohort) {
   return {
     total: cohort.length,
     measured: measured.length,
+    referenceCoverage: Object.fromEntries(
+      ['covered', 'near-edge', 'clipped', 'unknown'].map((status) => [
+        status,
+        cohort.filter((r) => r.referenceCoverage?.status === status).length,
+      ]),
+    ),
     unvalidated: cohort
       .filter((r) => r.status !== 'measured')
       .map((r) => ({ id: r.id, status: r.status })),
@@ -186,6 +202,11 @@ const result = {
   rawMeasurementHash: hash(JSON.stringify(raw)),
   boundsHash: hash(JSON.stringify(bounds)),
   methodHash: hash(await readFile(new URL(import.meta.url))),
+  coverageMethodHash: hash(
+    await readFile(new URL('./symbol-region-coverage.mjs', import.meta.url)),
+  ),
+  referenceBoundsMethodHash: plan.coverageProfile ? REFERENCE_BOUNDS_METHOD_HASH : null,
+  rendererHash: after.rendererHash,
   transform: profile.transform,
   summary: {
     all: summarize(rows),

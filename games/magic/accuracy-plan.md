@@ -452,9 +452,93 @@ remaining hilt/column/frame issues are in
 Reproduce with the shared capture/bounds/audit scripts plus
 `symbol-study-registered.mjs <set> after` at the recorded revisions.
 
-**Next prerequisite:** extend independent frame registration to the remaining
-materials and 1997-frame groups before choosing MIR/TMP/STH/POR symbol geometry.
-Revisit provisional earlier placements after their frame profiles are available.
+The next checkpoint extends independent registration to the 1997-frame groups.
+The missing material groups and provisional earlier placements still need review.
+
+### 1997-frame symbol checkpoint (2026-10-13)
+
+The stock-registration runner now admits either 1993 or 1997 printed frames,
+requiring one printed frame, stock and retained asset family per study. The
+frozen frame-family cohorts produce these independently validated profiles:
+
+| Set | Admitted materials | Calibration / validation anchors | Validation stock RMS before → after |
+| --- | ------------------ | -------------------------------: | ----------------------------------: |
+| MIR | W/R/G/A            |                          11 / 12 |                          1.21 → .79 |
+| TMP | W/U/R/G/A          |                          14 / 14 |                          1.03 → .57 |
+| STH | W/R/G/A            |                          12 / 12 |                          1.15 → .30 |
+| POR | W/U/R/G            |                          12 / 12 |                          1.18 → .69 |
+
+Scale corrections are .08–.21%; horizontal shifts are 1.15–1.53 canonical
+pixels. These are comparison transforms, not renderer offsets or evidence that
+the internal frame apertures match. Black, some blue, gold and land groups still
+lack validated frame registration. The retained frame assets are unchanged.
+
+Native calibration crops determined separate ink dimensions and white-rim
+dimensions. Mirage's palm and Stronghold's gate receive measured geometry and
+high-quality mask sampling. Portal's larger portal restores opaque enclosed
+panels from the existing SVG's closed subpaths. Tempest retains a narrower
+20.5 × 19.5 black shape, 2px outside rim and opaque bolt detail after comparing
+three calibration candidates. Scaling the whole cloud to the pale bolt's full
+height distorted the cloud. All source vectors and earlier candidates remain
+available; no per-card geometry was added.
+
+All 1,072 ordinary printings render and receive raw scores, with 32 unchanged
+controls and no failures. Every changed pixel stays inside the symbol envelope;
+type-line pixels and clearances are unchanged. The final calibration raster
+hashes equal the selected candidates. These are symbol-region edge scores, not
+whole-card accuracy percentages:
+
+| Set | Aligned / ordinary | Inspect median before → after | Table median before → after | Aligned regressions > .02 at either tier |
+| --- | -----------------: | ----------------------------: | --------------------------: | ---------------------------------------: |
+| MIR |          186 / 351 |                   .605 → .825 |                 .538 → .786 |                                        0 |
+| TMP |          251 / 350 |                   .715 → .758 |                 .617 → .684 |                                       73 |
+| STH |           86 / 143 |                   .774 → .845 |                 .733 → .798 |                                        0 |
+| POR |          167 / 228 |                   .607 → .693 |                 .631 → .654 |                                       53 |
+
+All 186 aligned MIR comparisons improve both tiers. STH improves both on 82/86;
+four have smaller declines below .02. TMP regressions comprise 27 white, 15 red,
+two green and 29 artifact cards. POR regressions comprise 29 white and 24 blue
+cards. These repeated material differences remain open, even though every set's
+aggregate edge/Census scores and tenth-percentile scores improve. In particular,
+POR calibration already showed different printed centers for W/U versus R/G.
+Validate material frame geometry before introducing shared material variants;
+do not use individual renderer offsets. All 382 frame-unvalidated printings and
+their raw regressions remain visible. MIR/TMP reserved cards are conservatively
+marked previously observed because of earlier full-set audits; they are not
+fresh validation evidence.
+
+Reference crop QA now searches a fixed larger region, independently of any
+renderer candidate: 16px farther on each horizontal side and 4px vertically.
+It checks the recovered native silhouette after the frozen frame transform.
+Clipped symbols retain diagnostic scores but leave complete-region summaries;
+failed segmentation stays unknown. It automatically detects the known Equinox
+problem, whose silhouette extends 6.75px beyond the original score window.
+The four new sets have no confidently clipped silhouettes; coverage is verified
+for 409 aligned references and remains unknown for 281. An aligned score is
+therefore not, by itself, proof of complete reference coverage.
+
+Native segmentations are cached by reference-byte hash, full measurement profile
+and method-source hash. Warm CPU rescoring needs neither a browser nor another
+PNG decode for this measurement. Immutable historical captures can be rescored;
+their original structural audit binds the renderer revision, and current frame
+source guards must still match. Synthetic cache/coverage checks and the Equinox
+reference regression are recorded alongside the renderer validation.
+
+See [mir-symbol-review.json](fixtures/accuracy/mir-symbol-review.json),
+[tmp-symbol-review.json](fixtures/accuracy/tmp-symbol-review.json),
+[sth-symbol-review.json](fixtures/accuracy/sth-symbol-review.json) and
+[por-symbol-review.json](fixtures/accuracy/por-symbol-review.json). The local
+gallery includes aligned calibration crops, six lowest aligned scores per set,
+the largest Tempest/Portal declines and unvalidated material examples. Tempest's bolt contour, Stronghold's fine
+grille, Portal's radial geometry/gray panels and the repeated material placement
+differences remain in the asset and alignment queues. The deployed Alpha
+typography trial remains unchanged.
+
+Validation passed: `npm run check` (including strict Clippy and rustfmt), build,
+package, browser, showcase and the full Magic accuracy suite. Source hashes bind
+the final captures to this renderer; all chosen calibration/control images match
+their full-set recaptures. External scans and the review gallery stay outside
+the public showcase and repository assets.
 
 ### Pass 2: frame geometry
 

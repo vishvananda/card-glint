@@ -80,6 +80,41 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     crop: [0, 0.154296875, 0.998046875, 0.646484375],
     sampling: 'high',
   },
+  // Native silhouettes, after independent outer-frame registration. These
+  // retain the source contours and use one placement per printed set.
+  mir: {
+    right: 437,
+    centerY: 391,
+    width: 26.75,
+    height: 25,
+    crop: [0.001953125, 0.037109375, 0.99609375, 0.91015625],
+    sampling: 'high',
+  },
+  tmp: {
+    right: 433.5,
+    centerY: 390.5,
+    width: 20.5,
+    height: 19.5,
+    crop: [0, 0.13982300884955753, 0.984375, 0.7964601769911505],
+    outline: 2,
+    sampling: 'high',
+  },
+  sth: {
+    right: 434.75,
+    centerY: 390.75,
+    width: 18.75,
+    height: 19.5,
+    crop: [0, 0.10381679389312977, 0.998046875, 0.7923664122137405],
+    sampling: 'high',
+  },
+  por: {
+    right: 435.5,
+    centerY: 391,
+    width: 23,
+    height: 23,
+    crop: [0, 0.08401976935749589, 0.98828125, 0.8336079077429983],
+    sampling: 'high',
+  },
   // Independent ink-axis measurements across common Exodus scans; retain the 2 px rim.
   exo: { right: 430.5, centerY: 390, width: 55.5, height: 21, crop: [0, 0.30859375, 1, 0.3828125] },
   ice: {

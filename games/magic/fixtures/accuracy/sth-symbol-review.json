@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "decision": "retain-shared-symbol-revision; incomplete-frame-material-and-source-shape-review",
+  "scope": "Full raw inventory plus separately guarded frame-aligned symbol metrics. No typography or whole-card fidelity certification. Existing frame assets retained. All final calibration/control raster hashes match the chosen candidates.",
+  "rawMeasurementHash": "c3796b668eed31da4b8a5768cb35eb4026e0b5aa5dc90b4940acc74988743d8c",
+  "registeredMeasurementHash": "21f31cd17c66b2a421a8cbdaca04ad99a4485c8133c168a93f3ecf157f826731",
+  "boundsHash": "d24100c4360366c359322965a44322c99d18f203acf11177cf4577f8fc408757",
+  "frameProfileHash": "47639f6b1632b268818ca9f59e321dac8f729b59d4280a317c2fc3996cb5b11f",
+  "coverage": {
+    "ordinary": 143,
+    "rawCompared": 143,
+    "alignedCompared": 86,
+    "frameMaterials": ["W", "R", "G", "A"],
+    "frameUnvalidated": 57,
+    "referenceCrop": {
+      "covered": 76,
+      "near-edge": 0,
+      "clipped": 0,
+      "unknown": 10
+    },
+    "stableNativeReferences": 130,
+    "controls": 8,
+    "failures": 0
+  },
+  "results": {
+    "improvedBothTiers": 82,
+    "regressionsOver02": 0,
+    "regressionMaterials": {},
+    "rawInspect": [0.634592290709129, 0.6926902132095176],
+    "rawTable": [0.6345279718447605, 0.6840741568258795]
+  },
+  "visualFindings": [
+    "82 of 86 aligned comparisons improve at both tiers; four have smaller declines, all less than .02. No decline exceeds the review threshold.",
+    "The grille is too fine in places; arch segment contours and the white foot differ from the printed asset.",
+    "Blue, black, gold and land frame groups remain unvalidated; Volrath's Stronghold and several blue cards show the need for their own frame evidence."
+  ],
+  "inspected": {
+    "calibration": "All original calibration native crops and all admitted frame-aligned candidate crops, including all final Tempest rim pages.",
+    "lowestAligned": [
+      "Duct Crawler",
+      "Skyshroud Troopers",
+      "Spike Breeder",
+      "Hermit Druid",
+      "Craven Giant",
+      "Primal Rage"
+    ],
+    "unvalidated": [
+      "Volrath's Stronghold",
+      "Dream Prowler",
+      "Volrath's Shapeshifter",
+      "Hesitation",
+      "Leap",
+      "Cloud Spirit"
+    ]
+  },
+  "registeredRegressionIds": [],
+  "rawRegressionIds": [
+    "938d6c51-903b-4e0b-8702-291666581f2a",
+    "c1fa8e60-c32f-4586-b133-224f0aec3355",
+    "ff4a22d9-007b-4eb7-af9e-b5c2cae36238",
+    "1444f76b-c876-4166-b957-b17313221fea",
+    "1cb8ae53-a53f-4a0f-94f7-559aca041797",
+    "0148f3ca-4dba-4408-86d0-1190c387ee69",
+    "854627ab-38bd-4894-94d8-9ef51a57579c",
+    "e3ce5dbc-3597-42e8-859a-cac105c8102e",
+    "7e55f653-0952-4713-8d43-ca50acff9e3b",
+    "0841423d-7a27-4bc5-9ac2-0ba47648c6f1",
+    "abcaf16d-aa02-43e2-aa38-bb1835d47a05",
+    "4da50979-1f5d-48d1-9406-dfc785273c04",
+    "b438802b-629a-42c8-824d-f081a1619f68",
+    "bb6ca66e-1116-4739-8375-87af99e9bba5",
+    "21a9242f-0516-4dae-8cbc-1f7f78931782",
+    "bf5b23da-9ba8-4b43-a5c9-51e1fc253913",
+    "02a20067-4ac2-4688-b8e8-3463185c4a41",
+    "c881c388-430f-4a4b-9cd1-fba0a2bc2cd6",
+    "ae4cc2f5-3a50-40c8-87ea-6b92f081f55c",
+    "8737440b-0bf0-483f-895b-aa24da2b9cfe",
+    "ab89a30a-ac4d-4a5e-bbff-a02366bc9cf6",
+    "ec89ee13-34ef-41c8-8fe4-0a6b21df2032",
+    "bd2f906d-b127-400a-809b-449f1e7f647b",
+    "4638d815-fb86-490c-84d6-777a1c6131d6",
+    "43bf015b-152e-4d67-b773-e75fb2487a32"
+  ],
+  "nextActions": [
+    "Validate missing frame/material groups before certifying set-wide symbol placement.",
+    "Distinguish repeated material placement differences from residual source-frame geometry before adding shared material variants.",
+    "Keep unknown crop coverage in review; extend reference segmentation without selecting thresholds from candidate overlap.",
+    "Retain existing vectors and queue contour/panel-tone mismatches for asset/HSB work."
+  ]
+}
