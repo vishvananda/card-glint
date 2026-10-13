@@ -1,0 +1,923 @@
+{
+  "schemaVersion": 1,
+  "scope": "Analysis-only 2x cached-stencil approximation; bounded multistep coordinate search of one shared placement/size per set. Five calibration cards only. Maximize median dark/light F1 minus 0.02 times median edge distance. Keep alternate objective peaks; production renders and held-out checks determine adoption. Scan registration stays frozen. Opaque backing included; Exodus still needs its white outer rim/rarity treatment. No Chromium used for candidate comparison. Candidate geometry is not adopted by this search.",
+  "planHash": "7b4bb697be78c54a43cb5a42b83d6c3cbb4e675ba68bba305870bb0fd5cc2a64",
+  "registrationHash": "666022c1fb84050328b78382872a8047cef26560596aec41646e130615219d2d",
+  "methodHash": "ca500cdb6c1d86104d8cefcf705086ff9b6fa1f040a4005d6355241fe2564947",
+  "rasterHash": "11ba6f6b94abd8e4566aa77be6bfb93751339eb01ec19b439b29fcce06dbfbf8",
+  "regions": {
+    "arn": [368, 379, 77, 30],
+    "leg": [408, 379, 38, 29],
+    "all": [360, 379, 73, 29],
+    "wth": [389, 373, 54, 34],
+    "exo": [369, 375, 70, 31]
+  },
+  "regionHash": "2b6670985eb7af3c36ca6711880c266cad23fdb43e7fe091db0bce62a87d9889",
+  "groups": {
+    "arn": {
+      "rect": [368, 379, 77, 30],
+      "crop": [0, 0.283203125, 1, 0.435546875],
+      "calibrationIds": [
+        "3d170015-b125-49a6-a15e-8fd116bbcb14",
+        "0e9ad288-d164-44a6-96ec-4185a1587f1a",
+        "2b827094-fb2c-46db-b898-02e0c308601f",
+        "b6c7705a-2987-4ef1-92b1-2c55d989ec6f",
+        "8537cb0f-4821-417b-80cc-ea57d51ee9b8"
+      ],
+      "selected": {
+        "right": 439,
+        "centerY": 394,
+        "width": 65,
+        "height": 22,
+        "score": 0.6573125160608136,
+        "edgeF1": 0.6807981339873337,
+        "distance": 1.1742808963260045,
+        "rows": [
+          {
+            "edgeF1": 0.7239712517410197,
+            "darkEdgeF1": 0.7642377452276454,
+            "lightEdgeF1": 0.6837047582543941,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.151548219757624,
+            "censusSimilarity": 0.6683345069108632
+          },
+          {
+            "edgeF1": 0.7013715287677635,
+            "darkEdgeF1": 0.7577950436725573,
+            "lightEdgeF1": 0.6449480138629697,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.109804538175371,
+            "censusSimilarity": 0.6673297331144825
+          },
+          {
+            "edgeF1": 0.5708896467402408,
+            "darkEdgeF1": 0.6442444339175746,
+            "lightEdgeF1": 0.49753485956290694,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3721217875482608,
+            "censusSimilarity": 0.7039956989341483
+          },
+          {
+            "edgeF1": 0.6807981339873337,
+            "darkEdgeF1": 0.7367698057304468,
+            "lightEdgeF1": 0.6248264622442206,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1742808963260045,
+            "censusSimilarity": 0.615943406357212
+          },
+          {
+            "edgeF1": 0.5096893193793635,
+            "darkEdgeF1": 0.5521040550879879,
+            "lightEdgeF1": 0.46727458367073904,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.529640040656639,
+            "censusSimilarity": 0.6437229023296867
+          }
+        ]
+      },
+      "bestOverlap": {
+        "right": 439,
+        "centerY": 394,
+        "width": 65,
+        "height": 22,
+        "score": 0.6573125160608136,
+        "edgeF1": 0.6807981339873337,
+        "distance": 1.1742808963260045,
+        "rows": [
+          {
+            "edgeF1": 0.7239712517410197,
+            "darkEdgeF1": 0.7642377452276454,
+            "lightEdgeF1": 0.6837047582543941,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.151548219757624,
+            "censusSimilarity": 0.6683345069108632
+          },
+          {
+            "edgeF1": 0.7013715287677635,
+            "darkEdgeF1": 0.7577950436725573,
+            "lightEdgeF1": 0.6449480138629697,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.109804538175371,
+            "censusSimilarity": 0.6673297331144825
+          },
+          {
+            "edgeF1": 0.5708896467402408,
+            "darkEdgeF1": 0.6442444339175746,
+            "lightEdgeF1": 0.49753485956290694,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3721217875482608,
+            "censusSimilarity": 0.7039956989341483
+          },
+          {
+            "edgeF1": 0.6807981339873337,
+            "darkEdgeF1": 0.7367698057304468,
+            "lightEdgeF1": 0.6248264622442206,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1742808963260045,
+            "censusSimilarity": 0.615943406357212
+          },
+          {
+            "edgeF1": 0.5096893193793635,
+            "darkEdgeF1": 0.5521040550879879,
+            "lightEdgeF1": 0.46727458367073904,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.529640040656639,
+            "censusSimilarity": 0.6437229023296867
+          }
+        ]
+      },
+      "bestDistance": {
+        "right": 439,
+        "centerY": 394,
+        "width": 65,
+        "height": 21,
+        "score": 0.6452138284130288,
+        "edgeF1": 0.6682445196053779,
+        "distance": 1.1515345596174567,
+        "rows": [
+          {
+            "edgeF1": 0.7328470499954849,
+            "darkEdgeF1": 0.7703282529153175,
+            "lightEdgeF1": 0.6953658470756524,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.106376818724395,
+            "censusSimilarity": 0.6760441240298802
+          },
+          {
+            "edgeF1": 0.6682445196053779,
+            "darkEdgeF1": 0.7124130315491394,
+            "lightEdgeF1": 0.6240760076616165,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1504706061933971,
+            "censusSimilarity": 0.6343239849906614
+          },
+          {
+            "edgeF1": 0.5683550982719958,
+            "darkEdgeF1": 0.638095238095238,
+            "lightEdgeF1": 0.4986149584487535,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3909186702108538,
+            "censusSimilarity": 0.6956495157751921
+          },
+          {
+            "edgeF1": 0.6892442474749562,
+            "darkEdgeF1": 0.7316027917227867,
+            "lightEdgeF1": 0.6468857032271256,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.1515345596174567,
+            "censusSimilarity": 0.6232434516434231
+          },
+          {
+            "edgeF1": 0.5203091087707287,
+            "darkEdgeF1": 0.5628692652365281,
+            "lightEdgeF1": 0.47774895230492914,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.523997309631165,
+            "censusSimilarity": 0.641652190987372
+          }
+        ]
+      },
+      "evaluated": 31,
+      "boundary": false
+    },
+    "leg": {
+      "rect": [408, 379, 38, 29],
+      "crop": [0, 0.1264957264957265, 1, 0.764102564102564],
+      "calibrationIds": [
+        "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+        "dc64f19c-5b2b-4697-b4dc-2be9c3790794",
+        "fb5f13a2-0896-4230-8957-6ad1cb2b895b",
+        "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+        "ba93c50a-2440-4e92-9cba-d97e20b1d29c"
+      ],
+      "selected": {
+        "right": 441,
+        "centerY": 395,
+        "width": 24,
+        "height": 21,
+        "score": 0.8176227376498857,
+        "edgeF1": 0.8357734754855057,
+        "distance": 0.9075368917810003,
+        "rows": [
+          {
+            "edgeF1": 0.8454406430991919,
+            "darkEdgeF1": 0.9500253205042778,
+            "lightEdgeF1": 0.7408559656941058,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.8488286402900309,
+            "censusSimilarity": 0.8273677614908477
+          },
+          {
+            "edgeF1": 0.8432978191616454,
+            "darkEdgeF1": 0.9466694996281738,
+            "lightEdgeF1": 0.739926138695117,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.8222062707605946,
+            "censusSimilarity": 0.8250940066841905
+          },
+          {
+            "edgeF1": 0.6141714867692067,
+            "darkEdgeF1": 0.6955154275798492,
+            "lightEdgeF1": 0.5328275459585644,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4304952499147854,
+            "censusSimilarity": 0.6161626426599371
+          },
+          {
+            "edgeF1": 0.8357734754855057,
+            "darkEdgeF1": 0.942753543566641,
+            "lightEdgeF1": 0.7287934074043706,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9075368917810003,
+            "censusSimilarity": 0.8179820896527186
+          },
+          {
+            "edgeF1": 0.68822814577266,
+            "darkEdgeF1": 0.8511414624525417,
+            "lightEdgeF1": 0.5253148290927783,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2836302339893175,
+            "censusSimilarity": 0.7450746445819294
+          }
+        ]
+      },
+      "bestOverlap": {
+        "right": 441,
+        "centerY": 395,
+        "width": 24,
+        "height": 21,
+        "score": 0.8176227376498857,
+        "edgeF1": 0.8357734754855057,
+        "distance": 0.9075368917810003,
+        "rows": [
+          {
+            "edgeF1": 0.8454406430991919,
+            "darkEdgeF1": 0.9500253205042778,
+            "lightEdgeF1": 0.7408559656941058,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.8488286402900309,
+            "censusSimilarity": 0.8273677614908477
+          },
+          {
+            "edgeF1": 0.8432978191616454,
+            "darkEdgeF1": 0.9466694996281738,
+            "lightEdgeF1": 0.739926138695117,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.8222062707605946,
+            "censusSimilarity": 0.8250940066841905
+          },
+          {
+            "edgeF1": 0.6141714867692067,
+            "darkEdgeF1": 0.6955154275798492,
+            "lightEdgeF1": 0.5328275459585644,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4304952499147854,
+            "censusSimilarity": 0.6161626426599371
+          },
+          {
+            "edgeF1": 0.8357734754855057,
+            "darkEdgeF1": 0.942753543566641,
+            "lightEdgeF1": 0.7287934074043706,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9075368917810003,
+            "censusSimilarity": 0.8179820896527186
+          },
+          {
+            "edgeF1": 0.68822814577266,
+            "darkEdgeF1": 0.8511414624525417,
+            "lightEdgeF1": 0.5253148290927783,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2836302339893175,
+            "censusSimilarity": 0.7450746445819294
+          }
+        ]
+      },
+      "bestDistance": {
+        "right": 441,
+        "centerY": 395,
+        "width": 24,
+        "height": 22,
+        "score": 0.8110566664373254,
+        "edgeF1": 0.8285820988422756,
+        "distance": 0.87627162024751,
+        "rows": [
+          {
+            "edgeF1": 0.8428787638778885,
+            "darkEdgeF1": 0.9496912751677854,
+            "lightEdgeF1": 0.7360662525879917,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.7722936308917647,
+            "censusSimilarity": 0.8482199783482931
+          },
+          {
+            "edgeF1": 0.8402300992245002,
+            "darkEdgeF1": 0.9530685920577617,
+            "lightEdgeF1": 0.7273916063912386,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.7962339925298358,
+            "censusSimilarity": 0.8424517629251671
+          },
+          {
+            "edgeF1": 0.6602740193919027,
+            "darkEdgeF1": 0.7522237596362917,
+            "lightEdgeF1": 0.5683242791475136,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3562583844276168,
+            "censusSimilarity": 0.6290477317796319
+          },
+          {
+            "edgeF1": 0.8285820988422756,
+            "darkEdgeF1": 0.9530685920577617,
+            "lightEdgeF1": 0.7040956056267895,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.87627162024751,
+            "censusSimilarity": 0.8385716727301677
+          },
+          {
+            "edgeF1": 0.6754430673732156,
+            "darkEdgeF1": 0.8711977186311787,
+            "lightEdgeF1": 0.47968841611525254,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3383930732623206,
+            "censusSimilarity": 0.7567968164707148
+          }
+        ]
+      },
+      "evaluated": 40,
+      "boundary": false
+    },
+    "all": {
+      "rect": [360, 379, 73, 29],
+      "crop": [0.00390625, 0.2890625, 0.994140625, 0.421875],
+      "calibrationIds": [
+        "5543b08d-d470-435e-83d9-a3a84c1cc2e6",
+        "9fe88de7-b226-4a43-9662-8b408e4281d3",
+        "578549f0-5643-4891-b467-2d1cb49fe4ea",
+        "108b85ff-ed03-4b3e-872f-1cad1a27b930",
+        "a375ec24-4841-4792-ad58-f29cdf0d1bbb"
+      ],
+      "selected": {
+        "right": 424,
+        "centerY": 392,
+        "width": 54,
+        "height": 23,
+        "score": 0.7422640298193254,
+        "edgeF1": 0.7626883407798447,
+        "distance": 1.0212155480259666,
+        "rows": [
+          {
+            "edgeF1": 0.7626883407798447,
+            "darkEdgeF1": 0.8143568876020554,
+            "lightEdgeF1": 0.711019793957634,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.0212155480259666,
+            "censusSimilarity": 0.7837826539153327
+          },
+          {
+            "edgeF1": 0.7811614445192872,
+            "darkEdgeF1": 0.8403520022801766,
+            "lightEdgeF1": 0.7219708867583976,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9930351794021095,
+            "censusSimilarity": 0.796759319287309
+          },
+          {
+            "edgeF1": 0.582317081245902,
+            "darkEdgeF1": 0.5797282224114564,
+            "lightEdgeF1": 0.5849059400803476,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4728274927960903,
+            "censusSimilarity": 0.6916204683879498
+          },
+          {
+            "edgeF1": 0.7675221100903824,
+            "darkEdgeF1": 0.824292074799644,
+            "lightEdgeF1": 0.7107521453811207,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9792698113251193,
+            "censusSimilarity": 0.8300234821443154
+          },
+          {
+            "edgeF1": 0.6473761856575967,
+            "darkEdgeF1": 0.6967394745172524,
+            "lightEdgeF1": 0.598012896797941,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3963628584011487,
+            "censusSimilarity": 0.7038091378841486
+          }
+        ]
+      },
+      "bestOverlap": {
+        "right": 424,
+        "centerY": 392,
+        "width": 54,
+        "height": 23,
+        "score": 0.7422640298193254,
+        "edgeF1": 0.7626883407798447,
+        "distance": 1.0212155480259666,
+        "rows": [
+          {
+            "edgeF1": 0.7626883407798447,
+            "darkEdgeF1": 0.8143568876020554,
+            "lightEdgeF1": 0.711019793957634,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.0212155480259666,
+            "censusSimilarity": 0.7837826539153327
+          },
+          {
+            "edgeF1": 0.7811614445192872,
+            "darkEdgeF1": 0.8403520022801766,
+            "lightEdgeF1": 0.7219708867583976,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9930351794021095,
+            "censusSimilarity": 0.796759319287309
+          },
+          {
+            "edgeF1": 0.582317081245902,
+            "darkEdgeF1": 0.5797282224114564,
+            "lightEdgeF1": 0.5849059400803476,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4728274927960903,
+            "censusSimilarity": 0.6916204683879498
+          },
+          {
+            "edgeF1": 0.7675221100903824,
+            "darkEdgeF1": 0.824292074799644,
+            "lightEdgeF1": 0.7107521453811207,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9792698113251193,
+            "censusSimilarity": 0.8300234821443154
+          },
+          {
+            "edgeF1": 0.6473761856575967,
+            "darkEdgeF1": 0.6967394745172524,
+            "lightEdgeF1": 0.598012896797941,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3963628584011487,
+            "censusSimilarity": 0.7038091378841486
+          }
+        ]
+      },
+      "bestDistance": {
+        "right": 424,
+        "centerY": 392,
+        "width": 54,
+        "height": 23,
+        "score": 0.7422640298193254,
+        "edgeF1": 0.7626883407798447,
+        "distance": 1.0212155480259666,
+        "rows": [
+          {
+            "edgeF1": 0.7626883407798447,
+            "darkEdgeF1": 0.8143568876020554,
+            "lightEdgeF1": 0.711019793957634,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.0212155480259666,
+            "censusSimilarity": 0.7837826539153327
+          },
+          {
+            "edgeF1": 0.7811614445192872,
+            "darkEdgeF1": 0.8403520022801766,
+            "lightEdgeF1": 0.7219708867583976,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9930351794021095,
+            "censusSimilarity": 0.796759319287309
+          },
+          {
+            "edgeF1": 0.582317081245902,
+            "darkEdgeF1": 0.5797282224114564,
+            "lightEdgeF1": 0.5849059400803476,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4728274927960903,
+            "censusSimilarity": 0.6916204683879498
+          },
+          {
+            "edgeF1": 0.7675221100903824,
+            "darkEdgeF1": 0.824292074799644,
+            "lightEdgeF1": 0.7107521453811207,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9792698113251193,
+            "censusSimilarity": 0.8300234821443154
+          },
+          {
+            "edgeF1": 0.6473761856575967,
+            "darkEdgeF1": 0.6967394745172524,
+            "lightEdgeF1": 0.598012896797941,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.3963628584011487,
+            "censusSimilarity": 0.7038091378841486
+          }
+        ]
+      },
+      "evaluated": 31,
+      "boundary": false
+    },
+    "wth": {
+      "rect": [389, 373, 54, 34],
+      "crop": [0, 0.154296875, 0.998046875, 0.646484375],
+      "calibrationIds": [
+        "97382dd8-2754-4ca3-8ba8-d655acaf22ac",
+        "89f23295-ad0a-4e2d-ae04-1a9c065e575d",
+        "ac81264d-0e03-44ac-8ff5-049b9aaebcca",
+        "125a355d-bfcf-4125-aa6c-35e7dea6f63e",
+        "05b90d72-00ac-4423-8cdf-e1471c6cd0ae"
+      ],
+      "selected": {
+        "right": 434,
+        "centerY": 390,
+        "width": 34,
+        "height": 22,
+        "score": 0.7574534362143112,
+        "edgeF1": 0.7833993766064438,
+        "distance": 1.2972970196066305,
+        "rows": [
+          {
+            "edgeF1": 0.7833993766064438,
+            "darkEdgeF1": 0.8798159861989648,
+            "lightEdgeF1": 0.6869827670139227,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2972970196066305,
+            "censusSimilarity": 0.7783728933148977
+          },
+          {
+            "edgeF1": 0.8208178860135238,
+            "darkEdgeF1": 0.9013846153846153,
+            "lightEdgeF1": 0.7402511566424324,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.0379845482883006,
+            "censusSimilarity": 0.8157182638663767
+          },
+          {
+            "edgeF1": 0.4363727787041452,
+            "darkEdgeF1": 0.45994885978187133,
+            "lightEdgeF1": 0.4127966976264191,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.0143485582659055,
+            "censusSimilarity": 0.5892795518013327
+          },
+          {
+            "edgeF1": 0.8661347364612315,
+            "darkEdgeF1": 0.8779724655819775,
+            "lightEdgeF1": 0.8542970073404856,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.8411130297118357,
+            "censusSimilarity": 0.8922912478286151
+          },
+          {
+            "edgeF1": 0.4094284753452926,
+            "darkEdgeF1": 0.4588885962602054,
+            "lightEdgeF1": 0.3599683544303798,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.1478259563231523,
+            "censusSimilarity": 0.564961337254883
+          }
+        ]
+      },
+      "bestOverlap": {
+        "right": 434,
+        "centerY": 390,
+        "width": 34,
+        "height": 22,
+        "score": 0.7574534362143112,
+        "edgeF1": 0.7833993766064438,
+        "distance": 1.2972970196066305,
+        "rows": [
+          {
+            "edgeF1": 0.7833993766064438,
+            "darkEdgeF1": 0.8798159861989648,
+            "lightEdgeF1": 0.6869827670139227,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2972970196066305,
+            "censusSimilarity": 0.7783728933148977
+          },
+          {
+            "edgeF1": 0.8208178860135238,
+            "darkEdgeF1": 0.9013846153846153,
+            "lightEdgeF1": 0.7402511566424324,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.0379845482883006,
+            "censusSimilarity": 0.8157182638663767
+          },
+          {
+            "edgeF1": 0.4363727787041452,
+            "darkEdgeF1": 0.45994885978187133,
+            "lightEdgeF1": 0.4127966976264191,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.0143485582659055,
+            "censusSimilarity": 0.5892795518013327
+          },
+          {
+            "edgeF1": 0.8661347364612315,
+            "darkEdgeF1": 0.8779724655819775,
+            "lightEdgeF1": 0.8542970073404856,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.8411130297118357,
+            "censusSimilarity": 0.8922912478286151
+          },
+          {
+            "edgeF1": 0.4094284753452926,
+            "darkEdgeF1": 0.4588885962602054,
+            "lightEdgeF1": 0.3599683544303798,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.1478259563231523,
+            "censusSimilarity": 0.564961337254883
+          }
+        ]
+      },
+      "bestDistance": {
+        "right": 434,
+        "centerY": 390,
+        "width": 35,
+        "height": 22,
+        "score": 0.7567584259412523,
+        "edgeF1": 0.7822864759900349,
+        "distance": 1.2764025024391255,
+        "rows": [
+          {
+            "edgeF1": 0.7822864759900349,
+            "darkEdgeF1": 0.8675779086095616,
+            "lightEdgeF1": 0.6969950433705081,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.2764025024391255,
+            "censusSimilarity": 0.7882719892583545
+          },
+          {
+            "edgeF1": 0.818930947384984,
+            "darkEdgeF1": 0.8954445113385511,
+            "lightEdgeF1": 0.7424173834314169,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.0230318485244358,
+            "censusSimilarity": 0.8154791144119697
+          },
+          {
+            "edgeF1": 0.4313940084533542,
+            "darkEdgeF1": 0.43461900282220134,
+            "lightEdgeF1": 0.428169014084507,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.9574206559219234,
+            "censusSimilarity": 0.5698584268655298
+          },
+          {
+            "edgeF1": 0.8667030051794586,
+            "darkEdgeF1": 0.8725455194573368,
+            "lightEdgeF1": 0.8608604909015805,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.7806945429504795,
+            "censusSimilarity": 0.90763468388033
+          },
+          {
+            "edgeF1": 0.4137169120385975,
+            "darkEdgeF1": 0.4374575118966689,
+            "lightEdgeF1": 0.38997631218052614,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.059243461345475,
+            "censusSimilarity": 0.5554854014037741
+          }
+        ]
+      },
+      "evaluated": 25,
+      "boundary": false
+    },
+    "exo": {
+      "rect": [369, 375, 70, 31],
+      "crop": [0, 0.30859375, 1, 0.3828125],
+      "calibrationIds": [
+        "f20a1c6d-ec6a-4bd6-b3b2-b997f71d41fc",
+        "1c5239dc-f51b-48c0-91a2-ed6551aaff32",
+        "fee17ef5-7e1a-42ae-b680-df81204df7dd",
+        "024ae668-a1ae-4020-89c8-acbd8bd0a691",
+        "e3e03323-43e8-4ddc-a874-211a97fd7648"
+      ],
+      "selected": {
+        "right": 430,
+        "centerY": 389,
+        "width": 55,
+        "height": 18,
+        "score": 0.6647693147945499,
+        "edgeF1": 0.693040704397011,
+        "distance": 1.4135694801230578,
+        "rows": [
+          {
+            "edgeF1": 0.8332298790499227,
+            "darkEdgeF1": 0.8197456155096096,
+            "lightEdgeF1": 0.8467141425902359,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.7843784927510191,
+            "censusSimilarity": 0.8150564736470081
+          },
+          {
+            "edgeF1": 0.693040704397011,
+            "darkEdgeF1": 0.6370567013817984,
+            "lightEdgeF1": 0.7490247074122237,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4135694801230578,
+            "censusSimilarity": 0.7638043072013869
+          },
+          {
+            "edgeF1": 0.32513388560367207,
+            "darkEdgeF1": 0.32506223399983936,
+            "lightEdgeF1": 0.3252055372075047,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.705343792841293,
+            "censusSimilarity": 0.5022187582827922
+          },
+          {
+            "edgeF1": 0.8171806892392992,
+            "darkEdgeF1": 0.8278261878180685,
+            "lightEdgeF1": 0.8065351906605298,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9571952409123171,
+            "censusSimilarity": 0.8246726980628805
+          },
+          {
+            "edgeF1": 0.2960427895376949,
+            "darkEdgeF1": 0.2878848460615754,
+            "lightEdgeF1": 0.3042007330138145,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.894068618892626,
+            "censusSimilarity": 0.4591846869577264
+          }
+        ]
+      },
+      "bestOverlap": {
+        "right": 430,
+        "centerY": 389,
+        "width": 55,
+        "height": 18,
+        "score": 0.6647693147945499,
+        "edgeF1": 0.693040704397011,
+        "distance": 1.4135694801230578,
+        "rows": [
+          {
+            "edgeF1": 0.8332298790499227,
+            "darkEdgeF1": 0.8197456155096096,
+            "lightEdgeF1": 0.8467141425902359,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.7843784927510191,
+            "censusSimilarity": 0.8150564736470081
+          },
+          {
+            "edgeF1": 0.693040704397011,
+            "darkEdgeF1": 0.6370567013817984,
+            "lightEdgeF1": 0.7490247074122237,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4135694801230578,
+            "censusSimilarity": 0.7638043072013869
+          },
+          {
+            "edgeF1": 0.32513388560367207,
+            "darkEdgeF1": 0.32506223399983936,
+            "lightEdgeF1": 0.3252055372075047,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.705343792841293,
+            "censusSimilarity": 0.5022187582827922
+          },
+          {
+            "edgeF1": 0.8171806892392992,
+            "darkEdgeF1": 0.8278261878180685,
+            "lightEdgeF1": 0.8065351906605298,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9571952409123171,
+            "censusSimilarity": 0.8246726980628805
+          },
+          {
+            "edgeF1": 0.2960427895376949,
+            "darkEdgeF1": 0.2878848460615754,
+            "lightEdgeF1": 0.3042007330138145,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.894068618892626,
+            "censusSimilarity": 0.4591846869577264
+          }
+        ]
+      },
+      "bestDistance": {
+        "right": 430,
+        "centerY": 389,
+        "width": 55,
+        "height": 18,
+        "score": 0.6647693147945499,
+        "edgeF1": 0.693040704397011,
+        "distance": 1.4135694801230578,
+        "rows": [
+          {
+            "edgeF1": 0.8332298790499227,
+            "darkEdgeF1": 0.8197456155096096,
+            "lightEdgeF1": 0.8467141425902359,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.7843784927510191,
+            "censusSimilarity": 0.8150564736470081
+          },
+          {
+            "edgeF1": 0.693040704397011,
+            "darkEdgeF1": 0.6370567013817984,
+            "lightEdgeF1": 0.7490247074122237,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 1.4135694801230578,
+            "censusSimilarity": 0.7638043072013869
+          },
+          {
+            "edgeF1": 0.32513388560367207,
+            "darkEdgeF1": 0.32506223399983936,
+            "lightEdgeF1": 0.3252055372075047,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.705343792841293,
+            "censusSimilarity": 0.5022187582827922
+          },
+          {
+            "edgeF1": 0.8171806892392992,
+            "darkEdgeF1": 0.8278261878180685,
+            "lightEdgeF1": 0.8065351906605298,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 0.9571952409123171,
+            "censusSimilarity": 0.8246726980628805
+          },
+          {
+            "edgeF1": 0.2960427895376949,
+            "darkEdgeF1": 0.2878848460615754,
+            "lightEdgeF1": 0.3042007330138145,
+            "darkStatus": "measured",
+            "lightStatus": "measured",
+            "meanDistance": 2.894068618892626,
+            "censusSimilarity": 0.4591846869577264
+          }
+        ]
+      },
+      "evaluated": 38,
+      "boundary": true
+    }
+  }
+}

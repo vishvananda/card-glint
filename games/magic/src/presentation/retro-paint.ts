@@ -1,4 +1,6 @@
 import { paintRetroGoldBevel } from './retro-gold-bevel.js';
+import { retroSymbolGeometry } from './retro-symbol-geometry.js';
+import { historicalBackingKey } from './historical-symbol-backing.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -130,25 +132,50 @@ export function paintRetroFace(
       ),
     );
   const [tx, ty, tw, th] = retroPx(rect.type),
-    icon = images.get(retroSetSymbol(face) ?? '');
+    symbolUrl = retroSetSymbol(face) ?? '',
+    icon = images.get(symbolUrl),
+    geometry = retroSymbolGeometry(face);
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
   c.fillText(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
     details?.typeX ?? tx,
     ty + th / 2,
-    tw - (icon ? 48 : 0),
+    icon ? Math.min(tw - 48, geometry ? geometry.right - geometry.width - tx - 6 : tw) : tw,
   );
   if (icon) {
     const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);
+    const width = geometry?.width ?? icon.width * scale,
+      height = geometry?.height ?? icon.height * scale,
+      right = geometry?.right ?? details?.setRight ?? tx + tw,
+      centerY = geometry?.centerY ?? details?.setCenterY ?? ty + th / 2,
+      crop = geometry?.crop ?? ([0, 0, 1, 1] as const);
+    const backing = !face.setSymbol && images.get(historicalBackingKey(symbolUrl));
+    if (backing) {
+      c.save();
+      c.shadowColor = 'transparent';
+      c.drawImage(
+        backing,
+        crop[0] * backing.width,
+        crop[1] * backing.height,
+        crop[2] * backing.width,
+        crop[3] * backing.height,
+        right - width,
+        centerY - height / 2,
+        width,
+        height,
+      );
+      c.restore();
+    }
     if (details || usesMonochromeSetSymbol(face.setCode))
       paintOutlinedRetroSet(
         c,
         icon,
-        (details?.setRight ?? tx + tw) - icon.width * scale,
-        (details?.setCenterY ?? ty + th / 2) - (icon.height * scale) / 2,
-        icon.width * scale,
-        icon.height * scale,
+        right - width,
+        centerY - height / 2,
+        width,
+        height,
         details?.setOutline ?? historicalSetOutline(face.setCode),
+        crop,
       );
     else
       paintSetSymbol(

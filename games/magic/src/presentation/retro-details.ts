@@ -1,4 +1,4 @@
-import type { RenderedCardInput } from './face-layout.js';
+import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 import { paintEarlyMana } from './historic-cost.js';
 import { resolveFrameColors } from './profile.js';
@@ -135,13 +135,24 @@ export function paintOutlinedRetroSet(
   w: number,
   h: number,
   outline: number,
+  crop: FaceRect = [0, 0, 1, 1],
 ) {
   const layer = document.createElement('canvas');
   const pad = Math.ceil(outline * 2) + 1;
   layer.width = Math.ceil(w * 2) + pad * 2;
   layer.height = Math.ceil(h * 2) + pad * 2;
   const ink = layer.getContext('2d')!;
-  ink.drawImage(image, pad, pad, w * 2, h * 2);
+  ink.drawImage(
+    image,
+    crop[0] * image.width,
+    crop[1] * image.height,
+    crop[2] * image.width,
+    crop[3] * image.height,
+    pad,
+    pad,
+    w * 2,
+    h * 2,
+  );
   ink.globalCompositeOperation = 'source-in';
   ink.fillStyle = '#fff';
   ink.fillRect(0, 0, layer.width, layer.height);

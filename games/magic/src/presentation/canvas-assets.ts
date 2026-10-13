@@ -1,4 +1,5 @@
 import { isRetro, retroAssets, RETRO_ROOT } from './retro-frame.js';
+import { historicalBackingBlob, historicalBackingKey } from './historical-symbol-backing.js';
 import { extraRuleAssets } from './extra-rules.js';
 import { splitPanels } from './split-layout.js';
 import { faceFrame, specialRules } from './special-frames.js';
@@ -109,13 +110,16 @@ export async function loadCanvasImages(
         try {
           const response = await fetchCanvasAsset(url, signal);
           if (!response.ok) continue;
-          const bitmap = await decodeCanvasImage(
-            await response.blob(),
-            signal,
-            canvasAssetWidth(url),
-          );
+          const blob = await response.blob();
+          const bitmap = await decodeCanvasImage(blob, signal, canvasAssetWidth(url));
           if (signal.aborted) bitmap.close();
           else images.set(url, bitmap);
+          const backing = await historicalBackingBlob(url, blob);
+          if (backing) {
+            const white = await decodeCanvasImage(backing, signal);
+            if (signal.aborted) white.close();
+            else images.set(historicalBackingKey(url), white);
+          }
         } catch {
           /* A missing illustration or frame leaves the drawn face readable. */
         }

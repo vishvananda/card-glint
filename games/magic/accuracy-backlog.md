@@ -671,3 +671,65 @@ its application, deployment and database outside this library repository.
   differs from scans, and per-set tone/gradient transitions need the later HSB
   pass. Single-color, rainbow and special land treatments were not validated
   by this round. This targeted correction does not complete the set passes.
+
+### Old-symbol white details and visible sizing (v66)
+
+- The pinned ARN, LEG, ALL, WTH and EXO vectors encode printed white details as
+  transparent holes. During asset preparation, derive a separate white bitmap
+  from selected existing closed subpaths. Do not copy vector paths into the
+  repository or invent replacement contours. Leave ARN hilt openings, the ALL
+  pole gap and the EXO arch transparent. Validate the pinned path structure;
+  preserve the original bitmap and release the extra bitmap with its owner.
+  Explicit custom symbols retain their original rendering. No new fetches,
+  runtime pixel readback or animation-frame preparation.
+- Fit visible ink bounds, removing transparent viewport padding, for ARN, LEG,
+  ALL and WTH. One geometry per set, shared by all colors and rarities; no
+  card-specific placement. The bounded coordinate search uses cached stencils
+  plus the new white details and symbol-only regions. Both edge polarities,
+  edge distance and Census scores remain available. Candidate bounds must fit
+  the region, and boundary peaks stay flagged. CPU candidate comparisons need
+  no Chromium; final decisions use actual renderer captures at both sizes.
+- Sixty frozen examples: five calibration and three reserved dark/green/artifact
+  cards for each of five sets, five Chronicles transfers, ten ATQ/DRK controls,
+  and five explicit-symbol controls. All 32 cards receiving geometry changes
+  improve edge overlap at both tiers, with no edge/Census regression flags.
+  Fifteen controls are pixel-identical. Forty-four cards receive some material
+  or geometry correction; all pixels outside the symbol/type allowance remain
+  identical. Only Aesthir Glider needs narrower type compression: its supplied
+  Oracle type is 337.17 px wide, while the new symbol leaves 311.59 px instead
+  of 335.18 px. Its original scan says only “Artifact Creature”; original-wording
+  typography is not certified by this study.
+
+| Set            | Calibration median edge F1 | Reserved median edge F1 | Reserved table-size F1 |
+| -------------- | -------------------------- | ----------------------- | ---------------------- |
+| Arabian Nights | .388 → .668                | .264 → .514             | .260 → .548            |
+| Legends        | .475 → .834                | .480 → .727             | .444 → .649            |
+| Alliances      | .377 → .760                | .282 → .549             | .252 → .522            |
+| Weatherlight   | .471 → .768                | .392 → .788             | .393 → .687            |
+
+- These are symbol-region grayscale scores, not total card accuracy. Frame-only
+  shared registration passes for LEG/ALL/EXO; ARN's scale fit is rejected and
+  WTH's proposed registration worsens independent frame strips. Both keep raw
+  coordinates and an explicit registration flag. Raw metrics are retained for
+  every example. Do not use these samples to certify every printing in a set.
+- Reject EXO's size candidate: it hits the height boundary while the painter
+  still lacks the printed outer white rim and metallic treatment. Its white
+  interior details are restored, but sizing remains unchanged pending that
+  material pass. Chronicles gets appropriate inherited white details while
+  retaining its own unresolved printing geometry. The previous ATQ candidate
+  is also rejected: a broad window rewarded moving its anvil into a frame edge.
+  ATQ remains an unchanged control in this round.
+- Still flagged: source ARN blade/hilt contours differ from print; the old black
+  type-panel texture is much darker than scans and hides black outlines;
+  WTH/ALL fine contours and rim weight need further review. ICE's alternate
+  pinned stencil is still pending comparison. Complete old-set symbol coverage,
+  then frame alignment, then HSB; the major-set scope is unchanged.
+- Reproduce material and geometry captures with `old-symbol-material.mjs`, then
+  run `old-symbol-material-audit.mjs`, `old-symbol-clearance.mjs` and
+  `old-symbol-geometry-audit.mjs`. Registration, blank backgrounds/stencils and
+  bounded search are `old-symbol-registration.mjs`, `old-symbol-templates.mjs`
+  and `old-symbol-search.mjs`. Evidence is in `old-symbol-material-*.json`,
+  `old-symbol-type-clearance.json` and `old-symbol-geometry-measurement.json`.
+  The material-only capture is an intermediate candidate; the final renderer
+  is the `geometry` capture. The local comparison exposes full cards, symbol
+  close-ups and the red/green overlay, with unresolved cases labeled.
