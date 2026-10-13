@@ -17,7 +17,7 @@ import { compareLettering } from './lettering-metrics.mjs';
 import { median } from './metrics.mjs';
 const [set, stage = 'candidate'] = process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
-assert.ok(['candidate', 'after'].includes(stage));
+assert.ok(stage === 'after' || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
 const base = `${outputRoot}/${set}-symbol`,
   plan = await readJson(`${fixtureRoot}/${set}-symbol-plan.json`),
   adoption = await readJson(`${fixtureRoot}/${set}-symbol-adoption-plan.json`),

@@ -1158,3 +1158,50 @@ its application, deployment and database outside this library repository.
   captures retain their original source/method hashes. Required check/build,
   package, browser, showcase, Magic-layout and accuracy suites pass on v77.
   Review HTML remains outside the repository.
+
+### Fallen Empires crown and detached-foot measurement (v78)
+
+- Freeze all **187 ordinary printings** (102 distinct cards), including alternate
+  artwork. Eighteen predetermined calibration printings cover W/U/B/R/G,
+  artifact and land; reserve **169 validation printings**. All references and
+  components are cached. Both captures contain 195 faces at both tiers,
+  including eight unchanged controls; no missing references or rendering
+  failures. Oracle wording with original symbols is explicit.
+- Extend native component measurement with a declared `componentGap`: the
+  crown's detached foot otherwise disappears from its height measurement.
+  Group within two canonical pixels without expanding the original ink bounds;
+  a group touching the window boundary remains invalid. Add rendered foreground
+  selection after exact blank subtraction so the white rim does not inflate a
+  black-ink measurement. Numerical tests cover multiple resolutions, excluded
+  distant parts, grouped frame contamination and separate rim/ink bounds.
+- Seven calibration references are stable; eleven remain uncertain. Median
+  reference black ink is **19.615 × 15.692**, right edge **441.135**, center Y
+  **390.673**. Original rendered ink is about **20.333 × 16**, starting at
+  **415, 383.333**, roughly six pixels too far left. The first cropped candidate
+  rasterized about one pixel too small on each axis; preserve its adoption plan,
+  capture and measurements, then correct only from the calibration ink bounds.
+- Final shared nominal geometry is **20.75 × 16.75**, right **441.75**, center Y
+  **390.75**, using the existing vector crop and one-pixel white rim. Actual
+  inspection black ink is **20 × 15.333**, starting **421.333, 383.333**. Median
+  paired width/height errors are **.385/.359** px, below the roughly .65 canonical
+  px native scan pixel. Full-set measurement retains **77 stable references and
+  110 uncertain rows**, with the same reference median as calibration. No
+  per-scan transform or subpixel precision claim.
+- All **187 printings improve by more than .02 edge F1** at both sizes. Median
+  inspection F1 **.375 → .695**, table **.373 → .653**; Census **.514 → .818** and
+  **.462 → .783**. Reserved validation gives **.375 → .695** and **.374 → .653**
+  F1. No edge or Census regression flags. All changed pixels stay inside the
+  symbol envelope; every type line and all eight controls stay byte-identical.
+- Remaining review: crown line thickness, rim tone and the gap above its foot
+  differ slightly. Lands have the weakest regional scores, especially Rainbow
+  Vale, Ruins of Trokair, Dwarven Ruins and Svyelunite Temple. Their frame rails
+  and stone texture differ from the current generic seventh-edition land asset.
+  Other colors and artifacts also show texture, bevel and rules-box differences.
+  In the frame pass, compare existing frame-family choices before treating these
+  as requirements for new assets; do not compensate through symbol placement.
+- Shared study scripts now support named calibration revisions such as
+  `candidate-raster`, and reject overwriting captures from another renderer
+  revision. Blank templates require the recorded baseline source. Original and
+  corrected candidate hashes remain linked in the adoption plan. Local review
+  HTML includes annotated native bounds, full cards and red/green overlays;
+  images and HTML remain outside the repository.

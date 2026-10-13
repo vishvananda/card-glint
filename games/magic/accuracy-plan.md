@@ -168,8 +168,11 @@ Inspect calibration crops and freeze the measured geometry, profile hashes,
 allowed change envelope and score region in `<set>-symbol-adoption-plan.json`
 before changing production code. Matched blank templates remove both the glyph
 and any derived opaque backing. Capture/measure a `candidate` first, then `after`
-for the full set; do not overwrite historical captures with a different source
-revision. Existing baselines must be reproduced from their recorded revision.
+for the full set. A calibration revision can use a named stage such as
+`candidate-raster`; all three shared scripts accept these labels. Preserve the
+earlier adoption plan and its linked measurements when revising geometry; do
+not overwrite historical captures with a different source revision. Existing
+baselines must be reproduced from their recorded revision.
 
 ```sh
 node games/magic/tools/accuracy/symbol-study.mjs drk after

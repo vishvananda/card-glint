@@ -22,7 +22,8 @@ import { openBrowser } from './browser.mjs';
 const [set, action = 'prepare'] = process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
 const recipe = await readJson(`${fixtureRoot}/${set}-symbol-study.json`);
-assert.ok(['prepare', 'before', 'candidate', 'after'].includes(action));
+const candidate = /^candidate(?:-[a-z0-9]+)*$/.test(action);
+assert.ok(['prepare', 'before', 'after'].includes(action) || candidate);
 const base = `${outputRoot}/${set}-symbol`,
   planFile = `${fixtureRoot}/${set}-symbol-plan.json`,
   snapshotFile = `${cacheRoot}/rollout/${set}-symbol.json`;
@@ -131,11 +132,22 @@ const frozen = await readJson(planFile),
 assert.equal(hash(JSON.stringify(snapshot)), frozen.snapshotHash);
 assert.equal(hash(JSON.stringify(recipe)), frozen.recipeHash);
 if (action === 'before') assert.equal(rendererHash, frozen.baselineRendererHash);
+try {
+  const previous = await readJson(`${base}/${action}/capture.json`);
+  assert.equal(
+    previous.rendererHash,
+    rendererHash,
+    'Capture belongs to another renderer revision; preserve it and use a new study/stage.',
+  );
+  assert.equal(previous.planHash, hash(JSON.stringify(frozen)));
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
 const session = await openBrowser(snapshot),
   rows = [];
 try {
   for (const e of snapshot.entries.filter(
-    (e) => action !== 'candidate' || ['calibration', 'control'].includes(e.cohort),
+    (e) => !candidate || ['calibration', 'control'].includes(e.cohort),
   )) {
     if (e.issue) {
       rows.push({

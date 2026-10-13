@@ -14,7 +14,7 @@ import { measureSymbolBounds, measureRenderedSymbol } from './symbol-bounds.mjs'
 import { median } from './metrics.mjs';
 const [set, stage = 'before'] = process.argv.slice(2);
 assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
-assert.ok(['before', 'candidate', 'after'].includes(stage));
+assert.ok(['before', 'after'].includes(stage) || /^candidate(?:-[a-z0-9]+)*$/.test(stage));
 const base = `${outputRoot}/${set}-symbol`,
   snapshot = await readJson(`${cacheRoot}/rollout/${set}-symbol.json`),
   baseline = await readJson(`${base}/before/capture.json`),

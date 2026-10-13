@@ -19,10 +19,15 @@ assert.match(set ?? '', /^[a-z0-9]{2,6}$/);
 const snapshot = await readJson(`${cacheRoot}/rollout/${set}-symbol.json`),
   plan = await readJson(`${fixtureRoot}/${set}-symbol-plan.json`),
   base = `${outputRoot}/${set}-symbol/templates`,
-  rendererHash = await sourceHash(`${root}/games/magic/src`),
-  session = await openBrowser(snapshot),
-  rows = [];
+  rendererHash = await sourceHash(`${root}/games/magic/src`);
 assert.equal(hash(JSON.stringify(snapshot)), plan.snapshotHash);
+assert.equal(
+  rendererHash,
+  plan.baselineRendererHash,
+  'Create matched blanks from the baseline revision.',
+);
+const session = await openBrowser(snapshot),
+  rows = [];
 try {
   for (const e of snapshot.entries.filter((e) => e.cohort === 'calibration' && !e.issue)) {
     const face = presentation(e).face;

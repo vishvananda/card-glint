@@ -23,6 +23,14 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     height: 18.5,
     crop: [0, 0.09375, 0.9884259259259259, 0.814453125],
   },
+  // Crown and detached foot measured together; preserve the existing white rim.
+  fem: {
+    right: 441.75,
+    centerY: 390.75,
+    width: 20.75,
+    height: 16.75,
+    crop: [0, 0.12109375, 1, 0.724609375],
+  },
   leg: {
     right: 441,
     centerY: 394,
