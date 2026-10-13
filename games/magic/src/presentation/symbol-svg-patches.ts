@@ -26,13 +26,16 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
   const doc = new DOMParser().parseFromString(new TextDecoder().decode(bytes), 'image/svg+xml'),
     root = doc.documentElement,
     paths = [...root.querySelectorAll('path')],
-    gradient = root.querySelector('linearGradient');
+    gradient = root.querySelector('linearGradient, radialGradient');
   if (root.localName !== 'svg' || doc.querySelector('parsererror') || !gradient)
     throw Error(`Unexpected pinned symbol SVG: ${url}`);
   const set = (element: Element, attributes: Record<string, string>) => {
     for (const [name, value] of Object.entries(attributes)) element.setAttribute(name, value);
   };
-  if (patch.recipe === 'm15') {
+  if (patch.recipe === 'white-outer-rim') {
+    if (paths.length !== 3) throw Error('Unexpected rimmed symbol topology.');
+    paths[0]!.setAttribute('fill', '#fff');
+  } else if (patch.recipe === 'm15') {
     if (paths.length !== 6) throw Error('Unexpected M15 path topology.');
     // Metallic field, black lettering/inset line, and an independent black rim.
     // SVG viewport clipping keeps the stroke inside the original viewport.

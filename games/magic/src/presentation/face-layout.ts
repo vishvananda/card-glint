@@ -51,6 +51,8 @@ export interface RenderedCardInput extends CardProfileInput {
   artist?: string | null;
   /** Explicit printed legal line; null suppresses a known set's default. */
   legalText?: string | null;
+  /** Printed number when the set footer includes one; no Oracle identity inference. */
+  collectorNumber?: string | null;
   power?: string | number | null;
   toughness?: string | number | null;
   loyalty?: string | number | null;

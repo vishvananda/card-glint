@@ -107,7 +107,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v89',
+    'canvas-face-v90',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -165,6 +165,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.illustrationCrop ?? null,
         extraRuleKey(face),
         face.artist ?? null,
+        face.collectorNumber ?? null,
         face.legalText === undefined ? ['default'] : face.legalText,
         face.setCode ?? null,
         face.setSymbol ?? null,
@@ -466,7 +467,7 @@ export function paintAssembledFace(
     context.fillRect(...px(rects.type));
   }
   context.fillStyle = '#80745c';
-  context.fillRect(...px(rects.art));
+  if (!planeswalker) context.fillRect(...px(rects.art));
   const frame = images.get(assets.frame);
   if (frame && kind === 'normal' && !panel) {
     const inset = normalFrameInset(face);

@@ -4,6 +4,7 @@ const result = await readJson(fixtureRoot + '/old-dual-hsb-results.json'),
   candidate = await readJson(fixtureRoot + '/old-dual-hsb-candidate.json');
 assert.equal(result.candidateHash, hash(JSON.stringify(candidate)));
 assert.deepEqual(result.provenance, candidate.provenance);
+const printingScope = await readJson(fixtureRoot + '/hsb-printing-scope.json');
 const frames = {},
   mana = {};
 for (const g of result.groups.filter((g) => g.status === 'trial')) {
@@ -13,6 +14,7 @@ for (const g of result.groups.filter((g) => g.status === 'trial')) {
   assert.deepEqual(g.source, c.source);
   const material = g.source.asset.split('/').at(-1).replace('.png', '').toUpperCase(),
     key = `${g.set}-${g.border}-${material}`;
+  if (printingScope.excludedFrameKeys.includes(key)) continue;
   const profile = { asset: g.source.asset, rect: g.source.rect, adjustment: g.adjustment };
   if (frames[key]) assert.deepEqual(frames[key], profile, 'Ambiguous runtime profile');
   frames[key] = profile;
@@ -30,7 +32,8 @@ for (const g of result.mana.filter((g) => g.status === 'trial')) {
   const c = candidate.mana.find((c) => c.key === g.key);
   assert.equal(c.status, 'trial');
   assert.deepEqual(g.targetRgb, c.targetRgb);
-  mana[`${g.set}-${g.border}-${g.symbol}`] = g.targetRgb;
+  const key = `${g.set}-${g.border}-${g.symbol}`;
+  if (!printingScope.excludedManaKeys.includes(key)) mana[key] = g.targetRgb;
 }
 await atomicWrite(
   root + '/games/magic/src/presentation/old-dual-hsb-profiles.ts',
@@ -39,6 +42,7 @@ await atomicWrite(
 await writeJson(fixtureRoot + '/old-dual-hsb-runtime.json', {
   schemaVersion: 1,
   resultsHash: hash(JSON.stringify(result)),
+  printingScopeHash: hash(JSON.stringify(printingScope)),
   reviewedRevisedHash: hash(JSON.stringify(reviewed)),
   frames: Object.entries(frames).map(([key, profile]) => ({
     key,

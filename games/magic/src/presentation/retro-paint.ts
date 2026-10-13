@@ -1,5 +1,8 @@
+import { retroManaPlacement } from './retro-mana.js';
+import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
+import { paintRetroPaper } from './retro-paper.js';
 import { paintRetroGoldBevel } from './retro-gold-bevel.js';
 import { retroSymbolGeometry } from './retro-symbol-geometry.js';
 import { retroSymbolPalette } from './retro-symbol-material.js';
@@ -72,6 +75,7 @@ export function paintRetroFace(
     c.save();
     c.filter = retroFrameFilter(face);
     c.drawImage(frame, ...retroPx(rect.frame));
+    paintRetroPaper(c, frame, retroFrameAsset(face));
     if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
     c.restore();
   }
@@ -96,10 +100,15 @@ export function paintRetroFace(
   c.letterSpacing = '0px';
   const [x, y, w, h] = retroPx(rect.title),
     cost = face.manaSymbols ?? [],
-    size = details?.manaSize ?? 23.4,
-    gap = details?.manaGap ?? 1.7,
+    mana = retroManaPlacement(face),
+    size = mana?.[3] ?? details?.manaSize ?? 23.4,
+    gap = mana ? mana[2] - size : (details?.manaGap ?? 1.7),
     costW = cost.length * (size + gap),
-    costX = details ? details.manaRight - costW + gap : x + w - costW;
+    costX = mana
+      ? mana[0] + size / 2 - costW + gap
+      : details
+        ? details.manaRight - costW + gap
+        : x + w - costW;
   c.shadowColor = '#000b';
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
   c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
@@ -128,7 +137,7 @@ export function paintRetroFace(
         c,
         s,
         costX + i * (size + gap),
-        details?.manaTop ?? y + h / 2 - size / 2,
+        mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
         size,
         images,
         false,
@@ -258,6 +267,7 @@ export function paintRetroFace(
         face.setCode?.toLowerCase() === 'lea' ? 0.012 : 0,
       );
   }
+  if (paintUrzaFooter(c, face)) return;
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
   if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;
   c.fillStyle = retroInk(face);

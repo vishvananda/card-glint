@@ -18,9 +18,20 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
   const asset = retroFrameAsset(face),
     material = asset.split('/').at(-1)!.replace('.png', '').toUpperCase(),
     profile = DUAL_HSB_PROFILES[`${face.setCode?.toLowerCase()}-${retroBorder(face)}-${material}`];
-  return profile?.asset === asset && profile.rect.every((v, i) => v === retroFrameRect(face)[i])
-    ? profile.adjustment
-    : undefined;
+  if (profile?.asset !== asset || !profile.rect.every((v, i) => v === retroFrameRect(face)[i]))
+    return undefined;
+  // Fourth white's paper begins at the printed keyline, not the bright inner
+  // ridge. Leaving that ridge on the frame transform produced a false white rim.
+  return asset.endsWith('/old/fourth/w.png')
+    ? {
+        ...profile.adjustment,
+        mask: {
+          kind: 'rect',
+          rect: [162 / 1500, 1259 / 2100, 1174 / 1500, 627 / 2100],
+          feather: 2 / 1500,
+        },
+      }
+    : profile.adjustment;
 }
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
   if (!hasColorCalibration(face)) return undefined;

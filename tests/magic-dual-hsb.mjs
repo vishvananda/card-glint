@@ -61,7 +61,16 @@ try {
             ? 'Artifact'
             : 'Creature',
     };
-    assert.deepEqual(calibratedDualFrameProfile(f), profile.adjustment, key);
+    const actual = calibratedDualFrameProfile(f);
+    if (profile.asset.endsWith('/old/fourth/w.png')) {
+      assert.deepEqual(actual.frame, profile.adjustment.frame);
+      assert.deepEqual(actual.paper, profile.adjustment.paper);
+      assert.deepEqual(actual.mask, {
+        kind: 'rect',
+        rect: [162 / 1500, 1259 / 2100, 1174 / 1500, 627 / 2100],
+        feather: 2 / 1500,
+      });
+    } else assert.deepEqual(actual, profile.adjustment, key);
     for (const change of [
       { colorCalibration: undefined },
       { setCode: 'unknown' },
@@ -81,6 +90,14 @@ try {
         ),
       );
   }
+  const { DUAL_MANA_TARGETS } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/old-dual-hsb-profiles.ts',
+  );
+  const scope = JSON.parse(await readFile('games/magic/fixtures/accuracy/hsb-printing-scope.json'));
+  for (const key of scope.excludedFrameKeys)
+    assert.equal(DUAL_HSB_PROFILES[key], undefined, 'Foil-only frame cohort was adopted');
+  for (const key of scope.excludedManaKeys)
+    assert.equal(DUAL_MANA_TARGETS[key], undefined, 'Foil-only mana cohort was adopted');
   for (const setCode of ['usg', 'uds'])
     assert.ok(
       calibratedDualFrameProfile({ ...face, setCode, colors: ['W'] }),

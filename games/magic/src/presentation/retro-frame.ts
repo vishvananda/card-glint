@@ -55,7 +55,7 @@ export function retroRects(face: RenderedCardInput) {
     art: (retroFamily(face) === 'legends'
       ? [0.112, 0.094, 0.78, 0.45]
       : retroFamily(face) === 'fourth'
-        ? [0.114, 0.098, 0.772, 0.445]
+        ? [0.109, 0.093, 0.779, 0.453]
         : early
           ? [0.116, 0.1043, 0.7654, 0.441]
           : [0.12, 0.0991, 0.7667, 0.4429]) as FaceRect,

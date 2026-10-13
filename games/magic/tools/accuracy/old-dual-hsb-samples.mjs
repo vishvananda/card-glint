@@ -88,7 +88,7 @@ try {
         currentAsset: retroFrameAsset(face),
       };
     }),
-  ].filter((e) => !selectedSet || e.set === selectedSet);
+  ].filter((e) => (!selectedSet || e.set === selectedSet) && cards.get(e.id)?.nonfoil !== false);
   for (const t of templates.rows) {
     const bytes = await readFile(outputRoot + '/old-frame-families/templates/' + t.file);
     assert.equal(hash(bytes), t.sha256);

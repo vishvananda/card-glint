@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "scope": "Shared asset geometry corrections; comparison-only scan poses never enter rendering.",
+  "planeswalkerArt": {
+    "sourceFamily": "pinned component planeswalker and planeswalker_large frames",
+    "sourceSize": [2736, 3810],
+    "measuredDecodeWidth": 768,
+    "oldCenterCanonical": 242.07728,
+    "frameCenterCanonical": 245.92028,
+    "correction": "Center on the actual aperture and clip both artwork and printing cutouts to the source frame's curved sides.",
+    "comparisonSets": ["m15", "m21"],
+    "limitations": [
+      "Illustration details printed across the frame are not reconstructed from rectangular art crops."
+    ]
+  },
+  "fourthFamilyArt": {
+    "oldRect": [0.114, 0.098, 0.772, 0.445],
+    "newRect": [0.109, 0.093, 0.779, 0.453],
+    "reason": "Cover the transparent opening across all six pinned nonland color/material sources, including the left side.",
+    "nativeApertureEnvelope": [153, 180, 1344, 1139],
+    "sourceSize": [1500, 2100]
+  },
+  "whitePaper": {
+    "seventhSourceSha256": "2fc988fc7aeb82d6183200dbfdb9e0de5196197ada5d8e4eac7afff24cec2091",
+    "reason": "Extend retained interior paper to the keyline; preserve the outside frame and its shadows.",
+    "reviewedSets": ["mir", "tmp", "usg", "ulg", "uds", "7ed"],
+    "fourthSourceSha256": "8052949d9fe2d28fe8ca40b381d5a1e2a1bbf0f2e6e3a7846363b8e6ef593bbe",
+    "fourthPaperMask": [162, 1259, 1174, 627]
+  }
+}

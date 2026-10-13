@@ -8,13 +8,18 @@ import { chromium } from 'playwright';
 // Replace only checksum expectations in this test server; no third-party bytes.
 const synthetic = {
   m15: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="160"><path d="M0 0H300V160H0Z"/><linearGradient id="g"><stop stop-color="#4488aa"/><stop offset="1" stop-color="#ddeeff"/></linearGradient><path fill="url(#g)" d="M30 30H50V90H30Z"/><path fill="url(#g)" d="M60 30H80V90H60Z"/><path fill="url(#g)" d="M90 30H110V90H90Z"/><path fill="url(#g)" d="M120 30H140V90H120Z"/><path fill="url(#g)" d="M150 30H170V90H150Z"/></svg>',
+  rim: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><radialGradient id="g"><stop stop-color="#888"/><stop offset="1" stop-color="#ddd"/></radialGradient><path d="M0 0H100V100H0Z"/><path fill="#333" d="M5 5H95V95H5Z"/><path fill="url(#g)" d="M10 10H90V90H10Z"/></svg>',
   numeric:
     '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500"><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" x2="300" gradientTransform="matrix(1 0 0 1 0 0)"><stop stop-color="#4488aa"/><stop offset="1" stop-color="#ddeeff"/></linearGradient><path fill="#fff" d="M0 0H600V500H0Z"/><path d="M10 10H590V490H10Z"/><g transform="matrix(2 0 0 2 0 0)"><path style="fill:url(#g)" d="M80 20H220V220H80Z M10 40H70V200H10Z M230 40H290V200H230Z"/></g><path d="M250 100H270V350H250Z"/></svg>',
 };
 const manifest = JSON.parse(await readFile('games/magic/symbol-svg-patches.json', 'utf8'));
 for (const rule of Object.values(manifest.sources))
   rule.sha256 = createHash('sha256')
-    .update(synthetic[rule.recipe === 'm15' ? 'm15' : 'numeric'])
+    .update(
+      synthetic[
+        rule.recipe === 'm15' ? 'm15' : rule.recipe === 'white-outer-rim' ? 'rim' : 'numeric'
+      ],
+    )
     .digest('hex');
 const server = await createServer({
   configFile: false,
@@ -41,7 +46,7 @@ try {
     return route.fulfill({
       contentType: 'image/svg+xml',
       headers: { 'Access-Control-Allow-Origin': '*' },
-      body: synthetic[url.includes('/m15-') ? 'm15' : 'numeric'],
+      body: synthetic[url.includes('/m15-') ? 'm15' : url.includes('/7ed-') ? 'rim' : 'numeric'],
     });
   });
   await page.goto(server.resolvedUrls.local[0]);
@@ -61,7 +66,8 @@ try {
         if (!ok) throw Error(message);
       },
       signal = new AbortController().signal;
-    const urls = ['m15', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'rare'));
+    const urls = ['m15', '8ed', '9ed', '7ed'].map((code) => styledSetSymbol(code, 'rare'));
+    urls.push(styledSetSymbol('7ed', 'uncommon'));
     const parsed = [];
     for (const url of urls) {
       const sources = await resolveCanvasSources([url, url], signal);
@@ -70,7 +76,7 @@ try {
         doc = new DOMParser().parseFromString(encoded, 'image/svg+xml');
       parsed.push(doc);
       check(
-        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v1',
+        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v2',
         'Patch revision missing',
       );
       sources.dispose();
@@ -86,6 +92,15 @@ try {
         parsed[2].querySelectorAll('g path').length === 1,
       '8ED center-only treatment leaked into 9ED',
     );
+    for (const doc of parsed.slice(3)) {
+      const paths = doc.querySelectorAll('path');
+      check(paths[0].getAttribute('fill') === '#fff', '7ED outer rim must be white');
+      check(
+        paths[1].getAttribute('fill') === '#333' && paths[2].getAttribute('fill') === 'url(#g)',
+        '7ED interior material changed',
+      );
+      check(doc.querySelector('radialGradient'), '7ED gradient lost');
+    }
     const host = new AssetStore(16 * 1024 * 1024);
     for (const url of urls) {
       const sources = await resolveCanvasSources([url], signal),
@@ -155,7 +170,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 3);
+  assert.equal(result.urls.length, 5);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);

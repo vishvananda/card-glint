@@ -1,13 +1,9 @@
 import { type FaceRect, type RenderedCardInput } from './face-layout.js';
-import { faceFrame, faceRects } from './special-frames.js';
+import { faceRects } from './special-frames.js';
 import { splitPanels, panelRect } from './split-layout.js';
 /** Visible illustration, excluding the opaque planeswalker rules panel. */
 export function visibleArt(face: RenderedCardInput): FaceRect {
-  const rects = faceRects(face),
-    art = rects.art;
-  return faceFrame(face).startsWith('planeswalker')
-    ? [art[0], art[1], art[2], rects.type[1] - art[1]]
-    : art;
+  return faceRects(face).art;
 }
 const cache = new WeakMap<RenderedCardInput, readonly [FaceRect, FaceRect]>();
 const uv = ([x, y, w, h]: FaceRect): FaceRect => [x, 1 - y - h, x + w, 1 - y];

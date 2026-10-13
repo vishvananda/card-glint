@@ -6,6 +6,31 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Current component corrections
+
+The mana follow-up records 684 nonfoil production comparisons in
+[the validation report](fixtures/accuracy/mana-location-verified.json). Twenty-six
+shared set/stock rows pass (661 cards); The List retains its existing placement
+because a reserved card regressed. These are sampled component scores, not
+whole-card accuracy percentages or complete per-card coverage.
+
+The [geometry correction record](fixtures/accuracy/frame-corrections.json)
+tracks the Fourth-family art opening, white-paper keylines, and the centered,
+curved planeswalker art aperture. Ordinary Scryfall `frame: 2003` inputs now
+select the existing Eighth Edition plate in the reference adapter. Hosts must
+preserve that family when switching wording modes.
+
+Foil-only references are excluded before new HSB sampling and at adoption.
+[The printing-scope audit](fixtures/accuracy/hsb-printing-scope.json) removed five
+active mana-color targets and found no active frame-color target to remove.
+A printing available in both finishes still uses Scryfall's default scan; this
+metadata guard cannot certify that every mixed-availability image is nonfoil.
+
+Seventh Edition uncommon/rare symbols use a checksum-guarded local SVG patch
+for their outer white rim. The common source already has the white rim.
+Urza rarity gradients, every-set footer typography, and rejected/sparse symbol
+cohorts remain review items. Revised dual-land paper remains in the asset queue.
+
 ## Agreed execution order
 
 Current priority: redo all old-frame color profiles with separate frame and

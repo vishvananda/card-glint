@@ -48,8 +48,16 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     loyalty: card.loyalty,
     setCode: card.set,
     rarity: card.rarity,
+    collectorNumber: card.collector_number,
     frameStyle: ['1993', '1997'].includes(card.frame) ? 'retro' : 'modern',
     borderColor: card.border_color,
+    // 2003 printing geometry is distinct from the later M15 component frame.
+    ...(card.frame === '2003' &&
+    card.layout === 'normal' &&
+    !/\b(Saga|Class|Planeswalker|Battle)\b/.test(card.type_line ?? '') &&
+    !/^Level up\b/m.test(card.oracle_text ?? '')
+      ? { frameAssetFamily: 'eighth' }
+      : {}),
     ...(frameColors === undefined ? {} : { frameColors }),
     // Historical "Summon" text changes the visible label, not creature identity.
     ...(fields.typeLine === undefined
