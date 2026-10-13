@@ -139,10 +139,11 @@ export function paintFittedText(
   size: number,
   bold = false,
   widthScale = 1,
+  family: 'CardRenderer MTG Beleren' | 'CardRenderer MTG Matrix' = 'CardRenderer MTG Beleren',
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   context.save();
-  context.font = `${bold ? 'bold ' : ''}${size}px "CardRenderer MTG Beleren", Georgia`;
+  context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   const measured = context.measureText(text).width;
   // A long type already uses the available width. Expanding it would force a
   // smaller font height without gaining any horizontal space.
@@ -155,7 +156,7 @@ export function paintFittedText(
   }
   if (measured > width) {
     size = Math.max(size * 0.78, (size * width) / measured);
-    context.font = `${bold ? 'bold ' : ''}${size}px "CardRenderer MTG Beleren", Georgia`;
+    context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   }
   context.fillText(text, x, y, width);
   context.restore();

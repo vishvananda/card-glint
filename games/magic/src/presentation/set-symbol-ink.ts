@@ -1,6 +1,11 @@
 /** Rarity color for external monochrome Keyrune glyphs; local vectors already have ink. */
-export function setSymbolFilter(code?: string | null, rarity?: string): string {
+export function setSymbolFilter(
+  code?: string | null,
+  rarity?: string,
+  source?: RenderedCardInput['setSymbolSource'],
+): string {
   if (!code || ['forge', 'glint'].includes(code.toLowerCase())) return 'none';
+  if (styledSetSymbol(code, rarity, source)) return 'none';
   return (
     (
       {
@@ -13,3 +18,5 @@ export function setSymbolFilter(code?: string | null, rarity?: string): string {
     )[rarity ?? 'common'] ?? 'none'
   );
 }
+import { styledSetSymbol } from './styled-set-symbols.js';
+import type { RenderedCardInput } from './face-layout.js';

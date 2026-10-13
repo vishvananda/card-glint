@@ -7,6 +7,7 @@ import type {
   RasterHost,
 } from '../../../packages/browser/src/index.js';
 import { composeCardTexture, cardTextureKey } from './presentation/canvas-face.js';
+import { faceSetSymbol } from './presentation/assets.js';
 import { canvasAssetWidth } from './presentation/canvas-assets.js';
 import { clearEarlyHsbBitmaps } from './presentation/material-bitmap-cache.js';
 import {
@@ -102,13 +103,13 @@ export const mtg: GamePack<RenderedCardInput> = {
       },
       stamp: {
         key: JSON.stringify([
-          'mtg-stamp-v1',
+          'mtg-stamp-v2',
           tier,
           face.setCode,
           children.map((child) => [
             faceRects(child.face).stamp,
             child.face.setCode,
-            child.face.setSymbol ?? null,
+            faceSetSymbol(child.face, 'common'),
             child.panel
               ? [
                   child.panel.x,

@@ -1,3 +1,4 @@
+import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { paintRetroGoldBevel } from './retro-gold-bevel.js';
 import { retroSymbolGeometry } from './retro-symbol-geometry.js';
 import { retroSymbolPalette } from './retro-symbol-material.js';
@@ -151,7 +152,8 @@ export function paintRetroFace(
       right = geometry?.right ?? details?.setRight ?? tx + tw,
       centerY = geometry?.centerY ?? details?.setCenterY ?? ty + th / 2,
       crop = geometry?.crop ?? ([0, 0, 1, 1] as const);
-    const backing = !face.setSymbol && images.get(historicalBackingKey(symbolUrl));
+    const styled = isStyledSetSymbol(symbolUrl);
+    const backing = !styled && !face.setSymbol && images.get(historicalBackingKey(symbolUrl));
     if (backing) {
       c.save();
       c.shadowColor = 'transparent';
@@ -171,7 +173,14 @@ export function paintRetroFace(
       );
       c.restore();
     }
-    if (palette || details || usesMonochromeSetSymbol(face.setCode))
+    if (styled || face.setSymbol) {
+      c.save();
+      c.shadowColor = 'transparent';
+      // Complete styled assets already contain opaque holes, rims and gradients.
+      // Keyrune viewport crops and recoloring must never touch these vectors.
+      c.drawImage(icon, right - width, centerY - height / 2, width, height);
+      c.restore();
+    } else if (palette || details || usesMonochromeSetSymbol(face.setCode))
       paintOutlinedRetroSet(
         c,
         icon,

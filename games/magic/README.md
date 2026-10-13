@@ -61,6 +61,37 @@ the caller. A `GLINT` set symbol is the default when no set is supplied.
 art-only rain, heat and pool treatments. `tone` selects gold, silver or prismatic
 reflection on the sharp printed layer. `mtg` remains an alias for `magic`.
 
+## Replacement asset candidates
+
+`frameAssetFamily: 'eighth' | 'm15-accurate'` selects complete Card Conjurer base
+plates with matching art apertures, text bounds, border masks and P/T badges.
+The default keeps existing calibrated frames. These candidates cover ordinary
+modern faces: five colors, gold, artifacts, colorless and lands. Two-color lands
+blend the two colored land plates in mana order. Special layouts reject this
+option; modern legend crowns and color-pair spell pinlines remain follow-up work.
+Eighth Edition loads its Matrix header font only when selected. Frame geometry
+also drives GPU art windows, optical layers, hit regions and cache identity.
+Prior old-frame HSB and scan-offset profiles are not applied to these assets.
+
+Set symbols now prefer complete styled SVGs where available, preserving their
+white details, black outlines and metallic gradients. The
+[versioned inventory](set-symbol-inventory.json) lists 1,880 rarity files for
+383 set codes. Already reviewed historical and M15/M19/M20/M21/WAR treatments
+keep their existing source by default. Set `setSymbolSource: 'cardconjurer'` to
+preview replacements, or `'keyrune'` to compare the prior source. Replacement
+frame plates prefer styled symbols. A missing exact rarity falls back to
+Keyrune; unknown sets return no symbol instead of requesting a nonexistent file.
+Pre-Exodus printings still use monochrome symbols. Host-owned `setSymbol` URLs
+and the original GLINT/FORGE marks take precedence and preserve their colors.
+
+All source URLs include immutable revisions. The new collection uses GitHub raw
+URLs because jsDelivr rejects uncached files from this oversized repository. Asset decoding uses the existing
+host cache; full plates are bounded to 768 pixels wide during preparation.
+No downloading, decoding or masking occurs in the animation loop. The local
+accuracy cache stores reference bytes separately from the package. Regenerate
+filename metadata with `node games/magic/tools/assets/symbol-inventory.mjs`
+(optionally pass a cached Git tree JSON as its first argument).
+
 ## Where to make a change
 
 | Change                                                 | Owner                                                                                                                    |

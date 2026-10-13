@@ -26,3 +26,4 @@ export * from './presentation/planeswalker-rules.js';
 export * from './presentation/special-rule-paint.js';
 export * from './presentation/split-layout.js';
 export * from './presentation/wording.js';
+export * from './presentation/frame-plates.js';

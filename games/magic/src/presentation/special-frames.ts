@@ -1,5 +1,6 @@
 import { isRetro, retroRects } from './retro-frame.js';
 import { NORMAL_FRAME_GEOMETRY } from './normal-frame-geometry.js';
+import { framePlate } from './frame-plates.js';
 import {
   FACE_RECTS,
   FACE_WIDTH,
@@ -54,6 +55,8 @@ export function faceFrame(face: RenderedCardInput): SingleFrame {
   return 'normal';
 }
 export function faceRects(face: RenderedCardInput): FaceRects {
+  const plate = framePlate(face);
+  if (plate) return plate.rects;
   if (isRetro(face)) return retroRects(face);
   const kind = faceFrame(face);
   if (kind === 'adventure')

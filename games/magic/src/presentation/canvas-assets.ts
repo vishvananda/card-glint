@@ -10,6 +10,8 @@ import { ruleBadgeAsset, sagaTextbox } from './special-rule-paint.js';
 import { profileAssets, RENDERER_COMPONENT_ROOT, faceSetSymbol } from './assets.js';
 import { resolveCardProfile } from './profile.js';
 import type { RenderedCardInput } from './face-layout.js';
+import { framePlateUrls } from './frame-plates.js';
+import { CONJURER_ROOT } from './styled-set-symbols.js';
 
 export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   /** Face-preparation palette for procedural/fallback mana discs. */
@@ -23,6 +25,8 @@ export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promis
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */
 export function canvasAssetWidth(url: string): number | undefined {
+  if (url.startsWith(`${CONJURER_ROOT}/img/frames/`) && url.endsWith('.png'))
+    return /\/pt\/|\/m15PT/.test(url) ? 256 : 768;
   if (url.startsWith(`${RETRO_ROOT}/img/frames/`) && url.endsWith('.png')) return 768;
   const path = url.startsWith(`${RENDERER_COMPONENT_ROOT}/img/`)
     ? url.slice(`${RENDERER_COMPONENT_ROOT}/img/`.length)
@@ -139,6 +143,8 @@ export async function loadCanvasImages(
 }
 
 export function canvasAssetUrls(face: RenderedCardInput): (string | null | undefined)[] {
+  const plates = framePlateUrls(face);
+  if (plates) return [...plates, face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   if (isRetro(face)) return retroAssets(face);
   const panels = splitPanels(face);
   if (panels.length) return panels.flatMap((panel) => canvasAssetUrls(panel.face));

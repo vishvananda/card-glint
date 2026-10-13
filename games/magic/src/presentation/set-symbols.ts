@@ -1,5 +1,6 @@
 import manifest from '../../assets.json' with { type: 'json' };
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
+import { styledSetSymbol } from './styled-set-symbols.js';
 /** Keyrune set-symbol SVGs by Andrew Gioia, pinned to commit 256add455.
  * Glyph SVGs are GPL-3.0: https://github.com/andrewgioia/keyrune/blob/256add455a043462f7b2bfa224ca71bfc66b62ab/LICENSE.md
  * The CDN serves immutable vectors with CORS so Canvas2D and CSS use the same art.
@@ -14,8 +15,18 @@ const CORE_SYMBOL_CROPS: Readonly<Record<string, FaceRect>> = {
   m21: [0, 9.33 / 32, 1, 13.34 / 32],
 };
 
-export function setSymbolCrop(face: Pick<RenderedCardInput, 'setCode' | 'setSymbol'>): FaceRect {
-  return !face.setSymbol
+export function setSymbolCrop(
+  face: Pick<
+    RenderedCardInput,
+    'setCode' | 'setSymbol' | 'setSymbolSource' | 'rarity' | 'frameAssetFamily'
+  >,
+): FaceRect {
+  return !face.setSymbol &&
+    !styledSetSymbol(
+      face.setCode ?? '',
+      face.rarity,
+      face.setSymbolSource ?? (face.frameAssetFamily ? 'cardconjurer' : 'auto'),
+    )
     ? (CORE_SYMBOL_CROPS[face.setCode?.toLowerCase() ?? ''] ?? [0, 0, 1, 1])
     : [0, 0, 1, 1];
 }
@@ -68,10 +79,16 @@ function forgeSymbol(rarity: string): string {
   return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="${ink}" stroke="#171717" stroke-width="2" stroke-linejoin="round"><path d="m50 3 7 17 17 7-17 7-7 17-7-17-17-7 17-7Z"/><path d="M8 48h84L78 64H62v16l12 10H26l12-10V64H22ZM15 94h70v4H15Z"/></g></svg>`)}`;
 }
 
-export function setSymbolVector(code: string, rarity = 'common'): string | null {
+export function setSymbolVector(
+  code: string,
+  rarity = 'common',
+  source?: RenderedCardInput['setSymbolSource'],
+): string | null {
   const normalized = code.trim().toLowerCase();
   if (normalized === 'forge') return forgeSymbol(rarity);
   if (normalized === LOCAL_CARD_SET_CODE.toLowerCase()) return localCardSymbol(rarity);
+  const styled = styledSetSymbol(normalized, rarity, source);
+  if (styled) return styled;
   const key = normalized === 'con' ? 'con_' : normalized === 'p02' ? 'po2' : normalized;
   return KEYRUNE_CODES.has(key) ? `${KEYRUNE_ROOT}/${key}.svg` : null;
 }

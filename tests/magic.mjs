@@ -250,7 +250,15 @@ try {
   const page = await browser.newPage();
   // No external art/font downloads in CI. Geometry and painting use original
   // synthetic bitmaps; real frame fidelity is checked separately in the host.
-  await page.route('https://**/*', (route) => route.fulfill({ status: 404, body: '' }));
+  await page.route('https://**/*', (route) =>
+    route.request().url().endsWith('/svg/tmp.svg')
+      ? route.fulfill({
+          status: 200,
+          contentType: 'image/svg+xml',
+          body: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M0 0H32V32H0Z M10 10H22V22H10Z"/></svg>',
+        })
+      : route.fulfill({ status: 404, body: '' }),
+  );
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const result = await page.evaluate(async (fixtures) => {
     const { magic, opticalDocument, withCardWording } = await import('/magic.js');
@@ -864,7 +872,7 @@ try {
           );
         canvas.width = canvas.height = 0;
       }
-    const { composeCardTexture, cardTextureKey, faceSetSymbol } = await import(
+    const { composeCardTexture, cardTextureKey, faceSetSymbol, retroSetSymbol } = await import(
       '/magic-presentation.js'
     );
     // The real frame loader downsizes its bitmaps. Bevel correction must
@@ -953,7 +961,7 @@ try {
           frameStyle: 'retro',
           setCode,
           rarity,
-          setSymbol: 'test:historical-stencil',
+          setSymbolSource: 'keyrune',
         };
         const canvas = await composeCardTexture(
           { face, printingId: null, printedImage: null },
@@ -962,7 +970,7 @@ try {
           {
             loadImages: async (urls) => ({
               images: new Map(
-                urls.map((url) => [url, url === face.setSymbol ? historicalStencil : bitmap]),
+                urls.map((url) => [url, url === retroSetSymbol(face) ? historicalStencil : bitmap]),
               ),
               dispose() {},
             }),
@@ -975,7 +983,7 @@ try {
         throw Error(`Incorrect historical set-symbol rarity treatment: ${setCode}`);
     }
     historicalStencil.width = historicalStencil.height = 0;
-    if (!faceSetSymbol({ setCode: 'p02' })?.endsWith('/po2.svg'))
+    if (!faceSetSymbol({ setCode: 'p02', setSymbolSource: 'keyrune' })?.endsWith('/po2.svg'))
       throw Error('Portal Second Age must use the pinned po2 glyph alias');
     for (const [name, code] of [
       ["D'Avenant Archer", 'leg'],

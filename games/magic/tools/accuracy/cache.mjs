@@ -1,3 +1,4 @@
+import manifest from '../../assets.json' with { type: 'json' };
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { atomicWrite, cacheRoot, hash, objectFile, readJson, writeJson } from './common.mjs';
@@ -19,7 +20,10 @@ function checkUrl(url) {
       'svgs.scryfall.io',
       'cdn.jsdelivr.net',
       'mtgjson.com',
+      'raw.githubusercontent.com',
     ].includes(parsed.hostname) ||
+    (parsed.hostname === 'raw.githubusercontent.com' &&
+      !url.startsWith(manifest.CONJURER_ROOT + '/')) ||
     (parsed.hostname === 'svgs.scryfall.io' && !/^\/sets\/[a-z0-9]+\.svg$/.test(parsed.pathname)) ||
     (parsed.hostname === 'mtgjson.com' && !/^\/api\/v5\/[A-Z0-9]+\.json$/.test(parsed.pathname))
   )

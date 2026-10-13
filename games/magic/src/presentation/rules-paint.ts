@@ -15,7 +15,7 @@ export function ordinaryTextLayout(
   const rects = faceRects(face);
   const typography = {
     ...RULES_TYPOGRAPHY,
-    flavorSeparator: hasFlavorSeparator(face.setCode),
+    flavorSeparator: face.frameAssetFamily === 'eighth' ? false : hasFlavorSeparator(face.setCode),
   };
   const [x, y, width, h] = rects.rules;
   const paragraphs =
@@ -25,10 +25,10 @@ export function ordinaryTextLayout(
       .filter(Boolean)
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
   const bounds: Parameters<typeof layoutRules>[2] = {
-    x: x * FACE_WIDTH + 3.5,
-    y: y * height + 7,
-    width: width * FACE_WIDTH - 9.5,
-    height: h * height - 8,
+    x: x * FACE_WIDTH + (face.frameAssetFamily ? 0 : 3.5),
+    y: y * height + (face.frameAssetFamily ? 0 : 7),
+    width: width * FACE_WIDTH - (face.frameAssetFamily ? 0 : 9.5),
+    height: h * height - (face.frameAssetFamily ? 0 : 8),
     // Fit actual line ink around the existing power/toughness plate. Short
     // final lines can use the lower left area without being painted over.
     exclusions:

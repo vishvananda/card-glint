@@ -45,3 +45,11 @@ backgrounds. See the [Mana icon reference](https://mana.andrewgioia.com/icons.ht
 Revised header costs also use Mana’s original white sun (`w-original`, U+E997),
 without a circular background. Other header symbols retain the existing SVG
 assets; inline symbols follow their separate printing policies.
+
+Replacement base plates (Eighth Edition and M15 Accurate), their masks and
+power/toughness badges, the optional Matrix Bold font, and complete styled set
+symbols reference [joshbirnholz/cardconjurer](https://github.com/joshbirnholz/cardconjurer)
+at `33f2547137fe366b40e9e8dba4eb591af190fddf`. See that source's
+[contributor credits and terms](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/legal/index.html).
+The `official` directory name describes the upstream collection, not a grant of
+rights. Only pinned URLs and an inventory of available filenames are included.

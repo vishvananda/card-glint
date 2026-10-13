@@ -18,6 +18,9 @@ export interface RulesParagraph {
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
   frameStyle?: 'modern' | 'retro';
+  /** Opt-in full frame plates, with their own art and text geometry. Omitted
+   * retains the calibrated component frames. Ordinary modern faces only. */
+  frameAssetFamily?: 'eighth' | 'm15-accurate';
   borderColor?: CardBorderColor;
   /** Physical printing layout, independent of rules identity. */
   layout?: string;
@@ -54,6 +57,9 @@ export interface RenderedCardInput extends CardProfileInput {
   setCode?: string | null;
   /** Optional host-owned symbol URL; setCode remains the printed label. */
   setSymbol?: string | null;
+  /** Auto prefers complete styled vectors, retaining reviewed Keyrune profiles.
+   * Explicit selection is useful for asset comparisons. Custom URLs win. */
+  setSymbolSource?: 'auto' | 'keyrune' | 'cardconjurer';
   rarity?: 'common' | 'uncommon' | 'rare' | 'mythic' | 'special' | 'bonus';
 }
 

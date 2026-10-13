@@ -68,8 +68,12 @@ export function manaSymbolAsset(symbol: string): string | null {
   return /^[A-Z0-9]+$/.test(key) ? componentAsset('symbols', key) : null;
 }
 
-export function setSymbolAsset(setCode: string, rarity?: string): string | null {
-  return setSymbolVector(setCode, rarity);
+export function setSymbolAsset(
+  setCode: string,
+  rarity?: string,
+  source?: RenderedCardInput['setSymbolSource'],
+): string | null {
+  return setSymbolVector(setCode, rarity, source);
 }
 
 export function componentAsset(group: string, name: string): string {
@@ -90,6 +94,10 @@ export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): st
   const set = face.setCode?.trim().toLowerCase() ?? '';
   return (
     face.setSymbol ??
-    setSymbolAsset(set === 'chr' ? (chroniclesSymbol(face.name) ?? '') : set, rarity)
+    setSymbolAsset(
+      set === 'chr' ? (chroniclesSymbol(face.name) ?? '') : set,
+      rarity,
+      face.setSymbolSource ?? (face.frameAssetFamily ? 'cardconjurer' : 'auto'),
+    )
   );
 }

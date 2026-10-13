@@ -84,7 +84,11 @@ try {
         weight: f.weight,
         status: f.status,
       }));
-      if (faces.length < 5 || faces.some((f) => f.status !== 'loaded'))
+      // Matrix is an optional Eighth Edition font; ordinary legacy captures do not load it.
+      if (
+        faces.length < 5 ||
+        faces.some((f) => f.family !== 'CardRenderer MTG Matrix' && f.status !== 'loaded')
+      )
         throw Error('Required fonts not loaded: ' + JSON.stringify(faces));
       return faces;
     },

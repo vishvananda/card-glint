@@ -14,6 +14,8 @@ import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.
 import { COLORLESS_PLATE_REPAINT, paintPlaneswalkerType } from './planeswalker-type.js';
 import { paintPlaneswalkerFrameImage } from './planeswalker-lower-frame.js';
 import { setSymbolCrop } from './set-symbols.js';
+import { CONJURER_ROOT, isStyledSetSymbol } from './styled-set-symbols.js';
+import { paintFramePlateFace, loadFramePlateFonts } from './frame-plate-paint.js';
 import {
   hasCoreSetShield,
   NORMAL_CORE_SYMBOL_SCALE,
@@ -103,7 +105,8 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       : null;
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
-    'canvas-face-v81',
+    CONJURER_ROOT,
+    'canvas-face-v82',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -141,11 +144,13 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.illustrationCrop ?? null,
         face.setCode ?? null,
         face.setSymbol ?? null,
+        face.setSymbolSource ?? null,
         faceRects(face),
       ]
     : [
         isRetro(face) ? [retroFrameAsset(face), retroBorder(face)] : null,
         face.borderColor ?? null,
+        face.frameAssetFamily ?? null,
         face.name,
         face.manaSymbols ?? [],
         face.typeLine ?? '',
@@ -162,6 +167,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.legalText === undefined ? ['default'] : face.legalText,
         face.setCode ?? null,
         face.setSymbol ?? null,
+        face.setSymbolSource ?? null,
         face.rarity ?? 'common',
         face.power ?? null,
         face.toughness ?? null,
@@ -253,6 +259,7 @@ export async function composeCardTexture(
     }
     await Promise.all([
       (hooks?.loadFonts ?? loadCanvasFonts)(),
+      loadFramePlateFonts(input.face),
       isRetro(input.face) ? (hooks?.loadRetroFont ?? loadRetroFont)() : Promise.resolve(),
     ]);
     signal.throwIfAborted();
@@ -322,6 +329,10 @@ export function paintAssembledFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
+  if (face.frameAssetFamily) {
+    paintFramePlateFace(context, face, images, underArt, layer);
+    return;
+  }
   if (isRetro(face)) {
     paintRetroFace(context, face, images, underArt, layer);
     return;
@@ -560,7 +571,9 @@ export function paintAssembledFace(
       true,
     ),
   );
-  const setIcon = images.get(faceSetSymbol(face) ?? '');
+  const setUrl = faceSetSymbol(face),
+    setIcon = images.get(setUrl ?? ''),
+    styledSymbol = isStyledSetSymbol(setUrl);
   const setCrop = setSymbolCrop(face),
     coreShield = hasCoreSetShield(face),
     shapedCode = shapedSetCode(face),
@@ -609,7 +622,12 @@ export function paintAssembledFace(
       setIcon.width * setCrop[2] * scale * symbolGrowth,
       setIcon.height * setCrop[3] * scale * symbolGrowth,
     ] as const;
-    if (coreShield)
+    if (styledSymbol || face.setSymbol) {
+      context.save();
+      context.shadowColor = 'transparent';
+      context.drawImage(setIcon, ...symbolBounds);
+      context.restore();
+    } else if (coreShield)
       paintCoreSetSymbol(
         context,
         setIcon,
