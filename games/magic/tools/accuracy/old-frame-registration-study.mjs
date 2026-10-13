@@ -15,29 +15,67 @@ import {
 import { normalize } from './pixels.mjs';
 import { stockBounds } from './frame-family-metrics.mjs';
 import {
+  plateProfiles,
+  canonicalScanProfiles,
+  alignedScanTemplates,
+  fitScanResidual,
+  fitSharedPlateRegistration,
+  PLATE_REGISTRATION_VERSION,
+} from './printed-plate-registration.mjs';
+import {
   fitSharedStockRegistration,
   OLD_FRAME_REGISTRATION_VERSION,
 } from './old-frame-registration.mjs';
 
-// Extend scope only through a separately validated set/family/stock cohort.
+// Each set/family/stock cohort must pass its own frozen calibration and holdout.
 const set = process.argv[2] ?? '3ed';
-assert.equal(set, '3ed', 'Only the Revised Fourth-family registration is validated here.');
+assert.match(set, /^[a-z0-9]{2,6}$/);
 const plan = await readJson(`${fixtureRoot}/old-frame-family-plan.json`),
   snapshot = await readJson(`${cacheRoot}/rollout/old-frame-families.json`),
-  sources = await readJson(`${cacheRoot}/rollout/early-hsb.json`),
+  sourceStudies = await Promise.all(
+    ['early-hsb', 'old-hsb-preview'].map((name) => readJson(`${cacheRoot}/rollout/${name}.json`)),
+  ),
+  sources = {
+    components: [
+      ...new Map(sourceStudies.flatMap((s) => s.components).map((a) => [a.url, a])).values(),
+    ],
+  },
   materials = ['W', 'U', 'B', 'R', 'G', 'A'],
   selected = snapshot.entries.filter(
     (e) =>
       e.set === set &&
       e.frame === '1993' &&
-      e.border === 'white' &&
       materials.includes(e.material) &&
       e.group.split('/')[2] === 'normal' &&
       !e.issue,
   );
 assert.equal(snapshot.planHash, hash(JSON.stringify(plan)));
-assert.equal(selected.length, 36, 'The frozen metadata-only Revised cohort changed.');
+// A separately specified land extension covers the common ABU dual-land source.
+// Names select cohorts before measuring; Badlands remains held out for review.
+if (set === 'lea') {
+  materials.push('L');
+  const landCalibration = new Set(['Bayou', 'Plateau', 'Savannah']);
+  selected.push(
+    ...snapshot.entries
+      .filter((e) => e.set === set && e.material.startsWith('dual-') && !e.issue)
+      .map((e) => ({
+        ...e,
+        material: 'L',
+        cohort: landCalibration.has(e.name) ? 'calibration' : 'validation',
+      })),
+  );
+}
+assert.ok(selected.length >= 12, 'Insufficient frozen metadata-only cohort');
+const stocks = [...new Set(selected.map((e) => e.border))],
+  families = [...new Set(selected.map((e) => e.currentFamily))];
+assert.equal(stocks.length, 1, 'Mixed stocks require separate studies');
+assert.equal(families.length, 1, 'Mixed families require separate studies');
+const border = stocks[0],
+  family = families[0],
+  usePlate = family === 'abu' && border === 'black',
+  anchor = usePlate ? 'printed-plate-gradient' : 'outer-stock';
 const targets = {},
+  plateTargets = {},
   guards = [],
   rows = [];
 const browser = await openBrowser(
@@ -46,45 +84,48 @@ const browser = await openBrowser(
 );
 try {
   for (const material of materials) {
-    const result = await browser.page.evaluate(async (material) => {
-      const { paintRetroFace } = await import('/games/magic/src/presentation/retro-paint.ts');
-      const { retroFrameAsset, retroFrameRect, retroBorderMask, retroFamily } = await import(
-        '/games/magic/src/presentation/retro-frame.ts'
-      );
-      const { loadCanvasImages, canvasAssetUrls } = await import(
-        '/games/magic/src/presentation/canvas-assets.ts'
-      );
-      const face = {
-        name: '',
-        typeLine: material === 'A' ? 'Artifact' : 'Creature',
-        colors: material === 'A' ? [] : [material],
-        setCode: '3ed',
-        borderColor: 'white',
-        frameStyle: 'retro',
-        rulesText: '',
-        artist: '',
-        legalText: '',
-      };
-      const loaded = await loadCanvasImages(canvasAssetUrls(face), new AbortController().signal);
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = 732;
-        canvas.height = 1020;
-        const context = canvas.getContext('2d');
-        context.scale(1.5, 1.5);
-        paintRetroFace(context, face, loaded.images);
-        return {
-          png: canvas.toDataURL(),
-          url: retroFrameAsset(face),
-          rect: retroFrameRect(face),
-          maskUrl: retroBorderMask(face),
-          family: retroFamily(face),
+    const result = await browser.page.evaluate(
+      async ({ material, set, border }) => {
+        const { paintRetroFace } = await import('/games/magic/src/presentation/retro-paint.ts');
+        const { retroFrameAsset, retroFrameRect, retroBorderMask, retroFamily } = await import(
+          '/games/magic/src/presentation/retro-frame.ts'
+        );
+        const { loadCanvasImages, canvasAssetUrls } = await import(
+          '/games/magic/src/presentation/canvas-assets.ts'
+        );
+        const face = {
+          name: '',
+          typeLine: material === 'L' ? 'Land' : material === 'A' ? 'Artifact' : 'Creature',
+          colors: ['A', 'L'].includes(material) ? [] : [material],
+          setCode: set,
+          borderColor: border,
+          frameStyle: 'retro',
+          rulesText: '',
+          artist: '',
+          legalText: '',
         };
-      } finally {
-        loaded.dispose();
-      }
-    }, material);
-    assert.equal(result.family, 'fourth');
+        const loaded = await loadCanvasImages(canvasAssetUrls(face), new AbortController().signal);
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = 732;
+          canvas.height = 1020;
+          const context = canvas.getContext('2d');
+          context.scale(1.5, 1.5);
+          paintRetroFace(context, face, loaded.images);
+          return {
+            png: canvas.toDataURL(),
+            url: retroFrameAsset(face),
+            rect: retroFrameRect(face),
+            maskUrl: retroBorderMask(face),
+            family: retroFamily(face),
+          };
+        } finally {
+          loaded.dispose();
+        }
+      },
+      { material, set, border },
+    );
+    assert.equal(result.family, family);
     assert.ok(
       selected.filter((e) => e.material === material).every((e) => e.currentAsset === result.url),
     );
@@ -92,18 +133,20 @@ try {
       renderedHash = hash(bytes),
       file = `${set}-${material}.png`;
     await atomicWrite(`${outputRoot}/old-frame-registration/${file}`, bytes);
-    targets[material] = stockBounds(normalize(PNG.sync.read(bytes)), 'white');
-    assert.ok(targets[material].reliable, `Unreliable rendered ${material} stock anchors`);
+    const normalized = normalize(PNG.sync.read(bytes));
+    targets[material] = stockBounds(normalized, border);
+    if (usePlate) plateTargets[material] = plateProfiles(normalized);
+    else assert.ok(targets[material].reliable, `Unreliable rendered ${material} stock anchors`);
     const asset = sources.components.find((s) => s.url === result.url),
       mask = sources.components.find((s) => s.url === result.maskUrl);
-    assert.ok(asset && mask);
+    assert.ok(asset && (!result.maskUrl || mask));
     guards.push({
       material,
       url: result.url,
       rect: result.rect,
       sha256: asset.sha256,
       maskUrl: result.maskUrl,
-      maskSha256: mask.sha256,
+      maskSha256: mask?.sha256 ?? null,
       renderedHash,
       file,
     });
@@ -114,24 +157,33 @@ try {
 }
 for (const entry of selected) {
   const bytes = await readObject(entry.reference);
+  const normalized = normalize(PNG.sync.read(bytes, { checkCRC: true }));
   rows.push({
     id: entry.id,
     name: entry.name,
     material: entry.material,
     cohort: entry.cohort,
     referenceHash: entry.reference.sha256,
-    bounds: stockBounds(normalize(PNG.sync.read(bytes, { checkCRC: true })), 'white'),
+    bounds: stockBounds(normalized, border),
+    ...(usePlate ? { profiles: plateProfiles(normalized) } : {}),
   });
 }
-const fit = fitSharedStockRegistration(rows, targets),
+const fit = usePlate
+    ? fitSharedPlateRegistration(
+        rows.filter((r) => r.material !== 'L'),
+        plateTargets,
+      )
+    : fitSharedStockRegistration(rows, targets),
   methodHash = hash(
     Buffer.concat(
       await Promise.all(
         [
           'old-frame-registration-study.mjs',
           'old-frame-registration.mjs',
+          'printed-plate-registration.mjs',
           'frame-family-metrics.mjs',
           'pixels.mjs',
+          'pixels-pure.mjs',
         ].map((p) => readFile(new URL(p, import.meta.url))),
       ),
     ),
@@ -145,23 +197,52 @@ const fit = fitSharedStockRegistration(rows, targets),
       ),
     ),
   );
+const registrationTemplates =
+  usePlate && fit.accepted
+    ? alignedScanTemplates(canonicalScanProfiles(rows), fit.transform)
+    : null;
+const landValidation = registrationTemplates?.L
+  ? rows
+      .filter((r) => r.material === 'L')
+      .map((r) => ({
+        id: r.id,
+        cohort: r.cohort,
+        ...fitScanResidual(r.profiles, registrationTemplates.L),
+      }))
+  : [];
+if (
+  landValidation.length &&
+  landValidation.filter((r) => r.cohort === 'validation' && r.accepted).length < 5
+) {
+  delete registrationTemplates.L;
+  guards.splice(
+    guards.findIndex((g) => g.material === 'L'),
+    1,
+  );
+}
 const result = {
   schemaVersion: 1,
-  method: OLD_FRAME_REGISTRATION_VERSION,
+  method: usePlate ? PLATE_REGISTRATION_VERSION : OLD_FRAME_REGISTRATION_VERSION,
   set,
   printedFrame: '1993',
-  border: 'white',
-  frameFamily: 'fourth',
+  border,
+  frameFamily: family,
+  anchor,
   coordinateSystem:
     '488x680; references only; pAfter=center+scale*(pBefore-center)+(tx,ty), center=(244,340); pixels.normalize handles source resolution/letterboxing first',
   scope: {
     materials,
     layouts: ['normal'],
-    frameFamily: 'retro-fourth',
-    excludes: ['lands using another family', 'tokens', 'special layouts', 'other sets or stocks'],
+    frameFamily: `retro-${family}`,
+    excludes: [
+      'land assets not explicitly guarded',
+      'tokens',
+      'special layouts',
+      'other sets or stocks',
+    ],
   },
   policy:
-    'One shared translation and uniform scale fitted on frozen calibration cards to the retained painter stock boundaries, equally weighted by material. The target includes the actual scaled frame and white border mask. No text, art, internal bevel, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. Residual opposed boundaries remain a source-geometry diagnostic.',
+    'One shared translation and uniform scale fitted on frozen calibration cards to the retained painter outer printed plate, equally weighted by material. No text, art, HSB, rotation, anisotropic or per-scan fitting. Held-out cards only validate the frozen transform. ABU black stock uses normalized gradient profiles of the plate border to separate its narrow bevel from the adjacent cast shadow and faint bitmap edge. Other families use stock boundaries. Residual opposed boundaries remain a source-geometry diagnostic.',
   guards: {
     sources: guards,
     runtime:
@@ -172,11 +253,28 @@ const result = {
     snapshotHash: hash(JSON.stringify(snapshot)),
     methodHash,
     rendererStockHash,
-    targetsHash: hash(JSON.stringify(targets)),
+    targetsHash: hash(JSON.stringify(usePlate ? plateTargets : targets)),
     referencesHash: hash(JSON.stringify(rows.map((r) => [r.id, r.referenceHash, r.cohort]))),
   },
   ...fit,
   targets,
+  ...(usePlate
+    ? {
+        plateTargets,
+        registrationTemplates,
+        templateExtensions: landValidation.length
+          ? [
+              {
+                material: 'L',
+                accepted: !!registrationTemplates?.L,
+                rendererGeometryValidated: false,
+                note: 'Reference pose transfers to the shared ABU card coordinate system. The retained plain land frame differs from the printed dual-land frame; preserve this asset discrepancy separately from scan normalization.',
+                rows: landValidation,
+              },
+            ]
+          : [],
+      }
+    : {}),
   referenceRows: rows,
 };
 await writeJson(`${fixtureRoot}/old-frame-registration-${set}.json`, result);
@@ -186,10 +284,13 @@ console.log(
       status: result.status,
       transform: result.transform,
       calibration: result.calibration && [
-        result.calibration.beforeRms,
-        result.calibration.afterRms,
+        result.calibration.beforeRms ?? result.calibration.before,
+        result.calibration.afterRms ?? result.calibration.after,
       ],
-      validation: result.validation && [result.validation.beforeRms, result.validation.afterRms],
+      validation: result.validation && [
+        result.validation.beforeRms ?? result.validation.before,
+        result.validation.afterRms ?? result.validation.after,
+      ],
       geometryFlags: result.geometryFlags,
       flags: result.flags,
     },
