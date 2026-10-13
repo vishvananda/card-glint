@@ -16,10 +16,25 @@ included. Smaller sets follow later.
 1. Old-frame set symbols, then border geometry, then component HSB.
 2. New-frame set symbols, then border geometry, then component HSB, including
    both 2003-era and 2015-era families.
+3. Automatically fit text on every eligible ordinary printing, derive and
+   validate shared set defaults, then rescore the corpus with those defaults.
+4. Use human review for the remaining outliers and local glyph/spacing defects.
+   Keep a small random audit of high-scoring cards to detect metric blind spots.
 
-Build the inventory and coverage ledger first. Keep unsupported cards and
+The inventory and coverage ledger are established. Keep unsupported cards and
 registration failures visible. Existing typography/font issues below remain
-queued separately during these three component passes.
+queued separately during the component passes. The
+[text-calibration handoff](accuracy-plan.md#automatic-text-calibration-after-both-waves)
+defines fitting, shared defaults and outlier review.
+
+### Revised dual-land text-box treatment
+
+Check and reproduce the printed Revised dual-land rules-box background/treatment
+across all ten dual lands. This is separate from the missing striped outer-frame
+overlay; completing one does not close the other. Compare scans with the retained
+frame assets, record missing components, and validate the paper treatment with
+the frame/HSB work before learning text defaults. Do not let a background mismatch
+drive text size or margin corrections.
 
 ## Assets needing visual review
 

@@ -16,9 +16,13 @@ proposals, versioned source evidence, and daily consistent backups. Its first
 current-CDN audit covers 37 Revised printings: 28 are eligible for the queue and
 nine require wording or frame review. This is sampled coverage, not a complete
 set score. Experimental text edits remain review proposals for shared policies.
-Next: resume the old-frame set-symbol pass. The queue uses current renderer
-scores, exact original wording, and accepted shared frame normalization;
-historical reports remain available as archived evidence. Revised now has a
+The Alpha text-review pilot now also supports client-side, frame-only scan
+translation and uniform scale, frozen before text fitting. This normalization
+is comparison-only and does not add offsets to rendered cards. The ten-card
+human/automatic trial informs the later text pass; it does not establish set
+defaults or complete whole-set scoring. Finish the old/new component passes
+before scaling that trial to the corpus. Historical reports remain archived
+evidence. Revised has a
 [validated shared stock profile](fixtures/accuracy/old-frame-registration-3ed.json)
 against actual rendered boundaries, with remaining source-aspect differences
 reported separately. Its held-out error improves 1.81 → 1.25 canonical pixels;
@@ -272,9 +276,60 @@ silently count as complete or halt unrelated sets indefinitely. Keep the local
 review browser outside the repository, retain the existing frame assets and
 maintain the separate asset-improvement queue.
 
-**Next implementation step:** build the complete 50-card inventory/coverage
-ledger, verify old-frame registration, then begin old-frame symbol profiles.
-Finish that symbol sweep before starting the old-frame geometry sweep.
+**Next implementation step:** continue the remaining frame-registration
+prerequisites and old-frame symbol profiles against the frozen inventory.
+Complete both waves of component passes before the corpus-wide text phase below.
+
+### Automatic text calibration after both waves
+
+Agreed sequence: finish old-frame symbols, geometry and HSB, then new-frame
+symbols, geometry and HSB; automatically fit text across the ordinary-printing
+corpus; derive shared set defaults; rescore with those defaults; review outliers.
+Resolve or explicitly flag material work such as the Revised dual-land text-box
+treatment before interpreting text scores.
+
+1. Freeze renderer, assets, original-printing wording/symbols and comparison
+   generation. For text comparison, normalize each scan's translation and
+   uniform scale using only independent frame anchors. Freeze that transform
+   before fitting text. Failed or ambiguous registration, wording discrepancies,
+   missing references and unsupported layouts stay visible as separate issues.
+   These transforms never become renderer offsets or per-card layout policies.
+2. Search every eligible printing for the best text layout and retain the
+   parameters, effective line geometry, confidence and residuals. Improve the
+   search's independent starting points before the full run: the Alpha pilot's
+   Bad Moon fit reached the horizontal-width bound and missed a better layout
+   that the unchanged objective correctly preferred. Flag bound hits, unstable
+   solutions, overflow and local mismatches; a higher score alone is insufficient.
+3. Reserve a validation sample before deriving rules. Use robust estimates from
+   confident calibration fits to propose simple set defaults, sharing frame/era
+   rules where transfer succeeds. Split by material, alignment or text density
+   only when repeated evidence and reserved validation justify it. Infer margins
+   from left-aligned cards; use centered cards to validate text center and wrapping
+   width, since their left/right margin pairs are not independently identifiable.
+   Compare effective letter dimensions and line advance when font size, glyph
+   width and leading compensate for one another. Prefer modest shape changes
+   when alternatives score similarly. Do not average raw slider values blindly.
+4. Validate those shared defaults on the reserved sample, including long text,
+   centered text, flavor and inline symbols, then render and score every eligible
+   printing again. Keep baseline, shared-default and best individual-fit scores
+   separately. Individual fits are diagnostic observations, not shipped overrides.
+   A large gap between shared-default and best-fit scores exposes a rule that
+   misses a subgroup; a poor best fit suggests wording, glyph, asset, registration
+   or search problems. Retain coverage failures in the denominator.
+5. Build the human queue from residual errors after shared defaults: low scores,
+   large best-fit gaps, uncertain searches and local spacing/kerning defects.
+   Keep a small stratified audit of high-scoring cards so the metric cannot hide
+   systematic mistakes. Feed confirmed patterns back into shared rules, validate
+   them and rescore; preserve review history and exact version provenance.
+
+The frozen Alpha pilot supports this approach: mean body edge F1 at one-pixel
+tolerance was 53.9 before adjustment, 81.8 for the human and 82.1 for the automatic
+fit (scores scaled to 100, not whole-card accuracy percentages). Eight of ten
+human/automatic pairs were within 1.6 points. All ten had matching line breaks;
+the five left-aligned cards independently gave a median +10 canonical-pixel
+left margin. Bad Moon remains an explicit search failure (human 67.3 versus
+automatic 60.0). These ten cards are development evidence, not independent
+validation of Alpha defaults or evidence of transfer to other sets.
 
 ## Earlier measurements and reproduction
 
