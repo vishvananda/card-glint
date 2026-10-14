@@ -81,7 +81,11 @@ for (const [set, names] of Object.entries(cohort)) {
       ]);
       const input = specialFrameInput(card, side, reference, art, records);
       if (adventure) {
-        input.face.collectorNumber = `${card.collector_number.padStart(3, '0')}/${data.baseSetSize}`;
+        const number = card.collector_number.padStart(3, '0');
+        input.face.collectorNumber =
+          Number(card.collector_number) <= data.baseSetSize
+            ? `${number}/${data.baseSetSize}`
+            : number;
         input.face.legalText = `™ & © ${data.releaseDate.slice(0, 4)} Wizards of the Coast`;
       }
       entries.push({

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { reviewedSpecialRecords } from '../games/magic/tools/accuracy/special-printing-corrections.mjs';
 import {
   originalFaceRecord,
   originalPanelText,
@@ -135,6 +136,15 @@ assert.throws(
   () => originalPanelText(adventure, joinedAdventure[0], [joinedAdventure[0], adventureRecords[1]]),
   /Ambiguous/,
 );
+const duplicatedUnsplit = adventureRecords.map((r) => ({
+  ...r,
+  originalText: 'An unrelated card.',
+}));
+assert.throws(
+  () => originalPanelText(adventure, duplicatedUnsplit[0], duplicatedUnsplit),
+  /duplicated original panel text without a divider/,
+  'Identical provider text on both faces is not evidence of correct independent wording',
+);
 const joined = records.map((r, i) => ({
   ...r,
   originalText: 'First. // Creature — Goblin\nSecond.',
@@ -180,4 +190,23 @@ assert.throws(
 );
 console.log(
   'Special-frame audit inputs: exact original wording per face, split sheets, independent physical references, missing/ambiguous records pass.',
+);
+
+const reprint = { id: 'b5b71cd2-de35-451f-b16e-2e3936169407', set: 'clb', collector_number: '781' };
+const reprintScan = { sha256: '8ec0318dedb68a9259aaf7934552018fb54f62f7b865b9f38d3c674ea9e45ccc' };
+const corrupt = ['Bonecrusher Giant', 'Stomp'].map((faceName) => ({
+  identifiers: { scryfallId: reprint.id },
+  faceName,
+  originalType: 'Sorcery',
+  originalText: 'Each creature deals damage to itself equal to its power.',
+}));
+const reviewed = reviewedSpecialRecords(reprint, reprintScan, corrupt);
+assert.equal(reviewed[0].originalType, 'Creature — Giant');
+assert.match(reviewed[0].originalText, /^Whenever Bonecrusher Giant/);
+assert.match(reviewed[1].originalText, /^Damage can't be prevented/);
+assert.equal(reviewed[0].reviewedCorrection.fields.originalText.before, corrupt[0].originalText);
+assert.throws(() => reviewedSpecialRecords(reprint, reference, corrupt), /identity changed/);
+assert.throws(
+  () => reviewedSpecialRecords(reprint, reprintScan, corrupt.slice(0, 1)),
+  /Missing reviewed/,
 );

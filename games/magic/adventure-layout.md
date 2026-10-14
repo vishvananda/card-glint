@@ -1,110 +1,127 @@
-# Adventure frame investigation
+# Native Adventure frames
 
-The v0.2.17 painter uses component frames and estimated text lengths.
-The corrected baseline covers 111 ordinary English nonfoil Adventure printings:
-30 ELD, 51 WOE and 30 CLB. All render with their original rules and cached
-Scryfall full scans/art. Baseline metrics are deliberately null until the
-frame-only registration below is applied. The compact
-[baseline receipt](fixtures/accuracy/adventure-baseline.json) records its hashes.
+Adventure uses pinned full book plates, independent permanent/spell materials,
+and measured text. Set `layout: 'adventure'`, with `faces` ordered permanent
+then inset spell. The parent owns the full-card art and permanent identity.
+Native art geometry also drives printing holes, optical effects and hit regions.
+Prepared is a separate right-inset layout; it must not use this painter.
 
-## Input findings
-
-MTGJSON repeats a joined `originalText` on both records for 109 of these cards.
-The joined field follows the printed book order: inset spell first, permanent
-second. The face records use the opposite order. The adapter separates only
-an identical pair with exactly one delimiter, preserving the original words.
-Two CLB records already supply separate text and remain untouched.
-
-Some printings also repeat the permanent's `originalType` on the spell record.
-Only that duplicated pair may use the agreeing MTGJSON and Scryfall per-face
-spell types, with the source conflict retained in the manifest. A missing
-`originalType` still falls back to the provider's face type; historical type
-errata must therefore be reviewed separately. Parent flavor no longer leaks
-into the inset spell. The main frame uses the permanent's name, colors, mana
-cost, rules and power/toughness; the inset retains its own independent fields.
-
-Fae of Wishes, Horned Loch-Whale and Ratcatcher Trainee have Oracle changes on
-both halves, so exact current-text equality cannot identify the original blocks.
-Their scans confirm the same spell-first ordering. The baseline preserves
-their old words rather than replacing them with Oracle text. The earlier
-`adventure-v0217-input-v1` capture has duplicated wording and is unsuitable for
-layout comparisons.
-
-## Source-led replacement
+## Sources and preparation
 
 The pinned CardConjurer revision `33f2547137fe366b40e9e8dba4eb591af190fddf`
-provides 1500 × 2100 full plates in `img/frames/adventure/regular/`, plus
-`nyx/` variants and shaped book-left/book-right/pinline masks. Its
-[Adventure frame definition](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packAdventure.js)
-defines the art aperture, two inset header bands and two independent text areas.
-The [MSE Adventure style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-adventure.mse-style/style)
-adds measured text fitting, page-specific material selection and optional
-short-text centering. These sources remain external references.
+provides 1500 × 2100 plates in `img/frames/adventure/regular/`, plus book-left
+and pinline masks. Its [frame definition](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packAdventure.js)
+defines two header bands and independent text pages. The
+[MSE Adventure style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-adventure.mse-style/style)
+provides further text-fitting and material-selection references. Hybrid label
+paper comes from the same pinned MSE source used by modern splits.
 
-The native implementation now:
+The permanent and spell retain their own colors, costs, names, types and rules.
+Two-color pinlines, hybrid labels, artifact plates, legendary crowns, native
+power/toughness badges and stamps are composed separately. Prepared materials
+use a 16 MiB LRU keyed by decoded sources, set and calibration policy. RGB paper
+calibration occurs only during preparation on a cache miss; no render-loop
+readback, decoding or font loading occurs. Borrowed source bitmaps remain owned
+by the asset loader.
 
-1. Uses the full plate and shared art aperture for face painting, printing
-   holes, artwork effects and hit regions, retaining the book fold and page edges.
-2. Composites the inset page from its own color material. Callous Sell-Sword and
-   Kellan demonstrate why the permanent's color is insufficient. Two-color
-   pinlines, hybrid neutral labels, artifact plates and legendary crowns have
-   separate source selection. Prepared composites use a 16 MiB LRU and borrow
-   decoded assets without owning them. No render-loop decoding or readback occurs.
-3. Fits measured independent page layouts, preserving inline reminders, flavor
-   italics and the flavor divider. The permanent page excludes power/toughness
-   ink and centers a single short rules line; two-line passages remain left
-   aligned. Explicit left/original/Oracle alignment controls remain available.
-4. Registers scans using frame-only rails, excluding art, text, symbols and stamp.
-   Shared text settings were explored on ELD, then used unchanged on WOE/CLB.
+Beleren Bold Small Caps supplies artist and power/toughness lettering. WOE uses
+rarity-first, four-digit collector numbering; `collectorFormat` lets hosts select
+`number-first` or `rarity-first` explicitly. The host supplies the printed serial;
+the renderer does not infer collector totals.
 
-## First native comparison (unreleased)
+## Comparison inputs and corrections
 
-The [native receipt](fixtures/accuracy/adventure-native.json) retains all 111
-results, including rejected fits and 22 component regressions. No card has text
-overflow. Only 80 scans pass frame registration; CLB's low acceptance needs
-investigation before generalizing its averages.
+The cohort contains 111 ordinary nonfoil-eligible printings: ELD 30, WOE 51,
+CLB 30. Full scans, art and provider metadata are locally cached. MTGJSON repeats
+joined `originalText` on both face records for 109 cards. That field follows the
+printed book order (spell first), while face identity is permanent first. The
+adapter separates only an identical pair with exactly one delimiter.
+
+Two CLB reprints instead contain unrelated original text and types on both
+records: Bonecrusher Giant and Embereth Shieldbreaker. These are invalid inputs,
+not font regressions. The adapter now rejects identical unsplit panel text unless
+scan review has supplied independent fields. The
+[reviewed corrections](fixtures/accuracy/adventure-printing-corrections.json)
+are bound to exact scan hashes and preserve the rejected provider values. They
+also restore Oakhame Ranger's printed Elf Knight type without the later Ranger
+erratum. Changes to the physical scan require another review.
+
+The immutable `adventure-v0217-input-v3` baseline recaptures affected cards using
+v0.2.17 and the same corrected inputs as the candidate. Collector totals are
+removed for printings beyond their numbered main set. Earlier input-v2 and
+native-v2/v3/v4 captures retain the bad CLB fields and cannot substantiate those
+cards' text scores. Their historical receipts are marked as superseded.
+
+## Normalization and typography
+
+Frame-only registration measures outside rails and the straight book edge,
+excluding art, lettering, symbols, stats and stamp. Its target is an independent
+**uncalibrated** frame raster: changing paper tone cannot change the target's
+edge selection. Both renderer versions use the same accepted normalized scan.
+Rejected fits remain raw and unscored; acceptance gates are not relaxed.
+
+ELD development sweeps selected the permanent-page position and a shared spell
+policy: a passage that fits within four measured lines at 20.25 canonical pixels
+keeps that size, while longer passages fit down from 22.5. This avoids expanding
+short spells into spare page space. It uses measured glyphs and style runs, not
+a character-count cutoff. Explicit left alignment is honored; a single short
+permanent rules line can center. Body text excludes the power/toughness badge.
+
+The [refined receipt](fixtures/accuracy/adventure-refined.json) records the
+complete cohort, hashes, regions, rejected fits and all 14 component regressions.
+No card overflows its text area. WOE and CLB retain the ELD-selected text policy.
 
 | Set               | Accepted / total | Permanent text F1 | Spell text F1 | White inset headers F1 |
 | ----------------- | ---------------- | ----------------- | ------------- | ---------------------- |
-| ELD (development) | 25 / 30          | 0.243 → 0.519     | 0.314 → 0.609 | 0.457 → 0.872          |
-| WOE (held out)    | 43 / 51          | 0.287 → 0.468     | 0.369 → 0.531 | 0.516 → 0.881          |
-| CLB (held out)    | 12 / 30          | 0.324 → 0.507     | 0.325 → 0.562 | 0.448 → 0.863          |
+| ELD (development) | 25 / 30          | 0.237 → 0.519     | 0.315 → 0.649 | 0.457 → 0.872          |
+| WOE (held out)    | 43 / 51          | 0.282 → 0.467     | 0.370 → 0.545 | 0.516 → 0.881          |
+| CLB (held out)    | 12 / 30          | 0.320 → 0.547     | 0.321 → 0.626 | 0.459 → 0.892          |
 
-These are local-contrast text edge scores at one canonical pixel, not visual
-accuracy percentages. White header text uses light-ink polarity; applying the
-dark-lettering detector there would score background contours instead. Before
-and after share the same original wording, art and independently normalized scan.
-Power/toughness ink is excluded from body-text metrics.
+These are local-contrast text-edge F1 scores at a one-pixel tolerance, not visual
+accuracy percentages. Inset headers use light-ink polarity. Stomp improves from
+0.309 to 0.861 in ELD and 0.338 to 0.794 in CLB. CLB's low registration acceptance
+limits conclusions about its complete set.
 
-The synthetic rotation test also exposed a generic registration rejection:
-when translation-only fitting lost inlier support, its independent validation
-error was discarded. The rotation candidate then compared against itself and
-could never demonstrate a gain. Rejected candidates now retain that diagnostic;
-support, pose bounds and disjoint-validation thresholds are unchanged.
+## Paper color
 
-Remaining work before release:
+Opt-in `colorCalibration: 'set-hsb-v1'` applies separate W/U/B/R/G spell-paper
+profiles for ELD and WOE. The correction follows the curved body edge and keeps
+the header bands, left fold, book outline and bottom rail intact. It is applied
+before two-color page blending. Gold and artifact paper have no fitted profile.
 
-- Source left-page materials are too dark, especially red/blue; both inspected
-  MSE page families share the problem. Preserve the native fold while replacing
-  or calibrating the paper, rather than coloring over its shadow.
-- Stomp, Petty Theft, Cast Off and several later spells need different wrapping.
-  A shared maximum improves the average but does not reproduce every printing.
-  Do not turn the per-card exploratory optima into renderer exceptions.
-- WOE has a newer collector footer format. The prototype still prints the older
-  collector/total/rarity layout; artist and power/toughness lettering also need QA.
-- Oakhame Ranger's missing historical type falls back to an errataed provider
-  type containing Ranger. Treat that as an input provenance issue, not bad geometry.
-- Review the 31 rejected frame fits without relaxing acceptance to raise scores.
-  Nyx/enchantment-creature plates and further Adventure treatments remain unclaimed.
+Profiles were fitted on alternating accepted ELD mono-color cards. Remaining
+ELD cards and later sets are reserved checks. Neutral hues are locked to prevent
+near-gray paper from acquiring a spurious tint. Actual raster samples, rather
+than only predicted transformed medians, are retained in the paper receipt.
+The [paper receipt](fixtures/accuracy/adventure-paper.json) records mean Oklab
+color distance ×100 (lower is better): reserved ELD 13.27 → 0.84, and WOE
+10.72 → 3.38. All admitted mono-color holdouts improve. Every normalized pose
+matches the uncalibrated comparison, and CLB's paper samples remain identical.
+CLB deliberately retains its darker source material: the ELD correction worsens
+some of its printings. One blue calibration has a small predicted highlight-
+clipping fraction, retained in the diagnostics.
+
+## Remaining limits
+
+- Cast Off, Granted and several other spells still have incorrect wrapping.
+  Permanent-page spacing and type/title widths have visible outliers. No per-card
+  exploratory optimum is installed in the runtime.
+- Header material colors, paper texture, stamp detail and some hybrid materials
+  remain approximations. The paper HSB study does not certify those components.
+- Thirty-one scans fail independent frame registration and are unscored.
+- Nyx plates and further Adventure treatments are not validated by this cohort.
+- The deployed search adapter still needs dedicated special-frame routing;
+  the complete comparison gallery remains separate from the library.
 
 ```sh
 node tests/magic-special-frame-input.mjs
-node games/magic/tools/accuracy/special-frame-audit.mjs adventure-v0217-input-v2 --adventure
-node games/magic/tools/accuracy/adventure-study.mjs adventure-native-v2
+MAGIC_CAPTURE_ROOT=/path/to/v0.2.17 node games/magic/tools/accuracy/adventure-input-revision.mjs adventure-v0217-input-v3
+node games/magic/tools/accuracy/adventure-study.mjs adventure-native-v5
+node games/magic/tools/accuracy/adventure-paper-check.mjs adventure-native-v2 adventure-native-v5
 node tests/magic-adventure.mjs
 node tests/magic-adventure-registration.mjs
 ```
 
-Captures are immutable and ignored by Git. One browser session prepares the
-batch; future structural scoring runs on the CPU. No external image enters the
-public showcase or the published package.
+Captures are immutable and ignored by Git; choose new labels when reproducing.
+One browser session prepares a batch, while subsequent structural/color scoring
+runs on the CPU. External images never enter the public showcase or package.

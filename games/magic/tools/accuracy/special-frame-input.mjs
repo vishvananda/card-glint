@@ -1,5 +1,6 @@
 import { presentation } from './adapter.mjs';
 import { normalizePrintingText } from './printing-text.mjs';
+import { reviewedSpecialRecords } from './special-printing-corrections.mjs';
 
 /** Audit adapter only. Physical sides have independent references and artwork;
  * a split card has two panels on one side. Never reuse a front scan for a back. */
@@ -34,8 +35,13 @@ export function originalFaceRecord(card, data, records) {
  * type label after the divider, which can be removed by exact type equality. */
 export function originalPanelText(card, original, records) {
   const text = normalizePrintingText(original.originalText);
-  if (!['split', 'adventure'].includes(card.layout) || !text.includes(' // ')) return text;
+  if (!['split', 'adventure'].includes(card.layout)) return text;
   const pair = card.card_faces.map((data) => originalFaceRecord(card, data, records));
+  if (!text.includes(' // ')) {
+    if (pair[0].originalText === pair[1].originalText)
+      throw Error('Ambiguous duplicated original panel text without a divider; review the scan');
+    return text;
+  }
   if (pair[0].originalText !== pair[1].originalText || text.split(' // ').length !== 2)
     throw Error('Ambiguous joined original panel text');
   const index = pair.findIndex((r) => r === original);
@@ -108,6 +114,7 @@ export function originalPanelType(card, data, original, records) {
 }
 
 export function specialFrameInput(card, side, reference, art, records) {
+  records = reviewedSpecialRecords(card, reference, records);
   const originals = [];
   const face = (data, physicalSide) => {
     const original = originalFaceRecord(card, data, records);
@@ -115,6 +122,7 @@ export function specialFrameInput(card, side, reference, art, records) {
     originals.push({
       uuid: original.uuid,
       side: original.side ?? null,
+      ...(original.reviewedCorrection ? { reviewedCorrection: original.reviewedCorrection } : {}),
       ...(type.issue ? { typeIssue: type.issue } : {}),
     });
     const rules = originalPanelText(card, original, records);

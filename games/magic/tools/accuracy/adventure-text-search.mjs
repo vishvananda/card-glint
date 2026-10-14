@@ -6,7 +6,7 @@ import { sagaTextMetric } from './saga-text-metrics.mjs';
 
 const label = process.argv[2] ?? 'adventure-native-v1';
 const phase = process.argv[3] ?? 'size';
-if (!['size', 'position'].includes(phase)) throw Error('Unknown search phase');
+if (!['size', 'position', 'flow', 'fit'].includes(phase)) throw Error('Unknown search phase');
 const dir = `${outputRoot}/${label}`;
 const bytes = await readFile(`${dir}/audit.json`);
 const audit = JSON.parse(bytes);
@@ -26,7 +26,31 @@ const refs = new Map(
 );
 const session = await openBrowser({ entries, components: audit.components });
 const candidates = [];
-if (phase === 'size') {
+if (phase === 'fit') {
+  // Measure line demand instead of characters so style-run boundaries and
+  // narrow letters cannot accidentally select a different nominal size.
+  for (const size of [21.5, 22.5])
+    for (const leading of [0.95, 1])
+      for (const shortMaximum of [20, 20.25, 20.5])
+        candidates.push({
+          size,
+          leading,
+          dx: 0,
+          dy: 0,
+          width: 0,
+          page: 'spell',
+          shortMaximum,
+          shortLines: 4,
+        });
+  for (const size of [20.25, 20.5, 21, 21.5, 22.5])
+    for (const leading of [0.95, 1])
+      candidates.push({ size, leading, dx: 0, dy: 0, width: 0, page: 'spell' });
+} else if (phase === 'flow') {
+  for (const size of [21, 21.5, 22, 22.5, 23])
+    for (const leading of [0.95, 1])
+      for (const dy of [-4, 0])
+        candidates.push({ size, leading, dx: 0, dy, width: 0, page: 'spell', shortMaximum: 20.25 });
+} else if (phase === 'size') {
   for (let size = 19; size <= 24; size += 0.5)
     for (const leading of [0.9, 0.95, 1])
       candidates.push({ size, leading, dx: 0, dy: 0, width: 0 });
@@ -52,6 +76,7 @@ try {
         const { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts');
         const { paintRulesLayout } = await import('/games/magic/src/presentation/rules-paint.ts');
         const { wordingParagraphs } = await import('/games/magic/src/presentation/wording.ts');
+        const { wrapRules } = await import('/games/magic/src/presentation/rules-wrap.ts');
         const canvas = document.createElement('canvas');
         canvas.width = 732;
         canvas.height = 1020;
@@ -70,6 +95,12 @@ try {
             const face = page === 'spell' ? entry.face.faces[1] : entry.face;
             const [x, y, width, height] =
               page === 'spell' ? [41.7, 499, 191, 122] : [257, 442, 189, 178];
+            const shortLines =
+              candidate.shortLines &&
+              wordingParagraphs(face).reduce(
+                (n, p) => n + wrapRules(c, p.runs, width, candidate.shortMaximum).length,
+                0,
+              ) <= candidate.shortLines;
             const layout = layoutRules(
               c,
               wordingParagraphs(face),
@@ -77,13 +108,21 @@ try {
                 x: x + candidate.dx,
                 y: y + candidate.dy,
                 width: width + candidate.width,
-                height,
+                height: candidate.shortMaximum ? height - candidate.dy : height,
                 exclusions:
                   page === 'permanent' && face.power != null && face.toughness != null
                     ? [[368, 601, 94, 51]]
                     : [],
               },
-              candidate.size,
+              candidate.shortMaximum &&
+                (candidate.shortLines
+                  ? shortLines
+                  : wordingParagraphs(face)
+                      .flatMap((p) => p.runs)
+                      .map((r) => r.text.replace(/\{[^}]+\}/g, '●'))
+                      .join(' ').length <= 100)
+                ? Math.min(candidate.size, candidate.shortMaximum)
+                : candidate.size,
               9,
               {
                 leading: candidate.leading,

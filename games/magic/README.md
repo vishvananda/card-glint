@@ -141,6 +141,14 @@ use high-resolution plates with separate hybrid/gold materials and a shared
 footer. Rooms still use the previous fallback; do not reuse split calibration
 numbers for them.
 
+Adventure cards use native book plates with separate permanent and inset spell
+materials and measured text. Supply `layout: 'adventure'` and two `faces`, ordered
+permanent then spell. The parent owns full-card art and permanent identity.
+Opt-in `colorCalibration: 'set-hsb-v1'` includes the admitted ELD/WOE spell-paper
+profiles; CLB retains its source colors. `collectorFormat` can explicitly select
+`number-first` or `rarity-first` for the native Adventure footer. See the
+[Adventure comparison and limitations](adventure-layout.md).
+
 ## Contribute a frame or fix
 
 1. Identify the selection rule, geometry and painting owners above. Keep game

@@ -18,7 +18,7 @@ import { normalize, savePng } from './pixels.mjs';
 import { adventureRegistration } from './adventure-registration.mjs';
 import { sagaTextMetric } from './saga-text-metrics.mjs';
 
-const baselineLabel = 'adventure-v0217-input-v2';
+const baselineLabel = 'adventure-v0217-input-v3';
 const baselineBytes = await readFile(`${outputRoot}/${baselineLabel}/audit.json`);
 const baseline = JSON.parse(baselineBytes);
 const label = process.argv[2] ?? 'adventure-native-v1';
@@ -28,6 +28,21 @@ const selectedSets = process.argv
   .split(',');
 const entries = baseline.results.filter((r) => !selectedSets || selectedSets.includes(r.set));
 if (!entries.length) throw Error('Empty Adventure cohort.');
+// The frozen baseline incorrectly appended /baseSetSize to CLB reprints beyond
+// the numbered main set. Correct only the comparison input, not host literals.
+// Original wording and art stay byte-identical; record every footer difference.
+const inputChanges = [...(baseline.inputChanges ?? [])];
+for (const source of baseline.sources) {
+  const data = JSON.parse(await readObject(source.wording)).data;
+  for (const entry of entries.filter((r) => r.set === source.set)) {
+    const before = entry.face.collectorNumber;
+    const [number, total] = (before ?? '').split('/');
+    if (total && Number(number) > data.baseSetSize) {
+      entry.face = { ...entry.face, collectorNumber: number };
+      inputChanges.push({ id: entry.id, field: 'collectorNumber', before, after: number });
+    }
+  }
+}
 const output = `${outputRoot}/${label}`;
 try {
   await access(`${output}/audit.json`);
@@ -53,8 +68,8 @@ const components = await mapLimit(urls, 3, (url) => cachedFetch(url));
 const session = await openBrowser({ entries, components });
 const results = [];
 const regions = {
-  permanent: [257, 442, 189, 178],
-  spell: [42, 499, 191, 122],
+  permanent: [253, 438, 199, 186],
+  spell: [38, 495, 200, 130],
   spellHeader: [40, 431, 193, 55],
 };
 const withoutStats = (image, face) => {
@@ -97,16 +112,30 @@ try {
         assets.dispose();
       }
       const template = small.toDataURL();
+      // Material tone must not change the frame anchor being measured. Keep
+      // a separate uncalibrated frame target; paper diagnostics use template.
+      const anchorAssets = await loadCanvasImages(
+        canvasAssetUrls(face),
+        new AbortController().signal,
+      );
+      try {
+        c.clearRect(0, 0, 488, 680);
+        paintAdventureFrame(c, { ...face, colorCalibration: undefined }, anchorAssets.images);
+      } finally {
+        anchorAssets.dispose();
+      }
+      const anchorTemplate = small.toDataURL();
       full.width = full.height = small.width = small.height = 0;
-      return { render, template, rules };
+      return { render, template, anchorTemplate, rules };
     }, entry.face);
     const bytes = Buffer.from(capture.render.split(',')[1], 'base64'),
       render = PNG.sync.read(bytes);
     const templateBytes = Buffer.from(capture.template.split(',')[1], 'base64');
+    const anchorBytes = Buffer.from(capture.anchorTemplate.split(',')[1], 'base64');
     const raw = normalize(PNG.sync.read(await readObject(entry.reference)));
     const registration = {
-      ...adventureRegistration(raw, PNG.sync.read(templateBytes)),
-      templateHash: hash(templateBytes),
+      ...adventureRegistration(raw, PNG.sync.read(anchorBytes)),
+      templateHash: hash(anchorBytes),
     };
     const aligned = registration.accepted ? normalize(raw, registration.transform) : raw;
     const old = PNG.sync.read(
@@ -138,9 +167,11 @@ try {
       render: `${entry.id}-render.png`,
       reference: `${entry.id}-reference.png`,
       template: `${entry.id}-template.png`,
+      anchor: `${entry.id}-anchor.png`,
     };
     await atomicWrite(`${output}/${files.render}`, bytes);
     await atomicWrite(`${output}/${files.template}`, templateBytes);
+    await atomicWrite(`${output}/${files.anchor}`, anchorBytes);
     await savePng(`${output}/${files.reference}`, aligned);
     results.push({
       ...entry,
@@ -164,6 +195,7 @@ try {
     fontHash: hash(css),
     baselineHash: hash(baselineBytes),
     baselineLabel,
+    inputChanges,
     sources: baseline.sources,
     components,
     regions,

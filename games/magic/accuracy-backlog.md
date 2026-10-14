@@ -1485,10 +1485,11 @@ frame-only normalization before component metrics:
    joined border geometry, per-half credits and one Fuse reminder strip.
 3. Adventure: compare CardConjurer `packAdventure.js` with MSE's
    `magic-m15-adventure` style, including multicolor and long inset text.
-4. Prepared: a distinct new layout, not an Adventure alias. Its inset prepare
-   spell and status treatment require fresh source research; neither inspected
-   pinned tree contains a prepared template. Start with ordinary SOS printings
-   and the [official mechanics reference](https://magic.wizards.com/en/news/feature/secrets-of-strixhaven-mechanics).
+4. Prepared: a distinct new layout, not an Adventure alias. The pinned
+   CardConjurer tree does contain `packPrepare.js` and `img/frames/prepare/`;
+   the earlier inventory missed them. Start with ordinary SOS printings,
+   independent right-inset spell materials, and the
+   [source/layout investigation](prepare-layout.md).
 5. Rooms: dedicated CardConjurer `packRoom.js` / `packRoomUB.js`; replace the
    generic split fallback with continuous art, shared type/reminder strip and
    asymmetric rules panels. DSK is the initial validation set.
@@ -1498,6 +1499,15 @@ frame-only normalization before component metrics:
 7. Transform and modal DFC: explicit front/back plates, indicators, color
    markers, reverse hints and other-face banners. Preserve the ISD, ZNR and NEO
    audit examples; do not reuse a front scan or art image on the reverse.
+8. Class and level-up creatures: existing painter branches need source-led
+   replacement and scan validation, including level bands, costs and statistics.
+9. Kamigawa flip and meld: opposing text orientation and combined reverse faces
+   require dedicated geometry, art bounds and physical-face identity.
+10. Prototype and Omen inset layouts; audit material variants such as Vehicles,
+    Nyx enchantment creatures, devoid and snow separately from ordinary stock.
+11. Tokens, emblems and nonstandard formats (planes, schemes, conspiracies and
+    related extras). Inventory each explicitly rather than treating ordinary
+    fallback output as validation. Showcase/borderless treatments remain deferred.
 
 The dedicated review browser remains separate from the library. Add supported
 input/routing/scoring only after each family has its own validated geometry.
