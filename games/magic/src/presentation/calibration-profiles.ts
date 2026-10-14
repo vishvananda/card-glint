@@ -1,12 +1,14 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { isRetro, retroFrameAsset, retroFrameRect, retroBorder } from './retro-frame.js';
 import type { Rgb } from './hsb.js';
-import type { DualFrameHsb } from './frame-hsb.js';
+import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
+import { printingColorSource } from './printing-color-source.js';
+import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
   return (
-    isRetro(face) &&
+    (isRetro(face) || !!printingColorSource(face)) &&
     (!face.layout || face.layout === 'normal') &&
     (face.colorCalibration === 'set-hsb-v1' || (early && face.colorCalibration === 'early-hsb-v1'))
   );
@@ -14,7 +16,7 @@ export function hasColorCalibration(face: RenderedCardInput): boolean {
 /** Exact source, stock and placement guards. Rejected/new sources do not inherit
  * obsolete joint fits: those could create a good mean while tinting shadows. */
 export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHsb | undefined {
-  if (!hasColorCalibration(face)) return undefined;
+  if (!hasColorCalibration(face) || !isRetro(face)) return undefined;
   const asset = retroFrameAsset(face),
     material = asset.split('/').at(-1)!.replace('.png', '').toUpperCase(),
     profile = DUAL_HSB_PROFILES[`${face.setCode?.toLowerCase()}-${retroBorder(face)}-${material}`];
@@ -36,4 +38,16 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
   if (!hasColorCalibration(face)) return undefined;
   return DUAL_MANA_TARGETS[`${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`];
+}
+
+/** Every binding retains the exact pinned asset and geometry it was fitted to. */
+export function calibratedFrameMaterials(
+  face: RenderedCardInput,
+): Readonly<Record<string, FrameHsb>> {
+  if (!hasColorCalibration(face)) return {};
+  const source = printingColorSource(face),
+    profile = source && PRINTING_COLOR_PROFILES[source.key];
+  if (profile && profile.source === source?.source) return profile.materials;
+  const old = calibratedDualFrameProfile(face);
+  return old ? { [retroFrameAsset(face)]: old } : {};
 }

@@ -42,7 +42,20 @@ export function manaRowLandmarks(gray, width, height, { count, rightX, y, pitch,
 /** Locate the printed cost disc independently of glyph, hue, and nearby frame edges.
  * Fixed rightmost-symbol search area; only reports measurements, never fits a scan.
  */
-export function manaLandmark(gray, width, height, { x = 438, y = 45, range = 9 } = {}) {
+export function manaLandmark(
+  gray,
+  width,
+  height,
+  { x = 438, y = 45, range = 9, radiusRange = [10, 13], polarity = 'either' } = {},
+) {
+  const [minRadius, maxRadius] = radiusRange;
+  if (
+    !Number.isFinite(minRadius + maxRadius) ||
+    minRadius <= 0 ||
+    maxRadius <= minRadius ||
+    maxRadius > 25
+  )
+    throw Error('Invalid mana disc radius range');
   const smooth = blur(gray, width, height),
     candidates = [];
   function sample(x, y) {
@@ -59,7 +72,7 @@ export function manaLandmark(gray, width, height, { x = 438, y = 45, range = 9 }
   }
   for (let cy = y - range; cy <= y + range; cy += 0.5)
     for (let cx = x - range; cx <= x + range; cx += 0.5)
-      for (let r = 10; r <= 13; r += 0.5) {
+      for (let r = minRadius; r <= maxRadius; r += 0.5) {
         const quadrants = [[], [], [], []];
         for (let i = 0; i < 64; i++) {
           const angle = ((i + 0.5) * Math.PI) / 32,
@@ -74,7 +87,10 @@ export function manaLandmark(gray, width, height, { x = 438, y = 45, range = 9 }
         const sums = quadrants.map((q) => q.reduce((a, b) => a + b, 0) / q.length);
         const mean = sums.reduce((a, b) => a + b, 0) / 4,
           sign = Math.sign(mean);
-        const score = Math.abs(mean) * 0.5 + Math.min(...sums.map((v) => v * sign)) * 0.5;
+        const score =
+          polarity === 'bright' && mean < 0
+            ? 0
+            : Math.abs(mean) * 0.5 + Math.min(...sums.map((v) => v * sign)) * 0.5;
         candidates.push({ x: cx, y: cy, radius: r, score });
       }
   candidates.sort((a, b) => b.score - a.score);
@@ -83,8 +99,8 @@ export function manaLandmark(gray, width, height, { x = 438, y = 45, range = 9 }
   const boundary =
     Math.abs(best.x - x) === range ||
     Math.abs(best.y - y) === range ||
-    best.radius === 10 ||
-    best.radius === 13;
+    best.radius === minRadius ||
+    best.radius === maxRadius;
   return {
     ...best,
     margin: best.score - second.score,

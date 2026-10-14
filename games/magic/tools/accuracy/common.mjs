@@ -66,7 +66,7 @@ export function options(args = process.argv.slice(2)) {
 }
 
 /** Includes untracked source files so a working-tree capture is reproducible. */
-export async function sourceHash(directory, extensions = /\.(?:ts|mjs|css)$/) {
+export async function sourceHash(directory, extensions = /\.(?:ts|mjs|css|json)$/) {
   if (directory instanceof URL) directory = fileURLToPath(directory);
   const files = (await readdir(directory, { recursive: true, withFileTypes: true }))
     .filter((entry) => entry.isFile() && extensions.test(entry.name))

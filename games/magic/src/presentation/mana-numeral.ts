@@ -48,6 +48,8 @@ export async function prepareManaNumerals(
     return {
       images: Object.assign(new Map(images), {
         manaColors: images.manaColors,
+        originalManaGlyphs: images.originalManaGlyphs,
+        originalWhiteGlyph: images.originalWhiteGlyph,
         manaNumerals: numerals,
       }),
       dispose: () => leases.forEach((l) => l.release()),

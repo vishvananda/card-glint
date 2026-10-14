@@ -1,5 +1,6 @@
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { resolveCardProfile } from './profile.js';
+import { originalManaOrder } from './historic-mana-order.js';
 
 /** Exact supplied wording, never a guessed conversion of creature subtypes. */
 export interface CardWording {
@@ -45,6 +46,11 @@ export function withCardWording(
   return {
     ...face,
     ...selected,
+    manaSymbols:
+      selected.manaSymbols ??
+      (mode === 'original'
+        ? originalManaOrder(face, face.manaSymbols ?? [])
+        : (wordings.oracle.manaSymbols ?? face.manaSymbols)),
     // Clearing an absent paragraph override matters when switching from an
     // annotated printing: stale original runs must not replace Oracle text.
     rulesParagraphs: selected.rulesParagraphs,

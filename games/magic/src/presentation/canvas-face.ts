@@ -23,6 +23,7 @@ import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
 import { loadRetroFont } from './retro-font.js';
+import { historicalManaFamily } from './historical-mana.js';
 import { hasExtraRules, extraRuleKey, extraRuleBlocks } from './extra-rules.js';
 import { paintExtraRules } from './extra-rule-paint.js';
 import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './split-layout.js';
@@ -291,7 +292,9 @@ export async function composeCardTexture(
       nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
       faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
       isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),
-      isRetro(input.face) || nativeSplitEra(input.face) === 'old'
+      isRetro(input.face) ||
+      nativeSplitEra(input.face) === 'old' ||
+      historicalManaFamily(input.face, 'W') === 'historic-font'
         ? (hooks?.loadRetroFont ?? loadRetroFont)()
         : Promise.resolve(),
     ]);

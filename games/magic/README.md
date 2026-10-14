@@ -268,7 +268,9 @@ historical-symbol font; later old-border sets keep their tilted-card mark.
 
 ## Measured set colors
 
-Set `colorCalibration: 'set-hsb-v1'` to opt into admitted old-frame color profiles.
+Set `colorCalibration: 'set-hsb-v1'` to opt into admitted printing-color profiles. LEA, LEB, Revised, Eighth and M21
+have additional fits against frame-normalized, reserved scans; Eighth uses its
+2003 plate and M21 its component frame. See the [five-set color audit](five-set-colors.md).
 Separate HSB adjustments cover the outer frame and rules paper; mana discs
 have independent targets. Source-derived masks follow irregular green/black
 paper edges, including their shadows. Other paper interiors use fixed masks. `early-hsb-v1` restricts the trial to Alpha,
@@ -413,3 +415,6 @@ Numeric glyph adjustments preserve the disc and its shadow. Spacing changes
 inter-symbol gaps with the rightmost disc fixed, before whole-cost scaling.
 Glyph separation happens once during preparation in a bounded cache; it does
 not read back masks while painting. Identity adjustments preserve release pixels.
+
+Historical glyph selection and printed cost order are documented in
+[historical mana](historical-mana.md), with a 51-set study through Eighth Edition.

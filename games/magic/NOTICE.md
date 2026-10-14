@@ -42,9 +42,13 @@ tilted-card mark, from the pinned external font. Revised uses its earlier
 diagonal-T `tap-alt` / `tap-3ed` glyph (U+E61C). Both retain pale circular
 backgrounds. See the [Mana icon reference](https://mana.andrewgioia.com/icons.html).
 
-Revised header costs also use Mana’s original white sun (`w-original`, U+E997),
-without a circular background. Other header symbols retain the existing SVG
-assets; inline symbols follow their separate printing policies.
+Early header and inline costs use Mana’s original white sun (`w-original`,
+U+E997) over its pale circular background. Historical blue, black, red and green
+glyphs reference the pinned CardConjurer `img/manaSymbols/old/` collection and
+[Full Magic Pack's old mana font](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/tree/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-mana-old.mse-symbol-font).
+Their original source palettes are rebound during cached preparation; no image
+binaries are redistributed. See [historical mana](historical-mana.md) for choices,
+scan evidence and independent original/Oracle wording behavior.
 
 Replacement base plates (Eighth Edition and M15 Accurate), their masks and
 power/toughness badges, artist brushes, the optional Matrix Bold and Matrix

@@ -1,3 +1,4 @@
+import { paintOriginalWhite } from './historical-white.js';
 import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
 import { manaSymbolAsset } from './assets.js';
 import { FACE_TEXT, symbolTextParts, type FaceRect } from './face-layout.js';
@@ -59,6 +60,10 @@ export function paintMana(
   shadow = false,
   adjustment?: ManaSymbolTransform,
 ) {
+  if (symbol === 'W' && images.originalWhiteGlyph) {
+    paintOriginalWhite(context, x, y, size, size * 0.87, images.manaColors?.W);
+    return;
+  }
   const numeral = adjustment && /^\d+$/.test(symbol) ? images.manaNumerals?.get(symbol) : undefined;
   const image = images.get(manaSymbolAsset(symbol) ?? '');
   context.save();

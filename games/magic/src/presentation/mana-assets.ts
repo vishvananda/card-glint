@@ -1,4 +1,5 @@
 import { symbolTextParts, type RenderedCardInput } from './face-layout.js';
+import { historicalManaAsset, historicalManaFamily } from './historical-mana.js';
 import { manaSymbolAsset } from './assets.js';
 
 /** Explicit paragraph runs can supply mana independently of rulesText. */
@@ -13,5 +14,9 @@ export function faceManaAssets(face: RenderedCardInput): (string | null)[] {
       symbolTextParts(value).flatMap((part) => (part.symbol ? [part.symbol] : [])),
     ),
   ]);
-  return [...symbols].map(manaSymbolAsset);
+  return [...symbols].map((symbol) =>
+    historicalManaFamily(face, symbol) === 'historic-font'
+      ? null
+      : (historicalManaAsset(face, symbol)?.url ?? manaSymbolAsset(symbol)),
+  );
 }

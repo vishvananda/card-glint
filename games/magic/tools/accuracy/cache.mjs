@@ -24,6 +24,7 @@ function checkUrl(url) {
     ].includes(parsed.hostname) ||
     (parsed.hostname === 'raw.githubusercontent.com' &&
       !parsed.href.startsWith(manifest.CONJURER_ROOT + '/') &&
+      !parsed.href.startsWith(manifest.MSE_MANA_ROOT + '/') &&
       !parsed.href.startsWith(manifest.MSE_SPLIT_BRIDGE_ROOT + '/')) ||
     (parsed.hostname === 'svgs.scryfall.io' && !/^\/sets\/[a-z0-9]+\.svg$/.test(parsed.pathname)) ||
     (parsed.hostname === 'mtgjson.com' && !/^\/api\/v5\/[A-Z0-9]+\.json$/.test(parsed.pathname))

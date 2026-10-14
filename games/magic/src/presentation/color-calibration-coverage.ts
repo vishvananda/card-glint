@@ -1,5 +1,5 @@
 import type { RenderedCardInput } from './face-layout.js';
-import { calibratedDualFrameProfile, calibratedManaTarget } from './calibration-profiles.js';
+import { calibratedFrameMaterials, calibratedManaTarget } from './calibration-profiles.js';
 
 /** Report source-guarded coverage without exposing mutable calibration tables.
  * A profile's presence is not a whole-card accuracy guarantee. */
@@ -15,7 +15,7 @@ export function colorCalibrationCoverage(face: RenderedCardInput): {
     ...[...text.matchAll(/\{([^}]+)\}/g)].map((m) => m[1]!),
   ]);
   return {
-    frame: !!calibratedDualFrameProfile(face),
+    frame: Object.keys(calibratedFrameMaterials(face)).length > 0,
     manaSymbols: [...symbols].filter(
       (s) => !!calibratedManaTarget(face, /^\d+$/.test(s) ? 'N' : s),
     ),

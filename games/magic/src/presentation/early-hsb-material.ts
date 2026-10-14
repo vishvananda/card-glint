@@ -1,16 +1,13 @@
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
-import { retroFrameAsset } from './retro-frame.js';
+import { buildHistoricalMana, hexManaColor } from './historical-mana-material.js';
+import { historicalManaAsset, historicalManaFamily } from './historical-mana.js';
 import { manaSymbolAsset } from './assets.js';
 import { rgbToHsb, type HsbAdjustment, type Rgb } from './hsb.js';
 import { colorFrame, type FrameHsb } from './frame-hsb.js';
 import { BITMAP_MANA_COLORS } from './mana-colors.js';
 import { earlyHsbBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
-import {
-  calibratedDualFrameProfile,
-  calibratedManaTarget,
-  hasColorCalibration,
-} from './calibration-profiles.js';
+import { calibratedFrameMaterials, calibratedManaTarget } from './calibration-profiles.js';
 export { calibratedDualFrameProfile as earlyHsbProfile } from './calibration-profiles.js';
 
 /** Static composition leases shared derived bitmaps. Original assets and their
@@ -21,11 +18,15 @@ export async function prepareEarlyHsb(
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
   const unchanged = { images, dispose() {} };
-  if (!hasColorCalibration(face)) return unchanged;
-  const profile = calibratedDualFrameProfile(face);
-  const adjustments = new Map<string, FrameHsb>(),
-    colors: Record<string, string> = {};
-  if (profile) adjustments.set(retroFrameAsset(face), profile);
+  const adjustments = new Map<string, FrameHsb>(Object.entries(calibratedFrameMaterials(face))),
+    colors: Record<string, string> = {},
+    originalManaGlyphs = new Set<string>(),
+    originalMaterials: {
+      url: string;
+      source: ImageBitmap;
+      palette: { discColor: string; inkColor: string };
+      target: Rgb;
+    }[] = [];
   const symbols = new Set([
     ...(face.manaSymbols ?? []),
     ...[...(face.rulesText ?? '').matchAll(/\{([^}]+)\}/g)].map((m) => m[1]!),
@@ -33,34 +34,75 @@ export async function prepareEarlyHsb(
   // rulesParagraphs can carry symbols independently of rulesText.
   for (const p of face.rulesParagraphs ?? [])
     for (const run of p.runs) for (const m of run.text.matchAll(/\{([^}]+)\}/g)) symbols.add(m[1]!);
-  // The original white symbol has a procedural disc, not a bitmap background.
-  symbols.add('W');
   for (const symbol of symbols) {
     const key = /^\d+$/.test(symbol) ? 'N' : symbol,
-      target = calibratedManaTarget(face, key),
-      source = BITMAP_MANA_COLORS[key];
+      original = historicalManaAsset(face, symbol),
+      source = original?.discColor ?? BITMAP_MANA_COLORS[key],
+      // Glyph replacement preserves the existing disc palette. Measured color
+      // targets are independently rebound to the actual source bitmap color.
+      target =
+        calibratedManaTarget(face, key) ??
+        (original && BITMAP_MANA_COLORS[key] ? hexManaColor(BITMAP_MANA_COLORS[key]!) : undefined);
+    if (original) originalManaGlyphs.add(symbol);
     if (!target || !source) continue;
-    const url = manaSymbolAsset(symbol);
-    if (url) adjustments.set(url, manaSourceAdjustment(source, target));
+    const url = original?.url ?? manaSymbolAsset(symbol);
+    if (original) {
+      const bitmap = images.get(original.url);
+      if (!bitmap) throw Error(`Historical mana asset unavailable: ${symbol}`);
+      originalMaterials.push({ url: original.url, source: bitmap, palette: original, target });
+    } else if (url) adjustments.set(url, manaSourceAdjustment(source, target));
     colors[symbol] = `rgb(${target.map((v) => Math.round(v * 255)).join(' ')})`;
   }
-  if (!adjustments.size && !Object.keys(colors).length) return unchanged;
-  const derived = Object.assign(new Map(images), { manaColors: colors });
+  const originalWhiteGlyph =
+    symbols.has('W') && historicalManaFamily(face, 'W') === 'historic-font';
+  if (
+    !adjustments.size &&
+    !originalMaterials.length &&
+    !Object.keys(colors).length &&
+    !originalWhiteGlyph
+  )
+    return unchanged;
+  const derived = Object.assign(new Map(images), {
+    manaColors: colors,
+    originalManaGlyphs,
+    originalWhiteGlyph,
+  });
   const materials = [...adjustments].flatMap(([url, adjustment]) => {
     const source = images.get(url);
     return source ? [{ url, source, adjustment }] : [];
   });
+  const jobs = [
+    ...materials.map(({ url, source, adjustment }) => ({
+      url,
+      key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),
+      bytes: source.width * source.height * 4,
+      build: () => buildMaterial(source, adjustment),
+    })),
+    ...originalMaterials.map(({ url, source, palette, target }) => ({
+      url,
+      key: JSON.stringify([
+        'historical-mana-palette-v1',
+        url,
+        source.width,
+        source.height,
+        palette,
+        target,
+      ]),
+      bytes: source.width * source.height * 4,
+      build: () => buildHistoricalMana(source, palette, target),
+    })),
+  ];
   let leases: MaterialBitmapLease[] = [];
   try {
-    leases = await earlyHsbBitmapCache.acquireMany(
-      materials.map(({ url, source, adjustment }) => ({
-        key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),
-        bytes: source.width * source.height * 4,
-        build: () => buildMaterial(source, adjustment),
-      })),
-      signal,
-    );
-    materials.forEach(({ url }, i) => derived.set(url, leases[i]!.value));
+    leases = await earlyHsbBitmapCache.acquireMany(jobs, signal);
+    jobs.forEach(({ url }, i) => derived.set(url, leases[i]!.value));
+    for (const symbol of originalManaGlyphs) {
+      const source = historicalManaAsset(face, symbol)!,
+        bitmap = derived.get(source.url),
+        logical = manaSymbolAsset(symbol);
+      if (!bitmap || !logical) throw Error(`Historical mana asset unavailable: ${symbol}`);
+      derived.set(logical, bitmap);
+    }
     return { images: derived, dispose: () => leases.forEach((lease) => lease.release()) };
   } catch (error) {
     leases.forEach((lease) => lease.release());
@@ -105,11 +147,7 @@ export function colorEarlyFrame(
 /** Bind the measured target to the bitmap's actual disc color. Applying the
  * historical sun's coefficients to a modern white SVG changes the target. */
 export function manaSourceAdjustment(hex: string, target: Rgb): HsbAdjustment {
-  const rgb: Rgb = [
-    parseInt(hex.slice(1, 3), 16) / 255,
-    parseInt(hex.slice(3, 5), 16) / 255,
-    parseInt(hex.slice(5, 7), 16) / 255,
-  ];
+  const rgb = hexManaColor(hex);
   const [h, s, b] = rgbToHsb(rgb),
     [th, ts, tb] = rgbToHsb(target);
   if (s <= 0 || b <= 0) throw Error('Mana source requires a chromatic disc.');

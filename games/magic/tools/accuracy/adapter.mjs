@@ -1,10 +1,14 @@
 import { reviewedPrintingFields } from './printing-fields.mjs';
 import { reviewedArtCrop } from './art-crop.mjs';
 import { historicArtifactAnnotation } from './historic-artifact-types.mjs';
+import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
-  const historical = historicArtifactAnnotation(entry),
+  const historical = {
+      ...historicArtifactAnnotation(entry),
+      ...historicManaOrderAnnotation(entry),
+    },
     supplied = annotations[card.id] ?? {},
     annotation = {
       ...historical,
