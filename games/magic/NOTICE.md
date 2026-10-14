@@ -61,3 +61,11 @@ no source paths or patched artwork are embedded in the package. M15 retains its
 palette with black lettering, Eighth Edition uses a metallic front card with a
 dark numeral and frame, and Ninth Edition uses a dark numeral with a metallic outline. Source attribution
 and rights remain as above.
+
+Saga plates, chapter badges, dividers, hologram decoration and the Kamigawa
+transform icon also reference the same pinned joshbirnholz repository. Colored
+plates use `data/images/cardImages/saga/`; land and transforming plates use
+`img/frames/saga/`. Chapter numerals use its `fonts/plantin-semibold.otf`.
+The layout investigation also consulted
+[Magic Set Editor’s Saga style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-saga.mse-style/style);
+no MSE code or binaries are bundled.

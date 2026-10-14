@@ -1,3 +1,4 @@
+import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { prepareEarlyHsb } from './early-hsb-material.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
 import { faceCornerRadius } from './face-silhouette.js';
@@ -107,7 +108,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v92',
+    'canvas-face-v93',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -174,6 +175,8 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.power ?? null,
         face.toughness ?? null,
         face.loyalty ?? null,
+        face.reverseStats ?? null,
+        face.layout ?? null,
         faceRects(face),
         resolveCardProfile(face),
       ];
@@ -262,6 +265,7 @@ export async function composeCardTexture(
     await Promise.all([
       (hooks?.loadFonts ?? loadCanvasFonts)(),
       loadFramePlateFonts(input.face),
+      faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
       isRetro(input.face) ? (hooks?.loadRetroFont ?? loadRetroFont)() : Promise.resolve(),
     ]);
     signal.throwIfAborted();
@@ -337,6 +341,10 @@ export function paintAssembledFace(
   }
   if (isRetro(face)) {
     paintRetroFace(context, face, images, underArt, layer);
+    return;
+  }
+  if (faceFrame(face) === 'saga') {
+    paintSagaFace(context, face, images, underArt, layer);
     return;
   }
   const panels = splitPanels(face);

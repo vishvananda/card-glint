@@ -1,3 +1,4 @@
+import { SAGA_RECTS } from './saga-frame.js';
 import { planeswalkerArtBounds } from './planeswalker-art.js';
 import { isRetro, retroRects } from './retro-frame.js';
 import { NORMAL_FRAME_GEOMETRY } from './normal-frame-geometry.js';
@@ -76,16 +77,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       rules: [31.8 / 63.5, 10.1 / 88.9, 26.4 / 63.5, 63.65 / 88.9],
       stamp: [0.57, 0.55, 0.25, 0.1794],
     };
-  if (kind === 'saga')
-    return {
-      ...FACE_RECTS,
-      background: [0.03937, 0.02812, 0.92126, 0.93926],
-      frame: [0.032, 0.04117, 0.92126, 0.88864],
-      art: [0.5008, 0.11249, 0.42992, 0.72328],
-      type: [0.05669, 0.84589, 0.88662, 0.05737],
-      rules: [0.07717, 0.11192, 0.4189, 0.72328],
-      stamp: [0.17, 0.48, 0.23, 0.16506],
-    };
+  if (kind === 'saga') return SAGA_RECTS;
   if (kind.startsWith('planeswalker')) {
     const large = kind === 'planeswalker-large';
     const rules: FaceRect = [
@@ -149,8 +141,8 @@ export function faceRects(face: RenderedCardInput): FaceRects {
     ],
   };
 }
-/** Approximate geometry for hosts without a measurement context and the Saga painter.
- * The planeswalker canvas painter uses measured planeswalkerRuleRows instead. */
+/** Approximate geometry for hosts without a measurement context. Canvas painters
+ * use measured sagaRuleLayout / planeswalkerRuleRows instead. */
 export function specialRuleRows(face: RenderedCardInput) {
   const saga = faceFrame(face) === 'saga',
     rect = faceRects(face).rules,

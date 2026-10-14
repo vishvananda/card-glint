@@ -1,3 +1,4 @@
+import { sagaAssets } from './saga-frame.js';
 import { isRetro, retroAssets, RETRO_ROOT } from './retro-frame.js';
 import { aliasCanvasImages, resolveCanvasSources } from './historical-symbol-sources.js';
 export { clearHistoricalSymbolSources } from './historical-symbol-sources.js';
@@ -25,6 +26,9 @@ export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promis
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */
 export function canvasAssetWidth(url: string): number | undefined {
+  if (url.startsWith(CONJURER_ROOT) && /\/saga\/(sagaChapter|sagaDivider|stamp)\.png$/.test(url))
+    return undefined; // Small native decorations must not be enlarged to plate resolution.
+  if (url.startsWith(`${CONJURER_ROOT}/data/images/cardImages/saga/`)) return 768;
   if (url.startsWith(`${CONJURER_ROOT}/img/frames/`) && url.endsWith('.png'))
     return /\/pt\/|\/m15PT/.test(url) ? 256 : 768;
   if (url.startsWith(`${RETRO_ROOT}/img/frames/`) && url.endsWith('.png')) return 768;
@@ -146,6 +150,8 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
   const plates = framePlateUrls(face);
   if (plates) return [...plates, face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   if (isRetro(face)) return retroAssets(face);
+  if (faceFrame(face) === 'saga')
+    return [...sagaAssets(face), face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   const panels = splitPanels(face);
   if (panels.length) return panels.flatMap((panel) => canvasAssetUrls(panel.face));
   const profile = resolveCardProfile(face),

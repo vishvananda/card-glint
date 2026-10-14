@@ -282,6 +282,7 @@ try {
       ['MPlantin', 'italic', '400'],
       ['Relay', 'normal', '400'],
       ['Artist Credit', 'normal', '400'],
+      ['Chapter', 'normal', '550'],
     ])
       document.fonts.add(
         await new FontFace('CardRenderer MTG ' + family, local, { style, weight }).load(),
