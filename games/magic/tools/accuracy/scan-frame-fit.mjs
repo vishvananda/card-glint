@@ -128,7 +128,19 @@ function candidate(points, target, model) {
     if (retained.length === fit.length) break;
     fit = retained;
     if (!supported(support(fit, 'fit')))
-      return { model, accepted: false, reason: 'insufficient-inlier-support' };
+      return {
+        model,
+        accepted: false,
+        reason: 'insufficient-inlier-support',
+        // A rotated frame can look like outliers to the translation-only
+        // model. Keep its independent validation error as a comparison for
+        // the richer models; it remains ineligible for selection itself.
+        validation: errors(
+          points.filter((p) => p.cohort === 'validation'),
+          transform,
+          target,
+        ),
+      };
   }
   const [s, tx, ty, r = 0, h = 0] = coefficients,
     scale = Math.hypot(s, r),

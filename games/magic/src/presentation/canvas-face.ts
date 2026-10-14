@@ -1,4 +1,6 @@
 import { nativeSplitEra, splitFuseParagraphs } from './split-frame.js';
+import { isAdventure } from './adventure-frame.js';
+import { paintAdventureFace } from './adventure-paint.js';
 import { paintNativeSplitFace, loadSplitFonts } from './split-paint.js';
 import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { isAftermath } from './aftermath-frame.js';
@@ -112,7 +114,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v97',
+    'canvas-face-v98',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -347,6 +349,10 @@ export function paintAssembledFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
+  if (isAdventure(face)) {
+    paintAdventureFace(context, face, images, underArt, layer);
+    return;
+  }
   if (isAftermath(face)) {
     paintAftermathFace(context, face, images, underArt, layer);
     return;

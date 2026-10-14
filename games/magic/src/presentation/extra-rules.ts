@@ -216,5 +216,20 @@ export function extraRuleAssets(face: RenderedCardInput): (string | null)[] {
   ]);
 }
 export function extraRuleKey(face: RenderedCardInput) {
+  if (faceFrame(face) === 'adventure') {
+    const spell = face.faces?.[1];
+    return spell
+      ? [
+          spell.name,
+          spell.typeLine,
+          spell.colors,
+          spell.frameColors,
+          spell.manaSymbols,
+          spell.rulesText,
+          spell.rulesParagraphs,
+          spell.rulesAlignment,
+        ]
+      : null;
+  }
   return hasExtraRules(face) ? extraRuleBlocks(face) : null;
 }

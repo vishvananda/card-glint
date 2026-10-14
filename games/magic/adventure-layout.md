@@ -1,10 +1,10 @@
 # Adventure frame investigation
 
-The current painter still uses component frames and estimated text lengths.
+The v0.2.17 painter uses component frames and estimated text lengths.
 The corrected baseline covers 111 ordinary English nonfoil Adventure printings:
 30 ELD, 51 WOE and 30 CLB. All render with their original rules and cached
-Scryfall full scans/art. No Adventure frame registration is validated yet;
-baseline metrics are deliberately null. The compact
+Scryfall full scans/art. Baseline metrics are deliberately null until the
+frame-only registration below is applied. The compact
 [baseline receipt](fixtures/accuracy/adventure-baseline.json) records its hashes.
 
 ## Input findings
@@ -41,23 +41,68 @@ The [MSE Adventure style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack
 adds measured text fitting, page-specific material selection and optional
 short-text centering. These sources remain external references.
 
-Next steps:
+The native implementation now:
 
-1. Use the full native plate and shared art aperture for face painting, printing
-   holes, artwork effects and hit regions. Preserve the book fold and page edges.
-2. Composite the inset page from its own color material. Callous Sell-Sword and
-   Kellan demonstrate why the permanent's color is insufficient. Validate gold,
-   artifact, enchantment and legendary variants separately.
-3. Replace character-count sizing with measured independent page layouts,
-   preserving inline reminders, flavor italics and the flavor divider. Fit the
-   permanent page around the power/toughness box.
-4. Register scans using frame-only rails, excluding art, text, symbols and stamp.
-   Establish ELD geometry and typography, then check WOE/CLB without per-card
-   renderer tuning. Keep unsupported fits and source differences visible.
+1. Uses the full plate and shared art aperture for face painting, printing
+   holes, artwork effects and hit regions, retaining the book fold and page edges.
+2. Composites the inset page from its own color material. Callous Sell-Sword and
+   Kellan demonstrate why the permanent's color is insufficient. Two-color
+   pinlines, hybrid neutral labels, artifact plates and legendary crowns have
+   separate source selection. Prepared composites use a 16 MiB LRU and borrow
+   decoded assets without owning them. No render-loop decoding or readback occurs.
+3. Fits measured independent page layouts, preserving inline reminders, flavor
+   italics and the flavor divider. The permanent page excludes power/toughness
+   ink and centers a single short rules line; two-line passages remain left
+   aligned. Explicit left/original/Oracle alignment controls remain available.
+4. Registers scans using frame-only rails, excluding art, text, symbols and stamp.
+   Shared text settings were explored on ELD, then used unchanged on WOE/CLB.
+
+## First native comparison (unreleased)
+
+The [native receipt](fixtures/accuracy/adventure-native.json) retains all 111
+results, including rejected fits and 22 component regressions. No card has text
+overflow. Only 80 scans pass frame registration; CLB's low acceptance needs
+investigation before generalizing its averages.
+
+| Set               | Accepted / total | Permanent text F1 | Spell text F1 | White inset headers F1 |
+| ----------------- | ---------------- | ----------------- | ------------- | ---------------------- |
+| ELD (development) | 25 / 30          | 0.243 → 0.519     | 0.314 → 0.609 | 0.457 → 0.872          |
+| WOE (held out)    | 43 / 51          | 0.287 → 0.468     | 0.369 → 0.531 | 0.516 → 0.881          |
+| CLB (held out)    | 12 / 30          | 0.324 → 0.507     | 0.325 → 0.562 | 0.448 → 0.863          |
+
+These are local-contrast text edge scores at one canonical pixel, not visual
+accuracy percentages. White header text uses light-ink polarity; applying the
+dark-lettering detector there would score background contours instead. Before
+and after share the same original wording, art and independently normalized scan.
+Power/toughness ink is excluded from body-text metrics.
+
+The synthetic rotation test also exposed a generic registration rejection:
+when translation-only fitting lost inlier support, its independent validation
+error was discarded. The rotation candidate then compared against itself and
+could never demonstrate a gain. Rejected candidates now retain that diagnostic;
+support, pose bounds and disjoint-validation thresholds are unchanged.
+
+Remaining work before release:
+
+- Source left-page materials are too dark, especially red/blue; both inspected
+  MSE page families share the problem. Preserve the native fold while replacing
+  or calibrating the paper, rather than coloring over its shadow.
+- Stomp, Petty Theft, Cast Off and several later spells need different wrapping.
+  A shared maximum improves the average but does not reproduce every printing.
+  Do not turn the per-card exploratory optima into renderer exceptions.
+- WOE has a newer collector footer format. The prototype still prints the older
+  collector/total/rarity layout; artist and power/toughness lettering also need QA.
+- Oakhame Ranger's missing historical type falls back to an errataed provider
+  type containing Ranger. Treat that as an input provenance issue, not bad geometry.
+- Review the 31 rejected frame fits without relaxing acceptance to raise scores.
+  Nyx/enchantment-creature plates and further Adventure treatments remain unclaimed.
 
 ```sh
 node tests/magic-special-frame-input.mjs
 node games/magic/tools/accuracy/special-frame-audit.mjs adventure-v0217-input-v2 --adventure
+node games/magic/tools/accuracy/adventure-study.mjs adventure-native-v2
+node tests/magic-adventure.mjs
+node tests/magic-adventure-registration.mjs
 ```
 
 Captures are immutable and ignored by Git. One browser session prepares the

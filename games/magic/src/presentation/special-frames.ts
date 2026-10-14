@@ -1,4 +1,5 @@
 import { splitHalfRects } from './split-frame.js';
+import { ADVENTURE_RECTS } from './adventure-frame.js';
 import { SAGA_RECTS } from './saga-frame.js';
 import { aftermathRects } from './aftermath-frame.js';
 import { planeswalkerArtBounds } from './planeswalker-art.js';
@@ -71,13 +72,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
   if (plate) return plate.rects;
   if (isRetro(face)) return retroRects(face);
   const kind = faceFrame(face);
-  if (kind === 'adventure')
-    return {
-      ...FACE_RECTS,
-      frame: [2.9 / 63.5, 3.5 / 88.9, 57.4 / 63.5, 79 / 88.9],
-      type: [0.05669, 49.7 / 88.9, 0.88662, 0.05737],
-      stamp: [0.58, 0.74, 0.25, 0.1794],
-    };
+  if (kind === 'adventure') return ADVENTURE_RECTS;
   if (kind === 'class')
     return {
       ...FACE_RECTS,

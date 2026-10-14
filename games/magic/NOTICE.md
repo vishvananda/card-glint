@@ -90,3 +90,10 @@ M15 split/Fuse plates reference CardConjurer's `img/frames/m15/split/` and
 Full Magic Pack's `magic-m15-split-fusable.mse-style/namebox/texture/normal/c.png`
 and `typebox/texture/normal/c.png`; only their interior paper is composited,
 preserving the higher-resolution frame outlines. All remain external URLs.
+
+Adventure plates and book/pinline masks use CardConjurer's
+`img/frames/adventure/regular/`, with its M15 power/toughness and legendary crown
+assets. Hybrid label interiors reuse the pinned Full Magic Pack neutral paper
+above. The source definitions and measured comparison scope are documented in
+[adventure-layout.md](adventure-layout.md). These remain external references;
+no source artwork, card scans or MSE binaries are included.
