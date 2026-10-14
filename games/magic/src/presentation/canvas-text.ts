@@ -64,10 +64,12 @@ export function paintMana(
   context.shadowOffsetX = context.shadowOffsetY = 0;
   // These are the shared --m-* token defaults, also used behind loaded DOM glyphs.
   if (shadow) {
-    const offset = 1.5372 * context.getTransform().a;
+    const matrix = context.getTransform();
     context.shadowColor = '#000d';
-    context.shadowOffsetX = -offset;
-    context.shadowOffsetY = offset;
+    // Canvas shadows use device pixels. Rotate the local down-left vector with
+    // the panel; matrix.a alone becomes zero on a quarter-turned split card.
+    context.shadowOffsetX = 1.5372 * (-matrix.a + matrix.c);
+    context.shadowOffsetY = 1.5372 * (-matrix.b + matrix.d);
   }
   context.fillStyle = images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
   context.beginPath();

@@ -1,4 +1,5 @@
 import { FACE_HEIGHT, FACE_WIDTH, type FaceRect, type RenderedCardInput } from './face-layout.js';
+import { isAftermath, AFTERMATH_JOIN, AFTERMATH_BOTTOM_WIDTH } from './aftermath-frame.js';
 export interface SplitPanel {
   face: RenderedCardInput;
   x: number;
@@ -9,14 +10,15 @@ export interface SplitPanel {
 }
 export function splitPanels(face: RenderedCardInput): SplitPanel[] {
   if (!['split', 'aftermath'].includes(face.layout ?? '') || face.faces?.length !== 2) return [];
-  const aftermath =
-    face.layout === 'aftermath' || /\bAftermath\b/.test(face.faces[1]!.rulesText ?? '');
+  const aftermath = isAftermath(face);
   return face.faces.map((half, index) => {
     const cut = aftermath ? 0.615 : 0.5;
     const inherited = {
       setCode: face.setCode,
       rarity: face.rarity,
       artist: face.artist,
+      setSymbol: face.setSymbol,
+      setSymbolSource: face.setSymbolSource,
       ...half,
       layout: aftermath ? (index === 0 ? 'aftermath-top' : 'aftermath-bottom') : 'split-half',
       faces: undefined,
@@ -24,6 +26,9 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
         ?.split('\n')
         .filter((line) => !/^Fuse\b/.test(line))
         .join('\n'),
+      rulesParagraphs: half.rulesParagraphs?.filter(
+        (paragraph) => !/^Fuse\b/.test(paragraph.runs.map((run) => run.text).join('')),
+      ),
       illustration: half.illustration ?? face.illustration,
       etchedIllustration:
         half.etchedIllustration ?? (!half.illustration ? face.etchedIllustration : undefined),
@@ -35,8 +40,15 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
     };
     return aftermath
       ? index === 0
-        ? { face: inherited, x: 0, y: 0, width: 488, height: 375, rotation: 0 }
-        : { face: inherited, x: 488, y: 367, width: 276, height: 488, rotation: 90 }
+        ? { face: inherited, x: 0, y: 0, width: 488, height: AFTERMATH_JOIN, rotation: 0 }
+        : {
+            face: inherited,
+            x: 488,
+            y: AFTERMATH_JOIN,
+            width: AFTERMATH_BOTTOM_WIDTH,
+            height: 488,
+            rotation: 90,
+          }
       : {
           face: inherited,
           x: 5,

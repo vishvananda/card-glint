@@ -186,6 +186,19 @@ const fixtures = [
   },
   {
     ...creature,
+    layout: 'aftermath',
+    faces: [
+      { name: 'First Light', typeLine: 'Sorcery', colors: ['W'], rulesText: 'Draw a card.' },
+      {
+        name: 'Last Light',
+        typeLine: 'Instant',
+        colors: ['B'],
+        rulesText: 'Aftermath\nReturn a card from your graveyard to your hand.',
+      },
+    ],
+  },
+  {
+    ...creature,
     layout: 'adventure',
     faces: [
       creature,

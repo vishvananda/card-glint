@@ -1,4 +1,5 @@
 import { SAGA_RECTS } from './saga-frame.js';
+import { aftermathRects } from './aftermath-frame.js';
 import { planeswalkerArtBounds } from './planeswalker-art.js';
 import { isRetro, retroRects } from './retro-frame.js';
 import { NORMAL_FRAME_GEOMETRY } from './normal-frame-geometry.js';
@@ -57,6 +58,8 @@ export function faceFrame(face: RenderedCardInput): SingleFrame {
   return 'normal';
 }
 export function faceRects(face: RenderedCardInput): FaceRects {
+  if (face.layout === 'aftermath-top' || face.layout === 'aftermath-bottom')
+    return aftermathRects(face.layout === 'aftermath-bottom');
   const plate = framePlate(face);
   if (plate) return plate.rects;
   if (isRetro(face)) return retroRects(face);
@@ -112,7 +115,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       ],
     };
   }
-  if (face.layout === 'split-half' || face.layout === 'aftermath-bottom')
+  if (face.layout === 'split-half')
     return {
       ...FACE_RECTS,
       background: [0.03937, 0.02531, 0.92126, 0.94],
@@ -121,15 +124,6 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       art: [0.06929, 0.14, 0.86142, 0.38],
       type: [0.05669, 0.525, 0.88662, 0.07],
       rules: [0.07638, 0.605, 0.84724, 0.32],
-    };
-  if (face.layout === 'aftermath-top')
-    return {
-      ...FACE_RECTS,
-      title: [0.035, 0.025, 0.93, 0.105],
-      art: [0.052, 0.145, 0.896, 0.39],
-      type: [0.035, 0.55, 0.93, 0.105],
-      rules: [0.052, 0.67, 0.896, 0.29],
-      footer: [0, 1, 0, 0],
     };
   return {
     ...FACE_RECTS,

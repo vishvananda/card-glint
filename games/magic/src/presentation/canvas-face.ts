@@ -1,4 +1,6 @@
 import { paintSagaFace, loadSagaFont } from './saga-paint.js';
+import { isAftermath } from './aftermath-frame.js';
+import { paintAftermathFace } from './aftermath-paint.js';
 import { prepareEarlyHsb } from './early-hsb-material.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
 import { faceCornerRadius } from './face-silhouette.js';
@@ -108,7 +110,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v93',
+    'canvas-face-v94',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -136,6 +138,10 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
   if (panels.length)
     return [
       face.layout,
+      face.artist ?? null,
+      face.collectorNumber ?? null,
+      face.legalText ?? null,
+      face.borderColor ?? null,
       panels.map((p) => [p.x, p.y, p.width, p.height, p.rotation, faceContentKey(p.face, mask)]),
       !mask && splitHasFuse(face),
     ];
@@ -335,6 +341,10 @@ export function paintAssembledFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
+  if (isAftermath(face)) {
+    paintAftermathFace(context, face, images, underArt, layer);
+    return;
+  }
   if (face.frameAssetFamily) {
     paintFramePlateFace(context, face, images, underArt, layer);
     return;

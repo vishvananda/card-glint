@@ -1,4 +1,5 @@
 import { sagaAssets } from './saga-frame.js';
+import { aftermathAssets, isAftermath } from './aftermath-frame.js';
 import { isRetro, retroAssets, RETRO_ROOT } from './retro-frame.js';
 import { aliasCanvasImages, resolveCanvasSources } from './historical-symbol-sources.js';
 export { clearHistoricalSymbolSources } from './historical-symbol-sources.js';
@@ -147,6 +148,15 @@ export async function loadCanvasImages(
 }
 
 export function canvasAssetUrls(face: RenderedCardInput): (string | null | undefined)[] {
+  if (isAftermath(face))
+    return [
+      ...aftermathAssets(face),
+      ...splitPanels(face).flatMap((panel) => [
+        panel.face.illustration,
+        ...faceManaAssets(panel.face),
+      ]),
+      faceSetSymbol(splitPanels(face)[0]!.face),
+    ];
   const plates = framePlateUrls(face);
   if (plates) return [...plates, face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   if (isRetro(face)) return retroAssets(face);
