@@ -110,8 +110,8 @@ function reminderRuns(text) {
  * palettes (fetches, rainbow lands, artifact/basic/retro frames) for review;
  * color identity is not a reliable description of the printed frame. */
 function inferredLandPalette(card) {
-  // Early duals lose their subtypes in original wording (plain "Land").
-  // Preserve their two basic-land colors independently of that visible label.
+  // Early basics and duals lose their subtypes in original wording (plain
+  // "Land"). Preserve the printed palette independently of that label.
   if (['lea', 'leb', '2ed', '3ed'].includes(card.set) && /\bLand\b/.test(card.type_line ?? '')) {
     const basicColors = [
       ['Plains', 'W'],
@@ -120,7 +120,8 @@ function inferredLandPalette(card) {
       ['Mountain', 'R'],
       ['Forest', 'G'],
     ].filter(([type]) => new RegExp(`\\b${type}\\b`).test(card.type_line));
-    if (basicColors.length === 2) return basicColors.map(([, color]) => color);
+    if (basicColors.length === 1 || basicColors.length === 2)
+      return basicColors.map(([, color]) => color);
   }
   if (
     !['2003', '2015'].includes(card.frame) ||

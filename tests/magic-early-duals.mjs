@@ -74,6 +74,7 @@ try {
     'Underground Sea': 'Island Swamp',
     'Volcanic Island': 'Island Mountain',
   };
+  const basics = { Plains: 'W', Island: 'U', Swamp: 'B', Mountain: 'R', Forest: 'G' };
   let count = 0;
   for (const set of ['lea', 'leb', '2ed', '3ed']) {
     const fixture = JSON.parse(
@@ -81,6 +82,7 @@ try {
     );
     for (const [id, row] of Object.entries(fixture.cards)) {
       const dwarf = row.name === 'Dwarven Warriors';
+      const basic = basics[row.name];
       const card = {
         id,
         name: row.name,
@@ -88,7 +90,11 @@ try {
         frame: '1993',
         layout: 'normal',
         colors: [],
-        type_line: dwarf ? 'Creature — Dwarf Warrior' : 'Land — ' + types[row.name],
+        type_line: dwarf
+          ? 'Creature — Dwarf Warrior'
+          : basic
+            ? 'Basic Land — ' + row.name
+            : 'Land — ' + types[row.name],
         oracle_text: 'Oracle rules.',
       };
       const entry = { card, reference: { sha256: row.referenceHash } };
@@ -107,7 +113,17 @@ try {
       assert.equal(oracle.face.typeLine, card.type_line);
       assert.equal(oracle.face.rulesText, 'Oracle rules.');
       assert.deepEqual(original.face.frameColors, oracle.face.frameColors);
-      if (!dwarf && set !== '3ed') {
+      if (basic) {
+        assert.deepEqual(original.face.frameColors, [basic]);
+        assert.ok(retroFrameAsset(original.face).endsWith('/' + basic.toLowerCase() + 'l.png'));
+        assert.equal(retroFrameAsset(original.face), retroFrameAsset(oracle.face));
+        assert.deepEqual(
+          calibratedFrameMaterials({ ...original.face, colorCalibration: 'set-hsb-v1' }),
+          calibratedFrameMaterials({ ...oracle.face, colorCalibration: 'set-hsb-v1' }),
+          'Original label retains the same basic-land frame and its calibration',
+        );
+      }
+      if (!dwarf && !basic && set !== '3ed') {
         const plan = retroDualFrame(original.face);
         assert.ok(plan);
         assert.deepEqual(plan, retroDualFrame(oracle.face));
@@ -122,7 +138,16 @@ try {
       count++;
     }
   }
-  assert.equal(count, 43);
+  assert.equal(count, 98);
+  assert.ok(
+    retroFrameAsset({
+      name: 'Custom land',
+      setCode: 'leb',
+      typeLine: 'Land',
+      colors: ['R'],
+    }).endsWith('/l.png'),
+    'Rules color alone must not select a basic-land plate',
+  );
   assert.equal(
     retroDualFrame({ name: 'Utility', setCode: 'leb', typeLine: 'Land', colors: ['U', 'R'] }),
     undefined,

@@ -82,7 +82,10 @@ export function retroFrameAsset(face: RenderedCardInput) {
   const key = /\bLand\b/.test(type)
     ? landType.length === 1
       ? landType[0]![1] + 'l'
-      : 'l'
+      : ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '') &&
+          face.frameColors?.length === 1
+        ? face.frameColors[0]!.toLowerCase() + 'l'
+        : 'l'
     : /\bArtifact\b/.test(type)
       ? 'a'
       : colors.length > 1

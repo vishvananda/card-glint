@@ -29,6 +29,15 @@ same semantic frame palette while showing their respective type lines.
 MTGJSON `originalType` is retained as audit data, not an automatic override:
 these entries currently contain modern types.
 
+The same scan-bound correction covers all 55 basic-land printings in those four
+sets (10 Alpha, 15 each Beta/Unlimited/Revised). Each prints `Land`; Oracle mode
+retains `Basic Land — Plains`, `Basic Land — Island`, and the other modern types.
+The adapter retains each basic's one-color printed palette independently of the
+visible label, so both wording modes select the same colored land plate and HSB
+profile. Rules color alone does not select a basic-land plate. These annotations
+do not guess labels for later printings. Replaying all 55 original renders changed
+pixels only inside the type-line strip; frame, art, rules and credits stayed exact.
+
 ABU dual lands combine the two pinned colored land plates through Card
 Conjurer's `old/abu/dualLand.png` alpha mask. Its blue RGB is visualization,
 not printed color. The mask preserves the art aperture and produces alternating
