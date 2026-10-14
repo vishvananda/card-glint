@@ -64,6 +64,19 @@ Rags // Riches falls from .318 to .249. Colors, foil stamp and footer lettering
 remain approximate. The source plate's window/border details can still differ
 from the printed card; scan normalization must not hide those asset errors.
 
+## Type-line alignment follow-up
+
+The lower type text shared an offset for every type label, including Instant
+and Sorcery. Move its reading-orientation rectangle 3 canonical pixels earlier
+and 9 pixels upward; on the upright card that moves the text right and up.
+The shared rectangle also keeps semantic hit regions aligned with the plate.
+Upper type text and artwork geometry are unchanged.
+
+A local offset sweep against the same 19 accepted reference registrations raised
+mean lower type dark-letter edge F1 at one pixel from .136 to .423. This is a
+position correction, not a claim of complete typography matching; font shape,
+size and scan variation remain. Rejected registrations were excluded.
+
 ## Reproduction
 
 Use the cached major-set metadata inventory and a clean checkout of v0.2.16:
