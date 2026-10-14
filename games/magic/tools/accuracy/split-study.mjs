@@ -19,6 +19,7 @@ import { specialFrameSides, specialFrameInput } from './special-frame-input.mjs'
 import { normalize, savePng } from './pixels.mjs';
 import { splitRegistration } from './split-registration.mjs';
 import { sagaTextMetric } from './saga-text-metrics.mjs';
+import { splitFooterInput } from './split-footer-input.mjs';
 
 const baseline = process.argv.includes('--baseline');
 const modern = process.argv.includes('--modern');
@@ -79,7 +80,8 @@ for (const set of selectedSets ??
       half.watermark = card.card_faces[i].watermark ?? null;
     });
     input.face.collectorNumber = `${card.collector_number.padStart(3, '0')}/${data.baseSetSize}`;
-    input.face.legalText = `™ & © ${data.releaseDate.slice(0, 4)} Wizards of the Coast`;
+    const footer = splitFooterInput(card, reference, data.releaseDate.slice(0, 4));
+    input.face.legalText = footer.legalText;
     entries.push({
       id: card.id,
       name: card.name,
@@ -89,6 +91,7 @@ for (const set of selectedSets ??
       art,
       ...input,
       wordingHash: wording.sha256,
+      footerSource: footer.footerSource,
     });
   }
   console.log('Cached', set, selected.length);

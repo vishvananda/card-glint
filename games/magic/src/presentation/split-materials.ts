@@ -17,6 +17,20 @@ const guilds: Record<string, readonly [string, string]> = {
   boros: ['R', 'W'],
   simic: ['G', 'U'],
 };
+/** Some printing records put a shared guild only on the first face. Inherit it
+ * only when the whole split belongs to that guild; three-color splits may have
+ * different guilds on each half. Explicit per-half identities always win. */
+export function splitPanelWatermark(parent: RenderedCardInput, half: RenderedCardInput) {
+  if (half.watermark) return half.watermark;
+  if (parent.watermark) return parent.watermark;
+  const identities = [...new Set(parent.faces?.map((f) => f.watermark).filter(Boolean))];
+  if (identities.length !== 1) return half.watermark;
+  const guild = guilds[identities[0]!];
+  const colors = new Set(parent.faces?.flatMap(resolveFrameColors));
+  return guild && colors.size === 2 && guild.every((color) => colors.has(color))
+    ? identities[0]
+    : half.watermark;
+}
 export function splitWatermark(face: RenderedCardInput): string | null {
   return face.watermark && Object.hasOwn(guilds, face.watermark)
     ? `${CONJURER_ROOT}/img/watermarks/guild-${face.watermark}.svg`
@@ -48,7 +62,7 @@ export function splitMaterialAssets(
   ];
 }
 const masks = new WeakMap<ImageBitmap, HTMLCanvasElement>();
-function alphaMask(image: ImageBitmap): HTMLCanvasElement {
+export function splitSourceMask(image: ImageBitmap): HTMLCanvasElement {
   const cached = masks.get(image);
   if (cached) return cached;
   const canvas = document.createElement('canvas');
@@ -118,7 +132,7 @@ export function splitPlateImage(
   c.drawImage(left!, 0, 0);
   c.drawImage(overlay, 0, 0);
   c.globalCompositeOperation = 'destination-in';
-  c.drawImage(alphaMask(mask), 0, 0);
+  c.drawImage(splitSourceMask(mask), 0, 0);
   c.globalCompositeOperation = 'destination-over';
   c.drawImage(base, 0, 0);
   c.globalCompositeOperation = 'source-over';
@@ -137,7 +151,10 @@ export function paintSplitWatermark(
   if (!url) return;
   const image = images.get(url);
   if (!image) throw Error(`Split watermark unavailable: ${url}`);
-  const key = face.watermark!,
+  const colors = resolveFrameColors(face);
+  const tintColors =
+    colors.length === 1 ? ([colors[0]!, colors[0]!] as const) : guilds[face.watermark!]!;
+  const key = tintColors.join(''),
     map = watermarkImages.get(image) ?? new Map();
   watermarkImages.set(image, map);
   let canvas = map.get(key);
@@ -155,7 +172,7 @@ export function paintSplitWatermark(
       R: '#b6723f',
       G: '#69936e',
     };
-    const [left, right] = guilds[key]!;
+    const [left, right] = tintColors;
     const tint = ink.createLinearGradient(0, 0, canvas.width, 0);
     tint.addColorStop(0, palette[left]!);
     tint.addColorStop(0.499, palette[left]!);

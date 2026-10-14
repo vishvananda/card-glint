@@ -70,6 +70,9 @@ try {
         ['a', solid('#ff0000')],
         ['b', solid('#00ff00')],
         ...panels.map((p, i) => [splitPlateAsset(p.face, era, fuse, i), solid('#888888')]),
+        ...canvasAssetUrls(face)
+          .filter((url) => url?.endsWith('bridge.png') || url?.endsWith('bridgemask.png'))
+          .map((url) => [url, solid('#888888')]),
       ]);
       const canvas = solid('#000');
       canvas.width = 488;
@@ -148,6 +151,20 @@ try {
       wc.getImageData(160, 350, 1, 1).data[3],
       wc.getImageData(190, 350, 1, 1).data[3],
     ];
+    const monoWatermarks = ['U', 'R'].map((color) => {
+      wc.clearRect(0, 0, 350, 480);
+      const face = { watermark: 'izzet', colors: [color] };
+      paintSplitWatermark(wc, face, new Map([[splitWatermark(face), solid('#000')]]), 350);
+      return [160, 190].map((x) => Array.from(wc.getImageData(x, 350, 1, 1).data));
+    });
+    const sharedGuild = (left, right, guild) =>
+      splitPanels({
+        layout: 'split',
+        faces: [
+          { name: 'Left', typeLine: 'Instant', colors: left, watermark: guild },
+          { name: 'Right', typeLine: 'Instant', colors: right, watermark: null },
+        ],
+      }).map((p) => p.face.watermark);
     const { modernSplitAssets, modernSplitPlate, modernSplitImage, HYBRID_SPLIT_LABELS } =
       await import('/games/magic/src/presentation/split-modern-frame.ts');
     const large = (color, width = 488, height = 680) => {
@@ -158,6 +175,35 @@ try {
       c.getContext('2d').fillRect(0, 0, width, height);
       return c;
     };
+    const { paintModernSplitFrames } = await import(
+      '/games/magic/src/presentation/split-modern-paint.ts'
+    );
+    const fuseFace = {
+      layout: 'split',
+      faces: [
+        { name: 'Left', typeLine: 'Instant', colors: ['U'] },
+        { name: 'Right', typeLine: 'Instant', colors: ['R'], rulesText: 'Fuse (Reminder)' },
+      ],
+    };
+    const fuseCanvas = large('#000'),
+      fc = fuseCanvas.getContext('2d');
+    paintModernSplitFrames(
+      fc,
+      fuseFace,
+      new Map(
+        splitPanels(fuseFace).map((p, i) => [
+          modernSplitPlate(p.face),
+          large(i ? '#ff0000' : '#0000ff'),
+        ]),
+      ),
+    );
+    const bridgePixels = [
+      [450, 290],
+      [450, 324],
+      [450, 360],
+      [400, 323],
+      [400, 325],
+    ].map(([x, y]) => Array.from(fc.getImageData(x, y, 1, 1).data));
     const gold = { colors: ['W', 'U'], layout: 'split-m15', manaSymbols: ['W', 'U'] },
       hybrid = { ...gold, manaSymbols: ['W/U'] },
       modernAssets = new Map([
@@ -198,6 +244,13 @@ try {
       materialPixels,
       reused,
       watermarkAlpha,
+      monoWatermarks,
+      sharedWatermarks: [
+        sharedGuild(['U'], ['R'], 'izzet'),
+        sharedGuild(['W', 'U'], ['W', 'U'], 'azorius'),
+        sharedGuild(['G', 'U'], ['W', 'U'], 'simic'),
+      ],
+      bridgePixels,
       output,
       room: nativeSplitEra({
         layout: 'split',
@@ -258,6 +311,19 @@ try {
     results.watermarkAlpha.every((x) => x > 50),
     'Both watermark halves survive source-in tinting',
   );
+  assert.deepEqual(results.sharedWatermarks, [
+    ['izzet', 'izzet'],
+    ['azorius', 'azorius'],
+    ['simic', null],
+  ]);
+  for (const halves of results.monoWatermarks) assert.deepEqual(halves[0], halves[1]);
+  assert.notDeepEqual(results.monoWatermarks[0][0], results.monoWatermarks[1][0]);
+  const [right, middle, left, aboveRight, aboveLeft] = results.bridgePixels;
+  assert.deepEqual(right, [255, 0, 0, 255]);
+  assert.deepEqual(left, [0, 0, 255, 255]);
+  assert.ok(middle[0] > 90 && middle[0] < 165 && middle[2] > 90 && middle[2] < 165);
+  assert.deepEqual(aboveRight, right, 'Separate rules panels must retain their own colors');
+  assert.deepEqual(aboveLeft, left);
   assert.equal(results.room, null);
   assert.equal(results.modern, 'm15');
   console.log(
@@ -267,3 +333,21 @@ try {
   await browser.close();
   await server.close();
 }
+
+const { splitFooterInput } = await import('../games/magic/tools/accuracy/split-footer-input.mjs');
+const legal = (
+  await import('../games/magic/fixtures/accuracy/split-legal-text.json', { with: { type: 'json' } })
+).default;
+for (const [id, row] of Object.entries(legal.printings)) {
+  const result = splitFooterInput({ id, set: row.set }, { sha256: row.referenceSha256 }, '9999');
+  assert.equal(result.legalText, row.legalText);
+  assert.equal(result.footerSource, 'scan-transcription');
+  assert.throws(
+    () => splitFooterInput({ id, set: row.set }, { sha256: 'stale' }, '2001'),
+    /does not match/,
+  );
+}
+assert.equal(
+  splitFooterInput({ id: 'unreviewed', set: 'apc' }, {}, '2001').footerSource,
+  'unverified-release-year-template',
+);

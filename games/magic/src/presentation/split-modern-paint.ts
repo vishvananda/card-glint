@@ -6,7 +6,7 @@ import { paintFittedText, paintMana, paintSetSymbol } from './canvas-text.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
-import { SAGA_STAMP } from './saga-frame.js';
+import { PLAIN_SECURITY_STAMP } from './security-stamp-assets.js';
 
 export function paintModernSplitFrames(
   c: CanvasRenderingContext2D,
@@ -15,16 +15,42 @@ export function paintModernSplitFrames(
 ) {
   c.fillStyle = '#000';
   c.fillRect(0, 0, 488, 680);
-  splitPanels(face).forEach((panel, index) => {
+  const panels = splitPanels(face);
+  const plates = panels.map((panel) => modernSplitImage(panel.face, images));
+  panels.forEach((panel, index) => {
     c.save();
     c.beginPath();
     // The complete source plate contains both panels and their rounded tails.
     // Cut in the black center gutter, retaining the shared footer below them.
     c.rect(0, index ? 0 : 324, 488, index ? 324 : 356);
     c.clip();
-    c.drawImage(modernSplitImage(panel.face, images), 0, 0, 488, 680);
+    c.drawImage(plates[index]!, 0, 0, 488, 680);
     c.restore();
   });
+  if (panels[0]?.face.layout?.endsWith('-fuse')) {
+    // Both full source plates include the shared reminder panel. Blend those
+    // original textures across its join, preserving the printed outlines and
+    // leaving the separate rules panels unchanged. This runs at preparation.
+    const overlay = document.createElement('canvas');
+    overlay.width = 488;
+    overlay.height = 680;
+    const o = overlay.getContext('2d')!;
+    o.drawImage(plates[1]!, 0, 0, 488, 680);
+    o.globalCompositeOperation = 'destination-in';
+    const gradient = o.createLinearGradient(0, 344, 0, 304);
+    gradient.addColorStop(0, '#0000');
+    gradient.addColorStop(1, '#000');
+    o.fillStyle = gradient;
+    o.fillRect(0, 0, 488, 680);
+    c.save();
+    c.beginPath();
+    c.rect(434, 0, 54, 680);
+    c.clip();
+    c.drawImage(plates[0]!, 0, 0, 488, 680);
+    c.drawImage(overlay, 0, 0);
+    c.restore();
+    overlay.width = overlay.height = 0;
+  }
 }
 export function paintModernSplitHeader(
   c: CanvasRenderingContext2D,
@@ -85,17 +111,20 @@ export function paintModernSplitFooter(
   if (artists) {
     c.font = '11px "CardRenderer MTG Artist Credit", serif';
     c.fillText('a', 95, 660);
-    c.font = '11px "CardRenderer MTG Beleren", serif';
+    c.font = '700 11px "CardRenderer MTG Beleren Small Caps", serif';
     c.fillText(artists, 110, 660, 193);
   }
   if (face.legalText) {
     c.textAlign = 'right';
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, 455, 660, 170);
+    c.fillText(face.legalText, 455, 646, 170);
   }
   if (['rare', 'mythic'].includes(face.rarity ?? '')) {
-    const stamp = images.get(SAGA_STAMP);
+    const stamp = images.get(PLAIN_SECURITY_STAMP);
     if (!stamp) throw Error('Modern split authenticity stamp unavailable.');
-    c.drawImage(stamp, 223, 624, 43, 18);
+    // Median visible oval from seven frame-normalized GRN/RNA rare scans:
+    // 42–43 × 20–21 px. The old Saga asset included a black margin and left
+    // only 31 × 15 px visible, four pixels below the scan center.
+    c.drawImage(stamp, 223.5, 620, 43, 21.5);
   }
 }

@@ -54,7 +54,9 @@ export interface RenderedCardInput extends CardProfileInput {
   etchedIllustration?: string | null;
   credit?: string | null;
   artist?: string | null;
-  /** Optional guild identity, drawn by supported split frames. Unknown keys are ignored. */
+  /** Optional guild identity, drawn by supported split frames. A single supplied
+   * guild is shared across missing halves when their combined colors match it.
+   * Each half's colors select mono/two-color ink. Unknown keys are ignored. */
   watermark?: string | null;
   /** Explicit printed legal line; null suppresses a known set's default. */
   legalText?: string | null;

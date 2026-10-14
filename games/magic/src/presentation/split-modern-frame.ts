@@ -2,7 +2,7 @@ import type { CanvasImages } from './canvas-assets.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
-import { SAGA_STAMP } from './saga-frame.js';
+import { PLAIN_SECURITY_STAMP } from './security-stamp-assets.js';
 
 export const MODERN_SPLIT_WIDTH = 310.216;
 export const MODERN_SPLIT_GEOMETRY = {
@@ -42,7 +42,7 @@ export function modernSplitAssets(face: RenderedCardInput): string[] {
       ? colors.map((color) => `${plateRoot(face)}/${color.toLowerCase()}.png`)
       : []),
     ...(colors.length === 2 && isHybridSplit(face) ? HYBRID_SPLIT_LABELS : []),
-    ...(['rare', 'mythic'].includes(face.rarity ?? '') ? [SAGA_STAMP] : []),
+    ...(['rare', 'mythic'].includes(face.rarity ?? '') ? [PLAIN_SECURITY_STAMP] : []),
   ];
 }
 // Derived full plates are larger than the old MSE panels. Keep a separate

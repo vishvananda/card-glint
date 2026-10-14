@@ -1,4 +1,5 @@
 import { splitMaterialAssets } from './split-materials.js';
+import { splitFuseBridgeAssets } from './split-fuse-bridge.js';
 import { adventureAssets, isAdventure } from './adventure-frame.js';
 import { prepareAssets, isPrepared, preparedSpell } from './prepare-frame.js';
 import { nativeSplitEra, hasFuse } from './split-frame.js';
@@ -25,6 +26,9 @@ export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   /** Face-preparation palette for procedural/fallback mana discs. */
   readonly manaNumerals?: ReadonlyMap<string, ManaNumeral>;
   readonly manaColors?: Readonly<Record<string, string>>;
+  /** Prepared historical bitmaps aliased to the painter's logical mana keys. */
+  readonly originalManaGlyphs?: ReadonlySet<string>;
+  readonly originalWhiteGlyph?: boolean;
 }
 
 export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promise<Response> {
@@ -34,6 +38,7 @@ export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promis
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */
 export function canvasAssetWidth(url: string): number | undefined {
+  if (url.startsWith(`${CONJURER_ROOT}/img/frames/m15/holoStamps/`)) return undefined;
   if (
     url.startsWith(CONJURER_ROOT) &&
     /\/saga\/(sagaChapter|sagaDivider|sagaMidStripe|stamp)\.png$/.test(url)
@@ -185,12 +190,15 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
     ];
   const splitEra = nativeSplitEra(face);
   if (splitEra)
-    return splitPanels(face).flatMap((p, i) => [
-      ...splitMaterialAssets(p.face, splitEra, hasFuse(face) && splitEra === 'eighth', i),
-      p.face.illustration,
-      faceSetSymbol(p.face),
-      ...faceManaAssets(p.face),
-    ]);
+    return [
+      ...splitPanels(face).flatMap((p, i) => [
+        ...splitMaterialAssets(p.face, splitEra, hasFuse(face) && splitEra === 'eighth', i),
+        p.face.illustration,
+        faceSetSymbol(p.face),
+        ...faceManaAssets(p.face),
+      ]),
+      ...(splitEra === 'eighth' && hasFuse(face) ? splitFuseBridgeAssets(face) : []),
+    ];
   const plates = framePlateUrls(face);
   if (plates) return [...plates, face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   if (isRetro(face)) return retroAssets(face);

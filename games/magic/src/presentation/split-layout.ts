@@ -1,4 +1,5 @@
 import { MODERN_SPLIT_WIDTH } from './split-modern-frame.js';
+import { splitPanelWatermark } from './split-materials.js';
 import { nativeSplitEra, hasFuse, SPLIT_PANEL_WIDTH } from './split-frame.js';
 import { FACE_HEIGHT, FACE_WIDTH, type FaceRect, type RenderedCardInput } from './face-layout.js';
 import { isAftermath, AFTERMATH_JOIN, AFTERMATH_BOTTOM_WIDTH } from './aftermath-frame.js';
@@ -25,6 +26,7 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
       setSymbol: face.setSymbol,
       setSymbolSource: face.setSymbolSource,
       ...half,
+      watermark: era ? splitPanelWatermark(face, half) : half.watermark,
       layout: aftermath
         ? index === 0
           ? 'aftermath-top'

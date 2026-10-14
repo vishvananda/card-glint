@@ -23,6 +23,9 @@ try {
   assert.equal(requests, 1, 'Offline replay must not fetch');
   await assert.rejects(cachedFetch(url + '?missing', { offline: true }), /Offline cache miss/);
   assert.throws(() => cachedFetch('https://untrusted.example/image.png'), /host/);
+  const manifest = (await import('../games/magic/assets.json', { with: { type: 'json' } })).default;
+  await cachedFetch(manifest.MSE_SPLIT_BRIDGE_ROOT + '/bridgemask.png');
+  assert.throws(() => cachedFetch(manifest.MSE_SPLIT_BRIDGE_ROOT + '/../other.png'), /host/);
   const symbol = await cachedFetch('https://svgs.scryfall.io/sets/brb.svg?version=1');
   assert.equal((await readObject(symbol)).toString(), 'original synthetic bytes');
   assert.throws(() => cachedFetch('https://svgs.scryfall.io/unexpected.svg'), /host/);

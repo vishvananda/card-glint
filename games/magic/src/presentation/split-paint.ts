@@ -24,6 +24,8 @@ import { wordingParagraphs } from './wording.js';
 import { layoutRules } from './rules-layout.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { shortCenteredRules } from './short-centered-rules.js';
+import { loadAdventureFont } from './adventure-footer.js';
+import { paintSplitFuseBridge } from './split-fuse-bridge.js';
 
 export function splitRules(
   c: CanvasRenderingContext2D,
@@ -77,6 +79,7 @@ export function paintSplitFrames(
     c.drawImage(image, x - (fuse && index ? (8 * 680) / 523 : 0), y, w, h);
     c.restore();
   });
+  if (fuse) paintSplitFuseBridge(c, face, images);
 }
 
 function paintSplitHeader(
@@ -241,6 +244,7 @@ export function paintNativeSplitFace(
 
 let splitFonts: Promise<void> | undefined;
 export function loadSplitFonts(face: RenderedCardInput): Promise<void> {
+  if (nativeSplitEra(face) === 'm15') return loadAdventureFont();
   if (nativeSplitEra(face) !== 'eighth') return Promise.resolve();
   return (splitFonts ??= Promise.all([
     document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
