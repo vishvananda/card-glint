@@ -40,6 +40,20 @@ assert.equal(
   splitRegistration({ width, height, data: new Uint8Array(width * height * 4) }, template).accepted,
   false,
 );
+const modern = { width, height, data: Uint8Array.from(data) };
+for (let y = 628; y < height; y++)
+  for (let x = 0; x < width; x++) modern.data.set([8, 8, 8, 255], (y * width + x) * 4);
+const scan = normalize(modern, { tx: 1, ty: -1, scale: 1.002 }),
+  clean = splitRegistration(scan, modern, true);
+assert.ok(clean.accepted, JSON.stringify(clean));
+for (let y = 610; y < 650; y++)
+  for (let x = 212; x <= 278; x++)
+    scan.data.set([x % 255, y % 255, (x * y) % 255, 255], (y * width + x) * 4);
+assert.deepEqual(
+  splitRegistration(scan, modern, true),
+  clean,
+  'Modern split registration excludes the entire authenticity-stamp footprint',
+);
 console.log(
   'Split frame-only registration recovers scale/rotation and rejects absent or out-of-range frames',
 );

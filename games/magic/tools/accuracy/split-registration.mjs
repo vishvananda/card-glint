@@ -6,6 +6,23 @@ export const SPLIT_WINDOWS = Object.freeze({
   top: { axis: 'y', lo: 16, hi: 32, position: 23.4, start: 68, step: 12, count: 29 },
   bottom: { axis: 'y', lo: 648, hi: 665, position: 656.6, start: 68, step: 12, count: 29 },
 });
-export function splitRegistration(reference, template) {
-  return frameProfileRegistration(reference, template, SPLIT_WINDOWS, 'split-frame-profiles-v1');
+export function splitRegistration(reference, template, modern = false) {
+  const windows = modern
+    ? {
+        ...SPLIT_WINDOWS,
+        bottom: {
+          ...SPLIT_WINDOWS.bottom,
+          lo: 622,
+          hi: 638,
+          position: 628,
+          exclude: [[212, 278]],
+        },
+      }
+    : SPLIT_WINDOWS;
+  return frameProfileRegistration(
+    reference,
+    template,
+    windows,
+    modern ? 'split-m15-frame-profiles-v2' : 'split-frame-profiles-v1',
+  );
 }

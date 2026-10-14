@@ -1,3 +1,4 @@
+import { modernSplitAssets } from './split-modern-frame.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
@@ -30,6 +31,7 @@ export function splitMaterialAssets(
   fuse: boolean,
   index: number,
 ) {
+  if (era === 'm15') return [...modernSplitAssets(face), splitWatermark(face)];
   const colors = resolveFrameColors(face);
   return [
     splitPlateAsset(face, era, fuse, index),
@@ -163,14 +165,15 @@ export function paintSplitWatermark(
     ink.fillRect(0, 0, canvas.width, canvas.height);
     map.set(key, canvas);
   }
+  const modern = face.layout?.startsWith('split-m15') ?? false;
   const scale = Math.min(
-      110 / image.width,
-      (face.setCode?.toLowerCase() === 'dgm' ? 75 : 100) / image.height,
+      (modern ? 135 : 110) / image.width,
+      (modern ? 125 : face.setCode?.toLowerCase() === 'dgm' ? 75 : 100) / image.height,
     ),
     w = image.width * scale,
     h = image.height * scale;
   c.save();
   c.globalAlpha = 0.3;
-  c.drawImage(canvas, 177 - w / 2, center - h / 2, w, h);
+  c.drawImage(canvas, (modern ? 199.5 : 177) - w / 2, center - h / 2, w, h);
   c.restore();
 }

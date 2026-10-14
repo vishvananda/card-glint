@@ -23,6 +23,12 @@ export function frameProfileRegistration(reference, template, windows, version) 
     sides[side] = { position, reliable: true, count, spread: 0 };
     for (let index = 0; index < count; index++) {
       const along = start + step * index;
+      // A profile averages an 11-pixel strip. Exclude the whole footprint,
+      // including authenticity stamps or other non-frame printing.
+      if (spec.exclude?.some(([from, to]) => along + 5 >= from && along - 5 <= to)) {
+        sides[side].count--;
+        continue;
+      }
       const gradient = (gray, shift) =>
         Array.from({ length: hi - lo - 2 }, (_, i) => {
           const p = lo + 1 + i + shift;

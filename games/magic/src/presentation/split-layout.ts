@@ -1,3 +1,4 @@
+import { MODERN_SPLIT_WIDTH } from './split-modern-frame.js';
 import { nativeSplitEra, hasFuse, SPLIT_PANEL_WIDTH } from './split-frame.js';
 import { FACE_HEIGHT, FACE_WIDTH, type FaceRect, type RenderedCardInput } from './face-layout.js';
 import { isAftermath, AFTERMATH_JOIN, AFTERMATH_BOTTOM_WIDTH } from './aftermath-frame.js';
@@ -13,6 +14,7 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
   if (!['split', 'aftermath'].includes(face.layout ?? '') || face.faces?.length !== 2) return [];
   const aftermath = isAftermath(face);
   const era = nativeSplitEra(face);
+  const panelWidth = era === 'm15' ? MODERN_SPLIT_WIDTH : SPLIT_PANEL_WIDTH;
   return face.faces.map((half, index) => {
     const cut = aftermath ? 0.615 : 0.5;
     const inherited = {
@@ -28,7 +30,7 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
           ? 'aftermath-top'
           : 'aftermath-bottom'
         : era
-          ? `split-${era}${hasFuse(face) && era === 'eighth' ? '-fuse' : ''}`
+          ? `split-${era}${hasFuse(face) && era !== 'old' ? '-fuse' : ''}`
           : 'split-half',
       frameAssetFamily: undefined,
       faces: undefined,
@@ -63,8 +65,8 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
         ? {
             face: inherited,
             x: 0,
-            y: 680 - index * SPLIT_PANEL_WIDTH,
-            width: SPLIT_PANEL_WIDTH,
+            y: 680 - index * panelWidth,
+            width: panelWidth,
             height: 488,
             rotation: -90,
           }

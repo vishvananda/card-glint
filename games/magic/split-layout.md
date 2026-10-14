@@ -1,4 +1,4 @@
-# Old-border and 2003 split frames
+# Old-border, 2003 and M15 split frames
 
 Ordinary Instant/Sorcery split cards now have dedicated old-border and 2003
 plates, including the connected name/type bars and shared Fuse strip. The
@@ -58,11 +58,50 @@ GPU completion time. Full scans, artwork, templates and trial images remain
 outside the published package. The comparison page lives in the separate
 maintainer application.
 
+## M15 spell splits and Fuse
+
+The M15 path uses CardConjurer's full split and Fuse plates, including joined
+arrow-shaped name/type bars and the common Fuse strip. Two-color gold panels
+retain gold outer stock with colored pinlines; hybrid panels use the ordered
+color pair throughout with neutral MSE label paper. Prepared pair plates have
+a 16 MiB LRU keyed by decoded source identity. Eviction releases canvas storage;
+there is no mask readback or material work in the animation loop.
+
+GRN/RNA use a 310.216-pixel panel separation in the reading orientation. Shared
+GRN typography trials selected a 24.25-pixel maximum and 74-pixel left inset;
+RNA is the transfer cohort. Modern Fuse has less rules-box height and uses a
+separate 20.25-pixel maximum, with short rules centered. That trial uses GK1/CMR,
+reserving DMC/MOC for transfer. Original wording and the exact same art sources
+are used for both renderers. All typography values apply to a family, not an
+individual card.
+
+Modern frame normalization explicitly excludes the authenticity-stamp footprint
+from the lower rail, in addition to excluding art, rules and symbols. This can
+reject scans accepted by the exploratory first capture; scores are only reported
+for the stricter accepted cohort. Missing Guild Kit expansion symbols, source
+watermark omissions, artist capitalization, fine symbol sizing, paper colors
+and occasional line wraps remain visible review items.
+
+The [M15 receipt](fixtures/accuracy/split-modern.json) records 14/20 accepted
+fits. RNA left/right mean text-edge F1 changes from 0.406/0.371 to 0.552/0.380.
+Expansion, Colossus and Deploy retain wrapping regressions and remain flagged.
+The [modern Fuse receipt](fixtures/accuracy/split-modern-fuse.json) records 4/5
+accepted fits; both reserved Wear // Tear printings improve on both halves.
+The 35 previous old/2003 split renders remain pixel-identical after this change.
+These measurements concern the indicated rules regions, not color or total
+card accuracy. The modern fit rejects seven of the combined 25 scans.
+
+```sh
+node games/magic/tools/accuracy/split-study.mjs split-m15-final-v2 --modern
+MAGIC_CAPTURE_ROOT=/path/to/v0216-checkout node games/magic/tools/accuracy/split-study.mjs split-m15-fuse-v0216-v2 --baseline --sets=gk1,dmc,moc,cmr
+MAGIC_SPLIT_BASELINE=split-m15-fuse-v0216-v2 node games/magic/tools/accuracy/split-study.mjs split-m15-fuse-final --modern --sets=gk1,dmc,moc,cmr
+```
+
 ## Remaining work
 
-- Newer M15 split cards need their own geometry, hybrid/gold material treatment,
-  collector/stamp/footer and validation against GRN/RNA. Their existing fallback
-  remains; this adapter does not claim those cards or Rooms.
+- Rooms need a dedicated layout, continuous art and their shared type strip;
+  they are explicitly excluded from the native spell-split adapter. Universes
+  Beyond and other special treatments have not been validated by this cohort.
 - MSE's old/2003 plate assets are only 236/244 × 338 pixels per panel. Some bevels,
   textures and inner edges differ from scans. Higher-resolution replacements
   should preserve the measured apertures and be recalibrated independently.

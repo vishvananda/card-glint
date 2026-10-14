@@ -13,7 +13,12 @@ try {
     const { loadCanvasFonts } = await import('/games/magic/src/presentation/canvas-assets.ts');
     await loadCanvasFonts();
   });
-  for (const entry of audit.results.filter((r) => r.registration.accepted)) {
+  for (const entry of audit.results.filter(
+    (r) =>
+      r.registration.accepted &&
+      (!process.argv.includes('--modern') || r.set === 'grn') &&
+      (!process.argv.includes('--fuse') || ['gk1', 'cmr'].includes(r.set)),
+  )) {
     const reference = PNG.sync.read(
       await readFile(`${outputRoot}/${label}/${entry.files.reference}`),
     );
@@ -36,6 +41,7 @@ try {
       );
       const loaded = await loadCanvasImages(canvasAssetUrls(face), new AbortController().signal);
       const era = nativeSplitEra(face),
+        fuse = hasFuse(face),
         panels = splitPanels(face),
         out = [];
       for (const [index, p] of panels.entries()) {
@@ -44,67 +50,75 @@ try {
         );
         const paragraphs = wordingParagraphs(p.face),
           [x, y, width, height] = splitGeometry(era, hasFuse(face)).rules;
-        for (let size = era === 'old' ? 23 : 19; size <= (era === 'old' ? 26 : 24); size += 0.25)
-          for (const centerOffset of [0, 2, 4, 6]) {
-            const bounds = { x, y, width, height },
-              typography = { leading: 1.02, paragraphGap: 0.4, flavorGap: 0.65, centerOffset };
-            const layout =
-              (paragraphs.length === 1 && p.face.rulesAlignment?.mode !== 'left'
-                ? shortCenteredRules(
-                    document.createElement('canvas').getContext('2d'),
-                    paragraphs,
-                    paragraphs,
-                    bounds,
-                    size,
-                    13,
-                    2,
-                    typography,
-                  )
-                : null) ??
-              layoutRules(
-                document.createElement('canvas').getContext('2d'),
-                paragraphs,
-                bounds,
+        for (
+          let size = era === 'old' || (era === 'm15' && !fuse) ? 23 : 19;
+          size <= (fuse ? 24.5 : era === 'm15' || era === 'old' ? 26 : 24);
+          size += 0.25
+        )
+          for (const centerOffset of era === 'm15' ? [-2, 0, 2] : [0, 2, 4, 6])
+            for (const inset of era === 'm15' ? (fuse ? [-4, 0, 4] : [0, 2, 4]) : [0]) {
+              const bounds = { x: x + inset, y, width: width - inset, height },
+                typography = { leading: 1.02, paragraphGap: 0.4, flavorGap: 0.65, centerOffset };
+              const layout =
+                ((era !== 'm15' || fuse) &&
+                paragraphs.length === 1 &&
+                p.face.rulesAlignment?.mode !== 'left'
+                  ? shortCenteredRules(
+                      document.createElement('canvas').getContext('2d'),
+                      paragraphs,
+                      paragraphs,
+                      bounds,
+                      size,
+                      13,
+                      2,
+                      typography,
+                    )
+                  : null) ??
+                layoutRules(
+                  document.createElement('canvas').getContext('2d'),
+                  paragraphs,
+                  bounds,
+                  size,
+                  13,
+                  typography,
+                );
+              const canvas = document.createElement('canvas');
+              canvas.width = 732;
+              canvas.height = 1020;
+              const c = canvas.getContext('2d');
+              c.scale(1.5, 1.5);
+              c.fillStyle = '#fff';
+              c.fillRect(0, 0, 488, 680);
+              c.translate(p.x, p.y);
+              c.rotate(-Math.PI / 2);
+              paintRulesLayout(c, layout, loaded.images);
+              const crop = document.createElement('canvas');
+              crop.width = rect[2];
+              crop.height = rect[3];
+              crop
+                .getContext('2d')
+                .drawImage(
+                  canvas,
+                  rect[0] * 1.5,
+                  rect[1] * 1.5,
+                  rect[2] * 1.5,
+                  rect[3] * 1.5,
+                  0,
+                  0,
+                  rect[2],
+                  rect[3],
+                );
+              out.push({
+                index,
+                rect,
                 size,
-                13,
-                typography,
-              );
-            const canvas = document.createElement('canvas');
-            canvas.width = 732;
-            canvas.height = 1020;
-            const c = canvas.getContext('2d');
-            c.scale(1.5, 1.5);
-            c.fillStyle = '#fff';
-            c.fillRect(0, 0, 488, 680);
-            c.translate(p.x, p.y);
-            c.rotate(-Math.PI / 2);
-            paintRulesLayout(c, layout, loaded.images);
-            const crop = document.createElement('canvas');
-            crop.width = rect[2];
-            crop.height = rect[3];
-            crop
-              .getContext('2d')
-              .drawImage(
-                canvas,
-                rect[0] * 1.5,
-                rect[1] * 1.5,
-                rect[2] * 1.5,
-                rect[3] * 1.5,
-                0,
-                0,
-                rect[2],
-                rect[3],
-              );
-            out.push({
-              index,
-              rect,
-              size,
-              centerOffset,
-              data: crop.toDataURL(),
-              font: layout.size,
-            });
-            canvas.width = canvas.height = crop.width = crop.height = 0;
-          }
+                centerOffset,
+                inset,
+                data: crop.toDataURL(),
+                font: layout.size,
+              });
+              canvas.width = canvas.height = crop.width = crop.height = 0;
+            }
       }
       loaded.dispose();
       return out;
@@ -128,15 +142,15 @@ try {
     console.log(entry.set, entry.name);
   }
   if (session.faults.length) throw Error(session.faults.join('\n'));
-  await writeJson(`${outputRoot}/split-text-search.json`, {
+  await writeJson(`${outputRoot}/${label}-text-search.json`, {
     auditHash: hash(bytes),
     rendererHash: await sourceHash(`${root}/games/magic/src`),
     results: output,
   });
-  for (const set of ['inv', 'apc', 'dis', 'dgm']) {
+  for (const set of [...new Set(output.map((r) => r.set))]) {
     const groups = new Map();
     for (const r of output.filter((r) => r.set === set)) {
-      const key = r.size + '/' + r.centerOffset;
+      const key = r.size + '/' + r.centerOffset + '/' + r.inset;
       const a = groups.get(key) ?? [];
       a.push(r.score);
       groups.set(key, a);

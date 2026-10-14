@@ -1,3 +1,8 @@
+import {
+  MODERN_SPLIT_GEOMETRY,
+  MODERN_SPLIT_WIDTH,
+  modernSplitPlate,
+} from './split-modern-frame.js';
 import { FACE_RECTS, type FaceRect, type RenderedCardInput } from './face-layout.js';
 import { isAftermath } from './aftermath-frame.js';
 import { isRetro } from './retro-frame.js';
@@ -5,7 +10,7 @@ import { resolveFrameColors } from './profile.js';
 
 export const MSE_SPLIT_ROOT =
   'https://cdn.jsdelivr.net/gh/MagicSetEditorPacks/Full-Magic-Pack@16f1d13bb7f5924613fc1ddc25da582beccfefb6/data';
-export type SplitEra = 'old' | 'eighth';
+export type SplitEra = 'old' | 'eighth' | 'm15';
 const eighthSets = new Set('dis plc cmd pc2 dgm mma c13'.split(' '));
 /** Only spell splits use these plates. Rooms and Aftermath retain separate adapters. */
 export function nativeSplitEra(face: RenderedCardInput): SplitEra | null {
@@ -17,7 +22,7 @@ export function nativeSplitEra(face: RenderedCardInput): SplitEra | null {
     return 'old';
   return face.frameAssetFamily === 'eighth' || eighthSets.has(face.setCode?.toLowerCase() ?? '')
     ? 'eighth'
-    : null;
+    : 'm15';
 }
 export function hasFuse(face: RenderedCardInput): boolean {
   const texts = (f: RenderedCardInput) => [
@@ -37,6 +42,10 @@ const pixels = (x: number, y: number, w: number, h: number): FaceRect => [
 ];
 /** Bounds in the reading orientation of one panel; source plates are 236/244 × 338. */
 export function splitGeometry(era: SplitEra, fuse: boolean) {
+  if (era === 'm15')
+    return fuse
+      ? { ...MODERN_SPLIT_GEOMETRY, rules: [74, 301, 255, 128] as FaceRect }
+      : MODERN_SPLIT_GEOMETRY;
   const old = era === 'old';
   return {
     frame: pixels(18, 18, fuse ? 244 : 236, 338),
@@ -49,12 +58,17 @@ export function splitGeometry(era: SplitEra, fuse: boolean) {
   };
 }
 export function splitHalfRects(face: RenderedCardInput) {
-  const era: SplitEra = face.layout?.startsWith('split-old') ? 'old' : 'eighth';
+  const era: SplitEra = face.layout?.startsWith('split-old')
+    ? 'old'
+    : face.layout?.startsWith('split-m15')
+      ? 'm15'
+      : 'eighth';
+  const panelWidth = era === 'm15' ? MODERN_SPLIT_WIDTH : SPLIT_PANEL_WIDTH;
   const geometry = splitGeometry(era, face.layout?.endsWith('-fuse') ?? false);
   const normalized = (rect: FaceRect): FaceRect => [
-    rect[0] / SPLIT_PANEL_WIDTH,
+    rect[0] / panelWidth,
     rect[1] / 488,
-    rect[2] / SPLIT_PANEL_WIDTH,
+    rect[2] / panelWidth,
     rect[3] / 488,
   ];
   return {
@@ -73,6 +87,7 @@ export function splitPlateAsset(
   fuse: boolean,
   index: number,
 ) {
+  if (era === 'm15') return modernSplitPlate(face);
   const colors = resolveFrameColors(face),
     key = colors.length > 1 ? 'm' : (colors[0]?.toLowerCase() ?? 'c');
   const folder =

@@ -66,7 +66,7 @@ export function faceFrame(face: RenderedCardInput): SingleFrame {
 export function faceRects(face: RenderedCardInput): FaceRects {
   if (face.layout === 'aftermath-top' || face.layout === 'aftermath-bottom')
     return aftermathRects(face.layout === 'aftermath-bottom');
-  if (/^split-(old|eighth)(-fuse)?$/.test(face.layout ?? '')) return splitHalfRects(face);
+  if (/^split-(old|eighth|m15)(-fuse)?$/.test(face.layout ?? '')) return splitHalfRects(face);
   const plate = framePlate(face);
   if (plate) return plate.rects;
   if (isRetro(face)) return retroRects(face);

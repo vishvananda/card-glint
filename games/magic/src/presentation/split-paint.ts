@@ -1,3 +1,8 @@
+import {
+  paintModernSplitFrames,
+  paintModernSplitHeader,
+  paintModernSplitFooter,
+} from './split-modern-paint.js';
 import { splitPlateImage, paintSplitWatermark } from './split-materials.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -38,8 +43,8 @@ export function splitRules(
       flavorGap: 0.65,
       centerOffset: era === 'old' ? 0 : 2,
     };
-  const size = era === 'old' ? 24.5 : 21.5;
-  if (half.rulesAlignment?.mode !== 'left' && paragraphs.length === 1) {
+  const size = era === 'old' ? 24.5 : era === 'm15' ? (fuse ? 20.25 : 24.25) : 21.5;
+  if ((era !== 'm15' || fuse) && half.rulesAlignment?.mode !== 'left' && paragraphs.length === 1) {
     const reference =
       half.rulesAlignment?.mode === 'auto'
         ? (half.rulesAlignment.reference ?? paragraphs)
@@ -58,7 +63,8 @@ export function paintSplitFrames(
 ) {
   const era = nativeSplitEra(face);
   if (!era) throw Error('No native split plate for this printing.');
-  const fuse = era === 'eighth' && hasFuse(face),
+  if (era === 'm15') return paintModernSplitFrames(c, face, images);
+  const fuse = era !== 'old' && hasFuse(face),
     geometry = splitGeometry(era, fuse);
   c.fillStyle = cardStock(face.setCode, face.borderColor).border;
   c.fillRect(0, 0, 488, 680);
@@ -80,6 +86,7 @@ function paintSplitHeader(
   fuse: boolean,
   images: CanvasImages,
 ) {
+  if (era === 'm15') return paintModernSplitHeader(c, half, images);
   const g = splitGeometry(era, fuse),
     old = era === 'old';
   const [x, y, width, height] = g.title,
@@ -190,7 +197,7 @@ export function paintNativeSplitFace(
 ) {
   const era = nativeSplitEra(face);
   if (!era) throw Error('No native split plate for this printing.');
-  const fuse = era === 'eighth' && hasFuse(face),
+  const fuse = era !== 'old' && hasFuse(face),
     g = splitGeometry(era, fuse);
   c.save();
   if (layer !== 'artwork') paintSplitFrames(c, face, images);
@@ -204,17 +211,28 @@ export function paintNativeSplitFace(
       paintSplitHeader(c, panel.face, era, fuse, images);
       paintSplitWatermark(c, panel.face, images, g.rules[1] + g.rules[3] / 2);
       paintRulesLayout(c, splitRules(c, panel.face, era, fuse), images);
-      paintSplitFooter(c, panel.face, face, era, fuse, images);
+      if (era !== 'm15') paintSplitFooter(c, panel.face, face, era, fuse, images);
     }
     c.restore();
   }
+  if (era === 'm15' && layer !== 'artwork') paintModernSplitFooter(c, face, images);
   if (fuse && layer !== 'artwork') {
     c.translate(0, 680);
     c.rotate(-Math.PI / 2);
-    const paragraphs = splitFuseParagraphs(face);
+    const paragraphs = splitFuseParagraphs(face).map((p) =>
+      era === 'm15' ? { ...p, align: 'center' as const } : p,
+    );
     paintRulesLayout(
       c,
-      layoutRules(c, paragraphs, { x: 38, y: 407, width: 608, height: 26 }, 21, 12),
+      layoutRules(
+        c,
+        paragraphs,
+        era === 'm15'
+          ? { x: 70, y: 441, width: 577, height: 20 }
+          : { x: 38, y: 407, width: 608, height: 26 },
+        era === 'm15' ? 18 : 21,
+        12,
+      ),
       images,
     );
   }

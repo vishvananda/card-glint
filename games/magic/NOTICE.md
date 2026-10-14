@@ -84,3 +84,9 @@ The local compositor implements the source styles' geometry; no MSE source
 code or image binaries are bundled. CardConjurer's same pinned revision supplies
 `fonts/matrix.ttf`, guild watermarks and artist brushes. These references do
 not extend the repository's code license to third-party artwork or trademarks.
+
+M15 split/Fuse plates reference CardConjurer's `img/frames/m15/split/` and
+`split/fuse/` at the same pinned revision. Hybrid label interiors reference
+Full Magic Pack's `magic-m15-split-fusable.mse-style/namebox/texture/normal/c.png`
+and `typebox/texture/normal/c.png`; only their interior paper is composited,
+preserving the higher-resolution frame outlines. All remain external URLs.

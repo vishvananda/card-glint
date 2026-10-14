@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-14T12:20:42.741Z",
+  "sourceCommit": "ebc58858c7885826eb613a161bda1452a79a40c4",
+  "rendererHash": "f1d1c190eb3d225d6c2be1e214e4bb9406fd9438b272ca9d765bdbe929e571d6",
+  "fontHash": "04fbecc33ef628a52b0ee899ae42ed618fa70343c53061ae3f35e50c17699d2d",
+  "studyHash": "6b45b4b36cb4bc68c6b422fe1966bc18c9e7d0b7c802951516e384041a898cb1",
+  "baseline": "01db2bc348e551cff8f8ef0364c66906f30ff8f5cb3538abce38bb75550f816f",
+  "auditHash": "e6f61d099edec0a9ced7561f8c5d87b7312fde5e076358b73c1bad7885ba6b84",
+  "capture": "split-m15-fuse-final",
+  "cohort": 5,
+  "accepted": 4,
+  "means": {
+    "rules": {
+      "before": 0.10202409799283692,
+      "after": 0.6747536751600726
+    },
+    "rules2": {
+      "before": 0.043469717937254994,
+      "after": 0.654845864980951
+    }
+  },
+  "sets": {
+    "gk1": {
+      "cohort": 1,
+      "accepted": 1,
+      "means": {
+        "rules": {
+          "before": 0.22964862715974307,
+          "after": 0.4852492454522907
+        },
+        "rules2": {
+          "before": 0.15953421549332839,
+          "after": 0.4404414284735074
+        }
+      }
+    },
+    "dmc": {
+      "cohort": 1,
+      "accepted": 1,
+      "means": {
+        "rules": {
+          "before": 0.06473364801078894,
+          "after": 0.7045696068012752
+        },
+        "rules2": {
+          "before": 0.004788507581803672,
+          "after": 0.7925779841265659
+        }
+      }
+    },
+    "moc": {
+      "cohort": 1,
+      "accepted": 1,
+      "means": {
+        "rules": {
+          "before": 0.06129562116902367,
+          "after": 0.7141358620400284
+        },
+        "rules2": {
+          "before": 0.007942811755361398,
+          "after": 0.6493737654387984
+        }
+      }
+    },
+    "cmr": {
+      "cohort": 2,
+      "accepted": 1,
+      "means": {
+        "rules": {
+          "before": 0.05241849563179203,
+          "after": 0.795059986346696
+        },
+        "rules2": {
+          "before": 0.0016133369185264855,
+          "after": 0.7369902818849321
+        }
+      }
+    }
+  },
+  "rejected": [
+    {
+      "name": "Response // Resurgence",
+      "set": "cmr",
+      "reason": "no-validated-model"
+    }
+  ],
+  "regressions": [],
+  "overflow": [],
+  "scope": "Five ordinary GK1/CMR/DMC/MOC split printings, including four modern Fuse cards. Shared Fuse typography selected on GK1/CMR, DMC/MOC reserved for transfer. CMR Response // Resurgence is not Fuse and its rejected frame fit remains unscored. Guild Kit symbol and source watermark gaps remain flagged."
+}

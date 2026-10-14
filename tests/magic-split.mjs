@@ -36,7 +36,7 @@ try {
       return c;
     };
     const output = [];
-    for (const set of ['apc', 'dis', 'dgm']) {
+    for (const set of ['apc', 'dis', 'dgm', 'grn', 'moc']) {
       const face = {
         name: 'One // Two',
         layout: 'split',
@@ -58,7 +58,7 @@ try {
           },
         ],
       };
-      if (set === 'dgm')
+      if (set === 'dgm' || set === 'moc')
         face.faces[1].rulesParagraphs = [
           { role: 'rules', runs: [{ text: 'Return a card.' }] },
           { role: 'rules', runs: [{ text: 'Fuse ' }, { text: '(Reminder)', italic: true }] },
@@ -148,7 +148,53 @@ try {
       wc.getImageData(160, 350, 1, 1).data[3],
       wc.getImageData(190, 350, 1, 1).data[3],
     ];
+    const { modernSplitAssets, modernSplitPlate, modernSplitImage, HYBRID_SPLIT_LABELS } =
+      await import('/games/magic/src/presentation/split-modern-frame.ts');
+    const large = (color, width = 488, height = 680) => {
+      const c = document.createElement('canvas');
+      c.width = width;
+      c.height = height;
+      c.getContext('2d').fillStyle = color;
+      c.getContext('2d').fillRect(0, 0, width, height);
+      return c;
+    };
+    const gold = { colors: ['W', 'U'], layout: 'split-m15', manaSymbols: ['W', 'U'] },
+      hybrid = { ...gold, manaSymbols: ['W/U'] },
+      modernAssets = new Map([
+        [modernSplitPlate(gold), large('#cccc00')],
+        [modernSplitPlate({ ...gold, colors: ['W'] }), large('#ff0000')],
+        [modernSplitPlate({ ...gold, colors: ['U'] }), large('#0000ff')],
+        ...HYBRID_SPLIT_LABELS.map((u) => [u, large('#888888', 482, 345)]),
+      ]);
+    const goldImage = modernSplitImage(gold, modernAssets),
+      hybridImage = modernSplitImage(hybrid, modernAssets),
+      sampleMaterial = (im, x, y) =>
+        Array.from(im.getContext('2d').getImageData(y, 680 - x, 1, 1).data),
+      modernPixels = [
+        sampleMaterial(goldImage, 100, 25),
+        sampleMaterial(goldImage, 100, 50),
+        sampleMaterial(goldImage, 65, 150),
+        sampleMaterial(goldImage, 320, 150),
+        sampleMaterial(hybridImage, 100, 25),
+        sampleMaterial(hybridImage, 100, 50),
+        sampleMaterial(hybridImage, 320, 280),
+      ],
+      modernReuse = goldImage === modernSplitImage(gold, modernAssets);
+    modernAssets.set(modernSplitPlate({ ...gold, colors: ['W'] }), large('#00ff00'));
+    const modernInvalidation = goldImage !== modernSplitImage(gold, modernAssets);
+    let modernMissing = false;
+    modernAssets.delete(HYBRID_SPLIT_LABELS[0]);
+    try {
+      modernSplitImage(hybrid, modernAssets);
+    } catch {
+      modernMissing = true;
+    }
     return {
+      modernPixels,
+      modernReuse,
+      modernInvalidation,
+      modernMissing,
+      fuseAssets: modernSplitAssets({ ...gold, layout: 'split-m15-fuse' }),
       materialPixels,
       reused,
       watermarkAlpha,
@@ -177,7 +223,9 @@ try {
     assert.deepEqual(r.windows, r.recipeWindows);
     assert.deepEqual(r.windows, r.edgeWindows);
     assert.deepEqual(r.rotations, [-90, -90]);
-    assert.ok(r.assets.filter((a) => a?.includes('.mse-style/')).length >= 2);
+    assert.ok(
+      r.assets.filter((a) => a?.includes('.mse-style/') || a?.includes('/m15/split/')).length >= 2,
+    );
     assert.ok(r.watermarkKey && r.reminderKey && r.missing && r.overflow);
     if (r.fuse) assert.equal(r.paragraphCount, 1);
   }
@@ -191,14 +239,29 @@ try {
     'Only masked pinlines/paper receive two-color materials',
   );
   assert.ok(results.reused);
+  assert.deepEqual(
+    results.modernPixels,
+    [
+      [204, 204, 0, 255],
+      [204, 204, 0, 255],
+      [255, 0, 0, 255],
+      [0, 0, 255, 255],
+      [255, 0, 0, 255],
+      [136, 136, 136, 255],
+      [136, 136, 136, 255],
+    ],
+    'Gold/hybrid split labels and colored pinlines retain separate source materials',
+  );
+  assert.ok(results.modernReuse && results.modernInvalidation && results.modernMissing);
+  assert.ok(results.fuseAssets.every((url) => url.includes('/split/fuse/')));
   assert.ok(
     results.watermarkAlpha.every((x) => x > 50),
     'Both watermark halves survive source-in tinting',
   );
   assert.equal(results.room, null);
-  assert.equal(results.modern, null);
+  assert.equal(results.modern, 'm15');
   console.log(
-    'Old/2003/Fuse split artwork, printing, recipe geometry, metadata invalidation and layout gates pass',
+    'Old/2003/M15/Fuse split artwork, materials, printing, geometry and cache invalidation pass',
   );
 } finally {
   await browser.close();

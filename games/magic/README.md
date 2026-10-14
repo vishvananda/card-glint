@@ -107,19 +107,19 @@ filename metadata with `node games/magic/tools/assets/symbol-inventory.mjs`
 
 ## Where to make a change
 
-| Change                                                        | Owner                                                                                                                    |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Card inputs, ordinary rectangles, text sizes                  | [face-layout.ts](src/presentation/face-layout.ts)                                                                        |
-| Color pairs, artifacts, lands, legendary crowns               | [profile.ts](src/presentation/profile.ts)                                                                                |
-| Planeswalker, Saga, Adventure, Class, leveler geometry        | [special-frames.ts](src/presentation/special-frames.ts)                                                                  |
-| Measured planeswalker ability text and badge rows             | [planeswalker-rules.ts](src/presentation/planeswalker-rules.ts)                                                          |
-| Retro frame families, old-set mapping and geometry            | [retro-frame.ts](src/presentation/retro-frame.ts)                                                                        |
-| Old/2003/Fuse split; M15 and Room retain unvalidated fallback | [split-layout.ts](src/presentation/split-layout.ts)                                                                      |
-| Frame URL selection and symbols                               | [assets.ts](src/presentation/assets.ts), [set-symbols.ts](src/presentation/set-symbols.ts)                               |
-| Text wrapping, mana symbols and rules painting                | [canvas-text.ts](src/presentation/canvas-text.ts)                                                                        |
-| Face composition and cache identity                           | [canvas-face.ts](src/presentation/canvas-face.ts)                                                                        |
-| Visible art bounds, cropping, frame overlap                   | [art-apertures.ts](src/presentation/art-apertures.ts), [illustration-layout.ts](src/presentation/illustration-layout.ts) |
-| Pack boundary, etching and foil layer placement               | [index.ts](src/index.ts)                                                                                                 |
+| Change                                                 | Owner                                                                                                                    |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| Card inputs, ordinary rectangles, text sizes           | [face-layout.ts](src/presentation/face-layout.ts)                                                                        |
+| Color pairs, artifacts, lands, legendary crowns        | [profile.ts](src/presentation/profile.ts)                                                                                |
+| Planeswalker, Saga, Adventure, Class, leveler geometry | [special-frames.ts](src/presentation/special-frames.ts)                                                                  |
+| Measured planeswalker ability text and badge rows      | [planeswalker-rules.ts](src/presentation/planeswalker-rules.ts)                                                          |
+| Retro frame families, old-set mapping and geometry     | [retro-frame.ts](src/presentation/retro-frame.ts)                                                                        |
+| Old/2003/M15 split and Fuse; Room remains a fallback   | [split-layout.ts](src/presentation/split-layout.ts)                                                                      |
+| Frame URL selection and symbols                        | [assets.ts](src/presentation/assets.ts), [set-symbols.ts](src/presentation/set-symbols.ts)                               |
+| Text wrapping, mana symbols and rules painting         | [canvas-text.ts](src/presentation/canvas-text.ts)                                                                        |
+| Face composition and cache identity                    | [canvas-face.ts](src/presentation/canvas-face.ts)                                                                        |
+| Visible art bounds, cropping, frame overlap            | [art-apertures.ts](src/presentation/art-apertures.ts), [illustration-layout.ts](src/presentation/illustration-layout.ts) |
+| Pack boundary, etching and foil layer placement        | [index.ts](src/index.ts)                                                                                                 |
 
 Geometry is normally normalized `[x, y, width, height]` with a top-left origin.
 Typography uses the 488 × 680 reference face. Tier `inspect` paints at 732 × 1020;
@@ -136,8 +136,10 @@ not validate other split or Room frames.
 
 Old-border and 2003 spell splits use dedicated era plates, per-panel credits,
 optional guild watermarks, and one shared Fuse reminder. See the
-[split validation and remaining limitations](split-layout.md). M15 splits and
-Rooms still use the previous fallback; do not reuse these calibration numbers.
+[split validation and remaining limitations](split-layout.md). M15 spell splits
+use high-resolution plates with separate hybrid/gold materials and a shared
+footer. Rooms still use the previous fallback; do not reuse split calibration
+numbers for them.
 
 ## Contribute a frame or fix
 

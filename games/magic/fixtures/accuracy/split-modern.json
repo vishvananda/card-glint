@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-14T12:20:56.841Z",
+  "sourceCommit": "ebc58858c7885826eb613a161bda1452a79a40c4",
+  "rendererHash": "f1d1c190eb3d225d6c2be1e214e4bb9406fd9438b272ca9d765bdbe929e571d6",
+  "fontHash": "04fbecc33ef628a52b0ee899ae42ed618fa70343c53061ae3f35e50c17699d2d",
+  "studyHash": "6b45b4b36cb4bc68c6b422fe1966bc18c9e7d0b7c802951516e384041a898cb1",
+  "baseline": "01db2bc348e551cff8f8ef0364c66906f30ff8f5cb3538abce38bb75550f816f",
+  "auditHash": "612a1373b9f56cc08555f785a062c01a05079620e9e20e34241ab52dc5dc033f",
+  "capture": "split-m15-final-v2",
+  "cohort": 20,
+  "accepted": 14,
+  "means": {
+    "rules": {
+      "before": 0.3775934224964882,
+      "after": 0.581514927439388
+    },
+    "rules2": {
+      "before": 0.39885098315594103,
+      "after": 0.5588228776753174
+    }
+  },
+  "sets": {
+    "grn": {
+      "cohort": 10,
+      "accepted": 8,
+      "means": {
+        "rules": {
+          "before": 0.3566446227113991,
+          "after": 0.6039626973945238
+        },
+        "rules2": {
+          "before": 0.4200481201386186,
+          "after": 0.6925670396888064
+        }
+      }
+    },
+    "rna": {
+      "cohort": 10,
+      "accepted": 6,
+      "means": {
+        "rules": {
+          "before": 0.40552515554327356,
+          "after": 0.5515845674992073
+        },
+        "rules2": {
+          "before": 0.3705881338457044,
+          "after": 0.38049732832399874
+        }
+      }
+    }
+  },
+  "rejected": [
+    {
+      "name": "Find // Finality",
+      "set": "grn",
+      "reason": "insufficient-frame-support"
+    },
+    {
+      "name": "Status // Statue",
+      "set": "grn",
+      "reason": "insufficient-frame-support"
+    },
+    {
+      "name": "Bedeck // Bedazzle",
+      "set": "rna",
+      "reason": "insufficient-frame-support"
+    },
+    {
+      "name": "Carnival // Carnage",
+      "set": "rna",
+      "reason": "insufficient-frame-support"
+    },
+    {
+      "name": "Consecrate // Consume",
+      "set": "rna",
+      "reason": "no-validated-model"
+    },
+    {
+      "name": "Repudiate // Replicate",
+      "set": "rna",
+      "reason": "insufficient-frame-support"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "Expansion // Explosion",
+      "set": "grn",
+      "region": "rules",
+      "before": 0.41972234916834195,
+      "after": 0.16844983823344672
+    },
+    {
+      "name": "Collision // Colossus",
+      "set": "rna",
+      "region": "rules2",
+      "before": 0.5028585595687343,
+      "after": 0.16678421102281557
+    },
+    {
+      "name": "Depose // Deploy",
+      "set": "rna",
+      "region": "rules2",
+      "before": 0.48624338726464916,
+      "after": 0.18212041690817804
+    }
+  ],
+  "overflow": [],
+  "scope": "All 20 ordinary GRN/RNA spell splits, exact original wording and art against v0.2.16. Shared typography selected on GRN; RNA reserved for transfer. Frame-only registration excludes the authenticity stamp. F1 measures local dark-letter edges at one canonical pixel, not whole-card accuracy."
+}

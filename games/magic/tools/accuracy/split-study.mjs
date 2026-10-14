@@ -21,7 +21,14 @@ import { splitRegistration } from './split-registration.mjs';
 import { sagaTextMetric } from './saga-text-metrics.mjs';
 
 const baseline = process.argv.includes('--baseline');
-const baselineLabel = 'split-v0216-input-v2';
+const modern = process.argv.includes('--modern');
+const baselineLabel = process.env.MAGIC_SPLIT_BASELINE ?? 'split-v0216-input-v2';
+const selectedSets = process.argv
+  .find((a) => a.startsWith('--sets='))
+  ?.slice(7)
+  .split(',');
+if (selectedSets?.some((s) => !/^[a-z0-9]{2,10}$/.test(s)))
+  throw Error('Invalid split study set code');
 const sourceRoot = process.env.MAGIC_CAPTURE_ROOT ?? root;
 const label =
   process.argv.find((a, i) => i > 1 && !a.startsWith('--')) ??
@@ -35,9 +42,12 @@ try {
 }
 const entries = [],
   sources = [];
-for (const set of baseline
-  ? ['inv', 'apc', 'dis', 'dgm', 'grn', 'rna']
-  : ['inv', 'apc', 'dis', 'dgm']) {
+for (const set of selectedSets ??
+  (baseline
+    ? ['inv', 'apc', 'dis', 'dgm', 'grn', 'rna']
+    : modern
+      ? ['grn', 'rna']
+      : ['inv', 'apc', 'dis', 'dgm'])) {
   const snapshot = await readJson(`${cacheRoot}/rollout/sets/${set}.json`);
   const cards = (
     await Promise.all(snapshot.pages.map(async (p) => JSON.parse(await readObject(p)).data))
@@ -177,7 +187,7 @@ try {
     if (!baseline) {
       const template = PNG.sync.read(Buffer.from(result.template.split(',')[1], 'base64'));
       registration = {
-        ...splitRegistration(raw, template),
+        ...splitRegistration(raw, template, modern),
         templateHash: hash(PNG.sync.write(template)),
       };
       if (registration.accepted) {
