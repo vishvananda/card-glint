@@ -20,22 +20,25 @@ import { normalize, savePng } from './pixels.mjs';
 import { registerMajorFrame } from './major-calibration-metrics.mjs';
 
 const adventure = process.argv.includes('--adventure');
-const cohort = adventure
-  ? { eld: null, woe: null, clb: null }
-  : {
-      dom: null, // All ordinary original Dominaria Sagas, not a hand-picked subset.
-      thb: ['Medomai’s Prophecy', 'Elspeth Conquers Death'],
-      khm: ["The Trickster-God's Heist"],
-      mh2: ["Urza's Saga"],
-      dmu: ['The Cruelty of Gix'],
-      neo: ['Fable of the Mirror-Breaker // Reflection of Kiki-Jiki'],
-      apc: ['Fire // Ice'],
-      dgm: ['Wear // Tear'],
-      akh: ['Dusk // Dawn'],
-      isd: ['Delver of Secrets // Insectile Aberration'],
-      znr: ['Bala Ged Recovery // Bala Ged Sanctuary'],
-      dsk: ["Dollmaker's Shop // Porcelain Gallery"],
-    };
+const prepared = process.argv.includes('--prepare');
+const cohort = prepared
+  ? { sos: null }
+  : adventure
+    ? { eld: null, woe: null, clb: null }
+    : {
+        dom: null, // All ordinary original Dominaria Sagas, not a hand-picked subset.
+        thb: ['Medomai’s Prophecy', 'Elspeth Conquers Death'],
+        khm: ["The Trickster-God's Heist"],
+        mh2: ["Urza's Saga"],
+        dmu: ['The Cruelty of Gix'],
+        neo: ['Fable of the Mirror-Breaker // Reflection of Kiki-Jiki'],
+        apc: ['Fire // Ice'],
+        dgm: ['Wear // Tear'],
+        akh: ['Dusk // Dawn'],
+        isd: ['Delver of Secrets // Insectile Aberration'],
+        znr: ['Bala Ged Recovery // Bala Ged Sanctuary'],
+        dsk: ["Dollmaker's Shop // Porcelain Gallery"],
+      };
 const output = `${outputRoot}/${process.argv[2] ?? 'special-frames-v0215'}`;
 try {
   await access(`${output}/audit.json`);
@@ -66,7 +69,7 @@ for (const [set, names] of Object.entries(cohort)) {
       ) &&
       (names
         ? names.map(simple).includes(simple(c.name))
-        : c.layout === (adventure ? 'adventure' : 'saga')),
+        : c.layout === (prepared ? 'prepare' : adventure ? 'adventure' : 'saga')),
   );
   if (names && selected.length !== names.length) throw Error(`Incomplete/duplicate cohort: ${set}`);
   const wording = await cachedFetch(`https://mtgjson.com/api/v5/${set.toUpperCase()}.json`);
@@ -80,13 +83,17 @@ for (const [set, names] of Object.entries(cohort)) {
         cachedFetch(side.images.art_crop),
       ]);
       const input = specialFrameInput(card, side, reference, art, records);
-      if (adventure) {
+      if (adventure || prepared) {
         const number = card.collector_number.padStart(3, '0');
         input.face.collectorNumber =
           Number(card.collector_number) <= data.baseSetSize
             ? `${number}/${data.baseSetSize}`
             : number;
         input.face.legalText = `™ & © ${data.releaseDate.slice(0, 4)} Wizards of the Coast`;
+        if (prepared) {
+          input.face.collectorNumber = card.collector_number;
+          input.face.collectorFormat = 'rarity-first';
+        }
       }
       entries.push({
         id: `${card.id}-${side.key}`,
@@ -175,14 +182,15 @@ try {
       const bytes = Buffer.from(capture.data.split(',')[1], 'base64');
       const baseline = PNG.sync.read(bytes),
         raw = normalize(PNG.sync.read(await readObject(entry.reference)));
-      const fit = adventure
-        ? { accepted: false, reason: 'unvalidated-adventure-template' }
-        : registerMajorFrame(
-            raw,
-            baseline,
-            capture.frame === 'saga' ? 'saga' : 'component',
-            'black',
-          );
+      const fit =
+        adventure || prepared
+          ? { accepted: false, reason: 'unvalidated-special-frame-template' }
+          : registerMajorFrame(
+              raw,
+              baseline,
+              capture.frame === 'saga' ? 'saga' : 'component',
+              'black',
+            );
       result.registration = fit;
       result.frame = capture.frame;
       result.rows = capture.rows;

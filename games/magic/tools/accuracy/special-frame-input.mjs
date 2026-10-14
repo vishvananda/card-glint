@@ -35,7 +35,7 @@ export function originalFaceRecord(card, data, records) {
  * type label after the divider, which can be removed by exact type equality. */
 export function originalPanelText(card, original, records) {
   const text = normalizePrintingText(original.originalText);
-  if (!['split', 'adventure'].includes(card.layout)) return text;
+  if (!['split', 'adventure', 'prepare'].includes(card.layout)) return text;
   const pair = card.card_faces.map((data) => originalFaceRecord(card, data, records));
   if (!text.includes(' // ')) {
     if (pair[0].originalText === pair[1].originalText)
@@ -167,11 +167,11 @@ export function specialFrameInput(card, side, reference, art, records) {
     delete half.illustration;
     delete half.frameAssetFamily;
   }
-  if (card.layout === 'adventure')
+  if (['adventure', 'prepare'].includes(card.layout))
     return {
       face: {
         ...halves[0],
-        layout: 'adventure',
+        layout: card.layout,
         illustration: `/__accuracy/object/${art.sha256}`,
         faces: halves,
       },
