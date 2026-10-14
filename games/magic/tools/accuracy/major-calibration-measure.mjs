@@ -14,7 +14,7 @@ import {
   scoreSymbol,
 } from './major-calibration-metrics.mjs';
 
-import { loadOldStockTargets } from './stock-targets.mjs';
+import { loadOldStockTargets, loadPlateStockTargets } from './stock-targets.mjs';
 import {
   calibrationRevision,
   calibrationDirectory as directory,
@@ -22,6 +22,8 @@ import {
 const plan = await readJson(calibrationPlanFile),
   filter = process.argv.slice(2);
 const oldStock = calibrationRevision ? await loadOldStockTargets() : null;
+const plateRevision = process.env.MAGIC_CALIBRATION_PLATE_STOCK;
+const plateStock = plateRevision ? await loadPlateStockTargets(plateRevision) : null;
 const methodHash = hash(
   Buffer.concat(
     await Promise.all(
@@ -30,6 +32,7 @@ const methodHash = hash(
         'major-calibration-measure.mjs',
         'stock-targets.mjs',
         'old-frame-normalization.mjs',
+        'plate-stock-target.mjs',
         'scan-affine-fit.mjs',
         'scan-frame-anchors.mjs',
         'scan-frame-fit.mjs',
@@ -52,7 +55,12 @@ for (const group of calibrationGroups(plan.rows, filter)) {
   const captureHash = hash(JSON.stringify(capture));
   try {
     const prior = await readJson(`${directory}/${key}-measure.json`);
-    if (prior.captureHash === captureHash && prior.methodHash === methodHash) {
+    if (
+      prior.captureHash === captureHash &&
+      prior.methodHash === methodHash &&
+      prior.plateRevision === plateRevision &&
+      prior.plateTargetIdentity === plateStock?.identity
+    ) {
       console.log('cached', key);
       continue;
     }
@@ -75,6 +83,7 @@ for (const group of calibrationGroups(plan.rows, filter)) {
       source = PNG.sync.read(await readObject(row.reference));
     const fit =
       (group.family === 'retro' && oldStock?.(normalize(source), row, group.border)) ||
+      (group.family === 'eighth' && plateStock?.normalize(normalize(source), row, group.border)) ||
       registerMajorFrame(normalize(source), blank, group.family, group.border);
     const result = {
       id: row.id,
@@ -185,6 +194,8 @@ for (const group of calibrationGroups(plan.rows, filter)) {
     rendererHash: capture.rendererHash,
     captureHash,
     methodHash,
+    plateRevision,
+    plateTargetIdentity: plateStock?.identity,
     normalization: { accepted: rows.filter((r) => r.fit?.accepted).length, total: rows.length },
     frame,
     symbol,

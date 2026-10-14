@@ -4,6 +4,38 @@ import { PNG } from 'pngjs';
 import { readJson, cacheRoot, outputRoot, hash } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { oldFrameTarget, normalizeOldFrame } from './old-frame-normalization.mjs';
+import { normalizePlateStock } from './plate-stock-target.mjs';
+
+/** Optional exact-plate target study, never inferred from another material. */
+export async function loadPlateStockTargets(revision) {
+  assert.match(revision, /^[a-z0-9][a-z0-9-]{0,60}$/);
+  const directory = `${cacheRoot}/rollout/${revision}`;
+  const report = await readJson(directory + '/targets.json');
+  const targets = new Map();
+  for (const row of report.rows) {
+    assert.equal(hash(await readFile(`${directory}/${row.geometry.file}`)), row.geometry.sha256);
+    targets.set(`${row.asset.url}/${row.border}`, row);
+  }
+  const normalize = (reference, sample, border) => {
+    const sources = sample.components.filter((c) => targets.has(`${c.url}/${border}`));
+    if (!sources.length) throw Error('Exact plate target missing for capture');
+    const rows = sources.map((source) => {
+      const row = targets.get(`${source.url}/${border}`);
+      assert.equal(source.sha256, row.asset.sha256);
+      return row;
+    });
+    const target = rows[0].target;
+    for (const row of rows) {
+      assert.equal(row.target.reliable, target.reliable);
+      assert.deepEqual(row.target.sides, target.sides);
+    }
+    return {
+      ...normalizePlateStock(reference, target, border),
+      stockTargetHash: hash(JSON.stringify(rows)),
+    };
+  };
+  return { normalize, identity: hash(JSON.stringify(report)) };
+}
 /** Exact source stock targets, shared with color analysis. No text/symbol anchors. */
 export async function loadOldStockTargets() {
   const sources = await readJson(cacheRoot + '/rollout/old-frame-templates.json');
