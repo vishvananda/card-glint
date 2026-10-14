@@ -60,7 +60,7 @@ export function paintMana(
   adjustment?: ManaSymbolTransform,
 ) {
   const numeral = adjustment && /^\d+$/.test(symbol) ? images.manaNumerals?.get(symbol) : undefined;
-  const image = numeral?.glyph ?? images.get(manaSymbolAsset(symbol) ?? '');
+  const image = images.get(manaSymbolAsset(symbol) ?? '');
   context.save();
   // A title's shadow must not leak into a shadow-free inline or historical symbol.
   context.shadowColor = 'transparent';
@@ -74,12 +74,13 @@ export function paintMana(
     context.shadowOffsetX = 1.5372 * (-matrix.a + matrix.c);
     context.shadowOffsetY = 1.5372 * (-matrix.b + matrix.d);
   }
-  context.fillStyle =
-    numeral?.disc ?? images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
+  context.fillStyle = images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
   context.beginPath();
   context.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   context.fill();
   context.shadowColor = 'transparent';
+  if (numeral)
+    context.drawImage(numeral.image, 0, 0, numeral.width, numeral.height, x, y, size, size);
   // Prepared glyphs contain only the numeral; the disc and its shadow stay put.
   if (/^\d+$/.test(symbol) && adjustment) {
     const { numberDx = 0, numberDy = 0, numberScale = 1 } = adjustment;
@@ -89,8 +90,20 @@ export function paintMana(
       context.translate(-x - size / 2, -y - size / 2);
     }
   }
-  if (image) {
-    context.drawImage(image, x, y, size, size);
+  if (numeral || image) {
+    if (numeral)
+      context.drawImage(
+        numeral.image,
+        numeral.width,
+        0,
+        numeral.width,
+        numeral.height,
+        x,
+        y,
+        size,
+        size,
+      );
+    else context.drawImage(image!, x, y, size, size);
     context.restore();
     return;
   }

@@ -3,12 +3,14 @@ import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { MaterialBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 
-const glyphs = new MaterialBitmapCache(8 * 1024 * 1024);
+const glyphs = new MaterialBitmapCache(16 * 1024 * 1024);
 const identities = new WeakMap<ImageBitmap, number>();
 let nextIdentity = 0;
 export interface ManaNumeral {
-  glyph: ImageBitmap;
-  disc: string;
+  /** Left half: original disc alpha; right half: numeral alpha. */
+  image: ImageBitmap;
+  width: number;
+  height: number;
 }
 
 /** Split the pinned two-color numeric SVG raster once during face preparation.
@@ -35,14 +37,13 @@ export async function prepareManaNumerals(
     leases = await glyphs.acquireMany(
       sources.map(({ source, identity }) => ({
         key: `numeral-v1:${identity}`,
-        bytes: source.width * source.height * 4,
+        bytes: source.width * source.height * 8,
         build: () => splitNumeral(source),
       })),
       signal,
     );
-    sources.forEach(({ symbol }, i) => {
-      const glyph = leases[i]!.value;
-      numerals.set(symbol, { glyph, disc: discColors.get(glyph)! });
+    sources.forEach(({ symbol, source }, i) => {
+      numerals.set(symbol, { image: leases[i]!.value, width: source.width, height: source.height });
     });
     return {
       images: Object.assign(new Map(images), {
@@ -56,7 +57,6 @@ export async function prepareManaNumerals(
     throw error;
   }
 }
-const discColors = new WeakMap<ImageBitmap, string>();
 async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
@@ -80,7 +80,9 @@ async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
       difference = paper.map((v, k) => v - ink[k]!),
       length = difference.reduce((n, v) => n + v * v, 0);
     if (length < 100) throw Error('Numeric mana asset has no separable glyph.');
+    const background = new ImageData(new Uint8ClampedArray(p), source.width, source.height);
     for (let i = 0; i < p.length; i += 4) {
+      for (let k = 0; k < 3; k++) background.data[i + k] = paper[k]!;
       const opacity = Math.max(
         0,
         Math.min(1, difference.reduce((n, v, k) => n + v * (paper[k]! - p[i + k]!), 0) / length),
@@ -88,10 +90,10 @@ async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
       p[i + 3] = Math.round(p[i + 3]! * opacity);
       for (let k = 0; k < 3; k++) p[i + k] = ink[k]!;
     }
-    c.putImageData(pixels, 0, 0);
-    const bitmap = await createImageBitmap(canvas);
-    discColors.set(bitmap, `rgb(${paper.join(' ')})`);
-    return bitmap;
+    canvas.width = source.width * 2;
+    c.putImageData(background, 0, 0);
+    c.putImageData(pixels, source.width, 0);
+    return await createImageBitmap(canvas);
   } finally {
     canvas.width = canvas.height = 0;
   }
