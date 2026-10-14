@@ -32,15 +32,17 @@ export function adventureRuleLayouts(c: CanvasRenderingContext2D, face: Rendered
     face.rulesAlignment?.mode !== 'left' && reference.length === 1 && reference[0]!.role === 'rules'
       ? shortCenteredRules(c, permanentParagraphs, reference, bounds, 22.5, 9, 1, typography)
       : null;
+  const spellParagraphs = paragraphs(spell),
+    spellBounds = { x: 41.7, y: 499, width: 191, height: 122 };
+  // Short spells use a nominal size instead of expanding into the spare page.
+  // Measure actual lines (including italic runs and symbols), not characters.
+  // ELD selected this shared four-line policy; later sets are transfer checks.
+  const compact = layoutRules(c, spellParagraphs, spellBounds, 20.25, 20.25, typography);
   return {
     permanent: centered || layoutRules(c, permanentParagraphs, bounds, 22.5, 9, typography),
-    spell: layoutRules(
-      c,
-      paragraphs(spell),
-      { x: 41.7, y: 499, width: 191, height: 122 },
-      24,
-      9,
-      typography,
-    ),
+    spell:
+      !compact.overflow && compact.lines.length <= 4
+        ? compact
+        : layoutRules(c, spellParagraphs, spellBounds, 22.5, 9, typography),
   };
 }

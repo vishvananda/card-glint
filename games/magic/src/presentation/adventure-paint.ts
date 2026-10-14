@@ -1,6 +1,6 @@
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
-import { ADVENTURE_RECTS, adventureCrown, adventurePt } from './adventure-frame.js';
+import { ADVENTURE_RECTS, adventureCrown } from './adventure-frame.js';
 import { adventureFrameImage } from './adventure-material.js';
 import { adventureRuleLayouts } from './adventure-rules.js';
 import { resolveCardProfile } from './profile.js';
@@ -10,7 +10,7 @@ import { paintRulesLayout } from './rules-paint.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
-import { SAGA_STAMP } from './saga-frame.js';
+import { paintAdventureFooter } from './adventure-footer.js';
 
 export function paintAdventureFrame(
   c: CanvasRenderingContext2D,
@@ -91,46 +91,6 @@ function insetHeader(c: CanvasRenderingContext2D, spell: RenderedCardInput, imag
   );
   paintFittedText(c, spell.typeLine ?? '', 40, 473.5, 193, 20.1, true);
 }
-function footer(c: CanvasRenderingContext2D, face: RenderedCardInput, images: CanvasImages) {
-  const hasStats = face.power != null && face.toughness != null;
-  if (hasStats) {
-    const pt = images.get(adventurePt(face));
-    if (!pt) throw Error('Adventure power/toughness plate is unavailable.');
-    const [x, y, w, h] = ADVENTURE_RECTS.stats;
-    c.drawImage(pt, x * 488, y * 680, w * 488, h * 680);
-    c.fillStyle = '#17140f';
-    c.textAlign = 'center';
-    c.textBaseline = 'middle';
-    c.font = '700 25px "CardRenderer MTG Beleren", Georgia';
-    c.fillText(`${face.power}/${face.toughness}`, 420, 627, 77);
-  }
-  if (['rare', 'mythic'].includes(face.rarity ?? '')) {
-    const stamp = images.get(SAGA_STAMP);
-    if (!stamp) throw Error('Adventure authenticity stamp is unavailable.');
-    c.drawImage(stamp, 213.7, 620.2, 60.5, 25.3);
-  }
-  c.fillStyle = '#fff';
-  c.textAlign = 'left';
-  c.textBaseline = 'alphabetic';
-  c.font = '11px "CardRenderer MTG Relay", sans-serif';
-  c.fillText(
-    `${face.collectorNumber ?? ''} ${(face.rarity ?? 'common')[0]!.toUpperCase()}`,
-    32,
-    645,
-  );
-  c.fillText(`${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
-  if (face.artist) {
-    c.font = '11px "CardRenderer MTG Artist Credit", serif';
-    c.fillText('a', 93, 658);
-    c.font = 'small-caps 11px "CardRenderer MTG Beleren", serif';
-    c.fillText(face.artist, 108, 658, 210);
-  }
-  if (face.legalText) {
-    c.textAlign = 'right';
-    c.font = '10px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, 454, 658, 182);
-  }
-}
 export function paintAdventureFace(
   c: CanvasRenderingContext2D,
   face: RenderedCardInput,
@@ -153,7 +113,7 @@ export function paintAdventureFace(
     const rules = adventureRuleLayouts(c, face);
     paintRulesLayout(c, rules.permanent, images);
     paintRulesLayout(c, rules.spell, images);
-    footer(c, face, images);
+    paintAdventureFooter(c, face, images);
   }
   c.restore();
 }

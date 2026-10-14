@@ -1,6 +1,7 @@
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
+import { prepareAdventurePaper } from './adventure-paper.js';
 import {
   ADVENTURE_ROOT,
   ADVENTURE_LEFT_MASK,
@@ -20,7 +21,8 @@ const id = (source: ImageBitmap) => {
   return ids.get(source)!;
 };
 /** Cached during preparation. Alpha masks preserve the native book fold;
- * no pixel readback or source bitmap ownership crosses into the cache. */
+ * paper RGB calibration runs only on a cache miss. No mask readback or
+ * ownership of the borrowed source bitmaps crosses into this cache. */
 export function adventureFrameImage(
   face: RenderedCardInput,
   images: CanvasImages,
@@ -34,6 +36,8 @@ export function adventureFrameImage(
   };
   const sources = adventureAssets(face).map(required);
   const key = JSON.stringify([
+    face.setCode,
+    face.colorCalibration,
     face.colors,
     face.frameColors,
     face.manaSymbols,
@@ -66,12 +70,15 @@ export function adventureFrameImage(
       o = s.getContext('2d')!,
       colors = resolveFrameColors(input);
     o.drawImage(required(adventurePlate(input)), 0, 0, w, h);
+    if (page && colors.length === 1) prepareAdventurePaper(s, face, colors[0]!);
     if (colors.length === 2) {
       if ('WUBRG'.indexOf(colors[1]!) - 'WUBRG'.indexOf(colors[0]!) > 2) colors.reverse();
       o.drawImage(required(`${ADVENTURE_ROOT}/${colors[0]!.toLowerCase()}.png`), 0, 0, w, h);
+      if (page) prepareAdventurePaper(s, face, colors[0]!);
       const second = scratch(),
         sc = second.getContext('2d')!;
       sc.drawImage(required(`${ADVENTURE_ROOT}/${colors[1]!.toLowerCase()}.png`), 0, 0, w, h);
+      if (page) prepareAdventurePaper(second, face, colors[1]!);
       sc.globalCompositeOperation = 'destination-in';
       const blend = sc.createLinearGradient(
         w * (page ? 0.22 : 0.43),

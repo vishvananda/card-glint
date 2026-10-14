@@ -43,7 +43,8 @@ export interface RenderedCardInput extends CardProfileInput {
    * (or the legacy set policy when neither choice is supplied). */
   symbolStyle?: 'original' | 'modern';
   /** Opt-in measured frame/paper and mana colors. set-hsb-v1 includes admitted
-   * old-frame set/stock/material profiles; early-hsb-v1 limits these to the first
+   * old-frame set/stock/material profiles and ELD/WOE Adventure spell paper;
+   * early-hsb-v1 limits these to the first
    * four sets. Omitted preserves source colors. Art and lettering are unchanged. */
   colorCalibration?: 'early-hsb-v1' | 'set-hsb-v1';
   illustration?: string | null;
@@ -56,6 +57,9 @@ export interface RenderedCardInput extends CardProfileInput {
   legalText?: string | null;
   /** Printed number when the set footer includes one; no Oracle identity inference. */
   collectorNumber?: string | null;
+  /** Native Adventure collector-line style. Omitted uses the known set's
+   * printing style, falling back to number first for unknown sets. */
+  collectorFormat?: 'number-first' | 'rarity-first';
   power?: string | number | null;
   toughness?: string | number | null;
   loyalty?: string | number | null;

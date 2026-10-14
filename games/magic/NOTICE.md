@@ -93,7 +93,9 @@ preserving the higher-resolution frame outlines. All remain external URLs.
 
 Adventure plates and book/pinline masks use CardConjurer's
 `img/frames/adventure/regular/`, with its M15 power/toughness and legendary crown
-assets. Hybrid label interiors reuse the pinned Full Magic Pack neutral paper
+assets. Power/toughness and artist lettering reference its
+`data/fonts/beleren-bsc.ttf` (Beleren Bold Small Caps), at the same pinned revision.
+Hybrid label interiors reuse the pinned Full Magic Pack neutral paper
 above. The source definitions and measured comparison scope are documented in
 [adventure-layout.md](adventure-layout.md). These remain external references;
 no source artwork, card scans or MSE binaries are included.

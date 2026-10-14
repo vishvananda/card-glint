@@ -1,6 +1,7 @@
 import { nativeSplitEra, splitFuseParagraphs } from './split-frame.js';
 import { isAdventure } from './adventure-frame.js';
 import { paintAdventureFace } from './adventure-paint.js';
+import { loadAdventureFont } from './adventure-footer.js';
 import { paintNativeSplitFace, loadSplitFonts } from './split-paint.js';
 import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { isAftermath } from './aftermath-frame.js';
@@ -114,7 +115,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v98',
+    'canvas-face-v100',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -179,6 +180,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.artist ?? null,
         face.watermark ?? null,
         face.collectorNumber ?? null,
+        face.collectorFormat ?? null,
         face.legalText === undefined ? ['default'] : face.legalText,
         face.setCode ?? null,
         face.setSymbol ?? null,
@@ -278,6 +280,7 @@ export async function composeCardTexture(
       (hooks?.loadFonts ?? loadCanvasFonts)(),
       nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
       faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
+      isAdventure(input.face) ? loadAdventureFont() : Promise.resolve(),
       isRetro(input.face) || nativeSplitEra(input.face) === 'old'
         ? (hooks?.loadRetroFont ?? loadRetroFont)()
         : Promise.resolve(),

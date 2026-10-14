@@ -23,6 +23,12 @@ try {
     const { adventureRuleLayouts } = await import(
       '/games/magic/src/presentation/adventure-rules.ts'
     );
+    const { prepareAdventurePaper } = await import(
+      '/games/magic/src/presentation/adventure-paper.ts'
+    );
+    const { adventureCollectorText } = await import(
+      '/games/magic/src/presentation/adventure-footer.ts'
+    );
     const { cardTextureKey } = await import('/games/magic/src/presentation/canvas-face.ts');
     const { canvasAssetUrls } = await import('/games/magic/src/presentation/canvas-assets.ts');
     const { mtg } = await import('/games/magic/src/index.ts');
@@ -95,6 +101,35 @@ try {
       faces: [face.faces[0], { ...face.faces[1], rulesText: 'A long spell. '.repeat(600) }],
     };
     const overflow = adventureRuleLayouts(c, dense);
+    const paper = solid('#32658a');
+    prepareAdventurePaper(paper, { ...face, setCode: 'eld', colorCalibration: 'set-hsb-v1' }, 'U');
+    const unchanged = solid('#32658a');
+    prepareAdventurePaper(
+      unchanged,
+      { ...face, setCode: 'clb', colorCalibration: 'set-hsb-v1' },
+      'U',
+    );
+    const formats = [
+      adventureCollectorText({
+        ...face,
+        setCode: 'eld',
+        collectorNumber: '044/269',
+        rarity: 'rare',
+      }),
+      adventureCollectorText({
+        ...face,
+        setCode: 'woe',
+        collectorNumber: '230/276',
+        rarity: 'mythic',
+      }),
+      adventureCollectorText({
+        ...face,
+        setCode: 'custom',
+        collectorFormat: 'rarity-first',
+        collectorNumber: '12a',
+        rarity: 'uncommon',
+      }),
+    ];
     return {
       sides,
       same,
@@ -110,6 +145,15 @@ try {
       edges: recipe.edges.map((e) => e.destination),
       expected: ADVENTURE_RECTS.art,
       overflow: [overflow.permanent.overflow, overflow.spell.overflow],
+      paper: {
+        body: pixel(paper, 100, 550),
+        header: pixel(paper, 100, 475),
+        fold: pixel(paper, 28, 550),
+        rail: pixel(paper, 100, 630),
+        unsupported: pixel(unchanged, 100, 550),
+      },
+      formats,
+      formatInvalidates: base !== key({ ...face, collectorFormat: 'rarity-first' }),
     };
   });
   assert.deepEqual(
@@ -135,6 +179,15 @@ try {
   assert.ok(result.native.every((url) => result.assets.includes(url)));
   assert.ok(!result.assets.some((url) => url?.includes('/boxes/')));
   assert.deepEqual(result.overflow, [true, true]);
+  for (const area of ['header', 'fold', 'rail', 'unsupported'])
+    assert.deepEqual(result.paper[area], [50, 101, 138, 255]);
+  assert.ok(
+    result.paper.body[0] + result.paper.body[1] + result.paper.body[2] > 289,
+    'Admitted correction lightens only the inset paper',
+  );
+  assert.equal(result.paper.body[3], 255);
+  assert.deepEqual(result.formats, ['044/269 R', 'M 0230', 'U 0012a']);
+  assert.ok(result.formatInvalidates);
   console.log(
     'Adventure independent page colors, prepared-material reuse, art/printing/effect bounds, cache keys and explicit overflow pass',
   );
