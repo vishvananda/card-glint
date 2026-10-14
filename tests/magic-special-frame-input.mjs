@@ -257,3 +257,32 @@ assert.throws(
   () => specialFrameInput(prepared, specialFrameSides(prepared)[0], reference, art, noOriginals),
   /identity changed/,
 );
+
+const tamId = '7120e71b-2976-451b-89a7-a1665dc6fb6b';
+const tamPrinted = preparedText.cards[tamId];
+const tam = {
+  ...prepared,
+  id: tamId,
+  collector_number: tamPrinted.number,
+  card_faces: tamPrinted.faces.map((f) => ({ name: f.name, type_line: f.originalType })),
+};
+const tamInput = specialFrameInput(
+  tam,
+  specialFrameSides(tam)[0],
+  { sha256: tamPrinted.referenceSha256 },
+  art,
+  tamPrinted.faces.map((f, i) => ({
+    identifiers: { scryfallId: tamId },
+    faceName: f.name,
+    number: tamPrinted.number,
+    uuid: `tam-${i}`,
+    colors: ['G', 'U'],
+  })),
+);
+assert.deepEqual(tamInput.face.rulesParagraphs[0].runs[0], { text: 'Landfall', italic: true });
+assert.equal(
+  tamInput.face.rulesParagraphs.map((p) => p.runs.map((r) => r.text).join('')).join('\n'),
+  tamInput.face.rulesText,
+  'Reviewed formatting preserves the exact printed words',
+);
+assert.equal(tamInput.originals[0].reviewedCorrection.fields.originalParagraphs.before, null);

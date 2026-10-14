@@ -1,4 +1,4 @@
-import { readFile, access } from 'node:fs/promises';
+import { readFile, access, realpath } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { PNG } from 'pngjs';
 import { createServer } from 'vite';
@@ -21,6 +21,7 @@ import { registerMajorFrame } from './major-calibration-metrics.mjs';
 
 const adventure = process.argv.includes('--adventure');
 const prepared = process.argv.includes('--prepare');
+const sourceRoot = await realpath(process.env.MAGIC_CAPTURE_ROOT ?? root);
 const cohort = prepared
   ? { sos: null }
   : adventure
@@ -46,9 +47,9 @@ try {
 } catch (error) {
   if (error.code !== 'ENOENT') throw error;
 }
-const rendererHash = await sourceHash(`${root}/games/magic/src`);
+const rendererHash = await sourceHash(`${sourceRoot}/games/magic/src`);
 const studyHash = await sourceHash(`${root}/games/magic/tools/accuracy`);
-const fontHash = hash(await readFile(`${root}/games/magic/fonts.css`));
+const fontHash = hash(await readFile(`${sourceRoot}/games/magic/fonts.css`));
 const entries = [],
   sources = [];
 const simple = (text) => text.replaceAll('’', "'");
@@ -109,11 +110,15 @@ for (const [set, names] of Object.entries(cohort)) {
   }
   console.log('Cached', set, selected.length, 'printings');
 }
-const resolver = await createServer({ configFile: false, root, server: { middlewareMode: true } });
+const resolver = await createServer({
+  configFile: false,
+  root: sourceRoot,
+  server: { middlewareMode: true },
+});
 const { canvasAssetUrls } = await resolver.ssrLoadModule(
   '/games/magic/src/presentation/canvas-assets.ts',
 );
-const css = await readFile(`${root}/games/magic/fonts.css`, 'utf8');
+const css = await readFile(`${sourceRoot}/games/magic/fonts.css`, 'utf8');
 const fontUrls = [...css.matchAll(/url\('([^']+)'\)/g)].map((m) => m[1]);
 const requested = new Map(
   entries.map((e) => [e.id, canvasAssetUrls(e.face).filter((u) => u?.startsWith('https://'))]),
@@ -132,7 +137,7 @@ const components = (
     }
   })
 ).filter(Boolean);
-const session = await openBrowser({ entries, components });
+const session = await openBrowser({ entries, components }, { sourceRoot });
 // Reproduce the production loader's 404 fallback explicitly. Do not replace
 // unavailable components with different assets or silently certify the raster.
 for (const { url } of missingAssets)
@@ -219,13 +224,13 @@ try {
     );
   }
   if (session.faults.length) throw Error(session.faults.join('\n'));
-  if (rendererHash !== (await sourceHash(`${root}/games/magic/src`)))
+  if (rendererHash !== (await sourceHash(`${sourceRoot}/games/magic/src`)))
     throw Error('Renderer changed during capture');
   await writeJson(`${output}/audit.json`, {
     schemaVersion: 1,
     createdAt: new Date().toISOString(),
     sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], {
-      cwd: root,
+      cwd: sourceRoot,
       encoding: 'utf8',
     }).trim(),
     rendererHash,

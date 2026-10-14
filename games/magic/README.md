@@ -149,6 +149,12 @@ profiles; CLB retains its source colors. `collectorFormat` can explicitly select
 `number-first` or `rarity-first` for the native Adventure footer. See the
 [Adventure comparison and limitations](adventure-layout.md).
 
+Prepared cards have a separate native painter with the creature on the left and
+the inset spell on the right. Supply `layout: 'prepare'` and two `faces`, ordered
+creature then spell, with the full illustration on the parent. Materials and text
+fit independently; legendary two-color crowns and hybrid spell headers retain
+their own treatments. See the [Prepared comparison and limitations](prepare-layout.md).
+
 ## Contribute a frame or fix
 
 1. Identify the selection rule, geometry and painting owners above. Keep game

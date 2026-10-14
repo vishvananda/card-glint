@@ -637,12 +637,31 @@
       "set": "sos",
       "number": "237",
       "referenceSha256": "4666af8e150a83813424eafd5259a2be5934edb17643541b42241f10c8e92be3",
-      "reason": "MTGJSON lacks originalText/originalType. Both printed panels were visually checked against this full scan; current Scryfall face wording and types match, including reminder text and paragraph breaks.",
+      "reason": "MTGJSON lacks originalText/originalType. Both printed panels were visually checked against this full scan; current Scryfall face wording and types match, including reminder text and paragraph breaks. Landfall uses italic lettering; the full-scan review also records that style explicitly.",
       "faces": [
         {
           "name": "Tam, Observant Sequencer",
           "originalText": "Landfall — Whenever a land you control enters, Tam becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)",
-          "originalType": "Legendary Creature — Gorgon Wizard"
+          "originalType": "Legendary Creature — Gorgon Wizard",
+          "originalParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Landfall",
+                  "italic": true
+                },
+                {
+                  "text": " — Whenever a land you control enters, Tam becomes prepared. ",
+                  "italic": false
+                },
+                {
+                  "text": "(While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)",
+                  "italic": true
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Deep Sight",

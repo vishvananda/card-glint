@@ -126,6 +126,12 @@ export function specialFrameInput(card, side, reference, art, records) {
       ...(type.issue ? { typeIssue: type.issue } : {}),
     });
     const rules = originalPanelText(card, original, records);
+    const paragraphs = original.originalParagraphs;
+    if (
+      paragraphs &&
+      paragraphs.map((p) => p.runs.map((r) => r.text).join('')).join('\n') !== rules
+    )
+      throw Error('Reviewed original paragraph styling changes the printed wording');
     const merged = {
       ...card,
       ...data,
@@ -139,8 +145,13 @@ export function specialFrameInput(card, side, reference, art, records) {
       printed_type_line: type.typeLine,
     };
     return {
-      ...presentation({ card: merged, reference, art }, {}, { [card.id]: { originalText: rules } })
-        .face,
+      ...presentation(
+        { card: merged, reference, art },
+        paragraphs
+          ? { [card.id]: { paragraphs, reviewed: true, referenceHash: reference.sha256 } }
+          : {},
+        { [card.id]: { originalText: rules } },
+      ).face,
       layout: card.layout,
       ...(physicalSide &&
       /\bSaga\b/.test(merged.printed_type_line ?? '') &&

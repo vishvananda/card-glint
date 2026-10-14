@@ -1483,13 +1483,14 @@ frame-only normalization before component metrics:
    `magic-old-split`, `magic-new-split`, `magic-new-split-fuse` and
    `magic-m15-split-fusable` source styles. Validate shared art sheet cropping,
    joined border geometry, per-half credits and one Fuse reminder strip.
-3. Adventure: compare CardConjurer `packAdventure.js` with MSE's
-   `magic-m15-adventure` style, including multicolor and long inset text.
-4. Prepared: a distinct new layout, not an Adventure alias. The pinned
-   CardConjurer tree does contain `packPrepare.js` and `img/frames/prepare/`;
-   the earlier inventory missed them. Start with ordinary SOS printings,
-   independent right-inset spell materials, and the
-   [source/layout investigation](prepare-layout.md).
+3. Adventure shipped in 0.2.19: native plates, independent materials, measured
+   typography and 111 ordinary ELD/WOE/CLB comparisons. See the
+   [retained limits and rejected fits](adventure-layout.md).
+4. Prepared now has a distinct native painter and 36 ordinary SOS comparisons,
+   with independent right-inset materials and scan-verified original wording.
+   See [validation and remaining limits](prepare-layout.md), including seven
+   rejected black-card fits and typography outliers. No per-card tuning was
+   installed; SOS paper calibration and Nyx treatments remain follow-ups.
 5. Rooms: dedicated CardConjurer `packRoom.js` / `packRoomUB.js`; replace the
    generic split fallback with continuous art, shared type/reminder strip and
    asymmetric rules panels. DSK is the initial validation set.

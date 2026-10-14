@@ -1,0 +1,2715 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-14T15:04:18.162Z",
+  "sourceCommit": "a17c88bc26fa01ba88ab94f09a102290e762b6db",
+  "rendererHash": "ba8594c88e3f6e101a6a4cc2bc1ce3c1cffc728e7fb4decde7daa625a08fd078",
+  "studyHash": "538f6b579a2bc46beda2440a05cf27fdec877641c4d0e9d47b7845d81756dda4",
+  "fontHash": "5f6af5e6459b77c92a1c99d148afdb91386c728cdf0f6ae1301042a84b2b1adf",
+  "baselineLabel": "prepare-v0219-input-v2",
+  "baselineHash": "506a071ca9068d1ed2d18a1c6d8ef1dca921770f7fa3f61c1c57262f042a4bbd",
+  "auditLabel": "prepare-native-v5",
+  "auditHash": "ca70149a682d0a6a64418aebd4fff432a82d4830d3e1b28c09ae382e518f2341",
+  "scope": "36 ordinary English nonfoil-eligible SOS printings. All 72 original text/type panels verified against exact full-scan hashes. Full-cohort typography refinement makes this development coverage, not held-out validation.",
+  "metric": "Local-contrast edge F1 at one canonical pixel; light polarity for inset headers. No whole-card accuracy claim.",
+  "cohort": 36,
+  "accepted": 29,
+  "means": {
+    "permanent": {
+      "before": 0.27550147625237587,
+      "after": 0.6275026337394728
+    },
+    "spell": {
+      "before": 0.273405256181359,
+      "after": 0.6518132631897243
+    },
+    "spellHeader": {
+      "before": 0.044476816068225546,
+      "after": 0.7504774966524883
+    }
+  },
+  "regressions": [
+    {
+      "id": "9869a753-5e41-4098-ab41-e75b4396ec50-whole",
+      "name": "Emeritus of Truce // Swords to Plowshares",
+      "part": "spell",
+      "before": 0.18061663698872418,
+      "after": 0.1670293034876508
+    },
+    {
+      "id": "7120e71b-2976-451b-89a7-a1665dc6fb6b-whole",
+      "name": "Tam, Observant Sequencer // Deep Sight",
+      "part": "permanent",
+      "before": 0.3199373223700778,
+      "after": 0.2858749814249406
+    }
+  ],
+  "overflows": [],
+  "sources": [
+    {
+      "set": "sos",
+      "pages": [
+        {
+          "url": "https://api.scryfall.com/cards/search?q=set%3Asos+lang%3Aen+game%3Apaper&unique=prints&order=set&include_variations=true",
+          "sha256": "79e2a1c71044f62e1ebf0674c48f153345ebbbb2164bbffeb91085e3b191c10e",
+          "bytes": 918546,
+          "mime": "application/json",
+          "fetchedAt": "2026-10-12T22:29:52.277Z",
+          "etag": "W/\"79e2a1c71044f62e1ebf0674c48f1533\"",
+          "lastModified": null
+        },
+        {
+          "url": "https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&include_variations=true&order=set&page=2&q=set%3Asos+lang%3Aen+game%3Apaper&unique=prints",
+          "sha256": "a02e9373c27c8783fcd3a85e1893dec4d198e93d67a8c9f1ab5453733be1c9d7",
+          "bytes": 905198,
+          "mime": "application/json",
+          "fetchedAt": "2026-10-12T22:29:53.324Z",
+          "etag": "W/\"a02e9373c27c8783fcd3a85e1893dec4\"",
+          "lastModified": null
+        },
+        {
+          "url": "https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&include_variations=true&order=set&page=3&q=set%3Asos+lang%3Aen+game%3Apaper&unique=prints",
+          "sha256": "6eb719df22a9b11cec0475bfe6df0b930daf842a746a5d417f5529335bbac440",
+          "bytes": 91142,
+          "mime": "application/json",
+          "fetchedAt": "2026-10-12T22:29:53.627Z",
+          "etag": "W/\"6eb719df22a9b11cec0475bfe6df0b93\"",
+          "lastModified": null
+        }
+      ],
+      "wording": {
+        "url": "https://mtgjson.com/api/v5/SOS.json",
+        "sha256": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+        "bytes": 3381476,
+        "mime": "application/json",
+        "fetchedAt": "2026-10-14T14:24:39.673Z",
+        "etag": "\"6acdcbf6-c4862\"",
+        "lastModified": "Tue, 13 Oct 2026 06:13:10 GMT"
+      }
+    }
+  ],
+  "results": [
+    {
+      "id": "2970683e-e69c-42cb-a067-34abd56fb42b-whole",
+      "name": "Elite Interceptor // Rejoinder",
+      "set": "sos",
+      "number": "12",
+      "source": "https://scryfall.com/card/sos/12/elite-interceptor-rejoinder?utm_source=api",
+      "referenceSha256": "914285b0297dc72a4a1af86839873d7fb69a0d8e0423bcbe3efb667ee8d04dc4",
+      "artSha256": "cf51e7542c0da8af61acc2d34e12ccff2e9ab0f7bd6b61c261c722dc2caebfa0",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "1264349137e9b8c4a3c796cebabadbe2454a0d47eb1d687010c68739962a0c81",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.002101138047876,
+          "tx": 0.23263062133254261,
+          "ty": 0.1949454723858506,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.002101138047876, 0, 0, 1.002101138047876, 0.23263062133254261, 0.1949454723858506
+          ]
+        },
+        "validation": {
+          "rms": 0.26482582340484434,
+          "sides": {
+            "left": {
+              "rms": 0.2537446554898552,
+              "p90": 0.26407683665619786,
+              "bias": 0.26407683665619786
+            },
+            "right": {
+              "rms": 0.28842691527929826,
+              "p90": 0.29986616301505364,
+              "bias": -0.29986616301505364
+            },
+            "top": {
+              "rms": 0.21634543009429294,
+              "p90": 0.22584284939856403,
+              "bias": -0.22584284939856403
+            },
+            "bottom": {
+              "rms": 0.30112379919796695,
+              "p90": 0.30112379919796695,
+              "bias": 0.30112379919796695
+            }
+          }
+        },
+        "templateHash": "18edfa5cd512d146a6dd368b5feee3ed5be5a7cf016a8b0206bcd89d0f5af985"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.22916435515381034,
+          "after": 0.610777106763419
+        },
+        "spell": {
+          "before": 0.16464605900802776,
+          "after": 0.7273659511305893
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7991008096862021
+        }
+      }
+    },
+    {
+      "id": "9869a753-5e41-4098-ab41-e75b4396ec50-whole",
+      "name": "Emeritus of Truce // Swords to Plowshares",
+      "set": "sos",
+      "number": "13",
+      "source": "https://scryfall.com/card/sos/13/emeritus-of-truce-swords-to-plowshares?utm_source=api",
+      "referenceSha256": "d6f4a674fb3b2fc929e2f45653e1886cd3a5fd14ce53162ea3a2f2e2d98d5620",
+      "artSha256": "eec1aabc41c6f173e164308621bfbdda8520d51e5db6ed6e65ebe164ec2cfcd3",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "120edb2e8f9bd838633a4b6695ebfa1af9b823b9781254ea01d17f21e5adf04d",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020841778156726,
+          "tx": 0.22367950397671263,
+          "ty": 0.19394845302132718,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020841778156726, 0, 0, 1.0020841778156726, 0.22367950397671263, 0.19394845302132718
+          ]
+        },
+        "validation": {
+          "rms": 0.2614059016146269,
+          "sides": {
+            "left": {
+              "rms": 0.24876149262147534,
+              "p90": 0.258907851081716,
+              "bias": 0.258907851081716
+            },
+            "right": {
+              "rms": 0.28857066066980885,
+              "p90": 0.3125909320361302,
+              "bias": -0.3125909320361302
+            },
+            "top": {
+              "rms": 0.2121649183719419,
+              "p90": 0.22142531463214965,
+              "bias": -0.22142531463214965
+            },
+            "bottom": {
+              "rms": 0.29523375284281883,
+              "p90": 0.29523375284281883,
+              "bias": 0.29523375284281883
+            }
+          }
+        },
+        "templateHash": "18edfa5cd512d146a6dd368b5feee3ed5be5a7cf016a8b0206bcd89d0f5af985"
+      },
+      "rules": {
+        "permanent": {
+          "size": 17,
+          "lines": 11,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.40796047169194805,
+          "after": 0.5782772385993922
+        },
+        "spell": {
+          "before": 0.18061663698872418,
+          "after": 0.1670293034876508
+        },
+        "spellHeader": {
+          "before": 0.30833985904463584,
+          "after": 0.7633831847541045
+        }
+      }
+    },
+    {
+      "id": "79a70863-860f-4a7b-9cb2-d3546b689d44-whole",
+      "name": "Honorbound Page // Forum's Favor",
+      "set": "sos",
+      "number": "19",
+      "source": "https://scryfall.com/card/sos/19/honorbound-page-forums-favor?utm_source=api",
+      "referenceSha256": "b61612b0d93d656f68efb33aafa93185204f51c3e4299302c7980a6179320a00",
+      "artSha256": "b2ab088db7fe24516d7219745ffaf8bf3bf5bedcd2768560dd825123be03d1e5",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "b74cb2ec58ca19a140c75c2aa0bed6f0ed0207ad2f29cbed3aa9a3ff72347d6c",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020841778156726,
+          "tx": 0.22367950397671263,
+          "ty": 0.19394845302132718,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020841778156726, 0, 0, 1.0020841778156726, 0.22367950397671263, 0.19394845302132718
+          ]
+        },
+        "validation": {
+          "rms": 0.2651981817593423,
+          "sides": {
+            "left": {
+              "rms": 0.24876149262147534,
+              "p90": 0.258907851081716,
+              "bias": 0.258907851081716
+            },
+            "right": {
+              "rms": 0.3008206417374201,
+              "p90": 0.3125909320361302,
+              "bias": -0.3125909320361302
+            },
+            "top": {
+              "rms": 0.2121649183719419,
+              "p90": 0.22142531463214965,
+              "bias": -0.22142531463214965
+            },
+            "bottom": {
+              "rms": 0.29523375284281883,
+              "p90": 0.29523375284281883,
+              "bias": 0.29523375284281883
+            }
+          }
+        },
+        "templateHash": "18edfa5cd512d146a6dd368b5feee3ed5be5a7cf016a8b0206bcd89d0f5af985"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.21151427116715088,
+          "after": 0.4675091257496752
+        },
+        "spell": {
+          "before": 0.34311617765196434,
+          "after": 0.8214702092409645
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.8180608562808347
+        }
+      }
+    },
+    {
+      "id": "1ebaafe0-3a9a-424c-8698-d26e7be45343-whole",
+      "name": "Joined Researchers // Secret Rendezvous",
+      "set": "sos",
+      "number": "23",
+      "source": "https://scryfall.com/card/sos/23/joined-researchers-secret-rendezvous?utm_source=api",
+      "referenceSha256": "ebf901eebd40804c0e14900330019b94be78ce0064b8cd6206611cf0235a21aa",
+      "artSha256": "f63a6838df566a6334c95c1bf4f2176d6072beb3d84ed4e8ef27f797ddd0a330",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "a4206bc934af7204afe012a01dca789ca6dd515eda717eebd9c11627f2cc813a",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020841778156726,
+          "tx": 0.22367950397671263,
+          "ty": 0.19394845302132718,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020841778156726, 0, 0, 1.0020841778156726, 0.22367950397671263, 0.19394845302132718
+          ]
+        },
+        "validation": {
+          "rms": 0.2689369922825165,
+          "sides": {
+            "left": {
+              "rms": 0.24876149262147534,
+              "p90": 0.258907851081716,
+              "bias": 0.258907851081716
+            },
+            "right": {
+              "rms": 0.3125909320361302,
+              "p90": 0.3125909320361302,
+              "bias": -0.3125909320361302
+            },
+            "top": {
+              "rms": 0.2121649183719419,
+              "p90": 0.22142531463214965,
+              "bias": -0.22142531463214965
+            },
+            "bottom": {
+              "rms": 0.29523375284281883,
+              "p90": 0.29523375284281883,
+              "bias": 0.29523375284281883
+            }
+          }
+        },
+        "templateHash": "18edfa5cd512d146a6dd368b5feee3ed5be5a7cf016a8b0206bcd89d0f5af985"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19,
+          "lines": 10,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.3159925303684895,
+          "after": 0.8802457195685881
+        },
+        "spell": {
+          "before": 0.2722956810479279,
+          "after": 0.6596047858886012
+        },
+        "spellHeader": {
+          "before": 0.09636467682669718,
+          "after": 0.7784335324526775
+        }
+      }
+    },
+    {
+      "id": "62a47835-5719-48c4-a740-a0c5f00dce11-whole",
+      "name": "Quill-Blade Laureate // Twofold Intent",
+      "set": "sos",
+      "number": "27",
+      "source": "https://scryfall.com/card/sos/27/quill-blade-laureate-twofold-intent?utm_source=api",
+      "referenceSha256": "6a016455376f828490cadb4ec7a644cc162e57fda2250e930a25b0b2f5a08eee",
+      "artSha256": "480e85c9f1900a4e6e8082daabe51c88c1fa734e768df402c0df2b0a0a482d7a",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "6a672d0ffdf0499749f63e03a57ef5ccc8c7a75e20e2434cb90a32edb9702d85",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020672200925558,
+          "tx": 0.21472869001983336,
+          "ty": 0.19295158115524583,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020672200925558, 0, 0, 1.0020672200925558, 0.21472869001983336, 0.19295158115524583
+          ]
+        },
+        "validation": {
+          "rms": 0.2658101258313564,
+          "sides": {
+            "left": {
+              "rms": 0.243785808052868,
+              "p90": 0.25373860937990145,
+              "bias": 0.25373860937990145
+            },
+            "right": {
+              "rms": 0.31324009992896024,
+              "p90": 0.3253148393865217,
+              "bias": -0.3253148393865217
+            },
+            "top": {
+              "rms": 0.20799480617931296,
+              "p90": 0.21700843339321452,
+              "bias": -0.21700843339321452
+            },
+            "bottom": {
+              "rms": 0.28934457785760515,
+              "p90": 0.28934457785760515,
+              "bias": 0.28934457785760515
+            }
+          }
+        },
+        "templateHash": "18edfa5cd512d146a6dd368b5feee3ed5be5a7cf016a8b0206bcd89d0f5af985"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.2664708669550979,
+          "after": 0.45664436376318923
+        },
+        "spell": {
+          "before": 0.32950914286518673,
+          "after": 0.8040541486427841
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.8192966676686313
+        }
+      }
+    },
+    {
+      "id": "c0b85569-2cb3-4b64-b0fe-418195c4dab0-whole",
+      "name": "Spiritcall Enthusiast // Scrollboost",
+      "set": "sos",
+      "number": "33",
+      "source": "https://scryfall.com/card/sos/33/spiritcall-enthusiast-scrollboost?utm_source=api",
+      "referenceSha256": "382e2e63c1dd860034a0e32038b9e3d011129252d1fd0c6d335def3c6dbd3662",
+      "artSha256": "a657b162e1280acb1eac5560ef8653a7633986747dbc42a89f88b8b351ed94ec",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "20e4cc30f3fc3da7e679cde8cace927f1e9d1f00932c9db265dc289490df9ebf",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020333121722864,
+          "tx": 0.19682797203384195,
+          "ty": 0.19095827984225852,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020333121722864, 0, 0, 1.0020333121722864, 0.19682797203384195, 0.19095827984225852
+          ]
+        },
+        "validation": {
+          "rms": 0.26321797274753034,
+          "sides": {
+            "left": {
+              "rms": 0.23385885041118382,
+              "p90": 0.24339935761397768,
+              "bias": 0.24339935761397768
+            },
+            "right": {
+              "rms": 0.3250396087482045,
+              "p90": 0.3507600696324289,
+              "bias": -0.3507600696324289
+            },
+            "top": {
+              "rms": 0.19968821112217952,
+              "p90": 0.2081766311601605,
+              "bias": -0.2081766311601605
+            },
+            "bottom": {
+              "rms": 0.2775688415468948,
+              "p90": 0.2775688415468949,
+              "bias": 0.2775688415468949
+            }
+          }
+        },
+        "templateHash": "18edfa5cd512d146a6dd368b5feee3ed5be5a7cf016a8b0206bcd89d0f5af985"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.3421882087275963,
+          "after": 0.792179030149007
+        },
+        "spell": {
+          "before": 0.15930654796767013,
+          "after": 0.8480406475870891
+        },
+        "spellHeader": {
+          "before": 0.09310764602346298,
+          "after": 0.8043726478485363
+        }
+      }
+    },
+    {
+      "id": "fac8ac39-ecb4-4142-bf37-131c65660a9b-whole",
+      "name": "Campus Composer // Aqueous Aria",
+      "set": "sos",
+      "number": "40",
+      "source": "https://scryfall.com/card/sos/40/campus-composer-aqueous-aria?utm_source=api",
+      "referenceSha256": "42db54ee3affd80033839ed6b2da699c280a260953f47c74f4d41c3c54d09f48",
+      "artSha256": "3301d3681e2f22f227bc5eb6b35676e7c37880ae55020591e2036587e35dcb45",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "3d4618249fbb2d75a638a22fbaa4c2dfe69975be99646a09f38eb57038599eb8",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020187591228455,
+          "tx": 0.2415580937171145,
+          "ty": 0.24974674219314838,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020187591228455, 0, 0, 1.0020187591228455, 0.2415580937171145, 0.24974674219314838
+          ]
+        },
+        "validation": {
+          "rms": 0.29806543376711947,
+          "sides": {
+            "left": {
+              "rms": 0.2913748093225444,
+              "p90": 0.29137480932254434,
+              "bias": 0.29137480932254434
+            },
+            "right": {
+              "rms": 0.2975817260010176,
+              "p90": 0.3092680014497091,
+              "bias": -0.3092680014497091
+            },
+            "top": {
+              "rms": 0.2780515688432305,
+              "p90": 0.3952467975560303,
+              "bias": -0.14474210777531837
+            },
+            "bottom": {
+              "rms": 0.33215874913412335,
+              "p90": 0.33215874913412335,
+              "bias": 0.33215874913412335
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.19773445984961718,
+          "after": 0.4577109101249509
+        },
+        "spell": {
+          "before": 0.3382814288582995,
+          "after": 0.4849558341726577
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7087666565413782
+        }
+      }
+    },
+    {
+      "id": "75961d36-acf6-425f-9698-0bf52af74f31-whole",
+      "name": "Emeritus of Ideation // Ancestral Recall",
+      "set": "sos",
+      "number": "45",
+      "source": "https://scryfall.com/card/sos/45/emeritus-of-ideation-ancestral-recall?utm_source=api",
+      "referenceSha256": "507f7eeaaedfcb8f89ef7328d35fad8fa07fe348b7ca9da9dc1569f743b444c2",
+      "artSha256": "f7fac24656be739ed7108c3fa923700369ffde9d97566e0d4277952fd8aa02a0",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "ae578e3b158069868a2aff84a138653a333edf0ad4bcf02ff9bd7544c446baf2",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0019509500999078,
+          "tx": 0.2057577843955168,
+          "ty": 0.24575650409337904,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0019509500999078, 0, 0, 1.0019509500999078, 0.2057577843955168, 0.24575650409337904
+          ]
+        },
+        "validation": {
+          "rms": 0.3035453104987981,
+          "sides": {
+            "left": {
+              "rms": 0.2706959121160964,
+              "p90": 0.27069591211609634,
+              "bias": 0.27069591211609634
+            },
+            "right": {
+              "rms": 0.34736078008869653,
+              "p90": 0.36015581837500577,
+              "bias": -0.36015581837500577
+            },
+            "top": {
+              "rms": 0.28170115217364405,
+              "p90": 0.3775720528271336,
+              "bias": -0.25232818406465185
+            },
+            "bottom": {
+              "rms": 0.3086056079167747,
+              "p90": 0.3086056079167747,
+              "bias": 0.3086056079167747
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19.75,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 2,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.30361707426689455,
+          "after": 0.8614934228962948
+        },
+        "spell": {
+          "before": 0.18631040911054478,
+          "after": 0.7980440766364875
+        },
+        "spellHeader": {
+          "before": 0.037486218302094816,
+          "after": 0.7371155790470585
+        }
+      }
+    },
+    {
+      "id": "72654b84-9902-41db-92ab-a3499c31221c-whole",
+      "name": "Encouraging Aviator // Jump",
+      "set": "sos",
+      "number": "46",
+      "source": "https://scryfall.com/card/sos/46/encouraging-aviator-jump?utm_source=api",
+      "referenceSha256": "f94315b9f6ae27099c9128ff9c997cd295ffccbf28983b85694987037225cece",
+      "artSha256": "443656f3174d2d03dc89223edf23be40c920056f2445ee8f51b7fb3fdf1327df",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "79ac6d0318b374d60ad693f928e7ca1b4a9f955f26277db065b8f310b2ce6a2c",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020018031049494,
+          "tx": 0.23260756143507755,
+          "ty": 0.24874896128291835,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020018031049494, 0, 0, 1.0020018031049494, 0.23260756143507755, 0.24874896128291835
+          ]
+        },
+        "validation": {
+          "rms": 0.30271172716708616,
+          "sides": {
+            "left": {
+              "rms": 0.2862054690313762,
+              "p90": 0.2862054690313762,
+              "bias": 0.2862054690313762
+            },
+            "right": {
+              "rms": 0.309993957422125,
+              "p90": 0.3219912477136404,
+              "bias": -0.3219912477136404
+            },
+            "top": {
+              "rms": 0.2936302294051304,
+              "p90": 0.3908271307483737,
+              "bias": -0.26557690536027323
+            },
+            "bottom": {
+              "rms": 0.32626915706077847,
+              "p90": 0.3262691570607785,
+              "bias": 0.3262691570607785
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 8,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.30512879903198625,
+          "after": 0.8774981416688028
+        },
+        "spell": {
+          "before": 0.30102706981812943,
+          "after": 0.8110553931433644
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.6226752266860812
+        }
+      }
+    },
+    {
+      "id": "617208ff-dd9b-44fd-a740-d3188081e5cc-whole",
+      "name": "Harmonized Trio // Brainstorm",
+      "set": "sos",
+      "number": "52",
+      "source": "https://scryfall.com/card/sos/52/harmonized-trio-brainstorm?utm_source=api",
+      "referenceSha256": "ecc884216a4663f25f8b3e3f4f3db3f4b5dfa191ea6154d8b1ec93bd364fea31",
+      "artSha256": "7cea043dd211840f891f1f4f38d478be8eb753fc8ed0dc2d6b99a80f04b136b8",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "09b03eb0b35696e0679b1ef21165215d1f4cb3a224d321862e9cd5b1fddca4fe",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0019819163627093,
+          "tx": 0.214710410649152,
+          "ty": 0.2595070773480335,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0019819163627093, 0, 0, 1.0019819163627093, 0.214710410649152, 0.2595070773480335
+          ]
+        },
+        "validation": {
+          "rms": 0.30301074316475485,
+          "sides": {
+            "left": {
+              "rms": 0.2727430617649879,
+              "p90": 0.27274306176498797,
+              "bias": 0.27274306176498797
+            },
+            "right": {
+              "rms": 0.33182719201203975,
+              "p90": 0.3443131986480239,
+              "bias": -0.3443131986480239
+            },
+            "top": {
+              "rms": 0.2782500232401692,
+              "p90": 0.3737152005376032,
+              "bias": -0.24846746099224504
+            },
+            "bottom": {
+              "rms": 0.3312899479897169,
+              "p90": 0.3312899479897169,
+              "bias": 0.3312899479897169
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.25,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.34182067077344286,
+          "after": 0.8275137503959398
+        },
+        "spell": {
+          "before": 0.36493538685625415,
+          "after": 0.6428911438752154
+        },
+        "spellHeader": {
+          "before": 0.13945797709307953,
+          "after": 0.6768616302156162
+        }
+      }
+    },
+    {
+      "id": "a95b6baf-01e6-49c3-9a26-394b127d53c3-whole",
+      "name": "Jadzi, Steward of Fate // Oracle's Gift",
+      "set": "sos",
+      "number": "55",
+      "source": "https://scryfall.com/card/sos/55/jadzi-steward-of-fate-oracles-gift?utm_source=api",
+      "referenceSha256": "cc41f770fb6192897d24501125cbad80cac3d2c4aef25bc8716eeba940a6a325",
+      "artSha256": "3f34579e4a9787c36dad22fbcf73da861fc98d34dd07a4853a07a9947ec4b662",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "f58b2e2b69a52c0bc81242fa19c29a0091561dd9d5b05229e08b240b4f0fe59c",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0021602200047168,
+          "tx": 0.23265823385102447,
+          "ty": 0.16262721099139674,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0021602200047168, 0, 0, 1.0021602200047168, 0.23265823385102447, 0.16262721099139674
+          ]
+        },
+        "validation": {
+          "rms": 0.29737872827638656,
+          "sides": {
+            "left": {
+              "rms": 0.2783269775435416,
+              "p90": 0.2509291727991716,
+              "bias": 0.2509291727991716
+            },
+            "right": {
+              "rms": 0.2640999980560944,
+              "p90": 0.2866928150995136,
+              "bias": -0.2866928150995136
+            },
+            "top": {
+              "rms": 0.35913812939072204,
+              "p90": 0.5275630805156126,
+              "bias": -0.02648297051324988
+            },
+            "bottom": {
+              "rms": 0.28585068235224753,
+              "p90": 0.28585068235224753,
+              "bias": 0.28585068235224753
+            }
+          }
+        },
+        "templateHash": "a013b5c04b790038cb7ec20471012ea6c33cf1ee19f34defdfda1e3e81faec04"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.25,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 18.5,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.2552857628696982,
+          "after": 0.5915732374386006
+        },
+        "spell": {
+          "before": 0.20537817856852708,
+          "after": 0.7438979519046703
+        },
+        "spellHeader": {
+          "before": 0.10904068035317696,
+          "after": 0.7241141263915605
+        }
+      }
+    },
+    {
+      "id": "c0bd30c4-3cdf-4eda-8be5-0fb5e5ddddbf-whole",
+      "name": "Landscape Painter // Vibrant Idea",
+      "set": "sos",
+      "number": "56",
+      "source": "https://scryfall.com/card/sos/56/landscape-painter-vibrant-idea?utm_source=api",
+      "referenceSha256": "15248ae3614bbcc259dd9cbe2da201e83ff79078555a0a14acf66612fc780422",
+      "artSha256": "e82fba2b61eb86d2fda9f616886d32d08ff37994b58bc7c3b8b641c9547cc87d",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "ac4a744cf07c3bd67058ef610b32d2cc33127bccd255635b63b088bb4b76526c",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0019509500999078,
+          "tx": 0.2057577843955168,
+          "ty": 0.24575650409337904,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0019509500999078, 0, 0, 1.0019509500999078, 0.2057577843955168, 0.24575650409337904
+          ]
+        },
+        "validation": {
+          "rms": 0.2951810933016303,
+          "sides": {
+            "left": {
+              "rms": 0.2706959121160964,
+              "p90": 0.27069591211609634,
+              "bias": 0.27069591211609634
+            },
+            "right": {
+              "rms": 0.32024070261717663,
+              "p90": 0.36015581837500577,
+              "bias": -0.36015581837500577
+            },
+            "top": {
+              "rms": 0.28170115217364405,
+              "p90": 0.3775720528271336,
+              "bias": -0.25232818406465185
+            },
+            "bottom": {
+              "rms": 0.3086056079167747,
+              "p90": 0.3086056079167747,
+              "bias": 0.3086056079167747
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 1,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.2739616276966459,
+          "after": 0.27437336468089946
+        },
+        "spell": {
+          "before": 0.21310053267282425,
+          "after": 0.5673686862419955
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7079587659944278
+        }
+      }
+    },
+    {
+      "id": "4ecbca71-9a1d-44c5-b709-d6f565941d5e-whole",
+      "name": "Skycoach Conductor // All Aboard",
+      "set": "sos",
+      "number": "67",
+      "source": "https://scryfall.com/card/sos/67/skycoach-conductor-all-aboard?utm_source=api",
+      "referenceSha256": "801b0024be476765362050edee1e2065015998d272ca1c6434649f7d4998bd76",
+      "artSha256": "7cacb2c4508dea5f86cdd7e8477711c486282908a8c786a9cb9e568b9e515ea4",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "860b17873a00f24123258dd036fa510a4cc090bfe7fb90dd03e0c06c036d83a4",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0019678985938045,
+          "tx": 0.21470740684152959,
+          "ty": 0.2467538422520972,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0019678985938045, 0, 0, 1.0019678985938045, 0.21470740684152959, 0.2467538422520972
+          ]
+        },
+        "validation": {
+          "rms": 0.29973940672923666,
+          "sides": {
+            "left": {
+              "rms": 0.27586602042312686,
+              "p90": 0.2758660204231269,
+              "bias": 0.2758660204231269
+            },
+            "right": {
+              "rms": 0.30825885947189424,
+              "p90": 0.34743515603702235,
+              "bias": -0.34743515603702235
+            },
+            "top": {
+              "rms": 0.3038463927671584,
+              "p90": 0.38198975846845684,
+              "bias": -0.38198975846845684
+            },
+            "bottom": {
+              "rms": 0.3144925865648247,
+              "p90": 0.3144925865648247,
+              "bias": 0.3144925865648247
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 8,
+          "overflow": false
+        },
+        "spell": {
+          "size": 19.25,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.3222243036442498,
+          "after": 0.6177018180934915
+        },
+        "spell": {
+          "before": 0.3052442007364997,
+          "after": 0.7998441493818786
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.6813144461983149
+        }
+      }
+    },
+    {
+      "id": "cc44eaa4-59a4-419e-b1d1-d92f354ff588-whole",
+      "name": "Spellbook Seeker // Careful Study",
+      "set": "sos",
+      "number": "68",
+      "source": "https://scryfall.com/card/sos/68/spellbook-seeker-careful-study?utm_source=api",
+      "referenceSha256": "ecea7af369c413ebf2b272da48e5cb4418f3f99ca6182149fadeda8ed4ddb79c",
+      "artSha256": "2fdda5faac41328aeaee5b986c668d19ebbd71f1b8402eb71f880646c96de4b1",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "6ae0660f17c04a35d6bd4a2b0c2ce872b2e0ca4ba583fdc35d7821743f357b30",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0019678985938045,
+          "tx": 0.21470740684152959,
+          "ty": 0.2467538422520972,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0019678985938045, 0, 0, 1.0019678985938045, 0.21470740684152959, 0.2467538422520972
+          ]
+        },
+        "validation": {
+          "rms": 0.29109904528602976,
+          "sides": {
+            "left": {
+              "rms": 0.27586602042312686,
+              "p90": 0.2758660204231269,
+              "bias": 0.2758660204231269
+            },
+            "right": {
+              "rms": 0.2940424629885861,
+              "p90": 0.34743515603702235,
+              "bias": -0.34743515603702235
+            },
+            "top": {
+              "rms": 0.2856640008159571,
+              "p90": 0.38198975846845684,
+              "bias": -0.2567437711442224
+            },
+            "bottom": {
+              "rms": 0.3144925865648247,
+              "p90": 0.3144925865648247,
+              "bias": 0.3144925865648247
+            }
+          }
+        },
+        "templateHash": "315b6491c78f8fe62f0ce0719ac2bb01d435bcc8c2bffb331a729e9d5c52fb53"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.21742004149022015,
+          "after": 0.5039068457639683
+        },
+        "spell": {
+          "before": 0.35055665983501033,
+          "after": 0.5204231673669892
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7187979594797537
+        }
+      }
+    },
+    {
+      "id": "d40cc7da-c731-418e-8547-7033d1939450-whole",
+      "name": "Adventurous Eater // Have a Bite",
+      "set": "sos",
+      "number": "72",
+      "source": "https://scryfall.com/card/sos/72/adventurous-eater-have-a-bite?utm_source=api",
+      "referenceSha256": "2c0e052d209d645c311d63b124c013a96a8ab504880f667c7198ce1bcd98679d",
+      "artSha256": "333cd6ccab4efe08601d378ceb66101b202ee541c97ff7d0fc225111c3c1f0c3",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "6ec3089bfff7ad96940909e41405dcb638e561220a21edba862d8643496b8a61",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "3c34660c-25e3-4ff5-9b2b-5554ded2bcc3-whole",
+      "name": "Cheerful Osteomancer // Raise Dead",
+      "set": "sos",
+      "number": "76",
+      "source": "https://scryfall.com/card/sos/76/cheerful-osteomancer-raise-dead?utm_source=api",
+      "referenceSha256": "38f4d6ed57e2dafeeafa42477a5048c0c0c160c3c09af2f5e1991802db660318",
+      "artSha256": "7bc7c65af9512808126faae8aa0ddf2e28f6f801af18b4461693db6eefac5166",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "cf08c39281bc865a9ee692799a44ffec29333dd1453a82212a1ccaa0eaad2cc7",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "7eb9e83d-515d-4911-a06b-9982200277b2-whole",
+      "name": "Emeritus of Woe // Demonic Tutor",
+      "set": "sos",
+      "number": "80",
+      "source": "https://scryfall.com/card/sos/80/emeritus-of-woe-demonic-tutor?utm_source=api",
+      "referenceSha256": "adb8f18891ae1be7970ee254fd905dc5b7d351d85f4897c4fd5d7f8253dc0cf0",
+      "artSha256": "ca746c559f2f22a4aaf6ede7df7644e0fe0f890bbf08d5a0a686068d21878c03",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "a8f8e1be7f18989fffaf6ccee543655fac71eccdab0b928b2024d40d0b4df381",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19,
+          "lines": 10,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 4,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "8b1e10e8-ea14-4761-910b-4072e2a18456-whole",
+      "name": "Grave Researcher // Reanimate",
+      "set": "sos",
+      "number": "85",
+      "source": "https://scryfall.com/card/sos/85/grave-researcher-reanimate?utm_source=api",
+      "referenceSha256": "247a7a4cd6db67b9a3342b2cf1424f6ed9b684bb5f1b6cb40de1c0328eb3486f",
+      "artSha256": "4d786555e87ff5b8eb059897d88efcad92dd287e0728ebeab8bdc831534719a0",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "cf94c1b16a23e2d7d441fc4268684c23cd6bfa1fabe1a515b4ef0cbb81792e89",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19.75,
+          "lines": 10,
+          "overflow": false
+        },
+        "spell": {
+          "size": 18.5,
+          "lines": 6,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "c715fe4c-c0e7-4342-811f-b74687851097-whole",
+      "name": "Leech Collector // Bloodletting",
+      "set": "sos",
+      "number": "88",
+      "source": "https://scryfall.com/card/sos/88/leech-collector-bloodletting?utm_source=api",
+      "referenceSha256": "bb7149df7f08d5ffa399bf0d0bc6add90341562e6648e8df9331eaf60be9057e",
+      "artSha256": "1d50ecb725c2a5eace32158c07118ba1b15aa0af3648bc41a6e959a855e18b93",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "ceac262c793dae5a5e9b891fdb698dcf5e88e7b58076c3cf0b3df6b60403b888",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 2,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "03e664cd-c3a6-4263-b2d8-dd99058fb8ec-whole",
+      "name": "Scathing Shadelock // Venomous Words",
+      "set": "sos",
+      "number": "98",
+      "source": "https://scryfall.com/card/sos/98/scathing-shadelock-venomous-words?utm_source=api",
+      "referenceSha256": "b6dd3b83f5c15932c9d49a92f2daf373265cfe2cfb0ba171874a6daf3c315dc2",
+      "artSha256": "91df276f38d6db2944f79df0d2ca40ce776f78599b2691d0e3368a9688380ac9",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "06a4687182f7d328e9df1b713f828fcf707395e44819fb3021ff4d19881b320d",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 8,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "fe85a124-0d8b-4a29-8df1-65888a39147f-whole",
+      "name": "Scheming Silvertongue // Sign in Blood",
+      "set": "sos",
+      "number": "99",
+      "source": "https://scryfall.com/card/sos/99/scheming-silvertongue-sign-in-blood?utm_source=api",
+      "referenceSha256": "48e3457cd98ca2eeeaf62ec736f9d0047a36c7cef16b4e7058ba0fe080c5c64c",
+      "artSha256": "9f410dbcf78775e1d68d54e1d0009ad2d1075d706887dfced2104547372a59e9",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "53a3e4ce83d629d2fc249fb5b5f9e6a88c310cdc15a50cb888f3d18c61153dce",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": false,
+        "reason": "no-validated-model",
+        "model": null,
+        "parameters": null,
+        "transform": null,
+        "validation": null,
+        "templateHash": "4cf8d7e9e6aa94c328d82d80283c4f539a0354741ac547c896e40618f01a0656"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19,
+          "lines": 10,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": null
+    },
+    {
+      "id": "3ba971e7-0b7a-4750-896f-7cf063e66b2a-whole",
+      "name": "Blazing Firesinger // Seething Song",
+      "set": "sos",
+      "number": "109",
+      "source": "https://scryfall.com/card/sos/109/blazing-firesinger-seething-song?utm_source=api",
+      "referenceSha256": "0bc626aff1bd3bff065768a69dda33cf3e83b43256e42e1621c447cdab6c7040",
+      "artSha256": "f17db1068a9af60db264e9044a9103194287f08cc6fae65ce17d30276eac0186",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "2d4a53dfb9c5938295a2859e02049995034f52f81bef6a1fe14c14dbeb73d065",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0021849603208708,
+          "tx": 0.18606217222408047,
+          "ty": 0.23759849469989747,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0021849603208708, 0, 0, 1.0021849603208708, 0.18606217222408047, 0.23759849469989747
+          ]
+        },
+        "validation": {
+          "rms": 0.4151252617538677,
+          "sides": {
+            "left": {
+              "rms": 0.4757966689989708,
+              "p90": 0.6999085008303432,
+              "bias": 0.19881602066989146
+            },
+            "right": {
+              "rms": 0.3821939940984742,
+              "p90": 0.5783303964624338,
+              "bias": -0.32778415638222214
+            },
+            "top": {
+              "rms": 0.41220977578159923,
+              "p90": 0.4604963278183156,
+              "bias": -0.20995008773810397
+            },
+            "bottom": {
+              "rms": 0.36795954727119806,
+              "p90": 0.36795954727119806,
+              "bias": 0.36795954727119806
+            }
+          }
+        },
+        "templateHash": "acb3c531f54141d7afd1fe39dc613b6224d7f1d9c54b59839979449db3d4f80b"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 1,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.23251489410842052,
+          "after": 0.609310279676577
+        },
+        "spell": {
+          "before": 0.238562610155617,
+          "after": 0.7452357528057133
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7417770501562734
+        }
+      }
+    },
+    {
+      "id": "f58dba4f-1abb-47a3-a684-29c32bab95c0-whole",
+      "name": "Emeritus of Conflict // Lightning Bolt",
+      "set": "sos",
+      "number": "113",
+      "source": "https://scryfall.com/card/sos/113/emeritus-of-conflict-lightning-bolt?utm_source=api",
+      "referenceSha256": "fad84519ad2b79a87c800959c6b3b5f8cb0253de7407c921841629a2a645fb91",
+      "artSha256": "0628fae8b322da843ce353447b8711f08c4bea4dbf259ea134fc21655464f6b8",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "7a5a6bd3fae6c88a7efb2da13b99b013886ac4931eb6f1a5ded087ddb2e86513",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0022031739072,
+          "tx": 0.17663545536124511,
+          "ty": 0.2384329046236002,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0022031739072, 0, 0, 1.0022031739072, 0.17663545536124511, 0.2384329046236002
+          ]
+        },
+        "validation": {
+          "rms": 0.42279215965124867,
+          "sides": {
+            "left": {
+              "rms": 0.46588333332707793,
+              "p90": 0.6864292610092484,
+              "bias": 0.1853276740556673
+            },
+            "right": {
+              "rms": 0.38681479603890295,
+              "p90": 0.5837091437635422,
+              "bias": -0.33315835028673746
+            },
+            "top": {
+              "rms": 0.4449195877307878,
+              "p90": 0.69097687285592,
+              "bias": -0.21493036524999098
+            },
+            "bottom": {
+              "rms": 0.37404857685078235,
+              "p90": 0.3740485768507824,
+              "bias": 0.3740485768507824
+            }
+          }
+        },
+        "templateHash": "acb3c531f54141d7afd1fe39dc613b6224d7f1d9c54b59839979449db3d4f80b"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.3286275407365003,
+          "after": 0.8169335733955968
+        },
+        "spell": {
+          "before": 0.276126293527859,
+          "after": 0.7289007781573164
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7377921823810074
+        }
+      }
+    },
+    {
+      "id": "c85c5f06-dd31-4e2c-97be-2f64d65069ea-whole",
+      "name": "Goblin Glasswright // Craft with Pride",
+      "set": "sos",
+      "number": "117",
+      "source": "https://scryfall.com/card/sos/117/goblin-glasswright-craft-with-pride?utm_source=api",
+      "referenceSha256": "fbb389085758b8ff368bd0726466aa35ad4492f811444b7f723e8e5d20b58ae9",
+      "artSha256": "de0d6e5d68bd081ff00687aaba473258d7a24bf4663a10a2bcb3d3055612743e",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "a39763b66d80dc6ccc8017c0003012bd74bbc5821fcaffb3256dd0d37fee116e",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0021341208269785,
+          "tx": 0.15863559515179587,
+          "ty": 0.23526941038594595,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0021341208269785, 0, 0, 1.0021341208269785, 0.15863559515179587, 0.23526941038594595
+          ]
+        },
+        "validation": {
+          "rms": 0.42019514156681353,
+          "sides": {
+            "left": {
+              "rms": 0.4639684269105514,
+              "p90": 0.6837937111490682,
+              "bias": 0.18272665073559224
+            },
+            "right": {
+              "rms": 0.4045562567569212,
+              "p90": 0.6170560510522023,
+              "bias": -0.36652252084547854
+            },
+            "top": {
+              "rms": 0.4450558072134155,
+              "p90": 0.672062371019773,
+              "bias": -0.3213154287303084
+            },
+            "bottom": {
+              "rms": 0.33258046006488473,
+              "p90": 0.35096326896928076,
+              "bias": 0.35096326896928076
+            }
+          }
+        },
+        "templateHash": "acb3c531f54141d7afd1fe39dc613b6224d7f1d9c54b59839979449db3d4f80b"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 20.75,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.2078239707805749,
+          "after": 0.4917467405386036
+        },
+        "spell": {
+          "before": 0.3233407944641624,
+          "after": 0.7077577737782085
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7366093403306299
+        }
+      }
+    },
+    {
+      "id": "5c88391d-271f-4021-a5d9-158ebc1e6357-whole",
+      "name": "Maelstrom Artisan // Rocket Volley",
+      "set": "sos",
+      "number": "122",
+      "source": "https://scryfall.com/card/sos/122/maelstrom-artisan-rocket-volley?utm_source=api",
+      "referenceSha256": "0513e6b697c1ca2732bbc7ec03d2104f5426d2380804976dbc7dd7ba35efe0df",
+      "artSha256": "75f76f2e424b658d48550c7cc659dff242e26020b06734ea2a287246847e011c",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "cbf80b90ce81dec8b897e6cd6b5bd17ceb828ea0c8ece9e094481841610e1d32",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.002167998020151,
+          "tx": 0.17691979378155817,
+          "ty": 0.23682140929816242,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.002167998020151, 0, 0, 1.002167998020151, 0.17691979378155817, 0.23682140929816242
+          ]
+        },
+        "validation": {
+          "rms": 0.43501469944782895,
+          "sides": {
+            "left": {
+              "rms": 0.47182830303963136,
+              "p90": 0.6945402342979534,
+              "bias": 0.1934562352878899
+            },
+            "right": {
+              "rms": 0.3826247506997541,
+              "p90": 0.5912426462398912,
+              "bias": -0.340700646734831
+            },
+            "top": {
+              "rms": 0.49291563125520865,
+              "p90": 0.7063959576450962,
+              "bias": -0.4558539581400929
+            },
+            "bottom": {
+              "rms": 0.3622888381117945,
+              "p90": 0.3622888381117946,
+              "bias": 0.3622888381117946
+            }
+          }
+        },
+        "templateHash": "acb3c531f54141d7afd1fe39dc613b6224d7f1d9c54b59839979449db3d4f80b"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 2,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.2372233127499333,
+          "after": 0.6074685059066652
+        },
+        "spell": {
+          "before": 0.2920118225556336,
+          "after": 0.5932121432514728
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.733488460883608
+        }
+      }
+    },
+    {
+      "id": "c2faf4cf-c4b6-4721-ac06-0e045dd9704a-whole",
+      "name": "Pigment Wrangler // Striking Palette",
+      "set": "sos",
+      "number": "126",
+      "source": "https://scryfall.com/card/sos/126/pigment-wrangler-striking-palette?utm_source=api",
+      "referenceSha256": "7ed8f8df53c12986b053e506afd777aac6c02d6427e1fa240af7a6ba3d539f02",
+      "artSha256": "63f912ac722fae3be8460bf59af743ef7191c4458a0180be445fc15bdb704dcf",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "8ef7ec90bc40472172cf10fdc7d0449a7b03a237ac67c24f04669b8388cdbb61",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0021510383342787,
+          "tx": 0.16777770829481814,
+          "ty": 0.23604444368914584,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0021510383342787, 0, 0, 1.0021510383342787, 0.16777770829481814, 0.23604444368914584
+          ]
+        },
+        "validation": {
+          "rms": 0.41916940487241244,
+          "sides": {
+            "left": {
+              "rms": 0.4678875267278625,
+              "p90": 0.6891716789178126,
+              "bias": 0.18809615975068184
+            },
+            "right": {
+              "rms": 0.3935354603649823,
+              "p90": 0.6041540219117678,
+              "bias": -0.3536162623281598
+            },
+            "top": {
+              "rms": 0.4334157797429041,
+              "p90": 0.6766962877381034,
+              "bias": -0.20067454452929923
+            },
+            "bottom": {
+              "rms": 0.35661900312845773,
+              "p90": 0.35661900312845773,
+              "bias": 0.35661900312845773
+            }
+          }
+        },
+        "templateHash": "acb3c531f54141d7afd1fe39dc613b6224d7f1d9c54b59839979449db3d4f80b"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 17.75,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.28481925350914405,
+          "after": 0.4919070076281012
+        },
+        "spell": {
+          "before": 0.31511614263661236,
+          "after": 0.591626019823554
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7391783662235073
+        }
+      }
+    },
+    {
+      "id": "8de79312-2046-425e-9919-49afe19be81b-whole",
+      "name": "Strife Scholar // Awaken the Ages",
+      "set": "sos",
+      "number": "131",
+      "source": "https://scryfall.com/card/sos/131/strife-scholar-awaken-the-ages?utm_source=api",
+      "referenceSha256": "9146453246cc951d1643a38fe507e8894c307e66f76e1f9a901774d3b815ecdb",
+      "artSha256": "5b9c4be9346f6daa9e0d07a7c1363eaee6882c2c5a3fee3ddd71a5209ed11288",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "f5af2b5c34cb6b995c703e8fe637e10a37310e60f86d5fac04a4527b43c1132e",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0022201385928033,
+          "tx": 0.18577814025069955,
+          "ty": 0.23921009928280235,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0022201385928033, 0, 0, 1.0022201385928033, 0.18577814025069955, 0.23921009928280235
+          ]
+        },
+        "validation": {
+          "rms": 0.4102746239652748,
+          "sides": {
+            "left": {
+              "rms": 0.4459629263159211,
+              "p90": 0.6416862964223151,
+              "bias": 0.19068723405555588
+            },
+            "right": {
+              "rms": 0.3656112366402064,
+              "p90": 0.5707960574987396,
+              "bias": -0.3202410228505528
+            },
+            "top": {
+              "rms": 0.4368822184153204,
+              "p90": 0.470124181117896,
+              "bias": -0.34484666379377416
+            },
+            "bottom": {
+              "rms": 0.37972008330655177,
+              "p90": 0.3797200833065517,
+              "bias": 0.3797200833065517
+            }
+          }
+        },
+        "templateHash": "acb3c531f54141d7afd1fe39dc613b6224d7f1d9c54b59839979449db3d4f80b"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.24704592520404434,
+          "after": 0.4515951647309789
+        },
+        "spell": {
+          "before": 0.3069471141250541,
+          "after": 0.547597039063515
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7404633765950112
+        }
+      }
+    },
+    {
+      "id": "ac095763-6f4e-4d4e-9c99-414646368f8d-whole",
+      "name": "Emeritus of Abundance // Regrowth",
+      "set": "sos",
+      "number": "145",
+      "source": "https://scryfall.com/card/sos/145/emeritus-of-abundance-regrowth?utm_source=api",
+      "referenceSha256": "dcb2e5cad4c8824240f197cdb294769b2ce4ddd8d4bb70518e6282a18aec74d6",
+      "artSha256": "3237c9dda50e90afb67eff50aa2220112466508283709973b2200e3b0565c15e",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "c0e7bd40672c8d39f885d472067964ee524567751bb896430feb4ca9884d57dd",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020016399346412,
+          "tx": 0.1610359778466388,
+          "ty": 0.24873935948728182,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020016399346412, 0, 0, 1.0020016399346412, 0.1610359778466388, 0.24873935948728182
+          ]
+        },
+        "validation": {
+          "rms": 0.34008539096558704,
+          "sides": {
+            "left": {
+              "rms": 0.34819162899667827,
+              "p90": 0.4651706824053008,
+              "bias": 0.2146702724216425
+            },
+            "right": {
+              "rms": 0.3369765463208542,
+              "p90": 0.3935991366956273,
+              "bias": -0.3935991366956273
+            },
+            "top": {
+              "rms": 0.3291933881888519,
+              "p90": 0.3907845996305852,
+              "bias": -0.3907845996305852
+            },
+            "bottom": {
+              "rms": 0.3469281311230994,
+              "p90": 0.3763125626281181,
+              "bias": 0.32621248063139774
+            }
+          }
+        },
+        "templateHash": "3f25c15a9847bb6acf6dd4335f6a58b15b028e57c074d9fd4362b82b79d4aa49"
+      },
+      "rules": {
+        "permanent": {
+          "size": 20,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.25010058878672015,
+          "after": 0.8681718516109189
+        },
+        "spell": {
+          "before": 0.22447731822731823,
+          "after": 0.7485303063630304
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.701814058956916
+        }
+      }
+    },
+    {
+      "id": "911442e3-3003-4683-a766-e791e9553667-whole",
+      "name": "Infirmary Healer // Stream of Life",
+      "set": "sos",
+      "number": "152",
+      "source": "https://scryfall.com/card/sos/152/infirmary-healer-stream-of-life?utm_source=api",
+      "referenceSha256": "2d96269f8c3570793861eeb34e1ec78495574cb6a4eaed28484f041b11d9cb9d",
+      "artSha256": "d428f6762e29a4e7aa94036c92f921becd93417de28fd9832e12ee3bbb3b5e52",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "7c9a6ec05bd3e1aa44e9ff45fd14c1ada672cb34efe85a74b79283f4e351b048",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020156595994976,
+          "tx": 0.1610382310070621,
+          "ty": 0.261493107856131,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020156595994976, 0, 0, 1.0020156595994976, 0.1610382310070621, 0.261493107856131
+          ]
+        },
+        "validation": {
+          "rms": 0.33096841581275,
+          "sides": {
+            "left": {
+              "rms": 0.3405578890119145,
+              "p90": 0.4620500552189739,
+              "bias": 0.21154614031910768
+            },
+            "right": {
+              "rms": 0.3340456654871362,
+              "p90": 0.39047750810470916,
+              "bias": -0.39047750810470916
+            },
+            "top": {
+              "rms": 0.32148283906266917,
+              "p90": 0.38251013418331326,
+              "bias": -0.38251013418331326
+            },
+            "bottom": {
+              "rms": 0.32486054709928114,
+              "p90": 0.3430109023112209,
+              "bias": 0.3430109023112209
+            }
+          }
+        },
+        "templateHash": "3f25c15a9847bb6acf6dd4335f6a58b15b028e57c074d9fd4362b82b79d4aa49"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 2,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.20782087529937238,
+          "after": 0.48599261365553903
+        },
+        "spell": {
+          "before": 0.19022954295266442,
+          "after": 0.43682764249761935
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7298528004168485
+        }
+      }
+    },
+    {
+      "id": "24f888dd-785c-4089-a89c-03f9080130ed-whole",
+      "name": "Studious First-Year // Rampant Growth",
+      "set": "sos",
+      "number": "162",
+      "source": "https://scryfall.com/card/sos/162/studious-first-year-rampant-growth?utm_source=api",
+      "referenceSha256": "ee76356a2f3856aa4e83bad14ac0d1fc67bc817e45caf6cce5d44812ed06eac8",
+      "artSha256": "4f1fb6d3588277746af27a17670f88843ea25ac8b68b156d16f2e74784c2e59d",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "240714f3038bbb7b125f567dab5d3a3248d9a98c94dad7e04563b63a60c6e2c6",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020553819974023,
+          "tx": 0.16104461496386818,
+          "ty": 0.23997259322810507,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020553819974023, 0, 0, 1.0020553819974023, 0.16104461496386818, 0.23997259322810507
+          ]
+        },
+        "validation": {
+          "rms": 0.32878841673794074,
+          "sides": {
+            "left": {
+              "rms": 0.3375458180353976,
+              "p90": 0.4532082750425097,
+              "bias": 0.2026944295431683
+            },
+            "right": {
+              "rms": 0.293867953907651,
+              "p90": 0.381632890614128,
+              "bias": -0.381632890614128
+            },
+            "top": {
+              "rms": 0.3358727428080368,
+              "p90": 0.41672195494193076,
+              "bias": -0.41672195494193076
+            },
+            "bottom": {
+              "rms": 0.3532731852705065,
+              "p90": 0.38305306857860166,
+              "bias": 0.332950299478739
+            }
+          }
+        },
+        "templateHash": "3f25c15a9847bb6acf6dd4335f6a58b15b028e57c074d9fd4362b82b79d4aa49"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 6,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.25,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.20736706700668586,
+          "after": 0.48539913645891364
+        },
+        "spell": {
+          "before": 0.2886349969933854,
+          "after": 0.5388775804652832
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7568049559374883
+        }
+      }
+    },
+    {
+      "id": "476b6a4d-cc05-4e98-8a45-a5c6582ec514-whole",
+      "name": "Vastlands Scavenger // Bind to Life",
+      "set": "sos",
+      "number": "166",
+      "source": "https://scryfall.com/card/sos/166/vastlands-scavenger-bind-to-life?utm_source=api",
+      "referenceSha256": "7cf2d1d1119fa4f87fbf5822db7e9806bb62639b29e52b5331299ce93bce3b10",
+      "artSha256": "1b7ac9a98f0858b8bb105a1533a159fe60511011f6cd3b39ccc745335bc5aff3",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "39da4e7969ec503d07353286a6c8dcaca5803b8774396aab0ecf73bf8f6ad45d",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020214756631023,
+          "tx": 0.1789324063684111,
+          "ty": 0.23797777056013483,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020214756631023, 0, 0, 1.0020214756631023, 0.1789324063684111, 0.23797777056013483
+          ]
+        },
+        "validation": {
+          "rms": 0.34283457930614675,
+          "sides": {
+            "left": {
+              "rms": 0.3787102633097822,
+              "p90": 0.47864870241236446,
+              "bias": 0.22814333349661098
+            },
+            "right": {
+              "rms": 0.300741321044688,
+              "p90": 0.3712892585913323,
+              "bias": -0.3712892585913323
+            },
+            "top": {
+              "rms": 0.34520823278334445,
+              "p90": 0.40788370380106187,
+              "bias": -0.40788370380106187
+            },
+            "bottom": {
+              "rms": 0.3421951408775693,
+              "p90": 0.371274573148412,
+              "bias": 0.3211734993652726
+            }
+          }
+        },
+        "templateHash": "3f25c15a9847bb6acf6dd4335f6a58b15b028e57c074d9fd4362b82b79d4aa49"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 7,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.2261550421911129,
+          "after": 0.49736489093055153
+        },
+        "spell": {
+          "before": 0.3291501186377575,
+          "after": 0.6357481842149049
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.7132164153515486
+        }
+      }
+    },
+    {
+      "id": "77285d12-e658-4eb3-ba13-ff202afab9c8-whole",
+      "name": "Abigale, Poet Laureate // Heroic Stanza",
+      "set": "sos",
+      "number": "170",
+      "source": "https://scryfall.com/card/sos/170/abigale-poet-laureate-heroic-stanza?utm_source=api",
+      "referenceSha256": "0a78d80f65550fcdd7d5ab4696f44743ba9075ace2caf590f2a7675946e16df9",
+      "artSha256": "065f9a01097dd7c205adb8a25082b5b6f8ebf1ef32c2c195465431ffccc8abca",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "fe19dcbd488b82d5f06d5aea74dfb93369c35a294135763881fe031ef3a18dd5",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.00217251279416,
+          "tx": 0.1638166607451993,
+          "ty": 0.12428383469312125,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.00217251279416, 0, 0, 1.00217251279416, 0.1638166607451993, 0.12428383469312125
+          ]
+        },
+        "validation": {
+          "rms": 0.2778408465972091,
+          "sides": {
+            "left": {
+              "rms": 0.2555491298562604,
+              "p90": 0.4298894358460359,
+              "bias": 0.17934630764750636
+            },
+            "right": {
+              "rms": 0.26804262238077825,
+              "p90": 0.3527992425541129,
+              "bias": -0.3527992425541129
+            },
+            "top": {
+              "rms": 0.30130107941912604,
+              "p90": 0.3192908748424763,
+              "bias": -0.0687477466439752
+            },
+            "bottom": {
+              "rms": 0.28979368923614074,
+              "p90": 0.3011624014479594,
+              "bias": 0.25105377580825916
+            }
+          }
+        },
+        "templateHash": "54f07e6bf56f3e9283fd093d24827a2e362eac181f416e533b5eb6a9b4cccd88"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 3,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.3046761984739421,
+          "after": 0.8207611453768674
+        },
+        "spell": {
+          "before": 0.294547485793199,
+          "after": 0.863641674301913
+        },
+        "spellHeader": {
+          "before": 0,
+          "after": 0.691793893129771
+        }
+      }
+    },
+    {
+      "id": "676ba521-66e4-42cf-a315-70d03cb7334e-whole",
+      "name": "Kirol, History Buff // Pack a Punch",
+      "set": "sos",
+      "number": "198",
+      "source": "https://scryfall.com/card/sos/198/kirol-history-buff-pack-a-punch?utm_source=api",
+      "referenceSha256": "31e4c714b6cac1eb9ef96b2141764438244740530ece439103b1c9e88a3faf1f",
+      "artSha256": "c867f59b86b2f8cf3942a4e5cdbe12004b6500a7102deab8cc5cb9750f193ee7",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "ac636dd9b91e0a0a4405243162410bd9b6d245cfc58191f975045989e0d587a6",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0021629768725548,
+          "tx": 0.15709394423289258,
+          "ty": 0.13637508028666978,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0021629768725548, 0, 0, 1.0021629768725548, 0.15709394423289258, 0.13637508028666978
+          ]
+        },
+        "validation": {
+          "rms": 0.29226355905137597,
+          "sides": {
+            "left": {
+              "rms": 0.22750567346133116,
+              "p90": 0.3751826970276847,
+              "bias": 0.17475010165317073
+            },
+            "right": {
+              "rms": 0.32248939158704765,
+              "p90": 0.3616437016236773,
+              "bias": -0.3616437016236773
+            },
+            "top": {
+              "rms": 0.3390603976136014,
+              "p90": 0.5546960304945827,
+              "bias": -0.0536145420582983
+            },
+            "bottom": {
+              "rms": 0.2603939080187274,
+              "p90": 0.2603939080187274,
+              "bias": 0.2603939080187274
+            }
+          }
+        },
+        "templateHash": "ee702b4e0b77d13df64434eb40264e320d153e9409b423d3ebea73b8dff31774"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.33996942742624664,
+          "after": 0.7898759525637966
+        },
+        "spell": {
+          "before": 0.2896248042308827,
+          "after": 0.7204788475014314
+        },
+        "spellHeader": {
+          "before": 0.08376892175721694,
+          "after": 0.8764647792042176
+        }
+      }
+    },
+    {
+      "id": "a0bcb638-c3c8-4973-9537-5c471f43f34f-whole",
+      "name": "Lluwen, Exchange Student // Pest Friend",
+      "set": "sos",
+      "number": "199",
+      "source": "https://scryfall.com/card/sos/199/lluwen-exchange-student-pest-friend?utm_source=api",
+      "referenceSha256": "780b2a6279aea0edc9cdb86364cc7b12bcf4eacf009fdf36ca97998eb483ff1f",
+      "artSha256": "2c42ba14e7008a810268343b0d94a6ac0a472ab9f2cbc0dd8d8f144a29d0cffa",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "ace4b626e0a90c8ff09a5513eaa02012a75f661512489f4f5f373bb3dc8717a3",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0020967785302772,
+          "tx": 0.1379794271014955,
+          "ty": 0.17082974792201433,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0020967785302772, 0, 0, 1.0020967785302772, 0.1379794271014955, 0.17082974792201433
+          ]
+        },
+        "validation": {
+          "rms": 0.26023910848968856,
+          "sides": {
+            "left": {
+              "rms": 0.22765362429224223,
+              "p90": 0.3708171705557243,
+              "bias": 0.1703978148496752
+            },
+            "right": {
+              "rms": 0.27035101838018794,
+              "p90": 0.3954873499118321,
+              "bias": -0.14496315527929937
+            },
+            "top": {
+              "rms": 0.2699994111399438,
+              "p90": 0.4744300523909943,
+              "bias": 0.0019573967635864165
+            },
+            "bottom": {
+              "rms": 0.2757503539069148,
+              "p90": 0.2757503539069148,
+              "bias": 0.2757503539069148
+            }
+          }
+        },
+        "templateHash": "516b68f73111afb56f3042d34eacc32efb3518f11642a384512be5635ed4dfbd"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19,
+          "lines": 10,
+          "overflow": false
+        },
+        "spell": {
+          "size": 19.5,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.30893807263131196,
+          "after": 0.904724678807579
+        },
+        "spell": {
+          "before": 0.36928745118266887,
+          "after": 0.6815375007032608
+        },
+        "spellHeader": {
+          "before": 0.1372578747121209,
+          "after": 0.7058527217202406
+        }
+      }
+    },
+    {
+      "id": "173157aa-712d-44f2-89ba-dd2511a07f26-whole",
+      "name": "Sanar, Unfinished Genius // Wild Idea",
+      "set": "sos",
+      "number": "223",
+      "source": "https://scryfall.com/card/sos/223/sanar-unfinished-genius-wild-idea?utm_source=api",
+      "referenceSha256": "8f41ceb71f2e3ef7ecf9ac0170bcff0ecc44dbc8e0e409be2044fe9fd98dc2d5",
+      "artSha256": "34b91461e9c9bffe61fd7eedf3339bf10cf8856f33145d2298b3a03e196c07d5",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "47ab1d77848bf1ea95ac39e57b86927171507e68df20e02ff04c463c73e129e8",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0022522420323696,
+          "tx": 0.13000491927154503,
+          "ty": 0.0903430018030722,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0022522420323696, 0, 0, 1.0022522420323696, 0.13000491927154503, 0.0903430018030722
+          ]
+        },
+        "validation": {
+          "rms": 0.2590968355540937,
+          "sides": {
+            "left": {
+              "rms": 0.23523964745030937,
+              "p90": 0.37831800656120507,
+              "bias": 0.12775494605311977
+            },
+            "right": {
+              "rms": 0.265210171771721,
+              "p90": 0.36887122852624543,
+              "bias": -0.11830816801813171
+            },
+            "top": {
+              "rms": 0.2916058988087947,
+              "p90": 0.3786852670309244,
+              "bias": -0.12812220652286754
+            },
+            "bottom": {
+              "rms": 0.2401148281415999,
+              "p90": 0.2401148281415999,
+              "bias": 0.2401148281415999
+            }
+          }
+        },
+        "templateHash": "24ece5692e4e096244093b4e0f2dfb524290bcdba5285419ae29e5cd3f143c86"
+      },
+      "rules": {
+        "permanent": {
+          "size": 19.25,
+          "lines": 10,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.5,
+          "lines": 5,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.29603987635796447,
+          "after": 0.793045780082865
+        },
+        "spell": {
+          "before": 0.2578835099609957,
+          "after": 0.26665668283279764
+        },
+        "spellHeader": {
+          "before": 0.18424040618582574,
+          "after": 0.9200916258820101
+        }
+      }
+    },
+    {
+      "id": "7120e71b-2976-451b-89a7-a1665dc6fb6b-whole",
+      "name": "Tam, Observant Sequencer // Deep Sight",
+      "set": "sos",
+      "number": "237",
+      "source": "https://scryfall.com/card/sos/237/tam-observant-sequencer-deep-sight?utm_source=api",
+      "referenceSha256": "4666af8e150a83813424eafd5259a2be5934edb17643541b42241f10c8e92be3",
+      "artSha256": "f6ef96a9a43c97a1df9926f1a15b7d13291f53bd334f36c201cdde7609ab86cc",
+      "wordingHash": "d22d12a40753461dc0459daa592f4e978e42d8be6d01652dee6dc6b2ee794320",
+      "renderHash": "9f9dd5d170c3249d00a39edcea20c82cc4725bf0b6f7203bc1f9c44f1c853450",
+      "frame": "prepare",
+      "registration": {
+        "method": "prepare-frame-profiles-v1",
+        "accepted": true,
+        "reason": null,
+        "model": "translation-scale",
+        "parameters": {
+          "scale": 1.0022665024847726,
+          "tx": 0.13940479401563471,
+          "ty": 0.12114433038586409,
+          "rotationDegrees": 0,
+          "skewDegrees": 0
+        },
+        "transform": {
+          "matrix": [
+            1.0022665024847726, 0, 0, 1.0022665024847726, 0.13940479401563471, 0.12114433038586409
+          ]
+        },
+        "validation": {
+          "rms": 0.2591774187951049,
+          "sides": {
+            "left": {
+              "rms": 0.21893246144382092,
+              "p90": 0.38454136553255935,
+              "bias": 0.13397473991134135
+            },
+            "right": {
+              "rms": 0.2360209297314309,
+              "p90": 0.35629840312248007,
+              "bias": -0.10573177750126206
+            },
+            "top": {
+              "rms": 0.3067393046933217,
+              "p90": 0.352436587877758,
+              "bias": -0.10186996225659684
+            },
+            "bottom": {
+              "rms": 0.275030297242779,
+              "p90": 0.27503029724277894,
+              "bias": 0.27503029724277894
+            }
+          }
+        },
+        "templateHash": "789d1768274259ff2ff6b54abf328185e6864c3e2c7ef95cc4ec189f1feaeb3e"
+      },
+      "rules": {
+        "permanent": {
+          "size": 21.75,
+          "lines": 9,
+          "overflow": false
+        },
+        "spell": {
+          "size": 21.75,
+          "lines": 2,
+          "overflow": false
+        }
+      },
+      "scores": {
+        "permanent": {
+          "before": 0.3199373223700778,
+          "after": 0.2858749814249406
+        },
+        "spell": {
+          "before": 0.2184883118300101,
+          "after": 0.6999112580410498
+        },
+        "spellHeader": {
+          "before": 0.10076340568022979,
+          "after": 0.8783952865079049
+        }
+      }
+    }
+  ]
+}
