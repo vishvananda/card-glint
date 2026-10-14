@@ -3,6 +3,7 @@ import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { MaterialBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
+import { printingManaAdjustment } from './printing-mana-adjustment.js';
 
 const glyphs = new MaterialBitmapCache(16 * 1024 * 1024);
 const identities = new WeakMap<ImageBitmap, number>();
@@ -21,7 +22,7 @@ export async function prepareManaNumerals(
   images: CanvasImages,
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose(): void }> {
-  const a = face.symbolAdjustment?.mana;
+  const a = printingManaAdjustment(face);
   const numbers = !!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1);
   if (!numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)
     return { images, dispose() {} };

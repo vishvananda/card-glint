@@ -1,0 +1,1073 @@
+{
+  "method": "Reviewed original Beta cost defaults. Reserved-card vertical-placement comparison, unchanged scan registration. Values are edge-overlap indices, not whole-card correctness.",
+  "referencePainter": {
+    "commit": "eb5f2a3dddb96376f40eea5e76aef331151c799a",
+    "hash": "24f64aebd8ba15f1041148a99635e383ee90ecb1a5a96ff7f7b18381cb8377aa"
+  },
+  "defaultPainterHash": "a25470f3d20a8e8123f062224635f0997265776f6024500eb0d5e4356dbd0746",
+  "defaultReplay": {
+    "count": 81,
+    "exact": true
+  },
+  "adjustment": {
+    "mana": {
+      "dx": -1.5,
+      "dy": 0,
+      "scaleX": 1,
+      "scaleY": 1,
+      "spacing": 1.75,
+      "numberScale": 1,
+      "numberDx": 0,
+      "numberDy": -1,
+      "glyphs": {
+        "W": {
+          "scale": 1.09,
+          "dx": 0,
+          "dy": 0
+        },
+        "U": {
+          "scale": 1,
+          "dx": 0.5,
+          "dy": -1
+        },
+        "B": {
+          "scale": 1.03,
+          "dx": 0.25,
+          "dy": -1.25
+        },
+        "R": {
+          "scale": 1,
+          "dx": 0.5,
+          "dy": 0.5
+        },
+        "G": {
+          "scale": 1.12,
+          "dx": 0,
+          "dy": -1
+        }
+      }
+    }
+  },
+  "normalization": {
+    "total": 302,
+    "accepted": 296,
+    "changedAcceptance": 0,
+    "identicalPose": 302
+  },
+  "summary": [
+    {
+      "cohort": "calibration",
+      "count": 36,
+      "candidate": 0.8424341339689705,
+      "down-half": 0.8148925158773034,
+      "down-one": 0.7693559409692491
+    },
+    {
+      "cohort": "validation",
+      "count": 36,
+      "candidate": 0.8386635759923884,
+      "down-half": 0.8088113160622101,
+      "down-one": 0.7609413273191603
+    }
+  ],
+  "landmarks": [
+    {
+      "color": "W",
+      "total": 45,
+      "discCount": 45,
+      "discDy": 0.625,
+      "artFrameCount": 45,
+      "artFrameDy": 1,
+      "upperFrameCount": 45,
+      "upperFrameDy": 1
+    },
+    {
+      "color": "U",
+      "total": 46,
+      "discCount": 46,
+      "discDy": 0.625,
+      "artFrameCount": 46,
+      "artFrameDy": 0.75,
+      "upperFrameCount": 46,
+      "upperFrameDy": 0.875
+    },
+    {
+      "color": "B",
+      "total": 45,
+      "discCount": 45,
+      "discDy": 0.75,
+      "artFrameCount": 45,
+      "artFrameDy": 1.125,
+      "upperFrameCount": 45,
+      "upperFrameDy": 1.5
+    },
+    {
+      "color": "R",
+      "total": 45,
+      "discCount": 44,
+      "discDy": 0.75,
+      "artFrameCount": 45,
+      "artFrameDy": 1,
+      "upperFrameCount": 45,
+      "upperFrameDy": 1
+    },
+    {
+      "color": "G",
+      "total": 46,
+      "discCount": 46,
+      "discDy": 0.625,
+      "artFrameCount": 46,
+      "artFrameDy": 0.75,
+      "upperFrameCount": 46,
+      "upperFrameDy": 0.75
+    },
+    {
+      "color": "N",
+      "total": 46,
+      "discCount": 46,
+      "discDy": 0.75,
+      "artFrameCount": 46,
+      "artFrameDy": 1.375,
+      "upperFrameCount": 46,
+      "upperFrameDy": 1.375
+    }
+  ],
+  "rows": [
+    {
+      "id": "02c4edfa-7822-40bc-88d1-d051b3a64df1",
+      "name": "Armageddon",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "d7036247654d9442e530ed08a9959095051c3ee440a6577e614cf306f2eae891",
+      "normalizedScanHash": "ce30f4b1157e01cd6eed668f9c395b9475536bc3b42d10d6e62e466551a53df9",
+      "mana": {
+        "candidate": 0.8197060949168874,
+        "down-half": 0.8010171646535282,
+        "down-one": 0.7530182821662642
+      }
+    },
+    {
+      "id": "057237bb-e1e6-4bcc-8639-ca0dcdd4846c",
+      "name": "Red Ward",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "efe89498bc42806260949f3e32566e481466376741120529ea812ae27fdd51e1",
+      "normalizedScanHash": "b0694ac4cf2ff78b1705bfd3ca154d6235f8d1401844f985be9b385c64d935e6",
+      "mana": {
+        "candidate": 0.7664797740080588,
+        "down-half": 0.7839133152740154,
+        "down-one": 0.7584139761925152
+      }
+    },
+    {
+      "id": "077cf242-f866-497f-a23c-70e1b04a748e",
+      "name": "Consecrate Land",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "56613dfeb74e9ded1a5abf235dfff390a821e97cfa204e139f8780f91f5aad57",
+      "normalizedScanHash": "9fbcc1a52faf2c4acc2cc90fb3f21fe165e7b83f9fedc7c1628c09fd9b38b508",
+      "mana": {
+        "candidate": 0.8416103438142816,
+        "down-half": 0.813805929329395,
+        "down-one": 0.7858823529411766
+      }
+    },
+    {
+      "id": "07a86eb1-f6a0-4a4e-bd59-e19e22ec487d",
+      "name": "Circle of Protection: Blue",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "f5d598f210b69a60fa9efd854ee25cf4297720fb822210add9bf52c95260f963",
+      "normalizedScanHash": "f98b7463bb2b31dab0a686702fd4dfdf182d1a2981eefc37b7a0e8cdd277a899",
+      "mana": {
+        "candidate": 0.8305168343477198,
+        "down-half": 0.8091434165442977,
+        "down-one": 0.767175787058565
+      }
+    },
+    {
+      "id": "0f2c32a0-ee97-4239-94e3-aabab91dab83",
+      "name": "Balance",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "a457623d283e16051fdab4d42456a732ebfd0a4619d5acd5395016e248eda7c0",
+      "normalizedScanHash": "3e9479fa00f4e686bbfa3386c0407ebf9b10f7b5d4d9c44615ec972330cc68ea",
+      "mana": {
+        "candidate": 0.7668898356664637,
+        "down-half": 0.749301225542894,
+        "down-one": 0.7251114413075781
+      }
+    },
+    {
+      "id": "1bea2eb6-dfae-4bdc-9ab3-b2b491c69c59",
+      "name": "Karma",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "d5128ecd5cc17dbe2cd07a396dc154f61c0ba11022b5925601267b8646a24976",
+      "normalizedScanHash": "1246263b3f3c3972491ddd7fdafc486050db74720076c0628670a8e2ad51862d",
+      "mana": {
+        "candidate": 0.8349451966473244,
+        "down-half": 0.7811588976046645,
+        "down-one": 0.7238619020994049
+      }
+    },
+    {
+      "id": "255099be-c64e-4f6a-8463-4fc058d6908d",
+      "name": "Swords to Plowshares",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "31037850a4cb65a5da82b595d3ae16268a137497407bb39af3b93aa3491b03b0",
+      "normalizedScanHash": "a46aae5d4a580237e70af2861f3d92c3b2dee00c4de6962936e6d1ce565754a8",
+      "mana": {
+        "candidate": 0.8137334157591897,
+        "down-half": 0.7602973678923045,
+        "down-one": 0.698129158939675
+      }
+    },
+    {
+      "id": "273fb2b6-3d11-4f0d-9fb0-0364353c2060",
+      "name": "Island Sanctuary",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "ca7c213968ca5b5c179150f85dab9f0cd0e01145d681a085957099da059218c0",
+      "normalizedScanHash": "b992789b210f8f72ec09222d827454c8212edf6499a06dc4a9797e28f4ae7efd",
+      "mana": {
+        "candidate": 0.9021817709974604,
+        "down-half": 0.88467623460278,
+        "down-one": 0.8296651715865234
+      }
+    },
+    {
+      "id": "2d5fbd9d-48bf-4600-8ca4-2ce2ca48128e",
+      "name": "Crusade",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "3c3c8b7f0c7b3b8713657ff66ed5388edb7c4902042a40a21fb3c0decc77879b",
+      "normalizedScanHash": "484313eea2df195db9d1a5dbdd036e53cf9f6ce2e82e89ab0d506dc4831c226d",
+      "mana": {
+        "candidate": 0.8206999721988093,
+        "down-half": 0.7731247123791993,
+        "down-one": 0.7335715079936767
+      }
+    },
+    {
+      "id": "30d5d3fe-5741-40f7-8f45-dadb818d79b0",
+      "name": "Black Ward",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "fe7cc48675e7acfd4352d3e2150d3473135f91ecd366b0d7abbfd8edfa35a1bd",
+      "normalizedScanHash": "523f7466ec66d84d11a7cb16785ea871e06d9ff9d4d84b5302db5fdb4db151e9",
+      "mana": {
+        "candidate": 0.8444328045495361,
+        "down-half": 0.8198264675199105,
+        "down-one": 0.7429530201342281
+      }
+    },
+    {
+      "id": "3fbfb106-29d8-4065-b306-51dba0ed11a4",
+      "name": "Samite Healer",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "b8c837190ddea4207f2bf1f7f5b7b956f7bcce3759d28ba8f778e4badfe58a54",
+      "normalizedScanHash": "3c71b93c2cc356cc704ba32f612038f5eab56b4a5a6430a2cea334f1b0906378",
+      "mana": {
+        "candidate": 0.811841849225492,
+        "down-half": 0.7991433631234299,
+        "down-one": 0.7590847913862719
+      }
+    },
+    {
+      "id": "46cf22e4-cc5c-4723-a9cb-ae7ce7a55a1a",
+      "name": "Reverse Damage",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "3902d4bc6736c073d1d70e122a776a025ff38ea1c776b03bee6a78d27c0b39fe",
+      "normalizedScanHash": "acaf2237816a9b0df029f3ca21be54cf37f61ba12a07bccbd7b7b371e92e4ef5",
+      "mana": {
+        "candidate": 0.8250027421195334,
+        "down-half": 0.8091872791519434,
+        "down-one": 0.769793304360475
+      }
+    },
+    {
+      "id": "00ce03f3-ddc0-4cf3-8f07-551c960e8639",
+      "name": "Siren's Call",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "c8ae892a7560f1599589950509fdbc48d24c134e3a86e4d10a2e0c61b2ca90ad",
+      "normalizedScanHash": "a77a644c26f86bfc8a20d2df6a1fccd310ebcf012a83645711ef2c4be1ed5493",
+      "mana": {
+        "candidate": 0.8042207329245686,
+        "down-half": 0.7642458100558659,
+        "down-one": 0.724904875848272
+      }
+    },
+    {
+      "id": "083f76c8-3e6d-4de5-b408-2f2394faed5c",
+      "name": "Mahamoti Djinn",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "e947c22c862c312cf5b11f0176e040c60785c58b53d6fb2794546f92a046de27",
+      "normalizedScanHash": "f86c981fa72f471b2791bc34966df568c8f29b47d5897d8333bc7ce4b2a2a6a6",
+      "mana": {
+        "candidate": 0.8136793729756585,
+        "down-half": 0.7683854950958446,
+        "down-one": 0.722403511961223
+      }
+    },
+    {
+      "id": "09f1958a-50cc-43cc-80e1-988800e44ca8",
+      "name": "Timetwister",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "6b4886dc9989a62ca7c81095725227f0e0c3b4674c1951c08b7e05d439539bec",
+      "normalizedScanHash": "a680e44bbc7d327bd05c9300c4436f7fd75e83c508d53b3600e3b58dfe83e315",
+      "mana": {
+        "candidate": 0.7556406662886608,
+        "down-half": 0.7457736505261648,
+        "down-one": 0.7071178529754959
+      }
+    },
+    {
+      "id": "0aa81390-4e0b-484b-a5be-a9449cd41860",
+      "name": "Magical Hack",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "1ec8d62a33d15a685fa1a6040d1280c48544987df6973c40eee4ab646066c4a0",
+      "normalizedScanHash": "e1803d767aaa755da7f34d1a2146ed28885b5254aef6f557c69694154338d460",
+      "mana": {
+        "candidate": 0.8,
+        "down-half": 0.7972972972972973,
+        "down-one": 0.7757847533632286
+      }
+    },
+    {
+      "id": "11b21f91-51fd-407d-bab2-63c11f23b680",
+      "name": "Sea Serpent",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "9f23798e2801a252c29cc385fd9f5fb54de453247e9b8cf00710f5165550cc21",
+      "normalizedScanHash": "4aa2f55e8fc2584ec4f5d33503a8f811de15fda67adc28ecee77f1d2db2ba4de",
+      "mana": {
+        "candidate": 0.8409908587248679,
+        "down-half": 0.8312257319760731,
+        "down-one": 0.7974115758935001
+      }
+    },
+    {
+      "id": "133315bd-3c46-4eff-938e-4dba63631c1b",
+      "name": "Control Magic",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "dcf942fa98e283bba871fe0e96e01094e149b15ef2e2e2b302352c9c5ebb30e6",
+      "normalizedScanHash": "d893790589ed2b5a86491c5ea6367d601bd9f14d8fb7bc8dc40fd1cf0bc8794c",
+      "mana": {
+        "candidate": 0.8184420000902839,
+        "down-half": 0.7746235528942116,
+        "down-one": 0.7301510116973282
+      }
+    },
+    {
+      "id": "24584ffa-8ed1-4930-b6d8-ac1d02738ed0",
+      "name": "Flight",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "68d6d7243feb9328f201517a75455796101ed9fb8a3c4015238566a14d5bf512",
+      "normalizedScanHash": "9b2b3e3378424d17a24962b5f796076e96bd9483397e9a845c226d46cf8faae2",
+      "mana": {
+        "candidate": 0.7909353477005111,
+        "down-half": 0.7484472863544641,
+        "down-one": 0.707371658451526
+      }
+    },
+    {
+      "id": "27d7ac1f-2243-4c70-95a4-2b7343c8d92d",
+      "name": "Lord of Atlantis",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "58eaf6877dc9eec7e5b347c98e1b4b460201cf58d974691392730e1c7f553d80",
+      "normalizedScanHash": "91dee0e328ef2d9153046665b81bde707baae5e70ffd5700335cf740fa8c4556",
+      "mana": {
+        "candidate": 0.895441502407437,
+        "down-half": 0.8811513627934517,
+        "down-one": 0.842267083493084
+      }
+    },
+    {
+      "id": "34887689-0adb-4ead-87a5-1d8fd77b6278",
+      "name": "Wall of Water",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "8272b1de154103f622794bd726e539fe07d4ea5c1d758d98c699eedac0878d72",
+      "normalizedScanHash": "e3f279dd8fb856dba27c1d409c56721dff3af8f704f4d2698b0327efda7b35e1",
+      "mana": {
+        "candidate": 0.8310343158608006,
+        "down-half": 0.8147335361406598,
+        "down-one": 0.7712126321498226
+      }
+    },
+    {
+      "id": "34bd24da-f156-494e-86cb-80707863e40b",
+      "name": "Twiddle",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "211c85af0a50d1b403b93d94c075febeeb219f36adc095cb947eae64b664383b",
+      "normalizedScanHash": "a1ee29acba7688a76510570e624ffb6f93610e5f88e9d5a0a6dcefd366ea5c85",
+      "mana": {
+        "candidate": 0.7958921694480103,
+        "down-half": 0.8001236079251697,
+        "down-one": 0.7922521386334161
+      }
+    },
+    {
+      "id": "36a94a6d-26b1-4486-9444-ec366e6f4d6e",
+      "name": "Air Elemental",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "85afd39a1353503888e2ea51c686cd933c22067887905094d3d9db751fc2c612",
+      "normalizedScanHash": "f15ba00ab2781602bfa139ea4662bd9c8b911a132f7176eef5b5529addc53e29",
+      "mana": {
+        "candidate": 0.8502217499475053,
+        "down-half": 0.8249813088113721,
+        "down-one": 0.7984602694528458
+      }
+    },
+    {
+      "id": "3f599b73-1d55-4acc-8931-f5ab39d1d4e9",
+      "name": "Spell Blast",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "286f0dd2647ee662c1a3515f800219c8be9796c0e003ffa43b218e12956bb143",
+      "normalizedScanHash": "094ff0b3c7c53330e67aa85ed6afae96d399def393da01b3a86a8582a85b1385",
+      "mana": {
+        "candidate": 0.7965155301677972,
+        "down-half": 0.7615745229323266,
+        "down-one": 0.7155563710044114
+      }
+    },
+    {
+      "id": "0066c7a6-7775-43ba-81cd-35fbc5621bc3",
+      "name": "Raise Dead",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "b87576d6ec61dd3a64c7e4e3d09508b073970538f6e02ed80e63abf8143a0b09",
+      "normalizedScanHash": "3242e06728cd5b814b9d80424a019c5d3d1f3c7cf5a9ba3bba66999784832e7a",
+      "mana": {
+        "candidate": 0.7426496301277741,
+        "down-half": 0.7309630747077177,
+        "down-one": 0.7083706012558159
+      }
+    },
+    {
+      "id": "0690f724-eb95-416b-b064-f1239e2a30e8",
+      "name": "Dark Ritual",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "e25c9df7f24b51246257e58526d76abf5b4943bbc6af9baed709069c7cc23492",
+      "normalizedScanHash": "12232d441a33e775a699a43633081aeacdb22da9ca946d82f074dc8deab54f86",
+      "mana": {
+        "candidate": 0.721038884596991,
+        "down-half": 0.6996466431095406,
+        "down-one": 0.6500058872012244
+      }
+    },
+    {
+      "id": "09b12bcb-a935-48be-a5e8-abbb890e91ca",
+      "name": "Darkpact",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "e40d284aea25ce8d38e0d61ed3da1f919d4a3ff491913eb65eaa3cb99614346b",
+      "normalizedScanHash": "482ae0ce63d70d8c8f386a6b45ffef9715d19202b033bcb7bcde9117ec519bb3",
+      "mana": {
+        "candidate": 0.7862173566998544,
+        "down-half": 0.7803269036155662,
+        "down-one": 0.7348730673792708
+      }
+    },
+    {
+      "id": "0cb6cbbe-c3e9-4d14-a6b8-fb74e6a02b33",
+      "name": "Mind Twist",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "a3ae5787d5364c66809da3e14215fe4561dcbf22c23f26133fe2583f8a3aced7",
+      "normalizedScanHash": "ac5d9ad53f0a8ad547344eca78a4a4f5da50eb5b4cb8b0052c2d4125b547ca21",
+      "mana": {
+        "candidate": 0.8383527647803946,
+        "down-half": 0.8110435492180245,
+        "down-one": 0.7063677798044004
+      }
+    },
+    {
+      "id": "106d8401-f0e2-461e-b8ea-16d475db98da",
+      "name": "Paralyze",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "18a068124876747e27553b45a44b4375934685ca13244248052c18d1316237b9",
+      "normalizedScanHash": "ba4ac2d58ef3a920d08bf8837626020ed2c44af3b080d0b93f14be76fcf34da9",
+      "mana": {
+        "candidate": 0.7217461098309297,
+        "down-half": 0.717593955450888,
+        "down-one": 0.6938331693677834
+      }
+    },
+    {
+      "id": "1313b7e6-4acb-435a-bde5-1def5e5350ac",
+      "name": "Pestilence",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "52edbb95cdd5f59c2fd70ac8bc5ea9eaa572915768a0e55609589622a9f29e94",
+      "normalizedScanHash": "c439cc7ad0833fdec52ec6e433c315da8d65b3d084a4f9c51a13488787bb014f",
+      "mana": {
+        "candidate": 0.8354748999135965,
+        "down-half": 0.8298555723216211,
+        "down-one": 0.7806913792832206
+      }
+    },
+    {
+      "id": "16137fa6-1b5c-49e7-ad79-dda4b7019a59",
+      "name": "Weakness",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "2db1b1232e0747120842c2065d98af46cd018959ebda50364efc0c63c53795bf",
+      "normalizedScanHash": "25cc9e2d08adbf2d6a461032b055863e9c278a67b8e9910b699fae131584384e",
+      "mana": {
+        "candidate": 0.7583084679493775,
+        "down-half": 0.7490298385781837,
+        "down-one": 0.7310490896047553
+      }
+    },
+    {
+      "id": "1c1c781d-1f27-40e3-9d79-0ebb6677e835",
+      "name": "Unholy Strength",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "0d4f23ad60245748851ba11c3a0024cd246bea3e6352c2bd509106c6761bb9c3",
+      "normalizedScanHash": "50539993cf38ca46225c4488e6b7719940902c466b4bc885f53b7c5f4453182d",
+      "mana": {
+        "candidate": 0.7342443401998776,
+        "down-half": 0.7173767566361812,
+        "down-one": 0.6744885096480171
+      }
+    },
+    {
+      "id": "1eced352-d49c-4e91-a368-52904d77a69d",
+      "name": "Black Knight",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "33ca9c3e26ffd9bc5b59df0d41410787afa8a7bdf80e7ddb0992e12dc1cc9ad2",
+      "normalizedScanHash": "e58e63c78949237fd3c0167cd103e2cb73f63eca340d2cab108d30f431f70477",
+      "mana": {
+        "candidate": 0.8432871214450331,
+        "down-half": 0.8263921958763373,
+        "down-one": 0.8102867143963034
+      }
+    },
+    {
+      "id": "1eea8122-00c2-4d00-b87b-12eea86b16ba",
+      "name": "Cursed Land",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "deff9a3de84c221ba081b5e6e662801d0fcff61d9746aec6360c3915dc5d4b1a",
+      "normalizedScanHash": "68f134b2969fbe78186b433fd91c788249a398e992580d40307175584199f63e",
+      "mana": {
+        "candidate": 0.7913807568331346,
+        "down-half": 0.7683067514405624,
+        "down-one": 0.7165633802816902
+      }
+    },
+    {
+      "id": "20d5059a-60a4-4135-863f-85a48bff8731",
+      "name": "Animate Dead",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "772cf527a7cee8a42b8877281119439158eda6cf3f4ec8020fc8186e6d1fcaaf",
+      "normalizedScanHash": "25d2d153db81b5feec26297bd14703af95ac209e70e60fab0e4aa3e3c2a5b1ae",
+      "mana": {
+        "candidate": 0.791345792637115,
+        "down-half": 0.7657453208299035,
+        "down-one": 0.7224647593149259
+      }
+    },
+    {
+      "id": "24626988-81df-44c9-9a8e-ecb9f82c383b",
+      "name": "Lord of the Pit",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "b56b1db4bc5d4e7849ed1a1ffd8d8e3a62eb735941cb73295d83b46621f493fb",
+      "normalizedScanHash": "4f33a78f1bd007a392e9018414fe3d43540e8ddb17701d56c096c1ebf6d0a3cb",
+      "mana": {
+        "candidate": 0.7956375226470443,
+        "down-half": 0.7750164599533783,
+        "down-one": 0.7137161465753138
+      }
+    },
+    {
+      "id": "02ec317b-52a6-4490-80e5-a56826b06771",
+      "name": "Sedge Troll",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "552c6b91a8c64c893dc5c1bb55c0dfe0c757113a1e372e9d20a77ef65e6a5172",
+      "normalizedScanHash": "d5e19b702b4cfde5bdfb7d268f4bcdd6d17d27a95ef9a1bb4dcc7aedbd0a53f1",
+      "mana": {
+        "candidate": 0.9389681638460593,
+        "down-half": 0.9200901429578418,
+        "down-one": 0.8853602790809576
+      }
+    },
+    {
+      "id": "235e4321-0216-4d6a-a57b-72ebff427b09",
+      "name": "Firebreathing",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "227a0be149775bab6287ede2f4f2aec0c5f0bef86d19fbc4556b3a6d2b7eea09",
+      "normalizedScanHash": "8da9d5a7024313a83c7914bf2c81105739822652566119d1753eccd290c41f31",
+      "mana": {
+        "candidate": 0.9077223807490956,
+        "down-half": 0.8582442531453978,
+        "down-one": 0.7568345707316423
+      }
+    },
+    {
+      "id": "2e009adf-aded-4d64-ba3e-ddc3448c967a",
+      "name": "Dragon Whelp",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "8aa650770bca552e1d8b3d9c7f3ca686cf2e333f23c1ddf655e350bea99ca2b3",
+      "normalizedScanHash": "2d40087f2deff40943ffb31aa79a7f55a911dd4dad5b933ee5a3b15dfd2cfd76",
+      "mana": {
+        "candidate": 0.9103558199508526,
+        "down-half": 0.8442281834230007,
+        "down-one": 0.754243053254025
+      }
+    },
+    {
+      "id": "2fbf039d-0ab9-4c42-a0a3-cbfa3ea1dd6e",
+      "name": "Mons's Goblin Raiders",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "48892e8a5eb53e668d427750812559f31258b37969bfc84f0b0376cca09c512c",
+      "normalizedScanHash": "5569d18c4967cffcbc6e2ee9d9fa8d381202025cec8e47341b609511f6125d15",
+      "mana": {
+        "candidate": 0.8997704667176741,
+        "down-half": 0.8178806686212543,
+        "down-one": 0.7399771543197838
+      }
+    },
+    {
+      "id": "30fcbb16-f8e7-4f6e-a806-541ef54aa025",
+      "name": "Two-Headed Giant of Foriys",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "5dd8e296034a3ee338c23db176acd7fe86e268ae60790e856eaa2af08c24bff7",
+      "normalizedScanHash": "bf858f2761eef8675bb506194b721f5c75f346bd00e8d1ed5bbcff09b6fe8987",
+      "mana": {
+        "candidate": 0.9010072022194783,
+        "down-half": 0.8388604307556122,
+        "down-one": 0.7575097953852852
+      }
+    },
+    {
+      "id": "329ba196-a107-41ac-b02a-5f8b10ecd130",
+      "name": "Wall of Stone",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "4acc4bd36912f60bd52b1f4868c85dc62936432e32a7c6f1ac952f52e74756ea",
+      "normalizedScanHash": "0a85e24676b8a5a92bc549e7669bf9c5dfc7496b96501895da181bf92ba54158",
+      "mana": {
+        "candidate": 0.8964897069976805,
+        "down-half": 0.8148315251943151,
+        "down-one": 0.7469131678520021
+      }
+    },
+    {
+      "id": "376cb9e5-89fb-4091-8a20-140bb6de0ef6",
+      "name": "Fire Elemental",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "c65d1afd08a9e33381f099b1bf305ad8612edc111c9f80426590ad98813d1434",
+      "normalizedScanHash": "ec19aef380f6dc7224a79867a4a28b75ca98c63b0afb374275d2c6c65d6be158",
+      "mana": {
+        "candidate": 0.926336821233806,
+        "down-half": 0.8759663119161287,
+        "down-one": 0.7798635541439375
+      }
+    },
+    {
+      "id": "3fdb52dd-4fc5-4594-b53b-ea169325be0b",
+      "name": "Goblin Balloon Brigade",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "682f8993d874de9ff534f2e30b0809ccbe75663f3e8b7a40a6387501320224f2",
+      "normalizedScanHash": "b6822c8c6b857dccdfb9b2305f549a7b5293c45b9bf95f1772295966306333a9",
+      "mana": {
+        "candidate": 0.8879287261751174,
+        "down-half": 0.8025959398213951,
+        "down-one": 0.7118827345908928
+      }
+    },
+    {
+      "id": "41023495-d3cb-4cb0-b95c-f717480a76a5",
+      "name": "Gray Ogre",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "171f17881e56df4d13b91e8f1c15387992f643ad2cfb64dc468673760d31de0b",
+      "normalizedScanHash": "213e355a8a2001d66d3c3345e176fce69c628df3f5dd0843aa1250fe0dfc1542",
+      "mana": {
+        "candidate": 0.9376525856329068,
+        "down-half": 0.9186181239705137,
+        "down-one": 0.8202490448563746
+      }
+    },
+    {
+      "id": "4905e98f-0c5a-4ec7-b85b-dc2c3549d5d0",
+      "name": "Hill Giant",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "43dfcf4f6524714b55c48f920de69f8710803e7c7cd9d3365a6f667b09d5db7b",
+      "normalizedScanHash": "eecffc00b24f3989786c1326c73a9ac363539409f2b619af10efeb80ae0f8c17",
+      "mana": {
+        "candidate": 0.9264106077069652,
+        "down-half": 0.8956512501569336,
+        "down-one": 0.8255472180919118
+      }
+    },
+    {
+      "id": "4d2354ee-2ce0-4adb-b48c-0e30b952e545",
+      "name": "Orcish Artillery",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "5163cfaa99ab68ff4327b98fd1a06b830030a2ac076cd73d7c3cdbc4c5c72d58",
+      "normalizedScanHash": "766d316bfa58928681cce23121e7111889d0cdb37a2aabd2645e979f93658f41",
+      "mana": {
+        "candidate": 0.8754076879839896,
+        "down-half": 0.7763642369699558,
+        "down-one": 0.7261249748051959
+      }
+    },
+    {
+      "id": "4fafd3f9-f7de-4d6e-8824-6b60866fc50f",
+      "name": "Red Elemental Blast",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "65032a3986b8927f870ff46b3afc1b40b43951dabeec5f6c9ede7df3fbd6725e",
+      "normalizedScanHash": "611eda63cdb7f42fe12c3ba55b003f727f58b3b1a774474d937689750a3d2d39",
+      "mana": {
+        "candidate": 0.45390070921985815,
+        "down-half": 0.46465517241379306,
+        "down-one": 0.4516381993285466
+      }
+    },
+    {
+      "id": "17d5c1c7-a882-479a-9077-0784e83b462d",
+      "name": "Craw Wurm",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "94a69888d7a16f337f297aa70713baeb11a0b3b0668a42d4b8a28b46ce47bc4e",
+      "normalizedScanHash": "1f1a1956163ce6628ef4439ac086e7d03af496c9df8b8f1dc27086b9e8d1de4d",
+      "mana": {
+        "candidate": 0.9284198065554363,
+        "down-half": 0.8998484067887073,
+        "down-one": 0.858463204050442
+      }
+    },
+    {
+      "id": "1a5054a4-599d-49df-9a80-77eeed47891f",
+      "name": "Wall of Wood",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "88692ec6e957916ef4340d0f8df58bf8ac18737ee53c3dd5ab134145c408456d",
+      "normalizedScanHash": "961f03c3cd46403badebe0dd305d50f057d22ca25d2a92c02fabb45a98fa0c69",
+      "mana": {
+        "candidate": 0.9633189982291931,
+        "down-half": 0.9443416848831344,
+        "down-one": 0.8704013037278467
+      }
+    },
+    {
+      "id": "1ac8bdb0-2dfd-4531-a4d9-420f2f2a90be",
+      "name": "Shanodin Dryads",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "ad0407fe045879e5dbd5040698bb1def88ce62afc9aa0b365d45233d8055a95e",
+      "normalizedScanHash": "f99fae141dedcf855dc8f617546c08c6d09ab105b36a965592cc621f59c714fd",
+      "mana": {
+        "candidate": 0.9528993213325857,
+        "down-half": 0.9482385357213147,
+        "down-one": 0.9202078874961785
+      }
+    },
+    {
+      "id": "1d9479ae-2b42-4137-9e62-ef4d7fd17d0c",
+      "name": "Ironroot Treefolk",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "39b2289223cc2161372c0728ef94034b98705ab88d3540cb0a244555a302ab05",
+      "normalizedScanHash": "703138a993eba91462d690a8d583337b6f3abff77ff477dac6cfd4f93b7c03af",
+      "mana": {
+        "candidate": 0.9528674792405186,
+        "down-half": 0.9258376207805246,
+        "down-one": 0.8687277280169508
+      }
+    },
+    {
+      "id": "1f4b6f5a-1ba2-409d-9b9b-91e2c1470f62",
+      "name": "Tsunami",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "046e9857bf0cd818ae7c913a165015a50c0b18f5ac12c39fbebc9a41328eaba3",
+      "normalizedScanHash": "831678ea69726f6a95ce97ff452ee52b1d3abcb97ef5fabecfab3a335cbb2df2",
+      "mana": {
+        "candidate": 0.9504504504504505,
+        "down-half": 0.9219639218473258,
+        "down-one": 0.8809432090118485
+      }
+    },
+    {
+      "id": "2f55ff95-32a3-43ba-82e5-a5a3bc2cc9e5",
+      "name": "Camouflage",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "e2f1849c0f01747b6c727cc75e8370b4eeb0ba1f4e67568609c44d7de3892ee0",
+      "normalizedScanHash": "89c474611b21664c5226a88bae9883cefca190cfe939c129a32d5497dfcc8a3f",
+      "mana": {
+        "candidate": 0.9554544888168961,
+        "down-half": 0.9280561512965491,
+        "down-one": 0.9145419008602127
+      }
+    },
+    {
+      "id": "36f7dc8e-e02a-4ceb-8767-2875f86e6811",
+      "name": "Aspect of Wolf",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "f28210911b1a0d02d89439a52ed3b32fdbf9dc4c6e965f4ca67f4ae644fbb648",
+      "normalizedScanHash": "cd2841f85ff0fb599b66cf9aeb3256cbd806dd4ef1e5a54e345ded19c7e2b741",
+      "mana": {
+        "candidate": 0.9115840639051471,
+        "down-half": 0.8823246600896172,
+        "down-one": 0.8483869230354932
+      }
+    },
+    {
+      "id": "3715abe2-5a8e-4bf4-ac02-6c755d86bb4c",
+      "name": "Lifeforce",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "5bb2898ed8a13a68f5178031abf77d6c066a0b46e0ee75979ff5363851c2297f",
+      "normalizedScanHash": "3102589c8ad2c9c2174afa65d07a7c3a5e97902c6cbb0e3082ebe308fb72b062",
+      "mana": {
+        "candidate": 0.9266220101842481,
+        "down-half": 0.9047434623739203,
+        "down-one": 0.8759776536312849
+      }
+    },
+    {
+      "id": "393f08a2-7aa8-443f-aab5-4287240e9167",
+      "name": "Wanderlust",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "b491f19166b60778a3e4047cdbf32e9f9ba30d0df83f1bfcb18987b458c3213b",
+      "normalizedScanHash": "2af0b773a22b79813ca8c9144a26b95660c681ee1f30fe12cc7db5e6bfbbbba4",
+      "mana": {
+        "candidate": 0.953597479538372,
+        "down-half": 0.9435531906444823,
+        "down-one": 0.9105210894893083
+      }
+    },
+    {
+      "id": "42ad2d7f-34a5-4b17-ae11-16b322601d73",
+      "name": "Regeneration",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "387260a7aba873f4cf20fff94ef1b2c65fef5d86741c5e297afb703194890306",
+      "normalizedScanHash": "ff46d86e9c75453b66a930302b3ee0e2a4a35b2fe3b3dfa9c30b120e77ff6b85",
+      "mana": {
+        "candidate": 0.9428854169790387,
+        "down-half": 0.9064271978699275,
+        "down-one": 0.8574821852731592
+      }
+    },
+    {
+      "id": "52ea35ce-8aa1-4818-8ad5-7e462452f10e",
+      "name": "Giant Spider",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "4bd8eab24934c1e10a00a733203df6430461151490af5a641767cc892725238e",
+      "normalizedScanHash": "cfedcc0192aebef4a549e437f1fb59d9a1fd6f955d2d85e1d499e80cf30e7aeb",
+      "mana": {
+        "candidate": 0.8997425479483773,
+        "down-half": 0.8713442231258759,
+        "down-one": 0.8105090800833582
+      }
+    },
+    {
+      "id": "554362d7-97b3-4a55-9292-15e90435088d",
+      "name": "Gaea's Liege",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "fdd2cb344a7adec23f446a0c81d8f041ecbec9c0b3cac0d5c3b88a61f94857e5",
+      "normalizedScanHash": "1bae90d0b74359801ae80d52e95ed172472b0608b37a11f411ad5ffb1958b9e1",
+      "mana": {
+        "candidate": 0.9330957551959012,
+        "down-half": 0.9156625160845524,
+        "down-one": 0.8736969521779191
+      }
+    },
+    {
+      "id": "00775f44-fbe6-41ee-9977-d13d1fb5b6fb",
+      "name": "Cyclopean Tomb",
+      "color": "N",
+      "cohort": "calibration",
+      "referenceHash": "ec38e1b91b22deac98d25763802518d21413b66deb06496f057b76b05b9fb8e6",
+      "normalizedScanHash": "2e30aabe598355758e450a0adb9845276bddac9776512743539c9d03c2464c40",
+      "mana": {
+        "candidate": 0.854053309456574,
+        "down-half": 0.8141354324643123,
+        "down-one": 0.7489000506171398
+      }
+    },
+    {
+      "id": "0254bff2-a3a7-434e-980a-2d30355793fc",
+      "name": "Library of Leng",
+      "color": "N",
+      "cohort": "validation",
+      "referenceHash": "378b2a7b1839e684a89c2e33898351dbd7cce92f99e527eac84c10e81a5ab468",
+      "normalizedScanHash": "9719900e8b503ef15b4b720c42009a3ef3c0eb9b8ae969a1c1c12b222b40542a",
+      "mana": {
+        "candidate": 0.8283330513217665,
+        "down-half": 0.7985664985399523,
+        "down-one": 0.7811029550159985
+      }
+    },
+    {
+      "id": "02eee156-54bd-46fc-8804-a73aab87f0ba",
+      "name": "Wooden Sphere",
+      "color": "N",
+      "cohort": "calibration",
+      "referenceHash": "9ee1585463942bdf3b04de665d332914fccdc2eac571d90ebe6f07a27af2bea0",
+      "normalizedScanHash": "d64577b76b6faa712762c5b2098f72f7331ce653ed2da9c344d11b4ed1481608",
+      "mana": {
+        "candidate": 0.7988514715520739,
+        "down-half": 0.767736162597469,
+        "down-one": 0.7123652245120786
+      }
+    },
+    {
+      "id": "08ba41ec-4fff-4192-80ff-2afcd706ea59",
+      "name": "Soul Net",
+      "color": "N",
+      "cohort": "validation",
+      "referenceHash": "9e9bc12d75ccd2fe2bdaf64fc0b8fa2ca22cc9d8ad824b1c425397a98fec166c",
+      "normalizedScanHash": "af24cb6c1dadbeb9164d17ccc78d7abd17573c2e7fd23e192a8d1bf963728bdf",
+      "mana": {
+        "candidate": 0.8134107027724048,
+        "down-half": 0.7900174114915844,
+        "down-one": 0.7507491146826478
+      }
+    },
+    {
+      "id": "0c2cd1c8-8734-4534-ae92-def4d94ef5bc",
+      "name": "Living Wall",
+      "color": "N",
+      "cohort": "calibration",
+      "referenceHash": "c6e87ca06d5c1ba62bce025357760ac2b6c32159f35169b09bce1d40dd9d4919",
+      "normalizedScanHash": "b82fc749eda04324e873d673d8543e6158943131b6dc755bfb09dbb97b9f0765",
+      "mana": {
+        "candidate": 0.7976372339342093,
+        "down-half": 0.7837837837837837,
+        "down-one": 0.7206986705234467
+      }
+    },
+    {
+      "id": "0cd2a4f9-8f80-4ee3-8068-73e686d6eeb9",
+      "name": "Kormus Bell",
+      "color": "N",
+      "cohort": "validation",
+      "referenceHash": "93a2ac42b7dd51efd6f4e015e33250b7b8e712d222901a1ae4d6be06b127daad",
+      "normalizedScanHash": "2c5bb01fc2b0040419e65cd54c2d2c513825553c5e2d75e574f4afb7118fbc3f",
+      "mana": {
+        "candidate": 0.8415247932075802,
+        "down-half": 0.8094051803569601,
+        "down-one": 0.7737200438943233
+      }
+    },
+    {
+      "id": "1164f22f-2706-4f35-9f58-d0eb8c344396",
+      "name": "Time Vault",
+      "color": "N",
+      "cohort": "calibration",
+      "referenceHash": "ad4b01daef09e97014bac9f66e19cd9d34dfe264b561ac0d40d10ab1615d449e",
+      "normalizedScanHash": "f8c6d75c17415aabb8d54c96bb0b7ab30c3b02cb4af404b6a931929e6da0e940",
+      "mana": {
+        "candidate": 0.7759935117599351,
+        "down-half": 0.7672955974842767,
+        "down-one": 0.6914107156466733
+      }
+    },
+    {
+      "id": "133204e4-fef8-4851-aa50-c96ffa35b802",
+      "name": "Mox Jet",
+      "color": "N",
+      "cohort": "validation",
+      "referenceHash": "6fb9a1e7ddb4365d56679e0333745aca0f263475b65cee52ef5d3627ffc2b9f6",
+      "normalizedScanHash": "96b73777d5bd6cdcde073f3de35463c621255ceebcf0dc916d075dbd6ef73954",
+      "mana": {
+        "candidate": 0.8231284621471907,
+        "down-half": 0.787778124581977,
+        "down-one": 0.7658303735040608
+      }
+    },
+    {
+      "id": "1eb3178b-dac5-4b34-9d3e-4f5a170d1c87",
+      "name": "Mox Sapphire",
+      "color": "N",
+      "cohort": "calibration",
+      "referenceHash": "4befa526d9d88760e9008d3654bfaefe697a01bbe51bed4037020d5683f4e195",
+      "normalizedScanHash": "ea09afac06f15a999d487dcab4dc8a7f7cd890cc2ff456d5bc5cc6c9f00dac2d",
+      "mana": {
+        "candidate": 0.853183520599251,
+        "down-half": 0.8272204846267898,
+        "down-one": 0.8021108179419524
+      }
+    },
+    {
+      "id": "243c5460-8d4c-47a7-8a9c-ab626daa520a",
+      "name": "Celestial Prism",
+      "color": "N",
+      "cohort": "validation",
+      "referenceHash": "7c226b5c6577c56c7a29cc82042d7499102238b02a82e85713daafc907ded85c",
+      "normalizedScanHash": "cd810c7a8c3500459e2dac39f55ae6376b13cc50cf44edacdc5e5979671f936d",
+      "mana": {
+        "candidate": 0.8026216284345853,
+        "down-half": 0.747385839523994,
+        "down-one": 0.722787896170945
+      }
+    },
+    {
+      "id": "32516ab8-43be-4207-a7d5-4916933ce155",
+      "name": "Ivory Cup",
+      "color": "N",
+      "cohort": "calibration",
+      "referenceHash": "b85fe90f34a7285bf6c0b8afb8bfcd17109a2bc416241e07cfb9302169cb4af5",
+      "normalizedScanHash": "b1be3770574ad04ecb80af1898bc0f4ec99b946b5e3bfa07bf5d3b6263cda918",
+      "mana": {
+        "candidate": 0.770408163265306,
+        "down-half": 0.7384103665719632,
+        "down-one": 0.7067925001343098
+      }
+    },
+    {
+      "id": "34855fa8-959d-45a2-ad91-8b17019755be",
+      "name": "Forcefield",
+      "color": "N",
+      "cohort": "validation",
+      "referenceHash": "faafc425c0945af13878b0771bd6d61fe41d44ae47138e16d32803d37592a330",
+      "normalizedScanHash": "5ed927b897ee7ba341b2266c802c0d5f3d551a5559fefc2fbc2ca2965bbe5d19",
+      "mana": {
+        "candidate": 0.796744484900407,
+        "down-half": 0.7328196987881838,
+        "down-one": 0.6939655172413793
+      }
+    }
+  ]
+}

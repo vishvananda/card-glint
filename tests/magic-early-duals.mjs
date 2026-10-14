@@ -8,6 +8,48 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false },
 });
 try {
+  const { printingManaAdjustment } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/printing-mana-adjustment.ts',
+  );
+  const beta = { name: 'Probe', setCode: 'leb', wordingMode: 'original' };
+  const defaults = printingManaAdjustment(beta);
+  assert.equal(defaults.dx, -1.5);
+  assert.equal(defaults.dy ?? 0, 0, 'Disc height remains unchanged');
+  assert.deepEqual(defaults.glyphs.W, { scale: 1.09, dx: 0, dy: 0 });
+  assert.equal(defaults.glyphs.B.scale, 1.03);
+  assert.equal(defaults.glyphs.G.scale, 1.12);
+  const delta = { dx: 0.5, dy: 0.5, numberDy: 0.5, glyphs: { W: { dx: 1, scale: 1.1 } } };
+  const adjustedFace = { ...beta, symbolAdjustment: { mana: delta } };
+  const frozenInput = structuredClone(adjustedFace);
+  const adjusted = printingManaAdjustment(adjustedFace);
+  assert.equal(adjusted.dx, -1);
+  assert.equal(adjusted.dy, 0.5);
+  assert.equal(adjusted.numberDy, -0.5);
+  assert.equal(adjusted.glyphs.W.scale, 1.09 * 1.1);
+  assert.equal(adjusted.glyphs.W.dx, 1);
+  assert.deepEqual(adjustedFace, frozenInput, 'Do not accumulate defaults into editor values');
+  assert.deepEqual(
+    printingManaAdjustment(adjustedFace),
+    adjusted,
+    'Repeated preparation is stable',
+  );
+  for (const extra of [
+    { setCode: 'lea' },
+    { setCode: '2ed' },
+    { setCode: '3ed' },
+    { borderColor: 'white' },
+    { frameStyle: 'modern' },
+    { layout: 'split' },
+    { typeLine: 'Enchantment — Saga' },
+    { symbolStyle: 'modern' },
+    { wordingMode: 'oracle' },
+  ])
+    assert.equal(printingManaAdjustment({ ...adjustedFace, ...extra }), delta);
+  assert.deepEqual(
+    printingManaAdjustment({ ...beta, wordingMode: 'oracle', symbolStyle: 'original' }),
+    defaults,
+    'Oracle words with original symbols retain printing calibration',
+  );
   const { retroDualFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-dual-frame.ts',
   );

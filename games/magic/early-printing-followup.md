@@ -47,6 +47,37 @@ Badlands and Dwarven Warriors scans remain rejected: corrected names, types and
 renderer assets cannot change those frame-only gate results. Their comparison
 images are diagnostic until the template/scan disagreement is resolved.
 
+Beta's original mana costs now use the reviewed ink fit by default: shared
+spacing and horizontal placement, separate numeral placement, larger black and
+green glyphs, and the centered white sun. Disc size and vertical position stay
+unchanged. Editor adjustments are deltas from these printing defaults; Oracle
+words with explicitly original symbols also retain them. Modern symbols, inline
+symbols, other printings, other stocks and special layouts do not inherit them.
+The material preparation cache still separates glyph ink from its stationary
+disc once per source. No new reads or decoding occur during animated rendering.
+
+An independent replay of 81 complete cards reproduced the reviewed candidate
+pixels exactly with no editor adjustment supplied. A fresh normalization of all
+302 Beta scans accepted 296 and rejected the same six, with identical poses and
+confidence values. The 81 browser replays also reproduced their stored normalized
+scan hashes exactly. The remaining rejects are Bayou, Badlands, Mountain, Swamp,
+Healing Salve and Dwarven Warriors. One additional card has a content-review flag;
+registration acceptance does not imply every text component is verified.
+
+The mana-height check separates outer-disc edges from the adjacent frame rules.
+Across colors, median rebuilt discs lie about 0.6–0.8 canonical pixels below their
+scans, while the upper frame and art-frame rules lie about 0.75–1.5 pixels below.
+This makes the circles appear high relative to our frame. On 36 held-out cards,
+moving the costs down 0.5 pixels reduced mean mana edge overlap from 0.8387 to
+0.8088; moving down 1 pixel reduced it to 0.7609. The independent 36-card fitting
+group agreed. These are overlap indices, not fractions of a whole card that are
+correct. The ring detector's maximum response to an inner-white-glyph-only change
+was 0.28 pixels, so subpixel landmark estimates remain diagnostic. Frame-rule
+placement, the six rejected frame matches, ABU dual colors and Revised striped
+paper remain follow-up work.
+The per-card mana results and replay hashes are recorded in
+`fixtures/accuracy/beta-mana-placement.json`.
+
 Source: [Card Conjurer ABU frame pack](https://github.com/Investigamer/cardconjurer/blob/2fcddba8966156d484cedf54d8214996748dd5e1/js/frames/packABU.js),
 [pinned stripe mask](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/old/abu/dualLand.png).
 Magic imagery belongs to Wizards of the Coast; see [fan notice](NOTICE.md).
