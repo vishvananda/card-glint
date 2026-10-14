@@ -39,7 +39,8 @@ export const AFTERMATH_TOP = {
 export const AFTERMATH_BOTTOM = {
   title: [12, 37.5, 227, 37],
   art: [11, 80.7, 240.9, 137.9],
-  type: [12, 235.2, 227, 37],
+  // Align the rotated type plate in its reading orientation (all type labels).
+  type: [9, 226.2, 230, 37],
   rules: [14, 276.5, 232, 169],
 } as const;
 export function aftermathRects(bottom: boolean) {

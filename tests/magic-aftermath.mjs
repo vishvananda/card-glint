@@ -67,6 +67,17 @@ try {
     ]);
     const panels = splitPanels(face),
       windows = panels.map((p) => panelRect(p, faceRects(p.face).art));
+    const typeAnchors = [];
+    const fillText = c.fillText.bind(c);
+    c.fillText = (text, x, y, ...rest) => {
+      const transform = c.getTransform();
+      if (text === 'Sorcery' && transform.b > 0)
+        typeAnchors.push([
+          transform.a * x + transform.c * y + transform.e,
+          transform.b * x + transform.d * y + transform.f,
+        ]);
+      fillText(text, x, y, ...rest);
+    };
     paintAftermathFace(c, face, images);
     const pixel = (x, y) => Array.from(c.getImageData(x, y, 1, 1).data);
     const full = windows.map(([x, y, w, h]) => pixel((x + w / 2) * 488, (y + h / 2) * 680));
@@ -109,6 +120,7 @@ try {
     const key = (f) => cardTextureKey({ face: f, printingId: null, printedImage: null }, 'inspect');
     return {
       full,
+      typeAnchors,
       printing,
       frame,
       windows,
@@ -122,6 +134,12 @@ try {
       footerInvalidates: key(face) !== key({ ...face, legalText: 'Changed' }),
     };
   });
+  assert.ok(result.typeAnchors.length > 0);
+  for (const [x, y] of result.typeAnchors)
+    assert.ok(
+      x >= 241 && x <= 249 && y >= 379 && y <= 384,
+      'Sideways type text starts inside the printed type plate',
+    );
   assert.deepEqual(
     result.full,
     [
