@@ -1,3 +1,4 @@
+import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
@@ -109,11 +110,12 @@ export function paintFramePlateFace(
   c.fillStyle = '#17140f';
   c.textAlign = 'left';
   c.textBaseline = 'middle';
+  const costAdjustment = printingManaAdjustment(face);
   const family = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
   const [tx, ty, tw, th] = px(rects.title),
     cost = face.manaSymbols ?? [],
     { size } = plate.mana,
-    gap = plate.mana.gap + (face.symbolAdjustment?.mana?.spacing ?? 0);
+    gap = plate.mana.gap + (costAdjustment?.spacing ?? 0);
   const costRight = plate.mana.right * W;
   const costWidth = cost.length * size + Math.max(0, cost.length - 1) * gap;
   const manaBounds: FaceRect = [
@@ -122,7 +124,7 @@ export function paintFramePlateFace(
     costWidth,
     size,
   ];
-  const adjustedMana = adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana);
+  const adjustedMana = adjustedSymbolBounds(manaBounds, costAdjustment);
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
   c.save();
   if (eighth) c.translate(...titleTranslation(face, 'eighth'));
@@ -138,7 +140,7 @@ export function paintFramePlateFace(
     family,
   );
   c.restore();
-  paintAdjustedSymbols(c, manaBounds, face.symbolAdjustment?.mana, () => {
+  paintAdjustedSymbols(c, manaBounds, costAdjustment, () => {
     cost.forEach((symbol, i) =>
       paintMana(
         c,
@@ -148,7 +150,7 @@ export function paintFramePlateFace(
         size,
         images,
         true,
-        face.symbolAdjustment?.mana,
+        costAdjustment,
       ),
     );
   });

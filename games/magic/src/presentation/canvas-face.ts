@@ -1,3 +1,4 @@
+import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { prepareManaNumerals } from './mana-numeral.js';
 import {
   adjustedSymbolBounds,
@@ -609,10 +610,11 @@ export function paintAssembledFace(
   context.textAlign = 'left';
   const [tx, ty, tw, th] = px(rects.title),
     textX = tx + FACE_TEXT.plateLeft + (kind === 'normal' ? 1 : 0);
+  const costAdjustment = printingManaAdjustment(face);
   const textScale = splitTextScale(face);
   const mana = face.manaSymbols ?? [],
     manaSize = FACE_TEXT.manaSize * textScale,
-    manaGap = FACE_TEXT.manaGap + (face.symbolAdjustment?.mana?.spacing ?? 0);
+    manaGap = FACE_TEXT.manaGap + (costAdjustment?.spacing ?? 0);
   const manaWidth = mana.length * manaSize + Math.max(0, mana.length - 1) * manaGap;
   const plateEnd = tx + tw - FACE_TEXT.plateRight,
     manaX = plateEnd - manaWidth;
@@ -622,9 +624,7 @@ export function paintAssembledFace(
     manaWidth,
     manaSize,
   ];
-  const adjustedMana = mana.length
-    ? adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana)
-    : manaBounds;
+  const adjustedMana = mana.length ? adjustedSymbolBounds(manaBounds, costAdjustment) : manaBounds;
   const titleSize =
     (kind === 'normal' && !panel ? FACE_TEXT.normalTitleFont : FACE_TEXT.titleFont) * textScale;
   context.font = `bold ${titleSize}px "CardRenderer MTG Beleren", Georgia`;
@@ -642,7 +642,7 @@ export function paintAssembledFace(
   );
   context.restore();
   context.letterSpacing = '0px';
-  paintAdjustedSymbols(context, manaBounds, face.symbolAdjustment?.mana, () => {
+  paintAdjustedSymbols(context, manaBounds, costAdjustment, () => {
     mana.forEach((symbol, index) =>
       paintMana(
         context,
@@ -652,7 +652,7 @@ export function paintAssembledFace(
         manaSize,
         images,
         true,
-        face.symbolAdjustment?.mana,
+        costAdjustment,
       ),
     );
   });

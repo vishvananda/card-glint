@@ -1,54 +1,45 @@
 import type { RenderedCardInput } from './face-layout.js';
-import type { ManaColor, ManaSymbolTransform } from './symbol-adjustment.js';
+import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
+import { PRINTING_MANA_PROFILES } from './printing-mana-profiles.js';
 
-// Beta original costs: held-out ink fit plus the reviewed centered white sun.
-// Keep the disc size and vertical position; inline symbols are unaffected.
-const beta: ManaSymbolTransform = {
-  dx: -1.5,
-  spacing: 1.75,
-  numberDy: -1,
-  glyphs: {
-    W: { scale: 1.09, dx: 0, dy: 0 },
-    U: { scale: 1, dx: 0.5, dy: -1 },
-    B: { scale: 1.03, dx: 0.25, dy: -1.25 },
-    R: { scale: 1, dx: 0.5, dy: 0.5 },
-    G: { scale: 1.12, dx: 0, dy: -1 },
-  },
-};
-
-/** Editor deltas remain relative to the printing defaults. Resolve separately
- * in preparation and painting; never modify the caller's face or adjustment. */
+/** Editor deltas remain relative to printing defaults. Resolve separately in
+ * preparation and painting; never modify the caller's face or adjustment. */
 export function printingManaAdjustment(face: RenderedCardInput): ManaSymbolTransform | undefined {
   const user = face.symbolAdjustment?.mana;
+  const set = face.setCode?.toLowerCase() ?? '';
+  const base = PRINTING_MANA_PROFILES[set];
+  const early = ['lea', 'leb', '3ed'].includes(set);
   if (
-    face.setCode?.toLowerCase() !== 'leb' ||
+    !base ||
     (face.layout ?? 'normal') !== 'normal' ||
-    !isRetro(face) ||
-    retroBorder(face) !== 'black' ||
-    face.symbolStyle === 'modern' ||
-    (face.symbolStyle === undefined && face.wordingMode === 'oracle')
+    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||
+    retroBorder(face) !== (['3ed', '8ed'].includes(set) ? 'white' : 'black') ||
+    (early &&
+      (!isRetro(face) ||
+        face.symbolStyle === 'modern' ||
+        (face.symbolStyle === undefined && face.wordingMode === 'oracle'))) ||
+    (set === '8ed' && (isRetro(face) || face.frameAssetFamily !== 'eighth')) ||
+    (set === 'm21' && (isRetro(face) || face.frameAssetFamily !== undefined))
   )
     return user;
-  const glyphs = Object.fromEntries(
-    (['W', 'U', 'B', 'R', 'G'] as const).map((color: ManaColor) => {
-      const a = beta.glyphs![color]!,
+  const result: ManaSymbolTransform = { ...user };
+  for (const key of ['dx', 'dy', 'spacing', 'numberDx', 'numberDy'] as const)
+    if (base[key] !== undefined) result[key] = base[key]! + (user?.[key] ?? 0);
+  for (const key of ['scaleX', 'scaleY', 'numberScale'] as const)
+    if (base[key] !== undefined) result[key] = base[key]! * (user?.[key] ?? 1);
+  if (base.glyphs) {
+    result.glyphs = { ...user?.glyphs };
+    for (const color of ['W', 'U', 'B', 'R', 'G'] as const) {
+      const a = base.glyphs[color],
         b = user?.glyphs?.[color];
-      return [
-        color,
-        {
+      if (a)
+        result.glyphs[color] = {
           scale: (a.scale ?? 1) * (b?.scale ?? 1),
           dx: (a.dx ?? 0) + (b?.dx ?? 0),
           dy: (a.dy ?? 0) + (b?.dy ?? 0),
-        },
-      ];
-    }),
-  );
-  return {
-    ...user,
-    dx: beta.dx! + (user?.dx ?? 0),
-    spacing: beta.spacing! + (user?.spacing ?? 0),
-    numberDy: beta.numberDy! + (user?.numberDy ?? 0),
-    glyphs,
-  };
+        };
+    }
+  }
+  return result;
 }
