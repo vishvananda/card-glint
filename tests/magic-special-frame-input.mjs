@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { reviewedSpecialRecords } from '../games/magic/tools/accuracy/special-printing-corrections.mjs';
+import preparedText from '../games/magic/fixtures/accuracy/prepare-printing-text.json' with { type: 'json' };
 import {
   originalFaceRecord,
   originalPanelText,
@@ -209,4 +210,50 @@ assert.throws(() => reviewedSpecialRecords(reprint, reference, corrupt), /identi
 assert.throws(
   () => reviewedSpecialRecords(reprint, reprintScan, corrupt.slice(0, 1)),
   /Missing reviewed/,
+);
+
+const preparedId = '24f888dd-785c-4089-a89c-03f9080130ed';
+const printed = preparedText.cards[preparedId];
+const prepared = {
+  ...card,
+  id: preparedId,
+  set: 'sos',
+  collector_number: printed.number,
+  layout: 'prepare',
+  name: printed.faces.map((f) => f.name).join(' // '),
+  image_uris: images('prepared'),
+  card_faces: printed.faces.map((f) => ({
+    name: f.name,
+    type_line: f.originalType,
+    oracle_text: 'Later errata',
+    mana_cost: '{G}',
+  })),
+};
+const noOriginals = printed.faces.map((f, i) => ({
+  identifiers: { scryfallId: preparedId },
+  faceName: f.name,
+  number: printed.number,
+  uuid: `prepared-${i}`,
+  side: i ? 'b' : 'a',
+  colors: ['G'],
+}));
+const preparedInput = specialFrameInput(
+  prepared,
+  specialFrameSides(prepared)[0],
+  { sha256: printed.referenceSha256 },
+  art,
+  noOriginals,
+);
+assert.equal(preparedInput.face.layout, 'prepare');
+assert.equal(preparedInput.face.name, 'Studious First-Year');
+assert.deepEqual(
+  preparedInput.face.faces.map((f) => f.name),
+  ['Studious First-Year', 'Rampant Growth'],
+);
+assert.match(preparedInput.face.rulesText, /This creature enters prepared/);
+assert.match(preparedInput.face.faces[1].rulesText, /Search your library/);
+assert.equal(preparedInput.originals[0].reviewedCorrection.fields.originalText.before, null);
+assert.throws(
+  () => specialFrameInput(prepared, specialFrameSides(prepared)[0], reference, art, noOriginals),
+  /identity changed/,
 );

@@ -216,7 +216,7 @@ export function extraRuleAssets(face: RenderedCardInput): (string | null)[] {
   ]);
 }
 export function extraRuleKey(face: RenderedCardInput) {
-  if (faceFrame(face) === 'adventure') {
+  if (['adventure', 'prepare'].includes(faceFrame(face))) {
     const spell = face.faces?.[1];
     return spell
       ? [
@@ -228,6 +228,9 @@ export function extraRuleKey(face: RenderedCardInput) {
           spell.rulesText,
           spell.rulesParagraphs,
           spell.rulesAlignment,
+          spell.wordingMode,
+          spell.symbolStyle,
+          resolveCardProfile(spell),
         ]
       : null;
   }

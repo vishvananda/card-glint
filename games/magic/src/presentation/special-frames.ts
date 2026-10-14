@@ -1,5 +1,6 @@
 import { splitHalfRects } from './split-frame.js';
 import { ADVENTURE_RECTS } from './adventure-frame.js';
+import { PREPARE_RECTS } from './prepare-frame.js';
 import { SAGA_RECTS } from './saga-frame.js';
 import { aftermathRects } from './aftermath-frame.js';
 import { planeswalkerArtBounds } from './planeswalker-art.js';
@@ -19,6 +20,7 @@ export type SingleFrame =
   | 'planeswalker'
   | 'planeswalker-large'
   | 'adventure'
+  | 'prepare'
   | 'class'
   | 'leveler';
 export interface RuleRow {
@@ -56,6 +58,7 @@ export function specialRules(face: RenderedCardInput): RuleRow[] {
 }
 export function faceFrame(face: RenderedCardInput): SingleFrame {
   if (face.layout === 'ability') return 'normal';
+  if (face.layout === 'prepare') return 'prepare';
   if (face.layout === 'adventure' && face.faces?.length === 2) return 'adventure';
   if (face.layout === 'class' || /\bClass\b/i.test(face.typeLine ?? '')) return 'class';
   if (face.layout === 'leveler' || /^Level up\b/m.test(face.rulesText ?? '')) return 'leveler';
@@ -73,6 +76,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
   if (isRetro(face)) return retroRects(face);
   const kind = faceFrame(face);
   if (kind === 'adventure') return ADVENTURE_RECTS;
+  if (kind === 'prepare') return PREPARE_RECTS;
   if (kind === 'class')
     return {
       ...FACE_RECTS,

@@ -1,5 +1,6 @@
 import { splitMaterialAssets } from './split-materials.js';
 import { adventureAssets, isAdventure } from './adventure-frame.js';
+import { prepareAssets, isPrepared, preparedSpell } from './prepare-frame.js';
 import { nativeSplitEra, hasFuse } from './split-frame.js';
 import { sagaAssets } from './saga-frame.js';
 import { aftermathAssets, isAftermath } from './aftermath-frame.js';
@@ -154,6 +155,14 @@ export async function loadCanvasImages(
 }
 
 export function canvasAssetUrls(face: RenderedCardInput): (string | null | undefined)[] {
+  if (isPrepared(face))
+    return [
+      ...prepareAssets(face),
+      face.illustration,
+      faceSetSymbol(face),
+      ...faceManaAssets(face),
+      ...faceManaAssets(preparedSpell(face)),
+    ];
   if (isAdventure(face))
     return [
       ...adventureAssets(face),

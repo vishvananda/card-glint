@@ -2,6 +2,8 @@ import { nativeSplitEra, splitFuseParagraphs } from './split-frame.js';
 import { isAdventure } from './adventure-frame.js';
 import { paintAdventureFace } from './adventure-paint.js';
 import { loadAdventureFont } from './adventure-footer.js';
+import { isPrepared } from './prepare-frame.js';
+import { paintPrepareFace } from './prepare-paint.js';
 import { paintNativeSplitFace, loadSplitFonts } from './split-paint.js';
 import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { isAftermath } from './aftermath-frame.js';
@@ -115,7 +117,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v100',
+    'canvas-face-v101',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -280,7 +282,7 @@ export async function composeCardTexture(
       (hooks?.loadFonts ?? loadCanvasFonts)(),
       nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
       faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
-      isAdventure(input.face) ? loadAdventureFont() : Promise.resolve(),
+      isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),
       isRetro(input.face) || nativeSplitEra(input.face) === 'old'
         ? (hooks?.loadRetroFont ?? loadRetroFont)()
         : Promise.resolve(),
@@ -352,6 +354,10 @@ export function paintAssembledFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
+  if (isPrepared(face)) {
+    paintPrepareFace(context, face, images, underArt, layer);
+    return;
+  }
   if (isAdventure(face)) {
     paintAdventureFace(context, face, images, underArt, layer);
     return;

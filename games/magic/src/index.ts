@@ -20,6 +20,7 @@ import { visibleArt } from './presentation/art-apertures.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
 import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
+import { isPrepared, PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
 export type { RenderedCardInput as MtgCard } from './presentation/face-layout.js';
 export { setSymbolAsset, manaSymbolAsset, profileAssets } from './presentation/assets.js';
 export { FACE_RECTS, FACE_TEXT } from './presentation/face-layout.js';
@@ -132,10 +133,12 @@ export const mtg: GamePack<RenderedCardInput> = {
         child.panel ? panelRect(child.panel, visibleArt(child.face)) : visibleArt(child.face),
       ),
       cornerRadius: faceCornerRadius(face),
-      regions: Object.entries(faceRects(face)).map(([id, rect]) => ({
-        id,
-        rect,
-      })),
+      regions: [
+        ...Object.entries(faceRects(face)).map(([id, rect]) => ({ id, rect })),
+        ...(isPrepared(face)
+          ? Object.entries(PREPARE_SPELL_RECTS).map(([id, rect]) => ({ id: `spell-${id}`, rect }))
+          : []),
+      ],
     };
   },
 };

@@ -63,7 +63,7 @@ export function loadAdventureFont(): Promise<void> {
     .load('700 25px "CardRenderer MTG Beleren Small Caps"')
     .then((fonts) => {
       if (!fonts.length || fonts.some((f) => f.status !== 'loaded'))
-        throw Error('Adventure footer lettering needs card-glint/magic/fonts.css.');
+        throw Error('Inset card footer lettering needs card-glint/magic/fonts.css.');
     })
     .catch((error: unknown) => {
       font = null;
