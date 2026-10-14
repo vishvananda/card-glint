@@ -1,0 +1,944 @@
+{
+  "schemaVersion": 1,
+  "baseline": "v0.2.15",
+  "createdAt": "2026-10-14T03:22:31.270Z",
+  "rendererHash": "01db2bc348e551cff8f8ef0364c66906f30ff8f5cb3538abce38bb75550f816f",
+  "fontHash": "4ed2cbb96360c6468dca4eac3ae11e9a434ebccf8896406ac15dccbf155a4ef1",
+  "studyHash": "0df30ecc465bcc91327c501545e28fcbd7b4abd5191d0d8bd0f9c180267c0bd3",
+  "auditHash": "710ab7907fe4a5160c30441a61789eff93abfc2a6175696a77da02942d437688",
+  "printingMetadata": "Cached MTGJSON collector total / release-year legal line; en-dash type separator normalized to em dash. Artist aliases are unchanged.",
+  "metric": "Local-contrast dark-ink edge F1 within one canonical pixel; not a visual accuracy percentage.",
+  "sources": [
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/beleren-bold_P1.01.ttf",
+      "sha256": "281de1b0a3c32719eccb37230e2049999e0d31c6ff25e5fd41527a6ba49f8004"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/mplantin.woff",
+      "sha256": "9d48af2762d8434fb7cce48492391eeb2a21c81994d28ab47f950b62c06b2b35"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/fonts/mplantin-i.ttf",
+      "sha256": "392866adcae151ad4f88b11171a50daf30fafdbe8aaf4496b80edb16b70ae24e"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/relay-medium.ttf",
+      "sha256": "4393c5ed24ed952d6d5e7ac7d061c25cadc7a0a7485fc624d0cfbdf44796819a"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/NDPMTG.ttf",
+      "sha256": "c0f7259da45fba5a5fd89cee8eea28130c351bfc47e9f0f2fecc71a7012380cf"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/matrix-b.ttf",
+      "sha256": "22dd30ba87941d9e785fc17510e1b14fb3ffce38f5d525af2632f66330cf82ce"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/fonts/matrix-bsc.ttf",
+      "sha256": "49cbde38d79e40d0355284726b2cbcd3b62145deee25d289546553b4ad4a41af"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/plantin-semibold.otf",
+      "sha256": "828ebc3080627f06ac3dbb0dca318f609dcb7b3e8590cb30c27e8058f5651e28"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/images/cardImages/saga/sagaFrameW.png",
+      "sha256": "731ab88d67d49793026419d6772538d857c966d3d5e1bbbeb16187753424013c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/saga/sagaChapter.png",
+      "sha256": "46bcfa263ce8cd458e769ed47e3192e4632399965036a69383034e2647ed2212"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/saga/sagaDivider.png",
+      "sha256": "b966b8f4c9bb99c07657087fd487031e539032d2a8cb0e8cb3f97eeb1410bd73"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/saga/stamp.png",
+      "sha256": "0f385bc58025f59316609e9952395f28dc390ca751b25ef5dc66931dc7833fc7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/dom-r.svg",
+      "sha256": "7ddbf45bab08a1b265889ea359039d96ed3b4b713c27e48a73c2d24602dcb197"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/5.svg",
+      "sha256": "75c110d85b13b9e0dd2cf725095a94f37700af2ead9221d66f37c14da96d3b36"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/W.svg",
+      "sha256": "b4cc36093b2df3e8a10379bbc47c43283ea7ba62b568bafef026e2e426b1f933"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/dom-m.svg",
+      "sha256": "e97fdcbe9c255a5eeadff2233a0033f1be2f93c0b817d89bd82969c6a594054e"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/1.svg",
+      "sha256": "ad98e50c7c304d20c198a226a107e3b4121c36cd023c16b4791774e8564a8ad9"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/dom-u.svg",
+      "sha256": "bf7657e2e39fa34df80cecdc4387802baaa6d51a1d4c44ac3f45591c65451e2d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/images/cardImages/saga/sagaFrameU.png",
+      "sha256": "cb9c6b708976ef502fb8366775f8d4fd00954280481bf125014f8e7ec2800378"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/3.svg",
+      "sha256": "cc90e556b8f7315269cbf9dfdf4d5e9d37bdf37514a7327ed019d200452f9d00"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/U.svg",
+      "sha256": "ed6ec190796f9dba26149e690d9761d84dcf672e557a07f460557e65f072a552"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/4.svg",
+      "sha256": "692e53350fd0bbd384e4f75fa3f6a187e5aa4726917456e6c75e268caec215c8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/images/cardImages/saga/sagaFrameB.png",
+      "sha256": "9e583fa5c2ff07772d5e8589445746a055f9fbedc866960ba8db7573b494ffb9"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/B.svg",
+      "sha256": "5dcca7a7b7ed92cec0f322f3d6329dc077084c9f7509a7b4b69de3702f81d13f"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/2.svg",
+      "sha256": "5f14c1b2a9e892968d3c3af9d7c674ff9b84b6734478450de590d253b43b59ff"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/images/cardImages/saga/sagaFrameR.png",
+      "sha256": "42b230393ac392e4f38f899b693c7ba8d13c9b1aa6854fac5f80dc66e950d54d"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/R.svg",
+      "sha256": "c3c60f00e8f402d2047a9de1c8d0de9d86e544829e7ee9a95777ad3afad3026d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/images/cardImages/saga/sagaFrameG.png",
+      "sha256": "f157ad8da63495e1b7ca8d05973221f03887279da3904543ad8913854750c13c"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/G.svg",
+      "sha256": "5a741e9f498fd99ba57cc408887024c7cb3ad2de021e74dd97bce5b8732af936"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/T.svg",
+      "sha256": "baccef5358852e7b47ffed1d5fd6e56f1e46ecf11fb2c6df8274076b1c21028c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/thb-r.svg",
+      "sha256": "9504c368e81461ec3dfed6eb7d89f0d0358889c0120223a3b149c60d0ec2b681"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/thb-u.svg",
+      "sha256": "7ffc19b6ccc6b9afce0610c872305225c5e5829a82f72b9f4f36b40e43beb106"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/images/cardImages/saga/sagaFrameM.png",
+      "sha256": "37a1690bbe80bd729c58cf694af6b4f986ebb830218a2b3c392708350666c611"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/khm-u.svg",
+      "sha256": "6959d9b910ca638c237449d1e8cb1e5838994433fcdd220aeb7c70885656bf19"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/saga/regular/l.png",
+      "sha256": "63e9fe125a8c4fe517c15cd87801cb8d5a84a057beab466805bb2f7f73aecd0b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/mh2-r.svg",
+      "sha256": "1d2628ab869be1cdbd6e2d8fe6045cff3ec36ea48c4c88f456da5518c203faee"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/C.svg",
+      "sha256": "4f7c0344ee491357a61d1aeb24abf5ab5120f81d3cccf9b54077a67491434209"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/0.svg",
+      "sha256": "85ed1523e51d0925381d10f69385a0acbe394a38be8c5a69a0fdf824294de125"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/dmu-r.svg",
+      "sha256": "f09875a99dc6ada06fc4a71fbeab074d5226e4d8dfb8d0a5524064665efeb02f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/saga/dfc/r.png",
+      "sha256": "463c1fe2a415092ecfb0ee3f83f9f194d2f12de1d200913dd0f09e0791c748c9"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/transform/icons/fanClosed.svg",
+      "sha256": "8dd79ec5fd6fcf7d9cf4abbf8c1ef119220250034a35cd3ab48ecb643d7e76ab"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/setSymbols/official/neo-r.svg",
+      "sha256": "37e014b44ffd71d04cf9840ebdec08a031aee61da1d07fa4b308aa6bce3d6b34"
+    }
+  ],
+  "cards": [
+    {
+      "id": "3a613a01-6145-4e34-987c-c9bdcb068370-whole",
+      "name": "Fall of the Thran",
+      "set": "dom",
+      "referenceHash": "c12b098d82854c23e103e05fb2dbe91931a83fdd4974558883a9bd5df372cd14",
+      "artHash": "2c0ced138a1bcc8c72a3269cbe77244ed726d082d41289623344771915c5a2bb",
+      "renderHash": "04f35c3c4c95829fbdc0fd36f84a6e6f9c5cca81267f9dbe049885b6a54b795b",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "00237dc8cb9bca04615f346bc823bf787e457fd43e96b76647d2ff3bb10dded8",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "731ab88d67d49793026419d6772538d857c966d3d5e1bbbeb16187753424013c",
+        "transform": {
+          "matrix": [
+            0.9988012882797402, 0, 0, 0.9988012882797402, -0.1539614145884865, 0.16570551297730918
+          ]
+        },
+        "validationRms": 0.695753835212413,
+        "disagreement": 0.20281233480951405
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.1495262271144558,
+          "after": 0.8463248038943629
+        },
+        "chapters": {
+          "before": 0.1647589654576933,
+          "after": 0.3778655027746198
+        },
+        "title": {
+          "before": 0.3335368535209704,
+          "after": 0.8648951518697758
+        },
+        "type": {
+          "before": 0.6965533096362319,
+          "after": 0.8296004869950993
+        }
+      }
+    },
+    {
+      "id": "d134385d-b01c-41c7-bb2d-30722b44dc5a-whole",
+      "name": "History of Benalia",
+      "set": "dom",
+      "referenceHash": "98c33c6a007693c08093977feee8b18c316d9fa558419235167e028404f5dd06",
+      "artHash": "be37ece8729de473c12a311e4cca40e9f1e10dadfdb0a34c104820ecb3544b28",
+      "renderHash": "3ce9f2e7ac000c6669c188a079b3eba51edb9b06dbc136ce4f88a5ea27da6ce0",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "8084df513718500bda2ae7c2e90b0a6964f2f808eb18d2b5b8054c5ce4443e46",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "731ab88d67d49793026419d6772538d857c966d3d5e1bbbeb16187753424013c",
+        "transform": {
+          "matrix": [
+            0.9990285406231689, 0, 0, 0.9990285406231689, -0.401130575889532, 0.19678580390614667
+          ]
+        },
+        "validationRms": 0.6493278244180725,
+        "disagreement": 0.12633479949943424
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.15366781637805357,
+          "after": 0.7589747087213962
+        },
+        "chapters": {
+          "before": 0.08225949538844964,
+          "after": 0.4350128747630933
+        },
+        "title": {
+          "before": 0.3344765028952012,
+          "after": 0.8061810154525386
+        },
+        "type": {
+          "before": 0.715143521571622,
+          "after": 0.9707262433612472
+        }
+      }
+    },
+    {
+      "id": "3416fae7-46a0-4048-b969-9cf95bac09db-whole",
+      "name": "Triumph of Gerrard",
+      "set": "dom",
+      "referenceHash": "360b42170bf4be5ef661b0966a743049d48d0aa06a8a252e99b5acd4fd6480f5",
+      "artHash": "a5e389b061baae894ba07e01a6911c1c9981dded6dcb86a15e33e02eb93cd881",
+      "renderHash": "09b3e814112dd5d079970e5ed48314a7096734d5192c0bd4c6cf9710af439165",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "a59b8169f349e2bdd7fc7d6ff298bfae080f3a8cefe0b2618bb8ca2313df4e82",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "731ab88d67d49793026419d6772538d857c966d3d5e1bbbeb16187753424013c",
+        "transform": {
+          "matrix": [
+            0.9988628022967323, 0, 0, 0.9988628022967323, -0.21158219991166413, 0.17667510099187084
+          ]
+        },
+        "validationRms": 0.6688783360021239,
+        "disagreement": 0.20861070783681654
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.17338165127186417,
+          "after": 0.8486916461083581
+        },
+        "chapters": {
+          "before": 0.28452126261546445,
+          "after": 0.79679636207078
+        },
+        "title": {
+          "before": 0.351583287811239,
+          "after": 0.7926126667274024
+        },
+        "type": {
+          "before": 0.7176887987835784,
+          "after": 0.9285669276071835
+        }
+      }
+    },
+    {
+      "id": "bbda670a-00a7-419c-b4b5-bfdb323f006d-whole",
+      "name": "The Antiquities War",
+      "set": "dom",
+      "referenceHash": "b52fbbb110b91bcc2ec78e5abc639bff718c41e85abd0842b9773002eb165c72",
+      "artHash": "ab3000a1fb74d8f032432ee6281b17210c76510df8de595de04615963f0a0c91",
+      "renderHash": "a12d068c4bcf92a4b724d11bf54da7b938b2eb8ddcff17a671304518627562cd",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "0c17322270d1f685af89d8a86359d9b583eabfaaa66c2b067226e68525642ee7",
+      "registration": {
+        "accepted": false,
+        "reason": "registration-methods-disagree",
+        "method": null,
+        "templateHash": "cb9c6b708976ef502fb8366775f8d4fd00954280481bf125014f8e7ec2800378",
+        "transform": null,
+        "validationRms": null,
+        "disagreement": 1.6455677767327186
+      },
+      "scores": null
+    },
+    {
+      "id": "1c68954c-4bab-4973-9819-ecd084438303-whole",
+      "name": "The Mirari Conjecture",
+      "set": "dom",
+      "referenceHash": "944b660c52c0fc4d39555f6c9bece3e68e575545e2d68fe2f9d0e4561f80694a",
+      "artHash": "85d52999420e4a95e7b48c162cc20dd6bd9abec8bda9a3d4cceceb6cd31401c3",
+      "renderHash": "c374f81ac73446ae0cf3ee3e79124d388c2c2dbd54776bcddbd759db4350a84e",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "70a81598c204fe6989e2e07ef9032a771645d6977536746fc7047eb1bbd31ada",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-straight-edges-v1",
+        "templateHash": "cb9c6b708976ef502fb8366775f8d4fd00954280481bf125014f8e7ec2800378",
+        "transform": {
+          "matrix": [
+            0.9983846067502458, 0, 0, 0.9983846067502458, -0.4136788611242576, -0.08392817251674353
+          ]
+        },
+        "validationRms": 0.4836917656688557,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.49001191113607245,
+          "after": 0.730415642951524
+        },
+        "chapters": {
+          "before": 0.48033162845255334,
+          "after": 0.4016118979122824
+        },
+        "title": {
+          "before": 0.4059999125377181,
+          "after": 0.775153923474943
+        },
+        "type": {
+          "before": 0.7523031448062028,
+          "after": 0.9851004377941003
+        }
+      }
+    },
+    {
+      "id": "edcd0674-68b9-41ca-ab46-a73dfcbe4149-whole",
+      "name": "Time of Ice",
+      "set": "dom",
+      "referenceHash": "1a9f4533edb5c238a43e9a4824126bb59f8e178f793f08e80353f2d3b90e4a05",
+      "artHash": "eec215779991761bf4074742854649f9aed3554993fd347798b4c3e1234d9950",
+      "renderHash": "2b4aba1c63a76dbe5c4f8956026aaf16c615c05c2d9faae7d62e5d5b1dd4ed59",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "3d115e4cdd32295c3ec3882e27a1be0224d7a97b08b5f8b2075871520a751600",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-straight-edges-v1",
+        "templateHash": "cb9c6b708976ef502fb8366775f8d4fd00954280481bf125014f8e7ec2800378",
+        "transform": {
+          "matrix": [
+            0.9975939808963789, 0, 0, 0.9975939808963789, -0.09918354380030237, -0.21442214688332273
+          ]
+        },
+        "validationRms": 0.49048093227825523,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.17181935697960887,
+          "after": 0.8102129444821212
+        },
+        "chapters": {
+          "before": 0.3756266373493019,
+          "after": 0.3467697447607264
+        },
+        "title": {
+          "before": 0.28267279043291266,
+          "after": 0.833250463230924
+        },
+        "type": {
+          "before": 0.7310220913861857,
+          "after": 0.9279139382700089
+        }
+      }
+    },
+    {
+      "id": "f42beafb-2fba-482c-a86a-7d668fa7cb4b-whole",
+      "name": "Chainer's Torment",
+      "set": "dom",
+      "referenceHash": "1d294fadb4021b251d083fc7b878b0a13044c35d803345dbfd039f20f9b1dade",
+      "artHash": "3bc69bdac62ec3a8402a58bd6b8c3bb8e8f70ee8393584cfc86c35edc9a26add",
+      "renderHash": "d2b64a9ae47203627cd3fab54c796fab5f9b0607594012fda2d72bac989f651e",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "65b2e69517459f79b14c721e685fe2061ef6b88e4957e56d26bfe98cba7d55cf",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "9e583fa5c2ff07772d5e8589445746a055f9fbedc866960ba8db7573b494ffb9",
+        "transform": {
+          "matrix": [
+            0.994655653997767, -0.000416538189948131, -0.0007729008497216466, 0.9989075839885532,
+            0.6574854668906781, 0.3985815948202506
+          ]
+        },
+        "validationRms": 0.4326548196546968,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.16100129318307776,
+          "after": 0.7134878095359347
+        },
+        "chapters": {
+          "before": 0.29378443508561025,
+          "after": 0.42760701466290796
+        },
+        "title": {
+          "before": 0.3593103223493367,
+          "after": 0.8210747362459689
+        },
+        "type": {
+          "before": 0.733322621717486,
+          "after": 0.9307480022384959
+        }
+      }
+    },
+    {
+      "id": "c8318f40-ecd5-429e-8fe2-febf31f64841-whole",
+      "name": "The Eldest Reborn",
+      "set": "dom",
+      "referenceHash": "5f0561069645a8fd3e3a1f0629dafc443205310d3388fa2a0e86ae8357e5ad25",
+      "artHash": "bc0f5f1cb7004eedc9f0313479652bb28094d1e0e74dd69f4b080b8c0fbdc3c3",
+      "renderHash": "da698192da0de0cd3abfb91ac104def2be469c9b83ebfaf9e07db8842f170655",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "4a201b9f94a77c72e1d93549497677b1e85e96ecc0c1faf1f04f7505d47bf280",
+      "registration": {
+        "accepted": false,
+        "reason": "no-validated-model",
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "9e583fa5c2ff07772d5e8589445746a055f9fbedc866960ba8db7573b494ffb9",
+        "transform": null,
+        "validationRms": null,
+        "disagreement": null
+      },
+      "scores": null
+    },
+    {
+      "id": "7f3423d7-cb81-47bf-b9a6-a279ba6cedf4-whole",
+      "name": "Phyrexian Scriptures",
+      "set": "dom",
+      "referenceHash": "e438be092f3b04af30f0c47076688730e512179144b2956bdc486d00ce2d9825",
+      "artHash": "2c986a4bd517efe77fee800709ecc8eeaf0195c384899cb2f9f0c3fe6a4c8522",
+      "renderHash": "994d79a1dd9eaa2d9d04e2a2b013436e12b423441b1d0b6d7972f39480e205d3",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "017a7e4d6938de3e0413422d92f9b6ec7ad98eba82995b42e2eb668dd091e1df",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "9e583fa5c2ff07772d5e8589445746a055f9fbedc866960ba8db7573b494ffb9",
+        "transform": {
+          "matrix": [
+            0.9972260755150756, 0, 0, 0.9972260755150756, 0.07653061907708461, 0.3337089828897133
+          ]
+        },
+        "validationRms": 0.5359054753130439,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.3298764612743265,
+          "after": 0.6751412520219059
+        },
+        "chapters": {
+          "before": 0.3968499498640224,
+          "after": 0.4813222949943146
+        },
+        "title": {
+          "before": 0.3717469222378058,
+          "after": 0.7423097679438749
+        },
+        "type": {
+          "before": 0.7280977215820272,
+          "after": 0.9784427304360397
+        }
+      }
+    },
+    {
+      "id": "1ed7cca3-79be-44ca-bf10-2ae1c0835ed1-whole",
+      "name": "Rite of Belzenlok",
+      "set": "dom",
+      "referenceHash": "d44badba08edf26985a752e25f910ed927f6b1875feedce67045f45e54b20423",
+      "artHash": "95686a50ce55aafa8090ff7ebce7830c28e266dca10f6dfbaa8230837325cadd",
+      "renderHash": "0ff4d6bd6d209959e9ad2f69eed394c68b4d2284e9afdb197b0e740b70713477",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "da5003ece12bd3ea914ee7437d3d3c3c2905eb692f502e2417f096b100c8555a",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "9e583fa5c2ff07772d5e8589445746a055f9fbedc866960ba8db7573b494ffb9",
+        "transform": {
+          "matrix": [
+            0.9958970138486865, -0.0016911798362941423, -0.0008922316591517965, 0.9992176748701389,
+            -0.16879639522495962, -0.3663017708659293
+          ]
+        },
+        "validationRms": 0.4089549562075608,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.28247521621476607,
+          "after": 0.7789854418128205
+        },
+        "chapters": {
+          "before": 0.32233368164696524,
+          "after": 0.25278665852545457
+        },
+        "title": {
+          "before": 0.35753035123924165,
+          "after": 0.851131206692102
+        },
+        "type": {
+          "before": 0.725779630927072,
+          "after": 0.8937017745441542
+        }
+      }
+    },
+    {
+      "id": "0efc241f-64b5-4e28-b14a-b3f19ca6e7b5-whole",
+      "name": "The First Eruption",
+      "set": "dom",
+      "referenceHash": "53343420f65257030d14b086e325c5b58ecde45d3c6f949904af97ed938991ff",
+      "artHash": "a733739da1ad52674a6dc35c0798dac145bda8b722f00896a8487569b5b3857e",
+      "renderHash": "c3d886f47c286633a5750f17e13b3780a1ea30ba9012bbbede8b6d7d318a5e05",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "e6844c24af852f1aa5258c0c4bec5c96b1653b3667f946f17e677925e99f0651",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "42b230393ac392e4f38f899b693c7ba8d13c9b1aa6854fac5f80dc66e950d54d",
+        "transform": {
+          "matrix": [
+            0.9974535603928688, 0, 0, 0.9974535603928688, -0.2212273011425134, 0.45141401497812744
+          ]
+        },
+        "validationRms": 0.5318715083058726,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.15194791179538833,
+          "after": 0.7145638348673776
+        },
+        "chapters": {
+          "before": 0.27811074057663454,
+          "after": 0.3315898111225373
+        },
+        "title": {
+          "before": 0.3430272350194818,
+          "after": 0.7280496067594856
+        },
+        "type": {
+          "before": 0.7088713378077397,
+          "after": 0.933923953724961
+        }
+      }
+    },
+    {
+      "id": "324399ed-3d6e-4b4c-8f3d-b7802e2ecadf-whole",
+      "name": "The Flame of Keld",
+      "set": "dom",
+      "referenceHash": "591311784a9a20451ebea68b9f29fb26c6459658adafe18bc979b85f2b020e92",
+      "artHash": "c504cdcd40fc0cd0d3c60ad64f3d0d7b5f96fa3136f30e3ee38b7260ad638ebf",
+      "renderHash": "67ae1e56fc469164640bf5e1975a4b564582eebd0450588f67c6a19a8c9777ae",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "95044fc6a91b3c17f1b826b19f13dbccebd2c0f9b08563cd23ae98536bcc7c5b",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-straight-edges-v1",
+        "templateHash": "42b230393ac392e4f38f899b693c7ba8d13c9b1aa6854fac5f80dc66e950d54d",
+        "transform": {
+          "matrix": [
+            0.9973679326274807, 0, 0, 0.9973679326274807, -0.1937229631713909, -0.383365738218962
+          ]
+        },
+        "validationRms": 0.5706359746778018,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.2951570578048104,
+          "after": 0.8400608152134564
+        },
+        "chapters": {
+          "before": 0.2748736489422032,
+          "after": 0.6430672263679712
+        },
+        "title": {
+          "before": 0.36984128567580776,
+          "after": 0.8479025313073889
+        },
+        "type": {
+          "before": 0.7362313295161048,
+          "after": 0.9171455375761295
+        }
+      }
+    },
+    {
+      "id": "0d5e4d9a-34e1-46eb-814b-8e3bd4475b8a-whole",
+      "name": "The Mending of Dominaria",
+      "set": "dom",
+      "referenceHash": "d799d4ee8b0da356b47ae3da17075d044e685b0891cbc329176ae3efdd688621",
+      "artHash": "d4419f0e48871ef128a3bf2de35ced19dd10129ae402ae40d0792ea1ce0e57bc",
+      "renderHash": "f97d4ed01bd60399e87390f7958e3285102c9cb2a9755c6ae8c2cc86e6669acb",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "e227f9b0ea4e0a3c7e9cd613d8cfe7f748ca27b0f89873116bf1395050aaf27d",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "f157ad8da63495e1b7ca8d05973221f03887279da3904543ad8913854750c13c",
+        "transform": {
+          "matrix": [
+            0.994583552669231, -0.000020029036290235378, 0.00036052135799594386, 0.9998414789633981,
+            -0.27003739758124823, 0.42985316515855054
+          ]
+        },
+        "validationRms": 0.220446464056025,
+        "disagreement": 1.2077342728967002
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.42748966285258916,
+          "after": 0.7570079243595857
+        },
+        "chapters": {
+          "before": 0.45068923534146266,
+          "after": 0.70343589598129
+        },
+        "title": {
+          "before": 0.41708133485966004,
+          "after": 0.8526341578967924
+        },
+        "type": {
+          "before": 0.6722974989179128,
+          "after": 0.8987676669219523
+        }
+      }
+    },
+    {
+      "id": "a45b534b-8442-4074-a8d2-f38e83f24868-whole",
+      "name": "Song of Freyalise",
+      "set": "dom",
+      "referenceHash": "b1e8104ad55d4d47033827d861d9cd83ff5878746bc825a295191949634acd6b",
+      "artHash": "b71f4c46b1f7109bed9e73c0e2a3d59977b1df26b7925ccbfe025b566587af1d",
+      "renderHash": "d761b095b4b1d5b4093816655ead2e6eb384b684f9cbe3cacf9334087808386a",
+      "wordingHash": "fbcf38d99c76a5db7406c75eea425e5812c0984a7e014e71d5ef393a1dc277e0",
+      "faceHash": "bc7e59bb32f4d044130a4f24323979cda82e3a30f12247527112ba3659696816",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "f157ad8da63495e1b7ca8d05973221f03887279da3904543ad8913854750c13c",
+        "transform": {
+          "matrix": [
+            0.9980046109248397, 0, 0, 0.9980046109248397, -0.1732304145442431, -0.09567035830060194
+          ]
+        },
+        "validationRms": 0.5808604322753059,
+        "disagreement": 0.19475677625214727
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.1654469285066928,
+          "after": 0.79581223711613
+        },
+        "chapters": {
+          "before": 0.289623644776194,
+          "after": 0.47522856444027645
+        },
+        "title": {
+          "before": 0.3428926196861264,
+          "after": 0.8224435791660102
+        },
+        "type": {
+          "before": 0.7170974364082048,
+          "after": 0.9069297876779034
+        }
+      }
+    },
+    {
+      "id": "ea20208b-1939-4c69-8cfd-c0a42f9dc427-whole",
+      "name": "Elspeth Conquers Death",
+      "set": "thb",
+      "referenceHash": "a57f94876555351043b92021192c9e5cb234eb1d1ad4b08edd11cba362cd171f",
+      "artHash": "c79e9fba8c79a0af2d9376ca5f8d86c7034d4f96264db8f6a166b624b70e2e26",
+      "renderHash": "5d52704e028678ecd9e322558007ccc4215ca9d8454a152110789404b5b3be6a",
+      "wordingHash": "6c8650becd157884907f1510c81ee19182be661c0144bd9ba4a8f4a9c846bc33",
+      "faceHash": "5d5272b72a5376a709d42a090e9a578d1a08694c9abc5f56e2441c0e83ecb995",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "731ab88d67d49793026419d6772538d857c966d3d5e1bbbeb16187753424013c",
+        "transform": {
+          "matrix": [
+            0.9981023282604963, 0, 0, 0.9981023282604963, -0.2787914133152066, 0.08527041696552934
+          ]
+        },
+        "validationRms": 0.7283533392431301,
+        "disagreement": 0.2077425366676875
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.2080184242523113,
+          "after": 0.7930550271504168
+        },
+        "chapters": {
+          "before": 0.4865107498946993,
+          "after": 0.5554123384003549
+        },
+        "title": {
+          "before": 0.36221347066545495,
+          "after": 0.8152433811336339
+        },
+        "type": {
+          "before": 0.7082419168591225,
+          "after": 0.9511517266091086
+        }
+      }
+    },
+    {
+      "id": "3d2bd7b4-28de-4d9e-86c5-a46bd608cb02-whole",
+      "name": "Medomai's Prophecy",
+      "set": "thb",
+      "referenceHash": "aadf82ab0d72bbed598f6ef49909c5dd36897b25b95bf98f64e6508120b70572",
+      "artHash": "b1de8b710e3e8c66f7d4d264d2aae9a582cfe04a697b394954fcef6288dc734b",
+      "renderHash": "c0205da7d0fb733bfd10018e00e8ad15083c4af0f7d2d33883735e1de2ce4fd9",
+      "wordingHash": "6c8650becd157884907f1510c81ee19182be661c0144bd9ba4a8f4a9c846bc33",
+      "faceHash": "f74c629c1c8a693ee8c627af54a490a9dd1e3b343602c5fe4a50f232abc4bb08",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "cb9c6b708976ef502fb8366775f8d4fd00954280481bf125014f8e7ec2800378",
+        "transform": {
+          "matrix": [
+            0.9987969312604913, 0, 0, 0.9987969312604913, -0.5861335826357423, 0.6169882030620857
+          ]
+        },
+        "validationRms": 0.6695215514835285,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.37153822858661456,
+          "after": 0.7305703958577198
+        },
+        "chapters": {
+          "before": 0.5313152877312614,
+          "after": 0.595183807332633
+        },
+        "title": {
+          "before": 0.401302304274559,
+          "after": 0.7593553752429102
+        },
+        "type": {
+          "before": 0.6773234250186959,
+          "after": 0.8967696818958478
+        }
+      }
+    },
+    {
+      "id": "4aa19a68-0d71-4123-a64d-8cb76f93cd74-whole",
+      "name": "The Trickster-God's Heist",
+      "set": "khm",
+      "referenceHash": "089afae78b1186c79e748d204d4d1eddb9090a4c556e6231eafb90742b875d56",
+      "artHash": "8599cf1024d633afc3eeb3f2bf290273304490bc8d1f70a1bad56871e65c9d06",
+      "renderHash": "6ae0f8159c36c1f5ff33d1efc48f204b283bb6c7034a4ad76d84162acd7153ad",
+      "wordingHash": "a7d1f3e3bf33e35cb5895cea7410d3d46f5dcb090f6ffb941c6dbe61a3759dc1",
+      "faceHash": "7495976bd26bc781df6abdeaa2baf5d266e20838e90d4c3d0801f402611ccead",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-straight-edges-v1",
+        "templateHash": "37a1690bbe80bd729c58cf694af6b4f986ebb830218a2b3c392708350666c611",
+        "transform": {
+          "matrix": [
+            0.9983801132051526, 0.0005619439363775719, 0.0008436839054120537, 1.0108883362228824,
+            -0.6999394614712023, 3.3850125375328584
+          ]
+        },
+        "validationRms": 0.2574968264615583,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.1502756489867628,
+          "after": 0.7629281151871861
+        },
+        "chapters": {
+          "before": 0.2723020471947557,
+          "after": 0.3757467167933526
+        },
+        "title": {
+          "before": 0.3717273346282861,
+          "after": 0.7841489995880047
+        },
+        "type": {
+          "before": 0.2063946240516699,
+          "after": 0.2620957621840694
+        }
+      }
+    },
+    {
+      "id": "c1e0f201-42cb-46a1-901a-65bb4fc18f6c-whole",
+      "name": "Urza's Saga",
+      "set": "mh2",
+      "referenceHash": "c4af0c40c210e47ef739efcef84b81fd80258a768869c40486bb7272ea57992c",
+      "artHash": "0a275d52868ce073242118d184ac1a5f1eea05984b4b4da59e1e0ef2f9c7705f",
+      "renderHash": "1c31632e1b662dab855f24d042c3e9f6e212a74db1a19b6fba5433f6e12ca40f",
+      "wordingHash": "d1cf149bb3548e4ddde44acf207d0e6954efaf934035a04b9dd7dcab0c4d86ac",
+      "faceHash": "1e0ccc229316d2b823a1796770720e8883e406a8b0eb6346819660e0bcf9acc2",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "63e9fe125a8c4fe517c15cd87801cb8d5a84a057beab466805bb2f7f73aecd0b",
+        "transform": {
+          "matrix": [
+            0.9972003671588134, 0, 0, 0.9972003671588134, -0.2747473117724961, 0.24523895969660567
+          ]
+        },
+        "validationRms": 0.6603210105168946,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.2125414026808515,
+          "after": 0.7620002099916217
+        },
+        "chapters": {
+          "before": 0.3824428550403374,
+          "after": 0.7985898044214018
+        },
+        "title": {
+          "before": 0.2577999121136664,
+          "after": 0.7803403685322251
+        },
+        "type": {
+          "before": 0.6976310905999515,
+          "after": 0.934893427177684
+        }
+      }
+    },
+    {
+      "id": "3d6e5eb3-25ab-4e9e-96e8-655e0ce74675-whole",
+      "name": "The Cruelty of Gix",
+      "set": "dmu",
+      "referenceHash": "9c0243581faf62a9f78106dcb1851c0514da65330b78954d93460f1017154071",
+      "artHash": "66669db6da6e6c1ee8ef30be4f17f870fa05d552dabff786d29599df954873ab",
+      "renderHash": "a676099490d4064ccd2368000b740af78c6bbc2494143c6040056795b19413d8",
+      "wordingHash": "b6838f2316f01459fd29d48f76ffb4596efb922d0cb7f7346ae6c3ce7c6427fd",
+      "faceHash": "f2aefd76d777a44df5c660721600978e814ad53658634c431f781e95ae9bff21",
+      "registration": {
+        "accepted": false,
+        "reason": "insufficient-frame-support",
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "9e583fa5c2ff07772d5e8589445746a055f9fbedc866960ba8db7573b494ffb9",
+        "transform": null,
+        "validationRms": null,
+        "disagreement": null
+      },
+      "scores": null
+    },
+    {
+      "id": "24c0d87b-0049-4beb-b9cb-6f813b7aa7dc-a",
+      "name": "Fable of the Mirror-Breaker",
+      "set": "neo",
+      "referenceHash": "7f3a145c400316cb8c88257e1e26e91a69ccb26552cf6afb86627f0ff28890bb",
+      "artHash": "1f6dfedd56e2625ae116cc08307a61a6c1324bcb6b436707eaab87c1a5e3ff44",
+      "renderHash": "b514388fc52cdfd728c1e32d7d4e9c0be7103d87ddddb812aeaa3573f24d4a22",
+      "wordingHash": "39b1218fabf43115fd54dd8b55c82c01748bf4c688b204714c6c3e1c3e7cbf7b",
+      "faceHash": "a76d0b53e5fbb52d2d36ebeeba494b2f0863e24ba17afb65f61e77de19d42a01",
+      "registration": {
+        "accepted": true,
+        "reason": null,
+        "method": "saga-frame-profiles-v1",
+        "templateHash": "463c1fe2a415092ecfb0ee3f83f9f194d2f12de1d200913dd0f09e0791c748c9",
+        "transform": {
+          "matrix": [
+            0.9989254956391103, 0, 0, 0.9989254956391103, -0.4796515736656492, 0.413026304941785
+          ]
+        },
+        "validationRms": 0.4985886447733087,
+        "disagreement": null
+      },
+      "scores": {
+        "reminder": {
+          "before": 0.1653066596472756,
+          "after": 0.5712504342611298
+        },
+        "chapters": {
+          "before": 0.40390312540951945,
+          "after": 0.40479221189118375
+        },
+        "title": {
+          "before": 0.3920373547383897,
+          "after": 0.7250639650546198
+        },
+        "type": {
+          "before": 0.7516078996896494,
+          "after": 0.9539178952199231
+        }
+      }
+    }
+  ]
+}

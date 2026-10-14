@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, access } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { PNG } from 'pngjs';
 import { createServer } from 'vite';
@@ -33,7 +33,13 @@ const cohort = {
   znr: ['Bala Ged Recovery // Bala Ged Sanctuary'],
   dsk: ["Dollmaker's Shop // Porcelain Gallery"],
 };
-const output = `${outputRoot}/special-frames-v0215`;
+const output = `${outputRoot}/${process.argv[2] ?? 'special-frames-v0215'}`;
+try {
+  await access(`${output}/audit.json`);
+  throw Error('Audit already exists. Choose a new output label; preserve the baseline.');
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
 const rendererHash = await sourceHash(`${root}/games/magic/src`);
 const studyHash = await sourceHash(`${root}/games/magic/tools/accuracy`);
 const fontHash = hash(await readFile(`${root}/games/magic/fonts.css`));

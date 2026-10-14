@@ -79,3 +79,10 @@ retains renderer/font/study hashes, exact source objects, per-face inputs and
 rejected registration details. A compact receipt lives in
 `fixtures/accuracy/special-frame-audit.json`. The local review gallery is kept
 outside this library, and no scan/art raster is added to the public showcase.
+
+## Saga follow-up
+
+The first measured replacement pass is documented in [Saga layout](saga-layout.md).
+The v0.2.15 capture above remains the immutable baseline. Full Saga plates,
+measured chapters and a dedicated frame-only registration now have a separate
+receipt; split, aftermath, Room and reverse-face gaps from this audit remain open.

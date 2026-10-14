@@ -66,6 +66,17 @@ export function specialFrameInput(card, side, reference, art, records) {
       ...presentation({ card: merged, reference, art }, {}, { [card.id]: { originalText: rules } })
         .face,
       layout: card.layout,
+      ...(physicalSide &&
+      /\bSaga\b/.test(merged.printed_type_line ?? '') &&
+      card.card_faces?.[1]?.power != null &&
+      card.card_faces[1].toughness != null
+        ? {
+            reverseStats: {
+              power: card.card_faces[1].power,
+              toughness: card.card_faces[1].toughness,
+            },
+          }
+        : {}),
       wordingMode: 'original',
       symbolStyle: 'original',
       colorCalibration: 'set-hsb-v1',
