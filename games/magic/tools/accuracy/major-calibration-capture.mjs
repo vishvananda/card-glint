@@ -6,7 +6,7 @@ import {
   mapLimit,
   readJson,
   writeJson,
-  root,
+  root as repositoryRoot,
   sourceHash,
   atomicWrite,
 } from './common.mjs';
@@ -16,7 +16,9 @@ import { openBrowser } from './browser.mjs';
 import { calibrationGroups } from './major-calibration-groups.mjs';
 
 const plan = await readJson(`${cacheRoot}/rollout/major-calibration-plan.json`);
-const directory = `${cacheRoot}/rollout/major-calibration`;
+import { calibrationDirectory as directory } from './major-calibration-run.mjs';
+// A frozen source tree keeps a long capture independent of worktree edits.
+const root = process.env.MAGIC_CALIBRATION_SOURCE_ROOT ?? repositoryRoot;
 const rendererHash = await sourceHash(`${root}/games/magic/src`);
 const filter = process.argv.slice(2);
 const server = await createServer({
@@ -24,7 +26,7 @@ const server = await createServer({
   root,
   server: { middlewareMode: true, hmr: false },
 });
-const session = await openBrowser({ entries: [], components: [] });
+const session = await openBrowser({ entries: [], components: [] }, { sourceRoot: root });
 try {
   const { canvasAssetUrls } = await server.ssrLoadModule(
     '/games/magic/src/presentation/canvas-assets.ts',

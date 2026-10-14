@@ -1,3 +1,4 @@
+import { calibrationGroups } from './major-calibration-groups.mjs';
 import { readFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import { cacheRoot, hash, readJson, writeJson } from './common.mjs';
@@ -12,15 +13,22 @@ import {
   scoreSymbol,
 } from './major-calibration-metrics.mjs';
 
-const directory = `${cacheRoot}/rollout/major-calibration`;
+import { loadOldStockTargets } from './stock-targets.mjs';
+import {
+  calibrationRevision,
+  calibrationDirectory as directory,
+} from './major-calibration-run.mjs';
 const plan = await readJson(`${cacheRoot}/rollout/major-calibration-plan.json`),
   filter = process.argv.slice(2);
+const oldStock = calibrationRevision ? await loadOldStockTargets() : null;
 const methodHash = hash(
   Buffer.concat(
     await Promise.all(
       [
         'major-calibration-metrics.mjs',
         'major-calibration-measure.mjs',
+        'stock-targets.mjs',
+        'old-frame-normalization.mjs',
         'scan-affine-fit.mjs',
         'scan-frame-anchors.mjs',
         'scan-frame-fit.mjs',
@@ -31,9 +39,7 @@ const methodHash = hash(
     ),
   ),
 );
-for (const group of plan.rows.filter(
-  (r) => !filter.length || filter.includes(r.set) || filter.includes(r.family),
-)) {
+for (const group of calibrationGroups(plan.rows, filter)) {
   const key = group.key.replaceAll('/', '-');
   let capture;
   try {
@@ -66,7 +72,9 @@ for (const group of plan.rows.filter(
     };
     const blank = await readImage(row.images.blank),
       source = PNG.sync.read(await readObject(row.reference));
-    const fit = registerMajorFrame(normalize(source), blank, group.family, group.border);
+    const fit =
+      (group.family === 'retro' && oldStock?.(normalize(source), row, group.border)) ||
+      registerMajorFrame(normalize(source), blank, group.family, group.border);
     const result = {
       id: row.id,
       name: row.name,

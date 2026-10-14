@@ -31,6 +31,18 @@ for their outer white rim. The common source already has the white rim.
 Urza rarity gradients, every-set footer typography, and rejected/sparse symbol
 cohorts remain review items. Revised dual-land paper remains in the asset queue.
 
+The [symbol follow-up](fixtures/accuracy/major-symbol-followup.json) accounts for
+all 445 major-set groups: 165 retain identity proposals, 96 need review, 147 lack
+enough validated scan fits, 23 lack a symbol source, 11 have no printed symbol,
+and three have unsupported layouts. No new candidate passed all reserved
+production-render gates; existing shared placements remain unchanged. Exact
+comparison-region pixels and icon bounds guard transfers from earlier captures.
+
+The [Urza footer check](fixtures/accuracy/urza-footer-final.json) records artist
+and copyright improvements on 49 reserved examples. Larger power/toughness was
+rejected; its existing geometry remains. Long supplied artist credits are
+constrained to avoid overlapping the creature's stats.
+
 ## Agreed execution order
 
 Current priority: redo all old-frame color profiles with separate frame and

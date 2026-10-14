@@ -64,6 +64,27 @@ try {
         frameCenter: (rects.frame[0] + rects.frame[2] / 2) * 488,
       });
     }
+    const { paintUrzaFooter } = await import('/games/magic/src/presentation/retro-urza-footer.ts');
+    const footers = [
+      null,
+      'An exceptionally long supplied illustrator credit with two artists',
+    ].map((artist) => {
+      const c = make(),
+        ctx = c.getContext('2d');
+      ctx.fillStyle = '#555';
+      ctx.fillRect(0, 0, 488, 680);
+      paintUrzaFooter(ctx, {
+        name: 'Footer probe',
+        setCode: 'uds',
+        artist,
+        power: '1',
+        toughness: '1',
+        legalText: null,
+      });
+      return ctx.getImageData(394, 606, 70, 39).data;
+    });
+    if (!footers[0].every((v, i) => v === footers[1][i]))
+      throw Error('Long illustrator credit overlaps power/toughness');
     image.close();
     return results;
   });

@@ -1,6 +1,13 @@
 import { readFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
-import { cacheRoot, hash, readJson, writeJson, sourceHash, root } from './common.mjs';
+import {
+  cacheRoot,
+  hash,
+  readJson,
+  writeJson,
+  sourceHash,
+  root as repositoryRoot,
+} from './common.mjs';
 import { readObject } from './cache.mjs';
 import { openBrowser } from './browser.mjs';
 import { normalize, cropGray } from './pixels-pure.mjs';
@@ -10,11 +17,15 @@ import { calibrationGroups } from './major-calibration-groups.mjs';
 
 // Verify candidates with fresh production Canvas exports. The CPU sampler is
 // used only to propose parameters; it never supplies the release's final score.
-const directory = `${cacheRoot}/rollout/major-calibration`;
+import {
+  calibrationDirectory as directory,
+  calibrationRevision,
+} from './major-calibration-run.mjs';
 const plan = await readJson(`${cacheRoot}/rollout/major-calibration-plan.json`);
+const root = process.env.MAGIC_CALIBRATION_SOURCE_ROOT ?? repositoryRoot;
 const filter = process.argv.slice(2);
 const rendererHash = await sourceHash(`${root}/games/magic/src`);
-const session = await openBrowser({ entries: [], components: [] });
+const session = await openBrowser({ entries: [], components: [] }, { sourceRoot: root });
 const fonts = await readJson(`${cacheRoot}/rollout/early-hsb.json`);
 session.addAssets(fonts.components);
 session.addAssets(await fetchComponents([], {}));
@@ -41,7 +52,7 @@ try {
     }
     const capture = await readJson(`${directory}/${key}.json`);
     if (
-      capture.rendererHash !== rendererHash ||
+      (!calibrationRevision && capture.rendererHash !== rendererHash) ||
       hash(JSON.stringify(capture)) !== measured.captureHash
     )
       throw Error('Stale source capture');
@@ -66,9 +77,13 @@ try {
             proto = CanvasRenderingContext2D.prototype,
             original = proto.drawImage;
           const images = [];
+          let baselineBounds = null;
           try {
-            for (const adjusted of [false, true]) {
+            for (const mode of ['before', 'after', 'blank']) {
+              const adjusted = mode === 'after';
               proto.drawImage = function (image, ...args) {
+                if (mode === 'before' && image === icon && args.length === 4) baselineBounds = args;
+                if (mode === 'blank' && image === icon && args.length === 4) return;
                 if (adjusted && image === icon && args.length === 4) {
                   const [x, y, w, h] = args,
                     [dx, dy, sx, sy] = params;
@@ -89,10 +104,17 @@ try {
                 new AbortController().signal,
                 { loadImages: async () => ({ images: loaded.images, dispose() {} }) },
               );
-              images.push(c.toDataURL());
+              if (mode === 'blank') {
+                const small = document.createElement('canvas');
+                small.width = 488;
+                small.height = 680;
+                small.getContext('2d').drawImage(c, 0, 0, 488, 680);
+                images.push(small.toDataURL());
+                small.width = small.height = 0;
+              } else images.push(c.toDataURL());
               c.width = c.height = 0;
             }
-            return images;
+            return [...images, baselineBounds];
           } finally {
             proto.drawImage = original;
             loaded.dispose();
@@ -111,7 +133,29 @@ try {
         normalize(PNG.sync.read(referenceBytes), comparison.fit.transform),
         rect,
       );
-      const scores = exports.map((url) => {
+      // Follow-up capture may predate unrelated title/footer edits. Transfer its
+      // frozen frame pose only when every comparison-region pixel of the blank
+      // plate is reproduced exactly by the current painter.
+      const oldBlankBytes = await readFile(`${directory}/${sample.images.blank.file}`);
+      if (hash(oldBlankBytes) !== sample.images.blank.sha256) throw Error('Changed blank capture');
+      const oldBlank = cropGray(PNG.sync.read(oldBlankBytes), rect).gray;
+      const newBlank = cropGray(
+        PNG.sync.read(Buffer.from(exports[2].split(',')[1], 'base64')),
+        rect,
+      ).gray;
+      if (
+        JSON.stringify(exports[3]) !== JSON.stringify(sample.bounds) ||
+        !oldBlank.every((v, i) => v === newBlank[i])
+      ) {
+        rows.push({
+          id: sample.id,
+          name: sample.name,
+          cohort: sample.cohort,
+          issue: 'comparison-baseline-changed',
+        });
+        continue;
+      }
+      const scores = exports.slice(0, 2).map((url) => {
         const bytes = Buffer.from(url.split(',')[1], 'base64'),
           rendered = cropGray(normalize(PNG.sync.read(bytes)), rect);
         const metric = compareRegion(ref.gray, rendered.gray, rect[2], rect[3]);
@@ -134,17 +178,18 @@ try {
         after: scores[1],
       });
     }
-    const validation = rows.filter((r) => r.cohort === 'validation');
+    const validation = rows.filter((r) => r.cohort === 'validation' && !r.issue);
     const mean = (key, field) =>
-      validation.reduce((n, r) => n + r[key][field], 0) / validation.length;
+      validation.reduce((n, r) => n + r[key][field], 0) / Math.max(1, validation.length);
     const before = mean('before', 'f1'),
       after = mean('after', 'f1'),
       flags = [];
+    if (rows.some((r) => r.issue)) flags.push('comparison-baseline-changed');
     if (validation.length < 3) flags.push('sparse-validation');
     if (after - before < 0.005) flags.push('no-reserved-gain');
     if (validation.some((r) => r.after.f1 < r.before.f1 - 0.02))
       flags.push('reserved-raster-regression');
-    if (rows.some((r) => r.after.f1 < r.before.f1 - 0.04))
+    if (rows.some((r) => !r.issue && r.after.f1 < r.before.f1 - 0.04))
       flags.push('development-raster-regression');
     if (mean('after', 'distance') > mean('before', 'distance') + 0.05)
       flags.push('distance-regression');
@@ -155,6 +200,9 @@ try {
       family: group.family,
       border: group.border,
       rendererHash,
+      captureRendererHash: capture.rendererHash,
+      baselineProof:
+        'Exact canonical blank-region grayscale pixels; fixed reference hashes and frame poses.',
       measurementHash,
       status: flags.length ? 'review' : 'validated',
       flags,

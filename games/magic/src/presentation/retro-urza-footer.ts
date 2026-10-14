@@ -13,7 +13,9 @@ export function paintUrzaFooter(c: CanvasRenderingContext2D, face: RenderedCardI
   c.shadowOffsetX = c.shadowOffsetY = 1.5 * c.getTransform().a;
   c.fillStyle = '#f2eee3';
   c.font = '19px "CardRenderer MTG MPlantin", Georgia';
-  if (face.artist) c.fillText(`Illus. ${face.artist}`, 244, 626, 365);
+  // Long supplied credits must stay outside the creature's stats box.
+  const artistWidth = face.power != null && face.toughness != null ? 292 : 365;
+  if (face.artist) c.fillText(`Illus. ${face.artist}`, 244, 626, artistWidth);
   if (face.power != null && face.toughness != null) {
     c.shadowColor = '#000b';
     c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
