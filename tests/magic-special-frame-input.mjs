@@ -75,6 +75,66 @@ assert.equal(
   'Shared split art must exercise the crop policy',
 );
 assert.equal(panels.illustration, `/__accuracy/object/${art.sha256}`);
+const adventure = {
+  ...split,
+  layout: 'adventure',
+  colors: ['R', 'U'],
+  card_faces: [
+    {
+      ...split.card_faces[0],
+      type_line: 'Creature — Giant',
+      colors: ['R'],
+      power: '3',
+      toughness: '4',
+    },
+    { ...split.card_faces[1], type_line: 'Instant — Adventure', colors: ['U'] },
+  ],
+};
+const adventureRecords = records.map((r, i) => ({
+  ...r,
+  originalType: adventure.card_faces[i].type_line,
+}));
+const book = specialFrameInput(
+  adventure,
+  specialFrameSides(adventure)[0],
+  reference,
+  art,
+  adventureRecords,
+).face;
+assert.equal(book.name, front.name);
+assert.equal(book.typeLine, 'Creature — Giant');
+assert.deepEqual(
+  book.colors,
+  ['R'],
+  'An Adventure parent uses the permanent colors, not the union',
+);
+assert.deepEqual(book.faces[1].colors, ['U']);
+assert.equal(book.power, '3');
+assert.equal(book.rulesText, 'I — Original chapter.');
+assert.equal(book.faces[1].rulesText, 'Original back.');
+assert.equal(book.illustration, `/__accuracy/object/${art.sha256}`);
+const joinedAdventure = adventureRecords.map((r, i) => ({
+  ...r,
+  originalText: 'Printed spell. // Printed creature.',
+  originalType: 'Creature — Giant',
+  type: adventure.card_faces[i].type_line,
+}));
+const correctedBook = specialFrameInput(
+  { ...adventure, flavor_text: 'Parent flavor.' },
+  specialFrameSides(adventure)[0],
+  reference,
+  art,
+  joinedAdventure,
+);
+assert.equal(correctedBook.face.rulesText, 'Printed creature.');
+assert.equal(correctedBook.face.faces[1].rulesText, 'Printed spell.');
+assert.equal(correctedBook.face.faces[1].typeLine, 'Instant — Adventure');
+assert.equal(correctedBook.originals[1].typeIssue.kind, 'duplicated-adventure-original-type');
+assert.ok(correctedBook.face.faces[1].rulesParagraphs.every((p) => p.role !== 'flavor'));
+assert.throws(
+  () => originalPanelText(adventure, joinedAdventure[0], [joinedAdventure[0], adventureRecords[1]]),
+  /Ambiguous/,
+);
 const joined = records.map((r, i) => ({
   ...r,
   originalText: 'First. // Creature — Goblin\nSecond.',

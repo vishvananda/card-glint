@@ -34,14 +34,21 @@ export function originalFaceRecord(card, data, records) {
  * type label after the divider, which can be removed by exact type equality. */
 export function originalPanelText(card, original, records) {
   const text = normalizePrintingText(original.originalText);
-  if (card.layout !== 'split' || !text.includes(' // ')) return text;
+  if (!['split', 'adventure'].includes(card.layout) || !text.includes(' // ')) return text;
   const pair = card.card_faces.map((data) => originalFaceRecord(card, data, records));
   if (pair[0].originalText !== pair[1].originalText || text.split(' // ').length !== 2)
     throw Error('Ambiguous joined original panel text');
   const index = pair.findIndex((r) => r === original);
   if (index < 0) throw Error('Original panel is absent');
-  let selected = text.split(' // ')[index].trim();
-  if (index === 1 && original.originalType && selected.startsWith(original.originalType + '\n'))
+  // Gatherer's combined Adventure wording follows the printed book: inset
+  // spell first, permanent second. Face identity remains permanent then spell.
+  const printedIndex = card.layout === 'adventure' ? 1 - index : index;
+  let selected = text.split(' // ')[printedIndex].trim();
+  if (
+    printedIndex === 1 &&
+    original.originalType &&
+    selected.startsWith(original.originalType + '\n')
+  )
     selected = selected.slice(original.originalType.length + 1);
   return selected;
 }
@@ -51,6 +58,28 @@ export function originalPanelText(card, original, records) {
  * agreeing per-face provider fields; never infer historical creature subtypes. */
 export function originalPanelType(card, data, original, records) {
   const typeLine = original.originalType ?? data.type_line;
+  if (
+    card.layout === 'adventure' &&
+    /^(Instant|Sorcery)\s*[—–-]\s*Adventure$/.test(data.type_line ?? '') &&
+    original.type === data.type_line &&
+    typeLine !== data.type_line
+  ) {
+    const pair = card.card_faces.map((f) => originalFaceRecord(card, f, records));
+    if (
+      pair[0].originalType === pair[1].originalType &&
+      pair[0].originalText === pair[1].originalText &&
+      normalizePrintingText(original.originalText).split(' // ').length === 2
+    )
+      return {
+        typeLine: data.type_line,
+        issue: {
+          kind: 'duplicated-adventure-original-type',
+          originalType: typeLine,
+          selectedType: data.type_line,
+          source: 'agreeing-mtgjson-type-and-scryfall-face-type',
+        },
+      };
+  }
   if (
     card.layout !== 'split' ||
     !['Instant', 'Sorcery'].includes(typeLine) ||
@@ -97,6 +126,8 @@ export function specialFrameInput(card, side, reference, art, records) {
       id: card.id,
       layout: physicalSide ? card.layout : 'normal',
       colors: data.colors ?? original.colors ?? (data === card ? card.colors : []) ?? [],
+      // A parent's flavor belongs to neither inset nor reverse by inheritance.
+      flavor_text: data.flavor_text,
       printed_type_line: type.typeLine,
     };
     return {
@@ -128,6 +159,16 @@ export function specialFrameInput(card, side, reference, art, records) {
     delete half.illustration;
     delete half.frameAssetFamily;
   }
+  if (card.layout === 'adventure')
+    return {
+      face: {
+        ...halves[0],
+        layout: 'adventure',
+        illustration: `/__accuracy/object/${art.sha256}`,
+        faces: halves,
+      },
+      originals,
+    };
   return {
     face: {
       name: card.name,
