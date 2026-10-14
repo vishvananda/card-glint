@@ -25,6 +25,8 @@ import type { ManaNumeral } from './mana-numeral.js';
 export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   /** Face-preparation palette for procedural/fallback mana discs. */
   readonly manaNumerals?: ReadonlyMap<string, ManaNumeral>;
+  readonly manaGlyphs?: ReadonlyMap<string, ManaNumeral>;
+  readonly manaGlyphScales?: Readonly<Record<string, number>>;
   readonly manaColors?: Readonly<Record<string, string>>;
   /** Prepared historical bitmaps aliased to the painter's logical mana keys. */
   readonly originalManaGlyphs?: ReadonlySet<string>;

@@ -1,6 +1,12 @@
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
-export const SYMBOL_ADJUSTMENT_VERSION = 'symbols-v2';
+export const SYMBOL_ADJUSTMENT_VERSION = 'symbols-v3';
+export type ManaColor = 'W' | 'U' | 'B' | 'R' | 'G';
+export interface ManaGlyphTransform {
+  scale?: number;
+  dx?: number;
+  dy?: number;
+}
 /** Opt-in review deltas, in canonical 488 × 680 pixels. Right/center anchored. */
 export interface SymbolTransform {
   dx?: number;
@@ -15,6 +21,8 @@ export interface ManaSymbolTransform extends SymbolTransform {
   numberScale?: number;
   numberDx?: number;
   numberDy?: number;
+  /** Cost glyphs of this color only; their circles and inline symbols stay fixed. */
+  glyphs?: Partial<Record<ManaColor, ManaGlyphTransform>>;
 }
 export interface SymbolAdjustment {
   mana?: ManaSymbolTransform;
@@ -32,6 +40,10 @@ export function validateSymbolAdjustment(face: RenderedCardInput): void {
     if (group !== 'mana' && group !== 'set') throw Error('Unknown symbol adjustment group.');
     if (!value || typeof value !== 'object') throw Error('Invalid symbol adjustment.');
     for (const [key, number] of Object.entries(value)) {
+      if (group === 'mana' && key === 'glyphs') {
+        validateManaGlyphs(number);
+        continue;
+      }
       const translation = key === 'dx' || key === 'dy';
       const numeralOffset = group === 'mana' && (key === 'numberDx' || key === 'numberDy');
       const spacing = group === 'mana' && key === 'spacing';
@@ -48,6 +60,28 @@ export function validateSymbolAdjustment(face: RenderedCardInput): void {
         throw Error('Symbol adjustment exceeds supported bounds.');
     }
   }
+}
+function validateManaGlyphs(value: unknown): void {
+  if (!value || typeof value !== 'object' || Array.isArray(value))
+    throw Error('Invalid mana glyph controls.');
+  for (const [color, fields] of Object.entries(value)) {
+    if (!/^[WUBRG]$/.test(color) || !fields || typeof fields !== 'object' || Array.isArray(fields))
+      throw Error('Invalid mana glyph color.');
+    for (const [key, n] of Object.entries(fields)) {
+      const scale = key === 'scale';
+      if (
+        (!scale && key !== 'dx' && key !== 'dy') ||
+        typeof n !== 'number' ||
+        !Number.isFinite(n) ||
+        n < (scale ? 0.75 : -4) ||
+        n > (scale ? 1.25 : 4)
+      )
+        throw Error('Mana glyph control exceeds supported bounds.');
+    }
+  }
+}
+export function colorGlyphTransform(adjustment: ManaSymbolTransform | undefined, symbol: string) {
+  return /^[WUBRG]$/.test(symbol) ? adjustment?.glyphs?.[symbol as ManaColor] : undefined;
 }
 export function adjustedSymbolBounds(bounds: FaceRect, value?: SymbolTransform): FaceRect {
   const { dx = 0, dy = 0, scaleX = 1, scaleY = 1 } = value ?? {};

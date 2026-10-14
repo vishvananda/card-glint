@@ -45,6 +45,7 @@ try {
         frameStyle,
         frameAssetFamily,
         rarity: 'rare',
+        symbolStyle: 'modern',
       };
       const images = new Map(
         m

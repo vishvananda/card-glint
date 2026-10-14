@@ -6,54 +6,46 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
-## Next card-glint release — first priority
+## Release 0.2.21 checkpoint
 
-- Restore original **Mono Artifact**, **Poly Artifact**, and **Continuous
-  Artifact** type lines for LEA, LEB and 2ED. The review application already has
-  scan-hash-bound partial reviews for all 43 noncreature artifacts in each set.
-  Bring those printing corrections into the Magic pack/reference adapter and
-  verify original/Oracle switching; Oracle mode must retain `Artifact`.
-  Preserve plain `Artifact` on Jade Statue. Do not infer the old labels from
-  current abilities. This correction is not yet in the published library.
+The release branch now includes 129 scan-bound original artifact type reviews
+for LEA, LEB and 2ED, including Mono, Poly and Continuous Artifact and plain
+Artifact on Jade Statue. Oracle wording remains independent. It also includes
+five-set scan templates, cached regional symbol fitting and the `symbols-v3`
+controls for cost spacing, numeral size/offsets and per-color glyph size/offsets.
 
-## Current component corrections
+The five-set color pass admits 25 source/material profiles with independently
+validated frame/paper components. Failed components retain their prior approved
+correction or the original asset; this is not complete calibration of every
+color. Historical mana artwork and printed cost order are documented in
+[historical mana](historical-mana.md). Mana-disc color coverage, especially early
+black discs, still needs extension independently of glyph selection.
 
-### Paused after the 0.2.20 release and review-app recovery (2026-10-14)
+Split/Fuse gradients, matching-guild watermark inheritance, per-half tint,
+plain oval sizing, raised copyright text and small-cap modern artist credits
+are included. Twenty INV/APC/DIS legal lines are scan-bound; synthesized legal
+text elsewhere remains unverified. The pinned MSE Fuse bridge has been checked
+through its identical GitHub source after intermittent CDN failures.
 
-The user has paused special-frame implementation to discuss scoring and reports.
-Prepared shipped in 0.2.20. The following work remains queued; the current
-`codex/magic-stamps-fuse` working tree is unreleased and must not be treated as
-completed validation:
+The separate review application now stores versioned whole-card and regional
+scores, scan normalization, notes and adjustments. Its full-set templates cover
+LEA, LEB, 3ED, 8ED and M21; rejected alignments are available for review rather
+than included in aggregate accuracy. New renderer generations must be rescored.
+Historical sampled reports must not be presented as current full coverage.
+
+### Still queued
 
 - Shared security-stamp coverage on ordinary modern cards and planeswalkers,
   followed by a localized WebGL holographic interior that works on nonfoil cards.
-  Keep the printed surround static and specific to its frame family. Split/Fuse
-  stamps have no colored surround. Measure native oval bounds before adoption;
-  do not confuse the core etch-mask stamp with a printed security stamp.
-- Split/Fuse shared-panel gradients, watermark inheritance for matching guild
-  halves, and half-specific tint (Turn blue, Burn red). Include Depose // Deploy.
-  Preserve independent rules panels and avoid spreading a guild watermark to an
-  unrelated third color. Working changes exist but remain unreleased.
-- Split stamp sizing, raised copyright baseline, and small-cap artist text.
-  Twenty INV/APC/DIS footer transcriptions are scan/hash-bound working fixtures;
-  other synthesized legal lines remain explicitly unverified. There is no exact
-  copyright field in the inspected Scryfall/MTGJSON card schemas.
-- Finish the 2003 Fuse bridge validation: the latest old-frame capture stopped
-  on a 404 for the pinned `magic-new-split-fuse.mse-style/gbridge.png` asset.
-  Resolve the source path before retaining that new bridge code. Modern split
-  and Fuse captures completed, but browser/showcase checks and final visual
-  review of this working tree remain pending. Check, build and package tests
-  passed; this is not a release receipt.
-- Resume Rooms, Battles and the remaining special-frame queue only after the
-  user returns to implementation. Keep the missing Guild Kit expansion symbol
-  and retained text-wrap/registration outliers visible.
-
-The existing offline comparison reports contain regional structural metrics,
-not a unified whole-card score. Their original generic compare command still
-uses shared family alignment; newer component studies store per-scan fits.
-The separate review app persists versioned text-box scores and normalized image
-hashes in SQLite. Consolidating these into one current per-printing report is
-not implemented. Do not describe historical or sampled scores as full coverage.
+  Keep the printed surround static and specific to its frame family; Split/Fuse
+  stamps have no colored surround.
+- Rooms, Battles, physical double-faced layouts and the remaining special-frame
+  queue. Keep missing Guild Kit expansion symbols and text-wrap/registration
+  outliers visible.
+- Continue set-symbol calibration after this release. Keep per-scan normalized
+  references distinct from shared renderer geometry; no scan-specific renderer
+  placement or color adjustments.
+- Revised dual-land textbox treatment and further frame/texture replacements.
 
 The mana follow-up records 684 nonfoil production comparisons in
 [the validation report](fixtures/accuracy/mana-location-verified.json). Twenty-six

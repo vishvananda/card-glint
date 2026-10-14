@@ -7,7 +7,8 @@ keeps the existing modern symbols. This choice does not change the mana cost.
 The review covers 51 ordinary English paper sets/collections, 255 set/color
 groups and 2,017 scan samples. The source candidates are the existing modern
 SVGs, CardConjurer's old mana SVGs, and Full Magic Pack's old mana PNGs. The
-previously tuned original white sun remains a font glyph over a circular disc.
+early ABU white sun uses a resized Conjurer glyph; other early sets retain the
+previously tuned font glyph over a circular disc.
 White changes with Fourth Edition; the scans show modern blue, black and red
 by Mirage, before Fifth Edition. Early black symbols also differ between the
 Alpha/Beta/Unlimited family and Arabian Nights onward. Green is a closer match
@@ -67,3 +68,30 @@ reviewed costs to the printing UUID and scan hash and fail on a changed scan.
 For background on the modern ordering convention, see Wizards'
 [Split (Odds & Ends)](https://magic.wizards.com/en/news/making-magic/split-odds-ends-2006-04-17).
 The historical exceptions above were checked directly against printing scans.
+
+## Glyph size within a fixed disc
+
+A follow-up study fits the bright outer disc independently, rejects weak or
+boundary fits, and compares ink at three threshold levels without normalizing
+its bounds. Shared inner scales are chosen on fitting cards and checked on
+reserved cards. The colored candidates improve with inner scales of 0.94 for
+Conjurer blue/black and MSE black, 0.92 for MSE red, and 0.88 for Conjurer green.
+The MSE blue asset keeps its native proportions pending sufficient evidence.
+These are source-artwork corrections; the outer circles do not shrink.
+
+For white, 14 accepted Alpha/Beta/Unlimited scans provide seven fitting and
+seven reserved samples. The reserved overlap is 0.836 for Conjurer at 0.92 inner
+scale, 0.790 for the resized current font and 0.785 for resized MSE. The original
+font at its existing size scores 0.777. ABU uses Conjurer; Beta has only two
+usable fitting samples and inherits this family choice. Other early white sets
+retain the font because their disc fits were rejected, not because they scored
+better. See [disc measurements](fixtures/accuracy/mana-glyph-sizing.json) and
+[shared size fits](fixtures/accuracy/mana-glyph-sizing-fit.json).
+
+`symbolAdjustment.mana.glyphs` supplies per-color cost controls, for example
+`{ U: { scale: 0.95, dx: 0.25, dy: -0.25 } }`. Scale is relative to the selected
+printing's default glyph; offsets use canonical 488 × 680 card pixels. These
+controls leave the circle, other colors and inline symbols fixed. Whole-cost
+scale still affects all circles uniformly. Numeral controls remain independent.
+Glyph separation is cached during preparation; warm adjustments require no
+source pixel readback. Colored ink is clipped to its own stationary circle.

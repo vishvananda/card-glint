@@ -4,21 +4,21 @@ export const HISTORICAL_MANA_GLYPHS: Readonly<
   Record<string, Readonly<Record<string, ManaGlyphFamily>>>
 > = {
   lea: {
-    W: 'historic-font',
+    W: 'conjurer-old',
     U: 'conjurer-old',
     B: 'conjurer-old',
     R: 'mse-old',
     G: 'modern',
   },
   leb: {
-    W: 'historic-font',
+    W: 'conjurer-old',
     U: 'conjurer-old',
     B: 'conjurer-old',
     R: 'mse-old',
     G: 'conjurer-old',
   },
   '2ed': {
-    W: 'historic-font',
+    W: 'conjurer-old',
     U: 'conjurer-old',
     B: 'conjurer-old',
     R: 'mse-old',
@@ -362,29 +362,40 @@ export const HISTORICAL_MANA_GLYPHS: Readonly<
   },
 };
 export const HISTORICAL_MANA_ASSETS: Readonly<
-  Record<string, { url: string; discColor: string; inkColor: string }>
+  Record<string, { url: string; discColor: string; inkColor: string; glyphScale?: number }>
 > = {
+  'W/conjurer-old': {
+    url: 'https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/old/oldw.svg',
+    discColor: '#f7f4d8',
+    inkColor: '#0d0f0f',
+    glyphScale: 0.92,
+  },
   'U/conjurer-old': {
+    glyphScale: 0.94,
     url: 'https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/old/oldu.svg',
     discColor: '#d2f0f1',
     inkColor: '#000000',
   },
   'B/conjurer-old': {
+    glyphScale: 0.94,
     url: 'https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/old/oldb.svg',
     discColor: '#869085',
     inkColor: '#000000',
   },
   'R/mse-old': {
+    glyphScale: 0.92,
     url: 'https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-mana-old.mse-symbol-font/mana_r.png',
     discColor: '#ffcccc',
     inkColor: '#000000',
   },
   'G/conjurer-old': {
+    glyphScale: 0.88,
     url: 'https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/old/oldg.svg',
     discColor: '#c2e3b0',
     inkColor: '#000000',
   },
   'B/mse-old': {
+    glyphScale: 0.94,
     url: 'https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-mana-old.mse-symbol-font/mana_b.png',
     discColor: '#acacac',
     inkColor: '#000000',

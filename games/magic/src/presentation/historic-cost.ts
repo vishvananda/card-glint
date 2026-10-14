@@ -1,5 +1,6 @@
 import { paintOriginalWhite } from './historical-white.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
+import { colorGlyphTransform } from './symbol-adjustment.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { paintMana } from './canvas-text.js';
 
@@ -76,7 +77,15 @@ function paintCost(
       paintMana(c, symbol, x, y, size, images, false, adjustment);
       return;
     }
-    paintOriginalWhite(c, x, y, size, geometry.whiteSize, images.manaColors?.W);
+    paintOriginalWhite(
+      c,
+      x,
+      y,
+      size,
+      geometry.whiteSize,
+      images.manaColors?.W,
+      colorGlyphTransform(adjustment, symbol),
+    );
   });
 }
 
@@ -93,5 +102,13 @@ export const paintEarlyMana: typeof paintMana = (
 ) => {
   if (symbol !== 'W' || images.originalManaGlyphs?.has('W'))
     return paintMana(c, symbol, x, y, size, images, shadow, adjustment);
-  paintOriginalWhite(c, x, y, size, size * 0.87, images.manaColors?.W);
+  paintOriginalWhite(
+    c,
+    x,
+    y,
+    size,
+    size * 0.87,
+    images.manaColors?.W,
+    colorGlyphTransform(adjustment, symbol),
+  );
 };

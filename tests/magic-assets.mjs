@@ -13,6 +13,16 @@ const frame = new PNG({ width: 64, height: 90 });
 for (let i = 0; i < frame.data.length; i += 4) frame.data.set([50, 100, 140, 255], i);
 const png = PNG.sync.write(frame),
   requests = new Map();
+const mana = new PNG({ width: 64, height: 64 });
+for (let y = 0; y < 64; y++)
+  for (let x = 0; x < 64; x++) {
+    if (Math.hypot(x - 31.5, y - 31.5) > 32) continue;
+    mana.data.set(
+      x > 24 && x < 39 && y > 16 && y < 48 ? [0, 0, 0, 255] : [194, 227, 176, 255],
+      (y * 64 + x) * 4,
+    );
+  }
+const manaPng = PNG.sync.write(mana);
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -29,7 +39,7 @@ try {
       status: 200,
       headers: { 'Access-Control-Allow-Origin': '*' },
       contentType: url === symbolUrl ? 'image/svg+xml' : 'image/png',
-      body: url === symbolUrl ? symbol : png,
+      body: url === symbolUrl ? symbol : /\/(?:manaSymbols|symbols)\//.test(url) ? manaPng : png,
     });
   });
   await page.goto(server.resolvedUrls.local[0]);
@@ -46,6 +56,9 @@ try {
       '/games/magic/src/presentation/historical-symbol-backing.ts'
     );
     const { manaSymbolAsset } = await import('/games/magic/src/presentation/assets.ts');
+    const { historicalManaAsset } = await import(
+      '/games/magic/src/presentation/historical-mana.ts'
+    );
     const { earlyHsbMaterialKey } = await import(
       '/games/magic/src/presentation/early-hsb-material.ts'
     );
@@ -85,10 +98,10 @@ try {
       input = { face, printingId: null, printedImage: null },
       signal = new AbortController().signal,
       host = new AssetStore(32 * 1024 * 1024),
-      green = manaSymbolAsset('G');
+      green = historicalManaAsset(face, 'G').url;
     check(canvasAssetUrls(face).includes(green), 'Retro paragraph-only mana was not requested');
     check(
-      canvasAssetUrls({ ...face, setCode: 'm21' }).includes(green),
+      canvasAssetUrls({ ...face, setCode: 'm21' }).includes(manaSymbolAsset('G')),
       'Modern paragraph-only mana was not requested',
     );
     const pixels = (canvas) =>

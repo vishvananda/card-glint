@@ -2,6 +2,7 @@ import { manaSymbolAsset } from './assets.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { MaterialBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
+import { colorGlyphTransform } from './symbol-adjustment.js';
 
 const glyphs = new MaterialBitmapCache(16 * 1024 * 1024);
 const identities = new WeakMap<ImageBitmap, number>();
@@ -13,7 +14,7 @@ export interface ManaNumeral {
   height: number;
 }
 
-/** Split the pinned two-color numeric SVG raster once during face preparation.
+/** Split pinned two-color mana rasters once during face preparation.
  * Its calibrated source identifies the cache entry; never read pixels in the painter. */
 export async function prepareManaNumerals(
   face: RenderedCardInput,
@@ -21,11 +22,22 @@ export async function prepareManaNumerals(
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose(): void }> {
   const a = face.symbolAdjustment?.mana;
-  if (!a || (!(a.numberDx || a.numberDy) && (a.numberScale ?? 1) === 1))
+  const numbers = !!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1);
+  if (!numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)
     return { images, dispose() {} };
   const numerals = new Map<string, ManaNumeral>();
-  const sources = [...new Set(face.manaSymbols ?? [])].flatMap((symbol) => {
-    if (!/^\d+$/.test(symbol)) return [];
+  const colored = new Map<string, ManaNumeral>();
+  const sources = [
+    ...new Set([...(face.manaSymbols ?? []), ...Object.keys(images.manaGlyphScales ?? {})]),
+  ].flatMap((symbol) => {
+    const delta = colorGlyphTransform(a, symbol);
+    const changed = !!delta && (!!(delta.dx || delta.dy) || (delta.scale ?? 1) !== 1);
+    if (
+      !(/^\d+$/.test(symbol) && numbers) &&
+      !changed &&
+      (images.manaGlyphScales?.[symbol] ?? 1) === 1
+    )
+      return [];
     const source = images.get(manaSymbolAsset(symbol) ?? '');
     if (!source) return [];
     let identity = identities.get(source);
@@ -43,7 +55,11 @@ export async function prepareManaNumerals(
       signal,
     );
     sources.forEach(({ symbol, source }, i) => {
-      numerals.set(symbol, { image: leases[i]!.value, width: source.width, height: source.height });
+      (/^\d+$/.test(symbol) ? numerals : colored).set(symbol, {
+        image: leases[i]!.value,
+        width: source.width,
+        height: source.height,
+      });
     });
     return {
       images: Object.assign(new Map(images), {
@@ -51,6 +67,8 @@ export async function prepareManaNumerals(
         originalManaGlyphs: images.originalManaGlyphs,
         originalWhiteGlyph: images.originalWhiteGlyph,
         manaNumerals: numerals,
+        manaGlyphs: colored,
+        manaGlyphScales: images.manaGlyphScales,
       }),
       dispose: () => leases.forEach((l) => l.release()),
     };
@@ -65,7 +83,7 @@ async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
   canvas.height = source.height;
   try {
     const c = canvas.getContext('2d', { willReadFrequently: true });
-    if (!c) throw Error('Numeral preparation needs Canvas2D.');
+    if (!c) throw Error('Mana glyph preparation needs Canvas2D.');
     c.drawImage(source, 0, 0);
     const pixels = c.getImageData(0, 0, canvas.width, canvas.height),
       p = pixels.data,
@@ -81,9 +99,16 @@ async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
     const ink = [p[darkest]!, p[darkest + 1]!, p[darkest + 2]!],
       difference = paper.map((v, k) => v - ink[k]!),
       length = difference.reduce((n, v) => n + v * v, 0);
-    if (length < 100) throw Error('Numeric mana asset has no separable glyph.');
+    if (length < 100) throw Error('Mana asset has no separable glyph.');
     const background = new ImageData(new Uint8ClampedArray(p), source.width, source.height);
     for (let i = 0; i < p.length; i += 4) {
+      // Outer-disc antialiasing belongs to the stationary background. Browser
+      // unpremultiplication can perturb its RGB by a byte; do not interpret
+      // that rounding as movable dark ink or repaint the original edge.
+      if (p[i + 3]! < 255) {
+        p[i + 3] = 0;
+        continue;
+      }
       for (let k = 0; k < 3; k++) background.data[i + k] = paper[k]!;
       const opacity = Math.max(
         0,

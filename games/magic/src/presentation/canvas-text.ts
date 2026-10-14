@@ -1,4 +1,5 @@
 import { paintOriginalWhite } from './historical-white.js';
+import { colorGlyphTransform } from './symbol-adjustment.js';
 import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
 import { manaSymbolAsset } from './assets.js';
 import { FACE_TEXT, symbolTextParts, type FaceRect } from './face-layout.js';
@@ -61,10 +62,27 @@ export function paintMana(
   adjustment?: ManaSymbolTransform,
 ) {
   if (symbol === 'W' && images.originalWhiteGlyph) {
-    paintOriginalWhite(context, x, y, size, size * 0.87, images.manaColors?.W);
+    paintOriginalWhite(
+      context,
+      x,
+      y,
+      size,
+      size * 0.87,
+      images.manaColors?.W,
+      colorGlyphTransform(adjustment, symbol),
+    );
     return;
   }
-  const numeral = adjustment && /^\d+$/.test(symbol) ? images.manaNumerals?.get(symbol) : undefined;
+  const numeric = /^\d+$/.test(symbol);
+  const glyphDelta = colorGlyphTransform(adjustment, symbol);
+  const defaultScale = images.manaGlyphScales?.[symbol] ?? 1;
+  const numeral = numeric
+    ? adjustment
+      ? images.manaNumerals?.get(symbol)
+      : undefined
+    : defaultScale !== 1 || glyphDelta
+      ? images.manaGlyphs?.get(symbol)
+      : undefined;
   const image = images.get(manaSymbolAsset(symbol) ?? '');
   context.save();
   // A title's shadow must not leak into a shadow-free inline or historical symbol.
@@ -87,8 +105,18 @@ export function paintMana(
   if (numeral)
     context.drawImage(numeral.image, 0, 0, numeral.width, numeral.height, x, y, size, size);
   // Prepared glyphs contain only the numeral; the disc and its shadow stay put.
-  if (/^\d+$/.test(symbol) && adjustment) {
-    const { numberDx = 0, numberDy = 0, numberScale = 1 } = adjustment;
+  if (numeral) {
+    const numberDx = numeric ? (adjustment?.numberDx ?? 0) : (glyphDelta?.dx ?? 0);
+    const numberDy = numeric ? (adjustment?.numberDy ?? 0) : (glyphDelta?.dy ?? 0);
+    const numberScale = numeric
+      ? (adjustment?.numberScale ?? 1)
+      : defaultScale * (glyphDelta?.scale ?? 1);
+    // Keep colored ink inside its stationary disc, including extreme editor deltas.
+    if (!numeric) {
+      context.beginPath();
+      context.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
+      context.clip();
+    }
     if (numberDx || numberDy || numberScale !== 1) {
       context.translate(x + size / 2 + numberDx, y + size / 2 + numberDy);
       context.scale(numberScale, numberScale);

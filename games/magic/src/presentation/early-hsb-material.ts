@@ -20,6 +20,7 @@ export async function prepareEarlyHsb(
   const unchanged = { images, dispose() {} };
   const adjustments = new Map<string, FrameHsb>(Object.entries(calibratedFrameMaterials(face))),
     colors: Record<string, string> = {},
+    manaGlyphScales: Record<string, number> = {},
     originalManaGlyphs = new Set<string>(),
     originalMaterials: {
       url: string;
@@ -42,8 +43,11 @@ export async function prepareEarlyHsb(
       // targets are independently rebound to the actual source bitmap color.
       target =
         calibratedManaTarget(face, key) ??
-        (original && BITMAP_MANA_COLORS[key] ? hexManaColor(BITMAP_MANA_COLORS[key]!) : undefined);
+        (original && BITMAP_MANA_COLORS[key]
+          ? hexManaColor(key === 'W' ? '#efe7cb' : BITMAP_MANA_COLORS[key]!)
+          : undefined);
     if (original) originalManaGlyphs.add(symbol);
+    if (original?.glyphScale !== undefined) manaGlyphScales[symbol] = original.glyphScale;
     if (!target || !source) continue;
     const url = original?.url ?? manaSymbolAsset(symbol);
     if (original) {
@@ -66,6 +70,7 @@ export async function prepareEarlyHsb(
     manaColors: colors,
     originalManaGlyphs,
     originalWhiteGlyph,
+    manaGlyphScales,
   });
   const materials = [...adjustments].flatMap(([url, adjustment]) => {
     const source = images.get(url);

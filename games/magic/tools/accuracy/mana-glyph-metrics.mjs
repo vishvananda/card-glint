@@ -4,7 +4,12 @@ import { quantile } from './metrics.mjs';
 export const GLYPH_SIZE = 40;
 /** Identity diagnostic only: isolate dark glyph ink inside the measured disc,
  * then normalize the ink bounds. This never changes a renderer placement. */
-export function manaGlyphMask(image, circle, removeBoundaryInk = false) {
+export function manaGlyphMask(
+  image,
+  circle,
+  removeBoundaryInk = false,
+  { normalizeBounds = true, thresholdFraction = 0.48 } = {},
+) {
   const n = 64,
     values = [],
     samples = new Float32Array(n * n).fill(NaN);
@@ -34,7 +39,7 @@ export function manaGlyphMask(image, circle, removeBoundaryInk = false) {
     }
   const low = quantile(values, 0.12),
     high = quantile(values, 0.88),
-    threshold = low + (high - low) * 0.48;
+    threshold = low + (high - low) * thresholdFraction;
   if (high - low < 35) return { status: 'weak-ink-contrast' };
   const mask = Uint8Array.from(samples, (v) => (Number.isFinite(v) && v < threshold ? 1 : 0));
   // Frame/background ink is connected to the outer crop. Remove it while
@@ -74,12 +79,12 @@ export function manaGlyphMask(image, circle, removeBoundaryInk = false) {
       }
   if (count < 80 || count > 2500) return { status: 'ink-occupancy' };
   const size = GLYPH_SIZE,
-    scale = (size - 4) / Math.max(r - l + 1, b - t + 1),
+    scale = (size - 4) / (normalizeBounds ? Math.max(r - l + 1, b - t + 1) : n),
     out = new Uint8Array(size * size);
   for (let y = 0; y < size; y++)
     for (let x = 0; x < size; x++) {
-      const sx = Math.round((x - size / 2) / scale + (l + r) / 2),
-        sy = Math.round((y - size / 2) / scale + (t + b) / 2);
+      const sx = Math.round((x - size / 2) / scale + (normalizeBounds ? (l + r) / 2 : n / 2 - 0.5)),
+        sy = Math.round((y - size / 2) / scale + (normalizeBounds ? (t + b) / 2 : n / 2 - 0.5));
       if (sx >= 0 && sy >= 0 && sx < n && sy < n) out[y * size + x] = mask[sy * n + sx];
     }
   return {
@@ -88,6 +93,7 @@ export function manaGlyphMask(image, circle, removeBoundaryInk = false) {
     contrast: high - low,
     occupancy: count / (Math.PI * (n * 0.46) ** 2),
     bounds: [l, t, r, b],
+    discRatio: [(r - l + 1) / n, (b - t + 1) / n],
   };
 }
 function boundary(ink) {
