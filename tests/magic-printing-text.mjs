@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
-import { printingTextIndex } from '../games/magic/tools/accuracy/printing-text.mjs';
+import {
+  normalizePrintingText,
+  printingTextIndex,
+} from '../games/magic/tools/accuracy/printing-text.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 
 const entry = {
@@ -284,3 +287,9 @@ try {
 } finally {
   await wordingServer.close();
 }
+
+assert.equal(
+  normalizePrintingText('{2RRR}: Return this. {10} {W/U} {2/W} {B/P} {T} {CHAOS}'),
+  '{2}{R}{R}{R}: Return this. {10} {W/U} {2/W} {B/P} {T} {CHAOS}',
+);
+assert.equal(normalizePrintingText('{WUBRG} {X}{X} {12GG}'), '{W}{U}{B}{R}{G} {X}{X} {12}{G}{G}');

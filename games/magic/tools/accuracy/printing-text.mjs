@@ -4,10 +4,17 @@ import { readObject } from './cache.mjs';
 
 /** Source artifacts, not printed characters. Retain rawOriginalText for audits. */
 export function normalizePrintingText(text) {
-  return text
-    .replace(/\\r(?=\n|$)/g, '')
-    .replace(/\r\n/g, '\n')
-    .replace(/\bocT\b/g, '{T}');
+  return (
+    text
+      .replace(/\\r(?=\n|$)/g, '')
+      .replace(/\r\n/g, '\n')
+      .replace(/\bocT\b/g, '{T}')
+      // Some Gatherer exports wrap an entire cost in one brace pair. Separate
+      // only unambiguous digits and single mana letters; preserve hybrid symbols.
+      .replace(/\{((?:\d+)?[WUBRGCXYZS]+)\}/g, (token, cost) =>
+        [...cost.matchAll(/\d+|[WUBRGCXYZS]/g)].map(([symbol]) => `{${symbol}}`).join(''),
+      )
+  );
 }
 
 /** Exact printing IDs only; names alone cannot distinguish historical wording. */
