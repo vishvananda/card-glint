@@ -396,3 +396,13 @@ from Oracle types. Hosts should retain field-level provenance: MTGJSON's
 `originalType` is modernized for some early printings, including Revised Force
 of Nature and Unlimited Howling Mine. The accuracy fixtures contain scan-hashed
 corrections for those two examples.
+
+### Experimental symbol adjustments
+
+Ordinary faces accept `symbolAdjustment: { mana, set }`. Each transform supports
+`dx`, `dy` (canonical 488 × 680 pixels, −8 to +8) and `scaleX`, `scaleY`
+(0.75–1.25). The anchor is the group's right edge and vertical center. Mana
+scaling includes the complete cost and its spacing; set-symbol width and height
+can vary independently. Title/type fitting respects adjusted symbol bounds.
+Zero/absent transforms preserve the default raster. Unsupported special layouts
+are rejected. These opt-in controls do not alter any calibrated defaults.

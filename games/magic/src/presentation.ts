@@ -30,3 +30,5 @@ export * from './presentation/frame-plates.js';
 export * from './presentation/color-calibration-coverage.js';
 
 export { sagaRuleLayout } from './presentation/saga-rules.js';
+
+export * from './presentation/symbol-adjustment.js';

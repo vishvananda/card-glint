@@ -1,3 +1,4 @@
+import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { retroManaPlacement } from './retro-mana.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -9,7 +10,7 @@ import { retroSymbolPalette } from './retro-symbol-material.js';
 import { historicalBackingKey } from './historical-symbol-backing.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
-import type { RenderedCardInput } from './face-layout.js';
+import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import {
   retroRects,
@@ -109,6 +110,22 @@ export function paintRetroFace(
       : details
         ? details.manaRight - costW + gap
         : x + w - costW;
+  const early = ['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
+  const manaBounds: FaceRect =
+    revised || early
+      ? [
+          (revised ? 435 : 432) - Math.max(0, cost.length - 1) * 27 - (revised ? 23.4 : 23.9) / 2,
+          (revised ? 44.5 : 46) - (revised ? 23.4 : 23.9) / 2,
+          Math.max(0, cost.length - 1) * 27 + (revised ? 23.4 : 23.9),
+          revised ? 23.4 : 23.9,
+        ]
+      : [
+          costX,
+          mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
+          Math.max(0, costW - gap),
+          size,
+        ];
+  const adjustedMana = adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana);
   c.shadowColor = '#000b';
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
   c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
@@ -116,7 +133,11 @@ export function paintRetroFace(
   const titleY = y + h / 2 + (details?.titleYOffset ?? 0),
     titleWidth = Math.max(
       1,
-      cost.length ? costX - titleX - 5 : details?.titleX == null ? w - 5 : x + w - titleX - 5,
+      cost.length
+        ? costX + adjustedMana[0] - manaBounds[0] - titleX - 5
+        : details?.titleX == null
+          ? w - 5
+          : x + w - titleX - 5,
     );
   if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
@@ -128,21 +149,23 @@ export function paintRetroFace(
     (face.symbolStyle === undefined && face.wordingMode === 'original');
   const originalSun =
     originalSymbols && ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
-  if (revised) paintRevisedCost(c, cost, images, modernSymbols);
-  else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
-    paintEarlyCost(c, cost, images, modernSymbols);
-  else
-    cost.forEach((s, i) =>
-      (originalSun ? paintEarlyMana : paintMana)(
-        c,
-        s,
-        costX + i * (size + gap),
-        mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
-        size,
-        images,
-        false,
-      ),
-    );
+  paintAdjustedSymbols(c, manaBounds, face.symbolAdjustment?.mana, () => {
+    if (revised) paintRevisedCost(c, cost, images, modernSymbols);
+    else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
+      paintEarlyCost(c, cost, images, modernSymbols);
+    else
+      cost.forEach((s, i) =>
+        (originalSun ? paintEarlyMana : paintMana)(
+          c,
+          s,
+          costX + i * (size + gap),
+          mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
+          size,
+          images,
+          false,
+        ),
+      );
+  });
   const [tx, ty, tw, th] = retroPx(rect.type),
     symbolUrl = retroSetSymbol(face) ?? '',
     icon = images.get(symbolUrl),
@@ -157,7 +180,8 @@ export function paintRetroFace(
     setWidth,
     setHeight,
   ] as const;
-  const symbolBounds = calibratedStyledSymbolBounds(face, symbolUrl, baseBounds, 'retro');
+  const originalBounds = calibratedStyledSymbolBounds(face, symbolUrl, baseBounds, 'retro');
+  const symbolBounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
   c.fillText(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
@@ -174,67 +198,69 @@ export function paintRetroFace(
         )
       : tw,
   );
-  if (icon) {
-    const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);
-    const width = geometry?.width ?? icon.width * scale,
-      height = geometry?.height ?? icon.height * scale,
-      right = geometry?.right ?? details?.setRight ?? tx + tw,
-      centerY = geometry?.centerY ?? details?.setCenterY ?? ty + th / 2,
-      crop = geometry?.crop ?? ([0, 0, 1, 1] as const);
-    const styled = isStyledSetSymbol(symbolUrl);
-    const backing = !styled && !face.setSymbol && images.get(historicalBackingKey(symbolUrl));
-    if (backing) {
-      c.save();
-      c.shadowColor = 'transparent';
-      // ARN's printed blade is gray. Keep this tone local to that printing;
-      // the shared white stencil also supplies Chronicles.
-      if (face.setCode?.toLowerCase() === 'arn') c.filter = 'brightness(0.7)';
-      c.drawImage(
-        backing,
-        crop[0] * backing.width,
-        crop[1] * backing.height,
-        crop[2] * backing.width,
-        crop[3] * backing.height,
-        right - width,
-        centerY - height / 2,
-        width,
-        height,
-      );
-      c.restore();
+  paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
+    if (icon) {
+      const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);
+      const width = geometry?.width ?? icon.width * scale,
+        height = geometry?.height ?? icon.height * scale,
+        right = geometry?.right ?? details?.setRight ?? tx + tw,
+        centerY = geometry?.centerY ?? details?.setCenterY ?? ty + th / 2,
+        crop = geometry?.crop ?? ([0, 0, 1, 1] as const);
+      const styled = isStyledSetSymbol(symbolUrl);
+      const backing = !styled && !face.setSymbol && images.get(historicalBackingKey(symbolUrl));
+      if (backing) {
+        c.save();
+        c.shadowColor = 'transparent';
+        // ARN's printed blade is gray. Keep this tone local to that printing;
+        // the shared white stencil also supplies Chronicles.
+        if (face.setCode?.toLowerCase() === 'arn') c.filter = 'brightness(0.7)';
+        c.drawImage(
+          backing,
+          crop[0] * backing.width,
+          crop[1] * backing.height,
+          crop[2] * backing.width,
+          crop[3] * backing.height,
+          right - width,
+          centerY - height / 2,
+          width,
+          height,
+        );
+        c.restore();
+      }
+      if (styled || face.setSymbol) {
+        c.save();
+        c.shadowColor = 'transparent';
+        // Complete styled assets already contain opaque holes, rims and gradients.
+        // Keyrune viewport crops and recoloring must never touch these vectors.
+        c.drawImage(icon, ...originalBounds);
+        c.restore();
+      } else if (palette || details || usesMonochromeSetSymbol(face.setCode))
+        paintOutlinedRetroSet(
+          c,
+          icon,
+          right - width,
+          centerY - height / 2,
+          width,
+          height,
+          geometry?.outline ??
+            (palette ? 2 : (details?.setOutline ?? historicalSetOutline(face.setCode))),
+          crop,
+          palette,
+          geometry?.sampling,
+        );
+      else
+        paintSetSymbol(
+          c,
+          icon,
+          face.setCode,
+          face.rarity,
+          tx + tw - icon.width * scale,
+          ty + th / 2 - (icon.height * scale) / 2,
+          icon.width * scale,
+          icon.height * scale,
+        );
     }
-    if (styled || face.setSymbol) {
-      c.save();
-      c.shadowColor = 'transparent';
-      // Complete styled assets already contain opaque holes, rims and gradients.
-      // Keyrune viewport crops and recoloring must never touch these vectors.
-      c.drawImage(icon, ...symbolBounds);
-      c.restore();
-    } else if (palette || details || usesMonochromeSetSymbol(face.setCode))
-      paintOutlinedRetroSet(
-        c,
-        icon,
-        right - width,
-        centerY - height / 2,
-        width,
-        height,
-        geometry?.outline ??
-          (palette ? 2 : (details?.setOutline ?? historicalSetOutline(face.setCode))),
-        crop,
-        palette,
-        geometry?.sampling,
-      );
-    else
-      paintSetSymbol(
-        c,
-        icon,
-        face.setCode,
-        face.rarity,
-        tx + tw - icon.width * scale,
-        ty + th / 2 - (icon.height * scale) / 2,
-        icon.width * scale,
-        icon.height * scale,
-      );
-  }
+  });
   c.shadowColor = 'transparent';
   const [rx, ry, rw, rh] = retroPx(rect.rules);
   c.fillStyle = '#17140f';

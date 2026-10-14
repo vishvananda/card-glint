@@ -1,3 +1,4 @@
+import type { SymbolAdjustment } from './symbol-adjustment.js';
 import type { CardProfileInput } from './profile.js';
 
 export type CardBorderColor = 'black' | 'white' | 'silver';
@@ -29,6 +30,8 @@ export interface RenderedCardInput extends CardProfileInput {
   /** Normalized source-image crop, for shared split-card illustration sheets. */
   illustrationCrop?: FaceRect;
   manaSymbols?: string[];
+  /** Experimental ordinary-face symbol placement; omitted preserves printing defaults. */
+  symbolAdjustment?: SymbolAdjustment;
   rulesText?: string;
   /** Ordinary-face printing. When present this replaces rulesText for layout and painting. */
   rulesParagraphs?: readonly RulesParagraph[];

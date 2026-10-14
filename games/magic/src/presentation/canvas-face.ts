@@ -1,3 +1,8 @@
+import {
+  adjustedSymbolBounds,
+  paintAdjustedSymbols,
+  validateSymbolAdjustment,
+} from './symbol-adjustment.js';
 import { nativeSplitEra, splitFuseParagraphs } from './split-frame.js';
 import { isAdventure } from './adventure-frame.js';
 import { paintAdventureFace } from './adventure-paint.js';
@@ -169,6 +174,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.frameAssetFamily ?? null,
         face.name,
         face.manaSymbols ?? [],
+        face.symbolAdjustment ?? null,
         face.typeLine ?? '',
         face.rulesText ?? '',
         face.rulesParagraphs ?? null,
@@ -219,6 +225,7 @@ export async function composeCardTexture(
     underArt?: HTMLCanvasElement;
   },
 ): Promise<HTMLCanvasElement> {
+  validateSymbolAdjustment(input.face);
   if (input.custom) {
     await hooks?.beforePaint?.();
     signal.throwIfAborted();
@@ -591,6 +598,15 @@ export function paintAssembledFace(
   const manaWidth = mana.length * manaSize + Math.max(0, mana.length - 1) * FACE_TEXT.manaGap;
   const plateEnd = tx + tw - FACE_TEXT.plateRight,
     manaX = plateEnd - manaWidth;
+  const manaBounds: FaceRect = [
+    manaX,
+    ty + th / 2 - manaSize / 2 + FACE_TEXT.manaLift / 2,
+    manaWidth,
+    manaSize,
+  ];
+  const adjustedMana = mana.length
+    ? adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana)
+    : manaBounds;
   const titleSize =
     (kind === 'normal' && !panel ? FACE_TEXT.normalTitleFont : FACE_TEXT.titleFont) * textScale;
   context.font = `bold ${titleSize}px "CardRenderer MTG Beleren", Georgia`;
@@ -600,22 +616,24 @@ export function paintAssembledFace(
     face.name,
     textX,
     ty + th / 2 + (kind === 'normal' ? 1 : 0),
-    manaX - textX - (mana.length ? FACE_TEXT.titleGap : 0),
+    adjustedMana[0] - textX - (mana.length ? FACE_TEXT.titleGap : 0),
     titleSize,
     true,
   );
   context.letterSpacing = '0px';
-  mana.forEach((symbol, index) =>
-    paintMana(
-      context,
-      symbol,
-      manaX + index * (manaSize + FACE_TEXT.manaGap),
-      ty + th / 2 - manaSize / 2 + FACE_TEXT.manaLift / 2,
-      manaSize,
-      images,
-      true,
-    ),
-  );
+  paintAdjustedSymbols(context, manaBounds, face.symbolAdjustment?.mana, () => {
+    mana.forEach((symbol, index) =>
+      paintMana(
+        context,
+        symbol,
+        manaX + index * (manaSize + FACE_TEXT.manaGap),
+        ty + th / 2 - manaSize / 2 + FACE_TEXT.manaLift / 2,
+        manaSize,
+        images,
+        true,
+      ),
+    );
+  });
   const setUrl = faceSetSymbol(face),
     setIcon = images.get(setUrl ?? ''),
     styledSymbol = isStyledSetSymbol(setUrl);
@@ -652,10 +670,11 @@ export function paintAssembledFace(
     (setIcon?.width ?? 0) * setCrop[2] * setScale * symbolGrowth,
     (setIcon?.height ?? 0) * setCrop[3] * setScale * symbolGrowth,
   ] as const;
-  const symbolBounds =
+  const originalSymbolBounds =
     kind === 'normal' && !panel
       ? calibratedStyledSymbolBounds(face, setUrl, baseSymbolBounds, 'component')
       : baseSymbolBounds;
+  const symbolBounds = adjustedSymbolBounds(originalSymbolBounds, face.symbolAdjustment?.set);
   // Preserve existing type fitting unless an adjusted symbol needs more room.
   const typeWidth = Math.max(
     1,
@@ -679,33 +698,43 @@ export function paintAssembledFace(
     false,
     kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
   );
-  if (setIcon) {
-    if (styledSymbol || face.setSymbol) {
-      context.save();
-      context.shadowColor = 'transparent';
-      context.drawImage(setIcon, ...symbolBounds);
-      context.restore();
-    } else if (coreShield)
-      paintCoreSetSymbol(
-        context,
-        setIcon,
-        face.rarity,
-        ...symbolBounds,
-        setCrop,
-        corePlacement ? 1.5 : 1,
-      );
-    else if (shapedCode)
-      paintShapedSetSymbol(
-        context,
-        setIcon,
-        shapedCode,
-        face.rarity,
-        ...symbolBounds,
-        setCrop,
-        kind === 'normal',
-      );
-    else paintSetSymbol(context, setIcon, face.setCode, face.rarity, ...symbolBounds, setCrop);
-  }
+  paintAdjustedSymbols(context, originalSymbolBounds, face.symbolAdjustment?.set, () => {
+    if (setIcon) {
+      if (styledSymbol || face.setSymbol) {
+        context.save();
+        context.shadowColor = 'transparent';
+        context.drawImage(setIcon, ...originalSymbolBounds);
+        context.restore();
+      } else if (coreShield)
+        paintCoreSetSymbol(
+          context,
+          setIcon,
+          face.rarity,
+          ...originalSymbolBounds,
+          setCrop,
+          corePlacement ? 1.5 : 1,
+        );
+      else if (shapedCode)
+        paintShapedSetSymbol(
+          context,
+          setIcon,
+          shapedCode,
+          face.rarity,
+          ...originalSymbolBounds,
+          setCrop,
+          kind === 'normal',
+        );
+      else
+        paintSetSymbol(
+          context,
+          setIcon,
+          face.setCode,
+          face.rarity,
+          ...originalSymbolBounds,
+          setCrop,
+        );
+    }
+  });
   if (hasExtraRules(face)) paintExtraRules(context, face, images);
   else if (kind !== 'normal') paintSpecialRules(context, face, images);
   else {

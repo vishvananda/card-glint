@@ -1,3 +1,4 @@
+import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
 import { framePlate } from './frame-plates.js';
@@ -113,29 +114,38 @@ export function paintFramePlateFace(
     { size, gap } = plate.mana;
   const costRight = plate.mana.right * W;
   const costWidth = cost.length * size + Math.max(0, cost.length - 1) * gap;
+  const manaBounds: FaceRect = [
+    costRight - costWidth,
+    plate.mana.center * H - size / 2,
+    costWidth,
+    size,
+  ];
+  const adjustedMana = adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana);
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
   paintFittedText(
     c,
     face.name,
     tx,
     ty + th / 2,
-    cost.length ? costRight - costWidth - tx - 8 : tw,
+    cost.length ? adjustedMana[0] - tx - 8 : tw,
     plate.titleSize,
     true,
     1,
     family,
   );
-  cost.forEach((symbol, i) =>
-    paintMana(
-      c,
-      symbol,
-      costRight - costWidth + i * (size + gap),
-      plate.mana.center * H - size / 2,
-      size,
-      images,
-      true,
-    ),
-  );
+  paintAdjustedSymbols(c, manaBounds, face.symbolAdjustment?.mana, () => {
+    cost.forEach((symbol, i) =>
+      paintMana(
+        c,
+        symbol,
+        costRight - costWidth + i * (size + gap),
+        plate.mana.center * H - size / 2,
+        size,
+        images,
+        true,
+      ),
+    );
+  });
   const url = faceSetSymbol(face),
     icon = images.get(url ?? ''),
     crop = setSymbolCrop(face);
@@ -147,12 +157,13 @@ export function paintFramePlateFace(
     : 0;
   const iw = icon ? icon.width * crop[2] * iconScale : 0,
     ih = icon ? icon.height * crop[3] * iconScale : 0;
-  const bounds = styledSymbolBounds(face, url, [
+  const originalBounds = styledSymbolBounds(face, url, [
     plate.symbol.right * W - iw,
     plate.symbol.center * H - ih / 2,
     iw,
     ih,
   ]);
+  const bounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   const [x, y, w, h] = px(rects.type);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
@@ -166,13 +177,17 @@ export function paintFramePlateFace(
     1,
     family,
   );
-  if (icon) {
-    const shaped = shapedSetCode(face);
-    if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
-    else if (hasCoreSetShield(face)) paintCoreSetSymbol(c, icon, face.rarity, ...bounds, crop, 1.5);
-    else if (shaped) paintShapedSetSymbol(c, icon, shaped, face.rarity, ...bounds, crop, false);
-    else paintSetSymbol(c, icon, face.setCode, face.rarity, ...bounds, crop);
-  }
+  paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
+    if (icon) {
+      const shaped = shapedSetCode(face);
+      if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...originalBounds);
+      else if (hasCoreSetShield(face))
+        paintCoreSetSymbol(c, icon, face.rarity, ...originalBounds, crop, 1.5);
+      else if (shaped)
+        paintShapedSetSymbol(c, icon, shaped, face.rarity, ...originalBounds, crop, false);
+      else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
+    }
+  });
   paintRulesLayout(c, ordinaryTextLayout(c, face), images);
   if (face.power != null && face.toughness != null) {
     c.drawImage(required(plate.pt), ...px(rects.stats));
