@@ -95,3 +95,32 @@ controls leave the circle, other colors and inline symbols fixed. Whole-cost
 scale still affects all circles uniformly. Numeral controls remain independent.
 Glyph separation is cached during preparation; warm adjustments require no
 source pixel readback. Colored ink is clipped to its own stationary circle.
+
+## Beta disc colors and red ink
+
+Printing color calibration now supplies explicit Beta targets for all five mana
+colors and the neutral numeral disc. The targets are independent of the selected
+glyph asset. They are fitted from eroded disc interiors, excluding dark ink,
+with even UUIDs used for fitting and odd UUIDs reserved for validation. Frame
+normalization stays fixed. Local circle measurements locate samples only; they
+do not adjust renderer geometry or scan registration.
+
+Beta's MSE red flame also needs more ink than its source bitmap supplies. A
+0.4 px circular expansion, stated for a nominal 24 px disc, improves the
+normalized shape comparison on reserved red scans from 0.806 to 0.902. It was
+selected on the separate fitting scans, against both other source families and
+smaller/larger expansions. This is stroke weight, independent of glyph scale.
+It applies only to the measured Beta/MSE-red combination. Other historical
+symbols and modern-symbol mode retain their existing artwork.
+
+Expansion occurs once during cached bitmap preparation. It preserves disc alpha
+and partial-alpha edge pixels; palette rebinding then applies the printing color.
+The material cache key includes both the palette and expansion amount. See
+[Beta material measurements](fixtures/accuracy/beta-mana-materials.json) for
+sample counts, source and scan identities, color errors, and rejected samples.
+These color and shape diagnostics are separate from the mana-region placement
+score; neither should be interpreted as a percentage of correct card pixels.
+The complete candidate raster check improves reserved disc-color error for
+blue, black, red, green and neutral discs. White has no reserved-sample gain
+(1.88 to 1.91) after the placement fit and remains a review flag. Red's actual
+rendered shape score improves from 0.794 to 0.909 on its 21 reserved scans.

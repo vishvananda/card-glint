@@ -141,7 +141,24 @@
         }
       },
       "candidateRgb": [228, 228, 209],
-      "status": "candidate-pending-raster-validation"
+      "status": "raster-validation-no-held-gain",
+      "rasterValidation": {
+        "color": "W",
+        "available": 45,
+        "rejected": 8,
+        "all": {
+          "count": 37,
+          "before": 2.0623405183220744,
+          "after": 1.6711138007955775,
+          "improved": 21
+        },
+        "reserved": {
+          "count": 17,
+          "before": 1.8807868749335508,
+          "after": 1.9078766000795178,
+          "improved": 8
+        }
+      }
     },
     {
       "color": "U",
@@ -316,7 +333,24 @@
         }
       },
       "candidateRgb": [163, 201, 213],
-      "status": "candidate-pending-raster-validation"
+      "status": "raster-validation-improved",
+      "rasterValidation": {
+        "color": "U",
+        "available": 46,
+        "rejected": 0,
+        "all": {
+          "count": 46,
+          "before": 2.0607807418131863,
+          "after": 0.6562137367867331,
+          "improved": 45
+        },
+        "reserved": {
+          "count": 23,
+          "before": 2.5950595702547963,
+          "after": 0.670232771777623,
+          "improved": 22
+        }
+      }
     },
     {
       "color": "B",
@@ -509,7 +543,24 @@
         }
       },
       "candidateRgb": [113, 122, 121],
-      "status": "candidate-pending-raster-validation"
+      "status": "raster-validation-improved",
+      "rasterValidation": {
+        "color": "B",
+        "available": 46,
+        "rejected": 1,
+        "all": {
+          "count": 45,
+          "before": 26.00321586986337,
+          "after": 3.121532633984913,
+          "improved": 45
+        },
+        "reserved": {
+          "count": 26,
+          "before": 26.887956019376,
+          "after": 3.511781723979481,
+          "improved": 26
+        }
+      }
     },
     {
       "color": "R",
@@ -672,7 +723,24 @@
         }
       },
       "candidateRgb": [215, 170, 152],
-      "status": "candidate-pending-raster-validation"
+      "status": "raster-validation-improved",
+      "rasterValidation": {
+        "color": "R",
+        "available": 45,
+        "rejected": 2,
+        "all": {
+          "count": 43,
+          "before": 5.048104346416765,
+          "after": 1.3636827252351704,
+          "improved": 42
+        },
+        "reserved": {
+          "count": 21,
+          "before": 5.105555995360091,
+          "after": 1.4746781679778975,
+          "improved": 20
+        }
+      }
     },
     {
       "color": "G",
@@ -823,7 +891,24 @@
         }
       },
       "candidateRgb": [175, 199, 167],
-      "status": "candidate-pending-raster-validation"
+      "status": "raster-validation-improved",
+      "rasterValidation": {
+        "color": "G",
+        "available": 46,
+        "rejected": 0,
+        "all": {
+          "count": 46,
+          "before": 3.4464456030065636,
+          "after": 1.044814134313866,
+          "improved": 46
+        },
+        "reserved": {
+          "count": 19,
+          "before": 3.6097434220901814,
+          "after": 1.1138174109275256,
+          "improved": 19
+        }
+      }
     },
     {
       "color": "N",
@@ -950,7 +1035,24 @@
         }
       },
       "candidateRgb": [156, 162, 162],
-      "status": "candidate-pending-raster-validation"
+      "status": "raster-validation-improved",
+      "rasterValidation": {
+        "color": "N",
+        "available": 46,
+        "rejected": 8,
+        "all": {
+          "count": 38,
+          "before": 11.963749541880127,
+          "after": 1.4371972124547419,
+          "improved": 38
+        },
+        "reserved": {
+          "count": 15,
+          "before": 12.183358448404613,
+          "after": 1.149810505281766,
+          "improved": 15
+        }
+      }
     }
   ],
   "rows": [
@@ -8497,6 +8599,127 @@
         ],
         "calibration": 0.6179776656774687,
         "validation": 0.6084685333927776
+      }
+    ]
+  },
+  "actualRasterValidation": {
+    "sourceCommit": "625739f278edbfaf0b80ec3b7abb7396bd4482cd",
+    "resultHash": "00b171dd88dced3d41a3e2c60ef210b1503f6accdbb75db2ceee0589cf411b4e",
+    "method": "Actual candidate rasters, same frozen scan transforms. Disc measurement does not move or resize rendered glyphs. Reject weak disc fits. Reserved means odd UUID material holdout.",
+    "redShape": {
+      "calibration": {
+        "count": 22,
+        "before": 0.7986678416852622,
+        "after": 0.9117748475233678
+      },
+      "validation": {
+        "count": 21,
+        "before": 0.7938546123526603,
+        "after": 0.9093899225174356
+      }
+    },
+    "groups": [
+      {
+        "color": "W",
+        "available": 45,
+        "rejected": 8,
+        "all": {
+          "count": 37,
+          "before": 2.0623405183220744,
+          "after": 1.6711138007955775,
+          "improved": 21
+        },
+        "reserved": {
+          "count": 17,
+          "before": 1.8807868749335508,
+          "after": 1.9078766000795178,
+          "improved": 8
+        }
+      },
+      {
+        "color": "U",
+        "available": 46,
+        "rejected": 0,
+        "all": {
+          "count": 46,
+          "before": 2.0607807418131863,
+          "after": 0.6562137367867331,
+          "improved": 45
+        },
+        "reserved": {
+          "count": 23,
+          "before": 2.5950595702547963,
+          "after": 0.670232771777623,
+          "improved": 22
+        }
+      },
+      {
+        "color": "B",
+        "available": 46,
+        "rejected": 1,
+        "all": {
+          "count": 45,
+          "before": 26.00321586986337,
+          "after": 3.121532633984913,
+          "improved": 45
+        },
+        "reserved": {
+          "count": 26,
+          "before": 26.887956019376,
+          "after": 3.511781723979481,
+          "improved": 26
+        }
+      },
+      {
+        "color": "R",
+        "available": 45,
+        "rejected": 2,
+        "all": {
+          "count": 43,
+          "before": 5.048104346416765,
+          "after": 1.3636827252351704,
+          "improved": 42
+        },
+        "reserved": {
+          "count": 21,
+          "before": 5.105555995360091,
+          "after": 1.4746781679778975,
+          "improved": 20
+        }
+      },
+      {
+        "color": "G",
+        "available": 46,
+        "rejected": 0,
+        "all": {
+          "count": 46,
+          "before": 3.4464456030065636,
+          "after": 1.044814134313866,
+          "improved": 46
+        },
+        "reserved": {
+          "count": 19,
+          "before": 3.6097434220901814,
+          "after": 1.1138174109275256,
+          "improved": 19
+        }
+      },
+      {
+        "color": "N",
+        "available": 46,
+        "rejected": 8,
+        "all": {
+          "count": 38,
+          "before": 11.963749541880127,
+          "after": 1.4371972124547419,
+          "improved": 38
+        },
+        "reserved": {
+          "count": 15,
+          "before": 12.183358448404613,
+          "after": 1.149810505281766,
+          "improved": 15
+        }
       }
     ]
   }
