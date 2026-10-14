@@ -46,8 +46,8 @@ percentages. Size/spacing trials are shared by set, never saved per card.
 
 ```sh
 MAGIC_CAPTURE_ROOT=/path/to/v0216-checkout node games/magic/tools/accuracy/split-study.mjs --baseline
-node games/magic/tools/accuracy/split-study.mjs split-native-final
-node games/magic/tools/accuracy/split-text-search.mjs split-native-final
+node games/magic/tools/accuracy/split-study.mjs split-native-verified
+node games/magic/tools/accuracy/split-text-search.mjs split-native-verified
 ```
 
 The tools reuse the ignored content-addressed source cache and refuse to
