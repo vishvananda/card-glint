@@ -18,6 +18,28 @@ try {
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
     '/games/magic/src/presentation/color-calibration-coverage.ts',
   );
+  const mana = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/showcased-mana-colors.json'),
+  );
+  const { MANA_PRINTING_TARGETS } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/mana-printing-profiles.ts',
+  );
+  let manaTargets = 0;
+  for (const set of mana.sets) {
+    assert.equal(set.rows.length, 72);
+    assert.equal(new Set(set.rows.map((r) => r.id)).size, 72);
+    assert.ok(set.rows.every((r) => /^[a-f0-9]{64}$/.test(r.referenceHash)));
+    for (const group of set.groups) {
+      const key = `${set.set}-${['3ed', '8ed'].includes(set.set) ? 'white' : 'black'}-${group.color}`;
+      assert.equal(Object.hasOwn(MANA_PRINTING_TARGETS, key), group.adopt);
+      if (!group.adopt) continue;
+      manaTargets++;
+      assert.ok(group.training >= 3 && group.held >= 3);
+      assert.ok(group.after < group.before - 0.25 && group.worstRegression <= 3);
+      assert.deepEqual(MANA_PRINTING_TARGETS[key], group.target);
+    }
+  }
+  assert.equal(manaTargets, 14);
   const admitted = adoption.results.filter((r) => r.status !== 'review-only');
   assert.deepEqual(Object.keys(PRINTING_COLOR_PROFILES).sort(), admitted.map((r) => r.key).sort());
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21'])
