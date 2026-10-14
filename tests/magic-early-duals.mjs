@@ -50,6 +50,52 @@ try {
     defaults,
     'Oracle words with original symbols retain printing calibration',
   );
+  const manaStudy = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/showcased-mana-placement.json'),
+  );
+  const eighth = {
+    name: 'Probe',
+    setCode: '8ed',
+    frameStyle: 'modern',
+    frameAssetFamily: 'eighth',
+    borderColor: 'white',
+  };
+  for (const study of manaStudy.sets) {
+    const face =
+      study.set === '8ed' ? eighth : { name: 'Probe', setCode: study.set, wordingMode: 'original' };
+    const actual = printingManaAdjustment(face);
+    assert.equal(!!actual, study.adopt, 'Rejected study candidates must not become defaults');
+    assert.equal(study.rows.length, 72);
+    assert.equal(new Set(study.rows.map((r) => r.id)).size, 72);
+    assert.equal(study.validation.count, 48);
+    assert.ok(study.rows.every((r) => /^[a-f0-9]{64}$/.test(r.referenceHash)));
+    if (study.adopt) {
+      assert.deepEqual(study.flags, []);
+      assert.ok(
+        study.validation.after - study.validation.before >= manaStudy.policy.manaMeanMinimumGain,
+      );
+      assert.ok(
+        study.validation.worstRegression <= manaStudy.policy.worstManaCardMaximumRegression,
+      );
+      const expected = study.fit.adjustment.mana;
+      for (const [key, value] of Object.entries(actual)) assert.deepEqual(value, expected[key]);
+    }
+  }
+  const eighthDelta = { dy: 0.5, scaleY: 0.9, glyphs: { U: { dy: 0.25 } } };
+  const eighthAdjusted = printingManaAdjustment({
+    ...eighth,
+    symbolAdjustment: { mana: eighthDelta },
+  });
+  assert.equal(eighthAdjusted.dy, -1.5);
+  assert.equal(eighthAdjusted.scaleY, 1.02 * 0.9);
+  assert.equal(eighthAdjusted.glyphs.U.dy, -1.25);
+  for (const extra of [
+    { borderColor: 'black' },
+    { frameAssetFamily: 'm15-accurate' },
+    { legendary: true },
+    { layout: 'split' },
+  ])
+    assert.equal(printingManaAdjustment({ ...eighth, ...extra }), undefined);
   const { retroDualFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-dual-frame.ts',
   );

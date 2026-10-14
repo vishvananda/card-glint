@@ -9,7 +9,6 @@ export const MANA_PRINTING_TARGETS: Readonly<Record<string, Rgb>> = {
   'lea-black-R': [199 / 255, 152 / 255, 136 / 255],
   'lea-black-G': [148 / 255, 175 / 255, 134 / 255],
   'lea-black-N': [122 / 255, 136 / 255, 139 / 255],
-  '3ed-white-W': [211 / 255, 209 / 255, 191 / 255],
   '3ed-white-G': [186 / 255, 206 / 255, 176 / 255],
   '3ed-white-N': [194 / 255, 190 / 255, 184 / 255],
   '8ed-white-U': [176 / 255, 210 / 255, 227 / 255],

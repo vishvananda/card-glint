@@ -14,4 +14,19 @@ export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform
       G: { scale: 1.12, dx: 0, dy: -1 },
     },
   },
+  '8ed': {
+    dy: -2,
+    scaleX: 1.02,
+    scaleY: 1.02,
+    numberScale: 0.97,
+    numberDx: -0.5,
+    numberDy: -1.25,
+    glyphs: {
+      W: { scale: 0.98, dx: -0.5, dy: -2 },
+      U: { scale: 0.94, dx: -0.5, dy: -1.5 },
+      B: { scale: 0.97, dx: -0.25, dy: -2 },
+      R: { scale: 0.95, dx: 0, dy: -1.5 },
+      G: { scale: 1.04, dx: -0.25, dy: -3 },
+    },
+  },
 };

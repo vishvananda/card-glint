@@ -37,9 +37,12 @@ try {
       assert.ok(group.training >= 3 && group.held >= 3);
       assert.ok(group.after < group.before - 0.25 && group.worstRegression <= 3);
       assert.deepEqual(MANA_PRINTING_TARGETS[key], group.target);
+      assert.equal(group.rasterValidation.adopt, true);
+      assert.ok(group.rasterValidation.after < group.rasterValidation.before - 0.25);
+      assert.ok(group.rasterValidation.worstRegression <= 3);
     }
   }
-  assert.equal(manaTargets, 14);
+  assert.equal(manaTargets, 13);
   const admitted = adoption.results.filter((r) => r.status !== 'review-only');
   assert.deepEqual(Object.keys(PRINTING_COLOR_PROFILES).sort(), admitted.map((r) => r.key).sort());
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21'])

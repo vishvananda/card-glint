@@ -13,6 +13,7 @@ export function printingManaAdjustment(face: RenderedCardInput): ManaSymbolTrans
   if (
     !base ||
     (face.layout ?? 'normal') !== 'normal' ||
+    (face.legendary ?? /\bLegendary\b/.test(face.typeLine ?? '')) ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||
     retroBorder(face) !== (['3ed', '8ed'].includes(set) ? 'white' : 'black') ||
     (early &&
