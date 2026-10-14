@@ -323,6 +323,19 @@ try {
     bitmap.width = 64;
     bitmap.height = 64;
     const ctx = bitmap.getContext('2d');
+    // Mana preparation separates ink from its disc; a flat frame placeholder
+    // cannot exercise that contract. Keep this synthetic asset repository-owned.
+    const manaBitmap = document.createElement('canvas');
+    manaBitmap.width = manaBitmap.height = 64;
+    const manaInk = manaBitmap.getContext('2d');
+    manaInk.fillStyle = '#e5ddd0';
+    manaInk.beginPath();
+    manaInk.arc(32, 32, 32, 0, Math.PI * 2);
+    manaInk.fill();
+    manaInk.fillStyle = '#111';
+    manaInk.fillRect(26, 12, 12, 40);
+    const assetFor = (url) =>
+      /\/(?:manaSymbols|symbols)\/|magic-mana-old\.mse-symbol-font/.test(url) ? manaBitmap : bitmap;
     const { planeswalkerRuleRows } = await import('/magic-presentation.js');
     const ability = {
       typeLine: 'Planeswalker — Example',
@@ -889,7 +902,10 @@ try {
     const host = {
       images: async (refs) => {
         leases++;
-        return { value: new Map(refs.map((ref) => [ref.url, bitmap])), release: () => released++ };
+        return {
+          value: new Map(refs.map((ref) => [ref.url, assetFor(ref.url)])),
+          release: () => released++,
+        };
       },
     };
     const sizes = [];
@@ -1006,7 +1022,10 @@ try {
           {
             loadImages: async (urls) => ({
               images: new Map(
-                urls.map((url) => [url, url === retroSetSymbol(face) ? historicalStencil : bitmap]),
+                urls.map((url) => [
+                  url,
+                  url === retroSetSymbol(face) ? historicalStencil : assetFor(url),
+                ]),
               ),
               dispose() {},
             }),
@@ -1071,7 +1090,7 @@ try {
           new AbortController().signal,
           {
             loadImages: async (urls) => ({
-              images: new Map(urls.map((u) => [u, u === url ? symbol : bitmap])),
+              images: new Map(urls.map((u) => [u, u === url ? symbol : assetFor(u)])),
               dispose() {},
             }),
           },
@@ -1145,7 +1164,7 @@ try {
             new AbortController().signal,
             {
               loadImages: async (urls) => ({
-                images: new Map(urls.map((u) => [u, u === url ? stencil : bitmap])),
+                images: new Map(urls.map((u) => [u, u === url ? stencil : assetFor(u)])),
                 dispose() {},
               }),
             },
@@ -1179,7 +1198,7 @@ try {
       {
         images: async (assets) => {
           printedUrls.push(...assets.map((a) => a.url));
-          return { value: new Map(assets.map((a) => [a.url, bitmap])), release() {} };
+          return { value: new Map(assets.map((a) => [a.url, assetFor(a.url)])), release() {} };
         },
       },
       new AbortController().signal,
@@ -1224,7 +1243,7 @@ try {
       disposed = 0;
     const controller = new AbortController();
     const loadImages = async (urls) => ({
-      images: new Map(urls.map((url) => [url, bitmap])),
+      images: new Map(urls.map((url) => [url, assetFor(url)])),
       dispose() {
         disposed++;
       },
@@ -1328,7 +1347,7 @@ try {
       {
         loadImages: async (urls) => {
           requested.push(...urls);
-          return { images: new Map(urls.map((url) => [url, bitmap])), dispose() {} };
+          return { images: new Map(urls.map((url) => [url, assetFor(url)])), dispose() {} };
         },
       },
     );
