@@ -222,17 +222,17 @@
     },
     {
       "code": "8ed",
-      "rarities": ["rare"],
+      "rarities": ["uncommon", "rare"],
       "cards": ["Wrath of God"],
-      "finding": "Numeric shield material topology differs: reference has a dark interior and colored numeral, imported source colors the card panels around a black numeral.",
-      "resolution": "Checksum-verified local SVG material patch; imported symbols are now the default. See symbol-svg-patches.json."
+      "finding": "User scan review corrected the earlier polarity assessment: the center card face is metallic, with a black frame and black 8. The original local patch incorrectly inverted only that panel.",
+      "resolution": "symbol-svg-v3 retains the original three metallic card faces and black numeral, with the existing black outer rim. Commons are unchanged."
     },
     {
       "code": "9ed",
-      "rarities": ["rare"],
+      "rarities": ["uncommon", "rare"],
       "cards": ["Sengir Vampire"],
-      "finding": "Reference numeral/panel line treatment differs from imported vector; extra pale rim and heavy black numeral remain visible.",
-      "resolution": "Checksum-verified local SVG material patch; imported symbols are now the default. See symbol-svg-patches.json."
+      "finding": "User scan review identifies a black 9 with a silver/gold outline. The original local patch had the numeral fill and outline reversed.",
+      "resolution": "symbol-svg-v3 uses black numeral fill and a metallic outline in the transformed panel gradient coordinates. Card panels and commons are unchanged."
     }
   ],
   "nextDetection": "Alongside edge matching, score dark-ink occupancy versus metallic-field occupancy inside registered symbol masks. Compare both normal and reversed polarity for diagnosis only; disagreement identifies a source issue instead of moving the symbol. Admit source revisions only after held-out rarity/printing review.",

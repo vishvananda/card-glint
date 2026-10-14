@@ -46,31 +46,24 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
     const panels = paths[2]!,
       transform = panels.parentElement?.getAttribute('transform');
     if (!transform) throw Error('Missing numeric shield coordinate transform.');
-    // The numeral lives in root coordinates; preserve the panel gradient's
-    // appearance when applying it outside its transformed group.
-    const metal = gradient.cloneNode(true) as Element;
-    set(metal, {
-      id: 'glint-root-metal',
-      gradientTransform: `${transform} ${gradient.getAttribute('gradientTransform') ?? ''}`,
-    });
-    gradient.after(metal);
     paths[0]!.setAttribute('fill', '#000');
-    set(paths[3]!, {
-      fill: 'url(#glint-root-metal)',
-      stroke: '#000',
-      'stroke-width': patch.recipe === '8ed' ? '9' : '12',
-      'paint-order': 'stroke fill',
-    });
-    if (patch.recipe === '8ed') {
-      // Only the front card has a dark interior; the side cards stay metallic.
-      const contours = panels.getAttribute('d')?.match(/[Mm][^Mm]+/g);
-      if (contours?.length !== 3) throw Error('Unexpected Eighth Edition card panels.');
-      const center = panels.cloneNode() as Element;
-      set(center, {
-        d: contours[0]!,
-        style: `fill:#000;stroke:url(#${gradient.id});stroke-width:1.4`,
+    paths[3]!.setAttribute('fill', '#000');
+    // Eighth keeps all three metallic card faces and their original black
+    // frame/numeral. Only Ninth adds a metallic outline around its black 9.
+    if (patch.recipe === '9ed') {
+      // The numeral lives in root coordinates; preserve the panel gradient's
+      // appearance when applying it outside its transformed group.
+      const metal = gradient.cloneNode(true) as Element;
+      set(metal, {
+        id: 'glint-root-metal',
+        gradientTransform: `${transform} ${gradient.getAttribute('gradientTransform') ?? ''}`,
       });
-      panels.after(center);
+      gradient.after(metal);
+      set(paths[3]!, {
+        stroke: 'url(#glint-root-metal)',
+        'stroke-width': '12',
+        'paint-order': 'stroke fill',
+      });
     }
   } else throw Error(`Unknown symbol SVG patch recipe: ${patch.recipe}`);
   root.setAttribute('data-card-glint-patch', patches.revision);

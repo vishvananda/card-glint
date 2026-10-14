@@ -67,7 +67,7 @@ try {
       },
       signal = new AbortController().signal;
     const urls = ['m15', '8ed', '9ed', '7ed'].map((code) => styledSetSymbol(code, 'rare'));
-    urls.push(styledSetSymbol('7ed', 'uncommon'));
+    urls.push(...['7ed', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'uncommon')));
     const parsed = [];
     for (const url of urls) {
       const sources = await resolveCanvasSources([url, url], signal);
@@ -76,7 +76,7 @@ try {
         doc = new DOMParser().parseFromString(encoded, 'image/svg+xml');
       parsed.push(doc);
       check(
-        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v2',
+        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v3',
         'Patch revision missing',
       );
       sources.dispose();
@@ -87,19 +87,25 @@ try {
       'M15 material polarity stayed reversed',
     );
     check(m15[0].getAttribute('stroke') === '#000', 'M15 lost its exterior outline');
-    check(
-      parsed[1].querySelectorAll('g path').length === 2 &&
-        parsed[2].querySelectorAll('g path').length === 1,
-      '8ED center-only treatment leaked into 9ED',
-    );
-    for (const doc of parsed.slice(3)) {
-      const paths = doc.querySelectorAll('path');
-      check(paths[0].getAttribute('fill') === '#fff', '7ED outer rim must be white');
+    for (const [i, url] of urls.entries()) {
+      const doc = parsed[i],
+        paths = doc.querySelectorAll('path');
+      if (url.includes('/7ed-')) {
+        check(paths[0].getAttribute('fill') === '#fff', '7ED outer rim must be white');
+        check(
+          paths[1].getAttribute('fill') === '#333' && paths[2].getAttribute('fill') === 'url(#g)',
+          '7ED interior material changed',
+        );
+        check(doc.querySelector('radialGradient'), '7ED gradient lost');
+      }
+    }
+    for (const code of ['8ed', '9ed']) {
+      const common = styledSetSymbol(code, 'common'),
+        original = new Blob(['unchanged common']);
       check(
-        paths[1].getAttribute('fill') === '#333' && paths[2].getAttribute('fill') === 'url(#g)',
-        '7ED interior material changed',
+        !hasSymbolSvgPatch(common) && (await patchSymbolSvg(common, original)) === original,
+        `${code} common must remain byte-for-byte unchanged`,
       );
-      check(doc.querySelector('radialGradient'), '7ED gradient lost');
     }
     const host = new AssetStore(16 * 1024 * 1024);
     for (const url of urls) {
@@ -111,17 +117,35 @@ try {
         image = lease.value.get(sources.aliases.get(url));
       const direct = await loadCanvasImages([url], signal),
         other = direct.images.get(url);
-      const pixels = (im) => {
+      const pixels = (im, width = im.width, height = im.height) => {
         const c = document.createElement('canvas');
-        c.width = im.width;
-        c.height = im.height;
+        c.width = width;
+        c.height = height;
         const ctx = c.getContext('2d');
-        ctx.drawImage(im, 0, 0);
+        ctx.drawImage(im, 0, 0, width, height);
         const p = ctx.getImageData(0, 0, c.width, c.height).data;
         c.width = c.height = 0;
         return p;
       };
       const pixelsCache = pixels(other);
+      if (/\/(8ed|9ed)-/.test(url)) {
+        const materialPixels = pixels(other, 600, 500),
+          at = (x, y) => materialPixels.slice((y * 600 + x) * 4, (y * 600 + x) * 4 + 4),
+          black = (rgba) => rgba[0] === 0 && rgba[1] === 0 && rgba[2] === 0 && rgba[3] === 255,
+          metallic = (rgba) => rgba[0] > 40 && rgba[1] > 80 && rgba[2] > 100 && rgba[3] === 255;
+        check(black(at(260, 200)), 'Numeric symbol must have a black numeral');
+        check(black(at(156, 200)), 'Center card frame must stay black');
+        for (const x of [40, 180, 420, 540])
+          check(metallic(at(x, 200)), 'All three card faces must stay metallic');
+        check(at(180, 200)[0] < at(420, 200)[0], 'Center card lost its gradient');
+        if (url.includes('/9ed-')) {
+          check(metallic(at(246, 200)), '9ED numeral border must be metallic');
+          check(
+            at(246, 200).every((v, i) => Math.abs(v - at(246, 80)[i]) <= 2),
+            '9ED numeral border must use the transformed panel gradient',
+          );
+        }
+      }
       check(
         pixels(image).every((v, i) => v === pixelsCache[i]),
         'Public/direct patch pixels differ',
@@ -170,7 +194,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 5);
+  assert.equal(result.urls.length, 7);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);
