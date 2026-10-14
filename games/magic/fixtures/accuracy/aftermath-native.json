@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-14T04:10:36.613Z",
+  "sourceCommit": "9f3a6a4cd2521efbc268501fce7410635c3e3a91",
+  "rendererHash": "331a8e3f98b274ef0b56b8a337bab2aca32dbb891fa7ff5cb4b3c781bcb96f93",
+  "fontHash": "4ed2cbb96360c6468dca4eac3ae11e9a434ebccf8896406ac15dccbf155a4ef1",
+  "studyHash": "f547eb6df72b80b4c828c510acbe1b4d8a424254c26c8b6375837a297100a4a1",
+  "baseline": "01db2bc348e551cff8f8ef0364c66906f30ff8f5cb3538abce38bb75550f816f",
+  "auditHash": "edfd6dc15d8f0b5bfc28509d1ab4c04dc6a19148bd1dfc72c903c700a731c608",
+  "cohort": 25,
+  "accepted": 19,
+  "means": {
+    "title": {
+      "before": 0.16258566521516848,
+      "after": 0.8367970079372128
+    },
+    "title2": {
+      "before": 0.24819749344132153,
+      "after": 0.7317486736809521
+    },
+    "rules": {
+      "before": 0.13034208706332673,
+      "after": 0.7017217118703674
+    },
+    "rules2": {
+      "before": 0.28491834099255225,
+      "after": 0.6225389076714506
+    }
+  },
+  "rejected": [
+    {
+      "name": "Never // Return",
+      "reason": "insufficient-frame-support"
+    },
+    {
+      "name": "Start // Finish",
+      "reason": "no-validated-model"
+    },
+    {
+      "name": "Cut // Ribbons",
+      "reason": "no-validated-model"
+    },
+    {
+      "name": "Consign // Oblivion",
+      "reason": "no-validated-model"
+    },
+    {
+      "name": "Claim // Fame",
+      "reason": "no-validated-model"
+    },
+    {
+      "name": "Driven // Despair",
+      "reason": "no-validated-model"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "Rags // Riches",
+      "region": "rules2",
+      "before": 0.3182129145478494,
+      "after": 0.24886261784034192
+    }
+  ],
+  "sourceTypeConflicts": 13,
+  "scope": "Exploratory AKH/HOU cohort, no independent typography holdout. F1 at one canonical pixel after frame-only normalization; not whole-card accuracy."
+}

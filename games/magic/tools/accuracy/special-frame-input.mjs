@@ -46,11 +46,48 @@ export function originalPanelText(card, original, records) {
   return selected;
 }
 
+/** Gatherer-derived split records can repeat the other half's originalType.
+ * Retain the conflict explicitly. Only the two bare spell types can use the
+ * agreeing per-face provider fields; never infer historical creature subtypes. */
+export function originalPanelType(card, data, original, records) {
+  const typeLine = original.originalType ?? data.type_line;
+  if (
+    card.layout !== 'split' ||
+    !['Instant', 'Sorcery'].includes(typeLine) ||
+    !['Instant', 'Sorcery'].includes(data.type_line) ||
+    typeLine === data.type_line ||
+    original.type !== data.type_line
+  )
+    return { typeLine };
+  const pair = card.card_faces.map((face) => originalFaceRecord(card, face, records));
+  if (
+    pair.length !== 2 ||
+    pair[0].originalType !== pair[1].originalType ||
+    pair[0].originalText !== pair[1].originalText ||
+    normalizePrintingText(original.originalText).split(' // ').length !== 2
+  )
+    return { typeLine };
+  return {
+    typeLine: data.type_line,
+    issue: {
+      kind: 'duplicated-split-original-type',
+      originalType: typeLine,
+      selectedType: data.type_line,
+      source: 'agreeing-mtgjson-type-and-scryfall-face-type',
+    },
+  };
+}
+
 export function specialFrameInput(card, side, reference, art, records) {
   const originals = [];
   const face = (data, physicalSide) => {
     const original = originalFaceRecord(card, data, records);
-    originals.push({ uuid: original.uuid, side: original.side ?? null });
+    const type = originalPanelType(card, data, original, records);
+    originals.push({
+      uuid: original.uuid,
+      side: original.side ?? null,
+      ...(type.issue ? { typeIssue: type.issue } : {}),
+    });
     const rules = originalPanelText(card, original, records);
     const merged = {
       ...card,
@@ -60,7 +97,7 @@ export function specialFrameInput(card, side, reference, art, records) {
       id: card.id,
       layout: physicalSide ? card.layout : 'normal',
       colors: data.colors ?? original.colors ?? (data === card ? card.colors : []) ?? [],
-      printed_type_line: original.originalType ?? data.type_line,
+      printed_type_line: type.typeLine,
     };
     return {
       ...presentation({ card: merged, reference, art }, {}, { [card.id]: { originalText: rules } })

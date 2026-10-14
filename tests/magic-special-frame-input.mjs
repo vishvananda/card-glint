@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {
   originalFaceRecord,
   originalPanelText,
+  originalPanelType,
   specialFrameSides,
   specialFrameInput,
 } from '../games/magic/tools/accuracy/special-frame-input.mjs';
@@ -82,6 +83,37 @@ const joined = records.map((r, i) => ({
 assert.equal(originalPanelText(split, joined[0], joined), 'First.');
 assert.equal(originalPanelText(split, joined[1], joined), 'Second.');
 assert.throws(() => originalPanelText(split, joined[0], [joined[0], records[1]]), /Ambiguous/);
+const spells = {
+  ...split,
+  card_faces: split.card_faces.map((f, i) => ({ ...f, type_line: i ? 'Sorcery' : 'Instant' })),
+};
+const brokenTypes = joined.map((r, i) => ({
+  ...r,
+  originalType: 'Sorcery',
+  type: i ? 'Sorcery' : 'Instant',
+}));
+const recovered = originalPanelType(spells, spells.card_faces[0], brokenTypes[0], brokenTypes);
+assert.equal(recovered.typeLine, 'Instant');
+assert.equal(recovered.issue.kind, 'duplicated-split-original-type');
+assert.equal(
+  originalPanelType(
+    spells,
+    spells.card_faces[0],
+    { ...brokenTypes[0], type: 'Sorcery' },
+    brokenTypes,
+  ).typeLine,
+  'Sorcery',
+  'Disagreeing face providers cannot correct the historical field',
+);
+assert.equal(
+  originalPanelType(
+    spells,
+    { ...spells.card_faces[0], type_line: 'Creature — Elemental' },
+    { ...brokenTypes[0], originalType: 'Summon Force' },
+    brokenTypes,
+  ).typeLine,
+  'Summon Force',
+);
 assert.throws(
   () => specialFrameSides({ ...card, card_faces: split.card_faces }),
   /Missing reference/,

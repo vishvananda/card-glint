@@ -1466,3 +1466,35 @@ unscored. Saga reminder/chapter geometry, rail/paper compositing and Read ahead
 styling are first. Split-era routing, Fuse duplication, aftermath proportions,
 Room layout and physical DFC indicators/back-face treatments follow. No runtime
 calibration was adopted from these unaligned examples.
+
+### Special-frame queue after the Saga release
+
+Saga improvements shipped as 0.2.16. Continue one family at a time, with
+original wording, immutable before captures, cached full scans/art, and
+frame-only normalization before component metrics:
+
+1. Aftermath: all 15 AKH and 10 HOU ordinary nonfoil printings. Dedicated pinned
+   CardConjurer plates and shared art/effect apertures; preserve failed scan fits.
+2. Ordinary split cards by era, then Fuse. CardConjurer's M15 split/Fuse plates
+   cannot stand in for APC old-border or DGM 2003-frame stock. MSE provides
+   `magic-old-split`, `magic-new-split`, `magic-new-split-fuse` and
+   `magic-m15-split-fusable` source styles. Validate shared art sheet cropping,
+   joined border geometry, per-half credits and one Fuse reminder strip.
+3. Adventure: compare CardConjurer `packAdventure.js` with MSE's
+   `magic-m15-adventure` style, including multicolor and long inset text.
+4. Prepared: a distinct new layout, not an Adventure alias. Its inset prepare
+   spell and status treatment require fresh source research; neither inspected
+   pinned tree contains a prepared template. Start with ordinary SOS printings
+   and the [official mechanics reference](https://magic.wizards.com/en/news/feature/secrets-of-strixhaven-mechanics).
+5. Rooms: dedicated CardConjurer `packRoom.js` / `packRoomUB.js`; replace the
+   generic split fallback with continuous art, shared type/reminder strip and
+   asymmetric rules panels. DSK is the initial validation set.
+6. Battles: CardConjurer `packBattle.js` and MSE
+   `magic-m15-mainframe-battles`; validate landscape front, defense badge and
+   independent reverse physical face on MOM.
+7. Transform and modal DFC: explicit front/back plates, indicators, color
+   markers, reverse hints and other-face banners. Preserve the ISD, ZNR and NEO
+   audit examples; do not reuse a front scan or art image on the reverse.
+
+The dedicated review browser remains separate from the library. Add supported
+input/routing/scoring only after each family has its own validated geometry.

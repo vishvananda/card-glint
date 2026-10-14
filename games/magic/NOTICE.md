@@ -69,3 +69,9 @@ plates use `data/images/cardImages/saga/`; land and transforming plates use
 The layout investigation also consulted
 [Magic Set Editor’s Saga style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-saga.mse-style/style);
 no MSE code or binaries are bundled.
+
+Aftermath uses the same pinned CardConjurer repository's full
+`img/frames/m15/aftermath/` plates and Saga stamp decoration. Geometry was
+checked against its [Aftermath frame definition](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packAftermath.js)
+and [Magic Set Editor's Aftermath style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-aftermath.mse-style/style).
+These external images remain URL references; no scan, art or MSE binary is bundled.
