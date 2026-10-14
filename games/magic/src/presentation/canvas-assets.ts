@@ -1,3 +1,5 @@
+import { splitMaterialAssets } from './split-materials.js';
+import { nativeSplitEra, hasFuse } from './split-frame.js';
 import { sagaAssets } from './saga-frame.js';
 import { aftermathAssets, isAftermath } from './aftermath-frame.js';
 import { isRetro, retroAssets, RETRO_ROOT } from './retro-frame.js';
@@ -27,7 +29,10 @@ export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promis
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */
 export function canvasAssetWidth(url: string): number | undefined {
-  if (url.startsWith(CONJURER_ROOT) && /\/saga\/(sagaChapter|sagaDivider|stamp)\.png$/.test(url))
+  if (
+    url.startsWith(CONJURER_ROOT) &&
+    /\/saga\/(sagaChapter|sagaDivider|sagaMidStripe|stamp)\.png$/.test(url)
+  )
     return undefined; // Small native decorations must not be enlarged to plate resolution.
   if (url.startsWith(`${CONJURER_ROOT}/data/images/cardImages/saga/`)) return 768;
   if (url.startsWith(`${CONJURER_ROOT}/img/frames/`) && url.endsWith('.png'))
@@ -157,6 +162,14 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
       ]),
       faceSetSymbol(splitPanels(face)[0]!.face),
     ];
+  const splitEra = nativeSplitEra(face);
+  if (splitEra)
+    return splitPanels(face).flatMap((p, i) => [
+      ...splitMaterialAssets(p.face, splitEra, hasFuse(face) && splitEra === 'eighth', i),
+      p.face.illustration,
+      faceSetSymbol(p.face),
+      ...faceManaAssets(p.face),
+    ]);
   const plates = framePlateUrls(face);
   if (plates) return [...plates, face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   if (isRetro(face)) return retroAssets(face);

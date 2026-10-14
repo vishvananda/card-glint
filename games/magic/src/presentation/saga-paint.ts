@@ -1,3 +1,4 @@
+import { paintSagaColors } from './saga-colors.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { FACE_WIDTH as W, FACE_HEIGHT as H, type RenderedCardInput } from './face-layout.js';
 import {
@@ -33,7 +34,10 @@ export function paintSagaFace(
   c.fillStyle = '#090806';
   c.fillRect(0, 0, W, H);
   if (underArt) c.drawImage(underArt, 0, 0, W, H);
-  if (layer !== 'artwork') c.drawImage(required(sagaFrameAsset(face)), 0, 0, W, H);
+  if (layer !== 'artwork') {
+    c.drawImage(required(sagaFrameAsset(face)), 0, 0, W, H);
+    paintSagaColors(c, face, images);
+  }
   const art = SAGA_RECTS.art;
   paintIllustration(c, face, images, [art[0] * W, art[1] * H, art[2] * W, art[3] * H], layer);
   if (layer === 'artwork') {

@@ -141,7 +141,11 @@ export function paintFittedText(
   size: number,
   bold = false,
   widthScale = 1,
-  family: 'CardRenderer MTG Beleren' | 'CardRenderer MTG Matrix' = 'CardRenderer MTG Beleren',
+  family:
+    | 'CardRenderer MTG Beleren'
+    | 'CardRenderer MTG Matrix'
+    | 'CardRenderer MTG Goudy'
+    | 'CardRenderer MTG MPlantin' = 'CardRenderer MTG Beleren',
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   context.save();

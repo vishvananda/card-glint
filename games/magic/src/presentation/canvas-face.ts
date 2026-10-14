@@ -1,3 +1,5 @@
+import { nativeSplitEra, splitFuseParagraphs } from './split-frame.js';
+import { paintNativeSplitFace, loadSplitFonts } from './split-paint.js';
 import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { isAftermath } from './aftermath-frame.js';
 import { paintAftermathFace } from './aftermath-paint.js';
@@ -110,7 +112,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v94',
+    'canvas-face-v96',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -144,6 +146,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
       face.borderColor ?? null,
       panels.map((p) => [p.x, p.y, p.width, p.height, p.rotation, faceContentKey(p.face, mask)]),
       !mask && splitHasFuse(face),
+      !mask && splitFuseParagraphs(face),
     ];
   return mask
     ? [
@@ -172,6 +175,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.illustrationCrop ?? null,
         extraRuleKey(face),
         face.artist ?? null,
+        face.watermark ?? null,
         face.collectorNumber ?? null,
         face.legalText === undefined ? ['default'] : face.legalText,
         face.setCode ?? null,
@@ -270,9 +274,11 @@ export async function composeCardTexture(
     }
     await Promise.all([
       (hooks?.loadFonts ?? loadCanvasFonts)(),
-      loadFramePlateFonts(input.face),
+      nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
       faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
-      isRetro(input.face) ? (hooks?.loadRetroFont ?? loadRetroFont)() : Promise.resolve(),
+      isRetro(input.face) || nativeSplitEra(input.face) === 'old'
+        ? (hooks?.loadRetroFont ?? loadRetroFont)()
+        : Promise.resolve(),
     ]);
     signal.throwIfAborted();
     const loaded = await loadImages(canvasAssetUrls(input.face), signal);
@@ -343,6 +349,10 @@ export function paintAssembledFace(
 ) {
   if (isAftermath(face)) {
     paintAftermathFace(context, face, images, underArt, layer);
+    return;
+  }
+  if (nativeSplitEra(face)) {
+    paintNativeSplitFace(context, face, images, underArt, layer);
     return;
   }
   if (face.frameAssetFamily) {

@@ -75,3 +75,12 @@ Aftermath uses the same pinned CardConjurer repository's full
 checked against its [Aftermath frame definition](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packAftermath.js)
 and [Magic Set Editor's Aftermath style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-m15-aftermath.mse-style/style).
 These external images remain URL references; no scan, art or MSE binary is bundled.
+
+Old-border and 2003/Fuse split frames reference the
+[Full Magic Pack](https://github.com/MagicSetEditorPacks/Full-Magic-Pack)
+at `16f1d13bb7f5924613fc1ddc25da582beccfefb6`: `magic-old-split`,
+`magic-new-split` and `magic-new-split-fuse` plates and blend masks.
+The local compositor implements the source styles' geometry; no MSE source
+code or image binaries are bundled. CardConjurer's same pinned revision supplies
+`fonts/matrix.ttf`, guild watermarks and artist brushes. These references do
+not extend the repository's code license to third-party artwork or trademarks.

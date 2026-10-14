@@ -1,3 +1,4 @@
+import { nativeSplitEra, hasFuse, SPLIT_PANEL_WIDTH } from './split-frame.js';
 import { FACE_HEIGHT, FACE_WIDTH, type FaceRect, type RenderedCardInput } from './face-layout.js';
 import { isAftermath, AFTERMATH_JOIN, AFTERMATH_BOTTOM_WIDTH } from './aftermath-frame.js';
 export interface SplitPanel {
@@ -11,16 +12,25 @@ export interface SplitPanel {
 export function splitPanels(face: RenderedCardInput): SplitPanel[] {
   if (!['split', 'aftermath'].includes(face.layout ?? '') || face.faces?.length !== 2) return [];
   const aftermath = isAftermath(face);
+  const era = nativeSplitEra(face);
   return face.faces.map((half, index) => {
     const cut = aftermath ? 0.615 : 0.5;
     const inherited = {
       setCode: face.setCode,
+      frameStyle: face.frameStyle,
       rarity: face.rarity,
       artist: face.artist,
       setSymbol: face.setSymbol,
       setSymbolSource: face.setSymbolSource,
       ...half,
-      layout: aftermath ? (index === 0 ? 'aftermath-top' : 'aftermath-bottom') : 'split-half',
+      layout: aftermath
+        ? index === 0
+          ? 'aftermath-top'
+          : 'aftermath-bottom'
+        : era
+          ? `split-${era}${hasFuse(face) && era === 'eighth' ? '-fuse' : ''}`
+          : 'split-half',
+      frameAssetFamily: undefined,
       faces: undefined,
       rulesText: half.rulesText
         ?.split('\n')
@@ -49,14 +59,23 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
             height: 488,
             rotation: 90,
           }
-      : {
-          face: inherited,
-          x: 5,
-          y: (index ? 333 : 648) - (splitHasFuse(face) ? 12 : 0),
-          width: 333,
-          height: 488,
-          rotation: -90,
-        };
+      : era
+        ? {
+            face: inherited,
+            x: 0,
+            y: 680 - index * SPLIT_PANEL_WIDTH,
+            width: SPLIT_PANEL_WIDTH,
+            height: 488,
+            rotation: -90,
+          }
+        : {
+            face: inherited,
+            x: 5,
+            y: (index ? 333 : 648) - (splitHasFuse(face) ? 12 : 0),
+            width: 333,
+            height: 488,
+            rotation: -90,
+          };
   });
 }
 export function panelStyle(panel: SplitPanel) {
@@ -100,9 +119,4 @@ export function splitTextScale(face: RenderedCardInput) {
   return face.layout === 'split-half' ? 1.5 : face.layout === 'aftermath-bottom' ? 1.5 : 1;
 }
 
-export function splitHasFuse(face: RenderedCardInput): boolean {
-  return (
-    /\bFuse\b/.test(face.rulesText ?? '') ||
-    Boolean(face.faces?.some((half) => /^Fuse\b/m.test(half.rulesText ?? '')))
-  );
-}
+export const splitHasFuse = hasFuse;

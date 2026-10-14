@@ -1,3 +1,4 @@
+import { splitHalfRects } from './split-frame.js';
 import { SAGA_RECTS } from './saga-frame.js';
 import { aftermathRects } from './aftermath-frame.js';
 import { planeswalkerArtBounds } from './planeswalker-art.js';
@@ -28,7 +29,12 @@ export type FaceRects = { [K in keyof typeof FACE_RECTS]: FaceRect };
 /** Presentation formatting only. Unknown lines stay visible; no rules are executed. */
 export function specialRules(face: RenderedCardInput): RuleRow[] {
   const saga = face.layout === 'saga' || /\bSaga\b/i.test(face.typeLine ?? '');
-  return (face.rulesText ?? '')
+  // Some printing sources delimit adjacent chapter clauses with a literal bar.
+  // Only a bar followed by an explicit chapter label is a separator.
+  const text = saga
+    ? (face.rulesText ?? '').replace(/\|(?=\s*[IVXLCDM]+(?:\s*,\s*[IVXLCDM]+)*\s*[—–-]\s)/g, '\n')
+    : (face.rulesText ?? '');
+  return text
     .split('\n')
     .filter((line) => line.trim())
     .map((line) => {
@@ -60,6 +66,7 @@ export function faceFrame(face: RenderedCardInput): SingleFrame {
 export function faceRects(face: RenderedCardInput): FaceRects {
   if (face.layout === 'aftermath-top' || face.layout === 'aftermath-bottom')
     return aftermathRects(face.layout === 'aftermath-bottom');
+  if (/^split-(old|eighth)(-fuse)?$/.test(face.layout ?? '')) return splitHalfRects(face);
   const plate = framePlate(face);
   if (plate) return plate.rects;
   if (isRetro(face)) return retroRects(face);

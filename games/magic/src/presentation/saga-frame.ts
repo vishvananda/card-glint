@@ -1,3 +1,4 @@
+import { sagaColorAssets } from './saga-colors.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { resolveFrameColors } from './profile.js';
 import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
@@ -24,6 +25,7 @@ export const SAGA_STAMP = `${root}/stamp.png`;
 export function sagaAssets(face: RenderedCardInput): string[] {
   return [
     sagaFrameAsset(face),
+    ...sagaColorAssets(face),
     SAGA_CHAPTER,
     SAGA_DIVIDER,
     ...(sagaTransformIcon(face) ? [sagaTransformIcon(face)!] : []),

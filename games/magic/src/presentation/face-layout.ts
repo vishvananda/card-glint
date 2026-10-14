@@ -19,7 +19,8 @@ export interface RenderedCardInput extends CardProfileInput {
   name: string;
   frameStyle?: 'modern' | 'retro';
   /** Opt-in full frame plates, with their own art and text geometry. Omitted
-   * retains the calibrated component frames. Ordinary modern faces only. */
+   * retains the calibrated component frames. Ordinary modern faces and
+   * validated spell splits ('eighth') only. */
   frameAssetFamily?: 'eighth' | 'm15-accurate';
   borderColor?: CardBorderColor;
   /** Physical printing layout, independent of rules identity. */
@@ -49,6 +50,8 @@ export interface RenderedCardInput extends CardProfileInput {
   etchedIllustration?: string | null;
   credit?: string | null;
   artist?: string | null;
+  /** Optional guild identity, drawn by supported split frames. Unknown keys are ignored. */
+  watermark?: string | null;
   /** Explicit printed legal line; null suppresses a known set's default. */
   legalText?: string | null;
   /** Printed number when the set footer includes one; no Oracle identity inference. */

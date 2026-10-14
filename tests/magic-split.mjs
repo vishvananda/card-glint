@@ -1,0 +1,206 @@
+import assert from 'node:assert/strict';
+import { createServer } from 'vite';
+import { chromium } from 'playwright';
+const server = await createServer({
+  configFile: false,
+  root: process.cwd(),
+  server: { host: '127.0.0.1', port: 0, hmr: false },
+});
+await server.listen();
+const browser = await chromium.launch({ headless: true });
+try {
+  const page = await browser.newPage();
+  await page.route('https://**/*', (route) => route.abort());
+  await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
+  const results = await page.evaluate(async () => {
+    const { paintNativeSplitFace, splitRules } = await import(
+      '/games/magic/src/presentation/split-paint.ts'
+    );
+    const { nativeSplitEra, splitPlateAsset, hasFuse } = await import(
+      '/games/magic/src/presentation/split-frame.ts'
+    );
+    const { splitPanels, panelRect } = await import(
+      '/games/magic/src/presentation/split-layout.ts'
+    );
+    const { faceRects } = await import('/games/magic/src/presentation/special-frames.ts');
+    const { canvasAssetUrls } = await import('/games/magic/src/presentation/canvas-assets.ts');
+    const { cardTextureKey } = await import('/games/magic/src/presentation/canvas-face.ts');
+    const { mtg } = await import('/games/magic/src/index.ts');
+    const key = (face) => cardTextureKey({ face, printingId: null, printedImage: null }, 'inspect');
+    const solid = (color) => {
+      let c = document.createElement('canvas');
+      c.width = c.height = 20;
+      let ctx = c.getContext('2d');
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, 20, 20);
+      return c;
+    };
+    const output = [];
+    for (const set of ['apc', 'dis', 'dgm']) {
+      const face = {
+        name: 'One // Two',
+        layout: 'split',
+        setCode: set,
+        faces: [
+          {
+            name: 'One',
+            typeLine: 'Instant',
+            colors: ['R'],
+            illustration: 'a',
+            rulesText: 'Draw a card.',
+          },
+          {
+            name: 'Two',
+            typeLine: 'Sorcery',
+            colors: ['U'],
+            illustration: 'b',
+            rulesText: 'Return a card.',
+          },
+        ],
+      };
+      if (set === 'dgm')
+        face.faces[1].rulesParagraphs = [
+          { role: 'rules', runs: [{ text: 'Return a card.' }] },
+          { role: 'rules', runs: [{ text: 'Fuse ' }, { text: '(Reminder)', italic: true }] },
+        ];
+      const era = nativeSplitEra(face),
+        fuse = hasFuse(face),
+        panels = splitPanels(face);
+      const images = new Map([
+        ['a', solid('#ff0000')],
+        ['b', solid('#00ff00')],
+        ...panels.map((p, i) => [splitPlateAsset(p.face, era, fuse, i), solid('#888888')]),
+      ]);
+      const canvas = solid('#000');
+      canvas.width = 488;
+      canvas.height = 680;
+      const c = canvas.getContext('2d', { willReadFrequently: true });
+      const windows = panels.map((p) => panelRect(p, faceRects(p.face).art));
+      const pixel = (x, y) => Array.from(c.getImageData(x, y, 1, 1).data);
+      const sample = () =>
+        windows.map(([x, y, w, h]) => pixel((x + w / 2) * 488, (y + h / 2) * 680));
+      paintNativeSplitFace(c, face, images);
+      const full = sample();
+      paintNativeSplitFace(c, face, images, undefined, 'printing');
+      const printing = sample();
+      const recipe = mtg.describe(face, 'inspect');
+      const changed = structuredClone(face);
+      changed.faces[1].watermark = 'boros';
+      const reminder = structuredClone(face);
+      if (fuse) reminder.faces[1].rulesParagraphs[1].runs[1].text = '(Different reminder)';
+      let missing = false;
+      try {
+        paintNativeSplitFace(c, face, new Map());
+      } catch {
+        missing = true;
+      }
+      output.push({
+        set,
+        era,
+        fuse,
+        full,
+        printing,
+        windows,
+        recipeWindows: recipe.artWindows,
+        edgeWindows: recipe.edges.map((e) => e.destination),
+        rotations: recipe.edges.map((e) => e.rotation),
+        assets: canvasAssetUrls(face),
+        watermarkKey: key(face) !== key(changed),
+        reminderKey: !fuse || key(face) !== key(reminder),
+        paragraphCount: panels[1].face.rulesParagraphs?.length,
+        missing,
+        overflow: splitRules(c, { rulesText: 'W'.repeat(5000) }, era, fuse).overflow,
+      });
+    }
+    const { splitPlateImage, splitBlendMask, paintSplitWatermark, splitWatermark } = await import(
+      '/games/magic/src/presentation/split-materials.ts'
+    );
+    const pair = { colors: ['W', 'U'] };
+    const mask = solid('#000');
+    mask.getContext('2d').fillStyle = '#fff';
+    mask.getContext('2d').fillRect(2, 2, 16, 16);
+    const materials = new Map([
+      [splitPlateAsset(pair, 'eighth', false, 0), solid('#777777')],
+      [splitPlateAsset({ colors: ['W'] }, 'eighth', false, 0), solid('#ff0000')],
+      [splitPlateAsset({ colors: ['U'] }, 'eighth', false, 0), solid('#00ff00')],
+      [splitBlendMask(false, 0), mask],
+    ]);
+    const merged = splitPlateImage(pair, 'eighth', false, 0, materials),
+      mc = merged.getContext('2d');
+    const materialPixels = [
+      mc.getImageData(0, 0, 1, 1),
+      mc.getImageData(3, 10, 1, 1),
+      mc.getImageData(16, 10, 1, 1),
+    ].map((x) => Array.from(x.data));
+    const reused = merged === splitPlateImage(pair, 'eighth', false, 0, materials);
+    const watermarkCanvas = solid('#000');
+    watermarkCanvas.width = 350;
+    watermarkCanvas.height = 480;
+    const wc = watermarkCanvas.getContext('2d'),
+      watermarkFace = { watermark: 'boros' };
+    paintSplitWatermark(
+      wc,
+      watermarkFace,
+      new Map([[splitWatermark(watermarkFace), solid('#000')]]),
+      350,
+    );
+    const watermarkAlpha = [
+      wc.getImageData(160, 350, 1, 1).data[3],
+      wc.getImageData(190, 350, 1, 1).data[3],
+    ];
+    return {
+      materialPixels,
+      reused,
+      watermarkAlpha,
+      output,
+      room: nativeSplitEra({
+        layout: 'split',
+        setCode: 'dgm',
+        faces: [{ typeLine: 'Enchantment — Room' }, { typeLine: 'Enchantment — Room' }],
+      }),
+      modern: nativeSplitEra({
+        layout: 'split',
+        setCode: 'rna',
+        faces: [{ typeLine: 'Instant' }, { typeLine: 'Sorcery' }],
+      }),
+    };
+  });
+  for (const r of results.output) {
+    assert.deepEqual(r.full, [
+      [255, 0, 0, 255],
+      [0, 255, 0, 255],
+    ]);
+    assert.deepEqual(r.printing, [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ]);
+    assert.deepEqual(r.windows, r.recipeWindows);
+    assert.deepEqual(r.windows, r.edgeWindows);
+    assert.deepEqual(r.rotations, [-90, -90]);
+    assert.ok(r.assets.filter((a) => a?.includes('.mse-style/')).length >= 2);
+    assert.ok(r.watermarkKey && r.reminderKey && r.missing && r.overflow);
+    if (r.fuse) assert.equal(r.paragraphCount, 1);
+  }
+  assert.deepEqual(
+    results.materialPixels,
+    [
+      [119, 119, 119, 255],
+      [255, 0, 0, 255],
+      [0, 255, 0, 255],
+    ],
+    'Only masked pinlines/paper receive two-color materials',
+  );
+  assert.ok(results.reused);
+  assert.ok(
+    results.watermarkAlpha.every((x) => x > 50),
+    'Both watermark halves survive source-in tinting',
+  );
+  assert.equal(results.room, null);
+  assert.equal(results.modern, null);
+  console.log(
+    'Old/2003/Fuse split artwork, printing, recipe geometry, metadata invalidation and layout gates pass',
+  );
+} finally {
+  await browser.close();
+  await server.close();
+}

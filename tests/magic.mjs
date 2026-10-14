@@ -228,6 +228,22 @@ const fixtures = [
     rulesText: '{2}, {T}: Draw a card.',
   },
 ];
+for (const setCode of ['apc', 'dis', 'dgm'])
+  fixtures.push({
+    name: 'Dawn // Dusk',
+    layout: 'split',
+    setCode,
+    faces: [
+      { name: 'Dawn', typeLine: 'Instant', colors: ['W'], rulesText: 'Draw a card.' },
+      {
+        name: 'Dusk',
+        typeLine: 'Sorcery',
+        colors: ['U'],
+        rulesText:
+          setCode === 'dgm' ? 'Scry 1.\nFuse (You may cast one or both halves.)' : 'Scry 1.',
+      },
+    ],
+  });
 for (const face of fixtures) {
   const before = JSON.stringify(face);
   const recipe = magic.describe(face, 'inspect');
