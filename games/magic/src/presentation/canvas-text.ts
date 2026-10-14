@@ -1,6 +1,7 @@
 import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
 import { manaSymbolAsset } from './assets.js';
 import { FACE_TEXT, symbolTextParts, type FaceRect } from './face-layout.js';
+import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import type { CanvasImages } from './canvas-assets.js';
 
 interface Token {
@@ -56,8 +57,10 @@ export function paintMana(
   size: number,
   images: CanvasImages,
   shadow = false,
+  adjustment?: ManaSymbolTransform,
 ) {
-  const image = images.get(manaSymbolAsset(symbol) ?? '');
+  const numeral = adjustment && /^\d+$/.test(symbol) ? images.manaNumerals?.get(symbol) : undefined;
+  const image = numeral?.glyph ?? images.get(manaSymbolAsset(symbol) ?? '');
   context.save();
   // A title's shadow must not leak into a shadow-free inline or historical symbol.
   context.shadowColor = 'transparent';
@@ -71,11 +74,21 @@ export function paintMana(
     context.shadowOffsetX = 1.5372 * (-matrix.a + matrix.c);
     context.shadowOffsetY = 1.5372 * (-matrix.b + matrix.d);
   }
-  context.fillStyle = images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
+  context.fillStyle =
+    numeral?.disc ?? images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
   context.beginPath();
   context.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   context.fill();
   context.shadowColor = 'transparent';
+  // Prepared glyphs contain only the numeral; the disc and its shadow stay put.
+  if (/^\d+$/.test(symbol) && adjustment) {
+    const { numberDx = 0, numberDy = 0, numberScale = 1 } = adjustment;
+    if (numberDx || numberDy || numberScale !== 1) {
+      context.translate(x + size / 2 + numberDx, y + size / 2 + numberDy);
+      context.scale(numberScale, numberScale);
+      context.translate(-x - size / 2, -y - size / 2);
+    }
+  }
   if (image) {
     context.drawImage(image, x, y, size, size);
     context.restore();

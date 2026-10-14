@@ -1,3 +1,4 @@
+import { prepareManaNumerals } from './mana-numeral.js';
 import {
   adjustedSymbolBounds,
   paintAdjustedSymbols,
@@ -297,15 +298,17 @@ export async function composeCardTexture(
     signal.throwIfAborted();
     const loaded = await loadImages(canvasAssetUrls(input.face), signal);
     let calibrated: Awaited<ReturnType<typeof prepareEarlyHsb>> | undefined;
+    let numerals: Awaited<ReturnType<typeof prepareManaNumerals>> | undefined;
     try {
       if (input.paintLayer !== 'artwork')
         calibrated = await prepareEarlyHsb(input.face, loaded.images, signal);
+      numerals = await prepareManaNumerals(input.face, calibrated?.images ?? loaded.images, signal);
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
       paintAssembledFace(
         context,
         input.face,
-        calibrated?.images ?? loaded.images,
+        numerals.images,
         FACE_HEIGHT,
         false,
         hooks?.underArt,
@@ -321,6 +324,7 @@ export async function composeCardTexture(
       roundCanvasSilhouette(context, input.face);
       return canvas;
     } finally {
+      numerals?.dispose();
       calibrated?.dispose();
       loaded.dispose();
     }
@@ -594,8 +598,9 @@ export function paintAssembledFace(
     textX = tx + FACE_TEXT.plateLeft + (kind === 'normal' ? 1 : 0);
   const textScale = splitTextScale(face);
   const mana = face.manaSymbols ?? [],
-    manaSize = FACE_TEXT.manaSize * textScale;
-  const manaWidth = mana.length * manaSize + Math.max(0, mana.length - 1) * FACE_TEXT.manaGap;
+    manaSize = FACE_TEXT.manaSize * textScale,
+    manaGap = FACE_TEXT.manaGap + (face.symbolAdjustment?.mana?.spacing ?? 0);
+  const manaWidth = mana.length * manaSize + Math.max(0, mana.length - 1) * manaGap;
   const plateEnd = tx + tw - FACE_TEXT.plateRight,
     manaX = plateEnd - manaWidth;
   const manaBounds: FaceRect = [
@@ -626,11 +631,12 @@ export function paintAssembledFace(
       paintMana(
         context,
         symbol,
-        manaX + index * (manaSize + FACE_TEXT.manaGap),
+        manaX + index * (manaSize + manaGap),
         ty + th / 2 - manaSize / 2 + FACE_TEXT.manaLift / 2,
         manaSize,
         images,
         true,
+        face.symbolAdjustment?.mana,
       ),
     );
   });

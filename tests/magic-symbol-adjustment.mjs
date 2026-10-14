@@ -27,6 +27,8 @@ try {
       ).join(',');
     const out = [];
     for (const [setCode, frameStyle, frameAssetFamily] of [
+      ['lea', 'retro'],
+      ['leb', 'retro'],
       ['3ed', 'retro'],
       ['usg', 'retro'],
       ['8ed', 'modern', 'eighth'],
@@ -38,7 +40,7 @@ try {
         typeLine: 'Creature — Human',
         rulesText: 'Flying',
         colors: ['W'],
-        manaSymbols: ['2', 'W'],
+        manaSymbols: ['2', 'U', 'W'],
         setCode,
         frameStyle,
         frameAssetFamily,
@@ -56,6 +58,15 @@ try {
             ctx.fillStyle =
               url.includes('/symbols/') || url.includes('setSymbols') ? '#182332' : '#ccc1aa';
             ctx.fillRect(0, 0, c.width, c.height);
+            if (url.includes('/symbols/2.')) {
+              ctx.clearRect(0, 0, c.width, c.height);
+              ctx.fillStyle = '#cac5c0';
+              ctx.beginPath();
+              ctx.ellipse(c.width / 2, c.height / 2, c.width / 2, c.height / 2, 0, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.fillStyle = '#0d0f0f';
+              ctx.fillRect(c.width * 0.35, c.height * 0.2, c.width * 0.25, c.height * 0.6);
+            }
             return [url, c];
           }),
       );
@@ -73,13 +84,31 @@ try {
       const baseline = await paint({}),
         zero = await paint({
           symbolAdjustment: {
-            mana: { dx: 0, dy: 0, scaleX: 1, scaleY: 1 },
+            mana: {
+              dx: 0,
+              dy: 0,
+              scaleX: 1,
+              scaleY: 1,
+              numberScale: 1,
+              numberDx: 0,
+              numberDy: 0,
+              spacing: 0,
+            },
             set: { dx: 0, dy: 0, scaleX: 1, scaleY: 1 },
           },
         });
       const changed = await paint({
         symbolAdjustment: {
-          mana: { dx: 0.5, dy: -0.5, scaleX: 1.1, scaleY: 1.1 },
+          mana: {
+            dx: 0.5,
+            dy: -0.5,
+            scaleX: 1.1,
+            scaleY: 1.1,
+            numberScale: 0.9,
+            numberDx: 1,
+            numberDy: -1,
+            spacing: 0.75,
+          },
           set: { dx: 1, dy: -1, scaleX: 1.1, scaleY: 0.9 },
         },
       });
@@ -103,6 +132,9 @@ try {
       { mana: { dx: Infinity } },
       { set: { scaleX: 0 } },
       { unknown: { dx: 1 } },
+      { set: { spacing: 1 } },
+      { mana: { numberScale: 2 } },
+      { mana: { spacing: 5 } },
     ])
       try {
         m.validateSymbolAdjustment({ name: 'x', symbolAdjustment });
@@ -128,7 +160,7 @@ try {
     results.out.every((r) => r.zero && r.changed && r.outside === 0),
     JSON.stringify(results),
   );
-  assert.equal(results.rejected, 4);
+  assert.equal(results.rejected, 7);
   assert.deepEqual(results.bounds, [7.5, 22, 33, 36]);
   console.log(JSON.stringify(results));
 } finally {

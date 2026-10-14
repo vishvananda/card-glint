@@ -19,8 +19,11 @@ import type { RenderedCardInput } from './face-layout.js';
 import { framePlateUrls } from './frame-plates.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 
+import type { ManaNumeral } from './mana-numeral.js';
+
 export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   /** Face-preparation palette for procedural/fallback mana discs. */
+  readonly manaNumerals?: ReadonlyMap<string, ManaNumeral>;
   readonly manaColors?: Readonly<Record<string, string>>;
 }
 

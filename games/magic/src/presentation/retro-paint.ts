@@ -1,4 +1,8 @@
-import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
+import {
+  adjustedSymbolBounds,
+  paintAdjustedSymbols,
+  spacedManaBounds,
+} from './symbol-adjustment.js';
 import { retroManaPlacement } from './retro-mana.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -125,7 +129,8 @@ export function paintRetroFace(
           Math.max(0, costW - gap),
           size,
         ];
-  const adjustedMana = adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana);
+  const spacedBounds = spacedManaBounds(manaBounds, cost.length, face.symbolAdjustment?.mana);
+  const adjustedMana = adjustedSymbolBounds(spacedBounds, face.symbolAdjustment?.mana);
   c.shadowColor = '#000b';
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
   c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
@@ -149,20 +154,23 @@ export function paintRetroFace(
     (face.symbolStyle === undefined && face.wordingMode === 'original');
   const originalSun =
     originalSymbols && ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
-  paintAdjustedSymbols(c, manaBounds, face.symbolAdjustment?.mana, () => {
-    if (revised) paintRevisedCost(c, cost, images, modernSymbols);
+  paintAdjustedSymbols(c, spacedBounds, face.symbolAdjustment?.mana, () => {
+    if (revised) paintRevisedCost(c, cost, images, modernSymbols, face.symbolAdjustment?.mana);
     else if (['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? ''))
-      paintEarlyCost(c, cost, images, modernSymbols);
+      paintEarlyCost(c, cost, images, modernSymbols, face.symbolAdjustment?.mana);
     else
       cost.forEach((s, i) =>
         (originalSun ? paintEarlyMana : paintMana)(
           c,
           s,
-          costX + i * (size + gap),
+          costX +
+            i * (size + gap) -
+            (cost.length - 1 - i) * (face.symbolAdjustment?.mana?.spacing ?? 0),
           mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
           size,
           images,
           false,
+          face.symbolAdjustment?.mana,
         ),
       );
   });

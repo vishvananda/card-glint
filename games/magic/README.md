@@ -406,3 +406,10 @@ scaling includes the complete cost and its spacing; set-symbol width and height
 can vary independently. Title/type fitting respects adjusted symbol bounds.
 Zero/absent transforms preserve the default raster. Unsupported special layouts
 are rejected. These opt-in controls do not alter any calibrated defaults.
+
+The opt-in symbol experiment also accepts `mana.numberScale` (0.75–1.25),
+`numberDx`/`numberDy` (±4 canonical pixels), and `spacing` (±4 pixels).
+Numeric glyph adjustments preserve the disc and its shadow. Spacing changes
+inter-symbol gaps with the rightmost disc fixed, before whole-cost scaling.
+Glyph separation happens once during preparation in a bounded cache; it does
+not read back masks while painting. Identity adjustments preserve release pixels.

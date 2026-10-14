@@ -1,3 +1,4 @@
+import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { paintMana } from './canvas-text.js';
 
@@ -7,6 +8,7 @@ export function paintRevisedCost(
   symbols: readonly string[],
   images: CanvasImages,
   modernSymbols = false,
+  adjustment?: ManaSymbolTransform,
 ) {
   paintCost(
     c,
@@ -20,6 +22,7 @@ export function paintRevisedCost(
       whiteSize: 21,
     },
     modernSymbols,
+    adjustment,
   );
 }
 
@@ -29,6 +32,7 @@ export function paintEarlyCost(
   symbols: readonly string[],
   images: CanvasImages,
   modernSymbols = false,
+  adjustment?: ManaSymbolTransform,
 ) {
   paintCost(
     c,
@@ -42,6 +46,7 @@ export function paintEarlyCost(
       whiteSize: 20.5,
     },
     modernSymbols,
+    adjustment,
   );
 }
 
@@ -57,13 +62,17 @@ function paintCost(
     whiteSize: number;
   }>,
   modernSymbols: boolean,
+  adjustment?: ManaSymbolTransform,
 ) {
   symbols.forEach((symbol, index) => {
     const { size } = geometry;
-    const x = geometry.right - (symbols.length - 1 - index) * geometry.pitch - size / 2;
+    const x =
+      geometry.right -
+      (symbols.length - 1 - index) * (geometry.pitch + (adjustment?.spacing ?? 0)) -
+      size / 2;
     const y = geometry.centerY - size / 2;
     if (symbol !== 'W' || modernSymbols) {
-      paintMana(c, symbol, x, y, size, images, false);
+      paintMana(c, symbol, x, y, size, images, false, adjustment);
       return;
     }
     paintOriginalWhite(c, x, y, size, geometry.whiteSize, images.manaColors?.W);
@@ -71,8 +80,17 @@ function paintCost(
 }
 
 /** The original sun and its pale disc also occur inside early rules text. */
-export const paintEarlyMana: typeof paintMana = (c, symbol, x, y, size, images) => {
-  if (symbol !== 'W') return paintMana(c, symbol, x, y, size, images);
+export const paintEarlyMana: typeof paintMana = (
+  c,
+  symbol,
+  x,
+  y,
+  size,
+  images,
+  shadow = false,
+  adjustment,
+) => {
+  if (symbol !== 'W') return paintMana(c, symbol, x, y, size, images, shadow, adjustment);
   paintOriginalWhite(c, x, y, size, size * 0.87, images.manaColors?.W);
 };
 

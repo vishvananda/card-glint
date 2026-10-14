@@ -1,6 +1,6 @@
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
-export const SYMBOL_ADJUSTMENT_VERSION = 'symbols-v1';
+export const SYMBOL_ADJUSTMENT_VERSION = 'symbols-v2';
 /** Opt-in review deltas, in canonical 488 × 680 pixels. Right/center anchored. */
 export interface SymbolTransform {
   dx?: number;
@@ -8,8 +8,16 @@ export interface SymbolTransform {
   scaleX?: number;
   scaleY?: number;
 }
+export interface ManaSymbolTransform extends SymbolTransform {
+  /** Extra gap between discs, before whole-cost scaling; rightmost disc stays fixed. */
+  spacing?: number;
+  /** Numeral glyph only, preserving its circle and shadow. */
+  numberScale?: number;
+  numberDx?: number;
+  numberDy?: number;
+}
 export interface SymbolAdjustment {
-  mana?: SymbolTransform;
+  mana?: ManaSymbolTransform;
   set?: SymbolTransform;
 }
 export function validateSymbolAdjustment(face: RenderedCardInput): void {
@@ -25,12 +33,17 @@ export function validateSymbolAdjustment(face: RenderedCardInput): void {
     if (!value || typeof value !== 'object') throw Error('Invalid symbol adjustment.');
     for (const [key, number] of Object.entries(value)) {
       const translation = key === 'dx' || key === 'dy';
+      const numeralOffset = group === 'mana' && (key === 'numberDx' || key === 'numberDy');
+      const spacing = group === 'mana' && key === 'spacing';
+      const scale =
+        key === 'scaleX' || key === 'scaleY' || (group === 'mana' && key === 'numberScale');
+      const limit = spacing ? 4 : numeralOffset ? 4 : 8;
       if (
-        (!translation && key !== 'scaleX' && key !== 'scaleY') ||
+        (!translation && !numeralOffset && !spacing && !scale) ||
         typeof number !== 'number' ||
         !Number.isFinite(number) ||
-        number < (translation ? -8 : 0.75) ||
-        number > (translation ? 8 : 1.25)
+        number < (scale ? 0.75 : -limit) ||
+        number > (scale ? 1.25 : limit)
       )
         throw Error('Symbol adjustment exceeds supported bounds.');
     }
@@ -62,4 +75,14 @@ export function paintAdjustedSymbols(
   } finally {
     c.restore();
   }
+}
+
+/** Spacing is independent of disc size, with the final disc anchored at the right. */
+export function spacedManaBounds(
+  bounds: FaceRect,
+  count: number,
+  value?: ManaSymbolTransform,
+): FaceRect {
+  const extra = Math.max(0, count - 1) * (value?.spacing ?? 0);
+  return extra ? [bounds[0] - extra, bounds[1], bounds[2] + extra, bounds[3]] : bounds;
 }

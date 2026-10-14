@@ -111,7 +111,8 @@ export function paintFramePlateFace(
   const family = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
   const [tx, ty, tw, th] = px(rects.title),
     cost = face.manaSymbols ?? [],
-    { size, gap } = plate.mana;
+    { size } = plate.mana,
+    gap = plate.mana.gap + (face.symbolAdjustment?.mana?.spacing ?? 0);
   const costRight = plate.mana.right * W;
   const costWidth = cost.length * size + Math.max(0, cost.length - 1) * gap;
   const manaBounds: FaceRect = [
@@ -143,6 +144,7 @@ export function paintFramePlateFace(
         size,
         images,
         true,
+        face.symbolAdjustment?.mana,
       ),
     );
   });
