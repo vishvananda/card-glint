@@ -1,3 +1,4 @@
+import { calibrationPlanFile } from './major-calibration-run.mjs';
 import { calibrationGroups } from './major-calibration-groups.mjs';
 import { readFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
@@ -18,7 +19,7 @@ import {
   calibrationRevision,
   calibrationDirectory as directory,
 } from './major-calibration-run.mjs';
-const plan = await readJson(`${cacheRoot}/rollout/major-calibration-plan.json`),
+const plan = await readJson(calibrationPlanFile),
   filter = process.argv.slice(2);
 const oldStock = calibrationRevision ? await loadOldStockTargets() : null;
 const methodHash = hash(

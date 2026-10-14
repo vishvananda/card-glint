@@ -1,3 +1,4 @@
+import { calibrationPlanFile } from './major-calibration-run.mjs';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import {
@@ -15,7 +16,7 @@ import { presentation } from './adapter.mjs';
 import { openBrowser } from './browser.mjs';
 import { calibrationGroups } from './major-calibration-groups.mjs';
 
-const plan = await readJson(`${cacheRoot}/rollout/major-calibration-plan.json`);
+const plan = await readJson(calibrationPlanFile);
 import { calibrationDirectory as directory } from './major-calibration-run.mjs';
 // A frozen source tree keeps a long capture independent of worktree edits.
 const root = process.env.MAGIC_CALIBRATION_SOURCE_ROOT ?? repositoryRoot;

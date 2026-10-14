@@ -1,0 +1,925 @@
+{
+  "schemaVersion": 1,
+  "scope": "212 sampled nonfoil cards from four old-frame sets; original fitting names retained and all additional names reserved. No new runtime placements adopted.",
+  "sourceCommit": "9a1bfd9",
+  "plan": "old-symbol-alignment",
+  "revision": "alignment-v0213",
+  "groups": [
+    {
+      "key": "7ed-retro-white",
+      "samples": 58,
+      "acceptedFrameFits": 51,
+      "search": {
+        "status": "review",
+        "flags": ["reserved-regression"],
+        "calibration": 6,
+        "validation": 45,
+        "params": [-3, -1, 1.3000000000000003, 1.08],
+        "evaluated": 113,
+        "trainingBefore": 0.7002548697445924,
+        "trainingAfter": 0.8247458226651972,
+        "before": 0.7261084908058971,
+        "after": 0.8049299402003892,
+        "regressions": ["d31327f6-f076-4366-9c7a-b084516ba215"]
+      },
+      "captureHash": "a8453c4e0490b3da8b33d9201d045e2f27e4f6fd3c4f7aba60544be5af985ddf",
+      "measurementHash": "0dfb0c423d70ff37bc762cca7430f4d224bf71752096ebfc5dde9bb8b357df24",
+      "verification": {
+        "rendererHash": "1c98916da0cad91c22653249c6ca9622828cbfd65c264c93cb71f4a8049ba7ef",
+        "verificationHash": "68952946be64225398e53ce9208f22a9f8eac18ef6a1ddaeda4a719bb62a3059",
+        "reportHash": "dacc354922e9d7b18d75988a3dc6a6b4fa12cf98613e3e13bf116c9abbb05f4c",
+        "status": "review",
+        "flags": ["reserved-raster-regression", "dark-shape-regression", "light-shape-regression"],
+        "before": 0.7278582292373533,
+        "after": 0.8043555726960602,
+        "shape": {
+          "dark": {
+            "validation": 45,
+            "before": 0.397518056677347,
+            "after": 0.7096496075279461,
+            "regressions": ["172e55c6-b797-4b49-94f1-cc93e4f5b939"]
+          },
+          "light": {
+            "validation": 45,
+            "before": 0.41514625917179604,
+            "after": 0.6953862668398905,
+            "regressions": [
+              "01534212-5a65-4088-b45b-0823736a8fd5",
+              "172e55c6-b797-4b49-94f1-cc93e4f5b939",
+              "1abb3ffc-9471-42c7-a1f4-66b6a8f9672c",
+              "28a0a9ae-a1ae-41da-8308-d49e4afca3c1",
+              "2ac29c5c-3c55-4778-9bcd-642d38a0d3f9",
+              "4c393b6f-2421-4d77-9025-dac9dfaaae36",
+              "8b983b45-e8be-49e1-84c1-cec204395264",
+              "9bd991b2-8c18-4c5f-9b70-461012fee61e",
+              "d31327f6-f076-4366-9c7a-b084516ba215"
+            ]
+          }
+        },
+        "regressions": [
+          {
+            "id": "01534212-5a65-4088-b45b-0823736a8fd5",
+            "name": "Mountain",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "e70105699a0a740894eec33ed5e61c3a980bc6e8d4a3f8bba2cc42d955bea595",
+              "f1": 0.7806354252816773,
+              "distance": 1.00291600530741,
+              "census": 0.8258295684686088,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6378339737288893,
+                  "distance": 1.3967623969992708,
+                  "referenceEdges": 136,
+                  "renderedEdges": 129
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.5415860735009671,
+                  "distance": 1.73260387962386,
+                  "referenceEdges": 173,
+                  "renderedEdges": 147
+                }
+              }
+            },
+            "after": {
+              "sha256": "c3d1abf4016901ebbbe567324b430675af05d298ec175f5a567b1b6a25497948",
+              "f1": 0.7760760992936029,
+              "distance": 1.0041045064881242,
+              "census": 0.8183829256893597,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6551663747810859,
+                  "distance": 1.1465114159783458,
+                  "referenceEdges": 136,
+                  "renderedEdges": 128
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.40878039894343743,
+                  "distance": 1.7523368075737284,
+                  "referenceEdges": 173,
+                  "renderedEdges": 155
+                }
+              }
+            }
+          },
+          {
+            "id": "172e55c6-b797-4b49-94f1-cc93e4f5b939",
+            "name": "Forest",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "4295393f25c20912ae7c033c8d26aaa8d52e82d867ff7b5f22f9331110ecd88e",
+              "f1": 0.7962522470175949,
+              "distance": 0.9298213872157997,
+              "census": 0.729002232634194,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6840164515671536,
+                  "distance": 1.317468170418827,
+                  "referenceEdges": 162,
+                  "renderedEdges": 127
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.5366041703171543,
+                  "distance": 1.6352856851726598,
+                  "referenceEdges": 173,
+                  "renderedEdges": 153
+                }
+              }
+            },
+            "after": {
+              "sha256": "97ecc41aa7b18baf3b910c33f6334a9034fd0512328125c0422fbd13857b8da6",
+              "f1": 0.795068272166849,
+              "distance": 0.9042054567498575,
+              "census": 0.7151032986384076,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6443633112286715,
+                  "distance": 1.1567128730275673,
+                  "referenceEdges": 162,
+                  "renderedEdges": 127
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4737850412479962,
+                  "distance": 1.6197686629863743,
+                  "referenceEdges": 173,
+                  "renderedEdges": 156
+                }
+              }
+            }
+          },
+          {
+            "id": "1abb3ffc-9471-42c7-a1f4-66b6a8f9672c",
+            "name": "Plains",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "285748bec7ce5dd7ebd1bae97914437078e1f5ad0128db6a89d961d26c85674b",
+              "f1": 0.7798974668662507,
+              "distance": 1.0108316564109927,
+              "census": 0.7575975191774115,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6296588444093867,
+                  "distance": 1.3709950446489216,
+                  "referenceEdges": 171,
+                  "renderedEdges": 141
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.502820195350117,
+                  "distance": 1.6030048057932547,
+                  "referenceEdges": 164,
+                  "renderedEdges": 176
+                }
+              }
+            },
+            "after": {
+              "sha256": "24fc093d89bb7ab98f422ae6e918b23b04281a88a560e8d1dfa148eecd55356d",
+              "f1": 0.7721839486545369,
+              "distance": 1.0185998267428502,
+              "census": 0.7420597355965399,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6151797603195739,
+                  "distance": 1.2361690745454783,
+                  "referenceEdges": 171,
+                  "renderedEdges": 160
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.3641250248855265,
+                  "distance": 1.8274291901655588,
+                  "referenceEdges": 164,
+                  "renderedEdges": 168
+                }
+              }
+            }
+          },
+          {
+            "id": "28a0a9ae-a1ae-41da-8308-d49e4afca3c1",
+            "name": "Island",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "642faa26cd9e90b7a563a9786b7eb8ee9db8873e0303b4510a079e91d7c291e9",
+              "f1": 0.7701348200535151,
+              "distance": 1.05079959800903,
+              "census": 0.817189240808531,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6447766352717532,
+                  "distance": 1.3423493342654762,
+                  "referenceEdges": 138,
+                  "renderedEdges": 130
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.542836573074154,
+                  "distance": 1.7559422037431172,
+                  "referenceEdges": 180,
+                  "renderedEdges": 147
+                }
+              }
+            },
+            "after": {
+              "sha256": "8a8c3a76a666b13a210b20ef5d7d3cc615f4126c9e5dc57ffd3aacc287ba825f",
+              "f1": 0.757016188074514,
+              "distance": 1.0555765516895088,
+              "census": 0.815024669743753,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6497567755385684,
+                  "distance": 1.0998566405294274,
+                  "referenceEdges": 138,
+                  "renderedEdges": 128
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4444444444444444,
+                  "distance": 1.718174264769928,
+                  "referenceEdges": 180,
+                  "renderedEdges": 153
+                }
+              }
+            }
+          },
+          {
+            "id": "2ac29c5c-3c55-4778-9bcd-642d38a0d3f9",
+            "name": "City of Brass",
+            "material": "L",
+            "rarity": "rare",
+            "cohort": "validation",
+            "before": {
+              "sha256": "eb3ba6eb181c238a0e1ee35f8b9457c05e324c2dd380afb54fc0e1a09b31196c",
+              "f1": 0.7166924436588599,
+              "distance": 1.3637980733764832,
+              "census": 0.8425401095206072,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6562837793121704,
+                  "distance": 1.1886328646548119,
+                  "referenceEdges": 197,
+                  "renderedEdges": 174
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.5078869628225852,
+                  "distance": 1.880557906966345,
+                  "referenceEdges": 147,
+                  "renderedEdges": 119
+                }
+              }
+            },
+            "after": {
+              "sha256": "01705582bd0d603a357ae341f1597f06877ac084baa585cf6d9db1dfdc73527a",
+              "f1": 0.7209126011601461,
+              "distance": 1.3428792845309443,
+              "census": 0.8444615236814296,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6756830707891959,
+                  "distance": 1.1312056706316906,
+                  "referenceEdges": 197,
+                  "renderedEdges": 192
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4332425068119891,
+                  "distance": 1.767565858530316,
+                  "referenceEdges": 147,
+                  "renderedEdges": 121
+                }
+              }
+            }
+          },
+          {
+            "id": "4c393b6f-2421-4d77-9025-dac9dfaaae36",
+            "name": "Karplusan Forest",
+            "material": "L",
+            "rarity": "rare",
+            "cohort": "validation",
+            "before": {
+              "sha256": "4108c4dc285a7349532bb73e98f1fc3d9fc6df992ea7e094781412cc90e5be88",
+              "f1": 0.728456956763937,
+              "distance": 1.1632526248654735,
+              "census": 0.8525371368476403,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6229985443959244,
+                  "distance": 1.3470831695071537,
+                  "referenceEdges": 183,
+                  "renderedEdges": 174
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.5417501343626325,
+                  "distance": 1.5832734701656808,
+                  "referenceEdges": 157,
+                  "renderedEdges": 119
+                }
+              }
+            },
+            "after": {
+              "sha256": "000aa5f339ccdadae0edc09a5959a40255d4db5f077ea956fda6e9149594ad29",
+              "f1": 0.7216212835161171,
+              "distance": 1.1462602907742117,
+              "census": 0.8412646246877875,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6451612903225806,
+                  "distance": 1.1454055630016686,
+                  "referenceEdges": 183,
+                  "renderedEdges": 192
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4018200461420149,
+                  "distance": 1.8150376089436133,
+                  "referenceEdges": 157,
+                  "renderedEdges": 121
+                }
+              }
+            }
+          },
+          {
+            "id": "8b983b45-e8be-49e1-84c1-cec204395264",
+            "name": "Brushland",
+            "material": "L",
+            "rarity": "rare",
+            "cohort": "validation",
+            "before": {
+              "sha256": "39c91418f8ba9d5691f8c84a9e8d2f89b3596b9b0224eb61796aaef514372e0f",
+              "f1": 0.726497584445595,
+              "distance": 1.2879141584082219,
+              "census": 0.8676205876071635,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6525284084829549,
+                  "distance": 1.255741539910824,
+                  "referenceEdges": 205,
+                  "renderedEdges": 174
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.44825684700692364,
+                  "distance": 1.9740321084531416,
+                  "referenceEdges": 150,
+                  "renderedEdges": 119
+                }
+              }
+            },
+            "after": {
+              "sha256": "c04b2eb993561be8c8f98941f5032d47e86e81d86f53a9ce2a800e66532dc182",
+              "f1": 0.7227006949192323,
+              "distance": 1.2866362714027084,
+              "census": 0.8634408274094639,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6491138844333164,
+                  "distance": 1.1807525918675148,
+                  "referenceEdges": 205,
+                  "renderedEdges": 192
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4217298070050035,
+                  "distance": 1.8117051088875646,
+                  "referenceEdges": 150,
+                  "renderedEdges": 121
+                }
+              }
+            }
+          },
+          {
+            "id": "9bd991b2-8c18-4c5f-9b70-461012fee61e",
+            "name": "Adarkar Wastes",
+            "material": "L",
+            "rarity": "rare",
+            "cohort": "validation",
+            "before": {
+              "sha256": "80e9c63d48ce0cb095cfcd02fdd462e7d93745e2bade845d7dadc463ac847369",
+              "f1": 0.7058698690021596,
+              "distance": 1.2616039616399,
+              "census": 0.7695050681810678,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6225796537240037,
+                  "distance": 1.3405863715987945,
+                  "referenceEdges": 179,
+                  "renderedEdges": 174
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.48697457187337834,
+                  "distance": 1.85517315745094,
+                  "referenceEdges": 162,
+                  "renderedEdges": 119
+                }
+              }
+            },
+            "after": {
+              "sha256": "06dc86873404fb104fe723016a61f797dd9b98a87f890fbbcf21be2208d7650a",
+              "f1": 0.6890023399276749,
+              "distance": 1.2826096885193303,
+              "census": 0.7632317495955361,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6443134864187495,
+                  "distance": 1.245153137404659,
+                  "referenceEdges": 179,
+                  "renderedEdges": 192
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.3902344506878512,
+                  "distance": 1.9849570595802135,
+                  "referenceEdges": 162,
+                  "renderedEdges": 121
+                }
+              }
+            }
+          },
+          {
+            "id": "d31327f6-f076-4366-9c7a-b084516ba215",
+            "name": "Sulfurous Springs",
+            "material": "L",
+            "rarity": "rare",
+            "cohort": "validation",
+            "before": {
+              "sha256": "a7c41d716b577d871a2aaebca4bdc8cd765bc1b756a4f6bf954ab42095e57fd7",
+              "f1": 0.6983235983340342,
+              "distance": 1.2856010095847872,
+              "census": 0.7810931496417322,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6582222549525001,
+                  "distance": 1.285421398817947,
+                  "referenceEdges": 177,
+                  "renderedEdges": 174
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.5057911065149948,
+                  "distance": 1.778650328590202,
+                  "referenceEdges": 159,
+                  "renderedEdges": 119
+                }
+              }
+            },
+            "after": {
+              "sha256": "7f6c0a506b80ef71e8d4218265963fc4ef724e731b2059752518dd3f0739c47e",
+              "f1": 0.6658521373398795,
+              "distance": 1.3258756870492596,
+              "census": 0.7564470905881131,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.6398234969663541,
+                  "distance": 1.2349063880994158,
+                  "referenceEdges": 177,
+                  "renderedEdges": 192
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.41904061753354166,
+                  "distance": 1.792923898404809,
+                  "referenceEdges": 159,
+                  "renderedEdges": 121
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "usg-retro-black",
+      "samples": 56,
+      "acceptedFrameFits": 41,
+      "search": {
+        "status": "review",
+        "flags": ["reserved-regression"],
+        "calibration": 5,
+        "validation": 36,
+        "params": [1.5, -1, 1.12, 1.12],
+        "evaluated": 101,
+        "trainingBefore": 0.7066279863581497,
+        "trainingAfter": 0.7575949650744601,
+        "before": 0.7282525210889222,
+        "after": 0.771410889445328,
+        "regressions": [
+          "050b4a82-a1d5-4dcc-9264-96005fdf53f5",
+          "0b43815e-8b8a-4745-bdf3-f72c8d60c48c",
+          "e48d55ff-10d0-4d9b-9202-02ebb2137953"
+        ]
+      },
+      "captureHash": "c164e1f00bfb615d898688b6c76f39f9b1d9d911c9981f019adfe98630136b4e",
+      "measurementHash": "d5cfc4d2cedd5bac86e070ac23fae833228abe659308752ea5f8c67a41d2c702",
+      "verification": {
+        "rendererHash": "1c98916da0cad91c22653249c6ca9622828cbfd65c264c93cb71f4a8049ba7ef",
+        "verificationHash": "68952946be64225398e53ce9208f22a9f8eac18ef6a1ddaeda4a719bb62a3059",
+        "reportHash": "bd0713e568088edc5c246d3c74571895328e5f5a6895bfb3ba1bd7bd7600ebc1",
+        "status": "review",
+        "flags": ["reserved-raster-regression", "dark-shape-regression", "light-shape-regression"],
+        "before": 0.7308929899621496,
+        "after": 0.7684406258523221,
+        "shape": {
+          "dark": {
+            "validation": 36,
+            "before": 0.6478604795089611,
+            "after": 0.7353557860842435,
+            "regressions": [
+              "0b43815e-8b8a-4745-bdf3-f72c8d60c48c",
+              "0f2a5c67-f76a-4021-959e-3e084a06b80f",
+              "43297ca7-846c-4bc4-a347-997279bc73d6",
+              "e48d55ff-10d0-4d9b-9202-02ebb2137953"
+            ]
+          },
+          "light": {
+            "validation": 36,
+            "before": 0.6768401281958271,
+            "after": 0.8175070190597336,
+            "regressions": ["0f2a5c67-f76a-4021-959e-3e084a06b80f"]
+          }
+        },
+        "regressions": [
+          {
+            "id": "a75fca33-fa06-4385-866c-5d463ae6aaf6",
+            "name": "Opal Archangel",
+            "material": "W",
+            "rarity": "rare",
+            "cohort": "calibration",
+            "before": {
+              "sha256": "5e03e78059b2ab6333a8c6fa31ce019968d4f36e2faa9de6cb8a2572c9081f5e",
+              "f1": 0.8038771444712041,
+              "distance": 0.9210677731736903,
+              "census": 0.6629783438780346,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.614736184826725,
+                  "distance": 1.3575558736179927,
+                  "referenceEdges": 322,
+                  "renderedEdges": 240
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.5425915386074748,
+                  "distance": 1.6092810778271702,
+                  "referenceEdges": 273,
+                  "renderedEdges": 231
+                }
+              }
+            },
+            "after": {
+              "sha256": "a45336ab9548531174f19a9d758cb70d5361c6d024830c91cbb4030405ac3bec",
+              "f1": 0.7882338225483657,
+              "distance": 0.9699312545691132,
+              "census": 0.6596337690571086,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.5784887873160978,
+                  "distance": 1.4174121395534158,
+                  "referenceEdges": 322,
+                  "renderedEdges": 262
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4834946910332861,
+                  "distance": 1.6806214629837641,
+                  "referenceEdges": 273,
+                  "renderedEdges": 275
+                }
+              }
+            }
+          },
+          {
+            "id": "050b4a82-a1d5-4dcc-9264-96005fdf53f5",
+            "name": "Lingering Mirage",
+            "material": "U",
+            "rarity": "uncommon",
+            "cohort": "validation",
+            "before": {
+              "sha256": "f53121d47b89cd924708e535716f24386ebe096b6638b9f8d321c7e41b604dbc",
+              "f1": 0.5537915407131325,
+              "distance": 1.5089154080242702,
+              "census": 0.628556423959717,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.5316455696202532,
+                  "distance": 1.916296384292564,
+                  "referenceEdges": 290,
+                  "renderedEdges": 184
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.7381653939091158,
+                  "distance": 0.9625438863671052,
+                  "referenceEdges": 301,
+                  "renderedEdges": 218
+                }
+              }
+            },
+            "after": {
+              "sha256": "ede0874dbab030435ed80f90cdfce721494067d772caec57081a7a1ae383a1a3",
+              "f1": 0.5267726274997677,
+              "distance": 1.5265890112500036,
+              "census": 0.581539031849495,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.5200057077625571,
+                  "distance": 1.742717165871896,
+                  "referenceEdges": 290,
+                  "renderedEdges": 230
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.7245411381191978,
+                  "distance": 0.9669234399012099,
+                  "referenceEdges": 301,
+                  "renderedEdges": 291
+                }
+              }
+            }
+          },
+          {
+            "id": "0b43815e-8b8a-4745-bdf3-f72c8d60c48c",
+            "name": "Forest",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "9c2336ab6293594f739833930ce81647c63b7dc73681992076f67e0c80dc16b1",
+              "f1": 0.7504206501877859,
+              "distance": 1.0563300536853413,
+              "census": 0.6385636425274467,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.8342921967425654,
+                  "distance": 0.9752425179799642,
+                  "referenceEdges": 326,
+                  "renderedEdges": 272
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.7127219316614234,
+                  "distance": 1.0234024173457184,
+                  "referenceEdges": 283,
+                  "renderedEdges": 249
+                }
+              }
+            },
+            "after": {
+              "sha256": "a6fc42e2caaf5c6a34a05f1de385492b8ae37fcfd629b7ae76cd84b6b2acd3f9",
+              "f1": 0.7212098902508773,
+              "distance": 1.050844318930551,
+              "census": 0.5929016611468955,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.7537936008927721,
+                  "distance": 0.9899074232340774,
+                  "referenceEdges": 326,
+                  "renderedEdges": 299
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.7150894095818475,
+                  "distance": 0.933473383969274,
+                  "referenceEdges": 283,
+                  "renderedEdges": 290
+                }
+              }
+            }
+          },
+          {
+            "id": "0f2a5c67-f76a-4021-959e-3e084a06b80f",
+            "name": "Intrepid Hero",
+            "material": "W",
+            "rarity": "rare",
+            "cohort": "validation",
+            "before": {
+              "sha256": "8f02b638b6c4ff6a1fb0771ff5112c2d0fe640bb4842b3ca7075c91cb94c06fc",
+              "f1": 0.7798664805944254,
+              "distance": 1.0426711569028044,
+              "census": 0.635324950675815,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.5740021742506601,
+                  "distance": 1.3842332737238117,
+                  "referenceEdges": 341,
+                  "renderedEdges": 240
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.510674347678753,
+                  "distance": 1.6771577235630581,
+                  "referenceEdges": 275,
+                  "renderedEdges": 231
+                }
+              }
+            },
+            "after": {
+              "sha256": "56f724d65c0b006a1e57d7d106458fd214adaa0eac5805b600635db866d342c1",
+              "f1": 0.7693851120879923,
+              "distance": 1.079383333348002,
+              "census": 0.635766659795636,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.5538971807628524,
+                  "distance": 1.4108498465234027,
+                  "referenceEdges": 341,
+                  "renderedEdges": 262
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.4670958613371065,
+                  "distance": 1.6917546937682413,
+                  "referenceEdges": 275,
+                  "renderedEdges": 275
+                }
+              }
+            }
+          },
+          {
+            "id": "43297ca7-846c-4bc4-a347-997279bc73d6",
+            "name": "Island",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "399e9b8b7069706edd10b6c8432aef7a6c8aea3f0105fa33e626d0e9f813a860",
+              "f1": 0.7614483083392475,
+              "distance": 1.01565982448825,
+              "census": 0.7656523551479784,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.8382214081347221,
+                  "distance": 0.8285207431100333,
+                  "referenceEdges": 309,
+                  "renderedEdges": 270
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.7738172391445236,
+                  "distance": 0.8513580928362496,
+                  "referenceEdges": 284,
+                  "renderedEdges": 249
+                }
+              }
+            },
+            "after": {
+              "sha256": "aa1598f4351d8bba339bb5bdebb6f446a5c93e333caf547540f1369cc7de6ec0",
+              "f1": 0.7536152242448234,
+              "distance": 1.0472337524721553,
+              "census": 0.7386966791718772,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.8066972495336223,
+                  "distance": 0.8636486592547816,
+                  "referenceEdges": 309,
+                  "renderedEdges": 302
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.8166370783667258,
+                  "distance": 0.7754006789105521,
+                  "referenceEdges": 284,
+                  "renderedEdges": 289
+                }
+              }
+            }
+          },
+          {
+            "id": "e48d55ff-10d0-4d9b-9202-02ebb2137953",
+            "name": "Remote Isle",
+            "material": "L",
+            "rarity": "common",
+            "cohort": "validation",
+            "before": {
+              "sha256": "202ca266214e28831dbfc449eab7e5b018418b466c1bc4bb5dcbe057549af798",
+              "f1": 0.8405891509273181,
+              "distance": 0.7283944492644701,
+              "census": 0.8166119594691024,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.8796955694482197,
+                  "distance": 0.6003572580084872,
+                  "referenceEdges": 335,
+                  "renderedEdges": 280
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.7906976744186046,
+                  "distance": 0.8059141483889857,
+                  "referenceEdges": 284,
+                  "renderedEdges": 244
+                }
+              }
+            },
+            "after": {
+              "sha256": "05927754fcc24bc70abf53fed3378d6946b6b18865ba31da10bca850948a8463",
+              "f1": 0.8163793368997134,
+              "distance": 0.806129565167859,
+              "census": 0.7690024261452832,
+              "shape": {
+                "dark": {
+                  "status": "measured",
+                  "f1": 0.8319679315624013,
+                  "distance": 0.7393698783138519,
+                  "referenceEdges": 335,
+                  "renderedEdges": 307
+                },
+                "light": {
+                  "status": "measured",
+                  "f1": 0.8069899772696069,
+                  "distance": 0.7719950851746102,
+                  "referenceEdges": 284,
+                  "renderedEdges": 286
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "ulg-retro-black",
+      "samples": 51,
+      "acceptedFrameFits": 41,
+      "search": {
+        "status": "review",
+        "flags": ["no-reserved-gain"],
+        "calibration": 5,
+        "validation": 36,
+        "params": [0, 0, 1, 1],
+        "evaluated": 49,
+        "trainingBefore": 0.8036940573117632,
+        "trainingAfter": 0.8036940573117632,
+        "before": 0.7873836319042452,
+        "after": 0.7873836319042452,
+        "regressions": []
+      },
+      "captureHash": "e55a321900dee6a6b26afdd1da275d60288ced7e3f87291d93cc920b42b88679",
+      "measurementHash": "e2c3c9150ac0ec4390f286a428fce74681ad54a814268e2a1e3c7fc60a75d34d",
+      "verification": null
+    },
+    {
+      "key": "uds-retro-black",
+      "samples": 47,
+      "acceptedFrameFits": 39,
+      "search": {
+        "status": "review",
+        "flags": ["no-reserved-gain"],
+        "calibration": 5,
+        "validation": 34,
+        "params": [0, 0, 1.02, 1],
+        "evaluated": 59,
+        "trainingBefore": 0.8459457549689257,
+        "trainingAfter": 0.8465095644884378,
+        "before": 0.7916213695315377,
+        "after": 0.7887221457719596,
+        "regressions": []
+      },
+      "captureHash": "1b0186f7d09deb7d013854e7f341ed45aaa63ef531bc4ec69accef82d2a66c17",
+      "measurementHash": "743ea5edbb81311154d2f680ce990a13d430faa31baba62a1065a56c166389ce",
+      "verification": null
+    }
+  ]
+}

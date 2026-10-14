@@ -1,3 +1,4 @@
+import { calibrationPlanFile } from './major-calibration-run.mjs';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { cacheRoot, fixtureRoot, hash, readJson, writeJson, root, sourceHash } from './common.mjs';
@@ -6,7 +7,7 @@ import {
   calibrationDirectory as directory,
 } from './major-calibration-run.mjs';
 if (!calibrationRevision) throw Error('An explicit follow-up revision is required');
-const plan = await readJson(cacheRoot + '/rollout/major-calibration-plan.json');
+const plan = await readJson(calibrationPlanFile);
 const methodHash = hash(
   Buffer.concat(
     await Promise.all(

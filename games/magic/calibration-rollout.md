@@ -95,3 +95,40 @@ The follow-up [frame-color study](frame-asset-research.md#revised-color-alternat
 also tests ABU source textures and, following user review, source-derived
 irregular paper masks with separate border/paper transforms. The earlier
 whole-frame-only constraint no longer excludes this masked alternative.
+
+## Follow-up with a larger old-frame sample
+
+The v0.2.13 source recheck uses 212 nonfoil cards from Seventh Edition and the
+three Urza sets, preserving the original six fitting names per set and reserving
+all additional cached frame-study names. Of these, 172 pass frame normalization.
+The [follow-up receipt](fixtures/accuracy/old-symbol-alignment-v0213.json)
+records the source identities, candidate deltas, scores and regressions. Detailed
+per-card transforms and image hashes remain in the local accuracy cache.
+
+Seventh Edition's wider symbol improves the reserved broad-region F1 from
+0.728 to 0.804 across 45 cards, but regresses on Sulfurous Springs. Urza's Saga's
+larger symbol improves 0.731 to 0.768 across 36 cards, with regressions including
+Lingering Mirage, Forest and Remote Isle. These are fresh Canvas results after
+frozen per-card frame normalization. Neither proposal is adopted. Legacy's
+identity fit and Destiny's negligible width change offer no reserved gain.
+
+A second check freezes a smaller envelope around the baseline symbol and scores
+dark ink and light outlines separately. It catches regressions hidden by nearby
+frame/type edges in the broad metric; candidates that extend beyond its envelope
+are rejected. Both metrics must improve before accepting the new study. This
+check is insensitive to moderate brightness changes, but remains a structural
+score: gradient colors and material polarity still require visual inspection.
+
+```sh
+node games/magic/tools/accuracy/symbol-alignment-plan.mjs
+export MAGIC_CALIBRATION_PLAN=old-symbol-alignment
+export MAGIC_CALIBRATION_REVISION=alignment-v0213
+node games/magic/tools/accuracy/major-calibration-capture.mjs
+node games/magic/tools/accuracy/major-calibration-measure.mjs
+node games/magic/tools/accuracy/major-calibration-verify.mjs 7ed usg --include-review --symbol-shape
+```
+
+Study plans and revision directories are explicit, preserving the original
+major-set cohort and prior evidence. The remaining outliers need inspection of
+frame/stock normalization and symbol material before trying another shared fit;
+their individual placements are not runtime exceptions.
