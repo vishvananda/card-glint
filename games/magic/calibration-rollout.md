@@ -132,3 +132,63 @@ Study plans and revision directories are explicit, preserving the original
 major-set cohort and prior evidence. The remaining outliers need inspection of
 frame/stock normalization and symbol material before trying another shared fit;
 their individual placements are not runtime exceptions.
+
+### Eighth-frame footer pass (v92 painter)
+
+Use the exact pinned Eighth border mask only after native-resolution comparison
+with that same material's plate. Three visible sides must agree; this permits a
+dark fourth side without borrowing a sibling color's boundary. Scan fitting
+still needs its own reserved strips and bounded transform. The target report,
+plate, mask, geometry and per-card fit identities are retained in the cache.
+Changing a target report invalidates measurements even when its revision name
+stays the same. This brings the 8ED/9ED white-stock sample to **24/24** accepted
+fits. Across 8ED, 9ED, 10E, M10, M14 and MRD, **51/80** scans pass; the other 29
+remain excluded, chiefly black-stock boundaries with weak or inconsistent ink.
+
+The footer now uses the printed artist brush and larger Matrix lettering, plus
+Matrix Bold Small Caps lining numerals for power/toughness. Artist baselines and
+start positions for 8ED/9ED are fitted from their development names; later sets
+use the shared family setting. The badge asset itself is unchanged. Variable
+stats use five-point stars because the imported font encodes `*` as a dot.
+Fonts and brushes are loaded through existing preparation caches, not per frame.
+
+The [fit record](fixtures/accuracy/eighth-footer-fit.json) and
+[fresh-raster verification](fixtures/accuracy/eighth-footer-verified.json)
+retain the reference and normalization identities. Names used for fitting in
+any printing cannot also count as reserved examples. On reserved names:
+
+| Region          | Count | Full-region edge F1 | Glyph-only edge F1 |
+| --------------- | ----: | ------------------: | -----------------: |
+| Artist          |    25 |         .640 → .842 |        .119 → .475 |
+| Power/toughness |    19 |         .596 → .771 |        .335 → .457 |
+
+The second metric renders ink on a flat background, preventing matching frame
+texture from hiding lettering errors. The CPU proposal loop caches reference
+edges and reproduces the final two-polarity F1 exactly; Chromium is needed only
+for font rasterization and final production validation. These are structural
+overlap scores, not percentages of overall card accuracy.
+
+Review remains for M10 Merfolk Looter and M14 Galerider Sliver: their thin `1/1`
+glyph-only scores dip by .021/.023 despite improved full-region scores. A
+half-pixel development sweep retains the same median-optimal shared placement;
+do not fit these individual scans. Magnivore found the star-encoding bug and
+is now a regression example, not independent proof of the star correction.
+Hildebrandt credits whose printed wording differs from the metadata are
+excluded from artist scoring. Missing host-supplied legal text, badge contour
+and shadow differences, and rejected black-stock scans remain separate work.
+
+```sh
+node games/magic/tools/accuracy/eighth-footer-plan.mjs
+node games/magic/tools/accuracy/plate-stock-capture.mjs
+MAGIC_CALIBRATION_REVISION=frame-footer-v0214 \
+MAGIC_CALIBRATION_PLAN=eighth-footer \
+MAGIC_CALIBRATION_PLATE_STOCK=eighth-stock-targets-v0214 \
+node games/magic/tools/accuracy/major-calibration-measure.mjs
+node games/magic/tools/accuracy/eighth-footer-study.mjs artist
+node games/magic/tools/accuracy/eighth-footer-study.mjs stats --refine
+node games/magic/tools/accuracy/eighth-footer-verify.mjs
+```
+
+The local review gallery contains aligned scan / v0.2.14 / updated footer crops
+and red/green edges, including the flagged examples. It remains outside the
+library repository and public showcase.

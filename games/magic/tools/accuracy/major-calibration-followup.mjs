@@ -1,5 +1,5 @@
+import { calibrationMethodHash } from './major-calibration-identity.mjs';
 import { calibrationPlanFile } from './major-calibration-run.mjs';
-import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { cacheRoot, fixtureRoot, hash, readJson, writeJson, root, sourceHash } from './common.mjs';
 import {
@@ -8,24 +8,7 @@ import {
 } from './major-calibration-run.mjs';
 if (!calibrationRevision) throw Error('An explicit follow-up revision is required');
 const plan = await readJson(calibrationPlanFile);
-const methodHash = hash(
-  Buffer.concat(
-    await Promise.all(
-      [
-        'major-calibration-metrics.mjs',
-        'major-calibration-measure.mjs',
-        'stock-targets.mjs',
-        'old-frame-normalization.mjs',
-        'scan-affine-fit.mjs',
-        'scan-frame-anchors.mjs',
-        'scan-frame-fit.mjs',
-        'pixels-pure.mjs',
-        'edges.mjs',
-        'metrics.mjs',
-      ].map((n) => readFile(new URL(n, import.meta.url))),
-    ),
-  ),
-);
+const methodHash = await calibrationMethodHash();
 const rendererHash = await sourceHash(root + '/games/magic/src');
 const policyServer = await createServer({
   configFile: false,

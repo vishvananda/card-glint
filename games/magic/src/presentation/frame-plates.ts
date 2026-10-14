@@ -1,3 +1,4 @@
+import { eighthArtistBrush } from './eighth-footer.js';
 import type { FaceRects } from './special-frames.js';
 import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './face-layout.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
@@ -107,7 +108,9 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
 export function framePlateUrls(face: RenderedCardInput): string[] | null {
   const plate = framePlate(face);
   if (!plate) return null;
+  const brush = eighthArtistBrush(face);
   return [
+    ...(brush ? [brush] : []),
     plate.frame,
     ...(plate.rightFrame ? [plate.rightFrame] : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),

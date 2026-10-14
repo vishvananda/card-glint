@@ -81,6 +81,10 @@ try {
       hash(JSON.stringify(capture)) !== measured.captureHash
     )
       throw Error('Stale source capture');
+    // A follow-up may add prepared assets outside the symbol ROI (for example
+    // the artist brush). Resolve today's face assets; the blank-region equality
+    // check below still determines whether its frozen symbol evidence transfers.
+    session.addAssets(await fetchComponents(capture.samples, {}, (sample) => sample.face));
     const rows = [];
     for (const sample of capture.samples) {
       const comparison = measured.rows.find((r) => r.id === sample.id);

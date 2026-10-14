@@ -1,3 +1,4 @@
+import { calibrationMethodHash } from './major-calibration-identity.mjs';
 import { calibrationPlanFile } from './major-calibration-run.mjs';
 import { calibrationGroups } from './major-calibration-groups.mjs';
 import { readFile } from 'node:fs/promises';
@@ -24,25 +25,7 @@ const plan = await readJson(calibrationPlanFile),
 const oldStock = calibrationRevision ? await loadOldStockTargets() : null;
 const plateRevision = process.env.MAGIC_CALIBRATION_PLATE_STOCK;
 const plateStock = plateRevision ? await loadPlateStockTargets(plateRevision) : null;
-const methodHash = hash(
-  Buffer.concat(
-    await Promise.all(
-      [
-        'major-calibration-metrics.mjs',
-        'major-calibration-measure.mjs',
-        'stock-targets.mjs',
-        'old-frame-normalization.mjs',
-        'plate-stock-target.mjs',
-        'scan-affine-fit.mjs',
-        'scan-frame-anchors.mjs',
-        'scan-frame-fit.mjs',
-        'pixels-pure.mjs',
-        'edges.mjs',
-        'metrics.mjs',
-      ].map((n) => readFile(new URL(n, import.meta.url))),
-    ),
-  ),
-);
+const methodHash = await calibrationMethodHash();
 for (const group of calibrationGroups(plan.rows, filter)) {
   const key = group.key.replaceAll('/', '-');
   let capture;

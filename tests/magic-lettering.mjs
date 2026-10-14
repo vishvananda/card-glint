@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import { compareLettering } from '../games/magic/tools/accuracy/lettering-metrics.mjs';
+import {
+  compareLettering,
+  prepareLetteringEdges,
+  scoreLetteringEdges,
+} from '../games/magic/tools/accuracy/lettering-metrics.mjs';
 import { letteringContrast } from '../games/magic/tools/accuracy/lettering-contrast.mjs';
 
 // Paired dark strokes and pale highlights model the failure seen in Revised:
@@ -59,6 +63,17 @@ assert.ok(letteringContrast(solid, hollow, width, height) < 0.7);
 assert.ok(letteringContrast(solid, shifted, width, height) < 0.7);
 assert.equal(letteringContrast(new Float32Array(32), new Float32Array(32), 8, 4), null);
 assert.throws(() => letteringContrast(solid, solid.slice(1), width, height), /dimensions/);
+for (const a of [reference, solid, hollow, shifted, new Float32Array(width * height)]) {
+  const prepared = prepareLetteringEdges(a, width, height);
+  for (const b of [reference, missingHighlight, solid, hollow, shifted])
+    assert.equal(
+      scoreLetteringEdges(prepared, b),
+      compareLettering(a, b, width, height).edgeF1,
+      'Cached sweep score must equal the final two-polarity F1',
+    );
+  assert.throws(() => scoreLetteringEdges(prepared, solid.slice(1)), /dimensions/);
+}
+assert.throws(() => prepareLetteringEdges(solid.slice(1), width, height), /dimensions/);
 console.log(
   'Lettering metrics tolerate tone changes and reject missing highlights, hollow strokes and displacement.',
 );

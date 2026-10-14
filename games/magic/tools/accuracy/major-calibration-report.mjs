@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { calibrationMethodHash } from './major-calibration-identity.mjs';
 import { createServer } from 'vite';
 import { cacheRoot, fixtureRoot, readJson, writeJson, hash, root } from './common.mjs';
 import { majorFrameCandidate } from './major-frame-policy.mjs';
@@ -15,22 +15,7 @@ const { hasNoPrintedSetSymbol } = await policyServer.ssrLoadModule(
   '/games/magic/src/presentation/historical-set-symbol.ts',
 );
 await policyServer.close();
-const methodHash = hash(
-  Buffer.concat(
-    await Promise.all(
-      [
-        'major-calibration-metrics.mjs',
-        'major-calibration-measure.mjs',
-        'scan-affine-fit.mjs',
-        'scan-frame-anchors.mjs',
-        'scan-frame-fit.mjs',
-        'pixels-pure.mjs',
-        'edges.mjs',
-        'metrics.mjs',
-      ].map((n) => readFile(new URL(n, import.meta.url))),
-    ),
-  ),
-);
+const methodHash = await calibrationMethodHash();
 const optional = async (file) => {
   try {
     return await readJson(file);

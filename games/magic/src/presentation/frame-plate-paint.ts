@@ -1,5 +1,5 @@
 import { styledSymbolBounds } from './styled-symbol-placement.js';
-import { resolveCardProfile } from './profile.js';
+import { paintEighthFooter } from './eighth-footer.js';
 import { framePlate } from './frame-plates.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
@@ -176,8 +176,15 @@ export function paintFramePlateFace(
   paintRulesLayout(c, ordinaryTextLayout(c, face), images);
   if (face.power != null && face.toughness != null) {
     c.drawImage(required(plate.pt), ...px(rects.stats));
+  }
+  if (eighth) {
+    paintEighthFooter(c, face, images);
+    c.restore();
+    return;
+  }
+  if (face.power != null && face.toughness != null) {
     const [sx, sy, sw, sh] = px(rects.stats);
-    c.font = `bold ${eighth ? 29 : 25}px "${family}", Georgia`;
+    c.font = `bold 25px "${family}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     c.fillText(`${face.power}/${face.toughness}`, sx + sw * 0.52, sy + sh * 0.52, sw * 0.85);
@@ -185,12 +192,8 @@ export function paintFramePlateFace(
   const [fx, fy, fw] = px(rects.footer);
   c.textAlign = 'left';
   c.textBaseline = 'top';
-  c.fillStyle = eighth
-    ? ['B', 'Colourless', 'Land'].includes(resolveCardProfile(face).boxes)
-      ? '#fff'
-      : '#17140f'
-    : '#fff';
-  c.font = `${eighth ? 14 : 12}px "${family}", Georgia`;
+  c.fillStyle = '#fff';
+  c.font = `12px "${family}", Georgia`;
   c.fillText(face.artist ?? '', fx, fy, fw);
   if (face.legalText) {
     c.font = '9px "CardRenderer MTG MPlantin", Georgia';
@@ -202,10 +205,12 @@ export function paintFramePlateFace(
 let matrixFont: Promise<void> | null = null;
 export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
   if (face.frameAssetFamily !== 'eighth') return Promise.resolve();
-  return (matrixFont ??= document.fonts
-    .load('bold 24px "CardRenderer MTG Matrix"')
-    .then((fonts) => {
-      if (!fonts.length || fonts.some((font) => font.status !== 'loaded'))
+  return (matrixFont ??= Promise.all([
+    document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
+    document.fonts.load('700 29px "CardRenderer MTG Matrix Small Caps"'),
+  ])
+    .then((matches) => {
+      if (matches.some((fonts) => !fonts.length || fonts.some((font) => font.status !== 'loaded')))
         throw Error('Replacement Eighth Edition frames need card-glint/magic/fonts.css.');
     })
     .catch((error: unknown) => {

@@ -75,6 +75,7 @@ try {
     for (const [family, style, weight] of [
       ['Beleren', 'normal', '400 700'],
       ['Matrix', 'normal', '700'],
+      ['Matrix Small Caps', 'normal', '700'],
       ['MPlantin', 'normal', '400'],
       ['MPlantin', 'italic', '400'],
       ['Relay', 'normal', '400'],
@@ -289,6 +290,47 @@ try {
       rejected = true;
     }
     check(rejected, 'Special layout silently painted as ordinary');
+    const { paintEighthFooter, eighthArtistBrush } = await import(
+      '/games/magic/src/presentation/eighth-footer.ts'
+    );
+    const footer = { ...face, frameAssetFamily: 'eighth', artist: 'Original Artist' };
+    check(
+      canvasAssetUrls(footer).includes(eighthArtistBrush(footer)),
+      'Brush absent from prepared asset list',
+    );
+    check(
+      eighthArtistBrush({ ...footer, colors: ['B'] }).endsWith('/whitebrush.svg'),
+      'Dark frame needs a light artist brush',
+    );
+    check(eighthArtistBrush({ ...footer, artist: '' }) === null, 'Empty credit loads a brush');
+    check(
+      eighthArtistBrush({ ...footer, frameAssetFamily: 'm15-accurate' }) === null,
+      'Eighth brush leaked to another frame',
+    );
+    const variable = document.createElement('canvas');
+    variable.width = 488;
+    variable.height = 680;
+    const vc = variable.getContext('2d'),
+      drawn = [];
+    const fill = vc.fillText.bind(vc);
+    vc.fillText = (text, ...args) => {
+      drawn.push(text);
+      fill(text, ...args);
+    };
+    vc.fillStyle = '#f0f';
+    vc.textAlign = 'right';
+    vc.shadowOffsetX = 4;
+    paintEighthFooter(vc, { ...footer, artist: '', power: '1+*', toughness: '*' }, new Map());
+    check(drawn.join('') === '1+/', 'Variable stats fell back to font dots or lost an expression');
+    check(
+      vc.fillStyle === '#ff00ff' && vc.textAlign === 'right' && vc.shadowOffsetX === 4,
+      'Footer leaked drawing state',
+    );
+    check(
+      vc.getImageData(379, 607, 65, 31).data.some((v, i) => i % 4 === 3 && v),
+      'Variable stats rendered no ink',
+    );
+    variable.width = variable.height = 0;
     const warm = host.decodes;
     const f = { ...face, frameAssetFamily: 'eighth', borderColor: 'white' };
     const c = await mtg.describe(f, 'inspect').color.paint(host, signal);
