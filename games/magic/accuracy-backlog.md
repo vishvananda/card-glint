@@ -6,6 +6,16 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Next card-glint release — first priority
+
+- Restore original **Mono Artifact**, **Poly Artifact**, and **Continuous
+  Artifact** type lines for LEA, LEB and 2ED. The review application already has
+  scan-hash-bound partial reviews for all 43 noncreature artifacts in each set.
+  Bring those printing corrections into the Magic pack/reference adapter and
+  verify original/Oracle switching; Oracle mode must retain `Artifact`.
+  Preserve plain `Artifact` on Jade Statue. Do not infer the old labels from
+  current abilities. This correction is not yet in the published library.
+
 ## Current component corrections
 
 ### Paused after the 0.2.20 release and review-app recovery (2026-10-14)
