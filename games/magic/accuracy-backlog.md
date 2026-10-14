@@ -8,6 +8,43 @@ example UUIDs, alignment flags and scores for each affected group.
 
 ## Current component corrections
 
+### Paused after the 0.2.20 release and review-app recovery (2026-10-14)
+
+The user has paused special-frame implementation to discuss scoring and reports.
+Prepared shipped in 0.2.20. The following work remains queued; the current
+`codex/magic-stamps-fuse` working tree is unreleased and must not be treated as
+completed validation:
+
+- Shared security-stamp coverage on ordinary modern cards and planeswalkers,
+  followed by a localized WebGL holographic interior that works on nonfoil cards.
+  Keep the printed surround static and specific to its frame family. Split/Fuse
+  stamps have no colored surround. Measure native oval bounds before adoption;
+  do not confuse the core etch-mask stamp with a printed security stamp.
+- Split/Fuse shared-panel gradients, watermark inheritance for matching guild
+  halves, and half-specific tint (Turn blue, Burn red). Include Depose // Deploy.
+  Preserve independent rules panels and avoid spreading a guild watermark to an
+  unrelated third color. Working changes exist but remain unreleased.
+- Split stamp sizing, raised copyright baseline, and small-cap artist text.
+  Twenty INV/APC/DIS footer transcriptions are scan/hash-bound working fixtures;
+  other synthesized legal lines remain explicitly unverified. There is no exact
+  copyright field in the inspected Scryfall/MTGJSON card schemas.
+- Finish the 2003 Fuse bridge validation: the latest old-frame capture stopped
+  on a 404 for the pinned `magic-new-split-fuse.mse-style/gbridge.png` asset.
+  Resolve the source path before retaining that new bridge code. Modern split
+  and Fuse captures completed, but browser/showcase checks and final visual
+  review of this working tree remain pending. Check, build and package tests
+  passed; this is not a release receipt.
+- Resume Rooms, Battles and the remaining special-frame queue only after the
+  user returns to implementation. Keep the missing Guild Kit expansion symbol
+  and retained text-wrap/registration outliers visible.
+
+The existing offline comparison reports contain regional structural metrics,
+not a unified whole-card score. Their original generic compare command still
+uses shared family alignment; newer component studies store per-scan fits.
+The separate review app persists versioned text-box scores and normalized image
+hashes in SQLite. Consolidating these into one current per-printing report is
+not implemented. Do not describe historical or sampled scores as full coverage.
+
 The mana follow-up records 684 nonfoil production comparisons in
 [the validation report](fixtures/accuracy/mana-location-verified.json). Twenty-six
 shared set/stock rows pass (661 cards); The List retains its existing placement
