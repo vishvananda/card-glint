@@ -87,6 +87,34 @@ from the current artist name in both Scryfall and MTGJSON.
 
 ## Remaining work
 
+### Two-color gold Saga follow-up
+
+The gold plate alone omits the paired colors. Ordinary two-color Sagas now
+composite the source's pinline, bookmark and right-bookmark masks with the two
+colored plates, then restore the narrow gold center stripe. The color order
+uses the existing WUBRG pair order. Gold paper and frame material remain intact;
+land and transforming plates keep their existing treatment. The prepared
+overlay is cached by decoded source identity, with no mask readback.
+
+The [Kaldheim receipt](fixtures/accuracy/saga-colors.json) covers all 20 ordinary
+nonfoil Sagas and all ten color pairs against identical v0.2.16 inputs. Seven
+scans pass the existing frame registration gates; the other thirteen remain
+visibly raw and unscored. This is visual coverage of the missing pieces, not a
+new HSB calibration. Chapter scores do not measure their colors.
+
+The Trickster-God's Heist exposed a literal `|` separator before chapter III in
+the supplied printed text. Saga parsing now recognizes that separator only
+when followed by an explicit Roman chapter label and dash. Other literal bars
+are preserved. Its chapter F1 improves from 0.376 to 0.765; the other six scored
+Kaldheim cards' chapter scores are unchanged. No text-size defaults changed.
+
+Reproduce with `saga-color-study.mjs --baseline` using `MAGIC_CAPTURE_ROOT`
+pointing to a v0.2.16 checkout, followed by `saga-color-study.mjs`. The audit
+retains exact input, source, renderer and scan-transform hashes. Local review
+images remain outside the library.
+
+### Open issues
+
 - Dominaria's large paper motifs are absent from all inspected candidates.
   The replacement paper texture and hologram remain approximations.
 - Chapter divisions, line breaking and vertical spacing still have visible

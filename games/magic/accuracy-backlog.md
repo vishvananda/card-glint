@@ -1475,7 +1475,9 @@ frame-only normalization before component metrics:
 
 1. Aftermath: all 15 AKH and 10 HOU ordinary nonfoil printings. Dedicated pinned
    CardConjurer plates and shared art/effect apertures; preserve failed scan fits.
-2. Ordinary split cards by era, then Fuse. CardConjurer's M15 split/Fuse plates
+2. Old-border/2003 split and Fuse now have dedicated plates and a 35-card
+   INV/APC/DIS/DGM study; see [results and limitations](split-layout.md). Next
+   validate M15 splits against GRN/RNA, including hybrid materials. CardConjurer's M15 split/Fuse plates
    cannot stand in for APC old-border or DGM 2003-frame stock. MSE provides
    `magic-old-split`, `magic-new-split`, `magic-new-split-fuse` and
    `magic-m15-split-fusable` source styles. Validate shared art sheet cropping,

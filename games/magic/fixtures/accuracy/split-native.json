@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-14T04:49:50.486Z",
+  "sourceCommit": "4c60ef4615011c98915d1bf807548f62ff76e2b2",
+  "rendererHash": "448bba47143d9a6ba98eca7ff8493126748e20fd11e85b297904dc3aae768a16",
+  "fontHash": "04fbecc33ef628a52b0ee899ae42ed618fa70343c53061ae3f35e50c17699d2d",
+  "studyHash": "21880d6cc348e3e5929eb30bfbd03bdd4ec3a67af03c33e82093cdcca36a1b5a",
+  "baseline": "01db2bc348e551cff8f8ef0364c66906f30ff8f5cb3538abce38bb75550f816f",
+  "auditHash": "6da1379458425cccd47e60fe3bb8ec22732b49c628de341a6e7b11f127194878",
+  "cohort": 35,
+  "accepted": 33,
+  "means": {
+    "rules": {
+      "before": 0.2077403052532723,
+      "after": 0.48110713429610336
+    },
+    "rules2": {
+      "before": 0.1868506518210438,
+      "after": 0.5241057047494397
+    }
+  },
+  "sets": {
+    "inv": {
+      "cohort": 5,
+      "accepted": 5,
+      "means": {
+        "rules": {
+          "before": 0.06203761807745077,
+          "after": 0.332887253213573
+        },
+        "rules2": {
+          "before": 0.01673178579636865,
+          "after": 0.4075600588339345
+        }
+      }
+    },
+    "apc": {
+      "cohort": 5,
+      "accepted": 5,
+      "means": {
+        "rules": {
+          "before": 0.14289604411127235,
+          "after": 0.4576741876586244
+        },
+        "rules2": {
+          "before": 0.11158811537831212,
+          "after": 0.43962081056258906
+        }
+      }
+    },
+    "dis": {
+      "cohort": 10,
+      "accepted": 10,
+      "means": {
+        "rules": {
+          "before": 0.3005188453488813,
+          "after": 0.5271170403102688
+        },
+        "rules2": {
+          "before": 0.2853434155060402,
+          "after": 0.5700934981433078
+        }
+      }
+    },
+    "dgm": {
+      "cohort": 15,
+      "accepted": 13,
+      "means": {
+        "rules": {
+          "before": 0.21735179299427362,
+          "after": 0.5117352172544409
+        },
+        "rules2": {
+          "before": 0.2054644499354339,
+          "after": 0.5660499175627554
+        }
+      }
+    }
+  },
+  "rejected": [
+    {
+      "name": "Far // Away",
+      "reason": "no-validated-model"
+    },
+    {
+      "name": "Profit // Loss",
+      "reason": "no-validated-model"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "Trial // Error",
+      "region": "rules",
+      "before": 0.20629956548273665,
+      "after": 0.15462094633119144
+    },
+    {
+      "name": "Give // Take",
+      "region": "rules2",
+      "before": 0.39863221093461815,
+      "after": 0.16549534794084292
+    },
+    {
+      "name": "Ready // Willing",
+      "region": "rules",
+      "before": 0.22457419219177122,
+      "after": 0.15167681362907554
+    }
+  ],
+  "scope": "Exploratory INV/APC/DIS/DGM cohort, no independent typography holdout. Dark-letter edge F1 at one canonical pixel after frame-only normalization; not whole-card accuracy.",
+  "sourceTypeConflicts": 0,
+  "overflow": []
+}

@@ -312,6 +312,7 @@ try {
       ['Relay', 'normal', '400'],
       ['Artist Credit', 'normal', '400'],
       ['Chapter', 'normal', '550'],
+      ['Matrix', 'normal', '400 700'],
     ])
       document.fonts.add(
         await new FontFace('CardRenderer MTG ' + family, local, { style, weight }).load(),
@@ -854,7 +855,11 @@ try {
       Math.abs(attribution.x + attribution.width - (retro.x + retro.width)) > 0.01
     )
       throw Error('Retro styles, alignment or separator policy lost');
-    const historicalLand = retroTextLayout(ctx, fixtures.at(-2));
+    const historicalLandInput = fixtures.find(
+      (face) => face.name === 'Forest' && face.setCode === 'TMP',
+    );
+    if (!historicalLandInput) throw Error('Missing historical land fixture');
+    const historicalLand = retroTextLayout(ctx, historicalLandInput);
     const landLine = historicalLand.lines[0];
     if (
       historicalLand.overflow ||
@@ -868,7 +873,7 @@ try {
     )
       throw Error('Historical basic land lost printed wording or centered alignment');
     const customLand = retroTextLayout(ctx, {
-      ...fixtures.at(-2),
+      ...historicalLandInput,
       rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Custom printed rules.' }] }],
     });
     if (
