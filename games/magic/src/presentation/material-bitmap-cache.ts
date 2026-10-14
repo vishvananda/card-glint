@@ -200,4 +200,10 @@ export class MaterialBitmapCache {
 // Separate, explicit ceiling for derived materials, in addition to the host's
 // decoded-source budget. Shared across direct and public static composition.
 export const earlyHsbBitmapCache = new MaterialBitmapCache(16 * 1024 * 1024);
-export const clearEarlyHsbBitmaps = () => earlyHsbBitmapCache.clear();
+// A composite borrows HSB leases while building. A separate budget prevents
+// concurrent preparations from holding all HSB capacity while waiting on it.
+export const retroDualBitmapCache = new MaterialBitmapCache(8 * 1024 * 1024);
+export const clearEarlyHsbBitmaps = () => {
+  earlyHsbBitmapCache.clear();
+  retroDualBitmapCache.clear();
+};

@@ -4,6 +4,7 @@ import { isRetro, retroFrameAsset, retroFrameRect, retroBorder } from './retro-f
 import { resolveCardProfile } from './profile.js';
 import { normalFrameInset } from './normal-frame-geometry.js';
 import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
+import { retroDualFrame } from './retro-dual-frame.js';
 
 /** The calibration source is game-owned and independent of scan registration.
  * Multi-plate lands and special layouts require separate measured cohorts. */
@@ -18,6 +19,7 @@ export function printingColorSource(face: RenderedCardInput) {
     return undefined;
   const border = retroBorder(face);
   if (isRetro(face)) {
+    if (retroDualFrame(face)) return undefined;
     const frame = retroFrameAsset(face),
       rect = retroFrameRect(face);
     return {

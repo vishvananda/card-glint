@@ -1,6 +1,7 @@
 import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
+import { titleTranslation } from './title-placement.js';
 import { framePlate } from './frame-plates.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
@@ -123,6 +124,8 @@ export function paintFramePlateFace(
   ];
   const adjustedMana = adjustedSymbolBounds(manaBounds, face.symbolAdjustment?.mana);
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
+  c.save();
+  if (eighth) c.translate(...titleTranslation(face, 'eighth'));
   paintFittedText(
     c,
     face.name,
@@ -134,6 +137,7 @@ export function paintFramePlateFace(
     1,
     family,
   );
+  c.restore();
   paintAdjustedSymbols(c, manaBounds, face.symbolAdjustment?.mana, () => {
     cost.forEach((symbol, i) =>
       paintMana(

@@ -6,6 +6,7 @@ import { printingColorSource } from './printing-color-source.js';
 import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
+import { retroDualFrame } from './retro-dual-frame.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
   return (
@@ -17,7 +18,7 @@ export function hasColorCalibration(face: RenderedCardInput): boolean {
 /** Exact source, stock and placement guards. Rejected/new sources do not inherit
  * obsolete joint fits: those could create a good mean while tinting shadows. */
 export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHsb | undefined {
-  if (!hasColorCalibration(face) || !isRetro(face)) return undefined;
+  if (!hasColorCalibration(face) || !isRetro(face) || retroDualFrame(face)) return undefined;
   const asset = retroFrameAsset(face),
     material = asset.split('/').at(-1)!.replace('.png', '').toUpperCase(),
     profile = DUAL_HSB_PROFILES[`${face.setCode?.toLowerCase()}-${retroBorder(face)}-${material}`];

@@ -12,6 +12,7 @@ import {
 import { resolveFrameColors } from './profile.js';
 import { faceSetSymbol } from './assets.js';
 import { faceManaAssets } from './mana-assets.js';
+import { retroDualFrame } from './retro-dual-frame.js';
 export const RETRO_SYMBOL_FONT = manifest.RETRO_SYMBOL_FONT;
 export const RETRO_ROOT = manifest.RETRO_ROOT;
 export const RETRO_FONT = `${RETRO_ROOT}/fonts/goudy-medieval.ttf`;
@@ -67,6 +68,8 @@ export function retroRects(face: RenderedCardInput) {
   };
 }
 export function retroFrameAsset(face: RenderedCardInput) {
+  const dual = retroDualFrame(face);
+  if (dual) return dual.base;
   const colors = resolveFrameColors(face),
     type = face.typeLine ?? '';
   const landType = [
@@ -134,9 +137,12 @@ export function retroRulesSize(face: RenderedCardInput) {
   return n > 340 ? 16 : n > 210 ? 19 : 23;
 }
 export function retroAssets(face: RenderedCardInput) {
+  const dual = retroDualFrame(face);
   return [
     retroBasicSymbol(face),
     retroFrameAsset(face),
+    dual?.overlay,
+    dual?.mask,
     retroBorder(face) !== 'black' || retroFamily(face) === 'fourth' ? retroBorderMask(face) : null,
     face.illustration,
     retroSetSymbol(face),

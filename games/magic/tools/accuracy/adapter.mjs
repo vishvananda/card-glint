@@ -2,11 +2,13 @@ import { reviewedPrintingFields } from './printing-fields.mjs';
 import { reviewedArtCrop } from './art-crop.mjs';
 import { historicArtifactAnnotation } from './historic-artifact-types.mjs';
 import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
+import { earlyLandTypeAnnotation } from './early-land-types.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
   const historical = {
       ...historicArtifactAnnotation(entry),
+      ...earlyLandTypeAnnotation(entry),
       ...historicManaOrderAnnotation(entry),
     },
     supplied = annotations[card.id] ?? {},
@@ -108,6 +110,18 @@ function reminderRuns(text) {
  * palettes (fetches, rainbow lands, artifact/basic/retro frames) for review;
  * color identity is not a reliable description of the printed frame. */
 function inferredLandPalette(card) {
+  // Early duals lose their subtypes in original wording (plain "Land").
+  // Preserve their two basic-land colors independently of that visible label.
+  if (['lea', 'leb', '2ed', '3ed'].includes(card.set) && /\bLand\b/.test(card.type_line ?? '')) {
+    const basicColors = [
+      ['Plains', 'W'],
+      ['Island', 'U'],
+      ['Swamp', 'B'],
+      ['Mountain', 'R'],
+      ['Forest', 'G'],
+    ].filter(([type]) => new RegExp(`\\b${type}\\b`).test(card.type_line));
+    if (basicColors.length === 2) return basicColors.map(([, color]) => color);
+  }
   if (
     !['2003', '2015'].includes(card.frame) ||
     !/\bLand\b/.test(card.type_line ?? '') ||

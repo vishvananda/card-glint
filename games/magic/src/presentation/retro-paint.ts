@@ -4,6 +4,7 @@ import {
   spacedManaBounds,
 } from './symbol-adjustment.js';
 import { retroManaPlacement } from './retro-mana.js';
+import { titleTranslation } from './title-placement.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
@@ -144,8 +145,11 @@ export function paintRetroFace(
           ? w - 5
           : x + w - titleX - 5,
     );
+  c.save();
+  c.translate(...titleTranslation(face, 'retro'));
   if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
+  c.restore();
   const modernSymbols =
     face.symbolStyle === 'modern' ||
     (face.symbolStyle === undefined && face.wordingMode === 'oracle');

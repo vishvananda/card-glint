@@ -157,30 +157,6 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
         },
     },
   },
-  'lea/black/retro/l.png': {
-    source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png",[0,0,1,1]]',
-    materials: {
-      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png':
-        {
-          frame: {
-            hueDegrees: -14.412162162162076,
-            saturationScale: 0.47470400026802423,
-            brightnessScale: 0.9063745019920317,
-          },
-          paper: {
-            hueDegrees: 0,
-            saturationScale: 1,
-            brightnessScale: 1,
-          },
-          mask: {
-            kind: 'rect',
-            rect: [0.13934426229508196, 0.6088235294117647, 0.723360655737705, 0.2705882352941177],
-            feather: 0.0013333333333333333,
-          },
-        },
-    },
-  },
   'leb/black/retro/b.png': {
     source:
       '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/b.png",[0,0,1,1]]',
@@ -300,30 +276,6 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
           mask: {
             kind: 'rect',
             rect: [0.125, 0.5985294117647059, 0.7540983606557377, 0.2852941176470588],
-            feather: 0.0013333333333333333,
-          },
-        },
-    },
-  },
-  'leb/black/retro/l.png': {
-    source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png",[0,0,1,1]]',
-    materials: {
-      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png':
-        {
-          frame: {
-            hueDegrees: 4.970637583892653,
-            saturationScale: 0.897622445950626,
-            brightnessScale: 0.9820717131474103,
-          },
-          paper: {
-            hueDegrees: 21.36242548435166,
-            saturationScale: 0.8592886875202269,
-            brightnessScale: 0.9181250000000002,
-          },
-          mask: {
-            kind: 'rect',
-            rect: [0.13934426229508196, 0.6088235294117647, 0.723360655737705, 0.2705882352941177],
             feather: 0.0013333333333333333,
           },
         },

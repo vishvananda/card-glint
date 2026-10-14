@@ -15,6 +15,8 @@ import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { isAftermath } from './aftermath-frame.js';
 import { paintAftermathFace } from './aftermath-paint.js';
 import { prepareEarlyHsb } from './early-hsb-material.js';
+import { titleTranslation } from './title-placement.js';
+import { prepareRetroDualFrame } from './retro-dual-material.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
 import { faceCornerRadius } from './face-silhouette.js';
 import { NORMAL_FRAME_GEOMETRY, normalFrameInset } from './normal-frame-geometry.js';
@@ -301,11 +303,18 @@ export async function composeCardTexture(
     signal.throwIfAborted();
     const loaded = await loadImages(canvasAssetUrls(input.face), signal);
     let calibrated: Awaited<ReturnType<typeof prepareEarlyHsb>> | undefined;
+    let dual: Awaited<ReturnType<typeof prepareRetroDualFrame>> | undefined;
     let numerals: Awaited<ReturnType<typeof prepareManaNumerals>> | undefined;
     try {
       if (input.paintLayer !== 'artwork')
         calibrated = await prepareEarlyHsb(input.face, loaded.images, signal);
-      numerals = await prepareManaNumerals(input.face, calibrated?.images ?? loaded.images, signal);
+      if (input.paintLayer !== 'artwork')
+        dual = await prepareRetroDualFrame(input.face, calibrated?.images ?? loaded.images, signal);
+      numerals = await prepareManaNumerals(
+        input.face,
+        dual?.images ?? calibrated?.images ?? loaded.images,
+        signal,
+      );
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
       paintAssembledFace(
@@ -328,6 +337,7 @@ export async function composeCardTexture(
       return canvas;
     } finally {
       numerals?.dispose();
+      dual?.dispose();
       calibrated?.dispose();
       loaded.dispose();
     }
@@ -619,6 +629,8 @@ export function paintAssembledFace(
     (kind === 'normal' && !panel ? FACE_TEXT.normalTitleFont : FACE_TEXT.titleFont) * textScale;
   context.font = `bold ${titleSize}px "CardRenderer MTG Beleren", Georgia`;
   context.letterSpacing = `${FACE_TEXT.titleTracking}px`;
+  context.save();
+  if (kind === 'normal' && !panel) context.translate(...titleTranslation(face, 'modern'));
   paintFittedText(
     context,
     face.name,
@@ -628,6 +640,7 @@ export function paintAssembledFace(
     titleSize,
     true,
   );
+  context.restore();
   context.letterSpacing = '0px';
   paintAdjustedSymbols(context, manaBounds, face.symbolAdjustment?.mana, () => {
     mana.forEach((symbol, index) =>
