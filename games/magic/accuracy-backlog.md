@@ -1456,3 +1456,13 @@ its application, deployment and database outside this library repository.
   the earlier shared-only registration is historical evidence. Keep opposing
   residual edge errors as asset geometry issues; never use text to fit its own
   comparison transform.
+
+## Special-frame validation after 0.2.15
+
+The [special-frame audit](special-frame-audit.md) captures 26 printings / 29
+physical faces, starting with all 14 ordinary Dominaria Sagas. All render, but
+all fail the existing ordinary-frame registration gate; numeric accuracy remains
+unscored. Saga reminder/chapter geometry, rail/paper compositing and Read ahead
+styling are first. Split-era routing, Fuse duplication, aftermath proportions,
+Room layout and physical DFC indicators/back-face treatments follow. No runtime
+calibration was adopted from these unaligned examples.
