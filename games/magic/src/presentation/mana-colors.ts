@@ -1,3 +1,14 @@
+import type { Rgb } from './hsb.js';
+
+export function hexManaColor(hex: string): Rgb {
+  if (!/^#[a-f0-9]{6}$/i.test(hex)) throw Error('Invalid mana palette color');
+  return [
+    parseInt(hex.slice(1, 3), 16) / 255,
+    parseInt(hex.slice(3, 5), 16) / 255,
+    parseInt(hex.slice(5, 7), 16) / 255,
+  ];
+}
+
 /** Fallback disc colors are also the base of the original procedural sun. */
 export const MANA_COLORS: Readonly<Record<string, string>> = {
   W: '#efe7cb',

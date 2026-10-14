@@ -1,6 +1,10 @@
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
-import { buildHistoricalMana, hexManaColor } from './historical-mana-material.js';
+import {
+  buildHistoricalMana,
+  hexManaColor,
+  type ManaGlyphPalette,
+} from './historical-mana-material.js';
 import { historicalManaAsset, historicalManaFamily } from './historical-mana.js';
 import { manaSymbolAsset } from './assets.js';
 import { rgbToHsb, type HsbAdjustment, type Rgb } from './hsb.js';
@@ -25,7 +29,7 @@ export async function prepareEarlyHsb(
     originalMaterials: {
       url: string;
       source: ImageBitmap;
-      palette: { discColor: string; inkColor: string };
+      palette: ManaGlyphPalette;
       target: Rgb;
     }[] = [];
   const symbols = new Set([

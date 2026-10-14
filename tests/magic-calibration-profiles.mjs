@@ -85,6 +85,31 @@ try {
     manaSymbols: [],
   });
   assert.equal(colorCalibrationCoverage({ ...revised, frameStyle: 'modern' }).frame, false);
+  const { calibratedManaTarget } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/calibration-profiles.ts',
+  );
+  const beta = {
+    ...revised,
+    setCode: 'leb',
+    borderColor: 'black',
+    manaSymbols: ['W', 'U', 'B', 'R', 'G', '1'],
+  };
+  const materials = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/beta-mana-materials.json'),
+  );
+  for (const row of materials.groups) {
+    assert.deepEqual(
+      calibratedManaTarget(beta, row.color),
+      row.candidateRgb.map((v) => v / 255),
+    );
+    assert.equal(
+      calibratedManaTarget({ ...beta, colorCalibration: undefined }, row.color),
+      undefined,
+    );
+    assert.equal(calibratedManaTarget({ ...beta, borderColor: 'white' }, row.color), undefined);
+    assert.ok(row.training >= 10 && row.held >= 10);
+  }
+  assert.deepEqual(colorCalibrationCoverage(beta).manaSymbols, beta.manaSymbols);
   console.log(
     `${approved.length} raster-approved symbol profiles, frame/source/stock guards, and public color coverage pass.`,
   );

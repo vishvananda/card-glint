@@ -19,6 +19,9 @@ try {
   const { recolorHistoricalManaPixels } = await server.ssrLoadModule(
     '/games/magic/src/presentation/historical-mana-material.ts',
   );
+  const { expandHistoricalManaInk } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/historical-mana-ink.ts',
+  );
   const { originalManaOrder } = await server.ssrLoadModule(
     '/games/magic/src/presentation/historic-mana-order.ts',
   );
@@ -44,6 +47,43 @@ try {
   assert.equal(historicalManaFamily({ name: 'Test', setCode: '4ed' }, 'W'), 'modern');
   assert.equal(historicalManaFamily({ name: 'Test', setCode: 'mir' }, 'U'), 'modern');
   assert.equal(historicalManaAsset({ name: 'Test', setCode: 'unknown' }, 'U'), undefined);
+  assert.equal(historicalManaAsset({ name: 'Test', setCode: 'leb' }, 'R').inkExpansion, 0.4);
+  assert.equal(historicalManaAsset({ name: 'Test', setCode: '3ed' }, 'R').inkExpansion, undefined);
+  assert.equal(
+    historicalManaAsset({ name: 'Test', setCode: 'leb', symbolStyle: 'modern' }, 'R'),
+    undefined,
+  );
+  const inkPixels = new Uint8ClampedArray(24 * 24 * 4).fill(255);
+  const center = (12 * 24 + 12) * 4;
+  inkPixels.fill(0, center, center + 3);
+  inkPixels.set([17, 28, 39, 128], 0);
+  const beforeInk = inkPixels.slice();
+  const palette = { discColor: '#ffffff', inkColor: '#000000', inkExpansion: 0.4 };
+  expandHistoricalManaInk(inkPixels, 24, 24, palette);
+  assert.deepEqual(
+    [...inkPixels.slice(0, 4)],
+    [...beforeInk.slice(0, 4)],
+    'Disc antialias stays untouched',
+  );
+  assert.equal(inkPixels[center], 0, 'Solid original ink stays black');
+  assert.ok(
+    inkPixels[center + 4] > 100 && inkPixels[center + 4] < 200,
+    'Fractional ink expansion adds a soft neighboring edge',
+  );
+  assert.equal(inkPixels[center + 8], 255, 'Distant disc fill is unchanged');
+  assert.deepEqual(
+    [...inkPixels.filter((_, i) => i % 4 === 3)],
+    [...beforeInk.filter((_, i) => i % 4 === 3)],
+    'Disc alpha is byte-identical',
+  );
+  const zeroInk = beforeInk.slice();
+  expandHistoricalManaInk(zeroInk, 24, 24, { ...palette, inkExpansion: 0 });
+  assert.deepEqual(zeroInk, beforeInk);
+  assert.throws(() => expandHistoricalManaInk(zeroInk, 24, 23, palette), /dimensions/);
+  assert.throws(
+    () => expandHistoricalManaInk(zeroInk, 24, 24, { ...palette, inkExpansion: 2 }),
+    /range/,
+  );
   // Neutral MSE skull discs must accept a chromatic target without recoloring
   // the ink or losing translucent edges (HSB saturation cannot do this).
   const data = new Uint8ClampedArray([

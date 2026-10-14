@@ -1,16 +1,12 @@
 import type { Rgb } from './hsb.js';
+import { expandHistoricalManaInk } from './historical-mana-ink.js';
+import { hexManaColor } from './mana-colors.js';
+export { hexManaColor } from './mana-colors.js';
 
 export interface ManaGlyphPalette {
   discColor: string;
   inkColor: string;
-}
-export function hexManaColor(hex: string): Rgb {
-  if (!/^#[a-f0-9]{6}$/i.test(hex)) throw Error('Invalid mana palette color');
-  return [
-    parseInt(hex.slice(1, 3), 16) / 255,
-    parseInt(hex.slice(3, 5), 16) / 255,
-    parseInt(hex.slice(5, 7), 16) / 255,
-  ];
+  inkExpansion?: number;
 }
 /** Separate two-color source ink from its disc, including neutral gray discs
  * that cannot be recolored using a saturation multiplier. Preserve edge alpha. */
@@ -47,6 +43,8 @@ export async function buildHistoricalMana(
     if (!c) throw Error('Historical mana preparation needs Canvas2D.');
     c.drawImage(source, 0, 0);
     const pixels = c.getImageData(0, 0, canvas.width, canvas.height);
+    if (palette.inkExpansion)
+      expandHistoricalManaInk(pixels.data, canvas.width, canvas.height, palette);
     recolorHistoricalManaPixels(pixels.data, palette, target);
     c.putImageData(pixels, 0, 0);
     return await createImageBitmap(canvas);

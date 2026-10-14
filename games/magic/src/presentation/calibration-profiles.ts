@@ -5,6 +5,7 @@ import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
 import { printingColorSource } from './printing-color-source.js';
 import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
+import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
   return (
@@ -37,7 +38,8 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
 }
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
   if (!hasColorCalibration(face)) return undefined;
-  return DUAL_MANA_TARGETS[`${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`];
+  const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
+  return MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key];
 }
 
 /** Every binding retains the exact pinned asset and geometry it was fitted to. */
