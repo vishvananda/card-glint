@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { createServer } from 'vite';
 import { printingTextIndex } from '../games/magic/tools/accuracy/printing-text.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 
@@ -223,3 +225,62 @@ assert.deepEqual(
   }).face.frameColors,
   ['G'],
 );
+
+// Every historical artifact label is tied to its printing and reviewed scan.
+const wordingServer = await createServer({
+  configFile: false,
+  server: { middlewareMode: true, hmr: false },
+});
+try {
+  const { withCardWording } = await wordingServer.ssrLoadModule(
+    '/games/magic/src/presentation/wording.ts',
+  );
+  for (const set of ['lea', 'leb', '2ed']) {
+    const fixture = JSON.parse(
+      await readFile(
+        `games/magic/fixtures/accuracy/${set}/annotations-historic-artifact-types.json`,
+      ),
+    );
+    assert.equal(Object.keys(fixture.cards).length, 43);
+    for (const [id, row] of Object.entries(fixture.cards)) {
+      const input = {
+        reference: { sha256: row.referenceHash },
+        card: {
+          id,
+          name: row.name,
+          set,
+          frame: '1993',
+          type_line: 'Artifact',
+          oracle_text: 'Current rules.',
+        },
+      };
+      const result = presentation(input);
+      assert.equal(result.face.typeLine, row.typeLine);
+      assert.equal(result.face.rulesText, 'Current rules.');
+      assert.equal(result.contentStatus, 'oracle-unverified');
+      assert.deepEqual(result.reviewedFields, ['typeLine']);
+      const wordings = {
+        original: result.face,
+        oracle: { typeLine: 'Artifact', rulesText: 'Oracle rules.' },
+      };
+      assert.equal(withCardWording(result.face, wordings, 'original').typeLine, row.typeLine);
+      assert.equal(withCardWording(result.face, wordings, 'oracle').typeLine, 'Artifact');
+      assert.equal(withCardWording(result.face, wordings, 'oracle').rulesText, 'Oracle rules.');
+      assert.throws(
+        () => presentation({ ...input, reference: { sha256: 'different-scan' } }),
+        /stale/,
+      );
+      const caller = presentation(input, { [id]: { typeLine: 'Caller override' } });
+      assert.equal(caller.face.typeLine, 'Caller override');
+      assert.deepEqual(
+        caller.reviewedFields,
+        [],
+        'A partial historical review cannot certify caller text',
+      );
+      if (row.name === 'Jade Statue') assert.equal(row.typeLine, 'Artifact');
+    }
+  }
+  console.log('129 scan-bound historical artifact labels and original/Oracle switching pass.');
+} finally {
+  await wordingServer.close();
+}

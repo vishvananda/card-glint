@@ -1,9 +1,21 @@
 import { reviewedPrintingFields } from './printing-fields.mjs';
 import { reviewedArtCrop } from './art-crop.mjs';
+import { historicArtifactAnnotation } from './historic-artifact-types.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
-  const annotation = annotations[card.id] ?? {};
+  const historical = historicArtifactAnnotation(entry),
+    supplied = annotations[card.id] ?? {},
+    annotation = {
+      ...historical,
+      ...supplied,
+      ...(historical.reviewedFields && {
+        reviewedFields: [
+          ...historical.reviewedFields.filter((field) => !Object.hasOwn(supplied, field)),
+          ...(supplied.reviewedFields ?? []),
+        ],
+      }),
+    };
   if (annotation.reviewed && annotation.referenceHash !== entry.reference?.sha256)
     throw Error(`Reviewed text is stale for ${card.name}; review it against the new reference.`);
   const fields = reviewedPrintingFields(entry, annotation);
