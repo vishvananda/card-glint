@@ -328,6 +328,49 @@ try {
     assert(!override.reviewedFields.includes('typeLine'));
   }
   console.log('152 scan-bound Legends creature type labels and Oracle isolation pass.');
+  const noncreatures = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/leg/annotations-noncreature-types.json'),
+  );
+  assert.equal(Object.keys(noncreatures.cards).length, 158);
+  assert.equal(
+    new Set([
+      ...Object.keys(legends.cards),
+      ...Object.keys(creatures.cards),
+      ...Object.keys(noncreatures.cards),
+    ]).size,
+    310,
+  );
+  assert.equal(
+    Object.values(noncreatures.cards).filter((r) => r.typeLine !== r.oracleType).length,
+    42,
+  );
+  for (const [id, row] of Object.entries(noncreatures.cards)) {
+    const input = {
+      reference: { sha256: row.referenceHash },
+      card: {
+        id,
+        name: row.name,
+        set: 'leg',
+        type_line: row.oracleType,
+        oracle_text: 'Modern ability.',
+      },
+    };
+    const original = presentation(input);
+    assert.equal(original.face.typeLine, row.typeLine);
+    assert.equal(original.face.creature, false);
+    assert.deepEqual(original.reviewedFields, ['typeLine']);
+    assert.equal(original.contentStatus, 'oracle-unverified');
+    const oracle = { typeLine: row.oracleType, rulesText: 'Modern ability.' };
+    assert.equal(
+      withCardWording(original.face, { original: original.face, oracle }, 'oracle').typeLine,
+      row.oracleType,
+    );
+    assert.throws(() => presentation({ ...input, reference: { sha256: 'changed' } }), /stale/);
+    const override = presentation(input, { [id]: { typeLine: 'Caller type' } });
+    assert.equal(override.face.typeLine, 'Caller type');
+    assert(!override.reviewedFields.includes('typeLine'));
+  }
+  console.log('158 scan-bound Legends noncreature types complete the 310-printing inventory.');
   let emptyCount = 0;
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
     const fixture = JSON.parse(

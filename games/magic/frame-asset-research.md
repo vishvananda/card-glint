@@ -510,3 +510,14 @@ using original wording, full cards and fixed-pose red/green overlays. Masks and
 derived colors should be prepared once per immutable source/profile; no scan
 segmentation or mask readback belongs in the animation loop. No candidate in
 this study changes released frame selection or color defaults.
+
+### Complete Legends type-line review
+
+The original-type review now covers all 310 ordinary English printings: 152
+creatures and 158 noncreatures. Forty-two noncreature labels differ from Oracle,
+including `Interrupt`, `Enchant World`, `Enchant Creature`, `Enchant Land` and
+`Enchant Artifact`. The exact-printing fixture
+`fixtures/accuracy/leg/annotations-noncreature-types.json` binds each transcription
+to its scan hash. These partial reviews certify only type labels; modern wording
+and caller overrides stay independent. Use these original labels before fitting
+type-line width or placement, so text changes cannot bias the geometry.
