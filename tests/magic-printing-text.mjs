@@ -293,7 +293,15 @@ try {
     Object.values(legends.cards).filter((r) => r.typeLine === 'Summon Legend').length,
     50,
   );
-  for (const [id, row] of Object.entries(legends.cards)) {
+  const creatures = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/leg/annotations-creature-types.json'),
+  );
+  assert.equal(Object.keys(creatures.cards).length, 97);
+  assert.equal(
+    Object.values(creatures.cards).filter((r) => r.typeLine === 'Artifact Creature').length,
+    3,
+  );
+  for (const [id, row] of Object.entries({ ...legends.cards, ...creatures.cards })) {
     const input = {
       reference: { sha256: row.referenceHash },
       card: {
@@ -319,7 +327,7 @@ try {
     assert.equal(override.face.typeLine, 'Caller type');
     assert(!override.reviewedFields.includes('typeLine'));
   }
-  console.log('55 scan-bound Legends type labels and Oracle isolation pass.');
+  console.log('152 scan-bound Legends creature type labels and Oracle isolation pass.');
   let emptyCount = 0;
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
     const fixture = JSON.parse(
