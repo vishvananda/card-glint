@@ -1,4 +1,5 @@
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
+import { plateBasicSymbol } from './plate-basic-land.js';
 import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
@@ -196,7 +197,18 @@ export function paintFramePlateFace(
       else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
     }
   });
-  paintRulesLayout(c, ordinaryTextLayout(c, face), images);
+  const basic = plateBasicSymbol(face);
+  if (basic) {
+    // Shared placement for the five large symbols, including the source's
+    // transparent highlight padding. No per-card fitting or readback.
+    c.save();
+    c.shadowColor = '#0009';
+    c.shadowOffsetX = -1.5;
+    c.shadowOffsetY = 1.5;
+    c.shadowBlur = 1.5;
+    c.drawImage(required(basic), 166, 440, 156, 156);
+    c.restore();
+  } else paintRulesLayout(c, ordinaryTextLayout(c, face), images);
   if (face.power != null && face.toughness != null) {
     c.drawImage(required(plate.pt), ...px(rects.stats));
   }

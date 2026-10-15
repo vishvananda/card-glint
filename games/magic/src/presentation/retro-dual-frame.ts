@@ -26,10 +26,16 @@ export function retroDualFrame(face: RenderedCardInput) {
         .filter(([type]) => new RegExp(`\\b${type}\\b`).test(face.typeLine ?? ''))
         .map(([, color]) => color!);
   if (colors.length !== 2) return undefined;
+  // Printed concentric bands have their own color order. WUBRG is a semantic
+  // palette order, not the band assignment. These five pairs reverse the
+  // base/overlay in the ABU printings; the other five retain their order.
+  const bands = ['WU', 'WG', 'UG', 'BG', 'RG'].includes(colors.join(''))
+    ? [...colors].reverse()
+    : colors;
   const root = `${manifest.RETRO_ROOT}/img/frames/old/abu/`;
   return {
-    base: `${root}${colors[0]!.toLowerCase()}l.png`,
-    overlay: `${root}${colors[1]!.toLowerCase()}l.png`,
+    base: `${root}${bands[0]!.toLowerCase()}l.png`,
+    overlay: `${root}${bands[1]!.toLowerCase()}l.png`,
     mask: `${manifest.CONJURER_ROOT}/img/frames/old/abu/dualLand.png`,
   };
 }

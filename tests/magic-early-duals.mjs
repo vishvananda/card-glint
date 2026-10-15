@@ -172,6 +172,19 @@ try {
       if (!dwarf && !basic && set !== '3ed') {
         const plan = retroDualFrame(original.face);
         assert.ok(plan);
+        const printedOuterBand = {
+          Badlands: 'r',
+          Bayou: 'b',
+          Plateau: 'r',
+          Savannah: 'w',
+          Scrubland: 'b',
+          Taiga: 'r',
+          'Tropical Island': 'u',
+          Tundra: 'w',
+          'Underground Sea': 'b',
+          'Volcanic Island': 'r',
+        }[row.name];
+        assert.ok(plan.overlay.endsWith(`/${printedOuterBand}l.png`), 'Printed ABU stripe order');
         assert.deepEqual(plan, retroDualFrame(oracle.face));
         assert.equal(retroFrameAsset(original.face), plan.base);
         assert.ok(Object.values(plan).every((url) => retroAssets(original.face).includes(url)));
@@ -185,6 +198,38 @@ try {
     }
   }
   assert.equal(count, 98);
+  const { framePlate, framePlateUrls } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/frame-plates.ts',
+  );
+  const { plateBasicSymbol } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/plate-basic-land.ts',
+  );
+  for (const [name, color] of Object.entries(basics)) {
+    const face = {
+      name,
+      colors: [],
+      typeLine: `Basic Land — ${name}`,
+      frameStyle: 'modern',
+      frameAssetFamily: 'eighth',
+      setCode: '8ed',
+    };
+    assert.ok(framePlate(face).frame.endsWith(`/${color.toLowerCase()}l.png`));
+    assert.ok(framePlate({ ...face, frameColors: [] }).frame.endsWith('/l.png'));
+    for (const raw of [color, `{${color}}`, `({T}: Add {${color}}.)`]) {
+      const input = {
+        ...face,
+        rulesText: raw,
+        rulesParagraphs: [{ role: 'rules', runs: [{ text: raw, italic: raw.startsWith('(') }] }],
+      };
+      const symbol = plateBasicSymbol(input);
+      assert.ok(symbol.endsWith(`/basics/${color.toLowerCase()}.png`));
+      assert.ok(framePlateUrls(input).includes(symbol));
+      assert.equal(plateBasicSymbol({ ...input, rulesParagraphs: [] }), null);
+      assert.equal(plateBasicSymbol({ ...input, rulesText: raw + '\nCustom rules.' }), null);
+      assert.equal(plateBasicSymbol({ ...input, typeLine: 'Land' }), null);
+      assert.equal(plateBasicSymbol({ ...input, frameAssetFamily: undefined }), null);
+    }
+  }
   assert.ok(
     retroFrameAsset({
       name: 'Custom land',

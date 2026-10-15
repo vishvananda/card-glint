@@ -4,6 +4,7 @@ import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { isRetro } from './retro-frame.js';
+import { basicLandColor, plateBasicSymbol } from './plate-basic-land.js';
 
 export interface FramePlate {
   frame: string;
@@ -31,7 +32,8 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     throw Error('Replacement frame plates currently support ordinary modern faces only.');
   const eighth = face.frameAssetFamily === 'eighth';
   const profile = resolveCardProfile(face),
-    colors = resolveFrameColors(face);
+    basic = basicLandColor(face),
+    colors = face.frameColors === undefined && basic ? [basic] : resolveFrameColors(face);
   // Pair keys are WUBRG-sorted, but visible halves follow the short arc around
   // the color wheel: RW, GW and GU wrap across its end. Match printed lands
   // without changing the semantic colors or source asset naming convention.
@@ -109,7 +111,9 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
   const plate = framePlate(face);
   if (!plate) return null;
   const brush = eighthArtistBrush(face);
+  const basic = plateBasicSymbol(face);
   return [
+    ...(basic ? [basic] : []),
     ...(brush ? [brush] : []),
     plate.frame,
     ...(plate.rightFrame ? [plate.rightFrame] : []),
