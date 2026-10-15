@@ -57,7 +57,8 @@ export function revisedLandRules(
   reference: readonly RulesParagraph[],
 ): RulesLayout {
   const p = revisedLandText(),
-    minimum = face.wordingMode === 'oracle' ? 10 : 15;
+    minimum = face.wordingMode === 'oracle' ? 10 : 15,
+    dense = paragraphs.reduce((n, b) => n + b.runs.reduce((s, r) => s + r.text.length, 0), 0) > 150;
   const typography = (s: typeof p.basic) => ({
     leading: s.leading,
     paragraphGap: s.paragraph,
@@ -78,11 +79,21 @@ export function revisedLandRules(
       { ...typography(p.basic), balanceLines: true },
       150,
     );
-    if (centered) return centered;
+    if (centered) {
+      if (!dense) return centered;
+      // The chosen reference decides alignment only. A short Oracle reminder
+      // must not enlarge the original dual-land paragraph or lift it above the
+      // paper's safe inset. Retain its measured dense printing style.
+      return layoutRules(
+        c,
+        paragraphs.map((block) => ({ ...block, align: 'center' })),
+        p.dual,
+        p.dual.size,
+        Math.min(minimum, p.dual.size),
+        { ...typography(p.dual), balanceLines: true },
+      );
+    }
   }
-  const size =
-    paragraphs.reduce((n, b) => n + b.runs.reduce((s, r) => s + r.text.length, 0), 0) > 150
-      ? p.dual.size
-      : p.basic.size;
+  const size = dense ? p.dual.size : p.basic.size;
   return layoutRules(c, paragraphs, p.dual, size, Math.min(minimum, size), typography(p.dual));
 }

@@ -771,6 +771,32 @@ try {
       fromOracle.lines.some((l) => Math.abs(l.x + l.width / 2 - 244) > 0.01)
     )
       throw Error('Alignment was not classified from the chosen wording source');
+    const dualLand = { name: 'Dual land', setCode: '3ed', land: true, frameColors: ['B', 'G'] };
+    const dualWords = {
+      original: {
+        typeLine: 'Land',
+        rulesText:
+          '{T}: Add either {B} or {G} to your mana pool. Counts as both swamp and forest and is affected by spells that affect either. If a spell destroys one of these land types, the other type is unaffected. If a spell alters one of these land types, the other type is unaffected.',
+      },
+      oracle: { typeLine: 'Land — Swamp Forest', rulesText: '({T}: Add {B} or {G}.)' },
+    };
+    const originalDual = retroTextLayout(ctx, withCardWording(dualLand, dualWords, 'original'));
+    const centeredDual = retroTextLayout(
+      ctx,
+      withCardWording(dualLand, dualWords, 'original', { rulesAlignment: 'oracle' }),
+    );
+    if (
+      centeredDual.overflow ||
+      centeredDual.size !== originalDual.size ||
+      centeredDual.size > 15.5 ||
+      centeredDual.lines.some(
+        (l) =>
+          l.inkBounds[1] < 420 ||
+          l.inkBounds[1] + l.inkBounds[3] > 607 ||
+          Math.abs(l.x + l.width / 2 - 242.5) > 0.01,
+      )
+    )
+      throw Error('Oracle-based centering enlarged original dual-land text or escaped its paper');
     const aura = retroTextLayout(ctx, {
       ...shortRevised,
       rulesText: "Enchant Wall\nEnchanted Wall can attack as though it didn't have defender.",
