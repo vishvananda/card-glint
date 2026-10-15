@@ -232,6 +232,7 @@ assert.deepEqual(
 // Every historical artifact label is tied to its printing and reviewed scan.
 const wordingServer = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true, hmr: false },
 });
 try {
