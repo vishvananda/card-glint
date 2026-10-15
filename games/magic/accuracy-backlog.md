@@ -52,8 +52,17 @@ One shared transform improves nine reserved printings' edge cosine from 0.524 to
 0.916 and whole-card structural similarity from 68.5% to 74.8%; every accepted
 printing improves. The outer border and corners remain fixed. Swamp 339 retains
 its alignment exclusion. See [the measured geometry](fixtures/accuracy/8ed/basic-land-geometry.json).
-Panel/pinline masks and color calibration remain pending; the cyan Island and
-high-contrast brown texture are not yet corrected by this geometry change.
+Source-UV masks now separate headers, paper, pinlines and brown texture. Actual
+reserved color medians improve for every material; calibrated large glyph fills
+retain their white highlights and neutral shadows. Combined geometry/color
+raises reserved whole-card similarity from 68.5% to 75.6%, and all nineteen
+accepted printings improve versus 0.2.26. See
+[the color study](fixtures/accuracy/8ed/basic-land-colors.json).
+The structural metric remains contrast-sensitive around large glyphs and frame
+edges: Island 338 loses 3.1 points from color alone while gaining 7.3 points versus
+the released renderer. Review that scoring sensitivity separately; do not distort
+the calibrated palette to maximize an edge threshold. Printed legal text and
+header/font differences remain in the review queue.
 
 ## Release 0.2.21 checkpoint
 

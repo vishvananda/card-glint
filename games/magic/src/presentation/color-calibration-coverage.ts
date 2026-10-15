@@ -6,6 +6,7 @@ import {
 } from './calibration-profiles.js';
 
 import { isRevisedLand, revisedLandColors } from './revised-land-frame.js';
+import { eighthBasicProfile } from './eighth-basic-profile.js';
 
 /** Report source-guarded coverage without exposing mutable calibration tables.
  * A profile's presence is not a whole-card accuracy guarantee. */
@@ -20,12 +21,17 @@ export function colorCalibrationCoverage(face: RenderedCardInput): {
     ...(face.manaSymbols ?? []),
     ...[...text.matchAll(/\{([^}]+)\}/g)].map((m) => m[1]!),
   ]);
+  const basic = eighthBasicProfile(face);
   return {
     frame:
       Object.keys(calibratedFrameMaterials(face)).length > 0 ||
+      !!basic ||
       (isRevisedLand(face) && hasColorCalibration(face) && revisedLandColors(face).length > 0),
-    manaSymbols: [...symbols].filter(
-      (s) => !!calibratedManaTarget(face, /^\d+$/.test(s) ? 'N' : s),
-    ),
+    manaSymbols: [
+      ...new Set([
+        ...[...symbols].filter((s) => !!calibratedManaTarget(face, /^\d+$/.test(s) ? 'N' : s)),
+        ...(basic?.glyph ? [basic.color] : []),
+      ]),
+    ],
   };
 }

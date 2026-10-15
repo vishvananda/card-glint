@@ -1,0 +1,2312 @@
+{
+  "schema": 1,
+  "scope": "Ordinary white-border Eighth Edition basic lands, exact source assets and set-hsb-v1 opt-in. Large symbols are independently colored; native glyph geometry, white highlights and neutral shadows are retained.",
+  "model": {
+    "hueDegrees": [-180, 180],
+    "saturationScale": [0.25, 1.75],
+    "brightnessScale": [0.65, 1.4],
+    "neutralSaturation": 0.015
+  },
+  "mask": {
+    "source": {
+      "file": "island-frame.png",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/ul.png",
+      "sha256": "82998342ebd4e80a0678eba4e4a1e3461e0080596bb1352b82f20537736dc863"
+    },
+    "coordinateSystem": "Native source UV represented at 488x680, before the independent geometry warp. Traced blue pinline contours with 0.2 canonical-pixel simplification; material edges feather over 0.4 canonical pixel.",
+    "regions": [
+      "outer brown texture",
+      "colored pinlines",
+      "shared title/type insert",
+      "rules paper",
+      "separate large mana glyph"
+    ]
+  },
+  "sources": [
+    {
+      "file": "w-glyph.png",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/w.png",
+      "sha256": "f15389170b0ef8a8a1d35e382929bc5e6806f391bb08678e8b2761d9412d960e"
+    },
+    {
+      "file": "u-glyph.png",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/u.png",
+      "sha256": "606865af8ae26d91185a540dc63ea8df44a1d153b0d205682e053141d8fe6e01"
+    },
+    {
+      "file": "b-glyph.png",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/b.png",
+      "sha256": "6165a1a40d167605df5a3a39f975cd3a1bd9e0824d606055d7945f733aa680dd"
+    },
+    {
+      "file": "r-glyph.png",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/r.png",
+      "sha256": "9219723601f8fcaee288d74a8ed100df0d58c2e9e70031602334e72f7190afd4"
+    },
+    {
+      "file": "g-glyph.png",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/g.png",
+      "sha256": "7a8dfe92c8f3da536058e9d4499cce92d4dc926b87e4b58abac4b493afca2140"
+    },
+    {
+      "file": "plains-frame.png",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/wl.png",
+      "sha256": "9e38ff963f91759fba06f092b71404e52bb495a180380b57cf34710bd7b5c263"
+    },
+    {
+      "file": "island-frame.png",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/ul.png",
+      "sha256": "82998342ebd4e80a0678eba4e4a1e3461e0080596bb1352b82f20537736dc863"
+    },
+    {
+      "file": "swamp-frame.png",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/bl.png",
+      "sha256": "c761ae69205cc3d32a6cbb764f7ca1c6b9aea82951bf471f9a29574c49833b05"
+    },
+    {
+      "file": "mountain-frame.png",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/rl.png",
+      "sha256": "a7256a5600eb4b7d30c5898fbcdd4533797eaabf84bdbc226fb7bb788abeb25e"
+    },
+    {
+      "file": "forest-frame.png",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/gl.png",
+      "sha256": "3c4207b3612ebbfec628df5775042a8d902e1b60883b6f73d781ae23fa2d1edb"
+    }
+  ],
+  "cohorts": {
+    "calibration": 10,
+    "validation": 9,
+    "excluded": [
+      {
+        "id": "066b5162-8724-4df3-a3d5-274036d0049d",
+        "name": "Swamp",
+        "number": "339",
+        "reason": "no-validated-model"
+      }
+    ],
+    "policy": "Four printings per color; fixed UUID cohorts chosen before fitting, two calibration and two validation per color except Swamp (two and one). This finite-inventory study does not satisfy or replace the generic three-plus-three gates used for broader old-frame transfer."
+  },
+  "windows": {
+    "outer": [
+      [28, 130, 5, 200],
+      [456, 130, 5, 200],
+      [305, 630, 115, 14]
+    ],
+    "header": [
+      [265, 44, 100, 20],
+      [343, 393, 36, 16]
+    ],
+    "paper": [
+      [70, 455, 78, 130],
+      [339, 455, 78, 130]
+    ],
+    "pinline": [
+      [90, 420, 110, 2],
+      [285, 420, 110, 2]
+    ]
+  },
+  "fit": {
+    "outer": {
+      "hueDegrees": -1.0625,
+      "saturationScale": 0.9087500000000004,
+      "brightnessScale": 0.9406250000000002,
+      "gamma": 0.738125
+    },
+    "groups": [
+      {
+        "name": "Plains",
+        "calibration": 2,
+        "validation": 2,
+        "components": {
+          "header": {
+            "adjustment": {
+              "hueDegrees": -14.024193548387075,
+              "saturationScale": 0.5265905874026912,
+              "brightnessScale": 0.9495967741935485
+            },
+            "flags": [],
+            "target": [0.9235294117647059, 0.9049019607843137, 0.8931372549019607],
+            "fitError": 0.0008785375499456813,
+            "calibrationSpread": 0.3500121354626462
+          },
+          "paper": {
+            "adjustment": {
+              "hueDegrees": -1.1750690607734668,
+              "saturationScale": 0.7998024425287352,
+              "brightnessScale": 0.9392712550607287
+            },
+            "flags": [],
+            "target": [0.9098039215686274, 0.8588235294117648, 0.7323529411764707],
+            "fitError": 0.003707680897694427,
+            "calibrationSpread": 0.6597287796962232
+          },
+          "pinline": {
+            "adjustment": {
+              "hueDegrees": -8.203598940779898,
+              "saturationScale": 0.4898632906133164,
+              "brightnessScale": 0.9302788844621516
+            },
+            "flags": [],
+            "target": [0.915686274509804, 0.8990196078431373, 0.8852941176470588],
+            "fitError": 0.00038357259544990774,
+            "calibrationSpread": 1.118284213178291
+          }
+        }
+      },
+      {
+        "name": "Island",
+        "calibration": 2,
+        "validation": 2,
+        "components": {
+          "header": {
+            "adjustment": {
+              "hueDegrees": 42.78801843317967,
+              "saturationScale": 0.45884697719052203,
+              "brightnessScale": 0.9842342342342343
+            },
+            "flags": [],
+            "target": [0.803921568627451, 0.8019607843137255, 0.8568627450980393],
+            "fitError": 0,
+            "calibrationSpread": 0.8887447238522037
+          },
+          "paper": {
+            "adjustment": {
+              "hueDegrees": 32.97916666666663,
+              "saturationScale": 0.5842800834685827,
+              "brightnessScale": 1.0133928571428572
+            },
+            "flags": [],
+            "target": [0.8058823529411765, 0.8019607843137255, 0.8901960784313725],
+            "fitError": 0.0006994676816767377,
+            "calibrationSpread": 1.4441390844301192
+          },
+          "pinline": {
+            "adjustment": {
+              "hueDegrees": 17.557840616966587,
+              "saturationScale": 0.5557142857142856,
+              "brightnessScale": 1.1666666666666667
+            },
+            "flags": [],
+            "target": [0.31862745098039214, 0.4612745098039216, 0.7],
+            "fitError": 1.1102230246251565e-14,
+            "calibrationSpread": 0.5331198202089861
+          }
+        }
+      },
+      {
+        "name": "Swamp",
+        "calibration": 2,
+        "validation": 1,
+        "components": {
+          "header": {
+            "adjustment": {
+              "hueDegrees": -14.404807692307713,
+              "saturationScale": 1.421528644784533,
+              "brightnessScale": 1.0159574468085106
+            },
+            "flags": [],
+            "target": [0.7490196078431373, 0.692156862745098, 0.6754901960784314],
+            "fitError": 0.003949820914549606,
+            "calibrationSpread": 0.248341323164549
+          },
+          "paper": {
+            "adjustment": {
+              "hueDegrees": -12.3125,
+              "saturationScale": 1.2126352339181279,
+              "brightnessScale": 1.0239520958083832
+            },
+            "flags": [],
+            "target": [0.6705882352941176, 0.6176470588235294, 0.6019607843137255],
+            "fitError": 0.0011811310082108385,
+            "calibrationSpread": 0.176780867464585
+          },
+          "pinline": {
+            "adjustment": {
+              "hueDegrees": -88.07559082483772,
+              "saturationScale": 1.277991260837483,
+              "brightnessScale": 1.308125
+            },
+            "flags": [],
+            "target": [0.2034313725490196, 0.16372549019607846, 0.20441176470588235],
+            "fitError": 0.0037906717929176667,
+            "calibrationSpread": 0.14694946546881665
+          }
+        }
+      },
+      {
+        "name": "Mountain",
+        "calibration": 2,
+        "validation": 2,
+        "components": {
+          "header": {
+            "adjustment": {
+              "hueDegrees": 2.5092658770676053,
+              "saturationScale": 0.7511073790822655,
+              "brightnessScale": 0.9318181818181819
+            },
+            "flags": [],
+            "target": [0.884313725490196, 0.792156862745098, 0.7215686274509804],
+            "fitError": 0.00363152834334826,
+            "calibrationSpread": 0.2796401499105339
+          },
+          "paper": {
+            "adjustment": {
+              "hueDegrees": 8.412850307587178,
+              "saturationScale": 1.0477689369398555,
+              "brightnessScale": 0.9504310344827587
+            },
+            "flags": [],
+            "target": [0.8647058823529412, 0.6372549019607843, 0.4549019607843137],
+            "fitError": 0.010628535938071356,
+            "calibrationSpread": 0.3817900449578618
+          },
+          "pinline": {
+            "adjustment": {
+              "hueDegrees": 3.0543379373086736,
+              "saturationScale": 1.0001076704423102,
+              "brightnessScale": 1.0559610705596107
+            },
+            "flags": [],
+            "target": [0.8509803921568627, 0.30294117647058827, 0.18627450980392157],
+            "fitError": 0.004846062760191418,
+            "calibrationSpread": 0.119282525931855
+          }
+        }
+      },
+      {
+        "name": "Forest",
+        "calibration": 2,
+        "validation": 2,
+        "components": {
+          "header": {
+            "adjustment": {
+              "hueDegrees": -59.16304347826099,
+              "saturationScale": 1.0029481528127626,
+              "brightnessScale": 0.9543269230769231
+            },
+            "flags": [],
+            "target": [0.7784313725490196, 0.7754901960784313, 0.7333333333333334],
+            "fitError": 0.02495697946508512,
+            "calibrationSpread": 0.6366980761243197
+          },
+          "paper": {
+            "adjustment": {
+              "hueDegrees": -26.824145962732928,
+              "saturationScale": 0.9416448402304863,
+              "brightnessScale": 0.969626168224299
+            },
+            "flags": [],
+            "target": [0.7843137254901961, 0.8137254901960784, 0.7313725490196079],
+            "fitError": 0.00038081379269553364,
+            "calibrationSpread": 0.6673777951403241
+          },
+          "pinline": {
+            "adjustment": {
+              "hueDegrees": -21.627829393491652,
+              "saturationScale": 0.47678542547538166,
+              "brightnessScale": 1.16243654822335
+            },
+            "flags": [],
+            "target": [0.24362745098039218, 0.4490196078431372, 0.29803921568627456],
+            "fitError": 0.0006643899789305657,
+            "calibrationSpread": 0.4994260496435403
+          }
+        }
+      }
+    ]
+  },
+  "actualReserved": {
+    "all": {
+      "count": 9,
+      "color": {
+        "outer": {
+          "before": 4.858079970801356,
+          "after": 1.5639913759008546,
+          "worstChange": -1.40309169248681
+        },
+        "header": {
+          "before": 2.827299791524405,
+          "after": 0.7900240619013819,
+          "worstChange": 0.029540160982619135
+        },
+        "paper": {
+          "before": 2.1867820002785674,
+          "after": 0.9696745280482141,
+          "worstChange": 0.09516520975162868
+        },
+        "pinline": {
+          "before": 5.063332899953246,
+          "after": 0.6772374274197062,
+          "worstChange": -0.7718348816915865
+        }
+      },
+      "structural": {
+        "before": 0.7476341331954308,
+        "after": 0.7561317795558551
+      },
+      "texture": {
+        "before": 8.306915792417755,
+        "after": 2.257141025466808
+      }
+    },
+    "Plains": {
+      "count": 2,
+      "color": {
+        "outer": {
+          "before": 5.354731308701266,
+          "after": 1.8070274716461021,
+          "worstChange": -3.4396194335511776
+        },
+        "header": {
+          "before": 3.41890346764521,
+          "after": 0.3738202742426996,
+          "worstChange": -2.782658651358279
+        },
+        "paper": {
+          "before": 3.5212614373780484,
+          "after": 0.6817425538323086,
+          "worstChange": -2.758102133203549
+        },
+        "pinline": {
+          "before": 4.2255752010844105,
+          "after": 0.46671094002620594,
+          "worstChange": -3.29935155834163
+        }
+      },
+      "structural": {
+        "before": 0.7583076044655437,
+        "after": 0.7573847727480555
+      },
+      "texture": {
+        "before": 11.65618364038679,
+        "after": 3.5510335838067455
+      }
+    },
+    "Island": {
+      "count": 2,
+      "color": {
+        "outer": {
+          "before": 4.096937327722841,
+          "after": 1.5747248995982095,
+          "worstChange": -1.40309169248681
+        },
+        "header": {
+          "before": 2.7472573326716283,
+          "after": 1.2434202612667984,
+          "worstChange": -1.3363554022634245
+        },
+        "paper": {
+          "before": 2.1674737470766483,
+          "after": 1.9372597207859472,
+          "worstChange": 0.09516520975162868
+        },
+        "pinline": {
+          "before": 6.622265304157343,
+          "after": 2.4478104487795322,
+          "worstChange": -0.7718348816915865
+        }
+      },
+      "structural": {
+        "before": 0.7520182152995676,
+        "after": 0.767244258879825
+      },
+      "texture": {
+        "before": 5.053708997502213,
+        "after": 3.467956633434156
+      }
+    },
+    "Swamp": {
+      "count": 1,
+      "color": {
+        "outer": {
+          "before": 3.0822819932767236,
+          "after": 1.0395802512537842,
+          "worstChange": -2.042701742022939
+        },
+        "header": {
+          "before": 1.2639521274045633,
+          "after": 0.4199411541178806,
+          "worstChange": -0.8440109732866827
+        },
+        "paper": {
+          "before": 0.7918846480701421,
+          "after": 0.4784483744990674,
+          "worstChange": -0.31343627357107473
+        },
+        "pinline": {
+          "before": 6.452882577140389,
+          "after": 2.8634549430235974,
+          "worstChange": -3.589427634116791
+        }
+      },
+      "structural": {
+        "before": 0.724320141379561,
+        "after": 0.7143139052787207
+      },
+      "texture": {
+        "before": 8.449763131055576,
+        "after": 0.11582506907576828
+      }
+    },
+    "Mountain": {
+      "count": 2,
+      "color": {
+        "outer": {
+          "before": 3.7894708233979637,
+          "after": 1.267108788091133,
+          "worstChange": -1.7506354757131604
+        },
+        "header": {
+          "before": 4.037767002222148,
+          "after": 1.7138773378589125,
+          "worstChange": -2.197393705913048
+        },
+        "paper": {
+          "before": 2.6939335083528024,
+          "after": 1.6148458856893853,
+          "worstChange": -0.8092119896813439
+        },
+        "pinline": {
+          "before": 3.696070996901446,
+          "after": 0.8514870291407557,
+          "worstChange": -2.405468211270306
+        }
+      },
+      "structural": {
+        "before": 0.7356892430516904,
+        "after": 0.7350536391935583
+      },
+      "texture": {
+        "before": 8.315675039891676,
+        "after": 2.1684207992264284
+      }
+    },
+    "Forest": {
+      "count": 2,
+      "color": {
+        "outer": {
+          "before": 5.594783774318409,
+          "after": 2.1280943103611056,
+          "worstChange": -3.121202371722032
+        },
+        "header": {
+          "before": 1.8882042666358625,
+          "after": 1.177903206422154,
+          "worstChange": 0.029540160982619135
+        },
+        "paper": {
+          "before": 1.4541235247115663,
+          "after": 0.6197092846805552,
+          "worstChange": -0.23530845193224947
+        },
+        "pinline": {
+          "before": 6.899928506932019,
+          "after": 0.7473820299927076,
+          "worstChange": -5.5169380797102345
+        }
+      },
+      "structural": {
+        "before": 0.7561784658728559,
+        "after": 0.785753384540549
+      },
+      "texture": {
+        "before": 6.845879615184266,
+        "after": 1.4610361772334883
+      }
+    }
+  },
+  "combined": {
+    "before": 0.6751145029548621,
+    "after": 0.7587456045320574,
+    "validationBefore": 0.6853336445226392,
+    "validationAfter": 0.7561317795558551,
+    "worstChange": 0.0225182864989657
+  },
+  "rows": [
+    {
+      "id": "1267a5fa-f9a9-4a7f-89f9-24889868ccff",
+      "name": "Mountain",
+      "number": "346",
+      "cohort": "calibration",
+      "scanHash": "da3c4f9d2edcd22750eb0d803bbe44d53dd329e3d46198514f92fec17971a1d7",
+      "beforeHash": "69f17344f0e53f73328423d0e6e55463c120a3766ef3d91e7f50851ce907c4ad",
+      "afterHash": "dd4d7f2a7d94d8d60482da50d26a780b4c508da0d12ef3240548f08af5aaddc8",
+      "components": {
+        "outer": {
+          "before": 4.089959697839758,
+          "after": 1.3319133031966044,
+          "rgb": {
+            "scan": [0.6588235294117647, 0.5294117647058824, 0.403921568627451],
+            "candidate": [0.5980392156862745, 0.48627450980392156, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5274509803921569, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 26.495280068126316,
+            "candidate": 32.08690788715817,
+            "colored": 26.041727317002973
+          }
+        },
+        "header": {
+          "before": 2.92451340423448,
+          "after": 0.3125748975708305,
+          "rgb": {
+            "scan": [0.8823529411764706, 0.788235294117647, 0.7215686274509804],
+            "candidate": [0.9490196078431372, 0.807843137254902, 0.7176470588235294],
+            "colored": [0.8862745098039215, 0.792156862745098, 0.7215686274509804]
+          },
+          "spread": {
+            "scan": 1.5176301432573176,
+            "candidate": 1.0066531365203306,
+            "colored": 0.8301664933822592
+          }
+        },
+        "paper": {
+          "before": 2.6861950438042013,
+          "after": 0.31315338323281294,
+          "rgb": {
+            "scan": [0.8627450980392157, 0.6313725490196078, 0.45098039215686275],
+            "candidate": [0.9098039215686274, 0.6235294117647059, 0.4980392156862745],
+            "colored": [0.8666666666666667, 0.6352941176470588, 0.4549019607843137]
+          },
+          "spread": {
+            "scan": 1.411724880577369,
+            "candidate": 0.8328338062609657,
+            "colored": 0.7702806211535818
+          }
+        },
+        "pinline": {
+          "before": 3.2985821164452553,
+          "after": 0.04812283165979307,
+          "rgb": {
+            "scan": [0.8490196078431372, 0.3019607843137255, 0.1843137254901961],
+            "candidate": [0.8058823529411765, 0.2549019607843137, 0.1764705882352941],
+            "colored": [0.85, 0.30196078431372547, 0.1843137254901961]
+          },
+          "spread": {
+            "scan": 0.9550742563880453,
+            "candidate": 0.29563261673386515,
+            "colored": 0.372513716854403
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.24143033163543928,
+          "shadowChroma": 1.4520578011551357,
+          "shadowLightness": 4.222443714436791,
+          "contrast": 51.31978957237776,
+          "referenceContrast": 45.07130109196681,
+          "contrastError": 6.248488480410948
+        },
+        "after": {
+          "chroma": 0.4730852499329483,
+          "shadowChroma": 1.4343364497935323,
+          "shadowLightness": 2.4641088011447874,
+          "contrast": 43.09283475872646,
+          "referenceContrast": 45.07130109196681,
+          "contrastError": 1.9784663332403483
+        }
+      },
+      "structural": {
+        "before": 0.7420966187722555,
+        "after": 0.7387537052273753
+      }
+    },
+    {
+      "id": "22687920-e310-4122-a01d-2aff720d2071",
+      "name": "Swamp",
+      "number": "340",
+      "cohort": "calibration",
+      "scanHash": "d17c06568684705f6c639c032d9f425795db85bf2a8c8052e26ac3decd45289b",
+      "beforeHash": "b7f9ec5314ca847bd0cfb71fcab21dc5c8a0c83c45ef7c2a910c8b3a79f5086d",
+      "afterHash": "ec8992079f6595ea8a2c5e82ffdffb1f273d50c15d0f3da5a194cc71f8316dd7",
+      "components": {
+        "outer": {
+          "before": 3.9625022586652077,
+          "after": 0.27862902787969795,
+          "rgb": {
+            "scan": [0.6431372549019608, 0.5254901960784314, 0.44313725490196076],
+            "candidate": [0.592156862745098, 0.4823529411764706, 0.38823529411764707],
+            "colored": [0.6431372549019608, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 25.998048528723984,
+            "candidate": 32.07072986124883,
+            "colored": 26.119534758262642
+          }
+        },
+        "header": {
+          "before": 1.2804873649303237,
+          "after": 0.3810221413766901,
+          "rgb": {
+            "scan": [0.7450980392156863, 0.6901960784313725, 0.6784313725490196],
+            "candidate": [0.7372549019607844, 0.7098039215686275, 0.6862745098039216],
+            "colored": [0.7490196078431373, 0.6941176470588235, 0.6745098039215687]
+          },
+          "spread": {
+            "scan": 4.098855024403043,
+            "candidate": 4.165399433726194,
+            "colored": 3.9902143018603233
+          }
+        },
+        "paper": {
+          "before": 0.824615825374105,
+          "after": 0.14492443155894996,
+          "rgb": {
+            "scan": [0.6705882352941176, 0.615686274509804, 0.6039215686274509],
+            "candidate": [0.6549019607843137, 0.6235294117647059, 0.6],
+            "colored": [0.6705882352941176, 0.615686274509804, 0.6]
+          },
+          "spread": {
+            "scan": 1.0497832664469329,
+            "candidate": 0.7301236043426216,
+            "colored": 0.8730067979293968
+          }
+        },
+        "pinline": {
+          "before": 4.417096988885634,
+          "after": 0.24806118214095213,
+          "rgb": {
+            "scan": [0.20490196078431372, 0.1647058823529412, 0.2068627450980392],
+            "candidate": [0.1568627450980392, 0.14313725490196078, 0.13137254901960785],
+            "colored": [0.20392156862745098, 0.1627450980392157, 0.2019607843137255]
+          },
+          "spread": {
+            "scan": 2.817571652514805,
+            "candidate": 0.4755641367558321,
+            "colored": 0.7745673371274886
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 1.300460891954085,
+          "shadowChroma": 1.981391131083414,
+          "shadowLightness": 4.38614755616909,
+          "contrast": 51.45531218459851,
+          "referenceContrast": 45.706289989557696,
+          "contrastError": 5.749022195040816
+        },
+        "after": {
+          "chroma": 1.0016825639051634,
+          "shadowChroma": 2.0667538382417097,
+          "shadowLightness": 2.6835814435138605,
+          "contrast": 42.88972398446717,
+          "referenceContrast": 45.706289989557696,
+          "contrastError": 2.816566005090529
+        }
+      },
+      "structural": {
+        "before": 0.7375864467991607,
+        "after": 0.7307534309537391
+      }
+    },
+    {
+      "id": "3125bc4d-7e9e-4133-8d11-1abf3dc2cec9",
+      "name": "Swamp",
+      "number": "342",
+      "cohort": "calibration",
+      "scanHash": "ae3964940df9e241202a09eaed96bb7c838b0a10d66f651f15429381dd33e9ea",
+      "beforeHash": "db1454e23432134b5c1602f950f2117634d10239d92ca362847f258026804e02",
+      "afterHash": "57bfed12fc775c6970ab8ad17fa352b3abeaaf99a3f82bbf150a8e426bb7cd40",
+      "components": {
+        "outer": {
+          "before": 4.418247900752541,
+          "after": 0.8321186050884878,
+          "rgb": {
+            "scan": [0.6392156862745098, 0.5372549019607843, 0.43529411764705883],
+            "candidate": [0.592156862745098, 0.4823529411764706, 0.38823529411764707],
+            "colored": [0.6431372549019608, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 25.303309463537328,
+            "candidate": 32.07072986124883,
+            "colored": 26.119534758262642
+          }
+        },
+        "header": {
+          "before": 1.090057713758,
+          "after": 0.1546606503167476,
+          "rgb": {
+            "scan": [0.7529411764705882, 0.6941176470588235, 0.6725490196078432],
+            "candidate": [0.7372549019607844, 0.7098039215686275, 0.6862745098039216],
+            "colored": [0.7490196078431373, 0.6941176470588235, 0.6745098039215687]
+          },
+          "spread": {
+            "scan": 3.8967821345144023,
+            "candidate": 4.165399433726194,
+            "colored": 3.9902143018603233
+          }
+        },
+        "paper": {
+          "before": 0.6234326743027421,
+          "after": 0.27642148761235574,
+          "rgb": {
+            "scan": [0.6705882352941176, 0.6196078431372549, 0.6],
+            "candidate": [0.6549019607843137, 0.6235294117647059, 0.6],
+            "colored": [0.6705882352941176, 0.615686274509804, 0.6]
+          },
+          "spread": {
+            "scan": 1.101864454328661,
+            "candidate": 0.7301236043426216,
+            "colored": 0.8730067979293968
+          }
+        },
+        "pinline": {
+          "before": 4.128467882356776,
+          "after": 0.09600531015233993,
+          "rgb": {
+            "scan": [0.2019607843137255, 0.1627450980392157, 0.2019607843137255],
+            "candidate": [0.1568627450980392, 0.14313725490196078, 0.13137254901960785],
+            "colored": [0.20392156862745098, 0.1627450980392157, 0.2019607843137255]
+          },
+          "spread": {
+            "scan": 2.588011111090371,
+            "candidate": 0.4755641367558321,
+            "colored": 0.7745673371274886
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.6916215603444994,
+          "shadowChroma": 1.7721549820753555,
+          "shadowLightness": 4.840414904700524,
+          "contrast": 51.45531218459851,
+          "referenceContrast": 45.18467888403702,
+          "contrastError": 6.270633300561492
+        },
+        "after": {
+          "chroma": 0.4148246102339082,
+          "shadowChroma": 1.8558024677839708,
+          "shadowLightness": 2.2293140949824264,
+          "contrast": 42.88972398446717,
+          "referenceContrast": 45.18467888403702,
+          "contrastError": 2.294954899569852
+        }
+      },
+      "structural": {
+        "before": 0.7352026778816455,
+        "after": 0.7246661609154547
+      }
+    },
+    {
+      "id": "4146a316-c409-4121-931f-1d3b5ae63675",
+      "name": "Island",
+      "number": "335",
+      "cohort": "calibration",
+      "scanHash": "391e5b9ffbdb4798650fcf6f9038bac4d1b749394ee3ef59961a36142d17f3c3",
+      "beforeHash": "be42ef196df531bffc447465c00e3eeb91c9b68c29dda7ca6c99a924142630cd",
+      "afterHash": "506f82ce06f7bde46ed47e9b7e4b60df7f994ec69f534e747ceb2a62ed92b17a",
+      "components": {
+        "outer": {
+          "before": 5.256468191512159,
+          "after": 1.458841020183678,
+          "rgb": {
+            "scan": [0.6627450980392157, 0.5450980392156862, 0.4470588235294118],
+            "candidate": [0.6, 0.4823529411764706, 0.39215686274509803],
+            "colored": [0.6450980392156863, 0.5274509803921569, 0.4392156862745098]
+          },
+          "spread": {
+            "scan": 26.267778906527695,
+            "candidate": 31.814164585155385,
+            "colored": 25.776512412328202
+          }
+        },
+        "header": {
+          "before": 2.6714019612474766,
+          "after": 0.9933785177055812,
+          "rgb": {
+            "scan": [0.788235294117647, 0.792156862745098, 0.8509803921568627],
+            "candidate": [0.7490196078431373, 0.8313725490196079, 0.8705882352941177],
+            "colored": [0.803921568627451, 0.803921568627451, 0.8588235294117647]
+          },
+          "spread": {
+            "scan": 1.690649701238654,
+            "candidate": 2.256432068651033,
+            "colored": 1.9776114579989976
+          }
+        },
+        "paper": {
+          "before": 2.148165493874729,
+          "after": 1.5925722315416984,
+          "rgb": {
+            "scan": [0.7843137254901961, 0.7843137254901961, 0.8784313725490196],
+            "candidate": [0.7294117647058823, 0.803921568627451, 0.8784313725490196],
+            "colored": [0.807843137254902, 0.803921568627451, 0.8901960784313725]
+          },
+          "spread": {
+            "scan": 0.9298542490393475,
+            "candidate": 0.9109048400631475,
+            "colored": 0.8399649261953709
+          }
+        },
+        "pinline": {
+          "before": 8.098884595353656,
+          "after": 0.5803927055883544,
+          "rgb": {
+            "scan": [0.32352941176470584, 0.4558823529411765, 0.6882352941176471],
+            "candidate": [0.011764705882352941, 0.403921568627451, 0.6],
+            "colored": [0.3176470588235294, 0.4607843137254902, 0.7019607843137254]
+          },
+          "spread": {
+            "scan": 1.5467562608871586,
+            "candidate": 0.26416985003680105,
+            "colored": 0.31819486522400275
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 1.0508669263498411,
+          "shadowChroma": 1.867754825663192,
+          "shadowLightness": 5.294337732495907,
+          "contrast": 51.42285287295141,
+          "referenceContrast": 42.986556148350374,
+          "contrastError": 8.436296724601036
+        },
+        "after": {
+          "chroma": 0.6812858640913768,
+          "shadowChroma": 2.042930020485251,
+          "shadowLightness": 1.6191089859597385,
+          "contrast": 42.90118724201504,
+          "referenceContrast": 42.986556148350374,
+          "contrastError": 0.0853689063353329
+        }
+      },
+      "structural": {
+        "before": 0.7276698525141105,
+        "after": 0.7901019487363055
+      }
+    },
+    {
+      "id": "499f548a-9e41-4b95-812d-a739d945123f",
+      "name": "Swamp",
+      "number": "341",
+      "cohort": "validation",
+      "scanHash": "7402ab40a94ce89db95550cbde7fcb9a8dd2da67f345f4485ae0d1bd0c7cd73d",
+      "beforeHash": "03951624eb287107d6a5d1bc6d4e7aaea887247f4160eccbf7d09c0fcdde4f10",
+      "afterHash": "53309f2335e5b1759c3cdaa54d77e205c3c6b73d4846c9fa7757776ba4b42e9e",
+      "components": {
+        "outer": {
+          "before": 3.0822819932767236,
+          "after": 1.0395802512537842,
+          "rgb": {
+            "scan": [0.6196078431372549, 0.5215686274509804, 0.43137254901960786],
+            "candidate": [0.592156862745098, 0.4823529411764706, 0.38823529411764707],
+            "colored": [0.6431372549019608, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 24.973690295076715,
+            "candidate": 32.07072986124883,
+            "colored": 26.119534758262642
+          }
+        },
+        "header": {
+          "before": 1.2639521274045633,
+          "after": 0.4199411541178806,
+          "rgb": {
+            "scan": [0.7411764705882353, 0.6901960784313725, 0.6705882352941176],
+            "candidate": [0.7372549019607844, 0.7098039215686275, 0.6862745098039216],
+            "colored": [0.7490196078431373, 0.6941176470588235, 0.6745098039215687]
+          },
+          "spread": {
+            "scan": 3.9677091043799533,
+            "candidate": 4.165399433726194,
+            "colored": 3.9902143018603233
+          }
+        },
+        "paper": {
+          "before": 0.7918846480701421,
+          "after": 0.4784483744990674,
+          "rgb": {
+            "scan": [0.6627450980392157, 0.611764705882353, 0.592156862745098],
+            "candidate": [0.6549019607843137, 0.6235294117647059, 0.6],
+            "colored": [0.6705882352941176, 0.615686274509804, 0.6]
+          },
+          "spread": {
+            "scan": 1.0709250796537308,
+            "candidate": 0.7301236043426216,
+            "colored": 0.8730067979293968
+          }
+        },
+        "pinline": {
+          "before": 6.452882577140389,
+          "after": 2.8634549430235974,
+          "rgb": {
+            "scan": [0.22941176470588237, 0.1931372549019608, 0.22058823529411764],
+            "candidate": [0.1568627450980392, 0.14313725490196078, 0.13137254901960785],
+            "colored": [0.20392156862745098, 0.1627450980392157, 0.2019607843137255]
+          },
+          "spread": {
+            "scan": 2.5404543477273824,
+            "candidate": 0.4755641367558321,
+            "colored": 0.7745673371274886
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.9254746584941609,
+          "shadowChroma": 1.4407315080976597,
+          "shadowLightness": 5.888779038440789,
+          "contrast": 51.45531218459851,
+          "referenceContrast": 43.005549053542936,
+          "contrastError": 8.449763131055576
+        },
+        "after": {
+          "chroma": 0.6883430809764091,
+          "shadowChroma": 1.5294753395190401,
+          "shadowLightness": 1.1809499612421615,
+          "contrast": 42.88972398446717,
+          "referenceContrast": 43.005549053542936,
+          "contrastError": 0.11582506907576828
+        }
+      },
+      "structural": {
+        "before": 0.724320141379561,
+        "after": 0.7143139052787207
+      }
+    },
+    {
+      "id": "4ce08c3b-3d08-446e-9f78-4ec22e9308db",
+      "name": "Forest",
+      "number": "348",
+      "cohort": "calibration",
+      "scanHash": "113b0cb387d9e02fefcf8f558cbc8dd3aa5a69c873106a2c7beb06a23d88f155",
+      "beforeHash": "13b85cabd86835e69d59a8627ad0dc993525ea78ecfcde464722426626a1fa91",
+      "afterHash": "6a429b578e9a2b3ebaa15b1d8d713a221d41ef974d0b0576c2c997e3a930a4da",
+      "components": {
+        "outer": {
+          "before": 5.000740195239766,
+          "after": 1.575791863468445,
+          "rgb": {
+            "scan": [0.6588235294117647, 0.5372549019607843, 0.4196078431372549],
+            "candidate": [0.596078431372549, 0.47843137254901963, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.44313725490196076]
+          },
+          "spread": {
+            "scan": 26.924272292833017,
+            "candidate": 32.34333560714678,
+            "colored": 26.15434113785748
+          }
+        },
+        "header": {
+          "before": 2.033733894237106,
+          "after": 0.6236844863908841,
+          "rgb": {
+            "scan": [0.7843137254901961, 0.7843137254901961, 0.7372549019607844],
+            "candidate": [0.7686274509803922, 0.8156862745098039, 0.7686274509803922],
+            "colored": [0.7764705882352941, 0.7764705882352941, 0.7294117647058823]
+          },
+          "spread": {
+            "scan": 1.3374072342045802,
+            "candidate": 1.580488298129699,
+            "colored": 1.4880209113547578
+          }
+        },
+        "paper": {
+          "before": 1.1728793061793543,
+          "after": 0.5440823592899217,
+          "rgb": {
+            "scan": [0.788235294117647, 0.8235294117647058, 0.7372549019607844],
+            "candidate": [0.7647058823529411, 0.8392156862745098, 0.7490196078431373],
+            "colored": [0.7843137254901961, 0.8156862745098039, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 1.439605275179494,
+            "candidate": 0.9113707429754869,
+            "colored": 0.8447588406696004
+          }
+        },
+        "pinline": {
+          "before": 7.188132988824784,
+          "after": 0.4970275100351439,
+          "rgb": {
+            "scan": [0.24705882352941178, 0.45294117647058824, 0.2901960784313726],
+            "candidate": [0.01568627450980392, 0.3862745098039216, 0.24705882352941178],
+            "colored": [0.2431372549019608, 0.44901960784313727, 0.2980392156862745]
+          },
+          "spread": {
+            "scan": 1.4619131837592656,
+            "candidate": 0.34941849725517404,
+            "colored": 0.3922194711491695
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.11638537739428499,
+          "shadowChroma": 1.1058492441746246,
+          "shadowLightness": 4.043780327058077,
+          "contrast": 51.330969092266244,
+          "referenceContrast": 44.838880144511464,
+          "contrastError": 6.49208894775478
+        },
+        "after": {
+          "chroma": 0.3801268081130433,
+          "shadowChroma": 1.094576159918863,
+          "shadowLightness": 2.642772188523501,
+          "contrast": 43.09399788727835,
+          "referenceContrast": 44.838880144511464,
+          "contrastError": 1.7448822572331153
+        }
+      },
+      "structural": {
+        "before": 0.7262073113707319,
+        "after": 0.7859124454518569
+      }
+    },
+    {
+      "id": "4f307e72-f33e-4fb1-b15f-a46ab389c20f",
+      "name": "Island",
+      "number": "336",
+      "cohort": "calibration",
+      "scanHash": "d18491968ce359582ca1aaadb045c0e8aa53ad059225199a5e3194fd0b373aba",
+      "beforeHash": "c94dee869d1020a0fc1ae3ad57e681b5ef08454388ec996fbd790160a8efdaa6",
+      "afterHash": "65634b919ff0b405b21703905dbb18ccf24976d5bcd97f00cd37b706b374123e",
+      "components": {
+        "outer": {
+          "before": 7.556905758815422,
+          "after": 4.184289876716471,
+          "rgb": {
+            "scan": [0.6980392156862745, 0.5686274509803921, 0.403921568627451],
+            "candidate": [0.6, 0.4823529411764706, 0.39215686274509803],
+            "colored": [0.6450980392156863, 0.5274509803921569, 0.4392156862745098]
+          },
+          "spread": {
+            "scan": 27.253243649669876,
+            "candidate": 31.814164585155385,
+            "colored": 25.776512412328202
+          }
+        },
+        "header": {
+          "before": 2.5175185162716667,
+          "after": 0.7900941272124496,
+          "rgb": {
+            "scan": [0.8196078431372549, 0.8117647058823529, 0.8627450980392157],
+            "candidate": [0.7490196078431373, 0.8313725490196079, 0.8705882352941177],
+            "colored": [0.803921568627451, 0.803921568627451, 0.8588235294117647]
+          },
+          "spread": {
+            "scan": 1.5792419341647856,
+            "candidate": 2.256432068651033,
+            "colored": 1.9776114579989976
+          }
+        },
+        "paper": {
+          "before": 3.668092068547902,
+          "after": 1.2933734014998266,
+          "rgb": {
+            "scan": [0.8274509803921568, 0.8196078431372549, 0.9019607843137255],
+            "candidate": [0.7294117647058823, 0.803921568627451, 0.8784313725490196],
+            "colored": [0.807843137254902, 0.803921568627451, 0.8901960784313725]
+          },
+          "spread": {
+            "scan": 1.1584425506495952,
+            "candidate": 0.9109048400631475,
+            "colored": 0.8399649261953709
+          }
+        },
+        "pinline": {
+          "before": 8.660643961616508,
+          "after": 0.5005828209266311,
+          "rgb": {
+            "scan": [0.3137254901960784, 0.4666666666666667, 0.7117647058823529],
+            "candidate": [0.011764705882352941, 0.403921568627451, 0.6],
+            "colored": [0.3176470588235294, 0.4607843137254902, 0.7019607843137254]
+          },
+          "spread": {
+            "scan": 1.391109252469837,
+            "candidate": 0.26416985003680105,
+            "colored": 0.31819486522400275
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 1.1228667567591633,
+          "shadowChroma": 1.0443937297185613,
+          "shadowLightness": 5.819346080628968,
+          "contrast": 51.42285287295141,
+          "referenceContrast": 44.3181154848898,
+          "contrastError": 7.104737388061608
+        },
+        "after": {
+          "chroma": 1.4656820373656883,
+          "shadowChroma": 1.0980528165803611,
+          "shadowLightness": 1.0941006378266782,
+          "contrast": 42.90118724201504,
+          "referenceContrast": 44.3181154848898,
+          "contrastError": 1.4169282428747607
+        }
+      },
+      "structural": {
+        "before": 0.7041209270514615,
+        "after": 0.7625627253680768
+      }
+    },
+    {
+      "id": "7c88ade7-4b1c-4380-a19a-8ba18fa4adaa",
+      "name": "Plains",
+      "number": "332",
+      "cohort": "calibration",
+      "scanHash": "175e7ae898742fb2a7ba32e8114ee09bc3a9439c54b1309676d87f00ab329f67",
+      "beforeHash": "7d5574c1a01369295f18180c42de0229c42f13e2f597d8d8b4fedb55b38a5003",
+      "afterHash": "a0a875f0f169527f240513a8fa0dc36980e7a6c3d2e4494a8b224791e2e343d6",
+      "components": {
+        "outer": {
+          "before": 4.78182761813033,
+          "after": 1.1750270475935871,
+          "rgb": {
+            "scan": [0.6588235294117647, 0.5333333333333333, 0.4549019607843137],
+            "candidate": [0.596078431372549, 0.4823529411764706, 0.38627450980392153],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 24.687209073733676,
+            "candidate": 32.44817818360175,
+            "colored": 26.368108024908334
+          }
+        },
+        "header": {
+          "before": 3.1208124979575893,
+          "after": 0.2704962692331186,
+          "rgb": {
+            "scan": [0.9254901960784314, 0.9098039215686274, 0.9],
+            "candidate": [0.9725490196078431, 0.9490196078431372, 0.9137254901960784],
+            "colored": [0.9254901960784314, 0.9058823529411765, 0.8941176470588236]
+          },
+          "spread": {
+            "scan": 3.5186976069997824,
+            "candidate": 2.7539665625559206,
+            "colored": 2.726314709623245
+          }
+        },
+        "paper": {
+          "before": 3.5394617131869652,
+          "after": 0.6408775386691141,
+          "rgb": {
+            "scan": [0.9137254901960784, 0.8666666666666667, 0.7490196078431373],
+            "candidate": [0.9686274509803922, 0.9058823529411765, 0.7333333333333333],
+            "colored": [0.9098039215686274, 0.8588235294117647, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 2.212248770829448,
+            "candidate": 1.4895076375264846,
+            "colored": 1.5046501177660498
+          }
+        },
+        "pinline": {
+          "before": 3.5402633288018426,
+          "after": 1.1214666482304794,
+          "rgb": {
+            "scan": [0.9274509803921569, 0.9137254901960785, 0.903921568627451],
+            "candidate": [0.984313725490196, 0.9568627450980391, 0.9186274509803921],
+            "colored": [0.9176470588235294, 0.8980392156862745, 0.8862745098039215]
+          },
+          "spread": {
+            "scan": 2.1010076392891146,
+            "candidate": 0.24221984103349184,
+            "colored": 0.17851220531392467
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 1.518219934171477,
+          "shadowChroma": 2.2137394542843607,
+          "shadowLightness": 6.445160789618964,
+          "contrast": 51.063794940459196,
+          "referenceContrast": 40.596821377525494,
+          "contrastError": 10.466973562933703
+        },
+        "after": {
+          "chroma": 1.2132206266036856,
+          "shadowChroma": 2.176935640640583,
+          "shadowLightness": 0.2417354849474418,
+          "contrast": 42.95864488387915,
+          "referenceContrast": 40.596821377525494,
+          "contrastError": 2.361823506353659
+        }
+      },
+      "structural": {
+        "before": 0.7743682592741201,
+        "after": 0.7728612785267422
+      }
+    },
+    {
+      "id": "7eee631d-de1e-4c6f-b60e-0e97a5e99fe6",
+      "name": "Forest",
+      "number": "349",
+      "cohort": "calibration",
+      "scanHash": "e6e17f22a14df998e33193afad7ad6e2873a9b798cf805dc92bac94db45cb446",
+      "beforeHash": "1e6af1412e503e16ab7f68cb9f2c3dd164ad3513a5b3665e94595434ab607128",
+      "afterHash": "86bd102e43f8a9e3a3488e31fa7cfdff20978195c55edb00542c8b900997a63b",
+      "components": {
+        "outer": {
+          "before": 4.134442954763139,
+          "after": 0.9692065318268503,
+          "rgb": {
+            "scan": [0.6509803921568628, 0.5254901960784314, 0.4176470588235294],
+            "candidate": [0.596078431372549, 0.47843137254901963, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.44313725490196076]
+          },
+          "spread": {
+            "scan": 26.400536564491308,
+            "candidate": 32.34333560714678,
+            "colored": 26.15434113785748
+          }
+        },
+        "header": {
+          "before": 3.1592479503612734,
+          "after": 0.702679691127663,
+          "rgb": {
+            "scan": [0.7725490196078432, 0.7666666666666666, 0.7294117647058823],
+            "candidate": [0.7686274509803922, 0.8156862745098039, 0.7686274509803922],
+            "colored": [0.7764705882352941, 0.7764705882352941, 0.7294117647058823]
+          },
+          "spread": {
+            "scan": 1.4841467572739657,
+            "candidate": 1.580488298129699,
+            "colored": 1.4880209113547578
+          }
+        },
+        "paper": {
+          "before": 2.2588977149220044,
+          "after": 0.7919317270219575,
+          "rgb": {
+            "scan": [0.7803921568627451, 0.803921568627451, 0.7254901960784313],
+            "candidate": [0.7647058823529411, 0.8392156862745098, 0.7490196078431373],
+            "colored": [0.7843137254901961, 0.8156862745098039, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 1.2528008637889063,
+            "candidate": 0.9113707429754869,
+            "colored": 0.8447588406696004
+          }
+        },
+        "pinline": {
+          "before": 6.691512881111593,
+          "after": 0.49826021340982335,
+          "rgb": {
+            "scan": [0.24019607843137256, 0.44509803921568625, 0.3058823529411765],
+            "candidate": [0.01568627450980392, 0.3862745098039216, 0.24705882352941178],
+            "colored": [0.2431372549019608, 0.44901960784313727, 0.2980392156862745]
+          },
+          "spread": {
+            "scan": 1.9121912577416667,
+            "candidate": 0.34941849725517404,
+            "colored": 0.3922194711491695
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.4509806864059677,
+          "shadowChroma": 1.8058542007145277,
+          "shadowLightness": 3.868743349499643,
+          "contrast": 51.330969092266244,
+          "referenceContrast": 43.069372709526405,
+          "contrastError": 8.261596382739839
+        },
+        "after": {
+          "chroma": 0.4055051809364077,
+          "shadowChroma": 1.7193569689770298,
+          "shadowLightness": 2.817809166081936,
+          "contrast": 43.09399788727835,
+          "referenceContrast": 43.069372709526405,
+          "contrastError": 0.024625177751943284
+        }
+      },
+      "structural": {
+        "before": 0.7681246319276758,
+        "after": 0.7872190931531338
+      }
+    },
+    {
+      "id": "82dd5b8c-2c2f-4185-b176-a94b43729a29",
+      "name": "Plains",
+      "number": "333",
+      "cohort": "calibration",
+      "scanHash": "facef70de171ccb86fbf86beb3999a8aafd063007e3f43e0c3173c8c2f872b18",
+      "beforeHash": "436a95a562b2306fd68759a8504462482e2b7282449d92f7afdeebb971c88ab9",
+      "afterHash": "c4838432eeec8853a1d58e5f4f21810fbf330512d89f21e2d2b72ef13a7e7cb9",
+      "components": {
+        "outer": {
+          "before": 3.4710206685031038,
+          "after": 0.2623755949817129,
+          "rgb": {
+            "scan": [0.6392156862745098, 0.5215686274509804, 0.43137254901960786],
+            "candidate": [0.596078431372549, 0.4823529411764706, 0.38627450980392153],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 24.70235580024196,
+            "candidate": 32.44817818360175,
+            "colored": 26.368108024908334
+          }
+        },
+        "header": {
+          "before": 3.7306410639223624,
+          "after": 0.43753363864052436,
+          "rgb": {
+            "scan": [0.9215686274509803, 0.9, 0.8862745098039215],
+            "candidate": [0.9725490196078431, 0.9490196078431372, 0.9137254901960784],
+            "colored": [0.9254901960784314, 0.9058823529411765, 0.8941176470588236]
+          },
+          "spread": {
+            "scan": 3.4631007562135707,
+            "candidate": 2.7539665625559206,
+            "colored": 2.726314709623245
+          }
+        },
+        "paper": {
+          "before": 4.370982993485006,
+          "after": 0.6788680145455883,
+          "rgb": {
+            "scan": [0.9058823529411765, 0.8509803921568627, 0.7156862745098039],
+            "candidate": [0.9686274509803922, 0.9058823529411765, 0.7333333333333333],
+            "colored": [0.9098039215686274, 0.8588235294117647, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 2.4657441208330324,
+            "candidate": 1.4895076375264846,
+            "colored": 1.5046501177660498
+          }
+        },
+        "pinline": {
+          "before": 5.645233954461386,
+          "after": 1.1225711467624764,
+          "rgb": {
+            "scan": [0.903921568627451, 0.884313725490196, 0.8666666666666667],
+            "candidate": [0.984313725490196, 0.9568627450980391, 0.9186274509803921],
+            "colored": [0.9176470588235294, 0.8980392156862745, 0.8862745098039215]
+          },
+          "spread": {
+            "scan": 1.6037828543795378,
+            "candidate": 0.24221984103349184,
+            "colored": 0.17851220531392467
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 1.0597772214802714,
+          "shadowChroma": 2.0242426904762603,
+          "shadowLightness": 4.3301821973017685,
+          "contrast": 51.063794940459196,
+          "referenceContrast": 41.9700182689948,
+          "contrastError": 9.093776671464397
+        },
+        "after": {
+          "chroma": 0.761066841961189,
+          "shadowChroma": 2.004693504680894,
+          "shadowLightness": 2.3567140772646376,
+          "contrast": 42.95864488387915,
+          "referenceContrast": 41.9700182689948,
+          "contrastError": 0.9886266148843532
+        }
+      },
+      "structural": {
+        "before": 0.7625581452609885,
+        "after": 0.7604948338472968
+      }
+    },
+    {
+      "id": "a37c667a-f035-49b2-9f34-9831e186ae82",
+      "name": "Plains",
+      "number": "331",
+      "cohort": "validation",
+      "scanHash": "71ed270fb07e235484b8a80a9e4950130cd164136cbd2cda3fd04dd782fea1cd",
+      "beforeHash": "24328e75ff00beb96a4b9d2b4168907c6ad687922c2670a478ace3e1a02c0c4f",
+      "afterHash": "90d243188218e6c0577f2dfe0a06d4f1a0e7a54a4d31b0157177bb5149d64a56",
+      "components": {
+        "outer": {
+          "before": 5.912908251048584,
+          "after": 2.473288817497407,
+          "rgb": {
+            "scan": [0.6588235294117647, 0.5568627450980392, 0.43137254901960786],
+            "candidate": [0.596078431372549, 0.4823529411764706, 0.38627450980392153],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 22.35698251238018,
+            "candidate": 32.44817818360175,
+            "colored": 26.368108024908334
+          }
+        },
+        "header": {
+          "before": 3.704092423090329,
+          "after": 0.39658468764358684,
+          "rgb": {
+            "scan": [0.9176470588235294, 0.9019607843137255, 0.8901960784313725],
+            "candidate": [0.9725490196078431, 0.9490196078431372, 0.9137254901960784],
+            "colored": [0.9254901960784314, 0.9058823529411765, 0.8941176470588236]
+          },
+          "spread": {
+            "scan": 3.2666470025153678,
+            "candidate": 2.7539665625559206,
+            "colored": 2.726314709623245
+          }
+        },
+        "paper": {
+          "before": 3.544299241031586,
+          "after": 0.7861971078280369,
+          "rgb": {
+            "scan": [0.9137254901960784, 0.8627450980392157, 0.7137254901960784],
+            "candidate": [0.9686274509803922, 0.9058823529411765, 0.7333333333333333],
+            "colored": [0.9098039215686274, 0.8588235294117647, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 2.096205908760313,
+            "candidate": 1.4895076375264846,
+            "colored": 1.5046501177660498
+          }
+        },
+        "pinline": {
+          "before": 4.474561416407486,
+          "after": 0.2561844526327058,
+          "rgb": {
+            "scan": [0.9156862745098039, 0.9009803921568628, 0.8833333333333333],
+            "candidate": [0.984313725490196, 0.9568627450980391, 0.9186274509803921],
+            "colored": [0.9176470588235294, 0.8980392156862745, 0.8862745098039215]
+          },
+          "spread": {
+            "scan": 1.4017767203572942,
+            "candidate": 0.24221984103349184,
+            "colored": 0.17851220531392467
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.5026130715425898,
+          "shadowChroma": 0.57144794531968,
+          "shadowLightness": 9.789615929674799,
+          "contrast": 51.063794940459196,
+          "referenceContrast": 38.291244827301384,
+          "contrastError": 12.772550113157813
+        },
+        "after": {
+          "chroma": 0.8290451696600205,
+          "shadowChroma": 0.4945631378326342,
+          "shadowLightness": 3.1027196551083938,
+          "contrast": 42.95864488387915,
+          "referenceContrast": 38.291244827301384,
+          "contrastError": 4.667400056577769
+        }
+      },
+      "structural": {
+        "before": 0.7468942754423623,
+        "after": 0.7461058529833217
+      }
+    },
+    {
+      "id": "a63bc639-5518-4103-8290-c781a6f53f81",
+      "name": "Island",
+      "number": "337",
+      "cohort": "validation",
+      "scanHash": "013634e479b071334b2e7ae5bcd399e22ad3726835a86e86afea4e818ed0e061",
+      "beforeHash": "e8593c10f22208da89c9fd8cdeaee2ef3431d1fb6da25761ecf6d746299f8572",
+      "afterHash": "b04f3b245d2c6a375921d8bb1784eddbdd4d3eafce682232d241ce9c92d6102d",
+      "components": {
+        "outer": {
+          "before": 5.3173619481045,
+          "after": 1.676028784342046,
+          "rgb": {
+            "scan": [0.6666666666666666, 0.5450980392156862, 0.43137254901960786],
+            "candidate": [0.6, 0.4823529411764706, 0.39215686274509803],
+            "colored": [0.6450980392156863, 0.5274509803921569, 0.4392156862745098]
+          },
+          "spread": {
+            "scan": 27.39332840503842,
+            "candidate": 31.814164585155385,
+            "colored": 25.776512412328202
+          }
+        },
+        "header": {
+          "before": 2.461342802447618,
+          "after": 0.7900240619013819,
+          "rgb": {
+            "scan": [0.788235294117647, 0.796078431372549, 0.8549019607843137],
+            "candidate": [0.7490196078431373, 0.8313725490196079, 0.8705882352941177],
+            "colored": [0.803921568627451, 0.803921568627451, 0.8588235294117647]
+          },
+          "spread": {
+            "scan": 1.5119879017744235,
+            "candidate": 2.256432068651033,
+            "colored": 1.9776114579989976
+          }
+        },
+        "paper": {
+          "before": 2.148165493874729,
+          "after": 1.5925722315416984,
+          "rgb": {
+            "scan": [0.7843137254901961, 0.7843137254901961, 0.8784313725490196],
+            "candidate": [0.7294117647058823, 0.803921568627451, 0.8784313725490196],
+            "colored": [0.807843137254902, 0.803921568627451, 0.8901960784313725]
+          },
+          "spread": {
+            "scan": 1.0893565553189521,
+            "candidate": 0.9109048400631475,
+            "colored": 0.8399649261953709
+          }
+        },
+        "pinline": {
+          "before": 8.181197708361442,
+          "after": 0.6041228792974043,
+          "rgb": {
+            "scan": [0.32745098039215687, 0.4549019607843138, 0.6892156862745098],
+            "candidate": [0.011764705882352941, 0.403921568627451, 0.6],
+            "colored": [0.3176470588235294, 0.4607843137254902, 0.7019607843137254]
+          },
+          "spread": {
+            "scan": 1.598258628804374,
+            "candidate": 0.26416985003680105,
+            "colored": 0.31819486522400275
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.5342237677533073,
+          "shadowChroma": 1.8340959672300472,
+          "shadowLightness": 3.5595121129762264,
+          "contrast": 51.42285287295141,
+          "referenceContrast": 44.62801310235484,
+          "contrastError": 6.7948397705965675
+        },
+        "after": {
+          "chroma": 0.16814545012162188,
+          "shadowChroma": 2.0017024592029307,
+          "shadowLightness": 3.3539346054794192,
+          "contrast": 42.90118724201504,
+          "referenceContrast": 44.62801310235484,
+          "contrastError": 1.726825860339801
+        }
+      },
+      "structural": {
+        "before": 0.7241347372065755,
+        "after": 0.7857442497001393
+      }
+    },
+    {
+      "id": "a6459577-6834-4f4e-ad7d-a506bef1d372",
+      "name": "Island",
+      "number": "338",
+      "cohort": "validation",
+      "scanHash": "dd01c029e8e5efa7079f4146078f11f0a7ea2e8a28bc6fe62b6bcf62fd1f6e4f",
+      "beforeHash": "eb3b7f16756d5f2ea81aa423220bf729999cfd59d54317d5110c1dedc227055b",
+      "afterHash": "b9c33a7642538166e00772eb8c273c14473f33e5ea6ed3e51b25b9e24a1a2bd8",
+      "components": {
+        "outer": {
+          "before": 2.876512707341183,
+          "after": 1.473421014854373,
+          "rgb": {
+            "scan": [0.6470588235294118, 0.5098039215686274, 0.4],
+            "candidate": [0.6, 0.4823529411764706, 0.39215686274509803],
+            "colored": [0.6450980392156863, 0.5274509803921569, 0.4392156862745098]
+          },
+          "spread": {
+            "scan": 28.80619388492426,
+            "candidate": 31.814164585155385,
+            "colored": 25.776512412328202
+          }
+        },
+        "header": {
+          "before": 3.0331718628956392,
+          "after": 1.6968164606322147,
+          "rgb": {
+            "scan": [0.7764705882352941, 0.7843137254901961, 0.8431372549019608],
+            "candidate": [0.7490196078431373, 0.8313725490196079, 0.8705882352941177],
+            "colored": [0.803921568627451, 0.803921568627451, 0.8588235294117647]
+          },
+          "spread": {
+            "scan": 1.858796920316176,
+            "candidate": 2.256432068651033,
+            "colored": 1.9776114579989976
+          }
+        },
+        "paper": {
+          "before": 2.1867820002785674,
+          "after": 2.281947210030196,
+          "rgb": {
+            "scan": [0.7725490196078432, 0.7764705882352941, 0.8745098039215686],
+            "candidate": [0.7294117647058823, 0.803921568627451, 0.8784313725490196],
+            "colored": [0.807843137254902, 0.803921568627451, 0.8901960784313725]
+          },
+          "spread": {
+            "scan": 1.2380495918401921,
+            "candidate": 0.9109048400631475,
+            "colored": 0.8399649261953709
+          }
+        },
+        "pinline": {
+          "before": 5.063332899953246,
+          "after": 4.2914980182616596,
+          "rgb": {
+            "scan": [0.2627450980392157, 0.40980392156862744, 0.6627450980392157],
+            "candidate": [0.011764705882352941, 0.403921568627451, 0.6],
+            "colored": [0.3176470588235294, 0.4607843137254902, 0.7019607843137254]
+          },
+          "spread": {
+            "scan": 1.3870025733356584,
+            "candidate": 0.26416985003680105,
+            "colored": 0.31819486522400275
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.5863576816109217,
+          "shadowChroma": 1.8873539529013976,
+          "shadowLightness": 0.012731363720663857,
+          "contrast": 51.42285287295141,
+          "referenceContrast": 48.11027464854355,
+          "contrastError": 3.312578224407858
+        },
+        "after": {
+          "chroma": 0.8636591374050357,
+          "shadowChroma": 2.020410954480996,
+          "shadowLightness": 6.900715354734982,
+          "contrast": 42.90118724201504,
+          "referenceContrast": 48.11027464854355,
+          "contrastError": 5.209087406528511
+        }
+      },
+      "structural": {
+        "before": 0.7799016933925595,
+        "after": 0.7487442680595106
+      }
+    },
+    {
+      "id": "aa74b27d-2381-496d-a3ef-af3722c7b4e7",
+      "name": "Plains",
+      "number": "334",
+      "cohort": "validation",
+      "scanHash": "a9731c73f43e6687c06da15794a2b544e0857f373e16697dd0a0a54a2afa641a",
+      "beforeHash": "0599a1950de79ceec91b122c56c777ed3d55189b036357b5b4fccbd069d60416",
+      "afterHash": "efab0e246d6b78e07163c26c78bf602687b78c7fc5643794b27b9291ec66f319",
+      "components": {
+        "outer": {
+          "before": 4.796554366353947,
+          "after": 1.1407661257947974,
+          "rgb": {
+            "scan": [0.6509803921568628, 0.5372549019607843, 0.4588235294117647],
+            "candidate": [0.596078431372549, 0.4823529411764706, 0.38627450980392153],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 24.914866390060787,
+            "candidate": 32.44817818360175,
+            "colored": 26.368108024908334
+          }
+        },
+        "header": {
+          "before": 3.133714512200091,
+          "after": 0.3510558608418124,
+          "rgb": {
+            "scan": [0.9254901960784314, 0.9098039215686274, 0.903921568627451],
+            "candidate": [0.9725490196078431, 0.9490196078431372, 0.9137254901960784],
+            "colored": [0.9254901960784314, 0.9058823529411765, 0.8941176470588236]
+          },
+          "spread": {
+            "scan": 3.274622740524028,
+            "candidate": 2.7539665625559206,
+            "colored": 2.726314709623245
+          }
+        },
+        "paper": {
+          "before": 3.4982236337245105,
+          "after": 0.5772879998365804,
+          "rgb": {
+            "scan": [0.9137254901960784, 0.8666666666666667, 0.7450980392156863],
+            "candidate": [0.9686274509803922, 0.9058823529411765, 0.7333333333333333],
+            "colored": [0.9098039215686274, 0.8588235294117647, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 2.0584953416590217,
+            "candidate": 1.4895076375264846,
+            "colored": 1.5046501177660498
+          }
+        },
+        "pinline": {
+          "before": 3.976588985761336,
+          "after": 0.6772374274197062,
+          "rgb": {
+            "scan": [0.9215686274509804, 0.907843137254902, 0.8980392156862744],
+            "candidate": [0.984313725490196, 0.9568627450980391, 0.9186274509803921],
+            "colored": [0.9176470588235294, 0.8980392156862745, 0.8862745098039215]
+          },
+          "spread": {
+            "scan": 2.4158888239113225,
+            "candidate": 0.24221984103349184,
+            "colored": 0.17851220531392467
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 1.5143084740543715,
+          "shadowChroma": 2.047458054355457,
+          "shadowLightness": 6.511204586694008,
+          "contrast": 51.063794940459196,
+          "referenceContrast": 40.52397777284343,
+          "contrastError": 10.539817167615766
+        },
+        "after": {
+          "chroma": 1.2040887207384385,
+          "shadowChroma": 1.9923632715799926,
+          "shadowLightness": 0.17569168787239797,
+          "contrast": 42.95864488387915,
+          "referenceContrast": 40.52397777284343,
+          "contrastError": 2.434667111035722
+        }
+      },
+      "structural": {
+        "before": 0.7697209334887252,
+        "after": 0.7686636925127893
+      }
+    },
+    {
+      "id": "ac82d07b-f8f2-4cdd-b799-98d4dc228e5c",
+      "name": "Forest",
+      "number": "347",
+      "cohort": "validation",
+      "scanHash": "cc93af31ba6d0eca2dafe358c5d24a7db69b5efab6d3006f8b3cbe65ce765a42",
+      "beforeHash": "1bba405252c7103aff436433dd73f31ae7f4fab552b7764ec2a4e66df81f9ac2",
+      "afterHash": "40fb5f2772a6df0801a854da0ad94bb3b798f8d2a47438b2f74c464c55381a3c",
+      "components": {
+        "outer": {
+          "before": 5.721554670286031,
+          "after": 2.6003522985639993,
+          "rgb": {
+            "scan": [0.6666666666666666, 0.5450980392156862, 0.4],
+            "candidate": [0.596078431372549, 0.47843137254901963, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.44313725490196076]
+          },
+          "spread": {
+            "scan": 28.62733520159677,
+            "candidate": 32.34333560714678,
+            "colored": 26.15434113785748
+          }
+        },
+        "header": {
+          "before": 1.4967605299035114,
+          "after": 1.5263006908861305,
+          "rgb": {
+            "scan": [0.796078431372549, 0.796078431372549, 0.7411764705882353],
+            "candidate": [0.7686274509803922, 0.8156862745098039, 0.7686274509803922],
+            "colored": [0.7764705882352941, 0.7764705882352941, 0.7294117647058823]
+          },
+          "spread": {
+            "scan": 1.2405615376022243,
+            "candidate": 1.580488298129699,
+            "colored": 1.4880209113547578
+          }
+        },
+        "paper": {
+          "before": 1.3378884909929107,
+          "after": 1.1025800390606613,
+          "rgb": {
+            "scan": [0.8, 0.8274509803921568, 0.7254901960784313],
+            "candidate": [0.7647058823529411, 0.8392156862745098, 0.7490196078431373],
+            "colored": [0.7843137254901961, 0.8156862745098039, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 1.3608648201901756,
+            "candidate": 0.9113707429754869,
+            "colored": 0.8447588406696004
+          }
+        },
+        "pinline": {
+          "before": 6.673790697669395,
+          "after": 1.1568526179591598,
+          "rgb": {
+            "scan": [0.25098039215686274, 0.4441176470588235, 0.2627450980392157],
+            "candidate": [0.01568627450980392, 0.3862745098039216, 0.24705882352941178],
+            "colored": [0.2431372549019608, 0.44901960784313727, 0.2980392156862745]
+          },
+          "spread": {
+            "scan": 1.6180434173377725,
+            "candidate": 0.34941849725517404,
+            "colored": 0.3922194711491695
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.5552823794180733,
+          "shadowChroma": 1.1604771629279769,
+          "shadowLightness": 3.283572752104591,
+          "contrast": 51.330969092266244,
+          "referenceContrast": 45.946125654315466,
+          "contrastError": 5.384843437950778
+        },
+        "after": {
+          "chroma": 0.9101486499332296,
+          "shadowChroma": 1.0753493865782422,
+          "shadowLightness": 3.4029797634769876,
+          "contrast": 43.09399788727835,
+          "referenceContrast": 45.946125654315466,
+          "contrastError": 2.8521277670371177
+        }
+      },
+      "structural": {
+        "before": 0.7455373413024913,
+        "after": 0.7770549784050591
+      }
+    },
+    {
+      "id": "aec41fec-d146-40cc-8d9f-633e913f3ab3",
+      "name": "Forest",
+      "number": "350",
+      "cohort": "validation",
+      "scanHash": "232d53aacb32703986c93d7cda6086aa37d6a5b3091e845ed83f3c930430ea55",
+      "beforeHash": "3e6f78c94da763b8354f1b1798de29da07c903c5b82a5a15627a3b38a879eb2d",
+      "afterHash": "97529a0efb9ec4bc64131bc3c67f8539e1c4805fcd1982b703ebe679f1b6ceb7",
+      "components": {
+        "outer": {
+          "before": 5.468012878350787,
+          "after": 1.6558363221582124,
+          "rgb": {
+            "scan": [0.6666666666666666, 0.5411764705882353, 0.44313725490196076],
+            "candidate": [0.596078431372549, 0.47843137254901963, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5254901960784314, 0.44313725490196076]
+          },
+          "spread": {
+            "scan": 26.742342467050364,
+            "candidate": 32.34333560714678,
+            "colored": 26.15434113785748
+          }
+        },
+        "header": {
+          "before": 2.2796480033682136,
+          "after": 0.8295057219581774,
+          "rgb": {
+            "scan": [0.788235294117647, 0.7803921568627451, 0.7490196078431373],
+            "candidate": [0.7686274509803922, 0.8156862745098039, 0.7686274509803922],
+            "colored": [0.7764705882352941, 0.7764705882352941, 0.7294117647058823]
+          },
+          "spread": {
+            "scan": 1.329002650449158,
+            "candidate": 1.580488298129699,
+            "colored": 1.4880209113547578
+          }
+        },
+        "paper": {
+          "before": 1.5703585584302218,
+          "after": 0.1368385303004492,
+          "rgb": {
+            "scan": [0.7843137254901961, 0.8156862745098039, 0.7372549019607844],
+            "candidate": [0.7647058823529411, 0.8392156862745098, 0.7490196078431373],
+            "colored": [0.7843137254901961, 0.8156862745098039, 0.7333333333333333]
+          },
+          "spread": {
+            "scan": 1.29879529611584,
+            "candidate": 0.9113707429754869,
+            "colored": 0.8447588406696004
+          }
+        },
+        "pinline": {
+          "before": 7.126066316194643,
+          "after": 0.33791144202625545,
+          "rgb": {
+            "scan": [0.23921568627450981, 0.45294117647058824, 0.3058823529411765],
+            "candidate": [0.01568627450980392, 0.3862745098039216, 0.24705882352941178],
+            "colored": [0.2431372549019608, 0.44901960784313727, 0.2980392156862745]
+          },
+          "spread": {
+            "scan": 1.554085142818783,
+            "candidate": 0.34941849725517404,
+            "colored": 0.3922194711491695
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.23162897664479676,
+          "shadowChroma": 1.5881095089481618,
+          "shadowLightness": 5.319462227008776,
+          "contrast": 51.330969092266244,
+          "referenceContrast": 43.02405329984849,
+          "contrastError": 8.306915792417755
+        },
+        "after": {
+          "chroma": 0.22411906751507008,
+          "shadowChroma": 1.502920739263845,
+          "shadowLightness": 1.3670902885728031,
+          "contrast": 43.09399788727835,
+          "referenceContrast": 43.02405329984849,
+          "contrastError": 0.06994458742985898
+        }
+      },
+      "structural": {
+        "before": 0.7668195904432203,
+        "after": 0.7944517906760389
+      }
+    },
+    {
+      "id": "e49c0db1-5acc-48ed-a0f0-0510433d6d34",
+      "name": "Mountain",
+      "number": "344",
+      "cohort": "calibration",
+      "scanHash": "ea1d716f324c79f1b05ce55d08ffbbfb8ec92791823ad6fee24367bff973fc6e",
+      "beforeHash": "eda2107ffbbb0e845d35ab5dec50ad470f9ba0fc080f9df062480a322cb0e0a8",
+      "afterHash": "724399347a981408dd04cc25eb656ad5244d6ddd6d83ea3c2db6cd02da60848d",
+      "components": {
+        "outer": {
+          "before": 3.446542724508462,
+          "after": 0.8407059010509189,
+          "rgb": {
+            "scan": [0.6509803921568628, 0.5215686274509804, 0.4117647058823529],
+            "candidate": [0.5980392156862745, 0.48627450980392156, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5274509803921569, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 27.376321009227638,
+            "candidate": 32.08690788715817,
+            "colored": 26.041727317002973
+          }
+        },
+        "header": {
+          "before": 2.5316166495284302,
+          "after": 0.2627219855748035,
+          "rgb": {
+            "scan": [0.8862745098039215, 0.796078431372549, 0.7215686274509804],
+            "candidate": [0.9490196078431372, 0.807843137254902, 0.7176470588235294],
+            "colored": [0.8862745098039215, 0.792156862745098, 0.7215686274509804]
+          },
+          "spread": {
+            "scan": 1.267673263812035,
+            "candidate": 1.0066531365203306,
+            "colored": 0.8301664933822592
+          }
+        },
+        "paper": {
+          "before": 2.726592506019869,
+          "after": 0.48471288120091693,
+          "rgb": {
+            "scan": [0.8666666666666667, 0.6431372549019608, 0.4588235294117647],
+            "candidate": [0.9098039215686274, 0.6235294117647059, 0.4980392156862745],
+            "colored": [0.8666666666666667, 0.6352941176470588, 0.4549019607843137]
+          },
+          "spread": {
+            "scan": 1.4457910504524774,
+            "candidate": 0.8328338062609657,
+            "colored": 0.7702806211535818
+          }
+        },
+        "pinline": {
+          "before": 3.5109725548556168,
+          "after": 0.19548998230896267,
+          "rgb": {
+            "scan": [0.8529411764705882, 0.303921568627451, 0.18823529411764706],
+            "candidate": [0.8058823529411765, 0.2549019607843137, 0.1764705882352941],
+            "colored": [0.85, 0.30196078431372547, 0.1843137254901961]
+          },
+          "spread": {
+            "scan": 1.0711684065290594,
+            "candidate": 0.29563261673386515,
+            "colored": 0.372513716854403
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.29201485346379896,
+          "shadowChroma": 1.4954368592970004,
+          "shadowLightness": 3.76344770125705,
+          "contrast": 51.31978957237776,
+          "referenceContrast": 45.41595737151479,
+          "contrastError": 5.903832200862965
+        },
+        "after": {
+          "chroma": 0.13067110248959818,
+          "shadowChroma": 1.5358960151111107,
+          "shadowLightness": 2.9231048143245286,
+          "contrast": 43.09283475872646,
+          "referenceContrast": 45.41595737151479,
+          "contrastError": 2.3231226127883318
+        }
+      },
+      "structural": {
+        "before": 0.7593073622206156,
+        "after": 0.757654847926415
+      }
+    },
+    {
+      "id": "e5339dcb-2544-4f19-acf3-86f83793301c",
+      "name": "Mountain",
+      "number": "345",
+      "cohort": "validation",
+      "scanHash": "b1408c3d30e83387bd88c938da768dc4141bb054877d2c980250a44c85ad8f3e",
+      "beforeHash": "a2efbada01bd54898618878a62908e110dea2dcc9f78710de825c3e7b18b2381",
+      "afterHash": "0707bf2a118227edb17f2999fedcdf0d86fc981fe91fb8d746dc36b3bd95420b",
+      "components": {
+        "outer": {
+          "before": 4.858079970801356,
+          "after": 1.5639913759008546,
+          "rgb": {
+            "scan": [0.6705882352941176, 0.5372549019607843, 0.42745098039215684],
+            "candidate": [0.5980392156862745, 0.48627450980392156, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5274509803921569, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 27.39552312408848,
+            "candidate": 32.08690788715817,
+            "colored": 26.041727317002973
+          }
+        },
+        "header": {
+          "before": 2.827299791524405,
+          "after": 0.3769141687109822,
+          "rgb": {
+            "scan": [0.8784313725490196, 0.796078431372549, 0.7294117647058823],
+            "candidate": [0.9490196078431372, 0.807843137254902, 0.7176470588235294],
+            "colored": [0.8862745098039215, 0.792156862745098, 0.7215686274509804]
+          },
+          "spread": {
+            "scan": 1.3540044351588834,
+            "candidate": 1.0066531365203306,
+            "colored": 0.8301664933822592
+          }
+        },
+        "paper": {
+          "before": 2.318637783693705,
+          "after": 0.9696745280482141,
+          "rgb": {
+            "scan": [0.8705882352941177, 0.6470588235294118, 0.4823529411764706],
+            "candidate": [0.9098039215686274, 0.6235294117647059, 0.4980392156862745],
+            "colored": [0.8666666666666667, 0.6352941176470588, 0.4549019607843137]
+          },
+          "spread": {
+            "scan": 1.2954124584942006,
+            "candidate": 0.8328338062609657,
+            "colored": 0.7702806211535818
+          }
+        },
+        "pinline": {
+          "before": 3.850747655308168,
+          "after": 0.5670479310570934,
+          "rgb": {
+            "scan": [0.8529411764705882, 0.3137254901960784, 0.19411764705882353],
+            "candidate": [0.8058823529411765, 0.2549019607843137, 0.1764705882352941],
+            "colored": [0.85, 0.30196078431372547, 0.1843137254901961]
+          },
+          "spread": {
+            "scan": 1.4469849098204244,
+            "candidate": 0.29563261673386515,
+            "colored": 0.372513716854403
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.6594929017362645,
+          "shadowChroma": 1.9324403665946084,
+          "shadowLightness": 4.271468676824808,
+          "contrast": 51.31978957237776,
+          "referenceContrast": 45.17253533171251,
+          "contrastError": 6.147254240665248
+        },
+        "after": {
+          "chroma": 0.4028860612958642,
+          "shadowChroma": 1.8624384620367591,
+          "shadowLightness": 2.415083838756771,
+          "contrast": 43.09283475872646,
+          "referenceContrast": 45.17253533171251,
+          "contrastError": 2.0797005729860487
+        }
+      },
+      "structural": {
+        "before": 0.7344997582727268,
+        "after": 0.7334588348192921
+      }
+    },
+    {
+      "id": "f243292a-e8a6-43c2-805c-15715fcebd67",
+      "name": "Mountain",
+      "number": "343",
+      "cohort": "validation",
+      "scanHash": "370e7b297e18b5c67803f499ccf112a9a9e0c4499aa1f4ded9850f1d2c821e13",
+      "beforeHash": "7e2aa492189ef91853a087fea04aa6262f4ff1b55edd1773876f1e6293830796",
+      "afterHash": "89426df2702d6e16cc4b31ded9359dcb3f9cee499ee336cca6ff9190eb30885f",
+      "components": {
+        "outer": {
+          "before": 2.7208616759945716,
+          "after": 0.9702262002814113,
+          "rgb": {
+            "scan": [0.6392156862745098, 0.5137254901960784, 0.41568627450980394],
+            "candidate": [0.5980392156862745, 0.48627450980392156, 0.38823529411764707],
+            "colored": [0.6392156862745098, 0.5274509803921569, 0.43529411764705883]
+          },
+          "spread": {
+            "scan": 24.06018368708769,
+            "candidate": 32.08690788715817,
+            "colored": 26.041727317002973
+          }
+        },
+        "header": {
+          "before": 5.248234212919891,
+          "after": 3.0508405070068427,
+          "rgb": {
+            "scan": [0.8627450980392157, 0.7490196078431373, 0.6745098039215687],
+            "candidate": [0.9490196078431372, 0.807843137254902, 0.7176470588235294],
+            "colored": [0.8862745098039215, 0.792156862745098, 0.7215686274509804]
+          },
+          "spread": {
+            "scan": 1.170589520603121,
+            "candidate": 1.0066531365203306,
+            "colored": 0.8301664933822592
+          }
+        },
+        "paper": {
+          "before": 3.0692292330119,
+          "after": 2.260017243330556,
+          "rgb": {
+            "scan": [0.8509803921568627, 0.6039215686274509, 0.4588235294117647],
+            "candidate": [0.9098039215686274, 0.6235294117647059, 0.4980392156862745],
+            "colored": [0.8666666666666667, 0.6352941176470588, 0.4549019607843137]
+          },
+          "spread": {
+            "scan": 1.1584181306445789,
+            "candidate": 0.8328338062609657,
+            "colored": 0.7702806211535818
+          }
+        },
+        "pinline": {
+          "before": 3.541394338494724,
+          "after": 1.1359261272244179,
+          "rgb": {
+            "scan": [0.8313725490196078, 0.3235294117647059, 0.2019607843137255],
+            "candidate": [0.8058823529411765, 0.2549019607843137, 0.1764705882352941],
+            "colored": [0.85, 0.30196078431372547, 0.1843137254901961]
+          },
+          "spread": {
+            "scan": 1.0528238857768488,
+            "candidate": 0.29563261673386515,
+            "colored": 0.372513716854403
+          }
+        }
+      },
+      "texture": {
+        "before": {
+          "chroma": 0.6355752009098519,
+          "shadowChroma": 1.9176369296713995,
+          "shadowLightness": 5.749660823403113,
+          "contrast": 51.31978957237776,
+          "referenceContrast": 40.83569373325965,
+          "contrastError": 10.484095839118105
+        },
+        "after": {
+          "chroma": 0.375894318286339,
+          "shadowChroma": 1.853217815704995,
+          "shadowLightness": 0.9368916921784654,
+          "contrast": 43.09283475872646,
+          "referenceContrast": 40.83569373325965,
+          "contrastError": 2.257141025466808
+        }
+      },
+      "structural": {
+        "before": 0.736878727830654,
+        "after": 0.7366484435678243
+      }
+    }
+  ],
+  "glyphs": [
+    {
+      "name": "Plains",
+      "source": {
+        "file": "w-glyph.png",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/w.png",
+        "sha256": "f15389170b0ef8a8a1d35e382929bc5e6806f391bb08678e8b2761d9412d960e"
+      },
+      "sourceSample": {
+        "rgb": [0.9882352941176471, 0.996078431372549, 1],
+        "spread": 0
+      },
+      "target": [0.9431372549019608, 0.9352941176470588, 0.9372549019607843],
+      "heldOutMedian": {
+        "before": 4.271975365651592,
+        "after": 0.20248968976311166
+      }
+    },
+    {
+      "name": "Island",
+      "source": {
+        "file": "u-glyph.png",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/u.png",
+        "sha256": "606865af8ae26d91185a540dc63ea8df44a1d153b0d205682e053141d8fe6e01"
+      },
+      "sourceSample": {
+        "rgb": [0, 0.4588235294117647, 0.7450980392156863],
+        "spread": 0
+      },
+      "target": [0.396078431372549, 0.4392156862745098, 0.7176470588235293],
+      "heldOutMedian": {
+        "before": 7.169381186334318,
+        "after": 2.8481135126766963
+      }
+    },
+    {
+      "name": "Swamp",
+      "source": {
+        "file": "b-glyph.png",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/b.png",
+        "sha256": "6165a1a40d167605df5a3a39f975cd3a1bd9e0824d606055d7945f733aa680dd"
+      },
+      "sourceSample": {
+        "rgb": [0.15294117647058825, 0.14901960784313725, 0.1411764705882353],
+        "spread": 0
+      },
+      "target": [0.11568627450980393, 0.09607843137254901, 0.12941176470588234],
+      "heldOutMedian": {
+        "before": 4.199231173671748,
+        "after": 1.2289200191046867
+      }
+    },
+    {
+      "name": "Mountain",
+      "source": {
+        "file": "r-glyph.png",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/r.png",
+        "sha256": "9219723601f8fcaee288d74a8ed100df0d58c2e9e70031602334e72f7190afd4"
+      },
+      "sourceSample": {
+        "rgb": [0.9372549019607843, 0.2196078431372549, 0.15294117647058825],
+        "spread": 0
+      },
+      "target": [0.8196078431372549, 0.24901960784313726, 0.20588235294117646],
+      "heldOutMedian": {
+        "before": 6.17835531271419,
+        "after": 0.9696884319554178
+      }
+    },
+    {
+      "name": "Forest",
+      "source": {
+        "file": "g-glyph.png",
+        "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/m15/basics/g.png",
+        "sha256": "7a8dfe92c8f3da536058e9d4499cce92d4dc926b87e4b58abac4b493afca2140"
+      },
+      "sourceSample": {
+        "rgb": [0, 0.4823529411764706, 0.2627450980392157],
+        "spread": 0
+      },
+      "target": [0.22745098039215686, 0.4568627450980392, 0.29411764705882354],
+      "heldOutMedian": {
+        "before": 3.4054181827183116,
+        "after": 0.9412213216008758
+      }
+    }
+  ],
+  "decision": "Adopt the source-bound per-color materials and shared outer tone curve. Actual reserved medians improve for every material group, with individual header/paper color-distance regressions below 0.10. Combined geometry and color improves all nineteen structural scores against 0.2.26. Source texture and lettering differences remain visible.",
+  "limitations": [
+    "Color-only changes can move the contrast-threshold structural metric without moving any symbol or text: worst reserved change is -0.0312 on Island 338 relative to geometry alone. Report color error separately; do not tune away a correct color to increase edge score.",
+    "Color samples exclude artwork, words and the large glyph; glyph color uses an eroded source-alpha mask. Tiny paper/header differences and scan-to-scan color variation remain.",
+    "No claim of foil, other-set or broader-artifact/land transfer. Swamp 339 remains unscored pending reliable alignment."
+  ]
+}

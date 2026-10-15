@@ -92,6 +92,13 @@ the fitted frame; the outer stock, corners and independently calibrated letterin
 stay fixed. [Measurement and exclusions](fixtures/accuracy/8ed/basic-land-geometry.json)
 record the exact source revision and frozen scan poses. Other Eighth-family sets
 and black-border treatments retain their existing geometry.
+With `colorCalibration: 'set-hsb-v1'`, these basics also receive separately masked
+header, paper and pinline colors, a shared outer-texture tone curve, and calibrated
+large mana-symbol fills. The source's black lines, transparent art aperture and
+neutral glyph shadows/highlights are preserved. Derived materials share the
+existing bounded cache; warm preparation adds no pixel readback.
+[Color measurements and limitations](fixtures/accuracy/8ed/basic-land-colors.json)
+include all nineteen aligned printings and the remaining rejected scan.
 
 Set symbols now prefer complete styled SVGs where available, preserving their
 white details, black outlines and metallic gradients. The
