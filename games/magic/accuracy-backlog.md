@@ -71,6 +71,10 @@ on average. Five failed frame fits remain visible. Six reserved ordinary example
 improve mean structural similarity from 70.0% to 71.2%; Vito's changed flavor wrap
 is a retained typography outlier. See [the stamp audit](fixtures/accuracy/security-stamps.json).
 Localized hologram animation, other stamp shapes and footer legal text remain pending.
+Full-set 0.2.28 verification additionally flags dense stamp-clearance typography
+on Liliana’s Scorn, Terror of the Peaks and Volcanic Salvo. Keep these in the
+reported averages. A generic upward-clearance fitter worsened the complete M21
+stamped cohort and was rejected; calibrate size, wrapping and leading together.
 
 ## Release 0.2.21 checkpoint
 
