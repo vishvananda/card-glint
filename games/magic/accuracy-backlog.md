@@ -36,13 +36,24 @@ mean: 40.9% → 75.7%; held-out mean: 41.8% → 75.1%. The basic-land font-size 
 was rejected on validation. This supersedes the older pending-land notes below;
 historical study records remain unchanged.
 
-The next input-data correction reviews 73 previously excluded printings in
+The input-data correction released in 0.2.25 reviews 73 previously excluded printings in
 Alpha, Beta, Revised, Eighth Edition and M21. Their rules are explicitly empty;
 their flavor and printed types are checked against exact scan hashes. Wall of
 Ice must not acquire Oracle Defender in original mode. These corrections remain
 separate from typography fitting, and missing source fields elsewhere remain
 unverified. Eighth Edition includes obsolete types such as Eel and Monster;
-Oracle mode retains current types. Capture and score these inputs before release.
+Oracle mode retains current types. Fresh scores now cover all 1,543 showcased
+printings: 1,517 scored and 26 explicitly awaiting alignment review. Release
+0.2.26 fixes dense Revised land text under Oracle-based centering without changing
+the original-wording score rasters.
+
+The next Eighth basic-land correction fits the inner frame before color fitting.
+One shared transform improves nine reserved printings' edge cosine from 0.524 to
+0.916 and whole-card structural similarity from 68.5% to 74.8%; every accepted
+printing improves. The outer border and corners remain fixed. Swamp 339 retains
+its alignment exclusion. See [the measured geometry](fixtures/accuracy/8ed/basic-land-geometry.json).
+Panel/pinline masks and color calibration remain pending; the cyan Island and
+high-contrast brown texture are not yet corrected by this geometry change.
 
 ## Release 0.2.21 checkpoint
 

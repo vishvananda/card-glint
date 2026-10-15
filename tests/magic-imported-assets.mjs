@@ -58,6 +58,9 @@ try {
     const { retroSetSymbol } = await import('/games/magic/src/presentation/retro-frame.ts');
 
     const { framePlate } = await import('/games/magic/src/presentation/frame-plates.ts');
+    const { usesEighthBasicGeometry, paintEighthBasicFrame } = await import(
+      '/games/magic/src/presentation/eighth-basic-geometry.ts'
+    );
     const { faceRects } = await import('/games/magic/src/presentation/special-frames.ts');
     const { canvasAssetUrls, canvasAssetWidth } = await import(
       '/games/magic/src/presentation/canvas-assets.ts'
@@ -68,6 +71,68 @@ try {
     const check = (ok, message) => {
       if (!ok) throw Error(message);
     };
+    const basicFace = {
+      name: 'Island',
+      typeLine: 'Basic Land — Island',
+      setCode: '8ed',
+      frameAssetFamily: 'eighth',
+      borderColor: 'white',
+    };
+    const basicPlate = framePlate(basicFace);
+    check(usesEighthBasicGeometry(basicFace, basicPlate.frame), 'Basic geometry missing');
+    for (const override of [
+      { setCode: '9ed' },
+      { borderColor: 'black' },
+      { frameAssetFamily: 'm15-accurate' },
+      { frameTemplate: 'future' },
+      { layout: 'transform' },
+      { typeLine: 'Land' },
+      { frameColors: ['U', 'B'] },
+      { frameColors: [] },
+      { frameColors: ['B'] },
+    ])
+      check(
+        !usesEighthBasicGeometry({ ...basicFace, ...override }, basicPlate.frame),
+        'Basic geometry leaked into unmeasured printing/source',
+      );
+    check(
+      !usesEighthBasicGeometry(basicFace, basicPlate.frame + '?revision=other'),
+      'Basic geometry accepted an unknown source revision',
+    );
+    // An opaque original texture must remain opaque across every stretch seam,
+    // at both canonical and fractional inspection scale. Outer stock is fixed.
+    const texture = document.createElement('canvas');
+    texture.width = 488;
+    texture.height = 680;
+    const textureContext = texture.getContext('2d');
+    const textureData = textureContext.createImageData(488, 680);
+    for (let i = 0; i < textureData.data.length; i += 4)
+      textureData.data.set([i % 251, (i / 488) % 239, (i / 4) % 227, 255], i);
+    textureContext.putImageData(textureData, 0, 0);
+    for (const scale of [1, 1.5]) {
+      const reference = document.createElement('canvas'),
+        actual = document.createElement('canvas');
+      reference.width = actual.width = 488 * scale;
+      reference.height = actual.height = 680 * scale;
+      const a = actual.getContext('2d'),
+        b = reference.getContext('2d');
+      a.scale(scale, scale);
+      b.scale(scale, scale);
+      b.drawImage(texture, 0, 0);
+      paintEighthBasicFrame(a, texture);
+      const expected = b.getImageData(0, 0, reference.width, reference.height).data,
+        pixels = a.getImageData(0, 0, actual.width, actual.height).data;
+      for (let y = 0; y < actual.height; y++)
+        for (let x = 0; x < actual.width; x++) {
+          const index = (y * actual.width + x) * 4;
+          check(pixels[index + 3] === 255, 'Stretch left a transparent seam');
+          if (x < 22 * scale || x >= 466 * scale || y < 22 * scale || y >= 658 * scale)
+            check(
+              pixels.subarray(index, index + 4).every((v, j) => v === expected[index + j]),
+              'Basic geometry moved outer stock/corners',
+            );
+        }
+    }
     check(
       retroSetSymbol({ setCode: 'ice' }).endsWith('/ice-c.svg'),
       'Ice Age bypassed imported default',

@@ -5,6 +5,7 @@ import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { isRetro } from './retro-frame.js';
 import { basicLandColor, plateBasicSymbol } from './plate-basic-land.js';
+import { eighthBasicRect, usesEighthBasicGeometry } from './eighth-basic-geometry.js';
 
 export interface FramePlate {
   frame: string;
@@ -67,8 +68,11 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   const type: FaceRect = eighth
     ? [205 / 2010, 1611 / 2814, 1601 / 2010, 0.0358]
     : [168 / 2010, 1588 / 2814, 0.8292, 0.0543];
+  const frame = `${root}/${left}.png`;
+  const basicGeometry = usesEighthBasicGeometry(face, frame);
+  const interior = (rect: FaceRect) => (basicGeometry ? eighthBasicRect(rect) : rect);
   return {
-    frame: `${root}/${left}.png`,
+    frame,
     rightFrame: right ? `${root}/${right}.png` : undefined,
     border: `${root}/border.png`,
     pt: eighth
@@ -81,10 +85,10 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
       title,
       type,
       art: eighth
-        ? [180 / 2010, 341 / 2814, 1656 / 2010, 1216 / 2814]
+        ? interior([180 / 2010, 341 / 2814, 1656 / 2010, 1216 / 2814])
         : [0.0767, 0.1129, 0.8476, 0.4429],
       rules: eighth
-        ? [205 / 2010, 1779 / 2814, 1596 / 2010, 729 / 2814]
+        ? interior([205 / 2010, 1779 / 2814, 1596 / 2010, 729 / 2814])
         : [0.086, 1780 / 2814, 0.828, 0.2875],
       stats: eighth
         ? [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814]

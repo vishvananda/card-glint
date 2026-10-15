@@ -1,5 +1,6 @@
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { plateBasicSymbol } from './plate-basic-land.js';
+import { paintEighthBasicFrame, usesEighthBasicGeometry } from './eighth-basic-geometry.js';
 import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
@@ -56,7 +57,8 @@ export function paintFramePlateFace(
     c.restore();
     return;
   }
-  c.drawImage(required(plate.frame), 0, 0, W, H);
+  if (usesEighthBasicGeometry(face, plate.frame)) paintEighthBasicFrame(c, required(plate.frame));
+  else c.drawImage(required(plate.frame), 0, 0, W, H);
   if (plate.rightFrame) {
     // A narrow blend joins the two *land* textures, preserving colored outer
     // frames and paper rather than replacing them with a generic gold land.
