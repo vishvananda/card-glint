@@ -79,21 +79,29 @@ try {
     route.fulfill({ contentType: 'text/css', body: syntheticFontCss }),
   );
   await magicPage.route('https://**/*', (route) => {
-    const font = /\.(?:ttf|woff2?)(?:\?|$)/.test(route.request().url());
+    const url = route.request().url();
+    const font = /\.(?:ttf|woff2?)(?:\?|$)/.test(url);
+    const numeral = /\/img\/manaSymbols\/\d\.svg$/.test(url);
     return route.fulfill({
       status: font ? 404 : 200,
       contentType: font ? 'text/plain' : 'image/svg+xml',
       body: font
         ? ''
-        : '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="64" height="64" fill="#526675" fill-opacity=".1"/></svg>',
+        : numeral
+          ? '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><circle cx="32" cy="32" r="32" fill="#cac5c0"/><path d="M20 16h24v16H28v12h16v6H20V26h16v-4H20Z" fill="#0d0f0f"/></svg>'
+          : '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="64" height="64" fill="#526675" fill-opacity=".1"/></svg>',
     });
   });
   await magicPage.goto(origin + '/library/magic.html');
   await magicPage.waitForFunction(
-    () => document.querySelector('#status').textContent.startsWith('Ready.'),
+    () => {
+      const status = document.querySelector('#status').textContent;
+      return status && status !== 'Preparing face…';
+    },
     null,
     { timeout: 30000 },
   );
+  assert.match(await magicPage.locator('#status').textContent(), /^Ready\./);
   await magicPage.locator('#finish').selectOption('opal');
   assert.ok(
     await magicPage.locator('#card').evaluate((canvas) => canvas.toDataURL().length > 10000),
