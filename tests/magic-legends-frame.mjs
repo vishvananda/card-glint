@@ -16,6 +16,9 @@ try {
   const { titleTranslation } = await server.ssrLoadModule(
     '/games/magic/src/presentation/title-placement.ts',
   );
+  const { retroTypePlacement } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/retro-type.ts',
+  );
   for (const [colors, family] of [
     [['W'], 'abu'],
     [['B'], 'abu'],
@@ -29,6 +32,7 @@ try {
     assert.equal(legendsFrame(original).family, family);
     assert.equal(retroFrameAsset(original), retroFrameAsset(oracle));
     assert.deepEqual(retroRects(original), retroRects(oracle));
+    assert.deepEqual(retroTypePlacement(original), retroTypePlacement(oracle));
     assert.deepEqual(titleTranslation(original, 'retro'), [-18.5, -6]);
     assert.deepEqual(titleTranslation(oracle, 'retro'), [-18.5, -6]);
     assert.deepEqual(titleTranslation({ ...original, legendary: true }, 'retro'), [-18.5, -6]);
@@ -60,8 +64,15 @@ try {
   ]) {
     assert.equal(legendsFrame({ ...ordinary, ...override }), undefined);
     assert.deepEqual(titleTranslation({ ...ordinary, ...override }, 'retro'), [0, 0]);
+    assert.deepEqual(retroTypePlacement({ ...ordinary, ...override }), {
+      fontSize: 21.7,
+      dx: 0,
+      dy: 0,
+    });
   }
   assert.deepEqual(titleTranslation({ ...ordinary, borderColor: 'white' }, 'retro'), [0, 0]);
+  assert.equal(retroTypePlacement({ ...ordinary, borderColor: 'white' }).fontSize, 21.7);
+  assert.deepEqual(retroTypePlacement(land), retroTypePlacement(ordinary));
   assert.deepEqual(titleTranslation(land, 'retro'), [-18.5, -6]);
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'lea' }).endsWith('/old/abu/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: '3ed' }).endsWith('/old/fourth/w.png'));
@@ -74,6 +85,18 @@ try {
   );
   const study = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-colors.json'));
   const titles = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-titles.json'));
+  const types = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-types.json'));
+  const typePlacement = retroTypePlacement(ordinary);
+  assert.equal(types.runtimeVerified, 72);
+  assert.equal(types.typography.fontSize, typePlacement.fontSize);
+  assert.deepEqual(types.typography.translation, [typePlacement.dx, typePlacement.dy]);
+  assert.equal(types.typography.widthScale, 1);
+  assert.equal(types.results[0].held, 36);
+  for (const result of types.results) {
+    assert.ok(result.after > result.before);
+    assert.equal(result.improved, result.held);
+    assert.equal(result.worstRegression, 0);
+  }
   assert.equal(titles.runtimeVerified, 72);
   assert.deepEqual(titles.translation, titleTranslation(ordinary, 'retro'));
   assert.equal(

@@ -6,6 +6,7 @@ import {
 import { retroManaPlacement } from './retro-mana.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { titleTranslation } from './title-placement.js';
+import { retroTypePlacement } from './retro-type.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
@@ -208,11 +209,14 @@ export function paintRetroFace(
   ] as const;
   const originalBounds = calibratedStyledSymbolBounds(face, symbolUrl, baseBounds, 'retro');
   const symbolBounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
-  c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
+  const typePlacement = retroTypePlacement(face);
+  c.font = `${typePlacement.fontSize}px "CardRenderer MTG MPlantin", Georgia`;
   const paintType = isRevisedLand(face)
     ? (text: string, _x: number, _y: number, width: number) =>
         paintRevisedLandText(c, text, 'type', width)
     : (text: string, x: number, y: number, width: number) => c.fillText(text, x, y, width);
+  c.save();
+  c.translate(typePlacement.dx, typePlacement.dy);
   paintType(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
     details?.typeX ?? tx,
@@ -228,6 +232,7 @@ export function paintRetroFace(
         )
       : tw,
   );
+  c.restore();
   paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
     if (icon) {
       const scale = Math.min(44 / icon.width, (details?.setHeight ?? 23.4) / icon.height);

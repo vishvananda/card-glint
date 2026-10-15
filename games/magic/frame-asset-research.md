@@ -574,3 +574,19 @@ highlight after its paper tint and neutral-frame filter. The mount covers the
 straight highlight within its arch. This also applies to ordinary lands without
 a stamp; planeswalker and plate painters keep their own bevels. Color blending
 and black-stock matching remain cached, with no new asset decoding or readback.
+
+### Legends type-line size and placement
+
+One shared profile increases ordinary Legends type lettering by 3% and moves it
+2.5 canonical pixels left, without horizontal stretching or vertical translation.
+The type-only two-polarity edge score improves from 76.90% to 80.98% on all 36
+held-out cards; each held-out card improves. Gold legends and the other frame
+materials use the same rule. Original and Oracle text use the same typography.
+
+The [type-line measurements](fixtures/accuracy/legends-types.json) retain the
+frozen scan-frame transformations, source hashes and candidate search. A simple
+translation alone failed to transfer on the ordinary-color group, so it was
+rejected. Size and position were then selected on the 36 training cards; all 72
+final candidate crops were replayed against the actual painter. These are local
+type-region scores, not whole-card accuracy or a new scan-alignment fit. Mana,
+rules, artist and power/toughness remain separate calibration passes.
