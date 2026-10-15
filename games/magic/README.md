@@ -503,13 +503,20 @@ the stamp under any of these finishes, with the colored rim and lettering
 protected by its mask. Its diffraction shares the prismatic finish's spectral
 palette while retaining its own scale, axes and printed pattern.
 
-M21 ordinary nonlegendary costs use the pinned Card Conjurer digit vectors and a
+M15, M21 and WAR ordinary nonlegendary costs use the pinned Card Conjurer digit vectors and a
 separately measured down-left shadow. Their disc and ink colors retain the
 existing printing palette; inline symbols keep their original source. The
 source and placement comparison against MSE is recorded in
 [`fixtures/accuracy/m21-mana-refinement.json`](fixtures/accuracy/m21-mana-refinement.json).
 Twenty cards fit the shared defaults and 41 different cards validate them, all
-outside the earlier mana cohort. Other sets and special frames retain their
-existing defaults pending separate checks. Numeral masks are prepared once in
+outside the earlier mana cohort. Frozen transfer checks admitted M15 and WAR:
+all 36 M15 cards and 33 of 36 accepted WAR cards improve. The same values are
+shared across these sets, not refitted per set. The four-set study retained
+148 measured cards and four alignment exclusions; see
+[`fixtures/accuracy/modern-mana-transfer.json`](fixtures/accuracy/modern-mana-transfer.json).
+DMU's placement regression and DSK's conflicting placement/ink scores prevent
+adoption there. Isolated numeral-shape diagnostics improve, but never replace
+the fixed-pose scores. Unmeasured sets, replacement plates, legendary crowns,
+and special layouts retain their existing defaults. Numeral masks are prepared once in
 the bounded material cache; changing the card's tilt does no font work or pixel
 readback.

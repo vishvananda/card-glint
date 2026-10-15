@@ -97,6 +97,10 @@ try {
     const scoped = [
       { setCode: '8ed' },
       { setCode: 'm20' },
+      { setCode: 'dmu' },
+      { setCode: 'dsk' },
+      { frameTemplate: 'battle' },
+      { rulesText: 'Level up {1}' },
       { legendary: true },
       { layout: 'split' },
       { frameAssetFamily: 'eighth' },
@@ -109,6 +113,10 @@ try {
       symbolAdjustment: { mana: { numberDx: 0.5, numberScale: 1.1 } },
     });
     const result = {
+      admitted: ['m15', 'war'].map((setCode) => ({
+        url: modernCostNumeralAsset({ ...face, setCode }, '3'),
+        adjustment: printingManaAdjustment({ ...face, setCode }),
+      })),
       inline: changed(baseInline, newInline),
       cost: changed(baseCost, newCost),
       cold,
@@ -135,6 +143,15 @@ try {
   assert.equal(result.paintingReads, 0);
   assert.ok(result.scoped.every((x) => x === null));
   assert.ok(result.urls.includes(result.source));
+  for (const a of result.admitted) {
+    assert.equal(a.url, result.source);
+    assert.deepEqual(a.adjustment, {
+      scaleX: 1.01,
+      scaleY: 1.01,
+      numberScale: 0.98,
+      numberDx: -0.25,
+    });
+  }
   assert.equal(result.delta.numberDx, 0.25);
   assert.equal(result.delta.numberScale, 0.98 * 1.1);
   assert.deepEqual(result.shadow, [-1.0372, 2.0372]);
@@ -153,7 +170,31 @@ try {
   assert.equal(new Set(evidence.rows.map((r) => r.id)).size, 61);
   assert.ok(evidence.validation.after > evidence.validation.before + 0.005);
   assert.ok(evidence.validation.groups.every((g) => g.after >= g.before));
-  console.log('M21 cost source, scope, rotation, editor deltas and warm-cache behavior verified.');
+  const transfer = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/modern-mana-transfer.json'),
+  );
+  assert.equal(transfer.summary.total, 152);
+  assert.equal(transfer.summary.measured, 148);
+  assert.equal(transfer.summary.alignmentReview, 4);
+  assert.deepEqual(transfer.adoptedSets, ['m15', 'war']);
+  for (const set of transfer.adoptedSets) {
+    assert.ok(transfer.sets[set].after > transfer.sets[set].before + 0.005);
+    assert.ok(transfer.sets[set].inkAfter > transfer.sets[set].inkBefore);
+    const group = transfer.frameReferences.filter((g) => g.set === set);
+    for (const g of group) {
+      const held = new Set(
+        transfer.rows.filter((r) => r.set === set && r.material === g.material).map((r) => r.id),
+      );
+      assert.ok(
+        g.calibration.every((r) => !held.has(r.id)),
+        'Frame references must be disjoint from mana validation',
+      );
+    }
+  }
+  assert.ok(transfer.sets.dmu.after < transfer.sets.dmu.before);
+  console.log(
+    'Modern cost source, scope, transfer evidence, rotation, editor deltas and warm-cache behavior verified.',
+  );
 } finally {
   await browser.close();
   await server.close();

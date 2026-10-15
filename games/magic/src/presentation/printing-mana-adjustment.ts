@@ -1,7 +1,7 @@
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
-import { PRINTING_MANA_PROFILES } from './printing-mana-profiles.js';
+import { MODERN_MANA_SETS, PRINTING_MANA_PROFILES } from './printing-mana-profiles.js';
 
 /** Scope geometry and source preparation to the same validated printing family. */
 export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {
@@ -10,6 +10,8 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
   const early = ['lea', 'leb', '3ed'].includes(set);
   if (
     !base ||
+    face.frameTemplate !== undefined ||
+    /^Level up\b/m.test(face.rulesText ?? '') ||
     (face.layout ?? 'normal') !== 'normal' ||
     (face.legendary ?? /\bLegendary\b/.test(face.typeLine ?? '')) ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||
@@ -19,7 +21,7 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
         face.symbolStyle === 'modern' ||
         (face.symbolStyle === undefined && face.wordingMode === 'oracle'))) ||
     (set === '8ed' && (isRetro(face) || face.frameAssetFamily !== 'eighth')) ||
-    (set === 'm21' && (isRetro(face) || face.frameAssetFamily !== undefined))
+    (MODERN_MANA_SETS.includes(set) && (isRetro(face) || face.frameAssetFamily !== undefined))
   )
     return undefined;
   return base;
