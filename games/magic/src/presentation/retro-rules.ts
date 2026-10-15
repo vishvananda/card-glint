@@ -8,6 +8,7 @@ import { wordingParagraphs } from './wording.js';
 import { shortCenteredRules } from './short-centered-rules.js';
 import { isRevisedLand } from './revised-land-frame.js';
 import { revisedLandRules } from './revised-land-text.js';
+import { rightFlavorAttribution } from './flavor-attribution.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -42,12 +43,11 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   if (isRevisedLand(face)) return revisedLandRules(context, face, paragraphs, reference);
   const set = face.setCode?.toLowerCase();
-  // Reviewed Mirage/Tempest annotations and Sixth Edition scans use right
-  // attribution lines. Early sets and current frames have counterexamples.
-  const typography: Readonly<RulesTypography> =
-    set === 'mir' || set === 'tmp' || set === '6ed'
-      ? { ...RETRO_TYPOGRAPHY, flavorAttribution: 'right' }
-      : RETRO_TYPOGRAPHY;
+  // Original Mirage–Scourge printings use right-aligned attribution lines;
+  // early sets and Eighth Edition onward use a different policy.
+  const typography: Readonly<RulesTypography> = rightFlavorAttribution(set)
+    ? { ...RETRO_TYPOGRAPHY, flavorAttribution: 'right' }
+    : RETRO_TYPOGRAPHY;
   // Oracle reminders need a safe panel inset. Dense original Alpha printings
   // have tighter margins; the original-comparison path retains their placement.
   const verticalLimits =

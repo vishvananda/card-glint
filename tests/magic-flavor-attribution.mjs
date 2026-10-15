@@ -91,11 +91,24 @@ try {
         { role: 'flavor', runs: [{ text: '--Author', italic: true }] },
       ],
     };
-    for (const setCode of ['3ed', '6ed', 'mir', 'tmp', 'm21']) {
+    for (const setCode of [
+      '3ed',
+      '4ed',
+      'all',
+      'mir',
+      '5ed',
+      'tmp',
+      '6ed',
+      '7ed',
+      'scg',
+      'por',
+      '8ed',
+      'm21',
+    ]) {
       const f = { ...face, setCode };
       const layout = setCode === 'm21' ? ordinaryTextLayout(ctx, f) : retroTextLayout(ctx, f);
       const last = layout.lines.at(-1);
-      const right = ['6ed', 'mir', 'tmp'].includes(setCode);
+      const right = ['mir', '5ed', 'tmp', '6ed', '7ed', 'scg', 'por'].includes(setCode);
       check(
         Math.abs(last.x - layout.x - (right ? layout.width - last.width : 0)) < 0.01,
         'Incorrect printing-specific attribution alignment: ' + setCode,

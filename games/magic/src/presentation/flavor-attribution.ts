@@ -1,3 +1,16 @@
+/** Original-frame typography changed with Mirage, then returned to left
+ * attribution alignment with Eighth Edition. Keep an explicit printing-era
+ * list so later retro treatments do not inherit an unverified date rule. */
+const RIGHT_ATTRIBUTION_SETS = new Set(
+  'mir vis 5ed wth tmp sth exo usg ulg 6ed uds mmq nem pcy inv pls 7ed apc ody tor jud ons lgn scg por p02 ptk'.split(
+    ' ',
+  ),
+);
+
+export function rightFlavorAttribution(setCode: string | undefined): boolean {
+  return RIGHT_ATTRIBUTION_SETS.has(setCode?.toLowerCase() ?? '');
+}
+
 import type { RulesParagraph, RulesRun } from './face-layout.js';
 
 /** For a printing that uses right-aligned credits, a final dash-prefixed
