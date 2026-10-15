@@ -590,3 +590,14 @@ rejected. Size and position were then selected on the 36 training cards; all 72
 final candidate crops were replayed against the actual painter. These are local
 type-region scores, not whole-card accuracy or a new scan-alignment fit. Mana,
 rules, artist and power/toughness remain separate calibration passes.
+
+### Legends symbol contour
+
+The pinned common Legends SVG includes a later-style white exterior silhouette.
+The original printing has a black outside contour, with white bands and column
+slots inside. The checksum-gated `remove-outer-white` recipe removes the first
+backing path and retains the other six paths, including every opaque interior
+white detail. It leaves the original viewport and coordinates intact. This uses
+the existing once-per-source SVG preparation and decoded-image caches; it adds
+no per-frame work. Refit placement after this source correction rather than
+keeping the white-rim candidate's measurements.

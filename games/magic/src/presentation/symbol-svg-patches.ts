@@ -27,19 +27,30 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
     root = doc.documentElement,
     paths = [...root.querySelectorAll('path')],
     gradient = root.querySelector('linearGradient, radialGradient');
-  if (root.localName !== 'svg' || doc.querySelector('parsererror') || !gradient)
+  if (
+    root.localName !== 'svg' ||
+    doc.querySelector('parsererror') ||
+    (!gradient && patch.recipe !== 'remove-outer-white')
+  )
     throw Error(`Unexpected pinned symbol SVG: ${url}`);
   const set = (element: Element, attributes: Record<string, string>) => {
     for (const [name, value] of Object.entries(attributes)) element.setAttribute(name, value);
   };
-  if (patch.recipe === 'white-outer-rim') {
+  if (patch.recipe === 'remove-outer-white') {
+    // These pinned vectors separately paint all white interior details. The
+    // first silhouette is only the later-printing exterior rim, so removing it
+    // preserves the column's opaque white gaps and black outside contour.
+    if (paths.length !== 7 || !/fill:\s*#ffffff\b/i.test(paths[0]!.getAttribute('style') ?? ''))
+      throw Error('Unexpected monochrome symbol topology.');
+    paths[0]!.remove();
+  } else if (patch.recipe === 'white-outer-rim') {
     if (paths.length !== 3) throw Error('Unexpected rimmed symbol topology.');
     paths[0]!.setAttribute('fill', '#fff');
   } else if (patch.recipe === 'm15') {
     if (paths.length !== 6) throw Error('Unexpected M15 path topology.');
     // Metallic field, black lettering/inset line, and an independent black rim.
     // SVG viewport clipping keeps the stroke inside the original viewport.
-    set(paths[0]!, { fill: `url(#${gradient.id})`, stroke: '#000', 'stroke-width': '8' });
+    set(paths[0]!, { fill: `url(#${gradient!.id})`, stroke: '#000', 'stroke-width': '8' });
     for (const path of paths.slice(1)) path.setAttribute('fill', '#000');
   } else if (patch.recipe === '8ed' || patch.recipe === '9ed') {
     if (paths.length !== 4) throw Error('Unexpected numeric shield path topology.');
@@ -53,12 +64,12 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
     if (patch.recipe === '9ed') {
       // The numeral lives in root coordinates; preserve the panel gradient's
       // appearance when applying it outside its transformed group.
-      const metal = gradient.cloneNode(true) as Element;
+      const metal = gradient!.cloneNode(true) as Element;
       set(metal, {
         id: 'glint-root-metal',
-        gradientTransform: `${transform} ${gradient.getAttribute('gradientTransform') ?? ''}`,
+        gradientTransform: `${transform} ${gradient!.getAttribute('gradientTransform') ?? ''}`,
       });
-      gradient.after(metal);
+      gradient!.after(metal);
       set(paths[3]!, {
         stroke: 'url(#glint-root-metal)',
         'stroke-width': '12',

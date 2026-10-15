@@ -7,6 +7,8 @@ import { chromium } from 'playwright';
 // Original geometry exercises material polarity and coordinate transforms.
 // Replace only checksum expectations in this test server; no third-party bytes.
 const synthetic = {
+  monochrome:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path style="fill:#ffffff" d="M0 0H100V100H0Z"/><path d="M10 10H90V90H10Z"/><path fill="#fff" d="M20 20H25V80H20Z"/><path fill="#fff" d="M30 20H35V80H30Z"/><path fill="#fff" d="M40 20H45V80H40Z"/><path fill="#fff" d="M50 20H55V80H50Z"/><path fill="#fff" d="M60 20H65V80H60Z"/></svg>',
   m15: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="160"><path d="M0 0H300V160H0Z"/><linearGradient id="g"><stop stop-color="#4488aa"/><stop offset="1" stop-color="#ddeeff"/></linearGradient><path fill="url(#g)" d="M30 30H50V90H30Z"/><path fill="url(#g)" d="M60 30H80V90H60Z"/><path fill="url(#g)" d="M90 30H110V90H90Z"/><path fill="url(#g)" d="M120 30H140V90H120Z"/><path fill="url(#g)" d="M150 30H170V90H150Z"/></svg>',
   rim: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><radialGradient id="g"><stop stop-color="#888"/><stop offset="1" stop-color="#ddd"/></radialGradient><path d="M0 0H100V100H0Z"/><path fill="#333" d="M5 5H95V95H5Z"/><path fill="url(#g)" d="M10 10H90V90H10Z"/></svg>',
   numeric:
@@ -17,7 +19,13 @@ for (const rule of Object.values(manifest.sources))
   rule.sha256 = createHash('sha256')
     .update(
       synthetic[
-        rule.recipe === 'm15' ? 'm15' : rule.recipe === 'white-outer-rim' ? 'rim' : 'numeric'
+        rule.recipe === 'remove-outer-white'
+          ? 'monochrome'
+          : rule.recipe === 'm15'
+            ? 'm15'
+            : rule.recipe === 'white-outer-rim'
+              ? 'rim'
+              : 'numeric'
       ],
     )
     .digest('hex');
@@ -46,7 +54,15 @@ try {
     return route.fulfill({
       contentType: 'image/svg+xml',
       headers: { 'Access-Control-Allow-Origin': '*' },
-      body: synthetic[url.includes('/m15-') ? 'm15' : /\/[67]ed-/.test(url) ? 'rim' : 'numeric'],
+      body: synthetic[
+        url.includes('/leg-')
+          ? 'monochrome'
+          : url.includes('/m15-')
+            ? 'm15'
+            : /\/[67]ed-/.test(url)
+              ? 'rim'
+              : 'numeric'
+      ],
     });
   });
   await page.goto(server.resolvedUrls.local[0]);
@@ -68,6 +84,7 @@ try {
       signal = new AbortController().signal;
     const urls = ['m15', '8ed', '9ed', '7ed', '6ed'].map((code) => styledSetSymbol(code, 'rare'));
     urls.push(...['6ed', '7ed', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'uncommon')));
+    urls.push(styledSetSymbol('leg', 'rare'));
     const parsed = [];
     for (const url of urls) {
       const sources = await resolveCanvasSources([url, url], signal);
@@ -76,11 +93,15 @@ try {
         doc = new DOMParser().parseFromString(encoded, 'image/svg+xml');
       parsed.push(doc);
       check(
-        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v4',
+        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v5',
         'Patch revision missing',
       );
       sources.dispose();
     }
+    check(
+      parsed.at(-1).querySelectorAll('path').length === 6,
+      'Monochrome rim removal changed internal details',
+    );
     const m15 = parsed[0].querySelectorAll('path');
     check(
       m15[0].getAttribute('fill') === 'url(#g)' && m15[1].getAttribute('fill') === '#000',
@@ -128,6 +149,19 @@ try {
         return p;
       };
       const pixelsCache = pixels(other);
+      if (url.includes('/leg-')) {
+        const data = pixels(other, 100, 100),
+          at = (x, y) => data.slice((y * 100 + x) * 4, (y * 100 + x) * 4 + 4);
+        check(at(5, 50)[3] === 0, 'Early monochrome symbol must not have an exterior white rim');
+        check(
+          at(12, 50)[0] === 0 && at(12, 50)[3] === 255,
+          'Early monochrome contour must remain black',
+        );
+        check(
+          at(22, 50).every((v) => v === 255),
+          'White interior detail must stay opaque',
+        );
+      }
       if (/\/(8ed|9ed)-/.test(url)) {
         const materialPixels = pixels(other, 600, 500),
           at = (x, y) => materialPixels.slice((y * 600 + x) * 4, (y * 600 + x) * 4 + 4),
@@ -194,7 +228,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 9);
+  assert.equal(result.urls.length, 10);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);
