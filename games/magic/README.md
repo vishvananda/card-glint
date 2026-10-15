@@ -282,7 +282,10 @@ Short Fourth Edition and Revised passages use centered, balanced lines. Revised
 uses larger type and more space between lines, validated separately from Fourth
 Edition. Explicit paragraph alignment and hard breaks take precedence; other
 old-border sets retain their separate typography policies.
-Use paragraph `align: 'right'` for a printed flavor attribution. Other layouts
+Flavor lines starting with an em dash, en dash or `--` are right-aligned
+automatically, including wrapped attributions and hard breaks inside styled runs.
+Centered passages and explicit paragraph `align` values take precedence.
+Other layouts
 still use their `rulesText` as the source. Planeswalker rows now measure loaded
 font outlines, preserve italic runs from matching `rulesParagraphs`, and report
 overflow rather than clipping. Passive paragraphs have no loyalty-badge indent;
@@ -424,7 +427,7 @@ that era is supported.
 describes those transitions.
 
 The fourth argument chooses `rulesAlignment: 'left' | 'original' | 'oracle'`.
-`left` forces left alignment. The other choices determine automatic centering
+`left` disables automatic rules-text centering; flavor attributions retain their alignment. The other choices determine automatic centering
 from that wording, independently of which wording is displayed. The default is
 the displayed mode; requesting a missing alignment source throws. Explicit
 paragraph alignment takes precedence over automatic centering.

@@ -1,7 +1,4 @@
-import {
-  paintRetroLetterEdges as paintLetterEdges,
-  paintRetroGrayText,
-} from './retro-lettering.js';
+import { paintRetroGrayText } from './retro-lettering.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { retroFamily } from './retro-frame.js';
 
@@ -27,7 +24,7 @@ export function paintRevisedStats(c: CanvasRenderingContext2D, text: string, y: 
   c.save();
   c.font = '26px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'right';
-  paintLetterEdges(c, text, 451, y + 12, 130, 1.25);
+  paintRetroGrayText(c, text, 451, y + 12, 130, 1.25);
   c.restore();
 }
 

@@ -82,7 +82,7 @@ export function ordinaryTextLayout(
   return layoutRules(
     context,
     face.rulesAlignment?.mode === 'left'
-      ? paragraphs.map((p) => ({ ...p, align: 'left' as const }))
+      ? paragraphs.map((p) => (p.role === 'rules' ? { ...p, align: 'left' as const } : p))
       : paragraphs,
     bounds,
     24.5 * scale,

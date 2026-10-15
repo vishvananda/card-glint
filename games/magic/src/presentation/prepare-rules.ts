@@ -19,7 +19,7 @@ export function prepareRuleLayouts(c: CanvasRenderingContext2D, face: RenderedCa
     return layoutRules(
       c,
       input.rulesAlignment?.mode === 'left'
-        ? paragraphs.map((p) => ({ ...p, align: 'left' as const }))
+        ? paragraphs.map((p) => (p.role === 'rules' ? { ...p, align: 'left' as const } : p))
         : paragraphs,
       {
         x: rect[0] * 488,

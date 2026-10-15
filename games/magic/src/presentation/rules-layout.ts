@@ -1,5 +1,6 @@
 import type { RulesParagraph } from './face-layout.js';
 import { wrapRules, type MeasuredRun } from './rules-wrap.js';
+import { flavorAttribution } from './flavor-attribution.js';
 export { rulesFont, type MeasuredRun } from './rules-wrap.js';
 
 export interface RulesLine {
@@ -59,6 +60,7 @@ export function layoutRules(
   context.textBaseline = 'alphabetic';
   context.textAlign = 'left';
   try {
+    const blocks = paragraphs.flatMap(flavorAttribution);
     let layout: RulesLayout;
     let size = maximumSize;
     do {
@@ -66,7 +68,7 @@ export function layoutRules(
         separators: number[] = [];
       let baseline = 0,
         previous: RulesParagraph['role'] | undefined;
-      for (const paragraph of paragraphs) {
+      for (const paragraph of blocks) {
         let paragraphSize = size;
         let rows = wrapRules(
           context,

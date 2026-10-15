@@ -31,7 +31,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     });
   const forcedLeft = face.rulesAlignment?.mode === 'left';
   const paragraphs: readonly RulesParagraph[] = forcedLeft
-    ? visible.map((p) => ({ ...p, align: 'left' }))
+    ? visible.map((p) => (p.role === 'rules' ? { ...p, align: 'left' } : p))
     : visible;
   const reference =
     face.rulesAlignment?.mode === 'auto'

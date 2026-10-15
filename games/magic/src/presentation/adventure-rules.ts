@@ -11,7 +11,9 @@ export function adventureRuleLayouts(c: CanvasRenderingContext2D, face: Rendered
       rulesText: f.rulesText ?? '',
       rulesParagraphs: f.rulesParagraphs,
     });
-    return f.rulesAlignment?.mode === 'left' ? p.map((p) => ({ ...p, align: 'left' as const })) : p;
+    return f.rulesAlignment?.mode === 'left'
+      ? p.map((p) => (p.role === 'rules' ? { ...p, align: 'left' as const } : p))
+      : p;
   };
   const typography = { leading: 1, paragraphGap: 0.4, flavorGap: 0.75, flavorSeparator: true };
   const permanentParagraphs = paragraphs(face),
