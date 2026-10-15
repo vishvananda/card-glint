@@ -9,7 +9,7 @@ A small, game-neutral card renderer. Rust/WASM manages caches, scene planning,
 picking and pixel kernels. WebGL2 adds reusable etching, embossing and foil.
 Your game supplies the artwork, frame geometry, typography and hit regions.
 
-[![Animated tilt of three original fantasy cards with etched, cold foil and opal finishes](docs/images/showcase.gif)](https://vishvananda.github.io/card-glint/)
+[![Animated tilt of three original fantasy cards with prismatic, cold foil and gloss finishes](docs/images/showcase.gif)](https://vishvananda.github.io/card-glint/)
 
 [Watch / download the MP4](https://vishvananda.github.io/card-glint/media/showcase.mp4) ·
 [Static preview](docs/images/showcase.png)
@@ -29,7 +29,7 @@ asset references, its fan-content notice, and a guide for contributing fixes.
 
 ## What it does
 
-- Eight finishes: regular, etched, prismatic, cold foil, Opal embossing,
+- Nine finishes: regular, gloss, etched, prismatic, cold foil, Opal embossing,
   raindrops on glass, heat shimmer and pool water with caustics.
 - Independent face, artwork-edge, mask, decoded-image and overlay caches.
 - Explicit layers above/below foil, foil exclusion masks and etch contributions.
@@ -55,7 +55,7 @@ npm run preview
 ```
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
-The collection opens with etched, cold foil and opal finishes; animated living
+The collection opens with prismatic, cold foil and gloss finishes; animated living
 surfaces are available in the **Finish** selector.
 Hover or drag on a card to tilt it and disturb its water; neighboring cards keep
 their independent idle motion and reflections. On touchscreens,
@@ -98,7 +98,7 @@ The README's eight-second GIF and MP4 are captured from the same renderer;
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.2.28/card-glint-0.2.28.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.3.0/card-glint-0.3.0.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -119,7 +119,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.2.28/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.3.0/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.

@@ -1,4 +1,5 @@
 import './style.css';
+import { version } from '../../package.json' with { type: 'json' };
 import {
   createRenderer,
   IDENTITY,
@@ -16,6 +17,9 @@ import { ShowcaseInput } from './input.js';
 import { withArtworkCoverage } from './coverage.js';
 import * as api from '@card-glint/browser';
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+const releaseLink = $<HTMLAnchorElement>('release');
+releaseLink.textContent = 'v' + version;
+releaseLink.href = 'https://github.com/vishvananda/card-glint/releases/tag/v' + version;
 const surface = $<HTMLCanvasElement>('scene'),
   status = $('status');
 let overlap = false,
@@ -38,7 +42,7 @@ function deformation(finish: Finish): Instance['deformation'] {
 }
 function chosenFinish(index: number): Finish {
   const value = $<HTMLSelectElement>('finish').value;
-  if (value === 'mixed') return (['etched', 'cold', 'opal'] as const)[index % 3]!;
+  if (value === 'mixed') return (['prismatic', 'cold', 'gloss'] as const)[index % 3]!;
   if (value === 'surfaces') return (['rain', 'heat', 'pool'] as const)[index % 3]!;
   return value as Finish;
 }

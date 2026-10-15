@@ -18,6 +18,9 @@ try {
   await page.evaluate(async () => {
     await window.lab.ready;
   });
+  // Gesture ownership and tilt do not depend on the optical finish. Keep this
+  // input test responsive on the software GPU; separate tests cover shading.
+  await page.selectOption('#finish', 'regular');
   // Native browser gestures exercise scroll arbitration and pointercancel;
   // dispatchEvent(new TouchEvent(...)) cannot reproduce the original bug.
   const client = await page.context().newCDPSession(page);
@@ -32,6 +35,22 @@ try {
       normals: window.lab.instances().map((item) => item.normal),
       scroll: scrollY,
     }));
+  const settleTilt = (index) =>
+    page.waitForFunction(
+      (index) => {
+        const hover = window.lab.motionState().hover;
+        if (hover?.instance !== index + 1) return false;
+        const rx = (0.5 - hover.uv[1]) * 0.3,
+          ry = (hover.uv[0] - 0.5) * 0.38,
+          normal = window.lab.instances()[index].normal;
+        return (
+          Math.abs(normal[0] - Math.sin(ry) * Math.cos(rx)) < 0.003 &&
+          Math.abs(normal[1] + Math.sin(rx)) < 0.003
+        );
+      },
+      index,
+      { timeout: 15000 },
+    );
   const cards = [];
   for (let index = 0; index < 3; index++) {
     await page.evaluate((i) => {
@@ -43,13 +62,14 @@ try {
       y = rect.y + (rect.height / 3) * (index + 0.5);
     const before = await state();
     await touch('touchStart', [[x, y]]);
+    await settleTilt(index);
     const start = await state();
     assert.equal(start.hover?.instance, index + 1, 'Touch down did not pick the card');
     for (let step = 1; step <= 8; step++) {
       await touch('touchMove', [[x + step * 9, y - step * 13]]);
       await page.waitForTimeout(30);
     }
-    await page.waitForTimeout(180);
+    await settleTilt(index);
     const dragged = await state();
     assert.equal(dragged.hover?.instance, index + 1);
     assert.ok(dragged.hover.uv[0] - start.hover.uv[0] > 0.15, 'Horizontal drag lost');
@@ -63,7 +83,13 @@ try {
     await touch(index === 1 ? 'touchCancel' : 'touchEnd');
     const released = await state();
     assert.equal(released.hover, undefined, 'Release/cancel left the card stuck');
-    await page.waitForTimeout(250);
+    // Wait for an actual frame; software GPU work can exceed a fixed 250 ms
+    // delay without the input being stuck. Keep a bounded liveness check.
+    await page.waitForFunction(
+      ({ index, normal }) => window.lab.instances()[index].normal.some((v, i) => v !== normal[i]),
+      { index, normal: released.normals[index] },
+      { timeout: 5000 },
+    );
     const idle = await state();
     assert.notDeepEqual(idle.normals[index], released.normals[index], 'Idle motion did not resume');
     cards.push({ instance: index + 1, start, dragged, released });

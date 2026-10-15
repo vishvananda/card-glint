@@ -14,7 +14,9 @@ await mkdir(frames, { recursive: true });
 await mkdir(output, { recursive: true });
 
 if (!process.argv.includes('--encode-only')) {
-  const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+  const browser = await chromium.launch({
+    args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+  });
   try {
     const page = await browser.newPage({
       viewport: { width: 1264, height: 1100 },
@@ -53,8 +55,17 @@ if (!process.argv.includes('--encode-only')) {
             ]),
           );
           const instances = lab
-            .layoutCards(lab.documents, canvas.width, canvas.height, 3, 'etched', false, 0, poses)
-            .map((instance, i) => ({ ...instance, finish: ['etched', 'cold', 'opal'][i] }));
+            .layoutCards(
+              lab.documents,
+              canvas.width,
+              canvas.height,
+              3,
+              'prismatic',
+              false,
+              0,
+              poses,
+            )
+            .map((instance, i) => ({ ...instance, finish: ['prismatic', 'cold', 'gloss'][i] }));
           renderer.updateScene(instances);
           // A fixed scene light and independent card normals make a seamless loop.
           renderer.render({ viewProjection: lab.api.IDENTITY, time: 0 });

@@ -30,7 +30,7 @@ try {
   assert.equal(await page.locator('#finish').inputValue(), 'mixed');
   assert.deepEqual(
     await page.evaluate(() => window.lab.instances().map((instance) => instance.finish)),
-    ['etched', 'cold', 'opal'],
+    ['prismatic', 'cold', 'gloss'],
     'Showcase opens with classic foils',
   );
   await mkdir('docs/images', { recursive: true });

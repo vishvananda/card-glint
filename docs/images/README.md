@@ -4,9 +4,9 @@ The animated GIF embeds directly in GitHub's README. Clicking it opens the live
 GitHub Pages showcase. The MP4 is linked separately for sharper playback with
 native pause and seek controls; no JavaScript runs inside the README.
 
-Both are eight-second loops of the actual Rust/WASM + WebGL2 renderer using
+The 0.3.0 captures are eight-second loops of the actual Rust/WASM + WebGL2 renderer using
 the original [showcase artwork and frames](../../games/showcase/art/README.md).
-The finishes are etched, cold foil and opal. Each card tilts independently around
+The finishes are prismatic, cold foil and gloss. Each card tilts independently around
 a fixed light. Motion follows a periodic path so the loop has no abrupt reset.
 The background is opaque for predictable GIF and video playback.
 
