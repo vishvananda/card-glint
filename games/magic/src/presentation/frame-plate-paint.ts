@@ -22,6 +22,7 @@ import {
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintFittedText, paintSetSymbol } from './canvas-text.js';
 import { ordinaryTextLayout, paintRulesLayout } from './rules-paint.js';
+import { paintMountedSecurityStamp } from './security-stamp-paint.js';
 
 const px = (r: FaceRect): [number, number, number, number] => [
   r[0] * W,
@@ -110,6 +111,7 @@ export function paintFramePlateFace(
     c.drawImage(mask, 0, 0, W, H);
     mask.width = mask.height = 0;
   }
+  paintMountedSecurityStamp(c, face, images);
   c.fillStyle = '#17140f';
   c.textAlign = 'left';
   c.textBaseline = 'middle';

@@ -61,6 +61,21 @@ the caller. A `GLINT` set symbol is the default when no set is supplied.
 art-only rain, heat and pool treatments. `tone` selects gold, silver or prismatic
 reflection on the sharp printed layer. `mtg` remains an alias for `magic`.
 
+Use `securityStamp: 'oval' | 'none'` to select the physical printing's security
+stamp independently of its rarity or Oracle wording. The reference adapter
+copies Scryfall's `security_stamp`; absent metadata becomes `'none'`, so an older
+rare does not acquire a modern oval. Custom modern rare/mythic inputs that omit
+the option retain the default oval. Other recognized shapes (`triangle`,
+`acorn`, `circle`, `arena`, `heart`) are retained as metadata but are not drawn yet.
+
+Ordinary modern and planeswalker cards use separate oval mounts with colored
+surrounds; Split/Fuse retains its plain oval. Existing Saga, Adventure, Prepare
+and Aftermath painters also honor the physical stamp choice. Ordinary dense text
+reserves space around the mount. These are static decorations; a localized
+holographic effect is still pending. Mount sources are decoded at native size,
+and their black foot is matched to the stock once in the bounded material cache.
+Warm preparation and animation perform no additional pixel readback.
+
 ## Replacement asset candidates
 
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on

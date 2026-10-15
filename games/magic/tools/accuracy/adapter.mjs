@@ -74,6 +74,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     loyalty: card.loyalty,
     setCode: card.set,
     rarity: card.rarity,
+    securityStamp: card.security_stamp ?? 'none',
     collectorNumber: card.collector_number,
     frameStyle: ['1993', '1997'].includes(card.frame) ? 'retro' : 'modern',
     borderColor: card.border_color,

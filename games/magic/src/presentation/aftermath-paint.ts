@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import {
@@ -150,8 +151,7 @@ export function paintAftermathFace(
     c.restore();
   });
   if (layer !== 'artwork') {
-    if (['rare', 'mythic'].includes(face.rarity ?? ''))
-      c.drawImage(required(AFTERMATH_STAMP), 222, 623, 43, 20);
+    if (hasOvalSecurityStamp(face)) c.drawImage(required(AFTERMATH_STAMP), 222, 623, 43, 20);
     c.fillStyle = '#fff';
     c.textAlign = 'left';
     c.textBaseline = 'alphabetic';

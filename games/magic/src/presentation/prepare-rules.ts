@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { layoutRules } from './rules-layout.js';
 import { wordingParagraphs } from './wording.js';
@@ -37,7 +38,7 @@ export function prepareRuleLayouts(c: CanvasRenderingContext2D, face: RenderedCa
       face,
       PREPARE_RECTS.rules,
       21.75,
-      ['rare', 'mythic'].includes(face.rarity ?? '') ? [[213, 620, 63, 26]] : [],
+      hasOvalSecurityStamp(face) ? [[213, 620, 63, 26]] : [],
     ),
     spell: layout(
       spell,

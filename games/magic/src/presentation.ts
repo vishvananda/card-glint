@@ -34,3 +34,6 @@ export { sagaRuleLayout } from './presentation/saga-rules.js';
 export * from './presentation/symbol-adjustment.js';
 
 export * from './presentation/standard-frame-templates.js';
+
+export { hasOvalSecurityStamp } from './presentation/security-stamp-policy.js';
+export { mountedSecurityStamp } from './presentation/security-stamp-paint.js';

@@ -60,6 +60,13 @@ at `33f2547137fe366b40e9e8dba4eb591af190fddf`. See that source's
 The `official` directory name describes the upstream collection, not a grant of
 rights. Only pinned URLs and an inventory of available filenames are included.
 
+Ordinary and planeswalker oval security stamps use that same pinned repository's
+`img/frames/m15/holoStamps/` and `img/frames/planeswalker/holo/` assets. Their
+separate mount bounds follow
+[the M15 stamp definition](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packM15HoloStamps.js)
+and [the planeswalker stamp definition](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/packPlaneswalkerHoloStamps.js).
+No stamp image is bundled with this package.
+
 Local SVG material corrections are described in [symbol-svg-patches.json](symbol-svg-patches.json).
 They rewrite fetched, checksum-verified Card Conjurer SVGs before decoding;
 no source paths or patched artwork are embedded in the package. M15 retains its

@@ -13,6 +13,7 @@ import { BITMAP_MANA_COLORS } from './mana-colors.js';
 import { earlyHsbBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import { calibratedFrameMaterials, calibratedManaTarget } from './calibration-profiles.js';
 import { eighthBasicMaterialJobs } from './eighth-basic-material.js';
+import { securityStampMaterialJobs } from './security-stamp-material.js';
 export { calibratedDualFrameProfile as earlyHsbProfile } from './calibration-profiles.js';
 
 /** Static composition leases shared derived bitmaps. Original assets and their
@@ -64,11 +65,13 @@ export async function prepareEarlyHsb(
   }
   const originalWhiteGlyph =
     symbols.has('W') && historicalManaFamily(face, 'W') === 'historic-font';
-  const basicJobs = eighthBasicMaterialJobs(face, images);
+  const basicJobs = eighthBasicMaterialJobs(face, images),
+    stampJobs = securityStampMaterialJobs(face, images);
   if (
     !adjustments.size &&
     !originalMaterials.length &&
     !basicJobs.length &&
+    !stampJobs.length &&
     !Object.keys(colors).length &&
     !originalWhiteGlyph
   )
@@ -85,6 +88,7 @@ export async function prepareEarlyHsb(
   });
   const jobs = [
     ...basicJobs,
+    ...stampJobs,
     ...materials.map(({ url, source, adjustment }) => ({
       url,
       key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),

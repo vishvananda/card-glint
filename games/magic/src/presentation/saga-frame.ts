@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import { sagaColorAssets } from './saga-colors.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { resolveFrameColors } from './profile.js';
@@ -29,7 +30,7 @@ export function sagaAssets(face: RenderedCardInput): string[] {
     SAGA_CHAPTER,
     SAGA_DIVIDER,
     ...(sagaTransformIcon(face) ? [sagaTransformIcon(face)!] : []),
-    ...(['rare', 'mythic'].includes(face.rarity ?? '') ? [SAGA_STAMP] : []),
+    ...(hasOvalSecurityStamp(face) ? [SAGA_STAMP] : []),
   ];
 }
 export const SAGA_RECTS = {

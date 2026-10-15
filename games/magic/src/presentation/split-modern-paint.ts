@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { modernSplitImage } from './split-modern-frame.js';
@@ -119,7 +120,7 @@ export function paintModernSplitFooter(
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
     c.fillText(face.legalText, 455, 646, 170);
   }
-  if (['rare', 'mythic'].includes(face.rarity ?? '')) {
+  if (hasOvalSecurityStamp(face)) {
     const stamp = images.get(PLAIN_SECURITY_STAMP);
     if (!stamp) throw Error('Modern split authenticity stamp unavailable.');
     // Median visible oval from seven frame-normalized GRN/RNA rare scans:

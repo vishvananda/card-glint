@@ -145,6 +145,7 @@ export function specialFrameInput(card, side, reference, art, records) {
       // A parent's flavor belongs to neither inset nor reverse by inheritance.
       flavor_text: data.flavor_text,
       printed_type_line: type.typeLine,
+      security_stamp: physicalSide && side.key === 'b' ? undefined : card.security_stamp,
     };
     return {
       ...presentation(
@@ -198,6 +199,7 @@ export function specialFrameInput(card, side, reference, art, records) {
       colors: card.colors ?? [],
       setCode: card.set,
       rarity: card.rarity,
+      securityStamp: card.security_stamp ?? 'none',
       borderColor: card.border_color,
       collectorNumber: card.collector_number,
       artist: card.artist,

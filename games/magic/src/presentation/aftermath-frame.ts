@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { resolveFrameColors } from './profile.js';
 import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
@@ -24,7 +25,7 @@ export function aftermathAssets(face: RenderedCardInput): string[] {
   if (!isAftermath(face)) return [];
   return [
     ...face.faces!.map(aftermathFrameAsset),
-    ...(['rare', 'mythic'].includes(face.rarity ?? '') ? [AFTERMATH_STAMP] : []),
+    ...(hasOvalSecurityStamp(face) ? [AFTERMATH_STAMP] : []),
   ];
 }
 

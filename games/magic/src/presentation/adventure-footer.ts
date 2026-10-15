@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { ADVENTURE_RECTS, adventurePt } from './adventure-frame.js';
@@ -33,7 +34,7 @@ export function paintAdventureFooter(
     c.font = '700 25px "CardRenderer MTG Beleren Small Caps", Georgia';
     c.fillText(`${face.power}/${face.toughness}`, 420, 627, 77);
   }
-  if (['rare', 'mythic'].includes(face.rarity ?? '')) {
+  if (hasOvalSecurityStamp(face)) {
     const stamp = images.get(SAGA_STAMP);
     if (!stamp) throw Error('Adventure authenticity stamp is unavailable.');
     c.drawImage(stamp, 213.7, 620.2, 60.5, 25.3);

@@ -23,6 +23,7 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
       setCode: face.setCode,
       frameStyle: face.frameStyle,
       rarity: face.rarity,
+      securityStamp: face.securityStamp,
       artist: face.artist,
       setSymbol: face.setSymbol,
       setSymbolSource: face.setSymbolSource,

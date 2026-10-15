@@ -4,6 +4,7 @@ import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.j
 import { faceRects } from './special-frames.js';
 import { layoutRules, rulesFont, RULES_TYPOGRAPHY, type RulesLayout } from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
+import { mountedSecurityStamp } from './security-stamp-paint.js';
 import { hasFlavorSeparator } from './flavor-separator.js';
 
 export function ordinaryTextLayout(
@@ -24,6 +25,7 @@ export function ordinaryTextLayout(
       .split('\n')
       .filter(Boolean)
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
+  const stamp = mountedSecurityStamp(face);
   const bounds: Parameters<typeof layoutRules>[2] = {
     x: x * FACE_WIDTH + (face.frameAssetFamily ? 0 : 3.5),
     y: y * height + (face.frameAssetFamily ? 0 : 7),
@@ -31,17 +33,28 @@ export function ordinaryTextLayout(
     height: h * height - (face.frameAssetFamily ? 0 : 8),
     // Fit actual line ink around the existing power/toughness plate. Short
     // final lines can use the lower left area without being painted over.
-    exclusions:
-      face.power != null && face.toughness != null
+    exclusions: [
+      ...(face.power != null && face.toughness != null
         ? [
             [
               rects.stats[0] * FACE_WIDTH - 2,
               rects.stats[1] * height - 2,
               rects.stats[2] * FACE_WIDTH + 4,
               rects.stats[3] * height + 4,
-            ],
+            ] as const,
           ]
-        : [],
+        : []),
+      ...(stamp
+        ? [
+            [
+              stamp.rect[0] - 1,
+              ((stamp.rect[1] - 1) * height) / FACE_HEIGHT,
+              stamp.rect[2] + 2,
+              ((stamp.rect[3] + 2) * height) / FACE_HEIGHT,
+            ] as const,
+          ]
+        : []),
+    ],
   };
   const reference =
     face.rulesAlignment?.mode === 'auto'

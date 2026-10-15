@@ -37,6 +37,7 @@ const card = {
   frame: '2015',
   layout: 'transform',
   rarity: 'rare',
+  security_stamp: 'oval',
   card_faces: [front, back],
 };
 const records = [front, back].map((f, i) => ({
@@ -62,6 +63,8 @@ assert.equal(adapted[0].face.rulesText, 'I — Original chapter.');
 assert.equal(adapted[1].face.rulesText, 'Original back.');
 assert.equal(adapted[1].face.power, '2');
 assert.equal(adapted[1].face.layout, 'transform');
+assert.equal(adapted[0].face.securityStamp, 'oval');
+assert.equal(adapted[1].face.securityStamp, 'none', 'Reverse inherited the front stamp');
 const split = {
   ...card,
   layout: 'split',
@@ -71,6 +74,7 @@ const split = {
 assert.equal(specialFrameSides(split).length, 1);
 const panels = specialFrameInput(split, specialFrameSides(split)[0], reference, art, records).face;
 assert.equal(panels.faces.length, 2);
+assert.equal(panels.securityStamp, 'oval');
 assert.equal(
   panels.faces[0].illustration,
   undefined,

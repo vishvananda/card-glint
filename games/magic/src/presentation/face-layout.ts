@@ -2,6 +2,7 @@ import type { SymbolAdjustment } from './symbol-adjustment.js';
 import type { CardProfileInput } from './profile.js';
 
 export type CardBorderColor = 'black' | 'white' | 'silver';
+export type SecurityStamp = 'none' | 'oval' | 'triangle' | 'acorn' | 'circle' | 'arena' | 'heart';
 
 export interface RulesRun {
   /** Plain text with optional {mana} symbols. Style is explicit, not inferred from punctuation. */
@@ -81,6 +82,11 @@ export interface RenderedCardInput extends CardProfileInput {
    * Explicit selection is useful for asset comparisons. Custom URLs win. */
   setSymbolSource?: 'auto' | 'keyrune' | 'cardconjurer';
   rarity?: 'common' | 'uncommon' | 'rare' | 'mythic' | 'special' | 'bonus';
+  /** Physical printing mark, independent of rarity and wording. Omitted uses
+   * the current modern rare/mythic oval default; use none for older printings.
+   * Only oval is drawn currently; other shapes are retained without replacing
+   * them with an incorrect oval. The artwork-only layer never includes it. */
+  securityStamp?: SecurityStamp;
 }
 
 export function faceStats(face: RenderedCardInput): { text: string; label: string } | null {

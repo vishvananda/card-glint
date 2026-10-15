@@ -1,3 +1,4 @@
+import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -54,7 +55,7 @@ export function prepareAssets(face: RenderedCardInput): string[] {
         ? (colors.length === 2 ? colors : [prepareMaterial(face)]).map(prepareCrown)
         : []),
       ...(face.power != null && face.toughness != null ? [preparePt(face)] : []),
-      ...(['rare', 'mythic'].includes(face.rarity ?? '') ? [SAGA_STAMP] : []),
+      ...(hasOvalSecurityStamp(face) ? [SAGA_STAMP] : []),
     ]),
   ];
 }

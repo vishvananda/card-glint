@@ -35,6 +35,7 @@ import { faceFrame, faceRects } from './special-frames.js';
 import { paintPlaneswalkerPaper, paintSpecialRules } from './special-rule-paint.js';
 import { COLORLESS_PLATE_REPAINT, paintPlaneswalkerType } from './planeswalker-type.js';
 import { paintPlaneswalkerFrameImage } from './planeswalker-lower-frame.js';
+import { paintMountedSecurityStamp } from './security-stamp-paint.js';
 import { setSymbolCrop } from './set-symbols.js';
 import { CONJURER_ROOT, isStyledSetSymbol } from './styled-set-symbols.js';
 import { paintFramePlateFace, loadFramePlateFonts } from './frame-plate-paint.js';
@@ -128,7 +129,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v104',
+    'canvas-face-v105',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -203,6 +204,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.setSymbol ?? null,
         face.setSymbolSource ?? null,
         face.rarity ?? 'common',
+        face.securityStamp ?? 'default',
         face.power ?? null,
         face.toughness ?? null,
         face.loyalty ?? null,
@@ -614,6 +616,7 @@ export function paintAssembledFace(
       }
     }
   }
+  if (!panel) paintMountedSecurityStamp(context, face, images);
   context.fillStyle = '#17140f';
   context.textBaseline = 'middle';
   context.textAlign = 'left';

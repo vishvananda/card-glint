@@ -20,6 +20,7 @@ import { resolveCardProfile } from './profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { framePlateUrls } from './frame-plates.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
+import { mountedSecurityStamp } from './security-stamp-paint.js';
 
 import type { ManaNumeral } from './mana-numeral.js';
 
@@ -41,7 +42,11 @@ export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promis
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */
 export function canvasAssetWidth(url: string): number | undefined {
-  if (url.startsWith(`${CONJURER_ROOT}/img/frames/m15/holoStamps/`)) return undefined;
+  if (
+    url.startsWith(`${CONJURER_ROOT}/img/frames/m15/holoStamps/`) ||
+    url.startsWith(`${CONJURER_ROOT}/img/frames/planeswalker/holo/`)
+  )
+    return undefined;
   if (
     url.startsWith(CONJURER_ROOT) &&
     /\/saga\/(sagaChapter|sagaDivider|sagaMidStripe|stamp)\.png$/.test(url)
@@ -211,7 +216,14 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
       ...(splitEra === 'eighth' && hasFuse(face) ? splitFuseBridgeAssets(face) : []),
     ];
   const plates = framePlateUrls(face);
-  if (plates) return [...plates, face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
+  if (plates)
+    return [
+      ...plates,
+      mountedSecurityStamp(face)?.image,
+      face.illustration,
+      faceSetSymbol(face),
+      ...faceManaAssets(face),
+    ];
   if (isRetro(face)) return retroAssets(face);
   if (faceFrame(face) === 'saga')
     return [...sagaAssets(face), face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
@@ -220,6 +232,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
   const profile = resolveCardProfile(face),
     assets = profileAssets(profile, faceFrame(face));
   return [
+    mountedSecurityStamp(face)?.image,
     ...extraRuleAssets(face),
     assets.background,
     assets.frame,
