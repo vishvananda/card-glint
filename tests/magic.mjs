@@ -879,6 +879,44 @@ try {
     });
     if (explicitFlying.size !== 22.5 || explicitFlying.lines.some((line) => line.x !== 70))
       throw Error('Automatic Revised large type overrode explicit host alignment');
+    const mixedLegends = layoutRules(
+      ctx,
+      [
+        {
+          role: 'rules',
+          align: 'left',
+          runs: [{ text: '{U}{W}{G}{T}: Regenerate target creature.' }],
+        },
+        {
+          role: 'flavor',
+          align: 'center',
+          runs: [{ text: '"On the field of honor, a soldier need have no fear."', italic: true }],
+        },
+      ],
+      { x: 72, y: 413, width: 344, height: 182 },
+      27.5,
+      27.5,
+      {
+        leading: 1.1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        balanceLines: true,
+        balanceCenteredOnly: true,
+      },
+    );
+    if (
+      !mixedLegends.lines[0].runs
+        .map((r) => r.text)
+        .join('')
+        .endsWith('target') ||
+      mixedLegends.lines[0].x !== 72 ||
+      mixedLegends.lines
+        .filter((l) => l.role === 'flavor')
+        .some((l) => Math.abs(l.x + l.width / 2 - 244) > 0.01)
+    )
+      throw Error('Centered flavor changed greedy wrapping of adjacent left rules');
     const retro = retroTextLayout(ctx, {
       ...fixtures[3],
       rulesParagraphs: [

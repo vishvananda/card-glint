@@ -7,6 +7,34 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false },
 });
 try {
+  const { legendsRulesParagraphs } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/legends-rules.ts',
+  );
+  const genericBody = [{ role: 'rules', runs: [{ text: '{2}{T}: Add {U}. Spend {X}{X}.' }] }];
+  const genericFace = {
+    setCode: 'leg',
+    colors: [],
+    typeLine: 'Artifact',
+    wordingMode: 'original',
+  };
+  assert.equal(
+    legendsRulesParagraphs(genericFace, genericBody)[0].runs[0].text,
+    '2{T}: Add {U}. Spend XX.',
+  );
+  for (const face of [
+    { ...genericFace, symbolStyle: 'modern' },
+    { ...genericFace, wordingMode: 'oracle' },
+    { ...genericFace, setCode: '3ed' },
+  ])
+    assert.equal(legendsRulesParagraphs(face, genericBody), genericBody);
+  assert.equal(
+    legendsRulesParagraphs(
+      { ...genericFace, wordingMode: 'oracle', symbolStyle: 'original' },
+      genericBody,
+    )[0].runs[0].text,
+    '2{T}: Add {U}. Spend XX.',
+  );
+  assert.equal(genericBody[0].runs[0].text, '{2}{T}: Add {U}. Spend {X}{X}.');
   const { legendsFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/legends-frame.ts',
   );

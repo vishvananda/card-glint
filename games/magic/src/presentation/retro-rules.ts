@@ -9,6 +9,7 @@ import { shortCenteredRules } from './short-centered-rules.js';
 import { isRevisedLand } from './revised-land-frame.js';
 import { revisedLandRules } from './revised-land-text.js';
 import { rightFlavorAttribution } from './flavor-attribution.js';
+import { legendsRulesParagraphs } from './legends-rules.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -24,19 +25,21 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   if (retroBasicSymbol(face)) return null;
   const [x, y, width, height] = retroPx(retroRects(face).rules);
   const basic = retroBasicPrinting(face);
-  const visible =
+  const visible = legendsRulesParagraphs(
+    face,
     basic?.paragraphs ??
-    wordingParagraphs({
-      rulesText: face.rulesText ?? '',
-      rulesParagraphs: face.rulesParagraphs,
-    });
+      wordingParagraphs({
+        rulesText: face.rulesText ?? '',
+        rulesParagraphs: face.rulesParagraphs,
+      }),
+  );
   const forcedLeft = face.rulesAlignment?.mode === 'left';
   const paragraphs: readonly RulesParagraph[] = forcedLeft
     ? visible.map((p) => (p.role === 'rules' ? { ...p, align: 'left' } : p))
     : visible;
   const reference =
     face.rulesAlignment?.mode === 'auto'
-      ? (face.rulesAlignment.reference ?? paragraphs)
+      ? legendsRulesParagraphs(face, face.rulesAlignment.reference ?? paragraphs)
       : paragraphs;
   // Oracle reminders can be much longer than the original printing. Fit the
   // complete text; retain the historical minimum for original comparisons.

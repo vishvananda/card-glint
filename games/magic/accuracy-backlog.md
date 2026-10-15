@@ -6,6 +6,21 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Legends text validation after symbol calibration
+
+The [72-card text proposal](fixtures/accuracy/legends-rules-proposal.json) improves
+reserved text-region scores from 39.24% to 61.57% (33 of 36 cards), but is **not
+adopted**. Character count alone selects the wrong printed face for Hazezon Tamar
+and Angus Mackenzie; Fallen Angel mixes alignment within a paragraph. Hazezon
+also uses discretionary hyphenation. Expand the source-text/style audit and use
+fresh reserved cards before adopting shared typography. These are text-region
+metrics on frozen frame-normalized scans, not whole-card accuracy.
+
+Seven scan-bound original-body corrections and the uncircled inline generic
+values are independent fixes. Modern symbol selection and Oracle wording remain
+separate. The fitting tool retains full before/proposal images and both cohorts,
+including every regression. Artist/legal text and power/toughness remain next.
+
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions

@@ -1,0 +1,1362 @@
+{
+  "schemaVersion": 1,
+  "status": "proposal-not-adopted",
+  "scope": "Ordinary Legends rules and flavor only. The candidate is not a runtime default or a whole-card compliance score.",
+  "method": "36 training cards; one shared profile frozen before scoring 36 reserved cards. Fixed frame-only normalized scans. Actual painter layers, replay parity checked; second full run reproduces all 72 scores exactly.",
+  "templateHash": "e249f275309ddf04db4ee99b7f578b08fd40bbd88fa7aeedb973e32d4955adc9",
+  "rendererSourceHash": "e679d97ed5482efbbe572780a76f0703637e33b7ed59400f2a43b58571c181d4",
+  "profile": {
+    "width": 344,
+    "small": 22.25,
+    "large": 27.5,
+    "dy": -2,
+    "leading": 1,
+    "tinySize": 15.5,
+    "tinyWidth": 344,
+    "tinyLeading": 1.2,
+    "tinyOffset": -14
+  },
+  "classification": {
+    "large": "At most 135 printed characters and five measured lines; mixed rules/flavor and keyword headings retain left rules where applicable.",
+    "dense": "Over 260 printed characters. REJECTED as a general rule: Hazezon Tamar and Angus Mackenzie demonstrate that length alone does not select the printed face."
+  },
+  "results": [
+    {
+      "cohort": "calibration",
+      "cards": 36,
+      "before": 0.37530088016454277,
+      "after": 0.6723838322639042,
+      "improved": 36,
+      "worstRegression": 0
+    },
+    {
+      "cohort": "validation",
+      "cards": 36,
+      "before": 0.39240354383282916,
+      "after": 0.6157086675213352,
+      "improved": 33,
+      "worstRegression": -0.16400976746048135
+    }
+  ],
+  "review": [
+    {
+      "name": "Hazezon Tamar",
+      "issue": "Incorrect small-face classification; printed discretionary hyphenation is also unsupported."
+    },
+    {
+      "name": "Angus Mackenzie",
+      "issue": "Incorrect regular-face classification despite a shorter passage."
+    },
+    {
+      "name": "Fallen Angel",
+      "issue": "Mixed alignment within a paragraph and different line breaks."
+    },
+    {
+      "name": "Rasputin Dreamweaver",
+      "issue": "Vertical placement and remaining tiny-face wrapping need review."
+    },
+    {
+      "name": "Cosmic Horror",
+      "issue": "Training example uses the small face despite falling below the length cutoff."
+    }
+  ],
+  "next": "Expand the original-text audit and font-style training cohort; freeze a new rule and evaluate fresh reserved cards before adopting typography. Keep artist/legal and power/toughness independent.",
+  "rows": [
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "normalizedScanHash": "c0af33a4cbb85d1b2628fafaa1a045041d8001736f10b62e48f656e6318c379e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.1,
+        "ty": -0.175
+      },
+      "inputHash": "a269f2dc4548e514b9509fdb7e167de1f223a35c98807e18dae82f2e0b269e4b",
+      "before": 0.40135173762342347,
+      "after": 0.7607120241008687,
+      "baselineHash": "55c79355eceb91c05676cdf42ed7d92eb2d34dd40efa1bc1875f9659dd0e3a15",
+      "candidateHash": "8d33e424b49c926bb7bc007044ceab8c9284e11b4e13c449941d106f27dae373"
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "normalizedScanHash": "68c02c10ffea7ebf934119e363b6182dc5cd4dddfa2da852f1f7024bb1ed00cf",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.175,
+        "ty": 0.225
+      },
+      "inputHash": "8d63f31ca16a22874b948c714bc883af848ddbcac751cd5b6eedf077a7cbb07d",
+      "before": 0.47077859882223105,
+      "after": 0.5926151557949404,
+      "baselineHash": "8bd89d75ced69bb142e12c7915f8eaf1500136375233cb95f852c037ad3fc4f0",
+      "candidateHash": "bf274c21084c15a35fc42be592044377d17f8520ab702d1180e8eb7bb78ae7a1"
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "normalizedScanHash": "bfa8e1691f830da647ef74fd39e371042c45314cebc28481952a396c48d22c8b",
+      "pose": {
+        "scale": 0.9999,
+        "tx": -0.075,
+        "ty": -0.125
+      },
+      "inputHash": "4888fb65ba548c8bf3b3e097045ac24e90a4e4cca4cf30c4892cbd28b5e2b734",
+      "before": 0.40647577782919264,
+      "after": 0.6412077426963786,
+      "baselineHash": "00968d6ba463ea2ea8f5c5b84d0982fd70826b7dc7577803a921bbe62ee491c8",
+      "candidateHash": "ba77552bbe301a1d7a2f08bd919c3f12d6ddebe533d17b74d8b2675c8a05ddb8"
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "normalizedScanHash": "1fa60ae6d83fc4bc47807d7c4b082e0b560ab7954fa7e3a2649500d029502c57",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "inputHash": "306cc84b7ba87bbcdd6cea27fe2225eb81a3b58df3289d2d12af690b8ee3fbea",
+      "before": 0.32240707897070586,
+      "after": 0.41501409628918634,
+      "baselineHash": "c524ac724321595c9df41aedaf08389f3cec2bc68cbcfbe7485498ecfe01f621",
+      "candidateHash": "079604f5a0e219e8e49956b02a08f5c993f71485de9b5471bd682ddb4089c7d0"
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "normalizedScanHash": "66c9a29c57172dafc9bd3fd6c4aba789ccca1da3ef0d3badca9a48be3f4d4d8e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "inputHash": "4a3291b983641f0a07419212ea32267a11a541a08b038a5b08439537d086fa26",
+      "before": 0.43219884144885745,
+      "after": 0.6433935317937395,
+      "baselineHash": "126b777ee3e53f2fb0276fd954fc68f8bd708413c141d10d562430fd1d50d013",
+      "candidateHash": "5845819c74a86c761297307c3bc1cedc0f45586168b784ae9d827f58af0a0c2d"
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "name": "Subdue",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "c49a105ae6be5da40c635b5d251417ea0c61d5f342de9473ab28cffdb267959c",
+      "normalizedScanHash": "d4dfb086a4b6d5b5262951b0349d7ee6979043ae6a180315c7faa85e593e757a",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.225,
+        "ty": 0.025000000000000022
+      },
+      "inputHash": "ae8e145f390ae9ce7da7384ae8b185a4e82e8ad543f5871c251470e3ef300d53",
+      "before": 0.40213264344246397,
+      "after": 0.44448151327479,
+      "baselineHash": "cc9da3550e5aabf5f48ede466690b130b191b1471713e9930d70ecfa45b21087",
+      "candidateHash": "44f43ffc4e6e37bd4e7ae8ccb32b0f28a0d6bc140fadea6f1ccd7b17955e9291"
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "normalizedScanHash": "1d16ebc8858f3b5575f028af2f7d44ee6a950c7acd8694d1a25708c411f6ef44",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.125,
+        "ty": 0.05000000000000002
+      },
+      "inputHash": "7d039831f70735a946f2a1098de9d0cffbaa89cd75c806ae413e96a15b203d1f",
+      "before": 0.481384467335689,
+      "after": 0.6267871049646138,
+      "baselineHash": "2833c651db7f58fa7e152244063fd5d906b62acabe1e5a43b8bd0c8222e40aa4",
+      "candidateHash": "b1175b5770aa3bea8712be33e660ef8fd23af6b8f37fe851583a36e94bdc96c7"
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "normalizedScanHash": "8375ef4e53508c50d2b81bb10b3024c2ebb765139e3ecdd39dde0e4e6c195ac9",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "inputHash": "3c5b57a4422ca1f63f062c90325056b544aadb9b7aded9b6ba1fed3fc1146890",
+      "before": 0.4906144421502816,
+      "after": 0.6434910329706749,
+      "baselineHash": "3c4ac33fbe89064f8102f33c5c2e5d8c934b861791b77a352401c9471134a336",
+      "candidateHash": "c411ce79f578e70c5bfdbd8cd86f81da169aeeeacc3a7bfacc2d13e8417c8762"
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "normalizedScanHash": "602e878f7e1ba46a305f76bf15dd96ec0c69455c56bb94dca233e9e4b08bad56",
+      "pose": {
+        "scale": 1.0004,
+        "tx": 0.30000000000000004,
+        "ty": -0.325
+      },
+      "inputHash": "9942a67deaa58d10c1c21d8a4a4a0a1e7721e1977f5f7c56a6850a6b59e55d92",
+      "before": 0.3638890540737374,
+      "after": 0.6704388957791676,
+      "baselineHash": "0b294b26544dd634c23b838869ab3d7b382ef01007d720e55cd851d7208c38be",
+      "candidateHash": "fc97433db9bc4f4f562bbe3dc32153e83bfdb57516d8bd98f4dc1c1ac63152e0"
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "pose": {
+        "scale": 1,
+        "tx": 0.1,
+        "ty": 0.225
+      },
+      "inputHash": "3f0c8483dc77a5b20089a8cc1aa83128986738a441e964bc48108a39443b6edd",
+      "before": 0.4715382634103431,
+      "after": 0.30752849594986176,
+      "baselineHash": "af5ac0dd37ad9d6806ae966891a83a195b67648bc39b0370fc44bed435aaf366",
+      "candidateHash": "0627c5b27f8a6de325e0f402c89a6108fefc5340a2f27255f57a126a3cc2a51a"
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "pose": {
+        "scale": 0.9995,
+        "tx": 0.025000000000000022,
+        "ty": 0.1
+      },
+      "inputHash": "90a61acb850ba678ad13bb62b7f13a45e4edd7196cb02bf1bca9034bf1724c9d",
+      "before": 0.3695347799781487,
+      "after": 0.7218827051923701,
+      "baselineHash": "c9101dc20bea9c5e7eb7932ca0e40735423d3d2ca52602d59a1b2d9b974e7259",
+      "candidateHash": "4f4e941bbd4d31c07babdb7839c390b88f2bbe315f1bffab23d0a745d5031bb7"
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "8986fb050a482efe6865d903d34778a7c9d6648433176d4313b9dd03c63210b6",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": 0.025000000000000022,
+        "ty": -0.25
+      },
+      "inputHash": "b4f84b03b13fd25499e41d32a00c96c6c9f60f84b5e881e31d3c3d1e28175e49",
+      "before": 0.39580073577660146,
+      "after": 0.7120813766265803,
+      "baselineHash": "049fea99eed34d4f2ec8c44c5eb07e3e2e6ac459bed7f227915fe8c81bfa4bfd",
+      "candidateHash": "d6743ef22847da7e960f4d45036d01cedfef47ae381f959f5744d19284c3824a"
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "58921ef65f0687c807e40c5f0152223de60f0d2d563a4e282b2086458d2bc7f4",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.1,
+        "ty": -0.19999999999999998
+      },
+      "inputHash": "be49e4bcb1396541ec04fe3df59120dfeccd5d7228c48d6d039d21b7e4f2da55",
+      "before": 0.3357953119835664,
+      "after": 0.8414433992723955,
+      "baselineHash": "ddf6add24205a8a9a44260b112c74c91646a00019a42808c2f84963e9cd05800",
+      "candidateHash": "050235d33b57754ce324f717e03cafce91a3e8560a16ede4f17c7f3d65f82bc9"
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.024999999999999994,
+        "ty": -0.125
+      },
+      "inputHash": "5fad6c1edf8df97f9403ddde42c0e85e3f04c33ccaa38c2d113790e3fdccd3a5",
+      "before": 0.3947595754071638,
+      "after": 0.6905779715280104,
+      "baselineHash": "b3439f206356f677bb4cdba19da668aba8f0b735627e1285c4e3d246a81cb069",
+      "candidateHash": "b41cd436b5eb06bbbc2418b5cf988f3e2218827bb8f3cf0c69055340e2f024c3"
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "92515b301313a04cdf9347f07b54e34be7e34766ec9bd88e8cfac708ae907023",
+      "pose": {
+        "scale": 1.001,
+        "tx": 0.07500000000000001,
+        "ty": -0.22499999999999998
+      },
+      "inputHash": "94765dc6d607964dfe9142f099156e39c1053489270c941b09e462ca0c0b9565",
+      "before": 0.30655743312224293,
+      "after": 0.5998562391669247,
+      "baselineHash": "6d106a9bab0ed9d01c087dbf4b70ade5fcfe5c346f198d45b66e3bc5e358b2d0",
+      "candidateHash": "ba107c8f7653eb85a17d558e99e7fc80fe605272ce8fd22f57fab375a6a4b8f5"
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "pose": {
+        "scale": 1.0016,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "inputHash": "d71a62847d9941ca7d2453dd034cecc9d2cd53e053c9a42a6cfc7dddd9cabbf4",
+      "before": 0.2860029910640134,
+      "after": 0.32296511491641433,
+      "baselineHash": "70463904f8aaaf89377636741149690185e81496f04181f92080c9a96dae9115",
+      "candidateHash": "7d107a1abe0ed275660d2e6f899348d3a76b1e7ca004dc9e29f079a31730894c"
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "fc29c71a105cf637f24d4573935800d4bb9703efd235e7845582a83ccda6fe3a",
+      "pose": {
+        "scale": 1.0007,
+        "tx": 0.025000000000000022,
+        "ty": -0.04999999999999999
+      },
+      "inputHash": "69d3782d2c356f020533d4c1e3bbc5e248d61976b431aaa0c1317dc1f785e6d3",
+      "before": 0.3256602010576483,
+      "after": 0.7227281088269757,
+      "baselineHash": "d4c6be4093932d3a2b72e41771b2fb2da2636c3cb3fd783d35994fbb2db164c6",
+      "candidateHash": "c3983858b8ce5e922870678610c525a909e07062b45c90aaebe48bb8fb10c123"
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "1b6b8f8fc5e50a3d61362c967e3fabf36896958192c9d46acb4118751af66fcb",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "inputHash": "427a1a3496abdf44783a9d53e86426ab783632f45895c844feea96b1378316a5",
+      "before": 0.34312820717746034,
+      "after": 0.6980979035214708,
+      "baselineHash": "1ca8bf5f816c5c5002bf149680bb5a77117b3d4e124888e2ea3cabccf8c6faba",
+      "candidateHash": "e45ddb37fc6fea387897627ed3eecb39bd9c80ac0955c587c1ce201404da3fcf"
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "bd03cfcd9cbcf6769aad1bd59fc7e61b4b9986e27c86361c4d691a9704d816c2",
+      "pose": {
+        "scale": 1.0003,
+        "tx": 0.1,
+        "ty": 0.125
+      },
+      "inputHash": "dd85635d4bd655b39affabad7bd7d70fd5f9e5b6168a0b9935d7df00b942bd63",
+      "before": 0.27207355508946307,
+      "after": 0.368445331234897,
+      "baselineHash": "a926fee2b85e6551118aa48b495f84d4a8c5fa2e8dd216bbaa2be2f1aa8fd962",
+      "candidateHash": "3ef23775d9af0a4cd71abd5b88d98a5b62344cf9d47e92cf972971d9824a196d"
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "5b35c56f2b0cbeb4f75ef855f6f19ce30b0492b5a642f18bc187d848e16f467f",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "inputHash": "b5b5e50d20fdf6033c83a73491715ed5c26150c94c0f7fa814225a0824b41376",
+      "before": 0.32792519890707095,
+      "after": 0.2955448370628351,
+      "baselineHash": "c0a3ec6e01ccef0917e66b65cad60de6a0d587e59e576bdd4b3287ae5b89b8b9",
+      "candidateHash": "41c00f67dbcf6a8b9fd61171d3117f1e61aaf90a24db9dbb0e4987be05adee33"
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "70e50af9443eb53a2e230161029c90ae403e7a164547fc7b01d4c8609274cc7e",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.04999999999999999,
+        "ty": -0.024999999999999994
+      },
+      "inputHash": "b1101225a28efb73d8a6c49911549b014cb4ae233e496f16590b593b9fc234f0",
+      "before": 0.40275971699219903,
+      "after": 0.7190424900037857,
+      "baselineHash": "f3b08bc1cc5c0a1665f8f08205865b38265d2d2617685e3da2a22a38dfaed247",
+      "candidateHash": "3c0751c4ae6b7355981cfa5d33dd2e72f6d3de177659914b89b9e33bb2a12e03"
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "d575fadbe6df402a3086b361cf092b57198ae6baa831ff490fc66e5435c4f79b",
+      "pose": {
+        "scale": 0.9978,
+        "tx": 0.2,
+        "ty": 0.4
+      },
+      "inputHash": "0355f51543ef7698a43ff0acdb5e77560045c6b376e31352999c3549e827a777",
+      "before": 0.31594351771938234,
+      "after": 0.7830567097958999,
+      "baselineHash": "5fd9b383d3630317fed5af659a04e4677ec5c800503e630c3493ef1d3abbd4ec",
+      "candidateHash": "d816efaa87092af6be1e8e573686ebc18674d39033840df2fe6d311276b1a116"
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "e2162da99ba4c83ae3a3343d4d37edb69239fbbcb9499738e9ac8db3d54bb98f",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": -0.075,
+        "ty": -0.075
+      },
+      "inputHash": "475b62c6ba48e39268c8b2e290d53836f789187e32756995a4d98e8f189c8f27",
+      "before": 0.3863451076789327,
+      "after": 0.604441961987632,
+      "baselineHash": "498224c124b089b9b157c64ef1fa2065bf56bf779280c16415b9da22db7f3ad5",
+      "candidateHash": "ec5c680a21644aadc5e86e07a76ffd648c51c61860e16f42b82056c74118a8d3"
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "211bb5d39b3f925dc0a7b0c24ed386b2ed5635e0512f2fc8645ffc5ce8cfa0bf",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "inputHash": "638c6ce7c416acca302de55a25c7b6a1eb752d731ff018d02c51c259b2ea2093",
+      "before": 0.432999842285813,
+      "after": 0.7158060342973592,
+      "baselineHash": "730bda1f32d7aea7127850f4ce3e6c4c84fe5dad8f7b97de0805c19af4e0b5d7",
+      "candidateHash": "98707f7f8936e00ea7cda871225691c60aedaf8559e28a47b3a1871eec718010"
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "name": "Voodoo Doll",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "b1cc09a2e9f971960df739b922ea67f88e3752b872e4275d15323120e28fc983",
+      "normalizedScanHash": "281eb4e978a372fc576928007e98fe9b7bc64f34ca2d3f5e7a2f69ad54b5d3dc",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.275,
+        "ty": 0.30000000000000004
+      },
+      "inputHash": "9f90342437557320cdc3287501922460503ed91a7429b30c459493b3c121e225",
+      "before": 0.49664537469529396,
+      "after": 0.5794889194916256,
+      "baselineHash": "6c92b156081d90718ac8d9224e2f86c1c0a72ea5601617f82c53297e742f3e7b",
+      "candidateHash": "3a90ec24bf2b0a91cb2dbacccd43932a634749eee9afa616e5996eed670dfb58"
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "name": "Horn of Deafening",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "bbd17757203ad6c560a46beca59282d00ffcd336da5693079fb4ba72aee5cbde",
+      "normalizedScanHash": "42c6b4d014de48c11bb56e1024f269fd8009068b3c3987f05584b45b57f4ac59",
+      "pose": {
+        "scale": 0.9998,
+        "tx": 0,
+        "ty": 0.1
+      },
+      "inputHash": "080a55ebf92db5a79f27b7452a5d405dc99813b92f80f5cfbd21dbd419d576ce",
+      "before": 0.23658222597829232,
+      "after": 0.49411741658066644,
+      "baselineHash": "0d42521c2ebc7fd5642e06dd73432a562e5d4857acd00755ebc4fc0a67183d04",
+      "candidateHash": "c7e0e69623b3b0c81ceb6af08750621b944b16ec0b3db987aff51af775d8588f"
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "name": "Blue Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "edaf2c9a8bc26159026c5a005097c033065a015957216f4a54d4b94cfb89767f",
+      "normalizedScanHash": "1afa64ed4bbc48b5cf0623ac2b9cb652d74aaed8a0c746c86da63914b05ecf00",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.30000000000000004,
+        "ty": -0.275
+      },
+      "inputHash": "1f7c06e73ffa070db0fd9b45c101c889a709a4c9a5e12daa62c06c20758f21a3",
+      "before": 0.3291896568219992,
+      "after": 0.6800256703726978,
+      "baselineHash": "f6bd9b4f353dbd122520c770fce5a80aadd78f8e0e06162f01880033111f0997",
+      "candidateHash": "669c68b2308cd9800011b14dc74a92dcf48bb8b2f285edf5fdacd2a924859990"
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "name": "White Mana Battery",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "2258a4cb2c414ffdf151f09a1c42e368bcae793d49dc737de47cb6425cbb2110",
+      "normalizedScanHash": "6ec6ad13b3ffa0c7b0ac8c40aeb4e80cb9a443f8354ab28f2298068d3c8d82c8",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "inputHash": "b35e432aeba974661c2ff8b3861e070718cb9a7c5d8d3061ec555f5146044cb7",
+      "before": 0.32476949694698903,
+      "after": 0.6537597990279167,
+      "baselineHash": "13e000777773c92926dee6a07fe6f05387bf82ca529773f3ffac4d75436259ef",
+      "candidateHash": "bb15737576411943700463b1009a7f1158f6daa4a36629484b735f406242c641"
+    },
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "name": "Red Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "54fad4eaf8b01ba76c859bcdf945ae42649926aa8b301b3ea5ae77515dcf8080",
+      "normalizedScanHash": "c3accdef6fccf4f6af960dd5fd8a427f22042cce2e552ef1b837e58b26be7679",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": -0.3,
+        "ty": 0.125
+      },
+      "inputHash": "cb313e4cf7ff7a5ba75cbfa36208f6197d6e3a1079a56d58e610fd911e5f33ec",
+      "before": 0.3353215555235499,
+      "after": 0.6730414821443634,
+      "baselineHash": "e91c5e43122f452c6d584c212b965056f08e688cac51883eb6b90d71bdfa0390",
+      "candidateHash": "ce8b5c948cc981a5ae7acf5253656780097d304b3729bfc4a23a18221e30c5f9"
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "name": "Marble Priest",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "037f8a417c4bd5f8f4bb9283f8c856bc04688002d95c145ee4a9ebcd909f0341",
+      "normalizedScanHash": "7c79c2249bcc3763e77d9af9c6a5e638c865d32691d65098e7cd97c00bd45a05",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.04999999999999999,
+        "ty": -0.3
+      },
+      "inputHash": "0ece7546a48b395e3c2995145e545b9bf80dbfcc75e2fb469d2377cca8f6da3b",
+      "before": 0.39905567136832376,
+      "after": 0.740439995051937,
+      "baselineHash": "f855397c1c48a5e57df1ca96cce520c8a1894b5ac4939cb5c32e85927a91898d",
+      "candidateHash": "1e5080120b96e5997cc209059716238bf8788a0e132028c93cd05c690c3873fc"
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "name": "Green Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "4f6a6040742778c3647460cfb78968b3d0b3efad6999f829f7fd69e5824ae0e0",
+      "normalizedScanHash": "279cadf5a054d79a1305ccffd80752373a740b8b6d008ac336e31a8f44a22f95",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.075,
+        "ty": -0.125
+      },
+      "inputHash": "3593a708c9a81e27838cd0174d4e493b059f35ab28770a05c73f9aa8633cfbde",
+      "before": 0.33851537641192264,
+      "after": 0.6681338449943877,
+      "baselineHash": "4ca5a04d55621c2c119514c11a2dd36436faebfc94c97ec28d3f557289a7c9ff",
+      "candidateHash": "f9598679500530f444f1309d672af46d7dac8b2e88a7dd73f40e2efa922a2499"
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "name": "Life Chisel",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "c11b2409a8bb88f3e1b0552027d77fd76a41cd1ab14281e885858c19be28c9a1",
+      "normalizedScanHash": "b0cc501f96a57501899a598ae5d3515fb8885f99c5c2b7d845ea74c0e96fa356",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.175,
+        "ty": 0.07500000000000001
+      },
+      "inputHash": "aaea963e349c063e4cd78bdfba350cca157cd457ae5b4273c9f5f4d7d0474d96",
+      "before": 0.34608453463645933,
+      "after": 0.7937011442565959,
+      "baselineHash": "c46deb9fc513d85224bbd98614c59a417e62bb3bb90b7ae5c98cac2906b2e2bb",
+      "candidateHash": "7bb8a60266102481d77987968c10e62e9a1c0bf7126ec529f394a6a6f1c84d8b"
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "name": "Backfire",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "08bb2c31bddfd41b55bc2803c900c26f21a9e25373fc8c70a4c7cd433dc1e3f6",
+      "normalizedScanHash": "a2fbcb6d481f2ff90084a94f435e5c10a9997257628e33d8f6a0118b9ca30747",
+      "pose": {
+        "scale": 0.9998,
+        "tx": -0.19999999999999998,
+        "ty": 0.225
+      },
+      "inputHash": "472d58c5fa387941b48dc9b46f0ae2887b48641834c9938556a51beb3ba36a0b",
+      "before": 0.25110446311364115,
+      "after": 0.7287581907256622,
+      "baselineHash": "f403c4b48f6224572708c678a2d673607084efb4fb9de07c28d05be19e8dd340",
+      "candidateHash": "bc67ea2ae8299242d5fc39962c94d560a6ed5fea1286fb08c3c6811c5e6191ea"
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "normalizedScanHash": "96e76202afeb47e88cb085719ce01cd5be7c04f15be95327cfbac7f26e2b2a65",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": -0.04999999999999999
+      },
+      "inputHash": "8fd77544f62765b40416a7493b66be188c2e610ec1f07f02caaf0b246bbac856",
+      "before": 0.4739650611494849,
+      "after": 0.5934725165695429,
+      "baselineHash": "1d9ab87e99b74dcf5a177036fd24cf21750d6dc3d6a986ed3e06df9fff88ccee",
+      "candidateHash": "50bd554d29963abb87c62b33de0a4760cff764cfc4f96b61c5c41e2061aca353"
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "name": "Sea Kings' Blessing",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "9cd0dd93fc7aa6f57542480ed72f55ffba9e96b135fb02c929ff8346b36af09a",
+      "normalizedScanHash": "dd7fe484d28ecbb08c4b23b8669da1ffbd83ed80215ec0488f2ba835e988a8e8",
+      "pose": {
+        "scale": 1.0008,
+        "tx": 0.2,
+        "ty": -0.44999999999999996
+      },
+      "inputHash": "6168dc71c885883cf86a0477fa9bc7d65dc0032747187091dd85012e340d7b2f",
+      "before": 0.28081045320374864,
+      "after": 0.5324384611317866,
+      "baselineHash": "8329aa2d3f046f1e921aa2f37302284c1426732b546bce091bc2e48253bcccb3",
+      "candidateHash": "49cc043497ab9592f64a8253d0ce5f6b02d9883eb1d6feda44b4ac322f4fcbc2"
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "name": "Venarian Gold",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "2017fdb5742af637b0fc576f0a7ca148910179c886c25db84fc908cd970cf168",
+      "normalizedScanHash": "71c0ed1837d46f001a688f4784a0846c8c3085ddfde650819117570396b734c2",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.875,
+        "ty": 0.325
+      },
+      "inputHash": "14bacee8d543c4fd21c5d8addada022ccb1fff46ffd76bc8da374b1fd0fc3c02",
+      "before": 0.2645833924954945,
+      "after": 0.5858812191616718,
+      "baselineHash": "1bdf926bedbb0adebbb3c6bc756703987b2f9e4de838cd08680fad01c67986d7",
+      "candidateHash": "3dd65760405b3fadce9df6bf296a25651c04852645fe03b71368fc196ab309ce"
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "name": "Teleport",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "9d1f6742b487aba6e6de2ac0d9a8c0521df6a0298428f7a20d7d5471accb7187",
+      "normalizedScanHash": "b819f1145bc79d437e586fef646a0983cb089fab6e9e59495bf72738e73df63b",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.275,
+        "ty": -0.19999999999999998
+      },
+      "inputHash": "ed60838d23cd4f387b413f90ef30e0a69d1efb7d7b50cd2ae3654b0e7f4282cd",
+      "before": 0.2240078314983877,
+      "after": 0.6411206316741432,
+      "baselineHash": "3fc95179d4056f0ce2973d82d38d2cba82ee3d78fde469098885d9dc29239081",
+      "candidateHash": "080353159265d02e722f5735ad2f164708e06d34262052c5e6ffd26e8bc6f567"
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "normalizedScanHash": "c1d66d2d9452da7ea75430f44e3891a8622445194ad4502439eb4dd172ce2310",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.19999999999999998,
+        "ty": -0.075
+      },
+      "inputHash": "8627daa9cc3c50d6a32e769ab210c8c9b0d0f1b2b4ac59f4e0f3ee48fb922638",
+      "before": 0.27605469984759845,
+      "after": 0.5615826016708361,
+      "baselineHash": "5440059b20ae22b5903ea95fc1a9b62348ef2d98a4c069f7799efbcb64e128f5",
+      "candidateHash": "29ebc3a28dc910494cb38b83887f2ea1ffb76d9a1dd6ea66986ea37069e62831"
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "name": "Recall",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "02bd6fb7ccc9056cd6768f7c76239e5af988a4f5455102a791e99269477e7a78",
+      "normalizedScanHash": "b52cf152884c12e67b627a0b0b0cf73c1ab3379171a1c8df6049365907793c97",
+      "pose": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": -0.175
+      },
+      "inputHash": "41dd62f676b8c0e4491ab948f84574e4e507f1b20c450cd7c7ce2b8ec643a559",
+      "before": 0.24959998851598134,
+      "after": 0.5920599581313629,
+      "baselineHash": "cc4d0853c5d1386321c608dd914772ca8fb0608f5404acae231917b84c69c298",
+      "candidateHash": "f6a892dfc9a2021ceb295653d76b061ca759b3e7fd98fcb2475ca6d8ff10a6f9"
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "name": "Energy Tap",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "7d66c09ec1d9796e6334c27312dcee7ff962aaf027effc7a840714d8316c1a98",
+      "normalizedScanHash": "9e277bee11634ae7fc743980ec3342194f70ca71499c40c147c0c068b19fd57d",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.375,
+        "ty": -0.3
+      },
+      "inputHash": "b980a1c2cc608842f17f6c9a74b0ae8a0d582eeb1aea605bb9901df9bb94bef9",
+      "before": 0.23121567751266556,
+      "after": 0.5410836500826727,
+      "baselineHash": "b8d3f3caaf19c6178c1d972994bfdad53eef0024460d152f4295b4ecd0b052e1",
+      "candidateHash": "7a68289987d05ed61baa64c60fb0c90a1b6102a4b663ae7c1770d61912458035"
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "normalizedScanHash": "9042d7e3645210994a0ff1ed262cfab3baa4159904072e4790723e4d521e8c34",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.2,
+        "ty": -0.19999999999999998
+      },
+      "inputHash": "609f130439f7ae30a90a0e49c9e4ffad9e03add771607ea3a84d7a3c1628b600",
+      "before": 0.27161581049324846,
+      "after": 0.6415075108694386,
+      "baselineHash": "b6996ce540cfa1f71aa878d142d398be97c5e6194c56a2fe998622ab8646ff9f",
+      "candidateHash": "a5cdc955d403831f52e4495d67487fc08dd39d2c1248b1d7b25ebdb6df6958b9"
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "name": "Crimson Kobolds",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "50fa83ab665267ca144aaefada20bd10374715881a0debfbf489e635d71d4ec1",
+      "normalizedScanHash": "97c627f53332f5b4e54e394dd4a01cae3cf36c0c9a5f469183adf469e059ad15",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.1,
+        "ty": -0.5
+      },
+      "inputHash": "7b13bbfad10a8efebeee4e3c18552f5d7fd7299e76b2dc64c91fbae0be08bac2",
+      "before": 0.3443012038587552,
+      "after": 0.5820348666045158,
+      "baselineHash": "6aef0401a86ea85ac618a93bdcbf4cfade652b1d66fc8e2e40c4830af9b03cca",
+      "candidateHash": "b2ad54b0e051ac8f1c01a48c59c6f2a6ad992eb96895d703ba44fe708218054d"
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "normalizedScanHash": "f7d6bb552b5043b2871ab400a02d693e00e4e07db89223954c95976c728d0302",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.25,
+        "ty": 0.125
+      },
+      "inputHash": "dccb8e270ab79abaea626d6cd3901315460d10445541a1ee3bfcddd9fe6b62cd",
+      "before": 0.4813462828100057,
+      "after": 0.6119023986237783,
+      "baselineHash": "c33f7ef128900d19550abe4056e6dddced3898246ade5f3ad432cf06a5475ca1",
+      "candidateHash": "1bea8a2fc569504a7823b2bbe797540dedbebe908ae93f227a64972292d8098a"
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "normalizedScanHash": "daf28a560abdf4218e91dab4855cca8b6dbd52933b22844f0bc19372d608e910",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.1,
+        "ty": 0.225
+      },
+      "inputHash": "7db5ee2a2268a6babe7b420c62d475e39461273c081e152a60836cb63482adb6",
+      "before": 0.30331046590728244,
+      "after": 0.6798046478570137,
+      "baselineHash": "8a1c529e146ce129f7601f574ba7a02d46188cd3e2e85d8e68aafa8941d89abd",
+      "candidateHash": "13e0ce63a605b9315e5dcfa1a00db44742c2853523ab7a7c9a2a20339bf07881"
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "normalizedScanHash": "cc854ec66d96e274b990bbd489c5f61e317d507fecae2c8cef48db700748a84a",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": 0.1
+      },
+      "inputHash": "32359b260029908f12ba427d22acc0820f8b4747f762e5710b59b7cd4befd1f6",
+      "before": 0.41055302730482834,
+      "after": 0.5669266023547483,
+      "baselineHash": "699675325a201b6ae07fd34ee925baef11ae4d44473f45e03b18592daa99eace",
+      "candidateHash": "3046f7468ec09ff5691c4859eb028222ea33c62b6ff7866adeacdbbd051eaa2d"
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "name": "Dwarven Song",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "6d21130e5faf7ac195544c33a2cc792a48216074cf91d9515034f27e5405e611",
+      "normalizedScanHash": "cdbd9865d6d3cedc5eecd1f3d23fb836c5db32356dc788303bcd3d74b3768afc",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0,
+        "ty": 0.225
+      },
+      "inputHash": "4d10fc891341770e50fcbddc4d9600c3e11867122ff96bc72c6df7d92e39a63b",
+      "before": 0.31887224098918093,
+      "after": 0.5856845084802732,
+      "baselineHash": "ba30b15de9328f2eca6f7cac707c2983ca3fbf25c40d86f7059d5ffba91ccc00",
+      "candidateHash": "2be22ddff1e4b78afaa115794ae59a5d03c62a32e00388b98e0f94785253a0e0"
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "normalizedScanHash": "289bb402656d68add2dc4f34782c65267f857d23ab1e00e6644da9a6b8dbf3d4",
+      "pose": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": 0.30000000000000004
+      },
+      "inputHash": "9ac122df93fe96b95d4e06a496422c3daa135d921ed6209bd6c6d85f52474d8f",
+      "before": 0.421124607815781,
+      "after": 0.5276398036282324,
+      "baselineHash": "8b6f06be4b09bb1c87874959fa27d5e6060abf73ee72a0ef927915dbdcd8f8ea",
+      "candidateHash": "1e57f02642915e033172c96bf8d017b0daf8f602c4b2590c99d27403d64661fd"
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "normalizedScanHash": "682767ec3d3a973169e93c4245b124c71e2ee80a16498a886c6804e1a0769015",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0.025000000000000022,
+        "ty": 0.525
+      },
+      "inputHash": "021c7c2cbd907b0b5bdf3ef2b0f0f143035638aa6092b704958b57b3c7992baf",
+      "before": 0.41894156611204975,
+      "after": 0.6117950363895264,
+      "baselineHash": "de192c95640d98cb2cf940176bb57581587e4c279fa2fe0ccf911dff672d7208",
+      "candidateHash": "8fa0277ad340f9c5e62a89cea0d4b03548e452936ffc380a5f23a96136f17862"
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "normalizedScanHash": "65f8518995838480cc468b882e5c516d7f92a237a62aa4d108b6ac1c98d66530",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.125,
+        "ty": -0.075
+      },
+      "inputHash": "8db9057a7dafaca2e31888a9c8267c6cdedc4ae8bd7790b8919b93ccf74c4e06",
+      "before": 0.4231050122536977,
+      "after": 0.7425213780122586,
+      "baselineHash": "22980cd510a5fd2b9c6e85e91baf7a3640e8dc452da770cd29b82697aa8248be",
+      "candidateHash": "3f072d6cc3992ac3e6e5feddb01d852258706d9ccc4236bebd7be88a44d9f27f"
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "normalizedScanHash": "8f4b07b45e445dfa032976994a42b42dfae9d289192051d6234db5f87aa75db0",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.075
+      },
+      "inputHash": "a85603220dd4341c5487b50060a83f0769513b2432a4a389bf7a545ff065b0f7",
+      "before": 0.36516431333668065,
+      "after": 0.3459429533205463,
+      "baselineHash": "9c0583eb97820c8f2218ebfaad56a10fdee89b9cc72a86a5357235de47efd909",
+      "candidateHash": "4537c17f6c0d3d4d470cb7e7a013b6824d60a472ecc3dcceb7a0372285f79f13"
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "normalizedScanHash": "fe79c422493130071d806ef2762e38e9b2535a25d7dd3fcce90863ddd0261ce4",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.45,
+        "ty": 0.30000000000000004
+      },
+      "inputHash": "47e13f3f656830281e6e2d556bbf4b2cda029e09a7d3829f916fea477f68b53b",
+      "before": 0.34354359770824233,
+      "after": 0.7043469322143867,
+      "baselineHash": "51cf3ad2bbdb74061c014b3b9670e528fb814261fe478ddc84d53647abbb215e",
+      "candidateHash": "5e5cdbb472ec989acfd9da925ef1ed1dab7469767651b845792bdd4542042291"
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "name": "Imprison",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "3fed4c9de5836a69a9539619a9d4a0ac7a9a159b49daf40f07eab2aca8077d38",
+      "normalizedScanHash": "c8d72378564e211bfc58d340c851dec68de2fecd7a780661433b1864cab94aa6",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "inputHash": "63643573c3544eaf5911a2696117d19068da7c1326568782e109a3e2df4167c0",
+      "before": 0.3677987937764333,
+      "after": 0.6862868281516471,
+      "baselineHash": "419b2e931042799e5e57f4bdb3fc5e7ab621c257dcbaf346003e32081181f186",
+      "candidateHash": "2225be3aa47b7e2db73768a28ba3160e5dba7628bee129e37240b953bb36cfd5"
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "normalizedScanHash": "eda398a14c0ad67d8841f6df41381a5afe541ff0013d02b594feb2d56fef2ac8",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.15,
+        "ty": 0.05000000000000002
+      },
+      "inputHash": "7bc571b1b01975dd53cffda94ec3fdabf61eb7d641bb6906ec698999fe106d9e",
+      "before": 0.3733755446040345,
+      "after": 0.695629366903077,
+      "baselineHash": "d16f9f8e352315ef801a4368d7541e12fab4e9c990ccecbd6cf4397c2190b460",
+      "candidateHash": "2448774e8c34471bc5aa3137a64c09308b9e36e621495d5020dee32bf5a34262"
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "normalizedScanHash": "8da58f715c5b4999c7562a6c09117d6cb92551bb0b4abc876f4e7ba5ac8a9eb3",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.04999999999999999,
+        "ty": 0.55
+      },
+      "inputHash": "7b9ae9aa447af0bb5be4744ade2862f2d73f0d8975eff73f63cf284e0e398bcc",
+      "before": 0.4641428500057588,
+      "after": 0.7923986424313602,
+      "baselineHash": "c2cb685e8afc2df169096ea605cbb03635e2fd3e1693b2ee14213f60a564b4d7",
+      "candidateHash": "f7046d7c3098ee51367c2b00670f0d5fb68f5c79f031820726ff252993336c28"
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "normalizedScanHash": "a2bdfffd0e3a258a781ef471437b924d37a58f2cd83176fe2d29486197d9a843",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": 0.1
+      },
+      "inputHash": "43c38c972a58e206156d7832a49c2f198e4eb68e084e8af792cbf854bb1c21b8",
+      "before": 0.32540193134822193,
+      "after": 0.3741867989134019,
+      "baselineHash": "8502aa5d7a7a820919554ce4684edf93ae684b240a82c0f4dd61a76c2cd77675",
+      "candidateHash": "dac35f289ba7d3b67b300f0179927bc9bfbe85d4b98d5ef71a9db09621bfbc79"
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "normalizedScanHash": "9af93997eb691d94fe0716d08ecb2a46ce72717406b53823a3ad4c6acc720bf1",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.22499999999999998,
+        "ty": -0.19999999999999998
+      },
+      "inputHash": "6855fc2ac3071389c47e5a518280d66d931df4305a030180c777503edd3f3d0f",
+      "before": 0.3475377629020886,
+      "after": 0.704760775516562,
+      "baselineHash": "abef79f649ecc71f799dabc29adba29077765dbe39514d5613e2ff645e34ec32",
+      "candidateHash": "62a9a2ddc2025e97cd89309d9cb816614ef76581fd4863b7337eef8bd02546ac"
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "normalizedScanHash": "399642a911d44b0830d432e27dbdd85bd2710252ef6ef803112dc48692efa4b5",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.175,
+        "ty": -0.25
+      },
+      "inputHash": "148b7ae489794e3dd3c3fe14ce3d841b1ebe39174a65e720aa7bcca958af3b80",
+      "before": 0.648187388817907,
+      "after": 0.856624196649487,
+      "baselineHash": "39429334c75b1fde288893c4d427bae5e5cd55237bb594c65a90a100a84cbc35",
+      "candidateHash": "dfd624d2a6570736b5129251be296de56e9f7c9896c767bb1942eeb4fac7f8fa"
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "name": "Visions",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "50762b5cb153942059bb0e4c7649d2195ada50f6715dd0486924eab548b30a30",
+      "normalizedScanHash": "55e279f2d67fc75136c32ce5140f5e119a729e6790e7de1ac3900d9d60b72734",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.275,
+        "ty": 0.125
+      },
+      "inputHash": "86d589d5c774dab0f61ce25cf0dd310be9a329cbd120a9c2e301f8f21575ad86",
+      "before": 0.5687554802194122,
+      "after": 0.6097909387251842,
+      "baselineHash": "421b1075cb89b54f1be17ee40211d28d26fcfcb3b08a61980daa8de95aebe32a",
+      "candidateHash": "86de714969f6c2b09cd456327926cdc144b0de133e1f7d9c08e8deb4e0e18dca"
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "normalizedScanHash": "1e9de8798380c969cc2b7934d3ccbcedc583f6e6b6a3145c6815bb496eaa37a1",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": -0.024999999999999994,
+        "ty": 0.15
+      },
+      "inputHash": "07f999e281bc8aef0d02090f51920529a4959115aceff342c93cf4a93f64354f",
+      "before": 0.553891695916599,
+      "after": 0.7250142903163672,
+      "baselineHash": "de0d39653a080bada52365c9d6f819f896956274d1723ca25635fc6e9f5d4c5b",
+      "candidateHash": "942ff8081c129fee7f9c3e3299cb636bf4ffa64a2bc7340f4627ca611581aff0"
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "normalizedScanHash": "bb444248a8539283806f49e81a616e78cb766d61b3d58d034b8beac111bc78f0",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": -0.175,
+        "ty": 0.25
+      },
+      "inputHash": "08adb4a9f87601fd68c617278232ee8e4ff6050aa18bcf5cb4b9278c82564dfc",
+      "before": 0.6046677833291082,
+      "after": 0.7491546175084628,
+      "baselineHash": "d7f148778bd161990f50a3e5c353e4cae717d67acbb2c00ec27a1fd03b2e3835",
+      "candidateHash": "d2228d7c72dd3754ec3230ba8d501ddadc4eb69d1305c687542db00e0f918d58"
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "normalizedScanHash": "4fce5b8585ae6fd27ca95fc2838949e9990c2b6e5c1ee2ae6705d9cc1cb87f1a",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.05000000000000002,
+        "ty": -0.85
+      },
+      "inputHash": "1c333c753b5a66cf6706aa4c53031bf3bef3022b450cbd75b7081539a9baf15b",
+      "before": 0.43886679024373704,
+      "after": 0.7479282831522854,
+      "baselineHash": "423319e074773a6021ae49460467140d8d202c1e4fe9cdb94f4083cf5ee9a778",
+      "candidateHash": "638f6f62019eebab03f69c92f5a14c9a03ebcb7d358368b310e41d795a52014f"
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "normalizedScanHash": "e18de6831fbc94e94eeb9e9b5c475516bfeba93c68758cf6b2bc1677658a1ab3",
+      "pose": {
+        "scale": 1.0007,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "inputHash": "6139c71853af02f24f5c7b3493b90981845ea1afcc52ad0d43610b844635f1e4",
+      "before": 0.6320328156730063,
+      "after": 0.8114670235405607,
+      "baselineHash": "51149cd05e084ad52f0f1e300fad3abd38249a31df23b8c2b96e79dbdb424937",
+      "candidateHash": "35e564fed0ec791b2416a7406711faa89054e970c60df83cd0f2fc1495b5554f"
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "normalizedScanHash": "0b5009c269a788d365566d0c4935457d785b963bebccbdbf7b3c4750b9ea2b54",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.22499999999999998,
+        "ty": -1
+      },
+      "inputHash": "3708fcd96ebb0bb50f20de5d9ce065493abf8d9d9f9f275c4c07f90cee1601e9",
+      "before": 0.4961859452679782,
+      "after": 0.7783777207276182,
+      "baselineHash": "85ee74fe8ce9de1e644a2691c06bd1e567fc646eccd06a5a7d92f62a2ecef826",
+      "candidateHash": "03021c13bf34aa7f951795d629914735e223e66c66e919c1c9a5f88644eb476e"
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "normalizedScanHash": "06d3a0a356ab2120549853ee4b1cb061dc835ead89fcc293b51239c5a8bdda0f",
+      "pose": {
+        "scale": 1.001,
+        "tx": 0.25,
+        "ty": -0.875
+      },
+      "inputHash": "624028b56c7734b14a4886f13d93ba5e46c4f4fce10354fa1d8920218ccbba94",
+      "before": 0.6005471681579079,
+      "after": 0.7700294331873879,
+      "baselineHash": "8ff7e86805a7b8b70912196e17ab5f1726040180caffdb406bac5210ffdba682",
+      "candidateHash": "a0139f2c7f77066e4dec75a7da5ed35e8c1ed7931f44f06dd344807793e96b89"
+    },
+    {
+      "id": "314fd1d7-4bd8-4d95-b7c2-1aa6660ab88a",
+      "name": "Mountain Stronghold",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "29df3cbd554decb6049d51863b04d026f311f137b884f19b82e82923a48ed761",
+      "normalizedScanHash": "b24c9b440fc7382fe8c0e657e7b4aaed2b607a8152a56939819d0c45d45a7851",
+      "pose": {
+        "scale": 0.9974000000000001,
+        "tx": 0.4,
+        "ty": 0.925
+      },
+      "inputHash": "799612814b508900672c9ef91e74b35a569ed3e847c6310d835723c8d294d991",
+      "before": 0.336739186701279,
+      "after": 0.820091519290227,
+      "baselineHash": "6a13633cd7e30cebc476e9f9f368d60800d20ba07a58dc623f6e6fe926219ad6",
+      "candidateHash": "f28c7b7003fbed9b478a17d4bfa154fc6edb50a693b3eba8915d501990e1d37b"
+    },
+    {
+      "id": "31d2422a-bb7d-4cdd-9aac-e5a936a4be3b",
+      "name": "Karakas",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "5c1ae5bd88f323362504a766f0b7be67954294d5e86ef04aa72e610dd3b508e4",
+      "normalizedScanHash": "f22bbfa6d160335121d000ed1ea9987caa2f0e2aecdfab88b2d007c608ddf28b",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0,
+        "ty": -0.25
+      },
+      "inputHash": "b0227b47cdf4256314f05546bdafb807fc042e9851c06ced1aaef19b17dc0313",
+      "before": 0.3809453906594265,
+      "after": 0.67947609335395,
+      "baselineHash": "eec34a1f838ad89c0ee7c55c4113e11768c0aab937a58499c5420e1780ad37b3",
+      "candidateHash": "649876c70b063ac308215099cfdc2d9098daae23bc0cb8d5dc3636eb1019f950"
+    },
+    {
+      "id": "32865e68-5842-4f17-b2ea-4ffa743b511f",
+      "name": "Adventurers' Guildhouse",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "756c972fa9e29b9c084a5f689d31108ee74fc421576db106d56f09076e7bc90a",
+      "normalizedScanHash": "35c97c3f6a52619d63659f93eee5336690e8ec84750862dc6799d61bf634f6fa",
+      "pose": {
+        "scale": 1.0008,
+        "tx": 0.275,
+        "ty": -0.575
+      },
+      "inputHash": "c9b7b33c6926bb9d102a97f573b57c6fb7370dab0d8f981c60745d8fa9c6f0f3",
+      "before": 0.3293263010974249,
+      "after": 0.7652167829320315,
+      "baselineHash": "cee4b43a7a58c5e9eebb7ab964adf051821b58263123b7b06766cacb6985154a",
+      "candidateHash": "75f39052d4d103c7d6f05f615a4cefab475cf19cceec584cebc95ecc17b78ff6"
+    },
+    {
+      "id": "64bc9b1d-5818-4d9e-b771-e49af4ff9a5c",
+      "name": "The Tabernacle at Pendrell Vale",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "b2315ac524b589ff4470f91f8653b2d15d32355591d431df3837f9b9a8a6e61e",
+      "normalizedScanHash": "a0aa95009994b626b242bc39d657724d2deed128e8abf941c51ff7f85801479d",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.025000000000000022,
+        "ty": 0.30000000000000004
+      },
+      "inputHash": "85b598b4a4e56cc72b622017c4f7927d3d485133e907b25d21364a4d3d5d1e35",
+      "before": 0.34029924682789425,
+      "after": 0.7204805060082069,
+      "baselineHash": "3e82afdbfb1aef063241e6b1ee8dafee34d334a86e3e63772a2ba6166cb003d7",
+      "candidateHash": "d2d277a3fbd49887c65e6ec80d3c8cd1ce7c71907eb397c8c8efeee245cfdbff"
+    },
+    {
+      "id": "66641d88-b3f0-4bcd-8d2d-29aa2de69e30",
+      "name": "Seafarer's Quay",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "ec044cee2971741feb29fe57ee42142e56bebc90004a01aabf91a05ffe7cc2bf",
+      "normalizedScanHash": "39eace9c45625fb3df9c6cec3f1db5ca586fc6f07ec4971d00c2749c962b222e",
+      "pose": {
+        "scale": 1.0007,
+        "tx": -0.024999999999999994,
+        "ty": -0.19999999999999998
+      },
+      "inputHash": "f2a757d5a517736fc9e95dde95481f1b8b0515a63afbc66073ac88e31bfa2f1e",
+      "before": 0.3359706598755724,
+      "after": 0.8322533651272149,
+      "baselineHash": "c3571e3b5f96810e295755d6e1fef911dafe0f590a5b50bb53a2c3e141c8f481",
+      "candidateHash": "2c7748510ff8abcec98a1d32023d06513612c7bdb1116f1344ad832746672e98"
+    },
+    {
+      "id": "79427109-c1f3-476d-a029-0049217237b5",
+      "name": "Pendelhaven",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "7dd6e9d2464cdf46d0b35e2ef4d1bd99df488fa87d7d0eeb01870c65b2ec041c",
+      "normalizedScanHash": "c509fb36f32bd982aaf09d6e5e74f277b18d82668582d92c1705ec542207c696",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": -0.125
+      },
+      "inputHash": "eb7aa703b4b0722fa8cf024a7ab7b48b839a58cd926e583dd0a683c02e46be4c",
+      "before": 0.4128620966571313,
+      "after": 0.5179948062117088,
+      "baselineHash": "2da867c2692b5bec876f57cfd1a946867fbbcf58bbbf43e8425f98251046db97",
+      "candidateHash": "dc29ffa8a8a648387883d4b94b55b1f45e27e1150b6fdf1709b047efeb3d0c71"
+    },
+    {
+      "id": "9de534ff-fb48-4692-bd0f-dd237ca28502",
+      "name": "Unholy Citadel",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "b2f066a665e41f7b100691ecf448a4787a0727590770864ee1275da32ab7007a",
+      "normalizedScanHash": "01d5cdea3eec700bd9fbc9a2f31f0d5cd73645cf0243c65ecde7117899f183de",
+      "pose": {
+        "scale": 1.0008,
+        "tx": -0.1,
+        "ty": -0.325
+      },
+      "inputHash": "34ce85d90fbbcce2d89e85c9e14d00dd27a4d5629f726ff0f57cb7530aa2a34e",
+      "before": 0.33237721966735756,
+      "after": 0.8002043181002151,
+      "baselineHash": "306f4e131a040d7529385a5838580adf8f14800e0fd8ea08303e08cb55b29e6c",
+      "candidateHash": "116437636628482224c730d8bdd5fb2c2b83c49bd0ddc83a42e1bcffbd2edcd4"
+    },
+    {
+      "id": "d0a261d0-7678-46f7-9285-d541486567d8",
+      "name": "Urborg",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "1dad94261fb5e400c5bfac5547933235394e3f75d3458cec49a0801f183be3d2",
+      "normalizedScanHash": "def546caee78ab9a4c833e5cc3324186b49e1d98d90b259374eb787a1353fc38",
+      "pose": {
+        "scale": 0.9982000000000001,
+        "tx": -0.575,
+        "ty": 0.775
+      },
+      "inputHash": "9f4c41ebb6e3a11caf2fa6c1bb951a07c57d49988eaa16e711a21de298d8ec37",
+      "before": 0.45000654450089217,
+      "after": 0.7331117690512967,
+      "baselineHash": "c3e6751c22531f6cbb0f96db4e9c552787272e41fe8728e9b84b826947a03b1e",
+      "candidateHash": "7bf584bfe5549645d9a43f70178ebcb2c91d6cc3df4f7c3f6180a3ea03903d5c"
+    }
+  ]
+}

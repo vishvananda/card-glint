@@ -30,6 +30,8 @@ export interface RulesTypography {
   flavorAttribution?: 'right';
   flavorSeparator?: boolean;
   balanceLines?: boolean;
+  /** Balance centered passages while keeping adjacent left-aligned rules greedy. */
+  balanceCenteredOnly?: boolean;
   /** Optical shift from vertical centering, constrained to the text box. */
   centerOffset?: number;
 }
@@ -78,7 +80,8 @@ export function layoutRules(
           paragraph.runs,
           bounds.width,
           paragraphSize,
-          typography.balanceLines,
+          typography.balanceLines &&
+            (!typography.balanceCenteredOnly || paragraph.align === 'center'),
         );
         // Avoid a short orphan line in long flavor passages when a small size
         // reduction can remove it. Two-line quotations keep their intended cadence.
@@ -98,7 +101,8 @@ export function layoutRules(
               paragraph.runs,
               bounds.width,
               trialSize,
-              typography.balanceLines,
+              typography.balanceLines &&
+                (!typography.balanceCenteredOnly || paragraph.align === 'center'),
             );
             if (trial.length < rows.length) {
               paragraphSize = trialSize;
