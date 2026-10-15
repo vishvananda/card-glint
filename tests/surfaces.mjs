@@ -194,7 +194,7 @@ try {
   // Verify the showcase really applies pointer tilt and hands back to idle motion.
   await page.evaluate(() => window.lab.pause(false));
   const rect = await page.locator('#scene').boundingBox();
-  await page.mouse.move(rect.x + rect.width * 0.26, rect.y + rect.height * 0.34);
+  await page.mouse.move(rect.x + rect.width * 0.125, rect.y + rect.height * 0.34);
   await page.waitForTimeout(350);
   const hover = await page.evaluate(() => ({
     state: window.lab.motionState(),
