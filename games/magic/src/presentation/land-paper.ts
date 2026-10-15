@@ -83,3 +83,24 @@ export function paintLandFrame(
     context.restore();
   }
 }
+
+/** The lower paper bevel meets the white highlight on the ordinary stamp
+ * surround. Paint after the land tint/filter so it stays white. The stamp is
+ * composited later and masks the straight line inside its arched mount. */
+export function paintLandPaperHighlight(
+  context: CanvasRenderingContext2D,
+  profile: CardProfile,
+  inset: number,
+) {
+  if (!profile.land) return;
+  context.save();
+  context.shadowColor = 'transparent';
+  const edge = context.createLinearGradient(0, 625.75, 0, 628.25);
+  edge.addColorStop(0, '#ffffff00');
+  edge.addColorStop(0.3, '#ffffffb0');
+  edge.addColorStop(0.7, '#ffffffb0');
+  edge.addColorStop(1, '#ffffff00');
+  context.fillStyle = edge;
+  context.fillRect(34 + inset, 625.75, 420 - 2 * inset, 2.5);
+  context.restore();
+}

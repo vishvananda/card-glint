@@ -19,25 +19,3 @@ export function blendStampRim(left: ImageData, right: ImageData) {
     }
   }
 }
-
-/** The pinned ordinary mount has a translucent pure-white glow outside its
- * colored arc. Clear only that source decoration; the opaque white pinline,
- * colored ring, black mount and complete oval (including pale logos) survive.
- * Native dimensions and the interior ellipse prevent a global white-key edit. */
-export function removeStampPaperGlow(pixels: ImageData): void {
-  if (pixels.width !== 192 || pixels.height !== 96) return;
-  for (let y = 0; y < 52; y++) {
-    for (let x = 0; x < pixels.width; x++) {
-      if (((x + 0.5 - 96) / 67) ** 2 + ((y + 0.5 - 62.5) / 33.5) ** 2 <= 1.05) continue;
-      const i = (y * pixels.width + x) * 4;
-      if (
-        pixels.data[i] === 255 &&
-        pixels.data[i + 1] === 255 &&
-        pixels.data[i + 2] === 255 &&
-        pixels.data[i + 3]! < 255
-      ) {
-        pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = pixels.data[i + 3] = 0;
-      }
-    }
-  }
-}

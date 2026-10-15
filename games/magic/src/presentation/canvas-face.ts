@@ -25,7 +25,7 @@ import { prepareRetroDualFrame } from './retro-dual-material.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
 import { faceCornerRadius } from './face-silhouette.js';
 import { NORMAL_FRAME_GEOMETRY, normalFrameInset } from './normal-frame-geometry.js';
-import { paintLandFrame, paintLandPaper } from './land-paper.js';
+import { paintLandFrame, paintLandPaper, paintLandPaperHighlight } from './land-paper.js';
 import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
@@ -557,6 +557,7 @@ export function paintAssembledFace(
       paintFrame(context, frame, profile.legendary, rects.frame, true, inset),
     );
     paintLandPaper(context, profile, inset);
+    paintLandPaperHighlight(context, profile, inset);
   }
   if (underArt) {
     context.save();

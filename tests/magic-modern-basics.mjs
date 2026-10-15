@@ -107,23 +107,6 @@ try {
       'Suppressed legal text',
     );
     check(printingLegalText({ name: 'x', setCode: 'unknown' }) === null, 'Invented legal year');
-    const { removeStampPaperGlow } = await import(
-      '/games/magic/src/presentation/security-stamp-rim.ts'
-    );
-    const mount = new ImageData(192, 96);
-    const offset = (x, y) => (y * 192 + x) * 4;
-    for (const [x, y, rgba] of [
-      [96, 3, [255, 255, 255, 177]],
-      [96, 12, [252, 254, 255, 255]],
-      [96, 14, [0, 117, 190, 255]],
-      [96, 40, [255, 255, 255, 150]],
-    ])
-      mount.data.set(rgba, offset(x, y));
-    removeStampPaperGlow(mount);
-    check(mount.data[offset(96, 3) + 3] === 0, 'White paper halo remains');
-    check(mount.data[offset(96, 12) + 3] === 255, 'Opaque white pinline removed');
-    check(mount.data[offset(96, 14) + 1] === 117, 'Colored pinline changed');
-    check(mount.data[offset(96, 40) + 3] === 150, 'Pale oval artwork removed');
     const { paintPlaneswalkerLoyalty, paintPlaneswalkerCost } = await import(
       '/games/magic/src/presentation/planeswalker-loyalty.ts'
     );

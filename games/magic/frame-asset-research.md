@@ -479,8 +479,11 @@ merged components are excluded. Badge width/position and the wider starting
 shield remain separate asset/geometry review items. The same font and old badge
 lettering were present before 0.3.3; no recent font replacement caused this issue.
 
-The ordinary 192×96 hologram mount source also contains a translucent pure-white
-halo outside its colored arc. Material preparation removes only that exterior
-source decoration, preserving the opaque white pinline, colored ring and oval
-artwork. The existing bounded material cache performs this once per asset/palette;
-painting adds no readback. Planeswalker stamp assets retain their native edges.
+The ordinary 192×96 hologram mount's translucent white outer arc is the paper
+highlight, not an unwanted halo. Hall of Heliod's Generosity (MH1), Temple of
+Epiphany and Temple of Silence (M21) show it joining a white line along the
+rules box's lower bevel. Preserve the original arc and paint the missing land
+highlight after its paper tint and neutral-frame filter. The mount covers the
+straight highlight within its arch. This also applies to ordinary lands without
+a stamp; planeswalker and plate painters keep their own bevels. Color blending
+and black-stock matching remain cached, with no new asset decoding or readback.

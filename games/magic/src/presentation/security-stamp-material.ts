@@ -1,7 +1,7 @@
 import type { CanvasImages } from './canvas-assets.js';
 import { cardStock, type RenderedCardInput } from './face-layout.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
-import { blendStampRim, removeStampPaperGlow } from './security-stamp-rim.js';
+import { blendStampRim } from './security-stamp-rim.js';
 
 /** The source mounts include an opaque black footer rectangle. Bind its black
  * anchor to this pack's black stock so it cannot appear as a separate square.
@@ -21,7 +21,7 @@ export function securityStampMaterialJobs(face: RenderedCardInput, images: Canva
     {
       url: stamp.image,
       key: JSON.stringify([
-        'security-stamp-frame-palette-v3',
+        'security-stamp-frame-palette-v4',
         stamp.image,
         stamp.rightImage ?? null,
         blackStock,
@@ -44,11 +44,7 @@ export function securityStampMaterialJobs(face: RenderedCardInput, images: Canva
           }
           c.drawImage(source, 0, 0);
           const pixels = c.getImageData(0, 0, canvas.width, canvas.height);
-          removeStampPaperGlow(pixels);
-          if (rightPixels) {
-            removeStampPaperGlow(rightPixels);
-            blendStampRim(pixels, rightPixels);
-          }
+          if (rightPixels) blendStampRim(pixels, rightPixels);
           for (let i = 0; blackStock && i < pixels.data.length; i += 4) {
             if (!pixels.data[i + 3]) continue;
             const maximum = Math.max(pixels.data[i]!, pixels.data[i + 1]!, pixels.data[i + 2]!);
