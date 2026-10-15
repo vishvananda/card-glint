@@ -7,7 +7,9 @@ const server = await createServer({
   server: { host: '127.0.0.1', port: 0, hmr: false },
 });
 await server.listen();
-const browser = await chromium.launch({ args: ['--enable-unsafe-swiftshader'] });
+const browser = await chromium.launch({
+  args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+});
 try {
   const page = await browser.newPage();
   const errors = [];
@@ -53,6 +55,8 @@ try {
         ctx.beginPath();
         ctx.ellipse(48, 24, 43, 19, 0, 0, Math.PI * 2);
         ctx.fill();
+        // An asymmetric aperture catches an upside-down local mask.
+        ctx.clearRect(0, 0, 48, 24);
         return c;
       },
     };
@@ -132,6 +136,11 @@ try {
         foil: diff(foil, foilHolo),
         angle: diff(neutral, tilted),
       };
+      const changedAt = (x, y) => {
+        const i = (y * size[0] + x) * 4;
+        return [0, 1, 2].some((k) => regular[i + k] !== neutral[i + k]);
+      };
+      const maskOrientation = !changedAt(112, 282) && changedAt(112, 302);
       const before = renderer.metrics,
         beforePaints = maskPaints;
       let readbacks = 0,
@@ -196,6 +205,36 @@ try {
       drawSides([left, right]);
       const sharedDraws = renderer.metrics.draws;
       renderer.releaseCards(new Uint32Array([2]));
+      phase = 'over-finish printing';
+      const paintOverlay = async (hologram) => {
+        const d = {
+          ...documentFor(hologram),
+          layers: [
+            {
+              id: 'opaque-printing',
+              order: 0,
+              stage: 'over-finish',
+              raster: {
+                key: 'opaque-gray-overlay',
+                size,
+                async paint() {
+                  const c = canvas(size),
+                    ctx = c.getContext('2d');
+                  ctx.fillStyle = '#878787';
+                  ctx.fillRect(0, 0, ...size);
+                  return c;
+                },
+              },
+            },
+          ],
+        };
+        renderer.upsertCards([d]);
+        await renderer.ready(1, d.revision);
+        return read();
+      };
+      const uncoatedOverlay = await paintOverlay();
+      const coatedOverlay = await paintOverlay(h);
+      differences.overFinish = diff(uncoatedOverlay, coatedOverlay);
       await set(h);
       const final = read();
       phase = 'export A';
@@ -278,6 +317,7 @@ try {
       }
       return {
         differences,
+        maskOrientation,
         before,
         after,
         uniformOnly,
@@ -314,6 +354,7 @@ try {
     );
   }
   assert.equal(result.maskPaintsBeforeRestore, 1);
+  assert(result.maskOrientation, 'Local alpha mask was flipped');
   for (const key of ['compositions', 'maskBuilds', 'edgeBuilds', 'readbacks'])
     assert.equal(
       result.replacement[key],

@@ -78,6 +78,9 @@ prepared/uploaded once through the existing bounded cache, without mask readback
 View/normal changes move the reflection over stationary diffraction grooves.
 Fixed view, pointer and seed produce a deterministic still; elapsed time alone
 does not animate the coating. Export and context recovery retain that identity.
+The context compiles ordinary and coated shader variants once. Uncoated cards
+use the ordinary program, keeping the additional coating's shader cost out of
+their draws. Switching between them never compiles a shader during rendering.
 
 ## Cache ownership
 

@@ -36,10 +36,13 @@ float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,
 ${foil}
 ${SURFACE_GLSL}
 ${DEFORMATION_GLSL}
+#ifdef LOCAL_HOLOGRAM
 ${HOLOGRAM_GLSL}
+#endif
 void main(){
  vec2 source=cardSource(v_uv,surfaceTime,surfaceInfo.wz);
  vec2 uv=vec2(source.x,1.-source.y);
+#ifdef LOCAL_HOLOGRAM
  // Evaluate derivatives before any per-fragment return/discard. The outer
  // material condition is uniform across the draw, including instanced cards.
  float grainFilter=1.;
@@ -47,6 +50,7 @@ void main(){
    vec2 local=(uv-hologramRect.xy)/hologramRect.zw;
    grainFilter=exp(-fwidth(dot(local,vec2(24.,8.)))*2.);
  }
+#endif
  vec2 corner=abs((uv-.5)*vec2(1.,aspect))-(vec2(.5,aspect*.5)-cornerRadius);
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
@@ -65,8 +69,16 @@ void main(){
    printing=mix(printing,reflected,overlayFoil.y);
  }
  vec3 printed=previewInk(mix(under,printing,top.a));
+#ifdef LOCAL_HOLOGRAM
  out_color=vec4(localHologram(uv,printed,normalize(v_normal),view,grainFilter),1.);
+#else
+ out_color=vec4(printed,1.);
+#endif
 }`;
+export const hologramFragment = fragment.replace(
+  '#version 300 es',
+  '#version 300 es\n#define LOCAL_HOLOGRAM',
+);
 export const imageFragment = `#version 300 es
 precision highp float;in vec2 v_uv;uniform sampler2D face;out vec4 out_color;
 void main(){out_color=texture(face,vec2(v_uv.x,1.-v_uv.y));if(out_color.a<.001)discard;}`;

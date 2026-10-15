@@ -1,6 +1,10 @@
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
-const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+// Match the showcase's fully software backend. WebGL-only fallback can lose
+// its context on local startup, including with the unmodified released core.
+const browser = await chromium.launch({
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+});
 try {
   const page = await browser.newPage();
   await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');

@@ -1,5 +1,5 @@
 import { program, texture } from './etcher.js';
-import { vertex, fragment, imageFragment } from './shaders.js';
+import { vertex, fragment, hologramFragment, imageFragment } from './shaders.js';
 import type { Texture } from './textures.js';
 import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
 import { SurfaceMotion } from '../surface-motion.js';
@@ -19,6 +19,7 @@ export interface Material {
 export class Device {
   readonly gl: WebGL2RenderingContext;
   private foil: WebGLProgram;
+  private holographic: WebGLProgram;
   private image: WebGLProgram;
   private vao: WebGLVertexArrayObject;
   private quad: WebGLBuffer;
@@ -41,6 +42,9 @@ export class Device {
     this.gl = gl;
     this.caustics = new Caustics(gl);
     this.foil = program(gl, fragment, vertex)!;
+    // Compile both variants once with the context. Uncoated cards keep the
+    // smaller original shader rather than paying its register/branch cost.
+    this.holographic = program(gl, hologramFragment, vertex)!;
     this.image = program(gl, imageFragment, vertex)!;
     this.vao = gl.createVertexArray()!;
     this.quad = gl.createBuffer()!;
@@ -122,7 +126,7 @@ export class Device {
   }
   draw(material: Material, frame: Frame, list: readonly Instance[]) {
     const gl = this.gl,
-      p = this.foil;
+      p = material.recipe.hologram?.strength ? this.holographic : this.foil;
     if (list.some((item) => item.finish === 'pool')) this.caustics.prepare(frame.time ?? 0);
     this.bind(p, frame, list);
     gl.enable(gl.DEPTH_TEST);
@@ -198,6 +202,7 @@ export class Device {
     this.motion.clear();
     const gl = this.gl;
     gl.deleteProgram(this.foil);
+    gl.deleteProgram(this.holographic);
     gl.deleteProgram(this.image);
     gl.deleteVertexArray(this.vao);
     gl.deleteBuffer(this.quad);
