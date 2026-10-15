@@ -75,6 +75,10 @@ reserves space around the mount. These are static decorations; a localized
 holographic effect is still pending. Mount sources are decoded at native size,
 and their black foot is matched to the stock once in the bounded material cache.
 Warm preparation and animation perform no additional pixel readback.
+Hosts must preserve original pinned URLs when calling `loadCanvasImages` so
+source-specific SVG corrections run. Retain every returned image-map entry,
+including additional historical detail layers. Comparison tools must use the
+same release's decode policy as its painter.
 
 ## Replacement asset candidates
 

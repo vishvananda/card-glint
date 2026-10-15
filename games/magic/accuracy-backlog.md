@@ -66,7 +66,7 @@ header/font differences remain in the review queue.
 
 Static ordinary/planeswalker security stamps now use physical printing metadata,
 family-specific colored mounts and shared native bounds. Twenty-four accepted
-examples place the oval center within 0.40 px horizontally and 0.61 px vertically
+examples place the oval center within 0.48 px horizontally and 0.61 px vertically
 on average. Five failed frame fits remain visible. Six reserved ordinary examples
 improve mean structural similarity from 70.0% to 71.2%; Vito's changed flavor wrap
 is a retained typography outlier. See [the stamp audit](fixtures/accuracy/security-stamps.json).
