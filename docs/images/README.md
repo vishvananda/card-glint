@@ -8,7 +8,7 @@ The paired eight-second captures use the actual Rust/WASM + WebGL2 renderer and
 original [showcase artwork and frames](../../games/showcase/art/README.md).
 Both reuse four cards, including Dawnwing Griffin:
 
-- `showcase-foils.gif` / `.mp4`: prismatic, cold foil, Opal embossing, etched silver.
+- `showcase-foils.gif` / `.mp4`: prismatic, cold foil, Opal embossing, etched gold.
 - `showcase-living.gif` / `.mp4`: rain, pool water, heat shimmer, gloss.
 
 Each card tilts independently around a fixed light. Living surfaces advance their

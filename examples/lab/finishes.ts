@@ -8,7 +8,7 @@ export const finishGroups = {
 export const finishNames: Record<Finish, string> = {
   regular: 'Uncoated',
   gloss: 'Gloss',
-  etched: 'Etched silver',
+  etched: 'Etched gold',
   cold: 'Cold foil',
   opal: 'Opal embossing',
   prismatic: 'Prismatic',

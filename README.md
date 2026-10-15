@@ -11,7 +11,7 @@ Your game supplies the artwork, frame geometry, typography and hit regions.
 
 [![Four original fantasy cards with prismatic, cold, Opal and etched foil](docs/images/showcase-foils.gif)](https://vishvananda.github.io/card-glint/)
 
-**Four foils:** prismatic · cold foil · Opal embossing · etched silver.
+**Four foils:** prismatic · cold foil · Opal embossing · etched gold.
 [Watch / download MP4](https://vishvananda.github.io/card-glint/media/showcase-foils.mp4) ·
 [Static preview](docs/images/showcase.png)
 
