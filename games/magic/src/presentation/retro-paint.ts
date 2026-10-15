@@ -16,6 +16,8 @@ import { retroSymbolPalette } from './retro-symbol-material.js';
 import { historicalBackingKey } from './historical-symbol-backing.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
+import { isRevisedLand } from './revised-land-frame.js';
+import { paintRevisedLandText } from './revised-land-text.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import {
@@ -86,7 +88,18 @@ export function paintRetroFace(
     if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
     c.restore();
   }
-  if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {
+  if (isRevisedLand(face)) {
+    c.save();
+    c.fillStyle = retroStock(face);
+    c.beginPath();
+    c.rect(0, 0, 488, 680);
+    c.rect(24, 29, 440, 623);
+    c.fill('evenodd');
+    c.strokeStyle = '#30312e';
+    c.lineWidth = 1.5;
+    c.strokeRect(24.5, 29.5, 439, 622);
+    c.restore();
+  } else if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {
     const mask = images.get(retroBorderMask(face));
     if (mask) {
       const layer = document.createElement('canvas');
@@ -149,7 +162,8 @@ export function paintRetroFace(
     );
   c.save();
   c.translate(...titleTranslation(face, 'retro'));
-  if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
+  if (isRevisedLand(face)) paintRevisedLandText(c, face.name, 'title', titleWidth);
+  else if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else c.fillText(face.name, titleX, titleY, titleWidth);
   c.restore();
   const modernSymbols =
@@ -195,7 +209,11 @@ export function paintRetroFace(
   const originalBounds = calibratedStyledSymbolBounds(face, symbolUrl, baseBounds, 'retro');
   const symbolBounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   c.font = '21.7px "CardRenderer MTG MPlantin", Georgia';
-  c.fillText(
+  const paintType = isRevisedLand(face)
+    ? (text: string, _x: number, _y: number, width: number) =>
+        paintRevisedLandText(c, text, 'type', width)
+    : (text: string, x: number, y: number, width: number) => c.fillText(text, x, y, width);
+  paintType(
     retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
     details?.typeX ?? tx,
     ty + th / 2,
@@ -324,7 +342,9 @@ export function paintRetroFace(
         placement?.maxWidth ?? sw,
       );
   }
-  if (revised && face.artist) paintRevisedCredits(c, face.artist);
+  if (isRevisedLand(face) && face.artist)
+    paintRevisedLandText(c, `Illus. © ${face.artist}`, 'artist', 390);
+  else if (revised && face.artist) paintRevisedCredits(c, face.artist);
   else if (face.artist && usesEarlyCredits(face)) paintEarlyCredits(c, face.artist);
   else if (details) paintRetroCredits(c, face, details);
   else if (face.artist) {

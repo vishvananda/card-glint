@@ -6,6 +6,35 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Current execution checkpoint
+
+1. Finish and release the Revised land frame, colored pinlines, striped paper,
+   shared text positions and missing copyright marker in artist credits.
+2. Audit the recorded fixes against shipped code, then address remaining defects:
+   original wording/score coverage, early glyph and shadow outliers, missing
+   historical symbol sources/materials, shared security stamps and holographic
+   treatment, and dedicated special-frame layouts. Keep already-shipped Split/Fuse
+   and early artifact-type fixes closed unless regression evidence reopens them.
+3. Calibrate all ordinary pre-Eighth Edition printings in small set groups. Within
+   each group: validate frame-only scan normalization; fit shared frame alignment;
+   fit mana and expansion symbols; fit frame/paper and mana colors; fit rules and
+   illustrator typography. Validate shared defaults on reserved printings, update
+   versioned scores and release accepted changes before moving to the next group.
+
+Begin with Alpha/Beta/Unlimited/Revised, then Fourth/Chronicles and the early
+expansions, Mirage/Tempest blocks, Urza/Sixth, Mercadian/Seventh, Invasion, Odyssey,
+and Onslaught. Portal and starter printings need their own frame groups. Preserve
+coverage denominators and explicit exclusions; a rejected fit must not disappear
+from reports. Never reuse a prior renderer's score under a new version.
+
+The Revised land implementation is measured in
+[the Fourth-land calibration](fixtures/accuracy/3ed/land-fourth-calibration.json).
+All fifteen basics and ten duals now have colored pinlines, textured paper bands
+where appropriate, shared lettering and `Illus. ©` credits. Whole-card structural
+mean: 40.9% → 75.7%; held-out mean: 41.8% → 75.1%. The basic-land font-size refit
+was rejected on validation. This supersedes the older pending-land notes below;
+historical study records remain unchanged.
+
 ## Release 0.2.21 checkpoint
 
 The release branch now includes 129 scan-bound original artifact type reviews
@@ -84,7 +113,7 @@ constrained to avoid overlapping the creature's stats.
 
 ## Agreed execution order
 
-Current priority: redo all old-frame color profiles with separate frame and
+Earlier rollout priority (superseded by the execution checkpoint above): redo all old-frame color profiles with separate frame and
 paper transforms, source-derived masks for irregular edges, and stock-correct
 per-scan frame normalization. Urza's Saga white's pink cast and Urza's Destiny
 white's brown shadows/excess contrast are required regression examples. Gate

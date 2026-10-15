@@ -3,6 +3,8 @@ import type { CanvasImages } from './canvas-assets.js';
 import { retroDualBitmapCache } from './material-bitmap-cache.js';
 import { calibratedFrameMaterials } from './calibration-profiles.js';
 import { retroDualFrame } from './retro-dual-frame.js';
+import { isRevisedLand } from './revised-land-frame.js';
+import { prepareRevisedLand } from './revised-land-material.js';
 
 /** One cached static composite per source/palette. Mask RGB is visualization
  * only: destination-in uses alpha and preserves the original art aperture. */
@@ -11,6 +13,7 @@ export async function prepareRetroDualFrame(
   images: CanvasImages,
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
+  if (isRevisedLand(face)) return prepareRevisedLand(face, images, signal);
   const plan = retroDualFrame(face);
   if (!plan) return { images, dispose() {} };
   const required = (url: string) => {

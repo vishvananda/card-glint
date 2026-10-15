@@ -5,7 +5,7 @@ import {
 import type { RenderedCardInput } from './face-layout.js';
 import { retroFamily } from './retro-frame.js';
 
-/** Frozen Revised study; early frames and Revised lands have separate geometry. */
+/** Revised printing uses solid gray ink over a lower-right shadow. */
 export function usesRevisedLettering(face: RenderedCardInput): boolean {
   return face.setCode?.toLowerCase() === '3ed' && retroFamily(face) === 'fourth';
 }

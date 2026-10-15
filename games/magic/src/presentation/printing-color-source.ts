@@ -6,6 +6,8 @@ import { normalFrameInset } from './normal-frame-geometry.js';
 import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 
+import { isRevisedLand } from './revised-land-frame.js';
+
 /** The calibration source is game-owned and independent of scan registration.
  * Multi-plate lands and special layouts require separate measured cohorts. */
 export function printingColorSource(face: RenderedCardInput) {
@@ -19,7 +21,7 @@ export function printingColorSource(face: RenderedCardInput) {
     return undefined;
   const border = retroBorder(face);
   if (isRetro(face)) {
-    if (retroDualFrame(face)) return undefined;
+    if (retroDualFrame(face) || isRevisedLand(face)) return undefined;
     const frame = retroFrameAsset(face),
       rect = retroFrameRect(face);
     return {

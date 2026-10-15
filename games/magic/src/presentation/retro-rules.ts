@@ -6,6 +6,8 @@ import { resolveFrameColors } from './profile.js';
 import { revisedLargeRules } from './revised-large-rules.js';
 import { wordingParagraphs } from './wording.js';
 import { shortCenteredRules } from './short-centered-rules.js';
+import { isRevisedLand } from './revised-land-frame.js';
+import { revisedLandRules } from './revised-land-text.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -38,6 +40,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   // Oracle reminders can be much longer than the original printing. Fit the
   // complete text; retain the historical minimum for original comparisons.
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
+  if (isRevisedLand(face)) return revisedLandRules(context, face, paragraphs, reference);
   const set = face.setCode?.toLowerCase();
   // Oracle reminders need a safe panel inset. Dense original Alpha printings
   // have tighter margins; the original-comparison path retains their placement.

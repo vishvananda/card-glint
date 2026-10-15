@@ -161,7 +161,11 @@ try {
       assert.deepEqual(original.face.frameColors, oracle.face.frameColors);
       if (basic) {
         assert.deepEqual(original.face.frameColors, [basic]);
-        assert.ok(retroFrameAsset(original.face).endsWith('/' + basic.toLowerCase() + 'l.png'));
+        assert.ok(
+          retroFrameAsset(original.face).endsWith(
+            set === '3ed' ? '/old/fourth/l.png' : '/' + basic.toLowerCase() + 'l.png',
+          ),
+        );
         assert.equal(retroFrameAsset(original.face), retroFrameAsset(oracle.face));
         assert.deepEqual(
           calibratedFrameMaterials({ ...original.face, colorCalibration: 'set-hsb-v1' }),
