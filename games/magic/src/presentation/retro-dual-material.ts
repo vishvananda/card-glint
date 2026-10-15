@@ -2,7 +2,8 @@ import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { retroDualBitmapCache } from './material-bitmap-cache.js';
 import { calibratedFrameMaterials } from './calibration-profiles.js';
-import { retroDualFrame } from './retro-dual-frame.js';
+import { retroDualFrame, retroLandColors } from './retro-dual-frame.js';
+import { colorAbuDualPinline } from './abu-dual-pinline.js';
 import { isRevisedLand } from './revised-land-frame.js';
 import { prepareRevisedLand } from './revised-land-material.js';
 
@@ -28,7 +29,7 @@ export async function prepareRetroDualFrame(
     [
       {
         key: JSON.stringify([
-          'abu-dual-frame-v1',
+          'abu-dual-frame-v2',
           plan,
           base.width,
           base.height,
@@ -49,6 +50,9 @@ export async function prepareRetroDualFrame(
             l.drawImage(mask, 0, 0, base.width, base.height);
             c.drawImage(base, 0, 0);
             c.drawImage(layer, 0, 0);
+            const pixels = c.getImageData(0, 0, base.width, base.height);
+            colorAbuDualPinline(pixels, retroLandColors(face));
+            c.putImageData(pixels, 0, 0);
             return await createImageBitmap(canvas);
           } finally {
             canvas.width = canvas.height = layer.width = layer.height = 0;

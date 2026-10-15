@@ -1,0 +1,750 @@
+{
+  "status": "adopted-shape-with-measured-geometry",
+  "scope": "ABU dual-land rules-box border; 29 duals rendered and 15 basic controls. Geometry fit on 17 accepted frozen LEA/LEB scans; no independent holdout. 10 Unlimited and 2 rejected Beta scans are visual review only.",
+  "baselineCommit": "67b5d6e",
+  "sourceHash": "b0d69d9e0326c4e33ff747f54253f83b3f0f7a1b841b3bc9c5af4b1827643008",
+  "sourceDimensions": [1500, 2100],
+  "comparisonDimensions": [488, 680],
+  "finishedBounds": {
+    "left": 61.063333333333325,
+    "right": 427.9656666666666,
+    "top": 404.6309523809524,
+    "bottom": 606.325
+  },
+  "finishedBorderWidth": 6.375,
+  "bandWidths": [0.51, 1.785, 1.785, 1.785, 0.51],
+  "bandOrder": ["dark edge", "first color", "second color", "first color", "dark edge"],
+  "borderOrder": "RGUBW",
+  "sourcePalette": {
+    "W": [186, 177, 176],
+    "U": [72, 110, 137],
+    "B": [88, 77, 85],
+    "R": [182, 62, 81],
+    "G": [129, 149, 92]
+  },
+  "paletteSampling": "Median source RGB at x=300..1199, y=1263..1269 from pinned ABU color-land plates. No scan-fitted color overrides.",
+  "means": {
+    "lea": {
+      "count": 9,
+      "before": 0.5524482992271051,
+      "after": 0.5788024564462977
+    },
+    "leb": {
+      "count": 8,
+      "before": 0.5706695408953847,
+      "after": 0.5936839126883213
+    }
+  },
+  "basicControlsUnchanged": 15,
+  "changedOutsideRulesBox": 265863,
+  "findings": [
+    "Keep equal physical band thickness on all four sides, compensating source aspect ratio.",
+    "Restore adjacent source stock before drawing the new ring so the former one-color outline does not remain visible.",
+    "Three colored bands share the Revised cross-section but use ABU-specific geometry and palette. Broad paper stripes retain their existing positions.",
+    "Store per-card frozen scan transforms and hashes for repeatability; none becomes a rendering adjustment.",
+    "Text and broad paper remain imperfect; this is a border-only calibration."
+  ],
+  "cards": [
+    {
+      "id": "5804dcd3-d41d-4cbd-9f8f-9736f2d37a64",
+      "set": "2ed",
+      "name": "Badlands",
+      "control": false,
+      "material": "BR",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "9987d46cdc4f06282ae80b2f3d83005838678e13c40f58b4453df76c1ec532ad",
+      "referenceHash": "10ce805c42ae0bb21928f5e8e42d5c4152c6765b61879805742605e7518e6b06",
+      "changed": 331250,
+      "outside": 255531,
+      "metrics": null
+    },
+    {
+      "id": "d66e43f0-1558-409f-8248-cc1d76c6bd8e",
+      "set": "2ed",
+      "name": "Bayou",
+      "control": false,
+      "material": "BG",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "2acb20651c90a67ceaeb910c93cf5a3bb672c8af02aadcb7575001b6edddec38",
+      "referenceHash": "a4d58a1b754344360b35af326d9a9bf6efe1cbbce9c7af809c10cb766f1066ed",
+      "changed": 12500,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "de38f96c-5d17-4cf2-9951-f0866eadd011",
+      "set": "2ed",
+      "name": "Plateau",
+      "control": false,
+      "material": "WR",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "ad6668f112a8a235efdfddaf7408da3a9f2ced7220aeb730dd6d579d415007b8",
+      "referenceHash": "996b04155fed9b692c8a835e2a64ca3132f84e60f8d01a55cb01efab686c07fa",
+      "changed": 12457,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "38937c61-280e-457f-aef9-43139446163a",
+      "set": "2ed",
+      "name": "Savannah",
+      "control": false,
+      "material": "WG",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "c8abbae8f9bef87ef83b6064c8faa36e1eebd36500989ea7184328e2732cd03a",
+      "referenceHash": "999f60e3429d917df106769c9ae8fae7ca1f9eaeae2f93bc44e42d2347d51460",
+      "changed": 12465,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "7e18d625-0950-4062-8d41-f8b681eff234",
+      "set": "2ed",
+      "name": "Scrubland",
+      "control": false,
+      "material": "WB",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "84f5a89e57fe068c721f0b6d58135dbfce17075588a6589582eda67545a74aa3",
+      "referenceHash": "cd55b4dd478fe2bdf62cef69c329e6ef08b6d0750f6c5b8b3883fb1a8f89cb5f",
+      "changed": 12414,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "01006833-6007-4c16-9ebb-20d31c60a57a",
+      "set": "2ed",
+      "name": "Taiga",
+      "control": false,
+      "material": "RG",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "e9b3e642be2a77637d696e70ab81bb3bea4de09898d38976d23caf36a9cde354",
+      "referenceHash": "fca543fff2d774bf10ede1c085a9e9e349053d682416d284e629acbb3a7ae49c",
+      "changed": 12551,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "856bf0ba-e5a5-47eb-9a6a-111935088c31",
+      "set": "2ed",
+      "name": "Tropical Island",
+      "control": false,
+      "material": "UG",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "91ca7f9f25011d53c1e386468e9e353bad94454622f7f2c64716ceea5b47c4c1",
+      "referenceHash": "19bfdea83ecf6452c31f82191a47b48c3c9a45de80c335fd13f9e1cd7a85bac7",
+      "changed": 12413,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "0d08f5e4-d2d3-4659-86d4-a983d80e3b2c",
+      "set": "2ed",
+      "name": "Tundra",
+      "control": false,
+      "material": "WU",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "c7614cba719f101ea9a5411a3d6a9dfe53d2791b1822af0b073d668ab4f9e854",
+      "referenceHash": "0eca6b818e735397dac6a75e491b839639474433241cca10148581cf64d327de",
+      "changed": 12473,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "bc98d888-4af3-43a3-b035-40c651057b6e",
+      "set": "2ed",
+      "name": "Underground Sea",
+      "control": false,
+      "material": "UB",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "5b81d8e03978215c174083ddaf6c19633de440e0b6a5f15eda21c26f6cc686c8",
+      "referenceHash": "89e0afe344d38b08d97f8c8d46ba32317133d06d0fd2dead738c150d4442fd93",
+      "changed": 12483,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "9dc7ab05-a5f5-4a02-87e7-3c47be35b5cb",
+      "set": "2ed",
+      "name": "Volcanic Island",
+      "control": false,
+      "material": "UR",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "5fce6554530c9ed7df5f9041981f245bae0ccb639523b87cef3337690faa77ce",
+      "referenceHash": "8cb40a0eced583a6db78f220e378ac905f40a5597f757dce07fda78f8ab4d792",
+      "changed": 12551,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "717f6d10-9144-4ade-9ac6-a481cc66b875",
+      "set": "lea",
+      "name": "Badlands",
+      "control": false,
+      "material": "BR",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9997, 0, 0, 0.9997, 0.15, -0.19999999999999998]
+      },
+      "scanHash": "de858c007e48221159780ffa1e32084b4d2f91dba7d7083b24c49c917438f943",
+      "referenceHash": "d495f70d9b1a17094ad75b3f18a946541d1b9984ccb70578f33a24d182f71c26",
+      "changed": 12430,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5179696727890181,
+        "after": 0.5754908801190749
+      }
+    },
+    {
+      "id": "412ceddd-2b9a-4551-a6bf-ae2830a2010a",
+      "set": "lea",
+      "name": "Bayou",
+      "control": false,
+      "material": "BG",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.3, 0.025000000000000022]
+      },
+      "scanHash": "62d7d2bc3c4cdaec2fb316d9ca81e50d0b0b859a6de1ee5a82baac814705dcf6",
+      "referenceHash": "1db5b654723e14b54b40ad7471672b8711afb470c143c7ad399198625a01978b",
+      "changed": 12500,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5639772845590877,
+        "after": 0.5516860585359722
+      }
+    },
+    {
+      "id": "6eafa00b-c628-40f6-86eb-88e1361fc7a0",
+      "set": "lea",
+      "name": "Plateau",
+      "control": false,
+      "material": "WR",
+      "accepted": true,
+      "transform": {
+        "matrix": [1.0009, 0, 0, 1.0009, -0.275, 0.1]
+      },
+      "scanHash": "9e9299ffb5d914dbc64766837d9ecc0950b72e8ada98baf28c83bf775922839b",
+      "referenceHash": "b993cad837a0e40fb8df6e57ad9bd4eafe8fa5789c2761d1512b6b399c75f56a",
+      "changed": 12457,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5512117781185378,
+        "after": 0.5912745987455134
+      }
+    },
+    {
+      "id": "94f7e24c-2546-41b6-81ad-5e920b07e64e",
+      "set": "lea",
+      "name": "Savannah",
+      "control": false,
+      "material": "WG",
+      "accepted": true,
+      "transform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.1, 0.30000000000000004]
+      },
+      "scanHash": "406ecc1e90435abe4abcd0fc9fdc5aaa437ad7cc7ec24038096f8224f9386056",
+      "referenceHash": "d12ddf81190f8326e8d9a2acc921ab8a5d6940431d8e0fbd7c0d845b6631f482",
+      "changed": 12465,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5960663761380488,
+        "after": 0.6349644140964079
+      }
+    },
+    {
+      "id": "bebe39d4-21fb-46a4-a1ec-b97102e46c15",
+      "set": "lea",
+      "name": "Scrubland",
+      "control": false,
+      "material": "WB",
+      "accepted": true,
+      "transform": {
+        "matrix": [1.0002, 0, 0, 1.0002, 0.175, 0.275]
+      },
+      "scanHash": "5310f6bff0e3d6df9a427f739befbe67c2c89b2ba34f18b109a9023d848b96cc",
+      "referenceHash": "0ef314a862bb332365baa1059be44c1d4f3f3e42689d645f338ae90f67f6bbd5",
+      "changed": 12414,
+      "outside": 369,
+      "metrics": {
+        "before": 0.571132294802448,
+        "after": 0.6002874797702634
+      }
+    },
+    {
+      "id": "60df6592-0b3b-4b87-aeb2-8fa94b4fb7be",
+      "set": "lea",
+      "name": "Taiga",
+      "control": false,
+      "material": "RG",
+      "accepted": true,
+      "transform": {
+        "matrix": [1, 0, 0, 1, 0.30000000000000004, 0.25]
+      },
+      "scanHash": "f5b7760313f420048740182e3bb40e994f34be07e0c1e91e0eef352bc0729bee",
+      "referenceHash": "a814a2a1c23fa863add7627fa515013ca9fbf909687ece8aec4d939397c4ce00",
+      "changed": 12551,
+      "outside": 369,
+      "metrics": {
+        "before": 0.51793128132366,
+        "after": 0.5640071523603043
+      }
+    },
+    {
+      "id": "a9c6c759-aabf-44e7-ba8c-33c5df232b56",
+      "set": "lea",
+      "name": "Tropical Island",
+      "control": false,
+      "material": "UG",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, 0.25, 0.225]
+      },
+      "scanHash": "9279be8ad6dd1a9beee7ba9121fa13545c47b1247a573f0d04d6a79dcf8a3f66",
+      "referenceHash": "852aeb3cf83374d9ac80e9bfd9789f18d4a1db07b20c5eed57aa34b22e9dbf04",
+      "changed": 12413,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5416088669278489,
+        "after": 0.5448085733024345
+      }
+    },
+    {
+      "id": "a03e8c5b-f4ed-4fd7-ba05-db813ccc05eb",
+      "set": "lea",
+      "name": "Tundra",
+      "control": false,
+      "material": "WU",
+      "accepted": true,
+      "transform": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0.30000000000000004, -0.024999999999999994]
+      },
+      "scanHash": "29364b2d3edc441d74788a4cde9c8b2c7034fbe2bd336e48e7c4c97c74f462c2",
+      "referenceHash": "c9c11d4952bf54eed16c32adaad541d8f865533c02197a95ed10ad1ecdbde5d8",
+      "changed": 12473,
+      "outside": 369,
+      "metrics": {
+        "before": 0.6080339590912941,
+        "after": 0.6316995897176528
+      }
+    },
+    {
+      "id": "ff76ac86-8a8a-47fe-9388-8950ca3e26c3",
+      "set": "lea",
+      "name": "Underground Sea",
+      "control": false,
+      "material": "UB",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.35, -0.22499999999999998]
+      },
+      "scanHash": "1b04fa210fcf0406fe014df060e4e1b527029ee3901f301c6415730127d98815",
+      "referenceHash": "da13820820c144ea00f8117d29e170eb8f963f255a6d5811b016ab435159b5c0",
+      "changed": 12483,
+      "outside": 369,
+      "metrics": {
+        "before": 0.504103179294003,
+        "after": 0.5150033613690552
+      }
+    },
+    {
+      "id": "a3393436-3426-4903-8f41-7abcbf6c18c2",
+      "set": "leb",
+      "name": "Badlands",
+      "control": false,
+      "material": "BR",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "a413ac19476d055fa946a558357ba02783200c1228992a4d4a5248a493271371",
+      "referenceHash": "30b75aacfbf2b775f78ae1aba468671091971339f9c67ae35a4f654d55e2db47",
+      "changed": 12430,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "17db2b6a-eaa8-4a08-9e86-370bbd058574",
+      "set": "leb",
+      "name": "Bayou",
+      "control": false,
+      "material": "BG",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "e4d7296a762d4970cebb4ef3d1aace31123023812b72218722fb167d27e57d9f",
+      "referenceHash": "ef967acbb8dc496f17d94f161972598c0ed5384b5cfd635ca96ae80e57531a9d",
+      "changed": 12500,
+      "outside": 369,
+      "metrics": null
+    },
+    {
+      "id": "fad0bbc4-f760-47a2-aab6-0dbb66ee3a95",
+      "set": "leb",
+      "name": "Plateau",
+      "control": false,
+      "material": "WR",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.125, 0.325]
+      },
+      "scanHash": "b9be2e174bbb096e191aa4d4ca57d7a2819efb280a01e9699894d9040568ff6f",
+      "referenceHash": "cd01f009f8882d30fd2197a0e499a482a297a6913d85269a1c26630b4a26bbe3",
+      "changed": 12457,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5469205375138115,
+        "after": 0.5827663658162767
+      }
+    },
+    {
+      "id": "0e9aeaa8-9a75-4719-992f-cbb316f72175",
+      "set": "leb",
+      "name": "Savannah",
+      "control": false,
+      "material": "WG",
+      "accepted": true,
+      "transform": {
+        "matrix": [1.0002, 0, 0, 1.0002, 0.1, -0.22499999999999998]
+      },
+      "scanHash": "a0c486941e450b398e6794fd574bf9895162281f258087aa8c0d927c5924d72d",
+      "referenceHash": "a988fe001a3dc6ef136e7a8085567a9fbfd6ae1be37ba98ac6251061153e4f78",
+      "changed": 12465,
+      "outside": 369,
+      "metrics": {
+        "before": 0.6147322375969965,
+        "after": 0.6310335603616015
+      }
+    },
+    {
+      "id": "8cf99186-3167-4092-8efb-e7448609ceba",
+      "set": "leb",
+      "name": "Scrubland",
+      "control": false,
+      "material": "WB",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9999, 0, 0, 0.9999, -0.1, 0.25]
+      },
+      "scanHash": "0ab393a7a3a168a31d743ae7ae99f9a10a7e843081563cf67fd109e8d952647f",
+      "referenceHash": "dbc6122bfce71e013adc1243737d82981b54366b6b41438587f810409070a048",
+      "changed": 12414,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5967462035323049,
+        "after": 0.5995441241361337
+      }
+    },
+    {
+      "id": "30ce1bf0-7561-418f-a217-3ce10f28be82",
+      "set": "leb",
+      "name": "Taiga",
+      "control": false,
+      "material": "RG",
+      "accepted": true,
+      "transform": {
+        "matrix": [1, 0, 0, 1, -0.125, -0.075]
+      },
+      "scanHash": "4cf2d982cde3f98293f09d90b51e74e165b58ae8275936cf27f4713ce9ff6362",
+      "referenceHash": "9161b246c50d4f7d21d1979b29de52c6670d6414e3d0b76fd75912a6b5799957",
+      "changed": 12551,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5474780365095856,
+        "after": 0.6045273667867502
+      }
+    },
+    {
+      "id": "ac19c5a1-ca13-4443-920b-83b567167ed4",
+      "set": "leb",
+      "name": "Tropical Island",
+      "control": false,
+      "material": "UG",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.075, -0.175]
+      },
+      "scanHash": "caf0a4b89867992bd3a821e3f89c15c9fcb04ebfbbd753b3bea0f1cb9d8038c4",
+      "referenceHash": "0fbbfda2143a6647f993683f61817000b6f4c26beb9ce3a9b2c117dcde6f1c0f",
+      "changed": 12413,
+      "outside": 369,
+      "metrics": {
+        "before": 0.5841138907423049,
+        "after": 0.5981728549042136
+      }
+    },
+    {
+      "id": "1b93ce48-219c-49ea-9ad0-b7357bea4606",
+      "set": "leb",
+      "name": "Tundra",
+      "control": false,
+      "material": "WU",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.04999999999999999, 0.375]
+      },
+      "scanHash": "14937470afda942994613270007ecdf02c13fb73222490eb95f8c6e6c2053a94",
+      "referenceHash": "75d6cff8d9e6200af21186efd87fac2c5f7498a939301547c67f6d2c2915cc8f",
+      "changed": 12473,
+      "outside": 369,
+      "metrics": {
+        "before": 0.622770143124121,
+        "after": 0.6387337513429933
+      }
+    },
+    {
+      "id": "5e91ce41-053e-4203-8860-49cbf854cc18",
+      "set": "leb",
+      "name": "Underground Sea",
+      "control": false,
+      "material": "UB",
+      "accepted": true,
+      "transform": {
+        "matrix": [0.9984000000000001, 0, 0, 0.9984000000000001, -0.275, -0.15]
+      },
+      "scanHash": "79b0591545fa659c9b02367e601c88dd5c23b18b05cd0496790c0b038337ab5b",
+      "referenceHash": "42a90d7fb2358d293d8f75f97f0b20678f61a0b441a02868290d6b0e49bb78c2",
+      "changed": 12483,
+      "outside": 369,
+      "metrics": {
+        "before": 0.568976718864107,
+        "after": 0.5658392462583889
+      }
+    },
+    {
+      "id": "0324641d-af55-4c53-b4dc-c8262e967da5",
+      "set": "leb",
+      "name": "Volcanic Island",
+      "control": false,
+      "material": "UR",
+      "accepted": true,
+      "transform": {
+        "matrix": [1, 0, 0, 1, -0.125, -1.4]
+      },
+      "scanHash": "22cf8574da6067e5d9e2713cd00d699483b7f35a193024f938dffb6c28a58f7b",
+      "referenceHash": "de57bffc67ad9d1387fc824f87d3bceca5a99e7fe34f82af7e5fb908d3195921",
+      "changed": 12551,
+      "outside": 369,
+      "metrics": {
+        "before": 0.4836185592798464,
+        "after": 0.5288540319002126
+      }
+    },
+    {
+      "id": "b1623d57-4729-4796-b3f7-f1837a05c6ed",
+      "set": "lea",
+      "name": "Plains",
+      "control": true,
+      "material": "W",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "ed5f9988164c36fd10c48a0d98c873e3cd4dce22385f1f5efb3d439812ca0584",
+      "referenceHash": "3d6c923b3f65af19921738e967990dacf8396547914f6166b8397f8fe4606975",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "90a57c0e-fa61-45ef-955d-d296403967d5",
+      "set": "lea",
+      "name": "Island",
+      "control": true,
+      "material": "U",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "fe8cdb4d47991d3b44b5fee7b2738e02832f05e40677547c5e467cd96c47a826",
+      "referenceHash": "b899eea192301802309ca1384418caf9796d914a7630f0df2a6bf86151938b1a",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "6176936d-72e2-4205-8871-4c5a4f1cb2d8",
+      "set": "lea",
+      "name": "Swamp",
+      "control": true,
+      "material": "B",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "55a3f72d0f84960bf706f37b104d37610cd64fa172ecd038508dfaa255afc9a9",
+      "referenceHash": "c71178a774f2a626318a3344a1eef542a6910253a1579caa0188262c03bff924",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "eace2c85-976c-425e-9800-5a6ccbd91b56",
+      "set": "lea",
+      "name": "Mountain",
+      "control": true,
+      "material": "R",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "02a858ed99c6e7f6f779504f6302785a1c560f75e9a4cecff01912cc6b20fddd",
+      "referenceHash": "54710d60a0c3af2311dc51dbd23361ac25cf7b88365ae98e63f01e00d795c556",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "6f1c8cb0-38eb-408b-94e8-16db83999b3b",
+      "set": "lea",
+      "name": "Forest",
+      "control": true,
+      "material": "G",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "b5b09f4431ced16928bcc137298ecc862adbac7d8f5f06d574cc73a6605a989c",
+      "referenceHash": "2299a4194812a709b5d627fe450db20f36fb0bdb83ebe398bd0127147e1241a9",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "b7331b03-be66-419c-94bc-ed494c042ea3",
+      "set": "leb",
+      "name": "Plains",
+      "control": true,
+      "material": "W",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "e4f86fa3114be8273cc81f79165c3163625deb8f54dd96a24d5beba24696da15",
+      "referenceHash": "7c4a78a25783bea8769161c42fbfb51c2f7635be09aeaed4467a7bef9e4a52ca",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "bff33e91-8e52-43f2-b8ae-603b456b08fc",
+      "set": "leb",
+      "name": "Island",
+      "control": true,
+      "material": "U",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "bd8837546f04ae1a80f2dc74aed194669046e7b2a1a619f9d832346c527498ac",
+      "referenceHash": "a08e469e68faa62d824c29178b91ef7803d71cb2dabc23cf229f963d5bd5d653",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "d1309a80-a761-4b80-8cf1-1a8b83190511",
+      "set": "leb",
+      "name": "Swamp",
+      "control": true,
+      "material": "B",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "73364173bf530fcad8b2190c0d0a45ce51a8e2bb8a0b959b44474f13dda791c6",
+      "referenceHash": "d9a40970826857012c55d68bae910a00c65db770c45a1ff983ee97a22c14f1a6",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "7af9c715-8d72-4eae-b412-fc89138ff588",
+      "set": "leb",
+      "name": "Mountain",
+      "control": true,
+      "material": "R",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "392984e764ac7294a691d3f0184ed685fb582072844a550a07267cd3f4a854ea",
+      "referenceHash": "08ee61ef295105fc90a07b0ca6baf7080eb6ead1edf783588a6142bd20dc8fed",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "b5a922eb-49c7-45f0-92bc-671d7a8758f4",
+      "set": "leb",
+      "name": "Forest",
+      "control": true,
+      "material": "G",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "55379f4c321d8c6eb31fb8c82174501d309e1c62fb2d91a019cff9251949fe78",
+      "referenceHash": "8f96df41fecaa5d702eac71222f6fdfbf91607a9969c40da866060527cd21214",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "034b047d-6363-45ca-9948-8184f822a2cb",
+      "set": "2ed",
+      "name": "Plains",
+      "control": true,
+      "material": "W",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "74fdb9a025e2136ae754f2969d7fa6197e0ee536cf61ab4bea857cb99ecdad81",
+      "referenceHash": "fa6a7d220be8255a5eba2c1e75d36f1802eadf79d205718a827d7d60beb847e5",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "68271f76-eaf9-44cc-bb3d-5c56f36e9af9",
+      "set": "2ed",
+      "name": "Island",
+      "control": true,
+      "material": "U",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "a0be8e0365900fe9efcccf5f89364ce0dfa8f41647ece6fca9c271185a99d73e",
+      "referenceHash": "bba348ac2e6077a725147ee59df970b2d19abcbfcc44f6696bcac97ba8fe74e9",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "92f7a995-c648-4835-8df3-135d7472cd2d",
+      "set": "2ed",
+      "name": "Swamp",
+      "control": true,
+      "material": "B",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "45d300eef3edbd631398cfe04779ab142327342d88947476d7edb2abd6305341",
+      "referenceHash": "8a624733d54667695c60a0178b1473d25cea23d27a67ce7899bb743ac486671d",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "2c3c0f74-485e-4b21-8f41-56666a7d0005",
+      "set": "2ed",
+      "name": "Mountain",
+      "control": true,
+      "material": "R",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "7c768b1f6cbb0c94a66dc6d92952eaaa4db595cbc03ad89333a5254515bd3e9d",
+      "referenceHash": "3ca99a3f8b57e9b0a695330bf79d12e4e56a7bc84f94b76fd4a3dc847fd7c9d2",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    },
+    {
+      "id": "88d0aca2-874c-4d91-8fe9-f8355d71aeb2",
+      "set": "2ed",
+      "name": "Forest",
+      "control": true,
+      "material": "G",
+      "accepted": false,
+      "transform": null,
+      "scanHash": "8885fa8582cc1569bf8b979d70e6c39bc39d99817a1352e56399c79af6ce42ae",
+      "referenceHash": "894f43da282303f9eeb4b07b03ea3cb1415e028fa7cde2681e909257518d7efe",
+      "changed": 0,
+      "outside": 0,
+      "metrics": null
+    }
+  ]
+}

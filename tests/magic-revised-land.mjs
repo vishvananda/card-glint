@@ -60,8 +60,8 @@ try {
   const secondColor = areas[0][2] - dark * 0.18;
   assert.ok(dark > 0, 'Subpixel edge lines cannot disappear');
   assert.ok(
-    firstColor > secondColor * 2,
-    'Outer first-color band stays thicker than the inner bands',
+    Math.abs(firstColor - 2 * secondColor) < 1e-8,
+    'Three equal color bands retain the same area per band',
   );
   const sequence = [];
   for (let x = DUAL_BOX.left - 1; x < DUAL_BOX.left + 35; x += 0.02) {
@@ -72,6 +72,34 @@ try {
     if (sequence.at(-1) !== kind) sequence.push(kind);
   }
   assert.deepEqual(sequence, ['edge', 'first', 'second', 'first', 'edge']);
+  const { colorAbuDualPinline } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/abu-dual-pinline.ts',
+  );
+  for (const size of [150, 488, 750]) {
+    const height = Math.round(size * 1.4);
+    const data = new Uint8ClampedArray(size * height * 4).fill(128);
+    for (let i = 3; i < data.length; i += 4) data[i] = 255;
+    const original = data.slice();
+    const p = { width: size, height, data };
+    colorAbuDualPinline(p, ['G']);
+    assert.deepEqual(data, original, 'Single-color lands are unchanged');
+    colorAbuDualPinline(p, ['B', 'G']);
+    assert.notDeepEqual(data, original, 'ABU dual border is restored');
+    const reversed = { width: size, height, data: original.slice() };
+    colorAbuDualPinline(reversed, ['G', 'B']);
+    assert.deepEqual(data, reversed.data, 'Border order is independent of caller color order');
+    for (let y = 0; y < height; y++)
+      for (let x = 0; x < size; x++) {
+        const i = (y * size + x) * 4;
+        assert.equal(data[i + 3], original[i + 3], 'Preserve alpha');
+        if (x / size < 0.12 || x / size > 0.89 || y / height < 0.59 || y / height > 0.9)
+          assert.deepEqual(
+            data.subarray(i, i + 4),
+            original.subarray(i, i + 4),
+            'Do not change other frame parts',
+          );
+      }
+  }
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
     '/games/magic/src/presentation/color-calibration-coverage.ts',
   );

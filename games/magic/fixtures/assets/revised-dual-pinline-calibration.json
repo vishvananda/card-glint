@@ -1,5 +1,5 @@
 {
-  "status": "corrected-shape-under-review",
+  "status": "equal-bands-under-review",
   "scope": "Revised dual-land rules-box border only; ten color pairs share geometry. Fifteen basic lands are unchanged.",
   "source": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/l.png",
   "sourceDimensions": [1500, 2100],
@@ -7,51 +7,47 @@
   "borderOrder": "RGUBW",
   "paperOrder": "RBWUG",
   "sourceBounds": {
-    "left": 166.4893,
-    "right": 1339.6099,
+    "left": 166.8794,
+    "right": 1338.8298,
     "top": 1255.6105,
-    "bottom": 1881.9477
+    "bottom": 1882.7268
   },
-  "bandBoundaries": [0.08, 0.5, 0.71, 0.92, 1],
-  "method": "Five visible bands in fixed proportions: edge 8%, outer first color 42%, second color 21%, inner first color 21%, edge 8%. Fit four outer bounds and one common thickness across all four sides; internal proportions stay fixed. Antialiased five-material model includes outside frame and inner paper. Constrain nuisance RGB to the semantic band palette (\u00b145/channel) and dark-edge ceiling 85/255 so colors cannot swap material identities. Fit per-scan nuisance RGB values only to factor out color/saturation; no fitted colors or per-scan transforms enter renderer defaults. The default run fits the existing 3-card calibration subset; --all fits all ten cards. Cohort labels are descriptive for --all, not independent validation. All normalized scan hashes match release 0.2.28.",
+  "bandBoundaries": [0.08, 0.36, 0.64, 0.92, 1],
+  "method": "Five visible bands in fixed proportions: edge 8%, outer first color 28%, second color 28%, inner first color 28%, edge 8%. Fit four outer bounds and one common thickness across all four sides; internal proportions stay fixed. Antialiased five-material model includes outside frame and inner paper. Constrain nuisance RGB to the semantic band palette (\u00b145/channel) and dark-edge ceiling 85/255 so colors cannot swap material identities. Fit per-scan nuisance RGB values only to factor out color/saturation; no fitted colors or per-scan transforms enter renderer defaults. The default run fits the existing 3-card calibration subset; --all fits all ten cards. Cohort labels are descriptive for --all, not independent validation. All normalized scan hashes match release 0.2.28.",
   "wholeCardStructure": {
-    "before": 0.7421581566638209,
-    "after": 0.7382535630725938
+    "before": 0.7382535630725938,
+    "after": 0.7421609678927508
   },
   "borderMetrics": {
     "before": {
-      "edgeF1": 0.8270540938548295,
-      "meanDistance": 0.9315888640919399
-    },
-    "after": {
       "edgeF1": 0.82456149974123,
       "meanDistance": 0.9154886922603642
+    },
+    "after": {
+      "edgeF1": 0.8288116210322775,
+      "meanDistance": 0.9033298125672073
     }
   },
   "regressions": [
     {
-      "name": "Taiga",
-      "percentagePoints": -2.6590751889021713
+      "name": "Underground Sea",
+      "percentagePoints": -0.33389301466192345
+    },
+    {
+      "name": "Scrubland",
+      "percentagePoints": -0.09873615001840808
     },
     {
       "name": "Badlands",
-      "percentagePoints": -0.7512908910272564
+      "percentagePoints": -0.14012846553496106
     },
     {
-      "name": "Savannah",
-      "percentagePoints": -0.15452575602368235
-    },
-    {
-      "name": "Tundra",
-      "percentagePoints": -1.8660171850233498
-    },
-    {
-      "name": "Volcanic Island",
-      "percentagePoints": -2.2486687823396134
+      "name": "Bayou",
+      "percentagePoints": -0.6277660736304758
     },
     {
       "name": "Plateau",
-      "percentagePoints": -1.7596945420075505
+      "percentagePoints": -0.2551963388206069
     }
   ],
   "unchangedBasicControls": 15,
@@ -61,8 +57,8 @@
       "id": "1f35877c-e66c-4ef0-842a-f68cd233ae4b",
       "name": "Underground Sea",
       "structure": {
-        "before": 0.6886715973867736,
-        "after": 0.7078261893131487
+        "before": 0.7078261893131487,
+        "after": 0.7044872591665294
       },
       "source": "https://scryfall.com/card/3ed/290/underground-sea",
       "normalizedScanSha256": "67e1e5277cf92e41dbc8c78afc18b4f8b876ac9d1fc66f028c0a4159b13dcd89"
@@ -71,8 +67,8 @@
       "id": "472034a2-0ba9-4876-ab7a-aa7013d603bb",
       "name": "Scrubland",
       "structure": {
-        "before": 0.7754493744309251,
-        "after": 0.7875874200278186
+        "before": 0.7875874200278186,
+        "after": 0.7866000585276345
       },
       "source": "https://scryfall.com/card/3ed/286/scrubland",
       "normalizedScanSha256": "6a2118080417a46fa4772cb9a29f5206cd84e01dd8b134b0d3a9a0064ac6a27d"
@@ -81,8 +77,8 @@
       "id": "54c5c65a-a444-4e0f-ae44-a3722cdd32a1",
       "name": "Taiga",
       "structure": {
-        "before": 0.7885425471057229,
-        "after": 0.7619517952167012
+        "before": 0.7619517952167012,
+        "after": 0.7808571486503035
       },
       "source": "https://scryfall.com/card/3ed/287/taiga",
       "normalizedScanSha256": "08fea32a8841e20d1d8e02b332dbb4c0ce653b403397ac9627c60bd8423b26d9"
@@ -91,8 +87,8 @@
       "id": "56058359-3c0b-49db-a0ce-9ded4c3f4372",
       "name": "Badlands",
       "structure": {
-        "before": 0.7394384381220804,
-        "after": 0.7319255292118079
+        "before": 0.7319255292118079,
+        "after": 0.7305242445564583
       },
       "source": "https://scryfall.com/card/3ed/282/badlands",
       "normalizedScanSha256": "e914126029a38c8a4560bc1676e1e45c60f4664fddd6a0347a4915943420a010"
@@ -101,8 +97,8 @@
       "id": "56355ff3-2232-4a11-b868-aec9a50b9ee5",
       "name": "Bayou",
       "structure": {
-        "before": 0.707660287211005,
-        "after": 0.7192411247111294
+        "before": 0.7192411247111294,
+        "after": 0.7129634639748247
       },
       "source": "https://scryfall.com/card/3ed/283/bayou",
       "normalizedScanSha256": "9c680745e6c74744877d4e80ccbb4972052bceebf4bd2f4d51622412684baaa5"
@@ -111,8 +107,8 @@
       "id": "5ae71290-c133-406c-8b17-9ea22b437806",
       "name": "Savannah",
       "structure": {
-        "before": 0.7790911478447947,
-        "after": 0.7775458902845579
+        "before": 0.7775458902845579,
+        "after": 0.7813560241717978
       },
       "source": "https://scryfall.com/card/3ed/285/savannah",
       "normalizedScanSha256": "7a207b415edad827e463ffcf1d5dec61f503515db9f482e4af974a3850bfa8e1"
@@ -121,8 +117,8 @@
       "id": "9c9d5f72-e199-4d5b-ae7e-cc5b9bdfae99",
       "name": "Tundra",
       "structure": {
-        "before": 0.7516383712807035,
-        "after": 0.73297819943047
+        "before": 0.73297819943047,
+        "after": 0.7365882975468445
       },
       "source": "https://scryfall.com/card/3ed/289/tundra",
       "normalizedScanSha256": "9f17f5589ecb83d108b1cf22c801e4348b0cacd39b8a4ceb7a01ca928f80cb6d"
@@ -131,8 +127,8 @@
       "id": "a0f5c6bc-65dc-42a1-a62d-a0b101310a1f",
       "name": "Tropical Island",
       "structure": {
-        "before": 0.6763064421905965,
-        "after": 0.6887797547081673
+        "before": 0.6887797547081673,
+        "after": 0.6946420172530952
       },
       "source": "https://scryfall.com/card/3ed/288/tropical-island",
       "normalizedScanSha256": "4daa192a1254df616f69db2b30a3589892c9adfa6455b764a64a99c110a27a65"
@@ -141,8 +137,8 @@
       "id": "b12e5430-0e80-47dd-80ac-85728b656a24",
       "name": "Volcanic Island",
       "structure": {
-        "before": 0.7643842001365341,
-        "after": 0.7418975123131379
+        "before": 0.7418975123131379,
+        "after": 0.7633409129592283
       },
       "source": "https://scryfall.com/card/3ed/291/volcanic-island",
       "normalizedScanSha256": "031cd3c73c3a467a2da97464797ff18426754d800be5a64be5b96168ea7de892"
@@ -151,8 +147,8 @@
       "id": "c6ae9cff-8646-4069-8761-df734e067beb",
       "name": "Plateau",
       "structure": {
-        "before": 0.7503991609290737,
-        "after": 0.7328022155089982
+        "before": 0.7328022155089982,
+        "after": 0.7302502521207921
       },
       "source": "https://scryfall.com/card/3ed/284/plateau",
       "normalizedScanSha256": "cb179aa6e3bbe82d98a6f72fe0f9af56222759c42205ffe378147469352dbea9"
@@ -167,24 +163,18 @@
     "npm run test:showcase",
     "node tests/magic-revised-land.mjs"
   ],
-  "finishedBorderWidth": 5.875,
-  "bandWidths": [0.47, 2.4675, 1.23375, 1.23375, 0.47],
-  "bandOrder": [
-    "dark edge",
-    "thicker first color",
-    "thin second color",
-    "thin first color",
-    "dark edge"
-  ],
-  "baselineCommit": "4abf153",
-  "baselineDescription": "Rejected seven-band candidate with unequal side widths.",
-  "sourceHash": "813474bfbfda43aee18149fdb896fb42c73067e79ac344a026e249121493fd23",
+  "finishedBorderWidth": 6.375,
+  "bandWidths": [0.51, 1.785, 1.785, 1.785, 0.51],
+  "bandOrder": ["dark edge", "first color", "second color", "first color", "dark edge"],
+  "baselineCommit": "88fd797",
+  "baselineDescription": "Previous five-band candidate with a thicker outer colored band.",
+  "sourceHash": "757c1469932bdcb568ca279242805e54dc819839cc080fc106bd96fa27bb36a6",
   "findings": [
-    "The former seven-band model was rejected: extra dark dividers and independently fitted side widths gave the wrong shape.",
-    "The corrected cross-section has five bands and one physical thickness on all four sides. Source x/y distances compensate for the non-square frame transform.",
-    "Analytical pixel coverage preserves subpixel outlines at different asset decode sizes. It is computed only on material-cache preparation.",
-    "Nuisance color bounds prevent the geometric fitter from relabeling stock as a color band or a dark outline as colored ink. These constraints are fitting aids, not updated rendering colors.",
-    "Scores are calibration measurements for the ten fitted duals, not independent validation. Mean whole-card structure declined relative to the rejected candidate; mean border-edge distance improved. Some normalized scans retain local border offsets.",
+    "Three equal colored bands between thin dark outer/inner edges, per visual review; no dark internal separators.",
+    "One physical thickness on all four sides; source x/y distances compensate for the non-square frame transform.",
+    "Analytical pixel coverage preserves subpixel outlines at different decode sizes. Computed only on material-cache preparation.",
+    "Geometry fitted on ten normalized scans with constrained nuisance colors. Scan poses are frozen; these are calibration results, not independent validation.",
+    "Mean whole-card structure and border-edge metrics improve relative to the previous thick-outer-band candidate; five individual whole-card scores regress slightly.",
     "All fifteen basic-land controls remain pixel-identical."
   ]
 }

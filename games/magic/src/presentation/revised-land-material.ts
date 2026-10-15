@@ -17,7 +17,7 @@ export async function prepareRevisedLand(
   const calibrated = hasColorCalibration(face);
   const lease = await retroDualBitmapCache.acquire(
     JSON.stringify([
-      'revised-fourth-land-v4',
+      'revised-fourth-land-v5',
       REVISED_LAND_ASSET,
       source.width,
       source.height,

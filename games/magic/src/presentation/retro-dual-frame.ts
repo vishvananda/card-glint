@@ -15,17 +15,7 @@ export function retroDualFrame(face: RenderedCardInput) {
     (face.layout && face.layout !== 'normal')
   )
     return undefined;
-  const colors = face.frameColors
-    ? resolveFrameColors(face)
-    : [
-        ['Plains', 'W'],
-        ['Island', 'U'],
-        ['Swamp', 'B'],
-        ['Mountain', 'R'],
-        ['Forest', 'G'],
-      ]
-        .filter(([type]) => new RegExp(`\\b${type}\\b`).test(face.typeLine ?? ''))
-        .map(([, color]) => color!);
+  const colors = retroLandColors(face);
   if (colors.length !== 2) return undefined;
   // Printed concentric bands have their own color order. WUBRG is a semantic
   // palette order, not the band assignment. These five pairs reverse the
@@ -39,4 +29,19 @@ export function retroDualFrame(face: RenderedCardInput) {
     overlay: `${root}${bands[1]!.toLowerCase()}l.png`,
     mask: `${manifest.CONJURER_ROOT}/img/frames/old/abu/dualLand.png`,
   };
+}
+
+/** Semantic land colors survive original type lines such as just “Land”. */
+export function retroLandColors(face: RenderedCardInput): string[] {
+  return face.frameColors
+    ? resolveFrameColors(face)
+    : [
+        ['Plains', 'W'],
+        ['Island', 'U'],
+        ['Swamp', 'B'],
+        ['Mountain', 'R'],
+        ['Forest', 'G'],
+      ]
+        .filter(([type]) => new RegExp(`\\b${type}\\b`).test(face.typeLine ?? ''))
+        .map(([, color]) => color!);
 }
