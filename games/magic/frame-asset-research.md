@@ -601,3 +601,42 @@ white detail. It leaves the original viewport and coordinates intact. This uses
 the existing once-per-source SVG preparation and decoded-image caches; it adds
 no per-frame work. Refit placement after this source correction rather than
 keeping the white-rim candidate's measurements.
+
+### Legends mana and expansion-symbol geometry
+
+One shared mana profile sets the rightmost disc center to (436, 39.25), pitch
+26.975 and diameter 23.9 in the canonical 488×680 face. The corrected expansion
+symbol moves 3.25 pixels right and 1.5 down, with horizontal/vertical scales
+1.05/1.125 around its right edge and vertical center. These adjustments apply
+to the selected ordinary black-border Legends sources, including Oracle wording;
+explicit templates and custom expansion symbols retain their own geometry.
+
+The [symbol measurements](fixtures/accuracy/legends-symbols.json) reuse the frozen
+frame poses and the same 36 training/36 held-out cards. All 32 held-out mana rows
+improve, from 47.07% to 85.10% local edge overlap. All 36 held-out expansion symbols
+improve, from 58.93% with the original white-rim source to 83.46% after source and
+geometry repair. With the corrected source alone, the baseline is 60.76%.
+These are component scores, not whole-card accuracy.
+
+The search reuses isolated native raster layers on the CPU. It does not rerun a
+browser for each proposal. All 72 final full-card renders were checked against
+the normal painter; moving the adjustment from a context transform into baked
+bounds changes 240 antialiased channels by one byte, with identical scores.
+Pixels outside the two symbol study regions remain unchanged. Disc colors,
+glyph/numeral shape, rules, artist and power/toughness remain separate passes.
+
+Legends' opt-in printing palette also uses independently measured blue, red and
+green mana-disc colors. The [material study](fixtures/accuracy/legends-mana-colors.json)
+samples the interior paper after the geometry fit and counts repeated symbols
+only once per card. Median held-out Oklab errors fall from 5.31 to 2.35 (blue),
+7.89 to 2.09 (red), and 9.24 to 2.75 (green). All 64 full-card material candidates
+are pixel-identical to the adopted runtime. Reference scans and poses are fixed.
+No extra per-frame work is added; the existing material cache includes each target.
+
+White, black and generic proposals fail the worst-regression gate and retain
+their previous colors. Thunder Spirit and Ghosts of the Damned are explicit
+white/black review cases. Do not replace them with per-card color overrides.
+Generic numeral shapes remain visibly different. The geometry metric changes
+from 85.10% to 85.02% after the accepted palette updates; it is robust to these
+color changes but not strictly color invariant. The material study records both
+measurements rather than using color changes to optimize the structural score.

@@ -2,8 +2,12 @@ import type { Rgb } from './hsb.js';
 
 /** Disc targets are independent of the chosen glyph source. Geometry and ink
  * are fitted separately; these colors are opt-in through printing calibration.
- * Evidence: fixtures/accuracy/{beta-mana-materials,showcased-mana-colors}.json. */
+ * Evidence: fixtures/accuracy/{beta-mana-materials,showcased-mana-colors,
+ * legends-mana-colors}.json. */
 export const MANA_PRINTING_TARGETS: Readonly<Record<string, Rgb>> = {
+  'leg-black-U': [177 / 255, 230 / 255, 225 / 255],
+  'leg-black-R': [228 / 255, 193 / 255, 147 / 255],
+  'leg-black-G': [181 / 255, 217 / 255, 148 / 255],
   'lea-black-U': [149 / 255, 185 / 255, 194 / 255],
   'lea-black-B': [92 / 255, 100 / 255, 101 / 255],
   'lea-black-R': [199 / 255, 152 / 255, 136 / 255],

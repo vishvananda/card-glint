@@ -1,0 +1,3660 @@
+{
+  "schemaVersion": 1,
+  "status": "adopted-on-branch-not-released",
+  "scope": "Ordinary black-border Legends using the selected source frames. Shared mana geometry and pinned Conjurer expansion symbol; original and Oracle use the same printing geometry. Custom symbols and templates are excluded.",
+  "policy": "Shared geometry fit on training only; fixed frame-normalized references. Ordinary full renderer replay with unchanged pixels outside symbol study rectangles. Scores are local two-polarity edge overlap, not whole-card accuracy.",
+  "cohort": "One instrumented source render captures isolated native symbol layers. Scans retain frozen frame-only poses; cohort unchanged. These layers propose candidates only; adoption requires ordinary full-render replay.",
+  "templateHash": "e249f275309ddf04db4ee99b7f578b08fd40bbd88fa7aeedb973e32d4955adc9",
+  "sourceGeometry": "early-frame-source-review.json",
+  "canonicalSize": [488, 680],
+  "mana": {
+    "right": 436,
+    "y": 39.25,
+    "pitch": 26.975,
+    "size": 23.9,
+    "score": 0.8567531700015707
+  },
+  "set": {
+    "dx": 3.25,
+    "dy": 1.5,
+    "sx": 1.05,
+    "sy": 1.125,
+    "score": 0.855103115294318
+  },
+  "svgPatch": {
+    "revision": "symbol-svg-v5",
+    "source": "leg-c",
+    "sha256": "289e33fd164ee77b5b5d5982b299f485ca668c576368ec796be3b8260de592fd",
+    "recipe": "remove-outer-white"
+  },
+  "scoreMeaning": "Two-polarity one-pixel edge F1 in fixed component windows, not whole-card accuracy. OriginalBefore uses the unpatched white-rim SVG; before uses the corrected black-contour SVG at its old geometry.",
+  "runtimeVerified": {
+    "cards": 72,
+    "components": 136,
+    "maximumPixelDifference": 1,
+    "differingChannels": 240,
+    "scoreDifference": 0,
+    "note": "Candidate symbolAdjustment uses a context transform; baked bounds differ in 240 antialiased channels by one byte, with identical edge scores.",
+    "outsideSymbolRectanglesUnchanged": true
+  },
+  "rendererSourceHashes": {
+    "retro-mana.ts": "5829cc520f250cb335f229f489fd3d2401c0f048241d86550762fb55b403d7a4",
+    "retro-mana-profiles.ts": "ec243256b254828989d6bbcccf0e74649cf3e72448291e4ca2f5875dfa029ee2",
+    "styled-symbol-placement.ts": "056b24faa0eae9cf8435ef0435abf49a206686d064b7108556f79bef355e0c8c",
+    "symbol-svg-patches.ts": "de2ff1928e433393cf610b64d1ce907c0eb1cffec21f9997834bcee3a430f597"
+  },
+  "proposals": [
+    {
+      "kind": "mana",
+      "base": {
+        "right": 432.3392,
+        "y": 47.328,
+        "pitch": 25.1,
+        "size": 23.4
+      },
+      "best": {
+        "right": 436,
+        "y": 39.25,
+        "pitch": 26.975,
+        "size": 23.9,
+        "score": 0.8567531700015707
+      },
+      "boundary": false,
+      "training": 32,
+      "proposals": 141,
+      "held": 32,
+      "before": 0.4707408296991515,
+      "after": 0.8493085262531215,
+      "improved": 32,
+      "worstRegression": 0,
+      "approximationMaxScoreError": 0.003961782710556472
+    },
+    {
+      "kind": "set",
+      "base": {
+        "dx": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1
+      },
+      "best": {
+        "dx": 3.25,
+        "dy": 1.5,
+        "sx": 1.05,
+        "sy": 1.125,
+        "score": 0.855103115294318
+      },
+      "boundary": false,
+      "training": 36,
+      "proposals": 139,
+      "held": 36,
+      "before": 0.6076240722894382,
+      "after": 0.845664455462777,
+      "improved": 36,
+      "worstRegression": 0,
+      "approximationMaxScoreError": 0.009201089535461726
+    }
+  ],
+  "results": [
+    {
+      "kind": "mana",
+      "held": 32,
+      "before": 0.4707408296991515,
+      "after": 0.8509936342550155,
+      "improved": 32,
+      "worstRegression": 0,
+      "originalBefore": 0.4707408296991515
+    },
+    {
+      "kind": "set",
+      "held": 36,
+      "before": 0.6076240722894382,
+      "after": 0.8346419352928693,
+      "improved": 36,
+      "worstRegression": 0,
+      "originalBefore": 0.5893246121832434
+    }
+  ],
+  "rows": [
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "G", "G"],
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "normalizedScanHash": "c0af33a4cbb85d1b2628fafaa1a045041d8001736f10b62e48f656e6318c379e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.1,
+        "ty": -0.175
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.054751823100446954
+      },
+      "before": 0.45335339825293297,
+      "after": 0.8704339217346238,
+      "renderHash": "e9a86e8d76bf4b50fe897d483dfd2a4cc5ca3d8446d7c085e4ba6f791d8385fc",
+      "originalBefore": 0.45335339825293297
+    },
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "G", "G"],
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "normalizedScanHash": "c0af33a4cbb85d1b2628fafaa1a045041d8001736f10b62e48f656e6318c379e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.1,
+        "ty": -0.175
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6498015109488376,
+      "after": 0.8206904021954982,
+      "renderHash": "3aafb7810c3e64b371ea19da3e9b26dff49ea311f3a6b55150afc3fa75f7f2a8",
+      "originalBefore": 0.5806724381299628
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["2", "G"],
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "normalizedScanHash": "68c02c10ffea7ebf934119e363b6182dc5cd4dddfa2da852f1f7024bb1ed00cf",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.175,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.048000610500610504
+      },
+      "before": 0.46593716222097237,
+      "after": 0.8532478496074973,
+      "renderHash": "f16dae65473200a7940cd1a6ccd6379869b8425e28abf7708f829ca51e4bf0f9",
+      "originalBefore": 0.46593716222097237
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "G"],
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "normalizedScanHash": "68c02c10ffea7ebf934119e363b6182dc5cd4dddfa2da852f1f7024bb1ed00cf",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.175,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6747664592290328,
+      "after": 0.8921942908759986,
+      "renderHash": "9a40ee9f765db0141b4e0a9578f9a4f24a6e1479b35b1597a206e7811c5b4fb8",
+      "originalBefore": 0.5726301738294902
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "G", "G"],
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "normalizedScanHash": "bfa8e1691f830da647ef74fd39e371042c45314cebc28481952a396c48d22c8b",
+      "pose": {
+        "scale": 0.9999,
+        "tx": -0.075,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.054751823100446954
+      },
+      "before": 0.4555243473842234,
+      "after": 0.8840025732496832,
+      "renderHash": "04882bddc2d7b034339a4aa4bc5a34b97f0eb6599cd12c380df2ed3633c1d6c4",
+      "originalBefore": 0.4555243473842234
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "G", "G"],
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "normalizedScanHash": "bfa8e1691f830da647ef74fd39e371042c45314cebc28481952a396c48d22c8b",
+      "pose": {
+        "scale": 0.9999,
+        "tx": -0.075,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6832660478189254,
+      "after": 0.8393189731255348,
+      "renderHash": "d1a4c95ed21c585adb0616e4a25979fbc1419b23aff8f361f9bfc9402659b2a1",
+      "originalBefore": 0.5858905351429156
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "G", "G"],
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "normalizedScanHash": "1fa60ae6d83fc4bc47807d7c4b082e0b560ab7954fa7e3a2649500d029502c57",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.054751823100446954
+      },
+      "before": 0.4575533363901827,
+      "after": 0.8896369447290731,
+      "renderHash": "17ecfe8ff21d7e1fc48960f68d09382f53721ae42c48842034d659276cc7e93b",
+      "originalBefore": 0.4575533363901827
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "G", "G"],
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "normalizedScanHash": "1fa60ae6d83fc4bc47807d7c4b082e0b560ab7954fa7e3a2649500d029502c57",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6583507246606028,
+      "after": 0.8262467826335647,
+      "renderHash": "7741f6fa155ad8e229028cf33d556b7847e8905974cefdbec2c310c701bf8dce",
+      "originalBefore": 0.5580267968081658
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["2", "G"],
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "normalizedScanHash": "66c9a29c57172dafc9bd3fd6c4aba789ccca1da3ef0d3badca9a48be3f4d4d8e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.048000610500610504
+      },
+      "before": 0.48402328370941694,
+      "after": 0.8558660103769302,
+      "renderHash": "e89cc28233144cdea6ee86d008fcf853b6b73cd4003b884e4803442d109073b2",
+      "originalBefore": 0.48402328370941694
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "G"],
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "normalizedScanHash": "66c9a29c57172dafc9bd3fd6c4aba789ccca1da3ef0d3badca9a48be3f4d4d8e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6646902684679052,
+      "after": 0.8425755763763564,
+      "renderHash": "09a54ff66ac7da336ab2f129a26f89016799847a989a4c5b2bde6ea25ca2c134",
+      "originalBefore": 0.5874594935437525
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "name": "Subdue",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["G"],
+      "referenceHash": "c49a105ae6be5da40c635b5d251417ea0c61d5f342de9473ab28cffdb267959c",
+      "normalizedScanHash": "d4dfb086a4b6d5b5262951b0349d7ee6979043ae6a180315c7faa85e593e757a",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.225,
+        "ty": 0.025000000000000022
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.0343328987396784
+      },
+      "before": 0.4538645071939949,
+      "after": 0.8378697436943073,
+      "renderHash": "1120b116302cab4ea959fbdbc2caf04bf0989cc5a3740e045faef64efb74ae2f",
+      "originalBefore": 0.4538645071939949
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "name": "Subdue",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["G"],
+      "referenceHash": "c49a105ae6be5da40c635b5d251417ea0c61d5f342de9473ab28cffdb267959c",
+      "normalizedScanHash": "d4dfb086a4b6d5b5262951b0349d7ee6979043ae6a180315c7faa85e593e757a",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.225,
+        "ty": 0.025000000000000022
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6259858645891896,
+      "after": 0.8575459935705658,
+      "renderHash": "debe2232b5ea7569684ce2c659116365af8cb54daa75fdc54ac220f1dc1f648e",
+      "originalBefore": 0.5433746179842385
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["2", "G"],
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "normalizedScanHash": "1d16ebc8858f3b5575f028af2f7d44ee6a950c7acd8694d1a25708c411f6ef44",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.125,
+        "ty": 0.05000000000000002
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.048000610500610504
+      },
+      "before": 0.5001445005471097,
+      "after": 0.8790132998398337,
+      "renderHash": "45b6ccbe92b421eb3a4fc34b5ec25786fa47ab6c01b4e17ee8be99f94e05f938",
+      "originalBefore": 0.5001445005471097
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "material": "G",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "G"],
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "normalizedScanHash": "1d16ebc8858f3b5575f028af2f7d44ee6a950c7acd8694d1a25708c411f6ef44",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.125,
+        "ty": 0.05000000000000002
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6395301649014391,
+      "after": 0.8205458542419499,
+      "renderHash": "cdffac9b8b3f9e71993a5f0d36130c08db6059ebfbb5a2eeb7f16aec1225eb13",
+      "originalBefore": 0.5718956849767488
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["1", "G", "G"],
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "normalizedScanHash": "8375ef4e53508c50d2b81bb10b3024c2ebb765139e3ecdd39dde0e4e6c195ac9",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.05457539402493531
+      },
+      "before": 0.43727109505415307,
+      "after": 0.8771574936687745,
+      "renderHash": "ff57fd1ab56aa75fff0291a74fbaac4552ccd72217c5bb85c85ec06e3fdd9cbf",
+      "originalBefore": 0.43727109505415307
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "material": "G",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["1", "G", "G"],
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "normalizedScanHash": "8375ef4e53508c50d2b81bb10b3024c2ebb765139e3ecdd39dde0e4e6c195ac9",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03710955710955711
+      },
+      "before": 0.6573756706805302,
+      "after": 0.8387923842050599,
+      "renderHash": "1f01156af87c9ca0d5b4e7884611879a8d7d55cb387c12c8480a9ee87cb0c9c0",
+      "originalBefore": 0.6027693945664971
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["U", "U", "W", "W"],
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "normalizedScanHash": "602e878f7e1ba46a305f76bf15dd96ec0c69455c56bb94dca233e9e4b08bad56",
+      "pose": {
+        "scale": 1.0004,
+        "tx": 0.30000000000000004,
+        "ty": -0.325
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 7,
+        "canonicalMeanDifference": 0.062476081132797553
+      },
+      "before": 0.4655712689649224,
+      "after": 0.9269702878353754,
+      "renderHash": "714e93e969e728f4256e023f0883ad7e6a9ed90bcc211e641f8998baf87bc383",
+      "originalBefore": 0.4655712689649224
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["U", "U", "W", "W"],
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "normalizedScanHash": "602e878f7e1ba46a305f76bf15dd96ec0c69455c56bb94dca233e9e4b08bad56",
+      "pose": {
+        "scale": 1.0004,
+        "tx": 0.30000000000000004,
+        "ty": -0.325
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.5842102704612282,
+      "after": 0.8602880895442679,
+      "renderHash": "56e5bfea6b822a2838f3bc6a7209c36e939144f1e96bf64acddb064d67a8895e",
+      "originalBefore": 0.5986460046011255
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["4", "W", "G", "R"],
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "pose": {
+        "scale": 1,
+        "tx": 0.1,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06568120933792576
+      },
+      "before": 0.4950068550696523,
+      "after": 0.9006501220478683,
+      "renderHash": "2a7c3513004e1f04364d59da6a72d7a3891e948a4be6683a95ef5d2cda078690",
+      "originalBefore": 0.4950068550696523
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4", "W", "G", "R"],
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "pose": {
+        "scale": 1,
+        "tx": 0.1,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.62813518367595,
+      "after": 0.9004952715524427,
+      "renderHash": "0e68fef854a89077dbd04ada8c2d559ec9ad6fbf2b0b28dbd3c938986e3f74b9",
+      "originalBefore": 0.6311412524635567
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [255, 18, 209, 52],
+      "bounds": [270.03920000000005, 35.628, 174, 23.4],
+      "symbols": ["2", "B", "B", "R", "R", "G", "G"],
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "pose": {
+        "scale": 0.9995,
+        "tx": 0.025000000000000022,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.07008342534658324
+      },
+      "before": 0.4045490364737079,
+      "after": 0.927196406772233,
+      "renderHash": "76c140025a4d26e1f8b0cbdb00608e55482fbb0dc1aa413ee2231d93f40b3bba",
+      "originalBefore": 0.4045490364737079
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "B", "B", "R", "R", "G", "G"],
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "pose": {
+        "scale": 0.9995,
+        "tx": 0.025000000000000022,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6454258481382995,
+      "after": 0.8985092544239297,
+      "renderHash": "fd3c4a3137436f9989a0a195446963c2ab8d453c44873d219e4e8fb57b73d8bf",
+      "originalBefore": 0.6288535551593228
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["2", "B", "B", "R"],
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "8986fb050a482efe6865d903d34778a7c9d6648433176d4313b9dd03c63210b6",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": 0.025000000000000022,
+        "ty": -0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06548985840030616
+      },
+      "before": 0.46766456954599767,
+      "after": 0.8518058689001964,
+      "renderHash": "27a825cd07fda8d1dc19d891c88bb9bea22d2fcff634fdce05bcb634d5496442",
+      "originalBefore": 0.46766456954599767
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "B", "B", "R"],
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "8986fb050a482efe6865d903d34778a7c9d6648433176d4313b9dd03c63210b6",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": 0.025000000000000022,
+        "ty": -0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6206932298385551,
+      "after": 0.8491404674659984,
+      "renderHash": "c30ea275b3681e75db537cf0d008e0eae57aff3ab74cfcc38e9b05c0f0cfbdca",
+      "originalBefore": 0.6402518523547016
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["3", "W", "W", "G"],
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "58921ef65f0687c807e40c5f0152223de60f0d2d563a4e282b2086458d2bc7f4",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.1,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06314580941446613
+      },
+      "before": 0.4832483835332073,
+      "after": 0.9322363146659761,
+      "renderHash": "02d988373865523f02615c4292723822bc38bc8510ba932ca216214def961398",
+      "originalBefore": 0.4832483835332073
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "W", "W", "G"],
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "58921ef65f0687c807e40c5f0152223de60f0d2d563a4e282b2086458d2bc7f4",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.1,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6222884618788898,
+      "after": 0.8699843812525316,
+      "renderHash": "d98017281b7124a7aa5ae4fa72c8ff0e4c591d4b723fb4628f2d3f60c34a690f",
+      "originalBefore": 0.6178152264984642
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [255, 18, 209, 52],
+      "bounds": [270.03920000000005, 35.628, 174, 23.4],
+      "symbols": ["2", "W", "W", "G", "G", "U", "U"],
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.024999999999999994,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.07088087351245247
+      },
+      "before": 0.4021795296997518,
+      "after": 0.9284856125272423,
+      "renderHash": "f15c10886e505c85f440aa338b0093341de2619229b845812d5bb42a738f85f2",
+      "originalBefore": 0.4021795296997518
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "W", "W", "G", "G", "U", "U"],
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.024999999999999994,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6099495452596289,
+      "after": 0.8479131836324778,
+      "renderHash": "ac650e7dc243b8e97835d12e30c233fd26aa7658eda59e9dc4adcd5ae38e5892",
+      "originalBefore": 0.613533319620726
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["U", "W", "G"],
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "92515b301313a04cdf9347f07b54e34be7e34766ec9bd88e8cfac708ae907023",
+      "pose": {
+        "scale": 1.001,
+        "tx": 0.07500000000000001,
+        "ty": -0.22499999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 7,
+        "canonicalMeanDifference": 0.06069160197600565
+      },
+      "before": 0.4921575362278904,
+      "after": 0.8982303238954814,
+      "renderHash": "ba4f99a601db294d50f64a82c400b46ac20409e94eac1b724b1c3bc5c4b8045b",
+      "originalBefore": 0.4921575362278904
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["U", "W", "G"],
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "92515b301313a04cdf9347f07b54e34be7e34766ec9bd88e8cfac708ae907023",
+      "pose": {
+        "scale": 1.001,
+        "tx": 0.07500000000000001,
+        "ty": -0.22499999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6183779048953818,
+      "after": 0.8481511846539739,
+      "renderHash": "7be198d4ea1184f8cf29334a20c5ce37ec31ebf45ce2b9b272065cc6888c79e7",
+      "originalBefore": 0.6163806814459195
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["1", "B", "U", "W"],
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "pose": {
+        "scale": 1.0016,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06596823574435515
+      },
+      "before": 0.46741014627590044,
+      "after": 0.8637962424672354,
+      "renderHash": "37ffa0ae00f3801528021ebaed1c41ed9d6d3163c1f4ea0fb51baeb6c59ec6b7",
+      "originalBefore": 0.46741014627590044
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["1", "B", "U", "W"],
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "pose": {
+        "scale": 1.0016,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.5988674961495641,
+      "after": 0.8820944806202291,
+      "renderHash": "059486b092ff080a3232ec1b31fdde7c1c6c78950fec275a5f5c35990965b81a",
+      "originalBefore": 0.6227466825483945
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["4", "W", "G"],
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "fc29c71a105cf637f24d4573935800d4bb9703efd235e7845582a83ccda6fe3a",
+      "pose": {
+        "scale": 1.0007,
+        "tx": 0.025000000000000022,
+        "ty": -0.04999999999999999
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 7,
+        "canonicalMeanDifference": 0.061691366737238296
+      },
+      "before": 0.5046975898751269,
+      "after": 0.8849378322577572,
+      "renderHash": "c993189aa7caff64b375b14ee52819a4aa43e78692b453c96f1c766c9e675363",
+      "originalBefore": 0.5046975898751269
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4", "W", "G"],
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "fc29c71a105cf637f24d4573935800d4bb9703efd235e7845582a83ccda6fe3a",
+      "pose": {
+        "scale": 1.0007,
+        "tx": 0.025000000000000022,
+        "ty": -0.04999999999999999
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6455655219012251,
+      "after": 0.8829416385713521,
+      "renderHash": "8e2f98ff256886448f492d2ff1123b9b969138d647c53a3efaef5d1b8edaec9b",
+      "originalBefore": 0.6615003465826239
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [305, 18, 159, 52],
+      "bounds": [320.23920000000004, 35.628, 123.79999999999998, 23.4],
+      "symbols": ["3", "W", "W", "G", "G"],
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "1b6b8f8fc5e50a3d61362c967e3fabf36896958192c9d46acb4118751af66fcb",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06458635703918723
+      },
+      "before": 0.44120386547244617,
+      "after": 0.9232603775326813,
+      "renderHash": "33d76659350389916d27c077414b8feba3c389fb72bd60fbc8c5547f002f4287",
+      "originalBefore": 0.44120386547244617
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "W", "W", "G", "G"],
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "1b6b8f8fc5e50a3d61362c967e3fabf36896958192c9d46acb4118751af66fcb",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6471561165972777,
+      "after": 0.88661451893287,
+      "renderHash": "5c73917fd3f624bcfabd6b76cdc259def09707413cf6b32981ff565639af15db",
+      "originalBefore": 0.6431590570370337
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["4", "W", "U"],
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "bd03cfcd9cbcf6769aad1bd59fc7e61b4b9986e27c86361c4d691a9704d816c2",
+      "pose": {
+        "scale": 1.0003,
+        "tx": 0.1,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 7,
+        "canonicalMeanDifference": 0.06274994119030816
+      },
+      "before": 0.5021209152940704,
+      "after": 0.9088116224084108,
+      "renderHash": "37f923e859514b9cd6b5cd26af9d59db0f022fca1dadd34e824d12444d7d4595",
+      "originalBefore": 0.5021209152940704
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4", "W", "U"],
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "bd03cfcd9cbcf6769aad1bd59fc7e61b4b9986e27c86361c4d691a9704d816c2",
+      "pose": {
+        "scale": 1.0003,
+        "tx": 0.1,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6472630575208478,
+      "after": 0.887079866886051,
+      "renderHash": "8ad66319ee2578f8d0e57ba3b1fbe8c1e338e910b01c16743c23766b5f744009",
+      "originalBefore": 0.6478108268879474
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["W", "U", "G"],
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "5b35c56f2b0cbeb4f75ef855f6f19ce30b0492b5a642f18bc187d848e16f467f",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 7,
+        "canonicalMeanDifference": 0.0625147024229593
+      },
+      "before": 0.5032414358877756,
+      "after": 0.9294189939875718,
+      "renderHash": "a91400ecf942d1a90b990466311b0d4efb24a3cac2774ce7020be4bd0deb4b83",
+      "originalBefore": 0.5032414358877756
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["W", "U", "G"],
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "5b35c56f2b0cbeb4f75ef855f6f19ce30b0492b5a642f18bc187d848e16f467f",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6390221450542213,
+      "after": 0.8937768459367157,
+      "renderHash": "f52582868f0815170626eeb32e3a586f0ea438caa7db1b7eab7e88a3ed5d72dc",
+      "originalBefore": 0.6426393751785265
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["3", "G", "R"],
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "70e50af9443eb53a2e230161029c90ae403e7a164547fc7b01d4c8609274cc7e",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.04999999999999999,
+        "ty": -0.024999999999999994
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 7,
+        "canonicalMeanDifference": 0.06463185132909903
+      },
+      "before": 0.5629466652176748,
+      "after": 0.8981375625840671,
+      "renderHash": "0bf1ba0ce17a14e4900dbdc50ea49cb3cb407cc2740bf444144ad83571cb27da",
+      "originalBefore": 0.5629466652176748
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "G", "R"],
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "70e50af9443eb53a2e230161029c90ae403e7a164547fc7b01d4c8609274cc7e",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.04999999999999999,
+        "ty": -0.024999999999999994
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6161095272551107,
+      "after": 0.8587272144660817,
+      "renderHash": "99b94a4255de74eb372792c0731254efe8c320248223151931f81aad58b5771b",
+      "originalBefore": 0.6136016387757472
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["3", "W", "G", "G"],
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "d575fadbe6df402a3086b361cf092b57198ae6baa831ff490fc66e5435c4f79b",
+      "pose": {
+        "scale": 0.9978,
+        "tx": 0.2,
+        "ty": 0.4
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06654228855721393
+      },
+      "before": 0.49731008355983525,
+      "after": 0.9209367804169076,
+      "renderHash": "7f0af5d019c2a738c9de4df9f436f249eb9d3b1dbd0dfc10d6641430e8410168",
+      "originalBefore": 0.49731008355983525
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "W", "G", "G"],
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "d575fadbe6df402a3086b361cf092b57198ae6baa831ff490fc66e5435c4f79b",
+      "pose": {
+        "scale": 0.9978,
+        "tx": 0.2,
+        "ty": 0.4
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6241153233133507,
+      "after": 0.8835372368491899,
+      "renderHash": "b331af6aaf8c24aa0db3fae90ef8eda1c49cb912d22c18f25044a9cff0e2ab0b",
+      "originalBefore": 0.626014547176373
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["G", "R", "B"],
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "e2162da99ba4c83ae3a3343d4d37edb69239fbbcb9499738e9ac8db3d54bb98f",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": -0.075,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06192660550458716
+      },
+      "before": 0.48030582016607004,
+      "after": 0.8936415525192836,
+      "renderHash": "eea30d6304f3a1c8eee567679098e36394bfc0300f987baecea4ba7f223f8c68",
+      "originalBefore": 0.48030582016607004
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "material": "M",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["G", "R", "B"],
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "e2162da99ba4c83ae3a3343d4d37edb69239fbbcb9499738e9ac8db3d54bb98f",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": -0.075,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.5618866222507948,
+      "after": 0.8500314755362618,
+      "renderHash": "c9ff5de41deb6f6a497a77c1d3050f722eec1f3dc94644c77df133f4c3d131dd",
+      "originalBefore": 0.582563264058402
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["3", "G", "R", "R"],
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "211bb5d39b3f925dc0a7b0c24ed386b2ed5635e0512f2fc8645ffc5ce8cfa0bf",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.06577688480673555
+      },
+      "before": 0.49379526490450376,
+      "after": 0.9174098402574358,
+      "renderHash": "bc12a07216d578ffa3887497278132f52a7fbdf600c3391586cb7bacb957bc90",
+      "originalBefore": 0.49379526490450376
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "material": "M",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "G", "R", "R"],
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "211bb5d39b3f925dc0a7b0c24ed386b2ed5635e0512f2fc8645ffc5ce8cfa0bf",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04634032634032634
+      },
+      "before": 0.6216332911625208,
+      "after": 0.8713773015041241,
+      "renderHash": "b2b8c0df3d8d7a28782cad2e54633b54de027060686c89d267ae8d2baacecfdd",
+      "originalBefore": 0.6282849848978208
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "name": "Voodoo Doll",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["6"],
+      "referenceHash": "b1cc09a2e9f971960df739b922ea67f88e3752b872e4275d15323120e28fc983",
+      "normalizedScanHash": "281eb4e978a372fc576928007e98fe9b7bc64f34ca2d3f5e7a2f69ad54b5d3dc",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.275,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.040091264667535854
+      },
+      "before": 0.5159657829926584,
+      "after": 0.807532099878252,
+      "renderHash": "6acef734b0baa54c1d74ed7a208bb185b5c2f10bddd6ec87de946da90a1c03b6",
+      "originalBefore": 0.5159657829926584
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "name": "Voodoo Doll",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["6"],
+      "referenceHash": "b1cc09a2e9f971960df739b922ea67f88e3752b872e4275d15323120e28fc983",
+      "normalizedScanHash": "281eb4e978a372fc576928007e98fe9b7bc64f34ca2d3f5e7a2f69ad54b5d3dc",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.275,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.649568375366695,
+      "after": 0.8698601086349472,
+      "renderHash": "bbb3f8d48ca1a205aece3b4a224946f9003655bfd6bd3bb68ccfcd3e80ab7d92",
+      "originalBefore": 0.6469980649049485
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "name": "Horn of Deafening",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["4"],
+      "referenceHash": "bbd17757203ad6c560a46beca59282d00ffcd336da5693079fb4ba72aee5cbde",
+      "normalizedScanHash": "42c6b4d014de48c11bb56e1024f269fd8009068b3c3987f05584b45b57f4ac59",
+      "pose": {
+        "scale": 0.9998,
+        "tx": 0,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.04030856149500217
+      },
+      "before": 0.4579198783366397,
+      "after": 0.7628190608840412,
+      "renderHash": "56837daef76873dd4bf4145c071e053b91684730d2773a7d6b3c57511c5883e5",
+      "originalBefore": 0.4579198783366397
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "name": "Horn of Deafening",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4"],
+      "referenceHash": "bbd17757203ad6c560a46beca59282d00ffcd336da5693079fb4ba72aee5cbde",
+      "normalizedScanHash": "42c6b4d014de48c11bb56e1024f269fd8009068b3c3987f05584b45b57f4ac59",
+      "pose": {
+        "scale": 0.9998,
+        "tx": 0,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.6616727506951434,
+      "after": 0.8558225461348384,
+      "renderHash": "9e5e0b152eb7173170d86580047262bfd6baa19cc01d1da7ecf34744cae311fe",
+      "originalBefore": 0.628476903089668
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "name": "Blue Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["4"],
+      "referenceHash": "edaf2c9a8bc26159026c5a005097c033065a015957216f4a54d4b94cfb89767f",
+      "normalizedScanHash": "1afa64ed4bbc48b5cf0623ac2b9cb652d74aaed8a0c746c86da63914b05ecf00",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.30000000000000004,
+        "ty": -0.275
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.04030856149500217
+      },
+      "before": 0.4916783828933722,
+      "after": 0.7972526883825353,
+      "renderHash": "7b74bac3049b6a1180b4eec0e88a8bbdb47b0f267e2ee36a488c9aae52bf5c14",
+      "originalBefore": 0.4916783828933722
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "name": "Blue Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4"],
+      "referenceHash": "edaf2c9a8bc26159026c5a005097c033065a015957216f4a54d4b94cfb89767f",
+      "normalizedScanHash": "1afa64ed4bbc48b5cf0623ac2b9cb652d74aaed8a0c746c86da63914b05ecf00",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.30000000000000004,
+        "ty": -0.275
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.6387239475274245,
+      "after": 0.8330085530438691,
+      "renderHash": "01b1ecb646450bd4703692cc87f04299cb3d2a98b87bc30046696f3d44153af5",
+      "originalBefore": 0.6230671116765538
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "name": "White Mana Battery",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["4"],
+      "referenceHash": "2258a4cb2c414ffdf151f09a1c42e368bcae793d49dc737de47cb6425cbb2110",
+      "normalizedScanHash": "6ec6ad13b3ffa0c7b0ac8c40aeb4e80cb9a443f8354ab28f2298068d3c8d82c8",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.04030856149500217
+      },
+      "before": 0.5241595504823021,
+      "after": 0.824785483090178,
+      "renderHash": "7c9dd7dd94c1c9acc201560e9ac5ea1b71a74fab1b252d7116de0624f5be1d2b",
+      "originalBefore": 0.5241595504823021
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "name": "White Mana Battery",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4"],
+      "referenceHash": "2258a4cb2c414ffdf151f09a1c42e368bcae793d49dc737de47cb6425cbb2110",
+      "normalizedScanHash": "6ec6ad13b3ffa0c7b0ac8c40aeb4e80cb9a443f8354ab28f2298068d3c8d82c8",
+      "pose": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.6693862732886573,
+      "after": 0.8831661919988333,
+      "renderHash": "7d552cc1b233bb6cd6b42113d2ad075c6cc4948a68f1e535d6b967bb763f7fdf",
+      "originalBefore": 0.665337902621925
+    },
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "name": "Red Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["4"],
+      "referenceHash": "54fad4eaf8b01ba76c859bcdf945ae42649926aa8b301b3ea5ae77515dcf8080",
+      "normalizedScanHash": "c3accdef6fccf4f6af960dd5fd8a427f22042cce2e552ef1b837e58b26be7679",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": -0.3,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.04030856149500217
+      },
+      "before": 0.48296391630309854,
+      "after": 0.795139510869067,
+      "renderHash": "b4b055c5c12be02b7950f09e17f97c262edbaaafb90ea3d3592261b3c4dbf574",
+      "originalBefore": 0.48296391630309854
+    },
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "name": "Red Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4"],
+      "referenceHash": "54fad4eaf8b01ba76c859bcdf945ae42649926aa8b301b3ea5ae77515dcf8080",
+      "normalizedScanHash": "c3accdef6fccf4f6af960dd5fd8a427f22042cce2e552ef1b837e58b26be7679",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": -0.3,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.6445786323547025,
+      "after": 0.8715300845771217,
+      "renderHash": "dc527ec6672fdc631bfb78e08d925ed83cd8190355fd730ac9c54a88e1058897",
+      "originalBefore": 0.6440353872419681
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "name": "Marble Priest",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["5"],
+      "referenceHash": "037f8a417c4bd5f8f4bb9283f8c856bc04688002d95c145ee4a9ebcd909f0341",
+      "normalizedScanHash": "7c79c2249bcc3763e77d9af9c6a5e638c865d32691d65098e7cd97c00bd45a05",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.04999999999999999,
+        "ty": -0.3
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.040091264667535854
+      },
+      "before": 0.5242511202886196,
+      "after": 0.7863594867986129,
+      "renderHash": "53aec11e24036c5751427f7ce5fe8b2468aaaf76f0dbf466ac1b62ce82eea00d",
+      "originalBefore": 0.5242511202886196
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "name": "Marble Priest",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["5"],
+      "referenceHash": "037f8a417c4bd5f8f4bb9283f8c856bc04688002d95c145ee4a9ebcd909f0341",
+      "normalizedScanHash": "7c79c2249bcc3763e77d9af9c6a5e638c865d32691d65098e7cd97c00bd45a05",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.04999999999999999,
+        "ty": -0.3
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.6610626104479469,
+      "after": 0.8536340321498976,
+      "renderHash": "3f3df284faa4dbf5fc0fc79842e2bc0ac83f7de6665fe9e152b462d268e0104b",
+      "originalBefore": 0.648557228080838
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "name": "Green Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["4"],
+      "referenceHash": "4f6a6040742778c3647460cfb78968b3d0b3efad6999f829f7fd69e5824ae0e0",
+      "normalizedScanHash": "279cadf5a054d79a1305ccffd80752373a740b8b6d008ac336e31a8f44a22f95",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.075,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.04030856149500217
+      },
+      "before": 0.4750881374289459,
+      "after": 0.7789381565753533,
+      "renderHash": "db249f0706205035c3bbc2d8d630c6895d8b0585bd65536bfcb5d884739efffb",
+      "originalBefore": 0.4750881374289459
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "name": "Green Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4"],
+      "referenceHash": "4f6a6040742778c3647460cfb78968b3d0b3efad6999f829f7fd69e5824ae0e0",
+      "normalizedScanHash": "279cadf5a054d79a1305ccffd80752373a740b8b6d008ac336e31a8f44a22f95",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.075,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.6454611787531017,
+      "after": 0.8764957151021799,
+      "renderHash": "3b6127e75f7b9664fa517161b917567ff78e9e97b62a824a5d971d43f0473b22",
+      "originalBefore": 0.6305499345694453
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "name": "Life Chisel",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["4"],
+      "referenceHash": "c11b2409a8bb88f3e1b0552027d77fd76a41cd1ab14281e885858c19be28c9a1",
+      "normalizedScanHash": "b0cc501f96a57501899a598ae5d3515fb8885f99c5c2b7d845ea74c0e96fa356",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.175,
+        "ty": 0.07500000000000001
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 8,
+        "canonicalMeanDifference": 0.04030856149500217
+      },
+      "before": 0.47278520535501134,
+      "after": 0.79431509280785,
+      "renderHash": "d78730c28810455a737673b2ebef5d0d07d1ce1b3946f5939ea641c495727f5b",
+      "originalBefore": 0.47278520535501134
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "name": "Life Chisel",
+      "material": "A",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4"],
+      "referenceHash": "c11b2409a8bb88f3e1b0552027d77fd76a41cd1ab14281e885858c19be28c9a1",
+      "normalizedScanHash": "b0cc501f96a57501899a598ae5d3515fb8885f99c5c2b7d845ea74c0e96fa356",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.175,
+        "ty": 0.07500000000000001
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04456876456876457
+      },
+      "before": 0.576799555595124,
+      "after": 0.804329219292061,
+      "renderHash": "0b67e891c327f069fa1c82dc6cd56194ac9de9a21b9af4fac533226b97d9d17c",
+      "originalBefore": 0.5996785931925497
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "name": "Backfire",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["U"],
+      "referenceHash": "08bb2c31bddfd41b55bc2803c900c26f21a9e25373fc8c70a4c7cd433dc1e3f6",
+      "normalizedScanHash": "a2fbcb6d481f2ff90084a94f435e5c10a9997257628e33d8f6a0118b9ca30747",
+      "pose": {
+        "scale": 0.9998,
+        "tx": -0.19999999999999998,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.04878313776618862
+      },
+      "before": 0.5128896079619893,
+      "after": 0.759144277358004,
+      "renderHash": "6e23ef0011122b2104c9168c26343ad4862bf6f63bedced2643621adaecc5da6",
+      "originalBefore": 0.5128896079619893
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "name": "Backfire",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["U"],
+      "referenceHash": "08bb2c31bddfd41b55bc2803c900c26f21a9e25373fc8c70a4c7cd433dc1e3f6",
+      "normalizedScanHash": "a2fbcb6d481f2ff90084a94f435e5c10a9997257628e33d8f6a0118b9ca30747",
+      "pose": {
+        "scale": 0.9998,
+        "tx": -0.19999999999999998,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.6206440116135707,
+      "after": 0.9183087623171088,
+      "renderHash": "699ce9bb0da36e8a49360e42f4dc24e84bb07eeb1198f947f5d0daa6c0f8bd90",
+      "originalBefore": 0.6313452737136087
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["2", "U"],
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "normalizedScanHash": "96e76202afeb47e88cb085719ce01cd5be7c04f15be95327cfbac7f26e2b2a65",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": -0.04999999999999999
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.06623931623931624
+      },
+      "before": 0.5951302854745655,
+      "after": 0.8758096528365958,
+      "renderHash": "694c394c5aa0e44e52c7dad962c793488a24048034d58329a57e47411d061254",
+      "originalBefore": 0.5951302854745655
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "U"],
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "normalizedScanHash": "96e76202afeb47e88cb085719ce01cd5be7c04f15be95327cfbac7f26e2b2a65",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": -0.04999999999999999
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.7119882476018994,
+      "after": 0.9310302903057952,
+      "renderHash": "b64e17076be45d738342085386994933ff8fa59332ea094e92625ada22839f2a",
+      "originalBefore": 0.7240341460077371
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "name": "Sea Kings' Blessing",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["U"],
+      "referenceHash": "9cd0dd93fc7aa6f57542480ed72f55ffba9e96b135fb02c929ff8346b36af09a",
+      "normalizedScanHash": "dd7fe484d28ecbb08c4b23b8669da1ffbd83ed80215ec0488f2ba835e988a8e8",
+      "pose": {
+        "scale": 1.0008,
+        "tx": 0.2,
+        "ty": -0.44999999999999996
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.04878313776618862
+      },
+      "before": 0.5652206361586308,
+      "after": 0.800519861909908,
+      "renderHash": "58aa91584130e13e6760438b59fceb7b03972e50d3526abd4d9624ef7938a603",
+      "originalBefore": 0.5652206361586308
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "name": "Sea Kings' Blessing",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["U"],
+      "referenceHash": "9cd0dd93fc7aa6f57542480ed72f55ffba9e96b135fb02c929ff8346b36af09a",
+      "normalizedScanHash": "dd7fe484d28ecbb08c4b23b8669da1ffbd83ed80215ec0488f2ba835e988a8e8",
+      "pose": {
+        "scale": 1.0008,
+        "tx": 0.2,
+        "ty": -0.44999999999999996
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.6611056571383472,
+      "after": 0.9564919165854817,
+      "renderHash": "3f405ff700a09dc6914482bdfb7e0069b92648ff0598e343f5621af2659184f2",
+      "originalBefore": 0.6789683657511418
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "name": "Venarian Gold",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["X", "U", "U"],
+      "referenceHash": "2017fdb5742af637b0fc576f0a7ca148910179c886c25db84fc908cd970cf168",
+      "normalizedScanHash": "71c0ed1837d46f001a688f4784a0846c8c3085ddfde650819117570396b734c2",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.875,
+        "ty": 0.325
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.07733474476593742
+      },
+      "before": 0.5312364449328257,
+      "after": 0.8461398791527022,
+      "renderHash": "7c4f96a89cbafb72280df982fa186a2f1290cb2723015c489452ffdfb29af8e2",
+      "originalBefore": 0.5312364449328257
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "name": "Venarian Gold",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["X", "U", "U"],
+      "referenceHash": "2017fdb5742af637b0fc576f0a7ca148910179c886c25db84fc908cd970cf168",
+      "normalizedScanHash": "71c0ed1837d46f001a688f4784a0846c8c3085ddfde650819117570396b734c2",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.875,
+        "ty": 0.325
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.662775620247418,
+      "after": 0.905067340307599,
+      "renderHash": "cb786a9008897cb1c73e811a222b31def26d2223ed22487dc1616da48a459689",
+      "originalBefore": 0.6672444224856684
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "name": "Teleport",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["U", "U", "U"],
+      "referenceHash": "9d1f6742b487aba6e6de2ac0d9a8c0521df6a0298428f7a20d7d5471accb7187",
+      "normalizedScanHash": "b819f1145bc79d437e586fef646a0983cb089fab6e9e59495bf72738e73df63b",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.275,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.07756998353328629
+      },
+      "before": 0.5418236091444111,
+      "after": 0.9012395282445851,
+      "renderHash": "7aa5e640cf570f339890265db49888d16fd527f8a243e8a62e9ccf862eb56616",
+      "originalBefore": 0.5418236091444111
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "name": "Teleport",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["U", "U", "U"],
+      "referenceHash": "9d1f6742b487aba6e6de2ac0d9a8c0521df6a0298428f7a20d7d5471accb7187",
+      "normalizedScanHash": "b819f1145bc79d437e586fef646a0983cb089fab6e9e59495bf72738e73df63b",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.275,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.6385452497632831,
+      "after": 0.9351116987043837,
+      "renderHash": "828359c207d254618e97f05224c990657467da97efbb1049eea17430f246a11f",
+      "originalBefore": 0.6469425513918837
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["1", "U"],
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "normalizedScanHash": "c1d66d2d9452da7ea75430f44e3891a8622445194ad4502439eb4dd172ce2310",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.19999999999999998,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.06616300366300366
+      },
+      "before": 0.5912028531568703,
+      "after": 0.8514525880005456,
+      "renderHash": "81573e2ff0e96aaa649aa5c7c7ebd57310f0e3f09bae06906265a65dcc0a7429",
+      "originalBefore": 0.5912028531568703
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["1", "U"],
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "normalizedScanHash": "c1d66d2d9452da7ea75430f44e3891a8622445194ad4502439eb4dd172ce2310",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.19999999999999998,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.6431123314934092,
+      "after": 0.9292579706593591,
+      "renderHash": "de241fec1ca77810cd27a4a3f29f0762f1f27ccae7b6cd903a4129fa004a4ba0",
+      "originalBefore": 0.6610306214395021
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "name": "Recall",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["X", "X", "U"],
+      "referenceHash": "02bd6fb7ccc9056cd6768f7c76239e5af988a4f5455102a791e99269477e7a78",
+      "normalizedScanHash": "b52cf152884c12e67b627a0b0b0cf73c1ab3379171a1c8df6049365907793c97",
+      "pose": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": -0.175
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.07692307692307693
+      },
+      "before": 0.5502612363039308,
+      "after": 0.8984387291921371,
+      "renderHash": "95637e4dddba66ad3a5f4d360a07da77cd01968d0ac593352781e5e02f7d1582",
+      "originalBefore": 0.5502612363039308
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "name": "Recall",
+      "material": "U",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["X", "X", "U"],
+      "referenceHash": "02bd6fb7ccc9056cd6768f7c76239e5af988a4f5455102a791e99269477e7a78",
+      "normalizedScanHash": "b52cf152884c12e67b627a0b0b0cf73c1ab3379171a1c8df6049365907793c97",
+      "pose": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": -0.175
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.6515541880825606,
+      "after": 0.9296779165730067,
+      "renderHash": "3079cb8ae1a441daebcc4f9954546238189620ed285c5991c54e33233b03fd87",
+      "originalBefore": 0.6594146541137946
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "name": "Energy Tap",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["U"],
+      "referenceHash": "7d66c09ec1d9796e6334c27312dcee7ff962aaf027effc7a840714d8316c1a98",
+      "normalizedScanHash": "9e277bee11634ae7fc743980ec3342194f70ca71499c40c147c0c068b19fd57d",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.375,
+        "ty": -0.3
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.04878313776618862
+      },
+      "before": 0.5983491455163745,
+      "after": 0.8110298300407273,
+      "renderHash": "28698d0bc741c9d9d94237aafe03b3126c60a52aa2763729e9dd4efb823da243",
+      "originalBefore": 0.5983491455163745
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "name": "Energy Tap",
+      "material": "U",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["U"],
+      "referenceHash": "7d66c09ec1d9796e6334c27312dcee7ff962aaf027effc7a840714d8316c1a98",
+      "normalizedScanHash": "9e277bee11634ae7fc743980ec3342194f70ca71499c40c147c0c068b19fd57d",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.375,
+        "ty": -0.3
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.03832167832167832
+      },
+      "before": 0.7167358455868127,
+      "after": 0.9175910715703596,
+      "renderHash": "1cdb07cbd2697c05c81aa38c758fa56671b4b0a59643aadaebd1371a94c17248",
+      "originalBefore": 0.7057846594994954
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "R", "R"],
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "normalizedScanHash": "9042d7e3645210994a0ff1ed262cfab3baa4159904072e4790723e4d521e8c34",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.2,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.04840037638202776
+      },
+      "before": 0.40382739075108287,
+      "after": 0.8350493611673355,
+      "renderHash": "bfb7ab590bb19a5281a0d86d89515a93438b2863c317ecb1652874779d5b8772",
+      "originalBefore": 0.40382739075108287
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "R", "R"],
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "normalizedScanHash": "9042d7e3645210994a0ff1ed262cfab3baa4159904072e4790723e4d521e8c34",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.2,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.5087679541548109,
+      "after": 0.7889537638487991,
+      "renderHash": "6fd278ad596c40927d3b58df0a370e11ac4445c76d95aceab48d666e11786e44",
+      "originalBefore": 0.4756757770418641
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "name": "Crimson Kobolds",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["0"],
+      "referenceHash": "50fa83ab665267ca144aaefada20bd10374715881a0debfbf489e635d71d4ec1",
+      "normalizedScanHash": "97c627f53332f5b4e54e394dd4a01cae3cf36c0c9a5f469183adf469e059ad15",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.1,
+        "ty": -0.5
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 10,
+        "canonicalMeanDifference": 0.03226857887874837
+      },
+      "before": 0.320346147450995,
+      "after": 0.7054704649309615,
+      "renderHash": "80365c4ef048bea74958a3610694a7347f6f36a1150dfccac59e7b2d00545196",
+      "originalBefore": 0.320346147450995
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "name": "Crimson Kobolds",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["0"],
+      "referenceHash": "50fa83ab665267ca144aaefada20bd10374715881a0debfbf489e635d71d4ec1",
+      "normalizedScanHash": "97c627f53332f5b4e54e394dd4a01cae3cf36c0c9a5f469183adf469e059ad15",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.1,
+        "ty": -0.5
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.5892295393603192,
+      "after": 0.7977652042600815,
+      "renderHash": "5558183843fd1380329b0fbeb618d03e4afef6a9498540fb50c341fd89158b8d",
+      "originalBefore": 0.505020815852017
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["3", "R"],
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "normalizedScanHash": "f7d6bb552b5043b2871ab400a02d693e00e4e07db89223954c95976c728d0302",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.25,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.040521978021978024
+      },
+      "before": 0.39300375940492027,
+      "after": 0.8102876841946818,
+      "renderHash": "ef0f567360d4f6187245741cc6fbe1ebe23b9dddcbccb386f312538e9aa6db34",
+      "originalBefore": 0.39300375940492027
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "R"],
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "normalizedScanHash": "f7d6bb552b5043b2871ab400a02d693e00e4e07db89223954c95976c728d0302",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.25,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.5491464384664884,
+      "after": 0.7723330073653383,
+      "renderHash": "63ae47020a7bdb8a02667a7fe4d774aeaa0dcc2b93b20067ca2d4ce01108503e",
+      "originalBefore": 0.5151309578332037
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "R", "R"],
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "normalizedScanHash": "daf28a560abdf4218e91dab4855cca8b6dbd52933b22844f0bc19372d608e910",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.1,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.04840037638202776
+      },
+      "before": 0.38998377872372403,
+      "after": 0.8168637725786263,
+      "renderHash": "d0df29acbb96d82b13c2b098ec8fdd07eaa224acdad9c865a9fc426e4ff5caad",
+      "originalBefore": 0.38998377872372403
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "R", "R"],
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "normalizedScanHash": "daf28a560abdf4218e91dab4855cca8b6dbd52933b22844f0bc19372d608e910",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.1,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.5079653650556453,
+      "after": 0.756746429619072,
+      "renderHash": "c34689ecb18fc86b1b95cb7015c44dd863979ff38d89c054c4a89825ce12d85a",
+      "originalBefore": 0.48592963863390914
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["4", "R"],
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "normalizedScanHash": "cc854ec66d96e274b990bbd489c5f61e317d507fecae2c8cef48db700748a84a",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.040521978021978024
+      },
+      "before": 0.3905616350714865,
+      "after": 0.8207995358176319,
+      "renderHash": "5a0dd60476bdb04a85ae0a13f04002a77c332469eb937ed8cf1ef7ffb8e40cac",
+      "originalBefore": 0.3905616350714865
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4", "R"],
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "normalizedScanHash": "cc854ec66d96e274b990bbd489c5f61e317d507fecae2c8cef48db700748a84a",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.5740380847758855,
+      "after": 0.7907383086454414,
+      "renderHash": "82ed2d5d2f5fe19d80775b206af3056773edbf254a8e77d83619a3c713d68320",
+      "originalBefore": 0.5098603950267169
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "name": "Dwarven Song",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["R"],
+      "referenceHash": "6d21130e5faf7ac195544c33a2cc792a48216074cf91d9515034f27e5405e611",
+      "normalizedScanHash": "cdbd9865d6d3cedc5eecd1f3d23fb836c5db32356dc788303bcd3d74b3768afc",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.028683181225554105
+      },
+      "before": 0.33934900912423405,
+      "after": 0.6702363038016264,
+      "renderHash": "c13e4d4cbdf8d8303584b69ace98c6c464ee4414cbf44c52dcaa04834d91cbd5",
+      "originalBefore": 0.33934900912423405
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "name": "Dwarven Song",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["R"],
+      "referenceHash": "6d21130e5faf7ac195544c33a2cc792a48216074cf91d9515034f27e5405e611",
+      "normalizedScanHash": "cdbd9865d6d3cedc5eecd1f3d23fb836c5db32356dc788303bcd3d74b3768afc",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0,
+        "ty": 0.225
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.515076410991844,
+      "after": 0.7410145529189753,
+      "renderHash": "25f4d2d6cf82b8fdbe83afcf4833dbb9788bafaded42124d37f1c6bafdcd2367",
+      "originalBefore": 0.46560378201453057
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["3", "R", "R"],
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "normalizedScanHash": "289bb402656d68add2dc4f34782c65267f857d23ab1e00e6644da9a6b8dbf3d4",
+      "pose": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.0481651376146789
+      },
+      "before": 0.39016071921309103,
+      "after": 0.8356753632609228,
+      "renderHash": "cd345f12a69c225200318d387434349f2d647ba593a736b9a11eeb341a8d3c12",
+      "originalBefore": 0.39016071921309103
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "material": "R",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "R", "R"],
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "normalizedScanHash": "289bb402656d68add2dc4f34782c65267f857d23ab1e00e6644da9a6b8dbf3d4",
+      "pose": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.5740535435657388,
+      "after": 0.785410909083321,
+      "renderHash": "165a85645a3f909a751d982831c4fe97356bb37f98e7d84e4b2e5803eba76bee",
+      "originalBefore": 0.5268159813365244
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["4", "R", "R"],
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "normalizedScanHash": "682767ec3d3a973169e93c4245b124c71e2ee80a16498a886c6804e1a0769015",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0.025000000000000022,
+        "ty": 0.525
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 9,
+        "canonicalMeanDifference": 0.0481651376146789
+      },
+      "before": 0.4042556887032105,
+      "after": 0.8202390354573204,
+      "renderHash": "d542efbc0720982b904944817030b188ad89dc1a2f08423f0adbce01fbfb25f0",
+      "originalBefore": 0.4042556887032105
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "material": "R",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["4", "R", "R"],
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "normalizedScanHash": "682767ec3d3a973169e93c4245b124c71e2ee80a16498a886c6804e1a0769015",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0.025000000000000022,
+        "ty": 0.525
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03160839160839161
+      },
+      "before": 0.49067805293189537,
+      "after": 0.7366960735828785,
+      "renderHash": "6cb506e4f206086e4dab56013ebb7d8a7511cac460c9c8a1e4e6530b54db313b",
+      "originalBefore": 0.48050123020964686
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["2", "B"],
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "normalizedScanHash": "65f8518995838480cc468b882e5c516d7f92a237a62aa4d108b6ac1c98d66530",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.125,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03403540903540903
+      },
+      "before": 0.48526490389018617,
+      "after": 0.8815221220525172,
+      "renderHash": "9792c6614a7745d56ef59ddd0501f72cd8db9a3dd005a6cbe356c0e1366a8144",
+      "originalBefore": 0.48526490389018617
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "B"],
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "normalizedScanHash": "65f8518995838480cc468b882e5c516d7f92a237a62aa4d108b6ac1c98d66530",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.125,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6799856717288961,
+      "after": 0.8663742026602332,
+      "renderHash": "ee379d2f4abe4bf6f9beecf2e1b0fcf73bdff572a4dc211a7b7ce022511a019b",
+      "originalBefore": 0.6365969710694973
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["3", "B", "B"],
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "normalizedScanHash": "8f4b07b45e445dfa032976994a42b42dfae9d289192051d6234db5f87aa75db0",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03599153140437544
+      },
+      "before": 0.48593073637746537,
+      "after": 0.9309359586023425,
+      "renderHash": "db5e4625d0fa237ad088feb84dde6710b0c329f114f696bf2d71d46a81f2dd95",
+      "originalBefore": 0.48593073637746537
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "B", "B"],
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "normalizedScanHash": "8f4b07b45e445dfa032976994a42b42dfae9d289192051d6234db5f87aa75db0",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.075
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6746202282769103,
+      "after": 0.8611279533100551,
+      "renderHash": "23b6aebb7adb529438df0ec4cda7813ecb8e9db4961b30cab8f08e918371fdb1",
+      "originalBefore": 0.634664284311887
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["3", "B"],
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "normalizedScanHash": "fe79c422493130071d806ef2762e38e9b2535a25d7dd3fcce90863ddd0261ce4",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.45,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.034340659340659344
+      },
+      "before": 0.4679701542651945,
+      "after": 0.8401331311775775,
+      "renderHash": "93a5ce88f172e1b875405467932d1f205a008b3298bdb84060cfb2917d1bb1dd",
+      "originalBefore": 0.4679701542651945
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "B"],
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "normalizedScanHash": "fe79c422493130071d806ef2762e38e9b2535a25d7dd3fcce90863ddd0261ce4",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.45,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6371835619797981,
+      "after": 0.8568724769729902,
+      "renderHash": "be8432228c07eff7f338d4649c4eb17be82041c172e194ab93102d7fb6ff2618",
+      "originalBefore": 0.6488892219494578
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "name": "Imprison",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["B"],
+      "referenceHash": "3fed4c9de5836a69a9539619a9d4a0ac7a9a159b49daf40f07eab2aca8077d38",
+      "normalizedScanHash": "c8d72378564e211bfc58d340c851dec68de2fecd7a780661433b1864cab94aa6",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.020317253368100825
+      },
+      "before": 0.4960930431271754,
+      "after": 0.7870489740198552,
+      "renderHash": "54e36a36ff281b98c3fcbf5b4d0b85af9e0f6a3b040808c03a5a0d00f3b75bbf",
+      "originalBefore": 0.4960930431271754
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "name": "Imprison",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["B"],
+      "referenceHash": "3fed4c9de5836a69a9539619a9d4a0ac7a9a159b49daf40f07eab2aca8077d38",
+      "normalizedScanHash": "c8d72378564e211bfc58d340c851dec68de2fecd7a780661433b1864cab94aa6",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6548682217971,
+      "after": 0.8341150498883446,
+      "renderHash": "e3b1f589035d67dc03caf7b1794cb4ef770b2ea53f8dcaed8118911eade37f52",
+      "originalBefore": 0.6231101693753537
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["3", "B", "B"],
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "normalizedScanHash": "eda398a14c0ad67d8841f6df41381a5afe541ff0013d02b594feb2d56fef2ac8",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.15,
+        "ty": 0.05000000000000002
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03599153140437544
+      },
+      "before": 0.4823164845178495,
+      "after": 0.9257587690393274,
+      "renderHash": "ed64bba8f5c247a110dac16f53ba55c2a2a57f7441d233d2b304571860e1c47f",
+      "originalBefore": 0.4823164845178495
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "B", "B"],
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "normalizedScanHash": "eda398a14c0ad67d8841f6df41381a5afe541ff0013d02b594feb2d56fef2ac8",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.15,
+        "ty": 0.05000000000000002
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6766497820656556,
+      "after": 0.8718860380091618,
+      "renderHash": "7aec9412173928e48893699009d392d7afe62de6dfcb6fa5db4f761d6786c5d3",
+      "originalBefore": 0.6453071003308544
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "B", "B"],
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "normalizedScanHash": "8da58f715c5b4999c7562a6c09117d6cb92551bb0b4abc876f4e7ba5ac8a9eb3",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.04999999999999999,
+        "ty": 0.55
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03569748294518937
+      },
+      "before": 0.4742549720200393,
+      "after": 0.9137245806345,
+      "renderHash": "9ba3559d363e36bed326a559499fc92edac34bbf13a7aa74c4742c3ceda6c6e1",
+      "originalBefore": 0.4742549720200393
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "B", "B"],
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "normalizedScanHash": "8da58f715c5b4999c7562a6c09117d6cb92551bb0b4abc876f4e7ba5ac8a9eb3",
+      "pose": {
+        "scale": 1.0009,
+        "tx": -0.04999999999999999,
+        "ty": 0.55
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6458931173820623,
+      "after": 0.8559521340831189,
+      "renderHash": "3a721db18da2b7d23fa99310277d86387cf53b18778f5d49a6f129d11110135d",
+      "originalBefore": 0.6288473397979956
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["3", "B", "B", "B"],
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "normalizedScanHash": "a2bdfffd0e3a258a781ef471437b924d37a58f2cd83176fe2d29486197d9a843",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.03965748182166093
+      },
+      "before": 0.4949761776223033,
+      "after": 0.9255574247892572,
+      "renderHash": "664bdd7423274731959d3bae4460e11145ac8e407be575760d52de53311bb5aa",
+      "originalBefore": 0.4949761776223033
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "material": "B",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "B", "B", "B"],
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "normalizedScanHash": "a2bdfffd0e3a258a781ef471437b924d37a58f2cd83176fe2d29486197d9a843",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": 0.1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6532894302504391,
+      "after": 0.852518043531268,
+      "renderHash": "8e7cd6216fc76953f81f0af1030a0bad51d7dda74aedfe8cac01cdd35b0b06f9",
+      "originalBefore": 0.6491158846287817
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["1", "B", "B"],
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "normalizedScanHash": "9af93997eb691d94fe0716d08ecb2a46ce72717406b53823a3ad4c6acc720bf1",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.22499999999999998,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.0358151023288638
+      },
+      "before": 0.47877165901713237,
+      "after": 0.9107118648789504,
+      "renderHash": "c943188a9f5e1baaba42f5341bc0570ae43bda997867363a61eb476b85c7b05c",
+      "originalBefore": 0.47877165901713237
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "material": "B",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["1", "B", "B"],
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "normalizedScanHash": "9af93997eb691d94fe0716d08ecb2a46ce72717406b53823a3ad4c6acc720bf1",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.22499999999999998,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 3,
+        "canonicalMeanDifference": 0.026013986013986013
+      },
+      "before": 0.6455555318098327,
+      "after": 0.8129249750460843,
+      "renderHash": "dfe597618ee8f89784cbaa357f726f11824badf444e053066973f8a09f2a3649",
+      "originalBefore": 0.6055918951544992
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [380, 18, 84, 52],
+      "bounds": [395.53920000000005, 35.628, 48.49999999999999, 23.4],
+      "symbols": ["3", "W"],
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "normalizedScanHash": "399642a911d44b0830d432e27dbdd85bd2710252ef6ef803112dc48692efa4b5",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.175,
+        "ty": -0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.03105921855921856
+      },
+      "before": 0.4832235314113452,
+      "after": 0.8755741823592998,
+      "renderHash": "dd05da2b3d50ccf1e625da6320471d6ed97656cbbb83a6a408ab8020a3a14d22",
+      "originalBefore": 0.4832235314113452
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["3", "W"],
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "normalizedScanHash": "399642a911d44b0830d432e27dbdd85bd2710252ef6ef803112dc48692efa4b5",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.175,
+        "ty": -0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.579090924052331,
+      "after": 0.890883316359133,
+      "renderHash": "9055dec3567d04b3c16b45a6478d04aa0727d21a59648ff3f2874891463d3ff1",
+      "originalBefore": 0.5774352448294484
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "name": "Visions",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [405, 18, 59, 52],
+      "bounds": [420.6392, 35.628, 23.4, 23.4],
+      "symbols": ["W"],
+      "referenceHash": "50762b5cb153942059bb0e4c7649d2195ada50f6715dd0486924eab548b30a30",
+      "normalizedScanHash": "55e279f2d67fc75136c32ce5140f5e119a729e6790e7de1ac3900d9d60b72734",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.275,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 1,
+        "canonicalMaxDifference": 4,
+        "canonicalMeanDifference": 0.020317253368100825
+      },
+      "before": 0.510054868318684,
+      "after": 0.864378666821604,
+      "renderHash": "c6ee9b6af4549dec0cd7913b95398b53f482fdec6fcf4e35f2efb3ba060b54ff",
+      "originalBefore": 0.510054868318684
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "name": "Visions",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["W"],
+      "referenceHash": "50762b5cb153942059bb0e4c7649d2195ada50f6715dd0486924eab548b30a30",
+      "normalizedScanHash": "55e279f2d67fc75136c32ce5140f5e119a729e6790e7de1ac3900d9d60b72734",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.275,
+        "ty": 0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.6217400376573827,
+      "after": 0.846825517538796,
+      "renderHash": "a5f3b5059c96c162ce880bea5e429c6658330e5629f26a370f7b49c7e30fcacc",
+      "originalBefore": 0.6178129766234379
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["X", "W", "W"],
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "normalizedScanHash": "1e9de8798380c969cc2b7934d3ccbcedc583f6e6b6a3145c6815bb496eaa37a1",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": -0.024999999999999994,
+        "ty": 0.15
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.038461538461538464
+      },
+      "before": 0.3962488526173814,
+      "after": 0.8902708908060607,
+      "renderHash": "d5169f12c2b4925fe87b29bc0250c0ad409ae8b4c53600ef05f8f20b400bafdd",
+      "originalBefore": 0.3962488526173814
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["X", "W", "W"],
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "normalizedScanHash": "1e9de8798380c969cc2b7934d3ccbcedc583f6e6b6a3145c6815bb496eaa37a1",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": -0.024999999999999994,
+        "ty": 0.15
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.5682089360559555,
+      "after": 0.8130802277546214,
+      "renderHash": "dbe1d325eec264adf50a80255c6f44c9c5dd2adce9bde0a2e74ff32257f3c560",
+      "originalBefore": 0.5630837755701419
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "W", "W"],
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "normalizedScanHash": "bb444248a8539283806f49e81a616e78cb766d61b3d58d034b8beac111bc78f0",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": -0.175,
+        "ty": 0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.03881439661256175
+      },
+      "before": 0.44451902345855393,
+      "after": 0.9042155761774434,
+      "renderHash": "12fbf449c719998611d0d435fa048289086c8c669a37d6f71ae130d029df9d58",
+      "originalBefore": 0.44451902345855393
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "W", "W"],
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "normalizedScanHash": "bb444248a8539283806f49e81a616e78cb766d61b3d58d034b8beac111bc78f0",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": -0.175,
+        "ty": 0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.549554935064721,
+      "after": 0.8287400145096744,
+      "renderHash": "086270006f6b6acd37c8952907d72fe3fce4d8322529de86c0a0c80b17fb9636",
+      "originalBefore": 0.5583171603876835
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["2", "W", "W"],
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "normalizedScanHash": "4fce5b8585ae6fd27ca95fc2838949e9990c2b6e5c1ee2ae6705d9cc1cb87f1a",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.05000000000000002,
+        "ty": -0.85
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.03881439661256175
+      },
+      "before": 0.4135021274424003,
+      "after": 0.7954664422269335,
+      "renderHash": "7a5ee85f56bf58d7fac5b66bcedf73374653855f03f959c6ae2817aa2e2defa3",
+      "originalBefore": 0.4135021274424003
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "W", "W"],
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "normalizedScanHash": "4fce5b8585ae6fd27ca95fc2838949e9990c2b6e5c1ee2ae6705d9cc1cb87f1a",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.05000000000000002,
+        "ty": -0.85
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.6405415298993204,
+      "after": 0.9007627189673959,
+      "renderHash": "f6b6a63bd5949057152736382bd4594053903e8359ea3b2588871cdbc234ccaf",
+      "originalBefore": 0.6294679505760865
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["6", "W", "W"],
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "normalizedScanHash": "e18de6831fbc94e94eeb9e9b5c475516bfeba93c68758cf6b2bc1677658a1ab3",
+      "pose": {
+        "scale": 1.0007,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.038873206304398965
+      },
+      "before": 0.43371108922653845,
+      "after": 0.8661155288302791,
+      "renderHash": "9d620d3a92874a5fc9cba9e79008a3c2c815f074712b83292ca8b51e3ca4bb7e",
+      "originalBefore": 0.43371108922653845
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["6", "W", "W"],
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "normalizedScanHash": "e18de6831fbc94e94eeb9e9b5c475516bfeba93c68758cf6b2bc1677658a1ab3",
+      "pose": {
+        "scale": 1.0007,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.5991551197851201,
+      "after": 0.8381022361199586,
+      "renderHash": "89b83e9fc865fade09442739a7d0675b31e29149b80d6574535b9dffa0647f21",
+      "originalBefore": 0.6066282134905252
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "mana",
+      "rect": [330, 18, 134, 52],
+      "bounds": [345.33920000000006, 35.628, 98.69999999999999, 23.4],
+      "symbols": ["2", "W", "W", "W"],
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "normalizedScanHash": "0b5009c269a788d365566d0c4935457d785b963bebccbdbf7b3c4750b9ea2b54",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.22499999999999998,
+        "ty": -1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 6,
+        "canonicalMeanDifference": 0.04147531572904707
+      },
+      "before": 0.36035799692089643,
+      "after": 0.7619121398560906,
+      "renderHash": "40d2e3ca5b74ca474224628a77d1e51d56722614196a508aa7d09fb7f5ca5ad6",
+      "originalBefore": 0.36035799692089643
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "material": "W",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["2", "W", "W", "W"],
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "normalizedScanHash": "0b5009c269a788d365566d0c4935457d785b963bebccbdbf7b3c4750b9ea2b54",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.22499999999999998,
+        "ty": -1
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.6275332733314662,
+      "after": 0.894963369517735,
+      "renderHash": "786651080dfa709ee5c4395dc775dd4ace30e39577f3e3f0f7e7f8c9f210d9df",
+      "originalBefore": 0.6226285978181814
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "mana",
+      "rect": [355, 18, 109, 52],
+      "bounds": [370.4392, 35.628, 73.6, 23.4],
+      "symbols": ["1", "W", "W"],
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "normalizedScanHash": "06d3a0a356ab2120549853ee4b1cb061dc835ead89fcc293b51239c5a8bdda0f",
+      "pose": {
+        "scale": 1.001,
+        "tx": 0.25,
+        "ty": -0.875
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.038873206304398965
+      },
+      "before": 0.4089642000067175,
+      "after": 0.7954686259789463,
+      "renderHash": "5e4574803d9f96584996a0fc72f978f7ea3d77fc924711c52f4ca0638fcb989c",
+      "originalBefore": 0.4089642000067175
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "material": "W",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": ["1", "W", "W"],
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "normalizedScanHash": "06d3a0a356ab2120549853ee4b1cb061dc835ead89fcc293b51239c5a8bdda0f",
+      "pose": {
+        "scale": 1.001,
+        "tx": 0.25,
+        "ty": -0.875
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 2,
+        "canonicalMeanDifference": 0.03048951048951049
+      },
+      "before": 0.6491559231137507,
+      "after": 0.8966181213360908,
+      "renderHash": "d5c592c5581a648bf3351707c51d1b00bdd45801009cb0afcbe1a445a28a088b",
+      "originalBefore": 0.6470781986985412
+    },
+    {
+      "id": "314fd1d7-4bd8-4d95-b7c2-1aa6660ab88a",
+      "name": "Mountain Stronghold",
+      "material": "L",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "29df3cbd554decb6049d51863b04d026f311f137b884f19b82e82923a48ed761",
+      "normalizedScanHash": "b24c9b440fc7382fe8c0e657e7b4aaed2b607a8152a56939819d0c45d45a7851",
+      "pose": {
+        "scale": 0.9974000000000001,
+        "tx": 0.4,
+        "ty": 0.925
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.46150779463547975,
+      "after": 0.6647205487596008,
+      "renderHash": "b1252594f9f3c4b70b6861c60a47ebe8a645590c00255b59999d5a324fe8891d",
+      "originalBefore": 0.4457699573231716
+    },
+    {
+      "id": "31d2422a-bb7d-4cdd-9aac-e5a936a4be3b",
+      "name": "Karakas",
+      "material": "L",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "5c1ae5bd88f323362504a766f0b7be67954294d5e86ef04aa72e610dd3b508e4",
+      "normalizedScanHash": "f22bbfa6d160335121d000ed1ea9987caa2f0e2aecdfab88b2d007c608ddf28b",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0,
+        "ty": -0.25
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.4767622999775742,
+      "after": 0.6859286169406165,
+      "renderHash": "233b5d1fa0078c36833042b2a8c5c67e28f84d5eec555eb3c39653e28f918c2f",
+      "originalBefore": 0.4479036791746419
+    },
+    {
+      "id": "32865e68-5842-4f17-b2ea-4ffa743b511f",
+      "name": "Adventurers' Guildhouse",
+      "material": "L",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "756c972fa9e29b9c084a5f689d31108ee74fc421576db106d56f09076e7bc90a",
+      "normalizedScanHash": "35c97c3f6a52619d63659f93eee5336690e8ec84750862dc6799d61bf634f6fa",
+      "pose": {
+        "scale": 1.0008,
+        "tx": 0.275,
+        "ty": -0.575
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.45979626290815845,
+      "after": 0.6911496271307844,
+      "renderHash": "b422db5b82fda1665070ae581ddc8d583612b314b2b91fff790f163985833caa",
+      "originalBefore": 0.42705479999567225
+    },
+    {
+      "id": "64bc9b1d-5818-4d9e-b771-e49af4ff9a5c",
+      "name": "The Tabernacle at Pendrell Vale",
+      "material": "L",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "b2315ac524b589ff4470f91f8653b2d15d32355591d431df3837f9b9a8a6e61e",
+      "normalizedScanHash": "a0aa95009994b626b242bc39d657724d2deed128e8abf941c51ff7f85801479d",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.025000000000000022,
+        "ty": 0.30000000000000004
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.4594850968406712,
+      "after": 0.6675141685176647,
+      "renderHash": "c2e6acfba4afdcf49418662ed1122d78cd05d4f5c3331e4411a018617194bfbc",
+      "originalBefore": 0.4218071048438853
+    },
+    {
+      "id": "66641d88-b3f0-4bcd-8d2d-29aa2de69e30",
+      "name": "Seafarer's Quay",
+      "material": "L",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "ec044cee2971741feb29fe57ee42142e56bebc90004a01aabf91a05ffe7cc2bf",
+      "normalizedScanHash": "39eace9c45625fb3df9c6cec3f1db5ca586fc6f07ec4971d00c2749c962b222e",
+      "pose": {
+        "scale": 1.0007,
+        "tx": -0.024999999999999994,
+        "ty": -0.19999999999999998
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.4714357564737266,
+      "after": 0.7155567428308035,
+      "renderHash": "d41e88960881c10847b5c8858246fb75b839ccc4d09b61983092ef4dbf42bc22",
+      "originalBefore": 0.45838880649371533
+    },
+    {
+      "id": "79427109-c1f3-476d-a029-0049217237b5",
+      "name": "Pendelhaven",
+      "material": "L",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "7dd6e9d2464cdf46d0b35e2ef4d1bd99df488fa87d7d0eeb01870c65b2ec041c",
+      "normalizedScanHash": "c509fb36f32bd982aaf09d6e5e74f277b18d82668582d92c1705ec542207c696",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": -0.125
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.4584839858689005,
+      "after": 0.6913048204795296,
+      "renderHash": "d75a51859c4c781c1d2791d6df08cd45be2d7b772f9204539c6d0165cc6fe96b",
+      "originalBefore": 0.4509649170540395
+    },
+    {
+      "id": "9de534ff-fb48-4692-bd0f-dd237ca28502",
+      "name": "Unholy Citadel",
+      "material": "L",
+      "cohort": "calibration",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "b2f066a665e41f7b100691ecf448a4787a0727590770864ee1275da32ab7007a",
+      "normalizedScanHash": "01d5cdea3eec700bd9fbc9a2f31f0d5cd73645cf0243c65ecde7117899f183de",
+      "pose": {
+        "scale": 1.0008,
+        "tx": -0.1,
+        "ty": -0.325
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.4707582511727013,
+      "after": 0.6853701461330209,
+      "renderHash": "fd635204de07d5c58b1aa9f0ce8bbc21b684c5f8ea714c57853e0e3654c7f1d6",
+      "originalBefore": 0.4566555523328565
+    },
+    {
+      "id": "d0a261d0-7678-46f7-9285-d541486567d8",
+      "name": "Urborg",
+      "material": "L",
+      "cohort": "validation",
+      "kind": "set",
+      "rect": [398, 367, 65, 55],
+      "bounds": [418.25, 382.75, 25.5, 22.5],
+      "symbols": [],
+      "referenceHash": "1dad94261fb5e400c5bfac5547933235394e3f75d3458cec49a0801f183be3d2",
+      "normalizedScanHash": "def546caee78ab9a4c833e5cc3324186b49e1d98d90b259374eb787a1353fc38",
+      "pose": {
+        "scale": 0.9982000000000001,
+        "tx": -0.575,
+        "ty": 0.775
+      },
+      "layerParity": {
+        "nativeMaxDifference": 2,
+        "canonicalMaxDifference": 5,
+        "canonicalMeanDifference": 0.04242424242424243
+      },
+      "before": 0.4266584513392129,
+      "after": 0.6861063821943751,
+      "renderHash": "98377c78dff4e88e4a3547192b7f991b99c46aa672e79b342eaccf81ab06fcc1",
+      "originalBefore": 0.4111881020912578
+    }
+  ],
+  "remaining": [
+    "Mana disc colors and ink/numeral shape are separate from this geometry fit.",
+    "Rules, artist and power/toughness remain separate calibration passes."
+  ]
+}

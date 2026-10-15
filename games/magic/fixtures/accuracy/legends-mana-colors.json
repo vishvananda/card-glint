@@ -1,0 +1,2788 @@
+{
+  "schemaVersion": 1,
+  "status": "adopted-on-branch-not-released",
+  "scope": "Ordinary black-border Legends, selected source frames, opt-in set-hsb-v1 printing colors. Three accepted disc targets; other discs retain prior colors.",
+  "policy": "Frozen scan poses. Sample only the inner 80% radius of the shared fitted disc geometry, then separate paper from ink. Multiple discs of one color count once per card. Fit on original training cards, validate held-out cards. Median Oklab error gain >0.25 and worst held-out regression <=3 required. All accepted targets replayed through actual material preparation and ordinary full-card painting.",
+  "templateHash": "e249f275309ddf04db4ee99b7f578b08fd40bbd88fa7aeedb973e32d4955adc9",
+  "geometry": "legends-symbols.json",
+  "canonicalSize": [488, 680],
+  "targets": {
+    "U": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+    "R": [0.8941176470588236, 0.7568627450980392, 0.5764705882352941],
+    "G": [0.7098039215686275, 0.8509803921568627, 0.5803921568627451]
+  },
+  "groups": [
+    {
+      "color": "W",
+      "target": [0.796078431372549, 0.8392156862745098, 0.6313725490196078],
+      "proposed": false,
+      "training": 9,
+      "held": 10,
+      "before": 5.332671638999372,
+      "after": 5.332671638999372,
+      "worstRegression": 0,
+      "accepted": false
+    },
+    {
+      "color": "U",
+      "target": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "proposed": true,
+      "training": 7,
+      "held": 7,
+      "before": 5.314805564367004,
+      "after": 2.353473405257861,
+      "worstRegression": -1.4614432566156674,
+      "accepted": true
+    },
+    {
+      "color": "B",
+      "target": [0.48627450980392156, 0.5137254901960784, 0.36470588235294116],
+      "proposed": false,
+      "training": 6,
+      "held": 6,
+      "before": 17.92652535881093,
+      "after": 17.92652535881093,
+      "worstRegression": 0,
+      "accepted": false
+    },
+    {
+      "color": "R",
+      "target": [0.8941176470588236, 0.7568627450980392, 0.5764705882352941],
+      "proposed": true,
+      "training": 7,
+      "held": 6,
+      "before": 7.886600991028935,
+      "after": 2.08661342844937,
+      "worstRegression": -4.738168665432271,
+      "accepted": true
+    },
+    {
+      "color": "G",
+      "target": [0.7098039215686275, 0.8509803921568627, 0.5803921568627451],
+      "proposed": true,
+      "training": 10,
+      "held": 10,
+      "before": 9.235095421291298,
+      "after": 2.7486186096454874,
+      "worstRegression": -2.813173796208913,
+      "accepted": true
+    },
+    {
+      "color": "N",
+      "target": [0.7372549019607844, 0.7372549019607844, 0.6078431372549019],
+      "proposed": false,
+      "training": 24,
+      "held": 25,
+      "before": 5.022464752259446,
+      "after": 5.022464752259446,
+      "worstRegression": 0,
+      "accepted": false
+    }
+  ],
+  "predictions": [
+    {
+      "color": "W",
+      "target": [0.796078431372549, 0.8392156862745098, 0.6313725490196078],
+      "training": 9,
+      "held": 10,
+      "before": 5.332671638999372,
+      "after": 3.3416094613637806,
+      "worstRegression": 3.2212951532731973,
+      "adopt": false,
+      "measured": [
+        {
+          "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+          "name": "Hazezon Tamar",
+          "before": 6.294190649307714,
+          "after": 1.3298354393535379
+        },
+        {
+          "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+          "name": "Arcades Sabboth",
+          "before": 5.718258002540377,
+          "after": 0.722411811949277
+        },
+        {
+          "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+          "name": "Halfdane",
+          "before": 5.979889032766076,
+          "after": 6.111460733620279
+        },
+        {
+          "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+          "name": "Gabriel Angelfire",
+          "before": 3.3177958256314666,
+          "after": 2.1266569323748223
+        },
+        {
+          "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+          "name": "Angus Mackenzie",
+          "before": 5.7342163021965415,
+          "after": 4.614545686219932
+        },
+        {
+          "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+          "name": "Torsten Von Ursus",
+          "before": 4.753147658044338,
+          "after": 4.82288006161577
+        },
+        {
+          "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+          "name": "Visions",
+          "before": 7.4451696040404025,
+          "after": 1.9571381088510202
+        },
+        {
+          "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+          "name": "Cleanse",
+          "before": 3.856852643068537,
+          "after": 4.253628516673046
+        },
+        {
+          "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+          "name": "Akron Legionnaire",
+          "before": 4.947085275458366,
+          "after": 2.4295904060545155
+        },
+        {
+          "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+          "name": "Thunder Spirit",
+          "before": 4.771132858498453,
+          "after": 7.992428011771651
+        }
+      ]
+    },
+    {
+      "color": "U",
+      "target": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "training": 7,
+      "held": 7,
+      "before": 5.314805564367004,
+      "after": 2.353473405257861,
+      "worstRegression": -1.4614432566156674,
+      "adopt": true,
+      "measured": [
+        {
+          "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+          "name": "Arcades Sabboth",
+          "before": 3.9539077701526133,
+          "after": 0.9193918785430182
+        },
+        {
+          "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+          "name": "Halfdane",
+          "before": 4.491066017608864,
+          "after": 3.0296227609931963
+        },
+        {
+          "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+          "name": "Angus Mackenzie",
+          "before": 3.7742141841087387,
+          "after": 1.3926373228446578
+        },
+        {
+          "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+          "name": "Devouring Deep",
+          "before": 7.151800476407411,
+          "after": 4.997472319695595
+        },
+        {
+          "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+          "name": "Venarian Gold",
+          "before": 5.314805564367004,
+          "after": 2.3441867266311465
+        },
+        {
+          "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+          "name": "Zephyr Falcon",
+          "before": 5.464818468479573,
+          "after": 2.353473405257861
+        },
+        {
+          "id": "37e69940-bdc8-48ff-a296-540343910adf",
+          "name": "Energy Tap",
+          "before": 6.695798229662681,
+          "after": 4.57042385882091
+        }
+      ]
+    },
+    {
+      "color": "B",
+      "target": [0.48627450980392156, 0.5137254901960784, 0.36470588235294116],
+      "training": 6,
+      "held": 6,
+      "before": 17.92652535881093,
+      "after": 1.6513418382833838,
+      "worstRegression": 5.576323537738571,
+      "adopt": false,
+      "measured": [
+        {
+          "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+          "name": "Tor Wauki",
+          "before": 18.272748808096402,
+          "after": 1.1062331816513582
+        },
+        {
+          "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+          "name": "Halfdane",
+          "before": 17.23235856817873,
+          "after": 1.1946970787038065
+        },
+        {
+          "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+          "name": "Fallen Angel",
+          "before": 18.082326604139904,
+          "after": 1.6772640983843148
+        },
+        {
+          "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+          "name": "Imprison",
+          "before": 20.09243859857931,
+          "after": 2.5748557270245365
+        },
+        {
+          "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+          "name": "All Hallow's Eve",
+          "before": 17.770724113481958,
+          "after": 1.6254195781824528
+        },
+        {
+          "id": "20275678-3488-43d8-a93b-993e2267ab07",
+          "name": "Ghosts of the Damned",
+          "before": 6.739901807734891,
+          "after": 12.316225345473462
+        }
+      ]
+    },
+    {
+      "color": "R",
+      "target": [0.8941176470588236, 0.7568627450980392, 0.5764705882352941],
+      "training": 7,
+      "held": 6,
+      "before": 7.886600991028935,
+      "after": 3.0676158760409376,
+      "worstRegression": -3.861389717973921,
+      "adopt": true,
+      "measured": [
+        {
+          "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+          "name": "Hazezon Tamar",
+          "before": 7.456501069203629,
+          "after": 3.428676676257661
+        },
+        {
+          "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+          "name": "Tor Wauki",
+          "before": 8.167063215002134,
+          "after": 3.262466104576861
+        },
+        {
+          "id": "67330004-6720-46d9-9de0-c79230110583",
+          "name": "Marhault Elsdragon",
+          "before": 10.972626870440049,
+          "after": 0.6996187659075764
+        },
+        {
+          "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+          "name": "Caverns of Despair",
+          "before": 7.711085096813475,
+          "after": 2.8727656475050147
+        },
+        {
+          "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+          "name": "Dwarven Song",
+          "before": 7.339176540952315,
+          "after": 3.477786822978394
+        },
+        {
+          "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+          "name": "Firestorm Phoenix",
+          "before": 8.062116885244395,
+          "after": 2.7764232593764353
+        }
+      ]
+    },
+    {
+      "color": "G",
+      "target": [0.7098039215686275, 0.8509803921568627, 0.5803921568627451],
+      "training": 10,
+      "held": 10,
+      "before": 9.235095421291298,
+      "after": 2.5558593192101746,
+      "worstRegression": -2.512592864862046,
+      "adopt": true,
+      "measured": [
+        {
+          "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+          "name": "Pradesh Gypsies",
+          "before": 5.6183524085206855,
+          "after": 3.1057595436586394
+        },
+        {
+          "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+          "name": "Willow Satyr",
+          "before": 9.752074329376574,
+          "after": 2.8423010463365195
+        },
+        {
+          "id": "123d6097-8021-46cd-a8c3-01013245e347",
+          "name": "Subdue",
+          "before": 11.92219686278531,
+          "after": 5.148610694622445
+        },
+        {
+          "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+          "name": "Hornet Cobra",
+          "before": 13.019494585412476,
+          "after": 6.039909177685556
+        },
+        {
+          "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+          "name": "Hazezon Tamar",
+          "before": 8.808050407128242,
+          "after": 0.6828011995950439
+        },
+        {
+          "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+          "name": "Arcades Sabboth",
+          "before": 9.944041669035048,
+          "after": 2.171314006843265
+        },
+        {
+          "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+          "name": "Gabriel Angelfire",
+          "before": 9.240603472852783,
+          "after": 2.2694175920838298
+        },
+        {
+          "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+          "name": "Angus Mackenzie",
+          "before": 9.229587369729815,
+          "after": 1.7257400737411877
+        },
+        {
+          "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+          "name": "Torsten Von Ursus",
+          "before": 5.783873396254357,
+          "after": 3.1941949252545454
+        },
+        {
+          "id": "67330004-6720-46d9-9de0-c79230110583",
+          "name": "Marhault Elsdragon",
+          "before": 8.606621301276396,
+          "after": 0.9062041806081235
+        }
+      ]
+    },
+    {
+      "color": "N",
+      "target": [0.7372549019607844, 0.7372549019607844, 0.6078431372549019],
+      "training": 24,
+      "held": 25,
+      "before": 5.022464752259446,
+      "after": 2.0468812027433883,
+      "worstRegression": 3.459376640106897,
+      "adopt": false,
+      "measured": [
+        {
+          "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+          "name": "Pradesh Gypsies",
+          "before": 6.239276534932779,
+          "after": 1.3060083344972724
+        },
+        {
+          "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+          "name": "Willow Satyr",
+          "before": 3.1723780473372036,
+          "after": 4.686530395622808
+        },
+        {
+          "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+          "name": "Hornet Cobra",
+          "before": 5.734269536389441,
+          "after": 8.673534295875333
+        },
+        {
+          "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+          "name": "Hazezon Tamar",
+          "before": 6.23386525803023,
+          "after": 1.0456996157329232
+        },
+        {
+          "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+          "name": "Tor Wauki",
+          "before": 6.847111018516607,
+          "after": 1.421757321629597
+        },
+        {
+          "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+          "name": "Arcades Sabboth",
+          "before": 3.902496830729125,
+          "after": 3.780316957935363
+        },
+        {
+          "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+          "name": "Halfdane",
+          "before": 5.835903591033715,
+          "after": 1.0448030439782117
+        },
+        {
+          "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+          "name": "Gabriel Angelfire",
+          "before": 2.733750862641966,
+          "after": 3.437547761412877
+        },
+        {
+          "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+          "name": "Torsten Von Ursus",
+          "before": 7.1509066869245155,
+          "after": 1.9186041166071144
+        },
+        {
+          "id": "67330004-6720-46d9-9de0-c79230110583",
+          "name": "Marhault Elsdragon",
+          "before": 4.233146237171143,
+          "after": 1.5593300141952462
+        },
+        {
+          "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+          "name": "Horn of Deafening",
+          "before": 4.742701575718454,
+          "after": 1.0662100738329536
+        },
+        {
+          "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+          "name": "White Mana Battery",
+          "before": 6.644717390158528,
+          "after": 1.5264422569443408
+        },
+        {
+          "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+          "name": "Marble Priest",
+          "before": 5.022464752259446,
+          "after": 1.56993233244687
+        },
+        {
+          "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+          "name": "Life Chisel",
+          "before": 3.4868753217426995,
+          "after": 2.354900792202212
+        },
+        {
+          "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+          "name": "Devouring Deep",
+          "before": 5.9462184581699296,
+          "after": 9.405595098276827
+        },
+        {
+          "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+          "name": "Zephyr Falcon",
+          "before": 4.785279748022586,
+          "after": 7.329436434194385
+        },
+        {
+          "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+          "name": "Crimson Kobolds",
+          "before": 4.132731556618834,
+          "after": 6.948327798812877
+        },
+        {
+          "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+          "name": "Caverns of Despair",
+          "before": 4.844317269194017,
+          "after": 0.766546506945045
+        },
+        {
+          "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+          "name": "Firestorm Phoenix",
+          "before": 5.142058538411456,
+          "after": 0.8161789453167432
+        },
+        {
+          "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+          "name": "Fallen Angel",
+          "before": 6.037800179311942,
+          "after": 1.2112169138332878
+        },
+        {
+          "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+          "name": "All Hallow's Eve",
+          "before": 6.649699829736511,
+          "after": 2.3676916403495616
+        },
+        {
+          "id": "20275678-3488-43d8-a93b-993e2267ab07",
+          "name": "Ghosts of the Damned",
+          "before": 3.9075365697591056,
+          "after": 7.217502947328269
+        },
+        {
+          "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+          "name": "Cleanse",
+          "before": 3.927377131930585,
+          "after": 2.0686383833284734
+        },
+        {
+          "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+          "name": "Akron Legionnaire",
+          "before": 3.5464487398929463,
+          "after": 2.0468812027433883
+        },
+        {
+          "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+          "name": "Thunder Spirit",
+          "before": 6.797499053882486,
+          "after": 2.172195647536543
+        }
+      ]
+    }
+  ],
+  "runtimeVerified": {
+    "cards": 64,
+    "exactPixelMatches": 64
+  },
+  "images": [
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "renderHash": "55c79355eceb91c05676cdf42ed7d92eb2d34dd40efa1bc1875f9659dd0e3a15"
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "renderHash": "ca773bbd850d0f4a90ea29f407db247872f5cafef7ca9abb6574a9992ad4edef"
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "renderHash": "00968d6ba463ea2ea8f5c5b84d0982fd70826b7dc7577803a921bbe62ee491c8"
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "renderHash": "c524ac724321595c9df41aedaf08389f3cec2bc68cbcfbe7485498ecfe01f621"
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "renderHash": "126b777ee3e53f2fb0276fd954fc68f8bd708413c141d10d562430fd1d50d013"
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "renderHash": "cc9da3550e5aabf5f48ede466690b130b191b1471713e9930d70ecfa45b21087"
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "renderHash": "2833c651db7f58fa7e152244063fd5d906b62acabe1e5a43b8bd0c8222e40aa4"
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "renderHash": "3c4ac33fbe89064f8102f33c5c2e5d8c934b861791b77a352401c9471134a336"
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "renderHash": "0b294b26544dd634c23b838869ab3d7b382ef01007d720e55cd851d7208c38be"
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "renderHash": "af5ac0dd37ad9d6806ae966891a83a195b67648bc39b0370fc44bed435aaf366"
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "renderHash": "b079f7f29b5ba6c6ebf84d2685926ed0da20496dfa3c98d85b6a36be5e81fd98"
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "renderHash": "049fea99eed34d4f2ec8c44c5eb07e3e2e6ac459bed7f227915fe8c81bfa4bfd"
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "renderHash": "ddf6add24205a8a9a44260b112c74c91646a00019a42808c2f84963e9cd05800"
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "renderHash": "b3439f206356f677bb4cdba19da668aba8f0b735627e1285c4e3d246a81cb069"
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "renderHash": "d2c8bdf7ad3938d8df5bbedc6e99c93548bfdaa377d36cba794dc8b335260e28"
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "renderHash": "70463904f8aaaf89377636741149690185e81496f04181f92080c9a96dae9115"
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "renderHash": "d4c6be4093932d3a2b72e41771b2fb2da2636c3cb3fd783d35994fbb2db164c6"
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "renderHash": "1ca8bf5f816c5c5002bf149680bb5a77117b3d4e124888e2ea3cabccf8c6faba"
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "renderHash": "2a1be71d44dd9ba52ecd3f227a744830f458e8497f6d05113832c42876172436"
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "renderHash": "c0a3ec6e01ccef0917e66b65cad60de6a0d587e59e576bdd4b3287ae5b89b8b9"
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "renderHash": "75c67c8cc021203443973ee68d48c3e2b49073a1f59546d7a1bd1914e7f14598"
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "renderHash": "5fd9b383d3630317fed5af659a04e4677ec5c800503e630c3493ef1d3abbd4ec"
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "renderHash": "498224c124b089b9b157c64ef1fa2065bf56bf779280c16415b9da22db7f3ad5"
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "renderHash": "730bda1f32d7aea7127850f4ce3e6c4c84fe5dad8f7b97de0805c19af4e0b5d7"
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "renderHash": "9e98010ed4d43df6f1f3136a02a1b1eba933d4664f084526c5bbbb6c80af2a1f"
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "renderHash": "bce6b1c8a7572da81f220e3b58aebeb7ca7cf9f78d3374ca99ea12a12483aa4d"
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "renderHash": "512f1b4f00040b75a54979cf7d9f983fabacb473d551802a04b0cf296f6e9086"
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "renderHash": "0ff01948174b9a2eb9875730e4bf2ed343fbaa59d82e04d305e5c170a9b4e286"
+    },
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "renderHash": "7d2a08842791a9d9794ae7cfd12de08ce113a88487a993aed39462ce268d33eb"
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "renderHash": "f855397c1c48a5e57df1ca96cce520c8a1894b5ac4939cb5c32e85927a91898d"
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "renderHash": "64d20701552dc75e6da1c93d87285ace317efbf3e4b6459a52b59e202c2ecf76"
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "renderHash": "c46deb9fc513d85224bbd98614c59a417e62bb3bb90b7ae5c98cac2906b2e2bb"
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "renderHash": "f403c4b48f6224572708c678a2d673607084efb4fb9de07c28d05be19e8dd340"
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "renderHash": "1d9ab87e99b74dcf5a177036fd24cf21750d6dc3d6a986ed3e06df9fff88ccee"
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "renderHash": "e975c4e0a9f976b9db55556a9e8e27abbbc030bccf54b302ebe1748b2a3f7845"
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "renderHash": "1bdf926bedbb0adebbb3c6bc756703987b2f9e4de838cd08680fad01c67986d7"
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "renderHash": "3fc95179d4056f0ce2973d82d38d2cba82ee3d78fde469098885d9dc29239081"
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "renderHash": "5440059b20ae22b5903ea95fc1a9b62348ef2d98a4c069f7799efbcb64e128f5"
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "renderHash": "cc4d0853c5d1386321c608dd914772ca8fb0608f5404acae231917b84c69c298"
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "renderHash": "b8d3f3caaf19c6178c1d972994bfdad53eef0024460d152f4295b4ecd0b052e1"
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "renderHash": "b6996ce540cfa1f71aa878d142d398be97c5e6194c56a2fe998622ab8646ff9f"
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "renderHash": "6aef0401a86ea85ac618a93bdcbf4cfade652b1d66fc8e2e40c4830af9b03cca"
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "renderHash": "6fe84a75d4d07e3edbb87e00be3c8548b4e488d072dc41d058009f559d8de86d"
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "renderHash": "8a1c529e146ce129f7601f574ba7a02d46188cd3e2e85d8e68aafa8941d89abd"
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "renderHash": "699675325a201b6ae07fd34ee925baef11ae4d44473f45e03b18592daa99eace"
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "renderHash": "ba30b15de9328f2eca6f7cac707c2983ca3fbf25c40d86f7059d5ffba91ccc00"
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "renderHash": "3b15c650269dc075dd253daa8f9cca38eccc4fa764038391a2f457c6c707a9cf"
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "renderHash": "de192c95640d98cb2cf940176bb57581587e4c279fa2fe0ccf911dff672d7208"
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "renderHash": "22980cd510a5fd2b9c6e85e91baf7a3640e8dc452da770cd29b82697aa8248be"
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "renderHash": "9c0583eb97820c8f2218ebfaad56a10fdee89b9cc72a86a5357235de47efd909"
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "renderHash": "7c604bf9cdc723fab725210dff95ee16f37e7316151a4064bf8f8cb343483514"
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "renderHash": "419b2e931042799e5e57f4bdb3fc5e7ab621c257dcbaf346003e32081181f186"
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "renderHash": "d16f9f8e352315ef801a4368d7541e12fab4e9c990ccecbd6cf4397c2190b460"
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "renderHash": "c2cb685e8afc2df169096ea605cbb03635e2fd3e1693b2ee14213f60a564b4d7"
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "renderHash": "89971120b29ed6ba76d6ac10841a920b8b51f38aae64d9754429a290ed10b78b"
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "renderHash": "abef79f649ecc71f799dabc29adba29077765dbe39514d5613e2ff645e34ec32"
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "renderHash": "39429334c75b1fde288893c4d427bae5e5cd55237bb594c65a90a100a84cbc35"
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "renderHash": "421b1075cb89b54f1be17ee40211d28d26fcfcb3b08a61980daa8de95aebe32a"
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "renderHash": "de0d39653a080bada52365c9d6f819f896956274d1723ca25635fc6e9f5d4c5b"
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "renderHash": "d7f148778bd161990f50a3e5c353e4cae717d67acbb2c00ec27a1fd03b2e3835"
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "renderHash": "3b189d617c1c1394d40e00e964ed5e022a7fb7e32fec57b4f78d9951e9c7cfdf"
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "renderHash": "51149cd05e084ad52f0f1e300fad3abd38249a31df23b8c2b96e79dbdb424937"
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "renderHash": "85ee74fe8ce9de1e644a2691c06bd1e567fc646eccd06a5a7d92f62a2ecef826"
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "renderHash": "8ff7e86805a7b8b70912196e17ab5f1726040180caffdb406bac5210ffdba682"
+    }
+  ],
+  "rendererSourceHash": "194c0710740b77b2239a8bdddba4e8481ca42fb82d7d540a3d3af603ba85792e",
+  "shapeDiagnostic": {
+    "policy": "Fixed geometry and references, same edge metric after changing disc colors. Diagnostic only; colors were fitted from paper samples, never selected using this score.",
+    "held": 32,
+    "before": 0.8509936342550155,
+    "after": 0.8502075699499141,
+    "rows": [
+      {
+        "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+        "name": "Pradesh Gypsies",
+        "before": 0.8532478496074973,
+        "after": 0.8427473714169127
+      },
+      {
+        "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+        "name": "Willow Satyr",
+        "before": 0.8896369447290731,
+        "after": 0.8719681679256295
+      },
+      {
+        "id": "123d6097-8021-46cd-a8c3-01013245e347",
+        "name": "Subdue",
+        "before": 0.8378697436943073,
+        "after": 0.8343241104482464
+      },
+      {
+        "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+        "name": "Hornet Cobra",
+        "before": 0.8771574936687745,
+        "after": 0.8749464314886386
+      },
+      {
+        "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+        "name": "Hazezon Tamar",
+        "before": 0.9006501220478683,
+        "after": 0.9061077474892113
+      },
+      {
+        "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+        "name": "Tor Wauki",
+        "before": 0.8518058689001964,
+        "after": 0.8639487063492465
+      },
+      {
+        "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+        "name": "Arcades Sabboth",
+        "before": 0.9284856125272423,
+        "after": 0.930199244811287
+      },
+      {
+        "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+        "name": "Halfdane",
+        "before": 0.8637962424672354,
+        "after": 0.8649078887535715
+      },
+      {
+        "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+        "name": "Gabriel Angelfire",
+        "before": 0.9232603775326813,
+        "after": 0.9213806517251923
+      },
+      {
+        "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+        "name": "Angus Mackenzie",
+        "before": 0.9294189939875718,
+        "after": 0.9344869706069439
+      },
+      {
+        "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+        "name": "Torsten Von Ursus",
+        "before": 0.9209367804169076,
+        "after": 0.9233828463141275
+      },
+      {
+        "id": "67330004-6720-46d9-9de0-c79230110583",
+        "name": "Marhault Elsdragon",
+        "before": 0.9174098402574358,
+        "after": 0.9216235623600618
+      },
+      {
+        "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+        "name": "Horn of Deafening",
+        "before": 0.7628190608840412,
+        "after": 0.7628190608840412
+      },
+      {
+        "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+        "name": "White Mana Battery",
+        "before": 0.824785483090178,
+        "after": 0.824785483090178
+      },
+      {
+        "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+        "name": "Marble Priest",
+        "before": 0.7863594867986129,
+        "after": 0.7863594867986129
+      },
+      {
+        "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+        "name": "Life Chisel",
+        "before": 0.79431509280785,
+        "after": 0.79431509280785
+      },
+      {
+        "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+        "name": "Devouring Deep",
+        "before": 0.8758096528365958,
+        "after": 0.8770408883766658
+      },
+      {
+        "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+        "name": "Venarian Gold",
+        "before": 0.8461398791527022,
+        "after": 0.8596474845431741
+      },
+      {
+        "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+        "name": "Zephyr Falcon",
+        "before": 0.8514525880005456,
+        "after": 0.8528789875115963
+      },
+      {
+        "id": "37e69940-bdc8-48ff-a296-540343910adf",
+        "name": "Energy Tap",
+        "before": 0.8110298300407273,
+        "after": 0.8202945877963007
+      },
+      {
+        "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+        "name": "Crimson Kobolds",
+        "before": 0.7054704649309615,
+        "after": 0.7054704649309615
+      },
+      {
+        "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+        "name": "Caverns of Despair",
+        "before": 0.8168637725786263,
+        "after": 0.8128936698135649
+      },
+      {
+        "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+        "name": "Dwarven Song",
+        "before": 0.6702363038016264,
+        "after": 0.6417636603475382
+      },
+      {
+        "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+        "name": "Firestorm Phoenix",
+        "before": 0.8202390354573204,
+        "after": 0.8057498958637761
+      },
+      {
+        "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+        "name": "Fallen Angel",
+        "before": 0.9309359586023425,
+        "after": 0.9309359586023425
+      },
+      {
+        "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+        "name": "Imprison",
+        "before": 0.7870489740198552,
+        "after": 0.7870489740198552
+      },
+      {
+        "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+        "name": "All Hallow's Eve",
+        "before": 0.9137245806345,
+        "after": 0.9137245806345
+      },
+      {
+        "id": "20275678-3488-43d8-a93b-993e2267ab07",
+        "name": "Ghosts of the Damned",
+        "before": 0.9107118648789504,
+        "after": 0.9107118648789504
+      },
+      {
+        "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+        "name": "Visions",
+        "before": 0.864378666821604,
+        "after": 0.864378666821604
+      },
+      {
+        "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+        "name": "Cleanse",
+        "before": 0.9042155761774434,
+        "after": 0.9042155761774434
+      },
+      {
+        "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+        "name": "Akron Legionnaire",
+        "before": 0.8661155288302791,
+        "after": 0.8661155288302791
+      },
+      {
+        "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+        "name": "Thunder Spirit",
+        "before": 0.7954686259789463,
+        "after": 0.7954686259789463
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "color": "N",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "normalizedScanHash": "c0af33a4cbb85d1b2628fafaa1a045041d8001736f10b62e48f656e6318c379e",
+      "scan": [0.7411764705882353, 0.7568627450980392, 0.6235294117647059],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.901425460881921,
+      "after": 4.901425460881921
+    },
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "color": "G",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "normalizedScanHash": "c0af33a4cbb85d1b2628fafaa1a045041d8001736f10b62e48f656e6318c379e",
+      "scan": [0.7303921568627451, 0.8794117647058823, 0.6088235294117648],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 10.041289869378483,
+      "after": 2.703284769208188
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "color": "N",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "normalizedScanHash": "68c02c10ffea7ebf934119e363b6182dc5cd4dddfa2da852f1f7024bb1ed00cf",
+      "scan": [0.7137254901960784, 0.7490196078431373, 0.596078431372549],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.239276534932779,
+      "after": 6.239276534932779
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "color": "G",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "normalizedScanHash": "68c02c10ffea7ebf934119e363b6182dc5cd4dddfa2da852f1f7024bb1ed00cf",
+      "scan": [0.6568627450980392, 0.8176470588235294, 0.5352941176470588],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 5.6183524085206855,
+      "after": 2.8051786123117726
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "color": "N",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "normalizedScanHash": "bfa8e1691f830da647ef74fd39e371042c45314cebc28481952a396c48d22c8b",
+      "scan": [0.7254901960784313, 0.7411764705882353, 0.6137254901960785],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.54765282067577,
+      "after": 5.54765282067577
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "color": "G",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "normalizedScanHash": "bfa8e1691f830da647ef74fd39e371042c45314cebc28481952a396c48d22c8b",
+      "scan": [0.6705882352941177, 0.8490196078431372, 0.5803921568627451],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 7.561841225713296,
+      "after": 0.9631321800494733
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "color": "N",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "normalizedScanHash": "1fa60ae6d83fc4bc47807d7c4b082e0b560ab7954fa7e3a2649500d029502c57",
+      "scan": [0.7843137254901961, 0.796078431372549, 0.6901960784313725],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.1723780473372036,
+      "after": 3.1723780473372036
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "color": "G",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "normalizedScanHash": "1fa60ae6d83fc4bc47807d7c4b082e0b560ab7954fa7e3a2649500d029502c57",
+      "scan": [0.7049019607843137, 0.8823529411764706, 0.6656862745098039],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 9.752074329376574,
+      "after": 3.294414299429635
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "color": "N",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "normalizedScanHash": "66c9a29c57172dafc9bd3fd6c4aba789ccca1da3ef0d3badca9a48be3f4d4d8e",
+      "scan": [0.7372549019607844, 0.7333333333333333, 0.5686274509803921],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.66908114105674,
+      "after": 6.66908114105674
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "color": "G",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "normalizedScanHash": "66c9a29c57172dafc9bd3fd6c4aba789ccca1da3ef0d3badca9a48be3f4d4d8e",
+      "scan": [0.7058823529411765, 0.8470588235294118, 0.5098039215686274],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 8.352692588433202,
+      "after": 2.029947636157072
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "name": "Subdue",
+      "color": "G",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "c49a105ae6be5da40c635b5d251417ea0c61d5f342de9473ab28cffdb267959c",
+      "normalizedScanHash": "d4dfb086a4b6d5b5262951b0349d7ee6979043ae6a180315c7faa85e593e757a",
+      "scan": [0.7823529411764706, 0.903921568627451, 0.6882352941176471],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 11.92219686278531,
+      "after": 5.437504153548126
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "color": "N",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "normalizedScanHash": "1d16ebc8858f3b5575f028af2f7d44ee6a950c7acd8694d1a25708c411f6ef44",
+      "scan": [0.7647058823529411, 0.7647058823529411, 0.6509803921568628],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.700373201259102,
+      "after": 3.700373201259102
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "color": "G",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "normalizedScanHash": "1d16ebc8858f3b5575f028af2f7d44ee6a950c7acd8694d1a25708c411f6ef44",
+      "scan": [0.7235294117647059, 0.8627450980392157, 0.6333333333333333],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 8.482318585977314,
+      "after": 1.9887163390040825
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "color": "N",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "normalizedScanHash": "8375ef4e53508c50d2b81bb10b3024c2ebb765139e3ecdd39dde0e4e6c195ac9",
+      "scan": [0.8392156862745098, 0.8470588235294118, 0.7333333333333333],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.734269536389441,
+      "after": 5.734269536389441
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "color": "G",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "normalizedScanHash": "8375ef4e53508c50d2b81bb10b3024c2ebb765139e3ecdd39dde0e4e6c195ac9",
+      "scan": [0.8107843137254902, 0.9088235294117647, 0.6950980392156862],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 13.019494585412476,
+      "after": 6.591219676672297
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "color": "U",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "normalizedScanHash": "602e878f7e1ba46a305f76bf15dd96ec0c69455c56bb94dca233e9e4b08bad56",
+      "scan": [0.7215686274509804, 0.9, 0.9058823529411765],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 4.025885835950025,
+      "after": 1.2596618291433972
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "color": "W",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "normalizedScanHash": "602e878f7e1ba46a305f76bf15dd96ec0c69455c56bb94dca233e9e4b08bad56",
+      "scan": [0.7166666666666667, 0.7941176470588236, 0.6313725490196078],
+      "base": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "actual": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "before": 3.9048918025386894,
+      "after": 3.9048918025386894
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "scan": [0.7411764705882353, 0.7215686274509804, 0.5882352941176471],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.23386525803023,
+      "after": 6.23386525803023
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "color": "W",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "scan": [0.7686274509803922, 0.8313725490196079, 0.6078431372549019],
+      "base": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "actual": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "before": 6.294190649307714,
+      "after": 6.294190649307714
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "color": "G",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "scan": [0.6980392156862745, 0.8588235294117647, 0.5764705882352941],
+      "base": [0.6294117647058823, 0.7411764705882353, 0.5764705882352941],
+      "actual": [0.6980392156862745, 0.8392156862745098, 0.5725490196078431],
+      "before": 8.808050407128242,
+      "after": 1.3324791560332914
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "color": "R",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "290d13127e869d5e532c0dd7c3db30f3b55067fff1a7fab2af05f0ffe217669e",
+      "scan": [0.9137254901960784, 0.7019607843137254, 0.5098039215686274],
+      "base": [0.8764705882352941, 0.5862745098039216, 0.4568627450980392],
+      "actual": [0.8764705882352941, 0.7411764705882353, 0.5647058823529412],
+      "before": 7.456501069203629,
+      "after": 2.6925631621332617
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "color": "N",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "scan": [0.7647058823529411, 0.7686274509803922, 0.6411764705882352],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.075273605127992,
+      "after": 4.075273605127992
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "color": "B",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "scan": [0.5862745098039216, 0.5872549019607842, 0.44313725490196076],
+      "base": [0.7147058823529412, 0.7, 0.6803921568627451],
+      "actual": [0.7147058823529412, 0.7, 0.6803921568627451],
+      "before": 11.36654256361208,
+      "after": 11.36654256361208
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "color": "R",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "scan": [0.8941176470588235, 0.7627450980392156, 0.5745098039215686],
+      "base": [0.8764705882352941, 0.5882352941176471, 0.45882352941176474],
+      "actual": [0.8764705882352941, 0.7431372549019608, 0.5647058823529412],
+      "before": 10.84244278768846,
+      "after": 1.48407642486482
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "color": "G",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "578853031e3e181102298168df8cf48f9ad71cd84a74bfec8f96783a494675bf",
+      "scan": [0.7274509803921568, 0.8637254901960785, 0.6049019607843138],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 9.002119062152477,
+      "after": 1.7917391765027422
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "8986fb050a482efe6865d903d34778a7c9d6648433176d4313b9dd03c63210b6",
+      "scan": [0.7333333333333333, 0.7333333333333333, 0.5647058823529412],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.847111018516607,
+      "after": 6.847111018516607
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "color": "B",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "8986fb050a482efe6865d903d34778a7c9d6648433176d4313b9dd03c63210b6",
+      "scan": [0.5019607843137255, 0.5176470588235293, 0.3392156862745098],
+      "base": [0.7205882352941176, 0.7049019607843137, 0.6882352941176471],
+      "actual": [0.7205882352941176, 0.7049019607843137, 0.6882352941176471],
+      "before": 18.272748808096402,
+      "after": 18.272748808096402
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "color": "R",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "8986fb050a482efe6865d903d34778a7c9d6648433176d4313b9dd03c63210b6",
+      "scan": [0.8784313725490196, 0.7156862745098039, 0.49019607843137253],
+      "base": [0.8764705882352941, 0.5862745098039216, 0.4568627450980392],
+      "actual": [0.8764705882352941, 0.7411764705882353, 0.5647058823529412],
+      "before": 8.167063215002134,
+      "after": 2.3293653650160095
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "color": "N",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "58921ef65f0687c807e40c5f0152223de60f0d2d563a4e282b2086458d2bc7f4",
+      "scan": [0.7647058823529411, 0.7333333333333333, 0.615686274509804],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.91352828609844,
+      "after": 4.91352828609844
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "color": "W",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "58921ef65f0687c807e40c5f0152223de60f0d2d563a4e282b2086458d2bc7f4",
+      "scan": [0.7382352941176471, 0.7990196078431373, 0.6313725490196078],
+      "base": [0.7980392156862746, 0.7745098039215685, 0.6823529411764706],
+      "actual": [0.7980392156862746, 0.7745098039215685, 0.6823529411764706],
+      "before": 3.540200354124845,
+      "after": 3.540200354124845
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "color": "G",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "58921ef65f0687c807e40c5f0152223de60f0d2d563a4e282b2086458d2bc7f4",
+      "scan": [0.6823529411764706, 0.8431372549019608, 0.6078431372549019],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 6.767919158602285,
+      "after": 1.2568559405936144
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "scan": [0.796078431372549, 0.7803921568627451, 0.6470588235294118],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.902496830729125,
+      "after": 3.902496830729125
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "color": "W",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "scan": [0.788235294117647, 0.85, 0.646078431372549],
+      "base": [0.7980392156862746, 0.7745098039215685, 0.6823529411764706],
+      "actual": [0.7980392156862746, 0.7745098039215685, 0.6823529411764706],
+      "before": 5.718258002540377,
+      "after": 5.718258002540377
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "color": "G",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "scan": [0.7245098039215686, 0.8784313725490196, 0.6294117647058823],
+      "base": [0.6313725490196078, 0.7431372549019608, 0.5764705882352941],
+      "actual": [0.7019607843137254, 0.8411764705882353, 0.5725490196078431],
+      "before": 9.944041669035048,
+      "after": 2.857930395465149
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "color": "U",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "baee9ef6799e4081634f7ae5105a6cad87f718e94ad8ea23b006223bea92b493",
+      "scan": [0.7049019607843137, 0.888235294117647, 0.8784313725490196],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 3.9539077701526133,
+      "after": 0.9193918785430182
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "color": "U",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "92515b301313a04cdf9347f07b54e34be7e34766ec9bd88e8cfac708ae907023",
+      "scan": [0.6235294117647059, 0.8470588235294118, 0.8509803921568627],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 4.872328747682703,
+      "after": 4.431059279271997
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "color": "W",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "92515b301313a04cdf9347f07b54e34be7e34766ec9bd88e8cfac708ae907023",
+      "scan": [0.796078431372549, 0.8392156862745098, 0.6627450980392157],
+      "base": [0.8196078431372549, 0.796078431372549, 0.7019607843137254],
+      "actual": [0.8196078431372549, 0.796078431372549, 0.7019607843137254],
+      "before": 3.701275410787847,
+      "after": 3.701275410787847
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "color": "G",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "92515b301313a04cdf9347f07b54e34be7e34766ec9bd88e8cfac708ae907023",
+      "scan": [0.6784313725490196, 0.8313725490196079, 0.5725490196078431],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 6.20641122148385,
+      "after": 1.4495383242912183
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "scan": [0.7411764705882353, 0.7215686274509804, 0.6039215686274509],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.835903591033715,
+      "after": 5.835903591033715
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "color": "B",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "scan": [0.5137254901960784, 0.5176470588235295, 0.3764705882352941],
+      "base": [0.7176470588235294, 0.7019607843137254, 0.6862745098039216],
+      "actual": [0.7176470588235294, 0.7019607843137254, 0.6862745098039216],
+      "before": 17.23235856817873,
+      "after": 17.23235856817873
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "color": "U",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "scan": [0.6549019607843137, 0.8627450980392157, 0.8470588235294118],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 4.491066017608864,
+      "after": 3.0296227609931963
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "color": "W",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "01e24652d231f71dcc0afb3ac04c2ea68c53d52c473abbd1fa40834b832debc8",
+      "scan": [0.6980392156862745, 0.7725490196078432, 0.5450980392156862],
+      "base": [0.7372549019607844, 0.7137254901960784, 0.6313725490196078],
+      "actual": [0.7372549019607844, 0.7137254901960784, 0.6313725490196078],
+      "before": 5.979889032766076,
+      "after": 5.979889032766076
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "color": "N",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "fc29c71a105cf637f24d4573935800d4bb9703efd235e7845582a83ccda6fe3a",
+      "scan": [0.7333333333333333, 0.7372549019607844, 0.596078431372549],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.924913216283332,
+      "after": 5.924913216283332
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "color": "W",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "fc29c71a105cf637f24d4573935800d4bb9703efd235e7845582a83ccda6fe3a",
+      "scan": [0.8235294117647058, 0.8588235294117647, 0.611764705882353],
+      "base": [0.8196078431372549, 0.796078431372549, 0.7019607843137254],
+      "actual": [0.8196078431372549, 0.796078431372549, 0.7019607843137254],
+      "before": 6.015138156491662,
+      "after": 6.015138156491662
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "color": "G",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "fc29c71a105cf637f24d4573935800d4bb9703efd235e7845582a83ccda6fe3a",
+      "scan": [0.7098039215686275, 0.8549019607843137, 0.5490196078431373],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 8.38671957336277,
+      "after": 1.1511326833634907
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "1b6b8f8fc5e50a3d61362c967e3fabf36896958192c9d46acb4118751af66fcb",
+      "scan": [0.7647058823529411, 0.7764705882352941, 0.6862745098039216],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 2.733750862641966,
+      "after": 2.733750862641966
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "color": "W",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "1b6b8f8fc5e50a3d61362c967e3fabf36896958192c9d46acb4118751af66fcb",
+      "scan": [0.788235294117647, 0.8205882352941176, 0.6705882352941177],
+      "base": [0.7980392156862746, 0.7745098039215685, 0.6823529411764706],
+      "actual": [0.7980392156862746, 0.7745098039215685, 0.6823529411764706],
+      "before": 3.3177958256314666,
+      "after": 3.3177958256314666
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "color": "G",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "1b6b8f8fc5e50a3d61362c967e3fabf36896958192c9d46acb4118751af66fcb",
+      "scan": [0.6980392156862745, 0.8754901960784314, 0.6509803921568628],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 9.240603472852783,
+      "after": 2.6920586069792023
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "color": "N",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "bd03cfcd9cbcf6769aad1bd59fc7e61b4b9986e27c86361c4d691a9704d816c2",
+      "scan": [0.7980392156862746, 0.7784313725490196, 0.6588235294117647],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.439450904482836,
+      "after": 3.439450904482836
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "color": "W",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "bd03cfcd9cbcf6769aad1bd59fc7e61b4b9986e27c86361c4d691a9704d816c2",
+      "scan": [0.8274509803921568, 0.8705882352941177, 0.6509803921568628],
+      "base": [0.8196078431372549, 0.796078431372549, 0.7019607843137254],
+      "actual": [0.8196078431372549, 0.796078431372549, 0.7019607843137254],
+      "before": 5.916962879871714,
+      "after": 5.916962879871714
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "color": "U",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "bd03cfcd9cbcf6769aad1bd59fc7e61b4b9986e27c86361c4d691a9704d816c2",
+      "scan": [0.7294117647058823, 0.9019607843137255, 0.8823529411764706],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 4.542818226324089,
+      "after": 1.0291323843712203
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "color": "W",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "5b35c56f2b0cbeb4f75ef855f6f19ce30b0492b5a642f18bc187d848e16f467f",
+      "scan": [0.7098039215686275, 0.796078431372549, 0.5647058823529412],
+      "base": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "actual": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "before": 5.7342163021965415,
+      "after": 5.7342163021965415
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "color": "U",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "5b35c56f2b0cbeb4f75ef855f6f19ce30b0492b5a642f18bc187d848e16f467f",
+      "scan": [0.707843137254902, 0.8803921568627451, 0.8666666666666667],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 3.7742141841087387,
+      "after": 1.3926373228446578
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "color": "G",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "5b35c56f2b0cbeb4f75ef855f6f19ce30b0492b5a642f18bc187d848e16f467f",
+      "scan": [0.7470588235294118, 0.8666666666666667, 0.5980392156862745],
+      "base": [0.6352941176470588, 0.7490196078431373, 0.5803921568627451],
+      "actual": [0.7058823529411765, 0.8470588235294118, 0.5764705882352941],
+      "before": 9.229587369729815,
+      "after": 2.019364734005087
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "color": "N",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "70e50af9443eb53a2e230161029c90ae403e7a164547fc7b01d4c8609274cc7e",
+      "scan": [0.7764705882352941, 0.7686274509803922, 0.6274509803921569],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.400810760848857,
+      "after": 4.400810760848857
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "color": "G",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "70e50af9443eb53a2e230161029c90ae403e7a164547fc7b01d4c8609274cc7e",
+      "scan": [0.7215686274509804, 0.8725490196078431, 0.5764705882352941],
+      "base": [0.6294117647058823, 0.7411764705882353, 0.5764705882352941],
+      "actual": [0.6980392156862745, 0.8392156862745098, 0.5725490196078431],
+      "before": 9.994411447649885,
+      "after": 2.4795373599398
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "color": "R",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "70e50af9443eb53a2e230161029c90ae403e7a164547fc7b01d4c8609274cc7e",
+      "scan": [0.9235294117647059, 0.7568627450980392, 0.5470588235294118],
+      "base": [0.8764705882352941, 0.5862745098039216, 0.4568627450980392],
+      "actual": [0.8764705882352941, 0.7411764705882353, 0.5647058823529412],
+      "before": 10.8946811880366,
+      "after": 2.2767114276618994
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "d575fadbe6df402a3086b361cf092b57198ae6baa831ff490fc66e5435c4f79b",
+      "scan": [0.6941176470588235, 0.7254901960784313, 0.5862745098039216],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 7.1509066869245155,
+      "after": 7.1509066869245155
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "color": "W",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "d575fadbe6df402a3086b361cf092b57198ae6baa831ff490fc66e5435c4f79b",
+      "scan": [0.6980392156862745, 0.792156862745098, 0.6039215686274509],
+      "base": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "actual": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "before": 4.753147658044338,
+      "after": 4.753147658044338
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "color": "G",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "d575fadbe6df402a3086b361cf092b57198ae6baa831ff490fc66e5435c4f79b",
+      "scan": [0.6362745098039215, 0.8225490196078431, 0.557843137254902],
+      "base": [0.6323529411764706, 0.7450980392156863, 0.5784313725490196],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5745098039215686],
+      "before": 5.783873396254357,
+      "after": 2.6361896756141365
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "color": "G",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "e2162da99ba4c83ae3a3343d4d37edb69239fbbcb9499738e9ac8db3d54bb98f",
+      "scan": [0.6823529411764706, 0.8392156862745098, 0.5803921568627451],
+      "base": [0.6313725490196078, 0.7450980392156863, 0.5764705882352941],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5725490196078431],
+      "before": 6.9832846929901615,
+      "after": 0.7311564784080313
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "color": "R",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "e2162da99ba4c83ae3a3343d4d37edb69239fbbcb9499738e9ac8db3d54bb98f",
+      "scan": [0.8823529411764706, 0.7058823529411765, 0.49411764705882355],
+      "base": [0.8745098039215686, 0.5882352941176471, 0.4549019607843137],
+      "actual": [0.8745098039215686, 0.7411764705882353, 0.5647058823529412],
+      "before": 7.3919936281179615,
+      "after": 2.5501908947019336
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "color": "B",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "e2162da99ba4c83ae3a3343d4d37edb69239fbbcb9499738e9ac8db3d54bb98f",
+      "scan": [0.4843137254901961, 0.5274509803921569, 0.3764705882352941],
+      "base": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "actual": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "before": 17.2620752455914,
+      "after": 17.2620752455914
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "color": "N",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "211bb5d39b3f925dc0a7b0c24ed386b2ed5635e0512f2fc8645ffc5ce8cfa0bf",
+      "scan": [0.7450980392156863, 0.7568627450980392, 0.6431372549019608],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.233146237171143,
+      "after": 4.233146237171143
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "color": "G",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "211bb5d39b3f925dc0a7b0c24ed386b2ed5635e0512f2fc8645ffc5ce8cfa0bf",
+      "scan": [0.7019607843137254, 0.8627450980392157, 0.6058823529411764],
+      "base": [0.6313725490196078, 0.7450980392156863, 0.5764705882352941],
+      "actual": [0.7019607843137254, 0.8431372549019608, 0.5725490196078431],
+      "before": 8.606621301276396,
+      "after": 1.4182661562572967
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "color": "R",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "211bb5d39b3f925dc0a7b0c24ed386b2ed5635e0512f2fc8645ffc5ce8cfa0bf",
+      "scan": [0.9009803921568628, 0.7627450980392156, 0.5637254901960784],
+      "base": [0.8754901960784314, 0.5872549019607843, 0.45588235294117646],
+      "actual": [0.8754901960784314, 0.7411764705882353, 0.5647058823529412],
+      "before": 10.972626870440049,
+      "after": 1.8211676687429683
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "name": "Voodoo Doll",
+      "color": "N",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "b1cc09a2e9f971960df739b922ea67f88e3752b872e4275d15323120e28fc983",
+      "normalizedScanHash": "281eb4e978a372fc576928007e98fe9b7bc64f34ca2d3f5e7a2f69ad54b5d3dc",
+      "scan": [0.7549019607843137, 0.7254901960784313, 0.6039215686274509],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.5214390856996225,
+      "after": 5.5214390856996225
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "name": "Horn of Deafening",
+      "color": "N",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "bbd17757203ad6c560a46beca59282d00ffcd336da5693079fb4ba72aee5cbde",
+      "normalizedScanHash": "42c6b4d014de48c11bb56e1024f269fd8009068b3c3987f05584b45b57f4ac59",
+      "scan": [0.7490196078431373, 0.7333333333333333, 0.6313725490196078],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.742701575718454,
+      "after": 4.742701575718454
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "name": "Blue Mana Battery",
+      "color": "N",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "edaf2c9a8bc26159026c5a005097c033065a015957216f4a54d4b94cfb89767f",
+      "normalizedScanHash": "1afa64ed4bbc48b5cf0623ac2b9cb652d74aaed8a0c746c86da63914b05ecf00",
+      "scan": [0.7627450980392156, 0.7450980392156863, 0.6411764705882352],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.051978118654209,
+      "after": 4.051978118654209
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "name": "White Mana Battery",
+      "color": "N",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "2258a4cb2c414ffdf151f09a1c42e368bcae793d49dc737de47cb6425cbb2110",
+      "normalizedScanHash": "6ec6ad13b3ffa0c7b0ac8c40aeb4e80cb9a443f8354ab28f2298068d3c8d82c8",
+      "scan": [0.7098039215686275, 0.7215686274509804, 0.596078431372549],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.644717390158528,
+      "after": 6.644717390158528
+    },
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "name": "Red Mana Battery",
+      "color": "N",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "54fad4eaf8b01ba76c859bcdf945ae42649926aa8b301b3ea5ae77515dcf8080",
+      "normalizedScanHash": "c3accdef6fccf4f6af960dd5fd8a427f22042cce2e552ef1b837e58b26be7679",
+      "scan": [0.7254901960784313, 0.7098039215686275, 0.596078431372549],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.6208354361558905,
+      "after": 6.6208354361558905
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "name": "Marble Priest",
+      "color": "N",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "037f8a417c4bd5f8f4bb9283f8c856bc04688002d95c145ee4a9ebcd909f0341",
+      "normalizedScanHash": "7c79c2249bcc3763e77d9af9c6a5e638c865d32691d65098e7cd97c00bd45a05",
+      "scan": [0.7176470588235294, 0.7333333333333333, 0.6470588235294118],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.022464752259446,
+      "after": 5.022464752259446
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "name": "Green Mana Battery",
+      "color": "N",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "4f6a6040742778c3647460cfb78968b3d0b3efad6999f829f7fd69e5824ae0e0",
+      "normalizedScanHash": "279cadf5a054d79a1305ccffd80752373a740b8b6d008ac336e31a8f44a22f95",
+      "scan": [0.7411764705882353, 0.7215686274509804, 0.6039215686274509],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.835903591033715,
+      "after": 5.835903591033715
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "name": "Life Chisel",
+      "color": "N",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "c11b2409a8bb88f3e1b0552027d77fd76a41cd1ab14281e885858c19be28c9a1",
+      "normalizedScanHash": "b0cc501f96a57501899a598ae5d3515fb8885f99c5c2b7d845ea74c0e96fa356",
+      "scan": [0.7686274509803922, 0.7607843137254902, 0.6549019607843137],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.4868753217426995,
+      "after": 3.4868753217426995
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "name": "Backfire",
+      "color": "U",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "08bb2c31bddfd41b55bc2803c900c26f21a9e25373fc8c70a4c7cd433dc1e3f6",
+      "normalizedScanHash": "a2fbcb6d481f2ff90084a94f435e5c10a9997257628e33d8f6a0118b9ca30747",
+      "scan": [0.6823529411764706, 0.8745098039215686, 0.8784313725490196],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 3.574531653427844,
+      "after": 1.9361464706233154
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "color": "N",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "normalizedScanHash": "96e76202afeb47e88cb085719ce01cd5be7c04f15be95327cfbac7f26e2b2a65",
+      "scan": [0.8549019607843137, 0.8509803921568627, 0.7568627450980392],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.9462184581699296,
+      "after": 5.9462184581699296
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "color": "U",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "normalizedScanHash": "96e76202afeb47e88cb085719ce01cd5be7c04f15be95327cfbac7f26e2b2a65",
+      "scan": [0.8117647058823529, 0.9450980392156862, 0.9352941176470588],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 7.151800476407411,
+      "after": 4.997472319695595
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "name": "Sea Kings' Blessing",
+      "color": "U",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "9cd0dd93fc7aa6f57542480ed72f55ffba9e96b135fb02c929ff8346b36af09a",
+      "normalizedScanHash": "dd7fe484d28ecbb08c4b23b8669da1ffbd83ed80215ec0488f2ba835e988a8e8",
+      "scan": [0.6941176470588235, 0.9215686274509803, 0.9411764705882353],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 5.198245639538497,
+      "after": 2.0923620095733875
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "name": "Venarian Gold",
+      "color": "U",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "2017fdb5742af637b0fc576f0a7ca148910179c886c25db84fc908cd970cf168",
+      "normalizedScanHash": "71c0ed1837d46f001a688f4784a0846c8c3085ddfde650819117570396b734c2",
+      "scan": [0.7627450980392156, 0.9156862745098039, 0.8901960784313725],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 5.314805564367004,
+      "after": 2.3441867266311465
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "name": "Teleport",
+      "color": "U",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "9d1f6742b487aba6e6de2ac0d9a8c0521df6a0298428f7a20d7d5471accb7187",
+      "normalizedScanHash": "b819f1145bc79d437e586fef646a0983cb089fab6e9e59495bf72738e73df63b",
+      "scan": [0.6862745098039216, 0.8784313725490196, 0.8627450980392157],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 4.070068955197748,
+      "after": 1.606961081554552
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "color": "N",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "normalizedScanHash": "c1d66d2d9452da7ea75430f44e3891a8622445194ad4502439eb4dd172ce2310",
+      "scan": [0.792156862745098, 0.8372549019607843, 0.7294117647058823],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.785279748022586,
+      "after": 4.785279748022586
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "color": "U",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "normalizedScanHash": "c1d66d2d9452da7ea75430f44e3891a8622445194ad4502439eb4dd172ce2310",
+      "scan": [0.7450980392156863, 0.9235294117647059, 0.9137254901960784],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 5.464818468479573,
+      "after": 2.353473405257861
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "name": "Recall",
+      "color": "U",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "02bd6fb7ccc9056cd6768f7c76239e5af988a4f5455102a791e99269477e7a78",
+      "normalizedScanHash": "b52cf152884c12e67b627a0b0b0cf73c1ab3379171a1c8df6049365907793c97",
+      "scan": [0.7196078431372549, 0.9019607843137255, 0.9019607843137255],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 4.22627918581263,
+      "after": 1.0838894044709673
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "name": "Energy Tap",
+      "color": "U",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "7d66c09ec1d9796e6334c27312dcee7ff962aaf027effc7a840714d8316c1a98",
+      "normalizedScanHash": "9e277bee11634ae7fc743980ec3342194f70ca71499c40c147c0c068b19fd57d",
+      "scan": [0.803921568627451, 0.9392156862745098, 0.9333333333333333],
+      "base": [0.7568627450980392, 0.8431372549019608, 0.9137254901960784],
+      "actual": [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
+      "before": 6.695798229662681,
+      "after": 4.57042385882091
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "color": "N",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "normalizedScanHash": "9042d7e3645210994a0ff1ed262cfab3baa4159904072e4790723e4d521e8c34",
+      "scan": [0.7058823529411765, 0.7137254901960784, 0.5725490196078431],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 7.4624741752826,
+      "after": 7.4624741752826
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "color": "R",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "normalizedScanHash": "9042d7e3645210994a0ff1ed262cfab3baa4159904072e4790723e4d521e8c34",
+      "scan": [0.8558823529411764, 0.7068627450980391, 0.5137254901960784],
+      "base": [0.8754901960784314, 0.5872549019607843, 0.45588235294117646],
+      "actual": [0.8754901960784314, 0.7411764705882353, 0.5647058823529412],
+      "before": 7.336358798279127,
+      "after": 2.5494523581333315
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "name": "Crimson Kobolds",
+      "color": "N",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "50fa83ab665267ca144aaefada20bd10374715881a0debfbf489e635d71d4ec1",
+      "normalizedScanHash": "97c627f53332f5b4e54e394dd4a01cae3cf36c0c9a5f469183adf469e059ad15",
+      "scan": [0.8156862745098039, 0.8235294117647058, 0.7215686274509804],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.132731556618834,
+      "after": 4.132731556618834
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "color": "N",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "normalizedScanHash": "f7d6bb552b5043b2871ab400a02d693e00e4e07db89223954c95976c728d0302",
+      "scan": [0.7392156862745098, 0.7450980392156863, 0.6392156862745098],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.528219378522488,
+      "after": 4.528219378522488
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "color": "R",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "normalizedScanHash": "f7d6bb552b5043b2871ab400a02d693e00e4e07db89223954c95976c728d0302",
+      "scan": [0.8745098039215686, 0.7294117647058823, 0.5764705882352941],
+      "base": [0.8764705882352941, 0.5862745098039216, 0.4568627450980392],
+      "actual": [0.8764705882352941, 0.7411764705882353, 0.5647058823529412],
+      "before": 8.779065176574532,
+      "after": 0.9936842269011882
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "color": "N",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "normalizedScanHash": "daf28a560abdf4218e91dab4855cca8b6dbd52933b22844f0bc19372d608e910",
+      "scan": [0.7450980392156863, 0.7372549019607844, 0.6274509803921569],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.844317269194017,
+      "after": 4.844317269194017
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "color": "R",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "normalizedScanHash": "daf28a560abdf4218e91dab4855cca8b6dbd52933b22844f0bc19372d608e910",
+      "scan": [0.888235294117647, 0.711764705882353, 0.5313725490196078],
+      "base": [0.8754901960784314, 0.5872549019607843, 0.45588235294117646],
+      "actual": [0.8754901960784314, 0.7411764705882353, 0.5647058823529412],
+      "before": 7.711085096813475,
+      "after": 1.8438614918827305
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "color": "N",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "normalizedScanHash": "cc854ec66d96e274b990bbd489c5f61e317d507fecae2c8cef48db700748a84a",
+      "scan": [0.8196078431372549, 0.8352941176470589, 0.7372549019607844],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 4.68793838100887,
+      "after": 4.68793838100887
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "color": "R",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "normalizedScanHash": "cc854ec66d96e274b990bbd489c5f61e317d507fecae2c8cef48db700748a84a",
+      "scan": [0.9450980392156862, 0.8352941176470589, 0.6509803921568628],
+      "base": [0.8764705882352941, 0.5862745098039216, 0.4568627450980392],
+      "actual": [0.8764705882352941, 0.7411764705882353, 0.5647058823529412],
+      "before": 15.907819796758327,
+      "after": 6.802310285153703
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "name": "Dwarven Song",
+      "color": "R",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "6d21130e5faf7ac195544c33a2cc792a48216074cf91d9515034f27e5405e611",
+      "normalizedScanHash": "cdbd9865d6d3cedc5eecd1f3d23fb836c5db32356dc788303bcd3d74b3768afc",
+      "scan": [0.9019607843137255, 0.7019607843137254, 0.5058823529411764],
+      "base": [0.8764705882352941, 0.5862745098039216, 0.4568627450980392],
+      "actual": [0.8764705882352941, 0.7411764705882353, 0.5647058823529412],
+      "before": 7.339176540952315,
+      "after": 2.6010078755200445
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "color": "N",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "normalizedScanHash": "289bb402656d68add2dc4f34782c65267f857d23ab1e00e6644da9a6b8dbf3d4",
+      "scan": [0.7254901960784313, 0.7490196078431373, 0.6235294117647059],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.214590399802094,
+      "after": 5.214590399802094
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "color": "R",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "normalizedScanHash": "289bb402656d68add2dc4f34782c65267f857d23ab1e00e6644da9a6b8dbf3d4",
+      "scan": [0.9117647058823529, 0.7676470588235293, 0.5774509803921568],
+      "base": [0.8754901960784314, 0.5872549019607843, 0.45588235294117646],
+      "actual": [0.8754901960784314, 0.7411764705882353, 0.5647058823529412],
+      "before": 11.356252672459048,
+      "after": 2.305150076090387
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "color": "N",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "normalizedScanHash": "682767ec3d3a973169e93c4245b124c71e2ee80a16498a886c6804e1a0769015",
+      "scan": [0.7333333333333333, 0.7333333333333333, 0.6274509803921569],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.142058538411456,
+      "after": 5.142058538411456
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "color": "R",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "normalizedScanHash": "682767ec3d3a973169e93c4245b124c71e2ee80a16498a886c6804e1a0769015",
+      "scan": [0.8627450980392157, 0.7196078431372549, 0.5529411764705883],
+      "base": [0.8754901960784314, 0.5872549019607843, 0.45588235294117646],
+      "actual": [0.8754901960784314, 0.7411764705882353, 0.5647058823529412],
+      "before": 8.062116885244395,
+      "after": 1.5059687304958789
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "color": "N",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "normalizedScanHash": "65f8518995838480cc468b882e5c516d7f92a237a62aa4d108b6ac1c98d66530",
+      "scan": [0.6862745098039216, 0.7098039215686275, 0.5607843137254902],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 8.244715630523762,
+      "after": 8.244715630523762
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "color": "B",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "normalizedScanHash": "65f8518995838480cc468b882e5c516d7f92a237a62aa4d108b6ac1c98d66530",
+      "scan": [0.48823529411764705, 0.503921568627451, 0.3411764705882353],
+      "base": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "actual": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "before": 18.739206822711708,
+      "after": 18.739206822711708
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "color": "N",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "normalizedScanHash": "8f4b07b45e445dfa032976994a42b42dfae9d289192051d6234db5f87aa75db0",
+      "scan": [0.7254901960784313, 0.7215686274509804, 0.6078431372549019],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.037800179311942,
+      "after": 6.037800179311942
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "color": "B",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "normalizedScanHash": "8f4b07b45e445dfa032976994a42b42dfae9d289192051d6234db5f87aa75db0",
+      "scan": [0.5186274509803921, 0.5, 0.37450980392156863],
+      "base": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "actual": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "before": 18.082326604139904,
+      "after": 18.082326604139904
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "color": "N",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "normalizedScanHash": "fe79c422493130071d806ef2762e38e9b2535a25d7dd3fcce90863ddd0261ce4",
+      "scan": [0.6607843137254902, 0.6823529411764706, 0.5882352941176471],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 9.109651050421652,
+      "after": 9.109651050421652
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "color": "B",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "normalizedScanHash": "fe79c422493130071d806ef2762e38e9b2535a25d7dd3fcce90863ddd0261ce4",
+      "scan": [0.44313725490196076, 0.45098039215686275, 0.3411764705882353],
+      "base": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "actual": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "before": 22.38261249579605,
+      "after": 22.38261249579605
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "name": "Imprison",
+      "color": "B",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "3fed4c9de5836a69a9539619a9d4a0ac7a9a159b49daf40f07eab2aca8077d38",
+      "normalizedScanHash": "c8d72378564e211bfc58d340c851dec68de2fecd7a780661433b1864cab94aa6",
+      "scan": [0.4627450980392157, 0.4823529411764706, 0.3607843137254902],
+      "base": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "actual": [0.7156862745098039, 0.7, 0.6803921568627451],
+      "before": 20.09243859857931,
+      "after": 20.09243859857931
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "color": "N",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "normalizedScanHash": "eda398a14c0ad67d8841f6df41381a5afe541ff0013d02b594feb2d56fef2ac8",
+      "scan": [0.6666666666666666, 0.6823529411764706, 0.5803921568627451],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 9.10554065026805,
+      "after": 9.10554065026805
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "color": "B",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "normalizedScanHash": "eda398a14c0ad67d8841f6df41381a5afe541ff0013d02b594feb2d56fef2ac8",
+      "scan": [0.4725490196078431, 0.4784313725490196, 0.3509803921568627],
+      "base": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "actual": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "before": 20.505914582366657,
+      "after": 20.505914582366657
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "color": "N",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "normalizedScanHash": "8da58f715c5b4999c7562a6c09117d6cb92551bb0b4abc876f4e7ba5ac8a9eb3",
+      "scan": [0.7176470588235294, 0.7058823529411765, 0.6078431372549019],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.649699829736511,
+      "after": 6.649699829736511
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "color": "B",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "normalizedScanHash": "8da58f715c5b4999c7562a6c09117d6cb92551bb0b4abc876f4e7ba5ac8a9eb3",
+      "scan": [0.5156862745098039, 0.5049019607843137, 0.3852941176470588],
+      "base": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "actual": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "before": 17.770724113481958,
+      "after": 17.770724113481958
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "color": "N",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "normalizedScanHash": "a2bdfffd0e3a258a781ef471437b924d37a58f2cd83176fe2d29486197d9a843",
+      "scan": [0.6843137254901961, 0.7058823529411765, 0.5941176470588235],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 7.6568967148808955,
+      "after": 7.6568967148808955
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "color": "B",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "normalizedScanHash": "a2bdfffd0e3a258a781ef471437b924d37a58f2cd83176fe2d29486197d9a843",
+      "scan": [0.49607843137254903, 0.5215686274509804, 0.403921568627451],
+      "base": [0.7176470588235294, 0.7019607843137254, 0.6862745098039216],
+      "actual": [0.7176470588235294, 0.7019607843137254, 0.6862745098039216],
+      "before": 17.06929354413526,
+      "after": 17.06929354413526
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "color": "N",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "normalizedScanHash": "9af93997eb691d94fe0716d08ecb2a46ce72717406b53823a3ad4c6acc720bf1",
+      "scan": [0.8196078431372549, 0.8235294117647058, 0.7372549019607844],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.9075365697591056,
+      "after": 3.9075365697591056
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "color": "B",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "normalizedScanHash": "9af93997eb691d94fe0716d08ecb2a46ce72717406b53823a3ad4c6acc720bf1",
+      "scan": [0.6294117647058823, 0.6588235294117647, 0.5313725490196078],
+      "base": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "actual": [0.7196078431372549, 0.7039215686274509, 0.6852941176470588],
+      "before": 6.739901807734891,
+      "after": 6.739901807734891
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "color": "N",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "normalizedScanHash": "399642a911d44b0830d432e27dbdd85bd2710252ef6ef803112dc48692efa4b5",
+      "scan": [0.692156862745098, 0.7196078431372549, 0.5803921568627451],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 7.445842528158353,
+      "after": 7.445842528158353
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "color": "W",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "normalizedScanHash": "399642a911d44b0830d432e27dbdd85bd2710252ef6ef803112dc48692efa4b5",
+      "scan": [0.7431372549019608, 0.7784313725490196, 0.5],
+      "base": [0.7372549019607844, 0.7137254901960784, 0.6313725490196078],
+      "actual": [0.7372549019607844, 0.7137254901960784, 0.6313725490196078],
+      "before": 7.253059155097444,
+      "after": 7.253059155097444
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "name": "Visions",
+      "color": "W",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "50762b5cb153942059bb0e4c7649d2195ada50f6715dd0486924eab548b30a30",
+      "normalizedScanHash": "55e279f2d67fc75136c32ce5140f5e119a729e6790e7de1ac3900d9d60b72734",
+      "scan": [0.7803921568627451, 0.8117647058823529, 0.6039215686274509],
+      "base": [0.7372549019607844, 0.7137254901960784, 0.6313725490196078],
+      "actual": [0.7372549019607844, 0.7137254901960784, 0.6313725490196078],
+      "before": 7.4451696040404025,
+      "after": 7.4451696040404025
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "color": "W",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "normalizedScanHash": "1e9de8798380c969cc2b7934d3ccbcedc583f6e6b6a3145c6815bb496eaa37a1",
+      "scan": [0.8147058823529412, 0.8764705882352941, 0.7176470588235294],
+      "base": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "actual": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "before": 8.17715340192144,
+      "after": 8.17715340192144
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "color": "N",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "normalizedScanHash": "bb444248a8539283806f49e81a616e78cb766d61b3d58d034b8beac111bc78f0",
+      "scan": [0.7725490196078432, 0.7568627450980392, 0.6392156862745098],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.927377131930585,
+      "after": 3.927377131930585
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "color": "W",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "normalizedScanHash": "bb444248a8539283806f49e81a616e78cb766d61b3d58d034b8beac111bc78f0",
+      "scan": [0.7225490196078431, 0.7921568627450981, 0.6245098039215686],
+      "base": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "actual": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "before": 3.856852643068537,
+      "after": 3.856852643068537
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "color": "N",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "normalizedScanHash": "4fce5b8585ae6fd27ca95fc2838949e9990c2b6e5c1ee2ae6705d9cc1cb87f1a",
+      "scan": [0.7294117647058823, 0.7372549019607844, 0.615686274509804],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 5.461939547993507,
+      "after": 5.461939547993507
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "color": "W",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "normalizedScanHash": "4fce5b8585ae6fd27ca95fc2838949e9990c2b6e5c1ee2ae6705d9cc1cb87f1a",
+      "scan": [0.803921568627451, 0.8431372549019608, 0.6490196078431373],
+      "base": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "actual": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "before": 6.436382788424917,
+      "after": 6.436382788424917
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "color": "N",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "normalizedScanHash": "e18de6831fbc94e94eeb9e9b5c475516bfeba93c68758cf6b2bc1677658a1ab3",
+      "scan": [0.7647058823529411, 0.7529411764705882, 0.6549019607843137],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 3.5464487398929463,
+      "after": 3.5464487398929463
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "color": "W",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "normalizedScanHash": "e18de6831fbc94e94eeb9e9b5c475516bfeba93c68758cf6b2bc1677658a1ab3",
+      "scan": [0.7549019607843137, 0.8117647058823529, 0.611764705882353],
+      "base": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "actual": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "before": 4.947085275458366,
+      "after": 4.947085275458366
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "color": "N",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "normalizedScanHash": "0b5009c269a788d365566d0c4935457d785b963bebccbdbf7b3c4750b9ea2b54",
+      "scan": [0.7450980392156863, 0.7019607843137254, 0.5803921568627451],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.8575576557359215,
+      "after": 6.8575576557359215
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "color": "W",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "normalizedScanHash": "0b5009c269a788d365566d0c4935457d785b963bebccbdbf7b3c4750b9ea2b54",
+      "scan": [0.7313725490196078, 0.7725490196078432, 0.5901960784313726],
+      "base": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "actual": [0.7764705882352941, 0.7529411764705882, 0.6627450980392157],
+      "before": 3.6727596548415247,
+      "after": 3.6727596548415247
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "color": "N",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "normalizedScanHash": "06d3a0a356ab2120549853ee4b1cb061dc835ead89fcc293b51239c5a8bdda0f",
+      "scan": [0.7058823529411765, 0.711764705882353, 0.6039215686274509],
+      "base": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "actual": [0.792156862745098, 0.7725490196078432, 0.7529411764705882],
+      "before": 6.797499053882486,
+      "after": 6.797499053882486
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "color": "W",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "normalizedScanHash": "06d3a0a356ab2120549853ee4b1cb061dc835ead89fcc293b51239c5a8bdda0f",
+      "scan": [0.6764705882352942, 0.7431372549019608, 0.5862745098039216],
+      "base": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "actual": [0.7784313725490196, 0.7549019607843137, 0.6666666666666666],
+      "before": 4.771132858498453,
+      "after": 4.771132858498453
+    }
+  ],
+  "remaining": [
+    "White, black and generic targets were rejected by the held-out worst-regression gate; retain existing colors until source/scan variation is understood.",
+    "Thunder Spirit (white), Ghosts of the Damned (black), and generic-disc outliers need material/scan inspection, not per-card color overrides.",
+    "Generic numeral and historic glyph shapes remain separate ink/typography diagnostics."
+  ]
+}

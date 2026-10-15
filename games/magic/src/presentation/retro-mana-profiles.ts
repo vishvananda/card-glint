@@ -3,6 +3,8 @@
 export const RETRO_MANA_PROFILES: Readonly<
   Record<string, readonly [number, number, number, number]>
 > = {
+  // Frozen frame-normalized train/held-out study: legends-symbols.json.
+  'leg/black': [436, 39.25, 26.975, 23.9],
   'sum/white': [434.5, 44.5, 26.5, 23.4],
   'chr/white': [434, 42, 27, 23.4],
   'hml/black': [433, 44.5, 27, 23.4],

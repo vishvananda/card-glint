@@ -19,6 +19,19 @@ try {
   const { retroTypePlacement } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-type.ts',
   );
+  const { retroManaPlacement } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/retro-mana.ts',
+  );
+  const { calibratedStyledSymbolBounds } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/styled-symbol-placement.ts',
+  );
+  const { CONJURER_ROOT } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/styled-set-symbols.ts',
+  );
+  const symbolUrl = `${CONJURER_ROOT}/img/setSymbols/official/leg-c.svg`;
+  const symbolRect = [420, 384, 22, 20];
+  const symbolBounds = (face, url = symbolUrl) =>
+    calibratedStyledSymbolBounds(face, url, symbolRect, 'retro');
   for (const [colors, family] of [
     [['W'], 'abu'],
     [['B'], 'abu'],
@@ -33,6 +46,8 @@ try {
     assert.equal(retroFrameAsset(original), retroFrameAsset(oracle));
     assert.deepEqual(retroRects(original), retroRects(oracle));
     assert.deepEqual(retroTypePlacement(original), retroTypePlacement(oracle));
+    assert.deepEqual(retroManaPlacement(original), retroManaPlacement(oracle));
+    assert.deepEqual(symbolBounds(original), symbolBounds(oracle));
     assert.deepEqual(titleTranslation(original, 'retro'), [-18.5, -6]);
     assert.deepEqual(titleTranslation(oracle, 'retro'), [-18.5, -6]);
     assert.deepEqual(titleTranslation({ ...original, legendary: true }, 'retro'), [-18.5, -6]);
@@ -63,6 +78,8 @@ try {
     { typeLine: 'Enchantment — Saga' },
   ]) {
     assert.equal(legendsFrame({ ...ordinary, ...override }), undefined);
+    if (!override.setCode)
+      assert.equal(retroManaPlacement({ ...ordinary, ...override }), undefined);
     assert.deepEqual(titleTranslation({ ...ordinary, ...override }, 'retro'), [0, 0]);
     assert.deepEqual(retroTypePlacement({ ...ordinary, ...override }), {
       fontSize: 21.7,
@@ -72,12 +89,23 @@ try {
   }
   assert.deepEqual(titleTranslation({ ...ordinary, borderColor: 'white' }, 'retro'), [0, 0]);
   assert.equal(retroTypePlacement({ ...ordinary, borderColor: 'white' }).fontSize, 21.7);
+  assert.equal(retroManaPlacement({ ...ordinary, borderColor: 'white' }), undefined);
+  for (const override of [
+    { frameStyle: 'modern' },
+    { frameTemplate: 'battle' },
+    { layout: 'split' },
+    { typeLine: 'Enchantment — Saga' },
+    { setSymbol: 'https://example.test/custom.svg' },
+    { borderColor: 'white' },
+  ])
+    assert.deepEqual(symbolBounds({ ...ordinary, ...override }), symbolRect);
+  assert.deepEqual(symbolBounds(ordinary, 'https://example.test/custom.svg'), symbolRect);
   assert.deepEqual(retroTypePlacement(land), retroTypePlacement(ordinary));
   assert.deepEqual(titleTranslation(land, 'retro'), [-18.5, -6]);
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'lea' }).endsWith('/old/abu/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: '3ed' }).endsWith('/old/fourth/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'arn' }).endsWith('/seventh/regular/w.png'));
-  const { calibratedFrameMaterials } = await server.ssrLoadModule(
+  const { calibratedFrameMaterials, calibratedManaTarget } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
   const { LEGENDS_COLOR_PROFILES } = await server.ssrLoadModule(
@@ -86,6 +114,49 @@ try {
   const study = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-colors.json'));
   const titles = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-titles.json'));
   const types = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-types.json'));
+  const symbols = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-symbols.json'));
+  const manaColors = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/legends-mana-colors.json'),
+  );
+  assert.equal(manaColors.runtimeVerified.exactPixelMatches, 64);
+  for (const result of manaColors.groups) {
+    if (!result.accepted) {
+      assert.equal(result.after, result.before);
+      continue;
+    }
+    assert.ok(result.after < result.before - 0.25);
+    assert.ok(result.worstRegression <= 3);
+    const calibrated = { ...ordinary, colorCalibration: 'set-hsb-v1' };
+    assert.deepEqual(calibratedManaTarget(calibrated, result.color), result.target);
+    assert.deepEqual(
+      calibratedManaTarget({ ...calibrated, symbolStyle: 'modern' }, result.color),
+      result.target,
+    );
+    for (const override of [
+      { colorCalibration: undefined },
+      { frameStyle: 'modern' },
+      { frameTemplate: 'battle' },
+      { borderColor: 'white' },
+    ])
+      assert.equal(calibratedManaTarget({ ...calibrated, ...override }, result.color), undefined);
+  }
+  const { right, y, pitch, size } = symbols.mana;
+  assert.deepEqual(retroManaPlacement(ordinary), [right, y, pitch, size]);
+  const { dx, dy, sx, sy } = symbols.set;
+  assert.deepEqual(symbolBounds(ordinary), [
+    420 + 22 + dx - 22 * sx,
+    384 + 10 + dy - 10 * sy,
+    22 * sx,
+    20 * sy,
+  ]);
+  assert.equal(symbols.runtimeVerified.cards, 72);
+  assert.equal(symbols.runtimeVerified.components, 136);
+  assert.equal(symbols.runtimeVerified.outsideSymbolRectanglesUnchanged, true);
+  for (const result of symbols.results) {
+    assert.ok(result.after > result.before);
+    assert.equal(result.improved, result.held);
+    assert.equal(result.worstRegression, 0);
+  }
   const typePlacement = retroTypePlacement(ordinary);
   assert.equal(types.runtimeVerified, 72);
   assert.equal(types.typography.fontSize, typePlacement.fontSize);

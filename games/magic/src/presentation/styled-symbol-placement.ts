@@ -5,11 +5,14 @@ import { MAJOR_SYMBOL_PROFILES, MAJOR_SYMBOL_SOURCE } from './major-symbol-profi
 import { cardStock } from './face-layout.js';
 import { retroBorder } from './retro-frame.js';
 import { resolveCardProfile } from './profile.js';
+import { legendsFrame } from './legends-frame.js';
 
 type Bounds = readonly [number, number, number, number];
 // Follow-ups retain the original bulk calibration's immutable evidence. Sixth
 // uses repaired white rims; see fixtures/accuracy/sixth-symbol-white-rim.json.
 const correctedSourceProfiles: Readonly<Record<string, Bounds>> = {
+  // Black outer contour after the checksum-guarded LEG SVG repair.
+  'leg/retro/black': [3.25, 1.5, 1.05, 1.125],
   '6ed/retro/white': [2, -2, 1.08, 1.08],
 };
 // Canonical 488 × 680 pixels. Shared set profiles after frame-only scan
@@ -67,6 +70,7 @@ export function calibratedStyledSymbolBounds(
         ? 'white'
         : 'black');
   const key = `${face.setCode?.trim().toLowerCase() ?? ''}/${family}/${border}`;
+  if (key === 'leg/retro/black' && !legendsFrame(face)) return bounds;
   const delta = Object.hasOwn(correctedSourceProfiles, key)
     ? correctedSourceProfiles[key]
     : Object.hasOwn(MAJOR_SYMBOL_PROFILES, key)
