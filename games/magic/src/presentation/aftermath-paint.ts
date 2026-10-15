@@ -1,3 +1,4 @@
+import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -151,7 +152,8 @@ export function paintAftermathFace(
     c.restore();
   });
   if (layer !== 'artwork') {
-    if (hasOvalSecurityStamp(face)) c.drawImage(required(AFTERMATH_STAMP), 222, 623, 43, 20);
+    if (hasOvalSecurityStamp(face))
+      c.drawImage(required(AFTERMATH_STAMP), ...SECURITY_STAMP_RECTS.aftermath);
     c.fillStyle = '#fff';
     c.textAlign = 'left';
     c.textBaseline = 'alphabetic';

@@ -21,6 +21,7 @@ import { splitPanels, panelRect } from './presentation/split-layout.js';
 import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
 import { isPrepared, PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
+import { securityStampHologram } from './presentation/security-stamp-hologram.js';
 export type { RenderedCardInput as MtgCard, SecurityStamp } from './presentation/face-layout.js';
 export { setSymbolAsset, manaSymbolAsset, profileAssets } from './presentation/assets.js';
 export { FACE_RECTS, FACE_TEXT } from './presentation/face-layout.js';
@@ -93,6 +94,7 @@ export const mtg: GamePack<RenderedCardInput> = {
     const stampInput = { ...input, layer: 'etching' as const };
     return {
       pack: 'mtg',
+      hologram: securityStampHologram(face),
       color: {
         key: cardTextureKey(input, tier),
         size,

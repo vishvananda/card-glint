@@ -1,3 +1,4 @@
+import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import { paintSagaColors } from './saga-colors.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -109,7 +110,7 @@ export function paintSagaFace(
       c.fillText(badge, 38.1, center + 0.7);
     });
   }
-  if (hasOvalSecurityStamp(face)) c.drawImage(required(SAGA_STAMP), 213.7, 620.2, 60.5, 25.3);
+  if (hasOvalSecurityStamp(face)) c.drawImage(required(SAGA_STAMP), ...SECURITY_STAMP_RECTS.saga);
   c.fillStyle = '#fff';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';

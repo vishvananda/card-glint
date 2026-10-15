@@ -1,3 +1,4 @@
+import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -126,6 +127,6 @@ export function paintModernSplitFooter(
     // Median visible oval from seven frame-normalized GRN/RNA rare scans:
     // 42–43 × 20–21 px. The old Saga asset included a black margin and left
     // only 31 × 15 px visible, four pixels below the scan center.
-    c.drawImage(stamp, 223.5, 620, 43, 21.5);
+    c.drawImage(stamp, ...SECURITY_STAMP_RECTS.split);
   }
 }

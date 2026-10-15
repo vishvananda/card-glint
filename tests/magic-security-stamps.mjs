@@ -50,6 +50,118 @@ try {
       frameStyle: 'modern',
       securityStamp: 'oval',
     };
+    const { mtg, opticalDocument } = await import('/games/magic/src/index.ts');
+    const halves = [
+      { name: 'First', typeLine: 'Instant', colors: ['U'] },
+      { name: 'Second', typeLine: 'Sorcery', colors: ['R'] },
+    ];
+    const reflectiveFaces = [
+      base,
+      { ...base, frameAssetFamily: 'm15-accurate' },
+      { ...base, typeLine: 'Planeswalker', rulesText: '+1: Draw a card.' },
+      { ...base, typeLine: 'Enchantment — Saga', rulesText: 'I — Draw a card.' },
+      { ...base, layout: 'adventure', faces: halves },
+      { ...base, layout: 'prepare', faces: halves },
+      { ...base, layout: 'aftermath', faces: halves },
+      { ...base, layout: 'split', faces: halves },
+    ];
+    let sharedMask;
+    for (const face of reflectiveFaces) {
+      const recipe = mtg.describe(face, 'inspect');
+      check(recipe.hologram, 'Supported oval lacks a coating');
+      const staticRecipe = mtg.describe({ ...face, securityStampEffect: 'static' }, 'inspect');
+      check(!staticRecipe.hologram, 'Static opt-out ignored');
+      check(staticRecipe.color.key === recipe.color.key, 'Reflection rebuilt static ink');
+      check(
+        !mtg.describe({ ...face, securityStamp: 'none' }, 'inspect').hologram,
+        'Absent oval reflected',
+      );
+      check(
+        !mtg.describe({ ...face, securityStamp: 'triangle' }, 'inspect').hologram,
+        'Unsupported shape borrowed oval',
+      );
+      check(opticalDocument(1, 1, face, 'silver').recipe.hologram, 'Sharp printing lost coating');
+      check(
+        recipe.hologram.mask.key === (sharedMask?.key ?? recipe.hologram.mask.key),
+        'Mask not shared across frames',
+      );
+      sharedMask = recipe.hologram.mask;
+    }
+    for (const face of [
+      { ...base, frameStyle: 'retro', setCode: '3ed' },
+      { ...base, frameAssetFamily: 'eighth' },
+      { ...base, frameTemplate: 'future' },
+      { ...base, typeLine: 'Enchantment — Class' },
+      { ...base, layout: 'split', faces: halves, setCode: 'dgm' },
+      { ...base, layout: 'split', faces: halves, frameStyle: 'retro' },
+    ])
+      check(!mtg.describe(face, 'inspect').hologram, 'Unsupported frame acquired reflection');
+    const maskSource = document.createElement('canvas');
+    maskSource.width = 134;
+    maskSource.height = 67;
+    const maskContext = maskSource.getContext('2d');
+    maskContext.fillStyle = '#fff';
+    maskContext.beginPath();
+    maskContext.ellipse(67, 33.5, 67, 33.5, 0, 0, Math.PI * 2);
+    maskContext.fill();
+    const bitmap = await createImageBitmap(maskSource);
+    let releases = 0,
+      maskReadbacks = 0;
+    const readMaskOriginal = CanvasRenderingContext2D.prototype.getImageData;
+    CanvasRenderingContext2D.prototype.getImageData = function (...args) {
+      maskReadbacks++;
+      return readMaskOriginal.apply(this, args);
+    };
+    const host = {
+      async images(requests) {
+        check(
+          requests.length === 1 && requests[0].width === undefined,
+          'Oval mask enlarged or unrelated assets loaded',
+        );
+        return {
+          value: new Map([[requests[0].url, bitmap]]),
+          release() {
+            releases++;
+          },
+        };
+      },
+    };
+    let paintedMask;
+    try {
+      paintedMask = await sharedMask.paint(host, new AbortController().signal);
+    } finally {
+      CanvasRenderingContext2D.prototype.getImageData = readMaskOriginal;
+    }
+    check(
+      maskReadbacks === 0 && releases === 1,
+      'Mask read back pixels or leaked its source lease',
+    );
+    const alpha = paintedMask.getContext('2d').getImageData(0, 0, 134, 67).data;
+    check(
+      alpha[(33 * 134 + 67) * 4 + 3] === 255 && alpha[33 * 134 * 4 + 3] === 0,
+      'Oval rim was not inset',
+    );
+    let maskFailed = false;
+    try {
+      await sharedMask.paint(
+        {
+          async images() {
+            return {
+              value: new Map(),
+              release() {
+                releases++;
+              },
+            };
+          },
+        },
+        new AbortController().signal,
+      );
+    } catch {
+      maskFailed = true;
+    }
+    check(maskFailed && releases === 2, 'Missing mask silently published or leaked lease');
+    bitmap.close();
+    paintedMask.width = paintedMask.height = 0;
     const input = (face, layer) => ({
       printingId: null,
       printedImage: null,

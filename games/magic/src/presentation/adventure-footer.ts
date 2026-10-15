@@ -1,3 +1,4 @@
+import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -37,7 +38,7 @@ export function paintAdventureFooter(
   if (hasOvalSecurityStamp(face)) {
     const stamp = images.get(SAGA_STAMP);
     if (!stamp) throw Error('Adventure authenticity stamp is unavailable.');
-    c.drawImage(stamp, 213.7, 620.2, 60.5, 25.3);
+    c.drawImage(stamp, ...SECURITY_STAMP_RECTS.saga);
   }
   c.fillStyle = '#fff';
   c.textAlign = 'left';

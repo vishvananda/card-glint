@@ -68,6 +68,15 @@ rare does not acquire a modern oval. Custom modern rare/mythic inputs that omit
 the option retain the default oval. Other recognized shapes (`triangle`,
 `acorn`, `circle`, `arena`, `heart`) are retained as metadata but are not drawn yet.
 
+Supported oval stamps have a local holographic reflection in WebGL, on both
+regular and foil cards. It follows tilt and pointer lighting while keeping the
+colored mount, stock and nearby text static. Use `securityStampEffect: 'static'`
+for the printed appearance. Canvas2D comparison/accuracy rasters remain static
+under either setting. Ordinary M15, planeswalker, Saga, Adventure, Prepared,
+Aftermath and modern split/fuse layouts share one cached interior mask, located
+from the pinned source assets rather than fitted to each scan. Other stamp
+shapes and template frames await dedicated assets and layouts.
+
 Ordinary modern and planeswalker cards use separate oval mounts with colored
 surrounds; Split/Fuse retains its plain oval. Existing Saga, Adventure, Prepare
 and Aftermath painters also honor the physical stamp choice. Ordinary dense text

@@ -5,6 +5,7 @@ import { faceFrame } from './special-frames.js';
 import { isRetro } from './retro-frame.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
+import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 
 /** Native bounds from Card Conjurer's packM15HoloStamps.js and
  * packPlaneswalkerHoloStamps.js. These include the colored upper surround;
@@ -43,9 +44,7 @@ export function mountedSecurityStamp(face: RenderedCardInput): {
     image: planeswalker
       ? `${CONJURER_ROOT}/img/frames/planeswalker/holo/${material.toLowerCase()}.png`
       : `${CONJURER_ROOT}/img/frames/m15/holoStamps/m15HoloStamp${material}.png`,
-    rect: planeswalker
-      ? [0.4394 * 488, 0.9015 * 680, 0.1214 * 488, 0.051 * 680]
-      : [0.436 * 488, 0.9034 * 680, 0.128 * 488, 0.0458 * 680],
+    rect: planeswalker ? SECURITY_STAMP_RECTS.planeswalker : SECURITY_STAMP_RECTS.ordinary,
   };
 }
 

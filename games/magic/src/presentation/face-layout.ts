@@ -87,6 +87,9 @@ export interface RenderedCardInput extends CardProfileInput {
    * Only oval is drawn currently; other shapes are retained without replacing
    * them with an incorrect oval. The artwork-only layer never includes it. */
   securityStamp?: SecurityStamp;
+  /** WebGL oval reflection defaults to holographic. Static keeps its printed
+   * appearance; this option never changes Canvas2D reference/accuracy rasters. */
+  securityStampEffect?: 'static' | 'holographic';
 }
 
 export function faceStats(face: RenderedCardInput): { text: string; label: string } | null {
