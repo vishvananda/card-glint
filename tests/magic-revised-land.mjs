@@ -12,6 +12,66 @@ try {
   const { colorRevisedLand } = await server.ssrLoadModule(
     '/games/magic/src/presentation/revised-land-pixels.ts',
   );
+  const { DUAL_BOX, revisedDualPinline } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/revised-land-pinline.ts',
+  );
+  // Integrate each straight edge at several source decode resolutions. Even a
+  // subpixel outline must retain its coverage, and all four sides must have
+  // equal physical widths after the frame's non-square source transform.
+  const axes = { x: ((488 * 0.984) / 1500) * 1.001, y: ((680 * 0.99) / 2100) * 1.001 };
+  const saturated = [
+    [1, 0, 0],
+    [0, 1, 0],
+  ];
+  const areas = [];
+  for (const size of [150, 488, 750, 1500]) {
+    const pw = 1500 / size,
+      ph = 2100 / Math.round(size * 1.4);
+    for (const side of ['left', 'right', 'top', 'bottom']) {
+      const horizontal = side === 'left' || side === 'right';
+      const step = horizontal ? pw : ph;
+      const total = [0, 0, 0, 0];
+      const edge = DUAL_BOX[side];
+      for (let n = Math.floor((edge - 40) / step); n <= Math.ceil((edge + 40) / step); n++) {
+        const point = (n + 0.5) * step;
+        const result = revisedDualPinline(
+          horizontal ? point : 750,
+          horizontal ? 1500 : point,
+          pw,
+          ph,
+          saturated,
+        );
+        if (!result) continue;
+        const weight = result.alpha * step * axes[horizontal ? 'x' : 'y'];
+        total[0] += weight;
+        for (let k = 0; k < 3; k++) total[k + 1] += weight * result.color[k];
+      }
+      areas.push(total);
+    }
+  }
+  for (const measured of areas)
+    for (let k = 0; k < 4; k++)
+      assert.ok(
+        Math.abs(measured[k] - areas[0][k]) < 1e-8,
+        'Band coverage must match on every side and at every decode resolution',
+      );
+  const dark = areas[0][3] / 0.17;
+  const firstColor = areas[0][1] - dark * 0.18;
+  const secondColor = areas[0][2] - dark * 0.18;
+  assert.ok(dark > 0, 'Subpixel edge lines cannot disappear');
+  assert.ok(
+    firstColor > secondColor * 2,
+    'Outer first-color band stays thicker than the inner bands',
+  );
+  const sequence = [];
+  for (let x = DUAL_BOX.left - 1; x < DUAL_BOX.left + 35; x += 0.02) {
+    const result = revisedDualPinline(x, 1500, 0.001, 0.001, saturated);
+    if (!result) continue;
+    const kind =
+      result.color[2] > 0.04 ? 'edge' : result.color[0] > result.color[1] ? 'first' : 'second';
+    if (sequence.at(-1) !== kind) sequence.push(kind);
+  }
+  assert.deepEqual(sequence, ['edge', 'first', 'second', 'first', 'edge']);
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
     '/games/magic/src/presentation/color-calibration-coverage.ts',
   );
@@ -121,7 +181,7 @@ try {
   colorRevisedLand(empty, [], true);
   assert.deepEqual(empty.data, before);
   console.log(
-    'Revised land source guards, semantic palettes, stripes, optional calibration and alpha/ink preservation passed.',
+    'Revised land source guards, semantic palettes, stripes, optional calibration, alpha/ink preservation and uniform border coverage passed.',
   );
 } finally {
   await server.close();

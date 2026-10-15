@@ -1,5 +1,6 @@
 import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
 import type { FramePixels } from './frame-paper-mask.js';
+import { DUAL_BOX, revisedDualPinline } from './revised-land-pinline.js';
 
 const PAPER: Readonly<Record<string, HsbAdjustment>> = {
   W: { hueDegrees: 8.4847, saturationScale: 0.42831, brightnessScale: 0.97071 },
@@ -26,32 +27,6 @@ const PIN: Readonly<Record<string, Rgb>> = {
   G: [0.6, 0.66, 0.29],
 };
 const FRAME: HsbAdjustment = { hueDegrees: 0, saturationScale: 1, brightnessScale: 0.992232 };
-// Shared fit to normalized Revised duals, in the pinned 1500 × 2100 source.
-// All ten color pairs share these bounds; no per-card geometry.
-const DUAL_BOX = { left: 165.71, right: 1341.17, top: 1253.66, bottom: 1883.12 };
-const DUAL_WIDTH = { left: 19.89, right: 24.18, top: 19.87, bottom: 23.37 };
-
-/** The three rules-box pinlines have their own color order, distinct from
- * the broad paper bands. Across the ten Revised pairs, R precedes G, then
- * U, B and W. The outer and inner strokes use that first color. */
-function dualPinline(sx: number, sy: number, colors: readonly Rgb[]): Rgb | undefined {
-  if (colors.length !== 2) return undefined;
-  const inset = Math.min(
-    (sx - DUAL_BOX.left) / DUAL_WIDTH.left,
-    (DUAL_BOX.right - sx) / DUAL_WIDTH.right,
-    (sy - DUAL_BOX.top) / DUAL_WIDTH.top,
-    (DUAL_BOX.bottom - sy) / DUAL_WIDTH.bottom,
-  );
-  if (inset < 0 || inset >= 1) return undefined;
-  if (
-    inset < 0.06 ||
-    (inset >= 0.24 && inset < 0.29) ||
-    (inset >= 0.72 && inset < 0.77) ||
-    inset >= 0.95
-  )
-    return [0.18, 0.18, 0.17];
-  return colors[inset >= 0.29 && inset < 0.72 ? 1 : 0]!;
-}
 
 /** Recolor the pinned source once during cached material preparation. The
  * gold-pigment mask is confined to pinlines, preserving black ink and relief.
@@ -82,21 +57,17 @@ export function colorRevisedLand(
         sy = ((y + 0.5) * 2100) / image.height;
       const rgb: Rgb = [image.data[i]! / 255, image.data[i + 1]! / 255, image.data[i + 2]! / 255];
       const v = Math.max(...rgb);
-      const border = dualPinline(sx, sy, pinColors);
+      const border = revisedDualPinline(sx, sy, 1500 / image.width, 2100 / image.height, pinColors);
       const paper = source
-        ? sx >= DUAL_BOX.left + DUAL_WIDTH.left &&
-          sx < DUAL_BOX.right - DUAL_WIDTH.right &&
-          sy >= DUAL_BOX.top + DUAL_WIDTH.top &&
-          sy < DUAL_BOX.bottom - DUAL_WIDTH.bottom
+        ? sx >= DUAL_BOX.left && sx < DUAL_BOX.right && sy >= DUAL_BOX.top && sy < DUAL_BOX.bottom
         : sx >= 187 && sx < 1320 && sy >= 1280 && sy < 1864;
-      if (!border && v < 0.075 && !(source && paper)) continue;
+      const retiredBorder = source && sx >= 165 && sx <= 1345 && sy >= 1248 && sy <= 1885;
+      if (!border && v < 0.075 && !(source && paper) && !retiredBorder) continue;
       const artEdge = Math.min(sx - 126, 1379 - sx, sy - 153, 1171 - sy);
       const paperEdge = Math.min(sx - 170, 1340 - sx, sy - 1253, 1880 - sy);
       const pin = (artEdge >= -1 && artEdge < 13) || (paperEdge >= -1 && paperEdge < 29);
       let result: Rgb;
-      if (border) {
-        result = border;
-      } else if (paper) {
+      if (paper) {
         const inset = Math.min(
           ((sx - 187) * 488 * 0.984) / 1500,
           ((1320 - sx) * 488 * 0.984) / 1500,
@@ -115,6 +86,20 @@ export function colorRevisedLand(
           paperRgb = [source[index]! / 255, source[index + 1]! / 255, source[index + 2]! / 255];
         }
         result = adjustHsb(paperRgb, paperPalette[band % 2 ? second : first]!);
+      } else if (retiredBorder) {
+        // Clear the baked outline where the fitted box moves inward. Sample
+        // adjacent unprinted stock; otherwise a second dark rim survives.
+        const distances = [sx - 165, 1345 - sx, sy - 1248, 1885 - sy];
+        const edge = distances.indexOf(Math.min(...distances));
+        const sampleX = edge === 0 ? 160 : edge === 1 ? 1350 : sx;
+        const sampleY = edge === 2 ? 1240 : edge === 3 ? 1890 : sy;
+        const px = Math.min(image.width - 1, Math.floor((sampleX * image.width) / 1500));
+        const py = Math.min(image.height - 1, Math.floor((sampleY * image.height) / 2100));
+        const index = (py * image.width + px) * 4;
+        result = adjustHsb(
+          [source[index]! / 255, source[index + 1]! / 255, source[index + 2]! / 255],
+          calibrated ? FRAME : IDENTITY,
+        );
       } else if (
         pin &&
         rgb[0] > 0.45 &&
@@ -130,6 +115,12 @@ export function colorRevisedLand(
           Math.min(1, color[2] * light),
         ];
       } else result = adjustHsb(rgb, calibrated ? FRAME : IDENTITY);
-      for (let k = 0; k < 3; k++) image.data[i + k] = Math.round(255 * result[k]!);
+      for (let k = 0; k < 3; k++)
+        image.data[i + k] = Math.round(
+          255 *
+            (border
+              ? border.color[k]! * border.alpha + result[k]! * (1 - border.alpha)
+              : result[k]!),
+        );
     }
 }
