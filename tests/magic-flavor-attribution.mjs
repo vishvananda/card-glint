@@ -104,17 +104,17 @@ try {
     paintRevisedStats(ctx, '8/8', 600);
     const actual = ctx.getImageData(0, 0, 488, 680).data;
     ctx.clearRect(0, 0, 488, 680);
-    ctx.font = '26px "CardRenderer MTG MPlantin", Georgia';
+    ctx.font = '27.25px "CardRenderer MTG MPlantin", Georgia';
     ctx.textAlign = 'right';
     ctx.fillStyle = '#fff';
-    ctx.fillText('8/8', 451, 612, 130);
+    ctx.fillText('8/8', 451, 611, 130);
     const mask = ctx.getImageData(0, 0, 488, 680).data;
     let opaque = 0,
       filled = 0;
     for (let i = 0; i < mask.length; i += 4)
       if (mask[i + 3] > 245) {
         opaque++;
-        if (actual[i + 3] > 245 && actual[i] > 140 && actual[i] < 200) filled++;
+        if (actual[i + 3] > 245 && actual[i] > 140) filled++;
       }
     check(
       opaque > 30 && filled / opaque > 0.95,

@@ -22,9 +22,10 @@ export function paintRevisedTitle(
 
 export function paintRevisedStats(c: CanvasRenderingContext2D, text: string, y: number) {
   c.save();
-  c.font = '26px "CardRenderer MTG MPlantin", Georgia';
+  c.font = '27.25px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'right';
-  paintRetroGrayText(c, text, 451, y + 12, 130, 1.25);
+  // Stats use lighter ink than the title/artist on the reviewed W/G/B scans.
+  paintRetroGrayText(c, text, 451, y + 11, 130, 1.25, '#d4d4d4');
   c.restore();
 }
 

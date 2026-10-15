@@ -50,13 +50,14 @@ export function paintRetroGrayText(
   y: number,
   maxWidth: number,
   offset: number,
+  fill = '#ababab',
 ) {
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
   c.fillStyle = '#17140f';
   c.fillText(text, x + offset, y + offset, maxWidth);
-  c.fillStyle = '#ababab';
+  c.fillStyle = fill;
   c.fillText(text, x, y, maxWidth);
   c.restore();
 }
