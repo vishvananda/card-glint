@@ -2,6 +2,7 @@ import { reviewedPrintingFields } from './printing-fields.mjs';
 import { reviewedArtCrop } from './art-crop.mjs';
 import { historicArtifactAnnotation } from './historic-artifact-types.mjs';
 import { historicLegendAnnotation } from './historic-legend-types.mjs';
+import { historicLegendsTextAnnotation } from './historic-legends-text.mjs';
 import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
 import { earlyLandTypeAnnotation } from './early-land-types.mjs';
 import { emptyPrintingTextAnnotation } from './empty-printing-text.mjs';
@@ -11,6 +12,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
   const historicalReviews = [
     historicArtifactAnnotation(entry),
     historicLegendAnnotation(entry),
+    historicLegendsTextAnnotation(entry),
     earlyLandTypeAnnotation(entry),
     historicManaOrderAnnotation(entry),
     emptyPrintingTextAnnotation(entry),
@@ -39,6 +41,12 @@ export function presentation(entry, annotations = {}, printingText = {}) {
         ],
       }),
     };
+  // A replacement body must be reparsed, not painted using historical runs.
+  if (
+    !Object.hasOwn(supplied, 'paragraphs') &&
+    ['rulesText', 'flavorText'].some((field) => Object.hasOwn(supplied, field))
+  )
+    delete annotation.paragraphs;
   if (annotation.reviewed && annotation.referenceHash !== entry.reference?.sha256)
     throw Error(`Reviewed text is stale for ${card.name}; review it against the new reference.`);
   const fields = reviewedPrintingFields(entry, annotation);

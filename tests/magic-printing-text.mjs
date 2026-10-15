@@ -285,6 +285,9 @@ try {
     }
   }
   console.log('129 scan-bound historical artifact labels and original/Oracle switching pass.');
+  const legendsText = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/leg/annotations-text-review.json'),
+  );
   const legends = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/leg/annotations-legend-types.json'),
   );
@@ -316,7 +319,10 @@ try {
     assert.equal(original.face.typeLine, row.typeLine);
     assert.equal(original.face.creature, true);
     assert(original.reviewedFields.includes('typeLine'));
-    assert.equal(original.contentStatus, 'oracle-unverified');
+    assert.equal(
+      original.contentStatus,
+      legendsText.cards[id] ? 'scan-reviewed' : 'oracle-unverified',
+    );
     const oracle = { typeLine: input.card.type_line, rulesText: input.card.oracle_text };
     assert.equal(
       withCardWording(original.face, { original: original.face, oracle }, 'oracle').typeLine,
@@ -359,7 +365,10 @@ try {
     assert.equal(original.face.typeLine, row.typeLine);
     assert.equal(original.face.creature, false);
     assert.deepEqual(original.reviewedFields, ['typeLine']);
-    assert.equal(original.contentStatus, 'oracle-unverified');
+    assert.equal(
+      original.contentStatus,
+      legendsText.cards[id] ? 'scan-reviewed' : 'oracle-unverified',
+    );
     const oracle = { typeLine: row.oracleType, rulesText: 'Modern ability.' };
     assert.equal(
       withCardWording(original.face, { original: original.face, oracle }, 'oracle').typeLine,
@@ -371,6 +380,40 @@ try {
     assert(!override.reviewedFields.includes('typeLine'));
   }
   console.log('158 scan-bound Legends noncreature types complete the 310-printing inventory.');
+  for (const [id, row] of Object.entries(legendsText.cards)) {
+    const input = {
+      reference: { sha256: row.referenceHash },
+      card: {
+        id,
+        name: row.name,
+        set: 'leg',
+        type_line: 'Enchantment',
+        oracle_text: 'Modern ability.',
+      },
+    };
+    const original = presentation(input);
+    assert.deepEqual(original.face.rulesParagraphs, row.paragraphs);
+    assert.equal(original.contentStatus, 'scan-reviewed');
+    assert.equal(
+      withCardWording(
+        original.face,
+        {
+          original: original.face,
+          oracle: { typeLine: 'Enchantment', rulesText: 'Modern ability.' },
+        },
+        'oracle',
+      ).rulesText,
+      'Modern ability.',
+    );
+    const override = presentation(input, { [id]: { rulesText: 'Caller body.' } });
+    assert.equal(override.contentStatus, 'oracle-unverified');
+    assert.equal(override.face.rulesParagraphs[0].runs[0].text, 'Caller body.');
+    assert.throws(
+      () => presentation({ ...input, card: { ...input.card, name: 'Wrong printing' } }),
+      /stale/,
+    );
+  }
+  console.log('Six Legends body corrections preserve Oracle and explicit caller overrides.');
   let emptyCount = 0;
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
     const fixture = JSON.parse(
