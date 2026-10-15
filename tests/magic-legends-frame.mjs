@@ -13,6 +13,9 @@ try {
   const { retroFrameAsset, retroRects } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-frame.ts',
   );
+  const { titleTranslation } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/title-placement.ts',
+  );
   for (const [colors, family] of [
     [['W'], 'abu'],
     [['B'], 'abu'],
@@ -26,6 +29,9 @@ try {
     assert.equal(legendsFrame(original).family, family);
     assert.equal(retroFrameAsset(original), retroFrameAsset(oracle));
     assert.deepEqual(retroRects(original), retroRects(oracle));
+    assert.deepEqual(titleTranslation(original, 'retro'), [-18.5, -6]);
+    assert.deepEqual(titleTranslation(oracle, 'retro'), [-18.5, -6]);
+    assert.deepEqual(titleTranslation({ ...original, legendary: true }, 'retro'), [-18.5, -6]);
   }
   // Printed land/artifact semantics outrank their frame-color metadata.
   const land = { name: 'Karakas', setCode: 'leg', typeLine: 'Legendary Land', colors: ['W'] };
@@ -51,8 +57,12 @@ try {
     { frameTemplate: 'battle' },
     { layout: 'split' },
     { typeLine: 'Enchantment — Saga' },
-  ])
+  ]) {
     assert.equal(legendsFrame({ ...ordinary, ...override }), undefined);
+    assert.deepEqual(titleTranslation({ ...ordinary, ...override }, 'retro'), [0, 0]);
+  }
+  assert.deepEqual(titleTranslation({ ...ordinary, borderColor: 'white' }, 'retro'), [0, 0]);
+  assert.deepEqual(titleTranslation(land, 'retro'), [-18.5, -6]);
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'lea' }).endsWith('/old/abu/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: '3ed' }).endsWith('/old/fourth/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'arn' }).endsWith('/seventh/regular/w.png'));
@@ -63,6 +73,18 @@ try {
     '/games/magic/src/presentation/legends-color-profiles.ts',
   );
   const study = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-colors.json'));
+  const titles = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-titles.json'));
+  assert.equal(titles.runtimeVerified, 72);
+  assert.deepEqual(titles.translation, titleTranslation(ordinary, 'retro'));
+  assert.equal(
+    titles.results.reduce((n, r) => n + r.held, 0),
+    36,
+  );
+  for (const result of titles.results) {
+    assert.ok(result.after > result.before);
+    assert.equal(result.improved, result.held);
+    assert.equal(result.worstRegression, 0);
+  }
   const geometry = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/early-frame-source-review.json'),
   );

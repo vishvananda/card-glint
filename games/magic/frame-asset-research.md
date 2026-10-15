@@ -62,8 +62,15 @@ Irregular black/green masks preserve
 shadows crossing the paper edge. Profiles bind to exact source URLs and geometry
 and use the existing derived-material cache; no animation-time fitting is added.
 
-Source, geometry and color changes are on the Legends branch, not released.
-Next are title, mana, type, set-symbol, rules, artist and P/T calibration. Validate
+The [title study](fixtures/accuracy/legends-titles.json) uses the same frozen
+72-card cohort. Gold and other materials independently choose a shared shift of
+18.5 canonical pixels left and 6 up. Actual painter replay improves every held-out
+title: mean two-polarity edge F1 rises from 0.637 to 0.745 for gold and from 0.640
+to 0.728 for the other materials. Font size and width still need review; these
+title-only diagnostics are not whole-card accuracy scores.
+
+Source, geometry, color and title changes are on the Legends branch, not released.
+Next are mana, type, set-symbol, rules, artist and P/T calibration. Validate
 transfer before changing other sets. External images remain in the private
 reference cache and review page; the public showcase is unchanged. Fitting and
 boundary scoring run on the CPU; browser captures prepare the rasters. These
