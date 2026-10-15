@@ -1,6 +1,6 @@
 /** Optional host-supplied height-field coating; no simulation or scheduling. */
 export const LIQUID_FOIL_GLSL = `
-  if(previewKind>=5.) {
+  if(previewKind>=5. && previewKind<8.) {
     vec2 d=vec2(1./244.,1./340.);
     float height=texture2D(wave,uv).r*hasWave;
     vec2 gradient=vec2(texture2D(wave,uv+vec2(d.x,0.)).r-texture2D(wave,uv-vec2(d.x,0.)).r,

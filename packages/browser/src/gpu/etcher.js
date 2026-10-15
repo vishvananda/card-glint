@@ -8,8 +8,8 @@ precision highp float;precision highp int;precision highp usampler2D;
 `;
 const gray =
   head +
-  `uniform sampler2D source;layout(location=0) out uvec4 color;
-void main(){uvec3 rgb=uvec3(floor(texelFetch(source,ivec2(gl_FragCoord.xy),0).rgb*255.+.5));
+  `uniform sampler2D source;uniform ivec2 size;uniform int mode;layout(location=0) out uvec4 color;
+void main(){ivec2 p=ivec2(gl_FragCoord.xy);if(mode==1)p.y=size.y-1-p.y;uvec3 rgb=uvec3(floor(texelFetch(source,p,0).rgb*255.+.5));
 uint y=(54u*rgb.r+183u*rgb.g+19u*rgb.b)>>8u;color=uvec4(y,0,0,1);}`;
 const filter =
   head +
@@ -145,7 +145,12 @@ export class GpuEtcher {
     gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
     gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, gl.NONE);
     // Numeric fixtures are already bottom-up; DOM artwork needs the normal flip.
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, !ArrayBuffer.isView(source));
+    // Per the WebGL spec, UNPACK_FLIP_Y_WEBGL is ignored for ImageBitmap sources,
+    // so ImageBitmap inputs are flipped vertically in the grayscale shader pass.
+    if (source !== null) {
+      this.flipped = typeof ImageBitmap !== 'undefined' && source instanceof ImageBitmap ? 1 : 0;
+    }
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, !ArrayBuffer.isView(source) && !this.flipped);
     if (ArrayBuffer.isView(source))
       gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, source);
     else if (source !== null)
@@ -166,7 +171,7 @@ export class GpuEtcher {
       gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target, 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
-    pass(0, this.input, a);
+    pass(0, this.input, a, this.flipped ?? 0);
     pass(1, a, b, 1);
     pass(1, b, c, 2);
     pass(1, c, a, 3);

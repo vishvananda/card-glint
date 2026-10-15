@@ -52,7 +52,16 @@ try {
           if (alpha[i + 3] === 255) protectedPixels.push(i);
         }
       if (protectedPixels.length < 10) throw Error('Missing opaque frame test samples');
-      for (const finish of ['rain', 'heat', 'pool', 'etched', 'cold', 'opal', 'prismatic']) {
+      for (const finish of [
+        'rain',
+        'heat',
+        'pool',
+        'etched',
+        'cold',
+        'opal',
+        'prismatic',
+        'gloss',
+      ]) {
         const actual = await image(finish);
         let inside = 0,
           outside = 0,

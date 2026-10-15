@@ -29,8 +29,8 @@
       "rejected": 0
     },
     "scratchBytes": 1225728,
-    "cpuFrameMs": 0.5999999046325684,
-    "surfacePasses": 1,
+    "cpuFrameMs": 0.19999980926513672,
+    "surfacePasses": 0,
     "surfaceBytes": 704512
   },
   "layouts": [
@@ -208,8 +208,8 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 0.6999999284744263,
-      "surfacePasses": 2,
+      "cpuFrameMs": 0.20000028610229492,
+      "surfacePasses": 0,
       "surfaceBytes": 704512
     },
     "after": {
@@ -240,8 +240,8 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 0.8999999761581421,
-      "surfacePasses": 3,
+      "cpuFrameMs": 0.2999997138977051,
+      "surfacePasses": 0,
       "surfaceBytes": 704512
     }
   },
@@ -304,7 +304,7 @@
         "rejected": 0
       },
       "scratchBytes": 0,
-      "cpuFrameMs": 0.3999999761581421,
+      "cpuFrameMs": 0.19999980926513672,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -336,7 +336,7 @@
         "rejected": 0
       },
       "scratchBytes": 0,
-      "cpuFrameMs": 0.3999999761581421,
+      "cpuFrameMs": 0.19999980926513672,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -372,7 +372,7 @@
         "rejected": 0
       },
       "scratchBytes": 0,
-      "cpuFrameMs": 0.19999992847442627,
+      "cpuFrameMs": 0.19999980926513672,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     }
@@ -518,8 +518,8 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 0.8999999761581421,
-      "surfacePasses": 3,
+      "cpuFrameMs": 0.2999997138977051,
+      "surfacePasses": 0,
       "surfaceBytes": 704512
     },
     "after": {
@@ -550,21 +550,21 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 2.8000000715255737,
-      "surfacePasses": 3,
+      "cpuFrameMs": 1.0999999046325684,
+      "surfacePasses": 0,
       "surfaceBytes": 704512
     },
     "submissionMs": [
-      4,
-      3.899999976158142,
-      3.700000047683716,
-      3.700000047683716,
-      3.799999952316284,
-      3.700000047683716,
-      3.5,
-      3.1999999284744263,
-      4,
-      2.899999976158142
+      1.4000000953674316,
+      1.1999998092651367,
+      1.0999999046325684,
+      1.0999999046325684,
+      1,
+      1.200000286102295,
+      1,
+      1.0999999046325684,
+      1.0999999046325684,
+      1.0999999046325684
     ]
   },
   "context": {
@@ -597,7 +597,7 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 3.600000023841858,
+      "cpuFrameMs": 1.6999998092651367,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -612,13 +612,13 @@
     ],
     "paths": {
       "rust": {
-        "contextAndProgramSetupMs": 2.100000023841858,
-        "coldMaskCompletedMedianMs": 13.5,
+        "contextAndProgramSetupMs": 1.299999713897705,
+        "coldMaskCompletedMedianMs": 6.799999713897705,
         "samples": 5,
         "hot": {
           "requests": 10000,
-          "lookupAndLeaseMs": 12.5,
-          "microsecondsPerHit": 1.25,
+          "lookupAndLeaseMs": 8.599999904632568,
+          "microsecondsPerHit": 0.8599999904632568,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -628,7 +628,7 @@
         },
         "fitted": {
           "requests": 800,
-          "lookupAndLeaseMs": 0.8999999761581421,
+          "lookupAndLeaseMs": 0.5999999046325684,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -639,7 +639,7 @@
         "pressure": {
           "requests": 24,
           "budgetBytes": 698368,
-          "elapsedMs": 529,
+          "elapsedMs": 252.30000019073486,
           "edges": 24,
           "uploads": 24,
           "readbacks": 24,
@@ -655,13 +655,13 @@
         "scratchBytes": 0
       },
       "gpu": {
-        "contextAndProgramSetupMs": 3.5,
-        "coldMaskCompletedMedianMs": 31.799999952316284,
+        "contextAndProgramSetupMs": 1.3000001907348633,
+        "coldMaskCompletedMedianMs": 12.599999904632568,
         "samples": 5,
         "hot": {
           "requests": 10000,
-          "lookupAndLeaseMs": 12.5,
-          "microsecondsPerHit": 1.25,
+          "lookupAndLeaseMs": 6.099999904632568,
+          "microsecondsPerHit": 0.6099999904632568,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -671,7 +671,7 @@
         },
         "fitted": {
           "requests": 800,
-          "lookupAndLeaseMs": 0.6999999284744263,
+          "lookupAndLeaseMs": 0.2999997138977051,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -682,7 +682,7 @@
         "pressure": {
           "requests": 24,
           "budgetBytes": 698368,
-          "elapsedMs": 978.6000000238419,
+          "elapsedMs": 404.30000019073486,
           "edges": 24,
           "uploads": 24,
           "readbacks": 24,
@@ -702,12 +702,12 @@
       "available": true,
       "rawBytes": 174592,
       "compressedBytes": 92364,
-      "gzipMs": 23.699999928474426,
-      "writeMs": 2.700000047683716,
-      "readDecodeMedianMs": 3.1999999284744263,
-      "snapshotReadbackMs": 7.5,
-      "uploadCompletedMedianMs": 7.800000071525574,
-      "rebuildFromDecodedArtCompletedMedianMs": 38.699999928474426,
+      "gzipMs": 8.5,
+      "writeMs": 1.3999996185302734,
+      "readDecodeMedianMs": 1.4000000953674316,
+      "snapshotReadbackMs": 2.5,
+      "uploadCompletedMedianMs": 2.5,
+      "rebuildFromDecodedArtCompletedMedianMs": 13,
       "breakEvenRestores": 2,
       "note": "Null means cached restore was slower than rebuilding here. Hot CacheStorage reads, not OS-cold disk or fresh network; optional persistence is not enabled in the renderer."
     },

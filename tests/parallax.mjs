@@ -75,9 +75,9 @@ try {
         }
         parallax[finish] = centers;
       }
-      // A real turning pane, not just a lighting-normal change. Track a scene
-      // feature away from the pivot: rain keeps it approximately fixed on screen,
-      // while a pool's painted bottom follows the same movement as regular ink.
+      // A real turning pane/basin, not just a lighting-normal change. Track a scene
+      // feature away from the pivot: rain and pool keep their recessed plane
+      // approximately anchored behind the turning front surface.
       const anchored = {};
       for (const finish of ['regular', 'rain', 'pool']) {
         const centers = [];
@@ -138,8 +138,7 @@ try {
   const travel = (centers) => Math.max(...centers.map((x) => Math.abs(x - centers[1])));
   assert.ok(travel(regular) > 6, 'Test pose did not move the printed feature');
   assert.ok(travel(rain) < travel(regular) * 0.45, 'Window scene followed the turning glass');
-  for (let i = 0; i < 3; i++)
-    assert.ok(Math.abs(pool[i] - regular[i]) < 3, 'Pool floor detached from its card');
+  assert.ok(travel(pool) < travel(regular) * 0.45, 'Pool floor followed the turning water surface');
   assert.ok(report.intensity.p10 < 80, 'Missing diverging/darker floor light');
   assert.ok(report.intensity.p90 > 95, 'Missing focused/brighter floor light');
   assert.ok(report.intensity.p99 > 120, 'Missing concentrated caustic bands');

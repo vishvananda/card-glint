@@ -54,7 +54,7 @@ void main(){
  vec2 corner=abs((uv-.5)*vec2(1.,aspect))-(vec2(.5,aspect*.5)-cornerRadius);
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
- vec3 shaded=previewLinear(previewKind>=5. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view));
+ vec3 shaded=previewLinear(previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view));
  vec3 base=texture(face,uv).rgb;
  vec4 c=texture(coverage,uv),top=texture(overlay,uv);
  vec3 under=mix(base,shaded,max(finishBase,c.r)*(1.-c.g));
