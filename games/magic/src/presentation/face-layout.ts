@@ -12,7 +12,7 @@ export interface RulesRun {
 export interface RulesParagraph {
   role: 'rules' | 'flavor';
   runs: readonly RulesRun[];
-  /** Explicit printing alignment. Dash-prefixed flavor attributions default to right. */
+  /** Explicit printing alignment; takes precedence over automatic set policies. */
   align?: 'left' | 'center' | 'right';
 }
 

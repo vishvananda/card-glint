@@ -282,9 +282,11 @@ Short Fourth Edition and Revised passages use centered, balanced lines. Revised
 uses larger type and more space between lines, validated separately from Fourth
 Edition. Explicit paragraph alignment and hard breaks take precedence; other
 old-border sets retain their separate typography policies.
-Flavor lines starting with an em dash, en dash or `--` are right-aligned
-automatically, including wrapped attributions and hard breaks inside styled runs.
-Centered passages and explicit paragraph `align` values take precedence.
+In Mirage, Tempest and Sixth Edition, flavor credits starting with an em dash,
+en dash or `--` are right-aligned automatically, including wrapped credits and
+hard breaks inside styled runs. Scans confirm this is not universal: Revised and
+M21 include left-aligned credits. Other sets retain their existing alignment until
+reviewed. Centered passages and explicit paragraph `align` values take precedence.
 Other layouts
 still use their `rulesText` as the source. Planeswalker rows now measure loaded
 font outlines, preserve italic runs from matching `rulesParagraphs`, and report

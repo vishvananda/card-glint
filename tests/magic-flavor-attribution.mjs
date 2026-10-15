@@ -44,6 +44,7 @@ try {
         leading: 1,
         paragraphGap: 0.2,
         flavorGap: 0.7,
+        flavorAttribution: 'right',
       });
       const start = layout.lines.findIndex((l) =>
         l.runs
@@ -90,13 +91,25 @@ try {
         { role: 'flavor', runs: [{ text: '--Author', italic: true }] },
       ],
     };
-    for (const setCode of ['3ed', '6ed', 'm21']) {
+    for (const setCode of ['3ed', '6ed', 'mir', 'tmp', 'm21']) {
       const f = { ...face, setCode };
       const layout = setCode === 'm21' ? ordinaryTextLayout(ctx, f) : retroTextLayout(ctx, f);
       const last = layout.lines.at(-1);
+      const right = ['6ed', 'mir', 'tmp'].includes(setCode);
       check(
-        Math.abs(last.x + last.width - layout.x - layout.width) < 0.01,
-        'Forced-left rules suppressed automatic attribution: ' + setCode,
+        Math.abs(last.x - layout.x - (right ? layout.width - last.width : 0)) < 0.01,
+        'Incorrect printing-specific attribution alignment: ' + setCode,
+      );
+      const explicit = {
+        ...f,
+        rulesParagraphs: f.rulesParagraphs.map((p, i) => (i === 2 ? { ...p, align: 'right' } : p)),
+      };
+      const forced =
+        setCode === 'm21' ? ordinaryTextLayout(ctx, explicit) : retroTextLayout(ctx, explicit);
+      const credit = forced.lines.at(-1);
+      check(
+        Math.abs(credit.x + credit.width - forced.x - forced.width) < 0.01,
+        'Rules centering choice must not erase explicit flavor alignment',
       );
     }
     // Interior coverage catches the edge-only masks that made Revised stats hollow.
@@ -124,7 +137,7 @@ try {
   });
   assert.equal(result.cases, 3);
   console.log(
-    'Flavor attributions preserve centering/styles and align across frames; Revised stats have solid interiors.',
+    'Flavor attributions follow reviewed set policies and preserve explicit alignment/styles; Revised stats have solid interiors.',
     result,
   );
 } finally {

@@ -1,6 +1,7 @@
 import type { RulesParagraph, RulesRun } from './face-layout.js';
 
-/** A final dash-prefixed flavor line is an attribution, including when its
+/** For a printing that uses right-aligned credits, a final dash-prefixed
+ * flavor line is an attribution, including when its
  * dash/name have different styles. Split before wrapping so continuations and
  * ink/exclusion bounds use the same alignment as painting. Explicit paragraph
  * alignment (including centered passages) takes precedence. */

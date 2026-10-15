@@ -42,6 +42,12 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   if (isRevisedLand(face)) return revisedLandRules(context, face, paragraphs, reference);
   const set = face.setCode?.toLowerCase();
+  // Reviewed Mirage/Tempest annotations and Sixth Edition scans use right
+  // attribution lines. Early sets and current frames have counterexamples.
+  const typography: Readonly<RulesTypography> =
+    set === 'mir' || set === 'tmp' || set === '6ed'
+      ? { ...RETRO_TYPOGRAPHY, flavorAttribution: 'right' }
+      : RETRO_TYPOGRAPHY;
   // Oracle reminders need a safe panel inset. Dense original Alpha printings
   // have tighter margins; the original-comparison path retains their placement.
   const verticalLimits =
@@ -82,7 +88,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
       minimum,
       5,
       {
-        ...RETRO_TYPOGRAPHY,
+        ...typography,
         leading: 1.1,
         paragraphGap: 0,
         flavorGap: 0,
@@ -138,15 +144,15 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     basic ? 24 : centered ? 25 : 22.5,
     minimum,
     centered
-      ? { ...RETRO_TYPOGRAPHY, leading: 1, balanceLines: true }
+      ? { ...typography, leading: 1, balanceLines: true }
       : longBlock
         ? {
-            ...RETRO_TYPOGRAPHY,
+            ...typography,
             paragraphGap: 0,
             flavorGap: 0,
             centerOffset: revisedBlock ? -10 : 0,
           }
-        : RETRO_TYPOGRAPHY,
+        : typography,
   );
   // Revised uses a distinct small face for dense passages. Character count
   // alone misclassifies wide/italic blocks; fit alone misclassifies short
@@ -163,7 +169,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
     15.5,
     minimum,
     {
-      ...RETRO_TYPOGRAPHY,
+      ...typography,
       leading: 1.25,
       paragraphGap: 0,
       flavorGap: 0,

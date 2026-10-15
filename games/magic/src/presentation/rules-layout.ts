@@ -26,6 +26,8 @@ export interface RulesTypography {
   paragraphGap: number;
   flavorGap: number;
   flavorOrphans?: boolean;
+  /** Only enable for printings whose dash-prefixed credits use right alignment. */
+  flavorAttribution?: 'right';
   flavorSeparator?: boolean;
   balanceLines?: boolean;
   /** Optical shift from vertical centering, constrained to the text box. */
@@ -60,7 +62,8 @@ export function layoutRules(
   context.textBaseline = 'alphabetic';
   context.textAlign = 'left';
   try {
-    const blocks = paragraphs.flatMap(flavorAttribution);
+    const blocks =
+      typography.flavorAttribution === 'right' ? paragraphs.flatMap(flavorAttribution) : paragraphs;
     let layout: RulesLayout;
     let size = maximumSize;
     do {
