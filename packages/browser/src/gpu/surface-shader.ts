@@ -21,9 +21,9 @@ vec3 refractedInk(vec2 uv){return previewInk(surfaceInk(uv));}
 // distance in card widths. The center stays anchored: no uniform image pan.
 // This is an approximation for host-owned cameras, not a world-space portal.
 vec2 windowSceneUv(vec2 uv,vec3 normal){
- vec2 metric=vec2(1.,aspect),p=(uv-.5)*metric;
- vec2 projected=p-normal.xy*dot(normal.xy,p)/max(.25,1.+normal.z);
- projected/=max(.65,1.+dot(normal.xy,p)/3.5);
+ vec2 metric=vec2(1.,aspect),p=(uv-.5)*metric,tilt=vec2(normal.x,-normal.y);
+ vec2 projected=p-tilt*dot(tilt,p)/max(.25,1.+normal.z);
+ projected/=max(.65,1.+dot(tilt,p)/3.5);
  return .5+mix(p,projected,.9)/metric;
 }
 // In artwork-only mode, clamp to this art window so moving ink cannot pull the

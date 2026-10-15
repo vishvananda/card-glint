@@ -23,16 +23,41 @@ export function emblem(ctx: Ctx, x: number, y: number, radius: number) {
   ctx.save();
   ctx.translate(x, y);
   ctx.beginPath();
+  // Outer 8-pointed glint star with alternating cardinal and diagonal blades
   for (let i = 0; i < 16; i++) {
-    const a = (i * Math.PI) / 8,
-      r = i % 2 ? radius * 0.35 : radius;
-    const x = Math.sin(a) * r,
-      y = -Math.cos(a) * r;
-    if (i) ctx.lineTo(x, y);
-    else ctx.moveTo(x, y);
+    const a = (i * Math.PI) / 8;
+    const r = i % 2 === 1 ? radius * 0.36 : i % 4 === 0 ? radius : radius * 0.74;
+    const px = Math.sin(a) * r,
+      py = -Math.cos(a) * r;
+    if (i) ctx.lineTo(px, py);
+    else ctx.moveTo(px, py);
   }
   ctx.closePath();
-  ctx.fill();
+  // Outer and inner concentric ring contours (single evenodd fill avoids alpha double-blending)
+  const ringOuter = radius * 0.63,
+    ringInner = radius * 0.53;
+  ctx.moveTo(ringOuter, 0);
+  ctx.arc(0, 0, ringOuter, 0, Math.PI * 2, false);
+  ctx.moveTo(ringInner, 0);
+  ctx.arc(0, 0, ringInner, 0, Math.PI * 2, true);
+  // Inner diamond cutout for crisp bevel edges
+  const cut = radius * 0.42;
+  ctx.moveTo(0, -cut);
+  ctx.lineTo(cut, 0);
+  ctx.lineTo(0, cut);
+  ctx.lineTo(-cut, 0);
+  ctx.closePath();
+  // Central 4-pointed star core inside the cutout
+  for (let i = 0; i < 8; i++) {
+    const a = (i * Math.PI) / 4;
+    const r = i % 2 ? radius * 0.09 : radius * 0.28;
+    const px = Math.sin(a) * r,
+      py = -Math.cos(a) * r;
+    if (i) ctx.lineTo(px, py);
+    else ctx.moveTo(px, py);
+  }
+  ctx.closePath();
+  ctx.fill('evenodd');
   ctx.restore();
 }
 export function engravings(ctx: Ctx, theme: Theme, monochrome = false) {
@@ -75,7 +100,13 @@ export function engravings(ctx: Ctx, theme: Theme, monochrome = false) {
     ctx.arc(72, y, 21, 0, Math.PI * 2);
     ctx.stroke();
   }
-  emblem(ctx, 360, 940, 15);
+  if (monochrome) {
+    // Large set symbol stamp overlaying the rules text box for etched and opal foils
+    ctx.save();
+    ctx.globalAlpha = 0.68;
+    emblem(ctx, 360, 792, 102);
+    ctx.restore();
+  }
   for (let i = 0; i < 7; i++) {
     const x = 270 + i * 30;
     ctx.beginPath();

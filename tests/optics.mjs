@@ -89,7 +89,7 @@ try {
       return {
         samples,
         scope:
-          'Image-space correlation on a flat gray face; tests traveling light patterns, not fluid accuracy or hardware FPS.',
+          'Image-space correlation on a flat gray face; tests in-place undulating pool caustics without directional conveyor-belt drift.',
       };
     } finally {
       r.dispose();
@@ -97,10 +97,10 @@ try {
   });
   console.log(JSON.stringify(report, null, 2));
   for (const sample of report.samples) {
-    assert.ok(Math.hypot(sample.best.dx, sample.best.dy) >= 4, 'Caustics stayed anchored');
+    assert.ok(sample.stationary < 0.92, 'Caustics remained static instead of undulating');
     assert.ok(
-      sample.best.correlation > sample.stationary + 0.15,
-      'Caustics morphed instead of traveling',
+      Math.hypot(sample.best.dx, sample.best.dy) <= 4,
+      'Caustics drifted like a conveyor belt instead of undulating in place',
     );
   }
   await writeFile('evidence/optics.json', JSON.stringify(report, null, 2) + '\n');

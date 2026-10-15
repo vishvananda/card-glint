@@ -43,7 +43,19 @@ export class TextureStore {
         gl.bindTexture(gl.TEXTURE_2D, handle);
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
         gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
-        gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, source);
+        if (typeof ImageBitmap !== 'undefined' && source instanceof ImageBitmap) {
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          try {
+            canvas.getContext('2d')!.drawImage(source, 0, 0);
+            gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
+          } finally {
+            canvas.width = canvas.height = 0;
+          }
+        } else {
+          gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, source);
+        }
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
         this.uploads++;
         return { texture: handle, width: w, height: h };

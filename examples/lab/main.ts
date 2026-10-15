@@ -144,6 +144,7 @@ const ready = (async () => {
     dirty = true;
     const names: Record<Finish, string> = {
       regular: 'Uncoated',
+      gloss: 'Card shine',
       etched: 'Etched silver',
       cold: 'Cold foil',
       opal: 'Opal embossing',

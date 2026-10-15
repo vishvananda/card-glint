@@ -3,6 +3,7 @@ export type Rect = readonly [number, number, number, number];
 export type Size = readonly [number, number];
 export type Finish =
   | 'regular'
+  | 'gloss'
   | 'etched'
   | 'prismatic'
   | 'cold'

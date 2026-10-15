@@ -5,7 +5,17 @@ import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
 import { SurfaceMotion } from '../surface-motion.js';
 import { surfaceSeed } from '../deformation.js';
 import { Caustics } from './caustics.js';
-const kinds = { regular: 0, etched: 1, prismatic: 2, cold: 3, opal: 4, rain: 5, heat: 6, pool: 7 };
+const kinds = {
+  regular: 0,
+  etched: 1,
+  prismatic: 2,
+  cold: 3,
+  opal: 4,
+  rain: 5,
+  heat: 6,
+  pool: 7,
+  gloss: 8,
+};
 const stride = 40;
 export interface Material {
   face: Texture;
