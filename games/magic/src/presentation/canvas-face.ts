@@ -1,3 +1,6 @@
+import { paintPlaneswalkerLoyalty } from './planeswalker-loyalty.js';
+import { paintModernFooter } from './modern-footer.js';
+import { paintBasicLandSymbol } from './plate-basic-land.js';
 import { paintStandardTemplate, loadStandardTemplateFonts } from './standard-frame-paint.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { prepareManaNumerals } from './mana-numeral.js';
@@ -437,7 +440,7 @@ export function paintAssembledFace(
       context.restore();
     }
     if (layer === 'artwork') return;
-    paintFooter(context, face);
+    paintModernFooter(context, face);
     if (splitHasFuse(face)) {
       context.font = '14px "CardRenderer MTG MPlantin", Georgia';
       context.fillStyle = 'white';
@@ -568,7 +571,7 @@ export function paintAssembledFace(
     const [ax, ay, aw, ah] = px(rects.art),
       rim = NORMAL_FRAME_GEOMETRY.artRim;
     context.fillStyle = '#090806';
-    context.fillRect(ax - rim, ay, aw + 2 * rim, ah);
+    context.fillRect(ax - rim, ay - rim, aw + 2 * rim, ah + 2 * rim);
   }
   paintIllustration(context, face, images, px(rects.art), layer);
   if (planeswalker) paintPlaneswalkerPaper(context, face);
@@ -771,55 +774,29 @@ export function paintAssembledFace(
   });
   if (hasExtraRules(face)) paintExtraRules(context, face, images);
   else if (kind !== 'normal') paintSpecialRules(context, face, images);
-  else {
+  else if (!paintBasicLandSymbol(context, face, images)) {
     paintRulesLayout(context, ordinaryTextLayout(context, face, height, textScale), images);
   }
   const stats = faceStats(face);
   if (stats && kind !== 'leveler') {
     draw(assets.pt, rects.stats, 'stretch');
-    const [sx, sy, sw] = px(rects.stats);
-    context.fillStyle = kind.startsWith('planeswalker') ? 'white' : '#17140f';
-    context.font = `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`;
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
-    context.fillText(
-      stats.text,
-      sx + sw / 2,
-      sy +
-        (kind.startsWith('planeswalker')
-          ? (rects.stats[3] * FACE_HEIGHT) / 2
-          : FACE_TEXT.statsLine / 2 + (kind === 'normal' ? 2 : 0)),
-      sw,
-    );
+    if (kind.startsWith('planeswalker'))
+      paintPlaneswalkerLoyalty(context, stats.text, px(rects.stats));
+    else {
+      const [sx, sy, sw] = px(rects.stats);
+      context.fillStyle = '#17140f';
+      context.font = `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText(
+        stats.text,
+        sx + sw / 2,
+        sy + FACE_TEXT.statsLine / 2 + (kind === 'normal' ? 2 : 0),
+        sw,
+      );
+    }
   }
-  if (!panel) paintFooter(context, face);
-}
-
-function paintFooter(context: CanvasRenderingContext2D, face: RenderedCardInput) {
-  const [x, y, width, height] = pixels(FACE_RECTS.footer),
-    top = y + FACE_TEXT.footerLine;
-  context.save();
-  context.beginPath();
-  context.rect(x, y, width, height);
-  context.clip();
-  context.textAlign = 'left';
-  context.textBaseline = 'top';
-  context.fillStyle = cardStock(face.setCode, face.borderColor).ink;
-  context.font = `${FACE_TEXT.footerFont}px "CardRenderer MTG Relay", sans-serif`;
-  context.letterSpacing = `${FACE_TEXT.footerTracking}px`;
-  const set = face.setCode?.trim().toUpperCase() ?? '';
-  context.fillText(set, x, top);
-  let left = x + context.measureText(set).width;
-  context.letterSpacing = '0px';
-  if (face.artist) {
-    left += FACE_TEXT.artistMarginLeft;
-    context.font = `${FACE_TEXT.footerFont}px "CardRenderer MTG Artist Credit", sans-serif`;
-    context.fillText('a', left, top);
-    left += context.measureText('a').width + FACE_TEXT.artistMarginRight;
-    context.font = `${FACE_TEXT.footerFont * 1.154}px "CardRenderer MTG Beleren", Georgia`;
-    context.fillText(face.artist, left, top);
-  }
-  context.restore();
+  if (!panel) paintModernFooter(context, face);
 }
 
 function paintFrame(

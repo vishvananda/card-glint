@@ -241,7 +241,8 @@ try {
       assert.equal(plateBasicSymbol({ ...input, rulesParagraphs: [] }), null);
       assert.equal(plateBasicSymbol({ ...input, rulesText: raw + '\nCustom rules.' }), null);
       assert.equal(plateBasicSymbol({ ...input, typeLine: 'Land' }), null);
-      assert.equal(plateBasicSymbol({ ...input, frameAssetFamily: undefined }), null);
+      assert.equal(plateBasicSymbol({ ...input, frameAssetFamily: undefined }), symbol);
+      assert.equal(plateBasicSymbol({ ...input, frameStyle: 'retro' }), null);
     }
   }
   assert.ok(

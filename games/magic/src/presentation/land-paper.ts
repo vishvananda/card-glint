@@ -9,6 +9,11 @@ const W = '#fbf0c5',
   R = '#edaa8d',
   G = '#dde6e2';
 const PAPER: Partial<Record<FrameAssetKey, readonly [string, string]>> = {
+  W: [W, W],
+  U: [U, U],
+  B: [B, B],
+  R: [R, R],
+  G: [G, G],
   WU: [W, U],
   WB: ['#f0e0b5', '#a99da8'],
   WR: [R, W],

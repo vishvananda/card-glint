@@ -1,3 +1,4 @@
+import { plateBasicSymbol } from './plate-basic-land.js';
 import { standardTemplateAssets } from './standard-frame-templates.js';
 import { splitMaterialAssets } from './split-materials.js';
 import { splitFuseBridgeAssets } from './split-fuse-bridge.js';
@@ -236,6 +237,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
   return [
     mountedSecurityStamp(face)?.image,
     mountedSecurityStamp(face)?.rightImage,
+    faceFrame(face) === 'normal' ? plateBasicSymbol(face) : null,
     ...extraRuleAssets(face),
     assets.background,
     assets.frame,
@@ -260,6 +262,7 @@ export function loadCanvasFonts(): Promise<void> {
   return (fonts ??= Promise.all([
     document.fonts.load('24px "CardRenderer MTG Beleren"'),
     document.fonts.load('700 24px "CardRenderer MTG Beleren"'),
+    document.fonts.load('700 11px "CardRenderer MTG Beleren Small Caps"'),
     document.fonts.load('24px "CardRenderer MTG MPlantin"'),
     document.fonts.load('italic 24px "CardRenderer MTG MPlantin"'),
     document.fonts.load('14px "CardRenderer MTG Relay"'),

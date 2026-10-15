@@ -434,3 +434,28 @@ using original wording, full cards and fixed-pose red/green overlays. Masks and
 derived colors should be prepared once per immutable source/profile; no scan
 segmentation or mask readback belongs in the animation loop. No candidate in
 this study changes released frame selection or color defaults.
+
+### Ordinary modern basic lands, information lines and art rim
+
+The ordinary M15-family painter now infers a basic land's frame palette from its
+printed subtype when semantic colors are empty. Explicit `frameColors` still
+wins. The outer land texture is retained; the colored rails, title/type panels
+and tinted paper use the same shared palette across sets. The cached large
+basic symbol is also available in ordinary component and M15 plate rendering,
+with custom rules/flavor paragraphs preserved. Eighth's existing symbol geometry
+and guarded material calibration are retained.
+
+Ordinary component and M15 plate footers share collector/artist/legal painting.
+The Eighth footer now adds its collector number and known legal line. MSE supplies
+the font roles (Relay, Beleren small caps, Matrix, MPlantin); ordinary English
+paper scans verify M15, WAR, M21, FDN and 8ED wording and printed denominators.
+Unknown sets do not infer a legal year or total from Scryfall's count of variants;
+`legalText` remains the override and `null` suppresses the default.
+
+Art apertures follow the frame's horizontal scaling instead of applying one
+fixed inset to every set. A 0.75-reference-pixel rim surrounds all four edges;
+artwork/printing layers and foil apertures use the same inner rectangle. This
+removes the excess side strips on wide frames without overwriting the top and
+bottom line. It does not claim a new vertical frame calibration or alter source
+art crops. The 30-printing review and its frozen scan identities are recorded in
+`fixtures/accuracy/modern-basic-footer-review.json`.

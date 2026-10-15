@@ -10,8 +10,8 @@ const COLORS: Readonly<Record<string, string>> = {
 };
 
 /** The printed subtype supplies a basic land's palette; its rules colors are empty. */
-export function basicLandColor(face: RenderedCardInput): string | undefined {
-  const type = /^Basic Land [—–-] (Plains|Island|Swamp|Mountain|Forest)$/.exec(
+export function basicLandColor(face: Pick<RenderedCardInput, 'typeLine'>): string | undefined {
+  const type = /^Basic (?:Snow )?Land [—–-] (Plains|Island|Swamp|Mountain|Forest)$/.exec(
     face.typeLine ?? '',
   )?.[1];
   return type ? COLORS[type] : undefined;
@@ -21,11 +21,16 @@ export function basicLandColor(face: RenderedCardInput): string | undefined {
  * only the matching basic subtype and untouched single paragraph. Custom rules,
  * flavor and explicit paragraph styling must remain visible. */
 export function plateBasicSymbol(face: RenderedCardInput): string | null {
-  if (face.frameAssetFamily !== 'eighth') return null;
+  if (
+    face.frameStyle === 'retro' ||
+    face.frameTemplate ||
+    (face.layout && face.layout !== 'normal')
+  )
+    return null;
   const color = basicLandColor(face);
   if (!color) return null;
   const raw = face.rulesText ?? '';
-  if (![color, `{${color}}`, `{T}: Add {${color}}.`, `({T}: Add {${color}}.)`].includes(raw))
+  if (!['', color, `{${color}}`, `{T}: Add {${color}}.`, `({T}: Add {${color}}.)`].includes(raw))
     return null;
   if (face.rulesParagraphs) {
     const p = face.rulesParagraphs;
@@ -40,4 +45,24 @@ export function plateBasicSymbol(face: RenderedCardInput): string | null {
       return null;
   }
   return `${manifest.RETRO_ROOT}/img/frames/m15/basics/${color.toLowerCase()}.png`;
+}
+
+/** Source padding is part of the glyph; retain one common size and center. */
+export function paintBasicLandSymbol(
+  c: CanvasRenderingContext2D,
+  face: RenderedCardInput,
+  images: ReadonlyMap<string, ImageBitmap>,
+): boolean {
+  const url = plateBasicSymbol(face);
+  if (!url) return false;
+  const glyph = images.get(url);
+  if (!glyph) throw Error(`Basic land symbol unavailable: ${url}`);
+  c.save();
+  c.shadowColor = '#0009';
+  c.shadowOffsetX = -1.5;
+  c.shadowOffsetY = 1.5;
+  c.shadowBlur = 1.5;
+  c.drawImage(glyph, 166, 440, 156, 156);
+  c.restore();
+  return true;
 }

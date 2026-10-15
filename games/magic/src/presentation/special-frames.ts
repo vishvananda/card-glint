@@ -6,7 +6,7 @@ import { SAGA_RECTS } from './saga-frame.js';
 import { aftermathRects } from './aftermath-frame.js';
 import { planeswalkerArtBounds } from './planeswalker-art.js';
 import { isRetro, retroRects } from './retro-frame.js';
-import { NORMAL_FRAME_GEOMETRY } from './normal-frame-geometry.js';
+import { normalArtRect } from './normal-frame-geometry.js';
 import { framePlate } from './frame-plates.js';
 import {
   FACE_RECTS,
@@ -134,15 +134,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       type: [0.05669, 0.525, 0.88662, 0.07],
       rules: [0.07638, 0.605, 0.84724, 0.32],
     };
-  return {
-    ...FACE_RECTS,
-    art: [
-      FACE_RECTS.art[0] + NORMAL_FRAME_GEOMETRY.artInset / FACE_WIDTH,
-      FACE_RECTS.art[1],
-      FACE_RECTS.art[2] - (2 * NORMAL_FRAME_GEOMETRY.artInset) / FACE_WIDTH,
-      FACE_RECTS.art[3],
-    ],
-  };
+  return { ...FACE_RECTS, art: normalArtRect(face) };
 }
 /** Approximate geometry for hosts without a measurement context. Canvas painters
  * use measured sagaRuleLayout / planeswalkerRuleRows instead. */

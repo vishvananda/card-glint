@@ -1,3 +1,4 @@
+import { printingCollectorText, printingLegalText } from './printing-footer.js';
 import { resolveCardProfile } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -82,9 +83,12 @@ export function paintEighthFooter(
     const right = face.power != null && face.toughness != null ? 350 : 448;
     c.fillText(face.artist!, x, baseline, right - x);
   }
-  if (face.legalText) {
-    c.font = '9px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, 36.5, baseline + 13, 395);
+  const legal = printingLegalText(face),
+    number = printingCollectorText(face, false);
+  const line = [legal, number].filter(Boolean).join(' ');
+  if (line) {
+    c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+    c.fillText(line, 36.5, baseline + 13, 409);
   }
   c.restore();
 }

@@ -1,3 +1,4 @@
+import { basicLandColor } from './plate-basic-land.js';
 const COLOR_ORDER = 'WUBRG';
 
 export type FrameAssetKey =
@@ -98,7 +99,10 @@ export function resolveCardProfile(input: CardProfileInput): CardProfile {
 
 /** Presentation color selection never rewrites the card's semantic colors. */
 export function resolveFrameColors(input: CardProfileInput): string[] {
-  return normalizeColors(input.frameColors ?? input.colors ?? []);
+  if (input.frameColors !== undefined) return normalizeColors(input.frameColors);
+  const colors = normalizeColors(input.colors ?? []);
+  const basic = basicLandColor(input);
+  return colors.length === 0 && basic && input.land !== false ? [basic] : colors;
 }
 
 export function normalizeColors(colors: readonly string[]): string[] {
