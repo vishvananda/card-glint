@@ -284,6 +284,41 @@ try {
     }
   }
   console.log('129 scan-bound historical artifact labels and original/Oracle switching pass.');
+  const legends = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/leg/annotations-legend-types.json'),
+  );
+  assert.equal(Object.keys(legends.cards).length, 55);
+  assert.equal(
+    Object.values(legends.cards).filter((r) => r.typeLine === 'Summon Legend').length,
+    50,
+  );
+  for (const [id, row] of Object.entries(legends.cards)) {
+    const input = {
+      reference: { sha256: row.referenceHash },
+      card: {
+        id,
+        name: row.name,
+        set: 'leg',
+        type_line: 'Legendary Creature — Modern Type',
+        oracle_text: 'Modern ability.',
+      },
+    };
+    const original = presentation(input);
+    assert.equal(original.face.typeLine, row.typeLine);
+    assert.equal(original.face.creature, true);
+    assert(original.reviewedFields.includes('typeLine'));
+    assert.equal(original.contentStatus, 'oracle-unverified');
+    const oracle = { typeLine: input.card.type_line, rulesText: input.card.oracle_text };
+    assert.equal(
+      withCardWording(original.face, { original: original.face, oracle }, 'oracle').typeLine,
+      oracle.typeLine,
+    );
+    assert.throws(() => presentation({ ...input, reference: { sha256: 'changed' } }), /stale/);
+    const override = presentation(input, { [id]: { typeLine: 'Caller type' } });
+    assert.equal(override.face.typeLine, 'Caller type');
+    assert(!override.reviewedFields.includes('typeLine'));
+  }
+  console.log('55 scan-bound Legends type labels and Oracle isolation pass.');
   let emptyCount = 0;
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
     const fixture = JSON.parse(

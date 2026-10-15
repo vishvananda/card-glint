@@ -1,19 +1,28 @@
 import { reviewedPrintingFields } from './printing-fields.mjs';
 import { reviewedArtCrop } from './art-crop.mjs';
 import { historicArtifactAnnotation } from './historic-artifact-types.mjs';
+import { historicLegendAnnotation } from './historic-legend-types.mjs';
 import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
 import { earlyLandTypeAnnotation } from './early-land-types.mjs';
 import { emptyPrintingTextAnnotation } from './empty-printing-text.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
-  const historical = {
-      ...historicArtifactAnnotation(entry),
-      ...earlyLandTypeAnnotation(entry),
-      ...historicManaOrderAnnotation(entry),
-      ...emptyPrintingTextAnnotation(entry),
-    },
-    supplied = annotations[card.id] ?? {},
+  const historicalReviews = [
+    historicArtifactAnnotation(entry),
+    historicLegendAnnotation(entry),
+    earlyLandTypeAnnotation(entry),
+    historicManaOrderAnnotation(entry),
+    emptyPrintingTextAnnotation(entry),
+  ];
+  // One printing can have independently reviewed types and mana order. Retain
+  // both partial reviews instead of letting the last field list erase the first.
+  const historical = Object.assign({}, ...historicalReviews);
+  if (historicalReviews.some((r) => r.reviewedFields))
+    historical.reviewedFields = [
+      ...new Set(historicalReviews.flatMap((r) => r.reviewedFields ?? [])),
+    ];
+  const supplied = annotations[card.id] ?? {},
     annotation = {
       ...historical,
       ...supplied,
