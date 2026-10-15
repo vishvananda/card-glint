@@ -284,6 +284,52 @@ try {
     }
   }
   console.log('129 scan-bound historical artifact labels and original/Oracle switching pass.');
+  let emptyCount = 0;
+  for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
+    const fixture = JSON.parse(
+      await readFile(`games/magic/fixtures/accuracy/${set}/annotations-empty-rules.json`),
+    );
+    for (const [id, row] of Object.entries(fixture.cards)) {
+      const input = {
+        reference: { sha256: row.referenceHash },
+        card: {
+          id,
+          name: row.name,
+          set,
+          frame: '1993',
+          type_line: 'Creature — Modern Type',
+          oracle_text: 'Modern ability.',
+          flavor_text: 'Unverified flavor.',
+        },
+      };
+      const original = presentation(input);
+      assert.equal(original.annotation.rulesText, '');
+      assert.equal(original.contentStatus, 'scan-reviewed');
+      assert.equal(original.face.typeLine, row.typeLine);
+      assert(original.face.rulesParagraphs.every((p) => p.role === 'flavor'));
+      assert(!original.face.rulesText.includes('Modern ability.'));
+      assert.throws(() => presentation({ ...input, reference: { sha256: 'new-scan' } }), /stale/);
+      const oracle = { typeLine: input.card.type_line, rulesText: input.card.oracle_text };
+      const wordings = { original: original.face, oracle };
+      assert.equal(withCardWording(original.face, wordings, 'original').typeLine, row.typeLine);
+      assert.equal(withCardWording(original.face, wordings, 'oracle').rulesText, oracle.rulesText);
+      assert.equal(withCardWording(original.face, wordings, 'oracle').typeLine, oracle.typeLine);
+      const changed = presentation(input, { [id]: { rulesText: 'Caller ability.' } });
+      assert.equal(changed.contentStatus, 'oracle-unverified');
+      assert.equal(changed.face.rulesParagraphs[0].runs[0].text, 'Caller ability.');
+      if (row.name === 'Giant Octopus')
+        assert(
+          original.face.rulesParagraphs.some((p) =>
+            p.runs.some(
+              (r) => r.text === 'Twenty Thousand Leagues under the Sea' && r.italic === false,
+            ),
+          ),
+        );
+      emptyCount++;
+    }
+  }
+  assert.equal(emptyCount, 73);
+  console.log('73 scan-bound empty rules, printed types, flavor and Oracle isolation pass.');
 } finally {
   await wordingServer.close();
 }

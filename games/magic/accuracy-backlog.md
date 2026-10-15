@@ -8,8 +8,9 @@ example UUIDs, alignment flags and scores for each affected group.
 
 ## Current execution checkpoint
 
-1. Finish and release the Revised land frame, colored pinlines, striped paper,
-   shared text positions and missing copyright marker in artist credits.
+1. Revised land frames, colored pinlines, striped paper, shared text positions
+   and the missing copyright marker shipped in 0.2.24. All 25 land printings
+   and the complete five-set corpus have current scores.
 2. Audit the recorded fixes against shipped code, then address remaining defects:
    original wording/score coverage, early glyph and shadow outliers, missing
    historical symbol sources/materials, shared security stamps and holographic
@@ -34,6 +35,14 @@ where appropriate, shared lettering and `Illus. ©` credits. Whole-card structur
 mean: 40.9% → 75.7%; held-out mean: 41.8% → 75.1%. The basic-land font-size refit
 was rejected on validation. This supersedes the older pending-land notes below;
 historical study records remain unchanged.
+
+The next input-data correction reviews 73 previously excluded printings in
+Alpha, Beta, Revised, Eighth Edition and M21. Their rules are explicitly empty;
+their flavor and printed types are checked against exact scan hashes. Wall of
+Ice must not acquire Oracle Defender in original mode. These corrections remain
+separate from typography fitting, and missing source fields elsewhere remain
+unverified. Eighth Edition includes obsolete types such as Eel and Monster;
+Oracle mode retains current types. Capture and score these inputs before release.
 
 ## Release 0.2.21 checkpoint
 

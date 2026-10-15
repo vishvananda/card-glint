@@ -3,6 +3,7 @@ import { reviewedArtCrop } from './art-crop.mjs';
 import { historicArtifactAnnotation } from './historic-artifact-types.mjs';
 import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
 import { earlyLandTypeAnnotation } from './early-land-types.mjs';
+import { emptyPrintingTextAnnotation } from './empty-printing-text.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
@@ -10,11 +11,18 @@ export function presentation(entry, annotations = {}, printingText = {}) {
       ...historicArtifactAnnotation(entry),
       ...earlyLandTypeAnnotation(entry),
       ...historicManaOrderAnnotation(entry),
+      ...emptyPrintingTextAnnotation(entry),
     },
     supplied = annotations[card.id] ?? {},
     annotation = {
       ...historical,
       ...supplied,
+      // A caller may replace a reviewed empty body, but that new text must not
+      // inherit the review of the scan-bound historical wording.
+      ...(historical.reviewed &&
+      ['rulesText', 'flavorText', 'paragraphs'].some((field) => Object.hasOwn(supplied, field))
+        ? { reviewed: supplied.reviewed === true }
+        : {}),
       ...(historical.reviewedFields && {
         reviewedFields: [
           ...historical.reviewedFields.filter((field) => !Object.hasOwn(supplied, field)),
