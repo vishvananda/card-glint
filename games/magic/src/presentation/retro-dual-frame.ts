@@ -7,6 +7,7 @@ import { resolveFrameColors } from './profile.js';
  * Revised has different paper geometry and is deliberately not inferred here. */
 export function retroDualFrame(face: RenderedCardInput) {
   if (
+    face.frameTemplate ||
     !['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '') ||
     face.frameStyle === 'modern' ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||

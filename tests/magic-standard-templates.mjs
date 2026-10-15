@@ -14,6 +14,10 @@ try {
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
   const result = await page.evaluate(async () => {
     const p = await import('/games/magic/src/presentation.ts');
+    const { hasColorCalibration } = await import(
+      '/games/magic/src/presentation/calibration-profiles.ts'
+    );
+    const { retroDualFrame } = await import('/games/magic/src/presentation/retro-dual-frame.ts');
     const { paintStandardTemplate } = await import(
       '/games/magic/src/presentation/standard-frame-paint.ts'
     );
@@ -111,6 +115,18 @@ try {
     }
     return {
       rows,
+      excludesOldCalibration: !hasColorCalibration({
+        ...variants[0],
+        setCode: 'leb',
+        colorCalibration: 'set-hsb-v1',
+      }),
+      excludesOldComposite: !retroDualFrame({
+        ...variants[0],
+        setCode: 'leb',
+        typeLine: 'Land',
+        land: true,
+        frameColors: ['B', 'G'],
+      }),
       keyChanges: old !== p.cardTextureKey(input(changed), 'inspect'),
       maskReused: one === two,
       outerAlpha: alpha[3],
@@ -126,11 +142,15 @@ try {
     assert.ok(row.assets.some((u) => u.includes('Full-Magic-Pack/16f1d13')));
   }
   assert.equal(result.keyChanges, true);
+  assert.equal(result.excludesOldCalibration, true);
+  assert.equal(result.excludesOldComposite, true);
   assert.equal(result.maskReused, true);
   assert.equal(result.outerAlpha, 0);
   assert.equal(result.innerAlpha, 255);
   assert.equal(result.missing, true);
-  console.log(JSON.stringify(result));
+  console.log(
+    'Three standard templates render; geometry, cache keys, shared mask conversion, missing assets and calibration isolation pass.',
+  );
 } finally {
   await browser.close();
   await server.close();

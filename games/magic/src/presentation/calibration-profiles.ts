@@ -8,6 +8,7 @@ import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
+  if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
   return (
     (isRetro(face) || !!printingColorSource(face)) &&
