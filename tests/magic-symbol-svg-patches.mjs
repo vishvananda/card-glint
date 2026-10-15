@@ -46,7 +46,7 @@ try {
     return route.fulfill({
       contentType: 'image/svg+xml',
       headers: { 'Access-Control-Allow-Origin': '*' },
-      body: synthetic[url.includes('/m15-') ? 'm15' : url.includes('/7ed-') ? 'rim' : 'numeric'],
+      body: synthetic[url.includes('/m15-') ? 'm15' : /\/[67]ed-/.test(url) ? 'rim' : 'numeric'],
     });
   });
   await page.goto(server.resolvedUrls.local[0]);
@@ -66,8 +66,8 @@ try {
         if (!ok) throw Error(message);
       },
       signal = new AbortController().signal;
-    const urls = ['m15', '8ed', '9ed', '7ed'].map((code) => styledSetSymbol(code, 'rare'));
-    urls.push(...['7ed', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'uncommon')));
+    const urls = ['m15', '8ed', '9ed', '7ed', '6ed'].map((code) => styledSetSymbol(code, 'rare'));
+    urls.push(...['6ed', '7ed', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'uncommon')));
     const parsed = [];
     for (const url of urls) {
       const sources = await resolveCanvasSources([url, url], signal);
@@ -76,7 +76,7 @@ try {
         doc = new DOMParser().parseFromString(encoded, 'image/svg+xml');
       parsed.push(doc);
       check(
-        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v3',
+        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v4',
         'Patch revision missing',
       );
       sources.dispose();
@@ -90,16 +90,16 @@ try {
     for (const [i, url] of urls.entries()) {
       const doc = parsed[i],
         paths = doc.querySelectorAll('path');
-      if (url.includes('/7ed-')) {
-        check(paths[0].getAttribute('fill') === '#fff', '7ED outer rim must be white');
+      if (/\/[67]ed-/.test(url)) {
+        check(paths[0].getAttribute('fill') === '#fff', 'Historical outer rim must be white');
         check(
           paths[1].getAttribute('fill') === '#333' && paths[2].getAttribute('fill') === 'url(#g)',
-          '7ED interior material changed',
+          'Historical interior material changed',
         );
-        check(doc.querySelector('radialGradient'), '7ED gradient lost');
+        check(doc.querySelector('radialGradient'), 'Historical gradient lost');
       }
     }
-    for (const code of ['8ed', '9ed']) {
+    for (const code of ['6ed', '7ed', '8ed', '9ed']) {
       const common = styledSetSymbol(code, 'common'),
         original = new Blob(['unchanged common']);
       check(
@@ -194,7 +194,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 7);
+  assert.equal(result.urls.length, 9);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);

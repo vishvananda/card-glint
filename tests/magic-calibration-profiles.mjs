@@ -65,6 +65,26 @@ try {
     bounds,
   );
   assert.equal(calibratedStyledSymbolBounds(face, url, bounds, 'retro'), bounds);
+  const sixth = { name: 'Probe', setCode: '6ed', borderColor: 'white' };
+  const sixthBounds = calibratedStyledSymbolBounds(
+    sixth,
+    styledSetSymbol('6ed', 'uncommon'),
+    bounds,
+    'retro',
+  );
+  assert.ok(sixthBounds.every((n, i) => Math.abs(n - [398.8, 387.2, 43.2, 21.6][i]) < 1e-9));
+  for (const f of [
+    { ...sixth, borderColor: 'black' },
+    { ...sixth, setSymbol: 'custom' },
+  ])
+    assert.equal(
+      calibratedStyledSymbolBounds(f, styledSetSymbol('6ed', 'rare'), bounds, 'retro'),
+      bounds,
+    );
+  assert.equal(
+    calibratedStyledSymbolBounds(sixth, styledSetSymbol('6ed', 'rare'), bounds, 'component'),
+    bounds,
+  );
   assert.equal(normalFrameInset({ name: 'Probe', setCode: 'blb', borderColor: 'black' }), 1);
   assert.equal(normalFrameInset({ name: 'Probe', setCode: 'blb', borderColor: 'white' }), 0);
   assert.equal(normalFrameInset({ name: 'Probe', setCode: 'blb', legendary: true }), 0);

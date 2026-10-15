@@ -7,6 +7,11 @@ import { retroBorder } from './retro-frame.js';
 import { resolveCardProfile } from './profile.js';
 
 type Bounds = readonly [number, number, number, number];
+// Follow-ups retain the original bulk calibration's immutable evidence. Sixth
+// uses repaired white rims; see fixtures/accuracy/sixth-symbol-white-rim.json.
+const correctedSourceProfiles: Readonly<Record<string, Bounds>> = {
+  '6ed/retro/white': [2, -2, 1.08, 1.08],
+};
 // Canonical 488 × 680 pixels. Shared set profiles after frame-only scan
 // registration; axis scales apply to visible SVG bounds, not a square viewport.
 // Source/family-specific: do not transfer these to component or retro frames.
@@ -62,7 +67,11 @@ export function calibratedStyledSymbolBounds(
         ? 'white'
         : 'black');
   const key = `${face.setCode?.trim().toLowerCase() ?? ''}/${family}/${border}`;
-  const delta = Object.hasOwn(MAJOR_SYMBOL_PROFILES, key) ? MAJOR_SYMBOL_PROFILES[key] : undefined;
+  const delta = Object.hasOwn(correctedSourceProfiles, key)
+    ? correctedSourceProfiles[key]
+    : Object.hasOwn(MAJOR_SYMBOL_PROFILES, key)
+      ? MAJOR_SYMBOL_PROFILES[key]
+      : undefined;
   return delta ? adjust(bounds, delta) : bounds;
 }
 
