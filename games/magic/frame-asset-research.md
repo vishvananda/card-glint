@@ -521,3 +521,56 @@ including `Interrupt`, `Enchant World`, `Enchant Creature`, `Enchant Land` and
 to its scan hash. These partial reviews certify only type labels; modern wording
 and caller overrides stay independent. Use these original labels before fitting
 type-line width or placement, so text changes cannot bias the geometry.
+
+### Ordinary modern basic lands, information lines and art rim
+
+The ordinary M15-family painter now infers a basic land's frame palette from its
+printed subtype when semantic colors are empty. Explicit `frameColors` still
+wins. The outer land texture is retained; the colored rails, title/type panels
+and tinted paper use the same shared palette across sets. The cached large
+basic symbol is also available in ordinary component and M15 plate rendering,
+with custom rules/flavor paragraphs preserved. Eighth's existing symbol geometry
+and guarded material calibration are retained.
+
+Ordinary component and M15 plate footers share collector/artist/legal painting.
+The Eighth footer now adds its collector number and known legal line. MSE supplies
+the font roles (Relay, Beleren small caps, Matrix, MPlantin); ordinary English
+paper scans verify M15, WAR, M21, FDN and 8ED wording and printed denominators.
+Unknown sets do not infer a legal year or total from Scryfall's count of variants;
+`legalText` remains the override and `null` suppresses the default.
+
+Art apertures follow the frame's horizontal scaling instead of applying one
+fixed inset to every set. A 0.75-reference-pixel rim surrounds all four edges;
+artwork/printing layers and foil apertures use the same inner rectangle. This
+removes the excess side strips on wide frames without overwriting the top and
+bottom line. It does not claim a new vertical frame calibration or alter source
+art crops. The 30-printing review and its frozen scan identities are recorded in
+`fixtures/accuracy/modern-basic-footer-review.json`.
+
+### Loyalty lettering and ordinary stamp edge
+
+Starting loyalty now uses a separate 24 px Beleren ink-centered layout below the
+shield notch instead of the shared creature P/T size and font middle baseline.
+Ability costs use 19.5 px lettering, a small horizontal compression and separate
+ink centers for the plus, zero and minus badge shapes. Both painters isolate
+tracking, alignment and shadow state. Badge and shield artwork retain their
+existing geometry.
+
+The [loyalty review](fixtures/accuracy/planeswalker-loyalty-review.json) records
+11 frozen M15/M21/WAR frame registrations and 29 accepted cost crops. Mean vertical
+ink-center error relative to each black body falls from 3.82 to 0.14 reference
+pixels for starting loyalty, and 1.53 to 0.47 for costs. Mean height error falls
+from 1.64 to 0.64 and 1.21 to 0.24 pixels respectively. These are local calibration
+diagnostics; they do not certify whole-card alignment. Two scan cost crops with
+merged components are excluded. Badge width/position and the wider starting
+shield remain separate asset/geometry review items. The same font and old badge
+lettering were present before 0.3.3; no recent font replacement caused this issue.
+
+The ordinary 192×96 hologram mount's translucent white outer arc is the paper
+highlight, not an unwanted halo. Hall of Heliod's Generosity (MH1), Temple of
+Epiphany and Temple of Silence (M21) show it joining a white line along the
+rules box's lower bevel. Preserve the original arc and paint the missing land
+highlight after its paper tint and neutral-frame filter. The mount covers the
+straight highlight within its arch. This also applies to ordinary lands without
+a stamp; planeswalker and plate painters keep their own bevels. Color blending
+and black-stock matching remain cached, with no new asset decoding or readback.

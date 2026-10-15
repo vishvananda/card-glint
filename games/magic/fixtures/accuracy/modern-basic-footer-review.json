@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "scope": "Ordinary modern basics, footer completeness, and art rim. Visual review, not a new whole-card score release.",
+  "sets": ["8ed", "m15", "war", "m21", "fdn"],
+  "sources": {
+    "mse": {
+      "repository": "https://github.com/MagicSetEditorPacks/Full-Magic-Pack",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "files": [
+        "data/magic-new.mse-style/style",
+        "data/magic-modules.mse-include/information/card_fields"
+      ]
+    },
+    "footer": "Copyright wording, printed denominators and basic-land rarity letters read from the referenced ordinary English paper scans. Unknown sets do not inherit a copyright year or denominator."
+  },
+  "normalization": "Accepted v0.3.3 frame-only scan poses replayed without adjustment. Rejected and unavailable poses remain labeled; no text or art alignment is used to rescue them.",
+  "changes": [
+    "Infer ordinary basic-land frame color from its subtype; explicit frameColors wins.",
+    "Use colored land title/type panels, land outer texture and tinted paper.",
+    "Draw the cached large basic mana glyph for matching mana-only bodies; preserve custom text and paragraph styles.",
+    "Render supplied collector numbers and verified legal defaults in the ordinary component and full-plate paths.",
+    "Make ordinary art apertures follow the calibrated frame width; paint a 0.75-pixel inner rim on all four sides."
+  ],
+  "limits": [
+    "This is a completeness and geometry review, not a new set color calibration or a new whole-card accuracy report.",
+    "Frame and paper texture/color differences remain visible.",
+    "Vertical art/frame placement requires a wider frame calibration study; no card-specific crop or stretch is introduced."
+  ],
+  "rows": [
+    {
+      "id": "4be96696-aff8-4ef9-97dc-8221ef745de9",
+      "set": "m21",
+      "name": "Plains",
+      "referenceHash": "fc588b0463b52e6cd7a3e38ec1d1a99c2fb1305a52b401bae0ac994f54bb3159",
+      "normalization": null,
+      "status": "Prior frame normalization rejected; raw scan shown for visual review"
+    },
+    {
+      "id": "fc9a66a1-367c-4035-a22e-00fab55be5a0",
+      "set": "m21",
+      "name": "Island",
+      "referenceHash": "ec2dbdecf7051fa38f7667a312d8faa34cf241fea34cf3c3d47dca430a1194f7",
+      "normalization": {
+        "matrix": [0.9999, 0, 0, 0.9999, 0.05000000000000002, -0.04999999999999999]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "30b3d647-3546-4ade-b395-f2370750a7a6",
+      "set": "m21",
+      "name": "Swamp",
+      "referenceHash": "295769ebf7eb742e91e03c3dd69a8fd0aef6b71a5bd4921d70bcd83c7e5f5077",
+      "normalization": {
+        "matrix": [
+          0.9993000000000001, 0, 0, 0.9993000000000001, -0.22499999999999998, -0.19999999999999998
+        ]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "b92c8925-ecfc-4ece-b83a-f12e98a938ab",
+      "set": "m21",
+      "name": "Mountain",
+      "referenceHash": "cab0e0fed844638e4e8c680fe9fe1cb1e7bb8c05df26c82ce4afb4678c9f91e0",
+      "normalization": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.25, -0.25]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "3279314f-d639-4489-b2ab-3621bb3ca64b",
+      "set": "m21",
+      "name": "Forest",
+      "referenceHash": "2a9f792e11dd4dc5523c204e38382fd0b8dc7419ddd7d4c79e261d097c1be695",
+      "normalization": {
+        "matrix": [1.0001, 0, 0, 1.0001, 0.025000000000000022, -0.024999999999999994]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "59fa8e8d-bcb8-47bf-b71a-df11c8d0f2c9",
+      "set": "m21",
+      "name": "Shock",
+      "referenceHash": "d15f1988194994f7ee9ab915f4b3f631ca50481da1fb66060a739b2a531b5de5",
+      "normalization": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, -0.22499999999999998, -0.25]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "e8cca776-b0e4-4cd2-815f-36c1f86cf497",
+      "set": "m21",
+      "name": "Angelic Ascension",
+      "referenceHash": "c0f8c685ea45b94b6dcb44d601e3da83a06430a4bb39292eb1beb6f0ac0eb7a4",
+      "normalization": {
+        "matrix": [1.0001, 0, 0, 1.0001, 0, 0]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "set": "m21",
+      "name": "Garruk, Unleashed",
+      "referenceHash": "b8ee722b04e0070b20e73f23a04c61bd66978d0d7e0aadcc1b15d1f76e3afe19",
+      "normalization": null,
+      "status": "Prior frame normalization rejected; raw scan shown for visual review"
+    },
+    {
+      "id": "b3b1afa0-9bb5-4566-a85e-86a5c03e0187",
+      "set": "m21",
+      "name": "Dismal Backwater",
+      "referenceHash": "da1f9241cc289be6cbe3da2e9d0152341a3fabc0aefb7427e3ffd32ce1d811d8",
+      "normalization": {
+        "matrix": [1.0009, 0, 0, 1.0009, 0.07500000000000001, 0.35]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "40e211fe-e843-4d05-a97d-b208b616179a",
+      "set": "m15",
+      "name": "Plains",
+      "referenceHash": "087fb2fafa4b120ad77de1b961bb6b9875ef4dd69241db8e6a1cb846b2b9fd21",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "1c9f55eb-2c9e-4bc7-a67c-ab2eeb127201",
+      "set": "m15",
+      "name": "Island",
+      "referenceHash": "36efd010d29d99c19a048c0f5e822e0fd0a617da6c171f1be6cf9beee270db8e",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "719b570c-1773-4a0c-8ea3-e75b1c14c35f",
+      "set": "m15",
+      "name": "Swamp",
+      "referenceHash": "f7e2a8406f74ff5eea6d51b7b52bf1b9c971cea71c78c502e44194738ba76e64",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "fa712fb1-8840-4e26-9211-2653919fed91",
+      "set": "m15",
+      "name": "Mountain",
+      "referenceHash": "5e11dcc427c50e5a1048e945f3d1663255c211aea10564e7be487efea59f6258",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "283d6124-1678-46b1-a12a-69644c689e29",
+      "set": "m15",
+      "name": "Forest",
+      "referenceHash": "7d6f5c6ae288a1f701c13132350dc29c9a823fbbfcd38604fbb23e1e75959475",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "d92ef517-2417-43a2-8b1a-0673d1531c65",
+      "set": "war",
+      "name": "Plains",
+      "referenceHash": "5f1c551ef80939e96646b097a3ef95f8b41591c88a9e87f1a8b43f2391dc26ef",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "7014b9fc-a906-4ffd-a482-22ba8dbe3b4a",
+      "set": "war",
+      "name": "Island",
+      "referenceHash": "8a75785336f1ddbcafc2742c5811493e33404fb9b7370a9d5087ae974fbb167e",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "24eeb424-235d-4346-9355-57914e740ec6",
+      "set": "war",
+      "name": "Swamp",
+      "referenceHash": "2ff41b0ca440437fa1cd85496ee83d59530a4b570e1d9005cbe247efb65a2792",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "489fdba7-5c25-4cf3-a1e0-3e0fda6c6ee6",
+      "set": "war",
+      "name": "Mountain",
+      "referenceHash": "6bcd685cfd64f36b3d3e2e134a2803dbda547e91dbc2026c782b7404ee801f38",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "a9d61651-349e-40d0-a7c4-c9561e190405",
+      "set": "war",
+      "name": "Forest",
+      "referenceHash": "de2cf49a4817889791ea23885a838a6de5426e568de113b8964a8bed03e369fe",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "4ef17ed4-a9b5-4b8e-b4cb-2ecb7e5898c3",
+      "set": "fdn",
+      "name": "Plains",
+      "referenceHash": "b8c2d9f760086c72d93a2323140e1b39a99daffbae5c356d08c1803f67ea2b4b",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "17e2b637-72b1-4457-aaba-66d51107be4c",
+      "set": "fdn",
+      "name": "Island",
+      "referenceHash": "bff1fc3c5d58840a0064140943fed84745333125fa5aca6637bfddd3dd455e3f",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "319bc1f0-ee42-44e5-b08b-735613ded2ba",
+      "set": "fdn",
+      "name": "Swamp",
+      "referenceHash": "4456cdfb1dc0728fdeac55742de96f7327a79eb566be0f5b613d8db0ce8955f0",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "279df7e2-2a3b-464a-a7df-e91da28e3a8c",
+      "set": "fdn",
+      "name": "Mountain",
+      "referenceHash": "f2e5c7cb9d2171afc27ef2ebc23f2188e8c7033041588b269cd6400f5621c2d5",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "d232fcc2-12f6-401a-b1aa-ddff11cb9378",
+      "set": "fdn",
+      "name": "Forest",
+      "referenceHash": "03ed9cb04ac7a6451949cef212f1ac9c8b30ff351a06330f411b759aec40713f",
+      "normalization": null,
+      "status": "No frozen frame pose in this review cohort"
+    },
+    {
+      "id": "a37c667a-f035-49b2-9f34-9831e186ae82",
+      "set": "8ed",
+      "name": "Plains",
+      "referenceHash": "419175601a6213f5d768ee38834281c323cd570530d37fa761fccaf742ae0683",
+      "normalization": {
+        "matrix": [
+          0.999802812734975, 0, 0, 0.999802812734975, 0.028307258726474473, -0.18991846356059652
+        ]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "4146a316-c409-4121-931f-1d3b5ae63675",
+      "set": "8ed",
+      "name": "Island",
+      "referenceHash": "4074a811412a2862f070c26655fd9393220c4a7bdd53e5a44934739b7dfe0edc",
+      "normalization": {
+        "matrix": [
+          0.9996769085380955, 0, 0, 0.9996769085380955, -0.00535015224458657, 0.04673969227754828
+        ]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "066b5162-8724-4df3-a3d5-274036d0049d",
+      "set": "8ed",
+      "name": "Swamp",
+      "referenceHash": "5fc5f75a431470007a847a9c60e6fcdc6c4a6965052de92f84434a30a1afd874",
+      "normalization": null,
+      "status": "Prior frame normalization rejected; raw scan shown for visual review"
+    },
+    {
+      "id": "f243292a-e8a6-43c2-805c-15715fcebd67",
+      "set": "8ed",
+      "name": "Mountain",
+      "referenceHash": "0e4d357a71556e1a26ef5ceae3c725d00db79588284be65e213cc0a5b9b28bb0",
+      "normalization": {
+        "matrix": [
+          0.9998892687707825, 0, 0, 0.9998892687707825, -0.22304809303525128, -0.0384712812396867
+        ]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "ac82d07b-f8f2-4cdd-b799-98d4dc228e5c",
+      "set": "8ed",
+      "name": "Forest",
+      "referenceHash": "38a8a841edf8aa5d82eddb3bf02466c79d429a610b8c8ee13c3a262fafe66c1a",
+      "normalization": {
+        "matrix": [
+          0.9992574469326917, 0, 0, 0.9992574469326917, 0.008249193560479113, 0.00701720987218716
+        ]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    },
+    {
+      "id": "7fa12005-465d-40b2-804b-a04cc2686ebd",
+      "set": "8ed",
+      "name": "Aven Flock",
+      "referenceHash": "fbc91979a4d75ae6afc7b2dfcee18b7fbb18bba8f823f020f4dd13d91d3515aa",
+      "normalization": {
+        "matrix": [
+          1.0009071316290545, 0, 0, 1.0009071316290545, -0.1802784322816128, -0.4080843915749562
+        ]
+      },
+      "status": "Frozen frame-only translation / scale / rotation normalization"
+    }
+  ]
+}

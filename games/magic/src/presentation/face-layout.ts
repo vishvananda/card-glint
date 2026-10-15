@@ -67,7 +67,7 @@ export interface RenderedCardInput extends CardProfileInput {
   legalText?: string | null;
   /** Printed number when the set footer includes one; no Oracle identity inference. */
   collectorNumber?: string | null;
-  /** Native Adventure/Prepared collector-line style. Prepared defaults to
+  /** Collector-line style. Prepared defaults to
    * rarity first; Adventure uses known printing styles, then number first. */
   collectorFormat?: 'number-first' | 'rarity-first';
   power?: string | number | null;

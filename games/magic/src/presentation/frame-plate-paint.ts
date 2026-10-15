@@ -1,5 +1,6 @@
+import { paintModernFooter } from './modern-footer.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
-import { plateBasicSymbol } from './plate-basic-land.js';
+import { paintBasicLandSymbol } from './plate-basic-land.js';
 import { paintEighthBasicFrame, usesEighthBasicGeometry } from './eighth-basic-geometry.js';
 import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
@@ -201,18 +202,8 @@ export function paintFramePlateFace(
       else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
     }
   });
-  const basic = plateBasicSymbol(face);
-  if (basic) {
-    // Shared placement for the five large symbols, including the source's
-    // transparent highlight padding. No per-card fitting or readback.
-    c.save();
-    c.shadowColor = '#0009';
-    c.shadowOffsetX = -1.5;
-    c.shadowOffsetY = 1.5;
-    c.shadowBlur = 1.5;
-    c.drawImage(required(basic), 166, 440, 156, 156);
-    c.restore();
-  } else paintRulesLayout(c, ordinaryTextLayout(c, face), images);
+  if (!paintBasicLandSymbol(c, face, images))
+    paintRulesLayout(c, ordinaryTextLayout(c, face), images);
   if (face.power != null && face.toughness != null) {
     c.drawImage(required(plate.pt), ...px(rects.stats));
   }
@@ -228,16 +219,7 @@ export function paintFramePlateFace(
     c.textBaseline = 'middle';
     c.fillText(`${face.power}/${face.toughness}`, sx + sw * 0.52, sy + sh * 0.52, sw * 0.85);
   }
-  const [fx, fy, fw] = px(rects.footer);
-  c.textAlign = 'left';
-  c.textBaseline = 'top';
-  c.fillStyle = '#fff';
-  c.font = `12px "${family}", Georgia`;
-  c.fillText(face.artist ?? '', fx, fy, fw);
-  if (face.legalText) {
-    c.font = '9px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, fx, fy + 15, fw);
-  }
+  paintModernFooter(c, face);
   c.restore();
 }
 

@@ -8,10 +8,7 @@ import { planeswalkerRuleRows } from './planeswalker-rules.js';
 import { paintRulesLayout } from './rules-paint.js';
 import type { RulesLayout } from './rules-layout.js';
 import { planeswalkerLowerPanel } from './planeswalker-lower-frame.js';
-/** Badge art has an asymmetric point and a small transparent right margin. */
-export function loyaltyBadge(badge: string) {
-  return { font: 18, offsetY: badge.startsWith('+') ? 2 : badge === '0' ? 0 : -2 };
-}
+import { paintPlaneswalkerCost } from './planeswalker-loyalty.js';
 export function ruleBadgeAsset(kind: SingleFrame, badge: string): string | null {
   if (kind === 'saga') return /^(I|II|III|IV)$/.test(badge) ? componentAsset('saga', badge) : null;
   return componentAsset(
@@ -62,8 +59,10 @@ export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: 
 }
 
 function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center: number) {
+  context.save();
   context.fillStyle = '#17140f';
   context.font = '24px "CardRenderer MTG MPlantin", Georgia';
+  context.textAlign = 'center';
   context.textBaseline = 'alphabetic';
   const ink = context.measureText(':');
   context.fillText(
@@ -71,6 +70,7 @@ function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center:
     x,
     center + 1.5 + (ink.actualBoundingBoxAscent - ink.actualBoundingBoxDescent) / 2,
   );
+  context.restore();
 }
 export function paintSpecialRules(
   context: CanvasRenderingContext2D,
@@ -141,19 +141,15 @@ export function paintSpecialRules(
         context.fillStyle = '#29231c';
         context.fillRect(bx, by, badgeW, badgeH);
       }
-      if (!image || !saga) {
+      if (!saga) {
+        paintPlaneswalkerCost(context, badge, [bx, by, badgeW, badgeH]);
+        paintAbilityColon(context, bx + badgeW + 4, by + badgeH / 2);
+      } else if (!image) {
         context.fillStyle = 'white';
         context.textAlign = 'center';
         context.textBaseline = 'middle';
-        const metrics = loyaltyBadge(badge);
-        context.font = `bold ${saga ? 19 : metrics.font}px "CardRenderer MTG Beleren", Georgia`;
-        context.fillText(
-          badge,
-          bx + badgeW / 2 - (saga ? 0 : 1.5),
-          by + badgeH / 2 + (saga ? 0 : metrics.offsetY),
-          badgeW - 3,
-        );
-        if (!saga) paintAbilityColon(context, bx + badgeW + 4, by + badgeH / 2);
+        context.font = 'bold 19px "CardRenderer MTG Beleren", Georgia';
+        context.fillText(badge, bx + badgeW / 2, by + badgeH / 2, badgeW - 3);
       }
     });
   }

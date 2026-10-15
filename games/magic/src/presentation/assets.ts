@@ -24,15 +24,21 @@ export function profileAssets(
   const folder =
     kind === 'saga' ? 'saga' : kind === 'planeswalker-large' ? 'planeswalker_large' : kind;
   const boxes =
-    ['saga', 'class'].includes(kind) && profile.boxes === 'Colourless'
-      ? 'Land'
-      : kind.startsWith('planeswalker') && profile.boxes === 'Artifact'
-        ? 'Colourless'
-        : profile.boxes;
+    ordinary && profile.land && /^[WUBRG]$/.test(profile.frame)
+      ? profile.frame
+      : ['saga', 'class'].includes(kind) && profile.boxes === 'Colourless'
+        ? 'Land'
+        : kind.startsWith('planeswalker') && profile.boxes === 'Artifact'
+          ? 'Colourless'
+          : profile.boxes;
   return {
     background: componentAsset(
       ordinary ? 'bg' : kind === 'class' ? 'saga_bg' : `${folder}_bg`,
-      kind.startsWith('planeswalker') && boxes === 'Land' ? 'Colourless' : boxes,
+      kind.startsWith('planeswalker') && boxes === 'Land'
+        ? 'Colourless'
+        : ordinary
+          ? profile.boxes
+          : boxes,
     ),
     frame: componentAsset(
       ['normal', 'leveler'].includes(kind) ? 'frames' : `${folder}_frames`,

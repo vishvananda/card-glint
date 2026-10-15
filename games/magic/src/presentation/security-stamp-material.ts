@@ -21,7 +21,7 @@ export function securityStampMaterialJobs(face: RenderedCardInput, images: Canva
     {
       url: stamp.image,
       key: JSON.stringify([
-        'security-stamp-frame-palette-v2',
+        'security-stamp-frame-palette-v4',
         stamp.image,
         stamp.rightImage ?? null,
         blackStock,
