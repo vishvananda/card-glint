@@ -502,3 +502,14 @@ default; use it for unshaded accuracy comparisons. The hologram remains local to
 the stamp under any of these finishes, with the colored rim and lettering
 protected by its mask. Its diffraction shares the prismatic finish's spectral
 palette while retaining its own scale, axes and printed pattern.
+
+M21 ordinary nonlegendary costs use the pinned Card Conjurer digit vectors and a
+separately measured down-left shadow. Their disc and ink colors retain the
+existing printing palette; inline symbols keep their original source. The
+source and placement comparison against MSE is recorded in
+[`fixtures/accuracy/m21-mana-refinement.json`](fixtures/accuracy/m21-mana-refinement.json).
+Twenty cards fit the shared defaults and 41 different cards validate them, all
+outside the earlier mana cohort. Other sets and special frames retain their
+existing defaults pending separate checks. Numeral masks are prepared once in
+the bounded material cache; changing the card's tilt does no font work or pixel
+readback.

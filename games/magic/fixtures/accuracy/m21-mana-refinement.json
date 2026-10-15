@@ -1,0 +1,2973 @@
+{
+  "version": 1,
+  "set": "m21",
+  "baselineRelease": "0.3.0",
+  "scope": "Ordinary nonlegendary M21 black-border faces; preserve historical and alternate-frame mana, plus all inline symbols.",
+  "policy": "Fresh M21 cards exclude all 72 printings in the earlier mana study. First four UUID-sorted cards per WUBRG rightmost symbol fit; remaining cards validate after settings freeze. The only unseen generic-only card is reserved for validation; numeral fitting also uses generic symbols on colored cards. Fixed 0.3.0 scan-frame transforms. No scan movement to fit symbols. Candidate changes never submitted as released scores.",
+  "sourceCandidates": {
+    "cardConjurer": {
+      "repository": "https://github.com/joshbirnholz/cardconjurer",
+      "revision": "33f2547137fe366b40e9e8dba4eb591af190fddf",
+      "path": "img/manaSymbols/{digit}.svg"
+    },
+    "magicSetEditor": {
+      "repository": "https://github.com/MagicSetEditorPacks/Full-Magic-Pack",
+      "revision": "16f1d13bb7f5924613fc1ddc25da582beccfefb6",
+      "style": "data/magic-m15-altered.mse-style/style",
+      "font": "Magic - Fonts/mplantin.ttf"
+    }
+  },
+  "fit": {
+    "fontFits": [
+      {
+        "v": {
+          "source": "current",
+          "dx": 0,
+          "dy": 0,
+          "scale": 1,
+          "spacing": 0,
+          "numberScale": 0.94,
+          "numberDx": -0.5,
+          "numberDy": 0,
+          "shadowX": -1.5372,
+          "shadowY": 1.5372
+        },
+        "objective": 0.7410741390453235,
+        "evaluations": 20,
+        "boundary": []
+      },
+      {
+        "v": {
+          "source": "cc",
+          "dx": 0,
+          "dy": 0,
+          "scale": 1,
+          "spacing": 0,
+          "numberScale": 0.96,
+          "numberDx": -0.5,
+          "numberDy": 0,
+          "shadowX": -1.5372,
+          "shadowY": 1.5372
+        },
+        "objective": 0.8081000147293509,
+        "evaluations": 16,
+        "boundary": []
+      },
+      {
+        "v": {
+          "source": "mse",
+          "dx": 0,
+          "dy": 0,
+          "scale": 1,
+          "spacing": 0,
+          "numberScale": 0.96,
+          "numberDx": -0.5,
+          "numberDy": 0,
+          "shadowX": -1.5372,
+          "shadowY": 1.5372
+        },
+        "objective": 0.7202675251668319,
+        "evaluations": 16,
+        "boundary": []
+      }
+    ],
+    "geometry": {
+      "v": {
+        "source": "cc",
+        "dx": 0,
+        "dy": 0,
+        "scale": 1.01,
+        "spacing": 0,
+        "numberScale": 0.98,
+        "numberDx": -0.25,
+        "numberDy": 0,
+        "shadowX": -1.0372,
+        "shadowY": 2.0372
+      },
+      "objective": 0.8971668263254375,
+      "evaluations": 77,
+      "boundary": []
+    },
+    "settings": {
+      "source": "cc",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.01,
+      "spacing": 0,
+      "numberScale": 0.98,
+      "numberDx": -0.25,
+      "numberDy": 0,
+      "shadowX": -1.0372,
+      "shadowY": 2.0372
+    },
+    "numeralReferenceCount": 15,
+    "calibrationIds": [
+      "577657ed-162f-4104-b0af-ee9733e90f20",
+      "5ba81e67-8fa5-441c-bf14-2d75c168a617",
+      "5c23869b-c99a-49dd-9e29-fcc0eb63fad1",
+      "600d3517-e370-47ae-ac4f-c7ef8995a89c",
+      "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+      "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+      "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+      "64832674-beb1-446e-b2f7-8a5e271139a5",
+      "660ec88f-2063-404a-853e-c985e21d17b0",
+      "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+      "7737b578-8ae3-4846-b508-93ef40f25244",
+      "7a3f8bc2-ef66-474f-92a3-9c4df1670cec",
+      "62584e4f-dac1-4d99-ac0a-6a2451603889",
+      "6f1bace4-a327-4eb6-a6ef-8394e76c06b7",
+      "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+      "76cf0b50-155f-4e65-9e48-88b378ad93a1",
+      "46700ccc-0975-49d1-b3fc-edb1eda3b624",
+      "487116ab-b885-406b-aa54-56cb67eb3ca5",
+      "4a433310-3fe2-4156-864d-7a6b2638340b",
+      "531e1fc0-a3aa-4b57-87b2-79a31af5c922"
+    ]
+  },
+  "adopt": true,
+  "flags": [],
+  "validation": {
+    "count": 41,
+    "before": 0.8961039569222125,
+    "after": 0.9288930956395917,
+    "worstRegression": 0.011902967744542137,
+    "groups": [
+      {
+        "color": "W",
+        "count": 8,
+        "before": 0.904899822427988,
+        "after": 0.9302292092221303,
+        "inkBefore": 0.6886654943380504,
+        "inkAfter": 0.9034485259604754
+      },
+      {
+        "color": "U",
+        "count": 8,
+        "before": 0.8749658301134137,
+        "after": 0.9228428299910003,
+        "inkBefore": 0.7378029098536846,
+        "inkAfter": 0.8417601797320273
+      },
+      {
+        "color": "B",
+        "count": 8,
+        "before": 0.888482301385097,
+        "after": 0.9142793520973764,
+        "inkBefore": 0.6021480020351713,
+        "inkAfter": 0.8277157677631637
+      },
+      {
+        "color": "R",
+        "count": 8,
+        "before": 0.9003475328351334,
+        "after": 0.937347816901766,
+        "inkBefore": 0.6890251660324507,
+        "inkAfter": 0.8201964036942277
+      },
+      {
+        "color": "G",
+        "count": 8,
+        "before": 0.9078277360966547,
+        "after": 0.9369458681056825,
+        "inkBefore": 0.6701566184423142,
+        "inkAfter": 0.8180601952210822
+      },
+      {
+        "color": "N",
+        "count": 1,
+        "before": 0.9280764509444174,
+        "after": 0.9514563106796117,
+        "inkBefore": 0.6607468123861566,
+        "inkAfter": 0.9523999999999999
+      }
+    ]
+  },
+  "training": {
+    "count": 20,
+    "before": 0.885755442960616,
+    "after": 0.9240614509075247,
+    "worstRegression": -0.0017607611252051791,
+    "groups": [
+      {
+        "color": "W",
+        "count": 4,
+        "before": 0.8073834203096025,
+        "after": 0.8403253926249454,
+        "inkBefore": 0.6425486295904931,
+        "inkAfter": 0.8530282233336872
+      },
+      {
+        "color": "U",
+        "count": 4,
+        "before": 0.8833629303448904,
+        "after": 0.9409059901858674,
+        "inkBefore": 0.5570367256254479,
+        "inkAfter": 0.8135477344201201
+      },
+      {
+        "color": "B",
+        "count": 4,
+        "before": 0.9273559016962296,
+        "after": 0.9522165690083468,
+        "inkBefore": 0.4219522359447455,
+        "inkAfter": 0.8947967366348828
+      },
+      {
+        "color": "R",
+        "count": 4,
+        "before": 0.9213271224263601,
+        "after": 0.9628785871159447,
+        "inkBefore": 0.6402822934300084,
+        "inkAfter": 0.8025854468621197
+      },
+      {
+        "color": "G",
+        "count": 4,
+        "before": 0.8893478400259976,
+        "after": 0.9239807156025182,
+        "inkBefore": 0.6974166349218176,
+        "inkAfter": 0.8139861711934159
+      },
+      {
+        "color": "N",
+        "count": 0,
+        "before": null,
+        "after": null,
+        "inkBefore": null,
+        "inkAfter": null
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "577657ed-162f-4104-b0af-ee9733e90f20",
+      "name": "Basri's Aegis",
+      "color": "W",
+      "cohort": "calibration",
+      "symbols": ["2", "W", "W"],
+      "before": {
+        "mana": 0.7324558521860376,
+        "ink": 0.4862273501522284,
+        "objective": 0.6339644513725139
+      },
+      "after": {
+        "mana": 0.7708245982424007,
+        "ink": 0.7898861746306917,
+        "objective": 0.7784492287977172
+      },
+      "normalizedScanHash": "4832522aaa1a23330e39551f64cd0b543cc11661f797c56ec4180e96fd53c21b",
+      "normalizedRenderHash": "b2c70685190b78f8ae9ab5009110d93875d7e9f38fbefaae941eb2caea375cd1",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 388.01768,
+            "y": 49.811800000000005,
+            "radius": 10.25,
+            "score": 21.37913978231614,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "2406496e421a7b4d77aaa6cf12c363d34572cb61a7b97e6efa013a6e51e7b085",
+      "scanTransform": {
+        "matrix": [1.0012999999999999, 0, 0, 1.0012999999999999, -0.475, -0.1]
+      }
+    },
+    {
+      "id": "5ba81e67-8fa5-441c-bf14-2d75c168a617",
+      "name": "Sigiled Contender",
+      "color": "W",
+      "cohort": "calibration",
+      "symbols": ["3", "W"],
+      "before": {
+        "mana": 0.7668891979244112,
+        "ink": 0.7114418528229809,
+        "objective": 0.7447102598838391
+      },
+      "after": {
+        "mana": 0.7969366177058924,
+        "ink": 0.8988281249999999,
+        "objective": 0.8376932206235355
+      },
+      "normalizedScanHash": "1506b0b7850492c3447f85112c6011b456e98ec7ff20e11527fdfd75b7d126f8",
+      "normalizedRenderHash": "77284251a98a0fbf391d0365f66e04bcc247cf8cf84ea8e35ca2e8bbc15d67d8",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 414.164248,
+            "y": 49.686800000000005,
+            "radius": 10.25,
+            "score": 22.722302791329863,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "b436ce3b71f2d900d71cacfdaf99c6bd68491fbda73abf3517ed7af5653991f8",
+      "scanTransform": {
+        "matrix": [1.0013999999999998, 0, 0, 1.0013999999999998, -0.475, -0.1]
+      }
+    },
+    {
+      "id": "5c23869b-c99a-49dd-9e29-fcc0eb63fad1",
+      "name": "Defiant Strike",
+      "color": "W",
+      "cohort": "calibration",
+      "symbols": ["W"],
+      "before": {
+        "mana": 0.8532655542048846,
+        "ink": null,
+        "objective": 0.8532655542048846
+      },
+      "after": {
+        "mana": 0.8787924528301887,
+        "ink": null,
+        "objective": 0.8787924528301887
+      },
+      "normalizedScanHash": "af6f9678abbbb1dc030411c73bbb88727523386a674815abdc2a302ce45beff9",
+      "normalizedRenderHash": "5963e3af991e90cf2bac4cba3945de4722b43bff3675477be939c31b5a5529fb",
+      "numerals": [],
+      "referenceHash": "1f225d3183e621dc0e1a9d7e47a7576c085e5d6d95a2179c476a6c9b94a9a045",
+      "scanTransform": {
+        "matrix": [0.9999, 0, 0, 0.9999, 0.07500000000000001, 0]
+      }
+    },
+    {
+      "id": "600d3517-e370-47ae-ac4f-c7ef8995a89c",
+      "name": "Concordia Pegasus",
+      "color": "W",
+      "cohort": "calibration",
+      "symbols": ["1", "W"],
+      "before": {
+        "mana": 0.8769230769230769,
+        "ink": 0.7299766857962697,
+        "objective": 0.818144520472354
+      },
+      "after": {
+        "mana": 0.9147479017212998,
+        "ink": 0.8703703703703702,
+        "objective": 0.896996889180928
+      },
+      "normalizedScanHash": "9589676126d5ae5b24af3e785c1b2f2c8f47c3405ab294689bbc5c134b92b871",
+      "normalizedRenderHash": "4f4967debf1675a2f780d50e30c24073e10ea06daff30b96b22c421ec13e80fe",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.664248,
+            "y": 49.436800000000005,
+            "radius": 10.25,
+            "score": 29.63012008382671,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "eb31af6805d594ca4864adda7e3ce64ff0f28399d82931c4e8df2ebaf146d5ee",
+      "scanTransform": {
+        "matrix": [1.0001, 0, 0, 1.0001, 0.1, 0]
+      }
+    },
+    {
+      "id": "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+      "name": "Teferi's Protege",
+      "color": "U",
+      "cohort": "calibration",
+      "symbols": ["2", "U"],
+      "before": {
+        "mana": 0.7847303634232122,
+        "ink": 0.7637678899927582,
+        "objective": 0.7763453740510307
+      },
+      "after": {
+        "mana": 0.8551584713708099,
+        "ink": 0.6732070885200363,
+        "objective": 0.7823779182305004
+      },
+      "normalizedScanHash": "53aee639c6adf9d40d9c3fc695fb8e306e58e7104d79e40df61e96a2806e2f81",
+      "normalizedRenderHash": "b111f6d45e6fb8701babe27320ccd9f01543f5ddda0a55f3de49213c3e4f0269",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.539248,
+            "y": 50.061800000000005,
+            "radius": 10.25,
+            "score": 28.48000435441169,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "ce8cc7bf3890e61a787727b9873c0109d970ea13f8366ffecf39f97eb18f0680",
+      "scanTransform": {
+        "matrix": [1.0005, 0, 0, 1.0005, -0.125, 0.2]
+      }
+    },
+    {
+      "id": "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+      "name": "Shipwreck Dowser",
+      "color": "U",
+      "cohort": "calibration",
+      "symbols": ["3", "U", "U"],
+      "before": {
+        "mana": 0.9185194385790585,
+        "ink": null,
+        "objective": 0.9185194385790585
+      },
+      "after": {
+        "mana": 0.9750226582076025,
+        "ink": null,
+        "objective": 0.9750226582076025
+      },
+      "normalizedScanHash": "055047fb9a7c6084541e712098caee18bc3984e4791b3c0007eafbdf37b5a1d9",
+      "normalizedRenderHash": "361a155c944b2a7dd9f169868fee0e947250f7d32d17f536b6406c309059a354",
+      "numerals": [],
+      "referenceHash": "acfe993bb624e46f8efa13820a145947da022e9e565fbd8a666dadbb6f5862ec",
+      "scanTransform": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0, 0.225]
+      }
+    },
+    {
+      "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+      "name": "Cancel",
+      "color": "U",
+      "cohort": "calibration",
+      "symbols": ["1", "U", "U"],
+      "before": {
+        "mana": 0.917846403722482,
+        "ink": 0.40789231125175385,
+        "objective": 0.7138647667341907
+      },
+      "after": {
+        "mana": 0.9707674187439689,
+        "ink": 0.9317796610169491,
+        "objective": 0.9551723156531611
+      },
+      "normalizedScanHash": "a5624373e7a3a0d92b23d0cd01c714cd759f7c595708956a32c925ad7e9a0951",
+      "normalizedRenderHash": "ce52ac95f74bc507d579b874cde5548dcc3e51a2b973fa7f82856d5af2e06aa3",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 388.76768,
+            "y": 48.811800000000005,
+            "radius": 10.375,
+            "score": 30.251364754393343,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a",
+      "scanTransform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.075, -0.175]
+      }
+    },
+    {
+      "id": "64832674-beb1-446e-b2f7-8a5e271139a5",
+      "name": "Lofty Denial",
+      "color": "U",
+      "cohort": "calibration",
+      "symbols": ["1", "U"],
+      "before": {
+        "mana": 0.9123555156548088,
+        "ink": 0.4994499756318318,
+        "objective": 0.747193299645618
+      },
+      "after": {
+        "mana": 0.9626754124210885,
+        "ink": 0.8356564537233746,
+        "objective": 0.9118678289420029
+      },
+      "normalizedScanHash": "531e6879373f4cd3a7c215c7c93bcedeaa682bfd320121c1851943b8cc4598a4",
+      "normalizedRenderHash": "8b46be7b88fa1efe4faf06a2882de1b5a800d22bc9469a2d5f3d83256f558604",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.039248,
+            "y": 48.561800000000005,
+            "radius": 10.5,
+            "score": 29.910531344018096,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "141c7a3d5874568e94d702eb4f1ad32c55da944c46cfb777e426755f57406458",
+      "scanTransform": {
+        "matrix": [0.9995, 0, 0, 0.9995, 0.07500000000000001, 0]
+      }
+    },
+    {
+      "id": "660ec88f-2063-404a-853e-c985e21d17b0",
+      "name": "Rise Again",
+      "color": "B",
+      "cohort": "calibration",
+      "symbols": ["4", "B"],
+      "before": {
+        "mana": 0.9056603773584906,
+        "ink": 0.4053036891106261,
+        "objective": 0.7055177020593448
+      },
+      "after": {
+        "mana": 0.9536223097908457,
+        "ink": 0.8672604588394062,
+        "objective": 0.9190775694102699
+      },
+      "normalizedScanHash": "d339a0175250d37a80d0671a2f0199ae39f3f2b92d3f349e3c3744854f67f2ba",
+      "normalizedRenderHash": "bb427d2d5e84718afc15199ab4927c317ddd927c2042e9c8846231d71e84c302",
+      "numerals": [
+        {
+          "symbol": "4",
+          "circle": {
+            "x": 414.164248,
+            "y": 48.686800000000005,
+            "radius": 10.625,
+            "score": 30.34547756762243,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "d801bbff0f2b89a08a27aea601c36f54d40f2ca8d2122b5de3682c1361b41159",
+      "scanTransform": {
+        "matrix": [0.9991000000000001, 0, 0, 0.9991000000000001, -0.275, -0.375]
+      }
+    },
+    {
+      "id": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+      "name": "Alchemist's Gift",
+      "color": "B",
+      "cohort": "calibration",
+      "symbols": ["B"],
+      "before": {
+        "mana": 0.93235880048023,
+        "ink": null,
+        "objective": 0.93235880048023
+      },
+      "after": {
+        "mana": 0.9393725411076365,
+        "ink": null,
+        "objective": 0.9393725411076365
+      },
+      "normalizedScanHash": "bfafa3015aaf9dc84f90ac2ed219713f1b5aa16a1dd71b7e7f18126cd1782b23",
+      "normalizedRenderHash": "1b4aa4f94acc161ad5c5cdda1d0d1ca8202010e08f83b7113e76f979afa4fd3f",
+      "numerals": [],
+      "referenceHash": "f84af8443f3b4bf16e46ee3e1e4ce88af2741f6ab779c216447909dda5ff51d6",
+      "scanTransform": {
+        "matrix": [0.998, 0, 0, 0.998, -0.22499999999999998, -0.22499999999999998]
+      }
+    },
+    {
+      "id": "7737b578-8ae3-4846-b508-93ef40f25244",
+      "name": "Grasp of Darkness",
+      "color": "B",
+      "cohort": "calibration",
+      "symbols": ["B", "B"],
+      "before": {
+        "mana": 0.9345939025591244,
+        "ink": null,
+        "objective": 0.9345939025591244
+      },
+      "after": {
+        "mana": 0.9457035354733738,
+        "ink": null,
+        "objective": 0.9457035354733738
+      },
+      "normalizedScanHash": "652b6084a49b434dcf6f0a058a343f00dc026d4f8168a3e55a89f8323e87e43d",
+      "normalizedRenderHash": "cdfebe9f81a71a50b9289862fb9deae4530b0b5e3b37801ccce8e6add579e4fd",
+      "numerals": [],
+      "referenceHash": "5a3fdb7b5306b1f6b87148639d3488149ac8ef3bbc38e246d424a542b8381055",
+      "scanTransform": {
+        "matrix": [0.9989, 0, 0, 0.9989, -0.075, 0.25]
+      }
+    },
+    {
+      "id": "7a3f8bc2-ef66-474f-92a3-9c4df1670cec",
+      "name": "Bad Deal",
+      "color": "B",
+      "cohort": "calibration",
+      "symbols": ["4", "B", "B"],
+      "before": {
+        "mana": 0.9368105263870736,
+        "ink": 0.43860078277886494,
+        "objective": 0.7375266289437901
+      },
+      "after": {
+        "mana": 0.9701678896615313,
+        "ink": 0.9223330144303594,
+        "objective": 0.9510339395690626
+      },
+      "normalizedScanHash": "7317d428a87dae9bfaa8fadc4f93d25691fee376998482b166ad7bcc90e629e4",
+      "normalizedRenderHash": "da16b8d1d132ce77dd29d538d6f116498b267a0390a75479896ad53776f7b1db",
+      "numerals": [
+        {
+          "symbol": "4",
+          "circle": {
+            "x": 388.89268,
+            "y": 49.311800000000005,
+            "radius": 10.5,
+            "score": 30.462756270657998,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "577ea5e1bc472eab253ce7de04afb8da622715ad90513aabc2847860404cef0c",
+      "scanTransform": {
+        "matrix": [1.0002, 0, 0, 1.0002, 0.125, -0.22499999999999998]
+      }
+    },
+    {
+      "id": "62584e4f-dac1-4d99-ac0a-6a2451603889",
+      "name": "Soul Sear",
+      "color": "R",
+      "cohort": "calibration",
+      "symbols": ["2", "R"],
+      "before": {
+        "mana": 0.9207331817961988,
+        "ink": 0.7358200351125435,
+        "objective": 0.8467679231227366
+      },
+      "after": {
+        "mana": 0.9687119671623062,
+        "ink": 0.6735838801617285,
+        "objective": 0.8506607323620752
+      },
+      "normalizedScanHash": "9373495dc20dfa7f841a4c772f946bf7435b49f0625b78d7d57e5eb78611b7f5",
+      "normalizedRenderHash": "f8bee27fe0fa092dddb5834296d2ad97bde0a2357d2b5be422f1666ff1acc0bb",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.914248,
+            "y": 49.561800000000005,
+            "radius": 10.5,
+            "score": 27.647203325935557,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "bec3390c50dfd3e8496f7b8588e2d2740fa58828bba7ee781f4d2e9207d2024e",
+      "scanTransform": {
+        "matrix": [0.9996, 0, 0, 0.9996, -0.04999999999999999, 0.05000000000000002]
+      }
+    },
+    {
+      "id": "6f1bace4-a327-4eb6-a6ef-8394e76c06b7",
+      "name": "Experimental Overload",
+      "color": "R",
+      "cohort": "calibration",
+      "symbols": ["2", "U", "R"],
+      "before": {
+        "mana": 0.9346689018286074,
+        "ink": 0.5092028465729599,
+        "objective": 0.7644824797263483
+      },
+      "after": {
+        "mana": 0.9751946130296509,
+        "ink": 0.914503816793893,
+        "objective": 0.9509182945353478
+      },
+      "normalizedScanHash": "73ab023f8748b2033a6f59db035c9b66ab57524f917ff068ef192ef6ce2d8e34",
+      "normalizedRenderHash": "8221a45ae88e100f59f21dadfd5d24e0e432f4dfc909a8ea0e23ccc22c518794",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 388.89268,
+            "y": 47.811800000000005,
+            "radius": 11.25,
+            "score": 31.20164971792378,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "68004534355dc9bad028b1ab5e208adb762cd6a5b2b28730dadaddbb15109b5d",
+      "scanTransform": {
+        "matrix": [1.0004, 0, 0, 1.0004, 0.05000000000000002, 0.175]
+      }
+    },
+    {
+      "id": "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+      "name": "Double Vision",
+      "color": "R",
+      "cohort": "calibration",
+      "symbols": ["3", "R", "R"],
+      "before": {
+        "mana": 0.9371606877431189,
+        "ink": 0.6758239986045218,
+        "objective": 0.8326260120876801
+      },
+      "after": {
+        "mana": 0.9630235387356826,
+        "ink": 0.8196686436307374,
+        "objective": 0.9056815806937046
+      },
+      "normalizedScanHash": "739b1b2dc89a8146a00f5d4ded16b33eecc18c18d4e453327119763b781ee0e9",
+      "normalizedRenderHash": "5a3a23150e1a9ad9a785ca27c09dc3cf25e390df2b31991a544139dd3e1f9942",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 389.01768,
+            "y": 48.561800000000005,
+            "radius": 10.5,
+            "score": 32.10384985867534,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "e1c8427b0cfb21d6e9e64e65783a638b61d9406859e2c1ff2729ed175f81ab3f",
+      "scanTransform": {
+        "matrix": [0.9987, 0, 0, 0.9987, 0, -0.425]
+      }
+    },
+    {
+      "id": "76cf0b50-155f-4e65-9e48-88b378ad93a1",
+      "name": "Chandra's Firemaw",
+      "color": "R",
+      "cohort": "calibration",
+      "symbols": ["3", "R", "R"],
+      "before": {
+        "mana": 0.8927457183375149,
+        "ink": null,
+        "objective": 0.8927457183375149
+      },
+      "after": {
+        "mana": 0.9445842295361389,
+        "ink": null,
+        "objective": 0.9445842295361389
+      },
+      "normalizedScanHash": "d0cc0ac4b327da4c11943bf6ac289515b7514ba2a9767a66ea53b20ed09ecbd7",
+      "normalizedRenderHash": "8c824753dad459b69ea14b1e4ffa206864338250ccf0951d593c4c6451674523",
+      "numerals": [],
+      "referenceHash": "b0a106ea867d7c792174ff1cc5684d52b5b2c905cb318b98cb911e098f4e5c6e",
+      "scanTransform": {
+        "matrix": [1.0011999999999999, 0, 0, 1.0011999999999999, -0.325, -0.875]
+      }
+    },
+    {
+      "id": "46700ccc-0975-49d1-b3fc-edb1eda3b624",
+      "name": "Snarespinner",
+      "color": "G",
+      "cohort": "calibration",
+      "symbols": ["1", "G"],
+      "before": {
+        "mana": 0.8494098008823179,
+        "ink": 0.8526447989370516,
+        "objective": 0.8507038001042114
+      },
+      "after": {
+        "mana": 0.9019607843137255,
+        "ink": 0.8593472120514698,
+        "objective": 0.8849153554088232
+      },
+      "normalizedScanHash": "2964a6b882879c7cb17e1b1af476f58ec840ffc59aa95c16ce575d3dd2c28f44",
+      "normalizedRenderHash": "283b853b31cbd6af0962669dce9dde6c7f1a73c44419a4a9e68cdb62979c6d4a",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.664248,
+            "y": 50.061800000000005,
+            "radius": 10.25,
+            "score": 27.862133920935133,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "530d4596cf70b988b6220ffa14e437207fea52d5fba48d0d0fc67791d3693a52",
+      "scanTransform": {
+        "matrix": [1.0005, 0, 0, 1.0005, 0, 0.1]
+      }
+    },
+    {
+      "id": "487116ab-b885-406b-aa54-56cb67eb3ca5",
+      "name": "Scavenging Ooze",
+      "color": "G",
+      "cohort": "calibration",
+      "symbols": ["1", "G"],
+      "before": {
+        "mana": 0.879973224214811,
+        "ink": 0.6718627466418909,
+        "objective": 0.7967290331856429
+      },
+      "after": {
+        "mana": 0.8817339853400161,
+        "ink": 0.653037790467427,
+        "objective": 0.7902555073909805
+      },
+      "normalizedScanHash": "183abda6c6a5bc4379e81009e3fbaaa1d20125de468f9f829bd136b859b8f9dc",
+      "normalizedRenderHash": "7b1ccf79b888c60246eec96d0d0a65873bb1ccc8a119f631d4f433a7a0f10378",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.789248,
+            "y": 48.561800000000005,
+            "radius": 10.25,
+            "score": 29.412921110022197,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "241cd01bc8990ed080b118385c047f3fd62e8ebf728a8f8c99c0fc389d1b0415",
+      "scanTransform": {
+        "matrix": [0.9998, 0, 0, 0.9998, 0.07500000000000001, -0.04999999999999999]
+      }
+    },
+    {
+      "id": "4a433310-3fe2-4156-864d-7a6b2638340b",
+      "name": "Cultivate",
+      "color": "G",
+      "cohort": "calibration",
+      "symbols": ["2", "G"],
+      "before": {
+        "mana": 0.888313705189595,
+        "ink": 0.6865180502531256,
+        "objective": 0.8075954432150072
+      },
+      "after": {
+        "mana": 0.939159108240637,
+        "ink": 0.8084835995391992,
+        "objective": 0.8868889047600619
+      },
+      "normalizedScanHash": "e1a7835cddb993b9e0d640c15cd550288a74b1751bf2d98c7d4ec36df4d00e3d",
+      "normalizedRenderHash": "c0b8b1f80ffcc2ad7acde94e12ad6bf4d21e29a12df3aafef742021bb57a4c10",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.039248,
+            "y": 49.686800000000005,
+            "radius": 10.375,
+            "score": 25.66881229713746,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "ed58c53b8ed45fbf4cc3ffaeee27f7eafc3deb17c3ca9bfe2a3bc9f646563077",
+      "scanTransform": {
+        "matrix": [1.0005, 0, 0, 1.0005, 0.175, 0.05000000000000002]
+      }
+    },
+    {
+      "id": "531e1fc0-a3aa-4b57-87b2-79a31af5c922",
+      "name": "Invigorating Surge",
+      "color": "G",
+      "cohort": "calibration",
+      "symbols": ["2", "G"],
+      "before": {
+        "mana": 0.939694629817267,
+        "ink": 0.5786409438552018,
+        "objective": 0.7952731554324409
+      },
+      "after": {
+        "mana": 0.973068984515694,
+        "ink": 0.9350760827155677,
+        "objective": 0.9578718237956436
+      },
+      "normalizedScanHash": "f46761c4fb0e144dc82c6750f3e828eb3792bb37e364b29a654999925320a328",
+      "normalizedRenderHash": "1bb9fce7e8b6504c114b88e4f2c013f424ef42b94c291ff40e1dc5a1c4550b75",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.164248,
+            "y": 49.436800000000005,
+            "radius": 10.25,
+            "score": 26.38929188250653,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "a7ede64fc9ecb405828d85dfb1c3aca5ed6d6966e4fa0fefe449c456650953c1",
+      "scanTransform": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0, 0.1]
+      }
+    },
+    {
+      "id": "61296b2d-4e5c-419a-8775-4e6af902c7b1",
+      "name": "Runed Halo",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["W", "W"],
+      "before": {
+        "mana": 0.9476248477466505,
+        "ink": null,
+        "objective": 0.9476248477466505
+      },
+      "after": {
+        "mana": 0.9722359048475822,
+        "ink": null,
+        "objective": 0.9722359048475822
+      },
+      "normalizedScanHash": "df6f52bb52f899de9fc1af2497a85304856b4d36876a27f88be1433a3184e128",
+      "normalizedRenderHash": "4847a89883f445b78aba9ccf71391899279fd7048659c6ed75c8ba7673924711",
+      "numerals": [],
+      "referenceHash": "8a5751b4a2353905157101318287b313fd4a486551068c2cfa94ce67eebbe912",
+      "scanTransform": {
+        "matrix": [1, 0, 0, 1, -0.075, 0]
+      }
+    },
+    {
+      "id": "6911759c-7177-402c-a95a-f9f46efaf521",
+      "name": "Selfless Savior",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["W"],
+      "before": {
+        "mana": 0.8669462971876504,
+        "ink": null,
+        "objective": 0.8669462971876504
+      },
+      "after": {
+        "mana": 0.877214908332186,
+        "ink": null,
+        "objective": 0.877214908332186
+      },
+      "normalizedScanHash": "3e141953f10f0177b66325ccbcfd5d8f0dbceeb732c8346d9655c0ad86c0e8d6",
+      "normalizedRenderHash": "c65aec40a56f6b928379469a3c5748296092c1ddf3c56af2bbf7ca906aed10a6",
+      "numerals": [],
+      "referenceHash": "e3d3285bb584419ed77bc1afcee904a70025403da303453ae95de54db9a7e240",
+      "scanTransform": {
+        "matrix": [0.9998, 0, 0, 0.9998, 0.125, 0]
+      }
+    },
+    {
+      "id": "6ea1ee60-5644-4f78-913d-32c36065957f",
+      "name": "Griffin Aerie",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["1", "W"],
+      "before": {
+        "mana": 0.9300490225745931,
+        "ink": 0.7054140511401922,
+        "objective": 0.8401950340008328
+      },
+      "after": {
+        "mana": 0.9536694395926464,
+        "ink": 0.8943679567627809,
+        "objective": 0.9299488464607002
+      },
+      "normalizedScanHash": "34a9dbefde060c0256d5cf9cadb9e0a51900c40f069a397e2c0fa6ce7733c89c",
+      "normalizedRenderHash": "00483cd304e5f88b46aa2197025772c4a0d523987e9aea90a29e1c9ecf521c2b",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.539248,
+            "y": 49.186800000000005,
+            "radius": 10.125,
+            "score": 26.976626183299054,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "2b922e7130f181dd68648b42238d520a380c87c91b0cc3f6e46ee88f728d202d",
+      "scanTransform": {
+        "matrix": [0.9996, 0, 0, 0.9996, -0.04999999999999999, 0]
+      }
+    },
+    {
+      "id": "73148b3b-73d3-4f57-8b67-1e91fbe112b9",
+      "name": "Feat of Resistance",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["1", "W"],
+      "before": {
+        "mana": 0.8883116883116882,
+        "ink": 0.7035073573876234,
+        "objective": 0.8143899559420622
+      },
+      "after": {
+        "mana": 0.9214976803545867,
+        "ink": 0.923170731707317,
+        "objective": 0.9221669008956788
+      },
+      "normalizedScanHash": "07d6c44dd3e7ded2a025dac39db4d3344f70bfd6474e6aaea92152d35c9cafd5",
+      "normalizedRenderHash": "3d2e1893ee8d2194cbb8468e9a72b84a0ecd4b9d4009210a61e1218d5c654957",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.539248,
+            "y": 49.311800000000005,
+            "radius": 10.25,
+            "score": 26.783047603340293,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "acf25317741e3449816d012700cf9a4a9e459b54183580acedc1948bcaab2e38",
+      "scanTransform": {
+        "matrix": [1, 0, 0, 1, 0.025000000000000022, 0.025000000000000022]
+      }
+    },
+    {
+      "id": "74b1eae0-1bf8-4922-a9e3-45c01ece9005",
+      "name": "Basri's Lieutenant",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["3", "W"],
+      "before": {
+        "mana": 0.8085934936227,
+        "ink": null,
+        "objective": 0.8085934936227
+      },
+      "after": {
+        "mana": 0.8521593023023223,
+        "ink": null,
+        "objective": 0.8521593023023223
+      },
+      "normalizedScanHash": "498528d75b5de70b0337fcebeb4842ce06a5bf3a0588336aba5089f820f8a5e3",
+      "normalizedRenderHash": "c1763377e17dfd90df3100f5ff898241a1d19584b74abd18c75612728ecebc03",
+      "numerals": [],
+      "referenceHash": "71b40ac9ddb2dea60ea1a8182525c0f0e8a7771174f0fb419da56fcc5482d508",
+      "scanTransform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.04999999999999999, 0]
+      }
+    },
+    {
+      "id": "7a0ffa89-e6ee-466c-8edc-dd24c8b52e80",
+      "name": "Siege Striker",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["2", "W"],
+      "before": {
+        "mana": 0.8978979177549578,
+        "ink": 0.6307044462457897,
+        "objective": 0.7910205291512905
+      },
+      "after": {
+        "mana": 0.9222752502021991,
+        "ink": 0.9447003914483588,
+        "objective": 0.931245306700663
+      },
+      "normalizedScanHash": "40e14496aa81bcd60bc93f7bffebc442eb6092430b8c5c830484e9ac5cb26081",
+      "normalizedRenderHash": "2acc9192dff4cf658644da9248d5987ec28e1109c8049a65253ca9415ed0c0e9",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.414248,
+            "y": 49.561800000000005,
+            "radius": 10.25,
+            "score": 23.248345392143023,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "586712cfd6f312b4ff632e14237191089a4e288dde715348c9db48ba270218b1",
+      "scanTransform": {
+        "matrix": [1.0008, 0, 0, 1.0008, -0.22499999999999998, 0.2]
+      }
+    },
+    {
+      "id": "8e742d49-e6f0-4016-ba4c-11878fad89cb",
+      "name": "Faith's Fetters",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["3", "W"],
+      "before": {
+        "mana": 0.9475620657639964,
+        "ink": 0.7150361225785964,
+        "objective": 0.8545516884898364
+      },
+      "after": {
+        "mana": 0.9649055249159678,
+        "ink": 0.8515550239234448,
+        "objective": 0.9195653245189586
+      },
+      "normalizedScanHash": "148689f77ceb9e491fdd08159d0e548fb3efb6355850676f7de2966ccd6d7cae",
+      "normalizedRenderHash": "f09fa485f0546b12ccebcefc8f655f3fbd20acbd098aa0871af294941f9c50a4",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 414.539248,
+            "y": 49.061800000000005,
+            "radius": 10.375,
+            "score": 23.775414185885374,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "4aff9af3571819c1d08db2e1d182b5aff14406f4f81e4b4cb7e7b198f983dd34",
+      "scanTransform": {
+        "matrix": [1, 0, 0, 1, -0.024999999999999994, 0]
+      }
+    },
+    {
+      "id": "9c977c67-b0c0-40b0-b129-28de094aaf40",
+      "name": "Anointed Chorister",
+      "color": "W",
+      "cohort": "validation",
+      "symbols": ["W"],
+      "before": {
+        "mana": 0.9522132464616672,
+        "ink": null,
+        "objective": 0.9522132464616672
+      },
+      "after": {
+        "mana": 0.9778756632295525,
+        "ink": null,
+        "objective": 0.9778756632295525
+      },
+      "normalizedScanHash": "81b3484b2e18ce20703947fe3b178abda07e8f0a15644bab695fe44ca17c036e",
+      "normalizedRenderHash": "ad3e14ff6184ed2c9ab2da55364426d8fd74d1f978665e8b9e348b7800929761",
+      "numerals": [],
+      "referenceHash": "3adfd8353c7abf53f4da4d27e4a4d51335b072927ebee5c9a45dcd6bc57df69c",
+      "scanTransform": {
+        "matrix": [1, 0, 0, 1, 0.175, 0]
+      }
+    },
+    {
+      "id": "6ac0f66a-213f-463e-8ebb-35ff5940ea06",
+      "name": "Wall of Runes",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["U"],
+      "before": {
+        "mana": 0.8929266405645557,
+        "ink": null,
+        "objective": 0.8929266405645557
+      },
+      "after": {
+        "mana": 0.941193245472878,
+        "ink": null,
+        "objective": 0.941193245472878
+      },
+      "normalizedScanHash": "c19e1c396dc05eeaf369d7a56aea0782d4cb44df1e6a4bf8c854ddeedf2c48aa",
+      "normalizedRenderHash": "3e3818eb52a0c7ed45b20136cb2a3445318c12fa0faa37bb7273c69157e78400",
+      "numerals": [],
+      "referenceHash": "a3613fbec782e08d4fb5384e1c6135592001d1ec355cf5a346db6a58c1f99287",
+      "scanTransform": {
+        "matrix": [1.0002, 0, 0, 1.0002, -0.15, 0.1]
+      }
+    },
+    {
+      "id": "6d42d3dd-29df-44a1-89b8-994761eda77d",
+      "name": "Spined Megalodon",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["5", "U", "U"],
+      "before": {
+        "mana": 0.8322063671583608,
+        "ink": 0.7309037747040606,
+        "objective": 0.7916853301766408
+      },
+      "after": {
+        "mana": 0.8508236980196912,
+        "ink": 0.6442969130965897,
+        "objective": 0.7682129840504506
+      },
+      "normalizedScanHash": "cd03d01be744670816d4593453e3607558cbd9d58fc2d5c050dbf47765ae49ac",
+      "normalizedRenderHash": "6fe68097bd921f4297b5b76117e60dcc7f0fffabe8a439748b6e2eba96c15bae",
+      "numerals": [
+        {
+          "symbol": "5",
+          "circle": {
+            "x": 389.64268,
+            "y": 49.436800000000005,
+            "radius": 10.25,
+            "score": 29.930556725996176,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "82407598391f19ee18d946d6fd94fe8a1a12e48b9a7e358be2f60dd75dda303c",
+      "scanTransform": {
+        "matrix": [1.0006, 0, 0, 1.0006, -0.075, 0.325]
+      }
+    },
+    {
+      "id": "7a5a88e3-e73c-4b34-a645-06fe27e68cee",
+      "name": "Shacklegeist",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["1", "U"],
+      "before": {
+        "mana": 0.8243243243243243,
+        "ink": 0.821216891820019,
+        "objective": 0.8230813513226023
+      },
+      "after": {
+        "mana": 0.8845096022768039,
+        "ink": 0.8653630943280843,
+        "objective": 0.876850999097316
+      },
+      "normalizedScanHash": "45e581a432e577912bcbe0c49758bfde97a058f024072a2b9705075242c52ced",
+      "normalizedRenderHash": "5ed2a3f549cbdbf81271293075932bc6356e4a7981132f36a9b321538801e7b0",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.414248,
+            "y": 49.811800000000005,
+            "radius": 10.25,
+            "score": 27.114416890490862,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "9507c7a20efb871b4cbceb36eff8d461583c58aa074f5975f8ada71765d0a5ff",
+      "scanTransform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.04999999999999999, 0]
+      }
+    },
+    {
+      "id": "8cbac0e4-f79f-476d-b410-d19ab3696606",
+      "name": "Roaming Ghostlight",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["3", "U", "U"],
+      "before": {
+        "mana": 0.9276250670800787,
+        "ink": 0.6404005498672733,
+        "objective": 0.8127352601949567
+      },
+      "after": {
+        "mana": 0.9394964668654102,
+        "ink": 0.7522582120700991,
+        "objective": 0.8646011649472858
+      },
+      "normalizedScanHash": "3453cdc5aed678d140ac5898f7144623b50b4807ac8eb3f1ebe94c79942f1cb0",
+      "normalizedRenderHash": "7e0839ee883f06b56dbaf18a013399cf4c9752b962b74b14c9210b3d69a7e4fb",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 388.89268,
+            "y": 48.686800000000005,
+            "radius": 10.375,
+            "score": 30.827558599557854,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "0bcb2594c9610395d0e373dda2f07d3492179dbd21545808759c4478c756fda6",
+      "scanTransform": {
+        "matrix": [0.9995, 0, 0, 0.9995, 0.125, -0.22499999999999998]
+      }
+    },
+    {
+      "id": "8f14abb0-0e9f-448e-85d7-6cb71f756c56",
+      "name": "Frantic Inventory",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["1", "U"],
+      "before": {
+        "mana": 0.925925925925926,
+        "ink": 0.734860996028458,
+        "objective": 0.8494999539669388
+      },
+      "after": {
+        "mana": 0.9789125102646536,
+        "ink": 0.9158653846153846,
+        "objective": 0.953693660004946
+      },
+      "normalizedScanHash": "e34067da6feb622114b5fec8437fdb6c6e433763e3bbe7acac291384731346ed",
+      "normalizedRenderHash": "98aed16832b5672a4b5544c52e3afc8c13f35e11659f3449e93088f353e89949",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.289248,
+            "y": 48.686800000000005,
+            "radius": 10.75,
+            "score": 31.612620352531103,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "83d3c3a7b92d30603ebb74232a77b261a395207a25500788c2d9794a33500462",
+      "scanTransform": {
+        "matrix": [0.9998, 0, 0, 0.9998, 0, -0.04999999999999999]
+      }
+    },
+    {
+      "id": "91af15cc-fdd5-4d72-a53a-314fa5353527",
+      "name": "See the Truth",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["1", "U"],
+      "before": {
+        "mana": 0.9110926387734367,
+        "ink": 0.7105063582000031,
+        "objective": 0.8308581265440633
+      },
+      "after": {
+        "mana": 0.9676763766573115,
+        "ink": 0.9657777777777778,
+        "objective": 0.9669169371054981
+      },
+      "normalizedScanHash": "4e5d9fafb3203058fec1e3aea3d9fcf5cbd6300e8cc4152ee3a349201012cef5",
+      "normalizedRenderHash": "a2c41524357331db3f578b89f9ac9d7064ef1d72289703f2aa59c6ee50abf6db",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.414248,
+            "y": 49.311800000000005,
+            "radius": 10.25,
+            "score": 28.271450023409116,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "152939671db7fcae72e827ed231e7f3959820a9fb6edb7cafd6a3f28bf52bf1f",
+      "scanTransform": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.125, -0.075]
+      }
+    },
+    {
+      "id": "a188164c-01fe-4980-83a5-91d14e218cf5",
+      "name": "Jeskai Elder",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["1", "U"],
+      "before": {
+        "mana": 0.9003322259136213,
+        "ink": 0.7214117142244153,
+        "objective": 0.8287640212379389
+      },
+      "after": {
+        "mana": 0.956567337482008,
+        "ink": 0.9199999999999999,
+        "objective": 0.9419404024892047
+      },
+      "normalizedScanHash": "f823485b889021d6356f8518f23efaee3c46765cf74e46ab59c6830d157643a4",
+      "normalizedRenderHash": "8a1af98964de28fd9b70695261d72fd0e66950f284f2d76e5bf48c5e08410549",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.664248,
+            "y": 48.436800000000005,
+            "radius": 11,
+            "score": 26.829194281716223,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "c7aa14587f1dbdcfec18db238c5a98f2d9614e9d26b002c271c9587fc9a2a6b2",
+      "scanTransform": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.15, -0.04999999999999999]
+      }
+    },
+    {
+      "id": "a52e90c0-b012-4ce5-8462-1e33c7143de5",
+      "name": "Vodalian Arcanist",
+      "color": "U",
+      "cohort": "validation",
+      "symbols": ["1", "U"],
+      "before": {
+        "mana": 0.7852934511670066,
+        "ink": 0.805320084131563,
+        "objective": 0.793304104352829
+      },
+      "after": {
+        "mana": 0.8635634028892456,
+        "ink": 0.828759876236256,
+        "objective": 0.8496419922280498
+      },
+      "normalizedScanHash": "cda5e9a0717ac88f56e8d6fb9636a61a386732461a0f6397fe9c7eff2afe868a",
+      "normalizedRenderHash": "bbc293d89e86ac002d2dbe6236a0d3a81c004c3725e9662fe8ac0e404b6cddb7",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.539248,
+            "y": 50.311800000000005,
+            "radius": 10.375,
+            "score": 30.762869419226206,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "d32bfe31fc46470bef5e779abbb70882c14fb667705e30cef74ee2ddd59f1912",
+      "scanTransform": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.024999999999999994, 0.025000000000000022]
+      }
+    },
+    {
+      "id": "833a8604-92d5-443b-9bc0-bd91c973ef07",
+      "name": "Mind Rot",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["2", "B"],
+      "before": {
+        "mana": 0.7545672825973484,
+        "ink": 0.6266093719364747,
+        "objective": 0.703384118332999
+      },
+      "after": {
+        "mana": 0.7922210849539406,
+        "ink": 0.7514369902683575,
+        "objective": 0.7759074470797074
+      },
+      "normalizedScanHash": "da4c4baf9431cbb7505daf4007c7bf47feb4e89c50d39822eb20202517132b72",
+      "normalizedRenderHash": "e0652c96ffde2c999cfb1143ad1e1b8630341d87219c78acc5ad39468a8d051b",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.164248,
+            "y": 49.186800000000005,
+            "radius": 10.875,
+            "score": 29.39990624805408,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "dc02fb84777c22b5da644f52a5b1823d836c475e49d6c05885c4be5ed21ad68c",
+      "scanTransform": {
+        "matrix": [0.9984000000000001, 0, 0, 0.9984000000000001, -0.475, 0]
+      }
+    },
+    {
+      "id": "83437022-ba00-4370-83c2-ce1260336fcc",
+      "name": "Archfiend's Vessel",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["B"],
+      "before": {
+        "mana": 0.9444382668001038,
+        "ink": null,
+        "objective": 0.9444382668001038
+      },
+      "after": {
+        "mana": 0.9550539329279052,
+        "ink": null,
+        "objective": 0.9550539329279052
+      },
+      "normalizedScanHash": "1b2d9eca3146b227d601afcfaea7e9091fb59ed0fce521a76a91dc441a2cd573",
+      "normalizedRenderHash": "b89a737c8ffbe4e149a6f793261b9d13f358ef984361d9726b17a830acb4669b",
+      "numerals": [],
+      "referenceHash": "0cd801fd59d96a918ed2ccb4d7786c7df858e8f7b63639f0023c0dbe2ed7b414",
+      "scanTransform": {
+        "matrix": [1.0008, 0, 0, 1.0008, 0.07500000000000001, 0]
+      }
+    },
+    {
+      "id": "88496096-fd9a-451a-85d9-31ccc3580623",
+      "name": "Kitesail Freebooter",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["1", "B"],
+      "before": {
+        "mana": 0.9168896191598634,
+        "ink": 0.7227301018792518,
+        "objective": 0.8392258122476188
+      },
+      "after": {
+        "mana": 0.9342386032977691,
+        "ink": 0.8288829151732378,
+        "objective": 0.8920963280479566
+      },
+      "normalizedScanHash": "7807e73a016d03513c1ebc03f264df4071413da05cc43ea96d4fa3b423ac10a9",
+      "normalizedRenderHash": "b1ffb9ec124c61b084346a878033df5e205b16b3d833d61932dad203f5c81f45",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 415.039248,
+            "y": 49.061800000000005,
+            "radius": 10.625,
+            "score": 28.839890280874872,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "1c59824c815304d0c7d1c385494421cb4363f1ad36b3e3c9608c0f1ef208d116",
+      "scanTransform": {
+        "matrix": [1.0004, 0, 0, 1.0004, -0.04999999999999999, 0.125]
+      }
+    },
+    {
+      "id": "928558ab-e29a-44cb-ac2f-88443571f41a",
+      "name": "Grim Tutor",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["1", "B", "B"],
+      "before": {
+        "mana": 0.9247009430848048,
+        "ink": 0.4159743400988537,
+        "objective": 0.7212103018904243
+      },
+      "after": {
+        "mana": 0.9721947664260541,
+        "ink": 0.881132075471698,
+        "objective": 0.9357696900443117
+      },
+      "normalizedScanHash": "5a537964c37736455567d392ca4c1ca2df56cb155eedab58688949428b0cc368",
+      "normalizedRenderHash": "c64ea742a73d470b0919152afc2b186784425cff560f0c6da6e748f0ef3c3ac6",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 388.64268,
+            "y": 48.186800000000005,
+            "radius": 11.125,
+            "score": 36.622348608487044,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "9e0d9ab0d91f291080b3a584a008fbb31bc980baf0c9fa4001e80cc4234000a8",
+      "scanTransform": {
+        "matrix": [1.0004, 0, 0, 1.0004, 0, -0.175]
+      }
+    },
+    {
+      "id": "975e4b8e-add9-439c-9463-e2facee96c10",
+      "name": "Infernal Scarring",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["1", "B"],
+      "before": {
+        "mana": 0.7704906122533706,
+        "ink": 0.40947488584474884,
+        "objective": 0.6260843216899219
+      },
+      "after": {
+        "mana": 0.8187055267178426,
+        "ink": 0.7723492723492724,
+        "objective": 0.8001630249704146
+      },
+      "normalizedScanHash": "adad1692f2bf61c0205e9f1d8a1af588e486ec061437e1b88c91a024c2536dd1",
+      "normalizedRenderHash": "5f603980c8e2692ef27787ddda3ae3ddf20816d61aaea792bf8e7229f1347d1e",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 413.789248,
+            "y": 49.561800000000005,
+            "radius": 10.375,
+            "score": 27.88749896262508,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "a0f1e2170f0123dd96bda0b5d00760a617fe1518cc497f0d26bb57595252b889",
+      "scanTransform": {
+        "matrix": [0.9989, 0, 0, 0.9989, -0.1, -0.6]
+      }
+    },
+    {
+      "id": "9c0f60a6-b5c8-4704-8b61-94e8fc463e5d",
+      "name": "Village Rites",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["B"],
+      "before": {
+        "mana": 0.9326979876343874,
+        "ink": null,
+        "objective": 0.9326979876343874
+      },
+      "after": {
+        "mana": 0.9368932038834952,
+        "ink": null,
+        "objective": 0.9368932038834952
+      },
+      "normalizedScanHash": "147df850fb4efebec2dfeb5948f78df195ba5a4592654c6f6a8b72c17e5c298a",
+      "normalizedRenderHash": "9184825bf96c8e8ea8d8f2be54b042a8a031202f755ff8521ac13a3157013fca",
+      "numerals": [],
+      "referenceHash": "9035ce97cf2a4ac14658c92db72fa8bf77e0187bd5d642411afd2b01487acceb",
+      "scanTransform": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.175, -0.3]
+      }
+    },
+    {
+      "id": "a1b4f7ec-ea2e-4d90-98cd-0c92bd9f64c1",
+      "name": "Gloom Sower",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["5", "B", "B"],
+      "before": {
+        "mana": 0.9441017072942149,
+        "ink": 0.711840888066605,
+        "objective": 0.8511973796031709
+      },
+      "after": {
+        "mana": 0.9672646768574213,
+        "ink": 0.811402444225507,
+        "objective": 0.9049197838046557
+      },
+      "normalizedScanHash": "891cb9de90e0774b02ceae3d9daac65826ef138bcfc38bc3721c84e6f1dd50a0",
+      "normalizedRenderHash": "007bc2607c93043ad98dd150deefa55ba0cd31ba8749204d450b37f188b83a15",
+      "numerals": [
+        {
+          "symbol": "5",
+          "circle": {
+            "x": 389.26768,
+            "y": 49.061800000000005,
+            "radius": 10.75,
+            "score": 28.204800269445432,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "6a979b57c74dd7924ff53dcd288684ecb48557661cd03e3b0d59943c409f4746",
+      "scanTransform": {
+        "matrix": [1.0014999999999998, 0, 0, 1.0014999999999998, 0.2, 0.175]
+      }
+    },
+    {
+      "id": "abfcd08a-cfb5-4d34-b950-f57a88c5cb8e",
+      "name": "Sanguine Indulgence",
+      "color": "B",
+      "cohort": "validation",
+      "symbols": ["3", "B"],
+      "before": {
+        "mana": 0.9199719922566828,
+        "ink": 0.726258424385094,
+        "objective": 0.8424865651080473
+      },
+      "after": {
+        "mana": 0.9376630217145824,
+        "ink": 0.9210909090909092,
+        "objective": 0.9310341766651131
+      },
+      "normalizedScanHash": "a2485b485f3072e3c039dda42332cc6735d73f17ce3bafd119cc5f8f82ecd779",
+      "normalizedRenderHash": "cc54486b955d3f5f55e0b55ff7d2fe8ad512e43f32ceaab4f182a373bc654508",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 414.289248,
+            "y": 48.811800000000005,
+            "radius": 10.75,
+            "score": 27.131254891159877,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "807a2c27192d8a756bdfb7e1d2068d3a5d359b3fc6e089b2cbaef6aab7e93466",
+      "scanTransform": {
+        "matrix": [0.9984000000000001, 0, 0, 0.9984000000000001, -0.525, -0.22499999999999998]
+      }
+    },
+    {
+      "id": "76e42d07-57d9-4de4-8d41-eb42dd1573ed",
+      "name": "Onakke Ogre",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["2", "R"],
+      "before": {
+        "mana": 0.9279331664075757,
+        "ink": 0.7293175180579401,
+        "objective": 0.8484869070677215
+      },
+      "after": {
+        "mana": 0.970125017265,
+        "ink": 0.7680822936462034,
+        "objective": 0.8893079278174814
+      },
+      "normalizedScanHash": "cf7d02ece5e6c24e3b4d6e0aa1f7ce80a7349ce25d5504f5b8de5fb28fb4036e",
+      "normalizedRenderHash": "060c495b93bd7870e9c142c7d3c574d46aa86e9f97145da7c17766c809a91a18",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.664248,
+            "y": 49.936800000000005,
+            "radius": 10.125,
+            "score": 30.277203645455753,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "676711d8d80ae6f8f8f148d48e2ead3e46b908fdae2e2da4e7c472d7548ed9d8",
+      "scanTransform": {
+        "matrix": [0.999, 0, 0, 0.999, -0.024999999999999994, -0.44999999999999996]
+      }
+    },
+    {
+      "id": "7b862e46-f5a2-4fce-98b5-2c5aa49ec648",
+      "name": "Keral Keep Disciples",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["2", "R", "R"],
+      "before": {
+        "mana": 0.9051971009368923,
+        "ink": null,
+        "objective": 0.9051971009368923
+      },
+      "after": {
+        "mana": 0.9597996043248522,
+        "ink": null,
+        "objective": 0.9597996043248522
+      },
+      "normalizedScanHash": "59045764de58a77a34ecf6117c6d15acd4963db47a503ef31d49e4adf88161d2",
+      "normalizedRenderHash": "96e404ed2b3a52900b4335812d50ee48e4b691f31951f7acd53bc35c987c8c50",
+      "numerals": [],
+      "referenceHash": "cb6d7561b920eddbb858f163847e4400f1788316e958c51627dda068bc9aba4b",
+      "scanTransform": {
+        "matrix": [1.0016, 0, 0, 1.0016, -0.275, -0.15]
+      }
+    },
+    {
+      "id": "7bf663d3-850b-4a24-8e4b-08311adf4ed0",
+      "name": "Hellkite Punisher",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["5", "R", "R"],
+      "before": {
+        "mana": 0.9291429514146663,
+        "ink": 0.5866440087188631,
+        "objective": 0.7921433743363451
+      },
+      "after": {
+        "mana": 0.9768170942991502,
+        "ink": 0.9503731343283581,
+        "objective": 0.9662395103108334
+      },
+      "normalizedScanHash": "e053884a87858dd26130b471026a4d2eadde14a859a02c9f875d769d62692b6d",
+      "normalizedRenderHash": "7eeb21b740aee037f498dd44e04274dea99cc1e03341c9cb3f76daf098d6fa20",
+      "numerals": [
+        {
+          "symbol": "5",
+          "circle": {
+            "x": 388.76768,
+            "y": 49.186800000000005,
+            "radius": 10.25,
+            "score": 27.648029239390972,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "115f472acf40dc32c95318eab1134dcdb7094a70125f1788b8146f0b604cc01d",
+      "scanTransform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, 0.325, -0.024999999999999994]
+      }
+    },
+    {
+      "id": "8257c205-00cd-4d41-bd58-098575ea2343",
+      "name": "Crash Through",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["R"],
+      "before": {
+        "mana": 0.8621625985234328,
+        "ink": null,
+        "objective": 0.8621625985234328
+      },
+      "after": {
+        "mana": 0.882824416895471,
+        "ink": null,
+        "objective": 0.882824416895471
+      },
+      "normalizedScanHash": "f0a8e8dbe8ad6975ce52f5d3fde2556a9b70e86e64f608b858bcfd44d07d8ae7",
+      "normalizedRenderHash": "bec930ddf7899a7fc4a230bb735b1111284730cf256b643e44f93aa460c4f0cd",
+      "numerals": [],
+      "referenceHash": "21e9cbe0e8fde77f6dc532767c79056328c62ea4e2f5636071cac2308e384bf6",
+      "scanTransform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.125, 0.07500000000000001]
+      }
+    },
+    {
+      "id": "869fb9f1-0d59-4874-aa52-ac665c3cc0e8",
+      "name": "Heartfire Immolator",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["1", "R"],
+      "before": {
+        "mana": 0.8372752692730889,
+        "ink": 0.787530860989111,
+        "objective": 0.8173775059594978
+      },
+      "after": {
+        "mana": 0.8690437390000652,
+        "ink": 0.78611789158228,
+        "objective": 0.8358734000329511
+      },
+      "normalizedScanHash": "36486937597123a4151919ece755647751c8878e90a5fa6a282479e17115ffe3",
+      "normalizedRenderHash": "4b49860798f2f3bec6ffe9c8b1e51c4640a47477cd96f4830de0a24761b5740d",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 415.039248,
+            "y": 49.561800000000005,
+            "radius": 10.5,
+            "score": 29.32006059067564,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "26c3d75ecbb340c0e891a657b7b70ce68962e6a8d3cdd34169349a906ecab2ac",
+      "scanTransform": {
+        "matrix": [0.9999, 0, 0, 0.9999, 0.05000000000000002, 0]
+      }
+    },
+    {
+      "id": "91d3e366-4da5-42c8-bbd5-a0c178c0da28",
+      "name": "Chandra's Magmutt",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["1", "R"],
+      "before": {
+        "mana": 0.9133697446044149,
+        "ink": 0.7988875690443665,
+        "objective": 0.8675768743803955
+      },
+      "after": {
+        "mana": 0.9646227780672804,
+        "ink": 0.8376446383026022,
+        "objective": 0.9138315221614091
+      },
+      "normalizedScanHash": "75e2d5b0976041f806c961c921e6b3b4d7d56c02ded97291f6ba43a7bcb1396f",
+      "normalizedRenderHash": "57c0853740d2430357edc1c00b6ee19060a271664c668a091966f1a57bc9977a",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.664248,
+            "y": 49.686800000000005,
+            "radius": 10.5,
+            "score": 31.229354961670897,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "581d30b4ecd34feb61fdebbe3b78c643c0ea4b7fbdf72ba33568792371d0ebce",
+      "scanTransform": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, 0.125, -0.44999999999999996]
+      }
+    },
+    {
+      "id": "9f8cf3f9-4e3b-4af2-b5ef-a97eb1d2b674",
+      "name": "Bolt Hound",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["2", "R"],
+      "before": {
+        "mana": 0.9539826279800406,
+        "ink": 0.542745873351973,
+        "objective": 0.7894879261288136
+      },
+      "after": {
+        "mana": 0.9487644585651605,
+        "ink": 0.7587640606116948,
+        "objective": 0.8727642993837741
+      },
+      "normalizedScanHash": "f095909c3f576f20c32c042ddc5ee72da7bbe307fbb5411ebc15b031cf283ea7",
+      "normalizedRenderHash": "2385911da3b0d4ef74166a73ec4f6c3727412aef56b2ceed3a070cfb09216a5e",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.539248,
+            "y": 48.811800000000005,
+            "radius": 10.25,
+            "score": 27.52218120227575,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "84783127160767770c47836dab684d6a6a4aa7dfae60a567340500e0f8c748c3",
+      "scanTransform": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.15, -0.04999999999999999]
+      }
+    },
+    {
+      "id": "a31b6817-9b63-4d6f-a945-459b44ad184c",
+      "name": "Volcanic Salvo",
+      "color": "R",
+      "cohort": "validation",
+      "symbols": ["10", "R", "R"],
+      "before": {
+        "mana": 0.8737168035409557,
+        "ink": null,
+        "objective": 0.8737168035409557
+      },
+      "after": {
+        "mana": 0.9267854267971496,
+        "ink": null,
+        "objective": 0.9267854267971496
+      },
+      "normalizedScanHash": "03028e51259c60b709ea084f1af34fef96be8eedeb21762dc711f72c2079e485",
+      "normalizedRenderHash": "31b2b28835922b09911349e1f08ee0c9d7abb4daec349a98890475844f8916e6",
+      "numerals": [],
+      "referenceHash": "1616a638b5774468e86e1ba443e428b8045c01ecc7a64d752da8af127f064d4e",
+      "scanTransform": {
+        "matrix": [1.0023, 0, 0, 1.0023, -0.1, 0.125]
+      }
+    },
+    {
+      "id": "5d387b19-a0a7-45c0-b1e9-71ca55fb4adc",
+      "name": "Twinblade Assassins",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["3", "B", "G"],
+      "before": {
+        "mana": 0.9413250192163196,
+        "ink": 0.7563927873216982,
+        "objective": 0.867352126458471
+      },
+      "after": {
+        "mana": 0.9560178380129053,
+        "ink": 0.8020840374000224,
+        "objective": 0.8944443177677521
+      },
+      "normalizedScanHash": "f54296aee1f420b1be304fa30686a4e82ca2676ffb23d119d0a88e5862b96a01",
+      "normalizedRenderHash": "1a3c251aefd90fe3b9d7dcf81291fd03b0f2bb27d20efd5e140b3ea16a55b5fd",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 389.64268,
+            "y": 47.936800000000005,
+            "radius": 11.25,
+            "score": 33.154336155016,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "baa88a10ddcc3d254a8d2115c38cb2f7ab72dca32c4f84e1920747650e2d81d0",
+      "scanTransform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, 0.07500000000000001, -0.25]
+      }
+    },
+    {
+      "id": "5f22116a-8b6a-4bbe-999f-7329e1e2b2d9",
+      "name": "Gnarled Sage",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["3", "G", "G"],
+      "before": {
+        "mana": 0.931573557130959,
+        "ink": 0.7251440329218107,
+        "objective": 0.8490017474472997
+      },
+      "after": {
+        "mana": 0.973270616762837,
+        "ink": 0.8965432184546971,
+        "objective": 0.942579657439581
+      },
+      "normalizedScanHash": "899f832cef66fd86ae8da8a87263af69a2448f3be6ac730592c90d54666939ad",
+      "normalizedRenderHash": "2b18b8c7d7c538293e525d0a37f474e23dbc53aef47333a9587861f8c1f68562",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 389.01768,
+            "y": 49.311800000000005,
+            "radius": 10.375,
+            "score": 26.050061668601078,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "9b40928141644f86ab34e54e9584618a9c2f983bee7963e2d879f39684413f10",
+      "scanTransform": {
+        "matrix": [0.9999, 0, 0, 0.9999, -0.04999999999999999, -0.04999999999999999]
+      }
+    },
+    {
+      "id": "6da62557-9783-4e6c-9b5f-2b77dbf96909",
+      "name": "Titanic Growth",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["1", "G"],
+      "before": {
+        "mana": 0.9136657001215975,
+        "ink": 0.6264930538220997,
+        "objective": 0.7987966416017984
+      },
+      "after": {
+        "mana": 0.9655108387875412,
+        "ink": 0.9392561983471073,
+        "objective": 0.9550089826113676
+      },
+      "normalizedScanHash": "e36658862f462bad17cb0328adebc14795c20b047cf8be74595c39753a80e9a1",
+      "normalizedRenderHash": "a463cea5485ddf0644f87f7914a2dbb825d77fc42685066353128c04a46fc167",
+      "numerals": [
+        {
+          "symbol": "1",
+          "circle": {
+            "x": 414.164248,
+            "y": 48.561800000000005,
+            "radius": 10.625,
+            "score": 29.862618508205067,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "50d4279f78f67caacd2a9cbeb017a3c928f57b892e5c87aab0108083cd169492",
+      "scanTransform": {
+        "matrix": [0.9998, 0, 0, 0.9998, 0, -0.1]
+      }
+    },
+    {
+      "id": "71a4860a-8bb6-45c0-b00a-b4a42da33ab9",
+      "name": "Garruk's Uprising",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["2", "G"],
+      "before": {
+        "mana": 0.9076310380267215,
+        "ink": 0.6606933888842466,
+        "objective": 0.8088559783697316
+      },
+      "after": {
+        "mana": 0.9401175891631484,
+        "ink": 0.9099761829152112,
+        "objective": 0.9280610266639735
+      },
+      "normalizedScanHash": "39a0096c390f7824b2f490c494b7e6d32153aaa004a2ddc01ce9cde9e490865b",
+      "normalizedRenderHash": "c9f97eb3fd03bcad45e8aaa3c566dcbc0c10ed025535f6c0a7473d3d1bb1a52a",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.289248,
+            "y": 49.061800000000005,
+            "radius": 10.75,
+            "score": 28.164358490022018,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "42846ebfcdf2682c2fc953606a54a0c245ff124ddfaf4d95ac2d66d97100f2e4",
+      "scanTransform": {
+        "matrix": [1.0006, 0, 0, 1.0006, -0.024999999999999994, 0.25]
+      }
+    },
+    {
+      "id": "7bd3a903-23e0-4b5a-9c7e-390d5ced8371",
+      "name": "Leafkin Avenger",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["2", "R", "G"],
+      "before": {
+        "mana": 0.9102410603693171,
+        "ink": 0.6842321810059211,
+        "objective": 0.8198375086239587
+      },
+      "after": {
+        "mana": 0.9356617283787967,
+        "ink": 0.7717938047193446,
+        "objective": 0.8701145589150158
+      },
+      "normalizedScanHash": "87952b06f7f95d09fde19618f3f9feeaa76cdb88f18ace14886861e025c57f87",
+      "normalizedRenderHash": "24099907082e42ef8f59068a9cf5eb604e99ea5590a8c0fad51520c6d2078dcd",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 389.51768,
+            "y": 48.186800000000005,
+            "radius": 11.125,
+            "score": 34.90031129043368,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "1467070e9acc7974b6b5708b0ccd86020cae1a304dc21fda9e67979ab1cc82d0",
+      "scanTransform": {
+        "matrix": [1.0002, 0, 0, 1.0002, 0.375, 0.125]
+      }
+    },
+    {
+      "id": "7c08c80f-f27c-4e3a-b048-143aea740096",
+      "name": "Hunter's Edge",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["3", "G"],
+      "before": {
+        "mana": 0.9260888892920972,
+        "ink": 0.5879281829187198,
+        "objective": 0.7908246067427462
+      },
+      "after": {
+        "mana": 0.9141859215475551,
+        "ink": 0.6303672633742344,
+        "objective": 0.8006584582782268
+      },
+      "normalizedScanHash": "329f8e23beabb9a95db358c89c52d627f1ef1c05464ed6954aec68404b8d7dbe",
+      "normalizedRenderHash": "3710ff043737a592a14aa5d0f062590113f291d71f4d1e8fbe27cc706b12c597",
+      "numerals": [
+        {
+          "symbol": "3",
+          "circle": {
+            "x": 414.289248,
+            "y": 48.061800000000005,
+            "radius": 10.75,
+            "score": 29.21870635046212,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "e94c2118898ff7370d567ca384da86c73abadac39d271044dad93f8bba82b3e5",
+      "scanTransform": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0.025000000000000022, 0.1]
+      }
+    },
+    {
+      "id": "8059c52b-5d25-4052-b48a-e9e219a7a546",
+      "name": "Colossal Dreadmaw",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["4", "G", "G"],
+      "before": {
+        "mana": 0.7900916720303449,
+        "ink": 0.6732533669577361,
+        "objective": 0.7433563500013014
+      },
+      "after": {
+        "mana": 0.8366445439171605,
+        "ink": 0.689673917470943,
+        "objective": 0.7778562933386735
+      },
+      "normalizedScanHash": "fc582f9febb41a35f73e582fd61dd5b76faa2706b30e3cff4c0d489987d14fcc",
+      "normalizedRenderHash": "7ce9f79f87370a51ed9463c4e3adbb7eae7cafc5787f272a403a96507385fca3",
+      "numerals": [
+        {
+          "symbol": "4",
+          "circle": {
+            "x": 389.26768,
+            "y": 49.561800000000005,
+            "radius": 10.75,
+            "score": 29.514109344465155,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "7dbdf1bc34fc9966192d032fb28337b352026e6f63189921fff1161c8bc33083",
+      "scanTransform": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.225, 0]
+      }
+    },
+    {
+      "id": "84a9485a-d356-4cbe-b257-b62008a21328",
+      "name": "Feline Sovereign",
+      "color": "G",
+      "cohort": "validation",
+      "symbols": ["2", "G"],
+      "before": {
+        "mana": 0.9420049525858811,
+        "ink": 0.6471159537062815,
+        "objective": 0.8240493530340413
+      },
+      "after": {
+        "mana": 0.9741578682755153,
+        "ink": 0.9047869390870984,
+        "objective": 0.9464094966001486
+      },
+      "normalizedScanHash": "9a09ac17d69e1483564867c483150da5d442f308ca4283a935f25aaf122bae47",
+      "normalizedRenderHash": "2ba52e12398cd87781b291276478593e787b1d828a519679ae1c042e03b18ca8",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 414.414248,
+            "y": 49.561800000000005,
+            "radius": 10.125,
+            "score": 26.630440409079313,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "2cf4fc9eae7a50b23950e68ee42236d1a0442007b7f336a502e4f1b5f9662555",
+      "scanTransform": {
+        "matrix": [1, 0, 0, 1, 0.1, -0.1]
+      }
+    },
+    {
+      "id": "eedce8ab-771a-4247-9504-72ae0629df83",
+      "name": "Prismite",
+      "color": "N",
+      "cohort": "validation",
+      "symbols": ["2"],
+      "before": {
+        "mana": 0.9280764509444174,
+        "ink": 0.6607468123861566,
+        "objective": 0.821144595521113
+      },
+      "after": {
+        "mana": 0.9514563106796117,
+        "ink": 0.9523999999999999,
+        "objective": 0.951833786407767
+      },
+      "normalizedScanHash": "74571f30f34a86e5927b9a24d7cfa4ddd1bab8d97f11b317ee96489795a7d542",
+      "normalizedRenderHash": "273068c11f031d937f9ecca0676950a7467f0b4b455b1fd8d85ff2902770fb7a",
+      "numerals": [
+        {
+          "symbol": "2",
+          "circle": {
+            "x": 439.810816,
+            "y": 49.561800000000005,
+            "radius": 10.25,
+            "score": 26.02860355327189,
+            "status": "measured"
+          }
+        }
+      ],
+      "referenceHash": "50fff0ceb7de2855b20a7d78196e6ecc42b301e19b41eed83fb7e017d1a5c93a",
+      "scanTransform": {
+        "matrix": [1.0004, 0, 0, 1.0004, -0.625, -0.075]
+      }
+    }
+  ],
+  "limitations": [
+    "Only one unused generic-only artifact remained; all numeral fitting uses generic costs on colored cards. No artifact-specific adjustment is fitted.",
+    "No claim for other sets, legendary crowns or special frames until checked separately.",
+    "Two reserved cards regress slightly in the whole-mana score; all are retained in the report."
+  ],
+  "integration": {
+    "count": 61,
+    "exactRasters": 10,
+    "maxMetricDelta": 0.001397248505682458,
+    "outsideChanges": 0,
+    "validation": {
+      "count": 41,
+      "before": 0.8961039569222125,
+      "after": 0.9288849264709772,
+      "worstRegression": 0.011902967744542137
+    },
+    "note": "Frozen settings replayed without refitting through the typed renderer and bounded source preparation. Minor antialiasing differences from separating the source bitmap change the maximum single-card mana index by 0.00140; held-out mean is 0.928885. All 61 scans preserve the original normalized hash; no printing changes outside the mana crop.",
+    "rows": [
+      {
+        "id": "577657ed-162f-4104-b0af-ee9733e90f20",
+        "name": "Basri's Aegis",
+        "cohort": "calibration",
+        "expected": 0.7708245982424007,
+        "actual": 0.7708245982424007,
+        "expectedHash": "b2c70685190b78f8ae9ab5009110d93875d7e9f38fbefaae941eb2caea375cd1",
+        "actualHash": "7e00554b68f4bb51eebec90fb6ced02f7e19bdd60228e0db600458cfce718b51",
+        "scanHash": "4832522aaa1a23330e39551f64cd0b543cc11661f797c56ec4180e96fd53c21b",
+        "changed": 3672,
+        "outside": 0
+      },
+      {
+        "id": "5ba81e67-8fa5-441c-bf14-2d75c168a617",
+        "name": "Sigiled Contender",
+        "cohort": "calibration",
+        "expected": 0.7969366177058924,
+        "actual": 0.7969366177058924,
+        "expectedHash": "77284251a98a0fbf391d0365f66e04bcc247cf8cf84ea8e35ca2e8bbc15d67d8",
+        "actualHash": "13e5187cff56c13521886048e4729b6dbde9599942450dbd13581534090b1e79",
+        "scanHash": "1506b0b7850492c3447f85112c6011b456e98ec7ff20e11527fdfd75b7d126f8",
+        "changed": 2237,
+        "outside": 0
+      },
+      {
+        "id": "5c23869b-c99a-49dd-9e29-fcc0eb63fad1",
+        "name": "Defiant Strike",
+        "cohort": "calibration",
+        "expected": 0.8787924528301887,
+        "actual": 0.8787924528301887,
+        "expectedHash": "5963e3af991e90cf2bac4cba3945de4722b43bff3675477be939c31b5a5529fb",
+        "actualHash": "5963e3af991e90cf2bac4cba3945de4722b43bff3675477be939c31b5a5529fb",
+        "scanHash": "af6f9678abbbb1dc030411c73bbb88727523386a674815abdc2a302ce45beff9",
+        "changed": 1164,
+        "outside": 0
+      },
+      {
+        "id": "600d3517-e370-47ae-ac4f-c7ef8995a89c",
+        "name": "Concordia Pegasus",
+        "cohort": "calibration",
+        "expected": 0.9147479017212998,
+        "actual": 0.9147479017212998,
+        "expectedHash": "4f4967debf1675a2f780d50e30c24073e10ea06daff30b96b22c421ec13e80fe",
+        "actualHash": "9abc3c9d2cf778dd3b4caa7969253a0127add9b041287ce35055c2b677b1fcf1",
+        "scanHash": "9589676126d5ae5b24af3e785c1b2f2c8f47c3405ab294689bbc5c134b92b871",
+        "changed": 2158,
+        "outside": 0
+      },
+      {
+        "id": "61296b2d-4e5c-419a-8775-4e6af902c7b1",
+        "name": "Runed Halo",
+        "cohort": "validation",
+        "expected": 0.9722359048475822,
+        "actual": 0.9722359048475822,
+        "expectedHash": "4847a89883f445b78aba9ccf71391899279fd7048659c6ed75c8ba7673924711",
+        "actualHash": "4847a89883f445b78aba9ccf71391899279fd7048659c6ed75c8ba7673924711",
+        "scanHash": "df6f52bb52f899de9fc1af2497a85304856b4d36876a27f88be1433a3184e128",
+        "changed": 2475,
+        "outside": 0
+      },
+      {
+        "id": "6911759c-7177-402c-a95a-f9f46efaf521",
+        "name": "Selfless Savior",
+        "cohort": "validation",
+        "expected": 0.877214908332186,
+        "actual": 0.877214908332186,
+        "expectedHash": "c65aec40a56f6b928379469a3c5748296092c1ddf3c56af2bbf7ca906aed10a6",
+        "actualHash": "c65aec40a56f6b928379469a3c5748296092c1ddf3c56af2bbf7ca906aed10a6",
+        "scanHash": "3e141953f10f0177b66325ccbcfd5d8f0dbceeb732c8346d9655c0ad86c0e8d6",
+        "changed": 1164,
+        "outside": 0
+      },
+      {
+        "id": "6ea1ee60-5644-4f78-913d-32c36065957f",
+        "name": "Griffin Aerie",
+        "cohort": "validation",
+        "expected": 0.9536694395926464,
+        "actual": 0.9536694395926464,
+        "expectedHash": "00483cd304e5f88b46aa2197025772c4a0d523987e9aea90a29e1c9ecf521c2b",
+        "actualHash": "aa49cfecbf5b8c5361880bb9b50241b2297d60e7a1e9a7883f15962bb5b4f235",
+        "scanHash": "34a9dbefde060c0256d5cf9cadb9e0a51900c40f069a397e2c0fa6ce7733c89c",
+        "changed": 2158,
+        "outside": 0
+      },
+      {
+        "id": "73148b3b-73d3-4f57-8b67-1e91fbe112b9",
+        "name": "Feat of Resistance",
+        "cohort": "validation",
+        "expected": 0.9214976803545867,
+        "actual": 0.9214976803545867,
+        "expectedHash": "3d2e1893ee8d2194cbb8468e9a72b84a0ecd4b9d4009210a61e1218d5c654957",
+        "actualHash": "40849d09ab6a34b5aa08807dfef7d41e8b5dd1a6eb86ffe41480adb07924ac99",
+        "scanHash": "07d6c44dd3e7ded2a025dac39db4d3344f70bfd6474e6aaea92152d35c9cafd5",
+        "changed": 2158,
+        "outside": 0
+      },
+      {
+        "id": "74b1eae0-1bf8-4922-a9e3-45c01ece9005",
+        "name": "Basri's Lieutenant",
+        "cohort": "validation",
+        "expected": 0.8521593023023223,
+        "actual": 0.8521593023023223,
+        "expectedHash": "c1763377e17dfd90df3100f5ff898241a1d19584b74abd18c75612728ecebc03",
+        "actualHash": "d561c6bbcde31e4835e06ac4144919d8c52ffd4d4cf687d051c610a5593cc43f",
+        "scanHash": "498528d75b5de70b0337fcebeb4842ce06a5bf3a0588336aba5089f820f8a5e3",
+        "changed": 2237,
+        "outside": 0
+      },
+      {
+        "id": "7a0ffa89-e6ee-466c-8edc-dd24c8b52e80",
+        "name": "Siege Striker",
+        "cohort": "validation",
+        "expected": 0.9222752502021991,
+        "actual": 0.9222752502021991,
+        "expectedHash": "2acc9192dff4cf658644da9248d5987ec28e1109c8049a65253ca9415ed0c0e9",
+        "actualHash": "30c6cfaf78d7d0e2fd3e2c7bf11604a35ab84db9c6e7b8655557133aefa92ff6",
+        "scanHash": "40e14496aa81bcd60bc93f7bffebc442eb6092430b8c5c830484e9ac5cb26081",
+        "changed": 2319,
+        "outside": 0
+      },
+      {
+        "id": "8e742d49-e6f0-4016-ba4c-11878fad89cb",
+        "name": "Faith's Fetters",
+        "cohort": "validation",
+        "expected": 0.9649055249159678,
+        "actual": 0.9649055249159678,
+        "expectedHash": "f09fa485f0546b12ccebcefc8f655f3fbd20acbd098aa0871af294941f9c50a4",
+        "actualHash": "8aa96645314ebcd11c2f5d5c127a3c63fe859ee6f121151d5bca44fdc54d5923",
+        "scanHash": "148689f77ceb9e491fdd08159d0e548fb3efb6355850676f7de2966ccd6d7cae",
+        "changed": 2237,
+        "outside": 0
+      },
+      {
+        "id": "9c977c67-b0c0-40b0-b129-28de094aaf40",
+        "name": "Anointed Chorister",
+        "cohort": "validation",
+        "expected": 0.9778756632295525,
+        "actual": 0.9778756632295525,
+        "expectedHash": "ad3e14ff6184ed2c9ab2da55364426d8fd74d1f978665e8b9e348b7800929761",
+        "actualHash": "ad3e14ff6184ed2c9ab2da55364426d8fd74d1f978665e8b9e348b7800929761",
+        "scanHash": "81b3484b2e18ce20703947fe3b178abda07e8f0a15644bab695fe44ca17c036e",
+        "changed": 1164,
+        "outside": 0
+      },
+      {
+        "id": "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+        "name": "Teferi's Protege",
+        "cohort": "calibration",
+        "expected": 0.8551584713708099,
+        "actual": 0.8551584713708099,
+        "expectedHash": "b111f6d45e6fb8701babe27320ccd9f01543f5ddda0a55f3de49213c3e4f0269",
+        "actualHash": "b01871b8f8d2a0cef5a03c3e91303532a42896bb6a04858013c6fd6451251afa",
+        "scanHash": "53aee639c6adf9d40d9c3fc695fb8e306e58e7104d79e40df61e96a2806e2f81",
+        "changed": 1900,
+        "outside": 0
+      },
+      {
+        "id": "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+        "name": "Shipwreck Dowser",
+        "cohort": "calibration",
+        "expected": 0.9750226582076025,
+        "actual": 0.9750226582076025,
+        "expectedHash": "361a155c944b2a7dd9f169868fee0e947250f7d32d17f536b6406c309059a354",
+        "actualHash": "211146bae5e911fffa64521f5daa4921f81c29ffbf26d0cbbef8369de013ed04",
+        "scanHash": "055047fb9a7c6084541e712098caee18bc3984e4791b3c0007eafbdf37b5a1d9",
+        "changed": 2718,
+        "outside": 0
+      },
+      {
+        "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+        "name": "Cancel",
+        "cohort": "calibration",
+        "expected": 0.9707674187439689,
+        "actual": 0.9707674187439689,
+        "expectedHash": "ce52ac95f74bc507d579b874cde5548dcc3e51a2b973fa7f82856d5af2e06aa3",
+        "actualHash": "11523df5df584fa939e64c8ec813c3d1d7aa29cab5ab8eca50d207150d2cc229",
+        "scanHash": "a5624373e7a3a0d92b23d0cd01c714cd759f7c595708956a32c925ad7e9a0951",
+        "changed": 2584,
+        "outside": 0
+      },
+      {
+        "id": "64832674-beb1-446e-b2f7-8a5e271139a5",
+        "name": "Lofty Denial",
+        "cohort": "calibration",
+        "expected": 0.9626754124210885,
+        "actual": 0.9626754124210885,
+        "expectedHash": "8b46be7b88fa1efe4faf06a2882de1b5a800d22bc9469a2d5f3d83256f558604",
+        "actualHash": "cefeb2aa4700c528eeb6c92c524c45014ecd5f52577a92d2a0754a77dc99913d",
+        "scanHash": "531e6879373f4cd3a7c215c7c93bcedeaa682bfd320121c1851943b8cc4598a4",
+        "changed": 1739,
+        "outside": 0
+      },
+      {
+        "id": "6ac0f66a-213f-463e-8ebb-35ff5940ea06",
+        "name": "Wall of Runes",
+        "cohort": "validation",
+        "expected": 0.941193245472878,
+        "actual": 0.941193245472878,
+        "expectedHash": "3e3818eb52a0c7ed45b20136cb2a3445318c12fa0faa37bb7273c69157e78400",
+        "actualHash": "3e3818eb52a0c7ed45b20136cb2a3445318c12fa0faa37bb7273c69157e78400",
+        "scanHash": "c19e1c396dc05eeaf369d7a56aea0782d4cb44df1e6a4bf8c854ddeedf2c48aa",
+        "changed": 768,
+        "outside": 0
+      },
+      {
+        "id": "6d42d3dd-29df-44a1-89b8-994761eda77d",
+        "name": "Spined Megalodon",
+        "cohort": "validation",
+        "expected": 0.8508236980196912,
+        "actual": 0.8508236980196912,
+        "expectedHash": "6fe68097bd921f4297b5b76117e60dcc7f0fffabe8a439748b6e2eba96c15bae",
+        "actualHash": "1a162ae1b2d78b0864d0eb3bcf0238305b8ad6be7d3c060a6d9f8346f200d1c0",
+        "scanHash": "cd03d01be744670816d4593453e3607558cbd9d58fc2d5c050dbf47765ae49ac",
+        "changed": 2794,
+        "outside": 0
+      },
+      {
+        "id": "7a5a88e3-e73c-4b34-a645-06fe27e68cee",
+        "name": "Shacklegeist",
+        "cohort": "validation",
+        "expected": 0.8845096022768039,
+        "actual": 0.8845096022768039,
+        "expectedHash": "5ed2a3f549cbdbf81271293075932bc6356e4a7981132f36a9b321538801e7b0",
+        "actualHash": "1bbe61df688f69d1cbb7b2d158de7820f956c992564d075587ca189edc1c25d4",
+        "scanHash": "45e581a432e577912bcbe0c49758bfde97a058f024072a2b9705075242c52ced",
+        "changed": 1739,
+        "outside": 0
+      },
+      {
+        "id": "8cbac0e4-f79f-476d-b410-d19ab3696606",
+        "name": "Roaming Ghostlight",
+        "cohort": "validation",
+        "expected": 0.9394964668654102,
+        "actual": 0.9394964668654102,
+        "expectedHash": "7e0839ee883f06b56dbaf18a013399cf4c9752b962b74b14c9210b3d69a7e4fb",
+        "actualHash": "733e568dd7a0bb77395720f2e82685188403a85c26f37f975a251fa67eb50f87",
+        "scanHash": "3453cdc5aed678d140ac5898f7144623b50b4807ac8eb3f1ebe94c79942f1cb0",
+        "changed": 2718,
+        "outside": 0
+      },
+      {
+        "id": "8f14abb0-0e9f-448e-85d7-6cb71f756c56",
+        "name": "Frantic Inventory",
+        "cohort": "validation",
+        "expected": 0.9789125102646536,
+        "actual": 0.9789125102646536,
+        "expectedHash": "98aed16832b5672a4b5544c52e3afc8c13f35e11659f3449e93088f353e89949",
+        "actualHash": "f0a343fa6e1c584c217fe9d91ffbf029cedb79d2e5414ab987985d045a02b635",
+        "scanHash": "e34067da6feb622114b5fec8437fdb6c6e433763e3bbe7acac291384731346ed",
+        "changed": 1739,
+        "outside": 0
+      },
+      {
+        "id": "91af15cc-fdd5-4d72-a53a-314fa5353527",
+        "name": "See the Truth",
+        "cohort": "validation",
+        "expected": 0.9676763766573115,
+        "actual": 0.9676763766573115,
+        "expectedHash": "a2c41524357331db3f578b89f9ac9d7064ef1d72289703f2aa59c6ee50abf6db",
+        "actualHash": "8c986d3d14a9f84b328f1c697daa90bcdb307e8d77608904980d3bef65ed07dd",
+        "scanHash": "4e5d9fafb3203058fec1e3aea3d9fcf5cbd6300e8cc4152ee3a349201012cef5",
+        "changed": 1739,
+        "outside": 0
+      },
+      {
+        "id": "a188164c-01fe-4980-83a5-91d14e218cf5",
+        "name": "Jeskai Elder",
+        "cohort": "validation",
+        "expected": 0.956567337482008,
+        "actual": 0.956567337482008,
+        "expectedHash": "8a1af98964de28fd9b70695261d72fd0e66950f284f2d76e5bf48c5e08410549",
+        "actualHash": "fd6bea83fe23778b239f1c68ce405c0a64399effe5e937e4e7266a4320d9a04b",
+        "scanHash": "f823485b889021d6356f8518f23efaee3c46765cf74e46ab59c6830d157643a4",
+        "changed": 1739,
+        "outside": 0
+      },
+      {
+        "id": "a52e90c0-b012-4ce5-8462-1e33c7143de5",
+        "name": "Vodalian Arcanist",
+        "cohort": "validation",
+        "expected": 0.8635634028892456,
+        "actual": 0.8635634028892456,
+        "expectedHash": "bbc293d89e86ac002d2dbe6236a0d3a81c004c3725e9662fe8ac0e404b6cddb7",
+        "actualHash": "11d95654795108caffc65aa90031b09711b83ce195ac9531de339005c25ca146",
+        "scanHash": "cda5e9a0717ac88f56e8d6fb9636a61a386732461a0f6397fe9c7eff2afe868a",
+        "changed": 1739,
+        "outside": 0
+      },
+      {
+        "id": "660ec88f-2063-404a-853e-c985e21d17b0",
+        "name": "Rise Again",
+        "cohort": "calibration",
+        "expected": 0.9536223097908457,
+        "actual": 0.9536223097908457,
+        "expectedHash": "bb427d2d5e84718afc15199ab4927c317ddd927c2042e9c8846231d71e84c302",
+        "actualHash": "ed3faf8e8a8072eca346fff794ae73b4d9539373ab458fe3093bf08fd3cfabb4",
+        "scanHash": "d339a0175250d37a80d0671a2f0199ae39f3f2b92d3f349e3c3744854f67f2ba",
+        "changed": 2361,
+        "outside": 0
+      },
+      {
+        "id": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+        "name": "Alchemist's Gift",
+        "cohort": "calibration",
+        "expected": 0.9393725411076365,
+        "actual": 0.9393725411076365,
+        "expectedHash": "1b4aa4f94acc161ad5c5cdda1d0d1ca8202010e08f83b7113e76f979afa4fd3f",
+        "actualHash": "1b4aa4f94acc161ad5c5cdda1d0d1ca8202010e08f83b7113e76f979afa4fd3f",
+        "scanHash": "bfafa3015aaf9dc84f90ac2ed219713f1b5aa16a1dd71b7e7f18126cd1782b23",
+        "changed": 1196,
+        "outside": 0
+      },
+      {
+        "id": "7737b578-8ae3-4846-b508-93ef40f25244",
+        "name": "Grasp of Darkness",
+        "cohort": "calibration",
+        "expected": 0.9457035354733738,
+        "actual": 0.9457035354733738,
+        "expectedHash": "cdfebe9f81a71a50b9289862fb9deae4530b0b5e3b37801ccce8e6add579e4fd",
+        "actualHash": "cdfebe9f81a71a50b9289862fb9deae4530b0b5e3b37801ccce8e6add579e4fd",
+        "scanHash": "652b6084a49b434dcf6f0a058a343f00dc026d4f8168a3e55a89f8323e87e43d",
+        "changed": 2522,
+        "outside": 0
+      },
+      {
+        "id": "7a3f8bc2-ef66-474f-92a3-9c4df1670cec",
+        "name": "Bad Deal",
+        "cohort": "calibration",
+        "expected": 0.9701678896615313,
+        "actual": 0.9701678896615313,
+        "expectedHash": "da16b8d1d132ce77dd29d538d6f116498b267a0390a75479896ad53776f7b1db",
+        "actualHash": "009e2a4458c9626e6e1434b84eb45da6e184f6753c2a5586fafe94f23f306f92",
+        "scanHash": "7317d428a87dae9bfaa8fadc4f93d25691fee376998482b166ad7bcc90e629e4",
+        "changed": 3760,
+        "outside": 0
+      },
+      {
+        "id": "833a8604-92d5-443b-9bc0-bd91c973ef07",
+        "name": "Mind Rot",
+        "cohort": "validation",
+        "expected": 0.7922210849539406,
+        "actual": 0.7922210849539406,
+        "expectedHash": "e0652c96ffde2c999cfb1143ad1e1b8630341d87219c78acc5ad39468a8d051b",
+        "actualHash": "9e36ed9d6c727ae27fe91882571c51914e9a1e6414fddd40bd5f68128a45dc4c",
+        "scanHash": "da4c4baf9431cbb7505daf4007c7bf47feb4e89c50d39822eb20202517132b72",
+        "changed": 2337,
+        "outside": 0
+      },
+      {
+        "id": "83437022-ba00-4370-83c2-ce1260336fcc",
+        "name": "Archfiend's Vessel",
+        "cohort": "validation",
+        "expected": 0.9550539329279052,
+        "actual": 0.9550539329279052,
+        "expectedHash": "b89a737c8ffbe4e149a6f793261b9d13f358ef984361d9726b17a830acb4669b",
+        "actualHash": "b89a737c8ffbe4e149a6f793261b9d13f358ef984361d9726b17a830acb4669b",
+        "scanHash": "1b2d9eca3146b227d601afcfaea7e9091fb59ed0fce521a76a91dc441a2cd573",
+        "changed": 1196,
+        "outside": 0
+      },
+      {
+        "id": "88496096-fd9a-451a-85d9-31ccc3580623",
+        "name": "Kitesail Freebooter",
+        "cohort": "validation",
+        "expected": 0.9342386032977691,
+        "actual": 0.9342386032977691,
+        "expectedHash": "b1ffb9ec124c61b084346a878033df5e205b16b3d833d61932dad203f5c81f45",
+        "actualHash": "b19c9fb047d6fe806dba1bd8787dcba4e90a19517c04ff09073f8b4a3bebb7f3",
+        "scanHash": "7807e73a016d03513c1ebc03f264df4071413da05cc43ea96d4fa3b423ac10a9",
+        "changed": 2177,
+        "outside": 0
+      },
+      {
+        "id": "928558ab-e29a-44cb-ac2f-88443571f41a",
+        "name": "Grim Tutor",
+        "cohort": "validation",
+        "expected": 0.9721947664260541,
+        "actual": 0.9721947664260541,
+        "expectedHash": "c64ea742a73d470b0919152afc2b186784425cff560f0c6da6e748f0ef3c3ac6",
+        "actualHash": "26c9e6daffb98a331011be6c5cbfb1be7a5464b4bd7ebaf11827b6250ed4a014",
+        "scanHash": "5a537964c37736455567d392ca4c1ca2df56cb155eedab58688949428b0cc368",
+        "changed": 3501,
+        "outside": 0
+      },
+      {
+        "id": "975e4b8e-add9-439c-9463-e2facee96c10",
+        "name": "Infernal Scarring",
+        "cohort": "validation",
+        "expected": 0.8187055267178426,
+        "actual": 0.8187055267178426,
+        "expectedHash": "5f603980c8e2692ef27787ddda3ae3ddf20816d61aaea792bf8e7229f1347d1e",
+        "actualHash": "8b436fd6b7b2bb2c829116f8645e4d0ffde950bbb8916fb4151441837a7b9d45",
+        "scanHash": "adad1692f2bf61c0205e9f1d8a1af588e486ec061437e1b88c91a024c2536dd1",
+        "changed": 2177,
+        "outside": 0
+      },
+      {
+        "id": "9c0f60a6-b5c8-4704-8b61-94e8fc463e5d",
+        "name": "Village Rites",
+        "cohort": "validation",
+        "expected": 0.9368932038834952,
+        "actual": 0.9368932038834952,
+        "expectedHash": "9184825bf96c8e8ea8d8f2be54b042a8a031202f755ff8521ac13a3157013fca",
+        "actualHash": "9184825bf96c8e8ea8d8f2be54b042a8a031202f755ff8521ac13a3157013fca",
+        "scanHash": "147df850fb4efebec2dfeb5948f78df195ba5a4592654c6f6a8b72c17e5c298a",
+        "changed": 1196,
+        "outside": 0
+      },
+      {
+        "id": "a1b4f7ec-ea2e-4d90-98cd-0c92bd9f64c1",
+        "name": "Gloom Sower",
+        "cohort": "validation",
+        "expected": 0.9672646768574213,
+        "actual": 0.9672646768574213,
+        "expectedHash": "007bc2607c93043ad98dd150deefa55ba0cd31ba8749204d450b37f188b83a15",
+        "actualHash": "0c403ac18d18d9ab40722ec79dc8bee20a6ad57ecda8db3addd67ed25effaf54",
+        "scanHash": "891cb9de90e0774b02ceae3d9daac65826ef138bcfc38bc3721c84e6f1dd50a0",
+        "changed": 3711,
+        "outside": 0
+      },
+      {
+        "id": "abfcd08a-cfb5-4d34-b950-f57a88c5cb8e",
+        "name": "Sanguine Indulgence",
+        "cohort": "validation",
+        "expected": 0.9376630217145824,
+        "actual": 0.9376630217145824,
+        "expectedHash": "cc54486b955d3f5f55e0b55ff7d2fe8ad512e43f32ceaab4f182a373bc654508",
+        "actualHash": "decff297da9cbe222c5f582f2f7f3446da0cbe3088017ada7444e4e71fa4b39a",
+        "scanHash": "a2485b485f3072e3c039dda42332cc6735d73f17ce3bafd119cc5f8f82ecd779",
+        "changed": 2256,
+        "outside": 0
+      },
+      {
+        "id": "62584e4f-dac1-4d99-ac0a-6a2451603889",
+        "name": "Soul Sear",
+        "cohort": "calibration",
+        "expected": 0.9687119671623062,
+        "actual": 0.9686904252053258,
+        "expectedHash": "f8bee27fe0fa092dddb5834296d2ad97bde0a2357d2b5be422f1666ff1acc0bb",
+        "actualHash": "f19436a76715b52fe6840e0aa8d50125993e0b6e4403b7d5fb0bfb9ee47ad476",
+        "scanHash": "9373495dc20dfa7f841a4c772f946bf7435b49f0625b78d7d57e5eb78611b7f5",
+        "changed": 2233,
+        "outside": 0
+      },
+      {
+        "id": "6f1bace4-a327-4eb6-a6ef-8394e76c06b7",
+        "name": "Experimental Overload",
+        "cohort": "calibration",
+        "expected": 0.9751946130296509,
+        "actual": 0.9751946130296509,
+        "expectedHash": "8221a45ae88e100f59f21dadfd5d24e0e432f4dfc909a8ea0e23ccc22c518794",
+        "actualHash": "3d362d519bc259dbaeb25aeb5ca9f66f24e205edbac155574f87a306a8e69b93",
+        "scanHash": "73ab023f8748b2033a6f59db035c9b66ab57524f917ff068ef192ef6ce2d8e34",
+        "changed": 3177,
+        "outside": 0
+      },
+      {
+        "id": "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+        "name": "Double Vision",
+        "cohort": "calibration",
+        "expected": 0.9630235387356826,
+        "actual": 0.9630235387356826,
+        "expectedHash": "5a3a23150e1a9ad9a785ca27c09dc3cf25e390df2b31991a544139dd3e1f9942",
+        "actualHash": "a2b0f988607151ff9cb2c81c49088b55d4b77d13b5bb82bd55609503d86077cd",
+        "scanHash": "739b1b2dc89a8146a00f5d4ded16b33eecc18c18d4e453327119763b781ee0e9",
+        "changed": 3460,
+        "outside": 0
+      },
+      {
+        "id": "76cf0b50-155f-4e65-9e48-88b378ad93a1",
+        "name": "Chandra's Firemaw",
+        "cohort": "calibration",
+        "expected": 0.9445842295361389,
+        "actual": 0.9445842295361389,
+        "expectedHash": "8c824753dad459b69ea14b1e4ffa206864338250ccf0951d593c4c6451674523",
+        "actualHash": "a0a5d4eb4ac752f6f37589da6cf060a6a4d75f0f649d5e6fc2f06a3da2566923",
+        "scanHash": "d0cc0ac4b327da4c11943bf6ac289515b7514ba2a9767a66ea53b20ed09ecbd7",
+        "changed": 3460,
+        "outside": 0
+      },
+      {
+        "id": "76e42d07-57d9-4de4-8d41-eb42dd1573ed",
+        "name": "Onakke Ogre",
+        "cohort": "validation",
+        "expected": 0.970125017265,
+        "actual": 0.9701143918069114,
+        "expectedHash": "060c495b93bd7870e9c142c7d3c574d46aa86e9f97145da7c17766c809a91a18",
+        "actualHash": "624310fcd7cfda90671b3a4cb7420afba85161601ad100f0dafd9adb483f9b20",
+        "scanHash": "cf7d02ece5e6c24e3b4d6e0aa1f7ce80a7349ce25d5504f5b8de5fb28fb4036e",
+        "changed": 2233,
+        "outside": 0
+      },
+      {
+        "id": "7b862e46-f5a2-4fce-98b5-2c5aa49ec648",
+        "name": "Keral Keep Disciples",
+        "cohort": "validation",
+        "expected": 0.9597996043248522,
+        "actual": 0.9597996043248522,
+        "expectedHash": "96e404ed2b3a52900b4335812d50ee48e4b691f31951f7acd53bc35c987c8c50",
+        "actualHash": "e8b0dff7a769926ba9c7f448094bdc0115e73fba8a81495d1d6a717cd61cb64b",
+        "scanHash": "59045764de58a77a34ecf6117c6d15acd4963db47a503ef31d49e4adf88161d2",
+        "changed": 3529,
+        "outside": 0
+      },
+      {
+        "id": "7bf663d3-850b-4a24-8e4b-08311adf4ed0",
+        "name": "Hellkite Punisher",
+        "cohort": "validation",
+        "expected": 0.9768170942991502,
+        "actual": 0.9768170942991502,
+        "expectedHash": "7eeb21b740aee037f498dd44e04274dea99cc1e03341c9cb3f76daf098d6fa20",
+        "actualHash": "50ddf6523dce8d1a1bc6c3d363298dd8995880f21f1c8b25182c7d0cac99b33d",
+        "scanHash": "e053884a87858dd26130b471026a4d2eadde14a859a02c9f875d769d62692b6d",
+        "changed": 3537,
+        "outside": 0
+      },
+      {
+        "id": "8257c205-00cd-4d41-bd58-098575ea2343",
+        "name": "Crash Through",
+        "cohort": "validation",
+        "expected": 0.882824416895471,
+        "actual": 0.882824416895471,
+        "expectedHash": "bec930ddf7899a7fc4a230bb735b1111284730cf256b643e44f93aa460c4f0cd",
+        "actualHash": "bec930ddf7899a7fc4a230bb735b1111284730cf256b643e44f93aa460c4f0cd",
+        "scanHash": "f0a8e8dbe8ad6975ce52f5d3fde2556a9b70e86e64f608b858bcfd44d07d8ae7",
+        "changed": 1109,
+        "outside": 0
+      },
+      {
+        "id": "869fb9f1-0d59-4874-aa52-ac665c3cc0e8",
+        "name": "Heartfire Immolator",
+        "cohort": "validation",
+        "expected": 0.8690437390000652,
+        "actual": 0.8688760403142192,
+        "expectedHash": "4b49860798f2f3bec6ffe9c8b1e51c4640a47477cd96f4830de0a24761b5740d",
+        "actualHash": "f9c727dff2e7bbd8fcd2846ca51fd51fb179c3aeb8b9a89c3d6837f0595ca3fd",
+        "scanHash": "36486937597123a4151919ece755647751c8878e90a5fa6a282479e17115ffe3",
+        "changed": 2072,
+        "outside": 0
+      },
+      {
+        "id": "91d3e366-4da5-42c8-bbd5-a0c178c0da28",
+        "name": "Chandra's Magmutt",
+        "cohort": "validation",
+        "expected": 0.9646227780672804,
+        "actual": 0.9659810978488657,
+        "expectedHash": "57c0853740d2430357edc1c00b6ee19060a271664c668a091966f1a57bc9977a",
+        "actualHash": "4c059fdc692340619416b96cdfe8acff7b1dc39e025288d9f6decbe7e4153155",
+        "scanHash": "75e2d5b0976041f806c961c921e6b3b4d7d56c02ded97291f6ba43a7bcb1396f",
+        "changed": 2072,
+        "outside": 0
+      },
+      {
+        "id": "9f8cf3f9-4e3b-4af2-b5ef-a97eb1d2b674",
+        "name": "Bolt Hound",
+        "cohort": "validation",
+        "expected": 0.9487644585651605,
+        "actual": 0.947367210059478,
+        "expectedHash": "2385911da3b0d4ef74166a73ec4f6c3727412aef56b2ceed3a070cfb09216a5e",
+        "actualHash": "abf7df9d0c43fe38677ac9c07e2b073d00adf3d55009d84620d86f00de300c15",
+        "scanHash": "f095909c3f576f20c32c042ddc5ee72da7bbe307fbb5411ebc15b031cf283ea7",
+        "changed": 2233,
+        "outside": 0
+      },
+      {
+        "id": "a31b6817-9b63-4d6f-a945-459b44ad184c",
+        "name": "Volcanic Salvo",
+        "cohort": "validation",
+        "expected": 0.9267854267971496,
+        "actual": 0.92666774375199,
+        "expectedHash": "31b2b28835922b09911349e1f08ee0c9d7abb4daec349a98890475844f8916e6",
+        "actualHash": "8137ca03b2aa04c761dc8e1bc9f3db239cd6466532cd76aff504a45d9e46ace7",
+        "scanHash": "03028e51259c60b709ea084f1af34fef96be8eedeb21762dc711f72c2079e485",
+        "changed": 3620,
+        "outside": 0
+      },
+      {
+        "id": "46700ccc-0975-49d1-b3fc-edb1eda3b624",
+        "name": "Snarespinner",
+        "cohort": "calibration",
+        "expected": 0.9019607843137255,
+        "actual": 0.9019607843137255,
+        "expectedHash": "283b853b31cbd6af0962669dce9dde6c7f1a73c44419a4a9e68cdb62979c6d4a",
+        "actualHash": "5485b9443ca7d4c81605b0fccfef008cbf77fdc39ca6b1b11eca5cad4e3372ac",
+        "scanHash": "2964a6b882879c7cb17e1b1af476f58ec840ffc59aa95c16ce575d3dd2c28f44",
+        "changed": 1971,
+        "outside": 0
+      },
+      {
+        "id": "487116ab-b885-406b-aa54-56cb67eb3ca5",
+        "name": "Scavenging Ooze",
+        "cohort": "calibration",
+        "expected": 0.8817339853400161,
+        "actual": 0.8817339853400161,
+        "expectedHash": "7b1ccf79b888c60246eec96d0d0a65873bb1ccc8a119f631d4f433a7a0f10378",
+        "actualHash": "5c3987b1f18a1613b0d8a2dbd50bca9f6b6ae0a33ff31852778b3e115551238d",
+        "scanHash": "183abda6c6a5bc4379e81009e3fbaaa1d20125de468f9f829bd136b859b8f9dc",
+        "changed": 1971,
+        "outside": 0
+      },
+      {
+        "id": "4a433310-3fe2-4156-864d-7a6b2638340b",
+        "name": "Cultivate",
+        "cohort": "calibration",
+        "expected": 0.939159108240637,
+        "actual": 0.939159108240637,
+        "expectedHash": "c0b8b1f80ffcc2ad7acde94e12ad6bf4d21e29a12df3aafef742021bb57a4c10",
+        "actualHash": "75a96313d3e8e0a5e33d4601c39748d01da4951592e7cfc63f5147e4490aa87a",
+        "scanHash": "e1a7835cddb993b9e0d640c15cd550288a74b1751bf2d98c7d4ec36df4d00e3d",
+        "changed": 2132,
+        "outside": 0
+      },
+      {
+        "id": "531e1fc0-a3aa-4b57-87b2-79a31af5c922",
+        "name": "Invigorating Surge",
+        "cohort": "calibration",
+        "expected": 0.973068984515694,
+        "actual": 0.973068984515694,
+        "expectedHash": "1bb9fce7e8b6504c114b88e4f2c013f424ef42b94c291ff40e1dc5a1c4550b75",
+        "actualHash": "9c79517ce14018beba40e209a42c5dbf74718a4348d789cc17563c9e930e1b3c",
+        "scanHash": "f46761c4fb0e144dc82c6750f3e828eb3792bb37e364b29a654999925320a328",
+        "changed": 2132,
+        "outside": 0
+      },
+      {
+        "id": "5d387b19-a0a7-45c0-b1e9-71ca55fb4adc",
+        "name": "Twinblade Assassins",
+        "cohort": "validation",
+        "expected": 0.9560178380129053,
+        "actual": 0.9560178380129053,
+        "expectedHash": "1a3c251aefd90fe3b9d7dcf81291fd03b0f2bb27d20efd5e140b3ea16a55b5fd",
+        "actualHash": "87ea29a0bb5a7266bf88d585356fe24a06bdb52ffd33003312e90162bbde88fc",
+        "scanHash": "f54296aee1f420b1be304fa30686a4e82ca2676ffb23d119d0a88e5862b96a01",
+        "changed": 3500,
+        "outside": 0
+      },
+      {
+        "id": "5f22116a-8b6a-4bbe-999f-7329e1e2b2d9",
+        "name": "Gnarled Sage",
+        "cohort": "validation",
+        "expected": 0.973270616762837,
+        "actual": 0.973270616762837,
+        "expectedHash": "2b18b8c7d7c538293e525d0a37f474e23dbc53aef47333a9587861f8c1f68562",
+        "actualHash": "9b8e64c03a4dc7e82ecda7942e595aa131676c2d2f59401e1d4990124b842186",
+        "scanHash": "899f832cef66fd86ae8da8a87263af69a2448f3be6ac730592c90d54666939ad",
+        "changed": 3251,
+        "outside": 0
+      },
+      {
+        "id": "6da62557-9783-4e6c-9b5f-2b77dbf96909",
+        "name": "Titanic Growth",
+        "cohort": "validation",
+        "expected": 0.9655108387875412,
+        "actual": 0.9655108387875412,
+        "expectedHash": "a463cea5485ddf0644f87f7914a2dbb825d77fc42685066353128c04a46fc167",
+        "actualHash": "f3ce0e88bccbe8976aba7923c23cc4c72160d69df1a50e32ec0b137fc4e846b0",
+        "scanHash": "e36658862f462bad17cb0328adebc14795c20b047cf8be74595c39753a80e9a1",
+        "changed": 1971,
+        "outside": 0
+      },
+      {
+        "id": "71a4860a-8bb6-45c0-b00a-b4a42da33ab9",
+        "name": "Garruk's Uprising",
+        "cohort": "validation",
+        "expected": 0.9401175891631484,
+        "actual": 0.9401175891631484,
+        "expectedHash": "c9f97eb3fd03bcad45e8aaa3c566dcbc0c10ed025535f6c0a7473d3d1bb1a52a",
+        "actualHash": "655ffdd04b8b9f2491a1619e8565be0c9f37dcf2d6f2bcb9015f589925969631",
+        "scanHash": "39a0096c390f7824b2f490c494b7e6d32153aaa004a2ddc01ce9cde9e490865b",
+        "changed": 2132,
+        "outside": 0
+      },
+      {
+        "id": "7bd3a903-23e0-4b5a-9c7e-390d5ced8371",
+        "name": "Leafkin Avenger",
+        "cohort": "validation",
+        "expected": 0.9356617283787967,
+        "actual": 0.9356617283787967,
+        "expectedHash": "24099907082e42ef8f59068a9cf5eb604e99ea5590a8c0fad51520c6d2078dcd",
+        "actualHash": "37d3fd01ff7cfb554162ad6f152c9628be28d3d3c428336d93e879f32d6257fd",
+        "scanHash": "87952b06f7f95d09fde19618f3f9feeaa76cdb88f18ace14886861e025c57f87",
+        "changed": 3453,
+        "outside": 0
+      },
+      {
+        "id": "7c08c80f-f27c-4e3a-b048-143aea740096",
+        "name": "Hunter's Edge",
+        "cohort": "validation",
+        "expected": 0.9141859215475551,
+        "actual": 0.9141859215475551,
+        "expectedHash": "3710ff043737a592a14aa5d0f062590113f291d71f4d1e8fbe27cc706b12c597",
+        "actualHash": "d140c96b7340f6f2bd9edfb6e64245e23017a91019d6158596cb64b185017553",
+        "scanHash": "329f8e23beabb9a95db358c89c52d627f1ef1c05464ed6954aec68404b8d7dbe",
+        "changed": 2050,
+        "outside": 0
+      },
+      {
+        "id": "8059c52b-5d25-4052-b48a-e9e219a7a546",
+        "name": "Colossal Dreadmaw",
+        "cohort": "validation",
+        "expected": 0.8366445439171605,
+        "actual": 0.8366445439171605,
+        "expectedHash": "7ce9f79f87370a51ed9463c4e3adbb7eae7cafc5787f272a403a96507385fca3",
+        "actualHash": "2469b048b79c3ece8e6f17c68a763b0a288d770f69dcd082fd1e2757f0b2abb8",
+        "scanHash": "fc582f9febb41a35f73e582fd61dd5b76faa2706b30e3cff4c0d489987d14fcc",
+        "changed": 3376,
+        "outside": 0
+      },
+      {
+        "id": "84a9485a-d356-4cbe-b257-b62008a21328",
+        "name": "Feline Sovereign",
+        "cohort": "validation",
+        "expected": 0.9741578682755153,
+        "actual": 0.9741578682755153,
+        "expectedHash": "2ba52e12398cd87781b291276478593e787b1d828a519679ae1c042e03b18ca8",
+        "actualHash": "f2e9c9dcb59a897a5388ebc5d1aadfdd8cbab43de4e6cb16d2b3bb693fed1ec9",
+        "scanHash": "9a09ac17d69e1483564867c483150da5d442f308ca4283a935f25aaf122bae47",
+        "changed": 2132,
+        "outside": 0
+      },
+      {
+        "id": "eedce8ab-771a-4247-9504-72ae0629df83",
+        "name": "Prismite",
+        "cohort": "validation",
+        "expected": 0.9514563106796117,
+        "actual": 0.9514563106796117,
+        "expectedHash": "273068c11f031d937f9ecca0676950a7467f0b4b455b1fd8d85ff2902770fb7a",
+        "actualHash": "3473c8a2ab37a993fa27d502b2813f9961dda108b50c412c6012142b961c74fe",
+        "scanHash": "74571f30f34a86e5927b9a24d7cfa4ddd1bab8d97f11b317ee96489795a7d542",
+        "changed": 1059,
+        "outside": 0
+      }
+    ]
+  },
+  "fullSet": {
+    "evaluated": 272,
+    "changed": 227,
+    "meanBefore": 0.7123421135275215,
+    "meanAfter": 0.7151528654570812,
+    "alignmentReview": 11,
+    "unchangedControls": 45
+  }
+}

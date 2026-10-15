@@ -94,8 +94,9 @@ export function paintMana(
     context.shadowColor = '#000d';
     // Canvas shadows use device pixels. Rotate the local down-left vector with
     // the panel; matrix.a alone becomes zero on a quarter-turned split card.
-    context.shadowOffsetX = 1.5372 * (-matrix.a + matrix.c);
-    context.shadowOffsetY = 1.5372 * (-matrix.b + matrix.d);
+    const [dx, dy] = images.manaCostShadow ?? [-1.5372, 1.5372];
+    context.shadowOffsetX = dx * matrix.a + dy * matrix.c;
+    context.shadowOffsetY = dx * matrix.b + dy * matrix.d;
   }
   context.fillStyle = images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
   context.beginPath();

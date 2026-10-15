@@ -1,3 +1,4 @@
+import { modernCostMana, modernCostNumeralAsset } from './modern-cost-mana.js';
 import { manaSymbolAsset } from './assets.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -23,8 +24,9 @@ export async function prepareManaNumerals(
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose(): void }> {
   const a = printingManaAdjustment(face);
+  const cost = modernCostMana(face);
   const numbers = !!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1);
-  if (!numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)
+  if (!cost && !numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)
     return { images, dispose() {} };
   const numerals = new Map<string, ManaNumeral>();
   const colored = new Map<string, ManaNumeral>();
@@ -39,19 +41,21 @@ export async function prepareManaNumerals(
       (images.manaGlyphScales?.[symbol] ?? 1) === 1
     )
       return [];
-    const source = images.get(manaSymbolAsset(symbol) ?? '');
+    const costUrl = modernCostNumeralAsset(face, symbol);
+    const source = images.get(costUrl ?? manaSymbolAsset(symbol) ?? '');
+    if (costUrl && !source) throw Error('Modern cost numeral asset is missing.');
     if (!source) return [];
     let identity = identities.get(source);
     if (!identity) identities.set(source, (identity = ++nextIdentity));
-    return [{ symbol, source, identity }];
+    return [{ symbol, source, identity, cost: costUrl ? cost : undefined }];
   });
   let leases: MaterialBitmapLease[] = [];
   try {
     leases = await glyphs.acquireMany(
-      sources.map(({ source, identity }) => ({
-        key: `numeral-v1:${identity}`,
+      sources.map(({ source, identity, cost }) => ({
+        key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}`,
         bytes: source.width * source.height * 8,
-        build: () => splitNumeral(source),
+        build: () => splitNumeral(source, cost),
       })),
       signal,
     );
@@ -64,6 +68,7 @@ export async function prepareManaNumerals(
     });
     return {
       images: Object.assign(new Map(images), {
+        manaCostShadow: cost?.shadow,
         manaColors: images.manaColors,
         originalManaGlyphs: images.originalManaGlyphs,
         originalWhiteGlyph: images.originalWhiteGlyph,
@@ -78,7 +83,10 @@ export async function prepareManaNumerals(
     throw error;
   }
 }
-async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
+async function splitNumeral(
+  source: ImageBitmap,
+  cost?: ReturnType<typeof modernCostMana>,
+): Promise<ImageBitmap> {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
   canvas.height = source.height;
@@ -103,6 +111,9 @@ async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
     if (length < 100) throw Error('Mana asset has no separable glyph.');
     const background = new ImageData(new Uint8ClampedArray(p), source.width, source.height);
     for (let i = 0; i < p.length; i += 4) {
+      // Keep the previously calibrated disc/ink colors while changing only the
+      // numeral outline. Source colors are still used to recover glyph alpha.
+      if (cost) for (let k = 0; k < 3; k++) background.data[i + k] = cost.paper[k]!;
       // Outer-disc antialiasing belongs to the stationary background. Browser
       // unpremultiplication can perturb its RGB by a byte; do not interpret
       // that rounding as movable dark ink or repaint the original edge.
@@ -110,13 +121,13 @@ async function splitNumeral(source: ImageBitmap): Promise<ImageBitmap> {
         p[i + 3] = 0;
         continue;
       }
-      for (let k = 0; k < 3; k++) background.data[i + k] = paper[k]!;
+      for (let k = 0; k < 3; k++) background.data[i + k] = cost?.paper[k] ?? paper[k]!;
       const opacity = Math.max(
         0,
         Math.min(1, difference.reduce((n, v, k) => n + v * (paper[k]! - p[i + k]!), 0) / length),
       );
       p[i + 3] = Math.round(p[i + 3]! * opacity);
-      for (let k = 0; k < 3; k++) p[i + k] = ink[k]!;
+      for (let k = 0; k < 3; k++) p[i + k] = cost?.ink[k] ?? ink[k]!;
     }
     canvas.width = source.width * 2;
     c.putImageData(background, 0, 0);

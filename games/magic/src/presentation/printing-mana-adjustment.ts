@@ -3,10 +3,8 @@ import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
 import { PRINTING_MANA_PROFILES } from './printing-mana-profiles.js';
 
-/** Editor deltas remain relative to printing defaults. Resolve separately in
- * preparation and painting; never modify the caller's face or adjustment. */
-export function printingManaAdjustment(face: RenderedCardInput): ManaSymbolTransform | undefined {
-  const user = face.symbolAdjustment?.mana;
+/** Scope geometry and source preparation to the same validated printing family. */
+export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {
   const set = face.setCode?.toLowerCase() ?? '';
   const base = PRINTING_MANA_PROFILES[set];
   const early = ['lea', 'leb', '3ed'].includes(set);
@@ -23,7 +21,16 @@ export function printingManaAdjustment(face: RenderedCardInput): ManaSymbolTrans
     (set === '8ed' && (isRetro(face) || face.frameAssetFamily !== 'eighth')) ||
     (set === 'm21' && (isRetro(face) || face.frameAssetFamily !== undefined))
   )
-    return user;
+    return undefined;
+  return base;
+}
+
+/** Editor deltas remain relative to printing defaults. Resolve separately in
+ * preparation and painting; never modify the caller's face or adjustment. */
+export function printingManaAdjustment(face: RenderedCardInput): ManaSymbolTransform | undefined {
+  const user = face.symbolAdjustment?.mana;
+  const base = printingManaDefaults(face);
+  if (!base) return user;
   const result: ManaSymbolTransform = { ...user };
   for (const key of ['dx', 'dy', 'spacing', 'numberDx', 'numberDy'] as const)
     if (base[key] !== undefined) result[key] = base[key]! + (user?.[key] ?? 0);

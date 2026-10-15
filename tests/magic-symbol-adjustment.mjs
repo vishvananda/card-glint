@@ -59,7 +59,7 @@ try {
             ctx.fillStyle =
               url.includes('/symbols/') || url.includes('setSymbols') ? '#182332' : '#ccc1aa';
             ctx.fillRect(0, 0, c.width, c.height);
-            if (url.includes('/symbols/2.')) {
+            if (url.includes('/symbols/2.') || url.includes('/manaSymbols/2.')) {
               ctx.clearRect(0, 0, c.width, c.height);
               ctx.fillStyle = '#cac5c0';
               ctx.beginPath();

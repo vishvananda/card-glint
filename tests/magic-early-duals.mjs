@@ -64,7 +64,13 @@ try {
     const face =
       study.set === '8ed' ? eighth : { name: 'Probe', setCode: study.set, wordingMode: 'original' };
     const actual = printingManaAdjustment(face);
-    assert.equal(!!actual, study.adopt, 'Rejected study candidates must not become defaults');
+    if (study.set === 'm21') {
+      // The rejected original geometry-only fit is superseded by the separately
+      // validated numeral-source and shadow study, not adopted retroactively.
+      assert.equal(study.adopt, false);
+      assert.notDeepEqual(actual, study.fit.adjustment.mana);
+    } else
+      assert.equal(!!actual, study.adopt, 'Rejected study candidates must not become defaults');
     assert.equal(study.rows.length, 72);
     assert.equal(new Set(study.rows.map((r) => r.id)).size, 72);
     assert.equal(study.validation.count, 48);

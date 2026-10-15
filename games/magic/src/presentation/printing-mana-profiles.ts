@@ -2,6 +2,7 @@ import type { ManaSymbolTransform } from './symbol-adjustment.js';
 
 /** Shared printing defaults, measured after independent scan-frame normalization. */
 export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform>> = {
+  m21: { scaleX: 1.01, scaleY: 1.01, numberScale: 0.98, numberDx: -0.25 },
   leb: {
     dx: -1.5,
     spacing: 1.75,
