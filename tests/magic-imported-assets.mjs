@@ -139,6 +139,7 @@ try {
     );
     for (const [family, style, weight] of [
       ['Beleren', 'normal', '400 700'],
+      ['Beleren Small Caps', 'normal', '700'],
       ['Matrix', 'normal', '700'],
       ['Matrix Small Caps', 'normal', '700'],
       ['MPlantin', 'normal', '400'],

@@ -459,3 +459,28 @@ removes the excess side strips on wide frames without overwriting the top and
 bottom line. It does not claim a new vertical frame calibration or alter source
 art crops. The 30-printing review and its frozen scan identities are recorded in
 `fixtures/accuracy/modern-basic-footer-review.json`.
+
+### Loyalty lettering and ordinary stamp edge
+
+Starting loyalty now uses a separate 24 px Beleren ink-centered layout below the
+shield notch instead of the shared creature P/T size and font middle baseline.
+Ability costs use 19.5 px lettering, a small horizontal compression and separate
+ink centers for the plus, zero and minus badge shapes. Both painters isolate
+tracking, alignment and shadow state. Badge and shield artwork retain their
+existing geometry.
+
+The [loyalty review](fixtures/accuracy/planeswalker-loyalty-review.json) records
+11 frozen M15/M21/WAR frame registrations and 29 accepted cost crops. Mean vertical
+ink-center error relative to each black body falls from 3.82 to 0.14 reference
+pixels for starting loyalty, and 1.53 to 0.47 for costs. Mean height error falls
+from 1.64 to 0.64 and 1.21 to 0.24 pixels respectively. These are local calibration
+diagnostics; they do not certify whole-card alignment. Two scan cost crops with
+merged components are excluded. Badge width/position and the wider starting
+shield remain separate asset/geometry review items. The same font and old badge
+lettering were present before 0.3.3; no recent font replacement caused this issue.
+
+The ordinary 192×96 hologram mount source also contains a translucent pure-white
+halo outside its colored arc. Material preparation removes only that exterior
+source decoration, preserving the opaque white pinline, colored ring and oval
+artwork. The existing bounded material cache performs this once per asset/palette;
+painting adds no readback. Planeswalker stamp assets retain their native edges.

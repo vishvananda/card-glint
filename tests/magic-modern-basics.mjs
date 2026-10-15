@@ -124,7 +124,7 @@ try {
     check(mount.data[offset(96, 12) + 3] === 255, 'Opaque white pinline removed');
     check(mount.data[offset(96, 14) + 1] === 117, 'Colored pinline changed');
     check(mount.data[offset(96, 40) + 3] === 150, 'Pale oval artwork removed');
-    const { paintPlaneswalkerLoyalty } = await import(
+    const { paintPlaneswalkerLoyalty, paintPlaneswalkerCost } = await import(
       '/games/magic/src/presentation/planeswalker-loyalty.ts'
     );
     const shield = document.createElement('canvas');
@@ -142,6 +142,35 @@ try {
         Math.min(...ys) > 13 && Math.max(...ys) < 49,
         'Loyalty ink touches the shield crest or bottom',
       );
+    }
+    // Prior title/rules tracking and baselines must not leak into either
+    // loyalty role, and their temporary font/placement must not leak out.
+    for (const [paint, texts, rect] of [
+      [paintPlaneswalkerLoyalty, ['3', '4', '5', '7', '20'], [10, 5, 78, 47]],
+      [paintPlaneswalkerCost, ['+1', '+2', '0', '−2', '−X', '−10'], [20, 10, 54, 40]],
+    ]) {
+      for (const text of texts) {
+        const draw = (tracking, baseline) => {
+          shieldContext.clearRect(0, 0, 100, 60);
+          shieldContext.letterSpacing = tracking;
+          shieldContext.textBaseline = baseline;
+          shieldContext.textAlign = 'right';
+          paint(shieldContext, text, rect);
+          check(
+            shieldContext.letterSpacing === tracking &&
+              shieldContext.textBaseline === baseline &&
+              shieldContext.textAlign === 'right',
+            'Loyalty painter leaked text state',
+          );
+          return shieldContext.getImageData(0, 0, 100, 60).data;
+        };
+        const clean = draw('0px', 'alphabetic'),
+          inherited = draw('4px', 'bottom');
+        check(
+          clean.every((v, i) => v === inherited[i]),
+          'Loyalty inherited unrelated typography',
+        );
+      }
     }
     const source = document.createElement('canvas');
     source.width = source.height = 100;

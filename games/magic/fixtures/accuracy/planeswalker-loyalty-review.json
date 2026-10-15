@@ -1,0 +1,925 @@
+{
+  "schema": 1,
+  "status": "measured-preview",
+  "baseline": "0.3.3",
+  "canonicalSize": [488, 680],
+  "method": "Frozen frame registrations. Threshold-connected light glyphs inside dark badge/shield bodies; report glyph center relative to its own body, independent of residual badge placement. Reject scan glyph components taller than 18px for costs (two merged components). No per-card renderer adjustment.",
+  "scope": "11 ordinary M15, M21 and WAR planeswalkers; 11 starting-loyalty glyphs and 29 accepted cost crops. These are calibration diagnostics, not whole-card accuracy or independent validation.",
+  "parameters": {
+    "starting": {
+      "fontSize": 24,
+      "inkCenterYOffset": 2.5
+    },
+    "cost": {
+      "fontSize": 19.5,
+      "widthScale": 0.97,
+      "inkCenterXOffset": -0.5,
+      "inkCenterYOffsets": {
+        "plus": -0.25,
+        "zero": -3.25,
+        "minus": -4.5
+      }
+    }
+  },
+  "summary": {
+    "starting": {
+      "count": 11,
+      "before": {
+        "inkCenterMaeX": 0.18181818181818182,
+        "inkCenterMaeY": 3.8181818181818183,
+        "widthMae": 1.0909090909090908,
+        "heightMae": 1.6363636363636365
+      },
+      "after": {
+        "inkCenterMaeX": 0.36363636363636365,
+        "inkCenterMaeY": 0.13636363636363635,
+        "widthMae": 0.7272727272727273,
+        "heightMae": 0.6363636363636364
+      }
+    },
+    "ability": {
+      "count": 29,
+      "before": {
+        "inkCenterMaeX": 0.9482758620689655,
+        "inkCenterMaeY": 1.5344827586206897,
+        "widthMae": 1.0344827586206897,
+        "heightMae": 1.206896551724138
+      },
+      "after": {
+        "inkCenterMaeX": 0.5172413793103449,
+        "inkCenterMaeY": 0.46551724137931033,
+        "widthMae": 0.5862068965517241,
+        "heightMae": 0.2413793103448276
+      }
+    }
+  },
+  "cards": [
+    {
+      "id": "f9302ba8-7ff2-4eaa-a32d-eedd94f0bb79",
+      "name": "Ajani Steadfast",
+      "set": "m15",
+      "referenceHash": "be79070441e41797e00741dcefd173dcf6f013adec986d1924ac459defe6668a",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.999934277394741, 0, 0, 0.999934277394741, -0.02057704447417507, -0.044188771643482984
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 448, 57, 461],
+            "body": [30, 441, 69, 465]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "−2",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 508, 59, 521],
+            "body": [30, 504, 69, 527]
+          },
+          "before": {
+            "ink": [37, 510, 56, 522],
+            "body": [30, 504, 66, 527]
+          },
+          "after": {
+            "ink": [37, 509, 58, 522],
+            "body": [30, 504, 66, 527]
+          }
+        },
+        {
+          "label": "−7",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 570, 59, 583],
+            "body": [30, 566, 69, 589]
+          },
+          "before": {
+            "ink": [37, 573, 56, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 4",
+          "accepted": true,
+          "scan": {
+            "ink": [421, 614, 432, 631],
+            "body": [397, 603, 457, 638]
+          },
+          "before": {
+            "ink": [419, 608, 432, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [420, 613, 432, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "99713bb4-186f-42b6-aa66-e94ec8858e6a",
+      "name": "Jace, the Living Guildpact",
+      "set": "m15",
+      "referenceHash": "3c8a6d0cf93ef85c90eb7b41015d51b4858d9bd244a9061b1cc9bb205efada40",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            1.0001266234940849, 0, 0, 1.0001266234940849, -0.019233204297963172, 0.04653639521001096
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 448, 57, 461],
+            "body": [30, 441, 69, 465]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "−3",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 508, 58, 521],
+            "body": [30, 503, 69, 527]
+          },
+          "before": {
+            "ink": [37, 510, 56, 522],
+            "body": [30, 504, 66, 527]
+          },
+          "after": {
+            "ink": [38, 509, 57, 522],
+            "body": [30, 504, 66, 527]
+          }
+        },
+        {
+          "label": "−8",
+          "accepted": true,
+          "scan": {
+            "ink": [38, 570, 59, 583],
+            "body": [30, 565, 69, 589]
+          },
+          "before": {
+            "ink": [37, 573, 57, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 5",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 613, 432, 631],
+            "body": [397, 602, 457, 638]
+          },
+          "before": {
+            "ink": [421, 608, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "6087f146-f468-472a-b248-fc7386ea3e63",
+      "name": "Liliana Vess",
+      "set": "m15",
+      "referenceHash": "c86842d6cbeabc01f8dbef024333d952c2f3d84106d86f362d7de9611910e25f",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            1.0001651390975157, 0, 0, 1.0001651390975157, 0.009616972491322267, -0.12287383411948248
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 447, 57, 461],
+            "body": [30, 441, 69, 464]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "−2",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 508, 58, 521],
+            "body": [30, 504, 69, 527]
+          },
+          "before": {
+            "ink": [37, 510, 56, 522],
+            "body": [30, 504, 66, 527]
+          },
+          "after": {
+            "ink": [37, 509, 58, 522],
+            "body": [30, 504, 66, 527]
+          }
+        },
+        {
+          "label": "−8",
+          "accepted": false,
+          "scan": {
+            "ink": [38, 570, 59, 596],
+            "body": [29, 566, 69, 589]
+          },
+          "before": {
+            "ink": [37, 573, 57, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 5",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 613, 432, 631],
+            "body": [397, 602, 457, 638]
+          },
+          "before": {
+            "ink": [421, 608, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e92cc35d-4e97-4be2-8c53-cce68c3374ca",
+      "name": "Chandra, Pyromaster",
+      "set": "m15",
+      "referenceHash": "55fe3b27e179def60a24d6681738cfa5d1f958b9676d90af7e5a7059305fddff",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9998995640919364, 0, 0, 0.9998995640919364, -0.009614418885499389,
+            -0.027038216279792488
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 447, 57, 461],
+            "body": [29, 441, 69, 465]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "0",
+          "accepted": true,
+          "scan": {
+            "ink": [44, 508, 54, 521],
+            "body": [29, 504, 69, 526]
+          },
+          "before": {
+            "ink": [42, 512, 51, 524],
+            "body": [30, 504, 66, 529]
+          },
+          "after": {
+            "ink": [43, 509, 52, 522],
+            "body": [30, 504, 66, 529]
+          }
+        },
+        {
+          "label": "−7",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 570, 59, 583],
+            "body": [29, 566, 69, 589]
+          },
+          "before": {
+            "ink": [37, 573, 56, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 4",
+          "accepted": true,
+          "scan": {
+            "ink": [420, 613, 431, 631],
+            "body": [396, 602, 457, 638]
+          },
+          "before": {
+            "ink": [419, 608, 432, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [420, 613, 432, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "07eb2476-488b-4610-8567-f0456601f7fd",
+      "name": "Nissa, Worldwaker",
+      "set": "m15",
+      "referenceHash": "6f2ce6cd0123909bd850093703e061eba8600c6cfe46b563411a47e3cc44911a",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9998696506611143, 0, 0, 0.9998696506611143, 0.10575544381992556, 0.24495982556308668
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 447, 56, 460],
+            "body": [29, 440, 69, 464]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 508, 57, 521],
+            "body": [29, 502, 69, 526]
+          },
+          "before": {
+            "ink": [39, 515, 54, 526],
+            "body": [30, 507, 66, 530]
+          },
+          "after": {
+            "ink": [39, 513, 56, 526],
+            "body": [30, 507, 66, 530]
+          }
+        },
+        {
+          "label": "−7",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 570, 58, 583],
+            "body": [29, 566, 69, 589]
+          },
+          "before": {
+            "ink": [37, 573, 56, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 3",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 613, 431, 630],
+            "body": [397, 602, 457, 637]
+          },
+          "before": {
+            "ink": [421, 609, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "a3957b43-4d7e-41f9-b7a1-6f57d6603ab8",
+      "name": "Garruk, Apex Predator",
+      "set": "m15",
+      "referenceHash": "eefd03b08f5b338b4626bddc5ee67be16224b43ab4115ddf46022995db80f9f9",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9999282182999093, 0, 0, 0.9999282182999093, -0.009367603222201459,
+            -0.013173532585771482
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 399, 57, 412],
+            "body": [29, 392, 69, 416]
+          },
+          "before": {
+            "ink": [39, 407, 54, 418],
+            "body": [30, 399, 66, 422]
+          },
+          "after": {
+            "ink": [39, 405, 56, 418],
+            "body": [30, 399, 66, 422]
+          }
+        },
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 459, 56, 472],
+            "body": [29, 453, 69, 477]
+          },
+          "before": {
+            "ink": [39, 464, 55, 476],
+            "body": [30, 456, 66, 480]
+          },
+          "after": {
+            "ink": [39, 462, 56, 475],
+            "body": [30, 456, 66, 480]
+          }
+        },
+        {
+          "label": "−3",
+          "accepted": true,
+          "scan": {
+            "ink": [38, 515, 58, 529],
+            "body": [29, 510, 69, 534]
+          },
+          "before": {
+            "ink": [37, 518, 56, 530],
+            "body": [30, 511, 66, 534]
+          },
+          "after": {
+            "ink": [38, 515, 57, 528],
+            "body": [30, 511, 66, 534]
+          }
+        },
+        {
+          "label": "−8",
+          "accepted": false,
+          "scan": {
+            "ink": [37, 570, 59, 592],
+            "body": [29, 565, 69, 589]
+          },
+          "before": {
+            "ink": [37, 576, 57, 588],
+            "body": [30, 569, 66, 592]
+          },
+          "after": {
+            "ink": [37, 573, 58, 586],
+            "body": [30, 569, 66, 592]
+          }
+        },
+        {
+          "label": "start 5",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 613, 431, 631],
+            "body": [397, 602, 457, 638]
+          },
+          "before": {
+            "ink": [421, 608, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "name": "Ugin, the Spirit Dragon",
+      "set": "m21",
+      "referenceHash": "56ea3b56cf3e438c5601d007e97f73f8118af2189b8bc733c84c4ddc498ce53f",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9958908941633595, 0, 0, 0.9958908941633595, 0.0552849445422029, -0.33421382839903446
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+2",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 447, 59, 460],
+            "body": [29, 441, 69, 464]
+          },
+          "before": {
+            "ink": [38, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [38, 450, 57, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "−X",
+          "accepted": true,
+          "scan": {
+            "ink": [39, 508, 61, 522],
+            "body": [30, 504, 69, 527]
+          },
+          "before": {
+            "ink": [36, 511, 58, 523],
+            "body": [30, 504, 66, 527]
+          },
+          "after": {
+            "ink": [36, 508, 59, 522],
+            "body": [30, 504, 66, 527]
+          }
+        },
+        {
+          "label": "−10",
+          "accepted": true,
+          "scan": {
+            "ink": [34, 570, 65, 583],
+            "body": [29, 566, 69, 589]
+          },
+          "before": {
+            "ink": [32, 573, 61, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [32, 571, 63, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 7",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 614, 432, 630],
+            "body": [397, 602, 456, 637]
+          },
+          "before": {
+            "ink": [421, 609, 432, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "name": "Basri Ket",
+      "set": "m21",
+      "referenceHash": "b65b4fcf0b818b9bc7d15aaaf8c29fc4435cc76551a81cec292ff279fd2b21bd",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9957772775419266, 0, 0, 0.9957772775419266, 0.028724344544478652, -0.5367726228817405
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [41, 449, 58, 461],
+            "body": [30, 442, 70, 465]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "−2",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 509, 60, 522],
+            "body": [30, 505, 70, 528]
+          },
+          "before": {
+            "ink": [37, 510, 56, 522],
+            "body": [30, 504, 66, 527]
+          },
+          "after": {
+            "ink": [37, 509, 58, 522],
+            "body": [30, 504, 66, 527]
+          }
+        },
+        {
+          "label": "−6",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 572, 61, 584],
+            "body": [30, 567, 70, 590]
+          },
+          "before": {
+            "ink": [37, 573, 57, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 3",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 613, 431, 629],
+            "body": [397, 602, 456, 637]
+          },
+          "before": {
+            "ink": [421, 609, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "name": "Chandra, Heart of Fire",
+      "set": "m21",
+      "referenceHash": "4d31823661997ca2307216abd6b9c3642ac2ed77c84131352da7c12e62d1e69d",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9939838865263886, 0, 0, 0.9939838865263886, -0.144955983451765, -1.1818799777170415
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [41, 449, 59, 462],
+            "body": [31, 442, 70, 466]
+          },
+          "before": {
+            "ink": [39, 452, 55, 464],
+            "body": [30, 444, 66, 467]
+          },
+          "after": {
+            "ink": [39, 450, 56, 463],
+            "body": [30, 444, 66, 467]
+          }
+        },
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [42, 510, 59, 523],
+            "body": [31, 504, 70, 528]
+          },
+          "before": {
+            "ink": [39, 515, 54, 526],
+            "body": [30, 507, 66, 530]
+          },
+          "after": {
+            "ink": [39, 513, 56, 526],
+            "body": [30, 507, 66, 530]
+          }
+        },
+        {
+          "label": "−9",
+          "accepted": true,
+          "scan": {
+            "ink": [41, 571, 62, 583],
+            "body": [31, 567, 70, 590]
+          },
+          "before": {
+            "ink": [37, 573, 57, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [37, 571, 58, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 5",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 613, 432, 630],
+            "body": [397, 602, 457, 637]
+          },
+          "before": {
+            "ink": [421, 608, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "7b003521-3da3-41bf-9765-36630653f902",
+      "name": "Ugin, the Ineffable",
+      "set": "war",
+      "referenceHash": "cf42b9968f660c77df5122601a99441ac558dea9e90587a0c780688bb414d36e",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9994281526145619, 0, 0, 0.9994281526145619, -0.059710252353280355, 0.5506205753781778
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "+1",
+          "accepted": true,
+          "scan": {
+            "ink": [41, 509, 57, 522],
+            "body": [30, 503, 69, 526]
+          },
+          "before": {
+            "ink": [39, 515, 54, 526],
+            "body": [30, 507, 66, 530]
+          },
+          "after": {
+            "ink": [39, 513, 56, 526],
+            "body": [30, 507, 66, 530]
+          }
+        },
+        {
+          "label": "−3",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 570, 59, 584],
+            "body": [30, 566, 69, 590]
+          },
+          "before": {
+            "ink": [37, 573, 56, 585],
+            "body": [30, 566, 66, 590]
+          },
+          "after": {
+            "ink": [38, 571, 57, 584],
+            "body": [30, 566, 66, 590]
+          }
+        },
+        {
+          "label": "start 4",
+          "accepted": true,
+          "scan": {
+            "ink": [420, 614, 430, 631],
+            "body": [396, 603, 456, 638]
+          },
+          "before": {
+            "ink": [419, 608, 432, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [420, 613, 432, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    },
+    {
+      "id": "c77d9454-a78c-4063-ad66-46b2f5a030aa",
+      "name": "Kasmina, Enigmatic Mentor",
+      "set": "war",
+      "referenceHash": "2fba5385f40227cfbc454c2f58abb81e26907c4078136c366fbdab1d6afd06b7",
+      "registration": {
+        "method": "stamp-study-walker-frame-v2",
+        "templateHash": "4deda132054d50f3a742f192bbf57d7655ef56d33f6a58d5a62268682b6d9584",
+        "transform": {
+          "matrix": [
+            0.9984357856147713, 0, 0, 0.9984357856147713, 0.7825606415133872, -0.48410814263496904
+          ]
+        }
+      },
+      "measurements": [
+        {
+          "label": "−2",
+          "accepted": true,
+          "scan": {
+            "ink": [40, 570, 59, 583],
+            "body": [30, 566, 69, 590]
+          },
+          "before": {
+            "ink": [37, 570, 56, 582],
+            "body": [30, 563, 66, 586]
+          },
+          "after": {
+            "ink": [38, 567, 58, 580],
+            "body": [30, 563, 66, 586]
+          }
+        },
+        {
+          "label": "start 5",
+          "accepted": true,
+          "scan": {
+            "ink": [422, 614, 431, 630],
+            "body": [397, 603, 456, 638]
+          },
+          "before": {
+            "ink": [421, 608, 431, 627],
+            "body": [394, 601, 458, 638]
+          },
+          "after": {
+            "ink": [421, 613, 431, 630],
+            "body": [394, 601, 458, 638]
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Starting shield artwork remains wider than the scans.",
+    "Ability badge artwork/anchors still have residual width and vertical-placement errors; glyph fitting does not move them.",
+    "Small connected-component bounds are threshold-dependent at subpixel scale.",
+    "Typography uses the existing pinned Beleren font; no font replacement."
+  ]
+}
