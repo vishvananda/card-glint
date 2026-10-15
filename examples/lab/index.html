@@ -20,8 +20,8 @@
         <label
           >Finish
           <select id="finish">
-            <option value="mixed" selected>Prismatic · cold foil · gloss</option>
-            <option value="surfaces">Living surfaces</option>
+            <option value="mixed" selected>Four foil finishes</option>
+            <option value="surfaces">Living surfaces + gloss</option>
             <option value="rain">Rainlit window</option>
             <option value="heat">Heat shimmer</option>
             <option value="pool">Liquid prism</option>
@@ -29,14 +29,14 @@
             <option value="cold">Cold foil</option>
             <option value="opal">Opal</option>
             <option value="prismatic">Prismatic</option>
-            <option value="gloss">Card shine</option>
+            <option value="gloss">Gloss</option>
             <option value="regular">Uncoated</option>
           </select></label
         >
         <label
           >Cards
           <select id="count">
-            <option>3</option>
+            <option>4</option>
             <option>100</option>
             <option>500</option>
             <option>2000</option>
@@ -53,13 +53,24 @@
           id="scene"
           width="1200"
           height="750"
-          aria-label="Three original fantasy cards with interactive foil finishes"
+          aria-label="Four original fantasy cards with interactive foil finishes"
         ></canvas>
       </div>
       <div class="captions">
         <span>01 / STARFALL SEER <i>Prismatic</i></span
         ><span>02 / TIDEBOUND WYRM <i>Cold foil</i></span
-        ><span>03 / CINDERBLOOM <i>Card shine</i></span>
+        ><span>03 / CINDERBLOOM <i>Opal embossing</i></span
+        ><span>04 / DAWNWING GRIFFIN <i>Etched silver</i></span>
+      </div>
+      <div class="recordings" aria-label="Showcase recordings">
+        <span
+          >Four foils: <a href="./media/showcase-foils.mp4">Video</a> ·
+          <a href="./media/showcase-foils.gif">GIF</a></span
+        >
+        <span
+          >Living surfaces + gloss: <a href="./media/showcase-living.mp4">Video</a> ·
+          <a href="./media/showcase-living.gif">GIF</a></span
+        >
       </div>
       <details>
         <summary>Inside the renderer</summary>
@@ -74,7 +85,7 @@
         <pre id="report"></pre>
         <p>
           Completed mask timings include synchronization by readback; hit batches perform no GL
-          work. These measurements exclude full-scene GPU time. Repeated card instances share three
+          work. These measurements exclude full-scene GPU time. Repeated card instances share four
           prepared faces.
         </p>
       </details>

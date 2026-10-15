@@ -1,7 +1,8 @@
 # Original showcase artwork
 
-The three featured illustrations were created for card-glint with OpenAI's
-built-in image generation tool on October 10, 2026. No reference images,
+The four featured illustrations were created for card-glint with OpenAI's
+built-in image generation tool: the first three on October 10, 2026, and
+Dawnwing Griffin on October 15, 2026. No reference images,
 existing game artwork, frames, logos or fonts were supplied. They are
 AI-generated illustrations, not scans or commissioned paintings.
 
@@ -10,8 +11,9 @@ AI-generated illustrations, not scans or commissioned paintings.
 | `orbit.webp`  | **Starfall Seer** — a celestial wayfinder holding a luminous astrolabe above floating observatories. |
 | `tide.webp`   | **Tidebound Wyrm** — a jade-scaled sea dragon rising through a drowned temple.                       |
 | `garden.webp` | **Cinderbloom** — an ancient stag with ember-blossomed antlers in a rain-soaked forest.              |
+| `dawn.webp`   | **Dawnwing Griffin** — an ivory-and-gold griffin overlooking floating observatories at sunrise.      |
 
-All three are 1536 × 1024. The generated PNGs were re-encoded as WebP at quality
+All four are 1536 × 1024. The generated PNGs were re-encoded as WebP at quality
 0.9 using the browser encoder for smaller downloads. The composition is unchanged.
 The exact generation prompts are recorded in [prompts.json](prompts.json).
 

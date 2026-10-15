@@ -13,7 +13,7 @@ body {
   margin: 0;
 }
 main {
-  max-width: 1400px;
+  max-width: 1680px;
   margin: auto;
   padding: 42px 32px;
 }
@@ -108,7 +108,7 @@ select:focus-visible {
 }
 .captions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   font-size: 10px;
   letter-spacing: 2px;
   text-align: center;
@@ -166,5 +166,21 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto;
+  }
+}
+
+.recordings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 12px;
+  margin: -12px 0 28px;
+}
+a {
+  color: #d1bea0;
+}
+@media (min-width: 601px) and (max-width: 1063px) {
+  .captions {
+    display: none;
   }
 }

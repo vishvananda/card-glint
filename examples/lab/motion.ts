@@ -2,7 +2,7 @@
 export class ShowcaseMotion {
   private positions = new Map<number, { x: number; y: number }>();
   sample(time: number, dt: number, hover?: { instance: number; uv: readonly [number, number] }) {
-    for (let id = 1; id <= 3; id++) {
+    for (let id = 1; id <= 4; id++) {
       const phase = (id - 1) * 1.4;
       const target =
         hover?.instance === id

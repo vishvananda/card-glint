@@ -52,14 +52,14 @@ try {
       { timeout: 15000 },
     );
   const cards = [];
-  for (let index = 0; index < 3; index++) {
+  for (let index = 0; index < 4; index++) {
     await page.evaluate((i) => {
       const r = document.querySelector('#scene').getBoundingClientRect();
-      window.scrollTo(0, scrollY + r.top + (r.height / 3) * (i + 0.5) - 450);
+      window.scrollTo(0, scrollY + r.top + (r.height / 4) * (i + 0.5) - 450);
     }, index);
     const rect = await page.locator('#scene').boundingBox();
     const x = rect.x + rect.width * 0.4,
-      y = rect.y + (rect.height / 3) * (index + 0.5);
+      y = rect.y + (rect.height / 4) * (index + 0.5);
     const before = await state();
     await touch('touchStart', [[x, y]]);
     await settleTilt(index);
@@ -123,7 +123,7 @@ try {
   const gutterScroll = await scrollFromGap(rect.x + 1, y, rect.x + 60);
   await page.evaluate(() => window.scrollTo(0, 160));
   const gapRect = await page.locator('#scene').boundingBox();
-  const betweenScroll = await scrollFromGap(x, gapRect.y + gapRect.height / 3);
+  const betweenScroll = await scrollFromGap(x, gapRect.y + gapRect.height / 4);
   assert.deepEqual(errors, []);
   await writeFile(
     'evidence/touch.json',

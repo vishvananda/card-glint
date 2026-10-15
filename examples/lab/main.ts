@@ -1,4 +1,5 @@
 import './style.css';
+import { finishGroups, finishNames } from './finishes.js';
 import { version } from '../../package.json' with { type: 'json' };
 import {
   createRenderer,
@@ -42,10 +43,15 @@ function deformation(finish: Finish): Instance['deformation'] {
 }
 function chosenFinish(index: number): Finish {
   const value = $<HTMLSelectElement>('finish').value;
-  if (value === 'mixed') return (['prismatic', 'cold', 'gloss'] as const)[index % 3]!;
-  if (value === 'surfaces') return (['rain', 'heat', 'pool'] as const)[index % 3]!;
+  if (value === 'mixed' || value === 'surfaces') return finishGroups[value][index % 4]!;
   return value as Finish;
 }
+const requestedFinish = new URLSearchParams(location.search).get('finish');
+if (
+  requestedFinish &&
+  [...$<HTMLSelectElement>('finish').options].some((o) => o.value === requestedFinish)
+)
+  $<HTMLSelectElement>('finish').value = requestedFinish;
 const faces = [
   {
     name: 'Starfall Seer',
@@ -76,6 +82,16 @@ const faces = [
     illustration: './art/garden.webp',
     rules:
       'Even the ashes remember spring.\nAt dusk, plant a spark. At dawn, restore a fallen companion to your grove.',
+  },
+  {
+    name: 'Dawnwing Griffin',
+    subtitle: 'Guardian · Horizon',
+    theme: 'orbit' as const,
+    charge: 4,
+    serial: '004 / ∞',
+    illustration: './art/dawn.webp',
+    rules:
+      'Its wings catch the first light.\nAt dawn, guard a companion. When the clouds part, reveal a hidden path.',
   },
 ];
 const documents: CardDocument[] = faces.map((face, i) => showcaseDocument(i + 1, face));
@@ -146,21 +162,11 @@ const ready = (async () => {
   };
   $<HTMLSelectElement>('finish').onchange = () => {
     dirty = true;
-    const names: Record<Finish, string> = {
-      regular: 'Uncoated',
-      gloss: 'Card shine',
-      etched: 'Etched silver',
-      cold: 'Cold foil',
-      opal: 'Opal embossing',
-      prismatic: 'Prismatic',
-      rain: 'Rainlit window',
-      heat: 'Heat shimmer',
-      pool: 'Liquid prism',
-    };
     document.querySelectorAll('.captions i').forEach((node, i) => {
-      node.textContent = names[chosenFinish(i)];
+      node.textContent = finishNames[chosenFinish(i)];
     });
   };
+  $<HTMLSelectElement>('finish').dispatchEvent(new Event('change'));
   if (!motionEnabled) $('motion').textContent = 'Resume motion';
   function draw(time: number) {
     if (disposed) return;
@@ -333,6 +339,8 @@ Object.assign(window, {
     showcase,
     faces,
     documents,
+    finishGroups,
+    finishNames,
     benchmarkCaches,
     layoutCards,
     sceneSize,

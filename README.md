@@ -9,10 +9,17 @@ A small, game-neutral card renderer. Rust/WASM manages caches, scene planning,
 picking and pixel kernels. WebGL2 adds reusable etching, embossing and foil.
 Your game supplies the artwork, frame geometry, typography and hit regions.
 
-[![Animated tilt of three original fantasy cards with prismatic, cold foil and gloss finishes](docs/images/showcase.gif)](https://vishvananda.github.io/card-glint/)
+[![Four original fantasy cards with prismatic, cold, Opal and etched foil](docs/images/showcase-foils.gif)](https://vishvananda.github.io/card-glint/)
 
-[Watch / download the MP4](https://vishvananda.github.io/card-glint/media/showcase.mp4) ·
+**Four foils:** prismatic · cold foil · Opal embossing · etched silver.
+[Watch / download MP4](https://vishvananda.github.io/card-glint/media/showcase-foils.mp4) ·
 [Static preview](docs/images/showcase.png)
+
+[![The same four cards with rain, pool water, heat shimmer and gloss](docs/images/showcase-living.gif)](https://vishvananda.github.io/card-glint/?finish=surfaces)
+
+**Living surfaces + gloss:** rain · pool water · heat shimmer · gloss.
+[Watch / download MP4](https://vishvananda.github.io/card-glint/media/showcase-living.mp4) ·
+[Static preview](docs/images/showcase-living.png)
 
 [Try the interactive showcase](https://vishvananda.github.io/card-glint/) ·
 [Architecture and layering](docs/architecture.md) ·
@@ -55,8 +62,8 @@ npm run preview
 ```
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
-The collection opens with prismatic, cold foil and gloss finishes; animated living
-surfaces are available in the **Finish** selector.
+The collection opens with four foil finishes. Choose **Living surfaces + gloss**
+in the **Finish** selector to compare the other four treatments on the same cards.
 Hover or drag on a card to tilt it and disturb its water; neighboring cards keep
 their independent idle motion and reflections. On touchscreens,
 swipe beside or between cards to scroll the page. They drift gently when
@@ -89,7 +96,7 @@ The showcase is hosted on GitHub Pages. After checks pass on `main`, the same
 workflow publishes `dist/lab`; pull requests only run checks. The README preview
 links to the interactive page. All artwork and WASM are served from that site,
 with no application server or external asset host required.
-The README's eight-second GIF and MP4 are captured from the same renderer;
+The README's paired eight-second GIFs and MP4s are captured from the same renderer;
 [media reproduction instructions](docs/images/README.md) include the capture script.
 
 ## Use it in an application
@@ -98,7 +105,7 @@ The README's eight-second GIF and MP4 are captured from the same renderer;
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.3.2/card-glint-0.3.2.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.3.3/card-glint-0.3.3.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -119,7 +126,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.3.2/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.3.3/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.

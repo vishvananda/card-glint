@@ -57,4 +57,11 @@ await cp('games/magic/assets.json', 'dist/types/games/magic/assets.json');
 await cp('games/showcase/art', 'dist/lab/art', { recursive: true });
 await cp('examples/cdn', 'dist/lab/cdn', { recursive: true });
 await mkdir('dist/lab/media', { recursive: true });
-await cp('docs/images/showcase.mp4', 'dist/lab/media/showcase.mp4');
+for (const group of ['foils', 'living'])
+  for (const extension of ['gif', 'mp4'])
+    await cp(
+      `docs/images/showcase-${group}.${extension}`,
+      `dist/lab/media/showcase-${group}.${extension}`,
+    );
+// Keep existing links from prior releases working.
+await cp('docs/images/showcase-foils.mp4', 'dist/lab/media/showcase.mp4');

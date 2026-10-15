@@ -9,7 +9,7 @@ const browser = await chromium.launch({
 });
 try {
   const page = await browser.newPage({
-    viewport: { width: 1400, height: 1100 },
+    viewport: { width: 1664, height: 1100 },
     deviceScaleFactor: 1,
   });
   const external = [],
@@ -30,11 +30,30 @@ try {
   assert.equal(await page.locator('#finish').inputValue(), 'mixed');
   assert.deepEqual(
     await page.evaluate(() => window.lab.instances().map((instance) => instance.finish)),
-    ['prismatic', 'cold', 'gloss'],
-    'Showcase opens with classic foils',
+    ['prismatic', 'cold', 'opal', 'etched'],
+    'Showcase opens with four foil finishes',
   );
   await mkdir('docs/images', { recursive: true });
   await page.locator('#scene').screenshot({ path: 'docs/images/showcase.png' });
+  const firstPixels = await page.locator('#scene').evaluate((c) => c.toDataURL());
+  const before = await page.evaluate(async () => (await window.lab.ready).metrics);
+  await page.locator('#finish').selectOption('surfaces');
+  await page.evaluate(async () => {
+    const renderer = await window.lab.ready;
+    renderer.updateScene(window.lab.instances());
+    renderer.render({ viewProjection: window.lab.api.IDENTITY, time: 2 });
+  });
+  assert.deepEqual(
+    await page.evaluate(() => window.lab.instances().map((instance) => instance.finish)),
+    ['rain', 'pool', 'heat', 'gloss'],
+    'Second group covers all living surfaces and gloss',
+  );
+  await page.locator('#scene').screenshot({ path: 'docs/images/showcase-living.png' });
+  assert.notEqual(await page.locator('#scene').evaluate((c) => c.toDataURL()), firstPixels);
+  const after = await page.evaluate(async () => (await window.lab.ready).metrics);
+  for (const key of ['compositions', 'maskBuilds', 'edgeBuilds', 'uploads'])
+    assert.equal(after[key], before[key], `Changing finish groups rebuilt ${key}`);
+  assert.equal(await page.locator('.captions > span').count(), 4);
   await writeFile(
     'evidence/showcase.json',
     JSON.stringify(

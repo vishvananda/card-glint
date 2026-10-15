@@ -21,15 +21,15 @@ try {
     window.lab.pause();
     return renderer.render({ viewProjection: window.lab.api.IDENTITY });
   });
-  assert.equal(initial.visible, 3);
-  assert.equal(initial.draws, 3);
+  assert.equal(initial.visible, 4);
+  assert.equal(initial.draws, 4);
   assert.equal(initial.readbacks, 0);
   await page.screenshot({ path: 'evidence/standalone.png', fullPage: true });
   const layouts = await page.evaluate(() => {
     const { layoutCards, sceneSize, documents } = window.lab;
     const results = [];
     for (const width of [360, 390, 768, 1350])
-      for (const count of [3, 100, 2000])
+      for (const count of [3, 4, 100, 2000])
         for (const overlap of [false, true]) {
           const { height } = sceneSize(width, count);
           const cards = layoutCards(documents, width, height, count, 'regular', overlap, 0);

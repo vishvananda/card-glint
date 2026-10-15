@@ -4,8 +4,8 @@ import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 
 function cardPixels(image, card) {
-  const left = Math.floor((image.width * card) / 3),
-    right = Math.floor((image.width * (card + 1)) / 3);
+  const left = Math.floor((image.width * card) / 4),
+    right = Math.floor((image.width * (card + 1)) / 4);
   return Buffer.concat(
     Array.from({ length: image.height }, (_, y) =>
       image.data.subarray((y * image.width + left) * 4, (y * image.width + right) * 4),
@@ -89,7 +89,7 @@ try {
         state: snapshot.state,
         image,
         size: [decoded.width, decoded.height],
-        pixels: [0, 1, 2].map((card) => cardPixels(decoded, card)),
+        pixels: [0, 1, 2, 3].map((card) => cardPixels(decoded, card)),
       });
     }
     await page.close();
@@ -112,7 +112,7 @@ try {
           !hover[frame].pixels[0].equals(idle[frame].pixels[0]),
           'Hovered card must respond',
         );
-        for (let card = 1; card < 3; card++) {
+        for (let card = 1; card < 4; card++) {
           assert.deepEqual(hover[frame].state.instances[card], idle[frame].state.instances[card]);
           assert.ok(
             hover[frame].pixels[card].equals(idle[frame].pixels[card]),
