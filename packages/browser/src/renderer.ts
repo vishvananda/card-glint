@@ -238,9 +238,22 @@ export class Renderer {
     const face = lookup(prepared.color),
       mask = lookup(prepared.mask),
       overlay = lookup(prepared.overlay),
-      coverage = lookup(prepared.coverage);
-    return face && mask && (!prepared.overlay || overlay) && (!prepared.coverage || coverage)
-      ? { face, mask, overlay, coverage, recipe: prepared.document.recipe }
+      coverage = lookup(prepared.coverage),
+      hologram = lookup(prepared.hologram);
+    return face &&
+      mask &&
+      (!prepared.overlay || overlay) &&
+      (!prepared.coverage || coverage) &&
+      (!prepared.hologram || hologram)
+      ? {
+          face,
+          mask,
+          overlay,
+          coverage,
+          hologram,
+          hologramSettings: prepared.hologramSettings,
+          recipe: prepared.document.recipe,
+        }
       : null;
   }
   render(frame: Frame): Metrics {
@@ -302,6 +315,8 @@ export class Renderer {
             material.mask !== current.mask ||
             material.overlay !== current.overlay ||
             material.coverage !== current.coverage ||
+            material.hologram !== current.hologram ||
+            material.hologramSettings !== current.hologramSettings ||
             material.recipe.cornerRadius !== current.recipe.cornerRadius ||
             material.recipe.finishCoverageBase !== current.recipe.finishCoverageBase ||
             material.recipe.overlayFoil?.tone !== current.recipe.overlayFoil?.tone ||

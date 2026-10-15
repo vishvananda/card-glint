@@ -40,6 +40,13 @@ export function validateDocument(document: CardDocument) {
     )
       throw Error('Invalid overlay foil');
   }
+  if (recipe.hologram) {
+    const { mask, rect: bounds, strength, seed = 0 } = recipe.hologram;
+    raster(mask);
+    rect(bounds);
+    if (!Number.isFinite(strength) || strength < 0 || strength > 1 || !uint32(seed))
+      throw Error('Invalid hologram material');
+  }
   recipe.artWindows.forEach(rect);
   recipe.regions.forEach((region) => rect(region.rect));
   for (const edge of recipe.edges) {

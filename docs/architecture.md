@@ -66,6 +66,19 @@ ignore depth. No unrestricted GL callback is exposed. Arbitrary geometry,
 per-instance ownership masks, and nonrectangular custom layer clips remain
 future backend extensions; use pre-rasterized alpha within declared quads now.
 
+`FaceRecipe.hologram` adds an independent local reflective coating to the final
+printed composite, including over-finish printing and regular/nonfoil cards.
+Its small raster's alpha maps into a normalized rectangle; RGB is ignored. Packs
+own the shape and inset it from lettering or borders that must remain static.
+This opt-in coating is separate from the instance finish and `overlayFoil`.
+The same face depth pass shades it, so it cannot leak above a nearer card.
+The bounds, strength and stable seed are uniforms; changing them reuses the
+mask texture. Changing the mask key prepares only that mask. The source mask is
+prepared/uploaded once through the existing bounded cache, without mask readback.
+View/normal changes move the reflection over stationary diffraction grooves.
+Fixed view, pointer and seed produce a deterministic still; elapsed time alone
+does not animate the coating. Export and context recovery retain that identity.
+
 ## Cache ownership
 
 A session owns one GL context, reusable programs/scratch textures, a GPU texture
@@ -85,6 +98,7 @@ must not crowd finished faces out of the working set.
 | Face color        | Pack recipe and printed/under-finish layers                  | Motion, finish, over-finish badges                               |
 | Overlay           | Ordered overlay content and clips                            | Base text, artwork, light                                        |
 | Coverage          | Mask content and clips                                       | Motion and light                                                 |
+| Local hologram    | Mask identity and dimensions                                 | Placement, strength, seed, view and pointer                      |
 
 HTTP caching retains encoded sources across reloads. GPU textures are reusable
 within their context, but do not survive context loss. Recovery rebuilds from

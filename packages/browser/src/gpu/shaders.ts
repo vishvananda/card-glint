@@ -1,6 +1,7 @@
 import { FOIL_PREVIEW_GLSL } from './foil-preview-shader.js';
 import { SURFACE_GLSL } from './surface-shader.js';
 import { DEFORMATION_GLSL } from './deformation-shader.js';
+import { HOLOGRAM_GLSL } from './hologram-shader.js';
 export const vertex = `#version 300 es
 layout(location=0) in vec2 position;
 layout(location=1) in mat4 model;
@@ -35,9 +36,17 @@ float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,
 ${foil}
 ${SURFACE_GLSL}
 ${DEFORMATION_GLSL}
+${HOLOGRAM_GLSL}
 void main(){
  vec2 source=cardSource(v_uv,surfaceTime,surfaceInfo.wz);
  vec2 uv=vec2(source.x,1.-source.y);
+ // Evaluate derivatives before any per-fragment return/discard. The outer
+ // material condition is uniform across the draw, including instanced cards.
+ float grainFilter=1.;
+ if(hologramMaterial.x>0.) {
+   vec2 local=(uv-hologramRect.xy)/hologramRect.zw;
+   grainFilter=exp(-fwidth(dot(local,vec2(24.,8.)))*2.);
+ }
  vec2 corner=abs((uv-.5)*vec2(1.,aspect))-(vec2(.5,aspect*.5)-cornerRadius);
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
@@ -55,7 +64,8 @@ void main(){
    vec3 reflected=previewLinear(satin(uv,previewInk(printing),normalize(v_normal),view,overlayFoil.x,metal));
    printing=mix(printing,reflected,overlayFoil.y);
  }
- out_color=vec4(previewInk(mix(under,printing,top.a)),1.);
+ vec3 printed=previewInk(mix(under,printing,top.a));
+ out_color=vec4(localHologram(uv,printed,normalize(v_normal),view,grainFilter),1.);
 }`;
 export const imageFragment = `#version 300 es
 precision highp float;in vec2 v_uv;uniform sampler2D face;out vec4 out_color;

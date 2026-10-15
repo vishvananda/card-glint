@@ -48,6 +48,16 @@ export interface EdgeSource {
   /** Imported edge masks skip the detector. Alpha is extracted to linear R8. */
   importedMask?: AssetRequest;
 }
+/** A local reflective coating on the final printed composite. The mask's alpha
+ * is mapped into rect; its RGB is ignored. Packs own the shape and must keep
+ * protected lettering/borders outside it. Motion changes lighting, not the mask. */
+export interface Hologram {
+  mask: Raster;
+  rect: Rect;
+  strength: number;
+  /** Stable unsigned seed for the fixed microtexture; defaults to zero. */
+  seed?: number;
+}
 export interface FaceRecipe {
   pack: string;
   color: Raster;
@@ -59,6 +69,8 @@ export interface FaceRecipe {
   /** Optional satin reflection on the combined over-finish printing. It never
    * refracts, blurs or etches those layers. Omit to keep overlays unshaded. */
   overlayFoil?: { tone: 'gold' | 'silver' | 'prismatic'; strength: number };
+  /** Independent of the instance finish, including regular/nonfoil cards. */
+  hologram?: Hologram;
   regions: readonly { id: string; rect: Rect }[];
 }
 export interface GamePack<T> {

@@ -12,6 +12,8 @@ export interface Material {
   mask: Texture;
   overlay?: Texture;
   coverage?: Texture;
+  hologram?: Texture;
+  hologramSettings: string;
   recipe: FaceRecipe;
 }
 export class Device {
@@ -133,6 +135,7 @@ export class Device {
       ['overlay', material.overlay?.texture ?? this.blank],
       ['coverage', material.coverage?.texture ?? this.blank],
       ['caustics', this.caustics.map],
+      ['hologramMask', material.hologram?.texture ?? this.blank],
     ] as const;
     bindings.forEach(([name, t], i) => {
       gl.activeTexture(gl.TEXTURE0 + i);
@@ -144,6 +147,14 @@ export class Device {
     windows.forEach((rect, i) => bounds.set(rect, i * 4));
     gl.uniform4fv(gl.getUniformLocation(p, 'artBounds[0]'), bounds);
     gl.uniform1f(gl.getUniformLocation(p, 'finishBase'), material.recipe.finishCoverageBase ?? 1);
+    const hologram = material.recipe.hologram,
+      [hx, hy, hw, hh] = hologram?.rect ?? [0, 0, 1, 1];
+    gl.uniform4f(gl.getUniformLocation(p, 'hologramRect'), hx, 1 - hy - hh, hw, hh);
+    gl.uniform2f(
+      gl.getUniformLocation(p, 'hologramMaterial'),
+      hologram?.strength ?? 0,
+      (hologram?.seed ?? 0) / 0xffffffff,
+    );
     const overlayFoil = material.recipe.overlayFoil;
     gl.uniform2f(
       gl.getUniformLocation(p, 'overlayFoil'),

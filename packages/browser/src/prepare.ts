@@ -16,6 +16,8 @@ export interface Prepared {
   mask: string;
   overlay?: string;
   coverage?: string;
+  hologram?: string;
+  hologramSettings: string;
   document: CardDocument;
 }
 
@@ -77,6 +79,15 @@ export class Preparer {
           ]),
         ])
       : undefined;
+    const hologram = recipe.hologram
+      ? prefix +
+        JSON.stringify(['hologram-v1', recipe.hologram.mask.key, recipe.hologram.mask.size])
+      : undefined;
+    const hologramSettings = JSON.stringify(
+      recipe.hologram
+        ? [recipe.hologram.rect, recipe.hologram.strength, recipe.hologram.seed ?? 0]
+        : null,
+    );
     try {
       leases.push(
         await this.ensure(color, async () => {
@@ -191,8 +202,20 @@ export class Preparer {
             return this.textures.uploadBytes(coverage, bytes, size);
           }),
         );
+      if (hologram)
+        leases.push(
+          await this.ensure(hologram, async () => {
+            const surface = await paintRaster(recipe.hologram!.mask, this.assets, signal);
+            try {
+              signal.throwIfAborted();
+              return this.textures.upload(hologram, surface, false);
+            } finally {
+              closeRaster(surface);
+            }
+          }),
+        );
       signal.throwIfAborted();
-      return { color, mask, overlay, coverage, document };
+      return { color, mask, overlay, coverage, hologram, hologramSettings, document };
     } finally {
       for (const lease of leases) lease.release();
     }
