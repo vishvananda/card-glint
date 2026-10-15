@@ -13,6 +13,7 @@ import { resolveFrameColors } from './profile.js';
 import { faceSetSymbol } from './assets.js';
 import { faceManaAssets } from './mana-assets.js';
 import { retroDualFrame } from './retro-dual-frame.js';
+import { legendsFrame } from './legends-frame.js';
 import {
   isRevisedLand,
   REVISED_LAND_ART,
@@ -45,6 +46,8 @@ export function retroEarly(face: RenderedCardInput) {
 }
 export function retroFamily(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase() ?? '';
+  const legends = legendsFrame(face);
+  if (legends) return legends.family;
   if (retroEarly(face)) return 'abu';
   if (set === 'leg' && resolveFrameColors(face).length > 1) return 'legends';
   if (
@@ -55,6 +58,8 @@ export function retroFamily(face: RenderedCardInput) {
   return 'seventh';
 }
 export function retroFrameRect(face: RenderedCardInput): FaceRect {
+  const legends = legendsFrame(face);
+  if (legends) return legends.frame;
   if (isRevisedLand(face)) return REVISED_LAND_FRAME;
   return retroFamily(face) === 'fourth' ? [0.012, 0.01, 0.974, 0.982] : [0, 0, 1, 1];
 }
@@ -64,15 +69,16 @@ export function retroRects(face: RenderedCardInput) {
     ...FACE_RECTS,
     frame: retroFrameRect(face),
     title: [early ? 0.07 : 0.1134, 0.0481, early ? 0.8467 : 0.8, 0.043] as FaceRect,
-    art: (isRevisedLand(face)
-      ? REVISED_LAND_ART
-      : retroFamily(face) === 'legends'
-        ? [0.112, 0.094, 0.78, 0.45]
-        : retroFamily(face) === 'fourth'
-          ? [0.109, 0.093, 0.779, 0.453]
-          : early
-            ? [0.116, 0.1043, 0.7654, 0.441]
-            : [0.12, 0.0991, 0.7667, 0.4429]) as FaceRect,
+    art: (legendsFrame(face)?.art ??
+      (isRevisedLand(face)
+        ? REVISED_LAND_ART
+        : retroFamily(face) === 'legends'
+          ? [0.112, 0.094, 0.78, 0.45]
+          : retroFamily(face) === 'fourth'
+            ? [0.109, 0.093, 0.779, 0.453]
+            : early
+              ? [0.116, 0.1043, 0.7654, 0.441]
+              : [0.12, 0.0991, 0.7667, 0.4429])) as FaceRect,
     type: [0.1074, 0.5486, 0.7852, 0.0543] as FaceRect,
     rules: [0.128, 0.6067, 0.744, 0.2724] as FaceRect,
     stats: [0.8074, 0.895, 0.1367, 0.043] as FaceRect,
@@ -81,6 +87,8 @@ export function retroRects(face: RenderedCardInput) {
   };
 }
 export function retroFrameAsset(face: RenderedCardInput) {
+  const legends = legendsFrame(face);
+  if (legends) return legends.asset;
   if (isRevisedLand(face)) return REVISED_LAND_ASSET;
   const dual = retroDualFrame(face);
   if (dual) return dual.base;
@@ -125,7 +133,7 @@ export function retroStock(face: RenderedCardInput) {
 export function retroBorderMask(face: RenderedCardInput) {
   return retroFamily(face) === 'fourth'
     ? `${RETRO_ROOT}/img/frames/old/fourth/borderBlack.png`
-    : `${RETRO_ROOT}/img/frames/${retroEarly(face) ? 'old/abu' : 'seventh/regular'}/border.svg`;
+    : `${RETRO_ROOT}/img/frames/${retroFamily(face) === 'abu' ? 'old/abu' : 'seventh/regular'}/border.svg`;
 }
 export function retroInk(face: RenderedCardInput) {
   return retroEarly(face) ? '#ababab' : '#f2eee3';

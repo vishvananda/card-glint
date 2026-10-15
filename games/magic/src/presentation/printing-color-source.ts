@@ -14,7 +14,7 @@ export function printingColorSource(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   if (
     !set ||
-    !['lea', 'leb', '3ed', '8ed', 'm21'].includes(set) ||
+    !['lea', 'leb', '3ed', 'leg', '8ed', 'm21'].includes(set) ||
     (face.layout && face.layout !== 'normal') ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
   )

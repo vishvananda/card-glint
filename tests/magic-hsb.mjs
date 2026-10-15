@@ -167,7 +167,11 @@ try {
       frameStyle: 'retro',
       colorCalibration: 'set-hsb-v1',
     };
-    assert.ok(profiles.calibratedFrameProfile(calibrated), key);
+    // Legends changed both plate and geometry; historical diagnostic fits must
+    // remain readable but cannot recolor the replacement sources.
+    if (setCode === 'leg')
+      assert.equal(profiles.calibratedFrameProfile(calibrated), undefined, key);
+    else assert.ok(profiles.calibratedFrameProfile(calibrated), key);
     assert.equal(
       profiles.calibratedFrameProfile({ ...calibrated, layout: 'token' }),
       undefined,

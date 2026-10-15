@@ -62,7 +62,8 @@ try {
             : 'Creature',
     };
     const actual = calibratedDualFrameProfile(f);
-    if (profile.asset.endsWith('/old/fourth/w.png')) {
+    if (setCode === 'leg') assert.equal(actual, undefined, key + ' obsolete source/geometry');
+    else if (profile.asset.endsWith('/old/fourth/w.png')) {
       assert.deepEqual(actual.frame, profile.adjustment.frame);
       assert.deepEqual(actual.paper, profile.adjustment.paper);
       assert.deepEqual(actual.mask, {

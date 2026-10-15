@@ -1,0 +1,206 @@
+import type { PrintingColorProfile } from './printing-color-profiles.js';
+/** Legends color fit follows source/geometry selection. Bind only the pinned
+ * plate and exact placement; rejected components retain their original color.
+ * See fixtures/accuracy/legends-colors.json for holdouts and texture limits. */
+export const LEGENDS_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfile>> = {
+  'leg/black/retro/w.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/w.png",[-0.015000000000000013,-0.016735294117647074,1.03,1.032]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/w.png':
+        {
+          frame: {
+            hueDegrees: 31.5,
+            saturationScale: 0.7737499999999997,
+            brightnessScale: 1.0418750000000003,
+          },
+          paper: {
+            hueDegrees: 46.92434210526312,
+            saturationScale: 1.3968055555555547,
+            brightnessScale: 1.1227453271028038,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.12704918032786885, 0.5985294117647059, 0.7479508196721312, 0.2867647058823529],
+            feather: 0.0013333333333333333,
+          },
+        },
+    },
+  },
+  'leg/black/retro/u.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png",[0.006241180327868882,0.003875294117647035,0.989584,0.995748]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png':
+        {
+          frame: {
+            hueDegrees: -6,
+            saturationScale: 0.6031249999999994,
+            brightnessScale: 1.0975000000000001,
+          },
+          paper: {
+            hueDegrees: -10.598914565826249,
+            saturationScale: 0.9226579520697171,
+            brightnessScale: 1.0041322314049586,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.11812030834483456, 0.6068048400622977, 0.7616050089204565, 0.2815382772253505],
+            feather: 0.0013333333333333333,
+          },
+        },
+    },
+  },
+  'leg/black/retro/b.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/b.png",[-0.015000000000000013,-0.016470588235294133,1.03,1.03]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/b.png':
+        {
+          frame: {
+            hueDegrees: 0,
+            saturationScale: 1,
+            brightnessScale: 1,
+          },
+          paper: {
+            hueDegrees: 5.6763925729442235,
+            saturationScale: 0.8794297625777275,
+            brightnessScale: 1.0209205020920502,
+          },
+          mask: {
+            kind: 'chroma',
+            bounds: [
+              0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294,
+            ],
+            seed: [0.5, 0.7352941176470589],
+            frameRgb: [0.17647058823529413, 0.22450980392156863, 0.23627450980392156],
+            paperRgb: [0.9372549019607843, 0.8, 0.596078431372549],
+          },
+        },
+    },
+  },
+  'leg/black/retro/r.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",[0.006241180327868882,0.004610588235294094,0.989584,0.995748]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png':
+        {
+          frame: {
+            hueDegrees: 0,
+            saturationScale: 1,
+            brightnessScale: 1,
+          },
+          paper: {
+            hueDegrees: 21.86087449126046,
+            saturationScale: 0.9073305928571983,
+            brightnessScale: 0.850835322195704,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.11812030834483456, 0.6068048400622977, 0.7616050089204565, 0.2815382772253505],
+            feather: 0.0013333333333333333,
+          },
+        },
+    },
+  },
+  'leg/black/retro/g.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",[0.007265770491803308,0.004855294117647071,0.989584,0.993784]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png':
+        {
+          frame: {
+            hueDegrees: -9.546487090367464,
+            saturationScale: 0.9883385744234803,
+            brightnessScale: 1.2090680100755669,
+          },
+          paper: {
+            hueDegrees: 23.60706205559154,
+            saturationScale: 0.9735775550740341,
+            brightnessScale: 0.7845303867403315,
+          },
+          mask: {
+            kind: 'chroma',
+            bounds: [
+              0.08235432726293468, 0.5828441356175872, 0.8394486148045915, 0.32346951000359414,
+            ],
+            seed: [0.5010266940451745, 0.7385887145082066],
+            frameRgb: [0.23333333333333334, 0.38921568627450975, 0.28137254901960784],
+            paperRgb: [0.7098039215686275, 0.5450980392156862, 0.403921568627451],
+          },
+        },
+    },
+  },
+  'leg/black/retro/a.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",[0.006192590163934432,0.004855294117647071,0.987636,0.993784]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png':
+        {
+          frame: {
+            hueDegrees: 24.352415966386616,
+            saturationScale: 1.09714025198939,
+            brightnessScale: 1.158811475409836,
+          },
+          paper: {
+            hueDegrees: 18.140759005145696,
+            saturationScale: 0.8517161410018563,
+            brightnessScale: 1.0706188596859518,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.12443195206516984, 0.6097999281178866, 0.7552933652001211, 0.2785431891697616],
+            feather: 0.0013333333333333333,
+          },
+        },
+    },
+  },
+  'leg/black/retro/l.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/l.png",[0.0052165901639344555,0.00559058823529413,0.989584,0.993784]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/l.png':
+        {
+          frame: {
+            hueDegrees: 0,
+            saturationScale: 1,
+            brightnessScale: 1,
+          },
+          paper: {
+            hueDegrees: 14.93891019140574,
+            saturationScale: 0.9333152173913042,
+            brightnessScale: 1,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.1265358333052816, 0.6083023840900922, 0.7510856027198977, 0.2770456451419673],
+            feather: 0.0013333333333333333,
+          },
+        },
+    },
+  },
+  'leg/black/retro/m.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/m.png",[0.0032159999999999966,0.003875294117647035,0.991532,0.995748]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/m.png':
+        {
+          frame: {
+            hueDegrees: 0,
+            saturationScale: 1,
+            brightnessScale: 1,
+          },
+          paper: {
+            hueDegrees: 1.9433497536946334,
+            saturationScale: 0.9884598707032473,
+            brightnessScale: 1.0119047619047619,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.1160164271047228, 0.6008146639511202, 0.7742282963611269, 0.29501617347550013],
+            feather: 0.0013333333333333333,
+          },
+        },
+    },
+  },
+};

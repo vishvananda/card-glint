@@ -16,16 +16,16 @@ reward matching hue/saturation. The other five sets—Arabian Nights,
 Antiquities, The Dark, Fallen Empires and Ice Age—currently have visual transfer
 controls only, not validated alignment measurements.
 
-| Legends material                 | Candidate for the next calibration                                                  |
+| Legends material                 | Selected source on the Legends branch                                               |
 | -------------------------------- | ----------------------------------------------------------------------------------- |
 | White, black                     | ABU: best held-out boundary result among these sources                              |
 | Blue, red, green, artifact, land | Fourth: best held-out boundary result                                               |
 | Gold                             | Fourth: printed grain is much closer; current gold still wins boundary-only scoring |
 
 The gold case must not be hidden in a combined average. Its current source
-scores 0.872 on held-out boundary cosine versus Fourth's 0.827 after fitting,
+scores 0.872 on held-out boundary cosine versus Fourth's 0.825 after fitting,
 while the exploratory grayscale texture-spectrum distance is 1.010 versus
-0.377 (lower is closer). The latter agrees with visual review but also responds
+0.464 (lower is closer). The latter agrees with visual review but also responds
 to halftoning and resampling. It is a diagnostic, not a new published accuracy
 metric. Neither number is a whole-card accuracy percentage.
 
@@ -35,11 +35,32 @@ visually inspected; neither supplies the grain visible in Fourth's plate.
 Card Conjurer additionally has set-specific early land variants worth retaining
 as controls when source colors and paper treatments are compared.
 
-These are candidate defaults, not released source or color changes. Finish the
-chosen sources' art/paper geometry and separate frame/paper HSB before resuming
-Legends title, mana, type, set-symbol, rules, artist and P/T calibration. Validate
+The study now uses the production 768-pixel asset decode width, superseding the
+initial native-resolution comparison. Native alpha defines the art apertures;
+the Fourth gold opening needed a small correction. All 83 ordinary Legends
+examples reproduce the chosen geometry pixel-for-pixel in the production
+painter. Actual held-out boundary cosines range from 0.646 (land) to 0.885 (red);
+gold reaches 0.843. These are boundary diagnostics, not whole-card scores.
+
+The [Legends color study](fixtures/accuracy/legends-colors.json) fits frame and
+paper separately on the same 36 calibration cards, then checks 36 held-out
+cards and ordinary production exports. It limits highlight clipping and rejects
+improvements in median color that worsen shadow chroma, shadow lightness or
+texture contrast. Black, red and gold retain their outer-frame colors; their
+paper corrections pass. Adopted frame/paper corrections have actual held-out
+component errors below 5 Oklab units. Visual review withholds the land outer-frame
+correction because it turns the gold pinlines lime; its paper correction is
+retained. The pinlines need their own measured mask before the outer-frame color
+can be adjusted. Irregular black/green masks preserve
+shadows crossing the paper edge. Profiles bind to exact source URLs and geometry
+and use the existing derived-material cache; no animation-time fitting is added.
+
+Source, geometry and color changes are on the Legends branch, not released.
+Next are title, mana, type, set-symbol, rules, artist and P/T calibration. Validate
 transfer before changing other sets. External images remain in the private
-reference cache and review page; the public showcase is unchanged.
+reference cache and review page; the public showcase is unchanged. Fitting and
+boundary scoring run on the CPU; browser captures prepare the rasters. These
+measurements do not represent GPU completion time.
 
 The first comparison is recorded in
 [family results](fixtures/accuracy/old-frame-family-results.json): 35 source

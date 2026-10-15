@@ -4,6 +4,7 @@ import type { Rgb } from './hsb.js';
 import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
 import { printingColorSource } from './printing-color-source.js';
 import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
+import { LEGENDS_COLOR_PROFILES } from './legends-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
 import { retroDualFrame } from './retro-dual-frame.js';
@@ -50,7 +51,7 @@ export function calibratedFrameMaterials(
 ): Readonly<Record<string, FrameHsb>> {
   if (!hasColorCalibration(face)) return {};
   const source = printingColorSource(face),
-    profile = source && PRINTING_COLOR_PROFILES[source.key];
+    profile = source && (PRINTING_COLOR_PROFILES[source.key] ?? LEGENDS_COLOR_PROFILES[source.key]);
   if (profile && profile.source === source?.source) return profile.materials;
   const old = calibratedDualFrameProfile(face);
   return old ? { [retroFrameAsset(face)]: old } : {};
