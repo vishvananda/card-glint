@@ -374,6 +374,86 @@ try {
     check(earlyHsbBitmapCache.stats.bytes === 16, 'Stamp material bytes unaccounted');
     earlyHsbBitmapCache.clear();
     check(earlyHsbBitmapCache.stats.bytes === 0, 'Stamp material leaked after eviction');
+    // The pinline palette follows frame colors, not the text-box material.
+    const pairBase = { ...base, colors: ['W', 'G'] };
+    for (const override of [
+      {},
+      { typeLine: 'Legendary Creature' },
+      { typeLine: 'Planeswalker' },
+      { typeLine: 'Legendary Land', colors: [], frameColors: ['W', 'G'] },
+      { typeLine: 'Artifact Creature' },
+    ]) {
+      const f = { ...pairBase, ...override },
+        mount = mountedSecurityStamp(f);
+      check(/(?:StampG|holo\/g)\.png$/.test(mount.image), 'GW left palette is wrong');
+      check(/(?:StampW|holo\/w)\.png$/.test(mount.rightImage), 'GW right palette is wrong');
+      check(canvasAssetUrls(f).includes(mount.rightImage), 'Right rim source not declared');
+      const recipe = mtg.describe(f, 'inspect').hologram;
+      check(recipe.mask.key === sharedMask.key, 'Palette rebuilt the optical mask');
+    }
+    const paletteSource = async (color) => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 40;
+      const c = canvas.getContext('2d');
+      c.fillStyle = color;
+      c.fillRect(0, 0, 100, 10);
+      c.fillStyle = '#ccc';
+      c.fillRect(0, 10, 100, 20);
+      return createImageBitmap(canvas);
+    };
+    const left = await paletteSource('#c03020'),
+      right = await paletteSource('#2040c0');
+    const paired = mountedSecurityStamp(pairBase);
+    const pairImages = new Map([
+      [paired.image, left],
+      [paired.rightImage, right],
+    ]);
+    readbacks = 0;
+    CanvasRenderingContext2D.prototype.getImageData = function (...args) {
+      readbacks++;
+      return readImage.apply(this, args);
+    };
+    let pairCold, pairWarm;
+    try {
+      pairCold = await prepareEarlyHsb(pairBase, pairImages, new AbortController().signal);
+      pairWarm = await prepareEarlyHsb(pairBase, pairImages, new AbortController().signal);
+      check(readbacks === 2, 'Two-color rim must read each source only once across warm reuse');
+      check(
+        pairCold.images.get(paired.image) === pairWarm.images.get(paired.image),
+        'Pair cache miss',
+      );
+    } finally {
+      CanvasRenderingContext2D.prototype.getImageData = readImage;
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = 100;
+    canvas.height = 40;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(pairCold.images.get(paired.image), 0, 0);
+    const pixels = ctx.getImageData(0, 0, 100, 40).data;
+    const pixel = (x, y) => [...pixels.slice((y * 100 + x) * 4, (y * 100 + x) * 4 + 4)];
+    check(pixel(5, 5).join() === '192,48,32,255', 'Left rim changed');
+    check(pixel(95, 5).join() === '32,64,192,255', 'Right rim missing');
+    check(pixel(49, 5)[0] > 100 && pixel(50, 5)[0] < 120, 'Center does not blend');
+    check(pixel(50, 20).join() === '204,204,204,255', 'Common oval artwork changed');
+    check(pixel(50, 35)[3] === 0, 'Palette made the mount opaque outside its silhouette');
+    let missingRight = false;
+    try {
+      await prepareEarlyHsb(
+        pairBase,
+        new Map([[paired.image, left]]),
+        new AbortController().signal,
+      );
+    } catch (e) {
+      missingRight = /stamp asset/.test(e.message);
+    }
+    check(missingRight, 'Missing right rim silently published');
+    pairCold.dispose();
+    pairWarm.dispose();
+    earlyHsbBitmapCache.clear();
+    left.close();
+    right.close();
     source.close();
     frame.close();
     stampImage.close();

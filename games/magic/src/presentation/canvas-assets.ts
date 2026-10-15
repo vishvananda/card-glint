@@ -221,6 +221,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
     return [
       ...plates,
       mountedSecurityStamp(face)?.image,
+      mountedSecurityStamp(face)?.rightImage,
       face.illustration,
       faceSetSymbol(face),
       ...faceManaAssets(face),
@@ -234,6 +235,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
     assets = profileAssets(profile, faceFrame(face));
   return [
     mountedSecurityStamp(face)?.image,
+    mountedSecurityStamp(face)?.rightImage,
     ...extraRuleAssets(face),
     assets.background,
     assets.frame,
