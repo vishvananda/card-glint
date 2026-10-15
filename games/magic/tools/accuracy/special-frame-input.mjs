@@ -1,3 +1,4 @@
+import { flipPrintingRecords } from './flip-printing-text.mjs';
 import { presentation } from './adapter.mjs';
 import { normalizePrintingText } from './printing-text.mjs';
 import { reviewedSpecialRecords } from './special-printing-corrections.mjs';
@@ -21,7 +22,8 @@ export function originalFaceRecord(card, data, records) {
     (r) =>
       r.identifiers?.scryfallId === card.id &&
       (r.faceName ?? r.name) === data.name &&
-      String(r.number).replace(/[ab]$/, '') === card.collector_number &&
+      String(r.number).replace(/[ab]$/, '') ===
+        String(card.collector_number).replace(/[ab]$/, '') &&
       (r.language ?? 'English') === 'English',
   );
   if (matches.length !== 1 || typeof matches[0].originalText !== 'string')
@@ -114,7 +116,7 @@ export function originalPanelType(card, data, original, records) {
 }
 
 export function specialFrameInput(card, side, reference, art, records) {
-  records = reviewedSpecialRecords(card, reference, records);
+  records = flipPrintingRecords(card, reviewedSpecialRecords(card, reference, records));
   const originals = [];
   const face = (data, physicalSide) => {
     const original = originalFaceRecord(card, data, records);

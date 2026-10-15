@@ -1,3 +1,4 @@
+import { standardTemplateRects } from './standard-frame-templates.js';
 import { splitHalfRects } from './split-frame.js';
 import { ADVENTURE_RECTS } from './adventure-frame.js';
 import { PREPARE_RECTS } from './prepare-frame.js';
@@ -68,6 +69,8 @@ export function faceFrame(face: RenderedCardInput): SingleFrame {
   return 'normal';
 }
 export function faceRects(face: RenderedCardInput): FaceRects {
+  const template = standardTemplateRects(face);
+  if (template) return template;
   if (face.layout === 'aftermath-top' || face.layout === 'aftermath-bottom')
     return aftermathRects(face.layout === 'aftermath-bottom');
   if (/^split-(old|eighth|m15)(-fuse)?$/.test(face.layout ?? '')) return splitHalfRects(face);

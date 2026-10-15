@@ -1,3 +1,4 @@
+import { standardTemplateAssets } from './standard-frame-templates.js';
 import { splitMaterialAssets } from './split-materials.js';
 import { splitFuseBridgeAssets } from './split-fuse-bridge.js';
 import { adventureAssets, isAdventure } from './adventure-frame.js';
@@ -165,6 +166,14 @@ export async function loadCanvasImages(
 }
 
 export function canvasAssetUrls(face: RenderedCardInput): (string | null | undefined)[] {
+  if (face.frameTemplate)
+    return [
+      ...standardTemplateAssets(face),
+      face.illustration,
+      faceSetSymbol(face),
+      ...faceManaAssets(face),
+      ...(face.faces ?? []).flatMap(faceManaAssets),
+    ];
   if (isPrepared(face))
     return [
       ...prepareAssets(face),

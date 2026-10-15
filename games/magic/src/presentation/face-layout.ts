@@ -19,6 +19,10 @@ export interface RulesParagraph {
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
   frameStyle?: 'modern' | 'retro';
+  /** Uncalibrated standard templates using pinned MSE defaults. */
+  frameTemplate?: 'future' | 'flip' | 'battle';
+  /** Printed Battle defense, independent of creature and planeswalker stats. */
+  defense?: string | number | null;
   /** Opt-in full frame plates, with their own art and text geometry. Omitted
    * retains the calibrated component frames. Ordinary modern faces and
    * validated spell splits ('eighth') only. */
@@ -87,6 +91,8 @@ export function faceStats(face: RenderedCardInput): { text: string; label: strin
     };
   if (face.loyalty != null && face.loyalty !== '')
     return { text: String(face.loyalty), label: `Starting loyalty ${face.loyalty}` };
+  if (face.defense != null && face.defense !== '')
+    return { text: String(face.defense), label: `Defense ${face.defense}` };
   return null;
 }
 

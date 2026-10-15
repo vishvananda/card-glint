@@ -111,3 +111,12 @@ statistics and crown assets and Beleren Bold Small Caps footer font. See
 [prepare-layout.md](prepare-layout.md) for source geometry, scan-bound wording
 provenance and the ordinary SOS validation scope. These assets remain external
 references and are not redistributed in the showcase.
+
+Future, Kamigawa flip and Battle defaults reference the same pinned Full Magic
+Pack: `magic-future.mse-style`, `magic-new-flip.mse-style`,
+`magic-m15-mainframe-battles.mse-style`, `magic-future-common.mse-include` and
+`magic-modules.mse-include/loyalty/defense.png`. The
+[template catalog](fixtures/templates/mse-standard.json) records source URLs,
+hashes, numeric fields and font names. MSE scripts are neither executed nor
+redistributed. Frame images and masks remain external URL references, with
+their original rights; this repository's code license does not cover them.

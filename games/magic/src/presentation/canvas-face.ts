@@ -1,3 +1,4 @@
+import { paintStandardTemplate, loadStandardTemplateFonts } from './standard-frame-paint.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { prepareManaNumerals } from './mana-numeral.js';
 import {
@@ -127,7 +128,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v103',
+    'canvas-face-v104',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -177,6 +178,9 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         isRetro(face) ? [retroFrameAsset(face), retroBorder(face)] : null,
         face.borderColor ?? null,
         face.frameAssetFamily ?? null,
+        face.frameTemplate ?? null,
+        face.defense ?? null,
+        face.frameTemplate ? face.faces?.map((child) => faceContentKey(child, mask)) : null,
         face.name,
         face.manaSymbols ?? [],
         face.symbolAdjustment ?? null,
@@ -293,6 +297,7 @@ export async function composeCardTexture(
     await Promise.all([
       (hooks?.loadFonts ?? loadCanvasFonts)(),
       nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
+      loadStandardTemplateFonts(input.face),
       faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
       isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),
       isRetro(input.face) ||
@@ -379,6 +384,10 @@ export function paintAssembledFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
+  if (face.frameTemplate) {
+    paintStandardTemplate(context, face, images, layer, underArt);
+    return;
+  }
   if (isPrepared(face)) {
     paintPrepareFace(context, face, images, underArt, layer);
     return;

@@ -12,6 +12,7 @@ export interface SplitPanel {
   rotation: number;
 }
 export function splitPanels(face: RenderedCardInput): SplitPanel[] {
+  if (face.frameTemplate) return [];
   if (!['split', 'aftermath'].includes(face.layout ?? '') || face.faces?.length !== 2) return [];
   const aftermath = isAftermath(face);
   const era = nativeSplitEra(face);

@@ -63,6 +63,19 @@ reflection on the sharp printed layer. `mtg` remains an alias for `magic`.
 
 ## Replacement asset candidates
 
+`frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
+pinned Magic Set Editor defaults. These are uncalibrated starting points, not
+scan-validated layouts. A flip input needs two `faces` in printed order; a Battle
+uses `defense` and is drawn in its physical portrait scan orientation. Future
+frames use their shaped art mask. These templates cannot be combined with
+`frameAssetFamily`. Missing required plates fail the complete face preparation.
+
+The [default catalog and review queue](standard-templates.md) also record source
+geometry for DFC, modern, eighth, retro, leveler, Saga and Adventure frames.
+Hosts should retain each double-sided face's own illustration and scan, and
+label an ordinary-frame fallback explicitly. The catalog does not imply that
+every source script or decorative variant is implemented.
+
 `frameAssetFamily: 'eighth' | 'm15-accurate'` selects complete Card Conjurer base
 plates with matching art apertures, text bounds, border masks and P/T badges.
 The default keeps existing calibrated frames. These candidates cover ordinary

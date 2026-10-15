@@ -23,6 +23,7 @@ const oldSets = new Set(
 );
 const whiteSets = new Set('2ed 3ed 4ed 5ed 6ed 7ed chr'.split(' '));
 export function isRetro(face: RenderedCardInput): boolean {
+  if (face.frameTemplate) return false;
   if (
     (face.layout && !['normal', 'token'].includes(face.layout)) ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
