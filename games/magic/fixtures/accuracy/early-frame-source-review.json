@@ -1,0 +1,3176 @@
+{
+  "schemaVersion": 1,
+  "status": "source-choice-review-not-production-defaults",
+  "scope": {
+    "sets": ["leg", "arn", "atq", "drk", "fem", "ice"],
+    "cards": 120,
+    "legends": 83,
+    "calibration": 36,
+    "validation": 36,
+    "otherSets": "One alphabetically selected ordinary English nonfoil high-resolution printing per available material. Raw scan visual transfer only; not accepted alignment measurements."
+  },
+  "method": "Compare source families with one candidate geometry per Legends material.\n\nScan poses are frozen upstream. Independent calibration/validation UUIDs were\nchosen before this study. Signed grayscale gradients suppress color/saturation\ndifferences; scores are diagnostic cosine similarity, not card accuracy percent.\nThis CPU-only search does not recapture a browser or fit any scan to a candidate.\n",
+  "windows": {
+    "stock-left": ["x", 10, 40, 150, 550],
+    "stock-right": ["x", 448, 479, 150, 550],
+    "stock-top": ["y", 12, 45, 85, 400],
+    "stock-bottom": ["y", 635, 670, 85, 400],
+    "art-left": ["x", 40, 73, 110, 340],
+    "art-right": ["x", 415, 449, 110, 340],
+    "art-top": ["y", 50, 85, 85, 400],
+    "art-bottom": ["y", 354, 387, 85, 400],
+    "paper-left": ["x", 40, 81, 450, 580],
+    "paper-right": ["x", 405, 450, 450, 580],
+    "paper-top": ["y", 395, 431, 85, 400],
+    "paper-bottom": ["y", 590, 629, 85, 400]
+  },
+  "sourceGeometry": "Current source, existing Fourth inset, existing Revised land crop, ABU; alternate Legends control for gold. Color calibration disabled. Candidate art aperture follows its frame. One axis scale/translation per material and family; no scan refitting.",
+  "sourceAssets": [
+    {
+      "key": "legends-current",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/old/legends/legendsFrameM.png",
+      "sha256": "3e854f3349289f5a1c9af7b1ce884f8a2701fad3b33ad290024ea021ec207c1b",
+      "bytes": 1932750,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:26.889Z",
+      "etag": "W/\"d02fb779e552bfd6ce36c929fb1b6891c9c77c005f32af232efb65765d11b11a\"",
+      "lastModified": null
+    },
+    {
+      "key": "legends-alternate",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/old/legends/m.png",
+      "sha256": "a7d64f18db4e2d1c279e22fbbdd57f4194f2b8618da172faec7d307cc529ad09",
+      "bytes": 568720,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:27.219Z",
+      "etag": "W/\"6b628aa36c89a30570c002afe42cacf6a4486c2f2c32c31be62f56e6acc14e6d\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-m",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/old/fourth/m.png",
+      "sha256": "d8751a742e74410f3d6882f6c42a6ac1c0301e582784bfe9a9060655ce7eaec3",
+      "bytes": 2712129,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:28.054Z",
+      "etag": "W/\"3ac26fa61a8fdc21cc2bd0fbc1cb335a1325121799c7e02686e28581f992493f\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-m",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/seventh/regular/m.png",
+      "sha256": "0f4160435d7ad858cef9a29964dec18daacbda05ad4b6f1b94cd7d97fccf205f",
+      "bytes": 1057072,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:28.489Z",
+      "etag": "W/\"13ee344e5a6fa9ece70797cd3915557cfd516511f6d482827b7a43a905c3beda\"",
+      "lastModified": null
+    },
+    {
+      "key": "lArabianNights",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/seventh/regular/lArabianNights.png",
+      "sha256": "a294fad264f66a5be8eafa079e708a2a1a29b2e2732d4287f0418771ecadd03c",
+      "bytes": 1019651,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:28.966Z",
+      "etag": "W/\"30814154b125747dc1f85a3453fc75175f4a1b096783f8ac422fab3a07ec00b3\"",
+      "lastModified": null
+    },
+    {
+      "key": "lAntiquities",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/seventh/regular/lAntiquities.png",
+      "sha256": "718f2d05a22e52c00ce829a537bd6e8fb57a9544a1c62e2ff252177dd114e454",
+      "bytes": 1008056,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:29.382Z",
+      "etag": "W/\"b91fe6d4ec75053696920d1028e8732c2e11726fa874a016ed2852461b476c4c\"",
+      "lastModified": null
+    },
+    {
+      "key": "lTheDark",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/seventh/regular/lTheDark.png",
+      "sha256": "7378eaf5e457ed97e918c532284a8b1868bb78010db7b8863af3905b1dd31280",
+      "bytes": 1021034,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:29.748Z",
+      "etag": "W/\"451d3e30482f214bdbded8dcc5338855e36b48dbfc01168258f8c120a457ce27\"",
+      "lastModified": null
+    },
+    {
+      "key": "lFallenEmpires",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/seventh/regular/lFallenEmpires.png",
+      "sha256": "76a754a7f43319d6d08156a7b4638dce21d8ff258a6b60b24d0f7e7c8af147f2",
+      "bytes": 1012128,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:30.154Z",
+      "etag": "W/\"78a0f39220277db1c347bd59d971b070f6a552bcf0e5f79840d7c02b71b57db4\"",
+      "lastModified": null
+    },
+    {
+      "key": "lIceAge",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/seventh/regular/lIceAge.png",
+      "sha256": "53aeac0b21ebfb186a3a8004db4ed359abf76f4b9ec060b1cbe7364e6457f476",
+      "bytes": 1035926,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-15T19:14:30.561Z",
+      "etag": "W/\"09f1895edf8f6c0ce412aab87f98b3c23406695ad5cba3a08642529f55b965dd\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-w",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/w.png",
+      "sha256": "d41b56f5bd1a4a0c08411f6902aec390656a04dfc264e55603092b9e6f1e51ae",
+      "bytes": 1994850,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:15.296Z",
+      "etag": "W/\"1e7062-HkLO19FreFZX4HMUDqnQMMAQDhg\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-u",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/u.png",
+      "sha256": "1b1afcea6d75638543da55a8b0a2a799aea87387d567efc44c9fada2e517bf6c",
+      "bytes": 2014403,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:14.340Z",
+      "etag": "W/\"1ebcc3-xedlQs+6ULLpyhCjFiSFpDXWOF8\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-b",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/b.png",
+      "sha256": "981e452d068e9aacdb201c77a975b74eacc59da2e48dd8ec3def925c42d0ba43",
+      "bytes": 1971517,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:16.282Z",
+      "etag": "W/\"1e153d-2HyVUmZxISsApW/wZtob+tao+9w\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-r",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/r.png",
+      "sha256": "b68e93a4b1e4c879412e0d267c7e0bbceb9c57634e34bc101e09b1322ad5bdc9",
+      "bytes": 2242478,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:17.031Z",
+      "etag": "W/\"2237ae-nazHXjqu6GjnRiDuE/po688ElhQ\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-g",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/g.png",
+      "sha256": "14f17c17ca890bbe71c4f27572739db2e542294b8c7160b156527e1f976c9730",
+      "bytes": 2424390,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:17.168Z",
+      "etag": "W/\"24fe46-X7WmqhKpGqYWKJO/g55RwOBG8xI\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-a",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/a.png",
+      "sha256": "79da5e06545af38e52499a8c97e547d84b38132d954240fb79431b26029a272e",
+      "bytes": 2141334,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:18.191Z",
+      "etag": "W/\"20ac96-rFNOP42kTYFC/u3/HHCLsaNPur0\"",
+      "lastModified": null
+    },
+    {
+      "key": "abu-l",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png",
+      "sha256": "cd080e7d5dfc32ac40c2af3507c55321318b90724c73d5ed45fa6db1916b2164",
+      "bytes": 2096443,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:19.362Z",
+      "etag": "W/\"1ffd3b-BkQ/OB0keI+vmgXPFzxvqMDnmvU\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-w",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png",
+      "sha256": "8052949d9fe2d28fe8ca40b381d5a1e2a1bbf0f2e6e3a7846363b8e6ef593bbe",
+      "bytes": 2348552,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:27.357Z",
+      "etag": "W/\"23d608-QfKQygi/4CoLn6LxvS/TXjzEou4\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-u",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png",
+      "sha256": "2972a77c490deacdf1e3c8e24b2a8ebb02edb66c3b39f3f5094caa83c3ecb74d",
+      "bytes": 2173072,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:27.346Z",
+      "etag": "W/\"212890-oU/ed5ztnWgL1EJpIo0NnFcGaFs\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-b",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/b.png",
+      "sha256": "5e980df74dc12b8fd57bbd6c12c4e0bba3c45c17971470aaac9fd78e9a0ab151",
+      "bytes": 2144554,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:27.953Z",
+      "etag": "W/\"20b92a-MV1mAewyKXlAeTitPs4ctc+zvbM\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-r",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",
+      "sha256": "124696583c40fa9076e8febccdd3466c929dbde53ecb8079662297d348df008d",
+      "bytes": 2407283,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:27.908Z",
+      "etag": "W/\"24bb73-X/xQN5suQbB/Rs06+UwEEheagrs\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-g",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",
+      "sha256": "65af2266e3af54c4f345fd52c39cecbc788070a69f2bae1bb81593d76aa664d6",
+      "bytes": 2460056,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:28.531Z",
+      "etag": "W/\"258998-rXJ77zd2Nb4+CVQfW5GTfuAfu08\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-a",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",
+      "sha256": "57adae1b5031a53f4b1078e7e6d0048e122ca43df419d65cf1b1950e03da7354",
+      "bytes": 2368109,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T02:47:28.685Z",
+      "etag": "W/\"24226d-ziGt9TcKdV/DHWHuG/0a0kROZuc\"",
+      "lastModified": null
+    },
+    {
+      "key": "fourth-l",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/l.png",
+      "sha256": "a96407e569bbcddaa8f4d7c27e94743f1f820cf262a527625a48ecfe73a1b46f",
+      "bytes": 2360107,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-13T04:57:36.473Z",
+      "etag": "W/\"24032b-R0spWBmp15hGJkTpOUk6cP74SY8\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-w",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/w.png",
+      "sha256": "2fc988fc7aeb82d6183200dbfdb9e0de5196197ada5d8e4eac7afff24cec2091",
+      "bytes": 2584389,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:44.642Z",
+      "etag": "W/\"276f45-bzO8bxJQmEY2KrMVA4t/5iJiwNM\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-u",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/u.png",
+      "sha256": "97aa1032bcf40d868cd7ffa9c188484248d362d2663c93314dac91a33110f7fc",
+      "bytes": 1239114,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:44.282Z",
+      "etag": "W/\"12e84a-RNBTE+CGhWEUiqNpHqBvdjRGoKo\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-b",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/b.png",
+      "sha256": "67590d7fb6ba60c445f24d0a07b3eaa45274582c1c82ecfb5a5424fd9914f278",
+      "bytes": 1688997,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:44.899Z",
+      "etag": "W/\"19c5a5-PADF3DENb07yaBXawh7Thl57Ph8\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-r",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/r.png",
+      "sha256": "1c431fa93806d76cbdbfe540d7cc0c0b8642dc8e230f2d95d82efaca24a35f8b",
+      "bytes": 1412201,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:44.992Z",
+      "etag": "W/\"158c69-ZZAvmGP44I+eceIAl3dkSSix0hg\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-g",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/g.png",
+      "sha256": "a62f3a473d9a173909184819826dbe8a05035d00b3358b894e38d7891210ae2b",
+      "bytes": 1228479,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:46.265Z",
+      "etag": "W/\"12bebf-jni87Lk0lxHIXgqxmZ6p5S4UFKg\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-a",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/a.png",
+      "sha256": "39a8a5806460b165226f052e31eeb44296872f93ed5c9a8eaba315696dc62f34",
+      "bytes": 1316992,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:46.327Z",
+      "etag": "W/\"141880-RPFial6dFe0BqgR6meNhz9A+KyU\"",
+      "lastModified": null
+    },
+    {
+      "key": "seventh-l",
+      "url": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/seventh/regular/l.png",
+      "sha256": "38606608ccdb788777b095f42210e87cbf6b3afd920b88de9f24794dbe424a95",
+      "bytes": 1093823,
+      "mime": "image/png",
+      "fetchedAt": "2026-10-12T00:30:47.500Z",
+      "etag": "W/\"10b0bf-J32iYrbwVu45PJb+ZgoLGRyzBAY\"",
+      "lastModified": null
+    }
+  ],
+  "groups": {
+    "A": {
+      "proposed": "fourth",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.022,
+              "shift": -1,
+              "calibrationScore": 0.5187502927162829,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.02,
+              "shift": 1,
+              "calibrationScore": 0.6724077915692431,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.03558195189137654,
+              "after": 0.595579042142763,
+              "regions": {
+                "stock-left": 0.8588138525008613,
+                "stock-right": 0.8388445993093783,
+                "art-left": 0.8046288509040995,
+                "art-right": 0.6462841169605641,
+                "paper-left": -0.029101097398173664,
+                "paper-right": -0.006968565979031677,
+                "stock-top": 0.4466193766957967,
+                "stock-bottom": 0.6284906776323715,
+                "art-top": 0.7174231260791688,
+                "art-bottom": 0.46962711656336176,
+                "paper-top": 0.8894336902819631,
+                "paper-bottom": 0.8828527621627966
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.009234757537790622,
+              "after": 0.6012269109146561,
+              "regions": {
+                "stock-left": 0.8064653641986139,
+                "stock-right": 0.953234414512867,
+                "art-left": 0.7651797692167043,
+                "art-right": 0.6201666982146762,
+                "paper-left": -0.018847157067328438,
+                "paper-right": -0.0070555064747477685,
+                "stock-top": 0.44649725786045336,
+                "stock-bottom": 0.7225294818519141,
+                "art-top": 0.7618261290268638,
+                "art-bottom": 0.5321819473941877,
+                "paper-top": 0.8660836231599897,
+                "paper-bottom": 0.7664609090816801
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 0.5,
+              "calibrationScore": 0.810206757717708,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.014,
+              "shift": 0.5,
+              "calibrationScore": 0.8360226152694977,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.19077251235329562,
+              "after": 0.8231146864936028,
+              "regions": {
+                "stock-left": 0.9197111606256025,
+                "stock-right": 0.43647758488031,
+                "art-left": 0.804211702443598,
+                "art-right": 0.8479678874380029,
+                "paper-left": 0.9080684831005952,
+                "paper-right": 0.9448037278181385,
+                "stock-top": 0.7728040391825197,
+                "stock-bottom": 0.7909096557043737,
+                "art-top": 0.8046646502041972,
+                "art-bottom": 0.9260315539698813,
+                "paper-top": 0.9082542844748797,
+                "paper-bottom": 0.8134715080811342
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.16963276702884833,
+              "after": 0.8220549176610423,
+              "regions": {
+                "stock-left": 0.9231183220810124,
+                "stock-right": 0.3495796216328303,
+                "art-left": 0.7735757799805023,
+                "art-right": 0.8580400419180721,
+                "paper-left": 0.9601969506024658,
+                "paper-right": 0.8988307598742481,
+                "stock-top": 0.8619767883384103,
+                "stock-bottom": 0.8120064458248368,
+                "art-top": 0.8197953434568658,
+                "art-bottom": 0.9379830551523198,
+                "paper-top": 0.8670044869321762,
+                "paper-bottom": 0.8025514161387671
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.004,
+              "shift": 1.5,
+              "calibrationScore": 0.6840494897784138,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.006,
+              "shift": -5.5,
+              "calibrationScore": 0.6523110061871568,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.17007968701982945,
+              "after": 0.6681802479827854,
+              "regions": {
+                "stock-left": 0.4057733171997191,
+                "stock-right": 0.06401733335889855,
+                "art-left": 0.8691940969744263,
+                "art-right": 0.8515552610152417,
+                "paper-left": 0.9380180267203551,
+                "paper-right": 0.9757389034018427,
+                "stock-top": 0.5117764714412462,
+                "stock-bottom": -0.014921376685291855,
+                "art-top": 0.8091277744747691,
+                "art-bottom": 0.9465487066270899,
+                "paper-top": 0.8207892995323145,
+                "paper-bottom": 0.8405451617328132
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.17859160151063155,
+              "after": 0.6500101216590805,
+              "regions": {
+                "stock-left": 0.37475012419997167,
+                "stock-right": -0.07996593395117169,
+                "art-left": 0.8175755519901401,
+                "art-right": 0.8382740853259,
+                "paper-left": 0.9716840801978418,
+                "paper-right": 0.9646969134041423,
+                "stock-top": 0.45521120906606116,
+                "stock-bottom": -0.0037519231847508126,
+                "art-top": 0.7940786398403132,
+                "art-bottom": 0.9359473222915193,
+                "paper-top": 0.8345894657667381,
+                "paper-bottom": 0.8970319249622607
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.03,
+              "shift": 0,
+              "calibrationScore": 0.7930999648301237,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.028,
+              "shift": -1,
+              "calibrationScore": 0.6993306666131662,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.13626191591358314,
+              "after": 0.7462153157216449,
+              "regions": {
+                "stock-left": 0.8375020605161728,
+                "stock-right": 0.7998298067042212,
+                "art-left": 0.5955520294508643,
+                "art-right": 0.6820731418109288,
+                "paper-left": 0.9028436115362126,
+                "paper-right": 0.9407991389623429,
+                "stock-top": 0.6871291067813966,
+                "stock-bottom": 0.6242045414311415,
+                "art-top": 0.5290425439855374,
+                "art-bottom": 0.592934998952407,
+                "paper-top": 0.8832345223322439,
+                "paper-bottom": 0.8794382861962708
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.14176184398513547,
+              "after": 0.7608526997742265,
+              "regions": {
+                "stock-left": 0.837890733330953,
+                "stock-right": 0.8780649952737998,
+                "art-left": 0.5851870299834019,
+                "art-right": 0.7164796064018035,
+                "paper-left": 0.9330810582445925,
+                "paper-right": 0.9112085690040553,
+                "stock-top": 0.743518459656435,
+                "stock-bottom": 0.629491742832244,
+                "art-top": 0.6305531777109431,
+                "art-bottom": 0.6261478734560916,
+                "paper-top": 0.7996267215705061,
+                "paper-bottom": 0.8389824298258922
+              }
+            }
+          }
+        }
+      }
+    },
+    "B": {
+      "proposed": "abu",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.024,
+              "shift": -1.5,
+              "calibrationScore": 0.45429203797399914,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.022,
+              "shift": 0.5,
+              "calibrationScore": 0.6976394270283183,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.09728532361736864,
+              "after": 0.5759657325011587,
+              "regions": {
+                "stock-left": 0.2735947464471852,
+                "stock-right": 0.9383920663396558,
+                "art-left": 0.7366239383317147,
+                "art-right": 0.9441148316600338,
+                "paper-left": -0.10040369024173254,
+                "paper-right": -0.06656966469286205,
+                "stock-top": 0.7491500736361946,
+                "stock-bottom": 0.21758971372895533,
+                "art-top": 0.9310433860796243,
+                "art-bottom": 0.5568100034850867,
+                "paper-top": 0.8164448254106118,
+                "paper-bottom": 0.9147985598294373
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.09649819478410929,
+              "after": 0.567839912912218,
+              "regions": {
+                "stock-left": 0.3048712343106762,
+                "stock-right": 0.9291154871925076,
+                "art-left": 0.708542607430353,
+                "art-right": 0.9162845102012828,
+                "paper-left": -0.07473185207376255,
+                "paper-right": -0.06186296174861797,
+                "stock-top": 0.7437653112124759,
+                "stock-bottom": 0.09919298209616245,
+                "art-top": 0.913549001789808,
+                "art-bottom": 0.5430681558821615,
+                "paper-top": 0.848031623671816,
+                "paper-bottom": 0.9442528549817526
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 1,
+              "calibrationScore": 0.7537587000759313,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.014,
+              "shift": 1.5,
+              "calibrationScore": 0.6503103557798755,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.29860100002750645,
+              "after": 0.7020345279279033,
+              "regions": {
+                "stock-left": 0.06227154315918694,
+                "stock-right": 0.7118304187196656,
+                "art-left": 0.915992734390751,
+                "art-right": 0.9041357988942867,
+                "paper-left": 0.9447290491116914,
+                "paper-right": 0.9835926561800055,
+                "stock-top": 0.25836183202347207,
+                "stock-bottom": 0.12751343878158575,
+                "art-top": 0.8552595640879577,
+                "art-bottom": 0.9090141844507317,
+                "paper-top": 0.8557461332953769,
+                "paper-bottom": 0.895966982040129
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.2942586753861203,
+              "after": 0.6831409788068719,
+              "regions": {
+                "stock-left": 0.08335801166125391,
+                "stock-right": 0.770113280291182,
+                "art-left": 0.8794838292753377,
+                "art-right": 0.8054649940191996,
+                "paper-left": 0.8960016918600303,
+                "paper-right": 0.9854127087160536,
+                "stock-top": 0.21271234679889636,
+                "stock-bottom": 0.04284756246970616,
+                "art-top": 0.7886028628008652,
+                "art-bottom": 0.8797164278324934,
+                "paper-top": 0.9172153320950873,
+                "paper-bottom": 0.9367626978623576
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.008,
+              "shift": 2,
+              "calibrationScore": 0.753779390186351,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.002,
+              "shift": -4,
+              "calibrationScore": 0.5705380443568844,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.32975929397208276,
+              "after": 0.6621587172716178,
+              "regions": {
+                "stock-left": 0.7717735113968208,
+                "stock-right": 0.17259791196325402,
+                "art-left": 0.8527097567225919,
+                "art-right": 0.819677348106777,
+                "paper-left": 0.9328200163380145,
+                "paper-right": 0.9730977965906475,
+                "stock-top": -0.09285158823171105,
+                "stock-bottom": 0.09867477958174019,
+                "art-top": 0.8726059900694972,
+                "art-bottom": 0.8855919499039329,
+                "paper-top": 0.7850244361109078,
+                "paper-bottom": 0.8741826987069395
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.32083210185272587,
+              "after": 0.6489785412426616,
+              "regions": {
+                "stock-left": 0.7725127239946574,
+                "stock-right": 0.2291302144278728,
+                "art-left": 0.787641924371162,
+                "art-right": 0.737756431329657,
+                "paper-left": 0.8822981974316879,
+                "paper-right": 0.9741848360114637,
+                "stock-top": -0.13148291956617653,
+                "stock-bottom": 0.10882722792271907,
+                "art-top": 0.8524040312337213,
+                "art-bottom": 0.8858560260724117,
+                "paper-top": 0.8244482696251513,
+                "paper-bottom": 0.8641655320576126
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.03,
+              "shift": 0,
+              "calibrationScore": 0.8756103692621152,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.03,
+              "shift": -1,
+              "calibrationScore": 0.8012080227594242,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.17005472893906087,
+              "after": 0.8384091960107698,
+              "regions": {
+                "stock-left": 0.7340819469335482,
+                "stock-right": 0.8446243041294623,
+                "art-left": 0.8610912467546028,
+                "art-right": 0.9590825348931943,
+                "paper-left": 0.877485837624126,
+                "paper-right": 0.9772963452377581,
+                "stock-top": 0.7044791394661736,
+                "stock-bottom": 0.4891920772960598,
+                "art-top": 0.9651091327466903,
+                "art-bottom": 0.8128410596898911,
+                "paper-top": 0.898000929676358,
+                "paper-bottom": 0.9376257976813728
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.174719827990612,
+              "after": 0.8234857876754367,
+              "regions": {
+                "stock-left": 0.7252933449807396,
+                "stock-right": 0.8552243397990806,
+                "art-left": 0.8269270094801143,
+                "art-right": 0.961505427660478,
+                "paper-left": 0.925890547247062,
+                "paper-right": 0.9727818594987514,
+                "stock-top": 0.6613487136183667,
+                "stock-bottom": 0.3783054689339257,
+                "art-top": 0.9146401435544561,
+                "art-bottom": 0.7329359033947217,
+                "paper-top": 0.9448035364680777,
+                "paper-bottom": 0.9821731574694665
+              }
+            }
+          }
+        }
+      }
+    },
+    "G": {
+      "proposed": "fourth",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.024,
+              "shift": -1.5,
+              "calibrationScore": 0.49770746126686843,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.022,
+              "shift": 0.5,
+              "calibrationScore": 0.5627389101751038,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.09105393510473543,
+              "after": 0.530223185720986,
+              "regions": {
+                "stock-left": 0.7659903956007764,
+                "stock-right": 0.9473757467105051,
+                "art-left": 0.6372027068217896,
+                "art-right": 0.9137737943852015,
+                "paper-left": -0.33997590316372484,
+                "paper-right": 0.061878027246662914,
+                "stock-top": 0.7830486054459453,
+                "stock-bottom": 0.4590912814035121,
+                "art-top": 0.8231737534506675,
+                "art-bottom": 0.484009654820443,
+                "paper-top": 0.29660085582573115,
+                "paper-bottom": 0.5305093101043239
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.07110872871589903,
+              "after": 0.5416929346376419,
+              "regions": {
+                "stock-left": 0.7827529964029856,
+                "stock-right": 0.953430575353075,
+                "art-left": 0.649949381518114,
+                "art-right": 0.88953714297176,
+                "paper-left": -0.32390505655681656,
+                "paper-right": 0.10304820519866185,
+                "stock-top": 0.8512206932793414,
+                "stock-bottom": 0.5376653218116305,
+                "art-top": 0.7665558653480105,
+                "art-bottom": 0.38198218641582604,
+                "paper-top": 0.44132750512154956,
+                "paper-bottom": 0.4667503987875662
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 1.5,
+              "calibrationScore": 0.8493012118084887,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.012,
+              "shift": 0.5,
+              "calibrationScore": 0.8136580700172003,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.2689098001903146,
+              "after": 0.8314796409128445,
+              "regions": {
+                "stock-left": 0.7230728067484367,
+                "stock-right": 0.9207541965616032,
+                "art-left": 0.835529539291192,
+                "art-right": 0.8813683819002364,
+                "paper-left": 0.8351079330484893,
+                "paper-right": 0.8999744133009756,
+                "stock-top": 0.8239131123134743,
+                "stock-bottom": 0.7612148003978741,
+                "art-top": 0.9144526653027204,
+                "art-bottom": 0.9068620081629462,
+                "paper-top": 0.7141101319428358,
+                "paper-bottom": 0.7613957019833512
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.24306064933981286,
+              "after": 0.8384331962119816,
+              "regions": {
+                "stock-left": 0.7434610777468791,
+                "stock-right": 0.931599161225855,
+                "art-left": 0.853167990446587,
+                "art-right": 0.8862508191574103,
+                "paper-left": 0.8570889136191697,
+                "paper-right": 0.9298852292853124,
+                "stock-top": 0.8152296074600303,
+                "stock-bottom": 0.7350914696717983,
+                "art-top": 0.9299068335837833,
+                "art-bottom": 0.8624790184820427,
+                "paper-top": 0.8173979099711216,
+                "paper-bottom": 0.6996403238937904
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.006,
+              "shift": 2.5,
+              "calibrationScore": 0.6343700467147843,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.004,
+              "shift": -5.5,
+              "calibrationScore": 0.5727357268973171,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.11171477768995887,
+              "after": 0.6035528868060507,
+              "regions": {
+                "stock-left": 0.30150877523095043,
+                "stock-right": 0.07878817365842716,
+                "art-left": 0.8255772533892358,
+                "art-right": 0.8681300566157137,
+                "paper-left": 0.8351760862227358,
+                "paper-right": 0.8970399351716425,
+                "stock-top": 0.2839066490532282,
+                "stock-bottom": 0.007965019597457075,
+                "art-top": 0.8894483310113257,
+                "art-bottom": 0.8867281096879822,
+                "paper-top": 0.6130323100210989,
+                "paper-bottom": 0.7553339420128102
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.11600487957787559,
+              "after": 0.6047328120039028,
+              "regions": {
+                "stock-left": 0.31067547456205397,
+                "stock-right": 0.14432730749866593,
+                "art-left": 0.8179555016126587,
+                "art-right": 0.8696573601664263,
+                "paper-left": 0.8624558533511711,
+                "paper-right": 0.9297422381150934,
+                "stock-top": 0.16436568475098362,
+                "stock-bottom": 0.0026169866264519467,
+                "art-top": 0.8906973759729233,
+                "art-bottom": 0.8408075525443259,
+                "paper-top": 0.7499100320884489,
+                "paper-bottom": 0.6735823767576306
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.034,
+              "shift": -1.5,
+              "calibrationScore": 0.768333471872413,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.028,
+              "shift": -1,
+              "calibrationScore": 0.7984638111027941,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.13429749764873058,
+              "after": 0.7833986414876035,
+              "regions": {
+                "stock-left": 0.9110416053088308,
+                "stock-right": 0.8911823902365594,
+                "art-left": 0.4473798712088117,
+                "art-right": 0.7560809464877278,
+                "paper-left": 0.8279322059648643,
+                "paper-right": 0.7763838120276844,
+                "stock-top": 0.7728756985838907,
+                "stock-bottom": 0.6858266213175399,
+                "art-top": 0.9071063410422306,
+                "art-bottom": 0.805712373090958,
+                "paper-top": 0.7042993701169761,
+                "paper-bottom": 0.9149624624651687
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.12393449824845987,
+              "after": 0.7869552593227526,
+              "regions": {
+                "stock-left": 0.9177792578467486,
+                "stock-right": 0.9053667938000115,
+                "art-left": 0.43673154869476694,
+                "art-right": 0.7272656709250865,
+                "paper-left": 0.8699924974239945,
+                "paper-right": 0.762466853618437,
+                "stock-top": 0.7983748565207306,
+                "stock-bottom": 0.6597238042313613,
+                "art-top": 0.9375627453013301,
+                "art-bottom": 0.8189987030173995,
+                "paper-top": 0.7953928752847244,
+                "paper-bottom": 0.8138075052084408
+              }
+            }
+          }
+        }
+      }
+    },
+    "L": {
+      "proposed": "fourth",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.02,
+              "shift": -0.5,
+              "calibrationScore": 0.3435281991650161,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.022,
+              "shift": 0.5,
+              "calibrationScore": 0.607991637839428,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.05967107625512085,
+              "after": 0.4757599185022221,
+              "regions": {
+                "stock-left": 0.4956565941929874,
+                "stock-right": 0.8994718885625902,
+                "art-left": 0.3182471646484422,
+                "art-right": 0.36183535365075103,
+                "paper-left": -0.009664038070802695,
+                "paper-right": -0.0043777679938715825,
+                "stock-top": 0.6513760597098284,
+                "stock-bottom": 0.6613766027379067,
+                "art-top": 0.6224080939916822,
+                "art-bottom": 0.5775227272526052,
+                "paper-top": 0.33320661937816637,
+                "paper-bottom": 0.8020597239663794
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.047829811785497986,
+              "after": 0.4512068897250975,
+              "regions": {
+                "stock-left": 0.45313238276804896,
+                "stock-right": 0.7468401661140477,
+                "art-left": 0.29498299864864663,
+                "art-right": 0.3029894910656511,
+                "paper-left": -0.014233274463897463,
+                "paper-right": 0.00544988544844659,
+                "stock-top": 0.65296600662123,
+                "stock-bottom": 0.6502119599223706,
+                "art-top": 0.7345440563977875,
+                "art-bottom": 0.4760315987673663,
+                "paper-top": 0.33203061519601157,
+                "paper-bottom": 0.7795367902154606
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 0.5,
+              "calibrationScore": 0.6434943323621172,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.012,
+              "shift": 1,
+              "calibrationScore": 0.6104445778428845,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": -0.03411010111488563,
+              "after": 0.6269694551025009,
+              "regions": {
+                "stock-left": 0.903200388724194,
+                "stock-right": 0.6735115520772885,
+                "art-left": 0.768110874517271,
+                "art-right": 0.7987065746883092,
+                "paper-left": 0.1971483907539373,
+                "paper-right": 0.5202882134117031,
+                "stock-top": 0.4585059727912497,
+                "stock-bottom": 0.7024795958379223,
+                "art-top": 0.7677291071179959,
+                "art-bottom": 0.8414089923382867,
+                "paper-top": 0.630237622656276,
+                "paper-bottom": 0.2623061763155769
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": -0.011843621389684788,
+              "after": 0.6516540589075339,
+              "regions": {
+                "stock-left": 0.9673392152256381,
+                "stock-right": 0.7246209926705248,
+                "art-left": 0.7496791715365085,
+                "art-right": 0.7625083763843764,
+                "paper-left": 0.21093447534929957,
+                "paper-right": 0.5079126269049388,
+                "stock-top": 0.7182485459672446,
+                "stock-bottom": 0.6856032145815063,
+                "art-top": 0.7381696882263831,
+                "art-bottom": 0.8258740236578119,
+                "paper-top": 0.6154917427239885,
+                "paper-bottom": 0.3134666336621866
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.006,
+              "shift": 2,
+              "calibrationScore": 0.44570467045704837,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.004,
+              "shift": -4.5,
+              "calibrationScore": 0.4691166732980671,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.013718143558523781,
+              "after": 0.45741067187755774,
+              "regions": {
+                "stock-left": 0.41402146108208593,
+                "stock-right": 0.22109643573007165,
+                "art-left": 0.8405803140975083,
+                "art-right": 0.6803258611537836,
+                "paper-left": 0.08921215587657752,
+                "paper-right": 0.4289917948022629,
+                "stock-top": 0.18143823672936116,
+                "stock-bottom": 0.004875345968412725,
+                "art-top": 0.8067588834469083,
+                "art-bottom": 0.8955496927208997,
+                "paper-top": 0.5670370317203106,
+                "paper-bottom": 0.3590408492025103
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.013644755947678496,
+              "after": 0.4681785926020793,
+              "regions": {
+                "stock-left": 0.4055460831305678,
+                "stock-right": 0.34216493438184137,
+                "art-left": 0.8144294392562348,
+                "art-right": 0.6685006071336593,
+                "paper-left": 0.10431676565139192,
+                "paper-right": 0.4467822009038098,
+                "stock-top": 0.1779404359350186,
+                "stock-bottom": 0.013663987843013302,
+                "art-top": 0.8389221086957526,
+                "art-bottom": 0.87623302957979,
+                "paper-top": 0.5255365992300133,
+                "paper-bottom": 0.40410691948385874
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.03,
+              "shift": 0,
+              "calibrationScore": 0.6911635589500852,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.02,
+              "shift": -0.5,
+              "calibrationScore": 0.4849756802117559,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.175690320986377,
+              "after": 0.5880696195809206,
+              "regions": {
+                "stock-left": 0.8181381187400858,
+                "stock-right": 0.8107370090701096,
+                "art-left": 0.22593043376620922,
+                "art-right": 0.5806244900669862,
+                "paper-left": 0.8663642944019155,
+                "paper-right": 0.8451870076552046,
+                "stock-top": 0.14189325017318116,
+                "stock-bottom": 0.6509795282773885,
+                "art-top": 0.3828795808701493,
+                "art-bottom": 0.5711932966063549,
+                "paper-top": 0.8487962115982205,
+                "paper-bottom": 0.3141122137452414
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.15561731650885993,
+              "after": 0.542039317228706,
+              "regions": {
+                "stock-left": 0.8713248507580267,
+                "stock-right": 0.7009436494424184,
+                "art-left": 0.3136501876019502,
+                "art-right": 0.4967590002703187,
+                "paper-left": 0.8961087310714398,
+                "paper-right": 0.8352909480381936,
+                "stock-top": 0.06184181327789619,
+                "stock-bottom": 0.6253898077614998,
+                "art-top": 0.19156324492719715,
+                "art-bottom": 0.40074196149244123,
+                "paper-top": 0.7961161884888918,
+                "paper-bottom": 0.3147414236141994
+              }
+            }
+          }
+        }
+      }
+    },
+    "M": {
+      "proposed": "fourth",
+      "reason": "Fourth texture matches the visible printed grain; current source wins boundary-only scoring. Keep geometry and texture findings separate.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1,
+              "shift": 0.5,
+              "calibrationScore": 0.9044235819321399,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.004,
+              "shift": 0,
+              "calibrationScore": 0.8651619508045959,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 8,
+              "before": 0.7995741725218559,
+              "after": 0.8847927663683679,
+              "regions": {
+                "stock-left": 0.9038793155058054,
+                "stock-right": 0.9173604290853106,
+                "art-left": 0.8788016048601065,
+                "art-right": 0.9223149192042543,
+                "paper-left": 0.9046381741419314,
+                "paper-right": 0.8995470487954316,
+                "stock-top": 0.8212992273395279,
+                "stock-bottom": 0.8734283714646659,
+                "art-top": 0.9125303809121807,
+                "art-bottom": 0.9271522546015118,
+                "paper-top": 0.7623580240639035,
+                "paper-bottom": 0.8942034464457852
+              }
+            },
+            "validation": {
+              "count": 8,
+              "before": 0.7870585902049707,
+              "after": 0.8721122519565707,
+              "regions": {
+                "stock-left": 0.909877133674056,
+                "stock-right": 0.9076510632040695,
+                "art-left": 0.8401100409904263,
+                "art-right": 0.9339209742182112,
+                "paper-left": 0.9017991738330893,
+                "paper-right": 0.8981447181599003,
+                "stock-top": 0.7477743289028423,
+                "stock-bottom": 0.8285724383693986,
+                "art-top": 0.933798550724432,
+                "art-bottom": 0.9178615300610091,
+                "paper-top": 0.7291501399804832,
+                "paper-bottom": 0.9166869313609305
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.018,
+              "shift": 0.5,
+              "calibrationScore": 0.8090248560536261,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.014,
+              "shift": 0.5,
+              "calibrationScore": 0.8770700925361191,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 8,
+              "before": 0.13920013744057563,
+              "after": 0.8430474742948726,
+              "regions": {
+                "stock-left": 0.8910963840509768,
+                "stock-right": 0.6348478036446845,
+                "art-left": 0.8191079372997824,
+                "art-right": 0.8805145399909242,
+                "paper-left": 0.8440536657243806,
+                "paper-right": 0.7845288056110074,
+                "stock-top": 0.905013980760217,
+                "stock-bottom": 0.8448020749175608,
+                "art-top": 0.8828239702294197,
+                "art-bottom": 0.9200618634318224,
+                "paper-top": 0.7964999573153138,
+                "paper-bottom": 0.9132187085623812
+              }
+            },
+            "validation": {
+              "count": 8,
+              "before": 0.13939759478734765,
+              "after": 0.8274625191574572,
+              "regions": {
+                "stock-left": 0.8807183190521339,
+                "stock-right": 0.6567267990452553,
+                "art-left": 0.7561125320478288,
+                "art-right": 0.9071724251341877,
+                "paper-left": 0.8658993235199282,
+                "paper-right": 0.7999291247386229,
+                "stock-top": 0.8139467144706631,
+                "stock-bottom": 0.7888571898356711,
+                "art-top": 0.9277164479392708,
+                "art-bottom": 0.8960107484424714,
+                "paper-top": 0.7023919279548654,
+                "paper-bottom": 0.9340686777085873
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.008,
+              "shift": 1,
+              "calibrationScore": 0.7149021262343968,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.006,
+              "shift": -5.5,
+              "calibrationScore": 0.6739883328840334,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 8,
+              "before": 0.19822987490377164,
+              "after": 0.6944452295592152,
+              "regions": {
+                "stock-left": 0.9079126129890936,
+                "stock-right": -0.17509693925193193,
+                "art-left": 0.8313783282725111,
+                "art-right": 0.8941787734557687,
+                "paper-left": 0.8848192258923665,
+                "paper-right": 0.9462207560485734,
+                "stock-top": 0.47220569989650346,
+                "stock-bottom": -0.03501122643310045,
+                "art-top": 0.888353353000135,
+                "art-bottom": 0.9348632032339728,
+                "paper-top": 0.8177776716301175,
+                "paper-bottom": 0.9657412959765728
+              }
+            },
+            "validation": {
+              "count": 8,
+              "before": 0.1873390411653285,
+              "after": 0.6792805932240535,
+              "regions": {
+                "stock-left": 0.9253441522158758,
+                "stock-right": -0.1607630500639824,
+                "art-left": 0.7615524691344302,
+                "art-right": 0.8969797717652273,
+                "paper-left": 0.881193189558028,
+                "paper-right": 0.9484382614281217,
+                "stock-top": 0.5134234973163261,
+                "stock-bottom": -0.03448529200864469,
+                "art-top": 0.9396247823141064,
+                "art-bottom": 0.9185795721877704,
+                "paper-top": 0.6269933503862233,
+                "paper-bottom": 0.9344864144551587
+              }
+            }
+          }
+        },
+        "legends-alternate": {
+          "fit": {
+            "x": {
+              "scale": 0.998,
+              "shift": 0,
+              "calibrationScore": 0.8534618666288264,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 0.998,
+              "shift": -1,
+              "calibrationScore": 0.696404072160226,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 8,
+              "before": 0.6468165734557352,
+              "after": 0.7749329693945263,
+              "regions": {
+                "stock-left": 0.7596284796107695,
+                "stock-right": 0.9387227401330898,
+                "art-left": 0.8014617073185548,
+                "art-right": 0.8903851666796183,
+                "paper-left": 0.8282102151646669,
+                "paper-right": 0.9023628908662583,
+                "stock-top": 0.7132150061796787,
+                "stock-bottom": 0.6910266250410886,
+                "art-top": 0.5308800697502314,
+                "art-bottom": 0.772676476599276,
+                "paper-top": 0.7135839622121058,
+                "paper-bottom": 0.7570422931789764
+              }
+            },
+            "validation": {
+              "count": 8,
+              "before": 0.6213106583799445,
+              "after": 0.7567466007502146,
+              "regions": {
+                "stock-left": 0.7394576415794413,
+                "stock-right": 0.8987014225412464,
+                "art-left": 0.7915998695331252,
+                "art-right": 0.9023077424430546,
+                "paper-left": 0.837175921280893,
+                "paper-right": 0.8929659361206395,
+                "stock-top": 0.5886656398279273,
+                "stock-bottom": 0.6767191242195539,
+                "art-top": 0.5803093438628049,
+                "art-bottom": 0.7338105619161683,
+                "paper-top": 0.7166624385606453,
+                "paper-bottom": 0.7225835671170757
+              }
+            }
+          }
+        }
+      }
+    },
+    "R": {
+      "proposed": "fourth",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.024,
+              "shift": -1,
+              "calibrationScore": 0.49086400743184866,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.024,
+              "shift": 1.5,
+              "calibrationScore": 0.6026815344282616,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.05601861526287695,
+              "after": 0.546772770930055,
+              "regions": {
+                "stock-left": 0.8145353915743999,
+                "stock-right": 0.8610908514562312,
+                "art-left": 0.6864870038765187,
+                "art-right": 0.7425751009692704,
+                "paper-left": 0.0419747653182299,
+                "paper-right": -0.20147906860355808,
+                "stock-top": 0.8432350178664813,
+                "stock-bottom": 0.23528048273908364,
+                "art-top": 0.8550774207950906,
+                "art-bottom": 0.5780485303560347,
+                "paper-top": 0.22665923844638142,
+                "paper-bottom": 0.8777885163664972
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.037795395851125374,
+              "after": 0.5182788520804357,
+              "regions": {
+                "stock-left": 0.7696224446537795,
+                "stock-right": 0.830389695189643,
+                "art-left": 0.7000344279719256,
+                "art-right": 0.773477363138297,
+                "paper-left": 0.07314057022669493,
+                "paper-right": -0.1955229563572199,
+                "stock-top": 0.7615732570222131,
+                "stock-bottom": 0.19131834379388496,
+                "art-top": 0.7139632274716814,
+                "art-bottom": 0.5302871201963485,
+                "paper-top": 0.1747554802454857,
+                "paper-bottom": 0.896307251412494
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 1.5,
+              "calibrationScore": 0.8616888624345989,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.014,
+              "shift": 1,
+              "calibrationScore": 0.8625970226487252,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.13529820785961266,
+              "after": 0.862142942541662,
+              "regions": {
+                "stock-left": 0.8108420108678687,
+                "stock-right": 0.8732965002118753,
+                "art-left": 0.8174645376310222,
+                "art-right": 0.8534225999625711,
+                "paper-left": 0.9491047378406973,
+                "paper-right": 0.8660027880935586,
+                "stock-top": 0.8397032186236195,
+                "stock-bottom": 0.8347767692077823,
+                "art-top": 0.9021893537244797,
+                "art-bottom": 0.9693673524297304,
+                "paper-top": 0.6802549580077591,
+                "paper-bottom": 0.9492904838989801
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.15084756485656242,
+              "after": 0.8560611462380854,
+              "regions": {
+                "stock-left": 0.7638253682693791,
+                "stock-right": 0.8366317889398317,
+                "art-left": 0.9214403962888105,
+                "art-right": 0.7876901410966308,
+                "paper-left": 0.9272957389993494,
+                "paper-right": 0.8678560199606513,
+                "stock-top": 0.8060614133252956,
+                "stock-bottom": 0.782278549693461,
+                "art-top": 0.940526286837817,
+                "art-bottom": 0.9501045480157557,
+                "paper-top": 0.730556022567128,
+                "paper-bottom": 0.9584674808629151
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.006,
+              "shift": 2,
+              "calibrationScore": 0.6441868593988834,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.008,
+              "shift": -5,
+              "calibrationScore": 0.6338445287917922,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.14304394566393147,
+              "after": 0.6390156940953378,
+              "regions": {
+                "stock-left": 0.2961198700537646,
+                "stock-right": -0.06357089006881483,
+                "art-left": 0.8306678000215317,
+                "art-right": 0.917109600031428,
+                "paper-left": 0.9445644467051599,
+                "paper-right": 0.9402303296502306,
+                "stock-top": 0.283696539823714,
+                "stock-bottom": -0.0022849200843653096,
+                "art-top": 0.8979303302690194,
+                "art-bottom": 0.9685792840292713,
+                "paper-top": 0.6779700758483691,
+                "paper-bottom": 0.9771758628647447
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.16299619711819677,
+              "after": 0.6308380083980448,
+              "regions": {
+                "stock-left": 0.2631034388271717,
+                "stock-right": -0.10487999187558836,
+                "art-left": 0.9202840800230432,
+                "art-right": 0.9466187261049657,
+                "paper-left": 0.8878908467170923,
+                "paper-right": 0.945261146621272,
+                "stock-top": 0.32919761525234936,
+                "stock-bottom": -0.010715396119137483,
+                "art-top": 0.8005186088697387,
+                "art-bottom": 0.9608122865509899,
+                "paper-top": 0.6532959415302514,
+                "paper-bottom": 0.9786687982743898
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.032,
+              "shift": 0,
+              "calibrationScore": 0.7883974935662571,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.032,
+              "shift": 0,
+              "calibrationScore": 0.7528869953133842,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.1196493267962851,
+              "after": 0.7706422444398207,
+              "regions": {
+                "stock-left": 0.8666274806242027,
+                "stock-right": 0.8179322771473131,
+                "art-left": 0.47591191030006974,
+                "art-right": 0.6745940614817663,
+                "paper-left": 0.9568386747260516,
+                "paper-right": 0.9384805571181389,
+                "stock-top": 0.7241754818046846,
+                "stock-bottom": 0.7560109781441028,
+                "art-top": 0.8198602455653368,
+                "art-bottom": 0.6436587547207389,
+                "paper-top": 0.6798261837975788,
+                "paper-bottom": 0.893790327847863
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.08401126516703329,
+              "after": 0.7796127776373215,
+              "regions": {
+                "stock-left": 0.8276006383009343,
+                "stock-right": 0.7862392051999383,
+                "art-left": 0.7726115955223358,
+                "art-right": 0.7575402076392576,
+                "paper-left": 0.9311837080182616,
+                "paper-right": 0.9407447221266427,
+                "stock-top": 0.6948025420626132,
+                "stock-bottom": 0.7351074918059894,
+                "art-top": 0.72419594836337,
+                "art-bottom": 0.5664819725371926,
+                "paper-top": 0.7136869363189958,
+                "paper-bottom": 0.9051583637523272
+              }
+            }
+          }
+        }
+      }
+    },
+    "U": {
+      "proposed": "fourth",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.024,
+              "shift": -1,
+              "calibrationScore": 0.5006631163569407,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.02,
+              "shift": 1,
+              "calibrationScore": 0.6259447516199893,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.01383700279136109,
+              "after": 0.563303933988465,
+              "regions": {
+                "stock-left": 0.9629874942122335,
+                "stock-right": 0.7841581034482793,
+                "art-left": 0.7711757373060579,
+                "art-right": 0.5388824041377495,
+                "paper-left": -0.013610997761706697,
+                "paper-right": -0.039614043200969104,
+                "stock-top": 0.5216304726708847,
+                "stock-bottom": 0.6607396911665926,
+                "art-top": 0.7591905518938569,
+                "art-bottom": 0.47702620017844966,
+                "paper-top": 0.5592507691899058,
+                "paper-bottom": 0.777830824620246
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": -0.0026629395857952127,
+              "after": 0.5517559976074417,
+              "regions": {
+                "stock-left": 0.7932889077115787,
+                "stock-right": 0.7113047681196302,
+                "art-left": 0.7576197135924876,
+                "art-right": 0.6980863289213529,
+                "paper-left": 0.007975109542721093,
+                "paper-right": -0.061445148321311684,
+                "stock-top": 0.5032806319173442,
+                "stock-bottom": 0.6969968189251332,
+                "art-top": 0.8486943206437687,
+                "art-bottom": 0.45426660841294286,
+                "paper-top": 0.5524998176554261,
+                "paper-bottom": 0.6585040941682263
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 1,
+              "calibrationScore": 0.8382546977162498,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.014,
+              "shift": 0.5,
+              "calibrationScore": 0.8391178266270645,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.12467250054817033,
+              "after": 0.8386862621716571,
+              "regions": {
+                "stock-left": 0.9459211971129531,
+                "stock-right": 0.7495898658426856,
+                "art-left": 0.8995763152106403,
+                "art-right": 0.7369861760180645,
+                "paper-left": 0.9033724646629218,
+                "paper-right": 0.7940821674502341,
+                "stock-top": 0.8770580466439791,
+                "stock-bottom": 0.9192994410912869,
+                "art-top": 0.90247874902025,
+                "art-bottom": 0.8860896809247675,
+                "paper-top": 0.6249236434357681,
+                "paper-bottom": 0.8248573986463349
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.07230568067764928,
+              "after": 0.8336615879014172,
+              "regions": {
+                "stock-left": 0.6977390737742245,
+                "stock-right": 0.8130399583130281,
+                "art-left": 0.8693074954168186,
+                "art-right": 0.8341327028725273,
+                "paper-left": 0.8866203625893518,
+                "paper-right": 0.8376675072719864,
+                "stock-top": 0.878323017105074,
+                "stock-bottom": 0.9142826268601791,
+                "art-top": 0.7741739292955662,
+                "art-bottom": 0.9244582268558754,
+                "paper-top": 0.6883495950734496,
+                "paper-bottom": 0.8858445593889246
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.006,
+              "shift": 2,
+              "calibrationScore": 0.6244689137190643,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.004,
+              "shift": -5.5,
+              "calibrationScore": 0.6547380109078224,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.10856644060649441,
+              "after": 0.6396034623134432,
+              "regions": {
+                "stock-left": 0.2859641408066172,
+                "stock-right": 0.2130968107434794,
+                "art-left": 0.8791692604895762,
+                "art-right": 0.7348846159117286,
+                "paper-left": 0.864948979301534,
+                "paper-right": 0.7687496750614502,
+                "stock-top": 0.5840667170640759,
+                "stock-bottom": 0.017880124652400544,
+                "art-top": 0.9246349390773775,
+                "art-bottom": 0.9100145894721325,
+                "paper-top": 0.5678774224355065,
+                "paper-bottom": 0.9239542727454412
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.16344977417922277,
+              "after": 0.6342304498116993,
+              "regions": {
+                "stock-left": 0.23400636987264267,
+                "stock-right": 0.24279118317138798,
+                "art-left": 0.8671161513184934,
+                "art-right": 0.8226186664615294,
+                "paper-left": 0.9035921359240527,
+                "paper-right": 0.8083545176590412,
+                "stock-top": 0.46358247543139386,
+                "stock-bottom": 0.020532338090332912,
+                "art-top": 0.8622842653333445,
+                "art-bottom": 0.8972865727305258,
+                "paper-top": 0.5837258942849359,
+                "paper-bottom": 0.9048748274627113
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.028,
+              "shift": 1,
+              "calibrationScore": 0.837437716851858,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.032,
+              "shift": -0.5,
+              "calibrationScore": 0.7254997304967977,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.07214426551285735,
+              "after": 0.7814687236743277,
+              "regions": {
+                "stock-left": 0.9667675390066963,
+                "stock-right": 0.8195340392511492,
+                "art-left": 0.8019068666313298,
+                "art-right": 0.6411172109200516,
+                "paper-left": 0.8790515221472884,
+                "paper-right": 0.9162491231546336,
+                "stock-top": 0.7063335679344831,
+                "stock-bottom": 0.8164167940519911,
+                "art-top": 0.7605584480803321,
+                "art-bottom": 0.5517488300003138,
+                "paper-top": 0.6274294706437048,
+                "paper-bottom": 0.8905112722699612
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.05716519433487591,
+              "after": 0.7609677788114942,
+              "regions": {
+                "stock-left": 0.7129416238537688,
+                "stock-right": 0.7658869894141911,
+                "art-left": 0.813717767457233,
+                "art-right": 0.7393837394889344,
+                "paper-left": 0.8180628492401832,
+                "paper-right": 0.9617401183023281,
+                "stock-top": 0.7416495098120319,
+                "stock-bottom": 0.8035407970036511,
+                "art-top": 0.6134317202354761,
+                "art-bottom": 0.587349489120502,
+                "paper-top": 0.7667577051007894,
+                "paper-bottom": 0.807151036708841
+              }
+            }
+          }
+        }
+      }
+    },
+    "W": {
+      "proposed": "abu",
+      "reason": "Best held-out boundary result among the tested source families after one shared geometry fit.",
+      "candidates": {
+        "current": {
+          "fit": {
+            "x": {
+              "scale": 1.024,
+              "shift": -1.5,
+              "calibrationScore": 0.5353575357820443,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.02,
+              "shift": 0.5,
+              "calibrationScore": 0.6111375224123602,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.022066262345637137,
+              "after": 0.5732475290972021,
+              "regions": {
+                "stock-left": 0.9346701986064971,
+                "stock-right": 0.9531387869869982,
+                "art-left": 0.7376164551088453,
+                "art-right": 0.6054548901779697,
+                "paper-left": -0.0237394429761272,
+                "paper-right": 0.00500432678808211,
+                "stock-top": 0.757766612780754,
+                "stock-bottom": 0.7025389258589827,
+                "art-top": 0.4926733296008895,
+                "art-bottom": 0.4960750871092501,
+                "paper-top": 0.5322825477863159,
+                "paper-bottom": 0.6854886313379688
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": -0.0017499327255853748,
+              "after": 0.6034649376896927,
+              "regions": {
+                "stock-left": 0.9317627824204664,
+                "stock-right": 0.9538345337561455,
+                "art-left": 0.8759531619719266,
+                "art-right": 0.5320188812578724,
+                "paper-left": -0.027571472341008874,
+                "paper-right": -0.0006145951800029998,
+                "stock-top": 0.6357934080154651,
+                "stock-bottom": 0.8518554537641276,
+                "art-top": 0.8599436675298827,
+                "art-bottom": 0.33036821833441155,
+                "paper-top": 0.616390264147046,
+                "paper-bottom": 0.6818449485999809
+              }
+            }
+          }
+        },
+        "fourth": {
+          "fit": {
+            "x": {
+              "scale": 1.016,
+              "shift": 1,
+              "calibrationScore": 0.8032139143643553,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.012,
+              "shift": 0,
+              "calibrationScore": 0.6508273820307403,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.1700729683840923,
+              "after": 0.7270206481975479,
+              "regions": {
+                "stock-left": 0.8720647033689116,
+                "stock-right": 0.8912072976739591,
+                "art-left": 0.6798216630941873,
+                "art-right": 0.8382490230263646,
+                "paper-left": 0.6179666599670761,
+                "paper-right": 0.9199741390556329,
+                "stock-top": 0.9305771150350167,
+                "stock-bottom": 0.6857218475171093,
+                "art-top": 0.41941734059878627,
+                "art-bottom": 0.7931400598259485,
+                "paper-top": 0.4115096974772192,
+                "paper-bottom": 0.6645982317303616
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.15794703914541058,
+              "after": 0.7732998410913812,
+              "regions": {
+                "stock-left": 0.902547769946911,
+                "stock-right": 0.8613197975926606,
+                "art-left": 0.7858763848961793,
+                "art-right": 0.8690634066718543,
+                "paper-left": 0.6858881655200537,
+                "paper-right": 0.8890465975483637,
+                "stock-top": 0.8945931080081224,
+                "stock-bottom": 0.5743219075392046,
+                "art-top": 0.656965809082474,
+                "art-bottom": 0.8661197692018635,
+                "paper-top": 0.5282641148831781,
+                "paper-bottom": 0.7655912622057103
+              }
+            }
+          }
+        },
+        "revised-crop": {
+          "fit": {
+            "x": {
+              "scale": 1.004,
+              "shift": 2.5,
+              "calibrationScore": 0.6136991035488518,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.006,
+              "shift": -6.5,
+              "calibrationScore": 0.49534000100224956,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": -0.03864672428904944,
+              "after": 0.5545195522755507,
+              "regions": {
+                "stock-left": 0.05952280380886512,
+                "stock-right": 0.24103808301725374,
+                "art-left": 0.7415844249931107,
+                "art-right": 0.8051333046429718,
+                "paper-left": 0.8774731097732701,
+                "paper-right": 0.9574428950576401,
+                "stock-top": 0.8146753251772161,
+                "stock-bottom": 0.002836354515712021,
+                "art-top": 0.4358484043835168,
+                "art-bottom": 0.8166374240538452,
+                "paper-top": 0.2237291433509771,
+                "paper-bottom": 0.6783133545322305
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": -0.029493105384522485,
+              "after": 0.5551701503282443,
+              "regions": {
+                "stock-left": 0.06232437661886359,
+                "stock-right": 0.23670123318600325,
+                "art-left": 0.8583845448272579,
+                "art-right": 0.8365495054318713,
+                "paper-left": 0.908671411506612,
+                "paper-right": 0.9407589030651464,
+                "stock-top": 0.7453844687806499,
+                "stock-bottom": 0.006194159132972077,
+                "art-top": 0.3705440496983307,
+                "art-bottom": 0.6831311697798503,
+                "paper-top": 0.25724761040465777,
+                "paper-bottom": 0.7561503715067164
+              }
+            }
+          }
+        },
+        "abu": {
+          "fit": {
+            "x": {
+              "scale": 1.03,
+              "shift": 0,
+              "calibrationScore": 0.8701207463658326,
+              "atBoundary": false
+            },
+            "y": {
+              "scale": 1.032,
+              "shift": -0.5,
+              "calibrationScore": 0.633504086864522,
+              "atBoundary": false
+            }
+          },
+          "summary": {
+            "calibration": {
+              "count": 4,
+              "before": 0.014360892154473032,
+              "after": 0.7518124166151773,
+              "regions": {
+                "stock-left": 0.8683908940665295,
+                "stock-right": 0.9265794077029038,
+                "art-left": 0.7907709401456691,
+                "art-right": 0.8884105257795217,
+                "paper-left": 0.8239555596064304,
+                "paper-right": 0.9226171508939414,
+                "stock-top": 0.71756267778436,
+                "stock-bottom": 0.8356626012008894,
+                "art-top": 0.4257501212072803,
+                "art-bottom": 0.5621088975531486,
+                "paper-top": 0.5133588727861306,
+                "paper-bottom": 0.7465813506553226
+              }
+            },
+            "validation": {
+              "count": 4,
+              "before": 0.018480371214160272,
+              "after": 0.8067561719751627,
+              "regions": {
+                "stock-left": 0.8902894213840837,
+                "stock-right": 0.91760641621102,
+                "art-left": 0.933263391908034,
+                "art-right": 0.8737439772943272,
+                "paper-left": 0.8329924004827476,
+                "paper-right": 0.9307206703593903,
+                "stock-top": 0.689326443675758,
+                "stock-bottom": 0.7982381731334158,
+                "art-top": 0.6548285162492182,
+                "art-bottom": 0.8388542955450947,
+                "paper-top": 0.5968501327689218,
+                "paper-bottom": 0.7243602246899399
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rendererReplay": {
+    "method": "Replay shared frame/art geometry in the renderer, retaining all text placement and frozen scans. Compare actual boundary profiles with the CPU interpolation prediction. No pixel scores have been published.",
+    "summary": {
+      "A": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.8313556156008093,
+          "predicted": 0.8231146864936028
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.8306976467521968,
+          "predicted": 0.8220549176610423
+        }
+      },
+      "B": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.8588349011596159,
+          "predicted": 0.8384091960107698
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.8468901162305382,
+          "predicted": 0.8234857876754367
+        }
+      },
+      "G": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.8450473597586364,
+          "predicted": 0.8314796409128445
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.8439657645326858,
+          "predicted": 0.8384331962119816
+        }
+      },
+      "L": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.6076528420862639,
+          "predicted": 0.6269694551025009
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.6432244157202429,
+          "predicted": 0.6516540589075339
+        }
+      },
+      "M": {
+        "calibration": {
+          "count": 8,
+          "actual": 0.8400274697684296,
+          "predicted": 0.8430474742948726
+        },
+        "validation": {
+          "count": 8,
+          "actual": 0.8269027513307838,
+          "predicted": 0.8274625191574572
+        }
+      },
+      "R": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.8723486744877933,
+          "predicted": 0.862142942541662
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.8607992631778277,
+          "predicted": 0.8560611462380854
+        }
+      },
+      "U": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.8446691168115611,
+          "predicted": 0.8386862621716571
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.8375953522403817,
+          "predicted": 0.8336615879014172
+        }
+      },
+      "W": {
+        "calibration": {
+          "count": 4,
+          "actual": 0.7600405568112946,
+          "predicted": 0.7518124166151773
+        },
+        "validation": {
+          "count": 4,
+          "actual": 0.8268814488279007,
+          "predicted": 0.8067561719751627
+        }
+      }
+    }
+  },
+  "goldTexture": {
+    "method": "Diagnostic texture spectrum, separate from boundary geometry scoring.\n\nNormalize grayscale band energies within fixed outer-frame patches so changes\nin overall brightness/contrast do not count as texture improvements. This is\nnot a scan-accuracy metric: scan halftoning/resampling also changes the spectrum.\n",
+    "patches": [
+      [29, 120, 12, 80],
+      [29, 240, 12, 80],
+      [447, 120, 12, 80],
+      [447, 240, 12, 80],
+      [29, 460, 12, 80],
+      [447, 460, 12, 80]
+    ],
+    "summary": {
+      "calibration": {
+        "current": 1.0080662190940304,
+        "fourth": 0.3757396062280005,
+        "revised-crop": 0.46008396133177887,
+        "legends-alternate": 1.1200383320183762
+      },
+      "validation": {
+        "current": 1.009753125265654,
+        "fourth": 0.37743686247513264,
+        "revised-crop": 0.46184920801833457,
+        "legends-alternate": 1.1216262356703166
+      }
+    },
+    "limitation": "Exploratory band-energy diagnostic, affected by scan halftoning and resampling. Not incorporated into published accuracy metric."
+  },
+  "cohorts": [
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "scanTransform": {
+        "scale": 1.0010999999999999,
+        "tx": -0.075,
+        "ty": -0.075
+      }
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "scanTransform": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "scanTransform": {
+        "scale": 1.0002,
+        "tx": -0.024999999999999994,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "scanTransform": {
+        "scale": 1.0003,
+        "tx": 0.1,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "scanTransform": {
+        "scale": 0.9995,
+        "tx": 0.025000000000000022,
+        "ty": 0.1
+      }
+    },
+    {
+      "id": "31d2422a-bb7d-4cdd-9aac-e5a936a4be3b",
+      "name": "Karakas",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "5c1ae5bd88f323362504a766f0b7be67954294d5e86ef04aa72e610dd3b508e4",
+      "scanTransform": {
+        "scale": 1.0002,
+        "tx": 0,
+        "ty": -0.25
+      }
+    },
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": 0.1,
+        "ty": -0.175
+      }
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": 0.175,
+        "ty": 0.225
+      }
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "scanTransform": {
+        "scale": 0.9999,
+        "tx": -0.075,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "scanTransform": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": 0.125,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "name": "Subdue",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "c49a105ae6be5da40c635b5d251417ea0c61d5f342de9473ab28cffdb267959c",
+      "scanTransform": {
+        "scale": 1.0009,
+        "tx": 0.225,
+        "ty": 0.025000000000000022
+      }
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "scanTransform": {
+        "scale": 1.0002,
+        "tx": -0.125,
+        "ty": 0.05000000000000002
+      }
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "scanTransform": {
+        "scale": 1.0002,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "scanTransform": {
+        "scale": 1.0004,
+        "tx": 0.30000000000000004,
+        "ty": -0.325
+      }
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "scanTransform": {
+        "scale": 1,
+        "tx": 0.1,
+        "ty": 0.225
+      }
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "scanTransform": {
+        "scale": 1.0011999999999999,
+        "tx": 0.025000000000000022,
+        "ty": -0.25
+      }
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "scanTransform": {
+        "scale": 1.001,
+        "tx": -0.1,
+        "ty": -0.19999999999999998
+      }
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "scanTransform": {
+        "scale": 1.001,
+        "tx": 0.07500000000000001,
+        "ty": -0.22499999999999998
+      }
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "scanTransform": {
+        "scale": 1.0016,
+        "tx": 0.125,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "scanTransform": {
+        "scale": 1.0007,
+        "tx": 0.025000000000000022,
+        "ty": -0.04999999999999999
+      }
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "scanTransform": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "material": "M",
+      "cohort": "calibration",
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "scanTransform": {
+        "scale": 1.0004,
+        "tx": -0.04999999999999999,
+        "ty": -0.024999999999999994
+      }
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "scanTransform": {
+        "scale": 0.9978,
+        "tx": 0.2,
+        "ty": 0.4
+      }
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "material": "M",
+      "cohort": "validation",
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "scanTransform": {
+        "scale": 1.0009,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "name": "Voodoo Doll",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "b1cc09a2e9f971960df739b922ea67f88e3752b872e4275d15323120e28fc983",
+      "scanTransform": {
+        "scale": 1.0002,
+        "tx": 0.275,
+        "ty": 0.30000000000000004
+      }
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "name": "Horn of Deafening",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "bbd17757203ad6c560a46beca59282d00ffcd336da5693079fb4ba72aee5cbde",
+      "scanTransform": {
+        "scale": 0.9998,
+        "tx": 0,
+        "ty": 0.1
+      }
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "name": "Blue Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "edaf2c9a8bc26159026c5a005097c033065a015957216f4a54d4b94cfb89767f",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": 0.30000000000000004,
+        "ty": -0.275
+      }
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "name": "White Mana Battery",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "2258a4cb2c414ffdf151f09a1c42e368bcae793d49dc737de47cb6425cbb2110",
+      "scanTransform": {
+        "scale": 1,
+        "tx": 0,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "name": "Red Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "54fad4eaf8b01ba76c859bcdf945ae42649926aa8b301b3ea5ae77515dcf8080",
+      "scanTransform": {
+        "scale": 0.9992000000000001,
+        "tx": -0.3,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "name": "Marble Priest",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "037f8a417c4bd5f8f4bb9283f8c856bc04688002d95c145ee4a9ebcd909f0341",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": -0.04999999999999999,
+        "ty": -0.3
+      }
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "name": "Green Mana Battery",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "4f6a6040742778c3647460cfb78968b3d0b3efad6999f829f7fd69e5824ae0e0",
+      "scanTransform": {
+        "scale": 1.0005,
+        "tx": -0.075,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "name": "Life Chisel",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "c11b2409a8bb88f3e1b0552027d77fd76a41cd1ab14281e885858c19be28c9a1",
+      "scanTransform": {
+        "scale": 1.0003,
+        "tx": -0.175,
+        "ty": 0.07500000000000001
+      }
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "name": "Backfire",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "08bb2c31bddfd41b55bc2803c900c26f21a9e25373fc8c70a4c7cd433dc1e3f6",
+      "scanTransform": {
+        "scale": 0.9998,
+        "tx": -0.19999999999999998,
+        "ty": 0.225
+      }
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "scanTransform": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": -0.04999999999999999
+      }
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "name": "Sea Kings' Blessing",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "9cd0dd93fc7aa6f57542480ed72f55ffba9e96b135fb02c929ff8346b36af09a",
+      "scanTransform": {
+        "scale": 1.0008,
+        "tx": 0.2,
+        "ty": -0.44999999999999996
+      }
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "name": "Venarian Gold",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "2017fdb5742af637b0fc576f0a7ca148910179c886c25db84fc908cd970cf168",
+      "scanTransform": {
+        "scale": 1.0005,
+        "tx": -0.875,
+        "ty": 0.325
+      }
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "name": "Teleport",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "9d1f6742b487aba6e6de2ac0d9a8c0521df6a0298428f7a20d7d5471accb7187",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": 0.275,
+        "ty": -0.19999999999999998
+      }
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "scanTransform": {
+        "scale": 1.0011999999999999,
+        "tx": -0.19999999999999998,
+        "ty": -0.075
+      }
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "name": "Recall",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "02bd6fb7ccc9056cd6768f7c76239e5af988a4f5455102a791e99269477e7a78",
+      "scanTransform": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": -0.175
+      }
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "name": "Energy Tap",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "7d66c09ec1d9796e6334c27312dcee7ff962aaf027effc7a840714d8316c1a98",
+      "scanTransform": {
+        "scale": 1.0004,
+        "tx": -0.375,
+        "ty": -0.3
+      }
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "scanTransform": {
+        "scale": 0.9997,
+        "tx": 0.2,
+        "ty": -0.19999999999999998
+      }
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "name": "Crimson Kobolds",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "50fa83ab665267ca144aaefada20bd10374715881a0debfbf489e635d71d4ec1",
+      "scanTransform": {
+        "scale": 1.0009,
+        "tx": -0.1,
+        "ty": -0.5
+      }
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "scanTransform": {
+        "scale": 1.0009,
+        "tx": -0.25,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "scanTransform": {
+        "scale": 1.0005,
+        "tx": 0.1,
+        "ty": 0.225
+      }
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "scanTransform": {
+        "scale": 0.9995,
+        "tx": -0.075,
+        "ty": 0.1
+      }
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "name": "Dwarven Song",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "6d21130e5faf7ac195544c33a2cc792a48216074cf91d9515034f27e5405e611",
+      "scanTransform": {
+        "scale": 0.9996,
+        "tx": 0,
+        "ty": 0.225
+      }
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "scanTransform": {
+        "scale": 1,
+        "tx": 0.375,
+        "ty": 0.30000000000000004
+      }
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "scanTransform": {
+        "scale": 0.9996,
+        "tx": 0.025000000000000022,
+        "ty": 0.525
+      }
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "scanTransform": {
+        "scale": 1.0005,
+        "tx": -0.125,
+        "ty": -0.075
+      }
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "scanTransform": {
+        "scale": 0.9993000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.075
+      }
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "scanTransform": {
+        "scale": 1.0005,
+        "tx": 0.45,
+        "ty": 0.30000000000000004
+      }
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "name": "Imprison",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "3fed4c9de5836a69a9539619a9d4a0ac7a9a159b49daf40f07eab2aca8077d38",
+      "scanTransform": {
+        "scale": 0.9992000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "scanTransform": {
+        "scale": 0.9997,
+        "tx": 0.15,
+        "ty": 0.05000000000000002
+      }
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "scanTransform": {
+        "scale": 1.0009,
+        "tx": -0.04999999999999999,
+        "ty": 0.55
+      }
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": 0.1
+      }
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "scanTransform": {
+        "scale": 1.001,
+        "tx": -0.22499999999999998,
+        "ty": -0.19999999999999998
+      }
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "scanTransform": {
+        "scale": 1.001,
+        "tx": -0.175,
+        "ty": -0.25
+      }
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "name": "Visions",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "50762b5cb153942059bb0e4c7649d2195ada50f6715dd0486924eab548b30a30",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": -0.275,
+        "ty": 0.125
+      }
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "scanTransform": {
+        "scale": 0.9993000000000001,
+        "tx": -0.024999999999999994,
+        "ty": 0.15
+      }
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "scanTransform": {
+        "scale": 1.0010999999999999,
+        "tx": -0.175,
+        "ty": 0.25
+      }
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "scanTransform": {
+        "scale": 0.9997,
+        "tx": 0.05000000000000002,
+        "ty": -0.85
+      }
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "scanTransform": {
+        "scale": 1.0007,
+        "tx": 0.125,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "scanTransform": {
+        "scale": 1.0011999999999999,
+        "tx": -0.22499999999999998,
+        "ty": -1
+      }
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "scanTransform": {
+        "scale": 1.001,
+        "tx": 0.25,
+        "ty": -0.875
+      }
+    },
+    {
+      "id": "314fd1d7-4bd8-4d95-b7c2-1aa6660ab88a",
+      "name": "Mountain Stronghold",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "29df3cbd554decb6049d51863b04d026f311f137b884f19b82e82923a48ed761",
+      "scanTransform": {
+        "scale": 0.9974000000000001,
+        "tx": 0.4,
+        "ty": 0.925
+      }
+    },
+    {
+      "id": "32865e68-5842-4f17-b2ea-4ffa743b511f",
+      "name": "Adventurers' Guildhouse",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "756c972fa9e29b9c084a5f689d31108ee74fc421576db106d56f09076e7bc90a",
+      "scanTransform": {
+        "scale": 1.0008,
+        "tx": 0.275,
+        "ty": -0.575
+      }
+    },
+    {
+      "id": "64bc9b1d-5818-4d9e-b771-e49af4ff9a5c",
+      "name": "The Tabernacle at Pendrell Vale",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "b2315ac524b589ff4470f91f8653b2d15d32355591d431df3837f9b9a8a6e61e",
+      "scanTransform": {
+        "scale": 0.9997,
+        "tx": 0.025000000000000022,
+        "ty": 0.30000000000000004
+      }
+    },
+    {
+      "id": "66641d88-b3f0-4bcd-8d2d-29aa2de69e30",
+      "name": "Seafarer's Quay",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "ec044cee2971741feb29fe57ee42142e56bebc90004a01aabf91a05ffe7cc2bf",
+      "scanTransform": {
+        "scale": 1.0007,
+        "tx": -0.024999999999999994,
+        "ty": -0.19999999999999998
+      }
+    },
+    {
+      "id": "79427109-c1f3-476d-a029-0049217237b5",
+      "name": "Pendelhaven",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "7dd6e9d2464cdf46d0b35e2ef4d1bd99df488fa87d7d0eeb01870c65b2ec041c",
+      "scanTransform": {
+        "scale": 1.0001,
+        "tx": -0.1,
+        "ty": -0.125
+      }
+    },
+    {
+      "id": "9de534ff-fb48-4692-bd0f-dd237ca28502",
+      "name": "Unholy Citadel",
+      "material": "L",
+      "cohort": "calibration",
+      "referenceHash": "b2f066a665e41f7b100691ecf448a4787a0727590770864ee1275da32ab7007a",
+      "scanTransform": {
+        "scale": 1.0008,
+        "tx": -0.1,
+        "ty": -0.325
+      }
+    },
+    {
+      "id": "d0a261d0-7678-46f7-9285-d541486567d8",
+      "name": "Urborg",
+      "material": "L",
+      "cohort": "validation",
+      "referenceHash": "1dad94261fb5e400c5bfac5547933235394e3f75d3458cec49a0801f183be3d2",
+      "scanTransform": {
+        "scale": 0.9982000000000001,
+        "tx": -0.575,
+        "ty": 0.775
+      }
+    }
+  ],
+  "provenance": {
+    "boundaryReport": "9df6db3823a6fe76fd25912943457c0f3360daa576a97d339611cb53d1c309f2",
+    "textureReport": "ce93f678e9c78f611a105d9cffd0280395c67d993de65f7d77c78d478672a3de",
+    "scanTemplates": "eff908baddcb3b44d99d2bd31048a4cc24291c383d13c5638c7574bbfb112530"
+  },
+  "next": [
+    "Measure final paper/art boundaries on the chosen source family; retain geometry regressions and scan rejection cases.",
+    "Recalibrate separate frame/paper colors against new source hashes.",
+    "Then resume Legends title, mana, set symbol, type, rules sizing/centering, artist and power/toughness.",
+    "Validate transfer before replacing Seventh defaults on ARN, ATQ, DRK, FEM and ICE."
+  ]
+}

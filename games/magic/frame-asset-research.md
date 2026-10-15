@@ -1,5 +1,46 @@
 # Existing old-frame source candidates
 
+## Early expansion source review, 2026-10-15
+
+The Legends review reopens the earlier retain-current decision below. The
+Seventh family is too broad a fallback for early expansions, and the current
+Legends gold plate has visibly smoother texture than the printings. Compare
+ABU, Fourth and the existing Revised crop before fitting typography or HSB.
+
+The [new source study](fixtures/accuracy/early-frame-source-review.json)
+contains 72 Legends cards selected before measurement, split equally between
+calibration and validation, plus 48 additional visual examples. Each source
+shares the same frozen scan poses. Signed grayscale boundary profiles fit one
+scale and translation per material; they do not fit scans to candidates or
+reward matching hue/saturation. The other five sets—Arabian Nights,
+Antiquities, The Dark, Fallen Empires and Ice Age—currently have visual transfer
+controls only, not validated alignment measurements.
+
+| Legends material                 | Candidate for the next calibration                                                  |
+| -------------------------------- | ----------------------------------------------------------------------------------- |
+| White, black                     | ABU: best held-out boundary result among these sources                              |
+| Blue, red, green, artifact, land | Fourth: best held-out boundary result                                               |
+| Gold                             | Fourth: printed grain is much closer; current gold still wins boundary-only scoring |
+
+The gold case must not be hidden in a combined average. Its current source
+scores 0.872 on held-out boundary cosine versus Fourth's 0.827 after fitting,
+while the exploratory grayscale texture-spectrum distance is 1.010 versus
+0.377 (lower is closer). The latter agrees with visual review but also responds
+to halftoning and resampling. It is a diagnostic, not a new published accuracy
+metric. Neither number is a whole-card accuracy percentage.
+
+The existing Revised land crop does not transfer unchanged to all materials.
+The alternative Card Conjurer Legends plate and MSE classic gold were also
+visually inspected; neither supplies the grain visible in Fourth's plate.
+Card Conjurer additionally has set-specific early land variants worth retaining
+as controls when source colors and paper treatments are compared.
+
+These are candidate defaults, not released source or color changes. Finish the
+chosen sources' art/paper geometry and separate frame/paper HSB before resuming
+Legends title, mana, type, set-symbol, rules, artist and P/T calibration. Validate
+transfer before changing other sets. External images remain in the private
+reference cache and review page; the public showcase is unchanged.
+
 The first comparison is recorded in
 [family results](fixtures/accuracy/old-frame-family-results.json): 35 source
 plates, 2,767 cached full scans, 717 set/material/layout/stock groups across
