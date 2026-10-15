@@ -95,28 +95,37 @@ try {
     };
     CanvasRenderingContext2D.prototype.getImageData = get;
     const scoped = [
-      { setCode: '8ed' },
-      { setCode: 'm20' },
-      { setCode: 'dmu' },
-      { setCode: 'dsk' },
+      { setCode: '8ed', frameAssetFamily: 'eighth' },
       { frameTemplate: 'battle' },
       { rulesText: 'Level up {1}' },
-      { legendary: true },
       { layout: 'split' },
       { frameAssetFamily: 'eighth' },
       { frameStyle: 'retro' },
       { typeLine: 'Legendary Planeswalker — Teferi' },
-      { borderColor: 'white' },
+      { frameAssetFamily: 'm15-accurate' },
     ].map((extra) => modernCostNumeralAsset({ ...face, ...extra }, '3'));
     const delta = printingManaAdjustment({
       ...face,
       symbolAdjustment: { mana: { numberDx: 0.5, numberScale: 1.1 } },
     });
+    const neutral = await prepareManaNumerals(
+      { ...face, symbolAdjustment: { mana: { numberScale: 1 / 0.98, numberDx: 0.25 } } },
+      images,
+      signal,
+    );
     const result = {
-      admitted: ['m15', 'war'].map((setCode) => ({
-        url: modernCostNumeralAsset({ ...face, setCode }, '3'),
-        adjustment: printingManaAdjustment({ ...face, setCode }),
-      })),
+      legendary: modernCostNumeralAsset(
+        { ...face, legendary: true, typeLine: 'Legendary Creature' },
+        '3',
+      ),
+      whiteStock: modernCostNumeralAsset({ ...face, borderColor: 'white' }, '3'),
+      neutralSource: neutral.images.manaNumerals?.has('3'),
+      admitted: ['m15', 'm20', 'm21', 'war', 'dmu', 'dsk', 'future-set', undefined].map(
+        (setCode) => ({
+          url: modernCostNumeralAsset({ ...face, setCode }, '3'),
+          adjustment: printingManaAdjustment({ ...face, setCode }),
+        }),
+      ),
       inline: changed(baseInline, newInline),
       cost: changed(baseCost, newCost),
       cold,
@@ -132,6 +141,7 @@ try {
     };
     p.dispose();
     warm.dispose();
+    neutral.dispose();
     original.close();
     candidate.close();
     return result;
@@ -143,6 +153,9 @@ try {
   assert.equal(result.paintingReads, 0);
   assert.ok(result.scoped.every((x) => x === null));
   assert.ok(result.urls.includes(result.source));
+  assert.equal(result.legendary, result.source);
+  assert.equal(result.whiteStock, result.source);
+  assert.equal(result.neutralSource, true);
   for (const a of result.admitted) {
     assert.equal(a.url, result.source);
     assert.deepEqual(a.adjustment, {
@@ -176,8 +189,9 @@ try {
   assert.equal(transfer.summary.total, 152);
   assert.equal(transfer.summary.measured, 148);
   assert.equal(transfer.summary.alignmentReview, 4);
-  assert.deepEqual(transfer.adoptedSets, ['m15', 'war']);
-  for (const set of transfer.adoptedSets) {
+  assert.deepEqual(transfer.initialAdoptedSets, ['m15', 'war']);
+  assert.equal(transfer.defaultPolicy, 'ordinary-modern-component-frame');
+  for (const set of transfer.initialAdoptedSets) {
     assert.ok(transfer.sets[set].after > transfer.sets[set].before + 0.005);
     assert.ok(transfer.sets[set].inkAfter > transfer.sets[set].inkBefore);
     const group = transfer.frameReferences.filter((g) => g.set === set);

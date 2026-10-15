@@ -1,17 +1,16 @@
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 
-const MODERN_COMPONENT_MANA: ManaSymbolTransform = {
+export const MODERN_COMPONENT_MANA: ManaSymbolTransform = {
   scaleX: 1.01,
   scaleY: 1.01,
   numberScale: 0.98,
   numberDx: -0.25,
 };
-/** A shared fit, admitted only where frozen transfer checks pass. */
-export const MODERN_MANA_SETS: readonly string[] = ['m15', 'm21', 'war'];
+/** Sparse printing exceptions to the component-frame default, when warranted. */
+export const MODERN_MANA_OVERRIDES: Readonly<Record<string, ManaSymbolTransform>> = {};
 
 /** Shared printing defaults, measured after independent scan-frame normalization. */
 export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform>> = {
-  ...Object.fromEntries(MODERN_MANA_SETS.map((set) => [set, MODERN_COMPONENT_MANA])),
   leb: {
     dx: -1.5,
     spacing: 1.75,

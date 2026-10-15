@@ -7353,12 +7353,11 @@
     }
   ],
   "sourceCommit": "6e76041",
-  "adoptedSets": ["m15", "war"],
-  "decision": "Shared frozen settings admitted for M15 and WAR. M21 remains supported by its independent study. Do not generalize the full profile to every modern set: DMU regresses, and DSK has conflicting fixed-position ink and whole-mana results.",
+  "decision": "Use the frozen M21 fit as the ordinary modern component-frame starting point across sets, including previously unmeasured sets. Source-identity diagnostics improve in all four transfer sets; whole-mana overlap improves in three. The user explicitly chose the stronger shared starting point over a strict per-set no-regression gate. DMU and DSK remain flagged for subsequent placement calibration; their fixed-pose regressions are retained, not treated as validated improvements.",
   "flaggedForReview": [
     {
       "set": "dmu",
-      "reason": "Both frozen font and geometry ablations reduce fixed-pose overlap; isolate the remaining mana-row/frame placement error before adoption."
+      "reason": "Both frozen font and geometry ablations reduce fixed-pose overlap; isolate the remaining mana-row/frame placement error when refining the shared default."
     },
     {
       "set": "dsk",
@@ -7367,7 +7366,7 @@
     {
       "card": "Doomsday Excruciator",
       "set": "dsk",
-      "reason": "Six colored costs slightly reduce available title width; 1,614 title pixels change. Candidate not adopted for DSK."
+      "reason": "Six colored costs slightly reduce available title width; 1,614 title pixels change. This expected title-width response remains flagged for visual review."
     }
   ],
   "ablations": {
@@ -15297,11 +15296,21 @@
       ]
     }
   ],
-  "integration": {
+  "initialAdoptedSets": ["m15", "war"],
+  "adoptedSets": ["m15", "war", "dmu", "dsk"],
+  "defaultPolicy": "ordinary-modern-component-frame",
+  "initialIntegration": {
     "painterHash": "004f5de8547e6b2083891f5a92f9508e8846dfa2a46b1c0fd5b92fb70120d1ec",
     "count": 148,
     "adopted": 72,
     "unchangedControls": 76,
+    "exact": true
+  },
+  "integration": {
+    "painterHash": "5a8a727a5ee2293023a6c9e8744bbcaf35a09ae6eacf3ca979617ccf5c8de856",
+    "count": 148,
+    "adopted": 148,
+    "unchangedControls": 0,
     "exact": true
   }
 }

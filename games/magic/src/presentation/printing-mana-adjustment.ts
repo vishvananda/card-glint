@@ -1,11 +1,17 @@
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
-import { MODERN_MANA_SETS, PRINTING_MANA_PROFILES } from './printing-mana-profiles.js';
+import { usesModernCostMana } from './modern-cost-mana.js';
+import {
+  MODERN_COMPONENT_MANA,
+  MODERN_MANA_OVERRIDES,
+  PRINTING_MANA_PROFILES,
+} from './printing-mana-profiles.js';
 
-/** Scope geometry and source preparation to the same validated printing family. */
+/** Resolve frame defaults first, then printing overrides and caller deltas. */
 export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {
   const set = face.setCode?.toLowerCase() ?? '';
+  if (usesModernCostMana(face)) return { ...MODERN_COMPONENT_MANA, ...MODERN_MANA_OVERRIDES[set] };
   const base = PRINTING_MANA_PROFILES[set];
   const early = ['lea', 'leb', '3ed'].includes(set);
   if (
@@ -20,8 +26,7 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
       (!isRetro(face) ||
         face.symbolStyle === 'modern' ||
         (face.symbolStyle === undefined && face.wordingMode === 'oracle'))) ||
-    (set === '8ed' && (isRetro(face) || face.frameAssetFamily !== 'eighth')) ||
-    (MODERN_MANA_SETS.includes(set) && (isRetro(face) || face.frameAssetFamily !== undefined))
+    (set === '8ed' && (isRetro(face) || face.frameAssetFamily !== 'eighth'))
   )
     return undefined;
   return base;

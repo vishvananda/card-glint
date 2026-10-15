@@ -1,6 +1,5 @@
 import type { RenderedCardInput } from './face-layout.js';
-import { printingManaDefaults } from './printing-mana-adjustment.js';
-import { MODERN_MANA_SETS } from './printing-mana-profiles.js';
+import { isRetro } from './retro-frame.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 
 const MODERN = {
@@ -9,11 +8,21 @@ const MODERN = {
   ink: [13, 15, 15] as const,
 };
 
-/** Shared ordinary-frame fit admitted by independent set transfer checks. */
+/** The component frame owns this default, independently of the printing set.
+ * Replacement plates and special layouts retain their own cost geometry. */
+export function usesModernCostMana(face: RenderedCardInput): boolean {
+  return (
+    !isRetro(face) &&
+    face.frameAssetFamily === undefined &&
+    face.frameTemplate === undefined &&
+    (face.layout ?? 'normal') === 'normal' &&
+    !/\b(Saga|Class|Planeswalker|Battle)\b/i.test(face.typeLine ?? '') &&
+    !/^Level up\b/m.test(face.rulesText ?? '')
+  );
+}
+
 export function modernCostMana(face: RenderedCardInput) {
-  return MODERN_MANA_SETS.includes(face.setCode?.toLowerCase() ?? '') && printingManaDefaults(face)
-    ? MODERN
-    : undefined;
+  return usesModernCostMana(face) ? MODERN : undefined;
 }
 
 export function modernCostNumeralAsset(face: RenderedCardInput, symbol: string): string | null {

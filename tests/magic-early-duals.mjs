@@ -38,13 +38,17 @@ try {
     { setCode: '2ed' },
     { setCode: '3ed' },
     { borderColor: 'white' },
-    { frameStyle: 'modern' },
     { layout: 'split' },
     { typeLine: 'Enchantment — Saga' },
     { symbolStyle: 'modern' },
     { wordingMode: 'oracle' },
   ])
     assert.equal(printingManaAdjustment({ ...adjustedFace, ...extra }), delta);
+  assert.deepEqual(
+    printingManaAdjustment({ ...adjustedFace, frameStyle: 'modern' }),
+    { ...delta, scaleX: 1.01, scaleY: 1.01, numberScale: 0.98, numberDx: -0.25 },
+    'Explicit modern components use frame defaults without Beta glyph calibration',
+  );
   assert.deepEqual(
     printingManaAdjustment({ ...beta, wordingMode: 'oracle', symbolStyle: 'original' }),
     defaults,

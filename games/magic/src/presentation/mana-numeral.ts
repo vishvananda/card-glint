@@ -25,7 +25,7 @@ export async function prepareManaNumerals(
 ): Promise<{ images: CanvasImages; dispose(): void }> {
   const a = printingManaAdjustment(face);
   const cost = modernCostMana(face);
-  const numbers = !!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1);
+  const numbers = !!cost || (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1));
   if (!cost && !numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)
     return { images, dispose() {} };
   const numerals = new Map<string, ManaNumeral>();
