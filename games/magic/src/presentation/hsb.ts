@@ -4,6 +4,9 @@ export interface HsbAdjustment {
   hueDegrees: number;
   saturationScale: number;
   brightnessScale: number;
+  /** Optional source white balance after HSV. Neutral textured plates need
+   * channel gains to acquire a printing tint without amplifying colored specks. */
+  rgbScale?: Rgb;
 }
 export const IDENTITY_HSB: HsbAdjustment = {
   hueDegrees: 0,
@@ -37,9 +40,16 @@ export function hsbToRgb(h: number, s: number, v: number): [number, number, numb
 }
 export function adjustHsb(rgb: Rgb, adjustment: HsbAdjustment): [number, number, number] {
   const [h, s, b] = rgbToHsb(rgb);
-  return hsbToRgb(
+  const result = hsbToRgb(
     h + adjustment.hueDegrees,
     Math.min(1, s * adjustment.saturationScale),
     Math.min(1, b * adjustment.brightnessScale),
   );
+  return adjustment.rgbScale
+    ? [
+        Math.max(0, Math.min(1, result[0] * adjustment.rgbScale[0])),
+        Math.max(0, Math.min(1, result[1] * adjustment.rgbScale[1])),
+        Math.max(0, Math.min(1, result[2] * adjustment.rgbScale[2])),
+      ]
+    : result;
 }

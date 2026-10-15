@@ -114,7 +114,13 @@ export function evaluateHsb(source, reference, adjustment, math) {
   const clipping =
     source.tiles.filter((rgb) => {
       const [, s, b] = math.rgbToHsb(rgb);
-      return s * adjustment.saturationScale > 1 || b * adjustment.brightnessScale > 1;
+      const balanced =
+        adjustment.rgbScale && math.adjustHsb(rgb, { ...adjustment, rgbScale: undefined });
+      return (
+        s * adjustment.saturationScale > 1 ||
+        b * adjustment.brightnessScale > 1 ||
+        !!balanced?.some((v, i) => v * adjustment.rgbScale[i] > 1)
+      );
     }).length / source.tiles.length;
   return {
     before: delta(source.rgb, reference.rgb),

@@ -77,6 +77,28 @@ try {
   // A sub-byte texture shift changes the median after 8-bit quantization.
   assert.ok(heldOutError < 0.4);
   const neutral = { rgb: [0.5, 0.5, 0.5], tiles: [[0.5, 0.5, 0.5]], spread: 0 };
+  // Neutral paper cannot acquire a printing tint through hue/saturation alone.
+  // Optional source channel gains add that tint without amplifying color flecks.
+  const balanced = { ...math.IDENTITY_HSB, rgbScale: [1.2, 1.1, 0.9] };
+  assert.deepEqual(math.adjustHsb(neutral.rgb, balanced), [0.6, 0.55, 0.45]);
+  assert.deepEqual(math.adjustHsb([1, 1, 1], balanced), [1, 1, 0.9]);
+  const clipped = evaluateHsb(
+    {
+      ...neutral,
+      tiles: [
+        [0.5, 0.5, 0.5],
+        [0.9, 0.9, 0.9],
+      ],
+    },
+    neutral,
+    balanced,
+    math,
+  );
+  assert.equal(clipped.clipping, 0.5);
+  assert.notEqual(
+    material.earlyHsbMaterialKey('source', 20, 20, math.IDENTITY_HSB),
+    material.earlyHsbMaterialKey('source', 20, 20, balanced),
+  );
   assert.equal(
     fitHsb(neutral, [{ ...neutral, rgb: [0.6, 0.61, 0.6] }], model, math).adjustment.hueDegrees,
     0,

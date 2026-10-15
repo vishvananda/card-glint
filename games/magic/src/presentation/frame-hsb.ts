@@ -1,10 +1,12 @@
 import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
 import { framePaperMask, type FramePixels, type PaperMask } from './frame-paper-mask.js';
+import { frameAccentMask, type FrameAccentMask } from './frame-accent-mask.js';
 
 export interface DualFrameHsb {
   frame: HsbAdjustment;
   paper: HsbAdjustment;
   mask: PaperMask;
+  accents?: readonly { mask: FrameAccentMask; adjustment: HsbAdjustment }[];
 }
 export type FrameHsb = HsbAdjustment | DualFrameHsb;
 
@@ -15,7 +17,12 @@ export type FrameHsb = HsbAdjustment | DualFrameHsb;
 export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
   const dual = 'mask' in adjustment ? adjustment : undefined,
     mask = dual ? framePaperMask(image, dual.mask) : undefined,
-    frame = 'mask' in adjustment ? adjustment.frame : adjustment;
+    frame = 'mask' in adjustment ? adjustment.frame : adjustment,
+    accents =
+      dual?.accents?.map((accent) => ({
+        values: frameAccentMask(image, accent.mask),
+        adjustment: accent.adjustment,
+      })) ?? [];
   for (let i = 0; i < image.data.length; i += 4) {
     if (image.data[i + 3] === 0) continue;
     const rgb: Rgb = [image.data[i]! / 255, image.data[i + 1]! / 255, image.data[i + 2]! / 255],
@@ -29,5 +36,14 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
       image.data[i + c] = Math.round(
         Math.round(255 * outside[c]!) * (1 - weight) + Math.round(255 * inside[c]!) * weight,
       );
+    for (const accent of accents) {
+      const weight = accent.values[i / 4]!;
+      if (!weight) continue;
+      const color = adjustHsb(rgb, accent.adjustment);
+      for (let c = 0; c < 3; c++)
+        image.data[i + c] = Math.round(
+          image.data[i + c]! * (1 - weight) + 255 * color[c]! * weight,
+        );
+    }
   }
 }

@@ -68,6 +68,22 @@ try {
   );
   assert.equal(geometry.productionIntegration.exactMatches, 83);
   assert.equal(study.groups.length, 8);
+  const landPins = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/legends-land-pins.json'),
+  );
+  const landColor = study.groups.find((g) => g.material === 'L');
+  assert.equal(landPins.status, 'validated');
+  assert.equal(landPins.asset, landColor.asset);
+  assert.deepEqual(landPins.frame, landColor.rect);
+  assert.deepEqual(landPins.accents, landColor.adjustment.accents);
+  assert.equal(landColor.fit.frame.method, 'source-rgb-balance');
+  assert.ok(landColor.fit.frame.pixelClipping <= 0.03);
+  for (const region of Object.values(landPins.raster.regions)) {
+    assert.ok(region.after < region.before && region.after <= 5);
+    assert.ok(region.worstRegression <= 2);
+    assert.equal(region.rows.filter((r) => r.cohort === 'calibration').length, 4);
+    assert.equal(region.rows.filter((r) => r.cohort === 'validation').length, 4);
+  }
   for (const group of study.groups) {
     const face = {
       ...ordinary,

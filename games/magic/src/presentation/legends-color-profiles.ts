@@ -165,6 +165,7 @@ export const LEGENDS_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfil
             hueDegrees: 0,
             saturationScale: 1,
             brightnessScale: 1,
+            rgbScale: [1.23125, 1.2537500000000004, 1.0025],
           },
           paper: {
             hueDegrees: 14.93891019140574,
@@ -176,6 +177,49 @@ export const LEGENDS_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfil
             rect: [0.1265358333052816, 0.6083023840900922, 0.7510856027198977, 0.2770456451419673],
             feather: 0.0013333333333333333,
           },
+          accents: [
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.08266666666666667, 0.0719047619047619, 0.838, 0.4866666666666667],
+                    inner: [
+                      0.09333333333333334, 0.07952380952380952, 0.8166666666666667,
+                      0.4714285714285714,
+                    ],
+                  },
+                ],
+                hueCenter: 55,
+                hueRadius: 35,
+                hueFeather: 10,
+                saturation: [0.35, 0.7],
+              },
+              adjustment: {
+                hueDegrees: 5.553601139457442,
+                saturationScale: 0.5666761230892462,
+                brightnessScale: 0.9833239619377162,
+              },
+            },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.112, 0.5957142857142858, 0.7826666666666666, 0.30047619047619045],
+                    inner: [0.12533333333333332, 0.61, 0.7533333333333333, 0.27714285714285714],
+                  },
+                ],
+                hueCenter: 55,
+                hueRadius: 35,
+                hueFeather: 10,
+                saturation: [0.35, 0.7],
+              },
+              adjustment: {
+                hueDegrees: 6.712541190153161,
+                saturationScale: 0.682745288248337,
+                brightnessScale: 0.7639751552795031,
+              },
+            },
+          ],
         },
     },
   },

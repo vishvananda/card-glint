@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "adopted-on-branch-not-released",
   "scope": "Ordinary black-border Legends printings, eight materials, 36 calibration and 36 held-out cards. Original source plates replaced before calibration; no scan poses refitted.",
-  "method": "Shared set/material frame and paper HSB, frozen frame poses, 36 calibration and 36 held-out cards. Minimum four per cohort/material. Median Oklab error <=5, median regression <=0.15, worst per-card regression <=2, clipping <=3%, dark-bin regression <=0.25, contrast-error regression <=0.5. Model-bound flags and texture residuals remain visible.",
+  "method": "Shared set/material frame and paper HSB, with an alternative bounded RGB balance for near-neutral source frames (saturation <=10%); frozen frame poses, 36 calibration and 36 held-out cards. Fit/model selection uses training cards only. RGB gains in [0.65,1.4], raw-pixel clipping <=3%, no training shadow/contrast regression, and training color error must beat HSV by >=0.1. Minimum four per cohort/material. Held-out median Oklab error <=5, median regression <=0.15, worst per-card regression <=2, clipping <=3%, dark-bin regression <=0.25, contrast-error regression <=0.5. Model-bound flags and texture residuals remain visible.",
   "model": {
     "space": "HSV on encoded sRGB (HSB)",
     "hueDegrees": [-60, 60],
@@ -13,7 +13,7 @@
     "minimumValidation": 2
   },
   "neutralPaper": "Hue locks below 2.5% saturation. The previous 6% lock treated ABU's slightly pink paper as gray and preserved the wrong cast. Training Legends white printings consistently support a yellow-green paper hue; the same threshold is used for all materials.",
-  "search": "Shared frame/paper HSB; hue locked for neutral paper. Fit only calibration colors. Cap transformed tile saturation/brightness at the 99.5th percentile, constrain frame shadow chroma/lightness and contrast error to no training regression. Retain unchanged frame color if no feasible improvement exists.",
+  "search": "Shared frame/paper HSB; hue locked for neutral paper. Fit only calibration colors. Cap transformed tile saturation/brightness at the 99.5th percentile, constrain frame shadow chroma/lightness and contrast error to no training regression. Near-neutral frame sources also try bounded RGB gains with <=3% raw-pixel clipping; select on training error only. Retain unchanged frame color if no feasible improvement exists. Gold land outlines use separate source pigment masks recorded in legends-land-pins.json.",
   "rasterMethod": "Ordinary production renderer with set-hsb-v1. Color samples from the prepared, masked, composited plate; same frozen reference scans. Separate from whole-card accuracy.",
   "groups": [
     {
@@ -4734,7 +4734,8 @@
         "frame": {
           "hueDegrees": 0,
           "saturationScale": 1,
-          "brightnessScale": 1
+          "brightnessScale": 1,
+          "rgbScale": [1.23125, 1.2537500000000004, 1.0025]
         },
         "paper": {
           "hueDegrees": 14.93891019140574,
@@ -4745,35 +4746,72 @@
           "kind": "rect",
           "rect": [0.1265358333052816, 0.6083023840900922, 0.7510856027198977, 0.2770456451419673],
           "feather": 0.0013333333333333333
-        }
+        },
+        "accents": [
+          {
+            "mask": {
+              "rings": [
+                {
+                  "outer": [0.08266666666666667, 0.0719047619047619, 0.838, 0.4866666666666667],
+                  "inner": [
+                    0.09333333333333334, 0.07952380952380952, 0.8166666666666667, 0.4714285714285714
+                  ]
+                }
+              ],
+              "hueCenter": 55,
+              "hueRadius": 35,
+              "hueFeather": 10,
+              "saturation": [0.35, 0.7]
+            },
+            "adjustment": {
+              "hueDegrees": 5.553601139457442,
+              "saturationScale": 0.5666761230892462,
+              "brightnessScale": 0.9833239619377162
+            }
+          },
+          {
+            "mask": {
+              "rings": [
+                {
+                  "outer": [0.112, 0.5957142857142858, 0.7826666666666666, 0.30047619047619045],
+                  "inner": [0.12533333333333332, 0.61, 0.7533333333333333, 0.27714285714285714]
+                }
+              ],
+              "hueCenter": 55,
+              "hueRadius": 35,
+              "hueFeather": 10,
+              "saturation": [0.35, 0.7]
+            },
+            "adjustment": {
+              "hueDegrees": 6.712541190153161,
+              "saturationScale": 0.682745288248337,
+              "brightnessScale": 0.7639751552795031
+            }
+          }
+        ]
       },
       "accepted": {
-        "frame": false,
+        "frame": true,
         "paper": true
       },
       "fit": {
         "frame": {
           "adjustment": {
-            "hueDegrees": 26.33513231197776,
-            "saturationScale": 1.75,
-            "brightnessScale": 1.2213328853046594
+            "hueDegrees": 0,
+            "saturationScale": 1,
+            "brightnessScale": 1,
+            "rgbScale": [1.23125, 1.2537500000000004, 1.0025]
           },
-          "flags": ["model-bound"],
+          "flags": [],
           "target": [0.682843137254902, 0.6627450980392157, 0.5068627450980392],
-          "fitError": 2.7690258273001733,
+          "fitError": 0.3326761149470147,
           "calibrationSpread": 1.2626321802585743,
           "constraints": {
-            "tileQuantile": 0.995,
+            "sourceSaturationMaximum": 0.1,
+            "rgbScale": [0.65, 1.4],
+            "pixelClippingMaximum": 0.03,
             "textureTrainingRegression": 0,
-            "bounds": {
-              "space": "HSV on encoded sRGB (HSB)",
-              "hueDegrees": [-60, 60],
-              "saturationScale": [0.35, 1.75],
-              "brightnessScale": [0.65, 1.4],
-              "neutralSaturation": 0.025,
-              "minimumCalibration": 3,
-              "minimumValidation": 2
-            }
+            "minimumTrainingImprovement": 0.1
           },
           "unconstrained": {
             "adjustment": {
@@ -4785,6 +4823,43 @@
             "target": [0.682843137254902, 0.6627450980392157, 0.5068627450980392],
             "fitError": 2.7690258273001733,
             "calibrationSpread": 1.2626321802585743
+          },
+          "method": "source-rgb-balance",
+          "pixelClipping": 0.029772727272727274,
+          "hsbAlternative": {
+            "adjustment": {
+              "hueDegrees": 26.33513231197776,
+              "saturationScale": 1.75,
+              "brightnessScale": 1.2213328853046594
+            },
+            "flags": ["model-bound"],
+            "target": [0.682843137254902, 0.6627450980392157, 0.5068627450980392],
+            "fitError": 2.7690258273001733,
+            "calibrationSpread": 1.2626321802585743,
+            "constraints": {
+              "tileQuantile": 0.995,
+              "textureTrainingRegression": 0,
+              "bounds": {
+                "space": "HSV on encoded sRGB (HSB)",
+                "hueDegrees": [-60, 60],
+                "saturationScale": [0.35, 1.75],
+                "brightnessScale": [0.65, 1.4],
+                "neutralSaturation": 0.025,
+                "minimumCalibration": 3,
+                "minimumValidation": 2
+              }
+            },
+            "unconstrained": {
+              "adjustment": {
+                "hueDegrees": 26.33513231197776,
+                "saturationScale": 1.75,
+                "brightnessScale": 1.2213328853046594
+              },
+              "flags": ["model-bound"],
+              "target": [0.682843137254902, 0.6627450980392157, 0.5068627450980392],
+              "fitError": 2.7690258273001733,
+              "calibrationSpread": 1.2626321802585743
+            }
           }
         },
         "paper": {
@@ -4826,7 +4901,7 @@
       "predicted": {
         "frame": {
           "before": 9.736753463115978,
-          "after": 3.529953886985715,
+          "after": 2.6819520749754053,
           "worstRegression": 0,
           "clipping": 0
         },
@@ -4840,40 +4915,40 @@
       "texture": {
         "chroma": {
           "before": 4.511563552365683,
-          "after": 3.356123654622647
+          "after": 0.3569384564337037
         },
         "shadowChroma": {
           "before": 4.072052528629913,
-          "after": 3.29930996958837
+          "after": 0.541524678544214
         },
         "shadowLightness": {
           "before": 4.619490273569166,
-          "after": 4.068054414711147
+          "after": 4.315005023174152
         },
         "contrastError": {
           "before": 6.394371107745595,
-          "after": 3.058760394915133
+          "after": 3.6050726060588083
         }
       },
       "actualTexture": {
         "shadowChroma": {
           "before": 4.072052528629913,
-          "after": 4.072052528629913
+          "after": 0.6025374191973676
         },
         "shadowLightness": {
           "before": 4.619490273569166,
-          "after": 4.619490273569166
+          "after": 4.121654737243746
         },
         "contrastError": {
           "before": 6.394371107745595,
-          "after": 6.394371107745595
+          "after": 4.169361199947858
         }
       },
-      "flags": ["frame-visual-pinline-hue"],
+      "flags": [],
       "actual": {
         "frame": {
           "before": 9.736753463115978,
-          "after": 9.736753463115978,
+          "after": 2.675571816024583,
           "worstRegression": 0
         },
         "paper": {
@@ -4896,14 +4971,14 @@
           "components": {
             "frame": {
               "before": 7.211335693338294,
-              "after": 5.52685253267495,
+              "after": 4.62256811139246,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 7.318961069178877,
               "clipping": 0,
               "referenceRgb": [0.6137254901960785, 0.6088235294117648, 0.45784313725490194],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 4.672948952616953,
@@ -4926,12 +5001,12 @@
             "contrastError": 6.070233504621726
           },
           "textureAfter": {
-            "chroma": 3.5594230332739776,
-            "shadowChroma": 3.485660402862441,
-            "shadowLightness": 5.818953396170523,
-            "contrast": 18.55991316926645,
+            "chroma": 0.06092622073736193,
+            "shadowChroma": 0.15251256535272384,
+            "shadowLightness": 6.065904004633527,
+            "contrast": 18.013600958122776,
             "referenceContrast": 21.294535961057715,
-            "contrastError": 2.7346227917912636
+            "contrastError": 3.280935002934939
           },
           "raster": {
             "id": "31d2422a-bb7d-4cdd-9aac-e5a936a4be3b",
@@ -4940,7 +5015,7 @@
             "components": {
               "frame": {
                 "before": 7.211335693338294,
-                "after": 7.211335693338294
+                "after": 4.48588771087355
               },
               "paper": {
                 "before": 4.672948952616953,
@@ -4948,12 +5023,12 @@
               }
             },
             "texture": {
-              "chroma": 4.715825400772108,
-              "shadowChroma": 4.281217005883598,
-              "shadowLightness": 2.86859129210979,
-              "contrast": 15.22430245643599,
+              "chroma": 0.12207303857290643,
+              "shadowChroma": 0.16718858221148541,
+              "shadowLightness": 5.872553718703122,
+              "contrast": 17.449312364233727,
               "referenceContrast": 21.294535961057715,
-              "contrastError": 6.070233504621726
+              "contrastError": 3.8452235968239883
             }
           }
         },
@@ -4970,14 +5045,14 @@
           "components": {
             "frame": {
               "before": 10.48370225840927,
-              "after": 2.0715939781141444,
+              "after": 1.1611964629768639,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 7.311637498813412,
               "clipping": 0,
               "referenceRgb": [0.6470588235294118, 0.6627450980392157, 0.5313725490196078],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 7.33615929827095,
@@ -5000,12 +5075,12 @@
             "contrastError": 7.245517069932518
           },
           "textureAfter": {
-            "chroma": 3.116640432537658,
-            "shadowChroma": 3.096861585402878,
-            "shadowLightness": 3.894311352186197,
-            "contrast": 18.55991316926645,
+            "chroma": 0.8355415649282016,
+            "shadowChroma": 0.6211248213735745,
+            "shadowLightness": 4.141261960649201,
+            "contrast": 18.013600958122776,
             "referenceContrast": 22.469819526368507,
-            "contrastError": 3.909906357102056
+            "contrastError": 4.456218568245731
           },
           "raster": {
             "id": "314fd1d7-4bd8-4d95-b7c2-1aa6660ab88a",
@@ -5014,7 +5089,7 @@
             "components": {
               "frame": {
                 "before": 10.48370225840927,
-                "after": 10.48370225840927
+                "after": 1.1140383256559607
               },
               "paper": {
                 "before": 7.33615929827095,
@@ -5022,12 +5097,12 @@
               }
             },
             "texture": {
-              "chroma": 4.29775414340463,
-              "shadowChroma": 3.9244888618313594,
-              "shadowLightness": 4.793233336094116,
-              "contrast": 15.22430245643599,
+              "chroma": 0.8896248348706612,
+              "shadowChroma": 0.5494613292492252,
+              "shadowLightness": 3.947911674718796,
+              "contrast": 17.449312364233727,
               "referenceContrast": 22.469819526368507,
-              "contrastError": 7.245517069932518
+              "contrastError": 5.0205071621347805
             }
           }
         },
@@ -5044,14 +5119,14 @@
           "components": {
             "frame": {
               "before": 12.09825444263538,
-              "after": 3.336189962260798,
+              "after": 0.9549487193402434,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 10.600500137968282,
               "clipping": 0,
               "referenceRgb": [0.6872549019607843, 0.6725490196078432, 0.49901960784313726],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 4.777386278143045,
@@ -5074,12 +5149,12 @@
             "contrastError": 9.96366403289828
           },
           "textureAfter": {
-            "chroma": 4.321851804472511,
-            "shadowChroma": 4.519491451172139,
-            "shadowLightness": 4.545362049309398,
-            "contrast": 18.55991316926645,
+            "chroma": 0.7917656563895388,
+            "shadowChroma": 1.222746329452793,
+            "shadowLightness": 4.792312657772402,
+            "contrast": 18.013600958122776,
             "referenceContrast": 25.18796648933427,
-            "contrastError": 6.628053320067817
+            "contrastError": 7.1743655312114925
           },
           "raster": {
             "id": "32865e68-5842-4f17-b2ea-4ffa743b511f",
@@ -5088,7 +5163,7 @@
             "components": {
               "frame": {
                 "before": 12.09825444263538,
-                "after": 12.09825444263538
+                "after": 1.073129992323826
               },
               "paper": {
                 "before": 4.777386278143045,
@@ -5096,12 +5171,12 @@
               }
             },
             "texture": {
-              "chroma": 5.457486435717454,
-              "shadowChroma": 5.286566392061704,
-              "shadowLightness": 4.142182638970915,
-              "contrast": 15.22430245643599,
+              "chroma": 0.7646617138842731,
+              "shadowChroma": 1.261531754433438,
+              "shadowLightness": 4.598962371841997,
+              "contrast": 17.449312364233727,
               "referenceContrast": 25.18796648933427,
-              "contrastError": 9.96366403289828
+              "contrastError": 7.738654125100542
             }
           }
         },
@@ -5118,14 +5193,14 @@
           "components": {
             "frame": {
               "before": 14.109160123214318,
-              "after": 3.6534928758284417,
+              "after": 3.517763824166421,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 8.075471352280289,
               "clipping": 0,
               "referenceRgb": [0.7137254901960784, 0.7039215686274509, 0.5735294117647058],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 7.891536324910699,
@@ -5148,12 +5223,12 @@
             "contrastError": 6.485922701319314
           },
           "textureAfter": {
-            "chroma": 2.6055520252726834,
-            "shadowChroma": 2.5658692297122503,
-            "shadowLightness": 0.40908170966830193,
-            "contrast": 18.55991316926645,
+            "chroma": 0.99915654180974,
+            "shadowChroma": 0.9849789215718175,
+            "shadowLightness": 0.6560323181313055,
+            "contrast": 18.013600958122776,
             "referenceContrast": 21.710225157755303,
-            "contrastError": 3.150311988488852
+            "contrastError": 3.6966241996325273
           },
           "raster": {
             "id": "64bc9b1d-5818-4d9e-b771-e49af4ff9a5c",
@@ -5162,7 +5237,7 @@
             "components": {
               "frame": {
                 "before": 14.109160123214318,
-                "after": 14.109160123214318
+                "after": 3.645993849277941
               },
               "paper": {
                 "before": 7.891536324910699,
@@ -5170,12 +5245,12 @@
               }
             },
             "texture": {
-              "chroma": 3.7382048121728593,
-              "shadowChroma": 3.2990081891016985,
-              "shadowLightness": 8.278462978612012,
-              "contrast": 15.22430245643599,
+              "chroma": 0.9963726885508466,
+              "shadowChroma": 1.013457184191623,
+              "shadowLightness": 0.46268203220090065,
+              "contrast": 17.449312364233727,
               "referenceContrast": 21.710225157755303,
-              "contrastError": 6.485922701319314
+              "contrastError": 4.260912793521577
             }
           }
         },
@@ -5192,14 +5267,14 @@
           "components": {
             "frame": {
               "before": 10.673602141806375,
-              "after": 2.3744791771856146,
+              "after": 0.7296219149309873,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 5.223221694802715,
               "clipping": 0,
               "referenceRgb": [0.6784313725490196, 0.6549019607843137, 0.5147058823529411],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 5.666891195630008,
@@ -5222,12 +5297,12 @@
             "contrastError": 4.296587520088558
           },
           "textureAfter": {
-            "chroma": 3.487586808133113,
-            "shadowChroma": 3.5226251884392585,
-            "shadowLightness": 1.5258416554329912,
-            "contrast": 18.55991316926645,
+            "chroma": 0.14138403295884813,
+            "shadowChroma": 0.5407955503144961,
+            "shadowLightness": 1.7727922638959948,
+            "contrast": 18.013600958122776,
             "referenceContrast": 19.520889976524547,
-            "contrastError": 0.9609768072580955
+            "contrastError": 1.5072890184017709
           },
           "raster": {
             "id": "66641d88-b3f0-4bcd-8d2d-29aa2de69e30",
@@ -5236,7 +5311,7 @@
             "components": {
               "frame": {
                 "before": 10.673602141806375,
-                "after": 10.673602141806375
+                "after": 0.6415037871582119
               },
               "paper": {
                 "before": 5.666891195630008,
@@ -5244,12 +5319,12 @@
               }
             },
             "texture": {
-              "chroma": 4.6323121360252895,
-              "shadowChroma": 4.270741075319883,
-              "shadowLightness": 7.161703032847322,
-              "contrast": 15.22430245643599,
+              "chroma": 0.10582314262394743,
+              "shadowChroma": 0.6154170156051175,
+              "shadowLightness": 1.57944197796559,
+              "contrast": 17.449312364233727,
               "referenceContrast": 19.520889976524547,
-              "contrastError": 4.296587520088558
+              "contrastError": 2.0715776122908203
             }
           }
         },
@@ -5266,14 +5341,14 @@
           "components": {
             "frame": {
               "before": 9.547908871102116,
-              "after": 3.4064148981429883,
+              "after": 1.8461403257843896,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 7.9823687641014,
               "clipping": 0,
               "referenceRgb": [0.6607843137254902, 0.638235294117647, 0.4852941176470588],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 4.716579078414146,
@@ -5296,12 +5371,12 @@
             "contrastError": 7.652809819780593
           },
           "textureAfter": {
-            "chroma": 3.6750537291519882,
-            "shadowChroma": 3.750037427085142,
-            "shadowLightness": 4.964982243322613,
-            "contrast": 18.55991316926645,
+            "chroma": 0.30146235842173186,
+            "shadowChroma": 0.5515288573014611,
+            "shadowLightness": 5.211932851785617,
+            "contrast": 18.013600958122776,
             "referenceContrast": 22.877112276216582,
-            "contrastError": 4.317199106950131
+            "contrastError": 4.863511318093806
           },
           "raster": {
             "id": "79427109-c1f3-476d-a029-0049217237b5",
@@ -5310,7 +5385,7 @@
             "components": {
               "frame": {
                 "before": 9.547908871102116,
-                "after": 9.547908871102116
+                "after": 1.7051497827712252
               },
               "paper": {
                 "before": 4.716579078414146,
@@ -5318,12 +5393,12 @@
               }
             },
             "texture": {
-              "chroma": 4.807065645850916,
-              "shadowChroma": 4.51219074158667,
-              "shadowLightness": 3.7225624449577,
-              "contrast": 15.22430245643599,
+              "chroma": 0.2413577962964231,
+              "shadowChroma": 0.6155999339905041,
+              "shadowLightness": 5.018582565855212,
+              "contrast": 17.449312364233727,
               "referenceContrast": 22.877112276216582,
-              "contrastError": 7.652809819780593
+              "contrastError": 5.427799911982856
             }
           }
         },
@@ -5340,14 +5415,14 @@
           "components": {
             "frame": {
               "before": 11.51664362667609,
-              "after": 3.0583350168266716,
+              "after": 0.608263575353452,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 7.166271489485223,
               "clipping": 0,
               "referenceRgb": [0.6892156862745098, 0.6627450980392157, 0.49901960784313726],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 6.469996247183009,
@@ -5370,12 +5445,12 @@
             "contrastError": 6.121333864129053
           },
           "textureAfter": {
-            "chroma": 4.140983211058721,
-            "shadowChroma": 4.236681652933574,
-            "shadowLightness": 2.5665272790607263,
-            "contrast": 18.55991316926645,
+            "chroma": 0.640110011640737,
+            "shadowChroma": 1.015755684190438,
+            "shadowLightness": 2.81347788752373,
+            "contrast": 18.013600958122776,
             "referenceContrast": 21.345636320565042,
-            "contrastError": 2.7857231512985905
+            "contrastError": 3.332035362442266
           },
           "raster": {
             "id": "9de534ff-fb48-4692-bd0f-dd237ca28502",
@@ -5384,7 +5459,7 @@
             "components": {
               "frame": {
                 "before": 11.51664362667609,
-                "after": 11.51664362667609
+                "after": 0.6628142262304868
               },
               "paper": {
                 "before": 6.469996247183009,
@@ -5392,12 +5467,12 @@
               }
             },
             "texture": {
-              "chroma": 5.273077266273632,
-              "shadowChroma": 4.989693895526355,
-              "shadowLightness": 6.121017409219586,
-              "contrast": 15.22430245643599,
+              "chroma": 0.6048406795917982,
+              "shadowChroma": 1.0689921152340265,
+              "shadowLightness": 2.620127601593325,
+              "contrast": 17.449312364233727,
               "referenceContrast": 21.345636320565042,
-              "contrastError": 6.121333864129053
+              "contrastError": 3.8963239563313152
             }
           }
         },
@@ -5414,14 +5489,14 @@
           "components": {
             "frame": {
               "before": 9.925598055129838,
-              "after": 2.2062766663242686,
+              "after": 1.3260861966437203,
               "sourceSpread": 6.7233712589511985,
-              "afterSpread": 8.9968386576711,
+              "afterSpread": 7.962793685731545,
               "referenceSpread": 6.275409563271885,
               "clipping": 0,
               "referenceRgb": [0.6588235294117647, 0.65, 0.5215686274509804],
               "beforeRgb": [0.5470588235294118, 0.5294117647058824, 0.5078431372549019],
-              "afterRgb": [0.6609482089851537, 0.6645487758275352, 0.5873174316097407]
+              "afterRgb": [0.6735661764705883, 0.6637500000000002, 0.5091127450980392]
             },
             "paper": {
               "before": 5.810911972800428,
@@ -5444,12 +5519,12 @@
             "contrastError": 6.302819514171876
           },
           "textureAfter": {
-            "chroma": 3.1528242759713168,
-            "shadowChroma": 3.1129595363142992,
-            "shadowLightness": 3.171126586099682,
-            "contrast": 18.55991316926645,
+            "chroma": 0.4124145544456756,
+            "shadowChroma": 0.531520499786967,
+            "shadowLightness": 3.4180771945626853,
+            "contrast": 18.013600958122776,
             "referenceContrast": 21.527121970607865,
-            "contrastError": 2.967208801341414
+            "contrastError": 3.5135210124850893
           },
           "raster": {
             "id": "d0a261d0-7678-46f7-9285-d541486567d8",
@@ -5458,7 +5533,7 @@
             "components": {
               "frame": {
                 "before": 9.925598055129838,
-                "after": 9.925598055129838
+                "after": 1.2102026576947136
               },
               "paper": {
                 "before": 5.810911972800428,
@@ -5466,12 +5541,12 @@
               }
             },
             "texture": {
-              "chroma": 4.307301703959257,
-              "shadowChroma": 3.8628880513762285,
-              "shadowLightness": 5.516418102180632,
-              "contrast": 15.22430245643599,
+              "chroma": 0.4285878402727025,
+              "shadowChroma": 0.589474904404231,
+              "shadowLightness": 3.2247269086322805,
+              "contrast": 17.449312364233727,
               "referenceContrast": 21.527121970607865,
-              "contrastError": 6.302819514171876
+              "contrastError": 4.077809606374139
             }
           }
         }
@@ -6851,12 +6926,12 @@
   ],
   "provenance": {
     "geometry": "early-frame-source-review.json",
-    "fitHash": "87672a71085b239f6c104f0242a8dfe109c50efac87ec6ea528f51233124bf13",
-    "replayHash": "c11d3f5b52ca60d03dd759621248793f36e470b83ad8d00b655f37993aa3e89a"
+    "fitHash": "637796533bd51a21d2b9adf004e502239a86285625a86e7e02dae2156fdc80e9",
+    "replayHash": "aa5226ab4194be1ef48b35986a9c233e9a00c3be290cd19f443884472907dc32"
   },
   "remaining": [
     "Black, red and gold retain unmodified outer-frame color because the median-only fit worsened texture.",
-    "Land outer-frame correction is withheld: it turns gold pinlines lime. Add a measured pinline mask before adopting that hue/saturation fit; text-box color is adopted.",
+    "Land gray texture uses source RGB balance; gold art and paper outlines use separately measured source pigment masks. Held-out color checks pass; source texture and boundary residuals remain visible in the comparison.",
     "Color distances are Oklab diagnostics, not whole-card accuracy percentages.",
     "Title, type, symbols, rules, artist and power/toughness still need calibration on the selected frames."
   ]

@@ -48,10 +48,17 @@ cards and ordinary production exports. It limits highlight clipping and rejects
 improvements in median color that worsen shadow chroma, shadow lightness or
 texture contrast. Black, red and gold retain their outer-frame colors; their
 paper corrections pass. Adopted frame/paper corrections have actual held-out
-component errors below 5 Oklab units. Visual review withholds the land outer-frame
-correction because it turns the gold pinlines lime; its paper correction is
-retained. The pinlines need their own measured mask before the outer-frame color
-can be adjusted. Irregular black/green masks preserve
+component errors below 5 Oklab units. The land texture uses bounded RGB channel
+gains: hue/saturation correction alone amplified its colored flecks and turned
+its gold outlines lime. Source pigment masks now isolate the art and paper
+outlines, preserving adjacent gray bevels and black keylines. The
+[outline study](fixtures/accuracy/legends-land-pins.json) fits four land cards and
+checks four held-out cards with the same frozen scan poses. Actual held-out land
+frame color error falls from 9.74 to 2.68 Oklab units. Outline errors fall from
+7.10 to 2.39 around the art and from 11.46 to 2.23 around the paper. These masks
+and channel gains apply once during cached bitmap preparation. Source grain and
+boundary mismatches remain visible; color correction does not repair them.
+Irregular black/green masks preserve
 shadows crossing the paper edge. Profiles bind to exact source URLs and geometry
 and use the existing derived-material cache; no animation-time fitting is added.
 
