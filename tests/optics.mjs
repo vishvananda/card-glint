@@ -2,7 +2,9 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 
-const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+const browser = await chromium.launch({
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+});
 try {
   const page = await browser.newPage();
   await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');

@@ -3,6 +3,18 @@
 The effects reuse the prepared card face and keep its layer/depth ordering.
 Each treatment has a small shader module under `packages/browser/src/gpu`.
 
+## Gloss and foil
+
+`gloss` adds a clear varnish reflection and a broad studio highlight without a
+rainbow pigment tint. Prismatic foil mixes two directional mylar spectra; cold
+foil uses a silver response, and Opal combines nacre colors with contour relief.
+These treatments reuse the prepared face, edge mask and coverage textures.
+They do not allocate resources or read pixels while a card moves.
+
+The independent local hologram uses the same prismatic spectral palette at its
+own patch scale. Its mask excludes the surrounding rim, and printed emblem
+contrast modulates the light. It works on regular, glossy and foil cards.
+
 ## Rainlit window
 
 [Lucas Bebber's rain experiments](https://tympanus.net/codrops/2015/11/04/rain-water-effect-experiments/)

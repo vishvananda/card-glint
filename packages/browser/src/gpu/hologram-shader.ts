@@ -15,7 +15,11 @@ vec3 localHologram(vec2 uv, vec3 ink, vec3 normal, vec3 view, float grainFilter)
   float seed=hologramMaterial.y;
   float axisA=dot(p,vec2(1.6,.45))+dot(light,vec2(1.1,.65))+seed;
   float axisB=dot(p,vec2(-.7,1.9))+dot(light,vec2(-.8,1.3))+seed*.37;
-  vec3 diffraction=mix(spectrum(axisA),spectrum(axisB),.32);
+  // Reuse the card foil's mylar spectra while retaining patch-local axes,
+  // stationary grooves and the printed emblem's luminance.
+  vec3 rainbow=mix(pastelSpectrum(axisA),vividSpectrum(axisA+.06),.48);
+  vec3 rawDiffraction=mix(rainbow,iridescentBands(axisB,3.),.35);
+  vec3 diffraction=mix(vec3(inkLuma(rawDiffraction)),rawDiffraction,.84);
   float stripe=dot(p,vec2(24.,8.));
   float grain=1.-.035*(.5+.5*cos(stripe*6.2831853))*grainFilter;
   float broad=exp(-dot(light-vec2(-.15,.12),light-vec2(-.15,.12))*2.8);

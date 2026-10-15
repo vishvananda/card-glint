@@ -10,7 +10,7 @@ export function foilShader(
     options.artWindows === 'pair'
       ? `float artWindow(vec2 uv) {
     float first=step(artBounds.x,uv.x)*step(uv.x,artBounds.z)*step(artBounds.y,uv.y)*step(uv.y,artBounds.w);
-    float second=step(artBounds2.x,uv.x)*step(uv.x,artBounds2.z)*step(artBounds2.y,uv.y)*step(artBounds2.y,artBounds2.w);
+    float second=step(artBounds2.x,uv.x)*step(uv.x,artBounds2.z)*step(artBounds2.y,uv.y)*step(uv.y,artBounds2.w);
     return max(first,second);
   }`
       : `float artWindow(vec2 uv) {

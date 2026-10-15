@@ -491,3 +491,14 @@ whole-card structural match rises from 40.9% to 75.7%; the held-out mean rises
 from 41.8% to 75.1%. This is a structural similarity index, not a percentage of
 correctness. A larger basic-land text-size proposal regressed held-out cards and
 was rejected. Remaining source texture and art-color differences stay visible.
+
+### Display finish
+
+The pack supplies printing and the independent oval hologram. The host chooses
+the whole-card finish on each scene instance. Use `finish: 'gloss'` for an ordinary
+Magic card's clear surface, or choose `prismatic`, `cold` or `opal` for a foil
+presentation. The game-neutral renderer keeps `regular` as its omitted-finish
+default; use it for unshaded accuracy comparisons. The hologram remains local to
+the stamp under any of these finishes, with the colored rim and lettering
+protected by its mask. Its diffraction shares the prismatic finish's spectral
+palette while retaining its own scale, axes and printed pattern.

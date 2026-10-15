@@ -125,7 +125,8 @@ try {
     try {
       await set();
       const regular = read(),
-        foil = read('prismatic');
+        foil = read('prismatic'),
+        gloss = read('gloss');
       const h = { mask, rect: bounds, strength: 0.8, seed: 48 };
       await set(h);
       const neutral = read(),
@@ -134,6 +135,7 @@ try {
       const differences = {
         regular: diff(regular, neutral),
         foil: diff(foil, foilHolo),
+        gloss: diff(gloss, read('gloss')),
         angle: diff(neutral, tilted),
       };
       const changedAt = (x, y) => {
