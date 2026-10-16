@@ -10,6 +10,7 @@ import { isRevisedLand } from './revised-land-frame.js';
 import { revisedLandRules } from './revised-land-text.js';
 import { rightFlavorAttribution } from './flavor-attribution.js';
 import { legendsRulesParagraphs } from './legends-rules.js';
+import { legendsTextLayout } from './legends-text-layout.js';
 
 /** Shared old-border policy. Historical print references never enter the painter. */
 export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
@@ -45,6 +46,8 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   // complete text; retain the historical minimum for original comparisons.
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   if (isRevisedLand(face)) return revisedLandRules(context, face, paragraphs, reference);
+  const legends = legendsTextLayout(context, face, paragraphs, reference);
+  if (legends) return legends;
   const set = face.setCode?.toLowerCase();
   // Original Mirage–Scourge printings use right-aligned attribution lines;
   // early sets and Eighth Edition onward use a different policy.

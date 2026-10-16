@@ -631,6 +631,81 @@ try {
         .join('') !== 'A final line.'
     )
       throw Error('Balancing lost styling, an inline symbol or an explicit line break');
+    const shortLegends = {
+      name: 'Original example',
+      setCode: 'leg',
+      colors: ['U'],
+      typeLine: 'Sorcery',
+      frameStyle: 'retro',
+      wordingMode: 'original',
+      rulesParagraphs: [{ role: 'rules', runs: [{ text: 'Draw a card.' }] }],
+    };
+    const shortLegendsLayout = retroTextLayout(ctx, shortLegends);
+    if (
+      shortLegendsLayout.size !== 27.5 ||
+      shortLegendsLayout.overflow ||
+      shortLegendsLayout.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01)
+    )
+      throw Error('Short Legends printing lost its large centered face');
+    const leftLegends = retroTextLayout(ctx, { ...shortLegends, rulesAlignment: { mode: 'left' } });
+    if (leftLegends.lines.some((line) => line.x !== 72))
+      throw Error('Legends ignores explicit left alignment');
+    const explicitLegends = retroTextLayout(ctx, {
+      ...shortLegends,
+      rulesParagraphs: [{ role: 'rules', align: 'right', runs: [{ text: 'Draw a card.' }] }],
+    });
+    if (explicitLegends.lines.some((line) => Math.abs(line.x + line.width - 416) > 0.01))
+      throw Error('Legends ignores explicit paragraph alignment');
+    const longerLegends = {
+      ...shortLegends,
+      wordingMode: 'oracle',
+      rulesParagraphs: [
+        {
+          role: 'rules',
+          runs: [
+            {
+              text: 'Draw three cards, then choose a card from your hand. You may put that card on the bottom of your library. If you do, draw another card.',
+            },
+          ],
+        },
+      ],
+    };
+    const originalLegendsReference = retroTextLayout(ctx, {
+      ...longerLegends,
+      rulesAlignment: { mode: 'auto', reference: shortLegends.rulesParagraphs },
+    });
+    const oracleLegendsReference = retroTextLayout(ctx, {
+      ...longerLegends,
+      rulesAlignment: { mode: 'auto' },
+    });
+    if (
+      originalLegendsReference.overflow ||
+      oracleLegendsReference.overflow ||
+      originalLegendsReference.lines.some(
+        (line) => Math.abs(line.x + line.width / 2 - 244) > 0.01,
+      ) ||
+      oracleLegendsReference.lines.some((line) => line.x !== 72)
+    )
+      throw Error(
+        'Legends centering must classify the chosen reference and fit visible Oracle wording',
+      );
+    const denseLegends = retroTextLayout(ctx, {
+      ...longerLegends,
+      rulesParagraphs: [
+        {
+          role: 'rules',
+          runs: [
+            {
+              text: 'Choose a card from your hand and put it on the bottom of your library. '.repeat(
+                7,
+              ),
+            },
+          ],
+        },
+      ],
+    });
+    if (denseLegends.overflow || denseLegends.size > 15.5)
+      throw Error('Dense Legends Oracle wording must fit in the compact face');
     const shortFourth = { ...fixtures[4], rulesText: 'An original short passage.' };
     const centeredFourth = retroTextLayout(ctx, shortFourth);
     if (
