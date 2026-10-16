@@ -76,7 +76,20 @@ The initial inventory contains 81 futureshifted printings; all render with the
 0.3.5 defaults, while 99 ordinary FUT printings remain outside this pass.
 The [source audit](fixtures/accuracy/future-source-audit.json) records pinned
 frame and mana assets, baseline identities, the full-art and transparent-frame
-variants, and required input corrections. These defaults are not yet calibrated.
+variants, and required input corrections. The branch now has shared frame/art,
+mana, expansion-symbol, header/footer and body-placement corrections. Ordinary
+five-color materials are calibrated; sparse MSE and artifact materials retain
+their source colors pending a separate study. Broader body font/reflow changes
+were rejected for wrapping regressions. The [full-frame report](fixtures/accuracy/future-fullset.json)
+improves 53.0% → 72.6% on all 80 accepted poses; Mass of Ghouls remains excluded.
+Release and review-application deployment are still pending. Include the wear
+options and public reviewed-printing wording resolver in that release.
+
+Immediately after that release, calibrate **Planar Chaos** before returning to
+the pre-Eighth queue. First import and route its unsupported color-shifted frame
+cards. Then restore copyright/trademark and collector-number printing, fit the
+frame/paper colors, and validate alignment against independently normalized
+nonfoil scans. Keep ordinary and color-shifted families separate in the report.
 
 ## Current execution checkpoint
 
