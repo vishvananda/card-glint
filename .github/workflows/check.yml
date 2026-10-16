@@ -33,7 +33,7 @@ jobs:
       - run: npm run build
       - run: npm run check
       - run: npm run test:package
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:magic-accuracy
       - run: npm run test:printing-apis
       - run: npm run test:kernels

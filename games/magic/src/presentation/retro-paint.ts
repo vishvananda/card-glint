@@ -1,4 +1,5 @@
 import { paintPrintingElement } from './printing-elements.js';
+import { paintRetroStockBorder } from './retro-stock-border.js';
 import {
   adjustedSymbolBounds,
   paintAdjustedSymbols,
@@ -105,18 +106,7 @@ export function paintRetroFace(
     c.restore();
   } else if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {
     const mask = images.get(retroBorderMask(face));
-    if (mask) {
-      const layer = document.createElement('canvas');
-      layer.width = 732;
-      layer.height = 1020;
-      const ctx = layer.getContext('2d')!;
-      ctx.drawImage(mask, 0, 0, 732, 1020);
-      ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = retroStock(face);
-      ctx.fillRect(0, 0, 732, 1020);
-      c.drawImage(layer, ...retroPx(rect.frame));
-      layer.width = layer.height = 0;
-    }
+    if (mask) paintRetroStockBorder(c, mask, retroPx(rect.frame), retroStock(face));
   }
   c.fillStyle = retroInk(face);
   c.textBaseline = 'middle';
