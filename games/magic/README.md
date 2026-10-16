@@ -94,8 +94,9 @@ same release's decode policy as its painter.
 Future's optional `futureTreatment: 'regular' | 'full-art' | 'clear'` describes
 the physical printing, independently of Oracle wording. Full-art plates have no
 rules panel and reject nonempty body text instead of silently dropping it.
-Regular plates use their visible art window for fitting; clear plates need a
-full-height illustration. Some Scryfall futureshifted art crops omit the curved
+Colorless cards default to regular plates; the optional clear fan treatment is
+never inferred from color identity. Regular plates use their visible art window
+for fitting; explicit clear plates need a full-height illustration. Some Scryfall futureshifted art crops omit the curved
 left side and cannot reproduce that window without a better source.
 
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on

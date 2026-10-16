@@ -57,7 +57,7 @@ export function paintFutureTemplate(
     if (parts.typeSymbol) c.drawImage(images.get(parts.typeSymbol)!, 31.2, 31.2, 27.3, 26);
     c.shadowColor = 'transparent';
     paintFutureMana(c, face, images);
-    const light = !p.artifact && palette.length === 1 && palette[0] !== 'W';
+    const light = palette.length === 1 && palette[0] !== 'W';
     const label = (text: string, rect: FaceRect, size: number) => {
       c.textAlign = 'left';
       c.textBaseline = 'middle';

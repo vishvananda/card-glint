@@ -2,6 +2,7 @@ import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { futureParts, futureTreatment } from './future-frame.js';
 import { templateImageMask } from './template-image-mask.js';
+import { calibrateFutureFrame } from './future-frame-geometry.js';
 
 function canvas(width: number, height: number) {
   const result = document.createElement('canvas');
@@ -102,10 +103,9 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
       else
         c.drawImage(required(parts.stats), 375 * 0.7621, 523 * 0.8834, 375 * 0.1734, 523 * 0.0781);
     }
-    return frame;
-  } catch (error) {
+    return calibrateFutureFrame(frame, face);
+  } finally {
     frame.width = frame.height = 0;
-    throw error;
   }
 }
 

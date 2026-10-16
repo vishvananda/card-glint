@@ -51,241 +51,461 @@
     "objective": "Mean correlation over all profiles, balanced by side. Median side confidence remains a quality gate. Extra model complexity requires at least 0.05px and 25% residual-RMS improvement plus correlation improvement on model-selection strips."
   },
   "geometry": {
-    "status": "proposal-not-adopted",
-    "families": {
-      "cc-regular": {
-        "parameters": {
-          "sx": 0.9867,
-          "sy": 0.9929,
-          "tx": -3.469446951953614e-17,
-          "ty": -0.17500000000000004,
-          "rotation": 0,
-          "shear": 0
+    "status": "shared-frame-geometry-adopted-on-branch-not-released",
+    "implementation": "games/magic/src/presentation/future-frame-geometry.ts",
+    "policy": "Static frame preparation uses shared per-source geometry. Cost symbols and lettering are independent. Per-card scan poses remain frozen and comparison-only.",
+    "sourceProposal": {
+      "status": "proposal-not-adopted",
+      "families": {
+        "cc-regular": {
+          "parameters": {
+            "sx": 0.9867,
+            "sy": 0.9929,
+            "tx": -3.469446951953614e-17,
+            "ty": -0.17500000000000004,
+            "rotation": 0,
+            "shear": 0
+          },
+          "before": 0.00034999157961079194,
+          "after": 0.9042544689558567,
+          "plateCount": 6,
+          "heldOut": 48,
+          "heldBefore": 0.09342766642536654,
+          "heldAfter": 0.8843532013055806,
+          "improved": 48
         },
-        "before": 0.00034999157961079194,
-        "after": 0.9042544689558567,
-        "plateCount": 6,
-        "heldOut": 48,
-        "heldBefore": 0.09342766642536654,
-        "heldAfter": 0.8843532013055806,
-        "improved": 48
+        "mse-full-art": {
+          "parameters": {
+            "sx": 0.9967,
+            "sy": 0.9994999999999999,
+            "tx": -2.125,
+            "ty": -0.8500000000000001,
+            "rotation": 0,
+            "shear": 0
+          },
+          "before": 0.423040658942665,
+          "after": 0.8783957009586286,
+          "plateCount": 5,
+          "heldOut": 4,
+          "heldBefore": 0.4835614018003306,
+          "heldAfter": 0.8683959640599515,
+          "improved": 4
+        },
+        "mse-land": {
+          "parameters": {
+            "sx": 0.9976,
+            "sy": 0.997,
+            "tx": -1.925,
+            "ty": -0.30000000000000004,
+            "rotation": 0,
+            "shear": 0
+          },
+          "before": 0.35887977496627554,
+          "after": 0.8274892621170625,
+          "plateCount": 6,
+          "heldOut": 4,
+          "heldBefore": 0.39791815987467494,
+          "heldAfter": 0.8016066328597224,
+          "improved": 4
+        },
+        "cc-clear": {
+          "parameters": {
+            "sx": 0.9867,
+            "sy": 0.9929,
+            "tx": -3.469446951953614e-17,
+            "ty": -0.17500000000000004,
+            "rotation": 0,
+            "shear": 0
+          },
+          "before": 0.00034999157961079194,
+          "after": 0.9042544689558567,
+          "plateCount": 0,
+          "transferredFrom": "cc-regular",
+          "heldOut": 1,
+          "heldBefore": 0.01282704822277125,
+          "heldAfter": 0.8484847151458256,
+          "improved": 1
+        }
+      },
+      "typeBorders": {
+        "delta": 1.4499999999999926,
+        "topDelta": 0.9999999999999941,
+        "topCalibrationBefore": 0.2670637532409473,
+        "topCalibrationAfter": 0.5559565311028417,
+        "calibration": 20,
+        "heldOut": 49,
+        "bottomCalibrationBefore": 0.2606942741955717,
+        "bottomCalibrationAfter": 0.7440635191995241,
+        "bottomHeldBefore": 0.3183882444923239,
+        "bottomHeldAfter": 0.7578839309104396,
+        "topHeldBefore": 0.37697277790754624,
+        "topHeldAfter": 0.5961583103091251
+      },
+      "innerValidation": {
+        "cc-regular": {
+          "titleTop": {
+            "count": 48,
+            "before": -0.14814371487313477,
+            "after": 0.7999404642085576,
+            "absoluteBefore": 0.541916836636533,
+            "absoluteAfter": 0.8453738560661656
+          },
+          "titleBottom": {
+            "count": 48,
+            "before": -0.25518165355457906,
+            "after": 0.5718246295885646,
+            "absoluteBefore": 0.6494598689195202,
+            "absoluteAfter": 0.7758933357079768
+          },
+          "typeTop": {
+            "count": 48,
+            "before": 0.6215909162356676,
+            "after": 0.5894480553033957,
+            "absoluteBefore": 0.7740195975475256,
+            "absoluteAfter": 0.7847168825199238
+          },
+          "typeBottom": {
+            "count": 48,
+            "before": 0.6725968678049306,
+            "after": 0.7715549634313797,
+            "absoluteBefore": 0.8108248113925128,
+            "absoluteAfter": 0.8228526740164234
+          },
+          "paperBottom": {
+            "count": 48,
+            "before": 0.5399719821283172,
+            "after": 0.7548069075497216,
+            "absoluteBefore": 0.5843372005678765,
+            "absoluteAfter": 0.7983559359618356
+          }
+        },
+        "mse-full-art": {
+          "titleTop": {
+            "count": 4,
+            "before": 0.8057767939988021,
+            "after": 0.9177735129088056,
+            "absoluteBefore": 0.8808326433585014,
+            "absoluteAfter": 0.9582006077261523
+          },
+          "titleBottom": {
+            "count": 4,
+            "before": 0.5658367915561124,
+            "after": 0.7155879292348523,
+            "absoluteBefore": 0.7359047737666297,
+            "absoluteAfter": 0.8504212908880936
+          },
+          "typeTop": {
+            "count": 4,
+            "before": -0.1093020740701851,
+            "after": -0.01846688773864555,
+            "absoluteBefore": 0.7032393015668029,
+            "absoluteAfter": 0.7540168502939315
+          },
+          "typeBottom": {
+            "count": 4,
+            "before": 0.23768281368152497,
+            "after": 0.8074880023710771,
+            "absoluteBefore": 0.6791410645289901,
+            "absoluteAfter": 0.850302187256505
+          }
+        },
+        "mse-land": {
+          "titleTop": {
+            "count": 4,
+            "before": 0.43944122220035886,
+            "after": 0.641340735162503,
+            "absoluteBefore": 0.6920282439908096,
+            "absoluteAfter": 0.7979895696185741
+          },
+          "titleBottom": {
+            "count": 4,
+            "before": 0.4341702342050299,
+            "after": 0.5684067902905343,
+            "absoluteBefore": 0.6669253993911728,
+            "absoluteAfter": 0.701368373446068
+          },
+          "typeTop": {
+            "count": 4,
+            "before": -0.06910085636501159,
+            "after": 0.09314348360442368,
+            "absoluteBefore": 0.5568277102156864,
+            "absoluteAfter": 0.6372645232485845
+          },
+          "typeBottom": {
+            "count": 4,
+            "before": 0.1656765300786046,
+            "after": 0.3071499372853861,
+            "absoluteBefore": 0.6154053795281784,
+            "absoluteAfter": 0.6395702152927593
+          },
+          "paperBottom": {
+            "count": 4,
+            "before": 0.20981259458236368,
+            "after": 0.32064302152677127,
+            "absoluteBefore": 0.557722122587584,
+            "absoluteAfter": 0.5679494240270013
+          }
+        },
+        "cc-clear": {
+          "titleTop": {
+            "count": 1,
+            "before": 0.15891320265450537,
+            "after": 0.6928713295086659,
+            "absoluteBefore": 0.8649978757298089,
+            "absoluteAfter": 0.7167296171499641
+          },
+          "titleBottom": {
+            "count": 1,
+            "before": 0.20056621975767733,
+            "after": 0.8112615247219362,
+            "absoluteBefore": 0.39793792903967073,
+            "absoluteAfter": 0.8294901709876769
+          },
+          "typeTop": {
+            "count": 1,
+            "before": 0.8943310127778332,
+            "after": 0.9158025115372368,
+            "absoluteBefore": 0.9014296558451171,
+            "absoluteAfter": 0.9194571514436997
+          },
+          "typeBottom": {
+            "count": 1,
+            "before": 0.764322389277959,
+            "after": 0.32873539963676685,
+            "absoluteBefore": 0.7740566236120291,
+            "absoluteAfter": 0.7216822110619501
+          },
+          "paperBottom": {
+            "count": 1,
+            "before": 0.3528837764255059,
+            "after": 0.9157671222006168,
+            "absoluteBefore": 0.3610104823317258,
+            "absoluteAfter": 0.9206662812386385
+          }
+        }
+      },
+      "limitations": [
+        "Upper type border can touch artwork: signed and absolute-gradient diagnostics are retained separately.",
+        "Clear CC plate shares opaque CC geometry; translucent color does not choose its own transform.",
+        "Frame color and all lettering remain unfitted.",
+        "Ghostfire and Aven Mindcensor have incomplete source-art crops.",
+        "Accepted scan poses are not a claim of subpixel accuracy for every region; residual uncertainty is recorded per card."
+      ]
+    },
+    "runtimeOuterValidation": {
+      "mse-colorless": {
+        "independent": {
+          "heldOut": 1,
+          "before": 0.01282704822277125,
+          "after": 0.5224662056384235,
+          "improved": 1
+        },
+        "certification": {
+          "heldOut": 1,
+          "before": -0.04585076151476128,
+          "after": 0.4305798849073431,
+          "improved": 1
+        }
+      },
+      "cc-regular": {
+        "independent": {
+          "heldOut": 48,
+          "before": 0.09342766642536654,
+          "after": 0.8954264386699863,
+          "improved": 48
+        },
+        "certification": {
+          "heldOut": 48,
+          "before": 0.06663495868413614,
+          "after": 0.8482417838579045,
+          "improved": 48
+        }
       },
       "mse-full-art": {
-        "parameters": {
-          "sx": 0.9967,
-          "sy": 0.9994999999999999,
-          "tx": -2.125,
-          "ty": -0.8500000000000001,
-          "rotation": 0,
-          "shear": 0
+        "independent": {
+          "heldOut": 4,
+          "before": 0.4835614018003306,
+          "after": 0.8903652708935069,
+          "improved": 4
         },
-        "before": 0.423040658942665,
-        "after": 0.8783957009586286,
-        "plateCount": 5,
-        "heldOut": 4,
-        "heldBefore": 0.4835614018003306,
-        "heldAfter": 0.8683959640599515,
-        "improved": 4
+        "certification": {
+          "heldOut": 4,
+          "before": 0.49241326997881396,
+          "after": 0.8416256643286331,
+          "improved": 4
+        }
       },
       "mse-land": {
-        "parameters": {
-          "sx": 0.9976,
-          "sy": 0.997,
-          "tx": -1.925,
-          "ty": -0.30000000000000004,
-          "rotation": 0,
-          "shear": 0
+        "independent": {
+          "heldOut": 4,
+          "before": 0.39791815987467494,
+          "after": 0.8056346258651028,
+          "improved": 4
         },
-        "before": 0.35887977496627554,
-        "after": 0.8274892621170625,
-        "plateCount": 6,
-        "heldOut": 4,
-        "heldBefore": 0.39791815987467494,
-        "heldAfter": 0.8016066328597224,
-        "improved": 4
-      },
-      "cc-clear": {
-        "parameters": {
-          "sx": 0.9867,
-          "sy": 0.9929,
-          "tx": -3.469446951953614e-17,
-          "ty": -0.17500000000000004,
-          "rotation": 0,
-          "shear": 0
-        },
-        "before": 0.00034999157961079194,
-        "after": 0.9042544689558567,
-        "plateCount": 0,
-        "transferredFrom": "cc-regular",
-        "heldOut": 1,
-        "heldBefore": 0.01282704822277125,
-        "heldAfter": 0.8484847151458256,
-        "improved": 1
+        "certification": {
+          "heldOut": 4,
+          "before": 0.4016465419187746,
+          "after": 0.7865044880541608,
+          "improved": 4
+        }
       }
     },
-    "typeBorders": {
-      "delta": 1.4499999999999926,
-      "topDelta": 0.9999999999999941,
-      "topCalibrationBefore": 0.2670637532409473,
-      "topCalibrationAfter": 0.5559565311028417,
-      "calibration": 20,
-      "heldOut": 49,
-      "bottomCalibrationBefore": 0.2606942741955717,
-      "bottomCalibrationAfter": 0.7440635191995241,
-      "bottomHeldBefore": 0.3183882444923239,
-      "bottomHeldAfter": 0.7578839309104396,
-      "topHeldBefore": 0.37697277790754624,
-      "topHeldAfter": 0.5961583103091251
-    },
-    "innerValidation": {
+    "runtimeInnerValidation": {
       "cc-regular": {
         "titleTop": {
           "count": 48,
           "before": -0.14814371487313477,
-          "after": 0.7999404642085576,
+          "after": 0.789519309853563,
           "absoluteBefore": 0.541916836636533,
-          "absoluteAfter": 0.8453738560661656
+          "absoluteAfter": 0.8372306876951355
         },
         "titleBottom": {
           "count": 48,
           "before": -0.25518165355457906,
-          "after": 0.5718246295885646,
+          "after": 0.5914260309191727,
           "absoluteBefore": 0.6494598689195202,
-          "absoluteAfter": 0.7758933357079768
+          "absoluteAfter": 0.767921905497626
         },
         "typeTop": {
           "count": 48,
           "before": 0.6215909162356676,
-          "after": 0.5894480553033957,
+          "after": 0.6285453112273157,
           "absoluteBefore": 0.7740195975475256,
-          "absoluteAfter": 0.7847168825199238
+          "absoluteAfter": 0.7780899306516261
         },
         "typeBottom": {
           "count": 48,
           "before": 0.6725968678049306,
-          "after": 0.7715549634313797,
+          "after": 0.7821850062604722,
           "absoluteBefore": 0.8108248113925128,
-          "absoluteAfter": 0.8228526740164234
+          "absoluteAfter": 0.8320362071652551
         },
         "paperBottom": {
           "count": 48,
           "before": 0.5399719821283172,
-          "after": 0.7548069075497216,
+          "after": 0.7558435917156766,
           "absoluteBefore": 0.5843372005678765,
-          "absoluteAfter": 0.7983559359618356
+          "absoluteAfter": 0.8000500003490023
         }
       },
       "mse-full-art": {
         "titleTop": {
           "count": 4,
           "before": 0.8057767939988021,
-          "after": 0.9177735129088056,
+          "after": 0.9367068848143257,
           "absoluteBefore": 0.8808326433585014,
-          "absoluteAfter": 0.9582006077261523
+          "absoluteAfter": 0.9646237883516959
         },
         "titleBottom": {
           "count": 4,
           "before": 0.5658367915561124,
-          "after": 0.7155879292348523,
+          "after": 0.7384261396798468,
           "absoluteBefore": 0.7359047737666297,
-          "absoluteAfter": 0.8504212908880936
+          "absoluteAfter": 0.8583478522844348
         },
         "typeTop": {
           "count": 4,
           "before": -0.1093020740701851,
-          "after": -0.01846688773864555,
+          "after": -0.029449137435083657,
           "absoluteBefore": 0.7032393015668029,
-          "absoluteAfter": 0.7540168502939315
+          "absoluteAfter": 0.7541767744750831
         },
         "typeBottom": {
           "count": 4,
           "before": 0.23768281368152497,
-          "after": 0.8074880023710771,
+          "after": 0.8038080136028141,
           "absoluteBefore": 0.6791410645289901,
-          "absoluteAfter": 0.850302187256505
+          "absoluteAfter": 0.8453800645138272
+        }
+      },
+      "mse-colorless": {
+        "titleTop": {
+          "count": 1,
+          "before": 0.15891320265450537,
+          "after": 0.8220214638549739,
+          "absoluteBefore": 0.8649978757298089,
+          "absoluteAfter": 0.8261943599506454
+        },
+        "titleBottom": {
+          "count": 1,
+          "before": 0.20056621975767733,
+          "after": 0.6890927811004469,
+          "absoluteBefore": 0.39793792903967073,
+          "absoluteAfter": 0.7452882088123266
+        },
+        "typeTop": {
+          "count": 1,
+          "before": 0.8943310127778332,
+          "after": -0.1220764614423855,
+          "absoluteBefore": 0.9014296558451171,
+          "absoluteAfter": 0.5115244151970949
+        },
+        "typeBottom": {
+          "count": 1,
+          "before": 0.764322389277959,
+          "after": -0.052295424971408246,
+          "absoluteBefore": 0.7740566236120291,
+          "absoluteAfter": 0.635990795579039
+        },
+        "paperBottom": {
+          "count": 1,
+          "before": 0.3528837764255059,
+          "after": 0.6661613576421117,
+          "absoluteBefore": 0.3610104823317258,
+          "absoluteAfter": 0.6814229558333609
         }
       },
       "mse-land": {
         "titleTop": {
           "count": 4,
           "before": 0.43944122220035886,
-          "after": 0.641340735162503,
+          "after": 0.6225276638517897,
           "absoluteBefore": 0.6920282439908096,
-          "absoluteAfter": 0.7979895696185741
+          "absoluteAfter": 0.794471851626419
         },
         "titleBottom": {
           "count": 4,
           "before": 0.4341702342050299,
-          "after": 0.5684067902905343,
+          "after": 0.5742396771901486,
           "absoluteBefore": 0.6669253993911728,
-          "absoluteAfter": 0.701368373446068
+          "absoluteAfter": 0.7020222301359894
         },
         "typeTop": {
           "count": 4,
           "before": -0.06910085636501159,
-          "after": 0.09314348360442368,
+          "after": 0.05357080167090006,
           "absoluteBefore": 0.5568277102156864,
-          "absoluteAfter": 0.6372645232485845
+          "absoluteAfter": 0.6122561476006877
         },
         "typeBottom": {
           "count": 4,
           "before": 0.1656765300786046,
-          "after": 0.3071499372853861,
+          "after": 0.29718772108390334,
           "absoluteBefore": 0.6154053795281784,
-          "absoluteAfter": 0.6395702152927593
+          "absoluteAfter": 0.6385392215894571
         },
         "paperBottom": {
           "count": 4,
           "before": 0.20981259458236368,
-          "after": 0.32064302152677127,
+          "after": 0.32327488383124564,
           "absoluteBefore": 0.557722122587584,
-          "absoluteAfter": 0.5679494240270013
-        }
-      },
-      "cc-clear": {
-        "titleTop": {
-          "count": 1,
-          "before": 0.15891320265450537,
-          "after": 0.6928713295086659,
-          "absoluteBefore": 0.8649978757298089,
-          "absoluteAfter": 0.7167296171499641
-        },
-        "titleBottom": {
-          "count": 1,
-          "before": 0.20056621975767733,
-          "after": 0.8112615247219362,
-          "absoluteBefore": 0.39793792903967073,
-          "absoluteAfter": 0.8294901709876769
-        },
-        "typeTop": {
-          "count": 1,
-          "before": 0.8943310127778332,
-          "after": 0.9158025115372368,
-          "absoluteBefore": 0.9014296558451171,
-          "absoluteAfter": 0.9194571514436997
-        },
-        "typeBottom": {
-          "count": 1,
-          "before": 0.764322389277959,
-          "after": 0.32873539963676685,
-          "absoluteBefore": 0.7740566236120291,
-          "absoluteAfter": 0.7216822110619501
-        },
-        "paperBottom": {
-          "count": 1,
-          "before": 0.3528837764255059,
-          "after": 0.9157671222006168,
-          "absoluteBefore": 0.3610104823317258,
-          "absoluteAfter": 0.9206662812386385
+          "absoluteAfter": 0.5685624041974963
         }
       }
     },
+    "corrections": [
+      "CC regular plates use continuous vertical bands after shared outer-stock correction; top and bottom type borders move by 1 and 1.45 canonical pixels respectively. Integer physical-pixel clips prevent seams.",
+      "Colored artifact Sarcomite Myr selects a blue plate and white title/type ink.",
+      "Ghostfire uses the regular MSE colorless plate. The previous clear-plate proposal is historical and superseded for this printing. MSE land geometry transfers without fitting this single card.",
+      "Sarcomite Myr and Imperiosaur use scan-verified printed creature types. Oracle wording remains independent."
+    ],
     "limitations": [
+      "These are frame-boundary correlations, not whole-card accuracy scores.",
+      "The MSE colorless plate has lower boundary correlation and requires further visual review; it has only one printing.",
       "Upper type border can touch artwork: signed and absolute-gradient diagnostics are retained separately.",
-      "Clear CC plate shares opaque CC geometry; translucent color does not choose its own transform.",
-      "Frame color and all lettering remain unfitted.",
-      "Ghostfire and Aven Mindcensor have incomplete source-art crops.",
-      "Accepted scan poses are not a claim of subpixel accuracy for every region; residual uncertainty is recorded per card."
+      "Frame color, mana/set symbols and all lettering remain unfitted.",
+      "Ghostfire and Aven Mindcensor art_crop sources omit part of the left illustration. Matching-illustration reprints are being evaluated.",
+      "Accepted scan poses retain their recorded residual uncertainty; they do not guarantee subpixel accuracy for every region."
     ]
   },
   "rows": [
@@ -1622,7 +1842,7 @@
       },
       "transform": {
         "matrix": [
-          1.0003499657185466, 0.0002618910145932581, 0.00008722719789501915, 0.999550057090067,
+          1.0003499657185466, 0.0002618910145932581, 8.722719789501915e-5, 0.999550057090067,
           0.07500000000000002, 0.15000000000000002
         ]
       },
@@ -2269,7 +2489,7 @@
       },
       "transform": {
         "matrix": [
-          0.9992499961951382, -0.00008720101264208774, 0.0005237035212769169, 1.0001999581067256,
+          0.9992499961951382, -8.720101264208774e-5, 0.0005237035212769169, 1.0001999581067256,
           -0.25, -0.02499999999999998
         ]
       },

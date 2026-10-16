@@ -9,9 +9,9 @@ const FULL = `${MSE}/magic-future-textless.mse-style`;
 
 /** Physical treatment is independent of the selected rules wording. */
 export function futureTreatment(face: RenderedCardInput) {
-  if (face.futureTreatment) return face.futureTreatment;
-  const p = resolveCardProfile(face);
-  return !p.land && !p.artifact && resolveFrameColors(face).length === 0 ? 'clear' : 'regular';
+  // Colorless printings use an ordinary paper panel. The optional transparent
+  // fan template is a separate physical treatment, never inferred from color.
+  return face.futureTreatment ?? 'regular';
 }
 
 export function futurePalette(face: RenderedCardInput): string[] {
@@ -26,7 +26,9 @@ export function futureParts(face: RenderedCardInput) {
     treatment = futureTreatment(face),
     full = treatment === 'full-art',
     land = profile.land && !full,
-    color = profile.artifact ? 'A' : palette.length > 1 ? 'M' : (palette[0] ?? 'C'),
+    colorless = treatment === 'regular' && !land && !profile.artifact && palette.length === 0,
+    mse = land || colorless,
+    color = palette.length > 1 ? 'M' : (palette[0] ?? (profile.artifact ? 'A' : 'C')),
     material = (palette[0]?.toLowerCase() ?? 'c') + 'l',
     dual = land && palette.length === 2,
     back = (palette[1]?.toLowerCase() ?? 'c') + 'l',
@@ -50,15 +52,15 @@ export function futureParts(face: RenderedCardInput) {
     kind: 'future' as const,
     base: full
       ? `${FULL}/${color.toLowerCase()}card.jpg`
-      : land
-        ? `${FUTURE_REGULAR_ROOT}/${material}card.jpg`
+      : mse
+        ? `${FUTURE_REGULAR_ROOT}/${colorless ? 'c' : material}card.jpg`
         : `${CC}/futureFrame${color}.png`,
     ...(full ? { mask: `${FULL}/mask_image.png` } : {}),
-    ...(land
+    ...(mse
       ? {
           mask: `${FUTURE_REGULAR_ROOT}/mask_image.png`,
-          paper: `${FUTURE_REGULAR_ROOT}/${profile.creature ? color.toLowerCase() : material}textbox.png`,
-          type: `${FUTURE_REGULAR_ROOT}/${material}typeline.png`,
+          paper: `${FUTURE_REGULAR_ROOT}/${colorless ? 'c' : profile.creature ? color.toLowerCase() : material}textbox.png`,
+          type: `${FUTURE_REGULAR_ROOT}/${colorless ? 'c' : material}typeline.png`,
         }
       : {}),
     ...(dual
@@ -76,8 +78,8 @@ export function futureParts(face: RenderedCardInput) {
       ? {
           stats: full
             ? `${FULL}/${color.toLowerCase()}pt.jpg`
-            : land
-              ? `${FUTURE_REGULAR_ROOT}/${material}pt.png`
+            : mse
+              ? `${FUTURE_REGULAR_ROOT}/${colorless ? 'c' : material}pt.png`
               : `${CC}/futurePT${color}.png`,
           ...(full ? { statsMask: `${FULL}/mask_pt.png` } : {}),
         }

@@ -511,6 +511,26 @@
       "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-future.mse-style/multicolor_blend_typeline.png",
       "sha256": "5f61ff2cee794e716759db0eaa4535aa6928dd9acadd18bad1e6163c59703856",
       "bytes": 8349
+    },
+    {
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-future.mse-style/ccard.jpg",
+      "sha256": "86e81ba596bee62992a24e4a45aa3fbbd06b6ffcf7aace8855aee91dd57992b2",
+      "bytes": 15216
+    },
+    {
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-future.mse-style/ctextbox.png",
+      "sha256": "282c73b784cbdcd71bb01e4db99f20c7575a090810259b5f757d0b40e4670e4e",
+      "bytes": 1819
+    },
+    {
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-future.mse-style/ctypeline.png",
+      "sha256": "28a651b442550245f5dc4750b4dcd18d1e57301ebb2b624faf5d327164e3a981",
+      "bytes": 74347
+    },
+    {
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-future.mse-style/cpt.png",
+      "sha256": "fa0f49c5cc8b589f64ae40bc6ac38f153895deaef091134172cdccf0f4fd8b21",
+      "bytes": 5894
     }
   ],
   "findings": [
@@ -1105,7 +1125,9 @@
     "fullArt": "Pinned MSE textless plates and masks; physical treatment retained across wording changes",
     "land": "Pinned MSE colored-land base, paper and type assets; 40–60% two-color blend with hybrid masks preserving neutral title/type interiors",
     "mana": "Pinned MSE 200px WUBRG medallions and Card Conjurer generic/hybrid medallions; ordinary inline mana retained",
-    "remaining": "Apply validated shared frame geometry; calibrate colors, symbols, text/credits/P-T; audit original wording and incomplete artwork before scoring/releasing."
+    "remaining": "Finish frame/color/symbol/text calibration and replace incomplete art crops where a matching illustration provides more coverage. The previous full-height-art requirement for Ghostfire was a template-selection error, not missing source artwork.",
+    "colorless": "Regular MSE ccard/ctextbox/ctypeline, with the ordinary art aperture. Clear full-height-art fan treatment is explicit only; empty colors must not select it.",
+    "coloredArtifacts": "Use the printed color and its light label ink; reserve gray artifact plates for colorless artifacts."
   },
   "normalization": {
     "status": "comparison-poses-frozen-renderer-calibration-in-progress",
