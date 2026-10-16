@@ -34,6 +34,7 @@ const overrideKeys = [
   'styleSetCode',
   'setSymbol',
   'setSymbolCode',
+  'setSymbolMask',
   'symbolStyle',
   'borderColor',
   'securityStamp',

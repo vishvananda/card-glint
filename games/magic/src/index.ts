@@ -10,6 +10,7 @@ import { composeCardTexture, cardTextureKey } from './presentation/canvas-face.j
 import { faceSetSymbol } from './presentation/assets.js';
 import { canvasAssetWidth } from './presentation/canvas-assets.js';
 import { clearEarlyHsbBitmaps } from './presentation/material-bitmap-cache.js';
+import { setSymbolMaskCache } from './presentation/set-symbol-mask.js';
 import {
   aliasCanvasImages,
   clearHistoricalSymbolSources,
@@ -65,6 +66,7 @@ export const mtg: GamePack<RenderedCardInput> = {
   dispose() {
     clearHistoricalSymbolSources();
     clearEarlyHsbBitmaps();
+    setSymbolMaskCache.clear();
   },
   describe(value: RenderedCardInput, tier: Tier): FaceRecipe {
     const face = structuredClone({
@@ -125,7 +127,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       },
       stamp: {
         key: JSON.stringify([
-          'mtg-stamp-v3',
+          'mtg-stamp-v4',
           tier,
           face.setCode,
           ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
@@ -133,6 +135,7 @@ export const mtg: GamePack<RenderedCardInput> = {
             faceRects(child.face).stamp,
             child.face.setCode,
             faceSetSymbol(child.face, 'common'),
+            child.face.setSymbolMask ?? 'auto',
             ...(child.face.printingElements?.setSymbol?.offset
               ? [['set-symbol-offset', child.face.printingElements.setSymbol.offset]]
               : []),

@@ -27,6 +27,7 @@ export function splitPanels(face: RenderedCardInput): SplitPanel[] {
       artist: face.artist,
       setSymbol: face.setSymbol,
       setSymbolSource: face.setSymbolSource,
+      setSymbolMask: face.setSymbolMask,
       ...half,
       watermark: era ? splitPanelWatermark(face, half) : half.watermark,
       layout: aftermath

@@ -108,6 +108,10 @@ export interface RenderedCardInput extends CardProfileInput {
   /** Auto prefers complete styled vectors, falling back to Keyrune if unavailable.
    * Explicit selection is useful for asset comparisons. Custom URLs win. */
   setSymbolSource?: 'auto' | 'keyrune' | 'cardconjurer';
+  /** Etched/Opal mark only. Auto extracts dark ink from styled common symbols,
+   * retaining alpha for Keyrune and host images. Ink removes opaque white
+   * backing/holes from a custom dark symbol; alpha keeps its whole silhouette. */
+  setSymbolMask?: 'auto' | 'alpha' | 'ink';
   rarity?: 'common' | 'uncommon' | 'rare' | 'mythic' | 'special' | 'bonus';
   /** Physical printing mark, independent of rarity and wording. Omitted uses
    * the current modern rare/mythic oval default; use none for older printings.

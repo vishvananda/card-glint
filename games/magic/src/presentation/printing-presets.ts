@@ -146,6 +146,7 @@ export interface PrintingOverrides {
   futureTreatment?: RenderedCardInput['futureTreatment'];
   symbolAdjustment?: SymbolAdjustment;
   setSymbol?: string | null;
+  setSymbolMask?: RenderedCardInput['setSymbolMask'];
   /** Select a symbol without changing the styling set or collector code. */
   setSymbolCode?: string;
   symbolStyle?: RenderedCardInput['symbolStyle'];
@@ -172,6 +173,7 @@ function candidate(input: RenderedCardInput, preset: Readonly<PrintingPreset>): 
     setSymbol: _symbol,
     symbolAdjustment: _adjustment,
     setSymbolSource: _symbolSource,
+    setSymbolMask: _symbolMask,
     legalText: _legal,
     collectorFormat: _format,
     collectorTotal: _total,
@@ -301,6 +303,7 @@ export function resolvePrintingPreset(
         'collectorSetCode',
         'setCode',
         'setSymbol',
+        'setSymbolMask',
         'symbolStyle',
         'borderColor',
         'securityStamp',
@@ -310,6 +313,11 @@ export function resolvePrintingPreset(
       Object.assign(face, { [key]: value });
     else throw Error('Unknown printing override: ' + key);
   }
+  if (
+    overrides.setSymbolMask !== undefined &&
+    !['auto', 'alpha', 'ink'].includes(overrides.setSymbolMask)
+  )
+    throw Error('Invalid set symbol mask mode');
   if (
     overrides.futureTreatment !== undefined &&
     (!['regular', 'full-art', 'clear'].includes(overrides.futureTreatment) ||
