@@ -275,7 +275,8 @@ try {
       paperImages.set(url, await createImageBitmap(canvas));
     }
     const backed = prepareFutureFrame({ ...base, typeLine: 'Instant', colors: [] }, paperImages),
-      paperBackingAlpha = backed.getContext('2d').getImageData(400, 880, 1, 1).data[3];
+      paperBackingAlpha = backed.getContext('2d').getImageData(400, 880, 1, 1).data[3],
+      rightArtAlpha = backed.getContext('2d').getImageData(926, 400, 1, 1).data[3];
     for (const image of paperImages.values()) image.close();
     backed.width = backed.height = 0;
     // Fractional piecewise destinations must not create transparent/dark seams.
@@ -295,6 +296,7 @@ try {
       rows,
       seamError,
       paperBackingAlpha,
+      rightArtAlpha,
       placement,
       manaColors,
       treatment: selected.futureTreatment,
@@ -315,6 +317,11 @@ try {
   assert.deepEqual(result.placement.fallback, [18, 52, 86, 255]);
   assert.deepEqual(result.placement.edge, [255, 255, 255, 255]);
   assert.equal(result.placement.emptyEdge[3], 0, 'Solid fallback must not acquire artwork edges');
+  assert.equal(
+    result.rightArtAlpha,
+    0,
+    'Source plate clipping must clear the registered right art edge',
+  );
   assert.deepEqual(result.placement.recipe.destination, result.placement.bounds);
   assert.deepEqual(result.placement.recipe.clip, result.placement.aperture);
   assert.equal(result.placement.keyChanges, true);

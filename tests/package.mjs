@@ -24,12 +24,31 @@ try {
     ],
     { cwd: temporary, stdio: 'pipe' },
   );
+  // Import the published entry point in Node: the wording resolver needs no
+  // browser globals, source checkout, provider access or accuracy fixtures.
+  execFileSync(
+    process.execPath,
+    [
+      '--input-type=module',
+      '-e',
+      `
+    import assert from 'node:assert/strict';
+    import { resolvePrintingWording } from 'card-glint/magic';
+    const oracle = {typeLine:'Creature', rulesText:'Oracle rules.'};
+    const result = resolvePrintingWording('f594b7aa-d44e-47c4-989b-565f881e25f1', {oracle, original:oracle});
+    assert.equal(result.wordings.oracle.rulesText, oracle.rulesText);
+    assert.equal(result.wordings.original.typeLine, 'Continuous Artifact');
+    assert.equal(result.provenance.status, 'applied');
+  `,
+    ],
+    { cwd: temporary, stdio: 'inherit' },
+  );
   await writeFile(
     path.join(temporary, 'index.ts'),
     `
 import { createRenderer, IDENTITY, type CardDocument } from 'card-glint';
 import { showcase } from 'card-glint/showcase';
-import { magic, opticalDocument, type MagicCard } from 'card-glint/magic';
+import { magic, opticalDocument, resolvePrintingWording, withCardWording, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture } from 'card-glint/magic/presentation';
 import { foilShader } from 'card-glint/finish';
@@ -37,7 +56,9 @@ import { createPixelKernels } from 'card-glint/kernels';
 export { faceArtBounds, composeCardTexture, foilShader, createPixelKernels };
 import wasmUrl from 'card-glint/renderer.wasm?url';
 const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2'};
-export const magicRecipe = magic.describe(face,'inspect');
+const source: PrintingText = {typeLine:'Creature', rulesText:'', flavorText:'A fixture.'};
+export const resolved = resolvePrintingWording('unknown-printing', {oracle:source, original:source});
+export const magicRecipe = magic.describe(withCardWording(face,resolved.wordings),'inspect');
 export const opticalRecipe = opticalDocument(2,1,face,'silver');
 export async function example(canvas: HTMLCanvasElement) {
   const renderer = await createRenderer({ canvas, wasmUrl });

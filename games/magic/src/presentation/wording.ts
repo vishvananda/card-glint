@@ -26,8 +26,8 @@ export function wordingParagraphs(wording: Pick<CardWording, 'rulesText' | 'rule
   );
 }
 
-/** Hosts own printing data/provenance. The pack selects its visible text and
- * symbol era, retaining the same physical frame, art and typography. */
+/** Hosts supply printing data, optionally resolved through the shared reviewed
+ * corrections. Selection preserves the physical frame, art and typography. */
 export function withCardWording(
   face: RenderedCardInput,
   wordings: { oracle: CardWording; original?: CardWording },

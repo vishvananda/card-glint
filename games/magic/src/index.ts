@@ -32,6 +32,14 @@ export {
   type WordingAlignment,
 } from './presentation/wording.js';
 
+export { resolvePrintingWording } from './printing/resolve.js';
+export type {
+  PrintingText,
+  ResolvedPrintingWording,
+  PrintingWordingProvenance,
+  ReviewedWordingField,
+} from './printing/types.js';
+
 function loader(host: RasterHost) {
   return async (urls: readonly (string | null | undefined)[], signal: AbortSignal) => {
     const sources = await resolveCanvasSources(urls, signal);

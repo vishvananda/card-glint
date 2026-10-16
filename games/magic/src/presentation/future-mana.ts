@@ -43,12 +43,16 @@ export function paintFutureMana(
   const symbols = face.manaSymbols ?? [];
   if (symbols.length > x.length) throw Error('Futureshifted cost exceeds the six source positions');
   symbols.forEach((symbol, i) => {
-    // Ordinary cards share the fitted curved rail. Textless plates have their
-    // own curve and retain source geometry pending independent validation.
-    const fitted = futureTreatment(face) === 'regular' && i < 4,
+    // The full-art rail gets taller after the first medallion. Keep the first
+    // source position: its proposed fit regressed on reserved cards. Slot two
+    // has separate validation; slot three has one local reference.
+    const full = futureTreatment(face) === 'full-art' && i > 0 && i < 3,
+      fitted = full || (futureTreatment(face) === 'regular' && i < 4),
       size = fitted ? (/^[WUBRG]$/.test(symbol) ? 37.125 : 38.125) : (59 * 488) / 744,
-      px = fitted ? [78.1626, 59.4852, 51.6465, 51.6465][i]! - size / 2 : (x[i]! * 488) / 744,
-      py = fitted ? [111.851, 154.0759, 202.5071, 252.3427][i]! - size / 2 : (y[i]! * 680) / 1039;
+      centersX = full ? [79.0376, 58.6102, 56.1465] : [78.1626, 59.4852, 51.6465, 51.6465],
+      centersY = full ? [113.101, 161.7009, 217.5071] : [111.851, 154.0759, 202.5071, 252.3427],
+      px = fitted ? centersX[i]! - size / 2 : (x[i]! * 488) / 744,
+      py = fitted ? centersY[i]! - size / 2 : (y[i]! * 680) / 1039;
     const url = futureManaAsset(symbol),
       image = url ? images.get(url) : undefined;
     if (url && !image) throw Error(`Futureshifted mana asset unavailable: ${url}`);

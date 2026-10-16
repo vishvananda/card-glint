@@ -106,8 +106,9 @@ from the source perimeter; they remain missing artwork for comparison purposes.
 Painting, artwork edges and optical layers share this placement. Omit it for the
 usual cover fit of a complete illustration. The regular FUT Scryfall 540 × 448
 crops match `[105 / 488, 84 / 680, 353 / 488, 293 / 680]`; hosts must select this
-only for that crop family, not arbitrary replacements or the textless full-art
-printings. This setting cannot reconstruct the omitted curved edge or artwork
+only for that crop family. The 573 × 720 textless FUT crops instead match
+`[72.25 / 488, 84.75 / 680, 374.5 / 488, 471 / 680]`. Neither placement applies
+to arbitrary replacement art. This setting cannot reconstruct the omitted curved edge or artwork
 behind translucent printing.
 
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
@@ -415,6 +416,32 @@ It includes maximum-overlap and minimum-distance offset searches, independent
 whole-row mana measurements, and links to the earlier Mirage/Tempest comparisons.
 
 ### Original printing and Oracle wording
+
+`resolvePrintingWording(printingId, { oracle, original }, options)` is a pure,
+offline resolver for bundled, reviewed original-printing corrections. Hosts
+continue fetching provider data. Its `PrintingText` inputs keep `rulesText`
+(rules only) and optional `flavorText` separate; optional `rulesParagraphs` holds
+structured rules and flavor runs. It returns `{ wordings, provenance }`, ready
+for `withCardWording`. Save both results with the provider records.
+
+```ts
+import { resolvePrintingWording, withCardWording } from 'card-glint/magic';
+const resolved = resolvePrintingWording(scryfallPrintingId, { oracle, original });
+const visible = withCardWording(face, resolved.wordings, 'original');
+// Persist resolved.wordings and resolved.provenance with the imported printing.
+```
+
+Corrections match the exact Scryfall printing ID, never a card name or set-wide
+guess. They affect original wording only. Unknown IDs preserve supplied text;
+missing original data stays missing. Multi-face corrections require
+`{ faceName: 'Stomp' }`. Optional `referenceSha256` requires an exact match to the
+reviewed scan; a mismatch returns unchanged wording and `reference-mismatch`.
+Provenance records status, catalog revision, field-level before/after values,
+source fixture, reason and reviewed scan hash. Matching by ID alone does not
+claim that a newly downloaded scan was verified. Partial type/name reviews do
+not certify unrelated body text. The public catalog is generated from the same
+evidence used by accuracy tools; regenerate it with
+`node games/magic/tools/build-printing-corrections.mjs` after reviewing changes.
 
 `withCardWording(face, { oracle, original }, mode)` keeps the selected printing's
 frame, art and typography while choosing supplied wording and symbol style. The

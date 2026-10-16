@@ -83,9 +83,12 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
       // remove backing inside the visible illustration rectangle; otherwise
       // that paper is composited over black stock instead of its source plate.
       if (!full && futureTreatment(face) !== 'clear') {
-        const [x, y, w, h] = futureGeometry(face).art;
+        const [, y, , h] = futureGeometry(face).art;
         c.beginPath();
-        c.rect((x * 375) / 488, (y * 523) / 680, (w * 375) / 488, (h * 523) / 680);
+        // Clip only the vertical extent here. This is source-plate space,
+        // before registration; clipping to the final artwork's right edge
+        // leaves a strip of MSE's white placeholder after the plate moves left.
+        c.rect(0, (y * 523) / 680, 375, (h * 523) / 680);
         c.clip();
       }
       const [x, y, w, h] = full ? [37, 46, 322, 418] : [32, 44, 327, 310];
