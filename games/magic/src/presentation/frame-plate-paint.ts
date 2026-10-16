@@ -222,7 +222,7 @@ export function paintFramePlateFace(
     c.drawImage(required(plate.pt), ...px(rects.stats));
   }
   if (eighth) {
-    paintEighthFooter(c, face, images);
+    paintEighthFooter(c, face, images, plate.frame);
     c.restore();
     return;
   }

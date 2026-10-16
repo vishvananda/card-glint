@@ -3,6 +3,7 @@ import { resolveCardProfile } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
+import { transformPlanarFooter } from './planar-footer.js';
 
 function lightCredit(face: RenderedCardInput): boolean {
   return ['B', 'Colourless', 'Land'].includes(resolveCardProfile(face).boxes);
@@ -54,6 +55,7 @@ export function paintEighthFooter(
   c: CanvasRenderingContext2D,
   face: RenderedCardInput,
   images: CanvasImages,
+  source = '',
 ): void {
   c.save();
   c.shadowColor = 'transparent';
@@ -61,6 +63,7 @@ export function paintEighthFooter(
   c.letterSpacing = '0px';
   if (face.power != null && face.toughness != null) {
     c.save();
+    transformPlanarFooter(c, face, source, 'stats');
     const shifted = face.frameTreatment === 'colorshifted';
     c.fillStyle = shifted ? '#fff' : '#17140f';
     if (shifted) {
@@ -83,6 +86,8 @@ export function paintEighthFooter(
   c.textAlign = 'left';
   const brushUrl = eighthArtistBrush(face);
   if (brushUrl) {
+    c.save();
+    transformPlanarFooter(c, face, source, 'artist');
     const brush = images.get(brushUrl);
     if (!brush) throw Error(`Eighth Edition artist brush unavailable: ${brushUrl}`);
     c.drawImage(brush, 36.5, baseline - 10, x - 39, 13.5);
@@ -90,13 +95,17 @@ export function paintEighthFooter(
     // Keep long credits out of the badge; do not silently remove their wording.
     const right = face.power != null && face.toughness != null ? 350 : 448;
     c.fillText(face.artist!, x, baseline, right - x);
+    c.restore();
   }
   const legal = printingLegalText(face),
     number = printingCollectorText(face, false);
   const line = [legal, number].filter(Boolean).join(' ');
   if (line) {
+    c.save();
+    transformPlanarFooter(c, face, source, 'legal');
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
     c.fillText(line, 36.5, baseline + 13, 409);
+    c.restore();
   }
   c.restore();
 }

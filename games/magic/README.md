@@ -196,8 +196,13 @@ cover both treatments while preserving caller adjustment deltas.
 [Symbol replay](fixtures/accuracy/planar-symbols.json) and an independent
 [text-only audit](fixtures/accuracy/planar-lettering-audit.json) retain component
 measurements; the latter excludes bevels that can confound lettering scores after
-recoloring. Rules, badge/footer placement, gold color-pair pinlines and isolated
-color/source-shape outliers remain under review.
+recoloring. [Rules and footer replay](fixtures/accuracy/planar-text.json) records
+shared body spacing and artist/legal/P/T ink fits. Body spacing retains existing
+font sizes and line breaks: a font/reflow proposal was rejected after large
+individual regressions. The repeated validation improves 96/123 body regions,
+123/123 artist and legal lines, and 80/84 P/T regions. Remaining text-size and
+wrapping outliers, badge shape, gold color-pair pinlines and isolated color/source
+differences stay in the review queue.
 Unsupported colorshifted land/multicolor combinations fail explicitly. Ordinary
 and shifted PLC cards include the verified 2007 legal line and `/165` numbers.
 Source: [Card Conjurer's 8th colorshifted pack](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/pack8thColorshifted.js).

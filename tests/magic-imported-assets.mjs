@@ -265,6 +265,54 @@ try {
       !usesPlanarFrameGeometry(shifted, shiftedPlate.frame + '?changed'),
       'PLC geometry accepted an unknown source',
     );
+    const { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts');
+    const { planarRulesSpacing } = await import('/games/magic/src/presentation/planar-rules.ts');
+    const body = document.createElement('canvas').getContext('2d');
+    const bodyBounds = { x: 49, y: 431, width: 390, height: 174 };
+    const paragraphs = [
+      {
+        role: 'rules',
+        runs: [{ text: 'An original passage with enough words to wrap over several lines.' }],
+      },
+      {
+        role: 'flavor',
+        runs: [{ text: 'An italic passage keeps its own line breaks.', italic: true }],
+      },
+    ];
+    const beforeBody = layoutRules(body, paragraphs, bodyBounds, 24.5, 15, {
+      leading: 1,
+      paragraphGap: 0.45,
+      flavorGap: 0.9,
+      flavorSeparator: false,
+    });
+    const afterBody = planarRulesSpacing(shifted, beforeBody, bodyBounds);
+    check(
+      afterBody !== beforeBody && afterBody.height < beforeBody.height,
+      'PLC spacing not applied',
+    );
+    check(
+      afterBody.size === beforeBody.size && afterBody.lines.length === beforeBody.lines.length,
+      'PLC spacing changed fitted size or line count',
+    );
+    check(
+      afterBody.lines.every((l, i) => l.runs === beforeBody.lines[i].runs),
+      'PLC spacing changed measured words or their sizes',
+    );
+    for (const other of [
+      { setCode: 'fut' },
+      { frameTemplate: 'future' },
+      { borderColor: 'white' },
+      { layout: 'split' },
+    ])
+      check(
+        planarRulesSpacing({ ...shifted, ...other }, beforeBody, bodyBounds) === beforeBody,
+        'PLC spacing leaked to unmeasured frame',
+      );
+    check(
+      planarRulesSpacing(shifted, beforeBody, { ...bodyBounds, exclusions: [[0, 0, 488, 680]] }) ===
+        beforeBody,
+      'PLC spacing did not preserve the safe original layout on collision',
+    );
     check(shiftedPlate.frame.endsWith('/8th/colorshifted/w.png'), 'Wrong shifted source');
     check(shiftedPlate.pt.endsWith('/m15/colorshifted/wpt.png'), 'Wrong shifted badge');
     check(canvasAssetUrls(shifted).includes(shiftedPlate.pt), 'Shifted badge not prepared');

@@ -6,6 +6,7 @@ import { layoutRules, rulesFont, RULES_TYPOGRAPHY, type RulesLayout } from './ru
 import { shortCenteredRules } from './short-centered-rules.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
 import { hasFlavorSeparator } from './flavor-separator.js';
+import { planarRulesSpacing } from './planar-rules.js';
 
 export function ordinaryTextLayout(
   context: CanvasRenderingContext2D,
@@ -79,7 +80,7 @@ export function ordinaryTextLayout(
     );
     if (centered) return centered;
   }
-  return layoutRules(
+  const layout = layoutRules(
     context,
     face.rulesAlignment?.mode === 'left'
       ? paragraphs.map((p) => (p.role === 'rules' ? { ...p, align: 'left' as const } : p))
@@ -89,6 +90,7 @@ export function ordinaryTextLayout(
     15 * scale,
     typography,
   );
+  return planarRulesSpacing(face, layout, bounds);
 }
 
 export function paintRulesLayout(
