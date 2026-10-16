@@ -849,3 +849,7 @@ cannot leak into another style. Replacing an image should discard both source
 corrections and reset focal point/zoom. Retain the chosen art mode if supported.
 The existing default rendering and cache identities remain unchanged when new
 options are omitted.
+
+## Provider imports
+
+See [provider card adapters](provider-cards.md) for direct Scryfall and MTGJSON inputs.

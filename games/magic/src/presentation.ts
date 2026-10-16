@@ -52,3 +52,7 @@ export * from './presentation/art-placement.js';
 export * from './presentation/printing-style.js';
 
 export { resolveFrameColors } from './presentation/profile.js';
+
+export { fromScryfallCard } from './presentation/scryfall-card.js';
+export { fromMtgjsonCard } from './presentation/mtgjson-card.js';
+export type { CardImportOptions } from './presentation/provider-card.js';

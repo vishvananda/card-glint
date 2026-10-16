@@ -49,7 +49,8 @@
     "magic:reference:basics": "node games/magic/tools/accuracy/basics.mjs",
     "magic:reference:stats": "node games/magic/tools/accuracy/stats-study.mjs",
     "test:cardstock": "node tests/cardstock.mjs",
-    "test:printing-presets": "node tests/magic-printing-presets.mjs && node tests/magic-art-placement.mjs && node tests/printing-presets-demo.mjs && node tests/magic-printing-style.mjs"
+    "test:printing-presets": "node tests/magic-printing-presets.mjs && node tests/magic-art-placement.mjs && node tests/printing-presets-demo.mjs && node tests/magic-printing-style.mjs",
+    "test:provider-cards": "node tests/magic-provider-cards.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -98,7 +99,8 @@
     "games/showcase/art",
     "games/magic/README.md",
     "games/magic/NOTICE.md",
-    "games/magic/printing-styles.md"
+    "games/magic/printing-styles.md",
+    "games/magic/provider-cards.md"
   ],
   "license": "MIT OR Apache-2.0",
   "description": "Game-neutral browser card rendering with a Rust/WASM core, cached GPU etching, and isolated game packs",
