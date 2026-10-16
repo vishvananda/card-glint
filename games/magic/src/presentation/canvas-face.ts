@@ -168,6 +168,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
       panels.map((p) => [p.x, p.y, p.width, p.height, p.rotation, faceContentKey(p.face, mask)]),
       !mask && splitHasFuse(face),
       !mask && splitFuseParagraphs(face),
+      ...(!mask && face.printingOmissions?.length ? [face.printingOmissions] : []),
     ];
   return mask
     ? [
@@ -219,6 +220,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.layout ?? null,
         faceRects(face),
         resolveCardProfile(face),
+        ...(face.printingOmissions?.length ? [face.printingOmissions] : []),
       ];
 }
 

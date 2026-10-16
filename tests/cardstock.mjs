@@ -76,6 +76,23 @@ try {
         strong = draw(1);
       const regular0 = draw(0, 'regular'),
         regular1 = draw(1, 'regular');
+      const dots0 = draw(0, 'regular', { printDots: { amount: 0, period: 7 } }),
+        dots1 = draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } });
+      const dotDifference = difference(dots0, dots1),
+        dotZeroDifference = difference(regular0, dots0);
+      let invalidDots = 0;
+      for (const printDots of [
+        { amount: -1 },
+        { amount: 2 },
+        { amount: NaN },
+        { amount: 0.2, period: 0 },
+        { amount: 0.2, period: Infinity },
+      ])
+        try {
+          draw(0, 'regular', { printDots });
+        } catch {
+          invalidDots++;
+        }
       const foil0 = draw(0, 'prismatic'),
         foil1 = draw(1, 'prismatic');
       frame.time = 100;
@@ -145,6 +162,9 @@ try {
       await r.ready(1, 1);
       const restoredPixels = draw(0.2);
       return {
+        dotDifference,
+        dotZeroDifference,
+        invalidDots,
         zeroDifference: difference(original, zero),
         mediumDifference: difference(original, medium),
         strongDifference: difference(original, strong),
@@ -170,6 +190,9 @@ try {
   });
   clearTimeout(deadline);
   console.log(JSON.stringify(report, null, 2));
+  assert.ok(report.dotDifference > 1);
+  assert.equal(report.dotZeroDifference, 0);
+  assert.equal(report.invalidDots, 5);
   assert.equal(report.zeroDifference, 0);
   assert.ok(report.mediumDifference > 0.1);
   assert.ok(report.strongDifference > report.mediumDifference * 3);
