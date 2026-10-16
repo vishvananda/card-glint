@@ -82,8 +82,8 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
       // MSE's oversized image mask reaches behind its translucent paper. Only
       // remove backing inside the visible illustration rectangle; otherwise
       // that paper is composited over black stock instead of its source plate.
-      if (!full && futureTreatment(face) !== 'clear' && face.artPlacement?.mode !== 'behind-text') {
-        const [, y, , h] = futureGeometry(face).art;
+      if (!full && futureTreatment(face) !== 'clear') {
+        const [, y, , h] = futureGeometry({ ...face, artPlacement: undefined }).art;
         c.beginPath();
         // Clip only the vertical extent here. This is source-plate space,
         // before registration; clipping to the final artwork's right edge

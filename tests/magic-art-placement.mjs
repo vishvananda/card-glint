@@ -88,6 +88,9 @@ try {
     );
     const { paintEtchingMask } = await import('/games/magic/src/presentation/canvas-etching.ts');
     const { futureGeometry } = await import('/games/magic/src/presentation/future-frame.ts');
+    const { prepareFutureFrame } = await import(
+      '/games/magic/src/presentation/future-frame-paint.ts'
+    );
     const { paintFutureTemplate } = await import(
       '/games/magic/src/presentation/future-template-paint.ts'
     );
@@ -185,6 +188,14 @@ try {
         extended: pixel(e, 240, 520),
         rimBefore: pixel(n, 20, 500),
         rimAfter: pixel(e, 20, 500),
+        paperAlpha: (() => {
+          const frame = prepareFutureFrame(extended, loaded.images);
+          try {
+            return [pixel(frame, 480, 900)[3], pixel(frame, 480, 1040)[3]];
+          } finally {
+            frame.width = frame.height = 0;
+          }
+        })(),
       });
       loaded.dispose();
     }
@@ -208,6 +219,10 @@ try {
     assert.ok(
       item.extended[1] < item.normal[1] - 10,
       'Portrait art must show through the actual rules paper',
+    );
+    assert.ok(
+      Math.abs(item.paperAlpha[0] - 153) < 2 && Math.abs(item.paperAlpha[1] - 153) < 2,
+      'Paper opacity stays uniform across the imported source backing',
     );
     assert.deepEqual(item.rimBefore, item.rimAfter, 'Frame rim stays opaque');
   }
