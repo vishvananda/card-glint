@@ -683,6 +683,14 @@ Omissions affect Canvas text calls, not externally supplied lettering bitmaps.
 border (0..0.2). It leaves the interior, white/silver borders and layout intact.
 The default preserves source pixels. The lift is painted before finish and wear.
 
+## Reusable set styles
+
+The public `PrintingStyle` API adds shared defaults, named alternative frames,
+ordered color/type/layout rules, custom symbol variants and card/face inheritance.
+See [the style contract and examples](printing-styles.md). The built-in
+`printingStyles` catalog groups regular and alternate frames within each set.
+Set membership, persistence and authoring remain host responsibilities.
+
 ## Printing preset prototype
 
 `printingPresets`, `printingPresetCompatibility`, `printingElementSupport`,

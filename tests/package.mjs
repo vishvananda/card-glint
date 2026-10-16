@@ -33,7 +33,7 @@ try {
       '-e',
       `
     import assert from 'node:assert/strict';
-    import { resolvePrintingWording, resolvePrintingPreset, resolveScryfallPrinting, artworkGeometry, resolveArtPlacement } from 'card-glint/magic';
+    import { resolvePrintingWording, resolvePrintingPreset, resolveScryfallPrinting, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle } from 'card-glint/magic';
     const oracle = {typeLine:'Creature', rulesText:'Oracle rules.'};
     const result = resolvePrintingWording('f594b7aa-d44e-47c4-989b-565f881e25f1', {oracle, original:oracle});
     assert.equal(result.wordings.oracle.rulesText, oracle.rulesText);
@@ -44,6 +44,7 @@ try {
     assert.equal(resolveScryfallPrinting({frame:'future'}).frameTemplate, 'future');
     const art = resolveArtPlacement(face,{mode:'window',zoom:2,focalPoint:[.3,.6]});
     assert.ok(artworkGeometry(art,400,1000).destination[2]>0);
+    const style=validatePrintingStyle(printingStyles.find(s=>s.id==='fut'));assert.equal(style.frames.length,4);assert.equal(resolvePrintingStyle({...face,frameTemplate:'future'},style).frame,'futureshifted');assert.equal(composePrintingSelection({preset:'lea'},{overrides:{frameColors:['B']}}).overrides.frameColors[0],'B');
   `,
     ],
     { cwd: temporary, stdio: 'inherit' },
@@ -53,7 +54,7 @@ try {
     `
 import { createRenderer, IDENTITY, type CardDocument } from 'card-glint';
 import { showcase } from 'card-glint/showcase';
-import { magic, opticalDocument, resolvePrintingWording, withCardWording, resolvePrintingPreset, printingPresets, type PrintingSelection, type MagicCard, type PrintingText } from 'card-glint/magic';
+import { magic, opticalDocument, resolvePrintingWording, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture } from 'card-glint/magic/presentation';
 import { foilShader } from 'card-glint/finish';
@@ -63,6 +64,7 @@ import wasmUrl from 'card-glint/renderer.wasm?url';
 const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
 const selection: PrintingSelection = {preset:printingPresets[0]!.id,overrides:{collectorNumber:'7',elements:{artist:{offset:[2,0]}}}};
 export const presetFace = resolvePrintingPreset(face, selection);
+const style:PrintingStyle=printingStyles[0]!;export const styleFace=resolvePrintingStyle(face,style,{overrides:{frameColors:['R']}}).face;
 const source: PrintingText = {typeLine:'Creature', rulesText:'', flavorText:'A fixture.'};
 export const resolved = resolvePrintingWording('unknown-printing', {oracle:source, original:source});
 export const magicRecipe = magic.describe(withCardWording(face,resolved.wordings),'inspect');

@@ -233,7 +233,7 @@ export { mtg as magic };
 export type { RenderedCardInput as MagicCard } from './presentation/face-layout.js';
 export { faceFrame, faceRects } from './presentation/special-frames.js';
 export { isRetro, retroFamily, retroRects } from './presentation/retro-frame.js';
-export { resolveCardProfile } from './presentation/profile.js';
+export { resolveCardProfile, resolveFrameColors } from './presentation/profile.js';
 
 export * from './presentation/printing-presets.js';
 export type {
@@ -245,3 +245,5 @@ export type {
 export * from './presentation/scryfall-printing.js';
 
 export * from './presentation/art-placement.js';
+
+export * from './presentation/printing-style.js';

@@ -48,3 +48,7 @@ export type {
 export * from './presentation/scryfall-printing.js';
 
 export * from './presentation/art-placement.js';
+
+export * from './presentation/printing-style.js';
+
+export { resolveFrameColors } from './presentation/profile.js';

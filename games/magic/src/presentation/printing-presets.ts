@@ -1,3 +1,4 @@
+import { validateSymbolAdjustment, type SymbolAdjustment } from './symbol-adjustment.js';
 import { faceSetSymbol } from './assets.js';
 import { resolveArtPlacement, type ArtPlacement } from './art-placement.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -136,6 +137,13 @@ export interface PrintingOverrides {
   collectorLanguage?: string;
   collectorSetCode?: string;
   setCode?: string;
+  /** Calibration/typography source, independent of the printed collector code. */
+  styleSetCode?: string;
+  /** Presentation palette only; never changes semantic colors or mana cost. */
+  frameColors?: RenderedCardInput['frameColors'];
+  /** Explicit geometry variant of an existing Futureshifted template. */
+  futureTreatment?: RenderedCardInput['futureTreatment'];
+  symbolAdjustment?: SymbolAdjustment;
   setSymbol?: string | null;
   /** Select a symbol without changing the styling set or collector code. */
   setSymbolCode?: string;
@@ -232,7 +240,12 @@ export function resolvePrintingPreset(
   input: RenderedCardInput,
   selection: PrintingSelection,
 ): RenderedCardInput {
-  const support = printingPresetCompatibility(input, selection.preset);
+  const support = printingPresetCompatibility(
+    selection.overrides?.frameColors === undefined
+      ? input
+      : { ...input, frameColors: selection.overrides.frameColors },
+    selection.preset,
+  );
   if (!support.supported) throw Error(support.reason);
   const preset = printingPresets.find((p) => p.id === selection.preset)!;
   let face = candidate(input, preset);
@@ -246,6 +259,27 @@ export function resolvePrintingPreset(
   for (const [key, value] of Object.entries(overrides)) {
     if (value === undefined) continue;
     if (key === 'setSymbolCode') continue;
+    if (key === 'styleSetCode') {
+      if (typeof value !== 'string' || !/^[-A-Za-z0-9_]{1,16}$/.test(value))
+        throw Error('Invalid styling set code');
+      face.setCode = value;
+      continue;
+    }
+    if (key === 'symbolAdjustment') {
+      face.symbolAdjustment = structuredClone(value as SymbolAdjustment);
+      continue;
+    }
+    if (key === 'frameColors') {
+      if (
+        !Array.isArray(value) ||
+        value.length > 5 ||
+        !value.every((c) => typeof c === 'string' && /^[WUBRG]$/.test(c)) ||
+        new Set(value).size !== value.length
+      )
+        throw Error('Invalid frame colors');
+      face.frameColors = [...value];
+      continue;
+    }
     if (key === 'elements') face.printingElements = structuredClone(value as PrintingElements);
     else if (
       [
@@ -261,10 +295,23 @@ export function resolvePrintingPreset(
         'symbolStyle',
         'borderColor',
         'securityStamp',
+        'futureTreatment',
       ].includes(key)
     )
       Object.assign(face, { [key]: value });
     else throw Error('Unknown printing override: ' + key);
+  }
+  if (
+    overrides.futureTreatment !== undefined &&
+    (!['regular', 'full-art', 'clear'].includes(overrides.futureTreatment) ||
+      face.frameTemplate !== 'future')
+  )
+    throw Error('Future treatment requires a Futureshifted frame.');
+  if (overrides.styleSetCode !== undefined && overrides.setCode !== undefined)
+    throw Error('Choose one styling set code');
+  if (overrides.symbolAdjustment !== undefined) {
+    if (face.frameTemplate) throw Error('Fine symbol adjustments require an ordinary frame.');
+    validateSymbolAdjustment(face);
   }
   for (const [key, value] of Object.entries(overrides)) {
     if (
