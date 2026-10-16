@@ -78,6 +78,10 @@ try {
         regular1 = draw(1, 'regular');
       const dots0 = draw(0, 'regular', { printDots: { amount: 0, period: 7 } }),
         dots1 = draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } });
+      const cachedPrinting = r.metrics;
+      const repeatedDots = draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } }),
+        repeatedMetrics = r.metrics;
+      const dotRepeatDifference = difference(dots1, repeatedDots);
       const dotDifference = difference(dots0, dots1),
         dotZeroDifference = difference(regular0, dots0);
       let invalidDots = 0;
@@ -168,6 +172,9 @@ try {
       await r.ready(1, 1);
       const restoredPixels = draw(0.2);
       return {
+        cachedPrinting,
+        repeatedMetrics,
+        dotRepeatDifference,
         dotDifference,
         dotZeroDifference,
         invalidDots,
@@ -196,6 +203,8 @@ try {
   });
   clearTimeout(deadline);
   console.log(JSON.stringify(report, null, 2));
+  assert.equal(report.dotRepeatDifference, 0);
+  assert.equal(report.repeatedMetrics.surfacePasses, report.cachedPrinting.surfacePasses);
   assert.ok(report.dotDifference > 1);
   assert.equal(report.dotZeroDifference, 0);
   assert.equal(report.invalidDots, 11);
@@ -206,7 +215,7 @@ try {
   assert.equal(report.mutationDifference, 0);
   assert.ok(report.tiltDifference > 0.1);
   assert.equal(report.regularDifference, 0);
-  assert.equal(report.foilDifference, 0);
+  assert.ok(report.foilDifference > 0.1);
   assert.equal(report.rejected, 4);
   assert.equal(report.exportDifference, 0);
   assert.ok(report.tinyDifference < 0.5);
@@ -223,7 +232,7 @@ try {
     'uploads',
     'readbacks',
   ])
-    assert.equal(report.warm[key], report.allocated[key], key + ' changed after warmup');
+    assert.equal(report.warm[key], report.cachedPrinting[key], key + ' changed after warmup');
   assert.deepEqual(errors, []);
   await mkdir('evidence', { recursive: true });
   await writeFile(

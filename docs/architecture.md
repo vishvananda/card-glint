@@ -277,16 +277,25 @@ supply time, animation scheduling and reduced-motion policy.
 
 ## Cardstock coating relief
 
-`Instance.cardstock.amount` is a game-neutral gloss material parameter (0..1).
+`Instance.cardstock.amount` is a game-neutral optical-coating parameter (0..1).
 The browser backend stores one extra instance float. A context-owned relief map
 contains two 16-bit analytical slopes in RGBA8; its shader is compiled with the
-context and the fixed map is generated on first textured gloss draw. Linear
+context and the fixed map is generated on first textured finish draw. Linear
 decoding permits mip filtering, suppressing fine relief when cards shrink.
 Subsequent frames sample the map in the existing material pass. There are no
 reference face renders, per-frame uploads, readbacks or procedural noise calls.
-The coating modulates and attenuates gloss reflection before abrasion and finish coverage;
+The coating modulates and attenuates optical finishes before abrasion and finish coverage;
 reflection gain is `1 - amount * 0.5` (10% lower at amount 0.2).
-Static over-finish printing remains unaffected. Default/zero amounts and other
-finishes retain their previous pixels. Disposal and context restoration follow
+Static over-finish printing remains unaffected. Default/zero amounts and regular
+printing retain their previous pixels. Disposal and context restoration follow
 the same ownership as the other device resources. Map storage and the initial
 pass are included in `surfaceBytes` and `surfacePasses`.
+
+Printed ink uses a bounded 16 MiB context-owned LRU keyed by source face/overlay
+texture identity and all screen settings. A one-time GPU pass stores linear
+shader output in sRGB targets, retaining dark-ink precision. Mipmaps filter fine
+dots as geometry shrinks. Homogeneous instance groups sample these textures in
+the normal finish pass with procedural screens disabled. Mixed groups and faces
+that exceed the cache bound preserve the per-instance shader path. Metrics count
+preparation passes and retained bytes; context restoration and disposal clear the
+cache. Benchmark completed frame time separately from CPU submission time.

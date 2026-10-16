@@ -30,11 +30,7 @@ surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripp
 gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
 const foil = FOIL_PREVIEW_GLSL.replace('uniform float previewKind;', 'flat in float previewKind;')
   .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
-  .replaceAll('texture2D(face,', 'printFace(')
-  .replace(
-    'return applyStudioGlare(res,rT,.52);',
-    'return cardstockGloss(uv,base,applyStudioGlare(res,rT,.52));',
-  );
+  .replaceAll('texture2D(face,', 'printFace(');
 export const fragment = `#version 300 es
 precision highp float;
 in vec2 v_uv;in vec3 v_normal;flat in vec2 wearInfo;
@@ -76,6 +72,7 @@ void main(){
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  vec3 shaded=previewLinear(previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view));
  vec3 base=printFace(uv).rgb;
+ if(cardstockAmount>0. && previewKind>.5)shaded=previewLinear(cardstockGloss(uv,previewInk(base),previewInk(shaded)));
  if(wearInfo.x>0.) {
    float foilSubstrate=step(.5,previewKind)*(1.-step(4.5,previewKind));
    shaded=previewLinear(wornSurface(uv,previewInk(base),previewInk(shaded),normalize(v_normal),view,wearInfo.y,wearInfo.x,foilSubstrate,wearPixel));
