@@ -7,6 +7,7 @@ import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
 import { titleTranslation } from './title-placement.js';
+import { planarLettering } from './planar-lettering.js';
 import { framePlate } from './frame-plates.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
@@ -136,6 +137,8 @@ export function paintFramePlateFace(
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
   c.save();
   if (eighth) c.translate(...titleTranslation(face, 'eighth'));
+  const titleFit = planarLettering(face, plate.frame, 'title');
+  c.translate(titleFit.dx, titleFit.dy);
   paintColorshiftedHeading(c, face);
   paintFittedText(
     c,
@@ -143,7 +146,7 @@ export function paintFramePlateFace(
     tx,
     ty + th / 2,
     cost.length ? adjustedMana[0] - tx - 8 : tw,
-    plate.titleSize,
+    plate.titleSize * titleFit.size,
     true,
     1,
     family,
@@ -183,6 +186,8 @@ export function paintFramePlateFace(
   const bounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   const [x, y, w, h] = px(rects.type);
   c.save();
+  const typeFit = planarLettering(face, plate.frame, 'type');
+  c.translate(typeFit.dx, typeFit.dy);
   paintColorshiftedHeading(c, face);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
@@ -191,7 +196,7 @@ export function paintFramePlateFace(
     x,
     y + h / 2,
     icon ? bounds[0] - x - 7 : w,
-    plate.typeSize,
+    plate.typeSize * typeFit.size,
     true,
     1,
     family,
