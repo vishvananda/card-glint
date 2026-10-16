@@ -39,6 +39,9 @@ try {
     const { futureManaAsset, futureGenericSources } = await import(
       '/games/magic/src/presentation/future-mana.ts'
     );
+    const { futureSetSymbolRect } = await import(
+      '/games/magic/src/presentation/future-set-symbol.ts'
+    );
     const base = {
       name: '',
       frameTemplate: 'future',
@@ -309,6 +312,22 @@ try {
       colorlessArtifact,
       colorlessSpell,
       palette: futurePalette(variants[3]),
+      symbolSources: {
+        ordinary: futureSetSymbolRect({ ...base, setCode: 'fut', colors: ['W'], rarity: 'common' }),
+        land: futureSetSymbolRect({ ...base, setCode: 'fut', typeLine: 'Land', rarity: 'rare' }),
+        full: futureSetSymbolRect({
+          ...base,
+          setCode: 'fut',
+          futureTreatment: 'full-art',
+          colors: ['W'],
+        }),
+        excluded: [
+          { setCode: 'tsr' },
+          { setCode: 'fut', setSymbol: 'custom.svg' },
+          { setCode: 'fut', setSymbolSource: 'keyrune' },
+          { setCode: 'fut', futureTreatment: 'clear' },
+        ].map((change) => futureSetSymbolRect({ ...base, ...change }) ?? null),
+      },
       rejectsText,
     };
   });
@@ -356,6 +375,9 @@ try {
   assert.equal(result.rows[6].rect[3], result.rows[0].rect[3], 'Colorless spells use ordinary art');
   assert.deepEqual(result.palette, ['G', 'W']);
   assert.equal(result.rejectsText, true);
+  assert.notDeepEqual(result.symbolSources.ordinary, result.symbolSources.land);
+  assert.ok(result.symbolSources.full[1] > 550);
+  assert.deepEqual(result.symbolSources.excluded, [null, null, null, null]);
   console.log(
     'Future physical treatments, exact optical layer composition, full-art wording retention, type icon and cache identity pass.',
   );

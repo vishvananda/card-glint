@@ -120,6 +120,12 @@ The report retains panel regressions and unchanged controls. Artifact, land,
 colorless and full-art sources still need their own color calibration; these
 numbers do not certify typography or whole-card accuracy.
 
+The pinned FUT expansion symbols use separate measured placements for Conjurer
+regular, MSE regular and MSE full-art plates. Width and height are independent.
+All 55 reserved cards improve on grayscale edge overlap, edge distance and Census
+similarity in the [symbol replay](fixtures/accuracy/future-set-symbols.json).
+Custom symbols and other printings retain the source template's default bounds.
+
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
 pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
 Flip and Battle are source-layout starting points; Future calibration remains

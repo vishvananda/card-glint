@@ -9,6 +9,7 @@ import { paintFutureMana } from './future-mana.js';
 import { resolveCardProfile } from './profile.js';
 import { templateRules } from './template-typography.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
+import { futureSetSymbolRect } from './future-set-symbol.js';
 
 export function paintFutureTemplate(
   c: CanvasRenderingContext2D,
@@ -96,14 +97,14 @@ export function paintFutureTemplate(
     const symbol = images.get(faceSetSymbol(face) ?? '');
     if (symbol) {
       const [x, y, w, h] = g.symbol,
-        scale = Math.min(w / symbol.width, h / symbol.height);
-      c.drawImage(
-        symbol,
-        x + (w - symbol.width * scale) / 2,
-        y + (h - symbol.height * scale) / 2,
-        symbol.width * scale,
-        symbol.height * scale,
-      );
+        scale = Math.min(w / symbol.width, h / symbol.height),
+        rect = futureSetSymbolRect(face) ?? [
+          x + (w - symbol.width * scale) / 2,
+          y + (h - symbol.height * scale) / 2,
+          symbol.width * scale,
+          symbol.height * scale,
+        ];
+      c.drawImage(symbol, rect[0]!, rect[1]!, rect[2]!, rect[3]!);
     }
     c.fillStyle = p.land || light ? '#fff' : '#111';
     c.textAlign = 'right';
