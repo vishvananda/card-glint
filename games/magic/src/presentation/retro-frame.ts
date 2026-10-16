@@ -14,6 +14,7 @@ import { faceSetSymbol } from './assets.js';
 import { faceManaAssets } from './mana-assets.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
+import { calibratedLegendsStock } from './legends-color-profiles.js';
 import {
   revisedArtRect,
   revisedFrameRect,
@@ -139,7 +140,7 @@ export function retroStock(face: RenderedCardInput) {
     ? cardStock(null, 'silver').border
     : retroBorder(face) === 'white'
       ? RETRO_WHITE
-      : '#080808';
+      : (calibratedLegendsStock(face) ?? '#080808');
 }
 export function retroBorderMask(face: RenderedCardInput) {
   return retroFamily(face) === 'fourth'

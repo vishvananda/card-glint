@@ -1,4 +1,21 @@
 import type { PrintingColorProfile } from './printing-color-profiles.js';
+import type { RenderedCardInput } from './face-layout.js';
+import { legendsFrame } from './legends-frame.js';
+
+/** Shared display-reference stock target, measured independently of interior
+ * ink on 34 calibration and 36 validation scans. The flat scan margins appear
+ * processed; this is not a physical ink measurement or an interior black floor. */
+export function calibratedLegendsStock(face: RenderedCardInput): string | undefined {
+  if (face.colorCalibration !== 'set-hsb-v1' || (face.borderColor && face.borderColor !== 'black'))
+    return undefined;
+  const geometry = legendsFrame(face);
+  if (!geometry) return undefined;
+  const profile = LEGENDS_COLOR_PROFILES[`leg/black/retro/${geometry.material.toLowerCase()}.png`];
+  return profile?.source === JSON.stringify([geometry.asset, geometry.frame])
+    ? '#262626'
+    : undefined;
+}
+
 /** Legends color fit follows source/geometry selection. Bind only the pinned
  * plate and exact placement; rejected components retain their original color.
  * See fixtures/accuracy/legends-colors.json for holdouts and texture limits. */

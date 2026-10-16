@@ -63,7 +63,7 @@ try {
   const { legendsFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/legends-frame.ts',
   );
-  const { retroFrameAsset, retroRects } = await server.ssrLoadModule(
+  const { retroFrameAsset, retroRects, retroStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-frame.ts',
   );
   const { titleTranslation } = await server.ssrLoadModule(
@@ -96,6 +96,31 @@ try {
     const original = { name: 'Probe', setCode: 'leg', typeLine: 'Summon Legend', colors };
     const oracle = { ...original, typeLine: 'Legendary Creature — Human Wizard' };
     assert.equal(legendsFrame(original).family, family);
+    const stockWindow = legendsFrame(original).stockWindow;
+    assert.equal(Boolean(stockWindow), family === 'abu');
+    if (stockWindow)
+      assert.deepEqual(
+        stockWindow.map((v, i) => v * (i % 2 ? 680 : 488)),
+        [19.375, 21.125, 449.625, 639.25],
+      );
+    assert.equal(retroStock(original), '#080808');
+    assert.equal(retroStock({ ...original, colorCalibration: 'set-hsb-v1' }), '#262626');
+    for (const override of [
+      { setCode: 'lea' },
+      { setCode: 'leb' },
+      { setCode: 'm21' },
+      { frameStyle: 'modern' },
+      { frameTemplate: 'future' },
+      { colorCalibration: 'early-hsb-v1' },
+    ])
+      assert.equal(
+        retroStock({ ...original, colorCalibration: 'set-hsb-v1', ...override }),
+        '#080808',
+      );
+    assert.equal(
+      retroStock({ ...original, colorCalibration: 'set-hsb-v1', borderColor: 'white' }),
+      '#eeedeb',
+    );
     assert.equal(retroFrameAsset(original), retroFrameAsset(oracle));
     assert.deepEqual(retroRects(original), retroRects(oracle));
     assert.deepEqual(retroTypePlacement(original), retroTypePlacement(oracle));
@@ -326,6 +351,7 @@ try {
     try {
       profile.source = 'different source or geometry';
       assert.deepEqual(calibratedFrameMaterials(face), {});
+      assert.equal(retroStock(face), '#080808');
     } finally {
       profile.source = saved;
     }

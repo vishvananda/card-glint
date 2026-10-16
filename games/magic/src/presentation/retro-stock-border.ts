@@ -1,5 +1,20 @@
 import { FACE_WIDTH, FACE_HEIGHT, type FaceRect } from './face-layout.js';
 
+/** Independent printed-face aperture; no scaling of the interior plate. */
+export function paintRetroStockWindow(
+  c: CanvasRenderingContext2D,
+  window: FaceRect,
+  stock: string,
+) {
+  c.save();
+  c.fillStyle = stock;
+  c.beginPath();
+  c.rect(0, 0, FACE_WIDTH, FACE_HEIGHT);
+  c.rect(...window);
+  c.fill('evenodd');
+  c.restore();
+}
+
 /** Recolor stock without leaving the plate's white edge under a fractional mask.
  * Chrome and WebKit can antialias drawImage's outer rectangle: painting it
  * twice does not fully cover the first edge. Prime that outer edge with stock,

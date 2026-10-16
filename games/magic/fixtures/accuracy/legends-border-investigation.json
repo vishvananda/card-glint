@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "source-review-and-calibration-plan-not-adopted",
+  "status": "stock-recut-and-blackpoint-calibration-validated",
   "baseline": "v0.4.0",
   "sourceCommit": "5c0d7d788ae83396138d9639badc9d3cbc686ffc",
   "findings": [
@@ -18,7 +18,8 @@
       "same Fourth interior with an independently cropped Legends stock aperture"
     ],
     "policy": "All candidate renderings use the released painter and unchanged lettering with color calibration disabled. The previous shared Fourth proposal is replayed against current frozen scan poses; no scan is fitted to a renderer. The cropped candidate borrows the Revised construction method, not Revised border dimensions. Its stock aperture and RGB 38 are provisional visual controls. No new geometry/color defaults or accuracy claims.",
-    "decision": "Fourth removes the unwanted ABU band and is the preferred source to fit next for Legends white/black. Refit the chosen Fourth interior and its stock boundary independently; compare native mask versus cropped stock before adoption. Existing ABU HSB coefficients must not transfer to the Fourth source."
+    "decision": "Keep the calibrated ABU interiors and independently recut white/black stock. Fourth was compared on the same frozen poses; its black geometry and white color/texture fit were worse.",
+    "followup": "See legends-stock-calibration.json for native replay, independent holdouts and separate interior shadow-lift results. The provisional Fourth preference was rejected after fitting."
   },
   "greenSeam": {
     "status": "reproduced-and-fixed-on-codex/retro-stock-seams",
@@ -46,5 +47,6 @@
     "Add an opt-in black-point/shadow-curve term to frame material calibration. Use a bounded monotone curve, preserving midtones/highlights beyond a measured transition. Fit source black to reference black without clipping all shadows to a flat floor. Preserve alpha. This replaces the hard dark-pixel exemption only for opted-in frame materials; mana glyph protection remains independent.",
     "Use the resolved stock target for both procedural stock and any stock mask. Preserve the public border-only override semantics. Apply frame curves during cached material preparation and include them in cache identity; no per-frame readbacks or hand-drawn masks for every source.",
     "Validate border RGB error, interior black error, shadow chroma/contrast and structural edge scores separately. Check unchanged midtone/highlight pixels, antialiasing, banding and seams. Replay at table and inspect tiers, and through the deployed loader before release."
-  ]
+  ],
+  "blackCalibrationResult": "Adopt the independently measured stock target only. All frame shadow-lift fits selected zero; most interior materials contain too few dark pixels for a reliable ink-floor fit. Do not force the processed scan-margin RGB into frame shadows."
 }

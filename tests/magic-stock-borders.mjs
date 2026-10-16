@@ -29,7 +29,7 @@ try {
       await page.route('https://**/*', (route) => route.abort());
       await page.goto(server.resolvedUrls.local[0] + '__stock-test');
       const rows = await page.evaluate(async () => {
-        const { paintRetroStockBorder } = await import(
+        const { paintRetroStockBorder, paintRetroStockWindow } = await import(
           '/games/magic/src/presentation/retro-stock-border.ts'
         );
         const { legendsFrame } = await import('/games/magic/src/presentation/legends-frame.ts');
@@ -40,13 +40,13 @@ try {
           return c;
         };
         const source = make(732, 1020),
-          sc = source.getContext('2d');
+          sc = source.getContext('2d', { willReadFrequently: true });
         sc.fillStyle = '#fff';
         sc.fillRect(0, 0, 732, 1020);
         sc.fillStyle = '#578760';
         sc.fillRect(26, 26, 680, 968);
         const mask = make(732, 1020),
-          mc = mask.getContext('2d');
+          mc = mask.getContext('2d', { willReadFrequently: true });
         mc.fillRect(0, 0, 732, 1020);
         // A nonrectangular aperture checks that only the outside bleed changes.
         mc.globalCompositeOperation = 'destination-out';
@@ -67,13 +67,13 @@ try {
         });
         const rows = [];
         for (const size of [244, 732])
-          for (const stock of ['#080808', '#eeedeb', '#b7b7b7'])
+          for (const stock of ['#080808', '#262626', '#eeedeb', '#b7b7b7'])
             for (const { material, rect } of frames) {
               const [x, y, w, h] = rect,
                 scale = size / 488;
               const render = (fixed) => {
                 const c = make(size, (size * 680) / 488),
-                  ctx = c.getContext('2d');
+                  ctx = c.getContext('2d', { willReadFrequently: true });
                 ctx.scale(scale, scale);
                 ctx.fillStyle = stock;
                 ctx.fillRect(0, 0, 488, 680);
@@ -81,7 +81,7 @@ try {
                 if (fixed) paintRetroStockBorder(ctx, mask, rect, stock);
                 else {
                   const layer = make(732, 1020),
-                    lc = layer.getContext('2d');
+                    lc = layer.getContext('2d', { willReadFrequently: true });
                   lc.drawImage(mask, 0, 0);
                   lc.globalCompositeOperation = 'source-in';
                   lc.fillStyle = stock;
@@ -135,6 +135,48 @@ try {
                 badSamples,
               });
             }
+        // The white/black recut must be opaque outside its aperture and leave
+        // every fully interior pixel untouched, including at the table tier.
+        for (const size of [244, 732])
+          for (const material of ['W', 'B']) {
+            const scale = size / 488,
+              c = make(size, (size * 680) / 488),
+              ctx = c.getContext('2d', { willReadFrequently: true }),
+              window = legendsFrame({ setCode: 'leg', colors: [material] }).stockWindow.map(
+                (v, i) => v * (i % 2 ? 680 : 488),
+              );
+            ctx.drawImage(source, 0, 0, c.width, c.height);
+            const before = ctx.getImageData(0, 0, c.width, c.height);
+            ctx.scale(scale, scale);
+            const fill = ctx.fillStyle;
+            paintRetroStockWindow(ctx, window, '#262626');
+            if (ctx.fillStyle !== fill) throw Error('Stock recut leaked canvas state');
+            const after = ctx.getImageData(0, 0, c.width, c.height),
+              [x, y, w, h] = window;
+            let afterBad = 0,
+              interiorMax = 0;
+            for (let yy = 0; yy < c.height; yy++)
+              for (let xx = 0; xx < c.width; xx++) {
+                const i = (yy * c.width + xx) * 4,
+                  px = (xx + 0.5) / scale,
+                  py = (yy + 0.5) / scale,
+                  inset = 1 / scale;
+                if (px < x - inset || px > x + w + inset || py < y - inset || py > y + h + inset)
+                  afterBad += Number(
+                    after.data[i] !== 38 ||
+                      after.data[i + 1] !== 38 ||
+                      after.data[i + 2] !== 38 ||
+                      after.data[i + 3] !== 255,
+                  );
+                if (px > x + inset && px < x + w - inset && py > y + inset && py < y + h - inset)
+                  for (let k = 0; k < 4; k++)
+                    interiorMax = Math.max(
+                      interiorMax,
+                      Math.abs(after.data[i + k] - before.data[i + k]),
+                    );
+              }
+            rows.push({ size, material, kind: 'recut', afterBad, interiorMax });
+          }
         return rows;
       });
       for (const row of rows) {
