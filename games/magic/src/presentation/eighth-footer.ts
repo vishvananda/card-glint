@@ -1,3 +1,4 @@
+import { paintPrintingElement } from './printing-elements.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
 import { resolveCardProfile } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -88,27 +89,45 @@ export function paintEighthFooter(
   c.textBaseline = 'alphabetic';
   c.textAlign = 'left';
   const brushUrl = eighthArtistBrush(face);
-  if (brushUrl) {
-    c.save();
-    transformPlanarFooter(c, face, source, 'artist');
-    const brush = images.get(brushUrl);
-    if (!brush) throw Error(`Eighth Edition artist brush unavailable: ${brushUrl}`);
-    c.drawImage(brush, 36.5, baseline - 10, x - 39, 13.5);
-    c.font = `700 ${early ? 17.5 : 18}px "CardRenderer MTG Matrix", Georgia`;
-    // Keep long credits out of the badge; do not silently remove their wording.
-    const right = face.power != null && face.toughness != null ? 350 : 448;
-    c.fillText(face.artist!, x, baseline, right - x);
-    c.restore();
-  }
+  paintPrintingElement(c, face, 'artist', () => {
+    if (brushUrl) {
+      c.save();
+      transformPlanarFooter(c, face, source, 'artist');
+      const brush = images.get(brushUrl);
+      if (!brush) throw Error(`Eighth Edition artist brush unavailable: ${brushUrl}`);
+      c.drawImage(brush, 36.5, baseline - 10, x - 39, 13.5);
+      c.font = `700 ${early ? 17.5 : 18}px "CardRenderer MTG Matrix", Georgia`;
+      // Keep long credits out of the badge; do not silently remove their wording.
+      const right = face.power != null && face.toughness != null ? 350 : 448;
+      c.fillText(face.artist!, x, baseline, right - x);
+      c.restore();
+    }
+  });
   const legal = printingLegalText(face),
     number = printingCollectorText(face, false);
-  const line = [legal, number].filter(Boolean).join(' ');
-  if (line) {
-    c.save();
-    transformPlanarFooter(c, face, source, 'legal');
-    c.font = '10px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(line, 36.5, baseline + 13, 409);
-    c.restore();
+  c.save();
+  transformPlanarFooter(c, face, source, 'legal');
+  c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+  // Keep the original single call unless independent movement is requested.
+  if (!face.printingElements?.collector?.offset && !face.printingElements?.legal?.offset) {
+    const line = [legal, number].filter(Boolean).join(' ');
+    if (line) c.fillText(line, 36.5, baseline + 13, 409);
+  } else {
+    const line = [legal, number].filter(Boolean).join(' '),
+      fit = Math.min(1, 409 / Math.max(1, c.measureText(line).width));
+    c.translate(36.5, baseline + 13);
+    const run = (text: string, x: number) => {
+      c.save();
+      c.scale(fit, 1);
+      c.fillText(text, x, 0);
+      c.restore();
+    };
+    if (legal) paintPrintingElement(c, face, 'legal', () => run(legal, 0));
+    if (number)
+      paintPrintingElement(c, face, 'collector', () =>
+        run(number, c.measureText(legal ? legal + ' ' : '').width),
+      );
   }
+  c.restore();
   c.restore();
 }

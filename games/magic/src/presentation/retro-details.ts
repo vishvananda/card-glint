@@ -1,3 +1,4 @@
+import { paintPrintingElement } from './printing-elements.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 import { paintEarlyMana } from './historic-cost.js';
@@ -194,16 +195,21 @@ export function paintRetroCredits(
   c.save();
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  if (face.artist) {
-    c.fillStyle = '#f2eee3';
-    c.shadowColor = '#000';
-    c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
-    c.font = `${details.artistSize}px "CardRenderer MTG MPlantin", Georgia`;
-    c.fillText(`Illus. ${face.artist}`, details.artistX, details.artistBaseline, 338);
-  }
+  paintPrintingElement(c, face, 'artist', () => {
+    if (face.artist) {
+      c.fillStyle = '#f2eee3';
+      c.shadowColor = '#000';
+      c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
+      c.font = `${details.artistSize}px "CardRenderer MTG MPlantin", Georgia`;
+      c.fillText(`Illus. ${face.artist}`, details.artistX, details.artistBaseline, 338);
+    }
+  });
   c.shadowColor = 'transparent';
   c.fillStyle = details.legalLight ? '#f2eee3' : '#17140f';
   c.font = `${details.legalSize}px "CardRenderer MTG MPlantin", Georgia`;
-  if (details.legalText) c.fillText(details.legalText, details.artistX, details.legalBaseline, 380);
+  if (details.legalText)
+    paintPrintingElement(c, face, 'legal', () =>
+      c.fillText(details.legalText!, details.artistX, details.legalBaseline, 380),
+    );
   c.restore();
 }

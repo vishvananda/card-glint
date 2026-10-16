@@ -120,7 +120,7 @@ async function paintMask(
     }
   }
   signal.throwIfAborted();
-  if (!face.setCode) return;
+  if (!face.setCode || face.printingElements?.setSymbol?.hidden) return;
   const [rx, ry, rw, rh] = faceRects(face).stamp;
   const x = rx * FACE_WIDTH,
     y = ry * height,

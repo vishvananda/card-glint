@@ -682,3 +682,102 @@ Omissions affect Canvas text calls, not externally supplied lettering bitmaps.
 `blackBorderLift` optionally sets a minimum sRGB ink level for the outer black
 border (0..0.2). It leaves the interior, white/silver borders and layout intact.
 The default preserves source pixels. The lift is painted before finish and wear.
+
+## Printing preset prototype
+
+`printingPresets`, `printingPresetCompatibility`, `printingElementSupport`,
+`resolvePrintingPreset` and `resolveScryfallPrinting` are available through
+`card-glint/magic` and `card-glint/magic/presentation`. These are game-pack
+presentation APIs; the renderer core has no set or frame vocabulary.
+
+A printing preset changes the complete style: frame family/treatment, set-driven
+geometry, fonts, ink calibration, mana glyph era, set symbol, legal defaults and
+collector formatting. The starter catalog contains Alpha, Beta, Unlimited,
+Revised, Fourth Edition, Legends, Mirage, Seventh, Eighth, ordinary and
+Colorshifted Planar Chaos, ordinary and Futureshifted Future Sight, M15 and M21. It is a
+selection of existing painter policies, not a claim that every material or set
+has the same scan-calibration coverage. `match` preserves supplied printing
+fields. Unknown IDs throw; hosts can check compatibility to show an explanation.
+
+```ts
+import {
+  magic,
+  printingPresets,
+  printingPresetCompatibility,
+  resolvePrintingPreset,
+  type PrintingSelection,
+} from 'card-glint/magic';
+
+// Save the source card and selection separately. Never replace source with resolved.
+const selection: PrintingSelection = {
+  preset: 'plc-colorshifted',
+  overrides: {
+    collectorNumber: '77',
+    collectorTotal: 165,
+    legalText: null,
+    elements: { artist: { offset: [0, -3] } },
+  },
+};
+const choices = printingPresets.map((preset) => ({
+  ...preset,
+  ...printingPresetCompatibility(source, preset.id),
+}));
+const presented = resolvePrintingPreset(source, selection);
+const recipe = magic.describe(presented, 'inspect');
+// Use this same presented face for live previews, PNGs and video frames.
+```
+
+Changing the preset resets prior frame/template flags, custom set symbols,
+symbol placement, credit/legal formatting, collector total/language and border
+choices to the preset. Source artist, card text, stats, illustration, colors and
+collector number remain authored content. Explicit overrides are reapplied.
+The resolver does not mutate either source or overrides. Omitting an override
+(or assigning `undefined`) restores the preset/source value; `null` hides artist,
+legal text, collector information or the set symbol. Empty strings are literal
+text values, not reset commands. `collectorTotal: null` suppresses the denominator;
+`collectorSetCode` edits the visible modern code without changing the style set.
+`setCode` changes the underlying set policies and symbol together. A custom
+`setSymbol` image URL overrides the preset symbol, including on core-set frames
+that normally omit one. Number formatting supports `number-first` or `rarity-first`.
+Language and set-code lines apply only to the modern footer; older painters do
+not gain an invented language line. Old frames show a custom collector number
+only when an explicit number/total override requests it.
+
+`elements` supports `artist`, `legal`, `collector`, `manaCost` and `setSymbol`.
+Each accepts `hidden` and an `[x, y]` translation bounded to ±100 reference pixels
+in the painter's 488 × 680 coordinates. Native prefixes, brush symbols, fonts,
+colors and shadows move as a group; this is not a second host text renderer.
+Copyright embedded in a native artist prefix (such as Legends’ “Illus. © 1994”)
+remains part of that artist group; the legal control changes the separate legal
+notice. Movement preserves text reservations rather than reflowing the card. Reset by
+removing the element override. Security stamps use the existing `securityStamp`
+choice. Arbitrary font replacement, title/rules dragging and bounding-box
+editing are outside this prototype. Unknown element options throw.
+
+The element controls currently support ordinary single faces and Futureshifted
+faces. `printingElementSupport` reports that scope. Special layouts keep their
+existing painters and do not silently substitute an ordinary frame. Whole spell
+split cards support retro, Eighth and modern presets; Futureshifted and
+Colorshifted splits are rejected. Element movement on composite cards is not
+implemented. For two physical sides, resolve each side independently: a host can
+link their selections or let the user choose separately. Standalone transform,
+modal DFC, reversible and meld sides normalize to ordinary face painting, while
+the host retains the original card relationship. Text wording remains controlled
+by the existing wording API and is independent of physical frame selection.
+
+`resolveScryfallPrinting(record)` maps physical printing metadata: `frame: future`
+selects Futureshifted; `2003` selects the Eighth family; `1993`/`1997` selects
+retro; `2015` selects modern. `frame_effects: ['colorshifted']` selects the Planar
+Chaos treatment. Set membership alone never implies a special frame: both
+ordinary and special printings exist in Future Sight and Planar Chaos. Resolve
+from a fresh source presentation rather than merging over stale frame flags.
+Recognized borders/stamps are retained; missing stamp metadata means `none`.
+Textless Future flags select full-art, whose existing painter rejects body text.
+
+After `npm run build && npm run preview`, open
+`http://127.0.0.1:4283/card-glint/presets/printing-presets.html` for hover/focus
+previews, touch selection, advanced controls and PNG export. The browser release
+also includes `printing-presets.html`. It uses original illustration art and the
+Magic pack's externally hosted, pinned frame/font assets. Run
+`npm run test:printing-presets` with the preview running (`LAB_URL` can override
+its base URL). No host application or engine checkout is required.

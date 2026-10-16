@@ -118,6 +118,7 @@ export const mtg: GamePack<RenderedCardInput> = {
           'mtg-stamp-v3',
           tier,
           face.setCode,
+          ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
           children.map((child) => [
             faceRects(child.face).stamp,
             child.face.setCode,
@@ -225,3 +226,12 @@ export type { RenderedCardInput as MagicCard } from './presentation/face-layout.
 export { faceFrame, faceRects } from './presentation/special-frames.js';
 export { isRetro, retroFamily, retroRects } from './presentation/retro-frame.js';
 export { resolveCardProfile } from './presentation/profile.js';
+
+export * from './presentation/printing-presets.js';
+export type {
+  PrintingElement,
+  PrintingElementOverride,
+  PrintingElements,
+} from './presentation/printing-elements.js';
+
+export * from './presentation/scryfall-printing.js';

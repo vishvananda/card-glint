@@ -97,6 +97,7 @@ export function componentAsset(group: string, name: string): string {
 
 /** Explicit symbols support custom sets without changing their printed names. */
 export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): string | null {
+  if (face.printingElements?.setSymbol?.hidden) return null;
   const set = face.setCode?.trim().toLowerCase() ?? '';
   return (
     face.setSymbol ??

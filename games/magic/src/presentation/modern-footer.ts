@@ -1,3 +1,4 @@
+import { paintPrintingElement } from './printing-elements.js';
 import { cardStock, type RenderedCardInput } from './face-layout.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
 
@@ -13,25 +14,29 @@ export function paintModernFooter(c: CanvasRenderingContext2D, face: RenderedCar
   c.textBaseline = 'alphabetic';
   c.textAlign = 'left';
   c.font = '11px "CardRenderer MTG Relay", sans-serif';
-  c.fillText(printingCollectorText(face), 30, 645);
-  const set = face.setCode?.trim().toUpperCase() ?? '';
-  const code = set ? `${set} • EN` : '';
-  c.fillText(code, 30, 658);
+  paintPrintingElement(c, face, 'collector', () =>
+    c.fillText(printingCollectorText(face), 30, 645),
+  );
+  const set = (face.collectorSetCode ?? face.setCode)?.trim().toUpperCase() ?? '';
+  const code = set ? `${set} • ${face.collectorLanguage?.toUpperCase() ?? 'EN'}` : '';
+  paintPrintingElement(c, face, 'collector', () => c.fillText(code, 30, 658));
   const legal = printingLegalText(face);
   const stats = (face.power != null && face.toughness != null) || face.loyalty != null;
   let left = 30 + c.measureText(code).width + (code ? 7 : 0);
-  if (face.artist) {
-    c.font = '11px "CardRenderer MTG Artist Credit", sans-serif';
-    c.fillText('a', left, 658);
-    left += c.measureText('a').width + 2;
-    c.font = '700 11px "CardRenderer MTG Beleren Small Caps", Georgia';
-    c.fillText(face.artist, left, 658, Math.max(1, (legal && stats ? 272 : 456) - left));
-  }
+  paintPrintingElement(c, face, 'artist', () => {
+    if (face.artist) {
+      c.font = '11px "CardRenderer MTG Artist Credit", sans-serif';
+      c.fillText('a', left, 658);
+      left += c.measureText('a').width + 2;
+      c.font = '700 11px "CardRenderer MTG Beleren Small Caps", Georgia';
+      c.fillText(face.artist, left, 658, Math.max(1, (legal && stats ? 272 : 456) - left));
+    }
+  });
   if (legal) {
     c.textAlign = 'right';
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
     // Creature and planeswalker badges reserve the upper right footer row.
-    c.fillText(legal, 456, stats ? 658 : 645, 178);
+    paintPrintingElement(c, face, 'legal', () => c.fillText(legal, 456, stats ? 658 : 645, 178));
   }
   c.restore();
 }

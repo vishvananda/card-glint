@@ -1,3 +1,4 @@
+import { paintPrintingElement } from './printing-elements.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { paintModernFooter } from './modern-footer.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
@@ -156,20 +157,22 @@ export function paintFramePlateFace(
     family,
   );
   c.restore();
-  paintAdjustedSymbols(c, manaBounds, costAdjustment, () => {
-    cost.forEach((symbol, i) =>
-      paintMana(
-        c,
-        symbol,
-        costRight - costWidth + i * (size + gap),
-        plate.mana.center * H - size / 2,
-        size,
-        images,
-        true,
-        costAdjustment,
-      ),
-    );
-  });
+  paintPrintingElement(c, face, 'manaCost', () =>
+    paintAdjustedSymbols(c, manaBounds, costAdjustment, () => {
+      cost.forEach((symbol, i) =>
+        paintMana(
+          c,
+          symbol,
+          costRight - costWidth + i * (size + gap),
+          plate.mana.center * H - size / 2,
+          size,
+          images,
+          true,
+          costAdjustment,
+        ),
+      );
+    }),
+  );
   const url = faceSetSymbol(face),
     icon = images.get(url ?? ''),
     crop = setSymbolCrop(face);
@@ -208,17 +211,19 @@ export function paintFramePlateFace(
     family,
   );
   c.restore();
-  paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
-    if (icon) {
-      const shaped = shapedSetCode(face);
-      if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...originalBounds);
-      else if (hasCoreSetShield(face))
-        paintCoreSetSymbol(c, icon, face.rarity, ...originalBounds, crop, 1.5);
-      else if (shaped)
-        paintShapedSetSymbol(c, icon, shaped, face.rarity, ...originalBounds, crop, false);
-      else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
-    }
-  });
+  paintPrintingElement(c, face, 'setSymbol', () =>
+    paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
+      if (icon) {
+        const shaped = shapedSetCode(face);
+        if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...originalBounds);
+        else if (hasCoreSetShield(face))
+          paintCoreSetSymbol(c, icon, face.rarity, ...originalBounds, crop, 1.5);
+        else if (shaped)
+          paintShapedSetSymbol(c, icon, shaped, face.rarity, ...originalBounds, crop, false);
+        else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
+      }
+    }),
+  );
   if (!paintBasicLandSymbol(c, face, images))
     paintRulesLayout(c, ordinaryTextLayout(c, face), images);
   if (face.power != null && face.toughness != null) {
