@@ -113,14 +113,31 @@ do not replace the shared defaults with a lookup table. The five Charm wording
 corrections ship in **0.3.9**. Original wording gains the printed separator;
 Oracle wording and shared typography remain unchanged.
 
-The next Planar patch has a [validated variable-stat star fit](fixtures/accuracy/planar-stars.json).
+Planar **0.3.10** includes a [validated variable-stat star fit](fixtures/accuracy/planar-stars.json).
 ModMatrix's stars use 77.5% of their original ink size and a 1.25 px downward
 shift while retaining the font advances and slash. Both calibration cards and
 all six reused validation cards improve; the latter regional ink score rises
 from 82.0% to 89.2%. Full native rendering confirms all 157 non-star printings
 are byte-identical to 0.3.9 and the eight changed cards differ only inside the
 P/T area. The single colorshifted star card is in calibration, so that treatment
-has no separate validation member. Badge geometry and rules wrapping remain open.
+has no separate validation member.
+
+The [badge geometry replay](fixtures/accuracy/planar-badges.json) moves the
+ordinary and colorshifted P/T plates down and fits their width and height
+separately. Conjurer assets beat or matched the MSE alternatives on calibration;
+no new asset source is needed. All 105 accepted P/T cards improve, including
+84 reused validation cards. The 58 non-P/T cards remain byte-identical. Rules
+clearance stays independent of the badge bitmap: all 165 rules rasters remain
+unchanged. The initial coupled trial reflowed 22 cards, including four measured
+regressions, and was rejected.
+
+The [0.3.10 full-set comparison](fixtures/accuracy/planar-badge-fullset.json)
+against released 0.3.9 raises structural similarity from **81.34 to 82.45 / 100**
+across 156 accepted scans. All 105 scored P/T cards improve; 51 other cards are
+unchanged. P/T-region similarity rises from 76.33 to 96.08 / 100. Six rejected
+single-face scans and three split cards remain excluded. These are edge-based
+similarity indices, not percentages of flawless pixels. Rules font size/wrapping,
+remaining numeric P/T glyph differences and local pigment differences stay open.
 
 ## Current execution checkpoint
 
