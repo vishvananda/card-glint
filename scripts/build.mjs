@@ -65,3 +65,9 @@ for (const group of ['foils', 'living'])
     );
 // Keep existing links from prior releases working.
 await cp('docs/images/showcase-foils.mp4', 'dist/lab/media/showcase.mp4');
+
+// Optional Magic pack prototype; separate from the original-asset-only showcase.
+await cp('dist/lib', 'dist/lab/presets', { recursive: true });
+await cp('games/showcase/art', 'dist/lab/presets/art', { recursive: true });
+for (const file of ['printing-presets.html', 'printing-presets-example.js'])
+  await cp('examples/standalone/' + file, 'dist/lab/presets/' + file);

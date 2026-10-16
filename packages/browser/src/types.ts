@@ -1,3 +1,4 @@
+import type { ImageFit } from './image-cover.js';
 /** Public game-neutral contract. Inputs use normalized top-left card coordinates. */
 export type Rect = readonly [number, number, number, number];
 export type Size = readonly [number, number];
@@ -44,6 +45,8 @@ export interface EdgeSource {
   crop: Rect;
   rotation?: -90 | 0 | 90;
   destination: Rect;
+  /** Optional source focal point and zoom, shared with color composition. */
+  fit?: ImageFit;
   clip: Rect;
   threshold: number;
   /** Imported edge masks skip the detector. Alpha is extracted to linear R8. */

@@ -1,3 +1,5 @@
+import type { ArtPlacement } from './art-placement.js';
+import type { PrintingElements } from './printing-elements.js';
 import type { SymbolAdjustment } from './symbol-adjustment.js';
 import type { CardProfileInput } from './profile.js';
 
@@ -19,6 +21,11 @@ export interface RulesParagraph {
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
+  /** Optional semantic printing controls, shared by raster/export and editor callers. */
+  printingElements?: PrintingElements;
+  collectorTotal?: number | null;
+  collectorLanguage?: string;
+  collectorSetCode?: string;
   /** Editor-only omission of text ink in normalized physical-card regions.
    * Layout, frame selection, calibrated materials and mana remain unchanged. */
   printingOmissions?: readonly {
@@ -52,6 +59,8 @@ export interface RenderedCardInput extends CardProfileInput {
    * the art aperture. Use for an incomplete crop: retain its scale/position and
    * fill uncovered areas with a solid edge color. Does not move the frame. */
   illustrationPlacement?: FaceRect;
+  /** User fit, independent of frame preset and source crop corrections. */
+  artPlacement?: ArtPlacement;
   manaSymbols?: string[];
   /** Experimental ordinary-face symbol placement; omitted preserves printing defaults. */
   symbolAdjustment?: SymbolAdjustment;

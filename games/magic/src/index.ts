@@ -92,6 +92,14 @@ export const mtg: GamePack<RenderedCardInput> = {
           ]),
           asset: { url: child.face.illustration, width: 512 },
           threshold: 20,
+          ...(child.face.artPlacement
+            ? {
+                fit: {
+                  focalPoint: child.face.artPlacement.focalPoint,
+                  zoom: child.face.artPlacement.zoom,
+                },
+              }
+            : {}),
           crop: child.face.illustrationCrop ?? [0, 0, 1, 1],
           destination: child.panel ? panelRect(child.panel, target) : target,
           clip: child.panel ? panelRect(child.panel, clip) : clip,
@@ -120,6 +128,7 @@ export const mtg: GamePack<RenderedCardInput> = {
           'mtg-stamp-v3',
           tier,
           face.setCode,
+          ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
           children.map((child) => [
             faceRects(child.face).stamp,
             child.face.setCode,
@@ -226,4 +235,21 @@ export { mtg as magic };
 export type { RenderedCardInput as MagicCard } from './presentation/face-layout.js';
 export { faceFrame, faceRects } from './presentation/special-frames.js';
 export { isRetro, retroFamily, retroRects } from './presentation/retro-frame.js';
-export { resolveCardProfile } from './presentation/profile.js';
+export { resolveCardProfile, resolveFrameColors } from './presentation/profile.js';
+
+export * from './presentation/printing-presets.js';
+export type {
+  PrintingElement,
+  PrintingElementOverride,
+  PrintingElements,
+} from './presentation/printing-elements.js';
+
+export * from './presentation/scryfall-printing.js';
+
+export * from './presentation/art-placement.js';
+
+export * from './presentation/printing-style.js';
+
+export { fromScryfallCard } from './presentation/scryfall-card.js';
+export { fromMtgjsonCard } from './presentation/mtgjson-card.js';
+export type { CardImportOptions } from './presentation/provider-card.js';

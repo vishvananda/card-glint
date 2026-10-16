@@ -45,8 +45,18 @@ export function paintIllustration(
   if (face.illustrationCrop)
     context.drawImage(
       image,
-      ...croppedIllustration(image.width, image.height, target, face.illustrationCrop),
+      ...croppedIllustration(
+        image.width,
+        image.height,
+        target,
+        face.illustrationCrop,
+        face.artPlacement,
+      ),
     );
-  else context.drawImage(image, ...illustrationCover(image.width, image.height, target));
+  else
+    context.drawImage(
+      image,
+      ...illustrationCover(image.width, image.height, target, face.artPlacement),
+    );
   context.restore();
 }

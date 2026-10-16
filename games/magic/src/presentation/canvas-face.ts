@@ -1,3 +1,5 @@
+import { validateArtPlacement } from './art-placement.js';
+import { validatePrintingElements, paintPrintingElement } from './printing-elements.js';
 import { withPrintingOmissions } from './printing-omissions.js';
 import { paintPlaneswalkerLoyalty } from './planeswalker-loyalty.js';
 import { paintModernFooter } from './modern-footer.js';
@@ -157,10 +159,20 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
 }
 
 function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
+  const options = [
+    face.printingElements,
+    face.collectorTotal,
+    face.collectorLanguage,
+    face.collectorSetCode,
+  ];
+  const printingOptions = options.some((v) => v !== undefined)
+    ? [['printing-elements-v1', ...options]]
+    : [];
   const panels = splitPanels(face);
   if (panels.length)
     return [
       face.layout,
+      ...printingOptions,
       face.artist ?? null,
       face.collectorNumber ?? null,
       face.legalText ?? null,
@@ -173,16 +185,19 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
     ];
   return mask
     ? [
+        ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
         face.illustration ?? null,
         face.etchedIllustration ?? null,
         face.illustrationCrop ?? null,
         face.illustrationPlacement ?? null,
+        ...(face.artPlacement ? [['art-placement-v1', face.artPlacement]] : []),
         face.setCode ?? null,
         face.setSymbol ?? null,
         face.setSymbolSource ?? null,
         faceRects(face),
       ]
     : [
+        ...printingOptions,
         isRetro(face) ? [retroFrameAsset(face), retroBorder(face)] : null,
         face.borderColor ?? null,
         face.frameAssetFamily ?? null,
@@ -204,6 +219,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.illustration ?? null,
         face.illustrationCrop ?? null,
         face.illustrationPlacement ?? null,
+        ...(face.artPlacement ? [['art-placement-v1', face.artPlacement]] : []),
         extraRuleKey(face),
         face.artist ?? null,
         face.watermark ?? null,
@@ -248,6 +264,8 @@ export async function composeCardTexture(
     underArt?: HTMLCanvasElement;
   },
 ): Promise<HTMLCanvasElement> {
+  validateArtPlacement(input.face);
+  validatePrintingElements(input.face);
   validateSymbolAdjustment(input.face);
   if (input.custom) {
     await hooks?.beforePaint?.();
@@ -714,20 +732,22 @@ export function paintAssembledFace(
   );
   context.restore();
   context.letterSpacing = '0px';
-  paintAdjustedSymbols(context, manaBounds, costAdjustment, () => {
-    mana.forEach((symbol, index) =>
-      paintMana(
-        context,
-        symbol,
-        manaX + index * (manaSize + manaGap),
-        ty + th / 2 - manaSize / 2 + FACE_TEXT.manaLift / 2,
-        manaSize,
-        images,
-        true,
-        costAdjustment,
-      ),
-    );
-  });
+  paintPrintingElement(context, face, 'manaCost', () =>
+    paintAdjustedSymbols(context, manaBounds, costAdjustment, () => {
+      mana.forEach((symbol, index) =>
+        paintMana(
+          context,
+          symbol,
+          manaX + index * (manaSize + manaGap),
+          ty + th / 2 - manaSize / 2 + FACE_TEXT.manaLift / 2,
+          manaSize,
+          images,
+          true,
+          costAdjustment,
+        ),
+      );
+    }),
+  );
   const setUrl = faceSetSymbol(face),
     setIcon = images.get(setUrl ?? ''),
     styledSymbol = isStyledSetSymbol(setUrl);
@@ -792,43 +812,45 @@ export function paintAssembledFace(
     false,
     kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
   );
-  paintAdjustedSymbols(context, originalSymbolBounds, face.symbolAdjustment?.set, () => {
-    if (setIcon) {
-      if (styledSymbol || face.setSymbol) {
-        context.save();
-        context.shadowColor = 'transparent';
-        context.drawImage(setIcon, ...originalSymbolBounds);
-        context.restore();
-      } else if (coreShield)
-        paintCoreSetSymbol(
-          context,
-          setIcon,
-          face.rarity,
-          ...originalSymbolBounds,
-          setCrop,
-          corePlacement ? 1.5 : 1,
-        );
-      else if (shapedCode)
-        paintShapedSetSymbol(
-          context,
-          setIcon,
-          shapedCode,
-          face.rarity,
-          ...originalSymbolBounds,
-          setCrop,
-          kind === 'normal',
-        );
-      else
-        paintSetSymbol(
-          context,
-          setIcon,
-          face.setCode,
-          face.rarity,
-          ...originalSymbolBounds,
-          setCrop,
-        );
-    }
-  });
+  paintPrintingElement(context, face, 'setSymbol', () =>
+    paintAdjustedSymbols(context, originalSymbolBounds, face.symbolAdjustment?.set, () => {
+      if (setIcon) {
+        if (styledSymbol || face.setSymbol) {
+          context.save();
+          context.shadowColor = 'transparent';
+          context.drawImage(setIcon, ...originalSymbolBounds);
+          context.restore();
+        } else if (coreShield)
+          paintCoreSetSymbol(
+            context,
+            setIcon,
+            face.rarity,
+            ...originalSymbolBounds,
+            setCrop,
+            corePlacement ? 1.5 : 1,
+          );
+        else if (shapedCode)
+          paintShapedSetSymbol(
+            context,
+            setIcon,
+            shapedCode,
+            face.rarity,
+            ...originalSymbolBounds,
+            setCrop,
+            kind === 'normal',
+          );
+        else
+          paintSetSymbol(
+            context,
+            setIcon,
+            face.setCode,
+            face.rarity,
+            ...originalSymbolBounds,
+            setCrop,
+          );
+      }
+    }),
+  );
   if (hasExtraRules(face)) paintExtraRules(context, face, images);
   else if (kind !== 'normal') paintSpecialRules(context, face, images);
   else if (!paintBasicLandSymbol(context, face, images)) {

@@ -1,3 +1,4 @@
+import { coverImage } from '../image-cover.js';
 import { program, texture } from './etcher.js';
 import type { TextureStore, Texture } from './textures.js';
 import type { EdgeSource, Lease, Rect, Size } from '../types.js';
@@ -82,20 +83,34 @@ export class MaskComposer {
             rotation = spec.rotation ?? 0;
           const iw = value.width * spec.crop[2],
             ih = value.height * spec.crop[3];
-          const scale = Math.max(
-            (width * w) / (rotation ? ih : iw),
-            (height * h) / (rotation ? iw : ih),
-          );
-          const sw = ((rotation ? ih : iw) * scale) / w,
-            sh = ((rotation ? iw : ih) * scale) / h;
-          draw(
-            value,
-            [x + (width - sw) / 2, y + (height - sh) / 2, sw, sh],
-            spec.clip,
-            spec.crop,
-            !!spec.importedMask,
-            rotation,
-          );
+          let bounds: Rect;
+          if (!spec.fit) {
+            const scale = Math.max(
+              (width * w) / (rotation ? ih : iw),
+              (height * h) / (rotation ? iw : ih),
+            );
+            const sw = ((rotation ? ih : iw) * scale) / w,
+              sh = ((rotation ? iw : ih) * scale) / h;
+            bounds = [x + (width - sw) / 2, y + (height - sh) / 2, sw, sh];
+          } else {
+            const sourcePoint = spec.fit.focalPoint ?? [0.5, 0.5];
+            const fit = {
+              ...spec.fit,
+              focalPoint: (rotation === 90
+                ? [1 - sourcePoint[1]!, sourcePoint[0]!]
+                : rotation === -90
+                  ? [sourcePoint[1]!, 1 - sourcePoint[0]!]
+                  : sourcePoint) as readonly [number, number],
+            };
+            const cover = coverImage(
+              rotation ? ih : iw,
+              rotation ? iw : ih,
+              [x * w, y * h, width * w, height * h],
+              fit,
+            );
+            bounds = [cover[0] / w, cover[1] / h, cover[2] / w, cover[3] / h];
+          }
+          draw(value, bounds, spec.clip, spec.crop, !!spec.importedMask, rotation);
         }
         this.builds++;
       } catch (error) {

@@ -83,7 +83,7 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
       // remove backing inside the visible illustration rectangle; otherwise
       // that paper is composited over black stock instead of its source plate.
       if (!full && futureTreatment(face) !== 'clear') {
-        const [, y, , h] = futureGeometry(face).art;
+        const [, y, , h] = futureGeometry({ ...face, artPlacement: undefined }).art;
         c.beginPath();
         // Clip only the vertical extent here. This is source-plate space,
         // before registration; clipping to the final artwork's right edge
@@ -104,6 +104,16 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
         339,
         464,
       );
+    if (face.artPlacement?.mode === 'behind-text') {
+      // Source-space paper aperture. Keep its rim, type strip and all later
+      // lettering/stats opaque. This opt-in does not alter the physical template.
+      c.save();
+      c.globalCompositeOperation = 'destination-out';
+      c.globalAlpha = 1 - (face.artPlacement.paperOpacity ?? 0.8);
+      const paper = new Path2D('M33 326 C25 350 22 413 37 465 L337 465 C351 450 354 379 344 326 Z');
+      c.fill(paper);
+      c.restore();
+    }
     if (parts.stats) {
       if (parts.statsMask) {
         const plate = canvas(156, 102),
@@ -128,7 +138,7 @@ export function futureArtMask(frame: HTMLCanvasElement, face: RenderedCardInput)
   const mask = canvas(frame.width, frame.height),
     c = mask.getContext('2d')!;
   c.fillStyle = 'white';
-  if (futureTreatment(face) === 'clear') {
+  if (futureTreatment(face) === 'clear' || face.artPlacement?.mode === 'behind-text') {
     c.fillRect(23 * 2, 22 * 2, 442 * 2, 637 * 2);
   } else {
     c.fillRect(24 * 2, 80 * 2, 444 * 2, (futureTreatment(face) === 'full-art' ? 482 : 303) * 2);

@@ -101,7 +101,12 @@ async function paintMask(
         const target = illustrationTarget(face, [x, y, w, h], FACE_WIDTH, height);
         if (face.illustrationCrop) {
           const crop = face.illustrationCrop;
-          const dest = illustrationCover(source.width * crop[2], source.height * crop[3], target);
+          const dest = illustrationCover(
+            source.width * crop[2],
+            source.height * crop[3],
+            target,
+            face.artPlacement,
+          );
           context.drawImage(
             bitmap,
             crop[0] * bitmap.width,
@@ -110,7 +115,11 @@ async function paintMask(
             crop[3] * bitmap.height,
             ...dest,
           );
-        } else context.drawImage(bitmap, ...illustrationCover(source.width, source.height, target));
+        } else
+          context.drawImage(
+            bitmap,
+            ...illustrationCover(source.width, source.height, target, face.artPlacement),
+          );
         context.restore();
       }
     } catch {
@@ -120,7 +129,7 @@ async function paintMask(
     }
   }
   signal.throwIfAborted();
-  if (!face.setCode) return;
+  if (!face.setCode || face.printingElements?.setSymbol?.hidden) return;
   const [rx, ry, rw, rh] = faceRects(face).stamp;
   const x = rx * FACE_WIDTH,
     y = ry * height,

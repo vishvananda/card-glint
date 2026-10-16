@@ -1,9 +1,16 @@
+import { paintPrintingElement } from './printing-elements.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { faceSetSymbol } from './assets.js';
 import { paintFittedText } from './canvas-text.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
-import { futureGeometry, futurePalette, futureParts, futureTreatment } from './future-frame.js';
+import {
+  futureGeometry,
+  futurePalette,
+  futureParts,
+  futureTreatment,
+  validateFutureTreatment,
+} from './future-frame.js';
 import { futureArtMask, prepareFutureFrame } from './future-frame-paint.js';
 import { paintFutureMana } from './future-mana.js';
 import { resolveCardProfile } from './profile.js';
@@ -19,12 +26,7 @@ export function paintFutureTemplate(
   layer?: PaintLayer,
   underArt?: HTMLCanvasElement,
 ) {
-  if (
-    futureTreatment(face) === 'full-art' &&
-    (face.rulesParagraphs?.some((p) => p.runs.some((r) => r.text.trim())) ||
-      (!face.rulesParagraphs && face.rulesText?.trim()))
-  )
-    throw Error('Futureshifted full-art treatment has no rules panel for the supplied wording');
+  validateFutureTreatment(face);
   const frame = prepareFutureFrame(face, images),
     mask = futureArtMask(frame, face);
   const g = futureGeometry(face),
@@ -58,7 +60,7 @@ export function paintFutureTemplate(
     c.drawImage(frame, 0, 0, 488, 680);
     if (parts.typeSymbol) c.drawImage(images.get(parts.typeSymbol)!, 31.2, 31.2, 27.3, 26);
     c.shadowColor = 'transparent';
-    paintFutureMana(c, face, images);
+    paintPrintingElement(c, face, 'manaCost', () => paintFutureMana(c, face, images));
     const light = palette.length === 1 && palette[0] !== 'W';
     const label = (text: string, rect: FaceRect, size: number, offsetY: number) => {
       c.textAlign = 'left';
@@ -97,17 +99,19 @@ export function paintFutureTemplate(
       c.restore();
     }
     const symbol = images.get(faceSetSymbol(face) ?? '');
-    if (symbol) {
-      const [x, y, w, h] = g.symbol,
-        scale = Math.min(w / symbol.width, h / symbol.height),
-        rect = futureSetSymbolRect(face) ?? [
-          x + (w - symbol.width * scale) / 2,
-          y + (h - symbol.height * scale) / 2,
-          symbol.width * scale,
-          symbol.height * scale,
-        ];
-      c.drawImage(symbol, rect[0]!, rect[1]!, rect[2]!, rect[3]!);
-    }
+    paintPrintingElement(c, face, 'setSymbol', () => {
+      if (symbol) {
+        const [x, y, w, h] = g.symbol,
+          scale = Math.min(w / symbol.width, h / symbol.height),
+          rect = futureSetSymbolRect(face) ?? [
+            x + (w - symbol.width * scale) / 2,
+            y + (h - symbol.height * scale) / 2,
+            symbol.width * scale,
+            symbol.height * scale,
+          ];
+        c.drawImage(symbol, rect[0]!, rect[1]!, rect[2]!, rect[3]!);
+      }
+    });
     c.fillStyle = p.land || light ? '#fff' : '#111';
     c.textAlign = 'right';
     c.textBaseline = 'alphabetic';
@@ -119,18 +123,37 @@ export function paintFutureTemplate(
       artistY = full ? 627 : 626.5;
     c.font = `400 ${artistSize}px "CardRenderer MTG Matrix"`;
     const artist = face.artist ?? '';
-    c.fillText(artist, right, artistY, right - 70);
-    const brush = parts.brush ? images.get(parts.brush) : undefined;
-    if (brush) c.drawImage(brush, right - c.measureText(artist).width - 40, artistY - 10, 36, 8);
-    const legal = printingLegalText(face);
-    if (legal) {
+    paintPrintingElement(c, face, 'artist', () => {
+      c.fillText(artist, right, artistY, right - 70);
+      const brush = parts.brush ? images.get(parts.brush) : undefined;
+      if (brush) c.drawImage(brush, right - c.measureText(artist).width - 40, artistY - 10, 36, 8);
+    });
+    const legal = printingLegalText(face),
+      number = printingCollectorText(face, false);
+    if (legal || number) {
       c.font = '11.804px "CardRenderer MTG MPlantin"';
-      c.fillText(
-        [legal, printingCollectorText(face, false)].filter(Boolean).join(' '),
-        right - 0.25,
-        641.25,
-        right - 40,
-      );
+      const line = [legal, number].filter(Boolean).join(' ');
+      if (!face.printingElements?.legal?.offset && !face.printingElements?.collector?.offset)
+        c.fillText(line, right - 0.25, 641.25, right - 40);
+      else {
+        const width = c.measureText(line).width,
+          fit = Math.min(1, (right - 40) / Math.max(1, width));
+        c.save();
+        c.translate(right - 0.25, 641.25);
+        c.textAlign = 'left';
+        const run = (text: string, x: number) => {
+          c.save();
+          c.scale(fit, 1);
+          c.fillText(text, x, 0);
+          c.restore();
+        };
+        if (legal) paintPrintingElement(c, face, 'legal', () => run(legal, -width));
+        if (number)
+          paintPrintingElement(c, face, 'collector', () =>
+            run(number, -c.measureText(number).width),
+          );
+        c.restore();
+      }
     }
   } finally {
     frame.width = frame.height = mask.width = mask.height = 0;
