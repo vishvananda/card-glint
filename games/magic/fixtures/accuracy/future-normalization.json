@@ -1,0 +1,2674 @@
+{
+  "schemaVersion": 1,
+  "status": "comparison-poses-frozen-renderer-calibration-in-progress",
+  "set": "fut",
+  "frame": "future",
+  "sourceCommit": "7412033",
+  "policy": "Pose fits use only printed-stock profiles. Extra axes must improve model-selection strips. Final disjoint certification strips never optimize or select parameters; their fixed gates can only reject. Templates derive from 24 preselected calibration scans. Accepted transforms are comparison-only; renderer geometry never receives per-card poses.",
+  "templateHash": "1804798d7cc56d91ee1ed2b07d7715c72a47e9ce285ff5b356084732502bd012",
+  "certificationHash": "bd82267fe87a9e7a6531986a0769760492258ac283c9c47c84485337ad9ff2db",
+  "methodHash": "f5f5c50cbcf6ed61efcabea2273d8efe748a3cb6d95a360fe7e6460b117dcc87",
+  "summary": {
+    "total": 81,
+    "accepted": 80,
+    "heldAccepted": 57,
+    "rejected": [
+      {
+        "name": "Mass of Ghouls",
+        "proposalAccepted": false,
+        "confidence": 0.7176516495660668,
+        "sides": {
+          "left": 0.8934391419508685,
+          "right": 0.84909519600302,
+          "top": 0.8531061085421077,
+          "bottom": 0.27496615176827083
+        },
+        "residualRms": 0.8960229588895265
+      }
+    ],
+    "maxAcceptedResidualRms": 0.9613977919080713,
+    "models": {
+      "uniform": 72,
+      "similarity": 0,
+      "affine": 8
+    }
+  },
+  "syntheticValidation": {
+    "profileCases": 3,
+    "rasterTests": [
+      {
+        "seed": 1329,
+        "cases": 19,
+        "maxCornerError": 0.335438725392786
+      },
+      {
+        "seed": 28719,
+        "cases": 61,
+        "maxCornerError": 0.28092010500458636
+      }
+    ],
+    "maximumAllowedCornerError": 0.4,
+    "objective": "Mean correlation over all profiles, balanced by side. Median side confidence remains a quality gate. Extra model complexity requires at least 0.05px and 25% residual-RMS improvement plus correlation improvement on model-selection strips."
+  },
+  "geometry": {
+    "status": "proposal-not-adopted",
+    "families": {
+      "cc-regular": {
+        "parameters": {
+          "sx": 0.9867,
+          "sy": 0.9929,
+          "tx": -3.469446951953614e-17,
+          "ty": -0.17500000000000004,
+          "rotation": 0,
+          "shear": 0
+        },
+        "before": 0.00034999157961079194,
+        "after": 0.9042544689558567,
+        "plateCount": 6,
+        "heldOut": 48,
+        "heldBefore": 0.09342766642536654,
+        "heldAfter": 0.8843532013055806,
+        "improved": 48
+      },
+      "mse-full-art": {
+        "parameters": {
+          "sx": 0.9967,
+          "sy": 0.9994999999999999,
+          "tx": -2.125,
+          "ty": -0.8500000000000001,
+          "rotation": 0,
+          "shear": 0
+        },
+        "before": 0.423040658942665,
+        "after": 0.8783957009586286,
+        "plateCount": 5,
+        "heldOut": 4,
+        "heldBefore": 0.4835614018003306,
+        "heldAfter": 0.8683959640599515,
+        "improved": 4
+      },
+      "mse-land": {
+        "parameters": {
+          "sx": 0.9976,
+          "sy": 0.997,
+          "tx": -1.925,
+          "ty": -0.30000000000000004,
+          "rotation": 0,
+          "shear": 0
+        },
+        "before": 0.35887977496627554,
+        "after": 0.8274892621170625,
+        "plateCount": 6,
+        "heldOut": 4,
+        "heldBefore": 0.39791815987467494,
+        "heldAfter": 0.8016066328597224,
+        "improved": 4
+      },
+      "cc-clear": {
+        "parameters": {
+          "sx": 0.9867,
+          "sy": 0.9929,
+          "tx": -3.469446951953614e-17,
+          "ty": -0.17500000000000004,
+          "rotation": 0,
+          "shear": 0
+        },
+        "before": 0.00034999157961079194,
+        "after": 0.9042544689558567,
+        "plateCount": 0,
+        "transferredFrom": "cc-regular",
+        "heldOut": 1,
+        "heldBefore": 0.01282704822277125,
+        "heldAfter": 0.8484847151458256,
+        "improved": 1
+      }
+    },
+    "typeBorders": {
+      "delta": 1.4499999999999926,
+      "topDelta": 0.9999999999999941,
+      "topCalibrationBefore": 0.2670637532409473,
+      "topCalibrationAfter": 0.5559565311028417,
+      "calibration": 20,
+      "heldOut": 49,
+      "bottomCalibrationBefore": 0.2606942741955717,
+      "bottomCalibrationAfter": 0.7440635191995241,
+      "bottomHeldBefore": 0.3183882444923239,
+      "bottomHeldAfter": 0.7578839309104396,
+      "topHeldBefore": 0.37697277790754624,
+      "topHeldAfter": 0.5961583103091251
+    },
+    "innerValidation": {
+      "cc-regular": {
+        "titleTop": {
+          "count": 48,
+          "before": -0.14814371487313477,
+          "after": 0.7999404642085576,
+          "absoluteBefore": 0.541916836636533,
+          "absoluteAfter": 0.8453738560661656
+        },
+        "titleBottom": {
+          "count": 48,
+          "before": -0.25518165355457906,
+          "after": 0.5718246295885646,
+          "absoluteBefore": 0.6494598689195202,
+          "absoluteAfter": 0.7758933357079768
+        },
+        "typeTop": {
+          "count": 48,
+          "before": 0.6215909162356676,
+          "after": 0.5894480553033957,
+          "absoluteBefore": 0.7740195975475256,
+          "absoluteAfter": 0.7847168825199238
+        },
+        "typeBottom": {
+          "count": 48,
+          "before": 0.6725968678049306,
+          "after": 0.7715549634313797,
+          "absoluteBefore": 0.8108248113925128,
+          "absoluteAfter": 0.8228526740164234
+        },
+        "paperBottom": {
+          "count": 48,
+          "before": 0.5399719821283172,
+          "after": 0.7548069075497216,
+          "absoluteBefore": 0.5843372005678765,
+          "absoluteAfter": 0.7983559359618356
+        }
+      },
+      "mse-full-art": {
+        "titleTop": {
+          "count": 4,
+          "before": 0.8057767939988021,
+          "after": 0.9177735129088056,
+          "absoluteBefore": 0.8808326433585014,
+          "absoluteAfter": 0.9582006077261523
+        },
+        "titleBottom": {
+          "count": 4,
+          "before": 0.5658367915561124,
+          "after": 0.7155879292348523,
+          "absoluteBefore": 0.7359047737666297,
+          "absoluteAfter": 0.8504212908880936
+        },
+        "typeTop": {
+          "count": 4,
+          "before": -0.1093020740701851,
+          "after": -0.01846688773864555,
+          "absoluteBefore": 0.7032393015668029,
+          "absoluteAfter": 0.7540168502939315
+        },
+        "typeBottom": {
+          "count": 4,
+          "before": 0.23768281368152497,
+          "after": 0.8074880023710771,
+          "absoluteBefore": 0.6791410645289901,
+          "absoluteAfter": 0.850302187256505
+        }
+      },
+      "mse-land": {
+        "titleTop": {
+          "count": 4,
+          "before": 0.43944122220035886,
+          "after": 0.641340735162503,
+          "absoluteBefore": 0.6920282439908096,
+          "absoluteAfter": 0.7979895696185741
+        },
+        "titleBottom": {
+          "count": 4,
+          "before": 0.4341702342050299,
+          "after": 0.5684067902905343,
+          "absoluteBefore": 0.6669253993911728,
+          "absoluteAfter": 0.701368373446068
+        },
+        "typeTop": {
+          "count": 4,
+          "before": -0.06910085636501159,
+          "after": 0.09314348360442368,
+          "absoluteBefore": 0.5568277102156864,
+          "absoluteAfter": 0.6372645232485845
+        },
+        "typeBottom": {
+          "count": 4,
+          "before": 0.1656765300786046,
+          "after": 0.3071499372853861,
+          "absoluteBefore": 0.6154053795281784,
+          "absoluteAfter": 0.6395702152927593
+        },
+        "paperBottom": {
+          "count": 4,
+          "before": 0.20981259458236368,
+          "after": 0.32064302152677127,
+          "absoluteBefore": 0.557722122587584,
+          "absoluteAfter": 0.5679494240270013
+        }
+      },
+      "cc-clear": {
+        "titleTop": {
+          "count": 1,
+          "before": 0.15891320265450537,
+          "after": 0.6928713295086659,
+          "absoluteBefore": 0.8649978757298089,
+          "absoluteAfter": 0.7167296171499641
+        },
+        "titleBottom": {
+          "count": 1,
+          "before": 0.20056621975767733,
+          "after": 0.8112615247219362,
+          "absoluteBefore": 0.39793792903967073,
+          "absoluteAfter": 0.8294901709876769
+        },
+        "typeTop": {
+          "count": 1,
+          "before": 0.8943310127778332,
+          "after": 0.9158025115372368,
+          "absoluteBefore": 0.9014296558451171,
+          "absoluteAfter": 0.9194571514436997
+        },
+        "typeBottom": {
+          "count": 1,
+          "before": 0.764322389277959,
+          "after": 0.32873539963676685,
+          "absoluteBefore": 0.7740566236120291,
+          "absoluteAfter": 0.7216822110619501
+        },
+        "paperBottom": {
+          "count": 1,
+          "before": 0.3528837764255059,
+          "after": 0.9157671222006168,
+          "absoluteBefore": 0.3610104823317258,
+          "absoluteAfter": 0.9206662812386385
+        }
+      }
+    },
+    "limitations": [
+      "Upper type border can touch artwork: signed and absolute-gradient diagnostics are retained separately.",
+      "Clear CC plate shares opaque CC geometry; translucent color does not choose its own transform.",
+      "Frame color and all lettering remain unfitted.",
+      "Ghostfire and Aven Mindcensor have incomplete source-art crops.",
+      "Accepted scan poses are not a claim of subpixel accuracy for every region; residual uncertainty is recorded per card."
+    ]
+  },
+  "rows": [
+    {
+      "id": "5b8ede8a-5317-4662-b964-a9bd202a4aab",
+      "name": "Aven Mindcensor",
+      "referenceHash": "8153d0b87365f697c04a1efcf6acbafe5a22d5815dd827845152c5686a294175",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994000000000001,
+        "sy": 0.9994000000000001,
+        "tx": -0.075,
+        "ty": 0.25,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.075, 0.25]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8623131184218892,
+        "sides": {
+          "left": 0.8106450429706785,
+          "right": 0.9948721728763692,
+          "top": 0.6464215016801289,
+          "bottom": 0.9973137561603803
+        },
+        "residualRms": 0.3093772546815395
+      }
+    },
+    {
+      "id": "f6ccfe28-ec08-4751-b65c-c40b2bafa955",
+      "name": "Blade of the Sixth Pride",
+      "referenceHash": "3f520a8e5d4cb108568ba34d13d97c9bfaa2283b5a6c02d7730612b104cf573f",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1,
+        "sy": 1,
+        "tx": -0.125,
+        "ty": 0.15000000000000002,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1, 0, 0, 1, -0.125, 0.15000000000000002]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8459591008173803,
+        "sides": {
+          "left": 0.6367740419825463,
+          "right": 0.9913071985115802,
+          "top": 0.7872223003476646,
+          "bottom": 0.9685328624277304
+        },
+        "residualRms": 0.2345207879911721
+      }
+    },
+    {
+      "id": "6e8a6e04-ce3b-4025-92ba-8980022b8038",
+      "name": "Bound in Silence",
+      "referenceHash": "92b4816ac9fe9a3953e8a887b41f265a04f6df8b5da3d299dd031ad05b0dde63",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994500000000001,
+        "sy": 0.9994500000000001,
+        "tx": 0.02500000000000001,
+        "ty": 0.27499999999999997,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          0.9994500000000001, 0, 0, 0.9994500000000001, 0.02500000000000001, 0.27499999999999997
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8244697694197405,
+        "sides": {
+          "left": 0.7883114262177424,
+          "right": 0.9969092734798456,
+          "top": 0.5181684445986732,
+          "bottom": 0.9944899333827009
+        },
+        "residualRms": 0.6158617655657115
+      }
+    },
+    {
+      "id": "2f208f3d-ad21-477a-9e9b-de19afd536b0",
+      "name": "Daybreak Coronet",
+      "referenceHash": "14c7b6d75fd18fb4597637d01e269158d5293ac580059c52bf1a81b3f3839270",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994000000000001,
+        "sy": 0.9994000000000001,
+        "tx": -0.075,
+        "ty": 0.2,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.075, 0.2]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8807014596923838,
+        "sides": {
+          "left": 0.7711013248681375,
+          "right": 0.9918837668616739,
+          "top": 0.7634432284606618,
+          "bottom": 0.9963775185790618
+        },
+        "residualRms": 0.17320508075688848
+      }
+    },
+    {
+      "id": "99c0eb4c-c8f1-40cf-ae0a-a413432b4c5f",
+      "name": "Goldmeadow Lookout",
+      "referenceHash": "0177a11b7aed0755117bbae837efe3d084c67ca7886dd5331996459c306aaf51",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9993500000000001,
+        "sy": 0.9993500000000001,
+        "tx": 0.07500000000000002,
+        "ty": 0.22500000000000003,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          0.9993500000000001, 0, 0, 0.9993500000000001, 0.07500000000000002, 0.22500000000000003
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8409897350938487,
+        "sides": {
+          "left": 0.8144448712888772,
+          "right": 0.9950076689617604,
+          "top": 0.5567879953476751,
+          "bottom": 0.9977184047770821
+        },
+        "residualRms": 0.5976143046671978
+      }
+    },
+    {
+      "id": "bb02f692-80a9-4740-afde-cb4792d24774",
+      "name": "Imperial Mask",
+      "referenceHash": "b9638ea8e3589fa205b3d68c0fb37fc4afcd0cbe7a26f0406b0eeff00ab77c2a",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9993000000000001,
+        "sy": 0.9993000000000001,
+        "tx": 0.05,
+        "ty": 0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, 0.05, 0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8791427578264841,
+        "sides": {
+          "left": 0.7717470566129785,
+          "right": 0.993900727933756,
+          "top": 0.7524072171433728,
+          "bottom": 0.9985160296158295
+        },
+        "residualRms": 0.16035674514745543
+      }
+    },
+    {
+      "id": "cd700719-2f65-4fd5-b3aa-3e9402560c79",
+      "name": "Lucent Liminid",
+      "referenceHash": "6be6de58dd8b8701bbac3bde5d816bc1788a514311d34dd4f9aa24b6a22c317c",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9997,
+        "sy": 0.9997,
+        "tx": 0.025000000000000022,
+        "ty": 0.225,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9997, 0, 0, 0.9997, 0.025000000000000022, 0.225]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.903437438067105,
+        "sides": {
+          "left": 0.8405119021420719,
+          "right": 0.9975544900304798,
+          "top": 0.7820136005651093,
+          "bottom": 0.9936697595307589
+        },
+        "residualRms": 0.12535663410560213
+      }
+    },
+    {
+      "id": "772bf1a3-ab2d-4fe6-830b-1c5ef8f5dc07",
+      "name": "Lumithread Field",
+      "referenceHash": "936ec452a559e1e6b73c6c72ec458bfdc2074e2e1d3081c2abeede28ac28051e",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99975,
+        "sy": 0.99975,
+        "tx": 0.025000000000000022,
+        "ty": 0.175,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99975, 0, 0, 0.99975, 0.025000000000000022, 0.175]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9004296972968828,
+        "sides": {
+          "left": 0.8049287175351397,
+          "right": 0.9971370572096485,
+          "top": 0.8040829368341158,
+          "bottom": 0.9955700776086276
+        },
+        "residualRms": 0.116496474502144
+      }
+    },
+    {
+      "id": "d9cdb51f-c785-47d1-b23c-de74eeb22a31",
+      "name": "Lymph Sliver",
+      "referenceHash": "afca10e500dd22e51bb8f09b37cbaa24eba25e905f5b579462c7c247b51af826",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9996,
+        "sy": 0.9996,
+        "tx": 0.05000000000000002,
+        "ty": 0.22499999999999998,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.05000000000000002, 0.22499999999999998]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8802514714625608,
+        "sides": {
+          "left": 0.8093096036238161,
+          "right": 0.9974654301630028,
+          "top": 0.7189911944125387,
+          "bottom": 0.9952396576508856
+        },
+        "residualRms": 0.15352989471574832
+      }
+    },
+    {
+      "id": "f1b45f8f-8f41-426d-b773-1e8cdfbff6f8",
+      "name": "Mistmeadow Skulk",
+      "referenceHash": "d0d3e259acfee1cb90cfbfe4d688556b3e6d73538c3a17dbd742c4e56e8884bb",
+      "cohort": "validation",
+      "model": "affine",
+      "parameters": {
+        "sx": 1.0003500000000005,
+        "sy": 0.9992500000000001,
+        "tx": 0.125,
+        "ty": 0.25,
+        "rotation": 0.025,
+        "shear": -0.010000000000000002
+      },
+      "transform": {
+        "matrix": [
+          1.0003499047737408, 0.00043648501545803396, -0.0006104070606035196, 0.999249828781215,
+          0.125, 0.25
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8636911051499638,
+        "sides": {
+          "left": 0.8044455412077403,
+          "right": 0.9954898674122805,
+          "top": 0.6555750729367222,
+          "bottom": 0.9992539390431121
+        },
+        "residualRms": 0.26859422395661725
+      }
+    },
+    {
+      "id": "7a9a3aeb-a316-4b1e-927b-36c3f999f2c3",
+      "name": "Oriss, Samite Guardian",
+      "referenceHash": "478a1fc3dddd3977d0682f9a7173b036d62018dd147eea66c1efbb32ae365d5a",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9995,
+        "sy": 0.9995,
+        "tx": -0.04999999999999999,
+        "ty": 0.25,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9995, 0, 0, 0.9995, -0.04999999999999999, 0.25]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8765608523382591,
+        "sides": {
+          "left": 0.7714331568586454,
+          "right": 0.9971398736233418,
+          "top": 0.7410538117413913,
+          "bottom": 0.9966165671296581
+        },
+        "residualRms": 0.1772810520855839
+      }
+    },
+    {
+      "id": "4edfd70c-2923-4813-bf14-04194518163c",
+      "name": "Patrician's Scorn",
+      "referenceHash": "de7da397c3a55295aaec1604bf994c6c61b82b515b909413839547f06fc021c5",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99965,
+        "sy": 0.99965,
+        "tx": -0.04999999999999999,
+        "ty": 0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99965, 0, 0, 0.99965, -0.04999999999999999, 0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9003128421765454,
+        "sides": {
+          "left": 0.8002752113810374,
+          "right": 0.9943766502708743,
+          "top": 0.8075766341219823,
+          "bottom": 0.9990228729322876
+        },
+        "residualRms": 0.14638501094228074
+      }
+    },
+    {
+      "id": "250ee8d2-6f03-44a5-8f4c-ced4eaa4cdea",
+      "name": "Ramosian Revivalist",
+      "referenceHash": "15cae9c90a5ea0befc5abe08d88ae7f7ba027a9c41548ccf4adb7dd2875601f6",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994500000000001,
+        "sy": 0.9994500000000001,
+        "tx": 0.02500000000000001,
+        "ty": 0.2,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9994500000000001, 0, 0, 0.9994500000000001, 0.02500000000000001, 0.2]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8324151689983117,
+        "sides": {
+          "left": 0.7868632896158959,
+          "right": 0.9929963173014114,
+          "top": 0.5509459278697786,
+          "bottom": 0.9988551412061613
+        },
+        "residualRms": 0.5700877125495699
+      }
+    },
+    {
+      "id": "2092edca-cdc9-47e2-9c0c-e73c5a657777",
+      "name": "Seht's Tiger",
+      "referenceHash": "b178c5f2651bcd5c176f0b5c5f885825c3202ebcc6457c94238f9942668d7af3",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99955,
+        "sy": 0.99955,
+        "tx": 0.025000000000000022,
+        "ty": 0.22499999999999998,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99955, 0, 0, 0.99955, 0.025000000000000022, 0.22499999999999998]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8559722225258154,
+        "sides": {
+          "left": 0.7948093237238043,
+          "right": 0.9856425616806652,
+          "top": 0.6482241122802933,
+          "bottom": 0.9952128924184985
+        },
+        "residualRms": 0.32403703492039365
+      }
+    },
+    {
+      "id": "47e6e715-abd8-4ff9-a8aa-8f4b929b0283",
+      "name": "Arcanum Wings",
+      "referenceHash": "1b86429cba74d557bf00dae15d31fc29107a94a408e550503c9786cbe69c805d",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003,
+        "sy": 1.0003,
+        "tx": -0.075,
+        "ty": -0.09999999999999999,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.075, -0.09999999999999999]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9877352180002789,
+        "sides": {
+          "left": 0.9921942021721127,
+          "right": 0.9807962737079032,
+          "top": 0.9801164713761235,
+          "bottom": 0.997833924744976
+        },
+        "residualRms": 0.09258200997725517
+      }
+    },
+    {
+      "id": "6b26ee7b-de1a-4a39-9580-89941c3d0f21",
+      "name": "Blind Phantasm",
+      "referenceHash": "e08a63c9767af08422c68351398ac87ecd5854d6878a0ca1ebc2ac27cab5a2a9",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.00015,
+        "sy": 1.00015,
+        "tx": 1.3877787807814457e-17,
+        "ty": -0.02500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.00015, 0, 0, 1.00015, 1.3877787807814457e-17, -0.02500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9701838677465515,
+        "sides": {
+          "left": 0.9795018644397819,
+          "right": 0.9871431699142121,
+          "top": 0.9836054011987505,
+          "bottom": 0.9304850354334616
+        },
+        "residualRms": 0.7507139459017852
+      }
+    },
+    {
+      "id": "76ced470-97c3-4683-b97f-9ebb8c3fbd11",
+      "name": "Bonded Fetch",
+      "referenceHash": "cb4b9857837c5abf15fb97c33a7f805266666f7d11c193b53de1dcd788689baa",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.125,
+        "ty": 0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.125, 0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9907647532725072,
+        "sides": {
+          "left": 0.9948565125041193,
+          "right": 0.9871606660854519,
+          "top": 0.9848302169897634,
+          "bottom": 0.9962116175106942
+        },
+        "residualRms": 0.04629100498862829
+      }
+    },
+    {
+      "id": "799538af-e497-457b-b096-ee6f342f51b5",
+      "name": "Linessa, Zephyr Mage",
+      "referenceHash": "12e26aabae8945ba76f5321caa4956020e1aea2c7a75c62e6382625597b6074d",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0004,
+        "sy": 1.0004,
+        "tx": 1.3877787807814457e-17,
+        "ty": -0.09999999999999999,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0004, 0, 0, 1.0004, 1.3877787807814457e-17, -0.09999999999999999]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9857550541191631,
+        "sides": {
+          "left": 0.9881023452353339,
+          "right": 0.9778741271444105,
+          "top": 0.9780850538443986,
+          "bottom": 0.9989586902525092
+        },
+        "residualRms": 0.10350983390135347
+      }
+    },
+    {
+      "id": "4e946be1-4ed6-4e2c-9782-3f630f8a8e1f",
+      "name": "Logic Knot",
+      "referenceHash": "d86324347d28a7b52d6305db2be2735099dd863944034833431672d823e5c72d",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.09999999999999998,
+        "ty": -0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.09999999999999998, -0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9910092217685659,
+        "sides": {
+          "left": 0.9946294196454353,
+          "right": 0.9883175446112908,
+          "top": 0.9847142346758974,
+          "bottom": 0.99637568814164
+        },
+        "residualRms": 0.09636241116594352
+      }
+    },
+    {
+      "id": "b8bf083e-d0ec-4df9-a17a-8a28ad13d594",
+      "name": "Mesmeric Sliver",
+      "referenceHash": "8566341558cbddaefb1399f21d9e3f974628f084ea7877c3d8a71e5015216650",
+      "cohort": "validation",
+      "model": "affine",
+      "parameters": {
+        "sx": 0.9997500000000004,
+        "sy": 1.0004500000000003,
+        "tx": -0.024999999999999994,
+        "ty": -0.125,
+        "rotation": -0.010000000000000002,
+        "shear": -0.009999999999999998
+      },
+      "transform": {
+        "matrix": [
+          0.9997499847729372, -0.00017448929108225853, 0, 1.0004500152377254, -0.024999999999999994,
+          -0.125
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9893913104300438,
+        "sides": {
+          "left": 0.9977114593395848,
+          "right": 0.9875715540757638,
+          "top": 0.9739421994984281,
+          "bottom": 0.9983400288063984
+        },
+        "residualRms": 0.04629100498862687
+      }
+    },
+    {
+      "id": "f76b3746-2e2c-4560-a2d2-e7b5b92833b2",
+      "name": "Narcomoeba",
+      "referenceHash": "77547def17bab844cb4497502aa7352f2a3fab3d6393839d2fb836cfa51a0cea",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1,
+        "sy": 1,
+        "tx": -0.024999999999999994,
+        "ty": -0.024999999999999994,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1, 0, 0, 1, -0.024999999999999994, -0.024999999999999994]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9912908203221253,
+        "sides": {
+          "left": 0.993220501998307,
+          "right": 0.9793711683392021,
+          "top": 0.9947498256272772,
+          "bottom": 0.9978217853237151
+        },
+        "residualRms": 0.046291004988627815
+      }
+    },
+    {
+      "id": "3dab4f64-2a91-409a-b83b-45b22afd22ff",
+      "name": "Nix",
+      "referenceHash": "814be011ead382d76dc6137d03d13807c9e3fca6326ff75c2a1354d037c48df4",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003,
+        "sy": 1.0003,
+        "tx": 0.05000000000000003,
+        "ty": -0.05,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0.05000000000000003, -0.05]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9842149141107998,
+        "sides": {
+          "left": 0.9752543113671823,
+          "right": 0.9788400841390718,
+          "top": 0.9888773385668461,
+          "bottom": 0.993887922370099
+        },
+        "residualRms": 0.15118578920369044
+      }
+    },
+    {
+      "id": "77a425d3-a0b7-4d8d-8013-a27c59758b28",
+      "name": "Sarcomite Myr",
+      "referenceHash": "dd394154c5089677cd1054208367a5bb4bb10481c2854d22be1d2af6604941ef",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1,
+        "sy": 1,
+        "tx": -0.04999999999999999,
+        "ty": 0.02500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1, 0, 0, 1, -0.04999999999999999, 0.02500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9919633325668185,
+        "sides": {
+          "left": 0.995401014876973,
+          "right": 0.9911100088186202,
+          "top": 0.9840792691101639,
+          "bottom": 0.997263037461517
+        },
+        "residualRms": 0.026726124191242033
+      }
+    },
+    {
+      "id": "061d2f8f-1166-4579-9609-d8ba5db79172",
+      "name": "Second Wind",
+      "referenceHash": "de5d421af36fbb3215e692b56865d6509189ff52a29f02ed25acd9e589428777",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.04999999999999999,
+        "ty": -0.1,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.04999999999999999, -0.1]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9943543789630367,
+        "sides": {
+          "left": 0.9971115997666178,
+          "right": 0.9928262315121588,
+          "top": 0.9901134111811001,
+          "bottom": 0.9973662733922701
+        },
+        "residualRms": 0.06546536707079806
+      }
+    },
+    {
+      "id": "48cb3fa8-555f-4df6-994e-cf01896f7470",
+      "name": "Shapeshifter's Marrow",
+      "referenceHash": "1a64f0d64a7e18d4ab9a4eab92d183404a66b53707999c4202a697b0f9b603ff",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0001,
+        "sy": 1.0001,
+        "tx": -0.02499999999999998,
+        "ty": -0.024999999999999994,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.02499999999999998, -0.024999999999999994]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9937285673548653,
+        "sides": {
+          "left": 0.9912540461936061,
+          "right": 0.9922870471151581,
+          "top": 0.99246095888517,
+          "bottom": 0.9989122172255266
+        },
+        "residualRms": 0.06546536707079806
+      }
+    },
+    {
+      "id": "79cc73ea-3f07-4d11-9961-dc31ac598b73",
+      "name": "Spellweaver Volute",
+      "referenceHash": "2c199ba2590769683950e0eb61a9869da997b6bfcc13db971341999118b060ab",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.00005,
+        "sy": 1.00005,
+        "tx": -0.075,
+        "ty": -0.05,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.00005, 0, 0, 1.00005, -0.075, -0.05]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9848287526713038,
+        "sides": {
+          "left": 0.9872777052129714,
+          "right": 0.9672475412930598,
+          "top": 0.9899364607601159,
+          "bottom": 0.9948533034190679
+        },
+        "residualRms": 0.13093073414159595
+      }
+    },
+    {
+      "id": "0808b800-9f5f-42ef-8cd0-c04e64945adf",
+      "name": "Spin into Myth",
+      "referenceHash": "f5c20a2e0c0cc403d4fe181e064afb26354b363cd56c6eb2add6d850ca7cdc1d",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9999,
+        "sy": 0.9999,
+        "tx": 0.02500000000000001,
+        "ty": 0.15000000000000002,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9999, 0, 0, 0.9999, 0.02500000000000001, 0.15000000000000002]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9905138198738238,
+        "sides": {
+          "left": 0.9950332897098513,
+          "right": 0.9934125039518671,
+          "top": 0.9781667579498303,
+          "bottom": 0.9954427278837463
+        },
+        "residualRms": 0.05345224838248488
+      }
+    },
+    {
+      "id": "496eb37d-5c8f-4dd7-a0a7-3ed1bd2210d6",
+      "name": "Vedalken Aethermage",
+      "referenceHash": "d64cd070e04ad7a5e7edfc97f382c29096adee438833f0ab28463b6013978e5c",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1,
+        "sy": 1,
+        "tx": 0.07500000000000001,
+        "ty": 0.02500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1, 0, 0, 1, 0.07500000000000001, 0.02500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9934430276374566,
+        "sides": {
+          "left": 0.9985241036914496,
+          "right": 0.9822495027157772,
+          "top": 0.9942474679765919,
+          "bottom": 0.9987510361660079
+        },
+        "residualRms": 0.07071067811865399
+      }
+    },
+    {
+      "id": "111ddb99-08a4-4349-a246-d19de32527e2",
+      "name": "Whip-Spine Drake",
+      "referenceHash": "1131c876928e902bddce667c7e43f001b1248d414df7c66014d4bf3e385144e2",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99985,
+        "sy": 0.99985,
+        "tx": 0.05000000000000002,
+        "ty": -0.024999999999999994,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99985, 0, 0, 0.99985, 0.05000000000000002, -0.024999999999999994]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9940429879676506,
+        "sides": {
+          "left": 0.9965628969107859,
+          "right": 0.9860950510367268,
+          "top": 0.9953940557140124,
+          "bottom": 0.9981199482090769
+        },
+        "residualRms": 0.04629100498862734
+      }
+    },
+    {
+      "id": "2879e7a1-0256-4116-be22-7c9972e4ce0b",
+      "name": "Bitter Ordeal",
+      "referenceHash": "0cdf7911909971293b670b2c1911e9286805aed8cd61775bd4af3229c2df9b75",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003999999999997,
+        "sy": 1.0003999999999997,
+        "tx": -0.15,
+        "ty": -0.27499999999999997,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003999999999997, 0, 0, 1.0003999999999997, -0.15, -0.27499999999999997]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8377420441589587,
+        "sides": {
+          "left": 0.9191571311135265,
+          "right": 0.7213364489387353,
+          "top": 0.799278399275211,
+          "bottom": 0.911196197308362
+        },
+        "residualRms": 0.20873770280289275
+      }
+    },
+    {
+      "id": "52c44610-6d4b-4c14-839f-2c085badec90",
+      "name": "Bridge from Below",
+      "referenceHash": "1a677b081be67ae0ff2d6b20b4acc5ac7fda47b06837c846f707bdf707113c95",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0005499999999998,
+        "sy": 1.0005499999999998,
+        "tx": 0.125,
+        "ty": -0.175,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0005499999999998, 0, 0, 1.0005499999999998, 0.125, -0.175]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.896924982831779,
+        "sides": {
+          "left": 0.9166376209055351,
+          "right": 0.9096554302896795,
+          "top": 0.806244986465775,
+          "bottom": 0.9551618936661265
+        },
+        "residualRms": 0.15118578920369177
+      }
+    },
+    {
+      "id": "8cddafc8-57d6-456e-af58-4b7f45e195d5",
+      "name": "Death Rattle",
+      "referenceHash": "49000c72e5b97b97fc483a45bb85b5bfadc7f1dff34c401c1a1e894c6b5aa400",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0009000000000001,
+        "sy": 1.0009000000000001,
+        "tx": 1.3877787807814457e-17,
+        "ty": -0.15000000000000002,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          1.0009000000000001, 0, 0, 1.0009000000000001, 1.3877787807814457e-17, -0.15000000000000002
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9241767060888305,
+        "sides": {
+          "left": 0.9606446806335577,
+          "right": 0.9107807387492881,
+          "top": 0.8712349464830308,
+          "bottom": 0.9540464584894455
+        },
+        "residualRms": 0.08017837257372773
+      }
+    },
+    {
+      "id": "b66cc281-3fa9-4d7b-a32b-41c0a93059ba",
+      "name": "Deepcavern Imp",
+      "referenceHash": "ce6e7f9d3cf5280b4b7f007d5e7f28b3bc5a7782f3396e0c28260f8e9198244c",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003000000000002,
+        "sy": 1.0003000000000002,
+        "tx": -0.125,
+        "ty": -0.22500000000000003,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003000000000002, 0, 0, 1.0003000000000002, -0.125, -0.22500000000000003]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8896740916789911,
+        "sides": {
+          "left": 0.9298883508066148,
+          "right": 0.808198281345242,
+          "top": 0.8617111139801408,
+          "bottom": 0.9588986205839671
+        },
+        "residualRms": 0.23145502494313802
+      }
+    },
+    {
+      "id": "08e1a646-6925-4a53-a99c-8951af016a7a",
+      "name": "Fleshwrither",
+      "referenceHash": "6804ce53e8ec63b791c9715c3e3cf46cb21209bdd3912052f971b0f1881dbda5",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003,
+        "sy": 1.0003,
+        "tx": -0.15000000000000002,
+        "ty": -0.04999999999999999,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.15000000000000002, -0.04999999999999999]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9018857366802768,
+        "sides": {
+          "left": 0.9615707239986564,
+          "right": 0.8340075385152814,
+          "top": 0.8424235730753051,
+          "bottom": 0.9695411111318644
+        },
+        "residualRms": 0.13887301496588264
+      }
+    },
+    {
+      "id": "d796119a-f1eb-4de9-a9ca-d322017e9c5e",
+      "name": "Frenzy Sliver",
+      "referenceHash": "cc448192da213f6ba011f2de109e6dc224ef8b6d49626df261c9dff4d69db768",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0000999999999998,
+        "sy": 1.0000999999999998,
+        "tx": -0.09999999999999999,
+        "ty": -0.275,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0000999999999998, 0, 0, 1.0000999999999998, -0.09999999999999999, -0.275]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9163450348586495,
+        "sides": {
+          "left": 0.9636750202466786,
+          "right": 0.9074498233566887,
+          "top": 0.8405717264874863,
+          "bottom": 0.9536835693437444
+        },
+        "residualRms": 0.1558387444947968
+      }
+    },
+    {
+      "id": "0f0a08a8-bbb9-4816-b03c-af4d729fce45",
+      "name": "Grave Scrabbler",
+      "referenceHash": "0d1a569fe49ed186cd4800de3ceb5bbff0c3855264ee74c7d62ba3b43ef30f09",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0007999999999997,
+        "sy": 1.0007999999999997,
+        "tx": 0.175,
+        "ty": -1.3877787807814457e-17,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0007999999999997, 0, 0, 1.0007999999999997, 0.175, -1.3877787807814457e-17]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9287160211238018,
+        "sides": {
+          "left": 0.9616723381090362,
+          "right": 0.9238103114893521,
+          "top": 0.8659147176120795,
+          "bottom": 0.9634667172847395
+        },
+        "residualRms": 0.05976143046671914
+      }
+    },
+    {
+      "id": "32f1f022-da7f-49a4-881d-b3a2c54c38eb",
+      "name": "Korlash, Heir to Blackblade",
+      "referenceHash": "8b34eebcf62a67b216eafad76db2273c1ff9f506a8b99d348fc40ac1b10bf973",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.00045,
+        "sy": 1.00045,
+        "tx": -0.02499999999999998,
+        "ty": 0.02500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.00045, 0, 0, 1.00045, -0.02499999999999998, 0.02500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8615348074892307,
+        "sides": {
+          "left": 0.9452798419952454,
+          "right": 0.8036744475904923,
+          "top": 0.8138034781344734,
+          "bottom": 0.8833814622367117
+        },
+        "residualRms": 0.13887301496588328
+      }
+    },
+    {
+      "id": "20c3f515-de7d-41eb-8ba0-532f4c13ac39",
+      "name": "Mass of Ghouls",
+      "referenceHash": "e9ce1c25c063c92e6490253a8aa435fc29b25c526b0ee00f9db372ac611efee1",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0012,
+        "sy": 1.0012,
+        "tx": 1.3877787807814457e-17,
+        "ty": -0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": null,
+      "accepted": false,
+      "certification": {
+        "confidence": 0.7176516495660668,
+        "sides": {
+          "left": 0.8934391419508685,
+          "right": 0.84909519600302,
+          "top": 0.8531061085421077,
+          "bottom": 0.27496615176827083
+        },
+        "residualRms": 0.8960229588895265
+      }
+    },
+    {
+      "id": "93b47606-82d1-402c-b1c6-591457b10d86",
+      "name": "Snake Cult Initiation",
+      "referenceHash": "76fa6602cbf9f84f0d0b115dea406bd16fd6a7ce5e5909f340a7d6cdb89000a4",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.00075,
+        "sy": 1.00075,
+        "tx": -0.14999999999999997,
+        "ty": 0.075,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.00075, 0, 0, 1.00075, -0.14999999999999997, 0.075]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9199419013366358,
+        "sides": {
+          "left": 0.9433533918728647,
+          "right": 0.9387291189608706,
+          "top": 0.853162083796994,
+          "bottom": 0.9445230107158138
+        },
+        "residualRms": 0.08451542547285115
+      }
+    },
+    {
+      "id": "672e2815-bbcc-4338-a8ba-9aa97142ea69",
+      "name": "Street Wraith",
+      "referenceHash": "2266edb2fceff162310b18af0981ae26fbbf920c786f27f7ddcf313a9d2651c5",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0007999999999997,
+        "sy": 1.0007999999999997,
+        "tx": -0.05,
+        "ty": 1.3877787807814457e-17,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0007999999999997, 0, 0, 1.0007999999999997, -0.05, 1.3877787807814457e-17]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8910889489246002,
+        "sides": {
+          "left": 0.9476383627807736,
+          "right": 0.8243498416335349,
+          "top": 0.8458685537594237,
+          "bottom": 0.9464990375246685
+        },
+        "residualRms": 0.13887301496588267
+      }
+    },
+    {
+      "id": "8bd55a11-8658-4b92-9151-d6173a11991a",
+      "name": "Tombstalker",
+      "referenceHash": "53e009f0d8bbb64e135230e79564824a70c25a55527bf123dd021684a7c2c9b0",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0005500000000003,
+        "sy": 1.0005500000000003,
+        "tx": 0.024999999999999994,
+        "ty": -0.05,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0005500000000003, 0, 0, 1.0005500000000003, 0.024999999999999994, -0.05]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9180303071701437,
+        "sides": {
+          "left": 0.9487726023992373,
+          "right": 0.9221539365566865,
+          "top": 0.8292896341016625,
+          "bottom": 0.9719050556229882
+        },
+        "residualRms": 0.08864052604279149
+      }
+    },
+    {
+      "id": "651c7735-088d-495b-a58f-69abf4cac197",
+      "name": "Witch's Mist",
+      "referenceHash": "083c7b87c1b60ef1869c62d2e80ea89d8c1ff6c9125199d24449cb0e07b0970c",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1,
+        "sy": 1,
+        "tx": -0.12499999999999999,
+        "ty": 0.1,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1, 0, 0, 1, -0.12499999999999999, 0.1]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9262689491897211,
+        "sides": {
+          "left": 0.9579379662114323,
+          "right": 0.9594655455948964,
+          "top": 0.819101551660409,
+          "bottom": 0.9685707332921465
+        },
+        "residualRms": 0.13363062095621195
+      }
+    },
+    {
+      "id": "ff6ba6a5-942d-44ff-87a9-3febf0b7e39b",
+      "name": "Yixlid Jailer",
+      "referenceHash": "3c5a12c6fae6c084c4fb20213ead1803381ec5aa30fcc22841a2c6ef00812268",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9999,
+        "sy": 0.9999,
+        "tx": -0.075,
+        "ty": 0.2,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9999, 0, 0, 0.9999, -0.075, 0.2]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9207889148378541,
+        "sides": {
+          "left": 0.9564410296308905,
+          "right": 0.932856114419772,
+          "top": 0.813838440721945,
+          "bottom": 0.9800200745788084
+        },
+        "residualRms": 0.1281739888923311
+      }
+    },
+    {
+      "id": "b930b146-d132-454f-b35d-4a247c14c054",
+      "name": "Bloodshot Trainee",
+      "referenceHash": "5265f68232bf319661a6ae5bc17cbf6a20bc463c7189e8a84d74d8752d8e2434",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0001499999999999,
+        "sy": 1.0001499999999999,
+        "tx": -0.09999999999999999,
+        "ty": -0.02499999999999998,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          1.0001499999999999, 0, 0, 1.0001499999999999, -0.09999999999999999, -0.02499999999999998
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9706029110961889,
+        "sides": {
+          "left": 0.9927192410604362,
+          "right": 0.9096954446889285,
+          "top": 0.9899576779717585,
+          "bottom": 0.9900392806636324
+        },
+        "residualRms": 0.0707106781186546
+      }
+    },
+    {
+      "id": "179bec14-2e22-43eb-8854-b70a97dd023b",
+      "name": "Boldwyr Intimidator",
+      "referenceHash": "775fc7cfc796fd75ab436aa7193dc0f3de1dcafb84287f352964aedf7211fc19",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9996,
+        "sy": 0.9996,
+        "tx": 0.024999999999999994,
+        "ty": 0.225,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.024999999999999994, 0.225]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9529710366231641,
+        "sides": {
+          "left": 0.9894725172511252,
+          "right": 0.9062336592616362,
+          "top": 0.9393308648482791,
+          "bottom": 0.9768471051316157
+        },
+        "residualRms": 0.1336306209562113
+      }
+    },
+    {
+      "id": "03ab2a41-315b-439c-b02c-f12335fc903a",
+      "name": "Emblem of the Warmind",
+      "referenceHash": "d358394caeea28fc005a6fc591816d2bb73d3af7227a3c800d2cbd261ba43940",
+      "cohort": "calibration",
+      "model": "affine",
+      "parameters": {
+        "sx": 1.0003500000000005,
+        "sy": 0.99955,
+        "tx": 0.07500000000000002,
+        "ty": 0.15000000000000002,
+        "rotation": 0.015000000000000003,
+        "shear": 0.02
+      },
+      "transform": {
+        "matrix": [
+          1.0003499657185466, 0.0002618910145932581, 0.00008722719789501915, 0.999550057090067,
+          0.07500000000000002, 0.15000000000000002
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9606478207866561,
+        "sides": {
+          "left": 0.9938474147409664,
+          "right": 0.9119949846094255,
+          "top": 0.9597799973197223,
+          "bottom": 0.9769688864765103
+        },
+        "residualRms": 0.09258200997725469
+      }
+    },
+    {
+      "id": "f3969cc7-92b9-45cd-9a4f-d94c2178a04d",
+      "name": "Flowstone Embrace",
+      "referenceHash": "61424e8ef86a9f92bd1d76ba746154c0be1d083c07e8945c2caf156c304c82f2",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0007,
+        "sy": 1.0007,
+        "tx": -0.125,
+        "ty": -0.175,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0007, 0, 0, 1.0007, -0.125, -0.175]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9633223714208614,
+        "sides": {
+          "left": 0.9840063364769862,
+          "right": 0.9185205320326033,
+          "top": 0.9634926247645395,
+          "bottom": 0.987269992409317
+        },
+        "residualRms": 0.07559289460184546
+      }
+    },
+    {
+      "id": "8216b3f3-b9b6-4d90-a624-c1b9b7bdf953",
+      "name": "Fomori Nomad",
+      "referenceHash": "ced5a9928947e581ac8197cb68794f81826125d26e5c1bd18e252e7aabe91d9e",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0002000000000002,
+        "sy": 1.0002000000000002,
+        "tx": -0.09999999999999999,
+        "ty": -0.05,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0002000000000002, 0, 0, 1.0002000000000002, -0.09999999999999999, -0.05]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9520705751736639,
+        "sides": {
+          "left": 0.9780810338646644,
+          "right": 0.9033780627745609,
+          "top": 0.9838406141931038,
+          "bottom": 0.9429825898623263
+        },
+        "residualRms": 0.7516648189186453
+      }
+    },
+    {
+      "id": "a60475e5-0d37-4af0-b717-da4c8dea45ac",
+      "name": "Ghostfire",
+      "referenceHash": "7a5fe41f1b75e2b215bd261be605bef095700fe6cb484627bc74940140e19781",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994000000000001,
+        "sy": 0.9994000000000001,
+        "tx": 0.07500000000000002,
+        "ty": 0.27499999999999997,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          0.9994000000000001, 0, 0, 0.9994000000000001, 0.07500000000000002, 0.27499999999999997
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8032723281297647,
+        "sides": {
+          "left": 0.7547744798127467,
+          "right": 0.951836383419328,
+          "top": 0.5135877497305044,
+          "bottom": 0.9928906995564792
+        },
+        "residualRms": 0.9613977919080713
+      }
+    },
+    {
+      "id": "31716a43-2522-46ff-a9a4-b6952cd41f11",
+      "name": "Grinning Ignus",
+      "referenceHash": "4df31f3795648a62d153fc4bf33d26566d01118d37c766009d2843c04bd560bd",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0000499999999999,
+        "sy": 1.0000499999999999,
+        "tx": 0.07500000000000002,
+        "ty": 0,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0000499999999999, 0, 0, 1.0000499999999999, 0.07500000000000002, 0]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9654212887104292,
+        "sides": {
+          "left": 0.9922476581906896,
+          "right": 0.8900733505921423,
+          "top": 0.9898521423196207,
+          "bottom": 0.9895120037392643
+        },
+        "residualRms": 0.053452248382484066
+      }
+    },
+    {
+      "id": "3b41cef7-bb16-4d89-9900-dc6d1f5200f0",
+      "name": "Henchfiend of Ukor",
+      "referenceHash": "6d1563c724d2156d18149ce6592be375ba70e7827ad67178e755fee970095bda",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0005499999999998,
+        "sy": 1.0005499999999998,
+        "tx": -0.09999999999999999,
+        "ty": -0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0005499999999998, 0, 0, 1.0005499999999998, -0.09999999999999999, -0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9603009084237496,
+        "sides": {
+          "left": 0.9894922228594514,
+          "right": 0.9072978039236339,
+          "top": 0.9697421178328631,
+          "bottom": 0.9746714890790499
+        },
+        "residualRms": 0.08864052604279221
+      }
+    },
+    {
+      "id": "0c876479-5040-4d36-b43a-54d7fc9160c1",
+      "name": "Homing Sliver",
+      "referenceHash": "9b34efa683d6c362cb0f4a7660d58043fe034e6a483c2c90f5c5e5543c5586db",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.00035,
+        "sy": 1.00035,
+        "tx": -0.1,
+        "ty": -0.075,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.00035, 0, 0, 1.00035, -0.1, -0.075]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9787489278624368,
+        "sides": {
+          "left": 0.9939370901530247,
+          "right": 0.9447472860355841,
+          "top": 0.9866153359780436,
+          "bottom": 0.9896959992830945
+        },
+        "residualRms": 0.02672612419124285
+      }
+    },
+    {
+      "id": "cee5e9e3-e3ae-4e1b-a8fb-48c523631105",
+      "name": "Shah of Naar Isle",
+      "referenceHash": "b3722ad1f5b96a3215e2955e114c702b567bbe5c273093c15c0686cf62e9892a",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003,
+        "sy": 1.0003,
+        "tx": -0.175,
+        "ty": -0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.175, -0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.967212227773286,
+        "sides": {
+          "left": 0.9891075192878493,
+          "right": 0.9186065199424124,
+          "top": 0.9692462387521037,
+          "bottom": 0.9918886331107782
+        },
+        "residualRms": 0.10690449676496998
+      }
+    },
+    {
+      "id": "4b232c36-bff1-4f5e-98a6-ce6a98591aa6",
+      "name": "Skizzik Surger",
+      "referenceHash": "41714b5dd749ad8f1932f191b4cf9922058a5bb9838810a7d98cc79b5363c675",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0001,
+        "sy": 1.0001,
+        "tx": -0.024999999999999994,
+        "ty": 0.02500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.024999999999999994, 0.02500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9651377606421029,
+        "sides": {
+          "left": 0.9946042479407314,
+          "right": 0.8938983883720331,
+          "top": 0.986343412771185,
+          "bottom": 0.9857049934844618
+        },
+        "residualRms": 0.05976143046671987
+      }
+    },
+    {
+      "id": "007ce039-def1-4039-a0a0-ba72e8872dc5",
+      "name": "Steamflogger Boss",
+      "referenceHash": "39f2155a886a74e58af103fde801984ddefe433a4d67817c150def7c5d9386fa",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99975,
+        "sy": 0.99975,
+        "tx": 0.075,
+        "ty": 0.025000000000000022,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99975, 0, 0, 0.99975, 0.075, 0.025000000000000022]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9736116035836707,
+        "sides": {
+          "left": 0.9940664799408496,
+          "right": 0.9214301430307819,
+          "top": 0.9873488673359936,
+          "bottom": 0.9916009240270579
+        },
+        "residualRms": 0.0755928946018443
+      }
+    },
+    {
+      "id": "1b2db053-3da0-4c3a-9b36-0eff6477540d",
+      "name": "Storm Entity",
+      "referenceHash": "67231dce7dbfa242cc1cd3200afe61cbcaa1e179ce2190144e244a7a72897352",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99985,
+        "sy": 0.99985,
+        "tx": -0.075,
+        "ty": 0.07500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99985, 0, 0, 0.99985, -0.075, 0.07500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9679136968178403,
+        "sides": {
+          "left": 0.984088787086645,
+          "right": 0.9325400991531125,
+          "top": 0.9680893010776614,
+          "bottom": 0.9869365999539423
+        },
+        "residualRms": 0.10000000000000046
+      }
+    },
+    {
+      "id": "0b06bd73-c45a-4560-bd8d-413608c5f89e",
+      "name": "Tarox Bladewing",
+      "referenceHash": "2bdbe296d6440754762caa6bf52a0d826aeddec83606d3dd13f8d924b06d09fc",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.05,
+        "ty": 0.025000000000000022,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.05, 0.025000000000000022]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9710093312247311,
+        "sides": {
+          "left": 0.9924901930866294,
+          "right": 0.9163037110308316,
+          "top": 0.9871755857193216,
+          "bottom": 0.9880678350621418
+        },
+        "residualRms": 0.09258200997725517
+      }
+    },
+    {
+      "id": "88a85be1-9de5-4f96-9fd1-15f3f17c4bea",
+      "name": "Thunderblade Charge",
+      "referenceHash": "11a9c60e2f44aa41ae88a65048e0cf5f25bc297264d8556036144f5882120088",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0001499999999999,
+        "sy": 1.0001499999999999,
+        "tx": -0.024999999999999994,
+        "ty": -0.09999999999999999,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          1.0001499999999999, 0, 0, 1.0001499999999999, -0.024999999999999994, -0.09999999999999999
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9698357159349666,
+        "sides": {
+          "left": 0.9874998809370282,
+          "right": 0.9375498337093497,
+          "top": 0.9667094115177085,
+          "bottom": 0.9875837375757798
+        },
+        "residualRms": 0.11338934190276838
+      }
+    },
+    {
+      "id": "1a74fcde-7685-402c-9b2a-245aa75d75c1",
+      "name": "Baru, Fist of Krosa",
+      "referenceHash": "228d8b5768e632e4c9a5b61c95c661561eb37eadf885783b5889841092655b67",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99985,
+        "sy": 0.99985,
+        "tx": -0.024999999999999994,
+        "ty": -0.075,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99985, 0, 0, 0.99985, -0.024999999999999994, -0.075]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9799629014834162,
+        "sides": {
+          "left": 0.982707270404111,
+          "right": 0.9538572813225319,
+          "top": 0.9889717446631506,
+          "bottom": 0.9943153095438716
+        },
+        "residualRms": 0.11019463300386867
+      }
+    },
+    {
+      "id": "5807814f-7b18-431a-8031-898ff70ad69f",
+      "name": "Centaur Omenreader",
+      "referenceHash": "f9494c0568d7e31cf7bbbf7c1274cad3873450f143ab06d877162d77b2442bda",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.125,
+        "ty": 0.07500000000000002,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.125, 0.07500000000000002]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9872066438917584,
+        "sides": {
+          "left": 0.9937001684159226,
+          "right": 0.97005080729751,
+          "top": 0.9893956377689049,
+          "bottom": 0.9956799620846961
+        },
+        "residualRms": 0.06546536707079806
+      }
+    },
+    {
+      "id": "03998e86-ef67-4329-b106-61252f3f532a",
+      "name": "Edge of Autumn",
+      "referenceHash": "4a14a80f3cce1cc04dff6b3ad527e515833fbe2c026fe1927cc4e6e45edc1140",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0004499999999998,
+        "sy": 1.0004499999999998,
+        "tx": 0.05000000000000002,
+        "ty": -0.024999999999999994,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          1.0004499999999998, 0, 0, 1.0004499999999998, 0.05000000000000002, -0.024999999999999994
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9874869352815142,
+        "sides": {
+          "left": 0.994733113440454,
+          "right": 0.9828737444289838,
+          "top": 0.9865574380282884,
+          "bottom": 0.9857834452283307
+        },
+        "residualRms": 0.037796447300923304
+      }
+    },
+    {
+      "id": "3c5136f8-1616-4463-8aa7-122cde6dcddb",
+      "name": "Imperiosaur",
+      "referenceHash": "ffe3b60a87f26e6f383c4c509386d62384020c37b0a39b1a911a38a61d74861d",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99955,
+        "sy": 0.99955,
+        "tx": -0.02499999999999998,
+        "ty": 0.2,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99955, 0, 0, 0.99955, -0.02499999999999998, 0.2]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9727899919423466,
+        "sides": {
+          "left": 0.9922372350996997,
+          "right": 0.9704947208890622,
+          "top": 0.9316980445400969,
+          "bottom": 0.9967299672405276
+        },
+        "residualRms": 0.07559289460184575
+      }
+    },
+    {
+      "id": "4091524c-569c-4668-b18a-7f869b1169f3",
+      "name": "Muraganda Petroglyphs",
+      "referenceHash": "367015f15cde45967c9d7bffc399c168a49065acdace1966dc92ceda6e10b915",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9998,
+        "sy": 0.9998,
+        "tx": -0.17500000000000004,
+        "ty": 0.02500000000000001,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.17500000000000004, 0.02500000000000001]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9666193631224028,
+        "sides": {
+          "left": 0.958925031205365,
+          "right": 0.9380360772095071,
+          "top": 0.9795755051067536,
+          "bottom": 0.9899408389679856
+        },
+        "residualRms": 0.20528725518857094
+      }
+    },
+    {
+      "id": "4ef863d2-1e11-41cc-90d5-008bf6234565",
+      "name": "Nacatl War-Pride",
+      "referenceHash": "2b5fc7ada4f023a54b8d28cc96e1fec09c49154770fa9f2b664e4d07834ccbc3",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.1,
+        "ty": 0.05,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.1, 0.05]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9882355280229735,
+        "sides": {
+          "left": 0.9929048731306054,
+          "right": 0.9739249947408167,
+          "top": 0.9894859988016236,
+          "bottom": 0.996626245418849
+        },
+        "residualRms": 0.07559289460184575
+      }
+    },
+    {
+      "id": "88b18b70-f656-4426-a3e5-69cf61fdaad1",
+      "name": "Nessian Courser",
+      "referenceHash": "c591bc31bb5a1a3cd7e2daa8e0ffa9653e8805999e6aec679b9650276901abe9",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0003,
+        "sy": 1.0003,
+        "tx": -0.19999999999999998,
+        "ty": -0.175,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.19999999999999998, -0.175]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9572169194260629,
+        "sides": {
+          "left": 0.961067203624127,
+          "right": 0.9697227759693403,
+          "top": 0.9769219952166583,
+          "bottom": 0.9211557028941255
+        },
+        "residualRms": 0.7035623639735145
+      }
+    },
+    {
+      "id": "7ca13d7a-0f60-4de6-9455-aea454cb2e46",
+      "name": "Phosphorescent Feast",
+      "referenceHash": "4b926b5463c9eae6d8d964a476105a3748275e910d6b81c89bc7dd7b772732aa",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994500000000001,
+        "sy": 0.9994500000000001,
+        "tx": 1.3877787807814457e-17,
+        "ty": 0.125,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9994500000000001, 0, 0, 0.9994500000000001, 1.3877787807814457e-17, 0.125]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9689637832573178,
+        "sides": {
+          "left": 0.9897558702216372,
+          "right": 0.936095608921068,
+          "top": 0.9531188953027685,
+          "bottom": 0.9968847585837977
+        },
+        "residualRms": 0.10000000000000067
+      }
+    },
+    {
+      "id": "335c3aa3-af89-44ce-955a-69e12d83175f",
+      "name": "Quagnoth",
+      "referenceHash": "69a4838a1abc4e681e7faa6d8ee6bbb384ff61afa08d76b2f68af9844f27941f",
+      "cohort": "calibration",
+      "model": "affine",
+      "parameters": {
+        "sx": 1.00005,
+        "sy": 0.99955,
+        "tx": 0.02500000000000001,
+        "ty": 0.175,
+        "rotation": 0,
+        "shear": 0.015
+      },
+      "transform": {
+        "matrix": [1.00005, 0, 0.0002616815840530975, 0.99955, 0.02500000000000001, 0.175]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9793990792940139,
+        "sides": {
+          "left": 0.9930155020087124,
+          "right": 0.9784849434990796,
+          "top": 0.9496381295172532,
+          "bottom": 0.9964577421510106
+        },
+        "residualRms": 0.05976143046671951
+      }
+    },
+    {
+      "id": "231eb017-2945-4915-8032-c09894e88d49",
+      "name": "Spellwild Ouphe",
+      "referenceHash": "ddff55679d34e07f86a3ac2ee5638d55c9af0695b6b9847ec897b3a5bdd637d6",
+      "cohort": "calibration",
+      "model": "affine",
+      "parameters": {
+        "sx": 0.9992500000000001,
+        "sy": 1.0002000000000002,
+        "tx": -0.25,
+        "ty": -0.02499999999999998,
+        "rotation": -0.005000000000000001,
+        "shear": 0.025
+      },
+      "transform": {
+        "matrix": [
+          0.9992499961951382, -0.00008720101264208774, 0.0005237035212769169, 1.0001999581067256,
+          -0.25, -0.02499999999999998
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.985348977773378,
+        "sides": {
+          "left": 0.9908465743628991,
+          "right": 0.9633106673138359,
+          "top": 0.991567559535961,
+          "bottom": 0.9956711098808162
+        },
+        "residualRms": 0.08017837257372773
+      }
+    },
+    {
+      "id": "cdc8f3f3-4ff4-4943-8ae0-c1af78a5ae16",
+      "name": "Sporoloth Ancient",
+      "referenceHash": "9bb7780da78e8afb1d253a957305cee968d4e9f649826a13f2a32676ea3760e2",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9997,
+        "sy": 0.9997,
+        "tx": -0.12499999999999999,
+        "ty": 1.3877787807814457e-17,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.12499999999999999, 1.3877787807814457e-17]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9855638820012103,
+        "sides": {
+          "left": 0.9954359658375078,
+          "right": 0.9570799976843436,
+          "top": 0.9937554648010629,
+          "bottom": 0.9959840996819267
+        },
+        "residualRms": 0.08017837257372801
+      }
+    },
+    {
+      "id": "b6876d9e-0908-43ac-8542-09c7aa02b5ba",
+      "name": "Tarmogoyf",
+      "referenceHash": "ca0f9821301274d3feba0ae2b43ad01150616be5557568fa2c121fcf471c6265",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99995,
+        "sy": 0.99995,
+        "tx": -0.07499999999999997,
+        "ty": -0.04999999999999999,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.07499999999999997, -0.04999999999999999]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.986533568209802,
+        "sides": {
+          "left": 0.9846994792374613,
+          "right": 0.9849196698908053,
+          "top": 0.981879341744452,
+          "bottom": 0.9946357819664894
+        },
+        "residualRms": 0.13093073414159612
+      }
+    },
+    {
+      "id": "783a50a0-9394-4d97-856f-21eb126a0018",
+      "name": "Thornweald Archer",
+      "referenceHash": "a55f0045d7da6cd87971ba62050dcaf1bceb4f8e4eb205a6c439953d8c08404a",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0001499999999999,
+        "sy": 1.0001499999999999,
+        "tx": -0.09999999999999998,
+        "ty": -0.15000000000000002,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [
+          1.0001499999999999, 0, 0, 1.0001499999999999, -0.09999999999999998, -0.15000000000000002
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9719347294454517,
+        "sides": {
+          "left": 0.9868139989138165,
+          "right": 0.9476256927581583,
+          "top": 0.967516574636714,
+          "bottom": 0.9857826514731174
+        },
+        "residualRms": 0.13887301496588325
+      }
+    },
+    {
+      "id": "66de9c95-e590-4b0d-a2d7-886d7a488a10",
+      "name": "Virulent Sliver",
+      "referenceHash": "f4532d30b054e22c374a6166284be41724355be4e0d2895b2a42bdef9ed05aea",
+      "cohort": "validation",
+      "model": "affine",
+      "parameters": {
+        "sx": 0.99945,
+        "sy": 1.0004999999999997,
+        "tx": -0.025000000000000022,
+        "ty": -0.075,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99945, 0, 0, 1.0004999999999997, -0.025000000000000022, -0.075]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9877162025834695,
+        "sides": {
+          "left": 0.9967047177427188,
+          "right": 0.9789232901189249,
+          "top": 0.9825052171116206,
+          "bottom": 0.9927315853606138
+        },
+        "residualRms": 0.05345224838248488
+      }
+    },
+    {
+      "id": "e77eaaa0-40f9-40e4-b0ba-5a8addd764d3",
+      "name": "Darksteel Garrison",
+      "referenceHash": "9552da632b525dfcf59d6e4921de9d427f599838913ca73f266dc38eae7f9102",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9994000000000001,
+        "sy": 0.9994000000000001,
+        "tx": 0.024999999999999994,
+        "ty": 0.25,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, 0.024999999999999994, 0.25]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.860678598728762,
+        "sides": {
+          "left": 0.7985620392659636,
+          "right": 0.9683444151121716,
+          "top": 0.682156623598206,
+          "bottom": 0.9936513169387068
+        },
+        "residualRms": 0.17320508075688823
+      }
+    },
+    {
+      "id": "dc6040b6-cf02-4f7e-a275-177c3a6415aa",
+      "name": "Whetwheel",
+      "referenceHash": "8e82007d200f3ebfa880ddc150d1e999723d1b238237244182e98921d0538546",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9993000000000001,
+        "sy": 0.9993000000000001,
+        "tx": 0.05,
+        "ty": 0.27499999999999997,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, 0.05, 0.27499999999999997]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8420785981996739,
+        "sides": {
+          "left": 0.7911892728957648,
+          "right": 0.985966883155015,
+          "top": 0.5951865237802396,
+          "bottom": 0.9959717129676758
+        },
+        "residualRms": 0.4399675312695577
+      }
+    },
+    {
+      "id": "8cee476d-42e1-4997-87af-73e18f542167",
+      "name": "Dryad Arbor",
+      "referenceHash": "e433dee39779da762c6e037139236a41e79ce1a1c37936c4df9e67ad77d007ea",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99985,
+        "sy": 0.99985,
+        "tx": 0.02500000000000001,
+        "ty": 0.15,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99985, 0, 0, 0.99985, 0.02500000000000001, 0.15]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9704644386007916,
+        "sides": {
+          "left": 0.9966055989006511,
+          "right": 0.9350359943439516,
+          "top": 0.9661090950601391,
+          "bottom": 0.9841070660984245
+        },
+        "residualRms": 0.07559289460184516
+      }
+    },
+    {
+      "id": "81e7d329-ef6a-45f3-82b6-37a3606c00bc",
+      "name": "Graven Cairns",
+      "referenceHash": "0669d7d461e97a0b824df873123bb1f3d039607a91dbaf53794389162cf05318",
+      "cohort": "calibration",
+      "model": "affine",
+      "parameters": {
+        "sx": 1.0000999999999995,
+        "sy": 1.0000999999999995,
+        "tx": -0.37499999999999994,
+        "ty": 0,
+        "rotation": -0.010000000000000002,
+        "shear": 0.06500000000000002
+      },
+      "transform": {
+        "matrix": [
+          1.0000999847676055, -0.00017455037760576807, 0.0013091283072600842, 1.0000997867463985,
+          -0.37499999999999994, 0
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9306370276914957,
+        "sides": {
+          "left": 0.8778853479232076,
+          "right": 0.909327385305074,
+          "top": 0.949749242996554,
+          "bottom": 0.9855861345411473
+        },
+        "residualRms": 0.2999999999999998
+      }
+    },
+    {
+      "id": "e0b4d4b1-6e25-4c4b-a21a-1b7b1c1d6452",
+      "name": "Grove of the Burnwillows",
+      "referenceHash": "cfa2dad8e97eaba6799a7fc2f2bd6eedc0cae1a28ff20e984e658a979a8fda0a",
+      "cohort": "validation",
+      "model": "affine",
+      "parameters": {
+        "sx": 1.001500000000001,
+        "sy": 0.9997999999999999,
+        "tx": -0.07499999999999998,
+        "ty": -0.02499999999999998,
+        "rotation": 0.019999999999999993,
+        "shear": 0.009999999999999995
+      },
+      "transform": {
+        "matrix": [
+          1.0014999389851325, 0.0003495894420750621, -0.0001744980203862309, 0.9997999999999999,
+          -0.07499999999999998, -0.02499999999999998
+        ]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.9702029470223876,
+        "sides": {
+          "left": 0.9665447918026235,
+          "right": 0.9436306644920955,
+          "top": 0.9894812484636661,
+          "bottom": 0.9811550833311651
+        },
+        "residualRms": 0.09636241116594306
+      }
+    },
+    {
+      "id": "d5dfc25d-a17b-4ead-9484-e8a18b8fa176",
+      "name": "Horizon Canopy",
+      "referenceHash": "678cc9120d2540141f4d226bbc433cce9a3ae765cc982634b68d72eafde2fdba",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.9997,
+        "sy": 0.9997,
+        "tx": -0.12499999999999999,
+        "ty": 0.025000000000000022,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.12499999999999999, 0.025000000000000022]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.975545633730811,
+        "sides": {
+          "left": 0.9831658711672371,
+          "right": 0.9622447101925373,
+          "top": 0.9666061189880782,
+          "bottom": 0.9901658345753916
+        },
+        "residualRms": 0.10000000000000024
+      }
+    },
+    {
+      "id": "80d1f953-9403-4e0a-b8e1-3f7d928a2834",
+      "name": "Nimbus Maze",
+      "referenceHash": "3b82d388856494e2bb0a0829948ba67e8087bdebc0a6255dd648604504f4296d",
+      "cohort": "calibration",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99955,
+        "sy": 0.99955,
+        "tx": 0.15000000000000002,
+        "ty": 0.2,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99955, 0, 0, 0.99955, 0.15000000000000002, 0.2]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8523757011744991,
+        "sides": {
+          "left": 0.7738887932592162,
+          "right": 0.9640526050115217,
+          "top": 0.6768584698454503,
+          "bottom": 0.9947029365818083
+        },
+        "residualRms": 0.13363062095621278
+      }
+    },
+    {
+      "id": "8d5b2058-99fc-4d9b-9e3d-056fa3fd1244",
+      "name": "River of Tears",
+      "referenceHash": "852d68c1f527346910abb13f0fea3579a82d8d062c37ba03296cdd1c2a51685c",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 1.0008,
+        "sy": 1.0008,
+        "tx": -0.05,
+        "ty": -0.1,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [1.0008, 0, 0, 1.0008, -0.05, -0.1]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.964800595561671,
+        "sides": {
+          "left": 0.9768187970176295,
+          "right": 0.9605991402951946,
+          "top": 0.9465038587524099,
+          "bottom": 0.9752805861814497
+        },
+        "residualRms": 0.1035098339013522
+      }
+    },
+    {
+      "id": "c1db30e1-31df-44b9-930a-02428bd5ce47",
+      "name": "Zoetic Cavern",
+      "referenceHash": "ecbdc9a875a9febfbd4c876fdf57d62ef72c2b2e905ff7201aa4f3712bfb79d1",
+      "cohort": "validation",
+      "model": "uniform",
+      "parameters": {
+        "sx": 0.99955,
+        "sy": 0.99955,
+        "tx": 0.04999999999999999,
+        "ty": 0.25,
+        "rotation": 0,
+        "shear": 0
+      },
+      "transform": {
+        "matrix": [0.99955, 0, 0, 0.99955, 0.04999999999999999, 0.25]
+      },
+      "accepted": true,
+      "certification": {
+        "confidence": 0.8347863507017957,
+        "sides": {
+          "left": 0.7810476075302444,
+          "right": 0.9604905078794086,
+          "top": 0.6138329100019939,
+          "bottom": 0.9837743773955362
+        },
+        "residualRms": 0.4391550328268406
+      }
+    }
+  ]
+}
