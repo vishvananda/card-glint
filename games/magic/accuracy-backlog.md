@@ -85,14 +85,22 @@ values; Ghostfire is a singleton study, and full-art black has no accepted pose.
 Broader body font/reflow changes
 were rejected for wrapping regressions. The [full-frame report](fixtures/accuracy/future-fullset.json)
 improves 53.0% → 72.6% on all 80 accepted poses; Mass of Ghouls remains excluded.
-Release and review-application deployment are still pending. Include the wear
-options and public reviewed-printing wording resolver in that release.
+The Future Sight work, wear options, public reviewed-printing wording resolver,
+and cardstock changes are released. Planar Chaos followed in **0.3.8**, including
+its colorshifted frames, copyright/collector lines, frame/paper colors and shared
+alignment defaults. All 165 printings render. The [full-set report](fixtures/accuracy/planar-fullset.json)
+scores 156 accepted scans; six alignment exclusions and three split cards remain
+visible. Ordinary and colorshifted families have separate results.
 
-Immediately after that release, calibrate **Planar Chaos** before returning to
-the pre-Eighth queue. First import and route its unsupported color-shifted frame
-cards. Then restore copyright/trademark and collector-number printing, fit the
-frame/paper colors, and validate alignment against independently normalized
-nonfoil scans. Keep ordinary and color-shifted families separate in the report.
+Planar Chaos follow-up: resolve rules font-size and wrapping outliers before
+further text fitting. Visual review found missing em dashes after “Choose one”
+in all five cached Charm original texts; exact-printing corrections now restore
+them through the public wording resolver. Keep the 0.3.8 score report frozen:
+these source corrections need their own measurements. Heroes Remembered remains
+the sole whole-card regression in that report; Saltblast, Retether and Ghost
+Tactician also show substantial font-size/wrapping differences. Do not compensate
+for missing source text with layout parameters. Variable-stat stars, P/T badge
+shapes and isolated printing-color differences remain queued for review.
 
 ## Current execution checkpoint
 

@@ -1,0 +1,750 @@
+{
+  "schema": 1,
+  "baseline": "v0.3.8",
+  "sourceHash": "97fb6c59b89e37edf9b189f1a296fc6f8c27288f3a01d3615100233cc0b581f2",
+  "policy": "Exact printing source-text correction only. No layout or per-card pose tuning. Frozen independent scan poses; color-independent rules region uses the existing Planar metric. The full-set 0.3.8 report remains unchanged. Control rasters must remain byte-identical.",
+  "region": [46, 430, 397, 166],
+  "rows": [
+    {
+      "id": "63049fe4-de25-4606-a271-4ccb1b8298f1",
+      "name": "Crovax, Ascendant Hero",
+      "control": true,
+      "referenceHash": "acb265653c883b159ee405efc9ec3681ee81afe02a9660ff70581dcb19ed6bbf",
+      "normalizedScanHash": "1fbc17fe55f9ee9cb19beb46d972de83b693b0dc52d1ae1d4743bf54ae5c90e5",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, 0.025000000000000022, -0.1]
+      },
+      "beforeHash": "68f35b137eeb94310a46eea6c98ba09343c4b0c210a6a5cd62a36164bb1f5589",
+      "afterHash": "68f35b137eeb94310a46eea6c98ba09343c4b0c210a6a5cd62a36164bb1f5589",
+      "before": {
+        "score": 0.576028130469269,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 6748,
+          "renderedEdges": 6225,
+          "edgeF1": [0.23757033839512834, 0.576028130469269, 0.7513683402827044],
+          "precision": [0.24755020080321286, 0.5956626506024096, 0.7839357429718875],
+          "recall": [0.22836395969176052, 0.5576467101363367, 0.7213989330171903],
+          "meanDistance": 1.978609856898333,
+          "p95Distance": 11.596802902221619,
+          "censusSimilarity": 0.5533922223419153,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 14, 387, 152],
+              "inkBands": [
+                [14, 33],
+                [42, 61],
+                [70, 89],
+                [91, 107],
+                [124, 143],
+                [145, 161],
+                [163, 165]
+              ]
+            },
+            "rendered": {
+              "bounds": [4, 16, 380, 147],
+              "inkBands": [
+                [16, 34],
+                [44, 63],
+                [72, 90],
+                [93, 107],
+                [124, 142],
+                [144, 158],
+                [161, 162]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.576028130469269,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 6748,
+          "renderedEdges": 6225,
+          "edgeF1": [0.23757033839512834, 0.576028130469269, 0.7513683402827044],
+          "precision": [0.24755020080321286, 0.5956626506024096, 0.7839357429718875],
+          "recall": [0.22836395969176052, 0.5576467101363367, 0.7213989330171903],
+          "meanDistance": 1.978609856898333,
+          "p95Distance": 11.596802902221619,
+          "censusSimilarity": 0.5533922223419153,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 14, 387, 152],
+              "inkBands": [
+                [14, 33],
+                [42, 61],
+                [70, 89],
+                [91, 107],
+                [124, 143],
+                [145, 161],
+                [163, 165]
+              ]
+            },
+            "rendered": {
+              "bounds": [4, 16, 380, 147],
+              "inkBands": [
+                [16, 34],
+                [44, 63],
+                [72, 90],
+                [93, 107],
+                [124, 142],
+                [144, 158],
+                [161, 162]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "a4c9667b-1d94-42eb-ae8e-1ae4755e200a",
+      "name": "Dawn Charm",
+      "control": false,
+      "referenceHash": "0d4776587b260561aa5070fc455520a15cbfd7e707aa868ce9155a0524b8c17f",
+      "normalizedScanHash": "451a4bf3c8acfb188b6a8646035e158d3e57ccfe26e761db93b3f0972d9d63a7",
+      "pose": {
+        "matrix": [0.9999, 0, 0, 0.9999, -0.075, -0.024999999999999994]
+      },
+      "beforeHash": "ba250fddfbf2657b9edd15c5a852f0085e4af89b03751096296af177f55fc1f2",
+      "afterHash": "bc7321abeaee2e23a3fb2bfc887d2e956d5d09a258b65bf128db2bac99b88f16",
+      "before": {
+        "score": 0.1849579826274829,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 5263,
+          "renderedEdges": 5492,
+          "edgeF1": [0.06954904695490469, 0.1849579826274829, 0.29087104007413983],
+          "precision": [0.06809905316824472, 0.18281136198106337, 0.2887836853605244],
+          "recall": [0.07106213186395592, 0.18715561466844005, 0.2929887896636899],
+          "meanDistance": 4.456203108863246,
+          "p95Distance": 12.727920532226562,
+          "censusSimilarity": 0.46996454686461336,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 44, 389, 122],
+              "inkBands": [
+                [44, 61],
+                [68, 85],
+                [87, 89],
+                [96, 113],
+                [116, 136]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 31, 367, 118],
+              "inkBands": [
+                [31, 49],
+                [55, 76],
+                [83, 100],
+                [102, 124],
+                [132, 143],
+                [145, 147]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.1833874331059202,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 5263,
+          "renderedEdges": 5541,
+          "edgeF1": [0.06886338393187709, 0.1833874331059202, 0.2894649977863101],
+          "precision": [0.06713589604764483, 0.18065331167659268, 0.28767370510738133],
+          "recall": [0.07068212046361391, 0.18620558616758504, 0.29127873836215085],
+          "meanDistance": 4.3974143361952365,
+          "p95Distance": 12.31370735168457,
+          "censusSimilarity": 0.4690976069133614,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 44, 389, 122],
+              "inkBands": [
+                [44, 61],
+                [68, 85],
+                [87, 89],
+                [96, 113],
+                [116, 136]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 31, 367, 118],
+              "inkBands": [
+                [31, 49],
+                [54, 76],
+                [83, 100],
+                [102, 124],
+                [132, 143],
+                [145, 147]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "9902b260-82cf-4b10-a353-321231824a3b",
+      "name": "Heroes Remembered",
+      "control": true,
+      "referenceHash": "c68013308f20a5dd94e0a510843e537a588faf1f77dfd49fbf0af19cf6ee281d",
+      "normalizedScanHash": "9b14ef3befa84204111bcf3a5f54b9da5a4f0f80a7416daba2bc608ce5e90d16",
+      "pose": {
+        "matrix": [
+          1.000649984759229, -0.00017464637071414044, 0.00017450674437468982, 0.9998499847714137,
+          -0.02499999999999998, 0.025000000000000022
+        ]
+      },
+      "beforeHash": "16d13b268fb1e493c59cb1c4084fa7ae54f8ebc6ead9440b512e40036589b166",
+      "afterHash": "16d13b268fb1e493c59cb1c4084fa7ae54f8ebc6ead9440b512e40036589b166",
+      "before": {
+        "score": 0.1848127094163216,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 7933,
+          "renderedEdges": 7854,
+          "edgeF1": [0.06676379299423577, 0.1848127094163216, 0.30303270656014036],
+          "precision": [0.0670995670995671, 0.18742042271454037, 0.3083778966131907],
+          "recall": [0.06643136266229674, 0.1822765662422791, 0.2978696583890079],
+          "meanDistance": 3.9173974302322643,
+          "p95Distance": 10.414213180541992,
+          "censusSimilarity": 0.441121820610943,
+          "geometry": {
+            "reference": {
+              "bounds": [0, 0, 395, 166],
+              "inkBands": [
+                [14, 33],
+                [42, 61],
+                [63, 82],
+                [84, 103],
+                [105, 124],
+                [126, 145],
+                [147, 165]
+              ]
+            },
+            "rendered": {
+              "bounds": [4, 3, 367, 163],
+              "inkBands": [
+                [3, 22],
+                [33, 72],
+                [74, 92],
+                [95, 113],
+                [115, 155],
+                [159, 165]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.1848127094163216,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 7933,
+          "renderedEdges": 7854,
+          "edgeF1": [0.06676379299423577, 0.1848127094163216, 0.30303270656014036],
+          "precision": [0.0670995670995671, 0.18742042271454037, 0.3083778966131907],
+          "recall": [0.06643136266229674, 0.1822765662422791, 0.2978696583890079],
+          "meanDistance": 3.9173974302322643,
+          "p95Distance": 10.414213180541992,
+          "censusSimilarity": 0.441121820610943,
+          "geometry": {
+            "reference": {
+              "bounds": [0, 0, 395, 166],
+              "inkBands": [
+                [14, 33],
+                [42, 61],
+                [63, 82],
+                [84, 103],
+                [105, 124],
+                [126, 145],
+                [147, 165]
+              ]
+            },
+            "rendered": {
+              "bounds": [4, 3, 367, 163],
+              "inkBands": [
+                [3, 22],
+                [33, 72],
+                [74, 92],
+                [95, 113],
+                [115, 155],
+                [159, 165]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "edd1833d-64b0-4c9b-8f6b-1cf15c29d473",
+      "name": "Saltblast",
+      "control": true,
+      "referenceHash": "aefeb511c85ab95c6a090d490b0a0ea9cf11d2294b6caef56675ad3e75aa6906",
+      "normalizedScanHash": "e8a87cf46f6d432e2847b4d08cf1331a83451649ac102dec5dde90a58b75bbfa",
+      "pose": {
+        "matrix": [0.99985, 0, 0, 0.99985, -0.04999999999999999, -0.024999999999999994]
+      },
+      "beforeHash": "5de9ed14f1aeac4ba304159c88b1bbae097b25ec1781c880f3262db44398cf9c",
+      "afterHash": "5de9ed14f1aeac4ba304159c88b1bbae097b25ec1781c880f3262db44398cf9c",
+      "before": {
+        "score": 0.0689194522361648,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 2797,
+          "renderedEdges": 3051,
+          "edgeF1": [0.0253077975376197, 0.0689194522361648, 0.11359164155842551],
+          "precision": [0.024254342838413635, 0.06620780072107506, 0.11045558833169453],
+          "recall": [0.026456918126564175, 0.07186271004647837, 0.11691097604576332],
+          "meanDistance": 7.429103703217237,
+          "p95Distance": 14.828426361083984,
+          "censusSimilarity": 0.4740583018029748,
+          "geometry": {
+            "reference": {
+              "bounds": [5, 61, 380, 59],
+              "inkBands": [
+                [62, 82],
+                [97, 119]
+              ]
+            },
+            "rendered": {
+              "bounds": [3, 47, 387, 85],
+              "inkBands": [
+                [47, 69],
+                [85, 108],
+                [115, 131]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.0689194522361648,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 2797,
+          "renderedEdges": 3051,
+          "edgeF1": [0.0253077975376197, 0.0689194522361648, 0.11359164155842551],
+          "precision": [0.024254342838413635, 0.06620780072107506, 0.11045558833169453],
+          "recall": [0.026456918126564175, 0.07186271004647837, 0.11691097604576332],
+          "meanDistance": 7.429103703217237,
+          "p95Distance": 14.828426361083984,
+          "censusSimilarity": 0.4740583018029748,
+          "geometry": {
+            "reference": {
+              "bounds": [5, 61, 380, 59],
+              "inkBands": [
+                [62, 82],
+                [97, 119]
+              ]
+            },
+            "rendered": {
+              "bounds": [3, 47, 387, 85],
+              "inkBands": [
+                [47, 69],
+                [85, 108],
+                [115, 131]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "586a1d9f-59ae-41a7-8de7-d6c4553ea79e",
+      "name": "Piracy Charm",
+      "control": false,
+      "referenceHash": "8ac7772f19124e34e5731bfa17ae3110171e0cff41404801ebb286c6e98a7151",
+      "normalizedScanHash": "3c567e41a0f27a7e8796e0644768accbad2f9bb1541674035105e71acf0ce5fd",
+      "pose": {
+        "matrix": [0.99975, 0, 0, 0.99975, -0.04999999999999999, 0.10000000000000002]
+      },
+      "beforeHash": "71c050a4528ec8d38961e5b128ed2346f11687d08ceebd009fd3329c886dfe97",
+      "afterHash": "6862c2ece20ec85d0a2311c144590a70df32ddadc15b766595671f2fefd8eccb",
+      "before": {
+        "score": 0.20956486412385453,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 5112,
+          "renderedEdges": 5583,
+          "edgeF1": [0.07367928938756428, 0.20956486412385453, 0.3344974909566678],
+          "precision": [0.07057137739566541, 0.19953430055525703, 0.32133261687264913],
+          "recall": [0.0770735524256651, 0.22065727699530516, 0.3487871674491393],
+          "meanDistance": 4.006773146197416,
+          "p95Distance": 12.242639541625977,
+          "censusSimilarity": 0.4628359834706513,
+          "geometry": {
+            "reference": {
+              "bounds": [0, 0, 385, 165],
+              "inkBands": [
+                [45, 66],
+                [69, 89],
+                [92, 112],
+                [114, 135]
+              ]
+            },
+            "rendered": {
+              "bounds": [0, 0, 397, 164],
+              "inkBands": [
+                [0, 1],
+                [33, 55],
+                [57, 74],
+                [76, 77],
+                [80, 102],
+                [104, 126],
+                [129, 130],
+                [133, 145]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.19824814433787405,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 5112,
+          "renderedEdges": 5637,
+          "edgeF1": [0.07163457065773561, 0.19824814433787405, 0.3226845136827481],
+          "precision": [0.06829874046478623, 0.18751108745786765, 0.30548163916977117],
+          "recall": [0.07531298904538342, 0.21028951486697967, 0.34194053208137715],
+          "meanDistance": 4.070327062526215,
+          "p95Distance": 12.242639541625977,
+          "censusSimilarity": 0.45875768236461834,
+          "geometry": {
+            "reference": {
+              "bounds": [0, 0, 385, 165],
+              "inkBands": [
+                [45, 66],
+                [69, 89],
+                [92, 112],
+                [114, 135]
+              ]
+            },
+            "rendered": {
+              "bounds": [0, 0, 397, 164],
+              "inkBands": [
+                [0, 1],
+                [33, 54],
+                [57, 78],
+                [81, 102],
+                [104, 126],
+                [129, 131],
+                [133, 145]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "33f51f18-41af-4a2c-a353-48bebd697599",
+      "name": "Midnight Charm",
+      "control": false,
+      "referenceHash": "20c5c6cf3d4ff1b5547102c79ec55f3fff9fa6f530359e93d2ee7b47878943c3",
+      "normalizedScanHash": "be88a5898c9a1d0729f097f07efc7a4703b2834c790e95f3bd50e02bca6c817d",
+      "pose": {
+        "matrix": [
+          0.9989994522370056, -0.0010461501624400389, 0.0006111401477229652, 1.000449908573646,
+          0.07500000000000002, -0.125
+        ]
+      },
+      "beforeHash": "e8f443f56be1db53a819b97694f687be471ee8347e999614849dd5fa802d136a",
+      "afterHash": "b1b541b75d47ad5ad63cd62a803c865513cf0ffd66f6f34a27172609c5f72f5f",
+      "before": {
+        "score": 0.5211581645075541,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 6126,
+          "renderedEdges": 6239,
+          "edgeF1": [0.2329154872624343, 0.5211581645075541, 0.6940676392903665],
+          "precision": [0.2308062189453438, 0.518031735855105, 0.6922583747395415],
+          "recall": [0.23506366307541626, 0.524322559582109, 0.6958863858961802],
+          "meanDistance": 2.8645550872987218,
+          "p95Distance": 18.242639541625977,
+          "censusSimilarity": 0.5687756429149532,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 25, 383, 125],
+              "inkBands": [
+                [31, 53],
+                [56, 77],
+                [80, 101],
+                [104, 125],
+                [128, 130],
+                [132, 149]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 26, 383, 122],
+              "inkBands": [
+                [31, 52],
+                [55, 76],
+                [79, 100],
+                [102, 123],
+                [130, 147]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.6659738510008174,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 6126,
+          "renderedEdges": 6265,
+          "edgeF1": [0.29521426842062787, 0.6659738510008174, 0.8886547421178608],
+          "precision": [0.2919393455706305, 0.659217877094972, 0.8823623304070232],
+          "recall": [0.29856349983676134, 0.672869735553379, 0.8950375448906301],
+          "meanDistance": 1.0798228390253841,
+          "p95Distance": 2.8284270763397217,
+          "censusSimilarity": 0.5893414361435863,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 25, 383, 125],
+              "inkBands": [
+                [31, 53],
+                [56, 77],
+                [80, 101],
+                [104, 125],
+                [128, 130],
+                [132, 149]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 26, 382, 123],
+              "inkBands": [
+                [31, 52],
+                [55, 76],
+                [78, 100],
+                [102, 123],
+                [126, 128],
+                [130, 147]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "25e891f1-79fa-43dc-817b-c7838cd03d5f",
+      "name": "Fury Charm",
+      "control": false,
+      "referenceHash": "288d7facec64b9ea2f1565ebbee78d02ff77d30170ca92f49c59ddf5c2748478",
+      "normalizedScanHash": "72cebb24a3fbc14a26da3ca3016d70e9b262d7d77589a7dedd9511092a8f0942",
+      "pose": {
+        "matrix": [
+          0.9995499961939958, 0.00008722719258083451, 0.0005237035691356879, 1.0002000495102374,
+          0.05000000000000002, -0.125
+        ]
+      },
+      "beforeHash": "513fb84facd95c9b456cbd08db5387c106ef1517e66525f61b249949f7f9b76e",
+      "afterHash": "d44a3767da6facb697fa18dd9b09f08195bb18f10b76ff7c09d4b942c4bb3e5c",
+      "before": {
+        "score": 0.1912812916017161,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 6007,
+          "renderedEdges": 6747,
+          "edgeF1": [0.06601850399874548, 0.1912812916017161, 0.30404617180338056],
+          "precision": [0.06239810286053061, 0.1793389654661331, 0.2860530606195346],
+          "recall": [0.07008490094889296, 0.20492758448476778, 0.32445480273014815],
+          "meanDistance": 4.358891285077027,
+          "p95Distance": 12.31370735168457,
+          "censusSimilarity": 0.45972402659432193,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 3, 388, 163],
+              "inkBands": [
+                [34, 54],
+                [57, 77],
+                [80, 101],
+                [103, 105],
+                [107, 123],
+                [126, 146]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 21, 373, 137],
+              "inkBands": [
+                [21, 42],
+                [45, 66],
+                [68, 90],
+                [93, 94],
+                [97, 110],
+                [116, 138],
+                [141, 142],
+                [145, 157]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.1711869681074209,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 6007,
+          "renderedEdges": 6835,
+          "edgeF1": [0.06011524684628563, 0.1711869681074209, 0.28131266033801566],
+          "precision": [0.05647403072421361, 0.16020482809070957, 0.2649597659107535],
+          "recall": [0.06425836524055269, 0.18378558348593307, 0.2998168803063093],
+          "meanDistance": 4.771373918641559,
+          "p95Distance": 13.435533237457223,
+          "censusSimilarity": 0.46195693706774676,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 3, 388, 163],
+              "inkBands": [
+                [34, 54],
+                [57, 77],
+                [80, 101],
+                [103, 105],
+                [107, 123],
+                [126, 146]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 19, 368, 141],
+              "inkBands": [
+                [19, 41],
+                [43, 45],
+                [47, 64],
+                [67, 88],
+                [90, 93],
+                [95, 110],
+                [114, 116],
+                [118, 159]
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e4546059-71fe-43c1-9272-3b054e668e3c",
+      "name": "Evolution Charm",
+      "control": false,
+      "referenceHash": "9142a1c6d5edafcab3bc809f07b4343c699e91f9e78aab3db6852e3d5ef07cc3",
+      "normalizedScanHash": "c8832c2c41390c273032c8764d88417fd8cd2be12b6b2731352c8904f0787553",
+      "pose": {
+        "matrix": [
+          1.000749939030824, -0.0003493276426925793, 0.0003488040439276142, 0.9992499391222093,
+          0.024999999999999994, 0.175
+        ]
+      },
+      "beforeHash": "e9457d63df0e1c1b329a1c9a2a8548a043a1652f38f92f6d8e01cf68c9478d21",
+      "afterHash": "77c593ec00df8c441171179e04ee7e9607a6ec109839b1e62c58099a78e13ec7",
+      "before": {
+        "score": 0.6432545159801658,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 8344,
+          "renderedEdges": 8541,
+          "edgeF1": [0.267100977198697, 0.6432545159801658, 0.8180892936876333],
+          "precision": [0.2640206064863599, 0.6403231471724622, 0.8203957382039574],
+          "recall": [0.2702540747842761, 0.6462128475551294, 0.8157957813998082],
+          "meanDistance": 1.4509978716839722,
+          "p95Distance": 4.828427314758301,
+          "censusSimilarity": 0.6117563875382991,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 0, 393, 166],
+              "inkBands": [
+                [7, 29],
+                [31, 53],
+                [56, 77],
+                [80, 101],
+                [103, 125],
+                [127, 149],
+                [151, 165]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 9, 378, 157],
+              "inkBands": [
+                [9, 31],
+                [33, 55],
+                [57, 79],
+                [81, 102],
+                [105, 126],
+                [128, 149],
+                [151, 165]
+              ]
+            }
+          }
+        }
+      },
+      "after": {
+        "score": 0.6547255850822994,
+        "status": "measured",
+        "metrics": {
+          "status": "measured",
+          "referenceEdges": 8344,
+          "renderedEdges": 8603,
+          "edgeF1": [0.26447158789166225, 0.6547255850822994, 0.8443845107121267],
+          "precision": [0.26049052656050214, 0.6504707660118564, 0.8451702894339184],
+          "recall": [0.26857622243528284, 0.6590364333652924, 0.8436001917545541],
+          "meanDistance": 1.3085462313671705,
+          "p95Distance": 3.4142136573791504,
+          "censusSimilarity": 0.5935090215522133,
+          "geometry": {
+            "reference": {
+              "bounds": [4, 0, 393, 166],
+              "inkBands": [
+                [7, 29],
+                [31, 53],
+                [56, 77],
+                [80, 101],
+                [103, 125],
+                [127, 149],
+                [151, 165]
+              ]
+            },
+            "rendered": {
+              "bounds": [5, 9, 384, 157],
+              "inkBands": [
+                [9, 31],
+                [33, 55],
+                [57, 79],
+                [81, 102],
+                [105, 126],
+                [128, 149],
+                [151, 165]
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metric": "structural-v2 rules ink-edge F1 at 1 px tolerance",
+  "scope": "Five PLC Charm wording corrections against released v0.3.8. Follow-up branch evidence; not a new release or full-set score.",
+  "summary": {
+    "corrected": 5,
+    "unchangedControls": 3,
+    "improved": 2,
+    "regressed": 3
+  },
+  "limitations": [
+    "Source corrections are accepted from the scans, not selected to maximize scores.",
+    "Font size and line wrapping remain unresolved. Three corrected cards score lower under the unchanged layout.",
+    "Previous calibration validation cards were reused; this is diagnostic replay, not an independent holdout."
+  ]
+}
