@@ -24,6 +24,19 @@ try {
     const { calibrateFutureFrame } = await import(
       '/games/magic/src/presentation/future-frame-geometry.ts'
     );
+    const { prepareFutureFrame } = await import(
+      '/games/magic/src/presentation/future-frame-paint.ts'
+    );
+    const { paintIllustration } = await import(
+      '/games/magic/src/presentation/illustration-paint.ts'
+    );
+    const { paintEtchingMask } = await import('/games/magic/src/presentation/canvas-etching.ts');
+    const { mtg } = await import('/games/magic/src/index.ts');
+    const { prepareEarlyHsb } = await import('/games/magic/src/presentation/early-hsb-material.ts');
+    const { earlyHsbBitmapCache } = await import(
+      '/games/magic/src/presentation/material-bitmap-cache.ts'
+    );
+    const { futureManaAsset } = await import('/games/magic/src/presentation/future-mana.ts');
     const base = {
       name: '',
       frameTemplate: 'future',
@@ -60,6 +73,7 @@ try {
       },
       { ...base, colors: ['U'], typeLine: 'Artifact Creature — Myr' },
       { ...base, colors: [], typeLine: 'Instant' },
+      { ...base, illustrationPlacement: [105 / 488, 84 / 680, 353 / 488, 293 / 680] },
     ];
     const rows = [];
     for (const face of variants) {
@@ -132,6 +146,100 @@ try {
     }
     const key = (face) =>
       p.cardTextureKey({ face, printingId: null, printedImage: null }, 'inspect');
+    const placed = variants[7];
+    const source = document.createElement('canvas');
+    source.width = 540;
+    source.height = 448;
+    const sc = source.getContext('2d');
+    sc.fillStyle = '#123456';
+    sc.fillRect(0, 0, 540, 448);
+    sc.fillStyle = 'white';
+    sc.fillRect(260, 214, 20, 20);
+    const sourceImage = await createImageBitmap(source);
+    sc.clearRect(0, 0, 540, 448);
+    sc.fillRect(260, 214, 20, 20);
+    const derivative = await createImageBitmap(source);
+    const placedCanvas = document.createElement('canvas'),
+      maskCanvas = document.createElement('canvas');
+    placedCanvas.width = maskCanvas.width = 488;
+    placedCanvas.height = maskCanvas.height = 680;
+    paintIllustration(
+      placedCanvas.getContext('2d'),
+      placed,
+      new Map([[placed.illustration, sourceImage]]),
+      futureGeometry(base).art,
+      'artwork',
+    );
+    await paintEtchingMask(
+      maskCanvas.getContext('2d'),
+      placed,
+      null,
+      new AbortController().signal,
+      20,
+      undefined,
+      async () => ({
+        images: new Map([
+          [placed.illustration, sourceImage],
+          ['/mask', derivative],
+        ]),
+        dispose() {},
+      }),
+      async () => '/mask',
+    );
+    const pixel = (canvas, x, y) => [...canvas.getContext('2d').getImageData(x, y, 1, 1).data];
+    const placement = {
+      source: pixel(placedCanvas, 281, 230),
+      fallback: pixel(placedCanvas, 60, 230),
+      edge: pixel(maskCanvas, 281, 230),
+      emptyEdge: pixel(maskCanvas, 60, 230),
+      recipe: mtg.describe(placed, 'inspect').edges[0],
+      aperture: p.faceRects(base).art,
+      bounds: placed.illustrationPlacement,
+      keyChanges: key(base) !== key(placed),
+      maskKeyChanges:
+        p.cardTextureKey({ face: base, layer: 'etching' }, 'inspect') !==
+        p.cardTextureKey({ face: placed, layer: 'etching' }, 'inspect'),
+    };
+    sourceImage.close();
+    derivative.close();
+    const manaSource = document.createElement('canvas');
+    manaSource.width = manaSource.height = 200;
+    const mc = manaSource.getContext('2d');
+    mc.fillStyle = '#c8c8c8';
+    mc.fillRect(0, 0, 200, 200);
+    mc.clearRect(0, 0, 1, 1);
+    const manaImage = await createImageBitmap(manaSource),
+      manaUrl = futureManaAsset('B');
+    const manaFace = {
+      ...base,
+      setCode: 'FUT',
+      manaSymbols: ['B', 'B'],
+      colorCalibration: 'set-hsb-v1',
+    };
+    const manaImages = new Map([[manaUrl, manaImage]]),
+      signal = new AbortController().signal;
+    const firstMana = await prepareEarlyHsb(manaFace, manaImages, signal);
+    const builds = earlyHsbBitmapCache.stats.builds;
+    const secondMana = await prepareEarlyHsb(manaFace, manaImages, signal);
+    const uncalibrated = await prepareEarlyHsb(
+      { ...manaFace, colorCalibration: undefined },
+      manaImages,
+      signal,
+    );
+    mc.clearRect(0, 0, 200, 200);
+    mc.drawImage(firstMana.images.get(manaUrl), 0, 0);
+    const manaColors = {
+      center: pixel(manaSource, 100, 100),
+      rim: pixel(manaSource, 180, 100),
+      alpha: pixel(manaSource, 0, 0)[3],
+      reused: firstMana.images.get(manaUrl) === secondMana.images.get(manaUrl),
+      builds: earlyHsbBitmapCache.stats.builds - builds,
+      optIn: uncalibrated.images.get(manaUrl) === manaImage,
+    };
+    firstMana.dispose();
+    secondMana.dispose();
+    uncalibrated.dispose();
+    manaImage.close();
     const tribal = futureParts({ ...base, typeLine: 'Tribal Enchantment — Rebel Aura' });
     const coloredArtifact = futureParts({
       ...base,
@@ -140,6 +248,27 @@ try {
     });
     const colorlessArtifact = futureParts({ ...base, typeLine: 'Artifact', colors: [] });
     const colorlessSpell = futureParts({ ...base, typeLine: 'Instant', colors: [] });
+    // Translucent MSE paper needs the source backing below the visible art.
+    // A broad source illustration mask must not punch through that backing.
+    const paperImages = new Map();
+    for (const [url, fill] of [
+      [colorlessSpell.base, '#507080'],
+      [colorlessSpell.mask, '#fff'],
+      [colorlessSpell.paper, '#dce5eacc'],
+      [colorlessSpell.type, '#0000'],
+    ]) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 375;
+      canvas.height = 523;
+      const context = canvas.getContext('2d');
+      context.fillStyle = fill;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      paperImages.set(url, await createImageBitmap(canvas));
+    }
+    const backed = prepareFutureFrame({ ...base, typeLine: 'Instant', colors: [] }, paperImages),
+      paperBackingAlpha = backed.getContext('2d').getImageData(400, 880, 1, 1).data[3];
+    for (const image of paperImages.values()) image.close();
+    backed.width = backed.height = 0;
     // Fractional piecewise destinations must not create transparent/dark seams.
     const solid = document.createElement('canvas');
     solid.width = 976;
@@ -156,6 +285,9 @@ try {
     return {
       rows,
       seamError,
+      paperBackingAlpha,
+      placement,
+      manaColors,
       treatment: selected.futureTreatment,
       rectStable:
         JSON.stringify(futureGeometry(original)) === JSON.stringify(futureGeometry(selected)),
@@ -169,8 +301,23 @@ try {
       rejectsText,
     };
   });
-  assert.equal(result.rows.length, 7);
+  assert.equal(result.rows.length, 8);
+  assert.deepEqual(result.placement.source, [255, 255, 255, 255]);
+  assert.deepEqual(result.placement.fallback, [18, 52, 86, 255]);
+  assert.deepEqual(result.placement.edge, [255, 255, 255, 255]);
+  assert.equal(result.placement.emptyEdge[3], 0, 'Solid fallback must not acquire artwork edges');
+  assert.deepEqual(result.placement.recipe.destination, result.placement.bounds);
+  assert.deepEqual(result.placement.recipe.clip, result.placement.aperture);
+  assert.equal(result.placement.keyChanges, true);
+  assert.equal(result.placement.maskKeyChanges, true);
+  assert.deepEqual(result.manaColors.center, [126, 116, 108, 255]);
+  assert.deepEqual(result.manaColors.rim, [102, 100, 100, 255]);
+  assert.equal(result.manaColors.alpha, 0);
+  assert.equal(result.manaColors.reused, true);
+  assert.equal(result.manaColors.builds, 0);
+  assert.equal(result.manaColors.optIn, true);
   assert.equal(result.seamError, 0, 'Frame bands remain opaque and retain their color at seams');
+  assert.equal(result.paperBackingAlpha, 255, 'Translucent paper retains opaque frame backing');
   assert.ok(result.rows[4].whiteInk > 30, 'Dark land panels retain light rules ink');
   assert.ok(result.rows[5].whiteTypeInk > 30, 'Colored artifacts retain the colored-frame ink');
   assert.ok(

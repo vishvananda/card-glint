@@ -2,7 +2,12 @@ import { clipPlaneswalkerArt } from './planeswalker-art.js';
 import { faceFrame } from './special-frames.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
-import { illustrationCover, croppedIllustration } from './illustration-layout.js';
+import {
+  illustrationCover,
+  croppedIllustration,
+  illustrationTarget,
+} from './illustration-layout.js';
+import { illustrationFallback } from './illustration-fallback.js';
 
 export type PaintLayer = 'artwork' | 'printing';
 /** Keep the illustration aperture transparent in the printing layer. Subsequent
@@ -23,11 +28,12 @@ export function paintIllustration(
     context.restore();
     return;
   }
-  if (layer === 'artwork' || kind.startsWith('planeswalker')) {
-    context.fillStyle = '#80745c';
+  const image = images.get(face.illustration ?? '');
+  if (layer === 'artwork' || kind.startsWith('planeswalker') || face.illustrationPlacement) {
+    context.fillStyle =
+      image && face.illustrationPlacement ? illustrationFallback(image) : '#80745c';
     context.fillRect(x, y, width, height);
   }
-  const image = images.get(face.illustration ?? '');
   if (!image) {
     context.restore();
     return;
@@ -35,11 +41,12 @@ export function paintIllustration(
   context.beginPath();
   context.rect(x, y, width, height);
   context.clip();
+  const target = illustrationTarget(face, bounds, 488, 680);
   if (face.illustrationCrop)
     context.drawImage(
       image,
-      ...croppedIllustration(image.width, image.height, bounds, face.illustrationCrop),
+      ...croppedIllustration(image.width, image.height, target, face.illustrationCrop),
     );
-  else context.drawImage(image, ...illustrationCover(image.width, image.height, bounds));
+  else context.drawImage(image, ...illustrationCover(image.width, image.height, target));
   context.restore();
 }

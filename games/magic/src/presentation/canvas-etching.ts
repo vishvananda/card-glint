@@ -10,7 +10,7 @@ import {
 } from './face-layout.js';
 import { faceSetSymbol } from './assets.js';
 import { loadCanvasImages } from './canvas-assets.js';
-import { illustrationCover } from './illustration-layout.js';
+import { illustrationCover, illustrationTarget } from './illustration-layout.js';
 
 /** Host-owned mask resolution. The pack owns placement, clipping and stamp geometry. */
 export type EtchingResolver = (
@@ -98,14 +98,10 @@ async function paintMask(
         // Match the DOM alpha mask's bilinear sampling; photographic filtering
         // alters thin etched edges when this lower-resolution mask is enlarged.
         context.imageSmoothingQuality = 'low';
+        const target = illustrationTarget(face, [x, y, w, h], FACE_WIDTH, height);
         if (face.illustrationCrop) {
           const crop = face.illustrationCrop;
-          const dest = illustrationCover(source.width * crop[2], source.height * crop[3], [
-            x,
-            y,
-            w,
-            h,
-          ]);
+          const dest = illustrationCover(source.width * crop[2], source.height * crop[3], target);
           context.drawImage(
             bitmap,
             crop[0] * bitmap.width,
@@ -114,11 +110,7 @@ async function paintMask(
             crop[3] * bitmap.height,
             ...dest,
           );
-        } else
-          context.drawImage(
-            bitmap,
-            ...illustrationCover(source.width, source.height, [x, y, w, h]),
-          );
+        } else context.drawImage(bitmap, ...illustrationCover(source.width, source.height, target));
         context.restore();
       }
     } catch {

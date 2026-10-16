@@ -36,6 +36,10 @@ export interface RenderedCardInput extends CardProfileInput {
   faces?: RenderedCardInput[];
   /** Normalized source-image crop, for shared split-card illustration sheets. */
   illustrationCrop?: FaceRect;
+  /** Normalized card rectangle occupied by the supplied artwork. Omitted covers
+   * the art aperture. Use for an incomplete crop: retain its scale/position and
+   * fill uncovered areas with a solid edge color. Does not move the frame. */
+  illustrationPlacement?: FaceRect;
   manaSymbols?: string[];
   /** Experimental ordinary-face symbol placement; omitted preserves printing defaults. */
   symbolAdjustment?: SymbolAdjustment;
@@ -53,7 +57,7 @@ export interface RenderedCardInput extends CardProfileInput {
    * (or the legacy set policy when neither choice is supplied). */
   symbolStyle?: 'original' | 'modern';
   /** Opt-in measured frame/paper and mana colors. set-hsb-v1 includes admitted
-   * old-frame set/stock/material profiles and ELD/WOE Adventure spell paper;
+   * old-frame set/stock/material profiles, FUT cost medallions, and ELD/WOE Adventure spell paper;
    * early-hsb-v1 limits these to the first
    * four sets. Omitted preserves source colors. Art and lettering are unchanged. */
   colorCalibration?: 'early-hsb-v1' | 'set-hsb-v1';

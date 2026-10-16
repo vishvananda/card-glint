@@ -99,6 +99,17 @@ never inferred from color identity. Regular plates use their visible art window
 for fitting; explicit clear plates need a full-height illustration. Some Scryfall futureshifted art crops omit the curved
 left side and cannot reproduce that window without a better source.
 
+For a known incomplete illustration, `illustrationPlacement: [x, y, width, height]`
+sets the supplied image's rectangle in normalized card coordinates. The frame's
+art aperture stays fixed. Uncovered areas receive a solid color sampled once
+from the source perimeter; they remain missing artwork for comparison purposes.
+Painting, artwork edges and optical layers share this placement. Omit it for the
+usual cover fit of a complete illustration. The regular FUT Scryfall 540 × 448
+crops match `[105 / 488, 84 / 680, 353 / 488, 293 / 680]`; hosts must select this
+only for that crop family, not arbitrary replacements or the textless full-art
+printings. This setting cannot reconstruct the omitted curved edge or artwork
+behind translucent printing.
+
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
 pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
 These are uncalibrated starting points, not scan-validated layouts. A flip input needs two `faces` in printed order; a Battle

@@ -17,6 +17,7 @@ import {
 } from './presentation/historical-symbol-sources.js';
 import { faceRects } from './presentation/special-frames.js';
 import { visibleArt } from './presentation/art-apertures.js';
+import { illustrationTarget } from './presentation/illustration-layout.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
 import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
@@ -68,7 +69,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       : [{ face, panel: undefined }];
     const edges: EdgeSource[] = children.flatMap((child) => {
       if (!child.face.illustration) return [];
-      const target = faceRects(child.face).art,
+      const target = illustrationTarget(child.face, faceRects(child.face).art),
         clip = visibleArt(child.face);
       return [
         {

@@ -1,4 +1,19 @@
-import type { FaceRect } from './face-layout.js';
+import type { FaceRect, RenderedCardInput } from './face-layout.js';
+
+/** The same source placement drives painting and both etching paths. The
+ * fallback is already in caller units; explicit placement is normalized. */
+export function illustrationTarget(
+  face: RenderedCardInput,
+  fallback: FaceRect,
+  width = 1,
+  height = 1,
+): FaceRect {
+  const rect = face.illustrationPlacement;
+  if (!rect) return fallback;
+  if (!rect.every(Number.isFinite) || rect[2] <= 0 || rect[3] <= 0)
+    throw Error('Artwork placement requires finite coordinates and positive dimensions');
+  return [rect[0] * width, rect[1] * height, rect[2] * width, rect[3] * height];
+}
 
 /** Center a source image over the entire aperture without stretching or gutters.
  * Use source dimensions for both the image and its rounded-size edge derivative. */

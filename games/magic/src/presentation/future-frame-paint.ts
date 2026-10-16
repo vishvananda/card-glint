@@ -1,6 +1,6 @@
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
-import { futureParts, futureTreatment } from './future-frame.js';
+import { futureGeometry, futureParts, futureTreatment } from './future-frame.js';
 import { templateImageMask } from './template-image-mask.js';
 import { calibrateFutureFrame } from './future-frame-geometry.js';
 
@@ -76,11 +76,21 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
       523,
     );
     if (parts.mask) {
+      c.save();
       c.globalCompositeOperation = 'destination-out';
       const full = futureTreatment(face) === 'full-art';
+      // MSE's oversized image mask reaches behind its translucent paper. Only
+      // remove backing inside the visible illustration rectangle; otherwise
+      // that paper is composited over black stock instead of its source plate.
+      if (!full && futureTreatment(face) !== 'clear') {
+        const [x, y, w, h] = futureGeometry(face).art;
+        c.beginPath();
+        c.rect((x * 375) / 488, (y * 523) / 680, (w * 375) / 488, (h * 523) / 680);
+        c.clip();
+      }
       const [x, y, w, h] = full ? [37, 46, 322, 418] : [32, 44, 327, 310];
       c.drawImage(templateImageMask(required(parts.mask)), x!, y!, w!, h!);
-      c.globalCompositeOperation = 'source-over';
+      c.restore();
     }
     if (parts.paper) draw(composed(parts.paper, parts.reversePaper), 23, 320, 335, 152);
     if (parts.type)
