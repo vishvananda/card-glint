@@ -6,21 +6,36 @@ remain outside the current study. Keep the original frame assets in use while
 tracking the problems below. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
-## Legends text validation after symbol calibration
+## Legends normalization and text validation
 
-The [72-card text proposal](fixtures/accuracy/legends-rules-proposal.json) improves
-reserved text-region scores from 39.24% to 61.57% (33 of 36 cards), but is **not
-adopted**. Character count alone selects the wrong printed face for Hazezon Tamar
-and Angus Mackenzie; Fallen Angel mixes alignment within a paragraph. Hazezon
-also uses discretionary hyphenation. Expand the source-text/style audit and use
-fresh reserved cards before adopting shared typography. These are text-region
-metrics on frozen frame-normalized scans, not whole-card accuracy.
+The [normalization audit](fixtures/accuracy/legends-normalization-review.json)
+found inherited sampling bands crossing title and artist lettering. Search
+padding now stays within clean outer-frame pixels, and separate edge strips
+validate each pose. All 310 scans pass content-isolation checks; **303 pass
+alignment and seven remain flagged**. Poses affect comparison scans only.
+The equivalent sampling audit for Alpha/Beta/Revised remains queued.
 
-The [measured-fit follow-up](fixtures/accuracy/legends-rules-fit-proposal.json)
-uses all 72 previously viewed cards for development and reserves 35 new cards.
-Sixteen pass the unchanged frame gate: their text mean rises from 39.87% to
-61.09%, with four regressions. The other 19 remain explicit alignment exclusions.
-This proposal also remains unadopted; text fit cannot yet infer every printed size.
+Rechecking unchanged renderer crops with corrected poses preserves every held-out
+improvement: titles 63.4% → 72.4%, types 76.4% → 80.2%, mana 47.0% → 84.4%, and
+set symbols 60.3% → 82.8%. These are component edge-overlap scores.
+
+Frame-boundary correlation improves for all eight material groups, with one
+held-out regression: Torsten Von Ursus (0.7248 → 0.6661). Frame/paper median
+color checks and adopted mana colors still pass, but the land-frame shadow
+lightness error rises from 4.0385 to 4.7027, exceeding the 0.25 regression guard.
+Inspect the gold-frame outlier and constrain the land correction before release.
+
+The [new text validation](fixtures/accuracy/legends-rules-clean-proposal.json)
+keeps the existing shared profile frozen. Among 19 formerly excluded cards whose
+rules areas had not informed development, 18 improve; the text-region mean rises
+from **38.3% to 64.5%**. The 85 accepted development examples rise from 38.7% to
+66.1%. Three of all 104 scored cards regress: Sentinel's wrapping, Fallen Angel's
+mixed line alignment, and Dream Coat's spacing. Typography remains a proposal.
+
+The [first text study](fixtures/accuracy/legends-rules-proposal.json) and
+[measured-fit follow-up](fixtures/accuracy/legends-rules-fit-proposal.json) preserve
+historical results from the superseded normalization. Their numbers must not be
+presented as current frame-only validation or whole-card compliance.
 
 Twelve scan-bound original-body reviews, uncircled inline generic values and
 explicit discretionary hyphenation are independent fixes. Hazezon Tamar,

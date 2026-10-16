@@ -1,0 +1,1857 @@
+{
+  "schemaVersion": 1,
+  "status": "proposal-not-adopted",
+  "scope": "Rules/flavor region only, not whole-card accuracy.",
+  "policy": "Before viewing or scoring the 19 formerly excluded rules areas, freeze the existing 15.5px profile with the flavor-only length rule. All 88 previously scored cards are development data. Select all 107, retain new frame failures without replacement.",
+  "sourceCommit": "8b6ae5ac7ed3e6c0cf8e0e9ad61a7001ef5ec5b5",
+  "templateHash": "dfad060eeb23de6628ec85041df6a2aa7735e94d007ee89555692653016e1e93",
+  "normalizationReport": "legends-normalization-review.json",
+  "profile": {
+    "classification": "fit",
+    "width": 344,
+    "small": 22.25,
+    "large": 27.5,
+    "largeLength": 130,
+    "dy": -2,
+    "leading": 1,
+    "regularMinimum": 21.75,
+    "tinySize": 15.5,
+    "tinyWidth": 344,
+    "tinyLeading": 1.2,
+    "tinyOffset": -14,
+    "opticalShift": 0,
+    "balanceLarge": true,
+    "largeFlavorLength": 135
+  },
+  "profileHash": "318170bc8674f663b4f3769ab2bc29c0aa46fb024d56594846fa3885617aed87",
+  "selected": 107,
+  "excluded": [
+    {
+      "id": "363cc5d6-70f8-4a3c-92bd-8f49774bdce2",
+      "name": "Red Mana Battery",
+      "reason": "Frame edges do not support a reliable scan alignment."
+    },
+    {
+      "id": "04bc57aa-d4d9-4bd9-ba09-984370c7e23b",
+      "name": "Backfire",
+      "reason": "Independent frame strips do not support this scan alignment."
+    },
+    {
+      "id": "329f7eb2-eadf-46ec-aed4-63152051f3c1",
+      "name": "Transmutation",
+      "reason": "Frame edges do not support a reliable scan alignment."
+    }
+  ],
+  "development": {
+    "cards": 85,
+    "before": 0.3867375428450616,
+    "after": 0.6606706913881603,
+    "improved": 83,
+    "worstRegression": -0.11688503652285709,
+    "regressions": [
+      {
+        "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+        "name": "Fallen Angel",
+        "before": 0.36604898901430916,
+        "after": 0.3470069837257698
+      },
+      {
+        "id": "5c970830-95cf-4471-af28-43da635073d0",
+        "name": "Sentinel",
+        "before": 0.3685269371872746,
+        "after": 0.2516419006644175
+      }
+    ]
+  },
+  "validation": {
+    "cards": 19,
+    "before": 0.38291520750044866,
+    "after": 0.6454403113994109,
+    "improved": 18,
+    "worstRegression": -0.012811101167155503,
+    "regressions": [
+      {
+        "id": "07edbbf4-c3d6-4ec1-ae9b-4ae202fb6998",
+        "name": "Dream Coat",
+        "before": 0.3962786530114418,
+        "after": 0.38346755184428627
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "0341da27-3d77-4959-b7fa-5929b2cc7141",
+      "name": "Living Plane",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "5c58fa4622e1c6dc3546c42adae8d43ee53d5dad30f4d5a7b79aedb0febebfb9",
+      "normalizedScanHash": "6ab1ea275d9d9213142428ad1000da5aaba3ccd1b49c658dd01a6ee4bed5ced1",
+      "inputHash": "e90b2b7b3ce8c46a9632dc89bee12e7e5e9073ee05fb0152e68a5f0cf412ad9c",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "before": 0.4010970232533389,
+      "after": 0.7554800108465461,
+      "size": 27.5
+    },
+    {
+      "id": "0370330d-83d9-44d2-a1ed-c4827edc60fd",
+      "name": "Pradesh Gypsies",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "d055da9711099fb52000cc30c3738c188bf6cf3708a1f54b789c038772f9831a",
+      "normalizedScanHash": "311ff479b7afdc6c40e964320da9e7fa0314762732fa470f806940ce7ffe4192",
+      "inputHash": "c8d53d026e324c08e4f77cee1667ecd7d7c87a120e50737ca4207993617541f2",
+      "pose": {
+        "scale": 1,
+        "tx": 0.1,
+        "ty": 0.1
+      },
+      "before": 0.47024938014334955,
+      "after": 0.5937079655224339,
+      "size": 27.5
+    },
+    {
+      "id": "095078b0-0f26-442f-9d3b-45e30cdb33c4",
+      "name": "Arboria",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "7a505f2e01add40cf6da6910c2573410c416d9fc23734c70658ece1fc930b281",
+      "normalizedScanHash": "729450260ea0f28695c7ff88cd33c3ac757bc5c5eeadd500e68f2922f4877759",
+      "inputHash": "cb84ae5abe924fe3246ba6f202dc4bb4aa90ca987ec850b7e93dd6c3af1602bf",
+      "pose": {
+        "scale": 1,
+        "tx": -0.075,
+        "ty": 0.125
+      },
+      "before": 0.3970085237658605,
+      "after": 0.6247451905809718,
+      "size": 22.25
+    },
+    {
+      "id": "0c8b1f49-550e-405f-b17c-1d94589494ad",
+      "name": "Willow Satyr",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "18febebdacd859f9bd86a3a32ee5e6c2ea7b5b008e7149769297894ae37e3b85",
+      "normalizedScanHash": "002377f7cde60c67dd7221e6e2252db43637f8ee821da797e9d912cb7ffedf65",
+      "inputHash": "a2cfa0c92d01c76140120b95972eab3078903be7e9a40514c05ec7255c8d336c",
+      "pose": {
+        "scale": 0.9996,
+        "tx": -0.024999999999999994,
+        "ty": -0.19999999999999998
+      },
+      "before": 0.3209564253969667,
+      "after": 0.40884235397891217,
+      "size": 22.25
+    },
+    {
+      "id": "0d78f0fc-3ab2-46ee-b5a9-55ae97d08c1a",
+      "name": "Deadfall",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "547742494c6cd5339a662a34183c84c0ef1978451c86699411c70ad2e54ff842",
+      "normalizedScanHash": "03f4e96e4ffaa4d10b9d0dcda45869f6d3596b253e88bc622c6a3ac020687e7b",
+      "inputHash": "19512b57302f78e0f6b3c528c4afacfc78a1acb3f4291707dde4a1ad402e1a6a",
+      "pose": {
+        "scale": 1,
+        "tx": -0.04999999999999999,
+        "ty": 0.175
+      },
+      "before": 0.42395773422076577,
+      "after": 0.6245196570610972,
+      "size": 27.5
+    },
+    {
+      "id": "123d6097-8021-46cd-a8c3-01013245e347",
+      "name": "Subdue",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "c49a105ae6be5da40c635b5d251417ea0c61d5f342de9473ab28cffdb267959c",
+      "normalizedScanHash": "ec6dd36095133c3c6c8fd77445491f22785dc318fd0b48184dd29f866bad549d",
+      "inputHash": "3b748248d2e50e5c98cc8862c0526eea557343cb597d64da56a7f8acea389461",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.125,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.4065067137621682,
+      "after": 0.4524669486871476,
+      "size": 27.5
+    },
+    {
+      "id": "254e0403-67d8-4e73-8d89-c901ebeba49f",
+      "name": "Typhoon",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "32d4b3b73762d360ef62ae4c48bc0fce6c0c3c5d26202fdfce054fe5922a6bb3",
+      "normalizedScanHash": "d4fa19f7a93f9d648239056842b3648364d57bd6345f219471676f2712441d52",
+      "inputHash": "4dca15a15de684e0c78bfced1b33b26516f4efcbdc2bce69125f5ca1a3c92a38",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.125,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.48177561835786853,
+      "after": 0.6284624906997335,
+      "size": 22.25
+    },
+    {
+      "id": "27180bad-9bbc-462b-8832-626dc403a3fd",
+      "name": "Hornet Cobra",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "ce4101571c70d9246b6bcbaf03128455799dca7d2ee29a55d81f91aec0777910",
+      "normalizedScanHash": "1d6b0662530f6ee2093a149c2803cf75ffec98d0b212a3282a41f9e23470a6e9",
+      "inputHash": "e28910738e73a9eaae22d58e870d3b1c9854e35fb77bd04affd77febb2a08351",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.15,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.4872715189822393,
+      "after": 0.632932519744523,
+      "size": 22.25
+    },
+    {
+      "id": "03bd3d4b-d01a-475d-bf3b-cf96f43bc9ef",
+      "name": "Ayesha Tanaka",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "90755edb62c83ad8b55399da071b19feffbfa5f8455996e5118ca0f19b4a6b51",
+      "normalizedScanHash": "3035fdf27d39a476d2306aa6220504a845000cdfd67c0feb0ba6b05f6fc2d31c",
+      "inputHash": "9942a67deaa58d10c1c21d8a4a4a0a1e7721e1977f5f7c56a6850a6b59e55d92",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.125,
+        "ty": -0.125
+      },
+      "before": 0.36386238383573727,
+      "after": 0.6706044209017865,
+      "size": 22.25
+    },
+    {
+      "id": "17fc3a85-c6b9-4fd2-a6a2-d3210708e5ea",
+      "name": "Hazezon Tamar",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "f2a4abde4553f552db43f9a3e2e2cc27bc82014c4862cb8661a1123297959946",
+      "normalizedScanHash": "765424d84cb6ee4160ccd13b12120674d0ed51cecde593c621156ebfd58c9deb",
+      "inputHash": "7efb16e5472da8a1f7fa61e22b12812a7af33deb53b21da100e8386d3c36df4b",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.024999999999999994,
+        "ty": 0.15
+      },
+      "before": 0.47274001178855174,
+      "after": 0.6041700678378897,
+      "size": 22.25
+    },
+    {
+      "id": "22ea73ec-1325-4437-a23f-dcda1767c713",
+      "name": "Vaevictis Asmadi",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "7a483757c03fa5f5fc0c5434ce2e05efb6400dc4df578d7aa784ecc2b62dbc12",
+      "normalizedScanHash": "443afb7f5efc6fdef829fb1e1789ddee508510ee0b714fb1d70de9a606096183",
+      "inputHash": "90a61acb850ba678ad13bb62b7f13a45e4edd7196cb02bf1bca9034bf1724c9d",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "before": 0.3656405423913775,
+      "after": 0.7283541286743694,
+      "size": 22.25
+    },
+    {
+      "id": "241a4854-e62c-4be4-a9cc-1e14db4eede9",
+      "name": "Tor Wauki",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "e9addf202ebca183c148f5dc6e81efb0a83d93d2ba466b1ec8af13a7fed0a0b6",
+      "normalizedScanHash": "667776395f9882853316c41aab5c30103468c2718ae7f704a33c41dc7a8f1027",
+      "inputHash": "b4f84b03b13fd25499e41d32a00c96c6c9f60f84b5e881e31d3c3d1e28175e49",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.1,
+        "ty": 0.125
+      },
+      "before": 0.40773487712085427,
+      "after": 0.7015142486524031,
+      "size": 27.5
+    },
+    {
+      "id": "2a02aabb-c464-4672-b37b-d5d713ef8939",
+      "name": "Lord Magnus",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "c459c43b4dcbc403cfb70da00a8b8f2211f3e031f8427abba9299da227f1cdd7",
+      "normalizedScanHash": "a96d7e5e0ec2d299696d6988cfa6cc69e11996f8c3b417dccc869273ce95b8d5",
+      "inputHash": "be49e4bcb1396541ec04fe3df59120dfeccd5d7228c48d6d039d21b7e4f2da55",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.024999999999999994,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.3369539243220865,
+      "after": 0.8395747495799141,
+      "size": 27.5
+    },
+    {
+      "id": "2c1dbc62-ceb5-4540-ae38-901e5deafc75",
+      "name": "Arcades Sabboth",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "98ccb991ea3f4cfa50bd3227408fd0828da515d5410060a1d63bb3f06e702139",
+      "normalizedScanHash": "c84c3e00e3895657f1461ddad707646711f5bd312887ce1823a9af56e16b53cd",
+      "inputHash": "21f74bfb8dbe0f5e431f21dfa9d48e06d9da1ee2263882efaba4463c304c233e",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.024999999999999994,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.39090146365253603,
+      "after": 0.7036153057839709,
+      "size": 22.25
+    },
+    {
+      "id": "2cf6a3a3-4a06-4eb7-981a-b70cf05b2473",
+      "name": "Ragnar",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "4eec9005aa776715e21b61302ece27d08d676eb3a95939bd8af156ab8c1202a1",
+      "normalizedScanHash": "f1d86a30520ebdcc97b495d1335f0b9d4264f57008a44543f93317a0de8225d4",
+      "inputHash": "94765dc6d607964dfe9142f099156e39c1053489270c941b09e462ca0c0b9565",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.125,
+        "ty": 0.125
+      },
+      "before": 0.31321575796691353,
+      "after": 0.5869792800751663,
+      "size": 27.5
+    },
+    {
+      "id": "2e939761-3542-4044-9038-d1d30c6a38fc",
+      "name": "Halfdane",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "c1919ccbe1c1aaa79c34202ff71e64647fe2e9c554e7d501ec26fc8a93449e93",
+      "normalizedScanHash": "51a21b743e0fb70e6a497f8496eaad78f190c5e837ee77f066638c026206d670",
+      "inputHash": "d71a62847d9941ca7d2453dd034cecc9d2cd53e053c9a42a6cfc7dddd9cabbf4",
+      "pose": {
+        "scale": 1.0006,
+        "tx": 0,
+        "ty": 0.175
+      },
+      "before": 0.2950489191142235,
+      "after": 0.7578294245823335,
+      "size": 15.5
+    },
+    {
+      "id": "31570ded-f5e3-44c4-b95f-294ac10b2cd2",
+      "name": "Sir Shandlar of Eberyn",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "12bc591b5563a24c58ab425f8ba71d17b80708643584723b02b6f02b7f3b3ccc",
+      "normalizedScanHash": "32e78f020d26759dc91ac3b42d51a08d693dc2cd9a6906699dda6884a06d67d7",
+      "inputHash": "69d3782d2c356f020533d4c1e3bbc5e248d61976b431aaa0c1317dc1f785e6d3",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.024999999999999994,
+        "ty": 0.1
+      },
+      "before": 0.32794573210549893,
+      "after": 0.7272801925832656,
+      "size": 27.5
+    },
+    {
+      "id": "3b4ce350-b6ed-4e0e-8c70-efc6e5f18a5d",
+      "name": "Gabriel Angelfire",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "d96508763eaf67d720c13ebaef763521e07231c2d2f753db79fc728bdfea95a3",
+      "normalizedScanHash": "d61d19046d41612de078e1a5bc318adbf0677a9fa5fdf03fe4632c7573272668",
+      "inputHash": "427a1a3496abdf44783a9d53e86426ab783632f45895c844feea96b1378316a5",
+      "pose": {
+        "scale": 1.0003,
+        "tx": 0.025000000000000022,
+        "ty": 0.1
+      },
+      "before": 0.3436750709519419,
+      "after": 0.6965091299903879,
+      "size": 22.25
+    },
+    {
+      "id": "503256f8-3aab-49d0-b78b-6502aa29ce52",
+      "name": "Rasputin Dreamweaver",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "182e88d5a2a579a196035a43d59c7639eec1f7d45bab7222533d59a7cefd5696",
+      "normalizedScanHash": "496100a7b3035f74079e7227fa0fb1e8289c755693b21b8d0b7e2edced42b170",
+      "inputHash": "dd85635d4bd655b39affabad7bd7d70fd5f9e5b6168a0b9935d7df00b942bd63",
+      "pose": {
+        "scale": 1.0006,
+        "tx": 0.07500000000000001,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.2694032951131341,
+      "after": 0.3637408258395217,
+      "size": 15.5
+    },
+    {
+      "id": "57264bd9-94f6-4d4d-baff-2b2900585635",
+      "name": "Angus Mackenzie",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "ee439b24d0171d0d9bc091e7bfeb2d26c61025a744b00d29ac1d2f3d752e4b1d",
+      "normalizedScanHash": "6b66644289e75fd714696d0c9a5ba4dd17a657c970262d9c3a58e120d2cd7f9e",
+      "inputHash": "b5b5e50d20fdf6033c83a73491715ed5c26150c94c0f7fa814225a0824b41376",
+      "pose": {
+        "scale": 1,
+        "tx": 0.07500000000000001,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.32637103547682317,
+      "after": 0.6992291911645371,
+      "size": 15.5
+    },
+    {
+      "id": "587075f3-a568-4089-83ca-fe1e473c025d",
+      "name": "Sunastian Falconer",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "d3d473b097fcadd3feb3bec507078b70911c227e305b8f5c08e2a503cffd985f",
+      "normalizedScanHash": "45295dbf068490e5e96d9c16a902e883853eb00170da3254f8f5bd127a6c99c3",
+      "inputHash": "b1101225a28efb73d8a6c49911549b014cb4ae233e496f16590b593b9fc234f0",
+      "pose": {
+        "scale": 1.0004,
+        "tx": 0.025000000000000022,
+        "ty": -0.175
+      },
+      "before": 0.3976783363609605,
+      "after": 0.7202212479919964,
+      "size": 22.25
+    },
+    {
+      "id": "5fd99522-4a91-4ccd-91bf-5f32a6ac3510",
+      "name": "Torsten Von Ursus",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "40265bc71f4dd69c0a11e8faa8152223c00b94dcdf29b888d7464daa27558d0c",
+      "normalizedScanHash": "eabb3d25322e917db8659d0adc86f093d63c9e1b0f851368ca1022ba445b3a78",
+      "inputHash": "0355f51543ef7698a43ff0acdb5e77560045c6b376e31352999c3549e827a777",
+      "pose": {
+        "scale": 1.0011999999999999,
+        "tx": -0.075,
+        "ty": -0.625
+      },
+      "before": 0.3073674956489178,
+      "after": 0.7953698796237768,
+      "size": 27.5
+    },
+    {
+      "id": "60252226-a102-4d88-9b80-42d021b5184d",
+      "name": "Adun Oakenshield",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "5959c717ae1ca0cfe253ba3101f595f4dccca4f76272a0ed1e5679fc90073d48",
+      "normalizedScanHash": "7dfc95fd213deec53abf2fce1c3b59597091e53da8301827df7a7b3b94432fc9",
+      "inputHash": "475b62c6ba48e39268c8b2e290d53836f789187e32756995a4d98e8f189c8f27",
+      "pose": {
+        "scale": 1.0008,
+        "tx": -0.25,
+        "ty": 0
+      },
+      "before": 0.38488702442426015,
+      "after": 0.6049999042421963,
+      "size": 22.25
+    },
+    {
+      "id": "67330004-6720-46d9-9de0-c79230110583",
+      "name": "Marhault Elsdragon",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "4c3a41c72023941674648bfc289c781055251842a22d10302628ec6978d204d8",
+      "normalizedScanHash": "5a440c8351000e3ff9ce297f91e62d057554f572d55584f4f7ea557c6df761fa",
+      "inputHash": "638c6ce7c416acca302de55a25c7b6a1eb752d731ff018d02c51c259b2ea2093",
+      "pose": {
+        "scale": 1.0007,
+        "tx": -0.075,
+        "ty": -0.04999999999999999
+      },
+      "before": 0.43856197483440096,
+      "after": 0.7180534994341168,
+      "size": 22.25
+    },
+    {
+      "id": "0418672d-056e-416d-91b4-8ee6e47201dc",
+      "name": "Voodoo Doll",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "b1cc09a2e9f971960df739b922ea67f88e3752b872e4275d15323120e28fc983",
+      "normalizedScanHash": "5fa190845dab1e4b28d6eaaff81ff087e7d52d8fecaac649b7ce8825fc2cf897",
+      "inputHash": "350e11f1b4fd7a5f7b711c2e07d9e40a0e6834c62852da7d3d7ccc3b4470858f",
+      "pose": {
+        "scale": 1,
+        "tx": -0.1,
+        "ty": -0.04999999999999999
+      },
+      "before": 0.4910693816546706,
+      "after": 0.6123184515403426,
+      "size": 22.25
+    },
+    {
+      "id": "17eff8d9-86de-4f19-bf00-5f20dc1373d4",
+      "name": "Horn of Deafening",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "bbd17757203ad6c560a46beca59282d00ffcd336da5693079fb4ba72aee5cbde",
+      "normalizedScanHash": "87393d11c0240d74eedbe5aae2474bba2021b3290fcadff1f79f6c2d42bec694",
+      "inputHash": "2c2a564cce9938a3f90ab2b12d5646dbdee6ada50ec2370cc40c64671603f444",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0,
+        "ty": -0.075
+      },
+      "before": 0.23376736049968666,
+      "after": 0.49923658391576375,
+      "size": 27.5
+    },
+    {
+      "id": "35393661-2c53-46f0-bb33-2390d552b060",
+      "name": "Blue Mana Battery",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "edaf2c9a8bc26159026c5a005097c033065a015957216f4a54d4b94cfb89767f",
+      "normalizedScanHash": "04deac86dc84ad4379066b217538a22aa8014ce6818aef8690bc7388082c90fd",
+      "inputHash": "e907a8ac072bdf1e229da8c60c414408a9f526e9fe30e6f1852d03b7c708e1a9",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.375,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.3232920032079698,
+      "after": 0.6684460107166718,
+      "size": 22.25
+    },
+    {
+      "id": "35fbbe41-d21b-4028-905f-054c44d30eb2",
+      "name": "White Mana Battery",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "2258a4cb2c414ffdf151f09a1c42e368bcae793d49dc737de47cb6425cbb2110",
+      "normalizedScanHash": "cb5cc372faec63b9fd1affc911d2e38a2830af41ae4892b7f1065d4b6abfa79d",
+      "inputHash": "9e0d27004406a1c7e15d019c6373ebd7cbb9344e9e7b42ff4cb3cdac5a3f87d9",
+      "pose": {
+        "scale": 1,
+        "tx": -0.024999999999999994,
+        "ty": 0.1
+      },
+      "before": 0.32431198270010747,
+      "after": 0.6538406943354813,
+      "size": 22.25
+    },
+    {
+      "id": "459b71d7-34c1-43b9-93ff-364f95aa4789",
+      "name": "Marble Priest",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "037f8a417c4bd5f8f4bb9283f8c856bc04688002d95c145ee4a9ebcd909f0341",
+      "normalizedScanHash": "d78b08e5df424cc1fb266067689c2a4b14f09bd11e1117631e34f91233a7566e",
+      "inputHash": "844ab668a33e7e384be5c41cfd2c820c082a7b64b3a9391bdfce1a4a24fc1729",
+      "pose": {
+        "scale": 0.9995,
+        "tx": 0.07500000000000001,
+        "ty": 0
+      },
+      "before": 0.406962594292807,
+      "after": 0.7310923145468323,
+      "size": 15.5
+    },
+    {
+      "id": "4671fa01-4a9e-4cd9-8154-b0d45e11b702",
+      "name": "Green Mana Battery",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "4f6a6040742778c3647460cfb78968b3d0b3efad6999f829f7fd69e5824ae0e0",
+      "normalizedScanHash": "55e06236e62b7f9b4e36f3f33d94431a24db909057176da1f4b9888ab1fb18f5",
+      "inputHash": "2419ad202482a47f37e2c7e93de0afac78925ac10fe05345de061d47f95bf06a",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.1,
+        "ty": 0.1
+      },
+      "before": 0.33915863786900663,
+      "after": 0.6599998175705447,
+      "size": 22.25
+    },
+    {
+      "id": "50052f9a-d667-4a96-a9b1-b4169ee495e6",
+      "name": "Life Chisel",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "c11b2409a8bb88f3e1b0552027d77fd76a41cd1ab14281e885858c19be28c9a1",
+      "normalizedScanHash": "13c87adfd4b9069ecf51a3afd615a8b238b1731d9c8c66be6b8d48b894fd18b1",
+      "inputHash": "8e9be7793faa598fc29c0d50106107476e2c97aab96d30d2394ba478faa518e3",
+      "pose": {
+        "scale": 0.9997,
+        "tx": -0.125,
+        "ty": -0.1
+      },
+      "before": 0.3413600149991612,
+      "after": 0.7962685029758775,
+      "size": 27.5
+    },
+    {
+      "id": "0855a5a8-8c40-4396-9ad1-8fa0fc6a0c59",
+      "name": "Devouring Deep",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "d1adb9d6ae5064f0b3a3b060f8c552fd5c678b11b9d88d947ece572e62437688",
+      "normalizedScanHash": "31c02065770d8961f59849b1f0ed48027d5eb2f0c10d7bef4973e964310d21aa",
+      "inputHash": "d9195e3c030bfe68494cc0461b2088edbfdc8eafc215efd37b70881e07d9810c",
+      "pose": {
+        "scale": 0.9994000000000001,
+        "tx": 0.2,
+        "ty": 0
+      },
+      "before": 0.47648559066505347,
+      "after": 0.5915598598198664,
+      "size": 22.25
+    },
+    {
+      "id": "11d1f02d-533e-4b77-a72a-ff5f91ae0626",
+      "name": "Sea Kings' Blessing",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "9cd0dd93fc7aa6f57542480ed72f55ffba9e96b135fb02c929ff8346b36af09a",
+      "normalizedScanHash": "5dbd7fd8fe1ad9672fe5e08c4ac7e9d4524b121d7fd211c85ee1f809cca43338",
+      "inputHash": "616378a77427d1d672600c75439a1fcef29f80011b197de3a4814e1f3e164780",
+      "pose": {
+        "scale": 0.9999,
+        "tx": 0.05000000000000002,
+        "ty": -0.125
+      },
+      "before": 0.27631752860774067,
+      "after": 0.5224319410762636,
+      "size": 22.25
+    },
+    {
+      "id": "11fb92c0-bb1e-463a-a6b6-887a5d0cb873",
+      "name": "Venarian Gold",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "2017fdb5742af637b0fc576f0a7ca148910179c886c25db84fc908cd970cf168",
+      "normalizedScanHash": "69dd258f65657c17ca7b9dc9155f492045e1fbdfdcf0cbf328cf8b284b5ec5c8",
+      "inputHash": "6fe624ee187fabdd467919c5fff65a8e1b82df28dd2b7a0665fab34df2637e37",
+      "pose": {
+        "scale": 1.0005,
+        "tx": 0.025000000000000022,
+        "ty": 0.25
+      },
+      "before": 0.2698333607123644,
+      "after": 0.5945859895755082,
+      "size": 22.25
+    },
+    {
+      "id": "18f86e13-f942-423e-b175-930d768cb811",
+      "name": "Teleport",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "9d1f6742b487aba6e6de2ac0d9a8c0521df6a0298428f7a20d7d5471accb7187",
+      "normalizedScanHash": "e563fe79ffe9a4971117839632817c061e9550ecb7d6bc86ed1047c7f6a1b2a2",
+      "inputHash": "ed0df03881050dc2bcaf39a79b2808aeb4ecb5fee90198d26f18ea1fe5bbb1de",
+      "pose": {
+        "scale": 0.9999,
+        "tx": 0.1,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.2307361725887843,
+      "after": 0.6254331168307119,
+      "size": 27.5
+    },
+    {
+      "id": "25a173fd-e10c-45f8-a6e5-ad7a747a8050",
+      "name": "Zephyr Falcon",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "ab1fb605af8f7e062d1570292ac3660bae4e30166d3d70b7399916888d9a2ee7",
+      "normalizedScanHash": "cd24e8b414a37a4772258bc8ef3a6b761684fccd0090d1704fc805193d186729",
+      "inputHash": "200e1938203fadcb7b5c1b3556c99d2ac6d4545fe94d151051ce16c20aee5e02",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.175,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.2740678670742806,
+      "after": 0.5665905431233955,
+      "size": 22.25
+    },
+    {
+      "id": "33296718-0625-4422-a65c-b21cf99c52ec",
+      "name": "Recall",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "02bd6fb7ccc9056cd6768f7c76239e5af988a4f5455102a791e99269477e7a78",
+      "normalizedScanHash": "e98e85ba7bf905c4ed0eed065a03a3c2a7e073ce232a42676790b98cdfe35681",
+      "inputHash": "fde4ba9362b4ad0f67945000259eb08aeed9ca5e5aed34640790536c55b9d3e0",
+      "pose": {
+        "scale": 0.9999,
+        "tx": 0.175,
+        "ty": 0.15
+      },
+      "before": 0.24605468469919278,
+      "after": 0.5765227037477145,
+      "size": 27.5
+    },
+    {
+      "id": "37e69940-bdc8-48ff-a296-540343910adf",
+      "name": "Energy Tap",
+      "material": "U",
+      "cohort": "development",
+      "referenceHash": "7d66c09ec1d9796e6334c27312dcee7ff962aaf027effc7a840714d8316c1a98",
+      "normalizedScanHash": "a20bc52f86d992c21200f2716eec822577dd0b667f8d2d8c2eb8b1a99128b67c",
+      "inputHash": "dc2855715982c1582adf604a249cfd70b42ebc69b6ffe219a6ca9ef395d82179",
+      "pose": {
+        "scale": 0.9999,
+        "tx": 0.2,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.23012175723929928,
+      "after": 0.5431575985991823,
+      "size": 22.25
+    },
+    {
+      "id": "09242f08-3bfc-4082-b32f-703c7fed62a0",
+      "name": "Mountain Yeti",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "6bc75df1d6a8f85a0014cdd8136710d02d5d14c9a3c0e0d6b2011d1309dac4c6",
+      "normalizedScanHash": "07abd6f305813de0a88c6f953f50b8d5f90d4d53dce9bae8a053e88b1dc6dd66",
+      "inputHash": "a1c07665fd388b35ef6668764961e9332130d043baf03bbe55e22029bbf564e8",
+      "pose": {
+        "scale": 0.9991000000000001,
+        "tx": 0.05000000000000002,
+        "ty": -0.15
+      },
+      "before": 0.27163289493594706,
+      "after": 0.6369891328048912,
+      "size": 27.5
+    },
+    {
+      "id": "13696657-aeef-4add-9a3b-8137fce01fe3",
+      "name": "Crimson Kobolds",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "50fa83ab665267ca144aaefada20bd10374715881a0debfbf489e635d71d4ec1",
+      "normalizedScanHash": "67a5ba34310e8f12a797149a094034006bdb1233dc374a11f1134630fccca2e6",
+      "inputHash": "4dd51220171cf27a636caa8822ef492b4a670af43d958317469af3b12ec09f2a",
+      "pose": {
+        "scale": 1,
+        "tx": -0.1,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.35064902934587583,
+      "after": 0.5794885897276928,
+      "size": 27.5
+    },
+    {
+      "id": "1c3b33bf-3074-406e-86f3-2a9843cf4862",
+      "name": "Quarum Trench Gnomes",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "75b94bc9db442ad8eed9e7cec8edc8d77521b84a298a3776514292d2554c2d8f",
+      "normalizedScanHash": "b4614d1842dcbef214265f754a2754dfd7535e6eaeeed606020d9dadb71dd342",
+      "inputHash": "f91fa16b23d33b11c90d86c8d20f4fd1a73d081c651209587c9e536892a55944",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.125,
+        "ty": 0.125
+      },
+      "before": 0.4761033420323585,
+      "after": 0.6177685075814479,
+      "size": 22.25
+    },
+    {
+      "id": "209f7479-b3a0-4c27-9602-78babb8d2e99",
+      "name": "Caverns of Despair",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "db0ecf44b3a2417522ac52686015238a749f311847c2477e67a9d1404fc1d917",
+      "normalizedScanHash": "4174119e4a6bb403313dac200346cf4af234951e0a954afceded29b9eb86e60a",
+      "inputHash": "68174a38ab2371bb473b820b4cb4b489c3ed97f9530c1e5900b2697d90bcc2dd",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.075,
+        "ty": 0.175
+      },
+      "before": 0.3044467218956209,
+      "after": 0.6762321009924652,
+      "size": 27.5
+    },
+    {
+      "id": "2646284b-a94d-4c99-98d4-7becbb473e2b",
+      "name": "Pyrotechnics",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "c347c8c194b4b7210531feffa869b623ecdb313dad040850eb1983952795bcb0",
+      "normalizedScanHash": "4a1a40cca17c68c60256dac745db982dd5af86dadddb358b778b906e11898a26",
+      "inputHash": "28b981e6a78c14023fff6c62003f602979c77dd2a6266120158083603d435b39",
+      "pose": {
+        "scale": 0.9993000000000001,
+        "tx": -0.125,
+        "ty": 0.125
+      },
+      "before": 0.4103128620645157,
+      "after": 0.568122171182602,
+      "size": 22.25
+    },
+    {
+      "id": "29a50f72-9524-4440-9380-9d3e0b693351",
+      "name": "Dwarven Song",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "6d21130e5faf7ac195544c33a2cc792a48216074cf91d9515034f27e5405e611",
+      "normalizedScanHash": "7e3f30cecbd65248eb07e737899637044a45ff44cdd4368260ca0cb0ecc20833",
+      "inputHash": "87dc03c4240690f88ff385bf7343b006162e207f9fef777cb0fc4a9509f3ff7c",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.3210426462128278,
+      "after": 0.5973660179913052,
+      "size": 22.25
+    },
+    {
+      "id": "2b3d1430-9978-4983-a4fd-d1fa8dea2169",
+      "name": "Wall of Opposition",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "72c222f4d8afb6d336b43e744030ce1d54feeb7a525cd182cdd6f9c0b46a03a7",
+      "normalizedScanHash": "e61d0efe8d6a4b65cb31822d8004b4606e8458906cdae40b1bd4c5c4d960768f",
+      "inputHash": "831d393c2fb0909b01b9cc5f77f0dc4148d8e52798330f03d477038aab55018b",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.275,
+        "ty": 0.125
+      },
+      "before": 0.4119812955377778,
+      "after": 0.5395033265756791,
+      "size": 22.25
+    },
+    {
+      "id": "3247a7dd-f48c-4cb4-8475-4864acccef7a",
+      "name": "Firestorm Phoenix",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "347d2c3a98205a03f6d14e211fb01110f1a3dde0848001c699529a26a566b4dd",
+      "normalizedScanHash": "6b4cfa65603fe897aebf500c6436d8388f1edd4fbf4cba1eb9cb5a66043312c0",
+      "inputHash": "29acff42faf2b2672458140bf776db0a86b3df724603213695a9796ca1913d2f",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.024999999999999994,
+        "ty": 0.275
+      },
+      "before": 0.4145596795339177,
+      "after": 0.6212194889696716,
+      "size": 15.5
+    },
+    {
+      "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+      "name": "Wall of Putrid Flesh",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "334dc52724e6c4d3d0fde2f77da11121d6665e326aac564492c706185a735d4f",
+      "normalizedScanHash": "e848d7c69fbf72da992ac102f012a93ec4aefbb9e808b4950442929ca4a1b396",
+      "inputHash": "5b7032b7cd5ee4492e4a0da758d57adc762682ddc9d6a55fb27dd1cd8625b207",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.075,
+        "ty": 0.1
+      },
+      "before": 0.42056273876618905,
+      "after": 0.7479039836231872,
+      "size": 27.5
+    },
+    {
+      "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+      "name": "Fallen Angel",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "6dc0802a1f7eda9b33bde6ae76262f77cc7ac23216d1afecc924b22d00d1d465",
+      "normalizedScanHash": "319c333f1df1e614dbae1471123688efc2e92789b7b6a627b55781abf4245746",
+      "inputHash": "03ba21f7b4b840eb6bc806ec4cdc80b13cc324db454c478b50c28618d5a9977a",
+      "pose": {
+        "scale": 0.9995,
+        "tx": 0.025000000000000022,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.36604898901430916,
+      "after": 0.3470069837257698,
+      "size": 27.5
+    },
+    {
+      "id": "111a16a2-e875-4756-80db-290f9e8606db",
+      "name": "Greed",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "da42350f45652d47ed2ca1f8536caac22741970319b7908500de65aba228deec",
+      "normalizedScanHash": "7aaee3d316293a177f9cbc648e55ecddabec82ea8bdbd77fe6813b8235388112",
+      "inputHash": "a8f77d15eb1ff1c9f349473c4d771eddfc28acbde63b31fcb5cf1cd801be13c5",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.325,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.3454751999877479,
+      "after": 0.7162716393577004,
+      "size": 15.5
+    },
+    {
+      "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+      "name": "Imprison",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "3fed4c9de5836a69a9539619a9d4a0ac7a9a159b49daf40f07eab2aca8077d38",
+      "normalizedScanHash": "19ee10f7ecdb7de2091554a9e57f59254a9afd9ebb13bff3bfffb6c0a730515c",
+      "inputHash": "d1fb376889b7fe73b0469cb3d173c5b2927a661ae36430199779076cf8fc8eea",
+      "pose": {
+        "scale": 0.9997,
+        "tx": -0.075,
+        "ty": -0.475
+      },
+      "before": 0.3719464428824081,
+      "after": 0.6931045616628537,
+      "size": 22.25
+    },
+    {
+      "id": "14c45416-a826-42e9-9967-8838158cf16d",
+      "name": "The Wretched",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "02c30fe281ffc0abf2ca9fec3e4c748be073f424eb35a661b3bb176877d74194",
+      "normalizedScanHash": "84ecbb045a2746c794dca2d61496e47c8397739c9d9302da7f86291b844d6adb",
+      "inputHash": "3f419d32526bdf5d9db773d4cbb9710adde391d76649eac3439c63ddb0cf56ce",
+      "pose": {
+        "scale": 0.9998,
+        "tx": 0.125,
+        "ty": 0
+      },
+      "before": 0.3722047214228092,
+      "after": 0.6983032861602584,
+      "size": 22.25
+    },
+    {
+      "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+      "name": "All Hallow's Eve",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "5c3172ba0f44d698aa70b68eb8393f16cdd6be09c5df039d34e89f906ee865a4",
+      "normalizedScanHash": "f5a1156e9dc3a14dfa7524c58dc7fbe98a3853000bc38339d8444943c34f4998",
+      "inputHash": "08c152852d53161dcd46d7831e9d92ee0a87e216cf54dcabd52d2db6b73cac03",
+      "pose": {
+        "scale": 1.0008,
+        "tx": 0.025000000000000022,
+        "ty": 0.525
+      },
+      "before": 0.45888548050859157,
+      "after": 0.7929876205839365,
+      "size": 15.5
+    },
+    {
+      "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+      "name": "Cosmic Horror",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "df3fe56e8625fd6f36322254dab4f87c1f5f8c1a44bd379f695959e25415fd6b",
+      "normalizedScanHash": "e641298bddc47d66343ef9cdbcffae934b5d0c3c55db73b69c21d2651f7eb2d5",
+      "inputHash": "d697a4dacec5b1ee36f65de6ab980e04f7442f74e0743a902512e5d1aa81761a",
+      "pose": {
+        "scale": 1,
+        "tx": -0.1,
+        "ty": -0.125
+      },
+      "before": 0.31993424570670786,
+      "after": 0.37984245781625253,
+      "size": 22.25
+    },
+    {
+      "id": "20275678-3488-43d8-a93b-993e2267ab07",
+      "name": "Ghosts of the Damned",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "75da24afe3a0f8bdc0fc74e35deffd7150aec794f20af4684209d49492ef6b36",
+      "normalizedScanHash": "4f4bd0dcfcac3f241061f636efed79edd1d02ac72094f291667b41b6aa83b18f",
+      "inputHash": "0f41de049184724fbaf33017c4578826cac2881fdc80f6e952b816de8c9ad22d",
+      "pose": {
+        "scale": 1.0003,
+        "tx": 0.125,
+        "ty": 0
+      },
+      "before": 0.3415490913123505,
+      "after": 0.7090098958743742,
+      "size": 27.5
+    },
+    {
+      "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+      "name": "Presence of the Master",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "2ca8222e5ebf67121cea91fe7f78aef3f8decc68c8cd314b9d1b3b55dc76643b",
+      "normalizedScanHash": "2543a968068d546e56e56d52057ba36b40d7fb6d16a5710ada12631035be6b4c",
+      "inputHash": "5fb259c03412b8510ee6930328b7d28eccc1e269aac6f4ab7b4834fc05be28e1",
+      "pose": {
+        "scale": 0.9999,
+        "tx": -0.1,
+        "ty": -0.075
+      },
+      "before": 0.6511357483809809,
+      "after": 0.8620440258964505,
+      "size": 27.5
+    },
+    {
+      "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+      "name": "Visions",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "50762b5cb153942059bb0e4c7649d2195ada50f6715dd0486924eab548b30a30",
+      "normalizedScanHash": "465ea739cac2e42c01b2d07cbcd5e79c9c5c17fbda84b3d43cfe1dbc9e352724",
+      "inputHash": "5609077b69b28b5ef923bbe7539768a9f3f1d979692c34d59b99f433db901664",
+      "pose": {
+        "scale": 0.9997,
+        "tx": -0.04999999999999999,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.42163666458356774,
+      "after": 0.7408977702320805,
+      "size": 22.25
+    },
+    {
+      "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+      "name": "Alabaster Potion",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "ad568f9e25a1c764633181a64e4d2575528355b52f959094af85af777ffe0a56",
+      "normalizedScanHash": "cc1969f1704e20368039273a19d07e7844c5472f925ad1fed69f29c121894239",
+      "inputHash": "b3a9e7df752c3c654ed81f9994aeed6b7eac4f66eb3f113e0f4e637da5417c1f",
+      "pose": {
+        "scale": 0.9994000000000001,
+        "tx": 0.025000000000000022,
+        "ty": -0.125
+      },
+      "before": 0.5559588527975955,
+      "after": 0.7437551686219152,
+      "size": 22.25
+    },
+    {
+      "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+      "name": "Cleanse",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "a545fff9fd7c378346ece8e368864eece47551f027aa68d58cdafc6502a7f2f3",
+      "normalizedScanHash": "0633960dafbaeb7a0a29ad580a851deeb33799ed77f57b0f2d9b7bc7d197ca42",
+      "inputHash": "d36b17b0bc908794b18c37b4266766ee57cd65c22dff31cf35c41fa376935ea2",
+      "pose": {
+        "scale": 1.0002,
+        "tx": -0.1,
+        "ty": 0.1
+      },
+      "before": 0.6170803535853921,
+      "after": 0.7798881767092022,
+      "size": 22.25
+    },
+    {
+      "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+      "name": "Lifeblood",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "810afc15471791de49487f205f05e3c5af7c60a87bd01fd2d18d1d65d4054397",
+      "normalizedScanHash": "2e265db8ff1065443d951c076ce8249891bb28bc58ab7e9d95287ca7d7e01f79",
+      "inputHash": "d036aaebe2b1b582ce65aba956e297ea309260d0289b934128ac5594de5af1e2",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.125,
+        "ty": 0.125
+      },
+      "before": 0.4321656390415969,
+      "after": 0.700849489526799,
+      "size": 22.25
+    },
+    {
+      "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+      "name": "Akron Legionnaire",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "1b6c81ec0077fb54fc145c43965b6ce68529f51f8265107f3f42842e8b2116f5",
+      "normalizedScanHash": "c561814cdcfd928317256d919fa05f98797dcd45cc2882cb1259318ef5e6f610",
+      "inputHash": "0fcfbae0262a821a471bcd228352bd05214210976558507c1ff34726e5f166bf",
+      "pose": {
+        "scale": 1.0002,
+        "tx": 0.05000000000000002,
+        "ty": -0.075
+      },
+      "before": 0.6321478191044934,
+      "after": 0.8086286616424512,
+      "size": 27.5
+    },
+    {
+      "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+      "name": "Petra Sphinx",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "e3540052069e188c3afca97cba87b56db003ef749bf581516fee8c69ef07eb77",
+      "normalizedScanHash": "8c85e136e6e9fd6353bb40cea204b2e00224915e9244e5845ed9922504f48128",
+      "inputHash": "c754dbecf247530328c95d55c4be4219dc57324a06e8a434fd1adafbed324893",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.075,
+        "ty": 0.15
+      },
+      "before": 0.5205318110890345,
+      "after": 0.7242920609442699,
+      "size": 15.5
+    },
+    {
+      "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+      "name": "Thunder Spirit",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "84997fea0fc97dac21449b07fd0075207d577309d07d37325406a9dd324eafc9",
+      "normalizedScanHash": "5d3656bb3bb02b29a4c72a121ddeb0856b8bc3ea6788f50ee045bf74a4005936",
+      "inputHash": "9b46458b56b9687f2dcf258941026e93ce9928d067a69b0887fb5977e7976d87",
+      "pose": {
+        "scale": 1.0004,
+        "tx": 0.07500000000000001,
+        "ty": 0.225
+      },
+      "before": 0.5991516108570335,
+      "after": 0.7255816142850823,
+      "size": 22.25
+    },
+    {
+      "id": "314fd1d7-4bd8-4d95-b7c2-1aa6660ab88a",
+      "name": "Mountain Stronghold",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "29df3cbd554decb6049d51863b04d026f311f137b884f19b82e82923a48ed761",
+      "normalizedScanHash": "1a320d032c61e0be686542a4b72fa8929672f5c7ff1cb5ee4ecfb85dcdc0cd61",
+      "inputHash": "d48e506ddf5aad81877e2e57404b289403fd4949f8567b727424c5d73e1016a5",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": 0.05000000000000002,
+        "ty": -0.55
+      },
+      "before": 0.32969702907293874,
+      "after": 0.749723719388889,
+      "size": 27.5
+    },
+    {
+      "id": "31d2422a-bb7d-4cdd-9aac-e5a936a4be3b",
+      "name": "Karakas",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "5c1ae5bd88f323362504a766f0b7be67954294d5e86ef04aa72e610dd3b508e4",
+      "normalizedScanHash": "ac9db42868f0bd589c9eb3be1275f0cc04d270973944a4f916ab7497c7709546",
+      "inputHash": "edd15c9080a0a70b06768f3fb0daff36b81ef6a93020f10d5bdae0c898cea523",
+      "pose": {
+        "scale": 0.9997,
+        "tx": 0.1,
+        "ty": -0.075
+      },
+      "before": 0.3838865960896042,
+      "after": 0.676078898462654,
+      "size": 22.25
+    },
+    {
+      "id": "32865e68-5842-4f17-b2ea-4ffa743b511f",
+      "name": "Adventurers' Guildhouse",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "756c972fa9e29b9c084a5f689d31108ee74fc421576db106d56f09076e7bc90a",
+      "normalizedScanHash": "0fac3b9f37b214b1c0f3d000fa43900e7ee5795168f782f8c5a80e8fadb5788e",
+      "inputHash": "d54598d489aefa5552821a0cb3b669116caa07eb6f8af88ad250f816974f3914",
+      "pose": {
+        "scale": 0.9995,
+        "tx": -0.04999999999999999,
+        "ty": -0.075
+      },
+      "before": 0.3225039031982887,
+      "after": 0.7517248555186041,
+      "size": 27.5
+    },
+    {
+      "id": "64bc9b1d-5818-4d9e-b771-e49af4ff9a5c",
+      "name": "The Tabernacle at Pendrell Vale",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "b2315ac524b589ff4470f91f8653b2d15d32355591d431df3837f9b9a8a6e61e",
+      "normalizedScanHash": "aaef082c1cfe69451775c384c7bddbcfe544279325c5e9224404278c15480056",
+      "inputHash": "7761899da5501ceadb1f11e90b2798cee33d7654f5b409cdb2e2d18e00d816fb",
+      "pose": {
+        "scale": 0.9998,
+        "tx": -0.04999999999999999,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.34352120358237753,
+      "after": 0.7303281828518036,
+      "size": 22.25
+    },
+    {
+      "id": "66641d88-b3f0-4bcd-8d2d-29aa2de69e30",
+      "name": "Seafarer's Quay",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "ec044cee2971741feb29fe57ee42142e56bebc90004a01aabf91a05ffe7cc2bf",
+      "normalizedScanHash": "38c02ca31b08bc57c580a2edf1c9d8fcaa1696c04c06c5d374c167b67d0b4bd0",
+      "inputHash": "409ea3c5bf44d0b41baffd51f61f4749ddd1bc81f9e6e65cd714d10d3ba64c1f",
+      "pose": {
+        "scale": 0.9998,
+        "tx": -0.19999999999999998,
+        "ty": 0.125
+      },
+      "before": 0.33053852475094087,
+      "after": 0.816734905999414,
+      "size": 27.5
+    },
+    {
+      "id": "79427109-c1f3-476d-a029-0049217237b5",
+      "name": "Pendelhaven",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "7dd6e9d2464cdf46d0b35e2ef4d1bd99df488fa87d7d0eeb01870c65b2ec041c",
+      "normalizedScanHash": "c1860ab66f3b6b3dc24df077bdbc0dc38093b74b306d13749585791238df73cb",
+      "inputHash": "da5bef56d7156e415ad1bca4541b00d30f6042fe9814c82716fa464a41d2d8f1",
+      "pose": {
+        "scale": 0.9994000000000001,
+        "tx": 0.025000000000000022,
+        "ty": 0.05000000000000002
+      },
+      "before": 0.41489081638458464,
+      "after": 0.5152013787001363,
+      "size": 22.25
+    },
+    {
+      "id": "9de534ff-fb48-4692-bd0f-dd237ca28502",
+      "name": "Unholy Citadel",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "b2f066a665e41f7b100691ecf448a4787a0727590770864ee1275da32ab7007a",
+      "normalizedScanHash": "3e1760bfc963cfb98a88d823407f5e0168c85140c18ef1e95f577b3eb3d4426e",
+      "inputHash": "56345b643a6ae198bc88adc7c07178509a0a69ea5ddb862ba53a952ec3ef3668",
+      "pose": {
+        "scale": 0.9997,
+        "tx": -0.024999999999999994,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.3305327388256142,
+      "after": 0.8012875008191688,
+      "size": 27.5
+    },
+    {
+      "id": "d0a261d0-7678-46f7-9285-d541486567d8",
+      "name": "Urborg",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "1dad94261fb5e400c5bfac5547933235394e3f75d3458cec49a0801f183be3d2",
+      "normalizedScanHash": "6c5bdf48912d95f0731a3b9c07ca35814da52bec74dae9f5df77f97c924a2355",
+      "inputHash": "97491eb7bbbaf99af8c52e6fd767e8fa02587162b69f961a60824d6ba4d78f40",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.024999999999999994,
+        "ty": -0.125
+      },
+      "before": 0.4505249989771065,
+      "after": 0.7333964349410685,
+      "size": 15.5
+    },
+    {
+      "id": "461d7c11-3a7d-42c2-bb6b-0a43779e6842",
+      "name": "Heaven's Gate",
+      "material": "W",
+      "cohort": "fresh-validation",
+      "referenceHash": "c4b643b947d36bb8e622af591030da8a364354000304d7ff3a5cbbf5f4572bb5",
+      "normalizedScanHash": "917664fe7bbbabdd60dfb156a7b9644ffd95ce750274a6aa6870c289951752d0",
+      "inputHash": "700f9451b2e94b3c4ca5ac4c9758c12013df70418d382bead1add00d37b1a612",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": 0,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.41167561839219136,
+      "after": 0.6981425210018241,
+      "size": 22.25
+    },
+    {
+      "id": "5e236816-0c49-4b48-b18b-03add5a80d72",
+      "name": "Greater Realm of Preservation",
+      "material": "W",
+      "cohort": "fresh-validation",
+      "referenceHash": "2a8b17ce6e202cb530e7d3d15211adf1668bc6d6b36e35a35f8b1934c5381113",
+      "normalizedScanHash": "a264a22910960942fa31646188381332ea635e3d4c4862f21372d6d39ce63535",
+      "inputHash": "8359802b29052131e507256db99d9753655d3606af348b3c37ff3a905e318d3c",
+      "pose": {
+        "scale": 1.0015,
+        "tx": 0.375,
+        "ty": -0.7
+      },
+      "before": 0.47991384269485426,
+      "after": 0.7050114269909489,
+      "size": 22.25
+    },
+    {
+      "id": "5e2d35f8-3cf6-4843-9030-0e9a885d836c",
+      "name": "Spirit Link",
+      "material": "W",
+      "cohort": "fresh-validation",
+      "referenceHash": "cd183819c8c88d8d398da0d02039000efcbc13fc3e4b8158d1362a17be0f689f",
+      "normalizedScanHash": "918f998bc14d9c5d483b6de2baa7a6b18d17788683ce12a359b1b4a44d0e3189",
+      "inputHash": "b61a4f96ff4edeae5bc160441c265901dd5110ac60c604d2dcf73df8d60352f4",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.1,
+        "ty": -0.1
+      },
+      "before": 0.6885714449972743,
+      "after": 0.8229274219746948,
+      "size": 27.5
+    },
+    {
+      "id": "654dd1e0-a91d-44ee-af20-c025bf360c3f",
+      "name": "Spiritual Sanctuary",
+      "material": "W",
+      "cohort": "development",
+      "referenceHash": "0b97a5f33b9466130d0bfa46d897a321994413dcfd3800e7dd28ef61fef18746",
+      "normalizedScanHash": "f0c06c605e41cc904c220ee61a37219950699044b86822db1db0188ecdba1149",
+      "inputHash": "47548e61b8023658c2db39ad17ef081f61475af433914e933bbc1c19c2e9474c",
+      "pose": {
+        "scale": 0.9999,
+        "tx": -0.024999999999999994,
+        "ty": 0.15
+      },
+      "before": 0.6040354484359276,
+      "after": 0.7834640776303943,
+      "size": 27.5
+    },
+    {
+      "id": "07edbbf4-c3d6-4ec1-ae9b-4ae202fb6998",
+      "name": "Dream Coat",
+      "material": "U",
+      "cohort": "fresh-validation",
+      "referenceHash": "9e8f5736e7fac626deb26e33b8f89ff52acdbe595b0cc82cde9c783feb25b648",
+      "normalizedScanHash": "56a4fdd776af7338830612d6bad1cf79c01c8775291b4db506784deeb11b305c",
+      "inputHash": "0e7e0c9776bfbddbae442f928b2a9957d2e300c7296c3bde4a1f2fb6d5a36ea6",
+      "pose": {
+        "scale": 0.9994000000000001,
+        "tx": 0,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.3962786530114418,
+      "after": 0.38346755184428627,
+      "size": 15.5
+    },
+    {
+      "id": "1c829d83-d5b8-4be7-80f7-55b42f52b309",
+      "name": "Reset",
+      "material": "U",
+      "cohort": "fresh-validation",
+      "referenceHash": "276877386cc3f68b39948c792bb5e388010d784259d182d6b7a59d18842013ba",
+      "normalizedScanHash": "fd6768eaf9c3fbe2213bdbc0b963f7675c766c8b040b84a531a2a0b0ff04ee4f",
+      "inputHash": "7a4aabf89490413a3151fc9abe5e4ee0930960e240003b70d29308d069abd6a3",
+      "pose": {
+        "scale": 1.0016,
+        "tx": -0.024999999999999994,
+        "ty": -0.675
+      },
+      "before": 0.27653659581286244,
+      "after": 0.5879713672219784,
+      "size": 27.5
+    },
+    {
+      "id": "2a1e7796-fbfb-4976-879f-bb748429d5c7",
+      "name": "Brine Hag",
+      "material": "U",
+      "cohort": "fresh-validation",
+      "referenceHash": "48b51af27fecdf879db52c5fe7ffc8950f05a8b8b5dcfebb37c9ce3c9998a082",
+      "normalizedScanHash": "c2d44cf2287f63018e5654d7a9ae97af57f0a12d687bc97d35ff1e8e7b4d2b67",
+      "inputHash": "51a0bcfd5c2391e9615f617889bf22e0c1d61d1ad0ab6372a326ec74b767a97c",
+      "pose": {
+        "scale": 1.0004,
+        "tx": -0.04999999999999999,
+        "ty": 0.125
+      },
+      "before": 0.3603894184136063,
+      "after": 0.49417079287763604,
+      "size": 22.25
+    },
+    {
+      "id": "3c3cd450-f1cd-416b-9271-37d95815c089",
+      "name": "Flash Counter",
+      "material": "U",
+      "cohort": "fresh-validation",
+      "referenceHash": "150f6b7d2c62e75206757e5e7801c20bf3a86939a552175b5e7929e0e5c94c40",
+      "normalizedScanHash": "dad9dd938ad030d35ab65897928b473244b7f448c05319bdbd942821b9b88dcc",
+      "inputHash": "19cd0d0432ce10f93ae5b0372cb70acc9565fe71e3b784dcc8245a1fa0bdabe8",
+      "pose": {
+        "scale": 0.9997,
+        "tx": -0.075,
+        "ty": 0.225
+      },
+      "before": 0.3110481109696057,
+      "after": 0.45013598192143695,
+      "size": 22.25
+    },
+    {
+      "id": "26a5333f-2761-42b8-ae8b-1d360b109daf",
+      "name": "Infernal Medusa",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "071344f6ef3984432cdd98861fd9918a81b9fc1dd3fe1fa5c3ea3d4b4cd2d3ae",
+      "normalizedScanHash": "21bb5f05abc331f3a800eb3d5bbeee4431cdc31d2d15a0d6e30c9a772be1c855",
+      "inputHash": "0d3839d6a5469d4dba2178dc0ea2d828284e07c30d467dc5d0749325d9854088",
+      "pose": {
+        "scale": 1,
+        "tx": 0.025000000000000022,
+        "ty": 0.125
+      },
+      "before": 0.39250609402628994,
+      "after": 0.7924437243336881,
+      "size": 27.5
+    },
+    {
+      "id": "2bb0e884-5bb4-41f3-b04b-6f638357c166",
+      "name": "Chains of Mephistopheles",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "3c5b96e77ab1b17b5ce54e09bd65ea11aa827a5af2ba00dc06558c07bef3d88e",
+      "normalizedScanHash": "fa88c98aac6a6cb7a007bedc4589437fc574541e34c7c24732875b394acc57af",
+      "inputHash": "913d45633d73540730ac5443954fb7b5a29b62b9ac5fce059049ebe20a09a080",
+      "pose": {
+        "scale": 1.0001,
+        "tx": 0.07500000000000001,
+        "ty": 0.2
+      },
+      "before": 0.382424016723636,
+      "after": 0.7532009278157661,
+      "size": 15.5
+    },
+    {
+      "id": "2e72f8cb-5bc3-4711-9b7c-a6eea9a0beaf",
+      "name": "Nether Void",
+      "material": "B",
+      "cohort": "development",
+      "referenceHash": "675a4efe1a38fb150aa6e4ec682defb8e3b1ade864e14401acdec90d91b4c85f",
+      "normalizedScanHash": "65b59a85e1f3cddb29e4cf81bdc9d74591bb532b7af2e5a929f4d339dc755eff",
+      "inputHash": "de59f21e6b3aed3ac3a70cfbed95c4e9ea1001d7b8048d0462a3613810264ccb",
+      "pose": {
+        "scale": 0.9999,
+        "tx": 0.25,
+        "ty": 0.1
+      },
+      "before": 0.4676833004913038,
+      "after": 0.7074613630451057,
+      "size": 22.25
+    },
+    {
+      "id": "06673800-22a7-4ee3-92fa-7c7cd4865d30",
+      "name": "Aerathi Berserker",
+      "material": "R",
+      "cohort": "fresh-validation",
+      "referenceHash": "d36a3e13613f3a454472eff7a8702524a7bba41859d78bb17fa0fe4b2a2caf66",
+      "normalizedScanHash": "1728322d4cdc9e68d161925e7b96b6868ccb5e4d507491c155b6215b30bd5698",
+      "inputHash": "319dae1cac76d4fcb46ef967cdfe63cbd245299f55606ef70f557d71865f6ba9",
+      "pose": {
+        "scale": 1.0003,
+        "tx": 0.275,
+        "ty": -0.19999999999999998
+      },
+      "before": 0.39807383961125997,
+      "after": 0.5144447782281509,
+      "size": 22.25
+    },
+    {
+      "id": "186fd917-8d65-4de5-8546-a32a5f6d3bab",
+      "name": "Winds of Change",
+      "material": "R",
+      "cohort": "fresh-validation",
+      "referenceHash": "02cca1c6f5058b30e35fe47b7ea6994ef77b491ed12568a964d19d626bb9f908",
+      "normalizedScanHash": "3b1851144d73e697a6acab91f2325804394547c267a606d2ebe4d64cdc18d0e6",
+      "inputHash": "8e5fecd97f07455526f936f6a2aa0a38bb1e4692b9fcccf11a49e3057c2e75ac",
+      "pose": {
+        "scale": 1.0010999999999999,
+        "tx": 0.05000000000000002,
+        "ty": -0.5
+      },
+      "before": 0.37736545296191526,
+      "after": 0.6104286397583201,
+      "size": 22.25
+    },
+    {
+      "id": "1b9c63eb-8d4e-4d8b-8637-308459ef036b",
+      "name": "Kobold Taskmaster",
+      "material": "R",
+      "cohort": "fresh-validation",
+      "referenceHash": "c485cdae4eae0b98cc4eb129926a761b7e6761d0d047391338ac057576fcba4b",
+      "normalizedScanHash": "c3c483f7811a071d846838a3af50026131060cd4953f43f90c0cac7d7ff97b23",
+      "inputHash": "476b57feb89c80484be45c6e8ba884d3893b39ea7802254041f615acf0d66cb2",
+      "pose": {
+        "scale": 1.0018,
+        "tx": 0.6,
+        "ty": -0.425
+      },
+      "before": 0.2462916201497113,
+      "after": 0.5250339035353002,
+      "size": 27.5
+    },
+    {
+      "id": "44d499a9-fe7c-4a1a-9eb3-a7fd9f85ae08",
+      "name": "Hyperion Blacksmith",
+      "material": "R",
+      "cohort": "development",
+      "referenceHash": "d90eb9a2ef19e2252a42d6c3edb371c6c4556abb6f0a7f388fac80443831a36a",
+      "normalizedScanHash": "b337e080055f61f3eccef5744130f35b475d6ba1424a36ad5300424f4ee5455a",
+      "inputHash": "202a34c6659e8f150db3f88ce6ea5b7405ae2596cf0f024a82fdf45e47d383a2",
+      "pose": {
+        "scale": 0.9992000000000001,
+        "tx": 0.07500000000000001,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.4563320340016534,
+      "after": 0.5631389690990755,
+      "size": 22
+    },
+    {
+      "id": "07892b6c-08d2-47b5-8d64-0e4d1bdc3080",
+      "name": "Revelation",
+      "material": "G",
+      "cohort": "fresh-validation",
+      "referenceHash": "e9e7d9efabbbf21390ffd03e2b90b3f043b7da9cd15420c57c897f8e6ab5641b",
+      "normalizedScanHash": "2d62ce4e463e7b7c5becfcc2b1849f8a9402e67a94dc0b93bf354ed458c644d5",
+      "inputHash": "becea7ffffda39654482a0db3f149a5f196a174d31ca7555155700f6ea6f2f2e",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.075,
+        "ty": -0.175
+      },
+      "before": 0.45969245745836845,
+      "after": 0.6166526651617863,
+      "size": 22.25
+    },
+    {
+      "id": "2e30b5ff-1239-4c4d-ac7c-554ecf8e1e27",
+      "name": "Killer Bees",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "f19b2b96a3eee9fb64b92a45ee3a51b22a3c666dc2d2ac1b579ec02d44552618",
+      "normalizedScanHash": "e39763a52d59c348e66333df309d25f2ec3e2394c049cf3c7d5fc7201e3d711b",
+      "inputHash": "fd7e24449a8ebe97f93eecf7fddfcfee004391ace5f55acd2007ec335e80aa29",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0.05000000000000002,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.4521751052120452,
+      "after": 0.6708216690673047,
+      "size": 22.25
+    },
+    {
+      "id": "3b66d0cc-84d7-41ad-b0e7-74ebf604543f",
+      "name": "Storm Seeker",
+      "material": "G",
+      "cohort": "fresh-validation",
+      "referenceHash": "e71bebd41946b1d815a25d06781a8481dcfda624c637b7a6b40cade1c504c304",
+      "normalizedScanHash": "aebc4ebcd942cf3fa241a4464139d124e662a2a6152cda74d075ac5a13c8a5a9",
+      "inputHash": "b73b1fba799fbd738783aca6d8dd1f6b80e4404a6ff2c9670818419d57d454f3",
+      "pose": {
+        "scale": 1.001,
+        "tx": -0.375,
+        "ty": 0.325
+      },
+      "before": 0.4543926169059336,
+      "after": 0.6814963359608484,
+      "size": 27.5
+    },
+    {
+      "id": "3bdcfae4-86c9-4d8a-bcfe-f0a928ec29db",
+      "name": "Concordant Crossroads",
+      "material": "G",
+      "cohort": "development",
+      "referenceHash": "9d9315d07e22892ef23f850170e2b00e2d6d9e0853578cbdeee36ee4a934395e",
+      "normalizedScanHash": "b2295e83d65b5b8bff2306fa077bf5592701ed0c56fe5d15b8a34c5320f686ad",
+      "inputHash": "1905976eeec74db3fa5740070c0abb88a74e28f0b5e54120a05cc59f96a6af6c",
+      "pose": {
+        "scale": 1.0001,
+        "tx": -0.04999999999999999,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.4421132355596513,
+      "after": 0.6005425660498775,
+      "size": 27.5
+    },
+    {
+      "id": "5c970830-95cf-4471-af28-43da635073d0",
+      "name": "Sentinel",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "fbebcae99f5d0c418c4a4d8d2750977815e6b9f44c00b538a56075f4bcf52d1d",
+      "normalizedScanHash": "bd0882639d6c628d93e9248c69addf6d3cd63fba5d20e19ececd24c78184465d",
+      "inputHash": "084d0897a883609660a469a41b5fd75985d1191c10f90bf706ecb03c61ab8235",
+      "pose": {
+        "scale": 1.0006,
+        "tx": 0.1,
+        "ty": 0.2
+      },
+      "before": 0.3685269371872746,
+      "after": 0.2516419006644175,
+      "size": 15.5
+    },
+    {
+      "id": "5d5aae6e-fe20-4363-9589-5a54bcbbb77e",
+      "name": "Al-abara's Carpet",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "16934a86a5f96c4ce34c978263156f1d3bba9b251297977b663e6a2b30c0bc82",
+      "normalizedScanHash": "a5e9e8e1c94f027dfbb067c4df05b2847243e3bba580d31762b2b7afa3afb434",
+      "inputHash": "0486d0752a76ed4bb4e6889f2a2f0e7c08a3619960950dd51c70ef316f9df523",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.05000000000000002,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.2900971978151695,
+      "after": 0.7080558014633486,
+      "size": 22.25
+    },
+    {
+      "id": "61706102-67fd-4167-bd7d-ec6da41db362",
+      "name": "Ring of Immortals",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "3448bcd0ae3735bb20b9fe4b3b1e2b78f7bab25914f20419077ab7294eaccadf",
+      "normalizedScanHash": "d39d19f61aed16afba2aea0d4d0bdac699b18316d5423d9bb4aa0e4b5307b6cb",
+      "inputHash": "038d7264a0df8519b9f88ae25384d1ba4368be8a20543073dfa6b0ee9a0873dd",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.125,
+        "ty": 0.125
+      },
+      "before": 0.2892628655690036,
+      "after": 0.675769484304002,
+      "size": 22.25
+    },
+    {
+      "id": "65947312-75c2-4baa-805c-238a154156ef",
+      "name": "Knowledge Vault",
+      "material": "A",
+      "cohort": "development",
+      "referenceHash": "e98e2bc137d0a66b4262d3e6d81c24fd8f78a7d12ef69b3868d30fb9ec0ddb35",
+      "normalizedScanHash": "38de8aca72f9ea44b8901b0567210859af2ea68f7e644dc2ed8bf6459920a52a",
+      "inputHash": "a121d29ff084cc8ee80de3dc060e2edcd890ce2d365857d643261ef228eb012d",
+      "pose": {
+        "scale": 0.9997,
+        "tx": -0.1,
+        "ty": 0.125
+      },
+      "before": 0.4646611238993468,
+      "after": 0.5766425668640884,
+      "size": 22
+    },
+    {
+      "id": "2816d30e-1e52-4323-b30e-1688fba23368",
+      "name": "Hammerheim",
+      "material": "L",
+      "cohort": "fresh-validation",
+      "referenceHash": "2decb03c479b74942a1669f97fcf851684198deadc852abfd778ecd470ec4d76",
+      "normalizedScanHash": "b591f17027a081780969e01c3d186e50fea70731122c520ace2f5d21f6fa0c9e",
+      "inputHash": "5e0de1dcd3c6fa820eabdb6f7325a0eacdf5733fd65f73b6d6771a1be39cc882",
+      "pose": {
+        "scale": 1.0005,
+        "tx": -0.15,
+        "ty": -0.125
+      },
+      "before": 0.4324654844438989,
+      "after": 0.683188942024078,
+      "size": 22.25
+    },
+    {
+      "id": "d43c01b7-443d-4061-a934-6863d230c9b8",
+      "name": "Tolaria",
+      "material": "L",
+      "cohort": "development",
+      "referenceHash": "1315f3f0eb1ad32558b2f3782e9aef04032187c4dfb6b43f844597fbb1a14fb0",
+      "normalizedScanHash": "2645cc34f698b185857e612544d1bc814bf1ed0bec421a68b25564e68f6aebb7",
+      "inputHash": "1dc6961aa420a830dbfa219bba625adfb8e994a3337e6940eafcf95a806f1252",
+      "pose": {
+        "scale": 0.9995,
+        "tx": 0.07500000000000001,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.42022925504376235,
+      "after": 0.6478859010255499,
+      "size": 22.25
+    },
+    {
+      "id": "e65356e6-0ead-49fd-b069-be1ea9b1c105",
+      "name": "Cathedral of Serra",
+      "material": "L",
+      "cohort": "fresh-validation",
+      "referenceHash": "03559e88093f094629b25a602ecf802b9c2152e1be0253c819e29e4a934ebcec",
+      "normalizedScanHash": "1851639dafaada40ef58b272cb147f8cad1139a7c7b7f53d364fdf69c3903a16",
+      "inputHash": "e9d6a589abe84c3f0ff342202cc77acadc50bd2d1a5c1936cd3156743a654f2e",
+      "pose": {
+        "scale": 0.9996,
+        "tx": -0.04999999999999999,
+        "ty": -0.125
+      },
+      "before": 0.32919699923402124,
+      "after": 0.7839245541631239,
+      "size": 27.5
+    },
+    {
+      "id": "07d8e501-6857-4a52-a3b9-2bf0bee5b08c",
+      "name": "Hunding Gjornersen",
+      "material": "M",
+      "cohort": "fresh-validation",
+      "referenceHash": "978cae84adeb21febb950f15131fe7577a4dcd030d94f3f904560ce2fb5752e8",
+      "normalizedScanHash": "84259126a7db38155a83a8d15f597be3c4bc6bc498eaa8455a38e7f59082ae0d",
+      "inputHash": "988ebd98e63a20a799605dbf9bc9977c746f78f02c3b40289c8a04b29e6fb565",
+      "pose": {
+        "scale": 0.9999,
+        "tx": -0.125,
+        "ty": -0.1
+      },
+      "before": 0.43980465872125085,
+      "after": 0.7129356267663751,
+      "size": 22.25
+    },
+    {
+      "id": "0ea52228-f8ad-4623-9e05-f162473bfc03",
+      "name": "Barktooth Warbeard",
+      "material": "M",
+      "cohort": "fresh-validation",
+      "referenceHash": "5aeebbbbba9e619a89c7799aec33bc32253d458beaed5c059ffb67096f5076f7",
+      "normalizedScanHash": "363219489f3e948efa3bb52a9e7481efbefba1841ed77957fc2457891f8808da",
+      "inputHash": "39b6345c521c537e90a623f9f6b35b5caded551cdfcbd5bed119bfd35c5d2c21",
+      "pose": {
+        "scale": 0.9996,
+        "tx": 0.225,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.29714287201004275,
+      "after": 0.7958333833466871,
+      "size": 27.5
+    },
+    {
+      "id": "304f9d39-3ea2-4274-b23e-e4eaabbc1c4b",
+      "name": "Pavel Maliki",
+      "material": "M",
+      "cohort": "fresh-validation",
+      "referenceHash": "c55390e68862bad5600ae5082656a3fab557a6d7e257f5a9b31b3b4d44677f36",
+      "normalizedScanHash": "c460d2c6b3d56dbc7592fed91e007bcf6dc37a822eb4068001b534f428a96c61",
+      "inputHash": "791df005fe20e6785133fe5455be6f9430ee198f1e34ab30c20136ef02d0cbbb",
+      "pose": {
+        "scale": 1.0016,
+        "tx": -0.024999999999999994,
+        "ty": -0.925
+      },
+      "before": 0.24324527283863817,
+      "after": 0.6988987523442667,
+      "size": 22.25
+    },
+    {
+      "id": "45b1e60d-54dd-41cd-b9a2-00890725a3df",
+      "name": "Kasimir the Lone Wolf",
+      "material": "M",
+      "cohort": "fresh-validation",
+      "referenceHash": "1d085ebe155dd74879df292a5d02a001d653c8c5093ab2ba07ac95cc69e53713",
+      "normalizedScanHash": "2df0e7a9b61581798a174ecb90fd6bdcef96b8431af6f5ab03fb3bee0a2e65c7",
+      "inputHash": "6fa0e4e5b4c9926f7ae1297af62c3e4969c6a15c0a60e19b61fa6026d5102965",
+      "pose": {
+        "scale": 0.9998,
+        "tx": -0.25,
+        "ty": 0.025000000000000022
+      },
+      "before": 0.3070933386033327,
+      "after": 0.7030791649260718,
+      "size": 22.25
+    },
+    {
+      "id": "6a4a524a-fdc7-432d-994b-953808528349",
+      "name": "Kei Takahashi",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "6506da586da1a89a7851202dc0d3e59918924e6bb893d5e92aa25f5c62be6791",
+      "normalizedScanHash": "29a325510066d30c92f2d044ae232fdba8282cba474f54b2e7dd947eadc1741d",
+      "inputHash": "c8056861b9bb7ebc714c4231dcd89627c88034a9205ba1bd696dff6182c1467b",
+      "pose": {
+        "scale": 1,
+        "tx": -0.19999999999999998,
+        "ty": -0.1
+      },
+      "before": 0.3330693338773848,
+      "after": 0.7402146690683338,
+      "size": 27.5
+    },
+    {
+      "id": "7a20dcb0-5350-40e0-82d3-c8d0186fc9d2",
+      "name": "Sol'kanar the Swamp King",
+      "material": "M",
+      "cohort": "fresh-validation",
+      "referenceHash": "20abbea1235941602001f5af84253941bdc2f0b97de61037a349c13255e6686b",
+      "normalizedScanHash": "f533a430966383d10430effadcfb0d2435950c4f0bf3062a31d51ea19991ec36",
+      "inputHash": "cd065830d3100a681e30d7b3fa308e18085bdb568981fb2569b24160893faf1e",
+      "pose": {
+        "scale": 1.0009,
+        "tx": 0.1,
+        "ty": 0.07500000000000001
+      },
+      "before": 0.36621064527831526,
+      "after": 0.7956221065409922,
+      "size": 27.5
+    },
+    {
+      "id": "7f841918-813b-4784-ab57-907185b0a355",
+      "name": "Jerrard of the Closed Fist",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "9db9ac6ddb1eb830016ef9fe44fedf9d140053dc455f705ed79a9de0ad0c2969",
+      "normalizedScanHash": "6d2c93fdd9e50b2915dbb0d4d53285e77137a42df78aba94b6e2e21cf57b9c5d",
+      "inputHash": "50ba86b806944b77d1ac12283875fd46fda2b793a111065d1c22024321ca3e77",
+      "pose": {
+        "scale": 0.9998,
+        "tx": 0,
+        "ty": -0.024999999999999994
+      },
+      "before": 0.3293212602929759,
+      "after": 0.8265629386043554,
+      "size": 27.5
+    },
+    {
+      "id": "81a40f34-fc26-4d05-9c52-6ffbf1766a3b",
+      "name": "Ur-Drago",
+      "material": "M",
+      "cohort": "development",
+      "referenceHash": "29289b2994d9d992b52051a6091b65d57c5f51ef5d234da0e02c05e55d9dac84",
+      "normalizedScanHash": "6337e4fd5a11913c715251d94241c4750d799703331e356a654a68804e6e01bf",
+      "inputHash": "9a389d8af1b7a6a790c0bf821590c0484039b5222ba62de537c8650986edeaa2",
+      "pose": {
+        "scale": 1.0003,
+        "tx": -0.024999999999999994,
+        "ty": 0.1
+      },
+      "before": 0.2926645224128,
+      "after": 0.796942837335087,
+      "size": 27.5
+    }
+  ],
+  "remaining": [
+    "Sentinel: compact-face wrap changes after the fourth line; increasing the global compact size harms other cards.",
+    "Fallen Angel: the printed paragraph mixes centered and left-aligned lines.",
+    "Dream Coat: compact line spacing and flavor positioning still differ.",
+    "Adopt only after checking the remaining frame/color measurements and preserving explicit host alignment choices."
+  ]
+}
