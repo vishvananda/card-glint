@@ -117,9 +117,8 @@ try {
     { colorCalibration: undefined },
     { setCode: 'other' },
     { frameTemplate: undefined },
-    { futureTreatment: 'full-art' },
-    { typeLine: 'Land' },
-    { colors: [] },
+    { futureTreatment: 'clear' },
+    { futureTreatment: 'full-art', colors: ['B'] },
   ])
     assert.deepEqual(futureFrameMaterials({ ...face, ...change }), {});
   console.log(
