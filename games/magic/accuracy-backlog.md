@@ -139,6 +139,25 @@ single-face scans and three split cards remain excluded. These are edge-based
 similarity indices, not percentages of flawless pixels. Rules font size/wrapping,
 remaining numeric P/T glyph differences and local pigment differences stay open.
 
+The [short-passage follow-up](fixtures/accuracy/planar-short-rules.json) removes
+short rules endings and single-word flavor orphans with a bounded size reduction.
+It changes five original printings: Dawn Charm, Ghost Tactician, Saltblast,
+Piracy Charm and Serendib Sorcerer. All 160 other original rasters are byte-exact.
+An initial broader rule damaged Serra Sphinx; retaining multiword flavor endings
+avoids that regression. This is repeated validation after reviewing that failure,
+not an untouched holdout. No printing-ID layout overrides are introduced.
+
+With the live scoring method and its source-verification exclusions, mean
+structural match rises **80.89 → 81.57 / 100** over 156 accepted cards; all five
+changed cards improve and 151 are unchanged. These figures are not directly
+comparable to the older offline index. All changed pixels lie inside the rules
+box. One thin frame metric strip overlaps italic ink, producing a tiny incidental
+frame-score change; the frame geometry is unchanged. All 324 original/Oracle
+layouts retain their text and fit. Roiling Horror's longer Oracle wording now
+fits at 14.25px using a bounded fallback below the normal 15px minimum.
+Dense original-text outliers, including Retether and Heroes Remembered, remain
+queued for the next typography pass.
+
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions
