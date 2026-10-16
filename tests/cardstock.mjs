@@ -85,6 +85,27 @@ try {
       const repeatedDots = draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } }),
         repeatedMetrics = r.metrics;
       const dotRepeatDifference = difference(dots1, repeatedDots);
+      // A second, occluded instance with different settings forces the bounded
+      // cache's procedural fallback without changing the visible geometry.
+      const mixed = (amount) => {
+        const behind = [...transform];
+        behind[14] = 0.5;
+        r.updateScene([
+          { id: 17, card: 1, transform, finish: 'regular', printDots: { amount, period: 7 } },
+          {
+            id: 18,
+            card: 1,
+            transform: behind,
+            finish: 'regular',
+            printDots: { amount: 0.1, period: 7 },
+          },
+        ]);
+        r.render(frame);
+        return pixels();
+      };
+      const mixedZeroDifference = difference(regular0, mixed(0)),
+        mixedDotDifference = difference(regular0, mixed(0.35)),
+        mixedMetrics = r.metrics;
       const dotDifference = difference(dots0, dots1),
         dotZeroDifference = difference(regular0, dots0);
       let invalidDots = 0;
@@ -177,6 +198,9 @@ try {
         cachedPrinting,
         repeatedMetrics,
         dotRepeatDifference,
+        mixedZeroDifference,
+        mixedDotDifference,
+        mixedMetrics,
         dotDifference,
         dotZeroDifference,
         invalidDots,
@@ -206,6 +230,9 @@ try {
   clearTimeout(deadline);
   console.log(JSON.stringify(report, null, 2));
   assert.equal(report.dotRepeatDifference, 0);
+  assert.equal(report.mixedZeroDifference, 0);
+  assert.ok(report.mixedDotDifference > 1);
+  assert.equal(report.mixedMetrics.surfacePasses, report.cachedPrinting.surfacePasses);
   assert.equal(report.repeatedMetrics.surfacePasses, report.cachedPrinting.surfacePasses);
   assert.ok(report.dotDifference > 1);
   assert.equal(report.dotZeroDifference, 0);

@@ -297,7 +297,9 @@ Printed ink uses a bounded 16 MiB context-owned LRU keyed by source face/overlay
 texture identity and all screen settings. A one-time GPU pass stores linear
 shader output in sRGB targets, retaining dark-ink precision. Mipmaps filter fine
 dots as geometry shrinks. Homogeneous instance groups sample these textures in
-the normal finish pass with procedural screens disabled. Mixed groups and faces
+the normal finish pass, whose shader excludes procedural screen evaluation.
+Both variants compile at context creation, so switching settings never compiles
+a shader during animation. Mixed groups and faces
 that exceed the cache bound preserve the per-instance shader path. Metrics count
 preparation passes and retained bytes; context restoration and disposal clear the
 cache. Benchmark completed frame time separately from CPU submission time.

@@ -44,7 +44,11 @@ float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,
 vec4 printFace(vec2 uv);
 ${CARDSTOCK_GLSL}
 ${foil}
+#ifdef PROCEDURAL_PRINT
 ${PRINT_DOTS_GLSL}
+#else
+vec4 printFace(vec2 uv){return texture(face,uv);}
+#endif
 ${SURFACE_GLSL.replaceAll('texture(face,', 'printFace(')}
 ${DEFORMATION_GLSL}
 ${WORN_GLSL}
@@ -54,7 +58,9 @@ ${HOLOGRAM_GLSL}
 void main(){
  vec2 source=cardSource(v_uv,surfaceTime,surfaceInfo.wz);
  vec2 uv=vec2(source.x,1.-source.y);
+#ifdef PROCEDURAL_PRINT
  printFootprint=max(length(dFdx(uv*vec2(textureSize(face,0)))),length(dFdy(uv*vec2(textureSize(face,0)))))/max(printDotsInfo.y,2.);
+#endif
 #ifdef LOCAL_HOLOGRAM
  // Evaluate derivatives before any per-fragment return/discard. The outer
  // material condition is uniform across the draw, including instanced cards.
@@ -81,7 +87,10 @@ void main(){
  vec3 under=mix(base,shaded,max(finishBase,c.r)*(1.-c.g));
  // Printing stays at the original UV, above all optical effects. The same
  // satin response as the conventional finishes supplies an optional reflection.
- vec3 printing=printDotsInfo.x>0.?previewLinear(printDotInk(previewInk(top.rgb),uv)):top.rgb;
+ vec3 printing=top.rgb;
+#ifdef PROCEDURAL_PRINT
+ if(printDotsInfo.x>0.)printing=previewLinear(printDotInk(previewInk(top.rgb),uv));
+#endif
  if(overlayFoil.y>0. && top.a>0.) {
    // Gold printing is metallic even without an etch mask. The zero-metal
    // satin branch deliberately mutes its strip and made this foil nearly flat.
@@ -99,6 +108,14 @@ void main(){
 export const hologramFragment = fragment.replace(
   '#version 300 es',
   '#version 300 es\n#define LOCAL_HOLOGRAM',
+);
+export const proceduralFragment = fragment.replace(
+  '#version 300 es',
+  '#version 300 es\n#define PROCEDURAL_PRINT',
+);
+export const proceduralHologramFragment = hologramFragment.replace(
+  '#version 300 es',
+  '#version 300 es\n#define PROCEDURAL_PRINT',
 );
 export const imageFragment = `#version 300 es
 precision highp float;in vec2 v_uv;uniform sampler2D face;out vec4 out_color;

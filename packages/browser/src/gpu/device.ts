@@ -1,5 +1,12 @@
 import { program, texture } from './etcher.js';
-import { vertex, fragment, hologramFragment, imageFragment } from './shaders.js';
+import {
+  vertex,
+  fragment,
+  hologramFragment,
+  imageFragment,
+  proceduralFragment,
+  proceduralHologramFragment,
+} from './shaders.js';
 import type { Texture } from './textures.js';
 import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
 import { SurfaceMotion } from '../surface-motion.js';
@@ -32,6 +39,8 @@ export class Device {
   readonly gl: WebGL2RenderingContext;
   private foil: WebGLProgram;
   private holographic: WebGLProgram;
+  private procedural: WebGLProgram;
+  private proceduralHolographic: WebGLProgram;
   private image: WebGLProgram;
   private vao: WebGLVertexArrayObject;
   private quad: WebGLBuffer;
@@ -61,6 +70,10 @@ export class Device {
     // Compile both variants once with the context. Uncoated cards keep the
     // smaller original shader rather than paying its register/branch cost.
     this.holographic = program(gl, hologramFragment, vertex)!;
+    // Compile screen evaluation separately: ordinary and cached printing must
+    // not pay its register/branch cost, even when every amount would be zero.
+    this.procedural = program(gl, proceduralFragment, vertex)!;
+    this.proceduralHolographic = program(gl, proceduralHologramFragment, vertex)!;
     this.image = program(gl, imageFragment, vertex)!;
     this.vao = gl.createVertexArray()!;
     this.quad = gl.createBuffer()!;
@@ -157,8 +170,7 @@ export class Device {
     );
   }
   draw(material: Material, frame: Frame, list: readonly Instance[]) {
-    const gl = this.gl,
-      p = material.recipe.hologram?.strength ? this.holographic : this.foil;
+    const gl = this.gl;
     if (list.some((item) => item.finish === 'pool')) this.caustics.prepare(frame.time ?? 0);
     if (
       list.some(
@@ -180,6 +192,14 @@ export class Device {
     const printed = homogeneous
       ? this.printedInk.prepare(material.face, material.overlay, profile)
       : undefined;
+    const procedural = !printed && list.some((item) => (item.printDots?.amount ?? 0) > 0);
+    const p = material.recipe.hologram?.strength
+      ? procedural
+        ? this.proceduralHolographic
+        : this.holographic
+      : procedural
+        ? this.procedural
+        : this.foil;
     this.bind(p, frame, list, Boolean(printed));
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
@@ -256,6 +276,8 @@ export class Device {
     const gl = this.gl;
     gl.deleteProgram(this.foil);
     gl.deleteProgram(this.holographic);
+    gl.deleteProgram(this.procedural);
+    gl.deleteProgram(this.proceduralHolographic);
     gl.deleteProgram(this.image);
     gl.deleteVertexArray(this.vao);
     gl.deleteBuffer(this.quad);

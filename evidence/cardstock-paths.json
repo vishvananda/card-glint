@@ -1,0 +1,250 @@
+{
+  "scope": "Single-card 366x510 output, 732x1020 source, Chromium SwiftShader on macOS. Each case has one first draw and two warmed samples. completedMs includes a synchronous full-frame pixel readback; submissionMs excludes completion. These short diagnostic runs are not a hardware FPS benchmark.",
+  "beforeCommit": "ae19221",
+  "afterShaderSha256": "164d39b1fef0db64582f6ca56603af3801e2ee0809548e56df20960e342acb70",
+  "change": "Compile procedural printing separately from ordinary and cached-printing shaders.",
+  "before": {
+    "startupMs": 4706.699999988079,
+    "cases": [
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "smooth",
+        "samples": [
+          {
+            "submissionMs": 0.6000000238418579,
+            "completedMs": 9956.700000047684
+          },
+          {
+            "submissionMs": 0.8999999761581421,
+            "completedMs": 1118.2999999523163
+          },
+          {
+            "submissionMs": 0.800000011920929,
+            "completedMs": 1029.2000000476837
+          }
+        ],
+        "surfacePasses": 0,
+        "surfaceBytes": 704512
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "stock",
+        "samples": [
+          {
+            "submissionMs": 2.099999964237213,
+            "completedMs": 1251.699999988079
+          },
+          {
+            "submissionMs": 0.6000000238418579,
+            "completedMs": 1130.300000011921
+          },
+          {
+            "submissionMs": 0.5999999642372131,
+            "completedMs": 1032.5
+          }
+        ],
+        "surfacePasses": 1,
+        "surfaceBytes": 4685496
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "prismatic-stock",
+        "samples": [
+          {
+            "submissionMs": 0.20000004768371582,
+            "completedMs": 1213.5
+          },
+          {
+            "submissionMs": 0.40000003576278687,
+            "completedMs": 1215.4000000357628
+          },
+          {
+            "submissionMs": 0.5999999642372131,
+            "completedMs": 1075.5
+          }
+        ],
+        "surfacePasses": 1,
+        "surfaceBytes": 4685496
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "dots",
+        "samples": [
+          {
+            "submissionMs": 3.5,
+            "completedMs": 1396.3999999761581
+          },
+          {
+            "submissionMs": 0.3999999761581421,
+            "completedMs": 1365
+          },
+          {
+            "submissionMs": 0.6000000238418579,
+            "completedMs": 1111.3999999761581
+          }
+        ],
+        "surfacePasses": 2,
+        "surfaceBytes": 8666480
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "dots-stock",
+        "samples": [
+          {
+            "submissionMs": 0.3999999761581421,
+            "completedMs": 1321.300000011921
+          },
+          {
+            "submissionMs": 0.2999999523162842,
+            "completedMs": 1106.5
+          },
+          {
+            "submissionMs": 0.3999999761581421,
+            "completedMs": 1097.699999988079
+          }
+        ],
+        "surfacePasses": 2,
+        "surfaceBytes": 8666480
+      }
+    ],
+    "error": 0,
+    "scope": "darwin Chromium SwiftShader; completed times include synchronous full-frame readPixels transfer, CPU submission reported separately. Not a hardware GPU benchmark."
+  },
+  "after": {
+    "startupMs": 705.4000000357628,
+    "cases": [
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "smooth",
+        "samples": [
+          {
+            "submissionMs": 0.20000004768371582,
+            "completedMs": 1305.1000000238419
+          },
+          {
+            "submissionMs": 0.30000001192092896,
+            "completedMs": 99.80000001192093
+          },
+          {
+            "submissionMs": 0.19999998807907104,
+            "completedMs": 110.39999997615814
+          }
+        ],
+        "surfacePasses": 0,
+        "surfaceBytes": 704512
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "stock",
+        "samples": [
+          {
+            "submissionMs": 0.7999999523162842,
+            "completedMs": 173
+          },
+          {
+            "submissionMs": 0.19999998807907104,
+            "completedMs": 118.29999995231628
+          },
+          {
+            "submissionMs": 0.6000000238418579,
+            "completedMs": 112.40000003576279
+          }
+        ],
+        "surfacePasses": 1,
+        "surfaceBytes": 4685496
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "prismatic-stock",
+        "samples": [
+          {
+            "submissionMs": 0.30000001192092896,
+            "completedMs": 130.5
+          },
+          {
+            "submissionMs": 0.30000001192092896,
+            "completedMs": 106
+          },
+          {
+            "submissionMs": 0.10000002384185791,
+            "completedMs": 102.69999998807907
+          }
+        ],
+        "surfacePasses": 1,
+        "surfaceBytes": 4685496
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "dots",
+        "samples": [
+          {
+            "submissionMs": 0.800000011920929,
+            "completedMs": 226.5
+          },
+          {
+            "submissionMs": 0.20000004768371582,
+            "completedMs": 111.70000004768372
+          },
+          {
+            "submissionMs": 0.19999998807907104,
+            "completedMs": 108.5
+          }
+        ],
+        "surfacePasses": 2,
+        "surfaceBytes": 8666480
+      },
+      {
+        "size": [
+          366,
+          510
+        ],
+        "name": "dots-stock",
+        "samples": [
+          {
+            "submissionMs": 0.19999998807907104,
+            "completedMs": 109
+          },
+          {
+            "submissionMs": 0.09999996423721313,
+            "completedMs": 113.39999997615814
+          },
+          {
+            "submissionMs": 0.19999998807907104,
+            "completedMs": 117.30000001192093
+          }
+        ],
+        "surfacePasses": 2,
+        "surfaceBytes": 8666480
+      }
+    ],
+    "error": 0,
+    "scope": "darwin Chromium SwiftShader; completed times include synchronous full-frame readPixels transfer, CPU submission reported separately. Not a hardware GPU benchmark."
+  }
+}

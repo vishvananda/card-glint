@@ -186,3 +186,20 @@ showcase is an optional subpath export; consumers supply their own game pack
 without importing it. `npm run test:package` verifies an independent TypeScript
 and Vite consumer using only the packed archive. Illustrations are SVG sources,
 with no downloaded frames or font binaries. Build output reports module sizes.
+
+## Optional printing shader paths
+
+Procedural print-dot screens compile separately from ordinary and cached-printing
+shaders. Amount-zero branches inside the shared shader still imposed substantial
+software-renderer cost; cached printing now uses the smaller shader as well.
+Both variants compile at context creation, with no compilation while tilting.
+
+A [short before/after diagnostic](../evidence/cardstock-paths.json) used one
+366 × 510 card with a 732 × 1020 source in Chromium SwiftShader on macOS.
+Mean warmed gloss draw plus full pixel readback fell from about 1,074 ms to
+105 ms; cardstock gloss fell from 1,081 ms to 115 ms. Each mean has only two
+warmed samples, after a separate first draw. These are software-raster timings
+including readback, not hardware GPU timings or FPS. CPU submission was below
+1 ms and cannot explain completion latency. Relief and cached ink preparation
+counts stayed constant after warmup. Mixed screen settings retain the procedural
+fallback, with separate pixel and cache regression coverage.
