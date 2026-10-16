@@ -283,7 +283,7 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
   },
   '3ed/white/retro/g.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",[0.012,0.01,0.974,0.982]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png",[0.005813317622950737,0.01307290441176476,0.9839835000000001,0.9896105]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/g.png':
         {
@@ -311,7 +311,7 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
   },
   '3ed/white/retro/b.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/b.png",[0.012,0.01,0.974,0.982]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/b.png",[0.00541668647540981,0.014704852941176478,0.98605325,0.99218825]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/b.png':
         {
@@ -339,7 +339,7 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
   },
   '3ed/white/retro/r.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",[0.012,0.01,0.974,0.982]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png",[0.007775553278688446,0.011779044117647054,0.9843487500000001,0.9924337500000001]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/r.png':
         {
@@ -363,7 +363,7 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
   },
   '3ed/white/retro/w.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png",[0.012,0.01,0.974,0.982]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png",[0.007867184426229475,0.011380367647058751,0.9828877500000001,0.99046975]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/w.png':
         {
@@ -387,7 +387,7 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
   },
   '3ed/white/retro/a.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",[0.012,0.01,0.974,0.982]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",[0.008708774590163905,0.012330294117647026,0.983253,0.991329]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png':
         {
@@ -696,6 +696,30 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
           hueDegrees: 0,
           saturationScale: 1,
           brightnessScale: 1,
+        },
+    },
+  },
+  '3ed/white/retro/u.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png",[0.005889502049180328,0.011686838235294103,0.9844705,0.9909607500000001]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/u.png':
+        {
+          frame: {
+            hueDegrees: 4.66481543145278,
+            saturationScale: 0.4908900383397078,
+            brightnessScale: 1.0187590187590188,
+          },
+          paper: {
+            hueDegrees: -2.4850427350427253,
+            saturationScale: 1.1119809394145677,
+            brightnessScale: 0.9338842975206612,
+          },
+          mask: {
+            kind: 'rect',
+            rect: [0.118, 0.6071428571428571, 0.762, 0.2819047619047619],
+            feather: 0.0013333333333333333,
+          },
         },
     },
   },

@@ -189,6 +189,25 @@ groups lack template support, and some blue/green scans remain rejected. A
 calibration-only smoothing trial helps green/artifact texture but not red; it is
 not adopted. No renderer default, live scoring template or release changes here.
 
+## Revised frame geometry candidate
+
+The [native frame replay](fixtures/accuracy/revised-frame-native.json) tests six
+shared Fourth-source placements against 304 accepted Revised interior poses.
+All 279 nonland cards improve in both the blank-frame boundary diagnostic and
+the full-raster gradient check. Full-raster edge F1 at one-pixel tolerance rises
+from 60.66% to 75.03%; this is a diagnostic, not the component-weighted score.
+The 231 reused validation nonlands improve; 25 lands and 42 ABU controls remain
+byte-identical. Two uncertain Revised poses remain excluded.
+
+Changing placement initially invalidated the source-bound HSB profiles. The
+candidate explicitly rebinds the same six pinned source images, source-local
+masks and HSB transforms to the new placements. It does not bypass source
+identity checks or claim a new color fit. All 44 source-opacity perturbation
+checks pass. Reference-side content isolation for the boundary windows remains
+unproven; full native replay and visual review provide separate evidence.
+Typography and local pigment outliers remain open. This branch candidate is
+not yet included in a release.
+
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions

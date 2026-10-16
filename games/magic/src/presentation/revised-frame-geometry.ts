@@ -51,6 +51,7 @@ function material(face: RenderedCardInput): Material | null {
     face.setCode?.toLowerCase() !== '3ed' ||
     face.frameTemplate ||
     face.frameStyle === 'modern' ||
+    (face.borderColor && face.borderColor !== 'white') ||
     isRevisedLand(face) ||
     (face.layout && face.layout !== 'normal') ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
