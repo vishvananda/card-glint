@@ -183,6 +183,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.borderColor ?? null,
         face.frameAssetFamily ?? null,
         face.frameTemplate ?? null,
+        face.futureTreatment ?? null,
         face.defense ?? null,
         face.frameTemplate ? face.faces?.map((child) => faceContentKey(child, mask)) : null,
         face.name,

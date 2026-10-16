@@ -1,0 +1,131 @@
+import type { CanvasImages } from './canvas-assets.js';
+import type { RenderedCardInput, FaceRect } from './face-layout.js';
+import { faceSetSymbol } from './assets.js';
+import { paintFittedText } from './canvas-text.js';
+import { paintIllustration, type PaintLayer } from './illustration-paint.js';
+import { futureGeometry, futurePalette, futureParts, futureTreatment } from './future-frame.js';
+import { futureArtMask, prepareFutureFrame } from './future-frame-paint.js';
+import { paintFutureMana } from './future-mana.js';
+import { resolveCardProfile } from './profile.js';
+import { templateRules } from './template-typography.js';
+import { printingCollectorText, printingLegalText } from './printing-footer.js';
+
+export function paintFutureTemplate(
+  c: CanvasRenderingContext2D,
+  face: RenderedCardInput,
+  images: CanvasImages,
+  layer?: PaintLayer,
+  underArt?: HTMLCanvasElement,
+) {
+  if (
+    futureTreatment(face) === 'full-art' &&
+    (face.rulesParagraphs?.some((p) => p.runs.some((r) => r.text.trim())) ||
+      (!face.rulesParagraphs && face.rulesText?.trim()))
+  )
+    throw Error('Futureshifted full-art treatment has no rules panel for the supplied wording');
+  const frame = prepareFutureFrame(face, images),
+    mask = futureArtMask(frame, face);
+  const g = futureGeometry(face),
+    parts = futureParts(face),
+    p = resolveCardProfile(face),
+    palette = futurePalette(face);
+  c.save();
+  try {
+    if (!layer) {
+      c.fillStyle = '#080808';
+      c.fillRect(0, 0, 488, 680);
+    }
+    if (underArt) c.drawImage(underArt, 0, 0, 488, 680);
+    if (layer !== 'printing') {
+      const art = document.createElement('canvas');
+      art.width = 976;
+      art.height = 1360;
+      try {
+        const a = art.getContext('2d')!;
+        a.scale(2, 2);
+        const bounds: FaceRect = futureTreatment(face) === 'clear' ? [23, 22, 442, 637] : g.art;
+        paintIllustration(a, face, images, bounds, 'artwork');
+        a.globalCompositeOperation = 'destination-in';
+        a.drawImage(mask, 0, 0, 488, 680);
+        c.drawImage(art, 0, 0, 488, 680);
+      } finally {
+        art.width = art.height = 0;
+      }
+    }
+    if (layer === 'artwork') return;
+    c.drawImage(frame, 0, 0, 488, 680);
+    if (parts.typeSymbol) c.drawImage(images.get(parts.typeSymbol)!, 31.2, 31.2, 27.3, 26);
+    c.shadowColor = 'transparent';
+    paintFutureMana(c, face, images);
+    const light = !p.artifact && palette.length === 1 && palette[0] !== 'W';
+    const label = (text: string, rect: FaceRect, size: number) => {
+      c.textAlign = 'left';
+      c.textBaseline = 'middle';
+      paintFittedText(
+        c,
+        text,
+        rect[0],
+        rect[1] + rect[3] / 2,
+        rect[2],
+        size,
+        true,
+        1,
+        'CardRenderer MTG Matrix',
+      );
+    };
+    c.fillStyle = light ? '#fff' : '#111';
+    label(face.name, g.title, 30.4);
+    label(face.typeLine ?? '', g.type, 24.6);
+    const rulesInk = p.land && palette.length === 2 && !palette.includes('W') ? '#fff' : '#111';
+    // The textless treatment is physical. Additional Oracle text does not
+    // switch it to the regular frame or silently change the artwork aperture.
+    if (futureTreatment(face) !== 'full-art')
+      templateRules(c, face, images, g.rules, 17.6, 8, rulesInk);
+    if (face.power != null && face.toughness != null) {
+      c.fillStyle = light ? '#fff' : '#111';
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      c.font = '700 27px "CardRenderer MTG Matrix Small Caps"';
+      c.fillText(
+        `${face.power}/${face.toughness}`,
+        g.stats[0] + g.stats[2] / 2,
+        g.stats[1] + g.stats[3] / 2,
+        g.stats[2],
+      );
+    }
+    const symbol = images.get(faceSetSymbol(face) ?? '');
+    if (symbol) {
+      const [x, y, w, h] = g.symbol,
+        scale = Math.min(w / symbol.width, h / symbol.height);
+      c.drawImage(
+        symbol,
+        x + (w - symbol.width * scale) / 2,
+        y + (h - symbol.height * scale) / 2,
+        symbol.width * scale,
+        symbol.height * scale,
+      );
+    }
+    c.fillStyle = p.land || light ? '#fff' : '#111';
+    c.textAlign = 'right';
+    c.textBaseline = 'alphabetic';
+    const right = face.power != null && face.toughness != null ? 361 : 442;
+    c.font = '400 16.6px "CardRenderer MTG Matrix"';
+    const artist = face.artist ?? '';
+    c.fillText(artist, right, 627, right - 70);
+    const brush = parts.brush ? images.get(parts.brush) : undefined;
+    if (brush) c.drawImage(brush, right - c.measureText(artist).width - 40, 617, 36, 8);
+    const legal = printingLegalText(face);
+    if (legal) {
+      c.font = '10.4px "CardRenderer MTG MPlantin"';
+      c.fillText(
+        [legal, printingCollectorText(face, false)].filter(Boolean).join(' '),
+        right,
+        642,
+        right - 40,
+      );
+    }
+  } finally {
+    frame.width = frame.height = mask.width = mask.height = 0;
+    c.restore();
+  }
+}

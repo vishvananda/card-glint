@@ -1,3 +1,5 @@
+import { futureParts, futureGeometry } from './future-frame.js';
+import { futureManaAssets } from './future-mana.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { FACE_RECTS } from './face-layout.js';
@@ -68,6 +70,7 @@ export function standardTemplateParts(face: RenderedCardInput) {
     spec = STANDARD_TEMPLATE_DEFAULTS[kind];
   if (!spec) throw Error('Unknown standard frame template');
   if (face.frameAssetFamily) throw Error('Choose one frame template or plate family');
+  if (kind === 'future') return futureParts(face);
   const root = `${MSE_TEMPLATE_ROOT}/${spec.style}`;
   const material = templateMaterial(kind === 'flip' ? (face.faces?.[0] ?? face) : face);
   if (kind === 'battle')
@@ -98,37 +101,33 @@ export function standardTemplateParts(face: RenderedCardInput) {
         : {}),
     } as const;
   }
-  const types = [
-    'Artifact',
-    'Creature',
-    'Enchantment',
-    'Instant',
-    'Land',
-    'Planeswalker',
-    'Sorcery',
-  ].filter((type) => new RegExp(`\\b${type}\\b`).test(face.typeLine ?? ''));
-  const type = types.length > 1 ? 'multitype' : types[0]?.toLowerCase();
-  const ink = ['u', 'b', 'r', 'g'].includes(material[0]!) ? 'white' : 'black';
-  return {
-    kind,
-    base,
-    mask: `${root}/mask_image.png`,
-    paper: `${root}/${material}textbox.png`,
-    type: `${root}/${material}typeline.png`,
-    ...(type
-      ? { typeSymbol: `${MSE_TEMPLATE_ROOT}/magic-future-common.mse-include/${type}_${ink}.png` }
-      : {}),
-    ...(face.power != null && face.toughness != null ? { stats: `${root}/${material}pt.png` } : {}),
-  } as const;
+  throw Error('Unknown standard template asset branch');
 }
 export function standardTemplateAssets(face: RenderedCardInput): string[] {
   const parts = standardTemplateParts(face);
   if (!parts) return [];
   const { kind: _kind, ...urls } = parts;
-  return Object.values(urls).filter((value): value is string => typeof value === 'string');
+  return [
+    ...Object.values(urls).filter((value): value is string => typeof value === 'string'),
+    ...(face.frameTemplate === 'future' ? futureManaAssets(face) : []),
+  ];
 }
 export function standardTemplateRects(face: RenderedCardInput) {
   if (!face.frameTemplate) return null;
+  if (face.frameTemplate === 'future') {
+    const geometry = futureGeometry(face);
+    const rect = (r: FaceRect): FaceRect => [r[0] / 488, r[1] / 680, r[2] / 488, r[3] / 680];
+    return {
+      ...FACE_RECTS,
+      frame: [0, 0, 1, 1] as FaceRect,
+      title: rect(geometry.title),
+      art: rect(geometry.art),
+      type: rect(geometry.type),
+      rules: rect(geometry.rules),
+      stats: rect(geometry.stats),
+      footer: rect(geometry.footer),
+    };
+  }
   const spec = STANDARD_TEMPLATE_DEFAULTS[face.frameTemplate];
   if (!spec) throw Error('Unknown standard frame template');
   const normalized = (rect: FaceRect): FaceRect => {

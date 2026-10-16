@@ -204,6 +204,11 @@ assert.deepEqual(
   presentation({ ...land, card: { ...land.card, produced_mana: ['U'] } }).face.frameColors,
   ['U'],
 );
+assert.deepEqual(
+  presentation({ ...land, card: { ...land.card, frame: 'future' } }).face.frameColors,
+  ['B', 'R'],
+  'Futureshifted land panels retain their produced-mana palette',
+);
 for (const changes of [
   { produced_mana: ['C'] },
   { produced_mana: ['W', 'U', 'B', 'R', 'G'] },

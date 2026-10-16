@@ -2,13 +2,8 @@ import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { faceSetSymbol } from './assets.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
-import { paintMana } from './canvas-text.js';
-import {
-  STANDARD_TEMPLATE_DEFAULTS,
-  standardTemplateParts,
-  templateMaterial,
-} from './standard-frame-templates.js';
-import { templateImageMask } from './template-image-mask.js';
+import { STANDARD_TEMPLATE_DEFAULTS, standardTemplateParts } from './standard-frame-templates.js';
+import { paintFutureTemplate } from './future-template-paint.js';
 import {
   templateLabel,
   templateCost,
@@ -29,6 +24,7 @@ export function paintStandardTemplate(
 ) {
   const kind = face.frameTemplate;
   if (!kind) throw Error('Missing standard template');
+  if (kind === 'future') return paintFutureTemplate(c, face, images, layer, underArt);
   const spec = STANDARD_TEMPLATE_DEFAULTS[kind];
   const required = (url: string) => {
     const image = images.get(url);
@@ -54,58 +50,19 @@ export function paintStandardTemplate(
       paintFlipTemplate(c, face, images, parts, layer);
       return;
     }
-    if (parts.kind === 'future') {
-      if (layer !== 'artwork') c.drawImage(base, 0, 0, spec.size[0], spec.size[1]);
-      const mask = templateImageMask(required(parts.mask)),
-        [x, y, w, h] = spec.art;
-      if (layer === 'printing') {
-        c.save();
-        c.globalCompositeOperation = 'destination-out';
-        c.drawImage(mask, x, y, w, h);
-        c.restore();
-      } else {
-        const art = document.createElement('canvas');
-        art.width = 654;
-        art.height = 620;
-        const a = art.getContext('2d')!;
-        a.scale(2, 2);
-        paintIllustration(a, face, images, [0, 0, w, h], 'artwork');
-        a.globalCompositeOperation = 'destination-in';
-        a.drawImage(mask, 0, 0, w, h);
-        c.drawImage(art, x, y, w, h);
-        art.width = art.height = 0;
-      }
-      if (layer === 'artwork') return;
-      c.drawImage(required(parts.paper), 23, 320, 335, 152);
-      c.drawImage(required(parts.type), 18, 17, 339, 464);
-      if (parts.stats) c.drawImage(required(parts.stats), 285, 452, 70, 52);
-      if (parts.typeSymbol) c.drawImage(required(parts.typeSymbol), 24, 24, 21, 20);
-    } else {
-      if (layer !== 'artwork') c.drawImage(required(parts.texture), 0, 0, 523, 375);
-      paintIllustration(c, face, images, spec.art, layer);
-      if (layer === 'artwork') return;
-      c.drawImage(base, 0, 0, spec.size[0], spec.size[1]);
-      c.drawImage(required(parts.border), 0, 0, 523, 375);
-      if (face.defense != null) c.drawImage(required(parts.defense), 459, 322, 64, 52);
-    }
+    if (parts.kind !== 'battle') throw Error('Unexpected standard template branch');
+    if (layer !== 'artwork') c.drawImage(required(parts.texture), 0, 0, 523, 375);
+    paintIllustration(c, face, images, spec.art, layer);
+    if (layer === 'artwork') return;
+    c.drawImage(base, 0, 0, spec.size[0], spec.size[1]);
+    c.drawImage(required(parts.border), 0, 0, 523, 375);
+    if (face.defense != null) c.drawImage(required(parts.defense), 459, 322, 64, 52);
     c.shadowColor = 'transparent';
     c.fillStyle = '#17140f';
-    const family = kind === 'future' ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
+    const family = 'CardRenderer MTG Beleren';
     let title: FaceRect = spec.title;
-    if (kind === 'future') {
-      // Source defaults give a vertical cost field; keep the glyph sequence
-      // visible while curved future-cost spacing remains in the review queue.
-      (face.manaSymbols ?? []).forEach((symbol, i) => {
-        const y = 75 + i * 31;
-        const x = i === 0 ? 46 : i === 1 ? 30 : i < 5 ? 26 : 30 + (i - 5) * 8;
-        paintMana(c, symbol, x, y, 26, images, true);
-      });
-    } else {
-      const cost = templateCost(c, face, images, 484, 20, 15);
-      title = [title[0], title[1], Math.max(1, title[2] - cost - 5), title[3]];
-    }
-    if (kind === 'future' && ['u', 'b', 'r', 'g'].includes(templateMaterial(face)[0]!))
-      c.fillStyle = 'white';
+    const cost = templateCost(c, face, images, 484, 20, 15);
+    title = [title[0], title[1], Math.max(1, title[2] - cost - 5), title[3]];
     templateLabel(c, face.name, title, spec.titleSize, family);
     templateLabel(c, face.typeLine ?? '', spec.type, spec.typeSize, family);
     c.fillStyle = '#17140f';
@@ -126,7 +83,7 @@ export function paintStandardTemplate(
         icon.height * scale,
       );
     }
-    templateFooter(c, face, spec.footer, kind === 'future' ? '#17140f' : 'white');
+    templateFooter(c, face, spec.footer, 'white');
   } finally {
     c.restore();
   }
@@ -138,6 +95,7 @@ export function loadStandardTemplateFonts(face: RenderedCardInput): Promise<void
   return (templateFonts ??= Promise.all([
     document.fonts.load('400 24px "CardRenderer MTG Matrix"'),
     document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
+    document.fonts.load('700 24px "CardRenderer MTG Matrix Small Caps"'),
   ])
     .then(() => undefined)
     .catch((error) => {

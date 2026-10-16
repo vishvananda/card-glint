@@ -1,4 +1,5 @@
 import { plateBasicSymbol } from './plate-basic-land.js';
+import { futureManaAsset } from './future-mana.js';
 import { standardTemplateAssets } from './standard-frame-templates.js';
 import { splitMaterialAssets } from './split-materials.js';
 import { splitFuseBridgeAssets } from './split-fuse-bridge.js';
@@ -55,6 +56,7 @@ export function canvasAssetWidth(url: string): number | undefined {
   )
     return undefined; // Small native decorations must not be enlarged to plate resolution.
   if (url.startsWith(`${CONJURER_ROOT}/data/images/cardImages/saga/`)) return 768;
+  if (url.startsWith(`${CONJURER_ROOT}/img/frames/future/regular/futurePT`)) return undefined; // Native 129px panels already cover inspection size.
   if (url.startsWith(`${CONJURER_ROOT}/img/frames/`) && url.endsWith('.png'))
     return /\/pt\/|\/m15PT/.test(url) ? 256 : 768;
   if (url.startsWith(`${RETRO_ROOT}/img/frames/`) && url.endsWith('.png')) return 768;
@@ -178,7 +180,11 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
       ...standardTemplateAssets(face),
       face.illustration,
       faceSetSymbol(face),
-      ...faceManaAssets(face),
+      ...faceManaAssets(
+        face.frameTemplate === 'future'
+          ? { ...face, manaSymbols: face.manaSymbols?.filter((symbol) => !futureManaAsset(symbol)) }
+          : face,
+      ),
       ...(face.faces ?? []).flatMap(faceManaAssets),
     ];
   if (isPrepared(face))

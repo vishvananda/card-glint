@@ -150,7 +150,7 @@ function inferredLandPalette(card) {
       return basicColors.map(([, color]) => color);
   }
   if (
-    !['2003', '2015'].includes(card.frame) ||
+    !['2003', '2015', 'future'].includes(card.frame) ||
     !/\bLand\b/.test(card.type_line ?? '') ||
     /\b(?:Artifact|Basic)\b/.test(card.type_line ?? '') ||
     card.colors?.length

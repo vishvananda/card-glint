@@ -127,3 +127,10 @@ Pack: `magic-future.mse-style`, `magic-new-flip.mse-style`,
 hashes, numeric fields and font names. MSE scripts are neither executed nor
 redistributed. Frame images and masks remain external URL references, with
 their original rights; this repository's code license does not cover them.
+
+Futureshifted candidates additionally reference Card Conjurer’s pinned
+`img/frames/future/regular` plates and `img/manaSymbols/future` cost medallions,
+and MSE’s `magic-future-textless.mse-style` and
+`magic-mana-future.mse-symbol-font`. Two-color land components use MSE’s
+horizontal 40–60% blend and hybrid masks to retain neutral title/type interiors.
+These assets remain external; no source scripts are executed.

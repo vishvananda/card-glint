@@ -97,6 +97,7 @@ export function paintRulesLayout(
   images: CanvasImages,
   paintSymbol: typeof paintMana = paintMana,
   inkInsetEm = 0,
+  color = '#17140f',
 ) {
   if (layout.overflow) throw Error('Magic rules text does not fit the available area.');
   context.save();
@@ -112,7 +113,7 @@ export function paintRulesLayout(
     context.fillStyle = gradient;
     context.fillRect(layout.x, y, layout.width, 0.6);
   }
-  context.fillStyle = '#17140f';
+  context.fillStyle = color;
   // Optical weight adjustment belongs to face composition, never the draw loop.
   // Remove a narrow outline from a separate text layer so frame texture survives.
   const layer = inkInsetEm > 0 ? document.createElement('canvas') : null;
@@ -127,7 +128,7 @@ export function paintRulesLayout(
     ink.textAlign = 'left';
     ink.textBaseline = 'alphabetic';
     ink.letterSpacing = '0px';
-    ink.fillStyle = '#17140f';
+    ink.fillStyle = color;
   }
   for (const line of layout.lines) {
     let x = line.x ?? layout.x;

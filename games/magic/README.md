@@ -91,9 +91,16 @@ same release's decode policy as its painter.
 
 ## Replacement asset candidates
 
+Future's optional `futureTreatment: 'regular' | 'full-art' | 'clear'` describes
+the physical printing, independently of Oracle wording. Full-art plates have no
+rules panel and reject nonempty body text instead of silently dropping it.
+Regular plates use their visible art window for fitting; clear plates need a
+full-height illustration. Some Scryfall futureshifted art crops omit the curved
+left side and cannot reproduce that window without a better source.
+
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
-pinned Magic Set Editor defaults. These are uncalibrated starting points, not
-scan-validated layouts. A flip input needs two `faces` in printed order; a Battle
+pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
+These are uncalibrated starting points, not scan-validated layouts. A flip input needs two `faces` in printed order; a Battle
 uses `defense` and is drawn in its physical portrait scan orientation. Future
 frames use their shaped art mask. These templates cannot be combined with
 `frameAssetFamily`. Missing required plates fail the complete face preparation.

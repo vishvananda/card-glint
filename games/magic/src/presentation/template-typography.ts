@@ -52,6 +52,7 @@ export function templateRules(
   rect: FaceRect,
   size: number,
   min: number,
+  color = '#17140f',
 ) {
   const [x, y, width, height] = rect;
   const paragraphs =
@@ -67,7 +68,7 @@ export function templateRules(
     flavorOrphans: false,
   });
   if (layout.overflow) throw Error('Standard template text exceeds its minimum readable size.');
-  paintRulesLayout(c, layout, images);
+  paintRulesLayout(c, layout, images, undefined, 0, color);
 }
 export function templateStats(
   c: CanvasRenderingContext2D,

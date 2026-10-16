@@ -20,8 +20,10 @@ export interface RulesParagraph {
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
   frameStyle?: 'modern' | 'retro';
-  /** Uncalibrated standard templates using pinned MSE defaults. */
+  /** Standard template families with pinned sources; calibration is family-specific. */
   frameTemplate?: 'future' | 'flip' | 'battle';
+  /** Physical Future Sight treatment; retained when switching printed wording. */
+  futureTreatment?: 'regular' | 'full-art' | 'clear';
   /** Printed Battle defense, independent of creature and planeswalker stats. */
   defense?: string | number | null;
   /** Opt-in full frame plates, with their own art and text geometry. Omitted
