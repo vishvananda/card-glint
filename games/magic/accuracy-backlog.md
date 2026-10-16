@@ -14,8 +14,9 @@ padding now stays within clean outer-frame pixels, and separate edge strips
 validate each pose. All 310 scans pass content-isolation checks; **303 pass
 alignment and seven remain flagged**. Poses affect comparison scans only.
 The equivalent Alpha/Beta/Unlimited/Revised audit is now recorded below. Its new
-comparison poses are frozen offline; the live review application still uses its
-previous templates until the next validated renderer/scoring update.
+Alpha/Beta/Unlimited comparison poses are frozen offline. Revised interior
+normalization is deployed with the 0.3.12 frame update; the other live templates
+await their next validated renderer/scoring update.
 
 Rechecking unchanged renderer crops with corrected poses preserves every held-out
 improvement: titles 63.4% → 72.4%, types 76.4% → 80.2%, mana 47.0% → 84.4%, and
@@ -270,6 +271,20 @@ test certifies only pixels outside the selected narrow bands; reference letterin
 inside a band is not independently certified. These frozen offline poses support
 the next shared-frame fit. They do not change live templates, renderer defaults,
 wording eligibility or whole-card scores.
+
+The [ABU shared-frame proposals](fixtures/accuracy/abu-frame-proposals.json)
+measure 891 accepted Alpha/Beta/Unlimited scans against 62 blank source variants.
+All blank variants exactly reproduce their existing rasters under 0.4.0. Shared
+per-set/material scale and position improve the modelled interior-frame mean on
+all 724 reused validation cards. Eighteen nonland groups are ready for actual
+painter replay, including art-aperture and source-bound color verification.
+These are predicted gradient correlations, not released accuracy gains.
+
+Whole-frame land transforms remain unsuitable despite their higher averages.
+Beta dual rules-top correlation drops 0.65 → 0.20; Beta basics lose art-right and
+rules-side agreement, and Unlimited duals lose art-bottom agreement. Fit those
+boundaries separately and preserve the existing land geometry in the first
+nonland candidate. Eight uncertain Alpha/Beta scans remain excluded throughout.
 
 ## Revised frame geometry candidate
 
