@@ -7,7 +7,8 @@ import { futureGeometry, futurePalette, futureParts, futureTreatment } from './f
 import { futureArtMask, prepareFutureFrame } from './future-frame-paint.js';
 import { paintFutureMana } from './future-mana.js';
 import { resolveCardProfile } from './profile.js';
-import { templateRules } from './template-typography.js';
+import { futureRulesLayout } from './future-rules.js';
+import { paintRulesLayout } from './rules-paint.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
 import { futureSetSymbolRect } from './future-set-symbol.js';
 
@@ -83,7 +84,7 @@ export function paintFutureTemplate(
     // The textless treatment is physical. Additional Oracle text does not
     // switch it to the regular frame or silently change the artwork aperture.
     if (futureTreatment(face) !== 'full-art')
-      templateRules(c, face, images, g.rules, 17.6, 8, rulesInk);
+      paintRulesLayout(c, futureRulesLayout(c, face, g.rules), images, undefined, 0, rulesInk);
     if (face.power != null && face.toughness != null) {
       c.fillStyle = light ? '#fff' : '#111';
       c.textAlign = 'center';

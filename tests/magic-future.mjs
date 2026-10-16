@@ -20,6 +20,8 @@ try {
     const { paintFutureTemplate } = await import(
       '/games/magic/src/presentation/future-template-paint.ts'
     );
+    const { futureRulesLayout } = await import('/games/magic/src/presentation/future-rules.ts');
+    const { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts');
     const { withCardWording } = await import('/games/magic/src/presentation/wording.ts');
     const { calibrateFutureFrame } = await import(
       '/games/magic/src/presentation/future-frame-geometry.ts'
@@ -295,7 +297,58 @@ try {
     for (let i = 0; i < strip.length; i++)
       seamError = Math.max(seamError, Math.abs(strip[i] - [200, 160, 100, 255][i % 4]));
     solid.width = solid.height = fitted.width = fitted.height = 0;
+    const bodyContext = document.createElement('canvas').getContext('2d'),
+      bodyBounds = { x: 50, y: 433, width: 393, height: 166 },
+      bodyCases = [1, 3, 5].map((repetitions) => {
+        const paragraphs = [
+          {
+            role: 'rules',
+            runs: [{ text: 'Reach (This creature can block creatures with flying.)' }],
+          },
+          {
+            role: 'rules',
+            runs: [
+              { text: 'Whenever this creature deals damage, draw a card. '.repeat(repetitions) },
+            ],
+          },
+          {
+            role: 'flavor',
+            runs: [{ text: 'The sentinel watches from the highest branch.', italic: true }],
+          },
+        ];
+        const before = layoutRules(
+          bodyContext,
+          paragraphs,
+          bodyBounds,
+          (17.6 * 4) / 3,
+          (8 * 4) / 3,
+          {
+            leading: 0.95,
+            paragraphGap: 0.4,
+            flavorGap: 0.5,
+            flavorOrphans: false,
+          },
+        );
+        const after = futureRulesLayout(
+          bodyContext,
+          { ...base, rulesParagraphs: paragraphs },
+          [50, 433, 393, 166],
+        );
+        const words = (layout) => layout.lines.map((line) => line.runs.map((run) => run.text));
+        return {
+          preserved: JSON.stringify(words(before)) === JSON.stringify(words(after)),
+          sameSize: before.size === after.size,
+          noDivider: before.separators.length === 1 && after.separators.length === 0,
+          fits:
+            !after.overflow &&
+            after.lines.every(
+              (line) =>
+                line.inkBounds[1] >= 433 - 0.01 && line.inkBounds[1] + line.inkBounds[3] <= 599.01,
+            ),
+        };
+      });
     return {
+      bodyCases,
       rows,
       seamError,
       paperBackingAlpha,
@@ -332,6 +385,7 @@ try {
     };
   });
   assert.equal(result.rows.length, 8);
+  assert.ok(result.bodyCases.every((r) => r.preserved && r.sameSize && r.noDivider && r.fits));
   assert.deepEqual(result.placement.source, [255, 255, 255, 255]);
   assert.deepEqual(result.placement.fallback, [18, 52, 86, 255]);
   assert.deepEqual(result.placement.edge, [255, 255, 255, 255]);

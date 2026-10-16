@@ -1,0 +1,3388 @@
+{
+  "schema": 1,
+  "status": "runtime-replay",
+  "recipe": "canvas-face-v120",
+  "policy": "One shared FUT body placement; current MPlantin, font size, line spacing, paragraph spacing and line breaks retained. Remove unprinted flavor divider. Exact full-painter verification against private native-raster predictions. Frozen independent frame poses. The original 23/53 split was reused after two rejected font/reflow trials; this is repeated validation, not an untouched holdout. Per-card exploratory fits are not defaults.",
+  "profile": {
+    "font": "current",
+    "x": 49.625,
+    "y": 433,
+    "width": 393,
+    "height": 166,
+    "size": 23.46666666666667,
+    "leading": 0.95,
+    "paragraphGap": 0.4,
+    "flavorGap": 0.5,
+    "centerOffset": 0.875,
+    "widthScale": 1,
+    "inkInset": 0,
+    "separator": false,
+    "preserveWrap": true
+  },
+  "scope": {
+    "total": 81,
+    "rules": 76,
+    "controls": 5
+  },
+  "rejectedTrials": [
+    {
+      "kind": "alternate-font-and-reflow",
+      "reason": "Large line-wrap regressions despite improved mean"
+    },
+    {
+      "kind": "small-reflow-adjustment",
+      "reason": "Thornweald Archer shrank by 0.25px, losing a line and moving the block"
+    }
+  ],
+  "limitations": [
+    "Printed size and weight vary; retained source sizing remains a review item.",
+    "The five sparse full-art materials have no body.",
+    "This measures typography only, not whole-card accuracy."
+  ],
+  "summary": {
+    "calibration": {
+      "count": 23,
+      "metrics": {
+        "darkEdgeF1": {
+          "before": 0.5180627919661328,
+          "after": 0.5390425829738564,
+          "improved": 15
+        },
+        "edgeF1": {
+          "before": 0.4821515166886624,
+          "after": 0.49821063857925985,
+          "improved": 15
+        },
+        "meanDistance": {
+          "before": 2.3846191203367084,
+          "after": 2.3236059724168423,
+          "improved": 16
+        },
+        "censusSimilarity": {
+          "before": 0.567472950652902,
+          "after": 0.5776758957240701,
+          "improved": 14
+        }
+      },
+      "objective": {
+        "before": 0.5167250076167073,
+        "after": 0.5370060346644939
+      },
+      "regressions": [
+        {
+          "id": "250ee8d2-6f03-44a5-8f4c-ced4eaa4cdea",
+          "name": "Ramosian Revivalist",
+          "before": 0.25260196682948466,
+          "after": 0.22920923869667256
+        },
+        {
+          "id": "3dab4f64-2a91-409a-b83b-45b22afd22ff",
+          "name": "Nix",
+          "before": 0.1962392153942679,
+          "after": 0.18416519048787985
+        },
+        {
+          "id": "061d2f8f-1166-4579-9609-d8ba5db79172",
+          "name": "Second Wind",
+          "before": 0.6449246273659894,
+          "after": 0.6028195871307137
+        },
+        {
+          "id": "0808b800-9f5f-42ef-8cd0-c04e64945adf",
+          "name": "Spin into Myth",
+          "before": 0.6879215244996892,
+          "after": 0.6577957472252556
+        },
+        {
+          "id": "08e1a646-6925-4a53-a99c-8951af016a7a",
+          "name": "Fleshwrither",
+          "before": 0.46981889719858283,
+          "after": 0.4661781313145564
+        },
+        {
+          "id": "0c876479-5040-4d36-b43a-54d7fc9160c1",
+          "name": "Homing Sliver",
+          "before": 0.4461376524254234,
+          "after": 0.44138026206549635
+        },
+        {
+          "id": "8cee476d-42e1-4997-87af-73e18f542167",
+          "name": "Dryad Arbor",
+          "before": 0.5681296223173217,
+          "after": 0.547253463659641
+        },
+        {
+          "id": "81e7d329-ef6a-45f3-82b6-37a3606c00bc",
+          "name": "Graven Cairns",
+          "before": 0.6707971999991859,
+          "after": 0.6536574985792519
+        }
+      ]
+    },
+    "validation": {
+      "count": 53,
+      "metrics": {
+        "darkEdgeF1": {
+          "before": 0.5256223159613634,
+          "after": 0.5363568022491376,
+          "improved": 32
+        },
+        "edgeF1": {
+          "before": 0.4872006239734053,
+          "after": 0.49356133422558823,
+          "improved": 29
+        },
+        "meanDistance": {
+          "before": 2.505171203341458,
+          "after": 2.47069593852721,
+          "improved": 29
+        },
+        "censusSimilarity": {
+          "before": 0.5734416109288236,
+          "after": 0.5784010295649437,
+          "improved": 31
+        }
+      },
+      "objective": {
+        "before": 0.5218588566383916,
+        "after": 0.5330933014920453
+      },
+      "regressions": [
+        {
+          "id": "99c0eb4c-c8f1-40cf-ae0a-a413432b4c5f",
+          "name": "Goldmeadow Lookout",
+          "before": 0.32551511126855304,
+          "after": 0.30253177069310266
+        },
+        {
+          "id": "7a9a3aeb-a316-4b1e-927b-36c3f999f2c3",
+          "name": "Oriss, Samite Guardian",
+          "before": 0.595655561025088,
+          "after": 0.5686528281733408
+        },
+        {
+          "id": "b8bf083e-d0ec-4df9-a17a-8a28ad13d594",
+          "name": "Mesmeric Sliver",
+          "before": 0.44304232210009203,
+          "after": 0.4385220503582476
+        },
+        {
+          "id": "f76b3746-2e2c-4560-a2d2-e7b5b92833b2",
+          "name": "Narcomoeba",
+          "before": 0.7440522413556083,
+          "after": 0.7001805036208413
+        },
+        {
+          "id": "48cb3fa8-555f-4df6-994e-cf01896f7470",
+          "name": "Shapeshifter's Marrow",
+          "before": 0.6093812241297607,
+          "after": 0.608340707677295
+        },
+        {
+          "id": "79cc73ea-3f07-4d11-9961-dc31ac598b73",
+          "name": "Spellweaver Volute",
+          "before": 0.8568218391685047,
+          "after": 0.8356711835338835
+        },
+        {
+          "id": "496eb37d-5c8f-4dd7-a0a7-3ed1bd2210d6",
+          "name": "Vedalken Aethermage",
+          "before": 0.6720505481300548,
+          "after": 0.6336895826382775
+        },
+        {
+          "id": "b66cc281-3fa9-4d7b-a32b-41c0a93059ba",
+          "name": "Deepcavern Imp",
+          "before": 0.5025595211846389,
+          "after": 0.47784818333792634
+        },
+        {
+          "id": "93b47606-82d1-402c-b1c6-591457b10d86",
+          "name": "Snake Cult Initiation",
+          "before": 0.5439607512375423,
+          "after": 0.5117728022593513
+        },
+        {
+          "id": "8bd55a11-8658-4b92-9151-d6173a11991a",
+          "name": "Tombstalker",
+          "before": 0.5164395049634894,
+          "after": 0.4804963538686139
+        },
+        {
+          "id": "651c7735-088d-495b-a58f-69abf4cac197",
+          "name": "Witch's Mist",
+          "before": 0.20005614276246186,
+          "after": 0.18464479210896878
+        },
+        {
+          "id": "179bec14-2e22-43eb-8854-b70a97dd023b",
+          "name": "Boldwyr Intimidator",
+          "before": 0.5024740965769507,
+          "after": 0.46628872669011195
+        },
+        {
+          "id": "a60475e5-0d37-4af0-b717-da4c8dea45ac",
+          "name": "Ghostfire",
+          "before": 0.5716309727849935,
+          "after": 0.5714471813746947
+        },
+        {
+          "id": "3b41cef7-bb16-4d89-9900-dc6d1f5200f0",
+          "name": "Henchfiend of Ukor",
+          "before": 0.6090784873620615,
+          "after": 0.5943899979829903
+        },
+        {
+          "id": "cee5e9e3-e3ae-4e1b-a8fb-48c523631105",
+          "name": "Shah of Naar Isle",
+          "before": 0.5870598603267341,
+          "after": 0.5583896462478303
+        },
+        {
+          "id": "4b232c36-bff1-4f5e-98a6-ce6a98591aa6",
+          "name": "Skizzik Surger",
+          "before": 0.5005832462187688,
+          "after": 0.48797042908024074
+        },
+        {
+          "id": "4ef863d2-1e11-41cc-90d5-008bf6234565",
+          "name": "Nacatl War-Pride",
+          "before": 0.6444677763428487,
+          "after": 0.6352010421465678
+        },
+        {
+          "id": "b6876d9e-0908-43ac-8542-09c7aa02b5ba",
+          "name": "Tarmogoyf",
+          "before": 0.6442217244848509,
+          "after": 0.6049313178163621
+        },
+        {
+          "id": "66de9c95-e590-4b0d-a2d7-886d7a488a10",
+          "name": "Virulent Sliver",
+          "before": 0.5371549002892421,
+          "after": 0.5358971383263144
+        },
+        {
+          "id": "e0b4d4b1-6e25-4c4b-a21a-1b7b1c1d6452",
+          "name": "Grove of the Burnwillows",
+          "before": 0.6989794399485463,
+          "after": 0.6734365502433562
+        },
+        {
+          "id": "c1db30e1-31df-44b9-930a-02428bd5ce47",
+          "name": "Zoetic Cavern",
+          "before": 0.3959342621720989,
+          "after": 0.3853804075653107
+        }
+      ]
+    }
+  },
+  "rows": [
+    {
+      "id": "5b8ede8a-5317-4662-b964-a9bd202a4aab",
+      "name": "Aven Mindcensor",
+      "cohort": "validation",
+      "referenceHash": "8153d0b87365f697c04a1efcf6acbafe5a22d5815dd827845152c5686a294175",
+      "pose": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.075, 0.25]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.39234520517705324,
+        "darkEdgeF1": 0.438190984156018,
+        "lightEdgeF1": 0.3464994261980885,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.5560872127310548,
+        "censusSimilarity": 0.524348066994079
+      },
+      "after": {
+        "edgeF1": 0.4046594480326565,
+        "darkEdgeF1": 0.4557002193314335,
+        "lightEdgeF1": 0.3536186767338796,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.4217533161777163,
+        "censusSimilarity": 0.5283079659661536
+      },
+      "objective": {
+        "before": 0.437971016059927,
+        "after": 0.4553381319884988
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a19b3f217e7aad98ed6f286891fd3f776786b53c166881c036de50e2a972c0cc",
+      "afterRenderHash": "766b8ff9a29490e48b4fb16cd8f5e4e09d0ee69ba64210f1d6d554986a6e208f"
+    },
+    {
+      "id": "6e8a6e04-ce3b-4025-92ba-8980022b8038",
+      "name": "Bound in Silence",
+      "cohort": "validation",
+      "referenceHash": "92b4816ac9fe9a3953e8a887b41f265a04f6df8b5da3d299dd031ad05b0dde63",
+      "pose": {
+        "matrix": [
+          0.9994500000000001, 0, 0, 0.9994500000000001, 0.02500000000000001, 0.27499999999999997
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.3512388064738045,
+        "darkEdgeF1": 0.4076666109854582,
+        "lightEdgeF1": 0.2948110019621508,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.8441760987468214,
+        "censusSimilarity": 0.5388383826612478
+      },
+      "after": {
+        "edgeF1": 0.40813123377694704,
+        "darkEdgeF1": 0.4740356250990215,
+        "lightEdgeF1": 0.34222684245487267,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.2233617129783956,
+        "censusSimilarity": 0.5654531006531993
+      },
+      "objective": {
+        "before": 0.4069652134531645,
+        "after": 0.47763040196563517
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "bc4afee58dbf73777404a3fc434e5852f38822d3ae0bc28596a02223669f0e0c",
+      "afterRenderHash": "1b876a169cb6201eca08c1fe77da3a38ec06aba48792d7f9676831db5664c0ab"
+    },
+    {
+      "id": "2f208f3d-ad21-477a-9e9b-de19afd536b0",
+      "name": "Daybreak Coronet",
+      "cohort": "calibration",
+      "referenceHash": "14c7b6d75fd18fb4597637d01e269158d5293ac580059c52bf1a81b3f3839270",
+      "pose": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.075, 0.2]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4038186918239803,
+        "darkEdgeF1": 0.4410296446467291,
+        "lightEdgeF1": 0.36660773900123145,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.2501726904448986,
+        "censusSimilarity": 0.5351261908525045
+      },
+      "after": {
+        "edgeF1": 0.42091528643553033,
+        "darkEdgeF1": 0.46246043735608655,
+        "lightEdgeF1": 0.37937013551497406,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.1076130812660674,
+        "censusSimilarity": 0.5446620434129541
+      },
+      "objective": {
+        "before": 0.44354480160625315,
+        "after": 0.46553976658219176
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "9a5c6b8e73d1bd90542b8e0e0d26d14bf1ab2a26091bfcdc194ad39c24b16039",
+      "afterRenderHash": "5e1c71b6c6d36d620e0e89e07104d9779671d64b7ac87c8999061d6a9a6ca124"
+    },
+    {
+      "id": "99c0eb4c-c8f1-40cf-ae0a-a413432b4c5f",
+      "name": "Goldmeadow Lookout",
+      "cohort": "validation",
+      "referenceHash": "0177a11b7aed0755117bbae837efe3d084c67ca7886dd5331996459c306aaf51",
+      "pose": {
+        "matrix": [
+          0.9993500000000001, 0, 0, 0.9993500000000001, 0.07500000000000002, 0.22500000000000003
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.3413098382756055,
+        "darkEdgeF1": 0.32551511126855304,
+        "lightEdgeF1": 0.357104565282658,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.9258879906231483,
+        "censusSimilarity": 0.5263583932820386
+      },
+      "after": {
+        "edgeF1": 0.32526954239154815,
+        "darkEdgeF1": 0.30253177069310266,
+        "lightEdgeF1": 0.3480073140899936,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.975452948064737,
+        "censusSimilarity": 0.5191465118619925
+      },
+      "objective": {
+        "before": 0.32701029074009885,
+        "after": 0.307193795673989
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 2,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "69e600639a429e32673507af89255af3c269c189a8c25a0332c28593e5317860",
+      "afterRenderHash": "612467ecca51e4d3e21de4cb4bc5516c62cfa2f82c85f7b644485eb68f19c9a9"
+    },
+    {
+      "id": "bb02f692-80a9-4740-afde-cb4792d24774",
+      "name": "Imperial Mask",
+      "cohort": "validation",
+      "referenceHash": "b9638ea8e3589fa205b3d68c0fb37fc4afcd0cbe7a26f0406b0eeff00ab77c2a",
+      "pose": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, 0.05, 0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.44067502677377335,
+        "darkEdgeF1": 0.4692714067933957,
+        "lightEdgeF1": 0.41207864675415096,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.2666045616764867,
+        "censusSimilarity": 0.5170321064133092
+      },
+      "after": {
+        "edgeF1": 0.4460085443423104,
+        "darkEdgeF1": 0.4884923715781303,
+        "lightEdgeF1": 0.4035247171064905,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.180606043000177,
+        "censusSimilarity": 0.520525600385309
+      },
+      "objective": {
+        "before": 0.4791239700525341,
+        "after": 0.5004138929489875
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "fa8ecbaeb84d090985609036a2da66ab711b86ef0bb4a8f6e873c65742ce9d26",
+      "afterRenderHash": "a6a158ba25e1029e14865063d9ed1e666c65ef5bf39054c82cda74bd20dedb5c"
+    },
+    {
+      "id": "cd700719-2f65-4fd5-b3aa-3e9402560c79",
+      "name": "Lucent Liminid",
+      "cohort": "validation",
+      "referenceHash": "6be6de58dd8b8701bbac3bde5d816bc1788a514311d34dd4f9aa24b6a22c317c",
+      "pose": {
+        "matrix": [0.9997, 0, 0, 0.9997, 0.025000000000000022, 0.225]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.40628075531488017,
+        "darkEdgeF1": 0.46977874285310794,
+        "lightEdgeF1": 0.3427827677766524,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 5.292509931832077,
+        "censusSimilarity": 0.5697946934399702
+      },
+      "after": {
+        "edgeF1": 0.43059444228269383,
+        "darkEdgeF1": 0.5168686430172723,
+        "lightEdgeF1": 0.34432024154811536,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 5.417665371485519,
+        "censusSimilarity": 0.5817986137126361
+      },
+      "objective": {
+        "before": 0.4517978078703404,
+        "after": 0.49625252344287546
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "9a5e2dae79342b651a369b81d6bdb720ca9a1ca52b0aff98648eb94573227b31",
+      "afterRenderHash": "0489d0825c8f4a47626d48455b4f53525eb4642d3becb029050948a08f45a4ab"
+    },
+    {
+      "id": "772bf1a3-ab2d-4fe6-830b-1c5ef8f5dc07",
+      "name": "Lumithread Field",
+      "cohort": "validation",
+      "referenceHash": "936ec452a559e1e6b73c6c72ec458bfdc2074e2e1d3081c2abeede28ac28051e",
+      "pose": {
+        "matrix": [0.99975, 0, 0, 0.99975, 0.025000000000000022, 0.175]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4112764551116547,
+        "darkEdgeF1": 0.4607506947806881,
+        "lightEdgeF1": 0.36180221544262137,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.3992881128438657,
+        "censusSimilarity": 0.5189989131771935
+      },
+      "after": {
+        "edgeF1": 0.43462158244817367,
+        "darkEdgeF1": 0.49116387937542993,
+        "lightEdgeF1": 0.3780792855209174,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.263264190892306,
+        "censusSimilarity": 0.5301251548309966
+      },
+      "objective": {
+        "before": 0.4693957296091405,
+        "after": 0.5009177879937553
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "cc712ea1fb9d8d3742dd97e0c317d1f966a516ba0d65a6ac48e6c7bb1f0264dd",
+      "afterRenderHash": "6cffd98a6a11e92a8eeb799e068fbe83fa3dd705600ed0177b9e062fc7edfffc"
+    },
+    {
+      "id": "d9cdb51f-c785-47d1-b23c-de74eeb22a31",
+      "name": "Lymph Sliver",
+      "cohort": "validation",
+      "referenceHash": "afca10e500dd22e51bb8f09b37cbaa24eba25e905f5b579462c7c247b51af826",
+      "pose": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.05000000000000002, 0.22499999999999998]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.39935096078517857,
+        "darkEdgeF1": 0.4200497719058412,
+        "lightEdgeF1": 0.37865214966451594,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.047791501019817,
+        "censusSimilarity": 0.5097397841325222
+      },
+      "after": {
+        "edgeF1": 0.41153511510379215,
+        "darkEdgeF1": 0.4428700251823778,
+        "lightEdgeF1": 0.3802002050252066,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.8851983161014365,
+        "censusSimilarity": 0.507259245348179
+      },
+      "objective": {
+        "before": 0.4250959792333905,
+        "after": 0.45153028541906426
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "aa7855533ea00ad56b02fecf4a289c08eef535665cae17ad232489b59183d1aa",
+      "afterRenderHash": "01209403d7ae49ace9c749127dc94ce1860e775972e9a4375547e5613b472429"
+    },
+    {
+      "id": "f1b45f8f-8f41-426d-b773-1e8cdfbff6f8",
+      "name": "Mistmeadow Skulk",
+      "cohort": "validation",
+      "referenceHash": "d0d3e259acfee1cb90cfbfe4d688556b3e6d73538c3a17dbd742c4e56e8884bb",
+      "pose": {
+        "matrix": [
+          1.0003499047737408, 0.00043648501545803396, -0.0006104070606035196, 0.999249828781215,
+          0.125, 0.25
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.49754257711900574,
+        "darkEdgeF1": 0.5724070450097847,
+        "lightEdgeF1": 0.42267810922822685,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.180220877291447,
+        "censusSimilarity": 0.571395741176156
+      },
+      "after": {
+        "edgeF1": 0.5550027772965295,
+        "darkEdgeF1": 0.6273996563304389,
+        "lightEdgeF1": 0.48260589826262007,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0421110271576803,
+        "censusSimilarity": 0.603110947680326
+      },
+      "objective": {
+        "before": 0.5705788700437113,
+        "after": 0.6209817805214085
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "e4a5ff94f9980cdfefeaa575ceb705c21797109ee4e160c06074d82e6299668b",
+      "afterRenderHash": "ea6db97825d64b8f9c2f15765b3eda76518dd01a7dfd8efcd2954e3dc68c8e8b"
+    },
+    {
+      "id": "7a9a3aeb-a316-4b1e-927b-36c3f999f2c3",
+      "name": "Oriss, Samite Guardian",
+      "cohort": "validation",
+      "referenceHash": "478a1fc3dddd3977d0682f9a7173b036d62018dd147eea66c1efbb32ae365d5a",
+      "pose": {
+        "matrix": [0.9995, 0, 0, 0.9995, -0.04999999999999999, 0.25]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5401366269695582,
+        "darkEdgeF1": 0.595655561025088,
+        "lightEdgeF1": 0.4846176929140285,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7151040019220112,
+        "censusSimilarity": 0.5858525732928046
+      },
+      "after": {
+        "edgeF1": 0.5240929654871682,
+        "darkEdgeF1": 0.5686528281733408,
+        "lightEdgeF1": 0.4795331028009956,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7922531850435548,
+        "censusSimilarity": 0.5709118632085646
+      },
+      "objective": {
+        "before": 0.6014293574957055,
+        "after": 0.57645592106687
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "f1e71bc1aa3e6acf9e1e47374d7af0494042f117b2eef1d5e396c7c6d3c8f7d3",
+      "afterRenderHash": "66aa21d30842e003b1349d6d2bb598c1810d3e68e776488535a271b2842d5a89"
+    },
+    {
+      "id": "4edfd70c-2923-4813-bf14-04194518163c",
+      "name": "Patrician's Scorn",
+      "cohort": "calibration",
+      "referenceHash": "de7da397c3a55295aaec1604bf994c6c61b82b515b909413839547f06fc021c5",
+      "pose": {
+        "matrix": [0.99965, 0, 0, 0.99965, -0.04999999999999999, 0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.7606235915266417,
+        "darkEdgeF1": 0.8210845840195654,
+        "lightEdgeF1": 0.700162599033718,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.1238304827683632,
+        "censusSimilarity": 0.7811368920449363
+      },
+      "after": {
+        "edgeF1": 0.7704868764469252,
+        "darkEdgeF1": 0.8251500632097967,
+        "lightEdgeF1": 0.7158236896840536,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.0359667937898938,
+        "censusSimilarity": 0.7463876713046438
+      },
+      "objective": {
+        "before": 0.7813838587346233,
+        "after": 0.7883280408118521
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a139ef5c4618c25792ceffa2b63030ae7833c6ab225cb4f4628db40e133a44ad",
+      "afterRenderHash": "44bae698bcbf771465087ec20820ab55b14bb27e95055f81c29e391379762af5"
+    },
+    {
+      "id": "250ee8d2-6f03-44a5-8f4c-ced4eaa4cdea",
+      "name": "Ramosian Revivalist",
+      "cohort": "calibration",
+      "referenceHash": "15cae9c90a5ea0befc5abe08d88ae7f7ba027a9c41548ccf4adb7dd2875601f6",
+      "pose": {
+        "matrix": [0.9994500000000001, 0, 0, 0.9994500000000001, 0.02500000000000001, 0.2]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.30489732591583185,
+        "darkEdgeF1": 0.25260196682948466,
+        "lightEdgeF1": 0.35719268500217904,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.9013920336242425,
+        "censusSimilarity": 0.5004464303671714
+      },
+      "after": {
+        "edgeF1": 0.2869639214223018,
+        "darkEdgeF1": 0.22920923869667256,
+        "lightEdgeF1": 0.3447186041479311,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.8766084121028705,
+        "censusSimilarity": 0.49178383774860535
+      },
+      "objective": {
+        "before": 0.2567827343519971,
+        "after": 0.23598922052213833
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "634c9ff1c27f911cd2be1704c3b71a9f21261f72d94e08023cd5f00378ff6ca9",
+      "afterRenderHash": "7206c425c97ce3ef4fb507ffc9582a47afd5ee9145603df5e9db71d3b593e524"
+    },
+    {
+      "id": "2092edca-cdc9-47e2-9c0c-e73c5a657777",
+      "name": "Seht's Tiger",
+      "cohort": "calibration",
+      "referenceHash": "b178c5f2651bcd5c176f0b5c5f885825c3202ebcc6457c94238f9942668d7af3",
+      "pose": {
+        "matrix": [0.99955, 0, 0, 0.99955, 0.025000000000000022, 0.22499999999999998]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4282395192117763,
+        "darkEdgeF1": 0.46860450298724754,
+        "lightEdgeF1": 0.387874535436305,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.130913530860547,
+        "censusSimilarity": 0.494407442699344
+      },
+      "after": {
+        "edgeF1": 0.4751315549561873,
+        "darkEdgeF1": 0.5476582434062235,
+        "lightEdgeF1": 0.4026048665061512,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.8863656234716966,
+        "censusSimilarity": 0.5302908426491979
+      },
+      "objective": {
+        "before": 0.48421567109394903,
+        "after": 0.5601524456600262
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "c8fb448fb2aa8f02362de1deefa8b11b1a0bfc65d54bee3b2e19604d8c650f27",
+      "afterRenderHash": "0317a6f679efbb71f262bb9cd2850a8095e5ecc944a89ae3dea9177163ad3b99"
+    },
+    {
+      "id": "47e6e715-abd8-4ff9-a8aa-8f4b929b0283",
+      "name": "Arcanum Wings",
+      "cohort": "validation",
+      "referenceHash": "1b86429cba74d557bf00dae15d31fc29107a94a408e550503c9786cbe69c805d",
+      "pose": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.075, -0.09999999999999999]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.48814923066351595,
+        "darkEdgeF1": 0.5389151839106039,
+        "lightEdgeF1": 0.437383277416428,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.664349364701753,
+        "censusSimilarity": 0.5743460814617568
+      },
+      "after": {
+        "edgeF1": 0.5336044851017492,
+        "darkEdgeF1": 0.5818386702114189,
+        "lightEdgeF1": 0.48537029999207953,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.458775914168609,
+        "censusSimilarity": 0.5977281234867076
+      },
+      "objective": {
+        "before": 0.5272328843924536,
+        "after": 0.5680537873461785
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "4275446be6bfe7f3e4f332b0ef5421f824448fff002c882576a14733014b6da1",
+      "afterRenderHash": "e1a0e0099961e1751e83e6c415fec728355060a7a3f313b32daec765faff7bf5"
+    },
+    {
+      "id": "76ced470-97c3-4683-b97f-9ebb8c3fbd11",
+      "name": "Bonded Fetch",
+      "cohort": "validation",
+      "referenceHash": "cb4b9857837c5abf15fb97c33a7f805266666f7d11c193b53de1dcd788689baa",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.125, 0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5615133112324189,
+        "darkEdgeF1": 0.6132120830350938,
+        "lightEdgeF1": 0.5098145394297439,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.2612421037563775,
+        "censusSimilarity": 0.629980974112629
+      },
+      "after": {
+        "edgeF1": 0.5540397546358976,
+        "darkEdgeF1": 0.619414573548508,
+        "lightEdgeF1": 0.4886649357232871,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.1526949404258238,
+        "censusSimilarity": 0.626506220451005
+      },
+      "objective": {
+        "before": 0.5914817257559146,
+        "after": 0.6070164786494497
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "c68cfe843047b0f6b2ddd97464237ab22d77b8c07b5163b381b9ae9368d1f769",
+      "afterRenderHash": "cc7c89ced54abf5bce3ad6c3f4fcd72473c4bd6a8e82e1ae34c5baba2f5ec0c0"
+    },
+    {
+      "id": "799538af-e497-457b-b096-ee6f342f51b5",
+      "name": "Linessa, Zephyr Mage",
+      "cohort": "validation",
+      "referenceHash": "12e26aabae8945ba76f5321caa4956020e1aea2c7a75c62e6382625597b6074d",
+      "pose": {
+        "matrix": [1.0004, 0, 0, 1.0004, 1.3877787807814457e-17, -0.09999999999999999]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.6559732446738071,
+        "darkEdgeF1": 0.7107308060301121,
+        "lightEdgeF1": 0.6012156833175022,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.4140402869894977,
+        "censusSimilarity": 0.6250174088190761
+      },
+      "after": {
+        "edgeF1": 0.7243494500429548,
+        "darkEdgeF1": 0.7784504622433118,
+        "lightEdgeF1": 0.6702484378425979,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.2886924275982072,
+        "censusSimilarity": 0.697536199591641
+      },
+      "objective": {
+        "before": 0.6978158617597854,
+        "after": 0.7494419356650219
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "5912b42e234b13dc2e202c9552a57e058aec93dd30fb533e3d9fa32983d1f663",
+      "afterRenderHash": "d5e31cb84b43a9888c076865bc0184c1affb7a91b138f4b28acb442d6b70b0bf"
+    },
+    {
+      "id": "4e946be1-4ed6-4e2c-9782-3f630f8a8e1f",
+      "name": "Logic Knot",
+      "cohort": "validation",
+      "referenceHash": "d86324347d28a7b52d6305db2be2735099dd863944034833431672d823e5c72d",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.09999999999999998, -0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.6741942646117294,
+        "darkEdgeF1": 0.7362284379580392,
+        "lightEdgeF1": 0.6121600912654196,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.596996616485519,
+        "censusSimilarity": 0.7028088291965378
+      },
+      "after": {
+        "edgeF1": 0.6862732750962095,
+        "darkEdgeF1": 0.745725153988876,
+        "lightEdgeF1": 0.6268213962035429,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.5129588296953478,
+        "censusSimilarity": 0.7250696477599139
+      },
+      "objective": {
+        "before": 0.7069823939829478,
+        "after": 0.7215022312664113
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "e29d97b7e6fb72899fc2f2b2f1ccdfdcd04a7c725e1c03911764609b182b5a44",
+      "afterRenderHash": "74a7f68bcd890a3a6465ff40897133ac42a30b7a00cd310c316ae6598746c413"
+    },
+    {
+      "id": "b8bf083e-d0ec-4df9-a17a-8a28ad13d594",
+      "name": "Mesmeric Sliver",
+      "cohort": "validation",
+      "referenceHash": "8566341558cbddaefb1399f21d9e3f974628f084ea7877c3d8a71e5015216650",
+      "pose": {
+        "matrix": [
+          0.9997499847729372, -0.00017448929108225853, 0, 1.0004500152377254, -0.024999999999999994,
+          -0.125
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.3956371102090609,
+        "darkEdgeF1": 0.44304232210009203,
+        "lightEdgeF1": 0.34823189831802975,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.5951568529278912,
+        "censusSimilarity": 0.532639800938641
+      },
+      "after": {
+        "edgeF1": 0.390982780833678,
+        "darkEdgeF1": 0.4385220503582476,
+        "lightEdgeF1": 0.3434435113091084,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.618376621645659,
+        "censusSimilarity": 0.5363667437516575
+      },
+      "objective": {
+        "before": 0.43998983300273675,
+        "after": 0.43294525896381286
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "2ec8fb1dbf90155bae59bf8677d96d72b2d585730ad5944326c3e0e0ae5c42bd",
+      "afterRenderHash": "23b3c82b400a42451e0cb9e670898d62af4d8ef599b706fde4d3da62e9da261e"
+    },
+    {
+      "id": "f76b3746-2e2c-4560-a2d2-e7b5b92833b2",
+      "name": "Narcomoeba",
+      "cohort": "validation",
+      "referenceHash": "77547def17bab844cb4497502aa7352f2a3fab3d6393839d2fb836cfa51a0cea",
+      "pose": {
+        "matrix": [1, 0, 0, 1, -0.024999999999999994, -0.024999999999999994]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.7052120716960952,
+        "darkEdgeF1": 0.7440522413556083,
+        "lightEdgeF1": 0.6663719020365823,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7733209818839386,
+        "censusSimilarity": 0.7431670597950488
+      },
+      "after": {
+        "edgeF1": 0.6380974887210673,
+        "darkEdgeF1": 0.7001805036208413,
+        "lightEdgeF1": 0.5760144738212934,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.836495522039888,
+        "censusSimilarity": 0.6786501115147233
+      },
+      "objective": {
+        "before": 0.7079672955793885,
+        "after": 0.6829109108385624
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "98b2a106819b8212821dafdcf87c17754de1e21c069bdac4aa0bdccde10a6adf",
+      "afterRenderHash": "f77d1074ec8348e97875085bc76075e4f5b9e431de6a05201798a68deb1ecf91"
+    },
+    {
+      "id": "3dab4f64-2a91-409a-b83b-45b22afd22ff",
+      "name": "Nix",
+      "cohort": "calibration",
+      "referenceHash": "814be011ead382d76dc6137d03d13807c9e3fca6326ff75c2a1354d037c48df4",
+      "pose": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0.05000000000000003, -0.05]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.25166657854699287,
+        "darkEdgeF1": 0.1962392153942679,
+        "lightEdgeF1": 0.3070939416997179,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.978684560042879,
+        "censusSimilarity": 0.4870694943460216
+      },
+      "after": {
+        "edgeF1": 0.23650340929672364,
+        "darkEdgeF1": 0.18416519048787985,
+        "lightEdgeF1": 0.2888416281055674,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 4.111443128157578,
+        "censusSimilarity": 0.49017661563762627
+      },
+      "objective": {
+        "before": 0.21301393869092491,
+        "after": 0.20429703428964144
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a1ff12bd55d16186f505f15f0c6e9a8ee81991ce9e768389474f5a4d86f23b4e",
+      "afterRenderHash": "9c32c98d5df0c1589b4209a0a4d8d1f3a502fc91eb45b3b2362bd93f2ebac581"
+    },
+    {
+      "id": "77a425d3-a0b7-4d8d-8013-a27c59758b28",
+      "name": "Sarcomite Myr",
+      "cohort": "calibration",
+      "referenceHash": "dd394154c5089677cd1054208367a5bb4bb10481c2854d22be1d2af6604941ef",
+      "pose": {
+        "matrix": [1, 0, 0, 1, -0.04999999999999999, 0.02500000000000001]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.42009157960060517,
+        "darkEdgeF1": 0.46973508461939184,
+        "lightEdgeF1": 0.37044807458181855,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.466579532634915,
+        "censusSimilarity": 0.5315736755477235
+      },
+      "after": {
+        "edgeF1": 0.4803746125045345,
+        "darkEdgeF1": 0.5521698849903313,
+        "lightEdgeF1": 0.4085793400187377,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.206258083525893,
+        "censusSimilarity": 0.5730075757886616
+      },
+      "objective": {
+        "before": 0.47803695207354524,
+        "after": 0.5552729756218444
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "345cec4ad7b2084932b5b14f5f267fb20c227083d24dc80dfdc674ef30b8131e",
+      "afterRenderHash": "3016445e41e23bee25a1b3f578cf4735bd2c017a8ac078d953c34cbe074acf04"
+    },
+    {
+      "id": "061d2f8f-1166-4579-9609-d8ba5db79172",
+      "name": "Second Wind",
+      "cohort": "calibration",
+      "referenceHash": "de5d421af36fbb3215e692b56865d6509189ff52a29f02ed25acd9e589428777",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.04999999999999999, -0.1]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.604320919472034,
+        "darkEdgeF1": 0.6449246273659894,
+        "lightEdgeF1": 0.5637172115780785,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.2625889829718435,
+        "censusSimilarity": 0.6455536174625172
+      },
+      "after": {
+        "edgeF1": 0.531404650622604,
+        "darkEdgeF1": 0.6028195871307137,
+        "lightEdgeF1": 0.4599897141144942,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.303558990929555,
+        "censusSimilarity": 0.5878463767083852
+      },
+      "objective": {
+        "before": 0.6259163265590069,
+        "after": 0.6017808244216374
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "c650c0c3554ef8f2137be4c04853995ff510f974cf7cb9fd00d0c4ecc461b650",
+      "afterRenderHash": "c90eca4172e2f8067a3e7ffbb0c45b5e0445e4588ee8b361d0ccd3c5a4c8e64b"
+    },
+    {
+      "id": "48cb3fa8-555f-4df6-994e-cf01896f7470",
+      "name": "Shapeshifter's Marrow",
+      "cohort": "validation",
+      "referenceHash": "1a64f0d64a7e18d4ab9a4eab92d183404a66b53707999c4202a697b0f9b603ff",
+      "pose": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.02499999999999998, -0.024999999999999994]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5805579292098757,
+        "darkEdgeF1": 0.6093812241297607,
+        "lightEdgeF1": 0.5517346342899908,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.558359759577939,
+        "censusSimilarity": 0.5952260630204183
+      },
+      "after": {
+        "edgeF1": 0.572833870820888,
+        "darkEdgeF1": 0.608340707677295,
+        "lightEdgeF1": 0.537327033964481,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.5780121930848914,
+        "censusSimilarity": 0.6001443710759251
+      },
+      "objective": {
+        "before": 0.6081223727106931,
+        "after": 0.6085208012294614
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "7da507f73779631dd92eb5a8b7c6f42559543c70c0a5dd5d4b696e5521d28374",
+      "afterRenderHash": "7a57cb61f2999cb832d74ee72ca79e870e3e42c59c539cf37e9349fc2f328b7b"
+    },
+    {
+      "id": "79cc73ea-3f07-4d11-9961-dc31ac598b73",
+      "name": "Spellweaver Volute",
+      "cohort": "validation",
+      "referenceHash": "2c199ba2590769683950e0eb61a9869da997b6bfcc13db971341999118b060ab",
+      "pose": {
+        "matrix": [1.00005, 0, 0, 1.00005, -0.075, -0.05]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.792316826651769,
+        "darkEdgeF1": 0.8568218391685047,
+        "lightEdgeF1": 0.7278118141350332,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.026908939010684,
+        "censusSimilarity": 0.7753380969742962
+      },
+      "after": {
+        "edgeF1": 0.7691750267082582,
+        "darkEdgeF1": 0.8356711835338835,
+        "lightEdgeF1": 0.7026788698826328,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.0742757801943852,
+        "censusSimilarity": 0.7687242731559243
+      },
+      "objective": {
+        "before": 0.814292026639927,
+        "after": 0.8001268265187463
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "9b5cb9804ccf2bac2c17a8f539f123040c5d1ea8b25f03bc753bcf02137d4e55",
+      "afterRenderHash": "36fc48fcbf55a39f718bc14b21ea1d5c885832dcbb7dc31419106edaed1e03e3"
+    },
+    {
+      "id": "0808b800-9f5f-42ef-8cd0-c04e64945adf",
+      "name": "Spin into Myth",
+      "cohort": "calibration",
+      "referenceHash": "f5c20a2e0c0cc403d4fe181e064afb26354b363cd56c6eb2add6d850ca7cdc1d",
+      "pose": {
+        "matrix": [0.9999, 0, 0, 0.9999, 0.02500000000000001, 0.15000000000000002]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.6133432136250574,
+        "darkEdgeF1": 0.6879215244996892,
+        "lightEdgeF1": 0.5387649027504255,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7532484410631726,
+        "censusSimilarity": 0.6662162452822891
+      },
+      "after": {
+        "edgeF1": 0.5900986978069325,
+        "darkEdgeF1": 0.6577957472252556,
+        "lightEdgeF1": 0.5224016483886094,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.839824091310579,
+        "censusSimilarity": 0.6465463073177448
+      },
+      "objective": {
+        "before": 0.6736919287802262,
+        "after": 0.6488231364030588
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "05c94520c4e750a80a3ff67f0a474a6dc272431bc1b1ad912b1acd96c7d339f4",
+      "afterRenderHash": "13acc33db981b6edd51971760c83b1e09d77897f77ec8782555e0ee211ef445e"
+    },
+    {
+      "id": "496eb37d-5c8f-4dd7-a0a7-3ed1bd2210d6",
+      "name": "Vedalken Aethermage",
+      "cohort": "validation",
+      "referenceHash": "d64cd070e04ad7a5e7edfc97f382c29096adee438833f0ab28463b6013978e5c",
+      "pose": {
+        "matrix": [1, 0, 0, 1, 0.07500000000000001, 0.02500000000000001]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.6232371484817816,
+        "darkEdgeF1": 0.6720505481300548,
+        "lightEdgeF1": 0.5744237488335084,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.753879845039798,
+        "censusSimilarity": 0.6367933856253157
+      },
+      "after": {
+        "edgeF1": 0.5623461618064334,
+        "darkEdgeF1": 0.6336895826382775,
+        "lightEdgeF1": 0.49100274097458935,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.8878973022565508,
+        "censusSimilarity": 0.5929323885376974
+      },
+      "objective": {
+        "before": 0.654616017344438,
+        "after": 0.6233054959644564
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "66fe1fd9837fb84e14176ef8e9de99b91ea9ae354e3ed4f245d7aff4a69b40cf",
+      "afterRenderHash": "408efc469d241d31bc6b144a3cfd97ef3177b27f83fe59297422c3104a91231b"
+    },
+    {
+      "id": "111ddb99-08a4-4349-a246-d19de32527e2",
+      "name": "Whip-Spine Drake",
+      "cohort": "calibration",
+      "referenceHash": "1131c876928e902bddce667c7e43f001b1248d414df7c66014d4bf3e385144e2",
+      "pose": {
+        "matrix": [0.99985, 0, 0, 0.99985, 0.05000000000000002, -0.024999999999999994]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5495424823523933,
+        "darkEdgeF1": 0.5876531237717914,
+        "lightEdgeF1": 0.5114318409329953,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0425976344621377,
+        "censusSimilarity": 0.6048814310865613
+      },
+      "after": {
+        "edgeF1": 0.6030094295709767,
+        "darkEdgeF1": 0.648466306778514,
+        "lightEdgeF1": 0.5575525523634394,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.834029798659974,
+        "censusSimilarity": 0.6464280380537888
+      },
+      "objective": {
+        "before": 0.5751914061577887,
+        "after": 0.6303238946863288
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a1b7466d0a9a1afd59daaeec288cc82fc0774ef08b92b6326c297d313a99c293",
+      "afterRenderHash": "ca935026421bc269b40012ad7f3ea4a3cfc9dfdf16449fa53243aa97c9b2e2b0"
+    },
+    {
+      "id": "2879e7a1-0256-4116-be22-7c9972e4ce0b",
+      "name": "Bitter Ordeal",
+      "cohort": "calibration",
+      "referenceHash": "0cdf7911909971293b670b2c1911e9286805aed8cd61775bd4af3229c2df9b75",
+      "pose": {
+        "matrix": [1.0003999999999997, 0, 0, 1.0003999999999997, -0.15, -0.27499999999999997]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4543063774443023,
+        "darkEdgeF1": 0.49283172765969513,
+        "lightEdgeF1": 0.41578102722890947,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.5820072484525536,
+        "censusSimilarity": 0.5227411348704085
+      },
+      "after": {
+        "edgeF1": 0.4961644754531158,
+        "darkEdgeF1": 0.5471597064620698,
+        "lightEdgeF1": 0.4451692444441619,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.4495609319871408,
+        "censusSimilarity": 0.549303610205639
+      },
+      "objective": {
+        "before": 0.4898923674933324,
+        "after": 0.5374732449820822
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "871a8469638c32d5ba9aa2410bb3da5fd562f7e87e0d96ab7c6e1c181367be57",
+      "afterRenderHash": "2b7528d4bf2ad1919eb41be3b807a9661fd38a08a00e4dbf06bf95b74c65dd66"
+    },
+    {
+      "id": "52c44610-6d4b-4c14-839f-2c085badec90",
+      "name": "Bridge from Below",
+      "cohort": "validation",
+      "referenceHash": "1a677b081be67ae0ff2d6b20b4acc5ac7fda47b06837c846f707bdf707113c95",
+      "pose": {
+        "matrix": [1.0005499999999998, 0, 0, 1.0005499999999998, 0.125, -0.175]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4982359637411361,
+        "darkEdgeF1": 0.5276117344953369,
+        "lightEdgeF1": 0.4688601929869353,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.9221739045028308,
+        "censusSimilarity": 0.5252227481586739
+      },
+      "after": {
+        "edgeF1": 0.5027651771087549,
+        "darkEdgeF1": 0.5332557326138551,
+        "lightEdgeF1": 0.47227462160365485,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.9177855740730614,
+        "censusSimilarity": 0.5289824311810674
+      },
+      "objective": {
+        "before": 0.5321539935666968,
+        "after": 0.5350049919252252
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "389c620c6cb24c2d3ad31f298f5a2d5d214512432fbee5877e387ac6fe47a9e0",
+      "afterRenderHash": "137739e2e133a2fb049c770384c5b1c2abfb76a3947b7f92cf329cf0be1797d5"
+    },
+    {
+      "id": "8cddafc8-57d6-456e-af58-4b7f45e195d5",
+      "name": "Death Rattle",
+      "cohort": "validation",
+      "referenceHash": "49000c72e5b97b97fc483a45bb85b5bfadc7f1dff34c401c1a1e894c6b5aa400",
+      "pose": {
+        "matrix": [
+          1.0009000000000001, 0, 0, 1.0009000000000001, 1.3877787807814457e-17, -0.15000000000000002
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5680631382240466,
+        "darkEdgeF1": 0.6332832825441963,
+        "lightEdgeF1": 0.5028429939038969,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.9443358853294481,
+        "censusSimilarity": 0.6154190813180115
+      },
+      "after": {
+        "edgeF1": 0.6075697450600019,
+        "darkEdgeF1": 0.6724575884301168,
+        "lightEdgeF1": 0.5426819016898872,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.8469052813515086,
+        "censusSimilarity": 0.6564608499010197
+      },
+      "objective": {
+        "before": 0.6182492880479254,
+        "after": 0.6515329732868282
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "1747aa052b89849e4864e15d228bd75223292d1ca76087eb2d1a5250ef23b870",
+      "afterRenderHash": "41bd9eae7b9b3d36ec9b4bfd0ecb4f9e136df049f838c3a93478edb478bffcd5"
+    },
+    {
+      "id": "b66cc281-3fa9-4d7b-a32b-41c0a93059ba",
+      "name": "Deepcavern Imp",
+      "cohort": "validation",
+      "referenceHash": "ce6e7f9d3cf5280b4b7f007d5e7f28b3bc5a7782f3396e0c28260f8e9198244c",
+      "pose": {
+        "matrix": [1.0003000000000002, 0, 0, 1.0003000000000002, -0.125, -0.22500000000000003]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.45958377444300813,
+        "darkEdgeF1": 0.5025595211846389,
+        "lightEdgeF1": 0.41660802770137745,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.7767921320826097,
+        "censusSimilarity": 0.5496972220386286
+      },
+      "after": {
+        "edgeF1": 0.4383022715091975,
+        "darkEdgeF1": 0.47784818333792634,
+        "lightEdgeF1": 0.39875635968046863,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.851074327919324,
+        "censusSimilarity": 0.5318315496077157
+      },
+      "objective": {
+        "before": 0.5013867106952624,
+        "after": 0.4795187821573586
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "ada224864b3ebd3e7e42840d379d1ca6336738fb29a38a12a7028c818cc2d046",
+      "afterRenderHash": "62cd9a4e2f3539ef6a58441080de20deeb78a1545e88ca7f143f1625c8f4b20a"
+    },
+    {
+      "id": "08e1a646-6925-4a53-a99c-8951af016a7a",
+      "name": "Fleshwrither",
+      "cohort": "calibration",
+      "referenceHash": "6804ce53e8ec63b791c9715c3e3cf46cb21209bdd3912052f971b0f1881dbda5",
+      "pose": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.15000000000000002, -0.04999999999999999]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4255282697437661,
+        "darkEdgeF1": 0.46981889719858283,
+        "lightEdgeF1": 0.3812376422889494,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.9420886589134447,
+        "censusSimilarity": 0.537779459067334
+      },
+      "after": {
+        "edgeF1": 0.4296986466771902,
+        "darkEdgeF1": 0.4661781313145564,
+        "lightEdgeF1": 0.39321916203982404,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.9551932910129315,
+        "censusSimilarity": 0.5363430722736511
+      },
+      "objective": {
+        "before": 0.4688979992874023,
+        "after": 0.46533281735560844
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "bdbb8bb949b423b076394664190b2ff7a9d6ba1dce9b8a2cdafe398ced8b24e8",
+      "afterRenderHash": "053d3e948b864e572128d6777842b35cc466a057012c30c4e0b8edd9de36a271"
+    },
+    {
+      "id": "d796119a-f1eb-4de9-a9ca-d322017e9c5e",
+      "name": "Frenzy Sliver",
+      "cohort": "validation",
+      "referenceHash": "cc448192da213f6ba011f2de109e6dc224ef8b6d49626df261c9dff4d69db768",
+      "pose": {
+        "matrix": [1.0000999999999998, 0, 0, 1.0000999999999998, -0.09999999999999999, -0.275]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4598923207361148,
+        "darkEdgeF1": 0.4967073132731135,
+        "lightEdgeF1": 0.4230773281991161,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.4083439030989076,
+        "censusSimilarity": 0.5363341261560199
+      },
+      "after": {
+        "edgeF1": 0.46742782650714354,
+        "darkEdgeF1": 0.5052280405830579,
+        "lightEdgeF1": 0.42962761243122916,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.3763633830211592,
+        "censusSimilarity": 0.5458993663195251
+      },
+      "objective": {
+        "before": 0.4974805152222904,
+        "after": 0.5052491639309831
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "2e2be569ffb84117b3bd6205c668dea91b779868707ad5721bd68535d8e57e25",
+      "afterRenderHash": "c58eada534cbb68c3da2a73d5414e944aaf408e72cb7261eda57a6fdafea0609"
+    },
+    {
+      "id": "0f0a08a8-bbb9-4816-b03c-af4d729fce45",
+      "name": "Grave Scrabbler",
+      "cohort": "calibration",
+      "referenceHash": "0d1a569fe49ed186cd4800de3ceb5bbff0c3855264ee74c7d62ba3b43ef30f09",
+      "pose": {
+        "matrix": [1.0007999999999997, 0, 0, 1.0007999999999997, 0.175, -1.3877787807814457e-17]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.45522215901302776,
+        "darkEdgeF1": 0.4971383093202385,
+        "lightEdgeF1": 0.413306008705817,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.15342273368605,
+        "censusSimilarity": 0.5488242945496143
+      },
+      "after": {
+        "edgeF1": 0.46970569074480095,
+        "darkEdgeF1": 0.5157433015369715,
+        "lightEdgeF1": 0.42366807995263045,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.118041655914245,
+        "censusSimilarity": 0.5587250429146151
+      },
+      "objective": {
+        "before": 0.50174614378675,
+        "after": 0.5169013979169678
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "9cc31c4f505f1647be474768bf9c87c5a61b6c866aa251566ef5e65a6f543ab1",
+      "afterRenderHash": "f93b424d80a8887a1bdc7ce0529283502d0e1373fd862490b3a9bb9fe001923f"
+    },
+    {
+      "id": "32f1f022-da7f-49a4-881d-b3a2c54c38eb",
+      "name": "Korlash, Heir to Blackblade",
+      "cohort": "validation",
+      "referenceHash": "8b34eebcf62a67b216eafad76db2273c1ff9f506a8b99d348fc40ac1b10bf973",
+      "pose": {
+        "matrix": [1.00045, 0, 0, 1.00045, -0.02499999999999998, 0.02500000000000001]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.6129457893491878,
+        "darkEdgeF1": 0.6743614452969326,
+        "lightEdgeF1": 0.5515301334014429,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.8162099218563026,
+        "censusSimilarity": 0.6299395562561995
+      },
+      "after": {
+        "edgeF1": 0.6330649643484597,
+        "darkEdgeF1": 0.6941557940626717,
+        "lightEdgeF1": 0.5719741346342477,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7529155830847527,
+        "censusSimilarity": 0.646631048114116
+      },
+      "objective": {
+        "before": 0.6562748550588574,
+        "after": 0.6754024257903617
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "027e43d9caa38887c7a78f332ab4898afde3b8034f4133f045a053dc5b05d222",
+      "afterRenderHash": "884e2d0d9a4197bd8c7c5ed847dd49e6edf01a4124c3ba6c93ddbad45cf54233"
+    },
+    {
+      "id": "93b47606-82d1-402c-b1c6-591457b10d86",
+      "name": "Snake Cult Initiation",
+      "cohort": "validation",
+      "referenceHash": "76fa6602cbf9f84f0d0b115dea406bd16fd6a7ce5e5909f340a7d6cdb89000a4",
+      "pose": {
+        "matrix": [1.00075, 0, 0, 1.00075, -0.14999999999999997, 0.075]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4894641022653278,
+        "darkEdgeF1": 0.5439607512375423,
+        "lightEdgeF1": 0.43496745329311337,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.473598030887632,
+        "censusSimilarity": 0.5718594606273648
+      },
+      "after": {
+        "edgeF1": 0.46617281571224356,
+        "darkEdgeF1": 0.5117728022593513,
+        "lightEdgeF1": 0.4205728291651358,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.5284938702296005,
+        "censusSimilarity": 0.5505650886713893
+      },
+      "objective": {
+        "before": 0.5368636505137137,
+        "after": 0.5114662132234387
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "97a23747b1ebe73dedf7cd29382da923160c5a7a6ecdf246820f4d89b6f26c44",
+      "afterRenderHash": "5b4566cad7d2f6a1287b398b14387f48ddf7d7b6eda5a96bb85b5c29e94e4c99"
+    },
+    {
+      "id": "672e2815-bbcc-4338-a8ba-9aa97142ea69",
+      "name": "Street Wraith",
+      "cohort": "validation",
+      "referenceHash": "2266edb2fceff162310b18af0981ae26fbbf920c786f27f7ddcf313a9d2651c5",
+      "pose": {
+        "matrix": [1.0007999999999997, 0, 0, 1.0007999999999997, -0.05, 1.3877787807814457e-17]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.29891362275748273,
+        "darkEdgeF1": 0.22436774512234495,
+        "lightEdgeF1": 0.37345950039262055,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.602506390821646,
+        "censusSimilarity": 0.4917511328976208
+      },
+      "after": {
+        "edgeF1": 0.2983602480260976,
+        "darkEdgeF1": 0.22501858840423017,
+        "lightEdgeF1": 0.371701907647965,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.7054960663498155,
+        "censusSimilarity": 0.49385130929386867
+      },
+      "objective": {
+        "before": 0.24298041992314906,
+        "after": 0.24055289002068206
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a1394e6df676821d37a70e29147f1fb0675235e950191262a6787e9d44120345",
+      "afterRenderHash": "29cb987ed15997f2d54e79733dcc947868f9881753e00842985385ce533d5d60"
+    },
+    {
+      "id": "8bd55a11-8658-4b92-9151-d6173a11991a",
+      "name": "Tombstalker",
+      "cohort": "validation",
+      "referenceHash": "53e009f0d8bbb64e135230e79564824a70c25a55527bf123dd021684a7c2c9b0",
+      "pose": {
+        "matrix": [1.0005500000000003, 0, 0, 1.0005500000000003, 0.024999999999999994, -0.05]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4543431271755554,
+        "darkEdgeF1": 0.5164395049634894,
+        "lightEdgeF1": 0.3922467493876214,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.4095220561226363,
+        "censusSimilarity": 0.5849574740606023
+      },
+      "after": {
+        "edgeF1": 0.42598377427160694,
+        "darkEdgeF1": 0.4804963538686139,
+        "lightEdgeF1": 0.3714711946746,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.487895984960031,
+        "censusSimilarity": 0.5642947559259766
+      },
+      "objective": {
+        "before": 0.49919691423851753,
+        "after": 0.46845902157793656
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "bc9eea8ae376f72cabe096a4d622fb0a509a09588fd0cb51b14a229640e1003f",
+      "afterRenderHash": "eeab7c08b10c7fd41f866c52d824d5d4400f03c84385fc14486e2a3d6c038f43"
+    },
+    {
+      "id": "651c7735-088d-495b-a58f-69abf4cac197",
+      "name": "Witch's Mist",
+      "cohort": "validation",
+      "referenceHash": "083c7b87c1b60ef1869c62d2e80ea89d8c1ff6c9125199d24449cb0e07b0970c",
+      "pose": {
+        "matrix": [1, 0, 0, 1, -0.12499999999999999, 0.1]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.27042159682237277,
+        "darkEdgeF1": 0.20005614276246186,
+        "lightEdgeF1": 0.3407870508822837,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.5966922410424016,
+        "censusSimilarity": 0.46895838926164013
+      },
+      "after": {
+        "edgeF1": 0.2534779168053826,
+        "darkEdgeF1": 0.18464479210896878,
+        "lightEdgeF1": 0.32231104150179646,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.7710054223713714,
+        "censusSimilarity": 0.46841594262367614
+      },
+      "objective": {
+        "before": 0.22293800489840296,
+        "after": 0.2062918910535179
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 3,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "d7145f4daf74d7d749cb13977357764cd19321d8bbb0ada2e62728b6a28265ef",
+      "afterRenderHash": "eaebe751e05e66d7160485408b587006297ee962028d34fba3f651df5027de32"
+    },
+    {
+      "id": "ff6ba6a5-942d-44ff-87a9-3febf0b7e39b",
+      "name": "Yixlid Jailer",
+      "cohort": "validation",
+      "referenceHash": "3c5a12c6fae6c084c4fb20213ead1803381ec5aa30fcc22841a2c6ef00812268",
+      "pose": {
+        "matrix": [0.9999, 0, 0, 0.9999, -0.075, 0.2]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4492290207945642,
+        "darkEdgeF1": 0.4945034820983414,
+        "lightEdgeF1": 0.40395455949078707,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.3950096676083454,
+        "censusSimilarity": 0.5257449802530662
+      },
+      "after": {
+        "edgeF1": 0.47723350073252035,
+        "darkEdgeF1": 0.5352098565475892,
+        "lightEdgeF1": 0.4192571449174514,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.3204768073767292,
+        "censusSimilarity": 0.5572260409032472
+      },
+      "objective": {
+        "before": 0.4980432004632782,
+        "after": 0.5311537240811192
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "25de21b9613da5d32144175a1f9ac849243038f43d8ff5b578394235c5108f08",
+      "afterRenderHash": "3274862b256ac2dfb76c7b8ce9fbc7d3433e2302636be4b30e1983f33b40d355"
+    },
+    {
+      "id": "b930b146-d132-454f-b35d-4a247c14c054",
+      "name": "Bloodshot Trainee",
+      "cohort": "validation",
+      "referenceHash": "5265f68232bf319661a6ae5bc17cbf6a20bc463c7189e8a84d74d8752d8e2434",
+      "pose": {
+        "matrix": [
+          1.0001499999999999, 0, 0, 1.0001499999999999, -0.09999999999999999, -0.02499999999999998
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.46253204613686283,
+        "darkEdgeF1": 0.4934735899612109,
+        "lightEdgeF1": 0.4315905023125148,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.214675739969194,
+        "censusSimilarity": 0.5364814317833371
+      },
+      "after": {
+        "edgeF1": 0.480099773372196,
+        "darkEdgeF1": 0.5270875872422128,
+        "lightEdgeF1": 0.43311195950217923,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.122533840394148,
+        "censusSimilarity": 0.5397867982542639
+      },
+      "objective": {
+        "before": 0.4984591724742281,
+        "after": 0.531668929413485
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "63281760f73b5c2ad4f22b15613fce9b842215c3450dabc68a36a5cd1a46cde6",
+      "afterRenderHash": "711f307da13d3d6f8d8f168c114c1a37c83153212648daceb9f34b1f6db352d0"
+    },
+    {
+      "id": "179bec14-2e22-43eb-8854-b70a97dd023b",
+      "name": "Boldwyr Intimidator",
+      "cohort": "validation",
+      "referenceHash": "775fc7cfc796fd75ab436aa7193dc0f3de1dcafb84287f352964aedf7211fc19",
+      "pose": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.024999999999999994, 0.225]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4518226768911526,
+        "darkEdgeF1": 0.5024740965769507,
+        "lightEdgeF1": 0.4011712572053544,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.609704327767233,
+        "censusSimilarity": 0.5634409531071359
+      },
+      "after": {
+        "edgeF1": 0.4169626527285408,
+        "darkEdgeF1": 0.46628872669011195,
+        "lightEdgeF1": 0.3676365787669696,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.7483763878766183,
+        "censusSimilarity": 0.5401590779178755
+      },
+      "objective": {
+        "before": 0.5112327476803488,
+        "after": 0.4765315167220955
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "88267750031105e5d06e028233805874271b7ce16a30ba4a198552eaee79714c",
+      "afterRenderHash": "a02e1c2c5fc9a9385165db31e04b6b8feb365e1dccb2b331da323ca9a4367946"
+    },
+    {
+      "id": "03ab2a41-315b-439c-b02c-f12335fc903a",
+      "name": "Emblem of the Warmind",
+      "cohort": "calibration",
+      "referenceHash": "d358394caeea28fc005a6fc591816d2bb73d3af7227a3c800d2cbd261ba43940",
+      "pose": {
+        "matrix": [
+          1.0003499657185466, 0.0002618910145932581, 0.00008722719789501915, 0.999550057090067,
+          0.07500000000000002, 0.15000000000000002
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.39561554731378873,
+        "darkEdgeF1": 0.43570837017357517,
+        "lightEdgeF1": 0.3555227244540023,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.834433850441998,
+        "censusSimilarity": 0.5116940512587348
+      },
+      "after": {
+        "edgeF1": 0.3935745871688902,
+        "darkEdgeF1": 0.43859241277687977,
+        "lightEdgeF1": 0.34855676156090065,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.7616330206751734,
+        "censusSimilarity": 0.5035366714437599
+      },
+      "objective": {
+        "before": 0.44329373463740807,
+        "after": 0.45381414350133226
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "8344b45c10e2424ee16bde61d033516f66625a248139f1716f7d8c82e49b1384",
+      "afterRenderHash": "7eb787aa7b2133ab64db70f86dfbd2445005ae12d797bb2b9e04f61f9cb4d6ee"
+    },
+    {
+      "id": "f3969cc7-92b9-45cd-9a4f-d94c2178a04d",
+      "name": "Flowstone Embrace",
+      "cohort": "validation",
+      "referenceHash": "61424e8ef86a9f92bd1d76ba746154c0be1d083c07e8945c2caf156c304c82f2",
+      "pose": {
+        "matrix": [1.0007, 0, 0, 1.0007, -0.125, -0.175]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.44663816736740536,
+        "darkEdgeF1": 0.4833867896060862,
+        "lightEdgeF1": 0.40988954512872444,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.4734771015239883,
+        "censusSimilarity": 0.5308806971482575
+      },
+      "after": {
+        "edgeF1": 0.4316379782531917,
+        "darkEdgeF1": 0.4900427984228634,
+        "lightEdgeF1": 0.37323315808352003,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.441200170419751,
+        "censusSimilarity": 0.5066984070556305
+      },
+      "objective": {
+        "before": 0.4893428214626324,
+        "after": 0.5032818995580031
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a83afd9f6baea38f921d3d59f2779fd379a55bc068a6d7f785657fd3a6f5364a",
+      "afterRenderHash": "b1a5682ef1e5a1caed0b0441bffeca5ef766d2a3555f2f274d6ba64c2ab53938"
+    },
+    {
+      "id": "a60475e5-0d37-4af0-b717-da4c8dea45ac",
+      "name": "Ghostfire",
+      "cohort": "validation",
+      "referenceHash": "7a5fe41f1b75e2b215bd261be605bef095700fe6cb484627bc74940140e19781",
+      "pose": {
+        "matrix": [
+          0.9994000000000001, 0, 0, 0.9994000000000001, 0.07500000000000002, 0.27499999999999997
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5193881963802002,
+        "darkEdgeF1": 0.5716309727849935,
+        "lightEdgeF1": 0.46714541997540676,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.146135076050151,
+        "censusSimilarity": 0.5880202425704146
+      },
+      "after": {
+        "edgeF1": 0.513048433039233,
+        "darkEdgeF1": 0.5714471813746947,
+        "lightEdgeF1": 0.45464968470377115,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0789426132098567,
+        "censusSimilarity": 0.5770293056412639
+      },
+      "objective": {
+        "before": 0.5692865757439395,
+        "after": 0.5748120226646529
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "db0f6b572dfd8ed65e46554bfef7931837ee76241b49d20f177a30d052eca3e6",
+      "afterRenderHash": "37aaddb5bd42d78d2e289b316aad32ff06c2d8651bc49f12ed4eae149eddf725"
+    },
+    {
+      "id": "31716a43-2522-46ff-a9a4-b6952cd41f11",
+      "name": "Grinning Ignus",
+      "cohort": "validation",
+      "referenceHash": "4df31f3795648a62d153fc4bf33d26566d01118d37c766009d2843c04bd560bd",
+      "pose": {
+        "matrix": [1.0000499999999999, 0, 0, 1.0000499999999999, 0.07500000000000002, 0]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.475431830816026,
+        "darkEdgeF1": 0.5148446895893014,
+        "lightEdgeF1": 0.4360189720427507,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.109313409509752,
+        "censusSimilarity": 0.5534483227922176
+      },
+      "after": {
+        "edgeF1": 0.49318024885393785,
+        "darkEdgeF1": 0.5377710924045431,
+        "lightEdgeF1": 0.44858940530333263,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.108199710256333,
+        "censusSimilarity": 0.5641064479925557
+      },
+      "objective": {
+        "before": 0.5200028657182886,
+        "after": 0.538416226818754
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "544df4975ea155a2a16aec24c928d2c573f9c9e9f847170b2414cd4e478bd14b",
+      "afterRenderHash": "13804476f590a314881b5707214b022a40be8934bab992c4bec3390acef2e95e"
+    },
+    {
+      "id": "3b41cef7-bb16-4d89-9900-dc6d1f5200f0",
+      "name": "Henchfiend of Ukor",
+      "cohort": "validation",
+      "referenceHash": "6d1563c724d2156d18149ce6592be375ba70e7827ad67178e755fee970095bda",
+      "pose": {
+        "matrix": [1.0005499999999998, 0, 0, 1.0005499999999998, -0.09999999999999999, -0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5551118721236223,
+        "darkEdgeF1": 0.6090784873620615,
+        "lightEdgeF1": 0.5011452568851831,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.004420585482891,
+        "censusSimilarity": 0.6202059520716168
+      },
+      "after": {
+        "edgeF1": 0.5272653810697285,
+        "darkEdgeF1": 0.5943899979829903,
+        "lightEdgeF1": 0.4601407641564669,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.078217099805169,
+        "censusSimilarity": 0.6071485115607616
+      },
+      "objective": {
+        "before": 0.5975674020548525,
+        "after": 0.5859072073358662
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "68d474ea11ce5cf7bd5815c69ae8ffc75e369631f6ea19d76c73839ac71257d6",
+      "afterRenderHash": "fd1ca243ecd23c0a0c62085ecf4cf690ae69f6a27083efe56a34512bfb00ec89"
+    },
+    {
+      "id": "0c876479-5040-4d36-b43a-54d7fc9160c1",
+      "name": "Homing Sliver",
+      "cohort": "calibration",
+      "referenceHash": "9b34efa683d6c362cb0f4a7660d58043fe034e6a483c2c90f5c5e5543c5586db",
+      "pose": {
+        "matrix": [1.00035, 0, 0, 1.00035, -0.1, -0.075]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4073146410326006,
+        "darkEdgeF1": 0.4461376524254234,
+        "lightEdgeF1": 0.3684916296397778,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.1369888259281824,
+        "censusSimilarity": 0.5465208840563537
+      },
+      "after": {
+        "edgeF1": 0.4006183114445363,
+        "darkEdgeF1": 0.44138026206549635,
+        "lightEdgeF1": 0.35985636082357625,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.1385489244747014,
+        "censusSimilarity": 0.5352706782335186
+      },
+      "objective": {
+        "before": 0.44662977006105664,
+        "after": 0.4450326754555618
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "8068f0d970f4d7dea090bfa56a38c93f44ef3eaccd513ef48171774aa2750690",
+      "afterRenderHash": "54874d7e819c0331abc432d7499231793cbd7f68dd54166b9287a2976047d141"
+    },
+    {
+      "id": "cee5e9e3-e3ae-4e1b-a8fb-48c523631105",
+      "name": "Shah of Naar Isle",
+      "cohort": "validation",
+      "referenceHash": "b3722ad1f5b96a3215e2955e114c702b567bbe5c273093c15c0686cf62e9892a",
+      "pose": {
+        "matrix": [1.0003, 0, 0, 1.0003, -0.175, -0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5256306614039621,
+        "darkEdgeF1": 0.5870598603267341,
+        "lightEdgeF1": 0.46420146248119015,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.197075471773804,
+        "censusSimilarity": 0.586618303672493
+      },
+      "after": {
+        "edgeF1": 0.497046098740092,
+        "darkEdgeF1": 0.5583896462478303,
+        "lightEdgeF1": 0.4357025512323537,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.286366375602622,
+        "censusSimilarity": 0.5623810432648663
+      },
+      "objective": {
+        "before": 0.575678066525914,
+        "after": 0.5516100748446817
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "dc28b330e7faf3d1bd413949f20ae1420c96495a159c9a9afbfdb3bd7d6041fb",
+      "afterRenderHash": "dacf2526dbb698d5057e8e1adbee39f8502149b7f5299999b922496fb4078979"
+    },
+    {
+      "id": "4b232c36-bff1-4f5e-98a6-ce6a98591aa6",
+      "name": "Skizzik Surger",
+      "cohort": "validation",
+      "referenceHash": "41714b5dd749ad8f1932f191b4cf9922058a5bb9838810a7d98cc79b5363c675",
+      "pose": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.024999999999999994, 0.02500000000000001]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4498178259773733,
+        "darkEdgeF1": 0.5005832462187688,
+        "lightEdgeF1": 0.3990524057359777,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.7635187764822167,
+        "censusSimilarity": 0.5622680991372
+      },
+      "after": {
+        "edgeF1": 0.43943588358923813,
+        "darkEdgeF1": 0.48797042908024074,
+        "lightEdgeF1": 0.3909013380982355,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.781498818766659,
+        "censusSimilarity": 0.5564310894742976
+      },
+      "objective": {
+        "before": 0.4996480369112927,
+        "after": 0.48788877891485716
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "3d6e83346b924963fac5dfda8f57fb00dc9a89148e2e5bf67a72b8ca633382e7",
+      "afterRenderHash": "d0faee12a9c2047bc3ed3621fe60ff2a5eb2aac460e0f5d6bb61f30c13db1d8d"
+    },
+    {
+      "id": "007ce039-def1-4039-a0a0-ba72e8872dc5",
+      "name": "Steamflogger Boss",
+      "cohort": "calibration",
+      "referenceHash": "39f2155a886a74e58af103fde801984ddefe433a4d67817c150def7c5d9386fa",
+      "pose": {
+        "matrix": [0.99975, 0, 0, 0.99975, 0.075, 0.025000000000000022]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.47903963252644477,
+        "darkEdgeF1": 0.5358529675006345,
+        "lightEdgeF1": 0.42222629755225505,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.229724213275796,
+        "censusSimilarity": 0.5441189658950694
+      },
+      "after": {
+        "edgeF1": 0.5458317970036554,
+        "darkEdgeF1": 0.6090654197339022,
+        "lightEdgeF1": 0.48259817427340856,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.2021956876144113,
+        "censusSimilarity": 0.5857984996179921
+      },
+      "objective": {
+        "before": 0.5398061128110903,
+        "after": 0.6027992469749573
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "f9e9576dcc58c752f6a8bdc84eed80630a874ee4a4a6396400915ff97feab6e2",
+      "afterRenderHash": "9a940dcaaa3b17cb13ed541b5a5ecde3ab1de9a30d4a2ee4f96d76442ea5f43f"
+    },
+    {
+      "id": "1b2db053-3da0-4c3a-9b36-0eff6477540d",
+      "name": "Storm Entity",
+      "cohort": "validation",
+      "referenceHash": "67231dce7dbfa242cc1cd3200afe61cbcaa1e179ce2190144e244a7a72897352",
+      "pose": {
+        "matrix": [0.99985, 0, 0, 0.99985, -0.075, 0.07500000000000001]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4794727987619666,
+        "darkEdgeF1": 0.5194459873631716,
+        "lightEdgeF1": 0.4394996101607616,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.1430258818678785,
+        "censusSimilarity": 0.5423043299457186
+      },
+      "after": {
+        "edgeF1": 0.4907698302675009,
+        "darkEdgeF1": 0.5376473264247011,
+        "lightEdgeF1": 0.44389233411030055,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.1007730454808695,
+        "censusSimilarity": 0.5492193233794544
+      },
+      "objective": {
+        "before": 0.5252125824597099,
+        "after": 0.5418091509321397
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "da6c1c3ccce9cdba147067d4cf126dc194bd383a5a49c7f46416d4faeb2f3c00",
+      "afterRenderHash": "5d6e188d3f00127f67c5ea00d29e599644573d765fe220c7a304f3791c37bd2d"
+    },
+    {
+      "id": "0b06bd73-c45a-4560-bd8d-413608c5f89e",
+      "name": "Tarox Bladewing",
+      "cohort": "calibration",
+      "referenceHash": "2bdbe296d6440754762caa6bf52a0d826aeddec83606d3dd13f8d924b06d09fc",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.05, 0.025000000000000022]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4354428816984949,
+        "darkEdgeF1": 0.46972185434510777,
+        "lightEdgeF1": 0.40116390905188204,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.699453501779158,
+        "censusSimilarity": 0.5330663774698126
+      },
+      "after": {
+        "edgeF1": 0.44789325551858394,
+        "darkEdgeF1": 0.49671916757418916,
+        "lightEdgeF1": 0.3990673434629788,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.666301169880545,
+        "censusSimilarity": 0.5399370558120566
+      },
+      "objective": {
+        "before": 0.4702692065281542,
+        "after": 0.4966361470658572
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "b0bda88fce87be0354779e27f579a8d0e6a741f03eae81427a2b09ddcbc23bcf",
+      "afterRenderHash": "0df93234dc54cf0c1ba26807a8238dd5517f86d958511aa6b13354315ea3a283"
+    },
+    {
+      "id": "88a85be1-9de5-4f96-9fd1-15f3f17c4bea",
+      "name": "Thunderblade Charge",
+      "cohort": "validation",
+      "referenceHash": "11a9c60e2f44aa41ae88a65048e0cf5f25bc297264d8556036144f5882120088",
+      "pose": {
+        "matrix": [
+          1.0001499999999999, 0, 0, 1.0001499999999999, -0.024999999999999994, -0.09999999999999999
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4901902673820378,
+        "darkEdgeF1": 0.5502728453667246,
+        "lightEdgeF1": 0.430107689397351,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.883799627652099,
+        "censusSimilarity": 0.5391760380132392
+      },
+      "after": {
+        "edgeF1": 0.5856670066661722,
+        "darkEdgeF1": 0.6385620614741927,
+        "lightEdgeF1": 0.5327719518581518,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6741846239590163,
+        "censusSimilarity": 0.6124026398475007
+      },
+      "objective": {
+        "before": 0.5619894228825596,
+        "after": 0.6348689556183118
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "51756c31f583bcb9fb583be4040e8169ac6f4a4559dd81f7a192a91e1fc40daf",
+      "afterRenderHash": "2903828ac35cc0e3e98def2b9a42dbfac351aa7bf98041a347d4c97b31ba8bf6"
+    },
+    {
+      "id": "1a74fcde-7685-402c-9b2a-245aa75d75c1",
+      "name": "Baru, Fist of Krosa",
+      "cohort": "calibration",
+      "referenceHash": "228d8b5768e632e4c9a5b61c95c661561eb37eadf885783b5889841092655b67",
+      "pose": {
+        "matrix": [0.99985, 0, 0, 0.99985, -0.024999999999999994, -0.075]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5847468566132324,
+        "darkEdgeF1": 0.6263371191043494,
+        "lightEdgeF1": 0.5431565941221155,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7202390550852826,
+        "censusSimilarity": 0.606517046307445
+      },
+      "after": {
+        "edgeF1": 0.6038278005017477,
+        "darkEdgeF1": 0.6419059182823895,
+        "lightEdgeF1": 0.5657496827211057,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6827371374541342,
+        "censusSimilarity": 0.6347723339859291
+      },
+      "objective": {
+        "before": 0.6184734754062189,
+        "after": 0.6319710258358864
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "b0a2e3d33ec44c55bb9dac923e031f4149ccbff555da053fa7116eb7b219fcec",
+      "afterRenderHash": "e2694a34531512e02b5bfc7bff7fae3aa2080b97d9e4350f038aa60ed77f75a7"
+    },
+    {
+      "id": "5807814f-7b18-431a-8031-898ff70ad69f",
+      "name": "Centaur Omenreader",
+      "cohort": "validation",
+      "referenceHash": "f9494c0568d7e31cf7bbbf7c1274cad3873450f143ab06d877162d77b2442bda",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.125, 0.07500000000000002]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.39804504319462874,
+        "darkEdgeF1": 0.42401825563867335,
+        "lightEdgeF1": 0.3720718307505842,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.440652272472561,
+        "censusSimilarity": 0.4980187176299452
+      },
+      "after": {
+        "edgeF1": 0.4177135554180864,
+        "darkEdgeF1": 0.45262165659613784,
+        "lightEdgeF1": 0.38280545424003504,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.308514568215161,
+        "censusSimilarity": 0.5035113943407303
+      },
+      "objective": {
+        "before": 0.4364289970460955,
+        "after": 0.46386961259418014
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "6c2bf09e5f0af8d8de5f08c2d53b539c3b99cd6892b2d95d1520dfde977c67e9",
+      "afterRenderHash": "ade030630ceeb4d8b5e2d86630e33dc74ba636b28232a7b9dc7dc9235291efd7"
+    },
+    {
+      "id": "03998e86-ef67-4329-b106-61252f3f532a",
+      "name": "Edge of Autumn",
+      "cohort": "calibration",
+      "referenceHash": "4a14a80f3cce1cc04dff6b3ad527e515833fbe2c026fe1927cc4e6e45edc1140",
+      "pose": {
+        "matrix": [
+          1.0004499999999998, 0, 0, 1.0004499999999998, 0.05000000000000002, -0.024999999999999994
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.47587825544098195,
+        "darkEdgeF1": 0.5041753455292725,
+        "lightEdgeF1": 0.4475811653526915,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.960522823087334,
+        "censusSimilarity": 0.5338549305759913
+      },
+      "after": {
+        "edgeF1": 0.5242460282329224,
+        "darkEdgeF1": 0.5644526297900426,
+        "lightEdgeF1": 0.4840394266758022,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7359202129226585,
+        "censusSimilarity": 0.5636418436695807
+      },
+      "objective": {
+        "before": 0.5118076586149525,
+        "after": 0.5681616294988434
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "e793bea928af6b614e8126cc6ee69d9d836c6765090dfbec4993d53c572f1500",
+      "afterRenderHash": "01813c6c0b8f26aeb871a87ecd606d887c546e6862020519a61eeeb25a3602ba"
+    },
+    {
+      "id": "3c5136f8-1616-4463-8aa7-122cde6dcddb",
+      "name": "Imperiosaur",
+      "cohort": "validation",
+      "referenceHash": "ffe3b60a87f26e6f383c4c509386d62384020c37b0a39b1a911a38a61d74861d",
+      "pose": {
+        "matrix": [0.99955, 0, 0, 0.99955, -0.02499999999999998, 0.2]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.2591677536524303,
+        "darkEdgeF1": 0.20168173484225832,
+        "lightEdgeF1": 0.31665377246260223,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.8961461279625507,
+        "censusSimilarity": 0.46827915273414594
+      },
+      "after": {
+        "edgeF1": 0.259223567175582,
+        "darkEdgeF1": 0.2037886184194311,
+        "lightEdgeF1": 0.3146585159317329,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.962734325576829,
+        "censusSimilarity": 0.47318420043862586
+      },
+      "objective": {
+        "before": 0.22117971434270373,
+        "after": 0.22275071115761785
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "9c7596428fc8bb502e27f182e02a9cb2f7b05b365d9fb7b6aebc5c7d9842d211",
+      "afterRenderHash": "e81e2f5d0f9d0281ccfe406b90f8395205a71feffe692a4d9f46cc645beab4c0"
+    },
+    {
+      "id": "4091524c-569c-4668-b18a-7f869b1169f3",
+      "name": "Muraganda Petroglyphs",
+      "cohort": "validation",
+      "referenceHash": "367015f15cde45967c9d7bffc399c168a49065acdace1966dc92ceda6e10b915",
+      "pose": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.17500000000000004, 0.02500000000000001]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5150448615435326,
+        "darkEdgeF1": 0.5702486692953842,
+        "lightEdgeF1": 0.45984105379168083,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.819370941603074,
+        "censusSimilarity": 0.6530778955695038
+      },
+      "after": {
+        "edgeF1": 0.5606068705720719,
+        "darkEdgeF1": 0.6290613649909331,
+        "lightEdgeF1": 0.4921523761532107,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.6448482545417065,
+        "censusSimilarity": 0.694310155328199
+      },
+      "objective": {
+        "before": 0.5486950970829628,
+        "after": 0.6068704887023946
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "8604b9658375403e56cbeb452973bdfa5ebd05708db5ce09d535805899759f28",
+      "afterRenderHash": "f5dae4743037eac5e8bcfd6d8b8c97700835024855b2f891606e0f0d668edf80"
+    },
+    {
+      "id": "4ef863d2-1e11-41cc-90d5-008bf6234565",
+      "name": "Nacatl War-Pride",
+      "cohort": "validation",
+      "referenceHash": "2b5fc7ada4f023a54b8d28cc96e1fec09c49154770fa9f2b664e4d07834ccbc3",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.1, 0.05]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5985900049724227,
+        "darkEdgeF1": 0.6444677763428487,
+        "lightEdgeF1": 0.5527122336019965,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6621090652906028,
+        "censusSimilarity": 0.6164452213185372
+      },
+      "after": {
+        "edgeF1": 0.5854131857324172,
+        "darkEdgeF1": 0.6352010421465678,
+        "lightEdgeF1": 0.5356253293182666,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.69237358667246,
+        "censusSimilarity": 0.6053270028888063
+      },
+      "objective": {
+        "before": 0.6335290665344587,
+        "after": 0.6279830876947499
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "478caa2fb75c69c7166b43a9a8ef720e142c2435fc2ec9e999efe9e01964bd87",
+      "afterRenderHash": "4b6711a5d1098eb6e7a089b63b093612822024adcdff8caf215262a3ba020861"
+    },
+    {
+      "id": "7ca13d7a-0f60-4de6-9455-aea454cb2e46",
+      "name": "Phosphorescent Feast",
+      "cohort": "validation",
+      "referenceHash": "4b926b5463c9eae6d8d964a476105a3748275e910d6b81c89bc7dd7b772732aa",
+      "pose": {
+        "matrix": [0.9994500000000001, 0, 0, 0.9994500000000001, 1.3877787807814457e-17, 0.125]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4617682606090232,
+        "darkEdgeF1": 0.49160346044961045,
+        "lightEdgeF1": 0.431933060768436,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.9782375006440236,
+        "censusSimilarity": 0.5045172543470308
+      },
+      "after": {
+        "edgeF1": 0.5105279901534236,
+        "darkEdgeF1": 0.5503040583433916,
+        "lightEdgeF1": 0.4707519219634558,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7220275551039554,
+        "censusSimilarity": 0.5378554527947694
+      },
+      "objective": {
+        "before": 0.5051156470098346,
+        "after": 0.5655729462715835
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "6313bbfeb30c1f4f894123e088d22d842050499813550e07f01a84c0071a7cf2",
+      "afterRenderHash": "5fc8ab663bf508bdd5fc594cb21e01cb0db2fcdc68c37b9b3e9af79ccc61b279"
+    },
+    {
+      "id": "335c3aa3-af89-44ce-955a-69e12d83175f",
+      "name": "Quagnoth",
+      "cohort": "calibration",
+      "referenceHash": "69a4838a1abc4e681e7faa6d8ee6bbb384ff61afa08d76b2f68af9844f27941f",
+      "pose": {
+        "matrix": [1.00005, 0, 0.0002616815840530975, 0.99955, 0.02500000000000001, 0.175]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5644229186869245,
+        "darkEdgeF1": 0.6303575472939213,
+        "lightEdgeF1": 0.49848829007992757,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.8354035770250647,
+        "censusSimilarity": 0.5793249462631292
+      },
+      "after": {
+        "edgeF1": 0.6621546443525776,
+        "darkEdgeF1": 0.7206284993838622,
+        "lightEdgeF1": 0.6036807893212931,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6284662664571483,
+        "censusSimilarity": 0.6565259250138702
+      },
+      "objective": {
+        "before": 0.621393661785701,
+        "after": 0.6921046651084388
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "b1af66a0d81f459565c55f5620583840df2b4f3d5d4060187e20bd7ac0c4e02a",
+      "afterRenderHash": "92a9d594008f543dec732a287aa547e9d9dd2c2811f02b243e1854936936f4c7"
+    },
+    {
+      "id": "231eb017-2945-4915-8032-c09894e88d49",
+      "name": "Spellwild Ouphe",
+      "cohort": "calibration",
+      "referenceHash": "ddff55679d34e07f86a3ac2ee5638d55c9af0695b6b9847ec897b3a5bdd637d6",
+      "pose": {
+        "matrix": [
+          0.9992499961951382, -0.00008720101264208774, 0.0005237035212769169, 1.0001999581067256,
+          -0.25, -0.02499999999999998
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.45611223184484484,
+        "darkEdgeF1": 0.4916128119913389,
+        "lightEdgeF1": 0.4206116516983508,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.1190237484244623,
+        "censusSimilarity": 0.532425048360482
+      },
+      "after": {
+        "edgeF1": 0.4916508219003781,
+        "darkEdgeF1": 0.5269365670347057,
+        "lightEdgeF1": 0.4563650767660506,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0872628628975267,
+        "censusSimilarity": 0.5622038430778031
+      },
+      "objective": {
+        "before": 0.5007827360731697,
+        "after": 0.5322345952728481
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "ae4e6d25ba32eb40bb6257c0a86f9036e554cce1bccad7ebd066b3104573df10",
+      "afterRenderHash": "4fe078b3301e2b8515e98df0d55f10cf2d4ec70b6fad9435eecc82ff1cae5565"
+    },
+    {
+      "id": "cdc8f3f3-4ff4-4943-8ae0-c1af78a5ae16",
+      "name": "Sporoloth Ancient",
+      "cohort": "validation",
+      "referenceHash": "9bb7780da78e8afb1d253a957305cee968d4e9f649826a13f2a32676ea3760e2",
+      "pose": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.12499999999999999, 1.3877787807814457e-17]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5350732986071681,
+        "darkEdgeF1": 0.5960595939919947,
+        "lightEdgeF1": 0.47408700322234154,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6641023911403559,
+        "censusSimilarity": 0.5587111692616273
+      },
+      "after": {
+        "edgeF1": 0.6220304562622077,
+        "darkEdgeF1": 0.6729689128570165,
+        "lightEdgeF1": 0.5710919996673988,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.5043818116467451,
+        "censusSimilarity": 0.6352893692940172
+      },
+      "objective": {
+        "before": 0.6046353051848329,
+        "after": 0.6651457661317559
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "f5582729db5efc4e2c0d8c15eb2c3a3db090f393bbf9257189928c017f889c1d",
+      "afterRenderHash": "344aea2010dfa9066aa3080c75d26e48c73c37fe3e36986027460d15a46de7dc"
+    },
+    {
+      "id": "b6876d9e-0908-43ac-8542-09c7aa02b5ba",
+      "name": "Tarmogoyf",
+      "cohort": "validation",
+      "referenceHash": "ca0f9821301274d3feba0ae2b43ad01150616be5557568fa2c121fcf471c6265",
+      "pose": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.07499999999999997, -0.04999999999999999]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.587755483793772,
+        "darkEdgeF1": 0.6442217244848509,
+        "lightEdgeF1": 0.5312892431026931,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.022762245548721,
+        "censusSimilarity": 0.6276010975328361
+      },
+      "after": {
+        "edgeF1": 0.5466207715201263,
+        "darkEdgeF1": 0.6049313178163621,
+        "lightEdgeF1": 0.48831022522389045,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0748367157108456,
+        "censusSimilarity": 0.5967179341786917
+      },
+      "objective": {
+        "before": 0.6263434389559459,
+        "after": 0.5985844441526972
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "171a6243af78e5b3fd733e89127d6a5f09c5eab64c8321f5bba99f1a6060d8bf",
+      "afterRenderHash": "b91572ac61ada3021877575d9a2db86bf412f3410e57efafe2b5f1211cf0a37f"
+    },
+    {
+      "id": "783a50a0-9394-4d97-856f-21eb126a0018",
+      "name": "Thornweald Archer",
+      "cohort": "validation",
+      "referenceHash": "a55f0045d7da6cd87971ba62050dcaf1bceb4f8e4eb205a6c439953d8c08404a",
+      "pose": {
+        "matrix": [
+          1.0001499999999999, 0, 0, 1.0001499999999999, -0.09999999999999998, -0.15000000000000002
+        ]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.564168444139383,
+        "darkEdgeF1": 0.6251170170736143,
+        "lightEdgeF1": 0.5032198712051518,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.1210514971814773,
+        "censusSimilarity": 0.6204683800668032
+      },
+      "after": {
+        "edgeF1": 0.5696316070763214,
+        "darkEdgeF1": 0.6491267136458748,
+        "lightEdgeF1": 0.490136500506768,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0471425246674095,
+        "censusSimilarity": 0.6261109934744871
+      },
+      "objective": {
+        "before": 0.6075855954460627,
+        "after": 0.6370544297410937
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "66fa4d43e5bf6fca1cf74f32002afd28650a528e77d93a0f6084adf83dc51fab",
+      "afterRenderHash": "f691857f0f235d4cd2b91ea25e29aeedd0d6dc2f2d5bee15e390c048945152d0"
+    },
+    {
+      "id": "66de9c95-e590-4b0d-a2d7-886d7a488a10",
+      "name": "Virulent Sliver",
+      "cohort": "validation",
+      "referenceHash": "f4532d30b054e22c374a6166284be41724355be4e0d2895b2a42bdef9ed05aea",
+      "pose": {
+        "matrix": [0.99945, 0, 0, 1.0004999999999997, -0.025000000000000022, -0.075]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4977956425135752,
+        "darkEdgeF1": 0.5371549002892421,
+        "lightEdgeF1": 0.4584363847379083,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.8890178216166325,
+        "censusSimilarity": 0.6072097813377748
+      },
+      "after": {
+        "edgeF1": 0.4950707645419836,
+        "darkEdgeF1": 0.5358971383263144,
+        "lightEdgeF1": 0.4542443907576528,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.9124626239479867,
+        "censusSimilarity": 0.6086535540201686
+      },
+      "objective": {
+        "before": 0.520974033305193,
+        "after": 0.5193992473324971
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "bf1883a2ece996a2e05dc189da185309dca0b75568927452d6e482c5e024c031",
+      "afterRenderHash": "02319f65223410f69feff722da60a225cde65f5cc52bba5e255e517382dae46b"
+    },
+    {
+      "id": "e77eaaa0-40f9-40e4-b0ba-5a8addd764d3",
+      "name": "Darksteel Garrison",
+      "cohort": "validation",
+      "referenceHash": "9552da632b525dfcf59d6e4921de9d427f599838913ca73f266dc38eae7f9102",
+      "pose": {
+        "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, 0.024999999999999994, 0.25]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5398568027994767,
+        "darkEdgeF1": 0.5927033844771934,
+        "lightEdgeF1": 0.48701022112176,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0850489163577484,
+        "censusSimilarity": 0.588189914112617
+      },
+      "after": {
+        "edgeF1": 0.5737861197183858,
+        "darkEdgeF1": 0.6189377554929454,
+        "lightEdgeF1": 0.5286344839438261,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.0415295730587983,
+        "censusSimilarity": 0.6165014973388023
+      },
+      "objective": {
+        "before": 0.5819024164178634,
+        "after": 0.6035138783414946
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a9aefeefa4569b2fe56bd5bac01c060f6b68c9ab4368c806f4a6a50c8ed226b3",
+      "afterRenderHash": "e1ec1c494f6f5df819b95260bfdc2749d0a8ef014f2192bc0abc5acc5879d63d"
+    },
+    {
+      "id": "dc6040b6-cf02-4f7e-a275-177c3a6415aa",
+      "name": "Whetwheel",
+      "cohort": "validation",
+      "referenceHash": "8e82007d200f3ebfa880ddc150d1e999723d1b238237244182e98921d0538546",
+      "pose": {
+        "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, 0.05, 0.27499999999999997]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4117333636657319,
+        "darkEdgeF1": 0.44978858109291797,
+        "lightEdgeF1": 0.3736781462385457,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.871271617489689,
+        "censusSimilarity": 0.5351506670214521
+      },
+      "after": {
+        "edgeF1": 0.4169160294487253,
+        "darkEdgeF1": 0.45847914025334235,
+        "lightEdgeF1": 0.3753529186441083,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.8209254833388084,
+        "censusSimilarity": 0.5335210602716101
+      },
+      "objective": {
+        "before": 0.45469791213389943,
+        "after": 0.4628577739614308
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 1,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a371f4a5f1f95f6bdb01feccfe240701481e642686029912b8d5e6124b41cb1b",
+      "afterRenderHash": "4626dcabb2dfc73701970ade7046de14425b5b87fe322146ebdc03c7b6908d14"
+    },
+    {
+      "id": "8cee476d-42e1-4997-87af-73e18f542167",
+      "name": "Dryad Arbor",
+      "cohort": "calibration",
+      "referenceHash": "e433dee39779da762c6e037139236a41e79ce1a1c37936c4df9e67ad77d007ea",
+      "pose": {
+        "matrix": [0.99985, 0, 0, 0.99985, 0.02500000000000001, 0.15]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.5440591467432522,
+        "darkEdgeF1": 0.5681296223173217,
+        "lightEdgeF1": 0.5199886711691827,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.7641071195772944,
+        "censusSimilarity": 0.6133732449966365
+      },
+      "after": {
+        "edgeF1": 0.5248881263719327,
+        "darkEdgeF1": 0.547253463659641,
+        "lightEdgeF1": 0.5025227890842243,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.8480543072774764,
+        "censusSimilarity": 0.604450306168985
+      },
+      "objective": {
+        "before": 0.5676012194686094,
+        "after": 0.547882157599932
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "5655ac311072814575ae78428d87ca3df1719dd166cd23f9560b5319f7bc11e3",
+      "afterRenderHash": "7cb1581a4e24156a0c9dd333177a8cba56d0ec3f934b379228669d522c3c68cb"
+    },
+    {
+      "id": "81e7d329-ef6a-45f3-82b6-37a3606c00bc",
+      "name": "Graven Cairns",
+      "cohort": "calibration",
+      "referenceHash": "0669d7d461e97a0b824df873123bb1f3d039607a91dbaf53794389162cf05318",
+      "pose": {
+        "matrix": [
+          1.0000999847676055, -0.00017455037760576807, 0.0013091283072600842, 1.0000997867463985,
+          -0.37499999999999994, 0
+        ]
+      },
+      "inkPolarity": "light",
+      "before": {
+        "edgeF1": 0.5947089617331263,
+        "darkEdgeF1": 0.6707971999991859,
+        "lightEdgeF1": 0.5186207234670667,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.729351996951344,
+        "censusSimilarity": 0.6283008257430117
+      },
+      "after": {
+        "edgeF1": 0.5862696691070153,
+        "darkEdgeF1": 0.6536574985792519,
+        "lightEdgeF1": 0.5188818396347785,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.749790590260467,
+        "censusSimilarity": 0.6270986165236696
+      },
+      "objective": {
+        "before": 0.6608078492228301,
+        "after": 0.6492802318779292
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 2,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "f6f1c66760227e1563c264714eb8441bdee017083777a9adfbc7d320f6db9e21",
+      "afterRenderHash": "5717075519783b8f93fcc8bd69f9162f886bd01c7f60dd87fc8ac26551106278"
+    },
+    {
+      "id": "e0b4d4b1-6e25-4c4b-a21a-1b7b1c1d6452",
+      "name": "Grove of the Burnwillows",
+      "cohort": "validation",
+      "referenceHash": "cfa2dad8e97eaba6799a7fc2f2bd6eedc0cae1a28ff20e984e658a979a8fda0a",
+      "pose": {
+        "matrix": [
+          1.0014999389851325, 0.0003495894420750621, -0.0001744980203862309, 0.9997999999999999,
+          -0.07499999999999998, -0.02499999999999998
+        ]
+      },
+      "inkPolarity": "light",
+      "before": {
+        "edgeF1": 0.6252335109976741,
+        "darkEdgeF1": 0.6989794399485463,
+        "lightEdgeF1": 0.551487582046802,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6342994103103474,
+        "censusSimilarity": 0.6747373826844738
+      },
+      "after": {
+        "edgeF1": 0.6034130254563785,
+        "darkEdgeF1": 0.6734365502433562,
+        "lightEdgeF1": 0.5333895006694009,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 1.6881651713234613,
+        "censusSimilarity": 0.655276424922627
+      },
+      "objective": {
+        "before": 0.6862614671931734,
+        "after": 0.6679101206602152
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 2,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "a34de38cab9c964f881f06704287512be592592427ace9d1b16d8f8e03ad849f",
+      "afterRenderHash": "ff44c6a589f6fb1be16852c1d77cecd90f20a834a69b83b0577cccccad7d64f5"
+    },
+    {
+      "id": "d5dfc25d-a17b-4ead-9484-e8a18b8fa176",
+      "name": "Horizon Canopy",
+      "cohort": "validation",
+      "referenceHash": "678cc9120d2540141f4d226bbc433cce9a3ae765cc982634b68d72eafde2fdba",
+      "pose": {
+        "matrix": [0.9997, 0, 0, 0.9997, -0.12499999999999999, 0.025000000000000022]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.4774037775535152,
+        "darkEdgeF1": 0.5028601870381129,
+        "lightEdgeF1": 0.45194736806891755,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.8944070007117344,
+        "censusSimilarity": 0.5885975892280564
+      },
+      "after": {
+        "edgeF1": 0.49105027491696696,
+        "darkEdgeF1": 0.5239418190253461,
+        "lightEdgeF1": 0.45815873080858777,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.9507003118317376,
+        "censusSimilarity": 0.5992388141801992
+      },
+      "objective": {
+        "before": 0.49144105235231017,
+        "after": 0.5073919879995445
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "16c77fb9e3027575b438d9e9082f15b2870d29b6c76b610c86076e581d76048d",
+      "afterRenderHash": "1664ae24709e5b1e46d2f0155bbca903e950746f3147084a45ec2d34c8051d52"
+    },
+    {
+      "id": "80d1f953-9403-4e0a-b8e1-3f7d928a2834",
+      "name": "Nimbus Maze",
+      "cohort": "calibration",
+      "referenceHash": "3b82d388856494e2bb0a0829948ba67e8087bdebc0a6255dd648604504f4296d",
+      "pose": {
+        "matrix": [0.99955, 0, 0, 0.99955, 0.15000000000000002, 0.2]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.48054310192913474,
+        "darkEdgeF1": 0.5070305162282519,
+        "lightEdgeF1": 0.4540556876300175,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.229464526243339,
+        "censusSimilarity": 0.5669252359136556
+      },
+      "after": {
+        "edgeF1": 0.4874323937829147,
+        "darkEdgeF1": 0.5184117309232628,
+        "lightEdgeF1": 0.4564530566425667,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 2.2175633035446998,
+        "censusSimilarity": 0.5718087940909337
+      },
+      "objective": {
+        "before": 0.5114956219592734,
+        "after": 0.5210074798383956
+      },
+      "replay": {
+        "maximumChannelDifference": 1,
+        "differentChannels": 2,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "6154acc143939790e982b1af3fb1e653716ab9d67b1963be6d48da8d1110853b",
+      "afterRenderHash": "2fcac85df30ebda0278986cfa203ff55144229535205486616478b09ed0106c4"
+    },
+    {
+      "id": "8d5b2058-99fc-4d9b-9e3d-056fa3fd1244",
+      "name": "River of Tears",
+      "cohort": "validation",
+      "referenceHash": "852d68c1f527346910abb13f0fea3579a82d8d062c37ba03296cdd1c2a51685c",
+      "pose": {
+        "matrix": [1.0008, 0, 0, 1.0008, -0.05, -0.1]
+      },
+      "inkPolarity": "light",
+      "before": {
+        "edgeF1": 0.3105139196432919,
+        "darkEdgeF1": 0.2533216560847122,
+        "lightEdgeF1": 0.36770618320187154,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.654738352391351,
+        "censusSimilarity": 0.488429471008174
+      },
+      "after": {
+        "edgeF1": 0.3371996903659882,
+        "darkEdgeF1": 0.2936015373200017,
+        "lightEdgeF1": 0.38079784341197465,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.491228792910424,
+        "censusSimilarity": 0.5053198176619669
+      },
+      "objective": {
+        "before": 0.2662301630365639,
+        "after": 0.29995273164299247
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "c5dc0af49a03ec0e91009fc14f091af78fadfeb038f9b572e1d202fc69a938e4",
+      "afterRenderHash": "495fe3610ff37620e571d6f842f1abcee4f56c03fd2ce82e8f8b7a62e494ecf0"
+    },
+    {
+      "id": "c1db30e1-31df-44b9-930a-02428bd5ce47",
+      "name": "Zoetic Cavern",
+      "cohort": "validation",
+      "referenceHash": "ecbdc9a875a9febfbd4c876fdf57d62ef72c2b2e905ff7201aa4f3712bfb79d1",
+      "pose": {
+        "matrix": [0.99955, 0, 0, 0.99955, 0.04999999999999999, 0.25]
+      },
+      "inkPolarity": "dark",
+      "before": {
+        "edgeF1": 0.36540671392487556,
+        "darkEdgeF1": 0.3959342621720989,
+        "lightEdgeF1": 0.33487916567765225,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.3786034458842704,
+        "censusSimilarity": 0.5625667895921735
+      },
+      "after": {
+        "edgeF1": 0.35245733400732565,
+        "darkEdgeF1": 0.3853804075653107,
+        "lightEdgeF1": 0.3195342604493406,
+        "darkStatus": "measured",
+        "lightStatus": "measured",
+        "meanDistance": 3.496462814876475,
+        "censusSimilarity": 0.5546187859056879
+      },
+      "objective": {
+        "before": 0.4016436035246924,
+        "after": 0.39312266536067203
+      },
+      "replay": {
+        "maximumChannelDifference": 0,
+        "differentChannels": 0,
+        "outsideRulesChanged": 0,
+        "wrappingPreserved": true
+      },
+      "beforeRenderHash": "9a228fb8aebd6541de9fa43dd81d2728bb39f1e4bc4109385102f856a7163302",
+      "afterRenderHash": "ed6a21c66f311c7648f357063339408529e1c8c34c46a8fcce76862eb3caec80"
+    }
+  ],
+  "controls": [
+    {
+      "id": "f6ccfe28-ec08-4751-b65c-c40b2bafa955",
+      "name": "Blade of the Sixth Pride",
+      "reason": "Full-art source has no body",
+      "changedPixels": 0
+    },
+    {
+      "id": "6b26ee7b-de1a-4a39-9580-89941c3d0f21",
+      "name": "Blind Phantasm",
+      "reason": "Full-art source has no body",
+      "changedPixels": 0
+    },
+    {
+      "id": "20c3f515-de7d-41eb-8ba0-532f4c13ac39",
+      "name": "Mass of Ghouls",
+      "reason": "Full-art source has no body",
+      "changedPixels": 0
+    },
+    {
+      "id": "8216b3f3-b9b6-4d90-a624-c1b9b7bdf953",
+      "name": "Fomori Nomad",
+      "reason": "Full-art source has no body",
+      "changedPixels": 0
+    },
+    {
+      "id": "88b18b70-f656-4426-a3e5-69cf61fdaad1",
+      "name": "Nessian Courser",
+      "reason": "Full-art source has no body",
+      "changedPixels": 0
+    }
+  ]
+}

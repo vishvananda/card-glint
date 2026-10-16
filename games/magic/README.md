@@ -138,7 +138,25 @@ artist-credit overlap on all 53 reserved regular-frame cards. The larger artist
 fit regresses the four accepted textless cards, so that physical frame retains
 its source sizing. Mean reserved copyright/collector overlap improves from
 0.573 to 0.698 and P/T overlap from 0.660 to 0.738. The report retains individual
-regressions; full-art artist placement and rules/flavor layout remain review work.
+regressions; full-art artist placement remains review work.
+
+The [rules replay](fixtures/accuracy/future-rules.json) retains the existing
+MPlantin font, fitted sizes and line breaks, adjusts the shared block position,
+and removes the unprinted flavor divider. Broader font and spacing trials had
+large wrapping regressions and were rejected. The original validation cohort
+was reused for these comparisons; it is not an untouched test set. Printed
+size and optical weight still vary beyond this shared default. Reviewed
+Grandeur labels retain their printed italics and dash without replacing flavor
+text or changing Oracle wording.
+
+Across all 81 futureshifted FUT cards, the [structural report](fixtures/accuracy/future-fullset.json)
+improves from 53.0% to 72.6% on 80 independently accepted scan poses; all 80
+improve. Mass of Ghouls remains excluded for its weak bottom-edge alignment.
+The 99 ordinary FUT cards are outside this frame study. These fixed-region
+similarity scores exclude color, incomplete artwork and legal-text diagnostics;
+they are not percentages of correct pixels. River of Tears, Witch's Mist and
+Street Wraith lead the remaining text/frame review queue. The local score map
+still needs integration into the review application.
 
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
 pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
