@@ -228,6 +228,13 @@ const fixtures = [
     rulesText: '{2}, {T}: Draw a card.',
   },
 ];
+fixtures.push({
+  ...creature,
+  frameStyle: 'retro',
+  setCode: 'LEG',
+  artist: 'Example Artist',
+  setSymbol: '/test-symbol.svg',
+});
 for (const setCode of ['apc', 'dis', 'dgm'])
   fixtures.push({
     name: 'Dawn // Dusk',

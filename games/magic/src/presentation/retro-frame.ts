@@ -65,6 +65,7 @@ export function retroFrameRect(face: RenderedCardInput): FaceRect {
 }
 export function retroRects(face: RenderedCardInput) {
   const early = retroEarly(face);
+  const legends = legendsFrame(face) && (!face.borderColor || face.borderColor === 'black');
   return {
     ...FACE_RECTS,
     frame: retroFrameRect(face),
@@ -81,8 +82,10 @@ export function retroRects(face: RenderedCardInput) {
               : [0.12, 0.0991, 0.7667, 0.4429])) as FaceRect,
     type: [0.1074, 0.5486, 0.7852, 0.0543] as FaceRect,
     rules: [0.128, 0.6067, 0.744, 0.2724] as FaceRect,
-    stats: [0.8074, 0.895, 0.1367, 0.043] as FaceRect,
-    footer: [0.1, 0.9, 0.68, 0.04] as FaceRect,
+    stats: (legends
+      ? [384 / W, 617 / H, 72 / W, 30 / H]
+      : [0.8074, 0.895, 0.1367, 0.043]) as FaceRect,
+    footer: (legends ? [48 / W, 624 / H, 340 / W, 24 / H] : [0.1, 0.9, 0.68, 0.04]) as FaceRect,
     stamp: [0.34, 0.628, 0.32, 0.23] as FaceRect,
   };
 }

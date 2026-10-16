@@ -7,6 +7,7 @@ import { retroManaPlacement } from './retro-mana.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { titleTranslation } from './title-placement.js';
 import { retroTypePlacement } from './retro-type.js';
+import { paintLegendsFooter } from './legends-footer.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { calibratedStyledSymbolBounds } from './styled-symbol-placement.js';
@@ -328,7 +329,7 @@ export function paintRetroFace(
         face.setCode?.toLowerCase() === 'lea' ? 0.012 : 0,
       );
   }
-  if (paintUrzaFooter(c, face)) return;
+  if (paintLegendsFooter(c, face) || paintUrzaFooter(c, face)) return;
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
   if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;
   c.fillStyle = retroInk(face);

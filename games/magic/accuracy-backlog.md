@@ -49,8 +49,12 @@ without putting visible hyphens into plain wording or changing Oracle. Their
 follow-up measurements are development diagnostics, not new reserved validation.
 The fitting tool retains before/proposal images and every regression.
 Wall of Earth is now explicitly flavor-only for original wording; missing source
-rules no longer introduce Oracle Defender. Artist/legal text and power/toughness
-are the next calibration pass.
+rules no longer introduce Oracle Defender. The [footer calibration](fixtures/accuracy/legends-footer.json) restores the
+left-aligned “Illus. © 1994” credit, moves stats to the printed baseline, and uses
+independent shadows with slightly lighter solid ink. All 70 renderer replays
+match the fitted candidates exactly. Reserved credit overlap rises 43.8% → 71.6%
+(36/36 improve), and P/T 45.0% → 75.1% (20/20 improve). Full-set scoring and
+release remain pending.
 
 ## Current execution checkpoint
 
