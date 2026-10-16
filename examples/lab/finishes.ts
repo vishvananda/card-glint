@@ -5,6 +5,8 @@ export const finishGroups = {
   surfaces: ['rain', 'pool', 'heat', 'gloss'],
 } as const satisfies Record<string, readonly Finish[]>;
 
+export const wearLevels = { fresh: 0, light: 0.25, played: 0.6, heavy: 1 } as const;
+
 export const finishNames: Record<Finish, string> = {
   regular: 'Uncoated',
   gloss: 'Gloss',

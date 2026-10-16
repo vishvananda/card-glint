@@ -16,7 +16,7 @@ const kinds = {
   pool: 7,
   gloss: 8,
 };
-const stride = 40;
+const stride = 42;
 export interface Material {
   face: Texture;
   mask: Texture;
@@ -88,6 +88,9 @@ export class Device {
       gl.vertexAttribPointer(i, 4, gl.FLOAT, false, stride * 4, 80 + (i - 7) * 16);
       gl.vertexAttribDivisor(i, 1);
     }
+    gl.enableVertexAttribArray(12);
+    gl.vertexAttribPointer(12, 2, gl.FLOAT, false, stride * 4, 160);
+    gl.vertexAttribDivisor(12, 1);
     gl.bindVertexArray(null);
   }
   begin(frame: Frame) {
@@ -122,6 +125,8 @@ export class Device {
       else values.fill(0, start + 20, start + stride);
       values[start + 22] = surfaceSeed(item.id);
       values[start + 23] = item.deformation?.amount ?? 0;
+      values[start + 40] = item.wear?.amount ?? 0;
+      values[start + 41] = surfaceSeed(item.wear?.seed ?? item.id);
     });
     if (this.instanceCapacity < length) {
       this.instanceCapacity = length;

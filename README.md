@@ -73,6 +73,19 @@ treatment; saved PNGs use the same setting. Use **Inside the renderer** for metr
 and cache tests. `npm run art` regenerates the optional SVG alternatives; it does
 not overwrite the generated fantasy illustrations.
 
+The **Wear** selector adds Fresh, Lightly played, Well played or Heavily played
+abrasion over any finish. Open `?finish=gloss&wear=heavy` for worn gloss, or
+`?wear=heavy` for worn foils. Chipped paper edges, corner abrasion and fine
+shuffle scratches remain fixed as the card tilts. Intact areas retain the
+selected finish; shallow ink loss on foils exposes reflective film, while deep
+chips expose matte cardstock. Full card includes edge wear; Artwork only keeps
+the frame protected.
+
+Set `Instance.wear` to `{ amount: 0.6, seed: 42 }`: amount ranges from 0 (fresh)
+to 1 (heavily played), and the optional uint32 seed defaults to the instance ID.
+Persist that seed with the card to keep its wear when scene identity changes.
+Pass the same `wear` and `instanceId` to `exportCard` for matching PNGs.
+
 ```sh
 npm run check                  # rustfmt, strict Clippy, Rust tests, TS, formatting, boundaries
 npx playwright install chromium
@@ -82,6 +95,7 @@ npm run test:surfaces          # animation, local ripples/slosh, masks and cache
 npm run test:touch             # native touch gestures, tilt and page scrolling
 npm run test:hover-isolation   # pointer affects one card; neighbors retain idle reflections
 npm run test:coverage          # artwork-only/full-card masks, exports and cache reuse
+npm run test:worn              # wear levels, foil layering, seeds, exports and cache reuse
 npm run test:optics            # caustic motion measured across successive frames
 npm run test:deformation       # animated silhouette, Rust picking, overlap and export
 npm run test:parallax          # recessed ink, floor illumination and shared light-map reuse

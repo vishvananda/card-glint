@@ -162,7 +162,7 @@ an epoch reset clears that history. Camera motion alone does not inject slosh.
 Export isolates the motion state.
 
 Card preparation, decoding, etching and texture uploads remain cached. Animation
-uploads a 160-byte instance record; silhouette amplitude occupies a previously
+uploads a 168-byte instance record; silhouette amplitude occupies a previously
 unused float. Rain evaluates eighteen candidate drops; rain and heat use five
 face samples for softening. Pool evaluates six surface waves and four bounded
 ripples, then samples the face and a **separate projected-light map** (five taps
@@ -195,6 +195,35 @@ it does not retrace the shared sunlight for each local ripple. Rain scene stabil
 distance of 3.5 card widths; arbitrary host cameras and card translations are
 not tracked. Basin slosh uses two low-frequency wall-to-wall height modes from
 the existing damped spring. Rain does not physically merge droplets.
+
+### Wear over finishes
+
+Optional `Instance.wear` adds abrasion over any selected finish in the existing
+card depth pass. `amount` ranges from zero to one; an optional uint32 `seed`
+defaults to the stable instance ID. Hosts can persist it with a physical card
+independently of scene identity. Export accepts the same wear settings.
+
+Rounded-edge distance uses the pack's corner radius and face aspect; seeded
+noise clusters paper exposure at edges and corners. Increasing wear spreads
+and deepens those chips, adds ink loss and dulls more varnish. Short directional
+scores and scattered abrasions sit over the chosen gloss/foil response, which
+survives in intact areas. On foils, shallow rubs expose a reflective silver film;
+deeper chips remove it and expose matte fibres. This approximates surface wear
+without changing silhouette, picking geometry or document rasters.
+
+Noise octaves fade to their mean when a screen pixel covers their detail.
+Chip alpha uses derivative-based soft edges, and hairlines preserve coverage as
+they shrink. Larger chip clusters remain resolved while subpixel fibres soften,
+preventing the fixed pattern from sparkling during tilt or minification. This
+filtering stays in the material pass; it does not blur the printed face.
+
+Elapsed time does not change wear; pose and pointer move reflections. A separate
+pair of instance floats holds wear amount/seed, leaving deformation and living
+surface identities independent. Coverage exclusions and over-finish layers keep
+their normal semantics, including an independent hologram coating. There are no
+additional textures, passes, readbacks or transient motion states for wear.
+Fragment work grows with covered area; CPU submission timings do not measure
+GPU completion time. Fresh cards skip the abrasion branch.
 
 ### Optional moving silhouette
 

@@ -2,6 +2,7 @@ import { FOIL_PREVIEW_GLSL } from './foil-preview-shader.js';
 import { SURFACE_GLSL } from './surface-shader.js';
 import { DEFORMATION_GLSL } from './deformation-shader.js';
 import { HOLOGRAM_GLSL } from './hologram-shader.js';
+import { WORN_GLSL } from './worn-shader.js';
 export const vertex = `#version 300 es
 layout(location=0) in vec2 position;
 layout(location=1) in mat4 model;
@@ -10,13 +11,14 @@ layout(location=6) in float instanceFinish;
 layout(location=7) in vec4 instanceSurface;
 layout(location=8) in vec4 instanceRipple0;layout(location=9) in vec4 instanceRipple1;
 layout(location=10) in vec4 instanceRipple2;layout(location=11) in vec4 instanceRipple3;
+layout(location=12) in vec2 instanceWear;
 uniform mat4 viewProjection;
-out vec2 v_uv;out vec3 v_normal;flat out float previewKind;
+out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
 void main(){
 vec2 pad=instanceSurface.w*vec2(1.,.18);
 vec2 local=position*(1.+2.*pad)-pad;
-v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;
+v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;wearInfo=instanceWear;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
 gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
 const foil = FOIL_PREVIEW_GLSL.replace(
@@ -25,7 +27,7 @@ const foil = FOIL_PREVIEW_GLSL.replace(
 ).replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)');
 export const fragment = `#version 300 es
 precision highp float;
-in vec2 v_uv;in vec3 v_normal;
+in vec2 v_uv;in vec3 v_normal;flat in vec2 wearInfo;
 uniform sampler2D face;uniform sampler2D mask;uniform sampler2D overlay;uniform sampler2D coverage;
 uniform vec2 overlayFoil;
 uniform vec2 pointer;uniform vec4 artBounds[8];
@@ -36,6 +38,7 @@ float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,
 ${foil}
 ${SURFACE_GLSL}
 ${DEFORMATION_GLSL}
+${WORN_GLSL}
 #ifdef LOCAL_HOLOGRAM
 ${HOLOGRAM_GLSL}
 #endif
@@ -51,11 +54,18 @@ void main(){
    grainFilter=exp(-fwidth(dot(local,vec2(24.,8.)))*2.);
  }
 #endif
+ // Derive wear filtering from continuous UVs before silhouette rejection.
+ vec2 wearPixel=vec2(0.);
+ if(wearInfo.x>0.)wearPixel=fwidth(uv*vec2(1.,aspect));
  vec2 corner=abs((uv-.5)*vec2(1.,aspect))-(vec2(.5,aspect*.5)-cornerRadius);
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  vec3 shaded=previewLinear(previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view));
  vec3 base=texture(face,uv).rgb;
+ if(wearInfo.x>0.) {
+   float foilSubstrate=step(.5,previewKind)*(1.-step(4.5,previewKind));
+   shaded=previewLinear(wornSurface(uv,previewInk(base),previewInk(shaded),normalize(v_normal),view,wearInfo.y,wearInfo.x,foilSubstrate,wearPixel));
+ }
  vec4 c=texture(coverage,uv),top=texture(overlay,uv);
  vec3 under=mix(base,shaded,max(finishBase,c.r)*(1.-c.g));
  // Printing stays at the original UV, above all optical effects. The same

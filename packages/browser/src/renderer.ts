@@ -127,6 +127,7 @@ export class Renderer {
       transform: [...item.transform],
       normal: item.normal ? ([...item.normal] as [number, number, number]) : undefined,
       deformation: item.deformation ? { ...item.deformation } : undefined,
+      wear: item.wear ? { ...item.wear } : undefined,
     }));
     for (const item of snapshot) {
       validateInstance(item);
@@ -484,6 +485,8 @@ export class Renderer {
       deformation?: Instance['deformation'];
       /** Stable surface seed identity. Supply the live instance ID to match its phase. */
       instanceId?: number;
+      /** Abrasion over the chosen finish; use the live seed/instanceId to match. */
+      wear?: Instance['wear'];
     },
   ): Promise<Blob> {
     validateDeformation(options.deformation);
@@ -511,6 +514,7 @@ export class Renderer {
           id: options.instanceId ?? 0,
           card: id,
           finish: options.finish,
+          wear: options.wear,
           deformation: options.deformation,
           transform: [2 * scale, 0, 0, 0, 0, -2 * scale, 0, 0, 0, 0, 1, 0, -scale, scale, 0, 1],
         },

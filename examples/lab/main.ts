@@ -1,5 +1,5 @@
 import './style.css';
-import { finishGroups, finishNames } from './finishes.js';
+import { finishGroups, finishNames, wearLevels } from './finishes.js';
 import { version } from '../../package.json' with { type: 'json' };
 import {
   createRenderer,
@@ -52,6 +52,13 @@ if (
   [...$<HTMLSelectElement>('finish').options].some((o) => o.value === requestedFinish)
 )
   $<HTMLSelectElement>('finish').value = requestedFinish;
+const requestedWear = new URLSearchParams(location.search).get('wear');
+if (requestedWear && Object.hasOwn(wearLevels, requestedWear))
+  $<HTMLSelectElement>('wear').value = requestedWear;
+function chosenWear(): Instance['wear'] {
+  const amount = wearLevels[$<HTMLSelectElement>('wear').value as keyof typeof wearLevels];
+  return amount > 0 ? { amount } : undefined;
+}
 const faces = [
   {
     name: 'Starfall Seer',
@@ -110,6 +117,7 @@ function instances(time = 0) {
   ).map((instance, i) => ({
     ...instance,
     finish: chosenFinish(i),
+    wear: chosenWear(),
     deformation: deformation(chosenFinish(i)),
   }));
 }
@@ -167,6 +175,9 @@ const ready = (async () => {
     });
   };
   $<HTMLSelectElement>('finish').dispatchEvent(new Event('change'));
+  $('wear').onchange = () => {
+    dirty = true;
+  };
   if (!motionEnabled) $('motion').textContent = 'Resume motion';
   function draw(time: number) {
     if (disposed) return;
@@ -302,6 +313,7 @@ const ready = (async () => {
       revision: documents[0]!.revision,
       width: 732,
       finish: chosenFinish(0),
+      wear: chosenWear(),
       deformation: deformation(chosenFinish(0)),
       instanceId: 1,
       time: effectTime,

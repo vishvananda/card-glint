@@ -103,6 +103,9 @@ export interface Instance {
   transform: readonly number[];
   order?: number;
   finish?: Finish;
+  /** Optional abrasion over any finish. Amount is 0 (fresh) to 1 (heavily played).
+   * Seed is a uint32, defaulting to the instance ID; persist it with the card. */
+  wear?: { amount: number; seed?: number };
   /** Optional whole-card silhouette warp. Amount is local card width, 0–0.02.
    * Card layers/masks follow it; world/scene/HUD layers keep their own geometry.
    * Leave unset for artwork-only finishes or a fixed silhouette. */

@@ -85,6 +85,14 @@ export function validateDocument(document: CardDocument) {
 export function validateInstance(item: Instance) {
   validateDeformation(item.deformation);
   if (
+    item.wear &&
+    (!Number.isFinite(item.wear.amount) ||
+      item.wear.amount < 0 ||
+      item.wear.amount > 1 ||
+      (item.wear.seed !== undefined && !uint32(item.wear.seed)))
+  )
+    throw Error('Invalid wear amount or seed');
+  if (
     !uint32(item.id) ||
     !uint32(item.card) ||
     item.transform.length !== 16 ||
