@@ -72,6 +72,12 @@ illustrator/legal credits and power/toughness. Keep ordinary Future Sight cards
 separate. Use shared defaults, reserved validation, full-set scores and a
 comparison page; retain rejected scans and mismatched assets for review.
 
+The initial inventory contains 81 futureshifted printings; all render with the
+0.3.5 defaults, while 99 ordinary FUT printings remain outside this pass.
+The [source audit](fixtures/accuracy/future-source-audit.json) records pinned
+frame and mana assets, baseline identities, the full-art and transparent-frame
+variants, and required input corrections. These defaults are not yet calibrated.
+
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions
