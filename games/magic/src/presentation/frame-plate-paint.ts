@@ -6,6 +6,8 @@ import { paintEighthBasicFrame, usesEighthBasicGeometry } from './eighth-basic-g
 import { adjustedSymbolBounds, paintAdjustedSymbols } from './symbol-adjustment.js';
 import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
+import { paintPlanarPinlines } from './planar-pinlines.js';
+import { loadPlanarStatsFont } from './planar-footer.js';
 import { titleTranslation } from './title-placement.js';
 import { planarLettering } from './planar-lettering.js';
 import { planarSetSymbolBounds } from './planar-symbols.js';
@@ -65,6 +67,7 @@ export function paintFramePlateFace(
   if (usesEighthBasicGeometry(face, plate.frame)) paintEighthBasicFrame(c, required(plate.frame));
   else if (usesPlanarFrameGeometry(face, plate.frame)) paintPlanarFrame(c, required(plate.frame));
   else c.drawImage(required(plate.frame), 0, 0, W, H);
+  paintPlanarPinlines(c, plate, images);
   if (plate.rightFrame) {
     // A narrow blend joins the two *land* textures, preserving colored outer
     // frames and paper rather than replacing them with a generic gold land.
@@ -240,7 +243,7 @@ export function paintFramePlateFace(
 let matrixFont: Promise<void> | null = null;
 export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
   if (face.frameAssetFamily !== 'eighth') return Promise.resolve();
-  return (matrixFont ??= Promise.all([
+  const common = (matrixFont ??= Promise.all([
     document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
     document.fonts.load('700 29px "CardRenderer MTG Matrix Small Caps"'),
   ])
@@ -252,6 +255,9 @@ export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
       matrixFont = null;
       throw error;
     }));
+  return Promise.all([common, loadPlanarStatsFont(face, framePlate(face)?.frame ?? '')]).then(
+    () => {},
+  );
 }
 
 /** Source pack8thColorshifted.js: white ink with a down-left black shadow.

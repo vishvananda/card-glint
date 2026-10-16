@@ -24,6 +24,12 @@ try {
   await assert.rejects(cachedFetch(url + '?missing', { offline: true }), /Offline cache miss/);
   assert.throws(() => cachedFetch('https://untrusted.example/image.png'), /host/);
   const manifest = (await import('../games/magic/assets.json', { with: { type: 'json' } })).default;
+  await cachedFetch(manifest.MSE_PT_FONT);
+  assert.throws(() => cachedFetch(manifest.MSE_PT_FONT + '?other'), /host/);
+  assert.throws(
+    () => cachedFetch(manifest.MSE_PT_FONT.replace('ModMatrix.ttf', 'other.ttf')),
+    /host/,
+  );
   await cachedFetch(manifest.MSE_SPLIT_BRIDGE_ROOT + '/bridgemask.png');
   assert.throws(() => cachedFetch(manifest.MSE_SPLIT_BRIDGE_ROOT + '/../other.png'), /host/);
   await cachedFetch(manifest.MSE_TEMPLATE_ROOT + '/magic-future.mse-style/wcard.jpg');

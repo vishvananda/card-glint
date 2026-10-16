@@ -11,6 +11,7 @@ import { eighthBasicRect, usesEighthBasicGeometry } from './eighth-basic-geometr
 export interface FramePlate {
   frame: string;
   rightFrame?: string;
+  pinlines?: { left: string; right: string; mask: string };
   border: string;
   pt: string;
   rects: FaceRects;
@@ -40,9 +41,9 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     basic = basicLandColor(face),
     colors = face.frameColors === undefined && basic ? [basic] : resolveFrameColors(face);
   // Pair keys are WUBRG-sorted, but visible halves follow the short arc around
-  // the color wheel: RW, GW and GU wrap across its end. Match printed lands
+  // the color wheel: RW, GW and GU wrap across its end. Match lands and pinlines
   // without changing the semantic colors or source asset naming convention.
-  const landColors =
+  const pairedColors =
     colors.length === 2 && 'WUBRG'.indexOf(colors[1]!) - 'WUBRG'.indexOf(colors[0]!) > 2
       ? [...colors].reverse()
       : colors;
@@ -61,12 +62,12 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     throw Error('Colorshifted plates support monocolored spells and artifacts only.');
   const land = (color: string) => (eighth ? `${color.toLowerCase()}l` : `l${color.toLowerCase()}`);
   const left =
-    profile.land && landColors.length
-      ? land(landColors.length > 2 ? 'm' : landColors[0]!)
+    profile.land && pairedColors.length
+      ? land(pairedColors.length > 2 ? 'm' : pairedColors[0]!)
       : material;
-  const right = profile.land && landColors.length === 2 ? land(landColors[1]!) : undefined;
-  // Base multicolor plates retain gold material. Color-pair pinlines and modern
-  // legend crowns need their own masks; these options are base plate candidates.
+  const right = profile.land && pairedColors.length === 2 ? land(pairedColors[1]!) : undefined;
+  // Base multicolor plates retain gold material. PLC adds native color-pair
+  // pinlines below; unmeasured sets and modern legend crowns retain their defaults.
   const ptKey = material === 'l' ? (eighth ? 'l' : 'c') : material;
   const title: FaceRect = eighth
     ? [0.09, 0.0629, 0.824, 0.0429]
@@ -82,6 +83,14 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   return {
     frame,
     rightFrame: right ? `${root}/${right}.png` : undefined,
+    pinlines:
+      planarGeometry && !shifted && material === 'm' && colors.length === 2
+        ? {
+            left: `${root}/${pairedColors[0]!.toLowerCase()}.png`,
+            right: `${root}/${pairedColors[1]!.toLowerCase()}.png`,
+            mask: `${root}/pinline.png`,
+          }
+        : undefined,
     border: `${CONJURER_ROOT}/img/frames/${folder}/border.png`,
     pt: shifted
       ? `${CONJURER_ROOT}/img/frames/m15/colorshifted/${ptKey}pt.png`
@@ -133,6 +142,7 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
     ...(brush ? [brush] : []),
     plate.frame,
     ...(plate.rightFrame ? [plate.rightFrame] : []),
+    ...(plate.pinlines ? Object.values(plate.pinlines) : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),
     ...(cardStock(face.setCode, face.borderColor).border !== '#090806' ? [plate.border] : []),
   ];

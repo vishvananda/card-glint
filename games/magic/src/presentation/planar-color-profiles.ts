@@ -52,7 +52,7 @@ export function planarFrameMaterials(face: RenderedCardInput): Readonly<Record<s
   if (!entry) return {};
   const [key, profile] = entry;
   const bottom = key.endsWith('/W') || key.endsWith('/M') ? 615 : 610;
-  return {
+  const materials: Record<string, FrameHsb> = {
     [plate.frame]: {
       frame: profile.frame,
       paper: profile.paper,
@@ -67,4 +67,11 @@ export function planarFrameMaterials(face: RenderedCardInput): Readonly<Record<s
       ],
     },
   };
+  // Colored rails come from the same mono sources used by this set's frame
+  // study. Reuse their frame pigment adjustment, with no paper/panel changes.
+  for (const url of plate.pinlines ? [plate.pinlines.left, plate.pinlines.right] : []) {
+    const mono = Object.values(PLANAR_COLORS).find((p) => p.source === url);
+    if (mono) materials[url] = mono.frame;
+  }
+  return materials;
 }

@@ -3,7 +3,7 @@ import { resolveCardProfile } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
-import { transformPlanarFooter } from './planar-footer.js';
+import { transformPlanarFooter, planarStatsFont } from './planar-footer.js';
 
 function lightCredit(face: RenderedCardInput): boolean {
   return ['B', 'Colourless', 'Land'].includes(resolveCardProfile(face).boxes);
@@ -71,10 +71,13 @@ export function paintEighthFooter(
       c.shadowOffsetX = -0.0021 * 488;
       c.shadowOffsetY = 0.0015 * 680;
     }
-    c.font = '700 29px "CardRenderer MTG Matrix Small Caps", Georgia';
+    const statsFont = planarStatsFont(face, source);
+    c.font = `700 29px "${statsFont ?? 'CardRenderer MTG Matrix Small Caps'}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
-    paintStats(c, `${face.power}/${face.toughness}`);
+    const text = `${face.power}/${face.toughness}`;
+    if (statsFont) c.fillText(text, 407, 627, 78);
+    else paintStats(c, text);
     c.restore();
   }
   const set = face.setCode?.toLowerCase();

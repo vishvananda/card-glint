@@ -142,6 +142,7 @@ try {
       ['Beleren Small Caps', 'normal', '700'],
       ['Matrix', 'normal', '700'],
       ['Matrix Small Caps', 'normal', '700'],
+      ['ModMatrix', 'normal', '700'],
       ['MPlantin', 'normal', '400'],
       ['MPlantin', 'italic', '400'],
       ['Relay', 'normal', '400'],
@@ -251,6 +252,29 @@ try {
       '/games/magic/src/presentation/planar-frame-geometry.ts'
     );
     check(usesPlanarFrameGeometry(shifted, shiftedPlate.frame), 'Missing PLC geometry');
+    for (const [colors, left, right] of [
+      [['G', 'R'], 'r', 'g'],
+      [['W', 'R'], 'r', 'w'],
+      [['U', 'G'], 'g', 'u'],
+      [['B', 'W'], 'w', 'b'],
+    ]) {
+      const pair = { ...shifted, frameTreatment: undefined, colors };
+      const rails = framePlate(pair).pinlines;
+      check(
+        rails?.left.endsWith(`/8th/${left}.png`) && rails.right.endsWith(`/8th/${right}.png`),
+        'PLC pinlines do not follow the visible color-wheel order',
+      );
+      check(
+        Object.values(rails).every((url) => canvasAssetUrls(pair).includes(url)),
+        'PLC pinline source or mask not prepared',
+      );
+    }
+    for (const other of [{ setCode: 'fut' }, { colors: ['U', 'R', 'G'] }, { borderColor: 'white' }])
+      check(
+        !framePlate({ ...shifted, frameTreatment: undefined, colors: ['R', 'G'], ...other })
+          .pinlines,
+        'PLC pinlines leaked to an unmeasured printing or three-color frame',
+      );
     for (const other of [
       { setCode: 'fut' },
       { borderColor: 'white' },
