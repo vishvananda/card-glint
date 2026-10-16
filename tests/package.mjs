@@ -55,7 +55,7 @@ import { foilShader } from 'card-glint/finish';
 import { createPixelKernels } from 'card-glint/kernels';
 export { faceArtBounds, composeCardTexture, foilShader, createPixelKernels };
 import wasmUrl from 'card-glint/renderer.wasm?url';
-const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2'};
+const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
 const source: PrintingText = {typeLine:'Creature', rulesText:'', flavorText:'A fixture.'};
 export const resolved = resolvePrintingWording('unknown-printing', {oracle:source, original:source});
 export const magicRecipe = magic.describe(withCardWording(face,resolved.wordings),'inspect');
@@ -65,6 +65,7 @@ export async function example(canvas: HTMLCanvasElement) {
   const cards: CardDocument[] = [{id:1,revision:1,recipe:showcase.describe({name:'Compass',subtitle:'Instrument',theme:'orbit',charge:3,serial:'001',illustration:'/art/orbit.svg',rules:'Find a path.'},'table')}];
   renderer.upsertCards(cards);
   await renderer.ready(1, 1);
+  renderer.updateScene([{id:1,card:1,transform:Array.from(IDENTITY),finish:'gloss',cardstock:{amount:0.2},printDots:{amount:0.15,period:7,variation:0.3,inset:0.04}}]);
   renderer.render({ viewProjection: IDENTITY });
   renderer.dispose();
 }

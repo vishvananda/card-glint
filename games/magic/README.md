@@ -629,3 +629,18 @@ identity diagnostics improve in every set, but do not replace fixed-pose scores.
 This is a shared starting point, not a claim that every printing is calibrated.
 Numeral masks are prepared once in a bounded material cache; card animation does
 no font work or pixel readback.
+
+### Inline text editing
+
+An editor can supply `printingOmissions` on the physical face, each containing
+`rect: [x,y,width,height]` normalized to the whole card, optional rotation in
+degrees, and the exact measured text runs in `texts`. The painter omits only
+matching text ink whose baseline falls in that region. Geometry, frame identity,
+calibration, mana assets and other printing stay unchanged; run the resulting
+recipe through the renderer normally to retain its finish and wear. This is
+transient editor presentation, not a change to the card's rules or wording.
+Omissions affect Canvas text calls, not externally supplied lettering bitmaps.
+
+`blackBorderLift` optionally sets a minimum sRGB ink level for the outer black
+border (0..0.2). It leaves the interior, white/silver borders and layout intact.
+The default preserves source pixels. The lift is painted before finish and wear.

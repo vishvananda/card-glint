@@ -83,6 +83,38 @@ export function validateDocument(document: CardDocument) {
   }
 }
 export function validateInstance(item: Instance) {
+  if (
+    item.printDots?.inset !== undefined &&
+    (!Number.isFinite(item.printDots.inset) ||
+      item.printDots.inset < 0 ||
+      item.printDots.inset > 0.2)
+  )
+    throw Error('Invalid print dot inset');
+  if (
+    item.printDots?.variation !== undefined &&
+    (!Number.isFinite(item.printDots.variation) ||
+      item.printDots.variation < 0 ||
+      item.printDots.variation > 1)
+  )
+    throw Error('Invalid print dot variation');
+  if (
+    item.printDots &&
+    (!Number.isFinite(item.printDots.amount) ||
+      item.printDots.amount < 0 ||
+      item.printDots.amount > 1 ||
+      (item.printDots.period !== undefined &&
+        (!Number.isFinite(item.printDots.period) ||
+          item.printDots.period < 2 ||
+          item.printDots.period > 16)))
+  )
+    throw Error('Invalid print dots');
+  if (
+    item.cardstock &&
+    (!Number.isFinite(item.cardstock.amount) ||
+      item.cardstock.amount < 0 ||
+      item.cardstock.amount > 1)
+  )
+    throw Error('Invalid cardstock amount');
   validateDeformation(item.deformation);
   if (
     item.wear &&

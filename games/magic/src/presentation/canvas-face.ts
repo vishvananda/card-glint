@@ -1,3 +1,4 @@
+import { withPrintingOmissions } from './printing-omissions.js';
 import { paintPlaneswalkerLoyalty } from './planeswalker-loyalty.js';
 import { paintModernFooter } from './modern-footer.js';
 import { paintBasicLandSymbol } from './plate-basic-land.js';
@@ -167,6 +168,8 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
       panels.map((p) => [p.x, p.y, p.width, p.height, p.rotation, faceContentKey(p.face, mask)]),
       !mask && splitHasFuse(face),
       !mask && splitFuseParagraphs(face),
+      ...(!mask && face.printingOmissions?.length ? [face.printingOmissions] : []),
+      ...(!mask && face.blackBorderLift ? [['border-ink', face.blackBorderLift]] : []),
     ];
   return mask
     ? [
@@ -218,6 +221,8 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.layout ?? null,
         faceRects(face),
         resolveCardProfile(face),
+        ...(face.printingOmissions?.length ? [face.printingOmissions] : []),
+        ...(face.blackBorderLift ? [['border-ink', face.blackBorderLift]] : []),
       ];
 }
 
@@ -288,6 +293,28 @@ export async function composeCardTexture(
           await hooks?.beforePaint?.();
           signal.throwIfAborted();
           context.drawImage(image, 0, 0, FACE_WIDTH, FACE_HEIGHT);
+          if (
+            input.paintLayer !== 'artwork' &&
+            input.face.blackBorderLift &&
+            (input.face.borderColor ?? 'black') === 'black'
+          ) {
+            if (
+              !Number.isFinite(input.face.blackBorderLift) ||
+              input.face.blackBorderLift < 0 ||
+              input.face.blackBorderLift > 0.2
+            )
+              throw Error('Invalid black border lift');
+            const ink = Math.round(input.face.blackBorderLift * 255),
+              inset = FACE_WIDTH * 0.035;
+            context.save();
+            context.globalCompositeOperation = 'lighten';
+            context.fillStyle = `rgb(${ink},${ink},${ink})`;
+            context.beginPath();
+            context.rect(0, 0, FACE_WIDTH, FACE_HEIGHT);
+            context.rect(inset, inset, FACE_WIDTH - 2 * inset, FACE_HEIGHT - 2 * inset);
+            context.fill('evenodd');
+            context.restore();
+          }
           paintCardStatus(
             context,
             input.emblems ?? [],
@@ -331,15 +358,40 @@ export async function composeCardTexture(
       );
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
-      paintAssembledFace(
-        context,
-        input.face,
-        numerals.images,
-        FACE_HEIGHT,
-        false,
-        hooks?.underArt,
-        input.paintLayer,
+      const paintingImages = numerals.images;
+      withPrintingOmissions(context, input.face, () =>
+        paintAssembledFace(
+          context,
+          input.face,
+          paintingImages,
+          FACE_HEIGHT,
+          false,
+          hooks?.underArt,
+          input.paintLayer,
+        ),
       );
+      if (
+        input.paintLayer !== 'artwork' &&
+        input.face.blackBorderLift &&
+        (input.face.borderColor ?? 'black') === 'black'
+      ) {
+        if (
+          !Number.isFinite(input.face.blackBorderLift) ||
+          input.face.blackBorderLift < 0 ||
+          input.face.blackBorderLift > 0.2
+        )
+          throw Error('Invalid black border lift');
+        const ink = Math.round(input.face.blackBorderLift * 255),
+          inset = FACE_WIDTH * 0.035;
+        context.save();
+        context.globalCompositeOperation = 'lighten';
+        context.fillStyle = `rgb(${ink},${ink},${ink})`;
+        context.beginPath();
+        context.rect(0, 0, FACE_WIDTH, FACE_HEIGHT);
+        context.rect(inset, inset, FACE_WIDTH - 2 * inset, FACE_HEIGHT - 2 * inset);
+        context.fill('evenodd');
+        context.restore();
+      }
       paintCardStatus(
         context,
         input.emblems ?? [],
