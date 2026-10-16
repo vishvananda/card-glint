@@ -35,6 +35,14 @@ vec3 printDotInk(vec3 ink,vec2 uv){
  vec3 plates=vec3(inkScreen(p,cmy.x,vec2(-.258819,.965926),1.),inkScreen(p,cmy.y,vec2(.258819,.965926),5.),inkScreen(p,cmy.z,vec2(0.,1.),9.));
  float black=inkScreen(p,k,vec2(.707107),13.);
  vec3 screened=(1.-plates)*(1.-black);
+ // Solid black normally has no exposed halftone holes. A dark border can
+ // still show small gaps/uneven coverage from the paper and ink impression.
+ vec2 edge=min(uv,1.-uv);float aspect=float(textureSize(face,0).y)/float(textureSize(face,0).x);
+ float border=1.-smoothstep(.025,.045,min(edge.x,edge.y*aspect));
+ float dark=1.-smoothstep(.06,.16,max(max(ink.r,ink.g),ink.b));
+ vec2 pores=p*1.7,local=fract(pores)-.5;
+ float gaps=exp(-dot(local,local)*45.)*smoothstep(.65,.95,plateNoise(floor(pores),19.));
+ screened+=vec3(.12)*gaps*border*dark*printDotsInfo.z;
  return mix(ink,screened,printDotsInfo.x*visible);
 }
 vec4 printFace(vec2 uv){
