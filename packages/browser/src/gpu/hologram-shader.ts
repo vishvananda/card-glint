@@ -23,7 +23,8 @@ vec3 localHologram(vec2 uv, vec3 ink, vec3 normal, vec3 view, float grainFilter)
   float stripe=dot(p,vec2(24.,8.));
   float grain=1.-.035*(.5+.5*cos(stripe*6.2831853))*grainFilter;
   float broad=exp(-dot(light-vec2(-.15,.12),light-vec2(-.15,.12))*2.8);
-  float flash=exp(-pow(dot(p-.5,vec2(.7,.25))+dot(light,vec2(.85,.4)),2.)*70.);
+  float flashAxis=dot(p-.5,vec2(.7,.25))+dot(light,vec2(.85,.4));
+  float flash=exp(-flashAxis*flashAxis*70.);
   float luminance=dot(ink,vec3(.2126,.7152,.0722));
   vec3 silver=ink*(.80+.12*broad)*grain;
   vec3 colored=diffraction*(.12+.28*broad+.25*flash)*(.25+.75*luminance);

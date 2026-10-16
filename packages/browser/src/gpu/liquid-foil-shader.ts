@@ -20,7 +20,8 @@ export const LIQUID_FOIL_GLSL = `
     vec3 tangent=normalize(vec3(normal.z,0.,-normal.x));
     vec3 bitangent=normalize(cross(normal,tangent));
     vec3 rippleNormal=normalize(normal+tangent*fluidNormal.x+bitangent*fluidNormal.y);
-    float spec=exp(-pow(satinStripAxis(uv,rippleNormal,view),2.)*620.);
+    float specAxis=satinStripAxis(uv,rippleNormal,view);
+    float spec=exp(-specAxis*specAxis*620.);
     float crest=smoothstep(.0003,.012,length(gradient));
     vec3 fluid=base;
     if(window>0.) {
