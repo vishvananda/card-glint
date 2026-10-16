@@ -252,6 +252,25 @@ groups lack template support, and some blue/green scans remain rejected. A
 calibration-only smoothing trial helps green/artifact texture but not red; it is
 not adopted. No renderer default, live scoring template or release changes here.
 
+The [paper-border follow-up](fixtures/accuracy/unlimited-paper-normalization.json)
+extends verified Unlimited interior poses to **302/302 scans**. Red/artifact use
+paper-border geometry because their texture templates lack support. Blue/green
+use the same method after a separate calibration and cross-check against accepted
+texture poses. White, black and land retain their verified texture method. This
+is a fixed choice per material; no per-card best-score selection enters the
+renderer. All 185 paper fits pass separate certification and actual raster replay.
+Twenty known translation/scale/rotation/skew cases recover within 0.21 px, and
+four damaged certification cases reject as expected.
+
+On reused blue/green validation cards where both methods work, mean rules-box
+edge residual drops **0.36 → 0.10 px** and **0.66 → 0.21 px**, respectively.
+Independent art-edge means also improve. Local edge regressions remain in the
+report, including green paper's irregular right boundary. The pixel-isolation
+test certifies only pixels outside the selected narrow bands; reference lettering
+inside a band is not independently certified. These frozen offline poses support
+the next shared-frame fit. They do not change live templates, renderer defaults,
+wording eligibility or whole-card scores.
+
 ## Revised frame geometry candidate
 
 The [native frame replay](fixtures/accuracy/revised-frame-native.json) tests six
