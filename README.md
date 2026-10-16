@@ -265,10 +265,10 @@ describe the separation between repository code and external game assets.
 ### Optional cardstock coating
 
 Set `Instance.cardstock` to `{ amount: 0.2 }` for subtle, irregular relief in the
-`gloss` clear coating. The amount ranges from 0 to 1. It modulates reflected light;
+clear coating over any optical finish. The amount ranges from 0 to 1. It modulates reflected light;
 printing remains sharp. Relief also softens the gloss reflection: amount 0.2
 reduces its gain by 10%, reaching 50% at amount 1. Omitted or zero preserves the original smooth gloss,
-and other finishes ignore it. Pass the same `cardstock` option to `exportCard`
+and regular printing ignores it. Pass the same `cardstock` option to `exportCard`
 for matching PNGs. Wear is applied above the coating, so exposed paper stays matte.
 
 A fixed relief map is generated once per renderer context on first use, shared
@@ -286,8 +286,7 @@ printing before finish and wear. Amount is 0..1; period is 2..16 source texture
 pixels (default 5). Variation ranges from 0 (ideal screen) to 1 (more uneven),
 defaulting to 0.5. Small stable position/size/shape differences and ink spread
 break up the ideal grid. Omitted/zero amount retains previous pixels. Pass the same option
-to `exportCard`. The effect is optional on every finish and adds no textures,
-passes or uploads. It uses screen derivatives to fade fine dots when a card
+to `exportCard`. The effect is optional on every finish. It uses screen derivatives to fade fine dots when a card
 shrinks, reducing aliasing. Larger periods make the pattern easier to inspect.
 
 This is an RGB-to-CMYK visual approximation, not a calibrated press profile.
@@ -297,3 +296,11 @@ Imported scans can already contain a dot pattern; adding another may create
 moire. Keep the option off for such images unless comparing an intentional
 second pattern. The conventional screen angles follow
 [Adobe's prepress reference](https://helpx.adobe.com/indesign/desktop/print/ink-and-color-management/specify-halftone-frequency-and-resolution.html).
+
+Printing with matching instance settings is prepared once into a context-owned,
+mip-filtered sRGB texture cache (up to 16 MiB, shared across face revisions and
+over-finish printing). Tilt and export reuse it without re-evaluating the screens.
+Changing a setting/face may add a preparation pass; `surfacePasses` and
+`surfaceBytes` include it. Mixed settings on a material group or oversized faces
+keep the per-instance procedural path. The cache is released on disposal and
+rebuilt after context loss. There are no per-frame CPU readbacks or texture uploads.

@@ -106,7 +106,7 @@ export interface Instance {
   /** Optional abrasion over any finish. Amount is 0 (fresh) to 1 (heavily played).
    * Seed is a uint32, defaulting to the instance ID; persist it with the card. */
   wear?: { amount: number; seed?: number };
-  /** Card-local coating relief for gloss. Amount 0..1; omitted/zero keeps smooth gloss. */
+  /** Card-local coating relief over optical finishes. Amount 0..1; omitted/zero keeps smooth gloss. */
   cardstock?: { amount: number };
   /** Experimental process-ink dots. Amount 0..1, period 2..16 source pixels (default 5). */
   printDots?: { amount: number; period?: number; variation?: number; inset?: number };

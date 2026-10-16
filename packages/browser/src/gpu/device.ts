@@ -6,6 +6,7 @@ import { SurfaceMotion } from '../surface-motion.js';
 import { surfaceSeed } from '../deformation.js';
 import { Caustics } from './caustics.js';
 import { Cardstock } from './cardstock.js';
+import { PrintedInk } from './printed-ink.js';
 const kinds = {
   regular: 0,
   etched: 1,
@@ -42,6 +43,7 @@ export class Device {
   private motion = new SurfaceMotion();
   private caustics: Caustics;
   private cardstock: Cardstock;
+  private printedInk: PrintedInk;
   draws = 0;
   constructor(readonly canvas: HTMLCanvasElement) {
     const gl = canvas.getContext('webgl2', {
@@ -54,6 +56,7 @@ export class Device {
     this.gl = gl;
     this.caustics = new Caustics(gl);
     this.cardstock = new Cardstock(gl);
+    this.printedInk = new PrintedInk(gl);
     this.foil = program(gl, fragment, vertex)!;
     // Compile both variants once with the context. Uncoated cards keep the
     // smaller original shader rather than paying its register/branch cost.
@@ -116,7 +119,7 @@ export class Device {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     this.draws = 0;
   }
-  private bind(shader: WebGLProgram, frame: Frame, list: readonly Instance[]) {
+  private bind(shader: WebGLProgram, frame: Frame, list: readonly Instance[], printed = false) {
     const gl = this.gl;
     gl.useProgram(shader);
     gl.bindVertexArray(this.vao);
@@ -137,7 +140,7 @@ export class Device {
       values[start + 40] = item.wear?.amount ?? 0;
       values[start + 41] = surfaceSeed(item.wear?.seed ?? item.id);
       values[start + 42] = item.cardstock?.amount ?? 0;
-      values[start + 43] = item.printDots?.amount ?? 0;
+      values[start + 43] = printed ? 0 : (item.printDots?.amount ?? 0);
       values[start + 44] = item.printDots?.period ?? 5;
       values[start + 45] = item.printDots?.variation ?? 0.5;
       values[start + 46] = item.printDots?.inset ?? 0;
@@ -157,17 +160,35 @@ export class Device {
     const gl = this.gl,
       p = material.recipe.hologram?.strength ? this.holographic : this.foil;
     if (list.some((item) => item.finish === 'pool')) this.caustics.prepare(frame.time ?? 0);
-    if (list.some((item) => item.finish === 'gloss' && (item.cardstock?.amount ?? 0) > 0))
+    if (
+      list.some(
+        (item) => item.finish && item.finish !== 'regular' && (item.cardstock?.amount ?? 0) > 0,
+      )
+    )
       this.cardstock.prepare();
-    this.bind(p, frame, list);
+    const profile = list[0]?.printDots;
+    const homogeneous =
+      profile &&
+      profile.amount > 0 &&
+      list.every(
+        (item) =>
+          item.printDots?.amount === profile.amount &&
+          (item.printDots.period ?? 5) === (profile.period ?? 5) &&
+          (item.printDots.variation ?? 0.5) === (profile.variation ?? 0.5) &&
+          (item.printDots.inset ?? 0) === (profile.inset ?? 0),
+      );
+    const printed = homogeneous
+      ? this.printedInk.prepare(material.face, material.overlay, profile)
+      : undefined;
+    this.bind(p, frame, list, Boolean(printed));
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
     gl.depthMask(true);
     gl.disable(gl.BLEND);
     const bindings = [
-      ['face', material.face.texture],
+      ['face', printed?.face.texture ?? material.face.texture],
       ['mask', material.mask.texture],
-      ['overlay', material.overlay?.texture ?? this.blank],
+      ['overlay', printed?.top?.texture ?? material.overlay?.texture ?? this.blank],
       ['coverage', material.coverage?.texture ?? this.blank],
       ['caustics', this.caustics.map],
       ['hologramMask', material.hologram?.texture ?? this.blank],
@@ -242,12 +263,13 @@ export class Device {
     gl.deleteTexture(this.blank);
     this.caustics.dispose();
     this.cardstock.dispose();
+    this.printedInk.dispose();
   }
   get surfacePasses() {
-    return this.caustics.passes + this.cardstock.passes;
+    return this.caustics.passes + this.cardstock.passes + this.printedInk.passes;
   }
   get surfaceBytes() {
-    return this.caustics.bytes + this.cardstock.bytes;
+    return this.caustics.bytes + this.cardstock.bytes + this.printedInk.bytes;
   }
   end() {
     this.motion.end();
