@@ -111,9 +111,19 @@ only for that crop family. The 573 × 720 textless FUT crops instead match
 to arbitrary replacement art. This setting cannot reconstruct the omitted curved edge or artwork
 behind translucent printing.
 
+For ordinary FUT W/U/B/R/G plates, `colorCalibration: 'set-hsb-v1'` applies
+source-bound frame, paper and panel corrections. Curved source masks keep the
+paper, title and type interiors separate; P/T uses its own material. Derived
+bitmaps share the material cache, with no recoloring during animation. All 46
+reserved paper regions improve in the [color replay](fixtures/accuracy/future-colors.json).
+The report retains panel regressions and unchanged controls. Artifact, land,
+colorless and full-art sources still need their own color calibration; these
+numbers do not certify typography or whole-card accuracy.
+
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
 pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
-These are uncalibrated starting points, not scan-validated layouts. A flip input needs two `faces` in printed order; a Battle
+Flip and Battle are source-layout starting points; Future calibration remains
+in progress as documented above. A flip input needs two `faces` in printed order; a Battle
 uses `defense` and is drawn in its physical portrait scan orientation. Future
 frames use their shaped art mask. These templates cannot be combined with
 `frameAssetFamily`. Missing required plates fail the complete face preparation.

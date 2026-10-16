@@ -9,6 +9,7 @@ import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
+import { futureFrameMaterials } from './future-color-profiles.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
@@ -51,6 +52,7 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
 export function calibratedFrameMaterials(
   face: RenderedCardInput,
 ): Readonly<Record<string, FrameHsb>> {
+  if (face.frameTemplate === 'future') return futureFrameMaterials(face);
   if (!hasColorCalibration(face)) return {};
   const source = printingColorSource(face),
     profile = source && (PRINTING_COLOR_PROFILES[source.key] ?? LEGENDS_COLOR_PROFILES[source.key]);

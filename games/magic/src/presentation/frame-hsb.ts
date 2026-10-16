@@ -6,6 +6,9 @@ export interface DualFrameHsb {
   frame: HsbAdjustment;
   paper: HsbAdjustment;
   mask: PaperMask;
+  /** Source-local panels use their original pixels, independently of the
+   * surrounding frame adjustment. Built during cached material preparation. */
+  regions?: readonly { mask: PaperMask; adjustment: HsbAdjustment }[];
   accents?: readonly { mask: FrameAccentMask; adjustment: HsbAdjustment }[];
 }
 export type FrameHsb = HsbAdjustment | DualFrameHsb;
@@ -18,11 +21,18 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
   const dual = 'mask' in adjustment ? adjustment : undefined,
     mask = dual ? framePaperMask(image, dual.mask) : undefined,
     frame = 'mask' in adjustment ? adjustment.frame : adjustment,
-    accents =
-      dual?.accents?.map((accent) => ({
+    regions =
+      dual?.regions?.map((region) => ({
+        values: framePaperMask(image, region.mask),
+        adjustment: region.adjustment,
+      })) ?? [],
+    accents = [
+      ...regions,
+      ...(dual?.accents?.map((accent) => ({
         values: frameAccentMask(image, accent.mask),
         adjustment: accent.adjustment,
-      })) ?? [];
+      })) ?? []),
+    ];
   for (let i = 0; i < image.data.length; i += 4) {
     if (image.data[i + 3] === 0) continue;
     const rgb: Rgb = [image.data[i]! / 255, image.data[i + 1]! / 255, image.data[i + 2]! / 255],

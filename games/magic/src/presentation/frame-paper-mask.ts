@@ -5,6 +5,12 @@ import type { Rgb } from './hsb.js';
 export type PaperMask =
   | { kind: 'rect'; rect: FaceRect; feather: number }
   | {
+      kind: 'polygon';
+      points: readonly (readonly [number, number])[];
+      /** Feather width in fractions of the source image width. */
+      feather: number;
+    }
+  | {
       kind: 'chroma';
       bounds: FaceRect;
       seed: readonly [number, number];
@@ -30,6 +36,44 @@ const chroma = (rgb: Rgb) => {
 export function framePaperMask(image: FramePixels, spec: PaperMask): Float32Array {
   const { width, height, data } = image;
   const values = new Float32Array(width * height);
+  if (spec.kind === 'polygon') {
+    if (
+      spec.points.length < 3 ||
+      !Number.isFinite(spec.feather) ||
+      spec.feather <= 0 ||
+      spec.points.some((p) => p.some((v) => !Number.isFinite(v) || v < 0 || v > 1))
+    )
+      throw Error(
+        'Paper outline requires at least three normalized points and positive feathering.',
+      );
+    const points = spec.points.map(([x, y]) => [x * width, y * height] as const),
+      feather = spec.feather * width,
+      left = Math.max(0, Math.floor(Math.min(...points.map((p) => p[0])) - feather)),
+      right = Math.min(width, Math.ceil(Math.max(...points.map((p) => p[0])) + feather)),
+      top = Math.max(0, Math.floor(Math.min(...points.map((p) => p[1])) - feather)),
+      bottom = Math.min(height, Math.ceil(Math.max(...points.map((p) => p[1])) + feather));
+    for (let y = top; y < bottom; y++)
+      for (let x = left; x < right; x++) {
+        let inside = false,
+          distance = Infinity;
+        const px = x + 0.5,
+          py = y + 0.5;
+        for (let i = 0; i < points.length; i++) {
+          const [ax, ay] = points[i]!,
+            [bx, by] = points[(i + 1) % points.length]!,
+            dx = bx - ax,
+            dy = by - ay,
+            lengthSquared = dx * dx + dy * dy,
+            t = lengthSquared
+              ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / lengthSquared))
+              : 0;
+          distance = Math.min(distance, Math.hypot(px - ax - t * dx, py - ay - t * dy));
+          if (ay > py !== by > py && px < ax + ((py - ay) * dx) / dy) inside = !inside;
+        }
+        values[y * width + x] = smooth((inside ? distance : -distance) / feather + 0.5);
+      }
+    return values;
+  }
   if (spec.kind === 'rect') {
     const [left, top, w, h] = spec.rect;
     for (let y = 0; y < height; y++)
