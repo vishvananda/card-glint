@@ -109,7 +109,7 @@ export interface Instance {
   /** Card-local coating relief for gloss. Amount 0..1; omitted/zero keeps smooth gloss. */
   cardstock?: { amount: number };
   /** Experimental process-ink dots. Amount 0..1, period 2..16 source pixels (default 5). */
-  printDots?: { amount: number; period?: number };
+  printDots?: { amount: number; period?: number; variation?: number };
   /** Optional whole-card silhouette warp. Amount is local card width, 0–0.02.
    * Card layers/masks follow it; world/scene/HUD layers keep their own geometry.
    * Leave unset for artwork-only finishes or a fixed silhouette. */

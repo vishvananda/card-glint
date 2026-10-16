@@ -84,6 +84,13 @@ export function validateDocument(document: CardDocument) {
 }
 export function validateInstance(item: Instance) {
   if (
+    item.printDots?.variation !== undefined &&
+    (!Number.isFinite(item.printDots.variation) ||
+      item.printDots.variation < 0 ||
+      item.printDots.variation > 1)
+  )
+    throw Error('Invalid print dot variation');
+  if (
     item.printDots &&
     (!Number.isFinite(item.printDots.amount) ||
       item.printDots.amount < 0 ||

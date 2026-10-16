@@ -16,8 +16,8 @@ layout(location=10) in vec4 instanceRipple2;layout(location=11) in vec4 instance
 layout(location=12) in vec2 instanceWear;
 layout(location=13) in float instanceCardstock;
 flat out float cardstockAmount;
-layout(location=14) in vec2 instancePrintDots;
-flat out vec2 printDotsInfo;
+layout(location=14) in vec3 instancePrintDots;
+flat out vec3 printDotsInfo;
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;

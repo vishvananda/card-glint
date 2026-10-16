@@ -281,9 +281,11 @@ export parity, cache reuse, filtering and context restoration.
 
 ### Experimental printed dots
 
-`Instance.printDots = { amount: 0.35, period: 5 }` adds rotated CMYK screens to
+`Instance.printDots = { amount: 0.35, period: 5, variation: 0.5 }` adds rotated CMYK screens to
 printing before finish and wear. Amount is 0..1; period is 2..16 source texture
-pixels (default 5). Omitted/zero retains previous pixels. Pass the same option
+pixels (default 5). Variation ranges from 0 (ideal screen) to 1 (more uneven),
+defaulting to 0.5. Small stable position/size/shape differences and ink spread
+break up the ideal grid. Omitted/zero amount retains previous pixels. Pass the same option
 to `exportCard`. The effect is optional on every finish and adds no textures,
 passes or uploads. It uses screen derivatives to fade fine dots when a card
 shrinks, reducing aliasing. Larger periods make the pattern easier to inspect.
