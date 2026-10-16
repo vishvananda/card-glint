@@ -116,9 +116,13 @@ source-bound frame, paper and panel corrections. Curved source masks keep the
 paper, title and type interiors separate; P/T uses its own material. Derived
 bitmaps share the material cache, with no recoloring during animation. All 46
 reserved paper regions improve in the [color replay](fixtures/accuracy/future-colors.json).
-The report retains panel regressions and unchanged controls. Artifact, land,
-colorless and full-art sources still need their own color calibration; these
-numbers do not certify typography or whole-card accuracy.
+The report retains panel regressions and unchanged controls. A separate
+[sparse-material replay](fixtures/accuracy/future-sparse-colors.json) covers
+artifacts, land footer and neutral panels, land white/green paper, colorless,
+and four textless colors. Failed land blue/red paper and textless green-frame
+transfers retain source values. Ghostfire has only within-printing evidence;
+Mass of Ghouls has no accepted pose. Material texture and blend differences
+remain review items. These numbers do not certify typography or whole-card accuracy.
 
 The pinned FUT expansion symbols use separate measured placements for Conjurer
 regular, MSE regular and MSE full-art plates. Width and height are independent.

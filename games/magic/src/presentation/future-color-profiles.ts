@@ -5,8 +5,23 @@ import type { PaperMask } from './frame-paper-mask.js';
 import { paperMask, titleMask, typeMask } from './future-color-masks.js';
 import panels from './future-panel-colors.json' with { type: 'json' };
 import { futureParts, futureTreatment } from './future-frame.js';
+import { futureFullMaterials } from './future-full-color.js';
+import { futureMseMaterials } from './future-mse-color.js';
 
 const profiles: Readonly<Record<string, Omit<Extract<FrameHsb, { mask: PaperMask }>, 'mask'>>> = {
+  A: {
+    frame: {
+      hueDegrees: -6.794165580182494,
+      saturationScale: 0.7130415909549775,
+      brightnessScale: 1.083617747440273,
+    },
+    paper: {
+      hueDegrees: 0,
+      saturationScale: 1,
+      brightnessScale: 1,
+      rgbScale: [0.9201680672268907, 0.9121338912133891, 0.9253112033195021],
+    },
+  },
   W: {
     frame: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
     paper: {
@@ -58,16 +73,17 @@ const profiles: Readonly<Record<string, Omit<Extract<FrameHsb, { mask: PaperMask
   },
 };
 
-/** Source-bound ordinary FUT materials; sparse MSE/full-art plates need their
- * own evidence. Opt-in and shared material caching match the other set fits. */
+/** Source-bound FUT materials. Ordinary, artifact, MSE and textless profiles
+ * have separate evidence and share the existing opt-in material cache. */
 export function futureFrameMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
   if (
     face.frameTemplate !== 'future' ||
-    futureTreatment(face) !== 'regular' ||
     face.setCode?.toLowerCase() !== 'fut' ||
     face.colorCalibration !== 'set-hsb-v1'
   )
     return {};
+  if (futureTreatment(face) === 'full-art') return futureFullMaterials(face);
+  if (futureTreatment(face) !== 'regular') return {};
   const asset = futureParts(face).base;
   for (const [color, profile] of Object.entries(profiles))
     if (
@@ -94,5 +110,5 @@ export function futureFrameMaterials(face: RenderedCardInput): Readonly<Record<s
         ...(stats && panel.stats ? { [stats]: adjustment(panel.stats) } : {}),
       };
     }
-  return {};
+  return futureMseMaterials(face);
 }

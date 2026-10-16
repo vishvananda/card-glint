@@ -78,8 +78,11 @@ The [source audit](fixtures/accuracy/future-source-audit.json) records pinned
 frame and mana assets, baseline identities, the full-art and transparent-frame
 variants, and required input corrections. The branch now has shared frame/art,
 mana, expansion-symbol, header/footer and body-placement corrections. Ordinary
-five-color materials are calibrated; sparse MSE and artifact materials retain
-their source colors pending a separate study. Broader body font/reflow changes
+five-color materials are calibrated. A separate sparse-source study adds
+artifact colors, shared land footer/neutral panels, land white/green paper,
+colorless and four textless-color corrections. Failed transfers retain source
+values; Ghostfire is a singleton study, and full-art black has no accepted pose.
+Broader body font/reflow changes
 were rejected for wrapping regressions. The [full-frame report](fixtures/accuracy/future-fullset.json)
 improves 53.0% → 72.6% on all 80 accepted poses; Mass of Ghouls remains excluded.
 Release and review-application deployment are still pending. Include the wear
