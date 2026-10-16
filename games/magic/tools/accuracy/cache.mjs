@@ -7,6 +7,14 @@ const pending = new Map();
 let apiQueue = Promise.resolve();
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const userAgent = 'card-glint-accuracy/1.0 (https://github.com/vishvananda/card-glint)';
+// Only the pinned styles/includes used by our standard-template painter.
+const templateRoots = [
+  'magic-future.mse-style',
+  'magic-future-common.mse-include',
+  'magic-new-flip.mse-style',
+  'magic-m15-mainframe-battles.mse-style',
+  'magic-modules.mse-include/loyalty',
+].map((style) => `${manifest.MSE_TEMPLATE_ROOT}/${style}/`);
 
 function checkUrl(url) {
   const parsed = new URL(url);
@@ -25,6 +33,7 @@ function checkUrl(url) {
     (parsed.hostname === 'raw.githubusercontent.com' &&
       !parsed.href.startsWith(manifest.CONJURER_ROOT + '/') &&
       !parsed.href.startsWith(manifest.MSE_MANA_ROOT + '/') &&
+      !templateRoots.some((root) => parsed.href.startsWith(root)) &&
       !parsed.href.startsWith(manifest.MSE_SPLIT_BRIDGE_ROOT + '/')) ||
     (parsed.hostname === 'svgs.scryfall.io' && !/^\/sets\/[a-z0-9]+\.svg$/.test(parsed.pathname)) ||
     (parsed.hostname === 'mtgjson.com' && !/^\/api\/v5\/[A-Z0-9]+\.json$/.test(parsed.pathname))

@@ -26,6 +26,11 @@ try {
   const manifest = (await import('../games/magic/assets.json', { with: { type: 'json' } })).default;
   await cachedFetch(manifest.MSE_SPLIT_BRIDGE_ROOT + '/bridgemask.png');
   assert.throws(() => cachedFetch(manifest.MSE_SPLIT_BRIDGE_ROOT + '/../other.png'), /host/);
+  await cachedFetch(manifest.MSE_TEMPLATE_ROOT + '/magic-future.mse-style/wcard.jpg');
+  assert.throws(
+    () => cachedFetch(manifest.MSE_TEMPLATE_ROOT + '/magic-future.mse-style/../other.png'),
+    /host/,
+  );
   const symbol = await cachedFetch('https://svgs.scryfall.io/sets/brb.svg?version=1');
   assert.equal((await readObject(symbol)).toString(), 'original synthetic bytes');
   assert.throws(() => cachedFetch('https://svgs.scryfall.io/unexpected.svg'), /host/);
