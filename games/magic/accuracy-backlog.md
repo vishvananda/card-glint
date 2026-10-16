@@ -16,10 +16,19 @@ also uses discretionary hyphenation. Expand the source-text/style audit and use
 fresh reserved cards before adopting shared typography. These are text-region
 metrics on frozen frame-normalized scans, not whole-card accuracy.
 
-Seven scan-bound original-body corrections and the uncircled inline generic
-values are independent fixes. Modern symbol selection and Oracle wording remain
-separate. The fitting tool retains full before/proposal images and both cohorts,
-including every regression. Artist/legal text and power/toughness remain next.
+The [measured-fit follow-up](fixtures/accuracy/legends-rules-fit-proposal.json)
+uses all 72 previously viewed cards for development and reserves 35 new cards.
+Sixteen pass the unchanged frame gate: their text mean rises from 39.87% to
+61.09%, with four regressions. The other 19 remain explicit alignment exclusions.
+This proposal also remains unadopted; text fit cannot yet infer every printed size.
+
+Twelve scan-bound original-body reviews, uncircled inline generic values and
+explicit discretionary hyphenation are independent fixes. Hazezon Tamar,
+Hyperion Blacksmith and Knowledge Vault now retain their printed word breaks
+without putting visible hyphens into plain wording or changing Oracle. Their
+follow-up measurements are development diagnostics, not new reserved validation.
+The fitting tool retains before/proposal images and every regression.
+Artist/legal text and power/toughness remain next after typography.
 
 ## Current execution checkpoint
 

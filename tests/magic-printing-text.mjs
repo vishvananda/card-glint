@@ -381,6 +381,23 @@ try {
   }
   console.log('158 scan-bound Legends noncreature types complete the 310-printing inventory.');
   for (const [id, row] of Object.entries(legendsText.cards)) {
+    for (const [role, field] of [
+      ['rules', 'rulesText'],
+      ['flavor', 'flavorText'],
+    ])
+      assert.equal(
+        row.paragraphs
+          .filter((p) => p.role === role)
+          .map((p) =>
+            p.runs
+              .map((r) => r.text)
+              .join('')
+              .replaceAll('\u00ad', ''),
+          )
+          .join('\n'),
+        row[field],
+        'Discretionary printing breaks must preserve plain wording',
+      );
     const input = {
       reference: { sha256: row.referenceHash },
       card: {
@@ -413,7 +430,7 @@ try {
       /stale/,
     );
   }
-  console.log('Seven Legends body corrections preserve Oracle and explicit caller overrides.');
+  console.log('Twelve Legends body reviews preserve Oracle and explicit caller overrides.');
   let emptyCount = 0;
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
     const fixture = JSON.parse(

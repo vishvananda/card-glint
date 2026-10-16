@@ -470,6 +470,72 @@ try {
       height: 60,
     });
     if (!impossible.overflow) throw Error('Oversize word was silently clipped');
+    const discretionary = [{ role: 'rules', runs: [{ text: 'a dis\u00adcard pile.' }] }];
+    const unbroken = layoutRules(
+      ctx,
+      discretionary,
+      { x: 0, y: 0, width: 400, height: 200 },
+      24,
+      24,
+    );
+    const lineText = (line) => line.runs.map((r) => r.text).join('');
+    if (unbroken.lines.map(lineText).join('') !== 'a discard pile.')
+      throw Error('Unused discretionary hyphen changed the printed text');
+    ctx.font = '24px "CardRenderer MTG MPlantin", Georgia';
+    const hyphenWidth = ctx.measureText('a dis-').width + 0.01;
+    const broken = layoutRules(
+      ctx,
+      discretionary,
+      { x: 0, y: 0, width: hyphenWidth, height: 200 },
+      24,
+      24,
+    );
+    if (
+      broken.overflow ||
+      lineText(broken.lines[0]) !== 'a dis-' ||
+      !lineText(broken.lines[1]).startsWith('card')
+    )
+      throw Error('Discretionary break did not fit its visible hyphen');
+    const plain = layoutRules(
+      ctx,
+      [{ role: 'rules', runs: [{ text: 'a discard pile.' }] }],
+      { x: 0, y: 0, width: hyphenWidth, height: 200 },
+      24,
+      24,
+    );
+    if (lineText(plain.lines[0]) !== 'a' || plain.lines.some((l) => lineText(l).includes('-')))
+      throw Error('Wrapper invented a hyphen in text with no break hints');
+    const styledHyphens = layoutRules(
+      ctx,
+      [
+        {
+          role: 'rules',
+          runs: [
+            { text: 'multi\u00ad' },
+            { text: 'syl\u00adlabic', italic: true },
+            { text: ' {T}\nNext' },
+          ],
+        },
+      ],
+      { x: 0, y: 0, width: ctx.measureText('multi-').width + 0.01, height: 300 },
+      24,
+      24,
+      { leading: 1, paragraphGap: 0, flavorGap: 0, balanceLines: true },
+    );
+    const hyphenRuns = styledHyphens.lines.flatMap((l) => l.runs);
+    if (
+      styledHyphens.overflow ||
+      !hyphenRuns.some((r) => r.italic && r.text.includes('-')) ||
+      hyphenRuns.filter((r) => r.symbol).length !== 1 ||
+      hyphenRuns
+        .filter((r) => !r.symbol)
+        .map((r) => r.text)
+        .join('')
+        .replaceAll('-', '')
+        .replaceAll(' ', '') !== 'multisyllabicNext' ||
+      lineText(styledHyphens.lines.at(-1)) !== 'Next'
+    )
+      throw Error('Discretionary wrapping lost styling, a symbol, or an explicit break');
     const exclusion = [0, 70, 180, 30];
     const unobstructed = layoutRules(
       ctx,

@@ -57,7 +57,10 @@ function words(runs: readonly RulesRun[]): Word[] {
 /** Measure the same contiguous style runs that Canvas paints, retaining shaping/kerning. */
 function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: number): MeasuredRun[] {
   const merged: Piece[] = [];
-  for (const piece of pieces) {
+  for (const input of pieces) {
+    // Soft hyphens describe permitted printing breaks, not visible ink.
+    const piece = input.symbol ? input : { ...input, text: input.text.replaceAll('\u00ad', '') };
+    if (!piece.text) continue;
     const last = merged.at(-1);
     if (last && !last.symbol && !piece.symbol && last.italic === piece.italic)
       last.text += piece.text;
@@ -78,6 +81,37 @@ function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: numbe
   });
 }
 
+/** Only supplied discretionary breaks may divide a word. Preserve each style
+ * run and choose the longest prefix that fits, including its visible hyphen. */
+function discretionaryBreak(
+  context: CanvasRenderingContext2D,
+  prefix: Piece[],
+  pieces: Piece[],
+  width: number,
+  size: number,
+) {
+  let best: { head: Piece[]; tail: Piece[] } | null = null;
+  for (let i = 0; i < pieces.length; i++) {
+    const piece = pieces[i]!;
+    if (piece.symbol) continue;
+    for (let j = 0; j < piece.text.length; j++) {
+      if (piece.text[j] !== '\u00ad') continue;
+      if (
+        ![...pieces.slice(0, i), { ...piece, text: piece.text.slice(0, j) }].some(
+          (p) => p.text.replaceAll('\u00ad', '').length,
+        )
+      )
+        continue;
+      const head = [...pieces.slice(0, i), { ...piece, text: piece.text.slice(0, j) + '-' }];
+      const tail = [{ ...piece, text: piece.text.slice(j + 1) }, ...pieces.slice(i + 1)];
+      if (!tail.some((p) => p.text.replaceAll('\u00ad', '').length)) continue;
+      if (measure(context, [...prefix, ...head], size).reduce((n, r) => n + r.width, 0) <= width)
+        best = { head, tail };
+    }
+  }
+  return best;
+}
+
 function wrapWords(
   context: CanvasRenderingContext2D,
   tokens: readonly Word[],
@@ -92,15 +126,32 @@ function wrapWords(
       current = [];
       continue;
     }
-    const gap: Piece[] =
+    let pieces = word.pieces;
+    let gap: Piece[] =
       current.length && word.space
         ? [{ text: ' ', italic: word.pieces[0]?.italic ?? false, symbol: false }]
         : [];
-    const trial = measure(context, [...current, ...gap, ...word.pieces], size);
-    if (current.length && trial.reduce((n, r) => n + r.width, 0) > width) {
-      output.push(measure(context, current, size));
-      current = [...word.pieces];
-    } else current.push(...gap, ...word.pieces);
+    for (;;) {
+      const trial = measure(context, [...current, ...gap, ...pieces], size);
+      if (trial.reduce((n, r) => n + r.width, 0) <= width) {
+        current.push(...gap, ...pieces);
+        break;
+      }
+      const split = discretionaryBreak(context, [...current, ...gap], pieces, width, size);
+      if (split) {
+        output.push(measure(context, [...current, ...gap, ...split.head], size));
+        current = [];
+        gap = [];
+        pieces = split.tail;
+      } else if (current.length) {
+        output.push(measure(context, current, size));
+        current = [];
+        gap = [];
+      } else {
+        current.push(...pieces); // Preserve overflow for an unbreakable oversized word.
+        break;
+      }
+    }
   }
   if (current.length) output.push(measure(context, current, size));
   return output;
@@ -173,7 +224,10 @@ export function wrapRules(
   const tokens = words(runs);
   // Balancing measures O(words²) ranges; bound preparation work for host-supplied
   // passages. The short historical policy has at most 100 source characters.
-  if (!balanced || tokens.length > 64) return wrapWords(context, tokens, width, size);
+  // Reviewed discretionary breaks retain greedy placement; balancing currently
+  // optimizes only inter-word cuts and would otherwise discard those hints.
+  if (!balanced || tokens.length > 64 || runs.some((r) => r.text.includes('\u00ad')))
+    return wrapWords(context, tokens, width, size);
   const lines: MeasuredRun[][] = [];
   let segment: Word[] = [];
   for (const token of tokens) {
