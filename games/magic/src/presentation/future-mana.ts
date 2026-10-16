@@ -7,12 +7,28 @@ import { futureTreatment } from './future-frame.js';
 export function futureManaAsset(symbol: string): string | null {
   if (/^[WUBRG]$/.test(symbol))
     return `${manifest.MSE_TEMPLATE_ROOT}/magic-mana-future.mse-symbol-font/mana_${symbol.toLowerCase()}.png`;
-  if (/^(?:[0-9]|1[0-9]|20|X|[WUBRG]\/[WUBRG])$/.test(symbol))
+  if (/^(?:[0-9]|1[0-9]|20|X)$/.test(symbol))
+    return `${manifest.CONJURER_ROOT}/img/manaSymbols/future/f0.png`;
+  if (/^[WUBRG]\/[WUBRG]$/.test(symbol))
     return `${manifest.CONJURER_ROOT}/img/manaSymbols/future/f${symbol.toLowerCase().replace('/', '')}.png`;
   return null;
 }
 export function futureManaAssets(face: RenderedCardInput): string[] {
-  return (face.manaSymbols ?? []).map(futureManaAsset).filter((u): u is string => u !== null);
+  const symbols = face.manaSymbols ?? [];
+  return [
+    ...new Set([
+      ...symbols.map(futureManaAsset).filter((u): u is string => u !== null),
+      ...(symbols.some((s) => /^(?:\d+|X)$/.test(s)) ? futureGenericSources() : []),
+    ]),
+  ];
+}
+
+/** These pinned numerical rasters share a background. Their lightest pixels
+ * recover that exact blank medallion without changing its bevel or alpha. */
+export function futureGenericSources(): string[] {
+  return ['0', '1', '2', '3', '4', '5', '6', 'x'].map(
+    (s) => `${manifest.CONJURER_ROOT}/img/manaSymbols/future/f${s}.png`,
+  );
 }
 
 /** Source cost positions follow the curved left rail. Inline mana keeps the
@@ -36,7 +52,21 @@ export function paintFutureMana(
     const url = futureManaAsset(symbol),
       image = url ? images.get(url) : undefined;
     if (url && !image) throw Error(`Futureshifted mana asset unavailable: ${url}`);
-    if (image) c.drawImage(image, px, py, size, size);
-    else paintMana(c, symbol, px, py, size, images, false);
+    if (image) {
+      c.drawImage(image, px, py, size, size);
+      if (/^(?:\d+|X)$/.test(symbol)) {
+        // MSE's Future symbol font specifies bold MPlantin. Keep the numeral
+        // separate from its blank medallion, matching the fitted shared ink box.
+        c.save();
+        c.translate(px + size / 2 - (0.75 * size) / 38.125, py + size / 2 + (1.75 * size) / 38.125);
+        c.scale(0.9375, 1);
+        c.font = `700 ${(size * 31.25) / 38.125}px "CardRenderer MTG MPlantin"`;
+        c.fillStyle = '#111';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.fillText(symbol, 0, 0, size * 0.73);
+        c.restore();
+      }
+    } else paintMana(c, symbol, px, py, size, images, false);
   });
 }

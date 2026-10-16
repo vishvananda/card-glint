@@ -360,7 +360,12 @@
       "Regular FUT Scryfall crops omit the curved left edge and artwork below the type line. Solid fill is a fallback, not recovered art.",
       "Explicit source placement is host-supplied; complete replacement art and the textless full-art family retain cover fit.",
       "All omitted regions remain visible in whole-card accuracy scoring."
-    ]
+    ],
+    "displayFallback": {
+      "policy": "Hosts may fill missing illustration strips from an independently normalized full scan. Remove all original printed mana regions before drawing the library symbols. Source-assisted artwork must not be counted as independent accuracy evidence; component reports here use crop-only captures.",
+      "scope": "Local review display only; not bundled assets or default renderer source selection.",
+      "stillMissing": "Artwork obscured by translucent printing cannot be cleanly recovered from the scan."
+    }
   },
   "mana": {
     "geometry": {
@@ -390,8 +395,8 @@
     "unfittedPositions": [4, 5],
     "colorProfiles": {
       "N": {
-        "center": [0.64, 0.67, 0.72],
-        "rim": [0.7, 0.72, 0.75]
+        "center": [0.64, 0.67, 0.73],
+        "rim": [0.7, 0.72, 0.76]
       },
       "W": {
         "center": [0.86, 0.86, 0.86],
@@ -421,54 +426,54 @@
         "count": 45,
         "rgbError": {
           "before": 54.272894785332596,
-          "after": 26.308022848719375,
+          "after": 26.027853325962784,
           "improved": 45
         },
         "ncc": {
           "before": 0.6140366816304118,
-          "after": 0.7850529008636138,
+          "after": 0.788359129940657,
           "improved": 45
         },
         "edgeDistance": {
           "before": 0.9024555072456093,
-          "after": 0.7073185722288443,
-          "improved": 39
+          "after": 0.6984821045751592,
+          "improved": 40
         }
       },
       "held": {
         "count": 113,
         "rgbError": {
           "before": 54.902012063575945,
-          "after": 26.963169403718876,
+          "after": 26.710080864115998,
           "improved": 113
         },
         "ncc": {
           "before": 0.5865600372340539,
-          "after": 0.7450994746357744,
+          "after": 0.7488277936055249,
           "improved": 103
         },
         "edgeDistance": {
           "before": 0.9419354024693554,
-          "after": 0.7530666477330263,
-          "improved": 98
+          "after": 0.7488549869199317,
+          "improved": 97
         }
       },
       "fullArt": {
         "count": 8,
         "rgbError": {
           "before": 57.610779436152576,
-          "after": 37.18304311774461,
+          "after": 36.650331674958544,
           "improved": 8
         },
         "ncc": {
           "before": 0.44688751025081674,
-          "after": 0.4430478987906322,
+          "after": 0.45558205509533717,
           "improved": 4
         },
         "edgeDistance": {
           "before": 1.2529581721699632,
-          "after": 1.2624319965023587,
-          "improved": 4
+          "after": 1.2376434866190689,
+          "improved": 5
         }
       }
     },
@@ -477,17 +482,17 @@
         "count": 17,
         "rgbError": {
           "before": 59.64257145644326,
-          "after": 24.058745488245048,
+          "after": 23.77867525119501,
           "improved": 17
         },
         "ncc": {
           "before": 0.6137346424273684,
-          "after": 0.7375404296902053,
-          "improved": 15
+          "after": 0.737877952240412,
+          "improved": 14
         },
         "edgeDistance": {
           "before": 0.6812829897955801,
-          "after": 0.612406702638959,
+          "after": 0.614935916510274,
           "improved": 11
         }
       },
@@ -495,17 +500,17 @@
         "count": 21,
         "rgbError": {
           "before": 59.46816710100292,
-          "after": 26.33563926399748,
+          "after": 25.23735291794993,
           "improved": 21
         },
         "ncc": {
           "before": 0.5837355618836066,
-          "after": 0.7318487686917563,
-          "improved": 19
+          "after": 0.7515652569522868,
+          "improved": 20
         },
         "edgeDistance": {
           "before": 0.9751647698518117,
-          "after": 0.7342053620110595,
+          "after": 0.6936530492654709,
           "improved": 21
         }
       },
@@ -513,35 +518,35 @@
         "count": 20,
         "rgbError": {
           "before": 62.136932006633515,
-          "after": 26.613150912106136,
+          "after": 26.186318407960197,
           "improved": 20
         },
         "ncc": {
           "before": 0.4779133449763805,
-          "after": 0.7319829375453973,
+          "after": 0.7355122422714893,
           "improved": 20
         },
         "edgeDistance": {
           "before": 0.9586666064504351,
-          "after": 0.6879187728601499,
-          "improved": 19
+          "after": 0.6826176289673498,
+          "improved": 20
         }
       },
       "4": {
         "count": 6,
         "rgbError": {
           "before": 61.49679380873411,
-          "after": 28.305417357656165,
+          "after": 27.153454947484793,
           "improved": 6
         },
         "ncc": {
           "before": 0.4172508304891338,
-          "after": 0.6629210477637858,
+          "after": 0.6939021761650547,
           "improved": 6
         },
         "edgeDistance": {
           "before": 1.1457656877596658,
-          "after": 0.8162149080367787,
+          "after": 0.7975361752335921,
           "improved": 6
         }
       },
@@ -549,17 +554,17 @@
         "count": 3,
         "rgbError": {
           "before": 66.71873963515755,
-          "after": 29.897180762852404,
+          "after": 29.601105583195135,
           "improved": 3
         },
         "ncc": {
           "before": 0.48917883797700173,
-          "after": 0.6408666652992646,
+          "after": 0.6393318868747819,
           "improved": 2
         },
         "edgeDistance": {
           "before": 1.0957729438514725,
-          "after": 0.8673697313176686,
+          "after": 0.8598036168814343,
           "improved": 3
         }
       },
@@ -567,17 +572,17 @@
         "count": 1,
         "rgbError": {
           "before": 68.10878938640133,
-          "after": 31.171475953565505,
+          "after": 30.20099502487562,
           "improved": 1
         },
         "ncc": {
           "before": 0.659447291439984,
-          "after": 0.6859214691353704,
+          "after": 0.6911028458987736,
           "improved": 1
         },
         "edgeDistance": {
           "before": 1.1434005381005081,
-          "after": 0.9804713060456862,
+          "after": 0.9195300393956262,
           "improved": 1
         }
       },
@@ -621,17 +626,17 @@
         "count": 1,
         "rgbError": {
           "before": 62.485903814262024,
-          "after": 27.008955223880598,
+          "after": 26.67296849087894,
           "improved": 1
         },
         "ncc": {
           "before": 0.3662023302247165,
-          "after": 0.6390255724231417,
+          "after": 0.6325451316654908,
           "improved": 1
         },
         "edgeDistance": {
           "before": 1.154070561576352,
-          "after": 0.8759170587326464,
+          "after": 0.9143870798496891,
           "improved": 1
         }
       },
@@ -717,6 +722,197 @@
       "No ordinary calibration examples at positions five and six.",
       "Hybrid medallion colors retain source values.",
       "This is component validation, not final full-card scores."
-    ]
+    ],
+    "priorBakedNumeralReplay": {
+      "calibration": {
+        "count": 45,
+        "rgbError": {
+          "before": 54.272894785332596,
+          "after": 26.308022848719375,
+          "improved": 45
+        },
+        "ncc": {
+          "before": 0.6140366816304118,
+          "after": 0.7850529008636138,
+          "improved": 45
+        },
+        "edgeDistance": {
+          "before": 0.9024555072456093,
+          "after": 0.7073185722288443,
+          "improved": 39
+        }
+      },
+      "held": {
+        "count": 113,
+        "rgbError": {
+          "before": 54.902012063575945,
+          "after": 26.963169403718876,
+          "improved": 113
+        },
+        "ncc": {
+          "before": 0.5865600372340539,
+          "after": 0.7450994746357744,
+          "improved": 103
+        },
+        "edgeDistance": {
+          "before": 0.9419354024693554,
+          "after": 0.7530666477330263,
+          "improved": 98
+        }
+      },
+      "fullArt": {
+        "count": 8,
+        "rgbError": {
+          "before": 57.610779436152576,
+          "after": 37.18304311774461,
+          "improved": 8
+        },
+        "ncc": {
+          "before": 0.44688751025081674,
+          "after": 0.4430478987906322,
+          "improved": 4
+        },
+        "edgeDistance": {
+          "before": 1.2529581721699632,
+          "after": 1.2624319965023587,
+          "improved": 4
+        }
+      }
+    },
+    "genericNumeral": {
+      "source": "Magic Set Editor future symbol-font: MPlantin, bold. Use the existing Card Conjurer medallion rather than the different MSE blank ring.",
+      "background": {
+        "method": "channelwise-maximum-preserving-first-alpha",
+        "assets": [
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f0.png",
+            "sha256": "0c232d31a45d340247911b818b5bd1fbb4721e62adbdab0a0cba3e75efaba99e",
+            "bytes": 5057,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T05:12:32.038Z",
+            "etag": "W/\"479ca510ec2a5faa01642744e0d1c486f24be6db9020cfd94d67d4e21e0603cf\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f1.png",
+            "sha256": "cf282d7ba31c6a57857ac3df1a962ca6576020acf27ff3516bbf17b67fffe281",
+            "bytes": 4644,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:51.288Z",
+            "etag": "W/\"8bbcf94e778ff066dfcb427039fd746ad8dda514658f4807effa5dbc53636aa5\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f2.png",
+            "sha256": "2827760b844b6e15f7de38b07511ceb1712533936305923185ba0f1959e68ebf",
+            "bytes": 4962,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:51.073Z",
+            "etag": "W/\"03c03dd10851f05b562fbcb6e9bfe97d23200d4b6936846d9917fb91bf7a6f73\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f3.png",
+            "sha256": "ea6ecefbba73f1df268ab0876156f407c43b1794675255f19fbe79256b12e172",
+            "bytes": 4964,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:51.412Z",
+            "etag": "W/\"cb286e53e875a8564cd38c25a615ada91a09ef93a80754d9fe29848d1890f214\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f4.png",
+            "sha256": "1b2947e743688a99e4f3002cad3c25d2070bde53580912d5f439b8bf594fba71",
+            "bytes": 4895,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:51.552Z",
+            "etag": "W/\"6c4e68eaf3844989f312d6209a153c9a5b2c878244b7ec0e0da5503a33fe3874\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f5.png",
+            "sha256": "b7b36df839a4df0675b2290953d8ff7e975e46132eea45dba232dec5a3c81a9b",
+            "bytes": 4932,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:52.033Z",
+            "etag": "W/\"2fb1ed26ad754aae999a4b1e87cdbdcdb46b53ef12fc2d598de82aa88a4ba9c8\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/f6.png",
+            "sha256": "de1c0fdb474c04efa9f7d80197133eaa654cb097aa5d8002c42cfae94ded516e",
+            "bytes": 5056,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:52.279Z",
+            "etag": "W/\"54d9444a69c7db3d02c7444705fa1ba207ae854ff907aa14e19551f05659ee5c\"",
+            "lastModified": null
+          },
+          {
+            "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/manaSymbols/future/fx.png",
+            "sha256": "562597ffb9ac0e661702e9a5b346ff2be2c50add24998b106d635836c9b6180c",
+            "bytes": 5238,
+            "mime": "image/png",
+            "fetchedAt": "2026-10-16T02:16:51.749Z",
+            "etag": "W/\"8432c3b6755bbd325f470fc8396cffa6ae80d9b37dbc0b318a519654c78d1727\"",
+            "lastModified": null
+          }
+        ]
+      },
+      "selected": {
+        "size": 31.25,
+        "width": 0.9374999999999993,
+        "dx": -0.75,
+        "dy": 1.75
+      },
+      "validation": [
+        {
+          "font": "400 128px \"CardRenderer MTG MPlantin\"",
+          "parameters": {
+            "size": 31.5,
+            "width": 0.9624999999999992,
+            "dx": -0.75,
+            "dy": 1.75
+          },
+          "calibration": 0.7807527532979477,
+          "validation": 0.7396744814661194
+        },
+        {
+          "font": "700 128px \"CardRenderer MTG MPlantin\"",
+          "parameters": {
+            "size": 31.25,
+            "width": 0.9374999999999993,
+            "dx": -0.75,
+            "dy": 1.75
+          },
+          "calibration": 0.8274484921454653,
+          "validation": 0.7957290159832783
+        },
+        {
+          "font": "400 128px \"CardRenderer MTG Matrix\"",
+          "parameters": {
+            "size": 35.25,
+            "width": 0.9499999999999993,
+            "dx": 0,
+            "dy": 0.25
+          },
+          "calibration": 0.7742461819923384,
+          "validation": 0.7524880086884594
+        },
+        {
+          "font": "700 128px \"CardRenderer MTG Matrix\"",
+          "parameters": {
+            "size": 36,
+            "width": 0.9124999999999994,
+            "dx": 0,
+            "dy": -1.25
+          },
+          "calibration": 0.4775384293037792,
+          "validation": 0.5097767523785901
+        }
+      ],
+      "policy": "MSE blank medallion; shared font size/stretch/offset selected only on ordinary calibration printings using grayscale correlation inside the disc. Frozen frame poses and frozen medallion geometry. Independent validation printings do not choose parameters.",
+      "calibrationSymbols": 18,
+      "heldOutSymbols": 47
+    }
   }
 }

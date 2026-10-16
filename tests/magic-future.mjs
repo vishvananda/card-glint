@@ -36,7 +36,9 @@ try {
     const { earlyHsbBitmapCache } = await import(
       '/games/magic/src/presentation/material-bitmap-cache.ts'
     );
-    const { futureManaAsset } = await import('/games/magic/src/presentation/future-mana.ts');
+    const { futureManaAsset, futureGenericSources } = await import(
+      '/games/magic/src/presentation/future-mana.ts'
+    );
     const base = {
       name: '',
       frameTemplate: 'future',
@@ -213,14 +215,18 @@ try {
     const manaFace = {
       ...base,
       setCode: 'FUT',
-      manaSymbols: ['B', 'B'],
+      manaSymbols: ['B', 'B', '1', '2'],
       colorCalibration: 'set-hsb-v1',
     };
-    const manaImages = new Map([[manaUrl, manaImage]]),
+    const manaImages = new Map([
+        [manaUrl, manaImage],
+        ...futureGenericSources().map((url) => [url, manaImage]),
+      ]),
       signal = new AbortController().signal;
     const firstMana = await prepareEarlyHsb(manaFace, manaImages, signal);
     const builds = earlyHsbBitmapCache.stats.builds;
     const secondMana = await prepareEarlyHsb(manaFace, manaImages, signal);
+    const repeatedBuilds = earlyHsbBitmapCache.stats.builds - builds;
     const uncalibrated = await prepareEarlyHsb(
       { ...manaFace, colorCalibration: undefined },
       manaImages,
@@ -233,8 +239,11 @@ try {
       rim: pixel(manaSource, 180, 100),
       alpha: pixel(manaSource, 0, 0)[3],
       reused: firstMana.images.get(manaUrl) === secondMana.images.get(manaUrl),
-      builds: earlyHsbBitmapCache.stats.builds - builds,
+      builds: repeatedBuilds,
       optIn: uncalibrated.images.get(manaUrl) === manaImage,
+      genericShared:
+        futureManaAsset('1') === futureManaAsset('2') &&
+        futureManaAsset('2').endsWith('/future/f0.png'),
     };
     firstMana.dispose();
     secondMana.dispose();
@@ -316,6 +325,7 @@ try {
   assert.equal(result.manaColors.reused, true);
   assert.equal(result.manaColors.builds, 0);
   assert.equal(result.manaColors.optIn, true);
+  assert.equal(result.manaColors.genericShared, true);
   assert.equal(result.seamError, 0, 'Frame bands remain opaque and retain their color at seams');
   assert.equal(result.paperBackingAlpha, 255, 'Translucent paper retains opaque frame backing');
   assert.ok(result.rows[4].whiteInk > 30, 'Dark land panels retain light rules ink');
