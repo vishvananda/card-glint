@@ -20,6 +20,7 @@ import { hasCoreSetShield, paintCoreSetSymbol } from './core-set-symbol.js';
 import { shapedSetCode, paintShapedSetSymbol } from './shaped-set-symbol.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { planarCalibratedStock } from './planar-blackpoint.js';
+import { paintPlateStockBorder } from './frame-plate-border.js';
 import {
   FACE_WIDTH as W,
   FACE_HEIGHT as H,
@@ -69,7 +70,8 @@ export function paintFramePlateFace(
     return;
   }
   if (usesEighthBasicGeometry(face, plate.frame)) paintEighthBasicFrame(c, required(plate.frame));
-  else if (usesPlanarFrameGeometry(face, plate.frame)) paintPlanarFrame(c, required(plate.frame));
+  else if (usesPlanarFrameGeometry(face, plate.frame))
+    paintPlanarFrame(c, required(plate.frame), face.frameTreatment === 'colorshifted');
   else c.drawImage(required(plate.frame), 0, 0, W, H);
   paintPlanarPinlines(c, plate, images);
   if (plate.rightFrame) {
@@ -110,18 +112,17 @@ export function paintFramePlateFace(
     mix.width = mix.height = 0;
     mask.width = mask.height = 0;
   }
-  if (stock !== '#090806') {
-    const mask = document.createElement('canvas');
-    mask.width = 732;
-    mask.height = 1020;
-    const m = mask.getContext('2d')!;
-    m.drawImage(required(plate.border), 0, 0, mask.width, mask.height);
-    m.globalCompositeOperation = 'source-in';
-    m.fillStyle = stock;
-    m.fillRect(0, 0, mask.width, mask.height);
-    c.drawImage(mask, 0, 0, W, H);
-    mask.width = mask.height = 0;
-  }
+  if (stock !== '#090806')
+    paintPlateStockBorder(
+      c,
+      required(plate.border),
+      stock,
+      usesPlanarFrameGeometry(face, plate.frame)
+        ? face.frameTreatment === 'colorshifted'
+          ? 'colorshifted'
+          : 'planar'
+        : undefined,
+    );
   paintMountedSecurityStamp(c, face, images);
   c.fillStyle = '#17140f';
   c.textAlign = 'left';

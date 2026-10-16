@@ -135,7 +135,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v130',
+    'canvas-face-v131',
     input.paintLayer ?? null,
     tier,
     input.printingId,

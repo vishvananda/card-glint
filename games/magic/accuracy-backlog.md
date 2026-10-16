@@ -41,6 +41,18 @@ Prodigal Pyromancer improves only marginally and remains a visual review case;
 Vampiric Link remains excluded by its existing rejected registration. Other
 frame families and separate P/T badge materials are outside this ink fit.
 
+The [colorshifted outer-edge follow-up](fixtures/accuracy/planar-stock-edges.json)
+corrects a shared narrow-frame error and makes the stock mask follow the plate's
+geometry. Only the outer texture bands expand; the central 428 × 607 pixels
+remain byte-identical on all 44 native renders. Boundary error improves from
+1.69 to 0.12 pixels on all 25 held-out cards with identifiable edges. Most black
+edges are too low-contrast for that estimator, and the green top edge is obscured
+by its title bevel; these are excluded from the numeric claim. The black source
+also has overly prominent gray inner bevels that still require an asset review.
+The existing interior ink improvements survive this replay. Other frame families
+retain their geometry; both Chromium and WebKit pass a synthetic mask regression
+at table and inspect resolution. This correction is not yet released/deployed.
+
 The [normalization audit](fixtures/accuracy/legends-normalization-review.json)
 found inherited sampling bands crossing title and artist lettering. Search
 padding now stays within clean outer-frame pixels, and separate edge strips

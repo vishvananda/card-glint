@@ -5,17 +5,17 @@
   "metric": "Mean absolute RGB error in source-guided ink pixels and independent stock strips, byte units (0-255), lower is better. Not a whole-card accuracy percentage.",
   "calibration": {
     "policy": "Separate stock and inner-ink fit on frozen PLC poses; shared stock, per-source ink.\nFit the lower quartile of near-black source residuals to reduce bright edge/texture contamination.\nA fixed 96-byte transition preserves all brighter pigment; thin lines cannot identify its shape reliably.\nSource-guided inner samples omit transparent art, lettering and boundary AA.\nThin keylines cannot survive a full-pixel erosion, so report pose sensitivity.\n",
-    "sharedLiftRgb": [18.0, 20.0, 22.0],
+    "sharedLiftRgb": [18, 20, 22],
     "liftRgb": {
-      "W": [22.0, 24.0, 18.0],
-      "U": [21.0, 25.0, 31.0],
-      "B": [3.0, 7.0, 14.0],
-      "R": [31.0, 25.0, 24.0],
-      "G": [16.0, 18.0, 21.0]
+      "W": [22, 24, 18],
+      "U": [21, 25, 31],
+      "B": [3, 7, 14],
+      "R": [31, 25, 24],
+      "G": [16, 18, 21]
     },
     "transition": 96,
     "proposals": [],
-    "stockRgb": [24.0, 21.0, 16.0],
+    "stockRgb": [24, 21, 16],
     "curve": "rgb + lift * max(0,1-max(rgb)/transition)^2, applied after existing HSB; alpha and all colors above transition preserved.",
     "excluded": ["Vampiric Link: existing scan normalization rejected."],
     "nativeRefitPolicy": "Fit curve coefficients using the actual composed raster response, including sampling.\nA direct 488px plate is not equivalent to the 732px inspect raster normalized to 488.\nUse the first native candidate as a linear response basis; fit calibration cards only.\n",
@@ -123,9 +123,9 @@
         "cards": 3,
         "ink": {
           "before": 25.388136686009023,
-          "after": 8.312271652697184,
+          "after": 8.30775843541801,
           "improved": 3,
-          "worstDelta": -14.245003223726627
+          "worstDelta": -14.249516441005802
         },
         "stock": {
           "before": 20.169890873015873,
@@ -138,9 +138,9 @@
         "cards": 6,
         "ink": {
           "before": 21.458306468944766,
-          "after": 9.972813238770685,
+          "after": 9.96915968192564,
           "improved": 6,
-          "worstDelta": -0.2462927143778213
+          "worstDelta": -0.25209542230818904
         },
         "stock": {
           "before": 20.17130456349206,
@@ -619,7 +619,7 @@
       "referenceHash": "3b49b42141d80a39ea63ef186c24f7c5d504fd4308f3e07cf7e1f57b9fd90f25",
       "ink": {
         "before": 20.513217279174725,
-        "after": 6.268214055448098
+        "after": 6.263700838168924
       },
       "stock": {
         "before": 20.169940476190476,
@@ -634,7 +634,7 @@
       "referenceHash": "49b5e83ceb0591a6c0438e90aa0ec9e8523daa8c948c18d610c857dadd934edd",
       "ink": {
         "before": 16.73758865248227,
-        "after": 9.624758220502901
+        "after": 9.62669245647969
       },
       "stock": {
         "before": 20.172916666666666,
@@ -649,7 +649,7 @@
       "referenceHash": "47f897029c841823a2501c9491b5b8dc8a0937821958bc8781109f3891cddc45",
       "ink": {
         "before": 29.309477756286267,
-        "after": 10.275306254029658
+        "after": 10.26950354609929
       },
       "stock": {
         "before": 20.169940476190476,
@@ -664,7 +664,7 @@
       "referenceHash": "f7456fcb1eb8c072cd37236fbca959d29d820ef413ee280cb95dd0d264f577e5",
       "ink": {
         "before": 12.789168278529981,
-        "after": 12.54287556415216
+        "after": 12.537072856221792
       },
       "stock": {
         "before": 20.169940476190476,
@@ -679,7 +679,7 @@
       "referenceHash": "e5b40a06d676aebf168f1576d7bd96db7e47770de1fe2963a6e5facb224ccd0c",
       "ink": {
         "before": 27.61766602192134,
-        "after": 9.370083816892327
+        "after": 9.366860090264346
       },
       "stock": {
         "before": 20.169940476190476,
@@ -694,7 +694,7 @@
       "referenceHash": "87deba89bb8beb3100ddd0342144b0d33be65530bee58419ae84db7800d15ea1",
       "ink": {
         "before": 28.03352675693101,
-        "after": 9.298517085751127
+        "after": 9.292714377820761
       },
       "stock": {
         "before": 20.169791666666665,
@@ -709,7 +709,7 @@
       "referenceHash": "7c6f5bc136684ef1fa125d3d3f99f6f7020bfe2c1869e6061021b3e78cf4e584",
       "ink": {
         "before": 32.61315280464217,
-        "after": 12.74081237911025
+        "after": 12.73758865248227
       },
       "stock": {
         "before": 20.169940476190476,
@@ -724,7 +724,7 @@
       "referenceHash": "c2ff5128c1d85bbd7c764e2754118729112306021278d61fab2987692083fa87",
       "ink": {
         "before": 17.611863313990973,
-        "after": 7.374597034171503
+        "after": 7.371373307543521
       },
       "stock": {
         "before": 20.175148809523808,
@@ -739,7 +739,7 @@
       "referenceHash": "385213136eb36245352c42489ff3d8f804d84544587b20f698eaa266aa16861f",
       "ink": {
         "before": 19.688588007736943,
-        "after": 7.27852998065764
+        "after": 7.2727272727272725
       },
       "stock": {
         "before": 20.169940476190476,
@@ -884,12 +884,13 @@
   ],
   "baseline": "v0.4.0",
   "sourceGuards": {
-    "planar-frame-geometry.ts": "26c1e0f1eec114cdc3395b835e56310f411328be61a6f0302ef6fc528e464e58",
+    "planar-frame-geometry.ts": "e4d0962d02c3b48d05b18b583f2047e80da5346c12b809e05875c713687cca73",
     "planar-color-values.ts": "33684b79f6ac3d6de44d4fe9eab79cb02c8fde3a99c4ff577ce7993c04c3261c"
   },
   "review": [
     "Prodigal Pyromancer has only a small interior-ink improvement (12.79 to 12.54 byte MAE); retain it as a visual review example.",
     "Vampiric Link is excluded because its existing scan registration was rejected.",
     "Lettering, mana, expansion symbols, art and separate P/T badge materials retain their previous calibration."
-  ]
+  ],
+  "edgeRevalidation": "Replayed all 44 native cards after shared outer-band geometry and mask correction. Interior ink benefits retained; see planar-stock-edges.json for boundary measurements and source-asset caveats."
 }
