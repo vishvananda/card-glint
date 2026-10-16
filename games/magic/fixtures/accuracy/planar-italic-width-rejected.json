@@ -1,0 +1,2840 @@
+{
+  "schema": 1,
+  "status": "rejected-for-validation-regressions",
+  "baseline": "0.3.11",
+  "policy": "Italic/reminder horizontal ink and measured advances only, with released font size, bounds and spacing rules. Full native face renders and frozen scans; every factor-1 raster and score must equal the release. No capture submitted to the app.",
+  "proposal": {
+    "factor": 0.98,
+    "count": 33,
+    "meanDelta": 0.0040936313228848685,
+    "utility": 0.002666917144752711,
+    "improved": 10,
+    "regressed": 12,
+    "largeRegressions": ["Sunlance", "Gossamer Phantasm", "Reckless Wurm"],
+    "chosenBeforeValidation": true
+  },
+  "training": [
+    {
+      "factor": 1,
+      "count": 33,
+      "meanDelta": 0,
+      "utility": 0,
+      "improved": 0,
+      "regressed": 0,
+      "largeRegressions": []
+    },
+    {
+      "factor": 0.96,
+      "count": 33,
+      "meanDelta": -0.007412728621861372,
+      "utility": -0.021767432984097678,
+      "improved": 8,
+      "regressed": 14,
+      "largeRegressions": [
+        "Sunlance",
+        "Gossamer Phantasm",
+        "Shivan Meteor",
+        "Reckless Wurm",
+        "Giant Dustwasp",
+        "Hedge Troll",
+        "Darkheart Sliver"
+      ]
+    },
+    {
+      "factor": 0.98,
+      "count": 33,
+      "meanDelta": 0.0040936313228848685,
+      "utility": 0.002666917144752711,
+      "improved": 10,
+      "regressed": 12,
+      "largeRegressions": ["Sunlance", "Gossamer Phantasm", "Reckless Wurm"]
+    },
+    {
+      "factor": 1.02,
+      "count": 33,
+      "meanDelta": -0.0021007159628380033,
+      "utility": -0.006804741364214129,
+      "improved": 8,
+      "regressed": 14,
+      "largeRegressions": [
+        "Mesa Enchantress",
+        "Braids, Conjurer Adept",
+        "Gossamer Phantasm",
+        "Giant Dustwasp",
+        "Jedit Ojanen of Efrava",
+        "Hedge Troll"
+      ]
+    },
+    {
+      "factor": 1.04,
+      "count": 33,
+      "meanDelta": -0.00453889755549283,
+      "utility": -0.013846987477001105,
+      "improved": 6,
+      "regressed": 16,
+      "largeRegressions": [
+        "Shade of Trokair",
+        "Mesa Enchantress",
+        "Sunlance",
+        "Braids, Conjurer Adept",
+        "Gossamer Phantasm",
+        "Blood Knight",
+        "Giant Dustwasp",
+        "Jedit Ojanen of Efrava",
+        "Harmonize",
+        "Hedge Troll"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "factor": 1,
+      "count": 123,
+      "meanDelta": 0,
+      "utility": 0,
+      "improved": 0,
+      "regressed": 0,
+      "largeRegressions": []
+    },
+    {
+      "factor": 0.98,
+      "count": 123,
+      "meanDelta": 0.0024082884233382895,
+      "utility": -0.0060425759486828455,
+      "improved": 46,
+      "regressed": 46,
+      "largeRegressions": [
+        "Magus of the Tabernacle",
+        "Saltblast",
+        "Saltfield Recluse",
+        "Malach of the Dawn",
+        "Aquamorph Entity",
+        "Body Double",
+        "Reality Acid",
+        "Shaper Parasite",
+        "Frozen Aether",
+        "Cradle to Grave",
+        "Extirpate",
+        "Waning Wurm",
+        "Kor Dirge",
+        "Fatal Frenzy",
+        "Hammerheim Deadeye",
+        "Lavacore Elemental",
+        "Stingscourger",
+        "Hunting Wilds",
+        "Utopia Vow",
+        "Gaea's Anthem",
+        "Dormant Sliver"
+      ]
+    }
+  ],
+  "decision": "Retain the released italic width. A 2% reduction has a small average gain but introduces 21 whole-card regressions exceeding one point; it does not transfer reliably. All 156 baseline native raster hashes and whole-card scores matched the released browser; no scan pose or coverage changed. No production renderer change.",
+  "rows": [
+    {
+      "id": "f6a4394a-9ce2-4876-8a04-38e3775123af",
+      "name": "Aven Riftwatcher",
+      "cohort": "validation",
+      "referenceHash": "6a583d637109b90733a76e8d87737f94f06081e1ffef4b6abfdd4a5b73c402f4",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.6564752312068198,
+          "rules": 0.17788289728591042,
+          "renderHash": "fb676c26ecdf702dd5c9f90a0d66338bd0609580b10094a0dbf3048039458601",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6617415771976857,
+          "rules": 0.1916564175697136,
+          "renderHash": "c983819381505d5c493ced447ba5eaba747fcc0376746c8be6ef0b2c9527766a",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "44814da0-3bc8-423d-9b22-3fea123048fa",
+      "name": "Benalish Commander",
+      "cohort": "validation",
+      "referenceHash": "76320c5a339d2b736c7b65df1975c62ae47d005bd715afffc667040d52b7a121",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.778138068808647,
+          "rules": 0.5379739921635062,
+          "renderHash": "3bf38ba4f822f4116d7ba04c7418f2c9bce9ce6743f541571f11ae7c901759c2",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.778138068808647,
+          "rules": 0.5379739921635062,
+          "renderHash": "3bf38ba4f822f4116d7ba04c7418f2c9bce9ce6743f541571f11ae7c901759c2",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "63049fe4-de25-4606-a271-4ccb1b8298f1",
+      "name": "Crovax, Ascendant Hero",
+      "cohort": "validation",
+      "referenceHash": "acb265653c883b159ee405efc9ec3681ee81afe02a9660ff70581dcb19ed6bbf",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8115134264509152,
+          "rules": 0.576028130469269,
+          "renderHash": "28087aef6a82800750df1a61fa2881fce21775572c8a4cc90335808c9ac4b237",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8084905692843006,
+          "rules": 0.5681221963412003,
+          "renderHash": "d1d51b6e1240d6b92ed00538b2dff189a319afdd31d4c859598f9788bc1dd458",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "a4c9667b-1d94-42eb-ae8e-1ae4755e200a",
+      "name": "Dawn Charm",
+      "cohort": "validation",
+      "referenceHash": "0d4776587b260561aa5070fc455520a15cbfd7e707aa868ce9155a0524b8c17f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.9118482587865594,
+          "rules": 0.8445128392389051,
+          "renderHash": "de80555f7b6b3886fb42d131a938b6a599692cb241fa156c1ff213dbe4809c74",
+          "coverage": 0.6521739130434783
+        },
+        {
+          "factor": 0.98,
+          "score": 0.9118482587865594,
+          "rules": 0.8445128392389051,
+          "renderHash": "de80555f7b6b3886fb42d131a938b6a599692cb241fa156c1ff213dbe4809c74",
+          "coverage": 0.6521739130434783
+        }
+      ]
+    },
+    {
+      "id": "56ab366c-085b-4b13-b5ad-918965c34d22",
+      "name": "Ghost Tactician",
+      "cohort": "validation",
+      "referenceHash": "c847c970baa8ec5c1105341c5a457d0cd55f13f3b921fccf626230107eb1bf13",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8365001902984436,
+          "rules": 0.6335783101669678,
+          "renderHash": "dbd4b0d6b51d5a4c54aadfe36ed61c3b9f5d3a509f7ca95529ca0820b63900f9",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.861866902406368,
+          "rules": 0.6999220187569242,
+          "renderHash": "397e59c2ebbb870979ef8b659156f399ddad3857c601828eab9dbcaa9919d536",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "9902b260-82cf-4b10-a353-321231824a3b",
+      "name": "Heroes Remembered",
+      "cohort": "validation",
+      "referenceHash": "c68013308f20a5dd94e0a510843e537a588faf1f77dfd49fbf0af19cf6ee281d",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.6159970690378024,
+          "rules": 0.1848127094163216,
+          "renderHash": "16d13b268fb1e493c59cb1c4084fa7ae54f8ebc6ead9440b512e40036589b166",
+          "coverage": 0.6521739130434783
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8602829138225488,
+          "rules": 0.7485492743041987,
+          "renderHash": "9e7a9a7fe7400fec08462a9e457df9bfd01a3050c2c6c978aa487b2288efb573",
+          "coverage": 0.6521739130434783
+        }
+      ]
+    },
+    {
+      "id": "dd520f8c-93fb-4cf3-8dd5-d05abbd86c74",
+      "name": "Magus of the Tabernacle",
+      "cohort": "validation",
+      "referenceHash": "d97c8cb6b0f6c4443d9e7738f4c3b30a3df337ae72638d6a812cd666b51aefd0",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8005860765334789,
+          "rules": 0.5807438260518996,
+          "renderHash": "821ff17a3241450ca159c6cebfb012688bd763e2d936c7a27d74d083fc32a7cb",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.790372778367433,
+          "rules": 0.5540321231560872,
+          "renderHash": "26f01b71e014acb6d08e0a6f96fe9c17ce89cf2c4a2e4eeff064d162bf06910e",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "9ef5d122-cf18-42c3-be24-cfd92bd18be9",
+      "name": "Mantle of Leadership",
+      "cohort": "validation",
+      "referenceHash": "c4182063f1f4983c5a725cca33727d5a10970bdf1e80f7b514659301653b2881",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7193598116740425,
+          "rules": 0.4167788672287635,
+          "renderHash": "e643457d6cc4b8e08a4fb84dab4cf1f0f658081b2bd0e13e729ac5c2868ae2d3",
+          "coverage": 0.6521739130434783
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7154808373242548,
+          "rules": 0.4078273879600224,
+          "renderHash": "ae3ba058c4c2b362b3966c89014d2557db6adc8920013affc61648650a3376d0",
+          "coverage": 0.6521739130434783
+        }
+      ]
+    },
+    {
+      "id": "3a11b639-a5a3-424d-80c6-42d7252472a1",
+      "name": "Pallid Mycoderm",
+      "cohort": "validation",
+      "referenceHash": "1dcdd1981686db91ba985898da0bee4e0b70c777fb6bc580d328aea3ef7a2a46",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8133279920254458,
+          "rules": 0.5793961758543633,
+          "renderHash": "47ecbb94f4d67b279e6896c5841ce0b8fc0fa4a3bca5770d66c340792dced5c3",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8133279920254458,
+          "rules": 0.5793961758543633,
+          "renderHash": "47ecbb94f4d67b279e6896c5841ce0b8fc0fa4a3bca5770d66c340792dced5c3",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "f3441ae0-4c20-487b-99b8-d6934dfb66ff",
+      "name": "Poultice Sliver",
+      "cohort": "validation",
+      "referenceHash": "efc5d93cc1b0e828db252ae9112bef7af7a9f097eaf86fbcf15104dfc02216b9",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.848803252088315,
+          "rules": 0.6718779683410508,
+          "renderHash": "eadfd0f36b908a8c2457a5312c2d4b5c799fe5a11d49a001fcc3bfa88d7ff052",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8579997438161536,
+          "rules": 0.6959303313215516,
+          "renderHash": "04f80db814b4e4d40194b50fd2a282374006501178a9331d98694062490df764",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "fa47fcce-d4c4-40a2-8853-6d7569d50926",
+      "name": "Rebuff the Wicked",
+      "cohort": "validation",
+      "referenceHash": "b055218d94d3acab4d5ca095704e29836d552bf930f8305016eea2ffa7ba8f9d",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8475176632038331,
+          "rules": 0.7138803554110293,
+          "renderHash": "515016ee73977125f6ab4b03f654274a9bcc777e3d23e47ebfc6af9068813a0a",
+          "coverage": 0.6521739130434783
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8490064758326938,
+          "rules": 0.7173160768622463,
+          "renderHash": "945493c63c124dfc22c9cef11e71318c9306d67cf947b395539a66c582551f5f",
+          "coverage": 0.6521739130434783
+        }
+      ]
+    },
+    {
+      "id": "d503b565-a3c8-4b57-9e30-fb97d2a49afa",
+      "name": "Riftmarked Knight",
+      "cohort": "validation",
+      "referenceHash": "0eebbbcfc16b2f988b43bc7e97404bbe16304c3a99ba932eaaae6f4559bfd4a3",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8395213174453869,
+          "rules": 0.6537178842755915,
+          "renderHash": "d27cb7ae50fbcb4c18ba0d0d4bd66e634b26379a7f1734e23b4e43929d6600ce",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8395213174453869,
+          "rules": 0.6537178842755915,
+          "renderHash": "d27cb7ae50fbcb4c18ba0d0d4bd66e634b26379a7f1734e23b4e43929d6600ce",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "edd1833d-64b0-4c9b-8f6b-1cf15c29d473",
+      "name": "Saltblast",
+      "cohort": "validation",
+      "referenceHash": "aefeb511c85ab95c6a090d490b0a0ea9cf11d2294b6caef56675ad3e75aa6906",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8797802265842404,
+          "rules": 0.8119167758958897,
+          "renderHash": "82034494ed93a67d295479a8ffc1d0042ecdbc5a0330df3638e65f081ccf4d6e",
+          "coverage": 0.6521739130434783
+        },
+        {
+          "factor": 0.98,
+          "score": 0.813025323378345,
+          "rules": 0.6578669992669002,
+          "renderHash": "c0956826bac7d08b428b550ac795df01799ef0150f139b47f5f5982197daac37",
+          "coverage": 0.6521739130434783
+        }
+      ]
+    },
+    {
+      "id": "5ffed4e4-0f54-4ab1-8563-ac4be7ae8309",
+      "name": "Saltfield Recluse",
+      "cohort": "validation",
+      "referenceHash": "bf2e85d57053c07a859dd4c5a2a964d31c2d33af3eb567f327cf0e6b0bb68052",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8693390204041824,
+          "rules": 0.7210421748530437,
+          "renderHash": "27382cf5f574e625956b1f2c391c5b741c0d5d2ac9ad8e66bc3990b3e60e4803",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.842857443906157,
+          "rules": 0.6517826670889775,
+          "renderHash": "4d5f0fcf736c632683004ccff21156f2ca9e8c3437b1e8115937eedde9f7ae04",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "8b869a77-dd1c-46bb-9360-5a0c69a193c0",
+      "name": "Serra's Boon",
+      "cohort": "validation",
+      "referenceHash": "b8f089934b31cb0a972148df12ee40a1ed28087f50071b14fbe85e1ba154a8f3",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.6567614602990007,
+          "rules": 0.28077317039943206,
+          "renderHash": "74352e55fcd03e30f2938bcde93c09319fbfdeab49accccab967db79563877f9",
+          "coverage": 0.6521739130434783
+        },
+        {
+          "factor": 0.98,
+          "score": 0.89245025090254,
+          "rules": 0.8246703794845227,
+          "renderHash": "2b975c4adc14d3a640e868750ceb09ed9e93e0462596776535d2643d9c6d40cc",
+          "coverage": 0.6521739130434783
+        }
+      ]
+    },
+    {
+      "id": "f7b11cec-de85-4289-a7b4-e8bfdf655130",
+      "name": "Stonecloaker",
+      "cohort": "validation",
+      "referenceHash": "5c4b3f75ebabb84a6333eccb3f5ae03b2a61cbcda8b1e993edb041f6a1ac4add",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8011952720992364,
+          "rules": 0.5909080414184659,
+          "renderHash": "f0f6ea4ba76c985c00442b64e14ae0b272911a54ce52c6eb2d884968dfe1ff47",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8022554847185264,
+          "rules": 0.5936809051919931,
+          "renderHash": "d915b829608797b2a2d23f429d805acd90690c62a6c388b165bb8b625e2add06",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "de5e892e-d321-436f-81a6-73975e65b45c",
+      "name": "Stormfront Riders",
+      "cohort": "validation",
+      "referenceHash": "2c63742b2dfc4002ccdfb13a207863cf14e62131b87132dd68ab6a17dc7de428",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7956342028950917,
+          "rules": 0.577455125120171,
+          "renderHash": "531cb78b91035be90bb9e0efd1086b47369f100c86cb179bd69d5fa19633b5d1",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7956342028950917,
+          "rules": 0.577455125120171,
+          "renderHash": "531cb78b91035be90bb9e0efd1086b47369f100c86cb179bd69d5fa19633b5d1",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "583741a1-0faf-4fb3-8536-b9b1cc8a3b6f",
+      "name": "Voidstone Gargoyle",
+      "cohort": "validation",
+      "referenceHash": "74649ee3b452f760802b3a907cf5e6164dfca38011576fbd77fafef91556bacb",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8245793705326155,
+          "rules": 0.6594475195838028,
+          "renderHash": "0d5ca0040a0eec549c88a6477e48cbee770d3955f7884516c9d4b3a669a549b4",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8245793705326155,
+          "rules": 0.6594475195838028,
+          "renderHash": "0d5ca0040a0eec549c88a6477e48cbee770d3955f7884516c9d4b3a669a549b4",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "cb1214ff-e959-43ca-8415-79a98d398490",
+      "name": "Whitemane Lion",
+      "cohort": "validation",
+      "referenceHash": "942b70d227e5c1879832aee43389b3affdf7c478e1df67a34e172b562b45e241",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7765123580103312,
+          "rules": 0.5194341118846941,
+          "renderHash": "c029ae62a080f78d59ca876eda058f7e70d0a5c764fd11fe0301b23b6c38d382",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7745355081402872,
+          "rules": 0.5142638891476558,
+          "renderHash": "e164c78a806f8abfd562559dc0d56ed7464e79b6065d876b8ebd148e576bfdcb",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "f0159719-ccf4-4798-a394-b01f5e422a27",
+      "name": "Calciderm",
+      "cohort": "validation",
+      "referenceHash": "a85ee3defc4a77f510cebe86368ae63e099a6f8afe5d0e43614125e03066cd20",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8147222396594992,
+          "rules": 0.586086763274361,
+          "renderHash": "0589df6006e6ff02ebfd12d4b8d04da120ddf138bd3c2a488961fd287cc35476",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8097379224727536,
+          "rules": 0.5692167666422988,
+          "renderHash": "1ce95fda3547f8575225ad5c78bfd5a9c4bc84766084be055c63c3eaa49d54bf",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "6f5df373-5dad-4e33-9e2b-351f1f4bdde4",
+      "name": "Malach of the Dawn",
+      "cohort": "validation",
+      "referenceHash": "b36197a6061f79736c1b63907cd38560b3787c5747221a66018738643f45303d",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8665041893454938,
+          "rules": 0.7121669465242312,
+          "renderHash": "b64dd0c8f92807cc0ee221b4f64b31c9c4b522bf42078ebde8e1e62dfc810c8c",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8449773888305212,
+          "rules": 0.639307006319708,
+          "renderHash": "fd80c8e149c3f17034e34f321d3b268886f767aad42ef58f65f04e65190e8dc2",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "7d48d622-f397-4f31-b1a5-0c23f60aa71c",
+      "name": "Mana Tithe",
+      "cohort": "validation",
+      "referenceHash": "eba69aa910e876063172f2d288afda276ce4de82208cd7e9cd865eff76472586",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8408741258808178,
+          "rules": 0.7012443565024874,
+          "renderHash": "68924fa087d3c980a23bfa51d31b2ace0b298004ec21319bc22f122d6942a723",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8450124175413244,
+          "rules": 0.7139775616117383,
+          "renderHash": "c2ea92203fe26bb0f1efee4d1592b6648adb3256361e07379a862483bc39a108",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "56d8e9fa-e241-4a11-99b8-ffced81eb38b",
+      "name": "Mycologist",
+      "cohort": "validation",
+      "referenceHash": "43d3f02c2dff8b3980eefed43702f8d61b2e048697a78626c6a0f3035f7600e0",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8266087986002689,
+          "rules": 0.6465330239722727,
+          "renderHash": "ad64964b1b5f6efec78d961f1c7edba8fd8d3376d07bdfb13089dc6a5f175184",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8266087986002689,
+          "rules": 0.6465330239722727,
+          "renderHash": "ad64964b1b5f6efec78d961f1c7edba8fd8d3376d07bdfb13089dc6a5f175184",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "f9a78d5c-27f8-4061-be89-0246fb69e752",
+      "name": "Revered Dead",
+      "cohort": "validation",
+      "referenceHash": "8ca073bd3b2b6f398426482e5ce5f21d101f15ed16f1ec1180769b93b56493df",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7953329527330097,
+          "rules": 0.5056208202719168,
+          "renderHash": "8e804af2a146ac522ac5e1a7421a2c57201307945b4d9a351dd2a8f111963405",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.803417855301889,
+          "rules": 0.5329851058896624,
+          "renderHash": "867e0da8cb179e70f144b3b7ccc7a44cd327b561d08941aef38dbe32edb0eaa1",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "6cd2ed50-cd9a-45d9-a59a-6279be1ab308",
+      "name": "Sinew Sliver",
+      "cohort": "validation",
+      "referenceHash": "fde0a05c5b10fc7c2162d9aa8f9d9c3305da646f05002ae13933b6f9a49f117a",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8170096689636561,
+          "rules": 0.5768234971638482,
+          "renderHash": "b280124112f39b5bd5f253cedddb966d5be3640e4a5ad95b15e59cf096e3ef2e",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8244966664292884,
+          "rules": 0.6021641039706036,
+          "renderHash": "2bf9ba3d51a41ca3321a2413244d280e9a1640b3e83a8bfed76ee531f6fe2534",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "9781ab73-5c79-41f3-b319-c9299b03353a",
+      "name": "Aquamorph Entity",
+      "cohort": "validation",
+      "referenceHash": "121876e48aaf4feafae8cfe1aa688972cd0cdc0cea5a51cdefe817a78bc005a8",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8341192679548981,
+          "rules": 0.6792737957202885,
+          "renderHash": "89339d84a599f8889de7b6ef20b0e7ad1834699316a58bb4f5cceb2b64ebbe49",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8110678706564355,
+          "rules": 0.6012536817870312,
+          "renderHash": "7d7ff7e95ab797ed119caba40b47e4ce67eb83476dadcdac60b4489c7f590659",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "c787368d-d208-4aac-936d-b0c189d1cd90",
+      "name": "Auramancer's Guise",
+      "cohort": "validation",
+      "referenceHash": "785233c91f9401370ad1efd0c18fd2ed642a12989a5dc54159b2555411be9964",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.830065969094092,
+          "rules": 0.7130593419085473,
+          "renderHash": "b398e5e438bbe3cc53f418ecb707e8dd7cb93293ed6c82ad4e6ecfcb1c102952",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8265584987043498,
+          "rules": 0.7022671253247247,
+          "renderHash": "e6403d7cce48502277877be29c21e67b236736df431acd8b6e12bd8bb38693fb",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "d66895b2-07f9-46b1-80e6-2d573e532fc5",
+      "name": "Body Double",
+      "cohort": "validation",
+      "referenceHash": "bf2706e78e5f959c6aa075c20b1bc1488f7b32f24af301a3e3fcc2a71f502cd1",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8139764211207962,
+          "rules": 0.6495661494370961,
+          "renderHash": "4b794d7689b858abe2e757c3aef86da0a09151bc722cadfa4074434332e5e526",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7990082371363735,
+          "rules": 0.5989046036436654,
+          "renderHash": "f84fa34ea0b720238ff903ed220830a3438b431cd4b92c8c1e8b4809ec2011d9",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "a77c1ac0-5548-42b0-aa46-d532b3518632",
+      "name": "Chronozoa",
+      "cohort": "validation",
+      "referenceHash": "11761b515f2fb63ac4d59ef9c22b3b05e848da265989113362f3153ceb934473",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.897914626876424,
+          "rules": 0.8849985313371587,
+          "renderHash": "231830986078d28c0a8fd9569d43bff3a37390949386c8fa0148ad4accaa9952",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8926306270585486,
+          "rules": 0.8671142242612727,
+          "renderHash": "5dda3e9189c420a9215d937724d2acc0bd06f7dfe4d1201e84b888988e153cc8",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "61583ead-bccc-44d9-bd1d-2a13511990b5",
+      "name": "Dichotomancy",
+      "cohort": "validation",
+      "referenceHash": "054bc8384f165ca589cd9599aca5c5ebe9f56d737e5b9d57c201e366e0039dcf",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8673926193048394,
+          "rules": 0.7454557048828583,
+          "renderHash": "744ec04d7029af91f7ce202d2175b78186b789c842f90798fcb4e73643009ba6",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8673926193048394,
+          "rules": 0.7454557048828583,
+          "renderHash": "744ec04d7029af91f7ce202d2175b78186b789c842f90798fcb4e73643009ba6",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "6479d22f-1a97-4bc8-a1e1-c3de87429c22",
+      "name": "Dreamscape Artist",
+      "cohort": "validation",
+      "referenceHash": "5533b27d8fb843586211e84ad0133d81c60a8e45499b5ccd489ec6bf1010a174",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8530492135014452,
+          "rules": 0.6843039268307379,
+          "renderHash": "a7ea0b36b30edd077852c0050bf966e8cc959cd0541be8a1ec6a6264501c18f7",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8475829509677012,
+          "rules": 0.665802730562681,
+          "renderHash": "283a092dfc17cd2f7394892ee52b81bd972ab5e48a4a559b29843a00b4cd6658",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "d06d3fb1-abfa-4724-a4e7-f65de88521f8",
+      "name": "Erratic Mutation",
+      "cohort": "validation",
+      "referenceHash": "2efeac28700ab4613b130be640eacb6fb19006cad1f85f2eda95b11f16fe2eca",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8754115195136907,
+          "rules": 0.7765385495279911,
+          "renderHash": "56c6895928530bb8796d872a415a2add9c4e10fa3e84052ada04e3f5c5306574",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8754115195136907,
+          "rules": 0.7765385495279911,
+          "renderHash": "56c6895928530bb8796d872a415a2add9c4e10fa3e84052ada04e3f5c5306574",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "6c92ae75-a209-4cc4-8817-06ff18f3ac02",
+      "name": "Jodah's Avenger",
+      "cohort": "validation",
+      "referenceHash": "d0d3bb2acb1ba6644654cc104343f4de4a1578e4affb5a7075452f42629619fb",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7142438850511537,
+          "rules": 0.2018203541674589,
+          "renderHash": "93574eb15ef04d324255b99dd8df004db68b61e10cc68472f01bc13e14198a18",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8567885297185689,
+          "rules": 0.684279151503326,
+          "renderHash": "e79fb25368ff02cace47d670a43124f3757dee19eca4f76de7cacbf2f64585b1",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "a89762f8-70e0-414b-a788-532710129733",
+      "name": "Magus of the Bazaar",
+      "cohort": "validation",
+      "referenceHash": "057057fa7a44e4e30e818f78a2a72471721e2dc271ae50e3c49aff4725dd7907",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8208740619993269,
+          "rules": 0.7208203376934605,
+          "renderHash": "6583c80d9c1b26a805203c5d30eddd3a18305047cda4d9e50abc0144e092a0a7",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8681375735988855,
+          "rules": 0.8807891461842747,
+          "renderHash": "cef3790a3f43581f9b93a845dc3fedf4ee8f602477ed3b9940052590a2470d06",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "cce74a84-4441-4f2e-89d8-df0b096790ed",
+      "name": "Pongify",
+      "cohort": "validation",
+      "referenceHash": "a7f8f1a15186c343011fa658f7af74567927274230230b0e7036d0b29777d3cf",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7464234088054248,
+          "rules": 0.45857104670070126,
+          "renderHash": "ea1171bd573064033d301657c1aa1e07d68252b1da28fb415721d5257f7db046",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7482359301861683,
+          "rules": 0.4641480355645276,
+          "renderHash": "7f7cd41c3defd68c1bcb3807728e2229a8e69af2d25a97a98494fd9c9b0ad69b",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "8c6ad9c3-b5dd-46a9-8494-8b395e21aedf",
+      "name": "Reality Acid",
+      "cohort": "validation",
+      "referenceHash": "4bda7f0e7d36bb2a222e9e21ba7c5414dfcda4c8408af3c619ca6457b4aaf375",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.91408568181262,
+          "rules": 0.8895280643649063,
+          "renderHash": "7108c2a43c29a9f3b68ea3e427d7d5f603191ca3f08b4e39dff8b69ca092e5ce",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.869649316617879,
+          "rules": 0.7528007868426262,
+          "renderHash": "61a90b18d12b9aab66f7d6cd66924a0285afcbeda3e192669114cbf42e4d8d48",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "d88afc02-522b-4c51-9509-aff54bbb41c8",
+      "name": "Shaper Parasite",
+      "cohort": "validation",
+      "referenceHash": "201da78fdc8b3eeae532742d832d84687cfcd1cbbc044503e4de9c4cfb47dec7",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8489950053891444,
+          "rules": 0.6365958940731495,
+          "renderHash": "e0d0dad105a67280c7b2d4413ae7d1995eb97c4a222147e613586ebae2c4798c",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8283920891169586,
+          "rules": 0.5668629466903666,
+          "renderHash": "333ea25e30da01a50e0af22e92009eb9387ce58a22718456cff07deab2b4ef5b",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "f5c897a6-5835-42ac-8cc7-e8d9fc1e7c77",
+      "name": "Spellshift",
+      "cohort": "validation",
+      "referenceHash": "959650f9d875871d00812482cb8a1e6e7262b50e4c84c01602c4676dba214add",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7817853934268764,
+          "rules": 0.4787002477136446,
+          "renderHash": "7e73755095f48c6b436d54bedddeca0a6b3218dca301ef1967a490c155a24cde",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7817853934268764,
+          "rules": 0.4787002477136446,
+          "renderHash": "7e73755095f48c6b436d54bedddeca0a6b3218dca301ef1967a490c155a24cde",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "c02fa57b-4b7f-46e1-b2b5-6b1a9e9d1643",
+      "name": "Synchronous Sliver",
+      "cohort": "validation",
+      "referenceHash": "db5ffb84dba11c116b05e1827b219898f278d73ed5190711c46bf2c475e88f2c",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8124927854748953,
+          "rules": 0.5301110422476145,
+          "renderHash": "d6bfc71bfdeb32e451352a908522ec7be0f9cf8a0f126784252c9c9bd2082509",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8213374108686081,
+          "rules": 0.5600466974263347,
+          "renderHash": "c36345f07df7ce6718ea3e12a950a702c1912a68c3979b2bec61041f94511950",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "9464c2aa-8f12-4654-89c5-3323d7e7ab73",
+      "name": "Tidewalker",
+      "cohort": "validation",
+      "referenceHash": "3bc7ce8c532c03618a5f06ae1e4734281ee155e51787bbf3cefec3be32bafcc1",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.822499358337073,
+          "rules": 0.6698567943122749,
+          "renderHash": "9baa85d49269fd76d9bed1bf3e2729063ef835f832f3d823d2c61ed0fe063543",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8206490084957756,
+          "rules": 0.6635940717724992,
+          "renderHash": "a3baa015f450b3442a122952d020828705aa9d54b1a4076976a381bdffe2da9f",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "62fdf8bd-a069-41ca-9cbb-deb7f53cbcbe",
+      "name": "Timebender",
+      "cohort": "validation",
+      "referenceHash": "f55152b44ca27adbe8447bd371410d0654a2f17bb7719646d553b840cd965aaa",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8281735645296212,
+          "rules": 0.604193740667602,
+          "renderHash": "36f59e1c3018ab6f69d39e88613af64a5a18ab5aeaefb64dda005481cbb01b79",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8274763409729768,
+          "rules": 0.601833907091267,
+          "renderHash": "4c743c9c7d427435fe9fd60e890c32aef0694fbc803e3c43d6366e38b73463b6",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "4d7fd5f3-e5af-4591-9db8-5d85dfe0170f",
+      "name": "Veiling Oddity",
+      "cohort": "validation",
+      "referenceHash": "fb7223bce1f502b1362fc542496ae262747a8e235db8b990b76646785ac9cbea",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7732466072641757,
+          "rules": 0.36756930720238623,
+          "renderHash": "575a3006edf38182e730261cf5dc2f262335179867263ce3d23f893ef3e0c42c",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7722478289700955,
+          "rules": 0.364188826822422,
+          "renderHash": "26c4b1bde65d7298fea02dbde113c6bf308a3356fb9ccd2fcb1066697ebc6087",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "5cfab012-f57a-4018-bfe3-8eac073f6ee8",
+      "name": "Venarian Glimmer",
+      "cohort": "validation",
+      "referenceHash": "7366b8ea0258bf01a834b352c6434483ea29fe1ba6a9a58f95f54693f9e13423",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8277008674151742,
+          "rules": 0.6937507510809173,
+          "renderHash": "69694c117e2dc4a8b8868c07d8176d7248d6ece8c57858a952b20c47857ef2a2",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8435816413593212,
+          "rules": 0.7426146709090619,
+          "renderHash": "e4d30226f2cde406c7fa85800ee6b99d8f03e8ce28f61a26ae428ae3166419c3",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "d5031831-49ee-4c54-9200-448b8953f915",
+      "name": "Wistful Thinking",
+      "cohort": "validation",
+      "referenceHash": "c7e10b281425dae4c52600df40d7401f0e5254e5581383c2d611a7ef4f47bb5f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8512401685218116,
+          "rules": 0.7188755109552922,
+          "renderHash": "25b95eb9260ae28e1f0ffec245ac7bf58f42215128aa5f2d9b4f4ec7ad478ae0",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8612999888863211,
+          "rules": 0.7498288043845522,
+          "renderHash": "341e8f879047d928ad3a1aefe480029dea5a383f47350a6d3ad49a019620154b",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "e727bb9e-3510-4c8e-ac49-6d7217667a18",
+      "name": "Frozen Aether",
+      "cohort": "validation",
+      "referenceHash": "68bbee23197d636f996c588fe4b6026304871cf4916186765e7a9a858b981624",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7993122056628039,
+          "rules": 0.5834332226567706,
+          "renderHash": "07476598912be6591ac89e58a41cb5278161a200d6846548dc6b3467ffe898ac",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6750052374604029,
+          "rules": 0.20095024357245986,
+          "renderHash": "14709cbddd4a8618b7f530ec588cc3fd0d816fd4fe473131134ffd2bbe4867b9",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "efa3d335-f39f-4291-85e0-7430561e953b",
+      "name": "Merfolk Thaumaturgist",
+      "cohort": "validation",
+      "referenceHash": "650fea466d7e1f1e194687d5c670725d0a1a4004a987a59a21c7d1e16be3e1f2",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7951322881389451,
+          "rules": 0.4581389201013563,
+          "renderHash": "588de1a83deb50a67bafe5b32ac3b72890ef8b3fc5af0a17940fff7611a19d13",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7955326518650601,
+          "rules": 0.45949399732820795,
+          "renderHash": "934989a5a28938986891c097048c9a5fd17ecd17cd59e5a8473e562208cf59b9",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "a985cfb0-6bae-4b1c-902e-d9d7a1aeec61",
+      "name": "Ovinize",
+      "cohort": "validation",
+      "referenceHash": "4e05c0810be85be9bc48e212204a61e049ee2d2d5302e29d82a94bb67d6e6bd9",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8283697000597693,
+          "rules": 0.6176684025037968,
+          "renderHash": "59e099aa9064aa82e1d6245e8a6ef6940cb4963e0ff60b668ec946e9325a4595",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8673283555683298,
+          "rules": 0.7375411886839833,
+          "renderHash": "bb64fa8e213403ac2194672c54182406c0b57d77e8fd722b9ab213b952417d3e",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "586a1d9f-59ae-41a7-8de7-d6c4553ea79e",
+      "name": "Piracy Charm",
+      "cohort": "validation",
+      "referenceHash": "8ac7772f19124e34e5731bfa17ae3110171e0cff41404801ebb286c6e98a7151",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7981314296052018,
+          "rules": 0.5696017752653398,
+          "renderHash": "ca2b863fbfd9d5602ecdb559a06911b62f046be3a15e35a5525a31dc0adf1eda",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7981314296052018,
+          "rules": 0.5696017752653398,
+          "renderHash": "ca2b863fbfd9d5602ecdb559a06911b62f046be3a15e35a5525a31dc0adf1eda",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "4bcc3c1a-edb5-4534-aafa-5e078d503e64",
+      "name": "Riptide Pilferer",
+      "cohort": "validation",
+      "referenceHash": "35e21f30d4c36ef330df480ccc521e0cd7d22aabae1e3556ba9bb6e8d4970672",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8482216601715337,
+          "rules": 0.6542200462903703,
+          "renderHash": "6ec3647c898b2452b2a599df587b02702fc997ebfd8d4f7709d061a1289ac766",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8399544041080933,
+          "rules": 0.6262385642294952,
+          "renderHash": "63b5d976a7dccaf4ffe9d839131699f0c575bb93caa919de4ff2fc428afe16c9",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "f9a4d7ac-082b-4f66-9b7f-4d1d0fda78c7",
+      "name": "Serra Sphinx",
+      "cohort": "validation",
+      "referenceHash": "c4fb65cd1e8f58785952bb1afaf45f27fc06e807221672a8d8695317310f0b7f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.873580260276749,
+          "rules": 0.7235333494751535,
+          "renderHash": "64a0639adb14b7c15f4898f9558978af1fe15ae5b1ae9993e2d99f1bfff7fec2",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8827682171293479,
+          "rules": 0.7546310495916424,
+          "renderHash": "3044761d881b84a185a22b3dc74c0180dba35c97c27c7ea6702b0db9cbb8dec4",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "a61f38a9-6f15-4186-a602-78cdb00f2d75",
+      "name": "Big Game Hunter",
+      "cohort": "validation",
+      "referenceHash": "77e30eb0b23f21d2621fce28cafd16cfc59c1b82f283690249130869dab475b5",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7077195073066046,
+          "rules": 0.1959006414317052,
+          "renderHash": "253b8090264902c3bfed2c54592b3e613ab16ae76f51218a9ac2da181eecc201",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.710186863104309,
+          "rules": 0.20425169182393552,
+          "renderHash": "30ba1d554731fe9482d5003bfbe502a8afbd0ffdd3a7d6eb465acf73ab07b382",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "4ae24bc0-1217-4db9-a745-8860f23b6d57",
+      "name": "Blightspeaker",
+      "cohort": "validation",
+      "referenceHash": "d520623f041e0dbff6a8d229adc297b44e44319aac63535f4cde47b6f0483294",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8295601351516027,
+          "rules": 0.5530502053872092,
+          "renderHash": "a5bb8c7acc38d39b50d508dc83a89d3af186f8eaba1ccca6699495d8bc3e9d90",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8264615801927747,
+          "rules": 0.5425627886034837,
+          "renderHash": "259dc7fe3a762eb81f3674c4db9ea753b78b3af7fe1485fe1a09964ec739296d",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "b02161f4-505c-4c01-ae33-5c61598c71d7",
+      "name": "Brain Gorgers",
+      "cohort": "validation",
+      "referenceHash": "6f314ac2b099a4b0ca5ef165679b917345ef1685c4ef77e33c42e32349d503ec",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7791005441609637,
+          "rules": 0.4035489385747299,
+          "renderHash": "c3eb705b74864d2d8113e669148c699546aed3cf4cc2ddb9c057f6b3608ea014",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7802493302057578,
+          "rules": 0.407437137495572,
+          "renderHash": "34a541e33321ad693027df48b442633252a61c12471bb016e3565852cbf88122",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "3ec275cf-bb4e-4de0-9184-4d53dd87dad3",
+      "name": "Cradle to Grave",
+      "cohort": "validation",
+      "referenceHash": "e6fba0eb5334282aefa0c65cc4f9ba24eab909cfae09f5bd15ae2aae27124deb",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8362782547439748,
+          "rules": 0.7227693137620098,
+          "renderHash": "76214d33bd755017f7c6acaf856cb06a7b9648001758dad96f63329ee3f07c25",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8173673207837128,
+          "rules": 0.6636518073916726,
+          "renderHash": "10a3d436ada792e2aa43bf249ddd309b4b2c936f197ad83facbf6230d297aeb4",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "6c6283e1-e4f1-4ff6-be01-b66ab623e0ac",
+      "name": "Enslave",
+      "cohort": "validation",
+      "referenceHash": "07dc94fb5ce3a47e3ed03a714aa8c2c9a6205e7b676c55d36a5c8a4b276ad87c",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7467280580277114,
+          "rules": 0.6082951349478152,
+          "renderHash": "459ac62d27e0ca66c2bc7f82651c64c415e8467e4a3a62e4cee4645435a28621",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7467280580277114,
+          "rules": 0.6082951349478152,
+          "renderHash": "459ac62d27e0ca66c2bc7f82651c64c415e8467e4a3a62e4cee4645435a28621",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "2608b5fc-3b58-4b02-aef1-35d885b16b01",
+      "name": "Extirpate",
+      "cohort": "validation",
+      "referenceHash": "1329e9e8e53ebc416e0021dc60a0b1dddfd7a2dcccf6cf381b22e93f266b7dda",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.904360241811126,
+          "rules": 0.9053759692566719,
+          "renderHash": "4c7747a622296ac3c993918cf77091ba01595a91bde99c239e2af07b1cc4b96b",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8850040314470793,
+          "rules": 0.8458183989057592,
+          "renderHash": "700ce24c5015405f967b40e307f86ccffe693781e069bc8b2741537360124314",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "33f51f18-41af-4a2c-a353-48bebd697599",
+      "name": "Midnight Charm",
+      "cohort": "validation",
+      "referenceHash": "20c5c6cf3d4ff1b5547102c79ec55f3fff9fa6f530359e93d2ee7b47878943c3",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8421899543496784,
+          "rules": 0.6659738510008174,
+          "renderHash": "b1b541b75d47ad5ad63cd62a803c865513cf0ffd66f6f34a27172609c5f72f5f",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8421899543496784,
+          "rules": 0.6659738510008174,
+          "renderHash": "b1b541b75d47ad5ad63cd62a803c865513cf0ffd66f6f34a27172609c5f72f5f",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "6da09233-952f-4784-995e-0d85d8b56637",
+      "name": "Mirri the Cursed",
+      "cohort": "validation",
+      "referenceHash": "e815d7e07e62dd9328fc6537cc7653c7f1aa74da745e94212b78e44dce398ffe",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8792604324249397,
+          "rules": 0.7281873200242319,
+          "renderHash": "c4a173b2cbf95d35513fdcf3ccb0b6805a719f0e06be9f3a0a37feeab8c14693",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8904744972950198,
+          "rules": 0.76614261650758,
+          "renderHash": "62e7176461d7ccf223767633b2965fc36f207afe4d6e04536b7ff57fa0b57b0f",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "e5bda3fc-89e8-44c2-bcfb-d17064bbc391",
+      "name": "Muck Drubb",
+      "cohort": "validation",
+      "referenceHash": "7933f6e88482709dc6be1162eb46b19f188cff5ec0943c98c58461dc2c0559f8",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8141149980625628,
+          "rules": 0.5933601594502478,
+          "renderHash": "5997ebc723c0bdd07ef89d17dd48526e6b0ab86f4107280dc3f2d8bec204f792",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.808733036882618,
+          "rules": 0.5752915091160135,
+          "renderHash": "5bd2fa0b7131bbeafbcaa56e5f658ebcbf71b154c06cad0023f5aa904cb6478d",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "51b27919-6b36-49f2-a6df-d63e5db6de0b",
+      "name": "Ridged Kusite",
+      "cohort": "validation",
+      "referenceHash": "438ec9ac4e97f274761fa4d5bfcf0a9031519c68b2d145d6e65bc83f57fcb5aa",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8654160643606691,
+          "rules": 0.6835156484553219,
+          "renderHash": "d31717ea53b0c0ab43871058db69c8e472d72752b3b5c4274c886b955ec6cf17",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8718793753893841,
+          "rules": 0.7053914703986647,
+          "renderHash": "25461490ac5d3ffd9150faed8dbcf553d9c3c35fa708750a77c038950c3871d6",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "f83006a5-c42b-4083-a246-f46b25412150",
+      "name": "Roiling Horror",
+      "cohort": "validation",
+      "referenceHash": "ecbb98ecb799902575c443d8d996b1b985e18a47c3159cec95ebb386f9907f02",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8764275920234929,
+          "rules": 0.7314473888491111,
+          "renderHash": "5ce2aa9fab4cc9e2f474bca275c28136ff45727210efb0d9ae1c6894b37c0300",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8764275920234929,
+          "rules": 0.7314473888491111,
+          "renderHash": "5ce2aa9fab4cc9e2f474bca275c28136ff45727210efb0d9ae1c6894b37c0300",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "cd07649e-c7fc-44f7-ab23-0fb935aff8c7",
+      "name": "Spitting Sliver",
+      "cohort": "validation",
+      "referenceHash": "433fd3e8196e170b2a0705182815a9435c746524e23d23b99328e4c5621e3c09",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8685405219698971,
+          "rules": 0.7293580639347423,
+          "renderHash": "d83138f4e83f31f7e7c9d27d3e448c9316364c08695ad5aa956f651879ee5aba",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8873663728464475,
+          "rules": 0.7930763284399901,
+          "renderHash": "af5b4e02a866371e045d1360a1b3ae45619f4ac8f771be82d973f44842baca2f",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "883a1afb-423d-4f12-93e1-75cc336553b8",
+      "name": "Temporal Extortion",
+      "cohort": "validation",
+      "referenceHash": "4e1e84f8b05a99939ea1069af21bb9fef6a12f8c5521199a2c2a98ca100782de",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7016770362957239,
+          "rules": 0.21398436186715136,
+          "renderHash": "85fa4856a57ade2337bce69584e762a69ddeee40a96c001589b016669314e1cd",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6971028211980386,
+          "rules": 0.19990985387427326,
+          "renderHash": "7ae76834e7b6aa9cb1edaf3a1bbc10516e7d4ade2629799cc64135e3f1e71394",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "b20b0048-f93a-4349-b5d1-201ab0a38d1b",
+      "name": "Waning Wurm",
+      "cohort": "validation",
+      "referenceHash": "da5b752cf1e6ff62b19aa2312e17ad6b7a78f3114eb6ce5b122f5d8ed4dc65ae",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7876581053387738,
+          "rules": 0.5971285204442307,
+          "renderHash": "7a6ee61e7c5606aaf6a114f0c06de3e691d6e97f7edd694ddf558a703e3baed4",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7770205096007874,
+          "rules": 0.5611243502541227,
+          "renderHash": "25742e6c1a9303ed55f77df7f60de9c5d71b613612a6a431b1f1e7add02323b8",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "b6e1ec29-508f-4e5e-b601-79e27743bcea",
+      "name": "Kor Dirge",
+      "cohort": "validation",
+      "referenceHash": "3590e1faeca2f5dd4ef2e829541bff214825fb9784cf9601b0a4c5f234d5dac8",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8045324152420642,
+          "rules": 0.644483306068846,
+          "renderHash": "9fbf2e33f75c1a98179af1032d9a33fea3a3fb9a89818a1ee9430b09788228f9",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7921841693208137,
+          "rules": 0.6064887032342288,
+          "renderHash": "45655eac98a1d5cdc974b4856d1885f60dd3659fca0c841ccd3a27a46592d702",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "faa6fe9a-27ba-480f-84ce-b8d3306f0339",
+      "name": "Melancholy",
+      "cohort": "validation",
+      "referenceHash": "aac10fe16680f4809053940d46773a1dc943c980c4d75ec0c6d6fbb97cd1999e",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8199977849650919,
+          "rules": 0.6379350990444745,
+          "renderHash": "ccb6b7dcb9ad0135ad6cdb2db946553f097bf6e563852fef82f6305e8e14fcc4",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8199977849650919,
+          "rules": 0.6379350990444745,
+          "renderHash": "ccb6b7dcb9ad0135ad6cdb2db946553f097bf6e563852fef82f6305e8e14fcc4",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "c996792c-0846-4b78-bce5-1c6ad29640f6",
+      "name": "Null Profusion",
+      "cohort": "validation",
+      "referenceHash": "cfc2dd1a09e71a419c23dd4db7e5ee523474038160dcad15e795d33aeacc1db0",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7567546600255985,
+          "rules": 0.51972263173751,
+          "renderHash": "8254665b265a3ad7f3ae0fe06436620bba3c528d61faed31221a0a9791ef71e2",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7549939450811664,
+          "rules": 0.5143050472931036,
+          "renderHash": "3aa8274fb45919977bef53526521468a28af32687e8110f24c0a68b7038c7d30",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "b2968e01-2d04-4591-98de-24688bb087df",
+      "name": "Rathi Trapper",
+      "cohort": "validation",
+      "referenceHash": "94aff493e4cb46f804a8595d85f25e56c6194834bf3e541a8497f6165232e9f5",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7985407187904446,
+          "rules": 0.5821412429981614,
+          "renderHash": "2a2f200beba0a394e7323bf4efe5bacac0cc5aaa9726c4346e5cb93dc4098f10",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8404976608955306,
+          "rules": 0.7241493547384522,
+          "renderHash": "6ada17a32bf58608215b833be33669e23ee181e04f175a426432c3a6af02927b",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "a26bf956-90eb-4221-a8e0-c8414d819072",
+      "name": "Shrouded Lore",
+      "cohort": "validation",
+      "referenceHash": "2d16d0569f4093082828cea6b33d92fabd1da477985db207e8b649db61fbe7ad",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8345828757747478,
+          "rules": 0.7086592633639557,
+          "renderHash": "a11e8348fd0b4f2f2eb7c5f1d64485096498b45d8766e21c9f9697f0af488b6b",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8345828757747478,
+          "rules": 0.7086592633639557,
+          "renderHash": "a11e8348fd0b4f2f2eb7c5f1d64485096498b45d8766e21c9f9697f0af488b6b",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "7767264f-926f-48eb-a5a1-c56b027e645f",
+      "name": "Aether Membrane",
+      "cohort": "validation",
+      "referenceHash": "1a326a38651576ecc0ce6f7088a2ddf357bdcc798717dc69f34826589e61b0b6",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7700009036168478,
+          "rules": 0.5221737554804926,
+          "renderHash": "39dad3741abc9fe537527126583c5f9094b501c97062934b93c66ed30ada3300",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7700009036168478,
+          "rules": 0.5221737554804926,
+          "renderHash": "39dad3741abc9fe537527126583c5f9094b501c97062934b93c66ed30ada3300",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "3815de82-5ba9-4fb6-9259-d5e50e046890",
+      "name": "Akroma, Angel of Fury",
+      "cohort": "validation",
+      "referenceHash": "85cc18e7ed5427995366ff369b5dfefc28b11dc47d2cd55b71a3c0a90a87071e",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8371631247514237,
+          "rules": 0.6090047393364929,
+          "renderHash": "6e9fd08e701b3514919c8232cd83f1536b244eb34b6e265f711ae5084b18cf8b",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8362474279179402,
+          "rules": 0.6059054577462408,
+          "renderHash": "b56ebd85d70a514d4d5e5e9b4ce55314186af214cc9d292ec9547036d9fb8004",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "d0dc86d6-aa3e-46c6-9405-86f1e1ee7844",
+      "name": "Battering Sliver",
+      "cohort": "validation",
+      "referenceHash": "d4ec1475799cf991c6b42c97564a62f944c0681caceac9dc2b2168c114ec6fd6",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.849181727775434,
+          "rules": 0.6645203150865238,
+          "renderHash": "3f2134a998fbd226172226343cf59a93ca8a2e11c985e25a7bbb8f72abaabd5e",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.889409714814623,
+          "rules": 0.8006765789114718,
+          "renderHash": "591405cfa9b2ce55e3faa176ab89b03e6513741a27cc8b0dec6add6fcc87ff91",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "2ec01f4b-b3df-4e2b-ae93-2f2d0cc279bd",
+      "name": "Detritivore",
+      "cohort": "validation",
+      "referenceHash": "88a6f9d260bee53cfad306970027ce44840b938a25a58b0cf9f8ba700487c077",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7861730436184072,
+          "rules": 0.4685245910180823,
+          "renderHash": "02f5b0dfedbebe5afb830062d4d63360f87b149f9bae6c2cc651d7badb990f24",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7861730436184072,
+          "rules": 0.4685245910180823,
+          "renderHash": "02f5b0dfedbebe5afb830062d4d63360f87b149f9bae6c2cc651d7badb990f24",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "bb554768-d908-474d-832d-d4e36d293712",
+      "name": "Dust Corona",
+      "cohort": "validation",
+      "referenceHash": "7c9a17d461903a3421d3a5d05f478b7036b3f24b0a3975b01c674fe40ab364fe",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.6959856557480211,
+          "rules": 0.17007977801055565,
+          "renderHash": "fcb2dadcc7c05bb49f3a37ed7249a151259f4828ca5dd89175c8d536b973a365",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6950654269928973,
+          "rules": 0.16724830491786685,
+          "renderHash": "2ad256398639ce0a88e78ff66fc3299baab13f252e30076c1e04607097079f2a",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "4e2fe87d-e886-4e30-8ff2-3886199f0461",
+      "name": "Fatal Frenzy",
+      "cohort": "validation",
+      "referenceHash": "8d9f6093f2a6115a5e40f2e21cf7488b3a9182bb25b38e57ebb49ad46ad82a72",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8303678557586464,
+          "rules": 0.6486062199089239,
+          "renderHash": "86d1da268d241ec547b24c83f2fc608fcb89d22d9a1f6e405a679227b2a37cd2",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8038050340841982,
+          "rules": 0.5666108322504202,
+          "renderHash": "954bbd8efeb7664ad59537b428803f5d399c187242917d811dd55939e28fe638",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "a6e1f374-d5fc-4f39-ad2a-2c9dad74efd3",
+      "name": "Firefright Mage",
+      "cohort": "validation",
+      "referenceHash": "66c5ee2504563e170489dc2eae3f122ed3c6beb04172546a2ae6f29f5f1806e6",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7357062626075727,
+          "rules": 0.19876881346379097,
+          "renderHash": "5a50e417940c59988c8be91e26c77ca66faa8381416e3c1f6a318ecbc45007e4",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7416817072881652,
+          "rules": 0.21899339545964264,
+          "renderHash": "c7fd37254f0cc4acf87ddd357a1dc66c9e1e3044a7f97cab801f3665e5e17855",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "25e891f1-79fa-43dc-817b-c7838cd03d5f",
+      "name": "Fury Charm",
+      "cohort": "validation",
+      "referenceHash": "288d7facec64b9ea2f1565ebbee78d02ff77d30170ca92f49c59ddf5c2748478",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.6866905238231055,
+          "rules": 0.1711869681074209,
+          "renderHash": "d44a3767da6facb697fa18dd9b09f08195bb18f10b76ff7c09d4b942c4bb3e5c",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6866905238231055,
+          "rules": 0.1711869681074209,
+          "renderHash": "d44a3767da6facb697fa18dd9b09f08195bb18f10b76ff7c09d4b942c4bb3e5c",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "791cb45a-66f0-4609-8da8-56112e31cef0",
+      "name": "Hammerheim Deadeye",
+      "cohort": "validation",
+      "referenceHash": "ee242ac8655d363a12b5b4c07b59e9e43d98ac71dfaed9367ce93b9289620a7d",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8759407980882347,
+          "rules": 0.7107532046692887,
+          "renderHash": "a22a0296d27cb17cf73aefb87e0139b3b3c2230a90dabf8d283683edd010cedd",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8654944535629725,
+          "rules": 0.6753963462760941,
+          "renderHash": "80e9e539dde4726eb9faf704e21b20169963b5b57a3d67b0835a974993329dc5",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "677c28db-34d2-4325-99d1-9b689753802f",
+      "name": "Keldon Marauders",
+      "cohort": "validation",
+      "referenceHash": "2027077c42a8de63bff377db9bacb0319b1532b165d7a7d1ca87a6220f8bc62f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8514948965342182,
+          "rules": 0.6384454312705062,
+          "renderHash": "49c00ffb4f66292b4d1cfca210bf90980e32487339ef08cc0b1998b74537ab45",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8424440942760814,
+          "rules": 0.6078119467045047,
+          "renderHash": "33160bf4790c604e386b5f73d9b82e6eaf33aa74b8524d91ddc5b8dd80803d91",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "d6b2f4de-fc41-4e68-8655-577616b10c7e",
+      "name": "Lavacore Elemental",
+      "cohort": "validation",
+      "referenceHash": "d635c80074cc9212f5ca76fda4a033e67bfaad2064c8befe26a227f7ccfe11f2",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.9013515554219205,
+          "rules": 0.7897412956972327,
+          "renderHash": "084253ca5779cd4b7907c72beeaed122e8d5a1eb326d5713cb5137cc7f5d53ec",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8862849559060533,
+          "rules": 0.7387466511819896,
+          "renderHash": "864878571b9ce8e17609e04a19558fe1ea55b68371e374bdb26ef449f734554b",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "d28af8d4-98e8-48aa-9697-49c94dfabedb",
+      "name": "Magus of the Arena",
+      "cohort": "validation",
+      "referenceHash": "e9e077e094f2304100a9dc4305f1a70a20e4fad1f3e4c7f5c06a533300a1916d",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7314409480834311,
+          "rules": 0.24882959203952662,
+          "renderHash": "9010f95ad212ce65b7281676bd0f04339adeb47ccd03e6dbe64fc831a182fb41",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7318412968261533,
+          "rules": 0.2501846185533552,
+          "renderHash": "0142d581a18e16769afe5980ff1b300e2ee57b090a93b0c1f3e7ce43c4b42c6d",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "6a4307e3-3138-4ccb-8aa3-2ffcfeb2948f",
+      "name": "Needlepeak Spider",
+      "cohort": "validation",
+      "referenceHash": "3252e3134b6a0f0b2370edd2355af0e6b7492219979dc0773994494c00a566a5",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.860266562552771,
+          "rules": 0.7081396764734033,
+          "renderHash": "f3eee9b36e8628e94c1a250598ee4e02eff3bf5eff67d41c68b86805e05492f8",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8609873884886512,
+          "rules": 0.7105793950256133,
+          "renderHash": "53f0efb9e3f2eb20317a69aeb5ce291bbdfc41673f5ca5ef5f6d7796df6e8f15",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "4b10d6b3-2cd9-4628-a079-6ac803b6f3c3",
+      "name": "Stingscourger",
+      "cohort": "validation",
+      "referenceHash": "c7899c917d1141cc8bf4786e215dcde3846d991507f7d95c74bf42b86857103e",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8714794343511669,
+          "rules": 0.7108846290221039,
+          "renderHash": "989e6cec37b30f7af6617703cfa521d5ec8ea427808540c36c057417d52ba1de",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8572358485434282,
+          "rules": 0.6626755693651423,
+          "renderHash": "c85d30e6684586e1af71c361d748eef92da93e7d1a59817ae533b8d383181587",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "49cba6fd-2474-400d-8568-33fe447abc7c",
+      "name": "Sulfur Elemental",
+      "cohort": "validation",
+      "referenceHash": "4720a180f05453104badb276866e5f7f32506731334ded8bad3c6bddb00676ce",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8373188714849323,
+          "rules": 0.6250128704214792,
+          "renderHash": "baf7b5952dde8e0b79110eafbeef11c63601477986c5b2720690317eb436f93d",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8297314307683957,
+          "rules": 0.5993323018424321,
+          "renderHash": "40c71d90b7d749d0c9e7cab49c8ba6ccb91d0a2c486c8c0131a7c24ade81b9c0",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "fd6da5ef-7e5b-4536-ad28-6fe66f3e0438",
+      "name": "Timecrafting",
+      "cohort": "validation",
+      "referenceHash": "789aff16cbbc28528595d4c08912273cd23bf46b72acad8366060cf761147b91",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8018017267815791,
+          "rules": 0.5672054070516837,
+          "renderHash": "e9a442e9af3f9981d88ffa07a304a1aaa5214c0a9db30c798dcb8893aa87aff4",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8082922787414798,
+          "rules": 0.5871763361590704,
+          "renderHash": "d2bb64beb911ed9d1da85bfd35c8c47827d6aae353d3f0602ac38991d3892f5d",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "82d43220-1e4e-4b61-9844-51c8bb5dde35",
+      "name": "Brute Force",
+      "cohort": "validation",
+      "referenceHash": "49b5e83ceb0591a6c0438e90aa0ec9e8523daa8c948c18d610c857dadd934edd",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8289944565783023,
+          "rules": 0.6817788487483973,
+          "renderHash": "c09268c12a27596b36f4de25018e4c076b017386d153786aa73a7e39dff5ab9b",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8401194213031881,
+          "rules": 0.7160095094403537,
+          "renderHash": "56f00a22a8269e6075d809dd0554e56d0db45134ac8f28a7927d9bd77799409d",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "dddda66c-2df4-452e-8eca-7e100213fd98",
+      "name": "Molten Firebird",
+      "cohort": "validation",
+      "referenceHash": "47f897029c841823a2501c9491b5b8dc8a0937821958bc8781109f3891cddc45",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8559628821023867,
+          "rules": 0.7444931131559336,
+          "renderHash": "fb9227b09eed61f33fcba07625f14337d0442645fd171ab40bdee2888395b2ef",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8559628821023867,
+          "rules": 0.7444931131559336,
+          "renderHash": "fb9227b09eed61f33fcba07625f14337d0442645fd171ab40bdee2888395b2ef",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "97787109-408e-42d3-acc5-300f5f5bf2ff",
+      "name": "Prodigal Pyromancer",
+      "cohort": "validation",
+      "referenceHash": "f7456fcb1eb8c072cd37236fbca959d29d820ef413ee280cb95dd0d264f577e5",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7840892876393734,
+          "rules": 0.4977860736105864,
+          "renderHash": "c6044fc54a8d4a7cd2b89cdcf906bb21b29527f8159fd8150e6f699625e84d0f",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7856694278337444,
+          "rules": 0.5031342404223038,
+          "renderHash": "29bef3d33f2c911b99d186648a293a1baffe13551624a8f27068a35956aea51f",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "7958a1e5-b671-4ecb-95de-240ffaf5021e",
+      "name": "Shivan Wumpus",
+      "cohort": "validation",
+      "referenceHash": "7c6f5bc136684ef1fa125d3d3f99f6f7020bfe2c1869e6061021b3e78cf4e584",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8091377024373313,
+          "rules": 0.5711704798052969,
+          "renderHash": "52ee3c50b1072a600642b42d35c33201d5c3b7351aa39b5700368825643560ea",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8100775384721781,
+          "rules": 0.5743514633078549,
+          "renderHash": "2234a2a37b3d7d08f0d262ed09c07d67f62a81b1dae9a13a329c68d46f413bb8",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "5d7f701c-dcdc-4067-8d00-b4b7aadee9ba",
+      "name": "Simian Spirit Guide",
+      "cohort": "validation",
+      "referenceHash": "c2ff5128c1d85bbd7c764e2754118729112306021278d61fab2987692083fa87",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7382719592813539,
+          "rules": 0.3365738682960116,
+          "renderHash": "6fe49425c0da5fa91cea888cd5d95e40b1bc272354cf557cda16a1c779abbd4f",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7377536719109279,
+          "rules": 0.3348196648884159,
+          "renderHash": "79b9ebb7a2f036ae622e791f23e8e49311760a155fb25d40ac807c3d35620363",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "47307d3f-14e8-42bd-acf4-1383e5790e6f",
+      "name": "Skirk Shaman",
+      "cohort": "validation",
+      "referenceHash": "385213136eb36245352c42489ff3d8f804d84544587b20f698eaa266aa16861f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.843375956169388,
+          "rules": 0.684878787647944,
+          "renderHash": "30cf9ab8680609a9f2740b34e9a956af29bbd09324d798b3b1436cd564617e6a",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8594908904822371,
+          "rules": 0.7394216422452794,
+          "renderHash": "0a5df86b376aa3cffc2654c7e1411f47371325eb112a325ff908078e30f7b468",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "dafbeae0-17e3-4a29-bd02-9f45b549b990",
+      "name": "Ana Battlemage",
+      "cohort": "validation",
+      "referenceHash": "b938f72b6b01f8c185ae8da8f999b829d4d67367929d1c7572e31729f49e6403",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8323334464487228,
+          "rules": 0.6382775634036173,
+          "renderHash": "49ef3d41ca21a562badc164b506b76d82768310def90b3f29e59c65a7ee53858",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8323334464487228,
+          "rules": 0.6382775634036173,
+          "renderHash": "49ef3d41ca21a562badc164b506b76d82768310def90b3f29e59c65a7ee53858",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "dc14556a-1bf4-4024-ba5b-2a4753fc236b",
+      "name": "Citanul Woodreaders",
+      "cohort": "validation",
+      "referenceHash": "9ec798b3b3fecc9c911925781ef4c1f6271068aa70e26b351135839bb8770042",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8358379369244475,
+          "rules": 0.5948621563710368,
+          "renderHash": "9b18f2fcd8737a0dcb4307c026a307ae5bcea3675a2c8586e50c87b03cf93bdb",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8352846072922869,
+          "rules": 0.5929893483852623,
+          "renderHash": "d067e7ab7cdfa7101d7fcb13a00c1fa5143b4a6b4da11d58dd0456ebcf864db3",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "69e69c12-41f3-489c-ba30-2836b978f9dc",
+      "name": "Deadwood Treefolk",
+      "cohort": "validation",
+      "referenceHash": "b89a7226bc0859c3401fb27df2dcf030db90ec0cc04c697b6cebe816fae8139f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.714437876242036,
+          "rules": 0.24183610688317234,
+          "renderHash": "8da9e74ae4221a11749bd050e783522250ec1e40740f76f902ab52c5e04fd1c8",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7217421096574165,
+          "rules": 0.26655812767369086,
+          "renderHash": "23aee87e18b76f23da10d4fcfa5aa7f1e99b5552e2ce1fa9c9dff8bfdedae79b",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "e4546059-71fe-43c1-9272-3b054e668e3c",
+      "name": "Evolution Charm",
+      "cohort": "validation",
+      "referenceHash": "9142a1c6d5edafcab3bc809f07b4343c699e91f9e78aab3db6852e3d5ef07cc3",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8397124372077075,
+          "rules": 0.6547255850822994,
+          "renderHash": "77c593ec00df8c441171179e04ee7e9607a6ec109839b1e62c58099a78e13ec7",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8397124372077075,
+          "rules": 0.6547255850822994,
+          "renderHash": "77c593ec00df8c441171179e04ee7e9607a6ec109839b1e62c58099a78e13ec7",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "53c1910b-9475-4551-b9a0-4b24511a6f98",
+      "name": "Fungal Behemoth",
+      "cohort": "validation",
+      "referenceHash": "bbb0d3bc91d5c431238d9a36e0dcbf82c074dec4561de2d85972cc9d864c71a5",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8470313254568108,
+          "rules": 0.6516133977275641,
+          "renderHash": "89305c2b43627875251ca96abf6d1bfee169d95999be0528e63d187868125ff2",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8470313254568108,
+          "rules": 0.6516133977275641,
+          "renderHash": "89305c2b43627875251ca96abf6d1bfee169d95999be0528e63d187868125ff2",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "4112e0d7-5451-4e3b-8c73-2d2024f45cd8",
+      "name": "Hunting Wilds",
+      "cohort": "validation",
+      "referenceHash": "027d750871c1671a896247972196083812584f27b15a3202c83ba09f4a63b0ae",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.9293488921548738,
+          "rules": 0.9166203915702322,
+          "renderHash": "1129d760059cfa3209319991723db5e7683640a9710727d165c322ee3eefec88",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.9186083081105766,
+          "rules": 0.8835724406647022,
+          "renderHash": "7123bc23be01a5cc5cafce8f8ddacaa25a24c7bdd7ebe27f27526a561fd015bf",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "965048e6-a693-4858-a244-3b9ee10bfb56",
+      "name": "Kavu Predator",
+      "cohort": "validation",
+      "referenceHash": "61e8fc228411308a1cf8df6a73b0ec79ffe41d7d054e9e18105fce7fa7f99c02",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8268078001276264,
+          "rules": 0.5700992143707977,
+          "renderHash": "63906ac907475e8209eddc42818d0ed86d111cd6761f671a1162261ee8169d1a",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8274183926444507,
+          "rules": 0.5721658351969723,
+          "renderHash": "980fda279e7b035f1217d38002d64bc21195600e434caf2ad1c42026dcc6cf4d",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "899db99b-df27-4848-a23d-5c645deae450",
+      "name": "Magus of the Library",
+      "cohort": "validation",
+      "referenceHash": "1d893ffbf78948ad30cc088befabf5743b0568bc363d96aadbb16c46245bf954",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.890138769191795,
+          "rules": 0.7873528621872016,
+          "renderHash": "7fd1857e60c251b6c1885ae2ffdfdbb95ab3c299f4039c7090638f4b785ac535",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.9160647310609513,
+          "rules": 0.8751022715904996,
+          "renderHash": "e63e5f6c7551d9ec2fc72ea2d1ddb82670a466534408866d76937f64e1f893aa",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "190dffdc-9d85-430d-9aea-b75084104840",
+      "name": "Mire Boa",
+      "cohort": "validation",
+      "referenceHash": "6dc8c570a90a71e9641de730c0001c827b1527f817013ad439af8c2874730e2d",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8520411858185833,
+          "rules": 0.6595683351987265,
+          "renderHash": "099a62a3a42da0199809806f98364b9e94e9c57f4756803c72b32ad8f95fd079",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8583957463921404,
+          "rules": 0.6810760786784582,
+          "renderHash": "180c0d6ce9175b28451395167fb9a9e7ac3c460561d2b5afcc3098527d0cd68e",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "8e48a2f3-9c30-4187-868e-33dbf5e279fc",
+      "name": "Pouncing Wurm",
+      "cohort": "validation",
+      "referenceHash": "fe659197a6d19c75fb89ec7658037f50abafe04cf16e413a60e1a449fdeb5abf",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7283176733345887,
+          "rules": 0.24011596162985163,
+          "renderHash": "df7908f3f7a4cdaa8226d7ae766d14c187a79ed18a2ffda569c733fefc9baf7e",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7269217041537094,
+          "rules": 0.23539114286379842,
+          "renderHash": "d64c00f8a8ec08af09febee81c808925863013c0cb3bda5cedbf0007c764b1e7",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "e2803fdc-2ae1-438c-b5b1-559817e85fdb",
+      "name": "Psychotrope Thallid",
+      "cohort": "validation",
+      "referenceHash": "dc0df267ac3049bba9e3405cab5d84fa9f6663aaa964f56b8cb62d5fada4f6e3",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8410893815453062,
+          "rules": 0.683783497787033,
+          "renderHash": "44fa5ca84c60df0ae44e8dbc1b116ef86d0f19b0434ec4beec4b32d379083921",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8410893815453062,
+          "rules": 0.683783497787033,
+          "renderHash": "44fa5ca84c60df0ae44e8dbc1b116ef86d0f19b0434ec4beec4b32d379083921",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "9017d37d-f47d-405e-95d8-78a8eec8addc",
+      "name": "Reflex Sliver",
+      "cohort": "validation",
+      "referenceHash": "eb4664cebfa599e8d01559c4ec6b24ffa26c5ccdb1802a90fd23118127ca3763",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7128941828666944,
+          "rules": 0.1483757140360339,
+          "renderHash": "389ba1d89fab9d42a050532fc1ff234005788b70234efb3d39a6b4e24a73a994",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7132818229807287,
+          "rules": 0.14968772672968877,
+          "renderHash": "4f6e8a16a4eeaaf8fbecfde8004ae3634c5e79f3dbc9708493cee46102b680d2",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "582cefca-6c11-4df3-8b54-46309dafff4a",
+      "name": "Sophic Centaur",
+      "cohort": "validation",
+      "referenceHash": "699e4b0eb8b070e87b772bc35391f9716fcc983f7b27d75e66afd80b95d6bdbb",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8273056375934144,
+          "rules": 0.6032337926871405,
+          "renderHash": "b8263538671a0cf86e3f0295b255abe30b7f633925ae9ff6701d3d34481197ad",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8588727140444025,
+          "rules": 0.7100762052904842,
+          "renderHash": "5165b204f4d55214a3e49f32eb3118966830b1aee230a80bd051676b6f6340fc",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "2d604bac-58b7-4479-8ab8-2e0680746e0e",
+      "name": "Timbermare",
+      "cohort": "validation",
+      "referenceHash": "a3057f9a38fe96e3ee8f3cebc601fa8cf343538c8faf5f911fe2ea02a8b9dbf2",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7034375911354914,
+          "rules": 0.17052599294586718,
+          "renderHash": "e9f60f81f377de50d390b5aa157e206cfe307afb3cc7fa68a9bbdd2c1505cc91",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7107220994409569,
+          "rules": 0.19518125182590404,
+          "renderHash": "0bf32cefc4242008b53229b4d3f9c51594e9d5d892117df92ba574c75860c3fb",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "8ed3fcd5-0e84-4332-ac84-19b75265ab52",
+      "name": "Uktabi Drake",
+      "cohort": "validation",
+      "referenceHash": "1127f811bb622932557f80be7ecc0678278fb62483565c5bb93a0e07f55d2474",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7075313445281084,
+          "rules": 0.18378148644384212,
+          "renderHash": "20c700a3afb52f4323527e5e3035879c8f7c65ffcf3d906c76a585c72ce28b79",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.706970609470117,
+          "rules": 0.1818836139398714,
+          "renderHash": "ee661f69f3d744e4e5a1950885a93d582831c1c6f81e00a653528ff518f9c352",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "d97f2ddb-3111-45a2-8334-a526bc885415",
+      "name": "Utopia Vow",
+      "cohort": "validation",
+      "referenceHash": "28dbab97c4b61d3eae6b7bd496376ea65d52c1cc13f6a0828add07180cffb321",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7869496797952215,
+          "rules": 0.5233831365386398,
+          "renderHash": "2244592fe93c6507fef5123a601efe1e5972b8380ca6803e0a769732d8f7a11c",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6682249233811156,
+          "rules": 0.1580761937260066,
+          "renderHash": "3667ee5471c4f453310a3a2c1d9384c4c700ffe98a3ab84e1d9df24e88fc7512",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "cad14bc9-b90e-48e0-9e72-173874dab6bc",
+      "name": "Vitaspore Thallid",
+      "cohort": "validation",
+      "referenceHash": "653576e511ff26b959aece28fa8ffdbc88b84e2aae16550cc36279b43003408e",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8313349009281935,
+          "rules": 0.5790930487552259,
+          "renderHash": "9d32f6baa654494274633d4c1584361e73d2c3cc083ecefba08613a9c6917dc7",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8313349009281935,
+          "rules": 0.5790930487552259,
+          "renderHash": "9d32f6baa654494274633d4c1584361e73d2c3cc083ecefba08613a9c6917dc7",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "38385d7a-fff2-4fe4-90ae-b9c58ad3b1f5",
+      "name": "Wild Pair",
+      "cohort": "validation",
+      "referenceHash": "5ff62471f238d1e1b3d4357e3b111f8931078d4489d8b35fceb1339075760a0f",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.6777206404961912,
+          "rules": 0.21927821509253148,
+          "renderHash": "ef14256ab74e452b1a795daa154740f0c6f0b9ff27629c88ee19ce87ae0ec2ca",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.6777206404961912,
+          "rules": 0.21927821509253148,
+          "renderHash": "ef14256ab74e452b1a795daa154740f0c6f0b9ff27629c88ee19ce87ae0ec2ca",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "da2a65d6-0887-4fe8-a6e6-909208fddd90",
+      "name": "Essence Warden",
+      "cohort": "validation",
+      "referenceHash": "bb6f8a178b17c6824cefe7a0a3f0a42d8772570722a48479a1fe96236dff1c3c",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8550113217432936,
+          "rules": 0.7486848464866247,
+          "renderHash": "cda5e9f7c8b2c5a7adbf32a500a525f5c76352fc3dbb6dda625ef073be5913bc",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8615335707346563,
+          "rules": 0.7707601507650835,
+          "renderHash": "6c74e78f00d5d0199f3924454c9992eafc95eb7abec3a5245e74688e04569dc0",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "6a9985e8-535d-4815-8a58-a98c3edb68d4",
+      "name": "Fa'adiyah Seer",
+      "cohort": "validation",
+      "referenceHash": "b7ad11a2ef3c236946e388c5ba8a349d1eeeb7f77ad9d54d5f840fa2f4f50f2e",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8702107909606428,
+          "rules": 0.7682011273840917,
+          "renderHash": "be89bbcf6e31ba38fc660bf77618ebbb37331ab67d7563c373a542953e912eb4",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8715751715619301,
+          "rules": 0.7728190309576798,
+          "renderHash": "270d2e44d7845d0b845efd0c043005578632c3df4f3ed555319b574cc1077b58",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "ea9e0de1-2299-4ff9-b49a-88535a96bda0",
+      "name": "Gaea's Anthem",
+      "cohort": "validation",
+      "referenceHash": "8ff559a0adcf75e5da2b95f6d9183af884c596f1f27a058c6dd3bd5df7633f29",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8364009587937723,
+          "rules": 0.6510370801553732,
+          "renderHash": "90657a738d19fb2e766127852dd92e5132dae06fa69dfe4ec0e7b3f22264cf44",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7294508496872127,
+          "rules": 0.32147609580528563,
+          "renderHash": "d2b7d7dd8b526d3ccc28363b3ddf1c61d2c10ed999ee3c465d2c6484863f3dee",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "f467cdea-6166-4289-918b-18f5038c94ed",
+      "name": "Groundbreaker",
+      "cohort": "validation",
+      "referenceHash": "9c08ef4d57dd7a3daeb803def29efe09b0f734e1aaee8c276d460d5bb8ce7f35",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7966355500301531,
+          "rules": 0.5054825231335253,
+          "renderHash": "12dfcba31633aef31a43a6d443f7997e3d95c8686f25333588be2617e0caebc3",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.7963539113497685,
+          "rules": 0.5045292845229934,
+          "renderHash": "70d85a3ea0b6c913c1b007cb3960303526834645e7fe72e9768468c76c5b9394",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "d6f58258-a1bd-4364-954e-c39938f7dab2",
+      "name": "Healing Leaves",
+      "cohort": "validation",
+      "referenceHash": "1d8599f9e1662bd054e3e8de5e13d06f8246c1faabac658dee4976c65d46485c",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.826018701376632,
+          "rules": 0.6293534307948375,
+          "renderHash": "bfd9914f9fabc95eb2795d2a8f03326abacc27cc32457497c25a31b300a37bbb",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8224751700581759,
+          "rules": 0.6184502575072801,
+          "renderHash": "7910a7cece519eb1cb3a8757029810aa2a7900981a357c8e3c14d7aa97b917ca",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "b2ba91ee-1f8e-47db-bb2d-bbb62039db17",
+      "name": "Seal of Primordium",
+      "cohort": "validation",
+      "referenceHash": "2e97b665ad102bf7f4cb54b1c07e63790a6c3cc3eb24f75f6a95079fcd56fb84",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.7417727608508682,
+          "rules": 0.40282515551684833,
+          "renderHash": "8c15cc4e3ffbea841722047337d2a019efd4c91b097e9e9ef06e349d93f7a34a",
+          "coverage": 0.8695652173913043
+        },
+        {
+          "factor": 0.98,
+          "score": 0.743112274920649,
+          "rules": 0.40694673727001984,
+          "renderHash": "63686c667eb30346bb3db9b268a62f211109c7b5ca71d5045c7b53f6aa7a6a07",
+          "coverage": 0.8695652173913043
+        }
+      ]
+    },
+    {
+      "id": "91da31d4-6616-4d61-82b7-52954162fe4d",
+      "name": "Cautery Sliver",
+      "cohort": "validation",
+      "referenceHash": "c0e8673d0f9d20d47ee2ff207ac8d89b813fbad2c708df546c26d6f3280d9fa9",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8105011185535783,
+          "rules": 0.5053936831266987,
+          "renderHash": "d5f6b1048300678c77969a0f67ce0823a164e423703e51ad441b73240f3d67f2",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8105011185535783,
+          "rules": 0.5053936831266987,
+          "renderHash": "d5f6b1048300678c77969a0f67ce0823a164e423703e51ad441b73240f3d67f2",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "b549e959-aa43-4ccc-8c45-ea357c25fb8c",
+      "name": "Dormant Sliver",
+      "cohort": "validation",
+      "referenceHash": "70de3de0d0f9fc9140eff10f276471c74cfe68ec2ee80a8eeb2a53c3a9066218",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8574315856192747,
+          "rules": 0.6718695385390452,
+          "renderHash": "63798f7b7448e65fa78b71cc80cfa464f1eabc96d663a5c1bbba93cbf2a8cc9e",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8440336231489517,
+          "rules": 0.6265225886394908,
+          "renderHash": "1495f7f11c1554b2cf87ee9fa466a7ac68d9ab63b175b2c413843907fdd3bb63",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "44e18843-06b4-480c-9291-c502542f72b1",
+      "name": "Necrotic Sliver",
+      "cohort": "validation",
+      "referenceHash": "e21c17cbd271bb4f7a13acd22170169295e618f5cce4cdb5bda1cda2d1e4a9e6",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8095811944070979,
+          "rules": 0.586807835432953,
+          "renderHash": "10b42dac6648d1cf6dbb4bcf5871291e9c9047ef040bbdd73b6bfed8e2545610",
+          "coverage": 0.68
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8316868079815971,
+          "rules": 0.6446225170893358,
+          "renderHash": "eb34a93c08f99d92d9214cea0f4f3bc03333bf32c57d5a844c85ba00af93cb0b",
+          "coverage": 0.68
+        }
+      ]
+    },
+    {
+      "id": "d1bf777a-a232-4504-afbb-13d2f79b4355",
+      "name": "Numot, the Devastator",
+      "cohort": "validation",
+      "referenceHash": "a19b51be193def3ba59210abf7f153a5b8ddd057389e29059554ff34f3579860",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8436517551179733,
+          "rules": 0.822853425850427,
+          "renderHash": "2b7277e1871738650e95dd616a08a8487a2cb864969d2fd14d5a1cec033896c1",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8436517551179733,
+          "rules": 0.822853425850427,
+          "renderHash": "2b7277e1871738650e95dd616a08a8487a2cb864969d2fd14d5a1cec033896c1",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "c2790685-f6ae-4106-ae4d-fe97954bcb82",
+      "name": "Oros, the Avenger",
+      "cohort": "validation",
+      "referenceHash": "ac6012591e8cb77799fbf028fa7a276cac27af805b06c92e5247bec1417a4e9b",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8013249402782706,
+          "rules": 0.6102143397708125,
+          "renderHash": "e74a5faac5db824ee65b8adbaf88998e7c8535ab31ebe53e5fc9abe3e611c691",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8013249402782706,
+          "rules": 0.6102143397708125,
+          "renderHash": "e74a5faac5db824ee65b8adbaf88998e7c8535ab31ebe53e5fc9abe3e611c691",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "7fc23b2e-9124-4f88-b93e-8bfe90e6eb41",
+      "name": "Radha, Heir to Keld",
+      "cohort": "validation",
+      "referenceHash": "24705b974b22511712c6bac3a883c16dd48d3b00ad504fabad46ddf6284867d7",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8555262165301252,
+          "rules": 0.7002569587405651,
+          "renderHash": "c775ef8172efa30f61eac8be8ffaa30c9c91b8f441f366f3aff003caad824ab2",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8681173461085714,
+          "rules": 0.7428730896214594,
+          "renderHash": "1b606fdf267cedc29866652daa389759b4484341b1b49e74a036fece0d2b0114",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "f3c1b26c-97f0-4e7e-8744-8497a83a11ab",
+      "name": "Teneb, the Harvester",
+      "cohort": "validation",
+      "referenceHash": "038f927f524e35c1600ca49fc300c606ff393bf9a2e238ea64d37d467d69aecd",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.865370964861334,
+          "rules": 0.7966577450758865,
+          "renderHash": "b09ff3e6e276132b0d173d7e6b0effbf5d52536fcd615779f95e9f9ac22732ec",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.865370964861334,
+          "rules": 0.7966577450758865,
+          "renderHash": "b09ff3e6e276132b0d173d7e6b0effbf5d52536fcd615779f95e9f9ac22732ec",
+          "coverage": 0.88
+        }
+      ]
+    },
+    {
+      "id": "da4438fe-b11b-4adb-b8dd-b44e12ef6124",
+      "name": "Vorosh, the Hunter",
+      "cohort": "validation",
+      "referenceHash": "d790535d86d98368b99769874e7805923f889ab4cdd15b94a7a98da834ee880e",
+      "variants": [
+        {
+          "factor": 1,
+          "score": 0.8265349341489837,
+          "rules": 0.643027106573707,
+          "renderHash": "b5f6462aa9546852d91bfa641d9093ed883bc8d7ea9d2ba7a3254ce973038dbf",
+          "coverage": 0.88
+        },
+        {
+          "factor": 0.98,
+          "score": 0.8265349341489837,
+          "rules": 0.643027106573707,
+          "renderHash": "b5f6462aa9546852d91bfa641d9093ed883bc8d7ea9d2ba7a3254ce973038dbf",
+          "coverage": 0.88
+        }
+      ]
+    }
+  ]
+}

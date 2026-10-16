@@ -180,6 +180,14 @@ Use the already-frozen scan poses and original wording, retain unchanged-card
 controls, and verify whole native renders before adoption. Reused validation
 remains explicitly reused; per-card optima remain diagnostics.
 
+The [isolated italic-width trial](fixtures/accuracy/planar-italic-width-rejected.json)
+also fails to transfer. Training selects 98% width for italic/reminder ink and
+advances, with roman text unchanged. Across 123 reused validation cards its
+whole-card mean rises only 0.24 points, with 46 improvements, 46 regressions and
+21 losses exceeding one point. All 156 baseline hashes/scores match the release,
+and poses and coverage remain fixed. Retain the original width; this is evidence
+against another blanket typography adjustment, not a new renderer default.
+
 ## Early core scan normalization
 
 The [Alpha/Beta/Unlimited/Revised audit](fixtures/accuracy/early-core-normalization-review.json)
