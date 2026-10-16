@@ -19,6 +19,13 @@ export interface RulesParagraph {
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
+  /** Editor-only omission of text ink in normalized physical-card regions.
+   * Layout, frame selection, calibrated materials and mana remain unchanged. */
+  printingOmissions?: readonly {
+    rect: FaceRect;
+    rotation?: number;
+    texts: readonly string[];
+  }[];
   frameStyle?: 'modern' | 'retro';
   /** Standard template families with pinned sources; calibration is family-specific. */
   frameTemplate?: 'future' | 'flip' | 'battle';

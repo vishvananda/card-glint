@@ -1,3 +1,4 @@
+import { withPrintingOmissions } from './printing-omissions.js';
 import { paintPlaneswalkerLoyalty } from './planeswalker-loyalty.js';
 import { paintModernFooter } from './modern-footer.js';
 import { paintBasicLandSymbol } from './plate-basic-land.js';
@@ -331,14 +332,17 @@ export async function composeCardTexture(
       );
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
-      paintAssembledFace(
-        context,
-        input.face,
-        numerals.images,
-        FACE_HEIGHT,
-        false,
-        hooks?.underArt,
-        input.paintLayer,
+      const paintingImages = numerals.images;
+      withPrintingOmissions(context, input.face, () =>
+        paintAssembledFace(
+          context,
+          input.face,
+          paintingImages,
+          FACE_HEIGHT,
+          false,
+          hooks?.underArt,
+          input.paintLayer,
+        ),
       );
       paintCardStatus(
         context,
