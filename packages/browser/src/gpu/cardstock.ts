@@ -101,5 +101,6 @@ float cardstockResponse(vec2 uv){
 }
 vec3 cardstockGloss(vec2 uv,vec3 ink,vec3 reflected){
  if(cardstockAmount<=0.)return reflected;
- return ink+(reflected-ink)*cardstockResponse(uv);
+ // Rougher coating spreads the mirror catch, lowering its peak reflection.
+ return ink+(reflected-ink)*cardstockResponse(uv)*(1.-cardstockAmount*.5);
 }`;
