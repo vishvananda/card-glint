@@ -8,7 +8,7 @@ export function reviewedPrintingFields(entry, annotation) {
   for (const field of annotation.reviewedFields) {
     if (Object.hasOwn(result, field)) throw Error(`Repeated printing field: ${field}`);
     const value = annotation[field];
-    const valid = ['typeLine', 'artist'].includes(field)
+    const valid = ['name', 'typeLine', 'artist'].includes(field)
       ? typeof value === 'string' && value.length > 0
       : field === 'manaSymbols'
         ? Array.isArray(value) && value.every((v) => typeof v === 'string' && v.length > 0)

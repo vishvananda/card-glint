@@ -40,6 +40,15 @@ try {
   assert.equal(weights[8 * 20], 0);
   assert.equal(weights[10 * 20 + 3], 0);
   assert.equal(weights[11 * 20 + 3], 0);
+  put(3, 12, [120, 100, 10, 255]);
+  const highlights = frameAccentMask(source, { ...mask, brightness: [0.65, 0.85] });
+  assert.equal(highlights[8 * 20 + 3], 1);
+  assert.equal(highlights[12 * 20 + 3], 0, 'Highlight correction must preserve bevel shadows');
+  assert.throws(
+    () => frameAccentMask(source, { ...mask, brightness: [0.9, 0.6] }),
+    /Invalid source pigment/,
+  );
+  put(3, 12, [190, 210, 220, 255]);
   const profile = {
     frame: identity,
     paper: identity,

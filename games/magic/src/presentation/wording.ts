@@ -4,6 +4,8 @@ import { originalManaOrder } from './historic-mana-order.js';
 
 /** Exact supplied wording, never a guessed conversion of creature subtypes. */
 export interface CardWording {
+  /** Exact visible title; omitted values retain the host's supplied name. */
+  name?: string;
   typeLine: string;
   rulesText: string;
   rulesParagraphs?: readonly RulesParagraph[];

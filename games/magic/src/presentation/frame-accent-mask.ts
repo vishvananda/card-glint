@@ -10,6 +10,8 @@ export interface FrameAccentMask {
   hueRadius: number;
   hueFeather: number;
   saturation: readonly [number, number];
+  /** Optional highlight selection: retain the source's darker bevel/shadow. */
+  brightness?: readonly [number, number];
 }
 const smooth = (v: number) => {
   const t = Math.max(0, Math.min(1, v));
@@ -25,7 +27,17 @@ export function frameAccentMask(image: FramePixels, spec: FrameAccentMask): Floa
     !(spec.hueCenter >= 0 && spec.hueCenter < 360) ||
     !(spec.hueRadius > 0 && spec.hueRadius <= 180) ||
     !(spec.hueFeather > 0 && spec.hueFeather <= spec.hueRadius) ||
-    !(spec.saturation[0] >= 0 && spec.saturation[1] > spec.saturation[0] && spec.saturation[1] <= 1)
+    !(
+      spec.saturation[0] >= 0 &&
+      spec.saturation[1] > spec.saturation[0] &&
+      spec.saturation[1] <= 1
+    ) ||
+    (spec.brightness !== undefined &&
+      !(
+        spec.brightness[0] >= 0 &&
+        spec.brightness[1] > spec.brightness[0] &&
+        spec.brightness[1] <= 1
+      ))
   )
     throw Error('Invalid source pigment mask.');
   for (const { outer, inner } of spec.rings)
@@ -37,8 +49,9 @@ export function frameAccentMask(image: FramePixels, spec: FrameAccentMask): Floa
       inner[3] <= 0 ||
       inner[0] < outer[0] ||
       inner[1] < outer[1] ||
-      inner[0] + inner[2] > outer[0] + outer[2] ||
-      inner[1] + inner[3] > outer[1] + outer[3]
+      // Normalized shared edges can differ by one floating-point rounding bit.
+      inner[0] + inner[2] > outer[0] + outer[2] + 1e-12 ||
+      inner[1] + inner[3] > outer[1] + outer[3] + 1e-12
     )
       throw Error('Source pigment rings need nested positive rectangles.');
   const values = new Float32Array(image.width * image.height);
@@ -53,7 +66,7 @@ export function frameAccentMask(image: FramePixels, spec: FrameAccentMask): Floa
         !spec.rings.some((r) => contains(r.outer, px, py) && !contains(r.inner, px, py))
       )
         continue;
-      const [hue, saturation] = rgbToHsb([
+      const [hue, saturation, brightness] = rgbToHsb([
         image.data[at]! / 255,
         image.data[at + 1]! / 255,
         image.data[at + 2]! / 255,
@@ -61,7 +74,10 @@ export function frameAccentMask(image: FramePixels, spec: FrameAccentMask): Floa
       const distance = Math.abs(((hue - spec.hueCenter + 540) % 360) - 180);
       values[p] =
         smooth((spec.hueRadius - distance) / spec.hueFeather) *
-        smooth((saturation - spec.saturation[0]) / (spec.saturation[1] - spec.saturation[0]));
+        smooth((saturation - spec.saturation[0]) / (spec.saturation[1] - spec.saturation[0])) *
+        (spec.brightness
+          ? smooth((brightness - spec.brightness[0]) / (spec.brightness[1] - spec.brightness[0]))
+          : 1);
     }
   return values;
 }

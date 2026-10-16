@@ -341,6 +341,33 @@ try {
     assert(!override.reviewedFields.includes('typeLine'));
   }
   console.log('152 scan-bound Legends creature type labels and Oracle isolation pass.');
+  const berserkerId = '06673800-22a7-4ee3-92fa-7c7cd4865d30';
+  const berserkerEntry = {
+    reference: { sha256: creatures.cards[berserkerId].referenceHash },
+    card: {
+      id: berserkerId,
+      name: 'Aerathi Berserker',
+      set: 'leg',
+      type_line: 'Creature — Human Berserker',
+    },
+  };
+  const printedBerserker = presentation(berserkerEntry);
+  assert.equal(printedBerserker.face.name, 'rathi Berserker');
+  assert(printedBerserker.reviewedFields.includes('name'));
+  const names = {
+    original: printedBerserker.face,
+    oracle: {
+      name: 'Aerathi Berserker',
+      typeLine: 'Creature — Human Berserker',
+      rulesText: 'Rampage 3',
+    },
+  };
+  const oracleBerserker = withCardWording(printedBerserker.face, names, 'oracle');
+  assert.equal(oracleBerserker.name, 'Aerathi Berserker');
+  assert.equal(withCardWording(oracleBerserker, names, 'original').name, 'rathi Berserker');
+  const suppliedName = presentation(berserkerEntry, { [berserkerId]: { name: 'Caller title' } });
+  assert.equal(suppliedName.face.name, 'Caller title');
+  assert(!suppliedName.reviewedFields.includes('name'));
   const noncreatures = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/leg/annotations-noncreature-types.json'),
   );

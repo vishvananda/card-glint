@@ -420,7 +420,9 @@ whole-row mana measurements, and links to the earlier Mirage/Tempest comparisons
 frame, art and typography while choosing supplied wording and symbol style. The
 mode defaults to `oracle`; requesting an absent `original` throws. Each wording
 requires `typeLine` and `rulesText`, with optional styled `rulesParagraphs`, mana
-cost and stats. Missing paragraph overrides are cleared when switching modes.
+cost, stats, and `name` for titles that differ in the original printing. Supply
+the title in both wordings when switching names. Missing paragraph overrides
+are cleared when switching modes.
 
 ```ts
 import { withCardWording, magic } from 'card-glint/magic';

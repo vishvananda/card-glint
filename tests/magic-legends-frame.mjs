@@ -165,6 +165,14 @@ try {
     '/games/magic/src/presentation/legends-color-profiles.ts',
   );
   const study = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-colors.json'));
+  const redBevel = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/legends-red-bevel.json'),
+  );
+  assert.equal(redBevel.status, 'adopted-runtime-verified');
+  assert.equal(redBevel.summary.paper.validation.count, 39);
+  assert.equal(redBevel.summary.paper.validation.improved, 39);
+  assert.ok(redBevel.summary.art.validation.after < redBevel.summary.art.validation.before);
+  assert.ok(redBevel.rows.every((r) => r.unchangedRegions.changedChannels === 0));
   const refinement = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/legends-frame-refinement.json'),
   );
@@ -290,7 +298,11 @@ try {
       assert.ok(group.rows.filter((r) => r.cohort === cohort).length >= 4);
     assert.deepEqual(calibratedFrameMaterials(face), {
       [group.asset]:
-        group.material === 'L' ? { ...group.adjustment, frame: refinement.land } : group.adjustment,
+        group.material === 'L'
+          ? { ...group.adjustment, frame: refinement.land }
+          : group.material === 'R'
+            ? { ...group.adjustment, accents: redBevel.accents }
+            : group.adjustment,
     });
     assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});
     assert.deepEqual(calibratedFrameMaterials({ ...face, borderColor: 'white' }), {});

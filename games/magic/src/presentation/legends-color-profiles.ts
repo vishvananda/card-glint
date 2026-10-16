@@ -95,6 +95,60 @@ export const LEGENDS_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfil
             saturationScale: 0.9073305928571983,
             brightnessScale: 0.850835322195704,
           },
+          accents: [
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [
+                      0.08894759288155257, 0.07955119284846228, 0.8241582023272438,
+                      0.47702832443549975,
+                    ],
+                    inner: [
+                      0.10344283764610208, 0.07955119284846228, 0.8096629575626944,
+                      0.4652133814154255,
+                    ],
+                  },
+                ],
+                hueCenter: 0,
+                hueRadius: 70,
+                hueFeather: 10,
+                saturation: [0.01, 0.08],
+                brightness: [0.65, 0.85],
+              },
+              adjustment: {
+                hueDegrees: 9.95535714285711,
+                saturationScale: 0.8848407077066573,
+                brightnessScale: 1.003157894736842,
+              },
+            },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [
+                      0.10344283764610208, 0.5964549499767128, 0.7889554650419093,
+                      0.30128104701189456,
+                    ],
+                    inner: [
+                      0.11793808241065161, 0.5964549499767128, 0.7744602202773598,
+                      0.2924198397468389,
+                    ],
+                  },
+                ],
+                hueCenter: 0,
+                hueRadius: 70,
+                hueFeather: 10,
+                saturation: [0.01, 0.08],
+                brightness: [0.65, 0.85],
+              },
+              adjustment: {
+                hueDegrees: 33.20021777976331,
+                saturationScale: 0.8716772230501736,
+                brightnessScale: 0.9551148225469728,
+              },
+            },
+          ],
           mask: {
             kind: 'rect',
             rect: [0.11812030834483456, 0.6068048400622977, 0.7616050089204565, 0.2815382772253505],
