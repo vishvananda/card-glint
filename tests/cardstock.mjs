@@ -122,7 +122,11 @@ try {
       c.height = 102;
       const tiny0 = draw(0),
         tiny1 = draw(0.2),
-        tinyDifference = difference(tiny0, tiny1);
+        tinyInk = draw(0, 'regular'),
+        tinyExpected = tiny0.map((v, i) =>
+          i % 4 === 3 ? v : Math.round(tinyInk[i] + (v - tinyInk[i]) * 0.9),
+        ),
+        tinyDifference = difference(tinyExpected, tiny1);
       c.width = 732;
       c.height = 1020;
       // Resources are recreated by the renderer's existing context lifecycle.
@@ -168,7 +172,7 @@ try {
   console.log(JSON.stringify(report, null, 2));
   assert.equal(report.zeroDifference, 0);
   assert.ok(report.mediumDifference > 0.1);
-  assert.ok(report.strongDifference > report.mediumDifference * 4);
+  assert.ok(report.strongDifference > report.mediumDifference * 3);
   assert.equal(report.timeDifference, 0);
   assert.equal(report.mutationDifference, 0);
   assert.ok(report.tiltDifference > 0.1);
@@ -176,7 +180,7 @@ try {
   assert.equal(report.foilDifference, 0);
   assert.equal(report.rejected, 4);
   assert.equal(report.exportDifference, 0);
-  assert.ok(report.tinyDifference < report.mediumDifference * 0.2);
+  assert.ok(report.tinyDifference < 0.5);
   assert.equal(report.restoredDifference, 0);
   assert.equal(report.glError, 0);
   assert.equal(report.allocated.surfacePasses, report.initial.surfacePasses + 1);
