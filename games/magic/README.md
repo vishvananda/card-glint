@@ -250,7 +250,9 @@ and the original GLINT/FORGE marks take precedence and preserve their colors.
 
 Etched and Opal set marks extract dark ink from the styled common SVG, so opaque
 white backing, borders and internal holes do not turn into a solid embossed
-silhouette. The small printed rarity symbol is unchanged. Keyrune and custom
+silhouette. Common art is also selected when a symbol-code override has resolved
+to an explicit uncommon/rare styled URL, using that symbol’s own set identity.
+The small printed rarity symbol is unchanged. Keyrune and custom
 symbols retain their alpha by default. For a custom dark-on-white SVG or bitmap,
 set `setSymbolMask: 'ink'`; use `'alpha'` to retain the whole silhouette, including
 white or colored areas, or `'auto'` to restore the source default. This field can

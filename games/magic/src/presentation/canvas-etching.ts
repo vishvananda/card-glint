@@ -8,7 +8,7 @@ import {
   etchedSetLabel,
   type RenderedCardInput,
 } from './face-layout.js';
-import { faceSetSymbol } from './assets.js';
+import { faceEtchingSymbol } from './assets.js';
 import { acquireSetSymbolMask } from './set-symbol-mask.js';
 import { loadCanvasImages } from './canvas-assets.js';
 import { illustrationCover, illustrationTarget } from './illustration-layout.js';
@@ -139,7 +139,7 @@ async function paintMask(
     y = ry * height,
     w = rw * FACE_WIDTH,
     h = rh * height;
-  const url = faceSetSymbol(face, 'common');
+  const url = faceEtchingSymbol(face);
   const loaded = await loadImages([url], signal);
   try {
     await beforePaint?.();

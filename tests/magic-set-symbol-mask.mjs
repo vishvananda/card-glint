@@ -28,7 +28,9 @@ try {
     const { magic } = await import('/games/magic/src/index.ts');
     const { cardTextureKey } = await import('/games/magic/src/presentation/canvas-face.ts');
     const { faceRects } = await import('/games/magic/src/presentation/special-frames.ts');
-    const { faceSetSymbol } = await import('/games/magic/src/presentation/assets.ts');
+    const { faceSetSymbol, faceEtchingSymbol } = await import(
+      '/games/magic/src/presentation/assets.ts'
+    );
     const { resolvePrintingPreset } = await import(
       '/games/magic/src/presentation/printing-presets.ts'
     );
@@ -63,6 +65,36 @@ try {
       face = { name: 'Opaque symbol', setCode: 'PLC', typeLine: 'Instant' };
     const url = faceSetSymbol(face, 'common');
     check(url.endsWith('/plc-c.svg'), 'Test must exercise the styled PLC source policy');
+    for (const rarity of ['common', 'uncommon', 'rare', 'mythic', 'special', 'bonus']) {
+      check(
+        faceEtchingSymbol({ ...face, rarity }) === url,
+        'Every rarity must etch the common symbol',
+      );
+    }
+    for (const rarity of ['uncommon', 'rare']) {
+      const printed = faceSetSymbol({ ...face, rarity });
+      const overridden = { ...face, setCode: 'M21', rarity, setSymbol: printed };
+      check(
+        faceEtchingSymbol(overridden) === url,
+        'Explicit styled URL must etch its own set common, not the card set or rarity',
+      );
+      check(faceSetSymbol(overridden) === printed, 'Etching changed the printed rarity symbol');
+      const common = { ...overridden, setSymbol: url };
+      check(
+        magic.describe(overridden, 'inspect').stamp.key ===
+          magic.describe(common, 'inspect').stamp.key,
+        'Common contours must share the stamp cache across rarity overrides',
+      );
+    }
+    check(
+      faceEtchingSymbol({ ...face, setSymbol: '/custom.svg' }) === '/custom.svg',
+      'Custom symbol overrides must survive',
+    );
+    check(
+      faceEtchingSymbol({ ...face, printingElements: { setSymbol: { hidden: true } } }) === null,
+      'Hidden symbols must stay hidden',
+    );
+
     const original = CanvasRenderingContext2D.prototype.getImageData;
     let reads = 0;
     CanvasRenderingContext2D.prototype.getImageData = function (...args) {
@@ -125,8 +157,14 @@ try {
     }
     const stats = { ...cache.stats };
     let releases = 0;
+    const requested = [];
     const loader = async (urls) => ({
-      images: new Map(urls.map((u) => [u, bitmap])),
+      images: new Map(
+        urls.map((u) => {
+          requested.push(u);
+          return [u, bitmap];
+        }),
+      ),
       dispose() {
         releases++;
       },
@@ -136,6 +174,15 @@ try {
       await paintEtchingMask(c.getContext('2d'), input, null, signal, undefined, undefined, loader);
       return c;
     };
+    const preset = resolvePrintingPreset(
+      { ...face, rarity: 'rare' },
+      { preset: 'match', overrides: { setSymbolCode: 'PLC' } },
+    );
+    await draw(preset);
+    check(
+      requested.length > 0 && requested.every((source) => source === url),
+      'Preset etching requested a colored rarity asset',
+    );
     const etched = await draw(face),
       solid = await draw({ ...face, setSymbolMask: 'alpha' }),
       [x, y, w, h] = faceRects(face).stamp.map((n, i) => n * (i % 2 ? 680 : 488));
@@ -255,7 +302,7 @@ try {
       failure && f.getTransform().e === 2 && f.getTransform().f === 3 && f.globalAlpha === 0.4,
       'Failure leaked canvas state',
     );
-    check(releases === 4, 'Loaded source leases were not released: ' + releases);
+    check(releases === 5, 'Loaded source leases were not released: ' + releases);
     const png = etched.toDataURL(),
       beforeClear = cache.stats.bytes;
     magic.dispose();

@@ -70,5 +70,26 @@
     "Cardstock modulates the finished reflection",
     "Wear and protected/over-finish content retain their normal ordering"
   ],
-  "real_devices_tested": []
+  "real_devices_tested": [],
+  "common_symbol_policy": {
+    "rarities": [
+      "common",
+      "uncommon",
+      "rare",
+      "mythic",
+      "special",
+      "bonus"
+    ],
+    "explicit_styled_overrides": "Use the selected symbol set’s common art; printed rarity colors remain unchanged.",
+    "custom_urls": "Preserved",
+    "stamp_cache": "Shared by explicit styled rarity variants of the same symbol.",
+    "validation": [
+      "npm run check",
+      "npm run build",
+      "npm run test:package",
+      "npm run test:browser",
+      "npm run test:showcase",
+      "npm run test:set-symbol-masks"
+    ]
+  }
 }
