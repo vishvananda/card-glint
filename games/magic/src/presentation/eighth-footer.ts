@@ -3,7 +3,7 @@ import { resolveCardProfile } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
-import { transformPlanarFooter, planarStatsFont } from './planar-footer.js';
+import { transformPlanarFooter, planarStatsFont, paintPlanarStats } from './planar-footer.js';
 
 function lightCredit(face: RenderedCardInput): boolean {
   return ['B', 'Colourless', 'Land'].includes(resolveCardProfile(face).boxes);
@@ -76,7 +76,7 @@ export function paintEighthFooter(
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     const text = `${face.power}/${face.toughness}`;
-    if (statsFont) c.fillText(text, 407, 627, 78);
+    if (statsFont) paintPlanarStats(c, text);
     else paintStats(c, text);
     c.restore();
   }

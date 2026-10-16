@@ -5,6 +5,38 @@ export function planarStatsFont(face: RenderedCardInput, source: string): string
   return usesPlanarFrameGeometry(face, source) ? 'CardRenderer MTG ModMatrix' : undefined;
 }
 
+/** ModMatrix's star is larger than the printed PLC glyph. Fit star ink without
+ * changing advances, digits or slash: two calibration and six validation scans.
+ * The caller selects this painter only for the measured Planar frame family. */
+export function paintPlanarStats(c: CanvasRenderingContext2D, text: string): void {
+  if (!text.includes('*')) {
+    c.fillText(text, 407, 627, 78);
+    return;
+  }
+  c.save();
+  const width = c.measureText(text).width;
+  c.translate(407, 0);
+  c.scale(Math.min(1, 78 / width), 1);
+  c.textAlign = 'left';
+  let prefix = '';
+  for (const run of text.split(/(\*)/).filter(Boolean)) {
+    const left = -width / 2 + c.measureText(prefix).width;
+    if (run === '*') {
+      const m = c.measureText(run);
+      const x = left + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2;
+      const y = 627 + (m.actualBoundingBoxDescent - m.actualBoundingBoxAscent) / 2;
+      c.save();
+      c.translate(x, y + 1.25);
+      c.scale(0.775, 0.775);
+      c.translate(-x, -y);
+      c.fillText(run, left, 627);
+      c.restore();
+    } else c.fillText(run, left, 627);
+    prefix += run;
+  }
+  c.restore();
+}
+
 /** Shared footer ink fits. The source badge and texture keep their own bounds.
  * Apply only during face preparation, within a caller-owned saved context. */
 export function transformPlanarFooter(
