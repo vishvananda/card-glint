@@ -110,7 +110,8 @@ diagnostics improve the text-region mean from 57.6% to 72.1%, but those values
 are fitted to each reference and are not predictive scores or printing-specific
 renderer defaults. Keep these candidates for the later outlier-review workflow;
 do not replace the shared defaults with a lookup table. The five Charm wording
-corrections are queued for the next calibration release.
+corrections ship in **0.3.9**. Original wording gains the printed separator;
+Oracle wording and shared typography remain unchanged.
 
 ## Current execution checkpoint
 
