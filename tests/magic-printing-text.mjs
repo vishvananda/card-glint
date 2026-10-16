@@ -31,6 +31,8 @@ const record = {
   uuid: 'mtgjson-a',
 };
 const index = printingTextIndex(snapshot, { code: '4ED', cards: [record] });
+assert.equal(normalizePrintingText('{(b/r)}, {T}: Add {B}{R}.'), '{B/R}, {T}: Add {B}{R}.');
+assert.equal(normalizePrintingText('(b/r) {B/R}'), '(b/r) {B/R}');
 assert.equal(index.missing.length, 0);
 const original = presentation(entry, {}, index.cards);
 assert.equal(original.face.rulesText, 'Printed wording.');

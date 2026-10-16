@@ -9,6 +9,12 @@ export function normalizePrintingText(text) {
       .replace(/\\r(?=\n|$)/g, '')
       .replace(/\r\n/g, '\n')
       .replace(/\bocT\b/g, '{T}')
+      // Legacy Gatherer hybrid notation (e.g. FUT Graven Cairns). Parentheses
+      // inside this exact mana token are notation, not italic reminder text.
+      .replace(
+        /\{\(([WUBRG])\/([WUBRG])\)\}/gi,
+        (_, a, b) => `{${a.toUpperCase()}/${b.toUpperCase()}}`,
+      )
       // Some Gatherer exports wrap an entire cost in one brace pair. Separate
       // only unambiguous digits and single mana letters; preserve hybrid symbols.
       .replace(/\{((?:\d+)?[WUBRGCXYZS]+)\}/g, (token, cost) =>

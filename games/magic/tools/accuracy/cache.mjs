@@ -10,7 +10,9 @@ const userAgent = 'card-glint-accuracy/1.0 (https://github.com/vishvananda/card-
 // Only the pinned styles/includes used by our standard-template painter.
 const templateRoots = [
   'magic-future.mse-style',
+  'magic-future-textless.mse-style',
   'magic-future-common.mse-include',
+  'magic-mana-future.mse-symbol-font',
   'magic-new-flip.mse-style',
   'magic-m15-mainframe-battles.mse-style',
   'magic-modules.mse-include/loyalty',

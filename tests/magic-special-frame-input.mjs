@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { reviewedSpecialRecords } from '../games/magic/tools/accuracy/special-printing-corrections.mjs';
 import preparedText from '../games/magic/fixtures/accuracy/prepare-printing-text.json' with { type: 'json' };
+import futureText from '../games/magic/fixtures/accuracy/future-printing-corrections.json' with { type: 'json' };
 import {
   originalFaceRecord,
   originalPanelText,
@@ -290,3 +291,20 @@ assert.equal(
   'Reviewed formatting preserves the exact printed words',
 );
 assert.equal(tamInput.originals[0].reviewedCorrection.fields.originalParagraphs.before, null);
+
+for (const [id, correction] of Object.entries(futureText.cards)) {
+  const future = { id, set: correction.set, collector_number: correction.number };
+  const records = correction.faces.map((face) => ({
+    name: face.name,
+    identifiers: { scryfallId: id },
+    originalType: 'Kindred Enchantment – Rebel Aura',
+    oracleText: 'Current wording stays separate.',
+  }));
+  const copy = structuredClone(records);
+  const corrected = reviewedSpecialRecords(future, { sha256: correction.referenceSha256 }, records);
+  assert.deepEqual(records, copy, 'Reviewing a source must not mutate provider records');
+  assert.equal(corrected[0].oracleText, records[0].oracleText);
+  for (const [field, value] of Object.entries(correction.faces[0]))
+    assert.equal(corrected[0][field], value);
+  assert.throws(() => reviewedSpecialRecords(future, reference, records), /identity changed/);
+}
