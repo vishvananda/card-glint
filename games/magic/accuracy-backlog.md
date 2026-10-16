@@ -35,26 +35,42 @@ Host left alignment, explicit paragraph alignment and the selected original or
 Oracle centering reference remain respected. Sentinel's wrapping, Fallen Angel's
 mixed line alignment and Dream Coat's spacing remain flagged. The
 [frozen proposal](fixtures/accuracy/legends-rules-clean-proposal.json) preserves
-its original measurements; this branch work is not released yet.
+its original measurements; the final release evaluation is recorded below.
 
 The [first text study](fixtures/accuracy/legends-rules-proposal.json) and
 [measured-fit follow-up](fixtures/accuracy/legends-rules-fit-proposal.json) preserve
 historical results from the superseded normalization. Their numbers must not be
 presented as current frame-only validation or whole-card compliance.
 
-Thirteen scan-bound original-body reviews, uncircled inline generic values and
+Fourteen scan-bound original-body reviews, uncircled inline generic values and
 explicit discretionary hyphenation are independent fixes. Hazezon Tamar,
 Hyperion Blacksmith and Knowledge Vault now retain their printed word breaks
 without putting visible hyphens into plain wording or changing Oracle. Their
 follow-up measurements are development diagnostics, not new reserved validation.
 The fitting tool retains before/proposal images and every regression.
-Wall of Earth is now explicitly flavor-only for original wording; missing source
-rules no longer introduce Oracle Defender. The [footer calibration](fixtures/accuracy/legends-footer.json) restores the
+Wall of Earth and Wall of Heat are explicitly flavor-only for original wording;
+source gaps or incorrect reminders no longer introduce unprinted abilities. The [footer calibration](fixtures/accuracy/legends-footer.json) restores the
 left-aligned “Illus. © 1994” credit, moves stats to the printed baseline, and uses
 independent shadows with slightly lighter solid ink. All 70 renderer replays
 match the fitted candidates exactly. Reserved credit overlap rises 43.8% → 71.6%
-(36/36 improve), and P/T 45.0% → 75.1% (20/20 improve). Full-set scoring and
-release remain pending.
+(36/36 improve), and P/T 45.0% → 75.1% (20/20 improve).
+
+The [full-set evaluation](fixtures/accuracy/legends-fullset.json) compares all
+310 printings with identical original wording and art. Across the 303 accepted
+scan poses, structural match rises **46.0% → 76.2%**, with every card improving.
+Rules overlap rises 28.5% → 64.3%. These fixed-region indices exclude color and
+unverified legal text; they are not percentages of pixel correctness. Seven
+rejected scans remain outside the average. Patch 0.3.5 packages this pass.
+
+## Next requested frame calibration
+
+After finishing and shipping Legends, perform a complete calibration of
+**Future Sight's futureshifted frames**, before the next pre-Eighth group.
+Review assets and layout rules, freeze scan-only normalization, then measure
+frame/art geometry, colors, mana and set symbols, title/type/rules/flavor text,
+illustrator/legal credits and power/toughness. Keep ordinary Future Sight cards
+separate. Use shared defaults, reserved validation, full-set scores and a
+comparison page; retain rejected scans and mismatched assets for review.
 
 ## Current execution checkpoint
 

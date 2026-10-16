@@ -430,7 +430,7 @@ try {
       /stale/,
     );
   }
-  console.log('Thirteen Legends body reviews preserve Oracle and explicit caller overrides.');
+  console.log('Fourteen Legends body reviews preserve Oracle and explicit caller overrides.');
   let emptyCount = 0;
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21']) {
     const fixture = JSON.parse(
