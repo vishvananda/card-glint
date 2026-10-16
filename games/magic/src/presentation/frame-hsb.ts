@@ -1,3 +1,4 @@
+import type { FrameMaterialBlend } from './frame-material-blend.js';
 import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
 import { framePaperMask, type FramePixels, type PaperMask } from './frame-paper-mask.js';
 import { frameAccentMask, type FrameAccentMask } from './frame-accent-mask.js';
@@ -16,15 +17,26 @@ export interface DualFrameHsb {
   regions?: readonly { mask: PaperMask; adjustment: HsbAdjustment }[];
   accents?: readonly { mask: FrameAccentMask; adjustment: HsbAdjustment }[];
 }
-export type FrameHsb = (HsbAdjustment | DualFrameHsb) & { blackPoint?: FrameBlackPoint };
+export type FrameHsb = (HsbAdjustment | DualFrameHsb) & {
+  blackPoint?: FrameBlackPoint;
+  blend?: FrameMaterialBlend;
+};
 
 /** Recolor the static source, preserving alpha and, without an opt-in shadow
  * curve, black ink. Single-component
  * mana transforms also protect white glyph details. Frame-paper highlights
  * must follow their material, otherwise darkening produces false white relief.
  * Blend recolored pixels at the paper edge without moving texture or shadows. */
-export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
+export function colorFrame(image: FramePixels, adjustment: FrameHsb, textureMask?: FramePixels) {
   if (adjustment.blackPoint) validateFrameBlackPoint(adjustment.blackPoint);
+  if (
+    adjustment.blackPoint?.textureMaskSource &&
+    (!textureMask ||
+      textureMask.width !== image.width ||
+      textureMask.height !== image.height ||
+      textureMask.data.length !== image.data.length)
+  )
+    throw RangeError('Frame texture correction needs its source selection');
   const dual = 'mask' in adjustment ? adjustment : undefined,
     mask = dual ? framePaperMask(image, dual.mask) : undefined,
     frame = 'mask' in adjustment ? adjustment.frame : adjustment,
@@ -63,5 +75,5 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
         );
     }
   }
-  if (adjustment.blackPoint) colorFrameBlackPoint(image, adjustment.blackPoint);
+  if (adjustment.blackPoint) colorFrameBlackPoint(image, adjustment.blackPoint, textureMask);
 }

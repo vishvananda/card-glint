@@ -1,0 +1,1975 @@
+{
+  "schemaVersion": 1,
+  "policy": "Validate per-color texture/bevel profiles on frozen scan poses.\nAll errors are regional byte units (0-255), not full-card accuracy percentages.\n",
+  "windows": {
+    "sides": [
+      [25, 110, 3, 230],
+      [461, 110, 3, 230]
+    ],
+    "footer": [
+      [300, 626, 52, 18],
+      [50, 653, 300, 4]
+    ]
+  },
+  "bevelWindows": [
+    [450, 110, 6, 230],
+    [100, 30, 280, 4],
+    [100, 614, 240, 3]
+  ],
+  "blurSigma": 0.8,
+  "summary": {
+    "W": {
+      "calibration": {
+        "cards": 3,
+        "spreadError": {
+          "before": 8.378458470299464,
+          "after": 4.834035216042129,
+          "improved": 2
+        },
+        "colorError": {
+          "before": 14.513419096684482,
+          "after": 8.686537798151635,
+          "improved": 3
+        },
+        "bevelError": {
+          "before": 30.871790378313932,
+          "after": 7.80300052205227,
+          "improved": 3
+        }
+      },
+      "validation": {
+        "cards": 6,
+        "spreadError": {
+          "before": 5.878825209649548,
+          "after": 3.0305190874212635,
+          "improved": 5
+        },
+        "colorError": {
+          "before": 19.77183181652617,
+          "after": 10.171111720703339,
+          "improved": 6
+        },
+        "bevelError": {
+          "before": 37.12820395945453,
+          "after": 11.20085237843338,
+          "improved": 6
+        }
+      }
+    },
+    "U": {
+      "calibration": {
+        "cards": 3,
+        "spreadError": {
+          "before": 7.5807840052457465,
+          "after": 4.536107380445472,
+          "improved": 3
+        },
+        "colorError": {
+          "before": 7.186356487693231,
+          "after": 3.335156466235991,
+          "improved": 3
+        },
+        "bevelError": {
+          "before": 12.688922481777341,
+          "after": 6.141913119858578,
+          "improved": 3
+        }
+      },
+      "validation": {
+        "cards": 6,
+        "spreadError": {
+          "before": 9.819782967477707,
+          "after": 6.775106342677432,
+          "improved": 6
+        },
+        "colorError": {
+          "before": 5.10606382051573,
+          "after": 4.759714805353565,
+          "improved": 4
+        },
+        "bevelError": {
+          "before": 10.137606529125081,
+          "after": 5.853495894734112,
+          "improved": 6
+        }
+      }
+    },
+    "B": {
+      "calibration": {
+        "cards": 3,
+        "spreadError": {
+          "before": 7.791479857024268,
+          "after": 2.244357916476257,
+          "improved": 3
+        },
+        "colorError": {
+          "before": 3.7537673927827666,
+          "after": 4.653802686328246,
+          "improved": 0
+        },
+        "bevelError": {
+          "before": 36.720356611298406,
+          "after": 1.6263785674519233,
+          "improved": 3
+        }
+      },
+      "validation": {
+        "cards": 5,
+        "spreadError": {
+          "before": 5.97292220994161,
+          "after": 1.392153729716187,
+          "improved": 5
+        },
+        "colorError": {
+          "before": 4.347776621328579,
+          "after": 5.270250987440376,
+          "improved": 0
+        },
+        "bevelError": {
+          "before": 37.36983205288492,
+          "after": 2.27839266327644,
+          "improved": 5
+        }
+      }
+    },
+    "R": {
+      "calibration": {
+        "cards": 3,
+        "spreadError": {
+          "before": 2.2967594487335368,
+          "after": 2.2958284359932306,
+          "improved": 3
+        },
+        "colorError": {
+          "before": 5.303978195423155,
+          "after": 5.308795436716859,
+          "improved": 0
+        },
+        "bevelError": {
+          "before": 8.378714939812534,
+          "after": 1.7637254733948684,
+          "improved": 3
+        }
+      },
+      "validation": {
+        "cards": 6,
+        "spreadError": {
+          "before": 2.1194477354729084,
+          "after": 2.1185167227326023,
+          "improved": 6
+        },
+        "colorError": {
+          "before": 4.409660400947515,
+          "after": 4.409660399510801,
+          "improved": 3
+        },
+        "bevelError": {
+          "before": 11.092979310676265,
+          "after": 5.5971366878035225,
+          "improved": 5
+        }
+      }
+    },
+    "G": {
+      "calibration": {
+        "cards": 3,
+        "spreadError": {
+          "before": 2.5051370791698155,
+          "after": 2.520098238739062,
+          "improved": 1
+        },
+        "colorError": {
+          "before": 7.790834873448276,
+          "after": 7.776356355451913,
+          "improved": 3
+        },
+        "bevelError": {
+          "before": 11.14846510588142,
+          "after": 1.8474136803879462,
+          "improved": 3
+        }
+      },
+      "validation": {
+        "cards": 6,
+        "spreadError": {
+          "before": 4.5169235565293056,
+          "after": 4.487001237390813,
+          "improved": 5
+        },
+        "colorError": {
+          "before": 6.417922346801446,
+          "after": 6.400523140469996,
+          "improved": 6
+        },
+        "bevelError": {
+          "before": 15.98983565809106,
+          "after": 4.728239855991862,
+          "improved": 6
+        }
+      }
+    }
+  },
+  "materials": {
+    "W": {
+      "alphaChanged": 0,
+      "transparentChanged": 0
+    },
+    "U": {
+      "alphaChanged": 0,
+      "transparentChanged": 0
+    },
+    "B": {
+      "alphaChanged": 0,
+      "transparentChanged": 0
+    },
+    "R": {
+      "alphaChanged": 0,
+      "transparentChanged": 0
+    },
+    "G": {
+      "alphaChanged": 0,
+      "transparentChanged": 0
+    }
+  },
+  "unchangedPanelWindows": {
+    "art": [50, 90, 380, 270],
+    "title": [50, 44, 330, 20],
+    "type": [50, 386, 310, 16],
+    "rules": [50, 440, 380, 150]
+  },
+  "rows": [
+    {
+      "id": "f0159719-ccf4-4798-a394-b01f5e422a27",
+      "name": "Calciderm",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "a85ee3defc4a77f510cebe86368ae63e099a6f8afe5d0e43614125e03066cd20",
+      "scan": {
+        "textureSpread": {
+          "sides": 43.79990149729127,
+          "footer": 62.44793054554346
+        }
+      },
+      "before-texture": {
+        "spreadError": 3.7690494910604215,
+        "colorError": 20.31351912778145,
+        "bevelError": 41.17693274736541,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 4.283949698006047,
+        "colorError": 10.603442552119617,
+        "bevelError": 15.222768212903466,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "6f5df373-5dad-4e33-9e2b-351f1f4bdde4",
+      "name": "Malach of the Dawn",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "b36197a6061f79736c1b63907cd38560b3787c5747221a66018738643f45303d",
+      "scan": {
+        "textureSpread": {
+          "sides": 40.18211945935752,
+          "footer": 57.66857402045048
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.967618772573786,
+        "colorError": 15.138327627736516,
+        "bevelError": 31.27770925427866,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 4.864736941585662,
+        "colorError": 6.085055691747622,
+        "bevelError": 5.484422440461496,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "7d48d622-f397-4f31-b1a5-0c23f60aa71c",
+      "name": "Mana Tithe",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "eba69aa910e876063172f2d288afda276ce4de82208cd7e9cd865eff76472586",
+      "scan": {
+        "textureSpread": {
+          "sides": 41.260121735510495,
+          "footer": 63.98993981093764
+        }
+      },
+      "before-texture": {
+        "spreadError": 4.267934739253718,
+        "colorError": 20.110794334925373,
+        "bevelError": 36.355331621018884,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 2.2430551844185658,
+        "colorError": 10.400475643340851,
+        "bevelError": 10.401167086556939,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "4037d6de-f30b-483c-83a8-9a4e2978f7fc",
+      "name": "Mesa Enchantress",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "8a36c04cd8b29e5b69f9d3173986de02d3e0599cdd05a6e7770406850be2b291",
+      "scan": {
+        "textureSpread": {
+          "sides": 38.14707353557753,
+          "footer": 57.8732420313228
+        }
+      },
+      "before-texture": {
+        "spreadError": 8.882807729027618,
+        "colorError": 11.529111565287632,
+        "bevelError": 27.501615624011,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 3.7448799742595043,
+        "colorError": 6.942644005906814,
+        "bevelError": 4.747625624042816,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "56d8e9fa-e241-4a11-99b8-ffced81eb38b",
+      "name": "Mycologist",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "43d3f02c2dff8b3980eefed43702f8d61b2e048697a78626c6a0f3035f7600e0",
+      "scan": {
+        "textureSpread": {
+          "sides": 39.20857149314352,
+          "footer": 62.31629255541837
+        }
+      },
+      "before-texture": {
+        "spreadError": 6.130533488196839,
+        "colorError": 19.940568056348916,
+        "bevelError": 36.58517115098969,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 2.0541036909947152,
+        "colorError": 10.230217549632798,
+        "bevelError": 10.631006616527742,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "21a8f0e5-8fec-45b2-a6a0-59d7b493a259",
+      "name": "Porphyry Nodes",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "82a6c428f6984dcd2b119d538dce8e455ef3ef94ebdd93f78bc72e178027ab08",
+      "scan": {
+        "textureSpread": {
+          "sides": 43.92716214003866,
+          "footer": 61.37306288310731
+        }
+      },
+      "before-texture": {
+        "spreadError": 4.242853000904802,
+        "colorError": 8.647087683652293,
+        "bevelError": 24.250483824869445,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 4.885013850597815,
+        "colorError": 5.463377971601967,
+        "bevelError": 3.752268790514582,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "f9a78d5c-27f8-4061-be89-0246fb69e752",
+      "name": "Revered Dead",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "8ca073bd3b2b6f398426482e5ce5f21d101f15ed16f1ec1180769b93b56493df",
+      "scan": {
+        "textureSpread": {
+          "sides": 36.642170841918954,
+          "footer": 68.6353814214346
+        }
+      },
+      "before-texture": {
+        "spreadError": 4.651683967218716,
+        "colorError": 18.74164063645621,
+        "bevelError": 34.11336206269977,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 2.3886410676256844,
+        "colorError": 9.031469510447266,
+        "bevelError": 8.159197528237826,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "6cd2ed50-cd9a-45d9-a59a-6279be1ab308",
+      "name": "Sinew Sliver",
+      "color": "W",
+      "cohort": "validation",
+      "referenceHash": "fde0a05c5b10fc7c2162d9aa8f9d9c3305da646f05002ae13933b6f9a49f117a",
+      "scan": {
+        "textureSpread": {
+          "sides": 34.66566043369335,
+          "footer": 62.14800899207461
+        }
+      },
+      "before-texture": {
+        "spreadError": 8.48613079959381,
+        "colorError": 24.386141115908558,
+        "bevelError": 43.260716920374755,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 2.3486279418969076,
+        "colorError": 14.676009376931876,
+        "bevelError": 17.306552385912806,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "46144ca5-aa81-4314-a1e5-1716f8565d70",
+      "name": "Sunlance",
+      "color": "W",
+      "cohort": "calibration",
+      "referenceHash": "843ebb17689d613ce1392d2067955b58a070056082a605b11d6f6085f6e640e4",
+      "scan": {
+        "textureSpread": {
+          "sides": 35.45125505111963,
+          "footer": 54.315246611904
+        }
+      },
+      "before-texture": {
+        "spreadError": 12.00971468096597,
+        "colorError": 23.364058041113523,
+        "bevelError": 40.86327168606136,
+        "textureSpread": {
+          "sides": 45.54804418993868,
+          "footer": 68.2378868350169
+        }
+      },
+      "after": {
+        "spreadError": 5.872211823269069,
+        "colorError": 13.653591416946124,
+        "bevelError": 14.909107151599414,
+        "textureSpread": {
+          "sides": 37.147498432648746,
+          "footer": 64.36342687691302
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "e727bb9e-3510-4c8e-ac49-6d7217667a18",
+      "name": "Frozen Aether",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "68bbee23197d636f996c588fe4b6026304871cf4916186765e7a9a858b981624",
+      "scan": {
+        "textureSpread": {
+          "sides": 40.42783515881368,
+          "footer": 67.8131703994425
+        }
+      },
+      "before-texture": {
+        "spreadError": 10.605397282228196,
+        "colorError": 4.5124873742186695,
+        "bevelError": 11.52705396375886,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 7.560720657427922,
+        "colorError": 3.6978754118213146,
+        "bevelError": 3.910530058016169,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "307d53c7-ef63-464f-b5f0-90220ee2b575",
+      "name": "Gossamer Phantasm",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "b7f7afef8e502620c824a561aecd5ee95c8722a3fd084b9c7115a3966803f7b1",
+      "scan": {
+        "textureSpread": {
+          "sides": 45.351932783548534,
+          "footer": 69.24174890329869
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.429059217932675,
+        "colorError": 6.807883680939573,
+        "bevelError": 12.316569468813706,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 4.3843825931324005,
+        "colorError": 1.9403920065763316,
+        "bevelError": 3.959139520532825,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "efa3d335-f39f-4291-85e0-7430561e953b",
+      "name": "Merfolk Thaumaturgist",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "650fea466d7e1f1e194687d5c670725d0a1a4004a987a59a21c7d1e16be3e1f2",
+      "scan": {
+        "textureSpread": {
+          "sides": 43.42117115169603,
+          "footer": 71.750799550164
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.139914710426268,
+        "colorError": 7.693541615379924,
+        "bevelError": 13.535801173493226,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 4.095238085625994,
+        "colorError": 6.315032190303735,
+        "bevelError": 7.915635534378102,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "a985cfb0-6bae-4b1c-902e-d9d7a1aeec61",
+      "name": "Ovinize",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "4e05c0810be85be9bc48e212204a61e049ee2d2d5302e29d82a94bb67d6e6bd9",
+      "scan": {
+        "textureSpread": {
+          "sides": 41.399576409695044,
+          "footer": 68.27465087342571
+        }
+      },
+      "before-texture": {
+        "spreadError": 9.888786419795906,
+        "colorError": 3.8884133634796187,
+        "bevelError": 9.865840603614288,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 6.8441097949956315,
+        "colorError": 3.99282614324603,
+        "bevelError": 5.545603595512939,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "586a1d9f-59ae-41a7-8de7-d6c4553ea79e",
+      "name": "Piracy Charm",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "8ac7772f19124e34e5731bfa17ae3110171e0cff41404801ebb286c6e98a7151",
+      "scan": {
+        "textureSpread": {
+          "sides": 41.34294537787039,
+          "footer": 61.50862726106854
+        }
+      },
+      "before-texture": {
+        "spreadError": 13.300113741886818,
+        "colorError": 5.318064981995889,
+        "bevelError": 7.022693439639639,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 10.255437117086544,
+        "colorError": 6.55570577928998,
+        "bevelError": 4.7317324397786065,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "2bbdd96b-e740-43d0-a1b6-7b9b92cc7993",
+      "name": "Primal Plasma",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "bfe004d997cce08df9623dfb00b6ca2eadaf7514b4a16e2c3e94009290deb286",
+      "scan": {
+        "textureSpread": {
+          "sides": 45.39547932164746,
+          "footer": 72.05551537562164
+        }
+      },
+      "before-texture": {
+        "spreadError": 6.000402712721737,
+        "colorError": 10.012919008954574,
+        "bevelError": 14.41612753583568,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 2.9557260879214624,
+        "colorError": 3.9327321468957828,
+        "bevelError": 8.027465685626618,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "4bcc3c1a-edb5-4534-aafa-5e078d503e64",
+      "name": "Riptide Pilferer",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "35e21f30d4c36ef330df480ccc521e0cd7d22aabae1e3556ba9bb6e8d4970672",
+      "scan": {
+        "textureSpread": {
+          "sides": 43.646145663840485,
+          "footer": 66.92142483983693
+        }
+      },
+      "before-texture": {
+        "spreadError": 9.442114809517577,
+        "colorError": 4.562467426743363,
+        "bevelError": 9.453589144889492,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 6.397438184717302,
+        "colorError": 4.175951009563951,
+        "bevelError": 6.257478531897509,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "0bbfd6aa-2fc9-4628-aa17-3ff0c30dc804",
+      "name": "Serendib Sorcerer",
+      "color": "U",
+      "cohort": "calibration",
+      "referenceHash": "72e109b3c33a46093295a28fd44aa6dce36993f1afa93a37d0a728bc2408bcf9",
+      "scan": {
+        "textureSpread": {
+          "sides": 46.235047821997796,
+          "footer": 64.59097213054912
+        }
+      },
+      "before-texture": {
+        "spreadError": 9.312890085082827,
+        "colorError": 4.7382667731855435,
+        "bevelError": 11.334070440682643,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 6.268213460282553,
+        "colorError": 4.132345245235859,
+        "bevelError": 6.4391341534162905,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "f9a4d7ac-082b-4f66-9b7f-4d1d0fda78c7",
+      "name": "Serra Sphinx",
+      "color": "U",
+      "cohort": "validation",
+      "referenceHash": "c4fb65cd1e8f58785952bb1afaf45f27fc06e807221672a8d8695317310f0b7f",
+      "scan": {
+        "textureSpread": {
+          "sides": 45.16086952569506,
+          "footer": 67.20618891499456
+        }
+      },
+      "before-texture": {
+        "spreadError": 8.542370841011476,
+        "colorError": 4.661408161276915,
+        "bevelError": 9.420660849354988,
+        "textureSpread": {
+          "sides": 50.846004027413215,
+          "footer": 78.60579609529935
+        }
+      },
+      "after": {
+        "spreadError": 5.497694216211201,
+        "colorError": 3.820898297896373,
+        "bevelError": 6.759995208821347,
+        "textureSpread": {
+          "sides": 48.118472942140585,
+          "footer": 75.24397393097144
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "2958de76-a5ec-4e14-a025-4fe0e84c8b4b",
+      "name": "Bog Serpent",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "db0cd2922d69b1a381ed0787b9cf12f7d6ee2bcd333ada62ca9293a3cb5990e8",
+      "scan": {
+        "textureSpread": {
+          "sides": 26.099250560567327,
+          "footer": 18.372859357860996
+        }
+      },
+      "before-texture": {
+        "spreadError": 6.037776278840951,
+        "colorError": 3.5557005658154885,
+        "bevelError": 36.345189669214754,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.345541093163817
+        }
+      },
+      "after": {
+        "spreadError": 0.49165315463146086,
+        "colorError": 4.259525404134697,
+        "bevelError": 1.3466838389074927,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.921073358771636
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "26c68473-70ca-40ba-b5c6-71ec30f88a2c",
+      "name": "Damnation",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "98e778c3f442592be27e7b564a15c9997617bf15369ab78b018eef79e1bfe9da",
+      "scan": {
+        "textureSpread": {
+          "sides": 28.105774584024267,
+          "footer": 23.425238112237963
+        }
+      },
+      "before-texture": {
+        "spreadError": 9.572313249683981,
+        "colorError": 3.699247567494253,
+        "bevelError": 35.537917607084744,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.335369929311664
+        }
+      },
+      "after": {
+        "spreadError": 4.023193676458929,
+        "colorError": 4.684626878856348,
+        "bevelError": 1.1735670045222737,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.916895092950607
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "9965d9f9-0a7b-48bc-a6ab-d8b73c4550a8",
+      "name": "Dunerider Outlaw",
+      "color": "B",
+      "cohort": "calibration",
+      "referenceHash": "4d314a7a76478355a7aa4a8bf230cb61ad5b4b5e6e3d7f49f316aba4ed2d570a",
+      "scan": {
+        "textureSpread": {
+          "sides": 26.595565840419958,
+          "footer": 21.329691605422205
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.764350042547871,
+        "colorError": 4.006354045038559,
+        "bevelError": 38.27796255759572,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.345541093163817
+        }
+      },
+      "after": {
+        "spreadError": 2.218226918338381,
+        "colorError": 5.017255775993692,
+        "bevelError": 2.358884858926004,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.921073358771636
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "b6e1ec29-508f-4e5e-b601-79e27743bcea",
+      "name": "Kor Dirge",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "3590e1faeca2f5dd4ef2e829541bff214825fb9784cf9601b0a4c5f234d5dac8",
+      "scan": {
+        "textureSpread": {
+          "sides": 25.372268976822188,
+          "footer": 19.722005691715566
+        }
+      },
+      "before-texture": {
+        "spreadError": 6.353944235821743,
+        "colorError": 4.090967150295759,
+        "bevelError": 36.51580643598894,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.335369929311664
+        }
+      },
+      "after": {
+        "spreadError": 1.000285936168268,
+        "colorError": 5.101948176252803,
+        "bevelError": 2.241718995619202,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.916895092950607
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "faa6fe9a-27ba-480f-84ce-b8d3306f0339",
+      "name": "Melancholy",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "aac10fe16680f4809053940d46773a1dc943c980c4d75ec0c6d6fbb97cd1999e",
+      "scan": {
+        "textureSpread": {
+          "sides": 26.45847000786303,
+          "footer": 20.451159254134485
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.261621532551624,
+        "colorError": 5.441272357355396,
+        "bevelError": 39.874728641069076,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.335369929311664
+        }
+      },
+      "after": {
+        "spreadError": 1.7125019593265716,
+        "colorError": 6.153355955249786,
+        "bevelError": 3.5576825379468437,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.916895092950607
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "c996792c-0846-4b78-bce5-1c6ad29640f6",
+      "name": "Null Profusion",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "cfc2dd1a09e71a419c23dd4db7e5ee523474038160dcad15e795d33aeacc1db0",
+      "scan": {
+        "textureSpread": {
+          "sides": 23.776893072860222,
+          "footer": 17.845857712007998
+        }
+      },
+      "before-texture": {
+        "spreadError": 4.618182293986976,
+        "colorError": 3.9883389340720035,
+        "bevelError": 36.99502475181608,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.335369929311664
+        }
+      },
+      "after": {
+        "spreadError": 0.9309372792380763,
+        "colorError": 4.999282724579839,
+        "bevelError": 1.145993846548907,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.916895092950607
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "b2968e01-2d04-4591-98de-24688bb087df",
+      "name": "Rathi Trapper",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "94aff493e4cb46f804a8595d85f25e56c6194834bf3e541a8497f6165232e9f5",
+      "scan": {
+        "textureSpread": {
+          "sides": 25.47610829863723,
+          "footer": 21.294983893168748
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.187267415529778,
+        "colorError": 4.092570173815335,
+        "bevelError": 34.650974605738305,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.345541093163817
+        }
+      },
+      "after": {
+        "spreadError": 1.7327662430768243,
+        "colorError": 4.959893854159027,
+        "bevelError": 1.6660714973839177,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.921073358771636
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "a26bf956-90eb-4221-a8e0-c8414d819072",
+      "name": "Shrouded Lore",
+      "color": "B",
+      "cohort": "validation",
+      "referenceHash": "2d16d0569f4093082828cea6b33d92fabd1da477985db207e8b649db61fbe7ad",
+      "scan": {
+        "textureSpread": {
+          "sides": 22.877929018215454,
+          "footer": 18.395648322314685
+        }
+      },
+      "before-texture": {
+        "spreadError": 4.443595571817935,
+        "colorError": 4.125734491104401,
+        "bevelError": 38.812625829812205,
+        "textureSpread": {
+          "sides": 19.051016267582604,
+          "footer": 13.335369929311664
+        }
+      },
+      "after": {
+        "spreadError": 1.5842772307711943,
+        "colorError": 5.136774226960426,
+        "bevelError": 2.7804964388833304,
+        "textureSpread": {
+          "sides": 25.567730250393765,
+          "footer": 17.916895092950607
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "0f2133c0-8561-4264-8802-1b2933abf186",
+      "name": "Blood Knight",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "3b49b42141d80a39ea63ef186c24f7c5d504fd4308f3e07cf7e1f57b9fd90f25",
+      "scan": {
+        "textureSpread": {
+          "sides": 21.181157989149142,
+          "footer": 23.87211805913418
+        }
+      },
+      "before-texture": {
+        "spreadError": 2.6109104557391127,
+        "colorError": 4.571818039357918,
+        "bevelError": 11.379534976472918,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 2.6099794429988066,
+        "colorError": 4.575579178209578,
+        "bevelError": 4.203841394019288,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "82d43220-1e4e-4b61-9844-51c8bb5dde35",
+      "name": "Brute Force",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "49b5e83ceb0591a6c0438e90aa0ec9e8523daa8c948c18d610c857dadd934edd",
+      "scan": {
+        "textureSpread": {
+          "sides": 24.14620805512468,
+          "footer": 21.833322984954762
+        }
+      },
+      "before-texture": {
+        "spreadError": 1.60220682509987,
+        "colorError": 1.7961624049475056,
+        "bevelError": 14.806618267736981,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 1.6012758123595638,
+        "colorError": 1.7908171081226407,
+        "bevelError": 7.630924685283351,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "dddda66c-2df4-452e-8eca-7e100213fd98",
+      "name": "Molten Firebird",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "47f897029c841823a2501c9491b5b8dc8a0937821958bc8781109f3891cddc45",
+      "scan": {
+        "textureSpread": {
+          "sides": 23.978807107250375,
+          "footer": 26.29644291190091
+        }
+      },
+      "before-texture": {
+        "spreadError": 2.424248323071861,
+        "colorError": 9.229837002303178,
+        "bevelError": 3.0654792016908963,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 2.423317310331555,
+        "colorError": 9.235182290507765,
+        "bevelError": 4.110214380762734,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "97787109-408e-42d3-acc5-300f5f5bf2ff",
+      "name": "Prodigal Pyromancer",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "f7456fcb1eb8c072cd37236fbca959d29d820ef413ee280cb95dd0d264f577e5",
+      "scan": {
+        "textureSpread": {
+          "sides": 24.384456726611234,
+          "footer": 20.258813387497
+        }
+      },
+      "before-texture": {
+        "spreadError": 2.270337288085475,
+        "colorError": 2.3638158373400393,
+        "bevelError": 17.601410249175405,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 2.269406275345169,
+        "colorError": 2.358470549135452,
+        "bevelError": 10.425716666721776,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "0b778d44-60a9-4230-8090-73c38e7c9697",
+      "name": "Pyrohemia",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "e5b40a06d676aebf168f1576d7bd96db7e47770de1fe2963a6e5facb224ccd0c",
+      "scan": {
+        "textureSpread": {
+          "sides": 22.313370148586984,
+          "footer": 23.23790353541196
+        }
+      },
+      "before-texture": {
+        "spreadError": 1.8163355031401203,
+        "colorError": 5.510413633757249,
+        "bevelError": 7.0580098310295964,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 1.815404490399814,
+        "colorError": 5.515758930582116,
+        "bevelError": 0.6102414556467721,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "17d4fd92-33d1-4f14-a4f4-7c7feaa18f93",
+      "name": "Reckless Wurm",
+      "color": "R",
+      "cohort": "calibration",
+      "referenceHash": "87deba89bb8beb3100ddd0342144b0d33be65530bee58419ae84db7800d15ea1",
+      "scan": {
+        "textureSpread": {
+          "sides": 21.313188429955005,
+          "footer": 23.708392363104572
+        }
+      },
+      "before-texture": {
+        "spreadError": 2.463032387321377,
+        "colorError": 5.829702913154296,
+        "bevelError": 6.698600011935085,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 2.4621013745810707,
+        "colorError": 5.835048201358884,
+        "bevelError": 0.47709357051854556,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "7958a1e5-b671-4ecb-95de-240ffaf5021e",
+      "name": "Shivan Wumpus",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "7c6f5bc136684ef1fa125d3d3f99f6f7020bfe2c1869e6061021b3e78cf4e584",
+      "scan": {
+        "textureSpread": {
+          "sides": 23.415189500337902,
+          "footer": 23.89494307543442
+        }
+      },
+      "before-texture": {
+        "spreadError": 1.5053072082948518,
+        "colorError": 7.01547441822912,
+        "bevelError": 6.246355084473706,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 1.5043761955545456,
+        "colorError": 7.0208197064337075,
+        "bevelError": 0.9293384979799247,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "5d7f701c-dcdc-4067-8d00-b4b7aadee9ba",
+      "name": "Simian Spirit Guide",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "c2ff5128c1d85bbd7c764e2754118729112306021278d61fab2987692083fa87",
+      "scan": {
+        "textureSpread": {
+          "sides": 22.144750109857064,
+          "footer": 21.02136333705768
+        }
+      },
+      "before-texture": {
+        "spreadError": 3.0089156216822204,
+        "colorError": 3.502150130785232,
+        "bevelError": 14.991137438864493,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 3.007984608941914,
+        "colorError": 3.4968048425806444,
+        "bevelError": 7.815443856410863,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "47307d3f-14e8-42bd-acf4-1383e5790e6f",
+      "name": "Skirk Shaman",
+      "color": "R",
+      "cohort": "validation",
+      "referenceHash": "385213136eb36245352c42489ff3d8f804d84544587b20f698eaa266aa16861f",
+      "scan": {
+        "textureSpread": {
+          "sides": 22.56114938449737,
+          "footer": 23.841630836210527
+        }
+      },
+      "before-texture": {
+        "spreadError": 1.9056711466031722,
+        "colorError": 2.550522612080011,
+        "bevelError": 9.846875622116116,
+        "textureSpread": {
+          "sides": 25.857402765886185,
+          "footer": 23.326541924393
+        }
+      },
+      "after": {
+        "spreadError": 1.904740133862866,
+        "colorError": 2.5558679002845985,
+        "bevelError": 2.6711820396624852,
+        "textureSpread": {
+          "sides": 25.855540740405573,
+          "footer": 23.326541924393
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "da2a65d6-0887-4fe8-a6e6-909208fddd90",
+      "name": "Essence Warden",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "bb6f8a178b17c6824cefe7a0a3f0a42d8772570722a48479a1fe96236dff1c3c",
+      "scan": {
+        "textureSpread": {
+          "sides": 20.630382533952144,
+          "footer": 40.14430797174961
+        }
+      },
+      "before-texture": {
+        "spreadError": 7.596339679874994,
+        "colorError": 5.930157723743963,
+        "bevelError": 12.637214407078721,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.86959390738289
+        }
+      },
+      "after": {
+        "spreadError": 7.551456201167255,
+        "colorError": 5.9176254781564,
+        "bevelError": 3.1568265041140364,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.86959390738289
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "6a9985e8-535d-4815-8a58-a98c3edb68d4",
+      "name": "Fa'adiyah Seer",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "b7ad11a2ef3c236946e388c5ba8a349d1eeeb7f77ad9d54d5f840fa2f4f50f2e",
+      "scan": {
+        "textureSpread": {
+          "sides": 23.16346841192542,
+          "footer": 41.598063634798365
+        }
+      },
+      "before-texture": {
+        "spreadError": 5.602918909363979,
+        "colorError": 6.323656734678447,
+        "bevelError": 19.14708858250295,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.86959390738289
+        }
+      },
+      "after": {
+        "spreadError": 5.55803543065624,
+        "colorError": 6.3052803992716875,
+        "bevelError": 7.529251200576847,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.86959390738289
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "ea9e0de1-2299-4ff9-b49a-88535a96bda0",
+      "name": "Gaea's Anthem",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "8ff559a0adcf75e5da2b95f6d9183af884c596f1f27a058c6dd3bd5df7633f29",
+      "scan": {
+        "textureSpread": {
+          "sides": 24.64267456567427,
+          "footer": 42.16050741579345
+        }
+      },
+      "before-texture": {
+        "spreadError": 4.582093941992014,
+        "colorError": 6.241401065001236,
+        "bevelError": 15.681218457858114,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.86959390738289
+        }
+      },
+      "after": {
+        "spreadError": 4.537210463284275,
+        "colorError": 6.2230300021872775,
+        "bevelError": 4.06338107593201,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.86959390738289
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "f467cdea-6166-4289-918b-18f5038c94ed",
+      "name": "Groundbreaker",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "9c08ef4d57dd7a3daeb803def29efe09b0f734e1aaee8c276d460d5bb8ce7f35",
+      "scan": {
+        "textureSpread": {
+          "sides": 28.067096574986238,
+          "footer": 46.14496082228365
+        }
+      },
+      "before-texture": {
+        "spreadError": 1.8469768510083142,
+        "colorError": 6.538357555200605,
+        "bevelError": 14.281051113818117,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.86959390738289
+        }
+      },
+      "after": {
+        "spreadError": 1.891860329716053,
+        "colorError": 6.519986492386645,
+        "bevelError": 2.6632137318920144,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.86959390738289
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "4b90dbd0-4672-4c0b-92eb-262ddd11cd32",
+      "name": "Harmonize",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "155a0082cc745d55cc83f7e1e0d14728fa633b4ac1fea124df1f3a15e8d16742",
+      "scan": {
+        "textureSpread": {
+          "sides": 28.766778413795507,
+          "footer": 45.58828402054223
+        }
+      },
+      "before-texture": {
+        "spreadError": 2.4751561712836576,
+        "colorError": 8.383636739304396,
+        "bevelError": 9.226388251178435,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.86959390738289
+        }
+      },
+      "after": {
+        "spreadError": 2.5200396499913964,
+        "colorError": 8.371104493716832,
+        "bevelError": 2.391449130747669,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.86959390738289
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "d6f58258-a1bd-4364-954e-c39938f7dab2",
+      "name": "Healing Leaves",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "1d8599f9e1662bd054e3e8de5e13d06f8246c1faabac658dee4976c65d46485c",
+      "scan": {
+        "textureSpread": {
+          "sides": 23.883187909469584,
+          "footer": 44.83836691963073
+        }
+      },
+      "before-texture": {
+        "spreadError": 3.5992070822451154,
+        "colorError": 6.860651769366951,
+        "bevelError": 16.62625330297264,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.82219303552169
+        }
+      },
+      "after": {
+        "spreadError": 3.5543236035373766,
+        "colorError": 6.842280706552992,
+        "bevelError": 5.008415921046534,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.82219303552169
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "2b2e6027-598d-4ba0-93ae-f76d031de8af",
+      "name": "Hedge Troll",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "b383507dea61a1c57c91e250d0e782e642f8141da8cfda79afa8477506f867da",
+      "scan": {
+        "textureSpread": {
+          "sides": 26.064964244156897,
+          "footer": 46.212394158672055
+        }
+      },
+      "before-texture": {
+        "spreadError": 1.821305295380796,
+        "colorError": 7.422324808732341,
+        "bevelError": 12.574676408296037,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.82219303552169
+        }
+      },
+      "after": {
+        "spreadError": 1.7764218166730572,
+        "colorError": 7.4039537459183835,
+        "bevelError": 1.1900892763571609,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.82219303552169
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "4197d992-f868-44dd-85f7-598b22e208f3",
+      "name": "Keen Sense",
+      "color": "G",
+      "cohort": "calibration",
+      "referenceHash": "a4288261aa63bc931bb38abb6c2ceb99e29da33cf88e61d6cd71cb76a00e88b3",
+      "scan": {
+        "textureSpread": {
+          "sides": 29.323089036995796,
+          "footer": 44.60960657275865
+        }
+      },
+      "before-texture": {
+        "spreadError": 3.2189497708449935,
+        "colorError": 7.56654307230809,
+        "bevelError": 11.644330658169793,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.82219303552169
+        }
+      },
+      "after": {
+        "spreadError": 3.2638332495527322,
+        "colorError": 7.554010826720526,
+        "bevelError": 1.9607026340590086,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.82219303552169
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    },
+    {
+      "id": "b2ba91ee-1f8e-47db-bb2d-bbb62039db17",
+      "name": "Seal of Primordium",
+      "color": "G",
+      "cohort": "validation",
+      "referenceHash": "2e97b665ad102bf7f4cb54b1c07e63790a6c3cc3eb24f75f6a95079fcd56fb84",
+      "scan": {
+        "textureSpread": {
+          "sides": 24.73330335053336,
+          "footer": 43.43865589367435
+        }
+      },
+      "before-texture": {
+        "spreadError": 3.8740048746914155,
+        "colorError": 6.6133092328174685,
+        "bevelError": 17.56618808431583,
+        "textureSpread": {
+          "sides": 27.09777595806885,
+          "footer": 48.82219303552169
+        }
+      },
+      "after": {
+        "spreadError": 3.8291213959836767,
+        "colorError": 6.594935764264979,
+        "bevelError": 5.948350702389727,
+        "textureSpread": {
+          "sides": 27.008009000653374,
+          "footer": 48.82219303552169
+        }
+      },
+      "unchangedPanels": {
+        "art": 0,
+        "title": 0,
+        "type": 0,
+        "rules": 0
+      }
+    }
+  ],
+  "status": "validated-native-candidate-awaiting-visual-review",
+  "baseline": "4f0405a",
+  "sourceGuards": {
+    "planar-blackpoint.ts": "e1505015c5ceaea2b512ef9755847963c43c0ebd78ee3f8bb5ba4c1e3fa0011b",
+    "planar-texture-values.ts": "c732bb4700e5142f8708ba4426b1f6075a5385deb0c35ff1e0817d31486baf1d",
+    "planar-frame-geometry.ts": "e4d0962d02c3b48d05b18b583f2047e80da5346c12b809e05875c713687cca73",
+    "planar-color-values.ts": "33684b79f6ac3d6de44d4fe9eab79cb02c8fde3a99c4ff577ce7993c04c3261c",
+    "planar-color-profiles.ts": "c0049b0f48ac1c66e37b7167a137de193fedae64ff464f5c29574143fe49fcc1",
+    "frame-blackpoint.ts": "d42974bb32c6932787dc154792fc901df27aa313e05e2d6707a7ff1a48d682b0",
+    "frame-material-blend.ts": "36641ba46adc4f8f99aa263c32981191088db78c32e78c3189a4b8c0afa5107e",
+    "frame-material-mask.ts": "1284374e579b65538bd2f5194d21d91f9532dd34de591c7e5bc93e15e17dd9f2",
+    "frame-hsb.ts": "61234564772e867a4ec681fb79800732cd44475faef04c7581a5ed4c71c33ab6",
+    "early-hsb-material.ts": "db510176859fa4a68e927b1c94ae7bf22ef4c58bec7197f1ccdb2b7c0911ca83"
+  },
+  "assets": {
+    "pinline": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/pinline.png",
+      "sha256": "f60a550d624f75becdbabd811a4b3843a5d26728991688b5b4e6bb1ba59263f4"
+    },
+    "frame": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/frame.png",
+      "sha256": "c616daeb90c0931b04fbea7a650b8b9e38532ab26f729484609280776ad0d930"
+    }
+  },
+  "calibration": {
+    "cardsPerColor": 3,
+    "holdout": 29,
+    "curvePolicy": "Monotone per-channel tone offsets over source maximum channel. Only native texture selection, minus expanded bevel selection. Black gives its larger footer region three times the weight of the narrow rails and explicitly fits texture spread. Curves preserve source values at 0, 12 and 255. No per-printing coefficients.",
+    "bevelPolicy": "Native pinline selection expanded outward seven canonical pixels, clipped by native frame selection. Per-color attenuation toward a measured backdrop; no underlying hidden texture is reconstructed.",
+    "decisions": {
+      "W": "Adopt texture curve and bevel blend.",
+      "U": "Adopt texture curve and bevel blend.",
+      "B": "Adopt contrast-prioritized texture curve and bevel blend. Held-out average texture color error rises by 0.92/255; contrast error falls 77%. Narrow side rails and lower texture have different source means, so one curve cannot match both.",
+      "R": "Adopt bevel only. Reject trial texture curve: negligible contrast gain and worse validation color.",
+      "G": "Adopt bevel only. Reject trial texture curve: worse contrast on calibration and validation."
+    },
+    "fits": {
+      "W": {
+        "knots": [
+          [0, [0, 0, 0]],
+          [12, [0, 0, 0]],
+          [32, [6.182, 2.078, 0.038]],
+          [64, [10.55, 4.709, 0.394]],
+          [96, [10.127, 8.149, 1.096]],
+          [144, [5.738, 10.743, -0.342]],
+          [192, [-2.815, 2.441, -6.136]],
+          [224, [-30.89, -20.679, -19.871]],
+          [255, [0, 0, 0]]
+        ],
+        "bevel": {
+          "amount": 0.461,
+          "backdrop": [187.48, 173.69, 141.36]
+        }
+      },
+      "U": {
+        "knots": [
+          [0, [0, 0, 0]],
+          [12, [0, 0, 0]],
+          [32, [1.348, 3.445, 15.714]],
+          [64, [0.86, 5.817, 26.489]],
+          [96, [-3.585, 5.085, 24.238]],
+          [144, [-9.056, 2.729, 16.683]],
+          [192, [-11.185, 0.527, 11.077]],
+          [224, [-7.967, -6.873, 5.173]],
+          [255, [0, 0, 0]]
+        ],
+        "bevel": {
+          "amount": 0.948,
+          "backdrop": [133.71, 169.72, 207.83]
+        }
+      },
+      "B": {
+        "knots": [
+          [0, [0, 0, 0]],
+          [12, [0, 0, 0]],
+          [24, [-3.259, -2.267, -5.909]],
+          [40, [8.13, 17.832, 9.257]],
+          [64, [-14.985, -4.116, -10.65]],
+          [96, [-32.142, -27.216, -30.387]],
+          [144, [-17.679, -19.615, -20.463]],
+          [192, [-2.331, -8.79, -8.678]],
+          [224, [3.963, -2.587, -2.344]],
+          [255, [0, 0, 0]]
+        ],
+        "bevel": {
+          "amount": 0.737,
+          "backdrop": [23.03, 30.4, 33.46]
+        }
+      },
+      "R": {
+        "knots": [],
+        "bevel": {
+          "amount": 0.192,
+          "backdrop": [134.83, 60.81, 41.86]
+        }
+      },
+      "G": {
+        "knots": [],
+        "bevel": {
+          "amount": 0.431,
+          "backdrop": [80.64, 99.97, 65.14]
+        }
+      }
+    }
+  }
+}

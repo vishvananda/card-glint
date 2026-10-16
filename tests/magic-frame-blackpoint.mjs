@@ -66,7 +66,11 @@ try {
     assert.deepEqual(calibratedFrameMaterials(input)[plate.frame].blackPoint, point);
     const ramp = { width: 256, height: 1, data: new Uint8ClampedArray(256 * 4) };
     for (let v = 0; v < 256; v++) ramp.data.set([v, v, v, 255], v * 4);
-    colorFrame(ramp, { ...identity, blackPoint: point });
+    colorFrame(
+      ramp,
+      { ...identity, blackPoint: point },
+      { width: 256, height: 1, data: new Uint8ClampedArray(256 * 4) },
+    );
     for (let v = 0; v < 256; v++) {
       assert.equal(ramp.data[v * 4 + 3], 255);
       for (let c = 0; c < 3; c++) {
@@ -81,7 +85,8 @@ try {
     );
   }
   const plate = framePlate(face),
-    point = planarFrameBlackPoint(face, plate.frame);
+    selectedPoint = planarFrameBlackPoint(face, plate.frame),
+    point = { lift: selectedPoint.lift, transition: selectedPoint.transition };
   for (const override of [
     { setCode: 'lea' },
     { setCode: 'leb' },

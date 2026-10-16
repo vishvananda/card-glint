@@ -11,7 +11,7 @@ import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { isRetro } from './retro-frame.js';
 import { basicLandColor, plateBasicSymbol } from './plate-basic-land.js';
 import { eighthBasicRect, usesEighthBasicGeometry } from './eighth-basic-geometry.js';
-import { planarCalibratedStock } from './planar-blackpoint.js';
+import { planarCalibratedStock, planarBevelBlend } from './planar-blackpoint.js';
 
 export interface FramePlate {
   frame: string;
@@ -146,8 +146,10 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
   if (!plate) return null;
   const brush = eighthArtistBrush(face);
   const basic = plateBasicSymbol(face);
+  const blend = planarBevelBlend(face, plate.frame);
   return [
     ...(basic ? [basic] : []),
+    ...(blend ? [blend.maskSource, blend.outerMaskSource] : []),
     ...(brush ? [brush] : []),
     plate.frame,
     ...(plate.rightFrame ? [plate.rightFrame] : []),

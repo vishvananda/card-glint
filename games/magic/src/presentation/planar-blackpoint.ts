@@ -1,7 +1,10 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import type { FrameBlackPoint } from './frame-blackpoint.js';
+import type { FrameMaterialBlend } from './frame-material-blend.js';
+import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { Rgb } from './hsb.js';
+import { PLANAR_TEXTURE } from './planar-texture-values.js';
 
 // Lower-quartile native-raster ink residuals from three cards per source.
 // Twenty-nine independent printings validate these five material-level fits.
@@ -32,5 +35,40 @@ export function planarFrameBlackPoint(
   if (!planarCalibratedStock(face, source)) return undefined;
   const key = source.split('/').at(-1)?.replace('.png', ''),
     lift = key && INK[key];
-  return lift ? { lift, transition: 96 / 255 } : undefined;
+  return lift
+    ? {
+        lift,
+        transition: 96 / 255,
+        ...(PLANAR_TEXTURE[key]!.knots.length
+          ? {
+              textureMaskSource: `${CONJURER_ROOT}/img/frames/8th/frame.png`,
+              texture: PLANAR_TEXTURE[key]!.knots.map(
+                ([x, rgb]) => [x / 255, [rgb[0] / 255, rgb[1] / 255, rgb[2] / 255]] as const,
+              ),
+            }
+          : {}),
+      }
+    : undefined;
+}
+
+export function planarBevelBlend(
+  face: RenderedCardInput,
+  source: string,
+): FrameMaterialBlend | undefined {
+  if (!planarCalibratedStock(face, source)) return undefined;
+  const key = source.split('/').at(-1)?.replace('.png', ''),
+    profile = key && PLANAR_TEXTURE[key];
+  return profile
+    ? {
+        maskSource: `${CONJURER_ROOT}/img/frames/8th/pinline.png`,
+        outerMaskSource: `${CONJURER_ROOT}/img/frames/8th/frame.png`,
+        outset: 7 / 488,
+        backdrop: [
+          profile.bevel.backdrop[0] / 255,
+          profile.bevel.backdrop[1] / 255,
+          profile.bevel.backdrop[2] / 255,
+        ],
+        amount: profile.bevel.amount,
+      }
+    : undefined;
 }

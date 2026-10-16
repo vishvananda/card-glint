@@ -35,7 +35,7 @@ The [Planar Chaos colorshifted ink study](fixtures/accuracy/planar-blackpoint.js
 now fits source-specific shadow curves across all five colors, independently of
 the shared RGB 24/21/16 stock target. Native-raster fitting avoids thin-line
 sampling bias. All 29 validation printings improve inner-ink RGB error, averaging
-17.74 to 7.96 bytes; this is not a whole-card score. Every brighter source pixel
+17.74 to 7.96 bytes; this is not a whole-card score. In that initial study, every brighter source pixel
 (maximum channel at least 96), alpha value and transparent pixel is unchanged.
 Prodigal Pyromancer improves only marginally and remains a visual review case;
 Vampiric Link remains excluded by its existing rejected registration. Other
@@ -47,11 +47,37 @@ geometry. Only the outer texture bands expand; the central 428 × 607 pixels
 remain byte-identical on all 44 native renders. Boundary error improves from
 1.69 to 0.12 pixels on all 25 held-out cards with identifiable edges. Most black
 edges are too low-contrast for that estimator, and the green top edge is obscured
-by its title bevel; these are excluded from the numeric claim. The black source
-also has overly prominent gray inner bevels that still require an asset review.
+by its title bevel; these are excluded from the numeric claim.
 The existing interior ink improvements survive this replay. Other frame families
 retain their geometry; both Chromium and WebKit pass a synthetic mask regression
 at table and inspect resolution. This correction is not yet released/deployed.
+
+The [texture/bevel follow-up](fixtures/accuracy/planar-frame-texture.json)
+retains that geometry and the existing ink lifts across all five colors.
+Native pinline selections expand outward seven canonical pixels, clipped by the
+native frame selection, to soften the baked ridges. Separate tone curves fit
+clean texture distributions with bevels excluded. Source masks are pinned to the
+same [Conjurer revision](https://github.com/joshbirnholz/cardconjurer/tree/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th).
+These are selection masks, not separate bevel artwork; no hidden underlying
+texture is reconstructed.
+
+Three calibration scans per color fit shared material profiles, then 29 held-out
+cards validate them on frozen poses. Bevel RGB error improves in every color
+(on 28/29 individual validation cards). White, blue and black adopt texture tone
+curves; red and green retain their prior texture tones after their trial curves
+failed to improve contrast and color together. The broader texture check includes
+clean lower-background regions as well as side strips. Black's held-out contrast
+error falls 5.97 → 1.39, while its mean RGB error rises 4.35 → 5.27. These are
+regional 0–255 byte errors, not full-card accuracy. Its narrow rails and lower
+texture have different source means; one curve cannot match both exactly, and
+the texture pattern itself remains an asset limitation.
+
+All 44 native replays preserve artwork and title/type/rules-panel interiors
+exactly. Material alpha and transparent pixels are unchanged. This supersedes
+the initial ink study's brighter-pixel invariance only inside the new selections.
+Two mask readbacks and linear-time selection expansion happen only on derived
+material cache misses; animation does no new work. The candidate is awaiting
+visual review and has not been released.
 
 The [normalization audit](fixtures/accuracy/legends-normalization-review.json)
 found inherited sampling bands crossing title and artist lettering. Search
