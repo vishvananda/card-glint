@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "validated-offline-comparison-normalization-not-deployed",
+  "status": "outer-strips-validated-interior-registration-followup-not-deployed",
   "scope": "All 1,205 ordinary English nonfoil-available Alpha, Beta, Unlimited and Revised printings; high-resolution Scryfall scans. Canonical size 488 by 680.",
   "baseRelease": "0.3.8",
   "baseCommit": "f88cb1aa5318f5d5998762181e8b5a8783ec8d02",
@@ -19,6 +19,7 @@
     "examples": 41,
     "scope": "Largest accepted correction per material/set, all eight rejected scans, recovered cases and the small Beta Twiddle regression were inspected as frame-strip overlays. No subjective review override changes a rejected pose.",
     "notes": [
+      "Follow-up frame diagnostics find that Unlimited/Revised inner art and rules-box edges can still vary by 1–3 pixels while these outer strips agree. This report validates outer-strip registration only, not the entire printed interior. See early-core-frame-diagnostics.json before using these poses for new renderer calibration.",
       "Weak lower black-frame edges and Beta land left bevels remain the rejection clusters.",
       "Beta Twiddle selects a simpler uniform pose: certification objective falls 0.9545 to 0.9436 versus the first clean-strip trial, but improves over raw. Retained without using certification to select the earlier pose.",
       "Warped outside-source pixels must remain unavailable coverage, not be mistaken for incorrect card borders in subsequent full-card scoring. Keep real observed corner-shape differences measurable."

@@ -104,13 +104,28 @@ Fixed calibration targets, disjoint model-selection strips and a third
 certification group separate pose fitting from verification. A broader initial
 search avoids choosing the wrong bevel peak without relaxing acceptance gates.
 
-Final coverage is **292/295 Alpha, 297/302 Beta, 302/302 Unlimited and 306/306
+Outer-strip coverage is **292/295 Alpha, 297/302 Beta, 302/302 Unlimited and 306/306
 Revised**. Every accepted pose also passes replay on the warped raster. These
 are comparison-only transformations; renderer defaults have not changed.
 Earlier-used validation cards are explicitly reused validation. Eight uncertain
 scans remain flagged, and Beta Twiddle retains a small regression relative to
-the first clean-strip trial while improving over its raw scan. Shared frame,
-symbol, color and text calibration follows on these frozen targets.
+the first clean-strip trial while improving over its raw scan.
+
+The [baseline frame diagnostic](fixtures/accuracy/early-core-frame-diagnostics.json)
+captures all **1,205** unchanged 0.3.8 rebuilds with no render failures. Its
+whole-frame transform is not adopted: Revised lands regress on validation.
+Removing artwork-sensitive source pixels makes the art-bevel measurements more
+reliable; all 84 source variants pass an exact perturbation check. Reference-side
+interior isolation is still unproven, and weak edges remain explicitly unmeasured.
+
+Unlimited/Revised scans have a further registration problem: the outer border
+can agree while art and rules-box edges vary together by roughly 1–3 pixels.
+Outer-strip certification does not certify the printed interior. Establish
+scan-only interior anchors before adopting shared geometry or deriving text
+defaults; preserve outer-border disagreement as a separate diagnostic. Alpha/Beta
+white examples give more consistent inner-edge measurements. Original type lines
+also remain unverified on 912 faces, and original rules on 16 Unlimited faces;
+do not include those components as verified printing accuracy until reviewed.
 
 ## Current execution checkpoint
 

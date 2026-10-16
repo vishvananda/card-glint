@@ -1,0 +1,4678 @@
+{
+  "schemaVersion": 1,
+  "status": "diagnostic-only-no-renderer-change",
+  "baseRelease": "0.3.8",
+  "baseCommit": "f88cb1aa5318f5d5998762181e8b5a8783ec8d02",
+  "painterHash": "78772dff1c6d0154f5e138838e64b798b7d21be71f6931d4dc074fc3100d486b",
+  "capture": {
+    "rendered": 1205,
+    "failures": 0,
+    "blankVariants": 84,
+    "printingLayerVariants": 84,
+    "componentAssets": 53
+  },
+  "scope": "Alpha, Beta, Unlimited and Revised. Same cached scans, art, source wording and existing calibration UUIDs. Validation printings are reused validation. No new renderer defaults, runtime scan transforms or score generation published.",
+  "findings": [
+    "A whole-frame scale/translation trades outer-border alignment against art and rules-box placement. Rejected as a general correction: Revised basic lands and duals regress on validation.",
+    "Blank artwork adds a synthetic contrast boundary to candidate gradients. Opaque-only printing-layer support plus a three-pixel derivative halo removes that influence. Perturbing every nonopaque source pixel leaves all retained gradients exactly unchanged in all 84 variants. Reference-side content at incorrect candidate positions is not proven isolated.",
+    "Alpha/Beta white calibration cards give consistent small edge offsets. Unlimited/Revised outer-border positions are consistent while inner art and rules-box positions vary together by roughly 1–3 pixels across calibration scans. Outer-strip certification alone does not establish interior registration. The cause is unverified; do not call it a renderer discrepancy or infer per-card runtime corrections.",
+    "Revised art-top opaque support is insufficient in several material groups; missing edge evidence is null, not perfect alignment. Other weak/noisy fits and search-boundary cases remain diagnostic.",
+    "Original type lines remain unverified for 912 faces and original rules for 16 Unlimited faces. Some fallback types already match, but these components must not be counted as verified printing accuracy before review. MTGJSON originalType in this cache often contains modern types and cannot replace scan-reviewed wording blindly."
+  ],
+  "next": [
+    "Establish scan-only interior-frame anchors with independent fitting/selection/certification strips for Unlimited and Revised. Preserve historical outer-border poses and explicitly report disagreements instead of hiding genuine border shape errors.",
+    "Re-evaluate shared outer stock, art aperture and rules-box geometry separately; retain dedicated Revised land geometry unless a representative calibration and validation cohort supports changing it.",
+    "Verify any selected geometry in the actual painter before mana, material and typography fitting. Audit original wording sources before full-card scores."
+  ],
+  "contentCoverage": {
+    "lea": {
+      "total": 295,
+      "types": {
+        "oracle-fallback": 210,
+        "scan-reviewed": 85
+      },
+      "rules": {
+        "printing-reference": 271,
+        "scan-reviewed": 24
+      }
+    },
+    "leb": {
+      "total": 302,
+      "types": {
+        "oracle-fallback": 216,
+        "scan-reviewed": 86
+      },
+      "rules": {
+        "printing-reference": 286,
+        "scan-reviewed": 16
+      }
+    },
+    "2ed": {
+      "total": 302,
+      "types": {
+        "scan-reviewed": 71,
+        "oracle-fallback": 231
+      },
+      "rules": {
+        "printing-reference": 286,
+        "oracle-unverified": 16
+      }
+    },
+    "3ed": {
+      "total": 306,
+      "types": {
+        "oracle-fallback": 255,
+        "scan-reviewed": 51
+      },
+      "rules": {
+        "printing-reference": 255,
+        "scan-reviewed": 51
+      }
+    }
+  },
+  "wholeFrameDiagnostic": {
+    "lea/R": {
+      "axes": {
+        "x": {
+          "scale": 1.00175,
+          "shift": -0.6875,
+          "score": 0.8204339847816918,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99875,
+          "shift": -1.25,
+          "score": 0.7850834226915824,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.6930862532888525,
+        "after": 0.802758703736637,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.6855221770613518,
+            "after": 0.7465235912110856
+          },
+          "stock-right": {
+            "before": 0.8805348118074211,
+            "after": 0.9087555318819469
+          },
+          "stock-top": {
+            "before": 0.8188621973323834,
+            "after": 0.9076143635942368
+          },
+          "stock-bottom": {
+            "before": 0.6787833894531586,
+            "after": 0.7472693238091132
+          },
+          "art-left": {
+            "before": 0.5550233516497324,
+            "after": 0.6976071620499149
+          },
+          "art-right": {
+            "before": 0.6623411963280691,
+            "after": 0.6879627486391048
+          },
+          "art-top": {
+            "before": 0.5724592177042642,
+            "after": 0.6065711682433729
+          },
+          "art-bottom": {
+            "before": 0.31881684967911916,
+            "after": 0.6388220756685279
+          },
+          "paper-left": {
+            "before": 0.819598133154459,
+            "after": 0.9827707472548323
+          },
+          "paper-right": {
+            "before": 0.8966633727677973,
+            "after": 0.8989841276532663
+          },
+          "paper-top": {
+            "before": 0.7051974395871591,
+            "after": 0.8729130557006164
+          },
+          "paper-bottom": {
+            "before": 0.723232902941314,
+            "after": 0.9373105491336273
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.6914668029357627,
+        "after": 0.8035966900874222,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7137352135321817,
+            "after": 0.7681941149336176
+          },
+          "stock-right": {
+            "before": 0.8804338658745545,
+            "after": 0.9061051963847078
+          },
+          "stock-top": {
+            "before": 0.8243758339957457,
+            "after": 0.9114536777808645
+          },
+          "stock-bottom": {
+            "before": 0.702715980205344,
+            "after": 0.7493688725372664
+          },
+          "art-left": {
+            "before": 0.6273571978516163,
+            "after": 0.7498951205844775
+          },
+          "art-right": {
+            "before": 0.6027466966114043,
+            "after": 0.6264875595986428
+          },
+          "art-top": {
+            "before": 0.5069889924503124,
+            "after": 0.5603303911860984
+          },
+          "art-bottom": {
+            "before": 0.3283210829547041,
+            "after": 0.6805635859914323
+          },
+          "paper-left": {
+            "before": 0.8103600601686152,
+            "after": 0.9714204546193447
+          },
+          "paper-right": {
+            "before": 0.885918491007034,
+            "after": 0.8954623913022115
+          },
+          "paper-top": {
+            "before": 0.7003891914146952,
+            "after": 0.87131762697999
+          },
+          "paper-bottom": {
+            "before": 0.7142590291629444,
+            "after": 0.952561289150415
+          }
+        }
+      }
+    },
+    "lea/B": {
+      "axes": {
+        "x": {
+          "scale": 1.00025,
+          "shift": -0.1875,
+          "score": 0.8630940193669184,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99725,
+          "shift": -1.6875,
+          "score": 0.8697646930621419,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7684168780391453,
+        "after": 0.8664293562145302,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.6742739817665799,
+            "after": 0.6892840387146854
+          },
+          "stock-right": {
+            "before": 0.9252674585551155,
+            "after": 0.9247789076224465
+          },
+          "stock-top": {
+            "before": 0.7495438050448008,
+            "after": 0.8862393670772689
+          },
+          "stock-bottom": {
+            "before": 0.6490832606210382,
+            "after": 0.86522210028364
+          },
+          "art-left": {
+            "before": 0.6822394667003471,
+            "after": 0.6715031737988468
+          },
+          "art-right": {
+            "before": 0.9238902312336277,
+            "after": 0.9309453982668814
+          },
+          "art-top": {
+            "before": 0.8549901194805054,
+            "after": 0.8573797912729352
+          },
+          "art-bottom": {
+            "before": 0.2538839607112581,
+            "after": 0.6309876254831643
+          },
+          "paper-left": {
+            "before": 0.9637052603632537,
+            "after": 0.975155324400014
+          },
+          "paper-right": {
+            "before": 0.9814293064137052,
+            "after": 0.986897273398637
+          },
+          "paper-top": {
+            "before": 0.7498804423370032,
+            "after": 0.9891409628822642
+          },
+          "paper-bottom": {
+            "before": 0.8128152432425079,
+            "after": 0.9896183113735784
+          }
+        }
+      },
+      "validation": {
+        "count": 35,
+        "before": 0.767377412287871,
+        "after": 0.86176684646195,
+        "improved": 35,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.6622245010648621,
+            "after": 0.6770426685484262
+          },
+          "stock-right": {
+            "before": 0.9253627797299057,
+            "after": 0.9233174821999542
+          },
+          "stock-top": {
+            "before": 0.7554464830418602,
+            "after": 0.8841277886501445
+          },
+          "stock-bottom": {
+            "before": 0.6434505268590741,
+            "after": 0.7907204893483464
+          },
+          "art-left": {
+            "before": 0.6967427446078811,
+            "after": 0.6816882588190702
+          },
+          "art-right": {
+            "before": 0.926526317189643,
+            "after": 0.9258594311734457
+          },
+          "art-top": {
+            "before": 0.867578115387667,
+            "after": 0.8179135842362502
+          },
+          "art-bottom": {
+            "before": 0.2678670557673616,
+            "after": 0.7317925568183883
+          },
+          "paper-left": {
+            "before": 0.9678823261456738,
+            "after": 0.9792781485330857
+          },
+          "paper-right": {
+            "before": 0.9801293475259131,
+            "after": 0.9848647082900941
+          },
+          "paper-top": {
+            "before": 0.7176051397603432,
+            "after": 0.9600959875765173
+          },
+          "paper-bottom": {
+            "before": 0.7977136103742689,
+            "after": 0.9845010533496764
+          }
+        }
+      }
+    },
+    "lea/W": {
+      "axes": {
+        "x": {
+          "scale": 1.0010000000000001,
+          "shift": -0.3125,
+          "score": 0.9252120880065556,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99925,
+          "shift": -1.375,
+          "score": 0.9250661647810545,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7506912712123728,
+        "after": 0.925139126393805,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9512363836835632,
+            "after": 0.9543247706476014
+          },
+          "stock-right": {
+            "before": 0.9683784299615905,
+            "after": 0.9647011542835657
+          },
+          "stock-top": {
+            "before": 0.8535747818550635,
+            "after": 0.9681496420050785
+          },
+          "stock-bottom": {
+            "before": 0.7942501805311544,
+            "after": 0.9408989760906964
+          },
+          "art-left": {
+            "before": 0.8663724379961677,
+            "after": 0.919317740257277
+          },
+          "art-right": {
+            "before": 0.7885108219200545,
+            "after": 0.7829536510318649
+          },
+          "art-top": {
+            "before": 0.4706905998265476,
+            "after": 0.8017252199546806
+          },
+          "art-bottom": {
+            "before": 0.5621412323070752,
+            "after": 0.9262326795854481
+          },
+          "paper-left": {
+            "before": 0.9269517688656657,
+            "after": 0.9724717550157994
+          },
+          "paper-right": {
+            "before": 0.9372715111294235,
+            "after": 0.9575034568032255
+          },
+          "paper-top": {
+            "before": 0.28700758482266325,
+            "after": 0.9515709678341193
+          },
+          "paper-bottom": {
+            "before": 0.6019095216495057,
+            "after": 0.9618195032163039
+          }
+        }
+      },
+      "validation": {
+        "count": 37,
+        "before": 0.7583839844997762,
+        "after": 0.9168519002415682,
+        "improved": 37,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9542016714504751,
+            "after": 0.956054454877253
+          },
+          "stock-right": {
+            "before": 0.9699459376728367,
+            "after": 0.9668645916684236
+          },
+          "stock-top": {
+            "before": 0.8523596166831539,
+            "after": 0.9713996602330042
+          },
+          "stock-bottom": {
+            "before": 0.8054935616043728,
+            "after": 0.9422124695993601
+          },
+          "art-left": {
+            "before": 0.8910876173559096,
+            "after": 0.9279590795095118
+          },
+          "art-right": {
+            "before": 0.7982158201180293,
+            "after": 0.8019312160633901
+          },
+          "art-top": {
+            "before": 0.3822571954885616,
+            "after": 0.7427699566973122
+          },
+          "art-bottom": {
+            "before": 0.6050387341009239,
+            "after": 0.9379787851308037
+          },
+          "paper-left": {
+            "before": 0.9423616821672611,
+            "after": 0.9717415421626872
+          },
+          "paper-right": {
+            "before": 0.9168972767791551,
+            "after": 0.9421709353027089
+          },
+          "paper-top": {
+            "before": 0.2955787280433549,
+            "after": 0.9009995607353689
+          },
+          "paper-bottom": {
+            "before": 0.6871699725332828,
+            "after": 0.9401405509189936
+          }
+        }
+      }
+    },
+    "lea/U": {
+      "axes": {
+        "x": {
+          "scale": 0.99725,
+          "shift": 0.5625,
+          "score": 0.9014879657378972,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.999,
+          "shift": -1.25,
+          "score": 0.8762818957783625,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7295744624386258,
+        "after": 0.8888849307581299,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.853980507587835,
+            "after": 0.982209233136875
+          },
+          "stock-right": {
+            "before": 0.9852970967508708,
+            "after": 0.9862518976312455
+          },
+          "stock-top": {
+            "before": 0.8515382895790612,
+            "after": 0.995732904884478
+          },
+          "stock-bottom": {
+            "before": 0.8867705746590143,
+            "after": 0.9801635896306397
+          },
+          "art-left": {
+            "before": 0.6137879146702213,
+            "after": 0.9090823951725836
+          },
+          "art-right": {
+            "before": 0.6313921156470846,
+            "after": 0.6311447447083803
+          },
+          "art-top": {
+            "before": 0.7084875327132152,
+            "after": 0.7280944435641327
+          },
+          "art-bottom": {
+            "before": 0.4089383850583046,
+            "after": 0.7916426890002912
+          },
+          "paper-left": {
+            "before": 0.7805550329562689,
+            "after": 0.9686474711364879
+          },
+          "paper-right": {
+            "before": 0.9291619491858925,
+            "after": 0.9315920526418114
+          },
+          "paper-top": {
+            "before": 0.4056060073495636,
+            "after": 0.8107329365239638
+          },
+          "paper-bottom": {
+            "before": 0.6993781431061771,
+            "after": 0.9513248110666699
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.728281743158883,
+        "after": 0.8882105496921971,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8462509041496025,
+            "after": 0.9846082102074459
+          },
+          "stock-right": {
+            "before": 0.9845708189109292,
+            "after": 0.985306208120516
+          },
+          "stock-top": {
+            "before": 0.8580759862024072,
+            "after": 0.9943184254614775
+          },
+          "stock-bottom": {
+            "before": 0.8918558801471078,
+            "after": 0.9765331353984739
+          },
+          "art-left": {
+            "before": 0.6457834150036738,
+            "after": 0.8903031283959151
+          },
+          "art-right": {
+            "before": 0.6991030142694638,
+            "after": 0.6983229811259553
+          },
+          "art-top": {
+            "before": 0.6952760513838737,
+            "after": 0.7042268981330327
+          },
+          "art-bottom": {
+            "before": 0.4014635627848023,
+            "after": 0.8187830664755792
+          },
+          "paper-left": {
+            "before": 0.8007752553807618,
+            "after": 0.9660663288134302
+          },
+          "paper-right": {
+            "before": 0.9250887776216532,
+            "after": 0.9271568559097464
+          },
+          "paper-top": {
+            "before": 0.3478767371176179,
+            "after": 0.7489628769516138
+          },
+          "paper-bottom": {
+            "before": 0.6432605149347028,
+            "after": 0.9639384813131817
+          }
+        }
+      }
+    },
+    "lea/A": {
+      "axes": {
+        "x": {
+          "scale": 0.99975,
+          "shift": -0.3125,
+          "score": 0.8348170601048127,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.9964999999999999,
+          "shift": -2.3125,
+          "score": 0.7520802935771977,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.6025847491088997,
+        "after": 0.7934486768410054,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7402788108625247,
+            "after": 0.7479023620361199
+          },
+          "stock-right": {
+            "before": 0.8781055236124589,
+            "after": 0.8508945472149992
+          },
+          "stock-top": {
+            "before": 0.5164000956837453,
+            "after": 0.801789930479369
+          },
+          "stock-bottom": {
+            "before": 0.6622235597164807,
+            "after": 0.6926829300930235
+          },
+          "art-left": {
+            "before": 0.7039950896062055,
+            "after": 0.7048584297607464
+          },
+          "art-right": {
+            "before": 0.6753843910370111,
+            "after": 0.7356360854827918
+          },
+          "art-top": {
+            "before": 0.42868764959559474,
+            "after": 0.4171454777715172
+          },
+          "art-bottom": {
+            "before": 0.15412741272439237,
+            "after": 0.6981213854669562
+          },
+          "paper-left": {
+            "before": 0.9716793511199981,
+            "after": 0.9818226511746843
+          },
+          "paper-right": {
+            "before": 0.9519127788439691,
+            "after": 0.9877882849595351
+          },
+          "paper-top": {
+            "before": 0.26938804994469334,
+            "after": 0.9778335418967988
+          },
+          "paper-bottom": {
+            "before": 0.2788342765597225,
+            "after": 0.9249084957555217
+          }
+        }
+      },
+      "validation": {
+        "count": 39,
+        "before": 0.628732576682515,
+        "after": 0.80533350162035,
+        "improved": 39,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7461279332097015,
+            "after": 0.7545386947873224
+          },
+          "stock-right": {
+            "before": 0.8781596766231581,
+            "after": 0.8447649388593518
+          },
+          "stock-top": {
+            "before": 0.5433358513791257,
+            "after": 0.8152593803448662
+          },
+          "stock-bottom": {
+            "before": 0.673670417346145,
+            "after": 0.6738294475384005
+          },
+          "art-left": {
+            "before": 0.7366802458367232,
+            "after": 0.7351828030133857
+          },
+          "art-right": {
+            "before": 0.7316138402843204,
+            "after": 0.7853411104917738
+          },
+          "art-top": {
+            "before": 0.5350460718037369,
+            "after": 0.5008026583175559
+          },
+          "art-bottom": {
+            "before": 0.19088017031865667,
+            "after": 0.6811686205448753
+          },
+          "paper-left": {
+            "before": 0.973699068163474,
+            "after": 0.9840897335357638
+          },
+          "paper-right": {
+            "before": 0.9628525110465841,
+            "after": 0.9902204329090852
+          },
+          "paper-top": {
+            "before": 0.28224037017813797,
+            "after": 0.975067355750777
+          },
+          "paper-bottom": {
+            "before": 0.2904847640004172,
+            "after": 0.9237368433510446
+          }
+        }
+      }
+    },
+    "lea/basic": {
+      "axes": {
+        "x": {
+          "scale": 0.9984999999999999,
+          "shift": -0.1875,
+          "score": 0.7668639547877815,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.996,
+          "shift": -2.8125,
+          "score": 0.8104610544499719,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 4,
+        "before": 0.4692531260313702,
+        "after": 0.7886625046188765,
+        "improved": 4,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8223544368872472,
+            "after": 0.8387153862796906
+          },
+          "stock-right": {
+            "before": 0.9175768028213082,
+            "after": 0.9024571456715229
+          },
+          "stock-top": {
+            "before": 0.4855328909883536,
+            "after": 0.8558846676435865
+          },
+          "stock-bottom": {
+            "before": 0.3542528167553678,
+            "after": 0.8710931662790736
+          },
+          "art-left": {
+            "before": 0.6775297432831793,
+            "after": 0.6853245763641519
+          },
+          "art-right": {
+            "before": 0.6263195040040054,
+            "after": 0.6774420710372981
+          },
+          "art-top": {
+            "before": 0.2497352145029276,
+            "after": 0.6952505533304113
+          },
+          "art-bottom": {
+            "before": 0.2752363446717271,
+            "after": 0.7560757874967485
+          },
+          "paper-left": {
+            "before": 0.7745707335833859,
+            "after": 0.7651675662724865
+          },
+          "paper-right": {
+            "before": 0.6420009041390419,
+            "after": 0.732076983101538
+          },
+          "paper-top": {
+            "before": -0.09627096861848722,
+            "after": 0.8725127342164531
+          },
+          "paper-bottom": {
+            "before": -0.09780091064161432,
+            "after": 0.8119494177335581
+          }
+        }
+      },
+      "validation": {
+        "count": 6,
+        "before": 0.5201511569372772,
+        "after": 0.8091891110218646,
+        "improved": 6,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8207465990627999,
+            "after": 0.8352055706465634
+          },
+          "stock-right": {
+            "before": 0.9226582074912989,
+            "after": 0.9071244130503189
+          },
+          "stock-top": {
+            "before": 0.5228828134967011,
+            "after": 0.8852364969484842
+          },
+          "stock-bottom": {
+            "before": 0.3185732950227211,
+            "after": 0.8614492762431426
+          },
+          "art-left": {
+            "before": 0.6850786632030726,
+            "after": 0.6920809489806233
+          },
+          "art-right": {
+            "before": 0.6598815590566838,
+            "after": 0.6928343410398803
+          },
+          "art-top": {
+            "before": 0.42091613896287666,
+            "after": 0.7035861832764767
+          },
+          "art-bottom": {
+            "before": 0.3746770840121589,
+            "after": 0.7972963690388798
+          },
+          "paper-left": {
+            "before": 0.832352930458577,
+            "after": 0.8230798129452593
+          },
+          "paper-right": {
+            "before": 0.6898191583044896,
+            "after": 0.7908053303397914
+          },
+          "paper-top": {
+            "before": 0.007154442551403341,
+            "after": 0.9092953277865332
+          },
+          "paper-bottom": {
+            "before": -0.012927008375456081,
+            "after": 0.8122752619664245
+          }
+        }
+      }
+    },
+    "lea/G": {
+      "axes": {
+        "x": {
+          "scale": 1.004,
+          "shift": -1.375,
+          "score": 0.8740887750862756,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.9964999999999999,
+          "shift": -1.625,
+          "score": 0.8276100421955224,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.590253728922114,
+        "after": 0.8508494086408991,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.5811770483859264,
+            "after": 0.8522260338738055
+          },
+          "stock-right": {
+            "before": 0.8243977700986362,
+            "after": 0.9152072775579384
+          },
+          "stock-top": {
+            "before": 0.8533231744431986,
+            "after": 0.9475285872934361
+          },
+          "stock-bottom": {
+            "before": 0.7227023583217459,
+            "after": 0.774224563292544
+          },
+          "art-left": {
+            "before": 0.2761272743084311,
+            "after": 0.757772822392311
+          },
+          "art-right": {
+            "before": 0.8704123396858318,
+            "after": 0.8512748316787263
+          },
+          "art-top": {
+            "before": 0.6994090947159602,
+            "after": 0.6926748588144364
+          },
+          "art-bottom": {
+            "before": 0.25304096211766575,
+            "after": 0.733125078370287
+          },
+          "paper-left": {
+            "before": 0.5340219666988008,
+            "after": 0.9560058408875832
+          },
+          "paper-right": {
+            "before": 0.8324056677925423,
+            "after": 0.9120458441272896
+          },
+          "paper-top": {
+            "before": 0.16936753419912054,
+            "after": 0.8709164160770126
+          },
+          "paper-bottom": {
+            "before": 0.46665955629750916,
+            "after": 0.9471907493254188
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.5837781960857147,
+        "after": 0.8539354431351102,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.565635865751533,
+            "after": 0.8491193364123455
+          },
+          "stock-right": {
+            "before": 0.82871500817004,
+            "after": 0.9168908676985875
+          },
+          "stock-top": {
+            "before": 0.8591568053317805,
+            "after": 0.9466347272963689
+          },
+          "stock-bottom": {
+            "before": 0.7339036766095776,
+            "after": 0.7706444671326871
+          },
+          "art-left": {
+            "before": 0.24847199492236313,
+            "after": 0.7543405164182504
+          },
+          "art-right": {
+            "before": 0.8211102502549498,
+            "after": 0.8216366319996741
+          },
+          "art-top": {
+            "before": 0.7547036169203521,
+            "after": 0.7538732035535061
+          },
+          "art-bottom": {
+            "before": 0.27498702954785526,
+            "after": 0.7673685862428371
+          },
+          "paper-left": {
+            "before": 0.5027998501581428,
+            "after": 0.9382703237348157
+          },
+          "paper-right": {
+            "before": 0.8512860946734193,
+            "after": 0.9179163505818879
+          },
+          "paper-top": {
+            "before": 0.11036610906020411,
+            "after": 0.8507776134879649
+          },
+          "paper-bottom": {
+            "before": 0.4542020516283585,
+            "after": 0.9597526930623961
+          }
+        }
+      }
+    },
+    "lea/dual": {
+      "axes": {
+        "x": {
+          "scale": 0.998,
+          "shift": -0.0625,
+          "score": 0.7557307068455014,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.0030000000000001,
+          "shift": -1.3125,
+          "score": 0.520755225052741,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 4,
+        "before": 0.5345020074749665,
+        "after": 0.6382429659491212,
+        "improved": 4,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7414654481947287,
+            "after": 0.8032553355922526
+          },
+          "stock-right": {
+            "before": 0.8835387620010923,
+            "after": 0.8772106825647408
+          },
+          "stock-top": {
+            "before": 0.4326812490090338,
+            "after": 0.8994600797793438
+          },
+          "stock-bottom": {
+            "before": 0.410906639343368,
+            "after": 0.4269323106467767
+          },
+          "art-left": {
+            "before": 0.6798670440409176,
+            "after": 0.6989916109879784
+          },
+          "art-right": {
+            "before": 0.4227170893882016,
+            "after": 0.48348942176903303
+          },
+          "art-top": {
+            "before": 0.1878089586460782,
+            "after": 0.4297626543748453
+          },
+          "art-bottom": {
+            "before": 0.2489412729873566,
+            "after": 0.5827391659335281
+          },
+          "paper-left": {
+            "before": 0.8693229799730998,
+            "after": 0.8479177013728277
+          },
+          "paper-right": {
+            "before": 0.7702357009393765,
+            "after": 0.8235194887861758
+          },
+          "paper-top": {
+            "before": 0.7006991819741274,
+            "after": 0.7162510945949083
+          },
+          "paper-bottom": {
+            "before": 0.06583976320221722,
+            "after": 0.06938604498704364
+          }
+        }
+      },
+      "validation": {
+        "count": 5,
+        "before": 0.6160942662106967,
+        "after": 0.70034958802526,
+        "improved": 5,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7750529918000433,
+            "after": 0.8083447131745114
+          },
+          "stock-right": {
+            "before": 0.8959461230138057,
+            "after": 0.8929974618827646
+          },
+          "stock-top": {
+            "before": 0.5722228552568187,
+            "after": 0.939508663297189
+          },
+          "stock-bottom": {
+            "before": 0.4171627617605118,
+            "after": 0.4438147649241964
+          },
+          "art-left": {
+            "before": 0.7262969680010831,
+            "after": 0.7329706784010527
+          },
+          "art-right": {
+            "before": 0.7349850422783321,
+            "after": 0.7465476114113159
+          },
+          "art-top": {
+            "before": 0.2684965859136442,
+            "after": 0.4694608565793145
+          },
+          "art-bottom": {
+            "before": 0.3167023334832112,
+            "after": 0.7055140031254091
+          },
+          "paper-left": {
+            "before": 0.887061295575154,
+            "after": 0.8733988402554471
+          },
+          "paper-right": {
+            "before": 0.7994321047814689,
+            "after": 0.8094008542455248
+          },
+          "paper-top": {
+            "before": 0.8227411689934035,
+            "after": 0.7656766537629636
+          },
+          "paper-bottom": {
+            "before": 0.17703096367088392,
+            "after": 0.21655995524343177
+          }
+        }
+      }
+    },
+    "leb/B": {
+      "axes": {
+        "x": {
+          "scale": 1.001,
+          "shift": 0.25,
+          "score": 0.8904668820142211,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.997,
+          "shift": -1.5,
+          "score": 0.882840597953622,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7970709610733837,
+        "after": 0.8866537399839216,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8802962545179862,
+            "after": 0.8791650174205643
+          },
+          "stock-right": {
+            "before": 0.8831515611233076,
+            "after": 0.9567426756059704
+          },
+          "stock-top": {
+            "before": 0.8514412051654128,
+            "after": 0.9210724756624257
+          },
+          "stock-bottom": {
+            "before": 0.739902447978902,
+            "after": 0.8422016391680117
+          },
+          "art-left": {
+            "before": 0.672638689624755,
+            "after": 0.6769041029633147
+          },
+          "art-right": {
+            "before": 0.8430896858207755,
+            "after": 0.8744722215891294
+          },
+          "art-top": {
+            "before": 0.8655723000478615,
+            "after": 0.8457393283583503
+          },
+          "art-bottom": {
+            "before": 0.2323802175892049,
+            "after": 0.7304169267158297
+          },
+          "paper-left": {
+            "before": 0.9817629283478672,
+            "after": 0.9824987720008329
+          },
+          "paper-right": {
+            "before": 0.986275162662546,
+            "after": 0.9730185025055149
+          },
+          "paper-top": {
+            "before": 0.834412402646185,
+            "after": 0.9784655685593106
+          },
+          "paper-bottom": {
+            "before": 0.7939286773558015,
+            "after": 0.9791476492578035
+          }
+        }
+      },
+      "validation": {
+        "count": 37,
+        "before": 0.7994396657968926,
+        "after": 0.8854386054319847,
+        "improved": 37,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.884866617607654,
+            "after": 0.8841458129904569
+          },
+          "stock-right": {
+            "before": 0.8721802579831252,
+            "after": 0.9544127998554185
+          },
+          "stock-top": {
+            "before": 0.8544422575418955,
+            "after": 0.9209502060956346
+          },
+          "stock-bottom": {
+            "before": 0.7426319375406659,
+            "after": 0.855740901191524
+          },
+          "art-left": {
+            "before": 0.6673152203954925,
+            "after": 0.6698610471591135
+          },
+          "art-right": {
+            "before": 0.901595312101826,
+            "after": 0.9193720533256101
+          },
+          "art-top": {
+            "before": 0.8631592264455249,
+            "after": 0.8421576324709485
+          },
+          "art-bottom": {
+            "before": 0.23174752193619233,
+            "after": 0.6696495014184238
+          },
+          "paper-left": {
+            "before": 0.9830698176722965,
+            "after": 0.9824160449467233
+          },
+          "paper-right": {
+            "before": 0.9864274880531856,
+            "after": 0.9711231117227923
+          },
+          "paper-top": {
+            "before": 0.8118307923158391,
+            "after": 0.9683385741338395
+          },
+          "paper-bottom": {
+            "before": 0.7940095399690132,
+            "after": 0.9870955798733336
+          }
+        }
+      }
+    },
+    "leb/A": {
+      "axes": {
+        "x": {
+          "scale": 1.00125,
+          "shift": 0.25,
+          "score": 0.889290556256523,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99575,
+          "shift": -1.9375,
+          "score": 0.8281947374032566,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7049084732915798,
+        "after": 0.8587426468298898,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8488120678614166,
+            "after": 0.850410703407193
+          },
+          "stock-right": {
+            "before": 0.7862052110809055,
+            "after": 0.9067386568915535
+          },
+          "stock-top": {
+            "before": 0.7255511092398188,
+            "after": 0.8507284314192297
+          },
+          "stock-bottom": {
+            "before": 0.7514431879462625,
+            "after": 0.6947269080171572
+          },
+          "art-left": {
+            "before": 0.7880068961638977,
+            "after": 0.7882969376046454
+          },
+          "art-right": {
+            "before": 0.7985690827472115,
+            "after": 0.824670223255996
+          },
+          "art-top": {
+            "before": 0.6892177744410176,
+            "after": 0.7361951776441251
+          },
+          "art-bottom": {
+            "before": 0.3522519344667262,
+            "after": 0.8322958253938554
+          },
+          "paper-left": {
+            "before": 0.9829059168910754,
+            "after": 0.9835309405811119
+          },
+          "paper-right": {
+            "before": 0.9818379544655454,
+            "after": 0.9820958757986379
+          },
+          "paper-top": {
+            "before": 0.45018143031581054,
+            "after": 0.9690895897474722
+          },
+          "paper-bottom": {
+            "before": 0.3039191138792713,
+            "after": 0.8861324921977003
+          }
+        }
+      },
+      "validation": {
+        "count": 39,
+        "before": 0.6869035104298318,
+        "after": 0.8433032292045289,
+        "improved": 39,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8426116902655512,
+            "after": 0.8439618550832376
+          },
+          "stock-right": {
+            "before": 0.7837661455300605,
+            "after": 0.9021100333017461
+          },
+          "stock-top": {
+            "before": 0.7124871647980805,
+            "after": 0.8429551998243884
+          },
+          "stock-bottom": {
+            "before": 0.7169544204678062,
+            "after": 0.7005785424162805
+          },
+          "art-left": {
+            "before": 0.8000504864373552,
+            "after": 0.8012313824727503
+          },
+          "art-right": {
+            "before": 0.8142210354443589,
+            "after": 0.8181221631086892
+          },
+          "art-top": {
+            "before": 0.552745307551903,
+            "after": 0.6128236145955708
+          },
+          "art-bottom": {
+            "before": 0.28989442290204576,
+            "after": 0.7664660551768093
+          },
+          "paper-left": {
+            "before": 0.9846502461882309,
+            "after": 0.9852596238892435
+          },
+          "paper-right": {
+            "before": 0.9833348093231757,
+            "after": 0.983422334088622
+          },
+          "paper-top": {
+            "before": 0.4493517437187145,
+            "after": 0.9817952390672414
+          },
+          "paper-bottom": {
+            "before": 0.31277465253069636,
+            "after": 0.8809127074297677
+          }
+        }
+      }
+    },
+    "leb/U": {
+      "axes": {
+        "x": {
+          "scale": 0.9984999999999999,
+          "shift": 0.875,
+          "score": 0.9073552202567,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99775,
+          "shift": -1.25,
+          "score": 0.8694318175732891,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.6832566206862515,
+        "after": 0.8883935189149946,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8150852678133962,
+            "after": 0.9786061883294133
+          },
+          "stock-right": {
+            "before": 0.90761608156914,
+            "after": 0.9773604285198709
+          },
+          "stock-top": {
+            "before": 0.9571514826788826,
+            "after": 0.9943678477575332
+          },
+          "stock-bottom": {
+            "before": 0.8473787135567413,
+            "after": 0.9324375572029967
+          },
+          "art-left": {
+            "before": 0.5332211782048909,
+            "after": 0.8841002597172645
+          },
+          "art-right": {
+            "before": 0.6230868077528019,
+            "after": 0.6875006459834063
+          },
+          "art-top": {
+            "before": 0.6453048525344951,
+            "after": 0.6833175077440905
+          },
+          "art-bottom": {
+            "before": 0.337973117757408,
+            "after": 0.8281407292334411
+          },
+          "paper-left": {
+            "before": 0.7159711621587704,
+            "after": 0.9552482335675048
+          },
+          "paper-right": {
+            "before": 0.8820360155092615,
+            "after": 0.9613155654227404
+          },
+          "paper-top": {
+            "before": 0.48999743162353293,
+            "after": 0.8212057358299671
+          },
+          "paper-bottom": {
+            "before": 0.4442573370756958,
+            "after": 0.9571215276717066
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.6900230084050324,
+        "after": 0.8946425332247043,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8207012204501244,
+            "after": 0.979282050398156
+          },
+          "stock-right": {
+            "before": 0.9081258808564576,
+            "after": 0.9751456278075054
+          },
+          "stock-top": {
+            "before": 0.9598922639125882,
+            "after": 0.9950870565160295
+          },
+          "stock-bottom": {
+            "before": 0.8343023095922414,
+            "after": 0.9224905528547803
+          },
+          "art-left": {
+            "before": 0.5346101583673888,
+            "after": 0.9055744556383033
+          },
+          "art-right": {
+            "before": 0.6092679568602983,
+            "after": 0.6705388339693954
+          },
+          "art-top": {
+            "before": 0.679745318540079,
+            "after": 0.7089640745426022
+          },
+          "art-bottom": {
+            "before": 0.34128338429329924,
+            "after": 0.8297035414235229
+          },
+          "paper-left": {
+            "before": 0.6916841965282409,
+            "after": 0.9560399221133308
+          },
+          "paper-right": {
+            "before": 0.8845649726168082,
+            "after": 0.9545257433572322
+          },
+          "paper-top": {
+            "before": 0.5550941690177992,
+            "after": 0.8850218435244535
+          },
+          "paper-bottom": {
+            "before": 0.46100426982506437,
+            "after": 0.953336696551142
+          }
+        }
+      }
+    },
+    "leb/W": {
+      "axes": {
+        "x": {
+          "scale": 1.00125,
+          "shift": 0.1875,
+          "score": 0.9530729445045946,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99925,
+          "shift": -1.3125,
+          "score": 0.9136901875827195,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7736685304008951,
+        "after": 0.933381566043657,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9769393841793917,
+            "after": 0.9753483436525807
+          },
+          "stock-right": {
+            "before": 0.8799413583556417,
+            "after": 0.9578351170656859
+          },
+          "stock-top": {
+            "before": 0.915911886674689,
+            "after": 0.9609954872686589
+          },
+          "stock-bottom": {
+            "before": 0.7680664990589304,
+            "after": 0.9428296767431805
+          },
+          "art-left": {
+            "before": 0.9735732042493895,
+            "after": 0.9713716679293557
+          },
+          "art-right": {
+            "before": 0.8308839682498528,
+            "after": 0.8717131559950084
+          },
+          "art-top": {
+            "before": 0.3941475731718648,
+            "after": 0.744298324697663
+          },
+          "art-bottom": {
+            "before": 0.5568502747274332,
+            "after": 0.966029083859611
+          },
+          "paper-left": {
+            "before": 0.9751227503744013,
+            "after": 0.9762299864201343
+          },
+          "paper-right": {
+            "before": 0.9472318205868026,
+            "after": 0.9659393959648026
+          },
+          "paper-top": {
+            "before": 0.431479652868948,
+            "after": 0.9021774513807514
+          },
+          "paper-bottom": {
+            "before": 0.6338739923133949,
+            "after": 0.9658111015464517
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.7544901586269073,
+        "after": 0.9179464027766201,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9734340194502916,
+            "after": 0.9714888940400442
+          },
+          "stock-right": {
+            "before": 0.8796712763546976,
+            "after": 0.9556980895846854
+          },
+          "stock-top": {
+            "before": 0.916943873428758,
+            "after": 0.9553729901845973
+          },
+          "stock-bottom": {
+            "before": 0.758860037936344,
+            "after": 0.9418263680479183
+          },
+          "art-left": {
+            "before": 0.9295384642624354,
+            "after": 0.9302358800373017
+          },
+          "art-right": {
+            "before": 0.6846591190808325,
+            "after": 0.7490155611169204
+          },
+          "art-top": {
+            "before": 0.3692833317286731,
+            "after": 0.7504130913119795
+          },
+          "art-bottom": {
+            "before": 0.5773871068116655,
+            "after": 0.9421652787102538
+          },
+          "paper-left": {
+            "before": 0.97287734137756,
+            "after": 0.9745544115807102
+          },
+          "paper-right": {
+            "before": 0.9543309696640372,
+            "after": 0.9717578605822138
+          },
+          "paper-top": {
+            "before": 0.42533472454656,
+            "after": 0.9022206495442525
+          },
+          "paper-bottom": {
+            "before": 0.6115616388810303,
+            "after": 0.9706077585785629
+          }
+        }
+      }
+    },
+    "leb/R": {
+      "axes": {
+        "x": {
+          "scale": 1.00225,
+          "shift": -0.0625,
+          "score": 0.8505142714008098,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.998,
+          "shift": -1.1875,
+          "score": 0.8004033858755532,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7287494306108877,
+        "after": 0.8254588286381814,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8449217315987086,
+            "after": 0.8722183228615192
+          },
+          "stock-right": {
+            "before": 0.8767901544471816,
+            "after": 0.9174015272338687
+          },
+          "stock-top": {
+            "before": 0.9098666236316726,
+            "after": 0.9231097930827055
+          },
+          "stock-bottom": {
+            "before": 0.7826199815897523,
+            "after": 0.8157396504142282
+          },
+          "art-left": {
+            "before": 0.6608353854088062,
+            "after": 0.7065568330553187
+          },
+          "art-right": {
+            "before": 0.7115816820078715,
+            "after": 0.7129211539695806
+          },
+          "art-top": {
+            "before": 0.6825591243538096,
+            "after": 0.6880476013690601
+          },
+          "art-bottom": {
+            "before": 0.3028795498858556,
+            "after": 0.6254082648981912
+          },
+          "paper-left": {
+            "before": 0.9508797231590794,
+            "after": 0.9778197615049751
+          },
+          "paper-right": {
+            "before": 0.897993260568769,
+            "after": 0.9161680297795963
+          },
+          "paper-top": {
+            "before": 0.4714127628092631,
+            "after": 0.8127450686117803
+          },
+          "paper-bottom": {
+            "before": 0.6526531878698824,
+            "after": 0.9373699368773536
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.7313355420410408,
+        "after": 0.8321596671613462,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8336296287425727,
+            "after": 0.8638546498826354
+          },
+          "stock-right": {
+            "before": 0.8803132784952376,
+            "after": 0.9216820266642793
+          },
+          "stock-top": {
+            "before": 0.9031711046235206,
+            "after": 0.9310827349454563
+          },
+          "stock-bottom": {
+            "before": 0.7802068489354884,
+            "after": 0.7992906168857522
+          },
+          "art-left": {
+            "before": 0.7364554417706151,
+            "after": 0.7804323883725605
+          },
+          "art-right": {
+            "before": 0.6920478339750202,
+            "after": 0.7019057696192782
+          },
+          "art-top": {
+            "before": 0.6072817349373465,
+            "after": 0.6514112985214412
+          },
+          "art-bottom": {
+            "before": 0.3098550057603598,
+            "after": 0.6713322673147026
+          },
+          "paper-left": {
+            "before": 0.945384527626664,
+            "after": 0.9760635810170327
+          },
+          "paper-right": {
+            "before": 0.8845651991086018,
+            "after": 0.9165837532776083
+          },
+          "paper-top": {
+            "before": 0.49663974059423216,
+            "after": 0.8476918046060166
+          },
+          "paper-bottom": {
+            "before": 0.7064761599228294,
+            "after": 0.9245851148293911
+          }
+        }
+      }
+    },
+    "leb/dual": {
+      "axes": {
+        "x": {
+          "scale": 1.00025,
+          "shift": 0.125,
+          "score": 0.7661725453632147,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99225,
+          "shift": -3.8125,
+          "score": 0.5685493986694274,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 5,
+        "before": 0.5756959840645715,
+        "after": 0.6673609720163209,
+        "improved": 4,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7821368336962907,
+            "after": 0.7917356592896219
+          },
+          "stock-right": {
+            "before": 0.9034849043852808,
+            "after": 0.9178267350785472
+          },
+          "stock-top": {
+            "before": 0.6687050794464255,
+            "after": 0.9244686513467005
+          },
+          "stock-bottom": {
+            "before": 0.452996245903506,
+            "after": 0.8480114439137166
+          },
+          "art-left": {
+            "before": 0.6955565336464941,
+            "after": 0.6956047519162247
+          },
+          "art-right": {
+            "before": 0.5698507276837157,
+            "after": 0.5627709729810448
+          },
+          "art-top": {
+            "before": 0.09087492751288255,
+            "after": 0.22471889269715972
+          },
+          "art-bottom": {
+            "before": 0.21070009891385005,
+            "after": 0.32129671221329315
+          },
+          "paper-left": {
+            "before": 0.8471441617152488,
+            "after": 0.8394478903820654
+          },
+          "paper-right": {
+            "before": 0.7756990865784242,
+            "after": 0.7896492625317841
+          },
+          "paper-top": {
+            "before": 0.6616655100676082,
+            "after": 0.3045242381266958
+          },
+          "paper-bottom": {
+            "before": 0.24953769922512867,
+            "after": 0.7882764537189988
+          }
+        }
+      },
+      "validation": {
+        "count": 5,
+        "before": 0.589540221378002,
+        "after": 0.71170837021586,
+        "improved": 5,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.6988211600252747,
+            "after": 0.7147300062534073
+          },
+          "stock-right": {
+            "before": 0.9065705922426629,
+            "after": 0.9096279010792498
+          },
+          "stock-top": {
+            "before": 0.6437911358015663,
+            "after": 0.908544351919433
+          },
+          "stock-bottom": {
+            "before": 0.4735563029149251,
+            "after": 0.7977252801391583
+          },
+          "art-left": {
+            "before": 0.7520922476989708,
+            "after": 0.7622967004778125
+          },
+          "art-right": {
+            "before": 0.737694941406028,
+            "after": 0.7527362809909262
+          },
+          "art-top": {
+            "before": 0.37102834645240385,
+            "after": 0.6885168056623924
+          },
+          "art-bottom": {
+            "before": 0.10414235943311237,
+            "after": 0.501947361159939
+          },
+          "paper-left": {
+            "before": 0.8271062206941968,
+            "after": 0.837714115498202
+          },
+          "paper-right": {
+            "before": 0.8173459015675298,
+            "after": 0.8230842659936535
+          },
+          "paper-top": {
+            "before": 0.6494373512456945,
+            "after": 0.22625760237228984
+          },
+          "paper-bottom": {
+            "before": 0.09289609705365946,
+            "after": 0.6173197710438564
+          }
+        }
+      }
+    },
+    "leb/G": {
+      "axes": {
+        "x": {
+          "scale": 1.00425,
+          "shift": -1.125,
+          "score": 0.8646038031235225,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.995,
+          "shift": -1.75,
+          "score": 0.8402828742951012,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.580522830078849,
+        "after": 0.8524433387093118,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.6685215539654328,
+            "after": 0.9043541125482868
+          },
+          "stock-right": {
+            "before": 0.949244656779675,
+            "after": 0.9467182106821854
+          },
+          "stock-top": {
+            "before": 0.9607431222648233,
+            "after": 0.971415869788721
+          },
+          "stock-bottom": {
+            "before": 0.8191211816801932,
+            "after": 0.7405974547800401
+          },
+          "art-left": {
+            "before": 0.3120876207072788,
+            "after": 0.7642558161369438
+          },
+          "art-right": {
+            "before": 0.8832169910701884,
+            "after": 0.862120156978516
+          },
+          "art-top": {
+            "before": 0.6988704995259672,
+            "after": 0.698144434964034
+          },
+          "art-bottom": {
+            "before": 0.1774066986457353,
+            "after": 0.824573392693599
+          },
+          "paper-left": {
+            "before": 0.4571699654140299,
+            "after": 0.8884001930877352
+          },
+          "paper-right": {
+            "before": 0.7591114899221207,
+            "after": 0.8217743293074681
+          },
+          "paper-top": {
+            "before": 0.023591915286288147,
+            "after": 0.8369122241556199
+          },
+          "paper-bottom": {
+            "before": 0.2571882656844564,
+            "after": 0.9700538693885928
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.5862276378371719,
+        "after": 0.8447965633068689,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.6354321780827574,
+            "after": 0.9030608070238098
+          },
+          "stock-right": {
+            "before": 0.9430983531748633,
+            "after": 0.94072051145353
+          },
+          "stock-top": {
+            "before": 0.9564207666440173,
+            "after": 0.9676506908460073
+          },
+          "stock-bottom": {
+            "before": 0.8045940175052464,
+            "after": 0.7461399814374104
+          },
+          "art-left": {
+            "before": 0.27125410923397797,
+            "after": 0.7753009924215466
+          },
+          "art-right": {
+            "before": 0.8347279431399318,
+            "after": 0.8129401167909771
+          },
+          "art-top": {
+            "before": 0.745742438098215,
+            "after": 0.7447481706401436
+          },
+          "art-bottom": {
+            "before": 0.21559501191911432,
+            "after": 0.7605942038508984
+          },
+          "paper-left": {
+            "before": 0.4470313357282193,
+            "after": 0.8846910029281948
+          },
+          "paper-right": {
+            "before": 0.7474407869696665,
+            "after": 0.811173751323455
+          },
+          "paper-top": {
+            "before": 0.09209293196304744,
+            "after": 0.8340346229455781
+          },
+          "paper-bottom": {
+            "before": 0.3413017815870068,
+            "after": 0.9565039080208766
+          }
+        }
+      }
+    },
+    "leb/basic": {
+      "axes": {
+        "x": {
+          "scale": 1.0010000000000001,
+          "shift": 0.5625,
+          "score": 0.8409320401247046,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.9964999999999999,
+          "shift": -2.3125,
+          "score": 0.882963487492491,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 2,
+        "before": 0.45200924424915323,
+        "after": 0.8619477638085977,
+        "improved": 2,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7532322781050761,
+            "after": 0.7966155985294232
+          },
+          "stock-right": {
+            "before": 0.9126839041638504,
+            "after": 0.9466440593064751
+          },
+          "stock-top": {
+            "before": 0.7358373235333393,
+            "after": 0.9426432962771112
+          },
+          "stock-bottom": {
+            "before": 0.30194248513681254,
+            "after": 0.7051761955217606
+          },
+          "art-left": {
+            "before": 0.5628902540738971,
+            "after": 0.5380801831464952
+          },
+          "art-right": {
+            "before": 0.6256279448637942,
+            "after": 0.8625727052807874
+          },
+          "art-top": {
+            "before": 0.32951654704040545,
+            "after": 0.8617935908921099
+          },
+          "art-bottom": {
+            "before": 0.17866081971506914,
+            "after": 0.8941448929837454
+          },
+          "paper-left": {
+            "before": 0.883602605047761,
+            "after": 0.9365871387974651
+          },
+          "paper-right": {
+            "before": 0.7959020608175238,
+            "after": 0.9650925556875811
+          },
+          "paper-top": {
+            "before": -0.2722351365919352,
+            "after": 0.9411782981918161
+          },
+          "paper-bottom": {
+            "before": -0.3835501549157548,
+            "after": 0.9528446510884025
+          }
+        }
+      },
+      "validation": {
+        "count": 9,
+        "before": 0.4724197329849965,
+        "after": 0.6807098418520225,
+        "improved": 9,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7820304982885687,
+            "after": 0.8106905248026783
+          },
+          "stock-right": {
+            "before": 0.907645689470283,
+            "after": 0.8470580020995951
+          },
+          "stock-top": {
+            "before": 0.6710748060352683,
+            "after": 0.9063271106601203
+          },
+          "stock-bottom": {
+            "before": 0.3863375335539816,
+            "after": 0.7347853204282047
+          },
+          "art-left": {
+            "before": 0.6845250322699912,
+            "after": 0.6942594592959754
+          },
+          "art-right": {
+            "before": 0.6426066767663136,
+            "after": 0.4793063646053214
+          },
+          "art-top": {
+            "before": 0.17161234294101688,
+            "after": 0.5170699853618872
+          },
+          "art-bottom": {
+            "before": 0.2733380060932931,
+            "after": 0.8538559202018475
+          },
+          "paper-left": {
+            "before": 0.6955903358845464,
+            "after": 0.5763450424201146
+          },
+          "paper-right": {
+            "before": 0.6068145496377453,
+            "after": 0.3510799563154602
+          },
+          "paper-top": {
+            "before": -0.17027537311081944,
+            "after": 0.8724942190802714
+          },
+          "paper-bottom": {
+            "before": 0.01773669798976952,
+            "after": 0.5252461969527961
+          }
+        }
+      }
+    },
+    "2ed/basic": {
+      "axes": {
+        "x": {
+          "scale": 1.00175,
+          "shift": -0.9375,
+          "score": 0.6675873589414169,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 0.99925,
+          "shift": -1.125,
+          "score": 0.7378043040160629,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 5,
+        "before": 0.5609716553287672,
+        "after": 0.7026958314787399,
+        "improved": 4,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7966645093197762,
+            "after": 0.9200452662069276
+          },
+          "stock-right": {
+            "before": 0.7906514834786693,
+            "after": 0.6240502888691453
+          },
+          "stock-top": {
+            "before": 0.6626412676642174,
+            "after": 0.9517765270322094
+          },
+          "stock-bottom": {
+            "before": 0.6475218919117414,
+            "after": 0.16436068513317528
+          },
+          "art-left": {
+            "before": 0.18481636640173,
+            "after": 0.3389034672957615
+          },
+          "art-right": {
+            "before": 0.478933537037998,
+            "after": 0.6543486538834971
+          },
+          "art-top": {
+            "before": 0.7321007689067507,
+            "after": 0.7405246760351323
+          },
+          "art-bottom": {
+            "before": 0.7017679112247907,
+            "after": 0.8976590626593903
+          },
+          "paper-left": {
+            "before": 0.466032643305773,
+            "after": 0.7198875055831145
+          },
+          "paper-right": {
+            "before": 0.5506857156113404,
+            "after": 0.7482889718100545
+          },
+          "paper-top": {
+            "before": 0.535630274980965,
+            "after": 0.9088621942700623
+          },
+          "paper-bottom": {
+            "before": 0.18421349410145535,
+            "after": 0.763642678966408
+          }
+        }
+      },
+      "validation": {
+        "count": 10,
+        "before": 0.513915157156777,
+        "after": 0.6039017183591395,
+        "improved": 10,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8302258715684088,
+            "after": 0.9315485236021231
+          },
+          "stock-right": {
+            "before": 0.72915068539379,
+            "after": 0.5707107097406725
+          },
+          "stock-top": {
+            "before": 0.7769688301721519,
+            "after": 0.985193552718159
+          },
+          "stock-bottom": {
+            "before": 0.6826565580032297,
+            "after": 0.22622841045929984
+          },
+          "art-left": {
+            "before": 0.5215820482468437,
+            "after": 0.4774253357686969
+          },
+          "art-right": {
+            "before": 0.3448515968511656,
+            "after": 0.4423242842611903
+          },
+          "art-top": {
+            "before": 0.38699401864997784,
+            "after": 0.5444593153777278
+          },
+          "art-bottom": {
+            "before": 0.6182576629953498,
+            "after": 0.7867483658248686
+          },
+          "paper-left": {
+            "before": 0.5360401832684227,
+            "after": 0.5957492630858003
+          },
+          "paper-right": {
+            "before": 0.3923331341955986,
+            "after": 0.5584876297700897
+          },
+          "paper-top": {
+            "before": 0.36535534298407174,
+            "after": 0.8045858855599655
+          },
+          "paper-bottom": {
+            "before": -0.017434046447685737,
+            "after": 0.3233593441410815
+          }
+        }
+      }
+    },
+    "2ed/A": {
+      "axes": {
+        "x": {
+          "scale": 1.001,
+          "shift": -0.875,
+          "score": 0.7343401203852337,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.0010000000000001,
+          "shift": -0.6875,
+          "score": 0.6433624915923847,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.6124099063324666,
+        "after": 0.6888513059888092,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7693835990712027,
+            "after": 0.9766024204292213
+          },
+          "stock-right": {
+            "before": 0.6962968940770395,
+            "after": 0.4508365248211816
+          },
+          "stock-top": {
+            "before": 0.7899634699230611,
+            "after": 0.9748382327729803
+          },
+          "stock-bottom": {
+            "before": 0.775318671437441,
+            "after": 0.661102322475501
+          },
+          "art-left": {
+            "before": 0.49060851655847204,
+            "after": 0.6172159005385113
+          },
+          "art-right": {
+            "before": 0.34722108256937945,
+            "after": 0.5855740177206078
+          },
+          "art-top": {
+            "before": 0.49702911375222425,
+            "after": 0.36155940448372614
+          },
+          "art-bottom": {
+            "before": 0.3871024681101653,
+            "after": 0.5559240034255643
+          },
+          "paper-left": {
+            "before": 0.8310767109830293,
+            "after": 0.9097903802127925
+          },
+          "paper-right": {
+            "before": 0.682397251887694,
+            "after": 0.8660214785890875
+          },
+          "paper-top": {
+            "before": 0.7106534621187198,
+            "after": 0.8430533898568628
+          },
+          "paper-bottom": {
+            "before": 0.37186763550117097,
+            "after": 0.46369759653967363
+          }
+        }
+      },
+      "validation": {
+        "count": 39,
+        "before": 0.6238070069789087,
+        "after": 0.6949915491206224,
+        "improved": 32,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7912639440745749,
+            "after": 0.9785550088410105
+          },
+          "stock-right": {
+            "before": 0.7200217386280192,
+            "after": 0.4796201634001906
+          },
+          "stock-top": {
+            "before": 0.7782502568104279,
+            "after": 0.9712749910923165
+          },
+          "stock-bottom": {
+            "before": 0.7609926376529699,
+            "after": 0.6453369540899911
+          },
+          "art-left": {
+            "before": 0.4510207635862322,
+            "after": 0.5391530840295256
+          },
+          "art-right": {
+            "before": 0.4321933930852249,
+            "after": 0.6141214771853816
+          },
+          "art-top": {
+            "before": 0.4866101187947996,
+            "after": 0.3798338297039477
+          },
+          "art-bottom": {
+            "before": 0.44516597461632884,
+            "after": 0.6233792650761506
+          },
+          "paper-left": {
+            "before": 0.815971902589317,
+            "after": 0.89264872289207
+          },
+          "paper-right": {
+            "before": 0.6919032833688804,
+            "after": 0.8561126379127001
+          },
+          "paper-top": {
+            "before": 0.7401048208340345,
+            "after": 0.8865585533275098
+          },
+          "paper-bottom": {
+            "before": 0.37218524970609557,
+            "after": 0.4733039018966721
+          }
+        }
+      }
+    },
+    "2ed/dual": {
+      "axes": {
+        "x": {
+          "scale": 1,
+          "shift": -0.625,
+          "score": 0.6201922928295888,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.004,
+          "shift": 0.375,
+          "score": 0.6622436425627397,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 3,
+        "before": 0.5086508831773214,
+        "after": 0.6412179676961642,
+        "improved": 2,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.825986732986725,
+            "after": 0.9425829342381112
+          },
+          "stock-right": {
+            "before": 0.7869958313904369,
+            "after": 0.5808489825416878
+          },
+          "stock-top": {
+            "before": 0.7288867797253372,
+            "after": 0.9706436283615848
+          },
+          "stock-bottom": {
+            "before": 0.6298011996271505,
+            "after": 0.9392538953493751
+          },
+          "art-left": {
+            "before": 0.3574042026705428,
+            "after": 0.3619145645481499
+          },
+          "art-right": {
+            "before": 0.47798198105510864,
+            "after": 0.6380177673711729
+          },
+          "art-top": {
+            "before": 0.40145548803540226,
+            "after": 0.4791576285218692
+          },
+          "art-bottom": {
+            "before": 0.5079320616003059,
+            "after": 0.40134783712844585
+          },
+          "paper-left": {
+            "before": 0.4546116891059415,
+            "after": 0.4731962147397549
+          },
+          "paper-right": {
+            "before": 0.43573391349906404,
+            "after": 0.7245932935386553
+          },
+          "paper-top": {
+            "before": 0.3673863377076076,
+            "after": 0.7808531293765668
+          },
+          "paper-bottom": {
+            "before": 0.1296343807242348,
+            "after": 0.402205736638597
+          }
+        }
+      },
+      "validation": {
+        "count": 7,
+        "before": 0.5545404279115882,
+        "after": 0.608372014201794,
+        "improved": 6,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7980860547073949,
+            "after": 0.8989817770631259
+          },
+          "stock-right": {
+            "before": 0.7582741306637469,
+            "after": 0.5683013733298379
+          },
+          "stock-top": {
+            "before": 0.7237450234107108,
+            "after": 0.9691645637203716
+          },
+          "stock-bottom": {
+            "before": 0.6502404242471413,
+            "after": 0.9514300812516826
+          },
+          "art-left": {
+            "before": 0.5452000192501959,
+            "after": 0.5094862044447104
+          },
+          "art-right": {
+            "before": 0.4263204497721235,
+            "after": 0.4740803767978405
+          },
+          "art-top": {
+            "before": 0.40205023928435374,
+            "after": 0.46997284577906334
+          },
+          "art-bottom": {
+            "before": 0.6002922129857932,
+            "after": 0.4445377568683922
+          },
+          "paper-left": {
+            "before": 0.5819473025049459,
+            "after": 0.6357100048144745
+          },
+          "paper-right": {
+            "before": 0.5018898469553438,
+            "after": 0.5729846079083378
+          },
+          "paper-top": {
+            "before": 0.6755506593392061,
+            "after": 0.7735301751315926
+          },
+          "paper-bottom": {
+            "before": -0.009111228181897428,
+            "after": 0.032284403312100286
+          }
+        }
+      }
+    },
+    "2ed/R": {
+      "axes": {
+        "x": {
+          "scale": 1.0030000000000001,
+          "shift": -0.75,
+          "score": 0.6951617106221906,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00175,
+          "shift": -0.5,
+          "score": 0.7765510435260913,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.6649227610458189,
+        "after": 0.7358563770741409,
+        "improved": 6,
+        "largeRegressions": [
+          {
+            "id": "1dba16d3-292d-430c-88cc-c49ded13effb",
+            "name": "Earthquake",
+            "before": 0.8059486136624959,
+            "after": 0.7524515631918107
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.8314396676544805,
+            "after": 0.9586558492148254
+          },
+          "stock-right": {
+            "before": 0.7312208860185732,
+            "after": 0.706601793705992
+          },
+          "stock-top": {
+            "before": 0.7627200103228872,
+            "after": 0.9167623085093329
+          },
+          "stock-bottom": {
+            "before": 0.795052486412654,
+            "after": 0.8082223981943946
+          },
+          "art-left": {
+            "before": 0.38330553156326425,
+            "after": 0.5644421491306248
+          },
+          "art-right": {
+            "before": 0.41798646783231963,
+            "after": 0.44216196071983965
+          },
+          "art-top": {
+            "before": 0.6506589066400895,
+            "after": 0.6359358355818316
+          },
+          "art-bottom": {
+            "before": 0.48807411865906264,
+            "after": 0.6182325471986351
+          },
+          "paper-left": {
+            "before": 0.5778941983419856,
+            "after": 0.7371014348636462
+          },
+          "paper-right": {
+            "before": 0.7258971422309561,
+            "after": 0.762007076098215
+          },
+          "paper-top": {
+            "before": 0.7571392552398551,
+            "after": 0.8189723097003503
+          },
+          "paper-bottom": {
+            "before": 0.8576844616337003,
+            "after": 0.8611808619720028
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.6663412128611506,
+        "after": 0.7381138093377014,
+        "improved": 34,
+        "largeRegressions": [
+          {
+            "id": "5a30ed3f-0b21-45ea-83af-339249b4e93e",
+            "name": "Sedge Troll",
+            "before": 0.8676631779916174,
+            "after": 0.8176576593322569
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.8359772357870753,
+            "after": 0.9558905668155872
+          },
+          "stock-right": {
+            "before": 0.7264886867037159,
+            "after": 0.7019872775751679
+          },
+          "stock-top": {
+            "before": 0.8125495390621462,
+            "after": 0.9357262017203167
+          },
+          "stock-bottom": {
+            "before": 0.7920859746689356,
+            "after": 0.8054115610312685
+          },
+          "art-left": {
+            "before": 0.40051979330359344,
+            "after": 0.5933894434530916
+          },
+          "art-right": {
+            "before": 0.49045887078172956,
+            "after": 0.5187702690792899
+          },
+          "art-top": {
+            "before": 0.5556872010892093,
+            "after": 0.5615988020790368
+          },
+          "art-bottom": {
+            "before": 0.43305259804816343,
+            "after": 0.5322101574593121
+          },
+          "paper-left": {
+            "before": 0.6257216124157207,
+            "after": 0.8300660286953179
+          },
+          "paper-right": {
+            "before": 0.7628678380316758,
+            "after": 0.800807322180198
+          },
+          "paper-top": {
+            "before": 0.726731440919888,
+            "after": 0.7847909935685541
+          },
+          "paper-bottom": {
+            "before": 0.8339537635219546,
+            "after": 0.8367170883952763
+          }
+        }
+      }
+    },
+    "2ed/U": {
+      "axes": {
+        "x": {
+          "scale": 0.99925,
+          "shift": 0.1875,
+          "score": 0.7440380677278695,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00075,
+          "shift": -0.3125,
+          "score": 0.7481455059877319,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7313937558370445,
+        "after": 0.7460917868578008,
+        "improved": 7,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8052048811764173,
+            "after": 0.6967031206889649
+          },
+          "stock-right": {
+            "before": 0.7734816119548447,
+            "after": 0.7774829148859602
+          },
+          "stock-top": {
+            "before": 0.8561757219591057,
+            "after": 0.9464213160288837
+          },
+          "stock-bottom": {
+            "before": 0.7880615625567526,
+            "after": 0.7642981181743259
+          },
+          "art-left": {
+            "before": 0.6023170321583062,
+            "after": 0.714646742039336
+          },
+          "art-right": {
+            "before": 0.5965238977953125,
+            "after": 0.5909429746302607
+          },
+          "art-top": {
+            "before": 0.6210373408541046,
+            "after": 0.5541697917110107
+          },
+          "art-bottom": {
+            "before": 0.6140358459537768,
+            "after": 0.6777294179583438
+          },
+          "paper-left": {
+            "before": 0.7806972905899559,
+            "after": 0.8295546614934542
+          },
+          "paper-right": {
+            "before": 0.8603619289354478,
+            "after": 0.8548979926292413
+          },
+          "paper-top": {
+            "before": 0.6715872179830921,
+            "after": 0.7200459568555511
+          },
+          "paper-bottom": {
+            "before": 0.8072407381274174,
+            "after": 0.8262084351982757
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.7256385653794137,
+        "after": 0.727223291155495,
+        "improved": 18,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.801175229735971,
+            "after": 0.688768276431823
+          },
+          "stock-right": {
+            "before": 0.7564366806615727,
+            "after": 0.7605783833707638
+          },
+          "stock-top": {
+            "before": 0.8501835302435495,
+            "after": 0.9433741539859565
+          },
+          "stock-bottom": {
+            "before": 0.7866754857214335,
+            "after": 0.763142825197149
+          },
+          "art-left": {
+            "before": 0.7553630626439052,
+            "after": 0.785432227051866
+          },
+          "art-right": {
+            "before": 0.4175075120748934,
+            "after": 0.40261985603488015
+          },
+          "art-top": {
+            "before": 0.6148840165332272,
+            "after": 0.549513937473744
+          },
+          "art-bottom": {
+            "before": 0.5899471797180911,
+            "after": 0.6638955805898867
+          },
+          "paper-left": {
+            "before": 0.8565882611337888,
+            "after": 0.8326256863963438
+          },
+          "paper-right": {
+            "before": 0.7366906528688095,
+            "after": 0.7267216787319338
+          },
+          "paper-top": {
+            "before": 0.7247914993588321,
+            "after": 0.7786113717828195
+          },
+          "paper-bottom": {
+            "before": 0.8174196738588918,
+            "after": 0.8313955168187718
+          }
+        }
+      }
+    },
+    "2ed/W": {
+      "axes": {
+        "x": {
+          "scale": 1.00125,
+          "shift": -0.9375,
+          "score": 0.7518869758873339,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.0010000000000001,
+          "shift": -0.4375,
+          "score": 0.8576313201612649,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.6972943721587772,
+        "after": 0.8047591480242995,
+        "improved": 6,
+        "largeRegressions": [
+          {
+            "id": "1704d11c-569c-4b4e-bbe0-df42af98c4fc",
+            "name": "Blue Ward",
+            "before": 0.8380609755122923,
+            "after": 0.752211312683647
+          },
+          {
+            "id": "19272824-a0a4-4352-8904-a185516c95e1",
+            "name": "Personal Incarnation",
+            "before": 0.9029032406115475,
+            "after": 0.8422342655073353
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.8249155608946657,
+            "after": 0.956465836681945
+          },
+          "stock-right": {
+            "before": 0.885056035637996,
+            "after": 0.719958750090664
+          },
+          "stock-top": {
+            "before": 0.8996639238778424,
+            "after": 0.9186074097874
+          },
+          "stock-bottom": {
+            "before": 0.8668308631276048,
+            "after": 0.8337542839088394
+          },
+          "art-left": {
+            "before": 0.6332466653966249,
+            "after": 0.8512761444518763
+          },
+          "art-right": {
+            "before": 0.36722536543618234,
+            "after": 0.526824353412126
+          },
+          "art-top": {
+            "before": 0.6225439847381683,
+            "after": 0.7548899871810755
+          },
+          "art-bottom": {
+            "before": 0.7872783640527542,
+            "after": 0.8757023523279596
+          },
+          "paper-left": {
+            "before": 0.48788230763757306,
+            "after": 0.8282435650720429
+          },
+          "paper-right": {
+            "before": 0.32935753683635893,
+            "after": 0.6285532056153499
+          },
+          "paper-top": {
+            "before": 0.7887235574015649,
+            "after": 0.866221967372758
+          },
+          "paper-bottom": {
+            "before": 0.874808300867991,
+            "after": 0.8966119203895572
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.6895919459176811,
+        "after": 0.7805994483078755,
+        "improved": 29,
+        "largeRegressions": [
+          {
+            "id": "402e84fb-7c77-4491-9ece-c2d9b8506ece",
+            "name": "Blessing",
+            "before": 0.5378512059187704,
+            "after": 0.4332993495477094
+          },
+          {
+            "id": "45bf4297-ccf4-4fa0-b7ce-5aaebca50813",
+            "name": "Conversion",
+            "before": 0.7573375744398261,
+            "after": 0.6806228778440894
+          },
+          {
+            "id": "8352e8b6-c947-49f3-a653-a6af65d3e9c3",
+            "name": "Balance",
+            "before": 0.84800611579603,
+            "after": 0.758235812501948
+          },
+          {
+            "id": "98a1c689-cd8b-4a80-ad6d-e4ff5933f5e7",
+            "name": "Circle of Protection: White",
+            "before": 0.8478513916729106,
+            "after": 0.6472122528808743
+          },
+          {
+            "id": "e57404bc-44ba-4909-87da-f4a71673168d",
+            "name": "Wrath of God",
+            "before": 0.807207272109225,
+            "after": 0.6694983615620086
+          },
+          {
+            "id": "f0cd79e9-1b61-4ad3-8f6d-cb5d3f60ef8e",
+            "name": "Black Ward",
+            "before": 0.8973271993294145,
+            "after": 0.7463870176025506
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.7930311239567359,
+            "after": 0.9587332442758458
+          },
+          "stock-right": {
+            "before": 0.8866607640712161,
+            "after": 0.7176571413225638
+          },
+          "stock-top": {
+            "before": 0.9004612390132534,
+            "after": 0.9291974251107753
+          },
+          "stock-bottom": {
+            "before": 0.8591366675706328,
+            "after": 0.8261585415545909
+          },
+          "art-left": {
+            "before": 0.5583224058227085,
+            "after": 0.7298916925184649
+          },
+          "art-right": {
+            "before": 0.3988602368142666,
+            "after": 0.5552610293744835
+          },
+          "art-top": {
+            "before": 0.501497779670158,
+            "after": 0.6382434393527863
+          },
+          "art-bottom": {
+            "before": 0.7845747075675311,
+            "after": 0.8598307027995538
+          },
+          "paper-left": {
+            "before": 0.5802462898133484,
+            "after": 0.786124715089581
+          },
+          "paper-right": {
+            "before": 0.3984406723710921,
+            "after": 0.66056245400857
+          },
+          "paper-top": {
+            "before": 0.7621125168000704,
+            "after": 0.8248511097799957
+          },
+          "paper-bottom": {
+            "before": 0.8517589475411586,
+            "after": 0.880681884507293
+          }
+        }
+      }
+    },
+    "2ed/B": {
+      "axes": {
+        "x": {
+          "scale": 1.00175,
+          "shift": -0.625,
+          "score": 0.7629314013196975,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.0010000000000001,
+          "shift": -0.5,
+          "score": 0.7897856620907371,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.7402892561772929,
+        "after": 0.7763585317052174,
+        "improved": 5,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8368068418467899,
+            "after": 0.9865302522672078
+          },
+          "stock-right": {
+            "before": 0.836043171171707,
+            "after": 0.7791160078817834
+          },
+          "stock-top": {
+            "before": 0.8452637703829389,
+            "after": 0.978320230668201
+          },
+          "stock-bottom": {
+            "before": 0.8055191904665798,
+            "after": 0.7588056289404018
+          },
+          "art-left": {
+            "before": 0.42280612149789626,
+            "after": 0.4474400800829732
+          },
+          "art-right": {
+            "before": 0.5808106715668606,
+            "after": 0.6450993600829438
+          },
+          "art-top": {
+            "before": 0.8212152939442454,
+            "after": 0.7223474189442834
+          },
+          "art-bottom": {
+            "before": 0.3699336817483092,
+            "after": 0.5098279455903174
+          },
+          "paper-left": {
+            "before": 0.8749913866951023,
+            "after": 0.9009659226402257
+          },
+          "paper-right": {
+            "before": 0.7837097246791157,
+            "after": 0.8184367849630515
+          },
+          "paper-top": {
+            "before": 0.8777060586001559,
+            "after": 0.9107187623342022
+          },
+          "paper-bottom": {
+            "before": 0.8286651615278138,
+            "after": 0.8586939860670172
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.7825119950072229,
+        "after": 0.8123329992096355,
+        "improved": 30,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.8433488023459631,
+            "after": 0.988009235952648
+          },
+          "stock-right": {
+            "before": 0.8364740509842492,
+            "after": 0.775561620157637
+          },
+          "stock-top": {
+            "before": 0.8527425278617234,
+            "after": 0.9789603058268731
+          },
+          "stock-bottom": {
+            "before": 0.8022283809529254,
+            "after": 0.7548923659117375
+          },
+          "art-left": {
+            "before": 0.5774018092851857,
+            "after": 0.5771168799335743
+          },
+          "art-right": {
+            "before": 0.7243513473212037,
+            "after": 0.7644466293447947
+          },
+          "art-top": {
+            "before": 0.8041224077772785,
+            "after": 0.7268008799570369
+          },
+          "art-bottom": {
+            "before": 0.4310558240128944,
+            "after": 0.5490183510144387
+          },
+          "paper-left": {
+            "before": 0.9163836158147657,
+            "after": 0.9453540785902238
+          },
+          "paper-right": {
+            "before": 0.8408618440042246,
+            "after": 0.875039815534554
+          },
+          "paper-top": {
+            "before": 0.9124112169540733,
+            "after": 0.9370582776913177
+          },
+          "paper-bottom": {
+            "before": 0.8487621127721884,
+            "after": 0.8757375506007898
+          }
+        }
+      }
+    },
+    "2ed/G": {
+      "axes": {
+        "x": {
+          "scale": 1.00475,
+          "shift": -1.5,
+          "score": 0.6257353175332445,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00025,
+          "shift": -0.6875,
+          "score": 0.7139538194056559,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.5275491816390013,
+        "after": 0.6698445684694503,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.7603817652713378,
+            "after": 0.7473738212475101
+          },
+          "stock-right": {
+            "before": 0.6756378069002529,
+            "after": 0.5373611522952465
+          },
+          "stock-top": {
+            "before": 0.827626981550818,
+            "after": 0.9087990468009346
+          },
+          "stock-bottom": {
+            "before": 0.7392443478009132,
+            "after": 0.5362662004522171
+          },
+          "art-left": {
+            "before": -0.11713749767534745,
+            "after": 0.5919527821728545
+          },
+          "art-right": {
+            "before": 0.5852733540286268,
+            "after": 0.731948936426269
+          },
+          "art-top": {
+            "before": 0.684001543594526,
+            "after": 0.592552393563577
+          },
+          "art-bottom": {
+            "before": 0.49253384205522954,
+            "after": 0.6497951319864231
+          },
+          "paper-left": {
+            "before": 0.14906303065664767,
+            "after": 0.697140721123644
+          },
+          "paper-right": {
+            "before": 0.32665853765680813,
+            "after": 0.44863449193394395
+          },
+          "paper-top": {
+            "before": 0.5184912438331414,
+            "after": 0.7443466099581687
+          },
+          "paper-bottom": {
+            "before": 0.6888152239950621,
+            "after": 0.8519635336726147
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.5215289969765291,
+        "after": 0.6619097073285789,
+        "improved": 36,
+        "largeRegressions": [
+          {
+            "id": "5ae21e65-fc55-4a90-806e-452ef0ad5e3a",
+            "name": "Wall of Brambles",
+            "before": 0.7214719556331195,
+            "after": 0.669374482445714
+          },
+          {
+            "id": "b7425741-5d7c-4016-8d42-ec8b7353116b",
+            "name": "Wild Growth",
+            "before": 0.758129703155863,
+            "after": 0.6869869380070414
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.7579946532004015,
+            "after": 0.7594973234214855
+          },
+          "stock-right": {
+            "before": 0.6718022304449082,
+            "after": 0.5330174311456259
+          },
+          "stock-top": {
+            "before": 0.8162630867806674,
+            "after": 0.8992781538835345
+          },
+          "stock-bottom": {
+            "before": 0.7581314155335965,
+            "after": 0.5607336428396815
+          },
+          "art-left": {
+            "before": -0.09748554444721085,
+            "after": 0.6122307556082262
+          },
+          "art-right": {
+            "before": 0.5207059805169618,
+            "after": 0.6633091874102695
+          },
+          "art-top": {
+            "before": 0.6747255506410981,
+            "after": 0.5548439184892574
+          },
+          "art-bottom": {
+            "before": 0.500680658460735,
+            "after": 0.6756861943060224
+          },
+          "paper-left": {
+            "before": 0.1944175318511439,
+            "after": 0.710545521885678
+          },
+          "paper-right": {
+            "before": 0.3170914756488169,
+            "after": 0.4298965432948415
+          },
+          "paper-top": {
+            "before": 0.5121514481805117,
+            "after": 0.7540273967722473
+          },
+          "paper-bottom": {
+            "before": 0.6318694769067179,
+            "after": 0.7898504188860758
+          }
+        }
+      }
+    },
+    "3ed/G": {
+      "axes": {
+        "x": {
+          "scale": 1.00775,
+          "shift": 0.125,
+          "score": 0.7047096259931908,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00675,
+          "shift": 5,
+          "score": 0.5920453714057105,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.2702752674296576,
+        "after": 0.6483774986994505,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9336823196907296,
+            "after": 0.34392429948128417
+          },
+          "stock-right": {
+            "before": 0.5625623362589072,
+            "after": 0.9497204050050674
+          },
+          "stock-top": {
+            "before": 0.0960830367918378,
+            "after": 0.9835687603657393
+          },
+          "stock-bottom": {
+            "before": 0.6169834047271997,
+            "after": 0.030556173236077767
+          },
+          "art-left": {
+            "before": -0.02638192834967299,
+            "after": 0.5767514613160099
+          },
+          "art-right": {
+            "before": 0.43902518959435005,
+            "after": 0.6944654276603752
+          },
+          "art-top": {
+            "before": 0.06021534405437185,
+            "after": 0.725347578662883
+          },
+          "art-bottom": {
+            "before": -0.21415142840652934,
+            "after": 0.6052046066101104
+          },
+          "paper-left": {
+            "before": 0.5591073322507963,
+            "after": 0.8037811986696778
+          },
+          "paper-right": {
+            "before": 0.5965372873581207,
+            "after": 0.8596149638267296
+          },
+          "paper-top": {
+            "before": 0.022625012605438484,
+            "after": 0.39987213425957013
+          },
+          "paper-bottom": {
+            "before": -0.4029846974196588,
+            "after": 0.8077229752998822
+          }
+        }
+      },
+      "validation": {
+        "count": 37,
+        "before": 0.287656454679105,
+        "after": 0.6359558562109957,
+        "improved": 37,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9380577127061324,
+            "after": 0.3530892475469124
+          },
+          "stock-right": {
+            "before": 0.5535255638209964,
+            "after": 0.9475549115847544
+          },
+          "stock-top": {
+            "before": 0.09740699259774131,
+            "after": 0.983776199519163
+          },
+          "stock-bottom": {
+            "before": 0.6135699028819088,
+            "after": 0.03047206384967817
+          },
+          "art-left": {
+            "before": 0.16329444047096664,
+            "after": 0.5529278490319467
+          },
+          "art-right": {
+            "before": 0.41603111369491474,
+            "after": 0.7216627694645898
+          },
+          "art-top": {
+            "before": 0.18799015058256155,
+            "after": 0.6715677616630772
+          },
+          "art-bottom": {
+            "before": -0.2777938241141678,
+            "after": 0.6365802921814327
+          },
+          "paper-left": {
+            "before": 0.6644913617328108,
+            "after": 0.8490464407242511
+          },
+          "paper-right": {
+            "before": 0.471359695916897,
+            "after": 0.7690701728729817
+          },
+          "paper-top": {
+            "before": -0.002503339011058922,
+            "after": 0.3414176237947851
+          },
+          "paper-bottom": {
+            "before": -0.37355231513044296,
+            "after": 0.7743049422983765
+          }
+        }
+      }
+    },
+    "3ed/B": {
+      "axes": {
+        "x": {
+          "scale": 1.00875,
+          "shift": -0.3125,
+          "score": 0.7573614289875102,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.008,
+          "shift": 6.3125,
+          "score": 0.7042992146915341,
+          "atSearchBoundary": true
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.359812258127546,
+        "after": 0.7308303218395222,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9721408762004832,
+            "after": 0.30034199503941816
+          },
+          "stock-right": {
+            "before": 0.6980314774623169,
+            "after": 0.9704548753487051
+          },
+          "stock-top": {
+            "before": 0.1435890583862513,
+            "after": 0.9851483965065408
+          },
+          "stock-bottom": {
+            "before": 0.6859711463585487,
+            "after": -0.0006682196849433904
+          },
+          "art-left": {
+            "before": 0.006163582010430888,
+            "after": 0.6422530956394656
+          },
+          "art-right": {
+            "before": 0.54684336152699,
+            "after": 0.7460666344443273
+          },
+          "art-top": {
+            "before": -0.0823826785258728,
+            "after": 0.7014758801448839
+          },
+          "art-bottom": {
+            "before": -0.27053692420468384,
+            "after": 0.7087727707250402
+          },
+          "paper-left": {
+            "before": 0.6413198182102675,
+            "after": 0.9183085606210369
+          },
+          "paper-right": {
+            "before": 0.8532222693359302,
+            "after": 0.9667434128321086
+          },
+          "paper-top": {
+            "before": 0.08091293925623501,
+            "after": 0.9460492804647966
+          },
+          "paper-bottom": {
+            "before": 0.042472171513654594,
+            "after": 0.8850171799928869
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.39279481875861677,
+        "after": 0.7063005653601074,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9731855227772733,
+            "after": 0.3030945258669379
+          },
+          "stock-right": {
+            "before": 0.6938444979081497,
+            "after": 0.970179159910383
+          },
+          "stock-top": {
+            "before": 0.14500242947521388,
+            "after": 0.9833912602559806
+          },
+          "stock-bottom": {
+            "before": 0.6864669045353238,
+            "after": -0.0007246863422045604
+          },
+          "art-left": {
+            "before": 0.2390567823577357,
+            "after": 0.5811685359135721
+          },
+          "art-right": {
+            "before": 0.4355978013237908,
+            "after": 0.6790537155120644
+          },
+          "art-top": {
+            "before": -0.0201148654853096,
+            "after": 0.7242546034569649
+          },
+          "art-bottom": {
+            "before": -0.1251553148372898,
+            "after": 0.6040454884241399
+          },
+          "paper-left": {
+            "before": 0.7245009953987439,
+            "after": 0.9053545910239211
+          },
+          "paper-right": {
+            "before": 0.7827556717378951,
+            "after": 0.9138180095938453
+          },
+          "paper-top": {
+            "before": 0.09752396167822885,
+            "after": 0.8944465124851142
+          },
+          "paper-bottom": {
+            "before": 0.0808734382336463,
+            "after": 0.9175250682205722
+          }
+        }
+      }
+    },
+    "3ed/R": {
+      "axes": {
+        "x": {
+          "scale": 1.006,
+          "shift": 0.5,
+          "score": 0.739312961592209,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00875,
+          "shift": 5.25,
+          "score": 0.6075824914219131,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.3349185360818086,
+        "after": 0.6734477265070612,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9323329248801568,
+            "after": 0.6573648950154711
+          },
+          "stock-right": {
+            "before": 0.6106540764315258,
+            "after": 0.9463606707278129
+          },
+          "stock-top": {
+            "before": 0.10282973585670381,
+            "after": 0.9359408350514454
+          },
+          "stock-bottom": {
+            "before": 0.5981256864511241,
+            "after": 0.005884041705059119
+          },
+          "art-left": {
+            "before": 0.39512329943399455,
+            "after": 0.6177263973850863
+          },
+          "art-right": {
+            "before": 0.3371447221952302,
+            "after": 0.6196890008179667
+          },
+          "art-top": {
+            "before": 0.3261958458677869,
+            "after": 0.49611349254790355
+          },
+          "art-bottom": {
+            "before": -0.36877107688309824,
+            "after": 0.7285099211691746
+          },
+          "paper-left": {
+            "before": 0.6163892482058358,
+            "after": 0.8077685728313101
+          },
+          "paper-right": {
+            "before": 0.48707033231149127,
+            "after": 0.7869682327756076
+          },
+          "paper-top": {
+            "before": 0.04393473819123483,
+            "after": 0.7094378844490528
+          },
+          "paper-bottom": {
+            "before": -0.062007099960282544,
+            "after": 0.7696087736088436
+          }
+        }
+      },
+      "validation": {
+        "count": 39,
+        "before": 0.30722870710128386,
+        "after": 0.6434405897571204,
+        "improved": 39,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9285475905959285,
+            "after": 0.6494184981946006
+          },
+          "stock-right": {
+            "before": 0.6066225557890933,
+            "after": 0.9437709815544426
+          },
+          "stock-top": {
+            "before": 0.10312216940067942,
+            "after": 0.9357132187680526
+          },
+          "stock-bottom": {
+            "before": 0.6020207637862259,
+            "after": 0.006132978235075163
+          },
+          "art-left": {
+            "before": 0.1955737572627323,
+            "after": 0.37887669368908733
+          },
+          "art-right": {
+            "before": 0.34040408673231853,
+            "after": 0.5271905959967325
+          },
+          "art-top": {
+            "before": 0.23978333298423424,
+            "after": 0.5237893019347364
+          },
+          "art-bottom": {
+            "before": -0.31621308709141593,
+            "after": 0.7289489280122312
+          },
+          "paper-left": {
+            "before": 0.37653429657050447,
+            "after": 0.5721464686086138
+          },
+          "paper-right": {
+            "before": 0.589533408886509,
+            "after": 0.7942507967250316
+          },
+          "paper-top": {
+            "before": 0.06257780933342606,
+            "after": 0.8007385591803644
+          },
+          "paper-bottom": {
+            "before": -0.04176219903482783,
+            "after": 0.860310056186476
+          }
+        }
+      }
+    },
+    "3ed/W": {
+      "axes": {
+        "x": {
+          "scale": 1.0065,
+          "shift": 0.625,
+          "score": 0.6786787842779646,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.0065,
+          "shift": 4.3125,
+          "score": 0.6005131659971099,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.14912985932690234,
+        "after": 0.6395959751375373,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9850905501256779,
+            "after": 0.7703503606966874
+          },
+          "stock-right": {
+            "before": 0.007928664411477652,
+            "after": 0.9735100261351003
+          },
+          "stock-top": {
+            "before": -0.4216533262968963,
+            "after": 0.8030030679290634
+          },
+          "stock-bottom": {
+            "before": 0.5859651307953412,
+            "after": 0.008159932467491946
+          },
+          "art-left": {
+            "before": 0.4041431575183045,
+            "after": 0.5992336254204998
+          },
+          "art-right": {
+            "before": 0.24858270759404533,
+            "after": 0.6395682674091081
+          },
+          "art-top": {
+            "before": 0.44213130130723066,
+            "after": 0.43158454944250313
+          },
+          "art-bottom": {
+            "before": -0.1926143696339413,
+            "after": 0.7966168819284831
+          },
+          "paper-left": {
+            "before": 0.32283087626210644,
+            "after": 0.5329759759452577
+          },
+          "paper-right": {
+            "before": -0.14349835581500747,
+            "after": 0.556434450061134
+          },
+          "paper-top": {
+            "before": -0.2826087793979098,
+            "after": 0.7603888558509404
+          },
+          "paper-bottom": {
+            "before": -0.1667392449476011,
+            "after": 0.8033257083641767
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.10058080678719335,
+        "after": 0.5866176561162242,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9844188098592038,
+            "after": 0.7608578106595787
+          },
+          "stock-right": {
+            "before": 0.025097305537794948,
+            "after": 0.9713520844915884
+          },
+          "stock-top": {
+            "before": -0.42125747795987484,
+            "after": 0.7966447071006219
+          },
+          "stock-bottom": {
+            "before": 0.5918047691180129,
+            "after": 0.007597990581522953
+          },
+          "art-left": {
+            "before": 0.3514717571352895,
+            "after": 0.5347944533152695
+          },
+          "art-right": {
+            "before": 0.0636856726791539,
+            "after": 0.40319701603513874
+          },
+          "art-top": {
+            "before": 0.11286866527826446,
+            "after": 0.5517947018038457
+          },
+          "art-bottom": {
+            "before": -0.2838547484284674,
+            "after": 0.7173699442052012
+          },
+          "paper-left": {
+            "before": 0.2572584596672852,
+            "after": 0.46333105771807404
+          },
+          "paper-right": {
+            "before": -0.15942282150486398,
+            "after": 0.5796810334945703
+          },
+          "paper-top": {
+            "before": -0.2073608297351078,
+            "after": 0.6674519839004944
+          },
+          "paper-bottom": {
+            "before": -0.1077398802003706,
+            "after": 0.5853390900887834
+          }
+        }
+      }
+    },
+    "3ed/A": {
+      "axes": {
+        "x": {
+          "scale": 1.0055,
+          "shift": 0.5,
+          "score": 0.7046117312891311,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00825,
+          "shift": 4.875,
+          "score": 0.6420693093071268,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.32252324764704565,
+        "after": 0.673340520298129,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.962851100323715,
+            "after": 0.7787364900559818
+          },
+          "stock-right": {
+            "before": 0.6919779570333258,
+            "after": 0.8690584233969517
+          },
+          "stock-top": {
+            "before": 0.2025026877056828,
+            "after": 0.9346945070011898
+          },
+          "stock-bottom": {
+            "before": 0.5985602016049797,
+            "after": 0.01619607184925047
+          },
+          "art-left": {
+            "before": 0.4061598320936669,
+            "after": 0.5641576423357924
+          },
+          "art-right": {
+            "before": 0.05068684755404908,
+            "after": 0.4483165462911215
+          },
+          "art-top": {
+            "before": 0.16021667739092693,
+            "after": 0.5701900372258033
+          },
+          "art-bottom": {
+            "before": -0.27530500917918665,
+            "after": 0.6784313343413015
+          },
+          "paper-left": {
+            "before": 0.6047337971055424,
+            "after": 0.7461003635818398
+          },
+          "paper-right": {
+            "before": 0.4560598620567163,
+            "after": 0.8213009220730993
+          },
+          "paper-top": {
+            "before": -0.17447816412912384,
+            "after": 0.8246001757001277
+          },
+          "paper-bottom": {
+            "before": 0.18631318220425308,
+            "after": 0.8283037297250879
+          }
+        }
+      },
+      "validation": {
+        "count": 43,
+        "before": 0.3325494746597689,
+        "after": 0.6533787685437773,
+        "improved": 43,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9630998426888299,
+            "after": 0.7806972417370764
+          },
+          "stock-right": {
+            "before": 0.6819434401570699,
+            "after": 0.8675826668028785
+          },
+          "stock-top": {
+            "before": 0.20180939820242116,
+            "after": 0.9333687310317432
+          },
+          "stock-bottom": {
+            "before": 0.5994701460956673,
+            "after": 0.0162949358098333
+          },
+          "art-left": {
+            "before": 0.12210747018976305,
+            "after": 0.30624158311661176
+          },
+          "art-right": {
+            "before": 0.3484068308762447,
+            "after": 0.6022054940101932
+          },
+          "art-top": {
+            "before": 0.18196474614610378,
+            "after": 0.5898750264836183
+          },
+          "art-bottom": {
+            "before": -0.2572580810227576,
+            "after": 0.6512347182241348
+          },
+          "paper-left": {
+            "before": 0.45952168309916686,
+            "after": 0.5814365542427236
+          },
+          "paper-right": {
+            "before": 0.6934751685468394,
+            "after": 0.7889924928342413
+          },
+          "paper-top": {
+            "before": -0.19010538183988662,
+            "after": 0.8739530468381234
+          },
+          "paper-bottom": {
+            "before": 0.18615843277776606,
+            "after": 0.8486627313941487
+          }
+        }
+      }
+    },
+    "3ed/U": {
+      "axes": {
+        "x": {
+          "scale": 1.0075,
+          "shift": 0,
+          "score": 0.5735516636304353,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00725,
+          "shift": 4.5625,
+          "score": 0.622985045817289,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 8,
+        "before": 0.14001156767051554,
+        "after": 0.5982683547238621,
+        "improved": 8,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9765278704354439,
+            "after": 0.3219272112942108
+          },
+          "stock-right": {
+            "before": 0.4048550020738816,
+            "after": 0.9562918483369309
+          },
+          "stock-top": {
+            "before": -0.17840335623999964,
+            "after": 0.8237369687447536
+          },
+          "stock-bottom": {
+            "before": 0.685392650271524,
+            "after": -0.012103331980362876
+          },
+          "art-left": {
+            "before": 0.10842373433536917,
+            "after": 0.5998171236665737
+          },
+          "art-right": {
+            "before": 0.040467889558314034,
+            "after": 0.5046037952836171
+          },
+          "art-top": {
+            "before": 0.06317277861562141,
+            "after": 0.5325630912007661
+          },
+          "art-bottom": {
+            "before": -0.30074456596284854,
+            "after": 0.8584207096127773
+          },
+          "paper-left": {
+            "before": -0.027575690552059856,
+            "after": 0.4917757012203977
+          },
+          "paper-right": {
+            "before": 0.27511317441995614,
+            "after": 0.5668943019808816
+          },
+          "paper-top": {
+            "before": -0.3106769106879392,
+            "after": 0.6315892535130928
+          },
+          "paper-bottom": {
+            "before": -0.056413764221076426,
+            "after": 0.9037035838127072
+          }
+        }
+      },
+      "validation": {
+        "count": 38,
+        "before": 0.12637657261386465,
+        "after": 0.533441511211192,
+        "improved": 38,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9751848497141403,
+            "after": 0.3231007801459061
+          },
+          "stock-right": {
+            "before": 0.4138404146137531,
+            "after": 0.9606011641759636
+          },
+          "stock-top": {
+            "before": -0.16946077682221014,
+            "after": 0.831560891177341
+          },
+          "stock-bottom": {
+            "before": 0.6838378206283476,
+            "after": -0.011043138064163549
+          },
+          "art-left": {
+            "before": -0.0248956047921008,
+            "after": 0.4367162027732679
+          },
+          "art-right": {
+            "before": -0.01921754959232531,
+            "after": 0.42939139324324177
+          },
+          "art-top": {
+            "before": -0.12583992853072096,
+            "after": 0.5900892364492045
+          },
+          "art-bottom": {
+            "before": -0.3295470043667403,
+            "after": 0.6776790603646783
+          },
+          "paper-left": {
+            "before": 0.0013354816169972683,
+            "after": 0.5145001107646374
+          },
+          "paper-right": {
+            "before": 0.3183731030365444,
+            "after": 0.48587773359841446
+          },
+          "paper-top": {
+            "before": -0.16022424249544565,
+            "after": 0.446604007367176
+          },
+          "paper-bottom": {
+            "before": -0.04686769164386382,
+            "after": 0.7162206925386364
+          }
+        }
+      }
+    },
+    "3ed/basic": {
+      "axes": {
+        "x": {
+          "scale": 1.0010000000000001,
+          "shift": 0.4375,
+          "score": 0.7838445645428883,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.00075,
+          "shift": -0.25,
+          "score": 0.7701681940341335,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 6,
+        "before": 0.7405798281824131,
+        "after": 0.7770063792885109,
+        "improved": 5,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9628707314374426,
+            "after": 0.9309118023831014
+          },
+          "stock-right": {
+            "before": 0.9775459776048329,
+            "after": 0.9422103435061432
+          },
+          "stock-top": {
+            "before": 0.9279021246093954,
+            "after": 0.9922742928676217
+          },
+          "stock-bottom": {
+            "before": 0.9814266022143062,
+            "after": 0.9812778575499808
+          },
+          "art-left": {
+            "before": 0.6064987762660343,
+            "after": 0.6255378443152121
+          },
+          "art-right": {
+            "before": 0.24018133192117389,
+            "after": 0.43815190396814535
+          },
+          "art-top": {
+            "before": 0.20953438382289344,
+            "after": 0.2459109332512909
+          },
+          "art-bottom": {
+            "before": 0.8389976074261826,
+            "after": 0.8336867838616694
+          },
+          "paper-left": {
+            "before": 0.8135069063778947,
+            "after": 0.864141769860303
+          },
+          "paper-right": {
+            "before": 0.7738843445124653,
+            "after": 0.9021137232244261
+          },
+          "paper-top": {
+            "before": 0.769001570487243,
+            "after": 0.7782165850785979
+          },
+          "paper-bottom": {
+            "before": 0.7856075815090935,
+            "after": 0.78964271159564
+          }
+        }
+      },
+      "validation": {
+        "count": 9,
+        "before": 0.7001545034296112,
+        "after": 0.6677075370905308,
+        "improved": 2,
+        "largeRegressions": [
+          {
+            "id": "95e936cf-3bbb-4f3b-8e1a-4be1d4702b99",
+            "name": "Swamp",
+            "before": 0.649422052043548,
+            "after": 0.5972418017562238
+          },
+          {
+            "id": "a4901260-073a-4d06-8167-c322c55ab210",
+            "name": "Plains",
+            "before": 0.8084224454068941,
+            "after": 0.754392798064427
+          },
+          {
+            "id": "cc0bcdbe-be63-446a-8838-8790bda308a3",
+            "name": "Plains",
+            "before": 0.6780633908508605,
+            "after": 0.5730223152968871
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.969238219661877,
+            "after": 0.9397226569876911
+          },
+          "stock-right": {
+            "before": 0.9800600160377638,
+            "after": 0.9263278228098761
+          },
+          "stock-top": {
+            "before": 0.9244044156282119,
+            "after": 0.993592251564124
+          },
+          "stock-bottom": {
+            "before": 0.9835612115008794,
+            "after": 0.9836864408134818
+          },
+          "art-left": {
+            "before": 0.32981571782870645,
+            "after": 0.28145812806308745
+          },
+          "art-right": {
+            "before": 0.4573998970758203,
+            "after": 0.398380146173782
+          },
+          "art-top": {
+            "before": -0.06760806373830827,
+            "after": -0.0475077042212633
+          },
+          "art-bottom": {
+            "before": 0.7484206875509869,
+            "after": 0.7216730698235081
+          },
+          "paper-left": {
+            "before": 0.7103145057407769,
+            "after": 0.6716484907456852
+          },
+          "paper-right": {
+            "before": 0.8255860338211175,
+            "after": 0.6075478351860553
+          },
+          "paper-top": {
+            "before": 0.7994093455224028,
+            "after": 0.7970927448407444
+          },
+          "paper-bottom": {
+            "before": 0.7412520545250976,
+            "after": 0.7388685622995973
+          }
+        }
+      }
+    },
+    "3ed/dual": {
+      "axes": {
+        "x": {
+          "scale": 1.00125,
+          "shift": 0.0625,
+          "score": 0.8746332009131186,
+          "atSearchBoundary": false
+        },
+        "y": {
+          "scale": 1.0005,
+          "shift": 0.5,
+          "score": 0.7405345327736177,
+          "atSearchBoundary": false
+        }
+      },
+      "calibration": {
+        "count": 2,
+        "before": 0.7641731972890886,
+        "after": 0.807583866843368,
+        "improved": 2,
+        "largeRegressions": [],
+        "parts": {
+          "stock-left": {
+            "before": 0.9711958897081311,
+            "after": 0.9741344697327237
+          },
+          "stock-right": {
+            "before": 0.978076089404976,
+            "after": 0.989605250786149
+          },
+          "stock-top": {
+            "before": 0.9451049773078146,
+            "after": 0.8815846061513077
+          },
+          "stock-bottom": {
+            "before": 0.9833803029009904,
+            "after": 0.8425767807139524
+          },
+          "art-left": {
+            "before": 0.8423731031304793,
+            "after": 0.8521375261022437
+          },
+          "art-right": {
+            "before": 0.5700809444426025,
+            "after": 0.5932560696227434
+          },
+          "art-top": {
+            "before": 0.08870711296269934,
+            "after": 0.16008273888079572
+          },
+          "art-bottom": {
+            "before": 0.6769777656681704,
+            "after": 0.8229438122196053
+          },
+          "paper-left": {
+            "before": 0.8951434175259259,
+            "after": 0.9022803683128289
+          },
+          "paper-right": {
+            "before": 0.8872153744213953,
+            "after": 0.9363855209220232
+          },
+          "paper-top": {
+            "before": 0.7935763881887867,
+            "after": 0.9144136684515893
+          },
+          "paper-bottom": {
+            "before": 0.5382470018070913,
+            "after": 0.8216055902244559
+          }
+        }
+      },
+      "validation": {
+        "count": 8,
+        "before": 0.6172007206465226,
+        "after": 0.5607444752728025,
+        "improved": 1,
+        "largeRegressions": [
+          {
+            "id": "54c5c65a-a444-4e0f-ae44-a3722cdd32a1",
+            "name": "Taiga",
+            "before": 0.5252167705725146,
+            "after": 0.4377088972549885
+          },
+          {
+            "id": "56058359-3c0b-49db-a0ce-9ded4c3f4372",
+            "name": "Badlands",
+            "before": 0.6541608893148744,
+            "after": 0.5977233257773248
+          },
+          {
+            "id": "5ae71290-c133-406c-8b17-9ea22b437806",
+            "name": "Savannah",
+            "before": 0.7254206747552442,
+            "after": 0.6735701607433326
+          },
+          {
+            "id": "9c9d5f72-e199-4d5b-ae7e-cc5b9bdfae99",
+            "name": "Tundra",
+            "before": 0.6082988204728574,
+            "after": 0.5292007778703803
+          },
+          {
+            "id": "c6ae9cff-8646-4069-8761-df734e067beb",
+            "name": "Plateau",
+            "before": 0.4050414374363583,
+            "after": 0.2720003503364054
+          }
+        ],
+        "parts": {
+          "stock-left": {
+            "before": 0.9684298859208952,
+            "after": 0.9712987614135233
+          },
+          "stock-right": {
+            "before": 0.97564955696942,
+            "after": 0.9882455050661696
+          },
+          "stock-top": {
+            "before": 0.9393963492528595,
+            "after": 0.8669701031443608
+          },
+          "stock-bottom": {
+            "before": 0.9842616127855937,
+            "after": 0.8443578221025109
+          },
+          "art-left": {
+            "before": 0.3590029852224773,
+            "after": 0.35459324953119403
+          },
+          "art-right": {
+            "before": 0.09177441833153709,
+            "after": 0.07698844874606281
+          },
+          "art-top": {
+            "before": 0.12268304776105741,
+            "after": 0.051381146040061255
+          },
+          "art-bottom": {
+            "before": 0.7414284629581896,
+            "after": 0.734253151323144
+          },
+          "paper-left": {
+            "before": 0.47532930731594786,
+            "after": 0.4850985391263833
+          },
+          "paper-right": {
+            "before": 0.42113071410443215,
+            "after": 0.4436775731357635
+          },
+          "paper-top": {
+            "before": 0.6487533790236775,
+            "after": 0.4276984557684262
+          },
+          "paper-bottom": {
+            "before": 0.6785689281121843,
+            "after": 0.4843709478760294
+          }
+        }
+      }
+    }
+  },
+  "sourceArtIsolation": {
+    "variants": 84,
+    "passed": 84,
+    "referenceIsolation": "not established for these interior-edge diagnostic windows"
+  },
+  "examples": [
+    {
+      "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+      "set": "lea",
+      "name": "Crusade",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.375,
+        "stock-right": 0,
+        "stock-top": -1,
+        "stock-bottom": -1.25,
+        "art-left": -0.625,
+        "art-right": -0.25,
+        "art-top": -1.25,
+        "art-bottom": -1.375,
+        "paper-left": -0.5,
+        "paper-right": -0.5,
+        "paper-top": -1.5,
+        "paper-bottom": -1.625
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Enchantment",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "8c975844ad9e8bd744793cd1f1dcbc85776715ba6a9f63a50b6baf290a6c5c22"
+    },
+    {
+      "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+      "set": "lea",
+      "name": "Guardian Angel",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.25,
+        "stock-right": 0,
+        "stock-top": -1.125,
+        "stock-bottom": -1.25,
+        "art-left": -0.625,
+        "art-right": -0.25,
+        "art-top": -0.875,
+        "art-bottom": -1.125,
+        "paper-left": -0.5,
+        "paper-right": -0.375,
+        "paper-top": -1.5,
+        "paper-bottom": -1.375
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Instant",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "9e509edda2c1f07a89fd4c753470df4e9d660cb03816ca156444aa26fde7a8b7"
+    },
+    {
+      "id": "02c4edfa-7822-40bc-88d1-d051b3a64df1",
+      "set": "leb",
+      "name": "Armageddon",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.125,
+        "stock-right": 0.75,
+        "stock-top": -0.75,
+        "stock-bottom": -1.5,
+        "art-left": 0.125,
+        "art-right": 0.75,
+        "art-top": -1.375,
+        "art-bottom": -1.5,
+        "paper-left": -0.125,
+        "paper-right": 0.625,
+        "paper-top": -1.375,
+        "paper-bottom": -1.25
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Sorcery",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "d7036247654d9442e530ed08a9959095051c3ee440a6577e614cf306f2eae891"
+    },
+    {
+      "id": "057237bb-e1e6-4bcc-8639-ca0dcdd4846c",
+      "set": "leb",
+      "name": "Red Ward",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": 0.125,
+        "stock-right": 0.75,
+        "stock-top": -0.875,
+        "stock-bottom": -1.5,
+        "art-left": 0,
+        "art-right": 0.5,
+        "art-top": -1,
+        "art-bottom": -1.5,
+        "paper-left": -0.125,
+        "paper-right": 0.375,
+        "paper-top": -1.375,
+        "paper-bottom": -1.375
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Enchantment – Aura",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "efe89498bc42806260949f3e32566e481466376741120529ea812ae27fdd51e1"
+    },
+    {
+      "id": "03d818b4-4722-4035-a2bc-ebc4c8c90ec0",
+      "set": "2ed",
+      "name": "Red Ward",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.75,
+        "stock-right": 0.125,
+        "stock-top": 0,
+        "stock-bottom": 0.875,
+        "art-left": -1.875,
+        "art-right": -1.375,
+        "art-top": -2.5,
+        "art-bottom": -1.875,
+        "paper-left": -1.875,
+        "paper-right": -1.375,
+        "paper-top": -1.625,
+        "paper-bottom": -1.125
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Enchantment – Aura",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "532b30f8d418f751905c6f618d01eaf3158ebc23599d55b6a9850893c69a179b"
+    },
+    {
+      "id": "19272824-a0a4-4352-8904-a185516c95e1",
+      "set": "2ed",
+      "name": "Personal Incarnation",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.875,
+        "stock-right": 0.25,
+        "stock-top": -0.5,
+        "stock-bottom": 0.625,
+        "art-left": 0.25,
+        "art-right": -0.25,
+        "art-top": -0.25,
+        "art-bottom": -0.125,
+        "paper-left": -0.25,
+        "paper-right": -0.5,
+        "paper-top": -0.25,
+        "paper-bottom": 0
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Creature – Avatar Incarnation",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "bc0e49e81562563411cccb93c48862cad8e2e13227e414b485eb54416570d53a"
+    },
+    {
+      "id": "057d2410-30d3-4b7a-9dc3-f2512c1cf31c",
+      "set": "3ed",
+      "name": "Swords to Plowshares",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": 0.125,
+        "stock-right": 2,
+        "stock-top": 3,
+        "stock-bottom": -1.125,
+        "art-left": -2.75,
+        "art-right": 0.25,
+        "art-top": 0,
+        "art-bottom": 4.75,
+        "paper-left": -3.125,
+        "paper-right": 0.875,
+        "paper-top": 4.75,
+        "paper-bottom": 6.75
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Instant",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "8c850e69b79f6eb4c107cbdef1bb626fbf524380717fdf9765cd34c824a47065"
+    },
+    {
+      "id": "37414560-8187-4c5b-8245-05d77b25c454",
+      "set": "3ed",
+      "name": "Holy Strength",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": 0,
+        "stock-right": 2,
+        "stock-top": 3,
+        "stock-bottom": -1.25,
+        "art-left": 0.125,
+        "art-right": 3,
+        "art-top": 0,
+        "art-bottom": 4.375,
+        "paper-left": 0,
+        "paper-right": 3.875,
+        "paper-top": 4.5,
+        "paper-bottom": 6
+      },
+      "source": {
+        "rules": "scan-reviewed",
+        "type": "oracle-fallback",
+        "rawOriginalType": "Enchantment – Aura",
+        "reviewedFields": [],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "50b213730b793f0f88110955f810a507e9b62d7cbe73b9f027bcc41cffc10b73"
+    },
+    {
+      "id": "1b0f41e8-cf27-489b-812a-d566a75cf7f7",
+      "set": "3ed",
+      "name": "Mountain",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.25,
+        "stock-right": 0.25,
+        "stock-top": -0.375,
+        "stock-bottom": -0.125,
+        "art-left": 1.5,
+        "art-right": 2.25,
+        "art-top": 1.625,
+        "art-bottom": 1.125,
+        "paper-left": 1.5,
+        "paper-right": 1.5,
+        "paper-top": 0.875,
+        "paper-bottom": 0.75
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "scan-reviewed",
+        "rawOriginalType": "Basic Land – Mountain",
+        "reviewedFields": ["typeLine"],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "9eefdfb15eba77808fc816e2c01387db9a1b715d5e424939624b2ac3e9e198b1"
+    },
+    {
+      "id": "4d1e4241-42ef-4b51-8f9b-2ab6aca31dbb",
+      "set": "3ed",
+      "name": "Forest",
+      "cohort": "calibration",
+      "offsets": {
+        "stock-left": -0.125,
+        "stock-right": 0.25,
+        "stock-top": -0.625,
+        "stock-bottom": 0,
+        "art-left": 0.75,
+        "art-right": -10,
+        "art-top": -5.875,
+        "art-bottom": -1.25,
+        "paper-left": 0.375,
+        "paper-right": 0.5,
+        "paper-top": -1.25,
+        "paper-bottom": -1
+      },
+      "source": {
+        "rules": "printing-reference",
+        "type": "scan-reviewed",
+        "rawOriginalType": "Basic Land – Forest",
+        "reviewedFields": ["typeLine"],
+        "art": {
+          "status": "unreviewed"
+        }
+      },
+      "referenceHash": "23ff50884bb433e5df5cda5bfb91a4135649b5d5e2d311590c48f484bb79a41e"
+    }
+  ],
+  "toolHashes": {
+    "inputs": "1be7d494538331a3b1f17690089e235e02c94b0d4711fa6c9ec8c3ecd75695b3",
+    "capture": "6d2d70c0cfa3c9bff4c567224184d53ea5b39a638054d1331f715655eb9a49ac",
+    "blank-frames": "15bc3d15d2059303087b54b9b8671f8b4b8723539951cc2dc307969cfc148924",
+    "geometry": "1df617a9bb978c8e810bbc2b84ee5f783797316422ccf9373bb24942dfaca151",
+    "frame-profiles": "0386a9d4d30d74bee646d85ec2d47020b74f52697d14b61cb9cf0bd77762f2bd",
+    "edge-study": "bf6a8261e297b8bf4314cf22b82f8f4b7e20db999a28779d1a9dd24ac109a5d6",
+    "geometry-review": "0fb9aa560f2c74f2788aeb25ebd7aaa430c0234254e9609d0b8eae611d150b5c"
+  }
+}
