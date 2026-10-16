@@ -14,8 +14,11 @@ try {
   const report = await page.evaluate(async () => {
     await window.lab.ready;
     window.lab.pause();
-    const api = window.lab.api,
-      c = api.canvas([732, 1020]),
+    // Keep source textures at full resolution while limiting software-raster cost.
+    const width = 366,
+      height = 510,
+      api = window.lab.api,
+      c = api.canvas([width, height]),
       r = await api.createRenderer({ canvas: c });
     const transform = [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
       gl = c.getContext('webgl2');
@@ -126,21 +129,24 @@ try {
       draw(0.2);
       const png = await r.exportCard(1, {
         revision: 1,
-        width: 732,
+        width,
         finish: 'gloss',
         pointer: frame.pointer,
         cardstock: { amount: 0.2 },
       });
       const image = await createImageBitmap(png),
-        copy = api.canvas([732, 1020]),
+        copy = api.canvas([width, height]),
         ctx = copy.getContext('2d');
       ctx.drawImage(image, 0, 0);
       image.close();
       // WebGL readback is bottom-up; Canvas pixels are top-down.
-      const exported = ctx.getImageData(0, 0, 732, 1020).data,
+      const exported = ctx.getImageData(0, 0, width, height).data,
         flipped = new Uint8Array(exported.length);
-      for (let y = 0; y < 1020; y++)
-        flipped.set(exported.subarray(y * 732 * 4, (y + 1) * 732 * 4), (1019 - y) * 732 * 4);
+      for (let y = 0; y < height; y++)
+        flipped.set(
+          exported.subarray(y * width * 4, (y + 1) * width * 4),
+          (height - 1 - y) * width * 4,
+        );
       const exportDifference = difference(medium, flipped);
       // A second textured instance and animated intensity must reuse the map.
       for (let i = 0; i < 8; i++) draw(i / 8, 'gloss', { id: 18 });
@@ -149,13 +155,9 @@ try {
       c.height = 102;
       const tiny0 = draw(0),
         tiny1 = draw(0.2),
-        tinyInk = draw(0, 'regular'),
-        tinyExpected = tiny0.map((v, i) =>
-          i % 4 === 3 ? v : Math.round(tinyInk[i] + (v - tinyInk[i]) * 0.9),
-        ),
-        tinyDifference = difference(tinyExpected, tiny1);
-      c.width = 732;
-      c.height = 1020;
+        tinyDifference = difference(tiny0, tiny1);
+      c.width = width;
+      c.height = height;
       // Resources are recreated by the renderer's existing context lifecycle.
       const extension = gl.getExtension('WEBGL_lose_context');
       const lost = new Promise((resolve) =>

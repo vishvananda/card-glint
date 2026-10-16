@@ -26,7 +26,7 @@ void main(){
 }`;
 
 /** A fixed, card-local coating relief map shared by all instances in a context.
- * Compile at context creation; allocate/generate once on first textured gloss.
+ * Compile at context creation; allocate/generate once on first textured finish.
  * No per-frame noise evaluation, uploads, copies or CPU pixel readbacks. */
 export class Cardstock {
   map?: WebGLTexture;
@@ -101,6 +101,6 @@ float cardstockResponse(vec2 uv){
 }
 vec3 cardstockGloss(vec2 uv,vec3 ink,vec3 reflected){
  if(cardstockAmount<=0.)return reflected;
- // Rougher coating spreads the mirror catch, lowering its peak reflection.
- return ink+(reflected-ink)*cardstockResponse(uv)*(1.-cardstockAmount*.5);
+ // Relief redistributes the finish response without reducing its overall gain.
+ return ink+(reflected-ink)*cardstockResponse(uv);
 }`;

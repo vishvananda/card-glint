@@ -143,7 +143,8 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     float inkGloss=1.+clamp(fineLine*.22+frameLines*.34,0.,1.);
     vec3 clearCoat=vec3(.97,.98,1.)*((.032+coatBand*.092+strip*.062)*spot+innerCore*.052)*inkGloss;
     vec3 res=foilSheenBlend(base,clearCoat*(1.+satinHoverGain*.25));
-    return applyStudioGlare(res,rT,.52);
+    // Keep clear varnish slightly softer independently of optional cardstock.
+    return mix(base,applyStudioGlare(res,rT,.52),.9);
   }
   if(previewKind==1.) {
     // Etched gold foil: embossed contour bevels, warm champagne-gold leaf, and micro-sparkle (+10% gold highlight).
