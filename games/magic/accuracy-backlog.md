@@ -165,6 +165,21 @@ Reality Acid, Extirpate and other existing good matches would lose their printed
 line breaks. Keep these development diagnostics for outlier review; do not ship
 per-printing font-size values or claim the dense-text problem is resolved.
 
+The [printed-artist review](fixtures/accuracy/planar-artist-review.json) identifies
+five PLC credits reading “Dan Scott” while both Scryfall and MTGJSON supply
+“Dan Murayama Scott”. Retether, Dismal Failure, Serendib Sorcerer, Kavu Predator
+and Intet were checked against their exact cached scans. Keep canonical artist
+metadata and printed credit separate; this review is not a spacing correction
+and has not yet changed runtime input or scoring eligibility.
+
+Next typography experiment: measure roman and italic/reminder advances
+separately on the existing calibration cohort before selecting any new shared
+policy. Retether and Heroes Remembered have different wrapping and line counts;
+a universal size increase fixes some passages while damaging well-matched ones.
+Use the already-frozen scan poses and original wording, retain unchanged-card
+controls, and verify whole native renders before adoption. Reused validation
+remains explicitly reused; per-card optima remain diagnostics.
+
 ## Early core scan normalization
 
 The [Alpha/Beta/Unlimited/Revised audit](fixtures/accuracy/early-core-normalization-review.json)
