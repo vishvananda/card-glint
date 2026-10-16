@@ -14,6 +14,15 @@ try {
   const { calibratedDualFrameProfile } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
+  const { usesRevisedFrameGeometry } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/revised-frame-geometry.ts',
+  );
+  const { calibratedFrameMaterials } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/calibration-profiles.ts',
+  );
+  const revisedBindings = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/revised-frame-native.json'),
+  ).bindings;
   const { earlyHsbMaterialKey } = await server.ssrLoadModule(
     '/games/magic/src/presentation/early-hsb-material.ts',
   );
@@ -62,7 +71,17 @@ try {
             : 'Creature',
     };
     const actual = calibratedDualFrameProfile(f);
-    if (setCode === 'leg') assert.equal(actual, undefined, key + ' obsolete source/geometry');
+    if (usesRevisedFrameGeometry(f)) {
+      assert.equal(actual, undefined, key + ' obsolete placement must not bypass its source guard');
+      const rebound = revisedBindings.find((binding) => binding.sourceAsset === profile.asset);
+      assert.ok(rebound, key + ' missing validated source-local color binding');
+      assert.deepEqual(
+        calibratedFrameMaterials(f),
+        rebound.materials,
+        key + ' retained color transforms',
+      );
+    } else if (setCode === 'leg')
+      assert.equal(actual, undefined, key + ' obsolete source/geometry');
     else if (profile.asset.endsWith('/old/fourth/w.png')) {
       assert.deepEqual(actual.frame, profile.adjustment.frame);
       assert.deepEqual(actual.paper, profile.adjustment.paper);

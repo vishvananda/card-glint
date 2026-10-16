@@ -156,6 +156,15 @@ fits at 14.25px using a bounded fallback below the normal 15px minimum.
 Dense original-text outliers, including Retether and Heroes Remembered, remain
 queued for the next typography pass.
 
+The [dense-text fitting trial](fixtures/accuracy/planar-dense-fit-rejected.json)
+rejects applying measured spacing before sizing as a general solution. The
+training-selected bounded rule improves Retether and Aven Riftwatcher, but native
+whole-card replay finds five substantial regressions among eleven changed cards.
+All release-baseline hashes, frozen scan poses and component coverage agree.
+Reality Acid, Extirpate and other existing good matches would lose their printed
+line breaks. Keep these development diagnostics for outlier review; do not ship
+per-printing font-size values or claim the dense-text problem is resolved.
+
 ## Early core scan normalization
 
 The [Alpha/Beta/Unlimited/Revised audit](fixtures/accuracy/early-core-normalization-review.json)
@@ -226,6 +235,14 @@ checks pass. Reference-side content isolation for the boundary windows remains
 unproven; full native replay and visual review provide separate evidence.
 Typography and local pigment outliers remain open. This branch candidate is
 not yet included in a release.
+
+The [0.3.11 integration replay](fixtures/accuracy/revised-frame-integration.json)
+freshly captures all 306 Revised cards, 42 ABU controls and all 165 Planar
+printings. Both sides exactly reproduce the frozen baseline/candidate rasters;
+the 25 Revised lands, ABU controls and released Planar fixes remain unchanged.
+Code/package/browser/showcase checks pass. The next gate is integrating the
+validated Revised interior scan normalization into the review app before a new
+score generation and release; do not substitute the older outer-border poses.
 
 ## Current execution checkpoint
 
