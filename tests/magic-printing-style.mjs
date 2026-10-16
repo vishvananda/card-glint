@@ -21,6 +21,28 @@ const source = {
   setCode: 'M21',
   rarity: 'rare',
 };
+assert.throws(
+  () => resolvePrintingPreset(source, { preset: 'match', overides: { artist: 'typo' } }),
+  /selection/,
+);
+for (const selection of [
+  { preset: 'match', overrides: null },
+  { preset: 'match', art: false },
+  { preset: 'match', overrides: { setSymbol: '' } },
+])
+  assert.throws(() => resolvePrintingPreset(source, selection));
+const embedded = {
+  version: 1,
+  id: 'embedded',
+  label: 'Embedded symbol',
+  defaultFrame: 'regular',
+  frames: [{ id: 'regular', label: 'Regular', selection: { preset: 'm21' } }],
+  symbols: { default: 'data:image/svg+xml,' + 'a'.repeat(3000) },
+};
+assert.equal(
+  resolvePrintingStyle(source, validatePrintingStyle(embedded)).face.setSymbol,
+  embedded.symbols.default,
+);
 const style = {
   version: 1,
   id: 'mixed',

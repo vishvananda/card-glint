@@ -1,6 +1,7 @@
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { withCardWording, type CardWording } from './wording.js';
 import type { FrameColor } from './profile.js';
+import { originalManaOrder } from './historic-mana-order.js';
 
 /** Imports are pure: callers own downloads, storage and finish selection. */
 export interface CardImportOptions {
@@ -61,7 +62,13 @@ export function providerParagraphs(text: string, flavor = ''): RulesParagraph[] 
     ...flavor
       .split('\n')
       .filter(Boolean)
-      .map((text) => ({ role: 'flavor' as const, runs: [{ text, italic: true }] })),
+      .map((text) => ({
+        role: 'flavor' as const,
+        runs: text
+          .split('*')
+          .map((text, i) => ({ text, italic: i % 2 === 0 }))
+          .filter((run) => run.text),
+      })),
   ];
 }
 export function providerWording(
@@ -74,7 +81,11 @@ export function providerWording(
   if (!['oracle', 'original'].includes(mode)) throw Error('Invalid wording choice.');
   if (options.symbolStyle !== undefined && !['original', 'modern'].includes(options.symbolStyle))
     throw Error('Invalid symbol style.');
-  return withCardWording(face, { oracle, original: original ?? oracle }, mode, {
+  const printed = {
+    ...(original ?? oracle),
+    manaSymbols: originalManaOrder(face, oracle.manaSymbols ?? []),
+  };
+  return withCardWording(face, { oracle, original: printed }, mode, {
     symbolStyle: options.symbolStyle ?? 'original',
   });
 }
@@ -112,6 +123,9 @@ export function providerFace(
     const face = faces[index]!;
     return {
       ...face,
+      ...(index > 0 && ['transform', 'modal_dfc', 'battle', 'double_faced_token'].includes(layout)
+        ? { securityStamp: 'none' as const }
+        : {}),
       illustration: face.illustration ?? sharedArt,
       ...(layout === 'battle' && index === 0
         ? { frameTemplate: 'battle' as const, frameAssetFamily: undefined }
@@ -131,6 +145,7 @@ export function providerFace(
     layout: layout === 'room' ? 'split' : layout,
     faces,
     illustration: sharedArt,
+    ...(['adventure', 'prepare', 'room'].includes(layout) ? { frameAssetFamily: undefined } : {}),
     ...(layout === 'flip' ? { frameTemplate: 'flip' as const, frameAssetFamily: undefined } : {}),
   };
 }

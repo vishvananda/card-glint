@@ -241,6 +241,13 @@ export function resolvePrintingPreset(
   input: RenderedCardInput,
   selection: PrintingSelection,
 ): RenderedCardInput {
+  if (
+    !selection ||
+    typeof selection !== 'object' ||
+    Array.isArray(selection) ||
+    Object.keys(selection).some((key) => !['preset', 'overrides', 'art'].includes(key))
+  )
+    throw Error('Invalid printing selection');
   const support = printingPresetCompatibility(
     selection.overrides?.frameColors === undefined
       ? input
@@ -250,6 +257,7 @@ export function resolvePrintingPreset(
   if (!support.supported) throw Error(support.reason);
   const preset = printingPresets.find((p) => p.id === selection.preset)!;
   let face = candidate(input, preset);
+  if (selection.overrides === null) throw Error('Printing overrides must be an object');
   const overrides = selection.overrides ?? {};
   if (typeof overrides !== 'object' || Array.isArray(overrides))
     throw Error('Printing overrides must be an object');
@@ -319,9 +327,10 @@ export function resolvePrintingPreset(
       ['artist', 'legalText', 'collectorNumber', 'setSymbol'].includes(key) &&
       value !== null &&
       value !== undefined &&
-      (typeof value !== 'string' || value.length > 2048)
+      (typeof value !== 'string' || value.length > (key === 'setSymbol' ? 65536 : 2048))
     )
       throw Error('Invalid printing text override');
+    if (key === 'setSymbol' && value === '') throw Error('Invalid symbol asset');
   }
   if (face.symbolStyle !== undefined && !['original', 'modern'].includes(face.symbolStyle))
     throw Error('Invalid mana symbol style');
@@ -387,7 +396,7 @@ export function resolvePrintingPreset(
   if (face.collectorLanguage !== undefined && !/^[A-Za-z]{2,5}$/.test(face.collectorLanguage))
     throw Error('Invalid collector language');
   if (face.frameTemplate === 'future') validateFutureTreatment(face);
-  if (selection.art) face = resolveArtPlacement(face, selection.art);
+  if (selection.art !== undefined) face = resolveArtPlacement(face, selection.art);
   if (input.layout === 'split' && input.faces)
     face = {
       ...face,

@@ -142,6 +142,8 @@ async function paintMask(
     signal.throwIfAborted();
     const image = url ? loaded.images.get(url) : null;
     context.save();
+    if (face.printingElements?.setSymbol?.offset)
+      context.translate(...face.printingElements.setSymbol.offset);
     context.globalAlpha = 0.68;
     if (image) {
       const scale = Math.min(w / image.width, h / image.height);

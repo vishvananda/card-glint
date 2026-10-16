@@ -21,6 +21,10 @@ Scryfall input is one [Card object](https://scryfall.com/docs/api/cards), includ
 or CardAtomic record, or the associated records of one two-face card. MTGJSON
 face records are ordered by `side` when supplied. Unrelated records and incomplete
 same-side composite layouts throw; neither adapter truncates a multi-face input.
+Illustration overrides follow the input record order, so sorting the records never
+swaps their artwork. `faceIndex` selects the resulting side order (front first).
+CardSet pairs must have agreeing face links and printing identity. CardAtomic
+pairs without UUIDs use their shared card name and distinct face names.
 Hosts select cards from lists, sets and collections before calling an adapter.
 
 Omitting `faceIndex` assembles split/Aftermath, Adventure, Prepare and flip
@@ -35,6 +39,10 @@ conversion does not certify painter coverage for every provider treatment.
 Oracle wording is the default. Original mode uses supplied `printed_*` or
 `originalText`/`originalType`, falling back to the supplied Oracle fields where
 original fields are missing. This fallback does not certify historical wording.
+An agreeing pair of joined original texts is split at its explicit panel divider;
+flip cards additionally require the named reverse-face header. Ambiguous joined
+records throw instead of printing both panels' wording on each face. Reviewed
+historical mana ordering applies in original mode independently of glyph style.
 Hosts can use `resolvePrintingWording` for reviewed exact-printing corrections.
 Reminder and flavor text use explicit italic runs; flavor remains separate from
 rules. Original glyph styling and set color calibration are the defaults;
@@ -49,3 +57,11 @@ null explicitly omits artwork. Downloading, crop corrections for incomplete
 source art, uploads, authentication and URL persistence remain host concerns.
 The provider reference URLs must be HTTPS. Explicit host illustration references
 may be relative URLs, blob URLs, or another renderer-supported source.
+
+Printed land colors use basic subtypes or a one/two-color `produced_mana` palette.
+MTGJSON instead recognizes literal `{T}: Add …` mana sentences. Ambiguous lands
+retain the default palette; hosts may set `frameColors` explicitly. Color identity
+is not used to guess their frames. Split faces without explicit colors use their
+own costs and the parent colors, preserving independent panel palettes. Dedicated
+planeswalker, leveler and composite painters remain independent of the 2003 frame
+era. Conversion does not certify scan accuracy or source art completeness.

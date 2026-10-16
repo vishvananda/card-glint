@@ -1,4 +1,5 @@
 import { resolveScryfallPrinting } from './scryfall-printing.js';
+import { providerFrameAppearance, providerLandPalette } from './provider-appearance.js';
 import type { RenderedCardInput } from './face-layout.js';
 import {
   providerRecord,
@@ -37,20 +38,42 @@ export function fromScryfallCard(
   const rarities = ['common', 'uncommon', 'rare', 'mythic', 'special', 'bonus'] as const;
   const rarity = rarities.find((r) => r === (card.rarity ?? 'common'));
   if (!rarity) throw Error('Invalid card rarity.');
-  const faces = input.map((value) => {
+  const faces = input.map((value, index) => {
     const face = providerRecord(value),
       typeLine = providerText(face.type_line, providerText(card.type_line), 512);
     if (!typeLine.trim()) throw Error('The Scryfall face needs a type line.');
     const rulesText = providerText(face.oracle_text);
+    const cost = providerCost(face.mana_cost);
+    const colors = providerColors(
+      face.colors ??
+        face.color_indicator ??
+        (input.length === 1
+          ? card.colors
+          : [...'WUBRG'].filter(
+              (c) =>
+                cost.some((symbol) => symbol.split('/').includes(c)) &&
+                (card.colors == null ||
+                  providerColors(card.colors).includes(c as 'W' | 'U' | 'B' | 'R' | 'G')),
+            )),
+    );
+    const frameColors = providerLandPalette(
+      typeLine,
+      colors,
+      appearance.setCode,
+      providerText(card.frame),
+      face.produced_mana ?? card.produced_mana,
+    );
     const oracle = {
       name: providerText(face.name, name, 256),
       typeLine,
       rulesText,
-      manaSymbols: providerCost(face.mana_cost),
+      manaSymbols: cost,
       rulesParagraphs: providerParagraphs(rulesText, providerText(face.flavor_text)),
     };
     const hasOriginal =
-      typeof face.printed_text === 'string' || typeof face.printed_type_line === 'string';
+      typeof face.printed_text === 'string' ||
+      typeof face.printed_type_line === 'string' ||
+      typeof face.printed_name === 'string';
     const original = hasOriginal
       ? {
           ...oracle,
@@ -65,12 +88,23 @@ export function fromScryfallCard(
       : undefined;
     return providerWording(
       {
-        ...appearance,
+        ...providerFrameAppearance(appearance, typeLine, rulesText),
+        ...(index > 0 &&
+        ['transform', 'modal_dfc', 'battle', 'double_faced_token'].includes(String(card.layout))
+          ? { securityStamp: 'none' as const }
+          : {}),
         name: oracle.name,
-        colors: providerColors(face.colors ?? card.colors),
+        colors,
+        ...(frameColors ? { frameColors } : {}),
         rarity,
         artist: providerText(face.artist, providerText(card.artist), 256),
         collectorNumber: providerText(card.collector_number, '', 64),
+        ...(typeof card.lang === 'string' && /^[a-z]{2,5}$/i.test(card.lang)
+          ? { collectorLanguage: card.lang }
+          : {}),
+        ...(face.watermark == null && card.watermark == null
+          ? {}
+          : { watermark: providerText(face.watermark ?? card.watermark, '', 64) }),
         power: face.power == null ? undefined : providerText(face.power),
         toughness: face.toughness == null ? undefined : providerText(face.toughness),
         loyalty: face.loyalty == null ? undefined : providerText(face.loyalty),

@@ -164,6 +164,39 @@ try {
         }
       }
     const recipe = magic.describe(base, 'inspect');
+    const stampFace = { name: 'Stamp control', setCode: 'M21', typeLine: 'Instant' };
+    const movedStampFace = { ...stampFace, printingElements: { setSymbol: { offset: [10, 8] } } };
+    const stamp = canvas(),
+      movedStamp = canvas(),
+      stampIcon = canvas(16, 16);
+    stampIcon.getContext('2d').fillRect(0, 0, 16, 16);
+    const stampLoader = async (urls) => ({
+      images: new Map(urls.map((url) => [url, stampIcon])),
+      dispose() {},
+    });
+    for (const [target, f] of [
+      [stamp, stampFace],
+      [movedStamp, movedStampFace],
+    ])
+      await paintEtchingMask(
+        target.getContext('2d'),
+        f,
+        null,
+        new AbortController().signal,
+        undefined,
+        undefined,
+        stampLoader,
+      );
+    const sa = stamp.getContext('2d').getImageData(0, 0, 488, 680).data,
+      sb = movedStamp.getContext('2d').getImageData(0, 0, 488, 680).data;
+    let stampInk = 0,
+      stampMismatch = 0;
+    for (let y = 0; y < 672; y++)
+      for (let x = 0; x < 478; x++) {
+        const alpha = sa[(y * 488 + x) * 4 + 3];
+        if (alpha) stampInk++;
+        if (alpha !== sb[((y + 8) * 488 + x + 10) * 4 + 3]) stampMismatch++;
+      }
     // Real pinned frame assets: blue and colorless exercise CC and MSE backings.
     const transparency = [];
     for (const colors of [['U'], []]) {
@@ -201,6 +234,12 @@ try {
     }
     const key = (f, layer = 'face') => cardTextureKey({ face: f, layer }, 'inspect');
     return {
+      stampInk,
+      stampMismatch,
+      stampCache:
+        magic.describe(stampFace, 'inspect').stamp.key !==
+        magic.describe(movedStampFace, 'inspect').stamp.key,
+      stampRasterCache: key(stampFace, 'etching') !== key(movedStampFace, 'etching'),
       maskPixels,
       mismatch,
       fit: recipe.edges[0].fit,
@@ -212,6 +251,12 @@ try {
     };
   });
   assert.ok(result.maskPixels > 100);
+  assert.ok(result.stampInk > 100);
+  assert.equal(result.stampMismatch, 0, 'Set mark etching follows the same explicit translation');
+  assert.ok(
+    result.stampCache && result.stampRasterCache,
+    'Both stamp cache paths include positioning',
+  );
   assert.equal(result.mismatch, 0, 'CPU art and etching must share crop/pan/zoom');
   assert.deepEqual(result.fit, { zoom: 1.8, focalPoint: [0.3, 0.65] });
   assert.ok(result.cache && result.maskCache);

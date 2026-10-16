@@ -701,7 +701,7 @@ See [the style contract and examples](printing-styles.md). The built-in
 `printingStyles` catalog groups regular and alternate frames within each set.
 Set membership, persistence and authoring remain host responsibilities.
 
-## Printing preset prototype
+## Printing presets
 
 `printingPresets`, `printingPresetCompatibility`, `printingElementSupport`,
 `resolvePrintingPreset` and `resolveScryfallPrinting` are available through

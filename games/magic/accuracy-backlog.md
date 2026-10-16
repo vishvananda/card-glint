@@ -169,7 +169,7 @@ The [printed-artist review](fixtures/accuracy/planar-artist-review.json) identif
 five PLC credits reading “Dan Scott” while both Scryfall and MTGJSON supply
 “Dan Murayama Scott”. Retether, Dismal Failure, Serendib Sorcerer, Kavu Predator
 and Intet were checked against their exact cached scans. Keep canonical artist
-metadata and printed credit separate. The next patch's public
+metadata and printed credit separate. The 0.4.0 public
 `resolvePrintingArtist` helper and accuracy adapter apply these exact credits;
 original and Oracle views retain the same physical credit. The public catalog
 also includes the six previously reviewed Alpha, Unlimited and Tempest credits.

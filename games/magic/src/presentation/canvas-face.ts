@@ -186,6 +186,9 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
   return mask
     ? [
         ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
+        ...(face.printingElements?.setSymbol?.offset
+          ? [['set-symbol-offset', face.printingElements.setSymbol.offset]]
+          : []),
         face.illustration ?? null,
         face.etchedIllustration ?? null,
         face.illustrationCrop ?? null,

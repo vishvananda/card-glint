@@ -33,6 +33,9 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   if (shifted && face.frameAssetFamily !== 'eighth')
     throw Error('Colorshifted treatment requires the eighth frame family.');
   if (!face.frameAssetFamily) return null;
+  // Composite spell faces retain the era for their dedicated panel painter.
+  // They never use an ordinary full-face plate or its geometry.
+  if (['split', 'aftermath'].includes(face.layout ?? '') && face.faces?.length === 2) return null;
   if (
     isRetro(face) ||
     (face.layout && !['normal', 'token'].includes(face.layout)) ||

@@ -133,6 +133,9 @@ export const mtg: GamePack<RenderedCardInput> = {
             faceRects(child.face).stamp,
             child.face.setCode,
             faceSetSymbol(child.face, 'common'),
+            ...(child.face.printingElements?.setSymbol?.offset
+              ? [['set-symbol-offset', child.face.printingElements.setSymbol.offset]]
+              : []),
             child.panel
               ? [
                   child.panel.x,

@@ -1,6 +1,6 @@
 {
   "name": "card-glint",
-  "version": "0.3.12",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -50,7 +50,8 @@
     "magic:reference:stats": "node games/magic/tools/accuracy/stats-study.mjs",
     "test:cardstock": "node tests/cardstock.mjs",
     "test:printing-presets": "node tests/magic-printing-presets.mjs && node tests/magic-art-placement.mjs && node tests/printing-presets-demo.mjs && node tests/magic-printing-style.mjs",
-    "test:provider-cards": "node tests/magic-provider-cards.mjs"
+    "test:provider-cards": "node tests/magic-provider-cards.mjs",
+    "test:printing-apis": "node tests/magic-provider-cards.mjs && node tests/magic-printing-style.mjs && node tests/magic-art-placement.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
