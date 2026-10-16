@@ -276,15 +276,40 @@ The [ABU shared-frame proposals](fixtures/accuracy/abu-frame-proposals.json)
 measure 891 accepted Alpha/Beta/Unlimited scans against 62 blank source variants.
 All blank variants exactly reproduce their existing rasters under 0.4.0. Shared
 per-set/material scale and position improve the modelled interior-frame mean on
-all 724 reused validation cards. Eighteen nonland groups are ready for actual
-painter replay, including art-aperture and source-bound color verification.
-These are predicted gradient correlations, not released accuracy gains.
+all 724 reused validation cards. These predicted correlations led to the
+[native painter replay](fixtures/accuracy/abu-frame-native.json), which holds the
+candidate for further refinement; no new geometry is released.
 
 Whole-frame land transforms remain unsuitable despite their higher averages.
 Beta dual rules-top correlation drops 0.65 → 0.20; Beta basics lose art-right and
 rules-side agreement, and Unlimited duals lose art-bottom agreement. Fit those
 boundaries separately and preserve the existing land geometry in the first
 nonland candidate. Eight uncertain Alpha/Beta scans remain excluded throughout.
+
+The native replay covers **891 normalized scans** and **62 blank-frame variants**.
+Across the 682 nonland validation cards, mean interior gradient correlation rises
+**0.664 → 0.941** for Alpha, **0.653 → 0.942** for Beta and **0.668 → 0.931** for
+Unlimited. All 18 set/material groups improve, using identical opaque support
+before/after so shifted art pixels cannot inflate the frame measurement. The
+actual full-card capture completes **899/899** faces; all 69 land rasters remain
+byte-identical. Contract checks retain the exact source-local colors and all
+unrelated geometry across 1,205 ABUR inputs.
+
+Do **not** adopt this whole-frame transform yet. Unlimited's white-border mask
+moves with the plate, dropping outer-stock correlation **0.799 → 0.578**. Anchor
+stock and its keyline independently before another native replay. Unlimited blue
+also loses top-art-edge agreement; Alpha artifact right stock, Beta black top
+stock and Beta green bottom stock retain smaller component regressions. Native
+resampling must be checked on the frozen calibration cohort rather than choosing
+another transform from validation losses. The whole-face diagnostic samples one
+fixed calibration card per nonland material; it is not an all-card accuracy score.
+
+The unchanged color bindings expose a separate coverage gap: Beta green and all
+six Unlimited nonland materials currently have no active frame-color calibration.
+Fit these after geometry. Source-data review also finds Alpha Elvish Archers
+printing **1/2** while the original-mode input retains Oracle **2/1**. Keep printed
+stats distinct from Oracle stats and exclude unreviewed values from typography
+accuracy. The exact printing and scan hash are recorded in the native report.
 
 ## Revised frame geometry candidate
 
