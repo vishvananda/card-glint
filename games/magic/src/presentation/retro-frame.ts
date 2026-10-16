@@ -15,6 +15,11 @@ import { faceManaAssets } from './mana-assets.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
 import {
+  revisedArtRect,
+  revisedFrameRect,
+  usesRevisedFrameGeometry,
+} from './revised-frame-geometry.js';
+import {
   isRevisedLand,
   REVISED_LAND_ART,
   REVISED_LAND_ASSET,
@@ -61,6 +66,8 @@ export function retroFrameRect(face: RenderedCardInput): FaceRect {
   const legends = legendsFrame(face);
   if (legends) return legends.frame;
   if (isRevisedLand(face)) return REVISED_LAND_FRAME;
+  const revised = revisedFrameRect(face);
+  if (revised) return revised;
   return retroFamily(face) === 'fourth' ? [0.012, 0.01, 0.974, 0.982] : [0, 0, 1, 1];
 }
 export function retroRects(face: RenderedCardInput) {
@@ -71,6 +78,7 @@ export function retroRects(face: RenderedCardInput) {
     frame: retroFrameRect(face),
     title: [early ? 0.07 : 0.1134, 0.0481, early ? 0.8467 : 0.8, 0.043] as FaceRect,
     art: (legendsFrame(face)?.art ??
+      revisedArtRect(face) ??
       (isRevisedLand(face)
         ? REVISED_LAND_ART
         : retroFamily(face) === 'legends'
@@ -171,7 +179,9 @@ export function retroAssets(face: RenderedCardInput) {
     retroFrameAsset(face),
     dual?.overlay,
     dual?.mask,
-    !isRevisedLand(face) && (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth')
+    !isRevisedLand(face) &&
+    !usesRevisedFrameGeometry(face) &&
+    (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth')
       ? retroBorderMask(face)
       : null,
     face.illustration,

@@ -19,6 +19,7 @@ import { historicalBackingKey } from './historical-symbol-backing.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import { isRevisedLand } from './revised-land-frame.js';
+import { usesRevisedFrameGeometry } from './revised-frame-geometry.js';
 import { paintRevisedLandText } from './revised-land-text.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -90,7 +91,7 @@ export function paintRetroFace(
     if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
     c.restore();
   }
-  if (isRevisedLand(face)) {
+  if (isRevisedLand(face) || usesRevisedFrameGeometry(face)) {
     c.save();
     c.fillStyle = retroStock(face);
     c.beginPath();
