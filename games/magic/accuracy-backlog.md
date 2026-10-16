@@ -31,7 +31,15 @@ these values are not physical ink measurements. An independent frame-only
 shadow-lift fit selected zero in every material. Keep interior shadows unchanged;
 most sources have too few near-black interior pixels to estimate an ink floor.
 Alpha/Beta, other sets and manual border overrides retain their existing policies.
-Planar Chaos colorshifted frames are the next interior-black calibration cohort.
+The [Planar Chaos colorshifted ink study](fixtures/accuracy/planar-blackpoint.json)
+now fits source-specific shadow curves across all five colors, independently of
+the shared RGB 24/21/16 stock target. Native-raster fitting avoids thin-line
+sampling bias. All 29 validation printings improve inner-ink RGB error, averaging
+17.74 to 7.96 bytes; this is not a whole-card score. Every brighter source pixel
+(maximum channel at least 96), alpha value and transparent pixel is unchanged.
+Prodigal Pyromancer improves only marginally and remains a visual review case;
+Vampiric Link remains excluded by its existing rejected registration. Other
+frame families and separate P/T badge materials are outside this ink fit.
 
 The [normalization audit](fixtures/accuracy/legends-normalization-review.json)
 found inherited sampling bands crossing title and artist lettering. Search

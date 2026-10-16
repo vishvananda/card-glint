@@ -1,6 +1,11 @@
 import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
 import { framePaperMask, type FramePixels, type PaperMask } from './frame-paper-mask.js';
 import { frameAccentMask, type FrameAccentMask } from './frame-accent-mask.js';
+import {
+  colorFrameBlackPoint,
+  validateFrameBlackPoint,
+  type FrameBlackPoint,
+} from './frame-blackpoint.js';
 
 export interface DualFrameHsb {
   frame: HsbAdjustment;
@@ -11,13 +16,15 @@ export interface DualFrameHsb {
   regions?: readonly { mask: PaperMask; adjustment: HsbAdjustment }[];
   accents?: readonly { mask: FrameAccentMask; adjustment: HsbAdjustment }[];
 }
-export type FrameHsb = HsbAdjustment | DualFrameHsb;
+export type FrameHsb = (HsbAdjustment | DualFrameHsb) & { blackPoint?: FrameBlackPoint };
 
-/** Recolor the static source, preserving alpha and black ink. Single-component
+/** Recolor the static source, preserving alpha and, without an opt-in shadow
+ * curve, black ink. Single-component
  * mana transforms also protect white glyph details. Frame-paper highlights
  * must follow their material, otherwise darkening produces false white relief.
  * Blend recolored pixels at the paper edge without moving texture or shadows. */
 export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
+  if (adjustment.blackPoint) validateFrameBlackPoint(adjustment.blackPoint);
   const dual = 'mask' in adjustment ? adjustment : undefined,
     mask = dual ? framePaperMask(image, dual.mask) : undefined,
     frame = 'mask' in adjustment ? adjustment.frame : adjustment,
@@ -56,4 +63,5 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
         );
     }
   }
+  if (adjustment.blackPoint) colorFrameBlackPoint(image, adjustment.blackPoint);
 }

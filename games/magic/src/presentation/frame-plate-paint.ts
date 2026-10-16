@@ -19,6 +19,7 @@ import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { hasCoreSetShield, paintCoreSetSymbol } from './core-set-symbol.js';
 import { shapedSetCode, paintShapedSetSymbol } from './shaped-set-symbol.js';
 import type { CanvasImages } from './canvas-assets.js';
+import { planarCalibratedStock } from './planar-blackpoint.js';
 import {
   FACE_WIDTH as W,
   FACE_HEIGHT as H,
@@ -55,9 +56,11 @@ export function paintFramePlateFace(
     return image;
   };
   const { rects } = plate,
-    eighth = face.frameAssetFamily === 'eighth';
+    eighth = face.frameAssetFamily === 'eighth',
+    stock =
+      planarCalibratedStock(face, plate.frame) ?? cardStock(face.setCode, face.borderColor).border;
   c.save();
-  c.fillStyle = cardStock(face.setCode, face.borderColor).border;
+  c.fillStyle = stock;
   c.fillRect(0, 0, W, H);
   if (underArt) c.drawImage(underArt, 0, 0, W, H);
   paintIllustration(c, face, images, px(rects.art), layer);
@@ -107,15 +110,14 @@ export function paintFramePlateFace(
     mix.width = mix.height = 0;
     mask.width = mask.height = 0;
   }
-  const stock = cardStock(face.setCode, face.borderColor);
-  if (stock.border !== '#090806') {
+  if (stock !== '#090806') {
     const mask = document.createElement('canvas');
     mask.width = 732;
     mask.height = 1020;
     const m = mask.getContext('2d')!;
     m.drawImage(required(plate.border), 0, 0, mask.width, mask.height);
     m.globalCompositeOperation = 'source-in';
-    m.fillStyle = stock.border;
+    m.fillStyle = stock;
     m.fillRect(0, 0, mask.width, mask.height);
     c.drawImage(mask, 0, 0, W, H);
     mask.width = mask.height = 0;
