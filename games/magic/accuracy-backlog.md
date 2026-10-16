@@ -169,8 +169,20 @@ The [printed-artist review](fixtures/accuracy/planar-artist-review.json) identif
 five PLC credits reading “Dan Scott” while both Scryfall and MTGJSON supply
 “Dan Murayama Scott”. Retether, Dismal Failure, Serendib Sorcerer, Kavu Predator
 and Intet were checked against their exact cached scans. Keep canonical artist
-metadata and printed credit separate; this review is not a spacing correction
-and has not yet changed runtime input or scoring eligibility.
+metadata and printed credit separate. The next patch's public
+`resolvePrintingArtist` helper and accuracy adapter apply these exact credits;
+original and Oracle views retain the same physical credit. The public catalog
+also includes the six previously reviewed Alpha, Unlimited and Tempest credits.
+Unknown printings retain provider values; optional scan hashes guard reuse.
+
+The [artist-only replay](fixtures/accuracy/planar-artist-replay.json) renders all
+165 PLC cards. Exactly five change, only within the artist line; the other 160
+rasters are byte-identical to 0.3.12. At unchanged, browser-decoded scan poses,
+mean artist-region edge overlap rises **69.13 → 88.74 / 100**, with all five
+improving and every unrelated component unchanged. The whole-card mean remains
+**81.57 / 100** across 156 accepted scans: reviewing artist names does not certify
+copyright text, so the combined credit component stays excluded. No font,
+geometry, color or eligibility changes are implied by this source correction.
 
 Next typography experiment: measure roman and italic/reminder advances
 separately on the existing calibration cohort before selecting any new shared

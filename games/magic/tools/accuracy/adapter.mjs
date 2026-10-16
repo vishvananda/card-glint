@@ -6,10 +6,12 @@ import { historicLegendsTextAnnotation } from './historic-legends-text.mjs';
 import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
 import { earlyLandTypeAnnotation } from './early-land-types.mjs';
 import { emptyPrintingTextAnnotation } from './empty-printing-text.mjs';
+import { printedArtistAnnotation } from './printed-artist.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
   const historicalReviews = [
+    printedArtistAnnotation(entry),
     historicArtifactAnnotation(entry),
     historicLegendAnnotation(entry),
     historicLegendsTextAnnotation(entry),

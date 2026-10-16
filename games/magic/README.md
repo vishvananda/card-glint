@@ -533,6 +533,16 @@ not certify unrelated body text. The public catalog is generated from the same
 evidence used by accuracy tools; regenerate it with
 `node games/magic/tools/build-printing-corrections.mjs` after reviewing changes.
 
+`resolvePrintingArtist(printingId, providerArtist, { referenceSha256? })` resolves
+reviewed printed artist credits separately from wording. It returns
+`{ artist, provenance }`; assign `artist` to the face before choosing original or
+Oracle wording, and retain the provider's canonical name in your source record.
+For example, the reviewed Planar Chaos printings credit “Dan Scott” while the
+catalogs identify “Dan Murayama Scott.” These corrections match exact printing
+IDs and have the same optional scan-hash guard. Unknown IDs and mismatched scans
+preserve the supplied credit. Reviewing the artist does not certify copyright
+text or other footer fields.
+
 `withCardWording(face, { oracle, original }, mode)` keeps the selected printing's
 frame, art and typography while choosing supplied wording and symbol style. The
 mode defaults to `oracle`; requesting an absent `original` throws. Each wording

@@ -33,6 +33,8 @@ export {
 } from './presentation/wording.js';
 
 export { resolvePrintingWording } from './printing/resolve.js';
+export { resolvePrintingArtist } from './printing/artist.js';
+export type { ResolvedPrintingArtist, PrintingArtistProvenance } from './printing/artist.js';
 export type {
   PrintingText,
   ResolvedPrintingWording,
