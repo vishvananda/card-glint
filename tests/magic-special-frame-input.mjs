@@ -292,6 +292,40 @@ assert.equal(
 );
 assert.equal(tamInput.originals[0].reviewedCorrection.fields.originalParagraphs.before, null);
 
+const taroxId = '0b06bd73-c45a-4560-bd8d-413608c5f89e',
+  taroxReview = futureText.cards[taroxId],
+  tarox = {
+    id: taroxId,
+    name: 'Tarox Bladewing',
+    set: 'fut',
+    collector_number: taroxReview.number,
+    layout: 'normal',
+    type_line: 'Legendary Creature — Dragon',
+    flavor_text: 'Printed flavor stays attached.',
+    image_uris: images('tarox'),
+  };
+const taroxInput = specialFrameInput(
+  tarox,
+  specialFrameSides(tarox)[0],
+  { sha256: taroxReview.referenceSha256 },
+  art,
+  [
+    {
+      name: tarox.name,
+      number: tarox.collector_number,
+      identifiers: { scryfallId: taroxId },
+      originalType: tarox.type_line,
+    },
+  ],
+);
+assert.equal(taroxInput.face.rulesParagraphs[1].runs[0].italic, true);
+assert.equal(taroxInput.face.rulesParagraphs.at(-1).runs[0].text, tarox.flavor_text);
+assert.equal(
+  taroxInput.face.rulesParagraphs.map((p) => p.runs.map((r) => r.text).join('')).join('\n'),
+  taroxInput.face.rulesText,
+  'Reviewed ability-word styling retains all original and flavor text',
+);
+
 for (const [id, correction] of Object.entries(futureText.cards)) {
   const future = { id, set: correction.set, collector_number: correction.number };
   const records = correction.faces.map((face) => ({

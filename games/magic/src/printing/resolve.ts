@@ -95,6 +95,12 @@ export function resolvePrintingWording(
     const fields = Object.keys(review.fields) as ReviewedWordingField[],
       before = Object.fromEntries(fields.map((field) => [field, structuredClone(original[field])])),
       after = structuredClone(review.fields);
+    if (review.paragraphScope === 'rules-only' && after.rulesParagraphs) {
+      const flavor =
+        original.rulesParagraphs?.filter((p) => p.role === 'flavor') ??
+        paragraphs(original.flavorText ?? '', 'flavor');
+      after.rulesParagraphs = [...after.rulesParagraphs, ...flavor];
+    }
     // Rebuild only the changed role; a flavor correction must not erase rich
     // rules runs, and stale structured runs must not defeat corrected wording.
     if (
@@ -115,6 +121,7 @@ export function resolvePrintingWording(
     original = { ...original, ...after };
     provenance.corrections.push({
       ...(review.faceName ? { faceName: review.faceName } : {}),
+      ...(review.paragraphScope ? { paragraphScope: review.paragraphScope } : {}),
       source: review.source,
       referenceSha256: review.referenceSha256,
       reason: review.reason,

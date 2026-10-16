@@ -78,6 +78,26 @@ try {
   const fullId = Object.keys(full.cards)[0];
   const f = resolvePrintingWording(fullId, { oracle, original: { ...original, flavorText: '' } });
   assert.equal(f.wordings.original.rulesText, '');
+  const taroxId = '0b06bd73-c45a-4560-bd8d-413608c5f89e';
+  const tarox = resolvePrintingWording(taroxId, input);
+  const grandeur = tarox.wordings.original.rulesParagraphs.find((p) =>
+    p.runs[0].text.startsWith('Grandeur'),
+  );
+  assert.deepEqual(grandeur.runs[0], { text: 'Grandeur', italic: true });
+  assert.ok(grandeur.runs[1].text.startsWith(' — Discard'));
+  assert.equal(tarox.wordings.original.rulesParagraphs.at(-1).runs[0].text, 'Provider flavor.');
+  assert.equal(tarox.wordings.oracle.rulesText, 'Oracle rules.\nOracle flavor.');
+  assert.ok(tarox.provenance.corrections.some((c) => c.paragraphScope === 'rules-only'));
+  const richFlavor = {
+    role: 'flavor',
+    align: 'right',
+    runs: [{ text: 'Rich flavor.', italic: false }],
+  };
+  const styled = resolvePrintingWording(taroxId, {
+    oracle,
+    original: { ...original, rulesParagraphs: [runs[0], richFlavor] },
+  });
+  assert.deepEqual(styled.wordings.original.rulesParagraphs.at(-1), richFlavor);
   const special = await fixture('adventure-printing-corrections.json');
   const [specialId, specialRow] = Object.entries(special.cards)[0];
   assert.equal(resolvePrintingWording(specialId, input).provenance.status, 'face-required');

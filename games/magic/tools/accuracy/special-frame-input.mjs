@@ -147,14 +147,20 @@ export function specialFrameInput(card, side, reference, art, records) {
       printed_type_line: type.typeLine,
       security_stamp: physicalSide && side.key === 'b' ? undefined : card.security_stamp,
     };
+    const rendered = presentation(
+      { card: merged, reference, art },
+      paragraphs ? { [card.id]: { reviewed: true, referenceHash: reference.sha256 } } : {},
+      { [card.id]: { originalText: rules } },
+    ).face;
+    // originalParagraphs styles rules only. Do not discard the physical face's
+    // flavor text when a reviewed ability word supplies explicit runs.
+    if (paragraphs)
+      rendered.rulesParagraphs = [
+        ...paragraphs,
+        ...rendered.rulesParagraphs.filter((p) => p.role === 'flavor'),
+      ];
     return {
-      ...presentation(
-        { card: merged, reference, art },
-        paragraphs
-          ? { [card.id]: { paragraphs, reviewed: true, referenceHash: reference.sha256 } }
-          : {},
-        { [card.id]: { originalText: rules } },
-      ).face,
+      ...rendered,
       layout: card.layout,
       ...(physicalSide &&
       /\bSaga\b/.test(merged.printed_type_line ?? '') &&

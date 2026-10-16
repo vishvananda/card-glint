@@ -23,7 +23,7 @@ const fieldNames = [
   'toughness',
 ];
 const rows = new Map();
-function add(id, faceName, file, hash, reason, fields) {
+function add(id, faceName, file, hash, reason, fields, paragraphScope) {
   if (!Object.keys(fields).length) return;
   assert.match(id, /^[\da-f-]{36}$/);
   assert.match(hash, /^[\da-f]{64}$/);
@@ -47,6 +47,7 @@ function add(id, faceName, file, hash, reason, fields) {
       source: 'games/magic/fixtures/accuracy/' + file,
       referenceSha256: hash,
       reason,
+      ...(field === 'rulesParagraphs' && paragraphScope ? { paragraphScope } : {}),
     });
   }
 }
@@ -96,8 +97,17 @@ for (const file of [
         ['originalText', 'rulesText'],
         ['originalType', 'typeLine'],
         ['flavorText', 'flavorText'],
+        ['originalParagraphs', 'rulesParagraphs'],
       ])
         if (Object.hasOwn(face, from)) fields[to] = face[from];
+      if (face.originalParagraphs) {
+        assert.ok(face.originalParagraphs.every((p) => p.role === 'rules'));
+        assert.equal(
+          face.originalParagraphs.map((p) => p.runs.map((r) => r.text).join('')).join('\n'),
+          face.originalText,
+          'Reviewed styling must retain the exact original rules',
+        );
+      }
       add(
         id,
         r.faces.length > 1 ? face.name : undefined,
@@ -105,6 +115,7 @@ for (const file of [
         r.referenceSha256,
         r.reason,
         fields,
+        face.originalParagraphs ? 'rules-only' : undefined,
       );
     }
 }

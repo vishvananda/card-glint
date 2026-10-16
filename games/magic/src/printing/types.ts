@@ -21,6 +21,8 @@ export interface ReviewedCorrection {
   referenceSha256: string;
   reason: string;
   fields: Partial<PrintingText>;
+  /** A rules-only style review preserves the caller's separate flavor runs. */
+  paragraphScope?: 'rules-only';
 }
 export interface PrintingWordingProvenance {
   printingId: string;
