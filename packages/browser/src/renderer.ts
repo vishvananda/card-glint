@@ -128,6 +128,7 @@ export class Renderer {
       normal: item.normal ? ([...item.normal] as [number, number, number]) : undefined,
       deformation: item.deformation ? { ...item.deformation } : undefined,
       wear: item.wear ? { ...item.wear } : undefined,
+      cardstock: item.cardstock ? { ...item.cardstock } : undefined,
     }));
     for (const item of snapshot) {
       validateInstance(item);
@@ -487,6 +488,8 @@ export class Renderer {
       instanceId?: number;
       /** Abrasion over the chosen finish; use the live seed/instanceId to match. */
       wear?: Instance['wear'];
+      /** Match the live gloss coating relief. */
+      cardstock?: Instance['cardstock'];
     },
   ): Promise<Blob> {
     validateDeformation(options.deformation);
@@ -515,6 +518,7 @@ export class Renderer {
           card: id,
           finish: options.finish,
           wear: options.wear,
+          cardstock: options.cardstock,
           deformation: options.deformation,
           transform: [2 * scale, 0, 0, 0, 0, -2 * scale, 0, 0, 0, 0, 1, 0, -scale, scale, 0, 1],
         },

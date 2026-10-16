@@ -5,6 +5,7 @@ import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
 import { SurfaceMotion } from '../surface-motion.js';
 import { surfaceSeed } from '../deformation.js';
 import { Caustics } from './caustics.js';
+import { Cardstock } from './cardstock.js';
 const kinds = {
   regular: 0,
   etched: 1,
@@ -16,7 +17,7 @@ const kinds = {
   pool: 7,
   gloss: 8,
 };
-const stride = 42;
+const stride = 43;
 export interface Material {
   face: Texture;
   mask: Texture;
@@ -40,6 +41,7 @@ export class Device {
   private staging = new Float32Array();
   private motion = new SurfaceMotion();
   private caustics: Caustics;
+  private cardstock: Cardstock;
   draws = 0;
   constructor(readonly canvas: HTMLCanvasElement) {
     const gl = canvas.getContext('webgl2', {
@@ -51,6 +53,7 @@ export class Device {
     if (!gl) throw Error('WebGL2 is required');
     this.gl = gl;
     this.caustics = new Caustics(gl);
+    this.cardstock = new Cardstock(gl);
     this.foil = program(gl, fragment, vertex)!;
     // Compile both variants once with the context. Uncoated cards keep the
     // smaller original shader rather than paying its register/branch cost.
@@ -91,6 +94,9 @@ export class Device {
     gl.enableVertexAttribArray(12);
     gl.vertexAttribPointer(12, 2, gl.FLOAT, false, stride * 4, 160);
     gl.vertexAttribDivisor(12, 1);
+    gl.enableVertexAttribArray(13);
+    gl.vertexAttribPointer(13, 1, gl.FLOAT, false, stride * 4, 168);
+    gl.vertexAttribDivisor(13, 1);
     gl.bindVertexArray(null);
   }
   begin(frame: Frame) {
@@ -127,6 +133,7 @@ export class Device {
       values[start + 23] = item.deformation?.amount ?? 0;
       values[start + 40] = item.wear?.amount ?? 0;
       values[start + 41] = surfaceSeed(item.wear?.seed ?? item.id);
+      values[start + 42] = item.cardstock?.amount ?? 0;
     });
     if (this.instanceCapacity < length) {
       this.instanceCapacity = length;
@@ -143,6 +150,8 @@ export class Device {
     const gl = this.gl,
       p = material.recipe.hologram?.strength ? this.holographic : this.foil;
     if (list.some((item) => item.finish === 'pool')) this.caustics.prepare(frame.time ?? 0);
+    if (list.some((item) => item.finish === 'gloss' && (item.cardstock?.amount ?? 0) > 0))
+      this.cardstock.prepare();
     this.bind(p, frame, list);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
@@ -155,6 +164,7 @@ export class Device {
       ['coverage', material.coverage?.texture ?? this.blank],
       ['caustics', this.caustics.map],
       ['hologramMask', material.hologram?.texture ?? this.blank],
+      ['cardstockMap', this.cardstock.map ?? this.blank],
     ] as const;
     bindings.forEach(([name, t], i) => {
       gl.activeTexture(gl.TEXTURE0 + i);
@@ -224,12 +234,13 @@ export class Device {
     gl.deleteBuffer(this.instances);
     gl.deleteTexture(this.blank);
     this.caustics.dispose();
+    this.cardstock.dispose();
   }
   get surfacePasses() {
-    return this.caustics.passes;
+    return this.caustics.passes + this.cardstock.passes;
   }
   get surfaceBytes() {
-    return this.caustics.bytes;
+    return this.caustics.bytes + this.cardstock.bytes;
   }
   end() {
     this.motion.end();

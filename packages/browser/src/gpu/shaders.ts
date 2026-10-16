@@ -3,6 +3,7 @@ import { SURFACE_GLSL } from './surface-shader.js';
 import { DEFORMATION_GLSL } from './deformation-shader.js';
 import { HOLOGRAM_GLSL } from './hologram-shader.js';
 import { WORN_GLSL } from './worn-shader.js';
+import { CARDSTOCK_GLSL } from './cardstock.js';
 export const vertex = `#version 300 es
 layout(location=0) in vec2 position;
 layout(location=1) in mat4 model;
@@ -12,6 +13,8 @@ layout(location=7) in vec4 instanceSurface;
 layout(location=8) in vec4 instanceRipple0;layout(location=9) in vec4 instanceRipple1;
 layout(location=10) in vec4 instanceRipple2;layout(location=11) in vec4 instanceRipple3;
 layout(location=12) in vec2 instanceWear;
+layout(location=13) in float instanceCardstock;
+flat out float cardstockAmount;
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
@@ -19,12 +22,15 @@ void main(){
 vec2 pad=instanceSurface.w*vec2(1.,.18);
 vec2 local=position*(1.+2.*pad)-pad;
 v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;wearInfo=instanceWear;
+cardstockAmount=instanceCardstock;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
 gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
-const foil = FOIL_PREVIEW_GLSL.replace(
-  'uniform float previewKind;',
-  'flat in float previewKind;',
-).replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)');
+const foil = FOIL_PREVIEW_GLSL.replace('uniform float previewKind;', 'flat in float previewKind;')
+  .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
+  .replace(
+    'return applyStudioGlare(res,rT,.52);',
+    'return cardstockGloss(uv,base,applyStudioGlare(res,rT,.52));',
+  );
 export const fragment = `#version 300 es
 precision highp float;
 in vec2 v_uv;in vec3 v_normal;flat in vec2 wearInfo;
@@ -35,6 +41,7 @@ uniform float hasMask;uniform float cornerRadius;uniform float aspect;uniform fl
 out vec4 out_color;
 #define texture2D texture
 float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,uv).r*hasMask,c.b)*(1.-c.a);}
+${CARDSTOCK_GLSL}
 ${foil}
 ${SURFACE_GLSL}
 ${DEFORMATION_GLSL}

@@ -83,6 +83,13 @@ export function validateDocument(document: CardDocument) {
   }
 }
 export function validateInstance(item: Instance) {
+  if (
+    item.cardstock &&
+    (!Number.isFinite(item.cardstock.amount) ||
+      item.cardstock.amount < 0 ||
+      item.cardstock.amount > 1)
+  )
+    throw Error('Invalid cardstock amount');
   validateDeformation(item.deformation);
   if (
     item.wear &&

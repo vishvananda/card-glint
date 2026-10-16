@@ -261,3 +261,19 @@ maps asset selection, geometry, text layout, and composition to their source fil
 Use `card-glint/magic` and `card-glint/magic/fonts.css` to consume that pack;
 the core import remains independent of it. [Sources and notices](NOTICE.md)
 describe the separation between repository code and external game assets.
+
+### Optional cardstock coating
+
+Set `Instance.cardstock` to `{ amount: 0.2 }` for subtle, irregular relief in the
+`gloss` clear coating. The amount ranges from 0 to 1. It modulates reflected light;
+printing remains sharp. Omitted or zero preserves the original smooth gloss,
+and other finishes ignore it. Pass the same `cardstock` option to `exportCard`
+for matching PNGs. Wear is applied above the coating, so exposed paper stays matte.
+
+A fixed relief map is generated once per renderer context on first use, shared
+by all textured instances, and mip filtered when cards shrink. Tilt only samples
+the map; it does not generate noise, upload pixels, or render a reference face.
+The map adds approximately 4 MB per active context, reported in `surfaceBytes`,
+and its one-time generation increments `surfacePasses`. Context restoration
+rebuilds the map on first use. `npm run test:cardstock` checks rendering, validation,
+export parity, cache reuse, filtering and context restoration.

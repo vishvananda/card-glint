@@ -106,6 +106,8 @@ export interface Instance {
   /** Optional abrasion over any finish. Amount is 0 (fresh) to 1 (heavily played).
    * Seed is a uint32, defaulting to the instance ID; persist it with the card. */
   wear?: { amount: number; seed?: number };
+  /** Card-local coating relief for gloss. Amount 0..1; omitted/zero keeps smooth gloss. */
+  cardstock?: { amount: number };
   /** Optional whole-card silhouette warp. Amount is local card width, 0–0.02.
    * Card layers/masks follow it; world/scene/HUD layers keep their own geometry.
    * Leave unset for artwork-only finishes or a fixed silhouette. */
