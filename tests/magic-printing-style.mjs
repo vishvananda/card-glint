@@ -270,11 +270,25 @@ console.log(
 
 const future = printingStyles.find((s) => s.id === 'fut');
 for (const frame of ['full-art', 'clear']) {
-  const result = resolvePrintingStyle(source, future, { frame });
+  const result = resolvePrintingStyle({ ...source, rulesText: '' }, future, { frame });
   assert.equal(result.face.futureTreatment, frame);
   assert.equal(
-    resolvePrintingStyle({ ...source, frameTemplate: 'future', futureTreatment: frame }, future)
-      .frame,
+    resolvePrintingStyle(
+      { ...source, rulesText: '', frameTemplate: 'future', futureTreatment: frame },
+      future,
+    ).frame,
     frame,
   );
 }
+
+assert.equal(
+  printingStyleOptions(source, future).find((f) => f.id === 'full-art').supported,
+  false,
+);
+assert.throws(() => resolvePrintingStyle(source, future, { frame: 'full-art' }), /no rules panel/);
+assert.equal(
+  printingStyleOptions({ ...source, colors: ['U', 'R'], rulesText: '' }, future).find(
+    (f) => f.id === 'full-art',
+  ).supported,
+  false,
+);

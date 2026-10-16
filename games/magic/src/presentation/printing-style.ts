@@ -216,10 +216,24 @@ export function resolvePrintingStyle(
   let selection = selectionFor(frame);
   const supports = (option: PrintingFrameOption) => {
     const choice = selectionFor(option);
-    return printingPresetCompatibility(
+    const support = printingPresetCompatibility(
       withPalette(input, choice.overrides?.frameColors),
       choice.preset,
     );
+    if (!support.supported) return support;
+    try {
+      resolvePrintingPreset(input, {
+        preset: choice.preset,
+        overrides: Object.fromEntries(
+          Object.entries(choice.overrides || {}).filter(
+            ([key]) => !['elements', 'symbolAdjustment'].includes(key),
+          ),
+        ) as PrintingOverrides,
+      });
+      return support;
+    } catch (error) {
+      return { supported: false, reason: (error as Error).message };
+    }
   };
   const support = supports(frame);
   if (!support.supported) {

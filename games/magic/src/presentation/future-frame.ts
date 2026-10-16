@@ -14,6 +14,19 @@ export function futureTreatment(face: RenderedCardInput) {
   return face.futureTreatment ?? 'regular';
 }
 
+/** Shared authoring/render validation, before loading any frame assets. */
+export function validateFutureTreatment(face: RenderedCardInput): void {
+  if ((face.manaSymbols?.length || 0) > 6)
+    throw Error('Futureshifted cost exceeds the six source positions');
+  futureParts(face);
+  if (
+    futureTreatment(face) === 'full-art' &&
+    (face.rulesParagraphs?.some((p) => p.runs.some((r) => r.text.trim())) ||
+      (!face.rulesParagraphs && face.rulesText?.trim()))
+  )
+    throw Error('Futureshifted full-art treatment has no rules panel for the supplied wording');
+}
+
 export function futurePalette(face: RenderedCardInput): string[] {
   const colors = resolveFrameColors(face);
   // Clockwise mana order, including the two pairs that cross WUBRG's origin.

@@ -1,3 +1,4 @@
+import { validateFutureTreatment } from './future-frame.js';
 import { validateSymbolAdjustment, type SymbolAdjustment } from './symbol-adjustment.js';
 import { faceSetSymbol } from './assets.js';
 import { resolveArtPlacement, type ArtPlacement } from './art-placement.js';
@@ -385,6 +386,7 @@ export function resolvePrintingPreset(
     throw Error('Invalid collector total');
   if (face.collectorLanguage !== undefined && !/^[A-Za-z]{2,5}$/.test(face.collectorLanguage))
     throw Error('Invalid collector language');
+  if (face.frameTemplate === 'future') validateFutureTreatment(face);
   if (selection.art) face = resolveArtPlacement(face, selection.art);
   if (input.layout === 'split' && input.faces)
     face = {

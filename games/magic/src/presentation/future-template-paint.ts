@@ -4,7 +4,13 @@ import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { faceSetSymbol } from './assets.js';
 import { paintFittedText } from './canvas-text.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
-import { futureGeometry, futurePalette, futureParts, futureTreatment } from './future-frame.js';
+import {
+  futureGeometry,
+  futurePalette,
+  futureParts,
+  futureTreatment,
+  validateFutureTreatment,
+} from './future-frame.js';
 import { futureArtMask, prepareFutureFrame } from './future-frame-paint.js';
 import { paintFutureMana } from './future-mana.js';
 import { resolveCardProfile } from './profile.js';
@@ -20,12 +26,7 @@ export function paintFutureTemplate(
   layer?: PaintLayer,
   underArt?: HTMLCanvasElement,
 ) {
-  if (
-    futureTreatment(face) === 'full-art' &&
-    (face.rulesParagraphs?.some((p) => p.runs.some((r) => r.text.trim())) ||
-      (!face.rulesParagraphs && face.rulesText?.trim()))
-  )
-    throw Error('Futureshifted full-art treatment has no rules panel for the supplied wording');
+  validateFutureTreatment(face);
   const frame = prepareFutureFrame(face, images),
     mask = futureArtMask(frame, face);
   const g = futureGeometry(face),

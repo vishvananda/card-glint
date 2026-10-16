@@ -97,6 +97,10 @@ symbol fine adjustment or art modes are omitted with notices. Invalid explicit
 card/face controls throw, allowing an editor to ask for a correction. Always show
 these notices instead of disguising a layout change.
 
+The Futureshifted full-art option is textless and requires one printed frame
+color. Compatibility reports these constraints before loading assets; it never
+removes supplied rules text to make a frame fit.
+
 The prototype supports ordinary frames and spell splits for replacement frames;
 it does not add painters for every layout. Two-sided cards are resolved once per
 physical face with independent choices. Same-side split cards keep one compatible
