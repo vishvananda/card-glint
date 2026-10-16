@@ -25,6 +25,24 @@ export function planarFrameRect([left, top, width, height]: FaceRect): FaceRect 
   return [x(left * 488) / 488, y(top * 680) / 680, width * 1.006, height * 1.008];
 }
 
+/** Separate badge-material fit. Border-only profiles exclude the P/T glyphs;
+ * lettering keeps its independent calibration. Ordinary/colorshifted sources
+ * were selected on 21 calibration scans and checked on 84 validation scans. */
+export function planarBadgeRect(
+  [left, top, width, height]: FaceRect,
+  colorshifted: boolean,
+): FaceRect {
+  const [sx, dx, sy, dy] = colorshifted
+    ? ([1.03, -0.5, 1.025, 2.5] as const)
+    : ([1.005, 0.25, 1.005, 2.75] as const);
+  return [
+    (407 + (left * 488 - 407) * sx + dx) / 488,
+    (626 + (top * 680 - 626) * sy + dy) / 680,
+    width * sx,
+    height * sy,
+  ];
+}
+
 /** Static face preparation. Continuous texture bands preserve the outer
  * stock, expand the inner aperture and keep the frame/paper joins intact.
  * Separate badges, lettering and symbols retain their own calibration. */

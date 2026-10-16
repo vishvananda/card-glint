@@ -83,17 +83,59 @@ values; Ghostfire is a singleton study, and full-art black has no accepted pose.
 Broader body font/reflow changes
 were rejected for wrapping regressions. The [full-frame report](fixtures/accuracy/future-fullset.json)
 improves 53.0% → 72.6% on all 80 accepted poses; Mass of Ghouls remains excluded.
-These changes, wear options, the public reviewed-printing wording resolver and
-the subsequent cardstock work are released through 0.3.7.
+The Future Sight work, wear options, public reviewed-printing wording resolver,
+and cardstock changes are released. Planar Chaos followed in **0.3.8**, including
+its colorshifted frames, copyright/collector lines, frame/paper colors and shared
+alignment defaults. All 165 printings render. The [full-set report](fixtures/accuracy/planar-fullset.json)
+scores 156 accepted scans; six alignment exclusions and three split cards remain
+visible. Ordinary and colorshifted families have separate results.
 
-**Planar Chaos shipped in 0.3.8**, including all 45 colorshifted printings, shared
-geometry, typography, symbols, frame/paper colors, legal/collector details and
-reviewed original type lines. The [full-set report](fixtures/accuracy/planar-fullset.json)
-improves structural match from **64.6% to 81.3%** across 156 accepted scan poses;
-155 improve. Six rejected scans and three split cards remain excluded. All 165
-printings render. Rules wrapping, variable-stat stars and isolated material
-outliers remain follow-ups; live scoring coverage is separate from this offline
-report. The matching review application is deployed.
+Planar Chaos follow-up: resolve rules font-size and wrapping outliers before
+further text fitting. Visual review found missing em dashes after “Choose one”
+in all five cached Charm original texts; exact-printing corrections now restore
+them through the public wording resolver. Keep the 0.3.8 score report frozen:
+these source corrections need their own measurements. Heroes Remembered remains
+the sole whole-card regression in that report; Saltblast, Retether and Ghost
+Tactician also show substantial font-size/wrapping differences. Do not compensate
+for missing source text with layout parameters. Variable-stat stars, P/T badge
+shapes and isolated printing-color differences remain queued for review.
+
+The [Planar text follow-up](fixtures/accuracy/planar-text-followup.json) retains
+the existing typography after testing alternate fonts, shared size caps,
+horizontal glyph scaling and a shallow content-based size rule. The latter
+fails validation, including a 22.8-point regional regression. Per-card exact-size
+diagnostics improve the text-region mean from 57.6% to 72.1%, but those values
+are fitted to each reference and are not predictive scores or printing-specific
+renderer defaults. Keep these candidates for the later outlier-review workflow;
+do not replace the shared defaults with a lookup table. The five Charm wording
+corrections ship in **0.3.9**. Original wording gains the printed separator;
+Oracle wording and shared typography remain unchanged.
+
+Planar **0.3.10** includes a [validated variable-stat star fit](fixtures/accuracy/planar-stars.json).
+ModMatrix's stars use 77.5% of their original ink size and a 1.25 px downward
+shift while retaining the font advances and slash. Both calibration cards and
+all six reused validation cards improve; the latter regional ink score rises
+from 82.0% to 89.2%. Full native rendering confirms all 157 non-star printings
+are byte-identical to 0.3.9 and the eight changed cards differ only inside the
+P/T area. The single colorshifted star card is in calibration, so that treatment
+has no separate validation member.
+
+The [badge geometry replay](fixtures/accuracy/planar-badges.json) moves the
+ordinary and colorshifted P/T plates down and fits their width and height
+separately. Conjurer assets beat or matched the MSE alternatives on calibration;
+no new asset source is needed. All 105 accepted P/T cards improve, including
+84 reused validation cards. The 58 non-P/T cards remain byte-identical. Rules
+clearance stays independent of the badge bitmap: all 165 rules rasters remain
+unchanged. The initial coupled trial reflowed 22 cards, including four measured
+regressions, and was rejected.
+
+The [0.3.10 full-set comparison](fixtures/accuracy/planar-badge-fullset.json)
+against released 0.3.9 raises structural similarity from **81.34 to 82.45 / 100**
+across 156 accepted scans. All 105 scored P/T cards improve; 51 other cards are
+unchanged. P/T-region similarity rises from 76.33 to 96.08 / 100. Six rejected
+single-face scans and three split cards remain excluded. These are edge-based
+similarity indices, not percentages of flawless pixels. Rules font size/wrapping,
+remaining numeric P/T glyph differences and local pigment differences stay open.
 
 ## Early core scan normalization
 

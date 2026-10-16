@@ -1,4 +1,8 @@
-import { planarFrameRect, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
+import {
+  planarBadgeRect,
+  planarFrameRect,
+  usesPlanarFrameGeometry,
+} from './planar-frame-geometry.js';
 import { eighthArtistBrush } from './eighth-footer.js';
 import type { FaceRects } from './special-frames.js';
 import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './face-layout.js';
@@ -75,6 +79,11 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   const type: FaceRect = eighth
     ? [205 / 2010, 1611 / 2814, 1601 / 2010, 0.0358]
     : [168 / 2010, 1588 / 2814, 0.8292, 0.0543];
+  const stats: FaceRect = shifted
+    ? [0.7234, 0.881, 0.204, 0.0772]
+    : eighth
+      ? [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814]
+      : [0.7573, 0.8848, 0.188, 0.0733];
   const frame = `${root}/${left}.png`;
   const basicGeometry = usesEighthBasicGeometry(face, frame);
   const planarGeometry = usesPlanarFrameGeometry(face, frame);
@@ -109,11 +118,7 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
       rules: eighth
         ? interior([205 / 2010, 1779 / 2814, 1596 / 2010, 729 / 2814])
         : [0.086, 1780 / 2814, 0.828, 0.2875],
-      stats: shifted
-        ? [0.7234, 0.881, 0.204, 0.0772]
-        : eighth
-          ? [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814]
-          : [0.7573, 0.8848, 0.188, 0.0733],
+      stats: planarGeometry ? planarBadgeRect(stats, shifted) : stats,
       footer: eighth ? [150 / 2010, 1938 / 2100, 0.81, 0.04] : FACE_RECTS.footer,
     },
     titleSize: eighth ? 29.2 : 26,

@@ -1,7 +1,26 @@
-import type { RenderedCardInput } from './face-layout.js';
+import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import type { layoutRules, RulesLayout } from './rules-layout.js';
 import { framePlate } from './frame-plates.js';
 import { usesPlanarFrameGeometry } from './planar-frame-geometry.js';
+
+/** The measured text-fit clearance is independent of the badge bitmap's
+ * transparent padding and shadow bounds. Moving the physical badge otherwise
+ * changes font size/line breaks on 22 printings, including verified regressions.
+ * This conservative clearance still encloses its visible upper silhouette. */
+export function planarRulesStatsRect(face: RenderedCardInput): FaceRect | undefined {
+  if (
+    face.setCode?.toLowerCase() !== 'plc' ||
+    face.frameAssetFamily !== 'eighth' ||
+    face.frameTemplate ||
+    (face.layout && face.layout !== 'normal')
+  )
+    return;
+  const plate = framePlate(face);
+  if (!plate || !usesPlanarFrameGeometry(face, plate.frame)) return;
+  return face.frameTreatment === 'colorshifted'
+    ? [0.7234, 0.881, 0.204, 0.0772]
+    : [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814];
+}
 
 /** Shared PLC spacing after ordinary wrapping. A reflow trial enlarged dense
  * passages and regressed held-out cards; retain the original size and breaks.

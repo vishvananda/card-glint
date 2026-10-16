@@ -80,9 +80,23 @@ try {
     const resolved = resolvePrintingWording(id, input, {
       referenceSha256: correction.referenceSha256,
     });
-    assert.equal(resolved.wordings.original.typeLine, correction.faces[0].originalType);
+    const printed = correction.faces[0];
+    assert.equal(resolved.wordings.original.typeLine, printed.originalType ?? original.typeLine);
     assert.equal(resolved.wordings.oracle.typeLine, oracle.typeLine);
-    assert.equal(resolved.wordings.original.rulesText, 'Provider rules.\nProvider flavor.');
+    assert.equal(
+      resolved.wordings.original.rulesText,
+      (printed.originalText ?? original.rulesText) + '\nProvider flavor.',
+    );
+    assert.equal(resolved.wordings.oracle.rulesText, 'Oracle rules.\nOracle flavor.');
+    if (printed.originalText) {
+      assert.ok(resolved.wordings.original.rulesText.startsWith('Choose one — '));
+      const rich = resolvePrintingWording(id, {
+        oracle,
+        original: { ...original, rulesParagraphs: runs },
+      });
+      assert.equal(rich.wordings.original.rulesParagraphs[0].runs[0].text, printed.originalText);
+      assert.deepEqual(rich.wordings.original.rulesParagraphs.at(-1), runs[1]);
+    }
   }
   const fullId = Object.keys(full.cards)[0];
   const f = resolvePrintingWording(fullId, { oracle, original: { ...original, flavorText: '' } });

@@ -290,7 +290,24 @@ try {
       'PLC geometry accepted an unknown source',
     );
     const { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts');
-    const { planarRulesSpacing } = await import('/games/magic/src/presentation/planar-rules.ts');
+    const { planarRulesSpacing, planarRulesStatsRect } = await import(
+      '/games/magic/src/presentation/planar-rules.ts'
+    );
+    for (const other of [
+      { setCode: 'fut' },
+      { frameTemplate: 'future' },
+      { borderColor: 'white' },
+      { layout: 'split' },
+      { layout: 'aftermath-bottom' },
+    ])
+      check(
+        planarRulesStatsRect({ ...shifted, ...other }) === undefined,
+        'PLC text clearance must skip unmeasured/special layouts without resolving a plate',
+      );
+    check(
+      planarRulesStatsRect(shifted)[1] < shiftedPlate.rects.stats[1],
+      'Text clearance must retain its independent upper boundary when the badge moves down',
+    );
     const body = document.createElement('canvas').getContext('2d');
     const bodyBounds = { x: 49, y: 431, width: 390, height: 174 };
     const paragraphs = [

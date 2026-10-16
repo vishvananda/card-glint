@@ -6,7 +6,7 @@ import { layoutRules, rulesFont, RULES_TYPOGRAPHY, type RulesLayout } from './ru
 import { shortCenteredRules } from './short-centered-rules.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
 import { hasFlavorSeparator } from './flavor-separator.js';
-import { planarRulesSpacing } from './planar-rules.js';
+import { planarRulesSpacing, planarRulesStatsRect } from './planar-rules.js';
 
 export function ordinaryTextLayout(
   context: CanvasRenderingContext2D,
@@ -15,6 +15,7 @@ export function ordinaryTextLayout(
   scale = 1,
 ): RulesLayout {
   const rects = faceRects(face);
+  const statsRect = planarRulesStatsRect(face) ?? rects.stats;
   const typography = {
     ...RULES_TYPOGRAPHY,
     flavorSeparator: face.frameAssetFamily === 'eighth' ? false : hasFlavorSeparator(face.setCode),
@@ -38,10 +39,10 @@ export function ordinaryTextLayout(
       ...(face.power != null && face.toughness != null
         ? [
             [
-              rects.stats[0] * FACE_WIDTH - 2,
-              rects.stats[1] * height - 2,
-              rects.stats[2] * FACE_WIDTH + 4,
-              rects.stats[3] * height + 4,
+              statsRect[0] * FACE_WIDTH - 2,
+              statsRect[1] * height - 2,
+              statsRect[2] * FACE_WIDTH + 4,
+              statsRect[3] * height + 4,
             ] as const,
           ]
         : []),
