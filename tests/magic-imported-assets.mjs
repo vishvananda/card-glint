@@ -247,6 +247,24 @@ try {
       toughness: '5',
     };
     const shiftedPlate = framePlate(shifted);
+    const { usesPlanarFrameGeometry } = await import(
+      '/games/magic/src/presentation/planar-frame-geometry.ts'
+    );
+    check(usesPlanarFrameGeometry(shifted, shiftedPlate.frame), 'Missing PLC geometry');
+    for (const other of [
+      { setCode: 'fut' },
+      { borderColor: 'white' },
+      { layout: 'split' },
+      { frameTemplate: 'future' },
+    ])
+      check(
+        !usesPlanarFrameGeometry({ ...shifted, ...other }, shiftedPlate.frame),
+        'PLC geometry leaked to another printing',
+      );
+    check(
+      !usesPlanarFrameGeometry(shifted, shiftedPlate.frame + '?changed'),
+      'PLC geometry accepted an unknown source',
+    );
     check(shiftedPlate.frame.endsWith('/8th/colorshifted/w.png'), 'Wrong shifted source');
     check(shiftedPlate.pt.endsWith('/m15/colorshifted/wpt.png'), 'Wrong shifted badge');
     check(canvasAssetUrls(shifted).includes(shiftedPlate.pt), 'Shifted badge not prepared');

@@ -1,3 +1,4 @@
+import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { paintModernFooter } from './modern-footer.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { paintBasicLandSymbol } from './plate-basic-land.js';
@@ -60,6 +61,7 @@ export function paintFramePlateFace(
     return;
   }
   if (usesEighthBasicGeometry(face, plate.frame)) paintEighthBasicFrame(c, required(plate.frame));
+  else if (usesPlanarFrameGeometry(face, plate.frame)) paintPlanarFrame(c, required(plate.frame));
   else c.drawImage(required(plate.frame), 0, 0, W, H);
   if (plate.rightFrame) {
     // A narrow blend joins the two *land* textures, preserving colored outer

@@ -1,3 +1,4 @@
+import { planarFrameRect, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { eighthArtistBrush } from './eighth-footer.js';
 import type { FaceRects } from './special-frames.js';
 import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './face-layout.js';
@@ -75,7 +76,9 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     : [168 / 2010, 1588 / 2814, 0.8292, 0.0543];
   const frame = `${root}/${left}.png`;
   const basicGeometry = usesEighthBasicGeometry(face, frame);
-  const interior = (rect: FaceRect) => (basicGeometry ? eighthBasicRect(rect) : rect);
+  const planarGeometry = usesPlanarFrameGeometry(face, frame);
+  const interior = (rect: FaceRect) =>
+    basicGeometry ? eighthBasicRect(rect) : planarGeometry ? planarFrameRect(rect) : rect;
   return {
     frame,
     rightFrame: right ? `${root}/${right}.png` : undefined,
@@ -89,8 +92,8 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
       ...FACE_RECTS,
       frame: [0, 0, 1, 1],
       background: [0, 0, 1, 1],
-      title,
-      type,
+      title: planarGeometry ? planarFrameRect(title) : title,
+      type: planarGeometry ? planarFrameRect(type) : type,
       art: eighth
         ? interior([180 / 2010, 341 / 2814, 1656 / 2010, 1216 / 2814])
         : [0.0767, 0.1129, 0.8476, 0.4429],
