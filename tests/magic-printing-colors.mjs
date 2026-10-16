@@ -18,6 +18,31 @@ try {
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
     '/games/magic/src/presentation/color-calibration-coverage.ts',
   );
+  const planar = {
+    name: 'Planar material coverage',
+    setCode: 'plc',
+    frameAssetFamily: 'eighth',
+    colors: ['U'],
+    typeLine: 'Creature',
+    colorCalibration: 'set-hsb-v1',
+  };
+  for (const frameTreatment of [undefined, 'colorshifted']) {
+    const face = { ...planar, frameTreatment },
+      materials = calibratedFrameMaterials(face);
+    assert.equal(Object.keys(materials).length, 1);
+    assert.equal(colorCalibrationCoverage(face).frame, true);
+    assert.ok(
+      Object.keys(materials)[0].endsWith(frameTreatment ? '/colorshifted/u.png' : '/8th/u.png'),
+    );
+    for (const excluded of [
+      { colorCalibration: undefined },
+      { setCode: 'fut' },
+      { borderColor: 'white' },
+      { layout: 'token' },
+    ])
+      assert.deepEqual(calibratedFrameMaterials({ ...face, ...excluded }), {});
+  }
+  assert.deepEqual(calibratedFrameMaterials({ ...planar, typeLine: 'Land', colors: [] }), {});
   const mana = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/showcased-mana-colors.json'),
   );

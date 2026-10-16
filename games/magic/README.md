@@ -185,9 +185,15 @@ option; modern legend crowns and color-pair spell pinlines remain follow-up work
 For Planar Chaos's color-shifted printings, retain the physical treatment with
 `frameAssetFamily: 'eighth', frameTreatment: 'colorshifted'`, including when
 showing Oracle wording. This selects the pinned Card Conjurer color-shifted
-plates, white shadowed title/type/P/T ink and matching badges. The initial
-support uses source layout defaults; color and scan alignment calibration are
-pending. Unsupported land/multicolor combinations fail explicitly. Ordinary
+plates, white shadowed title/type/P/T ink and matching badges. Ordinary and shifted
+PLC spells use a shared inner-frame fit and separately measured title/type sizes
+and positions. The opt-in `set-hsb-v1` palette separates frame, rules paper,
+title and type panels, retaining source colors where validation rejects a change.
+[Frozen poses and regional measurements](fixtures/accuracy/planar-normalization.json)
+cover 156 accepted scans with 33 training and 123 held-out cards; these are not
+whole-card accuracy scores. Symbols, rules, badge/footer placement, gold color-pair
+pinlines and isolated color outliers remain under review.
+Unsupported colorshifted land/multicolor combinations fail explicitly. Ordinary
 and shifted PLC cards include the verified 2007 legal line and `/165` numbers.
 Source: [Card Conjurer's 8th colorshifted pack](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/pack8thColorshifted.js).
 
