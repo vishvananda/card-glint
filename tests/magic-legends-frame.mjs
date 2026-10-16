@@ -140,6 +140,25 @@ try {
     '/games/magic/src/presentation/legends-color-profiles.ts',
   );
   const study = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-colors.json'));
+  const refinement = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/legends-frame-refinement.json'),
+  );
+  assert.equal(refinement.runtimeVerified, true);
+  assert.equal(refinement.rows.length, 24);
+  assert.ok(
+    refinement.geometryValidation.summary.after > refinement.geometryValidation.summary.before,
+  );
+  assert.ok(refinement.summary.after.color < refinement.summary.previous.color);
+  for (const key of ['shadowChroma', 'shadowLightness', 'contrastError'])
+    assert.ok(
+      refinement.summary.after[key] <=
+        refinement.summary.before[key] + (key === 'contrastError' ? 0.5 : 0.25),
+    );
+  assert.deepEqual(
+    legendsFrame({ ...ordinary, colors: ['W', 'U'] }).frame,
+    refinement.geometry.frame,
+  );
+  assert.deepEqual(legendsFrame({ ...ordinary, colors: ['W', 'U'] }).art, refinement.geometry.art);
   const titles = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-titles.json'));
   const types = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-types.json'));
   const symbols = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-symbols.json'));
@@ -244,7 +263,10 @@ try {
     assert.equal(new Set(group.rows.map((r) => r.id)).size, group.rows.length);
     for (const cohort of ['calibration', 'validation'])
       assert.ok(group.rows.filter((r) => r.cohort === cohort).length >= 4);
-    assert.deepEqual(calibratedFrameMaterials(face), { [group.asset]: group.adjustment });
+    assert.deepEqual(calibratedFrameMaterials(face), {
+      [group.asset]:
+        group.material === 'L' ? { ...group.adjustment, frame: refinement.land } : group.adjustment,
+    });
     assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});
     assert.deepEqual(calibratedFrameMaterials({ ...face, borderColor: 'white' }), {});
     assert.deepEqual(calibratedFrameMaterials({ ...face, frameStyle: 'modern' }), {});

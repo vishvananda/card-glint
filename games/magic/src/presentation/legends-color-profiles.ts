@@ -165,7 +165,7 @@ export const LEGENDS_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfil
             hueDegrees: 0,
             saturationScale: 1,
             brightnessScale: 1,
-            rgbScale: [1.23125, 1.2537500000000004, 1.0025],
+            rgbScale: [1.21125, 1.2400000000000002, 0.98875],
           },
           paper: {
             hueDegrees: 14.93891019140574,
@@ -225,7 +225,7 @@ export const LEGENDS_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfil
   },
   'leg/black/retro/m.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/m.png",[0.0032159999999999966,0.003875294117647035,0.991532,0.995748]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/m.png",[0.0037205395409838113,0.004187595294117773,0.9910362339999996,0.9947522519999996]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/m.png':
         {
