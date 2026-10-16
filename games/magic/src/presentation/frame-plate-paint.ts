@@ -8,6 +8,7 @@ import { styledSymbolBounds } from './styled-symbol-placement.js';
 import { paintEighthFooter } from './eighth-footer.js';
 import { titleTranslation } from './title-placement.js';
 import { planarLettering } from './planar-lettering.js';
+import { planarSetSymbolBounds } from './planar-symbols.js';
 import { framePlate } from './frame-plates.js';
 import { faceSetSymbol } from './assets.js';
 import { setSymbolCrop } from './set-symbols.js';
@@ -177,12 +178,14 @@ export function paintFramePlateFace(
     : 0;
   const iw = icon ? icon.width * crop[2] * iconScale : 0,
     ih = icon ? icon.height * crop[3] * iconScale : 0;
-  const originalBounds = styledSymbolBounds(face, url, [
-    plate.symbol.right * W - iw,
-    plate.symbol.center * H - ih / 2,
-    iw,
-    ih,
-  ]);
+  const originalBounds =
+    planarSetSymbolBounds(face, plate.frame, url) ??
+    styledSymbolBounds(face, url, [
+      plate.symbol.right * W - iw,
+      plate.symbol.center * H - ih / 2,
+      iw,
+      ih,
+    ]);
   const bounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   const [x, y, w, h] = px(rects.type);
   c.save();

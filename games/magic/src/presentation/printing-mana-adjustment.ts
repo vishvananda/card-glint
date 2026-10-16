@@ -2,6 +2,7 @@ import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
 import { usesModernCostMana } from './modern-cost-mana.js';
+import { planarManaDefaults } from './planar-symbols.js';
 import {
   MODERN_COMPONENT_MANA,
   MODERN_MANA_OVERRIDES,
@@ -10,6 +11,8 @@ import {
 
 /** Resolve frame defaults first, then printing overrides and caller deltas. */
 export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {
+  const planar = planarManaDefaults(face);
+  if (planar) return planar;
   const set = face.setCode?.toLowerCase() ?? '';
   if (usesModernCostMana(face)) return { ...MODERN_COMPONENT_MANA, ...MODERN_MANA_OVERRIDES[set] };
   const base = PRINTING_MANA_PROFILES[set];

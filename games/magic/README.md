@@ -191,8 +191,13 @@ and positions. The opt-in `set-hsb-v1` palette separates frame, rules paper,
 title and type panels, retaining source colors where validation rejects a change.
 [Frozen poses and regional measurements](fixtures/accuracy/planar-normalization.json)
 cover 156 accepted scans with 33 training and 123 held-out cards; these are not
-whole-card accuracy scores. Symbols, rules, badge/footer placement, gold color-pair
-pinlines and isolated color outliers remain under review.
+whole-card accuracy scores. A shared mana fit and expansion-symbol rectangle
+cover both treatments while preserving caller adjustment deltas.
+[Symbol replay](fixtures/accuracy/planar-symbols.json) and an independent
+[text-only audit](fixtures/accuracy/planar-lettering-audit.json) retain component
+measurements; the latter excludes bevels that can confound lettering scores after
+recoloring. Rules, badge/footer placement, gold color-pair pinlines and isolated
+color/source-shape outliers remain under review.
 Unsupported colorshifted land/multicolor combinations fail explicitly. Ordinary
 and shifted PLC cards include the verified 2007 legal line and `/165` numbers.
 Source: [Card Conjurer's 8th colorshifted pack](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/pack8thColorshifted.js).

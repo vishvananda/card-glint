@@ -26,12 +26,14 @@ try {
         ),
       ).join(',');
     const out = [];
-    for (const [setCode, frameStyle, frameAssetFamily] of [
+    for (const [setCode, frameStyle, frameAssetFamily, frameTreatment] of [
       ['lea', 'retro'],
       ['leb', 'retro'],
       ['3ed', 'retro'],
       ['usg', 'retro'],
       ['8ed', 'modern', 'eighth'],
+      ['plc', 'modern', 'eighth'],
+      ['plc', 'modern', 'eighth', 'colorshifted'],
       ['m21', 'modern'],
       ['m21', 'modern', 'm15-accurate'],
     ]) {
@@ -44,6 +46,7 @@ try {
         setCode,
         frameStyle,
         frameAssetFamily,
+        frameTreatment,
         rarity: 'rare',
         symbolStyle: 'modern',
       };
