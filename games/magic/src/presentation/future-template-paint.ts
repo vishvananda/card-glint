@@ -59,14 +59,14 @@ export function paintFutureTemplate(
     c.shadowColor = 'transparent';
     paintFutureMana(c, face, images);
     const light = palette.length === 1 && palette[0] !== 'W';
-    const label = (text: string, rect: FaceRect, size: number) => {
+    const label = (text: string, rect: FaceRect, size: number, offsetY: number) => {
       c.textAlign = 'left';
       c.textBaseline = 'middle';
       paintFittedText(
         c,
         text,
-        rect[0],
-        rect[1] + rect[3] / 2,
+        rect[0] + 1.25,
+        rect[1] + rect[3] / 2 + offsetY,
         rect[2],
         size,
         true,
@@ -75,8 +75,10 @@ export function paintFutureTemplate(
       );
     };
     c.fillStyle = light ? '#fff' : '#111';
-    label(face.name, g.title, 30.4);
-    label(face.typeLine ?? '', g.type, 24.6);
+    // Shared lettering fit uses frozen frame-only scan poses and reserved cards;
+    // keep Matrix Bold, whose glyphs fit better than the alternate MSE Medium.
+    label(face.name, g.title, 30.248, 1.25);
+    label(face.typeLine ?? '', g.type, 24.969, -1.5);
     const rulesInk = p.land && palette.length === 2 && !palette.includes('W') ? '#fff' : '#111';
     // The textless treatment is physical. Additional Oracle text does not
     // switch it to the regular frame or silently change the artwork aperture.

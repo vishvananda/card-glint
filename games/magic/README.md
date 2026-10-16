@@ -126,6 +126,13 @@ All 55 reserved cards improve on grayscale edge overlap, edge distance and Censu
 similarity in the [symbol replay](fixtures/accuracy/future-set-symbols.json).
 Custom symbols and other printings retain the source template's default bounds.
 
+Future's shared title and type-line lettering retains Matrix Bold after comparing
+the available MSE fonts. With frozen frame-only scan poses, mean two-polarity
+edge F1 on 57 reserved printings improves from 0.693 to 0.767 for titles and
+0.533 to 0.793 for type lines. Five title and two type-line regressions remain
+visible in the [header replay](fixtures/accuracy/future-headers.json); these
+component scores do not certify rules, footer lettering or whole-card accuracy.
+
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
 pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
 Flip and Battle are source-layout starting points; Future calibration remains
