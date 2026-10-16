@@ -1885,3 +1885,19 @@ frame-only normalization before component metrics:
 
 The dedicated review browser remains separate from the library. Add supported
 input/routing/scoring only after each family has its own validated geometry.
+
+## Released Revised frame evaluation (0.3.12)
+
+The [paired component report](fixtures/accuracy/revised0312-live-metrics.json)
+uses the same independently normalized scans and source eligibility for both
+0.3.11 and 0.3.12. Across all **304 accepted Revised scans**, structural match
+rises **59.30 → 76.63 / 100**: 279 nonlands improve, 25 lands are unchanged, and
+none regress. Every released-browser component score and coverage matches the
+native candidate. Two uncertain scan poses remain excluded.
+
+The comparison's lower-art rim window moved down five pixels to include the
+measured y=374 aperture edge and its border. Its old crop ended above the rim,
+incorrectly making Disenchant, Circle of Protection: Black and Steal Artifact
+low-signal cases. Scan poses and renderer pixels did not change for this metric
+correction. Planar remains 81.57 / 100 over 156 accepted scans; all 162 single-face
+capture results preserve their 0.3.11 scores, coverage and normalized pixels.
