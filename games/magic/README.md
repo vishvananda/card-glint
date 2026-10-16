@@ -588,3 +588,7 @@ calibration, mana assets and other printing stay unchanged; run the resulting
 recipe through the renderer normally to retain its finish and wear. This is
 transient editor presentation, not a change to the card's rules or wording.
 Omissions affect Canvas text calls, not externally supplied lettering bitmaps.
+
+`blackBorderLift` optionally sets a minimum sRGB ink level for the outer black
+border (0..0.2). It leaves the interior, white/silver borders and layout intact.
+The default preserves source pixels. The lift is painted before finish and wear.

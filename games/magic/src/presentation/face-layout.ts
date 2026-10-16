@@ -38,6 +38,8 @@ export interface RenderedCardInput extends CardProfileInput {
    * validated spell splits ('eighth') only. */
   frameAssetFamily?: 'eighth' | 'm15-accurate';
   borderColor?: CardBorderColor;
+  /** Optional minimum black-border ink level in sRGB, 0..0.2. Omitted preserves source black. */
+  blackBorderLift?: number;
   /** Physical printing layout, independent of rules identity. */
   layout?: string;
   faces?: RenderedCardInput[];

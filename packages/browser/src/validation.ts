@@ -84,6 +84,13 @@ export function validateDocument(document: CardDocument) {
 }
 export function validateInstance(item: Instance) {
   if (
+    item.printDots?.inset !== undefined &&
+    (!Number.isFinite(item.printDots.inset) ||
+      item.printDots.inset < 0 ||
+      item.printDots.inset > 0.2)
+  )
+    throw Error('Invalid print dot inset');
+  if (
     item.printDots?.variation !== undefined &&
     (!Number.isFinite(item.printDots.variation) ||
       item.printDots.variation < 0 ||

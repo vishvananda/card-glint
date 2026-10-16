@@ -291,6 +291,8 @@ passes or uploads. It uses screen derivatives to fade fine dots when a card
 shrinks, reducing aliasing. Larger periods make the pattern easier to inspect.
 
 This is an RGB-to-CMYK visual approximation, not a calibrated press profile.
+An optional `inset` (0..0.2, in card-width units) excludes an outer rim from
+the print effect; the default is 0. Game packs/hosts supply any desired rim.
 Imported scans can already contain a dot pattern; adding another may create
 moire. Keep the option off for such images unless comparing an intentional
 second pattern. The conventional screen angles follow

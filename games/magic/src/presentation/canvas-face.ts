@@ -169,6 +169,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
       !mask && splitHasFuse(face),
       !mask && splitFuseParagraphs(face),
       ...(!mask && face.printingOmissions?.length ? [face.printingOmissions] : []),
+      ...(!mask && face.blackBorderLift ? [['border-ink', face.blackBorderLift]] : []),
     ];
   return mask
     ? [
@@ -221,6 +222,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         faceRects(face),
         resolveCardProfile(face),
         ...(face.printingOmissions?.length ? [face.printingOmissions] : []),
+        ...(face.blackBorderLift ? [['border-ink', face.blackBorderLift]] : []),
       ];
 }
 
@@ -291,6 +293,28 @@ export async function composeCardTexture(
           await hooks?.beforePaint?.();
           signal.throwIfAborted();
           context.drawImage(image, 0, 0, FACE_WIDTH, FACE_HEIGHT);
+          if (
+            input.paintLayer !== 'artwork' &&
+            input.face.blackBorderLift &&
+            (input.face.borderColor ?? 'black') === 'black'
+          ) {
+            if (
+              !Number.isFinite(input.face.blackBorderLift) ||
+              input.face.blackBorderLift < 0 ||
+              input.face.blackBorderLift > 0.2
+            )
+              throw Error('Invalid black border lift');
+            const ink = Math.round(input.face.blackBorderLift * 255),
+              inset = FACE_WIDTH * 0.035;
+            context.save();
+            context.globalCompositeOperation = 'lighten';
+            context.fillStyle = `rgb(${ink},${ink},${ink})`;
+            context.beginPath();
+            context.rect(0, 0, FACE_WIDTH, FACE_HEIGHT);
+            context.rect(inset, inset, FACE_WIDTH - 2 * inset, FACE_HEIGHT - 2 * inset);
+            context.fill('evenodd');
+            context.restore();
+          }
           paintCardStatus(
             context,
             input.emblems ?? [],
@@ -346,6 +370,28 @@ export async function composeCardTexture(
           input.paintLayer,
         ),
       );
+      if (
+        input.paintLayer !== 'artwork' &&
+        input.face.blackBorderLift &&
+        (input.face.borderColor ?? 'black') === 'black'
+      ) {
+        if (
+          !Number.isFinite(input.face.blackBorderLift) ||
+          input.face.blackBorderLift < 0 ||
+          input.face.blackBorderLift > 0.2
+        )
+          throw Error('Invalid black border lift');
+        const ink = Math.round(input.face.blackBorderLift * 255),
+          inset = FACE_WIDTH * 0.035;
+        context.save();
+        context.globalCompositeOperation = 'lighten';
+        context.fillStyle = `rgb(${ink},${ink},${ink})`;
+        context.beginPath();
+        context.rect(0, 0, FACE_WIDTH, FACE_HEIGHT);
+        context.rect(inset, inset, FACE_WIDTH - 2 * inset, FACE_HEIGHT - 2 * inset);
+        context.fill('evenodd');
+        context.restore();
+      }
       paintCardStatus(
         context,
         input.emblems ?? [],

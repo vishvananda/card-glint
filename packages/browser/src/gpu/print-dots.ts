@@ -2,7 +2,7 @@
 // Conventional C/M/Y/K angles: 105, 75, 90, 45 degrees. This is a visual
 // approximation, not a color-managed press simulation or scan reconstruction.
 export const PRINT_DOTS_GLSL = `
-flat in vec3 printDotsInfo;
+flat in vec4 printDotsInfo;
 float printFootprint;
 float plateNoise(vec2 cell,float channel){return fract(sin(dot(cell,vec2(127.1,311.7))+channel*74.7)*43758.5453);}
 float inkScreen(vec2 p,float ink,vec2 axis,float channel){
@@ -28,6 +28,10 @@ float inkScreen(vec2 p,float ink,vec2 axis,float channel){
 vec3 printDotInk(vec3 ink,vec2 uv){
  if(printDotsInfo.x<=0.)return ink;
  float visible=1.-smoothstep(.35,.9,printFootprint);
+ if(printDotsInfo.w>0.){
+  vec2 edge=min(uv,1.-uv);float aspect=float(textureSize(face,0).y)/float(textureSize(face,0).x);
+  visible*=smoothstep(printDotsInfo.w*.85,printDotsInfo.w*1.15,min(edge.x,edge.y*aspect));
+ }
  if(visible<=0.)return ink;
  vec2 p=vec2(uv.x,1.-uv.y)*vec2(textureSize(face,0))/printDotsInfo.y;
  float k=1.-max(max(ink.r,ink.g),ink.b);
@@ -35,14 +39,6 @@ vec3 printDotInk(vec3 ink,vec2 uv){
  vec3 plates=vec3(inkScreen(p,cmy.x,vec2(-.258819,.965926),1.),inkScreen(p,cmy.y,vec2(.258819,.965926),5.),inkScreen(p,cmy.z,vec2(0.,1.),9.));
  float black=inkScreen(p,k,vec2(.707107),13.);
  vec3 screened=(1.-plates)*(1.-black);
- // Solid black normally has no exposed halftone holes. A dark border can
- // still show small gaps/uneven coverage from the paper and ink impression.
- vec2 edge=min(uv,1.-uv);float aspect=float(textureSize(face,0).y)/float(textureSize(face,0).x);
- float border=1.-smoothstep(.025,.045,min(edge.x,edge.y*aspect));
- float dark=1.-smoothstep(.06,.16,max(max(ink.r,ink.g),ink.b));
- vec2 pores=p*1.7,local=fract(pores)-.5;
- float gaps=exp(-dot(local,local)*45.)*smoothstep(.65,.95,plateNoise(floor(pores),19.));
- screened+=vec3(.12)*gaps*border*dark*printDotsInfo.z;
  return mix(ink,screened,printDotsInfo.x*visible);
 }
 vec4 printFace(vec2 uv){
