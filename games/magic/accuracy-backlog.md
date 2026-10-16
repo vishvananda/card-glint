@@ -13,7 +13,9 @@ found inherited sampling bands crossing title and artist lettering. Search
 padding now stays within clean outer-frame pixels, and separate edge strips
 validate each pose. All 310 scans pass content-isolation checks; **303 pass
 alignment and seven remain flagged**. Poses affect comparison scans only.
-The equivalent sampling audit for Alpha/Beta/Revised remains queued.
+The equivalent Alpha/Beta/Unlimited/Revised audit is now recorded below. Its new
+comparison poses are frozen offline; the live review application still uses its
+previous templates until the next validated renderer/scoring update.
 
 Rechecking unchanged renderer crops with corrected poses preserves every held-out
 improvement: titles 63.4% → 72.4%, types 76.4% → 80.2%, mana 47.0% → 84.4%, and
@@ -62,15 +64,11 @@ Rules overlap rises 28.5% → 64.3%. These fixed-region indices exclude color an
 unverified legal text; they are not percentages of pixel correctness. Seven
 rejected scans remain outside the average. Patch 0.3.5 packages this pass.
 
-## Next requested frame calibration
+## Completed Future Sight and Planar Chaos passes
 
-After finishing and shipping Legends, perform a complete calibration of
-**Future Sight's futureshifted frames**, before the next pre-Eighth group.
-Review assets and layout rules, freeze scan-only normalization, then measure
-frame/art geometry, colors, mana and set symbols, title/type/rules/flavor text,
-illustrator/legal credits and power/toughness. Keep ordinary Future Sight cards
-separate. Use shared defaults, reserved validation, full-set scores and a
-comparison page; retain rejected scans and mismatched assets for review.
+The requested Future Sight and Planar Chaos passes have shipped. Their studies
+keep ordinary, futureshifted and colorshifted frame families separate, use frozen
+scan normalization, and retain explicit exclusions and component regressions.
 
 The initial inventory contains 81 futureshifted printings; all render with the
 0.3.5 defaults, while 99 ordinary FUT printings remain outside this pass.
@@ -85,20 +83,41 @@ values; Ghostfire is a singleton study, and full-art black has no accepted pose.
 Broader body font/reflow changes
 were rejected for wrapping regressions. The [full-frame report](fixtures/accuracy/future-fullset.json)
 improves 53.0% → 72.6% on all 80 accepted poses; Mass of Ghouls remains excluded.
-Release and review-application deployment are still pending. Include the wear
-options and public reviewed-printing wording resolver in that release.
+These changes, wear options, the public reviewed-printing wording resolver and
+the subsequent cardstock work are released through 0.3.7.
 
-Immediately after that release, calibrate **Planar Chaos** before returning to
-the pre-Eighth queue. First import and route its unsupported color-shifted frame
-cards. Then restore copyright/trademark and collector-number printing, fit the
-frame/paper colors, and validate alignment against independently normalized
-nonfoil scans. Keep ordinary and color-shifted families separate in the report.
+**Planar Chaos shipped in 0.3.8**, including all 45 colorshifted printings, shared
+geometry, typography, symbols, frame/paper colors, legal/collector details and
+reviewed original type lines. The [full-set report](fixtures/accuracy/planar-fullset.json)
+improves structural match from **64.6% to 81.3%** across 156 accepted scan poses;
+155 improve. Six rejected scans and three split cards remain excluded. All 165
+printings render. Rules wrapping, variable-stat stars and isolated material
+outliers remain follow-ups; live scoring coverage is separate from this offline
+report. The matching review application is deployed.
+
+## Early core scan normalization
+
+The [Alpha/Beta/Unlimited/Revised audit](fixtures/accuracy/early-core-normalization-review.json)
+checks all **1,205** cached scans. Bounded strips exclude the header and artist
+areas, including search padding. All scans pass exact interior-isolation checks.
+Fixed calibration targets, disjoint model-selection strips and a third
+certification group separate pose fitting from verification. A broader initial
+search avoids choosing the wrong bevel peak without relaxing acceptance gates.
+
+Final coverage is **292/295 Alpha, 297/302 Beta, 302/302 Unlimited and 306/306
+Revised**. Every accepted pose also passes replay on the warped raster. These
+are comparison-only transformations; renderer defaults have not changed.
+Earlier-used validation cards are explicitly reused validation. Eight uncertain
+scans remain flagged, and Beta Twiddle retains a small regression relative to
+the first clean-strip trial while improving over its raw scan. Shared frame,
+symbol, color and text calibration follows on these frozen targets.
 
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions
    and the missing copyright marker shipped in 0.2.24. All 25 land printings
-   and the complete five-set corpus have current scores.
+   and the complete five-set corpus have versioned historical scores; regenerate
+   them for each subsequent renderer/normalization generation.
 2. Audit the recorded fixes against shipped code, then address remaining defects:
    original wording/score coverage, early glyph and shadow outliers, missing
    historical symbol sources/materials, shared security stamps and holographic
