@@ -284,8 +284,10 @@ context and the fixed map is generated on first textured finish draw. Linear
 decoding permits mip filtering, suppressing fine relief when cards shrink.
 Subsequent frames sample the map in the existing material pass. There are no
 reference face renders, per-frame uploads, readbacks or procedural noise calls.
-The coating modulates and attenuates gloss reflection before abrasion and finish coverage;
-reflection gain is `1 - amount * 0.5` (10% lower at amount 0.2).
+The coating modulates the finish response before abrasion and finish coverage,
+without an overall gain reduction. Gloss independently scales its clear-coat
+contribution by 0.9, whether or not cardstock is enabled. Other finishes retain
+their original strength.
 static over-finish printing remains unaffected. Default/zero amounts and regular printing retain their previous pixels. Disposal and context restoration follow
 the same ownership as the other device resources. Map storage and the initial
 pass are included in `surfaceBytes` and `surfacePasses`.

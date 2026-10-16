@@ -266,8 +266,9 @@ describe the separation between repository code and external game assets.
 
 Set `Instance.cardstock` to `{ amount: 0.2 }` for subtle, irregular relief in the
 clear coating over any optical finish. The amount ranges from 0 to 1. It modulates reflected light;
-printing remains sharp. Relief also softens the gloss reflection: amount 0.2
-reduces its gain by 10%, reaching 50% at amount 1. Omitted or zero preserves the original smooth gloss,
+printing remains sharp. Relief varies the finish response locally without lowering its overall gain.
+Gloss separately uses a 10% softer clear-coat contribution, with or without relief.
+Omitted or zero keeps the smooth coating,
 and regular printing ignores it. Pass the same `cardstock` option to `exportCard`
 for matching PNGs. Wear is applied above the coating, so exposed paper stays matte.
 

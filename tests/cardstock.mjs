@@ -143,11 +143,7 @@ try {
       c.height = 102;
       const tiny0 = draw(0),
         tiny1 = draw(0.2),
-        tinyInk = draw(0, 'regular'),
-        tinyExpected = tiny0.map((v, i) =>
-          i % 4 === 3 ? v : Math.round(tinyInk[i] + (v - tinyInk[i]) * 0.9),
-        ),
-        tinyDifference = difference(tinyExpected, tiny1);
+        tinyDifference = difference(tiny0, tiny1);
       c.width = 732;
       c.height = 1020;
       // Resources are recreated by the renderer's existing context lifecycle.
