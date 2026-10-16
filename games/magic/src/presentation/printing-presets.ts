@@ -1,3 +1,5 @@
+import { faceSetSymbol } from './assets.js';
+import { resolveArtPlacement, type ArtPlacement } from './art-placement.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { framePlate } from './frame-plates.js';
 import { validatePrintingElements, type PrintingElements } from './printing-elements.js';
@@ -135,12 +137,17 @@ export interface PrintingOverrides {
   collectorSetCode?: string;
   setCode?: string;
   setSymbol?: string | null;
+  /** Select a symbol without changing the styling set or collector code. */
+  setSymbolCode?: string;
   symbolStyle?: RenderedCardInput['symbolStyle'];
   borderColor?: RenderedCardInput['borderColor'];
   securityStamp?: RenderedCardInput['securityStamp'];
   elements?: PrintingElements;
 }
+/** Contract version for persisted selections. Unknown preset IDs/options throw. */
+export const printingPresetApiVersion = 1 as const;
 export interface PrintingSelection {
+  art?: ArtPlacement;
   preset: string;
   overrides?: PrintingOverrides;
 }
@@ -162,6 +169,8 @@ function candidate(input: RenderedCardInput, preset: Readonly<PrintingPreset>): 
     collectorLanguage: _language,
     collectorSetCode: _code,
     printingElements: _elements,
+    illustrationPlacement: _importPosition,
+    artPlacement: _art,
     ...content
   } = input;
   return {
@@ -236,6 +245,7 @@ export function resolvePrintingPreset(
     );
   for (const [key, value] of Object.entries(overrides)) {
     if (value === undefined) continue;
+    if (key === 'setSymbolCode') continue;
     if (key === 'elements') face.printingElements = structuredClone(value as PrintingElements);
     else if (
       [
@@ -269,6 +279,19 @@ export function resolvePrintingPreset(
     throw Error('Invalid mana symbol style');
   if (face.borderColor !== undefined && !['black', 'white', 'silver'].includes(face.borderColor))
     throw Error('Invalid border color');
+  if (overrides.setSymbolCode !== undefined) {
+    if (
+      typeof overrides.setSymbolCode !== 'string' ||
+      !/^[A-Za-z0-9_-]{1,16}$/.test(overrides.setSymbolCode)
+    )
+      throw Error('Invalid symbol set code');
+    if (overrides.setSymbol !== undefined) throw Error('Choose a symbol code or URL, not both.');
+    face.setSymbol = faceSetSymbol({
+      name: face.name,
+      setCode: overrides.setSymbolCode,
+      rarity: face.rarity,
+    });
+  }
   if (overrides.setSymbol === null)
     face.printingElements = {
       ...face.printingElements,
@@ -315,6 +338,7 @@ export function resolvePrintingPreset(
     throw Error('Invalid collector total');
   if (face.collectorLanguage !== undefined && !/^[A-Za-z]{2,5}$/.test(face.collectorLanguage))
     throw Error('Invalid collector language');
+  if (selection.art) face = resolveArtPlacement(face, selection.art);
   if (input.layout === 'split' && input.faces)
     face = {
       ...face,

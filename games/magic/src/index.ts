@@ -90,6 +90,14 @@ export const mtg: GamePack<RenderedCardInput> = {
           ]),
           asset: { url: child.face.illustration, width: 512 },
           threshold: 20,
+          ...(child.face.artPlacement
+            ? {
+                fit: {
+                  focalPoint: child.face.artPlacement.focalPoint,
+                  zoom: child.face.artPlacement.zoom,
+                },
+              }
+            : {}),
           crop: child.face.illustrationCrop ?? [0, 0, 1, 1],
           destination: child.panel ? panelRect(child.panel, target) : target,
           clip: child.panel ? panelRect(child.panel, clip) : clip,
@@ -235,3 +243,5 @@ export type {
 } from './presentation/printing-elements.js';
 
 export * from './presentation/scryfall-printing.js';
+
+export * from './presentation/art-placement.js';

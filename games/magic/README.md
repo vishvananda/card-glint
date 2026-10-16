@@ -781,3 +781,63 @@ also includes `printing-presets.html`. It uses original illustration art and the
 Magic pack's externally hosted, pinned frame/font assets. Run
 `npm run test:printing-presets` with the preview running (`LAB_URL` can override
 its base URL). No host application or engine checkout is required.
+
+### Selection contract v1 and artwork
+
+`printingPresetApiVersion === 1` identifies this selection contract. Persist the
+source card separately from `{preset, overrides?, art?}`. IDs are stable strings;
+unknown presets and options throw instead of selecting a different frame. Hosts
+should use compatibility results to disable unsupported options and show reasons.
+A symbol override can use `setSymbolCode` to select an official set's symbol
+without changing frame calibration, fonts or the collector code; `setSymbol` is
+the alternative custom image URL. Supplying both is an error. Rarity still comes
+from the card. Resetting either reveals the preset's symbol.
+
+`art` is independent of preset ink overrides:
+
+```ts
+const selection = {
+  preset: 'fut',
+  art: {
+    mode: 'behind-text', // or 'window'
+    focalPoint: [0.4, 0.6],
+    zoom: 1.25,
+    paperOpacity: 0.8,
+  },
+};
+const presented = resolvePrintingPreset(source, selection);
+```
+
+`artPlacementSupport(face)` lists supported modes for the resolved frame.
+Ordinary physical faces support `window`. Futureshifted faces with a rules panel
+also support `behind-text`, retaining lettering and physical frame details.
+Special/composite art positioning is not implemented yet. A host switching to a
+frame without behind-text support should explicitly change the selection to
+`window` and remove `paperOpacity`; the renderer rejects incompatible requests.
+The separate textless Future treatment still rejects supplied body text.
+
+The focal point is a normalized point in the cropped source image, measured from
+the top left. Zoom is relative to cover fitting and lies within 1..8. Placement
+is clamped to avoid gutters. Omitted fit values mean center and 1×. Behind-text
+paper opacity defaults to 0.8 and accepts 0..1; it is supported only in that mode.
+The regular CC source has opaque rules paper: the optional treatment lowers alpha
+inside a source-space paper aperture while retaining its texture, rim and all
+later printing. It does not claim that ordinary paper printings are transparent.
+No frame decoding or readback is added to animation frames.
+
+`resolveArtPlacement(face, art)` applies this same public contract independently
+of preset resolution. The result is a new face; the source/selection are not
+mutated. The low-level face field is `artPlacement`.
+`artworkGeometry(face, imageWidth, imageHeight)` returns normalized `source`,
+`destination` and `aperture` rectangles for a crop UI, using the physical 488:680
+card aspect ratio. Painting, CPU etching, GPU masks and exports share cover fit;
+the core's optional game-neutral `EdgeSource.fit` carries focal point and zoom.
+Moving art reuses decoded sources and detected edges; only composition changes.
+
+Legacy `illustrationCrop` is a source-image trim. `illustrationPlacement` positions
+an incomplete imported crop in its original frame. Non-match preset resolution
+and explicit user art placement remove the latter, so its frame-bound offset
+cannot leak into another style. Replacing an image should discard both source
+corrections and reset focal point/zoom. Retain the chosen art mode if supported.
+The existing default rendering and cache identities remain unchanged when new
+options are omitted.

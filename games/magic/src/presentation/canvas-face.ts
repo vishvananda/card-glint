@@ -1,3 +1,4 @@
+import { validateArtPlacement } from './art-placement.js';
 import { validatePrintingElements, paintPrintingElement } from './printing-elements.js';
 import { withPrintingOmissions } from './printing-omissions.js';
 import { paintPlaneswalkerLoyalty } from './planeswalker-loyalty.js';
@@ -189,6 +190,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.etchedIllustration ?? null,
         face.illustrationCrop ?? null,
         face.illustrationPlacement ?? null,
+        ...(face.artPlacement ? [['art-placement-v1', face.artPlacement]] : []),
         face.setCode ?? null,
         face.setSymbol ?? null,
         face.setSymbolSource ?? null,
@@ -217,6 +219,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.illustration ?? null,
         face.illustrationCrop ?? null,
         face.illustrationPlacement ?? null,
+        ...(face.artPlacement ? [['art-placement-v1', face.artPlacement]] : []),
         extraRuleKey(face),
         face.artist ?? null,
         face.watermark ?? null,
@@ -261,6 +264,7 @@ export async function composeCardTexture(
     underArt?: HTMLCanvasElement;
   },
 ): Promise<HTMLCanvasElement> {
+  validateArtPlacement(input.face);
   validatePrintingElements(input.face);
   validateSymbolAdjustment(input.face);
   if (input.custom) {

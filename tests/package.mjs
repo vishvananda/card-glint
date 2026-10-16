@@ -33,7 +33,7 @@ try {
       '-e',
       `
     import assert from 'node:assert/strict';
-    import { resolvePrintingWording, resolvePrintingPreset, resolveScryfallPrinting } from 'card-glint/magic';
+    import { resolvePrintingWording, resolvePrintingPreset, resolveScryfallPrinting, artworkGeometry, resolveArtPlacement } from 'card-glint/magic';
     const oracle = {typeLine:'Creature', rulesText:'Oracle rules.'};
     const result = resolvePrintingWording('f594b7aa-d44e-47c4-989b-565f881e25f1', {oracle, original:oracle});
     assert.equal(result.wordings.oracle.rulesText, oracle.rulesText);
@@ -42,6 +42,8 @@ try {
     const face = resolvePrintingPreset({name:'Probe',typeLine:'Instant',colors:['U']}, {preset:'plc-colorshifted',overrides:{collectorNumber:'7',elements:{artist:{hidden:true}}}});
     assert.equal(face.frameTreatment, 'colorshifted');
     assert.equal(resolveScryfallPrinting({frame:'future'}).frameTemplate, 'future');
+    const art = resolveArtPlacement(face,{mode:'window',zoom:2,focalPoint:[.3,.6]});
+    assert.ok(artworkGeometry(art,400,1000).destination[2]>0);
   `,
     ],
     { cwd: temporary, stdio: 'inherit' },

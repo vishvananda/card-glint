@@ -106,7 +106,7 @@ export function futureGeometry(face: RenderedCardInput) {
   return {
     art: (full
       ? [32, 83, 433, 476]
-      : treatment === 'clear'
+      : treatment === 'clear' || face.artPlacement?.mode === 'behind-text'
         ? [23, 22, 442, 637]
         : [32, 83, 433, 297]) as FaceRect,
     title: [86, 32, 360, 43] as FaceRect,

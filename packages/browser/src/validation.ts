@@ -1,3 +1,4 @@
+import { validateImageFit } from './image-cover.js';
 import type { CardDocument, Frame, Instance, Raster, Rect, SceneLayer } from './types.js';
 import { validateDeformation } from './deformation.js';
 export function uint32(value: number) {
@@ -50,6 +51,7 @@ export function validateDocument(document: CardDocument) {
   recipe.artWindows.forEach(rect);
   recipe.regions.forEach((region) => rect(region.rect));
   for (const edge of recipe.edges) {
+    if (edge.fit !== undefined) validateImageFit(edge.fit);
     rect(edge.crop);
     rect(edge.destination);
     rect(edge.clip);

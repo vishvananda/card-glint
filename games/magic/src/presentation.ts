@@ -46,3 +46,5 @@ export type {
 } from './presentation/printing-elements.js';
 
 export * from './presentation/scryfall-printing.js';
+
+export * from './presentation/art-placement.js';

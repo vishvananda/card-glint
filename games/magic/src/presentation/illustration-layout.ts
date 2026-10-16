@@ -1,3 +1,4 @@
+import { coverImage, type ImageFit } from '../../../../packages/browser/src/index.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
 /** The same source placement drives painting and both etching paths. The
@@ -17,12 +18,13 @@ export function illustrationTarget(
 
 /** Center a source image over the entire aperture without stretching or gutters.
  * Use source dimensions for both the image and its rounded-size edge derivative. */
-export function illustrationCover(width: number, height: number, [x, y, w, h]: FaceRect): FaceRect {
-  if (!(width > 0 && height > 0)) return [x, y, w, h];
-  const scale = Math.max(w / width, h / height),
-    sw = width * scale,
-    sh = height * scale;
-  return [x + (w - sw) / 2, y + (h - sh) / 2, sw, sh];
+export function illustrationCover(
+  width: number,
+  height: number,
+  rect: FaceRect,
+  fit?: ImageFit,
+): FaceRect {
+  return coverImage(width, height, rect, fit);
 }
 
 /** Source and destination rectangles for a printing's optional illustration sheet. */
@@ -31,7 +33,8 @@ export function croppedIllustration(
   height: number,
   rect: FaceRect,
   crop: FaceRect,
+  fit?: ImageFit,
 ): [...FaceRect, ...FaceRect] {
   const source: FaceRect = [crop[0] * width, crop[1] * height, crop[2] * width, crop[3] * height];
-  return [...source, ...illustrationCover(source[2], source[3], rect)];
+  return [...source, ...illustrationCover(source[2], source[3], rect, fit)];
 }

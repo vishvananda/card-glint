@@ -1,3 +1,4 @@
+import type { ArtPlacement } from './art-placement.js';
 import type { PrintingElements } from './printing-elements.js';
 import type { SymbolAdjustment } from './symbol-adjustment.js';
 import type { CardProfileInput } from './profile.js';
@@ -58,6 +59,8 @@ export interface RenderedCardInput extends CardProfileInput {
    * the art aperture. Use for an incomplete crop: retain its scale/position and
    * fill uncovered areas with a solid edge color. Does not move the frame. */
   illustrationPlacement?: FaceRect;
+  /** User fit, independent of frame preset and source crop corrections. */
+  artPlacement?: ArtPlacement;
   manaSymbols?: string[];
   /** Experimental ordinary-face symbol placement; omitted preserves printing defaults. */
   symbolAdjustment?: SymbolAdjustment;
