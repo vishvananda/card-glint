@@ -233,16 +233,18 @@ masks and HSB transforms to the new placements. It does not bypass source
 identity checks or claim a new color fit. All 44 source-opacity perturbation
 checks pass. Reference-side content isolation for the boundary windows remains
 unproven; full native replay and visual review provide separate evidence.
-Typography and local pigment outliers remain open. This branch candidate is
-not yet included in a release.
+Typography and local pigment outliers remain open. Patch **0.3.12** packages
+this validated frame placement.
 
 The [0.3.11 integration replay](fixtures/accuracy/revised-frame-integration.json)
 freshly captures all 306 Revised cards, 42 ABU controls and all 165 Planar
 printings. Both sides exactly reproduce the frozen baseline/candidate rasters;
 the 25 Revised lands, ABU controls and released Planar fixes remain unchanged.
-Code/package/browser/showcase checks pass. The next gate is integrating the
-validated Revised interior scan normalization into the review app before a new
-score generation and release; do not substitute the older outer-border poses.
+Code/package/browser/showcase checks pass. Review-app integration now reproduces
+all 306 frozen interior poses exactly, including 304 accepted scans and two
+rejections; the browser bundle and server validation agree. Planar registration
+remains unchanged. Fresh deployed scores must use this interior normalization,
+not the older outer-border poses.
 
 ## Current execution checkpoint
 
