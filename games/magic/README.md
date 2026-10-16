@@ -182,6 +182,15 @@ The default keeps existing calibrated frames. These candidates cover ordinary
 modern faces: five colors, gold, artifacts, colorless and lands. Two-color lands
 blend the two colored land plates in mana order. Special layouts reject this
 option; modern legend crowns and color-pair spell pinlines remain follow-up work.
+For Planar Chaos's color-shifted printings, retain the physical treatment with
+`frameAssetFamily: 'eighth', frameTreatment: 'colorshifted'`, including when
+showing Oracle wording. This selects the pinned Card Conjurer color-shifted
+plates, white shadowed title/type/P/T ink and matching badges. The initial
+support uses source layout defaults; color and scan alignment calibration are
+pending. Unsupported land/multicolor combinations fail explicitly. Ordinary
+and shifted PLC cards include the verified 2007 legal line and `/165` numbers.
+Source: [Card Conjurer's 8th colorshifted pack](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/js/frames/pack8thColorshifted.js).
+
 Eighth Edition loads its Matrix header font only when selected. Frame geometry
 also drives GPU art windows, optical layers, hit regions and cache identity.
 Prior old-frame HSB and scan-offset profiles are not applied to these assets.

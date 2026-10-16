@@ -32,6 +32,8 @@ export function styledSymbolBounds(
   url: string | null,
   bounds: Bounds,
 ): Bounds {
+  // Ordinary-plate scan fits do not certify the colorshifted source geometry.
+  if (face.frameTreatment === 'colorshifted') return bounds;
   const key = face.setCode?.toLowerCase() ?? '';
   const profile = Object.hasOwn(profiles, key) ? profiles[key] : undefined;
   let result = bounds;

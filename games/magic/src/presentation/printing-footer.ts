@@ -6,6 +6,7 @@ import type { RenderedCardInput } from './face-layout.js';
 const PRINTINGS: Readonly<
   Record<string, { legal: string; total?: number; format?: 'rarity-first' }>
 > = {
+  plc: { legal: '™ & © 1993–2007 Wizards of the Coast, Inc.', total: 165 },
   fut: { legal: '™ & © 1993–2007 Wizards of the Coast, Inc.', total: 180 },
   '8ed': { legal: '™ & © 1993–2003 Wizards of the Coast, Inc.', total: 350 },
   m15: { legal: '™ & © 2014 Wizards of the Coast', total: 269 },

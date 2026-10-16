@@ -134,6 +134,7 @@ export function paintFramePlateFace(
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
   c.save();
   if (eighth) c.translate(...titleTranslation(face, 'eighth'));
+  paintColorshiftedHeading(c, face);
   paintFittedText(
     c,
     face.name,
@@ -179,6 +180,8 @@ export function paintFramePlateFace(
   ]);
   const bounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   const [x, y, w, h] = px(rects.type);
+  c.save();
+  paintColorshiftedHeading(c, face);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
     c,
@@ -191,6 +194,7 @@ export function paintFramePlateFace(
     1,
     family,
   );
+  c.restore();
   paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
     if (icon) {
       const shaped = shapedSetCode(face);
@@ -238,4 +242,15 @@ export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
       matrixFont = null;
       throw error;
     }));
+}
+
+/** Source pack8thColorshifted.js: white ink with a down-left black shadow.
+ * Called inside text-only saved state so symbols and rules retain their ink. */
+function paintColorshiftedHeading(c: CanvasRenderingContext2D, face: RenderedCardInput): void {
+  if (face.frameTreatment !== 'colorshifted') return;
+  c.fillStyle = '#fff';
+  c.shadowColor = '#000';
+  c.shadowOffsetX = -0.0021 * W;
+  c.shadowOffsetY = 0.0015 * H;
+  c.shadowBlur = 0;
 }

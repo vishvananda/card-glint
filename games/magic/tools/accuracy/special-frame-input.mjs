@@ -39,19 +39,27 @@ export function originalPanelText(card, original, records) {
   const text = normalizePrintingText(original.originalText);
   if (!['split', 'adventure', 'prepare'].includes(card.layout)) return text;
   const pair = card.card_faces.map((data) => originalFaceRecord(card, data, records));
-  if (!text.includes(' // ')) {
+  const parts = text.split(/\s+\/\/\s+/);
+  if (parts.length === 1) {
     if (pair[0].originalText === pair[1].originalText)
       throw Error('Ambiguous duplicated original panel text without a divider; review the scan');
     return text;
   }
-  if (pair[0].originalText !== pair[1].originalText || text.split(' // ').length !== 2)
+  if (pair[0].originalText !== pair[1].originalText || parts.length !== 2)
     throw Error('Ambiguous joined original panel text');
   const index = pair.findIndex((r) => r === original);
   if (index < 0) throw Error('Original panel is absent');
   // Gatherer's combined Adventure wording follows the printed book: inset
   // spell first, permanent second. Face identity remains permanent then spell.
   const printedIndex = card.layout === 'adventure' ? 1 - index : index;
-  let selected = text.split(' // ')[printedIndex].trim();
+  let selected = parts[printedIndex].trim();
+  // Some Gatherer exports include the second panel's complete heading. Strip
+  // it only when name, mana cost and type agree exactly with that face record.
+  const heading = [original.faceName ?? original.name, original.manaCost, original.originalType];
+  if (printedIndex === 1 && heading.every((part) => typeof part === 'string')) {
+    const prefix = heading.join('\n') + '\n';
+    if (selected.startsWith(prefix)) selected = selected.slice(prefix.length);
+  }
   if (
     printedIndex === 1 &&
     original.originalType &&

@@ -37,6 +37,9 @@ export interface RenderedCardInput extends CardProfileInput {
    * retains the calibrated component frames. Ordinary modern faces and
    * validated spell splits ('eighth') only. */
   frameAssetFamily?: 'eighth' | 'm15-accurate';
+  /** Planar Chaos's physical colorshifted treatment. Requires the eighth plate
+   * family; retained independently of original versus Oracle wording. */
+  frameTreatment?: 'colorshifted';
   borderColor?: CardBorderColor;
   /** Optional minimum black-border ink level in sRGB, 0..0.2. Omitted preserves source black. */
   blackBorderLift?: number;

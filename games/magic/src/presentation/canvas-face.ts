@@ -186,6 +186,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         isRetro(face) ? [retroFrameAsset(face), retroBorder(face)] : null,
         face.borderColor ?? null,
         face.frameAssetFamily ?? null,
+        face.frameTreatment ?? null,
         face.frameTemplate ?? null,
         face.futureTreatment ?? null,
         face.defense ?? null,

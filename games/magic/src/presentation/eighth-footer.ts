@@ -60,11 +60,19 @@ export function paintEighthFooter(
   c.shadowOffsetX = c.shadowOffsetY = 0;
   c.letterSpacing = '0px';
   if (face.power != null && face.toughness != null) {
-    c.fillStyle = '#17140f';
+    c.save();
+    const shifted = face.frameTreatment === 'colorshifted';
+    c.fillStyle = shifted ? '#fff' : '#17140f';
+    if (shifted) {
+      c.shadowColor = '#000';
+      c.shadowOffsetX = -0.0021 * 488;
+      c.shadowOffsetY = 0.0015 * 680;
+    }
     c.font = '700 29px "CardRenderer MTG Matrix Small Caps", Georgia';
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     paintStats(c, `${face.power}/${face.toughness}`);
+    c.restore();
   }
   const set = face.setCode?.toLowerCase();
   const x = set === '8ed' ? 75 : set === '9ed' ? 79 : 77;

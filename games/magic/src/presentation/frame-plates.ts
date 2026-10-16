@@ -23,6 +23,9 @@ export interface FramePlate {
  * with separately measured cost/symbol placement. No scan offsets or HSB
  * fitted to other assets are reused. */
 export function framePlate(face: RenderedCardInput): FramePlate | null {
+  const shifted = face.frameTreatment === 'colorshifted';
+  if (shifted && face.frameAssetFamily !== 'eighth')
+    throw Error('Colorshifted treatment requires the eighth frame family.');
   if (!face.frameAssetFamily) return null;
   if (
     isRetro(face) ||
@@ -43,7 +46,7 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
       ? [...colors].reverse()
       : colors;
   const folder = eighth ? '8th' : 'm15/new';
-  const root = `${CONJURER_ROOT}/img/frames/${folder}`;
+  const root = `${CONJURER_ROOT}/img/frames/${folder}${shifted ? '/colorshifted' : ''}`;
   const material = profile.land
     ? 'l'
     : profile.artifact
@@ -53,6 +56,8 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
         : colors.length > 1
           ? 'm'
           : (colors[0]?.toLowerCase() ?? 'c');
+  if (shifted && !['w', 'u', 'b', 'r', 'g', 'a'].includes(material))
+    throw Error('Colorshifted plates support monocolored spells and artifacts only.');
   const land = (color: string) => (eighth ? `${color.toLowerCase()}l` : `l${color.toLowerCase()}`);
   const left =
     profile.land && landColors.length
@@ -74,10 +79,12 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   return {
     frame,
     rightFrame: right ? `${root}/${right}.png` : undefined,
-    border: `${root}/border.png`,
-    pt: eighth
-      ? `${CONJURER_ROOT}/img/frames/8th/pt/${ptKey === 'c' ? 'l' : ptKey}.png`
-      : `${CONJURER_ROOT}/img/frames/m15/regular/m15PT${ptKey.toUpperCase()}.png`,
+    border: `${CONJURER_ROOT}/img/frames/${folder}/border.png`,
+    pt: shifted
+      ? `${CONJURER_ROOT}/img/frames/m15/colorshifted/${ptKey}pt.png`
+      : eighth
+        ? `${CONJURER_ROOT}/img/frames/8th/pt/${ptKey === 'c' ? 'l' : ptKey}.png`
+        : `${CONJURER_ROOT}/img/frames/m15/regular/m15PT${ptKey.toUpperCase()}.png`,
     rects: {
       ...FACE_RECTS,
       frame: [0, 0, 1, 1],
@@ -90,9 +97,11 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
       rules: eighth
         ? interior([205 / 2010, 1779 / 2814, 1596 / 2010, 729 / 2814])
         : [0.086, 1780 / 2814, 0.828, 0.2875],
-      stats: eighth
-        ? [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814]
-        : [0.7573, 0.8848, 0.188, 0.0733],
+      stats: shifted
+        ? [0.7234, 0.881, 0.204, 0.0772]
+        : eighth
+          ? [1461 / 2010, 2481 / 2814, 414 / 2010, 218 / 2814]
+          : [0.7573, 0.8848, 0.188, 0.0733],
       footer: eighth ? [150 / 2010, 1938 / 2100, 0.81, 0.04] : FACE_RECTS.footer,
     },
     titleSize: eighth ? 29.2 : 26,

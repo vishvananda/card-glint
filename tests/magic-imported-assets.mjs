@@ -235,6 +235,77 @@ try {
     };
     const input = (f) => ({ face: f, printingId: null, printedImage: null });
     const plainKey = cardTextureKey(input(face), 'inspect');
+    const shifted = {
+      ...face,
+      name: 'Shifted specimen',
+      typeLine: 'Creature',
+      setCode: 'plc',
+      collectorNumber: '23',
+      frameAssetFamily: 'eighth',
+      frameTreatment: 'colorshifted',
+      power: '5',
+      toughness: '5',
+    };
+    const shiftedPlate = framePlate(shifted);
+    check(shiftedPlate.frame.endsWith('/8th/colorshifted/w.png'), 'Wrong shifted source');
+    check(shiftedPlate.pt.endsWith('/m15/colorshifted/wpt.png'), 'Wrong shifted badge');
+    check(canvasAssetUrls(shifted).includes(shiftedPlate.pt), 'Shifted badge not prepared');
+    check(
+      cardTextureKey(input(shifted), 'inspect') !==
+        cardTextureKey(input({ ...shifted, frameTreatment: undefined }), 'inspect'),
+      'Physical treatment shares an ordinary face cache key',
+    );
+    for (const bad of [
+      { frameAssetFamily: undefined },
+      { frameAssetFamily: 'm15-accurate' },
+      { typeLine: 'Land' },
+      { colors: ['W', 'U'] },
+    ]) {
+      let rejected = false;
+      try {
+        framePlate({ ...shifted, ...bad });
+      } catch {
+        rejected = true;
+      }
+      check(rejected, 'Unsupported shifted source silently fell back to another frame');
+    }
+    const { paintFramePlateFace } = await import(
+      '/games/magic/src/presentation/frame-plate-paint.ts'
+    );
+    const { loadCanvasImages } = await import('/games/magic/src/presentation/canvas-assets.ts');
+    const loadedShifted = await loadCanvasImages(canvasAssetUrls(shifted), signal);
+    const inkCanvas = document.createElement('canvas');
+    inkCanvas.width = 488;
+    inkCanvas.height = 680;
+    const ink = inkCanvas.getContext('2d'),
+      drawnInk = [];
+    const originalFill = ink.fillText.bind(ink);
+    ink.fillText = (text, ...args) => {
+      drawnInk.push({ text, fill: ink.fillStyle, x: ink.shadowOffsetX, y: ink.shadowOffsetY });
+      originalFill(text, ...args);
+    };
+    try {
+      paintFramePlateFace(ink, shifted, loadedShifted.images);
+    } finally {
+      loadedShifted.dispose();
+    }
+    for (const text of ['Shifted specimen', 'Creature', '5/5']) {
+      const run = drawnInk.find((r) => r.text === text);
+      check(
+        run?.fill === '#ffffff' && run.x < 0 && run.y > 0,
+        'Shifted white shadowed label missing: ' + text,
+      );
+    }
+    const legal = drawnInk.find((r) => r.text.includes('Wizards'));
+    check(
+      legal?.text === '™ & © 1993–2007 Wizards of the Coast, Inc. 23/165',
+      'Planar printing footer wording is incomplete',
+    );
+    check(
+      legal.fill === '#17140f' && legal.x === 0 && legal.y === 0,
+      'Heading shadow leaked into legal text',
+    );
+    inkCanvas.width = inkCanvas.height = 0;
     const restyled = { ...face, setCode: '3ed', frameAssetFamily: 'eighth' };
     check(
       canvasAssetUrls(restyled).includes(framePlate(restyled).border),

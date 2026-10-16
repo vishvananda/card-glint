@@ -100,7 +100,12 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     card.layout === 'normal' &&
     !/\b(Saga|Class|Planeswalker|Battle)\b/.test(card.type_line ?? '') &&
     !/^Level up\b/m.test(card.oracle_text ?? '')
-      ? { frameAssetFamily: 'eighth' }
+      ? {
+          frameAssetFamily: 'eighth',
+          ...(card.frame_effects?.includes('colorshifted')
+            ? { frameTreatment: 'colorshifted' }
+            : {}),
+        }
       : {}),
     ...(frameColors === undefined ? {} : { frameColors }),
     // Historical "Summon" text changes the visible label, not creature identity.

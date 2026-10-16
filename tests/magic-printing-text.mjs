@@ -520,3 +520,9 @@ assert.equal(
   '{2}{R}{R}{R}: Return this. {10} {W/U} {2/W} {B/P} {T} {CHAOS}',
 );
 assert.equal(normalizePrintingText('{WUBRG} {X}{X} {12GG}'), '{W}{U}{B}{R}{G} {X}{X} {12}{G}{G}');
+
+// PLC Aeon Chronicler's Gatherer cost puts X before the fixed generic cost.
+assert.equal(
+  normalizePrintingText('{X3U} {XX2R} {W/U} {2/W} {CHAOS}'),
+  '{X}{3}{U} {X}{X}{2}{R} {W/U} {2/W} {CHAOS}',
+);

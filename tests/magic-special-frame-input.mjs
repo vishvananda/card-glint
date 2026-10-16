@@ -159,6 +159,19 @@ const joined = records.map((r, i) => ({
 assert.equal(originalPanelText(split, joined[0], joined), 'First.');
 assert.equal(originalPanelText(split, joined[1], joined), 'Second.');
 assert.throws(() => originalPanelText(split, joined[0], [joined[0], records[1]]), /Ambiguous/);
+const multiline = joined.map((r) => ({
+  ...r,
+  manaCost: '{2}{R}',
+  originalText: 'First.\n// \nBack\n{2}{R}\nCreature — Goblin\nSecond.',
+}));
+assert.equal(originalPanelText(split, multiline[0], multiline), 'First.');
+assert.equal(originalPanelText(split, multiline[1], multiline), 'Second.');
+const mismatched = multiline.map((r) => ({ ...r, manaCost: '{3}{R}' }));
+assert.match(
+  originalPanelText(split, mismatched[1], mismatched),
+  /^Back\n/,
+  'Do not remove a heading that disagrees with the exact face record',
+);
 const spells = {
   ...split,
   card_faces: split.card_faces.map((f, i) => ({ ...f, type_line: i ? 'Sorcery' : 'Instant' })),

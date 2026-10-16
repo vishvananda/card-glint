@@ -17,7 +17,7 @@ export function normalizePrintingText(text) {
       )
       // Some Gatherer exports wrap an entire cost in one brace pair. Separate
       // only unambiguous digits and single mana letters; preserve hybrid symbols.
-      .replace(/\{((?:\d+)?[WUBRGCXYZS]+)\}/g, (token, cost) =>
+      .replace(/\{([0-9WUBRGCXYZS]+)\}/g, (token, cost) =>
         [...cost.matchAll(/\d+|[WUBRGCXYZS]/g)].map(([symbol]) => `{${symbol}}`).join(''),
       )
   );
