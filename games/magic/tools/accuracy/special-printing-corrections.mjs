@@ -1,12 +1,16 @@
 import corrections from '../../fixtures/accuracy/adventure-printing-corrections.json' with { type: 'json' };
 import preparedText from '../../fixtures/accuracy/prepare-printing-text.json' with { type: 'json' };
 import futureText from '../../fixtures/accuracy/future-printing-corrections.json' with { type: 'json' };
+import planarText from '../../fixtures/accuracy/planar-printing-corrections.json' with { type: 'json' };
 
 /** Reviewed printing fields are keyed to the exact physical scan. Keep provider
  * values in provenance, and refuse to transfer a correction to a changed scan. */
 export function reviewedSpecialRecords(card, reference, records) {
   const correction =
-    corrections.cards[card.id] ?? preparedText.cards[card.id] ?? futureText.cards[card.id];
+    corrections.cards[card.id] ??
+    preparedText.cards[card.id] ??
+    futureText.cards[card.id] ??
+    planarText.cards[card.id];
   if (!correction) return records;
   if (
     card.set !== correction.set ||

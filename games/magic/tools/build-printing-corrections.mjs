@@ -88,6 +88,7 @@ for (const file of [
   'adventure-printing-corrections.json',
   'prepare-printing-text.json',
   'future-printing-corrections.json',
+  'planar-printing-corrections.json',
 ]) {
   const data = JSON.parse(await readFile(new URL(file, root)));
   for (const [id, r] of Object.entries(data.cards))

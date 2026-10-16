@@ -1,11 +1,17 @@
 {
+  "reuse": {
+    "reportHash": "584efd309ca9560b241c81e770601a60259d36dca7f0364f54b65a18f706b695",
+    "unchangedRows": 152,
+    "controlRowsRecomputed": 1,
+    "policy": "Only identical input, reference, scan, render, pose and cohort identities reuse measurements. Metric implementation verified against the prior generator; one unchanged row fully replayed."
+  },
   "schema": 1,
   "status": "offline-set-score",
   "metric": "planar-printing-structure-v1",
-  "candidateSourceHash": "f8d0f863bf1063855d94920b40af26ad36fc624e1607cbde148c68d3344d675b",
+  "candidateSourceHash": "78772dff1c6d0154f5e138838e64b798b7d21be71f6931d4dc074fc3100d486b",
   "recipe": "canvas-face-v123",
   "baseline": "Initial imported PLC assets at 4f238f6",
-  "policy": "All 165 original-wording English nonfoil-available printings inventoried; 156 accepted single-face scans scored with frozen independent scan-only poses. Six rejected single faces and three splits excluded. Component-weighted edge similarity includes title, mana, type, rules, expansion symbol, P/T, artist/legal, art and frame. Four corner regions and the separate full-raster diagnostic composite alpha over identical neutral gray so corner shape is visible. No scan-assisted art or per-card renderer parameters. Colors are excluded from structural rank and documented in separate pigment reports. These indices are not percentages of correct pixels and do not certify flawless typography. This offline region map is not yet deployed to the review app.",
+  "policy": "All 165 original-wording English nonfoil-available printings inventoried; 156 accepted single-face scans scored with frozen independent scan-only poses. Six rejected single faces and three splits excluded. Component-weighted edge similarity includes title, mana, type, rules, expansion symbol, P/T, artist/legal, art and frame. Four corner regions and the separate full-raster diagnostic composite alpha over identical neutral gray so corner shape is visible. No scan-assisted art or per-card renderer parameters. Four original type lines now have scan-reviewed corrections; other typography evidence predates those corrections. Colors are excluded from structural rank and documented in separate pigment reports. These indices are not percentages of correct pixels and do not certify flawless typography. This offline region map is not yet deployed to the review app.",
   "total": 165,
   "scored": 156,
   "excluded": [
@@ -67,12 +73,12 @@
   "summary": {
     "count": 156,
     "before": 0.6460576139273292,
-    "after": 0.8129031927791166,
+    "after": 0.8132056026435358,
     "improved": 155,
     "minimumCoverage": 0.782608695652174,
     "wholeRaster": {
       "before": 0.7070998078529429,
-      "after": 0.8445466718973376,
+      "after": 0.8446439753265241,
       "improved": 155
     },
     "components": {
@@ -89,7 +95,7 @@
       "type": {
         "count": 156,
         "before": 0.7763756777643338,
-        "after": 0.9354769563928708
+        "after": 0.9390410382606822
       },
       "rules": {
         "count": 156,
@@ -109,7 +115,7 @@
       "frame": {
         "count": 156,
         "before": 0.663455130695152,
-        "after": 0.8885715818840063
+        "after": 0.8885731530995795
       },
       "art": {
         "count": 156,
@@ -127,12 +133,12 @@
     "calibration": {
       "count": 33,
       "before": 0.6537410162096225,
-      "after": 0.8259812232553491,
+      "after": 0.8267130439858416,
       "improved": 33,
       "minimumCoverage": 0.782608695652174,
       "wholeRaster": {
         "before": 0.7150107219142063,
-        "after": 0.8494762479976822,
+        "after": 0.84972165443089,
         "improved": 33
       },
       "components": {
@@ -149,7 +155,7 @@
         "type": {
           "count": 33,
           "before": 0.7754094668775606,
-          "after": 0.9274263901877557
+          "after": 0.9365555804075913
         },
         "rules": {
           "count": 33,
@@ -169,7 +175,7 @@
         "frame": {
           "count": 33,
           "before": 0.6480832420348122,
-          "after": 0.8772655784733266
+          "after": 0.8772730060378546
         },
         "art": {
           "count": 33,
@@ -186,12 +192,12 @@
     "validation": {
       "count": 123,
       "before": 0.6439962133150066,
-      "after": 0.8093944528952489,
+      "after": 0.8095816549663315,
       "improved": 122,
       "minimumCoverage": 0.782608695652174,
       "wholeRaster": {
         "before": 0.7049773674950424,
-        "after": 0.843224102699684,
+        "after": 0.8432816711765722,
         "improved": 122
       },
       "components": {
@@ -208,7 +214,7 @@
         "type": {
           "count": 123,
           "before": 0.7766349050754197,
-          "after": 0.9376368643991216
+          "after": 0.9397078684163899
         },
         "rules": {
           "count": 123,
@@ -247,12 +253,12 @@
     "ordinary": {
       "count": 112,
       "before": 0.6507079507790602,
-      "after": 0.8094647153121721,
+      "after": 0.8098859290518988,
       "improved": 111,
       "minimumCoverage": 0.782608695652174,
       "wholeRaster": {
         "before": 0.7044966873440498,
-        "after": 0.8478126788916039,
+        "after": 0.8479482086679708,
         "improved": 111
       },
       "components": {
@@ -269,7 +275,7 @@
         "type": {
           "count": 112,
           "before": 0.7928838470568657,
-          "after": 0.9322217521850715
+          "after": 0.9371860090723801
         },
         "rules": {
           "count": 112,
@@ -289,7 +295,7 @@
         "frame": {
           "count": 112,
           "before": 0.6777593854324351,
-          "after": 0.9013869597395242
+          "after": 0.9013891482183584
         },
         "art": {
           "count": 112,
@@ -407,12 +413,6 @@
       "weakest": ["rules", "art", "type"]
     },
     {
-      "id": "2d604bac-58b7-4479-8ab8-2e0680746e0e",
-      "name": "Timbermare",
-      "score": 0.7063544601780483,
-      "weakest": ["rules", "stats", "type"]
-    },
-    {
       "id": "586a1d9f-59ae-41a7-8de7-d6c4553ea79e",
       "name": "Piracy Charm",
       "score": 0.7090698955261625,
@@ -429,6 +429,12 @@
       "name": "Big Game Hunter",
       "score": 0.7125430619551375,
       "weakest": ["rules", "stats", "art"]
+    },
+    {
+      "id": "2d604bac-58b7-4479-8ab8-2e0680746e0e",
+      "name": "Timbermare",
+      "score": 0.7161444388550386,
+      "weakest": ["rules", "stats", "mana"]
     },
     {
       "id": "8ed3fcd5-0e84-4332-ac84-19b75265ab52",
@@ -566,9 +572,9 @@
       "treatment": "ordinary",
       "material": "ordinary/W",
       "referenceHash": "76320c5a339d2b736c7b65df1975c62ae47d005bd715afffc667040d52b7a121",
-      "inputHash": "8409ad78609f6384309badc5b9becfb5e0059c2de372a01376002fd7bc6b3e2e",
+      "inputHash": "f0d9b89eebe4492c766cc3699d06e67930f5abadab918d37ceb7180975d1ec26",
       "beforeRenderHash": "b810be4c3c30b67dacb4c72f707d88b919831c028a471755633fa7c9b4997289",
-      "afterRenderHash": "9f54b281a5a60205490b585c5f0d2b2d3b260925a824151c47909b132f3dd1a2",
+      "afterRenderHash": "70e0a83fca11e5d9f322f21eb75f061890068f2d7d747a1840016b53228fd41b",
       "normalizedScanHash": "fae6812fcb95416be48924e193eaa1755661f19219331ddbb1abdfcf55c851de",
       "pose": {
         "matrix": [1.0001, 0, 0, 1.0001, -0.05, -0.04999999999999999]
@@ -618,7 +624,7 @@
         "wholeRasterEdgeF1": 0.6943151271118874
       },
       "after": {
-        "structuralScore": 0.7516393755908137,
+        "structuralScore": 0.7602708782523362,
         "coverage": 0.8,
         "weakest": ["stats", "rules", "credits"],
         "components": {
@@ -631,7 +637,7 @@
             "status": "measured"
           },
           "type": {
-            "score": 0.8828090269519296,
+            "score": 0.9691240535671541,
             "status": "measured"
           },
           "rules": {
@@ -659,7 +665,7 @@
             "status": "measured"
           }
         },
-        "wholeRasterEdgeF1": 0.8546875536913066
+        "wholeRasterEdgeF1": 0.8568829650383661
       }
     },
     {
@@ -669,9 +675,9 @@
       "treatment": "ordinary",
       "material": "ordinary/W",
       "referenceHash": "acb265653c883b159ee405efc9ec3681ee81afe02a9660ff70581dcb19ed6bbf",
-      "inputHash": "dd0b3b9820c67973c032102780e639181abe00d4001740a52f32d71b9208c5c4",
+      "inputHash": "d51ff6d2829fa5f614474271f245729106e8839d17b26c66495bb2984050487c",
       "beforeRenderHash": "dc3debbc3333188a23df00b75649f3ed4141dd879ccb6fa29c03aab0f949687c",
-      "afterRenderHash": "2b3eb348d4e34d943e042f43bd7e8630e01ef62408f50d908a29f9f1d2b448f6",
+      "afterRenderHash": "68f35b137eeb94310a46eea6c98ba09343c4b0c210a6a5cd62a36164bb1f5589",
       "normalizedScanHash": "1fbc17fe55f9ee9cb19beb46d972de83b693b0dc52d1ae1d4743bf54ae5c90e5",
       "pose": {
         "matrix": [0.99995, 0, 0, 0.99995, 0.025000000000000022, -0.1]
@@ -721,9 +727,9 @@
         "wholeRasterEdgeF1": 0.7107455829913204
       },
       "after": {
-        "structuralScore": 0.8017611115898916,
+        "structuralScore": 0.806365484994531,
         "coverage": 0.8,
-        "weakest": ["rules", "stats", "type"],
+        "weakest": ["rules", "stats", "mana"],
         "components": {
           "title": {
             "score": 0.9620384477638154,
@@ -734,7 +740,7 @@
             "status": "measured"
           },
           "type": {
-            "score": 0.8761904761904762,
+            "score": 0.9222342102368705,
             "status": "measured"
           },
           "rules": {
@@ -762,7 +768,7 @@
             "status": "measured"
           }
         },
-        "wholeRasterEdgeF1": 0.8767424722169745
+        "wholeRasterEdgeF1": 0.8783364191465044
       }
     },
     {
@@ -13143,9 +13149,9 @@
       "treatment": "ordinary",
       "material": "ordinary/G",
       "referenceHash": "d24ab29dceeec92d81ccb882caf93d5ce685aa9f5f222a349312d7935f0d2c09",
-      "inputHash": "cb1bfe7c44e2778928126ca209c8c28c11d3dbc254a46c2aa41f0d50bc38d0d4",
+      "inputHash": "b9408c2874b052190886d4a825e57200c0f3db180155a9ff9bcdd4afa126d280",
       "beforeRenderHash": "a405bff6afe131663ec165c7c6f186efd62e24534fcc0cb1c5220ad300e82aa0",
-      "afterRenderHash": "983a2b751cdb23dc17c27ce531a67a1d2bf4a314120d7e46d4341c0aee5b89e0",
+      "afterRenderHash": "87aea3fb35df6015d23e035ea9477461738b105fb1f1a3c725767c0e6b28f9b3",
       "normalizedScanHash": "f7786ba258ab5e7b53853d11fdd59666dcf3d6c440faebd659622eb053925ec4",
       "pose": {
         "matrix": [
@@ -13198,9 +13204,9 @@
         "wholeRasterEdgeF1": 0.7072718030660712
       },
       "after": {
-        "structuralScore": 0.8356137221879512,
+        "structuralScore": 0.859763806294201,
         "coverage": 1,
-        "weakest": ["type", "title", "rules"],
+        "weakest": ["title", "rules", "stats"],
         "components": {
           "title": {
             "score": 0.7763926148019566,
@@ -13211,7 +13217,7 @@
             "status": "measured"
           },
           "type": {
-            "score": 0.5951526032315978,
+            "score": 0.8964158804861726,
             "status": "measured"
           },
           "rules": {
@@ -13227,7 +13233,7 @@
             "status": "measured"
           },
           "frame": {
-            "score": 0.9186613889910662,
+            "score": 0.9189064986204856,
             "status": "measured"
           },
           "art": {
@@ -13239,7 +13245,7 @@
             "status": "measured"
           }
         },
-        "wholeRasterEdgeF1": 0.8841164523820836
+        "wholeRasterEdgeF1": 0.8922148646779411
       }
     },
     {
@@ -14081,9 +14087,9 @@
       "treatment": "ordinary",
       "material": "ordinary/G",
       "referenceHash": "a3057f9a38fe96e3ee8f3cebc601fa8cf343538c8faf5f911fe2ea02a8b9dbf2",
-      "inputHash": "f8efe48ce4dad68e34c00187b34b1d9de2f1c4d614aeb3ca07664e5dc8c9a4e0",
+      "inputHash": "68a85e62fe624bed09b0273e02a0582c8815989e8206cc350f411fd702ac6b25",
       "beforeRenderHash": "f3fce28a6a324ceb9cef5a750f333031c83e9006e03cc9153ad92d0f6c16c527",
-      "afterRenderHash": "5cee7c5d95c1d117e2844ea129cfbc4e2a65f969e34d03d07e19679fe3f9ee62",
+      "afterRenderHash": "a35c37f5376b7f22a67391e8d2903b81a4cf8da6a8121c2025eb50f772ffcbb1",
       "normalizedScanHash": "4d9106519ce1a4de1e781fff45030fe63559f0b56d4dbaaf8ca07506837bc7dc",
       "pose": {
         "matrix": [
@@ -14136,9 +14142,9 @@
         "wholeRasterEdgeF1": 0.7044246643930459
       },
       "after": {
-        "structuralScore": 0.7063544601780483,
+        "structuralScore": 0.7161444388550386,
         "coverage": 1,
-        "weakest": ["rules", "stats", "type"],
+        "weakest": ["rules", "stats", "mana"],
         "components": {
           "title": {
             "score": 0.8878538879853689,
@@ -14149,7 +14155,7 @@
             "status": "measured"
           },
           "type": {
-            "score": 0.8183080389267413,
+            "score": 0.9406827723891218,
             "status": "measured"
           },
           "rules": {
@@ -14177,7 +14183,7 @@
             "status": "measured"
           }
         },
-        "wholeRasterEdgeF1": 0.7762023307863147
+        "wholeRasterEdgeF1": 0.7794938951669821
       }
     },
     {

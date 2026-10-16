@@ -75,6 +75,15 @@ try {
   assert.equal(p.wordings.original.rulesParagraphs[0].runs[0].italic, true);
   assert.equal(p.wordings.original.rulesText, 'Provider rules.\n' + paladin.flavorText);
   const full = await fixture('future-printing-corrections.json');
+  const planar = await fixture('planar-printing-corrections.json');
+  for (const [id, correction] of Object.entries(planar.cards)) {
+    const resolved = resolvePrintingWording(id, input, {
+      referenceSha256: correction.referenceSha256,
+    });
+    assert.equal(resolved.wordings.original.typeLine, correction.faces[0].originalType);
+    assert.equal(resolved.wordings.oracle.typeLine, oracle.typeLine);
+    assert.equal(resolved.wordings.original.rulesText, 'Provider rules.\nProvider flavor.');
+  }
   const fullId = Object.keys(full.cards)[0];
   const f = resolvePrintingWording(fullId, { oracle, original: { ...original, flavorText: '' } });
   assert.equal(f.wordings.original.rulesText, '');
