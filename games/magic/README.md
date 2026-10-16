@@ -133,6 +133,13 @@ edge F1 on 57 reserved printings improves from 0.693 to 0.767 for titles and
 visible in the [header replay](fixtures/accuracy/future-headers.json); these
 component scores do not certify rules, footer lettering or whole-card accuracy.
 
+The independent [footer replay](fixtures/accuracy/future-footer.json) improves
+artist-credit overlap on all 53 reserved regular-frame cards. The larger artist
+fit regresses the four accepted textless cards, so that physical frame retains
+its source sizing. Mean reserved copyright/collector overlap improves from
+0.573 to 0.698 and P/T overlap from 0.660 to 0.738. The report retains individual
+regressions; full-art artist placement and rules/flavor layout remain review work.
+
 `frameTemplate: 'future' | 'flip' | 'battle'` enables initial renderers based on
 pinned Magic Set Editor defaults, with Card Conjurer regular Future plates.
 Flip and Battle are source-layout starting points; Future calibration remains

@@ -88,13 +88,12 @@ export function paintFutureTemplate(
       c.fillStyle = light ? '#fff' : '#111';
       c.textAlign = 'center';
       c.textBaseline = 'middle';
-      c.font = '700 27px "CardRenderer MTG Matrix Small Caps"';
-      c.fillText(
-        `${face.power}/${face.toughness}`,
-        g.stats[0] + g.stats[2] / 2,
-        g.stats[1] + g.stats[3] / 2,
-        g.stats[2],
-      );
+      c.font = '700 29.97px "CardRenderer MTG Matrix Small Caps"';
+      c.save();
+      c.translate(g.stats[0] + g.stats[2] / 2 - 1.5, g.stats[1] + g.stats[3] / 2 - 0.25);
+      c.scale(0.99, 1);
+      c.fillText(`${face.power}/${face.toughness}`, 0, 0, g.stats[2] / 0.99);
+      c.restore();
     }
     const symbol = images.get(faceSetSymbol(face) ?? '');
     if (symbol) {
@@ -111,19 +110,24 @@ export function paintFutureTemplate(
     c.fillStyle = p.land || light ? '#fff' : '#111';
     c.textAlign = 'right';
     c.textBaseline = 'alphabetic';
-    const right = face.power != null && face.toughness != null ? 361 : 442;
-    c.font = '400 16.6px "CardRenderer MTG Matrix"';
+    // The regular-frame artist fit does not transfer to the textless source:
+    // retain its original proportions instead of changing individual cards.
+    const right = face.power != null && face.toughness != null ? 361 : 442,
+      full = futureTreatment(face) === 'full-art',
+      artistSize = full ? 16.6 : 17.845,
+      artistY = full ? 627 : 626.5;
+    c.font = `400 ${artistSize}px "CardRenderer MTG Matrix"`;
     const artist = face.artist ?? '';
-    c.fillText(artist, right, 627, right - 70);
+    c.fillText(artist, right, artistY, right - 70);
     const brush = parts.brush ? images.get(parts.brush) : undefined;
-    if (brush) c.drawImage(brush, right - c.measureText(artist).width - 40, 617, 36, 8);
+    if (brush) c.drawImage(brush, right - c.measureText(artist).width - 40, artistY - 10, 36, 8);
     const legal = printingLegalText(face);
     if (legal) {
-      c.font = '10.4px "CardRenderer MTG MPlantin"';
+      c.font = '11.804px "CardRenderer MTG MPlantin"';
       c.fillText(
         [legal, printingCollectorText(face, false)].filter(Boolean).join(' '),
-        right,
-        642,
+        right - 0.25,
+        641.25,
         right - 40,
       );
     }
