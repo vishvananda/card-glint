@@ -278,3 +278,18 @@ The map adds approximately 4 MB per active context, reported in `surfaceBytes`,
 and its one-time generation increments `surfacePasses`. Context restoration
 rebuilds the map on first use. `npm run test:cardstock` checks rendering, validation,
 export parity, cache reuse, filtering and context restoration.
+
+### Experimental printed dots
+
+`Instance.printDots = { amount: 0.35, period: 5 }` adds rotated CMYK screens to
+printing before finish and wear. Amount is 0..1; period is 2..16 source texture
+pixels (default 5). Omitted/zero retains previous pixels. Pass the same option
+to `exportCard`. The effect is optional on every finish and adds no textures,
+passes or uploads. It uses screen derivatives to fade fine dots when a card
+shrinks, reducing aliasing. Larger periods make the pattern easier to inspect.
+
+This is an RGB-to-CMYK visual approximation, not a calibrated press profile.
+Imported scans can already contain a dot pattern; adding another may create
+moire. Keep the option off for such images unless comparing an intentional
+second pattern. The conventional screen angles follow
+[Adobe's prepress reference](https://helpx.adobe.com/indesign/desktop/print/ink-and-color-management/specify-halftone-frequency-and-resolution.html).

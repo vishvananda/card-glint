@@ -4,6 +4,7 @@ import { DEFORMATION_GLSL } from './deformation-shader.js';
 import { HOLOGRAM_GLSL } from './hologram-shader.js';
 import { WORN_GLSL } from './worn-shader.js';
 import { CARDSTOCK_GLSL } from './cardstock.js';
+import { PRINT_DOTS_GLSL } from './print-dots.js';
 export const vertex = `#version 300 es
 layout(location=0) in vec2 position;
 layout(location=1) in mat4 model;
@@ -15,6 +16,8 @@ layout(location=10) in vec4 instanceRipple2;layout(location=11) in vec4 instance
 layout(location=12) in vec2 instanceWear;
 layout(location=13) in float instanceCardstock;
 flat out float cardstockAmount;
+layout(location=14) in vec2 instancePrintDots;
+flat out vec2 printDotsInfo;
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
@@ -22,11 +25,12 @@ void main(){
 vec2 pad=instanceSurface.w*vec2(1.,.18);
 vec2 local=position*(1.+2.*pad)-pad;
 v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;wearInfo=instanceWear;
-cardstockAmount=instanceCardstock;
+cardstockAmount=instanceCardstock;printDotsInfo=instancePrintDots;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
 gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
 const foil = FOIL_PREVIEW_GLSL.replace('uniform float previewKind;', 'flat in float previewKind;')
   .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
+  .replaceAll('texture2D(face,', 'printFace(')
   .replace(
     'return applyStudioGlare(res,rT,.52);',
     'return cardstockGloss(uv,base,applyStudioGlare(res,rT,.52));',
@@ -41,9 +45,11 @@ uniform float hasMask;uniform float cornerRadius;uniform float aspect;uniform fl
 out vec4 out_color;
 #define texture2D texture
 float edgeCoverage(vec2 uv){vec4 c=texture(coverage,uv);return max(texture(mask,uv).r*hasMask,c.b)*(1.-c.a);}
+vec4 printFace(vec2 uv);
 ${CARDSTOCK_GLSL}
 ${foil}
-${SURFACE_GLSL}
+${PRINT_DOTS_GLSL}
+${SURFACE_GLSL.replaceAll('texture(face,', 'printFace(')}
 ${DEFORMATION_GLSL}
 ${WORN_GLSL}
 #ifdef LOCAL_HOLOGRAM
@@ -52,6 +58,7 @@ ${HOLOGRAM_GLSL}
 void main(){
  vec2 source=cardSource(v_uv,surfaceTime,surfaceInfo.wz);
  vec2 uv=vec2(source.x,1.-source.y);
+ printFootprint=max(length(dFdx(uv*vec2(textureSize(face,0)))),length(dFdy(uv*vec2(textureSize(face,0)))))/max(printDotsInfo.y,2.);
 #ifdef LOCAL_HOLOGRAM
  // Evaluate derivatives before any per-fragment return/discard. The outer
  // material condition is uniform across the draw, including instanced cards.
@@ -68,7 +75,7 @@ void main(){
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  vec3 shaded=previewLinear(previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view));
- vec3 base=texture(face,uv).rgb;
+ vec3 base=printFace(uv).rgb;
  if(wearInfo.x>0.) {
    float foilSubstrate=step(.5,previewKind)*(1.-step(4.5,previewKind));
    shaded=previewLinear(wornSurface(uv,previewInk(base),previewInk(shaded),normalize(v_normal),view,wearInfo.y,wearInfo.x,foilSubstrate,wearPixel));
@@ -77,7 +84,7 @@ void main(){
  vec3 under=mix(base,shaded,max(finishBase,c.r)*(1.-c.g));
  // Printing stays at the original UV, above all optical effects. The same
  // satin response as the conventional finishes supplies an optional reflection.
- vec3 printing=top.rgb;
+ vec3 printing=printDotsInfo.x>0.?previewLinear(printDotInk(previewInk(top.rgb),uv)):top.rgb;
  if(overlayFoil.y>0. && top.a>0.) {
    // Gold printing is metallic even without an etch mask. The zero-metal
    // satin branch deliberately mutes its strip and made this foil nearly flat.
