@@ -102,6 +102,16 @@ Tactician also show substantial font-size/wrapping differences. Do not compensat
 for missing source text with layout parameters. Variable-stat stars, P/T badge
 shapes and isolated printing-color differences remain queued for review.
 
+The [Planar text follow-up](fixtures/accuracy/planar-text-followup.json) retains
+the existing typography after testing alternate fonts, shared size caps,
+horizontal glyph scaling and a shallow content-based size rule. The latter
+fails validation, including a 22.8-point regional regression. Per-card exact-size
+diagnostics improve the text-region mean from 57.6% to 72.1%, but those values
+are fitted to each reference and are not predictive scores or printing-specific
+renderer defaults. Keep these candidates for the later outlier-review workflow;
+do not replace the shared defaults with a lookup table. The five Charm wording
+corrections are queued for the next calibration release.
+
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions
