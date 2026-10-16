@@ -120,12 +120,32 @@ interior isolation is still unproven, and weak edges remain explicitly unmeasure
 
 Unlimited/Revised scans have a further registration problem: the outer border
 can agree while art and rules-box edges vary together by roughly 1–3 pixels.
-Outer-strip certification does not certify the printed interior. Establish
-scan-only interior anchors before adopting shared geometry or deriving text
-defaults; preserve outer-border disagreement as a separate diagnostic. Alpha/Beta
+Outer-strip certification does not certify the printed interior. The follow-up
+below establishes scan-only interior anchors; preserve outer-border disagreement
+as a separate diagnostic. Alpha/Beta
 white examples give more consistent inner-edge measurements. Original type lines
 also remain unverified on 912 faces, and original rules on 16 Unlimited faces;
 do not include those components as verified printing accuracy until reviewed.
+
+The [interior normalization follow-up](fixtures/accuracy/early-core-interior-normalization-review.json)
+uses narrow frame-texture strips beside the art and rules box. Fixed calibration
+cohorts select scan-only templates; separate bands fit, choose model complexity
+and certify. It passes **304/306 Revised** and **187/302 Unlimited** scans, with
+every accepted pose passing actual warped-raster replay and region-isolation
+checks. Five known translation/scale/rotation/skew perturbations are recovered
+within 0.04 canonical pixels. Reviewed visible frame material controls scan
+grouping, so Revised Serendib Efreet uses the green template while retaining its
+blue semantic color and mana.
+
+On reused validation cards with eligible baseline rules-box edges, mean absolute
+scan-to-scan edge residual falls **0.90 → 0.24 px for Revised** and
+**0.71 → 0.33 px for Unlimited**. These are registration diagnostics, not renderer
+accuracy scores. Four Revised and twelve Unlimited cards retain multiple
+rules-box edge outliers; they remain explicit review cases. Revised Gaea's Liege
+and Roc of Kher Ridges fail texture confidence checks. Unlimited red/artifact
+groups lack template support, and some blue/green scans remain rejected. A
+calibration-only smoothing trial helps green/artifact texture but not red; it is
+not adopted. No renderer default, live scoring template or release changes here.
 
 ## Current execution checkpoint
 
