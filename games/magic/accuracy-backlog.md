@@ -8,6 +8,33 @@ example UUIDs, alignment flags and scores for each affected group.
 
 ## Legends normalization and text validation
 
+The [border investigation](fixtures/accuracy/legends-border-investigation.json)
+reopens white/black source selection: their enlarged ABU plates retain a tinted
+outer band absent from the reviewed Legends scans. Six other materials already
+use Fourth Edition. Sixteen native comparisons show Fourth removes that band;
+the next fit should compare its native stock mask with an independently cropped
+stock border, using the Revised construction method without copying its dimensions.
+These are uncalibrated source trials, not adopted defaults or new accuracy scores.
+Refit geometry and colors before switching; ABU color coefficients cannot transfer.
+
+The green vertical border seam is reproduced from a supplied Barbary Apes
+Chrome export and fresh installed Chrome/WebKit renders. Bundled Chromium hid
+it. The plate and stock mask's fractional outer edges are antialiased separately,
+leaving white exposed. The fix on `codex/retro-stock-seams` paints stock across the
+plate's outer edge before applying the unchanged mask. It preserves the inner
+aperture and passes both-tier native replays plus a cross-browser regression.
+This is a composition fix, separate from source/black-point calibration; it has
+not yet been deployed.
+
+Black-point calibration follows source selection. Current HSB preserves pixels
+below 0.075 and cannot lift exact black. Measure interior ink and outer stock
+separately, fit a cached monotone shadow curve, and preserve midtones/highlights.
+Alpha/Beta keep independent outer charcoal and interior ink. For other sets,
+validate a common target across colors and border/interior before sharing it.
+Uniform scan margins may be processed; do not treat their RGB as physical ink
+or use them as the sole interior target. The linked plan records sampling,
+source/cache guards and separate shadow, pigment and structural checks.
+
 The [normalization audit](fixtures/accuracy/legends-normalization-review.json)
 found inherited sampling bands crossing title and artist lettering. Search
 padding now stays within clean outer-frame pixels, and separate edge strips

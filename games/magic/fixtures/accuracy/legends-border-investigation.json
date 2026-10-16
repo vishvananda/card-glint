@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "status": "source-review-and-calibration-plan-not-adopted",
+  "baseline": "v0.4.0",
+  "sourceCommit": "5c0d7d788ae83396138d9639badc9d3cbc686ffc",
+  "findings": [
+    "Legends white and black use enlarged ABU plates. They retain a textured, tinted band between the near-zero outer black and colored frame. The six other materials use Fourth Edition plates with a separately recolored stock mask.",
+    "The optional blackBorderLift only lightens a fixed 3.5%-of-card-width outer ring. It cannot remove a lighter tinted ABU band and can leave a dark strip between the lifted ring and the printed face.",
+    "Frame HSB skips source pixels with maximum channel below 0.075. The current multiplicative HSB model also cannot lift exact zero. Inner ink has not been calibrated.",
+    "All eight diagnostic scan border samples have median RGB 38/38/38. The uniform flat margins suggest image processing; they are display-reference values, not a measurement of physical ink. Interior black must be sampled independently."
+  ],
+  "sourceReview": {
+    "cards": 16,
+    "materials": ["W", "B"],
+    "variants": [
+      "current ABU source",
+      "Fourth source with its native black stock mask",
+      "same Fourth interior with an independently cropped Legends stock aperture"
+    ],
+    "policy": "All candidate renderings use the released painter and unchanged lettering with color calibration disabled. The previous shared Fourth proposal is replayed against current frozen scan poses; no scan is fitted to a renderer. The cropped candidate borrows the Revised construction method, not Revised border dimensions. Its stock aperture and RGB 38 are provisional visual controls. No new geometry/color defaults or accuracy claims.",
+    "decision": "Fourth removes the unwanted ABU band and is the preferred source to fit next for Legends white/black. Refit the chosen Fourth interior and its stock boundary independently; compare native mask versus cropped stock before adoption. Existing ABU HSB coefficients must not transfer to the Fourth source."
+  },
+  "greenSeam": {
+    "status": "reproduced-and-fixed-on-codex/retro-stock-seams",
+    "printing": "Barbary Apes",
+    "release": "0.4.0",
+    "confirmedEngines": ["installed Chrome", "WebKit"],
+    "unaffectedControl": "bundled Chromium",
+    "observedImageSize": [732, 1020],
+    "lineColumns": [5, 729],
+    "lineRgb": [
+      [62, 62, 62],
+      [60, 60, 60]
+    ],
+    "stockRgb": [8, 8, 8],
+    "cause": "Fractional outer bounds of a white plate and recolored stock mask are antialiased separately. The second partially covered edge does not completely cover the first. This is not Safari-only.",
+    "fix": "Paint outer stock before the unchanged mask, covering the plate edge without moving its inner aperture. The fix adds no asset edits, new calibration values or per-frame work.",
+    "validation": "72 synthetic cases across Chromium and WebKit; 42 native replays across seven Legends cards, both tiers, and bundled Chromium, installed Chrome and WebKit. All sampled outer strips become uniform RGB 8. Chrome/Chromium interior pixels are identical; WebKit independently prepared color materials differ by at most one byte.",
+    "deployment": "Source branch only; not yet deployed."
+  },
+  "blackCalibrationPlan": [
+    "Choose the correct frame source and fit shared geometry first. Printed set controls border policy; using an ABU source must not implicitly assign ABU border behavior to another set.",
+    "Measure interior black strokes and stock separately on frozen aligned nonfoil references. Avoid antialiased boundaries, worn corners, rules/title ink and illustration. Use existing frame/art/rules geometry to locate small sampling strips, with erosion and pose-sensitivity checks.",
+    "Aggregate per-card measurements robustly into shared per-set black targets and report spread. Begin with a target shared across frame colors; split only when calibration evidence and validation support it. Do not fit per-scan color corrections.",
+    "Keep independent outer-stock and interior-ink targets for Alpha/Beta. For other sets, test whether one target explains both; do not force an outer scan margin's potentially processed RGB into the interior.",
+    "Add an opt-in black-point/shadow-curve term to frame material calibration. Use a bounded monotone curve, preserving midtones/highlights beyond a measured transition. Fit source black to reference black without clipping all shadows to a flat floor. Preserve alpha. This replaces the hard dark-pixel exemption only for opted-in frame materials; mana glyph protection remains independent.",
+    "Use the resolved stock target for both procedural stock and any stock mask. Preserve the public border-only override semantics. Apply frame curves during cached material preparation and include them in cache identity; no per-frame readbacks or hand-drawn masks for every source.",
+    "Validate border RGB error, interior black error, shadow chroma/contrast and structural edge scores separately. Check unchanged midtone/highlight pixels, antialiasing, banding and seams. Replay at table and inspect tiers, and through the deployed loader before release."
+  ]
+}
