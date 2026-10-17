@@ -346,6 +346,27 @@ shared typography, which is still unadopted. Goblin Shrine's pose remains
 rejected and unscored. No set-wide text-calibration approval follows from this
 wrapping fix; historical 0.4.6 measurements remain separately identified.
 
+The [font-proportion study](fixtures/accuracy/early-expansion-text-proportions.json)
+keeps mana discs round while measuring letter width independently. Stable size
+classes improve the reused reserved sample to ARN 0.570 and ATQ 0.597; DRK keeps
+its earlier candidate at 0.515 because the new proportions regress there. These
+are still private candidates, not runtime defaults or independent validation.
+Thirteen regressions greater than 0.05 remain across 189 reserved printings.
+The [short ATQ review](fixtures/accuracy/atq/short-text-review.json) supports
+large centered flavor on Candelabra, while the next longer passages stay left
+aligned. The 130-character gate remains a shared hypothesis, not a proven
+historical typesetting formula.
+
+Before final typography adoption, seven original inputs receive exact-printing
+corrections: [Rukh Egg](fixtures/accuracy/arn/annotations-text-outliers.json)
+allows the printed `ex-actly` break; [Mishra's Factory and Candelabra](fixtures/accuracy/atq/annotations-text-outliers.json)
+retain the final `Assem-bly` break, printed apostrophe, and missing activation
+colon respectively. Soft hyphens permit wrapping without forcing a line.
+The public resolver preserves Oracle wording and records scan provenance.
+Recheck candidates against these corrected inputs on both sides. The scans
+also show uncircled generic activation costs; review that broader symbol-style
+policy before treating body text calibration as complete.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting

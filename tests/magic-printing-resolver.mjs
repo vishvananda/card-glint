@@ -30,14 +30,15 @@ try {
   const input = { oracle, original },
     snapshot = structuredClone(input);
   let earlyTypes = 0;
+  const reviewedBodies = new Set();
   for (const set of ['arn', 'atq', 'drk']) {
     const types = await fixture(set + '/annotations-printed-types.json');
     const bodies =
       set === 'arn' ? { cards: {} } : await fixture(set + '/annotations-missing-rules.json');
-    const outliers =
-      set === 'drk' ? await fixture(set + '/annotations-text-outliers.json') : { cards: {} };
+    const outliers = await fixture(set + '/annotations-text-outliers.json');
     for (const [id, row] of Object.entries(types.cards)) {
       const body = outliers.cards[id] ?? bodies.cards[id];
+      if (outliers.cards[id]?.reviewed) reviewedBodies.add(id);
       const resolved = resolvePrintingWording(id, input, {
         referenceSha256: row.referenceHash,
       });
@@ -124,7 +125,10 @@ try {
     const adapted = presentation(entry);
     assert.equal(adapted.face.artist, resolved.artist);
     assert.ok(adapted.reviewedFields.includes('artist'));
-    assert.equal(adapted.contentStatus, 'oracle-unverified');
+    assert.equal(
+      adapted.contentStatus,
+      reviewedBodies.has(row.id) ? 'scan-reviewed' : 'oracle-unverified',
+    );
     assert.equal(
       withCardWording(adapted.face, { oracle, original }, 'oracle').artist,
       row.printedArtist,
