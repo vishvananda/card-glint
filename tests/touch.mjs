@@ -17,6 +17,9 @@ try {
   await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');
   await page.evaluate(async () => {
     await window.lab.ready;
+    window.touchReleases = [];
+    for (const type of ['touchend', 'touchcancel'])
+      window.addEventListener(type, () => window.touchReleases.push(type));
   });
   // Gesture ownership and tilt do not depend on the optical finish. Keep this
   // input test responsive on the software GPU; separate tests cover shading.
@@ -80,7 +83,17 @@ try {
     // A finger leaving the card must not grab a neighboring instance.
     await touch('touchMove', [[rect.x + 1, y - 104]]);
     assert.equal((await state()).hover?.instance, index + 1);
+    const releaseType = index === 1 ? 'touchcancel' : 'touchend';
+    const releaseCount = await page.evaluate(() => window.touchReleases.length);
     await touch(index === 1 ? 'touchCancel' : 'touchEnd');
+    // CDP can acknowledge cancellation before Chromium dispatches the native
+    // event under GPU load. Wait for delivery, then require cleared ownership.
+    await page.waitForFunction(
+      ({ count, type }) =>
+        window.touchReleases.length > count && window.touchReleases.at(-1) === type,
+      { count: releaseCount, type: releaseType },
+      { timeout: 5000 },
+    );
     const released = await state();
     assert.equal(released.hover, undefined, 'Release/cancel left the card stuck');
     // Wait for an actual frame; software GPU work can exceed a fixed 250 ms

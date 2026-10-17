@@ -116,6 +116,29 @@ void main(){
       return output.width === 244 * density && output.clientWidth === 244;
     }, density);
   }
+  // ResizeObserver must follow CSS layout changes as well as display density.
+  for (const [width, height, expectedWidth, expectedHeight] of [
+    [366, 510, 366, 510],
+    [122, 170, 122, 170],
+    [976, 1360, 732, 1020],
+    [244, 340, 244, 340],
+  ]) {
+    await page.evaluate(
+      ({ width, height }) => {
+        window.displayTest.output.style.cssText = `width:${width}px;height:${height}px`;
+      },
+      { width, height },
+    );
+    await page.waitForFunction(
+      ({ width, height }) => {
+        const { output, display } = window.displayTest;
+        if (display.source.width !== 732 || display.source.height !== 1020)
+          throw Error('CSS resize changed native raster');
+        return output.width === width && output.height === height;
+      },
+      { width: expectedWidth, height: expectedHeight },
+    );
+  }
   await page.evaluate(() => {
     const { output, display } = window.displayTest;
     const pixel = output.getContext('2d').getImageData(20, 20, 1, 1).data;
