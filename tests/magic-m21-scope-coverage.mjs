@@ -1,3 +1,4 @@
+import { assertMagicSourceHash } from './magic-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -13,11 +14,7 @@ const boundaries = await read('m21-component-boundaries-v2.json'),
   stock = await read('modern-land-stock-transfer.json');
 for (const receipt of [boundaries, stock])
   for (const [f, expected] of Object.entries(receipt.sourceGuards))
-    assert.equal(
-      hash(await readFile('games/magic/src/presentation/' + f)),
-      expected,
-      'Stale scope proof: ' + f,
-    );
+    await assertMagicSourceHash('games/magic/src/presentation/' + f, expected);
 assert.equal(boundaries.summary.cards, 239);
 assert.equal(boundaries.summary.accepted, 231);
 assert.equal(boundaries.summary.rejected.length, 8);
@@ -74,6 +71,8 @@ assert.equal(wording.native.summary.cards, 33);
 assert.equal(wording.native.summary.renders, 66);
 const inputExtension = await read('early-expansion-input-extension.json');
 assert.equal(inputExtension.summary.unchangedM21, 292);
+const breaks = await read('early-expansion-break-inputs.json');
+assert.equal(breaks.summary.unchangedM21, 292);
 for (const [file, expected] of Object.entries(wording.methodGuards)) {
   const next = inputExtension.guards[file];
   if (next) assert.equal(next.before, expected, 'Input replay must begin at the recorded adapter');
@@ -83,8 +82,15 @@ for (const [file, expected] of Object.entries(wording.methodGuards)) {
     'Stale wording adapter: ' + file,
   );
 }
-for (const [file, guard] of Object.entries(inputExtension.guards))
-  assert.equal(hash(await readFile(file)), guard.after, 'Stale input replay: ' + file);
+for (const [file, guard] of Object.entries(inputExtension.guards)) {
+  const next = breaks.guards[file];
+  if (next) assert.equal(next.before, guard.after);
+  assert.equal(
+    hash(await readFile(file)),
+    next?.after ?? guard.after,
+    'Stale input replay: ' + file,
+  );
+}
 for (const row of wording.native.rows)
   for (const version of Object.values(row.versions))
     assert.deepEqual(version.changedPixelsInMeasuredRegions, { stock: 0, frameRails: 0, art: 0 });
@@ -109,8 +115,15 @@ assert.equal(currentInputs.summary.originalInputs, 292);
 assert.equal(currentInputs.checks.length, 292);
 assert.ok(currentInputs.checks.every((r) => r.beforeHash === r.afterHash));
 assert.deepEqual(currentInputs.rows, wording.rows);
-for (const [file, expected] of Object.entries(currentInputs.methodGuards))
-  assert.equal(hash(await readFile(file)), expected, 'Stale original-input replay: ' + file);
+for (const [file, expected] of Object.entries(currentInputs.methodGuards)) {
+  const next = breaks.guards[file];
+  if (next) assert.equal(next.before, expected);
+  assert.equal(
+    hash(await readFile(file)),
+    next?.after ?? expected,
+    'Stale original-input replay: ' + file,
+  );
+}
 const changedWording = structuredClone(m21);
 const changedScope = changedWording.groups.find((g) => g.tasks.rules.originalInput);
 changedScope.tasks.rules.originalInput.guards = { 'missing-wording-source': '0'.repeat(64) };
@@ -132,7 +145,7 @@ for (const [file, expected] of Object.entries({
   ),
   ...white.methodGuards,
 }))
-  assert.equal(hash(await readFile(file)), expected, 'Stale default evidence: ' + file);
+  await assertMagicSourceHash(file, expected);
 let whiteCount = 0;
 for (const g of m21.groups) {
   if (g.tasks.frameColor.status === 'validated-default') {

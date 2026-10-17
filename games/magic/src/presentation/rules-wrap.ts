@@ -10,6 +10,8 @@ export interface MeasuredRun {
   descent: number;
   inkLeft: number;
   inkRight: number;
+  /** Horizontal letter scale; inline symbol metrics remain unscaled. */
+  textWidth?: number;
 }
 export const rulesFont = (size: number, italic = false) =>
   `${italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`;
@@ -55,7 +57,12 @@ function words(runs: readonly RulesRun[]): Word[] {
 }
 
 /** Measure the same contiguous style runs that Canvas paints, retaining shaping/kerning. */
-function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: number): MeasuredRun[] {
+function measure(
+  context: CanvasRenderingContext2D,
+  pieces: Piece[],
+  size: number,
+  textWidth = 1,
+): MeasuredRun[] {
   const merged: Piece[] = [];
   for (const input of pieces) {
     // Soft hyphens describe permitted printing breaks, not visible ink.
@@ -71,12 +78,13 @@ function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: numbe
     const metrics = context.measureText(piece.text);
     return {
       ...piece,
+      ...(piece.symbol || textWidth === 1 ? {} : { textWidth }),
       size,
-      width: piece.symbol ? size * 0.88 : metrics.width,
+      width: piece.symbol ? size * 0.88 : metrics.width * textWidth,
       ascent: piece.symbol ? size * 0.72 : metrics.actualBoundingBoxAscent,
       descent: piece.symbol ? size * 0.08 : metrics.actualBoundingBoxDescent,
-      inkLeft: piece.symbol ? size * 0.025 : -metrics.actualBoundingBoxLeft,
-      inkRight: piece.symbol ? size * 0.825 : metrics.actualBoundingBoxRight,
+      inkLeft: piece.symbol ? size * 0.025 : -metrics.actualBoundingBoxLeft * textWidth,
+      inkRight: piece.symbol ? size * 0.825 : metrics.actualBoundingBoxRight * textWidth,
     };
   });
 }
@@ -90,6 +98,7 @@ function discretionaryBreak(
   pieces: Piece[],
   width: number,
   size: number,
+  textWidth = 1,
 ) {
   let best: { head: Piece[]; tail: Piece[] } | null = null;
   for (let i = 0; i < pieces.length; i++) {
@@ -110,7 +119,10 @@ function discretionaryBreak(
       ];
       const tail = [{ ...piece, text: piece.text.slice(j + 1) }, ...pieces.slice(i + 1)];
       if (!tail.some((p) => p.text.replaceAll('\u00ad', '').length)) continue;
-      if (measure(context, [...prefix, ...head], size).reduce((n, r) => n + r.width, 0) <= width)
+      if (
+        measure(context, [...prefix, ...head], size, textWidth).reduce((n, r) => n + r.width, 0) <=
+        width
+      )
         best = { head, tail };
     }
   }
@@ -122,12 +134,13 @@ function wrapWords(
   tokens: readonly Word[],
   width: number,
   size: number,
+  textWidth = 1,
 ) {
   const output: MeasuredRun[][] = [];
   let current: Piece[] = [];
   for (const word of tokens) {
     if (word.newline) {
-      output.push(measure(context, current, size));
+      output.push(measure(context, current, size, textWidth));
       current = [];
       continue;
     }
@@ -137,19 +150,26 @@ function wrapWords(
         ? [{ text: ' ', italic: word.pieces[0]?.italic ?? false, symbol: false }]
         : [];
     for (;;) {
-      const trial = measure(context, [...current, ...gap, ...pieces], size);
+      const trial = measure(context, [...current, ...gap, ...pieces], size, textWidth);
       if (trial.reduce((n, r) => n + r.width, 0) <= width) {
         current.push(...gap, ...pieces);
         break;
       }
-      const split = discretionaryBreak(context, [...current, ...gap], pieces, width, size);
+      const split = discretionaryBreak(
+        context,
+        [...current, ...gap],
+        pieces,
+        width,
+        size,
+        textWidth,
+      );
       if (split) {
-        output.push(measure(context, [...current, ...gap, ...split.head], size));
+        output.push(measure(context, [...current, ...gap, ...split.head], size, textWidth));
         current = [];
         gap = [];
         pieces = split.tail;
       } else if (current.length) {
-        output.push(measure(context, current, size));
+        output.push(measure(context, current, size, textWidth));
         current = [];
         gap = [];
       } else {
@@ -158,7 +178,7 @@ function wrapWords(
       }
     }
   }
-  if (current.length) output.push(measure(context, current, size));
+  if (current.length) output.push(measure(context, current, size, textWidth));
   return output;
 }
 
@@ -168,8 +188,9 @@ function balanceWords(
   tokens: readonly Word[],
   width: number,
   size: number,
+  textWidth = 1,
 ): MeasuredRun[][] {
-  const greedy = wrapWords(context, tokens, width, size);
+  const greedy = wrapWords(context, tokens, width, size, textWidth);
   if (greedy.length < 2) return greedy;
   const measured = new Map<string, MeasuredRun[]>();
   const range = (start: number, end: number) => {
@@ -183,7 +204,7 @@ function balanceWords(
           pieces.push({ text: ' ', italic: word.pieces[0]?.italic ?? false, symbol: false });
         pieces.push(...word.pieces);
       }
-      value = measure(context, pieces, size);
+      value = measure(context, pieces, size, textWidth);
       measured.set(key, value);
     }
     return value;
@@ -225,6 +246,7 @@ export function wrapRules(
   width: number,
   size: number,
   balanced = false,
+  textWidth = 1,
 ): MeasuredRun[][] {
   const tokens = words(runs);
   // Balancing measures O(words²) ranges; bound preparation work for host-supplied
@@ -232,15 +254,17 @@ export function wrapRules(
   // Reviewed discretionary breaks retain greedy placement; balancing currently
   // optimizes only inter-word cuts and would otherwise discard those hints.
   if (!balanced || tokens.length > 64 || runs.some((r) => r.text.includes('\u00ad')))
-    return wrapWords(context, tokens, width, size);
+    return wrapWords(context, tokens, width, size, textWidth);
   const lines: MeasuredRun[][] = [];
   let segment: Word[] = [];
   for (const token of tokens) {
     if (token.newline) {
-      lines.push(...(segment.length ? balanceWords(context, segment, width, size) : [[]]));
+      lines.push(
+        ...(segment.length ? balanceWords(context, segment, width, size, textWidth) : [[]]),
+      );
       segment = [];
     } else segment.push(token);
   }
-  if (segment.length) lines.push(...balanceWords(context, segment, width, size));
+  if (segment.length) lines.push(...balanceWords(context, segment, width, size, textWidth));
   return lines;
 }

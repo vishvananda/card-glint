@@ -18,13 +18,20 @@ for (const row of replay.changes.filter((r) => r.status === 'measured-improvemen
   assert.ok(row.textFit.after > row.textFit.before, row.name);
   assert.ok(row.component.after > row.component.before, row.name);
 }
-assert.equal(
-  createHash('sha256')
-    .update(await readFile('games/magic/src/presentation/rules-wrap.ts'))
-    .digest('hex'),
-  replay.sourceExtension['rules-wrap.ts'].after,
-  'Native wrapping evidence needs replay after changing the wrapper',
-);
+const wrapperHash = createHash('sha256')
+  .update(await readFile('games/magic/src/presentation/rules-wrap.ts'))
+  .digest('hex');
+if (wrapperHash !== replay.sourceExtension['rules-wrap.ts'].after) {
+  const typography = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/early-expansion-text-runtime.json'),
+  );
+  const extension = typography.native.sourceExtension['rules-wrap.ts'];
+  assert.equal(extension.before, replay.sourceExtension['rules-wrap.ts'].after);
+  assert.equal(extension.after, wrapperHash);
+  assert.equal(typography.native.summary.defaultLayoutIdentical, 316);
+  assert.equal(typography.native.summary.identityWidthIdentical, 316);
+  assert.ok(typography.native.rows.every((row) => row.defaultLayoutIdentical));
+}
 
 const server = await createServer({
   configFile: false,
