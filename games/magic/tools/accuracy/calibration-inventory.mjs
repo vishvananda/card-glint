@@ -6,6 +6,7 @@ import { readObject } from './cache.mjs';
 import { printingScope, summarizeSet } from './rollout-policy.mjs';
 import { calibrationVariant, calibrationApplicability } from './calibration-groups.mjs';
 import { CALIBRATION_TASKS, calibrationSetStatus } from './calibration-ledger.mjs';
+import { applyM21Evidence, applyM21MonoEvidence } from './calibration-m21-evidence.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
 const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
@@ -25,6 +26,25 @@ const early = await readJson(fixtureRoot + '/early-expansion-colors.json');
 const earlyFrames = await readJson(fixtureRoot + '/early-expansion-calibration.json');
 const historical = await readJson(fixtureRoot + '/five-set-hsb-adoption.json');
 const colorGaps = await readJson(fixtureRoot + '/showcased-color-gap-review.json');
+const m21Color = await readJson(fixtureRoot + '/m21-normal-color-adoption.json');
+const m21Boundaries = await readJson(fixtureRoot + '/m21-normal-boundaries.json');
+const m21MonoBoundaries = await readJson(fixtureRoot + '/m21-mono-boundaries.json');
+const m21GuardsMatch = (
+  await Promise.all(
+    Object.entries(m21Color.sourceGuards).map(
+      async ([file, expected]) =>
+        hash(await readFile('games/magic/src/presentation/' + file)) === expected,
+    ),
+  )
+).every(Boolean);
+const m21MonoGuardsMatch = (
+  await Promise.all(
+    Object.entries(m21MonoBoundaries.sourceGuards).map(
+      async ([file, expected]) =>
+        hash(await readFile('games/magic/src/presentation/' + file)) === expected,
+    ),
+  )
+).every(Boolean);
 const evidence = 'games/magic/fixtures/accuracy/early-expansion-colors.json';
 const earlyGuards = Object.fromEntries(
   await Promise.all(
@@ -297,6 +317,15 @@ try {
             evidence: ['games/magic/fixtures/accuracy/showcased-color-gap-review.json'],
             rejectedPrintings: failedPoses,
           };
+        if (set.set === 'm21') {
+          applyM21Evidence(g, source, m21Color, m21Boundaries, m21GuardsMatch);
+          applyM21MonoEvidence(
+            g,
+            m21MonoBoundaries,
+            m21Color.native.rendererHash,
+            m21MonoGuardsMatch,
+          );
+        }
         g.tasks.release = {
           status: 'pending',
           reason: 'No complete-set certification and matching published score revision.',

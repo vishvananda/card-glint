@@ -97,12 +97,36 @@ are finished, so regeneration preserves their provenance.
 The historic major-set audit's `complete` field means that its sampled audit
 finished. It must not be used as this ledger's set-completion flag.
 
-The [current color-gap study](fixtures/accuracy/showcased-color-gap-review.json)
-records three native candidates without adopting them. M21's historical color
-sampling windows overlapped the black art keyline; fixed clear-rail windows now
-separate pigment from geometry. The black candidate passes the 20-card component
-study (reserved median color error 2.29 → 1.84) and awaits full coverage. An expanded
-quiet-rail check also passes for all 41 accepted black scans (2.15 → 1.76); four
-normalization failures remain visible, and crowns are still unmeasured. White
-and Beta green remain rejected. This finding also puts the other historical
-M21 outer-frame pigment fits back in the audit queue; paper fits are independent.
+The [initial color-gap study](fixtures/accuracy/showcased-color-gap-review.json)
+is retained as historical evidence. M21's old color sampling windows overlapped
+the black art keyline; fixed clear-rail windows now separate pigment from geometry.
+White and Beta green candidates remain rejected. Other historical M21 outer-frame
+pigment fits need this audit too; paper fits are independent.
+
+The [M21 black adoption](fixtures/accuracy/m21-normal-color-adoption.json) closes
+the ordinary nonlegendary black-frame pigment gap where scan registration passes.
+All 292 nonfoil printings were rendered: 40 change, 252 stay byte-identical, and
+central artwork, rules-box paper and outer-stock targets remain unchanged. The
+39 measured black cards improve median rail-color error from 2.14 to 1.43;
+reserved names improve from 2.15 to 1.79. These are regional color distances,
+not whole-card accuracy percentages. All cohorts reuse development references.
+
+The [boundary receipt](fixtures/accuracy/m21-normal-boundaries.json) stores
+independent scan-only scale/translation/rotation/skew transforms, reference
+hashes and frozen templates. It accepts 81 of 82 ordinary white/black scans and
+passes all 20 known-pose tests with a maximum residual of 0.19 canonical pixels.
+Peer into the Abyss and Crypt Lurker now pass; Liliana's Scorn still fails
+independent right-frame support. Its shared rendering changes but its color and
+normalization checks remain partial. These templates are local evidence until
+installed in the review service. Colored artifacts, legendary crowns and
+planeswalkers remain separate gaps. Full-card, typography and release checks
+remain open; this is not complete-set certification.
+
+The [mono-color extension](fixtures/accuracy/m21-mono-boundaries.json) keeps the
+white/black templates and poses identical and adds 41 blue and 41 green scans
+with passing method checks. Across all five colors, 205/206 scans pass boundary
+consistency, but only 163 are validated: red's known scale/skew recovery misses
+the fixed 0.30-pixel limit in two tests (0.35 pixels). Its 42 apparently consistent
+scan poses remain rejected until the method improves. Passing real-scan
+correlations alone cannot close normalization. The independent test result is
+48/50, with 10/10 passing separately for white, blue, black and green.

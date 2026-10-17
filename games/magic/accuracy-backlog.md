@@ -134,6 +134,17 @@ Alpha red/blue, Beta black/blue, Revised black/artifact, Eighth white/blue/green
 and M21 green/artifact. Beta red retains identity paper instead. Ink-floor and
 stock adjustments remain separate and can exist despite these pigment gaps.
 
+Update: the [normal-black receipt](fixtures/accuracy/m21-normal-color-adoption.json)
+now covers 39 accepted M21 black references with a shared curve (median regional
+color error 2.14 → 1.43). Forty ordinary nonlegendary black cards change; 252 other
+nonfoil cards, central art/paper pixels and all mana/stock targets are preserved.
+Liliana's Scorn still needs independent scan registration. Legendary crowns and
+colored artifacts do not inherit this fit. The earlier table remains a historical
+snapshot; use the completion ledger for current measured coverage. The new
+scan-only white/black templates accept 81/82 cards and are not yet deployed in
+the review service. Other M21 pigment profiles need the corrected clear-rail
+sampling audit before completion.
+
 Mana-disc color targets are also partial: Eighth lacks white/black/red/green
 targets; M21 lacks black/generic targets. Do not infer missing placement fits
 from missing color targets, or completed color calibration from scan alignment.

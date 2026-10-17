@@ -6,6 +6,9 @@ const rebindings = JSON.parse(
 ).bindings;
 const fit = JSON.parse(await readFile('games/magic/fixtures/accuracy/five-set-hsb-results.json')),
   adoption = JSON.parse(await readFile('games/magic/fixtures/accuracy/five-set-hsb-adoption.json'));
+const m21 = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/m21-normal-color-adoption.json'),
+);
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -74,7 +77,7 @@ try {
   const admitted = adoption.results.filter((r) => r.status !== 'review-only');
   assert.deepEqual(
     Object.keys(PRINTING_COLOR_PROFILES).sort(),
-    [...new Set([...admitted.map((r) => r.key), ...rebindings.map((r) => r.key)])].sort(),
+    [...new Set([...admitted.map((r) => r.key), ...rebindings.map((r) => r.key), m21.key])].sort(),
   );
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21'])
     assert.ok(

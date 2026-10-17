@@ -19,6 +19,7 @@ import { legendsFrame } from './legends-frame.js';
 import { futureFrameMaterials } from './future-color-profiles.js';
 import { planarFrameMaterials } from './planar-color-profiles.js';
 import { earlyExpansionColors } from './early-expansion-colors.js';
+import { resolveCardProfile } from './profile.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
@@ -66,7 +67,12 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
   if (!hasColorCalibration(face)) return {};
   const source = printingColorSource(face),
     profile = source && (PRINTING_COLOR_PROFILES[source.key] ?? LEGENDS_COLOR_PROFILES[source.key]);
-  if (profile && profile.source === source?.source) return profile.materials;
+  if (
+    profile &&
+    profile.source === source?.source &&
+    (profile.legendary === undefined || profile.legendary === resolveCardProfile(face).legendary)
+  )
+    return profile.materials;
   const old = calibratedDualFrameProfile(face);
   return old ? { [retroFrameAsset(face)]: old } : {};
 }
