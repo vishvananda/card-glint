@@ -2,6 +2,7 @@ import { calibratedPrintingStock } from './calibration-profiles.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintRetroStockBorder, paintRetroStockWindow } from './retro-stock-border.js';
 import { legendsFrame } from './legends-frame.js';
+import { earlyExpansionFrame } from './early-expansion-frame.js';
 import {
   adjustedSymbolBounds,
   paintAdjustedSymbols,
@@ -97,7 +98,7 @@ export function paintRetroFace(
     if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
     c.restore();
   }
-  const stockWindow = legendsFrame(face)?.stockWindow;
+  const stockWindow = earlyExpansionFrame(face)?.stockWindow ?? legendsFrame(face)?.stockWindow;
   if (stockWindow) {
     paintRetroStockWindow(c, retroPx(stockWindow), stock);
   } else if (isRevisedLand(face) || usesRevisedFrameGeometry(face)) {

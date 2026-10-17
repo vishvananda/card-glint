@@ -182,7 +182,7 @@ try {
   assert.deepEqual(titleTranslation(land, 'retro'), [-18.5, -6]);
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'lea' }).endsWith('/old/abu/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: '3ed' }).endsWith('/old/fourth/w.png'));
-  assert.ok(retroFrameAsset({ ...ordinary, setCode: 'arn' }).endsWith('/seventh/regular/w.png'));
+  assert.ok(retroFrameAsset({ ...ordinary, setCode: 'arn' }).endsWith('/old/fourth/w.png'));
   const { calibratedFrameMaterials, calibratedManaTarget } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );

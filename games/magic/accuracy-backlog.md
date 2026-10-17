@@ -40,18 +40,33 @@ texture-template failure alone does not establish that a scan is bad. Keep all
 34 in the coverage report. Seven rules bodies and every type line still need
 printing-wording verification before they can contribute certified text scores.
 
-Twenty local comparisons show aligned scan, released 0.4.1, ABU and Fourth
-source prototypes. The older sources substantially improve the frame-boundary
-diagnostic over Seventh Edition in Arabian Nights. Source preferences remain
-provisional: white/black choices can be close, and Antiquities land texture and
-pinlines require visual review beyond the boundary score. Candidate colors are
-uncalibrated. No renderer default or live scoring template has changed.
+Eighteen shared source/geometry profiles are now integrated on the calibration
+branch. Black and green use ABU; white, blue and artifacts use Fourth. Arabian
+Nights red and nonbasic lands use Fourth; Antiquities lands use ABU. Artwork
+placement follows the measured source aperture with a one-source-pixel underlap,
+and stock is recut independently. Arabian Nights Mountain is excluded from the
+generic land fit and keeps its separate colored basic-land source.
 
-Next: establish common measurement support across source candidates and isolate
-reference content, validate shared interior geometry and the stock aperture,
-then fit headings and symbols, source-bound colors/black levels, and rules,
-power/toughness and illustrator typography. Preserve reused-validation labels;
-release only after production-painter replay and fresh full-card scores.
+The native painter renders all 316 cards: 282 changed, and the 34 unsupported
+materials are pixel-identical to 0.4.1. All 92 calibration and 189 reserved
+printings improve the fixed-support boundary diagnostic. Source candidates now
+use identical pixels, plus a separate texture comparison. Reference profile
+medians still suppress content statistically; these are not whole-card accuracy
+scores. The private gallery has 36 examples with blend, difference and red/green
+overlays. Colors, symbols and typography are unfinished; no new release or live
+scoring template has been published.
+
+The red texture-smoothing proposal is rejected. It appeared to accept 22 more
+scans, but recovered only 9/20 known poses within the existing 0.3-pixel limit;
+the full outer/interior pipeline passed only 2/20. Its largest residual was
+1.84 pixels. None of those proposed poses is adopted. Keep the original 282
+accepted interior poses and try independent boundary anchors next.
+
+Source-bound color candidates are recorded, including rejected components;
+new frames cannot inherit old HSB or black-level coefficients. Next: resolve
+color/contrast failures and replay them in the painter, fit headings and symbols,
+verify original wording, then fit rules, power/toughness and illustrator text.
+Preserve reused-validation labels and release after fresh full-card scores.
 
 ## Legends normalization and text validation
 
@@ -68,8 +83,7 @@ it. The plate and stock mask's fractional outer edges are antialiased separately
 leaving white exposed. The fix on `codex/retro-stock-seams` paints stock across the
 plate's outer edge before applying the unchanged mask. It preserves the inner
 aperture and passes both-tier native replays plus a cross-browser regression.
-This is a composition fix, separate from source/black-point calibration; it has
-not yet been deployed.
+This composition fix shipped in 0.4.1, alongside the black-point calibration.
 
 Legends stock now uses the shared display-reference target RGB 38/38/38 when
 `set-hsb-v1` is enabled, guarded by the reviewed source/geometry. This matches

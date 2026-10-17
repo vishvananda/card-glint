@@ -17,6 +17,9 @@ try {
   const { usesRevisedFrameGeometry } = await server.ssrLoadModule(
     '/games/magic/src/presentation/revised-frame-geometry.ts',
   );
+  const { earlyExpansionFrame } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/early-expansion-frame.ts',
+  );
   const { calibratedFrameMaterials } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
@@ -80,7 +83,7 @@ try {
         rebound.materials,
         key + ' retained color transforms',
       );
-    } else if (setCode === 'leg')
+    } else if (setCode === 'leg' || earlyExpansionFrame(f))
       assert.equal(actual, undefined, key + ' obsolete source/geometry');
     else if (profile.asset.endsWith('/old/fourth/w.png')) {
       assert.deepEqual(actual.frame, profile.adjustment.frame);

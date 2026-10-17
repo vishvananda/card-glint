@@ -15,6 +15,7 @@ import { faceSetSymbol } from './assets.js';
 import { faceManaAssets } from './mana-assets.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
+import { earlyExpansionFrame } from './early-expansion-frame.js';
 import { calibratedLegendsStock } from './legends-color-profiles.js';
 import {
   revisedArtRect,
@@ -53,6 +54,8 @@ export function retroEarly(face: RenderedCardInput) {
 }
 export function retroFamily(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase() ?? '';
+  const expansion = earlyExpansionFrame(face);
+  if (expansion) return expansion.family;
   const legends = legendsFrame(face);
   if (legends) return legends.family;
   if (retroEarly(face)) return 'abu';
@@ -65,6 +68,8 @@ export function retroFamily(face: RenderedCardInput) {
   return 'seventh';
 }
 export function retroFrameRect(face: RenderedCardInput): FaceRect {
+  const expansion = earlyExpansionFrame(face);
+  if (expansion) return expansion.frame;
   const legends = legendsFrame(face);
   if (legends) return legends.frame;
   if (isRevisedLand(face)) return REVISED_LAND_FRAME;
@@ -79,7 +84,8 @@ export function retroRects(face: RenderedCardInput) {
     ...FACE_RECTS,
     frame: retroFrameRect(face),
     title: [early ? 0.07 : 0.1134, 0.0481, early ? 0.8467 : 0.8, 0.043] as FaceRect,
-    art: (legendsFrame(face)?.art ??
+    art: (earlyExpansionFrame(face)?.art ??
+      legendsFrame(face)?.art ??
       revisedArtRect(face) ??
       (isRevisedLand(face)
         ? REVISED_LAND_ART
@@ -100,6 +106,8 @@ export function retroRects(face: RenderedCardInput) {
   };
 }
 export function retroFrameAsset(face: RenderedCardInput) {
+  const expansion = earlyExpansionFrame(face);
+  if (expansion) return expansion.asset;
   const legends = legendsFrame(face);
   if (legends) return legends.asset;
   if (isRevisedLand(face)) return REVISED_LAND_ASSET;
