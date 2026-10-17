@@ -135,7 +135,8 @@ function paintSplitHeader(
     false,
     1,
     old ? 'CardRenderer MTG MPlantin' : 'CardRenderer MTG Matrix',
-    half.liveChanges,
+    0,
+    half.textInk,
   );
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;

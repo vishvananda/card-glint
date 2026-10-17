@@ -1,4 +1,4 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { calibratedPrintingStock } from './calibration-profiles.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -219,9 +219,9 @@ export function paintRetroFace(
   c.font = `${typePlacement.fontSize}px "CardRenderer MTG MPlantin", Georgia`;
   const paintType = isRevisedLand(face)
     ? (text: string, _x: number, _y: number, width: number) =>
-        paintRevisedLandText(c, text, 'type', width, face.liveChanges)
+        paintRevisedLandText(c, text, 'type', width, face.textInk)
     : (text: string, x: number, y: number, width: number) =>
-        paintLiveText(c, text, x, y, width, face.liveChanges, 'type');
+        paintTextInk(c, text, x, y, width, face.textInk, 'type');
   c.save();
   c.translate(typePlacement.dx, typePlacement.dy);
   paintType(
@@ -351,15 +351,15 @@ export function paintRetroFace(
     const [sx, sy, sw, sh] = retroPx(rect.stats);
     const placement = retroStatsPlacement(face);
     c.textAlign = placement ? 'right' : 'center';
-    if (revised) paintRevisedStats(c, retroStatsText(face), sy + sh / 2, face.liveChanges);
+    if (revised) paintRevisedStats(c, retroStatsText(face), sy + sh / 2, face.textInk);
     else
-      paintLiveText(
+      paintTextInk(
         c,
         retroStatsText(face),
         placement?.right ?? sx + sw / 2,
         sy + sh / 2 + (placement?.yOffset ?? 0),
         placement?.maxWidth ?? sw,
-        face.liveChanges,
+        face.textInk,
       );
   }
   if (details) paintRetroCredits(c, face, details);

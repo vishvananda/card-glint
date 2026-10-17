@@ -1,5 +1,5 @@
 import { paintRetroGrayText } from './retro-lettering.js';
-import type { RenderedCardInput, LiveChanges } from './face-layout.js';
+import type { RenderedCardInput, CardTextInk } from './face-layout.js';
 import { retroFamily } from './retro-frame.js';
 
 /** Revised printing uses solid gray ink over a lower-right shadow. */
@@ -24,7 +24,7 @@ export function paintRevisedStats(
   c: CanvasRenderingContext2D,
   text: string,
   y: number,
-  liveChanges?: LiveChanges,
+  liveChanges?: CardTextInk,
 ) {
   c.save();
   c.font = '27.25px "CardRenderer MTG MPlantin", Georgia';

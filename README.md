@@ -64,7 +64,7 @@ npm run build
 npm run preview
 ```
 
-`npm run build:package` builds only the library, WASM and declarations. The full
+`npm run prepare` builds only the library, WASM and declarations. The full
 `build` also builds the local showcase. Build tools, Cargo downloads and compiled
 targets are cached under `node_modules/.cache/card-glint` in this checkout.
 Rustup manages the pinned Rust toolchain in its normal toolchain directory.
@@ -160,7 +160,7 @@ For a prebuilt tarball from your own checkout:
 
 ```sh
 npm ci --ignore-scripts
-npm run build:package
+npm run prepare
 npm pack --ignore-scripts
 ```
 

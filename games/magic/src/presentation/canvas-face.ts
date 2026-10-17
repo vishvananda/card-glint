@@ -1,4 +1,4 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible, withRulesInk } from './rules-visibility.js';
 import { calibratedPrintingStock } from './calibration-profiles.js';
 import { validateArtPlacement } from './art-placement.js';
@@ -241,7 +241,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.setSymbolSource ?? null,
         face.rarity ?? 'common',
         face.securityStamp ?? 'default',
-        face.liveChanges ?? null,
+        face.textInk ?? null,
         face.power ?? null,
         face.toughness ?? null,
         face.loyalty ?? null,
@@ -826,7 +826,8 @@ export function paintAssembledFace(
     false,
     kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
     'CardRenderer MTG Beleren',
-    face.liveChanges,
+    0,
+    face.textInk,
   );
   paintPrintingElement(context, face, 'setSymbol', () =>
     paintAdjustedSymbols(context, originalSymbolBounds, face.symbolAdjustment?.set, () => {
@@ -883,13 +884,13 @@ export function paintAssembledFace(
       context.font = `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`;
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      paintLiveText(
+      paintTextInk(
         context,
         stats.text,
         sx + sw / 2,
         sy + FACE_TEXT.statsLine / 2 + (kind === 'normal' ? 2 : 0),
         sw,
-        face.liveChanges,
+        face.textInk,
       );
     }
   }

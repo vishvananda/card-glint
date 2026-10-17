@@ -4,9 +4,8 @@
   "type": "module",
   "scripts": {
     "prepare": "node scripts/build-wasm.mjs && node scripts/build.mjs --package-only",
-    "build:package": "node scripts/build-wasm.mjs && node scripts/build.mjs --package-only",
     "build:wasm": "node scripts/build-wasm.mjs",
-    "build": "node scripts/build-wasm.mjs && node scripts/build.mjs",
+    "build": "npm run build:wasm && node scripts/build.mjs",
     "check": "cargo fmt --all --check && cargo clippy --workspace --all-targets -- -D warnings && cargo test --workspace && tsc --noEmit && prettier --check . && node scripts/check-boundaries.mjs",
     "format": "cargo fmt --all && prettier --write .",
     "test:browser": "node tests/browser.mjs",
@@ -93,10 +92,6 @@
     "./magic/presentation": {
       "types": "./dist/types/games/magic/src/presentation.d.ts",
       "import": "./dist/lib/magic-presentation.js"
-    },
-    "./magic/offline-assets": {
-      "types": "./dist/types/games/magic/src/offline-assets.d.ts",
-      "import": "./dist/lib/magic-offline-assets.js"
     },
     "./pixels.wasm": "./dist/lib/pixels_bg.wasm"
   },

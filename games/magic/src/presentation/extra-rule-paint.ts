@@ -1,4 +1,4 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { CLASS_LEVEL_ASSET, extraRuleBlocks } from './extra-rules.js';
 import { FACE_TEXT, type RenderedCardInput } from './face-layout.js';
@@ -47,14 +47,14 @@ export function paintExtraRules(
       context.textBaseline = 'middle';
       const lines = block.text.split('\n');
       lines.forEach((line, i) =>
-        paintLiveText(
+        paintTextInk(
           context,
           line,
           x + width * (block.kind === 'level' ? 0.43 : 0.5),
           y + height / 2 + (i - (lines.length - 1) / 2) * font,
           width * 0.85,
           block.kind === 'stats' && firstStats && face.power != null && face.toughness != null
-            ? face.liveChanges
+            ? face.textInk
             : undefined,
         ),
       );

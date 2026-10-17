@@ -95,7 +95,8 @@ export function paintModernSplitHeader(
     true,
     1,
     'CardRenderer MTG Beleren',
-    half.liveChanges,
+    0,
+    half.textInk,
   );
   if (symbol) {
     const bounds = [331 - w, 277 - h / 2, w, h] as const;

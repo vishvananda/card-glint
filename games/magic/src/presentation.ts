@@ -1,10 +1,13 @@
 export { faceCornerRadius } from './presentation/face-silhouette.js';
 /** Shared layout and raster painting for hosts that own their scene and editing DOM. */
-export * from './presentation/semantic-layout.js';
 export * from './presentation/art-apertures.js';
 export * from './presentation/assets.js';
 export * from './presentation/canvas-ability-emblem.js';
 export * from './presentation/canvas-assets.js';
+export * from './presentation/canvas-fonts.js';
+export { faceManaAssets } from './presentation/mana-assets.js';
+export { PLAIN_SECURITY_STAMP } from './presentation/security-stamp-assets.js';
+export { setAssetFetcher } from '../../../packages/browser/src/asset-fetch.js';
 export * from './presentation/canvas-etching.js';
 export * from './presentation/canvas-face.js';
 export * from './presentation/canvas-status.js';

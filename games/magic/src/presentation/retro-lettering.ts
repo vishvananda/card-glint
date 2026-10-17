@@ -1,5 +1,5 @@
-import type { LiveChanges } from './face-layout.js';
-import { paintLiveText } from './live-changes.js';
+import type { CardTextInk } from './face-layout.js';
+import { paintTextInk } from './text-ink.js';
 /**
  * Printed light/dark letter edges with the frame visible through the interior.
  * Two translated masks are subtracted during cached face composition only;
@@ -53,17 +53,17 @@ export function paintRetroGrayText(
   maxWidth: number,
   offset: number,
   fill = '#ababab',
-  liveChanges?: LiveChanges,
+  liveChanges?: CardTextInk,
   liveRole: 'type' | 'stats' = 'stats',
 ) {
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
-  paintLiveText(c, text, x + offset, y + offset, maxWidth, liveChanges, liveRole, () => {
+  paintTextInk(c, text, x + offset, y + offset, maxWidth, liveChanges, liveRole, () => {
     c.fillStyle = '#17140f';
     c.fillText(text, x + offset, y + offset, maxWidth);
   });
   c.fillStyle = fill;
-  paintLiveText(c, text, x, y, maxWidth, liveChanges, liveRole);
+  paintTextInk(c, text, x, y, maxWidth, liveChanges, liveRole);
   c.restore();
 }

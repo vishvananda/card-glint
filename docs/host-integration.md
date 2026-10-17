@@ -3,10 +3,9 @@
 Use `createRenderer` for a complete scene. Hosts with an established depth pass,
 overlays and texture cache can instead use the independent public entry points:
 
-- `card-glint/magic/presentation`: shared layout, text, symbols and raster painters.
-- `card-glint/finish`: foil shaders, `modernSurfaceShader`, `FinishResources` and `SurfaceMotion`.
+- `card-glint/magic/presentation`: shared layout, painters, native assets and font metadata.
+- `card-glint/finish`: foil and surface GLSL, `FinishResources`, `SurfaceMotion` and `surfaceSeed`.
 - `card-glint/kernels`: `createPixelKernels` with explicit disposal.
-- `card-glint/magic/offline-assets`: asset discovery, font metadata and shared asset fetching.
 
 These entry points do not create a WebGL context or schedule animation. The host
 owns image leases, texture uploads, memory limits, clipping, hit testing, overlays,
@@ -39,9 +38,15 @@ requires no registry credentials.
 
 The integration branch includes upstream 0.4.6 typography, printing presets,
 provider adapters, artwork placement and surface controls. Native text painters
-retain live-ink suppression alongside upstream inset lettering. `paintFittedText`
-accepts upstream's numeric inset in its existing position; host live changes keep
-their positions and can combine with a trailing inset.
+accept `textInk` spans with character offsets and colors. The host owns change
+detection, type-word selection and power/toughness ranges. The painter measures
+those spans in its actual font and transform without changing text advances.
+`omitInk` suppresses only selected spans so a host can animate their ink above
+unchanged native paper. `paintFittedText` retains upstream's numeric inset
+argument, followed by optional `CardTextInk` and the type/stats role.
+
+Native rules suppression and geometry stay in the game pack. Custom layouts,
+interaction panels, fallback policy and animation scheduling belong to the host.
 
 Standalone preset pages and browser release archives use adjacent WASM URLs.
 The npm library retains bundler asset imports. Node-safe Magic helpers load the
@@ -94,6 +99,10 @@ It is separate from the complete renderer's newer rain/heat/pool treatments.
 Shader programs compile once per context/material variant. Updating pose, finish
 or reflection uniforms must not compose faces, derive masks or upload static
 textures. Keep residency and disposal at the same scope as the scene context.
+`SURFACE_GLSL` and `WORN_GLSL` expose the renderer's existing shader functions.
+The host assembles its material around those sources and `foilShader()`, supplying
+its own texture samplers and artwork/printing composition. No host-specific
+material assembly is included in the package.
 
 `FinishResources.documentMask(document, rasterHost, signal)` prepares the same
 artwork edges, imported alpha masks, native stamp and contributing layers as the
@@ -105,7 +114,7 @@ extraction, hidden/offset elements and its generic missing-symbol mark.
 
 The returned canvas stores linear mask coverage in RGB with opaque alpha,
 including `max(base, etchAdd) * (1 - etchExclude)`. Upload it without premultiplying
-or sRGB conversion; `modernSurfaceShader` samples its red channel. Finish coverage
+or sRGB conversion; finish shaders sample its red channel. Finish coverage
 and protected-ink exclusions remain the host material's separate responsibility.
 The caller owns the returned canvas and its uploaded texture. Cache them by
 immutable recipe/source revision, dimensions and algorithm, releasing canvases
@@ -143,11 +152,12 @@ scratch are additional to the host's resident image/texture budget.
 
 ## Asset discovery and offline hosts
 
-`card-glint/magic/offline-assets` exports `magicAssetUrls`, `canvasAssetUrls`,
-`MAGIC_FONT_ASSETS`, `decodeCanvasImage` and `setAssetFetcher`.
-`magicAssetUrls(face)` discovers the frame, symbol and security-stamp URLs used
-by that input. `MAGIC_FONT_ASSETS` describes external font URLs and CSS metadata.
-These exports do not download or bundle the assets.
+`card-glint/magic/presentation` exports `canvasAssetUrls`, `canvasFontAssets`,
+`faceManaAssets`, `PLAIN_SECURITY_STAMP`, `decodeCanvasImage` and `setAssetFetcher`.
+The font catalog derives from the pack's native stylesheet and retro-font
+definitions. These exports discover native resources without downloading them.
+The host owns offline manifests, extra prefetch variants, font registration and
+cache completeness.
 
 Install a fetch adapter with `setAssetFetcher` before preparing faces when your
 host serves permitted assets from a local cache or another URL. All package

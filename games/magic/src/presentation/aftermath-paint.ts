@@ -138,7 +138,8 @@ export function paintAftermathFace(
         true,
         1,
         'CardRenderer MTG Beleren',
-        half.liveChanges,
+        0,
+        half.textInk,
       );
       if (symbol) {
         const crop = setSymbolCrop(half),

@@ -1,4 +1,4 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -34,7 +34,7 @@ export function paintAdventureFooter(
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     c.font = '700 25px "CardRenderer MTG Beleren Small Caps", Georgia';
-    paintLiveText(c, `${face.power}/${face.toughness}`, 420, 627, 77, face.liveChanges);
+    paintTextInk(c, `${face.power}/${face.toughness}`, 420, 627, 77, face.textInk);
   }
   if (hasOvalSecurityStamp(face)) {
     const stamp = images.get(SAGA_STAMP);

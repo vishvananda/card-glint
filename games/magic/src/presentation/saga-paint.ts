@@ -88,7 +88,8 @@ export function paintSagaFace(
     true,
     1,
     'CardRenderer MTG Beleren',
-    face.liveChanges,
+    0,
+    face.textInk,
   );
   if (icon) {
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);

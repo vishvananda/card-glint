@@ -2,9 +2,7 @@ import { build } from 'vite';
 import { execFileSync } from 'node:child_process';
 import { cp, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { copyBrowserLibrary } from './browser-assets.mjs';
-process.chdir(fileURLToPath(new URL('../', import.meta.url)));
 const alias = { '@card-glint/browser': path.resolve('packages/browser/src/index.ts') };
 await build({
   configFile: false,
@@ -19,7 +17,6 @@ await build({
         showcase: 'games/showcase/src/index.ts',
         magic: 'games/magic/src/index.ts',
         'magic-presentation': 'games/magic/src/presentation.ts',
-        'magic-offline-assets': 'games/magic/src/offline-assets.ts',
         kernels: 'packages/browser/src/kernels.ts',
         finish: 'packages/browser/src/finish.ts',
       },

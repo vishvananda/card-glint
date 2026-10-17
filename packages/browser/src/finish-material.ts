@@ -1,40 +1,8 @@
-import { foilShader } from './gpu/foil-preview-shader.js';
-import { SURFACE_GLSL } from './gpu/surface-shader.js';
-import { WORN_GLSL } from './gpu/worn-shader.js';
 import { GpuEtcher, program } from './gpu/etcher.js';
 import { Caustics } from './gpu/caustics.js';
 import type { CardDocument, Lease, RasterHost } from './types.js';
 import type { TextureStore, Texture } from './gpu/textures.js';
 import type { Preparer } from './prepare.js';
-
-export function modernSurfaceShader(): string {
-  const foil = foilShader()
-    .replaceAll('texture2D(face,', 'finishFace(')
-    .replaceAll('texture2D(mask,', 'finishMask(');
-  const surface = SURFACE_GLSL.replaceAll('flat in ', 'uniform ').replaceAll(
-    'texture(face,',
-    'finishFace(',
-  );
-  return `${foil}
-${surface}
-${WORN_GLSL}
-
-vec3 modernSurface(vec2 uv,vec3 normal,vec3 view,vec2 wear,vec2 pixel) {
-  vec3 color=previewKind>=5. && previewKind<8. ? animatedSurface(uv,normal) : previewFoil(uv,normal,view);
-  vec3 base=finishFace(uv).rgb;
-  if(hasPrinting>0.){
-    vec4 top=finishPrinting(uv);
-    vec3 under=mix(base,previewLinear(color),finishCoverage(uv));
-    vec3 printing=top.rgb;
-    if(top.a>0.)printing=mix(printing,previewLinear(satin(uv,previewInk(printing),normal,view,2.,0.)),.75);
-    color=previewInk(mix(under,printing,top.a));
-    base=mix(base,top.rgb,top.a);
-  }
-  if(wear.x>0.)color=wornSurface(uv,previewInk(base),color,normal,view,wear.y,wear.x,
-    step(.5,previewKind)*(1.-step(4.5,previewKind)),pixel);
-  return color;
-}`;
-}
 
 const copyFragment = `#version 300 es
 precision highp float;

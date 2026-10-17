@@ -1,7 +1,7 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import type { CanvasImages } from './canvas-assets.js';
-import type { RenderedCardInput, FaceRect, LiveChanges } from './face-layout.js';
+import type { RenderedCardInput, FaceRect, CardTextInk } from './face-layout.js';
 import { paintFittedText, paintMana } from './canvas-text.js';
 import { layoutRules } from './rules-layout.js';
 import { paintRulesLayout } from './rules-paint.js';
@@ -16,7 +16,7 @@ export function templateLabel(
   rect: FaceRect,
   size: number,
   family: 'CardRenderer MTG Matrix' | 'CardRenderer MTG Beleren',
-  liveChanges?: LiveChanges,
+  liveChanges?: CardTextInk,
 ) {
   const [x, y, w, h] = rect;
   c.textAlign = 'left';
@@ -31,6 +31,7 @@ export function templateLabel(
     family !== 'CardRenderer MTG Matrix',
     1,
     family,
+    0,
     liveChanges,
   );
 }
@@ -87,7 +88,7 @@ export function templateStats(
   c.font = `bold ${size * POINT}px "${family}", Georgia`;
   c.textAlign = 'center';
   c.textBaseline = 'middle';
-  paintLiveText(c, `${face.power}/${face.toughness}`, x + w / 2, y + h / 2, w, face.liveChanges);
+  paintTextInk(c, `${face.power}/${face.toughness}`, x + w / 2, y + h / 2, w, face.textInk);
 }
 export function templateFooter(
   c: CanvasRenderingContext2D,

@@ -1,4 +1,4 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { calibratedPrintingStock } from './calibration-profiles.js';
 import { paintPrintingElement } from './printing-elements.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -85,7 +85,8 @@ export function paintFutureTemplate(
         true,
         1,
         'CardRenderer MTG Matrix',
-        live ? face.liveChanges : undefined,
+        0,
+        live ? face.textInk : undefined,
       );
     };
     c.fillStyle = light ? '#fff' : '#111';
@@ -106,14 +107,7 @@ export function paintFutureTemplate(
       c.save();
       c.translate(g.stats[0] + g.stats[2] / 2 - 1.5, g.stats[1] + g.stats[3] / 2 - 0.25);
       c.scale(0.99, 1);
-      paintLiveText(
-        c,
-        `${face.power}/${face.toughness}`,
-        0,
-        0,
-        g.stats[2] / 0.99,
-        face.liveChanges,
-      );
+      paintTextInk(c, `${face.power}/${face.toughness}`, 0, 0, g.stats[2] / 0.99, face.textInk);
       c.restore();
     }
     const symbol = images.get(faceSetSymbol(face) ?? '');

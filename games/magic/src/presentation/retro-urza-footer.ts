@@ -1,4 +1,4 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { resolveFrameColors } from './profile.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -25,13 +25,13 @@ export function paintUrzaFooter(c: CanvasRenderingContext2D, face: RenderedCardI
     c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
     c.textBaseline = 'middle';
     c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
-    paintLiveText(
+    paintTextInk(
       c,
       `${face.power}/${face.toughness}`,
       (0.8074 + 0.1367 / 2) * 488,
       (0.895 + 0.043 / 2) * 680,
       0.1367 * 488,
-      face.liveChanges,
+      face.textInk,
     );
   }
   c.shadowColor = 'transparent';

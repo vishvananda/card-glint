@@ -52,7 +52,7 @@ export class Preparer {
     const under = layers.filter((l) => l.stage === 'under-art'),
       printed = layers.filter((l) => l.stage === 'printed-content' || l.stage === 'under-finish');
     const over = layers.filter((l) => l.stage === 'over-finish'),
-      contributors = layers.filter((layer) => layer.contributesToEtch);
+      contributors = layers.filter((l) => l.contributesToEtch);
     const coverageLayers = layers.filter((l) => l.finishCoverage || l.etchCoverage);
     const prefix = `${recipe.pack}:`;
     const color =

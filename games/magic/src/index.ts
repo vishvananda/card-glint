@@ -1,10 +1,3 @@
-import {
-  isSemanticLayout,
-  composeSemanticCardTexture,
-  semanticLayoutRegions,
-  type SemanticCardInput,
-} from './presentation/semantic-layout.js';
-import { FACE_CORNER_RADIUS } from './presentation/face-layout.js';
 import type {
   GamePack,
   CardDocument,
@@ -191,37 +184,14 @@ export function opticalDocument(
   rulesText = true,
 ): CardDocument {
   const face = structuredClone({ ...value, setCode: value.setCode ?? 'GLINT' });
-  const semantic = isSemanticLayout(face) ? (face as SemanticCardInput) : null;
   const recipe = mtg.describe(face, tier);
-  if (semantic) {
-    const regions = semanticLayoutRegions(semantic);
-    recipe.artWindows = regions
-      .filter((region) => region.role === 'artwork')
-      .map((region) => region.rect);
-    recipe.regions = regions.map((region) => ({ id: region.name, rect: region.rect }));
-    recipe.cornerRadius = FACE_CORNER_RADIUS;
-    recipe.hologram = undefined;
-  }
   const raster = (paintLayer: 'artwork' | 'printing') => {
     const input = { face, printingId: null, printedImage: null, paintLayer, rulesText };
     return {
-      key: semantic
-        ? JSON.stringify([
-            cardTextureKey(input, tier),
-            semantic.handModifier,
-            semantic.lifeModifier,
-            !!semantic.scanBorder,
-          ])
-        : cardTextureKey(input, tier),
+      key: cardTextureKey(input, tier),
       size: recipe.color.size,
       paint: (host: RasterHost, signal: AbortSignal) =>
-        isSemanticLayout(face)
-          ? composeSemanticCardTexture(face, tier, signal, {
-              paintLayer,
-              rulesText,
-              loadImages: loader(host),
-            })
-          : composeCardTexture(input, tier, signal, { loadImages: loader(host) }),
+        composeCardTexture(input, tier, signal, { loadImages: loader(host) }),
     };
   };
   // The opaque printing covers everything outside the illustration. Any frame

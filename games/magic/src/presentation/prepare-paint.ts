@@ -68,7 +68,8 @@ function headers(c: CanvasRenderingContext2D, face: RenderedCardInput, images: C
     true,
     1,
     'CardRenderer MTG Beleren',
-    face.liveChanges,
+    0,
+    face.textInk,
   );
   if (icon) {
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
@@ -86,7 +87,8 @@ function headers(c: CanvasRenderingContext2D, face: RenderedCardInput, images: C
     true,
     1,
     'CardRenderer MTG Beleren',
-    spell.liveChanges,
+    0,
+    spell.textInk,
   );
 }
 export function paintPrepareFace(

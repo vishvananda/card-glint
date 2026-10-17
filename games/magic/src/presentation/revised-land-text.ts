@@ -1,4 +1,4 @@
-import type { RenderedCardInput, RulesParagraph, LiveChanges } from './face-layout.js';
+import type { RenderedCardInput, RulesParagraph, CardTextInk } from './face-layout.js';
 import { layoutRules, type RulesLayout } from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
 import { paintRetroGrayText } from './retro-lettering.js';
@@ -38,7 +38,7 @@ export function paintRevisedLandText(
   text: string,
   kind: 'title' | 'type' | 'artist',
   maxWidth: number,
-  liveChanges?: LiveChanges,
+  liveChanges?: CardTextInk,
 ) {
   const p = revisedLandText()[kind];
   c.save();

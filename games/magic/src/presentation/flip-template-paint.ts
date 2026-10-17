@@ -95,7 +95,7 @@ export function paintFlipTemplate(
       [type[0], type[1], type[2] - (f.power != null ? 60 : 0), type[3]],
       14,
       family,
-      f.liveChanges,
+      f.textInk,
     );
     templateRules(c, f, images, rules, 14, 8);
     templateStats(c, f, stats, 17, family);

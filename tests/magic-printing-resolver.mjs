@@ -7,7 +7,6 @@ import { calibrationPresentation } from '../games/magic/tools/accuracy/calibrati
 execFileSync(process.execPath, ['games/magic/tools/build-printing-corrections.mjs', '--check']);
 const server = await createServer({
   configFile: false,
-  optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true },
   appType: 'custom',
 });

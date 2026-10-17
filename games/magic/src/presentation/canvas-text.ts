@@ -1,11 +1,11 @@
-import { paintLiveText } from './live-changes.js';
+import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { paintInsetText } from './canvas-text-ink.js';
 import { paintOriginalWhite } from './historical-white.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
 import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
 import { manaSymbolAsset } from './assets.js';
-import { FACE_TEXT, symbolTextParts, type FaceRect, type LiveChanges } from './face-layout.js';
+import { FACE_TEXT, symbolTextParts, type FaceRect, type CardTextInk } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import type { CanvasImages } from './canvas-assets.js';
 
@@ -210,9 +210,9 @@ export function paintFittedText(
     | 'CardRenderer MTG Matrix'
     | 'CardRenderer MTG Goudy'
     | 'CardRenderer MTG MPlantin' = 'CardRenderer MTG Beleren',
-  liveChanges?: LiveChanges | number,
-  liveRole: 'type' | 'stats' = 'type',
   strokeInset = 0,
+  textInk?: CardTextInk,
+  inkRole: 'type' | 'stats' = 'type',
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   context.save();
@@ -231,20 +231,14 @@ export function paintFittedText(
     size = Math.max(size * 0.78, (size * width) / measured);
     context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   }
-  // The numeric slot preserves upstream inset callers; host accents retain
-  // their existing argument positions and may combine with a trailing inset.
-  if (typeof liveChanges === 'number') {
-    strokeInset = liveChanges;
-    liveChanges = undefined;
-  }
-  paintLiveText(
+  paintTextInk(
     context,
     text,
     x,
     y,
     width,
-    liveChanges,
-    liveRole,
+    textInk,
+    inkRole,
     strokeInset > 0
       ? () => paintInsetText(context, text, [x, y, width], size, strokeInset)
       : undefined,

@@ -64,7 +64,7 @@ export function paintStandardTemplate(
     const cost = templateCost(c, face, images, 484, 20, 15);
     title = [title[0], title[1], Math.max(1, title[2] - cost - 5), title[3]];
     templateLabel(c, face.name, title, spec.titleSize, family);
-    templateLabel(c, face.typeLine ?? '', spec.type, spec.typeSize, family, face.liveChanges);
+    templateLabel(c, face.typeLine ?? '', spec.type, spec.typeSize, family, face.textInk);
     c.fillStyle = '#17140f';
     templateRules(c, face, images, spec.rules, spec.rulesSize, spec.minimumSize);
     if (kind === 'battle' && face.defense != null) {

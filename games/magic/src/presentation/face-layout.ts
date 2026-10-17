@@ -18,18 +18,22 @@ export interface RulesParagraph {
   align?: 'left' | 'center' | 'right';
 }
 
-export interface LiveChanges {
-  power?: string;
-  toughness?: string;
+export interface TextInkSpan {
+  start: number;
+  end?: number;
+  color: string;
+}
+
+export interface CardTextInk {
   omitInk?: boolean;
-  /** Added words receive accents; an empty array accents the remaining line. */
-  typeLine?: { added: readonly string[]; color: string };
+  typeLine?: readonly TextInkSpan[];
+  stats?: readonly TextInkSpan[];
 }
 
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
-  liveChanges?: LiveChanges;
+  textInk?: CardTextInk;
   /** Optional semantic printing controls, shared by raster/export and editor callers. */
   printingElements?: PrintingElements;
   collectorTotal?: number | null;
