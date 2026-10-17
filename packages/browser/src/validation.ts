@@ -86,6 +86,11 @@ export function validateDocument(document: CardDocument) {
 }
 export function validateInstance(item: Instance) {
   if (
+    item.rainFog !== undefined &&
+    (!Number.isFinite(item.rainFog) || item.rainFog < 0 || item.rainFog > 2)
+  )
+    throw Error('Invalid rain fog density');
+  if (
     item.printDots?.inset !== undefined &&
     (!Number.isFinite(item.printDots.inset) ||
       item.printDots.inset < 0 ||

@@ -106,6 +106,9 @@ export interface Instance {
   transform: readonly number[];
   order?: number;
   finish?: Finish;
+  /** Rain condensation density, 0 (clear) to 2; omitted/1 keeps native fog.
+   * Does not change droplets, refraction, reflections, blur or motion. */
+  rainFog?: number;
   /** Optional abrasion over any finish. Amount is 0 (fresh) to 1 (heavily played).
    * Seed is a uint32, defaulting to the instance ID; persist it with the card. */
   wear?: { amount: number; seed?: number };
