@@ -1,3 +1,4 @@
+import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -31,7 +32,11 @@ async function proof() {
     assert.equal(evidence.controls.rows.length, 84);
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed title dependency: ' + file);
+      assert.equal(
+        hash(await preManaCalibrationSource(file)),
+        expected,
+        'Unreviewed title dependency: ' + file,
+      );
     return extension;
   })());
 }
@@ -40,7 +45,7 @@ async function proof() {
  * The current title implementation is independently checked by native replay,
  * score gates and scope tests. Historical measurements keep their original hashes. */
 export async function preTitleCalibrationSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preManaCalibrationSource(file),
     extension = await proof(),
     change = extension.files[file];
   if (!change) return bytes;

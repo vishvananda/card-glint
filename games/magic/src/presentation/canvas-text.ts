@@ -1,3 +1,4 @@
+import { paintEarlyManaNumeral } from './early-expansion-mana.js';
 import { paintInsetText } from './canvas-text-ink.js';
 import { paintOriginalWhite } from './historical-white.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
@@ -75,6 +76,10 @@ export function paintMana(
     return;
   }
   const numeric = /^\d+$/.test(symbol);
+  if (numeric && adjustment && images.manaCostNumeral) {
+    paintEarlyManaNumeral(context, symbol, x, y, size, images.manaCostNumeral, adjustment);
+    return;
+  }
   const glyphDelta = colorGlyphTransform(adjustment, symbol);
   const defaultScale = images.manaGlyphScales?.[symbol] ?? 1;
   const numeral = numeric

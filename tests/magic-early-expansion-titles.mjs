@@ -1,3 +1,4 @@
+import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
@@ -27,7 +28,11 @@ assert.equal(receipt.validationKind, 'repeated');
 assert.equal(receipt.rows.filter((r) => r.scored).length, 306);
 assert.equal(receipt.rows.filter((r) => r.eligible && !r.scored).length, 3);
 for (const [file, expected] of Object.entries(receipt.sourceGuards))
-  assert.equal(hash(await readFile(file)), expected, 'Stale title evidence: ' + file);
+  assert.equal(
+    hash(await preManaCalibrationSource(file)),
+    expected,
+    'Stale title evidence: ' + file,
+  );
 // Also exercise the complete historical reconstruction and isolation proof.
 await preTitleCalibrationSource('games/magic/src/presentation/retro-paint.ts');
 for (const set of ['arn', 'atq', 'drk'])

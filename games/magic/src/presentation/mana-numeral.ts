@@ -1,3 +1,4 @@
+import { earlyManaNumeral } from './early-expansion-mana.js';
 import { modernCostMana, modernCostNumeralAsset } from './modern-cost-mana.js';
 import { manaSymbolAsset } from './assets.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -25,8 +26,17 @@ export async function prepareManaNumerals(
 ): Promise<{ images: CanvasImages; dispose(): void }> {
   const a = printingManaAdjustment(face);
   const cost = modernCostMana(face);
-  const numbers = !!cost || (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1));
-  if (!cost && !numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)
+  const historical = earlyManaNumeral(face);
+  const numbers =
+    !historical &&
+    (!!cost || (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1)));
+  if (
+    !historical &&
+    !cost &&
+    !numbers &&
+    !a?.glyphs &&
+    !Object.keys(images.manaGlyphScales ?? {}).length
+  )
     return { images, dispose() {} };
   const numerals = new Map<string, ManaNumeral>();
   const colored = new Map<string, ManaNumeral>();
@@ -69,6 +79,7 @@ export async function prepareManaNumerals(
     return {
       images: Object.assign(new Map(images), {
         manaCostShadow: cost?.shadow,
+        manaCostNumeral: historical,
         manaColors: images.manaColors,
         originalManaGlyphs: images.originalManaGlyphs,
         originalWhiteGlyph: images.originalWhiteGlyph,

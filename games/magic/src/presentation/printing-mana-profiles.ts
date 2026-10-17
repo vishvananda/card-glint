@@ -11,6 +11,117 @@ export const MODERN_MANA_OVERRIDES: Readonly<Record<string, ManaSymbolTransform>
 
 /** Shared printing defaults, measured after independent scan-frame normalization. */
 export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform>> = {
+  arn: {
+    dx: 5.25,
+    dy: -7.75,
+    scaleX: 1.045,
+    scaleY: 1.0098,
+    spacing: 0.875,
+    glyphs: {
+      W: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      U: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      G: {
+        scale: 1.09,
+        dx: 0,
+        dy: -0.25,
+      },
+      B: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      R: {
+        scale: 1.05,
+        dx: 0,
+        dy: 0.25,
+      },
+    },
+    numberScale: 1.01,
+    numberDx: 0,
+    numberDy: -0.25,
+  },
+  atq: {
+    dx: 5.25,
+    dy: -8,
+    scaleX: 1.0293249999999998,
+    scaleY: 1.02,
+    spacing: 0.9784688995215312,
+    glyphs: {
+      B: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      R: {
+        scale: 1.05,
+        dx: 0.25,
+        dy: 0.75,
+      },
+      W: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      U: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      G: {
+        scale: 1.09,
+        dx: 0.25,
+        dy: 0.25,
+      },
+    },
+    numberScale: 0.98,
+    numberDx: -0.5,
+    numberDy: -0.5,
+  },
+  drk: {
+    dx: 4.5,
+    dy: -7.25,
+    scaleX: 1.039775,
+    scaleY: 1.0048499999999998,
+    spacing: 0.8696172248803828,
+    glyphs: {
+      B: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      G: {
+        scale: 1,
+        dx: -0.5,
+        dy: 0,
+      },
+      U: {
+        scale: 1,
+        dx: 0,
+        dy: 0,
+      },
+      W: {
+        scale: 1.02,
+        dx: -0.5,
+        dy: 0.25,
+      },
+      R: {
+        scale: 1.06,
+        dx: 0.25,
+        dy: 0.5,
+      },
+    },
+    numberScale: 1,
+    numberDx: -0.75,
+    numberDy: -0.75,
+  },
   leb: {
     dx: -1.5,
     spacing: 1.75,
