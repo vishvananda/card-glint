@@ -151,15 +151,16 @@ export class FinishResources {
           );
           controller.signal.throwIfAborted();
           coverage = this.documentTextures.uploadBytes(
-            JSON.stringify([
-              'finish-etch-coverage-v1',
-              document.recipe.color.size,
-              layers.map((layer) => [
-                layer.clip,
-                layer.etchCoverage?.add?.key,
-                layer.etchCoverage?.exclude?.key,
+            `${document.recipe.pack}:` +
+              JSON.stringify([
+                'finish-etch-coverage-v1',
+                document.recipe.color.size,
+                layers.map((layer) => [
+                  layer.clip,
+                  layer.etchCoverage?.add?.key,
+                  layer.etchCoverage?.exclude?.key,
+                ]),
               ]),
-            ]),
             bytes,
             document.recipe.color.size,
           );

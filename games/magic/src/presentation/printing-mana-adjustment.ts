@@ -1,3 +1,4 @@
+import { arabianManaVariant } from './early-expansion-mana.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
@@ -16,7 +17,7 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
   const set = face.setCode?.toLowerCase() ?? '';
   if (usesModernCostMana(face)) return { ...MODERN_COMPONENT_MANA, ...MODERN_MANA_OVERRIDES[set] };
   const base = PRINTING_MANA_PROFILES[set];
-  const early = ['lea', 'leb', '3ed'].includes(set);
+  const early = ['lea', 'leb', '3ed', 'arn', 'atq', 'drk'].includes(set);
   if (
     !base ||
     face.frameTemplate !== undefined ||
@@ -32,7 +33,9 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
     (set === '8ed' && (isRetro(face) || face.frameAssetFamily !== 'eighth'))
   )
     return undefined;
-  return base;
+  return arabianManaVariant(face) === 'dark'
+    ? { ...base, numberScale: 0.87, numberDx: -0.25, numberDy: -0.25 }
+    : base;
 }
 
 /** Editor deltas remain relative to printing defaults. Resolve separately in

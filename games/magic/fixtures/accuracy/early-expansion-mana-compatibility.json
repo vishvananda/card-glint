@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "8dd2e4d47b2ea739c433afcaf4e05535c592b376",
+  "evidenceHash": "4ba440f55770b230cfbb49f0d8a77ff02cedc7fce6d0b3e4df73a9c6aa55e0e4",
+  "policy": "Reconstruct complete pre-mana files for historical non-mana evidence only. Native parity, per-symbol isolation and 84 unrelated native controls establish this extension; frozen measurements keep their original hashes.",
+  "dependencies": {
+    "games/magic/src/presentation/early-expansion-mana.ts": "97acb863d20c211cafb1ad001e3a25f883cce8f4d0aa4c93e9786b23af6a05f2",
+    "games/magic/src/presentation/early-expansion-mana-colors.ts": "6eb351dd8ffbc8e5918e1eadcab90db432a672b69769304f09170433cf843625",
+    "games/magic/src/presentation/printing-mana-profiles.ts": "fca9dfd9eb128315b3906aa14c03ecbd8a964daaebcd99b728c7cbf5b9c26cf1",
+    "games/magic/src/presentation/printing-mana-adjustment.ts": "ae53ce01f10a56c36a4ac140efaaa07ddc2f8e061dfd73019415cfa55ee183b9",
+    "games/magic/src/presentation/calibration-profiles.ts": "54337a66728a37dff4c18e3a4ea93b2cf0dcc2d3315cc9d90996515c9340fb29",
+    "games/magic/src/presentation/canvas-assets.ts": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
+    "games/magic/src/presentation/canvas-text.ts": "91552a2f54ee8893c501b949730346635463f6ee65406107f6a26f5f45772f96",
+    "games/magic/src/presentation/mana-numeral.ts": "3222da2e70d543f2b3a2c065c6bc3582176d713643fe039d6fec28fbd2f04120",
+    "games/magic/src/presentation/canvas-face.ts": "fd8ee7cc6588a650f166cc5d3cd09ab157f31950ceeaf7546490ae5ab2e6df48",
+    "games/magic/src/presentation/historical-mana.ts": "ed8952f773c1f9d1be4e1de630ee505f83e062591687e908c38cc1ef56fa2c8e",
+    "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
+    "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
+    "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
+    "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+    "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+    "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+  },
+  "files": {
+    "games/magic/src/presentation/calibration-profiles.ts": {
+      "before": "96b75b0835ca63f37204eee642830193c7ce7500f564d1f4a1331f4a5f281468",
+      "after": "54337a66728a37dff4c18e3a4ea93b2cf0dcc2d3315cc9d90996515c9340fb29",
+      "reverseEdits": [
+        {
+          "start": 66,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 23,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-assets.ts": {
+      "before": "1d0246432611ab47a6a6fb80bbb93bea9fc9aeda999f9c83bdba09d90d5a3a15",
+      "after": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
+      "reverseEdits": [
+        {
+          "start": 33,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 27,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "18eeedf2a721bfb49ccdc1c00f1cc27febff4986cdb3032be16553e439f1a039",
+      "after": "fd8ee7cc6588a650f166cc5d3cd09ab157f31950ceeaf7546490ae5ab2e6df48",
+      "reverseEdits": [
+        {
+          "start": 139,
+          "count": 1,
+          "lines": ["    'canvas-face-v146',\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-text.ts": {
+      "before": "df609003caa86eb8dfe112b61044da6645b25bfc705f5f49bcbb69642bd85e77",
+      "after": "91552a2f54ee8893c501b949730346635463f6ee65406107f6a26f5f45772f96",
+      "reverseEdits": [
+        {
+          "start": 78,
+          "count": 4,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/mana-numeral.ts": {
+      "before": "65dc7f254bcea2384a2e4607a7e917853c918f0033c3711146d5d4bd3ec92df6",
+      "after": "3222da2e70d543f2b3a2c065c6bc3582176d713643fe039d6fec28fbd2f04120",
+      "reverseEdits": [
+        {
+          "start": 81,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 28,
+          "count": 11,
+          "lines": [
+            "  const numbers = !!cost || (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1));\n",
+            "  if (!cost && !numbers && !a?.glyphs && !Object.keys(images.manaGlyphScales ?? {}).length)\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-mana-adjustment.ts": {
+      "before": "dc0aba1b7ba651baa226bdda5006bc188a41b5e273e6467d82b4995540eecd2e",
+      "after": "ae53ce01f10a56c36a4ac140efaaa07ddc2f8e061dfd73019415cfa55ee183b9",
+      "reverseEdits": [
+        {
+          "start": 35,
+          "count": 3,
+          "lines": ["  return base;\n"]
+        },
+        {
+          "start": 19,
+          "count": 1,
+          "lines": ["  const early = ['lea', 'leb', '3ed'].includes(set);\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-mana-profiles.ts": {
+      "before": "19e04153c43a1bd241e9576b1b5e29ea0bc681cf88b81381393573df871002c0",
+      "after": "fca9dfd9eb128315b3906aa14c03ecbd8a964daaebcd99b728c7cbf5b9c26cf1",
+      "reverseEdits": [
+        {
+          "start": 13,
+          "count": 111,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/printing/corrections.ts": {
+      "before": "fd77c58d0afb4f3736daa461b2124c522eead3943cf0291b2ac3998b656d26d1",
+      "after": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+      "reverseEdits": [
+        {
+          "start": 9081,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["  '30155593428ad3ebd912d6bf2a8a1363ccac9a7838a1bb2b89fb9a26440ae87e';\n"]
+        }
+      ]
+    },
+    "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+      "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+      "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+      "reverseEdits": [
+        {
+          "start": 29,
+          "count": 8,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

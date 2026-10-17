@@ -21,6 +21,8 @@ import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
 import { ORDINARY_COLOR_PROFILES } from './ordinary-color-profiles.js';
 import { LEGENDS_COLOR_PROFILES } from './legends-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
+import { earlyExpansionMana, arabianManaVariant } from './early-expansion-mana.js';
+import { EARLY_EXPANSION_MANA_TARGETS } from './early-expansion-mana-colors.js';
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
@@ -62,6 +64,12 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
   if (!hasColorCalibration(face)) return undefined;
   if (face.setCode?.toLowerCase() === 'leg' && !legendsFrame(face)) return undefined;
   const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
+  if (earlyExpansionMana(face)) {
+    const variant = arabianManaVariant(face);
+    return variant && (symbol === 'W' || symbol === 'B')
+      ? EARLY_EXPANSION_MANA_TARGETS[`arn-${variant}-black-${symbol}`]
+      : EARLY_EXPANSION_MANA_TARGETS[key];
+  }
   return MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key];
 }
 

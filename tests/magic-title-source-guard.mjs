@@ -1,3 +1,4 @@
+import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -48,7 +49,7 @@ async function proof(readSource) {
 /** Reconstruct complete 0.4.10 sources for historical, non-title evidence only.
  * The current title implementation is independently checked by native replay,
  * score gates and scope tests. Historical measurements keep their original hashes. */
-export async function preTitleCalibrationSource(file, readSource = readFile) {
+export async function preTitleCalibrationSource(file, readSource = preManaCalibrationSource) {
   const bytes = await readSource(file),
     extension = await proof(readSource),
     change = extension.files[file];

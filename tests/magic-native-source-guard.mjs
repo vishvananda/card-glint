@@ -4,6 +4,7 @@ import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
 import { preTitleCalibrationSource } from './magic-title-source-guard.mjs';
+import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 import {
   assertNativeDefaultCompatibility,
   nativeHostSources,
@@ -22,12 +23,16 @@ export async function readNativeHostSource(file) {
   return reference;
 }
 
+export async function readPreManaHostSource(file) {
+  return preManaCalibrationSource(file, readNativeHostSource);
+}
+
 async function readPreTitleHostSource(file) {
-  return preTitleCalibrationSource(file, readNativeHostSource);
+  return preTitleCalibrationSource(file, readPreManaHostSource);
 }
 
 /** Prove current host hooks against upstream before reversing the separately
- * verified title and calibration changes for unchanged historical receipts. */
+ * verified mana, title and calibration changes for unchanged historical receipts. */
 export async function readNativeCompatibleSource(file) {
   return calibrationLegacySource(file, readPreTitleHostSource);
 }

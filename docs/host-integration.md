@@ -44,11 +44,11 @@ Native rules suppression and geometry stay in the game pack. Custom layouts,
 interaction panels, fallback policy and animation scheduling belong to the host.
 
 The host compatibility runner compares default pixels, text measurements and
-layouts against upstream 0.4.12 at `8dd2e4d47b2ea739c433afcaf4e05535c592b376`.
+layouts against upstream 0.4.13 at `e97f31efde9170b4e918063be1605426284d38a6`.
 Run `node tests/magic-native-host-compatibility.mjs` after building WASM.
 Its 870 probes use synthetic plates and browser fonts, not fresh scan calibration.
 Historical calibration checks first prove host compatibility, then reverse the
-reviewed title and calibration-policy changes without replacing receipt hashes.
+reviewed mana, title and calibration-policy changes without replacing receipt hashes.
 
 `createRenderer({canvas, rasterHost})` accepts an optional `RasterHost` for all
 card rasters, artwork edge sources, layers, scene rasters and exports. Omit it
@@ -101,8 +101,9 @@ including `max(base, etchAdd) * (1 - etchExclude)`. Upload it without premultipl
 or sRGB conversion; finish shaders sample its red channel. Finish coverage
 and protected-ink exclusions remain the host material's separate responsibility.
 The caller owns the returned canvas and its uploaded texture. Cache them by
-immutable recipe/source revision, dimensions and algorithm, releasing canvases
-and textures on eviction. Never call this preparation API from a frame loop.
+pack identifier, immutable recipe/source revision, dimensions and algorithm,
+releasing canvases and textures on eviction. Never call this preparation API
+from a frame loop.
 
 Standalone preparation is serialized through a bounded 16 MiB texture cache and
 8 MiB edge scratch budget, sharing the full renderer's mask composer rather than
