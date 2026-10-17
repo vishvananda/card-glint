@@ -195,6 +195,22 @@ assert.equal(
 const eighth = reports.find((s) => s.set === '8ed');
 assert.equal(eighth.nonfoil, 357);
 assert.equal(eighth.foilOnly, 350);
+const earlyScores = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-full-scores.json'),
+);
+assert.equal(earlyScores.total, 316);
+assert.equal(earlyScores.scored, 282);
+assert.equal(earlyScores.normalizationReview, 34);
+assert.equal(earlyScores.summary.improved, 281);
+assert.equal(earlyScores.summary.worstRegression, 0);
+for (const row of earlyScores.rows.filter((r) => r.after)) {
+  assert.equal(row.after.components.type.eligible, false);
+  assert.equal(row.before.components.type.eligible, false);
+  if (/unverified|fallback|oracle/i.test(row.wording.rules))
+    assert.equal(row.after.components.rules.eligible, false);
+}
+for (const set of ledger.sets.filter((s) => ['arn', 'atq', 'drk'].includes(s.set)))
+  for (const group of set.groups) assert.equal(group.tasks.fullCard.status, 'partial');
 console.log(
   'Calibration ledger: full inventory, completion gates, stale evidence and foil denominators passed.',
 );

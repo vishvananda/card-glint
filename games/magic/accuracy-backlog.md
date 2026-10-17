@@ -60,7 +60,8 @@ use identical pixels, plus a separate texture comparison. Reference profile
 medians still suppress content statistically; these are not whole-card accuracy
 scores. The private gallery has 36 examples with blend, difference and red/green
 overlays. Color calibration is partially integrated below; symbols and typography
-are unfinished. No new release or live scoring template has been published.
+are unfinished. These renderer changes are prepared for 0.4.2; live scoring
+templates remain separate and are not deployed by the renderer release.
 
 The red texture-smoothing proposal is rejected. It appeared to accept 22 more
 scans, but recovered only 9/20 known poses within the existing 0.3-pixel limit;
@@ -92,9 +93,19 @@ probes and all 288 tested mana targets are unchanged, including Alpha/Beta's
 separate stock and interior policies. The gallery shows aligned scans, 0.4.1,
 raw replacement frames and calibrated candidates with the same overlay modes.
 
+The [full-card diagnostic receipt](fixtures/accuracy/early-expansion-full-scores.json)
+scores the 282 accepted interior poses with fixed application regions. The
+structural index improves from about 42.5 to 62.8 out of 100; 281 improve and the
+unchanged Arabian Nights Mountain retains its score. None regress.
+Arabian Nights improves 41.3 → 63.7, Antiquities 45.5 → 61.9, and The Dark
+40.8 → 62.9. Unverified type lines and fallback rules do not enter the weighted
+index. Their diagnostics and all 34 unresolved normalizations stay visible.
+These are reused development references and incomplete component coverage,
+not full-set compliance. No renderer parameters were selected from these scores.
+
 Next: resolve the remaining frame/color cases, fit headings and symbols, verify
 original wording, then fit rules, power/toughness and illustrator text. Preserve
-reused-validation labels and release after fresh full-card scores.
+reused-validation labels and update the full-card receipt after each batch.
 
 ## Modern land calibration coverage
 

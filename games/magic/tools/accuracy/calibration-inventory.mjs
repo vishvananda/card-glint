@@ -24,6 +24,7 @@ const server = await createServer({
 });
 const early = await readJson(fixtureRoot + '/early-expansion-colors.json');
 const earlyFrames = await readJson(fixtureRoot + '/early-expansion-calibration.json');
+const earlyScores = await readJson(fixtureRoot + '/early-expansion-full-scores.json');
 const historical = await readJson(fixtureRoot + '/five-set-hsb-adoption.json');
 const colorGaps = await readJson(fixtureRoot + '/showcased-color-gap-review.json');
 const m21Color = await readJson(fixtureRoot + '/m21-normal-color-adoption.json');
@@ -184,6 +185,13 @@ try {
             reason: geometry
               ? 'Shared replacement source and aperture adopted; boundary diagnostics pass. Complete frame/corner and variant certification remains open.'
               : 'No replacement source/geometry has been adopted for this material.',
+          };
+          const scored = earlyScores.rows.filter((r) => g.printingIds.includes(r.id) && r.after);
+          g.tasks.fullCard = {
+            status: 'partial',
+            evidence: ['games/magic/fixtures/accuracy/early-expansion-full-scores.json'],
+            reason: `${scored.length}/${g.printings} fixed-region before/after diagnostics. Unverified type lines and fallback rules are excluded; remaining wording, normalization and outlier review prevent full-card certification.`,
+            coveredPrintings: scored.length,
           };
         }
         const old = source && historical.results.find((r) => r.key === source.key);
