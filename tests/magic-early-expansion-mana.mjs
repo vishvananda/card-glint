@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 
 const proof = JSON.parse(await readFile('games/magic/fixtures/accuracy/early-expansion-mana.json'));
 assert.equal(proof.validationKind, 'repeated');
@@ -18,6 +19,14 @@ assert.deepEqual(
   ["Gaea's Touch"],
 );
 assert.equal(proof.fullCardDiagnostic.originalCostCorrections.length, 1);
+const annotation = proof.annotationCorrection;
+const previous = await preManaCalibrationSource(annotation.file);
+assert.equal(hash(previous), annotation.before);
+const current = JSON.parse(await readFile(annotation.file));
+assert.deepEqual(current.cards[annotation.printingId].reviewedFields, ['manaSymbols']);
+assert.deepEqual(current.cards[annotation.printingId].manaSymbols, ['5', '5']);
+delete current.cards[annotation.printingId];
+assert.deepEqual(current, JSON.parse(previous), 'Other reviewed wording must stay unchanged');
 for (const row of proof.native.rows) {
   assert.equal(row.outsideChanged, 0);
   if (row.costScored) assert.equal(row.proposalParity, true);

@@ -207,7 +207,9 @@
     "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
     "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
     "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-    "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+    "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+    "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+    "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
   },
   "summary": {
     "arn/calibration": {
@@ -33186,6 +33188,14 @@
       "normalizedScanHash": "015d187c294b05973886b3c2ab889c9d3be72ca03b97be4fef3b713445b47f61"
     }
   ],
+  "annotationCorrection": {
+    "file": "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json",
+    "printingId": "8fecc5d2-5298-4d47-b085-f160603f220e",
+    "reviewedFields": ["manaSymbols"],
+    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+    "otherAnnotationsUnchanged": true
+  },
   "fullCardDiagnostic": {
     "policy": "Fixed existing application whole-card structural index, same weights and original inputs on both sides. Native rasters, frozen scan poses, ten unresolved scans excluded. Credits retain the existing unverified-credit exclusion. Similarity indices are not correctness percentages or complete-set certification; mana shape also has independent filled-area and native region checks. Some legacy frame diagnostic rectangles overlap inline mana, so those aggregate metrics can move despite exact per-symbol pixel isolation. Hosted graphs are not updated by this local report.",
     "metricVersion": "printing-structure-v1",

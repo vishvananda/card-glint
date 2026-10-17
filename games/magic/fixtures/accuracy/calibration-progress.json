@@ -11166,7 +11166,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -11191,7 +11193,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -11275,10 +11279,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -11680,7 +11692,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -11705,7 +11719,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -11789,10 +11805,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -12178,7 +12202,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -12203,7 +12229,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -12287,10 +12315,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -12699,7 +12735,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -12724,7 +12762,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -12808,10 +12848,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -13214,10 +13262,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -13549,7 +13605,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -13574,7 +13632,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -13658,10 +13718,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -13999,7 +14067,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -14024,7 +14094,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -14108,10 +14180,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -14457,10 +14537,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -14869,7 +14957,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -14894,7 +14984,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -14979,10 +15071,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -15381,7 +15481,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -15406,7 +15508,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -15490,10 +15594,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -15888,7 +16000,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -15913,7 +16027,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -15997,10 +16113,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -16405,7 +16529,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -16430,7 +16556,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -16514,10 +16642,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -16867,7 +17003,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -16892,7 +17030,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -16976,10 +17116,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -17342,7 +17490,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -17367,7 +17517,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -17451,10 +17603,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -17851,10 +18011,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -18200,7 +18368,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -18225,7 +18395,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -18309,10 +18481,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -18648,7 +18828,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -18673,7 +18855,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -18757,10 +18941,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -19102,7 +19294,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -19127,7 +19321,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -19211,10 +19407,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -19585,7 +19789,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -19610,7 +19816,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -19695,10 +19903,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -20135,10 +20351,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -20467,7 +20691,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -20492,7 +20718,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -20576,10 +20804,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -20914,7 +21150,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -20939,7 +21177,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -21023,10 +21263,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -21436,7 +21684,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -21461,7 +21711,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -21546,10 +21798,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -21952,7 +22212,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -21977,7 +22239,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -22061,10 +22325,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -22395,7 +22667,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -22420,7 +22694,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -22504,10 +22780,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -22841,7 +23125,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -22866,7 +23152,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -22950,10 +23238,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -23357,7 +23653,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -23382,7 +23680,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -23466,10 +23766,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -23876,7 +24184,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -23901,7 +24211,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -23985,10 +24297,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -31790,7 +32110,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -31815,7 +32137,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -31900,10 +32224,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -32309,7 +32641,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -32334,7 +32668,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -32419,10 +32755,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -32700,7 +33044,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -32725,7 +33071,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -32809,10 +33157,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -33086,7 +33442,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -33111,7 +33469,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -33195,10 +33555,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -33528,7 +33896,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -33553,7 +33923,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -33637,10 +34009,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -33993,7 +34373,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -34018,7 +34400,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -34103,10 +34487,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -34476,10 +34868,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -34836,7 +35236,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -34861,7 +35263,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -34946,10 +35350,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -35305,7 +35717,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -35330,7 +35744,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -35415,10 +35831,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -35836,7 +36260,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -35861,7 +36287,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -35946,10 +36374,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -36369,7 +36805,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -36394,7 +36832,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -36478,10 +36918,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -36764,7 +37212,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -36789,7 +37239,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -36873,10 +37325,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -37279,7 +37739,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -37304,7 +37766,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -37389,10 +37853,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -37800,7 +38272,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -37825,7 +38299,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -37909,10 +38385,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -38313,7 +38797,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -38338,7 +38824,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -38423,10 +38911,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
@@ -38834,7 +39330,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "manaColor": {
@@ -38859,7 +39357,9 @@
                 "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
                 "games/magic/src/presentation/historical-white.ts": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
-                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178"
+                "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+                "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
               }
             },
             "setSymbol": {
@@ -38943,10 +39443,18 @@
                   "games/magic/tools/accuracy/calibration-original-wording.mjs": "92de0aa73187da1080c34737fd67baaa9944a10595d8fccba24310a139cda6c4",
                   "games/magic/fixtures/accuracy/early-expansion-original-wording.json": "05f27f32525741b93e987a1db78ac180a0e13834feba01062c76c3c002f02bcf",
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81",
-                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
                   "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577"
                 },
-                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open."
+                "reason": "Exact printing inputs retained, with reviewed punctuation and discretionary breaks applied. All unrelated face fields and 292 M21 adapter outputs remain identical. Broader transcription and inline-symbol style review remains open.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": {
+                    "before": "c9c7a5b8a95df2f27da5ac658176dad7788e89d7eddab82da5a97b9f64312f8c",
+                    "after": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
+                    "evidence": "games/magic/fixtures/accuracy/early-expansion-mana.json",
+                    "reason": "Native change is isolated to cost/inline mana; other printing components retain their measured pixels."
+                  }
+                }
               },
               "reviewedAt": "2026-10-17",
               "evidence": [
