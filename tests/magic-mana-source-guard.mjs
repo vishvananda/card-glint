@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preArtistCalibrationSource } from './magic-artist-source-guard.mjs';
 let verified;
 async function proof() {
   return (verified ??= (async () => {
@@ -20,14 +21,18 @@ async function proof() {
     assert.equal(evidence.controls.changed, 0);
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed mana dependency: ' + file);
+      assert.equal(
+        hash(await preArtistCalibrationSource(file)),
+        expected,
+        'Unreviewed mana dependency: ' + file,
+      );
     return extension;
   })());
 }
 /** Historical non-mana receipts retain their original source and pixel hashes.
  * Current behavior is separately certified by native replay and scope tests. */
 export async function preManaCalibrationSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preArtistCalibrationSource(file),
     extension = await proof(),
     change = extension.files[file];
   if (!change) return bytes;

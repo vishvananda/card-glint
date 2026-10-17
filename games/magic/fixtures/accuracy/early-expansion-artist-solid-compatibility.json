@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "e97f31efde9170b4e918063be1605426284d38a6",
+  "evidenceHash": "14dfdc158fac75baffb5a6d60db794f6e873cd1eb6cb89772297941cd6607df9",
+  "policy": "Reconstruct exact 0.4.13 sources for older receipts after proving native artist isolation, frozen-candidate parity and unrelated controls. Historical scan measurements remain unchanged.",
+  "dependencies": {
+    "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+    "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+    "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
+    "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+    "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+    "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+    "games/magic/src/presentation/canvas-assets.ts": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
+    "games/magic/src/presentation/retro-font.ts": "4ec3606aa337bd210f82ae49533342ea48db666d835e82901255625626f13a35",
+    "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+  },
+  "files": {
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "fd8ee7cc6588a650f166cc5d3cd09ab157f31950ceeaf7546490ae5ab2e6df48",
+      "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
+      "reverseEdits": [
+        {
+          "start": 139,
+          "count": 1,
+          "lines": ["    'canvas-face-v147',\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-expansion-artist.ts": {
+      "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+      "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+      "reverseEdits": [
+        {
+          "start": 54,
+          "count": 3,
+          "lines": [
+            "  paintRetroLetterEdges(\n",
+            "    c,\n",
+            "    `Illus. \u00a9 ${set === 'drk' ? '1994 ' : ''}${face.artist}`,\n",
+            "    0,\n",
+            "    0,\n",
+            "    338 / p.width,\n",
+            "    p.edge,\n",
+            "  );\n"
+          ]
+        },
+        {
+          "start": 45,
+          "count": 2,
+          "lines": ["  const p = profiles[set];\n"]
+        },
+        {
+          "start": 11,
+          "count": 28,
+          "lines": [
+            "/** Shared printing geometry, fitted on development names with fixed scan poses.\n",
+            " * These expansions use edge lettering; ABU's solid gray credits stay separate.\n",
+            " * See early-expansion-artist.json for reserved examples and native isolation. */\n"
+          ]
+        },
+        {
+          "start": 5,
+          "count": 1,
+          "lines": ["const profiles = {\n"]
+        },
+        {
+          "start": 2,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    }
+  }
+}
