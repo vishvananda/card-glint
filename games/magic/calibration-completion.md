@@ -415,6 +415,23 @@ still need review. The 34 unresolved poses remain unscored. Full-card aggregates
 for DRK are marked historical until they are recomputed with frame regions that
 do not include rules ink. This batch is included in 0.4.8; rules/flavor stay partial.
 
+The [red-frame boundary extension](fixtures/accuracy/early-expansion-boundary-normalization.json)
+adds comparison poses for seven Antiquities and seventeen The Dark scans. It fits
+the art-box outline and checks the rules box independently, so a misplaced panel
+cannot help choose the scan transform. All 240 known-pose probes for the accepted
+scans recover within 0.286 canonical pixels; replacing their art and rules text
+does not change the fits. All 52 negative controls reject missing outlines or a
+two-pixel rules-box displacement. The earlier joint-box fit failed that last
+test and is not adopted.
+
+Coverage increases from 282 to 306 of 316 printings. Ball Lightning and one Atog
+scan fail the fixed recovery gate and join the eight other unresolved references.
+This qualifies those 24 scans individually, not every scan of these frame types.
+The new manifest preserves all previous accepted poses and historical scores;
+rasters use the tested canonical-resize-then-affine path. Renderer defaults and
+hosted review templates are unchanged. Red source/geometry and color fitting are
+next; outer-stock/corner certification and complete-set checks remain open.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting

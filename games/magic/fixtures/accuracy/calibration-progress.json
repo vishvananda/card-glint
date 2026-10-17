@@ -19445,34 +19445,26 @@
             },
             "normalization": {
               "status": "partial",
-              "reason": "0/5 frozen interior poses; audit the receipt against current completion requirements. Investigate remaining boundary anchors without relabeling scans as bad.",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-calibration.json"],
+              "reason": "4/5 printed-interior poses pass per-card affine recovery and independent box checks. Outer-stock/corner audit remains separate; rejected poses stay unscored.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-calibration.json",
+                "games/magic/fixtures/accuracy/early-expansion-boundary-normalization.json"
+              ],
               "rejectedPrintings": [
-                {
-                  "id": "0848d94a-2704-460f-986b-b192dd6d26b7",
-                  "name": "Dwarven Weaponsmith",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "2249fc40-4412-48fd-800a-7ea3678aee3f",
-                  "name": "Atog",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "5e34fc6b-5f00-4a22-9ee2-afc1caf99961",
-                  "name": "Orcish Mechanics",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "6669d96e-9a7b-4427-a477-f4e76831f593",
-                  "name": "Goblin Artisans",
-                  "status": "outer-only-diagnostic"
-                },
                 {
                   "id": "f77fda65-f70d-44b1-89db-910d2761b81c",
                   "name": "Atog",
-                  "status": "outer-only-diagnostic"
+                  "status": "known-pose-review",
+                  "reasons": ["Known-pose recovery or certification exceeds the frozen tolerance"]
                 }
+              ],
+              "reviewedAt": "2026-10-17",
+              "boundaryRevision": "early-expansion-boundary-v1",
+              "acceptedPrintings": [
+                "6669d96e-9a7b-4427-a477-f4e76831f593",
+                "0848d94a-2704-460f-986b-b192dd6d26b7",
+                "2249fc40-4412-48fd-800a-7ea3678aee3f",
+                "5e34fc6b-5f00-4a22-9ee2-afc1caf99961"
               ]
             },
             "frameGeometry": {
@@ -19796,24 +19788,18 @@
             },
             "normalization": {
               "status": "partial",
-              "reason": "0/3 frozen interior poses; audit the receipt against current completion requirements. Investigate remaining boundary anchors without relabeling scans as bad.",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-calibration.json"],
-              "rejectedPrintings": [
-                {
-                  "id": "0987461a-45c0-4956-8627-cd27a7e038d0",
-                  "name": "Shatterstorm",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "1506d99d-7b2e-4101-84a5-c950dadb263a",
-                  "name": "Artifact Blast",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "ffd7eb90-ae95-49df-898a-9510187bce1c",
-                  "name": "Detonate",
-                  "status": "outer-only-diagnostic"
-                }
+              "reason": "3/3 printed-interior poses pass per-card affine recovery and independent box checks. Outer-stock/corner audit remains separate; rejected poses stay unscored.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-calibration.json",
+                "games/magic/fixtures/accuracy/early-expansion-boundary-normalization.json"
+              ],
+              "rejectedPrintings": [],
+              "reviewedAt": "2026-10-17",
+              "boundaryRevision": "early-expansion-boundary-v1",
+              "acceptedPrintings": [
+                "1506d99d-7b2e-4101-84a5-c950dadb263a",
+                "ffd7eb90-ae95-49df-898a-9510187bce1c",
+                "0987461a-45c0-4956-8627-cd27a7e038d0"
               ]
             },
             "frameGeometry": {
@@ -32401,64 +32387,32 @@
             },
             "normalization": {
               "status": "partial",
-              "reason": "0/11 frozen interior poses; audit the receipt against current completion requirements. Investigate remaining boundary anchors without relabeling scans as bad.",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-calibration.json"],
+              "reason": "10/11 printed-interior poses pass per-card affine recovery and independent box checks. Outer-stock/corner audit remains separate; rejected poses stay unscored.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-calibration.json",
+                "games/magic/fixtures/accuracy/early-expansion-boundary-normalization.json"
+              ],
               "rejectedPrintings": [
-                {
-                  "id": "564e0ccd-decb-48d2-981f-cefa8045340f",
-                  "name": "Sisters of the Flame",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "65a10fd5-506e-46bf-87e6-fde134c0dc04",
-                  "name": "Orc General",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "7135a569-e5d3-4a1f-924b-bdb86926b4e1",
-                  "name": "Goblin Hero",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "72746a5d-faa1-44b7-97b5-0ef9302a3c13",
-                  "name": "Cave People",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "8a538b9d-351e-40bb-be11-9ba08c16352b",
-                  "name": "Goblin Digging Team",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "91e0b59d-8f9b-4a76-9845-bcb0dc32523d",
-                  "name": "Goblin Rock Sled",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "9b73dfb4-d930-4a89-b621-129dd9f6328c",
-                  "name": "Goblin Wizard",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "ba2cc4a6-fdcc-4082-801a-d2c50e560e8d",
-                  "name": "Brothers of Fire",
-                  "status": "outer-only-diagnostic"
-                },
                 {
                   "id": "c1ba83ab-83f5-421d-bba1-0f925870b5c8",
                   "name": "Ball Lightning",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "d3419db6-1c38-4aa4-b953-1dde7d22b927",
-                  "name": "Fire Drake",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "fd333b18-b896-4ab8-9c46-eed4efdd94f2",
-                  "name": "Goblins of the Flarg",
-                  "status": "outer-only-diagnostic"
+                  "status": "known-pose-review",
+                  "reasons": ["Known-pose recovery or certification exceeds the frozen tolerance"]
                 }
+              ],
+              "reviewedAt": "2026-10-17",
+              "boundaryRevision": "early-expansion-boundary-v1",
+              "acceptedPrintings": [
+                "9b73dfb4-d930-4a89-b621-129dd9f6328c",
+                "ba2cc4a6-fdcc-4082-801a-d2c50e560e8d",
+                "fd333b18-b896-4ab8-9c46-eed4efdd94f2",
+                "564e0ccd-decb-48d2-981f-cefa8045340f",
+                "65a10fd5-506e-46bf-87e6-fde134c0dc04",
+                "7135a569-e5d3-4a1f-924b-bdb86926b4e1",
+                "72746a5d-faa1-44b7-97b5-0ef9302a3c13",
+                "8a538b9d-351e-40bb-be11-9ba08c16352b",
+                "91e0b59d-8f9b-4a76-9845-bcb0dc32523d",
+                "d3419db6-1c38-4aa4-b953-1dde7d22b927"
               ]
             },
             "frameGeometry": {
@@ -32795,44 +32749,22 @@
             },
             "normalization": {
               "status": "partial",
-              "reason": "0/7 frozen interior poses; audit the receipt against current completion requirements. Investigate remaining boundary anchors without relabeling scans as bad.",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-calibration.json"],
-              "rejectedPrintings": [
-                {
-                  "id": "72955141-d990-459f-adbe-7d3d0f5f6c95",
-                  "name": "Mana Clash",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "78373616-e2d6-4ccf-998f-09f02bea45b4",
-                  "name": "Blood Moon",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "a6b61512-5b24-424c-966f-36b595781e14",
-                  "name": "Inferno",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "aa2d778d-d74b-45ec-a86b-5d52ffad6ba5",
-                  "name": "Fissure",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
-                  "name": "Goblin Caves",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
-                  "name": "Goblin Shrine",
-                  "status": "outer-only-diagnostic"
-                },
-                {
-                  "id": "d646feea-3c20-4737-8d20-ffad42258ced",
-                  "name": "Eternal Flame",
-                  "status": "outer-only-diagnostic"
-                }
+              "reason": "7/7 printed-interior poses pass per-card affine recovery and independent box checks. Outer-stock/corner audit remains separate; rejected poses stay unscored.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-calibration.json",
+                "games/magic/fixtures/accuracy/early-expansion-boundary-normalization.json"
+              ],
+              "rejectedPrintings": [],
+              "reviewedAt": "2026-10-17",
+              "boundaryRevision": "early-expansion-boundary-v1",
+              "acceptedPrintings": [
+                "aa2d778d-d74b-45ec-a86b-5d52ffad6ba5",
+                "72955141-d990-459f-adbe-7d3d0f5f6c95",
+                "78373616-e2d6-4ccf-998f-09f02bea45b4",
+                "a6b61512-5b24-424c-966f-36b595781e14",
+                "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
+                "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
+                "d646feea-3c20-4737-8d20-ffad42258ced"
               ]
             },
             "frameGeometry": {
