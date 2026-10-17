@@ -15,6 +15,13 @@ published. This is a partial calibration checkpoint. Local scan templates and
 diagnostic scores are not automatically deployed to a review service, and the
 ledger's complete-set release checks remain open.
 
+[Version 0.4.3](https://github.com/vishvananda/card-glint/releases/tag/v0.4.3)
+publishes the M21 stock-coverage correction and refined comparison evidence at
+commit `862e34605ee18b0e77fa9c3497a86ca1118cdd10`. Release CI passed and the package,
+browser archive and immutable CDN assets are published. The stock extension and
+231 accepted comparison poses are described below; no additional pigment
+candidates are included. This remains a partial set-calibration checkpoint.
+
 Run `npm run magic:calibration:report` for the active-set summary, or
 `npm run magic:calibration:report -- m21` for that set's unresolved variant checks.
 Add `--json` for machine-readable status. The report checks source-file guards
