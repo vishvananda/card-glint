@@ -102,16 +102,21 @@ assert.equal(
   'Wording cannot approve text alignment',
 );
 const [wordingReport] = await calibrationReport({ sets: [m21] });
-// The input-isolation replay proves compatibility. The older native receipt
-// still reports stale until its dependency chain is refreshed explicitly.
-assert.equal(wordingReport.originalRulesInputs.ready, 0);
-assert.equal(wordingReport.originalRulesInputs.stale, 292);
+assert.equal(wordingReport.originalRulesInputs.ready, 292);
+assert.equal(wordingReport.originalRulesInputs.stale, 0);
+const currentInputs = await read('m21-original-input-compatibility.json');
+assert.equal(currentInputs.summary.originalInputs, 292);
+assert.equal(currentInputs.checks.length, 292);
+assert.ok(currentInputs.checks.every((r) => r.beforeHash === r.afterHash));
+assert.deepEqual(currentInputs.rows, wording.rows);
+for (const [file, expected] of Object.entries(currentInputs.methodGuards))
+  assert.equal(hash(await readFile(file)), expected, 'Stale original-input replay: ' + file);
 const changedWording = structuredClone(m21);
 const changedScope = changedWording.groups.find((g) => g.tasks.rules.originalInput);
 changedScope.tasks.rules.originalInput.guards = { 'missing-wording-source': '0'.repeat(64) };
 const [changedReport] = await calibrationReport({ sets: [changedWording] });
-assert.equal(changedReport.originalRulesInputs.stale, 292);
-assert.equal(changedReport.originalRulesInputs.ready, 0);
+assert.equal(changedReport.originalRulesInputs.stale, changedScope.printings);
+assert.equal(changedReport.originalRulesInputs.ready, 292 - changedScope.printings);
 assert.equal(white.rows.length, 42);
 assert.equal(white.choice, 'source-default');
 assert.equal(white.normalization.knownPosePassed, 10);

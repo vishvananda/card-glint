@@ -292,6 +292,18 @@ candidate scores retain the incorrect input and expose it as a limitation;
 refresh those inputs before the next fitting/replay pass. Renderer adoption,
 illustrator geometry, native full-set replay and release remain open.
 
+The [corrected-input replay](fixtures/accuracy/early-expansion-corrected-inputs.json)
+now renders all 316 cards with those reviewed corrections. Exactly 21 renders
+change: 19 artist credits and two text bodies. Every pixel outside the affected
+regions remains identical to the preserved baseline. Original-input readiness
+is current again; the shared typography study above still uses its original
+historical inputs. A separate smaller-type-size trial uses the new baseline.
+
+The [M21 input compatibility check](fixtures/accuracy/m21-original-input-compatibility.json)
+also repeats all 292 original inputs with their printing-source records and
+reviewed annotations. They remain identical. This extends input readiness;
+it does not relabel the existing native images or scores as a new measurement.
+
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for

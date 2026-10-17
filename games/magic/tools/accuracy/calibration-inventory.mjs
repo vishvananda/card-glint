@@ -37,7 +37,7 @@ const server = await createServer({
 const early = await readJson(fixtureRoot + '/early-expansion-colors.json');
 const earlyFrames = await readJson(fixtureRoot + '/early-expansion-calibration.json');
 const earlyScores = await readJson(fixtureRoot + '/early-expansion-full-scores.json');
-const earlyWording = await readJson(fixtureRoot + '/early-expansion-original-wording.json');
+const earlyWording = await readJson(fixtureRoot + '/early-expansion-corrected-inputs.json');
 const historical = await readJson(fixtureRoot + '/five-set-hsb-adoption.json');
 const colorGaps = await readJson(fixtureRoot + '/showcased-color-gap-review.json');
 const m21Color = await readJson(fixtureRoot + '/m21-normal-color-adoption.json');
@@ -47,7 +47,7 @@ const m21ExistingPigment = await readJson(fixtureRoot + '/m21-existing-pigment-a
 const m21Refined = await readJson(fixtureRoot + '/m21-component-boundaries-v2.json');
 const m21Stock = await readJson(fixtureRoot + '/modern-land-stock-transfer.json');
 const m21White = await readJson(fixtureRoot + '/m21-white-default.json');
-const m21Wording = await readJson(fixtureRoot + '/m21-original-wording.json');
+const m21Wording = await readJson(fixtureRoot + '/m21-original-input-compatibility.json');
 const m21Red = await readJson(fixtureRoot + '/m21-red-color-adoption.json');
 const matchGuards = async (receipt) =>
   (

@@ -2,7 +2,9 @@
 export function applyEarlyOriginalWording(group, receipt, guardsMatch) {
   const rows = receipt.rows.filter((r) => group.printingIds.includes(r.id));
   if (!rows.length) return;
-  const evidence = ['games/magic/fixtures/accuracy/early-expansion-original-wording.json'];
+  const evidence = [
+    receipt.evidenceFile ?? 'games/magic/fixtures/accuracy/early-expansion-original-wording.json',
+  ];
   const blockers = receipt.renderingBlockers.filter((r) => group.printingIds.includes(r.id));
   if (blockers.length)
     group.tasks.frameGeometry = {

@@ -130,7 +130,7 @@ export function applyM21OriginalWording(group, receipt, guardsMatch) {
         values.length,
       ]),
     ),
-    evidence: ['games/magic/fixtures/accuracy/m21-original-wording.json'],
+    evidence: [receipt.evidenceFile ?? 'games/magic/fixtures/accuracy/m21-original-wording.json'],
     guards: receipt.methodGuards,
     reason:
       'Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence.',
