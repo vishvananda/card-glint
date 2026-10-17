@@ -6,7 +6,11 @@ import { readObject } from './cache.mjs';
 import { printingScope, summarizeSet } from './rollout-policy.mjs';
 import { calibrationVariant, calibrationApplicability } from './calibration-groups.mjs';
 import { CALIBRATION_TASKS, calibrationSetStatus } from './calibration-ledger.mjs';
-import { applyM21Evidence, applyM21MonoEvidence } from './calibration-m21-evidence.mjs';
+import {
+  applyM21Evidence,
+  applyM21MonoEvidence,
+  applyM21PigmentAudit,
+} from './calibration-m21-evidence.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
 const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
@@ -30,6 +34,7 @@ const colorGaps = await readJson(fixtureRoot + '/showcased-color-gap-review.json
 const m21Color = await readJson(fixtureRoot + '/m21-normal-color-adoption.json');
 const m21Boundaries = await readJson(fixtureRoot + '/m21-normal-boundaries.json');
 const m21MonoBoundaries = await readJson(fixtureRoot + '/m21-mono-boundaries.json');
+const m21ExistingPigment = await readJson(fixtureRoot + '/m21-existing-pigment-audit.json');
 const m21GuardsMatch = (
   await Promise.all(
     Object.entries(m21Color.sourceGuards).map(
@@ -333,6 +338,7 @@ try {
             m21Color.native.rendererHash,
             m21MonoGuardsMatch,
           );
+          applyM21PigmentAudit(g, m21ExistingPigment);
         }
         g.tasks.release = {
           status: 'pending',

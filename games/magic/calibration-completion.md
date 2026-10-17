@@ -130,3 +130,11 @@ the fixed 0.30-pixel limit in two tests (0.35 pixels). Its 42 apparently consist
 scan poses remain rejected until the method improves. Passing real-scan
 correlations alone cannot close normalization. The independent test result is
 48/50, with 10/10 passing separately for white, blue, black and green.
+
+The [existing-pigment audit](fixtures/accuracy/m21-existing-pigment-audit.json)
+remeasures blue, red and green in the corrected rail windows. Blue still needs a
+shared refit: its median error is 6.26 and 36 of 41 references exceed 5. Green's
+unchanged source passes aggregate gates, but five absolute outliers and visible
+hue/texture differences keep its task open. Red's diagnostics remain unvalidated
+until its normalization method passes. No new rendering values are adopted by
+this audit, and no scan is excluded merely for having an inconvenient color.

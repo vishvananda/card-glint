@@ -137081,8 +137081,117 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Unchanged green passes aggregate regional gates; five absolute outliers and visible hue/texture differences still require review before certifying a default.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.2978667413435248,
+                      "after": 2.2978667413435248
+                    },
+                    "shadowLightness": {
+                      "before": 1.1329462732728834,
+                      "after": 1.1329462732728834
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 2.654839708427376,
+                  "after": 2.654839708427376,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.392686668111548,
+                      "after": 2.392686668111548
+                    },
+                    "shadowLightness": {
+                      "before": 1.2209562612563118,
+                      "after": 1.2209562612563118
+                    },
+                    "contrastError": {
+                      "before": 1.4466860837115227,
+                      "after": 1.4466860837115227
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.053242037235238,
+                      "after": 2.053242037235238
+                    },
+                    "shadowLightness": {
+                      "before": 0.650466754901402,
+                      "after": 0.650466754901402
+                    },
+                    "contrastError": {
+                      "before": 1.0164609924598658,
+                      "after": 1.0164609924598658
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 23,
+                  "before": 2.8320650608393017,
+                  "after": 2.8320650608393017,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.3454582876841745,
+                      "after": 2.3454582876841745
+                    },
+                    "shadowLightness": {
+                      "before": 1.3877470768841382,
+                      "after": 1.3877470768841382
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                }
+              },
+              "absoluteOutliers": [
+                {
+                  "id": "17bc2af0-5a1d-4319-a285-6a15cf86be83",
+                  "name": "Fierce Empath",
+                  "cohort": "calibration",
+                  "error": 10.426149594952925,
+                  "referenceHash": "2c2cf10fa98029b5185c0999d1519b42b02ce5f6343a5e141b9d8835240e6e9d"
+                },
+                {
+                  "id": "c2c4a0e7-9ca4-4291-94de-165cc2ded822",
+                  "name": "Ornery Dilophosaur",
+                  "cohort": "additional-development",
+                  "error": 6.362587834904112,
+                  "referenceHash": "f1f026f5480faffcca5c04cb861c55061b7d543737ef43ddc6ae720fe69f0cd0"
+                },
+                {
+                  "id": "df520254-0c72-496b-9222-263ca9d3c5d5",
+                  "name": "Pridemalkin",
+                  "cohort": "additional-development",
+                  "error": 5.194825793432522,
+                  "referenceHash": "535e3763371c87957897be5f9011df4a4f4d735fa748fabf740f1683017d7bb2"
+                }
+              ]
             },
             "paperColor": {
               "status": "needs-audit",
@@ -137226,8 +137335,110 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Unchanged green passes aggregate regional gates; five absolute outliers and visible hue/texture differences still require review before certifying a default.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.2978667413435248,
+                      "after": 2.2978667413435248
+                    },
+                    "shadowLightness": {
+                      "before": 1.1329462732728834,
+                      "after": 1.1329462732728834
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 2.654839708427376,
+                  "after": 2.654839708427376,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.392686668111548,
+                      "after": 2.392686668111548
+                    },
+                    "shadowLightness": {
+                      "before": 1.2209562612563118,
+                      "after": 1.2209562612563118
+                    },
+                    "contrastError": {
+                      "before": 1.4466860837115227,
+                      "after": 1.4466860837115227
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.053242037235238,
+                      "after": 2.053242037235238
+                    },
+                    "shadowLightness": {
+                      "before": 0.650466754901402,
+                      "after": 0.650466754901402
+                    },
+                    "contrastError": {
+                      "before": 1.0164609924598658,
+                      "after": 1.0164609924598658
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 23,
+                  "before": 2.8320650608393017,
+                  "after": 2.8320650608393017,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.3454582876841745,
+                      "after": 2.3454582876841745
+                    },
+                    "shadowLightness": {
+                      "before": 1.3877470768841382,
+                      "after": 1.3877470768841382
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                }
+              },
+              "absoluteOutliers": [
+                {
+                  "id": "d6099863-8d3d-44bf-8d3b-dc3602119617",
+                  "name": "Garruk's Warsteed",
+                  "cohort": "additional-development",
+                  "error": 5.335271805393804,
+                  "referenceHash": "d91c5fea47cb06a421a3583dda3fb2dc53bc979549870ac07695eba6ff2a9fc6"
+                },
+                {
+                  "id": "e6ab63c8-0adc-4d74-aee5-a58ce5c0dad8",
+                  "name": "Sporeweb Weaver",
+                  "cohort": "additional-development",
+                  "error": 6.96139061294044,
+                  "referenceHash": "e4e22859955a8ffc29a8ad1caa277faff8cfc110ab479b837aa6b97a0d7b4b14"
+                }
+              ]
             },
             "paperColor": {
               "status": "needs-audit",
@@ -137725,8 +137936,95 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Unchanged green passes aggregate regional gates; five absolute outliers and visible hue/texture differences still require review before certifying a default.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.2978667413435248,
+                      "after": 2.2978667413435248
+                    },
+                    "shadowLightness": {
+                      "before": 1.1329462732728834,
+                      "after": 1.1329462732728834
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 2.654839708427376,
+                  "after": 2.654839708427376,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.392686668111548,
+                      "after": 2.392686668111548
+                    },
+                    "shadowLightness": {
+                      "before": 1.2209562612563118,
+                      "after": 1.2209562612563118
+                    },
+                    "contrastError": {
+                      "before": 1.4466860837115227,
+                      "after": 1.4466860837115227
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.053242037235238,
+                      "after": 2.053242037235238
+                    },
+                    "shadowLightness": {
+                      "before": 0.650466754901402,
+                      "after": 0.650466754901402
+                    },
+                    "contrastError": {
+                      "before": 1.0164609924598658,
+                      "after": 1.0164609924598658
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 23,
+                  "before": 2.8320650608393017,
+                  "after": 2.8320650608393017,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.3454582876841745,
+                      "after": 2.3454582876841745
+                    },
+                    "shadowLightness": {
+                      "before": 1.3877470768841382,
+                      "after": 1.3877470768841382
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                }
+              },
+              "absoluteOutliers": []
             },
             "paperColor": {
               "status": "needs-audit",
@@ -137865,8 +138163,95 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Unchanged green passes aggregate regional gates; five absolute outliers and visible hue/texture differences still require review before certifying a default.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.2978667413435248,
+                      "after": 2.2978667413435248
+                    },
+                    "shadowLightness": {
+                      "before": 1.1329462732728834,
+                      "after": 1.1329462732728834
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 2.654839708427376,
+                  "after": 2.654839708427376,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.392686668111548,
+                      "after": 2.392686668111548
+                    },
+                    "shadowLightness": {
+                      "before": 1.2209562612563118,
+                      "after": 1.2209562612563118
+                    },
+                    "contrastError": {
+                      "before": 1.4466860837115227,
+                      "after": 1.4466860837115227
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 2.821654189069239,
+                  "after": 2.821654189069239,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.053242037235238,
+                      "after": 2.053242037235238
+                    },
+                    "shadowLightness": {
+                      "before": 0.650466754901402,
+                      "after": 0.650466754901402
+                    },
+                    "contrastError": {
+                      "before": 1.0164609924598658,
+                      "after": 1.0164609924598658
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 23,
+                  "before": 2.8320650608393017,
+                  "after": 2.8320650608393017,
+                  "worstRegression": 0,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.3454582876841745,
+                      "after": 2.3454582876841745
+                    },
+                    "shadowLightness": {
+                      "before": 1.3877470768841382,
+                      "after": 1.3877470768841382
+                    },
+                    "contrastError": {
+                      "before": 1.3277086516451995,
+                      "after": 1.3277086516451995
+                    }
+                  },
+                  "flags": []
+                }
+              },
+              "absoluteOutliers": []
             },
             "paperColor": {
               "status": "needs-audit",
@@ -138233,8 +138618,100 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Color/contrast diagnostics need a refit, but the red normalization method fails known-pose validation first.",
+              "measurements": {
+                "all": {
+                  "cards": 42,
+                  "before": 3.124065529412559,
+                  "after": 3.222262393710066,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.645357333254513,
+                      "after": 2.321268680053735
+                    },
+                    "shadowLightness": {
+                      "before": 1.7979609677011676,
+                      "after": 1.2873877354345975
+                    },
+                    "contrastError": {
+                      "before": 1.6762060168417214,
+                      "after": 3.047441466259315
+                    }
+                  },
+                  "flags": ["shadowChroma-regression", "contrastError-regression"]
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 3.4940036188608574,
+                  "after": 3.53822861869377,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.46205575325406,
+                      "after": 2.0550446974200125
+                    },
+                    "shadowLightness": {
+                      "before": 2.192412757315493,
+                      "after": 1.2669963832008135
+                    },
+                    "contrastError": {
+                      "before": 1.6769280269225888,
+                      "after": 1.1314722320370976
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 10,
+                  "before": 4.030553382215086,
+                  "after": 3.7136695396253288,
+                  "worstRegression": 0.47744669575734466,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 3.0558527276719145,
+                      "after": 2.2793906262200805
+                    },
+                    "shadowLightness": {
+                      "before": 2.9917448597102267,
+                      "after": 1.1564422655421542
+                    },
+                    "contrastError": {
+                      "before": 1.454281753147363,
+                      "after": 1.8274557614206657
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 25,
+                  "before": 2.9099498843294302,
+                  "after": 3.148638454148796,
+                  "worstRegression": 0.9621146713698887,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.6004955924359587,
+                      "after": 2.3234650291186285
+                    },
+                    "shadowLightness": {
+                      "before": 1.0550196242358256,
+                      "after": 1.3470313471721285
+                    },
+                    "contrastError": {
+                      "before": 1.7093309597674775,
+                      "after": 3.122904879300542
+                    }
+                  },
+                  "flags": [
+                    "median-regression",
+                    "shadowChroma-regression",
+                    "shadowLightness-regression",
+                    "contrastError-regression"
+                  ]
+                }
+              },
+              "absoluteOutliers": []
             },
             "paperColor": {
               "status": "needs-audit",
@@ -138352,8 +138829,100 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Color/contrast diagnostics need a refit, but the red normalization method fails known-pose validation first.",
+              "measurements": {
+                "all": {
+                  "cards": 42,
+                  "before": 3.124065529412559,
+                  "after": 3.222262393710066,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.645357333254513,
+                      "after": 2.321268680053735
+                    },
+                    "shadowLightness": {
+                      "before": 1.7979609677011676,
+                      "after": 1.2873877354345975
+                    },
+                    "contrastError": {
+                      "before": 1.6762060168417214,
+                      "after": 3.047441466259315
+                    }
+                  },
+                  "flags": ["shadowChroma-regression", "contrastError-regression"]
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 3.4940036188608574,
+                  "after": 3.53822861869377,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.46205575325406,
+                      "after": 2.0550446974200125
+                    },
+                    "shadowLightness": {
+                      "before": 2.192412757315493,
+                      "after": 1.2669963832008135
+                    },
+                    "contrastError": {
+                      "before": 1.6769280269225888,
+                      "after": 1.1314722320370976
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 10,
+                  "before": 4.030553382215086,
+                  "after": 3.7136695396253288,
+                  "worstRegression": 0.47744669575734466,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 3.0558527276719145,
+                      "after": 2.2793906262200805
+                    },
+                    "shadowLightness": {
+                      "before": 2.9917448597102267,
+                      "after": 1.1564422655421542
+                    },
+                    "contrastError": {
+                      "before": 1.454281753147363,
+                      "after": 1.8274557614206657
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 25,
+                  "before": 2.9099498843294302,
+                  "after": 3.148638454148796,
+                  "worstRegression": 0.9621146713698887,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.6004955924359587,
+                      "after": 2.3234650291186285
+                    },
+                    "shadowLightness": {
+                      "before": 1.0550196242358256,
+                      "after": 1.3470313471721285
+                    },
+                    "contrastError": {
+                      "before": 1.7093309597674775,
+                      "after": 3.122904879300542
+                    }
+                  },
+                  "flags": [
+                    "median-regression",
+                    "shadowChroma-regression",
+                    "shadowLightness-regression",
+                    "contrastError-regression"
+                  ]
+                }
+              },
+              "absoluteOutliers": []
             },
             "paperColor": {
               "status": "needs-audit",
@@ -138829,8 +139398,100 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Color/contrast diagnostics need a refit, but the red normalization method fails known-pose validation first.",
+              "measurements": {
+                "all": {
+                  "cards": 42,
+                  "before": 3.124065529412559,
+                  "after": 3.222262393710066,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.645357333254513,
+                      "after": 2.321268680053735
+                    },
+                    "shadowLightness": {
+                      "before": 1.7979609677011676,
+                      "after": 1.2873877354345975
+                    },
+                    "contrastError": {
+                      "before": 1.6762060168417214,
+                      "after": 3.047441466259315
+                    }
+                  },
+                  "flags": ["shadowChroma-regression", "contrastError-regression"]
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 3.4940036188608574,
+                  "after": 3.53822861869377,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.46205575325406,
+                      "after": 2.0550446974200125
+                    },
+                    "shadowLightness": {
+                      "before": 2.192412757315493,
+                      "after": 1.2669963832008135
+                    },
+                    "contrastError": {
+                      "before": 1.6769280269225888,
+                      "after": 1.1314722320370976
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 10,
+                  "before": 4.030553382215086,
+                  "after": 3.7136695396253288,
+                  "worstRegression": 0.47744669575734466,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 3.0558527276719145,
+                      "after": 2.2793906262200805
+                    },
+                    "shadowLightness": {
+                      "before": 2.9917448597102267,
+                      "after": 1.1564422655421542
+                    },
+                    "contrastError": {
+                      "before": 1.454281753147363,
+                      "after": 1.8274557614206657
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 25,
+                  "before": 2.9099498843294302,
+                  "after": 3.148638454148796,
+                  "worstRegression": 0.9621146713698887,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.6004955924359587,
+                      "after": 2.3234650291186285
+                    },
+                    "shadowLightness": {
+                      "before": 1.0550196242358256,
+                      "after": 1.3470313471721285
+                    },
+                    "contrastError": {
+                      "before": 1.7093309597674775,
+                      "after": 3.122904879300542
+                    }
+                  },
+                  "flags": [
+                    "median-regression",
+                    "shadowChroma-regression",
+                    "shadowLightness-regression",
+                    "contrastError-regression"
+                  ]
+                }
+              },
+              "absoluteOutliers": []
             },
             "paperColor": {
               "status": "needs-audit",
@@ -138947,8 +139608,100 @@
             },
             "frameColor": {
               "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Color/contrast diagnostics need a refit, but the red normalization method fails known-pose validation first.",
+              "measurements": {
+                "all": {
+                  "cards": 42,
+                  "before": 3.124065529412559,
+                  "after": 3.222262393710066,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.645357333254513,
+                      "after": 2.321268680053735
+                    },
+                    "shadowLightness": {
+                      "before": 1.7979609677011676,
+                      "after": 1.2873877354345975
+                    },
+                    "contrastError": {
+                      "before": 1.6762060168417214,
+                      "after": 3.047441466259315
+                    }
+                  },
+                  "flags": ["shadowChroma-regression", "contrastError-regression"]
+                },
+                "calibration": {
+                  "cards": 7,
+                  "before": 3.4940036188608574,
+                  "after": 3.53822861869377,
+                  "worstRegression": 1.4118478675594495,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 2.46205575325406,
+                      "after": 2.0550446974200125
+                    },
+                    "shadowLightness": {
+                      "before": 2.192412757315493,
+                      "after": 1.2669963832008135
+                    },
+                    "contrastError": {
+                      "before": 1.6769280269225888,
+                      "after": 1.1314722320370976
+                    }
+                  },
+                  "flags": []
+                },
+                "validation": {
+                  "cards": 10,
+                  "before": 4.030553382215086,
+                  "after": 3.7136695396253288,
+                  "worstRegression": 0.47744669575734466,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 3.0558527276719145,
+                      "after": 2.2793906262200805
+                    },
+                    "shadowLightness": {
+                      "before": 2.9917448597102267,
+                      "after": 1.1564422655421542
+                    },
+                    "contrastError": {
+                      "before": 1.454281753147363,
+                      "after": 1.8274557614206657
+                    }
+                  },
+                  "flags": []
+                },
+                "additional-development": {
+                  "cards": 25,
+                  "before": 2.9099498843294302,
+                  "after": 3.148638454148796,
+                  "worstRegression": 0.9621146713698887,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 1.6004955924359587,
+                      "after": 2.3234650291186285
+                    },
+                    "shadowLightness": {
+                      "before": 1.0550196242358256,
+                      "after": 1.3470313471721285
+                    },
+                    "contrastError": {
+                      "before": 1.7093309597674775,
+                      "after": 3.122904879300542
+                    }
+                  },
+                  "flags": [
+                    "median-regression",
+                    "shadowChroma-regression",
+                    "shadowLightness-regression",
+                    "contrastError-regression"
+                  ]
+                }
+              },
+              "absoluteOutliers": []
             },
             "paperColor": {
               "status": "needs-audit",
@@ -139674,9 +140427,209 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "status": "rejected",
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 6.886341829406136,
+                  "after": 6.255671472135709,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                },
+                "calibration": {
+                  "cards": 8,
+                  "before": 6.676050032861209,
+                  "after": 6.7205510989506205,
+                  "worstRegression": 1.160951331023008,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 7.308754841772642,
+                  "after": 5.691410140863364,
+                  "worstRegression": 0.6274980261886567,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "before": 6.955238728391833,
+                  "after": 5.895010457080428,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                }
+              },
+              "absoluteOutliers": [
+                {
+                  "id": "0002ab72-834b-4c81-82b1-0d2760ea96b0",
+                  "name": "Mystic Skyfish",
+                  "cohort": "calibration",
+                  "error": 6.285425580496485,
+                  "referenceHash": "13c97a6b21b24ac59172313687cd2231031f6c03c5a615416d83cd6d4c11d872"
+                },
+                {
+                  "id": "0360d27b-37e1-4e00-9cfc-b574efc38ea0",
+                  "name": "Tome Anima",
+                  "cohort": "calibration",
+                  "error": 7.106528560168672,
+                  "referenceHash": "f28bb8cac9c04d7c697ef3b3c32fa5aa650d8e662043a037007c9a8fc6442a05"
+                },
+                {
+                  "id": "348955a0-e988-48d7-a6a0-a8045fcffd25",
+                  "name": "Wishcoin Crab",
+                  "cohort": "calibration",
+                  "error": 6.669682413025376,
+                  "referenceHash": "535ea799e051ab39299f09a4b97e8478e1e2fd3d71fe95dc267a79641bbc9c8d"
+                },
+                {
+                  "id": "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+                  "name": "Teferi's Protege",
+                  "cohort": "validation",
+                  "error": 7.005558969246323,
+                  "referenceHash": "ce8cc7bf3890e61a787727b9873c0109d970ea13f8366ffecf39f97eb18f0680"
+                },
+                {
+                  "id": "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+                  "name": "Shipwreck Dowser",
+                  "cohort": "validation",
+                  "error": 5.369584832310285,
+                  "referenceHash": "acfe993bb624e46f8efa13820a145947da022e9e565fbd8a666dadbb6f5862ec"
+                },
+                {
+                  "id": "6d42d3dd-29df-44a1-89b8-994761eda77d",
+                  "name": "Spined Megalodon",
+                  "cohort": "validation",
+                  "error": 6.340201284199791,
+                  "referenceHash": "82407598391f19ee18d946d6fd94fe8a1a12e48b9a7e358be2f60dd75dda303c"
+                },
+                {
+                  "id": "8cbac0e4-f79f-476d-b410-d19ab3696606",
+                  "name": "Roaming Ghostlight",
+                  "cohort": "validation",
+                  "error": 6.758426138388233,
+                  "referenceHash": "0bcb2594c9610395d0e373dda2f07d3492179dbd21545808759c4478c756fda6"
+                },
+                {
+                  "id": "a188164c-01fe-4980-83a5-91d14e218cf5",
+                  "name": "Jeskai Elder",
+                  "cohort": "additional-development",
+                  "error": 6.255671472135709,
+                  "referenceHash": "c7aa14587f1dbdcfec18db238c5a98f2d9614e9d26b002c271c9587fc9a2a6b2"
+                },
+                {
+                  "id": "a52e90c0-b012-4ce5-8462-1e33c7143de5",
+                  "name": "Vodalian Arcanist",
+                  "cohort": "additional-development",
+                  "error": 6.314410872898357,
+                  "referenceHash": "d32bfe31fc46470bef5e779abbb70882c14fb667705e30cef74ee2ddd59f1912"
+                },
+                {
+                  "id": "abb47990-a5a9-4a22-a8bb-d229b17132c6",
+                  "name": "Waker of Waves",
+                  "cohort": "additional-development",
+                  "error": 5.275363333610339,
+                  "referenceHash": "5d6a8b39c7bcfba04f3c89f926dcd0a7888df966d982ecc446fbf247b8704a07"
+                },
+                {
+                  "id": "ae981da0-f32c-49d5-bcb0-2b9255a4e1fe",
+                  "name": "Historian of Zhalfir",
+                  "cohort": "additional-development",
+                  "error": 5.598407638359579,
+                  "referenceHash": "1332dba4b637578d5a2c14e453b83b6ce0958b05a478867b85d0dd4c50f5f1de"
+                },
+                {
+                  "id": "c2776694-6183-498d-9a38-e4c5c9e78179",
+                  "name": "Tolarian Kraken",
+                  "cohort": "additional-development",
+                  "error": 5.244364964871383,
+                  "referenceHash": "f3545e6e36cd4a5cb41d87927212d215cb8487853e99f85507f437e823668474"
+                },
+                {
+                  "id": "cb33529b-80bd-4f52-94cc-d8371c53ad75",
+                  "name": "Library Larcenist",
+                  "cohort": "additional-development",
+                  "error": 5.834553692009266,
+                  "referenceHash": "4d62086bf7cb1343cab3901fd0f6f2a41431dac23d58bd470120ccf3c4579760"
+                },
+                {
+                  "id": "cce6289e-f665-4faa-8285-c843447f3e52",
+                  "name": "Keen Glidemaster",
+                  "cohort": "additional-development",
+                  "error": 5.303457586216785,
+                  "referenceHash": "fb6546b80aa24072e60cc3db1f11a7faad5a073110d2008fccc36ff3e670623a"
+                },
+                {
+                  "id": "d961c441-b76b-4bd8-b510-a3e073207a1b",
+                  "name": "Mistral Singer",
+                  "cohort": "additional-development",
+                  "error": 6.4878436640881665,
+                  "referenceHash": "3a6ccb55f6f95a159495d1cdc12e90605784b6456ac3e55e2788ef93396e2698"
+                },
+                {
+                  "id": "dee1d595-a998-4652-931f-a1a72446f3a6",
+                  "name": "Tide Skimmer",
+                  "cohort": "additional-development",
+                  "error": 7.761771051349514,
+                  "referenceHash": "868a704e29e8ac10526c175253230452cdbbac7342a178fc175b4969a46a34fb"
+                }
+              ]
             },
             "paperColor": {
               "status": "needs-audit",
@@ -139817,9 +140770,132 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "status": "rejected",
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 6.886341829406136,
+                  "after": 6.255671472135709,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                },
+                "calibration": {
+                  "cards": 8,
+                  "before": 6.676050032861209,
+                  "after": 6.7205510989506205,
+                  "worstRegression": 1.160951331023008,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 7.308754841772642,
+                  "after": 5.691410140863364,
+                  "worstRegression": 0.6274980261886567,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "before": 6.955238728391833,
+                  "after": 5.895010457080428,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                }
+              },
+              "absoluteOutliers": [
+                {
+                  "id": "0540ee72-6370-4f70-9526-6f441b3cac1e",
+                  "name": "Stormwing Entity",
+                  "cohort": "calibration",
+                  "error": 5.508455354143087,
+                  "referenceHash": "1984d012b86046b9830d5e36067591ebe57d1a21d0393ccc110afeb425cb0f74"
+                },
+                {
+                  "id": "2810631f-c55c-4947-a26f-4d3ce76024b3",
+                  "name": "Ghostly Pilferer",
+                  "cohort": "calibration",
+                  "error": 7.403293764348021,
+                  "referenceHash": "0b3a229eec7cd65f765d349b80c577410769084343832b701115488f89c9bd14"
+                },
+                {
+                  "id": "7a5a88e3-e73c-4b34-a645-06fe27e68cee",
+                  "name": "Shacklegeist",
+                  "cohort": "validation",
+                  "error": 5.630853148392345,
+                  "referenceHash": "9507c7a20efb871b4cbceb36eff8d461583c58aa074f5975f8ada71765d0a5ff"
+                },
+                {
+                  "id": "b1501118-5837-49b5-9446-0bc3032035ca",
+                  "name": "Pursued Whale",
+                  "cohort": "additional-development",
+                  "error": 5.876367105727181,
+                  "referenceHash": "6ff480356a9b0b6839c5dca407eed6d9f17bd66d67e1c4ad0454fb7b54575584"
+                },
+                {
+                  "id": "d67e4c42-a44f-456b-87e7-21ca56dc4630",
+                  "name": "Teferi's Wavecaster",
+                  "cohort": "additional-development",
+                  "error": 7.962845048714719,
+                  "referenceHash": "ba7e15ef507e6dd1bd699ddac6226e4f05f2ee5f335ee5d2eb1dee0abd924b08"
+                }
+              ]
             },
             "paperColor": {
               "status": "needs-audit",
@@ -140439,9 +141515,181 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "status": "rejected",
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 6.886341829406136,
+                  "after": 6.255671472135709,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                },
+                "calibration": {
+                  "cards": 8,
+                  "before": 6.676050032861209,
+                  "after": 6.7205510989506205,
+                  "worstRegression": 1.160951331023008,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 7.308754841772642,
+                  "after": 5.691410140863364,
+                  "worstRegression": 0.6274980261886567,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "before": 6.955238728391833,
+                  "after": 5.895010457080428,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                }
+              },
+              "absoluteOutliers": [
+                {
+                  "id": "033afbd5-9937-4957-98ba-48e469a490bb",
+                  "name": "Miscast",
+                  "cohort": "calibration",
+                  "error": 5.899411652530686,
+                  "referenceHash": "b492c7854b583540cf9b2114072b3647d0682e3c88875d31eda05dc31b1d85d1"
+                },
+                {
+                  "id": "2dc0bafd-debc-4b62-9fe0-56b4aad02484",
+                  "name": "Unsubstantiate",
+                  "cohort": "calibration",
+                  "error": 6.771419784875866,
+                  "referenceHash": "c574c3e089a30aa19031bd57ee316428d125e653e9ea58a69f7859e6884b5f92"
+                },
+                {
+                  "id": "323db259-d35e-467d-9a46-4adcb2fc107c",
+                  "name": "Opt",
+                  "cohort": "calibration",
+                  "error": 7.253997480707058,
+                  "referenceHash": "ad0b166280d738911708e033bb4ee097e9b70c1d72dd55c2537d7266482ef703"
+                },
+                {
+                  "id": "393fc485-d3c1-4826-933d-89f66df769d4",
+                  "name": "Frost Breath",
+                  "cohort": "validation",
+                  "error": 6.290604321560099,
+                  "referenceHash": "dbd3938fcb94d45ee26b0ffb572e41544c5ce10b63d4c7bc783f3d6f4b595121"
+                },
+                {
+                  "id": "5360fe8c-41b0-4409-b03e-072f129fb352",
+                  "name": "Read the Tides",
+                  "cohort": "validation",
+                  "error": 6.367533533763006,
+                  "referenceHash": "cfee95fd8498f4154236c16432262a55032bd17eb86c9da33b5bbd23a4fec467"
+                },
+                {
+                  "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+                  "name": "Cancel",
+                  "cohort": "validation",
+                  "error": 5.6587302043987275,
+                  "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a"
+                },
+                {
+                  "id": "64832674-beb1-446e-b2f7-8a5e271139a5",
+                  "name": "Lofty Denial",
+                  "cohort": "validation",
+                  "error": 5.691410140863364,
+                  "referenceHash": "141c7a3d5874568e94d702eb4f1ad32c55da944c46cfb777e426755f57406458"
+                },
+                {
+                  "id": "b19de7a5-c291-405b-a2e6-8d3ac56e6570",
+                  "name": "Rookie Mistake",
+                  "cohort": "additional-development",
+                  "error": 7.8342393527355725,
+                  "referenceHash": "078191166b0198c3f42a142a1858d390842c6161658e4eca4331046c4486de33"
+                },
+                {
+                  "id": "b832abcc-9ffd-47bf-827a-01b303c610ee",
+                  "name": "Rewind",
+                  "cohort": "additional-development",
+                  "error": 7.107934271387507,
+                  "referenceHash": "4eecc984b43acf7b7612edbe2978f45e8fe792e703c5af076bfa4dd9d46aca47"
+                },
+                {
+                  "id": "d3bc7176-abe0-47cf-a242-cf22a1f590be",
+                  "name": "Enthralling Hold",
+                  "cohort": "additional-development",
+                  "error": 5.505709259971331,
+                  "referenceHash": "9f73d37a53e456554d1bf404e9deb7c56ee9c49cb6db393cebc43a5065d7b9bc"
+                },
+                {
+                  "id": "da367981-9d6f-419f-9f58-f969b6183336",
+                  "name": "Rain of Revelation",
+                  "cohort": "additional-development",
+                  "error": 6.434169398184518,
+                  "referenceHash": "7770b731c4ccca33962589e1e92019976a9f48ca9d798f582766da10bb383232"
+                },
+                {
+                  "id": "f5ed9f08-56e8-4e24-aae2-05270d7c1ba8",
+                  "name": "Capture Sphere",
+                  "cohort": "additional-development",
+                  "error": 5.680445346510727,
+                  "referenceHash": "984a577a8b078f6eb1efd51e1aff52d2e6459289877b96d5c01966b567d3ea67"
+                }
+              ]
             },
             "paperColor": {
               "status": "needs-audit",
@@ -140581,9 +141829,118 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "needs-audit",
-              "reason": "Historical side windows overlap the art keyline; remeasure pigment and texture in clear frame rails.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
+              "status": "rejected",
+              "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "measurements": {
+                "all": {
+                  "cards": 41,
+                  "before": 6.886341829406136,
+                  "after": 6.255671472135709,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                },
+                "calibration": {
+                  "cards": 8,
+                  "before": 6.676050032861209,
+                  "after": 6.7205510989506205,
+                  "worstRegression": 1.160951331023008,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "validation": {
+                  "cards": 11,
+                  "before": 7.308754841772642,
+                  "after": 5.691410140863364,
+                  "worstRegression": 0.6274980261886567,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
+                  },
+                  "flags": ["absolute-error"]
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "before": 6.955238728391833,
+                  "after": 5.895010457080428,
+                  "worstRegression": 4.254696001389628,
+                  "texture": {
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
+                  },
+                  "flags": ["absolute-error", "printing-regression"]
+                }
+              },
+              "absoluteOutliers": [
+                {
+                  "id": "91af15cc-fdd5-4d72-a53a-314fa5353527",
+                  "name": "See the Truth",
+                  "cohort": "additional-development",
+                  "error": 5.913653808433675,
+                  "referenceHash": "152939671db7fcae72e827ed231e7f3959820a9fb6edb7cafd6a3f28bf52bf1f"
+                },
+                {
+                  "id": "ad1bcb44-a562-4f66-b862-6d0ef3546ab4",
+                  "name": "Sublime Epiphany",
+                  "cohort": "additional-development",
+                  "error": 6.336203509648701,
+                  "referenceHash": "e1d92fca206ace4abe1d356681c87b787ee4616b279ebd70d60512490835915d"
+                },
+                {
+                  "id": "b33ba0a8-04e9-4df6-af20-a3ca4470cdcc",
+                  "name": "Discontinuity",
+                  "cohort": "additional-development",
+                  "error": 6.377232962144077,
+                  "referenceHash": "8cba5f4ddb904bab5d6dd272f2a33b888a02d2f6e1b265379000876e77adc43f"
+                }
+              ]
             },
             "paperColor": {
               "status": "needs-audit",

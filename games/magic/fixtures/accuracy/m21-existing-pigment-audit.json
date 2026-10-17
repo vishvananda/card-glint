@@ -1,0 +1,4465 @@
+{
+  "schema": 1,
+  "status": "diagnostic-not-adopted",
+  "policy": "Current ordinary mono-color native rasters versus native uncalibrated source, using fixed clear-rail windows and frozen scan-only poses. Old fits are not accepted merely because they already exist. Known-pose validation is mandatory. Reserved cohorts remain reused development data. No new pigment or calibration status is adopted by this diagnostic.",
+  "patches": [
+    [22, 130, 5, 42],
+    [22, 230, 5, 42],
+    [22, 320, 5, 42],
+    [462, 130, 5, 42],
+    [462, 230, 5, 42],
+    [462, 320, 5, 42]
+  ],
+  "templateHash": "7608703fafbbf747e24bea4670110d2cd5614440c836186d1fc14db932c6a080",
+  "knownPosesHash": "e8086586baae9436e9681772eefe12d04a5697a94999f6d3ef3f206d49fd96e8",
+  "nativeHash": "042ca72aaf256e8d160fd4b4eb30d93f7e3a1664d2ee8e4403852f0ad667445e",
+  "runnerHash": "4298b07ff83cb794f00bd26b144508aa9ce21eb3b28cb616de1d049aa61c7053",
+  "groups": {
+    "U": {
+      "status": "existing-fit-needs-refit",
+      "methodPassed": true,
+      "sourceHash": "ba67035b73ab39319a1611cd8b2bbd9dfd2404adee82c6b145641f26422bd485",
+      "rawColor": {
+        "rgb": [0.00392156862745098, 0.6588235294117647, 0.8431372549019608],
+        "tiles": [
+          [0.3215686274509804, 0.7568627450980392, 0.9019607843137255],
+          [0, 0.5843137254901961, 0.803921568627451],
+          [0.10784313725490197, 0.6823529411764706, 0.8627450980392157],
+          [0, 0.5372549019607843, 0.7725490196078432],
+          [0, 0.6470588235294118, 0.8392156862745098],
+          [0.15098039215686276, 0.6862745098039216, 0.8647058823529412],
+          [0.3509803921568627, 0.7686274509803922, 0.9019607843137255],
+          [0.4843137254901961, 0.8313725490196079, 0.9333333333333333],
+          [0, 0.5450980392156862, 0.7784313725490196],
+          [0.00392156862745098, 0.6549019607843137, 0.8392156862745098],
+          [0, 0.6392156862745098, 0.8352941176470589],
+          [0, 0.6392156862745098, 0.8352941176470589],
+          [0.00392156862745098, 0.6627450980392157, 0.8470588235294118],
+          [0, 0.6392156862745098, 0.8352941176470589],
+          [0.12745098039215685, 0.6843137254901961, 0.8705882352941177],
+          [0.00196078431372549, 0.5568627450980392, 0.7862745098039216],
+          [0.28431372549019607, 0.7450980392156863, 0.9],
+          [0.06862745098039216, 0.6764705882352942, 0.8549019607843137]
+        ],
+        "spread": 8.91203216817737,
+        "rejectedFraction": 0
+      },
+      "rawTexture": [
+        [0, 0.5254901960784314, 0.7686274509803922],
+        [0, 0.5725490196078431, 0.796078431372549],
+        [0, 0.6274509803921569, 0.8274509803921568],
+        [0, 0.6431372549019608, 0.8352941176470589],
+        [0, 0.6549019607843137, 0.8431372549019608],
+        [0.03137254901960784, 0.6705882352941176, 0.8509803921568627],
+        [0.13725490196078433, 0.6901960784313725, 0.8705882352941177],
+        [0.2196078431372549, 0.7215686274509804, 0.8901960784313725],
+        [0.3392156862745098, 0.7647058823529411, 0.9019607843137255],
+        [0.4588235294117647, 0.8176470588235294, 0.9333333333333333]
+      ],
+      "summaries": {
+        "all": {
+          "cards": 41,
+          "before": 6.886341829406136,
+          "after": 6.255671472135709,
+          "worstRegression": 4.254696001389628,
+          "texture": {
+            "shadowChroma": {
+              "before": 5.509333316746385,
+              "after": 0.35330648664364667
+            },
+            "shadowLightness": {
+              "before": 5.153072475051612,
+              "after": 2.981916594230072
+            },
+            "contrastError": {
+              "before": 3.496113375513797,
+              "after": 1.1689255166754542
+            }
+          },
+          "flags": ["absolute-error", "printing-regression"]
+        },
+        "calibration": {
+          "cards": 8,
+          "before": 6.676050032861209,
+          "after": 6.7205510989506205,
+          "worstRegression": 1.160951331023008,
+          "texture": {
+            "shadowChroma": {
+              "before": 5.585975499401314,
+              "after": 0.2378250932611734
+            },
+            "shadowLightness": {
+              "before": 4.764257684911572,
+              "after": 3.3707313843701128
+            },
+            "contrastError": {
+              "before": 3.657014403057495,
+              "after": 1.3298265442191521
+            }
+          },
+          "flags": ["absolute-error"]
+        },
+        "validation": {
+          "cards": 11,
+          "before": 7.308754841772642,
+          "after": 5.691410140863364,
+          "worstRegression": 0.6274980261886567,
+          "texture": {
+            "shadowChroma": {
+              "before": 5.768731978054606,
+              "after": 0.47839391850596397
+            },
+            "shadowLightness": {
+              "before": 5.415329039035144,
+              "after": 2.71966003024654
+            },
+            "contrastError": {
+              "before": 3.3320835838411718,
+              "after": 1.0048957250028288
+            }
+          },
+          "flags": ["absolute-error"]
+        },
+        "additional-development": {
+          "cards": 22,
+          "before": 6.955238728391833,
+          "after": 5.895010457080428,
+          "worstRegression": 4.254696001389628,
+          "texture": {
+            "shadowChroma": {
+              "before": 5.4730725606136374,
+              "after": 0.34160218274519705
+            },
+            "shadowLightness": {
+              "before": 5.324050265457242,
+              "after": 2.810938803824442
+            },
+            "contrastError": {
+              "before": 3.458897653497271,
+              "after": 1.1317097946589278
+            }
+          },
+          "flags": ["absolute-error", "printing-regression"]
+        }
+      },
+      "rows": [
+        {
+          "id": "0002ab72-834b-4c81-82b1-0d2760ea96b0",
+          "name": "Mystic Skyfish",
+          "cohort": "calibration",
+          "referenceHash": "13c97a6b21b24ac59172313687cd2231031f6c03c5a615416d83cd6d4c11d872",
+          "transform": {
+            "matrix": [1.00215, 0, 0, 1.00215, -0.25, 0.45]
+          },
+          "before": 5.124474249473477,
+          "after": 6.285425580496485,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 2.187615417348832,
+            "shadowChroma": 2.632533838087535,
+            "shadowLightness": 5.203146720285689,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.033658538565323,
+            "contrastError": 2.80125958620766
+          },
+          "textureAfter": {
+            "chroma": 4.378018635039872,
+            "shadowChroma": 2.8703874652625294,
+            "shadowLightness": 2.9318423489959944,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.033658538565323,
+            "contrastError": 0.47407172736931713
+          }
+        },
+        {
+          "id": "033afbd5-9937-4957-98ba-48e469a490bb",
+          "name": "Miscast",
+          "cohort": "calibration",
+          "referenceHash": "b492c7854b583540cf9b2114072b3647d0682e3c88875d31eda05dc31b1d85d1",
+          "transform": {
+            "matrix": [
+              0.9990999847828369, -0.00017437584468145463, -0.0006109875616905981,
+              1.0002001218713652, -0.05, 0
+            ]
+          },
+          "before": 6.997036092211341,
+          "after": 5.899411652530686,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.7653143083523695,
+            "shadowChroma": 5.720048915700632,
+            "shadowLightness": 5.133468253650298,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.89512152487226,
+            "contrastError": 3.662722572514596
+          },
+          "textureAfter": {
+            "chroma": 1.007553734917699,
+            "shadowChroma": 0.5527532449725014,
+            "shadowLightness": 3.0015208156313866,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.89512152487226,
+            "contrastError": 1.3355347136762532
+          }
+        },
+        {
+          "id": "0360d27b-37e1-4e00-9cfc-b574efc38ea0",
+          "name": "Tome Anima",
+          "cohort": "calibration",
+          "referenceHash": "f28bb8cac9c04d7c697ef3b3c32fa5aa650d8e662043a037007c9a8fc6442a05",
+          "transform": {
+            "matrix": [
+              1.0001000000000002, 0, 0, 1.0001000000000002, -0.14999999999999997,
+              -0.049999999999999975
+            ]
+          },
+          "before": 6.2393095687259414,
+          "after": 7.106528560168672,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.578284193683156,
+            "shadowChroma": 5.662185521748066,
+            "shadowLightness": 5.05300834325455,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.756486705422894,
+            "contrastError": 4.524087753065231
+          },
+          "textureAfter": {
+            "chroma": 1.7594614711954226,
+            "shadowChroma": 0.2561754534770551,
+            "shadowLightness": 3.0819807260271337,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.756486705422894,
+            "contrastError": 2.1968998942268883
+          }
+        },
+        {
+          "id": "0540ee72-6370-4f70-9526-6f441b3cac1e",
+          "name": "Stormwing Entity",
+          "cohort": "calibration",
+          "referenceHash": "1984d012b86046b9830d5e36067591ebe57d1a21d0393ccc110afeb425cb0f74",
+          "transform": {
+            "matrix": [0.9999998134218362, -0.0006108652002066434, 0, 0.999200186428936, 0.15, 0.35]
+          },
+          "before": 7.335958125639179,
+          "after": 5.508455354143087,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.601137639871188,
+            "shadowChroma": 5.509765477054564,
+            "shadowLightness": 5.195314475009649,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.917692208715064,
+            "contrastError": 3.685293256357401
+          },
+          "textureAfter": {
+            "chroma": 1.6557720598909742,
+            "shadowChroma": 0.033374431201032596,
+            "shadowLightness": 2.939674594272035,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.917692208715064,
+            "contrastError": 1.3581053975190578
+          }
+        },
+        {
+          "id": "2810631f-c55c-4947-a26f-4d3ce76024b3",
+          "name": "Ghostly Pilferer",
+          "cohort": "calibration",
+          "referenceHash": "0b3a229eec7cd65f765d349b80c577410769084343832b701115488f89c9bd14",
+          "transform": {
+            "matrix": [1.0005499999999998, 0, 0, 1.0005499999999998, -0.09999999999999999, 0.05]
+          },
+          "before": 6.767692381812827,
+          "after": 7.403293764348021,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.9406323332208455,
+            "shadowChroma": 5.930586996198918,
+            "shadowLightness": 3.8911784682106987,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.655498720315457,
+            "contrastError": 3.423099767957794
+          },
+          "textureAfter": {
+            "chroma": 1.3097968925956989,
+            "shadowChroma": 0.46265769719656435,
+            "shadowLightness": 4.243810601070985,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.655498720315457,
+            "contrastError": 1.095911909119451
+          }
+        },
+        {
+          "id": "2dc0bafd-debc-4b62-9fe0-56b4aad02484",
+          "name": "Unsubstantiate",
+          "cohort": "calibration",
+          "referenceHash": "c574c3e089a30aa19031bd57ee316428d125e653e9ea58a69f7859e6884b5f92",
+          "transform": {
+            "matrix": [0.99935, 0, 0, 0.99935, -0.15, 0.09999999999999999]
+          },
+          "before": 6.627410724051902,
+          "after": 6.771419784875866,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.63686634405447,
+            "shadowChroma": 5.340356771138673,
+            "shadowLightness": 4.475507026568593,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.492578541329863,
+            "contrastError": 3.2601795889722
+          },
+          "textureAfter": {
+            "chroma": 1.7168827710551682,
+            "shadowChroma": 0.21947473304529166,
+            "shadowLightness": 3.6594820427130914,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.492578541329863,
+            "contrastError": 0.9329917301338568
+          }
+        },
+        {
+          "id": "323db259-d35e-467d-9a46-4adcb2fc107c",
+          "name": "Opt",
+          "cohort": "calibration",
+          "referenceHash": "ad0b166280d738911708e033bb4ee097e9b70c1d72dd55c2537d7266482ef703",
+          "transform": {
+            "matrix": [
+              0.9990487674717188, -0.0015693034249340898, -0.0007840258123257116,
+              0.9982524630887193, -0.15, 0
+            ]
+          },
+          "before": 6.573638838593365,
+          "after": 7.253997480707058,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.6904123431513565,
+            "shadowChroma": 5.672833115414546,
+            "shadowLightness": 4.423749113435404,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.883705185958057,
+            "contrastError": 3.651306233600394
+          },
+          "textureAfter": {
+            "chroma": 1.457850377849748,
+            "shadowChroma": 0.17509121229782376,
+            "shadowLightness": 3.7112399558462794,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.883705185958057,
+            "contrastError": 1.324118374762051
+          }
+        },
+        {
+          "id": "348955a0-e988-48d7-a6a0-a8045fcffd25",
+          "name": "Wishcoin Crab",
+          "cohort": "calibration",
+          "referenceHash": "535ea799e051ab39299f09a4b97e8478e1e2fd3d71fe95dc267a79641bbc9c8d",
+          "transform": {
+            "matrix": [0.99995, 0, 0, 0.99995, 0.09999999999999999, -0.15]
+          },
+          "before": 6.724689341670515,
+          "after": 6.669682413025376,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.576054769516661,
+            "shadowChroma": 5.411270972555653,
+            "shadowLightness": 4.447787251385094,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.126649920731285,
+            "contrastError": 3.8942509683736226
+          },
+          "textureAfter": {
+            "chroma": 1.5892680335020397,
+            "shadowChroma": 0.08677874109201161,
+            "shadowLightness": 3.6872018178965904,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.126649920731285,
+            "contrastError": 1.5670631095352796
+          }
+        },
+        {
+          "id": "393fc485-d3c1-4826-933d-89f66df769d4",
+          "name": "Frost Breath",
+          "cohort": "validation",
+          "referenceHash": "dbd3938fcb94d45ee26b0ffb572e41544c5ce10b63d4c7bc783f3d6f4b595121",
+          "transform": {
+            "matrix": [0.9994000000000001, 0, 0, 0.9994000000000001, -0.2, 0.425]
+          },
+          "before": 6.886341829406136,
+          "after": 6.290604321560099,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.895298466155443,
+            "shadowChroma": 5.768731978054606,
+            "shadowLightness": 4.752232487708385,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.44738397946625,
+            "contrastError": 3.214985027108586
+          },
+          "textureAfter": {
+            "chroma": 1.1091785297688737,
+            "shadowChroma": 0.47839391850596397,
+            "shadowLightness": 3.3827565815732985,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.44738397946625,
+            "contrastError": 0.887797168270243
+          }
+        },
+        {
+          "id": "5360fe8c-41b0-4409-b03e-072f129fb352",
+          "name": "Read the Tides",
+          "cohort": "validation",
+          "referenceHash": "cfee95fd8498f4154236c16432262a55032bd17eb86c9da33b5bbd23a4fec467",
+          "transform": {
+            "matrix": [0.99825, 0, 0, 0.99825, 0, 0.15]
+          },
+          "before": 6.7611589278113176,
+          "after": 6.367533533763006,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.670193024259247,
+            "shadowChroma": 5.4763181300571,
+            "shadowLightness": 5.189056493190513,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.354897112236003,
+            "contrastError": 4.12249815987834
+          },
+          "textureAfter": {
+            "chroma": 1.5921318728424079,
+            "shadowChroma": 0.17400950230415846,
+            "shadowLightness": 2.9459325760911703,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.354897112236003,
+            "contrastError": 1.7953103010399971
+          }
+        },
+        {
+          "id": "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+          "name": "Teferi's Protege",
+          "cohort": "validation",
+          "referenceHash": "ce8cc7bf3890e61a787727b9873c0109d970ea13f8366ffecf39f97eb18f0680",
+          "transform": {
+            "matrix": [
+              1.000348476380207, -0.0017459392308263725, -0.00026190463211228795,
+              1.0004019808085474, -0.15, 0.15
+            ]
+          },
+          "before": 6.378060943057666,
+          "after": 7.005558969246323,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.467962263923146,
+            "shadowChroma": 5.384083736154545,
+            "shadowLightness": 4.256024129275637,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.564482536198835,
+            "contrastError": 3.3320835838411718
+          },
+          "textureAfter": {
+            "chroma": 1.7000068070497334,
+            "shadowChroma": 0.36801612492975416,
+            "shadowLightness": 3.8789649400060466,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.564482536198835,
+            "contrastError": 1.0048957250028288
+          }
+        },
+        {
+          "id": "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+          "name": "Shipwreck Dowser",
+          "cohort": "validation",
+          "referenceHash": "acfe993bb624e46f8efa13820a145947da022e9e565fbd8a666dadbb6f5862ec",
+          "transform": {
+            "matrix": [
+              0.9992996917907759, 0.0007848483039940824, -0.0006106819499477995, 0.9996998287041088,
+              -0.09999999999999999, 0.5
+            ]
+          },
+          "before": 7.430077995678711,
+          "after": 5.369584832310285,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.7844110451158635,
+            "shadowChroma": 5.838940100078978,
+            "shadowLightness": 5.528583088824234,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.55476852321982,
+            "contrastError": 3.3223695708621577
+          },
+          "textureAfter": {
+            "chroma": 0.9618124358905096,
+            "shadowChroma": 0.5869850084430805,
+            "shadowLightness": 2.606405980457449,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.55476852321982,
+            "contrastError": 0.9951817120238147
+          }
+        },
+        {
+          "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+          "name": "Cancel",
+          "cohort": "validation",
+          "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a",
+          "transform": {
+            "matrix": [0.9987, 0, 0, 0.9987, -0.15, 0.05]
+          },
+          "before": 7.308754841772642,
+          "after": 5.6587302043987275,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.805924368334329,
+            "shadowChroma": 5.820916744512476,
+            "shadowLightness": 5.415329039035144,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.203462007069337,
+            "contrastError": 2.9710630547116743
+          },
+          "textureAfter": {
+            "chroma": 1.1257752931655955,
+            "shadowChroma": 0.7208753824076983,
+            "shadowLightness": 2.71966003024654,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.203462007069337,
+            "contrastError": 0.6438751958733313
+          }
+        },
+        {
+          "id": "64832674-beb1-446e-b2f7-8a5e271139a5",
+          "name": "Lofty Denial",
+          "cohort": "validation",
+          "referenceHash": "141c7a3d5874568e94d702eb4f1ad32c55da944c46cfb777e426755f57406458",
+          "transform": {
+            "matrix": [
+              0.9985996197613298, 0.0008714427849138205, -0.0008714427849138205, 0.9985996197613298,
+              -0.05, 0.4
+            ]
+          },
+          "before": 7.4012779588814315,
+          "after": 5.691410140863364,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.857778505783313,
+            "shadowChroma": 5.708862069381657,
+            "shadowLightness": 5.418749684751312,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.160528991438863,
+            "contrastError": 3.9281300390812
+          },
+          "textureAfter": {
+            "chroma": 1.1524861938409336,
+            "shadowChroma": 0.34141755553584996,
+            "shadowLightness": 2.7162393845303723,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.160528991438863,
+            "contrastError": 1.600942180242857
+          }
+        },
+        {
+          "id": "6ac0f66a-213f-463e-8ebb-35ff5940ea06",
+          "name": "Wall of Runes",
+          "cohort": "validation",
+          "referenceHash": "a3613fbec782e08d4fb5384e1c6135592001d1ec355cf5a346db6a58c1f99287",
+          "transform": {
+            "matrix": [
+              0.9996481577102035, -0.001919189046450767, -0.0005233908746252378, 0.9996028470406234,
+              -0.15, 0.05
+            ]
+          },
+          "before": 8.035110707067881,
+          "after": 4.305607167213914,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.70836258506285,
+            "shadowChroma": 6.190291187342496,
+            "shadowLightness": 6.282183800164621,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.162557705304504,
+            "contrastError": 2.9301587529468414
+          },
+          "textureAfter": {
+            "chroma": 0.8811630077291219,
+            "shadowChroma": 1.456132087446272,
+            "shadowLightness": 1.8528052691170638,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.162557705304504,
+            "contrastError": 0.6029708941084984
+          }
+        },
+        {
+          "id": "6d42d3dd-29df-44a1-89b8-994761eda77d",
+          "name": "Spined Megalodon",
+          "cohort": "validation",
+          "referenceHash": "82407598391f19ee18d946d6fd94fe8a1a12e48b9a7e358be2f60dd75dda303c",
+          "transform": {
+            "matrix": [1, 0, 0, 1, -0.15000000000000002, 0.475]
+          },
+          "before": 6.686342967517475,
+          "after": 6.340201284199791,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.54577633683083,
+            "shadowChroma": 5.453517476109403,
+            "shadowLightness": 4.592610681289,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.0680670151804,
+            "contrastError": 2.8356680628227373
+          },
+          "textureAfter": {
+            "chroma": 1.4218264375264789,
+            "shadowChroma": 0.08527960001316559,
+            "shadowLightness": 3.542378387992684,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.0680670151804,
+            "contrastError": 0.5084802039843943
+          }
+        },
+        {
+          "id": "7a5a88e3-e73c-4b34-a645-06fe27e68cee",
+          "name": "Shacklegeist",
+          "cohort": "validation",
+          "referenceHash": "9507c7a20efb871b4cbceb36eff8d461583c58aa074f5975f8ada71765d0a5ff",
+          "transform": {
+            "matrix": [0.99975, 0, 0, 0.99975, 0.075, -0.175]
+          },
+          "before": 7.448398164828419,
+          "after": 5.630853148392345,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.774109042203769,
+            "shadowChroma": 5.828650934716214,
+            "shadowLightness": 6.005377169036741,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.9201939407032,
+            "contrastError": 3.687794988345537
+          },
+          "textureAfter": {
+            "chroma": 1.3371164885145843,
+            "shadowChroma": 0.5133187076938711,
+            "shadowLightness": 2.129611900244943,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.9201939407032,
+            "contrastError": 1.3606071295071942
+          }
+        },
+        {
+          "id": "8cbac0e4-f79f-476d-b410-d19ab3696606",
+          "name": "Roaming Ghostlight",
+          "cohort": "validation",
+          "referenceHash": "0bcb2594c9610395d0e373dda2f07d3492179dbd21545808759c4478c756fda6",
+          "transform": {
+            "matrix": [
+              0.9995256416715772, 0.006978118730827471, -0.00008729908031502673, 1.0003737689454875,
+              0.15, 0.05000000000000002
+            ]
+          },
+          "before": 6.499423121853661,
+          "after": 6.758426138388233,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.493557865286639,
+            "shadowChroma": 5.515999663456272,
+            "shadowLightness": 5.153072475051612,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.68209523929829,
+            "contrastError": 4.449696286940629
+          },
+          "textureAfter": {
+            "chroma": 1.7348577269287464,
+            "shadowChroma": 0.23090925388915914,
+            "shadowLightness": 2.981916594230072,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.68209523929829,
+            "contrastError": 2.122508428102286
+          }
+        },
+        {
+          "id": "8f14abb0-0e9f-448e-85d7-6cb71f756c56",
+          "name": "Frantic Inventory",
+          "cohort": "validation",
+          "referenceHash": "83d3c3a7b92d30603ebb74232a77b261a395207a25500788c2d9794a33500462",
+          "transform": {
+            "matrix": [0.9994, 0, 0, 0.9994, -0.05, 0.15]
+          },
+          "before": 8.31758987357896,
+          "after": 4.276483352696222,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.907445663617194,
+            "shadowChroma": 5.975141990994886,
+            "shadowLightness": 6.702848213323998,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.59767316521618,
+            "contrastError": 4.365274212858516
+          },
+          "textureAfter": {
+            "chroma": 0.8646560105568653,
+            "shadowChroma": 0.589310215463657,
+            "shadowLightness": 1.4321408559576865,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.59767316521618,
+            "contrastError": 2.038086354020173
+          }
+        },
+        {
+          "id": "91af15cc-fdd5-4d72-a53a-314fa5353527",
+          "name": "See the Truth",
+          "cohort": "additional-development",
+          "referenceHash": "152939671db7fcae72e827ed231e7f3959820a9fb6edb7cafd6a3f28bf52bf1f",
+          "transform": {
+            "matrix": [
+              0.9992487672249787, -0.0015696175840702556, -0.0007839080022862935,
+              0.9981024627186083, -0.2, 0.20000000000000004
+            ]
+          },
+          "before": 7.156802542720662,
+          "after": 5.913653808433675,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.667929729544818,
+            "shadowChroma": 5.613049493157629,
+            "shadowLightness": 4.769946945951354,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.574950457861462,
+            "contrastError": 3.342551505503799
+          },
+          "textureAfter": {
+            "chroma": 1.3730922252454318,
+            "shadowChroma": 0.18705690243199113,
+            "shadowLightness": 3.3650421233303307,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.574950457861462,
+            "contrastError": 1.015363646665456
+          }
+        },
+        {
+          "id": "a188164c-01fe-4980-83a5-91d14e218cf5",
+          "name": "Jeskai Elder",
+          "cohort": "additional-development",
+          "referenceHash": "c7aa14587f1dbdcfec18db238c5a98f2d9614e9d26b002c271c9587fc9a2a6b2",
+          "transform": {
+            "matrix": [
+              0.9997498629564338, -0.0005234678519857846, -0.0004358307178112519,
+              0.9988503651206662, -0.15, 0.05
+            ]
+          },
+          "before": 6.802104268879947,
+          "after": 6.255671472135709,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.57082007049457,
+            "shadowChroma": 5.509333316746385,
+            "shadowLightness": 4.913483567334087,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.897344993208886,
+            "contrastError": 3.6649460408512233
+          },
+          "textureAfter": {
+            "chroma": 1.4080875547698535,
+            "shadowChroma": 0.27775725132649737,
+            "shadowLightness": 3.221505501947597,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.897344993208886,
+            "contrastError": 1.3377581820128803
+          }
+        },
+        {
+          "id": "a52e90c0-b012-4ce5-8462-1e33c7143de5",
+          "name": "Vodalian Arcanist",
+          "cohort": "additional-development",
+          "referenceHash": "d32bfe31fc46470bef5e779abbb70882c14fb667705e30cef74ee2ddd59f1912",
+          "transform": {
+            "matrix": [
+              1.0001495391970776, -0.000960074930813816, -0.0004365945241145043, 1.0006008801112498,
+              0.02500000000000001, -0.175
+            ]
+          },
+          "before": 6.741165036225056,
+          "after": 6.314410872898357,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.502995463474268,
+            "shadowChroma": 5.479337156512963,
+            "shadowLightness": 4.239612332852727,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.383032930671174,
+            "contrastError": 3.150633978313511
+          },
+          "textureAfter": {
+            "chroma": 1.3611719218787834,
+            "shadowChroma": 0.020587661336668568,
+            "shadowLightness": 3.895376736428957,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.383032930671174,
+            "contrastError": 0.8234461194751681
+          }
+        },
+        {
+          "id": "abb47990-a5a9-4a22-a8bb-d229b17132c6",
+          "name": "Waker of Waves",
+          "cohort": "additional-development",
+          "referenceHash": "5d6a8b39c7bcfba04f3c89f926dcd0a7888df966d982ecc446fbf247b8704a07",
+          "transform": {
+            "matrix": [1.0003000000000004, 0, 0, 1.0003000000000004, 0.05, -0.2]
+          },
+          "before": 7.666470557617619,
+          "after": 5.275363333610339,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.939068573048791,
+            "shadowChroma": 6.055479732235895,
+            "shadowLightness": 6.206205410730659,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.586680196742535,
+            "contrastError": 3.3542812443848717
+          },
+          "textureAfter": {
+            "chroma": 0.7172548141005866,
+            "shadowChroma": 0.811034451969365,
+            "shadowLightness": 1.9287836585510254,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.586680196742535,
+            "contrastError": 1.0270933855465287
+          }
+        },
+        {
+          "id": "ad1bcb44-a562-4f66-b862-6d0ef3546ab4",
+          "name": "Sublime Epiphany",
+          "cohort": "additional-development",
+          "referenceHash": "e1d92fca206ace4abe1d356681c87b787ee4616b279ebd70d60512490835915d",
+          "transform": {
+            "matrix": [
+              0.9993999391130708, 0.0003488564038041107, -0.0003491007498944278, 1.0000999390704246,
+              -0.2, 0.45
+            ]
+          },
+          "before": 6.9566943460150075,
+          "after": 6.336203509648701,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.671962022940258,
+            "shadowChroma": 5.479337156512963,
+            "shadowLightness": 4.239612332852727,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.14017636349631,
+            "contrastError": 2.907777411138646
+          },
+          "textureAfter": {
+            "chroma": 1.5380733804174274,
+            "shadowChroma": 0.020587661336668568,
+            "shadowLightness": 3.895376736428957,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.14017636349631,
+            "contrastError": 0.5805895523003031
+          }
+        },
+        {
+          "id": "ae981da0-f32c-49d5-bcb0-2b9255a4e1fe",
+          "name": "Historian of Zhalfir",
+          "cohort": "additional-development",
+          "referenceHash": "1332dba4b637578d5a2c14e453b83b6ce0958b05a478867b85d0dd4c50f5f1de",
+          "transform": {
+            "matrix": [
+              1.0018997558430556, -0.0006994580942113457, -0.0006118431087152186, 1.001600671231035,
+              -0.3, 0.09999999999999999
+            ]
+          },
+          "before": 5.90213472214303,
+          "after": 5.598407638359579,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 2.261134267893053,
+            "shadowChroma": 2.785108255661411,
+            "shadowLightness": 6.103603108065325,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.288892765066844,
+            "contrastError": 3.0564938127091814
+          },
+          "textureAfter": {
+            "chroma": 4.289155521786591,
+            "shadowChroma": 2.7301620611832385,
+            "shadowLightness": 2.0313859612163587,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.288892765066844,
+            "contrastError": 0.7293059538708384
+          }
+        },
+        {
+          "id": "b1501118-5837-49b5-9446-0bc3032035ca",
+          "name": "Pursued Whale",
+          "cohort": "additional-development",
+          "referenceHash": "6ff480356a9b0b6839c5dca407eed6d9f17bd66d67e1c4ad0454fb7b54575584",
+          "transform": {
+            "matrix": [0.99995, 0, 0, 0.99995, -0.09999999999999999, 0.37499999999999994]
+          },
+          "before": 7.094094517249492,
+          "after": 5.876367105727181,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.680098721521695,
+            "shadowChroma": 5.675842695337027,
+            "shadowLightness": 5.734616963580397,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.620350230902684,
+            "contrastError": 3.387951278545021
+          },
+          "textureAfter": {
+            "chroma": 1.3367572925319724,
+            "shadowChroma": 0.19478133332427497,
+            "shadowLightness": 2.4003721057012872,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.620350230902684,
+            "contrastError": 1.060763419706678
+          }
+        },
+        {
+          "id": "b19de7a5-c291-405b-a2e6-8d3ac56e6570",
+          "name": "Rookie Mistake",
+          "cohort": "additional-development",
+          "referenceHash": "078191166b0198c3f42a142a1858d390842c6161658e4eca4331046c4486de33",
+          "transform": {
+            "matrix": [0.9988500000000001, 0, 0, 0.9988500000000001, -0.05, 0.275]
+          },
+          "before": 6.003257479184559,
+          "after": 7.8342393527355725,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.449190708816159,
+            "shadowChroma": 5.350751662151736,
+            "shadowLightness": 3.6653656272008894,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.01916442427679,
+            "contrastError": 2.7867654719191286
+          },
+          "textureAfter": {
+            "chroma": 1.759220923938542,
+            "shadowChroma": 0.176570188330851,
+            "shadowLightness": 4.4696234420807945,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.01916442427679,
+            "contrastError": 0.4595776130807856
+          }
+        },
+        {
+          "id": "b33ba0a8-04e9-4df6-af20-a3ca4470cdcc",
+          "name": "Discontinuity",
+          "cohort": "additional-development",
+          "referenceHash": "8cba5f4ddb904bab5d6dd272f2a33b888a02d2f6e1b265379000876e77adc43f",
+          "transform": {
+            "matrix": [
+              0.9998986255516668, -0.0016578962234750586, -0.0007853611572465951,
+              0.9999526766982564, -0.15, 0
+            ]
+          },
+          "before": 6.8258795362894915,
+          "after": 6.377232962144077,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.67148290677328,
+            "shadowChroma": 5.466807964714311,
+            "shadowLightness": 4.869428230878315,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.72851232787146,
+            "contrastError": 3.496113375513797
+          },
+          "textureAfter": {
+            "chroma": 1.691700839219676,
+            "shadowChroma": 0.1835987124914214,
+            "shadowLightness": 3.2655608384033696,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.72851232787146,
+            "contrastError": 1.1689255166754542
+          }
+        },
+        {
+          "id": "b832abcc-9ffd-47bf-827a-01b303c610ee",
+          "name": "Rewind",
+          "cohort": "additional-development",
+          "referenceHash": "4eecc984b43acf7b7612edbe2978f45e8fe792e703c5af076bfa4dd9d46aca47",
+          "transform": {
+            "matrix": [0.99885, 0, 0, 0.99885, -0.024999999999999994, 0.02500000000000001]
+          },
+          "before": 6.489980485683356,
+          "after": 7.107934271387507,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.446081831061695,
+            "shadowChroma": 5.1870164028362185,
+            "shadowLightness": 4.072063838640538,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 17.75640550262124,
+            "contrastError": 2.5240065502635787
+          },
+          "textureAfter": {
+            "chroma": 1.7848829435359763,
+            "shadowChroma": 0.4572675791560699,
+            "shadowLightness": 4.062925230641145,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 17.75640550262124,
+            "contrastError": 0.19681869142523567
+          }
+        },
+        {
+          "id": "c26450d4-125f-423d-b074-3c959460c242",
+          "name": "Teferi's Tutelage",
+          "cohort": "additional-development",
+          "referenceHash": "cb24c9510d006ca07ca089017d69d19c3deba208d551d03d66ab095e6aea08a9",
+          "transform": {
+            "matrix": [0.9995999999999999, 0, 0, 0.9995999999999999, -0.2, 0.3]
+          },
+          "before": 7.929109153553212,
+          "after": 4.626832082215365,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.814287560226206,
+            "shadowChroma": 6.135949203248284,
+            "shadowLightness": 6.777784543790166,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.930031975795526,
+            "contrastError": 4.697633023437863
+          },
+          "textureAfter": {
+            "chroma": 1.0215521534976937,
+            "shadowChroma": 0.8099391352594817,
+            "shadowLightness": 1.3572045254915177,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.930031975795526,
+            "contrastError": 2.37044516459952
+          }
+        },
+        {
+          "id": "c2776694-6183-498d-9a38-e4c5c9e78179",
+          "name": "Tolarian Kraken",
+          "cohort": "additional-development",
+          "referenceHash": "f3545e6e36cd4a5cb41d87927212d215cb8487853e99f85507f437e823668474",
+          "transform": {
+            "matrix": [
+              0.9991999847813138, -0.0001743932979738861, -0.0006110791914988896,
+              1.0003501218896418, -0.09999999999999999, -0.1
+            ]
+          },
+          "before": 7.407792703032891,
+          "after": 5.244364964871383,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.437743259808844,
+            "shadowChroma": 5.232324024881574,
+            "shadowLightness": 6.3053243753851795,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.160045300373053,
+            "contrastError": 3.92764634801539
+          },
+          "textureAfter": {
+            "chroma": 1.8319805795651019,
+            "shadowChroma": 0.557043438842907,
+            "shadowLightness": 1.8296646938965044,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.160045300373053,
+            "contrastError": 1.600458489177047
+          }
+        },
+        {
+          "id": "c82be2ca-8350-4cf5-83b6-e8b60a9e21c6",
+          "name": "Rousing Read",
+          "cohort": "additional-development",
+          "referenceHash": "9dd13dc0c34b5c244a9c28c62efba8ec0922d34f7a1ba5180785dcb77bc055ec",
+          "transform": {
+            "matrix": [
+              0.999299813552441, -0.0006104375945664989, -0.0006103769635784883, 0.9992005592870518,
+              1.3877787807814457e-17, 0.47500000000000003
+            ]
+          },
+          "before": 7.815475480095994,
+          "after": 4.870390011249999,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.710332805880588,
+            "shadowChroma": 5.719773618448339,
+            "shadowLightness": 5.736719410630586,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.654080883838407,
+            "contrastError": 3.4216819314807445
+          },
+          "textureAfter": {
+            "chroma": 1.2518868509220984,
+            "shadowChroma": 0.35330648664364667,
+            "shadowLightness": 2.3982696586510976,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.654080883838407,
+            "contrastError": 1.0944940726424015
+          }
+        },
+        {
+          "id": "cb33529b-80bd-4f52-94cc-d8371c53ad75",
+          "name": "Library Larcenist",
+          "cohort": "additional-development",
+          "referenceHash": "4d62086bf7cb1343cab3901fd0f6f2a41431dac23d58bd470120ccf3c4579760",
+          "transform": {
+            "matrix": [
+              0.9994997564279211, -0.0006977825782655355, -0.00026186495530481637,
+              1.0002504265711651, -0.05, 0.6
+            ]
+          },
+          "before": 7.410224113487435,
+          "after": 5.834553692009266,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.831934515864566,
+            "shadowChroma": 5.875646812944908,
+            "shadowLightness": 5.956588615039959,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.322031233658844,
+            "contrastError": 4.089632281301181
+          },
+          "textureAfter": {
+            "chroma": 1.2232276910055355,
+            "shadowChroma": 0.49078160034513546,
+            "shadowLightness": 2.1784004542417246,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.322031233658844,
+            "contrastError": 1.7624444224628384
+          }
+        },
+        {
+          "id": "cce6289e-f665-4faa-8285-c843447f3e52",
+          "name": "Keen Glidemaster",
+          "cohort": "additional-development",
+          "referenceHash": "fb6546b80aa24072e60cc3db1f11a7faad5a073110d2008fccc36ff3e670623a",
+          "transform": {
+            "matrix": [0.99915, 0, 0, 0.99915, -0.15, 0.35000000000000003]
+          },
+          "before": 7.131372116643217,
+          "after": 5.303457586216785,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.291337517275051,
+            "shadowChroma": 4.986279622258161,
+            "shadowLightness": 5.831515203463833,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.315532915029898,
+            "contrastError": 4.083133962672235
+          },
+          "textureAfter": {
+            "chroma": 2.038418691896124,
+            "shadowChroma": 0.6702596698515088,
+            "shadowLightness": 2.303473865817851,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.315532915029898,
+            "contrastError": 1.7559461038338924
+          }
+        },
+        {
+          "id": "d3bc7176-abe0-47cf-a242-cf22a1f590be",
+          "name": "Enthralling Hold",
+          "cohort": "additional-development",
+          "referenceHash": "9f73d37a53e456554d1bf404e9deb7c56ee9c49cb6db393cebc43a5065d7b9bc",
+          "transform": {
+            "matrix": [0.9989, 0, 0, 0.9989, -0.04999999999999999, 0.125]
+          },
+          "before": 7.290278193183236,
+          "after": 5.505709259971331,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.793148528918564,
+            "shadowChroma": 5.855215723882522,
+            "shadowLightness": 6.3071217891404245,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.548816589321905,
+            "contrastError": 4.316417636964243
+          },
+          "textureAfter": {
+            "chroma": 1.1023139095377903,
+            "shadowChroma": 0.5161607512094463,
+            "shadowLightness": 1.8278672801412599,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.548816589321905,
+            "contrastError": 1.9892297781258996
+          }
+        },
+        {
+          "id": "d5acb8ef-5a57-4d10-b59c-2dbf84635084",
+          "name": "Riddleform",
+          "cohort": "additional-development",
+          "referenceHash": "fd93686b623b09491c94bff403b4235360fdeb51ca45eaae74f6723f7b1fb778",
+          "transform": {
+            "matrix": [0.9985, 0, 0, 0.9985, -0.05, -0.15]
+          },
+          "before": 8.35272583014221,
+          "after": 3.7434591353987483,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.416270767470933,
+            "shadowChroma": 5.381654708368358,
+            "shadowLightness": 7.367622834298859,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.298215528425132,
+            "contrastError": 4.065816576067469
+          },
+          "textureAfter": {
+            "chroma": 1.5478747263405177,
+            "shadowChroma": 0.2864561983868724,
+            "shadowLightness": 0.7673662349828247,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.298215528425132,
+            "contrastError": 1.7386287172291262
+          }
+        },
+        {
+          "id": "d67e4c42-a44f-456b-87e7-21ca56dc4630",
+          "name": "Teferi's Wavecaster",
+          "cohort": "additional-development",
+          "referenceHash": "ba7e15ef507e6dd1bd699ddac6226e4f05f2ee5f335ee5d2eb1dee0abd924b08",
+          "transform": {
+            "matrix": [1.00245, 0, 0, 1.00245, -0.175, 0.39999999999999997]
+          },
+          "before": 3.708149047325091,
+          "after": 7.962845048714719,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 2.253062539849668,
+            "shadowChroma": 2.1288920219643335,
+            "shadowLightness": 2.5632884714463344,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 16.5322786881841,
+            "contrastError": 1.299879735826437
+          },
+          "textureAfter": {
+            "chroma": 4.42905425374138,
+            "shadowChroma": 3.371981849403353,
+            "shadowLightness": 5.571700597835349,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 16.5322786881841,
+            "contrastError": 1.027308123011906
+          }
+        },
+        {
+          "id": "d961c441-b76b-4bd8-b510-a3e073207a1b",
+          "name": "Mistral Singer",
+          "cohort": "additional-development",
+          "referenceHash": "3a6ccb55f6f95a159495d1cdc12e90605784b6456ac3e55e2788ef93396e2698",
+          "transform": {
+            "matrix": [0.99995, 0, 0, 0.99995, -0.024999999999999994, 0.4]
+          },
+          "before": 6.845574335746603,
+          "after": 6.4878436640881665,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.563795676796964,
+            "shadowChroma": 5.486412990037069,
+            "shadowLightness": 4.419013176505704,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.066225972685046,
+            "contrastError": 2.8338270203273837
+          },
+          "textureAfter": {
+            "chroma": 1.6895253675751163,
+            "shadowChroma": 0.14216328711956072,
+            "shadowLightness": 3.71597589277598,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.066225972685046,
+            "contrastError": 0.5066391614890406
+          }
+        },
+        {
+          "id": "da367981-9d6f-419f-9f58-f969b6183336",
+          "name": "Rain of Revelation",
+          "cohort": "additional-development",
+          "referenceHash": "7770b731c4ccca33962589e1e92019976a9f48ca9d798f582766da10bb383232",
+          "transform": {
+            "matrix": [
+              0.9994479868258431, -0.0020060233721415762, -0.0005224485074510853,
+              0.9978030584774105, -0.09999999999999999, 0.05
+            ]
+          },
+          "before": 6.855795142327141,
+          "after": 6.434169398184518,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.562116813826344,
+            "shadowChroma": 5.466807964714311,
+            "shadowLightness": 4.869428230878315,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.991929260830155,
+            "contrastError": 3.759530308472492
+          },
+          "textureAfter": {
+            "chroma": 1.6889962432242938,
+            "shadowChroma": 0.1835987124914214,
+            "shadowLightness": 3.2655608384033696,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.991929260830155,
+            "contrastError": 1.4323424496341488
+          }
+        },
+        {
+          "id": "dee1d595-a998-4652-931f-a1a72446f3a6",
+          "name": "Tide Skimmer",
+          "cohort": "additional-development",
+          "referenceHash": "868a704e29e8ac10526c175253230452cdbbac7342a178fc175b4969a46a34fb",
+          "transform": {
+            "matrix": [
+              1.0005500000000003, 0, 0, 1.0005500000000003, -0.09999999999999999,
+              0.09999999999999999
+            ]
+          },
+          "before": 6.295617796242954,
+          "after": 7.761771051349514,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.509594303119774,
+            "shadowChroma": 5.3423420345399,
+            "shadowLightness": 4.292999266161656,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 18.783759312724825,
+            "contrastError": 3.5513603603671626
+          },
+          "textureAfter": {
+            "chroma": 2.1851029065025247,
+            "shadowChroma": 0.3298978788467475,
+            "shadowLightness": 3.8419898031200272,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 18.783759312724825,
+            "contrastError": 1.2241725015288196
+          }
+        },
+        {
+          "id": "f5ed9f08-56e8-4e24-aae2-05270d7c1ba8",
+          "name": "Capture Sphere",
+          "cohort": "additional-development",
+          "referenceHash": "984a577a8b078f6eb1efd51e1aff52d2e6459289877b96d5c01966b567d3ea67",
+          "transform": {
+            "matrix": [0.99895, 0, 0, 0.99895, -0.05, -0.8]
+          },
+          "before": 6.953783110768658,
+          "after": 5.680445346510727,
+          "nativeRgb": [0.1843137254901961, 0.49607843137254903, 0.8156862745098039],
+          "textureBefore": {
+            "chroma": 5.1483235856970095,
+            "shadowChroma": 4.934429033557142,
+            "shadowLightness": 6.4944855642479755,
+            "contrast": 15.232398952357663,
+            "referenceContrast": 19.222482606409443,
+            "contrastError": 3.99008365405178
+          },
+          "textureAfter": {
+            "chroma": 2.278399897813192,
+            "shadowChroma": 0.9722857108985957,
+            "shadowLightness": 1.640503505033708,
+            "contrast": 17.559586811196006,
+            "referenceContrast": 19.222482606409443,
+            "contrastError": 1.6628957952134371
+          }
+        }
+      ]
+    },
+    "R": {
+      "status": "normalization-method-rejected",
+      "methodPassed": false,
+      "sourceHash": "034370a441cf8ee8870293d02a46018f7a009de4816d8046294a54529281cb9c",
+      "rawColor": {
+        "rgb": [0.8107843137254902, 0.1392156862745098, 0.11078431372549019],
+        "tiles": [
+          [0.9098039215686274, 0.3431372549019608, 0.26666666666666666],
+          [0.8196078431372549, 0.14901960784313728, 0.1196078431372549],
+          [0.7627450980392156, 0.054901960784313725, 0.060784313725490195],
+          [0.7627450980392156, 0.08235294117647059, 0.07647058823529412],
+          [0.8666666666666667, 0.21372549019607845, 0.1627450980392157],
+          [0.9117647058823529, 0.3568627450980392, 0.2686274509803922],
+          [0.8764705882352941, 0.2568627450980392, 0.2],
+          [0.7980392156862746, 0.11764705882352941, 0.10196078431372549],
+          [0.8196078431372549, 0.17254901960784313, 0.1392156862745098],
+          [0.7568627450980392, 0.06274509803921569, 0.06470588235294117],
+          [0.8686274509803922, 0.28627450980392155, 0.2411764705882353],
+          [0.7803921568627451, 0.12352941176470589, 0.10196078431372549],
+          [0.8666666666666667, 0.23137254901960785, 0.1784313725490196],
+          [0.7941176470588235, 0.12352941176470589, 0.09411764705882353],
+          [0.7352941176470589, 0.00980392156862745, 0.0392156862745098],
+          [0.7450980392156863, 0.027450980392156862, 0.054901960784313725],
+          [0.8019607843137255, 0.12941176470588234, 0.10196078431372549],
+          [0.9215686274509804, 0.34705882352941175, 0.2823529411764706]
+        ],
+        "spread": 10.051699187119276,
+        "rejectedFraction": 0
+      },
+      "rawTexture": [
+        [0.7019607843137254, 0.00392156862745098, 0.0196078431372549],
+        [0.7254901960784313, 0.0196078431372549, 0.03529411764705882],
+        [0.7411764705882353, 0.0392156862745098, 0.047058823529411764],
+        [0.7647058823529411, 0.07058823529411765, 0.07058823529411765],
+        [0.792156862745098, 0.11372549019607843, 0.09803921568627451],
+        [0.8294117647058823, 0.17254901960784313, 0.13725490196078433],
+        [0.8705882352941177, 0.23137254901960785, 0.1803921568627451],
+        [0.907843137254902, 0.3156862745098039, 0.24705882352941178],
+        [0.9450980392156862, 0.4117647058823529, 0.32941176470588235],
+        [0.9764705882352941, 0.5882352941176471, 0.4980392156862745]
+      ],
+      "summaries": {
+        "all": {
+          "cards": 42,
+          "before": 3.124065529412559,
+          "after": 3.222262393710066,
+          "worstRegression": 1.4118478675594495,
+          "texture": {
+            "shadowChroma": {
+              "before": 1.645357333254513,
+              "after": 2.321268680053735
+            },
+            "shadowLightness": {
+              "before": 1.7979609677011676,
+              "after": 1.2873877354345975
+            },
+            "contrastError": {
+              "before": 1.6762060168417214,
+              "after": 3.047441466259315
+            }
+          },
+          "flags": ["shadowChroma-regression", "contrastError-regression"]
+        },
+        "calibration": {
+          "cards": 7,
+          "before": 3.4940036188608574,
+          "after": 3.53822861869377,
+          "worstRegression": 1.4118478675594495,
+          "texture": {
+            "shadowChroma": {
+              "before": 2.46205575325406,
+              "after": 2.0550446974200125
+            },
+            "shadowLightness": {
+              "before": 2.192412757315493,
+              "after": 1.2669963832008135
+            },
+            "contrastError": {
+              "before": 1.6769280269225888,
+              "after": 1.1314722320370976
+            }
+          },
+          "flags": []
+        },
+        "validation": {
+          "cards": 10,
+          "before": 4.030553382215086,
+          "after": 3.7136695396253288,
+          "worstRegression": 0.47744669575734466,
+          "texture": {
+            "shadowChroma": {
+              "before": 3.0558527276719145,
+              "after": 2.2793906262200805
+            },
+            "shadowLightness": {
+              "before": 2.9917448597102267,
+              "after": 1.1564422655421542
+            },
+            "contrastError": {
+              "before": 1.454281753147363,
+              "after": 1.8274557614206657
+            }
+          },
+          "flags": []
+        },
+        "additional-development": {
+          "cards": 25,
+          "before": 2.9099498843294302,
+          "after": 3.148638454148796,
+          "worstRegression": 0.9621146713698887,
+          "texture": {
+            "shadowChroma": {
+              "before": 1.6004955924359587,
+              "after": 2.3234650291186285
+            },
+            "shadowLightness": {
+              "before": 1.0550196242358256,
+              "after": 1.3470313471721285
+            },
+            "contrastError": {
+              "before": 1.7093309597674775,
+              "after": 3.122904879300542
+            }
+          },
+          "flags": [
+            "median-regression",
+            "shadowChroma-regression",
+            "shadowLightness-regression",
+            "contrastError-regression"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "064a6f1c-a058-4cc8-b467-5dbecb5eeb99",
+          "name": "Sure Strike",
+          "cohort": "calibration",
+          "referenceHash": "3f2d3b6b1e7c16baf2a03a2e3414ff6b3b2b52aaa0535eb94b7474e558f8bdf4",
+          "transform": {
+            "matrix": [
+              1.0010499047071053, -0.00043679044806744106, 0.0005236249336051027, 1.000049866723218,
+              0, 0.04999999999999999
+            ]
+          },
+          "before": 3.16592809748205,
+          "after": 3.2924608594670537,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.11216639766758,
+            "shadowChroma": 1.8479924598188586,
+            "shadowLightness": 2.192412757315493,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.267549562797996,
+            "contrastError": 1.6769280269225888
+          },
+          "textureAfter": {
+            "chroma": 3.061081546858072,
+            "shadowChroma": 2.0550446974200125,
+            "shadowLightness": 0.1687798510281613,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.267549562797996,
+            "contrastError": 3.090501946455653
+          }
+        },
+        {
+          "id": "0b12e4b7-2c45-4795-94d3-901f89b8f290",
+          "name": "Fiery Emancipation",
+          "cohort": "calibration",
+          "referenceHash": "04f5c5cd7928476e94355d119b4f102adb51ea3deb2a4efbcd8e3893bf6e56f1",
+          "transform": {
+            "matrix": [0.99995, 0, 0, 0.99995, -0.125, 0.275]
+          },
+          "before": 4.677345886644533,
+          "after": 1.1048600691912058,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 4.308963411061109,
+            "shadowChroma": 4.274614746626789,
+            "shadowLightness": 1.8184259634344724,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 21.37881407462786,
+            "contrastError": 1.434336484907277
+          },
+          "textureAfter": {
+            "chroma": 1.005696885904514,
+            "shadowChroma": 0.5386949552478909,
+            "shadowLightness": 0.5427666449091817,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 21.37881407462786,
+            "contrastError": 0.020762565374212727
+          }
+        },
+        {
+          "id": "1b6d123c-c16d-43fa-b183-8a59c7e1a11e",
+          "name": "Storm Caller",
+          "cohort": "calibration",
+          "referenceHash": "1eac278efda66f4640f3eb8e72c02e25ebc7bbd87763703a00d53eabe580b078",
+          "transform": {
+            "matrix": [1.00205, 0, 0, 1.00205, -0.325, -0.25]
+          },
+          "before": 3.585142170211674,
+          "after": 3.799011556794311,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.8575947525715373,
+            "shadowChroma": 2.895545044613052,
+            "shadowLightness": 2.4057688833579336,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 20.52768466446757,
+            "contrastError": 0.5832070747469871
+          },
+          "textureAfter": {
+            "chroma": 3.9088071796540254,
+            "shadowChroma": 3.802145405133132,
+            "shadowLightness": 0.04457627501427974,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 20.52768466446757,
+            "contrastError": 0.8303668447860773
+          }
+        },
+        {
+          "id": "2ae12125-73a3-488b-98b8-9f982addac56",
+          "name": "Furious Rise",
+          "cohort": "calibration",
+          "referenceHash": "a04537fbf7d98806df458132759a8db265a50e33dca86a97e68c2c5c3af4789b",
+          "transform": {
+            "matrix": [0.9989500000000001, 0, 0, 0.9989500000000001, 0.175, -0.9750000000000001]
+          },
+          "before": 5.5846358073961,
+          "after": 3.53822861869377,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 3.49829258222986,
+            "shadowChroma": 3.8489104757203205,
+            "shadowLightness": 5.305409619110635,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 21.948127564840288,
+            "contrastError": 2.0036499751197034
+          },
+          "textureAfter": {
+            "chroma": 1.5738379265290388,
+            "shadowChroma": 0.21151950983704215,
+            "shadowLightness": 2.9442170107669807,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 21.948127564840288,
+            "contrastError": 0.5900760555866391
+          }
+        },
+        {
+          "id": "386e5cb2-39c8-453d-a642-c5d9f8495601",
+          "name": "Havoc Jester",
+          "cohort": "calibration",
+          "referenceHash": "8dde40df01870e44c006ad9c32bf9f9f78311f01d33ddfbe0c4013405ba781fe",
+          "transform": {
+            "matrix": [
+              0.9991497565132139, -0.0006975382321901048, -0.0006111711564193053,
+              1.0005006704938604, 0.15, -0.35
+            ]
+          },
+          "before": 2.5778533390617553,
+          "after": 2.986078501412972,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.8767261114031957,
+            "shadowChroma": 1.493143769192655,
+            "shadowLightness": 1.0925901215822875,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.880034216092096,
+            "contrastError": 2.064443373628489
+          },
+          "textureAfter": {
+            "chroma": 3.203274199056292,
+            "shadowChroma": 2.4014976055594968,
+            "shadowLightness": 1.2686024867613666,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.880034216092096,
+            "contrastError": 3.478017293161553
+          }
+        },
+        {
+          "id": "38c18541-e95e-4ae0-be18-3bfcafa24ca2",
+          "name": "Turn to Slag",
+          "cohort": "calibration",
+          "referenceHash": "dbaecd4a3603dcb569aa09bcee5b5aadebf39c03d5bc63a2fea11422cc1d05fe",
+          "transform": {
+            "matrix": [
+              0.9995499657459618, -0.00026168157508541103, -0.00026123655194097765,
+              0.9978501025873524, -0.05, -0.25
+            ]
+          },
+          "before": 2.154890516870377,
+          "after": 3.5667383844298266,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.656116381240437,
+            "shadowChroma": 1.3472969044679974,
+            "shadowLightness": 0.47331360857247873,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.935037378712266,
+            "contrastError": 2.009440211008318
+          },
+          "textureAfter": {
+            "chroma": 3.4949322917492744,
+            "shadowChroma": 2.5913786894859845,
+            "shadowLightness": 1.8878789997711753,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.935037378712266,
+            "contrastError": 3.4230141305413824
+          }
+        },
+        {
+          "id": "432ecd5f-966f-4403-a973-51e175a524a0",
+          "name": "Terror of the Peaks",
+          "cohort": "calibration",
+          "referenceHash": "4abf66d63c4f9b18c63dc57b8475770ace9a8bf46d3f2c4dfd13a5ecdd777774",
+          "transform": {
+            "matrix": [1.00005, 0, 0, 1.00005, -0.05, 0.09999999999999999]
+          },
+          "before": 3.4940036188608574,
+          "after": 3.7446012482975988,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.196046068709399,
+            "shadowChroma": 2.46205575325406,
+            "shadowLightness": 3.6281889915444676,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 20.22657927721655,
+            "contrastError": 0.28210168749596676
+          },
+          "textureAfter": {
+            "chroma": 2.8434137536541817,
+            "shadowChroma": 1.48149396825698,
+            "shadowLightness": 1.2669963832008135,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 20.22657927721655,
+            "contrastError": 1.1314722320370976
+          }
+        },
+        {
+          "id": "4bfffc18-b36a-4dd5-909e-60ea9f8eb60b",
+          "name": "Hobblefiend",
+          "cohort": "validation",
+          "referenceHash": "2e9106b4fbf99faed2beadb041616c80f1c8fd82ede82f50e0de3004b347dd1d",
+          "transform": {
+            "matrix": [0.9993000000000001, 0, 0, 0.9993000000000001, -0.2, 0.225]
+          },
+          "before": 4.547507139706478,
+          "after": 3.9081981920908935,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.802016009557982,
+            "shadowChroma": 3.0566337270016826,
+            "shadowLightness": 4.327949589061081,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 19.56205365463089,
+            "contrastError": 0.38242393508969386
+          },
+          "textureAfter": {
+            "chroma": 2.237287071507698,
+            "shadowChroma": 0.9205049423906188,
+            "shadowLightness": 1.9667569807174268,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 19.56205365463089,
+            "contrastError": 1.7959978546227582
+          }
+        },
+        {
+          "id": "59fa8e8d-bcb8-47bf-b71a-df11c8d0f2c9",
+          "name": "Shock",
+          "cohort": "validation",
+          "referenceHash": "d15f1988194994f7ee9ab915f4b3f631ca50481da1fb66060a739b2a531b5de5",
+          "transform": {
+            "matrix": [
+              0.9997988997898589, 0.0014832326141574345, 0, 0.9990010993310068, -0.05, -0.25
+            ]
+          },
+          "before": 2.9851466173001904,
+          "after": 2.919408176904041,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.8297565038176051,
+            "shadowChroma": 1.4743430606683532,
+            "shadowLightness": 1.161709537633282,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.134889384319912,
+            "contrastError": 1.8095882054006722
+          },
+          "textureAfter": {
+            "chroma": 3.2927859545466944,
+            "shadowChroma": 2.4408835604216015,
+            "shadowLightness": 1.199483070710372,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.134889384319912,
+            "contrastError": 3.2231621249337365
+          }
+        },
+        {
+          "id": "5d878dab-5ed2-4ef3-b2c7-472290892854",
+          "name": "Conspicuous Snoop",
+          "cohort": "validation",
+          "referenceHash": "fe719cbc71d46629532024d71c648887ada192fbfa4281ad9e2890f251940382",
+          "transform": {
+            "matrix": [0.9996, 0, 0, 0.9996, 0.2, 0.05]
+          },
+          "before": 3.0978859526942424,
+          "after": 2.896540114446014,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.9456104935887442,
+            "shadowChroma": 1.5747433408221698,
+            "shadowLightness": 1.8272956193701284,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.33538125875636,
+            "contrastError": 1.609096330964224
+          },
+          "textureAfter": {
+            "chroma": 3.097158278909965,
+            "shadowChroma": 2.3210696895956207,
+            "shadowLightness": 0.5338969889735257,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.33538125875636,
+            "contrastError": 3.0226702504972884
+          }
+        },
+        {
+          "id": "6075e0a3-a0ab-4a11-8ad2-7dabb071d309",
+          "name": "Bone Pit Brute",
+          "cohort": "validation",
+          "referenceHash": "2f6aee8e5c651bf0788e02262831764c0054a9883c2aa796c48bcb90f0b0a44b",
+          "transform": {
+            "matrix": [1.0006, 0, 0, 1.0006, -0.09999999999999999, 0]
+          },
+          "before": 2.627105714746303,
+          "after": 3.1045524105036475,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.0297605253888946,
+            "shadowChroma": 1.6820087293468025,
+            "shadowLightness": 1.247791147969718,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 19.499137841035076,
+            "contrastError": 0.44533974868550885
+          },
+          "textureAfter": {
+            "chroma": 3.1898428147193116,
+            "shadowChroma": 2.23771156284454,
+            "shadowLightness": 1.1134014603739362,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 19.499137841035076,
+            "contrastError": 1.8589136682185732
+          }
+        },
+        {
+          "id": "62584e4f-dac1-4d99-ac0a-6a2451603889",
+          "name": "Soul Sear",
+          "cohort": "validation",
+          "referenceHash": "bec3390c50dfd3e8496f7b8588e2d2740fa58828bba7ee781f4d2e9207d2024e",
+          "transform": {
+            "matrix": [
+              0.9993991437776709, -0.0013082111672348595, 0.00008721416770049212,
+              0.9994007420599187, -0.05, -0.1
+            ]
+          },
+          "before": 5.505001252368882,
+          "after": 4.595548487814355,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.6707340391218004,
+            "shadowChroma": 3.2298715988908184,
+            "shadowLightness": 5.298530094135928,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 20.88323480441297,
+            "contrastError": 0.9387572146923873
+          },
+          "textureAfter": {
+            "chroma": 2.3911415016702557,
+            "shadowChroma": 0.8493095711053265,
+            "shadowLightness": 2.9373374857922743,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 20.88323480441297,
+            "contrastError": 0.47481670484067706
+          }
+        },
+        {
+          "id": "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+          "name": "Double Vision",
+          "cohort": "validation",
+          "referenceHash": "e1c8427b0cfb21d6e9e64e65783a638b61d9406859e2c1ff2729ed175f81ab3f",
+          "transform": {
+            "matrix": [
+              0.9988990262966683, 0.0013947270586715708, -0.0001741752618076841, 0.9979507295835416,
+              0.05, -0.2
+            ]
+          },
+          "before": 3.23626218703019,
+          "after": 3.637734177646163,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.8642290985786976,
+            "shadowChroma": 1.5711098277520448,
+            "shadowLightness": 2.1297562233807077,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.246427041670405,
+            "contrastError": 1.6980505480501797
+          },
+          "textureAfter": {
+            "chroma": 3.191012018586983,
+            "shadowChroma": 2.3214676705118498,
+            "shadowLightness": 0.23143638496294638,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.246427041670405,
+            "contrastError": 3.111624467583244
+          }
+        },
+        {
+          "id": "76cf0b50-155f-4e65-9e48-88b378ad93a1",
+          "name": "Chandra's Firemaw",
+          "cohort": "validation",
+          "referenceHash": "b0a106ea867d7c792174ff1cc5684d52b5b2c905cb318b98cb911e098f4e5c6e",
+          "transform": {
+            "matrix": [1.0015499999999997, 0, 0, 1.0015499999999997, -0.3, -0.9]
+          },
+          "before": 5.636437420376951,
+          "after": 3.509624153376736,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 5.151575191289978,
+            "shadowChroma": 5.105114700627271,
+            "shadowLightness": 3.319230021203029,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 22.592667726725985,
+            "contrastError": 2.6481901370054004
+          },
+          "textureAfter": {
+            "chroma": 3.968359181205329,
+            "shadowChroma": 4.979230359608786,
+            "shadowLightness": 0.9580374128593749,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 22.592667726725985,
+            "contrastError": 1.234616217472336
+          }
+        },
+        {
+          "id": "76e42d07-57d9-4de4-8d41-eb42dd1573ed",
+          "name": "Onakke Ogre",
+          "cohort": "validation",
+          "referenceHash": "676711d8d80ae6f8f8f148d48e2ead3e46b908fdae2e2da4e7c472d7548ed9d8",
+          "transform": {
+            "matrix": [0.9993, 0, 0, 0.9993, 0, -0.65]
+          },
+          "before": 5.335413675587309,
+          "after": 4.518723460503493,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.7247197883962877,
+            "shadowChroma": 3.055071728342147,
+            "shadowLightness": 4.920583655041449,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 19.176417679953616,
+            "contrastError": 0.7680599097669685
+          },
+          "textureAfter": {
+            "chroma": 2.3172895356195276,
+            "shadowChroma": 0.8981513682945369,
+            "shadowLightness": 2.5593910466977956,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 19.176417679953616,
+            "contrastError": 2.181633829300033
+          }
+        },
+        {
+          "id": "7b862e46-f5a2-4fce-98b5-2c5aa49ec648",
+          "name": "Keral Keep Disciples",
+          "cohort": "validation",
+          "referenceHash": "cb6d7561b920eddbb858f163847e4400f1788316e958c51627dda068bc9aba4b",
+          "transform": {
+            "matrix": [1.0025499999999998, 0, 0, 1.0025499999999998, -0.375, -0.325]
+          },
+          "before": 3.513599624723693,
+          "after": 3.7896049016044944,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.8239570340837865,
+            "shadowChroma": 3.285052742114895,
+            "shadowLightness": 2.6642596982174247,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 21.243944765051086,
+            "contrastError": 1.299467175330502
+          },
+          "textureAfter": {
+            "chroma": 4.076739834249353,
+            "shadowChroma": 4.137083708830761,
+            "shadowLightness": 0.30306708987377085,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 21.243944765051086,
+            "contrastError": 0.11410674420256228
+          }
+        },
+        {
+          "id": "7bf663d3-850b-4a24-8e4b-08311adf4ed0",
+          "name": "Hellkite Punisher",
+          "cohort": "validation",
+          "referenceHash": "115f472acf40dc32c95318eab1134dcdb7094a70125f1788b8146f0b604cc01d",
+          "transform": {
+            "matrix": [0.99895, 0, 0, 0.99895, 0.375, -0.125]
+          },
+          "before": 6.621763046993645,
+          "after": 4.4724499340583925,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 3.718073334973613,
+            "shadowChroma": 4.211581371333521,
+            "shadowLightness": 6.396190253752071,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 22.252823873677997,
+            "contrastError": 2.3083462839574125
+          },
+          "textureAfter": {
+            "chroma": 1.3551496112715005,
+            "shadowChroma": 0.41178355383061943,
+            "shadowLightness": 4.034997645408417,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 22.252823873677997,
+            "contrastError": 0.8947723644243482
+          }
+        },
+        {
+          "id": "7e22c791-6ef9-4f13-a14d-4f795f48bb1c",
+          "name": "Volcanic Geyser",
+          "cohort": "additional-development",
+          "referenceHash": "d4108e8ed781d8ae7a5f05dd9d526251d7668f6e665e665f46ddcd942e3497a8",
+          "transform": {
+            "matrix": [
+              0.9987995398190684, 0.0009587790240432331, -0.00034777436457695215,
+              0.9963001251897815, 0.09999999999999999, -0.55
+            ]
+          },
+          "before": 2.984958793134775,
+          "after": 2.728268630524385,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.164257308947404,
+            "shadowChroma": 1.5876960692781976,
+            "shadowLightness": 1.0508498567055213,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.722442284567453,
+            "contrastError": 1.2220353051531312
+          },
+          "textureAfter": {
+            "chroma": 2.9803038648306113,
+            "shadowChroma": 2.3285747742027763,
+            "shadowLightness": 1.3103427516381327,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.722442284567453,
+            "contrastError": 2.6356092246861955
+          }
+        },
+        {
+          "id": "8257c205-00cd-4d41-bd58-098575ea2343",
+          "name": "Crash Through",
+          "cohort": "additional-development",
+          "referenceHash": "21e9cbe0e8fde77f6dc532767c79056328c62ea4e2f5636071cac2308e384bf6",
+          "transform": {
+            "matrix": [
+              0.9994499391100248, 0.0003488738570962763, -0.0006111401104901778, 1.000449847622752,
+              -0.09999999999999999, 0.25
+            ]
+          },
+          "before": 2.5646687350853745,
+          "after": 3.2116445486959924,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.9125900580772535,
+            "shadowChroma": 1.4807867410640765,
+            "shadowLightness": 1.1638047798711415,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.820647764696734,
+            "contrastError": 1.1238298250238508
+          },
+          "textureAfter": {
+            "chroma": 3.2276454609105416,
+            "shadowChroma": 2.439218321746454,
+            "shadowLightness": 1.1973878284725126,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.820647764696734,
+            "contrastError": 2.537403744556915
+          }
+        },
+        {
+          "id": "869fb9f1-0d59-4874-aa52-ac665c3cc0e8",
+          "name": "Heartfire Immolator",
+          "cohort": "additional-development",
+          "referenceHash": "26c3d75ecbb340c0e891a657b7b70ce68962e6a8d3cdd34169349a906ecab2ac",
+          "transform": {
+            "matrix": [
+              0.9995494519354347, -0.001046726120987929, 0.0004363541971824528, 1.0000500913898076,
+              -0.05, -0.2
+            ]
+          },
+          "before": 2.4510981782146986,
+          "after": 3.176374575277817,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.070612673832889,
+            "shadowChroma": 1.4809207703591112,
+            "shadowLightness": 0.361710275651117,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.26899358295973,
+            "contrastError": 1.675484006760854
+          },
+          "textureAfter": {
+            "chroma": 3.129943595641402,
+            "shadowChroma": 2.4729409098001596,
+            "shadowLightness": 1.999482332692537,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.26899358295973,
+            "contrastError": 3.0890579262939184
+          }
+        },
+        {
+          "id": "91d3e366-4da5-42c8-bbd5-a0c178c0da28",
+          "name": "Chandra's Magmutt",
+          "cohort": "additional-development",
+          "referenceHash": "581d30b4ecd34feb61fdebbe3b78c643c0ea4b7fbdf72ba33568792371d0ebce",
+          "transform": {
+            "matrix": [0.9994, 0, 0, 0.9994, 0.09999999999999999, -0.7]
+          },
+          "before": 5.7205917959143875,
+          "after": 3.9931547949806108,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 3.451106611461515,
+            "shadowChroma": 4.008977523316912,
+            "shadowLightness": 6.540898777329845,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 21.423140101298976,
+            "contrastError": 1.478662511578392
+          },
+          "textureAfter": {
+            "chroma": 1.6061753096802769,
+            "shadowChroma": 0.659414174795051,
+            "shadowLightness": 4.179706168986192,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 21.423140101298976,
+            "contrastError": 0.06508859204532769
+          }
+        },
+        {
+          "id": "9f8cf3f9-4e3b-4af2-b5ef-a97eb1d2b674",
+          "name": "Bolt Hound",
+          "cohort": "additional-development",
+          "referenceHash": "84783127160767770c47836dab684d6a6a4aa7dfae60a567340500e0f8c748c3",
+          "transform": {
+            "matrix": [0.99915, 0, 0, 0.99915, -0.09999999999999999, 0.25]
+          },
+          "before": 2.7879875377082364,
+          "after": 2.8823596066480586,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.0854023888620445,
+            "shadowChroma": 1.616076939414957,
+            "shadowLightness": 0.4901031207817652,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.626288467139258,
+            "contrastError": 2.3181891225813267
+          },
+          "textureAfter": {
+            "chroma": 3.092937489697216,
+            "shadowChroma": 2.3234650291186285,
+            "shadowLightness": 1.8710894875618889,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.626288467139258,
+            "contrastError": 3.731763042114391
+          }
+        },
+        {
+          "id": "a31b6817-9b63-4d6f-a945-459b44ad184c",
+          "name": "Volcanic Salvo",
+          "cohort": "additional-development",
+          "referenceHash": "1616a638b5774468e86e1ba443e428b8045c01ecc7a64d752da8af127f064d4e",
+          "transform": {
+            "matrix": [1.00265, 0, 0, 1.00265, -0.14999999999999997, -0.2]
+          },
+          "before": 3.148499844685654,
+          "after": 3.6085225136590466,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.8632497401348398,
+            "shadowChroma": 1.690359562134714,
+            "shadowLightness": 2.2467702151213462,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.271442203629203,
+            "contrastError": 1.6730353860913816
+          },
+          "textureAfter": {
+            "chroma": 3.211402952637189,
+            "shadowChroma": 2.260547688469445,
+            "shadowLightness": 0.11442239322230763,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.271442203629203,
+            "contrastError": 3.086609305624446
+          }
+        },
+        {
+          "id": "a9a1cce7-1472-42fc-bfd3-c9ed9e563f03",
+          "name": "Scorching Dragonfire",
+          "cohort": "additional-development",
+          "referenceHash": "ac32f89a31dbb6dd20a5cfc218d84b9d0a7e8884223a1487a12248d369a17105",
+          "transform": {
+            "matrix": [0.99885, 0, 0, 0.99885, 0.05, 0.25]
+          },
+          "before": 2.905662965299573,
+          "after": 2.6998601825540844,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.2064921389654537,
+            "shadowChroma": 1.6033435888028313,
+            "shadowLightness": 0.769792424365584,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.810357399460862,
+            "contrastError": 2.134120190259722
+          },
+          "textureAfter": {
+            "chroma": 2.9325539678780155,
+            "shadowChroma": 2.3186510066075363,
+            "shadowLightness": 1.59140018397807,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.810357399460862,
+            "contrastError": 3.5476941097927863
+          }
+        },
+        {
+          "id": "ab7052f1-9736-47b6-9da3-8c5ca925ab54",
+          "name": "Traitorous Greed",
+          "cohort": "additional-development",
+          "referenceHash": "13e1ceadf3e09b13a421f014602510b8d1c4c28fdfb68ec9a752cf323e32dda9",
+          "transform": {
+            "matrix": [
+              0.9994487669782386, 0.0015699317432064219, -0.00043541628151732735,
+              0.9979005471601865, -0.2, 0.39999999999999997
+            ]
+          },
+          "before": 2.5321140771471047,
+          "after": 3.1026564425192618,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.06178479703957,
+            "shadowChroma": 1.6004955924359587,
+            "shadowLightness": 1.0550196242358256,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.68813467108466,
+            "contrastError": 2.256342918635923
+          },
+          "textureAfter": {
+            "chroma": 3.055082142050632,
+            "shadowChroma": 2.3257637965340137,
+            "shadowLightness": 1.3061729841078284,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.68813467108466,
+            "contrastError": 3.6699168381689873
+          }
+        },
+        {
+          "id": "baefa06e-28ba-41b9-866e-1ed0c4969852",
+          "name": "Spellgorger Weird",
+          "cohort": "additional-development",
+          "referenceHash": "3126ab7250df7d6dadeff3f6c4d3fb08f548b8782c5adf5f48122a1957b8d3e4",
+          "transform": {
+            "matrix": [0.9991, 0, 0, 0.9991, 0, 0.49999999999999994]
+          },
+          "before": 2.6683496296297635,
+          "after": 3.1023798522433443,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.0125139739631073,
+            "shadowChroma": 1.5594520030527919,
+            "shadowLightness": 0.7983630510508932,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.19038099001215,
+            "contrastError": 1.7540965997084328
+          },
+          "textureAfter": {
+            "chroma": 3.1123221071392324,
+            "shadowChroma": 2.3591520666782886,
+            "shadowLightness": 1.5628295572927609,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.19038099001215,
+            "contrastError": 3.167670519241497
+          }
+        },
+        {
+          "id": "bfe6a3a9-8d62-47c4-a78b-9baa9133a540",
+          "name": "Destructive Tampering",
+          "cohort": "additional-development",
+          "referenceHash": "3c4f7edb0248d7b4e516bee3e56604663d04bcbfa67856b10e98aed788ca55d5",
+          "transform": {
+            "matrix": [0.99895, 0, 0, 0.99895, -0.04999999999999999, -0.1]
+          },
+          "before": 3.1533037649565365,
+          "after": 3.280280155287022,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.089677973778514,
+            "shadowChroma": 1.9929869579799118,
+            "shadowLightness": 2.3341009719745784,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 19.72504551855633,
+            "contrastError": 0.21943207116425612
+          },
+          "textureAfter": {
+            "chroma": 3.0650277421881897,
+            "shadowChroma": 1.9099903190646712,
+            "shadowLightness": 0.02709163636907541,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 19.72504551855633,
+            "contrastError": 1.6330059906973204
+          }
+        },
+        {
+          "id": "cb0e6279-8a66-4124-9def-fa0c83c26db9",
+          "name": "Furor of the Bitten",
+          "cohort": "additional-development",
+          "referenceHash": "65ed3cd4774c14e0628779f28e6937ff077a73f2c8551dd6946d355fc4f55f17",
+          "transform": {
+            "matrix": [0.999, 0, 0, 0.999, -0.05, -0.2]
+          },
+          "before": 3.7468737272272437,
+          "after": 2.5152745437835513,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 3.1224595244262887,
+            "shadowChroma": 2.2173089816043596,
+            "shadowLightness": 0.06010818561383857,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 19.423690945261473,
+            "contrastError": 0.5207866444591112
+          },
+          "textureAfter": {
+            "chroma": 2.170978749338341,
+            "shadowChroma": 1.8083691787702163,
+            "shadowLightness": 2.3010844227298155,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 19.423690945261473,
+            "contrastError": 1.9343605639921755
+          }
+        },
+        {
+          "id": "d2bfec5d-3182-415a-afe8-0b5511cfd656",
+          "name": "Igneous Cur",
+          "cohort": "additional-development",
+          "referenceHash": "373b768ee03415eb57e1ab2fc8429d51660298f2e79461e74877e2b4a0d5d5c6",
+          "transform": {
+            "matrix": [1.0000499999999999, 0, 0, 1.0000499999999999, 0.09999999999999999, 0.3]
+          },
+          "before": 2.333090466787213,
+          "after": 3.295205138157102,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.660982906182335,
+            "shadowChroma": 1.2399054286851583,
+            "shadowLightness": 0.27294759803498936,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.006488139489594,
+            "contrastError": 2.9379894502309902
+          },
+          "textureAfter": {
+            "chroma": 3.480774644430368,
+            "shadowChroma": 2.6841152399831545,
+            "shadowLightness": 2.0882450103086647,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.006488139489594,
+            "contrastError": 4.351563369764055
+          }
+        },
+        {
+          "id": "d47e9653-2a3a-4d37-8f3d-3dab4f468338",
+          "name": "Turret Ogre",
+          "cohort": "additional-development",
+          "referenceHash": "30e61d39661673944842e898d759d6c9cbde8bf930e51861882184d401ace26a",
+          "transform": {
+            "matrix": [
+              0.9996999657408213, 0.0002617208449931323, -0.00043650683872137065,
+              1.0003999200059426, -0.05, 0.125
+            ]
+          },
+          "before": 2.6946928969873154,
+          "after": 2.9212326175579246,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.9515617509332315,
+            "shadowChroma": 1.430478549099055,
+            "shadowLightness": 0.9079291524077715,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 19.01027999453182,
+            "contrastError": 0.9341975951887633
+          },
+          "textureAfter": {
+            "chroma": 3.169401221026421,
+            "shadowChroma": 2.478157889283373,
+            "shadowLightness": 1.4532634559358826,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 19.01027999453182,
+            "contrastError": 2.3477715147218277
+          }
+        },
+        {
+          "id": "d7ac8bdd-851f-449d-a108-70578eabf254",
+          "name": "Goblin Wizardry",
+          "cohort": "additional-development",
+          "referenceHash": "60cbaa586a726391a44cdda32f33fcd3e477044e6ac283b87696dd5c64a6bb6d",
+          "transform": {
+            "matrix": [
+              1.000349756220781, 0.0006983759901630097, 0.00043589624735525636, 0.9990005477633294,
+              -0.425, -0.09999999999999996
+            ]
+          },
+          "before": 2.5658554050494318,
+          "after": 3.390480752723086,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.632041400821766,
+            "shadowChroma": 1.4010444942633489,
+            "shadowLightness": 0.9702879494268624,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 16.41240108876975,
+            "contrastError": 3.532076500950833
+          },
+          "textureAfter": {
+            "chroma": 3.506169239718175,
+            "shadowChroma": 2.5260751539553303,
+            "shadowLightness": 1.3909046589167917,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 16.41240108876975,
+            "contrastError": 4.945650420483897
+          }
+        },
+        {
+          "id": "dc5e8221-fc2d-4d90-80f3-729606648c54",
+          "name": "Kinetic Augur",
+          "cohort": "additional-development",
+          "referenceHash": "9e5c3c26b9cac7a2d2cfde82fae5417afe54f4e31910cfb838b08efe0b296c7a",
+          "transform": {
+            "matrix": [
+              1.0005972225095514, -0.0023576060254501597, 0.00017433262633110896,
+              0.9988523618781177, 0, -0.15000000000000002
+            ]
+          },
+          "before": 3.6101835693442044,
+          "after": 3.089996415799372,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.032594435262512,
+            "shadowChroma": 1.689651291745984,
+            "shadowLightness": 2.256583020331593,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.57305948988725,
+            "contrastError": 2.3714180998333347
+          },
+          "textureAfter": {
+            "chroma": 3.026723425772268,
+            "shadowChroma": 2.2331694084013503,
+            "shadowLightness": 0.10460958801206122,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.57305948988725,
+            "contrastError": 3.784992019366399
+          }
+        },
+        {
+          "id": "e7744fcf-2336-489d-bc05-f3fce78713a9",
+          "name": "Chandra's Pyreling",
+          "cohort": "additional-development",
+          "referenceHash": "5331497af015a70493e8fed2a9cf07fc0294fe241c5fc9d60e4195344b75c98a",
+          "transform": {
+            "matrix": [0.9998499999999999, 0, 0, 0.9998499999999999, -0.3, 0.3]
+          },
+          "before": 2.912235477809915,
+          "after": 2.6776806959179282,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.9548808756063198,
+            "shadowChroma": 1.5691737064357976,
+            "shadowLightness": 1.2793250093455721,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.645183447129376,
+            "contrastError": 2.299294142591208
+          },
+          "textureAfter": {
+            "chroma": 3.096922136795599,
+            "shadowChroma": 2.323286615561738,
+            "shadowLightness": 1.081867598998082,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.645183447129376,
+            "contrastError": 3.7128680621242722
+          }
+        },
+        {
+          "id": "e854e6a3-8684-43fa-9560-ef4c3b62c935",
+          "name": "Unleash Fury",
+          "cohort": "additional-development",
+          "referenceHash": "35c4f8ad77028a60e5fd908ce9e96bc4e4439177424b95bd9cd4626bbf0e0ff0",
+          "transform": {
+            "matrix": [
+              0.9993996917599334, 0.0007849268438023475, 0.0003478443366978136, 0.9965005805420879,
+              -0.2, -0.6499999999999999
+            ]
+          },
+          "before": 3.1672212318784663,
+          "after": 3.23288023872414,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.0072450049389916,
+            "shadowChroma": 1.6301163300810149,
+            "shadowLightness": 1.777495971967863,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.52692891522658,
+            "contrastError": 2.417548674494004
+          },
+          "textureAfter": {
+            "chroma": 3.0375557439420353,
+            "shadowChroma": 2.2639583558038026,
+            "shadowLightness": 0.5836966363757912,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.52692891522658,
+            "contrastError": 3.831122594027068
+          }
+        },
+        {
+          "id": "ebb5e613-a803-42f3-840a-7089ac6b7e3d",
+          "name": "Brash Taunter",
+          "cohort": "additional-development",
+          "referenceHash": "5b728184f6d9882069d69cd1dd2dfd0a05431bc4c3f1d8d76aa0a312859aa209",
+          "transform": {
+            "matrix": [
+              1.0003999847630365, 0.0001746027374830621, 0.0005229967405604073, 0.9988501064935078,
+              0.2, 0.30000000000000004
+            ]
+          },
+          "before": 2.8228780231993515,
+          "after": 3.138814504393265,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.7955044981206763,
+            "shadowChroma": 1.52180134157584,
+            "shadowLightness": 1.8751941233399905,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 17.984571310816715,
+            "contrastError": 1.959906278903869
+          },
+          "textureAfter": {
+            "chroma": 3.243833052430304,
+            "shadowChroma": 2.3762651227019616,
+            "shadowLightness": 0.4859984850036636,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 17.984571310816715,
+            "contrastError": 3.3734801984369334
+          }
+        },
+        {
+          "id": "ed875705-b7b6-4464-b16f-61629ffed04f",
+          "name": "Chandra's Incinerator",
+          "cohort": "additional-development",
+          "referenceHash": "2215fc9a90280ae2913582543ff724f014876bc0fcaadf64fd657389dae16020",
+          "transform": {
+            "matrix": [0.9996, 0, 0, 0.9996, 0, -0.375]
+          },
+          "before": 3.2807102831245114,
+          "after": 3.184649019912856,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.9694510028418144,
+            "shadowChroma": 1.6605983364280115,
+            "shadowLightness": 2.021977750283843,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.11423826754591,
+            "contrastError": 1.8302393221746733
+          },
+          "textureAfter": {
+            "chroma": 3.0716474274940317,
+            "shadowChroma": 2.2377659878757887,
+            "shadowLightness": 0.3392148580598109,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.11423826754591,
+            "contrastError": 3.2438132417077377
+          }
+        },
+        {
+          "id": "f19b4a80-41e1-4c5f-869a-682f08543f12",
+          "name": "Burn Bright",
+          "cohort": "additional-development",
+          "referenceHash": "76895bb7b1bd8f20a696d7a7cd4aa84b345d1c7ccf5d7b7ca6166fac33cba2f6",
+          "transform": {
+            "matrix": [0.99955, 0, 0, 0.99955, -0.2, -1.3877787807814457e-17]
+          },
+          "before": 4.441955823573702,
+          "after": 3.412282457812655,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.864312981772408,
+            "shadowChroma": 3.1253426736246626,
+            "shadowLightness": 4.263405035080719,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 21.40052476552496,
+            "contrastError": 1.4560471758043754
+          },
+          "textureAfter": {
+            "chroma": 2.1759487843106755,
+            "shadowChroma": 0.842365201062403,
+            "shadowLightness": 1.9022124267370655,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 21.40052476552496,
+            "contrastError": 0.042473256271311044
+          }
+        },
+        {
+          "id": "f2fa5133-c238-47e8-befd-3729a3e4303a",
+          "name": "Transmogrify",
+          "cohort": "additional-development",
+          "referenceHash": "3e3fbf6d489118cbc38613ae5396879015f41623fd34492799a1b51723a31a56",
+          "transform": {
+            "matrix": [0.9995, 0, 0, 0.9995, -0.22499999999999998, 0.09999999999999999]
+          },
+          "before": 3.0996312141394635,
+          "after": 3.148638454148796,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.7152578471727484,
+            "shadowChroma": 1.4486951206686123,
+            "shadowLightness": 1.3807521443576498,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.235146629953107,
+            "contrastError": 1.7093309597674775
+          },
+          "textureAfter": {
+            "chroma": 3.3271027955467223,
+            "shadowChroma": 2.447943279356543,
+            "shadowLightness": 0.9804404639860043,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.235146629953107,
+            "contrastError": 3.122904879300542
+          }
+        },
+        {
+          "id": "f4af156d-0fbf-4a4e-b0c1-db7e95be4903",
+          "name": "Thrill of Possibility",
+          "cohort": "additional-development",
+          "referenceHash": "85d0cb052e5ba3c4bd9d2399c3530a5034fe719c546f6db5d6620b2387ed619d",
+          "transform": {
+            "matrix": [0.9991500000000001, 0, 0, 0.9991500000000001, -0.075, -0.22499999999999998]
+          },
+          "before": 2.9099498843294302,
+          "after": 3.103673263427199,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.8751410718267507,
+            "shadowChroma": 1.2009575091726818,
+            "shadowLightness": 0.22412101234265402,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.07181294375449,
+            "contrastError": 1.8726646459660934
+          },
+          "textureAfter": {
+            "chroma": 3.30056023731053,
+            "shadowChroma": 2.7431075690956934,
+            "shadowLightness": 2.585313620686308,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.07181294375449,
+            "contrastError": 3.2862385654991577
+          }
+        },
+        {
+          "id": "fa4bf664-3b92-4598-b905-2bc090958c8b",
+          "name": "Goblin Arsonist",
+          "cohort": "additional-development",
+          "referenceHash": "02bfd1983d676abae82b84da0ecdfa5ddd0e6005ce2c96732c5fad2d7e2289cb",
+          "transform": {
+            "matrix": [0.99965, 0, 0, 0.99965, 0.02500000000000001, 0.125]
+          },
+          "before": 2.4413142161662593,
+          "after": 3.273938666471615,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.7186513700383714,
+            "shadowChroma": 1.3220152938961403,
+            "shadowLightness": 1.0141612611715256,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.423530988237403,
+            "contrastError": 1.5209466014831818
+          },
+          "textureAfter": {
+            "chroma": 3.399681941308423,
+            "shadowChroma": 2.5860720188125934,
+            "shadowLightness": 1.3470313471721285,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.423530988237403,
+            "contrastError": 2.934520521016246
+          }
+        },
+        {
+          "id": "faca827d-0b35-48d7-acd6-13ecacc32b82",
+          "name": "Battle-Rattle Shaman",
+          "cohort": "additional-development",
+          "referenceHash": "3d610f1f3eff010c01600444b5182e74f513e62e2bd8a3a8085d7f2b843edc62",
+          "transform": {
+            "matrix": [0.9993, 0, 0, 0.9993, 0.25, 0]
+          },
+          "before": 3.2731401075875346,
+          "after": 3.256662375909742,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 2.1141733066823925,
+            "shadowChroma": 1.7022659203571897,
+            "shadowLightness": 2.575471404584456,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.353017855246655,
+            "contrastError": 1.5914597344739292
+          },
+          "textureAfter": {
+            "chroma": 2.9384245479694897,
+            "shadowChroma": 2.1900340970971244,
+            "shadowLightness": 0.21427879624080215,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.353017855246655,
+            "contrastError": 3.0050336540069935
+          }
+        },
+        {
+          "id": "fbd306cf-6625-4414-b9e5-4b909bb1bb13",
+          "name": "Pitchburn Devils",
+          "cohort": "additional-development",
+          "referenceHash": "0cc1fc5e2f62f80893a45b85ae2e49c6c92240e01a8ead0b578aabb1389b64f1",
+          "transform": {
+            "matrix": [0.9988, 0, 0, 0.9988, 0, -0.15]
+          },
+          "before": 2.6901975587166174,
+          "after": 3.1366329950111203,
+          "nativeRgb": [0.7196078431372549, 0.265686274509804, 0.1450980392156863],
+          "textureBefore": {
+            "chroma": 1.9905637517953867,
+            "shadowChroma": 1.6669790463003393,
+            "shadowLightness": 0.9988329236619742,
+            "contrast": 19.944477589720584,
+            "referenceContrast": 18.285838827232308,
+            "contrastError": 1.6586387624882768
+          },
+          "textureAfter": {
+            "chroma": 3.2036918776813694,
+            "shadowChroma": 2.265922967134996,
+            "shadowLightness": 1.36235968468168,
+            "contrast": 21.35805150925365,
+            "referenceContrast": 18.285838827232308,
+            "contrastError": 3.072212682021341
+          }
+        }
+      ]
+    },
+    "G": {
+      "status": "existing-fit-passes-regional-gates",
+      "methodPassed": true,
+      "sourceHash": "305e91008f7bf1e4ce1414b8c2708b5cf6d76acaddb217f16d721a73fd10ed06",
+      "rawColor": {
+        "rgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+        "tiles": [
+          [0.32745098039215687, 0.5588235294117647, 0.4],
+          [0.43529411764705883, 0.6098039215686275, 0.4764705882352941],
+          [0.4274509803921569, 0.6098039215686275, 0.4745098039215686],
+          [0.23137254901960785, 0.48627450980392156, 0.31176470588235294],
+          [0.17647058823529413, 0.46862745098039216, 0.2784313725490196],
+          [0.2823529411764706, 0.5156862745098039, 0.3509803921568627],
+          [0.49411764705882355, 0.6549019607843137, 0.5294117647058824],
+          [0.4, 0.592156862745098, 0.4549019607843137],
+          [0.403921568627451, 0.592156862745098, 0.4549019607843137],
+          [0.38431372549019605, 0.5627450980392157, 0.43333333333333335],
+          [0.4725490196078431, 0.6450980392156863, 0.5215686274509804],
+          [0.37058823529411766, 0.5725490196078431, 0.4254901960784314],
+          [0.2450980392156863, 0.4627450980392157, 0.3137254901960784],
+          [0.24705882352941178, 0.4764705882352941, 0.3196078431372549],
+          [0.24705882352941178, 0.4843137254901961, 0.3254901960784314],
+          [0.29215686274509806, 0.5058823529411764, 0.3568627450980392],
+          [0.21372549019607845, 0.4470588235294118, 0.28823529411764703],
+          [0.3607843137254902, 0.5666666666666667, 0.41568627450980394]
+        ],
+        "spread": 9.126562672568737,
+        "rejectedFraction": 0
+      },
+      "rawTexture": [
+        [0.1803921568627451, 0.4215686274509804, 0.25882352941176473],
+        [0.20392156862745098, 0.4549019607843137, 0.28627450980392155],
+        [0.23137254901960785, 0.4745098039215686, 0.307843137254902],
+        [0.23137254901960785, 0.49411764705882355, 0.3215686274509804],
+        [0.28627450980392155, 0.5176470588235295, 0.3568627450980392],
+        [0.3215686274509804, 0.5411764705882353, 0.3843137254901961],
+        [0.36470588235294116, 0.5686274509803921, 0.4235294117647059],
+        [0.4137254901960784, 0.6, 0.4627450980392157],
+        [0.4666666666666667, 0.6333333333333333, 0.5058823529411764],
+        [0.5607843137254902, 0.6980392156862745, 0.5882352941176471]
+      ],
+      "summaries": {
+        "all": {
+          "cards": 41,
+          "before": 2.821654189069239,
+          "after": 2.821654189069239,
+          "worstRegression": 0,
+          "texture": {
+            "shadowChroma": {
+              "before": 2.2978667413435248,
+              "after": 2.2978667413435248
+            },
+            "shadowLightness": {
+              "before": 1.1329462732728834,
+              "after": 1.1329462732728834
+            },
+            "contrastError": {
+              "before": 1.3277086516451995,
+              "after": 1.3277086516451995
+            }
+          },
+          "flags": []
+        },
+        "calibration": {
+          "cards": 7,
+          "before": 2.654839708427376,
+          "after": 2.654839708427376,
+          "worstRegression": 0,
+          "texture": {
+            "shadowChroma": {
+              "before": 2.392686668111548,
+              "after": 2.392686668111548
+            },
+            "shadowLightness": {
+              "before": 1.2209562612563118,
+              "after": 1.2209562612563118
+            },
+            "contrastError": {
+              "before": 1.4466860837115227,
+              "after": 1.4466860837115227
+            }
+          },
+          "flags": []
+        },
+        "validation": {
+          "cards": 11,
+          "before": 2.821654189069239,
+          "after": 2.821654189069239,
+          "worstRegression": 0,
+          "texture": {
+            "shadowChroma": {
+              "before": 2.053242037235238,
+              "after": 2.053242037235238
+            },
+            "shadowLightness": {
+              "before": 0.650466754901402,
+              "after": 0.650466754901402
+            },
+            "contrastError": {
+              "before": 1.0164609924598658,
+              "after": 1.0164609924598658
+            }
+          },
+          "flags": []
+        },
+        "additional-development": {
+          "cards": 23,
+          "before": 2.8320650608393017,
+          "after": 2.8320650608393017,
+          "worstRegression": 0,
+          "texture": {
+            "shadowChroma": {
+              "before": 2.3454582876841745,
+              "after": 2.3454582876841745
+            },
+            "shadowLightness": {
+              "before": 1.3877470768841382,
+              "after": 1.3877470768841382
+            },
+            "contrastError": {
+              "before": 1.3277086516451995,
+              "after": 1.3277086516451995
+            }
+          },
+          "flags": []
+        }
+      },
+      "rows": [
+        {
+          "id": "02392840-f0c4-462e-84ce-9a7cdd9f5efb",
+          "name": "Ranger's Guile",
+          "cohort": "calibration",
+          "referenceHash": "89230cb4c4eb74d909fbbeedf203338b62fd743b4e0621d9a3eb958eef2f56e7",
+          "transform": {
+            "matrix": [0.9997, 0, 0, 0.9997, -0.02500000000000001, -0.35]
+          },
+          "before": 4.154048627900363,
+          "after": 4.154048627900363,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.7907503299685175,
+            "shadowChroma": 2.9125408363647773,
+            "shadowLightness": 1.4491414159466753,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.618245134776718,
+            "contrastError": 2.187473088744767
+          },
+          "textureAfter": {
+            "chroma": 2.7907503299685175,
+            "shadowChroma": 2.9125408363647773,
+            "shadowLightness": 1.4491414159466753,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.618245134776718,
+            "contrastError": 2.187473088744767
+          }
+        },
+        {
+          "id": "1776f5b4-1292-460f-9719-e1b603cee46c",
+          "name": "Skyway Sniper",
+          "cohort": "calibration",
+          "referenceHash": "1d26d71f2696d7dc0f1a9077c8d8f121ac3976cf0298cd4d82f97b4cdc997ed2",
+          "transform": {
+            "matrix": [
+              0.9999999657305405, 0.000261799384808575, 0.0005230229543602803, 0.9989001711588567,
+              0.09999999999999999, 0.05
+            ]
+          },
+          "before": 2.223589454810748,
+          "after": 2.223589454810748,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.169658467569062,
+            "shadowChroma": 1.990744009152905,
+            "shadowLightness": 2.840862216902218,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.67987121467751,
+            "contrastError": 0.2490991686455608
+          },
+          "textureAfter": {
+            "chroma": 2.169658467569062,
+            "shadowChroma": 1.990744009152905,
+            "shadowLightness": 2.840862216902218,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.67987121467751,
+            "contrastError": 0.2490991686455608
+          }
+        },
+        {
+          "id": "17bc2af0-5a1d-4319-a285-6a15cf86be83",
+          "name": "Fierce Empath",
+          "cohort": "calibration",
+          "referenceHash": "2c2cf10fa98029b5185c0999d1519b42b02ce5f6343a5e141b9d8835240e6e9d",
+          "transform": {
+            "matrix": [
+              0.9999491433064661, 0.0013089311153457051, 0.00008729709084589823, 1.0003509713086527,
+              -0.024999999999999994, 0.22499999999999998
+            ]
+          },
+          "before": 10.426149594952925,
+          "after": 10.426149594952925,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5675897187856878,
+            "shadowChroma": 2.800039855071785,
+            "shadowLightness": 9.1065683602154,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 21.235910652155,
+            "contrastError": 3.805138606123048
+          },
+          "textureAfter": {
+            "chroma": 2.5675897187856878,
+            "shadowChroma": 2.800039855071785,
+            "shadowLightness": 9.1065683602154,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 21.235910652155,
+            "contrastError": 3.805138606123048
+          }
+        },
+        {
+          "id": "1947f64a-5ca0-4dda-8bbd-8472e72ecf18",
+          "name": "Setessan Training",
+          "cohort": "calibration",
+          "referenceHash": "db58ab9ddb160f5fa231e54ffdae5f17ed82714cf09c1d3f67441f3c05c609f8",
+          "transform": {
+            "matrix": [
+              0.9998996916057209, -0.0007853195428436736, -0.0004364198913188184,
+              1.0002006512503534, -0.024999999999999994, 0.2
+            ]
+          },
+          "before": 2.333645375671692,
+          "after": 2.333645375671692,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.478762946865513,
+            "shadowChroma": 2.1818267626937087,
+            "shadowLightness": 1.2209562612563118,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.409645855894684,
+            "contrastError": 0.9788738098627334
+          },
+          "textureAfter": {
+            "chroma": 2.478762946865513,
+            "shadowChroma": 2.1818267626937087,
+            "shadowLightness": 1.2209562612563118,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.409645855894684,
+            "contrastError": 0.9788738098627334
+          }
+        },
+        {
+          "id": "1cd8cee8-7ea0-4037-8a3b-39334dc064fb",
+          "name": "Primal Might",
+          "cohort": "calibration",
+          "referenceHash": "42df1b82487942183476467c7c10e31e422f280aef377c05eb87a5c4f854bb87",
+          "transform": {
+            "matrix": [1.0007000000000001, 0, 0, 1.0007000000000001, -0.05, -0.35]
+          },
+          "before": 3.044013551650334,
+          "after": 3.044013551650334,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.732132756693909,
+            "shadowChroma": 2.6116654869231577,
+            "shadowLightness": 0.273908440562054,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.877458129743474,
+            "contrastError": 1.4466860837115227
+          },
+          "textureAfter": {
+            "chroma": 2.732132756693909,
+            "shadowChroma": 2.6116654869231577,
+            "shadowLightness": 0.273908440562054,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.877458129743474,
+            "contrastError": 1.4466860837115227
+          }
+        },
+        {
+          "id": "288b056a-ea80-4fdc-990d-0ee1e9a7bf64",
+          "name": "Drowsing Tyrannodon",
+          "cohort": "calibration",
+          "referenceHash": "8667b040eb7dfdbbafae0fe80d072e63a5f93a0b4c4a44ee0ae13d7272af6d19",
+          "transform": {
+            "matrix": [1.0003999999999997, 0, 0, 1.0003999999999997, 0.125, 0.375]
+          },
+          "before": 2.654839708427376,
+          "after": 2.654839708427376,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5489101488965753,
+            "shadowChroma": 2.392686668111548,
+            "shadowLightness": 0.5323449207439435,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.459654699751372,
+            "contrastError": 1.0288826537194211
+          },
+          "textureAfter": {
+            "chroma": 2.5489101488965753,
+            "shadowChroma": 2.392686668111548,
+            "shadowLightness": 0.5323449207439435,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.459654699751372,
+            "contrastError": 1.0288826537194211
+          }
+        },
+        {
+          "id": "3888197f-5da4-4413-9cad-b37a12ba1e60",
+          "name": "Life Goes On",
+          "cohort": "calibration",
+          "referenceHash": "e03a08256db41da8b6a52bb26e258f686205a9c37ac23ac068a28c0633f7c445",
+          "transform": {
+            "matrix": [1, 0, 0, 1, -0.15, -0.14999999999999997]
+          },
+          "before": 2.3091974169752336,
+          "after": 2.3091974169752336,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.469319834288762,
+            "shadowChroma": 2.3495163445277107,
+            "shadowLightness": 0.1313019369915014,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.721785170749307,
+            "contrastError": 2.291013124717356
+          },
+          "textureAfter": {
+            "chroma": 2.469319834288762,
+            "shadowChroma": 2.3495163445277107,
+            "shadowLightness": 0.1313019369915014,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.721785170749307,
+            "contrastError": 2.291013124717356
+          }
+        },
+        {
+          "id": "3928bbce-87b7-4b28-9af4-20362935c909",
+          "name": "Garruk's Gorehorn",
+          "cohort": "validation",
+          "referenceHash": "0bb0c1070e9ed74fe81866169f4c1edb52fc13e230a0b4543271e3137e17ad2d",
+          "transform": {
+            "matrix": [1.0007999999999997, 0, 0, 1.0007999999999997, -0.15, -0.15]
+          },
+          "before": 3.4519493300326194,
+          "after": 3.4519493300326194,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.1122727791840754,
+            "shadowChroma": 1.814178795875656,
+            "shadowLightness": 0.9250262104811113,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 16.806508694085977,
+            "contrastError": 0.6242633519459737
+          },
+          "textureAfter": {
+            "chroma": 2.1122727791840754,
+            "shadowChroma": 1.814178795875656,
+            "shadowLightness": 0.9250262104811113,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 16.806508694085977,
+            "contrastError": 0.6242633519459737
+          }
+        },
+        {
+          "id": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c",
+          "name": "Burlfist Oak",
+          "cohort": "validation",
+          "referenceHash": "a53ce3e809ff5a26e6192e9cddc65362f65faa84b073c7be56a6e28fb0b86370",
+          "transform": {
+            "matrix": [1.0009, 0, 0, 1.0009, -0.05, 0.15]
+          },
+          "before": 2.8446696591126672,
+          "after": 2.8446696591126672,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.40690806344589,
+            "shadowChroma": 2.024876656973969,
+            "shadowLightness": 1.1329462732728834,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.447233038491817,
+            "contrastError": 1.0164609924598658
+          },
+          "textureAfter": {
+            "chroma": 2.40690806344589,
+            "shadowChroma": 2.024876656973969,
+            "shadowLightness": 1.1329462732728834,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.447233038491817,
+            "contrastError": 1.0164609924598658
+          }
+        },
+        {
+          "id": "3f1b4490-d96d-4448-835b-6cc453c1f344",
+          "name": "Return to Nature",
+          "cohort": "validation",
+          "referenceHash": "a1b3fbea42d053884bdc48564eac44cb3f77030761e5a5804bc4da86cf879881",
+          "transform": {
+            "matrix": [0.9998, 0, 0, 0.9998, 0.05, 0.175]
+          },
+          "before": 2.821654189069239,
+          "after": 2.821654189069239,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5997825948664826,
+            "shadowChroma": 2.2238017210752146,
+            "shadowLightness": 0.05685337065466367,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.645823966352772,
+            "contrastError": 2.215051920320821
+          },
+          "textureAfter": {
+            "chroma": 2.5997825948664826,
+            "shadowChroma": 2.2238017210752146,
+            "shadowLightness": 0.05685337065466367,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.645823966352772,
+            "contrastError": 2.215051920320821
+          }
+        },
+        {
+          "id": "4037e3b2-cb62-4f88-943d-3edcd6827c23",
+          "name": "Fungal Rebirth",
+          "cohort": "validation",
+          "referenceHash": "b2112cdfd04d4aea6278ed19abd0a81854854ef1842745e45d20900f7317b047",
+          "transform": {
+            "matrix": [1.00085, 0, 0, 1.00085, 0.025000000000000022, 0.125]
+          },
+          "before": 2.9163799041059675,
+          "after": 2.9163799041059675,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.4229922790454146,
+            "shadowChroma": 2.053242037235238,
+            "shadowLightness": 0.16519141337503207,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.958854076204602,
+            "contrastError": 1.5280820301726514
+          },
+          "textureAfter": {
+            "chroma": 2.4229922790454146,
+            "shadowChroma": 2.053242037235238,
+            "shadowLightness": 0.16519141337503207,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.958854076204602,
+            "contrastError": 1.5280820301726514
+          }
+        },
+        {
+          "id": "4073cbc6-11de-4d4a-bcd7-792f9b7c5219",
+          "name": "Predatory Wurm",
+          "cohort": "validation",
+          "referenceHash": "613e0a0066d91424934f90e7c0bffd8851a1eb681ef1de3b623d20885cdedf71",
+          "transform": {
+            "matrix": [1.0023000000000002, 0, 0, 1.0023000000000002, -0.125, 1.3877787807814457e-17]
+          },
+          "before": 1.0781930398987891,
+          "after": 1.0781930398987891,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 0.7484761717508652,
+            "shadowChroma": 0.859895648788031,
+            "shadowLightness": 2.5026997957020347,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 16.651521337019638,
+            "contrastError": 0.7792507090123131
+          },
+          "textureAfter": {
+            "chroma": 0.7484761717508652,
+            "shadowChroma": 0.859895648788031,
+            "shadowLightness": 2.5026997957020347,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 16.651521337019638,
+            "contrastError": 0.7792507090123131
+          }
+        },
+        {
+          "id": "43c037e3-7d1a-48ca-8ecc-276696592f62",
+          "name": "Heroic Intervention",
+          "cohort": "validation",
+          "referenceHash": "4dd00585875cd5c77fbff2dcbbcc8c0bccc66b504fefccb6791a57e38abc28a9",
+          "transform": {
+            "matrix": [1.0003000000000002, 0, 0, 1.0003000000000002, 1.3877787807814457e-17, 0]
+          },
+          "before": 3.7292054304835833,
+          "after": 3.7292054304835833,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.451628247876136,
+            "shadowChroma": 2.518706951292968,
+            "shadowLightness": 0.11377873563001017,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 20.01576098618889,
+            "contrastError": 2.58498894015694
+          },
+          "textureAfter": {
+            "chroma": 2.451628247876136,
+            "shadowChroma": 2.518706951292968,
+            "shadowLightness": 0.11377873563001017,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 20.01576098618889,
+            "contrastError": 2.58498894015694
+          }
+        },
+        {
+          "id": "46700ccc-0975-49d1-b3fc-edb1eda3b624",
+          "name": "Snarespinner",
+          "cohort": "validation",
+          "referenceHash": "530d4596cf70b988b6220ffa14e437207fea52d5fba48d0d0fc67791d3693a52",
+          "transform": {
+            "matrix": [
+              1.0009499999999998, 0, 0, 1.0009499999999998, 0.09999999999999999,
+              -0.04999999999999999
+            ]
+          },
+          "before": 2.00231123594182,
+          "after": 2.00231123594182,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.1548931986612017,
+            "shadowChroma": 1.949480915456995,
+            "shadowLightness": 0.5820705178938512,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.862542761232426,
+            "contrastError": 1.431770715200475
+          },
+          "textureAfter": {
+            "chroma": 2.1548931986612017,
+            "shadowChroma": 1.949480915456995,
+            "shadowLightness": 0.5820705178938512,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.862542761232426,
+            "contrastError": 1.431770715200475
+          }
+        },
+        {
+          "id": "46ff0b33-d153-4b0e-ac48-7e5ed70dea09",
+          "name": "Wildwood Scourge",
+          "cohort": "validation",
+          "referenceHash": "69ae6c8300573528c347c447e5a735b7d589260a4852a0a09c72552b6070f13c",
+          "transform": {
+            "matrix": [
+              0.9999487663613885, 0.001570717141046838, 0, 1.0006012344420396, 0.05000000000000002,
+              0.15000000000000002
+            ]
+          },
+          "before": 2.4934748193875107,
+          "after": 2.4934748193875107,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.4071875157180704,
+            "shadowChroma": 2.1742255846085,
+            "shadowLightness": 1.39664316411382,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.89911977305264,
+            "contrastError": 0.4683477270206886
+          },
+          "textureAfter": {
+            "chroma": 2.4071875157180704,
+            "shadowChroma": 2.1742255846085,
+            "shadowLightness": 1.39664316411382,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.89911977305264,
+            "contrastError": 0.4683477270206886
+          }
+        },
+        {
+          "id": "487116ab-b885-406b-aa54-56cb67eb3ca5",
+          "name": "Scavenging Ooze",
+          "cohort": "validation",
+          "referenceHash": "241cd01bc8990ed080b118385c047f3fd62e8ebf728a8f8c99c0fc389d1b0415",
+          "transform": {
+            "matrix": [0.9994, 0, 0, 0.9994, 0, 0.25]
+          },
+          "before": 2.633776516971169,
+          "after": 2.633776516971169,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.8662602135318185,
+            "shadowChroma": 2.6004745526009048,
+            "shadowLightness": 0.650466754901402,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.627198151305567,
+            "contrastError": 0.19642610527361626
+          },
+          "textureAfter": {
+            "chroma": 2.8662602135318185,
+            "shadowChroma": 2.6004745526009048,
+            "shadowLightness": 0.650466754901402,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.627198151305567,
+            "contrastError": 0.19642610527361626
+          }
+        },
+        {
+          "id": "4a433310-3fe2-4156-864d-7a6b2638340b",
+          "name": "Cultivate",
+          "cohort": "validation",
+          "referenceHash": "ed58c53b8ed45fbf4cc3ffaeee27f7eafc3deb17c3ca9bfe2a3bc9f646563077",
+          "transform": {
+            "matrix": [
+              1.000199619152095, -0.0008728390481381966, -0.00008740176577476115,
+              1.0015504576345406, 0.15, -0.2
+            ]
+          },
+          "before": 2.3134255838243387,
+          "after": 2.3134255838243387,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.179732053564876,
+            "shadowChroma": 1.939495653773974,
+            "shadowLightness": 0.5714469396611688,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.073819067322994,
+            "contrastError": 0.6430470212910429
+          },
+          "textureAfter": {
+            "chroma": 2.179732053564876,
+            "shadowChroma": 1.939495653773974,
+            "shadowLightness": 0.5714469396611688,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.073819067322994,
+            "contrastError": 0.6430470212910429
+          }
+        },
+        {
+          "id": "531e1fc0-a3aa-4b57-87b2-79a31af5c922",
+          "name": "Invigorating Surge",
+          "cohort": "validation",
+          "referenceHash": "a7ede64fc9ecb405828d85dfb1c3aca5ed6d6966e4fa0fefe449c456650953c1",
+          "transform": {
+            "matrix": [1.0008499999999998, 0, 0, 1.0008499999999998, 0.05, 0]
+          },
+          "before": 4.559262159822979,
+          "after": 4.559262159822979,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.9747511330578664,
+            "shadowChroma": 3.059900965873355,
+            "shadowLightness": 1.5449095465566387,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.448882477583297,
+            "contrastError": 2.018110431551346
+          },
+          "textureAfter": {
+            "chroma": 2.9747511330578664,
+            "shadowChroma": 3.059900965873355,
+            "shadowLightness": 1.5449095465566387,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.448882477583297,
+            "contrastError": 2.018110431551346
+          }
+        },
+        {
+          "id": "5f22116a-8b6a-4bbe-999f-7329e1e2b2d9",
+          "name": "Gnarled Sage",
+          "cohort": "additional-development",
+          "referenceHash": "9b40928141644f86ab34e54e9584618a9c2f983bee7963e2d879f39684413f10",
+          "transform": {
+            "matrix": [1.00015, 0, 0, 1.00015, 0.05, -0.1]
+          },
+          "before": 2.478204448219677,
+          "after": 2.478204448219677,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5170376606059826,
+            "shadowChroma": 2.186666330377148,
+            "shadowLightness": 1.3866375446737522,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.33404759826237,
+            "contrastError": 0.9032755522304186
+          },
+          "textureAfter": {
+            "chroma": 2.5170376606059826,
+            "shadowChroma": 2.186666330377148,
+            "shadowLightness": 1.3866375446737522,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.33404759826237,
+            "contrastError": 0.9032755522304186
+          }
+        },
+        {
+          "id": "6da62557-9783-4e6c-9b5f-2b77dbf96909",
+          "name": "Titanic Growth",
+          "cohort": "additional-development",
+          "referenceHash": "50d4279f78f67caacd2a9cbeb017a3c928f57b892e5c87aab0108083cd169492",
+          "transform": {
+            "matrix": [
+              1.0000495392431512, 0.000959978937719699, 0.00008719233380438122, 0.999150544041058,
+              0, -0.35000000000000003
+            ]
+          },
+          "before": 2.117058330837118,
+          "after": 2.117058330837118,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.3314126150915473,
+            "shadowChroma": 2.0993691945873967,
+            "shadowLightness": 2.0433654521363698,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.91187252076395,
+            "contrastError": 1.4811004747319991
+          },
+          "textureAfter": {
+            "chroma": 2.3314126150915473,
+            "shadowChroma": 2.0993691945873967,
+            "shadowLightness": 2.0433654521363698,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.91187252076395,
+            "contrastError": 1.4811004747319991
+          }
+        },
+        {
+          "id": "71a4860a-8bb6-45c0-b00a-b4a42da33ab9",
+          "name": "Garruk's Uprising",
+          "cohort": "additional-development",
+          "referenceHash": "42846ebfcdf2682c2fc953606a54a0c245ff124ddfaf4d95ac2d66d97100f2e4",
+          "transform": {
+            "matrix": [
+              1.0003498628741871, 0.0005237820112367889, 0.0001747424064061758, 1.0012002287372666,
+              -0.024999999999999994, 0.15000000000000002
+            ]
+          },
+          "before": 2.8857633317118347,
+          "after": 2.8857633317118347,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.703340567994575,
+            "shadowChroma": 2.392603779326872,
+            "shadowLightness": 0.41755760942869813,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.9990473585126,
+            "contrastError": 1.5682753124806474
+          },
+          "textureAfter": {
+            "chroma": 2.703340567994575,
+            "shadowChroma": 2.392603779326872,
+            "shadowLightness": 0.41755760942869813,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.9990473585126,
+            "contrastError": 1.5682753124806474
+          }
+        },
+        {
+          "id": "7c08c80f-f27c-4e3a-b048-143aea740096",
+          "name": "Hunter's Edge",
+          "cohort": "additional-development",
+          "referenceHash": "e94c2118898ff7370d567ca384da86c73abadac39d271044dad93f8bba82b3e5",
+          "transform": {
+            "matrix": [
+              1.000249143049445, 0.001309323814315257, 0.00026176043783478334, 0.9998511992524017,
+              0.05, 0.5
+            ]
+          },
+          "before": 2.8320650608393017,
+          "after": 2.8320650608393017,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.713173921609586,
+            "shadowChroma": 2.3608883501578855,
+            "shadowLightness": 0.37931776800100847,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.3239941878501,
+            "contrastError": 0.8932221418181499
+          },
+          "textureAfter": {
+            "chroma": 2.713173921609586,
+            "shadowChroma": 2.3608883501578855,
+            "shadowLightness": 0.37931776800100847,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.3239941878501,
+            "contrastError": 0.8932221418181499
+          }
+        },
+        {
+          "id": "8059c52b-5d25-4052-b48a-e9e219a7a546",
+          "name": "Colossal Dreadmaw",
+          "cohort": "additional-development",
+          "referenceHash": "7dbdf1bc34fc9966192d032fb28337b352026e6f63189921fff1161c8bc33083",
+          "transform": {
+            "matrix": [
+              0.9992479872286995, -0.0020056219466831455, 0.00008729716663381382, 1.000351839774191,
+              0.25, -0.3
+            ]
+          },
+          "before": 2.7797708157465917,
+          "after": 2.7797708157465917,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.752973773696528,
+            "shadowChroma": 2.608563128502314,
+            "shadowLightness": 0.15525050404427976,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.97356935544846,
+            "contrastError": 0.5427973094165104
+          },
+          "textureAfter": {
+            "chroma": 2.752973773696528,
+            "shadowChroma": 2.608563128502314,
+            "shadowLightness": 0.15525050404427976,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.97356935544846,
+            "contrastError": 0.5427973094165104
+          }
+        },
+        {
+          "id": "84a9485a-d356-4cbe-b257-b62008a21328",
+          "name": "Feline Sovereign",
+          "cohort": "additional-development",
+          "referenceHash": "2cf4fc9eae7a50b23950e68ee42236d1a0442007b7f336a502e4f1b5f9662555",
+          "transform": {
+            "matrix": [
+              1.0000994516338633, 0.0010473020795358186, 0.000349258169972254, 1.0005509143556115,
+              0.15000000000000002, -0.22500000000000003
+            ]
+          },
+          "before": 3.5194515915598705,
+          "after": 3.5194515915598705,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 3.1190108681482567,
+            "shadowChroma": 2.893054437314056,
+            "shadowLightness": 0.318868027169128,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.036209172795143,
+            "contrastError": 1.6054371267631922
+          },
+          "textureAfter": {
+            "chroma": 3.1190108681482567,
+            "shadowChroma": 2.893054437314056,
+            "shadowLightness": 0.318868027169128,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.036209172795143,
+            "contrastError": 1.6054371267631922
+          }
+        },
+        {
+          "id": "8bba47c1-a874-456e-bea3-e99e2d61cfba",
+          "name": "Trufflesnout",
+          "cohort": "additional-development",
+          "referenceHash": "b6c7606e106bf74d93d8c57fedbc0993bd1ab0f212b4d4acf67687e775e9b7d5",
+          "transform": {
+            "matrix": [1.0001499999999999, 0, 0, 1.0001499999999999, 0.22499999999999998, -0.35]
+          },
+          "before": 2.4064056139142442,
+          "after": 2.4064056139142442,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.478130726664208,
+            "shadowChroma": 2.0813452425371053,
+            "shadowLightness": 1.6880909867745708,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.35331530837617,
+            "contrastError": 0.07745673765577976
+          },
+          "textureAfter": {
+            "chroma": 2.478130726664208,
+            "shadowChroma": 2.0813452425371053,
+            "shadowLightness": 1.6880909867745708,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.35331530837617,
+            "contrastError": 0.07745673765577976
+          }
+        },
+        {
+          "id": "9e0fa0b6-5f3f-4669-84e8-2c38c9593d88",
+          "name": "Garruk's Harbinger",
+          "cohort": "additional-development",
+          "referenceHash": "a5b9ab68ba1812beed8bb06f7c9ab5917bf3d37b05eeaa2cd8c348dab3508a5c",
+          "transform": {
+            "matrix": [1.0008, 0, 0, 1.0008, -0.09999999999999999, -0.09999999999999999]
+          },
+          "before": 2.7176176275645934,
+          "after": 2.7176176275645934,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.556152263002973,
+            "shadowChroma": 2.2937858971281164,
+            "shadowLightness": 0.2841213949669297,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.777248569902483,
+            "contrastError": 1.3464765238705318
+          },
+          "textureAfter": {
+            "chroma": 2.556152263002973,
+            "shadowChroma": 2.2937858971281164,
+            "shadowLightness": 0.2841213949669297,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.777248569902483,
+            "contrastError": 1.3464765238705318
+          }
+        },
+        {
+          "id": "a20d20f7-bc4d-42fa-9f5b-5bb330eb7f38",
+          "name": "Quirion Dryad",
+          "cohort": "additional-development",
+          "referenceHash": "94f62bf16ae522e6b46e1eb81f6ba38654f7674ea2859f649861c21756ecde59",
+          "transform": {
+            "matrix": [
+              1.0009476179165202, -0.0021837324111793894, 0.0005240707109303621, 1.0009012386234153,
+              0.05, -0.25
+            ]
+          },
+          "before": 4.318033380825842,
+          "after": 4.318033380825842,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 3.02898848708767,
+            "shadowChroma": 3.2333728419425034,
+            "shadowLightness": 2.210073573644161,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.667847006187156,
+            "contrastError": 1.237074960155205
+          },
+          "textureAfter": {
+            "chroma": 3.02898848708767,
+            "shadowChroma": 3.2333728419425034,
+            "shadowLightness": 2.210073573644161,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.667847006187156,
+            "contrastError": 1.237074960155205
+          }
+        },
+        {
+          "id": "a3f6a13a-ab38-49d1-8712-f9c9135a23c8",
+          "name": "Canopy Stalker",
+          "cohort": "additional-development",
+          "referenceHash": "e3978d88c96d977d0715e19aa7d0ca930bbf2b93f142248ff7069e4198d3c776",
+          "transform": {
+            "matrix": [
+              1.0005498133192183, -0.0006112011760667572, 0.0006112011760667572, 1.0005498133192183,
+              0.1, 1.3877787807814457e-17
+            ]
+          },
+          "before": 3.1712752420497674,
+          "after": 3.1712752420497674,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 3.2931670368728643,
+            "shadowChroma": 2.394282744561641,
+            "shadowLightness": 0.33393527393764666,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.42022951169363,
+            "contrastError": 0.9894574656616797
+          },
+          "textureAfter": {
+            "chroma": 3.2931670368728643,
+            "shadowChroma": 2.394282744561641,
+            "shadowLightness": 0.33393527393764666,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.42022951169363,
+            "contrastError": 0.9894574656616797
+          }
+        },
+        {
+          "id": "b41b6c8a-bd76-4b69-ae72-4c8acac379b4",
+          "name": "Track Down",
+          "cohort": "additional-development",
+          "referenceHash": "d5a6d24b2d8882991692b0c406e7126ba06fa3436133ddf2829c317ba1a751a7",
+          "transform": {
+            "matrix": [
+              0.9993998630044106, -0.0005232845924226986, -0.00026202199509982793,
+              1.0008502743887793, 0.07500000000000002, -0.1
+            ]
+          },
+          "before": 2.678850289428148,
+          "after": 2.678850289428148,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.8490755036683244,
+            "shadowChroma": 2.5012810442770506,
+            "shadowLightness": 1.9797352364760323,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.17611221796247,
+            "contrastError": 0.7453401719305184
+          },
+          "textureAfter": {
+            "chroma": 2.8490755036683244,
+            "shadowChroma": 2.5012810442770506,
+            "shadowLightness": 1.9797352364760323,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.17611221796247,
+            "contrastError": 0.7453401719305184
+          }
+        },
+        {
+          "id": "bd328139-0dc1-403b-ad79-b1cf3479ac33",
+          "name": "Run Afoul",
+          "cohort": "additional-development",
+          "referenceHash": "cbb132b6f0a7ddab887476754098d743a44002454b172f86ed84ada34eec65e7",
+          "transform": {
+            "matrix": [
+              0.9998493565922955, -0.0011342936008866059, 0.00008727523698920274,
+              1.0001005445583362, 0.05, 0
+            ]
+          },
+          "before": 2.246315284768041,
+          "after": 2.246315284768041,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.4696026742624455,
+            "shadowChroma": 2.2001768798093653,
+            "shadowLightness": 1.870300763138999,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.799422335712514,
+            "contrastError": 1.3686502896805628
+          },
+          "textureAfter": {
+            "chroma": 2.4696026742624455,
+            "shadowChroma": 2.2001768798093653,
+            "shadowLightness": 1.870300763138999,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.799422335712514,
+            "contrastError": 1.3686502896805628
+          }
+        },
+        {
+          "id": "c2c4a0e7-9ca4-4291-94de-165cc2ded822",
+          "name": "Ornery Dilophosaur",
+          "cohort": "additional-development",
+          "referenceHash": "f1f026f5480faffcca5c04cb861c55061b7d543737ef43ddc6ae720fe69f0cd0",
+          "transform": {
+            "matrix": [
+              0.9999990252244146, -0.0013962629479142756, 0.00043674701606164276,
+              1.0009503658883019, 0.09999999999999999, -0.25
+            ]
+          },
+          "before": 6.362587834904112,
+          "after": 6.362587834904112,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 3.0259867339534905,
+            "shadowChroma": 2.873922266264481,
+            "shadowLightness": 2.851761005699399,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.77219997518568,
+            "contrastError": 1.3414279291537277
+          },
+          "textureAfter": {
+            "chroma": 3.0259867339534905,
+            "shadowChroma": 2.873922266264481,
+            "shadowLightness": 2.851761005699399,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.77219997518568,
+            "contrastError": 1.3414279291537277
+          }
+        },
+        {
+          "id": "c6cf27a3-9bcf-475c-a324-7c3af50496dd",
+          "name": "Thrashing Brontodon",
+          "cohort": "additional-development",
+          "referenceHash": "406f66856eb5c290bcf3098752b89972ef9779081eb20447d0af403d603c00a4",
+          "transform": {
+            "matrix": [1.0002500000000003, 0, 0, 1.0002500000000003, 0.09999999999999999, -0.2]
+          },
+          "before": 3.6766619106010423,
+          "after": 3.6766619106010423,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.577546401744362,
+            "shadowChroma": 2.5404111624184234,
+            "shadowLightness": 0.3464752265488258,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.635900212263657,
+            "contrastError": 1.205128166231706
+          },
+          "textureAfter": {
+            "chroma": 2.577546401744362,
+            "shadowChroma": 2.5404111624184234,
+            "shadowLightness": 0.3464752265488258,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.635900212263657,
+            "contrastError": 1.205128166231706
+          }
+        },
+        {
+          "id": "cceaf927-261e-4d61-9fac-eb8abbe87593",
+          "name": "Wildwood Patrol",
+          "cohort": "additional-development",
+          "referenceHash": "fa2358b9af76cefb7ca89d68ed0125a9c8775fb04963575b6bbba2a5b8bfba4f",
+          "transform": {
+            "matrix": [1.0022, 0, 0, 1.0022, -0.2, 0.2]
+          },
+          "before": 1.6790287195044002,
+          "after": 1.6790287195044002,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 0.49805835860749614,
+            "shadowChroma": 0.7322879865123714,
+            "shadowLightness": 0.19977761885804357,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.259351479804852,
+            "contrastError": 0.17142056622709845
+          },
+          "textureAfter": {
+            "chroma": 0.49805835860749614,
+            "shadowChroma": 0.7322879865123714,
+            "shadowLightness": 0.19977761885804357,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.259351479804852,
+            "contrastError": 0.17142056622709845
+          }
+        },
+        {
+          "id": "d1abd95a-4ecc-479c-b200-5aaf7c993ef8",
+          "name": "Portcullis Vine",
+          "cohort": "additional-development",
+          "referenceHash": "95c78df36775be1245d12e02597206edb4ba52f6074e5df169ac82104c7a52d9",
+          "transform": {
+            "matrix": [
+              0.999798477217905, 0.0017449793002251293, 0, 0.9996515225559509, 0.05,
+              0.39999999999999997
+            ]
+          },
+          "before": 2.443765701621424,
+          "after": 2.443765701621424,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.4315403290971482,
+            "shadowChroma": 2.081305276708314,
+            "shadowLightness": 1.4603251431113184,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.789965172075206,
+            "contrastError": 1.3591931260432553
+          },
+          "textureAfter": {
+            "chroma": 2.4315403290971482,
+            "shadowChroma": 2.081305276708314,
+            "shadowLightness": 1.4603251431113184,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.789965172075206,
+            "contrastError": 1.3591931260432553
+          }
+        },
+        {
+          "id": "d51269cf-a333-4a64-94cd-245798d840d2",
+          "name": "Elder Gargaroth",
+          "cohort": "additional-development",
+          "referenceHash": "912c786d8232e51fa53795dec25c506d0d7222302dcd1f92f424cc48ea0fe7ff",
+          "transform": {
+            "matrix": [
+              0.9998498629427258, -0.000523520211860952, 0.0004366813666554123, 1.0007999085416672,
+              0.07500000000000002, -0.325
+            ]
+          },
+          "before": 3.17001876730565,
+          "after": 3.17001876730565,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.892787828089723,
+            "shadowChroma": 2.7354877516487806,
+            "shadowLightness": 0.7465157620999197,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.742539961619876,
+            "contrastError": 2.311767915587925
+          },
+          "textureAfter": {
+            "chroma": 2.892787828089723,
+            "shadowChroma": 2.7354877516487806,
+            "shadowLightness": 0.7465157620999197,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 19.742539961619876,
+            "contrastError": 2.311767915587925
+          }
+        },
+        {
+          "id": "d6099863-8d3d-44bf-8d3b-dc3602119617",
+          "name": "Garruk's Warsteed",
+          "cohort": "additional-development",
+          "referenceHash": "d91c5fea47cb06a421a3583dda3fb2dc53bc979549870ac07695eba6ff2a9fc6",
+          "transform": {
+            "matrix": [1.0030000000000001, 0, 0, 1.0030000000000001, -0.25, 0.3]
+          },
+          "before": 5.335271805393804,
+          "after": 5.335271805393804,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 0.3278120293719115,
+            "shadowChroma": 0.5373247586876848,
+            "shadowLightness": 3.270534962892402,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.80578649730022,
+            "contrastError": 0.3750144512682674
+          },
+          "textureAfter": {
+            "chroma": 0.3278120293719115,
+            "shadowChroma": 0.5373247586876848,
+            "shadowLightness": 3.270534962892402,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.80578649730022,
+            "contrastError": 0.3750144512682674
+          }
+        },
+        {
+          "id": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+          "name": "Llanowar Visionary",
+          "cohort": "additional-development",
+          "referenceHash": "6c79cff90cb1cae9ee5a9b5dd37182ed3a53c0aacd2aacf66fde4a2e03ad60eb",
+          "transform": {
+            "matrix": [
+              0.9998463413343587, 0.0027048512523249646, 0.0001745947348116817, 1.0003541328340078,
+              0, 0.35
+            ]
+          },
+          "before": 2.811463782091808,
+          "after": 2.811463782091808,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5352858859938507,
+            "shadowChroma": 2.1988325065650582,
+            "shadowLightness": 1.7625409077045906,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.812947787010692,
+            "contrastError": 1.3821757409787416
+          },
+          "textureAfter": {
+            "chroma": 2.5352858859938507,
+            "shadowChroma": 2.1988325065650582,
+            "shadowLightness": 1.7625409077045906,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.812947787010692,
+            "contrastError": 1.3821757409787416
+          }
+        },
+        {
+          "id": "df520254-0c72-496b-9222-263ca9d3c5d5",
+          "name": "Pridemalkin",
+          "cohort": "additional-development",
+          "referenceHash": "535e3763371c87957897be5f9011df4a4f4d735fa748fabf740f1683017d7bb2",
+          "transform": {
+            "matrix": [1.00035, 0, 0, 1.00035, 0.125, -1]
+          },
+          "before": 5.194825793432522,
+          "after": 5.194825793432522,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.026165187088032,
+            "shadowChroma": 2.2978667413435248,
+            "shadowLightness": 4.620685435694039,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 22.840338792273652,
+            "contrastError": 5.409566746241701
+          },
+          "textureAfter": {
+            "chroma": 2.026165187088032,
+            "shadowChroma": 2.2978667413435248,
+            "shadowLightness": 4.620685435694039,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 22.840338792273652,
+            "contrastError": 5.409566746241701
+          }
+        },
+        {
+          "id": "e6ab63c8-0adc-4d74-aee5-a58ce5c0dad8",
+          "name": "Sporeweb Weaver",
+          "cohort": "additional-development",
+          "referenceHash": "e4e22859955a8ffc29a8ad1caa277faff8cfc110ab479b837aa6b97a0d7b4b14",
+          "transform": {
+            "matrix": [
+              0.9995499391039322, -0.0003489087636806073, 0.0006106819615743223, 0.9996998477369831,
+              0.275, -0.85
+            ]
+          },
+          "before": 6.96139061294044,
+          "after": 6.96139061294044,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5177993038809228,
+            "shadowChroma": 2.815013127984103,
+            "shadowLightness": 4.617121141955799,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.86224712838801,
+            "contrastError": 0.4314750823560587
+          },
+          "textureAfter": {
+            "chroma": 2.5177993038809228,
+            "shadowChroma": 2.815013127984103,
+            "shadowLightness": 4.617121141955799,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 17.86224712838801,
+            "contrastError": 0.4314750823560587
+          }
+        },
+        {
+          "id": "f1d81cfc-cff8-4478-92b6-efbfc5084165",
+          "name": "Warden of the Woods",
+          "cohort": "additional-development",
+          "referenceHash": "25d623b6e4c1ecd40f4905d40f8d3c750fd25f3e93823945b86eab4cf881312c",
+          "transform": {
+            "matrix": [1.0002499999999999, 0, 0, 1.0002499999999999, 1.3877787807814457e-17, 0.275]
+          },
+          "before": 2.8637721080651057,
+          "after": 2.8637721080651057,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.4155755897408886,
+            "shadowChroma": 2.157739730804575,
+            "shadowLightness": 1.3877470768841382,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.87066653228473,
+            "contrastError": 1.4398944862527792
+          },
+          "textureAfter": {
+            "chroma": 2.4155755897408886,
+            "shadowChroma": 2.157739730804575,
+            "shadowLightness": 1.3877470768841382,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.87066653228473,
+            "contrastError": 1.4398944862527792
+          }
+        },
+        {
+          "id": "fe39e38e-76e5-4883-b530-d3e30e88ccad",
+          "name": "Sabertooth Mauler",
+          "cohort": "additional-development",
+          "referenceHash": "41f5073cf9bec6bf25511f3cc5106d991718010f1944051a370df48d49abff27",
+          "transform": {
+            "matrix": [0.99985, 0, 0, 0.99985, 0.15, -0.15]
+          },
+          "before": 2.48287917535087,
+          "after": 2.48287917535087,
+          "nativeRgb": [0.34411764705882353, 0.5607843137254902, 0.40784313725490196],
+          "textureBefore": {
+            "chroma": 2.5460523886027695,
+            "shadowChroma": 2.3454582876841745,
+            "shadowLightness": 0.9501502559559172,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.75848069767715,
+            "contrastError": 1.3277086516451995
+          },
+          "textureAfter": {
+            "chroma": 2.5460523886027695,
+            "shadowChroma": 2.3454582876841745,
+            "shadowLightness": 0.9501502559559172,
+            "contrast": 17.43077204603195,
+            "referenceContrast": 18.75848069767715,
+            "contrastError": 1.3277086516451995
+          }
+        }
+      ]
+    }
+  },
+  "review": {
+    "schema": 1,
+    "status": "diagnostic-follow-up",
+    "sourceHash": "8ac69368849e22911051de748453319af09df865468309ec8342fd989ebd5180",
+    "notes": [
+      "Green passes the regional median/contrast gates without a frame-pigment change, but that is not complete frame-color validation. Review absolute outliers and independent panel regions before certifying a default.",
+      "Blue fails absolute color and per-printing regression gates; its prior fit is retained until a replacement passes full validation.",
+      "Red color diagnostics are unranked because the frame normalization method fails two known scale/skew cases.",
+      "Do not attribute outliers to scan quality or finish without evidence. Fierce Empath appears nonfoil on visual review; investigate regional texture/printing differences."
+    ],
+    "visualReview": [
+      {
+        "name": "Return to Nature",
+        "finding": "Source-default green remains visually different in hue/texture despite passing aggregate regional gates; try a shared candidate and review outliers before closing the task."
+      },
+      {
+        "name": "Teferi's Wavecaster",
+        "finding": "Current blue is visibly more violet than the reference. The problem is not limited to nonbooster cards."
+      },
+      {
+        "name": "Fierce Empath",
+        "finding": "Retain as an absolute-color outlier; visible frame appears ordinary, with no established reason to exclude the scan."
+      }
+    ],
+    "groups": {
+      "U": {
+        "status": "existing-fit-needs-refit",
+        "summary": {
+          "cards": 41,
+          "before": 6.886341829406136,
+          "after": 6.255671472135709,
+          "worstRegression": 4.254696001389628,
+          "texture": {
+            "shadowChroma": {
+              "before": 5.509333316746385,
+              "after": 0.35330648664364667
+            },
+            "shadowLightness": {
+              "before": 5.153072475051612,
+              "after": 2.981916594230072
+            },
+            "contrastError": {
+              "before": 3.496113375513797,
+              "after": 1.1689255166754542
+            }
+          },
+          "flags": ["absolute-error", "printing-regression"]
+        },
+        "absoluteOutliers": [
+          {
+            "id": "0002ab72-834b-4c81-82b1-0d2760ea96b0",
+            "name": "Mystic Skyfish",
+            "cohort": "calibration",
+            "error": 6.285425580496485,
+            "referenceHash": "13c97a6b21b24ac59172313687cd2231031f6c03c5a615416d83cd6d4c11d872"
+          },
+          {
+            "id": "033afbd5-9937-4957-98ba-48e469a490bb",
+            "name": "Miscast",
+            "cohort": "calibration",
+            "error": 5.899411652530686,
+            "referenceHash": "b492c7854b583540cf9b2114072b3647d0682e3c88875d31eda05dc31b1d85d1"
+          },
+          {
+            "id": "0360d27b-37e1-4e00-9cfc-b574efc38ea0",
+            "name": "Tome Anima",
+            "cohort": "calibration",
+            "error": 7.106528560168672,
+            "referenceHash": "f28bb8cac9c04d7c697ef3b3c32fa5aa650d8e662043a037007c9a8fc6442a05"
+          },
+          {
+            "id": "0540ee72-6370-4f70-9526-6f441b3cac1e",
+            "name": "Stormwing Entity",
+            "cohort": "calibration",
+            "error": 5.508455354143087,
+            "referenceHash": "1984d012b86046b9830d5e36067591ebe57d1a21d0393ccc110afeb425cb0f74"
+          },
+          {
+            "id": "2810631f-c55c-4947-a26f-4d3ce76024b3",
+            "name": "Ghostly Pilferer",
+            "cohort": "calibration",
+            "error": 7.403293764348021,
+            "referenceHash": "0b3a229eec7cd65f765d349b80c577410769084343832b701115488f89c9bd14"
+          },
+          {
+            "id": "2dc0bafd-debc-4b62-9fe0-56b4aad02484",
+            "name": "Unsubstantiate",
+            "cohort": "calibration",
+            "error": 6.771419784875866,
+            "referenceHash": "c574c3e089a30aa19031bd57ee316428d125e653e9ea58a69f7859e6884b5f92"
+          },
+          {
+            "id": "323db259-d35e-467d-9a46-4adcb2fc107c",
+            "name": "Opt",
+            "cohort": "calibration",
+            "error": 7.253997480707058,
+            "referenceHash": "ad0b166280d738911708e033bb4ee097e9b70c1d72dd55c2537d7266482ef703"
+          },
+          {
+            "id": "348955a0-e988-48d7-a6a0-a8045fcffd25",
+            "name": "Wishcoin Crab",
+            "cohort": "calibration",
+            "error": 6.669682413025376,
+            "referenceHash": "535ea799e051ab39299f09a4b97e8478e1e2fd3d71fe95dc267a79641bbc9c8d"
+          },
+          {
+            "id": "393fc485-d3c1-4826-933d-89f66df769d4",
+            "name": "Frost Breath",
+            "cohort": "validation",
+            "error": 6.290604321560099,
+            "referenceHash": "dbd3938fcb94d45ee26b0ffb572e41544c5ce10b63d4c7bc783f3d6f4b595121"
+          },
+          {
+            "id": "5360fe8c-41b0-4409-b03e-072f129fb352",
+            "name": "Read the Tides",
+            "cohort": "validation",
+            "error": 6.367533533763006,
+            "referenceHash": "cfee95fd8498f4154236c16432262a55032bd17eb86c9da33b5bbd23a4fec467"
+          },
+          {
+            "id": "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+            "name": "Teferi's Protege",
+            "cohort": "validation",
+            "error": 7.005558969246323,
+            "referenceHash": "ce8cc7bf3890e61a787727b9873c0109d970ea13f8366ffecf39f97eb18f0680"
+          },
+          {
+            "id": "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+            "name": "Shipwreck Dowser",
+            "cohort": "validation",
+            "error": 5.369584832310285,
+            "referenceHash": "acfe993bb624e46f8efa13820a145947da022e9e565fbd8a666dadbb6f5862ec"
+          },
+          {
+            "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+            "name": "Cancel",
+            "cohort": "validation",
+            "error": 5.6587302043987275,
+            "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a"
+          },
+          {
+            "id": "64832674-beb1-446e-b2f7-8a5e271139a5",
+            "name": "Lofty Denial",
+            "cohort": "validation",
+            "error": 5.691410140863364,
+            "referenceHash": "141c7a3d5874568e94d702eb4f1ad32c55da944c46cfb777e426755f57406458"
+          },
+          {
+            "id": "6d42d3dd-29df-44a1-89b8-994761eda77d",
+            "name": "Spined Megalodon",
+            "cohort": "validation",
+            "error": 6.340201284199791,
+            "referenceHash": "82407598391f19ee18d946d6fd94fe8a1a12e48b9a7e358be2f60dd75dda303c"
+          },
+          {
+            "id": "7a5a88e3-e73c-4b34-a645-06fe27e68cee",
+            "name": "Shacklegeist",
+            "cohort": "validation",
+            "error": 5.630853148392345,
+            "referenceHash": "9507c7a20efb871b4cbceb36eff8d461583c58aa074f5975f8ada71765d0a5ff"
+          },
+          {
+            "id": "8cbac0e4-f79f-476d-b410-d19ab3696606",
+            "name": "Roaming Ghostlight",
+            "cohort": "validation",
+            "error": 6.758426138388233,
+            "referenceHash": "0bcb2594c9610395d0e373dda2f07d3492179dbd21545808759c4478c756fda6"
+          },
+          {
+            "id": "91af15cc-fdd5-4d72-a53a-314fa5353527",
+            "name": "See the Truth",
+            "cohort": "additional-development",
+            "error": 5.913653808433675,
+            "referenceHash": "152939671db7fcae72e827ed231e7f3959820a9fb6edb7cafd6a3f28bf52bf1f"
+          },
+          {
+            "id": "a188164c-01fe-4980-83a5-91d14e218cf5",
+            "name": "Jeskai Elder",
+            "cohort": "additional-development",
+            "error": 6.255671472135709,
+            "referenceHash": "c7aa14587f1dbdcfec18db238c5a98f2d9614e9d26b002c271c9587fc9a2a6b2"
+          },
+          {
+            "id": "a52e90c0-b012-4ce5-8462-1e33c7143de5",
+            "name": "Vodalian Arcanist",
+            "cohort": "additional-development",
+            "error": 6.314410872898357,
+            "referenceHash": "d32bfe31fc46470bef5e779abbb70882c14fb667705e30cef74ee2ddd59f1912"
+          },
+          {
+            "id": "abb47990-a5a9-4a22-a8bb-d229b17132c6",
+            "name": "Waker of Waves",
+            "cohort": "additional-development",
+            "error": 5.275363333610339,
+            "referenceHash": "5d6a8b39c7bcfba04f3c89f926dcd0a7888df966d982ecc446fbf247b8704a07"
+          },
+          {
+            "id": "ad1bcb44-a562-4f66-b862-6d0ef3546ab4",
+            "name": "Sublime Epiphany",
+            "cohort": "additional-development",
+            "error": 6.336203509648701,
+            "referenceHash": "e1d92fca206ace4abe1d356681c87b787ee4616b279ebd70d60512490835915d"
+          },
+          {
+            "id": "ae981da0-f32c-49d5-bcb0-2b9255a4e1fe",
+            "name": "Historian of Zhalfir",
+            "cohort": "additional-development",
+            "error": 5.598407638359579,
+            "referenceHash": "1332dba4b637578d5a2c14e453b83b6ce0958b05a478867b85d0dd4c50f5f1de"
+          },
+          {
+            "id": "b1501118-5837-49b5-9446-0bc3032035ca",
+            "name": "Pursued Whale",
+            "cohort": "additional-development",
+            "error": 5.876367105727181,
+            "referenceHash": "6ff480356a9b0b6839c5dca407eed6d9f17bd66d67e1c4ad0454fb7b54575584"
+          },
+          {
+            "id": "b19de7a5-c291-405b-a2e6-8d3ac56e6570",
+            "name": "Rookie Mistake",
+            "cohort": "additional-development",
+            "error": 7.8342393527355725,
+            "referenceHash": "078191166b0198c3f42a142a1858d390842c6161658e4eca4331046c4486de33"
+          },
+          {
+            "id": "b33ba0a8-04e9-4df6-af20-a3ca4470cdcc",
+            "name": "Discontinuity",
+            "cohort": "additional-development",
+            "error": 6.377232962144077,
+            "referenceHash": "8cba5f4ddb904bab5d6dd272f2a33b888a02d2f6e1b265379000876e77adc43f"
+          },
+          {
+            "id": "b832abcc-9ffd-47bf-827a-01b303c610ee",
+            "name": "Rewind",
+            "cohort": "additional-development",
+            "error": 7.107934271387507,
+            "referenceHash": "4eecc984b43acf7b7612edbe2978f45e8fe792e703c5af076bfa4dd9d46aca47"
+          },
+          {
+            "id": "c2776694-6183-498d-9a38-e4c5c9e78179",
+            "name": "Tolarian Kraken",
+            "cohort": "additional-development",
+            "error": 5.244364964871383,
+            "referenceHash": "f3545e6e36cd4a5cb41d87927212d215cb8487853e99f85507f437e823668474"
+          },
+          {
+            "id": "cb33529b-80bd-4f52-94cc-d8371c53ad75",
+            "name": "Library Larcenist",
+            "cohort": "additional-development",
+            "error": 5.834553692009266,
+            "referenceHash": "4d62086bf7cb1343cab3901fd0f6f2a41431dac23d58bd470120ccf3c4579760"
+          },
+          {
+            "id": "cce6289e-f665-4faa-8285-c843447f3e52",
+            "name": "Keen Glidemaster",
+            "cohort": "additional-development",
+            "error": 5.303457586216785,
+            "referenceHash": "fb6546b80aa24072e60cc3db1f11a7faad5a073110d2008fccc36ff3e670623a"
+          },
+          {
+            "id": "d3bc7176-abe0-47cf-a242-cf22a1f590be",
+            "name": "Enthralling Hold",
+            "cohort": "additional-development",
+            "error": 5.505709259971331,
+            "referenceHash": "9f73d37a53e456554d1bf404e9deb7c56ee9c49cb6db393cebc43a5065d7b9bc"
+          },
+          {
+            "id": "d67e4c42-a44f-456b-87e7-21ca56dc4630",
+            "name": "Teferi's Wavecaster",
+            "cohort": "additional-development",
+            "error": 7.962845048714719,
+            "referenceHash": "ba7e15ef507e6dd1bd699ddac6226e4f05f2ee5f335ee5d2eb1dee0abd924b08"
+          },
+          {
+            "id": "d961c441-b76b-4bd8-b510-a3e073207a1b",
+            "name": "Mistral Singer",
+            "cohort": "additional-development",
+            "error": 6.4878436640881665,
+            "referenceHash": "3a6ccb55f6f95a159495d1cdc12e90605784b6456ac3e55e2788ef93396e2698"
+          },
+          {
+            "id": "da367981-9d6f-419f-9f58-f969b6183336",
+            "name": "Rain of Revelation",
+            "cohort": "additional-development",
+            "error": 6.434169398184518,
+            "referenceHash": "7770b731c4ccca33962589e1e92019976a9f48ca9d798f582766da10bb383232"
+          },
+          {
+            "id": "dee1d595-a998-4652-931f-a1a72446f3a6",
+            "name": "Tide Skimmer",
+            "cohort": "additional-development",
+            "error": 7.761771051349514,
+            "referenceHash": "868a704e29e8ac10526c175253230452cdbbac7342a178fc175b4969a46a34fb"
+          },
+          {
+            "id": "f5ed9f08-56e8-4e24-aae2-05270d7c1ba8",
+            "name": "Capture Sphere",
+            "cohort": "additional-development",
+            "error": 5.680445346510727,
+            "referenceHash": "984a577a8b078f6eb1efd51e1aff52d2e6459289877b96d5c01966b567d3ea67"
+          }
+        ],
+        "regressions": [
+          {
+            "id": "d67e4c42-a44f-456b-87e7-21ca56dc4630",
+            "name": "Teferi's Wavecaster",
+            "before": 3.708149047325091,
+            "after": 7.962845048714719
+          }
+        ]
+      },
+      "R": {
+        "status": "normalization-method-rejected",
+        "summary": {
+          "cards": 42,
+          "before": 3.124065529412559,
+          "after": 3.222262393710066,
+          "worstRegression": 1.4118478675594495,
+          "texture": {
+            "shadowChroma": {
+              "before": 1.645357333254513,
+              "after": 2.321268680053735
+            },
+            "shadowLightness": {
+              "before": 1.7979609677011676,
+              "after": 1.2873877354345975
+            },
+            "contrastError": {
+              "before": 1.6762060168417214,
+              "after": 3.047441466259315
+            }
+          },
+          "flags": ["shadowChroma-regression", "contrastError-regression"]
+        },
+        "absoluteOutliers": [],
+        "regressions": []
+      },
+      "G": {
+        "status": "existing-fit-passes-regional-gates",
+        "summary": {
+          "cards": 41,
+          "before": 2.821654189069239,
+          "after": 2.821654189069239,
+          "worstRegression": 0,
+          "texture": {
+            "shadowChroma": {
+              "before": 2.2978667413435248,
+              "after": 2.2978667413435248
+            },
+            "shadowLightness": {
+              "before": 1.1329462732728834,
+              "after": 1.1329462732728834
+            },
+            "contrastError": {
+              "before": 1.3277086516451995,
+              "after": 1.3277086516451995
+            }
+          },
+          "flags": []
+        },
+        "absoluteOutliers": [
+          {
+            "id": "17bc2af0-5a1d-4319-a285-6a15cf86be83",
+            "name": "Fierce Empath",
+            "cohort": "calibration",
+            "error": 10.426149594952925,
+            "referenceHash": "2c2cf10fa98029b5185c0999d1519b42b02ce5f6343a5e141b9d8835240e6e9d"
+          },
+          {
+            "id": "c2c4a0e7-9ca4-4291-94de-165cc2ded822",
+            "name": "Ornery Dilophosaur",
+            "cohort": "additional-development",
+            "error": 6.362587834904112,
+            "referenceHash": "f1f026f5480faffcca5c04cb861c55061b7d543737ef43ddc6ae720fe69f0cd0"
+          },
+          {
+            "id": "d6099863-8d3d-44bf-8d3b-dc3602119617",
+            "name": "Garruk's Warsteed",
+            "cohort": "additional-development",
+            "error": 5.335271805393804,
+            "referenceHash": "d91c5fea47cb06a421a3583dda3fb2dc53bc979549870ac07695eba6ff2a9fc6"
+          },
+          {
+            "id": "df520254-0c72-496b-9222-263ca9d3c5d5",
+            "name": "Pridemalkin",
+            "cohort": "additional-development",
+            "error": 5.194825793432522,
+            "referenceHash": "535e3763371c87957897be5f9011df4a4f4d735fa748fabf740f1683017d7bb2"
+          },
+          {
+            "id": "e6ab63c8-0adc-4d74-aee5-a58ce5c0dad8",
+            "name": "Sporeweb Weaver",
+            "cohort": "additional-development",
+            "error": 6.96139061294044,
+            "referenceHash": "e4e22859955a8ffc29a8ad1caa277faff8cfc110ab479b837aa6b97a0d7b4b14"
+          }
+        ],
+        "regressions": []
+      }
+    }
+  },
+  "sourceGuards": {
+    "printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
+    "calibration-profiles.ts": "23503d1b5c08bc9fb76ff3a3285ad110122ee30f5e72b5db4cd118e2cc77ae71",
+    "printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
+    "profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+    "frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+    "hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
+    "normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
+    "canvas-face.ts": "8d943f00ea5040ba99af9446ff04cdc9fb6968ef0345a3ae165e7254ff71e84a"
+  },
+  "rendererHash": "acd8b2178a698ab04dad9ccca999f581faba392e828d455dda9f661bbefbcf35",
+  "evidence": {
+    "native": "m21-normal-color-adoption.json",
+    "normalization": "m21-mono-boundaries.json"
+  },
+  "auditHash": "8ac69368849e22911051de748453319af09df865468309ec8342fd989ebd5180",
+  "reviewHash": "505550182e04d3dccb6b69cf2b86fad797fad6edb10ff2ce365b4e7f5d967288"
+}

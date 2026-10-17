@@ -1,4 +1,23 @@
 /** Import measured subsets without certifying the rest of a shared source key. */
+export function applyM21PigmentAudit(group, receipt) {
+  const audit = receipt.groups[group.palette];
+  if (!audit?.rows.some((r) => group.printingIds.includes(r.id))) return;
+  group.tasks.frameColor = {
+    status: group.palette === 'U' ? 'rejected' : 'needs-audit',
+    evidence: ['games/magic/fixtures/accuracy/m21-existing-pigment-audit.json'],
+    reason:
+      group.palette === 'U'
+        ? 'Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.'
+        : group.palette === 'R'
+          ? 'Color/contrast diagnostics need a refit, but the red normalization method fails known-pose validation first.'
+          : 'Unchanged green passes aggregate regional gates; five absolute outliers and visible hue/texture differences still require review before certifying a default.',
+    measurements: audit.summaries,
+    absoluteOutliers: receipt.review.groups[group.palette].absoluteOutliers.filter((r) =>
+      group.printingIds.includes(r.id),
+    ),
+  };
+}
+
 export function applyM21Evidence(group, source, color, boundaries, guardsMatch) {
   const root = 'games/magic/fixtures/accuracy/';
   const rows = boundaries.rows.filter((r) => group.printingIds.includes(r.id));
