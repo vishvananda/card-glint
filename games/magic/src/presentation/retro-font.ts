@@ -1,14 +1,20 @@
 import { fetchCardAsset } from '../fetch.js';
 import { RETRO_FONT, RETRO_SYMBOL_FONT } from './retro-frame.js';
+import type { CanvasFontAsset } from './canvas-fonts.js';
 let ready: Promise<void> | undefined;
-const fonts = [
-  ['CardRenderer MTG Goudy', RETRO_FONT],
-  ['CardRenderer MTG Historic Symbols', RETRO_SYMBOL_FONT],
-] as const;
+export const retroFontAssets: readonly CanvasFontAsset[] = [
+  { family: 'CardRenderer MTG Goudy', url: RETRO_FONT, weight: '400', style: 'normal' },
+  {
+    family: 'CardRenderer MTG Historic Symbols',
+    url: RETRO_SYMBOL_FONT,
+    weight: '400',
+    style: 'normal',
+  },
+];
 export function loadRetroFont(): Promise<void> {
   if (typeof FontFace !== 'function') return Promise.resolve();
   return (ready ??= Promise.all(
-    fonts.map(async ([family, url]) => {
+    retroFontAssets.map(async ({ family, url }) => {
       if (
         [...document.fonts].some(
           (f) => f.family.replace(/^"|"$/g, '') === family && f.status === 'loaded',

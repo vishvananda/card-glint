@@ -127,7 +127,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       },
       stamp: {
         key: JSON.stringify([
-          'mtg-stamp-v5',
+          'mtg-stamp-v6',
           tier,
           face.setCode,
           ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
@@ -136,6 +136,7 @@ export const mtg: GamePack<RenderedCardInput> = {
             child.face.setCode,
             faceEtchingSymbol(child.face),
             child.face.setSymbolMask ?? 'auto',
+            ...(child.face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
             ...(child.face.printingElements?.setSymbol?.offset
               ? [['set-symbol-offset', child.face.printingElements.setSymbol.offset]]
               : []),
@@ -180,11 +181,12 @@ export function opticalDocument(
   value: RenderedCardInput,
   tone: 'gold' | 'silver' | 'prismatic',
   tier: Tier = 'inspect',
+  rulesText = true,
 ): CardDocument {
   const face = structuredClone({ ...value, setCode: value.setCode ?? 'GLINT' });
   const recipe = mtg.describe(face, tier);
   const raster = (paintLayer: 'artwork' | 'printing') => {
-    const input = { face, printingId: null, printedImage: null, paintLayer };
+    const input = { face, printingId: null, printedImage: null, paintLayer, rulesText };
     return {
       key: cardTextureKey(input, tier),
       size: recipe.color.size,

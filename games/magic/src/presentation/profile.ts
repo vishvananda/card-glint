@@ -28,6 +28,7 @@ export interface CardProfileInput {
   /** Printed frame palette when it differs from the card's rules colors. */
   frameColors?: readonly FrameColor[];
   typeLine?: string;
+  canonicalTypeLine?: string;
   artifact?: boolean;
   land?: boolean;
   legendary?: boolean;
@@ -53,7 +54,7 @@ export interface CardProfile {
  * fields that the presentation input does not expose separately.
  */
 export function resolveCardProfile(input: CardProfileInput): CardProfile {
-  const typeLine = input.typeLine ?? '';
+  const typeLine = input.canonicalTypeLine ?? input.typeLine ?? '';
   const artifact = input.artifact ?? /(^|\s)Artifact(?:\s|$)/i.test(typeLine);
   const land = input.land ?? /(^|\s)Land(?:\s|$)/i.test(typeLine);
   const legendary =

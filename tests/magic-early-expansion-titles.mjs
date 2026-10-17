@@ -1,9 +1,9 @@
-import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { preTitleCalibrationSource } from './magic-title-source-guard.mjs';
+import { readPreManaHostSource } from './magic-native-source-guard.mjs';
 
 const receipt = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-titles.json'),
@@ -28,13 +28,12 @@ assert.equal(receipt.validationKind, 'repeated');
 assert.equal(receipt.rows.filter((r) => r.scored).length, 306);
 assert.equal(receipt.rows.filter((r) => r.eligible && !r.scored).length, 3);
 for (const [file, expected] of Object.entries(receipt.sourceGuards))
-  assert.equal(
-    hash(await preManaCalibrationSource(file)),
-    expected,
-    'Stale title evidence: ' + file,
-  );
+  assert.equal(hash(await readPreManaHostSource(file)), expected, 'Stale title evidence: ' + file);
 // Also exercise the complete historical reconstruction and isolation proof.
-await preTitleCalibrationSource('games/magic/src/presentation/retro-paint.ts');
+await preTitleCalibrationSource(
+  'games/magic/src/presentation/retro-paint.ts',
+  readPreManaHostSource,
+);
 for (const set of ['arn', 'atq', 'drk'])
   for (const crop of [0, 1, 2]) {
     const group = receipt.summary[`${set}/validation/${crop}`];

@@ -1,3 +1,4 @@
+import { rulesInkVisible } from './rules-visibility.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { paintMana } from './canvas-text.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
@@ -115,6 +116,7 @@ export function paintRulesLayout(
   inkInsetEm = 0,
   color = '#17140f',
 ) {
+  if (!rulesInkVisible(context)) return;
   if (layout.overflow) throw Error('Magic rules text does not fit the available area.');
   context.save();
   context.textAlign = 'left';

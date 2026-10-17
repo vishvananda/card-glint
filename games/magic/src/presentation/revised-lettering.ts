@@ -1,5 +1,5 @@
 import { paintRetroGrayText } from './retro-lettering.js';
-import type { RenderedCardInput } from './face-layout.js';
+import type { RenderedCardInput, CardTextInk } from './face-layout.js';
 import { retroFamily } from './retro-frame.js';
 
 /** Revised printing uses solid gray ink over a lower-right shadow. */
@@ -20,12 +20,17 @@ export function paintRevisedTitle(
   c.restore();
 }
 
-export function paintRevisedStats(c: CanvasRenderingContext2D, text: string, y: number) {
+export function paintRevisedStats(
+  c: CanvasRenderingContext2D,
+  text: string,
+  y: number,
+  liveChanges?: CardTextInk,
+) {
   c.save();
   c.font = '27.25px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'right';
   // Stats use lighter ink than the title/artist on the reviewed W/G/B scans.
-  paintRetroGrayText(c, text, 451, y + 11, 130, 1.25, '#d4d4d4');
+  paintRetroGrayText(c, text, 451, y + 11, 130, 1.25, '#d4d4d4', liveChanges);
   c.restore();
 }
 

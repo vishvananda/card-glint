@@ -1,4 +1,4 @@
-import { assertMagicSourceHash } from './magic-source-guard.mjs';
+import { assertNativeMagicSourceHash } from './magic-native-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
@@ -12,7 +12,7 @@ for (const [file, expected] of Object.entries({
   ),
   ...receipt.methodGuards,
 }))
-  await assertMagicSourceHash(file, expected);
+  await assertNativeMagicSourceHash(file, expected);
 assert.equal(receipt.profile.legendary, false);
 assert.equal(receipt.metrics.status, 'native-regional-gates-pass');
 assert.equal(receipt.metrics.rows.length, 42);

@@ -109,7 +109,7 @@ function matches(input: RenderedCardInput, condition: PrintingFrameCondition): b
   const profile = resolveCardProfile(input);
   for (const field of ['artifact', 'land', 'legendary'] as const)
     if (condition[field] !== undefined && condition[field] !== profile[field]) return false;
-  const types = (input.typeLine || '')
+  const types = (input.canonicalTypeLine ?? input.typeLine ?? '')
     .split(/[—–]/)[0]!
     .split(/\s+/)
     .map((t) => t.toLowerCase());

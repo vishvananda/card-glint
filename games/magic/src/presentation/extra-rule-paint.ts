@@ -1,4 +1,6 @@
-import { extraRuleBlocks } from './extra-rules.js';
+import { paintTextInk } from './text-ink.js';
+import { rulesInkVisible } from './rules-visibility.js';
+import { CLASS_LEVEL_ASSET, extraRuleBlocks } from './extra-rules.js';
 import { FACE_TEXT, type RenderedCardInput } from './face-layout.js';
 import { paintRules, rulesLines } from './canvas-text.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -8,7 +10,14 @@ export function paintExtraRules(
   face: RenderedCardInput,
   images: CanvasImages,
 ) {
+  let firstStats = true;
   for (const block of extraRuleBlocks(face)) {
+    if (
+      !rulesInkVisible(context) &&
+      (block.asset === CLASS_LEVEL_ASSET ||
+        (block.kind !== 'band' && block.kind !== 'stats' && block.kind !== 'level'))
+    )
+      continue;
     const { x, y, width, height, font } = block;
     context.save();
     context.textAlign = 'left';
@@ -38,13 +47,18 @@ export function paintExtraRules(
       context.textBaseline = 'middle';
       const lines = block.text.split('\n');
       lines.forEach((line, i) =>
-        context.fillText(
+        paintTextInk(
+          context,
           line,
           x + width * (block.kind === 'level' ? 0.43 : 0.5),
           y + height / 2 + (i - (lines.length - 1) / 2) * font,
           width * 0.85,
+          block.kind === 'stats' && firstStats && face.power != null && face.toughness != null
+            ? face.textInk
+            : undefined,
         ),
       );
+      if (block.kind === 'stats') firstStats = false;
     } else if (block.align === 'right') {
       context.font = `${font}px "CardRenderer MTG MPlantin", Georgia`;
       context.textAlign = 'right';

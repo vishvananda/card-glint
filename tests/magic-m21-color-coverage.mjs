@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { assertMagicSourceHash } from './magic-source-guard.mjs';
+import { assertNativeMagicSourceHash } from './magic-native-source-guard.mjs';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -24,7 +24,7 @@ for (const row of normal.rows) {
   assert.equal(extended.accepted, row.accepted);
 }
 for (const [file, expected] of Object.entries(evidence.sourceGuards))
-  await assertMagicSourceHash('games/magic/src/presentation/' + file, expected);
+  await assertNativeMagicSourceHash('games/magic/src/presentation/' + file, expected);
 assert.equal(normal.templateHash, evidence.normalization.templateHash);
 assert.equal(normal.knownPoses.passed, 20);
 assert.equal(normal.knownPoses.total, 20);

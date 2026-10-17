@@ -1,10 +1,11 @@
+import { rulesInkVisible } from './rules-visibility.js';
 import { resolveCardProfile } from './profile.js';
 import { componentAsset } from './assets.js';
 import { FACE_WIDTH, FACE_HEIGHT, type RenderedCardInput } from './face-layout.js';
 import { faceFrame, faceRects, specialRuleRows, type SingleFrame } from './special-frames.js';
 import { paintRules, rulesLines } from './canvas-text.js';
 import type { CanvasImages } from './canvas-assets.js';
-import { planeswalkerRuleRows } from './planeswalker-rules.js';
+import { PLANESWALKER_RULE_GEOMETRY, planeswalkerRuleRows } from './planeswalker-rules.js';
 import { paintRulesLayout } from './rules-paint.js';
 import type { RulesLayout } from './rules-layout.js';
 import { planeswalkerLowerPanel } from './planeswalker-lower-frame.js';
@@ -60,15 +61,17 @@ export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: 
 
 function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center: number) {
   context.save();
-  context.fillStyle = '#17140f';
-  context.font = '24px "CardRenderer MTG MPlantin", Georgia';
+  context.fillStyle = PLANESWALKER_RULE_GEOMETRY.colonInk;
+  context.font = `${PLANESWALKER_RULE_GEOMETRY.colonFontSize}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`;
   context.textAlign = 'center';
   context.textBaseline = 'alphabetic';
   const ink = context.measureText(':');
   context.fillText(
     ':',
     x,
-    center + 1.5 + (ink.actualBoundingBoxAscent - ink.actualBoundingBoxDescent) / 2,
+    center +
+      PLANESWALKER_RULE_GEOMETRY.colonOffsetY +
+      (ink.actualBoundingBoxAscent - ink.actualBoundingBoxDescent) / 2,
   );
   context.restore();
 }
@@ -91,6 +94,7 @@ export function paintSpecialRules(
   const box = sagaTextbox(face, resolveCardProfile(face).boxes);
   const paper = box ? images.get(box) : undefined;
   if (paper) context.drawImage(paper, x, y, w, h);
+  if (!rulesInkVisible(context)) return;
   const rows: (ReturnType<typeof specialRuleRows>[number] & { layout?: RulesLayout })[] = saga
     ? specialRuleRows(face)
     : planeswalkerRuleRows(context, face);
@@ -102,7 +106,12 @@ export function paintSpecialRules(
           ? Math.max(previous.top + previous.height + 3, Math.min(y + row.top, row.layout.top - 3))
           : y + row.top;
       context.fillStyle = '#0002';
-      context.fillRect(x + (saga ? 0 : 40), separator, w - (saga ? 0 : 40), 1.5);
+      context.fillRect(
+        x + (saga ? 0 : PLANESWALKER_RULE_GEOMETRY.separatorLeft),
+        separator,
+        w - (saga ? 0 : PLANESWALKER_RULE_GEOMETRY.separatorLeft),
+        PLANESWALKER_RULE_GEOMETRY.separatorHeight,
+      );
     }
     context.fillStyle = '#17140f';
     context.textAlign = 'left';
@@ -120,8 +129,8 @@ export function paintSpecialRules(
         images,
       );
     }
-    const badgeW = saga ? 36 : 54,
-      badgeH = saga ? 36 : 40;
+    const badgeW = saga ? 36 : PLANESWALKER_RULE_GEOMETRY.badgeWidth,
+      badgeH = saga ? 36 : PLANESWALKER_RULE_GEOMETRY.badgeHeight;
     row.badges.forEach((badge, index) => {
       const bx = x + (saga ? -18 : 0),
         by = y + row.top + row.height / 2 + (index - row.badges.length / 2) * badgeH;
@@ -143,7 +152,11 @@ export function paintSpecialRules(
       }
       if (!saga) {
         paintPlaneswalkerCost(context, badge, [bx, by, badgeW, badgeH]);
-        paintAbilityColon(context, bx + badgeW + 4, by + badgeH / 2);
+        paintAbilityColon(
+          context,
+          bx + badgeW + PLANESWALKER_RULE_GEOMETRY.colonOffsetX,
+          by + badgeH / 2,
+        );
       } else if (!image) {
         context.fillStyle = 'white';
         context.textAlign = 'center';

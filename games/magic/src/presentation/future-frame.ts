@@ -49,6 +49,7 @@ export function futureParts(face: RenderedCardInput) {
   if (full && !/^[WUBRG]$/.test(color))
     throw Error('Futureshifted full-art plates require one printed frame color');
   const white = ['U', 'B', 'R', 'G'].includes(color) && !(land && dual);
+  const canonicalType = face.canonicalTypeLine ?? face.typeLine ?? '';
   const types = [
     'Artifact',
     'Creature',
@@ -57,8 +58,8 @@ export function futureParts(face: RenderedCardInput) {
     'Land',
     'Planeswalker',
     'Sorcery',
-  ].filter((type) => new RegExp(`\\b${type}\\b`).test(face.typeLine ?? ''));
-  if (/\b(?:Tribal|Kindred)\b/.test(face.typeLine ?? '')) types.push('Tribal');
+  ].filter((type) => new RegExp(`\\b${type}\\b`).test(canonicalType));
+  if (/\b(?:Tribal|Kindred)\b/.test(canonicalType)) types.push('Tribal');
   const type = types.length > 1 ? 'multitype' : types[0]?.toLowerCase();
   const typeWhite = land ? ['U', 'B', 'R', 'G'].includes(palette[0] ?? '') : white;
   return {

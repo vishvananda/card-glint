@@ -3,11 +3,11 @@
 Use `createRenderer` for a complete scene. Hosts with an established depth pass,
 overlays and texture cache can instead use the independent public entry points:
 
-- `card-glint/magic/presentation`: shared layout, text, symbols and raster painters.
-- `card-glint/finish`: `foilShader` and `FOIL_REFLECTION_GLSL`.
+- `card-glint/magic/presentation`: shared layout, painters, native assets and font metadata.
+- `card-glint/finish`: foil and surface GLSL, `FinishResources`, `SurfaceMotion` and `surfaceSeed`.
 - `card-glint/kernels`: `createPixelKernels` with explicit disposal.
 
-These entry points do not create a WebGL context or schedule animation. The host
+Importing these entry points does not create a WebGL context or schedule animation. The host
 owns image leases, texture uploads, memory limits, clipping, hit testing, overlays,
 context loss and the draw order. Never borrow private renderer textures or copy
 its shader source into a host. A host-created material draws the card and finish
@@ -25,10 +25,38 @@ when using the complete renderer's separately cached edge sources. Aborted jobs
 release leases and never publish partial output. Hosts may keep their own persistent
 image/derivative caches; none are installed globally by this API.
 
+Omit `rulesText` or pass `true` for normal native rules painting. Pass `false`
+to omit rules ink while retaining native paper, frames and panel geometry.
+Text-ink overrides are opt-in; omitted overrides retain the native lettering.
+
 The same entry exposes geometry for DOM accessibility and inline editing. Import
 `card-glint/magic/fonts.css` for the matching font names. Optional `setSymbol` URLs
 allow custom set marks without changing the visible `setCode`. Asset provenance
 and the fan notice remain in [games/magic](../games/magic/README.md).
+
+Native text painters accept `textInk` spans with character offsets and colors.
+The host owns change detection, type-word selection and power/toughness ranges.
+The painter measures those spans in its actual font and transform without
+changing text advances. `omitInk` suppresses only selected spans so a host can
+animate their ink above unchanged native paper. `paintFittedText` retains its
+numeric inset argument, followed by optional `CardTextInk` and the type/stats role.
+Native rules suppression and geometry stay in the game pack. Custom layouts,
+interaction panels, fallback policy and animation scheduling belong to the host.
+
+The host compatibility runner compares default pixels, text measurements and
+layouts against upstream 0.4.13 at `e97f31efde9170b4e918063be1605426284d38a6`.
+Run `node tests/magic-native-host-compatibility.mjs` after building WASM.
+Its 870 probes use synthetic plates and browser fonts, not fresh scan calibration.
+Historical calibration checks first prove host compatibility, then reverse the
+reviewed mana, title and calibration-policy changes without replacing receipt hashes.
+
+`createRenderer({canvas, rasterHost})` accepts an optional `RasterHost` for all
+card rasters, artwork edge sources, layers, scene rasters and exports. Omit it
+to retain the renderer's bounded decoded-asset store. A supplied host owns its
+decoded images, cache budget and leases; every `images(requests, signal)` call
+must honor `AssetRequest.width` and release only that request's borrowed images.
+Capture the correct source scope when each request starts, and cancel obsolete
+document work before replacing a document-specific source scope.
 
 ## Finish shader contract
 
@@ -51,6 +79,41 @@ It is separate from the complete renderer's newer rain/heat/pool treatments.
 Shader programs compile once per context/material variant. Updating pose, finish
 or reflection uniforms must not compose faces, derive masks or upload static
 textures. Keep residency and disposal at the same scope as the scene context.
+`SURFACE_GLSL` and `WORN_GLSL` expose the renderer's existing shader functions.
+The host assembles its material around those sources and `foilShader()`, supplying
+its own texture samplers and artwork/printing composition. No host-specific
+material assembly is included in the package.
+
+Apply `WORN_GLSL` before finish-coverage blending and protected overlay composition,
+as the native renderer does. Applying wear to the final composite bypasses
+artwork-only coverage and changes protected printing.
+
+`FinishResources.documentMask(document, rasterHost, signal)` prepares the same
+artwork edges, imported alpha masks, native stamp and contributing layers as the
+complete renderer. For Magic, supply
+`{id, revision, recipe: magic.describe(resolvedFace, 'inspect')}` with the same
+resolved printing, per-face artwork placement and symbol settings used for color.
+The pack's stamp painter owns styled/native symbols, alpha versus dark-ink
+extraction, hidden/offset elements and its generic missing-symbol mark.
+
+The returned canvas stores linear mask coverage in RGB with opaque alpha,
+including `max(base, etchAdd) * (1 - etchExclude)`. Upload it without premultiplying
+or sRGB conversion; finish shaders sample its red channel. Finish coverage
+and protected-ink exclusions remain the host material's separate responsibility.
+The caller owns the returned canvas and its uploaded texture. Cache them by
+pack identifier, immutable recipe/source revision, dimensions and algorithm,
+releasing canvases and textures on eviction. Never call this preparation API
+from a frame loop.
+
+Standalone preparation is serialized through a bounded 16 MiB texture cache and
+8 MiB edge scratch budget, sharing the full renderer's mask composer rather than
+reimplementing its GPU pipeline. Source/image leases and temporary GPU leases
+release after preparation. It snapshots the resulting mask to a host-owned canvas
+once; it does not perform per-frame mask readback. WASM initialization is lazy and
+shared with `createRenderer`; importing the finish entry point or calling the
+generic `mask(source, width, height)` path does not initialize renderer WASM.
+Aborts, context loss and `dispose()` cancel standalone work. Dispose the
+`FinishResources` owner when the host's resource scope ends.
 
 ## Pixel kernels
 
@@ -71,3 +134,21 @@ bundles. The Rust workspace is reused until disposal, and output arrays belong
 to the caller. Cache masks by source revision, dimensions and threshold. Hot cache
 hits should skip both kernels and GPU uploads. WASM instance memory and retained
 scratch are additional to the host's resident image/texture budget.
+
+## Asset discovery and offline hosts
+
+`card-glint/magic/presentation` exports `canvasAssetUrls`, `canvasFontAssets`,
+`faceManaAssets`, `PLAIN_SECURITY_STAMP`, `decodeCanvasImage` and `setAssetFetcher`.
+The font catalog derives from the pack's native stylesheet and retro-font
+definitions. These exports discover native resources without downloading them.
+The host owns offline manifests, extra prefetch variants, font registration and
+cache completeness.
+
+Install a fetch adapter with `setAssetFetcher` before preparing faces when your
+host serves permitted assets from a local cache or another URL. All package
+entry points in one installed package share that adapter. The host still owns
+font registration, caching, offline availability and asset rights. Do not infer
+redistribution permission from a public URL. Keep `LICENSE-MIT`, `LICENSE-APACHE`,
+`NOTICE.md` and `games/magic/NOTICE.md` with redistributed package code, and read
+the [game-pack asset notices](../games/magic/NOTICE.md) separately from the
+repository's code license.

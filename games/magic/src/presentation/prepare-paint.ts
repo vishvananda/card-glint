@@ -67,6 +67,10 @@ function headers(c: CanvasRenderingContext2D, face: RenderedCardInput, images: C
     (icon ? bounds[0] - 7 : 449) - 41.7,
     22,
     true,
+    1,
+    'CardRenderer MTG Beleren',
+    0,
+    face.textInk,
   );
   if (icon) {
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
@@ -74,7 +78,19 @@ function headers(c: CanvasRenderingContext2D, face: RenderedCardInput, images: C
   }
   const spell = preparedSpell(face);
   title(spell, true);
-  paintFittedText(c, spell.typeLine ?? '', (1042 / 2010) * 488, 477, 195.2, 20, true);
+  paintFittedText(
+    c,
+    spell.typeLine ?? '',
+    (1042 / 2010) * 488,
+    477,
+    195.2,
+    20,
+    true,
+    1,
+    'CardRenderer MTG Beleren',
+    0,
+    spell.textInk,
+  );
 }
 export function paintPrepareFace(
   c: CanvasRenderingContext2D,

@@ -1,3 +1,4 @@
+import { fetchCardAsset } from '../fetch.js';
 import { calibrationFace } from './calibration-input.js';
 import { plateBasicSymbol } from './plate-basic-land.js';
 import { futureManaAsset } from './future-mana.js';
@@ -43,7 +44,7 @@ export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
 
 export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promise<Response> {
   signal.throwIfAborted();
-  return fetch(url, { signal, mode: 'cors' });
+  return fetchCardAsset(url, { signal, mode: 'cors' });
 }
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */

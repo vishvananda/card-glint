@@ -63,6 +63,10 @@ function header(c: CanvasRenderingContext2D, face: RenderedCardInput, images: Ca
     (icon ? bounds[0] - 7 : 449) - 41.7,
     22,
     true,
+    1,
+    'CardRenderer MTG Beleren',
+    0,
+    face.textInk,
   );
   if (icon) {
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
@@ -90,7 +94,19 @@ function insetHeader(c: CanvasRenderingContext2D, spell: RenderedCardInput, imag
   cost.forEach((s, i) =>
     paintMana(c, s, right - costWidth + i * (size + gap), 432, size, images, true),
   );
-  paintFittedText(c, spell.typeLine ?? '', 40, 473.5, 193, 20.1, true);
+  paintFittedText(
+    c,
+    spell.typeLine ?? '',
+    40,
+    473.5,
+    193,
+    20.1,
+    true,
+    1,
+    'CardRenderer MTG Beleren',
+    0,
+    spell.textInk,
+  );
 }
 export function paintAdventureFace(
   c: CanvasRenderingContext2D,

@@ -19,9 +19,22 @@ export interface RulesParagraph {
   align?: 'left' | 'center' | 'right';
 }
 
+export interface TextInkSpan {
+  start: number;
+  end?: number;
+  color: string;
+}
+
+export interface CardTextInk {
+  omitInk?: boolean;
+  typeLine?: readonly TextInkSpan[];
+  stats?: readonly TextInkSpan[];
+}
+
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
+  textInk?: CardTextInk;
   /** Optional semantic printing controls, shared by raster/export and editor callers. */
   printingElements?: PrintingElements;
   collectorTotal?: number | null;

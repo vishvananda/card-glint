@@ -1,15 +1,15 @@
-import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
+import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 const evidence = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/printing-blackpoints.json'),
 );
 for (const [file, hash] of Object.entries(evidence.sourceGuards))
   assert.equal(
     createHash('sha256')
-      .update(await calibrationLegacySource('games/magic/src/presentation/' + file))
+      .update(await readNativeCompatibleSource('games/magic/src/presentation/' + file))
       .digest('hex'),
     hash,
     'Black-level calibration evidence is stale: ' + file,

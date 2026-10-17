@@ -1,8 +1,13 @@
+export { faceCornerRadius } from './presentation/face-silhouette.js';
 /** Shared layout and raster painting for hosts that own their scene and editing DOM. */
 export * from './presentation/art-apertures.js';
 export * from './presentation/assets.js';
 export * from './presentation/canvas-ability-emblem.js';
 export * from './presentation/canvas-assets.js';
+export * from './presentation/canvas-fonts.js';
+export { faceManaAssets } from './presentation/mana-assets.js';
+export { PLAIN_SECURITY_STAMP } from './presentation/security-stamp-assets.js';
+export { setAssetFetcher } from '../../../packages/browser/src/asset-fetch.js';
 export * from './presentation/canvas-etching.js';
 export * from './presentation/canvas-face.js';
 export * from './presentation/canvas-status.js';
@@ -29,7 +34,8 @@ export * from './presentation/wording.js';
 export * from './presentation/frame-plates.js';
 export * from './presentation/color-calibration-coverage.js';
 
-export { sagaRuleLayout } from './presentation/saga-rules.js';
+export { sagaRuleLayout, SAGA_RULE_BOUNDS } from './presentation/saga-rules.js';
+export { SAGA_CHAPTER, SAGA_MARKER_GEOMETRY, SAGA_RECTS } from './presentation/saga-frame.js';
 
 export * from './presentation/symbol-adjustment.js';
 
@@ -38,6 +44,9 @@ export * from './presentation/standard-frame-templates.js';
 export { hasOvalSecurityStamp } from './presentation/security-stamp-policy.js';
 export { mountedSecurityStamp } from './presentation/security-stamp-paint.js';
 
+export { ADVENTURE_RULE_BOUNDS } from './presentation/adventure-rules.js';
+export { PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
+export { FLIP_PANEL_RECTS } from './presentation/flip-template-paint.js';
 export * from './presentation/printing-presets.js';
 export type {
   PrintingElement,

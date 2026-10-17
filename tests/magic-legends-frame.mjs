@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
+import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -20,7 +21,7 @@ try {
   assert.equal(
     footer.sourceHash,
     createHash('sha256')
-      .update(await readFile('games/magic/src/presentation/legends-footer.ts'))
+      .update(await readNativeCompatibleSource('games/magic/src/presentation/legends-footer.ts'))
       .digest('hex'),
   );
   const coverage = JSON.parse(

@@ -1,8 +1,9 @@
+import { fetchAsset } from './asset-fetch.js';
 import { ResourceStore } from './cache.js';
 import type { AssetRequest, Lease, RasterHost } from './types.js';
 
 async function decode(request: AssetRequest, signal: AbortSignal): Promise<ImageBitmap> {
-  const response = await fetch(request.url, { mode: 'cors', signal });
+  const response = await fetchAsset(request.url, { mode: 'cors', signal });
   if (!response.ok) throw Error(`Asset ${response.status}: ${request.url}`);
   const blob = await response.blob();
   if (!blob.type.includes('svg'))

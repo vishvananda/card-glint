@@ -216,7 +216,11 @@ export function printingPresetCompatibility(
   if (split) {
     if (preset.family === 'future' || preset.treatment)
       return { supported: false, reason: 'This preset has no split-card painter.' };
-    if (input.faces!.some((f) => !/^(Instant|Sorcery)\b/.test(f.typeLine ?? '')))
+    if (
+      input.faces!.some(
+        (f) => !/^(Instant|Sorcery)\b/.test(f.canonicalTypeLine ?? f.typeLine ?? ''),
+      )
+    )
       return { supported: false, reason: 'Native split frames require two spell faces.' };
     return { supported: true };
   }
@@ -226,7 +230,7 @@ export function printingPresetCompatibility(
       !['normal', 'token', 'transform', 'modal_dfc', 'reversible_card', 'meld'].includes(
         input.layout,
       )) ||
-    /\b(Saga|Class|Planeswalker|Battle)\b/.test(input.typeLine ?? '') ||
+    /\b(Saga|Class|Planeswalker|Battle)\b/.test(input.canonicalTypeLine ?? input.typeLine ?? '') ||
     /^Level up\b/m.test(input.rulesText ?? '')
   )
     return {
@@ -437,7 +441,7 @@ export function printingElementSupport(face: RenderedCardInput): {
     !face.faces?.length &&
     (!face.layout || ['normal', 'token'].includes(face.layout)) &&
     (!face.frameTemplate || face.frameTemplate === 'future') &&
-    !/\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') &&
+    !/\b(Saga|Class|Planeswalker|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') &&
     !/^Level up\b/m.test(face.rulesText ?? '');
   return normal
     ? { supported: true, elements: ['artist', 'legal', 'collector', 'manaCost', 'setSymbol'] }

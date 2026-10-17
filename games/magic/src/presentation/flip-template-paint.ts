@@ -12,6 +12,21 @@ import {
   templateFooter,
 } from './template-typography.js';
 
+export const FLIP_PANEL_RECTS = [
+  {
+    title: [32, 30, 311, 23],
+    rules: [37, 59, 302, 67],
+    type: [33, 134, 310, 18],
+    stats: [290, 130, 60, 28],
+  },
+  {
+    title: [32, 49, 311, 23],
+    rules: [37, 80, 302, 67],
+    type: [33, 155, 310, 18],
+    stats: [290, 150, 60, 28],
+  },
+] as const;
+
 export function paintFlipTemplate(
   c: CanvasRenderingContext2D,
   face: RenderedCardInput,
@@ -80,15 +95,18 @@ export function paintFlipTemplate(
       [type[0], type[1], type[2] - (f.power != null ? 60 : 0), type[3]],
       14,
       family,
+      f.textInk,
     );
     templateRules(c, f, images, rules, 14, 8);
     templateStats(c, f, stats, 17, family);
   };
-  panel(front, [32, 30, 311, 23], [37, 59, 302, 67], [33, 134, 310, 18], [290, 130, 60, 28]);
+  const a = FLIP_PANEL_RECTS[0],
+    b = FLIP_PANEL_RECTS[1];
+  panel(front, a.title, a.rules, a.type, a.stats);
   c.save();
   c.translate(375, 523);
   c.rotate(Math.PI);
-  panel(back, [32, 49, 311, 23], [37, 80, 302, 67], [33, 155, 310, 18], [290, 150, 60, 28]);
+  panel(back, b.title, b.rules, b.type, b.stats);
   c.restore();
   const icon = images.get(faceSetSymbol(face) ?? '');
   if (icon) {

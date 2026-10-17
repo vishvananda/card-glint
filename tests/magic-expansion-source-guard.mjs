@@ -1,12 +1,12 @@
-import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 
 /** Historical profiles remain valid only if removing the exact two-key data
  * extension reconstructs their entire measured module, with native isolation. */
 export async function assertExpansionSourceHash(file, expected) {
-  const bytes = await calibrationLegacySource(file);
+  const bytes = await readNativeCompatibleSource(file);
   if (hash(bytes) === expected) return;
   const proof = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/early-expansion-red-frame.json'),

@@ -134,3 +134,32 @@ and MSE’s `magic-future-textless.mse-style` and
 `magic-mana-future.mse-symbol-font`. Two-color land components use MSE’s
 horizontal 40–60% blend and hybrid masks to retain neutral title/type interiors.
 These assets remain external; no source scripts are executed.
+
+## Offline asset rights
+
+- wingedsheep/mtg-card-renderer at b52888cda57a99b5b7dd47bc4fdfae47383a93f9
+  contains no LICENSE, COPYRIGHT, legal or OFL file in its complete Git tree.
+  Its README gives usage instructions, not an asset redistribution grant.
+  https://github.com/wingedsheep/mtg-card-renderer/tree/b52888cda57a99b5b7dd47bc4fdfae47383a93f9
+- Both pinned Card Conjurer forks' legal/index.html attribute fonts, mana and
+  related images to Wizards and frame elements to named contributors. Their
+  service terms specify personal, noncommercial use. These terms are not
+  evidence of transferable copyright licenses for every included font/frame.
+  https://github.com/Investigamer/cardconjurer/blob/2fcddba8966156d484cedf54d8214996748dd5e1/legal/index.html
+  https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/legal/index.html
+- Full-Magic-Pack at 16f1d13bb7f5924613fc1ddc25da582beccfefb6 has no
+  top-level license. Its README explains installation and credits some
+  Card Conjurer templates; it does not grant blanket frame/font rights.
+  https://github.com/MagicSetEditorPacks/Full-Magic-Pack/blob/16f1d13bb7f5924613fc1ddc25da582beccfefb6/README.md
+- Mana's pinned README licenses its font under SIL OFL 1.1, its CSS/LESS/Sass
+  under MIT, and identifies Wizards' underlying symbol copyright.
+  https://github.com/andrewgioia/mana/blob/6ca9e696d3bda2519dcf3eebd96598f84ad9ddd8/README.md
+- Keyrune's pinned LICENSE.md licenses SVG icons and non-font code under
+  GPL-3.0 and prepared fonts under SIL OFL 1.1, retaining trademark notices.
+  https://github.com/andrewgioia/keyrune/blob/256add455a043462f7b2bfa224ca71bfc66b62ab/LICENSE.md
+
+No external asset binaries are redistributed by the installer. Downloads go
+directly from the original pinned sources to the user's device only after an
+explicit permission acknowledgement. Availability on GitHub does not establish
+permission; users must have the required rights. There is no claim that a
+first-ever disconnected launch can obtain missing assets.

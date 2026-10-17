@@ -1,3 +1,4 @@
+import { rulesInkVisible } from './rules-visibility.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 
@@ -10,9 +11,11 @@ const COLORS: Readonly<Record<string, string>> = {
 };
 
 /** The printed subtype supplies a basic land's palette; its rules colors are empty. */
-export function basicLandColor(face: Pick<RenderedCardInput, 'typeLine'>): string | undefined {
+export function basicLandColor(
+  face: Pick<RenderedCardInput, 'typeLine' | 'canonicalTypeLine'>,
+): string | undefined {
   const type = /^Basic (?:Snow )?Land [—–-] (Plains|Island|Swamp|Mountain|Forest)$/.exec(
-    face.typeLine ?? '',
+    face.canonicalTypeLine ?? face.typeLine ?? '',
   )?.[1];
   return type ? COLORS[type] : undefined;
 }
@@ -53,6 +56,7 @@ export function paintBasicLandSymbol(
   face: RenderedCardInput,
   images: ReadonlyMap<string, ImageBitmap>,
 ): boolean {
+  if (!rulesInkVisible(c)) return true;
   const url = plateBasicSymbol(face);
   if (!url) return false;
   const glyph = images.get(url);

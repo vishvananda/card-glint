@@ -1,3 +1,4 @@
+import { paintTextInk } from './text-ink.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -71,7 +72,7 @@ export function paintFutureTemplate(
     c.shadowColor = 'transparent';
     paintPrintingElement(c, face, 'manaCost', () => paintFutureMana(c, face, images));
     const light = palette.length === 1 && palette[0] !== 'W';
-    const label = (text: string, rect: FaceRect, size: number, offsetY: number) => {
+    const label = (text: string, rect: FaceRect, size: number, offsetY: number, live = false) => {
       c.textAlign = 'left';
       c.textBaseline = 'middle';
       paintFittedText(
@@ -84,13 +85,15 @@ export function paintFutureTemplate(
         true,
         1,
         'CardRenderer MTG Matrix',
+        0,
+        live ? face.textInk : undefined,
       );
     };
     c.fillStyle = light ? '#fff' : '#111';
     // Shared lettering fit uses frozen frame-only scan poses and reserved cards;
     // keep Matrix Bold, whose glyphs fit better than the alternate MSE Medium.
     label(face.name, g.title, 30.248, 1.25);
-    label(face.typeLine ?? '', g.type, 24.969, -1.5);
+    label(face.typeLine ?? '', g.type, 24.969, -1.5, true);
     const rulesInk = p.land && palette.length === 2 && !palette.includes('W') ? '#fff' : '#111';
     // The textless treatment is physical. Additional Oracle text does not
     // switch it to the regular frame or silently change the artwork aperture.
@@ -104,7 +107,7 @@ export function paintFutureTemplate(
       c.save();
       c.translate(g.stats[0] + g.stats[2] / 2 - 1.5, g.stats[1] + g.stats[3] / 2 - 0.25);
       c.scale(0.99, 1);
-      c.fillText(`${face.power}/${face.toughness}`, 0, 0, g.stats[2] / 0.99);
+      paintTextInk(c, `${face.power}/${face.toughness}`, 0, 0, g.stats[2] / 0.99, face.textInk);
       c.restore();
     }
     const symbol = images.get(faceSetSymbol(face) ?? '');

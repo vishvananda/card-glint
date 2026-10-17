@@ -1,3 +1,4 @@
+import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
 import { resolveCardProfile } from './profile.js';
@@ -77,7 +78,28 @@ export function paintEighthFooter(
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     const text = `${face.power}/${face.toughness}`;
-    if (statsFont) paintPlanarStats(c, text);
+    if (face.textInk?.stats?.length) {
+      const measure = statsFont
+        ? undefined
+        : (value: string) =>
+            value
+              .split(/(\*)/)
+              .reduce((sum, run) => sum + (run === '*' ? 15 : c.measureText(run).width), 0);
+      paintTextInk(
+        c,
+        text,
+        407,
+        0,
+        78,
+        face.textInk,
+        'stats',
+        () => {
+          if (statsFont) paintPlanarStats(c, text);
+          else paintStats(c, text);
+        },
+        measure,
+      );
+    } else if (statsFont) paintPlanarStats(c, text);
     else paintStats(c, text);
     c.restore();
   }

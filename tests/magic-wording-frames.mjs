@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 
 const receipt = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-wording-frame-compatibility.json'),
@@ -24,7 +25,7 @@ for (const [file, guard] of Object.entries(receipt.guards)) {
   if (next) assert.equal(next.before, guard.after, 'Compatibility chain must start at prior proof');
   assert.equal(
     createHash('sha256')
-      .update(await readFile(file))
+      .update(await readNativeCompatibleSource(file))
       .digest('hex'),
     next?.after ?? guard.after,
     'Stale wording compatibility: ' + file,
@@ -37,7 +38,7 @@ for (const [file, guard] of Object.entries(extension.guards)) {
   if (latest) assert.equal(latest.before, next?.after ?? guard.after);
   assert.equal(
     createHash('sha256')
-      .update(await readFile(file))
+      .update(await readNativeCompatibleSource(file))
       .digest('hex'),
     latest?.after ?? next?.after ?? guard.after,
     file,

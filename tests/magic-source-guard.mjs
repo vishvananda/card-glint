@@ -5,8 +5,7 @@ import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 /** A cache-label bump can preserve historical pixel evidence only when undoing
  * that exact replacement reproduces the complete measured source byte-for-byte. */
-export async function assertMagicSourceHash(file, expected) {
-  const bytes = await calibrationLegacySource(file);
+export async function assertCacheOnlySourceBytes(file, bytes, expected) {
   if (hash(bytes) === expected) return;
   const proof = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/early-expansion-cache-compatibility.json'),
@@ -21,4 +20,8 @@ export async function assertMagicSourceHash(file, expected) {
     if (hash(source) === expected) return;
   }
   assert.fail('No verified cache-only ancestry for: ' + file);
+}
+
+export async function assertMagicSourceHash(file, expected) {
+  await assertCacheOnlySourceBytes(file, await calibrationLegacySource(file), expected);
 }

@@ -1,4 +1,4 @@
-import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
+import type { RenderedCardInput, RulesParagraph, CardTextInk } from './face-layout.js';
 import { layoutRules, type RulesLayout } from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
 import { paintRetroGrayText } from './retro-lettering.js';
@@ -38,6 +38,7 @@ export function paintRevisedLandText(
   text: string,
   kind: 'title' | 'type' | 'artist',
   maxWidth: number,
+  liveChanges?: CardTextInk,
 ) {
   const p = revisedLandText()[kind];
   c.save();
@@ -46,7 +47,17 @@ export function paintRevisedLandText(
   c.font = `${p.size}px "CardRenderer MTG ${kind === 'title' ? 'Goudy' : 'MPlantin'}", Georgia`;
   c.textAlign = 'left';
   c.textBaseline = kind === 'artist' ? 'alphabetic' : 'middle';
-  paintRetroGrayText(c, text, 0, 0, maxWidth / p.width, kind === 'artist' ? 1.25 : 1);
+  paintRetroGrayText(
+    c,
+    text,
+    0,
+    0,
+    maxWidth / p.width,
+    kind === 'artist' ? 1.25 : 1,
+    '#ababab',
+    kind === 'type' ? liveChanges : undefined,
+    'type',
+  );
   c.restore();
 }
 

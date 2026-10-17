@@ -23,6 +23,18 @@ export function sagaTransformIcon(face: RenderedCardInput): string | null {
 export const SAGA_CHAPTER = `${root}/sagaChapter.png`;
 export const SAGA_DIVIDER = `${root}/sagaDivider.png`;
 export const SAGA_STAMP = `${root}/stamp.png`;
+export const SAGA_MARKER_GEOMETRY = {
+  shape: 'chapter',
+  x: 18.8,
+  width: 38.4,
+  height: 42.8,
+  centerX: 38.1,
+  numeralOffsetY: 0.7,
+  gap: 49,
+  fontSize: 22,
+  fontFamily: 'CardRenderer MTG Chapter',
+  minimumRowHeight: 55,
+} as const;
 export function sagaAssets(face: RenderedCardInput): string[] {
   return [
     sagaFrameAsset(face),

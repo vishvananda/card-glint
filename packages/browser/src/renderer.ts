@@ -19,12 +19,14 @@ import {
   type Instance,
   type Lease,
   type Metrics,
+  type RasterHost,
   type SceneLayer,
 } from './types.js';
 let initialized: Promise<unknown> | undefined;
 export interface RendererOptions {
   canvas: HTMLCanvasElement;
   wasmUrl?: string | URL;
+  rasterHost?: RasterHost;
   etching?: 'gpu' | 'rust';
   budgets?: Partial<Budgets>;
   invalidate?: () => void;
@@ -87,7 +89,7 @@ export class Renderer {
       this.budgets.scratchBytes,
       options.etching,
     );
-    this.preparer = new Preparer(this.textures, this.assets);
+    this.preparer = new Preparer(this.textures, options.rasterHost ?? this.assets);
     options.canvas.addEventListener('webglcontextlost', this.contextLost);
     options.canvas.addEventListener('webglcontextrestored', this.contextRestored);
   }
@@ -372,7 +374,11 @@ export class Renderer {
           leases.push(hit);
           continue;
         }
-        const image = await paintRaster(layer.raster, this.assets, new AbortController().signal);
+        const image = await paintRaster(
+          layer.raster,
+          this.options.rasterHost ?? this.assets,
+          new AbortController().signal,
+        );
         try {
           assertCurrent();
           leases.push(textures.upload(key, image, false));
@@ -465,7 +471,7 @@ export class Renderer {
       this.budgets.scratchBytes,
       this.options.etching,
     );
-    this.preparer = new Preparer(this.textures, this.assets);
+    this.preparer = new Preparer(this.textures, this.options.rasterHost ?? this.assets);
     this.lost = false;
     this.failed = new WeakSet();
     const layers = this.sceneLayers;
@@ -566,13 +572,14 @@ export class Renderer {
     this.scene.free();
   }
 }
-export async function createRenderer(options: RendererOptions): Promise<Renderer> {
-  initialized ??= init(options.wasmUrl ? { module_or_path: options.wasmUrl } : undefined).catch(
-    (error) => {
-      initialized = undefined;
-      throw error;
-    },
-  );
+export async function initializeRenderer(wasmUrl?: string | URL): Promise<void> {
+  initialized ??= init(wasmUrl ? { module_or_path: wasmUrl } : undefined).catch((error) => {
+    initialized = undefined;
+    throw error;
+  });
   await initialized;
+}
+export async function createRenderer(options: RendererOptions): Promise<Renderer> {
+  await initializeRenderer(options.wasmUrl);
   return new Renderer(options);
 }

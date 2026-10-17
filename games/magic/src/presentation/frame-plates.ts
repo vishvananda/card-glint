@@ -41,7 +41,7 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   if (
     isRetro(face) ||
     (face.layout && !['normal', 'token'].includes(face.layout)) ||
-    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||
+    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') ||
     /^Level up\b/m.test(face.rulesText ?? '')
   )
     throw Error('Replacement frame plates currently support ordinary modern faces only.');
@@ -62,7 +62,7 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     ? 'l'
     : profile.artifact
       ? 'a'
-      : /\bVehicle\b/.test(face.typeLine ?? '')
+      : /\bVehicle\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '')
         ? 'v'
         : colors.length > 1
           ? 'm'

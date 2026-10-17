@@ -1,3 +1,5 @@
+import { paintTextInk } from './text-ink.js';
+import { rulesInkVisible } from './rules-visibility.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintRetroStockBorder, paintRetroStockWindow } from './retro-stock-border.js';
@@ -219,8 +221,9 @@ export function paintRetroFace(
   c.font = `${typePlacement.fontSize}px "CardRenderer MTG MPlantin", Georgia`;
   const paintType = isRevisedLand(face)
     ? (text: string, _x: number, _y: number, width: number) =>
-        paintRevisedLandText(c, text, 'type', width)
-    : (text: string, x: number, y: number, width: number) => c.fillText(text, x, y, width);
+        paintRevisedLandText(c, text, 'type', width, face.textInk)
+    : (text: string, x: number, y: number, width: number) =>
+        paintTextInk(c, text, x, y, width, face.textInk, 'type');
   c.save();
   c.translate(typePlacement.dx, typePlacement.dy);
   paintType(
@@ -308,7 +311,7 @@ export function paintRetroFace(
   const [rx, ry, rw, rh] = retroPx(rect.rules);
   c.fillStyle = '#17140f';
   const basic = images.get(retroBasicSymbol(face) ?? '');
-  if (basic) {
+  if (basic && rulesInkVisible(c)) {
     const scale = Math.min((rw * 0.4) / basic.width, (rh * 0.75) / basic.height);
     c.drawImage(
       basic,
@@ -350,13 +353,15 @@ export function paintRetroFace(
     const [sx, sy, sw, sh] = retroPx(rect.stats);
     const placement = retroStatsPlacement(face);
     c.textAlign = placement ? 'right' : 'center';
-    if (revised) paintRevisedStats(c, retroStatsText(face), sy + sh / 2);
+    if (revised) paintRevisedStats(c, retroStatsText(face), sy + sh / 2, face.textInk);
     else
-      c.fillText(
+      paintTextInk(
+        c,
         retroStatsText(face),
         placement?.right ?? sx + sw / 2,
         sy + sh / 2 + (placement?.yOffset ?? 0),
         placement?.maxWidth ?? sw,
+        face.textInk,
       );
   }
   if (details) paintRetroCredits(c, face, details);

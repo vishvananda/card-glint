@@ -32,7 +32,8 @@ export interface RuleRow {
 export type FaceRects = { [K in keyof typeof FACE_RECTS]: FaceRect };
 /** Presentation formatting only. Unknown lines stay visible; no rules are executed. */
 export function specialRules(face: RenderedCardInput): RuleRow[] {
-  const saga = face.layout === 'saga' || /\bSaga\b/i.test(face.typeLine ?? '');
+  const saga =
+    face.layout === 'saga' || /\bSaga\b/i.test(face.canonicalTypeLine ?? face.typeLine ?? '');
   // Some printing sources delimit adjacent chapter clauses with a literal bar.
   // Only a bar followed by an explicit chapter label is a separator.
   const text = saga
@@ -61,10 +62,15 @@ export function faceFrame(face: RenderedCardInput): SingleFrame {
   if (face.layout === 'ability') return 'normal';
   if (face.layout === 'prepare') return 'prepare';
   if (face.layout === 'adventure' && face.faces?.length === 2) return 'adventure';
-  if (face.layout === 'class' || /\bClass\b/i.test(face.typeLine ?? '')) return 'class';
+  if (face.layout === 'class' || /\bClass\b/i.test(face.canonicalTypeLine ?? face.typeLine ?? ''))
+    return 'class';
   if (face.layout === 'leveler' || /^Level up\b/m.test(face.rulesText ?? '')) return 'leveler';
-  if (face.layout === 'saga' || /\bSaga\b/i.test(face.typeLine ?? '')) return 'saga';
-  if (face.layout === 'planeswalker' || /\bPlaneswalker\b/i.test(face.typeLine ?? ''))
+  if (face.layout === 'saga' || /\bSaga\b/i.test(face.canonicalTypeLine ?? face.typeLine ?? ''))
+    return 'saga';
+  if (
+    face.layout === 'planeswalker' ||
+    /\bPlaneswalker\b/i.test(face.canonicalTypeLine ?? face.typeLine ?? '')
+  )
     return specialRules(face).length > 3 ? 'planeswalker-large' : 'planeswalker';
   return 'normal';
 }

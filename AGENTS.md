@@ -14,6 +14,11 @@ npm run test:showcase for renderer changes. Browser tests need npm run preview.
 No per-frame decoding, font loading, shader compilation, or mask readback.
 Document benchmark scope: CPU submission time is not GPU completion time.
 Never silently use another game's painter or publish partial face revisions.
+Native host hooks must preserve default rendering. Keep historical calibration
+assertions and cache-only ancestry guards intact. Native source fingerprints
+identify reviewed changes; the differential gate checks default pixels and layouts.
+Native parity fixtures use ImageBitmap assets. Frame painters own and release
+their intermediate canvases.
 
 The public showcase must load only original repository assets. External art
 reference metadata belongs in its game pack with attribution; do not copy those

@@ -1,5 +1,16 @@
 import type { FaceRect } from './face-layout.js';
 
+export const PLANESWALKER_COST_GEOMETRY = {
+  fontSize: 19.5,
+  fontFamily: '"CardRenderer MTG Beleren", Georgia',
+  fontWeight: 700,
+  ink: '#fff',
+  numeralOffsetX: -0.5,
+  numeralOffsetY: { plus: -0.25, zero: -3.25, minus: -4.5 },
+  horizontalInset: 10,
+  widthScale: 0.97,
+} as const;
+
 /** Center the visible ink in the shield's body, below its top notch. Canvas's
  * generic middle baseline centers the font em box and puts tall digits into
  * that notch. Measured against frozen M15, M21 and WAR scan registrations. */
@@ -19,15 +30,17 @@ export function paintPlaneswalkerCost(
   text: string,
   [x, y, width, height]: FaceRect,
 ): void {
-  const inkOffsetY = text.startsWith('+') ? -0.25 : text === '0' ? -3.25 : -4.5;
+  const geometry = PLANESWALKER_COST_GEOMETRY;
+  const inkOffsetY =
+    geometry.numeralOffsetY[text.startsWith('+') ? 'plus' : text === '0' ? 'zero' : 'minus'];
   paintLoyaltyInk(
     c,
     text,
-    19.5,
-    x + width / 2 - 0.5,
+    geometry.fontSize,
+    x + width / 2 + geometry.numeralOffsetX,
     y + height / 2 + inkOffsetY,
-    width - 10,
-    0.97,
+    width - geometry.horizontalInset,
+    geometry.widthScale,
   );
 }
 
@@ -41,8 +54,8 @@ function paintLoyaltyInk(
   widthScale = 1,
 ): void {
   c.save();
-  c.fillStyle = '#fff';
-  c.font = `700 ${size}px "CardRenderer MTG Beleren", Georgia`;
+  c.fillStyle = PLANESWALKER_COST_GEOMETRY.ink;
+  c.font = `${PLANESWALKER_COST_GEOMETRY.fontWeight} ${size}px ${PLANESWALKER_COST_GEOMETRY.fontFamily}`;
   c.textAlign = 'center';
   c.textBaseline = 'alphabetic';
   c.letterSpacing = '0px';

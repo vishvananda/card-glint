@@ -1,8 +1,6 @@
-import type { AssetStore } from './assets.js';
 import type { TextureStore, Texture } from './gpu/textures.js';
 import { MaskComposer } from './gpu/masks.js';
 import {
-  canvas,
   closeRaster,
   layerKey,
   layersOf,
@@ -10,7 +8,7 @@ import {
   paintLayers,
   paintRaster,
 } from './raster.js';
-import type { CardDocument, Lease, EdgeSource } from './types.js';
+import type { CardDocument, Lease, EdgeSource, RasterHost } from './types.js';
 export interface Prepared {
   color: string;
   mask: string;
@@ -27,7 +25,7 @@ export class Preparer {
   compositions = 0;
   constructor(
     readonly textures: TextureStore,
-    readonly assets: AssetStore,
+    readonly assets: RasterHost,
   ) {
     this.masks = new MaskComposer(textures);
   }
@@ -107,81 +105,7 @@ export class Preparer {
           }
         }),
       );
-      leases.push(
-        await this.ensure(mask, async () => {
-          const inputs: { value: Texture; spec: EdgeSource }[] = [],
-            temporary: Lease<Texture>[] = [];
-          try {
-            for (const spec of recipe.edges) {
-              const key =
-                prefix +
-                JSON.stringify([
-                  'edge-integer-v1',
-                  spec.key,
-                  spec.asset,
-                  spec.importedMask,
-                  spec.threshold,
-                ]);
-              const edge = await this.ensure(key, async () => {
-                const image = await this.assets.image(spec.importedMask ?? spec.asset, signal);
-                try {
-                  signal.throwIfAborted();
-                  return spec.importedMask
-                    ? this.textures.upload(key, image.value, false, 0)
-                    : this.textures.edge(key, image.value, spec.threshold);
-                } finally {
-                  image.release();
-                }
-              });
-              temporary.push(edge);
-              inputs.push({ value: edge.value, spec });
-            }
-            for (const layer of contributors) {
-              const key = prefix + JSON.stringify(['contribution-v1', size, layerKey([layer])]);
-              const edge = await this.ensure(key, async () => {
-                const image = await paintLayers(size, [layer], this.assets, signal);
-                try {
-                  signal.throwIfAborted();
-                  return this.textures.edge(key, image, 20);
-                } finally {
-                  closeRaster(image);
-                }
-              });
-              temporary.push(edge);
-              inputs.push({
-                value: edge.value,
-                spec: {
-                  key,
-                  asset: { url: '' },
-                  crop: [0, 0, 1, 1],
-                  destination: [0, 0, 1, 1],
-                  clip: [0, 0, 1, 1],
-                  threshold: 20,
-                },
-              });
-            }
-            let stamp: Lease<Texture> | undefined;
-            if (recipe.stamp) {
-              const raster = recipe.stamp,
-                key = prefix + JSON.stringify(['stamp-v1', raster.key]);
-              stamp = await this.ensure(key, async () => {
-                const image = await paintRaster(raster, this.assets, signal);
-                try {
-                  signal.throwIfAborted();
-                  return this.textures.upload(key, image, false, 0);
-                } finally {
-                  closeRaster(image);
-                }
-              });
-              temporary.push(stamp);
-            }
-            signal.throwIfAborted();
-            return this.masks.compose(mask, size, inputs, stamp?.value);
-          } finally {
-            for (const lease of temporary) lease.release();
-          }
-        }),
-      );
+      leases.push(await this.prepareMask(document, signal));
       if (overlay)
         leases.push(
           await this.ensure(overlay, async () => {
@@ -219,6 +143,91 @@ export class Preparer {
     } finally {
       for (const lease of leases) lease.release();
     }
+  }
+  async prepareMask(document: CardDocument, signal: AbortSignal): Promise<Lease<Texture>> {
+    const { recipe } = document,
+      size = recipe.color.size,
+      contributors = layersOf(document).filter((layer) => layer.contributesToEtch),
+      prefix = `${recipe.pack}:`,
+      key =
+        prefix +
+        JSON.stringify(['mask-v1', size, recipe.edges, recipe.stamp?.key, layerKey(contributors)]);
+    return this.ensure(key, async () => {
+      const inputs: { value: Texture; spec: EdgeSource }[] = [],
+        temporary: Lease<Texture>[] = [];
+      try {
+        for (const spec of recipe.edges) {
+          const edgeKey =
+            prefix +
+            JSON.stringify([
+              'edge-integer-v1',
+              spec.key,
+              spec.asset,
+              spec.importedMask,
+              spec.threshold,
+            ]);
+          const edge = await this.ensure(edgeKey, async () => {
+            const request = spec.importedMask ?? spec.asset;
+            const images = await this.assets.images([request], signal);
+            try {
+              signal.throwIfAborted();
+              const image = images.value.get(request.url);
+              if (!image) throw Error(`Edge asset unavailable: ${request.url}`);
+              return spec.importedMask
+                ? this.textures.upload(edgeKey, image, false, 0)
+                : this.textures.edge(edgeKey, image, spec.threshold);
+            } finally {
+              images.release();
+            }
+          });
+          temporary.push(edge);
+          inputs.push({ value: edge.value, spec });
+        }
+        for (const layer of contributors) {
+          const edgeKey = prefix + JSON.stringify(['contribution-v1', size, layerKey([layer])]);
+          const edge = await this.ensure(edgeKey, async () => {
+            const image = await paintLayers(size, [layer], this.assets, signal);
+            try {
+              signal.throwIfAborted();
+              return this.textures.edge(edgeKey, image, 20);
+            } finally {
+              closeRaster(image);
+            }
+          });
+          temporary.push(edge);
+          inputs.push({
+            value: edge.value,
+            spec: {
+              key: edgeKey,
+              asset: { url: '' },
+              crop: [0, 0, 1, 1],
+              destination: [0, 0, 1, 1],
+              clip: [0, 0, 1, 1],
+              threshold: 20,
+            },
+          });
+        }
+        let stamp: Lease<Texture> | undefined;
+        if (recipe.stamp) {
+          const raster = recipe.stamp,
+            stampKey = prefix + JSON.stringify(['stamp-v1', raster.key]);
+          stamp = await this.ensure(stampKey, async () => {
+            const image = await paintRaster(raster, this.assets, signal);
+            try {
+              signal.throwIfAborted();
+              return this.textures.upload(stampKey, image, false, 0);
+            } finally {
+              closeRaster(image);
+            }
+          });
+          temporary.push(stamp);
+        }
+        signal.throwIfAborted();
+        return this.masks.compose(key, size, inputs, stamp?.value);
+      } finally {
+        for (const lease of temporary) lease.release();
+      }
+    });
   }
   dispose() {
     this.masks.dispose();

@@ -100,7 +100,7 @@ must not crowd finished faces out of the working set.
 | Assembled R8 mask | Edge recipes, placement/crop, stamp, etch contributors, tier | Name/rules when geometry is unchanged, over-finish badges, light |
 | Face color        | Pack recipe and printed/under-finish layers                  | Motion, finish, over-finish badges                               |
 | Overlay           | Ordered overlay content and clips                            | Base text, artwork, light                                        |
-| Coverage          | Mask content and clips                                       | Motion and light                                                 |
+| Coverage          | Pack identifier, mask content and clips                      | Motion and light                                                 |
 | Local hologram    | Mask identity and dimensions                                 | Placement, strength, seed, view and pointer                      |
 
 HTTP caching retains encoded sources across reloads. GPU textures are reusable

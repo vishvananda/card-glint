@@ -1,3 +1,4 @@
+import { paintTextInk } from './text-ink.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
@@ -217,6 +218,8 @@ export function paintFramePlateFace(
     1,
     family,
     face.frameTreatment === 'colorshifted' ? 0.5 : 0,
+    face.textInk,
+    'type',
   );
   c.restore();
   paintPrintingElement(c, face, 'setSymbol', () =>
@@ -247,7 +250,14 @@ export function paintFramePlateFace(
     c.font = `bold 25px "${family}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
-    c.fillText(`${face.power}/${face.toughness}`, sx + sw * 0.52, sy + sh * 0.52, sw * 0.85);
+    paintTextInk(
+      c,
+      `${face.power}/${face.toughness}`,
+      sx + sw * 0.52,
+      sy + sh * 0.52,
+      sw * 0.85,
+      face.textInk,
+    );
   }
   paintModernFooter(c, face);
   c.restore();

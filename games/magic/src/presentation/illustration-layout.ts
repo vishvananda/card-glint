@@ -1,4 +1,4 @@
-import { coverImage, type ImageFit } from '../../../../packages/browser/src/index.js';
+import { coverImage, type ImageFit } from '../../../../packages/browser/src/image-cover.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
 /** The same source placement drives painting and both etching paths. The

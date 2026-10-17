@@ -1,4 +1,4 @@
-import { assertMagicSourceHash } from './magic-source-guard.mjs';
+import { assertNativeMagicSourceHash } from './magic-native-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -14,7 +14,7 @@ const boundaries = await read('m21-component-boundaries-v2.json'),
   stock = await read('modern-land-stock-transfer.json');
 for (const receipt of [boundaries, stock])
   for (const [f, expected] of Object.entries(receipt.sourceGuards))
-    await assertMagicSourceHash('games/magic/src/presentation/' + f, expected);
+    await assertNativeMagicSourceHash('games/magic/src/presentation/' + f, expected);
 assert.equal(boundaries.summary.cards, 239);
 assert.equal(boundaries.summary.accepted, 231);
 assert.equal(boundaries.summary.rejected.length, 8);
@@ -153,7 +153,7 @@ for (const [file, expected] of Object.entries({
   ),
   ...white.methodGuards,
 }))
-  await assertMagicSourceHash(file, expected);
+  await assertNativeMagicSourceHash(file, expected);
 let whiteCount = 0;
 for (const g of m21.groups) {
   if (g.tasks.frameColor.status === 'validated-default') {

@@ -1,4 +1,4 @@
-import { coverImage, type ImageFit } from '../../../../packages/browser/src/index.js';
+import { coverImage, type ImageFit } from '../../../../packages/browser/src/image-cover.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { faceRects } from './special-frames.js';
 import { illustrationTarget } from './illustration-layout.js';
@@ -18,7 +18,7 @@ export function artPlacementSupport(face: RenderedCardInput): {
         face.layout,
       )) ||
     (face.frameTemplate && face.frameTemplate !== 'future') ||
-    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||
+    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') ||
     /^Level up\b/m.test(face.rulesText ?? '')
   )
     return {
