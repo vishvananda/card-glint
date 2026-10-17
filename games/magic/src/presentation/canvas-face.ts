@@ -1,4 +1,5 @@
-import { calibratedPrintingStock } from './calibration-profiles.js';
+import { calibrationFace } from './calibration-input.js';
+import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { validateArtPlacement } from './art-placement.js';
 import { validatePrintingElements, paintPrintingElement } from './printing-elements.js';
 import { withPrintingOmissions } from './printing-omissions.js';
@@ -136,7 +137,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v143',
+    'canvas-face-v144',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -165,6 +166,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
     face.collectorTotal,
     face.collectorLanguage,
     face.collectorSetCode,
+    ...(face.calibration !== undefined ? [['printing-calibration-v1', face.calibration]] : []),
   ];
   const printingOptions = options.some((v) => v !== undefined)
     ? [['printing-elements-v1', ...options]]
@@ -269,6 +271,7 @@ export async function composeCardTexture(
     underArt?: HTMLCanvasElement;
   },
 ): Promise<HTMLCanvasElement> {
+  input = { ...input, face: calibrationFace(input.face) };
   validateArtPlacement(input.face);
   validatePrintingElements(input.face);
   validateSymbolAdjustment(input.face);
@@ -468,6 +471,7 @@ export function paintAssembledFace(
   underArt?: HTMLCanvasElement,
   layer?: PaintLayer,
 ) {
+  face = calibrationFace(face);
   if (face.frameTemplate) {
     paintStandardTemplate(context, face, images, layer, underArt);
     return;
@@ -502,7 +506,8 @@ export function paintAssembledFace(
   }
   const panels = splitPanels(face);
   if (panels.length) {
-    context.fillStyle = cardStock(face.setCode, face.borderColor).border;
+    context.fillStyle =
+      calibratedPrintingStock(face) ?? cardStock(face.setCode, face.borderColor).border;
     context.fillRect(0, 0, FACE_WIDTH, FACE_HEIGHT);
     for (const child of panels) {
       context.save();

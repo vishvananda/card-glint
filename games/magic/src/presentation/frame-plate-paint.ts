@@ -1,4 +1,4 @@
-import { calibratedPrintingStock } from './calibration-profiles.js';
+import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { paintModernFooter } from './modern-footer.js';
