@@ -65,7 +65,7 @@ import { foilShader } from 'card-glint/finish';
 import { createPixelKernels } from 'card-glint/kernels';
 export { faceArtBounds, composeCardTexture, foilShader, createPixelKernels };
 import wasmUrl from 'card-glint/renderer.wasm?url';
-const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
+const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,setSymbolMask:'ink',printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
 const selection: PrintingSelection = {preset:printingPresets[0]!.id,overrides:{collectorNumber:'7',elements:{artist:{offset:[2,0]}}}};
 export const presetFace = resolvePrintingPreset(face, selection);
 const importOptions:CardImportOptions={wording:'oracle'};export const imported=fromScryfallCard({name:'Probe',type_line:'Instant'},importOptions);export const importedMtgjson=fromMtgjsonCard({name:'Probe',type:'Instant'});

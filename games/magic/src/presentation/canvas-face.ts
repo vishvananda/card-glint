@@ -198,6 +198,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.setCode ?? null,
         face.setSymbol ?? null,
         face.setSymbolSource ?? null,
+        ['set-symbol-mask-v1', face.setSymbolMask ?? 'auto'],
         faceRects(face),
       ]
     : [

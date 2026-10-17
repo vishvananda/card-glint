@@ -92,8 +92,8 @@ float microSparkle(vec2 cardUv, vec2 shift, float density) {
   vec2 rnd=foilHash2(i);
   float d=length(f-(.18+.64*rnd));
   float h=foilHash(i+vec2(11.7,53.1));
-  float speck=smoothstep(.28,.03,d)*step(.36,h);
-  float bright=smoothstep(.18,.0,d)*step(.82,h);
+  float speck=(1.-smoothstep(.03,.28,d))*step(.36,h);
+  float bright=(1.-smoothstep(.0,.18,d))*step(.82,h);
   return clamp(speck*.55+bright*.75,0.,1.);
 }
 float nacreWavePattern(vec2 cardUv) {
