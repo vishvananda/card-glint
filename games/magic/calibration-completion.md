@@ -241,6 +241,27 @@ historical and original-input frame/material selectors, and regenerates all
 unsupported frame materials, text fitting and the 34 unresolved scan poses
 remain open.
 
+The [original-wording text pilot](fixtures/accuracy/early-expansion-text-pilot.json)
+fits 18 existing development names, six per early-expansion set, using the
+previous Alpha search objective and frozen scan-only rasters. Each untouched
+layout and raster replays exactly; every fitted raster preserves all pixels
+outside the text region. Comparing native alignment with an explicit centered
+layout raises the mean development text index from 0.397 to 0.567. Five cards
+prefer the centered hypothesis, and four selected fits reach a search boundary.
+These are best-of-two development results, not reserved-name measurements or
+new runtime defaults. Centered margins cannot establish shared left/right
+insets. The next fit covers the remaining development names before deriving
+shared rules and testing untouched names; all 34 unresolved scan poses remain
+excluded from fitting and present in the denominator.
+
+The pilot also records 18 visually read illustrator credits. These ARN/ATQ
+examples print `Illus. ©` without a year; the six DRK examples include `1994`.
+All artist names match their provider metadata, but the renderer's fallback
+credit lacks the printed copyright prefix and uses different geometry. This
+is wording evidence only. Aladdin's Lamp additionally needs its original two
+`5` cost numerals and the disc around the inline `X`; those are separate from
+the text-fit parameters.
+
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for
