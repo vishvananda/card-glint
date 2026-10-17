@@ -1,6 +1,7 @@
 # card-glint
 
-[![CI](https://github.com/witchesofthehill/card-glint/actions/workflows/check.yml/badge.svg)](https://github.com/witchesofthehill/card-glint/actions/workflows/check.yml)
+[![CI](https://github.com/vishvananda/card-glint/actions/workflows/check.yml/badge.svg)](https://github.com/vishvananda/card-glint/actions/workflows/check.yml)
+[![Release](https://img.shields.io/github/v/release/vishvananda/card-glint)](https://github.com/vishvananda/card-glint/releases/latest)
 [![Rust 1.98](https://img.shields.io/badge/Rust-1.98-934b32)](rust-toolchain.toml)
 [![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)](NOTICE.md)
 
@@ -50,27 +51,15 @@ memory. See [limits and cache ownership](docs/architecture.md).
 
 ## Build and run
 
-Source builds require Node.js 24.x, rustup on `PATH`, and native compiler/linker
-tools. On macOS, install the Xcode command line tools; on Linux, install your
-distribution's C/C++ build tools; on Windows, install the MSVC build tools.
-Git installs also require Git. The build installs
-Rust 1.98.0 with the `wasm32-unknown-unknown` target through rustup and compiles
-wasm-bindgen-cli 0.2.127. Network access to npm, Rust distribution servers and
-crates.io is required on a cold install.
+Node 22+, the pinned Rust toolchain, and wasm-bindgen-cli are required.
 
 ```sh
-npm ci --ignore-scripts
+npm ci
+rustup show
+cargo install wasm-bindgen-cli --version 0.2.127 --locked
 npm run build
 npm run preview
 ```
-
-`npm run prepare` builds only the library, WASM and declarations. The full
-`build` also builds the local showcase. Build tools, Cargo downloads and compiled
-targets are cached under `node_modules/.cache/card-glint` in this checkout.
-Rustup manages the pinned Rust toolchain in its normal toolchain directory.
-No global wasm-bindgen installation is used, and no other source repository is
-downloaded or patched. The macOS WASM linker wrapper sets the matching Rust
-library path; Linux and Windows use the toolchain's normal WASM linker.
 
 Open <http://localhost:4283/card-glint/>. Everything the showcase loads is local.
 The collection opens with four foil finishes. Choose **Living surfaces + gloss**
@@ -126,54 +115,48 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 
 ## Use it in an application
 
-This public fork is an installable Git dependency. Pin the full reviewed commit
-SHA in your dependency and commit the resulting application lockfile:
+[Download a release](https://github.com/vishvananda/card-glint/releases/latest), or
+install the prebuilt package directly:
 
 ```sh
-yarn add 'card-glint@git+https://github.com/witchesofthehill/card-glint.git#<full-commit-sha>'
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.4.9/card-glint-0.4.9.tgz
 ```
 
-Replace `<full-commit-sha>` with the desired fork commit. Yarn Classic 1.22 installs
-the fork's development dependencies in its Git preparation checkout, then runs
-`prepare` to compile the package before packing it. The source-build prerequisites
-above therefore apply to the machine running the first uncached install,
-including a CI runner. Keep lifecycle scripts enabled. No private registry,
-GitHub token or application-specific build script is required.
+The package includes JavaScript, WASM and TypeScript declarations; no Rust build
+is needed to consume it. The root export is game-neutral; the original showcase
+pack is optional. For a plain HTML page, download the browser ZIP, extract it,
+serve the directory over HTTP and open `index.html`. It includes a working example
+with local artwork. Keep the WASM and its matching JavaScript files together.
+Release checksums and source/toolchain metadata accompany both archives.
 
-The fork tracks `package-lock.json` for npm source builds and `yarn.lock` for
-Yarn Classic's Git preparation. Update both when build dependencies change.
+To package a source checkout yourself, build it and run `npm run package:release`.
+CI tests the extracted browser ZIP as well as an independent npm consumer; pushing
+a matching `vX.Y.Z` tag publishes those checked artifacts to GitHub Releases.
 
-`prepare` builds only JavaScript, the two matching WASM modules and TypeScript
-declarations, not the showcase. It does not run an install/postinstall build in
-the consuming application. The packed package contains those build outputs,
-the optional original showcase artwork, asset-reference metadata, and the code
-and game-pack license notices. It contains no external frame, font or symbol
-binaries. See [host integration](docs/host-integration.md) and the
-[Magic asset notices](games/magic/NOTICE.md) before using external assets.
+For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
 
-Use a bundler that understands `?url` asset imports, such as Vite. Default WASM
-imports let the bundler emit each binary as a separate asset. A host may instead
-provide an explicit WASM URL or bytes through the public initialization options.
-The root export is game-neutral; game packs are optional.
+```html
+<script type="module">
+  import {
+    createRenderer,
+    IDENTITY,
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.4.9/browser.js';
 
-For a prebuilt tarball from your own checkout:
-
-```sh
-npm ci --ignore-scripts
-npm run prepare
-npm pack --ignore-scripts
+  const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
+  // Supply your own game pack/card recipes, then render as below.
+</script>
 ```
 
-Installing that tarball needs no Rust compiler or source-build dependencies.
-For a plain HTML page without a bundler, run `npm run package:release` after a
-build and use the browser ZIP in `dist/releases`. That command also creates an
-npm tarball and checksums; it does not publish anything. The browser ZIP converts
-bundler asset imports to adjacent module URLs. Serve it over HTTP and keep its
-JavaScript chunks and both WASM binaries together.
+The default WASM URL resolves beside its JavaScript wrapper on the CDN. The
+optional example pack is `showcase.js`, and its illustrations live under `art/`
+at the same versioned base URL. [Open the working CDN example](https://vishvananda.github.io/card-glint/cdn/)
+or copy [its single HTML file](examples/cdn/index.html). There is no npm account,
+bundler or Rust toolchain requirement for consumers.
 
-The [upstream project](https://github.com/vishvananda/card-glint) has separate
-release archives, a showcase and versioned CDN builds. Those artifacts are
-upstream builds, not builds of this fork or its additional APIs.
+CI publishes a separate, immutable `cdn-vX.Y.Z` artifact tree from the checked
+browser ZIP. Source tags and the source branch stay free of generated bundles.
+Always pin the exact CDN tag; keep the JS chunks and WASM from the same build.
+See [jsDelivr's GitHub delivery and caching documentation](https://github.com/jsdelivr/jsdelivr#github).
 
 ```ts
 import { createRenderer, IDENTITY } from 'card-glint';

@@ -7,53 +7,13 @@ overlays and texture cache can instead use the independent public entry points:
 - `card-glint/finish`: foil and surface GLSL, `FinishResources`, `SurfaceMotion` and `surfaceSeed`.
 - `card-glint/kernels`: `createPixelKernels` with explicit disposal.
 
-These entry points do not create a WebGL context or schedule animation. The host
+Importing these entry points does not create a WebGL context or schedule animation. The host
 owns image leases, texture uploads, memory limits, clipping, hit testing, overlays,
 context loss and the draw order. Never borrow private renderer textures or copy
 its shader source into a host. A host-created material draws the card and finish
 in the same depth pass, so later overlays and intervening objects remain in front.
 A layer intended to participate in etching must be rasterized before mask creation;
 a layer above the finish must be drawn later or excluded in the host material.
-
-## Install the public fork
-
-Use `card-glint@git+https://github.com/witchesofthehill/card-glint.git#<full-commit-sha>`
-with Yarn Classic 1.22 and pin an actual reviewed commit. Git preparation builds
-the package with its own development dependencies, independently of your app.
-It requires Node.js 24.x, Git, rustup, a native compiler/linker, and network access
-on a cold install. The build pins Rust 1.98.0 and wasm-bindgen-cli 0.2.127 and
-keeps Cargo downloads, build artifacts and the CLI inside the source checkout's
-`node_modules/.cache/card-glint`. No host download or patch script is needed.
-Rustup provisioning uses the caller's installation environment and disables
-self-update. Only Cargo builds use the package-private `CARGO_HOME`; passing that
-cache to rustup breaks installations copied from official Rust container images.
-
-Import only the public entry points above, not source paths in the dependency.
-Vite and compatible bundlers resolve the package's `?url` imports and emit the
-matching WASM binaries. The explicit binary exports are
-`card-glint/renderer.wasm` and `card-glint/pixels.wasm`; append `?url` when passing
-their URLs to `createRenderer` or `createPixelKernels`. Declarations are included
-for every JavaScript entry point. The package contains no private app code and
-requires no registry credentials.
-
-The integration branch includes upstream 0.4.8 typography, printing presets,
-provider adapters, artwork placement and surface controls. Native text painters
-accept `textInk` spans with character offsets and colors. The host owns change
-detection, type-word selection and power/toughness ranges. The painter measures
-those spans in its actual font and transform without changing text advances.
-`omitInk` suppresses only selected spans so a host can animate their ink above
-unchanged native paper. `paintFittedText` retains upstream's numeric inset
-argument, followed by optional `CardTextInk` and the type/stats role.
-
-Native rules suppression and geometry stay in the game pack. Custom layouts,
-interaction panels, fallback policy and animation scheduling belong to the host.
-
-Standalone preset pages and browser release archives use adjacent WASM URLs.
-The npm library retains bundler asset imports. Node-safe Magic helpers load the
-image-placement utility without importing the browser renderer or its WASM.
-Default WASM asset imports are lazy, so importing generic helpers in Node does
-not load browser-only asset URLs. Supply WASM bytes explicitly when initializing
-pixel kernels in Node.
 
 ## Face composition
 
@@ -65,10 +25,23 @@ when using the complete renderer's separately cached edge sources. Aborted jobs
 release leases and never publish partial output. Hosts may keep their own persistent
 image/derivative caches; none are installed globally by this API.
 
+Omit `rulesText` or pass `true` for normal native rules painting. Pass `false`
+to omit rules ink while retaining native paper, frames and panel geometry.
+Text-ink overrides are opt-in; omitted overrides retain the native lettering.
+
 The same entry exposes geometry for DOM accessibility and inline editing. Import
 `card-glint/magic/fonts.css` for the matching font names. Optional `setSymbol` URLs
 allow custom set marks without changing the visible `setCode`. Asset provenance
 and the fan notice remain in [games/magic](../games/magic/README.md).
+
+Native text painters accept `textInk` spans with character offsets and colors.
+The host owns change detection, type-word selection and power/toughness ranges.
+The painter measures those spans in its actual font and transform without
+changing text advances. `omitInk` suppresses only selected spans so a host can
+animate their ink above unchanged native paper. `paintFittedText` retains its
+numeric inset argument, followed by optional `CardTextInk` and the type/stats role.
+Native rules suppression and geometry stay in the game pack. Custom layouts,
+interaction panels, fallback policy and animation scheduling belong to the host.
 
 `createRenderer({canvas, rasterHost})` accepts an optional `RasterHost` for all
 card rasters, artwork edge sources, layers, scene rasters and exports. Omit it
@@ -103,6 +76,10 @@ textures. Keep residency and disposal at the same scope as the scene context.
 The host assembles its material around those sources and `foilShader()`, supplying
 its own texture samplers and artwork/printing composition. No host-specific
 material assembly is included in the package.
+
+Apply `WORN_GLSL` before finish-coverage blending and protected overlay composition,
+as the native renderer does. Applying wear to the final composite bypasses
+artwork-only coverage and changes protected printing.
 
 `FinishResources.documentMask(document, rasterHost, signal)` prepares the same
 artwork edges, imported alpha masks, native stamp and contributing layers as the
