@@ -68,9 +68,10 @@ vec3 poolWater(vec2 uv,vec3 normal){
  vec2 drift=slosh*.35;
  vec2 p=uv*metric+origin+drift;
  vec3 wave=waterField(p,surfaceTime);
- // Ambient waves organically advect the dragged wake so it undulates with the pool.
+ // Propagate wakes in the flat surface metric. Ambient slopes still add to
+ // lighting/refraction below, but must not bend a spreading wave into contours.
  vec2 wakeDrag;
- vec3 rip=rippleWake(uv+wave.xy*.24,wakeDrag);
+ vec3 rip=rippleWake(uv,wakeDrag);
  vec2 slope=wave.xy+basinSlope+rip.xy;
  slope+=normal.xy*wave.z*3.2;
  // The painted basin floor and its caustics sit recessed below the water surface
