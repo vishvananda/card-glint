@@ -21,7 +21,7 @@ const profiles = {
   drk: {
     regular: 22.5,
     textWidth: 1,
-    threshold: 110,
+    threshold: 130,
     offset: -4,
     compact: 15.5,
     compactLeading: 1.2,
@@ -40,10 +40,14 @@ const length = (paragraphs: readonly RulesParagraph[]) =>
   );
 const heading = (p: RulesParagraph) =>
   p.role === 'rules' && /^[A-Za-z ,]+$/.test(text(p)) && text(p).length <= 28;
-const alignLarge = (paragraphs: readonly RulesParagraph[]): readonly RulesParagraph[] =>
+const alignLarge = (
+  paragraphs: readonly RulesParagraph[],
+  centerRules = false,
+): readonly RulesParagraph[] =>
   paragraphs.map((p, i) => ({
     ...p,
     align:
+      !centerRules &&
       p.role === 'rules' &&
       (paragraphs.some((block) => block.role === 'flavor') ||
         (i === 0 && paragraphs.length > 1 && heading(p)))
@@ -90,17 +94,35 @@ export function earlyExpansionTextLayout(
     reference.every((block) => block.align === undefined && !text(block).includes('\n')) &&
     paragraphs.every((block) => block.align === undefined);
   if (eligible) {
+    const dark = set === 'drk';
+    const largeBounds = dark ? { ...bounds, x: 76, width: 336 } : bounds;
     const largeStyle = {
       ...typography,
       textWidth: 1,
       leading: 1.1,
-      centerOffset: -14,
+      centerOffset: dark ? 0 : -14,
       balanceLines: true,
       balanceCenteredOnly: true,
     };
-    const trial = layoutRules(context, alignLarge(reference), bounds, 27.5, 27.5, largeStyle);
-    if (!trial.overflow && trial.lines.length <= 5)
-      return layoutRules(context, alignLarge(paragraphs), bounds, 27.5, minimum, largeStyle);
+    const trial = layoutRules(
+      context,
+      alignLarge(reference, dark),
+      largeBounds,
+      27.5,
+      27.5,
+      largeStyle,
+    );
+    if (!trial.overflow && trial.lines.length <= 5) {
+      const centered = alignLarge(paragraphs, dark);
+      const visible = layoutRules(context, centered, largeBounds, 27.5, minimum, largeStyle);
+      if (!dark || visible.lines.length >= 5) return visible;
+      // Short DRK blocks sit slightly above geometric center. Use visible line
+      // count so a longer Oracle body does not inherit the short original's bias.
+      return layoutRules(context, centered, largeBounds, 27.5, minimum, {
+        ...largeStyle,
+        centerOffset: -2 * (5 - visible.lines.length),
+      });
+    }
   }
   const nominal = layoutRules(context, paragraphs, bounds, 22.5, 21.75, {
     ...typography,

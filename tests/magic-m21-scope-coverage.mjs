@@ -73,6 +73,14 @@ const inputExtension = await read('early-expansion-input-extension.json');
 assert.equal(inputExtension.summary.unchangedM21, 292);
 const breaks = await read('early-expansion-break-inputs.json');
 assert.equal(breaks.summary.unchangedM21, 292);
+const followup = await read('early-expansion-followup-wording.json');
+assert.equal(followup.summary.unchangedM21, 292);
+function withWordingFollowup(file, expected) {
+  const guard = followup.guards[file];
+  if (!guard) return expected;
+  assert.equal(guard.before, expected, 'Original input proof must extend the recorded adapter');
+  return guard.after;
+}
 for (const [file, expected] of Object.entries(wording.methodGuards)) {
   const next = inputExtension.guards[file];
   if (next) assert.equal(next.before, expected, 'Input replay must begin at the recorded adapter');
@@ -87,7 +95,7 @@ for (const [file, guard] of Object.entries(inputExtension.guards)) {
   if (next) assert.equal(next.before, guard.after);
   assert.equal(
     hash(await readFile(file)),
-    next?.after ?? guard.after,
+    withWordingFollowup(file, next?.after ?? guard.after),
     'Stale input replay: ' + file,
   );
 }
@@ -120,7 +128,7 @@ for (const [file, expected] of Object.entries(currentInputs.methodGuards)) {
   if (next) assert.equal(next.before, expected);
   assert.equal(
     hash(await readFile(file)),
-    next?.after ?? expected,
+    withWordingFollowup(file, next?.after ?? expected),
     'Stale original-input replay: ' + file,
   );
 }

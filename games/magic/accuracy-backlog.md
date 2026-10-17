@@ -107,6 +107,22 @@ Next: resolve the remaining frame/color cases, fit headings and symbols, verify
 original wording, then fit rules, power/toughness and illustrator text. Preserve
 reused-validation labels and update the full-card receipt after each batch.
 
+### Dark short-text follow-up (0.4.8)
+
+Shared short-text bounds and centering now handle Bog Imp, Bog Rats, Fountain of
+Youth and Sunken City. The regional index improves on all 17 affected accepted
+references; 80 other accepted Dark references stay unchanged. See the
+[follow-up receipt](fixtures/accuracy/early-expansion-dark-short-text.json).
+Five additional original bodies have scan-reviewed punctuation/attributions.
+
+Next typography work: compare a shared ink-weight adjustment, review historical
+activation symbol scale/circles, Electric Eel/Fire Drake activation punctuation
+and Fissure quotation style, then investigate
+regular-size wrapping on Drowned and Gaea's Touch and the first rule line on
+Brothers of Fire. Preserve the frozen scan poses
+and corrected-source baselines. Do not promote rejected poses or use overlapping
+frame/text score bands to infer a geometry improvement.
+
 ## Modern land calibration coverage
 
 M21-era component-built lands, including legendary lands, do not have source-bound

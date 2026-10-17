@@ -13,6 +13,12 @@ const extension = JSON.parse(
 const breaks = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-break-inputs.json'),
 );
+const followup = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-followup-wording.json'),
+);
+assert.deepEqual(followup.summary, { earlyPrintings: 316, changedBodies: 5, unchangedM21: 292 });
+assert.equal(followup.inputRows.filter((r) => r.changedBody).length, 5);
+assert.ok(followup.inputRows.every((r) => r.otherFieldsIdentical));
 for (const [file, guard] of Object.entries(receipt.guards)) {
   const next = extension.guards[file];
   if (next) assert.equal(next.before, guard.after, 'Compatibility chain must start at prior proof');
@@ -27,11 +33,13 @@ for (const [file, guard] of Object.entries(receipt.guards)) {
 for (const [file, guard] of Object.entries(extension.guards)) {
   const next = breaks.guards[file];
   if (next) assert.equal(next.before, guard.after);
+  const latest = followup.guards[file];
+  if (latest) assert.equal(latest.before, next?.after ?? guard.after);
   assert.equal(
     createHash('sha256')
       .update(await readFile(file))
       .digest('hex'),
-    next?.after ?? guard.after,
+    latest?.after ?? next?.after ?? guard.after,
     file,
   );
 }

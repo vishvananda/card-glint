@@ -398,6 +398,23 @@ rules ink in a new metric revision and rescore both sides before using the
 frame component to judge geometry independently. Hosted charts have not
 adopted these local development scores or their reviewed-credit policy.
 
+The [Dark short-text follow-up](fixtures/accuracy/early-expansion-dark-short-text.json)
+uses a narrower centered block and a shared line-count optical offset. Against
+identical corrected wording and fixed scan poses, all 17 affected scored cards
+improve and 80 remain unchanged: mean text-fit index 0.520 → 0.577. The 316-card
+native replay preserves every non-body pixel and every ARN/ATQ face. Oracle
+fitting covers all three alignment choices. These repeatedly inspected scans
+remain development references, not independent validation.
+
+The [five-body wording receipt](fixtures/accuracy/early-expansion-followup-wording.json)
+isolates activation punctuation and inline flavor attributions on Drowned,
+Miracle Worker, Marsh Gas, Grave Robbers and Brothers of Fire. Other fields and
+all 292 M21 adapter outputs remain exact. Font weight, historical activation
+symbol style, Electric Eel punctuation and regular-text outliers such as Drowned
+still need review. The 34 unresolved poses remain unscored. Full-card aggregates
+for DRK are marked historical until they are recomputed with frame regions that
+do not include rules ink. This batch is included in 0.4.8; rules/flavor stay partial.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting

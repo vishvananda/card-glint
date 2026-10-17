@@ -10,10 +10,14 @@ export async function assertMagicSourceHash(file, expected) {
   const proof = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/early-expansion-cache-compatibility.json'),
   );
-  assert.equal(file, proof.file, 'Unproven source change: ' + file);
-  assert.equal(expected, proof.before, 'Wrong compatibility ancestor: ' + file);
-  assert.equal(hash(bytes), proof.after, 'Stale compatibility extension: ' + file);
-  const source = bytes.toString();
-  assert.equal(source.split(proof.to).length, 2);
-  assert.equal(hash(source.replace(proof.to, proof.from)), expected, 'Painter changed: ' + file);
+  let source = bytes.toString();
+  for (const step of proof.steps ?? [proof]) {
+    assert.equal(file, step.file, 'Unproven source change: ' + file);
+    if (hash(source) !== step.after) continue;
+    assert.equal(source.split(step.to).length, 2);
+    source = source.replace(step.to, step.from);
+    assert.equal(hash(source), step.before, 'Painter changed: ' + file);
+    if (hash(source) === expected) return;
+  }
+  assert.fail('No verified cache-only ancestry for: ' + file);
 }

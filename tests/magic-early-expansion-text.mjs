@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 import { chromium } from 'playwright';
+import { assertMagicSourceHash } from './magic-source-guard.mjs';
 
 const receipt = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-text-runtime.json'),
@@ -32,10 +33,47 @@ for (const row of receipt.native.rows) {
     row.name,
   );
 }
-for (const [file, guard] of Object.entries(receipt.native.sourceExtension))
+const dark = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-dark-short-text.json'),
+);
+const wording = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-followup-wording.json'),
+);
+assert.equal(wording.summary.changedBodies, 5);
+assert.equal(wording.summary.unchangedM21, 292);
+assert.equal(dark.native.summary.cards, 316);
+assert.equal(dark.native.summary.proposalParity, 97);
+assert.equal(dark.native.summary.defaultLayoutIdentical, 316);
+assert.equal(dark.native.summary.identityWidthIdentical, 316);
+assert.equal(dark.summary.improved, 17);
+assert.equal(dark.summary.regressed, 0);
+assert.equal(dark.normalizationHash, receipt.normalizationHash);
+assert.equal(dark.inputHash, wording.native.inputHash);
+for (const row of dark.native.rows) {
+  assert.equal(row.outsideChanged, 0, row.name);
+  assert.equal(row.beforeHash, wording.native.rows.find((r) => r.id === row.id).renderHash);
+  if (row.set !== 'drk') assert.equal(row.changedPixels, 0, row.name);
+  assert.ok(!row.layout?.overflow, row.name);
+  assert.ok(
+    Object.values(row.oracle).every((layout) => !layout?.overflow),
+    row.name,
+  );
+}
+for (const row of dark.rows) {
+  assert.equal(row.gain, row.after - row.before);
+  assert.ok(row.after >= row.before, row.name);
+  assert.equal(row.inputHash, dark.native.rows.find((r) => r.id === row.id).inputHash);
+}
+for (const [file, guard] of Object.entries(receipt.native.sourceExtension)) {
+  const path = 'games/magic/src/presentation/' + file;
+  const extension = dark.native.sourceExtension[path];
+  if (extension) assert.equal(extension.before, guard.after, file);
+  await assertMagicSourceHash(path, extension?.after ?? guard.after);
+}
+for (const [file, guard] of Object.entries(wording.guards))
   assert.equal(
     createHash('sha256')
-      .update(await readFile('games/magic/src/presentation/' + file))
+      .update(await readFile(file))
       .digest('hex'),
     guard.after,
     file,
