@@ -80,8 +80,16 @@ for (const file of ['early-expansion-colors.json', 'printing-blackpoints.json'])
     extension.files['calibration-profiles.ts'].after,
   );
   assert.equal(
-    prior.sourceGuards['calibration-profiles.ts'],
+    prior.compatibleExtensions.find((e) => e.id === 'm21-ordinary-red-pigment').files[
+      'calibration-profiles.ts'
+    ].before,
     stock.files['calibration-profiles.ts'].after,
+  );
+  assert.equal(
+    prior.sourceGuards['calibration-profiles.ts'],
+    prior.compatibleExtensions.find((e) => e.id === 'm21-ordinary-red-pigment').files[
+      'calibration-profiles.ts'
+    ].after,
   );
 }
 const ledger = await read('calibration-progress.json'),
@@ -94,6 +102,14 @@ for (const g of m21.groups) {
       'Red now needs the separately validated refined method, not the historical failed method',
     );
   if (g.tasks.frameColor.status === 'validated') {
+    if (g.palette === 'R') {
+      assert.ok(
+        g.tasks.frameColor.evidence.includes(
+          'games/magic/fixtures/accuracy/m21-red-color-adoption.json',
+        ),
+      );
+      continue; // Red's independent scope and native invariants have their own test.
+    }
     assert.equal(g.palette, 'B');
     assert.equal(g.legendary, false);
     assert.ok(!g.kind.includes('artifact'));

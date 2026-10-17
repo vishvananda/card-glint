@@ -18,6 +18,7 @@ import type { Rgb } from './hsb.js';
 import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
 import { printingColorSource } from './printing-color-source.js';
 import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
+import { ORDINARY_COLOR_PROFILES } from './ordinary-color-profiles.js';
 import { LEGENDS_COLOR_PROFILES } from './legends-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
@@ -72,7 +73,11 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
   if (!hasColorCalibration(face)) return {};
   const source = printingColorSource(face),
-    profile = source && (PRINTING_COLOR_PROFILES[source.key] ?? LEGENDS_COLOR_PROFILES[source.key]);
+    profile =
+      source &&
+      ((!resolveCardProfile(face).legendary ? ORDINARY_COLOR_PROFILES[source.key] : undefined) ??
+        PRINTING_COLOR_PROFILES[source.key] ??
+        LEGENDS_COLOR_PROFILES[source.key]);
   if (
     profile &&
     profile.source === source?.source &&

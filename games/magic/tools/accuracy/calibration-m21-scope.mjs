@@ -136,3 +136,46 @@ export function applyM21OriginalWording(group, receipt, guardsMatch) {
       'Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence.',
   };
 }
+
+/** Ordinary pigment measurements do not transfer to crowns or colored artifacts. */
+export function applyM21RedColor(group, source, receipt, guardsMatch) {
+  const rows = receipt.metrics.rows.filter((r) => group.printingIds.includes(r.id));
+  if (!rows.length) return;
+  const current = guardsMatch && source?.source === receipt.source.source;
+  const complete = rows.length === group.printings;
+  group.tasks.frameColor = {
+    status: !current ? 'stale' : complete ? 'validated' : 'partial',
+    reason: `${rows.length}/${group.printings} ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.`,
+    evidence: ['games/magic/fixtures/accuracy/m21-red-color-adoption.json'],
+    coveredPrintings: rows.length,
+    measurements: receipt.metrics.summaries,
+    ...(current && complete
+      ? {
+          guards: {
+            ...Object.fromEntries(
+              Object.entries(receipt.sourceGuards).map(([f, h]) => [
+                'games/magic/src/presentation/' + f,
+                h,
+              ]),
+            ),
+            ...receipt.methodGuards,
+          },
+          proof: {
+            sourceHash: group.sourceHashes?.frameColor ?? group.sourceHash,
+            scopeHash: group.scopeHash,
+            gatesPassed: true,
+            rendererHash: receipt.native.rendererHash,
+            methodHash: receipt.tools['m21-red-metrics.mjs'],
+            nativeReplayHash: receipt.artifacts['native-replay.json'],
+            metricsHash: receipt.artifacts['native-metrics.json'],
+            scanTemplateHash: receipt.normalization.templateHash,
+            coveredPrintings: rows.length,
+            calibrationNames: receipt.metrics.summaries.calibration.names,
+            validationNames: receipt.metrics.summaries.validation.names,
+            validationKind: 'reused-development',
+            choice: 'shared-material-fit',
+          },
+        }
+      : {}),
+  };
+}

@@ -36,13 +36,14 @@
   },
   "sourceGuards": {
     "printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
-    "calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+    "calibration-profiles.ts": "96b75b0835ca63f37204eee642830193c7ce7500f564d1f4a1331f4a5f281468",
     "printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
     "profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
     "frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
     "hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
     "normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
-    "canvas-face.ts": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08"
+    "canvas-face.ts": "5af8c4c9f8b872a8567a97a5f0ee2c33ad2d2dc1ad91aea98179dfe5a30077e1",
+    "ordinary-color-profiles.ts": "a7c5c026e93c4ffdd7e91b128ea9658fd88b925d6f8aa1a41a4c61914c736eff"
   },
   "artifacts": {
     "full-inputs.json": "ea7b4fb39d120bc0546edd7b5042d96a3c232a839b3d4b4fc303096e10df3f81",
@@ -682,7 +683,7 @@
         "referenceHash": "577ea5e1bc472eab253ce7de04afb8da622715ad90513aabc2847860404cef0c",
         "transform": {
           "matrix": [
-            0.9987996196851752, -0.0008716173178168672, -8.731449927206543e-5, 1.000550457177614,
+            0.9987996196851752, -0.0008716173178168672, -0.00008731449927206543, 1.000550457177614,
             0.075, -0.425
           ]
         },
@@ -1298,7 +1299,7 @@
         "referenceHash": "2aeaccb17635a9a792b32736610d6b6fe59a834ea52db47d63a516f1823bba73",
         "transform": {
           "matrix": [
-            0.9990978087292994, -0.002092508617005277, -8.727976016867741e-5, 1.0001523763769877,
+            0.9990978087292994, -0.002092508617005277, -0.00008727976016867741, 1.0001523763769877,
             0.25, 0.05000000000000002
           ]
         },
@@ -1359,7 +1360,7 @@
         "referenceHash": "f7d2421c53bdbad632c42d7d5fd234f1d3c4640e04330e6c96c17bba57d85ec3",
         "transform": {
           "matrix": [
-            0.9999487663613884, -0.0015707171410468373, -8.717495253279213e-5, 0.9989513693406394,
+            0.9999487663613884, -0.0015707171410468373, -0.00008717495253279213, 0.9989513693406394,
             -0.05, -0.05
           ]
         },
@@ -10386,6 +10387,99 @@
         ],
         "manaUnchanged": 645,
         "materialsUnchanged": 645
+      }
+    },
+    {
+      "id": "m21-ordinary-red-pigment",
+      "evidence": "m21-red-color-adoption.json",
+      "policy": "Only ordinary nonlegendary M21 red frame pigment changes. All 645 mana/stock probes and 601 unrelated material selectors are identical. Complete native replay with original rules preserves all 250 unrelated M21 rasters, and core art/paper, stock and alpha on all 292 cards. Earlier metrics keep their original renderer and input hashes; red color measurements are superseded only by the new receipt. Frozen scan-only poses and geometry remain unchanged. The canvas implementation changes only its cache identity.",
+      "files": {
+        "calibration-profiles.ts": {
+          "before": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+          "after": "96b75b0835ca63f37204eee642830193c7ce7500f564d1f4a1331f4a5f281468"
+        },
+        "canvas-face.ts": {
+          "before": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
+          "after": "5af8c4c9f8b872a8567a97a5f0ee2c33ad2d2dc1ad91aea98179dfe5a30077e1"
+        },
+        "ordinary-color-profiles.ts": {
+          "before": null,
+          "after": "a7c5c026e93c4ffdd7e91b128ea9658fd88b925d6f8aa1a41a4c61914c736eff"
+        }
+      },
+      "summary": {
+        "probes": 645,
+        "unchanged": 601,
+        "changedScope": 44,
+        "sets": [
+          "2ed",
+          "3ed",
+          "4ed",
+          "5ed",
+          "6ed",
+          "7ed",
+          "8ed",
+          "all",
+          "apc",
+          "arn",
+          "ath",
+          "atq",
+          "brb",
+          "brc",
+          "btd",
+          "ced",
+          "cei",
+          "chr",
+          "dmr",
+          "drk",
+          "exo",
+          "fem",
+          "hml",
+          "ice",
+          "inr",
+          "inv",
+          "itp",
+          "jud",
+          "lea",
+          "leb",
+          "leg",
+          "lgn",
+          "ltr",
+          "m21",
+          "mh1",
+          "mh2",
+          "mh3",
+          "mir",
+          "mmq",
+          "nem",
+          "neo",
+          "ody",
+          "ons",
+          "p02",
+          "pcy",
+          "plc",
+          "pls",
+          "plst",
+          "por",
+          "ptk",
+          "rqs",
+          "s99",
+          "scg",
+          "sth",
+          "sum",
+          "tmp",
+          "tor",
+          "tsb",
+          "tsr",
+          "uds",
+          "ulg",
+          "usg",
+          "vis",
+          "wth"
+        ],
+        "manaUnchanged": 645,
+        "stockUnchanged": 645,
+        "materialsUnchanged": 601
       }
     }
   ],

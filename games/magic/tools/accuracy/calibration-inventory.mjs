@@ -16,6 +16,7 @@ import {
   applyM21StockTransfer,
   applyM21WhiteDefault,
   applyM21OriginalWording,
+  applyM21RedColor,
 } from './calibration-m21-scope.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
@@ -45,6 +46,7 @@ const m21Refined = await readJson(fixtureRoot + '/m21-component-boundaries-v2.js
 const m21Stock = await readJson(fixtureRoot + '/modern-land-stock-transfer.json');
 const m21White = await readJson(fixtureRoot + '/m21-white-default.json');
 const m21Wording = await readJson(fixtureRoot + '/m21-original-wording.json');
+const m21Red = await readJson(fixtureRoot + '/m21-red-color-adoption.json');
 const matchGuards = async (receipt) =>
   (
     await Promise.all(
@@ -61,6 +63,7 @@ const m21RefinedGuardsMatch = await matchGuards(m21Refined);
 const m21StockGuardsMatch = await matchGuards(m21Stock);
 const m21WhiteGuardsMatch = await matchGuards(m21White);
 const m21WordingGuardsMatch = await matchGuards(m21Wording);
+const m21RedGuardsMatch = await matchGuards(m21Red);
 const m21GuardsMatch = (
   await Promise.all(
     Object.entries(m21Color.sourceGuards).map(
@@ -369,6 +372,7 @@ try {
           applyM21StockTransfer(g, m21Stock, m21StockGuardsMatch);
           applyM21WhiteDefault(g, source, m21White, m21WhiteGuardsMatch);
           applyM21OriginalWording(g, m21Wording, m21WordingGuardsMatch);
+          applyM21RedColor(g, source, m21Red, m21RedGuardsMatch);
         }
         g.tasks.release = {
           status: 'pending',

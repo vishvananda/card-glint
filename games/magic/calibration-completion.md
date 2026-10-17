@@ -210,3 +210,22 @@ insufficient. Each rules task records input coverage separately from alignment
 approval. Original type lines, flavor formatting and MTGJSON transcription
 outliers still require their own review. No typography task is closed by this
 input audit.
+
+The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
+measures all 42 ordinary red M21 printings against the refined scan-only poses.
+One curve fitted on seven names passes every regional color/texture gate for
+ten reserved and twenty-five additional names. Median rail-color error improves
+from 3.22 to 1.50; reserved names improve from 3.78 to 2.34. The native replay uses
+original rules in both revisions for all 292 nonfoil cards: 42 change and 250
+stay identical. Central art/paper, outer stock and silhouette alpha are unchanged.
+All 645 selector probes preserve mana and stock, and 601 unrelated material
+configurations are identical. Separate ordinary profiles retain the existing
+crown and paper adjustments. These are regional pigment results, not complete
+card certification; the 0.4.4 release checkpoint remains pending until published.
+
+Chandra's Firemaw has the largest remaining red pigment error (3.90) and a visible
+reference tint difference. It stays in the printing-batch/reference review queue.
+Fiery Emancipation is the largest accepted regression (1.18); Unleash Fury is the
+largest improvement. Blue and green candidates remain rejected by shadow or
+contrast gates. Previously stale historical audits are retained as stale rather
+than advanced through an unproven compatibility chain.

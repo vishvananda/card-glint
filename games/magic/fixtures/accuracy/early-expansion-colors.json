@@ -4,11 +4,12 @@
   "sourceGuards": {
     "hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
     "frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
-    "calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+    "calibration-profiles.ts": "96b75b0835ca63f37204eee642830193c7ce7500f564d1f4a1331f4a5f281468",
     "early-expansion-colors.ts": "c8c21ae39ce54e6568487127c84fd2795a449ac4caca099816d2a87cb79d9be3",
     "early-expansion-color-values.ts": "7f9546ccf3dc5df75f6139fe7e69f19940f42687923230be49387feb3e1bcf43",
     "early-expansion-frame.ts": "102b706da1f446bedd5eced60a58d3c7efac8ee4aa1f231e3c792fef689f40a8",
-    "early-expansion-frame-values.ts": "869a8309212be4b29f996686ca4c88d2fb737812c357363c998c731b2d08bb53"
+    "early-expansion-frame-values.ts": "869a8309212be4b29f996686ca4c88d2fb737812c357363c998c731b2d08bb53",
+    "ordinary-color-profiles.ts": "a7c5c026e93c4ffdd7e91b128ea9658fd88b925d6f8aa1a41a4c61914c736eff"
   },
   "policy": [
     "All 316 ordinary nonfoil cards replayed through production Canvas; 18 exact source/geometry groups.",
@@ -27868,6 +27869,95 @@
         ],
         "manaUnchanged": 645,
         "materialsUnchanged": 645
+      }
+    },
+    {
+      "id": "m21-ordinary-red-pigment",
+      "evidence": "m21-red-color-adoption.json",
+      "policy": "Only ordinary nonlegendary M21 red frame pigment changes. All 645 mana/stock probes and 601 unrelated material selectors are identical. Complete native replay with original rules preserves all 250 unrelated M21 rasters, and core art/paper, stock and alpha on all 292 cards. Earlier metrics keep their original renderer and input hashes; red color measurements are superseded only by the new receipt. Frozen scan-only poses and geometry remain unchanged. The canvas implementation changes only its cache identity.",
+      "files": {
+        "calibration-profiles.ts": {
+          "before": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+          "after": "96b75b0835ca63f37204eee642830193c7ce7500f564d1f4a1331f4a5f281468"
+        },
+        "ordinary-color-profiles.ts": {
+          "before": null,
+          "after": "a7c5c026e93c4ffdd7e91b128ea9658fd88b925d6f8aa1a41a4c61914c736eff"
+        }
+      },
+      "summary": {
+        "probes": 645,
+        "unchanged": 601,
+        "changedScope": 44,
+        "sets": [
+          "2ed",
+          "3ed",
+          "4ed",
+          "5ed",
+          "6ed",
+          "7ed",
+          "8ed",
+          "all",
+          "apc",
+          "arn",
+          "ath",
+          "atq",
+          "brb",
+          "brc",
+          "btd",
+          "ced",
+          "cei",
+          "chr",
+          "dmr",
+          "drk",
+          "exo",
+          "fem",
+          "hml",
+          "ice",
+          "inr",
+          "inv",
+          "itp",
+          "jud",
+          "lea",
+          "leb",
+          "leg",
+          "lgn",
+          "ltr",
+          "m21",
+          "mh1",
+          "mh2",
+          "mh3",
+          "mir",
+          "mmq",
+          "nem",
+          "neo",
+          "ody",
+          "ons",
+          "p02",
+          "pcy",
+          "plc",
+          "pls",
+          "plst",
+          "por",
+          "ptk",
+          "rqs",
+          "s99",
+          "scg",
+          "sth",
+          "sum",
+          "tmp",
+          "tor",
+          "tsb",
+          "tsr",
+          "uds",
+          "ulg",
+          "usg",
+          "vis",
+          "wth"
+        ],
+        "manaUnchanged": 645,
+        "stockUnchanged": 645,
+        "materialsUnchanged": 601
       }
     }
   ]
