@@ -1,3 +1,4 @@
+import { calibratedPrintingStock } from './calibration-profiles.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { paintModernFooter } from './modern-footer.js';
@@ -59,7 +60,9 @@ export function paintFramePlateFace(
   const { rects } = plate,
     eighth = face.frameAssetFamily === 'eighth',
     stock =
-      planarCalibratedStock(face, plate.frame) ?? cardStock(face.setCode, face.borderColor).border;
+      planarCalibratedStock(face, plate.frame) ??
+      calibratedPrintingStock(face) ??
+      cardStock(face.setCode, face.borderColor).border;
   c.save();
   c.fillStyle = stock;
   c.fillRect(0, 0, W, H);

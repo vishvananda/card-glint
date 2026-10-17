@@ -94,7 +94,12 @@ try {
       assert.equal(rebound.beforeSource, study.source.source);
       assert.deepEqual(PRINTING_COLOR_PROFILES[row.key].materials, rebound.materials);
     }
-    assert.deepEqual(materials, PRINTING_COLOR_PROFILES[row.key].materials, row.key);
+    const pigment = Object.fromEntries(
+      Object.entries(materials).map(
+        ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],
+      ),
+    );
+    assert.deepEqual(pigment, PRINTING_COLOR_PROFILES[row.key].materials, row.key);
     assert.equal(colorCalibrationCoverage(face).frame, true, row.key);
     assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});
     assert.deepEqual(calibratedFrameMaterials({ ...face, setCode: 'unmeasured' }), {});

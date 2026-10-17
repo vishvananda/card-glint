@@ -1,5 +1,12 @@
+import { printingBlackPointMaterials, type PrintingStockSource } from './printing-blackpoint.js';
 import type { RenderedCardInput } from './face-layout.js';
-import { isRetro, retroFrameAsset, retroFrameRect, retroBorder } from './retro-frame.js';
+import {
+  isRetro,
+  retroFrameAsset,
+  retroFrameRect,
+  retroBorder,
+  retroBorderMask,
+} from './retro-frame.js';
 import type { Rgb } from './hsb.js';
 import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
 import { printingColorSource } from './printing-color-source.js';
@@ -50,9 +57,7 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
 }
 
 /** Every binding retains the exact pinned asset and geometry it was fitted to. */
-export function calibratedFrameMaterials(
-  face: RenderedCardInput,
-): Readonly<Record<string, FrameHsb>> {
+function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
   if (face.frameTemplate === 'future') return futureFrameMaterials(face);
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
   if (!hasColorCalibration(face)) return {};
@@ -61,4 +66,37 @@ export function calibratedFrameMaterials(
   if (profile && profile.source === source?.source) return profile.materials;
   const old = calibratedDualFrameProfile(face);
   return old ? { [retroFrameAsset(face)]: old } : {};
+}
+
+/** An outer-stock-only correction does not establish pigment coverage. */
+export function hasCalibratedFramePigment(face: RenderedCardInput): boolean {
+  return Object.keys(baseFrameMaterials(face)).length > 0;
+}
+
+/** Source-bound black levels layer over the existing pigment fit. */
+export function calibratedFrameMaterials(
+  face: RenderedCardInput,
+): Readonly<Record<string, FrameHsb>> {
+  return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))
+    .materials;
+}
+
+/** Stock is measured separately; white stock and unknown sources stay unchanged. */
+export function calibratedPrintingStock(face: RenderedCardInput): string | undefined {
+  return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))
+    .stock;
+}
+
+function printingStockSource(face: RenderedCardInput): PrintingStockSource | undefined {
+  if (!hasColorCalibration(face)) return undefined;
+  if (isRetro(face))
+    return {
+      url: retroFrameAsset(face),
+      geometry: JSON.stringify(retroFrameRect(face)),
+      mask: retroBorderMask(face),
+    };
+  const source = printingColorSource(face);
+  return source?.family === 'components'
+    ? { url: source.frame, geometry: JSON.stringify(source.rect) }
+    : undefined;
 }

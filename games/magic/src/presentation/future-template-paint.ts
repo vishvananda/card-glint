@@ -1,3 +1,4 @@
+import { calibratedPrintingStock } from './calibration-profiles.js';
 import { paintPrintingElement } from './printing-elements.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
@@ -36,8 +37,16 @@ export function paintFutureTemplate(
   c.save();
   try {
     if (!layer) {
-      c.fillStyle = '#080808';
+      const stock = calibratedPrintingStock(face);
+      c.fillStyle = stock ?? '#080808';
       c.fillRect(0, 0, 488, 680);
+      if (stock) {
+        // Baked plates retain their original undercoat behind translucent
+        // pigment. Only exposed outer bleed uses the calibrated stock; the
+        // plate's own stock is recolored during cached material preparation.
+        c.fillStyle = '#080808';
+        c.fillRect(17, 17, 454, 646);
+      }
     }
     if (underArt) c.drawImage(underArt, 0, 0, 488, 680);
     if (layer !== 'printing') {

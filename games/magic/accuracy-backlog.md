@@ -1984,3 +1984,35 @@ incorrectly making Disenchant, Circle of Protection: Black and Steal Artifact
 low-signal cases. Scan poses and renderer pixels did not change for this metric
 correction. Planar remains 81.57 / 100 over 156 accepted scans; all 162 single-face
 capture results preserve their 0.3.11 scores, coverage and normalized pixels.
+
+### Next release: queued foil fixes
+
+Include `codex/continuous-foil-lighting` (`f17bffa`) in the next renderer release.
+It also contains `aa8b277` (preserve set-symbol ink in etch/emboss masks) and
+`a6badc5` (common contours for rarity overrides). Review the three commits
+as a unit, rerun foil-continuity and set-symbol mask/material checks, and refresh
+release showcase evidence. This queue entry does not imply those commits have
+already been merged or released.
+
+### Black-level calibration across active HSB profiles
+
+[Reproducible numeric evidence](fixtures/accuracy/printing-blackpoints.json)
+records all 37 sets with active pigment profiles: 1,037 sampled cached nonfoil
+printings, 1,021 accepted reference-bound frame poses and 16 excluded poses.
+Twelve new interior curves pass independent calibration/reserved-card checks.
+Their reserved shadow RGB RMSE falls from 13.26 to 6.64 byte units (about 50%).
+This is a regional color error, not a whole-card accuracy percentage.
+
+Eighteen set-level outer-stock targets are accepted separately. Alpha/Beta
+retain neutral charcoal distinct from their interior ink; white borders keep
+their existing treatment. The five approved PLC colorshifted curves replay
+pixel-identically. Native source masks and edge-connected stock selection keep
+bright bevels, alpha and illustration interiors unchanged. Derived materials
+are cached by source, dimensions and all adjustment parameters; no extra
+animation-time readbacks or decoding are introduced.
+
+Keep existing values for the 32 material cohorts with insufficient independent
+scans and for candidates that fail validation. Stock measurements describe
+Scryfall's displayed scan margins, not physical printed ink. Unlimited has no
+active HSB profile in this renderer and is not included in the 37-set claim.
+Review typography, geometry and remaining pigment differences separately.

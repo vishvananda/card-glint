@@ -1,3 +1,4 @@
+import { hasPrintingStockCandidate } from './printing-blackpoint.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import { hasNoPrintedSetSymbol } from './historical-set-symbol.js';
 import { retroBasicPrinting, simpleBasicMana } from './retro-basic.js';
@@ -183,7 +184,9 @@ export function retroAssets(face: RenderedCardInput) {
     dual?.mask,
     !isRevisedLand(face) &&
     !usesRevisedFrameGeometry(face) &&
-    (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth')
+    (retroBorder(face) !== 'black' ||
+      retroFamily(face) === 'fourth' ||
+      hasPrintingStockCandidate(face))
       ? retroBorderMask(face)
       : null,
     face.illustration,

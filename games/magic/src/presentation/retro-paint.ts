@@ -1,3 +1,4 @@
+import { calibratedPrintingStock } from './calibration-profiles.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintRetroStockBorder, paintRetroStockWindow } from './retro-stock-border.js';
 import { legendsFrame } from './legends-frame.js';
@@ -75,7 +76,9 @@ export function paintRetroFace(
     paintIllustration(c, face, images, retroPx(rect.art), layer);
     return;
   }
-  c.fillStyle = retroStock(face);
+  const calibratedStock = calibratedPrintingStock(face);
+  const stock = calibratedStock ?? retroStock(face);
+  c.fillStyle = stock;
   c.fillRect(0, 0, 488, 680);
   c.fillStyle = '#686050';
   c.fillRect(24.4, 27.2, 439.2, 625.6);
@@ -96,10 +99,10 @@ export function paintRetroFace(
   }
   const stockWindow = legendsFrame(face)?.stockWindow;
   if (stockWindow) {
-    paintRetroStockWindow(c, retroPx(stockWindow), retroStock(face));
+    paintRetroStockWindow(c, retroPx(stockWindow), stock);
   } else if (isRevisedLand(face) || usesRevisedFrameGeometry(face)) {
     c.save();
-    c.fillStyle = retroStock(face);
+    c.fillStyle = stock;
     c.beginPath();
     c.rect(0, 0, 488, 680);
     c.rect(24, 29, 440, 623);
@@ -110,7 +113,7 @@ export function paintRetroFace(
     c.restore();
   } else if (retroBorder(face) !== 'black' || retroFamily(face) === 'fourth') {
     const mask = images.get(retroBorderMask(face));
-    if (mask) paintRetroStockBorder(c, mask, retroPx(rect.frame), retroStock(face));
+    if (mask) paintRetroStockBorder(c, mask, retroPx(rect.frame), stock);
   }
   c.fillStyle = retroInk(face);
   c.textBaseline = 'middle';

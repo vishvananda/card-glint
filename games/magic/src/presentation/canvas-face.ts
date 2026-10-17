@@ -1,3 +1,4 @@
+import { calibratedPrintingStock } from './calibration-profiles.js';
 import { validateArtPlacement } from './art-placement.js';
 import { validatePrintingElements, paintPrintingElement } from './printing-elements.js';
 import { withPrintingOmissions } from './printing-omissions.js';
@@ -135,7 +136,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   return JSON.stringify([
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
-    'canvas-face-v132',
+    'canvas-face-v133',
     input.paintLayer ?? null,
     tier,
     input.printingId,
@@ -538,7 +539,8 @@ export function paintAssembledFace(
     rect[2] * FACE_WIDTH,
     rect[3] * height,
   ];
-  context.fillStyle = cardStock(face.setCode, face.borderColor).border;
+  context.fillStyle =
+    calibratedPrintingStock(face) ?? cardStock(face.setCode, face.borderColor).border;
   context.fillRect(0, 0, FACE_WIDTH, height);
   const rects = faceRects(face),
     kind = faceFrame(face);

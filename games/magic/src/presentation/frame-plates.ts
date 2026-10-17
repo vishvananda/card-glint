@@ -1,3 +1,4 @@
+import { hasPrintingStockCandidate } from './printing-blackpoint.js';
 import {
   planarBadgeRect,
   planarFrameRect,
@@ -156,7 +157,8 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
     ...(plate.pinlines ? Object.values(plate.pinlines) : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),
     ...(cardStock(face.setCode, face.borderColor).border !== '#090806' ||
-    planarCalibratedStock(face, plate.frame)
+    planarCalibratedStock(face, plate.frame) ||
+    hasPrintingStockCandidate(face)
       ? [plate.border]
       : []),
   ];

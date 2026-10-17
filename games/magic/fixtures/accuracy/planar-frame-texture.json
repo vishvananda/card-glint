@@ -1878,8 +1878,8 @@
     "frame-blackpoint.ts": "d42974bb32c6932787dc154792fc901df27aa313e05e2d6707a7ff1a48d682b0",
     "frame-material-blend.ts": "36641ba46adc4f8f99aa263c32981191088db78c32e78c3189a4b8c0afa5107e",
     "frame-material-mask.ts": "1284374e579b65538bd2f5194d21d91f9532dd34de591c7e5bc93e15e17dd9f2",
-    "frame-hsb.ts": "61234564772e867a4ec681fb79800732cd44475faef04c7581a5ed4c71c33ab6",
-    "early-hsb-material.ts": "db510176859fa4a68e927b1c94ae7bf22ef4c58bec7197f1ccdb2b7c0911ca83"
+    "frame-hsb.ts": "ddfd117612ce5794fc51253a29c15037560ef7087cc66f65539042d9644009ba",
+    "early-hsb-material.ts": "8468848c4f84bc53f245be751e0d671e188a7a9ca84f51b6a1136e38fb7395bb"
   },
   "assets": {
     "pinline": {
@@ -1971,5 +1971,11 @@
         }
       }
     }
+  },
+  "blackLevelRevalidation": {
+    "fixture": "printing-blackpoints.json",
+    "colorshiftedBlankFrames": 5,
+    "changedPixels": 0,
+    "policy": "Existing five PLC curves and texture/bevel corrections replay pixel-identically after shared black-level material integration."
   }
 }

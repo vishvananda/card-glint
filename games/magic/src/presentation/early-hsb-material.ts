@@ -173,7 +173,10 @@ async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb, images: 
         for (let i = 3; i < textureMask.data.length; i += 4)
           textureMask.data[i] = Math.round(textureMask.data[i]! * (1 - selection.data[i]! / 255));
     }
-    colorFrame(pixels, adjustment, textureMask);
+    const stockMask = adjustment.outerStockMaskSource
+      ? readMask(adjustment.outerStockMaskSource)
+      : undefined;
+    colorFrame(pixels, adjustment, textureMask, stockMask);
     if (adjustment.blend && selection) blendFrameMaterial(pixels, selection, adjustment.blend);
     c.putImageData(pixels, 0, 0);
     return await createImageBitmap(canvas);

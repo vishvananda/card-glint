@@ -1,3 +1,4 @@
+import { frameStockInk, colorFrameStockInk, validateFrameStock } from './frame-stock-ink.js';
 import type { FrameMaterialBlend } from './frame-material-blend.js';
 import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
 import { framePaperMask, type FramePixels, type PaperMask } from './frame-paper-mask.js';
@@ -20,6 +21,9 @@ export interface DualFrameHsb {
 export type FrameHsb = (HsbAdjustment | DualFrameHsb) & {
   blackPoint?: FrameBlackPoint;
   blend?: FrameMaterialBlend;
+  /** Edge-connected stock on precomposed plates; prepared once with the material. */
+  outerStock?: Rgb;
+  outerStockMaskSource?: string;
 };
 
 /** Recolor the static source, preserving alpha and, without an opt-in shadow
@@ -27,8 +31,22 @@ export type FrameHsb = (HsbAdjustment | DualFrameHsb) & {
  * mana transforms also protect white glyph details. Frame-paper highlights
  * must follow their material, otherwise darkening produces false white relief.
  * Blend recolored pixels at the paper edge without moving texture or shadows. */
-export function colorFrame(image: FramePixels, adjustment: FrameHsb, textureMask?: FramePixels) {
+export function colorFrame(
+  image: FramePixels,
+  adjustment: FrameHsb,
+  textureMask?: FramePixels,
+  stockMask?: FramePixels,
+) {
   if (adjustment.blackPoint) validateFrameBlackPoint(adjustment.blackPoint);
+  if (adjustment.outerStock) validateFrameStock(adjustment.outerStock);
+  if (
+    adjustment.outerStockMaskSource &&
+    (!stockMask ||
+      stockMask.width !== image.width ||
+      stockMask.height !== image.height ||
+      stockMask.data.length !== image.data.length)
+  )
+    throw RangeError('Frame stock correction needs its source selection');
   if (
     adjustment.blackPoint?.textureMaskSource &&
     (!textureMask ||
@@ -75,5 +93,9 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb, textureMask
         );
     }
   }
+  const stockPixels = adjustment.outerStock ? image.data.slice() : undefined;
+  const stockSelection = adjustment.outerStock ? frameStockInk(image, stockMask) : undefined;
   if (adjustment.blackPoint) colorFrameBlackPoint(image, adjustment.blackPoint, textureMask);
+  if (adjustment.outerStock && stockPixels && stockSelection)
+    colorFrameStockInk(image, stockPixels, stockSelection, adjustment.outerStock, stockMask);
 }
