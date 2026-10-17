@@ -25,6 +25,9 @@ It requires Node.js 24.x, Git, rustup, a native compiler/linker, and network acc
 on a cold install. The build pins Rust 1.98.0 and wasm-bindgen-cli 0.2.127 and
 keeps Cargo downloads, build artifacts and the CLI inside the source checkout's
 `node_modules/.cache/card-glint`. No host download or patch script is needed.
+Rustup provisioning uses the caller's installation environment and disables
+self-update. Only Cargo builds use the package-private `CARGO_HOME`; passing that
+cache to rustup breaks installations copied from official Rust container images.
 
 Import only the public entry points above, not source paths in the dependency.
 Vite and compatible bundlers resolve the package's `?url` imports and emit the

@@ -9,6 +9,10 @@ Use the pinned Rust toolchain, edition 2024, workspace lints, safe typed boundar
 and exhaustive error handling. Unsafe code is forbidden. Run strict Clippy and
 rustfmt. Keep modules small; numerical lint exceptions need local reasons.
 
+For source-install changes, keep rustup provisioning in the caller's installation
+environment. The private Cargo build cache is not a rustup installation; verify
+this boundary in the official Rust-based container as well as on macOS.
+
 Run npm run check, npm run build, npm run test:package, npm run test:browser, and
 npm run test:showcase for renderer changes. Browser tests need npm run preview.
 No per-frame decoding, font loading, shader compilation, or mask readback.

@@ -35,17 +35,23 @@ const env = {
   CARGO_TARGET_DIR: target,
   PATH: `${path.join(toolRoot, 'bin')}${path.delimiter}${process.env.PATH ?? ''}`,
 };
-const run = (command, args) => execFileSync(command, args, { cwd: root, env, stdio: 'inherit' });
+const run = (command, args, runEnv = env) =>
+  execFileSync(command, args, { cwd: root, env: runEnv, stdio: 'inherit' });
 await mkdir(cache, { recursive: true });
-run('rustup', [
-  'toolchain',
-  'install',
-  rust,
-  '--profile',
-  'minimal',
-  '--target',
-  'wasm32-unknown-unknown',
-]);
+run(
+  'rustup',
+  [
+    'toolchain',
+    'install',
+    rust,
+    '--profile',
+    'minimal',
+    '--target',
+    'wasm32-unknown-unknown',
+    '--no-self-update',
+  ],
+  process.env,
+);
 if (
   !(await access(bindgen).then(
     () => true,
