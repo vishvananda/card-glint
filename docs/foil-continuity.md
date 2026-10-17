@@ -38,4 +38,6 @@ time. It bounds frame changes and checks GL errors. See
 [`evidence/foil-continuity.json`](../evidence/foil-continuity.json). Separate
 hologram, overlay-foil and optical-surface tests cover their full behavior.
 This includes GPU readback completion, rather than only CPU submission timing.
-It does not constitute physical GPU, macOS, iPhone or Windows validation.
+These software-rendering checks do not constitute physical GPU validation on
+macOS, iPhone, Windows or Linux. The evidence records the actual host platform
+and Chromium version for each run.

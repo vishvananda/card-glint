@@ -1985,14 +1985,12 @@ low-signal cases. Scan poses and renderer pixels did not change for this metric
 correction. Planar remains 81.57 / 100 over 156 accepted scans; all 162 single-face
 capture results preserve their 0.3.11 scores, coverage and normalized pixels.
 
-### Next release: queued foil fixes
+### Integrated for 0.4.1: foil fixes
 
-Include `codex/continuous-foil-lighting` (`f17bffa`) in the next renderer release.
-It also contains `aa8b277` (preserve set-symbol ink in etch/emboss masks) and
-`a6badc5` (common contours for rarity overrides). Review the three commits
-as a unit, rerun foil-continuity and set-symbol mask/material checks, and refresh
-release showcase evidence. This queue entry does not imply those commits have
-already been merged or released.
+Merged `codex/continuous-foil-lighting` (`f17bffa`), including `aa8b277`
+(preserve set-symbol ink in etch/emboss masks) and `a6badc5` (common contours
+for rarity overrides). Foil-continuity and symbol-mask/material regressions
+are now part of CI. The release refreshes both showcase animations.
 
 ### Black-level calibration across active HSB profiles
 

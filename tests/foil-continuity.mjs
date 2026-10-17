@@ -194,8 +194,7 @@ try {
     }
   }, process.env.FOIL_REFERENCE_NARROW === '1');
   report.errors = errors;
-  report.browser =
-    'Linux Chromium / SwiftShader; GPU readback completion; no physical GPU validation';
+  report.browser = `${process.platform} Chromium ${browser.version()} / SwiftShader; GPU readback completion; no physical GPU validation`;
   await writeFile(
     process.env.FOIL_CONTINUITY_OUTPUT ?? 'evidence/foil-continuity.json',
     JSON.stringify(report, null, 2) + '\n',
