@@ -112,9 +112,11 @@ async function verify() {
     'native-host-compatibility',
     hash(JSON.stringify(expected)) + '.json',
   );
+  const evidenceFile = path.join(root, 'evidence/native-host-compatibility.json');
   try {
     const receipt = JSON.parse(await readFile(receiptFile));
     assertReceipt(receipt, expected);
+    await writeJson(evidenceFile, receipt);
     return receipt;
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
@@ -528,6 +530,7 @@ async function verify() {
     };
     assertReceipt(receipt, expected);
     await writeJson(receiptFile, receipt);
+    await writeJson(evidenceFile, receipt);
     return receipt;
   } finally {
     await browser?.close();
