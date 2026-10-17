@@ -316,6 +316,25 @@ Keep these candidates provisional while refining shared size/centering rules
 and fitting artist-credit placement and lettering. No per-card text defaults
 or scan-pose changes were adopted.
 
+A [width/leading refinement](fixtures/accuracy/early-expansion-width-text.json)
+retains the same compact candidate for ARN and ATQ. The DRK training winner
+widens the panel four pixels and reduces leading, but its 71 reserved printings
+fall from 0.511 to 0.494. Forty-three worsen relative to the prior candidate;
+twenty-six improve. Reject that refinement rather than adopting the training
+gain. Neither text study has changed runtime defaults.
+
+A separate [em-dash diagnostic](fixtures/accuracy/early-expansion-dash-text.json)
+identifies an unbreakable-token problem: `creature—comes` forces Rukh Egg into
+the compact size class. Allowing a break after the inline dash restores regular
+type and improves its two text indices from 0.393/0.395 to 0.627/0.623. Banshee
+improves from 0.371 to 0.619, matching its printed three-line rules paragraph;
+Scavenger Folk remains byte-identical. Wording, shared layout parameters and
+scan poses are fixed, and pixels outside text do not change. This private
+prototype uses previously inspected examples; it is not independent validation
+or a released renderer change. Test style boundaries and broad layout behavior
+before adoption. Rukh Egg's printed discretionary hyphen in `ex-actly`, residual
+font weight and sparse-text centering remain separate review items.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting
