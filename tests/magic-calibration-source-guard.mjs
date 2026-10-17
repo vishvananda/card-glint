@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preTitleCalibrationSource } from './magic-title-source-guard.mjs';
 let verified;
 async function proof() {
   return (verified ??= (async () => {
@@ -22,7 +23,7 @@ async function proof() {
     }
     for (const [file, expected] of Object.entries(extension.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preTitleCalibrationSource(file)),
         expected,
         'Unreviewed calibration-policy dependency: ' + file,
       );
@@ -33,7 +34,7 @@ async function proof() {
  * module using a bounded, hash-checked opt-in extension, backed by native replay.
  * New policy tests always run the current code; this applies only to old evidence. */
 export async function calibrationLegacySource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preTitleCalibrationSource(file),
     extension = await proof(),
     change = extension.files[file];
   if (!change) return bytes;

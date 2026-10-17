@@ -11141,8 +11141,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -11173,7 +11173,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 13,
+                "scoredPrintings": 13,
+                "totalPrintings": 13,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -11264,7 +11274,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -11277,7 +11290,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 13,
@@ -11298,6 +11313,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -11567,8 +11593,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -11599,7 +11625,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 2,
+                "scoredPrintings": 2,
+                "totalPrintings": 2,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -11685,7 +11721,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -11698,7 +11737,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 2,
@@ -11719,6 +11760,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -11977,8 +12029,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -12009,7 +12061,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 2,
+                "scoredPrintings": 2,
+                "totalPrintings": 2,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -12100,7 +12162,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -12113,7 +12178,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 2,
@@ -12134,6 +12201,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -12410,8 +12488,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -12442,7 +12520,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 12,
+                "scoredPrintings": 12,
+                "totalPrintings": 12,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -12533,7 +12621,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -12546,7 +12637,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 12,
@@ -12567,6 +12660,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -12778,8 +12882,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -12810,7 +12914,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 7,
+                "scoredPrintings": 7,
+                "totalPrintings": 7,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -12901,7 +13015,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -12914,7 +13031,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 7,
@@ -12935,6 +13054,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -13142,8 +13272,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -13174,7 +13304,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -13265,7 +13405,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -13278,7 +13421,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 8,
@@ -13299,6 +13444,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -13512,8 +13668,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -13544,7 +13700,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 5,
+                "scoredPrintings": 5,
+                "totalPrintings": 5,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -13641,7 +13807,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -13654,7 +13823,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 5,
@@ -13675,6 +13846,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -13831,8 +14013,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -13863,7 +14045,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 1,
+                "scoredPrintings": 1,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -13949,7 +14141,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -13962,7 +14157,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 1,
@@ -13983,6 +14180,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -14264,8 +14472,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -14296,7 +14504,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 12,
+                "scoredPrintings": 11,
+                "totalPrintings": 12,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -14388,7 +14606,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -14401,7 +14622,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 11,
@@ -14422,6 +14645,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -14688,8 +14922,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -14720,7 +14954,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 1,
+                "scoredPrintings": 1,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -14806,7 +15050,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -14819,7 +15066,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 1,
@@ -14840,6 +15089,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -15107,8 +15367,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -15139,7 +15399,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 10,
+                "scoredPrintings": 10,
+                "totalPrintings": 10,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -15236,7 +15506,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -15249,7 +15522,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 10,
@@ -15270,6 +15545,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -15536,8 +15822,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -15568,7 +15854,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 3,
+                "scoredPrintings": 3,
+                "totalPrintings": 3,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -15659,7 +15955,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -15672,7 +15971,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 3,
@@ -15693,6 +15994,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -15918,8 +16230,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -15950,7 +16262,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -16047,7 +16369,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -16060,7 +16385,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 8,
@@ -16081,6 +16408,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -16313,8 +16651,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -16345,7 +16683,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 7,
+                "scoredPrintings": 7,
+                "totalPrintings": 7,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -16436,7 +16784,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -16449,7 +16800,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 7,
@@ -16470,6 +16823,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -16675,8 +17039,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -16707,7 +17071,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 1,
+                "scoredPrintings": 1,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -16793,7 +17167,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -16806,7 +17183,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 1,
@@ -16827,6 +17206,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "arn",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -17053,8 +17443,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -17085,7 +17475,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -17177,7 +17577,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -17190,7 +17593,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 4,
@@ -17211,6 +17616,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -17421,8 +17837,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -17453,7 +17869,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 3,
+                "scoredPrintings": 3,
+                "totalPrintings": 3,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -17544,7 +17970,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -17557,7 +17986,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 3,
@@ -17578,6 +18009,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -17795,8 +18237,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -17827,7 +18269,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 17,
+                "scoredPrintings": 17,
+                "totalPrintings": 17,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -17924,7 +18376,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -17937,7 +18392,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 17,
@@ -17958,6 +18415,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -18198,8 +18666,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -18230,7 +18698,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 28,
+                "scoredPrintings": 28,
+                "totalPrintings": 28,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -18322,7 +18800,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -18335,7 +18816,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 28,
@@ -18356,6 +18839,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -18600,8 +19094,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -18632,7 +19126,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 21,
+                "scoredPrintings": 21,
+                "totalPrintings": 21,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -18724,7 +19228,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -18737,7 +19244,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 21,
@@ -18758,6 +19267,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -18962,8 +19482,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -18994,7 +19514,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -19085,7 +19615,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -19098,7 +19631,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 4,
@@ -19119,6 +19654,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -19329,8 +19875,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -19361,7 +19907,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 3,
+                "scoredPrintings": 3,
+                "totalPrintings": 3,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -19452,7 +20008,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -19465,7 +20024,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 3,
@@ -19486,6 +20047,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -19763,8 +20335,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -19795,7 +20367,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 5,
+                "scoredPrintings": 4,
+                "totalPrintings": 5,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -19888,7 +20470,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -19901,7 +20486,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -19922,6 +20509,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -20191,8 +20789,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -20223,7 +20821,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 3,
+                "scoredPrintings": 3,
+                "totalPrintings": 3,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -20318,7 +20926,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -20331,7 +20942,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -20352,6 +20965,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -20554,8 +21178,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -20586,7 +21210,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 1,
+                "scoredPrintings": 1,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -20672,7 +21306,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -20685,7 +21322,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 1,
@@ -20706,6 +21345,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -20920,8 +21570,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -20952,7 +21602,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 6,
+                "scoredPrintings": 6,
+                "totalPrintings": 6,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -21054,7 +21714,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -21067,7 +21730,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 6,
@@ -21088,6 +21753,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -21348,8 +22024,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -21380,7 +22056,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 3,
+                "scoredPrintings": 3,
+                "totalPrintings": 3,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -21477,7 +22163,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -21490,7 +22179,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 3,
@@ -21511,6 +22202,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -21779,8 +22481,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -21811,7 +22513,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -21902,7 +22614,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -21915,7 +22630,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 4,
@@ -21936,6 +22653,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "atq",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -29605,8 +30333,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -29637,7 +30365,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 11,
+                "scoredPrintings": 11,
+                "totalPrintings": 11,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -29726,7 +30464,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -29739,7 +30480,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 11,
@@ -29760,6 +30503,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -30036,8 +30790,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -30068,7 +30822,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 7,
+                "scoredPrintings": 7,
+                "totalPrintings": 7,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -30157,7 +30921,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -30170,7 +30937,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 7,
@@ -30191,6 +30960,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -30355,8 +31135,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -30387,7 +31167,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "needs-review",
+                "appliedPrintings": 0,
+                "scoredPrintings": 0,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -30475,7 +31265,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -30488,7 +31281,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -30509,6 +31304,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -30669,8 +31475,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -30701,7 +31507,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "needs-review",
+                "appliedPrintings": 0,
+                "scoredPrintings": 0,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -30789,7 +31605,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -30802,7 +31621,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -30823,6 +31644,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -31031,8 +31863,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -31063,7 +31895,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -31151,7 +31993,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -31164,7 +32009,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 4,
@@ -31185,6 +32032,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -31416,8 +32274,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -31448,7 +32306,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 18,
+                "scoredPrintings": 18,
+                "totalPrintings": 18,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -31537,7 +32405,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -31550,7 +32421,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 18,
@@ -31571,6 +32444,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -31760,8 +32644,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -31792,7 +32676,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "needs-review",
+                "appliedPrintings": 0,
+                "scoredPrintings": 0,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -31877,7 +32771,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -31890,7 +32787,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -31911,6 +32810,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -32149,8 +33059,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -32181,7 +33091,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 15,
+                "scoredPrintings": 15,
+                "totalPrintings": 15,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -32270,7 +33190,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -32283,7 +33206,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 15,
@@ -32304,6 +33229,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -32538,8 +33474,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -32570,7 +33506,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -32659,7 +33605,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -32672,7 +33621,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 4,
@@ -32693,6 +33644,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -32981,8 +33943,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -33013,7 +33975,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 11,
+                "scoredPrintings": 10,
+                "totalPrintings": 11,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -33114,7 +34086,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -33127,7 +34102,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -33148,6 +34125,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -33426,8 +34414,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -33458,7 +34446,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 7,
+                "scoredPrintings": 7,
+                "totalPrintings": 7,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -33554,7 +34552,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -33567,7 +34568,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -33588,6 +34591,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -33749,8 +34763,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -33781,7 +34795,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "needs-review",
+                "appliedPrintings": 0,
+                "scoredPrintings": 0,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -33869,7 +34893,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -33882,7 +34909,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 0,
@@ -33903,6 +34932,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -34176,8 +35216,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -34208,7 +35248,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -34297,7 +35347,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -34310,7 +35363,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 8,
@@ -34331,6 +35386,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -34609,8 +35675,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -34641,7 +35707,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 11,
+                "scoredPrintings": 11,
+                "totalPrintings": 11,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -34729,7 +35805,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -34742,7 +35821,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 11,
@@ -34763,6 +35844,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -35034,8 +36126,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -35066,7 +36158,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -35155,7 +36257,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -35168,7 +36273,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 8,
@@ -35189,6 +36296,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {
@@ -35467,8 +36585,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "headings": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source.",
+              "status": "partial",
+              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -35499,7 +36617,17 @@
                   "games/magic/fixtures/accuracy/early-expansion-input-extension.json": "073b24acfd37187271f8bea1732c281b4aa5e71841a59c79387ed0adbe2caa81"
                 },
                 "reason": "Exact printing type lines reviewed against scan crops. Name transcription and heading placement remain separate."
-              }
+              },
+              "title": {
+                "status": "measured",
+                "appliedPrintings": 11,
+                "scoredPrintings": 11,
+                "totalPrintings": 11,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
+                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
             "rules": {
               "status": "partial",
@@ -35587,7 +36715,10 @@
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
-                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json",
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -35600,7 +36731,9 @@
               "guards": {
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
                 "scored": 11,
@@ -35621,6 +36754,17 @@
                 "validationKind": "family-transfer",
                 "familyScope": "drk",
                 "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/retro-paint.ts": {
+                  "before": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4",
+                  "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+                  "evidence": [
+                    "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
+                    "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json"
+                  ],
+                  "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
+                }
               }
             },
             "footer": {

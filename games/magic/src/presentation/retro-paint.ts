@@ -11,6 +11,7 @@ import {
 import { retroManaPlacement } from './retro-mana.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { titleTranslation } from './title-placement.js';
+import { paintEarlyExpansionTitle } from './early-expansion-title.js';
 import { retroTypePlacement } from './retro-type.js';
 import { paintPrintingLegendsFooter } from './printing-legends-footer.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
@@ -167,7 +168,8 @@ export function paintRetroFace(
   c.translate(...titleTranslation(face, 'retro'));
   if (isRevisedLand(face)) paintRevisedLandText(c, face.name, 'title', titleWidth);
   else if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
-  else c.fillText(face.name, titleX, titleY, titleWidth);
+  else if (!paintEarlyExpansionTitle(c, face, titleX + titleWidth))
+    c.fillText(face.name, titleX, titleY, titleWidth);
   c.restore();
   const modernSymbols =
     face.symbolStyle === 'modern' ||
