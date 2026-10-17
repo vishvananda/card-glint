@@ -7,6 +7,14 @@ Alpha, Beta, Unlimited, Revised, Eighth, M21, Arabian Nights, Antiquities, The D
 and Legends. Other sets remain queued. A profile existing in the renderer does
 not mean that its set, or even its entire frame, has been calibrated.
 
+[Version 0.4.2](https://github.com/vishvananda/card-glint/releases/tag/v0.4.2)
+publishes the early-expansion frame/color batch and the ordinary M21 black
+pigment fit at commit `fd52ddf008c7afea8b17cee658a7da3356425d3e`. Both main and
+release CI passed; package, browser archive and immutable CDN assets are
+published. This is a partial calibration checkpoint. Local scan templates and
+diagnostic scores are not automatically deployed to a review service, and the
+ledger's complete-set release checks remain open.
+
 Run `npm run magic:calibration:report` for the active-set summary, or
 `npm run magic:calibration:report -- m21` for that set's unresolved variant checks.
 Add `--json` for machine-readable status. The report checks source-file guards
