@@ -15,39 +15,40 @@ export function paintRetroStockWindow(
   c.restore();
 }
 
-/** Recolor stock without leaving the plate's white edge under a fractional mask.
- * Chrome and WebKit can antialias drawImage's outer rectangle: painting it
- * twice does not fully cover the first edge. Prime that outer edge with stock,
- * keeping the mask's inner aperture and resampling exactly as before.
- * This scratch raster is built only while composing a static face. */
+/** Extend the stock mask past the source rectangle so fractional drawImage
+ * edges cannot expose a white plate fringe. Padding leaves the aperture's
+ * native mask pixels and sample spacing unchanged. Static face preparation only. */
 export function paintRetroStockBorder(
   c: CanvasRenderingContext2D,
   mask: CanvasImageSource,
   [x, y, w, h]: FaceRect,
   stock: string,
 ) {
-  const layer = document.createElement('canvas');
-  layer.width = 732;
-  layer.height = 1020;
+  const padding = 12,
+    width = 732,
+    height = 1020,
+    layer = document.createElement('canvas');
+  layer.width = width + padding * 2;
+  layer.height = height + padding * 2;
   try {
     const ctx = layer.getContext('2d');
     if (!ctx) throw new Error('Retro stock preparation requires Canvas2D.');
-    ctx.drawImage(mask, 0, 0, layer.width, layer.height);
+    ctx.drawImage(mask, padding, padding, width, height);
+    // Extend only the known opaque stock perimeter, not the inner aperture.
+    ctx.fillRect(0, 0, layer.width, padding);
+    ctx.fillRect(0, padding + height, layer.width, padding);
+    ctx.fillRect(0, padding, padding, height);
+    ctx.fillRect(padding + width, padding, padding, height);
     ctx.globalCompositeOperation = 'source-in';
     ctx.fillStyle = stock;
     ctx.fillRect(0, 0, layer.width, layer.height);
-    // These plates have continuous stock along their rectangular outer edge.
-    // Two canonical pixels cover one output pixel at the 244px table tier;
-    // the aperture is much farther in. Preserve its original bitmap sampling.
-    const bleed = 2;
-    c.save();
-    c.fillStyle = stock;
-    c.beginPath();
-    c.rect(0, 0, FACE_WIDTH, FACE_HEIGHT);
-    c.rect(x + bleed, y + bleed, w - 2 * bleed, h - 2 * bleed);
-    c.fill('evenodd');
-    c.restore();
-    c.drawImage(layer, x, y, w, h);
+    c.drawImage(
+      layer,
+      x - (padding * w) / width,
+      y - (padding * h) / height,
+      (layer.width * w) / width,
+      (layer.height * h) / height,
+    );
   } finally {
     layer.width = layer.height = 0;
   }
