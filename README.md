@@ -228,6 +228,13 @@ tilt, a smooth pointer handoff and the idle orbit. Pointer coordinates for
 `Frame.hover` use the top-left card origin; `Frame.pointer` remains the normalized
 canvas-space foil-light control.
 
+`Instance.rainFog` optionally changes rain condensation density from 0 (clear)
+to 2. Omit it or use 1 for the unchanged default. Droplets, their refraction,
+reflections, blur and motion retain their native settings. Pass the same value
+to `exportCard` for a matching image. The root export `rainFogVersion === 1`
+lets a host detect this option without assuming a release number. Changes reuse
+prepared textures and add one float per instance, with no extra rendering pass.
+
 These are procedural optical treatments, not a fluid solver. Heat refracts the
 printed face in horizontal bands with slight blur. Rain adds small lenses and
 draining drops over lightly fogged glass. Rain counter-projects the image around the card center, so the scene stays
