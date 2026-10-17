@@ -12,6 +12,13 @@ try {
     await readFile('games/magic/fixtures/accuracy/early-expansion-calibration.json'),
   );
   const integration = receipt.geometryIntegration;
+  const red = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/early-expansion-red-frame.json'),
+  );
+  const measuredGroups = {
+    ...integration.groups,
+    ...Object.fromEntries(Object.entries(red.groups).map(([key, value]) => [key, value.geometry])),
+  };
   const { earlyExpansionFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/early-expansion-frame.ts',
   );
@@ -22,7 +29,7 @@ try {
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
   for (const setCode of ['arn', 'atq', 'drk']) {
-    for (const material of ['W', 'U', 'B', 'G', 'A']) {
+    for (const material of ['W', 'U', 'B', 'R', 'G', 'A']) {
       const face = {
         name: 'Probe',
         setCode,
@@ -45,8 +52,8 @@ try {
       const [sx, sy, sw, sh] = frame.stockWindow;
       assert.ok(x > sx && y > sy && x + w < sx + sw && y + h < sy + sh);
       assert.ok(frame.asset.endsWith(`/${material.toLowerCase()}.png`));
-      assert.deepEqual(frame.frame, integration.groups[`${setCode}/${material}`].frame);
-      assert.deepEqual(frame.art, integration.groups[`${setCode}/${material}`].art);
+      assert.deepEqual(frame.frame, measuredGroups[`${setCode}/${material}`].frame);
+      assert.deepEqual(frame.art, measuredGroups[`${setCode}/${material}`].art);
       // Source/geometry replacement must invalidate prior pigment coefficients.
       assert.equal(
         calibratedDualFrameProfile({ ...face, colorCalibration: 'set-hsb-v1' }),
@@ -88,11 +95,14 @@ try {
     earlyExpansionFrame({ ...land, setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] }),
     undefined,
   );
-  for (const setCode of ['atq', 'drk'])
-    assert.equal(
-      earlyExpansionFrame({ name: 'Probe', setCode, typeLine: 'Instant', colors: ['R'] }),
-      undefined,
+  assert.deepEqual(Object.keys(red.groups), ['atq/R', 'drk/R']);
+  for (const group of Object.values(red.groups)) {
+    assert.ok(
+      group.nativeGeometry.summary.validation.after >
+        group.nativeGeometry.summary.validation.before,
     );
+    assert.deepEqual(group.nativeGeometry.summary.validation.regressions, []);
+  }
   console.log('Early expansion sources, artwork placement, wording independence and scope pass.');
 } finally {
   await server.close();

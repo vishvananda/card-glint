@@ -1,3 +1,4 @@
+import { EARLY_EXPANSION_RED_COLORS } from './early-expansion-red-values.js';
 import type { FrameHsb } from './frame-hsb.js';
 /** Shared per-material fits. Rejected components retain source pigment.
  * Stock targets describe the cached scans, not physical ink measurements. */
@@ -423,4 +424,5 @@ export const EARLY_EXPANSION_COLORS: Readonly<
       },
     },
   },
+  ...EARLY_EXPANSION_RED_COLORS,
 };

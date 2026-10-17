@@ -5,6 +5,10 @@ import { createServer } from 'vite';
 const evidence = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-colors.json'),
 );
+const red = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-red-frame.json'),
+);
+const groups = { ...evidence.groups, ...red.groups };
 const identity = { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 };
 const server = await createServer({
   configFile: false,
@@ -24,7 +28,7 @@ try {
   const { calibratedFrameMaterials, calibratedPrintingStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
-  assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 18);
+  assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 20);
   for (const [key, profile] of Object.entries(EARLY_EXPANSION_COLORS)) {
     const [setCode, material] = key.split('/');
     const face = {
@@ -36,7 +40,7 @@ try {
     };
     const frame = earlyExpansionFrame(face);
     assert.equal(profile.source, JSON.stringify([frame.asset, frame.frame]));
-    const record = evidence.groups[key];
+    const record = groups[key];
     assert.deepEqual(profile, record.profile);
     const result = earlyExpansionColors(face);
     assert.deepEqual(result, {
@@ -81,8 +85,6 @@ try {
   for (const face of [
     { setCode: 'arn', name: 'Mountain', typeLine: 'Land' },
     { setCode: 'drk', typeLine: 'Land' },
-    { setCode: 'atq', typeLine: 'Summon', colors: ['R'] },
-    { setCode: 'drk', typeLine: 'Summon', colors: ['R'] },
     { setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] },
   ])
     assert.equal(earlyExpansionColors({ ...face, colorCalibration: 'set-hsb-v1' }), undefined);

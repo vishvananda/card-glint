@@ -415,6 +415,45 @@ still need review. The 34 unresolved poses remain unscored. Full-card aggregates
 for DRK are marked historical until they are recomputed with frame regions that
 do not include rules ink. This batch is included in 0.4.8; rules/flavor stay partial.
 
+The [red-frame boundary extension](fixtures/accuracy/early-expansion-boundary-normalization.json)
+adds comparison poses for seven Antiquities and seventeen The Dark scans. It fits
+the art-box outline and checks the rules box independently, so a misplaced panel
+cannot help choose the scan transform. All 240 known-pose probes for the accepted
+scans recover within 0.286 canonical pixels; replacing their art and rules text
+does not change the fits. All 52 negative controls reject missing outlines or a
+two-pixel rules-box displacement. The earlier joint-box fit failed that last
+test and is not adopted.
+
+Coverage increases from 282 to 306 of 316 printings. Ball Lightning and one Atog
+scan fail the fixed recovery gate and join the eight other unresolved references.
+This qualifies those 24 scans individually, not every scan of these frame types.
+The new manifest preserves all previous accepted poses and historical scores;
+rasters use the tested canonical-resize-then-affine path. Renderer defaults and
+hosted review templates are unchanged. Red source/geometry and color fitting are
+next; outer-stock/corner certification and complete-set checks remain open.
+
+The [red-frame integration](fixtures/accuracy/early-expansion-red-frame.json)
+uses those 24 qualified poses to compare ABU, Fourth and Seventh assets on
+identical opaque regions. Fourth wins for both Antiquities and The Dark, including
+the reserved geometry and texture checks. Shared set/color transforms replace
+the previous geometry; separate frame and paper adjustments preserve texture
+contrast and keep the illustration unchanged.
+
+On reserved names, native frame-boundary correlation improves from -0.011 to
+0.930 for Antiquities and from 0.039 to 0.962 for The Dark. Frame color distance
+falls from 8.37 to 1.50 and from 6.27 to 2.88 respectively; paper distance falls
+from 11.22 to 1.10 and from 9.22 to 2.14. These regional diagnostics measure
+different properties and are not full-card accuracy percentages. All four native
+color components pass the color, contrast, clipping and prediction checks.
+
+The 316-card native replay changes only the 26 intended red printings, preserves
+all text layouts and leaves the other 290 faces pixel-identical. Ball Lightning
+and the rejected Atog printing receive shared defaults but never influence the
+fit or scores. Existing profile bytes are preserved by an exact two-key extension
+proof. This batch targets 0.4.9. Red headings, mana, set symbols and lower details
+still need calibration; outer-stock/corner checks, fresh full-card aggregates and
+hosted template updates remain open.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting
