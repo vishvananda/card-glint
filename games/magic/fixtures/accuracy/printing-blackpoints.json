@@ -55,14 +55,14 @@
     [80, 8, 300, 6]
   ],
   "sourceGuards": {
-    "printing-blackpoint.ts": "af7c83c7814d6e8a954e40a69ce62d26ff6bc3c0232a8ec66ffd98571d91f9cd",
+    "printing-blackpoint.ts": "1d9af4b895967c5959cb9c00a308393592370342ce8fd2c719564779f7fa890d",
     "printing-blackpoint-values.json": "87776d79ac0a74be5b76a08266075106aba2e061596750770020dcb5e56ec3e3",
     "printing-stock-values.json": "bc36471e6eacf14a216b86f92c7cd8fb22d9912a6a2b471cfa366788e3d30694",
     "frame-blackpoint.ts": "d42974bb32c6932787dc154792fc901df27aa313e05e2d6707a7ff1a48d682b0",
     "frame-stock-ink.ts": "bbc3133e8b6acab3c5fff25270fef12ebb5e3507f5c6a2c95792ab7227bbcfcc",
     "frame-hsb.ts": "ddfd117612ce5794fc51253a29c15037560ef7087cc66f65539042d9644009ba",
     "early-hsb-material.ts": "8468848c4f84bc53f245be751e0d671e188a7a9ca84f51b6a1136e38fb7395bb",
-    "calibration-profiles.ts": "2d1cb4df3e7603704bac2996e727d842682359012d87a93e82a4f241ea0382a8",
+    "calibration-profiles.ts": "f780ae97a424c339e6481e2f57100123733860c6799f72aff3db6e5d06aa8a32",
     "color-calibration-coverage.ts": "544da58ce01e5a65e951c00d19c343dfb6076cadb940532a2966f3323d6796c3",
     "future-template-paint.ts": "f7c7802dfdbfd8e380b57e1b0f64b3fc947c707eb5c502c54192c451ca9da1f5"
   },
@@ -41371,5 +41371,9 @@
     "Rejected registrations are excluded rather than fitted per scan.",
     "Broader pigment, typography and geometry differences remain outside this black-level calibration.",
     "Unlimited has no active HSB profile for this renderer and is not counted among the 37 sets."
-  ]
+  ],
+  "stockTransfer": {
+    "modernLands": "M21 outer stock transfers to source-and-geometry-matched component land frames, including two-color legendary frames. Land-paper pigment remains uncalibrated. The measured #16130e stock target is unchanged; no new pigment fitting or accuracy cohorts are claimed.",
+    "regression": "tests/magic-printing-blackpoint.mjs covers neutral, monocolor, two-color and gold lands, explicit palette overrides, disabled calibration, white/silver borders, other sets, special templates and stale asset/geometry guards."
+  }
 }
