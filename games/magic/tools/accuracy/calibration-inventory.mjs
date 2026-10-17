@@ -11,7 +11,11 @@ import {
   applyM21MonoEvidence,
   applyM21PigmentAudit,
 } from './calibration-m21-evidence.mjs';
-import { applyM21BoundaryRefinement, applyM21StockTransfer } from './calibration-m21-scope.mjs';
+import {
+  applyM21BoundaryRefinement,
+  applyM21StockTransfer,
+  applyM21WhiteDefault,
+} from './calibration-m21-scope.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
 const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
@@ -38,16 +42,22 @@ const m21MonoBoundaries = await readJson(fixtureRoot + '/m21-mono-boundaries.jso
 const m21ExistingPigment = await readJson(fixtureRoot + '/m21-existing-pigment-audit.json');
 const m21Refined = await readJson(fixtureRoot + '/m21-component-boundaries-v2.json');
 const m21Stock = await readJson(fixtureRoot + '/modern-land-stock-transfer.json');
+const m21White = await readJson(fixtureRoot + '/m21-white-default.json');
 const matchGuards = async (receipt) =>
   (
     await Promise.all(
-      Object.entries(receipt.sourceGuards).map(
-        async ([f, h]) => hash(await readFile('games/magic/src/presentation/' + f)) === h,
-      ),
+      [
+        ...Object.entries(receipt.sourceGuards).map(([f, h]) => [
+          'games/magic/src/presentation/' + f,
+          h,
+        ]),
+        ...Object.entries(receipt.methodGuards ?? {}),
+      ].map(async ([f, h]) => hash(await readFile(f)) === h),
     )
   ).every(Boolean);
 const m21RefinedGuardsMatch = await matchGuards(m21Refined);
 const m21StockGuardsMatch = await matchGuards(m21Stock);
+const m21WhiteGuardsMatch = await matchGuards(m21White);
 const m21GuardsMatch = (
   await Promise.all(
     Object.entries(m21Color.sourceGuards).map(
@@ -354,6 +364,7 @@ try {
           applyM21PigmentAudit(g, m21ExistingPigment);
           applyM21BoundaryRefinement(g, m21Refined, m21RefinedGuardsMatch);
           applyM21StockTransfer(g, m21Stock, m21StockGuardsMatch);
+          applyM21WhiteDefault(g, source, m21White, m21WhiteGuardsMatch);
         }
         g.tasks.release = {
           status: 'pending',

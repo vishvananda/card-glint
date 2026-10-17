@@ -144521,30 +144521,68 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
-              "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"],
-              "historicalKey": "m21/black/components/W/W",
-              "componentMeasurements": {
-                "cards": 12,
-                "names": 12,
-                "before": 1.6450681286580973,
-                "after": 2.6663083522977993,
-                "worstRegression": 2.095393418125587,
-                "texture": {
-                  "shadowChroma": {
-                    "before": 0.7412328620914117,
-                    "after": 1.0152779317521397
-                  },
-                  "shadowLightness": {
-                    "before": 1.5547305557486513,
-                    "after": 3.8255559498070246
-                  },
-                  "contrastError": {
-                    "before": 1.0318889040911268,
-                    "after": 0.7189647031963453
-                  }
+              "status": "validated-default",
+              "reason": "21/21 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
+              "coveredPrintings": 21,
+              "measurements": {
+                "calibration": {
+                  "cards": 8,
+                  "names": 8,
+                  "medianColorError": 2.1235890485300644,
+                  "maximumColorError": 2.6678269893241535,
+                  "maximumTextureBinError": 2.5403557168898265
+                },
+                "validation": {
+                  "cards": 12,
+                  "names": 12,
+                  "medianColorError": 1.6715774276514912,
+                  "maximumColorError": 2.7226979604065256,
+                  "maximumTextureBinError": 3.79941912694901
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "names": 22,
+                  "medianColorError": 2.0918285213545165,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.223669137609704
+                },
+                "all": {
+                  "cards": 42,
+                  "names": 42,
+                  "medianColorError": 1.9581888086198367,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.79941912694901
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
+                "games/magic/src/presentation/printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
+                "games/magic/src/presentation/calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+                "games/magic/src/presentation/normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
+                "games/magic/src/presentation/canvas-face.ts": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
+                "games/magic/src/presentation/frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+                "games/magic/src/presentation/hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
+                "games/magic/src/presentation/assets.ts": "d94594a8497f75ef2636fe44dc1ddb47f6751bdb2bfb9d2d3e6de16c197bde4c",
+                "games/magic/tools/accuracy/hsb-color.mjs": "3fb85263f156b39bfa34063b7c39faa5423bff0c034b51a7f131caafe895bf5a",
+                "games/magic/tools/accuracy/hsb-texture.mjs": "a1c7805e9afc63551dbccebe0b776b94f23784de6922726bc16b3aecfd466bb7",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              },
+              "proof": {
+                "sourceHash": "f5d219dd836bef38425e5bb2b6ca5da9e67e5f382a61d242f16313f197b48cfa",
+                "scopeHash": "d2739515d1fd3b58e3b380a6b793358f1ffb18938de315a12f24ff9c504a9b4e",
+                "gatesPassed": true,
+                "rendererHash": "0069957b58fc0a1673364140819c2fa9985d745cf147526317ca98b95d226378",
+                "methodHash": "053b00b9607bc8c0c36c4962f502e20f013b46a77b74b7bd0d63339f70083a79",
+                "nativeReplayHash": "7c0c627f54d71e91e043ab9f88a07b75cfbdfb71bc5622c13f478b3a375a7d1d",
+                "metricsHash": "2c9457016b381c60188fed1864b6b308675d56c028b492fa2f9d800d57907221",
+                "scanTemplateHash": "7608703fafbbf747e24bea4670110d2cd5614440c836186d1fc14db932c6a080",
+                "coveredPrintings": 21,
+                "calibrationNames": 8,
+                "validationNames": 12,
+                "validationKind": "reused-development",
+                "choice": "source-default"
               }
             },
             "paperColor": {
@@ -144684,30 +144722,68 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
-              "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"],
-              "historicalKey": "m21/black/components/W/W",
-              "componentMeasurements": {
-                "cards": 12,
-                "names": 12,
-                "before": 1.6450681286580973,
-                "after": 2.6663083522977993,
-                "worstRegression": 2.095393418125587,
-                "texture": {
-                  "shadowChroma": {
-                    "before": 0.7412328620914117,
-                    "after": 1.0152779317521397
-                  },
-                  "shadowLightness": {
-                    "before": 1.5547305557486513,
-                    "after": 3.8255559498070246
-                  },
-                  "contrastError": {
-                    "before": 1.0318889040911268,
-                    "after": 0.7189647031963453
-                  }
+              "status": "validated-default",
+              "reason": "5/5 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
+              "coveredPrintings": 5,
+              "measurements": {
+                "calibration": {
+                  "cards": 8,
+                  "names": 8,
+                  "medianColorError": 2.1235890485300644,
+                  "maximumColorError": 2.6678269893241535,
+                  "maximumTextureBinError": 2.5403557168898265
+                },
+                "validation": {
+                  "cards": 12,
+                  "names": 12,
+                  "medianColorError": 1.6715774276514912,
+                  "maximumColorError": 2.7226979604065256,
+                  "maximumTextureBinError": 3.79941912694901
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "names": 22,
+                  "medianColorError": 2.0918285213545165,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.223669137609704
+                },
+                "all": {
+                  "cards": 42,
+                  "names": 42,
+                  "medianColorError": 1.9581888086198367,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.79941912694901
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
+                "games/magic/src/presentation/printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
+                "games/magic/src/presentation/calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+                "games/magic/src/presentation/normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
+                "games/magic/src/presentation/canvas-face.ts": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
+                "games/magic/src/presentation/frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+                "games/magic/src/presentation/hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
+                "games/magic/src/presentation/assets.ts": "d94594a8497f75ef2636fe44dc1ddb47f6751bdb2bfb9d2d3e6de16c197bde4c",
+                "games/magic/tools/accuracy/hsb-color.mjs": "3fb85263f156b39bfa34063b7c39faa5423bff0c034b51a7f131caafe895bf5a",
+                "games/magic/tools/accuracy/hsb-texture.mjs": "a1c7805e9afc63551dbccebe0b776b94f23784de6922726bc16b3aecfd466bb7",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              },
+              "proof": {
+                "sourceHash": "786ba0c3857212eb6bd90c6d5942abc1bbb4b19a58ca012bf11215e24246a5a6",
+                "scopeHash": "a5b07d70a3e89031e6a90313d4d86f8a50f3ca3f8c5095cfdfce6c88b0e5315c",
+                "gatesPassed": true,
+                "rendererHash": "0069957b58fc0a1673364140819c2fa9985d745cf147526317ca98b95d226378",
+                "methodHash": "053b00b9607bc8c0c36c4962f502e20f013b46a77b74b7bd0d63339f70083a79",
+                "nativeReplayHash": "7c0c627f54d71e91e043ab9f88a07b75cfbdfb71bc5622c13f478b3a375a7d1d",
+                "metricsHash": "2c9457016b381c60188fed1864b6b308675d56c028b492fa2f9d800d57907221",
+                "scanTemplateHash": "7608703fafbbf747e24bea4670110d2cd5614440c836186d1fc14db932c6a080",
+                "coveredPrintings": 5,
+                "calibrationNames": 8,
+                "validationNames": 12,
+                "validationKind": "reused-development",
+                "choice": "source-default"
               }
             },
             "paperColor": {
@@ -145232,30 +145308,68 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
-              "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"],
-              "historicalKey": "m21/black/components/W/W",
-              "componentMeasurements": {
-                "cards": 12,
-                "names": 12,
-                "before": 1.6450681286580973,
-                "after": 2.6663083522977993,
-                "worstRegression": 2.095393418125587,
-                "texture": {
-                  "shadowChroma": {
-                    "before": 0.7412328620914117,
-                    "after": 1.0152779317521397
-                  },
-                  "shadowLightness": {
-                    "before": 1.5547305557486513,
-                    "after": 3.8255559498070246
-                  },
-                  "contrastError": {
-                    "before": 1.0318889040911268,
-                    "after": 0.7189647031963453
-                  }
+              "status": "validated-default",
+              "reason": "12/12 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
+              "coveredPrintings": 12,
+              "measurements": {
+                "calibration": {
+                  "cards": 8,
+                  "names": 8,
+                  "medianColorError": 2.1235890485300644,
+                  "maximumColorError": 2.6678269893241535,
+                  "maximumTextureBinError": 2.5403557168898265
+                },
+                "validation": {
+                  "cards": 12,
+                  "names": 12,
+                  "medianColorError": 1.6715774276514912,
+                  "maximumColorError": 2.7226979604065256,
+                  "maximumTextureBinError": 3.79941912694901
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "names": 22,
+                  "medianColorError": 2.0918285213545165,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.223669137609704
+                },
+                "all": {
+                  "cards": 42,
+                  "names": 42,
+                  "medianColorError": 1.9581888086198367,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.79941912694901
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
+                "games/magic/src/presentation/printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
+                "games/magic/src/presentation/calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+                "games/magic/src/presentation/normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
+                "games/magic/src/presentation/canvas-face.ts": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
+                "games/magic/src/presentation/frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+                "games/magic/src/presentation/hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
+                "games/magic/src/presentation/assets.ts": "d94594a8497f75ef2636fe44dc1ddb47f6751bdb2bfb9d2d3e6de16c197bde4c",
+                "games/magic/tools/accuracy/hsb-color.mjs": "3fb85263f156b39bfa34063b7c39faa5423bff0c034b51a7f131caafe895bf5a",
+                "games/magic/tools/accuracy/hsb-texture.mjs": "a1c7805e9afc63551dbccebe0b776b94f23784de6922726bc16b3aecfd466bb7",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              },
+              "proof": {
+                "sourceHash": "41a2c42e02b1a00b7204b60009a9de6217a77910518ec13a705429ebbc96aa6c",
+                "scopeHash": "a3aa6ce80d079187e4db599e54cab2b226369f2174a35ead9bac0eb5beb3dfc7",
+                "gatesPassed": true,
+                "rendererHash": "0069957b58fc0a1673364140819c2fa9985d745cf147526317ca98b95d226378",
+                "methodHash": "053b00b9607bc8c0c36c4962f502e20f013b46a77b74b7bd0d63339f70083a79",
+                "nativeReplayHash": "7c0c627f54d71e91e043ab9f88a07b75cfbdfb71bc5622c13f478b3a375a7d1d",
+                "metricsHash": "2c9457016b381c60188fed1864b6b308675d56c028b492fa2f9d800d57907221",
+                "scanTemplateHash": "7608703fafbbf747e24bea4670110d2cd5614440c836186d1fc14db932c6a080",
+                "coveredPrintings": 12,
+                "calibrationNames": 8,
+                "validationNames": 12,
+                "validationKind": "reused-development",
+                "choice": "source-default"
               }
             },
             "paperColor": {
@@ -145393,30 +145507,68 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
-              "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
-              "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"],
-              "historicalKey": "m21/black/components/W/W",
-              "componentMeasurements": {
-                "cards": 12,
-                "names": 12,
-                "before": 1.6450681286580973,
-                "after": 2.6663083522977993,
-                "worstRegression": 2.095393418125587,
-                "texture": {
-                  "shadowChroma": {
-                    "before": 0.7412328620914117,
-                    "after": 1.0152779317521397
-                  },
-                  "shadowLightness": {
-                    "before": 1.5547305557486513,
-                    "after": 3.8255559498070246
-                  },
-                  "contrastError": {
-                    "before": 1.0318889040911268,
-                    "after": 0.7189647031963453
-                  }
+              "status": "validated-default",
+              "reason": "4/4 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
+              "coveredPrintings": 4,
+              "measurements": {
+                "calibration": {
+                  "cards": 8,
+                  "names": 8,
+                  "medianColorError": 2.1235890485300644,
+                  "maximumColorError": 2.6678269893241535,
+                  "maximumTextureBinError": 2.5403557168898265
+                },
+                "validation": {
+                  "cards": 12,
+                  "names": 12,
+                  "medianColorError": 1.6715774276514912,
+                  "maximumColorError": 2.7226979604065256,
+                  "maximumTextureBinError": 3.79941912694901
+                },
+                "additional-development": {
+                  "cards": 22,
+                  "names": 22,
+                  "medianColorError": 2.0918285213545165,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.223669137609704
+                },
+                "all": {
+                  "cards": 42,
+                  "names": 42,
+                  "medianColorError": 1.9581888086198367,
+                  "maximumColorError": 2.862147362745083,
+                  "maximumTextureBinError": 3.79941912694901
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
+                "games/magic/src/presentation/printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
+                "games/magic/src/presentation/calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
+                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+                "games/magic/src/presentation/normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
+                "games/magic/src/presentation/canvas-face.ts": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
+                "games/magic/src/presentation/frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+                "games/magic/src/presentation/hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
+                "games/magic/src/presentation/assets.ts": "d94594a8497f75ef2636fe44dc1ddb47f6751bdb2bfb9d2d3e6de16c197bde4c",
+                "games/magic/tools/accuracy/hsb-color.mjs": "3fb85263f156b39bfa34063b7c39faa5423bff0c034b51a7f131caafe895bf5a",
+                "games/magic/tools/accuracy/hsb-texture.mjs": "a1c7805e9afc63551dbccebe0b776b94f23784de6922726bc16b3aecfd466bb7",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              },
+              "proof": {
+                "sourceHash": "a23111144e486b42c80ff69be45d433786686789149fa957cee879f252c86913",
+                "scopeHash": "2ef916eec38336625d09c1462d524271274d98dec7172e508838d7e4a4c9ddb2",
+                "gatesPassed": true,
+                "rendererHash": "0069957b58fc0a1673364140819c2fa9985d745cf147526317ca98b95d226378",
+                "methodHash": "053b00b9607bc8c0c36c4962f502e20f013b46a77b74b7bd0d63339f70083a79",
+                "nativeReplayHash": "7c0c627f54d71e91e043ab9f88a07b75cfbdfb71bc5622c13f478b3a375a7d1d",
+                "metricsHash": "2c9457016b381c60188fed1864b6b308675d56c028b492fa2f9d800d57907221",
+                "scanTemplateHash": "7608703fafbbf747e24bea4670110d2cd5614440c836186d1fc14db932c6a080",
+                "coveredPrintings": 4,
+                "calibrationNames": 8,
+                "validationNames": 12,
+                "validationKind": "reused-development",
+                "choice": "source-default"
               }
             },
             "paperColor": {

@@ -73,3 +73,46 @@ export function applyM21StockTransfer(group, receipt, guardsMatch) {
     measurements: receipt.metrics.summary,
   };
 }
+
+/** An unchanged source is calibrated only after its actual references pass. */
+export function applyM21WhiteDefault(group, source, receipt, guardsMatch) {
+  const rows = receipt.rows.filter((r) => group.printingIds.includes(r.id));
+  if (!rows.length) return;
+  const current = guardsMatch && source?.source === receipt.source.source,
+    complete = rows.length === group.printings;
+  group.tasks.frameColor = {
+    status: !current ? 'stale' : complete ? 'validated-default' : 'partial',
+    reason: `${rows.length}/${group.printings} unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.`,
+    evidence: ['games/magic/fixtures/accuracy/m21-white-default.json'],
+    coveredPrintings: rows.length,
+    measurements: receipt.summaries,
+    ...(current && complete
+      ? {
+          guards: {
+            ...Object.fromEntries(
+              Object.entries(receipt.sourceGuards).map(([f, h]) => [
+                'games/magic/src/presentation/' + f,
+                h,
+              ]),
+            ),
+            ...receipt.methodGuards,
+          },
+          proof: {
+            sourceHash: group.sourceHashes?.frameColor ?? group.sourceHash,
+            scopeHash: group.scopeHash,
+            gatesPassed: true,
+            rendererHash: receipt.rendererHash,
+            methodHash: receipt.tools['m21-refined-pigment-audit.mjs'],
+            nativeReplayHash: receipt.artifacts['stock-replay.json'],
+            metricsHash: receipt.artifacts['refined-pigment-audit.json'],
+            scanTemplateHash: receipt.normalization.templateHash,
+            coveredPrintings: rows.length,
+            calibrationNames: receipt.summaries.calibration.names,
+            validationNames: receipt.summaries.validation.names,
+            validationKind: 'reused-development',
+            choice: 'source-default',
+          },
+        }
+      : {}),
+  };
+}

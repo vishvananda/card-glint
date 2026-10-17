@@ -4,6 +4,7 @@ import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   applyM21BoundaryRefinement,
   applyM21StockTransfer,
+  applyM21WhiteDefault,
 } from '../games/magic/tools/accuracy/calibration-m21-scope.mjs';
 const read = async (f) => JSON.parse(await readFile('games/magic/fixtures/accuracy/' + f));
 const boundaries = await read('m21-component-boundaries-v2.json'),
@@ -62,7 +63,37 @@ for (const s of Object.values(stock.metrics.summary)) {
 }
 const ledger = await read('calibration-progress.json'),
   m21 = ledger.sets.find((s) => s.set === 'm21');
+const white = await read('m21-white-default.json');
+assert.equal(white.rows.length, 42);
+assert.equal(white.choice, 'source-default');
+assert.equal(white.normalization.knownPosePassed, 10);
+for (const r of white.rows) {
+  assert.ok(r.regionalColorError < 5);
+  assert.equal(r.textureBinErrors.length, 10);
+  assert.ok(r.textureBinErrors.every((v) => v < 5));
+  assert.ok(boundaries.rows.some((b) => b.id === r.id && b.accepted));
+}
+for (const [file, expected] of Object.entries({
+  ...Object.fromEntries(
+    Object.entries(white.sourceGuards).map(([f, h]) => ['games/magic/src/presentation/' + f, h]),
+  ),
+  ...white.methodGuards,
+}))
+  assert.equal(hash(await readFile(file)), expected, 'Stale default evidence: ' + file);
+let whiteCount = 0;
 for (const g of m21.groups) {
+  if (g.tasks.frameColor.status === 'validated-default') {
+    assert.equal(g.palette, 'W');
+    assert.equal(g.legendary, false);
+    assert.equal(g.tasks.frameColor.proof.choice, 'source-default');
+    assert.equal(white.rows.filter((r) => g.printingIds.includes(r.id)).length, g.printings);
+    whiteCount += g.printings;
+    const stale = structuredClone(g);
+    applyM21WhiteDefault(stale, white.source, white, false);
+    assert.equal(stale.tasks.frameColor.status, 'stale');
+    applyM21WhiteDefault(stale, { source: 'different-asset' }, white, true);
+    assert.equal(stale.tasks.frameColor.status, 'stale');
+  }
   const r = boundaries.rows.filter((r) => g.printingIds.includes(r.id));
   if (r.length) {
     const accepted = r.filter((r) => r.accepted).length;
@@ -79,6 +110,7 @@ for (const g of m21.groups) {
     assert.equal(stale.tasks.blackLevels.status, 'stale');
   }
 }
+assert.equal(whiteCount, 42);
 console.log(
   'M21 scope: 239 scan poses, 80 known transforms, 305 native cards, 645 selector controls; failed scans and interior-ink obligations retained.',
 );

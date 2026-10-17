@@ -182,3 +182,14 @@ poses are excluded from that metric and retained in the ledger. Interior ink,
 land paper/gradients, crowns, typography, foil-only references and full-card scores
 remain open. The black-level task stays partial until its interior-ink obligation
 is met.
+
+The [white-source review](fixtures/accuracy/m21-white-default.json) validates the
+unchanged ordinary M21 white-frame pigment. All 42 references have accepted
+normalization and native replay. Their largest regional color distance is 2.87;
+every one of ten ordered texture-bin colors is within 3.80, below the existing
+5-unit absolute color tolerance. Eight calibration and twelve reserved names
+remain separate. The three largest regional differences were visually reviewed.
+An extra color curve made reserved cards worse, so this is a measured
+`validated-default`, with no new rendering coefficients. Paper/plates, texture
+frequency, geometry, crowns and typography remain open; this does not certify
+the complete white card treatment.
