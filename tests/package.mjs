@@ -7,7 +7,9 @@ const root = process.cwd(),
   temporary = await mkdtemp(path.join(os.tmpdir(), 'card-glint-consumer-'));
 try {
   const packed = JSON.parse(
-    execFileSync('npm', ['pack', '--json', '--pack-destination', temporary], { encoding: 'utf8' }),
+    execFileSync('npm', ['pack', '--ignore-scripts', '--json', '--pack-destination', temporary], {
+      encoding: 'utf8',
+    }),
   )[0];
   await writeFile(
     path.join(temporary, 'package.json'),

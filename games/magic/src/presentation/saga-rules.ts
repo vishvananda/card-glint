@@ -1,6 +1,16 @@
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { specialRules } from './special-frames.js';
 import { layoutRules } from './rules-layout.js';
+import { SAGA_MARKER_GEOMETRY } from './saga-frame.js';
+
+export const SAGA_RULE_BOUNDS = {
+  reminder: { x: 42.3, y: 78, width: 197 },
+  chapters: { x: 65.1, width: 171 },
+  top: 80,
+  reminderBottom: 201,
+  bottom: 569,
+  reverseStatsBottom: 535,
+} as const;
 
 /** Fixed reminder area and measured chapter demand. Sparse merged chapters
  * retain a little trailing breathing room; dense chapters consume the column.
@@ -32,12 +42,12 @@ export function sagaRuleLayout(
     },
   ];
   const typography = { leading: 0.98, paragraphGap: 0.3, flavorGap: 0 };
-  const top = opening.length ? 201 : 80,
-    bottom = face.reverseStats && face.layout === 'transform' ? 535 : 569;
+  const top = opening.length ? SAGA_RULE_BOUNDS.reminderBottom : SAGA_RULE_BOUNDS.top,
+    bottom = face.reverseStats ? SAGA_RULE_BOUNDS.reverseStatsBottom : SAGA_RULE_BOUNDS.bottom;
   const reminder = layoutRules(
     context,
     opening.flatMap((r) => paragraphs(r.text, r.reminder)),
-    { x: 42.3, y: 78, width: 197, height: top - 80 },
+    { ...SAGA_RULE_BOUNDS.reminder, height: top - SAGA_RULE_BOUNDS.top },
     20.4,
     12,
     { ...typography, centerOffset: -3 },
@@ -51,12 +61,13 @@ export function sagaRuleLayout(
         layoutRules(
           context,
           paragraphs(r.text),
-          { x: 65.1, y: 0, width: 171, height: 2000 },
+          { ...SAGA_RULE_BOUNDS.chapters, y: 0, height: 2000 },
           size,
           size,
           typography,
         ).height + options.padding,
-        43 + Math.max(0, r.badges.length - 1) * 49 + 12,
+        SAGA_MARKER_GEOMETRY.minimumRowHeight +
+          Math.max(0, r.badges.length - 1) * SAGA_MARKER_GEOMETRY.gap,
       ),
     );
     const available = bottom - top;
@@ -79,7 +90,7 @@ export function sagaRuleLayout(
       const layout = layoutRules(
         context,
         paragraphs(row.text),
-        { x: 65.1, y: y + 7, width: 171, height: height - 14 },
+        { ...SAGA_RULE_BOUNDS.chapters, y: y + 7, height: height - 14 },
         size,
         size,
         { ...typography, centerOffset: i === chapters.length - 1 ? -options.lastLift : 0 },

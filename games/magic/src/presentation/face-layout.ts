@@ -16,9 +16,18 @@ export interface RulesParagraph {
   align?: 'left' | 'center' | 'right';
 }
 
+export interface LiveChanges {
+  power?: string;
+  toughness?: string;
+  omitInk?: boolean;
+  /** Added words receive accents; an empty array accents the remaining line. */
+  typeLine?: { added: readonly string[]; color: string };
+}
+
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
+  liveChanges?: LiveChanges;
   /** Editor-only omission of text ink in normalized physical-card regions.
    * Layout, frame selection, calibrated materials and mana remain unchanged. */
   printingOmissions?: readonly {

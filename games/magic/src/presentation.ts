@@ -1,4 +1,6 @@
+export { faceCornerRadius } from './presentation/face-silhouette.js';
 /** Shared layout and raster painting for hosts that own their scene and editing DOM. */
+export * from './presentation/semantic-layout.js';
 export * from './presentation/art-apertures.js';
 export * from './presentation/assets.js';
 export * from './presentation/canvas-ability-emblem.js';
@@ -29,7 +31,8 @@ export * from './presentation/wording.js';
 export * from './presentation/frame-plates.js';
 export * from './presentation/color-calibration-coverage.js';
 
-export { sagaRuleLayout } from './presentation/saga-rules.js';
+export { sagaRuleLayout, SAGA_RULE_BOUNDS } from './presentation/saga-rules.js';
+export { SAGA_CHAPTER, SAGA_MARKER_GEOMETRY, SAGA_RECTS } from './presentation/saga-frame.js';
 
 export * from './presentation/symbol-adjustment.js';
 
@@ -37,3 +40,7 @@ export * from './presentation/standard-frame-templates.js';
 
 export { hasOvalSecurityStamp } from './presentation/security-stamp-policy.js';
 export { mountedSecurityStamp } from './presentation/security-stamp-paint.js';
+
+export { ADVENTURE_RULE_BOUNDS } from './presentation/adventure-rules.js';
+export { PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
+export { FLIP_PANEL_RECTS } from './presentation/flip-template-paint.js';

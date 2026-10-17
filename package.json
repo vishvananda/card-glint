@@ -1,14 +1,12 @@
 {
   "name": "card-glint",
   "version": "0.3.10",
-  "private": true,
   "type": "module",
-  "workspaces": [
-    "packages/browser"
-  ],
   "scripts": {
+    "prepare": "node scripts/build-wasm.mjs && node scripts/build.mjs --package-only",
+    "build:package": "node scripts/build-wasm.mjs && node scripts/build.mjs --package-only",
     "build:wasm": "node scripts/build-wasm.mjs",
-    "build": "npm run build:wasm && node scripts/build.mjs",
+    "build": "node scripts/build-wasm.mjs && node scripts/build.mjs",
     "check": "cargo fmt --all --check && cargo clippy --workspace --all-targets -- -D warnings && cargo test --workspace && tsc --noEmit && prettier --check . && node scripts/check-boundaries.mjs",
     "format": "cargo fmt --all && prettier --write .",
     "test:browser": "node tests/browser.mjs",
@@ -85,6 +83,10 @@
       "types": "./dist/types/games/magic/src/presentation.d.ts",
       "import": "./dist/lib/magic-presentation.js"
     },
+    "./magic/offline-assets": {
+      "types": "./dist/types/games/magic/src/offline-assets.d.ts",
+      "import": "./dist/lib/magic-offline-assets.js"
+    },
     "./pixels.wasm": "./dist/lib/pixels_bg.wasm"
   },
   "files": [
@@ -92,6 +94,7 @@
     "dist/types",
     "games/*/assets.json",
     "README.md",
+    "docs/host-integration.md",
     "LICENSE*",
     "NOTICE*",
     "games/showcase/art",
@@ -102,6 +105,9 @@
   "description": "Game-neutral browser card rendering with a Rust/WASM core, cached GPU etching, and isolated game packs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vishvananda/card-glint.git"
+    "url": "https://github.com/witchesofthehill/card-glint.git"
+  },
+  "engines": {
+    "node": ">=24 <25"
   }
 }

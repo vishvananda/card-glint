@@ -1,3 +1,4 @@
+import { paintLiveStats } from './live-changes.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
 import { resolveCardProfile } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -76,7 +77,26 @@ export function paintEighthFooter(
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     const text = `${face.power}/${face.toughness}`;
-    if (statsFont) paintPlanarStats(c, text);
+    if (face.liveChanges?.power || face.liveChanges?.toughness) {
+      const measure = statsFont
+        ? undefined
+        : (value: string) =>
+            value
+              .split(/(\*)/)
+              .reduce((sum, run) => sum + (run === '*' ? 15 : c.measureText(run).width), 0);
+      paintLiveStats(
+        c,
+        face.liveChanges,
+        text,
+        407,
+        78,
+        () => {
+          if (statsFont) paintPlanarStats(c, text);
+          else paintStats(c, text);
+        },
+        measure,
+      );
+    } else if (statsFont) paintPlanarStats(c, text);
     else paintStats(c, text);
     c.restore();
   }

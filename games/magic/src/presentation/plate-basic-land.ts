@@ -1,3 +1,4 @@
+import { rulesInkVisible } from './rules-visibility.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 
@@ -53,6 +54,7 @@ export function paintBasicLandSymbol(
   face: RenderedCardInput,
   images: ReadonlyMap<string, ImageBitmap>,
 ): boolean {
+  if (!rulesInkVisible(c)) return true;
   const url = plateBasicSymbol(face);
   if (!url) return false;
   const glyph = images.get(url);

@@ -136,6 +136,9 @@ export function paintAftermathFace(
         rects.type[2] - (symbol ? 45 : 0),
         23,
         true,
+        1,
+        'CardRenderer MTG Beleren',
+        half.liveChanges,
       );
       if (symbol) {
         const crop = setSymbolCrop(half),

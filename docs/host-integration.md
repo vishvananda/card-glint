@@ -4,8 +4,9 @@ Use `createRenderer` for a complete scene. Hosts with an established depth pass,
 overlays and texture cache can instead use the independent public entry points:
 
 - `card-glint/magic/presentation`: shared layout, text, symbols and raster painters.
-- `card-glint/finish`: `foilShader` and `FOIL_REFLECTION_GLSL`.
+- `card-glint/finish`: foil shaders, `modernSurfaceShader`, `FinishResources` and `SurfaceMotion`.
 - `card-glint/kernels`: `createPixelKernels` with explicit disposal.
+- `card-glint/magic/offline-assets`: asset discovery, font metadata and shared asset fetching.
 
 These entry points do not create a WebGL context or schedule animation. The host
 owns image leases, texture uploads, memory limits, clipping, hit testing, overlays,
@@ -14,6 +15,24 @@ its shader source into a host. A host-created material draws the card and finish
 in the same depth pass, so later overlays and intervening objects remain in front.
 A layer intended to participate in etching must be rasterized before mask creation;
 a layer above the finish must be drawn later or excluded in the host material.
+
+## Install the public fork
+
+Use `card-glint@git+https://github.com/witchesofthehill/card-glint.git#<full-commit-sha>`
+with Yarn Classic 1.22 and pin an actual reviewed commit. Git preparation builds
+the package with its own development dependencies, independently of your app.
+It requires Node.js 24.x, Git, rustup, a native compiler/linker, and network access
+on a cold install. The build pins Rust 1.98.0 and wasm-bindgen-cli 0.2.127 and
+keeps Cargo downloads, build artifacts and the CLI inside the source checkout's
+`node_modules/.cache/card-glint`. No host download or patch script is needed.
+
+Import only the public entry points above, not source paths in the dependency.
+Vite and compatible bundlers resolve the package's `?url` imports and emit the
+matching WASM binaries. The explicit binary exports are
+`card-glint/renderer.wasm` and `card-glint/pixels.wasm`; append `?url` when passing
+their URLs to `createRenderer` or `createPixelKernels`. Declarations are included
+for every JavaScript entry point. The package contains no private app code and
+requires no registry credentials.
 
 ## Face composition
 
@@ -71,3 +90,20 @@ bundles. The Rust workspace is reused until disposal, and output arrays belong
 to the caller. Cache masks by source revision, dimensions and threshold. Hot cache
 hits should skip both kernels and GPU uploads. WASM instance memory and retained
 scratch are additional to the host's resident image/texture budget.
+
+## Asset discovery and offline hosts
+
+`card-glint/magic/offline-assets` exports `magicAssetUrls`, `canvasAssetUrls`,
+`MAGIC_FONT_ASSETS`, `decodeCanvasImage` and `setAssetFetcher`.
+`magicAssetUrls(face)` discovers the frame, symbol and security-stamp URLs used
+by that input. `MAGIC_FONT_ASSETS` describes external font URLs and CSS metadata.
+These exports do not download or bundle the assets.
+
+Install a fetch adapter with `setAssetFetcher` before preparing faces when your
+host serves permitted assets from a local cache or another URL. All package
+entry points in one installed package share that adapter. The host still owns
+font registration, caching, offline availability and asset rights. Do not infer
+redistribution permission from a public URL. Keep `LICENSE-MIT`, `LICENSE-APACHE`,
+`NOTICE.md` and `games/magic/NOTICE.md` with redistributed package code, and read
+the [game-pack asset notices](../games/magic/NOTICE.md) separately from the
+repository's code license.

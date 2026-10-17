@@ -1,8 +1,10 @@
+import { paintLiveText } from './live-changes.js';
+import { rulesInkVisible } from './rules-visibility.js';
 import { paintOriginalWhite } from './historical-white.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
 import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
 import { manaSymbolAsset } from './assets.js';
-import { FACE_TEXT, symbolTextParts, type FaceRect } from './face-layout.js';
+import { FACE_TEXT, symbolTextParts, type FaceRect, type LiveChanges } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import type { CanvasImages } from './canvas-assets.js';
 
@@ -158,6 +160,7 @@ export function paintRules(
   font: number | { size: number; italic: boolean },
   images: CanvasImages,
 ) {
+  if (!rulesInkVisible(context)) return;
   const size = typeof font === 'number' ? font : font.size;
   context.font = `${typeof font !== 'number' && font.italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`;
   const paragraphs = text
@@ -206,6 +209,8 @@ export function paintFittedText(
     | 'CardRenderer MTG Matrix'
     | 'CardRenderer MTG Goudy'
     | 'CardRenderer MTG MPlantin' = 'CardRenderer MTG Beleren',
+  liveChanges?: LiveChanges,
+  liveRole: 'type' | 'stats' = 'type',
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   context.save();
@@ -224,7 +229,7 @@ export function paintFittedText(
     size = Math.max(size * 0.78, (size * width) / measured);
     context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   }
-  context.fillText(text, x, y, width);
+  paintLiveText(context, text, x, y, width, liveChanges, liveRole);
   context.restore();
 }
 

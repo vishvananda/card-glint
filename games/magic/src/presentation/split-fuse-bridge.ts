@@ -1,4 +1,4 @@
-import manifest from '../../assets.json';
+import manifest from '../../assets.json' with { type: 'json' };
 import { resolveFrameColors } from './profile.js';
 import { splitSourceMask } from './split-materials.js';
 import type { RenderedCardInput } from './face-layout.js';

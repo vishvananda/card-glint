@@ -1,3 +1,4 @@
+import { paintLiveText } from './live-changes.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { paintModernFooter } from './modern-footer.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
@@ -206,6 +207,7 @@ export function paintFramePlateFace(
     true,
     1,
     family,
+    face.liveChanges,
   );
   c.restore();
   paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
@@ -234,7 +236,14 @@ export function paintFramePlateFace(
     c.font = `bold 25px "${family}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
-    c.fillText(`${face.power}/${face.toughness}`, sx + sw * 0.52, sy + sh * 0.52, sw * 0.85);
+    paintLiveText(
+      c,
+      `${face.power}/${face.toughness}`,
+      sx + sw * 0.52,
+      sy + sh * 0.52,
+      sw * 0.85,
+      face.liveChanges,
+    );
   }
   paintModernFooter(c, face);
   c.restore();

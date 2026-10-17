@@ -1,4 +1,5 @@
-import type { RenderedCardInput } from './face-layout.js';
+import { paintLiveText } from './live-changes.js';
+import type { RenderedCardInput, LiveChanges } from './face-layout.js';
 import { legendsFrame } from './legends-frame.js';
 
 interface Lettering {
@@ -31,7 +32,12 @@ const stats: Lettering = {
 /** Prepare solid, slightly lighter-weight ink once with the cached face. The
  * transparent stroke removes only the glyph edge; it never erases frame pixels.
  * Shadows belong to the finished glyph, independent of the title's state. */
-function paint(c: CanvasRenderingContext2D, text: string, style: Lettering) {
+function paint(
+  c: CanvasRenderingContext2D,
+  text: string,
+  style: Lettering,
+  liveChanges?: LiveChanges,
+) {
   const layer = document.createElement('canvas');
   layer.width = c.canvas.width;
   layer.height = c.canvas.height;
@@ -46,7 +52,7 @@ function paint(c: CanvasRenderingContext2D, text: string, style: Lettering) {
   ink.textBaseline = 'alphabetic';
   ink.letterSpacing = '0px';
   ink.fillStyle = '#f2eee3';
-  ink.fillText(text, 0, 0, style.maximum / style.width);
+  paintLiveText(ink, text, 0, 0, style.maximum / style.width, liveChanges);
   ink.globalCompositeOperation = 'destination-out';
   ink.lineWidth = 2 * style.inset;
   ink.strokeText(text, 0, 0, style.maximum / style.width);
@@ -66,6 +72,6 @@ export function paintLegendsFooter(c: CanvasRenderingContext2D, face: RenderedCa
   if (!legendsFrame(face) || (face.borderColor && face.borderColor !== 'black')) return false;
   if (face.artist) paint(c, `Illus. © 1994 ${face.artist}`, artist);
   if (face.power != null && face.toughness != null)
-    paint(c, `${face.power}/${face.toughness}`, stats);
+    paint(c, `${face.power}/${face.toughness}`, stats, face.liveChanges);
   return true;
 }

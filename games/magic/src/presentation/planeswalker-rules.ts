@@ -2,6 +2,24 @@ import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.j
 import { faceFrame, faceRects, specialRules } from './special-frames.js';
 import { layoutRules, RULES_TYPOGRAPHY } from './rules-layout.js';
 import { planeswalkerInkLimits } from './planeswalker-lower-frame.js';
+export { planeswalkerInkLimits } from './planeswalker-lower-frame.js';
+export { PLANESWALKER_COST_GEOMETRY } from './planeswalker-loyalty.js';
+
+export const PLANESWALKER_RULE_GEOMETRY = {
+  badgeWidth: 54,
+  badgeHeight: 40,
+  textLeft: 67,
+  staticTextLeft: 45,
+  rightInset: 8,
+  separatorLeft: 40,
+  separatorHeight: 1.5,
+  minimumRowHeight: 34,
+  colonOffsetX: 4,
+  colonOffsetY: 1.5,
+  colonFontSize: 24,
+  colonFontFamily: '"CardRenderer MTG MPlantin", Georgia',
+  colonInk: '#17140f',
+} as const;
 
 /** Match explicit styles to the visible ability, stripping only its loyalty prefix.
  * rulesText remains the special-frame source; unrelated ordinary paragraphs do
@@ -34,14 +52,21 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
   const rows = abilities.map((row, index) => ({
     ...row,
     runs: abilityRuns(face, row.text, index),
-    left: row.badges.length ? 67 : 45,
+    left: row.badges.length
+      ? PLANESWALKER_RULE_GEOMETRY.textLeft
+      : PLANESWALKER_RULE_GEOMETRY.staticTextLeft,
   }));
   const measure = (size: number) =>
     rows.map((row) =>
       layoutRules(
         context,
         [{ role: 'rules', runs: row.runs }],
-        { x: x + row.left, y: 0, width: width - row.left - 8, height: 1000 },
+        {
+          x: x + row.left,
+          y: 0,
+          width: width - row.left - PLANESWALKER_RULE_GEOMETRY.rightInset,
+          height: 1000,
+        },
         size,
         size,
         typography,
@@ -66,7 +91,10 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
     return tops;
   };
   const paperFits = () => (paperTops()[0] ?? inkTop) >= inkTop;
-  const minimum = () => measured.map((layout) => Math.max(34, layout.height + 16));
+  const minimum = () =>
+    measured.map((layout) =>
+      Math.max(PLANESWALKER_RULE_GEOMETRY.minimumRowHeight, layout.height + 16),
+    );
   const fixedRowsFit = () => {
     const step = height / Math.max(1, rows.length);
     return measured.every((layout, i) => {
@@ -99,7 +127,7 @@ export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: Re
       {
         x: x + row.left,
         y: textTops[index]!,
-        width: width - row.left - 8,
+        width: width - row.left - PLANESWALKER_RULE_GEOMETRY.rightInset,
         height: textHeight,
       },
       font,

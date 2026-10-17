@@ -1,3 +1,5 @@
+import { paintLiveText } from './live-changes.js';
+import { withRulesInk } from './rules-visibility.js';
 import { withPrintingOmissions } from './printing-omissions.js';
 import { paintPlaneswalkerLoyalty } from './planeswalker-loyalty.js';
 import { paintModernFooter } from './modern-footer.js';
@@ -93,6 +95,7 @@ export interface CardTextureInput {
   };
   layer?: 'face' | 'etching';
   paintLayer?: PaintLayer;
+  rulesText?: boolean;
   etchThreshold?: number;
   /** Null denotes generated presentation with no official printing. */
   printingId: string | null;
@@ -135,6 +138,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v126',
     input.paintLayer ?? null,
+    input.rulesText !== false,
     tier,
     input.printingId,
     input.layer === 'etching' ? null : input.printedImage,
@@ -190,7 +194,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.frameTemplate ?? null,
         face.futureTreatment ?? null,
         face.defense ?? null,
-        face.frameTemplate ? face.faces?.map((child) => faceContentKey(child, mask)) : null,
+        face.faces?.map((child) => faceContentKey(child, mask)) ?? null,
         face.name,
         face.manaSymbols ?? [],
         face.symbolAdjustment ?? null,
@@ -215,6 +219,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.setSymbolSource ?? null,
         face.rarity ?? 'common',
         face.securityStamp ?? 'default',
+        face.liveChanges ?? null,
         face.power ?? null,
         face.toughness ?? null,
         face.loyalty ?? null,
@@ -360,15 +365,17 @@ export async function composeCardTexture(
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
       const paintingImages = numerals.images;
-      withPrintingOmissions(context, input.face, () =>
-        paintAssembledFace(
-          context,
-          input.face,
-          paintingImages,
-          FACE_HEIGHT,
-          false,
-          hooks?.underArt,
-          input.paintLayer,
+      withRulesInk(context, input.rulesText !== false, () =>
+        withPrintingOmissions(context, input.face, () =>
+          paintAssembledFace(
+            context,
+            input.face,
+            paintingImages,
+            FACE_HEIGHT,
+            false,
+            hooks?.underArt,
+            input.paintLayer,
+          ),
         ),
       );
       if (
@@ -791,6 +798,8 @@ export function paintAssembledFace(
     FACE_TEXT.typeFont * textScale,
     false,
     kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
+    'CardRenderer MTG Beleren',
+    face.liveChanges,
   );
   paintAdjustedSymbols(context, originalSymbolBounds, face.symbolAdjustment?.set, () => {
     if (setIcon) {
@@ -845,11 +854,13 @@ export function paintAssembledFace(
       context.font = `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`;
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      context.fillText(
+      paintLiveText(
+        context,
         stats.text,
         sx + sw / 2,
         sy + FACE_TEXT.statsLine / 2 + (kind === 'normal' ? 2 : 0),
         sw,
+        face.liveChanges,
       );
     }
   }

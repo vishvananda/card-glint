@@ -85,7 +85,18 @@ export function paintModernSplitHeader(
     : 0;
   const w = symbol ? symbol.width * crop[2] * scale : 0,
     h = symbol ? symbol.height * crop[3] * scale : 0;
-  paintFittedText(c, half.typeLine ?? '', 70, 277, (symbol ? 331 - w - 6 : 331) - 70, 18.5, true);
+  paintFittedText(
+    c,
+    half.typeLine ?? '',
+    70,
+    277,
+    (symbol ? 331 - w - 6 : 331) - 70,
+    18.5,
+    true,
+    1,
+    'CardRenderer MTG Beleren',
+    half.liveChanges,
+  );
   if (symbol) {
     const bounds = [331 - w, 277 - h / 2, w, h] as const;
     if (isStyledSetSymbol(url) || half.setSymbol) c.drawImage(symbol, ...bounds);

@@ -1,7 +1,9 @@
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+process.chdir(fileURLToPath(new URL('../', import.meta.url)));
 const { version } = JSON.parse(await readFile('package.json', 'utf8'));
 if (!/^\d+\.\d+\.\d+(?:-[\w.-]+)?$/.test(version)) throw Error('Invalid release version');
 if (process.env.GITHUB_REF_TYPE === 'tag' && process.env.GITHUB_REF_NAME !== `v${version}`) {
@@ -12,10 +14,25 @@ const output = path.resolve('dist/releases'),
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 const packed = JSON.parse(
-  execFileSync('npm', ['pack', '--json', '--pack-destination', output], { encoding: 'utf8' }),
+  execFileSync('npm', ['pack', '--ignore-scripts', '--json', '--pack-destination', output], {
+    encoding: 'utf8',
+  }),
 )[0];
 const browser = path.join(output, folder);
 await cp('dist/lib', browser, { recursive: true });
+// The npm package uses bundler asset imports; the browser ZIP needs plain module URLs.
+for (const file of await readdir(browser, { recursive: true })) {
+  if (!file.endsWith('.js')) continue;
+  const outputFile = path.join(browser, file);
+  const source = await readFile(outputFile, 'utf8');
+  await writeFile(
+    outputFile,
+    source.replace(
+      /import\s+([\w$]+)\s+from\s*(['"])(\.\/(?:renderer|pixels)_bg\.wasm)\?url\2\s*;?/g,
+      (_, name, _quote, url) => `const ${name}=new URL(${JSON.stringify(url)},import.meta.url);`,
+    ),
+  );
+}
 await cp('games/showcase/art', path.join(browser, 'art'), { recursive: true });
 await cp('examples/standalone', browser, { recursive: true });
 await mkdir(path.join(browser, 'magic'), { recursive: true });
@@ -27,7 +44,7 @@ for (const name of ['LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE.md']) {
 }
 await writeFile(
   path.join(browser, 'README.txt'),
-  `card-glint ${version}\n\nServe this directory with an HTTP server (for example python3 -m http.server).\nOpen index.html for a working example. file:// URLs cannot load WASM reliably.\n\nImport createRenderer from ./browser.js. Keep the JS chunks and renderer_bg.wasm\ntogether: the WASM core requires its matching JavaScript/WebGL2 host. No Node,\nRust compiler, bundler, model weights or external artwork is needed at runtime.\nThe optional showcase.js and art/ are original, repository-licensed examples.\n\nTypes, architecture and game-pack API: https://github.com/vishvananda/card-glint\n`,
+  `card-glint ${version}\n\nServe this directory with an HTTP server (for example python3 -m http.server).\nOpen index.html for a working example. file:// URLs cannot load WASM reliably.\n\nImport createRenderer from ./browser.js. Keep the JS chunks and both WASM binaries\ntogether: the WASM core requires its matching JavaScript/WebGL2 host. No Node,\nRust compiler, bundler, model weights or external artwork is needed at runtime.\nThe optional showcase.js and art/ are original, repository-licensed examples.\n\nTypes, architecture and game-pack API: https://github.com/witchesofthehill/card-glint\n`,
 );
 const archive = `${folder}.zip`;
 execFileSync('zip', ['-qr', archive, folder], { cwd: output });

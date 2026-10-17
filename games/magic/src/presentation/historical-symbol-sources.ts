@@ -1,3 +1,4 @@
+import { fetchCardAsset } from '../fetch.js';
 import { hasSymbolSvgPatch, patchSymbolSvg } from './symbol-svg-patches.js';
 import {
   hasHistoricalBacking,
@@ -52,7 +53,10 @@ async function acquire(url: string, signal: AbortSignal) {
       controller: new AbortController(),
       promise: Promise.resolve().then(async () => {
         // A consumer's abort must not poison another loader sharing this fetch.
-        const response = await fetch(url, { mode: 'cors', signal: fresh.controller.signal });
+        const response = await fetchCardAsset(url, {
+          mode: 'cors',
+          signal: fresh.controller.signal,
+        });
         if (!response.ok) throw Error(`Symbol source ${response.status}: ${url}`);
         const blob = await patchSymbolSvg(url, await response.blob()),
           backing = await historicalBackingBlob(url, blob);

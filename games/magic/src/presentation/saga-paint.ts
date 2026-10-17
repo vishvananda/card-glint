@@ -1,3 +1,4 @@
+import { rulesInkVisible } from './rules-visibility.js';
 import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import { paintSagaColors } from './saga-colors.js';
@@ -8,6 +9,7 @@ import {
   sagaTransformIcon,
   SAGA_RECTS,
   SAGA_CHAPTER,
+  SAGA_MARKER_GEOMETRY,
   SAGA_DIVIDER,
   SAGA_STAMP,
 } from './saga-frame.js';
@@ -84,31 +86,49 @@ export function paintSagaFace(
     (icon ? bounds[0] - 7 : 449) - 41.7,
     22,
     true,
+    1,
+    'CardRenderer MTG Beleren',
+    face.liveChanges,
   );
   if (icon) {
     if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...bounds);
     else paintSetSymbol(c, icon, face.setCode, face.rarity, ...bounds, crop);
   }
-  if (face.reverseStats && face.layout === 'transform') {
+  if (face.reverseStats) {
     c.fillStyle = '#65605a';
     c.font = 'italic 20px "CardRenderer MTG MPlantin", Georgia';
     c.textAlign = 'left';
     c.fillText(`${face.reverseStats.power}/${face.reverseStats.toughness}`, 41, 553);
   }
-  const rules = sagaRuleLayout(c, face);
-  paintRulesLayout(c, rules.reminder, images);
-  for (const row of rules.rows) {
-    c.drawImage(required(SAGA_DIVIDER), 48.8, row.top - 1, 192.6, 2);
-    paintRulesLayout(c, row.layout, images);
-    row.badges.forEach((badge, index) => {
-      const center = row.top + row.height / 2 + (index - (row.badges.length - 1) / 2) * 49;
-      c.drawImage(required(SAGA_CHAPTER), 18.8, center - 21.4, 38.4, 42.8);
-      c.fillStyle = '#17140f';
-      c.textAlign = 'center';
-      c.textBaseline = 'middle';
-      c.font = '550 22px "CardRenderer MTG Chapter", Georgia';
-      c.fillText(badge, 38.1, center + 0.7);
-    });
+  if (rulesInkVisible(c)) {
+    const rules = sagaRuleLayout(c, face);
+    paintRulesLayout(c, rules.reminder, images);
+    for (const row of rules.rows) {
+      c.drawImage(required(SAGA_DIVIDER), 48.8, row.top - 1, 192.6, 2);
+      paintRulesLayout(c, row.layout, images);
+      row.badges.forEach((badge, index) => {
+        const center =
+          row.top +
+          row.height / 2 +
+          (index - (row.badges.length - 1) / 2) * SAGA_MARKER_GEOMETRY.gap;
+        c.drawImage(
+          required(SAGA_CHAPTER),
+          SAGA_MARKER_GEOMETRY.x,
+          center - SAGA_MARKER_GEOMETRY.height / 2,
+          SAGA_MARKER_GEOMETRY.width,
+          SAGA_MARKER_GEOMETRY.height,
+        );
+        c.fillStyle = '#17140f';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = `550 ${SAGA_MARKER_GEOMETRY.fontSize}px "${SAGA_MARKER_GEOMETRY.fontFamily}", Georgia`;
+        c.fillText(
+          badge,
+          SAGA_MARKER_GEOMETRY.centerX,
+          center + SAGA_MARKER_GEOMETRY.numeralOffsetY,
+        );
+      });
+    }
   }
   if (hasOvalSecurityStamp(face)) c.drawImage(required(SAGA_STAMP), ...SECURITY_STAMP_RECTS.saga);
   c.fillStyle = '#fff';
