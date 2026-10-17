@@ -2,9 +2,56 @@
 
 This is a working queue from the measured M21, M20, Mirage, Tempest, Fourth/Fifth Edition and Revised sets, not
 an assertion that every supported frame has been evaluated. Special treatments
-remain outside the current study. Keep the original frame assets in use while
-tracking the problems below. The local all-card reports contain asset URLs,
+remain outside the current study. Use pinned frame sources and compare replacements
+before adopting them. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
+
+## Early expansions after 0.4.1
+
+The next calibration group is **Arabian Nights, Antiquities and The Dark**,
+with the released Legends pass retained as a regression control. Fallen Empires,
+Fourth Edition and Chronicles follow. This resumes the pre-Eighth sequence;
+the incomplete Unlimited interior templates remain open rather than being
+counted as finished.
+
+The [baseline and normalization receipt](fixtures/accuracy/early-expansion-calibration.json)
+records all 316 ordinary English nonfoil printings against 0.4.1. Every printing
+renders; cached scans and art were reused. Frozen scan-only templates accept
+309 outer-frame poses and 282 interior poses:
+
+| Set            | Printings | Outer frame | Interior |
+| -------------- | --------: | ----------: | -------: |
+| Arabian Nights |        92 |          92 |       91 |
+| Antiquities    |       102 |         102 |       94 |
+| The Dark       |       122 |         115 |       97 |
+
+These are normalization coverage counts, not renderer accuracy scores. Fitting,
+model selection and certification use disjoint frame strips, followed by actual
+warped-raster replay. All outer measurements and accepted interior rasters pass
+content-isolation checks. Thirty known translation/scale/rotation/skew cases,
+including saturation and brightness perturbations, recover frame positions to
+within 0.062 canonical pixels. Those synthetic cases use one white calibration
+card per set and do not certify the unsupported materials.
+
+The remaining 34 interior cases are Antiquities and The Dark red materials,
+The Dark's sparse land/multicolor groups, and Arabian Nights Bird Maiden 37.
+Check frame-boundary anchors for these groups before fitting component offsets;
+texture-template failure alone does not establish that a scan is bad. Keep all
+34 in the coverage report. Seven rules bodies and every type line still need
+printing-wording verification before they can contribute certified text scores.
+
+Twenty local comparisons show aligned scan, released 0.4.1, ABU and Fourth
+source prototypes. The older sources substantially improve the frame-boundary
+diagnostic over Seventh Edition in Arabian Nights. Source preferences remain
+provisional: white/black choices can be close, and Antiquities land texture and
+pinlines require visual review beyond the boundary score. Candidate colors are
+uncalibrated. No renderer default or live scoring template has changed.
+
+Next: establish common measurement support across source candidates and isolate
+reference content, validate shared interior geometry and the stock aperture,
+then fit headings and symbols, source-bound colors/black levels, and rules,
+power/toughness and illustrator typography. Preserve reused-validation labels;
+release only after production-painter replay and fresh full-card scores.
 
 ## Legends normalization and text validation
 
@@ -369,8 +416,8 @@ not the older outer-border poses.
    illustrator typography. Validate shared defaults on reserved printings, update
    versioned scores and release accepted changes before moving to the next group.
 
-Begin with Alpha/Beta/Unlimited/Revised, then Fourth/Chronicles and the early
-expansions, Mirage/Tempest blocks, Urza/Sixth, Mercadian/Seventh, Invasion, Odyssey,
+Begin with Alpha/Beta/Unlimited/Revised, then the early expansions and
+Fallen Empires/Fourth/Chronicles, Mirage/Tempest blocks, Urza/Sixth, Mercadian/Seventh, Invasion, Odyssey,
 and Onslaught. Portal and starter printings need their own frame groups. Preserve
 coverage denominators and explicit exclusions; a rejected fit must not disappear
 from reports. Never reuse a prior renderer's score under a new version.
