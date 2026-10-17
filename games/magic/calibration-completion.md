@@ -221,7 +221,11 @@ stay identical. Central art/paper, outer stock and silhouette alpha are unchange
 All 645 selector probes preserve mana and stock, and 601 unrelated material
 configurations are identical. Separate ordinary profiles retain the existing
 crown and paper adjustments. These are regional pigment results, not complete
-card certification; the 0.4.4 release checkpoint remains pending until published.
+card certification. [Version 0.4.4](https://github.com/vishvananda/card-glint/releases/tag/v0.4.4)
+publishes this curve and the original-wording input guard at commit
+`5a5e7fc7c5f87458dac5f6164ce003b2507d873f`. Release CI passed; package and browser
+checksums match the release manifest, and immutable CDN assets are published.
+Complete-set checks remain open.
 
 Chandra's Firemaw has the largest remaining red pigment error (3.90) and a visible
 reference tint difference. It stays in the printing-batch/reference review queue.
