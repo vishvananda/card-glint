@@ -304,6 +304,18 @@ also repeats all 292 original inputs with their printing-source records and
 reviewed annotations. They remain identical. This extends input readiness;
 it does not relabel the existing native images or scores as a new measurement.
 
+The [compact-size trial](fixtures/accuracy/early-expansion-compact-text.json)
+uses that corrected baseline and the same 79 development names. Its shared
+per-set size classes improve 166 of 189 reserved printings with no overflow.
+Reserved mean text indices are ARN 0.424 → 0.546, ATQ 0.408 → 0.560, and
+DRK 0.395 → 0.511. These remain regional measurements, not whole-card accuracy.
+Visual checks show better dense text on Guardian Beast, Old Man of the Sea,
+Tetravus and Wand of Ith. Sixteen regressions greater than 0.05 remain, including
+eleven in DRK; Candelabra of Tawnos still needs the sparse-text centering rule.
+Keep these candidates provisional while refining shared size/centering rules
+and fitting artist-credit placement and lettering. No per-card text defaults
+or scan-pose changes were adopted.
+
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for
