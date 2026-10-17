@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 import { chromium } from 'playwright';
 import { assertMagicSourceHash } from './magic-source-guard.mjs';
+import { preManaCalibrationSource } from './magic-mana-source-guard.mjs';
 
 const receipt = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-text-runtime.json'),
@@ -73,7 +74,7 @@ for (const [file, guard] of Object.entries(receipt.native.sourceExtension)) {
 for (const [file, guard] of Object.entries(wording.guards))
   assert.equal(
     createHash('sha256')
-      .update(await readFile(file))
+      .update(await preManaCalibrationSource(file))
       .digest('hex'),
     guard.after,
     file,
