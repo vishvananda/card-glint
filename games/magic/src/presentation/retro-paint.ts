@@ -45,6 +45,7 @@ import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import { paintMana, paintSetSymbol } from './canvas-text.js';
 import { paintEarlyCost, paintRevisedCost, paintEarlyMana } from './historic-cost.js';
 import { usesEarlyCredits, paintEarlyCredits } from './early-credits.js';
+import { paintEarlyExpansionArtist } from './early-expansion-artist.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
 import {
@@ -359,6 +360,7 @@ export function paintRetroFace(
   if (details) paintRetroCredits(c, face, details);
   else
     paintPrintingElement(c, face, 'artist', () => {
+      if (paintEarlyExpansionArtist(c, face)) return;
       if (isRevisedLand(face) && face.artist)
         paintRevisedLandText(c, `Illus. © ${face.artist}`, 'artist', 390);
       else if (revised && face.artist) paintRevisedCredits(c, face.artist);

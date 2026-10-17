@@ -13,16 +13,34 @@ try {
     await readFile('games/magic/fixtures/accuracy/early-expansion-calibration.json'),
   );
   const integration = receipt.geometryIntegration;
+  const artist = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/early-expansion-artist.json'),
+  );
   assert.equal(integration.summary.cards, 316);
   assert.equal(integration.summary.changed, 282);
   assert.equal(integration.summary.unchanged, 34);
-  for (const [file, hash] of Object.entries(integration.sourceGuards))
+  for (const [file, hash] of Object.entries(integration.sourceGuards)) {
+    const extension = artist.sourceExtension[file];
+    if (extension) {
+      assert.equal(extension.before, hash, 'Artist integration must extend the measured painter');
+      assert.equal(artist.native.summary.cards, 316);
+      assert.equal(artist.native.summary.outsideChanged, 0);
+    }
+    assert.equal(
+      createHash('sha256')
+        .update(await readFile('games/magic/src/presentation/' + file))
+        .digest('hex'),
+      extension?.after ?? hash,
+      'Geometry replay is stale: ' + file,
+    );
+  }
+  for (const [file, hash] of Object.entries(artist.sourceGuards))
     assert.equal(
       createHash('sha256')
         .update(await readFile('games/magic/src/presentation/' + file))
         .digest('hex'),
       hash,
-      'Geometry replay is stale: ' + file,
+      'Artist isolation proof is stale: ' + file,
     );
   assert.equal(Object.keys(integration.groups).length, 18);
   for (const group of Object.values(integration.groups)) {

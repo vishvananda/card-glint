@@ -316,6 +316,24 @@ Keep these candidates provisional while refining shared size/centering rules
 and fitting artist-credit placement and lettering. No per-card text defaults
 or scan-pose changes were adopted.
 
+The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
+shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
+the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting
+painter exactly. Every pixel outside the artist region is unchanged. Artist
+overlap improves on all 282 accepted scans and all 189 reserved study printings.
+The 34 unresolved poses remain unscored. Artist task approval is recorded per
+variant only where its full printing scope has accepted measurements.
+
+Fresh [whole-card diagnostics](fixtures/accuracy/early-expansion-artist-scores.json)
+retain the older aggregate alongside a separately named, reviewed-credit
+aggregation. The older client policy excludes legal credits, so its aggregate
+does not change when only the artist region improves. With those reviewed
+credits included on both sides, structural overlap changes from 0.646 to 0.656
+for ARN, 0.628 to 0.638 for ATQ, and 0.638 to 0.650 for DRK. These are similarity
+indices, not percentages of correctness. Carry the exact printing-credit proof
+through client/server score validation before using this aggregation in hosted
+charts; do not mix it with the old eligibility policy.
+
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for

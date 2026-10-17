@@ -11204,16 +11204,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 13/13 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 13,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 13,
+                "before": 0.644762415391718,
+                "after": 0.8261383678062407
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "95d5d3308c49c46dcf4e1193a50f7481e4ae0992f8103ce0fd021cee646e1c7b",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "7d38c131a3f6cdea9e90192c1bca034206e77015ce0f2eaba40203160d7a1d56",
+                "scopeHash": "d78a63bb3467b26c29d9e6c01a146b0c57612adf6ad7543862622647e605023d",
+                "coveredPrintings": 13,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -11526,16 +11554,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 2/2 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 2,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 2,
+                "before": 0.6462634073128325,
+                "after": 0.8394382665841215
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "610bc152ff9e7535f6f8593396b6f8166ce0556cffe128d86fbc8e2b9cf7da0f",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "5ac6e13f8b57c06b325643ea624ce1de9c71942bec7ceea7c506f6297c84fda5",
+                "scopeHash": "acec7e418fbd616142667c6843dfa72b390df9bc45e69dbd9a378ce3abf32360",
+                "coveredPrintings": 2,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -11841,16 +11897,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 2/2 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 2,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 2,
+                "before": 0.4706690423614486,
+                "after": 0.6688632542209303
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "08ce7bf66a56ec23ae0c1f72b63e41c6ead29f53f6815f385cd55a14c1f5b596",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "2cfc1fc4afa909e62e320dc206e190a157db98f8d36ebccf27e33a7cf4202cd2",
+                "scopeHash": "0fe410ada1e4fe2a3439ab65c6e6478189668b2ead5940b94dfe7b03bd62d2e4",
+                "coveredPrintings": 2,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -12174,16 +12258,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 12/12 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 12,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 12,
+                "before": 0.4646354623337822,
+                "after": 0.6447184351770313
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "e808f6f1d000bd9685d8ca5783a6a35beb7fd6392ea01a385aeb25034ffce681",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "a71ce529b9f351b34a39672b6e9def810a0c0021b16e96273b785c70508a864b",
+                "scopeHash": "2d4f571cf72129c63ac42da0edb4ab995b036b1388bc16157377d75133052a59",
+                "coveredPrintings": 12,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -12448,16 +12560,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 7/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 7,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 7,
+                "before": 0.5546543519946688,
+                "after": 0.8020496035755309
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "9eefde1df2e4af09d6f485646aa75b08581fab0cbccde02eb82be342a17ed7ed",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "0998445ad6b194ed5feb08801edf890e28929c2206990cec06101fef99a60a5c",
+                "scopeHash": "52a6df52ee9198f67719df5395455a833cedef8c61aeadf7dcbe8ff7ebab4080",
+                "coveredPrintings": 7,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -12718,16 +12858,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 8,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 8,
+                "before": 0.4751604551954234,
+                "after": 0.7943137969244244
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "779db4b78665e20b9da93c3027e946feba0bddc35becade47d38083887097641",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "71b82ab814db4dd190e968e7d71a5237fe5eb32df3a5eb21ecf0a6f161800995",
+                "scopeHash": "0cefaf35e63ec35aae66e7ff558d51691080d12ed220c4c57df3264a727a04e0",
+                "coveredPrintings": 8,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -12994,16 +13162,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 5/5 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 5,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 5,
+                "before": 0.48073961557111045,
+                "after": 0.7757484793170611
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "9ac401de5bce8aaee6f237ae5e492dbf251f1ee105283609b5c3ac87ada08b72",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "ac95dc6dfa3070ec305962fbcaad0ca5fab7aa235b7054e9d3ba6e56bf77aa3f",
+                "scopeHash": "ec993d3738b4e6a879a86fe2d8f555b77e7af95dec12f79759b0572e304994cf",
+                "coveredPrintings": 5,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -13215,16 +13411,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 1,
+                "before": 0.34995923018152514,
+                "after": 0.5942164114987837
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "ef9d2e607f7e72d46b1bd1a881a872f27fc68014f75404b240b809a32a771a6e",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "7fe07e9a192874c0150b25fc9a5a4b039e5638ee86df1617ec7cc151d51c1103",
+                "scopeHash": "41b82acba736e0d14f95d3ebcfd0f93153e17737e12b20cb5e540fd31f2578a6",
+                "coveredPrintings": 1,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -13551,16 +13775,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 11/12 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 12,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 11,
+                "before": 0.33602378005298594,
+                "after": 0.7103392616901266
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "4205981de587fa58e9d098ace998381b4f3fe4ef8384a8154ee2fd08bbb6052a",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "6a189378cd39aa0dfbc2db61486888c6a045050c5fe821d015b0e204b39f40c9",
+                "scopeHash": "6d278a40f8a36f6d21d9de8188dfad1dd7167e2ed16996463cfbeb233fd7e6f4",
+                "coveredPrintings": 11,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -13870,16 +14122,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 1,
+                "before": 0.3605704936784646,
+                "after": 0.7206026642924752
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "6a745a56fab7ea617fb64bd258fe58aa2446e1edb1379869db948569e6a2e9f0",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "33f5ae2ae17fc85b2d42285c511e8a0ee0fcba9d21cdaf48bc32d2dbc3f2f136",
+                "scopeHash": "368f8a6f06e90443f9f8b9de12f4c89e4b3a80c9441a4f5d8bea70c1ec492349",
+                "coveredPrintings": 1,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -14194,16 +14474,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 10/10 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 10,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 10,
+                "before": 0.48926709810514984,
+                "after": 0.7023869736944247
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "c07594fabfa397bffa0cfa877b3b95c6336cd15f25c97accccbf83f8c093ab21",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "ad8667ec3fdb6bb36039035667f96164dde5d955821efdd038a09782defab4b9",
+                "scopeHash": "db1fd6c2f9cb49256515c5e798b294e74fa68643e616c51731855ab1401ec6e0",
+                "coveredPrintings": 10,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -14517,16 +14825,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 3,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 3,
+                "before": 0.49865067824240467,
+                "after": 0.7382871557848207
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "68b742b14412f86bdbc9ea5c1da3cdc7ae7c820f748f185da81ff51b3374f969",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "62220475571888372913e52786a574230bc5c52eb2ec8a2738ba3c5292bc4579",
+                "scopeHash": "87f2d3ebe1780ed59db16cf513ed0cba6e92952ba6b9fd75455a6bc7d82cd62b",
+                "coveredPrintings": 3,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -14805,16 +15141,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 8,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 8,
+                "before": 0.41182091890925376,
+                "after": 0.6724043525073923
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "cd7812be26bf2692a30b3f6e3891aaf8fdd8baeac57207d7418d65edab0a481a",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "c1619af53cb6c2fb149963431756ecbfa344e231ff25f00bf15aa98765ec1697",
+                "scopeHash": "f28f699b0eeeef7519488e169163d6eb5144efca1a50615b76a8551d3c17bf8c",
+                "coveredPrintings": 8,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -15100,16 +15464,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 7/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 7,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 7,
+                "before": 0.40270660196165853,
+                "after": 0.6580614330444542
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "bb2042de263e6a79d5501621ccb5cd94da8151c7050db9ba8d8cd487ca26b823",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "737f793af15a4f9ceb1c9cb59a1c3867e4835fbe952f5f65b9b3d124c331caa7",
+                "scopeHash": "b5fbc5cba639a9a5edf6c0578ce1d9049bef4b65a89ad17c7e2299f2f106d281",
+                "coveredPrintings": 7,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -15364,16 +15756,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 1,
+                "before": 0.5439818804513189,
+                "after": 0.7856749809690666
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "71d956ae716a601803fdbfde3ee375de3b12728e79edc97e69ae3253807c8cc6",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "df7e67585eeacf677e6b4a8ab419bd1d55e645a65e5efa630f2f7ff9904931f5",
+                "scopeHash": "8229eb44c2ecd7d62c2f936ecf36233f72e047e6ebdfb448fa7367a6a4d92e01",
+                "coveredPrintings": 1,
+                "calibrationNames": 34,
+                "validationNames": 44,
+                "validationKind": "family-transfer",
+                "familyScope": "arn",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -15649,16 +16069,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 4,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 4,
+                "before": 0.6351028715554178,
+                "after": 0.8208344358230106
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "21bdcb97e810f010df21f04f83a5d00813c53e27771e4eafc1511a632d45dee8",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "30b66b58742bad207f25a1ea631bbf45c72210e628eaa2880a28331a41d6f559",
+                "scopeHash": "d5454054fa0805383597bdcd4a4f9082bf48e62c56ebcdb31044b484e1dd691c",
+                "coveredPrintings": 4,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -15922,16 +16370,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 3,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 3,
+                "before": 0.621180740448385,
+                "after": 0.8286248710200187
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "cbb58a534ec4b9d31064d972f5eb1b8e6a7a5a1221c248f5cf56925b7458ccad",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4e03790f82bc6af3584e5efa2f14a9d635ec6d1705101e2f69a7d432402bef01",
+                "scopeHash": "2e673ba13a3c420d088f3d2fb0e444e4e76b357e3cf0026093985d260fa4e954",
+                "coveredPrintings": 3,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -16202,16 +16678,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 17/17 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 17,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 17,
+                "before": 0.4021693607842713,
+                "after": 0.7025698196618485
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "406fe8137d25a3c92157502bd238d23e48a70d2ee57f32042d4ee0bb6cffcaa7",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "1e7577f42a52244740bd41d123a7789c388bd438837656326728ea6836e0ea3f",
+                "scopeHash": "e79921cc2eb6691257d823de6cea85c2e82ae234202abf05a4c1ca186bcc67d9",
+                "coveredPrintings": 17,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -16506,16 +17010,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 28/28 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 28,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 28,
+                "before": 0.40275780224184354,
+                "after": 0.7013771412198834
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "6567a1075b369de3510f95507020aad54634a5efb20d326809e1635b83836e9d",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "12a3d062920c210b32fb701174147adc6d4e0d57fc77436bb10ee4b29ce09d75",
+                "scopeHash": "57fb7f5eb4281a082ca071e1d44a19f0b5078d6af0bbf607aa80d129fc21cc5a",
+                "coveredPrintings": 28,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -16811,16 +17343,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 21/21 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 21,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 21,
+                "before": 0.5301758255144767,
+                "after": 0.7757627345085778
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "91222b02dcc3772d4ab809b656ae77a90b7deceb47958844b1b937b1cc64b8c7",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "744bcc804c3a6e5813f651803b8c4fae3046dc0c2ca289d7f12f74b279ae4de6",
+                "scopeHash": "603ac5fffec8a63daa68f171b60d0cdf4a8635d526de787c19022bdafeb68c20",
+                "coveredPrintings": 21,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -17078,16 +17638,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 4,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 4,
+                "before": 0.4651391598106936,
+                "after": 0.7290438599579581
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "5581375c282d4c3ce847a9002884825cf52b9cf79685bbca9dada26c06224b95",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "8bf110ec3b9ecbe3ec899972fbab69cfa3ca42de2ef5320f848d5315f421e430",
+                "scopeHash": "ceec1d47e8e81dac23a40ae448d4c4d354eda05c2ac566df801ecddd87062e8e",
+                "coveredPrintings": 4,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -17351,16 +17939,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 3,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 3,
+                "before": 0.474706607907658,
+                "after": 0.7820760653576345
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "76392faaa69be4bcdee443bc37547750b667a02f63f66343bf840bbfb1032f12",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "8d34de7d85d2e239d472b96cf1929e9afc34a22eb5e28cbb320f5c96a1e5d562",
+                "scopeHash": "9f483d1298c026f71dc853338c63b889f9f3602cac770a02cf087ae4c26b3c96",
+                "coveredPrintings": 3,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -17610,16 +18226,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/5 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 5,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "0589c1185340dd357a32396e4a9b51d2911ccd0c40bdab09328c4b4ca3c2b351",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "17b437d58374866f9f8de065621f264e7eed16e77c5f98688d4402c4836864a4",
+                "coveredPrintings": 0,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -17861,16 +18505,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 3,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "c5c25789a74b3a3e85afbedc77038c96c82d1e68123e2f0a59bdcf4f4cebf382",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "165333249adf3990b94aa84fab66798a20a3183fb6e453901f71372c985a8c71",
+                "coveredPrintings": 0,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -18121,16 +18793,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 1,
+                "before": 0.47756223296620703,
+                "after": 0.6451848492129585
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "c93d0984c5a2c35d565bbc41c03f743b2da1cd480e41999dd097d2ef21dda074",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "3e8e6070b06d8c9e39e99c24a4865b5f792ee9bbad41ec8c131c5243ce3bd7ee",
+                "scopeHash": "2e4bbc34c3d3b02aebd04fe89eb78dbeb672440cfe1117786216d50716751000",
+                "coveredPrintings": 1,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -18398,16 +19098,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 6/6 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 6,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 6,
+                "before": 0.5033310506901802,
+                "after": 0.6893870346257217
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "19d0ed3c7ed0d5c1f9fafca8a4924326b5e16784c4f54ccf0b601488446649f1",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "88a28c1371cb3d5457bddfb1f5801a0ae5154c4def98586156215de76e8ecfa4",
+                "scopeHash": "137fd7eec0dbf9126c941d90711800b45024e167f0de08b67108c89f0473f4a9",
+                "coveredPrintings": 6,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -18715,16 +19443,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 3,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 3,
+                "before": 0.34642220928719564,
+                "after": 0.6403877111639938
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "85090c3b80e5d0948773afb400db2b92a030a3ad5aa539d675b0a2f6062e935e",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "893ba5e065109ceac5570ac7db60389e75781e600c84057cb11f4dd27a77c227",
+                "scopeHash": "5fe29cfabe4b10437da25148dee081d04c7c00a69e0d084b6aa9ce324ef72134",
+                "coveredPrintings": 3,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -19040,16 +19796,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 4,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 4,
+                "before": 0.40901740402155196,
+                "after": 0.6812997711176981
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "b8c651e875bd653081f84f530a664132f93ec487711fade0ab60cfeafe017fcb",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "f407176bc5340e2226d65aa0be44350d70073a4ca9880a277ec6d60b53f854cb",
+                "scopeHash": "07db07957a51b694417dc599ba64f43bc05529197b73646af646ca832159cff1",
+                "coveredPrintings": 4,
+                "calibrationNames": 20,
+                "validationNames": 58,
+                "validationKind": "family-transfer",
+                "familyScope": "atq",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -26763,16 +27547,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 11/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 11,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 11,
+                "before": 0.6092132731189253,
+                "after": 0.8194688702721618
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "03f41d0a36809b533dc4704855df7d8def5c89f7a07b506888832c0d185b05c7",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "215c9467fcf1ca6e71df8a43d0354a9ff81ea220f843ddf1ca63ad1a19cfb7d0",
+                "scopeHash": "f57316c4e82565752ea0e8f2c676e042187112a03c5f7a8f71467d736146076f",
+                "coveredPrintings": 11,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -27092,16 +27904,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 7/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 7,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 7,
+                "before": 0.6210493915873132,
+                "after": 0.8216818647075056
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "eadae9acb034595e4ec7f30a6434680afad65003524d3cc95eed544571310b69",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "3d3000a26aa085136bfed7706efa89a000bba80c1aeeff48c8dee0ce23ddf7b3",
+                "scopeHash": "5aac2863e1d44be8b6085897518f3a990eb9ea70dc8bd40b1f54f0dbc0c9f834",
+                "coveredPrintings": 7,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -27323,16 +28163,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "6edd2a6a69f43e79b378528ea6046c4f90ea3be9f943ec17b64d91097640e97d",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "8d70532068e441d34fa27777fdb07bd874056ba49fc95dc963b55cb48fef29f6",
+                "coveredPrintings": 0,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -27550,16 +28418,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "f059b294550f99140e287bd41b8a89c3aa9297853e15d3adc2389fbb809fa2ce",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "7f7ff96f725958be0618c785a4564d6634fc1572ff87fcddfe2c63417c3fbbe0",
+                "coveredPrintings": 0,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -27819,16 +28715,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 4,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 4,
+                "before": 0.3664308091957462,
+                "after": 0.7259020535402223
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "cff38b5cfbf9bff9812d71cda6818c1c941ec9451df20029064ce677bb8c74f3",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "824133cb8daedc0e1eb8e8198fdc2fd1cb7e29ea5d5d984c01de8954be8c0d9c",
+                "scopeHash": "5994aa050a5b47e3e3560289bb6ac6f989f24e1e1ed81debf6b4620a20bbe044",
+                "coveredPrintings": 4,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -28112,16 +29036,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 18/18 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 18,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 18,
+                "before": 0.3694180481166903,
+                "after": 0.7186621893978948
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "78abe51c787ebd2fbbffb709ecc0d6af5fb1cd22553773362c9538a02038b773",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "c933239c9eccffa3dd90d3aa8e09308952772b27d8efad996a41b555b848eb6f",
+                "scopeHash": "4d1717fa1f94aefbb865e7443fcf7593af0b1de1a07e976e1de24607a8efe838",
+                "coveredPrintings": 18,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -28364,16 +29316,44 @@
               }
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 4,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "cfade5bbf6a716f9467a12a5853bfb7a557f738e055c913f2f0e1d89af7d310e",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "a1964c3478fecb5618a33d5dab60c924ff06e83988f3f887af7e44681b7415d0",
+                "coveredPrintings": 0,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -28664,16 +29644,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 15/15 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 15,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 15,
+                "before": 0.4733426835983944,
+                "after": 0.7921987251021032
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "1a8f88d19db436b2673e146d7fcf3b6b926179ae1b098b8a01a674af5655cb2e",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "088fe0a3355f1b00ff81e9a7487184f5031706170d62cdec242d4391a143a316",
+                "scopeHash": "31b66a22a7ea7df3a60f2b0feee7a83c6587408c45d1cd0db686d1eadf296fc2",
+                "coveredPrintings": 15,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -28960,16 +29968,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 4,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 4,
+                "before": 0.4787237172302608,
+                "after": 0.750841021452633
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "578aec34ce431a316972ee3ca112ba3fe7182999b3b52e224a484f40351fef88",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f061c0af86a53468b96e892acfc52d4f8dbd732e83a9ca45614436450d4b2bb",
+                "scopeHash": "aa316c9c0585fa8681fc4cbcd8e0084d3fa2a80f37527dd097ae40332e228404",
+                "coveredPrintings": 4,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -29256,16 +30292,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 11,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "567a2170eac718763f870d8f02e9adae77bb10cd9e3fe135e4b4ec06b9f9915b",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "f7d985ac84f9f0adfd869fe4db81a23ab2e906cbe74c73246620fc0e0471b970",
+                "coveredPrintings": 0,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -29530,16 +30594,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 7,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "b6e0ffeedc1cf75b6432cbbfaae013c4e8e3ef23324c857452bd30f1b62da053",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "ea38fe6b205195b423fc15be32019788c1b652f01c75dda10eb749a3a40d3baa",
+                "coveredPrintings": 0,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -29757,16 +30849,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "partial",
+              "reason": "Shared artist lettering; 0/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 1,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 0,
+                "before": null,
+                "after": null
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "69b29d05626c4fbf5690a5e93c264b303b0ba99b7c2d7be7242c98260953b156",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "scopeHash": "fee5eca77d195f2c179797930158818c1aac9d7f29188cdca1eec845ae412323",
+                "coveredPrintings": 0,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -30083,16 +31203,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 8,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 8,
+                "before": 0.4679668533291282,
+                "after": 0.7261649724985457
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "f4c407ffad77f1ba542818c8e5493e9e55ab0839238ba1532c7614cfa695f4f5",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "716c787c3f31cde6748ba1d2f84f2a4aaba98b97db22b05783f46e26a1def43a",
+                "scopeHash": "c9e34566e943756920df25609365fec137a3aef376413d251972f43d3dfe75eb",
+                "coveredPrintings": 8,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -30416,16 +31564,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 11/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 11,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 11,
+                "before": 0.48424852590259987,
+                "after": 0.7389008925725395
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "4b54e20ad1331dd2a8169461dfe875f5109080f5694c6ea61d7f61130393d868",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "b29266c53e9e151425a877d88cfd7f3dc8252c86369deb77432281ec5c32aeb2",
+                "scopeHash": "14c91fce0b7dc2e0448e47b3f4a1f91088b2bbd0cb5cee0599185118eb04a662",
+                "coveredPrintings": 11,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -30743,16 +31919,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 8,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 8,
+                "before": 0.3570681351985618,
+                "after": 0.749365166316481
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "bd3508c13131c390e6aa8e4c0adf9d7fe858694f542f5e35d85be1fb4829dd67",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "143ecbded88026fe84427b18142f41d227647d1882679ae2c321de39c0a08f89",
+                "scopeHash": "9be3fbd81fc6c3fe0d3d6fe137c3a2a5b43402dcabbeceb792acfef5c07742a9",
+                "coveredPrintings": 8,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
@@ -31076,16 +32280,44 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "artist": {
-              "status": "in-progress",
-              "reason": "All printed credits visually transcribed; 19 exact-printing exceptions are available through the public resolver. Font, size, placement and ink calibration remain open.",
+              "status": "validated",
+              "reason": "Shared artist lettering; 11/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
               "reviewedAt": "2026-10-17",
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-footer-wording.json"],
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-artist.json",
+                "games/magic/fixtures/accuracy/early-expansion-footer-wording.json"
+              ],
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 11,
                 "guards": {
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f"
                 }
+              },
+              "guards": {
+                "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
+                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+                "games/magic/src/presentation/retro-paint.ts": "011bd00a200a7f6dd7d98b84b7734cc88bda4f43d1e670aa7efaf8841a709de4"
+              },
+              "metrics": {
+                "scored": 11,
+                "before": 0.3584267899806189,
+                "after": 0.7375695428905242
+              },
+              "proof": {
+                "gatesPassed": true,
+                "sourceHash": "71b4d0965d7dcd1060e21f1e936ecf1eade4fde2f86982a6ac88aafce17b8d45",
+                "rendererHash": "065280fba518bcb7c3ac1932e8abf69957b5f4e9c55a2515139a1f5efca68159",
+                "methodHash": "34c4b8d26a4a1c02c0b81f628d1b19af8e1121a1e0597e07e09a05d004f101d2",
+                "nativeReplayHash": "7507b91746cf0d897dc341b5f67ae0a3dfc9dab399911091dbe28c73e5baf8b3",
+                "metricsHash": "38f6fddce9fa567cf4184b4c643f2e8cd1678dde0cdf3f362b08ba4b9a82570d",
+                "scopeHash": "64d1033379a9364474dec8aec45dbcb1ffb0faefcf8fe0455d447fd6c1293297",
+                "coveredPrintings": 11,
+                "calibrationNames": 25,
+                "validationNames": 69,
+                "validationKind": "family-transfer",
+                "familyScope": "drk",
+                "scanTemplateHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1"
               }
             },
             "footer": {
