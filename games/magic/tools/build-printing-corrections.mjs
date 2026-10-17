@@ -172,6 +172,10 @@ console.log(`${Object.keys(catalog).length} reviewed printings; catalog ${revisi
 const artistFile = 'planar-artist-review.json';
 for (const row of JSON.parse(await readFile(new URL(artistFile, root))).rows)
   addArtist(row.id, artistFile, row.referenceHash, row.review, row.printedArtist);
+const earlyArtistFile = 'early-expansion-footer-wording.json';
+for (const row of JSON.parse(await readFile(new URL(earlyArtistFile, root))).rows)
+  if (!row.artistMatchesProvider)
+    addArtist(row.id, earlyArtistFile, row.referenceHash, row.review, row.printedArtist);
 const artistCatalog = Object.fromEntries(
   [...artistRows.entries()].sort(([a], [b]) => a.localeCompare(b)),
 );

@@ -7,14 +7,36 @@ import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 const receipt = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-wording-frame-compatibility.json'),
 );
-for (const [file, guard] of Object.entries(receipt.guards))
+const extension = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-input-extension.json'),
+);
+for (const [file, guard] of Object.entries(receipt.guards)) {
+  const next = extension.guards[file];
+  if (next) assert.equal(next.before, guard.after, 'Compatibility chain must start at prior proof');
+  assert.equal(
+    createHash('sha256')
+      .update(await readFile(file))
+      .digest('hex'),
+    next?.after ?? guard.after,
+    'Stale wording compatibility: ' + file,
+  );
+}
+for (const [file, guard] of Object.entries(extension.guards))
   assert.equal(
     createHash('sha256')
       .update(await readFile(file))
       .digest('hex'),
     guard.after,
-    'Stale wording compatibility: ' + file,
+    file,
   );
+assert.deepEqual(extension.summary, {
+  earlyPrintings: 316,
+  changedArtists: 19,
+  changedBodies: 2,
+  unchangedM21: 292,
+});
+assert.equal(extension.rows.length, 316);
+assert.ok(extension.rows.every((row) => row.otherFieldsIdentical));
 assert.deepEqual(receipt.summary, {
   historicalEarlyInputs: 316,
   originalEarlyInputs: 316,

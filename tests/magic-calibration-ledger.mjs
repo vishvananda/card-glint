@@ -228,8 +228,12 @@ for (const [set, count] of [
   ['drk', 122],
 ]) {
   const report = reports.find((r) => r.set === set);
-  assert.equal(report.originalRulesInputs.ready, count);
-  assert.equal(report.originalTypeInputs.ready, count);
+  // Printing corrections changed the adapter after this historical native
+  // receipt. Keep it stale until the corrected-input replay is recorded.
+  assert.equal(report.originalRulesInputs.ready, 0);
+  assert.equal(report.originalTypeInputs.ready, 0);
+  assert.equal(report.originalRulesInputs.stale, count);
+  assert.equal(report.originalTypeInputs.stale, count);
   assert.equal(report.complete, false);
 }
 const altered = structuredClone(ledger.sets.find((s) => s.set === 'arn'));
@@ -241,8 +245,14 @@ assert.equal(first.tasks.headings.status, originalStatus, 'Input audit cannot ap
 first.tasks.rules.originalInput.guards = { 'missing-original-wording': h };
 first.tasks.headings.originalInput.guards = { 'missing-original-wording': h };
 const [alteredReport] = await calibrationReport({ sets: [altered] });
-assert.equal(alteredReport.originalRulesInputs.stale, first.printings);
-assert.equal(alteredReport.originalTypeInputs.stale, first.printings);
+assert.equal(
+  alteredReport.originalRulesInputs.stale,
+  altered.groups.reduce((n, g) => n + g.printings, 0),
+);
+assert.equal(
+  alteredReport.originalTypeInputs.stale,
+  altered.groups.reduce((n, g) => n + g.printings, 0),
+);
 console.log(
   'Calibration ledger: full inventory, completion gates, stale evidence and foil denominators passed.',
 );

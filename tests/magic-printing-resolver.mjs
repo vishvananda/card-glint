@@ -34,8 +34,10 @@ try {
     const types = await fixture(set + '/annotations-printed-types.json');
     const bodies =
       set === 'arn' ? { cards: {} } : await fixture(set + '/annotations-missing-rules.json');
+    const outliers =
+      set === 'drk' ? await fixture(set + '/annotations-text-outliers.json') : { cards: {} };
     for (const [id, row] of Object.entries(types.cards)) {
-      const body = bodies.cards[id];
+      const body = outliers.cards[id] ?? bodies.cards[id];
       const resolved = resolvePrintingWording(id, input, {
         referenceSha256: row.referenceHash,
       });
@@ -58,6 +60,7 @@ try {
           id,
           set,
           name: row.name,
+          collector_number: row.collectorNumber,
           type_line: row.review.oracleType,
           oracle_text: oracle.rulesText,
         },
@@ -74,8 +77,11 @@ try {
         'Historical type wording keeps semantic identity',
       );
       assert.equal(adapted.wordingEvidence.type, 'scan-reviewed');
-      assert.equal(adapted.wordingEvidence.rules, body ? 'scan-reviewed' : 'mtgjson-original');
-      if (!body)
+      assert.equal(
+        adapted.wordingEvidence.rules,
+        body?.reviewed ? 'scan-reviewed' : 'mtgjson-original',
+      );
+      if (!body?.reviewed)
         assert.throws(
           () => calibrationPresentation(entry, annotations),
           /Original rules unavailable/,
@@ -90,12 +96,16 @@ try {
   }
   assert.equal(earlyTypes, 316);
   const artists = await fixture('planar-artist-review.json');
-  for (const row of artists.rows) {
+  const earlyArtists = await fixture('early-expansion-footer-wording.json');
+  for (const row of [
+    ...artists.rows.map((row) => ({ ...row, set: artists.set })),
+    ...earlyArtists.rows.filter((row) => !row.artistMatchesProvider),
+  ]) {
     const entry = {
       card: {
         id: row.id,
         name: row.name,
-        set: artists.set,
+        set: row.set,
         collector_number: row.number,
         artist: row.providerArtist,
         type_line: 'Creature',
@@ -113,7 +123,7 @@ try {
     assert.equal(resolved.provenance.corrections[0].before, row.providerArtist);
     const adapted = presentation(entry);
     assert.equal(adapted.face.artist, resolved.artist);
-    assert.deepEqual(adapted.reviewedFields, ['artist']);
+    assert.ok(adapted.reviewedFields.includes('artist'));
     assert.equal(adapted.contentStatus, 'oracle-unverified');
     assert.equal(
       withCardWording(adapted.face, { oracle, original }, 'oracle').artist,

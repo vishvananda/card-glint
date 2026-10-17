@@ -262,6 +262,36 @@ is wording evidence only. Aladdin's Lamp additionally needs its original two
 `5` cost numerals and the disc around the inline `X`; those are separate from
 the text-fit parameters.
 
+The [complete footer wording review](fixtures/accuracy/early-expansion-footer-wording.json)
+extends that inspection to all 316 ARN/ATQ/DRK printings, including the 34 whose
+scan geometry remains rejected. ARN and ATQ print `Illus. ©` without a year;
+DRK adds `1994`. Nineteen printed artist strings differ from canonical metadata:
+six ARN credits omit the comma in Ken Meyer Jr.; four Factory credits use
+Kaja & Phil Foglio; Hurkyl's Recall uses Néné Thomas; Shatterstorm credits Mark
+Poole; and seven DRK cards print Denise Detwiler. These are printing-specific
+strings, not corrections to the artists' canonical identities. Geometry, ink,
+font and spacing remain a separate fitting task. The 19 spelling/attribution
+exceptions are now included in the public artist resolver and accuracy adapter;
+no rejected scan pose is certified by this wording review.
+
+The [shared text candidate study](fixtures/accuracy/early-expansion-shared-text.json)
+uses 79 development names to select one layout per set, then freezes those values
+for 189 reserved printings. Regional text indices improve from 0.424 to 0.540
+on ARN, 0.408 to 0.556 on ATQ, and 0.396 to 0.481 on DRK. Every candidate fits
+within the panel and preserves pixels outside the rules/flavor region. These
+are candidate diagnostics against the 0.4.5 source baseline, not adopted defaults
+or whole-card accuracy. Nineteen reserved printings regress by more than 0.05;
+the smaller printed type-size class still needs modeling. ATQ's development
+passages are too long to establish its short-text centering cutoff.
+
+Visual review also found [two DRK source outliers](fixtures/accuracy/drk/annotations-text-outliers.json):
+Carnivorous Plant has no printed rules, despite MTGJSON's `originalText` saying
+Defender; Hidden Path's flavor attribution is inline. The public resolver now
+preserves those original forms without changing Oracle wording. The historical
+candidate scores retain the incorrect input and expose it as a limitation;
+refresh those inputs before the next fitting/replay pass. Renderer adoption,
+illustrator geometry, native full-set replay and release remain open.
+
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for

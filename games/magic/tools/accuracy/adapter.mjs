@@ -7,6 +7,7 @@ import { historicManaOrderAnnotation } from './historic-mana-order.mjs';
 import { earlyLandTypeAnnotation } from './early-land-types.mjs';
 import { emptyPrintingTextAnnotation } from './empty-printing-text.mjs';
 import { printedArtistAnnotation } from './printed-artist.mjs';
+import { printedTextOutlierAnnotation } from './printed-text-outliers.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
@@ -18,6 +19,7 @@ export function presentation(entry, annotations = {}, printingText = {}) {
     earlyLandTypeAnnotation(entry),
     historicManaOrderAnnotation(entry),
     emptyPrintingTextAnnotation(entry),
+    printedTextOutlierAnnotation(entry),
   ];
   // One printing can have independently reviewed types and mana order. Retain
   // both partial reviews instead of letting the last field list erase the first.

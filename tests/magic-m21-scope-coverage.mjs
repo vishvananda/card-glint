@@ -72,8 +72,19 @@ assert.equal(wording.summary.originalBody['mtgjson-original'], 287);
 assert.equal(wording.summary.originalBody['scan-reviewed'], 5);
 assert.equal(wording.native.summary.cards, 33);
 assert.equal(wording.native.summary.renders, 66);
-for (const [file, expected] of Object.entries(wording.methodGuards))
-  assert.equal(hash(await readFile(file)), expected, 'Stale wording adapter: ' + file);
+const inputExtension = await read('early-expansion-input-extension.json');
+assert.equal(inputExtension.summary.unchangedM21, 292);
+for (const [file, expected] of Object.entries(wording.methodGuards)) {
+  const next = inputExtension.guards[file];
+  if (next) assert.equal(next.before, expected, 'Input replay must begin at the recorded adapter');
+  assert.equal(
+    hash(await readFile(file)),
+    next?.after ?? expected,
+    'Stale wording adapter: ' + file,
+  );
+}
+for (const [file, guard] of Object.entries(inputExtension.guards))
+  assert.equal(hash(await readFile(file)), guard.after, 'Stale input replay: ' + file);
 for (const row of wording.native.rows)
   for (const version of Object.values(row.versions))
     assert.deepEqual(version.changedPixelsInMeasuredRegions, { stock: 0, frameRails: 0, art: 0 });
@@ -91,13 +102,16 @@ assert.equal(
   'Wording cannot approve text alignment',
 );
 const [wordingReport] = await calibrationReport({ sets: [m21] });
-assert.equal(wordingReport.originalRulesInputs.ready, 292);
+// The input-isolation replay proves compatibility. The older native receipt
+// still reports stale until its dependency chain is refreshed explicitly.
+assert.equal(wordingReport.originalRulesInputs.ready, 0);
+assert.equal(wordingReport.originalRulesInputs.stale, 292);
 const changedWording = structuredClone(m21);
 const changedScope = changedWording.groups.find((g) => g.tasks.rules.originalInput);
 changedScope.tasks.rules.originalInput.guards = { 'missing-wording-source': '0'.repeat(64) };
 const [changedReport] = await calibrationReport({ sets: [changedWording] });
-assert.equal(changedReport.originalRulesInputs.stale, changedScope.printings);
-assert.equal(changedReport.originalRulesInputs.ready, 292 - changedScope.printings);
+assert.equal(changedReport.originalRulesInputs.stale, 292);
+assert.equal(changedReport.originalRulesInputs.ready, 0);
 assert.equal(white.rows.length, 42);
 assert.equal(white.choice, 'source-default');
 assert.equal(white.normalization.knownPosePassed, 10);
