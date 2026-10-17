@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
-import { readNativeHostSource, readPreManaHostSource } from './magic-native-source-guard.mjs';
+import { readPreArtistHostSource, readPreManaHostSource } from './magic-native-source-guard.mjs';
 
 const proof = JSON.parse(await readFile('games/magic/fixtures/accuracy/early-expansion-mana.json'));
 assert.equal(proof.validationKind, 'repeated');
@@ -33,7 +33,11 @@ for (const row of proof.native.rows) {
 }
 for (const row of proof.controls.rows) assert.equal(row.before, row.sha256);
 for (const [file, expected] of Object.entries(proof.sourceGuards))
-  assert.equal(hash(await readNativeHostSource(file)), expected, 'Stale mana calibration: ' + file);
+  assert.equal(
+    hash(await readPreArtistHostSource(file)),
+    expected,
+    'Stale mana calibration: ' + file,
+  );
 for (const set of ['arn', 'atq', 'drk']) {
   const group = proof.summary[set + '/validation'];
   for (const crop of group.crops) {

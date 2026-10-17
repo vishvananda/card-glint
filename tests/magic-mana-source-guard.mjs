@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preArtistCalibrationSource } from './magic-artist-source-guard.mjs';
 const verified = new WeakMap();
 async function proof(readSource) {
   let verification = verified.get(readSource);
@@ -31,7 +32,7 @@ async function proof(readSource) {
 }
 /** Historical non-mana receipts retain their original source and pixel hashes.
  * Current behavior is separately certified by native replay and scope tests. */
-export async function preManaCalibrationSource(file, readSource = readFile) {
+export async function preManaCalibrationSource(file, readSource = preArtistCalibrationSource) {
   const bytes = await readSource(file),
     extension = await proof(readSource),
     change = extension.files[file];

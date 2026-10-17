@@ -158,8 +158,7 @@ These assets remain external; no source scripts are executed.
   GPL-3.0 and prepared fonts under SIL OFL 1.1, retaining trademark notices.
   https://github.com/andrewgioia/keyrune/blob/256add455a043462f7b2bfa224ca71bfc66b62ab/LICENSE.md
 
-No external asset binaries are redistributed by the installer. Downloads go
-directly from the original pinned sources to the user's device only after an
-explicit permission acknowledgement. Availability on GitHub does not establish
-permission; users must have the required rights. There is no claim that a
-first-ever disconnected launch can obtain missing assets.
+The package does not redistribute these external asset binaries. Hosts own
+asset downloading, caching and any permission prompts. Availability on GitHub
+does not establish permission; users must have the required rights. Offline
+hosts must arrange for permitted assets to be available before use.
