@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "211028ddd4cf7bd698e8dc89dd969e7e168967ca",
+  "evidenceHash": "b9e9bfbdf7e695c7d8242e2e57fb4035ae794cc98064cbb649675a2b0d7a9b0e",
+  "policy": "Verify native stats isolation, exact frozen candidates, reviewed original stat corrections and unrelated controls, then reconstruct pre-stats 0.4.15 modules for earlier host/default and scan checks. Historical measurements are not replaced.",
+  "dependencies": {
+    "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+    "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+    "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+    "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+    "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+    "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+    "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+    "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+    "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+    "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+    "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+    "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+    "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+    "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+    "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+  },
+  "newModules": ["games/magic/src/presentation/early-expansion-stats.ts"],
+  "files": {
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "b0ab03d1ec19157f0485baf3a0640ec69d6abe6245d687b2ef14109e093bf53a",
+      "after": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+      "reverseEdits": [
+        {
+          "start": 352,
+          "count": 1,
+          "lines": ["  if (face.power != null && face.toughness != null) {\n"]
+        },
+        {
+          "start": 51,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/printing/corrections.ts": {
+      "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+      "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+      "reverseEdits": [
+        {
+          "start": 13322,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 3573,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["  '954430a29086de4205bd6f7a9ce4252d489b1ffe0f4d2f30ca5dd66e278d6b01';\n"]
+        }
+      ]
+    }
+  }
+}

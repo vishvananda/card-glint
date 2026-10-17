@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
@@ -11,9 +10,10 @@ import {
   nativeHostSources,
 } from './magic-native-host-compatibility.mjs';
 import { readNativeReference } from './magic-native-reference.mjs';
+import { preStatsCalibrationSource } from './magic-stats-source-guard.mjs';
 
 export async function readNativeHostSource(file) {
-  const bytes = await readFile(file);
+  const bytes = await preStatsCalibrationSource(file);
   const change = nativeHostSources.files[file];
   if (!change || hash(bytes) === change.before) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed native host change: ' + file);
@@ -36,8 +36,9 @@ async function readPreTitleHostSource(file) {
   return preTitleCalibrationSource(file, readPreManaHostSource);
 }
 
-/** Prove current host hooks against upstream before reversing the separately
- * verified artist, mana, title and calibration changes for unchanged historical receipts. */
+/** Verify stats isolation and reconstruct the host revision before its default
+ * comparison; then reverse artist, mana, title and calibration changes for
+ * unchanged historical receipts. */
 export async function readNativeCompatibleSource(file) {
   return calibrationLegacySource(file, readPreTitleHostSource);
 }

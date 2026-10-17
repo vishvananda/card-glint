@@ -11168,7 +11168,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -11176,6 +11176,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -11203,7 +11209,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -11211,6 +11217,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -11448,8 +11460,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 13,
+                "scoredPrintings": 13,
+                "statPrintings": 13,
+                "totalPrintings": 13,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -11727,7 +11767,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -11735,6 +11775,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -11762,7 +11808,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -11770,6 +11816,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -12270,7 +12322,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -12278,6 +12330,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -12305,7 +12363,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -12313,6 +12371,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -12550,8 +12614,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 2,
+                "scoredPrintings": 2,
+                "statPrintings": 2,
+                "totalPrintings": 2,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -12836,7 +12928,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -12844,6 +12936,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -12871,7 +12969,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -12879,6 +12977,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -13756,7 +13860,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -13764,6 +13868,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -13791,7 +13901,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -13799,6 +13909,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -14036,8 +14152,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "statPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -14251,7 +14395,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -14259,6 +14403,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -14286,7 +14436,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -14294,6 +14444,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -15191,7 +15347,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -15199,6 +15355,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -15226,7 +15388,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -15234,6 +15396,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -15472,8 +15640,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 12,
+                "scoredPrintings": 11,
+                "statPrintings": 12,
+                "totalPrintings": 12,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -15748,7 +15944,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -15756,6 +15952,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -15783,7 +15985,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -15791,6 +15993,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -16300,7 +16508,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -16308,6 +16516,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -16335,7 +16549,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -16343,6 +16557,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -16586,8 +16806,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 10,
+                "scoredPrintings": 10,
+                "statPrintings": 10,
+                "totalPrintings": 10,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -16862,7 +17110,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -16870,6 +17118,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -16897,7 +17151,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -16905,6 +17159,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -17369,7 +17629,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -17377,6 +17637,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -17404,7 +17670,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -17412,6 +17678,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -17655,8 +17927,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "statPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -17889,7 +18189,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -17897,6 +18197,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -17924,7 +18230,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -17932,6 +18238,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -18817,7 +19129,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -18825,6 +19137,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -18852,7 +19170,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -18860,6 +19178,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -19098,8 +19422,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "statPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -19310,7 +19662,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -19318,6 +19670,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -19345,7 +19703,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -19353,6 +19711,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -19809,7 +20173,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -19817,6 +20181,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -19844,7 +20214,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -19852,6 +20222,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -20095,8 +20471,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 17,
+                "scoredPrintings": 17,
+                "statPrintings": 17,
+                "totalPrintings": 17,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -20337,7 +20741,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -20345,6 +20749,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -20372,7 +20782,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -20380,6 +20790,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -21289,7 +21705,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -21297,6 +21713,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -21324,7 +21746,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -21332,6 +21754,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -21569,8 +21997,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "statPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -21781,7 +22237,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -21789,6 +22245,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -21816,7 +22278,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -21824,6 +22286,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -22348,7 +22816,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -22356,6 +22824,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -22383,7 +22857,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -22391,6 +22865,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -22630,8 +23110,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 5,
+                "scoredPrintings": 4,
+                "statPrintings": 5,
+                "totalPrintings": 5,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -22909,7 +23417,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -22917,6 +23425,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -22944,7 +23458,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -22952,6 +23466,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -23397,7 +23917,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -23405,6 +23925,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -23432,7 +23958,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -23440,6 +23966,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -23672,8 +24204,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 1,
+                "scoredPrintings": 1,
+                "statPrintings": 1,
+                "totalPrintings": 1,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -23888,7 +24448,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -23896,6 +24456,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -23923,7 +24489,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -23931,6 +24497,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -24449,7 +25021,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -24457,6 +25029,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -24484,7 +25062,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -24492,6 +25070,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -24735,8 +25319,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 3,
+                "scoredPrintings": 3,
+                "statPrintings": 3,
+                "totalPrintings": 3,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -25013,7 +25625,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -25021,6 +25633,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -25048,7 +25666,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -25056,6 +25674,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -32972,7 +33596,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -32980,6 +33604,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -33007,7 +33637,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -33015,6 +33645,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -33250,8 +33886,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 11,
+                "scoredPrintings": 11,
+                "statPrintings": 11,
+                "totalPrintings": 11,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -33536,7 +34200,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -33544,6 +34208,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -33571,7 +34241,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -33579,6 +34249,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -33972,7 +34648,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -33980,6 +34656,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -34007,7 +34689,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -34015,6 +34697,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -34403,7 +35091,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -34411,6 +35099,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -34438,7 +35132,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -34446,6 +35140,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -34890,7 +35590,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -34898,6 +35598,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -34925,7 +35631,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -34933,6 +35639,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -35167,8 +35879,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 4,
+                "scoredPrintings": 4,
+                "statPrintings": 4,
+                "totalPrintings": 4,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -35400,7 +36140,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -35408,6 +36148,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -35435,7 +36181,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -35443,6 +36189,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -36313,7 +37065,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -36321,6 +37073,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -36348,7 +37106,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -36356,6 +37114,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -36591,8 +37355,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 15,
+                "scoredPrintings": 15,
+                "statPrintings": 15,
+                "totalPrintings": 15,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -36827,7 +37619,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -36835,6 +37627,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -36862,7 +37660,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -36870,6 +37668,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -37403,7 +38207,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -37411,6 +38215,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -37438,7 +38248,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -37446,6 +38256,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -37693,8 +38509,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 11,
+                "scoredPrintings": 10,
+                "statPrintings": 11,
+                "totalPrintings": 11,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -37981,7 +38825,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -37989,6 +38833,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -38016,7 +38866,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -38024,6 +38874,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -38421,7 +39277,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -38429,6 +39285,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -38456,7 +39318,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -38464,6 +39326,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -38981,7 +39849,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -38989,6 +39857,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -39016,7 +39890,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -39024,6 +39898,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -39259,8 +40139,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "statPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -39547,7 +40455,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -39555,6 +40463,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -39582,7 +40496,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -39590,6 +40504,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -40105,7 +41025,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -40113,6 +41033,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -40140,7 +41066,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -40148,6 +41074,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -40383,8 +41315,36 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
+              "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/retro-font.ts": "4558e764c43855dbfcdf9e56086bc310ab72d30125c02b1440425210a7323892",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+                "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"],
+              "statsReview": {
+                "status": "measured",
+                "appliedPrintings": 8,
+                "scoredPrintings": 8,
+                "statPrintings": 8,
+                "totalPrintings": 8,
+                "validationKind": "repeated",
+                "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              }
             },
             "fullCard": {
               "status": "partial",
@@ -40671,7 +41631,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -40679,6 +41639,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },
@@ -40706,7 +41672,7 @@
                 "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
                 "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
                 "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
-                "games/magic/src/printing/corrections.ts": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a"
+                "games/magic/src/printing/corrections.ts": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7"
               },
               "guardExtensions": {
                 "games/magic/src/presentation/canvas-face.ts": {
@@ -40714,6 +41680,12 @@
                   "after": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                   "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
                   "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                },
+                "games/magic/src/printing/corrections.ts": {
+                  "before": "451faebccc53949b13ee4514f7e8cc5d38d878b6c6ff8d17fc357a8e4a2f479a",
+                  "after": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-stats.json",
+                  "reason": "Native stats-only replay preserves all pixels outside the stats region; exact original-wording corrections are confined to two ATQ printings."
                 }
               }
             },

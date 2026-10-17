@@ -18,6 +18,7 @@ import {
 } from './magic-native-reference.mjs';
 import { nativeHostCases } from './magic-native-host-cases.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
+import { preStatsCalibrationSource, statsCalibrationProof } from './magic-stats-source-guard.mjs';
 
 let verification;
 const sourceManifestFile = new URL('./magic-native-host-sources.json', import.meta.url);
@@ -45,6 +46,17 @@ async function identity() {
   return {
     reference: nativeReference,
     sourceManifest: hash(await readFile(sourceManifestFile)),
+    statsRevision: hash(
+      Buffer.concat(
+        await Promise.all(
+          [
+            'tests/magic-stats-source-guard.mjs',
+            'games/magic/fixtures/accuracy/early-expansion-stats.json',
+            'games/magic/fixtures/accuracy/early-expansion-stats-compatibility.json',
+          ].map((file) => readFile(path.join(root, file))),
+        ),
+      ),
+    ),
     runner: await sourceHash(
       new URL('./', import.meta.url),
       /^magic-(?:native-.*|source-guard\.mjs)$/,
@@ -98,6 +110,7 @@ function assertReceipt(receipt, expected) {
 }
 
 async function verify() {
+  const stats = await statsCalibrationProof();
   assert.equal(nativeHostSources.schema, 1);
   assert.equal(nativeHostSources.reference, nativeReference);
   const rulesFile = 'games/magic/src/presentation/rules-paint.ts';
@@ -129,13 +142,15 @@ async function verify() {
   const referenceRoot = await realpath(await nativeReferenceRoot());
   const currentRoot = await realpath(root);
   const nativeDirectory = 'games/magic/src';
-  const currentFiles = await sourceFiles(path.join(currentRoot, nativeDirectory));
+  const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
+    (file) => !stats.newModules.includes(`${nativeDirectory}/${file}`),
+  );
   const referenceFiles = await sourceFiles(path.join(referenceRoot, nativeDirectory));
   for (const relative of new Set([...currentFiles, ...referenceFiles])) {
     const file = `${nativeDirectory}/${relative}`;
     const change = nativeHostSources.files[file];
     const after = currentFiles.includes(relative)
-      ? hash(await readFile(path.join(currentRoot, file)))
+      ? hash(await preStatsCalibrationSource(file))
       : null;
     const before = referenceFiles.includes(relative) ? hash(await readNativeReference(file)) : null;
     if (change) {
@@ -157,6 +172,11 @@ async function verify() {
     plugins: [
       {
         name: 'native-host-compatibility',
+        async load(id) {
+          const relative = path.relative(currentRoot, id.split('?')[0]);
+          if (Object.hasOwn(stats.files, relative))
+            return (await preStatsCalibrationSource(relative)).toString();
+        },
         configureServer(server) {
           server.middlewares.use((req, res, next) => {
             if (req.url === '/__native_host') {
