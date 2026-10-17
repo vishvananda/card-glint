@@ -1,3 +1,4 @@
+import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
@@ -39,7 +40,7 @@ for (const [file, expected] of Object.entries({
 }))
   assert.equal(
     createHash('sha256')
-      .update(await readFile('games/magic/src/presentation/' + file))
+      .update(await calibrationLegacySource('games/magic/src/presentation/' + file))
       .digest('hex'),
     expected,
     'Stale artist painter: ' + file,

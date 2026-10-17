@@ -1,7 +1,9 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { validatePrintingCalibration } from './printing-calibration-types.js';
 
-/** Normalize an explicit policy once at preparation/resolution boundaries. Never rewrite identity. */
+/** Normalize an explicit policy at preparation/resolution boundaries.
+ * Composite panels share their prepared material map; physical sides are resolved separately.
+ * Never rewrite printing identity. */
 export function calibrationFace(face: RenderedCardInput): RenderedCardInput {
   if (
     ['split', 'aftermath', 'adventure', 'prepare', 'room', 'flip'].includes(face.layout ?? '') &&

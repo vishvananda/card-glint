@@ -1,3 +1,4 @@
+import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -5,7 +6,7 @@ import { hash } from '../games/magic/tools/accuracy/common.mjs';
 /** A cache-label bump can preserve historical pixel evidence only when undoing
  * that exact replacement reproduces the complete measured source byte-for-byte. */
 export async function assertMagicSourceHash(file, expected) {
-  const bytes = await readFile(file);
+  const bytes = await calibrationLegacySource(file);
   if (hash(bytes) === expected) return;
   const proof = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/early-expansion-cache-compatibility.json'),

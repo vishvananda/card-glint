@@ -22,7 +22,7 @@ export function paintAdventureFrame(
   if (resolveCardProfile(face).legendary) {
     const crown = images.get(adventureCrown(face));
     if (!crown) throw Error('Adventure crown is unavailable.');
-    c.fillStyle = '#000';
+    c.fillStyle = calibratedPrintingStock(face) ?? '#000';
     c.fillRect(19.2, 18.8, 449.6, 12.1);
     c.drawImage(crown, 13.4, 13, 461.4, 113.4);
   }

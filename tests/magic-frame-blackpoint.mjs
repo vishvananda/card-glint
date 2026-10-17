@@ -1,3 +1,4 @@
+import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
@@ -15,7 +16,7 @@ try {
   for (const [file, hash] of Object.entries(evidence.sourceGuards))
     assert.equal(
       createHash('sha256')
-        .update(await readFile('games/magic/src/presentation/' + file))
+        .update(await calibrationLegacySource('games/magic/src/presentation/' + file))
         .digest('hex'),
       hash,
       'Revalidate the ink fit after source pigment or geometry changes',

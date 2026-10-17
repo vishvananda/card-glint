@@ -1,12 +1,12 @@
 import { framePlate } from './frame-plates.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { profileAssets } from './assets.js';
-import { resolveCardProfile } from './profile.js';
+import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { faceFrame } from './special-frames.js';
 import { isRetro } from './retro-frame.js';
 import { sagaFrameAsset } from './saga-frame.js';
-import { isAdventure, adventureAssets, ADVENTURE_ROOT } from './adventure-frame.js';
-import { isPrepared, prepareAssets, PREPARE_ROOT } from './prepare-frame.js';
+import { isAdventure, adventurePlate, adventureHybrid, ADVENTURE_ROOT } from './adventure-frame.js';
+import { isPrepared, preparePlate } from './prepare-frame.js';
 import { isAftermath, aftermathAssets } from './aftermath-frame.js';
 import { nativeSplitEra } from './split-frame.js';
 import { splitPanels } from './split-layout.js';
@@ -38,18 +38,15 @@ export function modernCalibrationSources(face: RenderedCardInput) {
     const parts = standardTemplateParts(face);
     return plates(parts?.kind === 'battle' ? [parts.border] : []);
   }
+  // Only the physical outer plates need stock correction. Inset spell/color
+  // sources are masked to interior panels; preparing all of them wastes the bounded cache.
   if (isAdventure(face))
     return plates(
-      adventureAssets(face).filter(
-        (u) => new RegExp('/[wubrgmal]\\.png$').test(u) && u.startsWith(ADVENTURE_ROOT),
-      ),
+      adventureHybrid(face)
+        ? resolveFrameColors(face).map((color) => `${ADVENTURE_ROOT}/${color.toLowerCase()}.png`)
+        : [adventurePlate(face)],
     );
-  if (isPrepared(face))
-    return plates(
-      prepareAssets(face).filter(
-        (u) => /\/[wubrgmavl]\.png$/.test(u) && u.startsWith(PREPARE_ROOT),
-      ),
-    );
+  if (isPrepared(face)) return plates([preparePlate(face)]);
   if (isAftermath(face))
     return plates(aftermathAssets(face).filter((u) => u.includes('/aftermath/')));
   if (nativeSplitEra(face) === 'm15')

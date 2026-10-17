@@ -210,6 +210,23 @@ try {
       );
     }
   }
+  for (const layout of ['prepare', 'adventure']) {
+    const composite = {
+      ...face,
+      layout,
+      calibration: 'auto',
+      colors: ['W', 'U'],
+      faces: [
+        { ...face, colors: ['W', 'U'] },
+        { ...face, colors: ['B', 'R'], typeLine: 'Instant' },
+      ],
+    };
+    assert.equal(
+      Object.keys(material.calibratedFrameMaterials(composite)).length,
+      1,
+      'Inset sources must not consume additional calibrated-plate leases',
+    );
+  }
   // Outer-stock transfer preserves enclosed ink, saturated color and alpha.
   const w = 100,
     h = 100,
