@@ -1,19 +1,17 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
+import { assertExpansionSourceHash } from './magic-expansion-source-guard.mjs';
 
 const evidence = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-colors.json'),
 );
+const red = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-red-frame.json'),
+);
+const groups = { ...evidence.groups, ...red.groups };
 for (const [file, hash] of Object.entries(evidence.sourceGuards))
-  assert.equal(
-    createHash('sha256')
-      .update(await readFile('games/magic/src/presentation/' + file))
-      .digest('hex'),
-    hash,
-    'Native color replay is stale: ' + file,
-  );
+  await assertExpansionSourceHash('games/magic/src/presentation/' + file, hash);
 assert.equal(evidence.native.summary.cards, 316);
 assert.equal(evidence.native.summary.unchanged, 34);
 assert.equal(evidence.native.summary.centralArtworkByteExact, 316);
@@ -40,7 +38,7 @@ try {
   const { calibratedFrameMaterials, calibratedPrintingStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
-  assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 18);
+  assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 20);
   let adopted = 0;
   for (const [key, profile] of Object.entries(EARLY_EXPANSION_COLORS)) {
     const [setCode, material] = key.split('/');
@@ -53,7 +51,7 @@ try {
     };
     const frame = earlyExpansionFrame(face);
     assert.equal(profile.source, JSON.stringify([frame.asset, frame.frame]));
-    const record = evidence.groups[key];
+    const record = groups[key];
     assert.deepEqual(profile, record.profile);
     const result = earlyExpansionColors(face);
     assert.deepEqual(result, {
@@ -104,12 +102,10 @@ try {
       profile.source = source;
     }
   }
-  assert.equal(adopted, evidence.native.summary.selected);
+  assert.equal(adopted, evidence.native.summary.selected + red.summary.selectedComponents);
   for (const face of [
     { setCode: 'arn', name: 'Mountain', typeLine: 'Land' },
     { setCode: 'drk', typeLine: 'Land' },
-    { setCode: 'atq', typeLine: 'Summon', colors: ['R'] },
-    { setCode: 'drk', typeLine: 'Summon', colors: ['R'] },
     { setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] },
   ])
     assert.equal(earlyExpansionColors({ ...face, colorCalibration: 'set-hsb-v1' }), undefined);

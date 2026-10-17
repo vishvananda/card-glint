@@ -1,3 +1,4 @@
+import { EARLY_EXPANSION_RED_FRAMES } from './early-expansion-red-values.js';
 // Shared scan-derived geometry only; scan poses never enter the painter.
 // Sources and held-out evidence: fixtures/accuracy/early-expansion-calibration.json.
 import type { FaceRect } from './face-layout.js';
@@ -140,4 +141,5 @@ export const EARLY_EXPANSION_FRAMES: Readonly<
       0.038372537365304674, 0.029927666637637684, 0.9228063947301375, 0.9373903798505366,
     ],
   },
+  ...EARLY_EXPANSION_RED_FRAMES,
 };

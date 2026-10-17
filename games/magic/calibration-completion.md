@@ -432,6 +432,28 @@ rasters use the tested canonical-resize-then-affine path. Renderer defaults and
 hosted review templates are unchanged. Red source/geometry and color fitting are
 next; outer-stock/corner certification and complete-set checks remain open.
 
+The [red-frame integration](fixtures/accuracy/early-expansion-red-frame.json)
+uses those 24 qualified poses to compare ABU, Fourth and Seventh assets on
+identical opaque regions. Fourth wins for both Antiquities and The Dark, including
+the reserved geometry and texture checks. Shared set/color transforms replace
+the previous geometry; separate frame and paper adjustments preserve texture
+contrast and keep the illustration unchanged.
+
+On reserved names, native frame-boundary correlation improves from -0.011 to
+0.930 for Antiquities and from 0.039 to 0.962 for The Dark. Frame color distance
+falls from 8.37 to 1.50 and from 6.27 to 2.88 respectively; paper distance falls
+from 11.22 to 1.10 and from 9.22 to 2.14. These regional diagnostics measure
+different properties and are not full-card accuracy percentages. All four native
+color components pass the color, contrast, clipping and prediction checks.
+
+The 316-card native replay changes only the 26 intended red printings, preserves
+all text layouts and leaves the other 290 faces pixel-identical. Ball Lightning
+and the rejected Atog printing receive shared defaults but never influence the
+fit or scores. Existing profile bytes are preserved by an exact two-key extension
+proof. This batch targets 0.4.9. Red headings, mana, set symbols and lower details
+still need calibration; outer-stock/corner checks, fresh full-card aggregates and
+hosted template updates remain open.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting
