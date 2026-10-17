@@ -96,7 +96,9 @@ try {
               let beforeBad = 0,
                 afterBad = 0,
                 interiorChanges = 0,
-                interiorMax = 0;
+                interiorMax = 0,
+                interiorAlphaMax = 0,
+                nonBoundaryMax = 0;
               const badSamples = [];
               for (let yy = 0; yy < after.height; yy++)
                 for (let xx = 0; xx < after.width; xx++) {
@@ -121,6 +123,18 @@ try {
                       const d = Math.abs(before.data[i + channel] - after.data[i + channel]);
                       interiorChanges += Number(d !== 0);
                       interiorMax = Math.max(interiorMax, d);
+                      if (channel === 3) interiorAlphaMax = Math.max(interiorAlphaMax, d);
+                      // Padded-mask sampling may round RGB by one byte at the
+                      // aperture's antialias footprint on Linux WebKit. Away
+                      // from that footprint every channel must remain exact.
+                      const boundary =
+                        (((sx >= 22 && sx <= 34) || (sx >= 698 && sx <= 710)) &&
+                          sy >= 22 &&
+                          sy <= 998) ||
+                        (((sy >= 22 && sy <= 34) || (sy >= 986 && sy <= 998)) &&
+                          sx >= 22 &&
+                          sx <= 710);
+                      if (!boundary) nonBoundaryMax = Math.max(nonBoundaryMax, d);
                     }
                   }
                 }
@@ -132,6 +146,8 @@ try {
                 afterBad,
                 interiorChanges,
                 interiorMax,
+                interiorAlphaMax,
+                nonBoundaryMax,
                 badSamples,
               });
             }
@@ -181,11 +197,19 @@ try {
       });
       for (const row of rows) {
         assert.equal(row.afterBad, 0, `${engine.name()} stock seam: ${JSON.stringify(row)}`);
-        assert.equal(
-          row.interiorMax,
-          0,
-          `${engine.name()} aperture changed: ${JSON.stringify(row)}`,
-        );
+        if (row.kind === 'recut') assert.equal(row.interiorMax, 0);
+        else {
+          assert.equal(row.interiorAlphaMax, 0, 'Padding must preserve aperture alpha');
+          assert.equal(
+            row.nonBoundaryMax,
+            0,
+            'Padding must preserve pixels away from aperture edges',
+          );
+          assert.ok(
+            row.interiorMax <= 1,
+            `${engine.name()} aperture changed beyond byte rounding: ${JSON.stringify(row)}`,
+          );
+        }
       }
       if (engine === webkit)
         assert.ok(
