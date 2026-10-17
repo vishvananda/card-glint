@@ -335,6 +335,86 @@ or a released renderer change. Test style boundaries and broad layout behavior
 before adoption. Rukh Egg's printed discretionary hyphen in `ex-actly`, residual
 font weight and sparse-text centering remain separate review items.
 
+The [native dash integration](fixtures/accuracy/early-expansion-dash-native.json)
+extends that rule across style-run boundaries and tests attribution prefixes,
+inline symbols, explicit newlines, unused-break shaping and soft hyphens. Its
+316-card replay changes only the two Rukh Egg printings and Goblin Shrine;
+313 cards remain byte-identical, as do all pixels outside body text. The two
+accepted Rukh Egg references improve from 0.485/0.485 to 0.504/0.501 under the
+text-fit objective. The larger prototype gains above also require the proposed
+shared typography, which was unadopted at that stage. Goblin Shrine's pose remains
+rejected and unscored. No set-wide text-calibration approval follows from this
+wrapping fix; historical 0.4.6 measurements remain separately identified.
+
+The [font-proportion study](fixtures/accuracy/early-expansion-text-proportions.json)
+keeps mana discs round while measuring letter width independently. Stable size
+classes improve the reused reserved sample to ARN 0.570 and ATQ 0.597; DRK keeps
+its earlier candidate at 0.515 because the new proportions regress there. These
+were private candidates at this stage, not independent validation. Runtime
+adoption follows below.
+Thirteen regressions greater than 0.05 remain across 189 reserved printings.
+The [short ATQ review](fixtures/accuracy/atq/short-text-review.json) supports
+large centered flavor on Candelabra, while the next longer passages stay left
+aligned. The 130-character gate remains a shared hypothesis, not a proven
+historical typesetting formula.
+
+Before final typography adoption, seven original inputs receive exact-printing
+corrections: [Rukh Egg](fixtures/accuracy/arn/annotations-text-outliers.json)
+allows the printed `ex-actly` break; [Mishra's Factory and Candelabra](fixtures/accuracy/atq/annotations-text-outliers.json)
+retain the final `Assem-bly` break, printed apostrophe, and missing activation
+colon respectively. Soft hyphens permit wrapping without forcing a line.
+The public resolver preserves Oracle wording and records scan provenance.
+Recheck candidates against these corrected inputs on both sides. The scans
+also show uncircled generic activation costs; review that broader symbol-style
+policy before treating body text calibration as complete.
+
+The [native typography adoption](fixtures/accuracy/early-expansion-text-runtime.json)
+replays the retained shared settings with those corrected original inputs on
+both sides. All 316 cards render and every pixel outside body text is unchanged;
+all 282 accepted comparisons match the private candidate painter exactly. The
+default-width wrapper remains identical on every input, and Oracle text fits
+under all three alignment modes. Mean regional text indices improve from
+0.421 to 0.592 for ARN, 0.415 to 0.604 for ATQ, and 0.393 to 0.514 for DRK.
+There are 256 improvements and 17 regressions greater than 0.05; 34 rejected
+poses remain unscored. Reserved examples have been inspected repeatedly and
+are not independent validation. The ledger keeps rules and flavor partial.
+
+Version 0.4.7 includes these shared defaults and the original-text corrections.
+Review Gaea's Touch for narrower wrapping, Bog Imp and Sunken City for short
+heading/vertical placement, King Suleiman for quotation formatting, and
+Transmute Artifact for compact-text placement. Investigate shared frame/color
+insets and source-style rules before introducing any printing-specific layout.
+The [input compatibility extension](fixtures/accuracy/early-expansion-break-inputs.json)
+proves that the new reviews change only seven bodies, preserve all unrelated
+face fields, and leave all 292 M21 adapter outputs identical.
+
+Fresh [whole-card scores](fixtures/accuracy/early-expansion-text-scores.json)
+increase the existing structural aggregate from 0.652 to 0.702 for ARN,
+0.634 to 0.692 for ATQ, and 0.645 to 0.681 for DRK. The separately labeled
+reviewed-credit aggregation improves too. Frame scoring strips overlap body
+ink on 220 cards, so their score changes do not demonstrate a frame-geometry
+change; native pixels outside text remain identical. Isolate those strips from
+rules ink in a new metric revision and rescore both sides before using the
+frame component to judge geometry independently. Hosted charts have not
+adopted these local development scores or their reviewed-credit policy.
+
+The [Dark short-text follow-up](fixtures/accuracy/early-expansion-dark-short-text.json)
+uses a narrower centered block and a shared line-count optical offset. Against
+identical corrected wording and fixed scan poses, all 17 affected scored cards
+improve and 80 remain unchanged: mean text-fit index 0.520 → 0.577. The 316-card
+native replay preserves every non-body pixel and every ARN/ATQ face. Oracle
+fitting covers all three alignment choices. These repeatedly inspected scans
+remain development references, not independent validation.
+
+The [five-body wording receipt](fixtures/accuracy/early-expansion-followup-wording.json)
+isolates activation punctuation and inline flavor attributions on Drowned,
+Miracle Worker, Marsh Gas, Grave Robbers and Brothers of Fire. Other fields and
+all 292 M21 adapter outputs remain exact. Font weight, historical activation
+symbol style, Electric Eel punctuation and regular-text outliers such as Drowned
+still need review. The 34 unresolved poses remain unscored. Full-card aggregates
+for DRK are marked historical until they are recomputed with frame regions that
+do not include rules ink. This batch is included in 0.4.8; rules/flavor stay partial.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting

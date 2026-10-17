@@ -36,7 +36,7 @@ their URLs to `createRenderer` or `createPixelKernels`. Declarations are include
 for every JavaScript entry point. The package contains no private app code and
 requires no registry credentials.
 
-The integration branch includes upstream 0.4.6 typography, printing presets,
+The integration branch includes upstream 0.4.8 typography, printing presets,
 provider adapters, artwork placement and surface controls. Native text painters
 accept `textInk` spans with character offsets and colors. The host owns change
 detection, type-word selection and power/toughness ranges. The painter measures

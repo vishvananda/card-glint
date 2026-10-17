@@ -10,10 +10,12 @@ import {
 const read = async (f) => JSON.parse(await readFile('games/magic/fixtures/accuracy/' + f));
 const boundaries = await read('m21-component-boundaries-v2.json'),
   stock = await read('modern-land-stock-transfer.json');
+
 const ledger = await read('calibration-progress.json'),
   m21 = ledger.sets.find((s) => s.set === 'm21');
 const white = await read('m21-white-default.json');
 const wording = await read('m21-original-wording.json');
+
 const textScope = structuredClone(m21.groups.find((g) => g.tasks.rules.originalInput));
 const priorTextStatus = textScope.tasks.rules.status;
 applyM21OriginalWording(textScope, wording, false);
@@ -23,6 +25,7 @@ assert.equal(
   priorTextStatus,
   'Wording cannot approve text alignment',
 );
+
 const changedWording = structuredClone(m21);
 const changedScope = changedWording.groups.find((g) => g.tasks.rules.originalInput);
 changedScope.tasks.rules.originalInput.guards = { 'missing-wording-source': '0'.repeat(64) };

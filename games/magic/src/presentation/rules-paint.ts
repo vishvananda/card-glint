@@ -3,7 +3,13 @@ import type { CanvasImages } from './canvas-assets.js';
 import { paintMana } from './canvas-text.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { faceRects } from './special-frames.js';
-import { layoutRules, rulesFont, RULES_TYPOGRAPHY, type RulesLayout } from './rules-layout.js';
+import {
+  layoutRules,
+  rulesFont,
+  RULES_TYPOGRAPHY,
+  type RulesLayout,
+  type MeasuredRun,
+} from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
 import { hasFlavorSeparator } from './flavor-separator.js';
@@ -156,7 +162,7 @@ export function paintRulesLayout(
         );
       else {
         ink.font = rulesFont(run.size, run.italic);
-        ink.fillText(run.text, x, line.baseline);
+        paintScaledText(ink, run, x, line.baseline, false);
       }
       x += run.width;
     }
@@ -170,7 +176,7 @@ export function paintRulesLayout(
         if (!run.symbol) {
           ink.font = rulesFont(run.size, run.italic);
           ink.lineWidth = run.size * inkInsetEm * 2;
-          ink.strokeText(run.text, x, line.baseline);
+          paintScaledText(ink, run, x, line.baseline, true);
         }
         x += run.width;
       }
@@ -179,5 +185,27 @@ export function paintRulesLayout(
     context.drawImage(layer, 0, 0);
     layer.width = layer.height = 0;
   }
+  context.restore();
+}
+
+/** Scale letter ink locally; the caller advances with the matching measured width. */
+function paintScaledText(
+  context: CanvasRenderingContext2D,
+  run: MeasuredRun,
+  x: number,
+  y: number,
+  stroke: boolean,
+) {
+  const scale = run.textWidth ?? 1;
+  if (scale === 1) {
+    if (stroke) context.strokeText(run.text, x, y);
+    else context.fillText(run.text, x, y);
+    return;
+  }
+  context.save();
+  context.translate(x, y);
+  context.scale(scale, 1);
+  if (stroke) context.strokeText(run.text, 0, 0);
+  else context.fillText(run.text, 0, 0);
   context.restore();
 }

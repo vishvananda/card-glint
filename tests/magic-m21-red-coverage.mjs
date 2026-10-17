@@ -4,6 +4,7 @@ import { createServer } from 'vite';
 import { applyM21RedColor } from '../games/magic/tools/accuracy/calibration-m21-scope.mjs';
 const read = async (f) => JSON.parse(await readFile('games/magic/fixtures/accuracy/' + f));
 const receipt = await read('m21-red-color-adoption.json');
+
 const ledger = await read('calibration-progress.json');
 for (const g of ledger.sets.find((s) => s.set === 'm21').groups) {
   const rows = receipt.metrics.rows.filter((r) => g.printingIds.includes(r.id));

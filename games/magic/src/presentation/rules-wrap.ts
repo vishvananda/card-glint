@@ -10,6 +10,8 @@ export interface MeasuredRun {
   descent: number;
   inkLeft: number;
   inkRight: number;
+  /** Horizontal letter scale; inline symbol metrics remain unscaled. */
+  textWidth?: number;
 }
 export const rulesFont = (size: number, italic = false) =>
   `${italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`;
@@ -55,7 +57,12 @@ function words(runs: readonly RulesRun[]): Word[] {
 }
 
 /** Measure the same contiguous style runs that Canvas paints, retaining shaping/kerning. */
-function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: number): MeasuredRun[] {
+function measure(
+  context: CanvasRenderingContext2D,
+  pieces: Piece[],
+  size: number,
+  textWidth = 1,
+): MeasuredRun[] {
   const merged: Piece[] = [];
   for (const input of pieces) {
     // Soft hyphens describe permitted printing breaks, not visible ink.
@@ -71,41 +78,51 @@ function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: numbe
     const metrics = context.measureText(piece.text);
     return {
       ...piece,
+      ...(piece.symbol || textWidth === 1 ? {} : { textWidth }),
       size,
-      width: piece.symbol ? size * 0.88 : metrics.width,
+      width: piece.symbol ? size * 0.88 : metrics.width * textWidth,
       ascent: piece.symbol ? size * 0.72 : metrics.actualBoundingBoxAscent,
       descent: piece.symbol ? size * 0.08 : metrics.actualBoundingBoxDescent,
-      inkLeft: piece.symbol ? size * 0.025 : -metrics.actualBoundingBoxLeft,
-      inkRight: piece.symbol ? size * 0.825 : metrics.actualBoundingBoxRight,
+      inkLeft: piece.symbol ? size * 0.025 : -metrics.actualBoundingBoxLeft * textWidth,
+      inkRight: piece.symbol ? size * 0.825 : metrics.actualBoundingBoxRight * textWidth,
     };
   });
 }
 
-/** Only supplied discretionary breaks may divide a word. Preserve each style
- * run and choose the longest prefix that fits, including its visible hyphen. */
+/** Break at a supplied soft hyphen or after an inline em dash. Keep the printed
+ * dash, preserve style runs, and choose the longest prefix whose ink fits.
+ * A leading attribution dash stays attached to its following word. */
 function discretionaryBreak(
   context: CanvasRenderingContext2D,
   prefix: Piece[],
   pieces: Piece[],
   width: number,
   size: number,
+  textWidth = 1,
 ) {
   let best: { head: Piece[]; tail: Piece[] } | null = null;
   for (let i = 0; i < pieces.length; i++) {
     const piece = pieces[i]!;
     if (piece.symbol) continue;
     for (let j = 0; j < piece.text.length; j++) {
-      if (piece.text[j] !== '\u00ad') continue;
+      const dash = piece.text[j] === '—';
+      if (piece.text[j] !== '\u00ad' && !dash) continue;
       if (
         ![...pieces.slice(0, i), { ...piece, text: piece.text.slice(0, j) }].some(
           (p) => p.text.replaceAll('\u00ad', '').length,
         )
       )
         continue;
-      const head = [...pieces.slice(0, i), { ...piece, text: piece.text.slice(0, j) + '-' }];
+      const head = [
+        ...pieces.slice(0, i),
+        { ...piece, text: piece.text.slice(0, j) + (dash ? '—' : '-') },
+      ];
       const tail = [{ ...piece, text: piece.text.slice(j + 1) }, ...pieces.slice(i + 1)];
       if (!tail.some((p) => p.text.replaceAll('\u00ad', '').length)) continue;
-      if (measure(context, [...prefix, ...head], size).reduce((n, r) => n + r.width, 0) <= width)
+      if (
+        measure(context, [...prefix, ...head], size, textWidth).reduce((n, r) => n + r.width, 0) <=
+        width
+      )
         best = { head, tail };
     }
   }
@@ -117,12 +134,13 @@ function wrapWords(
   tokens: readonly Word[],
   width: number,
   size: number,
+  textWidth = 1,
 ) {
   const output: MeasuredRun[][] = [];
   let current: Piece[] = [];
   for (const word of tokens) {
     if (word.newline) {
-      output.push(measure(context, current, size));
+      output.push(measure(context, current, size, textWidth));
       current = [];
       continue;
     }
@@ -132,19 +150,26 @@ function wrapWords(
         ? [{ text: ' ', italic: word.pieces[0]?.italic ?? false, symbol: false }]
         : [];
     for (;;) {
-      const trial = measure(context, [...current, ...gap, ...pieces], size);
+      const trial = measure(context, [...current, ...gap, ...pieces], size, textWidth);
       if (trial.reduce((n, r) => n + r.width, 0) <= width) {
         current.push(...gap, ...pieces);
         break;
       }
-      const split = discretionaryBreak(context, [...current, ...gap], pieces, width, size);
+      const split = discretionaryBreak(
+        context,
+        [...current, ...gap],
+        pieces,
+        width,
+        size,
+        textWidth,
+      );
       if (split) {
-        output.push(measure(context, [...current, ...gap, ...split.head], size));
+        output.push(measure(context, [...current, ...gap, ...split.head], size, textWidth));
         current = [];
         gap = [];
         pieces = split.tail;
       } else if (current.length) {
-        output.push(measure(context, current, size));
+        output.push(measure(context, current, size, textWidth));
         current = [];
         gap = [];
       } else {
@@ -153,7 +178,7 @@ function wrapWords(
       }
     }
   }
-  if (current.length) output.push(measure(context, current, size));
+  if (current.length) output.push(measure(context, current, size, textWidth));
   return output;
 }
 
@@ -163,8 +188,9 @@ function balanceWords(
   tokens: readonly Word[],
   width: number,
   size: number,
+  textWidth = 1,
 ): MeasuredRun[][] {
-  const greedy = wrapWords(context, tokens, width, size);
+  const greedy = wrapWords(context, tokens, width, size, textWidth);
   if (greedy.length < 2) return greedy;
   const measured = new Map<string, MeasuredRun[]>();
   const range = (start: number, end: number) => {
@@ -178,7 +204,7 @@ function balanceWords(
           pieces.push({ text: ' ', italic: word.pieces[0]?.italic ?? false, symbol: false });
         pieces.push(...word.pieces);
       }
-      value = measure(context, pieces, size);
+      value = measure(context, pieces, size, textWidth);
       measured.set(key, value);
     }
     return value;
@@ -220,6 +246,7 @@ export function wrapRules(
   width: number,
   size: number,
   balanced = false,
+  textWidth = 1,
 ): MeasuredRun[][] {
   const tokens = words(runs);
   // Balancing measures O(words²) ranges; bound preparation work for host-supplied
@@ -227,15 +254,17 @@ export function wrapRules(
   // Reviewed discretionary breaks retain greedy placement; balancing currently
   // optimizes only inter-word cuts and would otherwise discard those hints.
   if (!balanced || tokens.length > 64 || runs.some((r) => r.text.includes('\u00ad')))
-    return wrapWords(context, tokens, width, size);
+    return wrapWords(context, tokens, width, size, textWidth);
   const lines: MeasuredRun[][] = [];
   let segment: Word[] = [];
   for (const token of tokens) {
     if (token.newline) {
-      lines.push(...(segment.length ? balanceWords(context, segment, width, size) : [[]]));
+      lines.push(
+        ...(segment.length ? balanceWords(context, segment, width, size, textWidth) : [[]]),
+      );
       segment = [];
     } else segment.push(token);
   }
-  if (segment.length) lines.push(...balanceWords(context, segment, width, size));
+  if (segment.length) lines.push(...balanceWords(context, segment, width, size, textWidth));
   return lines;
 }

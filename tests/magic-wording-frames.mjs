@@ -9,6 +9,7 @@ const receipt = JSON.parse(
 const extension = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-input-extension.json'),
 );
+
 assert.deepEqual(extension.summary, {
   earlyPrintings: 316,
   changedArtists: 19,

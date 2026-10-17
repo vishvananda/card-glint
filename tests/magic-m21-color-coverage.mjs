@@ -5,6 +5,7 @@ import { applyM21Evidence } from '../games/magic/tools/accuracy/calibration-m21-
 const read = async (file) => JSON.parse(await readFile('games/magic/fixtures/accuracy/' + file));
 const evidence = await read('m21-normal-color-adoption.json'),
   normal = await read('m21-normal-boundaries.json');
+
 const ledger = await read('calibration-progress.json'),
   m21 = ledger.sets.find((s) => s.set === 'm21');
 const scorn = m21.groups.find((g) =>

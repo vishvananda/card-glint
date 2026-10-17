@@ -1,0 +1,28 @@
+{
+  "schema": 2,
+  "status": "cache-key-only-source-chain",
+  "steps": [
+    {
+      "schema": 1,
+      "status": "cache-key-only-source-change",
+      "version": "0.4.8",
+      "file": "games/magic/src/presentation/canvas-face.ts",
+      "from": "canvas-face-v141",
+      "to": "canvas-face-v142",
+      "before": "7bc098b6924146c445d9ea84394996e9e56437c762f06fcd5b0229af7454fcae",
+      "after": "9bfec2a1692fe4dd9d1cdc4cb9214af2af464e7cc0a67b7f1dc8e42532e3673e",
+      "policy": "The only change in canvas-face.ts is the opaque generated-face cache revision. Replacing the new revision with the old reproduces the entire previously measured source byte-for-byte. Rendering code and all other cache-key inputs are unchanged. Earlier geometry/color proof hashes remain historical; this explicit extension permits their unchanged painter to be reused."
+    },
+    {
+      "schema": 1,
+      "status": "cache-key-only-source-change",
+      "version": "0.4.7",
+      "file": "games/magic/src/presentation/canvas-face.ts",
+      "from": "canvas-face-v140",
+      "to": "canvas-face-v141",
+      "before": "5af8c4c9f8b872a8567a97a5f0ee2c33ad2d2dc1ad91aea98179dfe5a30077e1",
+      "after": "7bc098b6924146c445d9ea84394996e9e56437c762f06fcd5b0229af7454fcae",
+      "policy": "The only change in canvas-face.ts is the opaque generated-face cache revision. Replacing the new revision with the old reproduces the entire previously measured source byte-for-byte. Rendering code and all other cache-key inputs are unchanged. Earlier geometry/color proof hashes remain historical; this explicit extension permits their unchanged painter to be reused."
+    }
+  ]
+}

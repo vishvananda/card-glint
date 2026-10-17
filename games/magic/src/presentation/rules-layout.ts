@@ -22,6 +22,8 @@ export interface RulesLayout {
   separators: number[];
 }
 export interface RulesTypography {
+  /** Positive horizontal letter scale. Does not scale mana discs or line height. */
+  textWidth?: number;
   leading: number;
   paragraphGap: number;
   flavorGap: number;
@@ -59,6 +61,9 @@ export function layoutRules(
   minimumSize = 15,
   typography: RulesTypography = RULES_TYPOGRAPHY,
 ): RulesLayout {
+  const textWidth = typography.textWidth ?? 1;
+  if (!Number.isFinite(textWidth) || textWidth <= 0)
+    throw Error('Magic rules text width must be finite and positive.');
   context.save();
   context.letterSpacing = '0px';
   context.textBaseline = 'alphabetic';
@@ -82,6 +87,7 @@ export function layoutRules(
           paragraphSize,
           typography.balanceLines &&
             (!typography.balanceCenteredOnly || paragraph.align === 'center'),
+          textWidth,
         );
         // Avoid a short orphan line in long flavor passages when a small size
         // reduction can remove it. Two-line quotations keep their intended cadence.
@@ -103,6 +109,7 @@ export function layoutRules(
               trialSize,
               typography.balanceLines &&
                 (!typography.balanceCenteredOnly || paragraph.align === 'center'),
+              textWidth,
             );
             if (trial.length < rows.length) {
               paragraphSize = trialSize;
