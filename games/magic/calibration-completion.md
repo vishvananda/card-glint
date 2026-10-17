@@ -211,6 +211,26 @@ approval. Original type lines, flavor formatting and MTGJSON transcription
 outliers still require their own review. No typography task is closed by this
 input audit.
 
+The [early-expansion wording audit](fixtures/accuracy/early-expansion-original-wording.json)
+provides original inputs for all 316 ordinary Arabian Nights, Antiquities and
+The Dark printings. Every type line was read from its exact scan; 215 differ from
+the previous Oracle-based inputs. Rules use 309 exact-printing MTGJSON records
+and seven newly transcribed scan bodies where the provider has no original entry.
+These field corrections are also exposed by `resolvePrintingWording`; Oracle
+wording is preserved. The ledger records rules and type-line input readiness
+separately from typography approval. Flavor formatting, source transcription
+outliers, names, artist/footer data and placement still need review. The existing
+282-card diagnostic scores retain their original excluded type regions and do
+not become typography evidence retroactively. All 34 unresolved scan poses stay
+in the denominator.
+
+This wording batch is not yet released. The native replay exposed a frame
+selection regression on Arabian Nights Mountain: its printed type `Land` loses
+the red basic-land palette, selecting the generic land plate. Preserve the
+semantic palette independently of the displayed type before publishing these
+corrections or admitting their text scores. The affected variant remains pending
+in the ledger.
+
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for

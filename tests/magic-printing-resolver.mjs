@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createServer } from 'vite';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+import { calibrationPresentation } from '../games/magic/tools/accuracy/calibration-wording.mjs';
 execFileSync(process.execPath, ['games/magic/tools/build-printing-corrections.mjs', '--check']);
 const server = await createServer({
   configFile: false,
@@ -28,6 +29,66 @@ try {
   };
   const input = { oracle, original },
     snapshot = structuredClone(input);
+  let earlyTypes = 0;
+  for (const set of ['arn', 'atq', 'drk']) {
+    const types = await fixture(set + '/annotations-printed-types.json');
+    const bodies =
+      set === 'arn' ? { cards: {} } : await fixture(set + '/annotations-missing-rules.json');
+    for (const [id, row] of Object.entries(types.cards)) {
+      const body = bodies.cards[id];
+      const resolved = resolvePrintingWording(id, input, {
+        referenceSha256: row.referenceHash,
+      });
+      assert.equal(resolved.provenance.status, 'applied');
+      assert.equal(resolved.wordings.original.typeLine, row.typeLine);
+      assert.equal(resolved.wordings.oracle.typeLine, oracle.typeLine);
+      assert.equal(resolved.wordings.oracle.rulesText, 'Oracle rules.\nOracle flavor.');
+      const rules = body?.rulesText ?? original.rulesText,
+        flavor = body?.flavorText ?? original.flavorText;
+      assert.equal(
+        resolved.wordings.original.rulesText,
+        [rules, flavor.replaceAll('*', '')].filter(Boolean).join('\n'),
+      );
+      assert.equal(
+        resolvePrintingWording(id, input, { referenceSha256: '0'.repeat(64) }).provenance.status,
+        'reference-mismatch',
+      );
+      const entry = {
+        card: {
+          id,
+          set,
+          name: row.name,
+          type_line: row.review.oracleType,
+          oracle_text: oracle.rulesText,
+        },
+        reference: { sha256: row.referenceHash },
+      };
+      const annotations = { [id]: { ...body, ...row } };
+      const adapted = calibrationPresentation(entry, annotations, {
+        [id]: { originalText: original.rulesText },
+      });
+      assert.equal(adapted.face.typeLine, row.typeLine);
+      assert.equal(
+        adapted.face.creature,
+        /\bCreature\b/.test(entry.card.type_line),
+        'Historical type wording keeps semantic identity',
+      );
+      assert.equal(adapted.wordingEvidence.type, 'scan-reviewed');
+      assert.equal(adapted.wordingEvidence.rules, body ? 'scan-reviewed' : 'mtgjson-original');
+      if (!body)
+        assert.throws(
+          () => calibrationPresentation(entry, annotations),
+          /Original rules unavailable/,
+        );
+      assert.throws(
+        () =>
+          calibrationPresentation({ ...entry, reference: { sha256: '0'.repeat(64) } }, annotations),
+        /stale/,
+      );
+      earlyTypes++;
+    }
+  }
+  assert.equal(earlyTypes, 316);
   const artists = await fixture('planar-artist-review.json');
   for (const row of artists.rows) {
     const entry = {

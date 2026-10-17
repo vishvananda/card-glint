@@ -18,6 +18,7 @@ import {
   applyM21OriginalWording,
   applyM21RedColor,
 } from './calibration-m21-scope.mjs';
+import { applyEarlyOriginalWording } from './calibration-original-wording.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
 const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
@@ -36,6 +37,7 @@ const server = await createServer({
 const early = await readJson(fixtureRoot + '/early-expansion-colors.json');
 const earlyFrames = await readJson(fixtureRoot + '/early-expansion-calibration.json');
 const earlyScores = await readJson(fixtureRoot + '/early-expansion-full-scores.json');
+const earlyWording = await readJson(fixtureRoot + '/early-expansion-original-wording.json');
 const historical = await readJson(fixtureRoot + '/five-set-hsb-adoption.json');
 const colorGaps = await readJson(fixtureRoot + '/showcased-color-gap-review.json');
 const m21Color = await readJson(fixtureRoot + '/m21-normal-color-adoption.json');
@@ -64,6 +66,7 @@ const m21StockGuardsMatch = await matchGuards(m21Stock);
 const m21WhiteGuardsMatch = await matchGuards(m21White);
 const m21WordingGuardsMatch = await matchGuards(m21Wording);
 const m21RedGuardsMatch = await matchGuards(m21Red);
+const earlyWordingGuardsMatch = await matchGuards(earlyWording);
 const m21GuardsMatch = (
   await Promise.all(
     Object.entries(m21Color.sourceGuards).map(
@@ -374,6 +377,7 @@ try {
           applyM21OriginalWording(g, m21Wording, m21WordingGuardsMatch);
           applyM21RedColor(g, source, m21Red, m21RedGuardsMatch);
         }
+        applyEarlyOriginalWording(g, earlyWording, earlyWordingGuardsMatch);
         g.tasks.release = {
           status: 'pending',
           reason: 'No complete-set certification and matching published score revision.',

@@ -7,6 +7,18 @@ import {
   calibrationTaskStatus,
 } from './calibration-ledger.mjs';
 
+function originalInputs(set, task) {
+  return set.groups.reduce(
+    (counts, group) => {
+      const input = group.tasks?.[task]?.originalInput;
+      if (input) counts[input.status] = (counts[input.status] ?? 0) + input.coveredPrintings;
+      counts.unrecorded += group.printings - (input?.coveredPrintings ?? 0);
+      return counts;
+    },
+    { ready: 0, partial: 0, stale: 0, unrecorded: 0 },
+  );
+}
+
 export async function calibrationReport(ledger) {
   const current = structuredClone(ledger),
     checked = new Map();
@@ -42,15 +54,8 @@ export async function calibrationReport(ledger) {
     printings: set.inventory.ordinaryPrintings,
     nonfoil: set.groups.reduce((n, g) => n + g.references.nonfoil, 0),
     foilOnly: set.groups.reduce((n, g) => n + g.references.foilOnly, 0),
-    originalRulesInputs: set.groups.reduce(
-      (counts, group) => {
-        const input = group.tasks?.rules?.originalInput;
-        if (input) counts[input.status] = (counts[input.status] ?? 0) + input.coveredPrintings;
-        counts.unrecorded += group.printings - (input?.coveredPrintings ?? 0);
-        return counts;
-      },
-      { ready: 0, partial: 0, stale: 0, unrecorded: 0 },
-    ),
+    originalRulesInputs: originalInputs(set, 'rules'),
+    originalTypeInputs: originalInputs(set, 'headings'),
     byTask: Object.fromEntries(
       Object.keys(CALIBRATION_TASKS).map((task) => {
         const counts = {};
@@ -101,16 +106,17 @@ export function calibrationMarkdown(ledger, reports, { setCode } = {}) {
           .join('; ')} |`,
       );
     lines.push('');
-    if (
-      r.originalRulesInputs.ready + r.originalRulesInputs.partial + r.originalRulesInputs.stale >
-      0
-    )
-      lines.push(
-        `Original rules input coverage (printings): ${Object.entries(r.originalRulesInputs)
-          .map(([state, count]) => `${state}: ${count}`)
-          .join('; ')}. Source availability does not approve text alignment.`,
-        '',
-      );
+    for (const [field, counts] of [
+      ['rules', r.originalRulesInputs],
+      ['type line', r.originalTypeInputs],
+    ])
+      if (counts.ready + counts.partial + counts.stale > 0)
+        lines.push(
+          `Original ${field} input coverage (printings): ${Object.entries(counts)
+            .map(([state, count]) => `${state}: ${count}`)
+            .join('; ')}. Source availability does not approve text alignment.`,
+          '',
+        );
     if (setCode) {
       lines.push('| Variant | Check | State | Reason |', '| --- | --- | --- | --- |');
       for (const o of r.outstanding)

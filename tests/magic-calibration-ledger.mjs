@@ -10,6 +10,7 @@ import {
   calibrationApplicability,
 } from '../games/magic/tools/accuracy/calibration-groups.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
+import { applyEarlyOriginalWording } from '../games/magic/tools/accuracy/calibration-original-wording.mjs';
 
 const h = 'a'.repeat(64);
 const proof = {
@@ -211,6 +212,33 @@ for (const row of earlyScores.rows.filter((r) => r.after)) {
 }
 for (const set of ledger.sets.filter((s) => ['arn', 'atq', 'drk'].includes(s.set)))
   for (const group of set.groups) assert.equal(group.tasks.fullCard.status, 'partial');
+const earlyWording = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-original-wording.json'),
+);
+assert.equal(earlyWording.rows.length, 316);
+assert.equal(earlyWording.summary.rules['mtgjson-original'], 309);
+assert.equal(earlyWording.summary.rules['scan-reviewed'], 7);
+for (const [set, count] of [
+  ['arn', 92],
+  ['atq', 102],
+  ['drk', 122],
+]) {
+  const report = reports.find((r) => r.set === set);
+  assert.equal(report.originalRulesInputs.ready, count);
+  assert.equal(report.originalTypeInputs.ready, count);
+  assert.equal(report.complete, false);
+}
+const altered = structuredClone(ledger.sets.find((s) => s.set === 'arn'));
+const first = altered.groups[0],
+  originalStatus = first.tasks.headings.status;
+applyEarlyOriginalWording(first, earlyWording, false);
+assert.equal(first.tasks.headings.originalInput.status, 'stale');
+assert.equal(first.tasks.headings.status, originalStatus, 'Input audit cannot approve placement');
+first.tasks.rules.originalInput.guards = { 'missing-original-wording': h };
+first.tasks.headings.originalInput.guards = { 'missing-original-wording': h };
+const [alteredReport] = await calibrationReport({ sets: [altered] });
+assert.equal(alteredReport.originalRulesInputs.stale, first.printings);
+assert.equal(alteredReport.originalTypeInputs.stale, first.printings);
 console.log(
   'Calibration ledger: full inventory, completion gates, stale evidence and foil denominators passed.',
 );
