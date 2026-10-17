@@ -10,6 +10,9 @@ const receipt = JSON.parse(
 const extension = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-input-extension.json'),
 );
+const breaks = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-break-inputs.json'),
+);
 for (const [file, guard] of Object.entries(receipt.guards)) {
   const next = extension.guards[file];
   if (next) assert.equal(next.before, guard.after, 'Compatibility chain must start at prior proof');
@@ -21,14 +24,21 @@ for (const [file, guard] of Object.entries(receipt.guards)) {
     'Stale wording compatibility: ' + file,
   );
 }
-for (const [file, guard] of Object.entries(extension.guards))
+for (const [file, guard] of Object.entries(extension.guards)) {
+  const next = breaks.guards[file];
+  if (next) assert.equal(next.before, guard.after);
   assert.equal(
     createHash('sha256')
       .update(await readFile(file))
       .digest('hex'),
-    guard.after,
+    next?.after ?? guard.after,
     file,
   );
+}
+assert.deepEqual(breaks.summary, { earlyPrintings: 316, changedBodies: 7, unchangedM21: 292 });
+assert.equal(breaks.rows.length, 316);
+assert.equal(breaks.rows.filter((row) => row.changedBody).length, 7);
+assert.ok(breaks.rows.every((row) => row.otherFieldsIdentical));
 assert.deepEqual(extension.summary, {
   earlyPrintings: 316,
   changedArtists: 19,
