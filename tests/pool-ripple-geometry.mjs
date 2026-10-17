@@ -8,7 +8,9 @@ const kernel = source.slice(
   source.indexOf('const vec2 sunHorizontal'),
 );
 assert.match(source, /rippleWake\(uv,wakeDrag\)/, 'Ambient slopes must not warp wave propagation');
-const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+const browser = await chromium.launch({
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+});
 try {
   const page = await browser.newPage();
   const result = await page.evaluate((kernel) => {
@@ -108,7 +110,7 @@ void main(){vec2 drag;vec3 r=rippleWake(probe,drag);color=vec4(length(r.xy)*4.,r
   for (const cap of result.caps)
     assert.ok(cap.pixel[0] > 10, `Complete stroke cap: ${JSON.stringify(cap)}`);
   console.log(
-    'PASS flat tap rings remain circular and both stroke end caps survive in either direction (Linux Chromium / SwiftShader)',
+    `PASS flat tap rings remain circular and both stroke end caps survive in either direction (${process.platform} Chromium / SwiftShader)`,
   );
 } finally {
   await browser.close();

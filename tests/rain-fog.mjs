@@ -8,7 +8,7 @@ const errors = [];
 try {
   const page = await browser.newPage();
   page.on('pageerror', (e) => errors.push(String(e)));
-  await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4290/card-glint/');
+  await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');
   const report = await page.evaluate(async () => {
     await window.lab.ready;
     window.lab.pause();
@@ -154,8 +154,7 @@ try {
       {
         report,
         errors,
-        scope:
-          'Linux Chromium / SwiftShader, deterministic pixels and preparation counters; no physical GPU/device or performance claim.',
+        scope: `${process.platform} Chromium / SwiftShader, deterministic pixels and preparation counters; no physical GPU/device or performance claim.`,
       },
       null,
       2,
