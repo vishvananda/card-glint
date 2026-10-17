@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "506f3ef5555def744da7df2f4da72fb5f53e6b91",
+  "policy": "Exact native frozen-prototype parity for seven intended DRK cards; 309 same-corpus cards and 84 unrelated controls unchanged. Reverse only measured source edits before older receipt checks. Earlier measurements retain their original hashes.",
+  "evidenceHash": "7fa113666ad95cbb2c9d2c7a689e0b7b69c4d05538e859a7425d1a94020c2ad8",
+  "dependencies": {
+    "games/magic/src/presentation/early-expansion-dark-values.ts": "5f972608730ddf9951fa50c1ecf40aef15052cb94a3be834f6d11a9a074e6883",
+    "games/magic/src/presentation/early-expansion-frame-values.ts": "439c01770fd65e1dc1108c8c84b3cffabad081ed24f0d1a0fd5df7071705d557",
+    "games/magic/src/presentation/early-expansion-color-values.ts": "10af7885548204f2fa59f436321f5e230a22bb02671e102da93d3bf059ccb355",
+    "games/magic/src/presentation/early-expansion-frame.ts": "a879dee6b6af69563d0a5d3a8eea0ba95366654af286d333fbc77846e0e3a4ec",
+    "games/magic/src/presentation/early-expansion-colors.ts": "c8c21ae39ce54e6568487127c84fd2795a449ac4caca099816d2a87cb79d9be3",
+    "games/magic/src/presentation/frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+    "games/magic/src/presentation/frame-accent-mask.ts": "ad89006a3de222fede8504cc93db433c98d8a9f11f3dcc2399ec93c58d517d00",
+    "games/magic/src/presentation/frame-paper-mask.ts": "f598e81c42db4ae6c0a57de3026472e3a8d161775b09ff6844cfb51b2b02a9a7",
+    "games/magic/src/presentation/hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
+    "games/magic/src/presentation/retro-frame.ts": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c",
+    "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+    "games/magic/src/presentation/calibration-profiles.ts": "54337a66728a37dff4c18e3a4ea93b2cf0dcc2d3315cc9d90996515c9340fb29",
+    "games/magic/src/presentation/printing-calibration-materials.ts": "cf9138efaf587cda0a074ebbeebbecf4beae4050b69ebe1a4463ad4fccc31bdc",
+    "games/magic/src/presentation/early-hsb-material.ts": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842"
+  },
+  "newModules": ["games/magic/src/presentation/early-expansion-dark-values.ts"],
+  "files": {
+    "games/magic/src/presentation/early-expansion-color-values.ts": {
+      "before": "8d11b3b1bbe0bc2dc64d316ec5e30424f414eed7ca00db4ec0c3392b0aa1f7b9",
+      "after": "10af7885548204f2fa59f436321f5e230a22bb02671e102da93d3bf059ccb355",
+      "reverseEdits": [
+        {
+          "start": 428,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-expansion-frame-values.ts": {
+      "before": "2084688750db8fc841b27fcdfc972863f4b6cefb07389996f440c5d28c5754bb",
+      "after": "439c01770fd65e1dc1108c8c84b3cffabad081ed24f0d1a0fd5df7071705d557",
+      "reverseEdits": [
+        {
+          "start": 145,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-expansion-frame.ts": {
+      "before": "102b706da1f446bedd5eced60a58d3c7efac8ee4aa1f231e3c792fef689f40a8",
+      "after": "a879dee6b6af69563d0a5d3a8eea0ba95366654af286d333fbc77846e0e3a4ec",
+      "reverseEdits": [
+        {
+          "start": 36,
+          "count": 3,
+          "lines": ["        : undefined;\n"]
+        }
+      ]
+    }
+  }
+}

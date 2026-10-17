@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preDarkCalibrationSource } from './magic-dark-source-guard.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 let verified;
@@ -41,7 +42,7 @@ export function statsCalibrationProof() {
 /** Replay the measured stats-only update before evaluating earlier host/default
  * compatibility. Historical scan receipts keep their original measured hashes. */
 export async function preStatsCalibrationSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkCalibrationSource(file),
     extension = await statsCalibrationProof(),
     change = extension.files[file];
   if (!change) return bytes;

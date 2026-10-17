@@ -34,7 +34,9 @@ export function earlyExpansionFrame(face: RenderedCardInput) {
       ? 'A'
       : colors.length === 1
         ? colors[0]
-        : undefined;
+        : colors.length > 1
+          ? 'M'
+          : undefined;
   const geometry = material && EARLY_EXPANSION_FRAMES[`${set}/${material}`];
   if (!geometry) return undefined;
   return {

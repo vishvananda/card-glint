@@ -125,11 +125,11 @@ try {
       '/seventh/regular/rl.png',
     ),
   );
-  // Sparse or rejected scan cohorts cannot silently borrow another set's fit.
-  assert.equal(earlyExpansionFrame({ ...land, setCode: 'drk' }), undefined);
+  // The separately certified sparse DRK cohorts now have their own profiles.
+  assert.equal(earlyExpansionFrame({ ...land, setCode: 'drk' }).family, 'abu');
   assert.equal(
-    earlyExpansionFrame({ ...land, setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] }),
-    undefined,
+    earlyExpansionFrame({ ...land, setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] }).family,
+    'fourth',
   );
   assert.deepEqual(Object.keys(red.groups), ['atq/R', 'drk/R']);
   for (const group of Object.values(red.groups)) {

@@ -494,3 +494,16 @@ Fiery Emancipation is the largest accepted regression (1.18); Unleash Fury is th
 largest improvement. Blue and green candidates remain rejected by shadow or
 contrast gates. Previously stale historical audits are retained as stale rather
 than advanced through an unproven compatibility chain.
+
+The [Dark land/gold extension](fixtures/accuracy/early-expansion-dark-frames.json)
+adds the seven previously excluded materials to frame/color coverage. Scan-only
+affine normalization passes all 18 directed same-material comparisons and
+independent synthetic recovery checks. Source geometry was selected before
+component color fitting; the original two/two land and one/two gold
+training/reserved groups remain fixed. All seven native candidates improve
+boundary and color diagnostics. The 316-card replay changes exactly those seven
+cards, matches every prototype, and preserves 309 other faces plus 84 unrelated
+printing controls. Existing source proofs are reconstructed without relabeling
+historical scores. The ledger keeps these small cohorts partial: title, type,
+rules, mana/set symbols, artist and stats still need review, and land bevel and
+thin outer-outline differences remain visible. No hosted scores were uploaded.

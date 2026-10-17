@@ -38,9 +38,10 @@ try {
   const { calibratedFrameMaterials, calibratedPrintingStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
-  assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 20);
+  assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 22);
   let adopted = 0;
   for (const [key, profile] of Object.entries(EARLY_EXPANSION_COLORS)) {
+    if (key === 'drk/L' || key === 'drk/M') continue; // Separate sparse-cohort evidence.
     const [setCode, material] = key.split('/');
     const face = {
       name: 'Shared material probe',
@@ -103,11 +104,7 @@ try {
     }
   }
   assert.equal(adopted, evidence.native.summary.selected + red.summary.selectedComponents);
-  for (const face of [
-    { setCode: 'arn', name: 'Mountain', typeLine: 'Land' },
-    { setCode: 'drk', typeLine: 'Land' },
-    { setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] },
-  ])
+  for (const face of [{ setCode: 'arn', name: 'Mountain', typeLine: 'Land' }])
     assert.equal(earlyExpansionColors({ ...face, colorCalibration: 'set-hsb-v1' }), undefined);
   console.log(
     `${adopted} native component fits pass; rejected fits, source guards and scope pass.`,

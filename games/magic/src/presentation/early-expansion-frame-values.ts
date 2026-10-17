@@ -1,3 +1,4 @@
+import { DARK_FRAMES } from './early-expansion-dark-values.js';
 import { EARLY_EXPANSION_RED_FRAMES } from './early-expansion-red-values.js';
 // Shared scan-derived geometry only; scan poses never enter the painter.
 // Sources and held-out evidence: fixtures/accuracy/early-expansion-calibration.json.
@@ -142,4 +143,5 @@ export const EARLY_EXPANSION_FRAMES: Readonly<
     ],
   },
   ...EARLY_EXPANSION_RED_FRAMES,
+  ...DARK_FRAMES,
 };

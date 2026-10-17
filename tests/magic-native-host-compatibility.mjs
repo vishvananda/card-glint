@@ -18,6 +18,7 @@ import {
 } from './magic-native-reference.mjs';
 import { nativeHostCases } from './magic-native-host-cases.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
+import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 import { preStatsCalibrationSource, statsCalibrationProof } from './magic-stats-source-guard.mjs';
 
 let verification;
@@ -46,6 +47,17 @@ async function identity() {
   return {
     reference: nativeReference,
     sourceManifest: hash(await readFile(sourceManifestFile)),
+    darkRevision: hash(
+      Buffer.concat(
+        await Promise.all(
+          [
+            'tests/magic-dark-source-guard.mjs',
+            'games/magic/fixtures/accuracy/early-expansion-dark-frames.json',
+            'games/magic/fixtures/accuracy/early-expansion-dark-compatibility.json',
+          ].map((file) => readFile(path.join(root, file))),
+        ),
+      ),
+    ),
     statsRevision: hash(
       Buffer.concat(
         await Promise.all(
@@ -110,7 +122,8 @@ function assertReceipt(receipt, expected) {
 }
 
 async function verify() {
-  const stats = await statsCalibrationProof();
+  const stats = await statsCalibrationProof(),
+    dark = await darkCalibrationProof();
   assert.equal(nativeHostSources.schema, 1);
   assert.equal(nativeHostSources.reference, nativeReference);
   const rulesFile = 'games/magic/src/presentation/rules-paint.ts';
@@ -143,7 +156,7 @@ async function verify() {
   const currentRoot = await realpath(root);
   const nativeDirectory = 'games/magic/src';
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
-    (file) => !stats.newModules.includes(`${nativeDirectory}/${file}`),
+    (file) => ![...stats.newModules, ...dark.newModules].includes(`${nativeDirectory}/${file}`),
   );
   const referenceFiles = await sourceFiles(path.join(referenceRoot, nativeDirectory));
   for (const relative of new Set([...currentFiles, ...referenceFiles])) {
@@ -174,7 +187,7 @@ async function verify() {
         name: 'native-host-compatibility',
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
-          if (Object.hasOwn(stats.files, relative))
+          if (Object.hasOwn(stats.files, relative) || Object.hasOwn(dark.files, relative))
             return (await preStatsCalibrationSource(relative)).toString();
         },
         configureServer(server) {
