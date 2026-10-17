@@ -15,6 +15,33 @@ in the same depth pass, so later overlays and intervening objects remain in fron
 A layer intended to participate in etching must be rasterized before mask creation;
 a layer above the finish must be drawn later or excluded in the host material.
 
+## CSS previews
+
+For a preview whose final pose uses CSS transforms, `createDisplayRaster(output)`
+keeps a native-size `source` canvas and filters completed frames into `output`
+at its CSS size times device pixel ratio. Set the native output dimensions before
+creating the helper (or pass `[width, height]` as its second argument):
+
+```ts
+import { canvas, createDisplayRaster, createRenderer } from 'card-glint';
+const output = canvas([732, 1020]);
+output.style.cssText = 'width:244px;height:340px';
+document.body.append(output);
+const display = createDisplayRaster(output);
+const renderer = await createRenderer({ canvas: display.source });
+// After renderer.render(frame), call display.present().
+// At teardown: renderer.dispose(); display.dispose().
+```
+
+This avoids fine halftone screens aliasing into colored moiré during CSS rotation.
+The helper watches CSS size and monitor/zoom density changes, caps output at the
+native size, and owns no animation loop. Native source textures and exports retain
+their resolution. Do not filter a canvas already rendered directly at its final
+projected resolution; `createRenderer` already uses texture mipmaps in that case.
+`printSamplingVersion === 1` advertises this helper and continuous overlapping
+varied print dots (including hole screens). Print-dot preparation stays in the
+existing bounded printing cache, so tilting does not rebuild the screens.
+
 ## Face composition
 
 `composeCardTexture(input, tier, signal, hooks)` accepts an image-lease loader,

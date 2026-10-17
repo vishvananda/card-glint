@@ -33,6 +33,9 @@ try {
       '-e',
       `
     import assert from 'node:assert/strict';
+    import { createDisplayRaster, printSamplingVersion } from 'card-glint';
+    assert.equal(typeof createDisplayRaster,'function');
+    assert.equal(printSamplingVersion,1);
     import { resolvePrintingWording, resolvePrintingArtist, resolvePrintingPreset, resolveScryfallPrinting, fromScryfallCard, fromMtgjsonCard, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle, resolvePrintingCalibration, printingCalibrationOptions, printingCalibrationApiVersion } from 'card-glint/magic';
     assert.equal(printingCalibrationApiVersion,1);
     const calibrated={name:'Calibration probe',setCode:'NEO',colors:['R'],calibration:'auto'};
@@ -60,7 +63,8 @@ try {
   await writeFile(
     path.join(temporary, 'index.ts'),
     `
-import { createRenderer, IDENTITY, type CardDocument } from 'card-glint';
+import { createRenderer, createDisplayRaster, printSamplingVersion, IDENTITY, type CardDocument, type DisplayRaster } from 'card-glint';
+export { createDisplayRaster, printSamplingVersion, type DisplayRaster };
 import { showcase } from 'card-glint/showcase';
 import { magic, opticalDocument, resolvePrintingWording, resolvePrintingArtist, type ResolvedPrintingArtist, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, fromScryfallCard, fromMtgjsonCard, type CardImportOptions, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
