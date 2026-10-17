@@ -1,3 +1,4 @@
+import type { ImageFit } from './image-cover.js';
 /** Public game-neutral contract. Inputs use normalized top-left card coordinates. */
 export type Rect = readonly [number, number, number, number];
 export type Size = readonly [number, number];
@@ -44,6 +45,8 @@ export interface EdgeSource {
   crop: Rect;
   rotation?: -90 | 0 | 90;
   destination: Rect;
+  /** Optional source focal point and zoom, shared with color composition. */
+  fit?: ImageFit;
   clip: Rect;
   threshold: number;
   /** Imported edge masks skip the detector. Alpha is extracted to linear R8. */
@@ -103,6 +106,9 @@ export interface Instance {
   transform: readonly number[];
   order?: number;
   finish?: Finish;
+  /** Rain condensation density, 0 (clear) to 2; omitted/1 keeps native fog.
+   * Does not change droplets, refraction, reflections, blur or motion. */
+  rainFog?: number;
   /** Optional abrasion over any finish. Amount is 0 (fresh) to 1 (heavily played).
    * Seed is a uint32, defaulting to the instance ID; persist it with the card. */
   wear?: { amount: number; seed?: number };

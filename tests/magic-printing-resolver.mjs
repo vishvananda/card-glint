@@ -2,16 +2,18 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createServer } from 'vite';
+import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+import { calibrationPresentation } from '../games/magic/tools/accuracy/calibration-wording.mjs';
 execFileSync(process.execPath, ['games/magic/tools/build-printing-corrections.mjs', '--check']);
 const server = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true },
   appType: 'custom',
 });
 try {
-  const { resolvePrintingWording, withCardWording } = await server.ssrLoadModule(
-    '/games/magic/src/index.ts',
-  );
+  const { resolvePrintingWording, resolvePrintingArtist, withCardWording } =
+    await server.ssrLoadModule('/games/magic/src/index.ts');
   const fixture = async (path) =>
     JSON.parse(await readFile('games/magic/fixtures/accuracy/' + path));
   const oracle = {
@@ -28,6 +30,161 @@ try {
   };
   const input = { oracle, original },
     snapshot = structuredClone(input);
+  let earlyTypes = 0;
+  for (const set of ['arn', 'atq', 'drk']) {
+    const types = await fixture(set + '/annotations-printed-types.json');
+    const bodies =
+      set === 'arn' ? { cards: {} } : await fixture(set + '/annotations-missing-rules.json');
+    const outliers =
+      set === 'drk' ? await fixture(set + '/annotations-text-outliers.json') : { cards: {} };
+    for (const [id, row] of Object.entries(types.cards)) {
+      const body = outliers.cards[id] ?? bodies.cards[id];
+      const resolved = resolvePrintingWording(id, input, {
+        referenceSha256: row.referenceHash,
+      });
+      assert.equal(resolved.provenance.status, 'applied');
+      assert.equal(resolved.wordings.original.typeLine, row.typeLine);
+      assert.equal(resolved.wordings.oracle.typeLine, oracle.typeLine);
+      assert.equal(resolved.wordings.oracle.rulesText, 'Oracle rules.\nOracle flavor.');
+      const rules = body?.rulesText ?? original.rulesText,
+        flavor = body?.flavorText ?? original.flavorText;
+      assert.equal(
+        resolved.wordings.original.rulesText,
+        [rules, flavor.replaceAll('*', '')].filter(Boolean).join('\n'),
+      );
+      assert.equal(
+        resolvePrintingWording(id, input, { referenceSha256: '0'.repeat(64) }).provenance.status,
+        'reference-mismatch',
+      );
+      const entry = {
+        card: {
+          id,
+          set,
+          name: row.name,
+          collector_number: row.collectorNumber,
+          type_line: row.review.oracleType,
+          oracle_text: oracle.rulesText,
+        },
+        reference: { sha256: row.referenceHash },
+      };
+      const annotations = { [id]: { ...body, ...row } };
+      const adapted = calibrationPresentation(entry, annotations, {
+        [id]: { originalText: original.rulesText },
+      });
+      assert.equal(adapted.face.typeLine, row.typeLine);
+      assert.equal(
+        adapted.face.creature,
+        /\bCreature\b/.test(entry.card.type_line),
+        'Historical type wording keeps semantic identity',
+      );
+      assert.equal(adapted.wordingEvidence.type, 'scan-reviewed');
+      assert.equal(
+        adapted.wordingEvidence.rules,
+        body?.reviewed ? 'scan-reviewed' : 'mtgjson-original',
+      );
+      if (!body?.reviewed)
+        assert.throws(
+          () => calibrationPresentation(entry, annotations),
+          /Original rules unavailable/,
+        );
+      assert.throws(
+        () =>
+          calibrationPresentation({ ...entry, reference: { sha256: '0'.repeat(64) } }, annotations),
+        /stale/,
+      );
+      earlyTypes++;
+    }
+  }
+  assert.equal(earlyTypes, 316);
+  const artists = await fixture('planar-artist-review.json');
+  const earlyArtists = await fixture('early-expansion-footer-wording.json');
+  for (const row of [
+    ...artists.rows.map((row) => ({ ...row, set: artists.set })),
+    ...earlyArtists.rows.filter((row) => !row.artistMatchesProvider),
+  ]) {
+    const entry = {
+      card: {
+        id: row.id,
+        name: row.name,
+        set: row.set,
+        collector_number: row.number,
+        artist: row.providerArtist,
+        type_line: 'Creature',
+        oracle_text: 'Provider rules.',
+      },
+      reference: { sha256: row.referenceHash },
+    };
+    const snapshot = structuredClone(entry);
+    const resolved = resolvePrintingArtist(row.id, row.providerArtist, {
+      referenceSha256: row.referenceHash,
+    });
+    assert.equal(resolved.artist, row.printedArtist);
+    assert.equal(resolved.provenance.status, 'applied');
+    assert.equal(resolved.provenance.identity, 'printing-id-and-scan');
+    assert.equal(resolved.provenance.corrections[0].before, row.providerArtist);
+    const adapted = presentation(entry);
+    assert.equal(adapted.face.artist, resolved.artist);
+    assert.ok(adapted.reviewedFields.includes('artist'));
+    assert.equal(adapted.contentStatus, 'oracle-unverified');
+    assert.equal(
+      withCardWording(adapted.face, { oracle, original }, 'oracle').artist,
+      row.printedArtist,
+    );
+    assert.equal(
+      withCardWording(adapted.face, { oracle, original }, 'original').artist,
+      row.printedArtist,
+    );
+    assert.deepEqual(entry, snapshot);
+    const stale = resolvePrintingArtist(row.id, row.providerArtist, {
+      referenceSha256: '0'.repeat(64),
+    });
+    assert.equal(stale.artist, row.providerArtist);
+    assert.equal(stale.provenance.status, 'reference-mismatch');
+    assert.deepEqual(stale.provenance.corrections, []);
+    assert.throws(
+      () => presentation({ ...entry, reference: { sha256: '0'.repeat(64) } }),
+      /artist credit review is stale/,
+    );
+    for (const changed of [{ set: 'other' }, { collector_number: '999' }])
+      assert.throws(
+        () => presentation({ ...entry, card: { ...entry.card, ...changed } }),
+        /artist credit review is stale/,
+      );
+    const supplied = { [row.id]: { artist: 'Custom credit' } };
+    assert.equal(presentation(entry, supplied).face.artist, row.providerArtist);
+    const reviewed = {
+      [row.id]: {
+        artist: 'Re-reviewed credit',
+        reviewedFields: ['artist'],
+        referenceHash: row.referenceHash,
+      },
+    };
+    assert.equal(presentation(entry, reviewed).face.artist, 'Re-reviewed credit');
+    resolved.provenance.corrections[0].artist = 'Mutated';
+    assert.equal(resolvePrintingArtist(row.id, null).artist, row.printedArtist);
+  }
+  for (const set of ['lea', '2ed', 'tmp']) {
+    const annotations = await fixture(set + '/annotations.json');
+    for (const [id, row] of Object.entries(annotations.cards)) {
+      if (!row.reviewedFields?.includes('artist')) continue;
+      const resolved = resolvePrintingArtist(id, 'Canonical name', {
+        referenceSha256: row.referenceHash,
+      });
+      assert.equal(resolved.artist, row.artist);
+      assert.equal(resolved.provenance.status, 'applied');
+      assert.equal(
+        resolved.provenance.corrections[0].source.endsWith(set + '/annotations.json'),
+        true,
+      );
+    }
+  }
+  for (const id of ['unknown-printing', '__proto__', 'constructor'])
+    for (const artist of [undefined, null, 'Dan Murayama Scott']) {
+      const resolved = resolvePrintingArtist(id, artist);
+      assert.equal(resolved.artist, artist);
+      assert.equal(resolved.provenance.status, 'unreviewed');
+    }
+  assert.throws(() => resolvePrintingArtist('', 'Artist'), /must not be empty/);
   for (const id of ['unknown-printing', '__proto__', 'constructor']) {
     const r = resolvePrintingWording(id, input);
     assert.equal(r.provenance.status, 'unreviewed');

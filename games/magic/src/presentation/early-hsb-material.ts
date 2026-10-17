@@ -8,6 +8,8 @@ import {
 import { historicalManaAsset, historicalManaFamily } from './historical-mana.js';
 import { manaSymbolAsset } from './assets.js';
 import { rgbToHsb, type HsbAdjustment, type Rgb } from './hsb.js';
+import { outsetFrameMask } from './frame-material-mask.js';
+import { blendFrameMaterial } from './frame-material-blend.js';
 import { colorFrame, type FrameHsb } from './frame-hsb.js';
 import { BITMAP_MANA_COLORS } from './mana-colors.js';
 import { earlyHsbBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
@@ -97,7 +99,7 @@ export async function prepareEarlyHsb(
       url,
       key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),
       bytes: source.width * source.height * 4,
-      build: () => buildMaterial(source, adjustment),
+      build: () => buildMaterial(source, adjustment, images),
     })),
     ...originalMaterials.map(({ url, source, palette, target }) => ({
       url,
@@ -141,7 +143,7 @@ export function earlyHsbMaterialKey(
   return JSON.stringify(['frame-hsb-paper-mask-v3', url, width, height, adjustment]);
 }
 
-async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb) {
+async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb, images: CanvasImages) {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
   canvas.height = source.height;
@@ -150,7 +152,32 @@ async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb) {
     if (!c) throw Error('HSB preparation needs Canvas2D.');
     c.drawImage(source, 0, 0);
     const pixels = c.getImageData(0, 0, canvas.width, canvas.height);
-    colorFrame(pixels, adjustment);
+    const readMask = (url: string) => {
+      const mask = images.get(url);
+      if (!mask) throw Error(`Frame material mask unavailable: ${url}`);
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      c.drawImage(mask, 0, 0, canvas.width, canvas.height);
+      return c.getImageData(0, 0, canvas.width, canvas.height);
+    };
+    const textureSource = adjustment.blackPoint?.textureMaskSource;
+    const textureMask = textureSource ? readMask(textureSource) : undefined;
+    const selection = adjustment.blend ? readMask(adjustment.blend.maskSource) : undefined;
+    if (adjustment.blend && selection) {
+      const outer =
+        adjustment.blend.outerMaskSource === textureSource && textureMask
+          ? textureMask
+          : readMask(adjustment.blend.outerMaskSource);
+      outsetFrameMask(selection, outer, Math.round(adjustment.blend.outset * canvas.width));
+      // Contrast and bevel brightness must not compete for the same pixels.
+      if (textureMask)
+        for (let i = 3; i < textureMask.data.length; i += 4)
+          textureMask.data[i] = Math.round(textureMask.data[i]! * (1 - selection.data[i]! / 255));
+    }
+    const stockMask = adjustment.outerStockMaskSource
+      ? readMask(adjustment.outerStockMaskSource)
+      : undefined;
+    colorFrame(pixels, adjustment, textureMask, stockMask);
+    if (adjustment.blend && selection) blendFrameMaterial(pixels, selection, adjustment.blend);
     c.putImageData(pixels, 0, 0);
     return await createImageBitmap(canvas);
   } finally {

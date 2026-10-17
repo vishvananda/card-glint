@@ -18,6 +18,8 @@ layout(location=13) in float instanceCardstock;
 flat out float cardstockAmount;
 layout(location=14) in vec4 instancePrintDots;
 flat out vec4 printDotsInfo;
+layout(location=15) in float instanceRainFog;
+flat out float rainFogDensity;
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
@@ -26,6 +28,7 @@ vec2 pad=instanceSurface.w*vec2(1.,.18);
 vec2 local=position*(1.+2.*pad)-pad;
 v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;wearInfo=instanceWear;
 cardstockAmount=instanceCardstock;printDotsInfo=instancePrintDots;
+rainFogDensity=instanceRainFog;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
 gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
 const foil = FOIL_PREVIEW_GLSL.replace('uniform float previewKind;', 'flat in float previewKind;')

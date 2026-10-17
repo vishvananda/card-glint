@@ -1,19 +1,247 @@
 # Rendering accuracy review queue
 
+Use the [set-completion checklist](calibration-completion.md) and
+[per-variant progress ledger](fixtures/accuracy/calibration-progress.json) to
+close work. They distinguish accepted fits, validated defaults, rejected
+proposals and stale evidence. `npm run magic:calibration:report` summarizes
+the active sets; append a set code for its unresolved checks.
+
 This is a working queue from the measured M21, M20, Mirage, Tempest, Fourth/Fifth Edition and Revised sets, not
 an assertion that every supported frame has been evaluated. Special treatments
-remain outside the current study. Keep the original frame assets in use while
-tracking the problems below. The local all-card reports contain asset URLs,
+remain outside the current study. Use pinned frame sources and compare replacements
+before adopting them. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Early expansions after 0.4.1
+
+The next calibration group is **Arabian Nights, Antiquities and The Dark**,
+with the released Legends pass retained as a regression control. Fallen Empires,
+Fourth Edition and Chronicles follow. This resumes the pre-Eighth sequence;
+the incomplete Unlimited interior templates remain open rather than being
+counted as finished.
+
+The [baseline and normalization receipt](fixtures/accuracy/early-expansion-calibration.json)
+records all 316 ordinary English nonfoil printings against 0.4.1. Every printing
+renders; cached scans and art were reused. Frozen scan-only templates accept
+309 outer-frame poses and 282 interior poses:
+
+| Set            | Printings | Outer frame | Interior |
+| -------------- | --------: | ----------: | -------: |
+| Arabian Nights |        92 |          92 |       91 |
+| Antiquities    |       102 |         102 |       94 |
+| The Dark       |       122 |         115 |       97 |
+
+These are normalization coverage counts, not renderer accuracy scores. Fitting,
+model selection and certification use disjoint frame strips, followed by actual
+warped-raster replay. All outer measurements and accepted interior rasters pass
+content-isolation checks. Thirty known translation/scale/rotation/skew cases,
+including saturation and brightness perturbations, recover frame positions to
+within 0.062 canonical pixels. Those synthetic cases use one white calibration
+card per set and do not certify the unsupported materials.
+
+The remaining 34 interior cases are Antiquities and The Dark red materials,
+The Dark's sparse land/multicolor groups, and Arabian Nights Bird Maiden 37.
+Check frame-boundary anchors for these groups before fitting component offsets;
+texture-template failure alone does not establish that a scan is bad. Keep all
+34 in the coverage report. Seven rules bodies and every type line still need
+printing-wording verification before they can contribute certified text scores.
+
+Eighteen shared source/geometry profiles are now integrated on the calibration
+branch. Black and green use ABU; white, blue and artifacts use Fourth. Arabian
+Nights red and nonbasic lands use Fourth; Antiquities lands use ABU. Artwork
+placement follows the measured source aperture with a one-source-pixel underlap,
+and stock is recut independently. Arabian Nights Mountain is excluded from the
+generic land fit and keeps its separate colored basic-land source.
+
+The native painter renders all 316 cards: 282 changed, and the 34 unsupported
+materials are pixel-identical to 0.4.1. All 92 calibration and 189 reserved
+printings improve the fixed-support boundary diagnostic. Source candidates now
+use identical pixels, plus a separate texture comparison. Reference profile
+medians still suppress content statistically; these are not whole-card accuracy
+scores. The private gallery has 36 examples with blend, difference and red/green
+overlays. Color calibration is partially integrated below; symbols and typography
+are unfinished. These renderer changes are prepared for 0.4.2; live scoring
+templates remain separate and are not deployed by the renderer release.
+
+The red texture-smoothing proposal is rejected. It appeared to accept 22 more
+scans, but recovered only 9/20 known poses within the existing 0.3-pixel limit;
+the full outer/interior pipeline passed only 2/20. Its largest residual was
+1.84 pixels. None of those proposed poses is adopted. Keep the original 282
+accepted interior poses and try independent boundary anchors next.
+
+The [native color receipt](fixtures/accuracy/early-expansion-colors.json) adds
+11 outer-frame and 15 text-box fits across the 18 source/geometry groups. A bounded
+value exponent separates brightness from texture contrast. It runs only during
+cached material preparation; existing profiles retain the exact HSV formula.
+Every fit uses calibration names, with unchanged gates on the reserved cohort.
+That cohort has been reused for model selection and is not a fresh test set.
+
+All 316 cards are replayed through the painter. Their central artwork pixels stay
+exact, and the 34 unsupported full rasters stay unchanged. The original model
+missed resizing effects in three frame groups; a calibration-only native-response
+refit resolves two. Arabian Nights' land frame still fails the shadow gate and
+keeps raw pigment. Its paper fit passes. The other rejected frame fits are
+Arabian Nights green, Antiquities blue/black/green/artifact, and The Dark artifact;
+rejected paper fits are Arabian Nights white, Antiquities land, and The Dark green.
+Keep all ten components visible in the review queue.
+
+The adopted profiles use separate RGB 24/21/16 outer stock, measured from cached
+scan margins. These processed display-reference values are not physical ink
+measurements. Old source ink curves cannot attach to the replacement geometry;
+interior black-level work remains open. All 276 unrelated calibration-selector
+probes and all 288 tested mana targets are unchanged, including Alpha/Beta's
+separate stock and interior policies. The gallery shows aligned scans, 0.4.1,
+raw replacement frames and calibrated candidates with the same overlay modes.
+
+The [full-card diagnostic receipt](fixtures/accuracy/early-expansion-full-scores.json)
+scores the 282 accepted interior poses with fixed application regions. The
+structural index improves from about 42.5 to 62.8 out of 100; 281 improve and the
+unchanged Arabian Nights Mountain retains its score. None regress.
+Arabian Nights improves 41.3 → 63.7, Antiquities 45.5 → 61.9, and The Dark
+40.8 → 62.9. Unverified type lines and fallback rules do not enter the weighted
+index. Their diagnostics and all 34 unresolved normalizations stay visible.
+These are reused development references and incomplete component coverage,
+not full-set compliance. No renderer parameters were selected from these scores.
+
+Next: resolve the remaining frame/color cases, fit headings and symbols, verify
+original wording, then fit rules, power/toughness and illustrator text. Preserve
+reused-validation labels and update the full-card receipt after each batch.
+
+## Modern land calibration coverage
+
+M21-era component-built lands, including legendary lands, do not have source-bound
+printing-color profiles. `printingColorSource` explicitly excludes them because
+their paper tint is composed separately. Shared land-paper corrections are a
+rendering default, not a measured M21 printing-color fit. The general M21 land
+scan template does not independently certify the legendary crown treatment.
+
+Add measured profiles for the assembled land background, rails, text-box tint,
+and legendary crown. Cover colorless, single-color and paired-color lands;
+validate any transfer between sets instead of inheriting creature coefficients.
+Keep this gap visible in coverage reports. M21 calibration is partial. The M21
+set itself has no legendary lands; validate that family using other sets.
+
+The [showcased-set coverage audit](fixtures/accuracy/showcased-coverage-audit.json)
+checks the current runtime against the frozen ordinary inventories. These counts
+mean **some frame/paper pigment coverage**, not complete frame calibration:
+
+This historical color-study inventory is narrower than the new ledger: M21
+omits 14 planeswalker printings (nine nonfoil, five foil-only). Eighth has another
+350 ordinary black-bordered foil-only printings in addition to the 357 nonfoil
+eligible printings below. They remain visible in the new reference queue.
+
+| Set            | Some pigment coverage | Ordinary inventory |
+| -------------- | --------------------: | -----------------: |
+| Alpha          |                   276 |                295 |
+| Beta           |                   231 |                302 |
+| Revised        |                   306 |                306 |
+| Eighth Edition |                   201 |                357 |
+| M21            |                   147 |                283 |
+
+Additional gaps: Alpha/Beta lands and Beta green; Eighth black/red/artifacts and
+nonbasic lands; M21 white/black/multicolor and all component-built lands. Several
+admitted profiles correct paper while retaining identity outer-frame pigment:
+Alpha red/blue, Beta black/blue, Revised black/artifact, Eighth white/blue/green,
+and M21 green/artifact. Beta red retains identity paper instead. Ink-floor and
+stock adjustments remain separate and can exist despite these pigment gaps.
+
+Update: the [normal-black receipt](fixtures/accuracy/m21-normal-color-adoption.json)
+now covers 39 accepted M21 black references with a shared curve (median regional
+color error 2.14 → 1.43). Forty ordinary nonlegendary black cards change; 252 other
+nonfoil cards, central art/paper pixels and all mana/stock targets are preserved.
+Liliana's Scorn still needs independent scan registration. Legendary crowns and
+colored artifacts do not inherit this fit. The earlier table remains a historical
+snapshot; use the completion ledger for current measured coverage. The new
+scan-only white/black templates accept 81/82 cards and are not yet deployed in
+the review service. Other M21 pigment profiles need the corrected clear-rail
+sampling audit before completion.
+
+Mana-disc color targets are also partial: Eighth lacks white/black/red/green
+targets; M21 lacks black/generic targets. Do not infer missing placement fits
+from missing color targets, or completed color calibration from scan alignment.
+Expose per-component absent/partial/accepted/failed status with evidence revision
+and excluded layouts before presenting any set as fully calibrated.
+
 ## Legends normalization and text validation
+
+The [stock calibration](fixtures/accuracy/legends-stock-calibration.json)
+removes the tinted outer band on white/black Legends frames using one shared
+stock aperture. The matching ABU interiors retain their geometry and pigment
+fits. Fourth was tested and rejected after geometry/color validation. All 75
+reserved white/black scans improve their stock-edge correlation; this is a
+regional diagnostic, not a whole-card accuracy percentage.
+
+The green vertical border seam is reproduced from a supplied Barbary Apes
+Chrome export and fresh installed Chrome/WebKit renders. Bundled Chromium hid
+it. The plate and stock mask's fractional outer edges are antialiased separately,
+leaving white exposed. The fix on `codex/retro-stock-seams` paints stock across the
+plate's outer edge before applying the unchanged mask. It preserves the inner
+aperture and passes both-tier native replays plus a cross-browser regression.
+This composition fix shipped in 0.4.1, alongside the black-point calibration.
+
+Legends stock now uses the shared display-reference target RGB 38/38/38 when
+`set-hsb-v1` is enabled, guarded by the reviewed source/geometry. This matches
+34 calibration and 36 validation scans. Their flat margins appear processed;
+these values are not physical ink measurements. An independent frame-only
+shadow-lift fit selected zero in every material. Keep interior shadows unchanged;
+most sources have too few near-black interior pixels to estimate an ink floor.
+Alpha/Beta, other sets and manual border overrides retain their existing policies.
+The [Planar Chaos colorshifted ink study](fixtures/accuracy/planar-blackpoint.json)
+now fits source-specific shadow curves across all five colors, independently of
+the shared RGB 24/21/16 stock target. Native-raster fitting avoids thin-line
+sampling bias. All 29 validation printings improve inner-ink RGB error, averaging
+17.74 to 7.96 bytes; this is not a whole-card score. In that initial study, every brighter source pixel
+(maximum channel at least 96), alpha value and transparent pixel is unchanged.
+Prodigal Pyromancer improves only marginally and remains a visual review case;
+Vampiric Link remains excluded by its existing rejected registration. Other
+frame families and separate P/T badge materials are outside this ink fit.
+
+The [colorshifted outer-edge follow-up](fixtures/accuracy/planar-stock-edges.json)
+corrects a shared narrow-frame error and makes the stock mask follow the plate's
+geometry. Only the outer texture bands expand; the central 428 × 607 pixels
+remain byte-identical on all 44 native renders. Boundary error improves from
+1.69 to 0.12 pixels on all 25 held-out cards with identifiable edges. Most black
+edges are too low-contrast for that estimator, and the green top edge is obscured
+by its title bevel; these are excluded from the numeric claim.
+The existing interior ink improvements survive this replay. Other frame families
+retain their geometry; both Chromium and WebKit pass a synthetic mask regression
+at table and inspect resolution. This correction is not yet released/deployed.
+
+The [texture/bevel follow-up](fixtures/accuracy/planar-frame-texture.json)
+retains that geometry and the existing ink lifts across all five colors.
+Native pinline selections expand outward seven canonical pixels, clipped by the
+native frame selection, to soften the baked ridges. Separate tone curves fit
+clean texture distributions with bevels excluded. Source masks are pinned to the
+same [Conjurer revision](https://github.com/joshbirnholz/cardconjurer/tree/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th).
+These are selection masks, not separate bevel artwork; no hidden underlying
+texture is reconstructed.
+
+Three calibration scans per color fit shared material profiles, then 29 held-out
+cards validate them on frozen poses. Bevel RGB error improves in every color
+(on 28/29 individual validation cards). White, blue and black adopt texture tone
+curves; red and green retain their prior texture tones after their trial curves
+failed to improve contrast and color together. The broader texture check includes
+clean lower-background regions as well as side strips. Black's held-out contrast
+error falls 5.97 → 1.39, while its mean RGB error rises 4.35 → 5.27. These are
+regional 0–255 byte errors, not full-card accuracy. Its narrow rails and lower
+texture have different source means; one curve cannot match both exactly, and
+the texture pattern itself remains an asset limitation.
+
+All 44 native replays preserve artwork and title/type/rules-panel interiors
+exactly. Material alpha and transparent pixels are unchanged. This supersedes
+the initial ink study's brighter-pixel invariance only inside the new selections.
+Two mask readbacks and linear-time selection expansion happen only on derived
+material cache misses; animation does no new work. The candidate is awaiting
+visual review and has not been released.
 
 The [normalization audit](fixtures/accuracy/legends-normalization-review.json)
 found inherited sampling bands crossing title and artist lettering. Search
 padding now stays within clean outer-frame pixels, and separate edge strips
 validate each pose. All 310 scans pass content-isolation checks; **303 pass
 alignment and seven remain flagged**. Poses affect comparison scans only.
-The equivalent sampling audit for Alpha/Beta/Revised remains queued.
+The equivalent Alpha/Beta/Unlimited/Revised audit is now recorded below. Its new
+comparison poses are frozen offline; the live review application still uses its
+previous templates until the next validated renderer/scoring update.
 
 Rechecking unchanged renderer crops with corrected poses preserves every held-out
 improvement: titles 63.4% → 72.4%, types 76.4% → 80.2%, mana 47.0% → 84.4%, and
@@ -62,15 +290,11 @@ Rules overlap rises 28.5% → 64.3%. These fixed-region indices exclude color an
 unverified legal text; they are not percentages of pixel correctness. Seven
 rejected scans remain outside the average. Patch 0.3.5 packages this pass.
 
-## Next requested frame calibration
+## Completed Future Sight and Planar Chaos passes
 
-After finishing and shipping Legends, perform a complete calibration of
-**Future Sight's futureshifted frames**, before the next pre-Eighth group.
-Review assets and layout rules, freeze scan-only normalization, then measure
-frame/art geometry, colors, mana and set symbols, title/type/rules/flavor text,
-illustrator/legal credits and power/toughness. Keep ordinary Future Sight cards
-separate. Use shared defaults, reserved validation, full-set scores and a
-comparison page; retain rejected scans and mismatched assets for review.
+The requested Future Sight and Planar Chaos passes have shipped. Their studies
+keep ordinary, futureshifted and colorshifted frame families separate, use frozen
+scan normalization, and retain explicit exclusions and component regressions.
 
 The initial inventory contains 81 futureshifted printings; all render with the
 0.3.5 defaults, while 99 ordinary FUT printings remain outside this pass.
@@ -139,11 +363,156 @@ single-face scans and three split cards remain excluded. These are edge-based
 similarity indices, not percentages of flawless pixels. Rules font size/wrapping,
 remaining numeric P/T glyph differences and local pigment differences stay open.
 
+The [short-passage follow-up](fixtures/accuracy/planar-short-rules.json) removes
+short rules endings and single-word flavor orphans with a bounded size reduction.
+It changes five original printings: Dawn Charm, Ghost Tactician, Saltblast,
+Piracy Charm and Serendib Sorcerer. All 160 other original rasters are byte-exact.
+An initial broader rule damaged Serra Sphinx; retaining multiword flavor endings
+avoids that regression. This is repeated validation after reviewing that failure,
+not an untouched holdout. No printing-ID layout overrides are introduced.
+
+With the live scoring method and its source-verification exclusions, mean
+structural match rises **80.89 → 81.57 / 100** over 156 accepted cards; all five
+changed cards improve and 151 are unchanged. These figures are not directly
+comparable to the older offline index. All changed pixels lie inside the rules
+box. One thin frame metric strip overlaps italic ink, producing a tiny incidental
+frame-score change; the frame geometry is unchanged. All 324 original/Oracle
+layouts retain their text and fit. Roiling Horror's longer Oracle wording now
+fits at 14.25px using a bounded fallback below the normal 15px minimum.
+Dense original-text outliers, including Retether and Heroes Remembered, remain
+queued for the next typography pass.
+
+The [dense-text fitting trial](fixtures/accuracy/planar-dense-fit-rejected.json)
+rejects applying measured spacing before sizing as a general solution. The
+training-selected bounded rule improves Retether and Aven Riftwatcher, but native
+whole-card replay finds five substantial regressions among eleven changed cards.
+All release-baseline hashes, frozen scan poses and component coverage agree.
+Reality Acid, Extirpate and other existing good matches would lose their printed
+line breaks. Keep these development diagnostics for outlier review; do not ship
+per-printing font-size values or claim the dense-text problem is resolved.
+
+The [printed-artist review](fixtures/accuracy/planar-artist-review.json) identifies
+five PLC credits reading “Dan Scott” while both Scryfall and MTGJSON supply
+“Dan Murayama Scott”. Retether, Dismal Failure, Serendib Sorcerer, Kavu Predator
+and Intet were checked against their exact cached scans. Keep canonical artist
+metadata and printed credit separate. The 0.4.0 public
+`resolvePrintingArtist` helper and accuracy adapter apply these exact credits;
+original and Oracle views retain the same physical credit. The public catalog
+also includes the six previously reviewed Alpha, Unlimited and Tempest credits.
+Unknown printings retain provider values; optional scan hashes guard reuse.
+
+The [artist-only replay](fixtures/accuracy/planar-artist-replay.json) renders all
+165 PLC cards. Exactly five change, only within the artist line; the other 160
+rasters are byte-identical to 0.3.12. At unchanged, browser-decoded scan poses,
+mean artist-region edge overlap rises **69.13 → 88.74 / 100**, with all five
+improving and every unrelated component unchanged. The whole-card mean remains
+**81.57 / 100** across 156 accepted scans: reviewing artist names does not certify
+copyright text, so the combined credit component stays excluded. No font,
+geometry, color or eligibility changes are implied by this source correction.
+
+Next typography experiment: measure roman and italic/reminder advances
+separately on the existing calibration cohort before selecting any new shared
+policy. Retether and Heroes Remembered have different wrapping and line counts;
+a universal size increase fixes some passages while damaging well-matched ones.
+Use the already-frozen scan poses and original wording, retain unchanged-card
+controls, and verify whole native renders before adoption. Reused validation
+remains explicitly reused; per-card optima remain diagnostics.
+
+The [isolated italic-width trial](fixtures/accuracy/planar-italic-width-rejected.json)
+also fails to transfer. Training selects 98% width for italic/reminder ink and
+advances, with roman text unchanged. Across 123 reused validation cards its
+whole-card mean rises only 0.24 points, with 46 improvements, 46 regressions and
+21 losses exceeding one point. All 156 baseline hashes/scores match the release,
+and poses and coverage remain fixed. Retain the original width; this is evidence
+against another blanket typography adjustment, not a new renderer default.
+
+## Early core scan normalization
+
+The [Alpha/Beta/Unlimited/Revised audit](fixtures/accuracy/early-core-normalization-review.json)
+checks all **1,205** cached scans. Bounded strips exclude the header and artist
+areas, including search padding. All scans pass exact interior-isolation checks.
+Fixed calibration targets, disjoint model-selection strips and a third
+certification group separate pose fitting from verification. A broader initial
+search avoids choosing the wrong bevel peak without relaxing acceptance gates.
+
+Outer-strip coverage is **292/295 Alpha, 297/302 Beta, 302/302 Unlimited and 306/306
+Revised**. Every accepted pose also passes replay on the warped raster. These
+are comparison-only transformations; renderer defaults have not changed.
+Earlier-used validation cards are explicitly reused validation. Eight uncertain
+scans remain flagged, and Beta Twiddle retains a small regression relative to
+the first clean-strip trial while improving over its raw scan.
+
+The [baseline frame diagnostic](fixtures/accuracy/early-core-frame-diagnostics.json)
+captures all **1,205** unchanged 0.3.8 rebuilds with no render failures. Its
+whole-frame transform is not adopted: Revised lands regress on validation.
+Removing artwork-sensitive source pixels makes the art-bevel measurements more
+reliable; all 84 source variants pass an exact perturbation check. Reference-side
+interior isolation is still unproven, and weak edges remain explicitly unmeasured.
+
+Unlimited/Revised scans have a further registration problem: the outer border
+can agree while art and rules-box edges vary together by roughly 1–3 pixels.
+Outer-strip certification does not certify the printed interior. The follow-up
+below establishes scan-only interior anchors; preserve outer-border disagreement
+as a separate diagnostic. Alpha/Beta
+white examples give more consistent inner-edge measurements. Original type lines
+also remain unverified on 912 faces, and original rules on 16 Unlimited faces;
+do not include those components as verified printing accuracy until reviewed.
+
+The [interior normalization follow-up](fixtures/accuracy/early-core-interior-normalization-review.json)
+uses narrow frame-texture strips beside the art and rules box. Fixed calibration
+cohorts select scan-only templates; separate bands fit, choose model complexity
+and certify. It passes **304/306 Revised** and **187/302 Unlimited** scans, with
+every accepted pose passing actual warped-raster replay and region-isolation
+checks. Five known translation/scale/rotation/skew perturbations are recovered
+within 0.04 canonical pixels. Reviewed visible frame material controls scan
+grouping, so Revised Serendib Efreet uses the green template while retaining its
+blue semantic color and mana.
+
+On reused validation cards with eligible baseline rules-box edges, mean absolute
+scan-to-scan edge residual falls **0.90 → 0.24 px for Revised** and
+**0.71 → 0.33 px for Unlimited**. These are registration diagnostics, not renderer
+accuracy scores. Four Revised and twelve Unlimited cards retain multiple
+rules-box edge outliers; they remain explicit review cases. Revised Gaea's Liege
+and Roc of Kher Ridges fail texture confidence checks. Unlimited red/artifact
+groups lack template support, and some blue/green scans remain rejected. A
+calibration-only smoothing trial helps green/artifact texture but not red; it is
+not adopted. No renderer default, live scoring template or release changes here.
+
+## Revised frame geometry candidate
+
+The [native frame replay](fixtures/accuracy/revised-frame-native.json) tests six
+shared Fourth-source placements against 304 accepted Revised interior poses.
+All 279 nonland cards improve in both the blank-frame boundary diagnostic and
+the full-raster gradient check. Full-raster edge F1 at one-pixel tolerance rises
+from 60.66% to 75.03%; this is a diagnostic, not the component-weighted score.
+The 231 reused validation nonlands improve; 25 lands and 42 ABU controls remain
+byte-identical. Two uncertain Revised poses remain excluded.
+
+Changing placement initially invalidated the source-bound HSB profiles. The
+candidate explicitly rebinds the same six pinned source images, source-local
+masks and HSB transforms to the new placements. It does not bypass source
+identity checks or claim a new color fit. All 44 source-opacity perturbation
+checks pass. Reference-side content isolation for the boundary windows remains
+unproven; full native replay and visual review provide separate evidence.
+Typography and local pigment outliers remain open. Patch **0.3.12** packages
+this validated frame placement.
+
+The [0.3.11 integration replay](fixtures/accuracy/revised-frame-integration.json)
+freshly captures all 306 Revised cards, 42 ABU controls and all 165 Planar
+printings. Both sides exactly reproduce the frozen baseline/candidate rasters;
+the 25 Revised lands, ABU controls and released Planar fixes remain unchanged.
+Code/package/browser/showcase checks pass. Review-app integration now reproduces
+all 306 frozen interior poses exactly, including 304 accepted scans and two
+rejections; the browser bundle and server validation agree. Planar registration
+remains unchanged. Fresh deployed scores must use this interior normalization,
+not the older outer-border poses.
+
 ## Current execution checkpoint
 
 1. Revised land frames, colored pinlines, striped paper, shared text positions
    and the missing copyright marker shipped in 0.2.24. All 25 land printings
-   and the complete five-set corpus have current scores.
+   and the complete five-set corpus have versioned historical scores; regenerate
+   them for each subsequent renderer/normalization generation.
 2. Audit the recorded fixes against shipped code, then address remaining defects:
    original wording/score coverage, early glyph and shadow outliers, missing
    historical symbol sources/materials, shared security stamps and holographic
@@ -155,8 +524,8 @@ remaining numeric P/T glyph differences and local pigment differences stay open.
    illustrator typography. Validate shared defaults on reserved printings, update
    versioned scores and release accepted changes before moving to the next group.
 
-Begin with Alpha/Beta/Unlimited/Revised, then Fourth/Chronicles and the early
-expansions, Mirage/Tempest blocks, Urza/Sixth, Mercadian/Seventh, Invasion, Odyssey,
+Begin with Alpha/Beta/Unlimited/Revised, then the early expansions and
+Fallen Empires/Fourth/Chronicles, Mirage/Tempest blocks, Urza/Sixth, Mercadian/Seventh, Invasion, Odyssey,
 and Onslaught. Portal and starter printings need their own frame groups. Preserve
 coverage denominators and explicit exclusions; a rejected fit must not disappear
 from reports. Never reuse a prior renderer's score under a new version.
@@ -1754,3 +2123,65 @@ frame-only normalization before component metrics:
 
 The dedicated review browser remains separate from the library. Add supported
 input/routing/scoring only after each family has its own validated geometry.
+
+## Released Revised frame evaluation (0.3.12)
+
+The [paired component report](fixtures/accuracy/revised0312-live-metrics.json)
+uses the same independently normalized scans and source eligibility for both
+0.3.11 and 0.3.12. Across all **304 accepted Revised scans**, structural match
+rises **59.30 → 76.63 / 100**: 279 nonlands improve, 25 lands are unchanged, and
+none regress. Every released-browser component score and coverage matches the
+native candidate. Two uncertain scan poses remain excluded.
+
+The comparison's lower-art rim window moved down five pixels to include the
+measured y=374 aperture edge and its border. Its old crop ended above the rim,
+incorrectly making Disenchant, Circle of Protection: Black and Steal Artifact
+low-signal cases. Scan poses and renderer pixels did not change for this metric
+correction. Planar remains 81.57 / 100 over 156 accepted scans; all 162 single-face
+capture results preserve their 0.3.11 scores, coverage and normalized pixels.
+
+### Integrated for 0.4.1: foil fixes
+
+Merged `codex/continuous-foil-lighting` (`f17bffa`), including `aa8b277`
+(preserve set-symbol ink in etch/emboss masks) and `a6badc5` (common contours
+for rarity overrides). Foil-continuity and symbol-mask/material regressions
+are now part of CI. The release refreshes both showcase animations.
+
+### Black-level calibration across active HSB profiles
+
+[Reproducible numeric evidence](fixtures/accuracy/printing-blackpoints.json)
+records all 37 sets with active pigment profiles: 1,037 sampled cached nonfoil
+printings, 1,021 accepted reference-bound frame poses and 16 excluded poses.
+Twelve new interior curves pass independent calibration/reserved-card checks.
+Their reserved shadow RGB RMSE falls from 13.26 to 6.64 byte units (about 50%).
+This is a regional color error, not a whole-card accuracy percentage.
+
+Eighteen set-level outer-stock targets are accepted separately. Alpha/Beta
+retain neutral charcoal distinct from their interior ink; white borders keep
+their existing treatment. The five approved PLC colorshifted curves replay
+pixel-identically. Native source masks and edge-connected stock selection keep
+bright bevels, alpha and illustration interiors unchanged. Derived materials
+are cached by source, dimensions and all adjustment parameters; no extra
+animation-time readbacks or decoding are introduced.
+
+Keep existing values for the 32 material cohorts with insufficient independent
+scans and for candidates that fail validation. Stock measurements describe
+Scryfall's displayed scan margins, not physical printed ink. Unlimited has no
+active HSB profile in this renderer and is not included in the 37-set claim.
+Review typography, geometry and remaining pigment differences separately.
+
+### PLC colorshifted heading weight
+
+[Native heading evidence](fixtures/accuracy/planar-heading-weight.json) uses one
+shared 0.5 px outline subtraction on white names and type lines. Existing Matrix
+advances, size, positioning and shadow geometry remain. Calibrated PLC heading
+shadows share the measured outer-stock black; uncalibrated inputs retain black. Glyph preparation uses
+a small temporary canvas during static composition, without pixel readbacks.
+MSE Matrix Medium was rejected because its changed letter proportions reduced
+reserved-card overlap even after a shared width fit.
+
+Across 29 reserved cards, name overlap improves 76.67 → 77.22 and type overlap
+74.21 → 74.54. Median excess normalized ink coverage falls from 26% to 5.3%
+(names) and 27% to 3.6% (types). All 44 native samples preserve pixels outside
+the heading bands and preserve alpha. Some individual type-line edge scores
+still regress slightly; these are regional metrics, not whole-card scores.

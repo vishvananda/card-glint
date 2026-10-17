@@ -1,3 +1,4 @@
+import { hasPrintingStockCandidate } from './printing-blackpoint.js';
 import {
   planarBadgeRect,
   planarFrameRect,
@@ -11,6 +12,7 @@ import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { isRetro } from './retro-frame.js';
 import { basicLandColor, plateBasicSymbol } from './plate-basic-land.js';
 import { eighthBasicRect, usesEighthBasicGeometry } from './eighth-basic-geometry.js';
+import { planarCalibratedStock, planarBevelBlend } from './planar-blackpoint.js';
 
 export interface FramePlate {
   frame: string;
@@ -33,6 +35,9 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   if (shifted && face.frameAssetFamily !== 'eighth')
     throw Error('Colorshifted treatment requires the eighth frame family.');
   if (!face.frameAssetFamily) return null;
+  // Composite spell faces retain the era for their dedicated panel painter.
+  // They never use an ordinary full-face plate or its geometry.
+  if (['split', 'aftermath'].includes(face.layout ?? '') && face.faces?.length === 2) return null;
   if (
     isRetro(face) ||
     (face.layout && !['normal', 'token'].includes(face.layout)) ||
@@ -142,13 +147,19 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
   if (!plate) return null;
   const brush = eighthArtistBrush(face);
   const basic = plateBasicSymbol(face);
+  const blend = planarBevelBlend(face, plate.frame);
   return [
     ...(basic ? [basic] : []),
+    ...(blend ? [blend.maskSource, blend.outerMaskSource] : []),
     ...(brush ? [brush] : []),
     plate.frame,
     ...(plate.rightFrame ? [plate.rightFrame] : []),
     ...(plate.pinlines ? Object.values(plate.pinlines) : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),
-    ...(cardStock(face.setCode, face.borderColor).border !== '#090806' ? [plate.border] : []),
+    ...(cardStock(face.setCode, face.borderColor).border !== '#090806' ||
+    planarCalibratedStock(face, plate.frame) ||
+    hasPrintingStockCandidate(face)
+      ? [plate.border]
+      : []),
   ];
 }

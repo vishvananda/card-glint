@@ -1,9 +1,24 @@
-import type { RenderedCardInput } from './face-layout.js';
-import { isRetro, retroFrameAsset, retroFrameRect, retroBorder } from './retro-frame.js';
+import {
+  hasPrintingStockCandidate,
+  printingBlackPointMaterials,
+  type PrintingStockSource,
+} from './printing-blackpoint.js';
+import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
+import { profileAssets } from './assets.js';
+import { framePlate } from './frame-plates.js';
+import { resolveCardProfile } from './profile.js';
+import {
+  isRetro,
+  retroFrameAsset,
+  retroFrameRect,
+  retroBorder,
+  retroBorderMask,
+} from './retro-frame.js';
 import type { Rgb } from './hsb.js';
 import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
 import { printingColorSource } from './printing-color-source.js';
 import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';
+import { ORDINARY_COLOR_PROFILES } from './ordinary-color-profiles.js';
 import { LEGENDS_COLOR_PROFILES } from './legends-color-profiles.js';
 import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';
 import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';
@@ -11,6 +26,7 @@ import { retroDualFrame } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
 import { futureFrameMaterials } from './future-color-profiles.js';
 import { planarFrameMaterials } from './planar-color-profiles.js';
+import { earlyExpansionColors } from './early-expansion-colors.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
@@ -50,15 +66,76 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
 }
 
 /** Every binding retains the exact pinned asset and geometry it was fitted to. */
-export function calibratedFrameMaterials(
-  face: RenderedCardInput,
-): Readonly<Record<string, FrameHsb>> {
+function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
+  const expansion = earlyExpansionColors(face);
+  if (expansion) return expansion.materials;
   if (face.frameTemplate === 'future') return futureFrameMaterials(face);
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
   if (!hasColorCalibration(face)) return {};
   const source = printingColorSource(face),
-    profile = source && (PRINTING_COLOR_PROFILES[source.key] ?? LEGENDS_COLOR_PROFILES[source.key]);
-  if (profile && profile.source === source?.source) return profile.materials;
+    profile =
+      source &&
+      ((!resolveCardProfile(face).legendary ? ORDINARY_COLOR_PROFILES[source.key] : undefined) ??
+        PRINTING_COLOR_PROFILES[source.key] ??
+        LEGENDS_COLOR_PROFILES[source.key]);
+  if (
+    profile &&
+    profile.source === source?.source &&
+    (profile.legendary === undefined || profile.legendary === resolveCardProfile(face).legendary)
+  )
+    return profile.materials;
   const old = calibratedDualFrameProfile(face);
   return old ? { [retroFrameAsset(face)]: old } : {};
+}
+
+/** An outer-stock-only correction does not establish pigment coverage. */
+export function hasCalibratedFramePigment(face: RenderedCardInput): boolean {
+  return Object.keys(baseFrameMaterials(face)).length > 0;
+}
+
+/** Source-bound black levels layer over the existing pigment fit. */
+export function calibratedFrameMaterials(
+  face: RenderedCardInput,
+): Readonly<Record<string, FrameHsb>> {
+  const expansion = earlyExpansionColors(face);
+  if (expansion) return expansion.materials;
+  return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))
+    .materials;
+}
+
+/** Stock is measured separately; white stock and unknown sources stay unchanged. */
+export function calibratedPrintingStock(face: RenderedCardInput): string | undefined {
+  const expansion = earlyExpansionColors(face);
+  if (expansion) return expansion.stock;
+  return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))
+    .stock;
+}
+
+function printingStockSource(face: RenderedCardInput): PrintingStockSource | undefined {
+  // Land-paper blends have no pigment fit. Their outer stock still uses the
+  // same pinned component frame and placement as the measured set family.
+  if (
+    hasPrintingStockCandidate(face) &&
+    !face.frameTemplate &&
+    !isRetro(face) &&
+    !framePlate(face) &&
+    (face.layout ?? 'normal') === 'normal' &&
+    !/\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') &&
+    resolveCardProfile(face).land
+  )
+    return {
+      url: profileAssets(resolveCardProfile(face)).frame,
+      geometry: JSON.stringify(FACE_RECTS.frame),
+    };
+  if (!hasColorCalibration(face)) return undefined;
+  if (isRetro(face))
+    return {
+      url: retroFrameAsset(face),
+      geometry: JSON.stringify(retroFrameRect(face)),
+      mask: retroBorderMask(face),
+    };
+  const source = printingColorSource(face);
+  return source?.family === 'components'
+    ? { url: source.frame, geometry: JSON.stringify(source.rect) }
+    : undefined;
 }

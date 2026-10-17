@@ -4,6 +4,7 @@ import type { SingleFrame } from './special-frames.js';
 import type { CardProfile } from './profile.js';
 import { setSymbolVector } from './set-symbols.js';
 import { chroniclesSymbol } from './chronicles-symbols.js';
+import { isStyledSetSymbol } from './styled-set-symbols.js';
 
 export const RENDERER_COMPONENT_ROOT = manifest.RENDERER_COMPONENT_ROOT;
 
@@ -97,6 +98,7 @@ export function componentAsset(group: string, name: string): string {
 
 /** Explicit symbols support custom sets without changing their printed names. */
 export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): string | null {
+  if (face.printingElements?.setSymbol?.hidden) return null;
   const set = face.setCode?.trim().toLowerCase() ?? '';
   return (
     face.setSymbol ??
@@ -106,4 +108,16 @@ export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): st
       face.setSymbolSource,
     )
   );
+}
+
+/** Rarity colors belong to the printed icon, not its etched/embossed contours.
+ * Preset symbol-code overrides resolve to explicit styled URLs; normalize those
+ * too, while preserving unrelated host-owned symbols and historical identities. */
+export function faceEtchingSymbol(face: RenderedCardInput): string | null {
+  if (face.printingElements?.setSymbol?.hidden) return null;
+  if (isStyledSetSymbol(face.setSymbol)) {
+    const code = new URL(face.setSymbol!).pathname.match(/\/([^/]+)-[curms]\.svg$/)?.[1];
+    if (code) return setSymbolAsset(code, 'common', 'cardconjurer');
+  }
+  return faceSetSymbol(face, 'common');
 }

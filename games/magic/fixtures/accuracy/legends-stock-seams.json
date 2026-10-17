@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "status": "fixed-in-source",
+  "baseline": "0.4.0",
+  "problem": "A user-provided Chrome export of Legends Barbary Apes contains one-pixel gray stock seams at x=5 and x=729 in a 732px image, plus a bottom edge. Live installed Chrome and WebKit reproduce them; bundled Chromium does not.",
+  "cause": "The white plate and its recolored stock mask are composited at the same fractional bounds. Partial coverage at the second draw leaves some of the first white edge exposed.",
+  "correction": "Fill stock outside and two canonical pixels inside the plate rectangle before applying the unmodified mask. Preserve the mask size, aperture, resampling and shared geometry. No source-asset edits or color-profile changes.",
+  "measurement": {
+    "beforeLineRgb": {
+      "left": [62, 62, 62],
+      "right": [60, 60, 60]
+    },
+    "stockRgb": [8, 8, 8],
+    "sampledCanonicalStrips": [
+      [0, 80, 14, 520],
+      [476, 80, 12, 520]
+    ],
+    "nativeReplay": {
+      "chromium": {
+        "cases": 14,
+        "beforeAffected": 0,
+        "afterAffected": 0,
+        "maxInteriorDifference": 0
+      },
+      "webkit": {
+        "cases": 14,
+        "beforeAffected": 14,
+        "afterAffected": 0,
+        "maxInteriorDifference": 1
+      },
+      "chrome": {
+        "cases": 14,
+        "beforeAffected": 8,
+        "afterAffected": 0,
+        "maxInteriorDifference": 0
+      }
+    }
+  },
+  "validation": {
+    "syntheticCasesPerEngine": 36,
+    "engines": ["Chromium", "WebKit"],
+    "stockColors": ["black", "white", "silver"],
+    "tiers": ["table", "inspect"],
+    "syntheticInteriorDifference": 0,
+    "nativeReplayCards": 7,
+    "nativeReplayCases": 42,
+    "note": "Shared decoded sources are used for before/after. Installed Chrome and bundled Chromium interiors are byte-identical. WebKit has at most one-byte differences between separately prepared color materials; mask aperture tests are byte-identical."
+  },
+  "sourceBundles": {
+    "before": "92dc11ddc3191eb04ce1c9bf0948e9a0b395cc1bdb2c802982e8398f60b7d132",
+    "after": "15115bca651c0d5d6c01c8ca553cdef7d8ebe65e74b46c4d97c44742736f70b8"
+  }
+}

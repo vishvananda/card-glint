@@ -4,6 +4,9 @@ export interface HsbAdjustment {
   hueDegrees: number;
   saturationScale: number;
   brightnessScale: number;
+  /** Optional monotone value curve before brightness scaling. Separates
+   * scanned texture contrast from mean brightness; prepared once per source. */
+  valueGamma?: number;
   /** Optional source white balance after HSV. Neutral textured plates need
    * channel gains to acquire a printing tint without amplifying colored specks. */
   rgbScale?: Rgb;
@@ -40,10 +43,11 @@ export function hsbToRgb(h: number, s: number, v: number): [number, number, numb
 }
 export function adjustHsb(rgb: Rgb, adjustment: HsbAdjustment): [number, number, number] {
   const [h, s, b] = rgbToHsb(rgb);
+  const value = adjustment.valueGamma === undefined ? b : b ** adjustment.valueGamma;
   const result = hsbToRgb(
     h + adjustment.hueDegrees,
     Math.min(1, s * adjustment.saturationScale),
-    Math.min(1, b * adjustment.brightnessScale),
+    Math.min(1, value * adjustment.brightnessScale),
   );
   return adjustment.rgbScale
     ? [
@@ -52,4 +56,11 @@ export function adjustHsb(rgb: Rgb, adjustment: HsbAdjustment): [number, number,
         Math.max(0, Math.min(1, result[2] * adjustment.rgbScale[2])),
       ]
     : result;
+}
+
+/** Validate optional tone parameters once at material preparation, not per pixel. */
+export function validateHsbTone(adjustment: HsbAdjustment): void {
+  const gamma = adjustment.valueGamma;
+  if (gamma !== undefined && (!Number.isFinite(gamma) || gamma < 0.5 || gamma > 2))
+    throw RangeError('Frame value exponent must be finite and between 0.5 and 2.');
 }

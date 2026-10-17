@@ -1,3 +1,4 @@
+import { validateImageFit } from './image-cover.js';
 import type { CardDocument, Frame, Instance, Raster, Rect, SceneLayer } from './types.js';
 import { validateDeformation } from './deformation.js';
 export function uint32(value: number) {
@@ -50,6 +51,7 @@ export function validateDocument(document: CardDocument) {
   recipe.artWindows.forEach(rect);
   recipe.regions.forEach((region) => rect(region.rect));
   for (const edge of recipe.edges) {
+    if (edge.fit !== undefined) validateImageFit(edge.fit);
     rect(edge.crop);
     rect(edge.destination);
     rect(edge.clip);
@@ -83,6 +85,11 @@ export function validateDocument(document: CardDocument) {
   }
 }
 export function validateInstance(item: Instance) {
+  if (
+    item.rainFog !== undefined &&
+    (!Number.isFinite(item.rainFog) || item.rainFog < 0 || item.rainFog > 2)
+  )
+    throw Error('Invalid rain fog density');
   if (
     item.printDots?.inset !== undefined &&
     (!Number.isFinite(item.printDots.inset) ||

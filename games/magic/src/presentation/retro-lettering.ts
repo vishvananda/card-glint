@@ -59,8 +59,10 @@ export function paintRetroGrayText(
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
-  c.fillStyle = '#17140f';
-  c.fillText(text, x + offset, y + offset, maxWidth);
+  paintLiveText(c, text, x + offset, y + offset, maxWidth, liveChanges, liveRole, () => {
+    c.fillStyle = '#17140f';
+    c.fillText(text, x + offset, y + offset, maxWidth);
+  });
   c.fillStyle = fill;
   paintLiveText(c, text, x, y, maxWidth, liveChanges, liveRole);
   c.restore();

@@ -44,3 +44,21 @@ export { mountedSecurityStamp } from './presentation/security-stamp-paint.js';
 export { ADVENTURE_RULE_BOUNDS } from './presentation/adventure-rules.js';
 export { PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
 export { FLIP_PANEL_RECTS } from './presentation/flip-template-paint.js';
+export * from './presentation/printing-presets.js';
+export type {
+  PrintingElement,
+  PrintingElementOverride,
+  PrintingElements,
+} from './presentation/printing-elements.js';
+
+export * from './presentation/scryfall-printing.js';
+
+export * from './presentation/art-placement.js';
+
+export * from './presentation/printing-style.js';
+
+export { resolveFrameColors } from './presentation/profile.js';
+
+export { fromScryfallCard } from './presentation/scryfall-card.js';
+export { fromMtgjsonCard } from './presentation/mtgjson-card.js';
+export type { CardImportOptions } from './presentation/provider-card.js';

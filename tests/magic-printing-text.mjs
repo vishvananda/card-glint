@@ -6,6 +6,7 @@ import {
   printingTextIndex,
 } from '../games/magic/tools/accuracy/printing-text.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+import { calibrationPresentation } from '../games/magic/tools/accuracy/calibration-wording.mjs';
 
 const entry = {
   id: 'printing-a',
@@ -37,6 +38,53 @@ assert.equal(index.missing.length, 0);
 const original = presentation(entry, {}, index.cards);
 assert.equal(original.face.rulesText, 'Printed wording.');
 assert.equal(original.contentStatus, 'printing-reference');
+assert.throws(() => calibrationPresentation(entry), /Original rules unavailable/);
+const calibration = calibrationPresentation(entry, {}, index.cards);
+assert.equal(calibration.face.wordingMode, 'original');
+assert.equal(calibration.wordingEvidence.rules, 'mtgjson-original');
+assert.equal(calibration.wordingEvidence.type, 'unverified');
+assert.throws(
+  () =>
+    calibrationPresentation(
+      entry,
+      { 'printing-a': { rulesText: 'Current wording.' } },
+      index.cards,
+    ),
+  /Original rules mismatch/,
+);
+assert.throws(
+  () =>
+    calibrationPresentation(
+      entry,
+      {
+        'printing-a': {
+          paragraphs: [{ role: 'rules', runs: [{ text: 'Current wording.' }] }],
+        },
+      },
+      index.cards,
+    ),
+  /Original rules mismatch/,
+);
+const emptyCalibration = calibrationPresentation(
+  entry,
+  {},
+  {
+    'printing-a': { originalText: '', uuid: 'empty-original' },
+  },
+);
+assert.equal(emptyCalibration.face.rulesText, '');
+assert.equal(emptyCalibration.wordingEvidence.rules, 'mtgjson-original');
+assert.equal(
+  calibrationPresentation({
+    ...entry,
+    card: {
+      ...entry.card,
+      printed_text: 'Printed body.',
+      printed_type_line: 'Summon Example',
+    },
+  }).wordingEvidence.type,
+  'scryfall-printed',
+);
 const tapped = printingTextIndex(snapshot, {
   code: '4ED',
   cards: [{ ...record, originalText: 'ocT: Add {U} to your mana pool.' }],
@@ -215,7 +263,6 @@ for (const changes of [
   { produced_mana: undefined, color_identity: ['B', 'R'] },
   { frame: '1997' },
   { type_line: 'Artifact Land' },
-  { type_line: 'Basic Land — Mountain' },
   { type_line: 'Artifact' },
   { colors: ['G'] },
 ])
@@ -223,6 +270,11 @@ for (const changes of [
     presentation({ ...land, card: { ...land.card, ...changes } }).face.frameColors,
     undefined,
   );
+assert.deepEqual(
+  presentation({ ...land, card: { ...land.card, type_line: 'Basic Land — Mountain' } }).face
+    .frameColors,
+  ['R'],
+);
 assert.deepEqual(
   presentation(land, {
     'printing-a': { reviewedFields: ['frameColors'], referenceHash: 'scan-a', frameColors: [] },

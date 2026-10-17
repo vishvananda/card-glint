@@ -8,7 +8,8 @@ import {
   etchedSetLabel,
   type RenderedCardInput,
 } from './face-layout.js';
-import { faceSetSymbol } from './assets.js';
+import { faceEtchingSymbol } from './assets.js';
+import { acquireSetSymbolMask } from './set-symbol-mask.js';
 import { loadCanvasImages } from './canvas-assets.js';
 import { illustrationCover, illustrationTarget } from './illustration-layout.js';
 
@@ -59,12 +60,15 @@ async function paintMask(
     for (const panel of panels) {
       // The single-face mask is normalized to 488 × 680; transform it into the same panel aperture.
       context.save();
-      panelTransform(context, panel);
-      await paintMask(context, panel.face, printingId, signal, {
-        ...options,
-        height: (panel.height * FACE_WIDTH) / panel.width,
-      });
-      context.restore();
+      try {
+        panelTransform(context, panel);
+        await paintMask(context, panel.face, printingId, signal, {
+          ...options,
+          height: (panel.height * FACE_WIDTH) / panel.width,
+        });
+      } finally {
+        context.restore();
+      }
     }
     return;
   }
@@ -101,7 +105,12 @@ async function paintMask(
         const target = illustrationTarget(face, [x, y, w, h], FACE_WIDTH, height);
         if (face.illustrationCrop) {
           const crop = face.illustrationCrop;
-          const dest = illustrationCover(source.width * crop[2], source.height * crop[3], target);
+          const dest = illustrationCover(
+            source.width * crop[2],
+            source.height * crop[3],
+            target,
+            face.artPlacement,
+          );
           context.drawImage(
             bitmap,
             crop[0] * bitmap.width,
@@ -110,7 +119,11 @@ async function paintMask(
             crop[3] * bitmap.height,
             ...dest,
           );
-        } else context.drawImage(bitmap, ...illustrationCover(source.width, source.height, target));
+        } else
+          context.drawImage(
+            bitmap,
+            ...illustrationCover(source.width, source.height, target, face.artPlacement),
+          );
         context.restore();
       }
     } catch {
@@ -120,40 +133,51 @@ async function paintMask(
     }
   }
   signal.throwIfAborted();
-  if (!face.setCode) return;
+  if (!face.setCode || face.printingElements?.setSymbol?.hidden) return;
   const [rx, ry, rw, rh] = faceRects(face).stamp;
   const x = rx * FACE_WIDTH,
     y = ry * height,
     w = rw * FACE_WIDTH,
     h = rh * height;
-  const url = faceSetSymbol(face, 'common');
+  const url = faceEtchingSymbol(face);
   const loaded = await loadImages([url], signal);
   try {
     await beforePaint?.();
     signal.throwIfAborted();
     const image = url ? loaded.images.get(url) : null;
     context.save();
-    context.globalAlpha = 0.68;
-    if (image) {
-      const scale = Math.min(w / image.width, h / image.height);
-      context.drawImage(
-        image,
-        x + (w - image.width * scale) / 2,
-        y + (h - image.height * scale) / 2,
-        image.width * scale,
-        image.height * scale,
-      );
-    } else {
-      context.translate(x, y);
-      context.scale(w / 100, h / 100);
-      context.fillStyle = 'white';
-      context.fill(new Path2D(ETCHED_SET_MARK_PATH));
-      context.font = 'bold 43px Georgia';
-      context.textAlign = 'center';
-      context.textBaseline = 'alphabetic';
-      context.fillText(etchedSetLabel(face.setCode), 50, 65);
+    try {
+      if (face.printingElements?.setSymbol?.offset)
+        context.translate(...face.printingElements.setSymbol.offset);
+      context.globalAlpha = 0.68;
+      if (image) {
+        const mask = await acquireSetSymbolMask(image, url!, face.setSymbolMask, signal);
+        try {
+          signal.throwIfAborted();
+          const scale = Math.min(w / mask.value.width, h / mask.value.height);
+          context.drawImage(
+            mask.value,
+            x + (w - mask.value.width * scale) / 2,
+            y + (h - mask.value.height * scale) / 2,
+            mask.value.width * scale,
+            mask.value.height * scale,
+          );
+        } finally {
+          mask.release();
+        }
+      } else {
+        context.translate(x, y);
+        context.scale(w / 100, h / 100);
+        context.fillStyle = 'white';
+        context.fill(new Path2D(ETCHED_SET_MARK_PATH));
+        context.font = 'bold 43px Georgia';
+        context.textAlign = 'center';
+        context.textBaseline = 'alphabetic';
+        context.fillText(etchedSetLabel(face.setCode), 50, 65);
+      }
+    } finally {
+      context.restore();
     }
-    context.restore();
   } finally {
     loaded.dispose();
   }

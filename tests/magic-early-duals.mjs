@@ -202,11 +202,19 @@ try {
         assert.deepEqual(plan, retroDualFrame(oracle.face));
         assert.equal(retroFrameAsset(original.face), plan.base);
         assert.ok(Object.values(plan).every((url) => retroAssets(original.face).includes(url)));
-        assert.deepEqual(
-          calibratedFrameMaterials({ ...original.face, colorCalibration: 'set-hsb-v1' }),
-          {},
-          'Do not inherit neutral-land HSB on a different colored source',
-        );
+        const calibrated = calibratedFrameMaterials({
+          ...original.face,
+          colorCalibration: 'set-hsb-v1',
+        });
+        for (const { outerStock, outerStockMaskSource, ...pigment } of Object.values(calibrated)) {
+          assert.deepEqual(
+            pigment,
+            { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
+            'Do not inherit neutral-land HSB on a different colored source',
+          );
+          assert.deepEqual(outerStock, [27 / 255, 27 / 255, 27 / 255]);
+          assert.ok(outerStockMaskSource.endsWith('/old/abu/border.svg'));
+        }
       } else assert.equal(retroDualFrame(original.face), undefined);
       count++;
     }

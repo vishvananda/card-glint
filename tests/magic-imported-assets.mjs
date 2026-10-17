@@ -380,7 +380,15 @@ try {
       '/games/magic/src/presentation/frame-plate-paint.ts'
     );
     const { loadCanvasImages } = await import('/games/magic/src/presentation/canvas-assets.ts');
-    const loadedShifted = await loadCanvasImages(canvasAssetUrls(shifted), signal);
+    const loadedShifted = await loadCanvasImages(
+      [
+        ...new Set([
+          ...canvasAssetUrls(shifted),
+          ...canvasAssetUrls({ ...shifted, colorCalibration: 'set-hsb-v1' }),
+        ]),
+      ],
+      signal,
+    );
     const inkCanvas = document.createElement('canvas');
     inkCanvas.width = 488;
     inkCanvas.height = 680;
@@ -388,12 +396,54 @@ try {
       drawnInk = [];
     const originalFill = ink.fillText.bind(ink);
     ink.fillText = (text, ...args) => {
-      drawnInk.push({ text, fill: ink.fillStyle, x: ink.shadowOffsetX, y: ink.shadowOffsetY });
+      drawnInk.push({
+        text,
+        fill: ink.fillStyle,
+        x: ink.shadowOffsetX,
+        y: ink.shadowOffsetY,
+        shadow: ink.shadowColor,
+      });
       originalFill(text, ...args);
     };
+    // Inset headings stage their glyphs before applying the shadow on the face.
+    const stagedText = new WeakMap();
+    const prototypeFill = CanvasRenderingContext2D.prototype.fillText;
+    CanvasRenderingContext2D.prototype.fillText = function (text, ...args) {
+      stagedText.set(this.canvas, { text, fill: this.fillStyle });
+      return prototypeFill.call(this, text, ...args);
+    };
+    const originalDraw = ink.drawImage.bind(ink);
+    ink.drawImage = (source, ...args) => {
+      const label = stagedText.get(source);
+      if (label)
+        drawnInk.push({
+          ...label,
+          x: ink.shadowOffsetX,
+          y: ink.shadowOffsetY,
+          shadow: ink.shadowColor,
+        });
+      originalDraw(source, ...args);
+    };
     try {
+      paintFramePlateFace(
+        ink,
+        { ...shifted, colorCalibration: 'set-hsb-v1' },
+        loadedShifted.images,
+      );
+      for (const text of ['Shifted specimen', 'Creature'])
+        check(
+          drawnInk.find((r) => r.text === text)?.shadow === '#181510',
+          'Calibrated heading must share the measured stock black',
+        );
+      drawnInk.length = 0;
       paintFramePlateFace(ink, shifted, loadedShifted.images);
+      for (const text of ['Shifted specimen', 'Creature'])
+        check(
+          drawnInk.find((r) => r.text === text)?.shadow === '#000000',
+          'Uncalibrated heading must retain its original black',
+        );
     } finally {
+      CanvasRenderingContext2D.prototype.fillText = prototypeFill;
       loadedShifted.dispose();
     }
     for (const text of ['Shifted specimen', 'Creature', '5/5']) {

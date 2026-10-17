@@ -166,6 +166,9 @@ try {
     );
   }
   const profiles = await server.ssrLoadModule('/games/magic/tools/accuracy/legacy-hsb-profiles.ts');
+  const { earlyExpansionFrame } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/early-expansion-frame.ts',
+  );
   const { OLD_HSB_PROFILES } = await server.ssrLoadModule(
     '/games/magic/src/presentation/old-hsb-profiles.ts',
   );
@@ -189,9 +192,9 @@ try {
       frameStyle: 'retro',
       colorCalibration: 'set-hsb-v1',
     };
-    // Legends changed both plate and geometry; historical diagnostic fits must
+    // Replaced plates/geometry invalidate historical diagnostic fits. They must
     // remain readable but cannot recolor the replacement sources.
-    if (setCode === 'leg')
+    if (setCode === 'leg' || earlyExpansionFrame(calibrated))
       assert.equal(profiles.calibratedFrameProfile(calibrated), undefined, key);
     else assert.ok(profiles.calibratedFrameProfile(calibrated), key);
     assert.equal(

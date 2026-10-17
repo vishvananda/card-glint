@@ -7,6 +7,7 @@ interface State {
   velocity: [number, number];
   data: Float32Array;
   activeRipple: number;
+  emitting: boolean;
   segStart: [number, number];
   segTime: number;
   hoverUv: [number, number];
@@ -18,6 +19,22 @@ function packSegment(sx: number, sy: number): number {
   const qx = Math.min(2047, Math.max(0, Math.round((sx / 0.24 + 0.5) * 2047)));
   const qy = Math.min(0.9995, Math.max(0.0005, sy / 0.24 + 0.5));
   return 1 + qx + qy;
+}
+
+// Match rippleCapsule's lifetime. Reuse only an empty or expired emitter so a
+// moving pointer cannot erase a visible wave train to make room for a new one.
+function openRipple(state: State, time: number, x: number, y: number): boolean {
+  for (let next = 1; next <= 4; next++) {
+    const slot = (state.activeRipple + next) % 4;
+    const offset = 4 + slot * 4;
+    if (state.data[offset + 3]! > 0 && time - state.data[offset + 2]! < 2.25) continue;
+    state.activeRipple = slot;
+    state.segStart = [x, y];
+    state.segTime = time;
+    state.data.set([x, y, time, packSegment(0, 0)], offset);
+    return true;
+  }
+  return false;
 }
 
 /** Small damped springs and four connected stroke-capsule wave emitters, never a fluid grid. */
@@ -52,6 +69,7 @@ export class SurfaceMotion {
         velocity: [0, 0],
         data,
         activeRipple: 0,
+        emitting: false,
         segStart: [0.5, 0.5],
         segTime: -100,
         hoverUv: [0.5, 0.5],
@@ -66,11 +84,8 @@ export class SurfaceMotion {
       const hx = hover.uv[0],
         hy = 1 - hover.uv[1];
       if (!state.hovering) {
-        state.activeRipple = (state.activeRipple + 1) % 4;
-        state.segStart = [hx, hy];
-        state.segTime = time;
         state.hoverUv = [hx, hy];
-        state.data.set([hx, hy, time, packSegment(0, 0)], 4 + state.activeRipple * 4);
+        state.emitting = openRipple(state, time, hx, hy);
       } else {
         const dx = hx - state.hoverUv[0],
           dy = hy - state.hoverUv[1],
@@ -85,22 +100,11 @@ export class SurfaceMotion {
           segLen = Math.hypot(sx, sy) * 2,
           segAge = time - state.segTime;
         if (stepDist > 0.0005) {
-          if (segLen > 0.11 || (segAge > 0.13 && segLen > 0.02)) {
-            // Commit the current capsule so its wave train radiates outward uninterrupted,
-            // and start the next capsule connected end-to-end at the previous endpoint.
-            const prevEnd: [number, number] = [
-              state.segStart[0] + sx * 2,
-              state.segStart[1] + sy * 2,
-            ];
-            state.activeRipple = (state.activeRipple + 1) % 4;
-            state.segStart = prevEnd;
-            state.segTime = time;
-            const nsx = (hx - prevEnd[0]) * 0.5,
-              nsy = (hy - prevEnd[1]) * 0.5;
-            state.data.set(
-              [prevEnd[0] + nsx, prevEnd[1] + nsy, time, packSegment(nsx, nsy)],
-              4 + state.activeRipple * 4,
-            );
+          if (!state.emitting || segLen > 0.11 || (segAge > 0.13 && segLen > 0.02)) {
+            // Commit this capsule and keep every visible trail intact. If all
+            // four are occupied, pointer slosh remains active while emission
+            // waits for a slot to expire; a stationary hover never restarts it.
+            state.emitting = openRipple(state, time, hx, hy);
           } else {
             const cx = state.segStart[0] + sx,
               cy = state.segStart[1] + sy,
@@ -110,6 +114,7 @@ export class SurfaceMotion {
         }
       }
     }
+    if (!hover) state.emitting = false;
     if (dt > 0) {
       const widths = [Math.hypot(m[0]!, m[1]!, m[2]!), Math.hypot(m[4]!, m[5]!, m[6]!)];
       for (let axis = 0; axis < 2; axis++) {

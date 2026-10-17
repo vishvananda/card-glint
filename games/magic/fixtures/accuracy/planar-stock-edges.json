@@ -1,0 +1,4764 @@
+{
+  "schemaVersion": 1,
+  "status": "validated-native-candidate",
+  "baseline": "ad063d7",
+  "metric": "Absolute stock-to-texture boundary error at 488x680. Not a whole-card accuracy score.",
+  "policy": "Measure stock-to-texture transitions on frozen poses, independently of text/art.\nFit a blurred step plus interior texture slope on averaged RGB edge profiles.\nNo per-card render parameters; calibration and validation cohorts remain frozen.\n",
+  "targetBandBounds": [21, 18.75, 467.5, 661],
+  "validation": {
+    "cardsWithReliableEdges": 25,
+    "beforeMeanAbsolutePixels": 1.6921666666666666,
+    "afterMeanAbsolutePixels": 0.12233333333333293,
+    "improved": 25,
+    "unmeasured": "Black frame edge contrast is too low for this step estimator. Green top transitions are contaminated by the title bevel; retain the shared fit and flag these samples."
+  },
+  "summary": {
+    "W": {
+      "calibration": {
+        "scan": {
+          "left": 23.05,
+          "right": 23,
+          "top": 22.6,
+          "bottom": 22.6
+        },
+        "before": {
+          "left": 23.75,
+          "right": 23.95,
+          "top": 23.7,
+          "bottom": 24.75
+        },
+        "ink-before-edge": {
+          "left": 24.4,
+          "right": 24.2,
+          "top": 25.15,
+          "bottom": 25.15
+        },
+        "after": {
+          "left": 23.1,
+          "right": 23.15,
+          "top": 22.55,
+          "bottom": 22.6
+        }
+      },
+      "validation": {
+        "scan": {
+          "left": 23.125,
+          "right": 22.95,
+          "top": 22.6,
+          "bottom": 22.65
+        },
+        "before": {
+          "left": 23.75,
+          "right": 23.95,
+          "top": 23.7,
+          "bottom": 24.8
+        },
+        "ink-before-edge": {
+          "left": 24.4,
+          "right": 24.2,
+          "top": 25.15,
+          "bottom": 25.15
+        },
+        "after": {
+          "left": 23.1,
+          "right": 23.15,
+          "top": 22.55,
+          "bottom": 22.65
+        }
+      }
+    },
+    "U": {
+      "calibration": {
+        "scan": {
+          "left": 23.15,
+          "right": 23,
+          "top": 22.75,
+          "bottom": 22.6
+        },
+        "before": {
+          "left": 23.75,
+          "right": 23.95,
+          "top": 24,
+          "bottom": 24.8
+        },
+        "ink-before-edge": {
+          "left": 24.4,
+          "right": 24.2,
+          "top": 25.55,
+          "bottom": 25.15
+        },
+        "after": {
+          "left": 23.1,
+          "right": 23.2,
+          "top": 22.85,
+          "bottom": 22.65
+        }
+      },
+      "validation": {
+        "scan": {
+          "left": 23.15,
+          "right": 22.925,
+          "top": 22.75,
+          "bottom": 22.65
+        },
+        "before": {
+          "left": 23.75,
+          "right": 23.95,
+          "top": 24,
+          "bottom": 24.8
+        },
+        "ink-before-edge": {
+          "left": 24.4,
+          "right": 24.2,
+          "top": 25.55,
+          "bottom": 25.15
+        },
+        "after": {
+          "left": 23.1,
+          "right": 23.2,
+          "top": 22.85,
+          "bottom": 22.65
+        }
+      }
+    },
+    "B": {
+      "calibration": {
+        "scan": {
+          "left": 23.7,
+          "right": 23,
+          "top": 29.05,
+          "bottom": 26.8
+        },
+        "before": {
+          "left": 23.6,
+          "right": 22.5,
+          "top": 27.9,
+          "bottom": 27.25
+        },
+        "ink-before-edge": {
+          "left": 24.55,
+          "right": 30.95,
+          "top": 28,
+          "bottom": 27.4
+        },
+        "after": {
+          "left": 23.15,
+          "right": 30.95,
+          "top": 28,
+          "bottom": 27.4
+        }
+      },
+      "validation": {
+        "scan": {
+          "left": 23.75,
+          "right": 23.05,
+          "top": 29,
+          "bottom": 26.6
+        },
+        "before": {
+          "left": 23.6,
+          "right": 22.5,
+          "top": 27.9,
+          "bottom": 27.2
+        },
+        "ink-before-edge": {
+          "left": 24.55,
+          "right": 30.95,
+          "top": 28,
+          "bottom": 27.35
+        },
+        "after": {
+          "left": 23.15,
+          "right": 30.95,
+          "top": 28,
+          "bottom": 27.4
+        }
+      }
+    },
+    "R": {
+      "calibration": {
+        "scan": {
+          "left": 23.35,
+          "right": 22.95,
+          "top": 22.65,
+          "bottom": 22.65
+        },
+        "before": {
+          "left": 23.75,
+          "right": 23.8,
+          "top": 23.95,
+          "bottom": 24.7
+        },
+        "ink-before-edge": {
+          "left": 24.4,
+          "right": 24.05,
+          "top": 27.4,
+          "bottom": 25.1
+        },
+        "after": {
+          "left": 23.15,
+          "right": 23.05,
+          "top": 22.65,
+          "bottom": 22.55
+        }
+      },
+      "validation": {
+        "scan": {
+          "left": 23.35,
+          "right": 22.875,
+          "top": 22.65,
+          "bottom": 22.65
+        },
+        "before": {
+          "left": 23.75,
+          "right": 23.8,
+          "top": 23.95,
+          "bottom": 24.7
+        },
+        "ink-before-edge": {
+          "left": 24.4,
+          "right": 24.05,
+          "top": 27.4,
+          "bottom": 25.1
+        },
+        "after": {
+          "left": 23.15,
+          "right": 23.05,
+          "top": 22.65,
+          "bottom": 22.55
+        }
+      }
+    },
+    "G": {
+      "calibration": {
+        "scan": {
+          "left": 23.55,
+          "right": 22.9,
+          "top": 22.7,
+          "bottom": 22.65
+        },
+        "before": {
+          "left": 23.85,
+          "right": 23.65,
+          "top": 24.2,
+          "bottom": 24.75
+        },
+        "ink-before-edge": {
+          "left": 24.6,
+          "right": 23.8,
+          "top": 27.4,
+          "bottom": 25.15
+        },
+        "after": {
+          "left": 23.3,
+          "right": 22.85,
+          "top": 27.7,
+          "bottom": 22.65
+        }
+      },
+      "validation": {
+        "scan": {
+          "left": 23.475,
+          "right": 22.9,
+          "top": 22.8,
+          "bottom": 22.675
+        },
+        "before": {
+          "left": 23.85,
+          "right": 23.65,
+          "top": 24.2,
+          "bottom": 24.75
+        },
+        "ink-before-edge": {
+          "left": 24.6,
+          "right": 23.8,
+          "top": 27.4,
+          "bottom": 25.15
+        },
+        "after": {
+          "left": 23.3,
+          "right": 22.85,
+          "top": 27.7,
+          "bottom": 22.65
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "f0159719-ccf4-4798-a394-b01f5e422a27",
+      "name": "Calciderm",
+      "color": "W",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.15,
+          "residual": 314.461,
+          "contrast": 337.32
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 20.162,
+          "contrast": 232.63
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 84.7,
+          "contrast": 223.87
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 120.138,
+          "contrast": 266.56
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 126.407,
+          "contrast": 340.36
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 140.355,
+          "contrast": 298.54
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 104.708,
+          "contrast": 327.72
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8874999999999993,
+        "after": 0.07499999999999929
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "a85ee3defc4a77f510cebe86368ae63e099a6f8afe5d0e43614125e03066cd20"
+    },
+    {
+      "id": "6f5df373-5dad-4e33-9e2b-351f1f4bdde4",
+      "name": "Malach of the Dawn",
+      "color": "W",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.2,
+          "residual": 282.831,
+          "contrast": 343.89
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 35.238,
+          "contrast": 243.64
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 102.776,
+          "contrast": 225.77
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 172.591,
+          "contrast": 280.81
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 128.195,
+          "contrast": 340.15
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 142.152,
+          "contrast": 298.28
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 106.843,
+          "contrast": 327.68
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8749999999999991,
+        "after": 0.11249999999999805
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "b36197a6061f79736c1b63907cd38560b3787c5747221a66018738643f45303d"
+    },
+    {
+      "id": "7d48d622-f397-4f31-b1a5-0c23f60aa71c",
+      "name": "Mana Tithe",
+      "color": "W",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.1,
+          "residual": 262.376,
+          "contrast": 325.62
+        },
+        "right": {
+          "position": 23,
+          "residual": 28.903,
+          "contrast": 234.54
+        },
+        "top": {
+          "position": 22.5,
+          "residual": 124.633,
+          "contrast": 219.87
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 124.447,
+          "contrast": 268.4
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 135.852,
+          "contrast": 332.89
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 149.414,
+          "contrast": 294.5
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 116.418,
+          "contrast": 320.26
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9124999999999988,
+        "after": 0.06249999999999911
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "eba69aa910e876063172f2d288afda276ce4de82208cd7e9cd865eff76472586"
+    },
+    {
+      "id": "4037d6de-f30b-483c-83a8-9a4e2978f7fc",
+      "name": "Mesa Enchantress",
+      "color": "W",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.05,
+          "residual": 357.463,
+          "contrast": 352.15
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 40.812,
+          "contrast": 253.81
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 140.484,
+          "contrast": 243.3
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 187.488,
+          "contrast": 285.05
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 129.443,
+          "contrast": 339.97
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 143.368,
+          "contrast": 298.09
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 107.652,
+          "contrast": 327.56
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.924999999999998,
+        "after": 0.08749999999999947
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "8a36c04cd8b29e5b69f9d3173986de02d3e0599cdd05a6e7770406850be2b291"
+    },
+    {
+      "id": "56d8e9fa-e241-4a11-99b8-ffced81eb38b",
+      "name": "Mycologist",
+      "color": "W",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.15,
+          "residual": 313.668,
+          "contrast": 335.37
+        },
+        "right": {
+          "position": 23.1,
+          "residual": 38.545,
+          "contrast": 244.1
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 144.024,
+          "contrast": 231.53
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 89.652,
+          "contrast": 265.81
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 123.441,
+          "contrast": 340.68
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 137.396,
+          "contrast": 298.94
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 102.082,
+          "contrast": 327.76
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8499999999999988,
+        "after": 0.03749999999999876
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "43d3f02c2dff8b3980eefed43702f8d61b2e048697a78626c6a0f3035f7600e0"
+    },
+    {
+      "id": "21a8f0e5-8fec-45b2-a6a0-59d7b493a259",
+      "name": "Porphyry Nodes",
+      "color": "W",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.25,
+          "residual": 336.002,
+          "contrast": 363.15
+        },
+        "right": {
+          "position": 23,
+          "residual": 46.244,
+          "contrast": 256.84
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 149.899,
+          "contrast": 251.21
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 163.153,
+          "contrast": 292.51
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 136.502,
+          "contrast": 332.88
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 150.093,
+          "contrast": 294.46
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 116.979,
+          "contrast": 320.36
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8749999999999982,
+        "after": 0.07499999999999929
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "82a6c428f6984dcd2b119d538dce8e455ef3ef94ebdd93f78bc72e178027ab08"
+    },
+    {
+      "id": "f9a78d5c-27f8-4061-be89-0246fb69e752",
+      "name": "Revered Dead",
+      "color": "W",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.1,
+          "residual": 269.499,
+          "contrast": 332.13
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 34.109,
+          "contrast": 241.8
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 58.6,
+          "contrast": 224.83
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 80.87,
+          "contrast": 265.56
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 125.386,
+          "contrast": 340.67
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 139.393,
+          "contrast": 298.86
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 103.684,
+          "contrast": 327.98
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8999999999999986,
+        "after": 0.0625
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "8ca073bd3b2b6f398426482e5ce5f21d101f15ed16f1ec1180769b93b56493df"
+    },
+    {
+      "id": "6cd2ed50-cd9a-45d9-a59a-6279be1ab308",
+      "name": "Sinew Sliver",
+      "color": "W",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.1,
+          "residual": 259.042,
+          "contrast": 319.08
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 38.693,
+          "contrast": 230.71
+        },
+        "top": {
+          "position": 22.7,
+          "residual": 77.771,
+          "contrast": 220.48
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 83.101,
+          "contrast": 267.66
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 124.318,
+          "contrast": 340.64
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 138.301,
+          "contrast": 298.85
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 102.803,
+          "contrast": 327.89
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8749999999999991,
+        "after": 0.11249999999999982
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "fde0a05c5b10fc7c2162d9aa8f9d9c3305da646f05002ae13933b6f9a49f117a"
+    },
+    {
+      "id": "46144ca5-aa81-4314-a1e5-1716f8565d70",
+      "name": "Sunlance",
+      "color": "W",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.05,
+          "residual": 278.228,
+          "contrast": 313.16
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 36.982,
+          "contrast": 236.46
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 122.38,
+          "contrast": 223.92
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 151.576,
+          "contrast": 271.11
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 534.823,
+          "contrast": 429.71
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 43.674,
+          "contrast": 285.43
+        },
+        "top": {
+          "position": 23.7,
+          "residual": 68.313,
+          "contrast": 281.91
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 133.43,
+          "contrast": 332.93
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 371.176,
+          "contrast": 383.94
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 43.787,
+          "contrast": 251.53
+        },
+        "top": {
+          "position": 25.15,
+          "residual": 47.581,
+          "contrast": 266.22
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 146.936,
+          "contrast": 294.61
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 481.939,
+          "contrast": 375.54
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 62.01,
+          "contrast": 252.14
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 76.244,
+          "contrast": 240.01
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 114.323,
+          "contrast": 320.12
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8874999999999984,
+        "after": 0.06249999999999911
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "843ebb17689d613ce1392d2067955b58a070056082a605b11d6f6085f6e640e4"
+    },
+    {
+      "id": "e727bb9e-3510-4c8e-ac49-6d7217667a18",
+      "name": "Frozen Aether",
+      "color": "U",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.05,
+          "residual": 328.691,
+          "contrast": 334.88
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 35.244,
+          "contrast": 281.18
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 445.983,
+          "contrast": 317.59
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 107.867,
+          "contrast": 296.92
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 103.158,
+          "contrast": 309.8
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 111.857,
+          "contrast": 271.19
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 93.374,
+          "contrast": 297.11
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9749999999999996,
+        "after": 0.1250000000000009
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "68bbee23197d636f996c588fe4b6026304871cf4916186765e7a9a858b981624"
+    },
+    {
+      "id": "307d53c7-ef63-464f-b5f0-90220ee2b575",
+      "name": "Gossamer Phantasm",
+      "color": "U",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.05,
+          "residual": 337.453,
+          "contrast": 327.85
+        },
+        "right": {
+          "position": 23,
+          "residual": 42.887,
+          "contrast": 280.84
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 486.614,
+          "contrast": 315.35
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 204.054,
+          "contrast": 303.68
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 95.808,
+          "contrast": 313.71
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 105.239,
+          "contrast": 274.83
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 83.296,
+          "contrast": 302.08
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9499999999999984,
+        "after": 0.07499999999999929
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "b7f7afef8e502620c824a561aecd5ee95c8722a3fd084b9c7115a3966803f7b1"
+    },
+    {
+      "id": "efa3d335-f39f-4291-85e0-7430561e953b",
+      "name": "Merfolk Thaumaturgist",
+      "color": "U",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.05,
+          "residual": 279.178,
+          "contrast": 335.96
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 49.599,
+          "contrast": 294.47
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 484.399,
+          "contrast": 321.1
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 149.129,
+          "contrast": 308.13
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 97.505,
+          "contrast": 313.37
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 106.924,
+          "contrast": 274.43
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 85.066,
+          "contrast": 301.93
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9999999999999991,
+        "after": 0.125
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "650fea466d7e1f1e194687d5c670725d0a1a4004a987a59a21c7d1e16be3e1f2"
+    },
+    {
+      "id": "a985cfb0-6bae-4b1c-902e-d9d7a1aeec61",
+      "name": "Ovinize",
+      "color": "U",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.15,
+          "residual": 297.025,
+          "contrast": 334.12
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 44.94,
+          "contrast": 282.02
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 432.451,
+          "contrast": 317.07
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 140.318,
+          "contrast": 299.64
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 98.947,
+          "contrast": 310.32
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 107.646,
+          "contrast": 271.84
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 88.909,
+          "contrast": 297.18
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9500000000000002,
+        "after": 0.09999999999999964
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "4e05c0810be85be9bc48e212204a61e049ee2d2d5302e29d82a94bb67d6e6bd9"
+    },
+    {
+      "id": "586a1d9f-59ae-41a7-8de7-d6c4553ea79e",
+      "name": "Piracy Charm",
+      "color": "U",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.2,
+          "residual": 253.016,
+          "contrast": 332.47
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 31.109,
+          "contrast": 286.58
+        },
+        "top": {
+          "position": 22.9,
+          "residual": 380.557,
+          "contrast": 327.24
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 217.863,
+          "contrast": 321.7
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 102.542,
+          "contrast": 310.01
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 111.263,
+          "contrast": 271.43
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 92.522,
+          "contrast": 297.25
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9124999999999996,
+        "after": 0.11249999999999805
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "8ac7772f19124e34e5731bfa17ae3110171e0cff41404801ebb286c6e98a7151"
+    },
+    {
+      "id": "2bbdd96b-e740-43d0-a1b6-7b9b92cc7993",
+      "name": "Primal Plasma",
+      "color": "U",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.15,
+          "residual": 346.38,
+          "contrast": 336
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 29.79,
+          "contrast": 274.7
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 374.796,
+          "contrast": 314.26
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 186.717,
+          "contrast": 293.27
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 94.499,
+          "contrast": 313.95
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 103.957,
+          "contrast": 275.07
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 81.942,
+          "contrast": 302.27
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9624999999999995,
+        "after": 0.11249999999999893
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "bfe004d997cce08df9623dfb00b6ca2eadaf7514b4a16e2c3e94009290deb286"
+    },
+    {
+      "id": "4bcc3c1a-edb5-4534-aafa-5e078d503e64",
+      "name": "Riptide Pilferer",
+      "color": "U",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.15,
+          "residual": 340.622,
+          "contrast": 342.34
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 40.682,
+          "contrast": 285.49
+        },
+        "top": {
+          "position": 22.8,
+          "residual": 490.387,
+          "contrast": 324.02
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 175.618,
+          "contrast": 310.64
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 97.327,
+          "contrast": 313.3
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 106.746,
+          "contrast": 274.34
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 84.881,
+          "contrast": 301.91
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9500000000000002,
+        "after": 0.09999999999999964
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "35e21f30d4c36ef330df480ccc521e0cd7d22aabae1e3556ba9bb6e8d4970672"
+    },
+    {
+      "id": "0bbfd6aa-2fc9-4628-aa17-3ff0c30dc804",
+      "name": "Serendib Sorcerer",
+      "color": "U",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.3,
+          "residual": 306.911,
+          "contrast": 343.98
+        },
+        "right": {
+          "position": 23.1,
+          "residual": 43.271,
+          "contrast": 286.47
+        },
+        "top": {
+          "position": 22.7,
+          "residual": 485.942,
+          "contrast": 328.8
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 173.144,
+          "contrast": 311.75
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 97.538,
+          "contrast": 313.14
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 106.911,
+          "contrast": 274.22
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 85.248,
+          "contrast": 301.65
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.8999999999999986,
+        "after": 0.12499999999999911
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "72e109b3c33a46093295a28fd44aa6dce36993f1afa93a37d0a728bc2408bcf9"
+    },
+    {
+      "id": "f9a4d7ac-082b-4f66-9b7f-4d1d0fda78c7",
+      "name": "Serra Sphinx",
+      "color": "U",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.15,
+          "residual": 398.822,
+          "contrast": 347.85
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 29.983,
+          "contrast": 283.02
+        },
+        "top": {
+          "position": 22.7,
+          "residual": 461.951,
+          "contrast": 323.91
+        },
+        "bottom": {
+          "position": 22.6,
+          "residual": 205.902,
+          "contrast": 307.46
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 488.472,
+          "contrast": 397.59
+        },
+        "right": {
+          "position": 23.95,
+          "residual": 34.109,
+          "contrast": 286.2
+        },
+        "top": {
+          "position": 24,
+          "residual": 494.283,
+          "contrast": 356.64
+        },
+        "bottom": {
+          "position": 24.8,
+          "residual": 98.842,
+          "contrast": 313.05
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 347.441,
+          "contrast": 354.91
+        },
+        "right": {
+          "position": 24.2,
+          "residual": 37.309,
+          "contrast": 255.54
+        },
+        "top": {
+          "position": 25.55,
+          "residual": 370.256,
+          "contrast": 356.43
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 108.237,
+          "contrast": 274.08
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.1,
+          "residual": 436.389,
+          "contrast": 344.55
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 39.84,
+          "contrast": 255.76
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 535.421,
+          "contrast": 307.2
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 86.457,
+          "contrast": 301.73
+        }
+      },
+      "reliableEdges": ["left", "right", "top", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.9499999999999993,
+        "after": 0.09999999999999876
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "c4fb65cd1e8f58785952bb1afaf45f27fc06e807221672a8d8695317310f0b7f"
+    },
+    {
+      "id": "2958de76-a5ec-4e14-a025-4fe0e84c8b4b",
+      "name": "Bog Serpent",
+      "color": "B",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.5,
+          "residual": 4.293,
+          "contrast": 26.26
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 4.693,
+          "contrast": 19
+        },
+        "top": {
+          "position": 29.1,
+          "residual": 61.612,
+          "contrast": 124.66
+        },
+        "bottom": {
+          "position": 26.75,
+          "residual": 20.279,
+          "contrast": 64.73
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.25,
+          "residual": 72.493,
+          "contrast": 173.41
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 50.051,
+          "contrast": 148.05
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 63.455,
+          "contrast": 144.69
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "db0cd2922d69b1a381ed0787b9cf12f7d6ee2bcd333ada62ca9293a3cb5990e8"
+    },
+    {
+      "id": "26c68473-70ca-40ba-b5c6-71ec30f88a2c",
+      "name": "Damnation",
+      "color": "B",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.75,
+          "residual": 7.869,
+          "contrast": 26.89
+        },
+        "right": {
+          "position": 23.25,
+          "residual": 6.946,
+          "contrast": 21.11
+        },
+        "top": {
+          "position": 28.95,
+          "residual": 48.319,
+          "contrast": 139.49
+        },
+        "bottom": {
+          "position": 26.8,
+          "residual": 40.278,
+          "contrast": 88.77
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.2,
+          "residual": 76.009,
+          "contrast": 170.51
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.35,
+          "residual": 53.417,
+          "contrast": 145.36
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 66.939,
+          "contrast": 143.85
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "98e778c3f442592be27e7b564a15c9997617bf15369ab78b018eef79e1bfe9da"
+    },
+    {
+      "id": "9965d9f9-0a7b-48bc-a6ab-d8b73c4550a8",
+      "name": "Dunerider Outlaw",
+      "color": "B",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.7,
+          "residual": 5.877,
+          "contrast": 29.81
+        },
+        "right": {
+          "position": 23,
+          "residual": 3.906,
+          "contrast": 17.18
+        },
+        "top": {
+          "position": 29.05,
+          "residual": 37.722,
+          "contrast": 123.6
+        },
+        "bottom": {
+          "position": 26.9,
+          "residual": 41.315,
+          "contrast": 90.79
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.25,
+          "residual": 74.371,
+          "contrast": 173.54
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 51.908,
+          "contrast": 148.14
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 65.271,
+          "contrast": 144.81
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "4d314a7a76478355a7aa4a8bf230cb61ad5b4b5e6e3d7f49f316aba4ed2d570a"
+    },
+    {
+      "id": "b6e1ec29-508f-4e5e-b601-79e27743bcea",
+      "name": "Kor Dirge",
+      "color": "B",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 24.05,
+          "residual": 5.174,
+          "contrast": 29.32
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 4.894,
+          "contrast": 18.09
+        },
+        "top": {
+          "position": 29,
+          "residual": 31.858,
+          "contrast": 127.85
+        },
+        "bottom": {
+          "position": 26.6,
+          "residual": 30.649,
+          "contrast": 79.07
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.2,
+          "residual": 71.921,
+          "contrast": 168.8
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.35,
+          "residual": 49.376,
+          "contrast": 143.65
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 62.802,
+          "contrast": 142.09
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "3590e1faeca2f5dd4ef2e829541bff214825fb9784cf9601b0a4c5f234d5dac8"
+    },
+    {
+      "id": "faa6fe9a-27ba-480f-84ce-b8d3306f0339",
+      "name": "Melancholy",
+      "color": "B",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.8,
+          "residual": 4.276,
+          "contrast": 21.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 5.052,
+          "contrast": 17.39
+        },
+        "top": {
+          "position": 29,
+          "residual": 32.918,
+          "contrast": 124.46
+        },
+        "bottom": {
+          "position": 26.9,
+          "residual": 29.149,
+          "contrast": 81.82
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.25,
+          "residual": 75.242,
+          "contrast": 173.8
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.35,
+          "residual": 52.709,
+          "contrast": 146.58
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 66.152,
+          "contrast": 145.08
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "aac10fe16680f4809053940d46773a1dc943c980c4d75ec0c6d6fbb97cd1999e"
+    },
+    {
+      "id": "c996792c-0846-4b78-bce5-1c6ad29640f6",
+      "name": "Null Profusion",
+      "color": "B",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.75,
+          "residual": 2.848,
+          "contrast": 27.39
+        },
+        "right": {
+          "position": 23.2,
+          "residual": 3.043,
+          "contrast": 23.64
+        },
+        "top": {
+          "position": 28.9,
+          "residual": 44.854,
+          "contrast": 127.57
+        },
+        "bottom": {
+          "position": 26.6,
+          "residual": 26.545,
+          "contrast": 72.48
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.25,
+          "residual": 73.739,
+          "contrast": 172.55
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.35,
+          "residual": 51.06,
+          "contrast": 145.35
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 64.463,
+          "contrast": 143.84
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "cfc2dd1a09e71a419c23dd4db7e5ee523474038160dcad15e795d33aeacc1db0"
+    },
+    {
+      "id": "b2968e01-2d04-4591-98de-24688bb087df",
+      "name": "Rathi Trapper",
+      "color": "B",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.55,
+          "residual": 5.731,
+          "contrast": 33.1
+        },
+        "right": {
+          "position": 23.15,
+          "residual": 2.707,
+          "contrast": 20.48
+        },
+        "top": {
+          "position": 29.25,
+          "residual": 72.35,
+          "contrast": 123.78
+        },
+        "bottom": {
+          "position": 26.45,
+          "residual": 29.381,
+          "contrast": 75.73
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.2,
+          "residual": 71.468,
+          "contrast": 169.21
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.35,
+          "residual": 48.925,
+          "contrast": 144.13
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 62.291,
+          "contrast": 142.6
+        }
+      },
+      "reliableEdges": ["left"],
+      "edgeError": {
+        "ink-before-edge": 1,
+        "after": 0.40000000000000213
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "94aff493e4cb46f804a8595d85f25e56c6194834bf3e541a8497f6165232e9f5"
+    },
+    {
+      "id": "a26bf956-90eb-4221-a8e0-c8414d819072",
+      "name": "Shrouded Lore",
+      "color": "B",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.6,
+          "residual": 5.897,
+          "contrast": 27.9
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 2.557,
+          "contrast": 19.84
+        },
+        "top": {
+          "position": 29.1,
+          "residual": 34.69,
+          "contrast": 120.17
+        },
+        "bottom": {
+          "position": 27.05,
+          "residual": 39.311,
+          "contrast": 91.52
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.6,
+          "residual": 12.228,
+          "contrast": 67.46
+        },
+        "right": {
+          "position": 22.5,
+          "residual": 116.201,
+          "contrast": 4.15
+        },
+        "top": {
+          "position": 27.9,
+          "residual": 105.08,
+          "contrast": 284.56
+        },
+        "bottom": {
+          "position": 27.2,
+          "residual": 72.986,
+          "contrast": 169.39
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.55,
+          "residual": 7.375,
+          "contrast": 36.77
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 45.119,
+          "contrast": 98.75
+        },
+        "top": {
+          "position": 28,
+          "residual": 46.087,
+          "contrast": 256.15
+        },
+        "bottom": {
+          "position": 27.35,
+          "residual": 50.429,
+          "contrast": 144.22
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 9.519,
+          "contrast": 36.4
+        },
+        "right": {
+          "position": 30.95,
+          "residual": 50.638,
+          "contrast": 96.44
+        },
+        "top": {
+          "position": 28,
+          "residual": 58.404,
+          "contrast": 251.91
+        },
+        "bottom": {
+          "position": 27.4,
+          "residual": 63.955,
+          "contrast": 142.68
+        }
+      },
+      "reliableEdges": [],
+      "edgeError": {
+        "ink-before-edge": null,
+        "after": null
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "2d16d0569f4093082828cea6b33d92fabd1da477985db207e8b649db61fbe7ad"
+    },
+    {
+      "id": "0f2133c0-8561-4264-8802-1b2933abf186",
+      "name": "Blood Knight",
+      "color": "R",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.45,
+          "residual": 101.527,
+          "contrast": 166.34
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 11.935,
+          "contrast": 130.21
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 116.528,
+          "contrast": 113.61
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 40.102,
+          "contrast": 126.72
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.213,
+          "contrast": 139.34
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 19.951,
+          "contrast": 103.98
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 19.955,
+          "contrast": 113.98
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.500000000000001,
+        "after": 0.16666666666666666
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "3b49b42141d80a39ea63ef186c24f7c5d504fd4308f3e07cf7e1f57b9fd90f25"
+    },
+    {
+      "id": "82d43220-1e4e-4b61-9844-51c8bb5dde35",
+      "name": "Brute Force",
+      "color": "R",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.35,
+          "residual": 81.61,
+          "contrast": 145.79
+        },
+        "right": {
+          "position": 22.75,
+          "residual": 4.041,
+          "contrast": 116.25
+        },
+        "top": {
+          "position": 22.85,
+          "residual": 83.518,
+          "contrast": 102.59
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 37.35,
+          "contrast": 113.45
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 21.145,
+          "contrast": 137.87
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.767,
+          "contrast": 102.62
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 21.704,
+          "contrast": 111.99
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.6000000000000003,
+        "after": 0.20000000000000048
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "49b5e83ceb0591a6c0438e90aa0ec9e8523daa8c948c18d610c857dadd934edd"
+    },
+    {
+      "id": "dddda66c-2df4-452e-8eca-7e100213fd98",
+      "name": "Molten Firebird",
+      "color": "R",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.25,
+          "residual": 115.499,
+          "contrast": 171.76
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 18.273,
+          "contrast": 136.69
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 133.472,
+          "contrast": 123.26
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 41.372,
+          "contrast": 131.81
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 19.641,
+          "contrast": 139.45
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 19.389,
+          "contrast": 104.13
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 19.309,
+          "contrast": 113.97
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5666666666666675,
+        "after": 0.13333333333333405
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "47f897029c841823a2501c9491b5b8dc8a0937821958bc8781109f3891cddc45"
+    },
+    {
+      "id": "97787109-408e-42d3-acc5-300f5f5bf2ff",
+      "name": "Prodigal Pyromancer",
+      "color": "R",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.4,
+          "residual": 82.316,
+          "contrast": 146.94
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 11.756,
+          "contrast": 117.44
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 120.863,
+          "contrast": 102.81
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 37.994,
+          "contrast": 114.07
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.312,
+          "contrast": 139.33
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.056,
+          "contrast": 103.95
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 20.077,
+          "contrast": 114.01
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5500000000000007,
+        "after": 0.18333333333333238
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "f7456fcb1eb8c072cd37236fbca959d29d820ef413ee280cb95dd0d264f577e5"
+    },
+    {
+      "id": "0b778d44-60a9-4230-8090-73c38e7c9697",
+      "name": "Pyrohemia",
+      "color": "R",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.35,
+          "residual": 106.956,
+          "contrast": 168.13
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 17.403,
+          "contrast": 134.53
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 146.981,
+          "contrast": 120.53
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 45.653,
+          "contrast": 128.03
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.568,
+          "contrast": 138.12
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.208,
+          "contrast": 102.9
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 20.985,
+          "contrast": 112.14
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5500000000000007,
+        "after": 0.15000000000000094
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "e5b40a06d676aebf168f1576d7bd96db7e47770de1fe2963a6e5facb224ccd0c"
+    },
+    {
+      "id": "17d4fd92-33d1-4f14-a4f4-7c7feaa18f93",
+      "name": "Reckless Wurm",
+      "color": "R",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.3,
+          "residual": 107.298,
+          "contrast": 166.59
+        },
+        "right": {
+          "position": 23,
+          "residual": 12.138,
+          "contrast": 130.85
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 130.056,
+          "contrast": 121.66
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 31.37,
+          "contrast": 127.12
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.401,
+          "contrast": 139.27
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.144,
+          "contrast": 103.88
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 20.139,
+          "contrast": 114
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5333333333333339,
+        "after": 0.10000000000000024
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "87deba89bb8beb3100ddd0342144b0d33be65530bee58419ae84db7800d15ea1"
+    },
+    {
+      "id": "7958a1e5-b671-4ecb-95de-240ffaf5021e",
+      "name": "Shivan Wumpus",
+      "color": "R",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.3,
+          "residual": 91.51,
+          "contrast": 162.02
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 8.832,
+          "contrast": 132.6
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 144.438,
+          "contrast": 121.11
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 44.643,
+          "contrast": 130.5
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.439,
+          "contrast": 139.2
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.173,
+          "contrast": 103.82
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 20.187,
+          "contrast": 113.89
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5333333333333339,
+        "after": 0.13333333333333405
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "7c6f5bc136684ef1fa125d3d3f99f6f7020bfe2c1869e6061021b3e78cf4e584"
+    },
+    {
+      "id": "5d7f701c-dcdc-4067-8d00-b4b7aadee9ba",
+      "name": "Simian Spirit Guide",
+      "color": "R",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.35,
+          "residual": 101.136,
+          "contrast": 145.42
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 4.177,
+          "contrast": 114.71
+        },
+        "top": {
+          "position": 22.6,
+          "residual": 109.499,
+          "contrast": 103.8
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 30.383,
+          "contrast": 104.31
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.685,
+          "contrast": 139.16
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.42,
+          "contrast": 103.76
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 20.405,
+          "contrast": 113.93
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5666666666666664,
+        "after": 0.16666666666666666
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "c2ff5128c1d85bbd7c764e2754118729112306021278d61fab2987692083fa87"
+    },
+    {
+      "id": "47307d3f-14e8-42bd-acf4-1383e5790e6f",
+      "name": "Skirk Shaman",
+      "color": "R",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.35,
+          "residual": 110.506,
+          "contrast": 158.93
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 9.403,
+          "contrast": 127.96
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 115.544,
+          "contrast": 118.78
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 27.386,
+          "contrast": 116.74
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.75,
+          "residual": 132.57,
+          "contrast": 199.52
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 93.239,
+          "contrast": 117.85
+        },
+        "top": {
+          "position": 23.95,
+          "residual": 712.345,
+          "contrast": 183.17
+        },
+        "bottom": {
+          "position": 24.7,
+          "residual": 20.304,
+          "contrast": 139.3
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.4,
+          "residual": 80.787,
+          "contrast": 159.98
+        },
+        "right": {
+          "position": 24.05,
+          "residual": 86.911,
+          "contrast": 91.97
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 485.011,
+          "contrast": 297.33
+        },
+        "bottom": {
+          "position": 25.1,
+          "residual": 20.049,
+          "contrast": 103.91
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.15,
+          "residual": 100.119,
+          "contrast": 155.19
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 102.788,
+          "contrast": 93.51
+        },
+        "top": {
+          "position": 22.65,
+          "residual": 729.687,
+          "contrast": 128.52
+        },
+        "bottom": {
+          "position": 22.55,
+          "residual": 20.017,
+          "contrast": 113.99
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5333333333333339,
+        "after": 0.13333333333333405
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "385213136eb36245352c42489ff3d8f804d84544587b20f698eaa266aa16861f"
+    },
+    {
+      "id": "da2a65d6-0887-4fe8-a6e6-909208fddd90",
+      "name": "Essence Warden",
+      "color": "G",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.65,
+          "residual": 110.686,
+          "contrast": 113.33
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 7.105,
+          "contrast": 71.58
+        },
+        "top": {
+          "position": 22.55,
+          "residual": 233.795,
+          "contrast": 148.46
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 40.978,
+          "contrast": 137.47
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 24.707,
+          "contrast": 156.74
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 25.578,
+          "contrast": 119.02
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 21.846,
+          "contrast": 132.55
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.4500000000000017,
+        "after": 0.13333333333333167
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "bb6f8a178b17c6824cefe7a0a3f0a42d8772570722a48479a1fe96236dff1c3c"
+    },
+    {
+      "id": "6a9985e8-535d-4815-8a58-a98c3edb68d4",
+      "name": "Fa'adiyah Seer",
+      "color": "G",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.4,
+          "residual": 78.736,
+          "contrast": 98.69
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 5.672,
+          "contrast": 67.23
+        },
+        "top": {
+          "position": 22.8,
+          "residual": 294.515,
+          "contrast": 146.8
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 36.204,
+          "contrast": 135.37
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 25.149,
+          "contrast": 156.58
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 26.017,
+          "contrast": 118.84
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 22.336,
+          "contrast": 132.48
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5166666666666682,
+        "after": 0.06666666666666525
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "b7ad11a2ef3c236946e388c5ba8a349d1eeeb7f77ad9d54d5f840fa2f4f50f2e"
+    },
+    {
+      "id": "ea9e0de1-2299-4ff9-b49a-88535a96bda0",
+      "name": "Gaea's Anthem",
+      "color": "G",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.5,
+          "residual": 94.785,
+          "contrast": 116.82
+        },
+        "right": {
+          "position": 23.05,
+          "residual": 5.627,
+          "contrast": 75.87
+        },
+        "top": {
+          "position": 22.95,
+          "residual": 292.091,
+          "contrast": 157.35
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 54.027,
+          "contrast": 144.91
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 25.001,
+          "contrast": 155.24
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 25.755,
+          "contrast": 117.78
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 22.815,
+          "contrast": 130.3
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.4500000000000004,
+        "after": 0.13333333333333286
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "8ff559a0adcf75e5da2b95f6d9183af884c596f1f27a058c6dd3bd5df7633f29"
+    },
+    {
+      "id": "f467cdea-6166-4289-918b-18f5038c94ed",
+      "name": "Groundbreaker",
+      "color": "G",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.3,
+          "residual": 82.259,
+          "contrast": 111.06
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 4.636,
+          "contrast": 71.33
+        },
+        "top": {
+          "position": 22.8,
+          "residual": 386.548,
+          "contrast": 162.74
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 54.129,
+          "contrast": 151.68
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 24.872,
+          "contrast": 156.72
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 25.746,
+          "contrast": 118.99
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 22.021,
+          "contrast": 132.58
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5333333333333339,
+        "after": 0.049999999999999524
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "9c08ef4d57dd7a3daeb803def29efe09b0f734e1aaee8c276d460d5bb8ce7f35"
+    },
+    {
+      "id": "4b90dbd0-4672-4c0b-92eb-262ddd11cd32",
+      "name": "Harmonize",
+      "color": "G",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.55,
+          "residual": 115.19,
+          "contrast": 129.02
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 7.401,
+          "contrast": 74.17
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 366.54,
+          "contrast": 167.03
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 52.032,
+          "contrast": 157.74
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 25.446,
+          "contrast": 155.23
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 26.206,
+          "contrast": 117.74
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 23.228,
+          "contrast": 130.4
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.5,
+        "after": 0.08333333333333333
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "155a0082cc745d55cc83f7e1e0d14728fa633b4ac1fea124df1f3a15e8d16742"
+    },
+    {
+      "id": "d6f58258-a1bd-4364-954e-c39938f7dab2",
+      "name": "Healing Leaves",
+      "color": "G",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.55,
+          "residual": 92.302,
+          "contrast": 112.58
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 8.333,
+          "contrast": 67.81
+        },
+        "top": {
+          "position": 22.8,
+          "residual": 297.187,
+          "contrast": 150.06
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 55.793,
+          "contrast": 145.18
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 25.395,
+          "contrast": 155.2
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 26.15,
+          "contrast": 117.73
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 23.187,
+          "contrast": 130.32
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.4833333333333343,
+        "after": 0.09999999999999905
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "1d8599f9e1662bd054e3e8de5e13d06f8246c1faabac658dee4976c65d46485c"
+    },
+    {
+      "id": "2b2e6027-598d-4ba0-93ae-f76d031de8af",
+      "name": "Hedge Troll",
+      "color": "G",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.5,
+          "residual": 124.481,
+          "contrast": 120.94
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 5.84,
+          "contrast": 69.35
+        },
+        "top": {
+          "position": 22.7,
+          "residual": 310.993,
+          "contrast": 157.99
+        },
+        "bottom": {
+          "position": 22.7,
+          "residual": 46.492,
+          "contrast": 149.53
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 24.441,
+          "contrast": 156.74
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 25.303,
+          "contrast": 119.06
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 21.612,
+          "contrast": 132.44
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.4833333333333343,
+        "after": 0.09999999999999905
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "b383507dea61a1c57c91e250d0e782e642f8141da8cfda79afa8477506f867da"
+    },
+    {
+      "id": "4197d992-f868-44dd-85f7-598b22e208f3",
+      "name": "Keen Sense",
+      "color": "G",
+      "cohort": "calibration",
+      "scan": {
+        "left": {
+          "position": 23.65,
+          "residual": 113.703,
+          "contrast": 126.27
+        },
+        "right": {
+          "position": 22.95,
+          "residual": 6.411,
+          "contrast": 70.89
+        },
+        "top": {
+          "position": 22.7,
+          "residual": 389.461,
+          "contrast": 164.48
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 68.759,
+          "contrast": 150.81
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 25.664,
+          "contrast": 155.09
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 26.412,
+          "contrast": 117.61
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 23.508,
+          "contrast": 130.23
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.4333333333333347,
+        "after": 0.14999999999999858
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "a4288261aa63bc931bb38abb6c2ceb99e29da33cf88e61d6cd71cb76a00e88b3"
+    },
+    {
+      "id": "b2ba91ee-1f8e-47db-bb2d-bbb62039db17",
+      "name": "Seal of Primordium",
+      "color": "G",
+      "cohort": "validation",
+      "scan": {
+        "left": {
+          "position": 23.45,
+          "residual": 88.116,
+          "contrast": 111
+        },
+        "right": {
+          "position": 22.9,
+          "residual": 8.705,
+          "contrast": 63.98
+        },
+        "top": {
+          "position": 22.75,
+          "residual": 272.401,
+          "contrast": 154.97
+        },
+        "bottom": {
+          "position": 22.75,
+          "residual": 44.749,
+          "contrast": 142.24
+        }
+      },
+      "before": {
+        "left": {
+          "position": 23.85,
+          "residual": 137.866,
+          "contrast": 184.1
+        },
+        "right": {
+          "position": 23.65,
+          "residual": 80.55,
+          "contrast": 89.97
+        },
+        "top": {
+          "position": 24.2,
+          "residual": 785.751,
+          "contrast": 227.7
+        },
+        "bottom": {
+          "position": 24.75,
+          "residual": 25.27,
+          "contrast": 155.22
+        }
+      },
+      "ink-before-edge": {
+        "left": {
+          "position": 24.6,
+          "residual": 86.533,
+          "contrast": 145.73
+        },
+        "right": {
+          "position": 23.8,
+          "residual": 77.254,
+          "contrast": 54.99
+        },
+        "top": {
+          "position": 27.4,
+          "residual": 427.514,
+          "contrast": 334.93
+        },
+        "bottom": {
+          "position": 25.15,
+          "residual": 26.024,
+          "contrast": 117.76
+        }
+      },
+      "after": {
+        "left": {
+          "position": 23.3,
+          "residual": 112.978,
+          "contrast": 134.49
+        },
+        "right": {
+          "position": 22.85,
+          "residual": 97.53,
+          "contrast": 58.8
+        },
+        "top": {
+          "position": 27.7,
+          "residual": 816.333,
+          "contrast": 321.36
+        },
+        "bottom": {
+          "position": 22.65,
+          "residual": 23.045,
+          "contrast": 130.31
+        }
+      },
+      "reliableEdges": ["left", "right", "bottom"],
+      "edgeError": {
+        "ink-before-edge": 1.4833333333333343,
+        "after": 0.09999999999999905
+      },
+      "interiorChangedPixels": 0,
+      "referenceHash": "2e97b665ad102bf7f4cb54b1c07e63790a6c3cc3eb24f75f6a95079fcd56fb84"
+    }
+  ],
+  "sourceGuards": {
+    "planar-frame-geometry.ts": "e4d0962d02c3b48d05b18b583f2047e80da5346c12b809e05875c713687cca73",
+    "frame-plate-border.ts": "b01490a456487b38d6524982c4b00dead88dffc1851dfff8602cd28fe88540c1"
+  },
+  "sources": {
+    "W": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/colorshifted/w.png",
+      "sha256": "8e5e457643fa84fa7674e5d85e64e13d9d64af0f47f60220ce6fbd89132447c0"
+    },
+    "U": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/colorshifted/u.png",
+      "sha256": "2219baa585c4cc6a7d99d1f34ba77f007cfc11668a93ad6399e35f63842a487e"
+    },
+    "B": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/colorshifted/b.png",
+      "sha256": "6baa4d5b93c9784698093d4341d91ac0ec50b43679e272824efd08a10955d209"
+    },
+    "R": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/colorshifted/r.png",
+      "sha256": "dd1831a221ed66b8ec20129a3f38e4ca7bf2f20b35202f3dad935413dc22cf55"
+    },
+    "G": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/8th/colorshifted/g.png",
+      "sha256": "a84aa807f80a5eed626edfb9acd62712186205872c6f0ee5fded015a248110c9"
+    }
+  },
+  "selection": "The same outer-band mapping applies to all five pinned PLC colorshifted sources. Rounded quarter-pixel controls were fitted on the 15 existing calibration scans; no per-card render corrections or pose changes. Fit uses high-contrast outer edges; low-contrast black and contaminated green-top measurements are omitted from the numeric summary.",
+  "caveats": [
+    "Black source has prominent light-gray inner bevels absent or much weaker in the printing. Track as a source-asset mismatch; keep independent from outer-edge geometry and ink-floor curves.",
+    "Vampiric Link remains outside this cohort because of its existing rejected scan normalization."
+  ]
+}

@@ -4,6 +4,7 @@ import type { PaperMask } from './frame-paper-mask.js';
 import { framePlate } from './frame-plates.js';
 import { usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { PLANAR_COLORS } from './planar-color-values.js';
+import { planarFrameBlackPoint, planarBevelBlend } from './planar-blackpoint.js';
 
 const polygon = (points: readonly (readonly [number, number])[]): PaperMask => ({
   kind: 'polygon',
@@ -48,12 +49,28 @@ export function planarFrameMaterials(face: RenderedCardInput): Readonly<Record<s
     return {};
   const plate = framePlate(face);
   if (!plate || !usesPlanarFrameGeometry(face, plate.frame)) return {};
+  const blackPoint = planarFrameBlackPoint(face, plate.frame);
   const entry = Object.entries(PLANAR_COLORS).find(([, p]) => p.source === plate.frame);
-  if (!entry) return {};
+  // Colorshifted green retained its source pigment after the earlier HSB fit.
+  // Its independently measured ink curve does not require adopting a pigment fit.
+  if (!entry)
+    return blackPoint
+      ? {
+          [plate.frame]: {
+            hueDegrees: 0,
+            saturationScale: 1,
+            brightnessScale: 1,
+            blackPoint,
+            blend: planarBevelBlend(face, plate.frame),
+          },
+        }
+      : {};
   const [key, profile] = entry;
   const bottom = key.endsWith('/W') || key.endsWith('/M') ? 615 : 610;
   const materials: Record<string, FrameHsb> = {
     [plate.frame]: {
+      blackPoint,
+      blend: planarBevelBlend(face, plate.frame),
       frame: profile.frame,
       paper: profile.paper,
       mask: {

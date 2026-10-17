@@ -111,6 +111,6 @@ for (const [crate, name] of [
   if (!source.includes(defaultUrl)) throw new Error(`Unexpected wasm-bindgen URL in ${file}`);
   await writeFile(
     file,
-    `import wasmUrl from './${name}_bg.wasm?url';\n` + source.replace(defaultUrl, 'wasmUrl'),
+    source.replace(defaultUrl, `(await import('./${name}_bg.wasm?url')).default`),
   );
 }

@@ -34,7 +34,11 @@ vec3 foilSheenBlend(vec3 base, vec3 shine) {
 }
 vec2 foilPointer(vec3 normal) {
   vec2 delta = vec2(normal.x * 2.63, normal.y * 3.33) + vec2(pointer.x - .5, .5 - pointer.y);
-  vec2 rest = vec2(-.18, -.20) * exp(-dot(delta, delta) * 180.);
+  // Keep the flat-pose studio offset, but taper it broadly. A narrow Gaussian
+  // folds the light path near zero: highlights reverse as the card keeps turning.
+  // Here the offset Jacobian norm is <= length(vec2(.18,.20))*sqrt(4/e) < .33,
+  // so the unclamped mapping stays monotone with gain bounded by .67..1.33.
+  vec2 rest = vec2(-.18, -.20) * exp(-dot(delta, delta) * 2.);
   return clamp(vec2(.5) + delta + rest, 0., 1.);
 }
 vec2 foilSweepOffset(vec2 ptr) {

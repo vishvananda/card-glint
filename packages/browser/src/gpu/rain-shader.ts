@@ -1,5 +1,6 @@
 /** Small cap lenses and draining trails over lightly condensed glass. */
 export const RAIN_GLSL = `
+flat in float rainFogDensity;
 void rainCap(vec2 delta,float radius,float stretch,float strength,inout vec4 wet){
  vec2 q=delta/vec2(radius,radius*stretch);
  // Gravity-heavy teardrop profile: slightly narrower crown, fuller lower meniscus.
@@ -92,9 +93,9 @@ vec3 rainGlass(vec2 uv,vec3 normal){
  float mist=surfaceNoise(uv*vec2(3.0,4.2)+surfaceInfo.z*11.);
  float fineMist=surfaceNoise(uv*vec2(9.5,13.5)-surfaceInfo.z*7.);
  float streak=surfaceNoise(uv*vec2(16.,2.2)+surfaceInfo.z*23.);
- float fog=clamp((.145+.058*mist+.032*fineMist+.025*streak)*dry,0.,.32);
+ float fog=clamp((.145+.058*mist+.032*fineMist+.025*streak)*dry,0.,.32)*rainFogDensity;
  vec3 mistColor=vec3(.73,.79,.83)+vec3(.11,.12,.13)*(spot*.65+paneBand*.35);
- ink=mix(ink,vec3(inkLuma(ink))*.82+.18,.16*dry);
+ ink=mix(ink,vec3(inkLuma(ink))*.82+.18,.16*dry*rainFogDensity);
  ink=mix(ink,mistColor,fog);
 
  // 3D droplet & rivulet optics: translucent water meniscus, lower-belly caustic focus, and sky glints.

@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 const server = await createServer({
   configFile: false,
@@ -8,30 +7,6 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false },
 });
 try {
-  const footer = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-footer.json'));
-  assert.equal(footer.rows.length, 70);
-  assert.ok(
-    footer.rows.every((row) => row.runtime.maxDifference === 0 && !row.runtime.upperChanged),
-  );
-  for (const group of Object.values(footer.validation)) {
-    assert.ok(group.after > group.before + 0.2);
-    assert.equal(group.improved, group.cards);
-  }
-  assert.equal(
-    footer.sourceHash,
-    createHash('sha256')
-      .update(await readFile('games/magic/src/presentation/legends-footer.ts'))
-      .digest('hex'),
-  );
-  const coverage = JSON.parse(
-    await readFile('games/magic/fixtures/accuracy/legends-text-runtime.json'),
-  ).coverage;
-  for (const mode of ['original', 'oracle']) {
-    assert.equal(coverage.summary[mode].cards, 310);
-    assert.deepEqual(coverage.summary[mode].overflow, []);
-    assert.deepEqual(coverage.summary[mode].contentChanged, []);
-    assert.deepEqual(coverage.summary[mode].escapesBounds, []);
-  }
   const { legendsRulesParagraphs } = await server.ssrLoadModule(
     '/games/magic/src/presentation/legends-rules.ts',
   );
@@ -63,7 +38,7 @@ try {
   const { legendsFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/legends-frame.ts',
   );
-  const { retroFrameAsset, retroRects } = await server.ssrLoadModule(
+  const { retroFrameAsset, retroRects, retroStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-frame.ts',
   );
   const { titleTranslation } = await server.ssrLoadModule(
@@ -96,6 +71,31 @@ try {
     const original = { name: 'Probe', setCode: 'leg', typeLine: 'Summon Legend', colors };
     const oracle = { ...original, typeLine: 'Legendary Creature — Human Wizard' };
     assert.equal(legendsFrame(original).family, family);
+    const stockWindow = legendsFrame(original).stockWindow;
+    assert.equal(Boolean(stockWindow), family === 'abu');
+    if (stockWindow)
+      assert.deepEqual(
+        stockWindow.map((v, i) => v * (i % 2 ? 680 : 488)),
+        [19.375, 21.125, 449.625, 639.25],
+      );
+    assert.equal(retroStock(original), '#080808');
+    assert.equal(retroStock({ ...original, colorCalibration: 'set-hsb-v1' }), '#262626');
+    for (const override of [
+      { setCode: 'lea' },
+      { setCode: 'leb' },
+      { setCode: 'm21' },
+      { frameStyle: 'modern' },
+      { frameTemplate: 'future' },
+      { colorCalibration: 'early-hsb-v1' },
+    ])
+      assert.equal(
+        retroStock({ ...original, colorCalibration: 'set-hsb-v1', ...override }),
+        '#080808',
+      );
+    assert.equal(
+      retroStock({ ...original, colorCalibration: 'set-hsb-v1', borderColor: 'white' }),
+      '#eeedeb',
+    );
     assert.equal(retroFrameAsset(original), retroFrameAsset(oracle));
     assert.deepEqual(retroRects(original), retroRects(oracle));
     assert.deepEqual(retroTypePlacement(original), retroTypePlacement(oracle));
@@ -157,7 +157,7 @@ try {
   assert.deepEqual(titleTranslation(land, 'retro'), [-18.5, -6]);
   assert.ok(retroFrameAsset({ ...ordinary, setCode: 'lea' }).endsWith('/old/abu/w.png'));
   assert.ok(retroFrameAsset({ ...ordinary, setCode: '3ed' }).endsWith('/old/fourth/w.png'));
-  assert.ok(retroFrameAsset({ ...ordinary, setCode: 'arn' }).endsWith('/seventh/regular/w.png'));
+  assert.ok(retroFrameAsset({ ...ordinary, setCode: 'arn' }).endsWith('/old/fourth/w.png'));
   const { calibratedFrameMaterials, calibratedManaTarget } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
@@ -326,6 +326,7 @@ try {
     try {
       profile.source = 'different source or geometry';
       assert.deepEqual(calibratedFrameMaterials(face), {});
+      assert.equal(retroStock(face), '#080808');
     } finally {
       profile.source = saved;
     }

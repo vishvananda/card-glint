@@ -1,4 +1,6 @@
 import { paintLiveText } from './live-changes.js';
+import { calibratedPrintingStock } from './calibration-profiles.js';
+import { paintPrintingElement } from './printing-elements.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 import { paintModernFooter } from './modern-footer.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
@@ -19,6 +21,8 @@ import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { hasCoreSetShield, paintCoreSetSymbol } from './core-set-symbol.js';
 import { shapedSetCode, paintShapedSetSymbol } from './shaped-set-symbol.js';
 import type { CanvasImages } from './canvas-assets.js';
+import { planarCalibratedStock } from './planar-blackpoint.js';
+import { paintPlateStockBorder } from './frame-plate-border.js';
 import {
   FACE_WIDTH as W,
   FACE_HEIGHT as H,
@@ -55,9 +59,13 @@ export function paintFramePlateFace(
     return image;
   };
   const { rects } = plate,
-    eighth = face.frameAssetFamily === 'eighth';
+    eighth = face.frameAssetFamily === 'eighth',
+    stock =
+      planarCalibratedStock(face, plate.frame) ??
+      calibratedPrintingStock(face) ??
+      cardStock(face.setCode, face.borderColor).border;
   c.save();
-  c.fillStyle = cardStock(face.setCode, face.borderColor).border;
+  c.fillStyle = stock;
   c.fillRect(0, 0, W, H);
   if (underArt) c.drawImage(underArt, 0, 0, W, H);
   paintIllustration(c, face, images, px(rects.art), layer);
@@ -66,7 +74,8 @@ export function paintFramePlateFace(
     return;
   }
   if (usesEighthBasicGeometry(face, plate.frame)) paintEighthBasicFrame(c, required(plate.frame));
-  else if (usesPlanarFrameGeometry(face, plate.frame)) paintPlanarFrame(c, required(plate.frame));
+  else if (usesPlanarFrameGeometry(face, plate.frame))
+    paintPlanarFrame(c, required(plate.frame), face.frameTreatment === 'colorshifted');
   else c.drawImage(required(plate.frame), 0, 0, W, H);
   paintPlanarPinlines(c, plate, images);
   if (plate.rightFrame) {
@@ -107,19 +116,17 @@ export function paintFramePlateFace(
     mix.width = mix.height = 0;
     mask.width = mask.height = 0;
   }
-  const stock = cardStock(face.setCode, face.borderColor);
-  if (stock.border !== '#090806') {
-    const mask = document.createElement('canvas');
-    mask.width = 732;
-    mask.height = 1020;
-    const m = mask.getContext('2d')!;
-    m.drawImage(required(plate.border), 0, 0, mask.width, mask.height);
-    m.globalCompositeOperation = 'source-in';
-    m.fillStyle = stock.border;
-    m.fillRect(0, 0, mask.width, mask.height);
-    c.drawImage(mask, 0, 0, W, H);
-    mask.width = mask.height = 0;
-  }
+  if (stock !== '#090806')
+    paintPlateStockBorder(
+      c,
+      required(plate.border),
+      stock,
+      usesPlanarFrameGeometry(face, plate.frame)
+        ? face.frameTreatment === 'colorshifted'
+          ? 'colorshifted'
+          : 'planar'
+        : undefined,
+    );
   paintMountedSecurityStamp(c, face, images);
   c.fillStyle = '#17140f';
   c.textAlign = 'left';
@@ -144,7 +151,7 @@ export function paintFramePlateFace(
   if (eighth) c.translate(...titleTranslation(face, 'eighth'));
   const titleFit = planarLettering(face, plate.frame, 'title');
   c.translate(titleFit.dx, titleFit.dy);
-  paintColorshiftedHeading(c, face);
+  paintColorshiftedHeading(c, face, plate.frame);
   paintFittedText(
     c,
     face.name,
@@ -155,22 +162,25 @@ export function paintFramePlateFace(
     true,
     1,
     family,
+    face.frameTreatment === 'colorshifted' ? 0.5 : 0,
   );
   c.restore();
-  paintAdjustedSymbols(c, manaBounds, costAdjustment, () => {
-    cost.forEach((symbol, i) =>
-      paintMana(
-        c,
-        symbol,
-        costRight - costWidth + i * (size + gap),
-        plate.mana.center * H - size / 2,
-        size,
-        images,
-        true,
-        costAdjustment,
-      ),
-    );
-  });
+  paintPrintingElement(c, face, 'manaCost', () =>
+    paintAdjustedSymbols(c, manaBounds, costAdjustment, () => {
+      cost.forEach((symbol, i) =>
+        paintMana(
+          c,
+          symbol,
+          costRight - costWidth + i * (size + gap),
+          plate.mana.center * H - size / 2,
+          size,
+          images,
+          true,
+          costAdjustment,
+        ),
+      );
+    }),
+  );
   const url = faceSetSymbol(face),
     icon = images.get(url ?? ''),
     crop = setSymbolCrop(face);
@@ -195,7 +205,7 @@ export function paintFramePlateFace(
   c.save();
   const typeFit = planarLettering(face, plate.frame, 'type');
   c.translate(typeFit.dx, typeFit.dy);
-  paintColorshiftedHeading(c, face);
+  paintColorshiftedHeading(c, face, plate.frame);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
     c,
@@ -208,19 +218,23 @@ export function paintFramePlateFace(
     1,
     family,
     face.liveChanges,
+    'type',
+    face.frameTreatment === 'colorshifted' ? 0.5 : 0,
   );
   c.restore();
-  paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
-    if (icon) {
-      const shaped = shapedSetCode(face);
-      if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...originalBounds);
-      else if (hasCoreSetShield(face))
-        paintCoreSetSymbol(c, icon, face.rarity, ...originalBounds, crop, 1.5);
-      else if (shaped)
-        paintShapedSetSymbol(c, icon, shaped, face.rarity, ...originalBounds, crop, false);
-      else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
-    }
-  });
+  paintPrintingElement(c, face, 'setSymbol', () =>
+    paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {
+      if (icon) {
+        const shaped = shapedSetCode(face);
+        if (isStyledSetSymbol(url) || face.setSymbol) c.drawImage(icon, ...originalBounds);
+        else if (hasCoreSetShield(face))
+          paintCoreSetSymbol(c, icon, face.rarity, ...originalBounds, crop, 1.5);
+        else if (shaped)
+          paintShapedSetSymbol(c, icon, shaped, face.rarity, ...originalBounds, crop, false);
+        else paintSetSymbol(c, icon, face.setCode, face.rarity, ...originalBounds, crop);
+      }
+    }),
+  );
   if (!paintBasicLandSymbol(c, face, images))
     paintRulesLayout(c, ordinaryTextLayout(c, face), images);
   if (face.power != null && face.toughness != null) {
@@ -271,10 +285,14 @@ export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
 
 /** Source pack8thColorshifted.js: white ink with a down-left black shadow.
  * Called inside text-only saved state so symbols and rules retain their ink. */
-function paintColorshiftedHeading(c: CanvasRenderingContext2D, face: RenderedCardInput): void {
+function paintColorshiftedHeading(
+  c: CanvasRenderingContext2D,
+  face: RenderedCardInput,
+  source: string,
+): void {
   if (face.frameTreatment !== 'colorshifted') return;
   c.fillStyle = '#fff';
-  c.shadowColor = '#000';
+  c.shadowColor = planarCalibratedStock(face, source) ?? '#000';
   c.shadowOffsetX = -0.0021 * W;
   c.shadowOffsetY = 0.0015 * H;
   c.shadowBlur = 0;

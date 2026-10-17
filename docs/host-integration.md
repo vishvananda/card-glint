@@ -37,6 +37,19 @@ their URLs to `createRenderer` or `createPixelKernels`. Declarations are include
 for every JavaScript entry point. The package contains no private app code and
 requires no registry credentials.
 
+The integration branch includes upstream 0.4.6 typography, printing presets,
+provider adapters, artwork placement and surface controls. Native text painters
+retain live-ink suppression alongside upstream inset lettering. `paintFittedText`
+accepts upstream's numeric inset in its existing position; host live changes keep
+their positions and can combine with a trailing inset.
+
+Standalone preset pages and browser release archives use adjacent WASM URLs.
+The npm library retains bundler asset imports. Node-safe Magic helpers load the
+image-placement utility without importing the browser renderer or its WASM.
+Default WASM asset imports are lazy, so importing generic helpers in Node does
+not load browser-only asset URLs. Supply WASM bytes explicitly when initializing
+pixel kernels in Node.
+
 ## Face composition
 
 `composeCardTexture(input, tier, signal, hooks)` accepts an image-lease loader,

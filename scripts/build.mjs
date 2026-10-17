@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { cp, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { copyBrowserLibrary } from './browser-assets.mjs';
 process.chdir(fileURLToPath(new URL('../', import.meta.url)));
 const alias = { '@card-glint/browser': path.resolve('packages/browser/src/index.ts') };
 await build({
@@ -86,4 +87,8 @@ if (!process.argv.includes('--package-only')) {
       );
   // Keep existing links from prior releases working.
   await cp('docs/images/showcase-foils.mp4', 'dist/lab/media/showcase.mp4');
+  await copyBrowserLibrary('dist/lab/presets');
+  await cp('games/showcase/art', 'dist/lab/presets/art', { recursive: true });
+  for (const file of ['printing-presets.html', 'printing-presets-example.js'])
+    await cp('examples/standalone/' + file, 'dist/lab/presets/' + file);
 }

@@ -27,10 +27,10 @@ export function paintLiveType(
   x: number,
   y: number,
   width?: number,
+  paint = () => (width == null ? c.fillText(text, x, y) : c.fillText(text, x, y, width)),
 ) {
   const type = changes?.typeLine;
   if (!type) return;
-  const paint = () => (width == null ? c.fillText(text, x, y) : c.fillText(text, x, y, width));
   const { left, scale, measure } = lineGeometry(c, text, x, width);
   const added = new Set(type.added.map((word) => word.toLocaleLowerCase('en-US')));
   const spans = type.added.length
@@ -115,13 +115,12 @@ export function paintLiveText(
   width: number | undefined,
   changes?: LiveChanges,
   role: 'type' | 'stats' = 'stats',
+  paint = () => (width == null ? c.fillText(text, x, y) : c.fillText(text, x, y, width)),
 ) {
   if (!changes || (role === 'type' ? !changes.typeLine : !changes.power && !changes.toughness)) {
-    if (width == null) c.fillText(text, x, y);
-    else c.fillText(text, x, y, width);
+    paint();
     return;
   }
-  const paint = () => (width == null ? c.fillText(text, x, y) : c.fillText(text, x, y, width));
   if (role === 'stats') paintLiveStats(c, changes, text, x, width, paint);
-  else paintLiveType(c, changes, text, x, y, width);
+  else paintLiveType(c, changes, text, x, y, width, paint);
 }

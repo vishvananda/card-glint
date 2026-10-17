@@ -1,0 +1,99 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { createServer } from 'vite';
+
+const server = await createServer({
+  configFile: false,
+  optimizeDeps: { noDiscovery: true },
+  server: { middlewareMode: true, hmr: false },
+});
+try {
+  const receipt = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/early-expansion-calibration.json'),
+  );
+  const integration = receipt.geometryIntegration;
+  const { earlyExpansionFrame } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/early-expansion-frame.ts',
+  );
+  const { retroFrameAsset, retroFrameRect, retroRects } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/retro-frame.ts',
+  );
+  const { calibratedDualFrameProfile } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/calibration-profiles.ts',
+  );
+  for (const setCode of ['arn', 'atq', 'drk']) {
+    for (const material of ['W', 'U', 'B', 'G', 'A']) {
+      const face = {
+        name: 'Probe',
+        setCode,
+        colors: material === 'A' ? [] : [material],
+        typeLine: material === 'A' ? 'Mono Artifact' : 'Summon Goblins',
+        artifact: material === 'A',
+      };
+      const frame = earlyExpansionFrame(face);
+      assert.ok(frame);
+      const oracle = {
+        ...face,
+        typeLine: material === 'A' ? 'Artifact' : 'Creature — Goblin',
+        wordingMode: 'oracle',
+      };
+      assert.deepEqual(earlyExpansionFrame(oracle), frame);
+      assert.equal(retroFrameAsset(face), frame.asset);
+      assert.deepEqual(retroFrameRect(face), frame.frame);
+      assert.deepEqual(retroRects(face).art, frame.art);
+      const [x, y, w, h] = frame.art;
+      const [sx, sy, sw, sh] = frame.stockWindow;
+      assert.ok(x > sx && y > sy && x + w < sx + sw && y + h < sy + sh);
+      assert.ok(frame.asset.endsWith(`/${material.toLowerCase()}.png`));
+      assert.deepEqual(frame.frame, integration.groups[`${setCode}/${material}`].frame);
+      assert.deepEqual(frame.art, integration.groups[`${setCode}/${material}`].art);
+      // Source/geometry replacement must invalidate prior pigment coefficients.
+      assert.equal(
+        calibratedDualFrameProfile({ ...face, colorCalibration: 'set-hsb-v1' }),
+        undefined,
+      );
+      for (const override of [
+        { setCode: 'leg' },
+        { setCode: 'lea' },
+        { setCode: 'leb' },
+        { setCode: '2ed' },
+        { setCode: '3ed' },
+        { setCode: '4ed' },
+        { borderColor: 'white' },
+        { borderColor: 'silver' },
+        { frameStyle: 'modern' },
+        { frameTemplate: 'future' },
+        { layout: 'split' },
+        { typeLine: 'Enchantment — Saga' },
+      ])
+        assert.equal(earlyExpansionFrame({ ...face, ...override }), undefined);
+    }
+  }
+  const land = { name: 'Oasis', setCode: 'arn', typeLine: 'Land', colors: ['G'] };
+  assert.ok(retroFrameAsset(land).endsWith('/fourth/l.png'));
+  assert.deepEqual(
+    earlyExpansionFrame(land),
+    earlyExpansionFrame({ ...land, typeLine: '', land: true }),
+  );
+  for (const typeLine of ['Land', 'Basic Land — Mountain'])
+    assert.equal(earlyExpansionFrame({ ...land, name: 'Mountain', typeLine }), undefined);
+  assert.ok(
+    retroFrameAsset({ ...land, name: 'Mountain', typeLine: 'Basic Land — Mountain' }).endsWith(
+      '/seventh/regular/rl.png',
+    ),
+  );
+  // Sparse or rejected scan cohorts cannot silently borrow another set's fit.
+  assert.equal(earlyExpansionFrame({ ...land, setCode: 'drk' }), undefined);
+  assert.equal(
+    earlyExpansionFrame({ ...land, setCode: 'drk', typeLine: 'Summon', colors: ['G', 'R'] }),
+    undefined,
+  );
+  for (const setCode of ['atq', 'drk'])
+    assert.equal(
+      earlyExpansionFrame({ name: 'Probe', setCode, typeLine: 'Instant', colors: ['R'] }),
+      undefined,
+    );
+  console.log('Early expansion sources, artwork placement, wording independence and scope pass.');
+} finally {
+  await server.close();
+}

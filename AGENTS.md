@@ -15,6 +15,9 @@ this boundary in the official Rust-based container as well as on macOS.
 
 Run npm run check, npm run build, npm run test:package, npm run test:browser, and
 npm run test:showcase for renderer changes. Browser tests need npm run preview.
+On macOS arm64, WebKit 2287's stock-border aperture-alpha check differs by one
+pixel on unmodified upstream `3652e30` as well as this integration. Report that
+baseline separately; keep the assertion rather than loosening it during merges.
 No per-frame decoding, font loading, shader compilation, or mask readback.
 Document benchmark scope: CPU submission time is not GPU completion time.
 Never silently use another game's painter or publish partial face revisions.

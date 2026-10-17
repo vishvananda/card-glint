@@ -16,12 +16,14 @@ const PRINTINGS: Readonly<
 };
 
 export function printingLegalText(face: RenderedCardInput): string | null {
+  if (face.printingElements?.legal?.hidden) return null;
   return face.legalText === undefined
     ? (PRINTINGS[face.setCode?.toLowerCase() ?? '']?.legal ?? null)
     : face.legalText;
 }
 
 export function printingCollectorText(face: RenderedCardInput, modern = true): string {
+  if (face.printingElements?.collector?.hidden) return '';
   const raw = face.collectorNumber?.trim();
   if (!raw) return '';
   const style = PRINTINGS[face.setCode?.toLowerCase() ?? ''];
@@ -34,7 +36,7 @@ export function printingCollectorText(face: RenderedCardInput, modern = true): s
   // Bonus cards beyond the regular numbered set do not print a denominator.
   const numbered = /^\d+$/.test(raw);
   const number = modern && numbered ? raw.padStart(3, '0') : raw;
-  const total = style?.total;
+  const total = face.collectorTotal === undefined ? style?.total : face.collectorTotal;
   const serial = total && numbered && Number(raw) <= total ? `${number}/${total}` : number;
   return modern ? `${serial} ${rarity}` : serial;
 }

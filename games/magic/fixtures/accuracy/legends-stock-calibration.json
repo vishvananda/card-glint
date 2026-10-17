@@ -1,0 +1,1041 @@
+{
+  "schemaVersion": 1,
+  "baseline": "v0.4.0",
+  "status": "validated-source-candidate",
+  "sourceDecision": "Keep the calibrated ABU interiors and independently recut white/black stock. Fourth was compared on the same frozen poses; its black geometry and white color/texture fit were worse.",
+  "apertureCanonical": [19.375, 21.125, 449.625, 639.25],
+  "cohortPolicy": "Eight calibration cards, eight original holdouts, 67 additional holdouts. Shared aperture for white and black; no per-card renderer adjustments.",
+  "geometry": {
+    "metric": "Mean cosine similarity of signed, smoothed grayscale stock-edge profiles; not a whole-card accuracy percentage.",
+    "policy": "Validate the native recut against all frozen white/black scan poses.",
+    "windows": {
+      "left": ["x", 12, 29, 150, 550],
+      "right": ["x", 457, 477, 150, 550],
+      "top": ["y", 10, 26, 85, 400],
+      "bottom": ["y", 650, 673, 85, 400]
+    },
+    "summary": {
+      "W": {
+        "calibration": {
+          "cards": 4,
+          "before": 0.8293242412373518,
+          "after": 0.9326890388307418,
+          "improved": 4,
+          "worstDelta": 0.05443531754784248
+        },
+        "validation": {
+          "cards": 4,
+          "before": 0.8495408091364549,
+          "after": 0.9377736459404337,
+          "improved": 4,
+          "worstDelta": 0.05940432580635735
+        },
+        "extended-validation": {
+          "cards": 35,
+          "before": 0.8516502682814209,
+          "after": 0.9282198283469628,
+          "improved": 35,
+          "worstDelta": 0.023592740702289672
+        }
+      },
+      "B": {
+        "calibration": {
+          "cards": 4,
+          "before": 0.8271060152928926,
+          "after": 0.9405213206818921,
+          "improved": 4,
+          "worstDelta": 0.08443122389561009
+        },
+        "validation": {
+          "cards": 4,
+          "before": 0.8336861754942023,
+          "after": 0.9233134247982578,
+          "improved": 4,
+          "worstDelta": 0.04402648288928557
+        },
+        "extended-validation": {
+          "cards": 32,
+          "before": 0.8265457472366753,
+          "after": 0.929442291881743,
+          "improved": 32,
+          "worstDelta": 0.022766168622421534
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "5d074af2-8dbd-42d3-87eb-30f6e7d171ff",
+        "name": "Akron Legionnaire",
+        "cohort": "validation",
+        "material": "W",
+        "before": 0.8396925570922648,
+        "after": 0.9336109742016114
+      },
+      {
+        "id": "2806c7f6-8fdd-4e65-9c71-f2e8b0cdede2",
+        "name": "Alabaster Potion",
+        "cohort": "calibration",
+        "material": "W",
+        "before": 0.878965917125847,
+        "after": 0.9334012346736895
+      },
+      {
+        "id": "cbce1c55-123c-4a05-bde4-18a1601fcc5a",
+        "name": "Amrou Kithkin",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8914175333010631,
+        "after": 0.9329486791677672
+      },
+      {
+        "id": "8068c263-e5fa-4449-8887-418e9d0a4da4",
+        "name": "Angelic Voices",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8568406783916716,
+        "after": 0.9366108466300838
+      },
+      {
+        "id": "2fbd611b-ac97-4516-bad7-cc9ee4ef74f7",
+        "name": "Cleanse",
+        "cohort": "validation",
+        "material": "W",
+        "before": 0.8593827574330138,
+        "after": 0.9560307171633872
+      },
+      {
+        "id": "db1f578f-fa3b-4447-953b-1490852b6c80",
+        "name": "Clergy of the Holy Nimbus",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8537255812892426,
+        "after": 0.9383767036451359
+      },
+      {
+        "id": "b09aee5c-8b9e-46c2-b4d4-508062f8af05",
+        "name": "D'Avenant Archer",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8575258317663551,
+        "after": 0.9420457214241351
+      },
+      {
+        "id": "9eae0ba1-1383-4505-b4e7-4f17dd8f20c5",
+        "name": "Divine Intervention",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8650509601847048,
+        "after": 0.8905073293612307
+      },
+      {
+        "id": "9c78c2f3-2f40-48ad-9dc4-55d1fa399a56",
+        "name": "Divine Offering",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8533172127783835,
+        "after": 0.9343284708753504
+      },
+      {
+        "id": "a89ad9fd-33a6-4d31-9f4c-8bf192882f21",
+        "name": "Divine Transformation",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8497517792934356,
+        "after": 0.9154405131175607
+      },
+      {
+        "id": "ef3651d4-969c-464d-a444-40a640d0c6ba",
+        "name": "Elder Land Wurm",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8660152402161748,
+        "after": 0.9065705195708529
+      },
+      {
+        "id": "94c2880d-b37a-43ea-9fee-cd5a8ed75a7e",
+        "name": "Enchanted Being",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8601107344483134,
+        "after": 0.9381130454736463
+      },
+      {
+        "id": "840c6586-a7a9-4ae8-96be-a995a0693eb6",
+        "name": "Equinox",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8295101511739778,
+        "after": 0.9092560253589053
+      },
+      {
+        "id": "dc64f19c-5b2b-4697-b4dc-2be9c3790794",
+        "name": "Fortified Area",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8423805705097396,
+        "after": 0.9373900324253177
+      },
+      {
+        "id": "ba1384e5-d140-4074-9548-250af09cb413",
+        "name": "Glyph of Life",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8685727270008835,
+        "after": 0.9257557405084893
+      },
+      {
+        "id": "879a8653-1538-4f78-a3d3-a900a4d9499b",
+        "name": "Great Defender",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8810225372636328,
+        "after": 0.9210289865390309
+      },
+      {
+        "id": "cd860a1d-aa17-4579-b9b1-d101d2416387",
+        "name": "Great Wall",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8659390989745399,
+        "after": 0.9270143441688564
+      },
+      {
+        "id": "5e236816-0c49-4b48-b18b-03add5a80d72",
+        "name": "Greater Realm of Preservation",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.7932101454748864,
+        "after": 0.9010183779381887
+      },
+      {
+        "id": "461d7c11-3a7d-42c2-bb6b-0a43779e6842",
+        "name": "Heaven's Gate",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8713701393368836,
+        "after": 0.9208974422249192
+      },
+      {
+        "id": "f6c95a2b-bf44-4ff2-9c6a-916773346edd",
+        "name": "Holy Day",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8713210748292295,
+        "after": 0.9360891493291509
+      },
+      {
+        "id": "ed2a7333-c9ce-4011-b00e-1304e1eec25e",
+        "name": "Indestructible Aura",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8599599011120287,
+        "after": 0.9241205127048467
+      },
+      {
+        "id": "dc60077f-d577-4a6c-a78f-697317024c40",
+        "name": "Infinite Authority",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8224904606814096,
+        "after": 0.9335131034318148
+      },
+      {
+        "id": "9bf9cccd-fe97-4632-a90a-9eeb0d41135e",
+        "name": "Ivory Guardians",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8305912549038661,
+        "after": 0.9497145756234578
+      },
+      {
+        "id": "b63a69ae-99ce-4d26-88b7-784793c43cd4",
+        "name": "Keepers of the Faith",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8894570024537701,
+        "after": 0.9348689230514252
+      },
+      {
+        "id": "7e0651ad-6901-4f9b-8807-d66e53a4ada8",
+        "name": "Kismet",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8057632677601825,
+        "after": 0.929054566047752
+      },
+      {
+        "id": "d53b20b0-67bc-4587-817b-efbf21cb2512",
+        "name": "Land Tax",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8587679864268476,
+        "after": 0.9489859281781721
+      },
+      {
+        "id": "4ecb1362-9a67-4d4c-8d69-9ac2ebf4d0b0",
+        "name": "Lifeblood",
+        "cohort": "calibration",
+        "material": "W",
+        "before": 0.8136009527963557,
+        "after": 0.9369495538723827
+      },
+      {
+        "id": "952ba126-0915-47f0-9b6a-a0a6dcd22c6f",
+        "name": "Moat",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8491332705833892,
+        "after": 0.9483338009566539
+      },
+      {
+        "id": "f85614b3-62a3-4da9-a74a-7ea40fad1b52",
+        "name": "Osai Vultures",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8564640379067512,
+        "after": 0.9449148906629765
+      },
+      {
+        "id": "5ef99f07-c987-451a-b18a-2719eea654cd",
+        "name": "Petra Sphinx",
+        "cohort": "calibration",
+        "material": "W",
+        "before": 0.785622169355711,
+        "after": 0.9265320698533726
+      },
+      {
+        "id": "1cb86b2f-116d-4952-b35a-1398341baaf5",
+        "name": "Presence of the Master",
+        "cohort": "calibration",
+        "material": "W",
+        "before": 0.8391079256714937,
+        "after": 0.9338732969235224
+      },
+      {
+        "id": "e26e7c9c-e6de-47f4-8394-7e853408f84c",
+        "name": "Rapid Fire",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.808301505555065,
+        "after": 0.9436886119056197
+      },
+      {
+        "id": "bf2e3a8a-b386-474d-b8e9-4c2d56a2b742",
+        "name": "Remove Enchantments",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8648922503049281,
+        "after": 0.9336399058812699
+      },
+      {
+        "id": "d96b463e-9579-4e7b-87c2-342527b91e7c",
+        "name": "Righteous Avengers",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.7865161997964255,
+        "after": 0.9247822694858502
+      },
+      {
+        "id": "df608b59-cc07-4e1d-b6d6-f15e69b15b92",
+        "name": "Seeker",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8777817479371108,
+        "after": 0.9017194806167798
+      },
+      {
+        "id": "a5032bf0-f9c0-4ef0-8ec2-fe7ccea9bdf3",
+        "name": "Shield Wall",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8130027497895387,
+        "after": 0.9105061404554953
+      },
+      {
+        "id": "5e2d35f8-3cf6-4843-9030-0e9a885d836c",
+        "name": "Spirit Link",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8810262549427476,
+        "after": 0.9046189956450372
+      },
+      {
+        "id": "654dd1e0-a91d-44ee-af20-c025bf360c3f",
+        "name": "Spiritual Sanctuary",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.840096735365199,
+        "after": 0.9371274280454719
+      },
+      {
+        "id": "61a59775-b1cd-4ed0-8abf-c2b37f7be0d5",
+        "name": "Thunder Spirit",
+        "cohort": "validation",
+        "material": "W",
+        "before": 0.8691730545582551,
+        "after": 0.9285773803646125
+      },
+      {
+        "id": "8f649cb5-e19c-453f-b062-4fd452d92257",
+        "name": "Tundra Wolves",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8599285333402182,
+        "after": 0.9306548574577836
+      },
+      {
+        "id": "21d00299-e183-4b3d-b015-18808e7135b9",
+        "name": "Visions",
+        "cohort": "validation",
+        "material": "W",
+        "before": 0.8299148674622858,
+        "after": 0.9328755120321235
+      },
+      {
+        "id": "664ad588-3002-4f63-93bd-38663171018f",
+        "name": "Wall of Caltrops",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.858644350317593,
+        "after": 0.9231319552450805
+      },
+      {
+        "id": "f5758e82-f901-42b7-b705-0e68ca7ba59e",
+        "name": "Wall of Light",
+        "cohort": "extended-validation",
+        "material": "W",
+        "before": 0.8678598844395402,
+        "after": 0.9509261189895915
+      },
+      {
+        "id": "a69e2cf8-5ecb-485a-92a2-b4e0a7959f1f",
+        "name": "Abomination",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7391005789701608,
+        "after": 0.8979050086733138
+      },
+      {
+        "id": "18787a2d-6688-47e9-94bc-ccf229df823f",
+        "name": "All Hallow's Eve",
+        "cohort": "validation",
+        "material": "B",
+        "before": 0.855223410533486,
+        "after": 0.9380169610139876
+      },
+      {
+        "id": "9ca19b39-4201-463c-bd40-fbffa31c9eda",
+        "name": "Blight",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8484776007756178,
+        "after": 0.9370891298887474
+      },
+      {
+        "id": "cbc0b009-3951-4aa3-985a-97139882da7e",
+        "name": "Carrion Ants",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8723731345641643,
+        "after": 0.9432922542703714
+      },
+      {
+        "id": "2bb0e884-5bb4-41f3-b04b-6f638357c166",
+        "name": "Chains of Mephistopheles",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.823393913126621,
+        "after": 0.9645601262032084
+      },
+      {
+        "id": "18bc6ac2-19e0-4765-852b-e303a5bb4040",
+        "name": "Cosmic Horror",
+        "cohort": "calibration",
+        "material": "B",
+        "before": 0.8571527843434273,
+        "after": 0.9582893502373547
+      },
+      {
+        "id": "479ccc50-2d72-4adc-901e-fbd4eef2cf92",
+        "name": "Cyclopean Mummy",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8579561501239386,
+        "after": 0.9504745284721237
+      },
+      {
+        "id": "53b04dab-45b7-418b-a0f0-bcf35145fc53",
+        "name": "Darkness",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7931535225866642,
+        "after": 0.8325762940106036
+      },
+      {
+        "id": "0f4174e4-0be8-49b5-8c52-22001790f6eb",
+        "name": "Fallen Angel",
+        "cohort": "validation",
+        "material": "B",
+        "before": 0.8237260558273806,
+        "after": 0.9200826143987842
+      },
+      {
+        "id": "20275678-3488-43d8-a93b-993e2267ab07",
+        "name": "Ghosts of the Damned",
+        "cohort": "validation",
+        "material": "B",
+        "before": 0.8468587534220965,
+        "after": 0.8908852363113821
+      },
+      {
+        "id": "43a612e5-a680-4c5b-8ce7-432a86240a6c",
+        "name": "Giant Slug",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8240640538057935,
+        "after": 0.9015529209160438
+      },
+      {
+        "id": "332bfce9-052d-42e9-a407-4a1dd59e0f2a",
+        "name": "Glyph of Doom",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8424035055723335,
+        "after": 0.9439364531029305
+      },
+      {
+        "id": "111a16a2-e875-4756-80db-290f9e8606db",
+        "name": "Greed",
+        "cohort": "calibration",
+        "material": "B",
+        "before": 0.811213144625368,
+        "after": 0.9217785205726499
+      },
+      {
+        "id": "d1aa37c8-98fa-4984-b09b-cf65ad84e97b",
+        "name": "Headless Horseman",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8446954810437625,
+        "after": 0.9125176944041282
+      },
+      {
+        "id": "64164d1b-75f4-456e-a717-90ce554dc16c",
+        "name": "Hell Swarm",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8737975270494539,
+        "after": 0.9372521110333463
+      },
+      {
+        "id": "336b3b8f-d104-4f06-ad4f-c92b8a9038ca",
+        "name": "Hell's Caretaker",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8806760165314086,
+        "after": 0.9034421851538301
+      },
+      {
+        "id": "362f1fe9-20af-434c-9957-7a1a564d89e6",
+        "name": "Hellfire",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8367846625116065,
+        "after": 0.9364717904750953
+      },
+      {
+        "id": "b9f68dc2-c048-41ec-b237-c36fdd99c27d",
+        "name": "Horror of Horrors",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.834154420744029,
+        "after": 0.9417780743648602
+      },
+      {
+        "id": "12671381-beb7-41b8-9484-97f8aca5c981",
+        "name": "Imprison",
+        "cohort": "validation",
+        "material": "B",
+        "before": 0.8089364821938462,
+        "after": 0.9442688874688776
+      },
+      {
+        "id": "26a5333f-2761-42b8-ae8b-1d360b109daf",
+        "name": "Infernal Medusa",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8422566554763935,
+        "after": 0.9418111968720622
+      },
+      {
+        "id": "c993c74c-a574-423b-81c8-96b0a7a6e529",
+        "name": "Jovial Evil",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7749021197203522,
+        "after": 0.9398166450904947
+      },
+      {
+        "id": "baae02e4-7db9-4a7b-a4ee-ecb22fcb77bd",
+        "name": "Lesser Werewolf",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8411962296055887,
+        "after": 0.9357077921742477
+      },
+      {
+        "id": "601eed5c-436d-425b-a45f-07881ad893c8",
+        "name": "Lost Soul",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8681447989988863,
+        "after": 0.9449558870233581
+      },
+      {
+        "id": "649a33aa-7eac-4161-ae1a-fcbc758abccf",
+        "name": "Mold Demon",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8313506592799996,
+        "after": 0.9501091884371359
+      },
+      {
+        "id": "2e72f8cb-5bc3-4711-9b7c-a6eea9a0beaf",
+        "name": "Nether Void",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8067473748843076,
+        "after": 0.9391616581555275
+      },
+      {
+        "id": "cc564f84-0d6e-4e09-a58d-a694d918cf12",
+        "name": "Pit Scorpion",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8106842484877658,
+        "after": 0.9300394670545722
+      },
+      {
+        "id": "94e2aa9e-af6a-41c6-99a8-ca9335730ddb",
+        "name": "Quagmire",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8536074410279021,
+        "after": 0.9391208064252701
+      },
+      {
+        "id": "4e04a1b9-c561-4e34-86d9-129ea0346631",
+        "name": "Shimian Night Stalker",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8179104819226848,
+        "after": 0.9519378315492024
+      },
+      {
+        "id": "a30bb266-5bd1-4998-ae94-56f0f3354167",
+        "name": "Spirit Shackle",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7782362933139526,
+        "after": 0.8993606633671604
+      },
+      {
+        "id": "f3020304-7a39-411e-b055-3ade72b4bff8",
+        "name": "Syphon Soul",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8409672503099097,
+        "after": 0.9176694770334468
+      },
+      {
+        "id": "d8f49b3d-7fcb-4169-9298-cdf7a1dbe3f5",
+        "name": "Takklemaggot",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7916194468862834,
+        "after": 0.930174721294791
+      },
+      {
+        "id": "86a27d68-3e58-4ade-976d-36381beed451",
+        "name": "The Abyss",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7719545679375036,
+        "after": 0.9175313712382327
+      },
+      {
+        "id": "14c45416-a826-42e9-9967-8838158cf16d",
+        "name": "The Wretched",
+        "cohort": "calibration",
+        "material": "B",
+        "before": 0.7800151322016724,
+        "after": 0.9375431880208505
+      },
+      {
+        "id": "eda7177f-1354-4008-aaaa-2c8b823ed5e9",
+        "name": "Touch of Darkness",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8286056511634506,
+        "after": 0.9219296392800792
+      },
+      {
+        "id": "a0e8f8d8-eac0-451c-a167-be84667a8e3d",
+        "name": "Underworld Dreams",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8796037456791943,
+        "after": 0.9455419849228027
+      },
+      {
+        "id": "6a6a6f50-7b86-461e-80a7-e35d0e7cf52f",
+        "name": "Vampire Bats",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.7859577897462336,
+        "after": 0.9206314687645867
+      },
+      {
+        "id": "d7533a72-77d1-40cd-b3a1-7597d566c428",
+        "name": "Walking Dead",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8481877998264628,
+        "after": 0.9329405412209794
+      },
+      {
+        "id": "07a17b74-a9c9-419a-8369-9ab4fec213f2",
+        "name": "Wall of Putrid Flesh",
+        "cohort": "calibration",
+        "material": "B",
+        "before": 0.8600430000011029,
+        "after": 0.944474223896713
+      },
+      {
+        "id": "eb351900-cffd-4d23-b82f-5fb12a4874d9",
+        "name": "Wall of Shadows",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.8231462449404119,
+        "after": 0.9459302990794041
+      },
+      {
+        "id": "55da1e86-fe18-486a-b510-f941e6f6e378",
+        "name": "Wall of Tombstones",
+        "cohort": "extended-validation",
+        "material": "B",
+        "before": 0.783354544960774,
+        "after": 0.9349341302638193
+      }
+    ]
+  },
+  "stock": {
+    "rgb": [38, 38, 38],
+    "policy": "Shared Legends display-reference stock target, opt-in via set-hsb-v1 with source/geometry guards. Uniform processed scan margins are not a physical ink measurement. Alpha/Beta and manual border overrides retain their existing policies.",
+    "groups": {
+      "M": {
+        "calibration": {
+          "count": 8,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        },
+        "validation": {
+          "count": 8,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        }
+      },
+      "L": {
+        "calibration": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        }
+      },
+      "G": {
+        "calibration": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {
+            "shadow": {
+              "source": [35.0, 37.0, 26.0],
+              "reference": [27.5, 41.0, 22.25],
+              "localDark": [13.75, 22.5, 11.25],
+              "p25": [18.375, 32.0, 15.5],
+              "p75": [36.125, 52.25, 29.5]
+            }
+          }
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {
+            "shadow": {
+              "source": [35.0, 37.0, 26.0],
+              "reference": [25.5, 43.0, 25.5],
+              "localDark": [13.5, 24.5, 11.5],
+              "p25": [19.5, 32.25, 17.875],
+              "p75": [33.625, 53.5, 34.5]
+            }
+          }
+        }
+      },
+      "A": {
+        "calibration": {
+          "count": 3,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        }
+      },
+      "U": {
+        "calibration": {
+          "count": 3,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        }
+      },
+      "R": {
+        "calibration": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        }
+      },
+      "B": {
+        "calibration": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {
+            "shadow": {
+              "source": [28.0, 32.0, 31.0],
+              "reference": [24.0, 35.0, 22.0],
+              "localDark": [13.5, 21.5, 10.5],
+              "p25": [18.0, 28.0, 15.0],
+              "p75": [32.0, 44.0, 30.0]
+            }
+          }
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {
+            "shadow": {
+              "source": [28.0, 32.0, 31.0],
+              "reference": [28.0, 36.0, 22.0],
+              "localDark": [17.5, 23.5, 12.0],
+              "p25": [22.5, 29.5, 16.5],
+              "p75": [34.5, 44.0, 29.0]
+            }
+          }
+        }
+      },
+      "W": {
+        "calibration": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        },
+        "validation": {
+          "count": 4,
+          "stock": [38.0, 38.0, 38.0],
+          "bins": {}
+        }
+      }
+    }
+  },
+  "interior": {
+    "policy": "Test a shared neutral shadow lift on frame-only patches; never use outer stock as inner ink.\nAll coefficients fit calibration cards only. Frozen registration, no per-card colors.\n",
+    "regions": [
+      [32, 110, 12, 240],
+      [447, 110, 9, 240],
+      [32, 435, 12, 145],
+      [447, 435, 9, 145]
+    ],
+    "quantiles": [0.02, 0.05, 0.1, 0.2, 0.5],
+    "curve": "c + lift * max(0, 1 - max(rgb)/64)^2; lift <= 32; alpha and channels above the transition unchanged",
+    "acceptance": "At least 100 affected pixels, >0.5 byte and >10% RMSE reduction on both calibration and validation; worst regression <=0.25 byte.",
+    "groups": {
+      "M": {
+        "darkSamplePixels": 6,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 8,
+            "before": 13.571379412710137,
+            "candidate": 13.571379412710137,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 8,
+            "before": 16.063327965020193,
+            "candidate": 16.063327965020193,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "L": {
+        "darkSamplePixels": 0,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 4,
+            "before": 13.01523890529246,
+            "candidate": 13.01523890529246,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 14.199409089662243,
+            "candidate": 14.199409089662243,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "G": {
+        "darkSamplePixels": 36,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 4,
+            "before": 14.006156269403132,
+            "candidate": 14.006156269403132,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 12.648132181476601,
+            "candidate": 12.648132181476601,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "A": {
+        "darkSamplePixels": 0,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 3,
+            "before": 13.275486560132322,
+            "candidate": 13.275486560132322,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 9.17804527955283,
+            "candidate": 9.17804527955283,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "U": {
+        "darkSamplePixels": 0,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 3,
+            "before": 13.032995654157517,
+            "candidate": 13.032995654157517,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 21.0186027276571,
+            "candidate": 21.0186027276571,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "R": {
+        "darkSamplePixels": 0,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 4,
+            "before": 18.986845462668928,
+            "candidate": 18.986845462668928,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 18.188395271383122,
+            "candidate": 18.188395271383122,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "B": {
+        "darkSamplePixels": 4380,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 4,
+            "before": 13.494869885393307,
+            "candidate": 13.494869885393307,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 12.667120615357764,
+            "candidate": 12.667120615357764,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "W": {
+        "darkSamplePixels": 0,
+        "fit": 0.0,
+        "accepted": false,
+        "summary": {
+          "calibration": {
+            "count": 4,
+            "before": 14.979755883897498,
+            "candidate": 14.979755883897498,
+            "worstRegression": 0.0
+          },
+          "validation": {
+            "count": 4,
+            "before": 13.890559431335232,
+            "candidate": 13.890559431335232,
+            "worstRegression": 0.0
+          }
+        }
+      }
+    }
+  },
+  "runtime": {
+    "cards": 22,
+    "replays": 132,
+    "engines": ["chrome", "chromium", "webkit"],
+    "tiers": ["table", "inspect"],
+    "stockFailures": 0,
+    "maxInteriorByteDelta": 1,
+    "policy": "Native composition with shared source bitmaps and unchanged cached HSB preparation; CPU Canvas2D readback isolates GPU precision variance. One WebKit table render differs by one byte in 44 interior pixels; all other interior replays are byte-identical. Structural/pigment/typography settings inside the aperture are unchanged."
+  }
+}

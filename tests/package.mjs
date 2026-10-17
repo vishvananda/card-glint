@@ -35,12 +35,22 @@ try {
       '-e',
       `
     import assert from 'node:assert/strict';
-    import { resolvePrintingWording } from 'card-glint/magic';
+    import { resolvePrintingWording, resolvePrintingArtist, resolvePrintingPreset, resolveScryfallPrinting, fromScryfallCard, fromMtgjsonCard, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle } from 'card-glint/magic';
     const oracle = {typeLine:'Creature', rulesText:'Oracle rules.'};
     const result = resolvePrintingWording('f594b7aa-d44e-47c4-989b-565f881e25f1', {oracle, original:oracle});
     assert.equal(result.wordings.oracle.rulesText, oracle.rulesText);
     assert.equal(result.wordings.original.typeLine, 'Continuous Artifact');
     assert.equal(result.provenance.status, 'applied');
+    const artist = resolvePrintingArtist('0faa005e-c753-4484-bf64-349350d59094', 'Dan Murayama Scott');
+    assert.equal(artist.artist, 'Dan Scott');
+    assert.equal(artist.provenance.status, 'applied');
+    const face = resolvePrintingPreset({name:'Probe',typeLine:'Instant',colors:['U']}, {preset:'plc-colorshifted',overrides:{collectorNumber:'7',elements:{artist:{hidden:true}}}});
+    assert.equal(face.frameTreatment, 'colorshifted');
+    assert.equal(resolveScryfallPrinting({frame:'future'}).frameTemplate, 'future');
+    const art = resolveArtPlacement(face,{mode:'window',zoom:2,focalPoint:[.3,.6]});
+    assert.ok(artworkGeometry(art,400,1000).destination[2]>0);
+    assert.equal(fromScryfallCard({name:'Package probe',type_line:'Instant',oracle_text:'Draw a card.',mana_cost:'{U}'}).manaSymbols[0],'U');assert.equal(fromMtgjsonCard({name:'Package probe',type:'Instant',text:'Draw a card.',manaCost:'{U}'}).manaSymbols[0],'U');
+    const style=validatePrintingStyle(printingStyles.find(s=>s.id==='fut'));assert.equal(style.frames.length,4);assert.equal(resolvePrintingStyle({...face,frameTemplate:'future'},style).frame,'futureshifted');assert.equal(composePrintingSelection({preset:'lea'},{overrides:{frameColors:['B']}}).overrides.frameColors[0],'B');
   `,
     ],
     { cwd: temporary, stdio: 'inherit' },
@@ -50,16 +60,21 @@ try {
     `
 import { createRenderer, IDENTITY, type CardDocument } from 'card-glint';
 import { showcase } from 'card-glint/showcase';
-import { magic, opticalDocument, resolvePrintingWording, withCardWording, type MagicCard, type PrintingText } from 'card-glint/magic';
+import { magic, opticalDocument, resolvePrintingWording, resolvePrintingArtist, type ResolvedPrintingArtist, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, fromScryfallCard, fromMtgjsonCard, type CardImportOptions, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture } from 'card-glint/magic/presentation';
 import { foilShader } from 'card-glint/finish';
 import { createPixelKernels } from 'card-glint/kernels';
 export { faceArtBounds, composeCardTexture, foilShader, createPixelKernels };
 import wasmUrl from 'card-glint/renderer.wasm?url';
-const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
+const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,setSymbolMask:'ink',printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
+const selection: PrintingSelection = {preset:printingPresets[0]!.id,overrides:{collectorNumber:'7',elements:{artist:{offset:[2,0]}}}};
+export const presetFace = resolvePrintingPreset(face, selection);
+const importOptions:CardImportOptions={wording:'oracle'};export const imported=fromScryfallCard({name:'Probe',type_line:'Instant'},importOptions);export const importedMtgjson=fromMtgjsonCard({name:'Probe',type:'Instant'});
+const style:PrintingStyle=printingStyles[0]!;export const styleFace=resolvePrintingStyle(face,style,{overrides:{frameColors:['R']}}).face;
 const source: PrintingText = {typeLine:'Creature', rulesText:'', flavorText:'A fixture.'};
 export const resolved = resolvePrintingWording('unknown-printing', {oracle:source, original:source});
+export const credit: ResolvedPrintingArtist = resolvePrintingArtist('unknown-printing', face.artist);
 export const magicRecipe = magic.describe(withCardWording(face,resolved.wordings),'inspect');
 export const opticalRecipe = opticalDocument(2,1,face,'silver');
 export async function example(canvas: HTMLCanvasElement) {

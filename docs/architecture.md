@@ -162,8 +162,8 @@ an epoch reset clears that history. Camera motion alone does not inject slosh.
 Export isolates the motion state.
 
 Card preparation, decoding, etching and texture uploads remain cached. Animation
-uploads a 168-byte instance record; silhouette amplitude occupies a previously
-unused float. Rain evaluates eighteen candidate drops; rain and heat use five
+uploads a 192-byte instance record, including independent rain fog density.
+Rain evaluates eighteen candidate drops; rain and heat use five
 face samples for softening. Pool evaluates six surface waves and four bounded
 ripples, then samples the face and a **separate projected-light map** (five taps
 to soften mesh boundaries and narrow ray folds). Programs

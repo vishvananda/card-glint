@@ -7,13 +7,19 @@ interface FrameGeometry {
   family: 'abu' | 'fourth';
   frame: FaceRect;
   art: FaceRect;
+  stockWindow?: FaceRect;
 }
+// Fit jointly to eight white/black cards, then checked on 75 held-out scans.
+// Recut the ABU stock independently: its interior matches better than Fourth,
+// but its tinted outer band was never present on Legends printings.
+const RECUT_STOCK: FaceRect = [19.375 / 488, 21.125 / 680, 449.625 / 488, 639.25 / 680];
 /** Legends source selection and shared frame/art geometry. Fit on 36 frozen
  * scan poses and replayed on 36 independent cards. Source choice precedes color
  * and typography calibration; see early-frame-source-review.json. */
 const GEOMETRY: Readonly<Record<Material, FrameGeometry>> = {
   W: {
     family: 'abu',
+    stockWindow: RECUT_STOCK,
     frame: [-0.015000000000000013, -0.016735294117647074, 1.03, 1.032],
     art: [0.1092866666666667, 0.09137899159663865, 0.7821133333333333, 0.45408000000000004],
   },
@@ -24,6 +30,7 @@ const GEOMETRY: Readonly<Record<Material, FrameGeometry>> = {
   },
   B: {
     family: 'abu',
+    stockWindow: RECUT_STOCK,
     frame: [-0.015000000000000013, -0.016470588235294133, 1.03, 1.03],
     art: [0.1092866666666667, 0.09143417366946782, 0.7821133333333333, 0.4532],
   },

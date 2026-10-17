@@ -1,8 +1,9 @@
-import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { copyBrowserLibrary } from './browser-assets.mjs';
 process.chdir(fileURLToPath(new URL('../', import.meta.url)));
 const { version } = JSON.parse(await readFile('package.json', 'utf8'));
 if (!/^\d+\.\d+\.\d+(?:-[\w.-]+)?$/.test(version)) throw Error('Invalid release version');
@@ -19,24 +20,17 @@ const packed = JSON.parse(
   }),
 )[0];
 const browser = path.join(output, folder);
-await cp('dist/lib', browser, { recursive: true });
-// The npm package uses bundler asset imports; the browser ZIP needs plain module URLs.
-for (const file of await readdir(browser, { recursive: true })) {
-  if (!file.endsWith('.js')) continue;
-  const outputFile = path.join(browser, file);
-  const source = await readFile(outputFile, 'utf8');
-  await writeFile(
-    outputFile,
-    source.replace(
-      /import\s+([\w$]+)\s+from\s*(['"])(\.\/(?:renderer|pixels)_bg\.wasm)\?url\2\s*;?/g,
-      (_, name, _quote, url) => `const ${name}=new URL(${JSON.stringify(url)},import.meta.url);`,
-    ),
-  );
-}
+await copyBrowserLibrary(browser);
 await cp('games/showcase/art', path.join(browser, 'art'), { recursive: true });
 await cp('examples/standalone', browser, { recursive: true });
 await mkdir(path.join(browser, 'magic'), { recursive: true });
-for (const name of ['README.md', 'NOTICE.md', 'assets.json']) {
+for (const name of [
+  'README.md',
+  'NOTICE.md',
+  'assets.json',
+  'printing-styles.md',
+  'provider-cards.md',
+]) {
   await cp(path.join('games/magic', name), path.join(browser, 'magic', name));
 }
 for (const name of ['LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE.md']) {

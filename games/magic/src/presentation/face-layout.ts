@@ -1,3 +1,5 @@
+import type { ArtPlacement } from './art-placement.js';
+import type { PrintingElements } from './printing-elements.js';
 import type { SymbolAdjustment } from './symbol-adjustment.js';
 import type { CardProfileInput } from './profile.js';
 
@@ -28,6 +30,11 @@ export interface LiveChanges {
 export interface RenderedCardInput extends CardProfileInput {
   name: string;
   liveChanges?: LiveChanges;
+  /** Optional semantic printing controls, shared by raster/export and editor callers. */
+  printingElements?: PrintingElements;
+  collectorTotal?: number | null;
+  collectorLanguage?: string;
+  collectorSetCode?: string;
   /** Editor-only omission of text ink in normalized physical-card regions.
    * Layout, frame selection, calibrated materials and mana remain unchanged. */
   printingOmissions?: readonly {
@@ -61,6 +68,8 @@ export interface RenderedCardInput extends CardProfileInput {
    * the art aperture. Use for an incomplete crop: retain its scale/position and
    * fill uncovered areas with a solid edge color. Does not move the frame. */
   illustrationPlacement?: FaceRect;
+  /** User fit, independent of frame preset and source crop corrections. */
+  artPlacement?: ArtPlacement;
   manaSymbols?: string[];
   /** Experimental ordinary-face symbol placement; omitted preserves printing defaults. */
   symbolAdjustment?: SymbolAdjustment;
@@ -108,6 +117,10 @@ export interface RenderedCardInput extends CardProfileInput {
   /** Auto prefers complete styled vectors, falling back to Keyrune if unavailable.
    * Explicit selection is useful for asset comparisons. Custom URLs win. */
   setSymbolSource?: 'auto' | 'keyrune' | 'cardconjurer';
+  /** Etched/Opal mark only. Auto extracts dark ink from styled common symbols,
+   * retaining alpha for Keyrune and host images. Ink removes opaque white
+   * backing/holes from a custom dark symbol; alpha keeps its whole silhouette. */
+  setSymbolMask?: 'auto' | 'alpha' | 'ink';
   rarity?: 'common' | 'uncommon' | 'rare' | 'mythic' | 'special' | 'bonus';
   /** Physical printing mark, independent of rarity and wording. Omitted uses
    * the current modern rare/mythic oval default; use none for older printings.

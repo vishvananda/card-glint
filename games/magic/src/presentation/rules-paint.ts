@@ -8,6 +8,7 @@ import { shortCenteredRules } from './short-centered-rules.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
 import { hasFlavorSeparator } from './flavor-separator.js';
 import { planarRulesSpacing, planarRulesStatsRect } from './planar-rules.js';
+import { planarShortRules } from './planar-short-rules.js';
 
 export function ordinaryTextLayout(
   context: CanvasRenderingContext2D,
@@ -16,7 +17,8 @@ export function ordinaryTextLayout(
   scale = 1,
 ): RulesLayout {
   const rects = faceRects(face);
-  const statsRect = planarRulesStatsRect(face) ?? rects.stats;
+  const planarStats = planarRulesStatsRect(face);
+  const statsRect = planarStats ?? rects.stats;
   const typography = {
     ...RULES_TYPOGRAPHY,
     flavorSeparator: face.frameAssetFamily === 'eighth' ? false : hasFlavorSeparator(face.setCode),
@@ -82,17 +84,22 @@ export function ordinaryTextLayout(
     );
     if (centered) return centered;
   }
-  const layout = layoutRules(
-    context,
+  const fittedParagraphs =
     face.rulesAlignment?.mode === 'left'
       ? paragraphs.map((p) => (p.role === 'rules' ? { ...p, align: 'left' as const } : p))
-      : paragraphs,
+      : paragraphs;
+  let layout = layoutRules(context, fittedParagraphs, bounds, 24.5 * scale, 15 * scale, typography);
+  // Longer Oracle wording may exceed the original printing's minimum size.
+  // Keep all text and measured P/T clearance before using the PLC spacing pass.
+  if (layout.overflow && planarStats)
+    layout = layoutRules(context, fittedParagraphs, bounds, layout.size, 12 * scale, typography);
+  return planarShortRules(
+    context,
+    face,
+    fittedParagraphs,
+    planarRulesSpacing(face, layout, bounds),
     bounds,
-    24.5 * scale,
-    15 * scale,
-    typography,
   );
-  return planarRulesSpacing(face, layout, bounds);
 }
 
 export function paintRulesLayout(

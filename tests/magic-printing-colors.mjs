@@ -1,8 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
+const rebindings = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/revised-frame-native.json'),
+).bindings;
 const fit = JSON.parse(await readFile('games/magic/fixtures/accuracy/five-set-hsb-results.json')),
   adoption = JSON.parse(await readFile('games/magic/fixtures/accuracy/five-set-hsb-adoption.json'));
+const m21 = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/m21-normal-color-adoption.json'),
+);
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -69,7 +75,10 @@ try {
   }
   assert.equal(manaTargets, 13);
   const admitted = adoption.results.filter((r) => r.status !== 'review-only');
-  assert.deepEqual(Object.keys(PRINTING_COLOR_PROFILES).sort(), admitted.map((r) => r.key).sort());
+  assert.deepEqual(
+    Object.keys(PRINTING_COLOR_PROFILES).sort(),
+    [...new Set([...admitted.map((r) => r.key), ...rebindings.map((r) => r.key), m21.key])].sort(),
+  );
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21'])
     assert.ok(
       admitted.some((r) => r.key.startsWith(set + '/')),
@@ -79,8 +88,21 @@ try {
     const study = fit.groups.find((g) => g.key === row.key),
       face = { ...study.probe, name: 'Coverage probe', colorCalibration: 'set-hsb-v1' },
       materials = calibratedFrameMaterials(face);
-    assert.equal(PRINTING_COLOR_PROFILES[row.key].source, study.source.source);
-    assert.deepEqual(materials, PRINTING_COLOR_PROFILES[row.key].materials, row.key);
+    const rebound = rebindings.find((r) => r.key === row.key);
+    assert.equal(
+      PRINTING_COLOR_PROFILES[row.key].source,
+      rebound?.afterSource ?? study.source.source,
+    );
+    if (rebound) {
+      assert.equal(rebound.beforeSource, study.source.source);
+      assert.deepEqual(PRINTING_COLOR_PROFILES[row.key].materials, rebound.materials);
+    }
+    const pigment = Object.fromEntries(
+      Object.entries(materials).map(
+        ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],
+      ),
+    );
+    assert.deepEqual(pigment, PRINTING_COLOR_PROFILES[row.key].materials, row.key);
     assert.equal(colorCalibrationCoverage(face).frame, true, row.key);
     assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});
     assert.deepEqual(calibratedFrameMaterials({ ...face, setCode: 'unmeasured' }), {});

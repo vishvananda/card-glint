@@ -1,6 +1,13 @@
-import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
+import { frameStockInk, colorFrameStockInk, validateFrameStock } from './frame-stock-ink.js';
+import type { FrameMaterialBlend } from './frame-material-blend.js';
+import { adjustHsb, validateHsbTone, type HsbAdjustment, type Rgb } from './hsb.js';
 import { framePaperMask, type FramePixels, type PaperMask } from './frame-paper-mask.js';
 import { frameAccentMask, type FrameAccentMask } from './frame-accent-mask.js';
+import {
+  colorFrameBlackPoint,
+  validateFrameBlackPoint,
+  type FrameBlackPoint,
+} from './frame-blackpoint.js';
 
 export interface DualFrameHsb {
   frame: HsbAdjustment;
@@ -11,13 +18,52 @@ export interface DualFrameHsb {
   regions?: readonly { mask: PaperMask; adjustment: HsbAdjustment }[];
   accents?: readonly { mask: FrameAccentMask; adjustment: HsbAdjustment }[];
 }
-export type FrameHsb = HsbAdjustment | DualFrameHsb;
+export type FrameHsb = (HsbAdjustment | DualFrameHsb) & {
+  blackPoint?: FrameBlackPoint;
+  blend?: FrameMaterialBlend;
+  /** Edge-connected stock on precomposed plates; prepared once with the material. */
+  outerStock?: Rgb;
+  outerStockMaskSource?: string;
+};
 
-/** Recolor the static source, preserving alpha and black ink. Single-component
+/** Recolor the static source, preserving alpha and, without an opt-in shadow
+ * curve, black ink. Single-component
  * mana transforms also protect white glyph details. Frame-paper highlights
  * must follow their material, otherwise darkening produces false white relief.
  * Blend recolored pixels at the paper edge without moving texture or shadows. */
-export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
+export function colorFrame(
+  image: FramePixels,
+  adjustment: FrameHsb,
+  textureMask?: FramePixels,
+  stockMask?: FramePixels,
+) {
+  if ('mask' in adjustment) {
+    for (const value of [
+      adjustment.frame,
+      adjustment.paper,
+      ...(adjustment.regions?.map((r) => r.adjustment) ?? []),
+      ...(adjustment.accents?.map((r) => r.adjustment) ?? []),
+    ])
+      validateHsbTone(value);
+  } else validateHsbTone(adjustment);
+  if (adjustment.blackPoint) validateFrameBlackPoint(adjustment.blackPoint);
+  if (adjustment.outerStock) validateFrameStock(adjustment.outerStock);
+  if (
+    adjustment.outerStockMaskSource &&
+    (!stockMask ||
+      stockMask.width !== image.width ||
+      stockMask.height !== image.height ||
+      stockMask.data.length !== image.data.length)
+  )
+    throw RangeError('Frame stock correction needs its source selection');
+  if (
+    adjustment.blackPoint?.textureMaskSource &&
+    (!textureMask ||
+      textureMask.width !== image.width ||
+      textureMask.height !== image.height ||
+      textureMask.data.length !== image.data.length)
+  )
+    throw RangeError('Frame texture correction needs its source selection');
   const dual = 'mask' in adjustment ? adjustment : undefined,
     mask = dual ? framePaperMask(image, dual.mask) : undefined,
     frame = 'mask' in adjustment ? adjustment.frame : adjustment,
@@ -56,4 +102,9 @@ export function colorFrame(image: FramePixels, adjustment: FrameHsb) {
         );
     }
   }
+  const stockPixels = adjustment.outerStock ? image.data.slice() : undefined;
+  const stockSelection = adjustment.outerStock ? frameStockInk(image, stockMask) : undefined;
+  if (adjustment.blackPoint) colorFrameBlackPoint(image, adjustment.blackPoint, textureMask);
+  if (adjustment.outerStock && stockPixels && stockSelection)
+    colorFrameStockInk(image, stockPixels, stockSelection, adjustment.outerStock, stockMask);
 }

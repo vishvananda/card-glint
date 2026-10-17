@@ -1,6 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import {
-  calibratedFrameMaterials,
+  hasCalibratedFramePigment,
   calibratedManaTarget,
   hasColorCalibration,
 } from './calibration-profiles.js';
@@ -24,7 +24,7 @@ export function colorCalibrationCoverage(face: RenderedCardInput): {
   const basic = eighthBasicProfile(face);
   return {
     frame:
-      Object.keys(calibratedFrameMaterials(face)).length > 0 ||
+      hasCalibratedFramePigment(face) ||
       !!basic ||
       (isRevisedLand(face) && hasColorCalibration(face) && revisedLandColors(face).length > 0),
     manaSymbols: [

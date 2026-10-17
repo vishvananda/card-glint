@@ -43,24 +43,30 @@ export function planarBadgeRect(
   ];
 }
 
-/** Static face preparation. Continuous texture bands preserve the outer
- * stock, expand the inner aperture and keep the frame/paper joins intact.
- * Separate badges, lettering and symbols retain their own calibration. */
+/** Static face preparation. The center keeps the reviewed inner-plate fit.
+ * Colorshifted outer bands expand independently to the measured stock edge;
+ * applying the same mapping to the stock mask preserves that texture. These
+ * shared bounds use 15 calibration scans, with 29 held out. Separate badges,
+ * lettering, symbols, art and paper apertures retain their existing geometry. */
 export function paintPlanarFrame(
   c: CanvasRenderingContext2D,
   image: CanvasImageSource & { width: number; height: number },
+  colorshifted = false,
 ): void {
+  const [left, top, right, bottom] = colorshifted
+    ? ([21, 18.75, 467.5, 661] as const)
+    : ([22, 22, 466, 658] as const);
   c.save();
   c.beginPath();
   c.rect(0, 0, 488, 680);
-  c.rect(22, 22, 444, 636);
+  c.rect(left, top, right - left, bottom - top);
   c.clip('evenodd');
   c.drawImage(image, 0, 0, 488, 680);
   c.restore();
   const sourceX = [22, 28, 460, 466],
     sourceY = [22, 28, 638, 658],
-    targetX = [22, x(28), x(460), 466],
-    targetY = [22, y(28), y(638), 658];
+    targetX = [left, x(28), x(460), right],
+    targetY = [top, y(28), y(638), bottom];
   for (let row = 0; row < sourceY.length - 1; row++)
     for (let column = 0; column < sourceX.length - 1; column++) {
       const sx = sourceX[column]!,
