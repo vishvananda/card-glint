@@ -116,3 +116,23 @@ export function applyM21WhiteDefault(group, source, receipt, guardsMatch) {
       : {}),
   };
 }
+
+/** Source wording is a prerequisite; it cannot certify text placement. */
+export function applyM21OriginalWording(group, receipt, guardsMatch) {
+  const rows = receipt.rows.filter((r) => group.printingIds.includes(r.id));
+  if (!rows.length) return;
+  group.tasks.rules.originalInput = {
+    status: !guardsMatch ? 'stale' : rows.length === group.printings ? 'ready' : 'partial',
+    coveredPrintings: rows.length,
+    sources: Object.fromEntries(
+      Object.entries(Object.groupBy(rows, (r) => r.rules)).map(([key, values]) => [
+        key,
+        values.length,
+      ]),
+    ),
+    evidence: ['games/magic/fixtures/accuracy/m21-original-wording.json'],
+    guards: receipt.methodGuards,
+    reason:
+      'Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence.',
+  };
+}

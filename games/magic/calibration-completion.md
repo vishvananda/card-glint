@@ -193,3 +193,20 @@ An extra color curve made reserved cards worse, so this is a measured
 `validated-default`, with no new rendering coefficients. Paper/plates, texture
 frequency, geometry, crowns and typography remain open; this does not certify
 the complete white card treatment.
+
+The [M21 wording audit](fixtures/accuracy/m21-original-wording.json) supplies
+original rules to all 292 ordinary nonfoil inputs: 287 exact-printing MTGJSON
+records and five scan-reviewed empty bodies. The earlier land color comparison
+accidentally used Oracle fallback despite its original-mode flag. Both released
+renderers have now replayed all 33 lands with original wording. Every sampled
+stock/frame pixel and central-art pixel is unchanged, so those regional color
+measurements remain valid with their original provenance. They were never
+original-text scores. The refreshed comparison uses these new original inputs.
+
+Use `calibrationPresentation` from `tools/accuracy/calibration-wording.mjs` when
+preparing original-text calibration inputs. It rejects missing original rules
+and paragraphs that disagree with their source; setting `wordingMode` alone is
+insufficient. Each rules task records input coverage separately from alignment
+approval. Original type lines, flavor formatting and MTGJSON transcription
+outliers still require their own review. No typography task is closed by this
+input audit.

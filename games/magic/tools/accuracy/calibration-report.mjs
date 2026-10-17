@@ -12,8 +12,11 @@ export async function calibrationReport(ledger) {
     checked = new Map();
   for (const set of current.sets)
     for (const group of set.groups) {
-      for (const item of Object.values(group.tasks ?? {})) {
-        if (!['validated', 'validated-default'].includes(item.status)) continue;
+      const dependencies = Object.values(group.tasks ?? {}).flatMap((item) => [
+        ...(['validated', 'validated-default'].includes(item.status) ? [item] : []),
+        ...(item.originalInput ? [item.originalInput] : []),
+      ]);
+      for (const item of dependencies) {
         for (const [file, expected] of Object.entries(item.guards ?? {})) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
           if (!checked.has(file)) {
@@ -39,6 +42,15 @@ export async function calibrationReport(ledger) {
     printings: set.inventory.ordinaryPrintings,
     nonfoil: set.groups.reduce((n, g) => n + g.references.nonfoil, 0),
     foilOnly: set.groups.reduce((n, g) => n + g.references.foilOnly, 0),
+    originalRulesInputs: set.groups.reduce(
+      (counts, group) => {
+        const input = group.tasks?.rules?.originalInput;
+        if (input) counts[input.status] = (counts[input.status] ?? 0) + input.coveredPrintings;
+        counts.unrecorded += group.printings - (input?.coveredPrintings ?? 0);
+        return counts;
+      },
+      { ready: 0, partial: 0, stale: 0, unrecorded: 0 },
+    ),
     byTask: Object.fromEntries(
       Object.keys(CALIBRATION_TASKS).map((task) => {
         const counts = {};
@@ -89,6 +101,16 @@ export function calibrationMarkdown(ledger, reports, { setCode } = {}) {
           .join('; ')} |`,
       );
     lines.push('');
+    if (
+      r.originalRulesInputs.ready + r.originalRulesInputs.partial + r.originalRulesInputs.stale >
+      0
+    )
+      lines.push(
+        `Original rules input coverage (printings): ${Object.entries(r.originalRulesInputs)
+          .map(([state, count]) => `${state}: ${count}`)
+          .join('; ')}. Source availability does not approve text alignment.`,
+        '',
+      );
     if (setCode) {
       lines.push('| Variant | Check | State | Reason |', '| --- | --- | --- | --- |');
       for (const o of r.outstanding)

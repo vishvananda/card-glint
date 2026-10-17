@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
 import {
   applyM21BoundaryRefinement,
   applyM21StockTransfer,
   applyM21WhiteDefault,
+  applyM21OriginalWording,
 } from '../games/magic/tools/accuracy/calibration-m21-scope.mjs';
 const read = async (f) => JSON.parse(await readFile('games/magic/fixtures/accuracy/' + f));
 const boundaries = await read('m21-component-boundaries-v2.json'),
@@ -64,6 +66,38 @@ for (const s of Object.values(stock.metrics.summary)) {
 const ledger = await read('calibration-progress.json'),
   m21 = ledger.sets.find((s) => s.set === 'm21');
 const white = await read('m21-white-default.json');
+const wording = await read('m21-original-wording.json');
+assert.equal(wording.rows.length, 292);
+assert.equal(wording.summary.originalBody['mtgjson-original'], 287);
+assert.equal(wording.summary.originalBody['scan-reviewed'], 5);
+assert.equal(wording.native.summary.cards, 33);
+assert.equal(wording.native.summary.renders, 66);
+for (const [file, expected] of Object.entries(wording.methodGuards))
+  assert.equal(hash(await readFile(file)), expected, 'Stale wording adapter: ' + file);
+for (const row of wording.native.rows)
+  for (const version of Object.values(row.versions))
+    assert.deepEqual(version.changedPixelsInMeasuredRegions, { stock: 0, frameRails: 0, art: 0 });
+assert.equal(
+  m21.groups.reduce((n, g) => n + (g.tasks.rules.originalInput?.coveredPrintings ?? 0), 0),
+  292,
+);
+const textScope = structuredClone(m21.groups.find((g) => g.tasks.rules.originalInput));
+const priorTextStatus = textScope.tasks.rules.status;
+applyM21OriginalWording(textScope, wording, false);
+assert.equal(textScope.tasks.rules.originalInput.status, 'stale');
+assert.equal(
+  textScope.tasks.rules.status,
+  priorTextStatus,
+  'Wording cannot approve text alignment',
+);
+const [wordingReport] = await calibrationReport({ sets: [m21] });
+assert.equal(wordingReport.originalRulesInputs.ready, 292);
+const changedWording = structuredClone(m21);
+const changedScope = changedWording.groups.find((g) => g.tasks.rules.originalInput);
+changedScope.tasks.rules.originalInput.guards = { 'missing-wording-source': '0'.repeat(64) };
+const [changedReport] = await calibrationReport({ sets: [changedWording] });
+assert.equal(changedReport.originalRulesInputs.stale, changedScope.printings);
+assert.equal(changedReport.originalRulesInputs.ready, 292 - changedScope.printings);
 assert.equal(white.rows.length, 42);
 assert.equal(white.choice, 'source-default');
 assert.equal(white.normalization.knownPosePassed, 10);
