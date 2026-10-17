@@ -1,5 +1,18 @@
 import type { RenderedCardInput } from './face-layout.js';
 
+type OmissionCheck = (text: string, x: number, y: number) => boolean;
+const active = new WeakMap<CanvasRenderingContext2D, OmissionCheck>();
+
+/** Staged glyphs must honor the same physical-face omissions as direct text. */
+export function isPrintingTextOmitted(
+  context: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+): boolean {
+  return active.get(context)?.(text, x, y) ?? false;
+}
+
 /** Affect only this canvas, synchronously, after assets/calibration are ready.
  * Region coordinates refer to the whole physical face, including rotated panels.
  * Never patch global Canvas methods or change rules used to choose the frame. */
@@ -28,6 +41,8 @@ export function withPrintingOmissions(
       );
     });
   };
+  const prior = active.get(context);
+  active.set(context, (text, x, y) => omitted(text, x, y) || (prior?.(text, x, y) ?? false));
   context.fillText = function (text, x, y, maxWidth) {
     if (!omitted(text, x, y))
       fill.call(this, text, x, y, ...(maxWidth === undefined ? [] : [maxWidth]));
@@ -39,6 +54,8 @@ export function withPrintingOmissions(
   try {
     paint();
   } finally {
+    if (prior) active.set(context, prior);
+    else active.delete(context);
     context.fillText = fill;
     context.strokeText = stroke;
   }

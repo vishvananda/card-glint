@@ -1,3 +1,4 @@
+import { paintInsetText } from './canvas-text-ink.js';
 import { paintOriginalWhite } from './historical-white.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
 import { MANA_COLORS, GENERIC_MANA_COLOR } from './mana-colors.js';
@@ -206,6 +207,7 @@ export function paintFittedText(
     | 'CardRenderer MTG Matrix'
     | 'CardRenderer MTG Goudy'
     | 'CardRenderer MTG MPlantin' = 'CardRenderer MTG Beleren',
+  strokeInset = 0,
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   context.save();
@@ -224,7 +226,8 @@ export function paintFittedText(
     size = Math.max(size * 0.78, (size * width) / measured);
     context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   }
-  context.fillText(text, x, y, width);
+  if (strokeInset > 0) paintInsetText(context, text, [x, y, width], size, strokeInset);
+  else context.fillText(text, x, y, width);
   context.restore();
 }
 

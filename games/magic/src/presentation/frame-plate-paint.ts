@@ -161,6 +161,7 @@ export function paintFramePlateFace(
     true,
     1,
     family,
+    face.frameTreatment === 'colorshifted' ? 0.5 : 0,
   );
   c.restore();
   paintPrintingElement(c, face, 'manaCost', () =>
@@ -215,6 +216,7 @@ export function paintFramePlateFace(
     true,
     1,
     family,
+    face.frameTreatment === 'colorshifted' ? 0.5 : 0,
   );
   c.restore();
   paintPrintingElement(c, face, 'setSymbol', () =>

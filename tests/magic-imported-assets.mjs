@@ -391,9 +391,23 @@ try {
       drawnInk.push({ text, fill: ink.fillStyle, x: ink.shadowOffsetX, y: ink.shadowOffsetY });
       originalFill(text, ...args);
     };
+    // Inset headings stage their glyphs before applying the shadow on the face.
+    const stagedText = new WeakMap();
+    const prototypeFill = CanvasRenderingContext2D.prototype.fillText;
+    CanvasRenderingContext2D.prototype.fillText = function (text, ...args) {
+      stagedText.set(this.canvas, { text, fill: this.fillStyle });
+      return prototypeFill.call(this, text, ...args);
+    };
+    const originalDraw = ink.drawImage.bind(ink);
+    ink.drawImage = (source, ...args) => {
+      const label = stagedText.get(source);
+      if (label) drawnInk.push({ ...label, x: ink.shadowOffsetX, y: ink.shadowOffsetY });
+      originalDraw(source, ...args);
+    };
     try {
       paintFramePlateFace(ink, shifted, loadedShifted.images);
     } finally {
+      CanvasRenderingContext2D.prototype.fillText = prototypeFill;
       loadedShifted.dispose();
     }
     for (const text of ['Shifted specimen', 'Creature', '5/5']) {
