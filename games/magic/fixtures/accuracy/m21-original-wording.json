@@ -14,7 +14,7 @@
   "sourceGuards": {},
   "methodGuards": {
     "games/magic/tools/accuracy/calibration-wording.mjs": "78d8c09936ede87030d29453405f9209b6b6b223748bee98dadb4d92638b2757",
-    "games/magic/tools/accuracy/adapter.mjs": "201e41513f9ec61626ea4954b01fc7477d43a4dd5f775801acb8a7c06dd4e60a",
+    "games/magic/tools/accuracy/adapter.mjs": "eddcff9bbb6e299160897aa7fe6f7206c254cd700df51b58b849cbdc0e28be46",
     "games/magic/tools/accuracy/printing-text.mjs": "a8b2d0f08447740ec15f307efd735686f425263537b18cbc7057fcf93a5631a9",
     "games/magic/tools/accuracy/empty-printing-text.mjs": "c014fd2b2c2c950c7442338716f2cf5bc7fe50d3fbc9da4354a98fc034b1f911",
     "games/magic/tools/accuracy/printing-fields.mjs": "e4ca47639659f2824326cc2428e7186ebe3d52a96df97f215bd78aeaa2d593e1",
@@ -5291,5 +5291,15 @@
       "Temple-of-Epiphany": "5634ea0ae57f048174fcd02fbe49fb96306087eeb6a9ff19f86de46ef863e378",
       "Radiant-Fountain": "81f767ef6aeb2a542f57d216c616920dae47a805010b0211c60d53c271b2b505"
     }
+  },
+  "semanticInputCompatibility": {
+    "evidence": "games/magic/fixtures/accuracy/early-expansion-wording-frame-compatibility.json",
+    "guard": {
+      "before": "201e41513f9ec61626ea4954b01fc7477d43a4dd5f775801acb8a7c06dd4e60a",
+      "after": "eddcff9bbb6e299160897aa7fe6f7206c254cd700df51b58b849cbdc0e28be46"
+    },
+    "cards": 292,
+    "inputsHash": "3cfc234263d1ce8a38f96f26017544820b8f19a074c377410f73da208a7849c3",
+    "result": "Regenerated original-wording inputs are byte-for-byte identical; all material/stock/mana selectors are unchanged."
   }
 }

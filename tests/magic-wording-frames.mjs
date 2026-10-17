@@ -1,6 +1,33 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
+
+const receipt = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-wording-frame-compatibility.json'),
+);
+for (const [file, guard] of Object.entries(receipt.guards))
+  assert.equal(
+    createHash('sha256')
+      .update(await readFile(file))
+      .digest('hex'),
+    guard.after,
+    'Stale wording compatibility: ' + file,
+  );
+assert.deepEqual(receipt.summary, {
+  historicalEarlyInputs: 316,
+  originalEarlyInputs: 316,
+  m21Inputs: 292,
+});
+for (const row of [...receipt.rows, ...receipt.m21Rows]) assert.equal(row.after, row.before);
+assert.equal(receipt.native.rows.length, 316);
+assert.equal(receipt.native.summary.frameAndOtherRegionsUnchanged, 316);
+assert.deepEqual(receipt.native.summary.regressions, []);
+for (const row of receipt.native.rows) {
+  assert.equal(row.outsideTextChanged, 0);
+  assert.ok(row.isolationPassed);
+}
 
 const server = await createServer({
   configFile: false,

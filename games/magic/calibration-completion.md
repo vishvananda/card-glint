@@ -224,13 +224,16 @@ outliers, names, artist/footer data and placement still need review. The existin
 not become typography evidence retroactively. All 34 unresolved scan poses stay
 in the denominator.
 
-This wording batch is not yet released. The 316-card native replay preserves
-every pixel outside the text regions on 313 cards. Arabian Nights Mountain loses
-its red palette when the type becomes `Land`; Goblin Caves and Goblin Shrine
-select land plates for `Enchant Land` despite their preserved `land: false`
-traits. These three regressions block publication. Frame selectors must preserve
-semantic traits and palettes independently of the displayed type before these
-corrections or text scores are adopted. The affected variants remain pending.
+This wording batch is prepared for 0.4.5. The corrected 316-card native replay
+preserves every pixel outside type/rules/flavor regions. Arabian Nights Mountain
+retains its red palette when the type becomes `Land`; Goblin Caves and Goblin
+Shrine retain enchantment frames for `Enchant Land`. Explicit frame palettes
+also survive wording changes. The [compatibility receipt](fixtures/accuracy/early-expansion-wording-frame-compatibility.json)
+preserves the three failed first-pass renders as evidence, checks all 316
+historical and original-input frame/material selectors, and regenerates all
+292 M21 inputs byte-for-byte unchanged. This clears the wording regressions;
+unsupported frame materials, text fitting and the 34 unresolved scan poses
+remain open.
 
 The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.

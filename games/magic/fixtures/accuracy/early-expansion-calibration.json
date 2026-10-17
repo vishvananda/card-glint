@@ -11136,7 +11136,7 @@
     "sourceGuards": {
       "early-expansion-frame.ts": "102b706da1f446bedd5eced60a58d3c7efac8ee4aa1f231e3c792fef689f40a8",
       "early-expansion-frame-values.ts": "869a8309212be4b29f996686ca4c88d2fb737812c357363c998c731b2d08bb53",
-      "retro-frame.ts": "f1f3b95233112d82d56a37810679ae272d8c1127047d2ed4de99035b2e23ef80",
+      "retro-frame.ts": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c",
       "retro-paint.ts": "a11be8f34dadfb7db917393175a0c762132fbda17b322dd896a85e61f047684a"
     },
     "painterHash": "a774adb30ca14fa6e3a0cc476e712d91f0fbc4461fcca9e2c63fa92847174373",
@@ -20100,6 +20100,19 @@
           ]
         }
       }
+    },
+    "wordingCompatibility": {
+      "evidence": "games/magic/fixtures/accuracy/early-expansion-wording-frame-compatibility.json",
+      "guard": {
+        "before": "f1f3b95233112d82d56a37810679ae272d8c1127047d2ed4de99035b2e23ef80",
+        "after": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c"
+      },
+      "summary": {
+        "historicalEarlyInputs": 316,
+        "originalEarlyInputs": 316,
+        "m21Inputs": 292
+      },
+      "nativeFrameIsolation": 316
     }
   },
   "colorCandidates": {

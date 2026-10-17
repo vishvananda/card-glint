@@ -9,7 +9,7 @@
     "games/magic/fixtures/accuracy/atq/annotations-printed-types.json": "2d99a4968065cb30177d4268aeb338c00349a6e555cb813c2887520f29959200",
     "games/magic/fixtures/accuracy/drk/annotations-missing-rules.json": "3937c52107f1f96d23acba5d3f54d5e1ca18bf1e3b79150f59b4002a668a8757",
     "games/magic/fixtures/accuracy/drk/annotations-printed-types.json": "19ca8357fc3e8039cfa615a73fae935bcb621169c329e19aae3c69051c2db962",
-    "games/magic/tools/accuracy/adapter.mjs": "201e41513f9ec61626ea4954b01fc7477d43a4dd5f775801acb8a7c06dd4e60a",
+    "games/magic/tools/accuracy/adapter.mjs": "eddcff9bbb6e299160897aa7fe6f7206c254cd700df51b58b849cbdc0e28be46",
     "games/magic/tools/accuracy/printing-text.mjs": "a8b2d0f08447740ec15f307efd735686f425263537b18cbc7057fcf93a5631a9",
     "games/magic/tools/accuracy/calibration-wording.mjs": "78d8c09936ede87030d29453405f9209b6b6b223748bee98dadb4d92638b2757",
     "games/magic/tools/accuracy/calibration-original-wording.mjs": "543b56edcf9db18a85d9def771494ca0d510a54038c8f974a5e7a6021b08db78"
@@ -44,14 +44,15 @@
     }
   },
   "artifacts": {
-    "inputs": "ce1d74ec59a0338ea8e59bae2557d621899db8dd6158cf2a32643d669f4708d3",
+    "inputs": "9d88e2f52fe024ee68970219d79fb7970900d0bf886d5247f7cb23fcbfb414f3",
     "priorInputs": "b44aff60b67b3540b4a74f424e6f14e7f4c56cb18304bb3a1a5ab8d646a9d895",
-    "nativeReplay": "2057516a7d6dcb1cfa141ad3e911eeb9a603c3756e80bab123812e878eecf6e9"
+    "nativeReplay": "47a96f9beeae008c544b806a27a10cd1f274e15f99321b16714d67a3a3d401e8"
   },
   "tools": {
-    "early-expansion-original-inputs.mjs": "64c3c554082d595d0f8cdafa6b00957aed86e4c69d59d026b574ab16d1c452ca",
+    "early-expansion-original-inputs.mjs": "1253df13ff344f3e91ac41d20cd5b396dac21401c126907ec61584625030a2f2",
     "early-expansion-wording-evidence.mjs": "5687bc7f6e5a0677a8d2ba6ca67be8299206728c8c27d4b571fd3fedb837ed27",
-    "early-expansion-original-receipt.mjs": "8e6112eafc76f90535c549635f24820e445cefadd8acc3b9ddb513ca46b54a70"
+    "early-expansion-original-receipt.mjs": "8e6112eafc76f90535c549635f24820e445cefadd8acc3b9ddb513ca46b54a70",
+    "early-expansion-wording-adoption.mjs": "73301795f61f84502c58ff89aa77232d3a2a0962531038c2d2de460c807b4f7c"
   },
   "summary": {
     "cards": 316,
@@ -103,65 +104,21 @@
     }
   },
   "native": {
-    "status": "frame-regression-review",
-    "rendererHash": "ea17ee831ac4a85f051eb2b698c3f748bbc399a959171a9df405c2c5f5a63ae6",
+    "status": "original-wording-baseline",
+    "rendererHash": "a1dedee1007800514f9f62b86c6549af93f4cc4bf950517c57ca387fc16610af",
     "runnerHash": "f8f229632d74e1f23d6cf7d787276e66ae7e88a26c8016d070ac647a0387ce5b",
     "normalizationHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1",
     "summary": {
       "cards": 316,
       "changed": 218,
       "unchanged": 98,
-      "frameAndOtherRegionsUnchanged": 313,
+      "frameAndOtherRegionsUnchanged": 316,
       "normalizationAccepted": 282,
       "normalizationReview": 34,
-      "regressions": [
-        {
-          "id": "c321d0e1-ff30-4424-979b-25e1a33e45d5",
-          "name": "Mountain",
-          "set": "arn",
-          "outsideTextChanged": 50714
-        },
-        {
-          "id": "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
-          "name": "Goblin Caves",
-          "set": "drk",
-          "outsideTextChanged": 49903
-        },
-        {
-          "id": "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
-          "name": "Goblin Shrine",
-          "set": "drk",
-          "outsideTextChanged": 49823
-        }
-      ]
+      "regressions": []
     }
   },
-  "renderingBlockers": [
-    {
-      "id": "c321d0e1-ff30-4424-979b-25e1a33e45d5",
-      "name": "Mountain",
-      "set": "arn",
-      "status": "open",
-      "reason": "The printed type Land removes the semantic Mountain subtype. Palette preservation and the mono-color retro-land fallback currently cover only LEA/LEB/2ED/3ED, so this input switches seventh/regular/rl.png to l.png. Preserve semantic frame selection independently of displayed wording before adopting the original-wording render.",
-      "observedPixelsOutsideText": 50714
-    },
-    {
-      "id": "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
-      "name": "Goblin Caves",
-      "set": "drk",
-      "status": "open",
-      "reason": "The printed Enchant Land type activates the fallback land-plate selector despite the preserved land:false trait. Frame selection must respect semantic traits independently of the visible type.",
-      "observedPixelsOutsideText": 49903
-    },
-    {
-      "id": "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
-      "name": "Goblin Shrine",
-      "set": "drk",
-      "status": "open",
-      "reason": "The printed Enchant Land type activates the fallback land-plate selector despite the preserved land:false trait. Frame selection must respect semantic traits independently of the visible type.",
-      "observedPixelsOutsideText": 49823
-    }
-  ],
+  "renderingBlockers": [],
   "rows": [
     {
       "id": "0014def3-4063-4929-ac51-76aef1bb2a68",
@@ -1239,7 +1196,7 @@
       "set": "arn",
       "name": "Mountain",
       "number": "77",
-      "inputHash": "d32a0378126a924974a8857ad038be2b2a01fd745ce7366363216160359d870e",
+      "inputHash": "6e9140bf57f05e911bbb4e9374eb1b9a806d8bbd75176c4becd966c7aa6130d4",
       "rules": "mtgjson-original",
       "type": "scan-reviewed",
       "flavor": "printing-metadata-unreviewed",
@@ -5537,9 +5494,40 @@
     }
   ],
   "next": [
-    "Fix the original-wording land-palette regression before publishing this wording batch.",
-    "Replay corrected inputs with frozen scan poses before scoring typography.",
+    "Fit shared typography on calibration names and assess extrapolation on reserved names using these original inputs and frozen scan poses.",
     "Review provider transcription, flavor formatting, printed names and artist/footer fields separately.",
-    "Fit shared typography on calibration names; reserved names assess extrapolation."
-  ]
+    "Keep all 34 unresolved normalizations and unsupported frame materials in the denominator."
+  ],
+  "compatibilityEvidence": "games/magic/fixtures/accuracy/early-expansion-wording-frame-compatibility.json",
+  "resolvedRenderingBlockers": [
+    {
+      "id": "c321d0e1-ff30-4424-979b-25e1a33e45d5",
+      "name": "Mountain",
+      "set": "arn",
+      "outsideTextChanged": 50714,
+      "status": "resolved",
+      "result": "Original wording retains the historical frame/material/geometry selectors and changes zero native pixels outside type/rules/flavor regions."
+    },
+    {
+      "id": "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
+      "name": "Goblin Caves",
+      "set": "drk",
+      "outsideTextChanged": 49903,
+      "status": "resolved",
+      "result": "Original wording retains the historical frame/material/geometry selectors and changes zero native pixels outside type/rules/flavor regions."
+    },
+    {
+      "id": "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
+      "name": "Goblin Shrine",
+      "set": "drk",
+      "outsideTextChanged": 49823,
+      "status": "resolved",
+      "result": "Original wording retains the historical frame/material/geometry selectors and changes zero native pixels outside type/rules/flavor regions."
+    }
+  ],
+  "visualReview": {
+    "artifactHash": "ed6eb3322cf45d2217ecf108e659fccd879d4916102d6872573ce8315f3619ab",
+    "cards": ["Mountain", "Goblin Caves", "Goblin Shrine"],
+    "result": "Land/colored-land/enchantment plate selection is restored. Mountain still uses an uncalibrated basic-land source; the two red enchantments retain the prior unsupported red source. Title/body weight, line breaks, margins, symbols, footer and color/geometry differences are still visible and remain open. This is regression isolation, not a visual-match approval."
+  }
 }
