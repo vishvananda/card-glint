@@ -36,7 +36,8 @@ try {
 precision highp float;
 uniform vec2 probe;
 uniform float surfaceTime,aspect;
-const vec4 ripple0=vec4(.5,.5,0.,1025.5),ripple1=vec4(0.),ripple2=vec4(0.),ripple3=vec4(0.);
+uniform vec4 ripple0;
+const vec4 ripple1=vec4(0.),ripple2=vec4(0.),ripple3=vec4(0.);
 ${kernel}
 out vec4 color;
 void main(){vec2 drag;vec3 r=rippleWake(probe,drag);color=vec4(length(r.xy)*4.,r.z*.5+.5,0.,1.);}`,
@@ -48,6 +49,7 @@ void main(){vec2 drag;vec3 r=rippleWake(probe,drag);color=vec4(length(r.xy)*4.,r
     gl.useProgram(program);
     gl.viewport(0, 0, 1, 1);
     gl.uniform1f(gl.getUniformLocation(program, 'surfaceTime'), 0.4);
+    gl.uniform4f(gl.getUniformLocation(program, 'ripple0'), 0.5, 0.5, 0, 1025.5);
     const rows = [];
     for (const aspect of [1, 1.4, 0.7]) {
       gl.uniform1f(gl.getUniformLocation(program, 'aspect'), aspect);
@@ -66,7 +68,29 @@ void main(){vec2 drag;vec3 r=rippleWake(probe,drag);color=vec4(length(r.xy)*4.,r
       }
       rows.push({ aspect, samples });
     }
-    return { rows, error: gl.getError() };
+    // A slight pointer movement turns a tap into a short stroke. Both rounded
+    // ends must still emit: previously a directional taper erased the rear cap.
+    gl.uniform1f(gl.getUniformLocation(program, 'aspect'), 1);
+    const caps = [];
+    for (const direction of [-1, 1]) {
+      const qx = Math.round(((direction * 0.025) / 0.24 + 0.5) * 2047);
+      const seg = (qx / 2047 - 0.5) * 0.24;
+      gl.uniform4f(gl.getUniformLocation(program, 'ripple0'), 0.5, 0.5, 0, 1 + qx + 0.5);
+      for (const end of [-1, 1]) {
+        const localAge = 0.4 - (end * Math.min(0.14, Math.abs(seg) * 1.5)) / 2;
+        const radius = Math.sqrt((0.016 + localAge * 0.23) ** 2 - 0.014 ** 2);
+        gl.uniform2f(
+          gl.getUniformLocation(program, 'probe'),
+          0.5 + end * seg + end * direction * radius,
+          0.5,
+        );
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        const pixel = new Uint8Array(4);
+        gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
+        caps.push({ direction, end, pixel: [...pixel] });
+      }
+    }
+    return { rows, caps, error: gl.getError() };
   }, kernel);
   assert.equal(result.error, 0);
   for (const { samples } of result.rows) {
@@ -81,8 +105,10 @@ void main(){vec2 drag;vec3 r=rippleWake(probe,drag);color=vec4(length(r.xy)*4.,r
         'Tap rings have equal height/slope around the physical radius',
       );
   }
+  for (const cap of result.caps)
+    assert.ok(cap.pixel[0] > 10, `Complete stroke cap: ${JSON.stringify(cap)}`);
   console.log(
-    'PASS flat tap rings remain circular across card aspect ratios (Linux Chromium / SwiftShader)',
+    'PASS flat tap rings remain circular and both stroke end caps survive in either direction (Linux Chromium / SwiftShader)',
   );
 } finally {
   await browser.close();
