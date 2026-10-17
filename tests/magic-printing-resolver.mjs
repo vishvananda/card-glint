@@ -29,6 +29,32 @@ try {
   };
   const input = { oracle, original },
     snapshot = structuredClone(input);
+  const reviewedStats = await fixture('atq/annotations-stats.json');
+  for (const [id, row] of Object.entries(reviewedStats.cards)) {
+    const values = {
+      oracle: { ...oracle, power: '1+*', toughness: '7-*' },
+      original: { ...original, power: '1+*', toughness: '7-*' },
+    };
+    const snapshot = structuredClone(values);
+    const resolved = resolvePrintingWording(id, values, { referenceSha256: row.referenceHash });
+    assert.equal(resolved.wordings.original.power, row.power);
+    assert.equal(resolved.wordings.original.toughness, row.toughness);
+    assert.equal(resolved.wordings.oracle.power, values.oracle.power);
+    assert.equal(resolved.wordings.oracle.toughness, values.oracle.toughness);
+    assert.equal(
+      withCardWording({ name: row.name }, resolved.wordings, 'original').toughness,
+      row.toughness,
+    );
+    assert.equal(
+      withCardWording({ name: row.name }, resolved.wordings, 'oracle').toughness,
+      values.oracle.toughness,
+    );
+    const rejected = resolvePrintingWording(id, values, { referenceSha256: '0'.repeat(64) });
+    assert.equal(rejected.provenance.status, 'reference-mismatch');
+    assert.equal(rejected.wordings.original.power, values.original.power);
+    assert.equal(rejected.wordings.original.toughness, values.original.toughness);
+    assert.deepEqual(values, snapshot);
+  }
   let earlyTypes = 0;
   const reviewedBodies = new Set();
   for (const set of ['arn', 'atq', 'drk']) {

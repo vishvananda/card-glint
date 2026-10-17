@@ -49,6 +49,7 @@ import { paintMana, paintSetSymbol } from './canvas-text.js';
 import { paintEarlyCost, paintRevisedCost, paintEarlyMana } from './historic-cost.js';
 import { usesEarlyCredits, paintEarlyCredits } from './early-credits.js';
 import { paintEarlyExpansionArtist } from './early-expansion-artist.js';
+import { paintEarlyExpansionStats } from './early-expansion-stats.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { retroTextLayout } from './retro-rules.js';
 import {
@@ -349,7 +350,7 @@ export function paintRetroFace(
   c.fillStyle = retroInk(face);
   c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
   c.textBaseline = 'middle';
-  if (face.power != null && face.toughness != null) {
+  if (face.power != null && face.toughness != null && !paintEarlyExpansionStats(c, face)) {
     const [sx, sy, sw, sh] = retroPx(rect.stats);
     const placement = retroStatsPlacement(face);
     c.textAlign = placement ? 'right' : 'center';
