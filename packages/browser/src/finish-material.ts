@@ -3,6 +3,9 @@ import { SURFACE_GLSL } from './gpu/surface-shader.js';
 import { WORN_GLSL } from './gpu/worn-shader.js';
 import { GpuEtcher, program } from './gpu/etcher.js';
 import { Caustics } from './gpu/caustics.js';
+import type { CardDocument, Lease, RasterHost } from './types.js';
+import type { TextureStore, Texture } from './gpu/textures.js';
+import type { Preparer } from './prepare.js';
 
 export function modernSurfaceShader(): string {
   const foil = foilShader()
@@ -36,9 +39,16 @@ vec3 modernSurface(vec2 uv,vec3 normal,vec3 view,vec2 wear,vec2 pixel) {
 const copyFragment = `#version 300 es
 precision highp float;
 uniform sampler2D source;
+uniform sampler2D coverage;
+uniform bool hasCoverage;
 uniform vec2 size;
 out vec4 color;
-void main(){color=vec4(texture(source,gl_FragCoord.xy/size).rrr,1.);}`;
+void main(){
+ vec2 uv=gl_FragCoord.xy/size;
+ float value=texture(source,uv).r;
+ if(hasCoverage){vec4 c=texture(coverage,uv);value=max(value,c.b)*(1.-c.a);}
+ color=vec4(vec3(value),1.);
+}`;
 
 export class FinishResources {
   private canvas = document.createElement('canvas');
@@ -50,6 +60,11 @@ export class FinishResources {
   private vao?: WebGLVertexArrayObject;
   private poolTime = NaN;
   private disposed = false;
+  private documentTextures?: TextureStore;
+  private documentPreparer?: Preparer;
+  private documentHost?: RasterHost;
+  private documentQueue: Promise<void> = Promise.resolve();
+  private documentControllers = new Set<AbortController>();
   constructor() {
     const gl = this.canvas.getContext('webgl2', {
       alpha: false,
@@ -63,15 +78,26 @@ export class FinishResources {
   }
   private lost = (event: Event) => {
     event.preventDefault();
+    for (const controller of this.documentControllers) controller.abort();
   };
   private restored = () => {
+    this.documentPreparer?.dispose();
+    this.documentTextures?.dispose();
+    this.documentPreparer = undefined;
+    this.documentTextures = undefined;
     this.etcher = undefined;
     this.pool = undefined;
     this.copy = undefined;
     this.vao = undefined;
     this.poolTime = NaN;
   };
-  private draw(map: WebGLTexture, width: number, height: number, target: HTMLCanvasElement) {
+  private draw(
+    map: WebGLTexture,
+    width: number,
+    height: number,
+    target: HTMLCanvasElement,
+    coverage?: Texture,
+  ) {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
     const gl = this.gl;
     const copy: WebGLProgram = (this.copy ??= program(gl, copyFragment)!);
@@ -91,6 +117,10 @@ export class FinishResources {
     gl.bindTexture(gl.TEXTURE_2D, map);
     gl.uniform1i(gl.getUniformLocation(copy, 'source'), 0);
     gl.uniform2f(gl.getUniformLocation(copy, 'size'), width, height);
+    gl.uniform1i(gl.getUniformLocation(copy, 'hasCoverage'), coverage ? 1 : 0);
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, coverage?.texture ?? map);
+    gl.uniform1i(gl.getUniformLocation(copy, 'coverage'), 1);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     if (target.width !== width || target.height !== height) {
       target.width = width;
@@ -112,6 +142,93 @@ export class FinishResources {
       this.gl.deleteTexture(map);
     }
   }
+  async documentMask(
+    document: CardDocument,
+    host: RasterHost,
+    signal: AbortSignal,
+  ): Promise<HTMLCanvasElement> {
+    signal.throwIfAborted();
+    if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
+    const controller = new AbortController();
+    const abort = () => controller.abort(signal.reason);
+    signal.addEventListener('abort', abort, { once: true });
+    this.documentControllers.add(controller);
+    const run = async () => {
+      controller.signal.throwIfAborted();
+      const [{ initializeRenderer }, { TextureStore }, { Preparer }, raster] = await Promise.all([
+        import('./renderer.js'),
+        import('./gpu/textures.js'),
+        import('./prepare.js'),
+        import('./raster.js'),
+      ]);
+      await initializeRenderer();
+      controller.signal.throwIfAborted();
+      if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
+      this.documentTextures ??= new TextureStore(this.gl, 16 * 1024 * 1024, 8 * 1024 * 1024);
+      this.documentPreparer ??= new Preparer(this.documentTextures, {
+        images: (requests, paintSignal) => this.documentHost!.images(requests, paintSignal),
+      });
+      this.documentHost = host;
+      let mask: Lease<Texture> | undefined;
+      let coverage: Lease<Texture> | undefined;
+      try {
+        mask = await this.documentPreparer.prepareMask(document, controller.signal);
+        const layers = raster.layersOf(document).filter((layer) => layer.etchCoverage);
+        if (layers.length) {
+          const bytes = await raster.paintCoverage(
+            document.recipe.color.size,
+            layers,
+            host,
+            controller.signal,
+          );
+          controller.signal.throwIfAborted();
+          coverage = this.documentTextures.uploadBytes(
+            JSON.stringify([
+              'finish-etch-coverage-v1',
+              document.recipe.color.size,
+              layers.map((layer) => [
+                layer.clip,
+                layer.etchCoverage?.add?.key,
+                layer.etchCoverage?.exclude?.key,
+              ]),
+            ]),
+            bytes,
+            document.recipe.color.size,
+          );
+        }
+        controller.signal.throwIfAborted();
+        const result = window.document.createElement('canvas');
+        try {
+          this.draw(
+            mask.value.texture,
+            mask.value.width,
+            mask.value.height,
+            result,
+            coverage?.value,
+          );
+          return result;
+        } catch (error) {
+          result.width = result.height = 0;
+          throw error;
+        }
+      } finally {
+        coverage?.release();
+        mask?.release();
+        this.documentHost = undefined;
+      }
+    };
+    const ready = this.documentQueue.then(run);
+    this.documentQueue = ready.then(
+      () => {},
+      () => {},
+    );
+    try {
+      return await ready;
+    } finally {
+      signal.removeEventListener('abort', abort);
+      this.documentControllers.delete(controller);
+    }
+  }
   caustics(time: number): HTMLCanvasElement {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
     this.pool ??= new Caustics(this.gl);
@@ -125,6 +242,10 @@ export class FinishResources {
   dispose() {
     if (this.disposed) return;
     this.disposed = true;
+    for (const controller of this.documentControllers) controller.abort();
+    this.documentControllers.clear();
+    this.documentPreparer?.dispose();
+    this.documentTextures?.dispose();
     this.canvas.removeEventListener('webglcontextlost', this.lost);
     this.canvas.removeEventListener('webglcontextrestored', this.restored);
     this.etcher?.dispose();

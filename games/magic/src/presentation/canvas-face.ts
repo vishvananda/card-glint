@@ -219,6 +219,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.manaSymbols ?? [],
         face.symbolAdjustment ?? null,
         face.typeLine ?? '',
+        face.canonicalTypeLine ?? null,
         face.rulesText ?? '',
         face.rulesParagraphs ?? null,
         face.wordingMode ?? null,

@@ -16,7 +16,7 @@ export function usesModernCostMana(face: RenderedCardInput): boolean {
     face.frameAssetFamily === undefined &&
     face.frameTemplate === undefined &&
     (face.layout ?? 'normal') === 'normal' &&
-    !/\b(Saga|Class|Planeswalker|Battle)\b/i.test(face.typeLine ?? '') &&
+    !/\b(Saga|Class|Planeswalker|Battle)\b/i.test(face.canonicalTypeLine ?? face.typeLine ?? '') &&
     !/^Level up\b/m.test(face.rulesText ?? '')
   );
 }

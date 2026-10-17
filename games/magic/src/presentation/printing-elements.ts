@@ -22,7 +22,7 @@ export function validatePrintingElements(face: RenderedCardInput): void {
     face.faces?.length ||
     (face.layout && !['normal', 'token'].includes(face.layout)) ||
     (face.frameTemplate && face.frameTemplate !== 'future') ||
-    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') ||
+    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') ||
     /^Level up\b/m.test(face.rulesText ?? '')
   )
     throw Error('Printing element controls require an ordinary face or Futureshifted template.');

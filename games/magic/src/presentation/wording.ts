@@ -49,10 +49,11 @@ export function withCardWording(
   return {
     ...face,
     ...selected,
+    canonicalTypeLine: face.canonicalTypeLine ?? wordings.oracle.typeLine,
     frameColors:
       face.frameColors ??
       (profile.land && !face.colors?.length
-        ? landSubtypePalette(wordings.oracle.typeLine)
+        ? landSubtypePalette(face.canonicalTypeLine ?? wordings.oracle.typeLine)
         : undefined),
     manaSymbols:
       selected.manaSymbols ??

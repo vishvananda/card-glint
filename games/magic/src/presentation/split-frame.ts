@@ -15,7 +15,12 @@ const eighthSets = new Set('dis plc cmd pc2 dgm mma c13'.split(' '));
 /** Only spell splits use these plates. Rooms and Aftermath retain separate adapters. */
 export function nativeSplitEra(face: RenderedCardInput): SplitEra | null {
   if (face.layout !== 'split' || face.faces?.length !== 2 || isAftermath(face)) return null;
-  if (face.faces.some((half) => !/^(Instant|Sorcery)\b/.test(half.typeLine ?? ''))) return null;
+  if (
+    face.faces.some(
+      (half) => !/^(Instant|Sorcery)\b/.test(half.canonicalTypeLine ?? half.typeLine ?? ''),
+    )
+  )
+    return null;
   if (
     isRetro({ ...face, layout: 'normal', frameStyle: face.frameStyle ?? face.faces[0]?.frameStyle })
   )

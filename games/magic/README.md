@@ -47,6 +47,12 @@ override with the rest of the presentation input. For historical `Summon` type
 labels, supply `creature: true` so changing the visible type does not lose that
 semantic flag.
 
+Supply `canonicalTypeLine` for an effective English type independently of the
+visible localized or historical `typeLine`. Profiles, Futureshifted type icons,
+native split routing, and printing compatibility use that semantic value without
+changing the printed label. Provider wording adapters preserve the Oracle type
+by default; a host-supplied effective canonical type takes precedence.
+
 For script-only inclusion, use `magic.js` and a stylesheet link to `magic.css`
 beside `browser.js` in the browser release or version-pinned CDN tree.
 The browser ZIP includes `magic.html`: serve the extracted directory over HTTP

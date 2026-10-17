@@ -134,7 +134,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       },
       stamp: {
         key: JSON.stringify([
-          'mtg-stamp-v5',
+          'mtg-stamp-v6',
           tier,
           face.setCode,
           ...(face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
@@ -143,6 +143,7 @@ export const mtg: GamePack<RenderedCardInput> = {
             child.face.setCode,
             faceEtchingSymbol(child.face),
             child.face.setSymbolMask ?? 'auto',
+            ...(child.face.printingElements?.setSymbol?.hidden ? [['hidden-set-symbol']] : []),
             ...(child.face.printingElements?.setSymbol?.offset
               ? [['set-symbol-offset', child.face.printingElements.setSymbol.offset]]
               : []),

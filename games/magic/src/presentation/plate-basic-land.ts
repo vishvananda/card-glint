@@ -11,9 +11,11 @@ const COLORS: Readonly<Record<string, string>> = {
 };
 
 /** The printed subtype supplies a basic land's palette; its rules colors are empty. */
-export function basicLandColor(face: Pick<RenderedCardInput, 'typeLine'>): string | undefined {
+export function basicLandColor(
+  face: Pick<RenderedCardInput, 'typeLine' | 'canonicalTypeLine'>,
+): string | undefined {
   const type = /^Basic (?:Snow )?Land [—–-] (Plains|Island|Swamp|Mountain|Forest)$/.exec(
-    face.typeLine ?? '',
+    face.canonicalTypeLine ?? face.typeLine ?? '',
   )?.[1];
   return type ? COLORS[type] : undefined;
 }

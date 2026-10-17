@@ -65,6 +65,14 @@ The same entry exposes geometry for DOM accessibility and inline editing. Import
 allow custom set marks without changing the visible `setCode`. Asset provenance
 and the fan notice remain in [games/magic](../games/magic/README.md).
 
+`createRenderer({canvas, rasterHost})` accepts an optional `RasterHost` for all
+card rasters, artwork edge sources, layers, scene rasters and exports. Omit it
+to retain the renderer's bounded decoded-asset store. A supplied host owns its
+decoded images, cache budget and leases; every `images(requests, signal)` call
+must honor `AssetRequest.width` and release only that request's borrowed images.
+Capture the correct source scope when each request starts, and cancel obsolete
+document work before replacing a document-specific source scope.
+
 ## Finish shader contract
 
 `foilShader({artWindows: 'pair', liquid: false})` returns GLSL functions, not a
@@ -86,6 +94,32 @@ It is separate from the complete renderer's newer rain/heat/pool treatments.
 Shader programs compile once per context/material variant. Updating pose, finish
 or reflection uniforms must not compose faces, derive masks or upload static
 textures. Keep residency and disposal at the same scope as the scene context.
+
+`FinishResources.documentMask(document, rasterHost, signal)` prepares the same
+artwork edges, imported alpha masks, native stamp and contributing layers as the
+complete renderer. For Magic, supply
+`{id, revision, recipe: magic.describe(resolvedFace, 'inspect')}` with the same
+resolved printing, per-face artwork placement and symbol settings used for color.
+The pack's stamp painter owns styled/native symbols, alpha versus dark-ink
+extraction, hidden/offset elements and its generic missing-symbol mark.
+
+The returned canvas stores linear mask coverage in RGB with opaque alpha,
+including `max(base, etchAdd) * (1 - etchExclude)`. Upload it without premultiplying
+or sRGB conversion; `modernSurfaceShader` samples its red channel. Finish coverage
+and protected-ink exclusions remain the host material's separate responsibility.
+The caller owns the returned canvas and its uploaded texture. Cache them by
+immutable recipe/source revision, dimensions and algorithm, releasing canvases
+and textures on eviction. Never call this preparation API from a frame loop.
+
+Standalone preparation is serialized through a bounded 16 MiB texture cache and
+8 MiB edge scratch budget, sharing the full renderer's mask composer rather than
+reimplementing its GPU pipeline. Source/image leases and temporary GPU leases
+release after preparation. It snapshots the resulting mask to a host-owned canvas
+once; it does not perform per-frame mask readback. WASM initialization is lazy and
+shared with `createRenderer`; importing the finish entry point or calling the
+generic `mask(source, width, height)` path does not initialize renderer WASM.
+Aborts, context loss and `dispose()` cancel standalone work. Dispose the
+`FinishResources` owner when the host's resource scope ends.
 
 ## Pixel kernels
 
