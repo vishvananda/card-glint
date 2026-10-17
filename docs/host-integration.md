@@ -43,6 +43,13 @@ numeric inset argument, followed by optional `CardTextInk` and the type/stats ro
 Native rules suppression and geometry stay in the game pack. Custom layouts,
 interaction panels, fallback policy and animation scheduling belong to the host.
 
+The host compatibility runner compares default pixels, text measurements and
+layouts against upstream 0.4.12 at `8dd2e4d47b2ea739c433afcaf4e05535c592b376`.
+Run `node tests/magic-native-host-compatibility.mjs` after building WASM.
+Its 870 probes use synthetic plates and browser fonts, not fresh scan calibration.
+Historical calibration checks first prove host compatibility, then reverse the
+reviewed title and calibration-policy changes without replacing receipt hashes.
+
 `createRenderer({canvas, rasterHost})` accepts an optional `RasterHost` for all
 card rasters, artwork edge sources, layers, scene rasters and exports. Omit it
 to retain the renderer's bounded decoded-asset store. A supplied host owns its

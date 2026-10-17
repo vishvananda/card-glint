@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "a79aa84a6a95375a56ab174903e699baa2ee5387",
+  "evidenceHash": "c346c10c3dc32221a80e1dc7db8cbe39b8bbdecb3554f20094404a4160d74b98",
+  "policy": "Title-only native-isolated extension. Reconstruct complete pre-title files for historical non-title evidence; do not rewrite frozen measurements.",
+  "dependencies": {
+    "games/magic/src/presentation/early-expansion-title.ts": "939f703cedf15351560da249f6a98440994f3a7409060628a5ebd53453225e93",
+    "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+    "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+    "games/magic/src/presentation/canvas-face.ts": "18eeedf2a721bfb49ccdc1c00f1cc27febff4986cdb3032be16553e439f1a039",
+    "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
+    "games/magic/src/presentation/retro-font.ts": "4ec3606aa337bd210f82ae49533342ea48db666d835e82901255625626f13a35",
+    "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
+    "games/magic/src/presentation/title-placement.ts": "38e0d6870413f5a4d1e702e27aead1f446096a3acdd09113ceea56275cb79cf7"
+  },
+  "files": {
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "751217ee8f50126bd9a84b1bbc4e9a457cdf1a763385b84789c191151e674a86",
+      "after": "18eeedf2a721bfb49ccdc1c00f1cc27febff4986cdb3032be16553e439f1a039",
+      "reverseEdits": [
+        {
+          "start": 139,
+          "count": 1,
+          "lines": ["    'canvas-face-v144',\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "9a7a1072c53594e30bd767b758477cce18fc873c250d431700c8aa626a0a5f4a",
+      "after": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
+      "reverseEdits": [
+        {
+          "start": 170,
+          "count": 2,
+          "lines": ["  else c.fillText(face.name, titleX, titleY, titleWidth);\n"]
+        },
+        {
+          "start": 13,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

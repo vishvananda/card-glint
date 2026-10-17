@@ -3,13 +3,14 @@ import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { calibrationLegacySource } from './magic-calibration-source-guard.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
+import { preTitleCalibrationSource } from './magic-title-source-guard.mjs';
 import {
   assertNativeDefaultCompatibility,
   nativeHostSources,
 } from './magic-native-host-compatibility.mjs';
 import { readNativeReference } from './magic-native-reference.mjs';
 
-async function readNativeHostSource(file) {
+export async function readNativeHostSource(file) {
   const bytes = await readFile(file);
   const change = nativeHostSources.files[file];
   if (!change || hash(bytes) === change.before) return bytes;
@@ -21,10 +22,14 @@ async function readNativeHostSource(file) {
   return reference;
 }
 
-/** Prove current host hooks against 0.4.10 before applying upstream's separately
- * bounded calibration-policy reversal to the unchanged historical receipts. */
+async function readPreTitleHostSource(file) {
+  return preTitleCalibrationSource(file, readNativeHostSource);
+}
+
+/** Prove current host hooks against upstream before reversing the separately
+ * verified title and calibration changes for unchanged historical receipts. */
 export async function readNativeCompatibleSource(file) {
-  return calibrationLegacySource(file, readNativeHostSource);
+  return calibrationLegacySource(file, readPreTitleHostSource);
 }
 
 export async function assertNativeMagicSourceHash(file, expected) {

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preTitleCalibrationSource } from './magic-title-source-guard.mjs';
 const verified = new WeakMap();
 async function proof(readSource) {
   let verification = verified.get(readSource);
@@ -39,7 +40,7 @@ async function proof(readSource) {
  * New policy tests always run the current code; this applies only to old evidence.
  * A supplied reader must independently prove any host extension before returning
  * upstream bytes, including every policy dependency verified above. */
-export async function calibrationLegacySource(file, readSource = readFile) {
+export async function calibrationLegacySource(file, readSource = preTitleCalibrationSource) {
   const bytes = await readSource(file),
     extension = await proof(readSource),
     change = extension.files[file];
