@@ -1,15 +1,15 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
-import { paintRetroLetterEdges } from './retro-lettering.js';
+import { paintSolidTitle } from './solid-title.js';
 
 const profiles = {
-  arn: { size: 26.5, x: 38.5, y: 42.5, width: 1, edge: 1, shadow: 0 },
-  atq: { size: 26.5, x: 38.5, y: 42.5, width: 1, edge: 1, shadow: 0 },
-  drk: { size: 26.25, x: 37, y: 42.5, width: 1.035, edge: 0, shadow: 2 },
+  arn: { size: 26.75, x: 37.75, y: 42.5, width: 0.995, shadow: 1.25, trim: 0.4, gray: 196 },
+  atq: { size: 26.5, x: 38, y: 42.5, width: 1, shadow: 1.25, trim: 0.4, gray: 196 },
+  drk: { size: 27.25, x: 37.25, y: 43, width: 1, shadow: 1.5, trim: 0.2, gray: 208 },
 } as const;
 
 /** Shared set typography, fitted with original names and frozen scan poses.
- * ARN/ATQ retain open light/dark letter edges; DRK uses solid light ink.
+ * Solid light-gray lettering with thin strokes and a lower-right shadow.
  * Unresolved DRK land/gold plates and custom frame choices keep their prior style.
  * See early-expansion-titles.json for native replay and repeated validation. */
 export function earlyExpansionTitle(face: RenderedCardInput) {
@@ -43,12 +43,7 @@ export function paintEarlyExpansionTitle(
   c.scale(p.width, 1);
   c.font = `${p.size}px "CardRenderer MTG Goudy", Georgia`;
   const width = Math.max(1, (right - p.x) / p.width);
-  if (p.edge) paintRetroLetterEdges(c, face.name, 0, 0, width, p.edge);
-  else {
-    // Canvas shadows use backing pixels; canonical offsets follow render scale.
-    c.shadowOffsetX = c.shadowOffsetY = c.getTransform().d * p.shadow;
-    c.fillText(face.name, 0, 0, width);
-  }
+  paintSolidTitle(c, face.name, 0, 0, width, p);
   c.restore();
   return true;
 }

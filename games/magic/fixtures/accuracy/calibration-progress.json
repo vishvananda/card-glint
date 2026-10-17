@@ -11181,7 +11181,7 @@
                 "totalPrintings": 13,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -11269,8 +11269,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 13/13 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -11291,7 +11291,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -11324,6 +11324,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -11633,7 +11637,7 @@
                 "totalPrintings": 2,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -11716,8 +11720,8 @@
               }
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 2/2 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -11738,7 +11742,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -11771,6 +11775,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -12069,7 +12077,7 @@
                 "totalPrintings": 2,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -12157,8 +12165,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 2/2 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -12179,7 +12187,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -12212,6 +12220,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -12528,7 +12540,7 @@
                 "totalPrintings": 12,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -12616,8 +12628,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 12/12 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -12638,7 +12650,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -12671,6 +12683,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -12922,7 +12938,7 @@
                 "totalPrintings": 7,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -13010,8 +13026,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 7/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -13032,7 +13048,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -13065,6 +13081,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -13312,7 +13332,7 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -13400,8 +13420,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -13422,7 +13442,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -13455,6 +13475,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -13708,7 +13732,7 @@
                 "totalPrintings": 5,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -13802,8 +13826,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 5/5 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -13824,7 +13848,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -13857,6 +13881,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -14053,7 +14081,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -14136,8 +14164,8 @@
               }
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -14158,7 +14186,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -14191,6 +14219,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -14512,7 +14544,7 @@
                 "totalPrintings": 12,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -14602,7 +14634,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 11/12 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -14623,7 +14655,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -14656,6 +14688,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -14962,7 +14998,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -15045,8 +15081,8 @@
               }
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -15067,7 +15103,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -15100,6 +15136,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -15407,7 +15447,7 @@
                 "totalPrintings": 10,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -15501,8 +15541,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 10/10 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -15523,7 +15563,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -15556,6 +15596,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -15862,7 +15906,7 @@
                 "totalPrintings": 3,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -15950,8 +15994,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -15972,7 +16016,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -16005,6 +16049,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -16270,7 +16318,7 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -16364,8 +16412,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -16386,7 +16434,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -16419,6 +16467,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -16691,7 +16743,7 @@
                 "totalPrintings": 7,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -16779,8 +16831,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 7/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -16801,7 +16853,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -16834,6 +16886,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -17079,7 +17135,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -17162,8 +17218,8 @@
               }
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -17184,7 +17240,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -17217,6 +17273,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -17483,7 +17543,7 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -17572,8 +17632,8 @@
               }
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -17594,7 +17654,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -17627,6 +17687,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -17877,7 +17941,7 @@
                 "totalPrintings": 3,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -17965,8 +18029,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -17987,7 +18051,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -18020,6 +18084,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -18277,7 +18345,7 @@
                 "totalPrintings": 17,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -18371,8 +18439,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 17/17 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -18393,7 +18461,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -18426,6 +18494,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -18706,7 +18778,7 @@
                 "totalPrintings": 28,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -18795,8 +18867,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 28/28 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -18817,7 +18889,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -18850,6 +18922,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -19134,7 +19210,7 @@
                 "totalPrintings": 21,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -19223,8 +19299,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 21/21 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -19245,7 +19321,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -19278,6 +19354,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -19522,7 +19602,7 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -19610,8 +19690,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -19632,7 +19712,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -19665,6 +19745,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -19915,7 +19999,7 @@
                 "totalPrintings": 3,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -20003,8 +20087,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -20025,7 +20109,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -20058,6 +20142,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -20375,7 +20463,7 @@
                 "totalPrintings": 5,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -20466,7 +20554,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/5 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -20487,7 +20575,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -20520,6 +20608,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -20829,7 +20921,7 @@
                 "totalPrintings": 3,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -20922,7 +21014,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -20943,7 +21035,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -20976,6 +21068,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -21218,7 +21314,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -21301,8 +21397,8 @@
               }
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 1/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -21323,7 +21419,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -21356,6 +21452,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -21610,7 +21710,7 @@
                 "totalPrintings": 6,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -21709,8 +21809,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 6/6 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -21731,7 +21831,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -21764,6 +21864,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -22064,7 +22168,7 @@
                 "totalPrintings": 3,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -22158,8 +22262,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 3/3 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -22180,7 +22284,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -22213,6 +22317,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -22521,7 +22629,7 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -22609,8 +22717,8 @@
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-text-runtime.json"]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -22631,7 +22739,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -22664,6 +22772,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -30373,7 +30485,7 @@
                 "totalPrintings": 11,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -30459,8 +30571,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 11/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -30481,7 +30593,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -30514,6 +30626,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -30830,7 +30946,7 @@
                 "totalPrintings": 7,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -30916,8 +31032,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 7/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -30938,7 +31054,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -30971,6 +31087,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -31175,7 +31295,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -31261,7 +31381,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -31282,7 +31402,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -31315,6 +31435,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -31515,7 +31639,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -31601,7 +31725,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -31622,7 +31746,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -31655,6 +31779,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -31903,7 +32031,7 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -31988,8 +32116,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -32010,7 +32138,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -32043,6 +32171,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -32314,7 +32446,7 @@
                 "totalPrintings": 18,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -32400,8 +32532,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 18/18 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -32422,7 +32554,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -32455,6 +32587,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -32684,7 +32820,7 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -32767,7 +32903,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -32788,7 +32924,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -32821,6 +32957,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -33099,7 +33239,7 @@
                 "totalPrintings": 15,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -33185,8 +33325,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 15/15 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -33207,7 +33347,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -33240,6 +33380,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -33514,7 +33658,7 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -33600,8 +33744,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 4/4 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -33622,7 +33766,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -33655,6 +33799,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -33983,7 +34131,7 @@
                 "totalPrintings": 11,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -34082,7 +34230,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -34103,7 +34251,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -34136,6 +34284,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -34454,7 +34606,7 @@
                 "totalPrintings": 7,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -34548,7 +34700,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/7 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -34569,7 +34721,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -34602,6 +34754,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -34803,7 +34959,7 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -34889,7 +35045,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared artist lettering; 0/1 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -34910,7 +35066,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -34943,6 +35099,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -35256,7 +35416,7 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -35342,8 +35502,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -35364,7 +35524,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -35397,6 +35557,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -35715,7 +35879,7 @@
                 "totalPrintings": 11,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -35800,8 +35964,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 11/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -35822,7 +35986,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -35855,6 +36019,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -36166,7 +36334,7 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -36252,8 +36420,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 8/8 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -36274,7 +36442,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -36307,6 +36475,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
@@ -36625,7 +36797,7 @@
                 "totalPrintings": 11,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
-                "rendererHash": "4471885a2b566c0b4831aa73ac5f78cd3778c809e6dc6307086bda3463536a96"
+                "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
               "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
             },
@@ -36710,8 +36882,8 @@
               ]
             },
             "artist": {
-              "status": "validated",
-              "reason": "Shared artist lettering; 11/11 accepted scan poses measured. All native frames/text/stats outside the artist region unchanged. Remaining normalization failures stay unscored.",
+              "status": "partial",
+              "reason": "Artist geometry retains native evidence, but hollow ink treatment is under recheck after the title-style correction. Edge overlap alone does not establish ink style.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -36732,7 +36904,7 @@
                 "games/magic/src/presentation/early-expansion-artist.ts": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
                 "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "2cb9521a0b2217530465e6548f1e66070c55dfeaffcb929b79554f766bb86122",
+                "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json": "fdad8bbee55305fd3ef11a07065d639aa48d6589e60182a678ab3b9ddb3c0177",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json": "71dde24e50748597349d6e88d04974c29e69d7c4b6e59b4de7a31712b704632c"
               },
               "metrics": {
@@ -36765,6 +36937,10 @@
                   ],
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 }
+              },
+              "inkReview": {
+                "status": "needs-review",
+                "reason": "Compare filled thin gray lettering against the current hollow treatment before considering the artist profile complete."
               }
             },
             "footer": {
