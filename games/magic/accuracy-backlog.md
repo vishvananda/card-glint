@@ -2021,13 +2021,14 @@ Review typography, geometry and remaining pigment differences separately.
 
 [Native heading evidence](fixtures/accuracy/planar-heading-weight.json) uses one
 shared 0.5 px outline subtraction on white names and type lines. Existing Matrix
-advances, size, positioning and shadow settings remain. Glyph preparation uses
+advances, size, positioning and shadow geometry remain. Calibrated PLC heading
+shadows share the measured outer-stock black; uncalibrated inputs retain black. Glyph preparation uses
 a small temporary canvas during static composition, without pixel readbacks.
 MSE Matrix Medium was rejected because its changed letter proportions reduced
 reserved-card overlap even after a shared width fit.
 
-Across 29 reserved cards, name overlap improves 76.67 → 77.64 and type overlap
-74.21 → 74.89. Median excess normalized ink coverage falls from 26% to 3.5%
-(names) and 27% to 1.1% (types). All 44 native samples preserve pixels outside
+Across 29 reserved cards, name overlap improves 76.67 → 77.22 and type overlap
+74.21 → 74.54. Median excess normalized ink coverage falls from 26% to 5.3%
+(names) and 27% to 3.6% (types). All 44 native samples preserve pixels outside
 the heading bands and preserve alpha. Some individual type-line edge scores
 still regress slightly; these are regional metrics, not whole-card scores.

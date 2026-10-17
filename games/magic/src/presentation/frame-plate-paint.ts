@@ -150,7 +150,7 @@ export function paintFramePlateFace(
   if (eighth) c.translate(...titleTranslation(face, 'eighth'));
   const titleFit = planarLettering(face, plate.frame, 'title');
   c.translate(titleFit.dx, titleFit.dy);
-  paintColorshiftedHeading(c, face);
+  paintColorshiftedHeading(c, face, plate.frame);
   paintFittedText(
     c,
     face.name,
@@ -204,7 +204,7 @@ export function paintFramePlateFace(
   c.save();
   const typeFit = planarLettering(face, plate.frame, 'type');
   c.translate(typeFit.dx, typeFit.dy);
-  paintColorshiftedHeading(c, face);
+  paintColorshiftedHeading(c, face, plate.frame);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
     c,
@@ -275,10 +275,14 @@ export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
 
 /** Source pack8thColorshifted.js: white ink with a down-left black shadow.
  * Called inside text-only saved state so symbols and rules retain their ink. */
-function paintColorshiftedHeading(c: CanvasRenderingContext2D, face: RenderedCardInput): void {
+function paintColorshiftedHeading(
+  c: CanvasRenderingContext2D,
+  face: RenderedCardInput,
+  source: string,
+): void {
   if (face.frameTreatment !== 'colorshifted') return;
   c.fillStyle = '#fff';
-  c.shadowColor = '#000';
+  c.shadowColor = planarCalibratedStock(face, source) ?? '#000';
   c.shadowOffsetX = -0.0021 * W;
   c.shadowOffsetY = 0.0015 * H;
   c.shadowBlur = 0;
