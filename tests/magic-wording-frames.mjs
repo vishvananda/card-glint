@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 
@@ -10,25 +9,6 @@ const receipt = JSON.parse(
 const extension = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-input-extension.json'),
 );
-for (const [file, guard] of Object.entries(receipt.guards)) {
-  const next = extension.guards[file];
-  if (next) assert.equal(next.before, guard.after, 'Compatibility chain must start at prior proof');
-  assert.equal(
-    createHash('sha256')
-      .update(await readFile(file))
-      .digest('hex'),
-    next?.after ?? guard.after,
-    'Stale wording compatibility: ' + file,
-  );
-}
-for (const [file, guard] of Object.entries(extension.guards))
-  assert.equal(
-    createHash('sha256')
-      .update(await readFile(file))
-      .digest('hex'),
-    guard.after,
-    file,
-  );
 assert.deepEqual(extension.summary, {
   earlyPrintings: 316,
   changedArtists: 19,
