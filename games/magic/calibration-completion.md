@@ -224,7 +224,13 @@ outliers, names, artist/footer data and placement still need review. The existin
 not become typography evidence retroactively. All 34 unresolved scan poses stay
 in the denominator.
 
-This wording batch is prepared for 0.4.5. The corrected 316-card native replay
+[Version 0.4.5](https://github.com/vishvananda/card-glint/releases/tag/v0.4.5)
+publishes this wording batch and PR #3's liquid-surface controls at commit
+`b1d3705d057adbb6611ccc58681e8f4dff27bdec`. Main and release CI passed. The
+downloaded package, browser archive and release metadata match `SHA256SUMS`;
+the immutable `cdn-v0.4.5` build reports the same source commit and archive hashes.
+This release does not close the ledger's complete-set certification checks.
+The corrected 316-card native replay
 preserves every pixel outside type/rules/flavor regions. Arabian Nights Mountain
 retains its red palette when the type becomes `Land`; Goblin Caves and Goblin
 Shrine retain enchantment frames for `Enchant Land`. Explicit frame palettes
