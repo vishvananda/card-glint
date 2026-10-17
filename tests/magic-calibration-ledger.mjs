@@ -218,6 +218,16 @@ const earlyWording = JSON.parse(
 assert.equal(earlyWording.rows.length, 316);
 assert.equal(earlyWording.summary.rules['mtgjson-original'], 309);
 assert.equal(earlyWording.summary.rules['scan-reviewed'], 7);
+assert.equal(earlyWording.native.summary.cards, 316);
+assert.equal(earlyWording.native.summary.frameAndOtherRegionsUnchanged, 313);
+assert.equal(earlyWording.renderingBlockers.length, 3);
+for (const blocker of earlyWording.renderingBlockers) {
+  const group = ledger.sets
+    .find((s) => s.set === blocker.set)
+    .groups.find((g) => g.printingIds.includes(blocker.id));
+  assert.equal(group.tasks.frameGeometry.status, 'pending');
+  assert.ok(group.tasks.frameGeometry.blockers.some((r) => r.id === blocker.id));
+}
 for (const [set, count] of [
   ['arn', 92],
   ['atq', 102],

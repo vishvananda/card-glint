@@ -12,7 +12,7 @@
     "games/magic/tools/accuracy/adapter.mjs": "201e41513f9ec61626ea4954b01fc7477d43a4dd5f775801acb8a7c06dd4e60a",
     "games/magic/tools/accuracy/printing-text.mjs": "a8b2d0f08447740ec15f307efd735686f425263537b18cbc7057fcf93a5631a9",
     "games/magic/tools/accuracy/calibration-wording.mjs": "78d8c09936ede87030d29453405f9209b6b6b223748bee98dadb4d92638b2757",
-    "games/magic/tools/accuracy/calibration-original-wording.mjs": "1d2755d06550916f530ca770365360e5ebde45bd4ca46b192f1619e838b13f80"
+    "games/magic/tools/accuracy/calibration-original-wording.mjs": "543b56edcf9db18a85d9def771494ca0d510a54038c8f974a5e7a6021b08db78"
   },
   "sources": {
     "arn": {
@@ -45,12 +45,13 @@
   },
   "artifacts": {
     "inputs": "ce1d74ec59a0338ea8e59bae2557d621899db8dd6158cf2a32643d669f4708d3",
-    "priorInputs": "b44aff60b67b3540b4a74f424e6f14e7f4c56cb18304bb3a1a5ab8d646a9d895"
+    "priorInputs": "b44aff60b67b3540b4a74f424e6f14e7f4c56cb18304bb3a1a5ab8d646a9d895",
+    "nativeReplay": "2057516a7d6dcb1cfa141ad3e911eeb9a603c3756e80bab123812e878eecf6e9"
   },
   "tools": {
     "early-expansion-original-inputs.mjs": "64c3c554082d595d0f8cdafa6b00957aed86e4c69d59d026b574ab16d1c452ca",
     "early-expansion-wording-evidence.mjs": "5687bc7f6e5a0677a8d2ba6ca67be8299206728c8c27d4b571fd3fedb837ed27",
-    "early-expansion-original-receipt.mjs": "3e9c4187f0aa471b31027e3e302aaa815ae22d9a8ac43255cd8de5ce9e51efc2"
+    "early-expansion-original-receipt.mjs": "8e6112eafc76f90535c549635f24820e445cefadd8acc3b9ddb513ca46b54a70"
   },
   "summary": {
     "cards": 316,
@@ -101,14 +102,64 @@
       }
     }
   },
+  "native": {
+    "status": "frame-regression-review",
+    "rendererHash": "ea17ee831ac4a85f051eb2b698c3f748bbc399a959171a9df405c2c5f5a63ae6",
+    "runnerHash": "f8f229632d74e1f23d6cf7d787276e66ae7e88a26c8016d070ac647a0387ce5b",
+    "normalizationHash": "176282bb44a410625b04939e13e6f6a14050760ce5fc5e9b4fada5ad183c55c1",
+    "summary": {
+      "cards": 316,
+      "changed": 218,
+      "unchanged": 98,
+      "frameAndOtherRegionsUnchanged": 313,
+      "normalizationAccepted": 282,
+      "normalizationReview": 34,
+      "regressions": [
+        {
+          "id": "c321d0e1-ff30-4424-979b-25e1a33e45d5",
+          "name": "Mountain",
+          "set": "arn",
+          "outsideTextChanged": 50714
+        },
+        {
+          "id": "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
+          "name": "Goblin Caves",
+          "set": "drk",
+          "outsideTextChanged": 49903
+        },
+        {
+          "id": "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
+          "name": "Goblin Shrine",
+          "set": "drk",
+          "outsideTextChanged": 49823
+        }
+      ]
+    }
+  },
   "renderingBlockers": [
     {
       "id": "c321d0e1-ff30-4424-979b-25e1a33e45d5",
-      "set": "arn",
       "name": "Mountain",
+      "set": "arn",
       "status": "open",
       "reason": "The printed type Land removes the semantic Mountain subtype. Palette preservation and the mono-color retro-land fallback currently cover only LEA/LEB/2ED/3ED, so this input switches seventh/regular/rl.png to l.png. Preserve semantic frame selection independently of displayed wording before adopting the original-wording render.",
       "observedPixelsOutsideText": 50714
+    },
+    {
+      "id": "c6a415b0-00a2-4a65-8994-4a395c50ae2d",
+      "name": "Goblin Caves",
+      "set": "drk",
+      "status": "open",
+      "reason": "The printed Enchant Land type activates the fallback land-plate selector despite the preserved land:false trait. Frame selection must respect semantic traits independently of the visible type.",
+      "observedPixelsOutsideText": 49903
+    },
+    {
+      "id": "cd69a6dc-27f3-42aa-9e63-4417796e4ef5",
+      "name": "Goblin Shrine",
+      "set": "drk",
+      "status": "open",
+      "reason": "The printed Enchant Land type activates the fallback land-plate selector despite the preserved land:false trait. Frame selection must respect semantic traits independently of the visible type.",
+      "observedPixelsOutsideText": 49823
     }
   ],
   "rows": [

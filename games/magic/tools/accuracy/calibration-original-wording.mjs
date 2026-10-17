@@ -9,7 +9,7 @@ export function applyEarlyOriginalWording(group, receipt, guardsMatch) {
       ...group.tasks.frameGeometry,
       status: 'pending',
       reason:
-        'Original wording changes frame selection; preserve the semantic land palette before adoption.',
+        'Original wording changes frame selection; preserve semantic traits and land palettes before adoption.',
       evidence: [...(group.tasks.frameGeometry.evidence ?? []), ...evidence],
       blockers,
     };
