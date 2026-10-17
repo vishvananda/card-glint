@@ -1,5 +1,11 @@
 # Rendering accuracy review queue
 
+Use the [set-completion checklist](calibration-completion.md) and
+[per-variant progress ledger](fixtures/accuracy/calibration-progress.json) to
+close work. They distinguish accepted fits, validated defaults, rejected
+proposals and stale evidence. `npm run magic:calibration:report` summarizes
+the active sets; append a set code for its unresolved checks.
+
 This is a working queue from the measured M21, M20, Mirage, Tempest, Fourth/Fifth Edition and Revised sets, not
 an assertion that every supported frame has been evaluated. Special treatments
 remain outside the current study. Use pinned frame sources and compare replacements
@@ -92,7 +98,7 @@ reused-validation labels and release after fresh full-card scores.
 
 ## Modern land calibration coverage
 
-M21 component-built lands, including legendary lands, do not have source-bound
+M21-era component-built lands, including legendary lands, do not have source-bound
 printing-color profiles. `printingColorSource` explicitly excludes them because
 their paper tint is composed separately. Shared land-paper corrections are a
 rendering default, not a measured M21 printing-color fit. The general M21 land
@@ -101,11 +107,17 @@ scan template does not independently certify the legendary crown treatment.
 Add measured profiles for the assembled land background, rails, text-box tint,
 and legendary crown. Cover colorless, single-color and paired-color lands;
 validate any transfer between sets instead of inheriting creature coefficients.
-Keep this gap visible in coverage reports. M21 calibration is partial.
+Keep this gap visible in coverage reports. M21 calibration is partial. The M21
+set itself has no legendary lands; validate that family using other sets.
 
 The [showcased-set coverage audit](fixtures/accuracy/showcased-coverage-audit.json)
 checks the current runtime against the frozen ordinary inventories. These counts
 mean **some frame/paper pigment coverage**, not complete frame calibration:
+
+This historical color-study inventory is narrower than the new ledger: M21
+omits 14 planeswalker printings (nine nonfoil, five foil-only). Eighth has another
+350 ordinary black-bordered foil-only printings in addition to the 357 nonfoil
+eligible printings below. They remain visible in the new reference queue.
 
 | Set            | Some pigment coverage | Ordinary inventory |
 | -------------- | --------------------: | -----------------: |
