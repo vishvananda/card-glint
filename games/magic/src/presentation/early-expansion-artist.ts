@@ -16,8 +16,8 @@ const profiles = {
 } as const;
 
 /** Shared set geometry and filled ink, fitted with original credits and fixed
- * scan poses. Unresolved DRK land/gold and nonstandard layouts retain their
- * earlier treatment. This does not certify their typography or color. */
+ * scan poses. The DRK land/gold transfer retains the same values. Nonstandard
+ * layouts keep their earlier treatment. See early-expansion-dark-typography.json. */
 export function earlyExpansionArtist(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   if (
@@ -33,7 +33,8 @@ export function earlyExpansionArtist(face: RenderedCardInput) {
   const type = face.typeLine ?? '',
     land = face.land ?? /\bLand\b/.test(type),
     artifact = face.artifact ?? /\bArtifact\b/.test(type);
-  if (land ? set === 'drk' : !artifact && resolveFrameColors(face).length !== 1) return undefined;
+  const colors = resolveFrameColors(face).length;
+  if (!land && !artifact && colors !== 1 && !(set === 'drk' && colors === 2)) return undefined;
   return profiles[set];
 }
 

@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
+import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 
 await darkCalibrationProof();
+await darkTypographyProof();
 const evidence = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-dark-frames.json'),
 );
@@ -71,9 +73,9 @@ try {
       }),
       frame,
     );
-    // Geometry must not accidentally opt unreviewed typography into another fit.
-    assert.equal(earlyExpansionTitle(original), undefined);
-    assert.equal(earlyExpansionArtist(original), undefined);
+    // The independent typography transfer now covers both calibrated materials.
+    assert.ok(earlyExpansionTitle(original));
+    assert.ok(earlyExpansionArtist(original));
     for (const override of [
       { colorCalibration: undefined },
       { borderColor: 'white' },

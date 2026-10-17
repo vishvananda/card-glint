@@ -11423,7 +11423,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -11464,10 +11464,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -11500,8 +11500,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -11525,6 +11525,20 @@
                 "totalPrintings": 13,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -12053,7 +12067,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -12094,10 +12108,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -12649,7 +12663,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -12690,10 +12704,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -12726,8 +12740,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -12751,6 +12765,20 @@
                 "totalPrintings": 2,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -13291,7 +13319,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -13332,10 +13360,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -13740,7 +13768,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -13781,10 +13809,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -14259,7 +14287,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -14300,10 +14328,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -14336,8 +14364,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -14361,6 +14389,20 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -14818,7 +14860,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -14859,10 +14901,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -15181,7 +15223,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -15222,10 +15264,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -15801,7 +15843,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -15842,10 +15884,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -15878,8 +15920,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -15903,6 +15945,20 @@
                 "totalPrintings": 12,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -16428,7 +16484,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -16469,10 +16525,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -17039,7 +17095,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -17080,10 +17136,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -17116,8 +17172,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -17141,6 +17197,20 @@
                 "totalPrintings": 10,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -17671,7 +17741,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -17712,10 +17782,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -18214,7 +18284,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -18255,10 +18325,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -18291,8 +18361,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -18316,6 +18386,20 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -18786,7 +18870,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -18827,10 +18911,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -19224,7 +19308,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -19265,10 +19349,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -19763,7 +19847,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -19804,10 +19888,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -19840,8 +19924,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -19865,6 +19949,20 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -20313,7 +20411,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -20354,10 +20452,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -20848,7 +20946,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -20889,10 +20987,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -20925,8 +21023,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -20950,6 +21048,20 @@
                 "totalPrintings": 17,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -21429,7 +21541,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -21470,10 +21582,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -21912,7 +22024,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -21953,10 +22065,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -22428,7 +22540,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -22469,10 +22581,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -22505,8 +22617,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -22530,6 +22642,20 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -22978,7 +23104,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -23019,10 +23145,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -23595,7 +23721,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -23636,10 +23762,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -23672,8 +23798,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -23697,6 +23823,20 @@
                 "totalPrintings": 5,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -24234,7 +24374,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -24275,10 +24415,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -24743,7 +24883,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -24784,10 +24924,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -24820,8 +24960,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -24845,6 +24985,20 @@
                 "totalPrintings": 1,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -25308,7 +25462,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -25349,10 +25503,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -25912,7 +26066,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -25953,10 +26107,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -25989,8 +26143,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -26014,6 +26168,20 @@
                 "totalPrintings": 3,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -26546,7 +26714,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -26587,10 +26755,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -34551,7 +34719,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -34592,10 +34760,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -34628,8 +34796,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -34653,6 +34821,20 @@
                 "totalPrintings": 11,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -35191,7 +35373,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -35232,10 +35414,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -35556,7 +35738,7 @@
             },
             "headings": {
               "status": "partial",
-              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
+              "reason": "Same-set title profile transfers without fitting. Every card improves filled-ink/edge/contrast objective. Type line still needs calibration; title stroke width on lands remains a review item.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -35597,7 +35779,26 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
                 "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
+              ],
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+              }
             },
             "rules": {
               "status": "partial",
@@ -35689,7 +35890,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared filled artist ink and independent shadow have native isolation and repeated scan evidence. Residual glyph/weight differences, ink color and unscored poses remain review items.",
+              "reason": "Same-set filled artist profile improves all seven fixed-reference comparisons; no geometry refit. Land stroke-width diagnostic remains imperfect.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -35697,7 +35898,8 @@
                 "games/magic/fixtures/accuracy/early-expansion-titles.json",
                 "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json",
-                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json"
+                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -35708,14 +35910,18 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
-                "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
-                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
-                "games/magic/src/presentation/canvas-assets.ts": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
-                "games/magic/src/presentation/retro-font.ts": "4ec3606aa337bd210f82ae49533342ea48db666d835e82901255625626f13a35",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
               },
               "metrics": {
@@ -35749,10 +35955,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -35764,7 +35970,7 @@
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-artist-solid.json"]
               },
-              "rendererHash": "64ce43717b3c1b658969ad609c11f875a690e872d0694ead6e158b2c99743c3a"
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812"
             },
             "footer": {
               "status": "in-progress",
@@ -36069,7 +36275,7 @@
             },
             "headings": {
               "status": "partial",
-              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
+              "reason": "Same-set title profile transfers without fitting. Every card improves filled-ink/edge/contrast objective. Type line still needs calibration; title stroke width on lands remains a review item.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -36110,7 +36316,26 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
                 "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
+              ],
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+              }
             },
             "rules": {
               "status": "partial",
@@ -36202,7 +36427,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared filled artist ink and independent shadow have native isolation and repeated scan evidence. Residual glyph/weight differences, ink color and unscored poses remain review items.",
+              "reason": "Same-set filled artist profile improves all seven fixed-reference comparisons; no geometry refit. Land stroke-width diagnostic remains imperfect.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -36210,7 +36435,8 @@
                 "games/magic/fixtures/accuracy/early-expansion-titles.json",
                 "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json",
-                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json"
+                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -36221,14 +36447,18 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
-                "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
-                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
-                "games/magic/src/presentation/canvas-assets.ts": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
-                "games/magic/src/presentation/retro-font.ts": "4ec3606aa337bd210f82ae49533342ea48db666d835e82901255625626f13a35",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
               },
               "metrics": {
@@ -36262,10 +36492,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -36277,7 +36507,7 @@
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-artist-solid.json"]
               },
-              "rendererHash": "64ce43717b3c1b658969ad609c11f875a690e872d0694ead6e158b2c99743c3a"
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812"
             },
             "footer": {
               "status": "in-progress",
@@ -36294,8 +36524,25 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Both gold creatures improve strongly with the existing DRK profile, without fitting. No other land/gold stats exist in this cohort.",
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-dark-typography.json"]
             },
             "fullCard": {
               "status": "partial",
@@ -36738,7 +36985,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -36779,10 +37026,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -36815,8 +37062,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -36840,6 +37087,20 @@
                 "totalPrintings": 4,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -37307,7 +37568,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -37348,10 +37609,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -37608,7 +37869,7 @@
             },
             "headings": {
               "status": "partial",
-              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
+              "reason": "Same-set title profile transfers without fitting. Every card improves filled-ink/edge/contrast objective. Type line still needs calibration; title stroke width on lands remains a review item.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -37649,7 +37910,26 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
                 "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
+              ],
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+              }
             },
             "rules": {
               "status": "partial",
@@ -37738,7 +38018,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared filled artist ink and independent shadow have native isolation and repeated scan evidence. Residual glyph/weight differences, ink color and unscored poses remain review items.",
+              "reason": "Same-set filled artist profile improves all seven fixed-reference comparisons; no geometry refit. Land stroke-width diagnostic remains imperfect.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -37746,7 +38026,8 @@
                 "games/magic/fixtures/accuracy/early-expansion-titles.json",
                 "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json",
-                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json"
+                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -37757,14 +38038,18 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
-                "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
-                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
-                "games/magic/src/presentation/canvas-assets.ts": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
-                "games/magic/src/presentation/retro-font.ts": "4ec3606aa337bd210f82ae49533342ea48db666d835e82901255625626f13a35",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
               },
               "metrics": {
@@ -37798,10 +38083,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -37813,7 +38098,7 @@
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-artist-solid.json"]
               },
-              "rendererHash": "64ce43717b3c1b658969ad609c11f875a690e872d0694ead6e158b2c99743c3a"
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812"
             },
             "footer": {
               "status": "in-progress",
@@ -38305,7 +38590,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -38346,10 +38631,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -38382,8 +38667,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -38407,6 +38692,20 @@
                 "totalPrintings": 15,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -38877,7 +39176,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -38918,10 +39217,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -39513,7 +39812,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -39554,10 +39853,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -39590,8 +39889,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -39615,6 +39914,20 @@
                 "totalPrintings": 11,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -40162,7 +40475,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -40203,10 +40516,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -40524,7 +40837,7 @@
             },
             "headings": {
               "status": "partial",
-              "reason": "Title typography has native isolated evidence; type-line typography and unresolved frame groups remain separate work.",
+              "reason": "Same-set title profile transfers without fitting. Every card improves filled-ink/edge/contrast objective. Type line still needs calibration; title stroke width on lands remains a review item.",
               "originalInput": {
                 "status": "ready",
                 "field": "type",
@@ -40565,7 +40878,26 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"],
                 "rendererHash": "e5ce1d9f8dd271631db40221ec2a45f686798051d1a59d18be0c397c7499c682"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-expansion-titles.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-expansion-titles.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
+              ],
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+              }
             },
             "rules": {
               "status": "partial",
@@ -40657,7 +40989,7 @@
             },
             "artist": {
               "status": "partial",
-              "reason": "Shared filled artist ink and independent shadow have native isolation and repeated scan evidence. Residual glyph/weight differences, ink color and unscored poses remain review items.",
+              "reason": "Same-set filled artist profile improves all seven fixed-reference comparisons; no geometry refit. Land stroke-width diagnostic remains imperfect.",
               "reviewedAt": "2026-10-17",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-expansion-artist.json",
@@ -40665,7 +40997,8 @@
                 "games/magic/fixtures/accuracy/early-expansion-titles.json",
                 "games/magic/fixtures/accuracy/early-expansion-title-compatibility.json",
                 "games/magic/fixtures/accuracy/printing-calibration-source-compatibility.json",
-                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json"
+                "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
+                "games/magic/fixtures/accuracy/early-expansion-dark-typography.json"
               ],
               "originalInput": {
                 "status": "ready",
@@ -40676,14 +41009,18 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
-                "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
-                "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
-                "games/magic/src/presentation/retro-lettering.ts": "7dd302d158f35c05124547cd3b3135cf5dca51b149b3cbf9d3a1b8b5b6c1ecab",
-                "games/magic/src/presentation/profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
-                "games/magic/src/presentation/canvas-assets.ts": "b659199c19de9e63a85f9eb0cd78573dcccef5a506e48301ec7bab443bfb25f0",
-                "games/magic/src/presentation/retro-font.ts": "4ec3606aa337bd210f82ae49533342ea48db666d835e82901255625626f13a35",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
               },
               "metrics": {
@@ -40717,10 +41054,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -40732,7 +41069,7 @@
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-artist-solid.json"]
               },
-              "rendererHash": "64ce43717b3c1b658969ad609c11f875a690e872d0694ead6e158b2c99743c3a"
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812"
             },
             "footer": {
               "status": "in-progress",
@@ -40749,8 +41086,25 @@
               }
             },
             "stats": {
-              "status": "needs-audit",
-              "reason": "Existing work must be matched to this complete variant and current source."
+              "status": "partial",
+              "reason": "Both gold creatures improve strongly with the existing DRK profile, without fitting. No other land/gold stats exist in this cohort.",
+              "rendererHash": "217e9f26d07df03809a1807c110151c9290747606858e6592fbcb321a6542812",
+              "guards": {
+                "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/solid-title.ts": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+                "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
+                "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+                "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+                "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
+                "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+                "games/magic/src/presentation/canvas-fonts.ts": "2729b83d9ff145538fd4a795f34a6c0b9be8efd2d19606f15686fd5c480d92b5",
+                "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+                "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+                "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+              },
+              "evidence": ["games/magic/fixtures/accuracy/early-expansion-dark-typography.json"]
             },
             "fullCard": {
               "status": "partial",
@@ -41285,7 +41639,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -41326,10 +41680,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -41362,8 +41716,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -41387,6 +41741,20 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -41926,7 +42294,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -41967,10 +42335,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -42533,7 +42901,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -42574,10 +42942,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {
@@ -42610,8 +42978,8 @@
               "reason": "Shared set stats geometry, weight and shadow have native isolation and repeated scan evidence. Residual ink/glyph differences and rejected poses remain explicit; Grave Robbers retains a displaced-stats review item.",
               "rendererHash": "0e7da861a60cdfbc882ddc6a9aaf4ca711a65a1ca2ea04c1a8cdb279773ca650",
               "guards": {
-                "games/magic/src/presentation/early-expansion-stats.ts": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-stats.ts": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/retro-paint.ts": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
                 "games/magic/src/presentation/retro-details.ts": "fb891575ae238352f02afd3cb40288b9e7ec2b133063896acac879f0d9ffb199",
@@ -42635,6 +43003,20 @@
                 "totalPrintings": 8,
                 "validationKind": "repeated",
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-stats.json"]
+              },
+              "guardExtensions": {
+                "games/magic/src/presentation/early-expansion-artist.ts": {
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                },
+                "games/magic/src/presentation/early-expansion-stats.ts": {
+                  "before": "bf2af64f805b477084de27094777cb734ffbe91be3f91110f67946d2ed2680f3",
+                  "after": "b0709ae826b23d3e2dbb3fb763e84a76096864e46b7bc27d2fc9db2b5f9157a0",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
+                }
               }
             },
             "fullCard": {
@@ -43174,7 +43556,7 @@
                 "evidence": ["games/magic/fixtures/accuracy/early-expansion-followup-wording.json"]
               },
               "guards": {
-                "games/magic/src/presentation/early-expansion-artist.ts": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                "games/magic/src/presentation/early-expansion-artist.ts": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
                 "games/magic/src/presentation/solid-artist.ts": "3cfaad9d885a52ea967d9f9f41a0ecf1a544b0e4e1d0a10598880d2396fa9cba",
                 "games/magic/src/presentation/canvas-face.ts": "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
                 "games/magic/src/presentation/retro-paint.ts": "d46f2d52467a5588103fb65d2425ff23917adc05a7d3fc6d2e0ddb71e81a9c93",
@@ -43215,10 +43597,10 @@
                   "reason": "Hash-checked reconstruction of measured artist source, native full-card title isolation, and unchanged artist module."
                 },
                 "games/magic/src/presentation/early-expansion-artist.ts": {
-                  "before": "3406b7f0b00c2c12b7ee00bbd6d122eb831334d3c0c48457f6ddf91d9458c779",
-                  "after": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
-                  "evidence": "games/magic/fixtures/accuracy/early-expansion-artist-solid.json",
-                  "reason": "Native artist-only replay preserves every pixel outside the credit region; wording and scan poses are unchanged."
+                  "before": "daa677a01d1de959e99d0c264ed7599163615f441c62749da6db19965f293e88",
+                  "after": "226d3722b5b4b81445757554b73d1572491646fbe6bb751cdc80fdac62b878b8",
+                  "evidence": "games/magic/fixtures/accuracy/early-expansion-dark-typography.json",
+                  "reason": "Seven DRK land/gold typography transfers match native prototypes; 309 other corpus faces and 84 unrelated controls remain exact."
                 }
               },
               "inkReview": {

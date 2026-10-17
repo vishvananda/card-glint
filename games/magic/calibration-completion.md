@@ -507,3 +507,17 @@ printing controls. Existing source proofs are reconstructed without relabeling
 historical scores. The ledger keeps these small cohorts partial: title, type,
 rules, mana/set symbols, artist and stats still need review, and land bevel and
 thin outer-outline differences remain visible. No hosted scores were uploaded.
+
+The [Dark typography transfer](fixtures/accuracy/early-expansion-dark-typography.json)
+extends the existing set title, artist and power/toughness profiles to those
+seven cards without fitting new values. All seven improve on fixed original
+inputs and scan poses. The local whole-card structural index changes from
+0.6985 to 0.7255; the separately labeled reviewed-credit aggregation changes
+from 0.7038 to 0.7301. Every native candidate matches, with 309 other corpus
+faces and 84 unrelated controls unchanged. Frame, art, symbols, type and body
+pixels remain exact. Land title/artist stroke-width error remains visible even
+though the group edge, contrast and filled-area metrics improve. City of
+Shadows has a small title-contrast regression. This batch targets
+0.4.18; type/body layout, the crescent symbol's pale rim, measured mana transfer
+and complete-set certification remain open. These are local development
+diagnostics; hosted charts have not adopted them.

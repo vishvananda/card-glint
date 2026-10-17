@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preDarkTypographySource } from './magic-dark-type-source-guard.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 let verified;
@@ -30,7 +31,11 @@ export function darkCalibrationProof() {
     assert.equal(evidence.controls.rows.length, 84);
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed Dark dependency: ' + file);
+      assert.equal(
+        hash(await preDarkTypographySource(file)),
+        expected,
+        'Unreviewed Dark dependency: ' + file,
+      );
     return extension;
   })();
   return verified;
@@ -39,7 +44,7 @@ export function darkCalibrationProof() {
 /** Keep historical evidence pinned to its measured revision. Native parity
  * proves the new profiles affect only seven DRK land/gold printings. */
 export async function preDarkCalibrationSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkTypographySource(file),
     extension = await darkCalibrationProof(),
     change = extension.files[file];
   if (!change) return bytes;

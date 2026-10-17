@@ -10,7 +10,7 @@ const profiles = {
 
 /** Shared set typography, fitted with original names and frozen scan poses.
  * Solid light-gray lettering with thin strokes and a lower-right shadow.
- * Unresolved DRK land/gold plates and custom frame choices keep their prior style.
+ * DRK land/gold transfer uses these same values; custom frames keep their prior style.
  * See early-expansion-titles.json for native replay and repeated validation. */
 export function earlyExpansionTitle(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
@@ -27,7 +27,8 @@ export function earlyExpansionTitle(face: RenderedCardInput) {
   const type = face.typeLine ?? '',
     land = face.land ?? /\bLand\b/.test(type),
     artifact = face.artifact ?? /\bArtifact\b/.test(type);
-  if (land ? set === 'drk' : !artifact && resolveFrameColors(face).length !== 1) return undefined;
+  const colors = resolveFrameColors(face).length;
+  if (!land && !artifact && colors !== 1 && !(set === 'drk' && colors === 2)) return undefined;
   return profiles[set];
 }
 

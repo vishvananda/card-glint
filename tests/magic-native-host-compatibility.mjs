@@ -18,6 +18,7 @@ import {
 } from './magic-native-reference.mjs';
 import { nativeHostCases } from './magic-native-host-cases.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
+import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 import { preStatsCalibrationSource, statsCalibrationProof } from './magic-stats-source-guard.mjs';
 
@@ -47,6 +48,17 @@ async function identity() {
   return {
     reference: nativeReference,
     sourceManifest: hash(await readFile(sourceManifestFile)),
+    darkTypographyRevision: hash(
+      Buffer.concat(
+        await Promise.all(
+          [
+            'tests/magic-dark-type-source-guard.mjs',
+            'games/magic/fixtures/accuracy/early-expansion-dark-typography.json',
+            'games/magic/fixtures/accuracy/early-expansion-dark-type-compatibility.json',
+          ].map((file) => readFile(path.join(root, file))),
+        ),
+      ),
+    ),
     darkRevision: hash(
       Buffer.concat(
         await Promise.all(
@@ -123,7 +135,8 @@ function assertReceipt(receipt, expected) {
 
 async function verify() {
   const stats = await statsCalibrationProof(),
-    dark = await darkCalibrationProof();
+    dark = await darkCalibrationProof(),
+    typography = await darkTypographyProof();
   assert.equal(nativeHostSources.schema, 1);
   assert.equal(nativeHostSources.reference, nativeReference);
   const rulesFile = 'games/magic/src/presentation/rules-paint.ts';
@@ -187,7 +200,11 @@ async function verify() {
         name: 'native-host-compatibility',
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
-          if (Object.hasOwn(stats.files, relative) || Object.hasOwn(dark.files, relative))
+          if (
+            Object.hasOwn(stats.files, relative) ||
+            Object.hasOwn(dark.files, relative) ||
+            Object.hasOwn(typography.files, relative)
+          )
             return (await preStatsCalibrationSource(relative)).toString();
         },
         configureServer(server) {

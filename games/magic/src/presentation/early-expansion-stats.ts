@@ -9,7 +9,7 @@ const profiles = {
 } as const;
 
 /** Same reviewed ordinary-frame scope as the artist credits. Shared set values;
- * no per-printing placement. Unresolved DRK land/gold keeps its prior treatment. */
+ * no per-printing placement. Both DRK gold creatures pass the same-profile transfer. */
 export function earlyExpansionStats(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   if (

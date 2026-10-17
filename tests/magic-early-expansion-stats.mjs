@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { chromium } from 'playwright';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preDarkTypographySource } from './magic-dark-type-source-guard.mjs';
 import { statsCalibrationProof } from './magic-stats-source-guard.mjs';
 
 const evidence = JSON.parse(
@@ -16,7 +17,11 @@ assert.equal(evidence.rows.length, 141);
 for (const id of evidence.trainingIds)
   assert.equal(evidence.rows.find((row) => row.id === id)?.cohort, 'calibration');
 for (const [file, expected] of Object.entries(evidence.sourceGuards))
-  assert.equal(hash(await readFile(file)), expected, 'Stale stats evidence: ' + file);
+  assert.equal(
+    hash(await preDarkTypographySource(file)),
+    expected,
+    'Stale stats evidence: ' + file,
+  );
 for (const set of ['arn', 'atq', 'drk']) {
   const group = evidence.summary[set + '/validation'];
   for (const metric of ['edge', 'contrast', 'filledArea', 'objective'])
@@ -66,7 +71,7 @@ try {
       { frameTemplate: 'future' },
       { borderColor: 'white' },
       { legendary: true },
-      { colors: ['U', 'R'] },
+      { colors: setCode === 'drk' ? ['U', 'R', 'G'] : ['U', 'R'] },
       { typeLine: 'Planeswalker' },
       { power: null },
       { toughness: null },

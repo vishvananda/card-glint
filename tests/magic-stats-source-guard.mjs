@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { preDarkCalibrationSource } from './magic-dark-source-guard.mjs';
+import { preDarkTypographySource } from './magic-dark-type-source-guard.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 let verified;
@@ -33,7 +34,11 @@ export function statsCalibrationProof() {
     assert.equal(evidence.controls.rows.length, 84);
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed stats dependency: ' + file);
+      assert.equal(
+        hash(await preDarkTypographySource(file)),
+        expected,
+        'Unreviewed stats dependency: ' + file,
+      );
     return extension;
   })();
   return verified;

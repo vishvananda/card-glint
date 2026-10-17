@@ -76,10 +76,6 @@ try {
         colors: /^[WUBRG]$/.test(material) ? [material] : [],
         typeLine: material === 'A' ? 'Mono Artifact' : material === 'L' ? 'Land' : 'Summon Bird',
       };
-      if (setCode === 'drk' && material === 'L') {
-        assert.equal(earlyExpansionTitle(face), undefined);
-        continue;
-      }
       assert.deepEqual(earlyExpansionTitle(face), receipt.profiles[setCode]);
       assert.deepEqual(
         earlyExpansionTitle({
@@ -105,9 +101,9 @@ try {
       ])
         assert.equal(paintEarlyExpansionTitle(untouched, { ...face, ...override }, 400), false);
     }
-  assert.equal(
+  assert.deepEqual(
     earlyExpansionTitle({ name: 'Marsh Goblins', setCode: 'drk', colors: ['B', 'R'] }),
-    undefined,
+    receipt.profiles.drk,
   );
   assert.ok(earlyExpansionTitle({ name: 'Mountain', setCode: 'arn', typeLine: 'Land' }));
   console.log('Early titles: 316 native replays, 306 scored, three crops, and 84 controls pass.');

@@ -56,7 +56,7 @@ try {
       { frameTemplate: 'future' },
       { borderColor: 'white' },
       { legendary: true },
-      { colors: ['U', 'R'] },
+      { colors: setCode === 'drk' ? ['U', 'R', 'G'] : ['U', 'R'] },
       { typeLine: 'Planeswalker' },
     ])
       assert.equal(earlyExpansionArtist({ ...normal, setCode, ...change }), undefined);
@@ -66,7 +66,10 @@ try {
     assert.equal(earlyExpansionArtist({ ...normal, setCode }), undefined);
   for (const setCode of ['arn', 'atq'])
     assert.ok(earlyExpansionArtist({ setCode, typeLine: 'Land', colors: [] }));
-  assert.equal(earlyExpansionArtist({ setCode: 'drk', typeLine: 'Land', colors: [] }), undefined);
+  assert.deepEqual(
+    earlyExpansionArtist({ setCode: 'drk', typeLine: 'Land', colors: [] }),
+    evidence.profiles.drk,
+  );
   console.log('Artist ink: 306 native candidates, 316 isolated cards, 84 controls and scope pass.');
 } finally {
   await server.close();
