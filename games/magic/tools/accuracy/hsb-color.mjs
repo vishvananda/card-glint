@@ -118,7 +118,7 @@ export function evaluateHsb(source, reference, adjustment, math) {
         adjustment.rgbScale && math.adjustHsb(rgb, { ...adjustment, rgbScale: undefined });
       return (
         s * adjustment.saturationScale > 1 ||
-        b * adjustment.brightnessScale > 1 ||
+        b ** (adjustment.valueGamma ?? 1) * adjustment.brightnessScale > 1 ||
         !!balanced?.some((v, i) => v * adjustment.rgbScale[i] > 1)
       );
     }).length / source.tiles.length;

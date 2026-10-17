@@ -1,6 +1,6 @@
 import { frameStockInk, colorFrameStockInk, validateFrameStock } from './frame-stock-ink.js';
 import type { FrameMaterialBlend } from './frame-material-blend.js';
-import { adjustHsb, type HsbAdjustment, type Rgb } from './hsb.js';
+import { adjustHsb, validateHsbTone, type HsbAdjustment, type Rgb } from './hsb.js';
 import { framePaperMask, type FramePixels, type PaperMask } from './frame-paper-mask.js';
 import { frameAccentMask, type FrameAccentMask } from './frame-accent-mask.js';
 import {
@@ -37,6 +37,15 @@ export function colorFrame(
   textureMask?: FramePixels,
   stockMask?: FramePixels,
 ) {
+  if ('mask' in adjustment) {
+    for (const value of [
+      adjustment.frame,
+      adjustment.paper,
+      ...(adjustment.regions?.map((r) => r.adjustment) ?? []),
+      ...(adjustment.accents?.map((r) => r.adjustment) ?? []),
+    ])
+      validateHsbTone(value);
+  } else validateHsbTone(adjustment);
   if (adjustment.blackPoint) validateFrameBlackPoint(adjustment.blackPoint);
   if (adjustment.outerStock) validateFrameStock(adjustment.outerStock);
   if (

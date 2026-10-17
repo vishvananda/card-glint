@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "frame-geometry-integrated-color-and-typography-pending",
+  "status": "frame-and-partial-color-integrated-typography-pending",
   "baseline": {
     "version": "0.4.1",
     "commit": "0eed857d71ba6317118b9455b8f5c23753f863f8",
@@ -2844,7 +2844,7 @@
     "Arabian Nights Mountain uses a separate colored basic-land plate and is excluded from generic land source fitting; its previous source remains.",
     "Arabian Nights Bird Maiden (37) retains a rejected scan pose. The shared source renders it, but it does not influence calibration or validation scores.",
     "Source boundary and independent texture diagnostics favor 18 shared replacements. Reference profile medians statistically suppress content; these are not whole-card accuracy scores.",
-    "Changed geometry/source invalidates all old frame/paper HSB and black-level bindings. Candidate color fits are recorded but remain unadopted pending native replay and flagged contrast/consistency cases.",
+    "Source-bound native component colors are partially integrated; see early-expansion-colors.json. Ten component fits remain raw, and old ink curves cannot attach to the new geometry.",
     "All 316 historical type lines and seven rules bodies remain unverified. Title/type/mana/set symbols/rules/stats/illustrator layout still need calibration."
   ],
   "tools": {
@@ -20103,7 +20103,7 @@
     }
   },
   "colorCandidates": {
-    "status": "not-adopted",
+    "status": "historical-three-axis-candidates-superseded-by-native-tone-study",
     "policy": "Nonfoil references, accepted frozen scan poses, shared source/geometry per set/material, calibration names only with equal name weight. Held-out gates constrain median color, worst printing regression, clipping, shadow chroma and contrast. Rejected components retain raw source color. Colors must be replayed in the native painter before adoption.",
     "groups": {
       "arn/W": {
@@ -20881,5 +20881,16 @@
         }
       }
     }
+  },
+  "colorIntegration": {
+    "status": "partial-native-color-integration",
+    "evidence": "early-expansion-colors.json",
+    "selectedFrameComponents": 11,
+    "selectedPaperComponents": 15,
+    "rejectedComponents": 10,
+    "cardsReplayed": 316,
+    "centralArtworkByteExact": 316,
+    "unsupportedFullRastersByteExact": 34,
+    "policy": "Frozen reserved names reused for model selection; native regional color/texture gates, not fresh whole-card accuracy. Rejected fits and historical predictions remain recorded."
   }
 }

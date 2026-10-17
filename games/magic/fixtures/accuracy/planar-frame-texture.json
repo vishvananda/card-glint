@@ -1878,8 +1878,9 @@
     "frame-blackpoint.ts": "d42974bb32c6932787dc154792fc901df27aa313e05e2d6707a7ff1a48d682b0",
     "frame-material-blend.ts": "36641ba46adc4f8f99aa263c32981191088db78c32e78c3189a4b8c0afa5107e",
     "frame-material-mask.ts": "1284374e579b65538bd2f5194d21d91f9532dd34de591c7e5bc93e15e17dd9f2",
-    "frame-hsb.ts": "ddfd117612ce5794fc51253a29c15037560ef7087cc66f65539042d9644009ba",
-    "early-hsb-material.ts": "8468848c4f84bc53f245be751e0d671e188a7a9ca84f51b6a1136e38fb7395bb"
+    "frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
+    "early-hsb-material.ts": "8468848c4f84bc53f245be751e0d671e188a7a9ca84f51b6a1136e38fb7395bb",
+    "hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703"
   },
   "assets": {
     "pinline": {
@@ -1977,5 +1978,22 @@
     "colorshiftedBlankFrames": 5,
     "changedPixels": 0,
     "policy": "Existing five PLC curves and texture/bevel corrections replay pixel-identically after shared black-level material integration."
-  }
+  },
+  "compatibleExtensions": [
+    {
+      "id": "early-expansion-component-tone",
+      "evidence": "early-expansion-colors.json",
+      "policy": "Optional tone curves only affect the new source-bound early-expansion profiles. PLC pigment, material blending, ink curves and stock inputs stay identical. Dense RGB regression proves the unchanged formula for all existing profiles.",
+      "files": {
+        "frame-hsb.ts": {
+          "before": "ddfd117612ce5794fc51253a29c15037560ef7087cc66f65539042d9644009ba",
+          "after": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167"
+        },
+        "hsb.ts": {
+          "before": "bf8c05e3dfd9444cf1cda7e042fefa02912576014d89f2f19555b546afdf961f",
+          "after": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703"
+        }
+      }
+    }
+  ]
 }

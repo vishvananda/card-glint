@@ -60,11 +60,12 @@
     "printing-stock-values.json": "bc36471e6eacf14a216b86f92c7cd8fb22d9912a6a2b471cfa366788e3d30694",
     "frame-blackpoint.ts": "d42974bb32c6932787dc154792fc901df27aa313e05e2d6707a7ff1a48d682b0",
     "frame-stock-ink.ts": "bbc3133e8b6acab3c5fff25270fef12ebb5e3507f5c6a2c95792ab7227bbcfcc",
-    "frame-hsb.ts": "ddfd117612ce5794fc51253a29c15037560ef7087cc66f65539042d9644009ba",
+    "frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
     "early-hsb-material.ts": "8468848c4f84bc53f245be751e0d671e188a7a9ca84f51b6a1136e38fb7395bb",
-    "calibration-profiles.ts": "2d1cb4df3e7603704bac2996e727d842682359012d87a93e82a4f241ea0382a8",
+    "calibration-profiles.ts": "e77aa6acd9c9d3edb125c2378caab9c765e7834af07a330e243758151521ccdb",
     "color-calibration-coverage.ts": "544da58ce01e5a65e951c00d19c343dfb6076cadb940532a2966f3323d6796c3",
-    "future-template-paint.ts": "f7c7802dfdbfd8e380b57e1b0f64b3fc947c707eb5c502c54192c451ca9da1f5"
+    "future-template-paint.ts": "f7c7802dfdbfd8e380b57e1b0f64b3fc947c707eb5c502c54192c451ca9da1f5",
+    "hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703"
   },
   "methods": {
     "inventory.mjs": "e94efd3481dd29f3595c13f4250d4d74977c9045d367d7547b831499a10c3d09",
@@ -41371,5 +41372,95 @@
     "Rejected registrations are excluded rather than fitted per scan.",
     "Broader pigment, typography and geometry differences remain outside this black-level calibration.",
     "Unlimited has no active HSB profile for this renderer and is not counted among the 37 sets."
+  ],
+  "compatibleExtensions": [
+    {
+      "id": "early-expansion-component-tone",
+      "evidence": "early-expansion-colors.json",
+      "policy": "The original 1,021-scan study remains historical. New exact-source ARN/ATQ/DRK geometry/color groups supersede their old bindings; they receive no legacy ink curve. All 276 other selector probes and every mana target remain identical. Omitted/identity gamma retains the legacy pixel formula exactly.",
+      "files": {
+        "hsb.ts": {
+          "before": "bf8c05e3dfd9444cf1cda7e042fefa02912576014d89f2f19555b546afdf961f",
+          "after": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703"
+        },
+        "frame-hsb.ts": {
+          "before": "ddfd117612ce5794fc51253a29c15037560ef7087cc66f65539042d9644009ba",
+          "after": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167"
+        },
+        "calibration-profiles.ts": {
+          "before": "2d1cb4df3e7603704bac2996e727d842682359012d87a93e82a4f241ea0382a8",
+          "after": "e77aa6acd9c9d3edb125c2378caab9c765e7834af07a330e243758151521ccdb"
+        }
+      },
+      "summary": {
+        "probes": 288,
+        "unchanged": 276,
+        "changedScope": 12,
+        "sets": [
+          "2ed",
+          "3ed",
+          "4ed",
+          "5ed",
+          "6ed",
+          "7ed",
+          "8ed",
+          "all",
+          "apc",
+          "arn",
+          "ath",
+          "atq",
+          "brb",
+          "brc",
+          "btd",
+          "ced",
+          "cei",
+          "chr",
+          "dmr",
+          "drk",
+          "exo",
+          "fem",
+          "hml",
+          "ice",
+          "inr",
+          "inv",
+          "itp",
+          "jud",
+          "lea",
+          "leb",
+          "leg",
+          "lgn",
+          "m21",
+          "mh2",
+          "mh3",
+          "mir",
+          "mmq",
+          "nem",
+          "ody",
+          "ons",
+          "p02",
+          "pcy",
+          "plc",
+          "pls",
+          "plst",
+          "por",
+          "ptk",
+          "rqs",
+          "s99",
+          "scg",
+          "sth",
+          "sum",
+          "tmp",
+          "tor",
+          "tsb",
+          "tsr",
+          "uds",
+          "ulg",
+          "usg",
+          "vis",
+          "wth"
+        ],
+        "manaUnchanged": 288
+      }
+    }
   ]
 }

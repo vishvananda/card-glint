@@ -53,8 +53,8 @@ printings improve the fixed-support boundary diagnostic. Source candidates now
 use identical pixels, plus a separate texture comparison. Reference profile
 medians still suppress content statistically; these are not whole-card accuracy
 scores. The private gallery has 36 examples with blend, difference and red/green
-overlays. Colors, symbols and typography are unfinished; no new release or live
-scoring template has been published.
+overlays. Color calibration is partially integrated below; symbols and typography
+are unfinished. No new release or live scoring template has been published.
 
 The red texture-smoothing proposal is rejected. It appeared to accept 22 more
 scans, but recovered only 9/20 known poses within the existing 0.3-pixel limit;
@@ -62,11 +62,71 @@ the full outer/interior pipeline passed only 2/20. Its largest residual was
 1.84 pixels. None of those proposed poses is adopted. Keep the original 282
 accepted interior poses and try independent boundary anchors next.
 
-Source-bound color candidates are recorded, including rejected components;
-new frames cannot inherit old HSB or black-level coefficients. Next: resolve
-color/contrast failures and replay them in the painter, fit headings and symbols,
-verify original wording, then fit rules, power/toughness and illustrator text.
-Preserve reused-validation labels and release after fresh full-card scores.
+The [native color receipt](fixtures/accuracy/early-expansion-colors.json) adds
+11 outer-frame and 15 text-box fits across the 18 source/geometry groups. A bounded
+value exponent separates brightness from texture contrast. It runs only during
+cached material preparation; existing profiles retain the exact HSV formula.
+Every fit uses calibration names, with unchanged gates on the reserved cohort.
+That cohort has been reused for model selection and is not a fresh test set.
+
+All 316 cards are replayed through the painter. Their central artwork pixels stay
+exact, and the 34 unsupported full rasters stay unchanged. The original model
+missed resizing effects in three frame groups; a calibration-only native-response
+refit resolves two. Arabian Nights' land frame still fails the shadow gate and
+keeps raw pigment. Its paper fit passes. The other rejected frame fits are
+Arabian Nights green, Antiquities blue/black/green/artifact, and The Dark artifact;
+rejected paper fits are Arabian Nights white, Antiquities land, and The Dark green.
+Keep all ten components visible in the review queue.
+
+The adopted profiles use separate RGB 24/21/16 outer stock, measured from cached
+scan margins. These processed display-reference values are not physical ink
+measurements. Old source ink curves cannot attach to the replacement geometry;
+interior black-level work remains open. All 276 unrelated calibration-selector
+probes and all 288 tested mana targets are unchanged, including Alpha/Beta's
+separate stock and interior policies. The gallery shows aligned scans, 0.4.1,
+raw replacement frames and calibrated candidates with the same overlay modes.
+
+Next: resolve the remaining frame/color cases, fit headings and symbols, verify
+original wording, then fit rules, power/toughness and illustrator text. Preserve
+reused-validation labels and release after fresh full-card scores.
+
+## Modern land calibration coverage
+
+M21 component-built lands, including legendary lands, do not have source-bound
+printing-color profiles. `printingColorSource` explicitly excludes them because
+their paper tint is composed separately. Shared land-paper corrections are a
+rendering default, not a measured M21 printing-color fit. The general M21 land
+scan template does not independently certify the legendary crown treatment.
+
+Add measured profiles for the assembled land background, rails, text-box tint,
+and legendary crown. Cover colorless, single-color and paired-color lands;
+validate any transfer between sets instead of inheriting creature coefficients.
+Keep this gap visible in coverage reports. M21 calibration is partial.
+
+The [showcased-set coverage audit](fixtures/accuracy/showcased-coverage-audit.json)
+checks the current runtime against the frozen ordinary inventories. These counts
+mean **some frame/paper pigment coverage**, not complete frame calibration:
+
+| Set            | Some pigment coverage | Ordinary inventory |
+| -------------- | --------------------: | -----------------: |
+| Alpha          |                   276 |                295 |
+| Beta           |                   231 |                302 |
+| Revised        |                   306 |                306 |
+| Eighth Edition |                   201 |                357 |
+| M21            |                   147 |                283 |
+
+Additional gaps: Alpha/Beta lands and Beta green; Eighth black/red/artifacts and
+nonbasic lands; M21 white/black/multicolor and all component-built lands. Several
+admitted profiles correct paper while retaining identity outer-frame pigment:
+Alpha red/blue, Beta black/blue, Revised black/artifact, Eighth white/blue/green,
+and M21 green/artifact. Beta red retains identity paper instead. Ink-floor and
+stock adjustments remain separate and can exist despite these pigment gaps.
+
+Mana-disc color targets are also partial: Eighth lacks white/black/red/green
+targets; M21 lacks black/generic targets. Do not infer missing placement fits
+from missing color targets, or completed color calibration from scan alignment.
+Expose per-component absent/partial/accepted/failed status with evidence revision
+and excluded layouts before presenting any set as fully calibrated.
 
 ## Legends normalization and text validation
 
