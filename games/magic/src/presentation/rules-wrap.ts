@@ -81,8 +81,9 @@ function measure(context: CanvasRenderingContext2D, pieces: Piece[], size: numbe
   });
 }
 
-/** Only supplied discretionary breaks may divide a word. Preserve each style
- * run and choose the longest prefix that fits, including its visible hyphen. */
+/** Break at a supplied soft hyphen or after an inline em dash. Keep the printed
+ * dash, preserve style runs, and choose the longest prefix whose ink fits.
+ * A leading attribution dash stays attached to its following word. */
 function discretionaryBreak(
   context: CanvasRenderingContext2D,
   prefix: Piece[],
@@ -95,14 +96,18 @@ function discretionaryBreak(
     const piece = pieces[i]!;
     if (piece.symbol) continue;
     for (let j = 0; j < piece.text.length; j++) {
-      if (piece.text[j] !== '\u00ad') continue;
+      const dash = piece.text[j] === '—';
+      if (piece.text[j] !== '\u00ad' && !dash) continue;
       if (
         ![...pieces.slice(0, i), { ...piece, text: piece.text.slice(0, j) }].some(
           (p) => p.text.replaceAll('\u00ad', '').length,
         )
       )
         continue;
-      const head = [...pieces.slice(0, i), { ...piece, text: piece.text.slice(0, j) + '-' }];
+      const head = [
+        ...pieces.slice(0, i),
+        { ...piece, text: piece.text.slice(0, j) + (dash ? '—' : '-') },
+      ];
       const tail = [{ ...piece, text: piece.text.slice(j + 1) }, ...pieces.slice(i + 1)];
       if (!tail.some((p) => p.text.replaceAll('\u00ad', '').length)) continue;
       if (measure(context, [...prefix, ...head], size).reduce((n, r) => n + r.width, 0) <= width)

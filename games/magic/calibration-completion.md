@@ -335,6 +335,17 @@ or a released renderer change. Test style boundaries and broad layout behavior
 before adoption. Rukh Egg's printed discretionary hyphen in `ex-actly`, residual
 font weight and sparse-text centering remain separate review items.
 
+The [native dash integration](fixtures/accuracy/early-expansion-dash-native.json)
+extends that rule across style-run boundaries and tests attribution prefixes,
+inline symbols, explicit newlines, unused-break shaping and soft hyphens. Its
+316-card replay changes only the two Rukh Egg printings and Goblin Shrine;
+313 cards remain byte-identical, as do all pixels outside body text. The two
+accepted Rukh Egg references improve from 0.485/0.485 to 0.504/0.501 under the
+text-fit objective. The larger prototype gains above also require the proposed
+shared typography, which is still unadopted. Goblin Shrine's pose remains
+rejected and unscored. No set-wide text-calibration approval follows from this
+wrapping fix; historical 0.4.6 measurements remain separately identified.
+
 The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting
