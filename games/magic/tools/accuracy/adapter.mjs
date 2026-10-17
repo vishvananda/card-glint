@@ -110,10 +110,16 @@ export function presentation(entry, annotations = {}, printingText = {}) {
         }
       : {}),
     ...(frameColors === undefined ? {} : { frameColors }),
-    // Historical "Summon" text changes the visible label, not creature identity.
-    ...(fields.typeLine === undefined
+    // Printed labels such as "Summon" and "Enchant Land" describe visible
+    // wording, not the physical frame. Keep the source's semantic traits.
+    ...(fields.typeLine === undefined && card.printed_type_line == null
       ? {}
-      : { creature: /\bCreature\b/.test(card.type_line ?? '') }),
+      : {
+          creature: /\bCreature\b/.test(card.type_line ?? ''),
+          land: /\bLand\b/.test(card.type_line ?? ''),
+          artifact: /\bArtifact\b/.test(card.type_line ?? ''),
+          legendary: /\bLegendary\b/.test(card.type_line ?? ''),
+        }),
     ...(entry.category === 'planeswalker' ? { rulesText: rules } : {}),
   };
   return {
@@ -143,9 +149,9 @@ function reminderRuns(text) {
  * palettes (fetches, rainbow lands, artifact/basic/retro frames) for review;
  * color identity is not a reliable description of the printed frame. */
 function inferredLandPalette(card) {
-  // Early basics and duals lose their subtypes in original wording (plain
+  // Basics and duals can lose their subtypes in original wording (plain
   // "Land"). Preserve the printed palette independently of that label.
-  if (['lea', 'leb', '2ed', '3ed'].includes(card.set) && /\bLand\b/.test(card.type_line ?? '')) {
+  if (!card.colors?.length && /\bLand\b/.test(card.type_line ?? '')) {
     const basicColors = [
       ['Plains', 'W'],
       ['Island', 'U'],

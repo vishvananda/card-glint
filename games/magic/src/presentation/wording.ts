@@ -1,6 +1,7 @@
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { resolveCardProfile } from './profile.js';
 import { originalManaOrder } from './historic-mana-order.js';
+import { landSubtypePalette } from './provider-appearance.js';
 
 /** Exact supplied wording, never a guessed conversion of creature subtypes. */
 export interface CardWording {
@@ -48,6 +49,11 @@ export function withCardWording(
   return {
     ...face,
     ...selected,
+    frameColors:
+      face.frameColors ??
+      (profile.land && !face.colors?.length
+        ? landSubtypePalette(wordings.oracle.typeLine)
+        : undefined),
     manaSymbols:
       selected.manaSymbols ??
       (mode === 'original'

@@ -263,7 +263,6 @@ for (const changes of [
   { produced_mana: undefined, color_identity: ['B', 'R'] },
   { frame: '1997' },
   { type_line: 'Artifact Land' },
-  { type_line: 'Basic Land — Mountain' },
   { type_line: 'Artifact' },
   { colors: ['G'] },
 ])
@@ -271,6 +270,11 @@ for (const changes of [
     presentation({ ...land, card: { ...land.card, ...changes } }).face.frameColors,
     undefined,
   );
+assert.deepEqual(
+  presentation({ ...land, card: { ...land.card, type_line: 'Basic Land — Mountain' } }).face
+    .frameColors,
+  ['R'],
+);
 assert.deepEqual(
   presentation(land, {
     'printing-a': { reviewedFields: ['frameColors'], referenceHash: 'scan-a', frameColors: [] },

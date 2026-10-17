@@ -1,6 +1,15 @@
 import type { RenderedCardInput } from './face-layout.js';
 import type { FrameColor } from './profile.js';
 
+/** Physical land colors survive historical labels that omit their subtypes. */
+export function landSubtypePalette(type: string): FrameColor[] | undefined {
+  if (!/\bLand\b/.test(type)) return undefined;
+  const colors = (['Plains', 'Island', 'Swamp', 'Mountain', 'Forest'] as const).flatMap(
+    (name, i) => (new RegExp(`\\b${name}\\b`).test(type) ? ['WUBRG'[i] as FrameColor] : []),
+  );
+  return colors.length >= 1 && colors.length <= 2 ? colors : undefined;
+}
+
 /** Keep semantic color separate from the printed land palette, before wording
  * can remove the basic land subtypes. Ambiguous rainbow/fetch lands stay native. */
 export function providerLandPalette(
@@ -11,11 +20,13 @@ export function providerLandPalette(
   produced: unknown,
 ): FrameColor[] | undefined {
   if (!/\bLand\b/.test(type) || colors.length) return undefined;
-  const basics = (['Plains', 'Island', 'Swamp', 'Mountain', 'Forest'] as const).flatMap(
-    (name, i) => (new RegExp(`\\b${name}\\b`).test(type) ? ['WUBRG'[i] as FrameColor] : []),
-  );
-  if (basics.length || ['lea', 'leb', '2ed', '3ed'].includes(set?.toLowerCase() ?? ''))
-    return basics.length >= 1 && basics.length <= 2 ? basics : undefined;
+  const basics = landSubtypePalette(type);
+  if (
+    basics ||
+    /\b(Plains|Island|Swamp|Mountain|Forest)\b/.test(type) ||
+    ['lea', 'leb', '2ed', '3ed'].includes(set?.toLowerCase() ?? '')
+  )
+    return basics;
   if (!['2003', '2015', 'future'].includes(frame) || /\bArtifact\b/.test(type)) return undefined;
   if (produced === undefined || produced === null) return undefined;
   if (

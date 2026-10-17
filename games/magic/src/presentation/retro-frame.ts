@@ -62,7 +62,8 @@ export function retroFamily(face: RenderedCardInput) {
   if (set === 'leg' && resolveFrameColors(face).length > 1) return 'legends';
   if (
     isRevisedLand(face) ||
-    (['3ed', '4ed', '5ed', 'atq'].includes(set) && !/\bLand\b/.test(face.typeLine ?? ''))
+    (['3ed', '4ed', '5ed', 'atq'].includes(set) &&
+      !(face.land ?? /\bLand\b/.test(face.typeLine ?? '')))
   )
     return 'fourth';
   return 'seventh';
@@ -122,18 +123,17 @@ export function retroFrameAsset(face: RenderedCardInput) {
     ['Mountain', 'r'],
     ['Forest', 'g'],
   ].filter(([name]) => type.includes(name!));
-  const key = /\bLand\b/.test(type)
-    ? landType.length === 1
-      ? landType[0]![1] + 'l'
-      : ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '') &&
-          face.frameColors?.length === 1
-        ? face.frameColors[0]!.toLowerCase() + 'l'
+  const landColors = face.frameColors?.map((c) => c.toLowerCase()) ?? landType.map(([, c]) => c!);
+  const key =
+    (face.land ?? /\bLand\b/.test(type))
+      ? landColors.length === 1
+        ? landColors[0] + 'l'
         : 'l'
-    : /\bArtifact\b/.test(type)
-      ? 'a'
-      : colors.length > 1
-        ? 'm'
-        : (colors[0]?.toLowerCase() ?? 'c');
+      : (face.artifact ?? /\bArtifact\b/.test(type))
+        ? 'a'
+        : colors.length > 1
+          ? 'm'
+          : (colors[0]?.toLowerCase() ?? 'c');
   const family = retroFamily(face);
   const folder =
     family === 'seventh' || key === 'c' || (family === 'abu' && key === 'm')
@@ -162,7 +162,7 @@ export function retroInk(face: RenderedCardInput) {
 export function retroFrameFilter(face: RenderedCardInput) {
   return face.setCode?.toLowerCase() === '7ed' &&
     resolveFrameColors(face).some((c) => c === 'W' || c === 'G') &&
-    !/Land/.test(face.typeLine ?? '')
+    !(face.land ?? /\bLand\b/.test(face.typeLine ?? ''))
     ? 'saturate(.7) brightness(.88)'
     : 'none';
 }
