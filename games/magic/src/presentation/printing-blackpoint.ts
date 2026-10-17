@@ -79,7 +79,9 @@ export function printingBlackPointMaterials(
         stockSource.url.startsWith(p.prefix) &&
         (p.family === 'retro'
           ? /^[wubrgacml]{1,2}\.png$/.test(stockSource.url.slice(p.prefix.length))
-          : /^(W|U|B|R|G|Artifact|Gold)\.webp$/.test(stockSource.url.slice(p.prefix.length))),
+          : /^(W|U|B|R|G|WU|WB|WR|WG|UB|UR|UG|BR|BG|RG|Artifact|Gold|Colourless)\.webp$/.test(
+              stockSource.url.slice(p.prefix.length),
+            )),
     );
     if (family) {
       stock = family.stock;

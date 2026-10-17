@@ -146,3 +146,32 @@ unchanged source passes aggregate gates, but five absolute outliers and visible
 hue/texture differences keep its task open. Red's diagnostics remain unvalidated
 until its normalization method passes. No new rendering values are adopted by
 this audit, and no scan is excluded merely for having an inconvenient color.
+
+The [refined boundary study](fixtures/accuracy/m21-component-boundaries-v2.json)
+supersedes those comparison poses. Cubic edge-profile interpolation and finer
+fitting steps pass all 80 known-transform tests, including the previously failing
+red and dual-land cases; the worst residual is 0.22 canonical pixels. The mono-color
+templates, cohorts, acceptance thresholds and disjoint checking strips stay frozen.
+The study validates 231 of 239 scans: all 42 red cards now pass, alongside 26 of
+33 lands. Liliana's Scorn, Blossoming Sands, Fabled Passage, Temple of Triumph,
+Wind-Scarred Crag and three Plains scans remain rejected. These local comparison
+transforms do not change renderer geometry or replace historical color scores.
+Color proposals must be rescored against the refined poses before adoption.
+
+The [stock coverage receipt](fixtures/accuracy/modern-land-stock-transfer.json)
+extends the existing M21 outer-border target to 33 lands and 12 two-color cards.
+Native replay checks all 292 nonfoil M21 printings plus 13 actual legendary lands
+from other sets: 45 change and 260 remain pixel-identical. Thirteen synthetic
+M21-style legendary-land controls check the composition path separately; they do
+not establish an M21 legendary-land reference cohort. All 645 selector controls
+preserve pigment and mana settings. Central art, paper and silhouette alpha stay
+identical; translucent component edges can change by one RGB byte as the stock
+underneath them changes.
+
+On 26 accepted land scans, the median regional stock error falls from 10.67 to
+0.00 RGB byte units. This measures three flat-border color medians, not texture
+or whole-card accuracy; a zero here does not mean a perfect card. Seven rejected
+poses are excluded from that metric and retained in the ledger. Interior ink,
+land paper/gradients, crowns, typography, foil-only references and full-card scores
+remain open. The black-level task stays partial until its interior-ink obligation
+is met.

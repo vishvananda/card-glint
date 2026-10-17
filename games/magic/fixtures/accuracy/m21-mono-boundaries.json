@@ -4855,13 +4855,13 @@
   },
   "sourceGuards": {
     "printing-color-profiles.ts": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
-    "calibration-profiles.ts": "23503d1b5c08bc9fb76ff3a3285ad110122ee30f5e72b5db4cd118e2cc77ae71",
+    "calibration-profiles.ts": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
     "printing-color-source.ts": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
     "profile.ts": "85a4a5938be19e69e6165de6e40e538a0b40a7a551f080025fdd8ba25d68ca7e",
     "frame-hsb.ts": "cf106352593a0b0def3781ea1ca57b71beddffacd432eb2c74c09f9afb589167",
     "hsb.ts": "e217da6457400155fd1d4cd456c7f685ab9378f1063a864ceb91012fd85ff703",
     "normal-frame-geometry.ts": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
-    "canvas-face.ts": "8d943f00ea5040ba99af9446ff04cdc9fb6968ef0345a3ae165e7254ff71e84a"
+    "canvas-face.ts": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08"
   },
   "rows": [
     {
@@ -19371,6 +19371,96 @@
           "bottom": 0.9995780980006311
         },
         "count": 12
+      }
+    }
+  ],
+  "compatibleExtensions": [
+    {
+      "id": "m21-component-stock-transfer",
+      "evidence": "modern-land-stock-transfer.json",
+      "policy": "Materials and mana unchanged across all 645 selectors. Only 45 M21 land/two-color stocks and synthetic M21-style land controls change; unaffected 260 actual native rasters are byte-identical. Canvas painter body is unchanged apart from cache version. Historical pigment metrics keep their original reference poses and renderer hash.",
+      "files": {
+        "calibration-profiles.ts": {
+          "before": "23503d1b5c08bc9fb76ff3a3285ad110122ee30f5e72b5db4cd118e2cc77ae71",
+          "after": "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac"
+        },
+        "canvas-face.ts": {
+          "before": "8d943f00ea5040ba99af9446ff04cdc9fb6968ef0345a3ae165e7254ff71e84a",
+          "after": "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08"
+        }
+      },
+      "summary": {
+        "probes": 645,
+        "unchanged": 582,
+        "changedScope": 63,
+        "sets": [
+          "2ed",
+          "3ed",
+          "4ed",
+          "5ed",
+          "6ed",
+          "7ed",
+          "8ed",
+          "all",
+          "apc",
+          "arn",
+          "ath",
+          "atq",
+          "brb",
+          "brc",
+          "btd",
+          "ced",
+          "cei",
+          "chr",
+          "dmr",
+          "drk",
+          "exo",
+          "fem",
+          "hml",
+          "ice",
+          "inr",
+          "inv",
+          "itp",
+          "jud",
+          "lea",
+          "leb",
+          "leg",
+          "lgn",
+          "ltr",
+          "m21",
+          "mh1",
+          "mh2",
+          "mh3",
+          "mir",
+          "mmq",
+          "nem",
+          "neo",
+          "ody",
+          "ons",
+          "p02",
+          "pcy",
+          "plc",
+          "pls",
+          "plst",
+          "por",
+          "ptk",
+          "rqs",
+          "s99",
+          "scg",
+          "sth",
+          "sum",
+          "tmp",
+          "tor",
+          "tsb",
+          "tsr",
+          "uds",
+          "ulg",
+          "usg",
+          "vis",
+          "wth"
+        ],
+        "manaUnchanged": 645,
+        "materialsUnchanged": 645
       }
     }
   ]

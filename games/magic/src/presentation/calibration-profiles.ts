@@ -1,5 +1,12 @@
-import { printingBlackPointMaterials, type PrintingStockSource } from './printing-blackpoint.js';
-import type { RenderedCardInput } from './face-layout.js';
+import {
+  hasPrintingStockCandidate,
+  printingBlackPointMaterials,
+  type PrintingStockSource,
+} from './printing-blackpoint.js';
+import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
+import { profileAssets } from './assets.js';
+import { framePlate } from './frame-plates.js';
+import { resolveCardProfile } from './profile.js';
 import {
   isRetro,
   retroFrameAsset,
@@ -19,7 +26,6 @@ import { legendsFrame } from './legends-frame.js';
 import { futureFrameMaterials } from './future-color-profiles.js';
 import { planarFrameMaterials } from './planar-color-profiles.js';
 import { earlyExpansionColors } from './early-expansion-colors.js';
-import { resolveCardProfile } from './profile.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
@@ -101,6 +107,21 @@ export function calibratedPrintingStock(face: RenderedCardInput): string | undef
 }
 
 function printingStockSource(face: RenderedCardInput): PrintingStockSource | undefined {
+  // Land-paper blends have no pigment fit. Their outer stock still uses the
+  // same pinned component frame and placement as the measured set family.
+  if (
+    hasPrintingStockCandidate(face) &&
+    !face.frameTemplate &&
+    !isRetro(face) &&
+    !framePlate(face) &&
+    (face.layout ?? 'normal') === 'normal' &&
+    !/\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '') &&
+    resolveCardProfile(face).land
+  )
+    return {
+      url: profileAssets(resolveCardProfile(face)).frame,
+      geometry: JSON.stringify(FACE_RECTS.frame),
+    };
   if (!hasColorCalibration(face)) return undefined;
   if (isRetro(face))
     return {

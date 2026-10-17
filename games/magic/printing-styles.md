@@ -7,6 +7,14 @@ APIs. A host owns set membership, persistence, revision IDs, asset uploads and i
 editor UI. Existing `PrintingSelection` values and `resolvePrintingPreset` remain
 supported.
 
+The Core Set 2021 modern style retains its legendary frame and matching crown
+on lands. With `colorCalibration: 'set-hsb-v1'`, its source-bound outer border
+uses the measured `#16130e` stock target, including two-color land frames.
+This transfers border stock only: procedural land-paper blends still have no
+pigment calibration, and artwork, semantic colors and explicit frame palettes
+stay unchanged. White/silver borders, special templates and unmatched sources
+do not inherit that stock correction.
+
 A style offers named frame options, rather than equating one set with one frame.
 The built-in Planar Chaos style offers regular and colorshifted frames. Future
 Sight offers regular, Futureshifted, full-art and clear frames. Their automatic rules preserve

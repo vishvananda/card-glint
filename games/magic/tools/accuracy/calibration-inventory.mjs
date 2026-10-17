@@ -11,6 +11,7 @@ import {
   applyM21MonoEvidence,
   applyM21PigmentAudit,
 } from './calibration-m21-evidence.mjs';
+import { applyM21BoundaryRefinement, applyM21StockTransfer } from './calibration-m21-scope.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
 const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
@@ -35,6 +36,18 @@ const m21Color = await readJson(fixtureRoot + '/m21-normal-color-adoption.json')
 const m21Boundaries = await readJson(fixtureRoot + '/m21-normal-boundaries.json');
 const m21MonoBoundaries = await readJson(fixtureRoot + '/m21-mono-boundaries.json');
 const m21ExistingPigment = await readJson(fixtureRoot + '/m21-existing-pigment-audit.json');
+const m21Refined = await readJson(fixtureRoot + '/m21-component-boundaries-v2.json');
+const m21Stock = await readJson(fixtureRoot + '/modern-land-stock-transfer.json');
+const matchGuards = async (receipt) =>
+  (
+    await Promise.all(
+      Object.entries(receipt.sourceGuards).map(
+        async ([f, h]) => hash(await readFile('games/magic/src/presentation/' + f)) === h,
+      ),
+    )
+  ).every(Boolean);
+const m21RefinedGuardsMatch = await matchGuards(m21Refined);
+const m21StockGuardsMatch = await matchGuards(m21Stock);
 const m21GuardsMatch = (
   await Promise.all(
     Object.entries(m21Color.sourceGuards).map(
@@ -339,6 +352,8 @@ try {
             m21MonoGuardsMatch,
           );
           applyM21PigmentAudit(g, m21ExistingPigment);
+          applyM21BoundaryRefinement(g, m21Refined, m21RefinedGuardsMatch);
+          applyM21StockTransfer(g, m21Stock, m21StockGuardsMatch);
         }
         g.tasks.release = {
           status: 'pending',

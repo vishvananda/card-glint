@@ -74,9 +74,14 @@ for (const file of ['early-expansion-colors.json', 'printing-blackpoints.json'])
     extension.files['calibration-profiles.ts'],
     evidence.compatibility.files['calibration-profiles.ts'],
   );
+  const stock = prior.compatibleExtensions.find((e) => e.id === 'm21-component-stock-transfer');
+  assert.equal(
+    stock.files['calibration-profiles.ts'].before,
+    extension.files['calibration-profiles.ts'].after,
+  );
   assert.equal(
     prior.sourceGuards['calibration-profiles.ts'],
-    extension.files['calibration-profiles.ts'].after,
+    stock.files['calibration-profiles.ts'].after,
   );
 }
 const ledger = await read('calibration-progress.json'),
@@ -85,8 +90,8 @@ for (const g of m21.groups) {
   if (g.palette === 'R' && mono.rows.some((r) => g.printingIds.includes(r.id)))
     assert.equal(
       g.tasks.normalization.status,
-      'rejected',
-      'A known-pose failure cannot be certified from good scan correlation',
+      'validated',
+      'Red now needs the separately validated refined method, not the historical failed method',
     );
   if (g.tasks.frameColor.status === 'validated') {
     assert.equal(g.palette, 'B');

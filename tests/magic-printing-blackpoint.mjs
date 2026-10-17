@@ -103,6 +103,58 @@ try {
     assert.equal(calibratedPrintingStock({ ...modern, layout: 'token' }), undefined);
     if (color === 'G') assert.equal(colorCalibrationCoverage(face).frame, false);
   }
+  // A land's procedural paper is deliberately uncalibrated. That must not
+  // suppress the independently measured border stock on the same component
+  // family, including the two-color frame and matching legendary crown.
+  for (const colors of [
+    [],
+    ...[...'WUBRG'].map((c) => [c]),
+    ['U', 'R'],
+    ['W', 'B'],
+    ['W', 'U', 'B'],
+  ]) {
+    const land = {
+      name: 'Border stock transfer',
+      setCode: 'M21',
+      frameStyle: 'modern',
+      typeLine: 'Legendary Land',
+      colors: [],
+      frameColors: colors,
+      manaSymbols: ['B'],
+      colorCalibration: 'set-hsb-v1',
+    };
+    const saved = JSON.stringify(land);
+    assert.equal(calibratedPrintingStock(land), '#16130e');
+    assert.equal(colorCalibrationCoverage(land).frame, false, 'Stock is not a land pigment fit');
+    assert.deepEqual(calibratedFrameMaterials(land), {}, 'Do not recolor land-paper blends');
+    assert.equal(
+      JSON.stringify(land),
+      saved,
+      'Preserve palette overrides, mana and logical colors',
+    );
+    for (const changes of [
+      { colorCalibration: undefined },
+      { borderColor: 'white' },
+      { borderColor: 'silver' },
+      { setCode: 'FORGE' },
+      { setCode: 'M15' },
+      { layout: 'token' },
+      { frameTemplate: 'future' },
+    ])
+      assert.equal(calibratedPrintingStock({ ...land, ...changes }), undefined);
+  }
+  const modernStock = JSON.parse(
+    await readFile('games/magic/src/presentation/printing-stock-values.json'),
+  ).find((p) => p.set === 'm21');
+  const stockFace = { setCode: 'M21', colorCalibration: 'set-hsb-v1' };
+  const stockSource = { url: modernStock.prefix + 'UR.webp', geometry: modernStock.geometry };
+  assert.equal(printingBlackPointMaterials(stockFace, {}, stockSource).stock, '#16130e');
+  for (const source of [
+    { ...stockSource, url: stockSource.url + '?changed-source' },
+    { ...stockSource, url: stockSource.url.replace('b52888c', '0000000') },
+    { ...stockSource, geometry: '[0,0,1,1]' },
+  ])
+    assert.equal(printingBlackPointMaterials(stockFace, {}, source).stock, undefined);
   const identity = { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
     stock = [24 / 255, 21 / 255, 16 / 255];
   const im = { width: 100, height: 140, data: new Uint8ClampedArray(100 * 140 * 4) };
