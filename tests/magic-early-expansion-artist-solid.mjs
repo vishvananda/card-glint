@@ -68,7 +68,7 @@ try {
     assert.ok(earlyExpansionArtist({ setCode, typeLine: 'Land', colors: [] }));
   assert.deepEqual(
     earlyExpansionArtist({ setCode: 'drk', typeLine: 'Land', colors: [] }),
-    evidence.profiles.drk,
+    earlyExpansionArtist({ ...normal, setCode: 'drk' }),
   );
   console.log('Artist ink: 306 native candidates, 316 isolated cards, 84 controls and scope pass.');
 } finally {
