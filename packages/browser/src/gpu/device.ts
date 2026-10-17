@@ -25,7 +25,7 @@ const kinds = {
   pool: 7,
   gloss: 8,
 };
-const stride = 47;
+const stride = 48;
 export interface Material {
   face: Texture;
   mask: Texture;
@@ -116,6 +116,9 @@ export class Device {
     gl.enableVertexAttribArray(14);
     gl.vertexAttribPointer(14, 4, gl.FLOAT, false, stride * 4, 172);
     gl.vertexAttribDivisor(14, 1);
+    gl.enableVertexAttribArray(15);
+    gl.vertexAttribPointer(15, 1, gl.FLOAT, false, stride * 4, 188);
+    gl.vertexAttribDivisor(15, 1);
     gl.bindVertexArray(null);
   }
   begin(frame: Frame) {
@@ -157,6 +160,7 @@ export class Device {
       values[start + 44] = item.printDots?.period ?? 5;
       values[start + 45] = item.printDots?.variation ?? 0.5;
       values[start + 46] = item.printDots?.inset ?? 0;
+      values[start + 47] = item.rainFog ?? 1;
     });
     if (this.instanceCapacity < length) {
       this.instanceCapacity = length;

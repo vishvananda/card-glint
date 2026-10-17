@@ -38,8 +38,9 @@ vec3 rippleCapsule(vec2 p,vec4 r,inout vec2 drag){
  if(u<-2.8 || u>1.9)return vec3(0.);
  float innerR=max(.014,r0-w*1.85);
  float core=smoothstep(0.,1.,rho/innerR);
- float taper=segLen>.004 ? smoothstep(0.,.18,h) : 1.;
- float amp=(.85+min(.55,segLen*4.))*taper;
+ // Both ends radiate: tapering the rear cap erases half of a near-stationary
+ // tap as soon as a tiny pointer movement turns it into a short stroke.
+ float amp=.85+min(.55,segLen*4.);
  float fade=exp(-localAge*1.05)*inversesqrt(1.+rho*9.)*smoothstep(0.,.02,localAge)*amp;
  float uShift=u+.45;
  float env=core*exp(-.36*uShift*uShift)*fade;
@@ -68,9 +69,10 @@ vec3 poolWater(vec2 uv,vec3 normal){
  vec2 drift=slosh*.35;
  vec2 p=uv*metric+origin+drift;
  vec3 wave=waterField(p,surfaceTime);
- // Ambient waves organically advect the dragged wake so it undulates with the pool.
+ // Propagate wakes in the flat surface metric. Ambient slopes still add to
+ // lighting/refraction below, but must not bend a spreading wave into contours.
  vec2 wakeDrag;
- vec3 rip=rippleWake(uv+wave.xy*.24,wakeDrag);
+ vec3 rip=rippleWake(uv,wakeDrag);
  vec2 slope=wave.xy+basinSlope+rip.xy;
  slope+=normal.xy*wave.z*3.2;
  // The painted basin floor and its caustics sit recessed below the water surface

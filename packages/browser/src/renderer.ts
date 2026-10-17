@@ -480,6 +480,8 @@ export class Renderer {
       revision: number;
       width: number;
       finish?: Instance['finish'];
+      /** Match the live rain condensation density. */
+      rainFog?: Instance['rainFog'];
       pointer?: readonly [number, number];
       /** Surface snapshot time in seconds; does not change the live simulation. */
       time?: number;
@@ -520,6 +522,7 @@ export class Renderer {
           id: options.instanceId ?? 0,
           card: id,
           finish: options.finish,
+          rainFog: options.rainFog,
           wear: options.wear,
           cardstock: options.cardstock,
           printDots: options.printDots,
