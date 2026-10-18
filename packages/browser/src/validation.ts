@@ -141,9 +141,18 @@ export function validateInstance(item: Instance) {
   if (!Number.isInteger(item.order ?? 0) || Math.abs(item.order ?? 0) > 2147483647)
     throw Error('Invalid instance order');
   if (
-    !['regular', 'gloss', 'etched', 'prismatic', 'cold', 'opal', 'rain', 'heat', 'pool'].includes(
-      item.finish ?? 'regular',
-    )
+    ![
+      'regular',
+      'gloss',
+      'holofoil',
+      'etched',
+      'prismatic',
+      'cold',
+      'opal',
+      'rain',
+      'heat',
+      'pool',
+    ].includes(item.finish ?? 'regular')
   )
     throw Error('Unknown finish');
   if (

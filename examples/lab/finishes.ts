@@ -10,6 +10,7 @@ export const wearLevels = { fresh: 0, light: 0.25, played: 0.6, heavy: 1 } as co
 export const finishNames: Record<Finish, string> = {
   regular: 'Uncoated',
   gloss: 'Gloss',
+  holofoil: 'Holofoil',
   etched: 'Etched gold',
   cold: 'Cold foil',
   opal: 'Opal embossing',

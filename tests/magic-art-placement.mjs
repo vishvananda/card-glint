@@ -98,7 +98,7 @@ try {
       '/games/magic/src/presentation/canvas-assets.ts'
     );
     const { cardTextureKey } = await import('/games/magic/src/presentation/canvas-face.ts');
-    const { magic } = await import('/games/magic/src/index.ts');
+    const { magic, artworkFoilMask, opticalDocument } = await import('/games/magic/src/index.ts');
     const canvas = (w = 488, h = 680) => {
       const c = document.createElement('canvas');
       c.width = w;
@@ -163,6 +163,56 @@ try {
           if (a[i] < 240 || a[i + 1] < 240 || a[i + 2] < 240) mismatch++;
         }
       }
+    const maskHost = {
+      async images(requests, signal) {
+        const loaded = await loadCanvasImages(
+          requests
+            .map((request) => request.url)
+            .filter((url) => !['/mask', '/source'].includes(url)),
+          signal,
+        );
+        return {
+          value: new Map(loaded.images).set('/mask', mask).set('/source', bitmap),
+          release: () => loaded.dispose(),
+        };
+      },
+    };
+    const projected = artworkFoilMask(base, '/mask'),
+      projectedInverse = artworkFoilMask(base, '/mask', { invert: true });
+    const projectedPixels = await projected.paint(maskHost, new AbortController().signal),
+      inversePixels = await projectedInverse.paint(maskHost, new AbortController().signal);
+    const actualArt = await opticalDocument(0, 0, base, 'silver').recipe.color.paint(
+      maskHost,
+      new AbortController().signal,
+    );
+    const actualPixels = actualArt.getContext('2d').getImageData(0, 0, 732, 1020).data;
+    const projectedData = projectedPixels.getContext('2d').getImageData(0, 0, 732, 1020).data,
+      inverseData = inversePixels.getContext('2d').getImageData(0, 0, 732, 1020).data;
+    let foilWhite = 0,
+      foilAligned = 0,
+      foilBlack = 0;
+    for (let y = 145; y < 545; y++)
+      for (let x = 65; x < 675; x++) {
+        const target = (y * 732 + x) * 4;
+        if (
+          actualPixels[target] > 250 &&
+          actualPixels[target + 1] > 250 &&
+          actualPixels[target + 2] > 250
+        ) {
+          foilWhite++;
+          if (projectedData[target + 3] > 245) foilAligned++;
+        } else if (
+          actualPixels[target] < 30 &&
+          actualPixels[target + 1] < 70 &&
+          projectedData[target + 3] === 0 &&
+          inverseData[target + 3] > 250
+        )
+          foilBlack++;
+      }
+    const foilMaskCache =
+      projected.key !==
+        artworkFoilMask({ ...base, artPlacement: { ...base.artPlacement, zoom: 2 } }, '/mask')
+          .key && projected.key !== projectedInverse.key;
     const recipe = magic.describe(base, 'inspect');
     const stampFace = { name: 'Stamp control', setCode: 'M21', typeLine: 'Instant' };
     const movedStampFace = { ...stampFace, printingElements: { setSymbol: { offset: [10, 8] } } };
@@ -234,6 +284,10 @@ try {
     }
     const key = (f, layer = 'face') => cardTextureKey({ face: f, layer }, 'inspect');
     return {
+      foilWhite,
+      foilAligned,
+      foilBlack,
+      foilMaskCache,
       stampInk,
       stampMismatch,
       stampCache:
@@ -250,6 +304,19 @@ try {
         key({ ...base, artPlacement: { ...base.artPlacement, zoom: 2 } }, 'etching'),
     };
   });
+  console.log({
+    foilWhite: result.foilWhite,
+    foilAligned: result.foilAligned,
+    foilBlack: result.foilBlack,
+  });
+  assert.ok(
+    result.foilWhite > 100 && result.foilAligned / result.foilWhite > 0.97,
+    'Foil mask follows cropped/panned artwork',
+  );
+  assert.ok(
+    result.foilBlack > 1000 && result.foilMaskCache,
+    'Transparent pixels stay uncoated and placement/inversion invalidate the mask',
+  );
   assert.ok(result.maskPixels > 100);
   assert.ok(result.stampInk > 100);
   assert.equal(result.stampMismatch, 0, 'Set mark etching follows the same explicit translation');

@@ -73,6 +73,8 @@ void main(){
    grainFilter=exp(-fwidth(dot(local,vec2(24.,8.)))*2.);
  }
 #endif
+ // Filter the sheet grooves before silhouette rejection, like local patches.
+ if(previewKind==9.)holofoilGrainFilter=exp(-fwidth(dot(uv,vec2(24.,8.)))*2.);
  // Derive wear filtering from continuous UVs before silhouette rejection.
  vec2 wearPixel=vec2(0.);
  if(wearInfo.x>0.)wearPixel=fwidth(uv*vec2(1.,aspect));
@@ -83,7 +85,7 @@ void main(){
  vec3 base=printFace(uv).rgb;
  if(cardstockAmount>0. && previewKind>.5)shaded=previewLinear(cardstockGloss(uv,previewInk(base),previewInk(shaded)));
  if(wearInfo.x>0.) {
-   float foilSubstrate=step(.5,previewKind)*(1.-step(4.5,previewKind));
+   float foilSubstrate=max(step(.5,previewKind)*(1.-step(4.5,previewKind)),step(8.5,previewKind));
    shaded=previewLinear(wornSurface(uv,previewInk(base),previewInk(shaded),normalize(v_normal),view,wearInfo.y,wearInfo.x,foilSubstrate,wearPixel));
  }
  vec4 c=texture(coverage,uv),top=texture(overlay,uv);

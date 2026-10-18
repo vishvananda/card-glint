@@ -36,7 +36,7 @@ asset references, its fan-content notice, and a guide for contributing fixes.
 
 ## What it does
 
-- Nine finishes: regular, gloss, etched, prismatic, cold foil, Opal embossing,
+- Nine finishes: regular, gloss, etched, prismatic, cold foil, reflective holofoil, Opal embossing,
   raindrops on glass, heat shimmer and pool water with caustics.
 - Independent face, artwork-edge, mask, decoded-image and overlay caches.
 - Explicit layers above/below foil, foil exclusion masks and etch contributions.

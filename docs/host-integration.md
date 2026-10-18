@@ -102,7 +102,7 @@ texture. `previewFoil(uv, normal, view)` returns sRGB; `previewLinear` converts 
 for a host that performs output color conversion.
 
 The shader declares `previewKind` (0 ordinary, 1 etched, 2 prismatic, 3 cold,
-4 opal), `satinCompact`, `satinHoverGain`, `wave` and `hasWave`. Pointer defaults to
+4 opal, 8 gloss, 9 holofoil), `satinCompact`, `satinHoverGain`, `wave` and `hasWave`. Pointer defaults to
 (0.5,0.5), with normals/view normalized in the same coordinate system. Aspect is
 card height/width. The optional `liquid: true` branch retains host-simulated height
 fields (kinds 5 water and 6 hologram); the host owns their texture and scheduling.
@@ -184,3 +184,8 @@ redistribution permission from a public URL. Keep `LICENSE-MIT`, `LICENSE-APACHE
 `NOTICE.md` and `games/magic/NOTICE.md` with redistributed package code, and read
 the [game-pack asset notices](../games/magic/NOTICE.md) separately from the
 repository's code license.
+
+The native `holofoil` finish uses the same diffraction response as a local
+hologram patch, across the ordinary finish coverage. It remains distinct from
+`prismatic`, needs no mask or extra texture, and supports print dots, cardstock
+and wear. Existing card-local layers can restrict it using `finishCoverage`.

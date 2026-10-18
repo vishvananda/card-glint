@@ -33,7 +33,8 @@ try {
       '-e',
       `
     import assert from 'node:assert/strict';
-    import { createDisplayRaster, printSamplingVersion } from 'card-glint';
+    import { createDisplayRaster, printSamplingVersion, holofoilVersion } from 'card-glint';
+    assert.equal(holofoilVersion,1);
     assert.equal(typeof createDisplayRaster,'function');
     assert.equal(printSamplingVersion,1);
     import { FinishResources, SURFACE_GLSL, WORN_GLSL, SurfaceMotion, surfaceSeed } from 'card-glint/finish';
@@ -41,7 +42,8 @@ try {
     for(const fn of [FinishResources, SurfaceMotion, surfaceSeed, canvasAssetUrls, faceManaAssets, setAssetFetcher]) assert.equal(typeof fn,'function');
     assert.ok(SURFACE_GLSL.length>0 && WORN_GLSL.length>0);
     assert.ok(canvasFontAssets.length>0 && canvasFontAssets.every(font=>font.family && font.url));
-    import { resolvePrintingWording, resolvePrintingArtist, resolvePrintingPreset, resolveScryfallPrinting, fromScryfallCard, fromMtgjsonCard, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle, resolvePrintingCalibration, printingCalibrationOptions, printingCalibrationApiVersion } from 'card-glint/magic';
+    import { artworkFoilMask, resolvePrintingWording, resolvePrintingArtist, resolvePrintingPreset, resolveScryfallPrinting, fromScryfallCard, fromMtgjsonCard, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle, resolvePrintingCalibration, printingCalibrationOptions, printingCalibrationApiVersion } from 'card-glint/magic';
+    assert.equal(typeof artworkFoilMask,'function');
     assert.equal(printingCalibrationApiVersion,1);
     const calibrated={name:'Calibration probe',setCode:'NEO',colors:['R'],calibration:'auto'};
     assert.equal(resolvePrintingCalibration(calibrated).components.border.color,'#16130e');

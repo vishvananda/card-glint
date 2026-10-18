@@ -362,18 +362,19 @@ export async function composeCardTexture(
         loaded.dispose();
       }
     }
-    await Promise.all([
-      (hooks?.loadFonts ?? loadCanvasFonts)(),
-      nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
-      loadStandardTemplateFonts(input.face),
-      faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
-      isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),
-      isRetro(input.face) ||
-      nativeSplitEra(input.face) === 'old' ||
-      historicalManaFamily(input.face, 'W') === 'historic-font'
-        ? (hooks?.loadRetroFont ?? loadRetroFont)()
-        : Promise.resolve(),
-    ]);
+    if (input.paintLayer !== 'artwork')
+      await Promise.all([
+        (hooks?.loadFonts ?? loadCanvasFonts)(),
+        nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
+        loadStandardTemplateFonts(input.face),
+        faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
+        isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),
+        isRetro(input.face) ||
+        nativeSplitEra(input.face) === 'old' ||
+        historicalManaFamily(input.face, 'W') === 'historic-font'
+          ? (hooks?.loadRetroFont ?? loadRetroFont)()
+          : Promise.resolve(),
+      ]);
     signal.throwIfAborted();
     const loaded = await loadImages(canvasAssetUrls(input.face), signal);
     let calibrated: Awaited<ReturnType<typeof prepareEarlyHsb>> | undefined;
@@ -384,11 +385,14 @@ export async function composeCardTexture(
         calibrated = await prepareEarlyHsb(input.face, loaded.images, signal);
       if (input.paintLayer !== 'artwork')
         dual = await prepareRetroDualFrame(input.face, calibrated?.images ?? loaded.images, signal);
-      numerals = await prepareManaNumerals(
-        input.face,
-        dual?.images ?? calibrated?.images ?? loaded.images,
-        signal,
-      );
+      numerals =
+        input.paintLayer === 'artwork'
+          ? { images: loaded.images, dispose() {} }
+          : await prepareManaNumerals(
+              input.face,
+              dual?.images ?? calibrated?.images ?? loaded.images,
+              signal,
+            );
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
       const paintingImages = numerals.images;

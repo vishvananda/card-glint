@@ -24,6 +24,7 @@ const kinds = {
   heat: 6,
   pool: 7,
   gloss: 8,
+  holofoil: 9,
 };
 const stride = 48;
 export interface Material {

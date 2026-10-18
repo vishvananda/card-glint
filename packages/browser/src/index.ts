@@ -9,3 +9,6 @@ export type { ImageFit } from './image-cover.js';
 export { createDisplayRaster, type DisplayRaster } from './display-raster.js';
 /** Continuous varied print screens and CSS-host display sampling helpers. */
 export const printSamplingVersion = 1;
+
+/** Native reflective diffraction finish, independent of local hologram patches. */
+export const holofoilVersion = 1;

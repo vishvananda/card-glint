@@ -126,7 +126,27 @@ try {
       await set();
       const regular = read(),
         foil = read('prismatic'),
-        gloss = read('gloss');
+        gloss = read('gloss'),
+        holofoil = read('holofoil');
+      const nativeHolofoil = {
+        prism: diff(foil, holofoil),
+        gloss: diff(gloss, holofoil),
+        motion: diff(holofoil, read('holofoil', [0.2, 0.75], [0.22, -0.14, 0.96])),
+      };
+      const nativePng = await renderer.exportCard(1, {
+        revision,
+        width: 244,
+        finish: 'holofoil',
+        pointer: [0.5, 0.5],
+        time: 2,
+      });
+      const nativeImage = await createImageBitmap(nativePng),
+        nativeCanvas = canvas(size);
+      nativeCanvas.getContext('2d').drawImage(nativeImage, 0, 0);
+      nativeImage.close();
+      const nativePixels = nativeCanvas.getContext('2d').getImageData(0, 0, ...size).data;
+      const nativeExportEqual = holofoil.every((v, i) => v === nativePixels[i]);
+      nativeCanvas.width = nativeCanvas.height = 0;
       const h = { mask, rect: bounds, strength: 0.8, seed: 48 };
       await set(h);
       const neutral = read(),
@@ -318,6 +338,8 @@ try {
         }
       }
       return {
+        nativeHolofoil,
+        nativeExportEqual,
         differences,
         maskOrientation,
         before,
@@ -343,6 +365,9 @@ try {
       renderer.dispose();
     }
   });
+  assert(result.nativeExportEqual, 'Native holofoil preview and PNG differ');
+  for (const difference of Object.values(result.nativeHolofoil))
+    assert(difference.outside > 1000, 'Native holofoil is missing or aliases another finish');
   for (const [kind, d] of Object.entries(result.differences)) {
     assert(d.inside > 200, kind + ' hologram missing');
     assert.equal(d.outside, 0, kind + ' changed protected printing');

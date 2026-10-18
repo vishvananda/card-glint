@@ -5,6 +5,7 @@ export type Size = readonly [number, number];
 export type Finish =
   | 'regular'
   | 'gloss'
+  | 'holofoil'
   | 'etched'
   | 'prismatic'
   | 'cold'

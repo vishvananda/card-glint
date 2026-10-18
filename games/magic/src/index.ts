@@ -5,6 +5,7 @@ import type {
   Tier,
   EdgeSource,
   RasterHost,
+  Raster,
 } from '../../../packages/browser/src/index.js';
 import { composeCardTexture, cardTextureKey } from './presentation/canvas-face.js';
 import { faceEtchingSymbol } from './presentation/assets.js';
@@ -236,6 +237,82 @@ export function opticalDocument(
         },
       },
     ],
+  };
+}
+
+/** Project an artwork-sized grayscale foil mask with the exact illustration fit.
+ * White is foil, black/transparent is uncoated. Invert for protection mattes.
+ * The returned alpha raster can be used by any public finishCoverage mask.
+ * Pixel conversion happens during preparation, never while the card moves. */
+export function artworkFoilMask(
+  face: RenderedCardInput,
+  source: string,
+  { invert = false, tier = 'inspect' }: { invert?: boolean; tier?: Tier } = {},
+): Raster {
+  if (face.faces?.length) throw Error('Project foil masks per physical face.');
+  const projection = opticalDocument(0, 0, { ...face, illustration: source }, 'silver', tier);
+  const { color: raster, artWindows } = projection.recipe;
+  return {
+    key: JSON.stringify(['magic-artwork-foil-mask-v1', raster.key, invert]),
+    size: raster.size,
+    async paint(host, signal) {
+      // Make transparent source pixels black before the illustration painter
+      // supplies its ordinary art backing. Otherwise that backing becomes foil.
+      const maskHost: RasterHost = {
+        async images(requests, imageSignal) {
+          const lease = await host.images(requests, imageSignal);
+          const image = lease.value.get(source);
+          if (!image) return lease;
+          const flat = document.createElement('canvas');
+          flat.width = image.width;
+          flat.height = image.height;
+          let bitmap: ImageBitmap;
+          try {
+            const ctx = flat.getContext('2d')!;
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, flat.width, flat.height);
+            ctx.drawImage(image, 0, 0);
+            bitmap = await createImageBitmap(flat);
+          } catch (error) {
+            lease.release();
+            throw error;
+          } finally {
+            flat.width = flat.height = 0;
+          }
+          return {
+            value: new Map(lease.value).set(source, bitmap),
+            release() {
+              bitmap.close();
+              lease.release();
+            },
+          };
+        },
+      };
+      const output = await raster.paint(maskHost, signal);
+      try {
+        signal.throwIfAborted();
+        const ctx = output.getContext('2d', { willReadFrequently: true })!;
+        const pixels = ctx.getImageData(0, 0, output.width, output.height);
+        for (let i = 0; i < pixels.data.length; i += 4) {
+          const value = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;
+          pixels.data[i + 3] = Math.round(pixels.data[i + 3]! * (invert ? 1 - value : value));
+          pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = 255;
+        }
+        ctx.putImageData(pixels, 0, 0);
+        ctx.resetTransform();
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        for (const [x, y, w, h] of artWindows)
+          ctx.rect(x * output.width, y * output.height, w * output.width, h * output.height);
+        ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+        return output;
+      } catch (error) {
+        output.width = output.height = 0;
+        throw error;
+      }
+    },
   };
 }
 

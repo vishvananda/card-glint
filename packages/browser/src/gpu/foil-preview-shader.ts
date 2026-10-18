@@ -1,3 +1,4 @@
+import { HOLOFOIL_GLSL } from './hologram-shader.js';
 import { LIQUID_FOIL_GLSL } from './liquid-foil-shader.js';
 import { FOIL_REFLECTION_GLSL } from './foil-reflection-shader.js';
 
@@ -85,6 +86,7 @@ vec3 pastelSpectrum(float t) {
   if(idx==5) return mix(c5,c6,f);
   return mix(c6,c0,f);
 }
+${HOLOFOIL_GLSL}
 float microSparkle(vec2 cardUv, vec2 shift, float density) {
   vec2 p=(cardUv+shift)*vec2(96.,134.)*density;
   vec2 i=floor(p);
@@ -132,6 +134,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   float stamp=clamp(etched*(1.-art)/.68,0.,1.);
   vec3 lamp=normalize(vec3((ptr-.5)*vec2(1.35,-1.35)+vec2(-.28,.36),1.));
 
+  if(previewKind==9.)return holofoil(uv,base,normal,view,317./4294967295.,holofoilGrainFilter);
   if(previewKind==8.) {
     // Glossy card finish: pack-fresh clear varnish sheen + soft radial studio glare + subtle ink-gloss catch.
     float sweep=dot(cardUv*vec2(.86,1.20)-(bg-.5)*1.25,dir133)-.42;
