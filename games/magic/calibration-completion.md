@@ -56,7 +56,9 @@ and marks changed evidence stale without rewriting the stored receipt.
    need independent names; sparse groups need an explicit family-transfer study.
 8. **Release.** Run renderer/package/browser/showcase checks. Publish the renderer
    and record its revision with the corresponding scores. Local candidates and
-   old-version scores do not close this check.
+   old-version scores do not close this check. Bundle several reviewed calibration
+   changes into a release; a single component fit does not require its own version.
+   Keep per-component evidence and unresolved outliers visible within the batch.
 
 The machine ledger splits these into 18 checks so frame/paper colors, mana
 geometry/colors, and the different text regions cannot conceal one another.

@@ -128,8 +128,8 @@ export function earlyExpansionTextLayout(
     ...typography,
     textWidth: 1,
   });
-  if (!nominal.overflow)
-    return layoutRules(
+  if (!nominal.overflow) {
+    const regular = layoutRules(
       context,
       paragraphs,
       bounds,
@@ -137,9 +137,29 @@ export function earlyExpansionTextLayout(
       Math.min(p.regular, 21.75 / Math.max(1, p.textWidth)),
       typography,
     );
-  return layoutRules(context, paragraphs, bounds, p.compact, minimum, {
-    ...typography,
-    textWidth: 1,
-    leading: p.compactLeading,
-  });
+    if (set !== 'drk') return regular;
+    // Choose from the unchanged nominal layout. Spacing must never promote
+    // compact printing into regular type or alter the centered-size policy.
+    const short = regular.lines.length <= 5;
+    return layoutRules(
+      context,
+      paragraphs,
+      { ...bounds, x: 71, y: short ? 415 : 418, width: short ? 348 : 351 },
+      p.regular,
+      Math.min(p.regular, 21.75 / Math.max(1, p.textWidth)),
+      { ...typography, leading: 0.96 },
+    );
+  }
+  return layoutRules(
+    context,
+    paragraphs,
+    set === 'drk' ? { ...bounds, x: 73, y: 418, width: 342 } : bounds,
+    p.compact,
+    minimum,
+    {
+      ...typography,
+      textWidth: 1,
+      leading: set === 'drk' ? 1.22 : p.compactLeading,
+    },
+  );
 }

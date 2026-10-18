@@ -12,6 +12,30 @@ remain outside the current study. Use pinned frame sources and compare replaceme
 before adopting them. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Prepared 0.5.1 batch
+
+Alpha filled body ink and darker headings, The Dark type lines, and The Dark
+regular/compact body geometry are bundled together. See the
+[release notes](../../docs/releases/0.5.1.md) and
+[body evidence](fixtures/accuracy/dark-body.json). These are partial calibration
+improvements, not completed-set approval.
+
+The Dark body fit preserves the nominal size classes and large centered policy.
+All 121 scorable native renders match the fitted prototypes; 278 unrelated cards
+retain their pixels. The 87 repeated-validation full-card scores improve from
+0.7794 to 0.8135, with seven regressions retained. Giant Shark, Runesword and
+People of the Woods have the largest remaining body-overlap regressions. Review
+wrapping, vertical placement, inline flavor attribution and font shape before
+adding any exceptions. Ball Lightning remains unscored because normalization
+was rejected. Gaea's Touch 77† remains a printing-shift diagnostic.
+
+Goblin Wizard, Ghost Ship and Electric Eel have reviewed original-only activation
+punctuation corrections. Compare identical corrected wording when measuring
+layout changes; preserve the previous measurements as historical evidence.
+The broad report frame strips overlap some body text. A future metric revision
+should separate those supports; current native isolation proves the frame pixels
+are unchanged even when that diagnostic moves.
+
 ## Early expansions after 0.4.1
 
 The next calibration group is **Arabian Nights, Antiquities and The Dark**,

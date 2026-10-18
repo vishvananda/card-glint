@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preDarkBodySource } from './magic-dark-body-source-guard.mjs';
 
 const extension = JSON.parse(
   await readFile(
@@ -45,7 +46,7 @@ export function darkTypeLineProof() {
 
 /** Reconstruct the source for preceding measurements; keep their receipts intact. */
 export async function preDarkTypeLineSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkBodySource(file),
     change = extension.files[file];
   if (!change) return bytes;
   await darkTypeLineProof();

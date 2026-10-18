@@ -176,6 +176,9 @@ async function verify() {
   const typeLines = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/dark-type-line-compatibility.json'),
   );
+  const body = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/dark-body-compatibility.json'),
+  );
   assert.equal(nativeHostSources.schema, 1);
   assert.equal(nativeHostSources.reference, nativeReference);
   const rulesFile = 'games/magic/src/presentation/rules-paint.ts';
@@ -248,7 +251,8 @@ async function verify() {
             Object.hasOwn(typography.files, relative) ||
             Object.hasOwn(symbols.files, relative) ||
             Object.hasOwn(mana.files, relative) ||
-            Object.hasOwn(typeLines.files, relative)
+            Object.hasOwn(typeLines.files, relative) ||
+            Object.hasOwn(body.files, relative)
           )
             return restoreArtworkPreparation(
               relative,

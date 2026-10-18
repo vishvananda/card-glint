@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "baselineCommit": "1f2fb2e12248dcdb0b4dfe21e55d2e8559985930",
+  "evidenceHash": "7b1be042ee9a35892f523c3df86d6bec7ee49749a1b14d859d01662cf52544a1",
+  "wordingSource": "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json",
+  "files": {
+    "games/magic/src/presentation/early-expansion-text.ts": {
+      "before": "3824e32f0e088337d229db975a2b2189d3f860b75f6242c83d75111b1acc19d4",
+      "after": "f1f4f53c426de14b9b7620a243c6a839aabb00182d2d5a2dc9a79cbb814f3878",
+      "reverseEdits": [
+        {
+          "start": 139,
+          "count": 25,
+          "lines": [
+            "  return layoutRules(context, paragraphs, bounds, p.compact, minimum, {\n",
+            "    ...typography,\n",
+            "    textWidth: 1,\n",
+            "    leading: p.compactLeading,\n",
+            "  });\n"
+          ]
+        },
+        {
+          "start": 130,
+          "count": 2,
+          "lines": ["  if (!nominal.overflow)\n", "    return layoutRules(\n"]
+        }
+      ]
+    },
+    "games/magic/src/printing/corrections.ts": {
+      "before": "73390eedf5729ec03d57d067e26db635a71e2e92cdf5686fe3da57b557fa5a10",
+      "after": "3636657cbc3f2c1b81b0f8f2b98d85c0dfcb293707ce0ad8a940ac99e6220dba",
+      "reverseEdits": [
+        {
+          "start": 14236,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 9674,
+          "count": 10,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["  '783307d9f6b544081d0f61a0d922a9c97a37074a7387d95b4995eed976c97992';\n"]
+        }
+      ]
+    },
+    "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": {
+      "before": "48b11280dc49981446f193f87217c5f760fb49ea9d6b123d700b346c019bb3b7",
+      "after": "02d1c74e639b60bf9d9e33788d452f5606dfab20a2f3e05a7e0d355ba245be2d",
+      "reverseEdits": [
+        {
+          "start": 93,
+          "count": 18,
+          "lines": []
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+    "games/magic/src/presentation/rules-layout.ts": "8b46b99f59cf33e675c5dd94357557cad951bab6992777fe7cc5e851109959a3",
+    "games/magic/src/presentation/retro-rules.ts": "7401de2eec4899bbe09d3bbdcbfde07295f8a7c1280415cc79953a4b41f85df3",
+    "games/magic/src/presentation/rules-paint.ts": "7b669814d33185b117526c2ca5611a6fcc13f0d686563b7c35289b358414ee0f"
+  }
+}
